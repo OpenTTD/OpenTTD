@@ -61,6 +61,7 @@ enum Currencies {
 	CURRENCY_NTD,       ///< New Taiwan Dollar
 	CURRENCY_CNY,       ///< Chinese Renminbi
 	CURRENCY_HKD,       ///< Hong Kong Dollar
+	CURRENCY_INR,       ///< Indian Ru
 	CURRENCY_END,       ///< always the last item
 };
 

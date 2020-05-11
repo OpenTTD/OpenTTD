@@ -65,6 +65,7 @@ static const CurrencySpec origin_currency_specs[CURRENCY_END] = {
 	{   40, "", CF_NOEURO, "NTD" NBSP,     "",               0, STR_GAME_OPTIONS_CURRENCY_NTD    }, ///< new taiwan dollar
 	{    8, "", CF_NOEURO, "\xC2\xA5",     "",               0, STR_GAME_OPTIONS_CURRENCY_CNY    }, ///< chinese renminbi
 	{   10, "", CF_NOEURO, "HKD" NBSP,     "",               0, STR_GAME_OPTIONS_CURRENCY_HKD    }, ///< hong kong dollar
+	{   90, "", CF_NOEURO, "INR" NBSP,     "",               0, STR_GAME_OPTIONS_CURRENCY_INR    }, ///< Indian Rupee
 };
 
 /** Array of currencies used by the system */
