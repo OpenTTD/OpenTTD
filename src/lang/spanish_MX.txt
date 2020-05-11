@@ -873,7 +873,7 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} acepta ahora {STRING} y {STRING}
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subsidio vencida:{}{}{STRING} de {STRING} a {STRING} ya no está subsidiado
-STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidio retirado:{}{}El servicio de {STRING} desde {STRING} a {STRING} ya no está subsidiado
+STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidio retirado:{}{}El servicio de {STRING} de {STRING} hacia {STRING} ya no está subsidiado
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Se ofrece subsidio.{}{}¡El primer servicio de {STRING} desde {STRING} a {STRING} tendrá subsidio durante un año por parte del ayuntamiento local!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El servicio de {STRING} desde {STRING} a {STRING} generará un 50% extra por un año!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}¡Subsidio otorgado a {STRING}!{}{}¡El servicio de {STRING} desde {STRING} a {STRING} generará tasa doble durante un año!
@@ -936,6 +936,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano (
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuevo dólar taiwanés (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Yuan chino (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar honkonés (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehículos de carretera
@@ -1249,7 +1250,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todas las vista
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos al ayuntamiento: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Las empresas pueden tratar de sobornar a los ayuntamientos. Si el soborno es descubierto por un inspector, la empresa no podrá realizar actividades en la localidad durante seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir adquirir los derechos de transporte exclusivos: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una empresa adquiere los derechos de transporte exclusivos en un pueblo, las estaciones de la competencia (de pasajeros o carga) no recibirán nada que entregar durante un año
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una empresa adquiere los derechos de transporte exclusivos en un pueblo, las estaciones de la competencia, de pasajeros o carga, no recibirán nada todo un año
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir la construcción de nuevos edificios: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Las empresas aportan dinero a los ayuntamientos para que construyan nuevas casas y edificios
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permitir el pago de la reconstrucción de las carreteras locales: {STRING}
@@ -4345,7 +4346,7 @@ STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... dema
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... ya no hay espacio en el mapa
 STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}El pueblo no construirá carreteras. La función de construcción de carreteras puede activarse en Configuración->Ambiente->Pueblos
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Obras de carretera en progreso
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede eliminar este pueblo...{}Quedan estaciones o depósitos relacionados con él, o una propiedad suya no puede ser retirada
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}No se puede eliminar este pueblo...{}Aún tiene estaciones o depósitos vinculados, o una casilla en su jurisdicción no se puede quitar
 STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... no hay ningún lugar apto para una estatua en el centro de este pueblo
 
 # Industry related errors
