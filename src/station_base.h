@@ -503,6 +503,7 @@ public:
 	uint GetCatchmentRadius() const;
 	Rect GetCatchmentRect() const;
 	bool CatchmentCoversTown(TownID t) const;
+	void AddIndustryToDeliver(Industry *ind);
 	void RemoveFromAllNearbyLists();
 
 	inline bool TileIsInCatchment(TileIndex tile) const
@@ -556,5 +557,40 @@ public:
 };
 
 void RebuildStationKdtree();
+
+/**
+ * Call a function on all stations that have any part of the requested area within their catchment.
+ * @param area The tile area to check
+ */
+template<typename Func>
+void ForAllStationsAroundTiles(const TileArea &ta, Func func)
+{
+	/* Not using, or don't have a nearby stations list, so we need to scan. */
+	std::set<StationID> seen_stations;
+
+	/* Scan an area around the building covering the maximum possible station
+	 * to find the possible nearby stations. */
+	uint max_c = _settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED;
+	TileArea ta_ext = TileArea(ta).Expand(max_c);
+	TILE_AREA_LOOP(tile, ta_ext) {
+		if (IsTileType(tile, MP_STATION)) seen_stations.insert(GetStationIndex(tile));
+	}
+
+	for (StationID stationid : seen_stations) {
+		Station *st = Station::GetIfValid(stationid);
+		if (st == nullptr) continue; /* Waypoint */
+
+		/* Check if station is attached to an industry */
+		if (!_settings_game.station.serve_neutral_industries && st->industry != nullptr) continue;
+
+		/* Test if the tile is within the station's catchment */
+		TILE_AREA_LOOP(tile, ta) {
+			if (st->TileIsInCatchment(tile)) {
+				func(st);
+				break;
+			}
+		}
+	}
+}
 
 #endif /* STATION_BASE_H */
