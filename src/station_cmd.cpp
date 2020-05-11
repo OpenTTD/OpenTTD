@@ -36,6 +36,7 @@
 #include "animated_tile_func.h"
 #include "elrail_func.h"
 #include "station_base.h"
+#include "station_func.h"
 #include "station_kdtree.h"
 #include "roadstop_base.h"
 #include "newgrf_railtype.h"
@@ -3966,68 +3967,26 @@ static void AddNearbyStationsByCatchment(TileIndex tile, StationList *stations, 
 }
 
 /**
- * Find all stations around a rectangular producer (industry, house, headquarter, ...)
- *
- * @param location The location/area of the producer
- * @param[out] stations The list to store the stations in
- * @param use_nearby Use nearby station list of industry/town associated with location.tile
- */
-void FindStationsAroundTiles(const TileArea &location, StationList * const stations, bool use_nearby)
-{
-	if (use_nearby) {
-		/* Industries and towns maintain a list of nearby stations */
-		if (IsTileType(location.tile, MP_INDUSTRY)) {
-			/* Industry nearby stations are already filtered by catchment. */
-			*stations = Industry::GetByTile(location.tile)->stations_near;
-			return;
-		} else if (IsTileType(location.tile, MP_HOUSE)) {
-			/* Town nearby stations need to be filtered per tile. */
-			assert(location.w == 1 && location.h == 1);
-			AddNearbyStationsByCatchment(location.tile, stations, Town::GetByTile(location.tile)->stations_near);
-			return;
-		}
-	}
-
-	/* Not using, or don't have a nearby stations list, so we need to scan. */
-	std::set<StationID> seen_stations;
-
-	/* Scan an area around the building covering the maximum possible station
-	 * to find the possible nearby stations. */
-	uint max_c = _settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED;
-	TileArea ta = TileArea(location).Expand(max_c);
-	TILE_AREA_LOOP(tile, ta) {
-		if (IsTileType(tile, MP_STATION)) seen_stations.insert(GetStationIndex(tile));
-	}
-
-	for (StationID stationid : seen_stations) {
-		Station *st = Station::GetIfValid(stationid);
-		if (st == nullptr) continue; /* Waypoint */
-
-		/* Check if station is attached to an industry */
-		if (!_settings_game.station.serve_neutral_industries && st->industry != nullptr) continue;
-
-		/* Test if the tile is within the station's catchment */
-		TILE_AREA_LOOP(tile, location) {
-			if (st->TileIsInCatchment(tile)) {
-				stations->insert(st);
-				break;
-			}
-		}
-	}
-}
-
-/**
  * Run a tile loop to find stations around a tile, on demand. Cache the result for further requests
  * @return pointer to a StationList containing all stations found
  */
 const StationList *StationFinder::GetStations()
 {
 	if (this->tile != INVALID_TILE) {
-		FindStationsAroundTiles(*this, &this->stations);
+		if (IsTileType(this->tile, MP_HOUSE)) {
+			/* Town nearby stations need to be filtered per tile. */
+			assert(this->w == 1 && this->h == 1);
+			AddNearbyStationsByCatchment(this->tile, &this->stations, Town::GetByTile(this->tile)->stations_near);
+		} else {
+			ForAllStationsAroundTiles(*this, [this](Station *st) {
+				this->stations.insert(st);
+			});
+		}
 		this->tile = INVALID_TILE;
 	}
 	return &this->stations;
 }
+
 
 static bool CanMoveGoodsToStation(const Station *st, CargoID type)
 {
