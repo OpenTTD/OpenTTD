@@ -560,7 +560,10 @@ void RebuildStationKdtree();
 
 /**
  * Call a function on all stations that have any part of the requested area within their catchment.
- * @param area The tile area to check
+ * @tparam Func The type of funcion to call
+ * @param area The TileArea to check
+ * @param func The function to call, must take two parameters: Station* and TileIndex and return true
+ *             if coverage of that tile is acceptable for a given station or false if search should continue
  */
 template<typename Func>
 void ForAllStationsAroundTiles(const TileArea &ta, Func func)
@@ -586,8 +589,7 @@ void ForAllStationsAroundTiles(const TileArea &ta, Func func)
 		/* Test if the tile is within the station's catchment */
 		TILE_AREA_LOOP(tile, ta) {
 			if (st->TileIsInCatchment(tile)) {
-				func(st);
-				break;
+				if (func(st, tile)) break;
 			}
 		}
 	}
