@@ -2434,7 +2434,7 @@ detect_sdl() {
 		detect_pkg_config "2" "sdl2" "sdl2_config" "2.0"
 	else
 		sdl2_config=""
-		if [ -x `which sdl2-config` ]; then
+		if [ -x "`which sdl2-config`" ]; then
 			detect_pkg_config "$with_sdl" "sdl2" "sdl2_config" "2.0"
 		fi
 		if [ -z "$sdl2_config" ]; then
