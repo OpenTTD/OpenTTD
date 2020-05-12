@@ -947,6 +947,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :丹麥
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :土耳其
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :義大利
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :加泰隆尼亞
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :西班牙語
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}自動存檔

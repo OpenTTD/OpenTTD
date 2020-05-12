@@ -966,6 +966,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Đan Mạch
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Thổ Nhĩ Kỳ
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Ý
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalan
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Người Tây Ban Nha
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Lưu tự động
