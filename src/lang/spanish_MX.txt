@@ -1112,7 +1112,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configur
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar palabras:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplegar todo
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plegar todo
-STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no hay explicación disponible)
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sin explicación disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de opción: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Opción de cliente (no se almacena en partidas guardadas, afecta todas las partidas)
@@ -1248,7 +1248,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Vista principal
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Todas las vistas
 STR_CONFIG_SETTING_BRIBE                                        :Permitir sobornos al ayuntamiento: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Las empresas pueden tratar de sobornar a los ayuntamientos. Si el soborno es descubierto por un inspector, la empresa no podrá realizar actividades en la localidad durante seis meses
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Las empresas pueden intentar sobornar a los ayuntamientos, pero si un inspector lo descubre la empresa no podrá realizar actividades en el pueblo seis meses
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permitir adquirir los derechos de transporte exclusivos: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Si una empresa adquiere los derechos de transporte exclusivos en un pueblo, las estaciones de la competencia, de pasajeros o carga, no recibirán nada todo un año
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permitir la construcción de nuevos edificios: {STRING}
@@ -1304,8 +1304,8 @@ STR_CONFIG_SETTING_ERRMSG_DURATION                              :Duración de me
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Duración de los mensajes de error mostrados en los avisos en rojo. Algunos mensajes de error (críticos) no se cierran automáticamente, solo de forma manual
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} segundo{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Mostrar información de herramientas: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Al posar el ratón sobre un elemento de la interfaz, el tiempo de retraso requerido para mostrar información de ayuda o sugerencias. También se puede establecer el valor en 0 para mostrar estos mensajes con el botón derecho del ratón.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Posar el ratón durante {COMMA} milisegundo{P 0 "" s}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Tiempo de retraso para mostrar información de ayuda al posar el ratón en un elemento de la interfaz. Si el valor es 0 los mensajes se muestran con el botón derecho del ratón.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Posar el ratón {COMMA} milisegundo{P 0 "" s}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Botón derecho
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostrar población de pueblos: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostrar en el mapa la población de los pueblos junto a sus nombres
@@ -1555,7 +1555,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Año en el que 
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economía fácil (cambios más pequeños): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Al activarse, habrá cambios de producción en las industrias más frecuentemente y en escala menor. Si se usa un NewGRF con industrias adicionales esta opción generalmente no tiene efecto
+STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Al activarse, habrá cambios en la producción industrial continuamente y en menor escala. Normalmente esta opción no afecta los NewGRF de industrias
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Al activarse, se pueden comprar y vender acciones de otras empresas. Las acciones de una empresa solamente estarán disponibles cuando la empresa cumpla una edad determinada
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Edad mínima de la empresa para intercambiar acciones: {STRING}
@@ -1590,11 +1590,11 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Rejilla de 2×2
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Rejilla de 3×3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatorio
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Permitir que los pueblos construyan carreteras: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Los pueblos podrán construir carreteras para expandirse. Si se deshabilita, los ayuntamientos no podrán construir ninguna carretera
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Los pueblos podrán construir carreteras para expandirse. Al desactivarse, los ayuntamientos no podrán construir carreteras
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Permitir a los pueblos construir pasos a nivel: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Los pueblos podrán construir pasos a nivel
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Permitir a los pueblos controlar el nivel de ruido de los aeropuertos: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Al desactivarse, puede haber solo dos aeropuertos por pueblo. Al activarse, el número de aeropuertos en el pueblo depende del nivel de aceptación de ruido en la misma, el cual depende de la población, del tamaño de los aeropuertos y de la distancia entre ellos
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Al desactivarse, puede haber solo dos aeropuertos por pueblo. Al activarse, el número de aeropuertos por pueblo depende de su nivel de ruido permitido, que a su vez depende de la población, el tamaño de los aeropuertos y la distancia
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Fundar pueblos: {STRING}
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Los jugadores podrán crear nuevos pueblos durante la partida
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
@@ -2291,7 +2291,7 @@ STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarga
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Solicitando archivos...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Descargando {STRING} ({NUM} de {NUM})
 STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descarga finalizada
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} descargados ({NUM} %)
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} descargados ({NUM}%)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No es posible conectarse al servidor de contenidos...
@@ -3398,7 +3398,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrias
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ninguna -
-STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA} % transportado){BLACK}
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportado){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
