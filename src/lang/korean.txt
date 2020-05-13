@@ -936,6 +936,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :멕시코 페�
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :신 타이완 달러 (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :중국 위안 (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :홍콩 달러 (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :인도 루피 (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}차량 통행 방식
@@ -4222,16 +4223,16 @@ STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}가격: {CURRENCY_LONG}
-STR_INCOME_FLOAT_COST                                           :{RED}가격: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}지출: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}지출: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}수익: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}수익: {CURRENCY_LONG}
 STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}
 STR_FEEDER                                                      :{YELLOW}환승: {CURRENCY_LONG}
 STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {GREEN}수익: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {GREEN}수익: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {RED}가격: {CURRENCY_LONG}
-STR_FEEDER_COST                                                 :{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {RED}가격: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {RED}지출: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}환승: {CURRENCY_LONG}{WHITE} / {RED}지출: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}예상 가격: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}예상 수익: {CURRENCY_LONG}
 

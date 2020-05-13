@@ -469,6 +469,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Skaņa/mūzika
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Pēdējais ziņojums/avīzes raksts
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Ziņojumu vēsture
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Dzēst visus ziņojumus
 ############ range ends here
 
 ############ range for about menu starts
@@ -670,6 +671,7 @@ STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Ieslēgt
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Rādīt mūzikas celiņu atlases logu
 
 # Playlist window
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Mūzikas programma - “{STRING}”
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Celiņu rādītājs
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programma - '{STRING}'
@@ -927,9 +929,11 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Dienvidāfrikas
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Cita...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijas lari (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irānas riāli (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Jaunais Krievijas rublis (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikas peso (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Jaunais Taivānas dolārs (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Ķīnas juaņa (CNY)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijas rūpija (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autotransporta līdzekļi
@@ -1128,6 +1132,7 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Spēles iestat�
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Spēles iestatījumi (tiek iekļauti saglabājumā, ietekmē tikai pašreizējo spēli)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Uzņēmuma iestatījumi (tiek iekļauti saglabājumos, ietekmē tikai jaunās spēles)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Uzņēmuma iestatījumi (tiek iekļauti saglabājumā, ietekmē tikai pašreizējo uzņēmumu)
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Rādīt visus meklēšanas rezultātus, iestatot{}{SILVER}Kategoriju {BLACK}uz {WHITE}{STRING}
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Rādīt visus meklēšanas rezultātus, iestatot{}{SILVER}Kategorija {BLACK}uz {WHITE}{STRING} {BLACK}un {SILVER}Tips {BLACK}uz {WHITE}Visi iestatījumu veidi
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}-Nav-
 
@@ -1259,6 +1264,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Infrastruktūra
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Kad ieslēgts, infrastruktūras uzturēšana nav bezmaksas. Izmaksas pieaug proporcionāli tīkla izmēram, tādā veidā tas ietekmē lielākus uzņēmumus vairāk kā mazus.
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Sākotnējā uzņēmuma krāsa: {STRING}
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Izvēlieties uzņēmuma sākotnējo krāsu
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Lidostas darbosies mūžīgi: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ieslēdzot šo iestatījumu, katrs lidostas veids pēc tā ieviešanas vienmēr ir pieejams
@@ -1294,6 +1300,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Rāda pilsētu 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Diagrammu līniju platums: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Diagrammu līniju platums. Šauras līnijas ir precīzāk nolasāmas, platākas vieglāk saskatīt un atšķirt to krāsas
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Rādīt jauno NewGRF paplašinājumu nosaukumus uzbūvēto transportlīdzekļu logā: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Uzbūvēto transportlīdzekļu loga pievienot rindu, kurā būtu redzams, no kura NewGRF nāk izvēlētais transportlīdzeklis.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Ainava: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Ainavas nosaka pamata spēles scenārijus ar dažādām kravām un pilsētu izaugsmes nosacījumiem. NewGRF un spēles skripti dod smalkākas kontroles iespējas
@@ -1344,6 +1351,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :{G=f}tumši za�
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :{G=f}violeta
 STR_CONFIG_SETTING_SCROLLMODE                                   :Skatvietas ritināšanas uzvedība: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Uzvedība, kad ritina karti
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Pārvietot skatvietu ar labo peles pogu, peles pozīcija ir fiksēta
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Pārvietot karti ar labo peles pogu, peles pozīcija ir fiksēta
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Pārvietot karti ar kreiso peles pogu
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plūdena skatvietas ritināšana: {STRING}
@@ -1524,6 +1532,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :pilns
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krāsaini avīžu raksti parādās: {STRING} gadā
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Gads kad sāk drukāt krāsainas avīzes. Pirms šā gada tās ir melnbaltas
 STR_CONFIG_SETTING_STARTING_YEAR                                :Sākuma gads: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Vērtēšanas beigu gads: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nekad
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Atļaut vienmērīgas izmaiņas ekonomikā: {STRING}
@@ -1533,6 +1542,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ja iespējots, 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimālais uzņēmuma vecums, lai tirgotos ar akcijām: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Iestatīt minimālo uzņēmuma vecums, lai citi varētu pirkt un pārdod to akcijas.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procenti no kopējās peļņas, ko maksā tranzītstacijās: {STRING}
+STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procenti no ienākumiem, kas tiek doti starpposmiem padeves sistēmās, kas dod lielāku kontroli pār ienākumiem
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkot izvietot signālierīces uz katra: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Iestatīt attālumus, kādos līdz nākamajam šķērslim (signālierīcei, dzelzceļa mezglam) uz ceļa tiks būvētas signālierīces, ja tās tiek vilktas
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} lauciņ{P 0 a a a}
@@ -1548,6 +1558,7 @@ STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :bloķēšanas s
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :ceļa signāli
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :vienvirziena ceļa signāli
 STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Braukt garām signālu veidiem: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Izvēlieties, caur kuriem signālu veidiem iet cauri, kad uz uzbūvētas signālierīces tiek veikts Ctrl+klikšķis ar signālu rīku
 STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :tikai bloķēšanas signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :tikai ceļa signāliem
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :visiem
@@ -1570,6 +1581,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Šā iestatīju
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :aizliegta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :atļauta
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :atļauta, ar brīvi izvēlētu izkārtojumu
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Pilsētas kravu radīšana: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cik daudz kravas rada pilsētu mājas, attiecībā pret kopējo pilsētas iedzīvotāju skaitu.{}Kvadrātisks pieaugums: divas reizes lielāka pilsēta rada četras reizes vairāk pasažieru.{}Lineārs pieaugums: divas reizes lielāka pilsēta rada divas reizes vairāk pasažieru.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadrātisks (sākotnējais)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineārs
@@ -1618,6 +1630,8 @@ STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Lielpilsētu vi
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Atjaunināt sadales grafu ik pa {STRING}{NBSP}dien{P 0:2 ai ām ām}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Laiks starp secīgām saišu grafa pārrēķināšanām. Katra pārrēķināšana izskaitļo plānos vienai grafa komponentei. Tas nozīmē, ka šim iestatījumam vērtība X nenozīmē, ka viss grafs tiks atjaunināts ir pēc X dienām. Tikai dažas komponentes tiks pārrēķinātas. Jo mazāka iestatītā vērtība, jo vairāk laika CPU pavadīs rēķinot. Jo lielāka iestatītā vērtība, jo ilgāk nevarēs sākties kravu izplatīšana jaunos maršrutos.
+STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Dot {STRING}{NBSP}dien{P 0:2 u as u} izplatīšanas grafa pārrēķināšanai
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Laiks, ko aizņem katra saišu grafa komponenšu pārrēķināšana. Kad sākas pārrēķināšana, tiek izveidots pavediens, kuram ir atļauts darboties norādīto dienu skaitu. Jo īsāku skaitli šeit ievadīsiet, jo lielāka iespēja, ka pavediens nebūs laicīgi paveicis savu darbu. Tādā gadījumā spēle apstāsies (“iebremzēs”) līdz darbs būs pabeigts. Jo lielāku skaitli šeit iestatīsiet, jo ilgāk aizņems izplatīšanas atjaunināšana, kad tiks mainīti maršruti.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuāli
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetriska
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetriska
@@ -1908,6 +1922,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
 STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Izsludināt
+STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Izvēlieties starp reklamēto (interneta) un nereklamēto (lokālā tīkla, LAN) spēli
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nē
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jā
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spēlētāja vārds:
@@ -2289,6 +2304,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Kravas p
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Visi
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Neviens
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Izvēlēties attēlojamos uzņēmumus
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nelietots
@@ -2601,6 +2617,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lidostas
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Pieņem kravu: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Sliežu veids: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Ceļu tips: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Sliežu ātruma ierobežojums: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Ceļa ātruma ierobežojums: {LTBLUE}{VELOCITY}
@@ -2723,6 +2740,7 @@ STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMA
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kadri/s
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} m
 ############ Leave those lines in this order!!
@@ -3360,6 +3378,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} un vēl {NUM}...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ražotņu nosaukumi - klikšķināt uz nosaukuma, lai centrētu skatu uz ražotni. Ctrl+klikšķis atvērs jaunu skatvietu pie ražotnes
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Pieņemamā krava: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Saražotā krava: {SILVER}{STRING}
@@ -3480,6 +3499,7 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {G
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Izmaksas: {GOLD}{CURRENCY_LONG}{BLACK} (Pielāgošanas izmaksas: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Ātrums: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} (Pielāgošanas maksa: {GOLD}{CURRENCY_LONG}{BLACK}) Ātrums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpība: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorvagoni: {GOLD}+{POWER}zs{BLACK} Svars: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Pielāgojams uz: {GOLD}{STRING}
@@ -3512,6 +3532,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Pirkt iz
 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Pirkt un pielāgot izcelto vilcienu. Shift+klikšķis parāda novērtētās izmaksas, neveicot iegādi
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Pirkt un pielāgot izcelto ceļa transportlīdzekli. Shift+klikšķis parāda novērtētās izmaksas, neveicot iegādi
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Pirkt un pielāgot izcelto kuģi. Shift+klikšķis parāda novērtētās izmaksas, neveicot iegādi
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Pirkt un pielāgot izcelto lidaparātu. Shift+klikšķis parāda novērtētās izmaksas, neveicot iegādi
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Pārdēvēt
