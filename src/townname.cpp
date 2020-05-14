@@ -1007,13 +1007,14 @@ static char *MakeCatalanTownName(char *buf, const char *last, uint32 seed)
  */
 static char* MakeSpanishTownName(char* buf, const char* last, uint32 seed)
 {
-	if (SeedModChance(0, 3, seed) == 0) { // real city names
+	if (SeedModChance(0, 2, seed) == 0) { // real city names
 		return strecpy(buf, _name_spanish_real[SeedModChance(4, lengthof(_name_spanish_real), seed)], last);
 	}
 
 	if (SeedModChance(0, 2, seed) == 0) { // prefix
 		buf = strecpy(buf, _name_spanish_pref[SeedModChance(11, lengthof(_name_spanish_pref), seed)], last);
 	}
+
 
 	uint i = SeedChance(0, 2, seed);
 	if (i == 0) { // masculine form
