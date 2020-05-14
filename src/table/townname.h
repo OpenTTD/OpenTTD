@@ -3491,7 +3491,8 @@ static const char* const _name_spanish_pref[] = {
 	"Molina de ",
 	"Torres de ",
 	"Pilar de ",
-	"Pozo de "
+	"Pozo de ",
+	"Aguas de "
 };
 
 static const char* const _name_spanish_1m[] = {
@@ -3499,23 +3500,24 @@ static const char* const _name_spanish_1m[] = {
 	"Monte",
 	"Pozo",
 	"R\xC3\xADo",
-	"Valle"
+	"Valle",
+	"Campo"
 };
 
 static const char* const _name_spanish_1f[] = {
-	"Selva",
 	"Sierra",
 	"Torre",
-	"Orilla",
 	"Cueva",
 	"Tierra",
-	"Playa"
+	"Playa",
+	"Villa",
+	"Aldea"
 };
 
 static const char* const _name_spanish_2m[] = {
 	"alto",
 	"bajo",
-	"oscuro",
+	"sombr\xC3\xADo",
 	"umbr\xC3\xADo",
 	"negro",
 	"rojo"
@@ -3527,8 +3529,6 @@ static const char* const _name_spanish_2f[] = {
 	"oscura",
 	"clara",
 	"negra",
-	"roja",
-	"gris",
 	"fr\xC3\xAD\x61",
 	"umbr\xC3\xAD\x61"
 };
@@ -3540,7 +3540,8 @@ static const char* const _name_spanish_3[] = {
 	" de Abajo",
 	" del Valle",
 	" de la Plana",
-	" de los Llanos"
+	" de los Llanos",
+	" del Alba"
 };
 
 static const char* const _name_spanish_river1[] = {
@@ -3551,5 +3552,6 @@ static const char* const _name_spanish_river1[] = {
 	" del Tajo",
 	" del Guadiana",
 	" del Segura",
-	" del Guadalquivir"
+	" del Guadalquivir",
+	" de Henares"
 };
