@@ -1146,6 +1146,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danska
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turska
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italijanska
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonska
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Španska
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto čuvanje pozicije

@@ -947,6 +947,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danmhargach
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turcach
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Iodálach
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalónach
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Spáinnis
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Uathshábháil

@@ -391,9 +391,9 @@ static char *MakeGermanTownName(char *buf, const char *last, uint32 seed)
  * @param seed town name seed
  * @param last end of buffer
  */
-static char *MakeSpanishTownName(char *buf, const char *last, uint32 seed)
+static char *MakeLatinAmericanTownName(char *buf, const char *last, uint32 seed)
 {
-	return strecpy(buf, _name_spanish_real[SeedChance(0, lengthof(_name_spanish_real), seed)], last);
+	return strecpy(buf, _name_latinamerican_real[SeedChance(0, lengthof(_name_latinamerican_real), seed)], last);
 }
 
 
@@ -999,6 +999,45 @@ static char *MakeCatalanTownName(char *buf, const char *last, uint32 seed)
 	return buf;
 }
 
+/**
+ * Generates Spanish town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char* MakeSpanishTownName(char* buf, const char* last, uint32 seed)
+{
+	if (SeedModChance(0, 10, seed) < 8) { // real city names
+		return strecpy(buf, _name_spanish_real[SeedModChance(0, lengthof(_name_spanish_real), seed)], last);
+	}
+
+	if (SeedModChance(1, 2, seed) == 0) { // prefix
+		buf = strecpy(buf, _name_spanish_pref[SeedModChance(0, lengthof(_name_spanish_pref), seed)], last);
+	}
+
+
+	uint i = SeedChance(2, 2, seed);
+	if (i == 0) { // masculine form
+		buf = strecpy(buf, _name_spanish_1m[SeedModChance(0, lengthof(_name_spanish_1m), seed)], last);
+		buf = strecpy(buf, _name_spanish_2m[SeedModChance(1, lengthof(_name_spanish_2m), seed)], last);
+	}
+	else { // feminine form
+		buf = strecpy(buf, _name_spanish_1f[SeedModChance(0, lengthof(_name_spanish_1f), seed)], last);
+		buf = strecpy(buf, _name_spanish_2f[SeedModChance(1, lengthof(_name_spanish_2f), seed)], last);
+	}
+
+	if (SeedModChance(15, 5, seed) == 0) {
+		if (SeedModChance(5, 2, seed) == 0) { // generic suffix
+			buf = strecpy(buf, _name_spanish_3[SeedModChance(0, lengthof(_name_spanish_3), seed)], last);
+		}
+		else { // river name suffix
+			buf = strecpy(buf, _name_spanish_river1[SeedModChance(1, lengthof(_name_spanish_river1), seed)], last);
+		}
+	}
+
+	return buf;
+}
+
 
 /**
  * Type for all town name generator functions.
@@ -1021,7 +1060,7 @@ static const TownNameGeneratorParams _town_name_generators[] = {
 	{  0, MakeFrenchTownName},
 	{  0, MakeGermanTownName},
 	{  4, MakeEnglishAdditionalTownName}, // replaces first 4 characters of name
-	{  0, MakeSpanishTownName},
+	{  0, MakeLatinAmericanTownName},
 	{  0, MakeSillyTownName},
 	{  0, MakeSwedishTownName},
 	{  0, MakeDutchTownName},
@@ -1038,7 +1077,8 @@ static const TownNameGeneratorParams _town_name_generators[] = {
 	{  0, MakeTurkishTownName},
 	{  0, MakeItalianTownName},
 	{  0, MakeCatalanTownName},
-};
+	{  0, MakeSpanishTownName}
+, };
 
 
 /**

@@ -959,6 +959,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danimarka
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Türk
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italyan
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalan
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :İspanyol
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Otomatik Kaydet
