@@ -391,9 +391,9 @@ static char *MakeGermanTownName(char *buf, const char *last, uint32 seed)
  * @param seed town name seed
  * @param last end of buffer
  */
-static char *MakeSpanishTownName(char *buf, const char *last, uint32 seed)
+static char *MakeLatinAmericanTownName(char *buf, const char *last, uint32 seed)
 {
-	return strecpy(buf, _name_spanish_real[SeedChance(0, lengthof(_name_spanish_real), seed)], last);
+	return strecpy(buf, _name_latinamerican_real[SeedChance(0, lengthof(_name_latinamerican_real), seed)], last);
 }
 
 
@@ -1059,7 +1059,7 @@ static const TownNameGeneratorParams _town_name_generators[] = {
 	{  0, MakeFrenchTownName},
 	{  0, MakeGermanTownName},
 	{  4, MakeEnglishAdditionalTownName}, // replaces first 4 characters of name
-	{  0, MakeSpanishTownName},
+	{  0, MakeLatinAmericanTownName},
 	{  0, MakeSillyTownName},
 	{  0, MakeSwedishTownName},
 	{  0, MakeDutchTownName},
@@ -1076,7 +1076,8 @@ static const TownNameGeneratorParams _town_name_generators[] = {
 	{  0, MakeTurkishTownName},
 	{  0, MakeItalianTownName},
 	{  0, MakeCatalanTownName},
-};
+	{  0, MakeSpanishTownName}
+, };
 
 
 /**
