@@ -1163,7 +1163,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Máxima cantida
 STR_CONFIG_SETTING_INTEREST_RATE                                :Porcentaje de interés: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Porcentaje de interés de los préstamos; controla también la inflación, en caso de estar activada
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Costos de operación: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nivel de los costos de mantenimiento y operación de vehículos e infraestructura
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Nivel de costos de mantenimiento y operación de vehículos e infraestructura
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidad de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Restringir la velocidad de las acciones de construcción de jugadores no humanos
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Averías de vehículos: {STRING}
@@ -1173,9 +1173,9 @@ STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Establecer cuá
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Nivel de costos de construcción y adquisición
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiones: {STRING}
-STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Si se activa, habrá recesiones cada cierto año. Durante una recesión, toda la producción decaerá considerablemente (se restablecerá al final de la recesión)
-STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prohibir a los trenes que cambien de dirección en las estaciones: {STRING}
-STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Si se activa, los trenes no podrán girar al lado opuesto en estaciones intermedias, ni siquiera si al girar hay una ruta más corta a su próximo destino
+STR_CONFIG_SETTING_RECESSIONS_HELPTEXT                          :Al activarse, habrá recesiones cada cierto año en las que toda la producción decaerá considerablemente, restableciéndose al final de cada recesión
+STR_CONFIG_SETTING_TRAIN_REVERSING                              :Prohibir a los trenes que den reversa en estaciones: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Al activarse, los trenes no podrán dar reversa en estaciones intermedias, aun si detrás hay una ruta más corta a su próximo destino
 STR_CONFIG_SETTING_DISASTERS                                    :Desastres: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Desastres que ocasionalmente pueden bloquear o destruir vehículos o infraestructura
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los ayuntamientos ante restructuraciones hechas en sus zonas: {STRING}
@@ -1189,7 +1189,7 @@ STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Modificar el te
 STR_CONFIG_SETTING_CATCHMENT                                    :Permitir cambiar el tamaño del área de recolección a una forma más real: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Las áreas de recolección se adecúan a diferentes tamaños, según los tipos de estaciones y aeropuertos
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Las estaciones privadas pueden dar servicio a industrias con estaciones neutrales: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Si se activa, las industrias con estaciones integradas (ej. plataformas petrolíferas) podrán aceptar cargamento de estaciones privadas construidas cerca. Si se desactiva, tales industrias solo recibirán cargamento en sus propias estaciones. No aceptarán cargamento de estaciones de compañías, y la estación integrada no brindará servicio a nada más que su industria
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Al activarse, las industrias con estaciones integradas (ej. plataformas petrolíferas) podrán aceptar carga de estaciones aledañas. Al desactivarse, tales industrias solo recibirán cargam en sus propias estaciones y no aceptarán carga de otras estaciones, y la estación integrada no brindará servicio a nada más que su industria
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir quitar mayor cantidad de carreteras, puentes y túneles de los pueblos: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Hacer más fácil eliminar infraestructura y edificios que sean propiedad de los pueblos
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud máxima de trenes: {STRING}
@@ -1242,7 +1242,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :principio
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :centro
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :fondo
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Recorrer vista cuando se mueva el cursor a los bordes: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Si se activa esta opción, las vistas se recorrerán cuando el ratón esté cerca de los bordes de la ventana
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Al activarse, las vistas se desplazarán cuando el ratón se acarque a los bordes de la ventana
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Desactivado
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Vista principal, solo en pantalla completa
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Vista principal
@@ -1273,7 +1273,7 @@ STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Permitir la con
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Construir paradas de autobuses intermedias en carreteras que sean propiedad de otras empresas
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}No se puede cambiar esta opción si ya existen vehículos
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Mantenimiento de infraestructura: {STRING}
-STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Cuando se activa, la infraestructura tiene costo de mantenimiento, el cual aumenta en relación con el tamaño de la red de transporte. Esto afecta en mayor medida a las empresas grandes que a las pequeñas
+STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Al activarse, la infraestructura tiene costo de mantenimiento que aumenta según el tamaño de la red de transporte, de modo que las empresas grandes se afectan más que las pequeñas
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Color inicial de la empresa: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Elegir el color inicial de la empresa
@@ -1284,7 +1284,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Los tipos de ae
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar si un vehículo se ha perdido: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostrar mensajes indicando aquellos vehículos que no puedan encontrar una ruta a su destino
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Analizar órdenes de vehículos: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Cuando se activa, las órdenes de los vehículos se analizan regularmente y los problemas que se encuentren se informan en una noticia
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Al activarse, se analizan regularmente las órdenes de los vehículos y los problemas obvios que se detecten se informan en una noticia
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :No
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sí, excepto los vehículos detenidos
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :Todos los vehículos
@@ -1294,8 +1294,8 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Vehículos siem
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Todos los modelos de vehículos estarán disponibles para siempre tras haber sido introducidos
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Renovar automáticamente vehículos que se hagan viejos: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Los vehículos próximos al final de su vida útil serán renovados automáticamente, siempre y cuando se cumplan las condiciones de renovación
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automáticamente el vehículo a {STRING} de su edad máxima
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Edad relativa en la que un vehículo es considerado para renovarse
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Renovar automáticamente el vehículo cumpla {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Edad relativa en que un vehículo se considera para renovación
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} mes{P 0 "" es} antes
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} mes{P 0 "" es} después
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Costo mínimo requerido para renovación automática: {STRING}
@@ -1370,7 +1370,7 @@ STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Recorrer mapa c
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Recorrer mapa con clic derecho
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Recorrer mapa con clic izquierdo
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Desplazamiento de vista suavizado: {STRING}
-STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Forma en la que la vista principal se mueve a una ubicación específica al hacer clic en el minimapa o tras una orden de moverse a un objeto determinado del mapa. Si se activa, la vista se mueve de forma suave. Si se desactiva, la vista se mueve instantáneamente al sitio indicado
+STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Forma en que la vista principal cambia a una ubicación desde el minimapa o tras una orden de ver un objeto determinado del mapa. Al activarse, la vista se mueve suavemente, y al desactivarse, la vista se mueve instantáneamente al sitio indicado
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Mostrar información de medidas al usar las herramientas de construcción: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Mostrar distancias en número de casillas y las diferencias de altura cuando se realicen labores de construcción
 STR_CONFIG_SETTING_LIVERIES                                     :Mostrar cromáticas por tipo de vehículo: {STRING}
@@ -1413,7 +1413,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :corto (31-12-20
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Poner el juego en pausa al comenzar una partida: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Si se activa, el juego se detendrá automáticamente al comenzar nuevas partidas para permitir revisar el mapa
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Al activarse, el juego se detendrá automáticamente al comenzar nuevas partidas para permitir revisar el mapa
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Al pausar el juego, permitir: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Qué acciones se pueden realizar mientras el juego está en pausa.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ninguna acción
@@ -1460,7 +1460,7 @@ STR_CONFIG_SETTING_SOUND_AMBIENT                                :Ambiente: {STRI
 STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Reproducir sonidos ambientales de terreno, industrias y pueblos
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Deshabilitar construcción de infraestructura cuando no haya vehículos apropiados disponibles: {STRING}
-STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Cuando se activa, solamente se puede construir infraestructura si hay vehículos apropiados disponibles, previniendo un gasto innecesario de tiempo y dinero
+STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Al activarse, hay infraestructura disponible solo si hay vehículos adecuados, evitando gastos de tiempo y dinero en infraestructura inservible
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Número máximo de trenes por empresa: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Número máximo de trenes que una empresa puede tener
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Número máximo de vehículos de carretera por empresa: {STRING}
@@ -1510,7 +1510,7 @@ STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Al activarse, l
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activar límites de velocidad para vagones: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :Al activarse, se tienen en cuenta los límites de velocidad de los vagones para decidir la máxima velocidad de un tren
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Desactivar ferrocarriles eléctricos: {STRING}
-STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Si se activa, no es necesario electrificar las vías férreas para hacer que los trenes eléctricos puedan recorrerlas
+STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Al activarse, no es necesario electrificar las vías para que los trenes eléctricos las usen
 
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Llegada del primer vehículo a una estación del jugador: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Mostrar noticia cuando el primer vehículo llegue a una estación del jugador
@@ -1566,11 +1566,11 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, c
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Distancia de separación entre señales hasta topar con algún obstáculo (otra señal, un desvío, etc.) al instalarlas mediante arrastre con el ratón
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Al arrastrar, mantener distancia fija entre señales: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Forma en que se instalan las señales cuando se usa Ctrl+Arrastrar. Si se desactiva, se instalan señales a la entrada de túneles y puentes para evitar tramos largas de vías férreas sin señales. Si se activa, se colocan señales cada cierto número de casillas, haciendo que el alineamiento de señales en vías paralelas sea más sencillo
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Forma en que se instalan señales con Ctrl+Arrastrar. Al desactivarse, se colocan señales cerca de túneles y puentes para evitar tramos largos de vías sin señales. Al activarse, se colocan señales cada tanto de casillas, con lo que alinear señales en vías paralelas es más fácil
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Señales mecánicas por defecto antes de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Año a partir del cual se usarán señales eléctricas. Antes de ese año se usarán señales mecánicas, las cuales funcionan igual pero tienen distinto aspecto
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar interfaz de señales: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostrar una ventana para elegir los tipos de señales a instalar. Si no se activa, se instalan las señales y se selecciona un tipo determinado mediante Ctrl+Clic, sin que aparezca ninguna interfaz
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Mostrar una ventana para elegir qué tipo de señales instalar en lugar de solo ir rotando los tipos mediante Ctrl+Clic y sin ventana
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Tipo de señal a instalar por defecto: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Tipo de señal por defecto
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Señales de tramo

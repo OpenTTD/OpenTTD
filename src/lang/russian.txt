@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_CURRENCY_NLG                                   :Нидерла�
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Норвежская крона (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Польский злотый (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Румынский лей (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Российский рубль (RUR)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Российский рубль (старый) (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Словенский толар (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Шведская крона (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турецкая лира (TRY)
@@ -1075,11 +1075,12 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Южноафр�
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Своя...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинский лари (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Иранский риал (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Российский новый рубль (RUR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Российский рубль (RUR)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексиканский песо (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новый тайваньский доллар (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Китайский юань (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Гонконгский доллар (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Индийская рупия (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Движение автомобилей
