@@ -1007,31 +1007,31 @@ static char *MakeCatalanTownName(char *buf, const char *last, uint32 seed)
  */
 static char* MakeSpanishTownName(char* buf, const char* last, uint32 seed)
 {
-	if (SeedModChance(0, 2, seed) == 0) { // real city names
-		return strecpy(buf, _name_spanish_real[SeedModChance(4, lengthof(_name_spanish_real), seed)], last);
+	if (SeedModChance(0, 10, seed) < 8) { // real city names
+		return strecpy(buf, _name_spanish_real[SeedModChance(0, lengthof(_name_spanish_real), seed)], last);
 	}
 
-	if (SeedModChance(0, 2, seed) == 0) { // prefix
-		buf = strecpy(buf, _name_spanish_pref[SeedModChance(11, lengthof(_name_spanish_pref), seed)], last);
+	if (SeedModChance(1, 2, seed) == 0) { // prefix
+		buf = strecpy(buf, _name_spanish_pref[SeedModChance(0, lengthof(_name_spanish_pref), seed)], last);
 	}
 
 
-	uint i = SeedChance(0, 2, seed);
+	uint i = SeedChance(2, 2, seed);
 	if (i == 0) { // masculine form
-		buf = strecpy(buf, _name_spanish_1m[SeedModChance(4, lengthof(_name_spanish_1m), seed)], last);
-		buf = strecpy(buf, _name_spanish_2m[SeedModChance(11, lengthof(_name_spanish_2m), seed)], last);
+		buf = strecpy(buf, _name_spanish_1m[SeedModChance(0, lengthof(_name_spanish_1m), seed)], last);
+		buf = strecpy(buf, _name_spanish_2m[SeedModChance(1, lengthof(_name_spanish_2m), seed)], last);
 	}
 	else { // feminine form
-		buf = strecpy(buf, _name_spanish_1f[SeedModChance(4, lengthof(_name_spanish_1f), seed)], last);
-		buf = strecpy(buf, _name_spanish_2f[SeedModChance(11, lengthof(_name_spanish_2f), seed)], last);
+		buf = strecpy(buf, _name_spanish_1f[SeedModChance(0, lengthof(_name_spanish_1f), seed)], last);
+		buf = strecpy(buf, _name_spanish_2f[SeedModChance(1, lengthof(_name_spanish_2f), seed)], last);
 	}
 
 	if (SeedModChance(15, 5, seed) == 0) {
 		if (SeedModChance(5, 2, seed) == 0) { // generic suffix
-			buf = strecpy(buf, _name_spanish_3[SeedModChance(4, lengthof(_name_spanish_3), seed)], last);
+			buf = strecpy(buf, _name_spanish_3[SeedModChance(0, lengthof(_name_spanish_3), seed)], last);
 		}
 		else { // river name suffix
-			buf = strecpy(buf, _name_spanish_river1[SeedModChance(4, lengthof(_name_spanish_river1), seed)], last);
+			buf = strecpy(buf, _name_spanish_river1[SeedModChance(1, lengthof(_name_spanish_river1), seed)], last);
 		}
 	}
 
