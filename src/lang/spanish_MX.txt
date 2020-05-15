@@ -1189,7 +1189,7 @@ STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Modificar el te
 STR_CONFIG_SETTING_CATCHMENT                                    :Permitir cambiar el tamaño del área de recolección a una forma más real: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Las áreas de recolección se adecúan a diferentes tamaños, según los tipos de estaciones y aeropuertos
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Las estaciones privadas pueden dar servicio a industrias con estaciones neutrales: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Al activarse, las industrias con estaciones integradas (ej. plataformas petrolíferas) podrán aceptar carga de estaciones aledañas. Al desactivarse, tales industrias solo recibirán cargam en sus propias estaciones y no aceptarán carga de otras estaciones, y la estación integrada no brindará servicio a nada más que su industria
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Al activarse, las industrias con estaciones integradas (ej. plataformas petrolíferas) podrán aceptar carga de estaciones aledañas. Al desactivarse, tales industrias solo recibirán carga en sus propias estaciones y no aceptarán de otras estaciones, ni la estación integrada brindará servicio a nada más que su industria
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir quitar mayor cantidad de carreteras, puentes y túneles de los pueblos: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Hacer más fácil eliminar infraestructura y edificios que sean propiedad de los pueblos
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud máxima de trenes: {STRING}

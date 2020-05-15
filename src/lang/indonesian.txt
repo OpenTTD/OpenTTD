@@ -3606,6 +3606,7 @@ STR_REPLACE_WAGONS                                              :Gerbong
 STR_REPLACE_ALL_RAILTYPE                                        :Semua kereta
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pilih jenis kereta yang anda inginkan untuk diganti
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Pilih jenis jalan yang anda inginkan untuk diganti
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Menampilkan kendaraan terpilih di sisi kiri yang akan diganti, jika ada
 STR_REPLACE_RAIL_VEHICLES                                       :Kereta
 STR_REPLACE_ELRAIL_VEHICLES                                     :Kereta Listrik
