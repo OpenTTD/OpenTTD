@@ -970,6 +970,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dāņu
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turku
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itāļu
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Kataloņu
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Spāņu
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automātiskā saglabāšana

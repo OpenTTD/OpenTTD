@@ -923,6 +923,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :டேனிஷ
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :துர்கிஷ்
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :இத்தாலியன்
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :கடலன்
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :ஸ்பானிஷ்
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}தானாக சேமி

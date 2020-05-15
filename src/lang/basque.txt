@@ -939,6 +939,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danierarrak
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkiarrak
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiarrak
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanak
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Gaztelaniaz
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Auto-gordea

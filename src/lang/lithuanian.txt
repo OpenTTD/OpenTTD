@@ -1152,6 +1152,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danų
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkiški
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italų
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalonų
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Ispanų
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatinis išsaugojimas

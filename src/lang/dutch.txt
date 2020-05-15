@@ -968,6 +968,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Deens
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turks
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiaans
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalaans
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Spaans
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatisch opslaan

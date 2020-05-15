@@ -969,6 +969,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :덴마크 식
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :터키 식
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :이탈리아 식
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :카탈로니아 식
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :스페인의
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}자동 저장

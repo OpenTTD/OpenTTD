@@ -1144,6 +1144,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danica
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turcica
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiana
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalana
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Hispanica
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Servare automatice
