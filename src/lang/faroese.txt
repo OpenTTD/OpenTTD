@@ -919,6 +919,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Donsk
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turkisk
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italiensk
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalanisk
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Spanskt
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálvgoymsla

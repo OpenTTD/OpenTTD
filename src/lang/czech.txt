@@ -1053,6 +1053,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dánská
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turecká
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italská
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalánská
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Španělská
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Automatické ukládání

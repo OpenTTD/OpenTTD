@@ -918,6 +918,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Dönsk
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Tyrknesk
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Ítölsk
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalónsk
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Spænsk
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Sjálfvirk vistun

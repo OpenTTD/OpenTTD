@@ -950,6 +950,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Daneze
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turceşti
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italieneşti
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Catalană
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Spaniole
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvare automată

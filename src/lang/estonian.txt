@@ -1010,6 +1010,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Taani
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Türgi
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itaalia
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalaani
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Hispaania
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Isesalvestamine
