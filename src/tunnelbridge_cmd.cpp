@@ -1623,22 +1623,7 @@ void DrawBridgeMiddle(const TileInfo *ti)
 	if (IsInvisibilitySet(TO_BRIDGES)) return;
 
 	psid++;
-	if (ti->z + 5 == z) {
-		/* draw poles below for small bridges */
-		if (psid->sprite != 0) {
-			SpriteID image = psid->sprite;
-			SpriteID pal   = psid->pal;
-			if (IsTransparencySet(TO_BRIDGES)) {
-				SetBit(image, PALETTE_MODIFIER_TRANSPARENT);
-				pal = PALETTE_TO_TRANSPARENT;
-			}
-
-			DrawGroundSpriteAt(image, pal, x - ti->x, y - ti->y, z - ti->z);
-		}
-	} else {
-		/* draw pillars below for high bridges */
-		DrawBridgePillars(psid, ti, axis, drawfarpillar, x, y, z);
-	}
+	DrawBridgePillars(psid, ti, axis, drawfarpillar, x, y, z);
 }
 
 
