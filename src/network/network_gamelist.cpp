@@ -175,21 +175,15 @@ void NetworkAfterNewGRFScan()
 				/* Don't know the GRF, so mark game incompatible and the (possibly)
 				 * already resolved name for this GRF (another server has sent the
 				 * name of the GRF already. */
-				c->name->Release();
 				c->name = FindUnknownGRFName(c->ident.grfid, c->ident.md5sum, true);
-				c->name->AddRef();
 				c->status = GCS_NOT_FOUND;
 
 				/* If we miss a file, we're obviously incompatible. */
 				item->info.compatible = false;
 			} else {
 				c->filename = f->filename;
-				c->name->Release();
 				c->name = f->name;
-				c->name->AddRef();
-				c->info->Release();
 				c->info = f->info;
-				c->info->AddRef();
 				c->status = GCS_UNKNOWN;
 			}
 		}
