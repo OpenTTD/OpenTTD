@@ -15,7 +15,7 @@
 /** The Windows music player. */
 class MusicDriver_Win32 : public MusicDriver {
 public:
-	const char *Start(const char * const *param) override;
+	const char *Start(const StringList &param) override;
 
 	void Stop() override;
 

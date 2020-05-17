@@ -533,10 +533,10 @@ static const OptionData _options[] = {
  */
 int openttd_main(int argc, char *argv[])
 {
-	char *musicdriver = nullptr;
-	char *sounddriver = nullptr;
-	char *videodriver = nullptr;
-	char *blitter = nullptr;
+	std::string musicdriver;
+	std::string sounddriver;
+	std::string videodriver;
+	std::string blitter;
 	std::string graphics_set;
 	std::string sounds_set;
 	std::string music_set;
@@ -566,19 +566,15 @@ int openttd_main(int argc, char *argv[])
 		case 'I': graphics_set = mgo.opt; break;
 		case 'S': sounds_set = mgo.opt; break;
 		case 'M': music_set = mgo.opt; break;
-		case 'm': free(musicdriver); musicdriver = stredup(mgo.opt); break;
-		case 's': free(sounddriver); sounddriver = stredup(mgo.opt); break;
-		case 'v': free(videodriver); videodriver = stredup(mgo.opt); break;
-		case 'b': free(blitter); blitter = stredup(mgo.opt); break;
+		case 'm': musicdriver = mgo.opt; break;
+		case 's': sounddriver = mgo.opt; break;
+		case 'v': videodriver = mgo.opt; break;
+		case 'b': blitter = mgo.opt; break;
 		case 'D':
-			free(musicdriver);
-			free(sounddriver);
-			free(videodriver);
-			free(blitter);
-			musicdriver = stredup("null");
-			sounddriver = stredup("null");
-			videodriver = stredup("dedicated");
-			blitter = stredup("null");
+			musicdriver = "null";
+			sounddriver = "null";
+			videodriver = "dedicated";
+			blitter = "null";
 			dedicated = true;
 			SetDebugString("net=6");
 			if (mgo.opt != nullptr) {
@@ -746,8 +742,8 @@ int openttd_main(int argc, char *argv[])
 	GfxInitPalettes();
 
 	DEBUG(misc, 1, "Loading blitter...");
-	if (blitter == nullptr && _ini_blitter != nullptr) blitter = stredup(_ini_blitter);
-	_blitter_autodetected = StrEmpty(blitter);
+	if (blitter.empty() && !_ini_blitter.empty()) blitter = _ini_blitter;
+	_blitter_autodetected = blitter.empty();
 	/* Activate the initial blitter.
 	 * This is only some initial guess, after NewGRFs have been loaded SwitchNewGRFBlitter may switch to a different one.
 	 *  - Never guess anything, if the user specified a blitter. (_blitter_autodetected)
@@ -758,16 +754,14 @@ int openttd_main(int argc, char *argv[])
 			(_support8bpp != S8BPP_NONE && (BaseGraphics::GetUsedSet() == nullptr || BaseGraphics::GetUsedSet()->blitter == BLT_8BPP)) ||
 			BlitterFactory::SelectBlitter("32bpp-anim") == nullptr) {
 		if (BlitterFactory::SelectBlitter(blitter) == nullptr) {
-			StrEmpty(blitter) ?
+			blitter.empty() ?
 				usererror("Failed to autoprobe blitter") :
-				usererror("Failed to select requested blitter '%s'; does it exist?", blitter);
+				usererror("Failed to select requested blitter '%s'; does it exist?", blitter.c_str());
 		}
 	}
-	free(blitter);
 
-	if (videodriver == nullptr && _ini_videodriver != nullptr) videodriver = stredup(_ini_videodriver);
+	if (videodriver.empty() && !_ini_videodriver.empty()) videodriver = _ini_videodriver;
 	DriverFactoryBase::SelectDriver(videodriver, Driver::DT_VIDEO);
-	free(videodriver);
 
 	InitializeSpriteSorter();
 
@@ -824,13 +818,11 @@ int openttd_main(int argc, char *argv[])
 		}
 	}
 
-	if (sounddriver == nullptr && _ini_sounddriver != nullptr) sounddriver = stredup(_ini_sounddriver);
+	if (sounddriver.empty() && !_ini_sounddriver.empty()) sounddriver = _ini_sounddriver;
 	DriverFactoryBase::SelectDriver(sounddriver, Driver::DT_SOUND);
-	free(sounddriver);
 
-	if (musicdriver == nullptr && _ini_musicdriver != nullptr) musicdriver = stredup(_ini_musicdriver);
+	if (musicdriver.empty() && !_ini_musicdriver.empty()) musicdriver = _ini_musicdriver;
 	DriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
-	free(musicdriver);
 
 	/* Take our initial lock on whatever we might want to do! */
 	try {
@@ -868,23 +860,9 @@ int openttd_main(int argc, char *argv[])
 
 	/* Reset windowing system, stop drivers, free used memory, ... */
 	ShutdownGame();
-	goto exit_normal;
 
 exit_noshutdown:
-	/* These three are normally freed before bootstrap. */
-	free(videodriver);
-	free(blitter);
-
 exit_bootstrap:
-	/* These are normally freed before exit, but after bootstrap. */
-	free(musicdriver);
-	free(sounddriver);
-
-exit_normal:
-	free(_ini_musicdriver);
-	free(_ini_sounddriver);
-	free(_ini_videodriver);
-	free(_ini_blitter);
 
 	delete scanner;
 

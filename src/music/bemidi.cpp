@@ -24,7 +24,7 @@ static BMidiSynthFile midiSynthFile;
 /** Factory for BeOS' midi player. */
 static FMusicDriver_BeMidi iFMusicDriver_BeMidi;
 
-const char *MusicDriver_BeMidi::Start(const char * const *parm)
+const char *MusicDriver_BeMidi::Start(const StringList &parm)
 {
 	return nullptr;
 }

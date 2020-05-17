@@ -15,7 +15,7 @@
 /** The video driver for windows. */
 class VideoDriver_Win32 : public VideoDriver {
 public:
-	const char *Start(const char * const *param) override;
+	const char *Start(const StringList &param) override;
 
 	void Stop() override;
 

@@ -14,7 +14,7 @@
 
 class VideoDriver_Cocoa : public VideoDriver {
 public:
-	const char *Start(const char * const *param) override;
+	const char *Start(const StringList &param) override;
 
 	/** Stop the video driver */
 	void Stop() override;

@@ -15,7 +15,7 @@
 /** Implementation of the allegro sound driver. */
 class SoundDriver_Allegro : public SoundDriver {
 public:
-	const char *Start(const char * const *param);
+	const char *Start(const StringList &param);
 
 	void Stop();
 

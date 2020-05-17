@@ -48,6 +48,6 @@ public:
 	}
 };
 
-extern char *_ini_musicdriver;
+extern std::string _ini_musicdriver;
 
 #endif /* MUSIC_MUSIC_DRIVER_HPP */

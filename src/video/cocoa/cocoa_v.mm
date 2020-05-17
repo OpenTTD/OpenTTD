@@ -396,7 +396,7 @@ void VideoDriver_Cocoa::Stop()
 /**
  * Initialize a cocoa video subdriver.
  */
-const char *VideoDriver_Cocoa::Start(const char * const *parm)
+const char *VideoDriver_Cocoa::Start(const StringList &parm)
 {
 	if (!MacOSVersionIsAtLeast(10, 6, 0)) return "The Cocoa video driver requires Mac OS X 10.6 or later.";
 
@@ -520,7 +520,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	bool wasstarted = _cocoa_video_started;
 	if (VideoDriver::GetInstance() == NULL) {
 		setupApplication(); // Setup application before showing dialog
-	} else if (!_cocoa_video_started && VideoDriver::GetInstance()->Start(NULL) != NULL) {
+	} else if (!_cocoa_video_started && VideoDriver::GetInstance()->Start(StringList()) != NULL) {
 		fprintf(stderr, "%s: %s\n", title, message);
 		return;
 	}

@@ -596,7 +596,7 @@ int VideoDriver_SDL::PollEvent()
 	return -1;
 }
 
-const char *VideoDriver_SDL::Start(const char * const *parm)
+const char *VideoDriver_SDL::Start(const StringList &parm)
 {
 	char buf[30];
 	_use_hwpalette = GetDriverParamInt(parm, "hw_palette", 2);
@@ -623,7 +623,7 @@ const char *VideoDriver_SDL::Start(const char * const *parm)
 	MarkWholeScreenDirty();
 	SetupKeyboard();
 
-	_draw_threaded = GetDriverParam(parm, "no_threads") == nullptr && GetDriverParam(parm, "no_thread") == nullptr;
+	_draw_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
 
 	return nullptr;
 }

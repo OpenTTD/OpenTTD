@@ -15,7 +15,7 @@
 /** Implementation of the SDL sound driver. */
 class SoundDriver_SDL : public SoundDriver {
 public:
-	const char *Start(const char * const *param) override;
+	const char *Start(const StringList &param) override;
 
 	void Stop() override;
 	const char *GetName() const override { return "sdl"; }

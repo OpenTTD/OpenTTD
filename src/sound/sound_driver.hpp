@@ -26,6 +26,6 @@ public:
 	}
 };
 
-extern char *_ini_sounddriver;
+extern std::string _ini_sounddriver;
 
 #endif /* SOUND_SOUND_DRIVER_HPP */
