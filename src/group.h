@@ -16,6 +16,7 @@
 #include "vehicle_type.h"
 #include "engine_type.h"
 #include "livery.h"
+#include <string>
 
 typedef Pool<Group, GroupID, 16, 64000> GroupPool;
 extern GroupPool _group_pool; ///< Pool of groups.
@@ -63,7 +64,7 @@ struct GroupStatistics {
 
 /** Group data. */
 struct Group : GroupPool::PoolItem<&_group_pool> {
-	char *name;                 ///< Group Name
+	std::string name;           ///< Group Name
 	Owner owner;                ///< Group Owner
 	VehicleType vehicle_type;   ///< Vehicle type of the group
 
@@ -76,7 +77,6 @@ struct Group : GroupPool::PoolItem<&_group_pool> {
 	GroupID parent;             ///< Parent group
 
 	Group(CompanyID owner = INVALID_COMPANY);
-	~Group();
 };
 
 

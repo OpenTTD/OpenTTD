@@ -51,7 +51,6 @@ void RebuildStationKdtree()
 
 BaseStation::~BaseStation()
 {
-	free(this->name);
 	free(this->speclist);
 
 	if (CleaningPool()) return;

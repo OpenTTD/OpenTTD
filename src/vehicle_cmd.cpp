@@ -30,6 +30,8 @@
 #include "newgrf.h"
 #include "company_base.h"
 #include "core/random_func.hpp"
+#include <sstream>
+#include <iomanip>
 
 #include "table/strings.h"
 
@@ -749,7 +751,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
 static bool IsUniqueVehicleName(const char *name)
 {
 	for (const Vehicle *v : Vehicle::Iterate()) {
-		if (v->name != nullptr && strcmp(v->name, name) == 0) return false;
+		if (!v->name.empty() && v->name == name) return false;
 	}
 
 	return true;
@@ -762,42 +764,48 @@ static bool IsUniqueVehicleName(const char *name)
  */
 static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 {
-	char buf[256];
+	std::string buf;
 
 	/* Find the position of the first digit in the last group of digits. */
 	size_t number_position;
-	for (number_position = strlen(src->name); number_position > 0; number_position--) {
+	for (number_position = src->name.length(); number_position > 0; number_position--) {
 		/* The design of UTF-8 lets this work simply without having to check
 		 * for UTF-8 sequences. */
 		if (src->name[number_position - 1] < '0' || src->name[number_position - 1] > '9') break;
 	}
 
 	/* Format buffer and determine starting number. */
-	int num;
+	long num;
 	byte padding = 0;
-	if (number_position == strlen(src->name)) {
+	if (number_position == src->name.length()) {
 		/* No digit at the end, so start at number 2. */
-		strecpy(buf, src->name, lastof(buf));
-		strecat(buf, " ", lastof(buf));
-		number_position = strlen(buf);
+		buf = src->name;
+		buf += " ";
+		number_position = buf.length();
 		num = 2;
 	} else {
 		/* Found digits, parse them and start at the next number. */
-		strecpy(buf, src->name, lastof(buf));
-		buf[number_position] = '\0';
-		char *endptr;
-		num = strtol(&src->name[number_position], &endptr, 10) + 1;
-		padding = endptr - &src->name[number_position];
+		buf = src->name.substr(0, number_position);
+
+		auto num_str = src->name.substr(number_position);
+		padding = (byte)num_str.length();
+
+		std::istringstream iss(num_str);
+		iss >> num;
+		num++;
 	}
 
 	/* Check if this name is already taken. */
 	for (int max_iterations = 1000; max_iterations > 0; max_iterations--, num++) {
+		std::ostringstream oss;
+
 		/* Attach the number to the temporary name. */
-		seprintf(&buf[number_position], lastof(buf), "%0*d", padding, num);
+		oss << buf << std::setw(padding) << std::setfill('0') << std::internal << num;
 
 		/* Check the name is unique. */
-		if (IsUniqueVehicleName(buf)) {
-			dst->name = stredup(buf);
+		auto new_name = oss.str();
+		if (IsUniqueVehicleName(new_name.c_str())) {
+			dst->name = new_name;
 			break;
 		}
 	}
@@ -973,7 +981,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		DoCommand(0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index, flags, CMD_CLONE_ORDER);
 
 		/* Now clone the vehicle's name, if it has one. */
-		if (v_front->name != nullptr) CloneVehicleName(v_front, w_front);
+		if (!v_front->name.empty()) CloneVehicleName(v_front, w_front);
 	}
 
 	/* Since we can't estimate the cost of cloning a vehicle accurately we must
@@ -1074,8 +1082,11 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	if (flags & DC_EXEC) {
-		free(v->name);
-		v->name = reset ? nullptr : stredup(text);
+		if (reset) {
+			v->name.clear();
+		} else {
+			v->name = text;
+		}
 		InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 1);
 		MarkWholeScreenDirty();
 	}

@@ -398,7 +398,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
 static bool IsUniqueWaypointName(const char *name)
 {
 	for (const Waypoint *wp : Waypoint::Iterate()) {
-		if (wp->name != nullptr && strcmp(wp->name, name) == 0) return false;
+		if (!wp->name.empty() && wp->name == name) return false;
 	}
 
 	return true;
@@ -431,8 +431,11 @@ CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	if (flags & DC_EXEC) {
-		free(wp->name);
-		wp->name = reset ? nullptr : stredup(text);
+		if (reset) {
+			wp->name.clear();
+		} else {
+			wp->name = text;
+		}
 
 		wp->UpdateVirtCoord();
 	}

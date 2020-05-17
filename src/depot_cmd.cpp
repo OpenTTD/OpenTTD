@@ -29,7 +29,7 @@
 static bool IsUniqueDepotName(const char *name)
 {
 	for (const Depot *d : Depot::Iterate()) {
-		if (d->name != nullptr && strcmp(d->name, name) == 0) return false;
+		if (!d->name.empty() && d->name == name) return false;
 	}
 
 	return true;
@@ -60,13 +60,11 @@ CommandCost CmdRenameDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	}
 
 	if (flags & DC_EXEC) {
-		free(d->name);
-
 		if (reset) {
-			d->name = nullptr;
+			d->name.clear();
 			MakeDefaultName(d);
 		} else {
-			d->name = stredup(text);
+			d->name = text;
 		}
 
 		/* Update the orders and depot */

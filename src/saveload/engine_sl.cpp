@@ -39,7 +39,7 @@ static const SaveLoad _engine_desc[] = {
 	 SLE_CONDVAR(Engine, company_avail,       SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),
 	 SLE_CONDVAR(Engine, company_avail,       SLE_UINT16,                SLV_104, SL_MAX_VERSION),
 	 SLE_CONDVAR(Engine, company_hidden,      SLE_UINT16,                SLV_193, SL_MAX_VERSION),
-	 SLE_CONDSTR(Engine, name,                SLE_STR, 0,                 SLV_84, SL_MAX_VERSION),
+	SLE_CONDSSTR(Engine, name,                SLE_STR,                    SLV_84, SL_MAX_VERSION),
 
 	SLE_CONDNULL(16,                                                       SLV_2, SLV_144), // old reserved space
 
@@ -137,7 +137,7 @@ void CopyTempEngineData()
 		e->preview_wait        = se->preview_wait;
 		e->company_avail       = se->company_avail;
 		e->company_hidden      = se->company_hidden;
-		if (se->name != nullptr) e->name = stredup(se->name);
+		e->name                = se->name;
 	}
 
 	ResetTempEngineData();

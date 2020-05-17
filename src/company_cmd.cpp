@@ -353,7 +353,7 @@ static void GenerateCompanyName(Company *c)
 
 	StringID str;
 	uint32 strp;
-	if (t->name == nullptr && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1)) {
+	if (t->name.empty() && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1)) {
 		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_COMPANY_NAME_START;
 		strp = t->townnameparts;
 
@@ -1043,7 +1043,7 @@ CommandCost CmdSetCompanyColour(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 static bool IsUniqueCompanyName(const char *name)
 {
 	for (const Company *c : Company::Iterate()) {
-		if (c->name != nullptr && strcmp(c->name, name) == 0) return false;
+		if (!c->name.empty() && c->name == name) return false;
 	}
 
 	return true;
@@ -1069,8 +1069,11 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (flags & DC_EXEC) {
 		Company *c = Company::Get(_current_company);
-		free(c->name);
-		c->name = reset ? nullptr : stredup(text);
+		if (reset) {
+			c->name.clear();
+		} else {
+			c->name = text;
+		}
 		MarkWholeScreenDirty();
 		CompanyAdminUpdate(c);
 	}
@@ -1086,7 +1089,7 @@ CommandCost CmdRenameCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 static bool IsUniquePresidentName(const char *name)
 {
 	for (const Company *c : Company::Iterate()) {
-		if (c->president_name != nullptr && strcmp(c->president_name, name) == 0) return false;
+		if (!c->president_name.empty() && c->president_name == name) return false;
 	}
 
 	return true;
@@ -1112,14 +1115,13 @@ CommandCost CmdRenamePresident(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 
 	if (flags & DC_EXEC) {
 		Company *c = Company::Get(_current_company);
-		free(c->president_name);
 
 		if (reset) {
-			c->president_name = nullptr;
+			c->president_name.clear();
 		} else {
-			c->president_name = stredup(text);
+			c->president_name = text;
 
-			if (c->name_1 == STR_SV_UNNAMED && c->name == nullptr) {
+			if (c->name_1 == STR_SV_UNNAMED && c->name.empty()) {
 				char buf[80];
 
 				seprintf(buf, lastof(buf), "%s Transport", text);

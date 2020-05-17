@@ -29,7 +29,7 @@ struct OldWaypoint {
 	Town *town;
 	uint16 town_cn;
 	StringID string_id;
-	char *name;
+	std::string name;
 	uint8 delete_ctr;
 	Date build_date;
 	uint8 localidx;
@@ -172,7 +172,7 @@ static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  SLV_12, SLV_89),
 	SLE_CONDVAR(OldWaypoint, town_cn,    SLE_UINT16,                 SLV_89, SL_MAX_VERSION),
 	SLE_CONDVAR(OldWaypoint, string_id,  SLE_STRINGID,                SL_MIN_VERSION, SLV_84),
-	SLE_CONDSTR(OldWaypoint, name,       SLE_STR, 0,                 SLV_84, SL_MAX_VERSION),
+	SLE_CONDSSTR(OldWaypoint, name,      SLE_STR,                    SLV_84, SL_MAX_VERSION),
 	    SLE_VAR(OldWaypoint, delete_ctr, SLE_UINT8),
 
 	SLE_CONDVAR(OldWaypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  SLV_3, SLV_31),
@@ -194,7 +194,6 @@ static void Load_WAYP()
 	while ((index = SlIterateArray()) != -1) {
 		/*C++17: OldWaypoint *wp = &*/ _old_waypoints.emplace_back();
 		OldWaypoint *wp = &_old_waypoints.back();
-		memset(wp, 0, sizeof(*wp));
 
 		wp->index = index;
 		SlObject(wp, _old_waypoint_desc);
