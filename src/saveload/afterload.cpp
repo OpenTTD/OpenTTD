@@ -2830,7 +2830,7 @@ bool AfterLoadGame()
 	 * which is done by StartupEngines(). */
 	if (gcf_res != GLC_ALL_GOOD) StartupEngines();
 
-	if (IsSavegameVersionBefore(SLV_166)) {
+	if (IsSavegameVersionBefore(SLV_FIX_TOWN_ACCEPTANCE)) {
 		/* Update cargo acceptance map of towns. */
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (!IsTileType(t, MP_HOUSE)) continue;
