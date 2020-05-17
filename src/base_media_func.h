@@ -21,7 +21,7 @@
  */
 #define fetch_metadata(name) \
 	item = metadata->GetItem(name, false); \
-	if (item == nullptr || StrEmpty(item->value)) { \
+	if (item == nullptr || !item->value.has_value() || item->value->empty()) { \
 		DEBUG(grf, 0, "Base " SET_TYPE "set detail loading: %s field missing.", name); \
 		DEBUG(grf, 0, "  Is %s readable for the user running OpenTTD?", full_filename); \
 		return false; \
@@ -42,28 +42,28 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 	IniItem *item;
 
 	fetch_metadata("name");
-	this->name = stredup(item->value);
+	this->name = stredup(item->value->c_str());
 
 	fetch_metadata("description");
-	this->description[stredup("")] = stredup(item->value);
+	this->description[stredup("")] = stredup(item->value->c_str());
 
 	/* Add the translations of the descriptions too. */
 	for (const IniItem *item = metadata->item; item != nullptr; item = item->next) {
-		if (strncmp("description.", item->name, 12) != 0) continue;
+		if (item->name.compare(0, 12, "description.") != 0) continue;
 
-		this->description[stredup(item->name + 12)] = stredup(item->value);
+		this->description[stredup(item->name.c_str() + 12)] = stredup(item->value.value_or("").c_str());
 	}
 
 	fetch_metadata("shortname");
-	for (uint i = 0; item->value[i] != '\0' && i < 4; i++) {
-		this->shortname |= ((uint8)item->value[i]) << (i * 8);
+	for (uint i = 0; item->value.value()[i] != '\0' && i < 4; i++) {
+		this->shortname |= ((uint8)item->value.value()[i]) << (i * 8);
 	}
 
 	fetch_metadata("version");
-	this->version = atoi(item->value);
+	this->version = atoi(item->value->c_str());
 
 	item = metadata->GetItem("fallback", false);
-	this->fallback = (item != nullptr && strcmp(item->value, "0") != 0 && strcmp(item->value, "false") != 0);
+	this->fallback = (item != nullptr && item->value && item->value.value() != "0" && item->value.value() != "false");
 
 	/* For each of the file types we want to find the file, MD5 checksums and warning messages. */
 	IniGroup *files  = ini->GetGroup("files");
@@ -73,13 +73,12 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 		MD5File *file = &this->files[i];
 		/* Find the filename first. */
 		item = files->GetItem(BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names[i], false);
-		if (item == nullptr || (item->value == nullptr && !allow_empty_filename)) {
+		if (item == nullptr || (!item->value.has_value() && !allow_empty_filename)) {
 			DEBUG(grf, 0, "No " SET_TYPE " file for: %s (in %s)", BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names[i], full_filename);
 			return false;
 		}
 
-		const char *filename = item->value;
-		if (filename == nullptr) {
+		if (!item->value.has_value()) {
 			file->filename = nullptr;
 			/* If we list no file, that file must be valid */
 			this->valid_files++;
@@ -87,15 +86,16 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 			continue;
 		}
 
+		const char *filename = item->value->c_str();
 		file->filename = str_fmt("%s%s", path, filename);
 
 		/* Then find the MD5 checksum */
 		item = md5s->GetItem(filename, false);
-		if (item == nullptr || item->value == nullptr) {
+		if (item == nullptr || !item->value.has_value()) {
 			DEBUG(grf, 0, "No MD5 checksum specified for: %s (in %s)", filename, full_filename);
 			return false;
 		}
-		char *c = item->value;
+		const char *c = item->value->c_str();
 		for (uint i = 0; i < sizeof(file->hash) * 2; i++, c++) {
 			uint j;
 			if ('0' <= *c && *c <= '9') {
@@ -118,11 +118,11 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 		/* Then find the warning message when the file's missing */
 		item = origin->GetItem(filename, false);
 		if (item == nullptr) item = origin->GetItem("default", false);
-		if (item == nullptr) {
+		if (item == nullptr || !item->value.has_value()) {
 			DEBUG(grf, 1, "No origin warning message specified for: %s", filename);
 			file->missing_warning = stredup("");
 		} else {
-			file->missing_warning = stredup(item->value);
+			file->missing_warning = stredup(item->value->c_str());
 		}
 
 		file->check_result = T::CheckMD5(file, BASESET_DIR);
@@ -170,7 +170,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 	if (set->FillSetDetails(ini, path, filename)) {
 		Tbase_set *duplicate = nullptr;
 		for (Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
-			if (strcmp(c->name, set->name) == 0 || c->shortname == set->shortname) {
+			if (c->name == set->name || c->shortname == set->shortname) {
 				duplicate = c;
 				break;
 			}

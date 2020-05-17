@@ -214,11 +214,11 @@ static IniLoadFile *LoadIniFile(const char *filename)
  */
 static void DumpGroup(IniLoadFile *ifile, const char * const group_name)
 {
-	IniGroup *grp = ifile->GetGroup(group_name, 0, false);
+	IniGroup *grp = ifile->GetGroup(group_name, false);
 	if (grp != nullptr && grp->type == IGT_SEQUENCE) {
 		for (IniItem *item = grp->item; item != nullptr; item = item->next) {
-			if (item->name) {
-				_stored_output.Add(item->name);
+			if (!item->name.empty()) {
+				_stored_output.Add(item->name.c_str());
 				_stored_output.Add("\n", 1);
 			}
 		}
@@ -236,8 +236,8 @@ static const char *FindItemValue(const char *name, IniGroup *grp, IniGroup *defa
 {
 	IniItem *item = grp->GetItem(name, false);
 	if (item == nullptr && defaults != nullptr) item = defaults->GetItem(name, false);
-	if (item == nullptr || item->value == nullptr) return nullptr;
-	return item->value;
+	if (item == nullptr || !item->value.has_value()) return nullptr;
+	return item->value->c_str();
 }
 
 /**
@@ -249,19 +249,19 @@ static void DumpSections(IniLoadFile *ifile)
 	static const int MAX_VAR_LENGTH = 64;
 	static const char * const special_group_names[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, nullptr};
 
-	IniGroup *default_grp = ifile->GetGroup(DEFAULTS_GROUP_NAME, 0, false);
-	IniGroup *templates_grp  = ifile->GetGroup(TEMPLATES_GROUP_NAME, 0, false);
+	IniGroup *default_grp = ifile->GetGroup(DEFAULTS_GROUP_NAME, false);
+	IniGroup *templates_grp  = ifile->GetGroup(TEMPLATES_GROUP_NAME, false);
 	if (templates_grp == nullptr) return;
 
 	/* Output every group, using its name as template name. */
 	for (IniGroup *grp = ifile->group; grp != nullptr; grp = grp->next) {
 		const char * const *sgn;
-		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (strcmp(grp->name, *sgn) == 0) break;
+		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (grp->name == *sgn) break;
 		if (*sgn != nullptr) continue;
 
 		IniItem *template_item = templates_grp->GetItem(grp->name, false); // Find template value.
-		if (template_item == nullptr || template_item->value == nullptr) {
-			fprintf(stderr, "settingsgen: Warning: Cannot find template %s\n", grp->name);
+		if (template_item == nullptr || !template_item->value.has_value()) {
+			fprintf(stderr, "settingsgen: Warning: Cannot find template %s\n", grp->name.c_str());
 			continue;
 		}
 
@@ -281,7 +281,7 @@ static void DumpSections(IniLoadFile *ifile)
 		}
 
 		/* Output text of the template, except template variables of the form '$[_a-z0-9]+' which get replaced by their value. */
-		const char *txt = template_item->value;
+		const char *txt = template_item->value->c_str();
 		while (*txt != '\0') {
 			if (*txt != '$') {
 				_stored_output.Add(txt, 1);

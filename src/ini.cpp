@@ -12,9 +12,11 @@
 #include "ini_type.h"
 #include "string_func.h"
 #include "fileio_func.h"
+#include <fstream>
 
 #if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE >= 199309L) || (defined(_XOPEN_SOURCE) && _XOPEN_SOURCE >= 500)
 # include <unistd.h>
+# include <fcntl.h>
 #endif
 
 #ifdef _WIN32
@@ -45,31 +47,33 @@ bool IniFile::SaveToDisk(const char *filename)
 	 * that file. This to prevent that when OpenTTD crashes during the save
 	 * you end up with a truncated configuration file.
 	 */
-	char file_new[MAX_PATH];
+	std::string file_new{ filename };
+	file_new.append(".new");
 
-	strecpy(file_new, filename, lastof(file_new));
-	strecat(file_new, ".new", lastof(file_new));
-	FILE *f = fopen(file_new, "w");
-	if (f == nullptr) return false;
+	std::ofstream os(OTTD2FS(file_new.c_str()));
+	if (os.fail()) return false;
 
 	for (const IniGroup *group = this->group; group != nullptr; group = group->next) {
-		if (group->comment) fputs(group->comment, f);
-		fprintf(f, "[%s]\n", group->name);
+		os << group->comment << "[" << group->name << "]\n";
 		for (const IniItem *item = group->item; item != nullptr; item = item->next) {
-			if (item->comment != nullptr) fputs(item->comment, f);
+			os << item->comment;
 
 			/* protect item->name with quotes if needed */
-			if (strchr(item->name, ' ') != nullptr ||
-					item->name[0] == '[') {
-				fprintf(f, "\"%s\"", item->name);
+			if (item->name.find(' ') != std::string::npos ||
+				item->name[0] == '[') {
+				os << "\"" << item->name << "\"";
 			} else {
-				fprintf(f, "%s", item->name);
+				os << item->name;
 			}
 
-			fprintf(f, " = %s\n", item->value == nullptr ? "" : item->value);
+			os << " = " << item->value.value_or("") << "\n";
 		}
 	}
-	if (this->comment) fputs(this->comment, f);
+	os << this->comment;
+
+	os.flush();
+	os.close();
+	if (os.fail()) return false;
 
 /*
  * POSIX (and friends) do not guarantee that when a file is closed it is
@@ -78,11 +82,10 @@ bool IniFile::SaveToDisk(const char *filename)
  * (modification date etc.) is not important to us; only the real data is.
  */
 #if defined(_POSIX_SYNCHRONIZED_IO) && _POSIX_SYNCHRONIZED_IO > 0
-	int ret = fdatasync(fileno(f));
-	fclose(f);
+	int f = open(file_new.c_str(), O_RDWR);
+	int ret = fdatasync(f);
+	close(f);
 	if (ret != 0) return false;
-#else
-	fclose(f);
 #endif
 
 #if defined(_WIN32)
@@ -91,7 +94,7 @@ bool IniFile::SaveToDisk(const char *filename)
 	/* Allocate space for one more \0 character. */
 	TCHAR tfilename[MAX_PATH + 1], tfile_new[MAX_PATH + 1];
 	_tcsncpy(tfilename, OTTD2FS(filename), MAX_PATH);
-	_tcsncpy(tfile_new, OTTD2FS(file_new), MAX_PATH);
+	_tcsncpy(tfile_new, OTTD2FS(file_new.c_str()), MAX_PATH);
 	/* SHFileOperation wants a double '\0' terminated string. */
 	tfilename[MAX_PATH - 1] = '\0';
 	tfile_new[MAX_PATH - 1] = '\0';
@@ -107,8 +110,8 @@ bool IniFile::SaveToDisk(const char *filename)
 	shfopt.pTo    = tfilename;
 	SHFileOperation(&shfopt);
 #else
-	if (rename(file_new, filename) < 0) {
-		DEBUG(misc, 0, "Renaming %s to %s failed; configuration not saved", file_new, filename);
+	if (rename(file_new.c_str(), filename) < 0) {
+		DEBUG(misc, 0, "Renaming %s to %s failed; configuration not saved", file_new.c_str(), filename);
 	}
 #endif
 
