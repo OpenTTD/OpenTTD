@@ -16,6 +16,7 @@
 #include "tile_type.h"
 #include "settings_type.h"
 #include "group.h"
+#include <string>
 
 /** Statistics about the economy. */
 struct CompanyEconomyEntry {
@@ -54,11 +55,11 @@ extern CompanyPool _company_pool;
 struct CompanyProperties {
 	uint32 name_2;                   ///< Parameter of #name_1.
 	StringID name_1;                 ///< Name of the company if the user did not change it.
-	char *name;                      ///< Name of the company if the user changed it.
+	std::string name;                ///< Name of the company if the user changed it.
 
 	StringID president_name_1;       ///< Name of the president if the user did not change it.
 	uint32 president_name_2;         ///< Parameter of #president_name_1
-	char *president_name;            ///< Name of the president if the user changed it.
+	std::string president_name;      ///< Name of the president if the user changed it.
 
 	CompanyManagerFace face;         ///< Face description of the president.
 
@@ -99,17 +100,11 @@ struct CompanyProperties {
 
 	// TODO: Change some of these member variables to use relevant INVALID_xxx constants
 	CompanyProperties()
-		: name_2(0), name_1(0), name(nullptr), president_name_1(0), president_name_2(0), president_name(nullptr),
+		: name_2(0), name_1(0), president_name_1(0), president_name_2(0),
 		  face(0), money(0), money_fraction(0), current_loan(0), colour(0), block_preview(0),
 		  location_of_HQ(0), last_build_coordinate(0), share_owners(), inaugurated_year(0),
 		  months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
 		  terraform_limit(0), clear_limit(0), tree_limit(0), is_ai(false) {}
-
-	~CompanyProperties()
-	{
-		free(this->name);
-		free(this->president_name);
-	}
 };
 
 struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {

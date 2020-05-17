@@ -18,7 +18,7 @@ extern DepotPool _depot_pool;
 
 struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	Town *town;
-	char *name;
+	std::string name;
 
 	TileIndex xy;
 	uint16 town_cn;    ///< The N-1th depot for this town (consecutive number)

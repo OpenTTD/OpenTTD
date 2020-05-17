@@ -290,11 +290,6 @@ Group::Group(Owner owner)
 	this->folded = false;
 }
 
-Group::~Group()
-{
-	free(this->name);
-}
-
 
 /**
  * Create a new vehicle group.
@@ -422,10 +417,12 @@ CommandCost CmdAlterGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		}
 
 		if (flags & DC_EXEC) {
-			/* Delete the old name */
-			free(g->name);
 			/* Assign the new one */
-			g->name = reset ? nullptr : stredup(text);
+			if (reset) {
+				g->name.clear();
+			} else {
+				g->name = text;
+			}
 		}
 	} else {
 		/* Set group parent */

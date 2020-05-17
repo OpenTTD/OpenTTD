@@ -1395,7 +1395,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 		DrawVehicleImage(v, image_left, image_right, y + FONT_HEIGHT_SMALL - 1, selected_vehicle, EIT_IN_LIST, 0);
 		DrawString(text_left, text_right, y + line_height - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
-		if (v->name != nullptr) {
+		if (!v->name.empty()) {
 			/* The vehicle got a name so we will print it */
 			SetDParam(0, v->index);
 			DrawString(text_left, text_right, y, STR_TINY_BLACK_VEHICLE);

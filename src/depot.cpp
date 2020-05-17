@@ -27,8 +27,6 @@ INSTANTIATE_POOL_METHODS(Depot)
  */
 Depot::~Depot()
 {
-	free(this->name);
-
 	if (CleaningPool()) return;
 
 	if (!IsDepotTile(this->xy) || GetDepotIndex(this->xy) != this->index) {

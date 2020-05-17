@@ -645,20 +645,20 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_84)) {
 		for (Company *c : Company::Iterate()) {
 			c->name = CopyFromOldName(c->name_1);
-			if (c->name != nullptr) c->name_1 = STR_SV_UNNAMED;
+			if (!c->name.empty()) c->name_1 = STR_SV_UNNAMED;
 			c->president_name = CopyFromOldName(c->president_name_1);
-			if (c->president_name != nullptr) c->president_name_1 = SPECSTR_PRESIDENT_NAME;
+			if (!c->president_name.empty()) c->president_name_1 = SPECSTR_PRESIDENT_NAME;
 		}
 
 		for (Station *st : Station::Iterate()) {
 			st->name = CopyFromOldName(st->string_id);
 			/* generating new name would be too much work for little effect, use the station name fallback */
-			if (st->name != nullptr) st->string_id = STR_SV_STNAME_FALLBACK;
+			if (!st->name.empty()) st->string_id = STR_SV_STNAME_FALLBACK;
 		}
 
 		for (Town *t : Town::Iterate()) {
 			t->name = CopyFromOldName(t->townnametype);
-			if (t->name != nullptr) t->townnametype = SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
+			if (!t->name.empty()) t->townnametype = SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
 		}
 	}
 
@@ -2502,11 +2502,11 @@ bool AfterLoadGame()
 		 * highest possible number to get them numbered in the
 		 * order they have in the pool. */
 		for (Waypoint *wp : Waypoint::Iterate()) {
-			if (wp->name != nullptr) wp->town_cn = UINT16_MAX;
+			if (!wp->name.empty()) wp->town_cn = UINT16_MAX;
 		}
 
 		for (Waypoint* wp : Waypoint::Iterate()) {
-			if (wp->name != nullptr) MakeDefaultName(wp);
+			if (!wp->name.empty()) MakeDefaultName(wp);
 		}
 	}
 

@@ -434,8 +434,8 @@ public:
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, y += FONT_HEIGHT_NORMAL, STR_TOWN_VIEW_NOISE_IN_TOWN);
 		}
 
-		if (this->town->text != nullptr) {
-			SetDParamStr(0, this->town->text);
+		if (!this->town->text.empty()) {
+			SetDParamStr(0, this->town->text.c_str());
 			DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y += FONT_HEIGHT_NORMAL, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
 		}
 	}
@@ -516,8 +516,8 @@ public:
 
 		if (_settings_game.economy.station_noise_level) aimed_height += FONT_HEIGHT_NORMAL;
 
-		if (this->town->text != nullptr) {
-			SetDParamStr(0, this->town->text);
+		if (!this->town->text.empty()) {
+			SetDParamStr(0, this->town->text.c_str());
 			aimed_height += GetStringHeight(STR_JUST_RAW_STRING, width - WD_FRAMERECT_LEFT - WD_FRAMERECT_RIGHT);
 		}
 

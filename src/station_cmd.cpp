@@ -3917,7 +3917,7 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 static bool IsUniqueStationName(const char *name)
 {
 	for (const Station *st : Station::Iterate()) {
-		if (st->name != nullptr && strcmp(st->name, name) == 0) return false;
+		if (!st->name.empty() && st->name == name) return false;
 	}
 
 	return true;
@@ -3949,8 +3949,11 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (flags & DC_EXEC) {
 		st->cached_name.clear();
-		free(st->name);
-		st->name = reset ? nullptr : stredup(text);
+		if (reset) {
+			st->name.clear();
+		} else {
+			st->name = text;
+		}
 
 		st->UpdateVirtCoord();
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 1);

@@ -75,11 +75,8 @@ struct SignList {
 		 * a lot of them. Therefore a worthwhile performance gain can be made by
 		 * directly comparing Sign::name instead of going through the string
 		 * system for each comparison. */
-		const char *a_name = a->name;
-		const char *b_name = b->name;
-
-		if (a_name == nullptr) a_name = SignList::default_name;
-		if (b_name == nullptr) b_name = SignList::default_name;
+		const char *a_name = a->name.empty() ? SignList::default_name : a->name.c_str();
+		const char *b_name = b->name.empty() ? SignList::default_name : b->name.c_str();
 
 		int r = strnatcmp(a_name, b_name); // Sort by name (natural sorting).
 
@@ -95,9 +92,7 @@ struct SignList {
 	static bool CDECL SignNameFilter(const Sign * const *a, StringFilter &filter)
 	{
 		/* Same performance benefit as above for sorting. */
-		const char *a_name = (*a)->name;
-
-		if (a_name == nullptr) a_name = SignList::default_name;
+		const char *a_name = (*a)->name.empty() ? SignList::default_name : (*a)->name.c_str();
 
 		filter.ResetState();
 		filter.AddLine(a_name);
@@ -439,7 +434,7 @@ struct SignWindow : Window, SignList {
 	void UpdateSignEditWindow(const Sign *si)
 	{
 		/* Display an empty string when the sign hasn't been edited yet */
-		if (si->name != nullptr) {
+		if (!si->name.empty()) {
 			SetDParam(0, si->index);
 			this->name_editbox.text.Assign(STR_SIGN_NAME);
 		} else {

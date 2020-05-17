@@ -34,8 +34,6 @@ Sign::Sign(Owner owner)
 /** Destroy the sign */
 Sign::~Sign()
 {
-	free(this->name);
-
 	if (CleaningPool()) return;
 
 	DeleteRenameSignWindow(this->index);

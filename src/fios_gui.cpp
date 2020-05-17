@@ -533,9 +533,9 @@ public:
 						for (auto &pair : _load_check_data.companies) {
 							SetDParam(0, pair.first + 1);
 							const CompanyProperties &c = *pair.second;
-							if (c.name != nullptr) {
+							if (!c.name.empty()) {
 								SetDParam(1, STR_JUST_RAW_STRING);
-								SetDParamStr(2, c.name);
+								SetDParamStr(2, c.name.c_str());
 							} else {
 								SetDParam(1, c.name_1);
 								SetDParam(2, c.name_2);

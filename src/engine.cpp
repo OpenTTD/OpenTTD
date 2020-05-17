@@ -67,7 +67,6 @@ assert_compile(lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_i
 const uint EngineOverrideManager::NUM_DEFAULT_ENGINES = _engine_counts[VEH_TRAIN] + _engine_counts[VEH_ROAD] + _engine_counts[VEH_SHIP] + _engine_counts[VEH_AIRCRAFT];
 
 Engine::Engine() :
-	name(nullptr),
 	overrides_count(0),
 	overrides(nullptr)
 {
@@ -140,7 +139,6 @@ Engine::Engine(VehicleType type, EngineID base)
 Engine::~Engine()
 {
 	UnloadWagonOverrides(this);
-	free(this->name);
 }
 
 /**
@@ -1069,7 +1067,7 @@ void EnginesMonthlyLoop()
 static bool IsUniqueEngineName(const char *name)
 {
 	for (const Engine *e : Engine::Iterate()) {
-		if (e->name != nullptr && strcmp(e->name, name) == 0) return false;
+		if (!e->name.empty() && e->name == name) return false;
 	}
 
 	return true;
@@ -1097,12 +1095,10 @@ CommandCost CmdRenameEngine(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	if (flags & DC_EXEC) {
-		free(e->name);
-
 		if (reset) {
-			e->name = nullptr;
+			e->name.clear();
 		} else {
-			e->name = stredup(text);
+			e->name = text;
 		}
 
 		MarkWholeScreenDirty();

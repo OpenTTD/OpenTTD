@@ -11,6 +11,7 @@
 #include "../string_func.h"
 #include "../strings_func.h"
 #include "saveload_internal.h"
+#include <sstream>
 
 #include "table/strings.h"
 
@@ -56,18 +57,17 @@ char *_old_name_array = nullptr;
  * @param id the StringID of the custom name to clone.
  * @return the clones custom name.
  */
-char *CopyFromOldName(StringID id)
+std::string CopyFromOldName(StringID id)
 {
 	/* Is this name an (old) custom name? */
-	if (GetStringTab(id) != TEXT_TAB_OLD_CUSTOM) return nullptr;
+	if (GetStringTab(id) != TEXT_TAB_OLD_CUSTOM) return std::string();
 
 	if (IsSavegameVersionBefore(SLV_37)) {
-		/* Allow for expansion when converted to UTF-8. */
-		char tmp[LEN_OLD_STRINGS * MAX_CHAR_LENGTH];
 		uint offs = _savegame_type == SGT_TTO ? LEN_OLD_STRINGS_TTO * GB(id, 0, 8) : LEN_OLD_STRINGS * GB(id, 0, 9);
 		const char *strfrom = &_old_name_array[offs];
-		char *strto = tmp;
 
+		std::ostringstream tmp;
+		std::ostreambuf_iterator<char> strto(tmp);
 		for (; *strfrom != '\0'; strfrom++) {
 			WChar c = (byte)*strfrom;
 
@@ -84,19 +84,13 @@ char *CopyFromOldName(StringID id)
 				default: break;
 			}
 
-			/* Check character will fit into our buffer. */
-			if (strto + Utf8CharLen(c) > lastof(tmp)) break;
-
-			strto += Utf8Encode(strto, c);
+			Utf8Encode(strto, c);
 		}
 
-		/* Terminate the new string and copy it back to the name array */
-		*strto = '\0';
-
-		return stredup(tmp);
+		return tmp.str();
 	} else {
 		/* Name will already be in UTF-8. */
-		return stredup(&_old_name_array[LEN_OLD_STRINGS * GB(id, 0, 9)]);
+		return std::string(&_old_name_array[LEN_OLD_STRINGS * GB(id, 0, 9)]);
 	}
 }
 

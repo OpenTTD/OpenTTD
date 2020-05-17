@@ -59,7 +59,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint32 townnamegrfid;
 	uint16 townnametype;
 	uint32 townnameparts;
-	char *name;                    ///< Custom town name. If nullptr, the town was not renamed and uses the generated name.
+	std::string name;                ///< Custom town name. If empty, the town was not renamed and uses the generated name.
 	mutable std::string cached_name; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
 
 	byte flags;                    ///< See #TownFlags.
@@ -79,7 +79,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	TransportedCargoStat<uint16> received[NUM_TE];    ///< Cargo statistics about received cargotypes.
 	uint32 goal[NUM_TE];                              ///< Amount of cargo required for the town to grow.
 
-	char *text; ///< General text with additional information.
+	std::string text; ///< General text with additional information.
 
 	inline byte GetPercentTransported(CargoID cid) const { return this->supplied[cid].old_act * 256 / (this->supplied[cid].old_max + 1); }
 
@@ -133,7 +133,7 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	inline const char *GetCachedName() const
 	{
-		if (this->name != nullptr) return this->name;
+		if (!this->name.empty()) return this->name.c_str();
 		if (this->cached_name.empty()) this->FillCachedName();
 		return this->cached_name.c_str();
 	}
@@ -249,7 +249,7 @@ template <class T>
 void MakeDefaultName(T *obj)
 {
 	/* We only want to set names if it hasn't been set before, or when we're calling from afterload. */
-	assert(obj->name == nullptr || obj->town_cn == UINT16_MAX);
+	assert(obj->name.empty() || obj->town_cn == UINT16_MAX);
 
 	obj->town = ClosestTownFromTile(obj->xy, UINT_MAX);
 

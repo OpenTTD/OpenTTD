@@ -17,7 +17,7 @@
 
 void InitializeOldNames();
 StringID RemapOldStringID(StringID s);
-char *CopyFromOldName(StringID id);
+std::string CopyFromOldName(StringID id);
 void ResetOldNames();
 
 void ResetOldWaypoints();

@@ -17,7 +17,7 @@
 
 static const SaveLoad _group_desc[] = {
 	 SLE_CONDVAR(Group, name,               SLE_NAME,                       SL_MIN_VERSION,  SLV_84),
-	 SLE_CONDSTR(Group, name,               SLE_STR | SLF_ALLOW_CONTROL, 0, SLV_84, SL_MAX_VERSION),
+	SLE_CONDSSTR(Group, name,               SLE_STR | SLF_ALLOW_CONTROL,    SLV_84, SL_MAX_VERSION),
 	SLE_CONDNULL(2,                                                         SL_MIN_VERSION,  SLV_164), // num_vehicle
 	     SLE_VAR(Group, owner,              SLE_UINT8),
 	     SLE_VAR(Group, vehicle_type,       SLE_UINT8),

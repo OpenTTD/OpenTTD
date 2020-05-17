@@ -97,7 +97,7 @@ bool VerifyTownName(uint32 r, const TownNameParams *par, TownNames *town_names)
 		for (const Town *t : Town::Iterate()) {
 			/* We can't just compare the numbers since
 			 * several numbers may map to a single name. */
-			const char *buf = t->name;
+			const char *buf = t->name.empty() ? nullptr : t->name.c_str();
 			if (buf == nullptr) {
 				GetTownName(buf2, t, lastof(buf2));
 				buf = buf2;

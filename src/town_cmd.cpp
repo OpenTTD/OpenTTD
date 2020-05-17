@@ -101,9 +101,6 @@ static bool TestTownOwnsBridge(TileIndex tile, const Town *t)
 
 Town::~Town()
 {
-	free(this->name);
-	free(this->text);
-
 	if (CleaningPool()) return;
 
 	/* Delete town authority window
@@ -1854,7 +1851,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
 static bool IsUniqueTownName(const char *name)
 {
 	for (const Town *t : Town::Iterate()) {
-		if (t->name != nullptr && strcmp(t->name, name) == 0) return false;
+		if (!t->name.empty() && t->name == name) return false;
 	}
 
 	return true;
@@ -2706,8 +2703,11 @@ CommandCost CmdRenameTown(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 	if (flags & DC_EXEC) {
 		t->cached_name.clear();
-		free(t->name);
-		t->name = reset ? nullptr : stredup(text);
+		if (reset) {
+			t->name.clear();
+		} else {
+			t->name = text;
+		}
 
 		t->UpdateVirtCoord();
 		InvalidateWindowData(WC_TOWN_DIRECTORY, 0, TDIWD_FORCE_RESORT);
@@ -2783,8 +2783,8 @@ CommandCost CmdTownSetText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (t == nullptr) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		free(t->text);
-		t->text = StrEmpty(text) ? nullptr : stredup(text);
+		t->text.clear();
+		if (!StrEmpty(text)) t->text = text;
 		InvalidateWindowData(WC_TOWN_VIEW, p1);
 	}
 
