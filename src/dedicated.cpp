@@ -8,9 +8,11 @@
 /** @file dedicated.cpp Forking support for dedicated servers. */
 
 #include "stdafx.h"
+#include "fileio_func.h"
+#include <string>
 
-char *_log_file = nullptr; ///< File to reroute output of a forked OpenTTD to
-FILE *_log_fd   = nullptr; ///< File to reroute output of a forked OpenTTD to
+std::string _log_file; ///< File to reroute output of a forked OpenTTD to
+std::unique_ptr<FILE, FileDeleter> _log_fd; ///< File to reroute output of a forked OpenTTD to
 
 #if defined(UNIX)
 
@@ -38,17 +40,17 @@ void DedicatedFork()
 
 		case 0: { // We're the child
 			/* Open the log-file to log all stuff too */
-			_log_fd = fopen(_log_file, "a");
-			if (_log_fd == nullptr) {
+			_log_fd.reset(fopen(_log_file.c_str(), "a"));
+			if (!_log_fd) {
 				perror("Unable to open logfile");
 				exit(1);
 			}
 			/* Redirect stdout and stderr to log-file */
-			if (dup2(fileno(_log_fd), fileno(stdout)) == -1) {
+			if (dup2(fileno(_log_fd.get()), fileno(stdout)) == -1) {
 				perror("Rerouting stdout");
 				exit(1);
 			}
-			if (dup2(fileno(_log_fd), fileno(stderr)) == -1) {
+			if (dup2(fileno(_log_fd.get()), fileno(stderr)) == -1) {
 				perror("Rerouting stderr");
 				exit(1);
 			}

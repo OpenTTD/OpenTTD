@@ -1245,8 +1245,9 @@ void DeterminePaths(const char *exe)
 		free(tmp);
 	}
 
-	extern char *_log_file;
-	_log_file = str_fmt("%sopenttd.log",  _personal_dir);
+	extern std::string _log_file;
+	_log_file = _personal_dir;
+	_log_file += "openttd.log";
 }
 
 /**

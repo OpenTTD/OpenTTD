@@ -543,7 +543,7 @@ int openttd_main(int argc, char *argv[])
 	Dimension resolution = {0, 0};
 	/* AfterNewGRFScan sets save_config to true after scanning completed. */
 	bool save_config = false;
-	AfterNewGRFScan *scanner = new AfterNewGRFScan(&save_config);
+	std::unique_ptr<AfterNewGRFScan> scanner(new AfterNewGRFScan(&save_config));
 	bool dedicated = false;
 	char *debuglog_conn = nullptr;
 
@@ -637,7 +637,7 @@ int openttd_main(int argc, char *argv[])
 			DeterminePaths(argv[0]);
 			if (StrEmpty(mgo.opt)) {
 				ret = 1;
-				goto exit_noshutdown;
+				return ret;
 			}
 
 			char title[80];
@@ -654,12 +654,11 @@ int openttd_main(int argc, char *argv[])
 					GetString(buf, _load_check_data.error, lastof(buf));
 					fprintf(stderr, "%s\n", buf);
 				}
-				goto exit_noshutdown;
+				return ret;
 			}
 
 			WriteSavegameInfo(title);
-
-			goto exit_noshutdown;
+			return ret;
 		}
 		case 'G': scanner->generation_seed = strtoul(mgo.opt, nullptr, 10); break;
 		case 'c': free(_config_file); _config_file = stredup(mgo.opt); break;
@@ -683,8 +682,7 @@ int openttd_main(int argc, char *argv[])
 		BaseSounds::FindSets();
 		BaseMusic::FindSets();
 		ShowHelp();
-
-		goto exit_noshutdown;
+		return ret;
 	}
 
 	DeterminePaths(argv[0]);
@@ -785,8 +783,7 @@ int openttd_main(int argc, char *argv[])
 
 	if (!HandleBootstrap()) {
 		ShutdownGame();
-
-		goto exit_bootstrap;
+		return ret;
 	}
 
 	VideoDriver::GetInstance()->ClaimMousePointer();
@@ -842,8 +839,7 @@ int openttd_main(int argc, char *argv[])
 	CheckForMissingGlyphs();
 
 	/* ScanNewGRFFiles now has control over the scanner. */
-	ScanNewGRFFiles(scanner);
-	scanner = nullptr;
+	ScanNewGRFFiles(scanner.release());
 
 	VideoDriver::GetInstance()->MainLoop();
 
@@ -860,17 +856,6 @@ int openttd_main(int argc, char *argv[])
 
 	/* Reset windowing system, stop drivers, free used memory, ... */
 	ShutdownGame();
-
-exit_noshutdown:
-exit_bootstrap:
-
-	delete scanner;
-
-	extern FILE *_log_fd;
-	if (_log_fd != nullptr) {
-		fclose(_log_fd);
-	}
-
 	return ret;
 }
 

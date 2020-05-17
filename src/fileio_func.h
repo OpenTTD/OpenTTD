@@ -159,4 +159,12 @@ public:
 	}
 };
 
+/** Helper to manage a FILE with a \c std::unique_ptr. */
+struct FileDeleter {
+	void operator()(FILE *f)
+	{
+		if (f) fclose(f);
+	}
+};
+
 #endif /* FILEIO_FUNC_H */
