@@ -160,9 +160,9 @@ public:
 		 * @return Pair of the edge currently pointed to and the ID of its
 		 *         other end.
 		 */
-		SmallPair<NodeID, Edge> operator*() const
+		std::pair<NodeID, Edge> operator*() const
 		{
-			return SmallPair<NodeID, Edge>(this->current, Edge(this->base[this->current], this->base_anno[this->current]));
+			return std::pair<NodeID, Edge>(this->current, Edge(this->base[this->current], this->base_anno[this->current]));
 		}
 
 		/**

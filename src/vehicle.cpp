@@ -2278,7 +2278,7 @@ void Vehicle::GetConsistFreeCapacities(SmallMap<CargoID, uint> &capacities) cons
 {
 	for (const Vehicle *v = this; v != nullptr; v = v->Next()) {
 		if (v->cargo_cap == 0) continue;
-		SmallPair<CargoID, uint> *pair = capacities.Find(v->cargo_type);
+		std::pair<CargoID, uint> *pair = capacities.Find(v->cargo_type);
 		if (pair == capacities.End()) {
 			capacities.push_back({v->cargo_type, v->cargo_cap - v->cargo.StoredCount()});
 		} else {

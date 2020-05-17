@@ -262,7 +262,7 @@ GRFParameterInfo::GRFParameterInfo(GRFParameterInfo &info) :
 	complete_labels(info.complete_labels)
 {
 	for (uint i = 0; i < info.value_names.size(); i++) {
-		SmallPair<uint32, GRFText *> *data = info.value_names.data() + i;
+		std::pair<uint32, GRFText *> *data = info.value_names.data() + i;
 		this->value_names.Insert(data->first, DuplicateGRFText(data->second));
 	}
 }
@@ -273,7 +273,7 @@ GRFParameterInfo::~GRFParameterInfo()
 	CleanUpGRFText(this->name);
 	CleanUpGRFText(this->desc);
 	for (uint i = 0; i < this->value_names.size(); i++) {
-		SmallPair<uint32, GRFText *> *data = this->value_names.data() + i;
+		std::pair<uint32, GRFText *> *data = this->value_names.data() + i;
 		CleanUpGRFText(data->second);
 	}
 }
