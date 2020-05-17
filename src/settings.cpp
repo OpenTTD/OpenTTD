@@ -414,6 +414,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 			return desc->def;
 		}
 
+		case SDT_STDSTRING:
 		case SDT_STRING: return orig_str;
 		case SDT_INTLIST: return str;
 		default: break;
@@ -565,6 +566,22 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 				}
 				break;
 
+			case SDT_STDSTRING:
+				switch (GetVarMemType(sld->conv)) {
+					case SLE_VAR_STR:
+					case SLE_VAR_STRQ:
+						if (p != nullptr) {
+							reinterpret_cast<std::string *>(ptr)->assign((const char *)p);
+						} else {
+							reinterpret_cast<std::string *>(ptr)->clear();
+						}
+						break;
+
+					default: NOT_REACHED();
+				}
+
+				break;
+
 			case SDT_INTLIST: {
 				if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
 					ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
@@ -697,6 +714,22 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 						break;
 
 					case SLE_VAR_CHAR: buf[0] = *(char*)ptr; buf[1] = '\0'; break;
+					default: NOT_REACHED();
+				}
+				break;
+
+			case SDT_STDSTRING:
+				switch (GetVarMemType(sld->conv)) {
+					case SLE_VAR_STR: strecpy(buf, reinterpret_cast<std::string *>(ptr)->c_str(), lastof(buf)); break;
+
+					case SLE_VAR_STRQ:
+						if (reinterpret_cast<std::string *>(ptr)->empty()) {
+							buf[0] = '\0';
+						} else {
+							seprintf(buf, lastof(buf), "\"%s\"", reinterpret_cast<std::string *>(ptr)->c_str());
+						}
+						break;
+
 					default: NOT_REACHED();
 				}
 				break;

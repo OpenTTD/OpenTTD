@@ -65,7 +65,7 @@ struct MusicSystem {
 	void BuildPlaylists();
 
 	void ChangePlaylist(PlaylistChoices pl);
-	void ChangeMusicSet(const char *set_name);
+	void ChangeMusicSet(const std::string &set_name);
 	void Shuffle();
 	void Unshuffle();
 
@@ -167,12 +167,10 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
  * Change to named music set, and reset playback.
  * @param set_name Name of music set to select
  */
-void MusicSystem::ChangeMusicSet(const char *set_name)
+void MusicSystem::ChangeMusicSet(const std::string &set_name)
 {
 	BaseMusic::SetSet(set_name);
-
-	free(BaseMusic::ini_set);
-	BaseMusic::ini_set = stredup(set_name);
+	BaseMusic::ini_set = set_name;
 
 	this->BuildPlaylists();
 	this->ChangePlaylist(this->selected_playlist);
@@ -433,8 +431,7 @@ void MusicLoop()
 void ChangeMusicSet(int index)
 {
 	if (BaseMusic::GetIndexOfUsedSet() == index) return;
-	const char *name = BaseMusic::GetSet(index)->name;
-	_music.ChangeMusicSet(name);
+	_music.ChangeMusicSet(BaseMusic::GetSet(index)->name);
 }
 
 /**
@@ -464,7 +461,7 @@ struct MusicTrackSelectionWindow : public Window {
 				SetDParam(0, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
 				break;
 			case WID_MTS_CAPTION:
-				SetDParamStr(0, BaseMusic::GetUsedSet()->name);
+				SetDParamStr(0, BaseMusic::GetUsedSet()->name.c_str());
 				break;
 		}
 	}
