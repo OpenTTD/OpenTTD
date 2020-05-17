@@ -18,23 +18,34 @@ void ReconsiderGameScriptLanguage();
 
 /** Container for the raw (unencoded) language strings of a language. */
 struct LanguageStrings {
-	const char *language; ///< Name of the language (base filename).
-	StringList lines;     ///< The lines of the file to pass into the parser/encoder.
+	std::string language; ///< Name of the language (base filename). Empty string if invalid.
+	StringList  lines;    ///< The lines of the file to pass into the parser/encoder.
 
-	LanguageStrings(const char *language, const char *end = nullptr);
-	~LanguageStrings();
+	LanguageStrings() {}
+	LanguageStrings(const std::string &lang) : language(lang) {}
+	LanguageStrings(const LanguageStrings &other) : language(other.language), lines(other.lines) {}
+	LanguageStrings(LanguageStrings &&other) : language(std::move(other.language)), lines(std::move(other.lines)) {}
+
+	bool IsValid() const { return !this->language.empty(); }
 };
 
 /** Container for all the game strings. */
 struct GameStrings {
-	uint version;                                  ///< The version of the language strings.
-	std::shared_ptr<LanguageStrings> cur_language; ///< The current (compiled) language.
+	uint version;                  ///< The version of the language strings.
+	LanguageStrings *cur_language; ///< The current (compiled) language.
 
-	std::vector<std::unique_ptr<LanguageStrings>> raw_strings;      ///< The raw strings per language, first must be English/the master language!.
-	std::vector<std::shared_ptr<LanguageStrings>> compiled_strings; ///< The compiled strings per language, first must be English/the master language!.
-	StringList string_names;                                        ///< The names of the compiled strings.
+	std::vector<LanguageStrings> raw_strings;      ///< The raw strings per language, first must be English/the master language!.
+	std::vector<LanguageStrings> compiled_strings; ///< The compiled strings per language, first must be English/the master language!.
+	StringList string_names;                       ///< The names of the compiled strings.
 
 	void Compile();
+
+	GameStrings() = default;
+
+	GameStrings(const GameStrings &) = delete;
+	GameStrings(GameStrings &&) = delete;
+	GameStrings &operator=(const GameStrings &) = delete;
+	GameStrings &operator=(GameStrings &&) = delete;
 };
 
 #endif /* GAME_TEXT_HPP */

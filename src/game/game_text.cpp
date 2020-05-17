@@ -59,69 +59,46 @@ void NORETURN CDECL strgen_fatal(const char *s, ...)
 }
 
 /**
- * Create a new container for language strings.
- * @param language The language name.
- * @param end If not nullptr, terminate \a language at this position.
- */
-LanguageStrings::LanguageStrings(const char *language, const char *end)
-{
-	this->language = stredup(language, end != nullptr ? end - 1 : nullptr);
-}
-
-/** Free everything. */
-LanguageStrings::~LanguageStrings()
-{
-	free(this->language);
-}
-
-/**
  * Read all the raw language strings from the given file.
  * @param file The file to read from.
  * @return The raw strings, or nullptr upon error.
  */
-std::unique_ptr<LanguageStrings> ReadRawLanguageStrings(const char *file)
+LanguageStrings ReadRawLanguageStrings(const std::string &file)
 {
-	try {
-		size_t to_read;
-		FILE *fh = FioFOpenFile(file, "rb", GAME_DIR, &to_read);
-		if (fh == nullptr) return nullptr;
+	size_t to_read;
+	FILE *fh = FioFOpenFile(file.c_str(), "rb", GAME_DIR, &to_read);
+	if (fh == nullptr) return LanguageStrings();
 
-		FileCloser fhClose(fh);
+	FileCloser fhClose(fh);
 
-		const char *langname = strrchr(file, PATHSEPCHAR);
-		if (langname == nullptr) {
-			langname = file;
+	auto pos = file.rfind(PATHSEPCHAR);
+	if (pos == std::string::npos) return LanguageStrings();
+	std::string langname = file.substr(pos + 1);
+
+	/* Check for invalid empty filename */
+	if (langname.empty() || langname.front() == '.') return LanguageStrings();
+
+	LanguageStrings ret(langname.substr(0, langname.find('.')));
+
+	char buffer[2048];
+	while (to_read != 0 && fgets(buffer, sizeof(buffer), fh) != nullptr) {
+		size_t len = strlen(buffer);
+
+		/* Remove trailing spaces/newlines from the string. */
+		size_t i = len;
+		while (i > 0 && (buffer[i - 1] == '\r' || buffer[i - 1] == '\n' || buffer[i - 1] == ' ')) i--;
+		buffer[i] = '\0';
+
+		ret.lines.emplace_back(buffer, i);
+
+		if (len > to_read) {
+			to_read = 0;
 		} else {
-			langname++;
+			to_read -= len;
 		}
-
-		/* Check for invalid empty filename */
-		if (*langname == '.' || *langname == 0) return nullptr;
-
-		std::unique_ptr<LanguageStrings> ret(new LanguageStrings(langname, strchr(langname, '.')));
-
-		char buffer[2048];
-		while (to_read != 0 && fgets(buffer, sizeof(buffer), fh) != nullptr) {
-			size_t len = strlen(buffer);
-
-			/* Remove trailing spaces/newlines from the string. */
-			size_t i = len;
-			while (i > 0 && (buffer[i - 1] == '\r' || buffer[i - 1] == '\n' || buffer[i - 1] == ' ')) i--;
-			buffer[i] = '\0';
-
-			ret->lines.emplace_back(buffer, i);
-
-			if (len > to_read) {
-				to_read = 0;
-			} else {
-				to_read -= len;
-			}
-		}
-
-		return ret;
-	} catch (...) {
-		return nullptr;
 	}
+
+	return ret;
 }
 
 
@@ -138,7 +115,7 @@ struct StringListReader : StringReader {
 	 * @param translation Are we reading a translation?
 	 */
 	StringListReader(StringData &data, const LanguageStrings &strings, bool master, bool translation) :
-			StringReader(data, strings.language, master, translation), p(strings.lines.begin()), end(strings.lines.end())
+			StringReader(data, strings.language.c_str(), master, translation), p(strings.lines.begin()), end(strings.lines.end())
 	{
 	}
 
@@ -215,12 +192,11 @@ struct StringNameWriter : HeaderWriter {
 class LanguageScanner : protected FileScanner {
 private:
 	GameStrings *gs;
-	char *exclude;
+	std::string exclude;
 
 public:
 	/** Initialise */
-	LanguageScanner(GameStrings *gs, const char *exclude) : gs(gs), exclude(stredup(exclude)) {}
-	~LanguageScanner() { free(exclude); }
+	LanguageScanner(GameStrings *gs, const std::string &exclude) : gs(gs), exclude(exclude) {}
 
 	/**
 	 * Scan.
@@ -232,10 +208,10 @@ public:
 
 	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename) override
 	{
-		if (strcmp(filename, exclude) == 0) return true;
+		if (exclude == filename) return true;
 
 		auto ls = ReadRawLanguageStrings(filename);
-		if (ls == nullptr) return false;
+		if (!ls.IsValid()) return false;
 
 		gs->raw_strings.push_back(std::move(ls));
 		return true;
@@ -249,17 +225,16 @@ public:
 GameStrings *LoadTranslations()
 {
 	const GameInfo *info = Game::GetInfo();
-	char filename[512];
-	strecpy(filename, info->GetMainScript(), lastof(filename));
-	char *e = strrchr(filename, PATHSEPCHAR);
-	if (e == nullptr) return nullptr;
-	e++; // Make 'e' point after the PATHSEPCHAR
+	std::string basename(info->GetMainScript());
+	auto e = basename.rfind(PATHSEPCHAR);
+	if (e == std::string::npos) return nullptr;
+	basename.erase(e + 1);
 
-	strecpy(e, "lang" PATHSEP "english.txt", lastof(filename));
-	if (!FioCheckFileExists(filename, GAME_DIR)) return nullptr;
+	std::string filename = basename + "lang" PATHSEP "english.txt";
+	if (!FioCheckFileExists(filename.c_str() , GAME_DIR)) return nullptr;
 
 	auto ls = ReadRawLanguageStrings(filename);
-	if (ls == nullptr) return nullptr;
+	if (!ls.IsValid()) return nullptr;
 
 	GameStrings *gs = new GameStrings();
 	try {
@@ -267,8 +242,7 @@ GameStrings *LoadTranslations()
 
 		/* Scan for other language files */
 		LanguageScanner scanner(gs, filename);
-		strecpy(e, "lang" PATHSEP, lastof(filename));
-		size_t len = strlen(filename);
+		std::string ldir = basename + "lang" PATHSEP;
 
 		const char *tar_filename = info->GetTarFile();
 		TarList::iterator iter;
@@ -281,14 +255,14 @@ GameStrings *LoadTranslations()
 				if (tar->second.tar_filename != iter->first) continue;
 
 				/* Check the path and extension. */
-				if (tar->first.size() <= len || tar->first.compare(0, len, filename) != 0) continue;
+				if (tar->first.size() <= ldir.size() || tar->first.compare(0, ldir.size(), ldir) != 0) continue;
 				if (tar->first.compare(tar->first.size() - 4, 4, ".txt") != 0) continue;
 
 				scanner.AddFile(tar->first.c_str(), 0, tar_filename);
 			}
 		} else {
 			/* Scan filesystem */
-			scanner.Scan(filename);
+			scanner.Scan(ldir.c_str());
 		}
 
 		gs->Compile();
@@ -303,7 +277,7 @@ GameStrings *LoadTranslations()
 void GameStrings::Compile()
 {
 	StringData data(32);
-	StringListReader master_reader(data, *this->raw_strings[0], true, false);
+	StringListReader master_reader(data, this->raw_strings[0], true, false);
 	master_reader.ParseFile();
 	if (_errors != 0) throw std::exception();
 
@@ -314,12 +288,12 @@ void GameStrings::Compile()
 
 	for (const auto &p : this->raw_strings) {
 		data.FreeTranslation();
-		StringListReader translation_reader(data, *p, false, strcmp(p->language, "english") != 0);
+		StringListReader translation_reader(data, p, false, p.language != "english");
 		translation_reader.ParseFile();
 		if (_errors != 0) throw std::exception();
 
-		this->compiled_strings.emplace_back(new LanguageStrings(p->language));
-		TranslationWriter writer(this->compiled_strings.back()->lines);
+		this->compiled_strings.emplace_back(p.language);
+		TranslationWriter writer(this->compiled_strings.back().lines);
 		writer.WriteLang(data);
 	}
 }
@@ -387,11 +361,11 @@ void ReconsiderGameScriptLanguage()
 	language++;
 
 	for (auto &p : _current_data->compiled_strings) {
-		if (strcmp(p->language, language) == 0) {
-			_current_data->cur_language = p;
+		if (p.language == language) {
+			_current_data->cur_language = &p;
 			return;
 		}
 	}
 
-	_current_data->cur_language = _current_data->compiled_strings[0];
+	_current_data->cur_language = &_current_data->compiled_strings[0];
 }
