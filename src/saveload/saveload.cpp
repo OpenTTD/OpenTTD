@@ -468,16 +468,6 @@ static inline void SlWriteUint64(uint64 x)
 }
 
 /**
- * Read in bytes from the file/data structure but don't do
- * anything with them, discarding them in effect
- * @param length The amount of bytes that is being treated this way
- */
-static inline void SlSkipBytes(size_t length)
-{
-	for (; length != 0; length--) SlReadByte();
-}
-
-/**
  * Read in the header descriptor of an object or an array.
  * If the highest bit is set (7), then the index is bigger than 127
  * elements, so use the next byte to read in the real value.
