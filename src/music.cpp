@@ -135,10 +135,10 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 			this->songinfo[i].filename = filename; // non-owned pointer
 
 			IniItem *item = catindex->GetItem(_music_file_names[i], false);
-			if (item != nullptr && !StrEmpty(item->value)) {
+			if (item != nullptr && item->value.has_value() && !item->value->empty()) {
 				/* Song has a CAT file index, assume it's MPS MIDI format */
 				this->songinfo[i].filetype = MTT_MPSMIDI;
-				this->songinfo[i].cat_index = atoi(item->value);
+				this->songinfo[i].cat_index = atoi(item->value->c_str());
 				char *songname = GetMusicCatEntryName(filename, this->songinfo[i].cat_index);
 				if (songname == nullptr) {
 					DEBUG(grf, 0, "Base music set song missing from CAT file: %s/%d", filename, this->songinfo[i].cat_index);
@@ -161,12 +161,12 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				while (*trimmed_filename == PATHSEPCHAR) trimmed_filename++;
 
 				item = names->GetItem(trimmed_filename, false);
-				if (item != nullptr && !StrEmpty(item->value)) break;
+				if (item != nullptr && item->value.has_value() && !item->value->empty()) break;
 			}
 
 			if (this->songinfo[i].filetype == MTT_STANDARDMIDI) {
-				if (item != nullptr && !StrEmpty(item->value)) {
-					strecpy(this->songinfo[i].songname, item->value, lastof(this->songinfo[i].songname));
+				if (item != nullptr && item->value.has_value() && !item->value->empty()) {
+					strecpy(this->songinfo[i].songname, item->value->c_str(), lastof(this->songinfo[i].songname));
 				} else {
 					DEBUG(grf, 0, "Base music set song name missing: %s", filename);
 					return false;
@@ -181,12 +181,12 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				this->songinfo[i].tracknr = tracknr++;
 			}
 
-			item = timingtrim->GetItem(trimmed_filename, false);
-			if (item != nullptr && !StrEmpty(item->value)) {
-				const char *endpos = strchr(item->value, ':');
-				if (endpos != nullptr) {
-					this->songinfo[i].override_start = atoi(item->value);
-					this->songinfo[i].override_end = atoi(endpos + 1);
+			item = trimmed_filename != nullptr ? timingtrim->GetItem(trimmed_filename, false) : nullptr;
+			if (item != nullptr && item->value.has_value() && !item->value->empty()) {
+				auto endpos = item->value->find(':');
+				if (endpos != std::string::npos) {
+					this->songinfo[i].override_start = atoi(item->value->c_str());
+					this->songinfo[i].override_end = atoi(item->value->c_str() + endpos + 1);
 				}
 			}
 		}

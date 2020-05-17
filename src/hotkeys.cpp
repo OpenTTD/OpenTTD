@@ -290,7 +290,7 @@ void HotkeyList::Load(IniFile *ini)
 		IniItem *item = group->GetItem(hotkey->name, false);
 		if (item != nullptr) {
 			hotkey->keycodes.clear();
-			if (item->value != nullptr) ParseHotkeys(hotkey, item->value);
+			if (item->value.has_value()) ParseHotkeys(hotkey, item->value->c_str());
 		}
 	}
 }
