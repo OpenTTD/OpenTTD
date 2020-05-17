@@ -63,10 +63,13 @@ Sub Lookup(ini_key, str_id, outfile)
 	For Each file In folder.Files
 		If UCase(FSO.GetExtensionName(file.Name)) = "TXT" Then
 			Dim f
-			Set f = FSO.OpenTextFile(file.Path)
+			Set f = CreateObject("ADODB.Stream")
+			f.Charset = "utf-8"
+			f.Open
+			f.LoadFromFile(file.Path)
 
-			Do Until f.atEndOfStream
-				line = f.ReadLine()
+			Do Until f.EOS
+				line = f.ReadText(-2)
 
 				If InStr(1, line, "##isocode ") = 1 Then
 					p = Split(line)
@@ -80,8 +83,9 @@ Sub Lookup(ini_key, str_id, outfile)
 					End If
 					i = i + 1
 				End If
-
 			Loop
+
+			f.Close
 		End If
 	Next
 
@@ -89,7 +93,7 @@ Sub Lookup(ini_key, str_id, outfile)
 	ISort output
 
 	For Each line In output
-		outfile.Write line & vbCrLf
+		outfile.WriteText line, 1
 	Next
 
 End Sub
@@ -100,7 +104,9 @@ Dim infile
 Set infile = FSO.OpenTextFile(inputfile)
 
 Dim outfile
-Set outfile = FSO.CreateTextFile(outputfile, True)
+Set outfile = CreateObject("ADODB.Stream")
+outfile.Charset = "utf-8"
+outfile.Open
 
 Do Until infile.atEndOfStream
 
@@ -109,15 +115,30 @@ Do Until infile.atEndOfStream
 	If InStr(1, line, "ORIG_EXTRA.GRF ") = 1 Then
 		p = Split(line, "=")
 		If Trim(p(1)) = "" Then
-			outfile.Write("ORIG_EXTRA.GRF    = " & GetExtraGrfHash() & vbCrLf)
+			outfile.WriteText "ORIG_EXTRA.GRF    = " & GetExtraGrfHash(), 1
 		Else
-			outfile.Write(line & vbCrLf)
+			outfile.WriteText line, 1
 		End If
 	ElseIf InStr(1, line, "!! ") = 1 Then
 		p = Split(line)
 		Lookup p(1), p(2), outfile
 	Else
-		outfile.Write(line & vbCrLf)
+		outfile.WriteText line, 1
 	End If
 
 Loop
+
+' UTF-8 Text ADO Stream includes BOM, so we need to remove it
+Dim outfile_noBOM
+Set outfile_noBOM = CreateObject("ADODB.Stream")
+outfile_noBOM.Type = 1
+outfile_noBOM.Open
+
+' Copy Text stream to Binary stream, skiping the BOM
+outfile.Position = 3
+outfile.CopyTo outfile_noBOM
+outfile.Close
+
+' Write the Binary stream
+outfile_noBOM.SaveToFile outputfile, 2
+outfile_noBOM.Close
