@@ -16,6 +16,7 @@
 #include "misc/countedptr.hpp"
 #include "fileio_type.h"
 #include "textfile_type.h"
+#include "newgrf_text.h"
 
 /** GRF config bit flags */
 enum GCF_Flags {
@@ -83,6 +84,16 @@ struct GRFIdentifier {
 	uint32 grfid;     ///< GRF ID (defined by Action 0x08)
 	uint8 md5sum[16]; ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
 
+	GRFIdentifier() = default;
+	GRFIdentifier(const GRFIdentifier &other) = default;
+	GRFIdentifier(GRFIdentifier &&other) = default;
+	GRFIdentifier(uint32 grfid, const uint8 *md5sum) : grfid(grfid)
+	{
+		MemCpyT(this->md5sum, md5sum, lengthof(this->md5sum));
+	}
+
+	GRFIdentifier& operator =(const GRFIdentifier &other) = default;
+
 	/**
 	 * Does the identification match the provided values?
 	 * @param grfid  Expected grfid.
@@ -121,9 +132,8 @@ enum GRFParameterType {
 struct GRFParameterInfo {
 	GRFParameterInfo(uint nr);
 	GRFParameterInfo(GRFParameterInfo &info);
-	~GRFParameterInfo();
-	struct GRFText *name;  ///< The name of this parameter
-	struct GRFText *desc;  ///< The description of this parameter
+	GRFTextList name;      ///< The name of this parameter
+	GRFTextList desc;      ///< The description of this parameter
 	GRFParameterType type; ///< The type of this parameter
 	uint32 min_value;      ///< The minimal value this parameter can have
 	uint32 max_value;      ///< The maximal value of this parameter
@@ -131,20 +141,12 @@ struct GRFParameterInfo {
 	byte param_nr;         ///< GRF parameter to store content in
 	byte first_bit;        ///< First bit to use in the GRF parameter
 	byte num_bit;          ///< Number of bits to use for this parameter
-	SmallMap<uint32, struct GRFText *> value_names; ///< Names for each value.
+	SmallMap<uint32, GRFTextList> value_names; ///< Names for each value.
 	bool complete_labels;  ///< True if all values have a label.
 
 	uint32 GetValue(struct GRFConfig *config) const;
 	void SetValue(struct GRFConfig *config, uint32 value);
 	void Finalize();
-};
-
-/** Reference counted wrapper around a GRFText pointer. */
-struct GRFTextWrapper : public SimpleCountedObject {
-	struct GRFText *text; ///< The actual text
-
-	GRFTextWrapper();
-	~GRFTextWrapper();
 };
 
 /** Information about GRF, used in the game and (part of it) in savegames */
@@ -156,9 +158,9 @@ struct GRFConfig : ZeroedMemoryAllocator {
 	GRFIdentifier ident;                        ///< grfid and md5sum to uniquely identify newgrfs
 	uint8 original_md5sum[16];                  ///< MD5 checksum of original file if only a 'compatible' file was loaded
 	char *filename;                             ///< Filename - either with or without full path
-	GRFTextWrapper *name;                       ///< NOSAVE: GRF name (Action 0x08)
-	GRFTextWrapper *info;                       ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
-	GRFTextWrapper *url;                        ///< NOSAVE: URL belonging to this GRF.
+	GRFTextWrapper name;                        ///< NOSAVE: GRF name (Action 0x08)
+	GRFTextWrapper info;                        ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
+	GRFTextWrapper url;                         ///< NOSAVE: URL belonging to this GRF.
 	GRFError *error;                            ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
 	uint32 version;                             ///< NOSAVE: Version a NewGRF can set so only the newest NewGRF is shown
@@ -229,7 +231,7 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 
 /** For communication about GRFs over the network */
 #define UNKNOWN_GRF_NAME_PLACEHOLDER "<Unknown>"
-GRFTextWrapper *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
+GRFTextWrapper FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
 
 void UpdateNewGRFScanStatus(uint num, const char *name);
 bool UpdateNewGRFConfigPalette(int32 p1 = 0);

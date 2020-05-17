@@ -14,26 +14,39 @@
 #include "strings_type.h"
 #include "core/smallvec_type.hpp"
 #include "table/control_codes.h"
+#include <utility>
+#include <vector>
+#include <string>
 
 /** This character, the thorn ('þ'), indicates a unicode string to NFO. */
 static const WChar NFO_UTF8_IDENTIFIER = 0x00DE;
 
+/** A GRF text with associated language ID. */
+struct GRFText {
+	byte langid;      ///< The language associated with this GRFText.
+	std::string text; ///< The actual (translated) text.
+};
+
+/** A GRF text with a list of translations. */
+typedef std::vector<GRFText> GRFTextList;
+/** Reference counted wrapper around a GRFText pointer. */
+typedef std::shared_ptr<GRFTextList> GRFTextWrapper;
+
 StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid, bool new_scheme, bool allow_newlines, const char *text_to_add, StringID def_string);
 StringID GetGRFStringID(uint32 grfid, StringID stringid);
-const char *GetGRFStringFromGRFText(const struct GRFText *text);
+const char *GetGRFStringFromGRFText(const GRFTextList &text_list);
+const char *GetGRFStringFromGRFText(const GRFTextWrapper &text);
 const char *GetGRFStringPtr(uint16 stringid);
 void CleanUpStrings();
 void SetCurrentGrfLangID(byte language_id);
 char *TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_newlines, const char *str, int *olen = nullptr, StringControlCode byte80 = SCC_NEWGRF_PRINT_WORD_STRING_ID);
-struct GRFText *DuplicateGRFText(struct GRFText *orig);
-void AddGRFTextToList(struct GRFText **list, struct GRFText *text_to_add);
-void AddGRFTextToList(struct GRFText **list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add);
-void AddGRFTextToList(struct GRFText **list, const char *text_to_add);
-void CleanUpGRFText(struct GRFText *grftext);
+void AddGRFTextToList(GRFTextList &list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add);
+void AddGRFTextToList(GRFTextWrapper &list, byte langid, uint32 grfid, bool allow_newlines, const char *text_to_add);
+void AddGRFTextToList(GRFTextWrapper &list, const char *text_to_add);
 
 bool CheckGrfLangID(byte lang_id, byte grf_version);
 
-void StartTextRefStackUsage(const GRFFile *grffile, byte numEntries, const uint32 *values = nullptr);
+void StartTextRefStackUsage(const struct GRFFile *grffile, byte numEntries, const uint32 *values = nullptr);
 void StopTextRefStackUsage();
 void RewindTextRefStack();
 bool UsingNewGRFTextStack();
