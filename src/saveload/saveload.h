@@ -865,6 +865,16 @@ void NORETURN SlErrorCorruptFmt(const char *format, ...);
 
 bool SaveloadCrashWithMissingNewGRFs();
 
+/**
+ * Read in bytes from the file/data structure but don't do
+ * anything with them, discarding them in effect
+ * @param length The amount of bytes that is being treated this way
+ */
+static inline void SlSkipBytes(size_t length)
+{
+	for (; length != 0; length--) SlReadByte();
+}
+
 extern char _savegame_format[8];
 extern bool _do_autosave;
 
