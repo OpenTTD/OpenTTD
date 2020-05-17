@@ -925,7 +925,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				list.emplace_back(new DropDownListStringItem(STR_NONE, -1, false));
 
 				for (uint i = 0; i < this->grf_presets.size(); i++) {
-					list.emplace_back(new DropDownListCharStringItem(this->grf_presets[i].c_str(), i, false));
+					list.emplace_back(new DropDownListCharStringItem(this->grf_presets[i], i, false));
 				}
 
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window

@@ -15,6 +15,7 @@
 #include "gfx_type.h"
 #include "textfile_type.h"
 #include "textfile_gui.h"
+#include <unordered_map>
 
 /* Forward declare these; can't do 'struct X' in functions as older GCCs barf on that */
 struct IniFile;
@@ -46,7 +47,7 @@ struct MD5File {
  */
 template <class T, size_t Tnum_files, bool Tsearch_in_tars>
 struct BaseSet {
-	typedef SmallMap<const char *, const char *> TranslatedStrings;
+	typedef std::unordered_map<std::string, std::string> TranslatedStrings;
 
 	/** Number of files in this set */
 	static const size_t NUM_FILES = Tnum_files;
@@ -57,7 +58,7 @@ struct BaseSet {
 	/** Internal names of the files in this set. */
 	static const char * const *file_names;
 
-	const char *name;              ///< The name of the base set
+	std::string name;              ///< The name of the base set
 	TranslatedStrings description; ///< Description of the base set
 	uint32 shortname;              ///< Four letter short variant of the name
 	uint32 version;                ///< The version of this base set
@@ -72,13 +73,6 @@ struct BaseSet {
 	/** Free everything we allocated */
 	~BaseSet()
 	{
-		free(this->name);
-
-		for (auto &pair : this->description) {
-			free(pair.first);
-			free(pair.second);
-		}
-
 		for (uint i = 0; i < NUM_FILES; i++) {
 			free(this->files[i].filename);
 			free(this->files[i].missing_warning);
@@ -116,20 +110,19 @@ struct BaseSet {
 	 * @param isocode the isocode to search for
 	 * @return the description
 	 */
-	const char *GetDescription(const char *isocode = nullptr) const
+	const char *GetDescription(const std::string &isocode) const
 	{
-		if (isocode != nullptr) {
+		if (!isocode.empty()) {
 			/* First the full ISO code */
-			for (const auto &pair : this->description) {
-				if (strcmp(pair.first, isocode) == 0) return pair.second;
-			}
+			auto desc = this->description.find(isocode);
+			if (desc != this->description.end()) return desc->second.c_str();
+
 			/* Then the first two characters */
-			for (const auto &pair : this->description) {
-				if (strncmp(pair.first, isocode, 2) == 0) return pair.second;
-			}
+			desc = this->description.find(isocode.substr(0, 2));
+			if (desc != this->description.end()) return desc->second.c_str();
 		}
 		/* Then fall back */
-		return this->description.front().second;
+		return this->description.at(std::string{}).c_str();
 	}
 
 	/**
@@ -183,7 +176,7 @@ protected:
 	static const char *GetExtension();
 public:
 	/** The set as saved in the config file. */
-	static const char *ini_set;
+	static std::string ini_set;
 
 	/**
 	 * Determine the graphics pack that has to be used.
@@ -203,7 +196,7 @@ public:
 
 	static Tbase_set *GetAvailableSets();
 
-	static bool SetSet(const char *name);
+	static bool SetSet(const std::string &name);
 	static char *GetSetsList(char *p, const char *last);
 	static int GetNumSets();
 	static int GetIndexOfUsedSet();
@@ -219,7 +212,7 @@ public:
 	static bool HasSet(const ContentInfo *ci, bool md5sum);
 };
 
-template <class Tbase_set> /* static */ const char *BaseMedia<Tbase_set>::ini_set;
+template <class Tbase_set> /* static */ std::string BaseMedia<Tbase_set>::ini_set;
 template <class Tbase_set> /* static */ const Tbase_set *BaseMedia<Tbase_set>::used_set;
 template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::available_sets;
 template <class Tbase_set> /* static */ Tbase_set *BaseMedia<Tbase_set>::duplicate_sets;

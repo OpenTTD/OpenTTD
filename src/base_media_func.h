@@ -42,16 +42,16 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 	IniItem *item;
 
 	fetch_metadata("name");
-	this->name = stredup(item->value->c_str());
+	this->name = *item->value;
 
 	fetch_metadata("description");
-	this->description[stredup("")] = stredup(item->value->c_str());
+	this->description[std::string{}] = *item->value;
 
 	/* Add the translations of the descriptions too. */
 	for (const IniItem *item = metadata->item; item != nullptr; item = item->next) {
 		if (item->name.compare(0, 12, "description.") != 0) continue;
 
-		this->description[stredup(item->name.c_str() + 12)] = stredup(item->value.value_or("").c_str());
+		this->description[item->name.substr(12)] = item->value.value_or("");
 	}
 
 	fetch_metadata("shortname");
@@ -179,7 +179,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 			/* The more complete set takes precedence over the version number. */
 			if ((duplicate->valid_files == set->valid_files && duplicate->version >= set->version) ||
 					duplicate->valid_files > set->valid_files) {
-				DEBUG(grf, 1, "Not adding %s (%i) as base " SET_TYPE " set (duplicate, %s)", set->name, set->version,
+				DEBUG(grf, 1, "Not adding %s (%i) as base " SET_TYPE " set (duplicate, %s)", set->name.c_str(), set->version,
 						duplicate->valid_files > set->valid_files ? "less valid files" : "lower version");
 				set->next = BaseMedia<Tbase_set>::duplicate_sets;
 				BaseMedia<Tbase_set>::duplicate_sets = set;
@@ -195,7 +195,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 				 * version number until a new game is started which isn't a big problem */
 				if (BaseMedia<Tbase_set>::used_set == duplicate) BaseMedia<Tbase_set>::used_set = set;
 
-				DEBUG(grf, 1, "Removing %s (%i) as base " SET_TYPE " set (duplicate, %s)", duplicate->name, duplicate->version,
+				DEBUG(grf, 1, "Removing %s (%i) as base " SET_TYPE " set (duplicate, %s)", duplicate->name.c_str(), duplicate->version,
 						duplicate->valid_files < set->valid_files ? "less valid files" : "lower version");
 				duplicate->next = BaseMedia<Tbase_set>::duplicate_sets;
 				BaseMedia<Tbase_set>::duplicate_sets = duplicate;
@@ -209,7 +209,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 			ret = true;
 		}
 		if (ret) {
-			DEBUG(grf, 1, "Adding %s (%i) as base " SET_TYPE " set", set->name, set->version);
+			DEBUG(grf, 1, "Adding %s (%i) as base " SET_TYPE " set", set->name.c_str(), set->version);
 		}
 	} else {
 		delete set;
@@ -226,18 +226,18 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
  * @return true if it could be loaded
  */
 template <class Tbase_set>
-/* static */ bool BaseMedia<Tbase_set>::SetSet(const char *name)
+/* static */ bool BaseMedia<Tbase_set>::SetSet(const std::string &name)
 {
 	extern void CheckExternalFiles();
 
-	if (StrEmpty(name)) {
+	if (name.empty()) {
 		if (!BaseMedia<Tbase_set>::DetermineBestSet()) return false;
 		CheckExternalFiles();
 		return true;
 	}
 
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != nullptr; s = s->next) {
-		if (strcmp(name, s->name) == 0) {
+		if (name == s->name) {
 			BaseMedia<Tbase_set>::used_set = s;
 			CheckExternalFiles();
 			return true;
@@ -257,7 +257,7 @@ template <class Tbase_set>
 {
 	p += seprintf(p, last, "List of " SET_TYPE " sets:\n");
 	for (const Tbase_set *s = BaseMedia<Tbase_set>::available_sets; s != nullptr; s = s->next) {
-		p += seprintf(p, last, "%18s: %s", s->name, s->GetDescription());
+		p += seprintf(p, last, "%18s: %s", s->name.c_str(), s->GetDescription({}));
 		int invalid = s->GetNumInvalid();
 		if (invalid != 0) {
 			int missing = s->GetNumMissing();
@@ -376,11 +376,11 @@ template <class Tbase_set>
  * @param set_type  the type of the BaseSet to instantiate
  */
 #define INSTANTIATE_BASE_MEDIA_METHODS(repl_type, set_type) \
-	template const char *repl_type::ini_set; \
+	template std::string repl_type::ini_set; \
 	template const char *repl_type::GetExtension(); \
 	template bool repl_type::AddFile(const char *filename, size_t pathlength, const char *tar_filename); \
 	template bool repl_type::HasSet(const struct ContentInfo *ci, bool md5sum); \
-	template bool repl_type::SetSet(const char *name); \
+	template bool repl_type::SetSet(const std::string &name); \
 	template char *repl_type::GetSetsList(char *p, const char *last); \
 	template int repl_type::GetNumSets(); \
 	template int repl_type::GetIndexOfUsedSet(); \
