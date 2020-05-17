@@ -179,7 +179,8 @@ uint _missing_extra_graphics = 0;
  */
 GRFError::GRFError(StringID severity, StringID message) :
 	message(message),
-	severity(severity)
+	severity(severity),
+	param_value()
 {
 }
 
@@ -188,21 +189,12 @@ GRFError::GRFError(StringID severity, StringID message) :
  * @param error The GRFError object to make a copy of.
  */
 GRFError::GRFError(const GRFError &error) :
-	ZeroedMemoryAllocator(),
 	custom_message(error.custom_message),
 	data(error.data),
 	message(error.message),
 	severity(error.severity)
 {
-	if (error.custom_message != nullptr) this->custom_message = stredup(error.custom_message);
-	if (error.data           != nullptr) this->data           = stredup(error.data);
 	memcpy(this->param_value, error.param_value, sizeof(this->param_value));
-}
-
-GRFError::~GRFError()
-{
-	free(this->custom_message);
-	free(this->data);
 }
 
 /**

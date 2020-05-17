@@ -109,16 +109,15 @@ struct GRFIdentifier {
 };
 
 /** Information about why GRF had problems during initialisation */
-struct GRFError : ZeroedMemoryAllocator {
+struct GRFError {
 	GRFError(StringID severity, StringID message = 0);
 	GRFError(const GRFError &error);
-	~GRFError();
 
-	char *custom_message;  ///< Custom message (if present)
-	char *data;            ///< Additional data for message and custom_message
-	StringID message;      ///< Default message
-	StringID severity;     ///< Info / Warning / Error / Fatal
-	uint32 param_value[2]; ///< Values of GRF parameters to show for message and custom_message
+	std::string custom_message; ///< Custom message (if present)
+	std::string data;           ///< Additional data for message and custom_message
+	StringID message;           ///< Default message
+	StringID severity;          ///< Info / Warning / Error / Fatal
+	uint32 param_value[2];      ///< Values of GRF parameters to show for message and custom_message
 };
 
 /** The possible types of a newgrf parameter. */

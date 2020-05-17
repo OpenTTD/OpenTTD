@@ -50,10 +50,10 @@ void ShowNewGRFError()
 		/* We only want to show fatal errors */
 		if (c->error == nullptr || c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL) continue;
 
-		SetDParam   (0, c->error->custom_message == nullptr ? c->error->message : STR_JUST_RAW_STRING);
-		SetDParamStr(1, c->error->custom_message);
+		SetDParam   (0, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
+		SetDParamStr(1, c->error->custom_message.c_str());
 		SetDParamStr(2, c->filename);
-		SetDParamStr(3, c->error->data);
+		SetDParamStr(3, c->error->data.c_str());
 		for (uint i = 0; i < lengthof(c->error->param_value); i++) {
 			SetDParam(4 + i, c->error->param_value[i]);
 		}
@@ -66,13 +66,13 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint right, uint 
 {
 	if (c->error != nullptr) {
 		char message[512];
-		SetDParamStr(0, c->error->custom_message); // is skipped by built-in messages
+		SetDParamStr(0, c->error->custom_message.c_str()); // is skipped by built-in messages
 		SetDParamStr(1, c->filename);
-		SetDParamStr(2, c->error->data);
+		SetDParamStr(2, c->error->data.c_str());
 		for (uint i = 0; i < lengthof(c->error->param_value); i++) {
 			SetDParam(3 + i, c->error->param_value[i]);
 		}
-		GetString(message, c->error->custom_message == nullptr ? c->error->message : STR_JUST_RAW_STRING, lastof(message));
+		GetString(message, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING, lastof(message));
 
 		SetDParamStr(0, message);
 		y = DrawStringMultiLine(x, right, y, bottom, c->error->severity);
