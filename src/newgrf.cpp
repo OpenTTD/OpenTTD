@@ -8113,7 +8113,7 @@ static bool ChangeGRFParamValueNames(ByteReader *buf)
 		byte langid = buf->ReadByte();
 		const char *name_string = buf->ReadString();
 
-		SmallPair<uint32, GRFText *> *val_name = _cur_parameter->value_names.Find(id);
+		std::pair<uint32, GRFText *> *val_name = _cur_parameter->value_names.Find(id);
 		if (val_name != _cur_parameter->value_names.End()) {
 			AddGRFTextToList(&val_name->second, langid, _cur.grfconfig->ident.grfid, false, name_string);
 		} else {

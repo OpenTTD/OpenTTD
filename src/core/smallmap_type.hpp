@@ -11,40 +11,26 @@
 #define SMALLMAP_TYPE_HPP
 
 #include "smallvec_type.hpp"
+#include <utility>
 
 /**
- * Simple pair of data. Both types have to be POD ("Plain Old Data")!
- * @tparam T Key type.
- * @tparam U Value type.
- */
-template <typename T, typename U>
-struct SmallPair {
-	T first;
-	U second;
-
-	/** Initializes this Pair with data */
-	inline SmallPair(const T &first, const U &second) : first(first), second(second) { }
-	SmallPair() = default;
-};
-
-/**
- * Implementation of simple mapping class. Both types have to be POD ("Plain Old Data")!
- * It has inherited accessors from SmallVector().
+ * Implementation of simple mapping class.
+ * It has inherited accessors from std::vector().
  * @tparam T Key type.
  * @tparam U Value type.
  * @tparam S Unit of allocation.
  *
- * @see SmallVector
+ * @see std::vector
  */
 template <typename T, typename U>
-struct SmallMap : std::vector<SmallPair<T, U> > {
-	typedef ::SmallPair<T, U> Pair;
+struct SmallMap : std::vector<std::pair<T, U> > {
+	typedef std::pair<T, U> Pair;
 	typedef Pair *iterator;
 	typedef const Pair *const_iterator;
 
-	/** Creates new SmallMap. Data are initialized in SmallVector constructor */
+	/** Creates new SmallMap. Data are initialized in std::vector constructor */
 	inline SmallMap() { }
-	/** Data are freed in SmallVector destructor */
+	/** Data are freed in std::vector destructor */
 	inline ~SmallMap() { }
 
 	/**

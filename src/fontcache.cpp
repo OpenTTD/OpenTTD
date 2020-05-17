@@ -211,7 +211,7 @@ protected:
 	int req_size;  ///< Requested font size.
 	int used_size; ///< Used font size.
 
-	typedef SmallMap<uint32, SmallPair<size_t, const void*> > FontTable; ///< Table with font table cache
+	typedef SmallMap<uint32, std::pair<size_t, const void*> > FontTable; ///< Table with font table cache
 	FontTable font_tables; ///< Cached font tables.
 
 	/** Container for information about a glyph. */
@@ -434,7 +434,7 @@ const void *TrueTypeFontCache::GetFontTable(uint32 tag, size_t &length)
 
 	const void *result = this->InternalGetFontTable(tag, length);
 
-	this->font_tables.Insert(tag, SmallPair<size_t, const void *>(length, result));
+	this->font_tables.Insert(tag, std::pair<size_t, const void *>(length, result));
 	return result;
 }
 

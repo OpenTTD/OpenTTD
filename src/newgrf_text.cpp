@@ -196,7 +196,7 @@ struct UnmappedChoiceList : ZeroedMemoryAllocator {
 	/** Clean everything up. */
 	~UnmappedChoiceList()
 	{
-		for (SmallPair<byte, char *> p : this->strings) {
+		for (std::pair<byte, char *> p : this->strings) {
 			free(p.second);
 		}
 	}

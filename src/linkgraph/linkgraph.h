@@ -17,6 +17,7 @@
 #include "../cargotype.h"
 #include "../date_func.h"
 #include "linkgraph_type.h"
+#include <utility>
 
 struct SaveLoad;
 class LinkGraph;
@@ -188,20 +189,20 @@ public:
 		 * to return something that implements operator->, but isn't a pointer
 		 * from operator->. A fake pointer.
 		 */
-		class FakePointer : public SmallPair<NodeID, Tedge_wrapper> {
+		class FakePointer : public std::pair<NodeID, Tedge_wrapper> {
 		public:
 
 			/**
 			 * Construct a fake pointer from a pair of NodeID and edge.
 			 * @param pair Pair to be "pointed" to (in fact shallow-copied).
 			 */
-			FakePointer(const SmallPair<NodeID, Tedge_wrapper> &pair) : SmallPair<NodeID, Tedge_wrapper>(pair) {}
+			FakePointer(const std::pair<NodeID, Tedge_wrapper> &pair) : std::pair<NodeID, Tedge_wrapper>(pair) {}
 
 			/**
 			 * Retrieve the pair by operator->.
 			 * @return Pair being "pointed" to.
 			 */
-			SmallPair<NodeID, Tedge_wrapper> *operator->() { return this; }
+			std::pair<NodeID, Tedge_wrapper> *operator->() { return this; }
 		};
 
 	public:
@@ -266,9 +267,9 @@ public:
 		 * Dereference with operator*.
 		 * @return Pair of current target NodeID and edge object.
 		 */
-		SmallPair<NodeID, Tedge_wrapper> operator*() const
+		std::pair<NodeID, Tedge_wrapper> operator*() const
 		{
-			return SmallPair<NodeID, Tedge_wrapper>(this->current, Tedge_wrapper(this->base[this->current]));
+			return std::pair<NodeID, Tedge_wrapper>(this->current, Tedge_wrapper(this->base[this->current]));
 		}
 
 		/**
