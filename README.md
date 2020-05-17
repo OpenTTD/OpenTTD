@@ -207,6 +207,9 @@ See the comments in the source files in `src/3rdparty/md5` for the complete lice
 The implementations of Posix `getaddrinfo` and `getnameinfo` for OS/2 in `src/3rdparty/os2` are distributed partly under the GNU Lesser General Public License 2.1, and partly under the (3-clause) BSD license.
 The exact licensing terms can be found in `src/3rdparty/os2/getaddrinfo.c` resp. `src/3rdparty/os2/getnameinfo.c`.
 
+The implementation of C++17 `std::optional` in `src/3rdparty/optional` is licensed under the Boost Software License - Version 1.0.
+See `src/3rdparty/optional/LICENSE_1_0.txt` for the complete license text.
+
 
 ## 4.0 Credits
 

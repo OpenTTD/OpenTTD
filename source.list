@@ -691,6 +691,10 @@ table/water_land.h
 3rdparty/md5/md5.cpp
 3rdparty/md5/md5.h
 
+# Compat
+3rdparty/optional/optional.hpp
+3rdparty/optional/ottd_optional.h
+
 # Script
 script/script_config.cpp
 script/script_config.hpp

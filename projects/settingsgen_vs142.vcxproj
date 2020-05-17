@@ -39,6 +39,7 @@
       <Inputs>%(Inputs)</Inputs>
     </CustomBuildStep>
     <ClCompile>
+      <AdditionalOptions>/std:c++latest /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MinSpace</Optimization>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
       <PreprocessorDefinitions>SETTINGSGEN;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
