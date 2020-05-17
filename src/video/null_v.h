@@ -18,7 +18,7 @@ private:
 	uint ticks; ///< Amount of ticks to run.
 
 public:
-	const char *Start(const char * const *param) override;
+	const char *Start(const StringList &param) override;
 
 	void Stop() override;
 

@@ -15,7 +15,7 @@
 /** OS/2's music player. */
 class MusicDriver_OS2 : public MusicDriver {
 public:
-	const char *Start(const char * const *param) override;
+	const char *Start(const StringList &param) override;
 
 	void Stop() override;
 

@@ -126,7 +126,7 @@ static StreamingVoiceContext* _voice_context = nullptr;
 * @return An error message if unsuccessful, or nullptr otherwise.
 *
 */
-const char *SoundDriver_XAudio2::Start(const char * const *parm)
+const char *SoundDriver_XAudio2::Start(const StringList &parm)
 {
 	HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 

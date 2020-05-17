@@ -15,7 +15,7 @@
 /** Implementation of the sound driver for Windows. */
 class SoundDriver_Win32 : public SoundDriver {
 public:
-	const char *Start(const char * const *param) override;
+	const char *Start(const StringList &param) override;
 
 	void Stop() override;
 	const char *GetName() const override { return "win32"; }

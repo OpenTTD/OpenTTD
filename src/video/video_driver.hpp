@@ -104,7 +104,7 @@ public:
 	}
 };
 
-extern char *_ini_videodriver;
+extern std::string _ini_videodriver;
 extern std::vector<Dimension> _resolutions;
 extern Dimension _cur_resolution;
 extern bool _rightclick_emulate;

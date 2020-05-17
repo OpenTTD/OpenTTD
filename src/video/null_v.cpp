@@ -17,7 +17,7 @@
 /** Factory for the null video driver. */
 static FVideoDriver_Null iFVideoDriver_Null;
 
-const char *VideoDriver_Null::Start(const char * const *parm)
+const char *VideoDriver_Null::Start(const StringList &parm)
 {
 #ifdef _MSC_VER
 	/* Disable the MSVC assertion message box. */

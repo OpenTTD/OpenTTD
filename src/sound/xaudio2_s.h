@@ -15,7 +15,7 @@
 /** Implementation of the XAudio2 sound driver. */
 class SoundDriver_XAudio2 : public SoundDriver {
 public:
-	const char *Start(const char * const *param) override;
+	const char *Start(const StringList &param) override;
 
 	void Stop() override;
 	const char *GetName() const override { return "xaudio2"; }

@@ -80,7 +80,7 @@ bool MusicDriver_OS2::IsSongPlaying()
 	return strcmp(buf, "playing") == 0 || strcmp(buf, "seeking") == 0;
 }
 
-const char *MusicDriver_OS2::Start(const char * const *parm)
+const char *MusicDriver_OS2::Start(const StringList &parm)
 {
 	return 0;
 }

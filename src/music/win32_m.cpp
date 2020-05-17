@@ -362,7 +362,7 @@ void MusicDriver_Win32::SetVolume(byte vol)
 	_midi.new_volume = vol;
 }
 
-const char *MusicDriver_Win32::Start(const char * const *parm)
+const char *MusicDriver_Win32::Start(const StringList &parm)
 {
 	DEBUG(driver, 2, "Win32-MIDI: Start: initializing");
 
