@@ -974,6 +974,8 @@
     <ClInclude Include="..\src\table\water_land.h" />
     <ClCompile Include="..\src\3rdparty\md5\md5.cpp" />
     <ClInclude Include="..\src\3rdparty\md5\md5.h" />
+    <ClInclude Include="..\src\3rdparty\optional\optional.hpp" />
+    <ClInclude Include="..\src\3rdparty\optional\ottd_optional.h" />
     <ClCompile Include="..\src\script\script_config.cpp" />
     <ClInclude Include="..\src\script\script_config.hpp" />
     <ClInclude Include="..\src\script\script_fatalerror.hpp" />

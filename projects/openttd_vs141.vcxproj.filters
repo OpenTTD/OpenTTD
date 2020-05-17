@@ -28,77 +28,80 @@
     <Filter Include="MD5">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000008}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Script">
+    <Filter Include="Compat">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000009}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Squirrel">
+    <Filter Include="Script">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000010}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Squirrel headers">
+    <Filter Include="Squirrel">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000011}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI Core">
+    <Filter Include="Squirrel headers">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000012}</UniqueIdentifier>
     </Filter>
-    <Filter Include="AI API">
+    <Filter Include="AI Core">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000013}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game API">
+    <Filter Include="AI API">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000014}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Core">
+    <Filter Include="Game API">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000015}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Script API">
+    <Filter Include="Game Core">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000016}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Script API Implementation">
+    <Filter Include="Script API">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000017}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Blitters">
+    <Filter Include="Script API Implementation">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000018}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Drivers">
+    <Filter Include="Blitters">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000019}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sprite loaders">
+    <Filter Include="Drivers">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000020}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewGRF">
+    <Filter Include="Sprite loaders">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000021}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Map Accessors">
+    <Filter Include="NewGRF">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000022}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Misc">
+    <Filter Include="Map Accessors">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000023}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Network Core">
+    <Filter Include="Misc">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000024}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Pathfinder">
+    <Filter Include="Network Core">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000025}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NPF">
+    <Filter Include="Pathfinder">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000026}</UniqueIdentifier>
     </Filter>
-    <Filter Include="YAPF">
+    <Filter Include="NPF">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000027}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Video">
+    <Filter Include="YAPF">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000028}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Music">
+    <Filter Include="Video">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000029}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sound">
+    <Filter Include="Music">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000030}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows files">
+    <Filter Include="Sound">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000031}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Threading">
+    <Filter Include="Windows files">
       <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000032}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading">
+      <UniqueIdentifier>{c76ff9f1-1e62-46d8-8d55-000000000033}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2009,6 +2012,12 @@
     </ClCompile>
     <ClInclude Include="..\src\3rdparty\md5\md5.h">
       <Filter>MD5</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\3rdparty\optional\optional.hpp">
+      <Filter>Compat</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\3rdparty\optional\ottd_optional.h">
+      <Filter>Compat</Filter>
     </ClInclude>
     <ClCompile Include="..\src\script\script_config.cpp">
       <Filter>Script</Filter>

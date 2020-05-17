@@ -100,7 +100,7 @@
       </HeaderFileName>
     </Midl>
     <ClCompile>
-      <AdditionalOptions>/J /Zc:throwingNew /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/J /Zc:throwingNew /std:c++latest /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -168,7 +168,7 @@
       </HeaderFileName>
     </Midl>
     <ClCompile>
-      <AdditionalOptions>/J /Zc:throwingNew /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/J /Zc:throwingNew /std:c++latest /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -223,7 +223,7 @@
       </HeaderFileName>
     </Midl>
     <ClCompile>
-      <AdditionalOptions>/J /Zc:throwingNew /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/J /Zc:throwingNew /std:c++latest /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Full</Optimization>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -289,7 +289,7 @@
       </HeaderFileName>
     </Midl>
     <ClCompile>
-      <AdditionalOptions>/J /Zc:throwingNew /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/J /Zc:throwingNew /std:c++latest /Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalIncludeDirectories>..\objs\langs;..\objs\settings;..\src\3rdparty\squirrel\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
