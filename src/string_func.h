@@ -25,6 +25,7 @@
 #define STRING_FUNC_H
 
 #include <stdarg.h>
+#include <iosfwd>
 
 #include "core/bitmath_func.hpp"
 #include "string_type.h"
@@ -79,6 +80,7 @@ bool IsValidChar(WChar key, CharSetFilter afilter);
 
 size_t Utf8Decode(WChar *c, const char *s);
 size_t Utf8Encode(char *buf, WChar c);
+size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, WChar c);
 size_t Utf8TrimString(char *s, size_t maxlen);
 
 
@@ -86,6 +88,14 @@ static inline WChar Utf8Consume(const char **s)
 {
 	WChar c;
 	*s += Utf8Decode(&c, *s);
+	return c;
+}
+
+template <class Titr>
+static inline WChar Utf8Consume(Titr &s)
+{
+	WChar c;
+	s += Utf8Decode(&c, &*s);
 	return c;
 }
 
