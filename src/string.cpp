@@ -18,6 +18,7 @@
 
 #include <stdarg.h>
 #include <ctype.h> /* required for tolower() */
+#include <sstream>
 
 #ifdef _MSC_VER
 #include <errno.h> // required by vsnprintf implementation for MSVC
@@ -479,11 +480,13 @@ size_t Utf8Decode(WChar *c, const char *s)
 
 /**
  * Encode a unicode character and place it in the buffer.
+ * @tparam T Type of the buffer.
  * @param buf Buffer to place character.
  * @param c   Unicode character to encode.
  * @return Number of characters in the encoded sequence.
  */
-size_t Utf8Encode(char *buf, WChar c)
+template <class T>
+inline size_t Utf8Encode(T buf, WChar c)
 {
 	if (c < 0x80) {
 		*buf = c;
@@ -508,6 +511,16 @@ size_t Utf8Encode(char *buf, WChar c)
 	/* DEBUG(misc, 1, "[utf8] can't UTF-8 encode value 0x%X", c); */
 	*buf = '?';
 	return 1;
+}
+
+size_t Utf8Encode(char *buf, WChar c)
+{
+	return Utf8Encode<char *>(buf, c);
+}
+
+size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, WChar c)
+{
+	return Utf8Encode<std::ostreambuf_iterator<char> &>(buf, c);
 }
 
 /**
