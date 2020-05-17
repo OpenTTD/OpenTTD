@@ -5248,7 +5248,7 @@ static void NewSpriteGroup(ByteReader *buf)
 						group->num_input = buf->ReadByte();
 						if (group->num_input > lengthof(group->subtract_input)) {
 							GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
-							error->data = stredup("too many inputs (max 16)");
+							error->data = "too many inputs (max 16)";
 							return;
 						}
 						for (uint i = 0; i < group->num_input; i++) {
@@ -5261,7 +5261,7 @@ static void NewSpriteGroup(ByteReader *buf)
 								group->version = 0xFF;
 							} else if (std::find(group->cargo_input, group->cargo_input + i, cargo) != group->cargo_input + i) {
 								GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
-								error->data = stredup("duplicate input cargo");
+								error->data = "duplicate input cargo";
 								return;
 							}
 							group->cargo_input[i] = cargo;
@@ -5270,7 +5270,7 @@ static void NewSpriteGroup(ByteReader *buf)
 						group->num_output = buf->ReadByte();
 						if (group->num_output > lengthof(group->add_output)) {
 							GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
-							error->data = stredup("too many outputs (max 16)");
+							error->data = "too many outputs (max 16)";
 							return;
 						}
 						for (uint i = 0; i < group->num_output; i++) {
@@ -5281,7 +5281,7 @@ static void NewSpriteGroup(ByteReader *buf)
 								group->version = 0xFF;
 							} else if (std::find(group->cargo_output, group->cargo_output + i, cargo) != group->cargo_output + i) {
 								GRFError *error = DisableGrf(STR_NEWGRF_ERROR_INDPROD_CALLBACK);
-								error->data = stredup("duplicate output cargo");
+								error->data = "duplicate output cargo";
 								return;
 							}
 							group->cargo_output[i] = cargo;
@@ -6517,7 +6517,7 @@ static void CfgApply(ByteReader *buf)
 static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 {
 	GRFError *error = DisableGrf(STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC, c);
-	error->data = stredup(_cur.grfconfig->GetName());
+	error->data = _cur.grfconfig->GetName();
 }
 
 /* Action 0x07
@@ -6895,10 +6895,10 @@ static void GRFLoadError(ByteReader *buf)
 		if (buf->HasData()) {
 			const char *message = buf->ReadString();
 
-			error->custom_message = stredup(TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, message, SCC_RAW_STRING_POINTER).c_str());
+			error->custom_message = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, message, SCC_RAW_STRING_POINTER);
 		} else {
 			grfmsg(7, "GRFLoadError: No custom message supplied.");
-			error->custom_message = stredup("");
+			error->custom_message.clear();
 		}
 	} else {
 		error->message = msgstr[message_id];
@@ -6907,10 +6907,10 @@ static void GRFLoadError(ByteReader *buf)
 	if (buf->HasData()) {
 		const char *data = buf->ReadString();
 
-		error->data = stredup(TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, data).c_str());
+		error->data = TranslateTTDPatchCodes(_cur.grffile->grfid, lang, true, data);
 	} else {
 		grfmsg(7, "GRFLoadError: No message data supplied.");
-		error->data = stredup("");
+		error->data.clear();
 	}
 
 	/* Only two parameter numbers can be used in the string. */
@@ -7771,7 +7771,7 @@ static void TranslateGRFStrings(ByteReader *buf)
 
 		char tmp[256];
 		GetString(tmp, STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE, lastof(tmp));
-		error->data = stredup(tmp);
+		error->data = tmp;
 
 		return;
 	}
