@@ -53,7 +53,7 @@ struct Textbuf {
 	void DeleteAll();
 	bool InsertClipboard();
 
-	bool InsertChar(uint32 key);
+	bool InsertChar(WChar key);
 	bool InsertString(const char *str, bool marked, const char *caret = nullptr, const char *insert_location = nullptr, const char *replacement_end = nullptr);
 
 	bool DeleteChar(uint16 keycode);
