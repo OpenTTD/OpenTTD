@@ -434,7 +434,7 @@ bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 			CargoArray town_cargo_accepted = GetAcceptanceAroundTiles(dst_town->xy, 1, 1, SUBSIDY_TOWN_CARGO_RADIUS);
 
 			/* Check if the town can accept this cargo. */
-			if (town_cargo_accepted[cid] >= 8) return false;
+			if (town_cargo_accepted[cid] < 8) return false;
 
 			dst = dst_town->index;
 			break;
