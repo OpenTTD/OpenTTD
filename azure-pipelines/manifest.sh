@@ -65,6 +65,7 @@ output_files() {
         if [ ! -e ${FOLDER}/${filename}.md5sum ] || [ ! -e ${FOLDER}/${filename}.sha1sum ] || [ ! -e ${FOLDER}/${filename}.sha256sum ]; then
             echo "ERROR: missing checksum file for ${filename}" 1>&2
             error="y"
+            shift
             continue
         fi
 
