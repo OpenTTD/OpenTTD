@@ -65,11 +65,12 @@ Sub Lookup(ini_key, str_id, outfile)
 			Dim f
 			Set f = CreateObject("ADODB.Stream")
 			f.Charset = "utf-8"
+			f.LineSeparator = 10 ' Assume lines end with \n even for \r\n files
 			f.Open
 			f.LoadFromFile(file.Path)
 
 			Do Until f.EOS
-				line = f.ReadText(-2)
+				line = Replace(f.ReadText(-2), Chr(13), "") ' Read a line and remove any \r
 
 				If InStr(1, line, "##isocode ") = 1 Then
 					p = Split(line)
