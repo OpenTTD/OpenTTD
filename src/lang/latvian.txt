@@ -1253,7 +1253,7 @@ STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Lauj uzņēmumi
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Atļaut pirkt pārvadājumu izņēmuma tiesības: {STRING}
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Ja uzņēmums pērk pārvadājumu izņēmuma tiesības pilsētā, pretinieku stacijas (pasažieru un kravas) veselu gadu nesaņems nekādu kravu
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Atļaut ēku finansēšanu: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Atļauj uzņēmumiem dot naudu pilsētām jaunu ēku finansēšanai
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Atļauj uzņēmumiem dot naudu apdzīvotām vietām jaunu ēku finansēšanai
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Atļaut finansēt vietējo ceļu atjaunošanu: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Atļaut uzņēmumiem dot pilsētām naudu ceļu rekonstrukcijai, lai kaitētu ceļu pakalpojumiem pilsētās
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Atļaut pārsūtīt naudu citiem uzņēmumiem: {STRING}
@@ -1641,12 +1641,12 @@ STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :mazs
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :vidējs
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :liels
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :ļoti liels
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :Pilsētu daļa kas kļūs par lielpilsētām: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Pilsētu daudzums kas kļūs par lielpilsētām, tādēļ tās sākumā ir lielākas un attīstās ātrāk
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Apdzīvotu vietu proporcija, kas kļūs par pilsētām: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Apdzīvotu vietu daudzums kas kļūs par pilsētām; tādēļ apdzīvota vieta, kas sākumā ir lielāka, augs straujāk
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 pret {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :neviena
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Lielpilsētu sākuma lieluma reizinātājs: {STRING}
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Lielpilsētu vidējais lielums attiecībā pret parastām pilsētām spēles sākumā
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Pilsētu sākuma lieluma reizinātājs: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Pilsētu vidējais lielums attiecībā pret parastām apdzīvotām vietām spēles sākumā
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Atjaunināt sadales grafu ik pa {STRING}{NBSP}dien{P 0:2 ai ām ām}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Laiks starp secīgām saišu grafa pārrēķināšanām. Katra pārrēķināšana izskaitļo plānos vienai grafa komponentei. Tas nozīmē, ka šim iestatījumam vērtība X nenozīmē, ka viss grafs tiks atjaunināts ir pēc X dienām. Tikai dažas komponentes tiks pārrēķinātas. Jo mazāka iestatītā vērtība, jo vairāk laika CPU pavadīs rēķinot. Jo lielāka iestatītā vērtība, jo ilgāk nevarēs sākties kravu izplatīšana jaunos maršrutos.
@@ -2503,7 +2503,7 @@ STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Lidostas
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}{NUM}. izkārtojums
 
 STR_AIRPORT_SMALL                                               :Maza
-STR_AIRPORT_CITY                                                :Lielpilsēta
+STR_AIRPORT_CITY                                                :Pilsēta
 STR_AIRPORT_METRO                                               :Metropolitēns
 STR_AIRPORT_INTERNATIONAL                                       :Starptautiskā lidosta
 STR_AIRPORT_COMMUTER                                            :Ikdienas satiksme
@@ -2579,8 +2579,8 @@ STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Vidējs
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Liels
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Nejaušs
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Izvēlēties pilsētas izmērus
-STR_FOUND_TOWN_CITY                                             :{BLACK}Lielpilsēta
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Lielpilsētas attīstās ātrāk kā pilsētas{}Atkarībā no iestatījumiem, dibināšanas brīdī tās ir lielākas
+STR_FOUND_TOWN_CITY                                             :{BLACK}Pilsēta
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Pilsētas aug straujāk kā parastas apdzīvotās vietas{}Atkarībā no iestatījumiem, dibināšanas brīdī pilsētas ir lielākas
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Pilsētas ceļu izskats:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Atlasīt šajā pilsētā lietojamo ceļu izkārtojumu
@@ -3108,7 +3108,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Pasaules
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (lielpilsēta)
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (pilsēta)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Iedzīvotāji: {ORANGE}{COMMA}{BLACK}  Mājas: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} iepriekšējā mēnesī: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Krava nepieciešama pilsētas attīstībai:
