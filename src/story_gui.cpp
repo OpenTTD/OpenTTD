@@ -23,25 +23,46 @@
 #include "viewport_func.h"
 #include "window_func.h"
 #include "company_base.h"
+#include "tilehighlight_func.h"
+#include "vehicle_base.h"
 
 #include "widgets/story_widget.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
 
+#include <numeric>
+
 #include "safeguards.h"
+
+static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor);
 
 typedef GUIList<const StoryPage*> GUIStoryPageList;
 typedef GUIList<const StoryPageElement*> GUIStoryPageElementList;
 
 struct StoryBookWindow : Window {
 protected:
+	struct LayoutCacheElement {
+		const StoryPageElement *pe;
+		Rect bounds;
+	};
+	typedef std::vector<LayoutCacheElement> LayoutCache;
+
+	enum class ElementFloat {
+		None,
+		Left,
+		Right,
+	};
+
 	Scrollbar *vscroll;                ///< Scrollbar of the page text.
+	mutable LayoutCache layout_cache;  ///< Cached element layout.
 
 	GUIStoryPageList story_pages;      ///< Sorted list of pages.
 	GUIStoryPageElementList story_page_elements; ///< Sorted list of page elements that belong to the current page.
 	StoryPageID selected_page_id;      ///< Pool index of selected page.
 	char selected_generic_title[255];  ///< If the selected page doesn't have a custom title, this buffer is used to store a generic page title.
+
+	StoryPageElementID active_button_id; ///< Which button element the player is currently using
 
 	static GUIStoryPageList::SortFunction * const page_sorter_funcs[];
 	static GUIStoryPageElementList::SortFunction * const page_element_sorter_funcs[];
@@ -91,6 +112,7 @@ protected:
 		}
 
 		this->story_page_elements.Sort();
+		this->InvalidateStoryPageElementLayout();
 	}
 
 	/** Sort story page elements by order value. */
@@ -174,6 +196,8 @@ protected:
 		this->story_page_elements.ForceRebuild();
 		this->BuildStoryPageElementList();
 
+		if (this->active_button_id != INVALID_STORY_PAGE_ELEMENT) ResetObjectToPlace();
+
 		this->vscroll->SetCount(this->GetContentHeight());
 		this->SetWidgetDirty(WID_SB_SCROLLBAR);
 		this->SetWidgetDirty(WID_SB_SEL_PAGE);
@@ -251,9 +275,9 @@ protected:
 	/**
 	 * Get the width available for displaying content on the page panel.
 	 */
-	uint GetAvailablePageContentWidth()
+	uint GetAvailablePageContentWidth() const
 	{
-		return this->GetWidget<NWidgetCore>(WID_SB_PAGE_PANEL)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMERECT_RIGHT;
+		return this->GetWidget<NWidgetCore>(WID_SB_PAGE_PANEL)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT - 1;
 	}
 
 	/**
@@ -304,20 +328,26 @@ protected:
 	 * @param max_width Available width to display content.
 	 * @return the height in pixels.
 	 */
-	uint GetPageElementHeight(const StoryPageElement &pe, int max_width)
+	uint GetPageElementHeight(const StoryPageElement &pe, int max_width) const
 	{
 		switch (pe.type) {
 			case SPET_TEXT:
 				SetDParamStr(0, pe.text);
 				return GetStringHeight(STR_BLACK_RAW_STRING, max_width);
-				break;
 
 			case SPET_GOAL:
 			case SPET_LOCATION: {
 				Dimension sprite_dim = GetSpriteSize(GetPageElementSprite(pe));
 				return sprite_dim.height;
-				break;
 			}
+
+			case SPET_BUTTON_PUSH:
+			case SPET_BUTTON_TILE:
+			case SPET_BUTTON_VEHICLE: {
+				Dimension dim = GetStringBoundingBox(pe.text, FS_NORMAL);
+				return dim.height + WD_BEVEL_TOP + WD_BEVEL_BOTTOM + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
+			}
+
 			default:
 				NOT_REACHED();
 		}
@@ -325,27 +355,161 @@ protected:
 	}
 
 	/**
-	 * Get the total height of the content displayed
-	 * in this window.
+	 * Get the float style of a page element.
+	 * @param pe The story page element.
+	 * @return The float style.
+	 */
+	ElementFloat GetPageElementFloat(const StoryPageElement &pe) const
+	{
+		switch (pe.type) {
+			case SPET_BUTTON_PUSH:
+			case SPET_BUTTON_TILE:
+			case SPET_BUTTON_VEHICLE: {
+				StoryPageButtonFlags flags = StoryPageButtonData{ pe.referenced_id }.GetFlags();
+				if (flags & SPBF_FLOAT_LEFT) return ElementFloat::Left;
+				if (flags & SPBF_FLOAT_RIGHT) return ElementFloat::Right;
+				return ElementFloat::None;
+			}
+
+			default:
+				return ElementFloat::None;
+		}
+	}
+
+	/**
+	 * Get the width a page element would use if it was floating left or right.
+	 * @param pe The story page element.
+	 * @return The calculated width of the element.
+	 */
+	int GetPageElementFloatWidth(const StoryPageElement &pe) const
+	{
+		switch (pe.type) {
+			case SPET_BUTTON_PUSH:
+			case SPET_BUTTON_TILE:
+			case SPET_BUTTON_VEHICLE: {
+				Dimension dim = GetStringBoundingBox(pe.text, FS_NORMAL);
+				return dim.width + WD_BEVEL_LEFT + WD_BEVEL_RIGHT + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
+			}
+
+			default:
+				NOT_REACHED(); // only buttons can float
+		}
+	}
+
+	/** Invalidate the current page layout */
+	void InvalidateStoryPageElementLayout()
+	{
+		this->layout_cache.clear();
+	}
+
+	/** Create the page layout if it is missing */
+	void EnsureStoryPageElementLayout() const
+	{
+		/* Assume if the layout cache has contents it is valid */
+		if (!this->layout_cache.empty()) return;
+
+		StoryPage *page = this->GetSelPage();
+		if (page == nullptr) return;
+		int max_width = GetAvailablePageContentWidth();
+		int element_dist = FONT_HEIGHT_NORMAL;
+
+		/* Make space for the header */
+		int main_y = GetHeadHeight(max_width) + element_dist;
+
+		/* Current bottom of left/right column */
+		int left_y = main_y;
+		int right_y = main_y;
+		/* Current width of left/right column, 0 indicates no content in column */
+		int left_width = 0;
+		int right_width = 0;
+		/* Indexes into element cache for yet unresolved floats */
+		std::vector<size_t> left_floats;
+		std::vector<size_t> right_floats;
+
+		/* Build layout */
+		for (const StoryPageElement *pe : this->story_page_elements) {
+			ElementFloat fl = this->GetPageElementFloat(*pe);
+
+			if (fl == ElementFloat::None) {
+				/* Verify available width */
+				const int min_required_width = 10 * FONT_HEIGHT_NORMAL;
+				int left_offset = (left_width == 0) ? 0 : (left_width + element_dist);
+				int right_offset = (right_width == 0) ? 0 : (right_width + element_dist);
+				if (left_offset + right_offset + min_required_width >= max_width) {
+					/* Width of floats leave too little for main content, push down */
+					main_y = max(main_y, left_y);
+					main_y = max(main_y, right_y);
+					left_width = right_width = 0;
+					left_offset = right_offset = 0;
+					/* Do not add element_dist here, to keep together elements which were supposed to float besides each other. */
+				}
+				/* Determine height */
+				const int available_width = max_width - left_offset - right_offset;
+				const int height = GetPageElementHeight(*pe, available_width);
+				/* Check for button that needs extra margin */
+				if (left_offset == 0 && right_offset == 0) {
+					switch (pe->type) {
+						case SPET_BUTTON_PUSH:
+						case SPET_BUTTON_TILE:
+						case SPET_BUTTON_VEHICLE:
+							left_offset = right_offset = available_width / 5;
+							break;
+						default:
+							break;
+					}
+				}
+				/* Position element in main column */
+				LayoutCacheElement ce{ pe };
+				ce.bounds.left = left_offset;
+				ce.bounds.right = max_width - right_offset;
+				ce.bounds.top = main_y;
+				main_y += height;
+				ce.bounds.bottom = main_y;
+				this->layout_cache.push_back(ce);
+				main_y += element_dist;
+				/* Clear all floats */
+				left_width = right_width = 0;
+				left_y = right_y = main_y = max(main_y, max(left_y, right_y));
+				left_floats.clear();
+				right_floats.clear();
+			} else {
+				/* Prepare references to correct column */
+				int &cur_width = (fl == ElementFloat::Left) ? left_width : right_width;
+				int &cur_y = (fl == ElementFloat::Left) ? left_y : right_y;
+				std::vector<size_t> &cur_floats = (fl == ElementFloat::Left) ? left_floats : right_floats;
+				/* Position element */
+				cur_width = max(cur_width, this->GetPageElementFloatWidth(*pe));
+				LayoutCacheElement ce{ pe };
+				ce.bounds.left = (fl == ElementFloat::Left) ? 0 : (max_width - cur_width);
+				ce.bounds.right = (fl == ElementFloat::Left) ? cur_width : max_width;
+				ce.bounds.top = cur_y;
+				cur_y += GetPageElementHeight(*pe, cur_width);
+				ce.bounds.bottom = cur_y;
+				cur_floats.push_back(this->layout_cache.size());
+				this->layout_cache.push_back(ce);
+				cur_y += element_dist;
+				/* Update floats in column to all have the same width */
+				for (size_t index : cur_floats) {
+					LayoutCacheElement &ce = this->layout_cache[index];
+					ce.bounds.left = (fl == ElementFloat::Left) ? 0 : (max_width - cur_width);
+					ce.bounds.right = (fl == ElementFloat::Left) ? cur_width : max_width;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Get the total height of the content displayed in this window.
 	 * @return the height in pixels
 	 */
 	uint GetContentHeight()
 	{
-		StoryPage *page = this->GetSelPage();
-		if (page == nullptr) return 0;
-		int max_width = GetAvailablePageContentWidth();
-		uint element_vertical_dist = FONT_HEIGHT_NORMAL;
+		this->EnsureStoryPageElementLayout();
 
-		/* Head */
-		uint height = GetHeadHeight(max_width);
+		/* The largest bottom coordinate of any element is the height of the content */
+		uint max_y = std::accumulate(this->layout_cache.begin(), this->layout_cache.end(), 0, [](uint max_y, const LayoutCacheElement &ce) -> uint { return max<uint>(max_y, ce.bounds.bottom); });
 
-		/* Body */
-		for (const StoryPageElement *pe : this->story_page_elements) {
-			height += element_vertical_dist;
-			height += GetPageElementHeight(*pe, max_width);
-		}
-
-		return height;
+		return max_y;
 	}
 
 	/**
@@ -396,6 +560,39 @@ protected:
 				ShowGoalsList((CompanyID)this->window_number);
 				break;
 
+			case SPET_BUTTON_PUSH:
+				if (this->active_button_id != INVALID_STORY_PAGE_ELEMENT) ResetObjectToPlace();
+				this->active_button_id = pe.index;
+				this->SetTimeout();
+				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+
+				DoCommandP(0, pe.index, 0, CMD_STORY_PAGE_BUTTON);
+				break;
+
+			case SPET_BUTTON_TILE:
+				if (this->active_button_id == pe.index) {
+					ResetObjectToPlace();
+					this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+				} else {
+					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{ pe.referenced_id }.GetCursor());
+					SetObjectToPlaceWnd(cursor, PAL_NONE, HT_RECT, this);
+					this->active_button_id = pe.index;
+				}
+				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+				break;
+
+			case SPET_BUTTON_VEHICLE:
+				if (this->active_button_id == pe.index) {
+					ResetObjectToPlace();
+					this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+				} else {
+					CursorID cursor = TranslateStoryPageButtonCursor(StoryPageButtonData{ pe.referenced_id }.GetCursor());
+					SetObjectToPlaceWnd(cursor, PAL_NONE, HT_VEHICLE, this);
+					this->active_button_id = pe.index;
+				}
+				this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+				break;
+
 			default:
 				NOT_REACHED();
 		}
@@ -422,6 +619,8 @@ public:
 		this->selected_generic_title[0] = '\0';
 		this->selected_page_id = INVALID_STORY_PAGE;
 
+		this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+
 		this->OnInvalidateData(-1);
 	}
 
@@ -443,6 +642,8 @@ public:
 	void SetSelectedPage(uint16 page_index)
 	{
 		if (this->selected_page_id != page_index) {
+			if (this->active_button_id) ResetObjectToPlace();
+			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
 			this->selected_page_id = page_index;
 			this->RefreshSelectedPage();
 			this->UpdatePrevNextDisabledState();
@@ -504,7 +705,8 @@ public:
 
 		/* Draw content (now coordinates given to Draw** are local to the new clipping region). */
 		int line_height = FONT_HEIGHT_NORMAL;
-		int y_offset = - this->vscroll->GetPosition();
+		const int scrollpos = this->vscroll->GetPosition();
+		int y_offset = -scrollpos;
 
 		/* Date */
 		if (page->date != INVALID_DATE) {
@@ -518,27 +720,45 @@ public:
 		y_offset = DrawStringMultiLine(0, right - x, y_offset, bottom - y, STR_STORY_BOOK_TITLE, TC_BLACK, SA_TOP | SA_HOR_CENTER);
 
 		/* Page elements */
-		for (const StoryPageElement *const pe : this->story_page_elements) {
-			y_offset += line_height; // margin to previous element
-
-			switch (pe->type) {
+		this->EnsureStoryPageElementLayout();
+		for (const LayoutCacheElement &ce : this->layout_cache) {
+			y_offset = ce.bounds.top - scrollpos;
+			switch (ce.pe->type) {
 				case SPET_TEXT:
-					SetDParamStr(0, pe->text);
-					y_offset = DrawStringMultiLine(0, right - x, y_offset, bottom - y, STR_JUST_RAW_STRING, TC_BLACK, SA_TOP | SA_LEFT);
+					SetDParamStr(0, ce.pe->text);
+					y_offset = DrawStringMultiLine(ce.bounds.left, ce.bounds.right, ce.bounds.top - scrollpos, ce.bounds.bottom - scrollpos, STR_JUST_RAW_STRING, TC_BLACK, SA_TOP | SA_LEFT);
 					break;
 
 				case SPET_GOAL: {
-					Goal *g = Goal::Get((GoalID) pe->referenced_id);
+					Goal *g = Goal::Get((GoalID) ce.pe->referenced_id);
 					StringID string_id = g == nullptr ? STR_STORY_BOOK_INVALID_GOAL_REF : STR_JUST_RAW_STRING;
 					if (g != nullptr) SetDParamStr(0, g->text);
-					DrawActionElement(y_offset, right - x, line_height, GetPageElementSprite(*pe), string_id);
+					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe), string_id);
 					break;
 				}
 
 				case SPET_LOCATION:
-					SetDParamStr(0, pe->text);
-					DrawActionElement(y_offset, right - x, line_height, GetPageElementSprite(*pe));
+					SetDParamStr(0, ce.pe->text);
+					DrawActionElement(y_offset, ce.bounds.right - ce.bounds.left, line_height, GetPageElementSprite(*ce.pe));
 					break;
+
+				case SPET_BUTTON_PUSH:
+				case SPET_BUTTON_TILE:
+				case SPET_BUTTON_VEHICLE: {
+					const int height = FONT_HEIGHT_NORMAL;
+					const int tmargin = WD_BEVEL_TOP + WD_FRAMETEXT_TOP;
+					const int bmargin = WD_BEVEL_BOTTOM + WD_FRAMETEXT_BOTTOM;
+					const int width = ce.bounds.right - ce.bounds.left;
+					const int hmargin = width / 5;
+					const FrameFlags frame = this->active_button_id == ce.pe->index ? FR_LOWERED : FR_NONE;
+					const Colours bgcolour = StoryPageButtonData{ ce.pe->referenced_id }.GetColour();
+
+					DrawFrameRect(ce.bounds.left, ce.bounds.top - scrollpos, ce.bounds.right, ce.bounds.bottom - scrollpos - 1, bgcolour, frame);
+
+					SetDParamStr(0, ce.pe->text);
+					DrawString(ce.bounds.left + WD_BEVEL_LEFT, ce.bounds.right - WD_BEVEL_RIGHT, ce.bounds.top + tmargin - scrollpos, STR_JUST_RAW_STRING, TC_WHITE, SA_CENTER);
+					break;
+				}
 
 				default: NOT_REACHED();
 			}
@@ -593,6 +813,7 @@ public:
 
 	void OnResize() override
 	{
+		this->InvalidateStoryPageElementLayout();
 		this->vscroll->SetCapacityFromWidget(this, WID_SB_PAGE_PANEL, WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM);
 		this->vscroll->SetCount(this->GetContentHeight());
 	}
@@ -625,27 +846,14 @@ public:
 				break;
 
 			case WID_SB_PAGE_PANEL: {
-				uint clicked_y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SB_PAGE_PANEL, WD_FRAMETEXT_TOP);
-				uint max_width = GetAvailablePageContentWidth();
+				int clicked_y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SB_PAGE_PANEL, WD_FRAMETEXT_TOP);
+				this->EnsureStoryPageElementLayout();
 
-				/* Skip head rows. */
-				uint head_height = this->GetHeadHeight(max_width);
-				if (clicked_y < head_height) return;
-
-				/* Detect if a page element was clicked. */
-				uint y = head_height;
-				uint element_vertical_dist = FONT_HEIGHT_NORMAL;
-				for (const StoryPageElement *const pe : this->story_page_elements) {
-
-					y += element_vertical_dist; // margin row
-
-					uint content_height = GetPageElementHeight(*pe, max_width);
-					if (clicked_y >= y && clicked_y < y + content_height) {
-						this->OnPageElementClick(*pe);
+				for (const LayoutCacheElement &ce : this->layout_cache) {
+					if (clicked_y >= ce.bounds.top && clicked_y < ce.bounds.bottom && pt.x >= ce.bounds.left && pt.x < ce.bounds.right) {
+						this->OnPageElementClick(*ce.pe);
 						return;
 					}
-
-					y += content_height;
 				}
 			}
 		}
@@ -700,6 +908,52 @@ public:
 			this->RefreshSelectedPage();
 		}
 	}
+
+	void OnTimeout() override
+	{
+		this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+		this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+	}
+
+	void OnPlaceObject(Point pt, TileIndex tile) override
+	{
+		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
+		if (pe == nullptr || pe->type != SPET_BUTTON_TILE) {
+			ResetObjectToPlace();
+			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+			this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+			return;
+		}
+
+		DoCommandP(tile, pe->index, 0, CMD_STORY_PAGE_BUTTON);
+		ResetObjectToPlace();
+	}
+
+	bool OnVehicleSelect(const Vehicle *v) override
+	{
+		const StoryPageElement *const pe = StoryPageElement::GetIfValid(this->active_button_id);
+		if (pe == nullptr || pe->type != SPET_BUTTON_VEHICLE) {
+			ResetObjectToPlace();
+			this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+			this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+			return false;
+		}
+
+		/* Check that the vehicle matches the requested type */
+		StoryPageButtonData data{ pe->referenced_id };
+		VehicleType wanted_vehtype = data.GetVehicleType();
+		if (wanted_vehtype != VEH_INVALID && wanted_vehtype != v->type) return false;
+
+		DoCommandP(0, pe->index, v->index, CMD_STORY_PAGE_BUTTON);
+		ResetObjectToPlace();
+		return true;
+	}
+
+	void OnPlaceObjectAbort() override
+	{
+		this->active_button_id = INVALID_STORY_PAGE_ELEMENT;
+		this->SetWidgetDirty(WID_SB_PAGE_PANEL);
+	}
 };
 
 GUIStoryPageList::SortFunction * const StoryBookWindow::page_sorter_funcs[] = {
@@ -741,6 +995,68 @@ static WindowDesc _story_book_desc(
 	0,
 	_nested_story_book_widgets, lengthof(_nested_story_book_widgets)
 );
+
+static CursorID TranslateStoryPageButtonCursor(StoryPageButtonCursor cursor)
+{
+	switch (cursor) {
+		case SPBC_MOUSE:          return SPR_CURSOR_MOUSE;
+		case SPBC_ZZZ:            return SPR_CURSOR_ZZZ;
+		case SPBC_BUOY:           return SPR_CURSOR_BUOY;
+		case SPBC_QUERY:          return SPR_CURSOR_QUERY;
+		case SPBC_HQ:             return SPR_CURSOR_HQ;
+		case SPBC_SHIP_DEPOT:     return SPR_CURSOR_SHIP_DEPOT;
+		case SPBC_SIGN:           return SPR_CURSOR_SIGN;
+		case SPBC_TREE:           return SPR_CURSOR_TREE;
+		case SPBC_BUY_LAND:       return SPR_CURSOR_BUY_LAND;
+		case SPBC_LEVEL_LAND:     return SPR_CURSOR_LEVEL_LAND;
+		case SPBC_TOWN:           return SPR_CURSOR_TOWN;
+		case SPBC_INDUSTRY:       return SPR_CURSOR_INDUSTRY;
+		case SPBC_ROCKY_AREA:     return SPR_CURSOR_ROCKY_AREA;
+		case SPBC_DESERT:         return SPR_CURSOR_DESERT;
+		case SPBC_TRANSMITTER:    return SPR_CURSOR_TRANSMITTER;
+		case SPBC_AIRPORT:        return SPR_CURSOR_AIRPORT;
+		case SPBC_DOCK:           return SPR_CURSOR_DOCK;
+		case SPBC_CANAL:          return SPR_CURSOR_CANAL;
+		case SPBC_LOCK:           return SPR_CURSOR_LOCK;
+		case SPBC_RIVER:          return SPR_CURSOR_RIVER;
+		case SPBC_AQUEDUCT:       return SPR_CURSOR_AQUEDUCT;
+		case SPBC_BRIDGE:         return SPR_CURSOR_BRIDGE;
+		case SPBC_RAIL_STATION:   return SPR_CURSOR_RAIL_STATION;
+		case SPBC_TUNNEL_RAIL:    return SPR_CURSOR_TUNNEL_RAIL;
+		case SPBC_TUNNEL_ELRAIL:  return SPR_CURSOR_TUNNEL_ELRAIL;
+		case SPBC_TUNNEL_MONO:    return SPR_CURSOR_TUNNEL_MONO;
+		case SPBC_TUNNEL_MAGLEV:  return SPR_CURSOR_TUNNEL_MAGLEV;
+		case SPBC_AUTORAIL:       return SPR_CURSOR_AUTORAIL;
+		case SPBC_AUTOELRAIL:     return SPR_CURSOR_AUTOELRAIL;
+		case SPBC_AUTOMONO:       return SPR_CURSOR_AUTOMONO;
+		case SPBC_AUTOMAGLEV:     return SPR_CURSOR_AUTOMAGLEV;
+		case SPBC_WAYPOINT:       return SPR_CURSOR_WAYPOINT;
+		case SPBC_RAIL_DEPOT:     return SPR_CURSOR_RAIL_DEPOT;
+		case SPBC_ELRAIL_DEPOT:   return SPR_CURSOR_ELRAIL_DEPOT;
+		case SPBC_MONO_DEPOT:     return SPR_CURSOR_MONO_DEPOT;
+		case SPBC_MAGLEV_DEPOT:   return SPR_CURSOR_MAGLEV_DEPOT;
+		case SPBC_CONVERT_RAIL:   return SPR_CURSOR_CONVERT_RAIL;
+		case SPBC_CONVERT_ELRAIL: return SPR_CURSOR_CONVERT_ELRAIL;
+		case SPBC_CONVERT_MONO:   return SPR_CURSOR_CONVERT_MONO;
+		case SPBC_CONVERT_MAGLEV: return SPR_CURSOR_CONVERT_MAGLEV;
+		case SPBC_AUTOROAD:       return SPR_CURSOR_AUTOROAD;
+		case SPBC_AUTOTRAM:       return SPR_CURSOR_AUTOTRAM;
+		case SPBC_ROAD_DEPOT:     return SPR_CURSOR_ROAD_DEPOT;
+		case SPBC_BUS_STATION:    return SPR_CURSOR_BUS_STATION;
+		case SPBC_TRUCK_STATION:  return SPR_CURSOR_TRUCK_STATION;
+		case SPBC_ROAD_TUNNEL:    return SPR_CURSOR_ROAD_TUNNEL;
+		case SPBC_CLONE_TRAIN:    return SPR_CURSOR_CLONE_TRAIN;
+		case SPBC_CLONE_ROADVEH:  return SPR_CURSOR_CLONE_ROADVEH;
+		case SPBC_CLONE_SHIP:     return SPR_CURSOR_CLONE_SHIP;
+		case SPBC_CLONE_AIRPLANE: return SPR_CURSOR_CLONE_AIRPLANE;
+		case SPBC_DEMOLISH:       return ANIMCURSOR_DEMOLISH;
+		case SPBC_LOWERLAND:      return ANIMCURSOR_LOWERLAND;
+		case SPBC_RAISELAND:      return ANIMCURSOR_RAISELAND;
+		case SPBC_PICKSTATION:    return ANIMCURSOR_PICKSTATION;
+		case SPBC_BUILDSIGNALS:   return ANIMCURSOR_BUILDSIGNALS;
+		default: return SPR_CURSOR_QUERY;
+	}
+}
 
 /**
  * Raise or create the story book window for \a company, at page \a page_id.

@@ -12,6 +12,7 @@
 
 #include "script_company.hpp"
 #include "script_date.hpp"
+#include "script_vehicle.hpp"
 #include "../../story_type.h"
 #include "../../story_base.h"
 
@@ -57,9 +58,111 @@ public:
 	 * Story page element types.
 	 */
 	enum StoryPageElementType {
-		SPET_TEXT = ::SPET_TEXT,         ///< An element that displays a block of text.
-		SPET_LOCATION = ::SPET_LOCATION, ///< An element that displays a single line of text along with a button to view the referenced location.
-		SPET_GOAL = ::SPET_GOAL,         ///< An element that displays a goal.
+		SPET_TEXT = ::SPET_TEXT,                     ///< An element that displays a block of text.
+		SPET_LOCATION = ::SPET_LOCATION,             ///< An element that displays a single line of text along with a button to view the referenced location.
+		SPET_GOAL = ::SPET_GOAL,                     ///< An element that displays a goal.
+		SPET_BUTTON_PUSH = ::SPET_BUTTON_PUSH,       ///< A push button that triggers an immediate event.
+		SPET_BUTTON_TILE = ::SPET_BUTTON_TILE,       ///< A button that allows the player to select a tile, and triggers an event with the tile.
+		SPET_BUTTON_VEHICLE = ::SPET_BUTTON_VEHICLE, ///< A button that allows the player to select a vehicle, and triggers an event wih the vehicle.
+	};
+
+	/**
+	 * Formatting data for button page elements.
+	 */
+	typedef uint32 StoryPageButtonFormatting;
+
+	/**
+	 * Formatting and layout flags for story page buttons.
+	 * The SPBF_FLOAT_LEFT and SPBF_FLOAT_RIGHT flags can not be combined.
+	 */
+	enum StoryPageButtonFlags {
+		SPBF_NONE        = ::SPBF_NONE,        ///< No special formatting for button.
+		SPBF_FLOAT_LEFT  = ::SPBF_FLOAT_LEFT,  ///< Button is placed to the left of the following paragraph.
+		SPBF_FLOAT_RIGHT = ::SPBF_FLOAT_RIGHT, ///< Button is placed to the right of the following paragraph.
+	};
+
+	/**
+	 * Mouse cursors usable by story page buttons.
+	 */
+	enum StoryPageButtonCursor {
+		SPBC_MOUSE          = ::SPBC_MOUSE,
+		SPBC_ZZZ            = ::SPBC_ZZZ,
+		SPBC_BUOY           = ::SPBC_BUOY,
+		SPBC_QUERY          = ::SPBC_QUERY,
+		SPBC_HQ             = ::SPBC_HQ,
+		SPBC_SHIP_DEPOT     = ::SPBC_SHIP_DEPOT,
+		SPBC_SIGN           = ::SPBC_SIGN,
+		SPBC_TREE           = ::SPBC_TREE,
+		SPBC_BUY_LAND       = ::SPBC_BUY_LAND,
+		SPBC_LEVEL_LAND     = ::SPBC_LEVEL_LAND,
+		SPBC_TOWN           = ::SPBC_TOWN,
+		SPBC_INDUSTRY       = ::SPBC_INDUSTRY,
+		SPBC_ROCKY_AREA     = ::SPBC_ROCKY_AREA,
+		SPBC_DESERT         = ::SPBC_DESERT,
+		SPBC_TRANSMITTER    = ::SPBC_TRANSMITTER,
+		SPBC_AIRPORT        = ::SPBC_AIRPORT,
+		SPBC_DOCK           = ::SPBC_DOCK,
+		SPBC_CANAL          = ::SPBC_CANAL,
+		SPBC_LOCK           = ::SPBC_LOCK,
+		SPBC_RIVER          = ::SPBC_RIVER,
+		SPBC_AQUEDUCT       = ::SPBC_AQUEDUCT,
+		SPBC_BRIDGE         = ::SPBC_BRIDGE,
+		SPBC_RAIL_STATION   = ::SPBC_RAIL_STATION,
+		SPBC_TUNNEL_RAIL    = ::SPBC_TUNNEL_RAIL,
+		SPBC_TUNNEL_ELRAIL  = ::SPBC_TUNNEL_ELRAIL,
+		SPBC_TUNNEL_MONO    = ::SPBC_TUNNEL_MONO,
+		SPBC_TUNNEL_MAGLEV  = ::SPBC_TUNNEL_MAGLEV,
+		SPBC_AUTORAIL       = ::SPBC_AUTORAIL,
+		SPBC_AUTOELRAIL     = ::SPBC_AUTOELRAIL,
+		SPBC_AUTOMONO       = ::SPBC_AUTOMONO,
+		SPBC_AUTOMAGLEV     = ::SPBC_AUTOMAGLEV,
+		SPBC_WAYPOINT       = ::SPBC_WAYPOINT,
+		SPBC_RAIL_DEPOT     = ::SPBC_RAIL_DEPOT,
+		SPBC_ELRAIL_DEPOT   = ::SPBC_ELRAIL_DEPOT,
+		SPBC_MONO_DEPOT     = ::SPBC_MONO_DEPOT,
+		SPBC_MAGLEV_DEPOT   = ::SPBC_MAGLEV_DEPOT,
+		SPBC_CONVERT_RAIL   = ::SPBC_CONVERT_RAIL,
+		SPBC_CONVERT_ELRAIL = ::SPBC_CONVERT_ELRAIL,
+		SPBC_CONVERT_MONO   = ::SPBC_CONVERT_MONO,
+		SPBC_CONVERT_MAGLEV = ::SPBC_CONVERT_MAGLEV,
+		SPBC_AUTOROAD       = ::SPBC_AUTOROAD,
+		SPBC_AUTOTRAM       = ::SPBC_AUTOTRAM,
+		SPBC_ROAD_DEPOT     = ::SPBC_ROAD_DEPOT,
+		SPBC_BUS_STATION    = ::SPBC_BUS_STATION,
+		SPBC_TRUCK_STATION  = ::SPBC_TRUCK_STATION,
+		SPBC_ROAD_TUNNEL    = ::SPBC_ROAD_TUNNEL,
+		SPBC_CLONE_TRAIN    = ::SPBC_CLONE_TRAIN,
+		SPBC_CLONE_ROADVEH  = ::SPBC_CLONE_ROADVEH,
+		SPBC_CLONE_SHIP     = ::SPBC_CLONE_SHIP,
+		SPBC_CLONE_AIRPLANE = ::SPBC_CLONE_AIRPLANE,
+		SPBC_DEMOLISH       = ::SPBC_DEMOLISH,
+		SPBC_LOWERLAND      = ::SPBC_LOWERLAND,
+		SPBC_RAISELAND      = ::SPBC_RAISELAND,
+		SPBC_PICKSTATION    = ::SPBC_PICKSTATION,
+		SPBC_BUILDSIGNALS   = ::SPBC_BUILDSIGNALS,
+	};
+
+	/**
+	 * Colour codes usable for story page button elements.
+	 * Place a colour value in the lowest 8 bits of the \c reference parameter to the button.
+	 */
+	enum StoryPageButtonColour {
+		SPBC_DARK_BLUE  = ::COLOUR_DARK_BLUE,
+		SPBC_PALE_GREEN = ::COLOUR_PALE_GREEN,
+		SPBC_PINK       = ::COLOUR_PINK,
+		SPBC_YELLOW     = ::COLOUR_YELLOW,
+		SPBC_RED        = ::COLOUR_RED,
+		SPBC_LIGHT_BLUE = ::COLOUR_LIGHT_BLUE,
+		SPBC_GREEN      = ::COLOUR_GREEN,
+		SPBC_DARK_GREEN = ::COLOUR_DARK_GREEN,
+		SPBC_BLUE       = ::COLOUR_BLUE,
+		SPBC_CREAM      = ::COLOUR_CREAM,
+		SPBC_MAUVE      = ::COLOUR_MAUVE,
+		SPBC_PURPLE     = ::COLOUR_PURPLE,
+		SPBC_ORANGE     = ::COLOUR_ORANGE,
+		SPBC_BROWN      = ::COLOUR_BROWN,
+		SPBC_GREY       = ::COLOUR_GREY,
+		SPBC_WHITE      = ::COLOUR_WHITE,
 	};
 
 	/**
@@ -90,7 +193,11 @@ public:
 	 * Create a new story page element.
 	 * @param story_page_id The page id of the story page which the page element should be appended to.
 	 * @param type Which page element type to create.
-	 * @param reference A reference value to the object that is referred to by some page element types. When type is SPET_GOAL, this is the goal ID. When type is SPET_LOCATION, this is the TileIndex.
+	 * @param reference A reference value to the object that is referred to by some page element types.
+	 *                  When type is SPET_GOAL, this is the goal ID.
+	 *                  When type is SPET_LOCATION, this is the TileIndex.
+	 *                  When type is a button, this is additional parameters for the button,
+	 *                  use the #BuildPushButtonReference, #BuildTileButtonReference, or #BuildVehicleButtonReference functions to make the values.
 	 * @param text The body text of page elements that allow custom text. (SPET_TEXT and SPET_LOCATION)
 	 * @return The new StoryPageElementID, or STORY_PAGE_ELEMENT_INVALID if it failed.
 	 * @pre No ScriptCompanyMode may be in scope.
@@ -204,6 +311,30 @@ public:
 	 * @pre IsValidStoryPageElement(story_page_element_id).
 	 */
 	static bool RemoveElement(StoryPageElementID story_page_element_id);
+
+	/**
+	 * Create a reference value for SPET_BUTTON_PUSH element parameters.
+	 * @param colour The colour for the face of the button.
+	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
+	 */
+	static StoryPageButtonFormatting MakePushButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags);
+
+	/**
+	 * Create a reference value for SPET_BUTTON_TILE element parameters.
+	 * @param colour The colour for the face of the button.
+	 * @param cursor The mouse cursor to use when the player clicks the button and the game is ready for the player to select a tile.
+	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
+	 */
+	static StoryPageButtonFormatting MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor);
+
+	/**
+	 * Create a reference value for SPET_BUTTON_VEHICLE element parameters.
+	 * @param colour  The colour for the face of the button.
+	 * @param cursor  The mouse cursor to use when the player clicks the button and the game is ready for the player to select a vehicle.
+	 * @param vehtype The type of vehicle that will be selectable, or \c VT_INVALID to allow all types.
+	 * @return A reference value usable with the #NewElement and #UpdateElement functions.
+	 */
+	static StoryPageButtonFormatting MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype);
 };
 
 #endif /* SCRIPT_STORY_HPP */
