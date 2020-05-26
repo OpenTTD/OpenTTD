@@ -321,21 +321,26 @@ Sub load_baseset_data(dir, langdir, ByRef vcxproj, ByRef files, ByRef langs)
 End Sub
 
 Sub generate(data, dest, data2)
-	Dim srcfile, destfile, line
+	Dim srcfile, destfile, line, regexp
 	WScript.Echo "Generating " & FSO.GetFileName(dest) & "..."
 	Set srcfile = FSO.OpenTextFile(dest & ".in", 1, 0, 0)
 	Set destfile = FSO.CreateTextFile(dest, -1, 0)
 
 	If Not IsNull(data2) Then
 		' Everything above the !!FILTERS!! marker
+		Set regexp = New RegExp
+		regexp.Pattern = "!!FILTERS!!"
+		regexp.Global = True
+
 		line = srcfile.ReadLine()
-		While line <> "!!FILTERS!!"
+		While Not regexp.Test(line)
 			If len(line) > 0 Then destfile.WriteLine(line)
 			line = srcfile.ReadLine()
 		Wend
 
 		' Our generated content
-		destfile.WriteLine(data2)
+		line = regexp.Replace(line, data2)
+		destfile.WriteLine(line)
 	End If
 
 	' Everything above the !!FILES!! marker
