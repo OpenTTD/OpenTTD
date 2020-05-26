@@ -172,6 +172,7 @@ Sub load_main_data(filename, ByRef vcxproj, ByRef filters, ByRef files)
 					line = Replace(line, "#if ", "")
 					If deep = skip And ( _
 						line = "SDL" Or _
+						line = "SDL2" Or _
 						line = "PNG" Or _
 						line = "WIN32" Or _
 						line = "MSVC" Or _
