@@ -23,9 +23,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
-    <SettingsCommandLine>
-..\objs\settings\settings_gen.exe -o ..\objs\settings\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble ..\src\table\company_settings.ini ..\src\table\currency_settings.ini ..\src\table\gameopt_settings.ini ..\src\table\misc_settings.ini ..\src\table\settings.ini ..\src\table\win32_settings.ini ..\src\table\window_settings.ini
-    </SettingsCommandLine>
+    <SettingsCommandLine>..\objs\settings\settings_gen.exe -o ..\objs\settings\table\settings.h -b ..\src\table\settings.h.preamble -a ..\src\table\settings.h.postamble ..\src\table\company_settings.ini ..\src\table\currency_settings.ini ..\src\table\gameopt_settings.ini ..\src\table\misc_settings.ini ..\src\table\settings.ini ..\src\table\win32_settings.ini ..\src\table\window_settings.ini</SettingsCommandLine>
   </PropertyGroup>
   <PropertyGroup>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\objs\settings\table\</OutDir>
