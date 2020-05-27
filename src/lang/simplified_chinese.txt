@@ -935,6 +935,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :墨西哥比索
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :新台币 (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :中国人民币 (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :港币 (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :印度卢布（INR）
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}汽车行驶
