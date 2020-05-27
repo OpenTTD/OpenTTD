@@ -459,7 +459,7 @@ protected:
 					}
 				}
 				/* Position element in main column */
-				LayoutCacheElement ce{ pe };
+				LayoutCacheElement ce{ pe, {} };
 				ce.bounds.left = left_offset;
 				ce.bounds.right = max_width - right_offset;
 				ce.bounds.top = main_y;
@@ -479,7 +479,7 @@ protected:
 				std::vector<size_t> &cur_floats = (fl == ElementFloat::Left) ? left_floats : right_floats;
 				/* Position element */
 				cur_width = max(cur_width, this->GetPageElementFloatWidth(*pe));
-				LayoutCacheElement ce{ pe };
+				LayoutCacheElement ce{ pe, {} };
 				ce.bounds.left = (fl == ElementFloat::Left) ? 0 : (max_width - cur_width);
 				ce.bounds.right = (fl == ElementFloat::Left) ? cur_width : max_width;
 				ce.bounds.top = cur_y;
@@ -745,11 +745,7 @@ public:
 				case SPET_BUTTON_PUSH:
 				case SPET_BUTTON_TILE:
 				case SPET_BUTTON_VEHICLE: {
-					const int height = FONT_HEIGHT_NORMAL;
 					const int tmargin = WD_BEVEL_TOP + WD_FRAMETEXT_TOP;
-					const int bmargin = WD_BEVEL_BOTTOM + WD_FRAMETEXT_BOTTOM;
-					const int width = ce.bounds.right - ce.bounds.left;
-					const int hmargin = width / 5;
 					const FrameFlags frame = this->active_button_id == ce.pe->index ? FR_LOWERED : FR_NONE;
 					const Colours bgcolour = StoryPageButtonData{ ce.pe->referenced_id }.GetColour();
 
