@@ -83,6 +83,10 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 		case SPET_BUTTON_VEHICLE:
 			refid = reference;
 			break;
+		case SPET_TEXT:
+			break;
+		default:
+			NOT_REACHED();
 	}
 
 	if (!ScriptObject::DoCommand(reftile,
@@ -124,6 +128,10 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 		case SPET_BUTTON_VEHICLE:
 			refid = reference;
 			break;
+		case SPET_TEXT:
+			break;
+		default:
+			NOT_REACHED();
 	}
 
 	return ScriptObject::DoCommand(reftile,
