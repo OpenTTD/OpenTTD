@@ -42,7 +42,7 @@ public:
 	/**
 	 * Invalid constructor. This can't be called as a FlowStat must not be
 	 * empty. However, the constructor must be defined and reachable for
-	 * FlwoStat to be used in a std::map.
+	 * FlowStat to be used in a std::map.
 	 */
 	inline FlowStat() {NOT_REACHED();}
 
