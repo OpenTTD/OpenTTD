@@ -29,7 +29,7 @@ struct Engine : EnginePool::PoolItem<&_engine_pool> {
 	uint16 reliability_final;   ///< Final reliability of the engine.
 	uint16 duration_phase_1;    ///< First reliability phase in months, increasing reliability from #reliability_start to #reliability_max.
 	uint16 duration_phase_2;    ///< Second reliability phase in months, keeping #reliability_max.
-	uint16 duration_phase_3;    ///< Third reliability phase on months, decaying to #reliability_final.
+	uint16 duration_phase_3;    ///< Third reliability phase in months, decaying to #reliability_final.
 	byte flags;                 ///< Flags of the engine. @see EngineFlags
 	CompanyMask preview_asked;  ///< Bit for each company which has already been offered a preview.
 	CompanyID preview_company;  ///< Company which is currently being offered a preview \c INVALID_COMPANY means no company.
