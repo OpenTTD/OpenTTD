@@ -540,6 +540,9 @@ void *_safe_esp = nullptr;
 
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
+	/* Disable our event loop. */
+	SetWindowLongPtr(GetActiveWindow(), GWLP_WNDPROC, (LONG_PTR)&DefWindowProc);
+
 	if (CrashLogWindows::current != nullptr) {
 		CrashLog::AfterCrashLogCleanup();
 		ExitProcess(2);
