@@ -2384,8 +2384,6 @@ static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, Byt
 				if (!CargoSpec::Get(housespec->accepts_cargo[2])->IsValid()) {
 					housespec->cargo_acceptance[2] = 0;
 				}
-
-				_loaded_newgrf_features.has_newhouses = true;
 				break;
 			}
 
@@ -8633,7 +8631,6 @@ void ResetNewGRFData()
 
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.used_liveries     = 1 << LS_DEFAULT;
-	_loaded_newgrf_features.has_newhouses     = false;
 	_loaded_newgrf_features.has_newindustries = false;
 	_loaded_newgrf_features.shore             = SHORE_REPLACE_NONE;
 	_loaded_newgrf_features.tram              = TRAMWAY_REPLACE_DEPOT_NONE;
