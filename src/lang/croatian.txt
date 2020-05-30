@@ -1031,6 +1031,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksički Pesos
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novi Tajvanski Dolar (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kineski Renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkonški Dolar (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijska Rupija (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestovna vozila
