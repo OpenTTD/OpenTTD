@@ -8631,7 +8631,6 @@ void ResetNewGRFData()
 
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.used_liveries     = 1 << LS_DEFAULT;
-	_loaded_newgrf_features.has_newindustries = false;
 	_loaded_newgrf_features.shore             = SHORE_REPLACE_NONE;
 	_loaded_newgrf_features.tram              = TRAMWAY_REPLACE_DEPOT_NONE;
 
@@ -9151,7 +9150,6 @@ static void FinaliseIndustriesArray()
 					}
 
 					_industry_mngr.SetEntitySpec(indsp);
-					_loaded_newgrf_features.has_newindustries = true;
 				}
 			}
 		}
