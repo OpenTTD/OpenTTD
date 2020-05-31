@@ -416,10 +416,11 @@ public:
 			}
 
 			case WID_DPI_INFOPANEL: {
-				/* Extra line for cost outside of editor + extra lines for 'extra' information for NewGRFs. */
-				int height = 2 + (_game_mode == GM_EDITOR ? 0 : 1) + (_loaded_newgrf_features.has_newindustries ? 4 : 0);
+				/* Extra line for cost outside of editor. */
+				int height = 2 + (_game_mode == GM_EDITOR ? 0 : 1);
 				uint extra_lines_req = 0;
 				uint extra_lines_prd = 0;
+				uint extra_lines_newgrf = 0;
 				uint max_minwidth = FONT_HEIGHT_NORMAL * MAX_MINWIDTH_LINEHEIGHTS;
 				Dimension d = {0, 0};
 				for (byte i = 0; i < this->count; i++) {
@@ -447,10 +448,15 @@ public:
 						strdim.width = max_minwidth;
 					}
 					d = maxdim(d, strdim);
+
+					if (indsp->grf_prop.grffile != nullptr) {
+						/* Reserve a few extra lines for text from an industry NewGRF. */
+						extra_lines_newgrf = 4;
+					}
 				}
 
 				/* Set it to something more sane :) */
-				height += extra_lines_prd + extra_lines_req;
+				height += extra_lines_prd + extra_lines_req + extra_lines_newgrf;
 				size->height = height * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				size->width  = d.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 				break;
