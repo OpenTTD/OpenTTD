@@ -348,6 +348,8 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 
 	[this->window setColorSpace:[NSColorSpace sRGBColorSpace]];
 	this->color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
+	if (this->color_space == nullptr) this->color_space = CGColorSpaceCreateDeviceRGB();
+	if (this->color_space == nullptr) error("Could not get a valid colour space for drawing.");
 
 	bool ret = WindowResized();
 	this->UpdatePalette(0, 256);
