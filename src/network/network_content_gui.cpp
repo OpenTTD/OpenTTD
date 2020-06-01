@@ -951,7 +951,7 @@ public:
 	{
 		if (this->auto_select && !rci->IsSelected()) _network_content_client.ToggleSelectedState(rci);
 		this->content.ForceRebuild();
-		this->InvalidateData();
+		this->InvalidateData(0, false);
 	}
 
 	void OnDownloadComplete(ContentID cid) override
