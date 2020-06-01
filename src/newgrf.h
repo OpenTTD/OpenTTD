@@ -132,7 +132,7 @@ struct GRFFile : ZeroedMemoryAllocator {
 	std::vector<RoadTypeLabel> roadtype_list;       ///< Roadtype translation table (road)
 	RoadType roadtype_map[ROADTYPE_END];
 
-	std::vector<RoadTypeLabel> tramtype_list;       ///, Roadtype translation table (tram)
+	std::vector<RoadTypeLabel> tramtype_list;       ///< Roadtype translation table (tram)
 	RoadType tramtype_map[ROADTYPE_END];
 
 	CanalProperties canal_local_properties[CF_END]; ///< Canal properties as set by this NewGRF
