@@ -1333,6 +1333,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Lliw y tirwedd 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Gwyrdd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Gwyrdd tywyll
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fioled
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Ymddygiad tra'n sgrolio'r map
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgrolio prif ffenestr llyfn: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Rheoli syt y mae'r prif olygfa'n sgrolio at leoliad penodol pan yn clicio ar y map bychan neu yn rhoi gorchymyn i sgrolio at wrthrych penodol
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Dangos cymorth mesur wrth ddefnyddio'r offer adeiladu amrywiol: {STRING}
@@ -2681,14 +2682,17 @@ STR_ABOUT_VERSION                                               :{BLACK}fersiwn 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} Y tîm OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nifer y ticiau gêm a efelychir bob eiliad.
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nifer o fframiau fideo a lunir bob eiliad.
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pa mor gyflym mae'r gêm yn rhedeg, o gymharu a'r cyflymder i'w ddisgwyl ar gyfradd efelychu arferol.
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Cymedr
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frâm yr eiliad
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Trin cargo:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_VIDEO                                     :Allbwn fideo
+STR_FRAMETIME_CAPTION_SOUND                                     :Cymysgu sain
 ############ End of leave-in-this-order
 
 

@@ -236,6 +236,7 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Filtra p
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordena per:
 STR_BUTTON_LOCATION                                             :{G=Masculin}{BLACK}Lloc
 STR_BUTTON_RENAME                                               :{BLACK}Canvia el nom
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostra/Amaga l'àrea de cobertura
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Tanca la finestra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Títol de la finestra: arrossegueu el títol per desplaçar la finestra.
@@ -264,6 +265,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Activant
 STR_BUTTON_DEFAULT                                              :{BLACK}Predeterminat
 STR_BUTTON_CANCEL                                               :{BLACK}Cancel·la
 STR_BUTTON_OK                                                   :{BLACK}D'acord
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Avís: Els administradors del servidor potser poden llegir el que escriviu aquí.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -927,6 +929,7 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari georgià (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial iranià (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ruble rus modern (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicà (MXN)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi xinès (CNY)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehicles de carretera
@@ -1178,6 +1181,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet la modif
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permet modelar el terreny sota les vies, els edificis i altres elements sense eliminar-los.
 STR_CONFIG_SETTING_CATCHMENT                                    :Estableix una mida més real de l'àrea d'influència: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permet tenir diferents mides de zones de captació de càrrega per diferents tipus d'estacions (aeroports, estacions de tren, etc.).
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Les estacions de la companyia poden donar servei a industries amb estacions neutrals: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permet l'esborrat de carreteres, ponts i túnels propietat de les poblacions: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Aquesta opció permet fer més fàcil l'esborrat d'infraestructures i construccions propietat de la població
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Longitud màxima dels trens: {STRING}
@@ -1299,6 +1303,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mostra els habi
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Mostra els habitants a les etiquetes dels noms de les poblacions al mapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Gruix de les línies dels gràfics: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Gruix de la línia als gràfics. Una línia més fina és més llegible, una línia més gruixuda és més fàcil de veure i els colors són més fàcils de distingir
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostra el nom del NewGRF a la finestra de construcció de vehicles: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Afegeix una línia a la finestra de construcció de vehicles que mostri de quin NewGRF és el vehicle seleccionat.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paisatge: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :El tipus de paisatge defineix escenaris amb diferents tipus de càrrega i requisits per al creixement de les poblacions. Els NewGRF i l'script de la partida poden modificar-ne l'aparença i el comportament
@@ -1475,6 +1481,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permet IA en mu
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permet a les IA participar en partides multijugador.
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes abans de suspendre els scripts: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Màxim nombre de passos de càlcul que un script pot fer en un torn
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Ús de memòria màxim per script: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Els intervals de revisions es mostren en percentatges: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Escull si les revisions dels vehicles depenen del temps passat des de la darrera revisió o de la caiguda d'un cert percentatge de la fiabilitat màxima
@@ -1533,10 +1540,12 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Complet
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Les notícies en color apareixen el: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Any en què els diaris comencen a fer anuncis en color. Abans d'aquest any, imprimiran en blanc i negre.
 STR_CONFIG_SETTING_STARTING_YEAR                                :Any d'inici: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Mai
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activa economia suau (més canvis però més petits): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Quan està activat, els canvis de producció de la indústria són més habituals, i en passos més petits. Aquest paràmetre usualment no té efecte, si el tipus d'indústria estan proveïts per un NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permet comprar participacions d'altres companyies: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Permet comprar i vendre accions de les companyies. Les accions només estan disponibles per companyies d'una certa edat.
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Edat mínima de la companyia per negociar participacions: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentatge del benefici total a pagar en transferències: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percentatge del benefici donat a branques intermediàries dins els sistemes, donant més control sobre els beneficis
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :En arrossegar, col·locar senyals cada: {STRING}
@@ -2423,7 +2432,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construe
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construeix un túnel per a tramvies. Shift commuta construeix/mostra el cost estimat
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Intercanvia funció construeix/treu per la construcció de carreteres
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Canvia construeix/treu de la construcció de vies de tramvia
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converteix/Millora el tipus de carretera. Shift commuta entre construir o mostrar-ne el cost estimat.
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converteix/Millora el tipus de tramvia. Shift commuta construeix/mostra el cost estimat.
 
+STR_ROAD_NAME_ROAD                                              :Carretera
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientació de la cotxera
@@ -2726,6 +2738,7 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL}{
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL}{NBSP}fps
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL}{NBSP}fps
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL}{NBSP}fps
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA}{NBSP}ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA}{NBSP}s
 ############ Leave those lines in this order!!
@@ -3091,6 +3104,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Canvia el nom d
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} autoritat local
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zona
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Ratis de la companyia de transports:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Accions disponibles:
@@ -3348,6 +3362,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infraest
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Trossos de vies:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Senyals
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Trossos de carretera:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Trossos de tramvia:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Cel·les d'aigua:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Canals
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Estacions:
@@ -3358,8 +3373,10 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Indústries
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Cap -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} (transportat: {COMMA}{NBSP}%){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nom de les indústries - clica al nom per centrar la vista en la indústria. Ctrl+Clic obre una nova vista al lloc de la indústria
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tots els tipus de càrrega
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3456,6 +3473,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Compra de nous 
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Compra de nous vehicles sobre vies
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Automòbils nous
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Compra de nous vaixells
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Compra de noves aeronaus
 ############ range for vehicle availability ends
@@ -3471,6 +3489,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(remodelable)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dissenyat: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} any{P "" s}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilitat màxima: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Cost del remodelat: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pes: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Velocitat: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitat: {GOLD}{CARGO_LONG}, {CARGO_LONG}
@@ -3493,6 +3512,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Compra e
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Compra el vaixell
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Compra l'aeronau
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Compra i remodela vehicles
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra el tren/vagó seleccionat. Amb Maj+Clic, mostra el cost estimat sense comprar-lo.
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra el vehicle marcat. Amb Maj+Clic, mostra el cost estimat sense comprar-lo.
@@ -3614,6 +3634,7 @@ STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=Femenin}loco
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=Femenin}locomotora de maglev
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=Masculin}automòbil
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvia
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=Masculin}avió
 STR_ENGINE_PREVIEW_SHIP                                         :{G=Masculin}vaixell
@@ -3663,6 +3684,8 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Trens Elèctric
 STR_REPLACE_MONORAIL_VEHICLES                                   :Trens monorail
 STR_REPLACE_MAGLEV_VEHICLES                                     :Trens maglev
 
+STR_REPLACE_ROAD_VEHICLES                                       :Automòbils
+STR_REPLACE_TRAM_VEHICLES                                       :Tramvies
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargada del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
@@ -4114,6 +4137,10 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Seleccio
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancel·la
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}No canviïs l'script.
 
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura de pantalla normal
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Zoom de la captura de pantalla per defecte
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Captura de pantalla del mapa d'alçades
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de pantalla del minimapa
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paràmetres {STRING}
@@ -4387,6 +4414,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Via de t
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}...abans s'ha de treure la via.
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}La carretera és un d'un sol sentit o està bloquejada
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Els passos a nivell no estan permesos en aquest tipus de via
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}No s'admeten passos a nivell en aquest tipus de carretera.
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Aquí no es poden construir senyals...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Aquí no es pot construir la via de tren...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Aquí no es pot treure la via de tren...
@@ -4406,6 +4434,8 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Aquí no
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No puc treure la via de tramvia d'aquí...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... no hi ha carretera
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... no hi ha via de tramvia
+STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... la carretera és incompatible.
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... El tipus de tramvia és incompatible.
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Aquí no es poden construir canals...
