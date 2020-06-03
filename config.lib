@@ -667,7 +667,8 @@ check_params() {
 
 	if [ "$enable_lto" != "0" ]; then
 		# GCC 4.5 outputs '%{flto}', GCC 4.6 outputs '%{flto*}'
-		has_lto=`($cxx_build -dumpspecs 2>&1 | grep '\%{flto') || ($cxx_build -help ipo 2>&1 | grep '\-ipo')`
+		# Clang outputs -flto=thin
+		has_lto=`($cxx_build -dumpspecs 2>&1 | grep '\%{flto') || ($cxx_build -help ipo 2>&1 | grep '\-ipo') || ($cxx_build --help 2>&1 | grep 'lto.*thin')`
 		if [ -n "$has_lto" ]; then
 			log 1 "using link time optimization... yes"
 		else
@@ -1335,6 +1336,12 @@ make_compiler_cflags() {
 
 		# rdynamic is used to get useful stack traces from crash reports.
 		ldflags="$ldflags -rdynamic"
+
+		if [ "$enable_lto" != "0" ]; then
+			flags="$flags -flto=thin"
+			features="$features lto"
+			features_host="$features_host lto"
+		fi
 
 	# Assume gcc, since it just uses argv[0] in its --version output
 	else
