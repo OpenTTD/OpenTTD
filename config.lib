@@ -2111,8 +2111,8 @@ check_osx_sdk() {
 			return 1
 		fi
 
-		# Set minimum version to 10.4 as that's when kCGBitmapByteOrder32Host was introduced
-		sysroot="-isysroot $osx_sdk_path -Wl,-syslibroot,$osx_sdk_path -mmacosx-version-min=10.4"
+		# Set minimum version to 10.9; minimum supported by OpenTTD
+		sysroot="-isysroot $osx_sdk_path -Wl,-syslibroot,$osx_sdk_path -mmacosx-version-min=10.9"
 	fi
 
 cat > tmp.osx.mm << EOF
