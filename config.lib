@@ -1059,7 +1059,7 @@ check_params() {
 	else
 		log 1 "checking revision... no detection"
 		log 1 "WARNING: there is no means to determine the version."
-		log 1 "WARNING: please use a subversion, mercurial, or git checkout of OpenTTD."
+		log 1 "WARNING: please use a source tarball or a git checkout of OpenTTD."
 		log 1 "WARNING: you can only join game servers that have been compiled without"
 		log 1 "WARNING:   version detection."
 		log 1 "WARNING: there is a great chance you desync."
