@@ -31,16 +31,16 @@
 #include "os/windows/string_uniscribe.h"
 #endif
 
-#if defined(WITH_COCOA)
-#include "os/macosx/string_osx.h"
-#endif
-
 #ifdef WITH_ICU_I18N
 /* Required by strnatcmp. */
 #include <unicode/ustring.h>
 #include "language.h"
 #include "gfx_func.h"
 #endif /* WITH_ICU_I18N */
+
+#if defined(WITH_COCOA)
+#include "os/macosx/string_osx.h"
+#endif
 
 /* The function vsnprintf is used internally to perform the required formatting
  * tasks. As such this one must be allowed, and makes sure it's terminated. */
