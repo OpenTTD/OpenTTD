@@ -170,9 +170,7 @@ static void DrawSurfaceToScreen()
 	} else {
 		if (_sdl_surface != _sdl_realscreen) {
 			for (int i = 0; i < n; i++) {
-				SDL_BlitSurface(
-					_sdl_surface, &_dirty_rects[i],
-					_sdl_realscreen, &_dirty_rects[i]);
+				SDL_BlitSurface(_sdl_surface, &_dirty_rects[i], _sdl_realscreen, &_dirty_rects[i]);
 			}
 		}
 
