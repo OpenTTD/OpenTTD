@@ -73,14 +73,21 @@ macro(compile_flags)
             -fno-strict-aliasing
         )
 
-        add_compile_options(
-            # When we are a stable release (Release build + USE_ASSERTS not set),
-            # assertations are off, which trigger a lot of warnings. We disable
-            # these warnings for these releases.
-            "$<${IS_STABLE_RELEASE}:-Wno-unused-variable>"
-            "$<${IS_STABLE_RELEASE}:-Wno-unused-but-set-parameter>"
-            "$<${IS_STABLE_RELEASE}:-Wno-unused-but-set-variable>"
-        )
+        # When we are a stable release (Release build + USE_ASSERTS not set),
+        # assertations are off, which trigger a lot of warnings. We disable
+        # these warnings for these releases.
+        if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+            add_compile_options(
+                "$<${IS_STABLE_RELEASE}:-Wno-unused-variable>"
+                "$<${IS_STABLE_RELEASE}:-Wno-unused-but-set-parameter>"
+                "$<${IS_STABLE_RELEASE}:-Wno-unused-but-set-variable>"
+            )
+        else (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+            add_compile_options(
+                "$<${IS_STABLE_RELEASE}:-Wno-unused-variable>"
+                "$<${IS_STABLE_RELEASE}:-Wno-unused-parameter>"
+            )
+        endif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 
         # Ninja processes the output so the output from the compiler
         # isn't directly to a terminal; hence, the default is
