@@ -48,6 +48,8 @@ function(set_options)
         set(DEFAULT_OPTION_INSTALL_FHS OFF)
     endif (UNIX AND NOT APPLE)
 
+    option(OPTION_FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GNU/Clang only)." OFF)
+
     option(OPTION_DEDICATED "Build dedicated server only (no GUI)" OFF)
     option(OPTION_INSTALL_FHS "Install with Filesstem Hierarchy Standard folders" ${DEFAULT_OPTION_INSTALL_FHS})
     option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" ON)

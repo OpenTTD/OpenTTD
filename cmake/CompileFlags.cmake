@@ -82,6 +82,19 @@ macro(compile_flags)
             "$<${IS_STABLE_RELEASE}:-Wno-unused-but-set-variable>"
         )
 
+        # Ninja processes the output so the output from the compiler
+        # isn't directly to a terminal; hence, the default is
+        # non-coloured output. We can override this to get nicely
+        # coloured output, but since that might yield odd results with
+        # IDEs, we extract it to an option.
+        if (OPTION_FORCE_COLORED_OUTPUT)
+            if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+                add_compile_options (-fdiagnostics-color=always)
+            elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+                add_compile_options (-fcolor-diagnostics)
+            endif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+        endif (OPTION_FORCE_COLORED_OUTPUT)
+
         if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
             include(CheckCXXCompilerFlag)
             check_cxx_compiler_flag("-flifetime-dse=1" LIFETIME_DSE_FOUND)
