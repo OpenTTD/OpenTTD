@@ -902,6 +902,7 @@ void DrawCharCentered(WChar c, int x, int y, TextColour colour)
  * Get the size of a sprite.
  * @param sprid Sprite to examine.
  * @param[out] offset Optionally returns the sprite position offset.
+ * @param zoom The zoom level applicable to the sprite.
  * @return Sprite size in pixels.
  * @note The size assumes (0, 0) as top-left coordinate and ignores any part of the sprite drawn at the left or above that position.
  */
