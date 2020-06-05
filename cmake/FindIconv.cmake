@@ -58,7 +58,7 @@ elseif(CMAKE_CXX_COMPILER_LOADED)
   include(CheckCXXSourceCompiles)
 else()
   # If neither C nor CXX are loaded, implicit iconv makes no sense.
-  set(Iconv_IS_BUILT_IN FALSE)
+  set(Iconv_IS_BUILT_IN NO)
 endif()
 
 # iconv can only be provided in libc on a POSIX system.
@@ -94,7 +94,7 @@ if(NOT DEFINED Iconv_IS_BUILT_IN)
     endif()
     cmake_pop_check_state()
   else()
-    set(Iconv_IS_BUILT_IN FALSE)
+    set(Iconv_IS_BUILT_IN NO)
   endif()
 endif()
 
