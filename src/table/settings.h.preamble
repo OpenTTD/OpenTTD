@@ -28,7 +28,7 @@ static size_t ConvertLandscape(const char *value);
  *    These are for client-only variables. Here the 'var' refers to an
  *    entry inside _settings_client.
  * 3. SDT_something
- *    Thse are for members in the struct described by the current
+ *    These are for members in the struct described by the current
  *    #SettingDesc list / .ini file.  Here, 'base' specifies type of the
  *    struct while 'var' points out the member of the struct (the actual
  *    struct to store it in is implicitly defined by the #SettingDesc
