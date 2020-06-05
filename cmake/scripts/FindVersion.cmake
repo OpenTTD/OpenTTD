@@ -49,7 +49,7 @@ if (GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
     )
     string(REGEX REPLACE "([0-9]+)-([0-9]+)-([0-9]+).*" "\\1\\2\\3" COMMITDATE "${COMMITDATE}")
     set(REV_ISODATE "${COMMITDATE}")
-    string(SUBSTRING REV_ISODATE 1 4 REV_YEAR)
+    string(SUBSTRING "${REV_ISODATE}" 0 4 REV_YEAR)
 
     # Get the branch
     execute_process(COMMAND ${GIT_EXECUTABLE} symbolic-ref -q HEAD
@@ -98,6 +98,7 @@ if (GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
     set(ENV{LC_ALL} "${SAVED_LC_ALL}")
 elseif (EXISTS "${CMAKE_SOURCE_DIR}/.ottdrev")
     file(READ "${CMAKE_SOURCE_DIR}/.ottdrev" OTTDREV)
+    string(REPLACE "\n" "" OTTDREV "${OTTDREV}")
     string(REPLACE "\t" ";" OTTDREV "${OTTDREV}")
     list(GET OTTDREV 0 REV_VERSION)
     list(GET OTTDREV 1 REV_ISODATE)
