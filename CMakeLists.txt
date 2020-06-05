@@ -130,7 +130,8 @@ include_directories(${CMAKE_SOURCE_DIR}/src/3rdparty/squirrel/include)
 include(CompileFlags)
 compile_flags()
 
-add_executable(openttd WIN32 ${GENERATED_SOURCE_FILES})
+add_executable(openttd WIN32 MACOSX_BUNDLE ${GENERATED_SOURCE_FILES})
+
 # All other files are added via target_sources()
 
 include(AddCustomXXXTimestamp)
@@ -190,6 +191,10 @@ if (APPLE)
         -DWITH_COCOA
         -DENABLE_COCOA_QUARTZ
     )
+
+    if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+        set(CMAKE_INSTALL_PREFIX "/Applications" CACHE PATH "Application installation location" FORCE)
+    endif()
 endif (APPLE)
 
 if (NOT PERSONAL_DIR STREQUAL "(not set)")

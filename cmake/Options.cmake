@@ -55,6 +55,10 @@ function(set_options)
     option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" ON)
     option(OPTION_USE_THREADS "Use threads" ON)
     option(OPTION_USE_NSIS "Use NSIS to create windows installer; enable only for stable releases" OFF)
+
+    if (APPLE)
+        option(OPTION_EMBED_LIBRARIES "Embed dependent libraries into bundle" ON)
+    endif (APPLE)
 endfunction()
 
 # Show the values of the generic options.
@@ -67,6 +71,10 @@ function(show_options)
     message(STATUS "Option Use assert - ${OPTION_USE_ASSERTS}")
     message(STATUS "Option Use threads - ${OPTION_USE_THREADS}")
     message(STATUS "Option Use NSIS - ${OPTION_USE_NSIS}")
+
+    if (APPLE)
+        message(STATUS "Option Embedded dependencies - ${OPTION_EMBED_LIBRARIES}")
+    endif (APPLE)
 endfunction()
 
 # Add the definitions for the options that are selected.

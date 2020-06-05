@@ -6,6 +6,11 @@ if (OPTION_INSTALL_FHS)
     set(DATA_DESTINATION_DIR "${CMAKE_INSTALL_DATADIR}/openttd")
     set(DOCS_DESTINATION_DIR "${CMAKE_INSTALL_DOCDIR}")
     set(MAN_DESTINATION_DIR "${CMAKE_INSTALL_MANDIR}")
+elseif(APPLE)
+    set(BINARY_DESTINATION_DIR ".")
+    set(DATA_DESTINATION_DIR "OpenTTD.app/Contents/Resources")
+    set(DOCS_DESTINATION_DIR "OpenTTD.app/Contents/Resources")
+    set(MAN_DESTINATION_DIR "OpenTTD.app/Contents/MacOS")
 else (OPTION_INSTALL_FHS)
     set(BINARY_DESTINATION_DIR ".")
     set(DATA_DESTINATION_DIR ".")
@@ -16,26 +21,33 @@ endif (OPTION_INSTALL_FHS)
 install(TARGETS openttd
         RUNTIME
             DESTINATION ${BINARY_DESTINATION_DIR}
+            BUNDLE DESTINATION ${BINARY_DESTINATION_DIR}
             COMPONENT Runtime
         )
 
-install(DIRECTORY
+set(DATA_DIRS
                 ${CMAKE_BINARY_DIR}/lang
                 ${CMAKE_BINARY_DIR}/baseset
                 ${CMAKE_SOURCE_DIR}/bin/ai
                 ${CMAKE_SOURCE_DIR}/bin/game
-                ${CMAKE_SOURCE_DIR}/bin/scripts
-        DESTINATION ${DATA_DESTINATION_DIR}
-        COMPONENT language_files)
+                ${CMAKE_SOURCE_DIR}/bin/scripts)
 
-install(FILES
+set(DOC_FILES
                 ${CMAKE_SOURCE_DIR}/COPYING.md
                 ${CMAKE_SOURCE_DIR}/README.md
                 ${CMAKE_SOURCE_DIR}/changelog.txt
                 ${CMAKE_SOURCE_DIR}/docs/multiplayer.md
-                ${CMAKE_SOURCE_DIR}/known-bugs.txt
-        DESTINATION ${DOCS_DESTINATION_DIR}
-        COMPONENT docs)
+                ${CMAKE_SOURCE_DIR}/known-bugs.txt)
+
+if(NOT APPLE)
+    install(DIRECTORY ${DATA_DIRS}
+            DESTINATION ${DATA_DESTINATION_DIR}
+            COMPONENT language_files)
+
+    install(FILES ${DOC_FILES}
+            DESTINATION ${DOCS_DESTINATION_DIR}
+            COMPONENT docs)
+endif(NOT APPLE)
 
 # A Linux manual only makes sense when using FHS. Otherwise it is a very odd
 # file with little context to what it is.
@@ -83,9 +95,55 @@ set(CPACK_STRIP_FILES YES)
 set(CPACK_OUTPUT_FILE_PREFIX "bundles")
 
 if (APPLE)
-    set(CPACK_GENERATOR "Bundle")
-    include(PackageBundle)
+    # generate the app bundle as part of the build
+    string(TIMESTAMP CURRENT_YEAR "%Y")
 
+    set_target_properties(openttd PROPERTIES OUTPUT_NAME OpenTTD)
+    set_target_properties(openttd PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_SOURCE_DIR}/os/macosx/Info.plist.in")
+    set_target_properties(openttd PROPERTIES MACOSX_BUNDLE_BUNDLE_NAME "OpenTTD")
+    set_target_properties(openttd PROPERTIES MACOSX_BUNDLE_ICON_FILE "openttd.icns")
+
+    add_custom_command(
+        TARGET openttd POST_BUILD
+        DEPENDS ${DATA_DIRS} ${DOC_FILES}
+        COMMAND ${CMAKE_COMMAND} -E make_directory
+                "${CMAKE_CURRENT_BINARY_DIR}/${DATA_DESTINATION_DIR}")
+
+    add_custom_command(
+        TARGET openttd POST_BUILD
+        DEPENDS ${DATA_DIRS} ${DOC_FILES}
+        COMMAND cp -R
+                ${DATA_DIRS} ${DOC_FILES}
+                ${CMAKE_SOURCE_DIR}/os/macosx/openttd.icns
+                "${CMAKE_CURRENT_BINARY_DIR}/${DATA_DESTINATION_DIR}")
+
+    if(OPTION_EMBED_LIBRARIES)
+        # Delay fixup_bundle() till the install step; this makes sure all executables
+        # exists and it can do its job.
+        install(
+            CODE
+            "
+                set(CMAKE_MODULE_PATH \${CMAKE_MODULE_PATH} ${CMAKE_BINARY_DIR})
+                set(BUNDLE_PATH \$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/OpenTTD.app)
+
+                set(BUNDLE_PLIST_SOURCE ${CMAKE_BINARY_DIR}/OpenTTD.app/Contents/Info.plist)
+                set(BUNDLE_PLIST \${BUNDLE_PATH}/Contents/Info.plist)
+
+                set(BU_CHMOD_BUNDLE_ITEMS TRUE)
+
+                message(STATUS \"\${BUNDLE_PLIST_SOURCE} -> \${BUNDLE_PLIST}\")
+                file(COPY ${BUNDLE_PLIST_SOURCE} DESTINATION ${BUNDLE_PLIST_SOURCE}~)
+
+                include(CPackProperties)
+                include(BundleUtilities)
+
+                fixup_bundle(\"\${BUNDLE_PATH}/Contents/MacOS/OpenTTD\"  \"\" \"\")
+            "
+            COMPONENT Runtime)
+    endif(OPTION_EMBED_LIBRARIES)
+
+    set(CPACK_GENERATOR "ZIP")
+    set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY NO)
     set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macosx")
 elseif (WIN32)
     set(CPACK_GENERATOR "ZIP")
@@ -107,6 +165,7 @@ elseif (UNIX)
     endif (OPTION_INSTALL_FHS)
 
     set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-linux-${CPACK_SYSTEM_NAME}")
+
 else ()
     message(FATAL_ERROR "Unknown OS found for packaging; please consider creating a Pull Request to add support for this OS.")
 endif ()
