@@ -82,7 +82,7 @@ if (GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
         set(REV_VERSION "${TAG}")
         set(REV_ISTAG 1)
 
-        string(REGEX REPLACE "^[0-9.]*$" "" STABLETAG "${TAG}")
+        string(REGEX REPLACE "^[0-9.]+$" "" STABLETAG "${TAG}")
         if (NOT STABLETAG STREQUAL "")
             set(REV_ISSTABLETAG 1)
         else ()
