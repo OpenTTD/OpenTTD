@@ -18,6 +18,7 @@ install(
     CODE
     "
         include(BundleUtilities)
+        set(BU_CHMOD_BUNDLE_ITEMS TRUE)
         fixup_bundle(\"\${CMAKE_INSTALL_PREFIX}/openttd\"  \"\" \"\")
     "
     DESTINATION .
