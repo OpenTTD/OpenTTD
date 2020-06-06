@@ -72,7 +72,7 @@ struct SQVM;
 #define TK_CONST 324
 
 /* MSVC doesn't like NORETURN for function prototypes, but we kinda need it for GCC. */
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && !defined(__clang__)
 typedef void(*CompilerErrorFunc)(void *ud, const SQChar *s);
 #else
 typedef NORETURN void(*CompilerErrorFunc)(void *ud, const SQChar *s);

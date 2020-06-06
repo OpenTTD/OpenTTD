@@ -10,6 +10,13 @@
 #ifndef STDAFX_H
 #define STDAFX_H
 
+#ifdef _MSC_VER
+	/* Stop Microsoft (and clang-cl) compilers from complaining about potentially-unsafe/potentially-non-standard functions */
+#	define _CRT_SECURE_NO_DEPRECATE
+#	define _CRT_SECURE_NO_WARNINGS
+#	define _CRT_NONSTDC_NO_WARNINGS
+#endif
+
 #if defined(__APPLE__)
 	#include "os/macosx/osx_stdafx.h"
 #endif /* __APPLE__ */
@@ -177,7 +184,6 @@
 	#endif /* (_MSC_VER < 1400) */
 	#pragma warning(disable: 4291)   // no matching operator delete found; memory will not be freed if initialization throws an exception (reason: our overloaded functions never throw an exception)
 	#pragma warning(disable: 4996)   // 'function': was declared deprecated
-	#define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
 	#pragma warning(disable: 6308)   // code analyzer: 'realloc' might return null pointer: assigning null pointer to 't_ptr', which is passed as an argument to 'realloc', will cause the original memory block to be leaked
 	#pragma warning(disable: 6011)   // code analyzer: Dereferencing NULL pointer 'pfGetAddrInfo': Lines: 995, 996, 998, 999, 1001
 	#pragma warning(disable: 6326)   // code analyzer: potential comparison of a constant with another constant
@@ -198,7 +204,11 @@
 
 	#define CDECL _cdecl
 	#define WARN_FORMAT(string, args)
-	#define FINAL sealed
+#	ifndef __clang__
+#		define FINAL sealed
+#	else
+#		define FINAL
+#	endif
 
 	/* fallthrough attribute, VS 2017 */
 	#if (_MSC_VER >= 1910)
