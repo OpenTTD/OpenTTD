@@ -3,6 +3,7 @@ set(CPACK_PACKAGE_VERSION "@REV_VERSION@")
 
 # Name the output file with the correct version
 string(REPLACE "#CPACK_PACKAGE_VERSION#" "@REV_VERSION@" CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_FILE_NAME}")
+string(REPLACE "#CPACK_PACKAGE_VERSION#" "@REV_VERSION@" CPACK_SOURCE_PACKAGE_FILE_NAME "${CPACK_SOURCE_PACKAGE_FILE_NAME}")
 
 if (CPACK_BUNDLE_PLIST_SOURCE)
     # Rewrite the Info.plist.in to contain the correct version

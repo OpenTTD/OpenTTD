@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.5)
 project(OpenTTD)
 
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
-    message(FATAL_ERROR "In-source builds not allowed. Please run \"cmake ..\" from the bin directory")
+    message(FATAL_ERROR "In-source builds not allowed. Please run \"cmake ..\" from the 'build' directory")
 endif (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
