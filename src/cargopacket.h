@@ -423,7 +423,7 @@ public:
 	uint Reroute(uint max_move, VehicleCargoList *dest, StationID avoid, StationID avoid2, const GoodsEntry *ge);
 
 	/**
-	 * Are two the two CargoPackets mergeable in the context of
+	 * Are the two CargoPackets mergeable in the context of
 	 * a list of CargoPackets for a Vehicle?
 	 * @param cp1 First CargoPacket.
 	 * @param cp2 Second CargoPacket.
@@ -486,7 +486,7 @@ public:
 		while (!next.IsEmpty()) {
 			if (this->packets.find(next.Pop()) != this->packets.end()) return true;
 		}
-		/* Packets for INVALID_STTION can go anywhere. */
+		/* Packets for INVALID_STATION can go anywhere. */
 		return this->packets.find(INVALID_STATION) != this->packets.end();
 	}
 
