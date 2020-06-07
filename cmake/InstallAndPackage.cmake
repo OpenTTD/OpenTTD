@@ -81,7 +81,7 @@ set(CPACK_STRIP_FILES YES)
 set(CPACK_OUTPUT_FILE_PREFIX "bundles")
 
 if (APPLE)
-    set(CPACK_GENERATOR "Bundle")
+    set(CPACK_GENERATOR "ZIP;Bundle")
     include(PackageBundle)
 
     set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macosx")
