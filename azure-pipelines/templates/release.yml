@@ -101,6 +101,7 @@ jobs:
       set -ex
 
       cp build/RelWithDebInfo/openttd.pdb build/bundles/openttd-$(Build.BuildNumber)-windows-$(BundlePlatform).pdb
+      xz -9 build/bundles/openttd-$(Build.BuildNumber)-windows-$(BundlePlatform).pdb
     displayName: 'Copy PDB to bundles folder'
   - template: release-bundles.yml
 
