@@ -571,7 +571,7 @@ private:
 		if (this->viewport != nullptr) this->viewport->top += newtop - this->top;
 		this->top = newtop;
 
-		SetDirtyBlocks(this->left, mintop, this->left + this->width, maxtop + this->height);
+		AddDirtyBlock(this->left, mintop, this->left + this->width, maxtop + this->height);
 	}
 
 	StringID GetCompanyMessageString() const

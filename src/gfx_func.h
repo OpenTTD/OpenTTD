@@ -131,7 +131,7 @@ Point GetCharPosInString(const char *str, const char *ch, FontSize start_fontsiz
 const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize = FS_NORMAL);
 
 void DrawDirtyBlocks();
-void SetDirtyBlocks(int left, int top, int right, int bottom);
+void AddDirtyBlock(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty();
 
 void GfxInitPalettes();

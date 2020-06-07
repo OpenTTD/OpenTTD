@@ -774,7 +774,7 @@ void NWidgetBase::SetDirty(const Window *w) const
 {
 	int abs_left = w->left + this->pos_x;
 	int abs_top = w->top + this->pos_y;
-	SetDirtyBlocks(abs_left, abs_top, abs_left + this->current_x, abs_top + this->current_y);
+	AddDirtyBlock(abs_left, abs_top, abs_left + this->current_x, abs_top + this->current_y);
 }
 
 /**
