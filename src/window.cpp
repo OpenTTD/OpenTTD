@@ -983,7 +983,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
  */
 void Window::SetDirty() const
 {
-	SetDirtyBlocks(this->left, this->top, this->left + this->width, this->top + this->height);
+	AddDirtyBlock(this->left, this->top, this->left + this->width, this->top + this->height);
 }
 
 /**
@@ -3493,7 +3493,7 @@ static int PositionWindow(Window *w, WindowClass clss, int setting)
 		default: w->left = 0; break;
 	}
 	if (w->viewport != nullptr) w->viewport->left += w->left - old_left;
-	SetDirtyBlocks(0, w->top, _screen.width, w->top + w->height); // invalidate the whole row
+	AddDirtyBlock(0, w->top, _screen.width, w->top + w->height); // invalidate the whole row
 	return w->left;
 }
 
