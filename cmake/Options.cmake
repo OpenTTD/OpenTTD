@@ -50,6 +50,7 @@ function(set_options)
     option(OPTION_INSTALL_FHS "Install with Filesstem Hierarchy Standard folders" ${DEFAULT_OPTION_INSTALL_FHS})
     option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" YES)
     option(OPTION_USE_THREADS "Use threads" YES)
+    option(OPTION_USE_NSIS "Use NSIS to create windows installer; enable only for stable releases" NO)
 endfunction()
 
 # Show the values of the generic options.
@@ -61,6 +62,7 @@ function(show_options)
     message(STATUS "Option Install FHS - ${OPTION_INSTALL_FHS}")
     message(STATUS "Option Use assert - ${OPTION_USE_ASSERTS}")
     message(STATUS "Option Use threads - ${OPTION_USE_THREADS}")
+    message(STATUS "Option Use NSIS - ${OPTION_USE_NSIS}")
 endfunction()
 
 # Add the definitions for the options that are selected.
