@@ -86,8 +86,11 @@ if (APPLE)
 
     set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macosx")
 elseif (WIN32)
-    set(CPACK_GENERATOR "ZIP;NSIS")
-    include(PackageNSIS)
+    set(CPACK_GENERATOR "ZIP")
+    if (OPTION_USE_NSIS)
+        list(APPEND CPACK_GENERATOR "NSIS")
+        include(PackageNSIS)
+    endif (OPTION_USE_NSIS)
 
     set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-windows-${CPACK_SYSTEM_NAME}")
 elseif (UNIX)
