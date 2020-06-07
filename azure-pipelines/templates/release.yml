@@ -91,7 +91,7 @@ jobs:
       VcpkgTargetTriplet: $(VcpkgTargetTriplet)
       BuildConfiguration: 'RelWithDebInfo'
       ${{ if eq(parameters.IsStableRelease, true) }}:
-        OptionUseNSIS: "YES"
+        OptionUseNSIS: "ON"
   - task: VSBuild@1
     displayName: 'Create bundles'
     inputs:

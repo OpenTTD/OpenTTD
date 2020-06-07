@@ -41,16 +41,16 @@ endfunction()
 #
 function(set_options)
     if (UNIX AND NOT APPLE)
-        set(DEFAULT_OPTION_INSTALL_FHS YES)
+        set(DEFAULT_OPTION_INSTALL_FHS ON)
     else (UNIX AND NOT APPLE)
-        set(DEFAULT_OPTION_INSTALL_FHS NO)
+        set(DEFAULT_OPTION_INSTALL_FHS OFF)
     endif (UNIX AND NOT APPLE)
 
-    option(OPTION_DEDICATED "Build dedicated server only (no GUI)" NO)
+    option(OPTION_DEDICATED "Build dedicated server only (no GUI)" OFF)
     option(OPTION_INSTALL_FHS "Install with Filesstem Hierarchy Standard folders" ${DEFAULT_OPTION_INSTALL_FHS})
-    option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" YES)
-    option(OPTION_USE_THREADS "Use threads" YES)
-    option(OPTION_USE_NSIS "Use NSIS to create windows installer; enable only for stable releases" NO)
+    option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" ON)
+    option(OPTION_USE_THREADS "Use threads" ON)
+    option(OPTION_USE_NSIS "Use NSIS to create windows installer; enable only for stable releases" OFF)
 endfunction()
 
 # Show the values of the generic options.
