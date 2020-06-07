@@ -2,7 +2,7 @@ parameters:
   BuildArch: ''
   VcpkgTargetTriplet: ''
   BuildConfiguration: ''
-  OptionUseNSIS: 'NO'
+  OptionUseNSIS: 'OFF'
 
 steps:
 - task: CMake@1
