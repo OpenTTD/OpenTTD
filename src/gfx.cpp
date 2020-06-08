@@ -1333,8 +1333,8 @@ void GetBroadestDigit(uint *front, uint *next, FontSize size)
 /**
  * Updates the dirty block manager's idea of the screen dimensions.
  *
- * @param invalidate_whole_screen @c true if the entire screen must be invalidated and redrawn,
- * @c false if the video driver is able to resize the screen buffer without invalidating everything.
+ * @param invalidate_whole_screen \c true if the entire screen must be invalidated and redrawn,
+ * \c false if the video driver is able to resize the screen buffer without invalidating everything.
  * @ingroup dirty
  */
 void ScreenSizeChanged(bool invalidate_whole_screen)
@@ -1495,12 +1495,6 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
  */
 void DrawDirtyBlocks()
 {
-	byte *b = _dirty_blocks;
-	const int w = Align(_screen.width,  DIRTY_BLOCK_WIDTH);
-	const int h = Align(_screen.height, DIRTY_BLOCK_HEIGHT);
-	int x;
-	int y;
-
 	if (HasModalProgress()) {
 		/* We are generating the world, so release our rights to the map and
 		 * painting while we are waiting a bit. */
@@ -1524,13 +1518,20 @@ void DrawDirtyBlocks()
 		if (_switch_mode != SM_NONE && !HasModalProgress()) return;
 	}
 
+	byte *b = _dirty_blocks;
+	const int w = Align(_screen.width,  DIRTY_BLOCK_WIDTH);
+	const int h = Align(_screen.height, DIRTY_BLOCK_HEIGHT);
+	int x;
+	int y;
+
+	/* TODO: Constrain dirty block check to area inside _invalid_rect */
 	y = 0;
 	do {
 		x = 0;
 		do {
 			if (*b != 0) {
-				int left;
-				int top;
+				int const left = max(x, _invalid_rect.left);
+				int const top  = max(y, _invalid_rect.top);
 				int right = x + DIRTY_BLOCK_WIDTH;
 				int bottom = y;
 				byte *p = b;
@@ -1553,7 +1554,7 @@ void DrawDirtyBlocks()
 					int h = h2;
 					/* Check if a full line of dirty flags is set. */
 					do {
-						if (!*p2) goto no_more_coalesc;
+						if (*p2 == 0) goto no_more_coalesc;
 						p2 += _dirty_blocks_per_line;
 					} while (--h != 0);
 
@@ -1570,14 +1571,8 @@ void DrawDirtyBlocks()
 				}
 				no_more_coalesc:
 
-				left = x;
-				top = y;
-
-				if (left   < _invalid_rect.left  ) left   = _invalid_rect.left;
-				if (top    < _invalid_rect.top   ) top    = _invalid_rect.top;
-				if (right  > _invalid_rect.right ) right  = _invalid_rect.right;
-				if (bottom > _invalid_rect.bottom) bottom = _invalid_rect.bottom;
-
+				right  = min(right,  _invalid_rect.right);
+				bottom = min(bottom, _invalid_rect.bottom);
 				if (left < right && top < bottom) {
 					RedrawScreenRect(left, top, right, bottom);
 				}
@@ -1611,27 +1606,27 @@ void AddDirtyBlock(int left, int top, int right, int bottom)
 	int width;
 	int height;
 
-	if (left < 0) left = 0;
-	if (top < 0) top = 0;
-	if (right > _screen.width) right = _screen.width;
-	if (bottom > _screen.height) bottom = _screen.height;
-
+	/* Bounds check */
+	left   = max(left,   0);
+	top    = max(top,    0);
+	right  = min(right,  _screen.width);
+	bottom = min(bottom, _screen.height);
 	if (left >= right || top >= bottom) return;
 
-	if (left   < _invalid_rect.left  ) _invalid_rect.left   = left;
-	if (top    < _invalid_rect.top   ) _invalid_rect.top    = top;
-	if (right  > _invalid_rect.right ) _invalid_rect.right  = right;
-	if (bottom > _invalid_rect.bottom) _invalid_rect.bottom = bottom;
+	/* Extend dirty rectangle to include the invalidated screen area */
+	_invalid_rect.left   = min(left,   _invalid_rect.left);
+	_invalid_rect.top    = min(top,    _invalid_rect.top);
+	_invalid_rect.right  = max(right,  _invalid_rect.right);
+	_invalid_rect.bottom = max(bottom, _invalid_rect.bottom);
 
+	/* Update dirty blocks bitmap */
 	left /= DIRTY_BLOCK_WIDTH;
 	top  /= DIRTY_BLOCK_HEIGHT;
-
-	b = _dirty_blocks + top * _dirty_blocks_per_line + left;
-
 	width  = ((right  - 1) / DIRTY_BLOCK_WIDTH)  - left + 1;
 	height = ((bottom - 1) / DIRTY_BLOCK_HEIGHT) - top  + 1;
-
 	assert(width > 0 && height > 0);
+
+	b = _dirty_blocks + top * _dirty_blocks_per_line + left;
 
 	do {
 		int i = width;
