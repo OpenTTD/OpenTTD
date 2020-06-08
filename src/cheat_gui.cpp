@@ -13,6 +13,7 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "date_func.h"
+#include "openttd.h"
 #include "saveload/saveload.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
@@ -23,6 +24,7 @@
 #include "settings_gui.h"
 #include "company_gui.h"
 #include "linkgraph/linkgraphschedule.h"
+#include "network/network.h"
 #include "map_func.h"
 #include "tile_map.h"
 #include "newgrf.h"
@@ -413,8 +415,16 @@ static WindowDesc _cheats_desc(
 );
 
 /** Open cheat window. */
-void ShowCheatWindow()
+bool ShowCheatWindow()
 {
+	/* Not to open in multiplayer or intro game. */
+	if (_networking || _game_mode == GM_MENU)
+	{
+		ShowErrorMessage(STR_ERROR_CAN_T_OPEN_CHEAT, INVALID_STRING_ID, WL_ERROR);
+		return false;
+	}
+
 	DeleteWindowById(WC_CHEATS, 0);
 	new CheatWindow(&_cheats_desc);
+	return true;
 }

@@ -1072,6 +1072,19 @@ DEF_CONSOLE_CMD(ConRestart)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConOpenCheats)
+{
+	if (argc == 0) {
+		IConsoleHelp("Just open the cheat window. Usage: 'cheat'");
+		return true;
+	}
+
+	extern bool ShowCheatWindow();
+	ShowCheatWindow();
+
+	return true;
+}
+
 /**
  * Print a text buffer line by line to the console. Lines are separated by '\n'.
  * @param buf The buffer to print.
@@ -2097,6 +2110,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("reset_enginepool", ConResetEnginePool, ConHookNoNetwork);
 	IConsoleCmdRegister("return",       ConReturn);
 	IConsoleCmdRegister("screenshot",   ConScreenShot);
+	IConsoleCmdRegister("cheat",        ConOpenCheats, ConHookNoNetwork);
 	IConsoleCmdRegister("script",       ConScript);
 	IConsoleCmdRegister("scrollto",     ConScrollToTile);
 	IConsoleCmdRegister("alias",        ConAlias);

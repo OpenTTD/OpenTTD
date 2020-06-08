@@ -476,6 +476,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Delete all mess
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Land area information
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toggle console
+STR_ABOUT_MENU_SHOW_CHEAT                                       :Cheat
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Game script debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Show frame rate
@@ -4639,6 +4640,9 @@ STR_ERROR_TOO_MANY_SIGNS                                        :{WHITE}... too 
 STR_ERROR_CAN_T_PLACE_SIGN_HERE                                 :{WHITE}Can't place sign here...
 STR_ERROR_CAN_T_CHANGE_SIGN_NAME                                :{WHITE}Can't change sign name...
 STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Can't delete sign...
+
+# Misc. errors
+STR_ERROR_CAN_T_OPEN_CHEAT                                      :{WHITE}Can't open cheat window in title screen or multiplayer game.
 
 # Translatable comment for OpenTTD's desktop shortcut
 STR_DESKTOP_SHORTCUT_COMMENT                                    :A simulation game based on Transport Tycoon Deluxe
