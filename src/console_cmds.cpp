@@ -606,6 +606,7 @@ DEF_CONSOLE_CMD(ConBanList)
 	uint i = 1;
 	for (const auto &entry : _network_ban_list) {
 		IConsolePrintF(CC_DEFAULT, "  %d) %s", i, entry.c_str());
+		i++;
 	}
 
 	return true;
