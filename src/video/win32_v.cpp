@@ -199,7 +199,7 @@ static void ClientSizeChanged(int w, int h)
 
 		BlitterFactory::GetCurrentBlitter()->PostResize();
 
-		GameSizeChanged();
+		GameSizeChanged(true);
 	}
 }
 
@@ -352,7 +352,7 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 
 	BlitterFactory::GetCurrentBlitter()->PostResize();
 
-	GameSizeChanged(); // invalidate all windows, force redraw
+	GameSizeChanged(true); // invalidate all windows, force redraw
 	return true; // the request succeeded
 }
 

@@ -340,7 +340,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 
 	InitPalette();
 
-	GameSizeChanged();
+	GameSizeChanged(true);
 
 	return true;
 }

@@ -75,8 +75,8 @@ void HandleMouseEvents();
 void UpdateWindows();
 
 void DrawMouseCursor();
-void ScreenSizeChanged();
-void GameSizeChanged();
+void ScreenSizeChanged(bool invalidate_whole_screen);
+void GameSizeChanged(bool invalidate_whole_screen);
 void UndrawMouseCursor();
 
 /** Size of the buffer used for drawing strings. */

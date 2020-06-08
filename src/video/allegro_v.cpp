@@ -223,7 +223,7 @@ static bool CreateMainSurface(uint w, uint h)
 	select_mouse_cursor(MOUSE_CURSOR_ARROW);
 	show_mouse(_allegro_screen);
 
-	GameSizeChanged();
+	GameSizeChanged(true);
 
 	return true;
 }

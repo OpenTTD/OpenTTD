@@ -74,7 +74,8 @@ static const uint DIRTY_BLOCK_HEIGHT   = 8;
 static const uint DIRTY_BLOCK_WIDTH    = 64;
 
 static uint _dirty_blocks_per_line = 0;
-static byte *_dirty_blocks = nullptr;
+static uint _dirty_blocks_line_count = 0;
+static byte *_dirty_blocks = nullptr; // TODO: Replace _dirty_blocks with a 1-bit-per-block bitmap
 extern uint _dirty_block_colour;
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
@@ -1329,17 +1330,57 @@ void GetBroadestDigit(uint *front, uint *next, FontSize size)
 	}
 }
 
-void ScreenSizeChanged()
+/**
+ * Updates the dirty block manager's idea of the screen dimensions.
+ *
+ * @param invalidate_whole_screen @c true if the entire screen must be invalidated and redrawn,
+ * @c false if the video driver is able to resize the screen buffer without invalidating everything.
+ * @ingroup dirty
+ */
+void ScreenSizeChanged(bool invalidate_whole_screen)
 {
-	_dirty_blocks_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
-	_dirty_blocks = ReallocT<byte>(_dirty_blocks, _dirty_blocks_per_line * CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT));
+	if (invalidate_whole_screen) {
+		_dirty_blocks_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
+		_dirty_blocks_line_count = CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT);
+		_dirty_blocks = ReallocT<byte>(_dirty_blocks, _dirty_blocks_per_line * _dirty_blocks_line_count);
 
-	/* check the dirty rect */
-	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
-	if (_invalid_rect.bottom >= _screen.height) _invalid_rect.bottom = _screen.height;
+		MemSetT(_dirty_blocks, 0xFF, _dirty_blocks_per_line * _dirty_blocks_line_count);
+		_invalid_rect = {.left = 0, .top = 0, .right = _screen.width, .bottom = _screen.height};
 
-	/* screen size changed and the old bitmap is invalid now, so we don't want to undraw it */
-	_cursor.visible = false;
+		/* Screen size changed and the old bitmap is invalid now, so we don't want to undraw it */
+		_cursor.visible = false;
+	} else {
+		/* Check and adjust the dirty rect */
+		_invalid_rect.left   = min(_invalid_rect.left,   _screen.width);
+		_invalid_rect.top    = min(_invalid_rect.top,    _screen.height);
+		_invalid_rect.right  = min(_invalid_rect.right,  _screen.width);
+		_invalid_rect.bottom = min(_invalid_rect.bottom, _screen.height);
+
+		/* Create a new dirty blocks bitmap */
+		uint const curr_dirty_blocks_per_line = _dirty_blocks_per_line;
+		uint const curr_dirty_blocks_line_count = _dirty_blocks_line_count;
+		byte * const curr_dirty_blocks = _dirty_blocks;
+
+		_dirty_blocks_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
+		_dirty_blocks_line_count = CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT);
+		_dirty_blocks = MallocT<byte>(_dirty_blocks_per_line * _dirty_blocks_line_count);
+		MemSetT(_dirty_blocks, 0xFF, _dirty_blocks_per_line * _dirty_blocks_line_count);
+
+		/* Initialize the new dirty blocks bitmap */
+		uint const copy_dirty_blocks_per_line = min(curr_dirty_blocks_per_line, _dirty_blocks_per_line);
+		uint copy_dirty_blocks_line_count = min(curr_dirty_blocks_line_count, _dirty_blocks_line_count);
+
+		for (byte *src = curr_dirty_blocks, *dst = _dirty_blocks;
+				copy_dirty_blocks_line_count > 0;
+				--copy_dirty_blocks_line_count) {
+			MemCpyT(dst, src, copy_dirty_blocks_per_line);
+			src += curr_dirty_blocks_per_line;
+			dst += _dirty_blocks_per_line;
+		}
+
+		/* Dispose of the old dirty blocks bitmap */
+		free(curr_dirty_blocks);
+	}
 }
 
 void UndrawMouseCursor()

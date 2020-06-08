@@ -141,7 +141,7 @@ const char *VideoDriver_Dedicated::Start(const StringList &parm)
 	_screen.width  = _screen.pitch = _cur_resolution.width;
 	_screen.height = _cur_resolution.height;
 	_screen.dst_ptr = _dedicated_video_mem;
-	ScreenSizeChanged();
+	ScreenSizeChanged(true);
 	BlitterFactory::GetCurrentBlitter()->PostResize();
 
 #if defined(_WIN32)

@@ -590,12 +590,14 @@ void ShowVitalWindows()
 /**
  * Size of the application screen changed.
  * Adapt the game screen-size, re-allocate the open windows, and repaint everything
+ *
+ * @param invalidate_whole_screen \c true if the entire screen must be invalidated and redrawn,
+ * \c false if the video driver is able to resize the screen buffer without invalidating everything.
  */
-void GameSizeChanged()
+void GameSizeChanged(bool invalidate_whole_screen)
 {
 	_cur_resolution.width  = _screen.width;
 	_cur_resolution.height = _screen.height;
-	ScreenSizeChanged();
+	ScreenSizeChanged(invalidate_whole_screen);
 	RelocateAllWindows(_screen.width, _screen.height);
-	MarkWholeScreenDirty();
 }

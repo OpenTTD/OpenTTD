@@ -393,7 +393,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h)
 	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
 	SDL_WM_SetCaption(caption, caption);
 
-	GameSizeChanged();
+	GameSizeChanged(true);
 
 	return true;
 }

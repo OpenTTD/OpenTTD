@@ -28,7 +28,7 @@ const char *VideoDriver_Null::Start(const StringList &parm)
 	_screen.width  = _screen.pitch = _cur_resolution.width;
 	_screen.height = _cur_resolution.height;
 	_screen.dst_ptr = nullptr;
-	ScreenSizeChanged();
+	ScreenSizeChanged(false);
 
 	/* Do not render, nor blit */
 	DEBUG(misc, 1, "Forcing blitter 'null'...");
