@@ -12,6 +12,12 @@ if (NOT OPTION_DEDICATED)
     )
 
     add_files(
+        sdl2_s.cpp
+        sdl_s.h
+        CONDITION SDL2_FOUND
+    )
+
+    add_files(
         cocoa_s.cpp
         cocoa_s.h
         CONDITION APPLE
