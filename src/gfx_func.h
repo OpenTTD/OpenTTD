@@ -12,24 +12,28 @@
  *
  * Handles the repaint of some part of the screen.
  *
- * Some places in the code are called functions which makes something "dirty".
- * This has nothing to do with making a Tile or Window darker or less visible.
- * This term comes from memory caching and is used to define an object must
- * be repaint. If some data of an object (like a Tile, Window, Vehicle, whatever)
- * are changed which are so extensive the object must be repaint its marked
- * as "dirty". The video driver repaint this object instead of the whole screen
- * (this is btw. also possible if needed). This is used to avoid a
- * flickering of the screen by the video driver constantly repainting it.
+ * At some places in the code, functions are called which makes something "dirty".
+ * This has nothing to do with making a Tile or Window darker or less visible;
+ * the term comes from memory caching and is used to define which objects must be
+ * redrawn. If some data of an object (like a Tile, Window, Vehicle, whatever)
+ * is changed which affects its on-screen appearance, the affected area of the
+ * screen is marked as "dirty". The graphics engine (gfx_func.h, gfx.cpp) will
+ * then redraw these dirty areas instead of the whole screen. This speeds up
+ * drawing and reduces flicker by avoiding needless redrawing of parts of the
+ * screen that have not changed.
  *
- * This whole mechanism is controlled by an rectangle defined in #_invalid_rect. This
- * rectangle defines the area on the screen which must be repaint. If a new object
- * needs to be repainted this rectangle is extended to 'catch' the object on the
- * screen. At some point (which is normally uninteresting for patch writers) this
- * rectangle is send to the video drivers method
- * VideoDriver::MakeDirty and it is truncated back to an empty rectangle. At some
- * later point (which is uninteresting, too) the video driver
- * repaints all these saved rectangle instead of the whole screen and drop the
- * rectangle information. Then a new round begins by marking objects "dirty".
+ * This whole mechanism is controlled by an rectangle defined in #_invalid_rect;
+ * which is further subdivided into small blocks that independently track different
+ * regions of the screen. Whenever any object on the screen needs to be redrawn,
+ * the #_invalid_rect and #_dirty_blocks are updated to 'catch' the object on the
+ * screen. At some point (which is normally uninteresting for patch writers) the
+ * gfx engine redraws all the dirty parts into the video driver's screen buffer,
+ * informs the video driver about the updated rectangles with a call to
+ * VideoDriver::MakeDirty, and resets #_invalid_rect and #_dirty_blocks to their
+ * "clean" state. At some later point (which is also uninteresting) the video
+ * driver will use the information from the gfx engine to repaint the altered
+ * portions of the screen from the contents of the screen buffer, and a new
+ * round will begin by marking objects "dirty" again.
  *
  * @see VideoDriver::MakeDirty
  * @see _invalid_rect

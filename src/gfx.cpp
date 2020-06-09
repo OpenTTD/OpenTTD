@@ -59,24 +59,88 @@ static ReusableBuffer<uint8> _cursor_backup;
 ZoomLevel _gui_zoom; ///< GUI Zoom level
 ZoomLevel _font_zoom; ///< Font Zoom level
 
+static const byte *_colour_remap_ptr;
+static byte _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures that #ST_FONT sprites only use colours 0 to 2.
+
 /**
- * The rect for repaint.
+ * The dirty rectangle.
  *
- * This rectangle defines the area which should be repaint by the video driver.
+ * This rectangle defines the area which must be redrawn by the gfx engine.
  *
  * @ingroup dirty
  */
 static Rect _invalid_rect;
-static const byte *_colour_remap_ptr;
-static byte _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures that #ST_FONT sprites only use colours 0 to 2.
 
-static const uint DIRTY_BLOCK_HEIGHT   = 8;
-static const uint DIRTY_BLOCK_WIDTH    = 64;
+/**
+ * The dirty block bitmap.
+ *
+ * This bitmap subdivides the screen into small blocks that can be independently
+ * marked as clean or dirty. The representation is eight bits per block,
+ * encoded as follows:
+ *
+ * - \c 0x00 A completely clean block.
+ * - \c 0xFF A completely dirty block.
+ * - \c else A partially dirty block, encoded as a rectangle. Subtract 1 and use each nybble as an index into \c DIRTY_BLOCK_MAP;
+ *   High nybble is (left, right), low nybble is (top, bottom).
+ *
+ * @see DIRTY_BLOCK_MAP
+ * @ingroup dirty
+ */
+static uint8 *_dirty_blocks = nullptr;
+static uint _dirty_blocks_per_row = 0; ///< Vertical dimension of the #_dirty_blocks bitmap. @ingroup dirty
+static uint _dirty_blocks_per_col = 0; ///< Horizontal dimension of the #_dirty_blocks bitmap. @ingroup dirty
 
-static uint _dirty_blocks_per_line = 0;
-static uint _dirty_blocks_line_count = 0;
-static byte *_dirty_blocks = nullptr; // TODO: Replace _dirty_blocks with a 1-bit-per-block bitmap
-extern uint _dirty_block_colour;
+static const uint DIRTY_BLOCK_WIDTH    = 64; ///< The width of the blocks representing dirty areas of the screen. @ingroup dirty
+static const uint DIRTY_BLOCK_HEIGHT   = 8;  ///< The height of the blocks representing dirty areas of the screen. @ingroup dirty
+static const uint8 DIRTY_BLOCK_SUBBLOCK = 8;  ///< The number of subblocks along each edge of a dirty block. @ingroup dirty
+static const uint DIRTY_BLOCK_SUBWIDTH  = DIRTY_BLOCK_WIDTH / DIRTY_BLOCK_SUBBLOCK;
+static const uint DIRTY_BLOCK_SUBHEIGHT = DIRTY_BLOCK_HEIGHT / DIRTY_BLOCK_SUBBLOCK;
+
+static const uint8 DIRTY_BLOCK_CLEAN   = 0x00;
+static const uint8 DIRTY_BLOCK_DIRTY   = 0xFF;
+static const uint8 DIRTY_BLOCK_PARTIAL = 0x01;
+
+/**
+ * Maps a nybble in the #_dirty_blocks bitmap into a (start, end) pair.
+ * High nybble is start, low nybble is end.
+ *
+ * #DIRTY_BLOCK_COALESCE_MAP implements the reverse transform.
+ * @ingroup dirty
+ */
+static const uint8 DIRTY_BLOCK_MAP[16] = {
+	/* If this map is changed, it is important that 0x08 remains the last entry.
+	 * Please note that the encoding maps both 0xFE and 0xFF to a fully dirty block. */
+	/*        x_______ _x______ __x_____ ___x____ ____x___ _____x__ ______x_ _______x */
+	/* 0x0 */ 0x01,    0x12,    0x23,    0x34,    0x45,    0x56,    0x67,    0x78,
+	/*        xx______          __xx____          ____xx__          ______xx          */
+	/* 0x8 */ 0x02,             0x24,             0x46,             0x68,
+	/*        xxxx____                            ____xxxx                            */
+	/* 0xC */ 0x04,                               0x48,
+	/*                          __xxxx__                                              */
+	/* 0xE */                   0x26,
+	/*        xxxxxxxx                                                                */
+	/* 0xF */ 0x08
+};
+
+/**
+ * Maps a (start, end) pair into a nybble representing the smallest rectangle that contains it.
+ * Start is array index, (end - 1) is nybble index.
+ *
+ * @see DIRTY_BLOCK_MAP
+ */
+static const uint32 DIRTY_BLOCK_COALESCE_MAP[8] = {
+	/*        87654321  */
+	/* 0 */ 0xFFFFCC80,
+	/* 1 */ 0xFFFFCC10,
+	/* 2 */ 0xFFEE9200,
+	/* 3 */ 0xFFEE3000,
+	/* 4 */ 0xDDA40000,
+	/* 5 */ 0xDD500000,
+	/* 6 */ 0xB6000000,
+	/* 7 */ 0x70000000
+};
+
+extern uint _dirty_block_colour; ///< The colour to be used for marking dirty viewport blocks when NewGRF debugging is enabled. @ingroup dirty
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
@@ -1331,6 +1395,21 @@ void GetBroadestDigit(uint *front, uint *next, FontSize size)
 }
 
 /**
+ * This function mark the whole screen as dirty. This results in repainting
+ * the whole screen. Use this with care as this function will break the
+ * idea about marking only parts of the screen as 'dirty'.
+ * @ingroup dirty
+ */
+void MarkWholeScreenDirty()
+{
+	DEBUG(misc, 2, "MarkWholeScreenDirty()");
+	MemSetT(_dirty_blocks, DIRTY_BLOCK_DIRTY, _dirty_blocks_per_row * _dirty_blocks_per_col);
+	_invalid_rect = {0, 0, _screen.width, _screen.height};
+
+	DEBUG(misc, 2, "  _invalid_rect(%d %d %d %d)", _invalid_rect.left, _invalid_rect.top, _invalid_rect.right, _invalid_rect.bottom);
+}
+
+/**
  * Updates the dirty block manager's idea of the screen dimensions.
  *
  * @param invalidate_whole_screen \c true if the entire screen must be invalidated and redrawn,
@@ -1339,48 +1418,70 @@ void GetBroadestDigit(uint *front, uint *next, FontSize size)
  */
 void ScreenSizeChanged(bool invalidate_whole_screen)
 {
-	if (invalidate_whole_screen) {
-		_dirty_blocks_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
-		_dirty_blocks_line_count = CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT);
-		_dirty_blocks = ReallocT<byte>(_dirty_blocks, _dirty_blocks_per_line * _dirty_blocks_line_count);
+	DEBUG(misc, 2, "ScreenSizeChanged(%d)", invalidate_whole_screen);
+	if (invalidate_whole_screen || _dirty_blocks_per_row <= 0 || _dirty_blocks_per_col <= 0 || _dirty_blocks == nullptr) {
+		_dirty_blocks_per_row = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
+		_dirty_blocks_per_col = CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT);
+		_dirty_blocks = ReallocT<byte>(_dirty_blocks, _dirty_blocks_per_row * _dirty_blocks_per_col);
 
-		MemSetT(_dirty_blocks, 0xFF, _dirty_blocks_per_line * _dirty_blocks_line_count);
-		_invalid_rect = {.left = 0, .top = 0, .right = _screen.width, .bottom = _screen.height};
+		MemSetT(_dirty_blocks, DIRTY_BLOCK_DIRTY, _dirty_blocks_per_row * _dirty_blocks_per_col);
+		_invalid_rect = {0, 0, _screen.width, _screen.height};
 
 		/* Screen size changed and the old bitmap is invalid now, so we don't want to undraw it */
 		_cursor.visible = false;
 	} else {
-		/* Check and adjust the dirty rect */
-		_invalid_rect.left   = min(_invalid_rect.left,   _screen.width);
-		_invalid_rect.top    = min(_invalid_rect.top,    _screen.height);
-		_invalid_rect.right  = min(_invalid_rect.right,  _screen.width);
-		_invalid_rect.bottom = min(_invalid_rect.bottom, _screen.height);
-
 		/* Create a new dirty blocks bitmap */
-		uint const curr_dirty_blocks_per_line = _dirty_blocks_per_line;
-		uint const curr_dirty_blocks_line_count = _dirty_blocks_line_count;
-		byte * const curr_dirty_blocks = _dirty_blocks;
+		uint const curr_dirty_blocks_per_row = _dirty_blocks_per_row;
+		uint const curr_dirty_blocks_per_col = _dirty_blocks_per_col;
+		uint8 * const curr_dirty_blocks = _dirty_blocks;
 
-		_dirty_blocks_per_line = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
-		_dirty_blocks_line_count = CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT);
-		_dirty_blocks = MallocT<byte>(_dirty_blocks_per_line * _dirty_blocks_line_count);
-		MemSetT(_dirty_blocks, 0xFF, _dirty_blocks_per_line * _dirty_blocks_line_count);
+		assert(curr_dirty_blocks != nullptr);
+
+		_dirty_blocks_per_row = CeilDiv(_screen.width, DIRTY_BLOCK_WIDTH);
+		_dirty_blocks_per_col = CeilDiv(_screen.height, DIRTY_BLOCK_HEIGHT);
+		_dirty_blocks = MallocT<byte>(_dirty_blocks_per_row * _dirty_blocks_per_col);
+
+		/* Check and adjust the dirty rect */
+		if (_dirty_blocks_per_row > curr_dirty_blocks_per_row) {
+			/* Screen is growing */
+			_invalid_rect.right = _screen.width;
+		} else {
+			/* Screen is shrinking */
+			_invalid_rect.left  = min(_invalid_rect.left,  _screen.width);
+			_invalid_rect.right = min(_invalid_rect.right, _screen.width);
+		}
+		if (_dirty_blocks_per_col > curr_dirty_blocks_per_col) {
+			/* Screen is growing */
+			_invalid_rect.bottom = _screen.height;
+		} else {
+			/* Screen is shrinking */
+			_invalid_rect.top    = min(_invalid_rect.top,    _screen.height);
+			_invalid_rect.bottom = min(_invalid_rect.bottom, _screen.height);
+		}
+		if (_invalid_rect.left >= _invalid_rect.right || _invalid_rect.top >= _invalid_rect.bottom) {
+			_invalid_rect = {_screen.width, _screen.height, 0, 0};
+			MemSetT(_dirty_blocks, DIRTY_BLOCK_CLEAN, _dirty_blocks_per_row * _dirty_blocks_per_col);
+			free(curr_dirty_blocks);
+			return;
+		}
 
 		/* Initialize the new dirty blocks bitmap */
-		uint const copy_dirty_blocks_per_line = min(curr_dirty_blocks_per_line, _dirty_blocks_per_line);
-		uint copy_dirty_blocks_line_count = min(curr_dirty_blocks_line_count, _dirty_blocks_line_count);
+		MemSetT(_dirty_blocks, DIRTY_BLOCK_DIRTY, _dirty_blocks_per_row * _dirty_blocks_per_col);
 
-		for (byte *src = curr_dirty_blocks, *dst = _dirty_blocks;
-				copy_dirty_blocks_line_count > 0;
-				--copy_dirty_blocks_line_count) {
-			MemCpyT(dst, src, copy_dirty_blocks_per_line);
-			src += curr_dirty_blocks_per_line;
-			dst += _dirty_blocks_per_line;
+		uint const copy_dirty_blocks_per_col = min(curr_dirty_blocks_per_col, _dirty_blocks_per_col);
+		uint       copy_dirty_blocks_count   = min(curr_dirty_blocks_per_row, _dirty_blocks_per_row);
+
+		for (uint8 *src = curr_dirty_blocks, *dst = _dirty_blocks;
+				copy_dirty_blocks_count > 0;
+				--copy_dirty_blocks_count, src += curr_dirty_blocks_per_col, dst += _dirty_blocks_per_col) {
+			MemCpyT(dst, src, copy_dirty_blocks_per_col);
 		}
 
 		/* Dispose of the old dirty blocks bitmap */
 		free(curr_dirty_blocks);
 	}
+
+	DEBUG(misc, 2, "  _invalid_rect(%d %d %d %d)", _invalid_rect.left, _invalid_rect.top, _invalid_rect.right, _invalid_rect.bottom);
 }
 
 void UndrawMouseCursor()
@@ -1458,10 +1559,10 @@ void DrawMouseCursor()
 }
 
 /**
- * Repaints a specific rectangle of the screen.
+ * Redraws a specific rectangle of the screen.
  *
  * @param left,top,right,bottom The area of the screen that needs repainting
- * @pre The rectangle should have been previously marked dirty with \c AddDirtyBlock.
+ * @pre The rectangle should normally have been previously marked dirty with \c AddDirtyBlock.
  * @see AddDirtyBlock
  * @see DrawDirtyBlocks
  * @ingroup dirty
@@ -1487,7 +1588,56 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 }
 
 /**
- * Repaints the rectangle blocks which are marked as 'dirty'.
+ * Decode a dirty block from #_dirty_blocks into a dirty rectangle.
+ * @param block The block to decode.
+ * @ingroup dirty
+ */
+inline Rect DecodeDirtyBlock(uint8 block) {
+	if (block == DIRTY_BLOCK_CLEAN) return (Rect) {DIRTY_BLOCK_SUBBLOCK, DIRTY_BLOCK_SUBBLOCK, 0, 0};
+	if (block == DIRTY_BLOCK_DIRTY) return (Rect) {0, 0, DIRTY_BLOCK_SUBBLOCK, DIRTY_BLOCK_SUBBLOCK};
+
+	block -= DIRTY_BLOCK_PARTIAL;
+	uint8 left_right = DIRTY_BLOCK_MAP[block >> 4];
+	uint8 top_bottom = DIRTY_BLOCK_MAP[block & 0xF];
+
+	uint8 left   = left_right >> 4;
+	uint8 right  = left_right & 0xF;
+	uint8 top    = top_bottom >> 4;
+	uint8 bottom = top_bottom & 0xF;
+	return (Rect) {left, top, right, bottom};
+}
+
+/**
+ * Encode a dirty rectangle into a block.
+ * @param left,top,right,bottom The rectangle to encode.
+ * @ingroup dirty
+ */
+inline uint8 EncodeDirtyBlock(int const &left, int const &top, int const &right, int const &bottom) {
+	if (left >= right || top >= bottom) return DIRTY_BLOCK_CLEAN;
+
+	assert(left >= 0 && top >= 0 && right <= DIRTY_BLOCK_SUBBLOCK && bottom <= DIRTY_BLOCK_SUBBLOCK);
+	uint8 const left_right = (DIRTY_BLOCK_COALESCE_MAP[left] >> (4 * (right  - 1))) & 0xF;
+	uint8 const top_bottom = (DIRTY_BLOCK_COALESCE_MAP[top]  >> (4 * (bottom - 1))) & 0xF;
+	uint8 const block = (left_right << 4 | top_bottom);
+
+	if (block == DIRTY_BLOCK_DIRTY) {
+		return DIRTY_BLOCK_DIRTY;
+	} else {
+		return block + DIRTY_BLOCK_PARTIAL;
+	}
+}
+
+/**
+ * Encode a dirty rectangle into a block.
+ * @param bounds The rectangle to encode.
+ * @ingroup dirty
+ */
+inline uint8 EncodeDirtyBlock(Rect const &bounds) {
+	return EncodeDirtyBlock(bounds.left, bounds.top, bounds.right, bounds.bottom);
+}
+
+/**
+ * Redraws the screen blocks which are marked as 'dirty'.
  *
  * @see AddDirtyBlock
  *
@@ -1518,74 +1668,160 @@ void DrawDirtyBlocks()
 		if (_switch_mode != SM_NONE && !HasModalProgress()) return;
 	}
 
-	byte *b = _dirty_blocks;
-	const int w = Align(_screen.width,  DIRTY_BLOCK_WIDTH);
-	const int h = Align(_screen.height, DIRTY_BLOCK_HEIGHT);
-	int x;
-	int y;
+	DEBUG(misc, 2, "DrawDirtyBlocks()");
+	DEBUG(misc, 2, "  _invalid_rect(%d %d %d %d)", _invalid_rect.left, _invalid_rect.top, _invalid_rect.right, _invalid_rect.bottom);
 
-	/* TODO: Constrain dirty block check to area inside _invalid_rect */
-	y = 0;
-	do {
-		x = 0;
-		do {
-			if (*b != 0) {
-				int const left = max(x, _invalid_rect.left);
-				int const top  = max(y, _invalid_rect.top);
-				int right = x + DIRTY_BLOCK_WIDTH;
-				int bottom = y;
-				byte *p = b;
-				int h2;
+	if (_invalid_rect.left >= _invalid_rect.right ||
+			_invalid_rect.top >= _invalid_rect.bottom) {
+		return;
+	}
 
-				/* First try coalescing downwards */
-				do {
-					*p = 0;
-					p += _dirty_blocks_per_line;
-					bottom += DIRTY_BLOCK_HEIGHT;
-				} while (bottom != h && *p != 0);
+	assert(_invalid_rect.left >= 0 &&
+			_invalid_rect.top >= 0 &&
+			_invalid_rect.right <= _screen.width &&
+			_invalid_rect.bottom <= _screen.height);
 
-				/* Try coalescing to the right too. */
-				h2 = (bottom - y) / DIRTY_BLOCK_HEIGHT;
-				assert(h2 > 0);
-				p = b;
+	int const block_left   = _invalid_rect.left / DIRTY_BLOCK_WIDTH;
+	int const block_top    = _invalid_rect.top  / DIRTY_BLOCK_HEIGHT;
+	int const block_right  = CeilDiv(_invalid_rect.right,  DIRTY_BLOCK_WIDTH);
+	int const block_bottom = CeilDiv(_invalid_rect.bottom, DIRTY_BLOCK_HEIGHT);
 
-				while (right != w) {
-					byte *p2 = ++p;
-					int h = h2;
-					/* Check if a full line of dirty flags is set. */
-					do {
-						if (*p2 == 0) goto no_more_coalesc;
-						p2 += _dirty_blocks_per_line;
-					} while (--h != 0);
+	int const col_stride = _dirty_blocks_per_col - (block_bottom - block_top);
 
-					/* Wohoo, can combine it one step to the right!
-					 * Do that, and clear the bits. */
-					right += DIRTY_BLOCK_WIDTH;
+	DEBUG(misc, 2, "  dbpr %d dbpc %d stride %d", _dirty_blocks_per_row, _dirty_blocks_per_col, col_stride);
+	DEBUG(misc, 2, "  blk %d %d %d %d", block_left, block_top, block_right, block_bottom);
 
-					h = h2;
-					p2 = p;
-					do {
-						*p2 = 0;
-						p2 += _dirty_blocks_per_line;
-					} while (--h != 0);
+	int block_x;
+	int block_y;
+	int screen_x;
+	int screen_y;
+
+	uint8 *block = _dirty_blocks + block_left * _dirty_blocks_per_col + block_top;
+
+	Rect drawn_rect = {_screen.width, _screen.height, 0, 0};
+	for (block_x = block_left, screen_x = block_left * DIRTY_BLOCK_WIDTH;
+			block_x < block_right;
+			++block_x, screen_x += DIRTY_BLOCK_WIDTH, block += col_stride) {
+		for (block_y = block_top, screen_y = block_top * DIRTY_BLOCK_HEIGHT;
+				block_y < block_bottom;
+				++block_y, screen_y += DIRTY_BLOCK_HEIGHT, ++block) {
+			assert(block - _dirty_blocks >= 0 && _dirty_blocks - block + _dirty_blocks_per_col * _dirty_blocks_per_row >= 0);
+			if (*block != DIRTY_BLOCK_CLEAN) {
+				DEBUG(misc, 2, "  found dirty block starting at bx,by=%d,%d sx,sy=%d,%d", block_x, block_y, screen_x, screen_y);
+				Rect coalesce_bounds = DecodeDirtyBlock(*block);
+				Rect bounds;
+				DEBUG(misc, 2, "  cb {%d %d %d %d}", coalesce_bounds.left, coalesce_bounds.top, coalesce_bounds.right, coalesce_bounds.bottom);
+
+				/* Try to coalesce with the block(s) below */
+				uint8 *coalesce_col = block;
+				int coalesce_bottom = block_y;
+				for(;;) {
+					*coalesce_col++ = DIRTY_BLOCK_CLEAN; // Mark the coalesced block as clean.
+
+					if (++coalesce_bottom >= block_bottom) break;
+					if ((coalesce_bounds.bottom % DIRTY_BLOCK_SUBBLOCK) != 0) break;
+
+					assert(coalesce_col - _dirty_blocks >= 0 && _dirty_blocks - coalesce_col + _dirty_blocks_per_col * _dirty_blocks_per_row >= 0);
+					bounds = DecodeDirtyBlock(*coalesce_col);
+					if (bounds.top != 0) break;
+
+					/* Coalesce the block */
+					coalesce_bounds.left = min(coalesce_bounds.left, bounds.left);
+					coalesce_bounds.right = max(coalesce_bounds.right, bounds.right);
+					coalesce_bounds.bottom += bounds.bottom;
+
+					DEBUG(misc, 2, "  cb {%d %d %d %d}", coalesce_bounds.left, coalesce_bounds.top, coalesce_bounds.right, coalesce_bounds.bottom);
 				}
-				no_more_coalesc:
 
-				right  = min(right,  _invalid_rect.right);
-				bottom = min(bottom, _invalid_rect.bottom);
-				if (left < right && top < bottom) {
-					RedrawScreenRect(left, top, right, bottom);
+				/* Now try to coalesce with the block(s) to the right */
+				uint8 *coalesce_top = block;
+				for (int coalesce_right = block_x + 1;
+						coalesce_right < block_right && (coalesce_bounds.right % DIRTY_BLOCK_SUBBLOCK) == 0;
+						++coalesce_right) {
+
+					/* Try to coalesce the next column */
+					coalesce_top += _dirty_blocks_per_col;
+					assert(coalesce_top - _dirty_blocks >= 0 && _dirty_blocks - coalesce_top + _dirty_blocks_per_col * _dirty_blocks_per_row >= 0);
+					if (*coalesce_top == DIRTY_BLOCK_CLEAN) goto no_more_coalesce;
+
+					coalesce_col = coalesce_top;
+					Rect column_bounds = DecodeDirtyBlock(*coalesce_col++);
+					DEBUG(misc, 2, "  cl {%d %d %d %d}", column_bounds.left, column_bounds.top, column_bounds.right, column_bounds.bottom);
+					int coalesce_count = coalesce_bottom - block_y;
+					for (;;) {
+						if (--coalesce_count == 0) break;
+						if ((column_bounds.bottom % DIRTY_BLOCK_SUBBLOCK) != 0) goto no_more_coalesce;
+
+						assert(coalesce_col - _dirty_blocks >= 0 && _dirty_blocks - coalesce_col + _dirty_blocks_per_col * _dirty_blocks_per_row >= 0);
+						bounds = DecodeDirtyBlock(*coalesce_col++);
+						if (bounds.top != 0) goto no_more_coalesce;
+
+						/* Extend the column */
+						column_bounds.left = min(column_bounds.left, bounds.left);
+						column_bounds.right = max(column_bounds.right, bounds.right);
+						column_bounds.bottom += bounds.bottom;
+						DEBUG(misc, 2, "  cl {%d %d %d %d}", column_bounds.left, column_bounds.top, column_bounds.right, column_bounds.bottom);
+					}
+					if (column_bounds.left != 0) goto no_more_coalesce;
+
+					/* Coalesce the columns together */
+					coalesce_bounds.top = min(coalesce_bounds.top, column_bounds.top);
+					coalesce_bounds.bottom = max(coalesce_bounds.bottom, column_bounds.bottom);
+					coalesce_bounds.right += column_bounds.right;
+					DEBUG(misc, 2, "  cb {%d %d %d %d}", coalesce_bounds.left, coalesce_bounds.top, coalesce_bounds.right, coalesce_bounds.bottom);
+
+					/* Clean the bitmap */
+					coalesce_col = coalesce_top;
+					coalesce_count = coalesce_bottom - block_y;
+					do {
+						*coalesce_col++ = DIRTY_BLOCK_CLEAN;
+					} while (--coalesce_count > 0);
 				}
+				no_more_coalesce:
 
+				DEBUG(misc, 2, "  cb {%d %d %d %d}", coalesce_bounds.left, coalesce_bounds.top, coalesce_bounds.right, coalesce_bounds.bottom);
+				/* Translate the coalesce_bounds to screen coordinates */
+				coalesce_bounds.left   = screen_x + coalesce_bounds.left   * DIRTY_BLOCK_SUBWIDTH;
+				coalesce_bounds.top    = screen_y + coalesce_bounds.top    * DIRTY_BLOCK_SUBHEIGHT;
+				coalesce_bounds.right  = screen_x + coalesce_bounds.right  * DIRTY_BLOCK_SUBWIDTH;
+				coalesce_bounds.bottom = screen_y + coalesce_bounds.bottom * DIRTY_BLOCK_SUBHEIGHT;
+				DEBUG(misc, 2, "  scr {%d %d %d %d}", coalesce_bounds.left, coalesce_bounds.top, coalesce_bounds.right, coalesce_bounds.bottom);
+
+				/* Clip to _invalid_rect */
+				coalesce_bounds.left   = max(coalesce_bounds.left,   _invalid_rect.left);
+				coalesce_bounds.top    = max(coalesce_bounds.top,    _invalid_rect.top);
+				coalesce_bounds.right  = min(coalesce_bounds.right,  _invalid_rect.right);
+				coalesce_bounds.bottom = min(coalesce_bounds.bottom, _invalid_rect.bottom);
+				DEBUG(misc, 2, "  clp {%d %d %d %d}", coalesce_bounds.left, coalesce_bounds.top, coalesce_bounds.right, coalesce_bounds.bottom);
+
+				drawn_rect.left   = min(drawn_rect.left,   coalesce_bounds.left);
+				drawn_rect.top    = min(drawn_rect.top,    coalesce_bounds.top);
+				drawn_rect.right  = max(drawn_rect.right,  coalesce_bounds.right);
+				drawn_rect.bottom = max(drawn_rect.bottom, coalesce_bounds.bottom);
+
+				/* Draw this rectangle to the screen */
+				assert (coalesce_bounds.left < coalesce_bounds.right && coalesce_bounds.top < coalesce_bounds.bottom);
+				RedrawScreenRect(coalesce_bounds.left, coalesce_bounds.top, coalesce_bounds.right, coalesce_bounds.bottom);
+
+				/* Skip past the just-coalesced block */
+				--coalesce_bottom;
+				block += (coalesce_bottom - block_y);
+				block_y = coalesce_bottom;
+				screen_y = block_y * DIRTY_BLOCK_HEIGHT;
+				DEBUG(misc, 2, "  skipped past dirty region to bx,by=%d,%d sx,sy=%d,%d", block_x, block_y, screen_x, screen_y);
 			}
-		} while (b++, (x += DIRTY_BLOCK_WIDTH) != w);
-	} while (b += -(int)(w / DIRTY_BLOCK_WIDTH) + _dirty_blocks_per_line, (y += DIRTY_BLOCK_HEIGHT) != h);
+		}
+	}
+	DEBUG(misc, 2, "  _invalid_rect(%d %d %d %d)", _invalid_rect.left, _invalid_rect.top, _invalid_rect.right, _invalid_rect.bottom);
+	DEBUG(misc, 2, "     drawn_rect(%d %d %d %d)", drawn_rect.left, drawn_rect.top, drawn_rect.right, drawn_rect.bottom);
+	assert(drawn_rect.left == _invalid_rect.left &&
+			drawn_rect.right == _invalid_rect.right &&
+			drawn_rect.top == _invalid_rect.top &&
+			drawn_rect.bottom == _invalid_rect.bottom);
 
 	++_dirty_block_colour;
-	_invalid_rect.left = w;
-	_invalid_rect.top = h;
-	_invalid_rect.right = 0;
-	_invalid_rect.bottom = 0;
+	_invalid_rect = {_screen.width, _screen.height, 0, 0};
+	DEBUG(misc, 2, "  _invalid_rect(%d %d %d %d)", _invalid_rect.left, _invalid_rect.top, _invalid_rect.right, _invalid_rect.bottom);
 }
 
 /**
@@ -1602,9 +1838,8 @@ void DrawDirtyBlocks()
  */
 void AddDirtyBlock(int left, int top, int right, int bottom)
 {
-	byte *b;
-	int width;
-	int height;
+	DEBUG(misc, 2, "AddDirtyBlock(%d %d %d %d)", left, top, right, bottom);
+	DEBUG(misc, 2, "  _invalid_rect(%d %d %d %d)", _invalid_rect.left, _invalid_rect.top, _invalid_rect.right, _invalid_rect.bottom);
 
 	/* Bounds check */
 	left   = max(left,   0);
@@ -1618,34 +1853,53 @@ void AddDirtyBlock(int left, int top, int right, int bottom)
 	_invalid_rect.top    = min(top,    _invalid_rect.top);
 	_invalid_rect.right  = max(right,  _invalid_rect.right);
 	_invalid_rect.bottom = max(bottom, _invalid_rect.bottom);
+	DEBUG(misc, 2, "  _invalid_rect(%d %d %d %d)", _invalid_rect.left, _invalid_rect.top, _invalid_rect.right, _invalid_rect.bottom);
+
+	/* Calculate affected blocks */
+	int const block_left   = left / DIRTY_BLOCK_WIDTH;
+	int const block_top    = top  / DIRTY_BLOCK_HEIGHT;
+	int const block_right  = CeilDiv(right,  DIRTY_BLOCK_WIDTH);
+	int const block_bottom = CeilDiv(bottom, DIRTY_BLOCK_HEIGHT);
+	int const col_stride = _dirty_blocks_per_col - (block_bottom - block_top);
+
+	assert(block_right - block_left > 0 && block_bottom - block_top > 0);
+
+	/* Translate screen coordinates to sub-block coordinates */
+	left   = left / DIRTY_BLOCK_SUBWIDTH;
+	top    = top  / DIRTY_BLOCK_SUBHEIGHT;
+	right  = CeilDiv(right,  DIRTY_BLOCK_SUBWIDTH);
+	bottom = CeilDiv(bottom, DIRTY_BLOCK_SUBHEIGHT);
+
+	DEBUG(misc, 2, "  dbpr %d dbpc %d stride %d", _dirty_blocks_per_row, _dirty_blocks_per_col, col_stride);
+	DEBUG(misc, 2, "  blk %d %d %d %d", block_left, block_top, block_right, block_bottom);
+	DEBUG(misc, 2, "  sub %d %d %d %d", left, top, right, bottom);
 
 	/* Update dirty blocks bitmap */
-	left /= DIRTY_BLOCK_WIDTH;
-	top  /= DIRTY_BLOCK_HEIGHT;
-	width  = ((right  - 1) / DIRTY_BLOCK_WIDTH)  - left + 1;
-	height = ((bottom - 1) / DIRTY_BLOCK_HEIGHT) - top  + 1;
-	assert(width > 0 && height > 0);
+	uint8 *block = _dirty_blocks + block_left * _dirty_blocks_per_col + block_top;
 
-	b = _dirty_blocks + top * _dirty_blocks_per_line + left;
+	for (int block_x = block_left, subblock_x = block_left * DIRTY_BLOCK_SUBBLOCK;
+			block_x < block_right;
+			++block_x, subblock_x += DIRTY_BLOCK_SUBBLOCK, block += col_stride) {
+		for (int block_y = block_top, subblock_y = block_top * DIRTY_BLOCK_SUBBLOCK;
+				block_y < block_bottom;
+				++block_y, subblock_y += DIRTY_BLOCK_SUBBLOCK, ++block) {
+			assert(block - _dirty_blocks >= 0 && _dirty_blocks - block + _dirty_blocks_per_col * _dirty_blocks_per_row >= 0);
+			Rect bounds = DecodeDirtyBlock(*block);
+			bounds.left   = min(bounds.left,   max(0, left - subblock_x));
+			bounds.top    = min(bounds.top,    max(0, top - subblock_y));
+			bounds.right  = max(bounds.right,  min(DIRTY_BLOCK_SUBBLOCK, right - subblock_x));
+			bounds.bottom = max(bounds.bottom, min(DIRTY_BLOCK_SUBBLOCK, bottom - subblock_y));
 
-	do {
-		int i = width;
+			*block = EncodeDirtyBlock(bounds);
 
-		do b[--i] = 0xFF; while (i != 0);
-
-		b += _dirty_blocks_per_line;
-	} while (--height != 0);
-}
-
-/**
- * This function mark the whole screen as dirty. This results in repainting
- * the whole screen. Use this with care as this function will break the
- * idea about marking only parts of the screen as 'dirty'.
- * @ingroup dirty
- */
-void MarkWholeScreenDirty()
-{
-	AddDirtyBlock(0, 0, _screen.width, _screen.height);
+			Rect decode;
+			assert(((decode = DecodeDirtyBlock(*block)).left | 1) != 0); // Set up for following assertion.
+			assert(decode.left <= bounds.left &&
+					decode.top <= bounds.top &&
+					decode.right >= bounds.right &&
+					decode.bottom >= bounds.bottom);
+		}
+	}
 }
 
 /**
