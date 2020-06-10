@@ -327,7 +327,7 @@ void QZ_GameSizeChanged()
 
 	BlitterFactory::GetCurrentBlitter()->PostResize();
 
-	GameSizeChanged();
+	GameSizeChanged(true);
 }
 
 /**
