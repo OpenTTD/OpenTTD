@@ -1803,6 +1803,18 @@ void DrawDirtyBlocks()
 				assert (coalesce_bounds.left < coalesce_bounds.right && coalesce_bounds.top < coalesce_bounds.bottom);
 				RedrawScreenRect(coalesce_bounds.left, coalesce_bounds.top, coalesce_bounds.right, coalesce_bounds.bottom);
 
+				/* Debug: Frame the newly redrawn area */
+				{
+					Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+					int frame_colour = _string_colourmap[_dirty_block_colour & 0xF];
+					int x1 = coalesce_bounds.left, x2 = coalesce_bounds.right - 1;
+					int y1 = coalesce_bounds.top, y2 = coalesce_bounds.bottom - 1;
+					blitter->DrawLine(_screen.dst_ptr, x1, y1, x2, y1, _screen.width, _screen.height, frame_colour, 1);
+					blitter->DrawLine(_screen.dst_ptr, x1, y2, x2, y2, _screen.width, _screen.height, frame_colour, 1);
+					blitter->DrawLine(_screen.dst_ptr, x1, y1, x1, y2, _screen.width, _screen.height, frame_colour, 1);
+					blitter->DrawLine(_screen.dst_ptr, x2, y1, x2, y2, _screen.width, _screen.height, frame_colour, 1);
+				}
+
 				/* Skip past the just-coalesced block */
 				--coalesce_bottom;
 				block += (coalesce_bottom - block_y);
