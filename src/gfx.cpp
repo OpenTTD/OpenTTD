@@ -1593,8 +1593,8 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
  * @ingroup dirty
  */
 inline Rect DecodeDirtyBlock(uint8 block) {
-	if (block == DIRTY_BLOCK_CLEAN) return (Rect) {DIRTY_BLOCK_SUBBLOCK, DIRTY_BLOCK_SUBBLOCK, 0, 0};
-	if (block == DIRTY_BLOCK_DIRTY) return (Rect) {0, 0, DIRTY_BLOCK_SUBBLOCK, DIRTY_BLOCK_SUBBLOCK};
+	if (block == DIRTY_BLOCK_CLEAN) return {DIRTY_BLOCK_SUBBLOCK, DIRTY_BLOCK_SUBBLOCK, 0, 0};
+	if (block == DIRTY_BLOCK_DIRTY) return {0, 0, DIRTY_BLOCK_SUBBLOCK, DIRTY_BLOCK_SUBBLOCK};
 
 	block -= DIRTY_BLOCK_PARTIAL;
 	uint8 left_right = DIRTY_BLOCK_MAP[block >> 4];
@@ -1604,7 +1604,7 @@ inline Rect DecodeDirtyBlock(uint8 block) {
 	uint8 right  = left_right & 0xF;
 	uint8 top    = top_bottom >> 4;
 	uint8 bottom = top_bottom & 0xF;
-	return (Rect) {left, top, right, bottom};
+	return {left, top, right, bottom};
 }
 
 /**
