@@ -40,8 +40,16 @@ install(FILES
 # A Linux manual only makes sense when using FHS. Otherwise it is a very odd
 # file with little context to what it is.
 if (OPTION_INSTALL_FHS)
+    set(MAN_SOURCE_FILE ${CMAKE_SOURCE_DIR}/docs/openttd.6)
+    set(MAN_BINARY_FILE ${CMAKE_BINARY_DIR}/docs/openttd.6)
+    install(CODE
+            "
+                execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${MAN_SOURCE_FILE} ${MAN_BINARY_FILE})
+                execute_process(COMMAND gzip -9 -f ${MAN_BINARY_FILE})
+            "
+            COMPONENT manual)
     install(FILES
-                    ${CMAKE_SOURCE_DIR}/docs/openttd.6
+                    ${MAN_BINARY_FILE}.gz
             DESTINATION ${MAN_DESTINATION_DIR}/man6
             COMPONENT manual)
 endif (OPTION_INSTALL_FHS)
