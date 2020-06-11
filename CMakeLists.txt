@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(OpenTTD)
+if (NOT BINARY_NAME)
+    set(BINARY_NAME openttd)
+endif (NOT BINARY_NAME)
+
+project(${BINARY_NAME})
 
 if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "In-source builds not allowed. Please run \"cmake ..\" from the bin directory")
@@ -128,6 +132,7 @@ include(CompileFlags)
 compile_flags()
 
 add_executable(openttd WIN32 ${GENERATED_SOURCE_FILES})
+set_target_properties(openttd PROPERTIES OUTPUT_NAME "${BINARY_NAME}")
 # All other files are added via target_sources()
 
 include(AddCustomXXXTimestamp)
