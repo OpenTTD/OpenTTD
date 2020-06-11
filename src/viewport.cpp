@@ -182,15 +182,11 @@ struct ViewportDrawer {
 };
 
 static void MarkViewportDirty(ViewPort * const vp, int left, int top, int right, int bottom);
-static void MarkRouteStepDirty(RouteStepsMap::const_iterator cit);
-static void MarkRouteStepDirty(const TileIndex tile, uint order_nr);
 
 static ViewportDrawer _vd;
 
 static std::vector<ViewPort *> _viewport_window_cache;
 
-RouteStepsMap _vp_route_steps;
-RouteStepsMap _vp_route_steps_last_mark_dirty;
 uint _vp_route_step_width = 0;
 uint _vp_route_step_height_top = 0;
 uint _vp_route_step_height_middle = 0;
@@ -211,11 +207,6 @@ struct DrawnPathRouteTileLine {
 		return !(*this == other);
 	}
 };
-
-std::vector<DrawnPathRouteTileLine> _vp_route_paths_drawn_dirty;
-std::vector<DrawnPathRouteTileLine> _vp_route_paths_last_mark_dirty;
-
-static void MarkRoutePathsDirty(const std::vector<DrawnPathRouteTileLine> &lines);
 
 TileHighlightData _thd;
 static TileInfo *_cur_ti;
@@ -273,8 +264,6 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	vp->virtual_top = 0;
 	vp->virtual_width = ScaleByZoom(width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(height, vp->zoom);
-
-	vp->map_type = VPMT_BEGIN;
 
 	UpdateViewportSizeZoom(vp);
 
@@ -374,14 +363,14 @@ static void DoSetViewportPosition(const Window *w, int left, int top, int width,
 
 inline void UpdateViewportDirtyBlockLeftMargin(ViewPort *vp)
 {
-	if (vp->zoom >= ZOOM_LVL_DRAW_MAP) {
+	if (false /*vp->zoom >= ZOOM_LVL_DRAW_MAP*/) {
 		vp->dirty_block_left_margin = 0;
 	} else {
 		vp->dirty_block_left_margin = UnScaleByZoomLower((-vp->virtual_left) & 127, vp->zoom);
 	}
 }
 
-static void SetViewportPosition(Window *w, int x, int y, bool force_update_overlay)
+static void SetViewportPosition(Window *w, int x, int y)
 {
 	ViewPort *vp = w->viewport;
 	int old_left = vp->virtual_left;
@@ -1887,7 +1876,6 @@ void UpdateViewportPosition(Window *w)
 		int delta_x = w->viewport->dest_scrollpos_x - w->viewport->scrollpos_x;
 		int delta_y = w->viewport->dest_scrollpos_y - w->viewport->scrollpos_y;
 
-		bool update_overlay = false;
 		if (delta_x != 0 || delta_y != 0) {
 			if (_settings_client.gui.smooth_scroll) {
 				int max_scroll = ScaleByMapSize1D(512 * ZOOM_LVL_BASE);
@@ -1898,15 +1886,11 @@ void UpdateViewportPosition(Window *w)
 				w->viewport->scrollpos_x = w->viewport->dest_scrollpos_x;
 				w->viewport->scrollpos_y = w->viewport->dest_scrollpos_y;
 			}
-			update_overlay = (w->viewport->scrollpos_x == w->viewport->dest_scrollpos_x &&
-								w->viewport->scrollpos_y == w->viewport->dest_scrollpos_y);
 		}
 
 		ClampViewportToMap(vp, &w->viewport->scrollpos_x, &w->viewport->scrollpos_y);
 
-		if (_scrolling_viewport == w) UpdateActiveScrollingViewport(w);
-
-		SetViewportPosition(w, w->viewport->scrollpos_x, w->viewport->scrollpos_y, update_overlay);
+		SetViewportPosition(w, w->viewport->scrollpos_x, w->viewport->scrollpos_y);
 	}
 }
 
@@ -1917,34 +1901,6 @@ void UpdateViewportSizeZoom(ViewPort *vp)
 	uint size = vp->dirty_blocks_per_row * vp->dirty_blocks_per_column;
 	vp->dirty_blocks.assign(size, false);
 	UpdateViewportDirtyBlockLeftMargin(vp);
-}
-
-void UpdateActiveScrollingViewport(Window *w)
-{
-	if (w && (!_settings_client.gui.show_scrolling_viewport_on_map || w->viewport->zoom >= ZOOM_LVL_DRAW_MAP)) w = nullptr;
-
-	const bool bound_valid = (_scrolling_viewport_bound.left != _scrolling_viewport_bound.right);
-
-	if (!w && !bound_valid) return;
-
-	const int gap = ScaleByZoom(1, ZOOM_LVL_MAX);
-
-	auto get_bounds = [&gap](const ViewportData *vp) -> Rect {
-		int lr_low = vp->virtual_left;
-		int lr_hi = vp->dest_scrollpos_x;
-		if (lr_low > lr_hi) Swap(lr_low, lr_hi);
-		int right = lr_hi + vp->virtual_width + gap;
-
-		int tb_low = vp->virtual_top;
-		int tb_hi = vp->scrollpos_y;
-		if (tb_low > tb_hi) Swap(tb_low, tb_hi);
-		int bottom = tb_hi + vp->virtual_height + gap;
-
-		ClampViewportToMap(vp, &w->viewport->scrollpos_x, &w->viewport->scrollpos_y);
-
-		SetViewportPosition(w, w->viewport->scrollpos_x, w->viewport->scrollpos_y);
-		if (update_overlay) RebuildViewportOverlay(w);
-	}
 }
 
 /**
@@ -2010,34 +1966,6 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom, const ZoomL
 		if (vp->zoom >= mark_dirty_if_zoomlevel_is_below) continue;
 		MarkViewportDirty(vp, left, top, right, bottom);
 	}
-}
-
-static void MarkRouteStepDirty(RouteStepsMap::const_iterator cit)
-{
-	const uint size = cit->second.size() > max_rank_order_type_count ? 1 : cit->second.size();
-	MarkRouteStepDirty(cit->first, size);
-}
-
-static void MarkRouteStepDirty(const TileIndex tile, uint order_nr)
-{
-	assert(tile != INVALID_TILE);
-	const Point pt = RemapCoords2(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2);
-	const int char_height = GetCharacterHeight(FS_SMALL) + 1;
-	for (ViewPort * const vp : _viewport_window_cache) {
-		const int half_width = ScaleByZoom((_vp_route_step_width / 2) + 1, vp->zoom);
-		const int height = ScaleByZoom(_vp_route_step_height_top + char_height * order_nr + _vp_route_step_height_bottom, vp->zoom);
-		MarkViewportDirty(vp, pt.x - half_width, pt.y - height, pt.x + half_width, pt.y);
-	}
-}
-
-void MarkAllRouteStepsDirty(const Vehicle *veh)
-{
-	ViewportPrepareVehicleRouteSteps(veh);
-	for (RouteStepsMap::const_iterator cit = _vp_route_steps.begin(); cit != _vp_route_steps.end(); cit++) {
-		MarkRouteStepDirty(cit);
-	}
-	_vp_route_steps_last_mark_dirty.swap(_vp_route_steps);
-	_vp_route_steps.clear();
 }
 
 void ConstrainAllViewportsZoom()

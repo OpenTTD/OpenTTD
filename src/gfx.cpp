@@ -1338,9 +1338,6 @@ void ScreenSizeChanged()
 {
 	MarkWholeScreenDirty();
 
-	extern uint32 *_vp_map_line;
-	_vp_map_line = ReallocT<uint32>(_vp_map_line, _screen.width);
-
 	/* screen size changed and the old bitmap is invalid now, so we don't want to undraw it */
 	_cursor.visible = false;
 }
@@ -1484,7 +1481,7 @@ static void DrawDirtyViewport(uint occlusion, int left, int top, int right, int 
 	if (_game_mode == GM_MENU) {
 		RedrawScreenRect(left, top, right, bottom);
 	} else {
-		extern void ViewportDrawChk(ViewPort *vp, int left, int top, int right, int bottom);
+		extern void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom);
 		ViewportDrawChk(_dirty_viewport, left, top, right, bottom);
 		if (_dirty_viewport_disp_flags & (ND_SHADE_GREY | ND_SHADE_DIMMED)) {
 			GfxFillRect(left, top, right, bottom,
@@ -1526,12 +1523,8 @@ void DrawDirtyBlocks()
 		if (_switch_mode != SM_NONE && !HasModalProgress()) return;
 	}
 
-	extern void ViewportPrepareVehicleRoute();
-	ViewportPrepareVehicleRoute();
-
 	_gfx_draw_active = true;
 
-OnPaint/draw handler
 	if (_whole_screen_dirty) {
 		RedrawScreenRect(0, 0, _screen.width, _screen.height);
 		Window *w;

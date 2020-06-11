@@ -28,7 +28,7 @@ Point GetTileBelowCursor();
 void UpdateViewportPosition(Window *w);
 void UpdateViewportSizeZoom(ViewPort *vp);
 
-void MarkAllViewportsDirty(int left, int top, int right, int bottom);
+void MarkAllViewportsDirty(int left, int top, int right, int bottom, const ZoomLevel mark_dirty_if_zoomlevel_is_below = ZOOM_LVL_END);
 
 bool DoZoomInOutWindow(ZoomStateChange how, Window *w);
 void ZoomInOrOutToCursorWindow(bool in, Window * w);
