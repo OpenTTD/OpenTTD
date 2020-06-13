@@ -20,6 +20,12 @@ if (NOT OPTION_DEDICATED)
     )
 
     add_files(
+        sdl2_dirty_v.cpp
+        sdl2_dirty_v.h
+        CONDITION SDL2_FOUND
+    )
+
+    add_files(
         win32_v.cpp
         win32_v.h
         CONDITION WIN32
