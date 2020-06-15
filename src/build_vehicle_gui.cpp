@@ -125,6 +125,9 @@ static bool EngineIntroDateSorter(const EngineID &a, const EngineID &b)
 	return _engine_sort_direction ? r > 0 : r < 0;
 }
 
+/* cached values for EngineNameSorter to spare many GetString() calls */
+static EngineID _last_engine[2] = { INVALID_ENGINE, INVALID_ENGINE };
+
 /**
  * Determines order of engines by name
  * @param a first engine to compare
@@ -133,17 +136,16 @@ static bool EngineIntroDateSorter(const EngineID &a, const EngineID &b)
  */
 static bool EngineNameSorter(const EngineID &a, const EngineID &b)
 {
-	static EngineID last_engine[2] = { INVALID_ENGINE, INVALID_ENGINE };
-	static char     last_name[2][64] = { "\0", "\0" };
+	static char     last_name[2][64] = { "", "" };
 
-	if (a != last_engine[0]) {
-		last_engine[0] = a;
+	if (a != _last_engine[0]) {
+		_last_engine[0] = a;
 		SetDParam(0, a);
 		GetString(last_name[0], STR_ENGINE_NAME, lastof(last_name[0]));
 	}
 
-	if (b != last_engine[1]) {
-		last_engine[1] = b;
+	if (b != _last_engine[1]) {
+		_last_engine[1] = b;
 		SetDParam(0, b);
 		GetString(last_name[1], STR_ENGINE_NAME, lastof(last_name[1]));
 	}
@@ -1291,6 +1293,9 @@ struct BuildVehicleWindow : Window {
 		}
 
 		this->SelectEngine(sel_id);
+
+		/* invalidate cached values for name sorter - engine names could change */
+		_last_engine[0] = _last_engine[1] = INVALID_ENGINE;
 
 		/* make engines first, and then wagons, sorted by selected sort_criteria */
 		_engine_sort_direction = false;
