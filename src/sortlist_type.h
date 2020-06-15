@@ -250,7 +250,8 @@ public:
 	 * @return true if the list sequence has been altered
 	 *
 	 */
-	bool Sort(SortFunction *compare)
+	template <typename Comp>
+	bool Sort(Comp compare)
 	{
 		/* Do not sort if the resort bit is not set */
 		if (!(this->flags & VL_RESORT)) return false;
