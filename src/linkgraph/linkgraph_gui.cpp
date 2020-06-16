@@ -343,7 +343,7 @@ void LinkGraphOverlay::DrawStationDots(const DrawPixelInfo *dpi) const
 Point LinkGraphOverlay::GetStationMiddle(const Station *st) const
 {
 	if (this->window->viewport != nullptr) {
-		return GetViewportStationMiddle(this->window->viewport, st);
+		return GetViewportStationMiddle(this->window->viewport.get(), st);
 	} else {
 		/* assume this is a smallmap */
 		return static_cast<const SmallMapWindow *>(this->window)->GetStationMiddle(st);
@@ -483,7 +483,7 @@ LinkGraphLegendWindow::LinkGraphLegendWindow(WindowDesc *desc, int window_number
  * Set the overlay belonging to this menu and import its company/cargo settings.
  * @param overlay New overlay for this menu.
  */
-void LinkGraphLegendWindow::SetOverlay(LinkGraphOverlay *overlay) {
+void LinkGraphLegendWindow::SetOverlay(const std::shared_ptr<LinkGraphOverlay> &overlay) {
 	this->overlay = overlay;
 	uint32 companies = this->overlay->GetCompanyMask();
 	for (uint c = 0; c < MAX_COMPANIES; c++) {

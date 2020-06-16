@@ -1570,7 +1570,7 @@ void DrawDirtyBlocks()
 			}
 
 			if (w->viewport != nullptr && !w->IsShaded()) {
-				ViewPort *vp = w->viewport;
+				ViewPort *vp = w->viewport.get();
 				if (vp->is_drawn) {
 					vp->ClearDirty();
 				} else if (vp->is_dirty) {

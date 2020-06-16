@@ -325,7 +325,7 @@ public:
 
 	Owner owner;        ///< The owner of the content shown in this window. Company colour is acquired from this variable.
 
-	ViewportData *viewport;          ///< Pointer to viewport data, if present.
+	std::shared_ptr<ViewportData> viewport; ///< Pointer to viewport data, if present.
 	NWidgetViewport *viewport_widget; ///< Pointer to viewport widget, if present.
 	NWidgetCore *nested_focus;       ///< Currently focused nested widget, or \c nullptr if no nested widget has focus.
 	SmallMap<int, QueryString*> querystrings; ///< QueryString associated to WWT_EDITBOX widgets.

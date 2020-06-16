@@ -100,7 +100,7 @@ void ShowLinkGraphLegend();
 struct LinkGraphLegendWindow : Window {
 public:
 	LinkGraphLegendWindow(WindowDesc *desc, int window_number);
-	void SetOverlay(LinkGraphOverlay *overlay);
+	void SetOverlay(const std::shared_ptr<LinkGraphOverlay> &overlay);
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override;
 	void DrawWidget(const Rect &r, int widget) const override;
@@ -109,7 +109,7 @@ public:
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override;
 
 private:
-	LinkGraphOverlay *overlay;
+	std::shared_ptr<LinkGraphOverlay> overlay;
 
 	void UpdateOverlayCompanies();
 	void UpdateOverlayCargoes();
