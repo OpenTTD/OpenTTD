@@ -1998,7 +1998,7 @@ void NWidgetViewport::InitializeViewport(Window *w, uint32 follow_flags, ZoomLev
  */
 void NWidgetViewport::UpdateViewportCoordinates(Window *w)
 {
-	ViewPort *vp = w->viewport;
+	ViewPort *vp = w->viewport.get();
 	if (vp != nullptr) {
 		vp->left = w->left + this->pos_x;
 		vp->top  = w->top + this->pos_y;

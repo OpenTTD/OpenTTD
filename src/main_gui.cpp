@@ -138,7 +138,7 @@ bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 	ViewPort *vp;
 
 	assert(w != nullptr);
-	vp = w->viewport;
+	vp = w->viewport.get();
 
 	switch (how) {
 		case ZOOM_NONE:
@@ -186,7 +186,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	assert(w != nullptr);
 
 	if (_game_mode != GM_MENU) {
-		ViewPort *vp = w->viewport;
+		ViewPort *vp = w->viewport.get();
 		if ((in && vp->zoom <= _settings_client.gui.zoom_min) || (!in && vp->zoom >= _settings_client.gui.zoom_max)) return;
 
 		Point pt = GetTileZoomCenterWindow(in, w);
@@ -202,7 +202,7 @@ void FixTitleGameZoom()
 {
 	if (_game_mode != GM_MENU) return;
 
-	ViewPort *vp = FindWindowByClass(WC_MAIN_WINDOW)->viewport;
+	ViewPort *vp = FindWindowByClass(WC_MAIN_WINDOW)->viewport.get();
 	vp->zoom = _gui_zoom;
 	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
@@ -256,7 +256,7 @@ struct MainWindow : Window
 		NWidgetViewport *nvp = this->GetWidget<NWidgetViewport>(WID_M_VIEWPORT);
 		nvp->InitializeViewport(this, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 
-		this->viewport->overlay = new LinkGraphOverlay(this, WID_M_VIEWPORT, 0, 0, 3);
+		this->viewport->overlay = std::make_shared<LinkGraphOverlay>(this, WID_M_VIEWPORT, 0, 0, 3);
 		this->refresh.SetInterval(LINKGRAPH_DELAY);
 	}
 

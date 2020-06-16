@@ -931,7 +931,7 @@ void SmallMapWindow::DrawTowns(const DrawPixelInfo *dpi) const
 void SmallMapWindow::DrawMapIndicators() const
 {
 	/* Find main viewport. */
-	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport.get();
 
 	Point upper_left_smallmap_coord  = InverseRemapCoords2(vp->virtual_left, vp->virtual_top);
 	Point lower_right_smallmap_coord = InverseRemapCoords2(vp->virtual_left + vp->virtual_width - 1, vp->virtual_top + vp->virtual_height - 1);
@@ -1646,7 +1646,7 @@ void SmallMapWindow::SetNewScroll(int sx, int sy, int sub)
  */
 void SmallMapWindow::SmallMapCenterOnCurrentPos()
 {
-	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+	const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport.get();
 	Point viewport_center = InverseRemapCoords2(vp->virtual_left + vp->virtual_width / 2, vp->virtual_top + vp->virtual_height / 2);
 
 	int sub;

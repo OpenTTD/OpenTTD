@@ -150,7 +150,7 @@ public:
 	{
 		if (!gui_scope) return;
 		/* Only handle zoom message if intended for us (msg ZOOM_IN/ZOOM_OUT) */
-		HandleZoomMessage(this, this->viewport, WID_EV_ZOOM_IN, WID_EV_ZOOM_OUT);
+		HandleZoomMessage(this, this->viewport.get(), WID_EV_ZOOM_IN, WID_EV_ZOOM_OUT);
 	}
 };
 
