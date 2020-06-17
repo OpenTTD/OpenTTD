@@ -8,31 +8,26 @@
  /** @file screenshot_gui.cpp GUI functions related to screenshots. */
 
 #include "stdafx.h"
-#include "gui.h"
-#include "viewport_func.h"
 #include "window_func.h"
 #include "window_gui.h"
 #include "screenshot.h"
-#include "textbuf_gui.h"
-#include "strings_func.h"
-
 #include "widgets/screenshot_widget.h"
-
 #include "table/strings.h"
 
-static ScreenshotType _screenshot_type;
-
 struct ScreenshotWindow : Window {
-	ScreenshotWindow(WindowDesc *desc) : Window(desc) {
+	ScreenshotWindow(WindowDesc *desc) : Window(desc)
+	{
 		this->CreateNestedTree();
 		this->FinishInitNested();
 	}
 
-	void OnPaint() override {
+	void OnPaint() override
+	{
 		this->DrawWidgets();
 	}
 
-	void OnClick(Point pt, int widget, int click_count) override {
+	void OnClick(Point pt, int widget, int click_count) override
+	{
 		if (widget < 0) return;
 		ScreenshotType st;
 		switch (widget) {
@@ -45,36 +40,6 @@ struct ScreenshotWindow : Window {
 			case WID_SC_TAKE_MINIMAP:     st = SC_MINIMAP;     break;
 		}
 		TakeScreenshot(st);
-	}
-
-	/**
-	 * Make a screenshot.
-	 * Ask for confirmation if the screenshot will be huge.
-	 * @param t Screenshot type: World, defaultzoom, heightmap or viewport screenshot
-	 */
-	static void TakeScreenshot(ScreenshotType st) {
-		ViewPort vp;
-		SetupScreenshotViewport(st, &vp);
-		if ((uint64)vp.width * (uint64)vp.height > 8192 * 8192) {
-			/* Ask for confirmation */
-			_screenshot_type = st;
-			SetDParam(0, vp.width);
-			SetDParam(1, vp.height);
-			ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, nullptr, ScreenshotConfirmationCallback);
-		}
-		else {
-			/* Less than 64M pixels, just do it */
-			MakeScreenshot(st, nullptr);
-		}
-	}
-
-	/**
-	 * Callback on the confirmation window for huge screenshots.
-	 * @param w Window with viewport
-	 * @param confirmed true on confirmation
-	 */
-	static void ScreenshotConfirmationCallback(Window *w, bool confirmed) {
-		if (confirmed) MakeScreenshot(_screenshot_type, nullptr);
 	}
 };
 
@@ -102,7 +67,8 @@ static WindowDesc _screenshot_window_desc(
 	_nested_screenshot, lengthof(_nested_screenshot)
 );
 
-void ShowScreenshotWindow() {
+void ShowScreenshotWindow()
+{
 	DeleteWindowById(WC_SCREENSHOT, 0);
 	new ScreenshotWindow(&_screenshot_window_desc);
 }

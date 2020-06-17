@@ -20,6 +20,7 @@
 #include "company_func.h"
 #include "strings_func.h"
 #include "error.h"
+#include "textbuf_gui.h"
 #include "window_gui.h"
 #include "window_func.h"
 #include "tile_map.h"
@@ -831,11 +832,47 @@ bool MakeHeightmapScreenshot(const char *filename)
 	return sf->proc(filename, HeightmapCallback, nullptr, MapSizeX(), MapSizeY(), 8, palette);
 }
 
+static ScreenshotType _confirmed_screenshot_type; ///< Screenshot type the current query is about to confirm.
+
 /**
- * Make an actual screenshot.
+ * Callback on the confirmation window for huge screenshots.
+ * @param w Window with viewport
+ * @param confirmed true on confirmation
+ */
+static void ScreenshotConfirmationCallback(Window *w, bool confirmed)
+{
+	if (confirmed) MakeScreenshot(_confirmed_screenshot_type, nullptr);
+}
+
+/**
+ * Take a screenshot.
+ * Ask for confirmation if the screenshot will be huge. Delegates to \c MakeScreenshot to perform the action.
+ * @param t Screenshot type: World, defaultzoom, heightmap or viewport screenshot
+ * @see MakeScreenshot
+ */
+void TakeScreenshot(ScreenshotType t)
+{
+	ViewPort vp;
+	SetupScreenshotViewport(t, &vp);
+	if ((uint64)vp.width * (uint64)vp.height > 8192 * 8192) {
+		/* Ask for confirmation */
+		_confirmed_screenshot_type = t;
+		SetDParam(0, vp.width);
+		SetDParam(1, vp.height);
+		ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, nullptr, ScreenshotConfirmationCallback);
+	} else {
+		/* Less than 64M pixels, just do it */
+		MakeScreenshot(t, nullptr);
+	}
+}
+
+/**
+ * Make a screenshot.
+ * No questions asked, just do it.
  * @param t    the type of screenshot to make.
  * @param name the name to give to the screenshot.
  * @return true iff the screenshot was made successfully
+ * @see TakeScreenshot
  */
 bool MakeScreenshot(ScreenshotType t, const char *name)
 {
