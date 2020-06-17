@@ -66,8 +66,6 @@ RailType _last_built_railtype;
 RoadType _last_built_roadtype;
 RoadType _last_built_tramtype;
 
-static ScreenshotType _confirmed_screenshot_type; ///< Screenshot type the current query is about to confirm.
-
 /** Toobar modes */
 enum ToolbarMode {
 	TB_NORMAL,
@@ -1069,37 +1067,6 @@ static CallBackFunction ToolbarHelpClick(Window *w)
 {
 	PopupMainToolbMenu(w, _game_mode == GM_EDITOR ? (int)WID_TE_HELP : (int)WID_TN_HELP, STR_ABOUT_MENU_LAND_BLOCK_INFO, _settings_client.gui.newgrf_developer_tools ? 10 : 7);
 	return CBF_NONE;
-}
-
-/**
- * Callback on the confirmation window for huge screenshots.
- * @param w Window with viewport
- * @param confirmed true on confirmation
- */
-static void ScreenshotConfirmCallback(Window *w, bool confirmed)
-{
-	if (confirmed) MakeScreenshot(_confirmed_screenshot_type, nullptr);
-}
-
-/**
- * Make a screenshot of the world.
- * Ask for confirmation if the screenshot will be huge.
- * @param t Screenshot type: World or viewport screenshot
- */
-static void MenuClickScreenshot(ScreenshotType t)
-{
-	ViewPort vp;
-	SetupScreenshotViewport(t, &vp);
-	if ((uint64)vp.width * (uint64)vp.height > 8192 * 8192) {
-		/* Ask for confirmation */
-		SetDParam(0, vp.width);
-		SetDParam(1, vp.height);
-		_confirmed_screenshot_type = t;
-		ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, nullptr, ScreenshotConfirmCallback);
-	} else {
-		/* Less than 64M pixels, just do it */
-		MakeScreenshot(t, nullptr);
-	}
 }
 
 /**
@@ -2119,10 +2086,10 @@ struct MainToolbarWindow : Window {
 			case MTHK_BUILD_TREES: ShowBuildTreesToolbar(); break;
 			case MTHK_MUSIC: ShowMusicWindow(); break;
 			case MTHK_AI_DEBUG: ShowAIDebugWindow(); break;
-			case MTHK_SMALL_SCREENSHOT: MenuClickScreenshot(SC_VIEWPORT); break;
-			case MTHK_ZOOMEDIN_SCREENSHOT: MenuClickScreenshot(SC_ZOOMEDIN); break;
-			case MTHK_DEFAULTZOOM_SCREENSHOT: MenuClickScreenshot(SC_DEFAULTZOOM); break;
-			case MTHK_GIANT_SCREENSHOT: MenuClickScreenshot(SC_WORLD); break;
+			case MTHK_SMALL_SCREENSHOT: TakeScreenshot(SC_VIEWPORT); break;
+			case MTHK_ZOOMEDIN_SCREENSHOT: TakeScreenshot(SC_ZOOMEDIN); break;
+			case MTHK_DEFAULTZOOM_SCREENSHOT: TakeScreenshot(SC_DEFAULTZOOM); break;
+			case MTHK_GIANT_SCREENSHOT: TakeScreenshot(SC_WORLD); break;
 			case MTHK_CHEATS: if (!_networking) ShowCheatWindow(); break;
 			case MTHK_TERRAFORM: ShowTerraformToolbar(); break;
 			case MTHK_EXTRA_VIEWPORT: ShowExtraViewPortWindowForTileUnderCursor(); break;
@@ -2494,10 +2461,10 @@ struct ScenarioEditorToolbarWindow : Window {
 			case MTEHK_SIGN:                   cbf = ToolbarScenPlaceSign(this); break;
 			case MTEHK_MUSIC:                  ShowMusicWindow(); break;
 			case MTEHK_LANDINFO:               cbf = PlaceLandBlockInfo(); break;
-			case MTEHK_SMALL_SCREENSHOT:       MenuClickScreenshot(SC_VIEWPORT); break;
-			case MTEHK_ZOOMEDIN_SCREENSHOT:    MenuClickScreenshot(SC_ZOOMEDIN); break;
-			case MTEHK_DEFAULTZOOM_SCREENSHOT: MenuClickScreenshot(SC_DEFAULTZOOM); break;
-			case MTEHK_GIANT_SCREENSHOT:       MenuClickScreenshot(SC_WORLD); break;
+			case MTEHK_SMALL_SCREENSHOT:       TakeScreenshot(SC_VIEWPORT); break;
+			case MTEHK_ZOOMEDIN_SCREENSHOT:    TakeScreenshot(SC_ZOOMEDIN); break;
+			case MTEHK_DEFAULTZOOM_SCREENSHOT: TakeScreenshot(SC_DEFAULTZOOM); break;
+			case MTEHK_GIANT_SCREENSHOT:       TakeScreenshot(SC_WORLD); break;
 			case MTEHK_ZOOM_IN:                ToolbarZoomInClick(this); break;
 			case MTEHK_ZOOM_OUT:               ToolbarZoomOutClick(this); break;
 			case MTEHK_TERRAFORM:              ShowEditorTerraformToolbar(); break;

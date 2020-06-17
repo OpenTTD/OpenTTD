@@ -27,6 +27,7 @@ enum ScreenshotType {
 
 void SetupScreenshotViewport(ScreenshotType t, struct ViewPort *vp);
 bool MakeHeightmapScreenshot(const char *filename);
+void TakeScreenshot(ScreenshotType t);
 bool MakeScreenshot(ScreenshotType t, const char *name);
 bool MakeMinimapWorldScreenshot();
 
