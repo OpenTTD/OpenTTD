@@ -286,12 +286,24 @@ public:
 	void SetEntitySpec(ObjectSpec *spec);
 };
 
+struct RoadStopSpec;
+class RoadStopOverrideManager : public OverrideManagerBase {
+protected:
+	virtual bool CheckValidNewID(uint16 testid) { return testid != 0xFF; }
+public:
+	RoadStopOverrideManager(uint16 offset, uint16 maximum, uint16 invalid) :
+			OverrideManagerBase(offset, maximum, invalid) {}
+
+	void SetEntitySpec(RoadStopSpec *rss);
+};
+
 extern HouseOverrideManager _house_mngr;
 extern IndustryOverrideManager _industry_mngr;
 extern IndustryTileOverrideManager _industile_mngr;
 extern AirportOverrideManager _airport_mngr;
 extern AirportTileOverrideManager _airporttile_mngr;
 extern ObjectOverrideManager _object_mngr;
+extern RoadStopOverrideManager _roadstop_mngr;
 
 uint32 GetTerrainType(TileIndex tile, TileContext context = TCX_NORMAL);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile, bool signed_offsets = true, Axis axis = INVALID_AXIS);

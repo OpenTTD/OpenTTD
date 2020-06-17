@@ -18,6 +18,8 @@
 #include "../vehicle_base.h"
 #include "../newgrf_station.h"
 
+#include "saveload.h"
+#include "newgrf_sl.h"
 #include "table/strings.h"
 
 #include "../safeguards.h"

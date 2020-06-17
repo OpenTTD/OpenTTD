@@ -27,6 +27,7 @@
 #include "company_base.h"
 #include "error.h"
 #include "strings_func.h"
+#include "newgrf_roadstop.h"
 
 #include "table/strings.h"
 
@@ -335,6 +336,23 @@ void ObjectOverrideManager::SetEntitySpec(ObjectSpec *spec)
 	/* Now that we know we can use the given id, copy the spec to its final destination. */
 	memcpy(&_object_specs[type], spec, sizeof(*spec));
 	ObjectClass::Assign(&_object_specs[type]);
+}
+
+void RoadStopOverrideManager::SetEntitySpec(RoadStopSpec *spec)
+{
+	auto type = this->GetID(spec->grf_prop.local_id, spec->grf_prop.grffile->grfid);
+	if (type == invalid_ID) {
+		type = this->AddEntityID(spec->grf_prop.local_id, spec->grf_prop.grffile->grfid, 0);
+	}
+
+	if (type == invalid_ID) {
+		grfmsg(1, "RoadStop.SetEntitySpec: Too many roadstops allocated. Ignoring.");
+		return;
+	}
+
+	extern RoadStopSpec _roadstop_specs[NUM_ROADSTOPS];
+	memcpy(&_roadstop_specs[type], spec, sizeof(*spec));
+	RoadStopClass::Assign(&_roadstop_specs[type]);
 }
 
 /**
