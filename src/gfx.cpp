@@ -1766,7 +1766,17 @@ void UnsetDirtyBlocks(int left, int top, int right, int bottom)
 	}
 }
 
-static void AddDirtyBlocks(uint start, int left, int top, int right, int bottom)
+/**
+ * Include the specified rectangle into the collection of invalid screen rectangles, splitting and merging as required.
+ *
+ * This is an implementation detail of \c SetDirtyBlocks, and should be treated as such.
+ *
+ * @param start the position in the dirty block collection from which to start splitting/merging.
+ * @param left,top,right,bottom the rectangle to be included.
+ * @see SetDirtyBlocks
+ * @ingroup dirty
+ */
+static void SplitDirtyBlocks(uint start, int left, int top, int right, int bottom)
 {
 	if (bottom <= top || right <= left) return;
 
@@ -1796,28 +1806,28 @@ static void AddDirtyBlocks(uint start, int left, int top, int right, int bottom)
 			}
 			if (left < r.left && right > r.left) {
 				int middle = r.left;
-				AddDirtyBlocks(start, left, top, middle, bottom);
-				AddDirtyBlocks(start, middle, top, right, bottom);
+				SplitDirtyBlocks(start, left, top, middle, bottom);
+				SplitDirtyBlocks(start, middle, top, right, bottom);
 				return;
 			}
 			if (right > r.right && left < r.right) {
 				int middle = r.right;
-				AddDirtyBlocks(start, left, top, middle, bottom);
-				AddDirtyBlocks(start, middle, top, right, bottom);
+				SplitDirtyBlocks(start, left, top, middle, bottom);
+				SplitDirtyBlocks(start, middle, top, right, bottom);
 				return;
 			}
 
 			if (top < r.top && bottom > r.top) {
 				int middle = r.top;
-				AddDirtyBlocks(start, left, top, right, middle);
-				AddDirtyBlocks(start, left, middle, right, bottom);
+				SplitDirtyBlocks(start, left, top, right, middle);
+				SplitDirtyBlocks(start, left, middle, right, bottom);
 				return;
 			}
 
 			if (bottom > r.bottom && top < r.bottom) {
 				int middle = r.bottom;
-				AddDirtyBlocks(start, left, top, right, middle);
-				AddDirtyBlocks(start, left, middle, right, bottom);
+				SplitDirtyBlocks(start, left, top, right, middle);
+				SplitDirtyBlocks(start, left, middle, right, bottom);
 				return;
 			}
 		}
@@ -1847,7 +1857,7 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 	if (right > _screen.width) right = _screen.width;
 	if (bottom > _screen.height) bottom = _screen.height;
 
-	AddDirtyBlocks(0, left, top, right, bottom);
+	SplitDirtyBlocks(0, left, top, right, bottom);
 }
 
 void SetPendingDirtyBlocks(int left, int top, int right, int bottom)
