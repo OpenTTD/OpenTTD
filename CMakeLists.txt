@@ -8,6 +8,13 @@ endif (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
+# Use GNUInstallDirs to allow customisation
+# but set our own default data dir
+if (NOT CMAKE_INSTALL_DATADIR)
+    set(CMAKE_INSTALL_DATADIR "share/games")
+endif (NOT CMAKE_INSTALL_DATADIR)
+include(GNUInstallDirs)
+
 include(Options)
 set_options()
 set_directory_options()

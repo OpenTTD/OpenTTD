@@ -1,3 +1,5 @@
+include(GNUInstallDirs)
+
 # Set the options for the directories (personal, shared, global).
 #
 # set_directory_options()
@@ -14,7 +16,7 @@ function(set_directory_options)
     elseif (UNIX)
         set(DEFAULT_PERSONAL_DIR ".openttd")
         set(DEFAULT_SHARED_DIR "(not set)")
-        set(DEFAULT_GLOBAL_DIR "${CMAKE_INSTALL_PREFIX}/share/games/openttd")
+        set(DEFAULT_GLOBAL_DIR "${CMAKE_INSTALL_FULL_DATADIR}/openttd")
     else ()
         message(FATAL_ERROR "Unknown OS found; please consider creating a Pull Request to add support for this OS.")
     endif ()
