@@ -153,6 +153,16 @@ struct PacketWriter : SaveFilter {
 		this->current = nullptr;
 	}
 
+	/** Prepend the current packet to the queue. */
+	void PrependQueue()
+	{
+		if (this->current == nullptr) return;
+
+		this->current->next = this->packets;
+		this->packets = this->current;
+		this->current = nullptr;
+	}
+
 	void Write(byte *buf, size_t size) override
 	{
 		/* We want to abort the saving when the socket is closed. */
@@ -193,9 +203,9 @@ struct PacketWriter : SaveFilter {
 		this->AppendQueue();
 
 		/* Fast-track the size to the client. */
-		Packet *p = new Packet(PACKET_SERVER_MAP_SIZE);
-		p->Send_uint32((uint32)this->total_size);
-		this->cs->NetworkTCPSocketHandler::SendPacket(p);
+		this->current = new Packet(PACKET_SERVER_MAP_SIZE);
+		this->current->Send_uint32((uint32)this->total_size);
+		this->PrependQueue();
 	}
 };
 
