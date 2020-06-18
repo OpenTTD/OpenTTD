@@ -258,12 +258,10 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
 
 	if (_sdl_window == nullptr) {
-		Uint32 flags = SDL_WINDOW_SHOWN;
+		Uint32 flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
 
 		if (_fullscreen) {
 			flags |= SDL_WINDOW_FULLSCREEN;
-		} else {
-			flags |= SDL_WINDOW_RESIZABLE;
 		}
 
 		_sdl_window = SDL_CreateWindow(
