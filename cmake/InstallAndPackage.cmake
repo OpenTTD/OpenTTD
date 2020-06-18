@@ -1,9 +1,11 @@
+include(GNUInstallDirs)
+
 # If requested, use FHS layout; otherwise fall back to a flat layout.
 if (OPTION_INSTALL_FHS)
-    set(BINARY_DESTINATION_DIR "bin")
-    set(DATA_DESTINATION_DIR "share/games/openttd")
-    set(DOCS_DESTINATION_DIR "share/doc/openttd")
-    set(MAN_DESTINATION_DIR "share/man/openttd")
+    set(BINARY_DESTINATION_DIR "${CMAKE_INSTALL_BINDIR}")
+    set(DATA_DESTINATION_DIR "${CMAKE_INSTALL_DATADIR}/openttd")
+    set(DOCS_DESTINATION_DIR "${CMAKE_INSTALL_DOCDIR}")
+    set(MAN_DESTINATION_DIR "${CMAKE_INSTALL_MANDIR}")
 else (OPTION_INSTALL_FHS)
     set(BINARY_DESTINATION_DIR ".")
     set(DATA_DESTINATION_DIR ".")
@@ -40,7 +42,7 @@ install(FILES
 if (OPTION_INSTALL_FHS)
     install(FILES
                     ${CMAKE_SOURCE_DIR}/docs/openttd.6
-            DESTINATION ${MAN_DESTINATION_DIR}
+            DESTINATION ${MAN_DESTINATION_DIR}/man6
             COMPONENT manual)
 endif (OPTION_INSTALL_FHS)
 
