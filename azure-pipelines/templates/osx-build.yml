@@ -6,4 +6,5 @@ steps:
     cd build
     cmake ..
     make -j2
+    make package
   displayName: 'Build'
