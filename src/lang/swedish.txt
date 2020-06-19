@@ -934,6 +934,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikansk peso 
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nya Taiwanesisk dollar (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinesisk Renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongdollar (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupie (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vägfordon
@@ -1160,7 +1161,7 @@ STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Maximalt belopp
 STR_CONFIG_SETTING_INTEREST_RATE                                :Räntenivå: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Räntenivå för lån; styr även inflationen om sådan är aktiverad
 STR_CONFIG_SETTING_RUNNING_COSTS                                :Driftkostnader: {STRING}
-STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Sätt nivån för underhålls- och driftkostnader för fordon och infrastruktur
+STR_CONFIG_SETTING_RUNNING_COSTS_HELPTEXT                       :Sätt nivån för underhålls- och driftskostnader för fordon och infrastruktur
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Konstruktionshastighet: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Begränsar antalet konstruktionshandlingar för AI-spelare
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Fordonshaverier: {STRING}
@@ -1308,6 +1309,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Visa invånaran
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Visa antal invånare efter stadsnamnen på kartan
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Linjetjocklek i grafer: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Linjernas bredd i grafernas kurvor. En tunn linje är lättare att läsa av mer precist, medan en tjockare linje är lättare att se och gör det lättare att skilja mellan de olika färgerna
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Visa NewGRF:ens namn i fordonsbyggnadsfönstret: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lägg till en rad i fordonsbyggnadsfönstret som visar vilken NewGRF det valda fordonet kommer ifrån.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landskap: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landskap definiera grundläggande gameplay scenarier med olika last och krav stad tillväxt. NewGRF och Game skript tillåter finare kontroll.
@@ -1319,8 +1322,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Terrängtyp: {S
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(TerraGenesis endast) Hilliness av landskapet
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritäthet: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Ange hur många industrier som ska genereras och vilken nivå som ska bibehållas under spelet
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalt avstånd mellan oljeraffinaderier och kartans kant: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Oljeraffinaderier byggs bara nära kartans kanter, alltså vid kusten om det är en ö-karta
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalt avstånd mellan oljeindustrier och kartans kant: {STRING}
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Begränsar hur långt från kartans kant oljeraffinaderier och oljeplattformar kan byggas. På ö-kartor säkerställer detta att de är nära kusten. På kartor större än 256 rutor skalas detta värde upp.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snögränsens höjd: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrollerar på vilken höjd snön börjar i det subarktiska landskapet. Snö påverkar även industrigeneration och städers tillväxtkrav
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad: {STRING}
@@ -1545,10 +1548,16 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :På
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Nyheter i färg visas efter: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Årtal då tidningens nyhetsartiklar börjar tryckas i färg. Innan detta år används monokromt svart/vitt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startår: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Slutår för poängräkning: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årtal då spelet slutar räkna poäng. Vid slutet av detta år sparas företagets poäng och listan med de bästa spelresultaten visas, men därefter kan spelarna fortsätta att spela.{}Om årtalet är satt till innan startåret visas aldrig de bästa spelresultaten.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Lugn ekonomi (flera små ändringar): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :När det är aktiverat ändras industriproduktionen oftare och i mindre steg. Den här inställningen har vanligtvis ingen effekt om de olika industrityperna kommer från en NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillåt köp av aktier från andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :När det är aktiverat blir det tillåtet att köpa och sälja andelar i företag. För att dess andelar ska bli tillgängliga måste ett företag ha uppnått en viss ålder
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Lägsta företagsålder för aktiehandel: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Ställ in den lägsta ålder från vilken ett företags aktier kan köpas och säljas av andra företag.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Inkomstprocent per etapp i matarsystem: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentandel av inkomsten som ges till de mellanliggande etapperna i matarsystem. Ger mer kontroll över inkomsterna
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Vid dragning med verktyget, placera en signal per: {STRING}
@@ -1590,7 +1599,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Förbjuden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Tillåten
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Tillåten, vanlig stads-layout
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Fraktgods som genereras i staden: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hur mycket fraktgods produceras av hus i städer, i förhållande till den totala befolkningen i staden.{}Kvadratisk tillväxt: En stad dubbelt så stor genererar fyra gånger så många passagerare.{}Linjär tillväxt: En stad dubbelt så stor genererar dubbelt så många passagerare.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Hur mycket fraktgods som produceras av hus i städer, i förhållande till den totala befolkningen i staden.{}Kvadratisk tillväxt: En dubbelt så stor stad genererar fyra gånger så många passagerare.{}Linjär tillväxt: En dubbelt så stor stad genererar dubbelt så många passagerare.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadratisk (original)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linjär
 
@@ -2159,6 +2168,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Fel lös
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Servern är full
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du är bannlyst från den här servern
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev utkastad från spelet
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Orsak: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Fusk är inte tillåtet på denna server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du skickade för många kommandon till servern
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du tog för lång tid på dig att mata in löserondet
@@ -2218,6 +2228,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ga
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** You gave {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servern avslutade sessionen
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servern startar om...{}Var vänlig vänta...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} kastades ut. Orsak: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Nedladdning av innehåll
@@ -3045,7 +3056,7 @@ STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Kapacite
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig längd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' ger felaktig information
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last/återställnings information för '{1:ENGINE}' är skilld ifrån köp lista efter konstruktion. Detta kan leda till att utomatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Last-/återställningsinformationen för '{1:ENGINE}' skiljer sig från köplistan efter konstruktion. Detta kan leda till att automatisk förnyelse/uppgradering misslyckas med att anpassa fordonen/vagnarna korrekt
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' skapade en oändlig loop i en produktions-callback-funktion
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Callback-funktion {1:HEX} returnerade ett okänt/ogiltligt resultat {2:HEX}
 STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' returnerade ogiltig lasttyp i produktions-callback vid {2:HEX}
@@ -3210,7 +3221,7 @@ STR_STATION_LIST_STATION                                        :{YELLOW}{STATIO
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Inga -
 STR_STATION_LIST_SELECT_ALL_FACILITIES                          :{BLACK}Markera alla inrättningar
-STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Välj alla last-typer (inklusive icke väntande last)
+STR_STATION_LIST_SELECT_ALL_TYPES                               :{BLACK}Välj alla typer av last (inklusive icke väntande last)
 STR_STATION_LIST_NO_WAITING_CARGO                               :{BLACK}Ingen sorts last väntar
 
 # Station view window
@@ -3383,8 +3394,17 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrier
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Inga -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transporterat){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} och {NUM} till...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - klicka på namnet för att centrera huvudvyn över industrin. Ctrl+klick öppnar en ny vy över industrins läge
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Accepterat gods: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Producerat fraktgods: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Alla typer av last
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Inga
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4159,6 +4179,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Välj ma
 STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ändra inte datorspelare
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Ta en skärmdump
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Vanlig skärmdump
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Fullt inzoomad skärmdump
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Skärmdump med grundinställd zoomnivå
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Skärmdump med hela kartan
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Skärmdump av höjdkarta
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Skärmdump av miniatyrkartan
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} parametrar
