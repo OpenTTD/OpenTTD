@@ -249,6 +249,150 @@ static const int TIMEOUT_DURATION = 7; ///< The initial timeout value for WF_TIM
 static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for WF_WHITE_BORDER.
 
 /**
+ * Cache and iterator for viewport management. The cache is automatically managed by the factory and destructor
+ * of the \c ViewportData struct.
+ *
+ * @see ViewportData::Create()
+ * @see ViewportData::~ViewportData
+ */
+typedef std::vector<std::weak_ptr<ViewPort>> ViewportCacheBase;
+class ViewportCache : private ViewportCacheBase {
+	friend struct ViewportData;
+
+public:
+	/**
+	 * Iterates through the \c ViewportCache, filtering out invalid cache entries.
+	 */
+	class iterator {
+		friend class ViewportCache;
+
+	private:
+		ViewportCacheBase::iterator it; ///< The base iterator to be filtered
+		std::shared_ptr<ViewPort> curr_val = nullptr; ///< The current value of the iterator
+
+		/**
+		 * Lock the current value of the iterator; i.e. upgrade the \c std::weak_ptr to a \c std::shared_ptr.
+		 *
+		 * @see ViewportCache::iterator::operator*
+		 */
+		inline std::shared_ptr<ViewPort> LockCurrentValue() { return (this->curr_val = this->it->lock()); }
+
+	public:
+		/**
+		 * Converting constructor, for wrapping the base class iterator.
+		 *
+		 * @note \c ViewportCache::begin and \c ViewportCache::end are the preferred way to obtain iterators.
+		 *
+		 * @see ViewportCache::begin
+		 * @see ViewportCache::end
+		 */
+		explicit inline iterator(ViewportCacheBase::iterator it) : it(it), curr_val(nullptr) {}
+
+		/**
+		 * Copy constructor; required for post-increment operation.
+		 *
+		 * @see ViewportCache::iterator::operator++(int)
+		 */
+		iterator(const ViewportCache::iterator &) = default;
+
+		/**
+		 * Compare two instances of \c ViewportCache::iterator for lexical order.
+		 * The lesser of the two iterators will first be advanced past invalid entries. This is done here
+		 * as it is the only place where the end-of-range iterator is available for comparison.
+		 *
+		 * @post Results are undefined if an iterator is incremented or dereferenced after comparing
+		 * equal to another, or if the end-of-range iterator is the lesser of the two.
+		 *
+		 * @see ViewportCache::iterator::operator++
+		 * @see ViewportCache::iterator::operator*
+		 */
+		inline int cmp(ViewportCache::iterator & other)
+		{
+			/* This started life as 'operator=='. However, upon optimizing for the most likely case,
+			 * it became apparent that I had written most of a rich-comparison function.
+			 */
+
+			/* Most likely: this <= other */
+			if (likely(this->it < other.it)) {
+				for(;;) {
+					if (likely(this->LockCurrentValue() != nullptr)) return -1;
+					++(this->it); // Skip past invalid cache entry
+					if (unlikely(this->it == other.it)) return 0;
+				}
+			}
+
+			/* Second most likely: this == other */
+			if (likely(this->it == other.it)) return 0;
+
+			/* Least likely: this >= other */
+			return likely(other.cmp(*this) < 0) ? +1 : 0;
+		}
+
+		inline bool operator==(ViewportCache::iterator & other) { return this->cmp(other) == 0; }
+		inline bool operator!=(ViewportCache::iterator & other) { return this->cmp(other) != 0; }
+		inline bool operator< (ViewportCache::iterator & other) { return this->cmp(other) <  0; }
+		inline bool operator<=(ViewportCache::iterator & other) { return this->cmp(other) <= 0; }
+		inline bool operator> (ViewportCache::iterator & other) { return other.cmp(*this) <  0; }
+		inline bool operator>=(ViewportCache::iterator & other) { return other.cmp(*this) <= 0; }
+
+		/**
+		 * Prefix-increment a \c ViewportCache::iterator.
+		 *
+		 * @post Results are undefined if the iterator is not compared to the end-of-range iterator before
+		 * the next increment or dereference operation.
+		 *
+		 * @see ViewportCache::iterator::cmp
+		 * @see ViewportCache::iterator::operator*
+		 */
+		inline ViewportCache::iterator & operator++() { ++(this->it); return *this; }
+
+		/**
+		 * Postfix-increment a \c ViewportCache::iterator.
+		 *
+		 * @post Results are undefined if the iterator is not compared to the end-of-range iterator before
+		 * the next increment or dereference operation.
+		 *
+		 * @see ViewportCache::iterator::cmp
+		 * @see ViewportCache::iterator::operator*
+		 */
+		inline ViewportCache::iterator operator++(int) { auto ret = *this; ++(*this); return ret; }
+
+		/**
+		 * Dereference a \c ViewportCache::iterator.
+		 *
+		 * @pre Results are undefined if the iterator is not compared to the end-of-range iterator before
+		 * dereferencing.
+		 *
+		 * @see ViewportCache::iterator::cmp
+		 */
+		inline ViewPort * operator*() { return this->curr_val.get(); }
+	};
+
+	/**
+	 * Obtain an iterator to the beginning of the cache.
+	 */
+	inline ViewportCache::iterator begin() { return ViewportCache::iterator(this->ViewportCacheBase::begin()); }
+
+	/**
+	 * Obtain an iterator to the end of the cache.
+	 */
+	inline ViewportCache::iterator end()   { return ViewportCache::iterator(this->ViewportCacheBase::end()); }
+
+	/**
+	 * Update the viewport cache, by removing expired entries.
+	 *
+	 * The algorithm currently used for this will invalidate all iterators positioned at or beyond the
+	 * first invalid entry.
+	 */
+	inline void UpdateCache()
+	{
+		auto begin = this->ViewportCacheBase::begin();
+		auto end = this->ViewportCacheBase::end();
+		this->erase(std::remove_if(begin, end, [](std::weak_ptr<ViewPort> _){return _.expired();}), end);
+	}
+};
+
+/**
  * Data structure for a window viewport.
  * A viewport is either following a vehicle (its id in then in #follow_vehicle), or it aims to display a specific
  * location #dest_scrollpos_x, #dest_scrollpos_y (#follow_vehicle is then #INVALID_VEHICLE).
@@ -261,6 +405,13 @@ struct ViewportData : ViewPort {
 	int32 scrollpos_y;        ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).
 	int32 dest_scrollpos_x;   ///< Current destination x coordinate to display (virtual screen coordinate of topleft corner of the viewport).
 	int32 dest_scrollpos_y;   ///< Current destination y coordinate to display (virtual screen coordinate of topleft corner of the viewport).
+
+	static ViewportCache cache;
+	static std::shared_ptr<ViewportData> Create();
+	~ViewportData();
+
+private:
+	ViewportData() {}
 };
 
 struct QueryString;
