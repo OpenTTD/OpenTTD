@@ -845,12 +845,12 @@ static void ScreenshotConfirmationCallback(Window *w, bool confirmed)
 }
 
 /**
- * Take a screenshot.
- * Ask for confirmation if the screenshot will be huge. Delegates to \c MakeScreenshot to perform the action.
+ * Make a screenshot.
+ * Ask for confirmation first if the screenshot will be huge.
  * @param t Screenshot type: World, defaultzoom, heightmap or viewport screenshot
  * @see MakeScreenshot
  */
-void TakeScreenshot(ScreenshotType t)
+void MakeScreenshotWithConfirm(ScreenshotType t)
 {
 	ViewPort vp;
 	SetupScreenshotViewport(t, &vp);
@@ -868,11 +868,11 @@ void TakeScreenshot(ScreenshotType t)
 
 /**
  * Make a screenshot.
- * No questions asked, just do it.
+ * Unconditionally take a screenshot of the requested type.
  * @param t    the type of screenshot to make.
  * @param name the name to give to the screenshot.
  * @return true iff the screenshot was made successfully
- * @see TakeScreenshot
+ * @see MakeScreenshotWithConfirm
  */
 bool MakeScreenshot(ScreenshotType t, const char *name)
 {
