@@ -25,6 +25,7 @@
 #endif
 #include <sys/stat.h>
 #include <algorithm>
+#include <sstream>
 
 #ifdef WITH_XDG_BASEDIR
 #include <basedir.h>
@@ -480,6 +481,28 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 		/* Filenames in tars are always forced to be lowercase */
 		strecpy(resolved_name, filename, lastof(resolved_name));
 		strtolower(resolved_name);
+
+		/* Resolve ".." */
+		std::istringstream ss(resolved_name);
+		std::vector<std::string> tokens;
+		std::string token;
+		while (std::getline(ss, token, PATHSEPCHAR)) {
+			if (token == "..") {
+				if (tokens.size() < 2) return nullptr;
+				tokens.pop_back();
+			} else {
+				tokens.push_back(token);
+			}
+		}
+		resolved_name[0] = '\0';
+		bool first = true;
+		for (const std::string &token : tokens) {
+			if (!first) {
+				strecat(resolved_name, PATHSEP, lastof(resolved_name));
+			}
+			strecat(resolved_name, token.c_str(), lastof(resolved_name));
+			first = false;
+		}
 
 		size_t resolved_len = strlen(resolved_name);
 
