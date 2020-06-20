@@ -184,8 +184,6 @@ static void MarkViewportDirty(ViewPort * const vp, int left, int top, int right,
 
 static ViewportDrawer _vd;
 
-static std::vector<std::weak_ptr<ViewportData>> _viewport_window_cache;
-
 uint _vp_route_step_width = 0;
 uint _vp_route_step_height_top = 0;
 uint _vp_route_step_height_middle = 0;
@@ -222,10 +220,47 @@ static Point MapXYZToViewport(const ViewPort *vp, int x, int y, int z)
 	return p;
 }
 
+/**
+ * The viewport cache. Iterating this provides immediate access to every window's viewport.
+ */
+ViewportCache ViewportData::cache = ViewportCache();
+
+/**
+ * Allocate, construct, and return a \c std::shared_ptr to a window viewport.
+ *
+ * This factory function is required in order to manage the viewport cache, as it is impossible
+ * to obtain a smart pointer to an object while it is still being constructed.
+ *
+ * @see ViewportData
+ * @see ViewportCache
+ */
+std::shared_ptr<ViewportData> ViewportData::Create()
+{
+	ViewportData::cache.UpdateCache();
+	std::shared_ptr<ViewportData> sp(new ViewportData);
+	std::weak_ptr<ViewportData> wp = sp;
+	ViewportData::cache.emplace_back(wp);
+	return sp;
+}
+
+/**
+ * Delete a window viewport and remove it from the viewport cache.
+ * @see ViewportData
+ * @see ViewportCache
+ */
+ViewportData::~ViewportData()
+{
+	ViewportData::cache.UpdateCache();
+}
+
+/**
+ * Delete a window's viewport.
+ *
+ * The memory and cache associated with the viewport is under automatic management.
+ * @param w The window owning the viewport.
+ */
 void DeleteWindowViewport(Window *w)
 {
-	//if (w->viewport == nullptr) return;
-
 	w->viewport = nullptr;
 }
 
@@ -241,15 +276,11 @@ void DeleteWindowViewport(Window *w)
  *        - If bit 31 is clear, it is a #TileIndex.
  * @param zoom Zoomlevel to display
  */
-void InitializeWindowViewport(Window *w, int x, int y,
-	int width, int height, uint32 follow_flags, ZoomLevel zoom)
+void InitializeWindowViewport(Window *w, int x, int y, int width, int height, uint32 follow_flags, ZoomLevel zoom)
 {
 	assert(w->viewport == nullptr);
 
-	std::shared_ptr<ViewportData> vp = std::make_shared<ViewportData>();
-	auto &vwc = _viewport_window_cache;
-	vwc.erase(std::remove_if(vwc.begin(), vwc.end(), [](std::weak_ptr<ViewportData> _){return _.expired();}), vwc.end());
-	vwc.emplace_back(vp);
+	std::shared_ptr<ViewportData> vp = ViewportData::Create();
 
 	vp->overlay = nullptr;
 	vp->left = x + w->left;
@@ -1516,9 +1547,8 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 		zoomlevels[zoom].bottom = this->top    + ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM + 1, zoom);
 	}
 
-	for (std::weak_ptr<ViewPort> vpwp : _viewport_window_cache) {
-		ViewPort *vp = vpwp.lock().get();
-		if (vp == nullptr || vp->zoom > maxzoom) continue;
+	for (ViewPort *vp : ViewportData::cache) {
+		if ( vp->zoom > maxzoom) continue;
 		Rect &zl = zoomlevels[vp->zoom];
 		MarkViewportDirty(vp, zl.left, zl.top, zl.right, zl.bottom);
 	}
@@ -1958,9 +1988,8 @@ static void MarkViewportDirty(ViewPort * const vp, int left, int top, int right,
  */
 void MarkAllViewportsDirty(int left, int top, int right, int bottom, const ZoomLevel mark_dirty_if_zoomlevel_is_below)
 {
-	for (std::weak_ptr<ViewPort> vpwp : _viewport_window_cache) {
-		ViewPort *vp = vpwp.lock().get();
-		if (vp == nullptr || vp->zoom >= mark_dirty_if_zoomlevel_is_below) continue;
+	for (ViewPort *vp : ViewportData::cache) {
+		if (vp->zoom >= mark_dirty_if_zoomlevel_is_below) continue;
 		MarkViewportDirty(vp, left, top, right, bottom);
 	}
 }
