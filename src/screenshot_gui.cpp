@@ -39,7 +39,7 @@ struct ScreenshotWindow : Window {
 			case WID_SC_TAKE_HEIGHTMAP:   st = SC_HEIGHTMAP;   break;
 			case WID_SC_TAKE_MINIMAP:     st = SC_MINIMAP;     break;
 		}
-		TakeScreenshot(st);
+		MakeScreenshotWithConfirm(st);
 	}
 };
 
