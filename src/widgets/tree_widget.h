@@ -12,20 +12,10 @@
 
 /** Widgets of the #BuildTreesWindow class. */
 enum BuildTreesWidgets {
-	WID_BT_TYPE_11,         ///< Tree 1st column 1st row.
-	WID_BT_TYPE_12,         ///< Tree 1st column 2nd row.
-	WID_BT_TYPE_13,         ///< Tree 1st column 3rd row.
-	WID_BT_TYPE_14,         ///< Tree 1st column 4th row.
-	WID_BT_TYPE_21,         ///< Tree 2st column 1st row.
-	WID_BT_TYPE_22,         ///< Tree 2st column 2nd row.
-	WID_BT_TYPE_23,         ///< Tree 2st column 3rd row.
-	WID_BT_TYPE_24,         ///< Tree 2st column 4th row.
-	WID_BT_TYPE_31,         ///< Tree 3st column 1st row.
-	WID_BT_TYPE_32,         ///< Tree 3st column 2nd row.
-	WID_BT_TYPE_33,         ///< Tree 3st column 3rd row.
-	WID_BT_TYPE_34,         ///< Tree 3st column 4th row.
 	WID_BT_TYPE_RANDOM,     ///< Button to build random type of tree.
+	WID_BT_SE_PANE,         ///< Selection pane to show/hide scenario editor tools.
 	WID_BT_MANY_RANDOM,     ///< Button to build many random trees.
+	WID_BT_TYPE_BUTTON_FIRST, ///< First tree type selection button. (This must be last in the enum.)
 };
 
 #endif /* WIDGETS_TREE_WIDGET_H */
