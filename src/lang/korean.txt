@@ -1663,7 +1663,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :장갑 화물�
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :다른 화물에 대한 분배 형식: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"불균형"은 화물이 아무 방향이나 임의의 양만큼 가게 됨을 뜻합니다. "수동"은 자동적인 화물 분배가 일어나지 않고 기존 방식을 사용하겠음을 뜻합니다. 특별한 이유가 없는 한, "불균형"이나 "수동"으로 설정하십시오.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :분배 정확도: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :값이 높으면 높을수록 CPU가 연결 상태를 계산하는 시간이 더 오래 걸립니다. 만약 이 시간이 너무 오래 걸리면 랙 현상이 나타날 것입니다. 하지만, 낮은 값으로 설정하면 분배가 부정확하게 일어나서, 화물이 원하는 곳으로 분배되지 않을 수 있습니다.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :값이 높으면 높을수록 CPU가 연결 상태를 계산하는 시간이 더 오래 걸립니다. 만약 이 시간이 너무 오래 걸리면 게임이 버벅일 것입니다. 하지만, 낮은 값으로 설정하면 분배가 부정확하게 일어나서, 화물이 원하는 곳으로 분배되지 않을 수 있습니다.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :거리에 따른 수요 효과: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :이 값을 0보다 크게 설정하면, 어떤 화물이 있는 A역과 목적지가 될 수 있는 역 B 사이의 거리는 A에서 B로 가는 화물의 양에 영향을 미치게 됩니다. A역에서 B역이 더 멀리 떨어질 수록 이동하는 화물의 양은 적어질 것입니다. 값이 크면 클 수록 화물은 멀리 이동하지 않고 가까운 역으로 가게 됩니다.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :균형 모드에서 되돌아오는 화물의 양: {STRING}
