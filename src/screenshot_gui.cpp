@@ -55,11 +55,16 @@ struct ScreenshotWindow : Window {
 	static void TakeScreenshot(ScreenshotType st) {
 		ViewPort vp;
 		SetupScreenshotViewport(st, &vp);
-		if ((uint64)vp.width * (uint64)vp.height > 8192 * 8192) {
+
+		bool heightmap_or_minimap = st == SC_HEIGHTMAP || st == SC_MINIMAP;
+		uint64_t width = (heightmap_or_minimap ? MapSizeX() : vp.width);
+		uint64_t height = (heightmap_or_minimap ? MapSizeY() : vp.height);
+
+		if (width * height > 8192 * 8192) {
 			/* Ask for confirmation */
 			_screenshot_type = st;
-			SetDParam(0, vp.width);
-			SetDParam(1, vp.height);
+			SetDParam(0, width);
+			SetDParam(1, height);
 			ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, nullptr, ScreenshotConfirmationCallback);
 		}
 		else {
