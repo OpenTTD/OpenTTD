@@ -2430,6 +2430,7 @@ private:
 		SEL_DC_BASEPLANE = SEL_DC_GOTO_DEPOT, ///< First plane of the #WID_VV_SELECT_DEPOT_CLONE stacked widget.
 		SEL_RT_BASEPLANE = SEL_RT_REFIT,      ///< First plane of the #WID_VV_SELECT_REFIT_TURN stacked widget.
 	};
+	bool mouse_over_start_stop = false;
 
 	/**
 	 * Display a plane in the window.
@@ -2575,7 +2576,7 @@ public:
 			str = STR_VEHICLE_STATUS_CRASHED;
 		} else if (v->type != VEH_AIRCRAFT && v->breakdown_ctr == 1) { // check for aircraft necessary?
 			str = STR_VEHICLE_STATUS_BROKEN_DOWN;
-		} else if (v->vehstatus & VS_STOPPED) {
+		} else if (v->vehstatus & VS_STOPPED && (!mouse_over_start_stop || v->IsStoppedInDepot())) {
 			if (v->type == VEH_TRAIN) {
 				if (v->cur_speed == 0) {
 					if (Train::From(v)->gcache.cached_power == 0) {
@@ -2728,6 +2729,15 @@ public:
 				assert(v->type == VEH_TRAIN);
 				DoCommandP(v->tile, v->index, 0, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL));
 				break;
+		}
+	}
+
+	void OnMouseOver(Point pt, int widget) override
+	{
+		bool start_stop = widget == WID_VV_START_STOP;
+		if (start_stop != mouse_over_start_stop) {
+			mouse_over_start_stop = start_stop;
+			this->SetWidgetDirty(WID_VV_START_STOP);
 		}
 	}
 
