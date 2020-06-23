@@ -854,11 +854,16 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
 {
 	ViewPort vp;
 	SetupScreenshotViewport(t, &vp);
-	if ((uint64)vp.width * (uint64)vp.height > 8192 * 8192) {
+
+	bool heightmap_or_minimap = t == SC_HEIGHTMAP || t == SC_MINIMAP;
+	uint64_t width = (heightmap_or_minimap ? MapSizeX() : vp.width);
+	uint64_t height = (heightmap_or_minimap ? MapSizeY() : vp.height);
+
+	if (width * height > 8192 * 8192) {
 		/* Ask for confirmation */
 		_confirmed_screenshot_type = t;
-		SetDParam(0, vp.width);
-		SetDParam(1, vp.height);
+		SetDParam(0, width);
+		SetDParam(1, height);
 		ShowQuery(STR_WARNING_SCREENSHOT_SIZE_CAPTION, STR_WARNING_SCREENSHOT_SIZE_MESSAGE, nullptr, ScreenshotConfirmationCallback);
 	} else {
 		/* Less than 64M pixels, just do it */
