@@ -864,6 +864,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ny {STRING} är nu tillgänglig  -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Öppna gruppfönstret fokuserat på fordonets grupp
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tar inte längre emot {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tar inte längre emot {STRING} eller {STRING}
@@ -3126,6 +3127,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Byt namn på st
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} lokala myndigheter
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zon
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Visa zonen som ryms inom de lokala myndigheternas gränser
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transportföretags värderingar:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Tillgängliga åtgärder:
