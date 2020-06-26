@@ -2674,6 +2674,18 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 	_special_mouse_mode = WSM_SIZING;
 }
 
+/** Drag over the map while holding the left mouse down. */
+void VpStartDragging(ViewportDragDropSelectionProcess process)
+{
+	_thd.select_method = VPM_X_AND_Y;
+	_thd.select_proc = process;
+	_thd.selstart.x = 0;
+	_thd.selstart.y = 0;
+	_thd.next_drawstyle = HT_RECT;
+
+	_special_mouse_mode = WSM_DRAGGING;
+}
+
 void VpSetPlaceSizingLimit(int limit)
 {
 	_thd.sizelimit = limit;
@@ -3283,7 +3295,7 @@ calc_heightdiff_single_direction:;
  */
 EventState VpHandlePlaceSizingDrag()
 {
-	if (_special_mouse_mode != WSM_SIZING) return ES_NOT_HANDLED;
+	if (_special_mouse_mode != WSM_SIZING && _special_mouse_mode != WSM_DRAGGING) return ES_NOT_HANDLED;
 
 	/* stop drag mode if the window has been closed */
 	Window *w = _thd.GetCallbackWnd();
@@ -3294,13 +3306,22 @@ EventState VpHandlePlaceSizingDrag()
 
 	/* while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() ) */
 	if (_left_button_down) {
+		if (_special_mouse_mode == WSM_DRAGGING) {
+			/* Only register a drag event when the mouse moved. */
+			if (_thd.new_pos.x == _thd.selstart.x && _thd.new_pos.y == _thd.selstart.y) return ES_HANDLED;
+			_thd.selstart.x = _thd.new_pos.x;
+			_thd.selstart.y = _thd.new_pos.y;
+		}
+
 		w->OnPlaceDrag(_thd.select_method, _thd.select_proc, GetTileBelowCursor());
 		return ES_HANDLED;
 	}
 
-	/* mouse button released..
-	 * keep the selected tool, but reset it to the original mode. */
+	/* Mouse button released. */
 	_special_mouse_mode = WSM_NONE;
+	if (_special_mouse_mode == WSM_DRAGGING) return ES_HANDLED;
+
+	/* Keep the selected tool, but reset it to the original mode. */
 	HighLightStyle others = _thd.place_mode & ~(HT_DRAG_MASK | HT_DIR_MASK);
 	if ((_thd.next_drawstyle & HT_DRAG_MASK) == HT_RECT) {
 		_thd.place_mode = HT_RECT | others;

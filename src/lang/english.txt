@@ -2542,13 +2542,19 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Size: {G
 STR_OBJECT_CLASS_LTHS                                           :Lighthouses
 STR_OBJECT_CLASS_TRNS                                           :Transmitters
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trees
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Select tree type to plant. If the tile already has a tree, this will add more trees of mixed types independent of the selected type
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Trees of random type
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Place trees of random type. Shift toggles building/showing cost estimate
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Random Trees
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plant trees randomly throughout the landscape
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plant single trees by dragging over the landscape.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Grove
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plant small forests by dragging over the landscape.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Forest
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plant large forests by dragging over the landscape.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Land Generation
