@@ -14,6 +14,9 @@
 enum BuildTreesWidgets {
 	WID_BT_TYPE_RANDOM,     ///< Button to build random type of tree.
 	WID_BT_SE_PANE,         ///< Selection pane to show/hide scenario editor tools.
+	WID_BT_MODE_NORMAL,     ///< Select normal/rectangle planting mode.
+	WID_BT_MODE_FOREST_SM,  ///< Select small forest planting mode.
+	WID_BT_MODE_FOREST_LG,  ///< Select large forest planting mode.
 	WID_BT_MANY_RANDOM,     ///< Button to build many random trees.
 	WID_BT_TYPE_BUTTON_FIRST, ///< First tree type selection button. (This must be last in the enum.)
 };

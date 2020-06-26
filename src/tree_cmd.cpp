@@ -291,6 +291,51 @@ void PlaceTreesRandomly()
 }
 
 /**
+ * Place some trees in a radius around a tile.
+ * The trees are placed in an quasi-normal distribution around the indicated tile, meaning that while
+ * the radius does define a square, the distribution inside the square will be roughly circular.
+ * @note This function the interactive RNG and must only be used in editor and map generation.
+ * @param tile      Tile to place trees around.
+ * @param treetype  Type of trees to place. Must be a valid tree type for the climate.
+ * @param radius    Maximum distance (on each axis) from tile to place trees.
+ * @param count     Maximum number of trees to place.
+ * @return Number of trees actually placed.
+ */
+uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count)
+{
+	assert(treetype < TREE_TOYLAND + TREE_COUNT_TOYLAND);
+	const bool allow_desert = treetype == TREE_CACTUS;
+	uint planted = 0;
+
+	for (; count > 0; count--) {
+		/* Simple quasi-normal distribution with range [-radius; radius) */
+		auto mkcoord = [&]() -> int32 {
+			const uint32 rand = InteractiveRandom();
+			const int32 dist = GB<int32>(rand, 0, 8) + GB<int32>(rand, 8, 8) + GB<int32>(rand, 16, 8) + GB<int32>(rand, 24, 8);
+			const int32 scu = dist * radius / 512;
+			return scu - radius;
+		};
+		const int32 xofs = mkcoord();
+		const int32 yofs = mkcoord();
+		const TileIndex tile_to_plant = TileAddWrap(tile, xofs, yofs);
+		if (tile_to_plant != INVALID_TILE) {
+			if (IsTileType(tile_to_plant, MP_TREES) && GetTreeCount(tile_to_plant) < 4) {
+				AddTreeCount(tile_to_plant, 1);
+				SetTreeGrowth(tile_to_plant, 0);
+				MarkTileDirtyByTile(tile_to_plant, 0);
+				planted++;
+			} else if (CanPlantTreesOnTile(tile_to_plant, allow_desert)) {
+				PlantTreesOnTile(tile_to_plant, treetype, 0, 3);
+				MarkTileDirtyByTile(tile_to_plant, 0);
+				planted++;
+			}
+		}
+	}
+
+	return planted;
+}
+
+/**
  * Place new trees.
  *
  * This function takes care of the selected tree placer algorithm and
@@ -349,7 +394,7 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		switch (GetTileType(tile)) {
 			case MP_TREES:
 				/* no more space for trees? */
-				if (_game_mode != GM_EDITOR && GetTreeCount(tile) == 4) {
+				if (GetTreeCount(tile) == 4) {
 					msg = STR_ERROR_TREE_ALREADY_HERE;
 					continue;
 				}
