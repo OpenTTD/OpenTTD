@@ -1474,14 +1474,15 @@ void DrawRoadCatenary(const TileInfo *ti)
  * @param dx  the offset from the top of the BB of the tile
  * @param dy  the offset from the top of the BB of the tile
  * @param h   the height of the sprite to draw
+ * @param transparent  whether the sprite should be transparent (used for roadside trees)
  */
-static void DrawRoadDetail(SpriteID img, const TileInfo *ti, int dx, int dy, int h)
+static void DrawRoadDetail(SpriteID img, const TileInfo *ti, int dx, int dy, int h, bool transparent)
 {
 	int x = ti->x | dx;
 	int y = ti->y | dy;
 	int z = ti->z;
 	if (ti->tileh != SLOPE_FLAT) z = GetSlopePixelZ(x, y);
-	AddSortableSpriteToDraw(img, PAL_NONE, x, y, 2, 2, h, z);
+	AddSortableSpriteToDraw(img, PAL_NONE, x, y, 2, 2, h, z, transparent);
 }
 
 /**
@@ -1634,9 +1635,12 @@ static void DrawRoadBits(TileInfo *ti)
 	/* If there are no road bits, return, as there is nothing left to do */
 	if (HasAtMostOneBit(road)) return;
 
+	if (roadside == ROADSIDE_TREES && IsInvisibilitySet(TO_TREES)) return;
+	bool is_transparent = roadside == ROADSIDE_TREES && IsTransparencySet(TO_TREES);
+
 	/* Draw extra details. */
 	for (const DrawRoadTileStruct *drts = _road_display_table[roadside][road | tram]; drts->image != 0; drts++) {
-		DrawRoadDetail(drts->image, ti, drts->subcoord_x, drts->subcoord_y, 0x10);
+		DrawRoadDetail(drts->image, ti, drts->subcoord_x, drts->subcoord_y, 0x10, is_transparent);
 	}
 }
 
