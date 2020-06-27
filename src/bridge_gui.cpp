@@ -442,9 +442,9 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 				item.cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item.spec->price) >> 8) + infra_cost;
 				any_available = 1;
 			}
-		} 
+		}
 		/* give error cause if no bridges available here*/
-		if (!any_available) 
+		if (!any_available)
 		{
 			errmsg = type_check.GetErrorMessage();
 		}
