@@ -119,16 +119,16 @@ static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
 	uint32 refid = 0;
 	TileIndex reftile = 0;
 	switch (type) {
-		case SPET_LOCATION:
+		case ::SPET_LOCATION:
 			reftile = reference;
 			break;
-		case SPET_GOAL:
-		case SPET_BUTTON_PUSH:
-		case SPET_BUTTON_TILE:
-		case SPET_BUTTON_VEHICLE:
+		case ::SPET_GOAL:
+		case ::SPET_BUTTON_PUSH:
+		case ::SPET_BUTTON_TILE:
+		case ::SPET_BUTTON_VEHICLE:
 			refid = reference;
 			break;
-		case SPET_TEXT:
+		case ::SPET_TEXT:
 			break;
 		default:
 			NOT_REACHED();
