@@ -31,7 +31,7 @@ macro(compile_flags)
     # it does not appear to support the $<> tags.
     add_compile_options(
         "$<$<CONFIG:Debug>:-D_DEBUG>"
-        "$<$<CONFIG:Debug>:-D_FORTIFY_SOURCE=2>"
+        "$<$<NOT:$<CONFIG:Debug>>:-D_FORTIFY_SOURCE=2>" # FORTIFY_SOURCE should only be used in non-debug builds (requires -O1+)
     )
 
     # Prepare a generator that checks if we are not a debug, and don't have asserts
