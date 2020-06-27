@@ -86,6 +86,9 @@ Last updated:    2011-01-20
   Note: not every update type supports every frequency. If in doubt, you can
   verify against the data received in `ADMIN_PACKET_SERVER_PROTOCOL`.
 
+  Please note the potential gotcha in the "Certain packet information" section below
+  when using the `ADMIN_UPDATE_FREQUENCY` packet.
+
   The server will not confirm your registered update. However, asking for an
   invalid `AdminUpdateType` or a not supported `AdminUpdateFrequency` you will be
   disconnected from the server with `NETWORK_ERROR_ILLEGAL_PACKET`.
@@ -142,6 +145,9 @@ Last updated:    2011-01-20
     - ADMIN_UPDATE_COMPANY_ECONOMY
     - ADMIN_UPDATE_COMPANY_STATS
     - ADMIN_UPDATE_CMD_NAMES
+
+  Please note the potential gotcha in the "Certain packet information" section below
+  when using the `ADMIN_POLL` packet.
 
   `ADMIN_UPDATE_CLIENT_INFO` and `ADMIN_UPDATE_COMPANY_INFO` accept an additional
   parameter. This parameter is used to specify a certain client or company.
@@ -212,6 +218,14 @@ Last updated:    2011-01-20
 
 
 ## 7.0) Certain packet information
+
+  `ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY` and `ADMIN_PACKET_ADMIN_POLL`
+
+    Potential gotcha: the AdminUpdateType integer type used is a
+    uint16 for `UPDATE_FREQUENCY`, and a uint8 for `POLL`.
+    This is due to boring legacy reasons.
+    It is safe to cast between the two when sending
+    (i.e cast from a uint8 to a uint16).
 
   All `ADMIN_PACKET_SERVER_*` packets have an enum value greater 100.
 
