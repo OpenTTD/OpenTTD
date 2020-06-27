@@ -35,7 +35,7 @@ char *strecpy(char *dst, const char *src, const char *last);
 char *stredup(const char *src, const char *last = nullptr);
 
 int CDECL seprintf(char *str, const char *last, const char *format, ...) WARN_FORMAT(3, 4);
-int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap);
+int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap) WARN_FORMAT(3, 0);
 
 char *CDECL str_fmt(const char *str, ...) WARN_FORMAT(1, 2);
 

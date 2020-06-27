@@ -65,9 +65,9 @@ public:
 	}
 	NORETURN static void ThrowError(void *ud, const SQChar *s) {
 		SQCompiler *c = (SQCompiler *)ud;
-		c->Error(s);
+		c->Error("%s", s);
 	}
-	NORETURN void Error(const SQChar *s, ...)
+	NORETURN void Error(const SQChar *s, ...) WARN_FORMAT(2, 3)
 	{
 		static SQChar temp[256];
 		va_list vl;
@@ -122,7 +122,7 @@ public:
 					}
 					Error("expected '%s'", etypename);
 				}
-				Error("expected '%c'", tok);
+				Error("expected '%c'", (char)tok);
 			}
 		}
 		SQObjectPtr ret;
