@@ -57,7 +57,7 @@ public:
 	/**
 	 * Story page element types.
 	 */
-	enum StoryPageElementType {
+	enum StoryPageElementType : byte {
 		SPET_TEXT = ::SPET_TEXT,                     ///< An element that displays a block of text.
 		SPET_LOCATION = ::SPET_LOCATION,             ///< An element that displays a single line of text along with a button to view the referenced location.
 		SPET_GOAL = ::SPET_GOAL,                     ///< An element that displays a goal.
@@ -75,7 +75,7 @@ public:
 	 * Formatting and layout flags for story page buttons.
 	 * The SPBF_FLOAT_LEFT and SPBF_FLOAT_RIGHT flags can not be combined.
 	 */
-	enum StoryPageButtonFlags {
+	enum StoryPageButtonFlags : byte {
 		SPBF_NONE        = ::SPBF_NONE,        ///< No special formatting for button.
 		SPBF_FLOAT_LEFT  = ::SPBF_FLOAT_LEFT,  ///< Button is placed to the left of the following paragraph.
 		SPBF_FLOAT_RIGHT = ::SPBF_FLOAT_RIGHT, ///< Button is placed to the right of the following paragraph.
@@ -84,7 +84,7 @@ public:
 	/**
 	 * Mouse cursors usable by story page buttons.
 	 */
-	enum StoryPageButtonCursor {
+	enum StoryPageButtonCursor : byte {
 		SPBC_MOUSE          = ::SPBC_MOUSE,
 		SPBC_ZZZ            = ::SPBC_ZZZ,
 		SPBC_BUOY           = ::SPBC_BUOY,
