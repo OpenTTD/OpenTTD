@@ -426,7 +426,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 			default: break;
 		}
 
-		bool any_available = 0;
+		bool any_available = false;
 		CommandCost type_check;
 		/* loop for all bridgetypes */
 		for (BridgeType brd_type = 0; brd_type != MAX_BRIDGES; brd_type++) {
@@ -440,7 +440,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DC_QUERY_COST) */
 				item.cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price[PR_BUILD_BRIDGE] * item.spec->price) >> 8) + infra_cost;
-				any_available = 1;
+				any_available = true;
 			}
 		}
 		/* give error cause if no bridges available here*/
