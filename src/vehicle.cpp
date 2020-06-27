@@ -1045,7 +1045,7 @@ void CallVehicleTicks()
 
 		if (!IsLocalCompany()) continue;
 
-		if (res.Succeeded()) {
+		if (res.Succeeded() && res.GetCost() != 0) {
 			ShowCostOrIncomeAnimation(x, y, z, res.GetCost());
 			continue;
 		}
