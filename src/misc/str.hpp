@@ -90,7 +90,7 @@ struct CStrA : public CBlobT<char>
 	}
 
 	/** Add formatted string (like vsprintf) at the end of existing contents. */
-	int AddFormatL(const char *format, va_list args)
+	int AddFormatL(const char *format, va_list args) WARN_FORMAT(2, 0)
 	{
 		size_t addSize = max<size_t>(strlen(format), 16);
 		addSize += addSize / 2;

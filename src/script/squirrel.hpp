@@ -63,12 +63,12 @@ protected:
 	/**
 	 * If a user runs 'print' inside a script, this function gets the params.
 	 */
-	static void PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...);
+	static void PrintFunc(HSQUIRRELVM vm, const SQChar *s, ...) WARN_FORMAT(2, 3);
 
 	/**
 	 * If an error has to be print, this function is called.
 	 */
-	static void ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...);
+	static void ErrorPrintFunc(HSQUIRRELVM vm, const SQChar *s, ...) WARN_FORMAT(2, 3);
 
 public:
 	Squirrel(const char *APIName);

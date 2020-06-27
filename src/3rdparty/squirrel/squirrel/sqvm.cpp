@@ -94,7 +94,7 @@ bool SQVM::ARITH_OP(SQUnsignedInteger op,SQObjectPtr &trg,const SQObjectPtr &o1,
 					if(!StringCat(o1, o2, trg)) return false;
 			}
 			else if(!ArithMetaMethod(op,o1,o2,trg)) {
-				Raise_Error("arith op %c on between '%s' and '%s'",op,GetTypeName(o1),GetTypeName(o2)); return false;
+				Raise_Error("arith op %c on between '%s' and '%s'",(char)op,GetTypeName(o1),GetTypeName(o2)); return false;
 			}
 		}
 		return true;
