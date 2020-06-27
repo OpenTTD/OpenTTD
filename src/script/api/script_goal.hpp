@@ -36,7 +36,7 @@ public:
 	/**
 	 * Goal types that can be given to a goal.
 	 */
-	enum GoalType {
+	enum GoalType : byte {
 		/* Note: these values represent part of the in-game GoalType enum */
 		GT_NONE     = ::GT_NONE,     ///< Destination is not linked.
 		GT_TILE     = ::GT_TILE,     ///< Destination is a tile.
