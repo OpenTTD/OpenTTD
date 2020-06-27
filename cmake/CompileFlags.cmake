@@ -33,6 +33,11 @@ macro(compile_flags)
         "$<$<CONFIG:Debug>:-D_DEBUG>"
         "$<$<NOT:$<CONFIG:Debug>>:-D_FORTIFY_SOURCE=2>" # FORTIFY_SOURCE should only be used in non-debug builds (requires -O1+)
     )
+    if (MINGW)
+        add_link_options(
+            "$<$<NOT:$<CONFIG:Debug>>:-fstack-protector>" # Prevent undefined references when _FORTIFY_SOURCE > 0
+        )
+    endif (MINGW)
 
     # Prepare a generator that checks if we are not a debug, and don't have asserts
     # on. We need this later on to set some compile options for stable releases.
