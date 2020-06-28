@@ -4434,7 +4434,6 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Aquí no
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}No puc treure la via de tramvia d'aquí...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... no hi ha carretera
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... no hi ha via de tramvia
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... la carretera és incompatible.
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... El tipus de tramvia és incompatible.
 
 # Waterway construction errors

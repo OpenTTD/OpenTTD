@@ -4497,7 +4497,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Šeit ne
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Šeit nevar pārveidot tramvaja veidu...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nav piemērota ceļa
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nav piemērotu tramvaju
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... nesavietojams ceļš
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nesavietojami tramvaji
 
 # Waterway construction errors

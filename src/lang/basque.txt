@@ -4174,7 +4174,6 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Ezin da 
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Ezin da hemen tranbiarik ezabatu...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... ez dago biderik
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... ez dago tranbia biderik
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... errepidea ez da bateragarria
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Ezin dira hemen urbideak eraiki...

@@ -4449,7 +4449,6 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... não
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... não há carris para eléctricos
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Não é possível converter aqui o tipo de estrada...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Não é possível converter aqui o tipo de carril para eléctricos...
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... estrada não-compatível
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :Cisterna de bebida de cola
 
 # Waterway construction errors

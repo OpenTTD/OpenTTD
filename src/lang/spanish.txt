@@ -4458,7 +4458,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}No es po
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}No se puede convertir el tipo de tranvía aquí...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}No hay carretera adecuada
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}No hay un tranvía adecuado
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... carretera incompatible
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... tranvía incompatible
 
 # Waterway construction errors

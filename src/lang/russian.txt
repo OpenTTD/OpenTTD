@@ -4678,7 +4678,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Здес
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Невозможно сменить тип трамвайных рельсов...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Нет подходящего дорожного полотна
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Нет подходящих трамвайных путей
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... несовместимый тип дороги
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... несовместимый тип трамвайных путей
 
 # Waterway construction errors

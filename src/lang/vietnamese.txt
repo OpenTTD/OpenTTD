@@ -4465,7 +4465,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Không t
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Không thể chuyển đổi kiểu xe điện ở đây...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Không có đường ô-tô thích hợp
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Không có đường xe điện phù hợp
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... đường không tương thích
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... xe điện không phù hợp
 
 # Waterway construction errors

@@ -4487,7 +4487,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}이곳�
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}이곳의 전찻길을 바꿀 수 없습니다...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}적합한 도로가 없습니다
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}적합한 전찻길이 없습니다
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... 적합하지 않은 도로입니다
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... 적합하지 않은 전찻길입니다
 
 # Waterway construction errors
