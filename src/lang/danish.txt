@@ -4485,7 +4485,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kan ikke
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan ikke konvertere sporvejstype her...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen passende vej
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ingen egnet sporvej
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... inkompatibel vej
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... inkompatibel sporvej
 
 # Waterway construction errors

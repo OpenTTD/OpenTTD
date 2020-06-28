@@ -45,7 +45,6 @@ void SQGSRoad_Register(Squirrel *engine)
 	ScriptError::RegisterErrorMap(STR_ERROR_CROSSING_DISALLOWED_ROAD,         ScriptRoad::ERR_ROADTYPE_DISALLOWS_CROSSING);
 	ScriptError::RegisterErrorMap(STR_ERROR_NO_SUITABLE_ROAD,                 ScriptRoad::ERR_UNSUITABLE_ROAD);
 	ScriptError::RegisterErrorMap(STR_ERROR_NO_SUITABLE_TRAMWAY,              ScriptRoad::ERR_UNSUITABLE_ROAD);
-	ScriptError::RegisterErrorMap(STR_ERROR_INCOMPATIBLE_ROAD,                ScriptRoad::ERR_UNSUITABLE_ROAD);
 
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_WORKS_IN_PROGRESS,                   "ERR_ROAD_WORKS_IN_PROGRESS");
 	ScriptError::RegisterErrorMapString(ScriptRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       "ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION");

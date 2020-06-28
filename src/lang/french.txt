@@ -4486,7 +4486,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Impossib
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Impossible de convertir le type de voie de tramway...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Aucune route convenable
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Aucune voie de tramway convenable
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... route incompatible
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... voie de tramway incompatible
 
 # Waterway construction errors

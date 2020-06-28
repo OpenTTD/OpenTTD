@@ -4485,7 +4485,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}无法�
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}无法转换电车道类型
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}没有合适的道路
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}没有合适的电车道
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... 不兼容的道路
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... 不兼容的电车道
 
 # Waterway construction errors
