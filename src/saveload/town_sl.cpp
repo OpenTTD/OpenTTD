@@ -256,7 +256,7 @@ static void RealSave_Town(Town *t)
 	SlObject(&t->cargo_accepted, GetTileMatrixDesc());
 	if (t->cargo_accepted.area.w != 0) {
 		uint arr_len = t->cargo_accepted.area.w / AcceptanceMatrix::GRID * t->cargo_accepted.area.h / AcceptanceMatrix::GRID;
-		SlArray(t->cargo_accepted.data, arr_len, SLE_UINT64);
+		SlArray(t->cargo_accepted.data, arr_len, SLE_UINT32);
 	}
 }
 
@@ -288,23 +288,16 @@ static void Load_TOWN()
 			SlErrorCorrupt("Invalid town name generator");
 		}
 
-		if (!IsSavegameVersionBefore(SLV_FIX_TOWN_ACCEPTANCE)) {
-			SlObject(&t->cargo_accepted, GetTileMatrixDesc());
-			if (t->cargo_accepted.area.w != 0) {
-				uint arr_len = t->cargo_accepted.area.w / AcceptanceMatrix::GRID * t->cargo_accepted.area.h / AcceptanceMatrix::GRID;
-				t->cargo_accepted.data = MallocT<CargoTypes>(arr_len);
-				SlArray(t->cargo_accepted.data, arr_len, SLE_UINT64);
+		if (IsSavegameVersionBefore(SLV_166)) continue;
 
-				/* Rebuild total cargo acceptance. */
-				UpdateTownCargoTotal(t);
-			}
-		} else if (!IsSavegameVersionBefore(SLV_166)) {
-			AcceptanceMatrix cargo_accepted;
-			SlObject(&cargo_accepted, GetTileMatrixDesc());
-			if (cargo_accepted.area.w != 0) {
-				uint arr_len = cargo_accepted.area.w / AcceptanceMatrix::GRID * cargo_accepted.area.h / AcceptanceMatrix::GRID;
-				SlSkipBytes(4 * arr_len);
-			}
+		SlObject(&t->cargo_accepted, GetTileMatrixDesc());
+		if (t->cargo_accepted.area.w != 0) {
+			uint arr_len = t->cargo_accepted.area.w / AcceptanceMatrix::GRID * t->cargo_accepted.area.h / AcceptanceMatrix::GRID;
+			t->cargo_accepted.data = MallocT<CargoTypes>(arr_len);
+			SlArray(t->cargo_accepted.data, arr_len, SLE_UINT32);
+
+			/* Rebuild total cargo acceptance. */
+			UpdateTownCargoTotal(t);
 		}
 	}
 }
