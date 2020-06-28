@@ -4451,7 +4451,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}kan nie 
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan nie tremtipe hier omskakel nie ...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Geen geskikte pad
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Geen geskikte tremweg nie
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... onverenigbare pad
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... onversoenbare tremweg
 
 # Waterway construction errors

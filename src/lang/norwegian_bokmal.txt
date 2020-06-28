@@ -4461,7 +4461,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kan ikke
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan ikke konvertere trikketype her...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen passende vei
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ingen passende trikkespor
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... inkompatibel vei
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... ingen passende trikkespor
 
 # Waterway construction errors

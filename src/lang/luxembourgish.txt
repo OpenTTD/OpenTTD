@@ -4485,7 +4485,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kann den
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kann den Tramwaytyp hei net konvertéiren...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Keng geeegent Strooss
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Kee passenden Tramway
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... inkompatibel Strooss
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... inkompatiblen Tramway
 
 # Waterway construction errors

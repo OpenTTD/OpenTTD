@@ -4582,7 +4582,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Ovdje ni
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Ovdje nije moguće pretvoriti tramvajsku prugu...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nema prikladne ceste
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nema prikladne tramvajske pruge
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... nekompatibilna cesta
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nekompatibilna tramvajska pruga
 
 # Waterway construction errors

@@ -4486,7 +4486,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Kan inte
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Kan inte konvertera spårvagnstyp här...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ingen lämplig väg
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ingen passande spårväg
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... oförenlig väg
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... oförenlig spårväg
 
 # Waterway construction errors
