@@ -4485,7 +4485,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Can't co
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Can't convert tram type here...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}No suitable road
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}No suitable tramway
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... incompatible road
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... incompatible tramway
 
 # Waterway construction errors

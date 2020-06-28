@@ -4549,7 +4549,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Nem lehe
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Nem lehet itt a villamospálya típusát átalakítani...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nincs megfelelő út
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nincs megfelelő villamospálya
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... nem kompatibilis az út
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nem kompatibilis a villamospálya
 
 # Waterway construction errors

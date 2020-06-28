@@ -4515,7 +4515,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Impossib
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Impossibile convertire il tipo di tram qui...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nessuna strada adatta
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nessuna tranvia adatta
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... strada non compatibile
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... tranvia non compatibile
 
 # Waterway construction errors

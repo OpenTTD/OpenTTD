@@ -4576,7 +4576,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Zde nelz
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Zde nelze změnit druh tramvajové tratě...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Neexistuje vhodná silnice
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Neexistuje vhodná tramvajová trať
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... nevhodný druh silnice
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nevhodný typ tramvajové tratě
 
 # Waterway construction errors

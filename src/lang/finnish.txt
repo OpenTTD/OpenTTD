@@ -4483,7 +4483,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Tien tyy
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Raitiotien tyyppiä ei voi muuntaa tässä...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Ei sopivaa tietä
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Ei sopivaa raitiotietä
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... yhteensopimaton tie
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... yhteensopimaton raitiotie
 
 # Waterway construction errors

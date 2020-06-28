@@ -4871,7 +4871,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Nie moż
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Nie można zmienić typu torów tramwajowych w tym miejscu...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Brak właściwej drogi
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Brak właściwej linii tramwajowej
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... niekompatybilna droga
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... niekompatybilne tory tramwajowe
 
 # Waterway construction errors
