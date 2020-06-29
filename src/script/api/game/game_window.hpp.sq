@@ -126,7 +126,7 @@ void SQGSWindow_Register(Squirrel *engine)
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_GAME_OPTIONS,                           "WC_GAME_OPTIONS");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_CUSTOM_CURRENCY,                        "WC_CUSTOM_CURRENCY");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_CHEATS,                                 "WC_CHEATS");
-	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_EXTRA_VIEW_PORT,                        "WC_EXTRA_VIEW_PORT");
+	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_EXTRA_VIEWPORT,                         "WC_EXTRA_VIEWPORT");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_CONSOLE,                                "WC_CONSOLE");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_BOOTSTRAP,                              "WC_BOOTSTRAP");
 	SQGSWindow.DefSQConst(engine, ScriptWindow::WC_HIGHSCORE,                              "WC_HIGHSCORE");

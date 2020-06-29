@@ -156,7 +156,7 @@ public:
 
 static WindowDesc _extra_view_port_desc(
 	WDP_AUTO, "extra_viewport", 300, 268,
-	WC_EXTRA_VIEW_PORT, WC_NONE,
+	WC_EXTRA_VIEWPORT, WC_NONE,
 	0,
 	_nested_extra_view_port_widgets, lengthof(_nested_extra_view_port_widgets)
 );
@@ -170,7 +170,7 @@ void ShowExtraViewPortWindow(TileIndex tile)
 	int i = 0;
 
 	/* find next free window number for extra viewport */
-	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != nullptr) i++;
+	while (FindWindowById(WC_EXTRA_VIEWPORT, i) != nullptr) i++;
 
 	new ExtraViewportWindow(&_extra_view_port_desc, i, tile);
 }
