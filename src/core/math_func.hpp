@@ -243,6 +243,7 @@ static inline T Delta(const T a, const T b)
  * @param base The base value of the interval
  * @param size The size of the interval
  * @return True if the value is in the interval, false else.
+ * @see IsInsideMM()
  */
 template <typename T>
 static inline bool IsInsideBS(const T x, const size_t base, const size_t size)
@@ -335,12 +336,13 @@ static inline uint Ceil(uint a, uint b)
  */
 static inline int RoundDivSU(int a, uint b)
 {
+	const int _b = static_cast<int>(b);
 	if (a > 0) {
 		/* 0.5 is rounded to 1 */
-		return (a + static_cast<int>(b) / 2) / static_cast<int>(b);
+		return (a + _b / 2) / _b;
 	} else {
 		/* -0.5 is rounded to 0 */
-		return (a - (static_cast<int>(b) - 1) / 2) / static_cast<int>(b);
+		return (a - (_b - 1) / 2) / _b;
 	}
 }
 
@@ -367,10 +369,14 @@ static inline int DivAwayFromZero(int a, uint b)
  * @param b Denominator
  * @return Quotient, rounded towards negative infinity
  */
-template <typename T>
-static inline T DivTowardsNegativeInf(T a, T b)
+template <typename S, typename U>
+static inline S DivTowardsNegativeInf(S a, U b)
 {
-	return (a / b) - (a % b < 0 ? 1 : 0);
+	assert_compile(std::is_arithmetic<S>::value);
+	assert_compile(std::is_arithmetic<U>::value);
+	if (!std::is_unsigned<U>::value) assert(b >= 0);
+	const S _b = static_cast<S>(b);
+	return (a / _b) - (a % _b < 0 ? 1 : 0);
 }
 
 /**
@@ -379,10 +385,14 @@ static inline T DivTowardsNegativeInf(T a, T b)
  * @param b Denominator
  * @return Quotient, rounded towards positive infinity
  */
-template <typename T>
-static inline T DivTowardsPositiveInf(T a, T b)
+template <typename S, typename U>
+static inline S DivTowardsPositiveInf(S a, U b)
 {
-	return (a / b) + (a % b > 0 ? 1 : 0);
+	assert_compile(std::is_arithmetic<S>::value);
+	assert_compile(std::is_arithmetic<U>::value);
+	if (!std::is_unsigned<U>::value) assert(b >= 0);
+	const S _b = static_cast<S>(b);
+	return (a / _b) + (a % _b > 0 ? 1 : 0);
 }
 
 uint32 IntSqrt(uint32 num);
