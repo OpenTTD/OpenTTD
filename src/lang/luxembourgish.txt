@@ -402,7 +402,7 @@ STR_FILE_MENU_EXIT                                              :Eraus
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Weltkaart
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra Usiicht
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra Usiicht
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Cargo Flow Legend
 STR_MAP_MENU_SIGN_LIST                                          :Schëlderlëscht
 
@@ -884,7 +884,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}D'Gemeng {TOWN} ënnerschreiwt Kontrakt mat {STRING} fir ee Joer laang exklusiv Transportrechter!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Usiicht {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Usiicht {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Ännert d'Usiicht
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopéiert d'Plaz vun der globaler Usiicht op des Usiicht
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Haptusiicht änneren

@@ -583,7 +583,7 @@ STR_FILE_MENU_EXIT                                              :Fàg an-seo
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa an t-saoghail
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Port-seallaidh a bharrachd
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Port-seallaidh a bharrachd
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Clàr-mìneachaidh an t-srutha carago
 STR_MAP_MENU_SIGN_LIST                                          :Liosta nan sanas
 
@@ -1074,7 +1074,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Chuir an t-ùghdarras ionadail aig {TOWN} a làimh ri cùmhnant le {STRING} air còraichean giùlain às-dùnach fad bliadhna!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Port-seallaidh {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Port-seallaidh {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Atharraich am port-seallaidh
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Cuir lethbhreac dhen ionad air a' phrìomh shealladh sa phort-seallaidh seo
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Atharraich am prìomh phort-seallaidh

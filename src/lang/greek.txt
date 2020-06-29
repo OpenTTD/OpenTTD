@@ -458,7 +458,7 @@ STR_FILE_MENU_EXIT                                              :Έξοδος
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Χάρτης του κόσμου
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Πρόσθετη εμφάνιση
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Πρόσθετη εμφάνιση
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Υπόμνημα Ροής Φορτίου
 STR_MAP_MENU_SIGN_LIST                                          :Λίστα πινακίδων
 
@@ -985,7 +985,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Οι τοπικές αρχές της πόλης {TOWN} υπογράφουν συμβόλαιο με την εταιρεία {STRING} για αποκλειστικά δικαιώματα μεταφορών ενός έτους!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Εμφάνιση {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Εμφάνιση {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Αντιγραφή στο παράθυρο εμφάνισης
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Αντιγραφή της τοποθεσίας της κύριας προβολής σε αυτό το παράθυρο εμφάνισης
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Επικόλληση από παράθυρο εμφάνισης

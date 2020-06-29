@@ -393,7 +393,7 @@ STR_FILE_MENU_EXIT                                              :வெளிய
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :உலகப் படம்
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :கூடுதல் பார்வைபடம்
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :கூடுதல் பார்வைபடம்
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :சரக்கு செல்லும் வழிப் படம்
 STR_MAP_MENU_SIGN_LIST                                          :குறிகளின் பட்டியல்
 
@@ -848,7 +848,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} நகராட்சியின் முழு போக்குவரத்து உரிமைகளையும் ஒரு வருடத்திற்கு {STRING} வாங்கியுள்ளது!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}பார்வைப் படம் {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}பார்வைப் படம் {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}பார்படத்திற்கு மாற்றவும்
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}பிரதான பார்வையை மாற்றவும்
 

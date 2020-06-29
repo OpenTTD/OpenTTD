@@ -400,7 +400,7 @@ STR_FILE_MENU_EXIT                                              :Surt
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa del món
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Vista extra
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Vista extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Llegenda del flux de càrrega
 STR_MAP_MENU_SIGN_LIST                                          :Llista de senyals
 
@@ -881,7 +881,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}L'autoritat local de {TOWN} signa un contracte amb {STRING} per l'explotació en exclusiva dels drets de transport durant un any
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vista {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Canvia la vista extra
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Mou aquesta vista on està la vista principal
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Canvia vista principal

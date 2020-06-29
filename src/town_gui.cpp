@@ -445,7 +445,7 @@ public:
 		switch (widget) {
 			case WID_TV_CENTER_VIEW: // scroll to location
 				if (_ctrl_pressed) {
-					ShowExtraViewPortWindow(this->town->xy);
+					ShowExtraViewportWindow(this->town->xy);
 				} else {
 					ScrollMainWindowToTile(this->town->xy);
 				}
@@ -913,7 +913,7 @@ public:
 				const Town *t = this->towns[id_v];
 				assert(t != nullptr);
 				if (_ctrl_pressed) {
-					ShowExtraViewPortWindow(t->xy);
+					ShowExtraViewportWindow(t->xy);
 				} else {
 					ScrollMainWindowToTile(t->xy);
 				}

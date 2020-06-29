@@ -403,7 +403,7 @@ STR_FILE_MENU_EXIT                                              :종료
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :전체 지도 보기
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :외부 화면
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :외부 화면
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :화물 흐름 범례
 STR_MAP_MENU_SIGN_LIST                                          :팻말 목록
 
@@ -885,7 +885,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{0:TOWN} 지역 당국이 {1:STRING}과 1년 간의 수송 독점권 계약을 체결하였습니다!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}외부 화면 {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}외부 화면으로 복사
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}현재 장소를 외부 화면에 복사합니다.
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}이 장소로 이동

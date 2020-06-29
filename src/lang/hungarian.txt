@@ -465,7 +465,7 @@ STR_FILE_MENU_EXIT                                              :Kilépés
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Világtérkép
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra látkép
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra látkép
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Rakományáramlási jelmagyarázat
 STR_MAP_MENU_SIGN_LIST                                          :Feliratok listája
 
@@ -948,7 +948,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} önkormányzata és {STRING} szerződést kötött egy éves kizárólagos szállítási jogokra!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}{COMMA}. látkép
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}{COMMA}. látkép
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Látkép átállítása
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}A látképre a fő nézet pozícióját másolja
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Fő nézet ideállítása

@@ -396,7 +396,7 @@ STR_FILE_MENU_EXIT                                              :Изход
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта на света
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Допълнителна камера
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Допълнителна камера
 STR_MAP_MENU_SIGN_LIST                                          :Списък с табели
 
 ############ range for town menu starts
@@ -867,7 +867,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Местните власти на {TOWN} подписаха договор с {STRING} за едногодишни ексклузивни транспортни права
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Камера {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Камера {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Преместване на камерата
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Преместване на тази камера до глобалната
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Преместване глобалната камера

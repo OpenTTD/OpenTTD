@@ -459,7 +459,7 @@ STR_FILE_MENU_EXIT                                              :Koniec
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa sveta
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ďalší pohľad
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ďalší pohľad
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenka k smerovaniu nákladu
 STR_MAP_MENU_SIGN_LIST                                          :Zoznam popisov
 
@@ -937,7 +937,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Miestna samospráva mesta {TOWN} podpísala exkluzívnu zmluvu na prepravu so spoločnosťou {STRING} na 1 rok !!!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohľad {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Pohľad {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Pohľad podľa mapy
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Nastaviť pohľad podľa hlavného pohľadu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mapa podľa pohľadu

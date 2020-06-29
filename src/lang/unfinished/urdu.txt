@@ -380,7 +380,7 @@ STR_FILE_MENU_EXIT                                              :باہر نکل
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :دنیا کا نقشھ
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :اضافی منظر
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :اضافی منظر
 STR_MAP_MENU_SIGN_LIST                                          :اشاروں کی فھرست
 
 ############ range for town menu starts
@@ -838,7 +838,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLAC
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN} میں ٹریفک کا بُرا حال!{}{}سڑکیں دوبارہ بنوانے کے پیسے {STRING} نے دئیے۔ اس کی وجہ سے اگلے 6 ماہ مشکل رہے گی
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}دہکھنے والی کھڑکی {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}دہکھنے والی کھڑکی {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}دہکھنے والی کھڑکی کی نقل
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}بنیادی منظر میں نظر آنے والی جگہ کو دیکھنے والی کھڑکی میں نقل کریں
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}دہکھنے والی کھڑکی سے نقل کریں

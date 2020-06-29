@@ -25,7 +25,7 @@ enum ScreenshotType {
 	SC_MINIMAP,     ///< Minimap screenshot.
 };
 
-void SetupScreenshotViewport(ScreenshotType t, struct ViewPort *vp);
+void SetupScreenshotViewport(ScreenshotType t, struct Viewport *vp);
 bool MakeHeightmapScreenshot(const char *filename);
 void MakeScreenshotWithConfirm(ScreenshotType t);
 bool MakeScreenshot(ScreenshotType t, const char *name);

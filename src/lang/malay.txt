@@ -378,7 +378,7 @@ STR_FILE_MENU_EXIT                                              :Keluar
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Peta Dunia
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Tetingkap pemandangan tambahan
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Tetingkap pemandangan tambahan
 STR_MAP_MENU_SIGN_LIST                                          :Senarai papan tanda
 
 ############ range for town menu starts
@@ -845,7 +845,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT} {BLACK} Pihak Berkuasa Tempatan {TOWN} menanda tangani kontrak dengan {STRING} untuk satu tahun hak pengangkutan eksklusif!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tetingkap Pemandangan {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Tetingkap Pemandangan {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Ubah tetingkap paparan
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Salin lokasi pemandangan global kepada tetingkap pemandangan ini
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Ubah paparan utama

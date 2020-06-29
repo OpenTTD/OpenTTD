@@ -403,7 +403,7 @@ STR_FILE_MENU_EXIT                                              :Quitter le jeu
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Carte du monde
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Vue supplémentaire
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Vue supplémentaire
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Légende du flux de marchandises
 STR_MAP_MENU_SIGN_LIST                                          :Liste des panneaux
 
@@ -885,7 +885,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Les autorités locales de {TOWN} signent avec {STRING} un contrat d'exclusivité des transports valable un an{NBSP}!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vue {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Modifier cette vue
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copier l'emplacement de la vue principale vers cette vue
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Modifier la vue principale

@@ -464,7 +464,7 @@ static CallBackFunction ToolbarMapClick(Window *w)
 {
 	DropDownList list;
 	list.emplace_back(new DropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD,            MME_SHOW_SMALLMAP,          false));
-	list.emplace_back(new DropDownListStringItem(STR_MAP_MENU_EXTRA_VIEW_PORT,         MME_SHOW_EXTRAVIEWPORTS,    false));
+	list.emplace_back(new DropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT,          MME_SHOW_EXTRAVIEWPORTS,    false));
 	list.emplace_back(new DropDownListStringItem(STR_MAP_MENU_LINGRAPH_LEGEND,         MME_SHOW_LINKGRAPH,         false));
 	list.emplace_back(new DropDownListStringItem(STR_MAP_MENU_SIGN_LIST,               MME_SHOW_SIGNLISTS,         false));
 	PopupMainToolbMenu(w, WID_TN_SMALL_MAP, std::move(list), 0);
@@ -475,7 +475,7 @@ static CallBackFunction ToolbarScenMapTownDir(Window *w)
 {
 	DropDownList list;
 	list.emplace_back(new DropDownListStringItem(STR_MAP_MENU_MAP_OF_WORLD,            MME_SHOW_SMALLMAP,          false));
-	list.emplace_back(new DropDownListStringItem(STR_MAP_MENU_EXTRA_VIEW_PORT,         MME_SHOW_EXTRAVIEWPORTS,    false));
+	list.emplace_back(new DropDownListStringItem(STR_MAP_MENU_EXTRA_VIEWPORT,          MME_SHOW_EXTRAVIEWPORTS,    false));
 	list.emplace_back(new DropDownListStringItem(STR_MAP_MENU_SIGN_LIST,               MME_SHOW_SIGNLISTS,         false));
 	list.emplace_back(new DropDownListStringItem(STR_TOWN_MENU_TOWN_DIRECTORY,         MME_SHOW_TOWNDIRECTORY,     false));
 	list.emplace_back(new DropDownListStringItem(STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, MME_SHOW_INDUSTRYDIRECTORY, false));
@@ -492,12 +492,12 @@ static CallBackFunction ToolbarScenMapTownDir(Window *w)
 static CallBackFunction MenuClickMap(int index)
 {
 	switch (index) {
-		case MME_SHOW_SMALLMAP:       ShowSmallMap();            break;
-		case MME_SHOW_EXTRAVIEWPORTS: ShowExtraViewPortWindow(); break;
-		case MME_SHOW_LINKGRAPH:      ShowLinkGraphLegend();     break;
-		case MME_SHOW_SIGNLISTS:      ShowSignList();            break;
-		case MME_SHOW_TOWNDIRECTORY:  ShowTownDirectory();       break;
-		case MME_SHOW_INDUSTRYDIRECTORY: ShowIndustryDirectory(); break;
+		case MME_SHOW_SMALLMAP:          ShowSmallMap();            break;
+		case MME_SHOW_EXTRAVIEWPORTS:    ShowExtraViewportWindow(); break;
+		case MME_SHOW_LINKGRAPH:         ShowLinkGraphLegend();     break;
+		case MME_SHOW_SIGNLISTS:         ShowSignList();            break;
+		case MME_SHOW_TOWNDIRECTORY:     ShowTownDirectory();       break;
+		case MME_SHOW_INDUSTRYDIRECTORY: ShowIndustryDirectory();   break;
 	}
 	return CBF_NONE;
 }
@@ -2092,7 +2092,7 @@ struct MainToolbarWindow : Window {
 			case MTHK_GIANT_SCREENSHOT: MakeScreenshotWithConfirm(SC_WORLD); break;
 			case MTHK_CHEATS: if (!_networking) ShowCheatWindow(); break;
 			case MTHK_TERRAFORM: ShowTerraformToolbar(); break;
-			case MTHK_EXTRA_VIEWPORT: ShowExtraViewPortWindowForTileUnderCursor(); break;
+			case MTHK_EXTRA_VIEWPORT: ShowExtraViewportWindowForTileUnderCursor(); break;
 			case MTHK_CLIENT_LIST: if (_networking) ShowClientList(); break;
 			case MTHK_SIGN_LIST: ShowSignList(); break;
 			case MTHK_LANDINFO: cbf = PlaceLandBlockInfo(); break;
@@ -2469,7 +2469,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			case MTEHK_ZOOM_OUT:               ToolbarZoomOutClick(this); break;
 			case MTEHK_TERRAFORM:              ShowEditorTerraformToolbar(); break;
 			case MTEHK_SMALLMAP:               ShowSmallMap(); break;
-			case MTEHK_EXTRA_VIEWPORT:         ShowExtraViewPortWindowForTileUnderCursor(); break;
+			case MTEHK_EXTRA_VIEWPORT:         ShowExtraViewportWindowForTileUnderCursor(); break;
 			default: return ES_NOT_HANDLED;
 		}
 		if (cbf != CBF_NONE) _last_started_action = cbf;

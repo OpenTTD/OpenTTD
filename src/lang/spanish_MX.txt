@@ -403,7 +403,7 @@ STR_FILE_MENU_EXIT                                              :Salir
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Minimapa completo
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ventana de vista adicional
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ventana de vista adicional
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Leyenda de flujo de cargamento
 STR_MAP_MENU_SIGN_LIST                                          :Lista de carteles
 
@@ -885,7 +885,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}¡Ayuntamiento de {TOWN} firma contrato de exclusividad con {STRING} por un año!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vista {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cambiar ventana de vista
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar la vista principal a esta ventana de vista
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Cambiar vista principal

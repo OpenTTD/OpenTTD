@@ -374,7 +374,7 @@ STR_FILE_MENU_EXIT                                              :خروج
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :خريطة العالم
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :شاشة عرض اضافية
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :شاشة عرض اضافية
 STR_MAP_MENU_SIGN_LIST                                          :قائمة العلامات
 
 ############ range for town menu starts
@@ -836,7 +836,7 @@ STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLAC
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK} فوضى طرق عارمة في مدينة {TOWN}!{}{}اعادة ترميم الطرق مولت من قبل شركة {STRING}{} تجلي ستة أشهر من الشقاء لعربات الطريق.
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}شاشة العرض {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}شاشة العرض {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}انسخ لشاشة العرض
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}انسخ موقع الشاشة الرئيسية لشاشة العرض هذه
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}لصق من شاشة العرض

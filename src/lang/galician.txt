@@ -403,7 +403,7 @@ STR_FILE_MENU_EXIT                                              :Saír
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa do mundo
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Xanela extra
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Xanela extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Lenda de tomar carga
 STR_MAP_MENU_SIGN_LIST                                          :Lista de rótulos
 
@@ -884,7 +884,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}As autoridades locáis de {TOWN} asinan un contrato con {STRING} por un ano de dereitos de transporte exclusivos!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vista {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cambiar xanela
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copia-la sitaución da vista principal a esta vista
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Cambia a vista principal

@@ -396,7 +396,7 @@ STR_FILE_MENU_EXIT                                              :Sair
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa do mundo
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Janela extra
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Janela extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda do Fluxo de Carga
 STR_MAP_MENU_SIGN_LIST                                          :Lista de sinais
 
@@ -876,7 +876,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Prefeitura de {TOWN} assina contrato de exclusividade com {STRING} por um ano!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Janela {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Janela {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Alterar visualização
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar o local da tela principal para esta janela
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Colar da visualização principal

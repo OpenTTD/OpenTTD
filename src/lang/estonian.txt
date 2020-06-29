@@ -454,7 +454,7 @@ STR_FILE_MENU_EXIT                                              :Välju
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Maailmakaart
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Lisa vaateaken
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Lisa vaateaken
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kaubavoo legend
 STR_MAP_MENU_SIGN_LIST                                          :Siltide register
 
@@ -929,7 +929,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Kohalik linnavõim{TOWN} allkirjastab lepingu {STRING} transpordi ainuõiguseks üheks aastaks!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vaateaken {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vaateaken {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopeeri vaateaknasse
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopeeri praegune vaade vaateaknasse
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Muuda peamist vaadet

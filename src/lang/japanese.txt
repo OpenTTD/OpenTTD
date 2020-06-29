@@ -395,7 +395,7 @@ STR_FILE_MENU_EXIT                                              :OpenTTDを終�
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :地図
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :ビューポートを開く
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :ビューポートを開く
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :貨物輸送履歴
 STR_MAP_MENU_SIGN_LIST                                          :標識リスト
 
@@ -869,7 +869,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK} {TOWN}が{STRING}と1年間の排他輸送契約を締結!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}ビューア {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}ビューア {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}ビューアへコピー
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}メイン画面の場所をビューアにコピーする
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}ビューアからペースト

@@ -402,7 +402,7 @@ STR_FILE_MENU_EXIT                                              :Thoát
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Bản đồ thế giới
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Cửa sổ bổ sung
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Cửa sổ bổ sung
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Ghi chú luồng hàng hóa
 STR_MAP_MENU_SIGN_LIST                                          :Danh sách biển hiệu
 
@@ -883,7 +883,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Chính quyền địa phương {TOWN} ký hợp đồng với {STRING} cho phép độc quyền vận tải trong vòng 1 năm!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Cửa sổ {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Cửa sổ {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Đổi khung nhìn
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Nhìn vị trí này ở cửa sổ lớn chính
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Chuyển về cửa sổ chính

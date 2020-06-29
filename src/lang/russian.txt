@@ -528,7 +528,7 @@ STR_FILE_MENU_EXIT                                              :Выход
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта мира
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Доп. окно просмотра
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Доп. окно просмотра
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Легенда грузоперевозок
 STR_MAP_MENU_SIGN_LIST                                          :Список табличек
 
@@ -1029,7 +1029,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Администрация г.{NBSP}{TOWN} заключила контракт с компанией «{STRING}», предоставляющий ей эксклюзивные права на транспортные услуги в городе сроком на 1{NBSP}год!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Окно просмотра {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Окно просмотра {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Из основного окна
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Показать то, что отображается в основном окне
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}В основное окно

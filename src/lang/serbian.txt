@@ -583,7 +583,7 @@ STR_FILE_MENU_EXIT                                              :Izađi
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Karta sveta
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatno gledište
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Dodatno gledište
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda protoka tereta
 STR_MAP_MENU_SIGN_LIST                                          :Lista Znakova
 
@@ -1068,7 +1068,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Vlasti grada {TOWN} su potpisale ugovor sa preduzećem {STRING} o ekskluzivnom pravu prevoza na godinu dana!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pogled{COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Pogled{COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK} Kopiraj u prozor za pogled
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Premešta pogled na trenutnu poziciju glavnog pogleda
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Promenite glavni prikaz

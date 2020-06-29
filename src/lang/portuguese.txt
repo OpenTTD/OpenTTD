@@ -401,7 +401,7 @@ STR_FILE_MENU_EXIT                                              :Sair
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa do mundo
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Visualizador extra
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Visualizador extra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda de fluxo de carga
 STR_MAP_MENU_SIGN_LIST                                          :Lista de sinais
 
@@ -882,7 +882,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Autoridade local de {TOWN} assina contrato com {STRING} por um ano de direitos exclusivos de transporte!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Visualizador {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Visualizador {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Alterar janela de exibição
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar a localização do visualizador global para este visualizador
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Alterar vista principal

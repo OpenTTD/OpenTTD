@@ -395,7 +395,7 @@ STR_FILE_MENU_EXIT                                              :Ofslute
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Wrâldkaart
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra finster
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ekstra finster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Frachtstreamleginda
 STR_MAP_MENU_SIGN_LIST                                          :Buordsjeslist
 
@@ -869,7 +869,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Gemeente fan {TOWN} tekent in kontrakt mei {STRING} foar in jier lang eksklusive ferfiersrjochen!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Loaitsfinster {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Loaitsfinster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiearje nei loaitsfinster
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiearje de lokaasje fan it haadfinster nei dit loaitsfinster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Plak fanút loaitsfinster

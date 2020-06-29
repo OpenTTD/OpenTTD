@@ -395,7 +395,7 @@ STR_FILE_MENU_EXIT                                              :Ieşire din joc
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Harta lumii
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ecran suplimentar
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ecran suplimentar
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda flux încărcătură
 STR_MAP_MENU_SIGN_LIST                                          :Lista de semne
 
@@ -871,7 +871,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Autoritatea locală a oraşului {TOWN} semnează un contract cu {STRING} pentru un an de drepturi exclusive de transport!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ecran {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Ecran {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiază în ecran
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiază locaţia ecranului principal în acest ecran
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Importă din ecran

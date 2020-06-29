@@ -253,7 +253,7 @@ static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for W
  * The actual location being shown is #scrollpos_x, #scrollpos_y.
  * @see InitializeViewport(), UpdateViewportPosition(), UpdateViewportCoordinates().
  */
-struct ViewportData : ViewPort {
+struct ViewportData : Viewport {
 	VehicleID follow_vehicle; ///< VehicleID to follow if following a vehicle, #INVALID_VEHICLE otherwise.
 	int32 scrollpos_x;        ///< Currently shown x coordinate (virtual screen coordinate of topleft corner of the viewport).
 	int32 scrollpos_y;        ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).

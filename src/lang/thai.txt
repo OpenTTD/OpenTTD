@@ -387,7 +387,7 @@ STR_FILE_MENU_EXIT                                              :ออกจา
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :แผนที่โลก
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :มุมมองเพิ่มเติม
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :มุมมองเพิ่มเติม
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :เส้นทางการกระจายสินค้า
 STR_MAP_MENU_SIGN_LIST                                          :รายการป้าย
 
@@ -860,7 +860,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}ฝ่ายบริหารของเมือง {TOWN} ลงนามสัญญากับ {STRING} เป็นะระยเวลา 1 ปีสำหรับสัมปทานขนส่งพิเศษ
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}มุมมอง {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}มุมมอง {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}คัดลอกไปยังมุมมอง
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}คัดลอกตำแหน่งของมุมมองหลังมายังมุมมองนี้
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}วางจากมุมมอง

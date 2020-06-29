@@ -389,7 +389,7 @@ STR_FILE_MENU_EXIT                                              :Fermu
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mondomapo
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Plia vidujo
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Plia vidujo
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legendo de ŝarĝfluo
 STR_MAP_MENU_SIGN_LIST                                          :Afiŝa listo
 
@@ -856,7 +856,7 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transporta monopolo!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vidujo {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vidujo {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiu al vidujo
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiu la lokon de la ĉefvido al ĉi tiu vidujo
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gluu de vidujo

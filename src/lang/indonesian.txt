@@ -396,7 +396,7 @@ STR_FILE_MENU_EXIT                                              :Keluar
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Peta Dunia
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Viewport ekstra
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Viewport ekstra
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda aliran kargo
 STR_MAP_MENU_SIGN_LIST                                          :Daftar Tanda
 
@@ -876,7 +876,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Pemkot Kota {TOWN} menandatangani kontrak dengan {STRING} untuk hak transportasi eksklusif selama 1 tahun!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Viewport {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Simpan ke viewport
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Simpan lokasi peta sekarang ke viewport
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Tampilan dari viewport

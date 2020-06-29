@@ -477,7 +477,7 @@ STR_FILE_MENU_EXIT                                              :Ukončit progra
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mapa světa
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Další pohled
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Další pohled
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda toku nákladu
 STR_MAP_MENU_SIGN_LIST                                          :Seznam popisků
 
@@ -970,7 +970,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Místní správa města {TOWN} podepsala dohodu s {STRING} na jeden rok exkluzivní dopravy!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Pohled {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Pohled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Nastavit jako pohled
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Nastavit současné zorné pole jako pohled
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Změnit hlavní pohled

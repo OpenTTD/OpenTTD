@@ -402,7 +402,7 @@ STR_FILE_MENU_EXIT                                              :Sulje
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Maailmankartta
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Lisänäkymä
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Lisänäkymä
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Rahtivirran selitys
 STR_MAP_MENU_SIGN_LIST                                          :Kylttilista
 
@@ -884,7 +884,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} ja {STRING} allekirjoittavat sopimuksen vuoden pituisesta kuljetusyksinoikeudesta!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Näkymä {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Näkymä {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Päänäkymästä tähän
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopioi päänäkymän sijainti tähän näkymään
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Vaihda päänäkymää

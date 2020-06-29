@@ -398,7 +398,7 @@ STR_FILE_MENU_EXIT                                              :Çıkış
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Dünya haritası
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ek görünüm
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ek görünüm
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kargo Akış Göstergesi
 STR_MAP_MENU_SIGN_LIST                                          :Tabela listesi
 
@@ -879,7 +879,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} şehri yetkilileri {STRING} ile bir yıllığına şehrin tüm taşımacılık haklarını vermek üzere anlaştı!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Görünüm {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Görünüm {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Görüş alanını değiştir
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Ana görünümü bu pencereye kopyala
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Ana görünümü değiştir

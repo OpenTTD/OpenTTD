@@ -404,7 +404,7 @@ STR_FILE_MENU_EXIT                                              :Avslutt OpenTTD
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Verdenskart
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra tilleggsvindu
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ekstra tilleggsvindu
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Symbolforklaring for vareflyt
 STR_MAP_MENU_SIGN_LIST                                          :Skiltliste
 
@@ -885,7 +885,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Lokal myndighet i {TOWN} signerer kontrakt med {STRING} for ett år med eksklusift transport rettigheter!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tilleggsvindu {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Tilleggsvindu {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til tilleggsvindu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopier hovedvisningen til dette tilleggsvinduet
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Endre hovedsynsfelt
