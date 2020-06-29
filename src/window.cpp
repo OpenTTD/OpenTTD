@@ -2835,7 +2835,7 @@ static void HandleAutoscroll()
 	if (w == nullptr || w->flags & WF_DISABLE_VP_SCROLL) return;
 	if (_settings_client.gui.auto_scrolling != VA_EVERY_VIEWPORT && w->window_class != WC_MAIN_WINDOW) return;
 
-	ViewPort *vp = IsPtInWindowViewport(w, x, y);
+	Viewport *vp = IsPtInWindowViewport(w, x, y);
 	if (vp == nullptr) return;
 
 	x -= vp->left;
@@ -2945,7 +2945,7 @@ static void MouseLoop(MouseClick click, int mousewheel)
 	if (w == nullptr) return;
 
 	if (click != MC_HOVER && !MaybeBringWindowToFront(w)) return;
-	ViewPort *vp = IsPtInWindowViewport(w, x, y);
+	Viewport *vp = IsPtInWindowViewport(w, x, y);
 
 	/* Don't allow any action in a viewport if either in menu or when having a modal progress window */
 	if (vp != nullptr && (_game_mode == GM_MENU || HasModalProgress())) return;

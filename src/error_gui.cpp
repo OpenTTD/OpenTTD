@@ -225,7 +225,7 @@ public:
 		int scr_bot = GetMainViewBottom() - 20;
 
 		Point pt = RemapCoords(this->position.x, this->position.y, GetSlopePixelZOutsideMap(this->position.x, this->position.y));
-		const ViewPort *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport.get();
+		const Viewport *vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport.get();
 		if (this->face == INVALID_COMPANY) {
 			/* move x pos to opposite corner */
 			pt.x = UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left;

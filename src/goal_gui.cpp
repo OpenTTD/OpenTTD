@@ -148,7 +148,7 @@ struct GoalListWindow : public Window {
 		}
 
 		if (_ctrl_pressed) {
-			ShowExtraViewPortWindow(xy);
+			ShowExtraViewportWindow(xy);
 		} else {
 			ScrollMainWindowToTile(xy);
 		}

@@ -1162,7 +1162,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
  * @param y  Y coordinate in the viewport.
  * @return Closest vehicle, or \c nullptr if none found.
  */
-Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
+Vehicle *CheckClickOnVehicle(const Viewport *vp, int x, int y)
 {
 	Vehicle *found = nullptr;
 	uint dist, best_dist = UINT_MAX;

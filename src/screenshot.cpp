@@ -612,7 +612,7 @@ static void CurrentScreenCallback(void *userdata, void *buf, uint y, uint pitch,
  */
 static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
 {
-	ViewPort *vp = (ViewPort *)userdata;
+	Viewport *vp = (Viewport *)userdata;
 	DrawPixelInfo dpi, *old_dpi;
 	int wx, left;
 
@@ -707,11 +707,11 @@ static bool MakeSmallScreenshot(bool crashlog)
 }
 
 /**
- * Configure a ViewPort for rendering (a part of) the map into a screenshot.
+ * Configure a Viewport for rendering (a part of) the map into a screenshot.
  * @param t Screenshot type
  * @param[out] vp Result viewport
  */
-void SetupScreenshotViewport(ScreenshotType t, ViewPort *vp)
+void SetupScreenshotViewport(ScreenshotType t, Viewport *vp)
 {
 	switch(t) {
 		case SC_VIEWPORT:
@@ -783,7 +783,7 @@ void SetupScreenshotViewport(ScreenshotType t, ViewPort *vp)
  */
 static bool MakeLargeWorldScreenshot(ScreenshotType t)
 {
-	ViewPort vp;
+	Viewport vp;
 	SetupScreenshotViewport(t, &vp);
 
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
@@ -853,7 +853,7 @@ static void ScreenshotConfirmationCallback(Window *w, bool confirmed)
  */
 void MakeScreenshotWithConfirm(ScreenshotType t)
 {
-	ViewPort vp;
+	Viewport vp;
 	SetupScreenshotViewport(t, &vp);
 
 	bool heightmap_or_minimap = t == SC_HEIGHTMAP || t == SC_MINIMAP;
