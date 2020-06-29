@@ -63,13 +63,6 @@ static ReusableBuffer<uint8> _cursor_backup;
 ZoomLevel _gui_zoom; ///< GUI Zoom level
 ZoomLevel _font_zoom; ///< Font Zoom level
 
-/**
- * The rect for repaint.
- *
- * This rectangle defines the area which should be repaint by the video driver.
- *
- * @ingroup dirty
- */
 static const byte *_colour_remap_ptr;
 static byte _string_colourremap[3]; ///< Recoloursprite for stringdrawing. The grf loader ensures that #ST_FONT sprites only use colours 0 to 2.
 
@@ -1454,10 +1447,10 @@ static void DrawDirtyViewport(uint occlusion, int left, int top, int right, int 
 	for(; occlusion < _dirty_viewport_occlusions.size(); occlusion++) {
 		const Rect &occ = _dirty_viewport_occlusions[occlusion];
 		if (right <= occ.left || bottom <= occ.top || left >= occ.right || top >= occ.bottom) {
+			/* No intersection. */
 			continue;
 		}
 
-		/* occlusion and draw rectangle intersect with each other */
 		if (left < occ.left) {
 			/* Occlusion intersects with dirty rect; split at left edge. */
 			int middle = occ.left;
@@ -1490,6 +1483,7 @@ static void DrawDirtyViewport(uint occlusion, int left, int top, int right, int 
 			return;
 		}
 
+		/* Dirty rect is completely occluded. Nothing more to do. */
 		return;
 	}
 
@@ -1722,48 +1716,66 @@ void DrawDirtyBlocks()
 	++_dirty_block_colour;
 }
 
+/**
+ * Exclude the specified rectangle from the collection of invalid screen rectangles, splitting as required.
+ *
+ * @param left,top,right,bottom the rectangle to be included.
+ * @see SetDirtyBlocks
+ * @ingroup dirty
+ */
 void UnsetDirtyBlocks(int left, int top, int right, int bottom)
 {
 	if (_whole_screen_dirty) return;
 
 	for (uint i = 0; i < _dirty_blocks.size(); i++) {
-		Rect &r = _dirty_blocks[i];
-		if (left >= r.right || right <= r.left || top >= r.bottom || bottom <= r.top) {
+		/* Iterate through the dirty blocks. It is not valid to use a ranged for loop here, because
+		 * the vector holding them might be reallocated during iteration, and that would invalidate
+		 * the iterator.
+		 */
+		Rect &current = _dirty_blocks[i];
+		if (left >= current.right || right <= current.left || top >= current.bottom || bottom <= current.top) {
+			/* No overlap. */
 			continue;
 		}
-		/* overlap of some sort */
-		if (left <= r.left && right >= r.right && top <= r.top && bottom >= r.bottom) {
-			/* dirty rect entirely in subtraction area */
-			r = _dirty_blocks.back();
+		if (left <= current.left && right >= current.right && top <= current.top && bottom >= current.bottom) {
+			/* Dirty rect is entirely within subtraction area. */
+			current = _dirty_blocks.back();
 			_dirty_blocks.pop_back();
 			i--;
 			continue;
 		}
-		if (r.left < left) {
-			Rect n = { left, r.top, r.right, r.bottom };
-			r.right = left;
-			_dirty_blocks.push_back(n);
+		if (current.left < left) {
+			/* Overlap, split at left edge. It is important to update the current dirty rect in the list
+			 * before appending the new dirty rect, because `push_back` might invalidate the reference
+			 * by reallocating the vector somewhere else.
+			 */
+			Rect split = { left, current.top, current.right, current.bottom };
+			current.right = left;
+			_dirty_blocks.push_back(split);
 			continue;
 		}
-		if (r.right > right) {
-			Rect n = { r.left, r.top, right, r.bottom };
-			r.left = right;
-			_dirty_blocks.push_back(n);
+		if (current.right > right) {
+			/* overlap, split at right edge. */
+			Rect split = { current.left, current.top, right, current.bottom };
+			current.left = right;
+			_dirty_blocks.push_back(split);
 			continue;
 		}
-		if (r.top < top) {
-			Rect n = { r.left, top, r.right, r.bottom };
-			r.bottom = top;
-			_dirty_blocks.push_back(n);
+		if (current.top < top) {
+			/* overlap, split at top edge. */
+			Rect split = { current.left, top, current.right, current.bottom };
+			current.bottom = top;
+			_dirty_blocks.push_back(split);
 			continue;
 		}
-		if (r.bottom > bottom) {
+		if (current.bottom > bottom) {
 			/* overlap, split at bottom edge. */
-			Rect n = { r.left, r.top, r.right, bottom };
-			r.top = bottom;
-			_dirty_blocks.push_back(n);
+			Rect split = { current.left, current.top, current.right, bottom };
+			current.top = bottom;
+			_dirty_blocks.push_back(split);
 			continue;
 		}
+		NOT_REACHED(); // The above conditions cover all possible cases. It is not valid to reach this point.
 	}
 }
 
@@ -1782,49 +1794,62 @@ static void SplitDirtyBlocks(uint start, int left, int top, int right, int botto
 	if (bottom <= top || right <= left) return;
 
 	for (; start < _dirty_blocks.size(); start++) {
-		Rect &r = _dirty_blocks[start];
-		if (left > r.right || right < r.left || top > r.bottom || bottom < r.top) {
+		/* Iterate through the dirty blocks. It is not valid to use a ranged for loop here, because
+		 * the vector holding them might be reallocated during iteration, and that would invalidate
+		 * the iterator.
+		 */
+		Rect &current = _dirty_blocks[start];
+		if (left > current.right || right < current.left || top > current.bottom || bottom < current.top) {
+			/* No overlap. */
 			continue;
 		}
-		/* overlap or contact of some sort */
-		if (left >= r.left && right <= r.right && top >= r.top && bottom <= r.bottom) {
-			/* entirely contained by existing  */
+		if (left >= current.left && right <= current.right && top >= current.top && bottom <= current.bottom) {
+			/* New rectangle is entirely contained by existing rectangle. */
 			return;
 		}
-		if (left <= r.left && right >= r.right && top <= r.top && bottom >= r.bottom) {
-			/* entirely contains existing */
-			r = _dirty_blocks.back();
+		if (left <= current.left && right >= current.right && top <= current.top && bottom >= current.bottom) {
+			/* New rectangle entirely contains existing rectangle. */
+			current = _dirty_blocks.back();
 			_dirty_blocks.pop_back();
 			start--;
 			continue;
 		}
-		if (left < r.left && right > r.left) {
-			int middle = r.left;
+		if (left < current.left && right > current.left) {
+			/* Partial overlap, split at left edge. Because SplitDirtyBlocks calls `push_back`,
+			 * which might invalidate the reference to the current rectangle by reallocating the
+			 * vector somewhere else, it is important to cache the boundary in a temporary.
+			 */
+			int middle = current.left;
 			SplitDirtyBlocks(start, left, top, middle, bottom);
 			SplitDirtyBlocks(start, middle, top, right, bottom);
 			return;
 		}
-		if (right > r.right && left < r.right) {
-			int middle = r.right;
+		if (right > current.right && left < current.right) {
+			/* Partial overlap, split at right edge. */
+			int middle = current.right;
 			SplitDirtyBlocks(start, left, top, middle, bottom);
 			SplitDirtyBlocks(start, middle, top, right, bottom);
 			return;
 		}
-
-		if (top < r.top && bottom > r.top) {
-			int middle = r.top;
+		if (top < current.top && bottom > current.top) {
+			/* Partial overlap, split at top edge. */
+			int middle = current.top;
+			SplitDirtyBlocks(start, left, top, right, middle);
+			SplitDirtyBlocks(start, left, middle, right, bottom);
+			return;
+		}
+		if (bottom > current.bottom && top < current.bottom) {
+			/* Partial overlap, split at bottom edge. */
+			int middle = current.bottom;
 			SplitDirtyBlocks(start, left, top, right, middle);
 			SplitDirtyBlocks(start, left, middle, right, bottom);
 			return;
 		}
 
-		if (bottom > r.bottom && top < r.bottom) {
-			int middle = r.bottom;
-			SplitDirtyBlocks(start, left, top, right, middle);
-			SplitDirtyBlocks(start, left, middle, right, bottom);
-			return;
-		}
+		/* New rectangle shares exactly one side with existing rectangle; possible merging opportunity. */
 	}
+
+	/* Append new non-overlapping rectangle. */
 	_dirty_blocks.push_back({ left, top, right, bottom });
 }
 
