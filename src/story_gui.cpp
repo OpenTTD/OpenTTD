@@ -550,7 +550,7 @@ protected:
 
 			case SPET_LOCATION:
 				if (_ctrl_pressed) {
-					ShowExtraViewPortWindow((TileIndex)pe.referenced_id);
+					ShowExtraViewportWindow((TileIndex)pe.referenced_id);
 				} else {
 					ScrollMainWindowToTile((TileIndex)pe.referenced_id);
 				}

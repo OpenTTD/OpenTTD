@@ -135,7 +135,7 @@ void ShowNetworkGiveMoneyWindow(CompanyID company)
  */
 bool DoZoomInOutWindow(ZoomStateChange how, Window *w)
 {
-	ViewPort *vp;
+	Viewport *vp;
 
 	assert(w != nullptr);
 	vp = w->viewport.get();
@@ -186,7 +186,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 	assert(w != nullptr);
 
 	if (_game_mode != GM_MENU) {
-		ViewPort *vp = w->viewport.get();
+		Viewport *vp = w->viewport.get();
 		if ((in && vp->zoom <= _settings_client.gui.zoom_min) || (!in && vp->zoom >= _settings_client.gui.zoom_max)) return;
 
 		Point pt = GetTileZoomCenterWindow(in, w);
@@ -202,7 +202,7 @@ void FixTitleGameZoom()
 {
 	if (_game_mode != GM_MENU) return;
 
-	ViewPort *vp = FindWindowByClass(WC_MAIN_WINDOW)->viewport.get();
+	Viewport *vp = FindWindowByClass(WC_MAIN_WINDOW)->viewport.get();
 	vp->zoom = _gui_zoom;
 	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
 	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);

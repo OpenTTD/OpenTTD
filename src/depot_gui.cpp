@@ -787,7 +787,7 @@ struct DepotWindow : Window {
 
 			case WID_D_LOCATION:
 				if (_ctrl_pressed) {
-					ShowExtraViewPortWindow(this->window_number);
+					ShowExtraViewportWindow(this->window_number);
 				} else {
 					ScrollMainWindowToTile(this->window_number);
 				}

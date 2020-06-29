@@ -22,8 +22,8 @@
 
 #include "safeguards.h"
 
-/* Extra ViewPort Window Stuff */
-static const NWidgetPart _nested_extra_view_port_widgets[] = {
+/* Extra Viewport Window Stuff */
+static const NWidgetPart _nested_extra_viewport_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_EV_CAPTION), SetDataTip(STR_EXTRA_VIEW_PORT_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -154,25 +154,25 @@ public:
 	}
 };
 
-static WindowDesc _extra_view_port_desc(
+static WindowDesc _extra_viewport_desc(
 	WDP_AUTO, "extra_viewport", 300, 268,
 	WC_EXTRA_VIEW_PORT, WC_NONE,
 	0,
-	_nested_extra_view_port_widgets, lengthof(_nested_extra_view_port_widgets)
+	_nested_extra_viewport_widgets, lengthof(_nested_extra_viewport_widgets)
 );
 
 /**
  * Show a new Extra Viewport window.
  * @param tile Tile to center the view on. INVALID_TILE means to use the center of main viewport.
  */
-void ShowExtraViewPortWindow(TileIndex tile)
+void ShowExtraViewportWindow(TileIndex tile)
 {
 	int i = 0;
 
 	/* find next free window number for extra viewport */
 	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != nullptr) i++;
 
-	new ExtraViewportWindow(&_extra_view_port_desc, i, tile);
+	new ExtraViewportWindow(&_extra_viewport_desc, i, tile);
 }
 
 /**
@@ -180,10 +180,10 @@ void ShowExtraViewPortWindow(TileIndex tile)
  * Center it on the tile under the cursor, if the cursor is inside a viewport.
  * If that fails, center it on main viewport center.
  */
-void ShowExtraViewPortWindowForTileUnderCursor()
+void ShowExtraViewportWindowForTileUnderCursor()
 {
 	/* Use tile under mouse as center for new viewport.
 	 * Do this before creating the window, it might appear just below the mouse. */
 	Point pt = GetTileBelowCursor();
-	ShowExtraViewPortWindow(pt.x != -1 ? TileVirtXY(pt.x, pt.y) : INVALID_TILE);
+	ShowExtraViewportWindow(pt.x != -1 ? TileVirtXY(pt.x, pt.y) : INVALID_TILE);
 }

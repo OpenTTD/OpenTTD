@@ -507,8 +507,8 @@ struct NewsWindow : Window {
 					TileIndex tile1 = GetReferenceTile(this->ni->reftype1, this->ni->ref1);
 					TileIndex tile2 = GetReferenceTile(this->ni->reftype2, this->ni->ref2);
 					if (_ctrl_pressed) {
-						if (tile1 != INVALID_TILE) ShowExtraViewPortWindow(tile1);
-						if (tile2 != INVALID_TILE) ShowExtraViewPortWindow(tile2);
+						if (tile1 != INVALID_TILE) ShowExtraViewportWindow(tile1);
+						if (tile2 != INVALID_TILE) ShowExtraViewportWindow(tile2);
 					} else {
 						if ((tile1 == INVALID_TILE || !ScrollMainWindowToTile(tile1)) && tile2 != INVALID_TILE) {
 							ScrollMainWindowToTile(tile2);

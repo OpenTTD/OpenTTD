@@ -180,7 +180,7 @@ struct ViewportDrawer {
 	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixel offset for ground sprites on the foundations.
 };
 
-static void MarkViewportDirty(ViewPort * const vp, int left, int top, int right, int bottom);
+static void MarkViewportDirty(Viewport * const vp, int left, int top, int right, int bottom);
 
 static ViewportDrawer _vd;
 
@@ -212,7 +212,7 @@ bool _draw_dirty_blocks = false;
 uint _dirty_block_colour = 0;
 static VpSpriteSorter _vp_sprite_sorter = nullptr;
 
-static Point MapXYZToViewport(const ViewPort *vp, int x, int y, int z)
+static Point MapXYZToViewport(const Viewport *vp, int x, int y, int z)
 {
 	Point p = RemapCoords(x, y, z);
 	p.x -= vp->virtual_width / 2;
@@ -388,7 +388,7 @@ static void DoSetViewportPosition(const Window *w, int left, int top, int width,
 	}
 }
 
-inline void UpdateViewportDirtyBlockLeftMargin(ViewPort *vp)
+inline void UpdateViewportDirtyBlockLeftMargin(Viewport *vp)
 {
 	if (false /*vp->zoom >= ZOOM_LVL_DRAW_MAP*/) {
 		vp->dirty_block_left_margin = 0;
@@ -399,7 +399,7 @@ inline void UpdateViewportDirtyBlockLeftMargin(ViewPort *vp)
 
 static void SetViewportPosition(Window *w, int x, int y)
 {
-	ViewPort *vp = w->viewport.get();
+	Viewport *vp = w->viewport.get();
 	int old_left = vp->virtual_left;
 	int old_top = vp->virtual_top;
 	int i;
@@ -459,9 +459,9 @@ static void SetViewportPosition(Window *w, int x, int y)
  * @return Pointer to the viewport if the xy position is in the viewport of the window,
  *         otherwise \c nullptr is returned.
  */
-ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
+Viewport *IsPtInWindowViewport(const Window *w, int x, int y)
 {
-	ViewPort *vp = w->viewport.get();
+	Viewport *vp = w->viewport.get();
 
 	if (vp != nullptr &&
 			IsInsideMM(x, vp->left, vp->left + vp->width) &&
@@ -483,7 +483,7 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
  * @param clamp_to_map Clamp the coordinate outside of the map to the closest, non-void tile within the map
  * @return Tile coordinate or (-1, -1) if given x or y is not within viewport frame
  */
-Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y, bool clamp_to_map)
+Point TranslateXYToTileCoord(const Viewport *vp, int x, int y, bool clamp_to_map)
 {
 	if (!IsInsideBS(x, vp->left, vp->width) || !IsInsideBS(y, vp->top, vp->height)) {
 		Point pt = { -1, -1 };
@@ -501,7 +501,7 @@ Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y, bool clamp_to_map
 static Point GetTileFromScreenXY(int x, int y, int zoom_x, int zoom_y)
 {
 	Window *w;
-	ViewPort *vp;
+	Viewport *vp;
 	Point pt;
 
 	if ( (w = FindWindowFromPt(x, y)) != nullptr &&
@@ -521,7 +521,7 @@ Point GetTileBelowCursor()
 Point GetTileZoomCenterWindow(bool in, Window * w)
 {
 	int x, y;
-	ViewPort *vp = w->viewport.get();
+	Viewport *vp = w->viewport.get();
 
 	if (in) {
 		x = ((_cursor.pos.x - vp->left) >> 1) + (vp->width >> 2);
@@ -542,7 +542,7 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
  * @param widget_zoom_in widget index for window with zoom-in button
  * @param widget_zoom_out widget index for window with zoom-out button
  */
-void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out)
+void HandleZoomMessage(Window *w, const Viewport *vp, byte widget_zoom_in, byte widget_zoom_out)
 {
 	w->SetWidgetDisabledState(widget_zoom_in, vp->zoom <= _settings_client.gui.zoom_min);
 	w->SetWidgetDirty(widget_zoom_in);
@@ -1547,7 +1547,7 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 		zoomlevels[zoom].bottom = this->top    + ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM + 1, zoom);
 	}
 
-	for (ViewPort *vp : ViewportData::cache) {
+	for (Viewport *vp : ViewportData::cache) {
 		if ( vp->zoom > maxzoom) continue;
 		Rect &zl = zoomlevels[vp->zoom];
 		MarkViewportDirty(vp, zl.left, zl.top, zl.right, zl.bottom);
@@ -1716,7 +1716,7 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 	}
 }
 
-void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom)
+void ViewportDoDraw(const Viewport *vp, int left, int top, int right, int bottom)
 {
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &_vd.dpi;
@@ -1791,7 +1791,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
  * Make sure we don't draw a too big area at a time.
  * If we do, the sprite memory will overflow.
  */
-void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
+void ViewportDrawChk(const Viewport *vp, int left, int top, int right, int bottom)
 {
 	if ((int64)ScaleByZoom(bottom - top, vp->zoom) * (int64)ScaleByZoom(right - left, vp->zoom) > (int64)(180000 * ZOOM_LVL_BASE * ZOOM_LVL_BASE)) {
 		if ((bottom - top) > (right - left)) {
@@ -1813,7 +1813,7 @@ void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int botto
 	}
 }
 
-static inline void ViewportDraw(ViewPort *vp, int left, int top, int right, int bottom)
+static inline void ViewportDraw(Viewport *vp, int left, int top, int right, int bottom)
 {
 	if (right <= vp->left || bottom <= vp->top) return;
 
@@ -1860,7 +1860,7 @@ void Window::DrawViewport() const
  * @param[in,out] scroll_x Viewport X scroll.
  * @param[in,out] scroll_y Viewport Y scroll.
  */
-static inline void ClampViewportToMap(const ViewPort *vp, int *scroll_x, int *scroll_y)
+static inline void ClampViewportToMap(const Viewport *vp, int *scroll_x, int *scroll_y)
 {
 	/* Centre of the viewport is hot spot. */
 	Point pt = {
@@ -1886,7 +1886,7 @@ static inline void ClampViewportToMap(const ViewPort *vp, int *scroll_x, int *sc
  */
 void UpdateViewportPosition(Window *w)
 {
-	const ViewPort *vp = w->viewport.get();
+	const Viewport *vp = w->viewport.get();
 
 	if (w->viewport->follow_vehicle != INVALID_VEHICLE) {
 		const Vehicle *veh = Vehicle::Get(w->viewport->follow_vehicle);
@@ -1920,7 +1920,7 @@ void UpdateViewportPosition(Window *w)
 	}
 }
 
-void UpdateViewportSizeZoom(ViewPort *vp)
+void UpdateViewportSizeZoom(Viewport *vp)
 {
 	vp->dirty_blocks_per_column = CeilDiv(vp->height, vp->GetDirtyBlockHeight());
 	vp->dirty_blocks_per_row = CeilDiv(vp->width, vp->GetDirtyBlockWidth());
@@ -1938,7 +1938,7 @@ void UpdateViewportSizeZoom(ViewPort *vp)
  * @param bottom Bottom edge of area to repaint
  * @ingroup dirty
  */
-static void MarkViewportDirty(ViewPort * const vp, int left, int top, int right, int bottom)
+static void MarkViewportDirty(Viewport * const vp, int left, int top, int right, int bottom)
 {
 	/* Rounding wrt. zoom-out level */
 	right  += (1 << vp->zoom) - 1;
@@ -1988,7 +1988,7 @@ static void MarkViewportDirty(ViewPort * const vp, int left, int top, int right,
  */
 void MarkAllViewportsDirty(int left, int top, int right, int bottom, const ZoomLevel mark_dirty_if_zoomlevel_is_below)
 {
-	for (ViewPort *vp : ViewportData::cache) {
+	for (Viewport *vp : ViewportData::cache) {
 		if (vp->zoom >= mark_dirty_if_zoomlevel_is_below) continue;
 		MarkViewportDirty(vp, left, top, right, bottom);
 	}
@@ -2157,7 +2157,7 @@ void SetSelectionRed(bool b)
  * @param sign the sign to check
  * @return true if the sign was hit
  */
-static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y, const ViewportSign *sign)
+static bool CheckClickOnViewportSign(const Viewport *vp, int x, int y, const ViewportSign *sign)
 {
 	bool small = (vp->zoom >= ZOOM_LVL_OUT_16X);
 	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, vp->zoom);
@@ -2175,7 +2175,7 @@ static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y, const Vie
  * @param y Y position of click
  * @return true if the sign was hit
  */
-static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y)
+static bool CheckClickOnViewportSign(const Viewport *vp, int x, int y)
 {
 	if (_game_mode == GM_MENU) return false;
 
@@ -2347,7 +2347,7 @@ void RebuildViewportKdtree()
 }
 
 
-static bool CheckClickOnLandscape(const ViewPort *vp, int x, int y)
+static bool CheckClickOnLandscape(const Viewport *vp, int x, int y)
 {
 	Point pt = TranslateXYToTileCoord(vp, x, y);
 
@@ -2376,7 +2376,7 @@ static void PlaceObject()
 }
 
 
-bool HandleViewportClicked(const ViewPort *vp, int x, int y)
+bool HandleViewportClicked(const Viewport *vp, int x, int y)
 {
 	const Vehicle *v = CheckClickOnVehicle(vp, x, y);
 
@@ -3435,7 +3435,7 @@ void ResetObjectToPlace()
 	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 }
 
-Point GetViewportStationMiddle(const ViewPort *vp, const Station *st)
+Point GetViewportStationMiddle(const Viewport *vp, const Station *st)
 {
 	int x = TileX(st->xy) * TILE_SIZE;
 	int y = TileY(st->xy) * TILE_SIZE;

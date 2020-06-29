@@ -255,7 +255,7 @@ static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for W
  * @see ViewportData::Create()
  * @see ViewportData::~ViewportData
  */
-typedef std::vector<std::weak_ptr<ViewPort>> ViewportCacheBase;
+typedef std::vector<std::weak_ptr<Viewport>> ViewportCacheBase;
 class ViewportCache : private ViewportCacheBase {
 	friend struct ViewportData;
 
@@ -268,14 +268,14 @@ public:
 
 	private:
 		ViewportCacheBase::iterator it; ///< The base iterator to be filtered
-		std::shared_ptr<ViewPort> curr_val = nullptr; ///< The current value of the iterator
+		std::shared_ptr<Viewport> curr_val = nullptr; ///< The current value of the iterator
 
 		/**
 		 * Lock the current value of the iterator; i.e. upgrade the \c std::weak_ptr to a \c std::shared_ptr.
 		 *
 		 * @see ViewportCache::iterator::operator*
 		 */
-		inline std::shared_ptr<ViewPort> LockCurrentValue() { return (this->curr_val = this->it->lock()); }
+		inline std::shared_ptr<Viewport> LockCurrentValue() { return (this->curr_val = this->it->lock()); }
 
 	public:
 		/**
@@ -365,7 +365,7 @@ public:
 		 *
 		 * @see ViewportCache::iterator::cmp
 		 */
-		inline ViewPort * operator*() { return this->curr_val.get(); }
+		inline Viewport * operator*() { return this->curr_val.get(); }
 	};
 
 	/**
@@ -388,7 +388,7 @@ public:
 	{
 		auto begin = this->ViewportCacheBase::begin();
 		auto end = this->ViewportCacheBase::end();
-		this->erase(std::remove_if(begin, end, [](std::weak_ptr<ViewPort> _){return _.expired();}), end);
+		this->erase(std::remove_if(begin, end, [](std::weak_ptr<Viewport> _){return _.expired();}), end);
 	}
 };
 
@@ -399,7 +399,7 @@ public:
  * The actual location being shown is #scrollpos_x, #scrollpos_y.
  * @see InitializeViewport(), UpdateViewportPosition(), UpdateViewportCoordinates().
  */
-struct ViewportData : ViewPort {
+struct ViewportData : Viewport {
 	VehicleID follow_vehicle; ///< VehicleID to follow if following a vehicle, #INVALID_VEHICLE otherwise.
 	int32 scrollpos_x;        ///< Currently shown x coordinate (virtual screen coordinate of topleft corner of the viewport).
 	int32 scrollpos_y;        ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).

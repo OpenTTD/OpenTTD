@@ -240,7 +240,7 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 
 	const Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		const ViewPort *vp = w->viewport.get();
+		const Viewport *vp = w->viewport.get();
 
 		if (vp != nullptr &&
 				left < vp->virtual_left + vp->virtual_width && right > vp->virtual_left &&
