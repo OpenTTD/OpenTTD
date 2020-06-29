@@ -402,7 +402,7 @@ STR_FILE_MENU_EXIT                                              :Avsluta
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Världskarta
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Nytt vyfönster
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Nytt vyfönster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legend för Godsflöden
 STR_MAP_MENU_SIGN_LIST                                          :Skyltlista
 
@@ -884,7 +884,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}De lokala myndigheterna i {TOWN} skriver kontrakt med {STRING} för ett års exklusiva transporträttigheter!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vyfönster {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vyfönster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Byt vy
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiera huvudvyns position till detta vyfönster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Byt huvudvy

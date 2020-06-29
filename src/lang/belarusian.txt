@@ -708,7 +708,7 @@ STR_FILE_MENU_EXIT                                              :Выхад
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Мапа сусьвету
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Дадатковае вакно прагляду
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Дадатковае вакно прагляду
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Леґенда грузаперавозак
 STR_MAP_MENU_SIGN_LIST                                          :Сьпіс таблічак
 
@@ -1186,7 +1186,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Мясцовыя ўлады г. {TOWN} падпісалі кантракт з {STRING} на адзін год эксклюзыўных транспартных правоў!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вакно прагляду {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Вакно прагляду {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Капіяваць у вакно прагляду
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Скапіяваць бягучую пазыцыю ў вакно прагляду
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}У асноўнае акно

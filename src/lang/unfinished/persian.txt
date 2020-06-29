@@ -384,7 +384,7 @@ STR_FILE_MENU_EXIT                                              :خروج
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :نقشه ی دنیا
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :نمای اضافه
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :نمای اضافه
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :میزان حمل بار
 STR_MAP_MENU_SIGN_LIST                                          :لیست نشانه
 
@@ -858,7 +858,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}مقامات محلی {TOWN} قرارداد حمل و نقل انحصاری را با {STRING} به مدت یکسال امضاء کردند!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}نمای اضافه {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}نمای اضافه {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK} به نمای اضافه منتقل کن
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}موقعیت نمای اصلی را به این نمای اضافه منتقل کن
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}موقعیت نمای اضافه را به نمای اصلی منتقل کن

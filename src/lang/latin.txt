@@ -585,7 +585,7 @@ STR_FILE_MENU_EXIT                                              :Exire
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Orbis tabula
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Fenestra conspectus additicia
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Fenestra conspectus additicia
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Formula graphica onerum cursus
 STR_MAP_MENU_SIGN_LIST                                          :Index signorum
 
@@ -1065,7 +1065,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN}: Auctoritas vicinalis nuntiat {STRING} esse societatem unicam cui uno anno licet transportare intra oppidum!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Fenestra conspectus {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Fenestra conspectus {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Mutare conspectum
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Transcribere locum primarium ad hanc fenestram conspectus
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mutare conspectum primum

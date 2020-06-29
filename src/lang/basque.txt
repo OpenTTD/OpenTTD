@@ -392,7 +392,7 @@ STR_FILE_MENU_EXIT                                              :Irten
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Munduko mapa
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :lehio extra
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :lehio extra
 STR_MAP_MENU_SIGN_LIST                                          :Seinale zerrenda
 
 ############ range for town menu starts
@@ -861,7 +861,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN}ko udaletxeak {STRING}rekin urte beterako erabateko garraio-eskubideen kontratua sinatu du!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Leihoa {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Leihoa {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Leihora kopiatu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK} Leiho nagusian ikusten dena leiho honetara kopiatu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Aldatu ikuspen nagusia

@@ -402,7 +402,7 @@ STR_FILE_MENU_EXIT                                              :Afsluiten
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Wereldkaart
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra kijkvenster
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra kijkvenster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Vrachtstroomlegende
 STR_MAP_MENU_SIGN_LIST                                          :Bordjeslijst
 
@@ -884,7 +884,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Gemeentebestuur van {TOWN} tekent contract met {STRING} voor een jaar exclusieve transportrechten!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Kijkvenster {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Kijkvenster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Verander kijkvenster
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopieer de locatie van het algemene scherm naar dit kijkvenster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Verander algemeen scherm

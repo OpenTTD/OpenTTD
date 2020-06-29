@@ -372,7 +372,7 @@ STR_FILE_MENU_EXIT                                              :Излез
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Мапа на светот
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :екстра прозорец
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :екстра прозорец
 STR_MAP_MENU_SIGN_LIST                                          :Си листа
 
 ############ range for town menu starts

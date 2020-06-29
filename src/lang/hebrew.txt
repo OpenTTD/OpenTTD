@@ -409,7 +409,7 @@ STR_FILE_MENU_EXIT                                              :יציאה
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :מפת העולם
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :השקפה נוספת
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :השקפה נוספת
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :מקרא זרימת מטענים
 STR_MAP_MENU_SIGN_LIST                                          :רשימת שלטים
 
@@ -887,7 +887,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}הרשות המקומית של {TOWN} חותמת חוזה עם {STRING} המעניק זכויות תעבורה בלעדיות למשך שנה!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}השקפה {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}השקפה {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}העתק להשקפה
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}העתק את מיקום חלון התצוגה הראשי לחלון תצוגה זה
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}עבור למיקום שנמצא בחלון התצוגה

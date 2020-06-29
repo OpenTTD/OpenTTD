@@ -402,7 +402,7 @@ STR_FILE_MENU_EXIT                                              :退出
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :缩略地图
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :额外视点
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :额外视点
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :客货流图标
 STR_MAP_MENU_SIGN_LIST                                          :标志列表
 
@@ -884,7 +884,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN}一年期的运输专营权已经被{STRING}购买!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}视点 {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}视点 {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}将主视角复制到视点
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}将额外视点移动到屏幕中心的位置
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}移动主视角到该视点

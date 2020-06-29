@@ -395,7 +395,7 @@ STR_FILE_MENU_EXIT                                              :Scoir
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Léarscáil den domhan
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Fuinneog amhairc bhreise
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Fuinneog amhairc bhreise
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Eochair an tSreafa Lastais
 STR_MAP_MENU_SIGN_LIST                                          :Liosta na gcomharthaí
 
@@ -869,7 +869,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Síníonn údarás áitiúil {TOWN} conradh le {STRING} le haghaidh cearta eisiacha iompair ar feadh bliana!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Amharc {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Amharc {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Cóipeáil chuig amharc
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Cóipeáil suíomh an phríomh-amhairc chuig an amharc seo
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Greamaigh ón amharc

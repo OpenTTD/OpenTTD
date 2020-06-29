@@ -395,7 +395,7 @@ STR_FILE_MENU_EXIT                                              :Gadael
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Map o'r Byd
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ffenestr Olygfa Newydd
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ffenestr Olygfa Newydd
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Allwedd Llif Cargo
 STR_MAP_MENU_SIGN_LIST                                          :Rhestr Arwyddion
 
@@ -870,7 +870,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Awdurdog lleol {TOWN} yn arwyddo cytundeb cyfyngol gyda {STRING} am flwyddyn o hawliau cludiant!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ffenestr Olygfa{COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Ffenestr Olygfa{COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copïo i Ffenestr Olygfa
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copïo lleoliad y golwg byd-eang i'r ffenestr olygfa
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gludo o'r Ffenestr Olygfa

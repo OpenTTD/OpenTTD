@@ -498,7 +498,7 @@ STR_FILE_MENU_EXIT                                              :Izlaz
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Karta svijeta
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Dodatni pogled
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Dodatni pogled
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legenda protoka tereta
 STR_MAP_MENU_SIGN_LIST                                          :Popis znakova
 
@@ -980,7 +980,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Lokalna vlast {TOWN} potpisuje ugovor sa {STRING} za jednogodišnja ekskluzivna prava transporta!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini pogled {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Mini pogled {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Promijeni pogled
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiraj lokaciju globalnog pogleda u ovaj mini pogled
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Promijeni glavni pogled

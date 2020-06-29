@@ -403,7 +403,7 @@ STR_FILE_MENU_EXIT                                              :Verlaat
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kaart van wêreld
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra toonvenster
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ekstra toonvenster
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Vragverspreidingsleutel
 STR_MAP_MENU_SIGN_LIST                                          :Teken lys
 
@@ -885,7 +885,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK} die dorpsraad van {TOWN} het 'n kontrak met {STRING} aan gegaan vir een jaaar se eksklusiewe vervoer regte
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Toonvenster {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Toonvenster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Verander toonvenster
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Dupliseer die ligging van die hooftoonvenster na die toonvenster
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Verander hoofaansig

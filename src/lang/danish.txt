@@ -402,7 +402,7 @@ STR_FILE_MENU_EXIT                                              :Afslut
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Kort over verden
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Nyt lokalitetsvindue
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Nyt lokalitetsvindue
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Laststrømforklaring
 STR_MAP_MENU_SIGN_LIST                                          :Liste over skilte
 
@@ -884,7 +884,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Myndighederne i {TOWN} skriver kontrakt med {STRING} på et års eksklusive transportrettigheder!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalitetsvindue {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Lokalitetsvindue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Hent hovedvisning
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Bevæg denne visning til samme sted som hovedvisningen
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Flyt hovedvisning

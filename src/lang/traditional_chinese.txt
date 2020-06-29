@@ -395,7 +395,7 @@ STR_FILE_MENU_EXIT                                              :離開
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :世界地圖
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :打開新視野
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :打開新視野
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :貨物流程索引
 STR_MAP_MENU_SIGN_LIST                                          :標誌清單
 
@@ -871,7 +871,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} 的地方政府與 {STRING} 簽訂了一年的專屬運輸權合約！
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}視野 {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}視野 {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}複製至本視野
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}將主視野的位置複製到此視窗
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}貼上至主視野

@@ -404,7 +404,7 @@ STR_FILE_MENU_EXIT                                              :Iziet
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Pasaules karte
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Papildu skatvieta
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Papildu skatvieta
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kravu plūsmas apzīmējumi
 STR_MAP_MENU_SIGN_LIST                                          :Zīmju saraksts
 
@@ -886,7 +886,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} vietējā pašvaldība panāk vienošanos ar {STRING} par pārvadājumu izņēmuma tiesībām uz vienu gadu!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Skatvieta {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Skatvieta {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Mainīt skatvietu
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopēt galvenā skata atrašanās vietu uz šo skatvietu
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mainīt galveno skatu

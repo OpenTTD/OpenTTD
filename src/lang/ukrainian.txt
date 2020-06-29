@@ -527,7 +527,7 @@ STR_FILE_MENU_EXIT                                              :Вихід
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта світу
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Додаткове вікно
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Додаткове вікно
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Легенда вантажопотоку
 STR_MAP_MENU_SIGN_LIST                                          :Список позначок
 
@@ -1011,7 +1011,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Адміністрація м. {TOWN} підписала угоду з "{STRING}" щодо ексклюзивних транспортних прав строком на один рік!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Вікно {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Вікно {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Змінити вікно
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Копіювати місцеположення з основного екрану до цього вікна
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Вставити в головне вікно

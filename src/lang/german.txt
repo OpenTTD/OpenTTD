@@ -398,7 +398,7 @@ STR_FILE_MENU_EXIT                                              :OpenTTD beenden
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Weltkarte
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Zusatzansicht
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Zusatzansicht
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Frachtverbindungen
 STR_MAP_MENU_SIGN_LIST                                          :Schilderliste
 
@@ -878,7 +878,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Stadtverwaltung von {TOWN} unterzeichnet Vertrag mit {STRING} über ein Jahr währende exklusive Transportrechte!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ansicht {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Ansicht {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Zusatzansicht ändern
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Aktuelle Position der Hauptansicht in diese Zusatzansicht kopieren
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Hauptansicht ändern
