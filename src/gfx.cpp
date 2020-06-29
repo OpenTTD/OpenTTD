@@ -1443,39 +1443,37 @@ static void DrawDirtyViewport(uint occlusion, int left, int top, int right, int 
 {
 	for(; occlusion < _dirty_viewport_occlusions.size(); occlusion++) {
 		const Rect &occ = _dirty_viewport_occlusions[occlusion];
-		if (right > occ.left &&
-				bottom > occ.top &&
-				left < occ.right &&
-				top < occ.bottom) {
-			/* occlusion and draw rectangle intersect with each other */
-			int x;
+		if (right <= occ.left || bottom <= occ.top || left >= occ.right || top >= occ.bottom) {
+			continue;
+		}
 
-			if (left < (x = occ.left)) {
-				DrawDirtyViewport(occlusion + 1, left, top, x, bottom);
-				DrawDirtyViewport(occlusion, x, top, right, bottom);
-				return;
-			}
-
-			if (right > (x = occ.right)) {
-				DrawDirtyViewport(occlusion, left, top, x, bottom);
-				DrawDirtyViewport(occlusion + 1, x, top, right, bottom);
-				return;
-			}
-
-			if (top < (x = occ.top)) {
-				DrawDirtyViewport(occlusion + 1, left, top, right, x);
-				DrawDirtyViewport(occlusion, left, x, right, bottom);
-				return;
-			}
-
-			if (bottom > (x = occ.bottom)) {
-				DrawDirtyViewport(occlusion, left, top, right, x);
-				DrawDirtyViewport(occlusion + 1, left, x, right, bottom);
-				return;
-			}
-
+		/* occlusion and draw rectangle intersect with each other */
+		int middle;
+		if (left < (middle = occ.left)) {
+			DrawDirtyViewport(occlusion + 1, left, top, middle, bottom);
+			DrawDirtyViewport(occlusion, middle, top, right, bottom);
 			return;
 		}
+
+		if (right > (middle = occ.right)) {
+			DrawDirtyViewport(occlusion, left, top, middle, bottom);
+			DrawDirtyViewport(occlusion + 1, middle, top, right, bottom);
+			return;
+		}
+
+		if (top < (middle = occ.top)) {
+			DrawDirtyViewport(occlusion + 1, left, top, right, middle);
+			DrawDirtyViewport(occlusion, left, middle, right, bottom);
+			return;
+		}
+
+		if (bottom > (middle = occ.bottom)) {
+			DrawDirtyViewport(occlusion, left, top, right, middle);
+			DrawDirtyViewport(occlusion + 1, left, middle, right, bottom);
+			return;
+		}
+
+		return;
 	}
 
 	if (_game_mode == GM_MENU) {
@@ -1711,45 +1709,41 @@ void UnsetDirtyBlocks(int left, int top, int right, int bottom)
 
 	for (uint i = 0; i < _dirty_blocks.size(); i++) {
 		Rect &r = _dirty_blocks[i];
-		if (left < r.right &&
-				right > r.left &&
-				top < r.bottom &&
-				bottom > r.top) {
-			/* overlap of some sort */
-			if (left <= r.left &&
-					right >= r.right &&
-					top <= r.top &&
-					bottom >= r.bottom) {
-				/* dirty rect entirely in subtraction area */
-				r = _dirty_blocks.back();
-				_dirty_blocks.pop_back();
-				i--;
-				continue;
-			}
-			if (r.left < left) {
-				Rect n = { left, r.top, r.right, r.bottom };
-				r.right = left;
-				_dirty_blocks.push_back(n);
-				continue;
-			}
-			if (r.right > right) {
-				Rect n = { r.left, r.top, right, r.bottom };
-				r.left = right;
-				_dirty_blocks.push_back(n);
-				continue;
-			}
-			if (r.top < top) {
-				Rect n = { r.left, top, r.right, r.bottom };
-				r.bottom = top;
-				_dirty_blocks.push_back(n);
-				continue;
-			}
-			if (r.bottom > bottom) {
-				Rect n = { r.left, r.top, r.right, bottom };
-				r.top = bottom;
-				_dirty_blocks.push_back(n);
-				continue;
-			}
+		if (left >= r.right || right <= r.left || top >= r.bottom || bottom <= r.top) {
+			continue;
+		}
+		/* overlap of some sort */
+		if (left <= r.left && right >= r.right && top <= r.top && bottom >= r.bottom) {
+			/* dirty rect entirely in subtraction area */
+			r = _dirty_blocks.back();
+			_dirty_blocks.pop_back();
+			i--;
+			continue;
+		}
+		if (r.left < left) {
+			Rect n = { left, r.top, r.right, r.bottom };
+			r.right = left;
+			_dirty_blocks.push_back(n);
+			continue;
+		}
+		if (r.right > right) {
+			Rect n = { r.left, r.top, right, r.bottom };
+			r.left = right;
+			_dirty_blocks.push_back(n);
+			continue;
+		}
+		if (r.top < top) {
+			Rect n = { r.left, top, r.right, r.bottom };
+			r.bottom = top;
+			_dirty_blocks.push_back(n);
+			continue;
+		}
+		if (r.bottom > bottom) {
+			/* overlap, split at bottom edge. */
+			Rect n = { r.left, r.top, r.right, bottom };
+			r.top = bottom;
+			_dirty_blocks.push_back(n);
+			continue;
 		}
 	}
 }
@@ -1770,54 +1764,46 @@ static void SplitDirtyBlocks(uint start, int left, int top, int right, int botto
 
 	for (; start < _dirty_blocks.size(); start++) {
 		Rect &r = _dirty_blocks[start];
-		if (left <= r.right &&
-				right >= r.left &&
-				top <= r.bottom &&
-				bottom >= r.top) {
-			/* overlap or contact of some sort */
-			if (left >= r.left &&
-					right <= r.right &&
-					top >= r.top &&
-					bottom <= r.bottom) {
-				/* entirely contained by existing */
-				return;
-			}
-			if (left <= r.left &&
-					right >= r.right &&
-					top <= r.top &&
-					bottom >= r.bottom) {
-				/* entirely contains existing */
-				r = _dirty_blocks.back();
-				_dirty_blocks.pop_back();
-				start--;
-				continue;
-			}
-			if (left < r.left && right > r.left) {
-				int middle = r.left;
-				SplitDirtyBlocks(start, left, top, middle, bottom);
-				SplitDirtyBlocks(start, middle, top, right, bottom);
-				return;
-			}
-			if (right > r.right && left < r.right) {
-				int middle = r.right;
-				SplitDirtyBlocks(start, left, top, middle, bottom);
-				SplitDirtyBlocks(start, middle, top, right, bottom);
-				return;
-			}
+		if (left > r.right || right < r.left || top > r.bottom || bottom < r.top) {
+			continue;
+		}
+		/* overlap or contact of some sort */
+		if (left >= r.left && right <= r.right && top >= r.top && bottom <= r.bottom) {
+			/* entirely contained by existing  */
+			return;
+		}
+		if (left <= r.left && right >= r.right && top <= r.top && bottom >= r.bottom) {
+			/* entirely contains existing */
+			r = _dirty_blocks.back();
+			_dirty_blocks.pop_back();
+			start--;
+			continue;
+		}
+		if (left < r.left && right > r.left) {
+			int middle = r.left;
+			SplitDirtyBlocks(start, left, top, middle, bottom);
+			SplitDirtyBlocks(start, middle, top, right, bottom);
+			return;
+		}
+		if (right > r.right && left < r.right) {
+			int middle = r.right;
+			SplitDirtyBlocks(start, left, top, middle, bottom);
+			SplitDirtyBlocks(start, middle, top, right, bottom);
+			return;
+		}
 
-			if (top < r.top && bottom > r.top) {
-				int middle = r.top;
-				SplitDirtyBlocks(start, left, top, right, middle);
-				SplitDirtyBlocks(start, left, middle, right, bottom);
-				return;
-			}
+		if (top < r.top && bottom > r.top) {
+			int middle = r.top;
+			SplitDirtyBlocks(start, left, top, right, middle);
+			SplitDirtyBlocks(start, left, middle, right, bottom);
+			return;
+		}
 
-			if (bottom > r.bottom && top < r.bottom) {
-				int middle = r.bottom;
-				SplitDirtyBlocks(start, left, top, right, middle);
-				SplitDirtyBlocks(start, left, middle, right, bottom);
-				return;
-			}
+		if (bottom > r.bottom && top < r.bottom) {
+			int middle = r.bottom;
+			SplitDirtyBlocks(start, left, top, right, middle);
+			SplitDirtyBlocks(start, left, middle, right, bottom);
+			return;
 		}
 	}
 	_dirty_blocks.push_back({ left, top, right, bottom });
