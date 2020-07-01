@@ -308,91 +308,83 @@ int DivideApprox(int a, int b);
 
 /**
  * Computes ceil(a / b) for non-negative a and b.
- * @param a Numerator
- * @param b Denominator
- * @return Quotient, rounded up
+ * @param a Numerator.
+ * @param b Denominator.
+ * @return Quotient, rounded up.
  */
-static inline uint CeilDiv(uint a, uint b)
+static inline uint CeilDiv(const uint a, const uint b)
 {
 	return (a + b - 1) / b;
 }
 
 /**
  * Computes ceil(a / b) * b for non-negative a and b.
- * @param a Numerator
- * @param b Denominator
+ * @param a Numerator.
+ * @param b Denominator.
  * @return a rounded up to the nearest multiple of b.
  */
-static inline uint Ceil(uint a, uint b)
+static inline uint Ceil(const uint a, const uint b)
 {
 	return CeilDiv(a, b) * b;
 }
 
 /**
- * Computes round(a / b) for signed a and unsigned b.
- * @param a Numerator
- * @param b Denominator
- * @return Quotient, rounded to nearest
+ * Computes round(a / b) for integer a and positive integer b.
+ * @param a Numerator.
+ * @param b Denominator.
+ * @return Quotient, rounded to nearest.
  */
-static inline int RoundDivSU(int a, uint b)
+static inline int RoundDivSU(const int a, const uint b)
 {
-	const int _b = static_cast<int>(b);
+	const int b_ = static_cast<int>(b);
 	if (a > 0) {
 		/* 0.5 is rounded to 1 */
-		return (a + _b / 2) / _b;
+		return (a + b_ / 2) / b_;
 	} else {
 		/* -0.5 is rounded to 0 */
-		return (a - (_b - 1) / 2) / _b;
+		return (a - (b_ - 1) / 2) / b_;
 	}
 }
 
 /**
- * Computes (a / b) rounded away from zero.
- * @param a Numerator
- * @param b Denominator
- * @return Quotient, rounded away from zero
+ * Computes (a / b) rounded away from zero for integer a and positive integer b.
+ * @param a Numerator.
+ * @param b Denominator.
+ * @return Quotient, rounded away from zero.
  */
-static inline int DivAwayFromZero(int a, uint b)
+static inline int DivAwayFromZero(const int a, const uint b)
 {
-	const int _b = static_cast<int>(b);
+	const int b_ = static_cast<int>(b);
 	if (a > 0) {
-		return (a + _b - 1) / _b;
+		return (a + b_ - 1) / b_;
 	} else {
 		/* Note: Behaviour of negative numerator division is truncation toward zero. */
-		return (a - _b + 1) / _b;
+		return (a - b_ + 1) / b_;
 	}
 }
 
 /**
- * Computes a / b rounded towards negative infinity for signed a and unsigned b.
- * @param a Numerator
- * @param b Denominator
- * @return Quotient, rounded towards negative infinity
+ * Computes a / b rounded towards negative infinity for integer a and positive integer b.
+ * @param a Numerator.
+ * @param b Denominator.
+ * @return Quotient, rounded towards negative infinity.
  */
-template <typename S, typename U>
-static inline S DivTowardsNegativeInf(S a, U b)
+static inline int DivTowardsNegativeInf(const int a, const uint b)
 {
-	assert_compile(std::is_arithmetic<S>::value);
-	assert_compile(std::is_arithmetic<U>::value);
-	if (!std::is_unsigned<U>::value) assert(b >= 0);
-	const S _b = static_cast<S>(b);
-	return (a / _b) - (a % _b < 0 ? 1 : 0);
+	const int b_ = static_cast<int>(b);
+	return (a / b_) - (a % b_ < 0 ? 1 : 0);
 }
 
 /**
- * Computes a / b rounded towards positive infinity for signed a and unsigned b.
- * @param a Numerator
- * @param b Denominator
- * @return Quotient, rounded towards positive infinity
+ * Computes a / b rounded towards positive infinity for integer a and positive integer b.
+ * @param a Numerator.
+ * @param b Denominator.
+ * @return Quotient, rounded towards positive infinity.
  */
-template <typename S, typename U>
-static inline S DivTowardsPositiveInf(S a, U b)
+static inline int DivTowardsPositiveInf(const int a, const uint b)
 {
-	assert_compile(std::is_arithmetic<S>::value);
-	assert_compile(std::is_arithmetic<U>::value);
-	if (!std::is_unsigned<U>::value) assert(b >= 0);
-	const S _b = static_cast<S>(b);
-	return (a / _b) + (a % _b > 0 ? 1 : 0);
+	const int b_ = static_cast<int>(b);
+	return (a / b_) + (a % b_ > 0 ? 1 : 0);
 }
 
 uint32 IntSqrt(uint32 num);

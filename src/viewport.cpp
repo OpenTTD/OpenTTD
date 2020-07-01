@@ -1255,8 +1255,8 @@ static void ViewportAddLandscape()
 	 *  - Right column is column of upper_right (rounded up) and one column to the right.
 	 * Note: Integer-division does not round down for negative numbers, so ensure rounding with another increment/decrement.
 	 */
-	int left_column = DivTowardsNegativeInf(upper_left.y - upper_left.x, (int)TILE_SIZE) - 1;
-	int right_column = DivTowardsPositiveInf(upper_right.y - upper_right.x, (int)TILE_SIZE) + 1;
+	int left_column = DivTowardsNegativeInf(upper_left.y - upper_left.x, TILE_SIZE) - 1;
+	int right_column = DivTowardsPositiveInf(upper_right.y - upper_right.x, TILE_SIZE) + 1;
 
 	int potential_bridge_height = ZOOM_LVL_BASE * TILE_HEIGHT * _settings_game.construction.max_bridge_height;
 
@@ -1264,7 +1264,7 @@ static void ViewportAddLandscape()
 	 * The first row that could possibly be visible is the row above upper_left (if it is at height 0).
 	 * Due to integer-division not rounding down for negative numbers, we need another decrement.
 	 */
-	int row = DivTowardsNegativeInf(upper_left.y + upper_left.x, (int)TILE_SIZE) - 1;
+	int row = DivTowardsNegativeInf(upper_left.y + upper_left.x, TILE_SIZE) - 1;
 	bool last_row = false;
 	for (; !last_row; row++) {
 		last_row = true;
