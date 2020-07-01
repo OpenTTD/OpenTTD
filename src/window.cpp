@@ -876,60 +876,98 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
  * @param bottom Bottom edge of the rectangle that should be repainted
  * @param gfx_dirty Whether to mark gfx dirty
  */
-void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom, bool gfx_dirty)
+void DrawOverlappedWindow(Window *w, const int left, const int top, const int right, const int bottom, const bool gfx_dirty)
 {
-	const Window *v;
-	FOR_ALL_WINDOWS_FROM_BACK_FROM(v, w->z_front) {
-		if (MayBeShown(v) &&
-				right > v->left &&
-				bottom > v->top &&
-				left < v->left + v->width &&
-				top < v->top + v->height) {
-			/* v and rectangle intersect with each other */
-			int x;
-
-			if (left < (x = v->left)) {
-				DrawOverlappedWindow(w, left, top, x, bottom, gfx_dirty);
-				DrawOverlappedWindow(w, x, top, right, bottom, gfx_dirty);
-				return;
+	std::function<void(Window const * const, int, int, int, int)> draw_overlapped;
+	draw_overlapped = [&w, &gfx_dirty, &draw_overlapped](Window const * const w_from, int left, int top, int right, int bottom){
+		const Window *v;
+		FOR_ALL_WINDOWS_FROM_BACK_FROM(v, w_from) {
+			if (!MayBeShown(v)) {
+				/* Window 'v' is not visible, no occulsion possible. */
+				continue;
 			}
 
-			if (right > (x = v->left + v->width)) {
-				DrawOverlappedWindow(w, left, top, x, bottom, gfx_dirty);
-				DrawOverlappedWindow(w, x, top, right, bottom, gfx_dirty);
-				return;
+			/* Cache the edges of window 'v' */
+			const int v_left = v->left;
+			const int v_top = v->top;
+			const int v_right = v->left + v->width;
+			const int v_bottom = v->top + v->height;
+
+			if (right <= v_left || bottom <= v_top || left >= v_right || top >= v_bottom) {
+				/* Window 'v' and the dirty part of window 'w' do not intersect with each other */
+				continue;
 			}
 
-			if (top < (x = v->top)) {
-				DrawOverlappedWindow(w, left, top, right, x, gfx_dirty);
-				DrawOverlappedWindow(w, left, x, right, bottom, gfx_dirty);
-				return;
+			/*
+			 * (r >  vl && b >  vt && l <  vr && t <  vb)
+			 */
+			if (left < v_left) {
+				/* Window 'v' occludes window 'w'; split at left edge.
+				 * Draw the non-occluded part recursively, then fall through to trim the rest of the occluded parts.
+				 */
+				draw_overlapped(v->z_front, left, top, v_left, bottom);
+				left = v_left;
 			}
 
-			if (bottom > (x = v->top + v->height)) {
-				DrawOverlappedWindow(w, left, top, right, x, gfx_dirty);
-				DrawOverlappedWindow(w, left, x, right, bottom, gfx_dirty);
-				return;
+			/*
+			 * (r >  vl && b >  vt && l <  vr && t <  vb) && (l >= vl)
+			 * ==>
+			 * (vl <= l <  r && vt <  b && l <  vr && t <  vb)
+			 */
+			if (right > v_right) {
+				/* Window 'v' occludes window 'w'; split at right edge. */
+				draw_overlapped(v->z_front, v_right, top, right, bottom);
+				right = v_right;
 			}
 
+			/*
+			 * (vl <= l <  r && vt <  b && l <  vr && t <  vb) && (r <= vr)
+			 * ==>
+			 * (vl <= l <  r <= vr && vt <  b && t <  vb)
+			 */
+			if (top < v_top) {
+				/* Window 'v' occludes window 'w'; split at top edge. */
+				draw_overlapped(v->z_front, left, top, right, v_top);
+				top = v_top;
+			}
+
+			/*
+			 * (vl <= l <  r <= vr && vt <  b && t <  vb) && (t >= vt)
+			 * ==>
+			 * (vl <= l <  r <= vr && vt <= t <  b && t <  vb)
+			 */
+			if (bottom > v_bottom) {
+				/* Window 'v' occludes window 'w'; split at bottom edge. */
+				draw_overlapped(v->z_front, left, v_bottom, right, bottom);
+				bottom = v_bottom;
+			}
+
+			/*
+			 * (vl <= l <  r <= vr && vt <= t <  b && t <  vb) && (b <= vb)
+			 * ==>
+			 * (vl <= l <  r <= vr && vt <= t <  b <= vb)
+			 */
+
+			/* Window 'v' completely occludes (the dirty part of) window 'w' */
 			return;
 		}
-	}
 
-	/* Setup blitter, and dispatch a repaint event to window *wz */
-	DrawPixelInfo *dp = _cur_dpi;
-	dp->width = right - left;
-	dp->height = bottom - top;
-	dp->left = left - w->left;
-	dp->top = top - w->top;
-	dp->pitch = _screen.pitch;
-	dp->dst_ptr = BlitterFactory::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
-	dp->zoom = ZOOM_LVL_NORMAL;
-	w->OnPaint();
-	if (gfx_dirty) {
-		VideoDriver::GetInstance()->MakeDirty(left, top, right - left, bottom - top);
-		UnsetDirtyBlocks(left, top, right, bottom);
-	}
+		/* Setup blitter, and dispatch a repaint event to window *wz */
+		DrawPixelInfo *dp = _cur_dpi;
+		dp->width = right - left;
+		dp->height = bottom - top;
+		dp->left = left - w->left;
+		dp->top = top - w->top;
+		dp->pitch = _screen.pitch;
+		dp->dst_ptr = BlitterFactory::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
+		dp->zoom = ZOOM_LVL_NORMAL;
+		w->OnPaint();
+		if (gfx_dirty) {
+			VideoDriver::GetInstance()->MakeDirty(left, top, right - left, bottom - top);
+			UnsetDirtyBlocks(left, top, right, bottom);
+		}
+	};
+	draw_overlapped(w->z_front, left, top, right, bottom);
 }
 
 /**
