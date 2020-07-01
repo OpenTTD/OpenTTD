@@ -1021,6 +1021,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexické peso (
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nový taiwanský dolar (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Čínský renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongský dolar (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indická rupie (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Silniční vozidla jezdí
@@ -2254,6 +2255,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Špatné
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server je plný
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Jsi blokován serverem
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Byl jsi vyhozen ze hry
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Důvod: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Používání cheatů není na tomto serveru povoleno
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Posíláte serveru příliš mnoho příkazů
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Vložení hesla ti trvalo příliš dlouho
@@ -2313,6 +2315,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} po
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Dal(a) jsi {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukončil relaci
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server se restartuje...{}Počkejte prosím...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} byl vyhozen. Důvod: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Součásti ke stažení
