@@ -1843,7 +1843,13 @@ static void SplitDirtyBlocks(uint start, int left, int top, int right, int botto
 			return;
 		}
 
-		/* New rectangle shares exactly one side with existing rectangle; possible merging opportunity. */
+		/* This point can only be reached iff the new rectangle shares exactly one edge with
+		 * the existing rectangle. This is where code to merge the rectangles could be inserted,
+		 * if there is likely to be a tangible benefit to doing so.
+		 *
+		 * If significant refactoring were to occur, one idea could be to merge rectangles if it
+		 * means that an entire widget can subsequently be redrawn in a single pass.
+		 */
 	}
 
 	/* Append new non-overlapping rectangle. */
