@@ -1,13 +1,18 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(settingsgen)
+if (NOT HOST_BINARY_DIR)
+    project(settingsgen)
 
-set(sourcefiles
-        settingsgen.cpp
-        ../core/alloc_func.cpp
-        ../misc/getoptdata.cpp
-        ../ini_load.cpp
-        ../string.cpp
-)
-add_definitions(-DSETTINGSGEN)
-add_executable(settingsgen ${sourcefiles})
+    set(sourcefiles
+            settingsgen.cpp
+            ../core/alloc_func.cpp
+            ../misc/getoptdata.cpp
+            ../ini_load.cpp
+            ../string.cpp
+    )
+    add_definitions(-DSETTINGSGEN)
+    add_executable(settingsgen ${sourcefiles})
+
+    export(TARGETS settingsgen FILE ${CMAKE_BINARY_DIR}/settingsgen.cmake)
+    add_dependencies(tools settingsgen)
+endif()

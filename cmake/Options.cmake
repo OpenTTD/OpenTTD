@@ -35,6 +35,8 @@ function(set_directory_options)
         set(GLOBAL_DIR "${DEFAULT_GLOBAL_DIR}" CACHE STRING "Global directory")
         message(STATUS "Detecting Global Data directory - ${GLOBAL_DIR}")
     endif()
+
+    set(HOST_BINARY_DIR "" CACHE PATH "Full path to native cmake build directory")
 endfunction()
 
 # Set some generic options that influence what is being build.

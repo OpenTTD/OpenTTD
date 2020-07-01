@@ -59,6 +59,10 @@ set(LANG_SOURCE_FILES
 
 set(LANG_BINARY_DIR ${CMAKE_BINARY_DIR}/lang)
 
+if (HOST_BINARY_DIR)
+    include(${HOST_BINARY_DIR}/strgen.cmake)
+endif()
+
 # Walk over all the (finished) language files, and generate a command to compile them
 foreach(LANG_SOURCE_FILE IN LISTS LANG_SOURCE_FILES)
     get_filename_component(LANG_SOURCE_FILE_NAME_WE ${LANG_SOURCE_FILE} NAME_WE)
