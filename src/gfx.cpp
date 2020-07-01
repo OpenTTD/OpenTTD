@@ -1451,30 +1451,33 @@ static void DrawDirtyViewport(uint occlusion, int left, int top, int right, int 
 			continue;
 		}
 
-		int middle;
-		if (left < (middle = occ.left)) {
+		if (left < occ.left) {
 			/* Occlusion intersects with dirty rect; split at left edge. */
+			int middle = occ.left;
 			DrawDirtyViewport(occlusion + 1, left, top, middle, bottom);
 			DrawDirtyViewport(occlusion, middle, top, right, bottom);
 			return;
 		}
 
-		if (right > (middle = occ.right)) {
+		if (right > occ.right) {
 			/* Occlusion intersects with dirty rect; split at right edge. */
+			int middle = occ.right;
 			DrawDirtyViewport(occlusion, left, top, middle, bottom);
 			DrawDirtyViewport(occlusion + 1, middle, top, right, bottom);
 			return;
 		}
 
-		if (top < (middle = occ.top)) {
+		if (top < occ.top) {
 			/* Occlusion intersects with dirty rect; split at top edge. */
+			int middle = occ.top;
 			DrawDirtyViewport(occlusion + 1, left, top, right, middle);
 			DrawDirtyViewport(occlusion, left, middle, right, bottom);
 			return;
 		}
 
-		if (bottom > (middle = occ.bottom)) {
+		if (bottom > occ.bottom) {
 			/* Occlusion intersects with dirty rect; split at bottom edge. */
+			int middle = occ.bottom;
 			DrawDirtyViewport(occlusion, left, top, right, middle);
 			DrawDirtyViewport(occlusion + 1, left, middle, right, bottom);
 			return;
