@@ -127,6 +127,9 @@ add_custom_target(find_version
         BYPRODUCTS ${GENERATED_SOURCE_FILES}
 )
 
+# An empty target for the tools
+add_custom_target(tools)
+
 include(SourceList)
 include(Endian)
 add_endian_definition()

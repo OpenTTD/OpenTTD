@@ -11,6 +11,10 @@ set(TABLE_INI_SOURCE_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/window_settings.ini
 )
 
+if (HOST_BINARY_DIR)
+    include(${HOST_BINARY_DIR}/settingsgen.cmake)
+endif()
+
 # Generate a command and target to create the settings table
 add_custom_command_timestamp(OUTPUT ${TABLE_BINARY_DIR}/settings.h
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TABLE_BINARY_DIR}
