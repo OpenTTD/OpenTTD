@@ -88,11 +88,8 @@
 #include "command_func.h"
 #include "network/network_func.h"
 #include "framerate_type.h"
-#include "depot_base.h"
-#include "tunnelbridge_map.h"
-#include "gui.h"
 
-#include <map>
+//#include <map>
 
 #include "table/strings.h"
 #include "table/string_colours.h"
@@ -183,27 +180,6 @@ struct ViewportDrawer {
 static void MarkViewportDirty(Viewport * const vp, int left, int top, int right, int bottom);
 
 static ViewportDrawer _vd;
-
-uint _vp_route_step_width = 0;
-uint _vp_route_step_height_top = 0;
-uint _vp_route_step_height_middle = 0;
-uint _vp_route_step_height_bottom = 0;
-SubSprite _vp_route_step_subsprite;
-
-struct DrawnPathRouteTileLine {
-	TileIndex from_tile;
-	TileIndex to_tile;
-
-	bool operator==(const DrawnPathRouteTileLine &other) const
-	{
-		return this->from_tile == other.from_tile && this->to_tile == other.to_tile;
-	}
-
-	bool operator!=(const DrawnPathRouteTileLine &other) const
-	{
-		return !(*this == other);
-	}
-};
 
 TileHighlightData _thd;
 static TileInfo *_cur_ti;
