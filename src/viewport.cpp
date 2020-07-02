@@ -1524,7 +1524,7 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 	}
 
 	for (Viewport *vp : ViewportData::cache) {
-		if ( vp->zoom > maxzoom) continue;
+		if (vp->zoom > maxzoom) continue;
 		Rect &zl = zoomlevels[vp->zoom];
 		MarkViewportDirty(vp, zl.left, zl.top, zl.right, zl.bottom);
 	}
