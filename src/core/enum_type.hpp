@@ -29,13 +29,21 @@
 
 /** Operators to allow to work with enum as with type safe bit set in C++ */
 # define DECLARE_ENUM_AS_BIT_SET(mask_t) \
-	inline mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 | m2);} \
-	inline mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 & m2);} \
-	inline mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 ^ m2);} \
+	inline mask_t operator | (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 | m2);} /* union */ \
+	inline mask_t operator & (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 & m2);} /* intersect */ \
+	inline mask_t operator ^ (mask_t m1, mask_t m2) {return (mask_t)((std::underlying_type<mask_t>::type)m1 ^ m2);} /* toggle */ \
 	inline mask_t& operator |= (mask_t& m1, mask_t m2) {m1 = m1 | m2; return m1;} \
 	inline mask_t& operator &= (mask_t& m1, mask_t m2) {m1 = m1 & m2; return m1;} \
 	inline mask_t& operator ^= (mask_t& m1, mask_t m2) {m1 = m1 ^ m2; return m1;} \
-	inline mask_t operator ~(mask_t m) {return (mask_t)(~(std::underlying_type<mask_t>::type)m);}
+	inline mask_t operator ~(mask_t m) {return (mask_t)(~(std::underlying_type<mask_t>::type)m);} \
+	inline mask_t operator + (mask_t m1, mask_t m2) {return m1 | m2;} /* set bits, or union */ \
+	inline mask_t operator - (mask_t m1, mask_t m2) {return m1 & ~m2;} /* clear bits, or difference */ \
+	inline mask_t& operator += (mask_t& m1, mask_t m2) {m1 = m1 + m2; return m1;} \
+	inline mask_t& operator -= (mask_t& m1, mask_t m2) {m1 = m1 - m2; return m1;} \
+	inline bool any(mask_t& m1, mask_t& m2) {return (m1 & m2) != (mask_t)0;} \
+	inline bool all(mask_t& m1, mask_t& m2) {return (m1 & m2) == m2;} \
+	inline bool none(mask_t& m1, mask_t& m2) {return (m1 & m2) == (mask_t)0;} \
+	inline bool test(mask_t& m1, mask_t& m2) {return any(m1, m2);}
 
 
 /**
