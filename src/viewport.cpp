@@ -181,29 +181,6 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
 
 static ViewportDrawer _vd;
 
-static std::vector<ViewPort *> _viewport_window_cache;
-
-uint _vp_route_step_width = 0;
-uint _vp_route_step_height_top = 0;
-uint _vp_route_step_height_middle = 0;
-uint _vp_route_step_height_bottom = 0;
-SubSprite _vp_route_step_subsprite;
-
-struct DrawnPathRouteTileLine {
-	TileIndex from_tile;
-	TileIndex to_tile;
-
-	bool operator==(const DrawnPathRouteTileLine &other) const
-	{
-		return this->from_tile == other.from_tile && this->to_tile == other.to_tile;
-	}
-
-	bool operator!=(const DrawnPathRouteTileLine &other) const
-	{
-		return !(*this == other);
-	}
-};
-
 TileHighlightData _thd;
 static TileInfo *_cur_ti;
 bool _draw_bounding_boxes = false;
