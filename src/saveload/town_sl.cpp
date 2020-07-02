@@ -20,7 +20,6 @@
 
 #include "../safeguards.h"
 
-/* TODO: Remove acceptance matrix from the savegame completely. */
 typedef TileMatrix<CargoTypes, 4> AcceptanceMatrix;
 
 /**
@@ -193,10 +192,8 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDLST(Town, psa_list,            REF_STORAGE,                SLV_161, SL_MAX_VERSION),
 
 	SLE_CONDNULL(4, SLV_166, SLV_EXTEND_CARGOTYPES),  ///< cargo_produced, no longer in use
-	SLE_CONDNULL(8, SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),  ///< cargo_produced, no longer in use
-
-	/* reserve extra space in savegame here. (currently 30 bytes) */
-	SLE_CONDNULL(30, SLV_2, SL_MAX_VERSION),
+	SLE_CONDNULL(8, SLV_EXTEND_CARGOTYPES, SLV_REMOVE_TOWN_CARGO_CACHE),  ///< cargo_produced, no longer in use
+	SLE_CONDNULL(30, SLV_2, SLV_REMOVE_TOWN_CARGO_CACHE), ///< old reserved space
 
 	SLE_END()
 };
@@ -252,12 +249,6 @@ static void RealSave_Town(Town *t)
 	for (int i = TE_BEGIN; i < NUM_TE; i++) {
 		SlObject(&t->received[i], _town_received_desc);
 	}
-
-	if (IsSavegameVersionBefore(SLV_166)) return;
-
-	/* Write an empty matrix to avoid bumping savegame version. */
-	AcceptanceMatrix dummy;
-	SlObject(&dummy, GetTileMatrixDesc());
 }
 
 static void Save_TOWN()
@@ -288,14 +279,14 @@ static void Load_TOWN()
 			SlErrorCorrupt("Invalid town name generator");
 		}
 
-		if (IsSavegameVersionBefore(SLV_166)) continue;
-
-		/* Discard acceptance matrix to avoid bumping savegame version. */
-		AcceptanceMatrix dummy;
-		SlObject(&dummy, GetTileMatrixDesc());
-		if (dummy.area.w != 0) {
-			uint arr_len = dummy.area.w / AcceptanceMatrix::GRID * dummy.area.h / AcceptanceMatrix::GRID;
-			for (arr_len *= 4; arr_len != 0; arr_len--) SlReadByte();
+		if (!IsSavegameVersionBefore(SLV_166) && IsSavegameVersionBefore(SLV_REMOVE_TOWN_CARGO_CACHE)) {
+			/* Discard now unused acceptance matrix. */
+			AcceptanceMatrix dummy;
+			SlObject(&dummy, GetTileMatrixDesc());
+			if (dummy.area.w != 0) {
+				uint arr_len = dummy.area.w / AcceptanceMatrix::GRID * dummy.area.h / AcceptanceMatrix::GRID;
+				SlSkipBytes(4 * arr_len);
+			}
 		}
 	}
 }

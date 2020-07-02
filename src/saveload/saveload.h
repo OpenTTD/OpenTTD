@@ -302,6 +302,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_MULTITILE_DOCKS,                    ///< 216  PR#7380 Multiple docks per station.
 	SLV_TRADING_AGE,                        ///< 217  PR#7780 Configurable company trading age.
 	SLV_ENDING_YEAR,                        ///< 218  PR#7747 v1.10 Configurable ending year.
+	SLV_REMOVE_TOWN_CARGO_CACHE,            ///< 219  PR#8258 Remove town cargo acceptance and production caches.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
