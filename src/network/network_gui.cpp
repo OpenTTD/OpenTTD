@@ -206,7 +206,7 @@ public:
 
 	void FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets) override
 	{
-		if (this->base_flags & WBF_DIRTY) {
+		if (this->is_dirty) {
 			dirty_widgets.push_back(this);
 		} else {
 			int i = 0;

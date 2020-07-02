@@ -772,7 +772,7 @@ NWidgetBase::NWidgetBase(WidgetType tp) : ZeroedMemoryAllocator()
  */
 void NWidgetBase::SetDirty(Window *w)
 {
-	this->base_flags |= WBF_DIRTY;
+	this->is_dirty = true;
 	w->flags |= WF_DIRTY;
 }
 
@@ -906,7 +906,7 @@ NWidgetCore *NWidgetCore::GetWidgetFromPos(int x, int y)
 
 void NWidgetCore::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
 {
-	if (this->base_flags & WBF_DIRTY) dirty_widgets.push_back(this);
+	if (this->is_dirty) dirty_widgets.push_back(this);
 }
 
 /**
@@ -1053,7 +1053,7 @@ void NWidgetStacked::FillNestedArray(NWidgetBase **array, uint length)
 void NWidgetStacked::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
-	this->base_flags &= ~WBF_DIRTY;
+	this->is_dirty = false;
 	if (this->shown_plane >= SZSP_BEGIN) return;
 
 	int plane = 0;
@@ -1083,7 +1083,7 @@ NWidgetCore *NWidgetStacked::GetWidgetFromPos(int x, int y)
 
 void NWidgetStacked::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
 {
-	if (this->base_flags & WBF_DIRTY) {
+	if (this->is_dirty) {
 		dirty_widgets.push_back(this);
 	} else {
 		int plane = 0;
@@ -1129,7 +1129,7 @@ void NWidgetPIPContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 void NWidgetPIPContainer::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
-	this->base_flags &= ~WBF_DIRTY;
+	this->is_dirty = false;
 	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 		child_wid->Draw(w);
 	}
@@ -1148,7 +1148,7 @@ NWidgetCore *NWidgetPIPContainer::GetWidgetFromPos(int x, int y)
 
 void NWidgetPIPContainer::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
 {
-	if (this->base_flags & WBF_DIRTY) {
+	if (this->is_dirty) {
 		dirty_widgets.push_back(this);
 	} else {
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
@@ -1662,7 +1662,7 @@ NWidgetCore *NWidgetMatrix::GetWidgetFromPos(int x, int y)
 
 void NWidgetMatrix::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
 {
-	if (this->base_flags & WBF_DIRTY) {
+	if (this->is_dirty) {
 		dirty_widgets.push_back(this);
 	}
 }
@@ -1670,7 +1670,7 @@ void NWidgetMatrix::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
 /* virtual */ void NWidgetMatrix::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
-	this->base_flags &= ~WBF_DIRTY;
+	this->is_dirty = false;
 
 	/* Fill the background. */
 	GfxFillRect(this->pos_x, this->pos_y, this->pos_x + this->current_x - 1, this->pos_y + this->current_y - 1, _colour_gradient[this->colour & 0xF][5]);
@@ -1876,7 +1876,7 @@ void NWidgetBackground::FillNestedArray(NWidgetBase **array, uint length)
 void NWidgetBackground::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
-	this->base_flags &= ~WBF_DIRTY;
+	this->is_dirty = false;
 
 	if (this->current_x == 0 || this->current_y == 0) return;
 
@@ -1929,7 +1929,7 @@ NWidgetCore *NWidgetBackground::GetWidgetFromPos(int x, int y)
 
 void NWidgetBackground::FillDirtyWidgets(std::vector<NWidgetBase *> &dirty_widgets)
 {
-	if (this->base_flags & WBF_DIRTY) {
+	if (this->is_dirty) {
 		dirty_widgets.push_back(this);
 	} else {
 		if (this->child != nullptr) this->child->FillDirtyWidgets(dirty_widgets);
@@ -1962,7 +1962,7 @@ void NWidgetViewport::SetupSmallestSize(Window *w, bool init_array)
 void NWidgetViewport::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
-	this->base_flags &= ~WBF_DIRTY;
+	this->is_dirty = false;
 
 	if (this->disp_flags & ND_NO_TRANSPARENCY) {
 		TransparencyOptionBits to_backup = _transparency_opt;
@@ -2090,7 +2090,7 @@ void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
 void NWidgetScrollbar::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
-	this->base_flags &= ~WBF_DIRTY;
+	this->is_dirty = false;
 
 	if (this->current_x == 0 || this->current_y == 0) return;
 
@@ -2460,7 +2460,7 @@ void NWidgetLeaf::SetupSmallestSize(Window *w, bool init_array)
 void NWidgetLeaf::Draw(const Window *w)
 {
 	if (this->IsOutsideDrawArea()) return;
-	this->base_flags &= ~WBF_DIRTY;
+	this->is_dirty = false;
 
 	if (this->current_x == 0 || this->current_y == 0) return;
 

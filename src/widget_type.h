@@ -108,14 +108,6 @@ enum WidgetType : uint8 {
 	NWID_PUSHBUTTON_DROPDOWN = NWID_BUTTON_DROPDOWN | WWB_PUSHBUTTON,
 };
 
-/**
- * Base widget flags.
- */
-enum WidgetBaseFlags : uint8 {
-	WBF_DIRTY            = 1 <<  0, ///< Widget is dirty.
-};
-DECLARE_ENUM_AS_BIT_SET(WidgetBaseFlags)
-
 /** Different forms of sizing nested widgets, using NWidgetBase::AssignSizePosition() */
 enum SizingType {
 	ST_SMALLEST, ///< Initialize nested widget tree to smallest size. Also updates \e current_x and \e current_y.
@@ -171,7 +163,7 @@ public:
 	virtual void SetDirty(Window *w);
 
 	WidgetType type;      ///< Type of the widget / nested widget.
-	WidgetBaseFlags base_flags; ///< Widget base flags
+	bool is_dirty;        ///< Widget is dirty (in need of a repaint).
 	uint fill_x;          ///< Horizontal fill stepsize (from initial size, \c 0 means not resizable).
 	uint fill_y;          ///< Vertical fill stepsize (from initial size, \c 0 means not resizable).
 	uint resize_x;        ///< Horizontal resize step (\c 0 means not resizable).
