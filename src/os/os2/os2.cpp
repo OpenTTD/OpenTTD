@@ -26,7 +26,7 @@
 #include <stdlib.h>
 #include <time.h>
 #ifndef __INNOTEK_LIBC__
-	#include <dos.h>
+#	include <dos.h>
 #endif
 
 #include "../../safeguards.h"
@@ -36,7 +36,7 @@
 
 #include <os2.h>
 #ifndef __INNOTEK_LIBC__
-	#include <i86.h>
+#	include <i86.h>
 #endif
 
 bool FiosIsRoot(const char *file)

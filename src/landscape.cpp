@@ -1186,8 +1186,8 @@ static void BuildRiver(TileIndex begin, TileIndex end)
  */
 static bool FlowRiver(TileIndex spring, TileIndex begin)
 {
-	#define SET_MARK(x) marks.insert(x)
-	#define IS_MARKED(x) (marks.find(x) != marks.end())
+#	define SET_MARK(x) marks.insert(x)
+#	define IS_MARKED(x) (marks.find(x) != marks.end())
 
 	uint height = TileHeight(begin);
 	if (IsWaterTile(begin)) return DistanceManhattan(spring, begin) > _settings_game.game_creation.min_river_length;

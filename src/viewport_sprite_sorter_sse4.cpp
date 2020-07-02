@@ -18,9 +18,9 @@
 
 #ifdef _SQ64
 	assert_compile((sizeof(ParentSpriteToDraw) % 16) == 0);
-	#define LOAD_128 _mm_load_si128
+#	define LOAD_128 _mm_load_si128
 #else
-	#define LOAD_128 _mm_loadu_si128
+#	define LOAD_128 _mm_loadu_si128
 #endif
 
 /** Sort parent sprites pointer array using SSE4.1 optimizations. */
