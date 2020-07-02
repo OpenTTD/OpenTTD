@@ -1884,7 +1884,7 @@ struct CompanyInfrastructureWindow : Window
 
 		switch (widget) {
 			case WID_CI_RAIL_DESC: {
-				uint lines = 1;
+				uint lines = 1; // Starts at 1 because a line is also required for the section title
 
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width);
 
@@ -1907,7 +1907,7 @@ struct CompanyInfrastructureWindow : Window
 
 			case WID_CI_ROAD_DESC:
 			case WID_CI_TRAM_DESC: {
-				uint lines = 0;
+				uint lines = 1; // Starts at 1 because a line is also required for the section title
 
 				size->width = max(size->width, GetStringBoundingBox(widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT).width);
 
