@@ -29,13 +29,13 @@
 #endif
 
 #ifdef __APPLE__
-	#include <sys/mount.h>
+#	include <sys/mount.h>
 #elif (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
-	#define HAS_STATVFS
+#	define HAS_STATVFS
 #endif
 
 #if defined(OPENBSD) || defined(__NetBSD__) || defined(__FreeBSD__)
-	#define HAS_SYSCTL
+#	define HAS_SYSCTL
 #endif
 
 #ifdef HAS_STATVFS

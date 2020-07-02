@@ -17,10 +17,10 @@
 
 #if BINARYHEAP_CHECK
 	/** Check for consistency. */
-	#define CHECK_CONSISTY() this->CheckConsistency()
+#	define CHECK_CONSISTY() this->CheckConsistency()
 #else
 	/** Don't check for consistency. */
-	#define CHECK_CONSISTY() ;
+#	define CHECK_CONSISTY() ;
 #endif
 
 /**

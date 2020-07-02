@@ -12,7 +12,7 @@
 
 #if defined(__APPLE__)
 	/* Apple already has Random declared */
-	#define Random OTTD_Random
+#	define Random OTTD_Random
 #endif /* __APPLE__ */
 
 /**
@@ -57,13 +57,13 @@ static inline void RestoreRandomSeeds(const SavedRandomSeeds &storage)
 
 void SetRandomSeed(uint32 seed);
 #ifdef RANDOM_DEBUG
-	#ifdef __APPLE__
-		#define OTTD_Random() DoRandom(__LINE__, __FILE__)
-	#else
-		#define Random() DoRandom(__LINE__, __FILE__)
-	#endif
+#	ifdef __APPLE__
+#		define OTTD_Random() DoRandom(__LINE__, __FILE__)
+#	else
+#		define Random() DoRandom(__LINE__, __FILE__)
+#	endif
 	uint32 DoRandom(int line, const char *file);
-	#define RandomRange(limit) DoRandomRange(limit, __LINE__, __FILE__)
+#	define RandomRange(limit) DoRandomRange(limit, __LINE__, __FILE__)
 	uint32 DoRandomRange(uint32 limit, int line, const char *file);
 #else
 	static inline uint32 Random()
@@ -126,7 +126,7 @@ static inline bool Chance16I(const uint a, const uint b, const uint32 r)
  * @return True with (a/b) probability
  */
 #ifdef RANDOM_DEBUG
-	#define Chance16(a, b) Chance16I(a, b, DoRandom(__LINE__, __FILE__))
+#	define Chance16(a, b) Chance16I(a, b, DoRandom(__LINE__, __FILE__))
 #else
 static inline bool Chance16(const uint a, const uint b)
 {
@@ -150,7 +150,7 @@ static inline bool Chance16(const uint a, const uint b)
  * @return True in (a/b) percent
  */
 #ifdef RANDOM_DEBUG
-	#define Chance16R(a, b, r) (r = DoRandom(__LINE__, __FILE__), Chance16I(a, b, r))
+#	define Chance16R(a, b, r) (r = DoRandom(__LINE__, __FILE__), Chance16I(a, b, r))
 #else
 static inline bool Chance16R(const uint a, const uint b, uint32 &r)
 {

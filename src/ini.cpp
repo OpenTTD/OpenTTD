@@ -90,7 +90,7 @@ bool IniFile::SaveToDisk(const char *filename)
 
 #if defined(_WIN32)
 	/* _tcsncpy = strcpy is TCHAR is char, but isn't when TCHAR is wchar. */
-	#undef strncpy
+#	undef strncpy
 	/* Allocate space for one more \0 character. */
 	TCHAR tfilename[MAX_PATH + 1], tfile_new[MAX_PATH + 1];
 	_tcsncpy(tfilename, OTTD2FS(filename), MAX_PATH);
