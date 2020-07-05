@@ -14,6 +14,7 @@
 
 void ShowLastNewsMessage();
 void ShowMessageHistory();
+bool HideActiveNewsMessage();
 
 extern NewsItem *_latest_news;
 
