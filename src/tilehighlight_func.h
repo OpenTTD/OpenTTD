@@ -12,6 +12,7 @@
 
 #include "gfx_type.h"
 #include "tilehighlight_type.h"
+#include "track_type.h"
 
 #include <queue>
 #include <vector>
