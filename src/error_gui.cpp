@@ -315,13 +315,6 @@ public:
 		if (_window_system_initialized) ShowFirstError();
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
-	{
-		if (keycode != WKC_SPACE) return ES_NOT_HANDLED;
-		delete this;
-		return ES_HANDLED;
-	}
-
 	/**
 	 * Check whether the currently shown error message was critical or not.
 	 * @return True iff the message was critical.
@@ -422,6 +415,18 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 		delete w;
 		new ErrmsgWindow(data);
 	}
+}
+
+
+/**
+ * Close active error message window
+ * @return true if a window was closed.
+ */
+bool HideActiveErrorMessage() {
+	ErrmsgWindow *w = (ErrmsgWindow*)FindWindowById(WC_ERRMSG, 0);
+	if (w == nullptr) return false;
+	delete w;
+	return true;
 }
 
 /**

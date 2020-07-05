@@ -519,16 +519,6 @@ struct NewsWindow : Window {
 		}
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
-	{
-		if (keycode == WKC_SPACE) {
-			/* Don't continue. */
-			delete this;
-			return ES_HANDLED;
-		}
-		return ES_NOT_HANDLED;
-	}
-
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data Information about the changed data.
@@ -602,7 +592,6 @@ private:
 };
 
 /* static */ int NewsWindow::duration = 0; // Instance creation.
-
 
 /** Open up an own newspaper window for the news item */
 static void ShowNewspaper(const NewsItem *ni)
@@ -1031,6 +1020,17 @@ static void ShowNewsMessage(const NewsItem *ni)
 		DeleteWindowById(WC_NEWS_WINDOW, 0);
 		ShowNewspaper(ni);
 	}
+}
+
+/**
+ * Close active news message window
+ * @return true if a window was closed.
+ */
+bool HideActiveNewsMessage() {
+	NewsWindow *w = (NewsWindow*)FindWindowById(WC_NEWS_WINDOW, 0);
+	if (w == nullptr) return false;
+	delete w;
+	return true;
 }
 
 /** Show previous news item */

@@ -55,6 +55,8 @@ public:
 void ScheduleErrorMessage(const ErrorMessageData &data);
 
 void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr);
+bool HideActiveErrorMessage();
+
 void ClearErrorMessages();
 void ShowFirstError();
 void UnshowCriticalError();
