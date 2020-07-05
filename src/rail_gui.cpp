@@ -40,6 +40,61 @@
 
 #include "safeguards.h"
 
+struct comparePathNodes {
+	bool operator()(const PathNode& a, const PathNode& b)
+	{
+		uint a_fcost = a->g_cost + a->h_cost;
+		uint b_fcost = b->g_cost + b->h_cost;
+		if (a_fcost == b_fcost) {
+			return a->tile > b->tile; // use tile location as a tiebreaker I guess
+		} else {
+			return (a_fcost > b_fcost);
+		}
+	}
+};
+
+static PathNode NewPathNode()
+{
+	PathNode newNode = new _pathNode;
+	newNode->prev = NULL; // is there a different way to define this?
+	newNode->tile = INVALID_TILE;
+	newNode->direction = INVALID_TRACKDIR;
+	newNode->g_cost = 0;
+	newNode->h_cost = 0;
+	newNode->turn_left  = 0;
+	newNode->turn_right = 0;
+	newNode->hill_up    = 0;
+	newNode->hill_down  = 0;
+	return newNode;
+}
+
+typedef std::priority_queue<PathNode, std::vector<PathNode>, comparePathNodes> _node_queue;
+
+_node_map AllNodes; // unordered map of all nodes (so we can search/delete them later)
+_path_set PathHighlightSet; // map of Tile to Track of finished path
+TileIndex railplanner_tile_start;
+Trackdir railplanner_dir_start;
+TileIndex railplanner_tile_end;
+Trackdir railplanner_dir_end;
+RailplannerPhase rp_phase;
+
+static const Trackdir _PathRailNeighbour[][3]{
+/* Source dir            Straight          Left              Right            */
+/* TRACKDIR_X_NE    */	{TRACKDIR_X_NE   , TRACKDIR_LEFT_N , TRACKDIR_LOWER_E},
+/* TRACKDIR_Y_SE    */	{TRACKDIR_Y_SE   , TRACKDIR_UPPER_E, TRACKDIR_LEFT_S },
+/* TRACKDIR_UPPER_E */	{TRACKDIR_LOWER_E, TRACKDIR_X_NE   , INVALID_TRACKDIR},
+/* TRACKDIR_LOWER_E */	{TRACKDIR_UPPER_E, INVALID_TRACKDIR, TRACKDIR_Y_SE   },
+/* TRACKDIR_LEFT_S  */	{TRACKDIR_RIGHT_S, INVALID_TRACKDIR, TRACKDIR_X_SW   },
+/* TRACKDIR_RIGHT_S */	{TRACKDIR_LEFT_S , TRACKDIR_Y_SE   , INVALID_TRACKDIR},
+/* TRACKDIR_RVREV_NE*/	{}, // (Road vehicle) reverse direction
+/* TRACKDIR_RVREV_SE*/	{}, // (Road vehicle) reverse direction
+/* TRACKDIR_X_SW    */	{TRACKDIR_X_SW   , TRACKDIR_RIGHT_S, TRACKDIR_UPPER_W},
+/* TRACKDIR_Y_NW    */	{TRACKDIR_Y_NW   , TRACKDIR_LOWER_W, TRACKDIR_RIGHT_N},
+/* TRACKDIR_UPPER_W */	{TRACKDIR_LOWER_W, INVALID_TRACKDIR, TRACKDIR_Y_NW   },
+/* TRACKDIR_LOWER_W */	{TRACKDIR_UPPER_W, TRACKDIR_X_SW   , INVALID_TRACKDIR},
+/* TRACKDIR_LEFT_N  */	{TRACKDIR_RIGHT_N, TRACKDIR_Y_NW   , INVALID_TRACKDIR},
+/* TRACKDIR_RIGHT_N */	{TRACKDIR_LEFT_N , INVALID_TRACKDIR, TRACKDIR_X_NE   }
+};
 
 static RailType _cur_railtype;               ///< Rail type of the current build-rail toolbar.
 static bool _remove_button_clicked;          ///< Flag whether 'remove' toggle-button is currently enabled
@@ -412,11 +467,49 @@ static void HandleAutoSignalPlacement()
 			CcPlaySound_SPLAT_RAIL);
 }
 
+#include "table/autorail.h"
+
+/**
+ * checks whether a particular rail is buildable in the given tile
+ * abuses the highlighting table to determine a result
+ * NOTE: does not check land ownership
+ * @param tile The tile to be built on
+ * @param autorail_type The orientation of autorail to be built
+ * @return whether or not the rail can be built on this tile
+ */
+static bool IsValidRail(TileIndex tile, uint autorail_type = 0)
+{
+	if (tile >= MapSize() || !(IsTileType(tile, MP_CLEAR) || IsTileType(tile, MP_TREES))) {
+		return false;
+	}
+	int offset;
+	Slope tileSlope = GetTileSlope(tile);
+
+	Slope autorail_tileh = RemoveHalftileSlope(tileSlope);
+	if (IsHalftileSlope(tileSlope)) {
+		// CORNER_W, CORNER_S, CORNER_E, CORNER_N
+		static const uint _lower_rail[CORNER_END] = { HT_DIR_VR, HT_DIR_HU, HT_DIR_VL, HT_DIR_HL };
+		Corner halftile_corner = GetHalftileSlopeCorner(tileSlope);
+		if (autorail_type != _lower_rail[halftile_corner]) {
+			/* Here we draw the highlights of the "three-corners-raised"-slope. That looks ok to me. */
+			autorail_tileh = SlopeWithThreeCornersRaised(OppositeCorner(halftile_corner));
+		}
+	}
+
+	offset = _AutorailTilehSprite[autorail_tileh][autorail_type];
+	return (offset >= 0);
+}
 
 /** Rail toolbar management class. */
 struct BuildRailToolbarWindow : Window {
 	RailType railtype;    ///< Rail type to build.
 	int last_user_action; ///< Last started user action.
+	TileIndex railplanner_tile_end_old;
+	Trackdir railplanner_dir_end_old;
+
+	_node_map ClosedSet; // unordered map of nodes in the closed set/already expanded sets
+	_node_queue OpenQueue; // priority queue of nodes discovered but to be expanded
+	_node_map OpenSet; // allows us to search the OpenQueue given a certain hash
 
 	BuildRailToolbarWindow(WindowDesc *desc, RailType railtype) : Window(desc)
 	{
@@ -455,12 +548,22 @@ struct BuildRailToolbarWindow : Window {
 		this->railtype = railtype;
 		const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 
+		rp_phase = RP_PHASE_INACTIVE;
+
+		railplanner_tile_start = INVALID_TILE;
+		railplanner_dir_start = INVALID_TRACKDIR;
+		railplanner_tile_end = INVALID_TILE;
+		railplanner_dir_end = INVALID_TRACKDIR;
+		railplanner_tile_end_old = INVALID_TILE;
+		railplanner_dir_end_old = INVALID_TRACKDIR;
+
 		assert(railtype < RAILTYPE_END);
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_NS)->widget_data     = rti->gui_sprites.build_ns_rail;
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_X)->widget_data      = rti->gui_sprites.build_x_rail;
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_EW)->widget_data     = rti->gui_sprites.build_ew_rail;
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_Y)->widget_data      = rti->gui_sprites.build_y_rail;
 		this->GetWidget<NWidgetCore>(WID_RAT_AUTORAIL)->widget_data     = rti->gui_sprites.auto_rail;
+		this->GetWidget<NWidgetCore>(WID_RAT_RAILPLANNER)->widget_data  = rti->gui_sprites.auto_rail;
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_DEPOT)->widget_data  = rti->gui_sprites.build_depot;
 		this->GetWidget<NWidgetCore>(WID_RAT_CONVERT_RAIL)->widget_data = rti->gui_sprites.convert_rail;
 		this->GetWidget<NWidgetCore>(WID_RAT_BUILD_TUNNEL)->widget_data = rti->gui_sprites.build_tunnel;
@@ -520,6 +623,35 @@ struct BuildRailToolbarWindow : Window {
 		}
 	}
 
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		Dimension d;
+		uint offset;
+		switch (widget) {
+		case WID_RAT_RAILPLANNER: {
+			// a bit of funky maths to shrink the cargo-flow icon
+			ZoomLevel temp_zoom;
+			switch (_gui_zoom) {
+			case ZOOM_LVL_NORMAL:
+				temp_zoom = ZOOM_LVL_OUT_2X;
+				break;
+			case ZOOM_LVL_OUT_2X:
+				temp_zoom = ZOOM_LVL_OUT_4X;
+				break;
+			case ZOOM_LVL_OUT_4X:
+				temp_zoom = ZOOM_LVL_OUT_8X;
+				break;
+			}
+			d = GetSpriteSize(SPR_IMG_CARGOFLOW, (Point *)0, temp_zoom);
+			offset = this->IsWidgetLowered(WID_RAT_RAILPLANNER) ? 1 : 0;
+			DrawSprite(SPR_IMG_CARGOFLOW, PAL_NONE, (r.left + r.right - d.width) / 2 + offset, (r.top + r.bottom - d.height) / 2 + offset, (const SubSprite *)0, temp_zoom);
+			break;
+		}
+		default:
+			break;
+		}
+	}
+
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget < WID_RAT_BUILD_NS) return;
@@ -550,6 +682,23 @@ struct BuildRailToolbarWindow : Window {
 				HandlePlacePushButton(this, WID_RAT_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, HT_RAIL);
 				this->last_user_action = widget;
 				break;
+
+			/* TODO: incorporte rail snapping from polyline? */
+			case WID_RAT_RAILPLANNER: {
+				this->ResetRailPlanner();
+				bool was_open = this->IsWidgetLowered(WID_RAT_RAILPLANNER);
+				/* tool has just been closed */
+				if (was_open) {
+					rp_phase = RP_PHASE_INACTIVE;
+					/* tool has just been opened */
+				} else {
+					rp_phase = RP_PHASE_START_HOVER;
+				}
+
+				HandlePlacePushButton(this, WID_RAT_RAILPLANNER, GetRailTypeInfo(_cur_railtype)->cursor.autorail, HT_RAIL);
+				this->last_user_action = widget;
+				break;
+			}
 
 			case WID_RAT_DEMOLISH:
 				HandlePlacePushButton(this, WID_RAT_DEMOLISH, ANIMCURSOR_DEMOLISH, HT_RECT | HT_DIAGONAL);
@@ -641,6 +790,23 @@ struct BuildRailToolbarWindow : Window {
 				VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_RAIL);
 				break;
 
+			case WID_RAT_RAILPLANNER:
+				/* assign start/end tiles here - directions are assigned elsewhere */
+				// apparently two drag commands can be sent if the mouse leaves the window...
+				if (rp_phase == RP_PHASE_START_HOVER || rp_phase == RP_PHASE_START_DRAG || rp_phase == RP_PHASE_INACTIVE) {
+					rp_phase = RP_PHASE_START_DRAG;
+					railplanner_tile_start = tile;
+					VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_RAILPLANNER_START);
+
+				} else if (rp_phase == RP_PHASE_END_HOVER || rp_phase == RP_PHASE_END_DRAG) {
+					rp_phase = RP_PHASE_END_DRAG;
+					railplanner_tile_end = tile;
+					VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_RAILPLANNER_END);
+				} else {
+					NOT_REACHED();
+				}
+				break;
+
 			case WID_RAT_DEMOLISH:
 				PlaceProc_DemolishArea(tile);
 				break;
@@ -685,6 +851,42 @@ struct BuildRailToolbarWindow : Window {
 		if (FindWindowById(WC_BUILD_SIGNAL, 0) != nullptr && _convert_signal_button && this->IsWidgetLowered(WID_RAT_BUILD_SIGNALS)) return;
 
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
+
+		/* determine direction of drag using facts and logic */
+		if (this->IsWidgetLowered(WID_RAT_RAILPLANNER) &&
+			(rp_phase == RP_PHASE_START_DRAG || rp_phase == RP_PHASE_END_DRAG)) {
+			// :0 we can access _thd
+			// dx and dy are in whole tiles
+			// bit shifting is scary
+			int dx = ((pt.x & ~TILE_UNIT_MASK) >> 4) - (_thd.selstart.x >> 4);
+			int dy = ((pt.y & ~TILE_UNIT_MASK) >> 4) - (_thd.selstart.y >> 4);
+
+			// grab direction from _thd data
+			uint8 railplanner_dir_temp = (Trackdir)(_thd.drawstyle & HT_DIR_MASK);
+			// determine whether we need to flip the direction of the tile around
+			// "flip" by adding 8 to the direction
+			if (dy == 0 && dx == 0) {
+				railplanner_dir_temp = INVALID_TRACKDIR;
+			} else if (dy == 0 && dx == -1) {
+				railplanner_dir_temp += (_thd.drawstyle & HT_DIR_MASK) == HT_DIR_VR ? 8 : 0;
+			} else if ((dy == 0) && (dx == 1)) {
+				railplanner_dir_temp += (_thd.drawstyle & HT_DIR_MASK) == HT_DIR_VL ? 0 : 8;
+			} else if (dx >= 0) {
+				railplanner_dir_temp += ((2 * dy) < (dx - 1)) ? 8 : 0;
+			} else {
+				railplanner_dir_temp += ((2 * dy) <= (dx + 1)) ? 8 : 0;				
+			}
+
+			// set the direction for the start tile
+			if (rp_phase == RP_PHASE_START_DRAG) {
+				railplanner_dir_start = (Trackdir)(railplanner_dir_temp);
+			// otherwise set direction for end tile
+			} else if (rp_phase == RP_PHASE_END_DRAG) {
+				railplanner_dir_end = (Trackdir)(railplanner_dir_temp);
+			} else {
+				NOT_REACHED();
+			}
+		}
 	}
 
 	void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) override
@@ -700,6 +902,66 @@ struct BuildRailToolbarWindow : Window {
 				case DDSP_PLACE_RAIL:
 					HandleAutodirPlacement();
 					break;
+
+				/* assign start tile */
+				case DDSP_RAILPLANNER_START: {
+					if (start_tile == end_tile ||
+						!IsValidRail(railplanner_tile_start, TrackdirToTrack(railplanner_dir_start))) {
+						this->ResetRailPlanner();
+						rp_phase = RP_PHASE_START_HOVER;
+						break;
+					}
+					rp_phase = RP_PHASE_END_HOVER;
+					// create the first node and initialise containers
+					PathNode firstNode = NewPathNode();
+					firstNode->tile = railplanner_tile_start;
+					firstNode->direction = railplanner_dir_start;
+					AllNodes.insert({ HashPathNode(firstNode), firstNode });
+					OpenSet.insert({ HashPathNode(firstNode), firstNode });
+					OpenQueue.push(firstNode);
+					break;
+				}
+
+				/* assign end tile */
+				case DDSP_RAILPLANNER_END: {
+					/* only build the track when a path exists/has been found */
+					_node_map::iterator it;
+					if (start_tile == end_tile ||
+						!(IsValidRail(railplanner_tile_end, TrackdirToTrack(railplanner_dir_end))) ||
+						(it = AllNodes.find(HashPathNode(railplanner_tile_end, railplanner_dir_end))) == AllNodes.end()) {
+						rp_phase = RP_PHASE_END_HOVER;
+						break;
+					}
+					/* build the finished path */
+					/**
+					 * instead of sending one command per tile,
+					 * just send one command per "line" in the same direction
+					 */
+					PathNode temp = it->second;
+					PathNode fix = temp;
+					while (temp != NULL) {
+						/* if temp has the same direction as fix... */
+						if (temp->prev != NULL &&
+							(temp->prev->direction == fix->direction || _PathRailNeighbour[temp->prev->direction][0] == fix->direction)) {
+							// do nothing I guess?
+						/* otherwise direction has changed - send build command */
+						} else if (fix == temp) {
+							GenericPlaceRail(fix->tile, TrackdirToTrack(fix->direction));
+							fix = temp->prev;
+						} else {
+							DoCommandP(fix->tile, temp->tile, _cur_railtype | (TrackdirToTrack(fix->direction) << 6),
+								_remove_button_clicked ?
+								CMD_REMOVE_RAILROAD_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
+								CMD_BUILD_RAILROAD_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK),
+								CcPlaySound_SPLAT_RAIL);
+							fix = temp->prev;
+						}
+						temp = temp->prev;
+					}
+					rp_phase = RP_PHASE_START_HOVER;
+					this->ResetRailPlanner();
+					break;
+				}
 
 				case DDSP_BUILD_SIGNALS:
 					HandleAutoSignalPlacement();
@@ -748,6 +1010,9 @@ struct BuildRailToolbarWindow : Window {
 		this->DisableWidget(WID_RAT_REMOVE);
 		this->SetWidgetDirty(WID_RAT_REMOVE);
 
+		this->ResetRailPlanner();
+		rp_phase = RP_PHASE_INACTIVE;
+
 		DeleteWindowById(WC_BUILD_SIGNAL, TRANSPORT_RAIL);
 		DeleteWindowById(WC_BUILD_STATION, TRANSPORT_RAIL);
 		DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_RAIL);
@@ -767,6 +1032,155 @@ struct BuildRailToolbarWindow : Window {
 		/* do not toggle Remove button by Ctrl when placing station */
 		if (!this->IsWidgetLowered(WID_RAT_BUILD_STATION) && !this->IsWidgetLowered(WID_RAT_BUILD_WAYPOINT) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
 		return ES_NOT_HANDLED;
+	}
+
+	void OnMouseLoop() override
+	{
+		/* update position of dest tile while hovering but not dragging */
+		if (this->IsWidgetLowered(WID_RAT_RAILPLANNER) && rp_phase == RP_PHASE_END_HOVER) {
+			Point pt = GetTileBelowCursor();
+			railplanner_tile_end = TileVirtXY(pt.x, pt.y);
+		}
+	}
+
+	/* path computation goes here */
+	void OnRealtimeTick(uint delta_ms) override
+	{
+		// entire search progress has to be deleted when the destination tile has been placed,
+		// or when the tool is aborted I guess
+		// only compute while the end tile is being dragged/selected
+		if (!(this->IsWidgetLowered(WID_RAT_RAILPLANNER)) || railplanner_tile_end > MapSize()) {
+			return;
+		// end_drag case
+		} else if (rp_phase == RP_PHASE_END_DRAG && (railplanner_dir_end == INVALID_TRACKDIR ||
+			AllNodes.find({ HashPathNode(railplanner_tile_end, railplanner_dir_end) }) != AllNodes.end())) {
+			return;
+		// end_hover case - check all 12 directions and get the shortest one
+		} else if (rp_phase == RP_PHASE_END_HOVER) {
+			uint32 shortest_gcost = UINT32_MAX;
+			for (uint8 i = TRACKDIR_BEGIN; i < TRACKDIR_END; i++) {
+				// skip invalid road directions I guess
+				// not actually necessary because the code "works" fine even while searching for invalid directions
+				// searching AllNodes is already O(1) anyway
+				if (i == TRACKDIR_RVREV_NE ||
+					i == TRACKDIR_RVREV_SE ||
+					i == TRACKDIR_RVREV_SW ||
+					i == TRACKDIR_RVREV_NW) {
+					continue;
+				}
+				// if the node exists in this direction and it's shorter
+				_node_map::iterator it = AllNodes.find({ HashPathNode(railplanner_tile_end, (Trackdir)i) });
+				if (it != AllNodes.end() && it->second->g_cost < shortest_gcost) {
+					shortest_gcost = it->second->g_cost;
+					railplanner_dir_end = it->second->direction;
+				}
+			}
+			// if found then return
+			if (shortest_gcost != UINT32_MAX ||
+				// extra check to make sure the pathfinder doesn't run up memory usage irrationally
+				// eg if the user hovered over the ocean, the pathfinder would needlessly search even though a solution is guarunteed not to be found
+				!IsValidRail(railplanner_tile_end))
+				return;
+		}
+		// "have you seen my son? his name is railplanner_tile_end"
+		// A* search from railplanner_tile_start to railplanner_tile_end
+
+		// check if the destination has changed, and recalculate the heuristic for the queue if so
+		if (railplanner_tile_end != railplanner_tile_end_old || railplanner_dir_end != railplanner_dir_end_old) {
+			_node_queue OpenQueue_new = _node_queue();
+			while (!OpenQueue.empty()) {
+				PathNode temp = OpenQueue.top();
+				OpenQueue.pop();
+				temp->h_cost = DistanceMax(temp->tile, railplanner_tile_end) * 3;
+				OpenQueue_new.push(temp);
+			}
+
+			OpenQueue = OpenQueue_new;
+			railplanner_tile_end_old = railplanner_tile_end;
+			railplanner_dir_end_old = railplanner_dir_end;
+		}
+
+		// Thanos: "uint16 steps can be whatever I want"
+		// steps is set arbitrarily - maybe there's a more intelligent way to determine how much to compute?
+		uint16 steps = 0;
+		while (steps < 16384 && !OpenQueue.empty()) {
+			steps++;
+			//Take from the open list the node node_current with the lowest
+			// f(node_current) = g(node_current) + h(node_current)
+			PathNode node_current = OpenQueue.top();
+			OpenQueue.pop();
+			OpenSet.erase(HashPathNode(node_current));
+			// if node_current is node_goal we have found the solution; break
+			if (node_current->tile == railplanner_tile_end &&
+				(node_current->direction == railplanner_dir_end || rp_phase == RP_PHASE_END_HOVER)) {
+				break;
+			}
+			// for each neighbour...
+			for (int i = 0; i < 3; i++) {
+				// only accept neighbour if valid turn (todo: check turn counts)
+				Trackdir successor_trackdir = _PathRailNeighbour[node_current->direction][i];
+				if (successor_trackdir == INVALID_TRACKDIR) {
+					continue;
+				}
+				// also only accept if tile is valid
+				TileIndex successor_tile = TileAddByDiagDir(node_current->tile, TrackdirToExitdir(node_current->direction));
+				if (!(IsValidRail(successor_tile, TrackdirToTrack(successor_trackdir)))) {
+					continue;
+				}
+				// forgive me father for I have written an excessively long ternary
+				// but basically X, Y-direction tracks cost 3 while vert/horizontal tracks cost 2
+				uint32 successor_current_cost = node_current->g_cost + (TrackdirToTrack(successor_trackdir) == TRACK_X || TrackdirToTrack(successor_trackdir) == TRACK_Y ? 3 : 2);
+				uint32 successor_hash = HashPathNode(successor_tile, successor_trackdir);
+				_node_map::iterator it;
+				if ((it = OpenSet.find(successor_hash)) != OpenSet.end()) {
+					if (it->second->g_cost <= successor_current_cost)
+						continue;
+				} else if ((it = ClosedSet.find(successor_hash)) != ClosedSet.end()) {
+					if (it->second->g_cost <= successor_current_cost)
+						continue;
+					// Move node_successor from the CLOSED list to the OPEN list
+					OpenSet.insert({ it->first, it->second });
+					OpenQueue.push(it->second);
+					ClosedSet.erase(it);
+				} else {
+					// Generate a new node yay
+					PathNode successor_node = NewPathNode();
+					successor_node->tile = successor_tile;
+					successor_node->direction = successor_trackdir;
+					successor_node->g_cost = successor_current_cost;
+					successor_node->h_cost = DistanceMax(successor_tile, railplanner_tile_end) * 3;
+					// Set the parent of node_successor to node_current
+					successor_node->prev = node_current;
+					// Add node_successor to the OPEN list
+					AllNodes.insert({ successor_hash, successor_node });
+					OpenSet.insert({ successor_hash, successor_node });
+					OpenQueue.push(successor_node);
+				}
+			}
+			// Add node_current to the CLOSED list
+			ClosedSet.insert({ HashPathNode(node_current), node_current });
+		}
+	}
+
+	/* reset/initialisation process goes here */
+	void ResetRailPlanner()
+	{
+		railplanner_tile_start = INVALID_TILE;
+		railplanner_tile_end   = INVALID_TILE;
+		railplanner_dir_start = INVALID_TRACKDIR;
+		railplanner_dir_end   = INVALID_TRACKDIR;
+
+		_node_map::iterator it = AllNodes.begin();
+		while (it != AllNodes.end()) {
+			delete(it->second);
+			it = AllNodes.erase(it);
+		}
+		// just... trash the entire thing :)
+		// I think clear() gets called implicitly, but in either case it still takes heaps of time :C
+		ClosedSet = _node_map();
+		OpenSet = _node_map();
+		OpenQueue = _node_queue();
+		PathHighlightSet.clear();
 	}
 
 	static HotkeyList hotkeys;
@@ -798,6 +1212,7 @@ static Hotkey railtoolbar_hotkeys[] = {
 	Hotkey('7', "depot", WID_RAT_BUILD_DEPOT),
 	Hotkey('8', "waypoint", WID_RAT_BUILD_WAYPOINT),
 	Hotkey('9', "station", WID_RAT_BUILD_STATION),
+	Hotkey('0', "railplanner", WID_RAT_RAILPLANNER),
 	Hotkey('S', "signal", WID_RAT_BUILD_SIGNALS),
 	Hotkey('B', "bridge", WID_RAT_BUILD_BRIDGE),
 	Hotkey('T', "tunnel", WID_RAT_BUILD_TUNNEL),
@@ -824,6 +1239,8 @@ static const NWidgetPart _nested_build_rail_widgets[] = {
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_RAIL_NW, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK),
 		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_RAT_AUTORAIL),
 						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_AUTORAIL, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL),
+		NWidget(WWT_IMGBTN, COLOUR_DARK_GREEN, WID_RAT_RAILPLANNER),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(SPR_IMG_AUTORAIL, STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILPLANNER),
 
 		NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetMinimalSize(4, 22), SetDataTip(0x0, STR_NULL), EndContainer(),
 

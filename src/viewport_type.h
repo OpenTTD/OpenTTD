@@ -126,6 +126,8 @@ enum ViewportDragDropSelectionProcess {
 
 	/* Rail specific actions */
 	DDSP_PLACE_RAIL,           ///< Rail placement
+	DDSP_RAILPLANNER_START,    ///< Railplanner start placement
+	DDSP_RAILPLANNER_END,      ///< Railplanner end placement
 	DDSP_BUILD_SIGNALS,        ///< Signal placement
 	DDSP_BUILD_STATION,        ///< Station placement
 	DDSP_REMOVE_STATION,       ///< Station removal

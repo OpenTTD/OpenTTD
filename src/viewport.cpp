@@ -948,10 +948,10 @@ static const HighLightStyle _autorail_type[6][2] = {
  * @param *ti TileInfo Tile that is being drawn
  * @param autorail_type Offset into _AutorailTilehSprite[][]
  */
-static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
+static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type, PaletteID pal = -1)
 {
 	SpriteID image;
-	PaletteID pal;
+	// PaletteID pal;
 	int offset;
 
 	FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
@@ -969,10 +969,10 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 	offset = _AutorailTilehSprite[autorail_tileh][autorail_type];
 	if (offset >= 0) {
 		image = SPR_AUTORAIL_BASE + offset;
-		pal = PAL_NONE;
+		if (pal == (PaletteID)-1) pal = PAL_NONE;
 	} else {
 		image = SPR_AUTORAIL_BASE - offset;
-		pal = PALETTE_SEL_TILE_RED;
+		if (pal == (PaletteID)-1) pal = PALETTE_SEL_TILE_RED;
 	}
 
 	DrawSelectionSprite(image, _thd.make_square_red ? PALETTE_SEL_TILE_RED : pal, ti, 7, foundation_part);
@@ -1084,6 +1084,26 @@ static void DrawTileSelection(const TileInfo *ti)
 	bool is_redsq = _thd.redsq == ti->tile;
 	if (is_redsq) DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);
 
+	/**
+	 * Here for debugging purposes... maybe a useful feature?
+	 * Draw a selection rectangle over tiles that have need explored by the railplanner search algorithm
+	 * So the dev/user can identify which tiles are valid destinations
+	 */
+	/*
+	for (uint8 i = TRACKDIR_BEGIN; i < TRACKDIR_END; i++) {
+		_node_map::iterator it = AllNodes.find({ HashPathNode(ti->tile, (Trackdir)i) });
+		if (it != AllNodes.end()) {
+			DrawTileSelectionRect(ti, PALETTE_SEL_TILE_BLUE);
+			break;
+		}
+	}
+	//*/
+
+	_path_set::iterator it;
+	if ((_thd.select_proc == DDSP_RAILPLANNER_START || _thd.select_proc == DDSP_RAILPLANNER_END) && (it = PathHighlightSet.find(ti->tile)) != PathHighlightSet.end()) {
+		DrawAutorailSelection(ti, (HighLightStyle)it->second);
+	}
+
 	TileHighlightType tht = GetTileHighlightType(ti->tile);
 	DrawTileHighlightType(ti, tht);
 
@@ -1122,7 +1142,8 @@ draw_inner:
 			/* autorail highlight piece under cursor */
 			HighLightStyle type = _thd.drawstyle & HT_DIR_MASK;
 			assert(type < HT_DIR_END);
-			DrawAutorailSelection(ti, _autorail_type[type][0]);
+			/* draw part of the autorail highlight in blue when dragging for railplanner */
+			DrawAutorailSelection(ti, type, rp_phase == RP_PHASE_INACTIVE || ti->tile == railplanner_tile_start || ti->tile == railplanner_tile_end ? -1 : PALETTE_SEL_TILE_BLUE);
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) {
 			/* autorail highlighting long line */
 			HighLightStyle dir = _thd.drawstyle & HT_DIR_MASK;
@@ -2558,6 +2579,24 @@ void UpdateTileSelection()
 			}
 			_thd.new_pos.x = x1 & ~TILE_UNIT_MASK;
 			_thd.new_pos.y = y1 & ~TILE_UNIT_MASK;
+		}
+	}
+
+	// wipe the old railplan...
+	_path_set::iterator it = PathHighlightSet.begin();
+	while (it != PathHighlightSet.end()) {
+		MarkTileDirtyByTile(it->first);
+		it = PathHighlightSet.erase(it);
+	}
+	// ...and draw a new one
+	_node_map::iterator found;
+	if ((found = AllNodes.find(HashPathNode(railplanner_tile_end, railplanner_dir_end))) != AllNodes.end()) {
+		// don't draw the very last tile
+		PathNode temp = found->second->prev;
+		while (temp != NULL) {
+			PathHighlightSet.insert({ temp->tile, TrackdirToTrack(temp->direction) });
+			MarkTileDirtyByTile(temp->tile);
+			temp = temp->prev;
 		}
 	}
 

@@ -15,6 +15,15 @@
 #include "tile_type.h"
 #include "viewport_type.h"
 
+/* enumerate UI "phases" so we can explicitly track what part of the railplanning process we're up to */
+enum RailplannerPhase {
+	RP_PHASE_INACTIVE,	   ///< Railplanner not in use
+	RP_PHASE_START_HOVER, ///< Railplanner selected, user hovering mouse about to select start point
+	RP_PHASE_START_DRAG,  ///< Mouse down, dragging direction for start
+	RP_PHASE_END_HOVER,   ///< Mouse released for start, now hovering to select end point
+	RP_PHASE_END_DRAG	   ///< Mouse down, dragging direction for end
+};
+
 /** Highlighting draw styles */
 enum HighLightStyle {
 	HT_NONE      = 0x000, ///< default
