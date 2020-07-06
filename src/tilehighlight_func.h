@@ -38,7 +38,7 @@ typedef std::unordered_map<uint64, PathNode> _node_map;
 
 static uint64 HashPathNode(const TileIndex& tile, const Trackdir& dir)
 {
-	return (tile << 4) + dir;
+	return (tile << 4) | dir;
 }
 
 static uint64 HashPathNode(const PathNode& node)
