@@ -1142,8 +1142,7 @@ draw_inner:
 			/* autorail highlight piece under cursor */
 			HighLightStyle type = _thd.drawstyle & HT_DIR_MASK;
 			assert(type < HT_DIR_END);
-			/* draw part of the autorail highlight in blue when dragging for railplanner */
-			DrawAutorailSelection(ti, type, rp_phase == RP_PHASE_INACTIVE || ti->tile == railplanner_tile_start || ti->tile == railplanner_tile_end ? -1 : PALETTE_SEL_TILE_BLUE);
+			DrawAutorailSelection(ti, type);
 		} else if (IsPartOfAutoLine(ti->x, ti->y)) {
 			/* autorail highlighting long line */
 			HighLightStyle dir = _thd.drawstyle & HT_DIR_MASK;
@@ -1156,7 +1155,8 @@ draw_inner:
 				side = Delta(Delta(TileX(start), TileX(ti->tile)), Delta(TileY(start), TileY(ti->tile)));
 			}
 
-			DrawAutorailSelection(ti, _autorail_type[dir][side]);
+			/* draw part of the autorail highlight in blue when dragging for railplanner */
+			DrawAutorailSelection(ti, _autorail_type[dir][side], rp_phase == RP_PHASE_INACTIVE || ti->tile == railplanner_tile_start || ti->tile == railplanner_tile_end ? -1 : PALETTE_SEL_TILE_BLUE);
 		}
 		return;
 	}
