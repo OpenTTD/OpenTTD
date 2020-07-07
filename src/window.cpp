@@ -864,22 +864,17 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 }
 
 /**
- * Generate repaint events for the visible part of window w within the rectangle.
- *
- * The function goes recursively upwards in the window stack, and splits the rectangle
- * into multiple pieces at the window edges, so obscured parts are not redrawn.
- *
- * @param w Window that needs to be repainted
- * @param left Left edge of the rectangle that should be repainted
- * @param top Top edge of the rectangle that should be repainted
- * @param right Right edge of the rectangle that should be repainted
- * @param bottom Bottom edge of the rectangle that should be repainted
- * @param gfx_dirty Whether to mark gfx dirty
+ * Helper class to hide the implementation details of \c DrawOverlappedWindow, below.
  */
-void DrawOverlappedWindow(Window *w, const int left, const int top, const int right, const int bottom, const bool gfx_dirty)
-{
-	std::function<void(Window const * const, int, int, int, int)> draw_overlapped;
-	draw_overlapped = [&w, &gfx_dirty, &draw_overlapped](Window const * const w_from, int left, int top, int right, int bottom){
+class DrawOverlappedWindowHelper {
+	Window *w; ///< The window being redrawn.
+	bool gfx_dirty; ///< The window is being redrawn within the context of \c DrawDirtyBlocks.
+
+public:
+	DrawOverlappedWindowHelper(Window *w, const bool gfx_dirty) : w(w), gfx_dirty(gfx_dirty) {}
+
+	void operator()(Window const * const w_from, int left, int top, int right, int bottom)
+	{
 		const Window *v;
 		FOR_ALL_WINDOWS_FROM_BACK_FROM(v, w_from) {
 			if (!MayBeShown(v)) {
@@ -898,61 +893,37 @@ void DrawOverlappedWindow(Window *w, const int left, const int top, const int ri
 				continue;
 			}
 
-			/*
-			 * (r >  vl && b >  vt && l <  vr && t <  vb)
-			 */
 			if (left < v_left) {
 				/* Window 'v' occludes window 'w'; split at left edge.
 				 * Draw the non-occluded part recursively, then fall through to trim the rest of the occluded parts.
 				 */
-				draw_overlapped(v->z_front, left, top, v_left, bottom);
+				(*this)(v->z_front, left, top, v_left, bottom);
 				left = v_left;
 			}
 
-			/*
-			 * (r >  vl && b >  vt && l <  vr && t <  vb) && (l >= vl)
-			 * ==>
-			 * (vl <= l <  r && vt <  b && l <  vr && t <  vb)
-			 */
 			if (right > v_right) {
 				/* Window 'v' occludes window 'w'; split at right edge. */
-				draw_overlapped(v->z_front, v_right, top, right, bottom);
+				(*this)(v->z_front, v_right, top, right, bottom);
 				right = v_right;
 			}
 
-			/*
-			 * (vl <= l <  r && vt <  b && l <  vr && t <  vb) && (r <= vr)
-			 * ==>
-			 * (vl <= l <  r <= vr && vt <  b && t <  vb)
-			 */
 			if (top < v_top) {
 				/* Window 'v' occludes window 'w'; split at top edge. */
-				draw_overlapped(v->z_front, left, top, right, v_top);
+				(*this)(v->z_front, left, top, right, v_top);
 				top = v_top;
 			}
 
-			/*
-			 * (vl <= l <  r <= vr && vt <  b && t <  vb) && (t >= vt)
-			 * ==>
-			 * (vl <= l <  r <= vr && vt <= t <  b && t <  vb)
-			 */
 			if (bottom > v_bottom) {
 				/* Window 'v' occludes window 'w'; split at bottom edge. */
-				draw_overlapped(v->z_front, left, v_bottom, right, bottom);
+				(*this)(v->z_front, left, v_bottom, right, bottom);
 				bottom = v_bottom;
 			}
-
-			/*
-			 * (vl <= l <  r <= vr && vt <= t <  b && t <  vb) && (b <= vb)
-			 * ==>
-			 * (vl <= l <  r <= vr && vt <= t <  b <= vb)
-			 */
 
 			/* Window 'v' completely occludes (the dirty part of) window 'w' */
 			return;
 		}
 
-		/* Setup blitter, and dispatch a repaint event to window *wz */
+		/* Setup blitter, and dispatch a repaint event to window *w */
 		DrawPixelInfo *dp = _cur_dpi;
 		dp->width = right - left;
 		dp->height = bottom - top;
@@ -961,13 +932,30 @@ void DrawOverlappedWindow(Window *w, const int left, const int top, const int ri
 		dp->pitch = _screen.pitch;
 		dp->dst_ptr = BlitterFactory::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
 		dp->zoom = ZOOM_LVL_NORMAL;
-		w->OnPaint();
-		if (gfx_dirty) {
+		this->w->OnPaint();
+		if (this->gfx_dirty) {
 			VideoDriver::GetInstance()->MakeDirty(left, top, right - left, bottom - top);
 			UnsetDirtyBlocks(left, top, right, bottom);
 		}
-	};
-	draw_overlapped(w->z_front, left, top, right, bottom);
+	}
+};
+
+/**
+ * Generate repaint events for the visible part of window w within the rectangle.
+ *
+ * The function goes recursively upwards in the window stack, and splits the rectangle
+ * into multiple pieces at the window edges, so obscured parts are not redrawn.
+ *
+ * @param w Window that needs to be repainted
+ * @param left Left edge of the rectangle that should be repainted
+ * @param top Top edge of the rectangle that should be repainted
+ * @param right Right edge of the rectangle that should be repainted
+ * @param bottom Bottom edge of the rectangle that should be repainted
+ * @param gfx_dirty Whether to mark gfx dirty
+ */
+void DrawOverlappedWindow(Window *w, const int left, const int top, const int right, const int bottom, const bool gfx_dirty)
+{
+	DrawOverlappedWindowHelper(w, gfx_dirty)(w->z_front, left, top, right, bottom);
 }
 
 /**
