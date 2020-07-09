@@ -923,14 +923,13 @@ public:
 		}
 
 		/* Setup blitter, and dispatch a repaint event to window *w */
-		DrawPixelInfo *dp = _cur_dpi;
-		dp->width = right - left;
-		dp->height = bottom - top;
-		dp->left = left - this->w->left;
-		dp->top = top - this->w->top;
-		dp->pitch = _screen.pitch;
-		dp->dst_ptr = BlitterFactory::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
-		dp->zoom = ZOOM_LVL_NORMAL;
+		_cur_dpi->width = right - left;
+		_cur_dpi->height = bottom - top;
+		_cur_dpi->left = left - this->w->left;
+		_cur_dpi->top = top - this->w->top;
+		_cur_dpi->pitch = _screen.pitch;
+		_cur_dpi->dst_ptr = BlitterFactory::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
+		_cur_dpi->zoom = ZOOM_LVL_NORMAL;
 		this->w->OnPaint();
 		if (this->gfx_dirty) {
 			VideoDriver::GetInstance()->MakeDirty(left, top, right - left, bottom - top);
