@@ -32,6 +32,10 @@ CargoTypes _cargo_mask;
  * Bitmask of real cargo types available. Phony cargoes like regearing cargoes are excluded.
  */
 CargoTypes _standard_cargo_mask;
+/**
+ * Bitmask of real cargo types available for cost-sorted cargo list.
+ */
+CargoTypes _cost_cargo_mask;
 
 /**
  * Set up the default cargo types for the given landscape type.
@@ -131,6 +135,7 @@ SpriteID CargoSpec::GetCargoIcon() const
 }
 
 std::vector<const CargoSpec *> _sorted_cargo_specs; ///< Cargo specifications sorted alphabetically by name.
+std::vector<const CargoSpec *> _cost_sorted_cargo_specs; ///< Cargo specifications sorted by cost.
 uint8 _sorted_standard_cargo_specs_size;            ///< Number of standard cargo specifications stored in the _sorted_cargo_specs array.
 
 
@@ -166,18 +171,32 @@ static bool CargoSpecClassSorter(const CargoSpec * const &a, const CargoSpec * c
 	return res < 0;
 }
 
+/** Sort cargo specifications by their cost. */
+static bool CargoSpecCostSorter(const CargoSpec* const& a, const CargoSpec* const& b)
+{
+
+	int res = b->initial_payment - a->initial_payment; // Sort by cost (descending).
+
+	/* If the costs are equal, sort by cargo bitnum. */
+	return (res != 0) ? res < 0 : (a->bitnum < b->bitnum);
+}
+
 /** Initialize the list of sorted cargo specifications. */
 void InitializeSortedCargoSpecs()
 {
 	_sorted_cargo_specs.clear();
+	_cost_sorted_cargo_specs.clear();
 	const CargoSpec *cargo;
 	/* Add each cargo spec to the list. */
 	FOR_ALL_CARGOSPECS(cargo) {
 		_sorted_cargo_specs.push_back(cargo);
+		_cost_sorted_cargo_specs.push_back(cargo);
 	}
 
 	/* Sort cargo specifications by cargo class and name. */
 	std::sort(_sorted_cargo_specs.begin(), _sorted_cargo_specs.end(), &CargoSpecClassSorter);
+	/* Sort by cost */
+	std::sort(_cost_sorted_cargo_specs.begin(), _cost_sorted_cargo_specs.end(), &CargoSpecCostSorter);
 
 	_standard_cargo_mask = 0;
 
@@ -186,6 +205,15 @@ void InitializeSortedCargoSpecs()
 		if (cargo->classes & CC_SPECIAL) break;
 		_sorted_standard_cargo_specs_size++;
 		SetBit(_standard_cargo_mask, cargo->Index());
+	}
+
+	_cost_cargo_mask = 0;
+	_sorted_standard_cargo_specs_size = 0;
+	FOR_ALL_COST_SORTED_CARGOSPECS(cargo)
+	{
+		if (cargo->classes & CC_SPECIAL) break;
+		_sorted_standard_cargo_specs_size++;
+		SetBit(_cost_cargo_mask, cargo->Index());
 	}
 }
 

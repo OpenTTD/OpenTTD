@@ -130,6 +130,7 @@ private:
 
 extern CargoTypes _cargo_mask;
 extern CargoTypes _standard_cargo_mask;
+extern CargoTypes _cost_cargo_mask;
 
 void SetupCargoForClimate(LandscapeID l);
 CargoID GetCargoIDByLabel(CargoLabel cl);
@@ -137,6 +138,7 @@ CargoID GetCargoIDByBitnum(uint8 bitnum);
 
 void InitializeSortedCargoSpecs();
 extern std::vector<const CargoSpec *> _sorted_cargo_specs;
+extern std::vector<const CargoSpec *> _cost_sorted_cargo_specs;
 extern uint8 _sorted_standard_cargo_specs_size;
 
 /**
@@ -169,5 +171,19 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
  * @see CargoSpec
  */
 #define FOR_ALL_SORTED_STANDARD_CARGOSPECS(var) for (uint8 index = 0; index < _sorted_standard_cargo_specs_size && (var = _sorted_cargo_specs[index], true); index++)
+
+/**
+ * As above but sorted by cost.
+ * @param var Reference getting the cargospec.
+ * @see CargoSpec
+ */
+#define FOR_ALL_COST_SORTED_CARGOSPECS(var) for (uint8 index = 0; index < _cost_sorted_cargo_specs.size() && (var = _cost_sorted_cargo_specs[index], true) ; index++)
+
+/**
+ * As above but sorted by cost.
+ * @param var Reference getting the cargospec.
+ * @see CargoSpec
+ */
+#define FOR_ALL_COST_SORTED_STANDARD_CARGOSPECS(var) for (uint8 index = 0; index < _sorted_standard_cargo_specs_size && (var = _cost_sorted_cargo_specs[index], true); index++)
 
 #endif /* CARGOTYPE_H */
