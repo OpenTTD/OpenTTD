@@ -10,6 +10,7 @@
 #ifndef TUNNEL_MAP_H
 #define TUNNEL_MAP_H
 
+#include "rail_map.h"
 #include "road_map.h"
 
 
@@ -79,7 +80,9 @@ static inline void MakeRailTunnel(TileIndex t, Owner o, DiagDirection d, RailTyp
 	_m[t].m5 = TRANSPORT_RAIL << 2 | d;
 	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = 0;
-	_me[t].m8 = r;
+	_me[t].m8 = 0;
+	SetRailType(t, r);
+	SetRoadTypes(t, INVALID_ROADTYPE, INVALID_ROADTYPE);
 }
 
 #endif /* TUNNEL_MAP_H */
