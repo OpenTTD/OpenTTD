@@ -164,7 +164,7 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}X
 STR_ABBREV_ALL                                                  :{TINY_FONT}모두
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{G=m}승객 {COMMA}{NBSP}명
+STR_PASSENGERS                                                  :{G=m}{COMMA}{NBSP}명
 STR_BAGS                                                        :{G=f}{COMMA}{NBSP}자루
 STR_TONS                                                        :{G=m}{COMMA}{NBSP}톤
 STR_LITERS                                                      :{G=f}{COMMA}{NBSP}리터
