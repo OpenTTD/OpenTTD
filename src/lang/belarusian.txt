@@ -670,6 +670,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Ґенэ
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Ґенэрацыя гарадоў
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Ґенэрацыя прамысловасьці
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Будаўніцтва аўтамабільных дарог
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Будаўніцтва трамвайных шляхоў
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Пасадзіць дрэвы. Пры націснутым Shift — ацэнка кошту высадкі.
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Паставіць метку
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Разьмясьціць аб'ект. Пры націснутым Shift — ацэнка кошту будаўніцтва.
@@ -778,6 +779,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Гукі/муз
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Апошняе паведамленьне
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Гісторыя паведамленьняў
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Выдаліць усе паведамленьні
 ############ range ends here
 
 ############ range for about menu starts
@@ -1172,6 +1174,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}З'явіўся новы {STRING}!  —  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Адчыніць акно групаў транспарта і абраць групу, да якой прыналежыць гэты транспартны сродак
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} больш не прымае {STRING.acc}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} больш не прымае {STRING.acc} ды {STRING.acc}
@@ -1240,6 +1243,8 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Іранскі 
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексіканскі песа (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новы тайваньскі даляр (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Кітайскі юань (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Ганконскі даляр (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Індыйская рупія (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Дарожны рух
@@ -1303,7 +1308,9 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Падвоен�
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Пачацвяроны
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Памер шрыфта
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Абярыце памер шрыфта, выкарыстоўванага ў гульні
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Звычайны
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Набор базавай ґрафікі
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбар базавага набору ґрафічных аб'ектаў
@@ -1487,6 +1494,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Дазволі�
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Дазволіць зьмену ляндшафту пад будынкамі й рэйкамi, не выдаляючы іx
 STR_CONFIG_SETTING_CATCHMENT                                    :Зона пакрыцьця залежыць ад тыпу станцыі: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Мець розныя памеры тэрыторыі, на якіх розныя тыпы станцыяў ды аэрапортаў зьбіраюць пасажыраў і грузы.
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Пры ўключэнні - прадпрыемствы, якія маюць уласныя станцыі пагрузкі (напрыклад, нафтавыя платформы), змогуць абслугоўвацца таксама і станцыямі гульцоў, пабудаванымі паблізу.{}Пры адключэнні - прадпрыемствы будуць рабіць пагрузку толькі праз свае ўнутраныя станцыі, і гэтыя станцыі будуць абслугоўваць толькі сваё прадпрыемства.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Дазволіць знос амаль усіх гарадзкіх аб'ектаў: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Спрасьціць знос гарадзкіх будынкаў ды інфраструктуры
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Максымальная даўжыня цягнiкоў: {STRING}
@@ -1572,6 +1580,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Зьме
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Утрыманьне iнфраструктуры: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Калі ўключана, інфраструктура патрабуе выдаткаў на ўтрыманьне. Кошт расьце прапарцыянальна памерам сеткі, таму гэта больш датычыць вялікіх кампаніяў, ніж малых.
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Фірмовы колер кампаніі: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Малыя аэрапорты ніколі не састарэюць: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Уключэньне гэтай наладкі робіць усе віды аэрапортаў даступнымі назаўжды.
@@ -1783,6 +1792,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Дазволі�
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Дазволіць кампутарным гульцам (штучнаму інтэлекту) браць удзел у сеткавых гульнях.
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Колькасьць апэрацыяў перад спыненьнем скрыптоў: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Максымальная колькасьць вылічэньняў, якія скрыпт можа выканаць за раз.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Макс. аб'ём памяці для скрыпту: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} МіБ
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Інтэрвал абслугоўваньня ў адсотках (%): {STRING}
@@ -1842,6 +1852,8 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Цалкам
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Каляровыя ґазэты з'яўляюцца ў {STRING} годзе
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Год, у якім ґазэты пачынаюць друкавацца каляровымі. Да гэтага году — выходзяць чорна-белымі.
 STR_CONFIG_SETTING_STARTING_YEAR                                :Год пачатку гульні: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ніколі
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Уключыць лагодную эканоміку (больш дробных зьменаў): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Калі ўключана, вытворчасьць прадпрыемстваў зьмяняецца часьцей ды малымі крокамі. Гэтая наладка звычайна не дае эфэкту, калі тыпы прадпрыемстваў вызначае набор новай ґрафікі (NewGRF).
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дазволіць купляць акцыі іншых кампаніяў: {STRING}
@@ -1888,7 +1900,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Уключэн�
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :забаронена
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :дазволена
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :дазволена з выбарам дарожнай сеткі
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Колькасць грузаў і пасажыраў у гарадах: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Залежнасць колькасці грузаў і пасажыраў ад памеру горада.{}Лінейная: у горадзе двухразовага памеру з'яўляецца ў 2 разу больш пасажыраў.{}Квадратычная: у горадзе двухразовага памеру з'яўляецца ў 4 разу больш пасажыраў.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :квадратычная залежнасьць (арыґінальная)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :лінейная залежнасць
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Расстаноўка дрэваў у гульні: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Кантроль адвольнага з'яўленьня дрэваў падчас гульні. Гэта можа закрануць прадпрыемствы, якія залежаць ад росту дрэваў, напрыклад, пільні.
@@ -2455,6 +2470,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Няпр
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Сэрвэр перапоўнены
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Доступ на гэты сэрвэр вам забаронены
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас выкінулі з гульні
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Прычына: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Махлярства не дазволена на гэтым сэрвэры
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы дасылалi да сэрвэра занадта шмат камандаў
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Вы задоўга ня можаце ўвесьцi пароль
@@ -2937,6 +2953,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Прымае: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Тып чыгуначнага палатна: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Тып дарожнага палатна: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Макс. хуткасьць чыгункi: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Макс. хуткасьць аўтамабіляў: {LTBLUE}{VELOCITY}
 
@@ -3057,15 +3074,22 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Разлік гульнявога цыклу:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Рух паветраных судоў:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Затрымка ґрафа размеркаваньня:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}Усяго скрыптоў/ШІ:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Гульнявы скрыпт:
 STR_FRAMERATE_AI                                                :{BLACK}   ШІ {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Разлік гульнявога цыклу
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Рух аўтамабіляў
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Рух караблёў
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Рух паветраных судоў
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Разлік зменаў на мапе
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Затрымка ґрафа размеркаваньня
+STR_FRAMETIME_CAPTION_DRAWING                                   :Адмалёўка адлюстравання
 STR_FRAMETIME_CAPTION_VIDEO                                     :Вывад на экран
 STR_FRAMETIME_CAPTION_SOUND                                     :Апрацоўка гуку
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Агульны час выканання скрыптоў
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Час выканання гульнявога скрыпту
 STR_FRAMETIME_CAPTION_AI                                        :ШІ {NUM} {STRING}
 ############ End of leave-in-this-order
 
@@ -3214,6 +3238,7 @@ STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Палі
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Састарэлая (W)
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Састарэлая (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Парамэтры: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :Няма
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Няма даступнай інфармацыі
 STR_NEWGRF_SETTINGS_NOT_FOUND                                   :{RED}Файл ня знойдзены
@@ -3294,6 +3319,8 @@ STR_NEWGRF_ERROR_READ_BOUNDS                                    :Чытаньн�
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Запытаныя рэсурсы GRF недаступныя (спрайт {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} быў адключаны з-за {2:STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Недапушчальны/невядомы фармат размяшчэньня спрайтаў (спрайт {3:NUM})
+STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Занадта шмат элементаў у спісе значэнняў (спрайт {3:NUM}, уласцівасць {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Няверная апрацоўка прадукцыі прадпрыемства (спрайт {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Асьцярожна!
@@ -3420,6 +3447,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Дац�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Задачы кампаніі «{COMPANY}»
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глабальныя задачы
+STR_GOALS_SPECTATOR                                             :Агульныя задачы
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Агульныя задачы:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Няма -
@@ -3660,8 +3688,10 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ня�
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} і яшчэ {NUM}...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Сьпіс прадпрыемстваў: пстрычка па назьве паказвае прадпрыемства ў асноўным вакне. Ctrl+клік - у дадатковым вакне.
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Любы
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Адсутнічае
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3758,6 +3788,7 @@ STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Новыя тр
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новы цягнiк
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Новы дарожны транспарт
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новы карабель
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новы авiятранспарт
 ############ range for vehicle availability ends
@@ -3773,6 +3804,7 @@ STR_PURCHASE_INFO_REFITTABLE                                    :(пераабс
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Распрацаваны ў {GOLD}{NUM} г.{BLACK} Тэрмін службы: {GOLD}{COMMA} г{P од ады адоў}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Макс. надзейнасьць: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Кошт: {GOLD}{CURRENCY_LONG}
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Кошт: {GOLD}{CURRENCY_LONG}{BLACK} (Кошт пераабсталявання: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Кошт: {GOLD}{CURRENCY_LONG}{BLACK} Хуткасьць: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Кошт: {GOLD}{CURRENCY_LONG}{BLACK} (Вартасць пераабсталявання: {GOLD}{CURRENCY_LONG}{BLACK}) Хуткасць: {GOLD}{VELOCITY}
@@ -3795,6 +3827,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Купі
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Купіць
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Купіць
 
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Купіць і пераабсталяваць
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Набыць абраны лякаматыў/ваґон. Shift+пстрычка — ацэнка кошту набыцьця.
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Набыць абраны аўтамабіль. Shift+пстрычка — ацэнка кошту набыцьця.
@@ -4442,6 +4475,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Выбр
 STR_AI_LIST_CANCEL                                              :{BLACK}Скасаваць
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не змяняць скрыпт
 
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Бачная вобласць у максімальным набліжэнні
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры {STRING}
@@ -4735,6 +4769,7 @@ STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Не а�
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...тут няма дарогi
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...тут няма трамвайных каляiнаў
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Тут немагчыма змяніць тып дарожнага палатна...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Няма прыдатнага дарожнага палатна
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... несумяшчальны тып трамвайных каляінаў
 
 # Waterway construction errors
