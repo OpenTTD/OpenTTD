@@ -936,6 +936,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso méxicain 
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nouveau Dollar de Taïwan (TWD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Chinois (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar de Hong Kong (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Roupie indienne (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Véhicules routiers
