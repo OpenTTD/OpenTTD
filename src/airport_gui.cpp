@@ -485,6 +485,7 @@ public:
 				this->SetDirty();
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->UpdateSelectSize();
+				SetViewportCatchmentStation(nullptr, true);
 				break;
 
 			case WID_AP_LAYOUT_DECREASE:
