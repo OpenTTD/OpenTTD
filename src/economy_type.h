@@ -15,6 +15,15 @@
 
 typedef OverflowSafeInt64 Money;
 
+/** Type of the game economy. */
+enum EconomyType : uint8 {
+	ET_BEGIN = 0,
+	ET_ORIGINAL = 0,
+	ET_SMOOTH = 1,
+	ET_FROZEN = 2,
+	ET_END = 3,
+};
+
 /** Data of the economy. */
 struct Economy {
 	Money max_loan;                       ///< NOSAVE: Maximum possible loan

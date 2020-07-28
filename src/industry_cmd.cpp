@@ -1736,8 +1736,8 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	MemSetT(i->incoming_cargo_waiting,     0, lengthof(i->incoming_cargo_waiting));
 	MemSetT(i->last_cargo_accepted_at,     0, lengthof(i->last_cargo_accepted_at));
 
-	/* don't use smooth economy for industries using production related callbacks */
-	if (indspec->UsesSmoothEconomy()) {
+	/* Randomize inital production if non-original economy is used and there are no production related callbacks. */
+	if (!indspec->UsesOriginalEconomy()) {
 		for (size_t ci = 0; ci < lengthof(i->production_rate); ci++) {
 			i->production_rate[ci] = min((RandomRange(256) + 128) * i->production_rate[ci] >> 8, 255);
 		}
@@ -2304,7 +2304,7 @@ static void UpdateIndustryStatistics(Industry *i)
 void Industry::RecomputeProductionMultipliers()
 {
 	const IndustrySpec *indspec = GetIndustrySpec(this->type);
-	assert(!indspec->UsesSmoothEconomy());
+	assert(indspec->UsesOriginalEconomy());
 
 	/* Rates are rounded up, so e.g. oilrig always produces some passengers */
 	for (size_t i = 0; i < lengthof(this->production_rate); i++) {
@@ -2604,8 +2604,8 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	bool standard = false;
 	bool suppress_message = false;
 	bool recalculate_multipliers = false; ///< reinitialize production_rate to match prod_level
-	/* don't use smooth economy for industries using production related callbacks */
-	bool smooth_economy = indspec->UsesSmoothEconomy();
+	/* use original economy for industries using production related callbacks */
+	bool original_economy = indspec->UsesOriginalEconomy();
 	byte div = 0;
 	byte mul = 0;
 	int8 increment = 0;
@@ -2640,7 +2640,8 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			}
 		}
 	} else {
-		if (monthly != smooth_economy) return;
+		if (monthly == original_economy) return;
+		if (!original_economy && _settings_game.economy.type == ET_FROZEN) return;
 		if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 	}
 
@@ -2648,7 +2649,16 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		/* decrease or increase */
 		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LT_TEMPERATE;
 
-		if (smooth_economy) {
+		if (original_economy) {
+			if (only_decrease || Chance16(1, 3)) {
+				/* If more than 60% transported, 66% chance of increase, else 33% chance of increase */
+				if (!only_decrease && (i->last_month_pct_transported[0] > PERCENT_TRANSPORTED_60) != Chance16(1, 3)) {
+					mul = 1; // Increase production
+				} else {
+					div = 1; // Decrease production
+				}
+			}
+		} else if (_settings_game.economy.type == ET_SMOOTH) {
 			closeit = true;
 			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 				if (i->produced_cargo[j] == CT_INVALID) continue;
@@ -2698,20 +2708,11 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 					ReportNewsProductionChangeIndustry(i, i->produced_cargo[j], percent);
 				}
 			}
-		} else {
-			if (only_decrease || Chance16(1, 3)) {
-				/* If more than 60% transported, 66% chance of increase, else 33% chance of increase */
-				if (!only_decrease && (i->last_month_pct_transported[0] > PERCENT_TRANSPORTED_60) != Chance16(1, 3)) {
-					mul = 1; // Increase production
-				} else {
-					div = 1; // Decrease production
-				}
-			}
 		}
 	}
 
 	if (!callback_enabled && (indspec->life_type & INDUSTRYLIFE_PROCESSING)) {
-		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && Chance16(1, smooth_economy ? 180 : 2)) {
+		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && Chance16(1, original_economy ? 2 : 180)) {
 			closeit = true;
 		}
 	}
@@ -2934,14 +2935,14 @@ Money IndustrySpec::GetRemovalCost() const
 }
 
 /**
- * Determines whether this industrytype uses smooth economy or whether it uses standard/newgrf production changes.
- * @return true if smooth economy is used.
+ * Determines whether this industrytype uses standard/newgrf production changes.
+ * @return true if original economy is used.
  */
-bool IndustrySpec::UsesSmoothEconomy() const
+bool IndustrySpec::UsesOriginalEconomy() const
 {
-	return _settings_game.economy.smooth_economy &&
-		!(HasBit(this->callback_mask, CBM_IND_PRODUCTION_256_TICKS) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
-		!(HasBit(this->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CHANGE) || HasBit(this->callback_mask, CBM_IND_PROD_CHANGE_BUILD)); // production change callbacks
+	return _settings_game.economy.type == ET_ORIGINAL ||
+		HasBit(this->callback_mask, CBM_IND_PRODUCTION_256_TICKS) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || // production callbacks
+		HasBit(this->callback_mask, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(this->callback_mask, CBM_IND_PRODUCTION_CHANGE) || HasBit(this->callback_mask, CBM_IND_PROD_CHANGE_BUILD); // production change callbacks
 }
 
 IndustrySpec::~IndustrySpec()

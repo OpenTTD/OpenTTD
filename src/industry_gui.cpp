@@ -1080,7 +1080,7 @@ public:
 		const Industry *i = Industry::Get(this->window_number);
 		if (IsProductionAlterable(i)) {
 			const IndustrySpec *ind = GetIndustrySpec(i->type);
-			this->editable = ind->UsesSmoothEconomy() ? EA_RATE : EA_MULTIPLIER;
+			this->editable = ind->UsesOriginalEconomy() ? EA_MULTIPLIER : EA_RATE;
 		} else {
 			this->editable = EA_NONE;
 		}
@@ -1100,7 +1100,7 @@ public:
 static void UpdateIndustryProduction(Industry *i)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
-	if (!indspec->UsesSmoothEconomy()) i->RecomputeProductionMultipliers();
+	if (indspec->UsesOriginalEconomy()) i->RecomputeProductionMultipliers();
 
 	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
 		if (i->produced_cargo[j] != CT_INVALID) {
