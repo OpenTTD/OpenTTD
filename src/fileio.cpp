@@ -929,7 +929,10 @@ bool ExtractTar(const char *tar_filename, Subdirectory subdir)
 	const char *dirname = (*it).second.dirname;
 
 	/* The file doesn't have a sub directory! */
-	if (dirname == nullptr) return false;
+	if (dirname == nullptr) {
+		DEBUG(misc, 1, "Extracting %s failed; archive rejected, the contents must be in a sub directory", tar_filename);
+		return false;
+	}
 
 	char filename[MAX_PATH];
 	strecpy(filename, tar_filename, lastof(filename));
