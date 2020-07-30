@@ -170,6 +170,8 @@ void VehicleServiceInDepot(Vehicle *v)
 		v->reliability = v->GetEngine()->reliability;
 		/* Prevent vehicles from breaking down directly after exiting the depot. */
 		v->breakdown_chance /= 4;
+		if (_settings_game.difficulty.vehicle_breakdowns == 1) // reduced breakdown.
+			v->breakdown_chance = 0;
 		v = v->Next();
 	} while (v != nullptr && v->HasEngineType());
 }
