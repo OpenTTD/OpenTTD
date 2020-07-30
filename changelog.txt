@@ -1,3 +1,23 @@
+1.10.3 (2020-08-09)
+------------------------------------------------------------------------
+Change: Also make roadside trees match the tree transparency option (#8245)
+Fix: Center text and icons in the status bar vertically (#8273)
+Fix: [NRT] Set invalid road and tram types for rail tunnel ends (#8269)
+Fix #7980: Properly invalidate mouse-over station coverage highlight (#8263)
+Fix #8250: [NRT] Company infrastructure window always omits last road/tramtype (#8251)
+Fix #8162: [NRT] Improve error message when converting town owned road (#8247)
+Fix #8216: Don't show floating text on autoreplace if cost is 0 (#8244)
+Fix #8129: Crash if a news message expires while viewing the endgame screen (#8243)
+Fix #8221: Use more specific error message when a bridge is too long (#8240)
+Fix #8230: Resolve ".." when opening files in .tar (#8231)
+Fix: A few race conditions in netcode (#8227, #8228, #8229)
+Fix #7838: Crash relating to group creation and renaming (#8223)
+Fix #8104: [SDL2] Fix window resizability when going from fullscreen to windowed mode (#8211)
+Fix: Display banlist's indexes correctly (#8209)
+Fix: Possible desync with subsidy creation (#8159)
+Fix #8131: Draw small bridges pillars in more places (#8149)
+
+
 1.10.2 (2020-06-01)
 ------------------------------------------------------------------------
 Add: Ubuntu 20.04 packages (#8127)
