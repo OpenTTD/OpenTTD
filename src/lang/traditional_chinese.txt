@@ -470,6 +470,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :切換主控台
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/遊戲腳本除錯
 STR_ABOUT_MENU_SCREENSHOT                                       :擷取畫面
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :顯示幀率
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :關於「OpenTTD」
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :子畫面定位工具
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :切換邊界框
@@ -642,6 +643,7 @@ STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}沒有可用音樂
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}「{STRING}」
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}音軌
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}標題
