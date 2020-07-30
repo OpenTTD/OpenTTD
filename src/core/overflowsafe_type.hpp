@@ -11,21 +11,63 @@
 #define OVERFLOWSAFE_TYPE_HPP
 
 #include "math_func.hpp"
+#include "../stdafx.h"
+#include <limits>
 
 /**
  * Overflow safe template for integers, i.e. integers that will never overflow
  * you multiply the maximum value with 2, or add 2, or subtract something from
  * the minimum value, etc.
- * @param T     the type these integers are stored with.
- * @param T_MAX the maximum value for the integers.
- * @param T_MIN the minimum value for the integers.
+ * @tparam T     the type these integers are stored with.
+ * @tparam T_MAX the maximum value for the integers.
+ * @tparam T_MIN the minimum value for the integers.
  */
 template <class T, T T_MAX, T T_MIN>
 class OverflowSafeInt
 {
 private:
+	/** Unsigned datatype for comparing absolute values. */
+	typedef typename std::make_unsigned<T>::type U;
+
 	/** The non-overflow safe backend to store the value in. */
 	T m_value;
+
+	/**
+	 * Overflow-safe version of the absolute value function.
+	 */
+	static inline U abs(const T value)
+	{
+		/* Verify that the datatypes meet the requirements (U must hold all absolute values of T) */
+		assert_compile(std::numeric_limits<U>::max() >= static_cast<U>(std::numeric_limits<T>::max()));
+		assert_compile(std::numeric_limits<U>::max() >= static_cast<U>(std::numeric_limits<T>::max()) + static_cast<U>(((std::numeric_limits<T>::min() + std::numeric_limits<T>::max()) < 0) ? -(std::numeric_limits<T>::min() + std::numeric_limits<T>::max()) : (std::numeric_limits<T>::min() + std::numeric_limits<T>::max())));
+
+		/* Test for positive value */
+		if (likely(value >= 0)) return static_cast<U>(value);
+
+		/* Test for "normal" negative value */
+		if (likely(std::numeric_limits<T>::max() + value >= 0)) return static_cast<U>(-value);
+
+		/* Handle "abnormal" negative value */
+		U delta = static_cast<U>(-(std::numeric_limits<T>::max() + value));
+		return static_cast<U>(std::numeric_limits<T>::max()) + delta;
+	}
+
+	/**
+	 * Return the saturation limit in the given direction.
+	 */
+	static inline T Limit(const T predicate)
+	{
+		return (predicate > 0) ? T_MAX : T_MIN;
+	}
+
+	/**
+	 * Return the saturation limit in the opposite direction.
+	 */
+	static inline T InvLimit(const T predicate)
+	{
+		return (predicate < 0) ? T_MAX : T_MIN;
+	}
+
 public:
 	OverflowSafeInt() : m_value(0) { }
 
@@ -34,7 +76,14 @@ public:
 
 	inline OverflowSafeInt& operator = (const OverflowSafeInt& other) { this->m_value = other.m_value; return *this; }
 
-	inline OverflowSafeInt operator - () const { return OverflowSafeInt(-this->m_value); }
+	inline OverflowSafeInt operator - () const
+	{
+		if (unlikely(abs(this->m_value) > abs(InvLimit(this->m_value)))) {
+			return OverflowSafeInt(InvLimit(this->m_value));
+		} else {
+			return OverflowSafeInt(-this->m_value);
+		}
+	}
 
 	/**
 	 * Safe implementation of addition.
@@ -44,9 +93,9 @@ public:
 	 */
 	inline OverflowSafeInt& operator += (const OverflowSafeInt& other)
 	{
-		if ((T_MAX - abs(other.m_value)) < abs(this->m_value) &&
-				(this->m_value < 0) == (other.m_value < 0)) {
-			this->m_value = (this->m_value < 0) ? T_MIN : T_MAX ;
+		if (likely(signum(this->m_value) == signum(other.m_value)) &&
+				unlikely((abs(Limit(this->m_value)) - abs(other.m_value)) < abs(this->m_value))) {
+			this->m_value = Limit(this->m_value);
 		} else {
 			this->m_value += other.m_value;
 		}
@@ -75,10 +124,11 @@ public:
 	 */
 	inline OverflowSafeInt& operator *= (const int factor)
 	{
-		if (factor != 0 && (T_MAX / abs(factor)) < abs(this->m_value)) {
-			 this->m_value = ((this->m_value < 0) == (factor < 0)) ? T_MAX : T_MIN ;
+		const T limit = Limit(signum(this->m_value) * signum(factor));
+		if (likely(factor != 0) && unlikely((abs(limit) / abs(factor)) < abs(this->m_value))) {
+			 this->m_value = limit;
 		} else {
-			this->m_value *= factor ;
+			this->m_value *= factor;
 		}
 		return *this;
 	}
