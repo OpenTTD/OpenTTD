@@ -1062,7 +1062,7 @@ STR_GAME_OPTIONS_CURRENCY_NLG                                   :Нидерла�
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Норвежская крона (NOK)
 STR_GAME_OPTIONS_CURRENCY_PLN                                   :Польский злотый (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Румынский лей (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Российский рубль (RUR)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Российский рубль (старый) (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Словенский толар (SIT)
 STR_GAME_OPTIONS_CURRENCY_SEK                                   :Шведская крона (SEK)
 STR_GAME_OPTIONS_CURRENCY_TRY                                   :Турецкая лира (TRY)
@@ -1075,7 +1075,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Южноафр�
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Своя...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Грузинский лари (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Иранский риал (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Российский новый рубль (RUR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Российский рубль (RUR)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Мексиканский песо (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новый тайваньский доллар (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Китайский юань (CNY)
@@ -1641,7 +1641,7 @@ STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Количес�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Максимальное количество операций, которое скрипт может выполнить за один цикл
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Макс. объём памяти для скрипта: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Объём памяти, который может использовать скрипт. При превышении этого объёма скрипт будет принудительно завершён. Для больших карт это значение, возможно, потребуется увеличить.
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} Мбайт
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} МиБ
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Интервал обслуживания в процентах: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Выберите, должно ли техническое обслуживание транспорта выполняться через определённые промежутки времени, либо при снижении надёжности транспортного средства на определённый процент от максимума
@@ -2926,7 +2926,7 @@ STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Кол-�
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Вывод на экран: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Кол-во отображаемых кадров в секунду.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Текущая скорость игры: {DECIMAL}x
-STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Фактическая скорость игры
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Фактическая скорость игры (по сравнению с ожидаемой скоростью при нормальной скорости симуляции).
 STR_FRAMERATE_CURRENT                                           :{WHITE}Сейчас
 STR_FRAMERATE_AVERAGE                                           :{WHITE}В среднем
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Объём памяти
