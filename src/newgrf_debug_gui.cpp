@@ -856,13 +856,17 @@ struct SpriteAlignerWindow : Window {
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
-		if (widget != WID_SA_LIST) return;
-
-		resize->height = max(11, FONT_HEIGHT_NORMAL + 1);
-		resize->width  = 1;
-
-		/* Resize to about 200 pixels (for the preview) */
-		size->height = (1 + 200 / resize->height) * resize->height;
+		switch (widget) {
+			case WID_SA_SPRITE:
+				size->height = ScaleGUITrad(200);
+				break;
+			case WID_SA_LIST:
+				resize->height = max(11, FONT_HEIGHT_NORMAL + 1);
+				resize->width  = 1;
+				break;
+			default:
+				break;
+		}
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
