@@ -2318,7 +2318,7 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Växla g
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gör object osynliga istället för genomskinliga
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legend för Godsflöden
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legend för godsflöden
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Alla
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Inga
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Välj företag att visa
