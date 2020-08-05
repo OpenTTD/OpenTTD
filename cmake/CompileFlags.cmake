@@ -23,8 +23,10 @@ macro(compile_flags)
         # C++11 standard". We need C++11 for the way we use threads.
         add_compile_options(/Zc:rvalueCast)
 
-        # Enable multi-threaded compilation.
-        add_compile_options(/MP)
+        if (NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+            # Enable multi-threaded compilation.
+            add_compile_options(/MP)
+        endif(NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 
         # Add DPI manifest to project; other WIN32 targets get this via ottdres.rc
         list(APPEND GENERATED_SOURCE_FILES "${CMAKE_SOURCE_DIR}/os/windows/openttd.manifest")
