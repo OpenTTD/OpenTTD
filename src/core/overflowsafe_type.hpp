@@ -278,7 +278,8 @@ public:
 	friend inline bool operator <= (const A& a, const OverflowSafeInt& b) { return cmp(a, b) <= 0; }
 
 	/* Typecasting operators */
-	inline operator intmax_t () const { return this->m_value; }
+	inline T RawValue() const                  { return this->m_value; }
+	inline explicit operator intmax_t () const { return this->m_value; }
 };
 
 /* Declare convenience typedefs */

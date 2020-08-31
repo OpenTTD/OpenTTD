@@ -200,6 +200,23 @@ static inline uint ClampU(const uint a, const uint min, const uint max)
 }
 
 /**
+ * Reduce one integral type to another integral type by using saturation arithmetic
+ *
+ * @tparam T The type to reduce to
+ * @tparam U The type to reduce from
+ * @param a The value to reduce
+ * @return The value, clamped to fit within the result type
+ * @see Clamp(int, int, int)
+ */
+template <class T, class U, class = typename std::enable_if<std::is_integral<T>::value && std::is_integral<U>::value>::type>
+static inline const T ClampTo(const U a)
+{
+	const U min_val = static_cast<U>(max(static_cast<intmax_t>(std::numeric_limits<T>::min()), static_cast<intmax_t>(std::numeric_limits<U>::min())));
+	const U max_val = static_cast<U>(min(static_cast<uintmax_t>(std::numeric_limits<T>::max()), static_cast<uintmax_t>(std::numeric_limits<U>::max())));
+	return static_cast<T>(Clamp<U>(a, min_val, max_val));
+}
+
+/**
  * Reduce a signed 64-bit int to a signed 32-bit one
  *
  * This function clamps a 64-bit integer to a 32-bit integer.
@@ -209,29 +226,29 @@ static inline uint ClampU(const uint a, const uint min, const uint max)
  * this value is returned. In all other cases the 64-bit value 'fits' in a
  * 32-bits integer field and so the value is casted to int32 and returned.
  *
- * @param a The 64-bit value to clamps
+ * @tparam T The type of the value to clamp (default int64)
+ * @param a The 64-bit value to clamp
  * @return The 64-bit value reduced to a 32-bit value
  * @see Clamp(int, int, int)
  */
-static inline int32 ClampToI32(const int64 a)
+template <class T = int64>
+static inline int32 ClampToI32(const T a)
 {
-	return static_cast<int32>(Clamp<int64>(a, INT32_MIN, INT32_MAX));
+	return ClampTo<int32, T>(a);
 }
 
 /**
  * Reduce an unsigned 64-bit int to an unsigned 16-bit one
  *
+ * @tparam T The type of the value to clamp (default uint64)
  * @param a The 64-bit value to clamp
  * @return The 64-bit value reduced to a 16-bit value
  * @see ClampU(uint, uint, uint)
  */
-static inline uint16 ClampToU16(const uint64 a)
+template <class T = uint64>
+static inline uint16 ClampToU16(const T a)
 {
-	/* MSVC thinks, in its infinite wisdom, that int min(int, int) is a better
-	 * match for min(uint64, uint) than uint64 min(uint64, uint64). As such we
-	 * need to cast the UINT16_MAX to prevent MSVC from displaying its
-	 * infinite loads of warnings. */
-	return static_cast<uint16>(min<uint64>(a, static_cast<uint64>(UINT16_MAX)));
+	return ClampTo<uint16, T>(a);
 }
 
 /**
