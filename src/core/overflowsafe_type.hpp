@@ -18,6 +18,11 @@
  * Overflow safe template for integers, i.e. integers that will never overflow if
  * you multiply the maximum value with 2, or add 2, or subtract something from
  * the minimum value, etc.
+ *
+ * @note The result of arithmetic between two overflow-safe integers has the same
+ *       type as the widest of the two operands. Arithmetic with a non-overflow-safe
+ *       operand promotes the operand to the same type as the overflow-safe operand.
+ *
  * @tparam T     the type these integers are stored with.
  * @tparam U     the type used for comparing absolute values, defaults to \c std::make_unsigned<T>.
  */
@@ -105,20 +110,33 @@ private:
 
 	/* Comparison functions */
 	static inline constexpr int cmp(const OverflowSafeInt& a, const OverflowSafeInt& b) { return signum((a - b).m_value); }
-	template <class A>
-	static inline constexpr int cmp(const OverflowSafeInt& a, const A&               b) { return (static_cast<intmax_t>(a) < static_cast<intmax_t>(b)) ? -1 : (static_cast<intmax_t>(a) > static_cast<intmax_t>(b)) ? 1 : 0; }
-	template <class A, class = typename std::enable_if<!std::is_base_of<OverflowSafeInt, A>::value>::type>
+
+	template <class A, class = typename std::enable_if<!std::is_base_of<OverflowSafeInt, A>::value && !std::is_integral<A>::value>::type>
+	static inline constexpr int cmp(const OverflowSafeInt& a, const A&               b) { return signum((OverflowSafeInt<intmax_t>(a) - OverflowSafeInt<intmax_t>(b)).RawValue()); }
+
+	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
+	static inline constexpr int cmp(const OverflowSafeInt& a, const I                b)
+	{
+		return
+				unlikely(static_cast<uintmax_t>(std::numeric_limits<I>::max()) > static_cast<uintmax_t>(T_MAX) && b >= (I)0 && static_cast<uintmax_t>(b) > static_cast<uintmax_t>(T_MAX)) ? 1 :
+				unlikely(static_cast<intmax_t> (std::numeric_limits<I>::min()) < static_cast<intmax_t> (T_MIN) &&              static_cast<intmax_t> (b) < static_cast<intmax_t> (T_MIN)) ? -1 :
+				cmp(a, OverflowSafeInt(b));
+	}
+
+	template <class A = intmax_t, class = typename std::enable_if<!std::is_base_of<OverflowSafeInt, A>::value>::type>
 	static inline constexpr int cmp(const A&               a, const OverflowSafeInt& b) { return -cmp(b, a); }
 
 public:
 	OverflowSafeInt() : m_value(0) { }
 
-	OverflowSafeInt(const OverflowSafeInt& other) : m_value(other.m_value) { }
+	template <class A, class B>
+	OverflowSafeInt(const OverflowSafeInt<A, B>& other) : OverflowSafeInt(other.RawValue()) { }
 
-	OverflowSafeInt(const intmax_t int_)
+	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
+	OverflowSafeInt(const I int_)
 	{
-		const bool inside_upper_limit = int_ <= static_cast<intmax_t>(T_MAX);
-		const bool inside_lower_limit = int_ >= static_cast<intmax_t>(T_MIN);
+		const bool inside_upper_limit = static_cast<uintmax_t>(std::numeric_limits<I>::max()) <= static_cast<uintmax_t>(T_MAX) || int_ <= (I)0 || static_cast<uintmax_t>(int_) <= static_cast<uintmax_t>(T_MAX);
+		const bool inside_lower_limit = static_cast<intmax_t> (std::numeric_limits<I>::min()) >= static_cast<intmax_t> (T_MIN) || int_ >= (I)0 || static_cast<intmax_t> (int_) >= static_cast<intmax_t> (T_MIN);
 		this->m_value = unlikely(!inside_upper_limit) ? T_MAX : unlikely(!inside_lower_limit) ? T_MIN : static_cast<T>(int_);
 	}
 
@@ -153,18 +171,37 @@ public:
 		return *this;
 	}
 
-	/* Operators for addition */
-	template <class A = OverflowSafeInt, class = typename std::enable_if<std::is_base_of<OverflowSafeInt, A>::value || std::is_integral<A>::value>::type>
-	friend inline OverflowSafeInt  operator +  (       OverflowSafeInt a, const A& b) { return a += b; }
-	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
-	friend inline OverflowSafeInt  operator +  (const I  a, const OverflowSafeInt& b) { return b + a; }
+	/* Operators for addition of overflow-safe integers */
+	template <class A = T, class B = U, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) <= static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt       operator + (      OverflowSafeInt  a, const OverflowSafeInt<A, B>& b) { return a += b; }
+	template <class A = intmax_t, class B = uintmax_t, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) > static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt<A, B> operator + (const OverflowSafeInt& a,       OverflowSafeInt<A, B>  b) { return b += a; }
 
-	/* Operators for subtraction */
-	inline OverflowSafeInt& operator -= (const OverflowSafeInt& other) { return *this += (-other); }
-	template <class A = OverflowSafeInt, class = typename std::enable_if<std::is_base_of<OverflowSafeInt, A>::value || std::is_integral<A>::value>::type>
-	friend inline OverflowSafeInt  operator -  (       OverflowSafeInt a, const A& b) { return a -= b; }
+	/* Operators for addition of non-overflow-safe integers */
 	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
-	friend inline OverflowSafeInt  operator -  (const I  a, const OverflowSafeInt& b) { return -b + a; }
+	friend inline OverflowSafeInt operator + (      OverflowSafeInt  a, const I  b) { return a += b; }
+	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
+	friend inline OverflowSafeInt operator + (const I  a,       OverflowSafeInt  b) { return b += a; }
+
+	/**
+	 * Safe implementation of subtraction.
+	 * @param other the amount to subtract
+	 * @note when the subtraction would yield more than T_MAX (or less than T_MIN),
+	 *       it will be T_MAX (respectively T_MIN).
+	 */
+	inline OverflowSafeInt& operator -= (const OverflowSafeInt& other) { return *this += (-other); }
+
+	/* Operators for subtraction of overflow-safe integers */
+	template <class A = T, class B = U, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) <= static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt       operator - (      OverflowSafeInt  a, const OverflowSafeInt<A, B>& b) { return a -= b; }
+	template <class A = intmax_t, class B = uintmax_t, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) > static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt<A, B> operator - (const OverflowSafeInt& a, const OverflowSafeInt<A, B>& b) { return -b + a; }
+
+	/* Operators for subtraction of non-overflow-safe integers */
+	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
+	friend inline OverflowSafeInt operator - (      OverflowSafeInt  a, const I  b) { return a -= b; }
+	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
+	friend inline OverflowSafeInt operator - (const I  a, const OverflowSafeInt& b) { return -b + a; }
 
 	/* Operators for increment and decrement */
 	inline OverflowSafeInt& operator ++ () { this->m_value += unlikely(this->m_value >= T_MAX) ? 0 : 1; return *this; }
@@ -189,11 +226,17 @@ public:
 		return *this;
 	}
 
-	/* Operators for multiplication */
-	template <class A = OverflowSafeInt, class = typename std::enable_if<std::is_base_of<OverflowSafeInt, A>::value || std::is_integral<A>::value>::type>
-	friend inline OverflowSafeInt  operator *  (       OverflowSafeInt a, const A& b) { return a *= b; }
+	/* Operators for multiplication of overflow-safe integers */
+	template <class A = T, class B = U, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) <= static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt       operator * (      OverflowSafeInt  a, const OverflowSafeInt<A, B>& b) { return a *= b; }
+	template <class A = intmax_t, class B = uintmax_t, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) > static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt<A, B> operator * (const OverflowSafeInt& a,       OverflowSafeInt<A, B>  b) { return b *= a; }
+
+	/* Operators for multiplication of non-overflow-safe integers */
 	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
-	friend inline OverflowSafeInt  operator *  (const I  a, const OverflowSafeInt& b) { return b * a; }
+	friend inline OverflowSafeInt operator * (      OverflowSafeInt  a, const I  b) { return a *= b; }
+	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
+	friend inline OverflowSafeInt operator * (const I  a,       OverflowSafeInt  b) { return b *= a; }
 
 	/**
 	 * Safe implementation of division.
@@ -210,11 +253,17 @@ public:
 		return *this;
 	}
 
-	/* Operators for division */
-	template <class A = OverflowSafeInt, class = typename std::enable_if<std::is_base_of<OverflowSafeInt, A>::value || std::is_integral<A>::value>::type>
-	friend inline OverflowSafeInt  operator /  (       OverflowSafeInt a, const A& b) { return a /= b; }
+	/* Operators for division of overflow-safe integers */
+	template <class A = T, class B = U, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) <= static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt       operator / (      OverflowSafeInt  a, const OverflowSafeInt<A, B>& b) { return a /= b; }
+	template <class A = intmax_t, class B = uintmax_t, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) > static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt<A, B> operator / (const OverflowSafeInt& a, const OverflowSafeInt<A, B>& b) { return OverflowSafeInt<A, B>(a) / b; }
+
+	/* Operators for division of non-overflow-safe integers */
 	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
-	friend inline OverflowSafeInt  operator /  (const I  a, const OverflowSafeInt& b) { return OverflowSafeInt(a) / b; }
+	friend inline OverflowSafeInt operator / (      OverflowSafeInt  a, const I  b) { return a /= b; }
+	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
+	friend inline OverflowSafeInt operator / (const I  a, const OverflowSafeInt& b) { return OverflowSafeInt(a) / b; }
 
 	/**
 	 * Safe implementation of modulo.
@@ -227,11 +276,17 @@ public:
 		return *this -= ((*this / divisor) * divisor);
 	}
 
-	/* Operators for modulo */
-	template <class A = OverflowSafeInt, class = typename std::enable_if<std::is_base_of<OverflowSafeInt, A>::value || std::is_integral<A>::value>::type>
-	friend inline OverflowSafeInt  operator %  (       OverflowSafeInt a, const A& b) { return a %= b; }
+	/* Operators for modulo of overflow-safe integers */
+	template <class A = T, class B = U, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) <= static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt       operator % (      OverflowSafeInt  a, const OverflowSafeInt<A, B>& b) { return a %= b; }
+	template <class A = intmax_t, class B = uintmax_t, class = typename std::enable_if<std::is_integral<A>::value && (static_cast<uintmax_t>(std::numeric_limits<A>::max()) > static_cast<uintmax_t>(T_MAX))>::type>
+	friend inline OverflowSafeInt<A, B> operator % (const OverflowSafeInt& a, const OverflowSafeInt<A, B>& b) { return OverflowSafeInt<A, B>(a) % b; }
+
+	/* Operators for modulo of non-overflow-safe integers */
 	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
-	friend inline OverflowSafeInt  operator %  (const I  a, const OverflowSafeInt& b) { return OverflowSafeInt(a) % b; }
+	friend inline OverflowSafeInt operator % (      OverflowSafeInt  a, const I  b) { return a %= b; }
+	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
+	friend inline OverflowSafeInt operator % (const I  a, const OverflowSafeInt& b) { return OverflowSafeInt(a) % b; }
 
 	/* Safe implementation of left shift.
 	 * @param shift the number of bits to shift by.
