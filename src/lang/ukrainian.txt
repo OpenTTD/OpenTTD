@@ -438,7 +438,7 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :за потуж
 STR_SORT_BY_CARGO_CAPACITY                                      :за місткістю
 STR_SORT_BY_RANGE                                               :за дальністю
 STR_SORT_BY_POPULATION                                          :за населенням
-STR_SORT_BY_RATING                                              :Рейтинг
+STR_SORT_BY_RATING                                              :за рейтингом
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
@@ -1438,6 +1438,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Показув�
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Відображати кількість населення міста поряд з його назвою на карті
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Товщина ліній на графіках: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Товщина ліній на графіках. Тонкі лінії дають більш точне відображення, а товстіші - більш розбірливі.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Показувати назву NewGRF у вікні придбання транспорту: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Додати рядок у вікні придбання транспорту, який показуватиме назву NewGRF обраного транспорту.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Ландшафт: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Пейзажі визначають базові ігрові сценарії з різними вантажами, необхідними для зростання міст. NewGRF'и й ігрові скрипти дозволяють тонший контроль
@@ -3096,7 +3098,7 @@ STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Збер
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Змінити параметри NewGRF
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Закрити
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Очистити
-STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Встановити всім параметрам їх стандартні значення
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Встановити всім параметрам стандартні значення
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Параметр {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Кількість параметрів: {ORANGE}{NUM}
@@ -3245,7 +3247,7 @@ STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Лімі
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Показати місто у центрі екрану. Ctrl+клац мишою відкриє нове вікно з видом на місто
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Місцева влада
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Інформація про місцеву владу
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Змінити назву міста
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Перейменувати місто
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Розширити
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Збільшити розмір міста
@@ -3498,7 +3500,7 @@ STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Змін
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Назва компанії
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Зміна назви компанії
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Ім'я керівника
-STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Зміна імені керівника
+STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Перейменувати керівника
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Купити 25% акцій компанії
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Продати 25% акцій компанії
@@ -3724,7 +3726,7 @@ STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Пере
 # Depot window
 STR_DEPOT_CAPTION                                               :{WHITE}{DEPOT}
 
-STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Змінити назву депо
+STR_DEPOT_RENAME_TOOLTIP                                        :{BLACK}Перейменувати депо
 STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Перейменувати депо
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
@@ -4313,6 +4315,8 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не м�
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Зробити знімок екрану
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Звичайний зняток
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Найбільший масштаб знятку.
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Стандарний масштаб знятку.
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Зняток усієї мапи
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Зняток мапи висот
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Зняток мінімапи
@@ -4446,8 +4450,8 @@ STR_ERROR_ALREADY_LEVELLED                                      :{WHITE}... вж
 STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND                      :{WHITE}Пізніше, міст над цим місцем буде занадто високо.
 
 # Company related errors
-STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Неможливо змінити назву компанії...
-STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Неможливо змінити ім'я керівника...
+STR_ERROR_CAN_T_CHANGE_COMPANY_NAME                             :{WHITE}Неможливо перейменувати компанію...
+STR_ERROR_CAN_T_CHANGE_PRESIDENT                                :{WHITE}Неможливо перейменувати керівника...
 
 STR_ERROR_MAXIMUM_PERMITTED_LOAN                                :{WHITE}... найбільший дозволений розмір позики {CURRENCY_LONG}
 STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Неможливо взяти ще позику...
