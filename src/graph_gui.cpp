@@ -260,8 +260,8 @@ protected:
 	uint GetYLabelWidth(ValuesInterval current_interval, int num_hori_lines) const
 	{
 		/* draw text strings on the y axis */
-		int64 y_label = current_interval.highest.RawValue();
-		int64 y_label_separation = ((current_interval.highest - current_interval.lowest) / num_hori_lines).RawValue();
+		int64 y_label = static_cast<int64>(current_interval.highest);
+		int64 y_label_separation = static_cast<int64>((current_interval.highest - current_interval.lowest) / num_hori_lines);
 
 		uint max_width = 0;
 
@@ -323,7 +323,7 @@ protected:
 
 		uintmax_t interval_size = abs(interval.highest) + abs(interval.lowest);
 		/* Where to draw the X axis. Use floating point to avoid overflowing and results of zero. */
-		x_axis_offset = (int)((r.bottom - r.top) * (double)interval.highest.RawValue() / (double)interval_size);
+		x_axis_offset = (int)((r.bottom - r.top) * (double)interval.highest.Value() / (double)interval_size);
 
 		/* Draw the vertical grid lines. */
 
@@ -358,7 +358,7 @@ protected:
 		assert(this->num_dataset > 0);
 
 		/* draw text strings on the y axis */
-		int64 y_label = interval.highest.RawValue();
+		int64 y_label = static_cast<int64>(interval.highest);
 		int64 y_label_separation = abs(interval.highest - interval.lowest) / num_hori_lines;
 
 		y = r.top - GetCharacterHeight(FS_SMALL) / 2;
@@ -443,7 +443,7 @@ protected:
 						} else {
 							datapoint >>= reduce_range;
 						}
-						y = r.top + x_axis_offset - ((r.bottom - r.top) * datapoint).RawValue() / (interval_size >> reduce_range);
+						y = r.top + x_axis_offset - static_cast<int64>((r.bottom - r.top) * datapoint) / (interval_size >> reduce_range);
 
 						/* Draw the point. */
 						GfxFillRect(x - pointoffs1, y - pointoffs1, x + pointoffs2, y + pointoffs2, colour);

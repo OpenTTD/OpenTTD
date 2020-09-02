@@ -24,7 +24,7 @@
  * @return The greater value or a if equals
  */
 template <typename T>
-static inline T max(const T a, const T b)
+static inline constexpr T max(const T& a, const T& b)
 {
 	return (a >= b) ? a : b;
 }
@@ -40,7 +40,7 @@ static inline T max(const T a, const T b)
  * @return The smaller value or b if equals
  */
 template <typename T>
-static inline T min(const T a, const T b)
+static inline constexpr T min(const T& a, const T& b)
 {
 	return (a < b) ? a : b;
 }
@@ -81,7 +81,7 @@ static inline uint minu(const uint a, const uint b)
  * @return The unsigned value
  */
 template <typename T>
-static inline T abs(const T a)
+static inline constexpr T abs(const T& a)
 {
 	return (a < (T)0) ? -a : a;
 }
@@ -93,7 +93,7 @@ static inline T abs(const T a)
  * @return -1 if a < 0, +1 if a > 0, a otherwise
  */
 template <typename T>
-static inline T signum(const T a)
+static inline constexpr T signum(const T& a)
 {
 	return likely(a > (T)0) ? (T)1 : (likely(a < (T)0) ? (T)(-1) : a);
 }
@@ -149,12 +149,9 @@ static inline T *AlignPtr(T *x, uint n)
  * @see Clamp(int, int, int)
  */
 template <typename T>
-static inline T Clamp(const T a, const T min, const T max)
+static inline constexpr T Clamp(const T& a, const T& min, const T& max)
 {
-	assert(min <= max);
-	if (a <= min) return min;
-	if (a >= max) return max;
-	return a;
+	return unlikely(max < min) ? Clamp<T>(a, max, min) : unlikely(a < min) ? min : unlikely(a > max) ? max : a;
 }
 
 /**
@@ -209,11 +206,11 @@ static inline uint ClampU(const uint a, const uint min, const uint max)
  * @see Clamp(int, int, int)
  */
 template <class T, class U, class = typename std::enable_if<std::is_integral<T>::value && std::is_integral<U>::value>::type>
-static inline const T ClampTo(const U a)
+static inline constexpr T ClampTo(const U& a)
 {
-	const U min_val = static_cast<U>(max(static_cast<intmax_t>(std::numeric_limits<T>::min()), static_cast<intmax_t>(std::numeric_limits<U>::min())));
-	const U max_val = static_cast<U>(min(static_cast<uintmax_t>(std::numeric_limits<T>::max()), static_cast<uintmax_t>(std::numeric_limits<U>::max())));
-	return static_cast<T>(Clamp<U>(a, min_val, max_val));
+	return static_cast<T>(Clamp<U>(a,
+			/* min */ static_cast<U>(max(static_cast<intmax_t>(std::numeric_limits<T>::min()), static_cast<intmax_t>(std::numeric_limits<U>::min()))),
+			/* max */ static_cast<U>(min(static_cast<uintmax_t>(std::numeric_limits<T>::max()), static_cast<uintmax_t>(std::numeric_limits<U>::max())))));
 }
 
 /**

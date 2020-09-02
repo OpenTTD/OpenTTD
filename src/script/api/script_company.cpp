@@ -140,9 +140,9 @@
 	if (quarter > EARLIEST_QUARTER) return -1;
 
 	if (quarter == CURRENT_QUARTER) {
-		return ::Company::Get(company)->cur_economy.delivered_cargo.GetSum<OverflowSafeInt32>().RawValue();
+		return static_cast<int32>(::Company::Get(company)->cur_economy.delivered_cargo.GetSum<OverflowSafeInt32>());
 	}
-	return ::Company::Get(company)->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt32>().RawValue();
+	return static_cast<int32>(::Company::Get(company)->old_economy[quarter - 1].delivered_cargo.GetSum<OverflowSafeInt32>());
 }
 
 /* static */ int32 ScriptCompany::GetQuarterlyPerformanceRating(ScriptCompany::CompanyID company, uint32 quarter)
@@ -234,7 +234,7 @@
 	company = ResolveCompanyID(company);
 	EnforcePrecondition(false, company != COMPANY_INVALID);
 
-	return ScriptObject::DoCommand(0, delta.RawValue(), company | expenses_type << 8 , CMD_CHANGE_BANK_BALANCE);
+	return ScriptObject::DoCommand(0, static_cast<int32>(delta), company | expenses_type << 8 , CMD_CHANGE_BANK_BALANCE);
 }
 
 /* static */ bool ScriptCompany::BuildCompanyHQ(TileIndex tile)
@@ -284,7 +284,7 @@
 {
 	EnforcePrecondition(false, money >= 0);
 	EnforcePrecondition(false, money <= UINT32_MAX);
-	return ScriptObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_money"), money.RawValue(), CMD_CHANGE_COMPANY_SETTING);
+	return ScriptObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_money"), static_cast<uint32>(money), CMD_CHANGE_COMPANY_SETTING);
 }
 
 /* static */ Money ScriptCompany::GetAutoRenewMoney(CompanyID company)

@@ -61,17 +61,17 @@ private:
 	/**
 	 * Overflow-safe version of the absolute value function.
 	 */
-	static inline const U abs(const T value)
+	static inline constexpr U abs(const T value)
 	{
-		/* Test for positive value */
-		if (value >= 0) return static_cast<U>(value);
+		return
+				/* Test for positive value */
+				(value >= 0) ? static_cast<U>(value) :
 
-		/* Test for "normal" negative value */
-		const T delta = T_MAX + value;
-		if (delta >= 0) return static_cast<U>(-value);
+				/* Test for "normal" negative value */
+				(T_MAX + value >= 0) ? static_cast<U>(-value) :
 
-		/* Handle "abnormal" negative value */
-		return static_cast<U>(T_MAX) + static_cast<U>(-delta);
+				/* Handle "abnormal" negative value */
+				static_cast<U>(T_MAX) + static_cast<U>(-(T_MAX + value));
 	}
 
 	/**
@@ -109,17 +109,28 @@ private:
 	}
 
 	/* Comparison functions */
-	static inline constexpr int cmp(const OverflowSafeInt& a, const OverflowSafeInt& b) { return signum((a - b).m_value); }
+	static inline constexpr int cmp(const OverflowSafeInt& a, const OverflowSafeInt& b)
+	{
+		return signum(static_cast<int>(a - b));
+	}
 
 	template <class A, class = typename std::enable_if<!std::is_base_of<OverflowSafeInt, A>::value && !std::is_integral<A>::value>::type>
-	static inline constexpr int cmp(const OverflowSafeInt& a, const A&               b) { return signum((OverflowSafeInt<intmax_t>(a) - OverflowSafeInt<intmax_t>(b)).RawValue()); }
+	static inline constexpr int cmp(const OverflowSafeInt& a, const A&               b)
+	{
+		return signum(static_cast<int>(OverflowSafeInt<intmax_t>(a) - OverflowSafeInt<intmax_t>(b)));
+	}
 
 	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
 	static inline constexpr int cmp(const OverflowSafeInt& a, const I                b)
 	{
 		return
+				/* Test upper limit */
 				unlikely(static_cast<uintmax_t>(std::numeric_limits<I>::max()) > static_cast<uintmax_t>(T_MAX) && b >= (I)0 && static_cast<uintmax_t>(b) > static_cast<uintmax_t>(T_MAX)) ? 1 :
+
+				/* Test lower limit */
 				unlikely(static_cast<intmax_t> (std::numeric_limits<I>::min()) < static_cast<intmax_t> (T_MIN) &&              static_cast<intmax_t> (b) < static_cast<intmax_t> (T_MIN)) ? -1 :
+
+				/* Compare values */
 				cmp(a, OverflowSafeInt(b));
 	}
 
@@ -130,15 +141,10 @@ public:
 	OverflowSafeInt() : m_value(0) { }
 
 	template <class A, class B>
-	OverflowSafeInt(const OverflowSafeInt<A, B>& other) : OverflowSafeInt(other.RawValue()) { }
+	OverflowSafeInt(const OverflowSafeInt<A, B>& other) : OverflowSafeInt(static_cast<A>(other)) { }
 
 	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
-	OverflowSafeInt(const I int_)
-	{
-		const bool inside_upper_limit = static_cast<uintmax_t>(std::numeric_limits<I>::max()) <= static_cast<uintmax_t>(T_MAX) || int_ <= (I)0 || static_cast<uintmax_t>(int_) <= static_cast<uintmax_t>(T_MAX);
-		const bool inside_lower_limit = static_cast<intmax_t> (std::numeric_limits<I>::min()) >= static_cast<intmax_t> (T_MIN) || int_ >= (I)0 || static_cast<intmax_t> (int_) >= static_cast<intmax_t> (T_MIN);
-		this->m_value = unlikely(!inside_upper_limit) ? T_MAX : unlikely(!inside_lower_limit) ? T_MIN : static_cast<T>(int_);
-	}
+	OverflowSafeInt(const I int_) : m_value(ClampTo<T>(int_)) { }
 
 	inline OverflowSafeInt& operator = (const OverflowSafeInt& other) { this->m_value = other.m_value; return *this; }
 
@@ -332,9 +338,13 @@ public:
 	template <class A = intmax_t, class = typename std::enable_if<!std::is_base_of<OverflowSafeInt, A>::value>::type>
 	friend inline bool operator <= (const A& a, const OverflowSafeInt& b) { return cmp(a, b) <= 0; }
 
-	/* Typecasting operators */
-	inline T RawValue() const                  { return this->m_value; }
-	inline explicit operator intmax_t () const { return this->m_value; }
+	/* Typecasting operators. Explicit typecasting is used in order to prevent subtle bugs caused by
+	 * overflow-safe integrals being implicitly and unexpectedly typecast to overflow-unsafe integrals
+	 * and then used in calculations.
+	 */
+	inline T Value() const              { return this->m_value; }
+	template <class I = intmax_t, class = typename std::enable_if<std::is_integral<I>::value>::type>
+	inline explicit operator I () const { return ClampTo<I>(this->m_value); }
 };
 
 /* Declare convenience typedefs */

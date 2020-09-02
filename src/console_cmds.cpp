@@ -1578,7 +1578,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 		GetString(colour, STR_COLOUR_DARK_BLUE + _company_colours[c->index], lastof(colour));
 		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: " OTTD_PRINTF64 "  Loan: " OTTD_PRINTF64 "  Value: " OTTD_PRINTF64 "  (T:%d, R:%d, P:%d, S:%d) %s",
 			c->index + 1, colour, company_name,
-			c->inaugurated_year, c->money.RawValue(), c->current_loan.RawValue(), CalculateCompanyValue(c).RawValue(),
+			c->inaugurated_year, c->money.Value(), c->current_loan.Value(), CalculateCompanyValue(c).Value(),
 			c->group_all[VEH_TRAIN].num_vehicle,
 			c->group_all[VEH_ROAD].num_vehicle,
 			c->group_all[VEH_AIRCRAFT].num_vehicle,

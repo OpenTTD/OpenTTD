@@ -178,7 +178,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 		_score_part[owner][SCORE_VEHICLES] = num;
 		/* Don't allow negative min_profit to show */
 		if (min_profit > 0) {
-			_score_part[owner][SCORE_MIN_PROFIT] = min_profit.RawValue();
+			_score_part[owner][SCORE_MIN_PROFIT] = static_cast<int64>(min_profit);
 		}
 	}
 
@@ -206,10 +206,10 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 			} while (++cee, --numec);
 
 			if (min_income > 0) {
-				_score_part[owner][SCORE_MIN_INCOME] = min_income.RawValue();
+				_score_part[owner][SCORE_MIN_INCOME] = static_cast<int64>(min_income);
 			}
 
-			_score_part[owner][SCORE_MAX_INCOME] = max_income.RawValue();
+			_score_part[owner][SCORE_MAX_INCOME] = static_cast<int64>(max_income);
 		}
 	}
 
@@ -223,7 +223,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 				total_delivered += cee->delivered_cargo.GetSum<OverflowSafeInt64>();
 			} while (++cee, --numec);
 
-			_score_part[owner][SCORE_DELIVERED] = total_delivered.RawValue();
+			_score_part[owner][SCORE_DELIVERED] = static_cast<int64>(total_delivered);
 		}
 	}
 
@@ -235,13 +235,13 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 	/* Generate score for company's money */
 	{
 		if (c->money > 0) {
-			_score_part[owner][SCORE_MONEY] = c->money.RawValue();
+			_score_part[owner][SCORE_MONEY] = static_cast<int64>(c->money);
 		}
 	}
 
 	/* Generate score for loan */
 	{
-		_score_part[owner][SCORE_LOAN] = _score_info[SCORE_LOAN].needed - c->current_loan.RawValue();
+		_score_part[owner][SCORE_LOAN] = _score_info[SCORE_LOAN].needed - static_cast<int64>(c->current_loan);
 	}
 
 	/* Now we calculate the score for each item.. */
@@ -1000,7 +1000,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	 */
 	const int time_factor = max(MAX_TIME_FACTOR - days_over_days1 - days_over_days2, MIN_TIME_FACTOR);
 
-	return BigMulS(dist * time_factor * num_pieces, cs->current_payment.RawValue(), 21);
+	return BigMulS(dist * time_factor * num_pieces, static_cast<int32>(cs->current_payment), 21);
 }
 
 /** The industries we've currently brought cargo to. */

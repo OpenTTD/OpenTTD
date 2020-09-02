@@ -288,8 +288,8 @@ static bool EnginePowerVsRunningCostSorter(const EngineID &a, const EngineID &b)
 	/* Using double for more precision when comparing close values.
 	 * This shouldn't have any major effects in performance nor in keeping
 	 * the game in sync between players since it's used in GUI only in client side */
-	double v_a = (double)p_a / (double)r_a.RawValue();
-	double v_b = (double)p_b / (double)r_b.RawValue();
+	double v_a = (double)p_a / (double)r_a.Value();
+	double v_b = (double)p_b / (double)r_b.Value();
 	/* Use EngineID to sort if both have same power/running cost,
 	 * since we want consistent sorting.
 	 * Also if both have no power then sort with reverse of running cost to simulate

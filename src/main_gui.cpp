@@ -73,7 +73,7 @@ void HandleOnEditText(const char *str)
 			if (c == nullptr) break;
 			Money money = min(c->money - c->current_loan, Money(atoi(str) / _currency->rate));
 
-			uint32 money_c = Clamp<uint32>(ClampTo<uint32>(money.RawValue()), 0, 20000000); // Clamp between 20 million and 0
+			uint32 money_c = Clamp<uint32>(static_cast<uint32>(money), 0, 20000000); // Clamp between 20 million and 0
 
 			/* Give 'id' the money, and subtract it from ourself */
 			DoCommandP(0, money_c, _rename_id, CMD_GIVE_MONEY | CMD_MSG(STR_ERROR_INSUFFICIENT_FUNDS), CcGiveMoney, str);
