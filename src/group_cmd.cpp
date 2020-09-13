@@ -456,6 +456,8 @@ CommandCost CmdAlterGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		InvalidateWindowData(WC_REPLACE_VEHICLE, g->vehicle_type, 1);
 		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), VehicleListIdentifier(VL_GROUP_LIST, g->vehicle_type, _current_company).Pack());
 		InvalidateWindowData(WC_COMPANY_COLOUR, g->owner, g->vehicle_type);
+		InvalidateWindowClassesData(WC_VEHICLE_VIEW);
+		InvalidateWindowClassesData(WC_VEHICLE_DETAILS);
 	}
 
 	return CommandCost();
@@ -545,6 +547,8 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
 		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		InvalidateWindowData(GetWindowClassForVehicleType(v->type), VehicleListIdentifier(VL_GROUP_LIST, v->type, _current_company).Pack());
+		InvalidateWindowData(WC_VEHICLE_VIEW, v->index);
+		InvalidateWindowData(WC_VEHICLE_DETAILS, v->index);
 	}
 
 	return CommandCost();
