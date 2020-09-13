@@ -11,6 +11,7 @@
 #define VEHICLE_GUI_BASE_H
 
 #include "core/smallvec_type.hpp"
+#include "cargo_type.h"
 #include "date_type.h"
 #include "economy_type.h"
 #include "sortlist_type.h"
@@ -22,7 +23,7 @@
 #include <iterator>
 #include <numeric>
 
-typedef GUIList<const Vehicle*> GUIVehicleList;
+typedef GUIList<const Vehicle*, CargoID> GUIVehicleList;
 
 struct GUIVehicleGroup {
 	VehicleList::const_iterator vehicles_begin;    ///< Pointer to beginning element of this vehicle group.
@@ -65,7 +66,7 @@ struct GUIVehicleGroup {
 	}
 };
 
-typedef GUIList<GUIVehicleGroup> GUIVehicleGroupList;
+typedef GUIList<GUIVehicleGroup, CargoID> GUIVehicleGroupList;
 
 struct BaseVehicleListWindow : public Window {
 
@@ -76,14 +77,25 @@ struct BaseVehicleListWindow : public Window {
 		GB_END,
 	};
 
-	GroupBy grouping;                         ///< How we want to group the list.
-	VehicleList vehicles;                     ///< List of vehicles.  This is the buffer for `vehgroups` to point into; if this is structurally modified, `vehgroups` must be rebuilt.
-	GUIVehicleGroupList vehgroups;            ///< List of (groups of) vehicles.  This stores iterators of `vehicles`, and should be rebuilt if `vehicles` is structurally changed.
-	Listing *sorting;                         ///< Pointer to the vehicle type related sorting.
-	byte unitnumber_digits;                   ///< The number of digits of the highest unit number.
+	/** Special cargo filter criteria */
+	enum CargoFilterSpecialType {
+		CF_NONE = CT_INVALID,       ///< Show only vehicles which do not carry cargo (e.g. train engines)
+		CF_ANY = CT_NO_REFIT,       ///< Show all vehicles independent of carried cargo (i.e. no filtering)
+		CF_FREIGHT = CT_AUTO_REFIT, ///< Show only vehicles which carry any freight (non-passenger) cargo
+	};
+
+	GroupBy grouping;                           ///< How we want to group the list.
+	VehicleList vehicles;                       ///< List of vehicles.  This is the buffer for `vehgroups` to point into; if this is structurally modified, `vehgroups` must be rebuilt.
+	GUIVehicleGroupList vehgroups;              ///< List of (groups of) vehicles.  This stores iterators of `vehicles`, and should be rebuilt if `vehicles` is structurally changed.
+	Listing *sorting;                           ///< Pointer to the vehicle type related sorting.
+	byte unitnumber_digits;                     ///< The number of digits of the highest unit number.
 	Scrollbar *vscroll;
-	VehicleListIdentifier vli;                ///< Identifier of the vehicle list we want to currently show.
-	uint order_arrow_width;                   ///< Width of the arrow in the small order list.
+	VehicleListIdentifier vli;                  ///< Identifier of the vehicle list we want to currently show.
+	VehicleID vehicle_sel;                      ///< Selected vehicle
+	CargoID cargo_filter[NUM_CARGO + 3];        ///< Available cargo filters; CargoID or CF_ANY or CF_FREIGHT or CF_NONE
+	StringID cargo_filter_texts[NUM_CARGO + 4]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
+	byte cargo_filter_criteria;                 ///< Selected cargo filter index
+	uint order_arrow_width;                     ///< Width of the arrow in the small order list.
 
 	typedef GUIVehicleGroupList::SortFunction VehicleGroupSortFunction;
 	typedef GUIVehicleList::SortFunction VehicleIndividualSortFunction;
@@ -113,6 +125,9 @@ struct BaseVehicleListWindow : public Window {
 	void UpdateVehicleGroupBy(GroupBy group_by);
 	void SortVehicleList();
 	void BuildVehicleList();
+	void SetCargoFilterIndex(byte index);
+	void SetCargoFilterArray();
+	void FilterVehicleList();
 	Dimension GetActionDropdownSize(bool show_autoreplace, bool show_group);
 	DropDownList BuildActionDropdownList(bool show_autoreplace, bool show_group);
 
