@@ -10,6 +10,11 @@ if (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "In-source builds not allowed. Please run \"cmake ..\" from the bin directory")
 endif (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 
+# Debug mode by default.
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+endif()
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_OSX_DEPLOYMENT_TARGET 10.9)
 
