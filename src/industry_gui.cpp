@@ -1254,14 +1254,14 @@ protected:
 
 	CargoID cargo_filter[NUM_CARGO + 2];        ///< Available cargo filters; CargoID or CF_ANY or CF_NONE
 	StringID cargo_filter_texts[NUM_CARGO + 3]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
-	CargoID produced_cargo_filter_criteria;     ///< Selected produced cargo filter
-	CargoID accepted_cargo_filter_criteria;     ///< Selected accepted cargo filter
+	byte produced_cargo_filter_criteria;        ///< Selected produced cargo filter index
+	byte accepted_cargo_filter_criteria;        ///< Selected accepted cargo filter index
 
 	/**
 	 * Set cargo filter list item index.
 	 * @param index The index of the cargo to be set
 	 */
-	void SetProducedCargoFilterIndex(int index)
+	void SetProducedCargoFilterIndex(byte index)
 	{
 		if (this->produced_cargo_filter_criteria != index) {
 			this->produced_cargo_filter_criteria = index;
@@ -1278,7 +1278,7 @@ protected:
 	 * Set cargo filter list item index.
 	 * @param index The index of the cargo to be set
 	 */
-	void SetAcceptedCargoFilterIndex(int index)
+	void SetAcceptedCargoFilterIndex(byte index)
 	{
 		if (this->accepted_cargo_filter_criteria != index) {
 			this->accepted_cargo_filter_criteria = index;
@@ -1296,7 +1296,7 @@ protected:
 	 */
 	void SetCargoFilterArray()
 	{
-		uint filter_items = 0;
+		byte filter_items = 0;
 
 		/* Add item for disabling filtering. */
 		this->cargo_filter[filter_items] = CF_ANY;
