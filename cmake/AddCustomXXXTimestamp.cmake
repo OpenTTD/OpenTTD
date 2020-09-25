@@ -9,7 +9,7 @@ macro(_parse_arguments_with_multi_hack ORIGINAL_COMMAND_LINE)
 
     foreach(MULTI IN LISTS MULTIS)
         string(REPLACE "${MULTI}" "${MULTI};:::" COMMAND_LINE "${COMMAND_LINE}")
-    endforeach(MULTI)
+    endforeach()
 
     cmake_parse_arguments(PARAM "${OPTIONS}" "${SINGLES}" "${MULTIS}" ${COMMAND_LINE})
 endmacro()
@@ -19,25 +19,25 @@ macro(_reassemble_command_line)
     set(NEW_COMMAND_LINE ${PARAM_UNPARSED_ARGUMENTS})
 
     foreach(OPTION IN LISTS OPTIONS)
-        if (PARAM_${OPTION})
+        if(PARAM_${OPTION})
             list(APPEND NEW_COMMAND_LINE "${OPTION}")
-        endif (PARAM_${OPTION})
-    endforeach(OPTION)
+        endif()
+    endforeach()
 
     foreach(SINGLE IN LISTS SINGLES)
-        if (PARAM_${SINGLE})
+        if(PARAM_${SINGLE})
             list(APPEND NEW_COMMAND_LINE "${SINGLE}" "${PARAM_${SINGLE}}")
-        endif (PARAM_${SINGLE})
-    endforeach(SINGLE)
+        endif()
+    endforeach()
 
     foreach(MULTI IN LISTS MULTIS)
-        if (PARAM_${MULTI})
+        if(PARAM_${MULTI})
             # Replace our special marker with the name of the MULTI again. This
             # restores for example multiple COMMANDs again.
             string(REPLACE ":::" "${MULTI}" PARAM_${MULTI} "${PARAM_${MULTI}}")
             list(APPEND NEW_COMMAND_LINE "${PARAM_${MULTI}}")
-        endif (PARAM_${MULTI})
-    endforeach(MULTI)
+        endif()
+    endforeach()
 endmacro()
 
 # Generated files can be older than their dependencies, causing useless
@@ -72,9 +72,9 @@ function(add_custom_command_timestamp)
     # Reset the OUTPUT and BYPRODUCTS as an empty list (if needed).
     # Because they are MULTIS, we need to add our special marker here.
     set(PARAM_OUTPUT ":::")
-    if (NOT PARAM_BYPRODUCTS)
+    if(NOT PARAM_BYPRODUCTS)
         set(PARAM_BYPRODUCTS ":::")
-    endif ()
+    endif()
 
     foreach(OUTPUT IN LISTS OUTPUTS)
         # For every output, we add a 'cmake -E touch' entry to update the
@@ -91,12 +91,12 @@ function(add_custom_command_timestamp)
         # add_custom_target_timestamp() to know if we should point to the
         # '.timestamp' variant or not.
         set_source_files_properties(${OUTPUT} PROPERTIES BYPRODUCT ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT_FILENAME}.timestamp)
-    endforeach(OUTPUT)
+    endforeach()
 
     # Reassemble and call the wrapped command
     _reassemble_command_line()
     add_custom_command(${NEW_COMMAND_LINE})
-endfunction(add_custom_command_timestamp)
+endfunction()
 
 # Generated files can be older than their dependencies, causing useless
 # regenerations. This function adds a .timestamp file for each file in DEPENDS
@@ -130,16 +130,16 @@ function(add_custom_target_timestamp)
         # Check if the output is produced by add_custom_command_timestamp()
         get_source_file_property(BYPRODUCT ${DEPEND} BYPRODUCT)
 
-        if (BYPRODUCT STREQUAL "NOTFOUND")
+        if(BYPRODUCT STREQUAL "NOTFOUND")
             # If it is not, just keep it as DEPEND
             list(APPEND PARAM_DEPENDS "${DEPEND}")
-        else (BYPRODUCT STREQUAL "NOTFOUND")
+        else()
             # If it is, the BYPRODUCT property points to the timestamp we want to depend on
             list(APPEND PARAM_DEPENDS "${BYPRODUCT}")
-        endif (BYPRODUCT STREQUAL "NOTFOUND")
-    endforeach(DEPEND)
+        endif()
+    endforeach()
 
     # Reassemble and call the wrapped command
     _reassemble_command_line()
     add_custom_target(${NEW_COMMAND_LINE})
-endfunction(add_custom_target_timestamp)
+endfunction()

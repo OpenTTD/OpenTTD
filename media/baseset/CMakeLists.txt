@@ -20,13 +20,13 @@ set(BASESET_OTHER_SOURCE_FILES
 )
 
 # Done by the subdirectories, if nforenum / grfcodec is installed
-if (GRFCODEC_FOUND)
+if(GRFCODEC_FOUND)
     set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/openttd.grf PROPERTIES GENERATED TRUE)
     set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.grf PROPERTIES GENERATED TRUE)
 
     list(APPEND BASESET_BINARY_FILES openttd.grf)
     list(APPEND BASESET_BINARY_FILES orig_extra.grf)
-endif (GRFCODEC_FOUND)
+endif()
 
 set(BASESET_EXTRAGRF_FILE ${CMAKE_CURRENT_SOURCE_DIR}/orig_extra.grf)
 
@@ -54,7 +54,7 @@ foreach(BASESET_SOURCE_FILE IN LISTS BASESET_SOURCE_FILES)
     )
 
     list(APPEND BASESET_BINARY_FILES ${BASESET_BINARY_FILE})
-endforeach(BASESET_SOURCE_FILE)
+endforeach()
 
 # Walk over all the other baseset files, and generate a command to copy them
 foreach(BASESET_OTHER_SOURCE_FILE IN LISTS BASESET_OTHER_SOURCE_FILES)
@@ -70,7 +70,7 @@ foreach(BASESET_OTHER_SOURCE_FILE IN LISTS BASESET_OTHER_SOURCE_FILES)
     )
 
     list(APPEND BASESET_BINARY_FILES ${BASESET_OTHER_BINARY_FILE})
-endforeach(BASESET_OTHER_SOURCE_FILE)
+endforeach()
 
 # Create a new target which generates all baseset metadata files
 add_custom_target_timestamp(baseset_files

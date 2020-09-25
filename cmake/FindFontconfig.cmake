@@ -55,7 +55,7 @@ find_library( Fontconfig_LIBRARY
     ${PKG_FONTCONFIG_LIBRARY_DIRS}
 )
 
-if (Fontconfig_INCLUDE_DIR AND NOT Fontconfig_VERSION)
+if(Fontconfig_INCLUDE_DIR AND NOT Fontconfig_VERSION)
   file(STRINGS ${Fontconfig_INCLUDE_DIR}/fontconfig/fontconfig.h _contents REGEX "^#define[ \t]+FC_[A-Z]+[ \t]+[0-9]+$")
   unset(Fontconfig_VERSION)
   foreach(VPART MAJOR MINOR REVISION)
@@ -70,7 +70,7 @@ if (Fontconfig_INCLUDE_DIR AND NOT Fontconfig_VERSION)
       endif()
     endforeach()
   endforeach()
-endif ()
+endif()
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(Fontconfig

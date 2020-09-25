@@ -10,16 +10,16 @@ function(add_files)
     cmake_parse_arguments(PARAM "" "" "CONDITION" ${ARGN})
     set(PARAM_FILES "${PARAM_UNPARSED_ARGUMENTS}")
 
-    if (PARAM_CONDITION)
-        if (NOT (${PARAM_CONDITION}))
+    if(PARAM_CONDITION)
+        if(NOT (${PARAM_CONDITION}))
             return()
-        endif (NOT (${PARAM_CONDITION}))
-    endif (PARAM_CONDITION)
+        endif()
+    endif()
 
     foreach(FILE IN LISTS PARAM_FILES)
         target_sources(openttd PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${FILE})
     endforeach()
-endfunction(add_files)
+endfunction()
 
 # This function works around an 'issue' with CMake, where
 # set_source_files_properties() only works in the scope of the file. We want
@@ -42,7 +42,7 @@ function(set_compile_flags)
     endforeach()
 
     set_property(GLOBAL PROPERTY source_properties "${SOURCE_PROPERTIES}")
-endfunction(set_compile_flags)
+endfunction()
 
 # Call this macro in the same CMakeLists.txt and after add_executable().
 # This makes sure all the COMPILE_FLAGS of set_compile_flags() are set
@@ -60,4 +60,4 @@ function(process_compile_flags)
 
         set_source_files_properties(${FILE} PROPERTIES COMPILE_FLAGS ${PROPERTIES})
     endforeach()
-endfunction(process_compile_flags)
+endfunction()

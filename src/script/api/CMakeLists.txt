@@ -8,7 +8,7 @@ foreach(ENUM IN LISTS ENUM_LINES)
     string(REGEX REPLACE ".* ([^ @]+)@.*" "\\1" FILE_PATTERN "${ENUM}")
     file(GLOB FILENAMES "${FILE_PATTERN}")
     list(APPEND DEPENDENCIES ${FILENAMES})
-endforeach(ENUM)
+endforeach()
 list(REMOVE_DUPLICATES DEPENDENCIES)
 
 # Add a command to generate script_window.hpp
@@ -40,9 +40,9 @@ foreach(API "ai;AI" "game;GS" "template;Template")
     list(GET API 1 APIUC)
 
     foreach(SCRIPT_API_FILE IN LISTS SCRIPT_API_FILES)
-        if ("${SCRIPT_API_FILE}" MATCHES ".*script_controller.*")
+        if("${SCRIPT_API_FILE}" MATCHES ".*script_controller.*")
             continue()
-        endif ("${SCRIPT_API_FILE}" MATCHES ".*script_controller.*")
+        endif()
         get_filename_component(SCRIPT_API_FILE_NAME "${SCRIPT_API_FILE}" NAME)
         string(REPLACE "script_" "${APILC}_" SCRIPT_API_FILE_NAME "${SCRIPT_API_FILE_NAME}")
         set(SCRIPT_API_BINARY_FILE "${CMAKE_BINARY_DIR}/generated/script/api/${APILC}/${SCRIPT_API_FILE_NAME}.sq")
@@ -62,7 +62,7 @@ foreach(API "ai;AI" "game;GS" "template;Template")
                 COMMENT "Generating ${APILC}/${SCRIPT_API_FILE_NAME}.sq"
         )
         list(APPEND SCRIPT_${APIUC}_BINARY_FILES ${SCRIPT_API_BINARY_FILE})
-    endforeach(SCRIPT_API_FILE)
+    endforeach()
 
     add_custom_target_timestamp(script_${APILC}
             DEPENDS
@@ -72,7 +72,7 @@ foreach(API "ai;AI" "game;GS" "template;Template")
             script_window
     )
 
-    if (NOT "${APILC}" STREQUAL "template")
+    if(NOT "${APILC}" STREQUAL "template")
         list(APPEND SCRIPT_${APIUC}_BINARY_FILES "${CMAKE_CURRENT_SOURCE_DIR}/${APILC}/${APILC}_controller.hpp.sq")
         set(INCLUDES_BINARY_FILE "${CMAKE_BINARY_DIR}/generated/script/api/${APILC}/${APILC}_includes.hpp")
         add_custom_command_timestamp(OUTPUT ${INCLUDES_BINARY_FILE}
@@ -100,11 +100,11 @@ foreach(API "ai;AI" "game;GS" "template;Template")
         add_dependencies(script_api
                 script_${APILC}_includes
         )
-    else (NOT "${APILC}" STREQUAL "template")
+    else()
         add_dependencies(script_api
                 script_${APILC}
         )
-    endif (NOT "${APILC}" STREQUAL "template")
+    endif()
 
     target_include_directories(script_api
             INTERFACE
@@ -112,7 +112,7 @@ foreach(API "ai;AI" "game;GS" "template;Template")
             ${CMAKE_BINARY_DIR}/generated/script/api/${APILC}
             ${CMAKE_CURRENT_SOURCE_DIR}/${APILC}
     )
-endforeach(API)
+endforeach()
 
 add_library(openttd::script_api ALIAS script_api)
 

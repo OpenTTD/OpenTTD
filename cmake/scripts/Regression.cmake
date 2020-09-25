@@ -4,26 +4,26 @@ cmake_minimum_required(VERSION 3.5)
 # Runs a single regressoion test
 #
 
-if (NOT REGRESSION_TEST)
+if(NOT REGRESSION_TEST)
     message(FATAL_ERROR "Script needs REGRESSION_TEST defined (tip: use -DREGRESSION_TEST=..)")
-endif (NOT REGRESSION_TEST)
-if (NOT OPENTTD_EXECUTABLE)
+endif()
+if(NOT OPENTTD_EXECUTABLE)
     message(FATAL_ERROR "Script needs OPENTTD_EXECUTABLE defined (tip: use -DOPENTTD_EXECUTABLE=..)")
-endif (NOT OPENTTD_EXECUTABLE)
+endif()
 
-if (NOT EXISTS ai/${REGRESSION_TEST}/test.sav)
+if(NOT EXISTS ai/${REGRESSION_TEST}/test.sav)
     message(FATAL_ERROR "Regression test ${REGRESSION_TEST} does not exist (tip: check regression folder for the correct spelling)")
-endif ()
+endif()
 
 # If editbin is given, copy the executable to a new folder, and change the
 # subsystem to console. The copy is needed as multiple regressions can run
 # at the same time.
-if (EDITBIN_EXECUTABLE)
+if(EDITBIN_EXECUTABLE)
     execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${OPENTTD_EXECUTABLE} regression/${REGRESSION_TEST}.exe)
     set(OPENTTD_EXECUTABLE "regression/${REGRESSION_TEST}.exe")
 
     execute_process(COMMAND ${EDITBIN_EXECUTABLE} /nologo /subsystem:console ${OPENTTD_EXECUTABLE})
-endif (EDITBIN_EXECUTABLE)
+endif()
 
 # Run the regression test
 execute_process(COMMAND ${OPENTTD_EXECUTABLE}
@@ -40,13 +40,13 @@ execute_process(COMMAND ${OPENTTD_EXECUTABLE}
                 OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-if (REGRESSION_OUTPUT)
+if(REGRESSION_OUTPUT)
     message(FATAL_ERROR "Unexpected output: ${REGRESSION_OUTPUT}")
-endif (REGRESSION_OUTPUT)
+endif()
 
-if (NOT REGRESSION_RESULT)
+if(NOT REGRESSION_RESULT)
     message(FATAL_ERROR "Regression did not output anything; did the compilation fail?")
-endif (NOT REGRESSION_RESULT)
+endif()
 
 # For some reason pointer can be printed as '0x(nil)', '0x0000000000000000', or '0x0x0'
 string(REPLACE "0x(nil)" "0x00000000" REGRESSION_RESULT "${REGRESSION_RESULT}")
@@ -76,21 +76,21 @@ list(LENGTH REGRESSION_EXPECTED REGRESSION_EXPECTED_LENGTH)
 foreach(RESULT IN LISTS REGRESSION_RESULT)
     list(GET REGRESSION_EXPECTED ${ARGC} EXPECTED)
 
-    if (NOT RESULT STREQUAL EXPECTED)
+    if(NOT RESULT STREQUAL EXPECTED)
         message("${ARGC}: - ${EXPECTED}")
         message("${ARGC}: + ${RESULT}'")
         set(ERROR YES)
-    endif (NOT RESULT STREQUAL EXPECTED)
+    endif()
 
     math(EXPR ARGC "${ARGC} + 1")
-endforeach(RESULT)
+endforeach()
 
-if (NOT REGRESSION_EXPECTED_LENGTH EQUAL ARGC)
+if(NOT REGRESSION_EXPECTED_LENGTH EQUAL ARGC)
     math(EXPR MISSING "${REGRESSION_EXPECTED_LENGTH} - ${ARGC}")
     message("(${MISSING} more lines were expected than found)")
     set(ERROR YES)
-endif (NOT REGRESSION_EXPECTED_LENGTH EQUAL ARGC)
+endif()
 
-if (ERROR)
+if(ERROR)
     message(FATAL_ERROR "Regression failed")
-endif (ERROR)
+endif()

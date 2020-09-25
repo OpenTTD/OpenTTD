@@ -54,10 +54,10 @@ find_package_handle_standard_args(Fluidsynth
     VERSION_VAR Fluidsynth_VERSION
 )
 
-if (Fluidsynth_FOUND)
+if(Fluidsynth_FOUND)
     set(Fluidsynth_LIBRARIES ${Fluidsynth_LIBRARY})
     set(Fluidsynth_INCLUDE_DIRS ${Fluidsynth_INCLUDE_DIR})
-endif ()
+endif()
 
 mark_as_advanced(
     Fluidsynth_INCLUDE_DIR

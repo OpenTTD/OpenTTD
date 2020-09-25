@@ -1,6 +1,6 @@
 add_subdirectory(cocoa)
 
-if (NOT OPTION_DEDICATED)
+if(NOT OPTION_DEDICATED)
     add_files(
         allegro_v.cpp
         allegro_v.h
@@ -24,7 +24,7 @@ if (NOT OPTION_DEDICATED)
         win32_v.h
         CONDITION WIN32
     )
-endif (NOT OPTION_DEDICATED)
+endif()
 
 add_files(
     dedicated_v.cpp

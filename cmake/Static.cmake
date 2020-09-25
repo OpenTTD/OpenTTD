@@ -3,7 +3,7 @@
 # set_static()
 #
 function(set_static_if_needed)
-     if (MINGW)
+     if(MINGW)
         # Let exectutables run outside MinGW environment
         # Force searching static libs
         set(CMAKE_FIND_LIBRARY_SUFFIXES ".a" PARENT_SCOPE)

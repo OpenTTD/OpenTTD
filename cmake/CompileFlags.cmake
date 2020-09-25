@@ -3,7 +3,7 @@
 # compile_flags()
 #
 macro(compile_flags)
-    if (MSVC)
+    if(MSVC)
         # Switch to MT (static) instead of MD (dynamic) binary
 
         # For MSVC two generators are available
@@ -23,14 +23,14 @@ macro(compile_flags)
         # C++11 standard". We need C++11 for the way we use threads.
         add_compile_options(/Zc:rvalueCast)
 
-        if (NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+        if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
             # Enable multi-threaded compilation.
             add_compile_options(/MP)
-        endif(NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+        endif()
 
         # Add DPI manifest to project; other WIN32 targets get this via ottdres.rc
         list(APPEND GENERATED_SOURCE_FILES "${CMAKE_SOURCE_DIR}/os/windows/openttd.manifest")
-    endif (MSVC)
+    endif()
 
     # Add some -D flags for Debug builds. We cannot use add_definitions(), because
     # it does not appear to support the $<> tags.
@@ -38,19 +38,19 @@ macro(compile_flags)
         "$<$<CONFIG:Debug>:-D_DEBUG>"
         "$<$<NOT:$<CONFIG:Debug>>:-D_FORTIFY_SOURCE=2>" # FORTIFY_SOURCE should only be used in non-debug builds (requires -O1+)
     )
-    if (MINGW)
+    if(MINGW)
         add_link_options(
             "$<$<NOT:$<CONFIG:Debug>>:-fstack-protector>" # Prevent undefined references when _FORTIFY_SOURCE > 0
         )
-    endif (MINGW)
+    endif()
 
     # Prepare a generator that checks if we are not a debug, and don't have asserts
     # on. We need this later on to set some compile options for stable releases.
     set(IS_STABLE_RELEASE "$<AND:$<NOT:$<CONFIG:Debug>>,$<NOT:$<BOOL:${OPTION_USE_ASSERTS}>>>")
 
-    if (MSVC)
+    if(MSVC)
         add_compile_options(/W3)
-    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+    elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
         add_compile_options(
             -W
             -Wall
@@ -81,33 +81,33 @@ macro(compile_flags)
         # When we are a stable release (Release build + USE_ASSERTS not set),
         # assertations are off, which trigger a lot of warnings. We disable
         # these warnings for these releases.
-        if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
             add_compile_options(
                 "$<${IS_STABLE_RELEASE}:-Wno-unused-variable>"
                 "$<${IS_STABLE_RELEASE}:-Wno-unused-but-set-parameter>"
                 "$<${IS_STABLE_RELEASE}:-Wno-unused-but-set-variable>"
             )
-        else (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        else()
             add_compile_options(
                 "$<${IS_STABLE_RELEASE}:-Wno-unused-variable>"
                 "$<${IS_STABLE_RELEASE}:-Wno-unused-parameter>"
             )
-        endif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        endif()
 
         # Ninja processes the output so the output from the compiler
         # isn't directly to a terminal; hence, the default is
         # non-coloured output. We can override this to get nicely
         # coloured output, but since that might yield odd results with
         # IDEs, we extract it to an option.
-        if (OPTION_FORCE_COLORED_OUTPUT)
-            if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+        if(OPTION_FORCE_COLORED_OUTPUT)
+            if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
                 add_compile_options (-fdiagnostics-color=always)
-            elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+            elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
                 add_compile_options (-fcolor-diagnostics)
-            endif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-        endif (OPTION_FORCE_COLORED_OUTPUT)
+            endif()
+        endif()
 
-        if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
             include(CheckCXXCompilerFlag)
             check_cxx_compiler_flag("-flifetime-dse=1" LIFETIME_DSE_FOUND)
 
@@ -126,8 +126,8 @@ macro(compile_flags)
                 # well with our custom pool item allocator
                 "$<$<BOOL:${LIFETIME_DSE_FOUND}>:-flifetime-dse=1>"
             )
-        endif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
+        endif()
+    elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
         add_compile_options(
             -Wall
             # warning #873: function ... ::operator new ... has no corresponding operator delete ...
@@ -139,12 +139,12 @@ macro(compile_flags)
             # warning #2160: anonymous union qualifier is ignored
             -wd2160
         )
-    else ()
+    else()
         message(FATAL_ERROR "No warning flags are set for this compiler yet; please consider creating a Pull Request to add support for this compiler.")
-    endif ()
+    endif()
 
-    if (NOT WIN32)
+    if(NOT WIN32)
         # rdynamic is used to get useful stack traces from crash reports.
         set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -rdynamic")
-    endif (NOT WIN32)
+    endif()
 endmacro()
