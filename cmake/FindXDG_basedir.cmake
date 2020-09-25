@@ -54,10 +54,10 @@ find_package_handle_standard_args(XDG_basedir
     VERSION_VAR XDG_basedir_VERSION
 )
 
-if (XDG_basedir_FOUND)
+if(XDG_basedir_FOUND)
     set(XDG_basedir_LIBRARIES ${XDG_basedir_LIBRARY})
     set(XDG_basedir_INCLUDE_DIRS ${XDG_basedir_INCLUDE_DIR})
-endif ()
+endif()
 
 mark_as_advanced(
     XDG_basedir_INCLUDE_DIR

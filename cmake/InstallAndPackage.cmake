@@ -1,17 +1,17 @@
 include(GNUInstallDirs)
 
 # If requested, use FHS layout; otherwise fall back to a flat layout.
-if (OPTION_INSTALL_FHS)
+if(OPTION_INSTALL_FHS)
     set(BINARY_DESTINATION_DIR "${CMAKE_INSTALL_BINDIR}")
     set(DATA_DESTINATION_DIR "${CMAKE_INSTALL_DATADIR}/${BINARY_NAME}")
     set(DOCS_DESTINATION_DIR "${CMAKE_INSTALL_DOCDIR}")
     set(MAN_DESTINATION_DIR "${CMAKE_INSTALL_MANDIR}")
-else (OPTION_INSTALL_FHS)
+else()
     set(BINARY_DESTINATION_DIR ".")
     set(DATA_DESTINATION_DIR ".")
     set(DOCS_DESTINATION_DIR ".")
     set(MAN_DESTINATION_DIR ".")
-endif (OPTION_INSTALL_FHS)
+endif()
 
 install(TARGETS openttd
         RUNTIME
@@ -39,7 +39,7 @@ install(FILES
 
 # A Linux manual only makes sense when using FHS. Otherwise it is a very odd
 # file with little context to what it is.
-if (OPTION_INSTALL_FHS)
+if(OPTION_INSTALL_FHS)
     set(MAN_SOURCE_FILE ${CMAKE_SOURCE_DIR}/docs/openttd.6)
     set(MAN_BINARY_FILE ${CMAKE_BINARY_DIR}/docs/${BINARY_NAME}.6)
     install(CODE
@@ -52,26 +52,26 @@ if (OPTION_INSTALL_FHS)
                     ${MAN_BINARY_FILE}.gz
             DESTINATION ${MAN_DESTINATION_DIR}/man6
             COMPONENT manual)
-endif (OPTION_INSTALL_FHS)
+endif()
 
 # TODO -- Media files
 # TODO -- Menu files
 
-if (CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
     set(ARCHITECTURE "amd64")
-else (CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+else()
     string(TOLOWER "${CMAKE_SYSTEM_PROCESSOR}" ARCHITECTURE)
-endif (CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+endif()
 
 # Windows is a bit more annoying to detect; using the size of void pointer
 # seems to be the most robust.
-if (WIN32)
-    if (CMAKE_SIZEOF_VOID_P EQUAL 8)
+if(WIN32)
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
         set(ARCHITECTURE "win64")
-    else (CMAKE_SIZEOF_VOID_P EQUAL 8)
+    else()
         set(ARCHITECTURE "win32")
-    endif (CMAKE_SIZEOF_VOID_P EQUAL 8)
-endif (WIN32)
+    endif()
+endif()
 
 set(CPACK_SYSTEM_NAME "${ARCHITECTURE}")
 
@@ -90,33 +90,33 @@ set(CPACK_PACKAGE_EXECUTABLES "openttd;OpenTTD")
 set(CPACK_STRIP_FILES YES)
 set(CPACK_OUTPUT_FILE_PREFIX "bundles")
 
-if (APPLE)
+if(APPLE)
     set(CPACK_GENERATOR "Bundle")
     include(PackageBundle)
 
     set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macosx")
-elseif (WIN32)
+elseif(WIN32)
     set(CPACK_GENERATOR "ZIP")
-    if (OPTION_USE_NSIS)
+    if(OPTION_USE_NSIS)
         list(APPEND CPACK_GENERATOR "NSIS")
         include(PackageNSIS)
-    endif (OPTION_USE_NSIS)
+    endif()
 
     set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-windows-${CPACK_SYSTEM_NAME}")
-elseif (UNIX)
+elseif(UNIX)
     # With FHS, we can create deb/rpm/... Without it, they would be horribly broken
     # and not work. The other way around is also true; with FHS they are not
     # usable, and only flat formats work.
-    if (OPTION_INSTALL_FHS)
+    if(OPTION_INSTALL_FHS)
         set(CPACK_GENERATOR "DEB")
         include(PackageDeb)
-    else (OPTION_INSTALL_FHS)
+    else()
         set(CPACK_GENERATOR "TXZ")
-    endif (OPTION_INSTALL_FHS)
+    endif()
 
     set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-linux-${CPACK_SYSTEM_NAME}")
-else ()
+else()
     message(FATAL_ERROR "Unknown OS found for packaging; please consider creating a Pull Request to add support for this OS.")
-endif ()
+endif()
 
 include(CPack)

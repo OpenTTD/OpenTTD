@@ -26,7 +26,7 @@ function(create_grf_command)
         )
 
         list(APPEND GRF_PNG_BINARY_FILES ${GRF_PNG_BINARY_FILE})
-    endforeach(GRF_PNG_SOURCE_FILE)
+    endforeach()
 
     add_custom_command(OUTPUT ${GRF_BINARY_FILE}
             COMMAND ${CMAKE_COMMAND}

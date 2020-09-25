@@ -78,7 +78,7 @@ foreach(LANG_SOURCE_FILE IN LISTS LANG_SOURCE_FILES)
     )
 
     list(APPEND LANG_BINARY_FILES ${LANG_BINARY_FILE})
-endforeach(LANG_SOURCE_FILE)
+endforeach()
 
 # Create a new target which compiles all language files
 add_custom_target(language_files

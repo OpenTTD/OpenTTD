@@ -1,4 +1,4 @@
-if (NOT OPTION_DEDICATED)
+if(NOT OPTION_DEDICATED)
     add_files(
         allegro_s.cpp
         allegro_s.h
@@ -34,7 +34,7 @@ if (NOT OPTION_DEDICATED)
         xaudio2_s.h
         CONDITION WIN32 AND XAUDIO2_FOUND
     )
-endif (NOT OPTION_DEDICATED)
+endif()
 
 add_files(
     sound_driver.hpp

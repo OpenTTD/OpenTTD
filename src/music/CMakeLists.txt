@@ -1,4 +1,4 @@
-if (NOT OPTION_DEDICATED)
+if(NOT OPTION_DEDICATED)
     add_files(
         allegro_m.cpp
         allegro_m.h
@@ -42,7 +42,7 @@ if (NOT OPTION_DEDICATED)
         os2_m.h
         CONDITION OPTION_OS2
     )
-endif (NOT OPTION_DEDICATED)
+endif()
 
 add_files(
     midi.h
