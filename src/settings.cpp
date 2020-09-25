@@ -2053,6 +2053,7 @@ uint GetCompanySettingIndex(const char *name)
 {
 	uint i;
 	const SettingDesc *sd = GetSettingFromName(name, &i);
+	(void)sd; // Unused without asserts
 	assert(sd != nullptr && (sd->desc.flags & SGF_PER_COMPANY) != 0);
 	return i;
 }
@@ -2159,6 +2160,7 @@ void IConsoleSetSetting(const char *name, int value)
 {
 	uint index;
 	const SettingDesc *sd = GetSettingFromName(name, &index);
+	(void)sd; // Unused without asserts
 	assert(sd != nullptr);
 	SetSettingValue(index, value);
 }
