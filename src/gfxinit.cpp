@@ -105,6 +105,7 @@ static void LoadGrfFileIndexed(const char *filename, const SpriteID *index_tbl, 
 
 		do {
 			bool b = LoadNextSprite(start, file_index, sprite_id, container_ver);
+			(void)b; // Unused without asserts
 			assert(b);
 			sprite_id++;
 		} while (++start <= end);
