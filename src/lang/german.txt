@@ -3491,6 +3491,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Fahrzeug
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Schiff kaufen
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Flugzeug kaufen
 
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Schiff kaufen und umrüsten
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Angewähltes Fahrzeug kaufen. Shift+Klick zeigt einen Kostenvoranschlag
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Ausgewähltes Fahrzeug kaufen. Shift+Klick zeigt einen Kostenvoranschlag
