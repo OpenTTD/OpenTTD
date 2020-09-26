@@ -236,6 +236,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Süzme k
 STR_BUTTON_SORT_BY                                              :{BLACK}Sırala
 STR_BUTTON_LOCATION                                             :{BLACK}Göster
 STR_BUTTON_RENAME                                               :{BLACK}Yeni ad
+STR_BUTTON_CATCHMENT                                            :{BLACK}Kapsama alanı
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Kapsama alanını göstermeyi aç/kapa
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Pencereyi kapat
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Pencere başlığı - pencereyi hareket ettirmek için sürükle
@@ -357,6 +359,7 @@ STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Peyzaj y
 STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Şehir yapımı
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Fabrika yapımı
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Yol yapımı
+STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK} Tramvay yapımı
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Ağaç dik. Shift ile tıklama maliyet tahminini gösterir
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Tabela koy
 STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Nesneyi yerleştirin. Shift ile tıklama maliyet tahminini gösterir
@@ -927,6 +930,8 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gürcistan Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :İran Riyali (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Yeni Rus Rublesi (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksika Pezosu (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Yeni Tayvan Doları (NTD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Hindistan Rupisi (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Karayolu taşıtları
@@ -993,6 +998,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :Arayüz boyutun
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Yazı iki kat büyük
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Dört kat büyük
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik kümesi
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik kümesini seçin
@@ -1535,6 +1541,7 @@ STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Yüzeysel ekono
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Etkinleştirildiğinde, endüstri üretim miktarı daha sık ve daha küçük adımlarla değişir. Eğer endüstriler bir NewGRF dosyası tarafından sağlanıyorsa bu özellik genellikle etkisiz kalır
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Diğer şirketlerin hisseleri alınabilsin: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Etkinleştirildiğinde, şirketlerin hisse senetlerinin alınıp satılması mümkün olur. Hisse senetleri sadece belli bir yaşa ulaşan şirketler için geçerlidir
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Bir şirketin hisselerinin satılabileceği ve diğer şirketlerin alabileceği minimum şirket yaşını belirleyin.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Besleme sistemlerinde, bölümlerden elde edilen kardan ödenecek yüzde: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Besleme sistemlerinde, sistemi oluşturan ara bölümlere verilen kar yüzdesi. Böylece kar miktarı üzerinde daha fazla kontrol elde edilmiş olur
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Fare sürüklendiğinde sinyal yerleştirme sıklığı: {STRING}
@@ -1575,6 +1582,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Bu seçeneği e
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Yasak
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :İzin verildi
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :İzin verildi, özel kasaba yerleşimi
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Şehrin genel nüfusuna oranla, şehirlerdeki evler tarafından ne kadar kargo üretiliyor.{}Üstel büyüme: İki katı büyüklükteki bir şehir dört katı büyüklükte yolcuya sahip olur.{}Lineer büyüme: İki katı büyüklükteki bir şehir iki katı büyüklükte yolcuya sahip olur.
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Oyunda ağaç dikme: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Oyundaki rastgele ağaçların görünümünü kontrol eder. Bu, ağaçların büyümesine bağımlı olan endüstrileri etkileyebilir, örneğin keresteciler gibi
@@ -2417,6 +2425,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Tünel Y
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Tramvay tüneli yap. Shift ile tıklama maliyet tahminini gösterir
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Yol yap/sil arasında geçiş yap
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Tramvay yapımı/yıkımı
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Yol türünü Dönüştür/Geliştir. Shift ile tıklama maliyet tahminini gösterir
 
 
 # Road depot construction window
@@ -2602,6 +2611,8 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}İstenen: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Ray türü: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Yol türü: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tramvay tipi: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Ray hız sınırı: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Yol hız sınırı: {LTBLUE}{VELOCITY}
 
@@ -2720,6 +2731,8 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} kare/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} kare/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kare/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
@@ -2750,6 +2763,7 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Grafik işleme
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Dünya görüş alanı derleme
 STR_FRAMETIME_CAPTION_VIDEO                                     :Video çıkışı
 STR_FRAMETIME_CAPTION_SOUND                                     :Ses karıştırma
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Oyun betiği
 ############ End of leave-in-this-order
 
 
@@ -3080,6 +3094,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :İsim değişti
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} belediyesi
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Bölgeyi yerel yönetim sınırları içinde göster
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Taşıma şirketi değerlendirmeleri:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Yapılabilecekler:
@@ -3349,6 +3364,9 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Fabrikal
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Hiçbiri -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Fabrika adları - görüntüyü fabrikada merkezlemek için adına tıklayın. Ctrl ile tıklama fabrikanın konumunu gösteren yeni bir pencere açar
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Üretilmiş kargo: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tüm kargo tipleri
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Hiçbiri
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3442,6 +3460,7 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Yeni Monoray
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Yeni Maglev
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Yeni Karayolu Araçları
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Yeni Tramvay Araçları
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Trenler
@@ -3450,6 +3469,7 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Yeni Hava Arac�
 ############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Fiyat: {GOLD}{CURRENCY_LONG}{BLACK} Ağırlık: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Maliyet: {GOLD}{CURRENCY_LONG}{BLACK} (Tamir maliyeti: {GOLD}{CURRENCY_LONG}{BLACK}) Ağırlık: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hız: {GOLD}{VELOCITY}{BLACK} Güç: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hız: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Okyanus hızı: {GOLD}{VELOCITY}
@@ -3462,6 +3482,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Aza. Gü
 STR_PURCHASE_INFO_COST                                          :{BLACK}Fiyat: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Ağırlık: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Fiyat: {GOLD}{CURRENCY_LONG}{BLACK} Hız: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Maliyet: {GOLD}{CURRENCY_LONG}{BLACK} (Tamir maliyeti: {GOLD}{CURRENCY_LONG}{BLACK}) Hız: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Veren Vagonlar: {GOLD}+{POWER}{BLACK} Ağırlık: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Dönüştürülebildiği kargolar: {GOLD}{STRING}
@@ -3488,6 +3509,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}İşaret
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Seçili gemiyi satın al. Shift ile tıklama satın almadan tahmini maliyeti gösterir
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Seçili uçağı satın al. Shift ile tıklama satın almadan tahmini maliyeti gösterir
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Seçili karayolu aracını satın alın. Shift ile tıklama satın almadan tahmini maliyeti gösterir
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Seçili gemiyi satın al. Shift ile tıklama satın almadan tahmini maliyeti gösterir
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Seçili uçağı satın al. Shift ile tıklama satın almanın tahmini maliyetini gösterir
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Yeni isim
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}İsim
@@ -3644,6 +3668,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK}Lokomoti
 STR_REPLACE_ENGINES                                             :Lokomotifler
 STR_REPLACE_WAGONS                                              :Vagon
 STR_REPLACE_ALL_RAILTYPE                                        :Tüm demiryolu araçları
+STR_REPLACE_ALL_ROADTYPE                                        :Tüm karayolu araçları
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Lokomatiflerini değiştireceğiniz ray türünü seçin
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Soldaki değiştiriliyorsa neyle değiştirildiğini göster
@@ -4103,6 +4128,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vurgulan
 STR_AI_LIST_CANCEL                                              :{BLACK}İptal
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Betiği değiştirme
 
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Tüm haritanın ekran görüntüsünü al
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametreler
@@ -4395,6 +4421,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Yol bura
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Tramvay kaldırılamaz...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... karayolu yok
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... tramvay yolu yok
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE} Uygun yol yok
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Buraya kanal yapılamaz...
@@ -4447,6 +4474,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Grup olu
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Bu grup silinemiyor...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Grubun ismi değiştirilemiyor...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Üst grup ayarlanamıyor...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}Grup hiyerarşisinde döngülere izin verilmez
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Bu gruptaki bütün araçlar çıkartılamıyor...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Araç bu gruba eklenemiyor...
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Paylaşılan araçlar bu gruba eklenemiyor...
