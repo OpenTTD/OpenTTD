@@ -188,6 +188,7 @@ STR_COLOUR_ORANGE                                               :Laranja
 STR_COLOUR_BROWN                                                :Marrom
 STR_COLOUR_GREY                                                 :Cinza
 STR_COLOUR_WHITE                                                :Branco
+STR_COLOUR_RANDOM                                               :Aleatório
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -857,6 +858,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G o a} {STRING} já está disponível!  -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Abrir a janela do grupo focado no grupo do veículo
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} não aceita mais {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} não aceita mais {STRING} ou {STRING}
@@ -923,6 +925,8 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado..
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano (MXN)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar de Hong Kong  (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automóveis
@@ -985,6 +989,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobro
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quádruplo
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamanho da fonte
 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
@@ -1464,6 +1469,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permitir IA em 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite jogadores controlados pelo computador participar em jogos multijogador
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes antes de scripts serem suspensos: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Número máximo de passos de computação que um script pode tomar em um turno
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Quanta memória um único script pode consumir antes de ser encerrado à força. Isso pode precisar ser aumentado para mapas grandes.
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Os intervalos de serviço são em percentagem: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Define se a manutenção de veículos é ativada pelo tempo passado desde a última manutenção ou quando a confiabilidade alcança um certo valor
@@ -1566,6 +1572,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Se ativado, per
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, layout de cidades customizável
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadrático (original)
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Posicionamento de árvores: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla o nascimento aleatório de árvores durante o jogo. Isso pode afetar indústrias que dependem do crescimento de árvores, como serrarias
@@ -2240,7 +2247,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteca de I
 STR_CONTENT_TYPE_SCENARIO                                       :Cenário
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa topográfico
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons padrão
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Músicsas padrão
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Músicas padrão
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script do jogo
 STR_CONTENT_TYPE_GS_LIBRARY                                     :Biblioteca de GS's
 
@@ -2591,6 +2598,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceita: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipo de ferrovia: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Tipo de estrada: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Velocidade limite do trilho: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Limite de velocidade da rua: {LTBLUE}{VELOCITY}
 
@@ -2759,6 +2767,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Tem certeza de que deseja substituir o arquivo existente?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Coloque o nome para o jogo salvo
 
@@ -3082,6 +3091,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objetivos
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos globais
+STR_GOALS_SPECTATOR                                             :Objetivos Globais
 STR_GOALS_GLOBAL_TITLE                                          :{G=m}{BLACK}Objetivos globais:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{G=m}{ORANGE}- Nenhum -
@@ -3321,6 +3331,7 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Indústr
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nenhum -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das indústrias - clique no nome para centralizar a visçao principal na indústria. Ctrl+Clique abre uma nova janela na localização da indústria
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carga aceita: {SILVER}{STRING}
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3410,9 +3421,11 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nova Locomotiva
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nova Locomotiva Maglev
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Novos Automóveis
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Novo Veículo Elétrico
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Trens
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Novo Veículo Terrestre
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Novas Embarcações
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nova Aeronave
 ############ range for vehicle availability ends
@@ -3449,12 +3462,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar 
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar Embarcação
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar Aeronave
 
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar e Repor Navio
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra o veículo ferroviário selecionado. Shift+Clique mostra preço estimado sem a compra
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra o veículo selecionado. Shift+Clique mostra preço estimado sem a compra
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra a embarcação selecionada. Shift+Clique mostra preço estimado sem a compra
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra a aeronave selecionada. Shift+Clique mostra o preço estimado sem a compra
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Compre e troque o trem destacado. Shift+Click mostra os custos estimados sem comprar
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :Compre e reponha o navio em destaque. Shift+Clique mostra o custo estimado sem comprar
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renomear
@@ -3619,6 +3635,7 @@ STR_REPLACE_ELRAIL_VEHICLES                                     :Locomotivas El�
 STR_REPLACE_MONORAIL_VEHICLES                                   :Monotrilho
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevs
 
+STR_REPLACE_ROAD_VEHICLES                                       :Veículos terrestres
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faz autosubstituição manter o tamanho do trem removendo vagões (começando pela frente), se ao substituir a locomotiva o trem ficar maior
@@ -4069,6 +4086,9 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Selecion
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar o script
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Tirar uma captura de tela
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Zoom máximo na captura de tela
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Captura de tela do mapa todo
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parâmetros
@@ -4342,6 +4362,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Tipo de 
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Remova a ferrovia antes
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Rua é mão única ou está bloqueada
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Cruzamentos de nível não são permitidos para esse tipo de trilho
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Passagens de nível não permitidas para este tipo de estrada
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Impossível construir sinais aqui...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Impossível construir ferrovia aqui...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Impossível remover a ferrovia daqui...

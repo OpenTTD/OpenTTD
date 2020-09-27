@@ -857,7 +857,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Przełącz konsolę
 STR_ABOUT_MENU_AI_DEBUG                                         :Debugowanie SI / Game Script
 STR_ABOUT_MENU_SCREENSHOT                                       :Zrzut ekranu
-STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Pokaż ilość klatek na sekundę
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Pokaż liczbę klatek na sekundę
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Info o 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Wyrównywanie sprite'ów
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Włącz/wyłącz ramki
@@ -3120,7 +3120,7 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} Zespół OpenTTD
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :{WHITE}Ilość klatek na sekundę
+STR_FRAMERATE_CAPTION                                           :{WHITE}Liczba klatek na sekundę
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Tempo symulacji: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Liczba ticków gry symulowanych na sekundę.
@@ -4293,7 +4293,7 @@ STR_ORDERS_END_OF_ORDERS                                        :- - Koniec pole
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec współdzielonych poleceń - -
 
 # Order bottom buttons
-STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
+STR_ORDER_NON_STOP                                              :{BLACK}Bezpośrednio
 STR_ORDER_GO_TO                                                 :Idź do
 STR_ORDER_GO_NON_STOP_TO                                        :Idź bezpośrednio do
 STR_ORDER_GO_VIA                                                :Idź przez
@@ -4304,7 +4304,7 @@ STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pełny z
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Załaduj jeśli dostępne
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pełny załadunek wszystkiego
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pełny załadunek któregoś z towarów
-STR_ORDER_DROP_NO_LOADING                                       :Nie ładować
+STR_ORDER_DROP_NO_LOADING                                       :Nie ładuj
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień sposób załadunku w podświetlonym poleceniu
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Rozładuj i załaduj
@@ -4375,7 +4375,7 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Idź przez {WAY
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Idź bezpośrednio poprzez {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Serwisuj w
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj non-stop w
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Serwisuj bezpośrednio w
 
 STR_ORDER_NEAREST_DEPOT                                         :najbliższego
 STR_ORDER_NEAREST_HANGAR                                        :najbliższego hangaru
@@ -4395,7 +4395,7 @@ STR_ORDER_IMPLICIT                                              :(sugerowany)
 
 STR_ORDER_FULL_LOAD                                             :(Pełny załadunek)
 STR_ORDER_FULL_LOAD_ANY                                         :(Pełny załadunek dowolnego towaru)
-STR_ORDER_NO_LOAD                                               :(Nie ładować)
+STR_ORDER_NO_LOAD                                               :(Nie ładuj)
 STR_ORDER_UNLOAD                                                :(Rozładuj i zabierz ładunek)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Rozładuj i czekaj na pełny załadunek)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozładuj i czekaj na pełny załadunek któregoś z towarów)
