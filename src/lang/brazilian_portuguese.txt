@@ -235,6 +235,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecion
 STR_BUTTON_SORT_BY                                              :{BLACK}Classificar por
 STR_BUTTON_LOCATION                                             :{BLACK}Local
 STR_BUTTON_RENAME                                               :{BLACK}Renomear
+STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Alternar a visão da área de cobertura
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar janela
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
@@ -263,6 +265,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Ao ativa
 STR_BUTTON_DEFAULT                                              :{BLACK}Padrão
 STR_BUTTON_CANCEL                                               :{BLACK}Cancelar
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Aviso: os administradores do servidor podem ler qualquer texto inserido aqui.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -336,6 +339,7 @@ STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Ampliar 
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Reduzir a visão
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir linha ferroviária
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Construir rodovias
+STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Construir bondes
 STR_TOOLBAR_TOOLTIP_BUILD_SHIP_DOCKS                            :{BLACK}Construir docas
 STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Construir aeroportos
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Abrir a barra de paisagismo para elevar ou abaixar terreno, plantar árvores, etc.
@@ -464,6 +468,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Som/música
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Última mensagem/notícia
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Histórico de Mensagens
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Apagar todas as mensagens
 ############ range ends here
 
 ############ range for about menu starts
@@ -926,7 +931,10 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano (MXN)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar de Hong Kong  (HKD)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novo dólar de Taiwan (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chinês (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar de Hong Kong (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúpia Indiana (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automóveis
@@ -991,6 +999,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quádruplo
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamanho da fonte
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Tamanho duplo
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Tamanho quádruplo
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecionar o conjunto de gráficos base para usar
@@ -1174,6 +1184,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisag
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite paisagismo sob edifícios e vias sem precisar removê-las
 STR_CONFIG_SETTING_CATCHMENT                                    :Dimensionamento mais realista das áreas de abrangência: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Exibe áreas de abrangência de para diferentes tipos de estações e aeroportos
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Quando habilitado, os setores com estações conectadas (como plataformas de petróleo) também podem ser atendidos por estações de propriedade da empresa construídas nas proximidades. Quando desativados, esses setores só podem ser atendidos por suas estações anexas. Qualquer estação próxima da empresa não será capaz de atendê-los, nem a estação anexa servirá qualquer outra coisa que não seja a indústria
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permitir a remoção de mais rodovias, pontes, etc. das cidades: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Torna mais fácil remover infraestrutura e edifícios de cidades
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Tamanho máximo de trens: {STRING}
@@ -1259,6 +1270,7 @@ STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Impossí
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :Manutenção de Infraestrutura: {STRING}
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Quando ativado, infraestrutura gera custos de manutenção. O custo aumenta proporcionalmente à malha de transportes, afetando companhias maiores mais do que as menores
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Escolha a cor inicial para a empresa
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Aeroportos nunca saem de linha: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Ativando essa config. mantém todos os tipos de aeroportos disponíveis à construção após sua introdução
@@ -1293,6 +1305,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Exibir populaç
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Exibe a população das cidades nos nomes, no mapa
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Espessura das linhas nos gráficos: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Espessura da linha nos gráficos. Linhas finas são mais precisas, enquanto linhas grossas são mais fáceis de distinguir.
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Adicione uma linha à janela de construção do veículo, mostrando de qual NewGRF o veículo selecionado vem.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Terreno: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :O terreno define a jogabilidade básica com diferentes cargas e requerimentos para o crescimento das cidades. NewGRF's e Scripts de Jogo permitem um controle mais fino
@@ -1528,6 +1541,8 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completa
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias coloridas aparecem em: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano a partir do qual os jornais são impressos em cor. Antes disso, serão em preto-e-branco
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de início: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No final deste ano, a pontuação da empresa é registrada e a tela de pontuação máxima é exibida, mas os jogadores podem continuar jogando depois disso.{} Se isso for antes do ano inicial, a tela de pontuação máxima nunca será exibida.
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Ativar economia regular (alterações menores): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Quando ativado, a produção de indústrias muda com mais frequência, e mais sutilmente
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar ações de outras empresas: {STRING}
@@ -1572,6 +1587,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Se ativado, per
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Proibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, layout de cidades customizável
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Quanta carga é produzida pelas casas nas cidades, em relação à população geral da cidade.{} Crescimento quadrático: uma cidade com o dobro do tamanho gera quatro vezes mais passageiros.{} Crescimento linear: uma cidade com o dobro do tamanho gera o dobro da quantidade de passageiros.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadrático (original)
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Posicionamento de árvores: {STRING}
@@ -1814,6 +1830,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Mudar an
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ativar modificação de valores de produção: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Esquema de cores
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Exibir esquemas de cor gerais
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Exibe esquemas de cor de trens
@@ -2073,6 +2090,7 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconec
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor está protegido. Digite a senha
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa está protegida. Digite a senha
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Lista de clientes
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
@@ -2413,7 +2431,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Construi
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Construir túnel de bonde. Shift altera construção/preço estimado
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Alternar construir/remover para contrução rodoviária
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Alternar construir/remover linhas de bonde e sinais
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Converter/atualizar o tipo de estrada. Shift altera construção/exibição de estimativa de custo
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Converter/Melhorar o tipo de bonde. Shift troca construção/amostra custo estimado
 
+STR_ROAD_NAME_TRAM                                              :Bonde
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientação da Garagem
@@ -2710,6 +2731,7 @@ STR_FRAMERATE_SPEED_FACTOR                                      :{WHITE}Fator de
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Quão rápido o jogo está sendo executado, comparado com a velocidade esperada na simulação normal
 STR_FRAMERATE_CURRENT                                           :{WHITE}Atual
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Médio
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memória
 STR_FRAMERATE_DATA_POINTS                                       :{WHITE}Dados baseados em {COMMA} medidas
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL}{WHITE} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL}{WHITE} ms
@@ -2726,12 +2748,15 @@ STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Tiques
 STR_FRAMERATE_GL_SHIPS                                          :{WHITE}  Tiques de embarcação:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{WHITE}  Tiques de aeronave:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{WHITE}  Tiques do mundo:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Atraso no gráfico de link:
 STR_FRAMERATE_DRAWING                                           :{WHITE}Renderizações de gráficos:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{WHITE}  Visualizações do mundo:
 STR_FRAMERATE_VIDEO                                             :{WHITE}Saída de vídeo:
 STR_FRAMERATE_SOUND                                             :{WHITE}Mixagem de áudio:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Script do jogo:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Loop de jogo
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manuseio de carga
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Tiques de trem
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Tiques de automóveis
@@ -2767,6 +2792,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Detalhes
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nenhuma informação disponível
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Substituir ficheiro
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Tem certeza de que deseja substituir o arquivo existente?
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Coloque o nome para o jogo salvo
@@ -2885,6 +2911,7 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versão:
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Mín. versão compatível: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Padrão (D)
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parâmetros: {SILVER}{STRING}
 
 STR_NEWGRF_SETTINGS_NO_INFO                                     :{BLACK}Sem informação disponível
@@ -2997,6 +3024,7 @@ STR_NEWGRF_BUGGY                                                :{WHITE}O NewGRF
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Informação de carga/readaptação para '{1:ENGINE}' difere da lista de aquisição após a construção. Isso pode causar a autorenovação/-substituição à falhar a readaptação corretamente.
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' causou um loop infinito no callback da produção
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Retorno {1:HEX} retornou um resultado desconhecido/inválido {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' retornou tipo de carga inválido no retorno de chamada de produção em {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<carga inválida>
@@ -3332,6 +3360,8 @@ STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nenhu
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomes das indústrias - clique no nome para centralizar a visçao principal na indústria. Ctrl+Clique abre uma nova janela na localização da indústria
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carga aceita: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Todos os tipos de carga
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Nenhum
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3399,6 +3429,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupos -
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clique para criar um grupo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Remove o grupo selecionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renomeia o grupo selecionado
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Alterar a pintura do grupo selecionado
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para excluir esse grupo da substituição automática
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Remover grupo
@@ -3447,6 +3478,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacida
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões energizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Adaptável para: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos as cargas
+STR_PURCHASE_INFO_NONE                                          :Nenhum
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Tração máx : {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} quadrados
@@ -3462,7 +3494,9 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Comprar 
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar Embarcação
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar Aeronave
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Comprar e Trocar Veículos
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar e Repor Navio
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar e reequipar aeronaves
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra o veículo ferroviário selecionado. Shift+Clique mostra preço estimado sem a compra
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra o veículo selecionado. Shift+Clique mostra preço estimado sem a compra
@@ -3471,6 +3505,7 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra a
 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Compre e troque o trem destacado. Shift+Click mostra os custos estimados sem comprar
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :Compre e reponha o navio em destaque. Shift+Clique mostra o custo estimado sem comprar
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e repor a aeronave destacada. Shift+Clique mostra o custo estimado sem comprar
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renomear
@@ -3582,6 +3617,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mensagem
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Projetamos um novo {STRING} - estaria interessado em um ano de exclusividade do uso deste veículo, de modo a que possamos avaliar a sua performance antes de o disponibilizar para todos ?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotiva ferroviária
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotiva ferroviária eletrificada
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotiva monotrilho
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotiva maglev
 
@@ -3856,6 +3892,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessita de manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Tempo de vida restante (anos)
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Confiabilidade máxima
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comprarar os dados do veículo com o valor fornecido
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
@@ -4087,8 +4124,10 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Cancelar
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Não mudar o script
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Tirar uma captura de tela
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Captura de tela normal
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Zoom máximo na captura de tela
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Captura de tela do mapa todo
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Captura de tela do minimapa
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parâmetros
@@ -4382,6 +4421,10 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Impossí
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Impossível remover bonde daqui...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...não há rodovias
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...não há linha de bonde
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Não é possível converter o tipo de estrada aqui ...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Sem estrada adequada
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nenhum bonde adequado
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... bonde incompatível
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Impossível construir canais aqui...

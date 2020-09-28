@@ -187,6 +187,7 @@ STR_COLOUR_ORANGE                                               :Portocaliu
 STR_COLOUR_BROWN                                                :Maro
 STR_COLOUR_GREY                                                 :Gri
 STR_COLOUR_WHITE                                                :Alb
+STR_COLOUR_DEFAULT                                              :Prestabilit
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
@@ -233,6 +234,7 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Alegeți
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordonează
 STR_BUTTON_LOCATION                                             :{BLACK}Locație
 STR_BUTTON_RENAME                                               :{BLACK}Nume nou
+STR_BUTTON_CATCHMENT                                            :Arie de acoperire
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Închide fereastra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
@@ -1444,6 +1446,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Permite Intelig
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Permite ca jucătorii controlați de AI să participe în jocuri multiplayer
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Număr opcodes înainte de suspendarea scripturilor: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Numărul maxim de instrucțiuni pe care un script le poate executa pe parcursul unei ture
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaluri de service în procente: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Alege dacă întreținerea vehiculelor este activată de trecerea unei anumite perioade de timp, sau scăzând un anumit procent din gradul de rezistență al vehiculului
@@ -1647,6 +1650,7 @@ STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Câmpur
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Construcţie
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Știri / Consilieri
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Companie
+STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Contabilitate
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Vehicule
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţionare
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Dezastre / Accidente
@@ -2554,6 +2558,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Numele d
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Încărcături acceptate: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tip șină: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Limită viteză pe calea ferată: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Viteza limită a drumului: {LTBLUE}{VELOCITY}
 
@@ -2664,6 +2669,7 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_VIDEO                                             :{BLACK}Ieșire video:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipularea încărcăturilor
 ############ End of leave-in-this-order
 
 
@@ -4434,6 +4440,7 @@ STR_BASESOUNDS_WIN_DESCRIPTION                                  :Setul de sunete
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Un set de sunete fără nici un sunet inclus.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Setul de muzică original al Transport Tycoon Deluxe pentru Windows.
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :Setul de muzică original al Transport Tycoon Deluxe pentru DOS.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Setul de muzică original al Transport (Original/World Editor) pentru DOS.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Un set de muzică fără muzică inclusă.
 
 ##id 0x2000
