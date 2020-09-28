@@ -8,10 +8,10 @@ version           = 0
 @description_STR_BASESOUNDS_WIN_DESCRIPTION@
 
 [files]
-samples      = SAMPLE.CAT
+samples      = sample.cat
 
 [md5s]
-SAMPLE.CAT   = 9212e81e72badd4bbe1eaeae66458e10
+sample.cat   = 9212e81e72badd4bbe1eaeae66458e10
 
 [origin]
 default      = You can find it on your Transport Tycoon Deluxe CD-ROM.

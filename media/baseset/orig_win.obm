@@ -8,97 +8,97 @@ version           = 1
 @description_STR_BASEMUSIC_WIN_DESCRIPTION@
 
 [files]
-theme = GM_TT00.GM
-old_0 = GM_TT02.GM
-old_1 = GM_TT06.GM
-old_2 = GM_TT03.GM
-old_3 = GM_TT12.GM
-old_4 = GM_TT08.GM
-old_5 = GM_TT13.GM
-old_6 = GM_TT14.GM
-old_7 = GM_TT10.GM
+theme = gm_tt00.gm
+old_0 = gm_tt02.gm
+old_1 = gm_tt06.gm
+old_2 = gm_tt03.gm
+old_3 = gm_tt12.gm
+old_4 = gm_tt08.gm
+old_5 = gm_tt13.gm
+old_6 = gm_tt14.gm
+old_7 = gm_tt10.gm
 old_8 =
 old_9 =
-new_0 = GM_TT04.GM
-new_1 = GM_TT01.GM
-new_2 = GM_TT05.GM
-new_3 = GM_TT15.GM
-new_4 = GM_TT11.GM
-new_5 = GM_TT16.GM
-new_6 = GM_TT09.GM
+new_0 = gm_tt04.gm
+new_1 = gm_tt01.gm
+new_2 = gm_tt05.gm
+new_3 = gm_tt15.gm
+new_4 = gm_tt11.gm
+new_5 = gm_tt16.gm
+new_6 = gm_tt09.gm
 new_7 =
 new_8 =
 new_9 =
-ezy_0 = GM_TT18.GM
-ezy_1 = GM_TT19.GM
-ezy_2 = GM_TT21.GM
-ezy_3 = GM_TT17.GM
-ezy_4 = GM_TT20.GM
-ezy_5 = GM_TT07.GM
+ezy_0 = gm_tt18.gm
+ezy_1 = gm_tt19.gm
+ezy_2 = gm_tt21.gm
+ezy_3 = gm_tt17.gm
+ezy_4 = gm_tt20.gm
+ezy_5 = gm_tt07.gm
 ezy_6 =
 ezy_7 =
 ezy_8 =
 ezy_9 =
 
 [md5s]
-GM_TT00.GM = 45cfec1b9d8c7a0ad45e755833cbf221
-GM_TT01.GM = ab14ed3392d848abd2a2e90a9d75d121
-GM_TT02.GM = dd4f696e4be5987ce738257b08b50171
-GM_TT03.GM = a1bfde23343df9e4063419bf29c166b8
-GM_TT04.GM = 4e6943aa0c455203d76c79389054747d
-GM_TT05.GM = cee281cb85a2e2343552d97640545a47
-GM_TT06.GM = 26d1de5efa8675f94065784e9d539e49
-GM_TT07.GM = 6f2691e17558f552ec4c565e4ab7139c
-GM_TT08.GM = a42bf2cb3340a822f1a69646fc7a487d
-GM_TT09.GM = eb35761a58a8df3c59ed8929cce13916
-GM_TT10.GM = 42fecd686720a785d20a78590c466a82
-GM_TT11.GM = 50ef1ef02e49d2112786dd45e69dc3ee
-GM_TT12.GM = 4ce707a0e0e72419f0681dd9bd95271b
-GM_TT13.GM = e765753be29d889ec818f38009103619
-GM_TT14.GM = 270e2d63bd32b95a4d007ce15a6ce45f
-GM_TT15.GM = 89e116a1c0c69f1845cc903a9bfbe460
-GM_TT16.GM = f824e2371b3bedfe61aad4b9c62dd6be
-GM_TT17.GM = 1b23eebb0796c1ab99cd97fa7082cf7b
-GM_TT18.GM = 15650de3bad645d0e88c4f5c7a2df92a
-GM_TT19.GM = 7aec079e15bd09588660b85545ac4dfc
-GM_TT20.GM = 1509097889dee617aa1e9a1738a5a930
-GM_TT21.GM = a8d0aaad02e1a762d8d54cf81da56bab
+gm_tt00.gm = 45cfec1b9d8c7a0ad45e755833cbf221
+gm_tt01.gm = ab14ed3392d848abd2a2e90a9d75d121
+gm_tt02.gm = dd4f696e4be5987ce738257b08b50171
+gm_tt03.gm = a1bfde23343df9e4063419bf29c166b8
+gm_tt04.gm = 4e6943aa0c455203d76c79389054747d
+gm_tt05.gm = cee281cb85a2e2343552d97640545a47
+gm_tt06.gm = 26d1de5efa8675f94065784e9d539e49
+gm_tt07.gm = 6f2691e17558f552ec4c565e4ab7139c
+gm_tt08.gm = a42bf2cb3340a822f1a69646fc7a487d
+gm_tt09.gm = eb35761a58a8df3c59ed8929cce13916
+gm_tt10.gm = 42fecd686720a785d20a78590c466a82
+gm_tt11.gm = 50ef1ef02e49d2112786dd45e69dc3ee
+gm_tt12.gm = 4ce707a0e0e72419f0681dd9bd95271b
+gm_tt13.gm = e765753be29d889ec818f38009103619
+gm_tt14.gm = 270e2d63bd32b95a4d007ce15a6ce45f
+gm_tt15.gm = 89e116a1c0c69f1845cc903a9bfbe460
+gm_tt16.gm = f824e2371b3bedfe61aad4b9c62dd6be
+gm_tt17.gm = 1b23eebb0796c1ab99cd97fa7082cf7b
+gm_tt18.gm = 15650de3bad645d0e88c4f5c7a2df92a
+gm_tt19.gm = 7aec079e15bd09588660b85545ac4dfc
+gm_tt20.gm = 1509097889dee617aa1e9a1738a5a930
+gm_tt21.gm = a8d0aaad02e1a762d8d54cf81da56bab
 
 [names]
-GM_TT00.GM = Tycoon DELUXE Theme
-GM_TT01.GM = Snarl Up
-GM_TT02.GM = Easy Driver
-GM_TT03.GM = Little Red Diesel
-GM_TT04.GM = City Groove
-GM_TT05.GM = Aliens Ate My Railway
-GM_TT06.GM = Stoke It
-GM_TT07.GM = Don't Walk!
-GM_TT08.GM = Sawyer's Tune
-GM_TT09.GM = Fell Apart On Me
-GM_TT10.GM = Can't Get There From Here
-GM_TT11.GM = Hard Drivin'
-GM_TT12.GM = Road Hog
-GM_TT13.GM = Hold That Train!
-GM_TT14.GM = Broomer's Oil Rag
-GM_TT15.GM = Goss Groove
-GM_TT16.GM = Small Town
-GM_TT17.GM = Cruise Control
-GM_TT18.GM = Stroll On
-GM_TT19.GM = Funk Central
-GM_TT20.GM = Jammit
-GM_TT21.GM = Movin' On
+gm_tt00.gm = Tycoon DELUXE Theme
+gm_tt01.gm = Snarl Up
+gm_tt02.gm = Easy Driver
+gm_tt03.gm = Little Red Diesel
+gm_tt04.gm = City Groove
+gm_tt05.gm = Aliens Ate My Railway
+gm_tt06.gm = Stoke It
+gm_tt07.gm = Don't Walk!
+gm_tt08.gm = Sawyer's Tune
+gm_tt09.gm = Fell Apart On Me
+gm_tt10.gm = Can't Get There From Here
+gm_tt11.gm = Hard Drivin'
+gm_tt12.gm = Road Hog
+gm_tt13.gm = Hold That Train!
+gm_tt14.gm = Broomer's Oil Rag
+gm_tt15.gm = Goss Groove
+gm_tt16.gm = Small Town
+gm_tt17.gm = Cruise Control
+gm_tt18.gm = Stroll On
+gm_tt19.gm = Funk Central
+gm_tt20.gm = Jammit
+gm_tt21.gm = Movin' On
 
 ; MIDI timecodes where the playback should attempt to start and stop short.
 ; This is to allow fixing undesired silences in original MIDI files.
 ; However not all music drivers may support this.
 [timingtrim]
 ; Theme has two beats silence at the beginning which prevents clean looping.
-GM_TT00.GM = 768:53760
+gm_tt00.gm = 768:53760
 ; Can't Get There From Here from the Windows version has a long silence at the end,
 ; followed by a solo repeat. This isn't in the original DOS version music and is likely
 ; unintentional from the people who converted the music from the DOS version.
 ; Actual song ends after measure 152.
-GM_TT10.GM = 0:235008
+gm_tt10.gm = 0:235008
 
 [origin]
 default      = You can find it on your Transport Tycoon Deluxe CD-ROM.
