@@ -3450,6 +3450,7 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Neue Einschiene
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Neue Magnetbahnfahrzeuge
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Neue Fahrzeuge
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Neue Straßenbahnen
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Neue Schienenfahrzeuge
