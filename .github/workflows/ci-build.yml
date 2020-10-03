@@ -53,6 +53,7 @@ jobs:
     - name: CMake
       run: mkdir build && cd build && cmake ..
 
+    - uses: ammaraskar/gcc-problem-matcher@master
     - name: Build
       run: cd build && make -j2
 
@@ -80,6 +81,7 @@ jobs:
         vcpkgArguments: 'liblzma libpng lzo zlib'
         vcpkgTriplet: '${{ matrix.arch }}-windows-static'
 
+    - uses: ammaraskar/msvc-problem-matcher@master
     - name: 'Build'
       uses: lukka/run-cmake@v3
       with:
@@ -131,6 +133,7 @@ jobs:
     - name: CMake
       run: mkdir build && cd build && cmake ..
 
+    - uses: ammaraskar/gcc-problem-matcher@master
     - name: Build
       run: cd build && make -j2
 
