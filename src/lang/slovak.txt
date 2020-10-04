@@ -27,13 +27,13 @@ STR_JUST_NOTHING                                                :Nič
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
-STR_CARGO_PLURAL_PASSENGERS                                     :Cestujúcich
-STR_CARGO_PLURAL_PASSENGERS.g                                   :cestujucich
+STR_CARGO_PLURAL_PASSENGERS                                     :Cestujúci
+STR_CARGO_PLURAL_PASSENGERS.g                                   :cestujúcich
 STR_CARGO_PLURAL_COAL                                           :Uhlie
 STR_CARGO_PLURAL_COAL.g                                         :uhlia
-STR_CARGO_PLURAL_MAIL                                           :Poštu
+STR_CARGO_PLURAL_MAIL                                           :Pošta
 STR_CARGO_PLURAL_MAIL.g                                         :pošty
-STR_CARGO_PLURAL_OIL                                            :Ropu
+STR_CARGO_PLURAL_OIL                                            :Ropa
 STR_CARGO_PLURAL_OIL.g                                          :ropy
 STR_CARGO_PLURAL_LIVESTOCK                                      :Dobytok
 STR_CARGO_PLURAL_LIVESTOCK.g                                    :dobytka
@@ -51,7 +51,7 @@ STR_CARGO_PLURAL_VALUABLES                                      :Cennosti
 STR_CARGO_PLURAL_VALUABLES.g                                    :cennosti
 STR_CARGO_PLURAL_COPPER_ORE                                     :Medená ruda
 STR_CARGO_PLURAL_COPPER_ORE.g                                   :medenej rudy
-STR_CARGO_PLURAL_MAIZE                                          :Kukuricu
+STR_CARGO_PLURAL_MAIZE                                          :Kukurica
 STR_CARGO_PLURAL_MAIZE.g                                        :kukurice
 STR_CARGO_PLURAL_FRUIT                                          :Ovocie
 STR_CARGO_PLURAL_FRUIT.g                                        :ovocia
@@ -63,9 +63,9 @@ STR_CARGO_PLURAL_PAPER                                          :Papier
 STR_CARGO_PLURAL_PAPER.g                                        :papiera
 STR_CARGO_PLURAL_GOLD                                           :Zlato
 STR_CARGO_PLURAL_GOLD.g                                         :zlata
-STR_CARGO_PLURAL_WATER                                          :Vodu
+STR_CARGO_PLURAL_WATER                                          :Voda
 STR_CARGO_PLURAL_WATER.g                                        :vody
-STR_CARGO_PLURAL_WHEAT                                          :Pšenicu
+STR_CARGO_PLURAL_WHEAT                                          :Pšenica
 STR_CARGO_PLURAL_WHEAT.g                                        :pšenice
 STR_CARGO_PLURAL_RUBBER                                         :Kaučuk
 STR_CARGO_PLURAL_RUBBER.g                                       :kaučuku
@@ -75,9 +75,9 @@ STR_CARGO_PLURAL_TOYS                                           :Hračky
 STR_CARGO_PLURAL_TOYS.g                                         :hračiek
 STR_CARGO_PLURAL_CANDY                                          :Cukríky
 STR_CARGO_PLURAL_CANDY.g                                        :cukríkov
-STR_CARGO_PLURAL_COLA                                           :Kofolu
+STR_CARGO_PLURAL_COLA                                           :Kofola
 STR_CARGO_PLURAL_COLA.g                                         :kofoly
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Cukrovú vatu
+STR_CARGO_PLURAL_COTTON_CANDY                                   :Cukrová vata
 STR_CARGO_PLURAL_COTTON_CANDY.g                                 :cukrovej vaty
 STR_CARGO_PLURAL_BUBBLES                                        :Bublinky
 STR_CARGO_PLURAL_BUBBLES.g                                      :bubliniek
@@ -87,13 +87,13 @@ STR_CARGO_PLURAL_BATTERIES                                      :Baterky
 STR_CARGO_PLURAL_BATTERIES.g                                    :bateriek
 STR_CARGO_PLURAL_PLASTIC                                        :Umelina
 STR_CARGO_PLURAL_PLASTIC.g                                      :umeliny
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Malinovky
-STR_CARGO_PLURAL_FIZZY_DRINKS.g                                 :Malinoviek
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Malinovka
+STR_CARGO_PLURAL_FIZZY_DRINKS.g                                 :malinoviek
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_PASSENGER                                    :Cestujúci
-STR_CARGO_SINGULAR_PASSENGER.g                                  :cestujucich
+STR_CARGO_SINGULAR_PASSENGER.g                                  :cestujúceho
 STR_CARGO_SINGULAR_COAL                                         :Uhlie
 STR_CARGO_SINGULAR_COAL.g                                       :uhlia
 STR_CARGO_SINGULAR_MAIL                                         :Pošta
@@ -112,7 +112,7 @@ STR_CARGO_SINGULAR_IRON_ORE                                     :Železná ruda
 STR_CARGO_SINGULAR_IRON_ORE.g                                   :zeleznej rudy
 STR_CARGO_SINGULAR_STEEL                                        :Oceľ
 STR_CARGO_SINGULAR_STEEL.g                                      :ocele
-STR_CARGO_SINGULAR_VALUABLES                                    :Cennosti
+STR_CARGO_SINGULAR_VALUABLES                                    :Cennosť
 STR_CARGO_SINGULAR_VALUABLES.g                                  :cennosti
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Medená ruda
 STR_CARGO_SINGULAR_COPPER_ORE.g                                 :medenej rudy
@@ -121,7 +121,7 @@ STR_CARGO_SINGULAR_MAIZE.g                                      :kukurice
 STR_CARGO_SINGULAR_FRUIT                                        :Ovocie
 STR_CARGO_SINGULAR_FRUIT.g                                      :ovocia
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamant
-STR_CARGO_SINGULAR_DIAMOND.g                                    :diamantov
+STR_CARGO_SINGULAR_DIAMOND.g                                    :diamantu
 STR_CARGO_SINGULAR_FOOD                                         :Jedlo
 STR_CARGO_SINGULAR_FOOD.g                                       :jedla
 STR_CARGO_SINGULAR_PAPER                                        :Papier
@@ -133,13 +133,13 @@ STR_CARGO_SINGULAR_WATER.g                                      :vody
 STR_CARGO_SINGULAR_WHEAT                                        :Pšenica
 STR_CARGO_SINGULAR_WHEAT.g                                      :psenice
 STR_CARGO_SINGULAR_RUBBER                                       :Kaučuk
-STR_CARGO_SINGULAR_RUBBER.g                                     :kaucuku
+STR_CARGO_SINGULAR_RUBBER.g                                     :kaučuku
 STR_CARGO_SINGULAR_SUGAR                                        :Cukor
 STR_CARGO_SINGULAR_SUGAR.g                                      :cukru
 STR_CARGO_SINGULAR_TOY                                          :Hračka
-STR_CARGO_SINGULAR_TOY.g                                        :hraciek
+STR_CARGO_SINGULAR_TOY.g                                        :hračky
 STR_CARGO_SINGULAR_CANDY                                        :Cukrík
-STR_CARGO_SINGULAR_CANDY.g                                      :cukrikov
+STR_CARGO_SINGULAR_CANDY.g                                      :cukríka
 STR_CARGO_SINGULAR_COLA                                         :Kofola
 STR_CARGO_SINGULAR_COLA.g                                       :kofoly
 STR_CARGO_SINGULAR_COTTON_CANDY                                 :Cukrová vata
@@ -157,9 +157,9 @@ STR_CARGO_SINGULAR_FIZZY_DRINK.g                                :malinovky
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}cestujuci{P "" "" ch}
+STR_QUANTITY_PASSENGERS                                         :{COMMA}{NBSP}cestujúci{P "" "" ch}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} uhlia
-STR_QUANTITY_MAIL                                               :{COMMA} balik{P "" y ov} pošty
+STR_QUANTITY_MAIL                                               :{COMMA} balík{P "" y ov} pošty
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} ropy
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} kus{P "" y ov} dobytka
 STR_QUANTITY_GOODS                                              :{COMMA} deb{P na ny ien} tovaru
@@ -180,7 +180,7 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} p
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} kaučuku
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} cukru
 STR_QUANTITY_TOYS                                               :{COMMA} hrač{P ka ky iek}
-STR_QUANTITY_SWEETS                                             :{COMMA} deb{P na ny ien} cukrikov
+STR_QUANTITY_SWEETS                                             :{COMMA} deb{P na ny ien} cukríkov
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} kofoly
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} cukrovej vaty
 STR_QUANTITY_BUBBLES                                            :{COMMA} bublin{P ka ky iek}
@@ -245,12 +245,14 @@ STR_COLOUR_GREEN                                                :Zelená
 STR_COLOUR_DARK_GREEN                                           :Tmavozelená
 STR_COLOUR_BLUE                                                 :Modrá
 STR_COLOUR_CREAM                                                :Krémová
-STR_COLOUR_MAUVE                                                :Ružová
+STR_COLOUR_MAUVE                                                :Svetlofialová
 STR_COLOUR_PURPLE                                               :Fialová
 STR_COLOUR_ORANGE                                               :Oranžová
 STR_COLOUR_BROWN                                                :Hnedá
 STR_COLOUR_GREY                                                 :Šedá
 STR_COLOUR_WHITE                                                :Biela
+STR_COLOUR_RANDOM                                               :Náhodná
+STR_COLOUR_DEFAULT                                              :Predvolená
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
