@@ -935,6 +935,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikon peso (
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Uusi Taiwanin dollari (TWD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kiinan renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongin dollari (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Intian rupia (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kulkuneuvot
@@ -2168,6 +2169,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Väärä
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Palvelin on täynnä
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinut on kielletty palvelimelta
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sinut potkittiin pihalle palvelimelta
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Syy: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Huijaaminen ei ole sallittua tällä palvelimella
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Lähetit liian monta komentoa palvelimelle
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Käytit liian paljon aikaa salasanan syöttämiseen
@@ -2227,6 +2229,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} an
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Annoit yhtiölle {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
+STR_NETWORK_MESSAGE_KICKED                                      :{STRING} potkaistiin ulos. Syy: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Sisällön lataus
@@ -3668,10 +3671,10 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Olet my
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Viesti kulkuneuvovalmistajalta
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Olemme juuri suunnitelleet uuden {STRING} – oletteko kiinnostunut vuoden yksinoikeutetusta kokeilusta, jotta näemme miten tuote suoriutuu ennen kuin julkistamme sen yleiseen käyttöön?
 
-STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :veturin
+STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :veturi
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :sähköradan veturi
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen veturin
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :maglev-veturin
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen veturi
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Maglev-veturi
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ajoneuvon
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :raitiovaunun
