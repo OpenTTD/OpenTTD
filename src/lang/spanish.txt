@@ -1346,7 +1346,7 @@ STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Mejorado
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Vehículos de carretera: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Elegir el lado de conducción
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Rotación del Mapa de alturas: {STRING}
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido antihorario
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horario
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :El nivel de la altura del mapa plano tiene: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Una o más casillas del borde norte no están vacías
@@ -1424,10 +1424,10 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Usar grupos en 
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Activa el uso de listas de vehículos avanzadas para agrupar vehículos
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Usar indicadores de carga: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Permite escoger si se deben de mostrar indicadores de carga encima de vehículos que estén en estaciones
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostrar horario en ticks en vez de en días: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Muestra los tiempos de viaje en tablas de horario en ticks en lugar de en días
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar salidas y llegadas en horarios: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Muestra tiempos de llegada y salida adelantados en tablas de tiempo
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Mostrar horario en tics en vez de en días: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Muestra los tiempos de viaje en los horarios en tics en lugar de en días
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostrar salidas y llegadas en los horarios: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Muestra tiempos de llegada y salida adelantados en los horarios
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creación rápida de órdenes para vehículos: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preselecciona el cursor "Ir a" al abrir la ventana de órdenes
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Raíl por defecto (juego nuevo/cargar juego): {STRING}
@@ -2744,7 +2744,7 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_CAPTION                                           :{WHITE}Fotogramas por segundo - FPS
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
 STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Tasa de Simulación: {STRING}
-STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de ticks de juego simulados por segundo.
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Número de tics de juego simulados por segundo.
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}FPS de gráficos: {STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Número de fotogramas renderizados por segundo.
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factor de velocidad de juego actual: {DECIMAL}x
@@ -2767,11 +2767,11 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Bucles de juego totales:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Manejo de cargamento
-STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Ticks de trenes:
-STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Ticks de vehículos de carretera:
-STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ticks de barcos:
-STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Ticks de aeronaves:
-STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Ticks de mapa:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Tics de trenes:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Tics de vehículos de carretera:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Tics de barcos:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Tics de aeronaves:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Tics de mapa:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Retraso del gráfico de distribución:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderizado gráfico:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} Ventanas de vista generales:
@@ -2784,11 +2784,11 @@ STR_FRAMERATE_AI                                                :{BLACK}   IA {N
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Bucle de juego
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manejo de cargamento
-STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks de trenes
-STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticks de vehículo de carretera
-STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks de barcos
-STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticks de aeronaves
-STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Ticks de mapa
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Tics de trenes
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Tics de vehículo de carretera
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Tics de barcos
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Tics de aeronaves
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Tics de mapa
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Retraso del gráfico de distribución
 STR_FRAMETIME_CAPTION_DRAWING                                   :Renderizado gráfico
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Representación de la vista del Mundo
@@ -3897,8 +3897,8 @@ STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reformar
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Órdenes)
-STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horarios
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Cambiar a la vista de horarios
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Horario
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Cambia a la vista de horarios
 
 STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Lista de órdenes - Clic en una orden para resaltarla. Ctrl+Clic para desplazarse a la estación de la orden
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
@@ -4049,56 +4049,56 @@ STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Saltar a orden 
 STR_ORDER_CONDITIONAL_NUM                                       :Saltar a orden {COMMA} cuando {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Saltar a orden {COMMA} cuando {STRING} {STRING}
 
-STR_INVALID_ORDER                                               :{RED} (Orden inválida)
+STR_INVALID_ORDER                                               :{RED} (Orden no válida)
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horarios)
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horario)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Órdenes
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Cambiar a la vista de órdenes
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horarios - pulse en una orden para marcarla
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horario - Pulse en una orden para marcarla
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sin viaje
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Viajar (automático; programado por la próxima orden manual)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (sin horarios) a como máximo {2:VELOCITY}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (sin programar)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Viajar (sin programar) a {2:VELOCITY} como máximo
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar a {STRING} con un límite de velocidad de {VELOCITY}
-STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajando (a {STRING}, sin horarios)
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajando (a {STRING}, sin horario) a como máximo {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(permaneciendo por {STRING}, sin horarios)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajando a {STRING}, sin horarios)
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Viajar durante {STRING} a {VELOCITY} como máximo
+STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Viajando (durante {STRING}, sin programar)
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Viajando (durante {STRING}, sin programar) a {VELOCITY} como máximo
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(permaneciendo {STRING}, sin programar)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(viajando durante {STRING}, sin programar)
 STR_TIMETABLE_STAY_FOR                                          :y esperar {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}día{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tic{P "" s}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Los horarios tomarán {STRING} para completarse
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Estos horarios tomarán {STRING} para completarse (no todos los horarios)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}El horario tardará {STRING} en completarse
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}El horario tardará al menos {STRING} en completarse (no todas las órdenes)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Este vehículo está actualmente en hora
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Este vehículo está actualmente retrasado {STRING}
-STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo está actualmente {STRING} adelantado
+STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}Este vehículo está actualmente adelantado {STRING}
 STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Este horario no ha comenzado
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario empezará en {STRING}
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Este horario comenzará en {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Fecha de inicio
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Selecciona una fecha como punto de partida de este horario. Ctrl+Clic permite fijar el punto de partida de este horario y distribuye todos los vehículos que lo compartan siempre y cuando el horario esté completo
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Horario
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la cantidad de tiempo que debe tardar una orden marcada
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar duración
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la duración de la orden seleccionada
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Limpiar Horario
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpiar la cantidad de tiempo para la orden seleccionada
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Borrar duración
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Borra la duración de la orden seleccionada
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Cambiar Límite de Velocidad
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Cambiar límite de velocidad
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Cambia el límite de velocidad de la orden seleccionada
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Limpiar Límite de Velocidad
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Limpia el límite de velocidad de la orden seleccionada
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Borrar límite de velocidad
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Borra el límite de velocidad de la orden seleccionada
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar Retrasos
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reajustar el contador del retraso, así el vehículo estará en horario
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reiniciar retrasos
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Pone a cero el retraso del vehículo, así el vehículo estará en hora
 
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Rellenar automáticamente
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (Ctrl+Clic para tratar de mantener los tiempos de espera))
@@ -4115,9 +4115,9 @@ STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :S:
 STR_DATE_CAPTION                                                :{WHITE}Seleccionar fecha
 STR_DATE_SET_DATE                                               :{BLACK}Seleccionar fecha
 STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Usar la fecha seleccionada como punto de inicio del horario
-STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selecciona día
-STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selecciona mes
-STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecciona año
+STR_DATE_DAY_TOOLTIP                                            :{BLACK}Selecciona el día
+STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Selecciona el mes
+STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Selecciona el año
 
 
 # AI debug window
@@ -4188,7 +4188,7 @@ STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normal
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Acercamiento máximo
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Acercamiento por defecto
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Mapa completo
-STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :Mapa de alturas
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Mapa de alturas
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimapa
 
 # AI Parameters
@@ -4630,7 +4630,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... dema
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... la aeronave no tiene suficiente alcance
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}No se pueden asignar horarios al vehículo...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}No se puede asignar horario al vehículo...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Los vehículos solo pueden esperar en estaciones
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}Este vehículo no va a detenerse en esta estación
 

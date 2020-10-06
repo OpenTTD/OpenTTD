@@ -299,8 +299,8 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vybrať 
 STR_BUTTON_SORT_BY                                              :{BLACK}Usporiadať
 STR_BUTTON_LOCATION                                             :{BLACK}Poloha
 STR_BUTTON_RENAME                                               :{BLACK}Premenovať
-STR_BUTTON_CATCHMENT                                            :Pokrytie
-STR_TOOLTIP_CATCHMENT                                           :Prepnúť zobrazenie oblasti pokrytia
+STR_BUTTON_CATCHMENT                                            :{BLACK}Pokrytie
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Prepnúť zobrazenie oblasti pokrytia
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavrieť okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Nadpis okna - potiahni pre posun okna
@@ -383,7 +383,7 @@ STR_SORT_BY_RATING                                              :Hodnotenie
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Zrýchliť priebeh hry
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nastavenia
-STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložiť hru, opustiť hru, ukončiť
+STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložiť hru, opustiť hru, ukončiť program
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Zobraziť mapu
 STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Zobraziť zoznam miest
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Zobraziť dotácie
@@ -412,16 +412,16 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informá
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Prepnúť panely nástrojov
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Uložiť scenár, nahrať scenár, opustiť editor scenára, koniec
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Uložiť scenár, nahrať scenár, opustiť editor scenára, ukončiť program
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Editor scenárov
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Posunúť začiatok o rok dozadu
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Posunúť začiatok o rok dopredu
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Kliknúť pre zadanie počiatočného roku
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Zobraziť mapu, zoznam miest
-STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Vytvorenie uzemia
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Vytvorenie mesta
-STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Vytvorenie priemyslu
+STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Generovanie krajiny
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generovanie miest
+STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generovanie priemyslu
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Stavba cesty
 STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sadenie stromov. Shift zobrazí odhad nákladov
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umiestniť popis
@@ -432,9 +432,9 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Uložiť scená
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Nahrať scenár
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Uložiť výškovú mapu
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Nahrať výškovú mapu
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Ukončiť editor scenára
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Opustiť editor scenára
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
-STR_SCENEDIT_FILE_MENU_QUIT                                     :Koniec
+STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončiť program
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -459,7 +459,7 @@ STR_FILE_MENU_SAVE_GAME                                         :Uložiť hru
 STR_FILE_MENU_LOAD_GAME                                         :Nahrať hru
 STR_FILE_MENU_QUIT_GAME                                         :Opustiť hru
 STR_FILE_MENU_SEPARATOR                                         :
-STR_FILE_MENU_EXIT                                              :Koniec
+STR_FILE_MENU_EXIT                                              :Ukončiť program
 ############ range ends here
 
 # map menu
@@ -689,7 +689,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Hotovos�
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Úver:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Spolu:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Počet vozidiel (automobilov, vlakov, lodí a lietadiel), ktoré zmenili zisk minulý rok
+STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}Počet vozidiel, ktoré dosiahli v minulom roku zisk. Patria sem cestné vozidlá, vlaky, lode a lietadlá
 STR_PERFORMANCE_DETAIL_STATIONS_TOOLTIP                         :{BLACK}Počet nedávno obsluhovaných staníc. Železničná stanica, autobus. zastávka, letisko sa počítajú oddelene aj keď patria do rovnakej stanice
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}Zisk vozidla s najnižším príjmom (zo všetkých vozidiel starších ako 2 roky)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}Množstvo peňazí zarobených v kvartáli s najmenším ziskom v posledných 12 kvartáloch
@@ -846,7 +846,7 @@ STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLAC
 
 STR_NEWS_FIRST_TRAIN_ARRIVAL                                    :{BIG_FONT}{BLACK}Mesto oslavuje . . .{}Prvý vlak dorazil do stanice {STATION}!
 STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLACK}Mesto oslavuje . . .{}Prvý autobus dorazil do {STATION}!
-STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Mesto oslavuje . . .{}Prvý automobil dorazil do {STATION}!
+STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Mesto oslavuje . . .{}Prvý nákladný automobil dorazil do {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Mesto oslavuje . . .{}Prvá električka dorazila do stanice {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Mesto oslavuje . . .{}Prvá nákladná električka dorazila do stanice {STATION}!
 STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Mesto oslavuje . . .{}Prvá loď dorazila do {STATION}!
@@ -859,7 +859,7 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLAC
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Letecké nešťastie!{}Lietadlu došlo palivo, {COMMA} mŕtvych pri požiari
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelin zničený pri nehode na {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Automobil bol zničený pri kolízii s 'UFO'
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Cestné vozidlo bolo zničené pri kolízii s 'UFO'
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Ropná rafinéria explodovala neďaleko mesta {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Za nejasných okolností bola zničená továreň neďaleko mesta {TOWN}!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' pristalo nedaleko mesta {TOWN}!
@@ -1250,8 +1250,8 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Povoliť úprav
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Umožňuje úpravy terénu pod budovami a traťami bez potreby ich odstránenia
 STR_CONFIG_SETTING_CATCHMENT                                    :Povoliť realistickejšiu veľkosť oblasti pokrytia: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Má úchytné plochy rôznych veľkostí pre rôzne typy staníc a letísk
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Stanice spoločnosti môžu obsluhovať priemysel s pripojenými neutrálnymi stanicami: {STRING}
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Ak je povolené, priemysel s pripojenými stanicami (napríklad Ropné plošiny) môžu obsluhovať aj stanice vlastnené spoločnosťou postavené v blízkosti. Ak je zakázané, tento priemysel môžu obsluhovať iba jeho pripojené stanice. Žiadne blízke stanice vlastnené spoločnosťou ich nebudú môcť obsluhovať a pripojená stanica nebude slúžiť ničomu inému ako priemyslu
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Stanice spoločnosti môžu obsluhovať priemysel s pripojenými stanicami: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Ak je povolené, priemysel s pripojenými neutrálnymi stanicami (napríklad Ropné plošiny) môžu obsluhovať aj stanice vlastnené spoločnosťou postavené v blízkosti. Ak je zakázané, tento priemysel môžu obsluhovať iba jeho pripojené stanice. Žiadne blízke stanice vlastnené spoločnosťou ich nebudú môcť obsluhovať a pripojená stanica nebude slúžiť ničomu inému ako priemyslu
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Odstrániť viaceré mestské cesty, mosty a tunely: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Uľahči odstraňovanie mestom vlastnených budov a infraštruktúry
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Maximálna dĺžka vlakov: {STRING}
@@ -1525,8 +1525,8 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Zakázať výst
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Ak je zapnuté, infraštruktúra je k dispozícii len ak su k nej pripojené vozidlá. Toto predchádza plýtvaniu peniazmi a časom pri nepoužiteľnej infraštruktúre.
 STR_CONFIG_SETTING_MAX_TRAINS                                   :Maximálny počet vlakov na spoločnosť: {STRING}
 STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Maximálny počet vlakov ktorý môže spoločnosť vlastniť.
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximálny počet automobilov na spoločnosť: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximálny počet automobilov ktorý môže spoločnosť vlastniť.
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Maximálny počet cestných vozidiel na spoločnosť: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Maximálny počet cestných vozidiel ktorý môže spoločnosť vlastniť.
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Maximálny počet lietadiel na spoločnosť: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Maximálny počet lietadiel ktorý môže spoločnosť vlastniť.
 STR_CONFIG_SETTING_MAX_SHIPS                                    :Maximálny počet lodí na spoločnosť: {STRING}
@@ -1534,8 +1534,8 @@ STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Maximálny poč
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Zakázať vlaky pre počítač: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Povolením nastavenia znemožní počítačovým hráčom budovať vlaky.
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Zakázať automobily pre počítač: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Povolením nastavenia znemožní počítačovým hráčom budovať automobily.
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Zakázať cestné vozidlá pre počítač: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Povolením nastavenia znemožní počítačovým hráčom budovať cestné vozidlá.
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Zakázať lietadlá pre počítač: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Povolením nastavenia znemožní počítačovým hráčom budovať lietadlá.
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Zakázať lode pre počítač: {STRING}
@@ -1557,16 +1557,16 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Servisné intervaly v percentách: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Zvoľte či servisovanie vozidiel bude podliehať času od posledného servisu, alebo poklesom percenta návratnosti z celkovej maximálnej návratnosti.
-STR_CONFIG_SETTING_SERVINT_TRAINS                               :Štandardný interval servisu pre vlaky: {STRING}
-STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Nastav štandardný interval pre nové vlaky.Ak nie je nastavený podrobnejší interval.
+STR_CONFIG_SETTING_SERVINT_TRAINS                               :Predvolený interval servisu pre vlaky: {STRING}
+STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Nastav predvolený interval pre nové vlaky. Ak nie je nastavený podrobnejší interval.
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} deň/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :vypnuté
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Štandardný interval servisu pre automobily: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Nastav štandardný interval pre nové automobily. Ak nie je nastavený podrobnejší interval.
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Štandardný interval servisu pre lietadlá: {STRING}
-STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Nastav štandardný interval pre nové lietadlá. Ak nie je nastavený podrobnejší interval.
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Štandardný interval servisu pre lode: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Nastav štandardný interval pre nové lode. Ak nie je nastavený podrobnejší interval.
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Predvolený interval servisu pre cestné vozidlá: {STRING}
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Nastav predvolený interval pre nové cestné vozidlá. Ak nie je nastavený podrobnejší interval.
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Predvolený interval servisu pre lietadlá: {STRING}
+STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Nastav predvolený interval pre nové lietadlá. Ak nie je nastavený podrobnejší interval.
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Predvolený interval servisu pre lode: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Nastav predvolený interval pre nové lode. Ak nie je nastavený podrobnejší interval.
 STR_CONFIG_SETTING_NOSERVICE                                    :Vypnúť servisy, ak sú vypnuté poruchy: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Ak je zapnuté, vozidlá nebudú servisované ak sú vypnuté poruchy.
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Obmedzenie rýchlosti pre vagóny: {STRING}
@@ -1798,8 +1798,8 @@ STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(odp
 
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Algoritmus hľadania cesty pre vlaky: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Vyhľadávač trasy pre vlaky
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Algoritmus hľadania cesty pre automobily: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Vyhľadávač trasy pre automobily
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Algoritmus hľadania cesty pre cestné vozidlá: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Vyhľadávač trasy pre cestné vozidlá
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Algoritmus hľadania cesty pre lode: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Vyhľadávač trasy pre lode
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatické obrátenie na semaforoch: {STRING}
@@ -2596,7 +2596,7 @@ STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nahodné
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadiť stromy náhodne po celej krajine
 
 # Land generation window (SE)
-STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generovanie uzemia
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generovanie územia
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Umiestnit nahodne skaly
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Vytvoriť oblasť púšte.{}Držaním Ctrl ju odstránite
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Pre zvýšenie/zníženie oblasti je potrebné zväčšiť územie
@@ -2791,11 +2791,62 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} team OpenTTD
 
 # Framerate display window
-STR_FRAMERATE_CAPTION                                           :Snímková frekvencia
+STR_FRAMERATE_CAPTION                                           :{WHITE}Snímková frekvencia
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Frekvencia simulácie: {STRING}
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Počet herných tiknutí simulovaných za sekundu.
+STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}Snímková frekvencia grafiky: {STRING}
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Počet video snímok vykreslených za sekundu.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Súčasný násobok hernej rýchlosti: {DECIMAL}x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Súčasná rýchlosť hry v porovnaní s rýchlosťou, akou by mala hra normálne bežať.
+STR_FRAMERATE_CURRENT                                           :{WHITE}Teraz
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Priemer
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Pamäť
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Dáta sú založené na {COMMA} meraniach
+STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} snímok/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} snímok/s
+STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} snímok/s
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Herný cyklus celkovo:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Manipulácia s nákladom:
+STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Tiknutia vlakov:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Tiknutia cestných vozidiel:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Tiknutia lodí:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Tiknutia lietadiel:
+STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Tiknutia sveta:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Oneskorenie spojovacieho grafu:
+STR_FRAMERATE_DRAWING                                           :{BLACK}Vykresľovanie grafiky:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Pohľady na svet:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Výstup videa:
+STR_FRAMERATE_SOUND                                             :{BLACK}Miešanie zvukov:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Herný skript/AI spolu:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Herný skript:
+STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMELOOP                                  :Herný cyklus
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipulácia s nákladom
+STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Tiknutia vlakov
+STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Tiknutia cestných vozidiel
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Tiknutia lodí
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Tiknutia lietadiel
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Tiknutia sveta
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Oneskorenie spojovacieho grafu
+STR_FRAMETIME_CAPTION_DRAWING                                   :Vykresľovanie grafiky
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Vykresľovanie pohľadu na svet
+STR_FRAMETIME_CAPTION_VIDEO                                     :Výstup videa
+STR_FRAMETIME_CAPTION_SOUND                                     :Miešanie zvukov
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Herný skript/AI spolu
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Herný skript
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2884,17 +2935,17 @@ STR_GENERATION_WORLD                                            :{WHITE}Generuje
 STR_GENERATION_ABORT                                            :{BLACK}Zrušiť
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Zrušiť generovanie krajiny
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Skutočne chceš ukončiť generovanie?
-STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% hotovych
+STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}% hotových
 STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
-STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Vytvorenie krajiny
-STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Vytvorenie rieky
+STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Generovanie sveta
+STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Generovanie riek
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Generovanie stromov
 STR_GENERATION_OBJECT_GENERATION                                :{BLACK}Generovanie objektov
-STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generovanie nerovnosti a skal
+STR_GENERATION_CLEARING_TILES                                   :{BLACK}Generovanie nerovností a skál
 STR_GENERATION_SETTINGUP_GAME                                   :{BLACK}Nastavovanie hry
-STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spustam tile-loop
-STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Bežiaci skript
-STR_GENERATION_PREPARING_GAME                                   :{BLACK}Priprava hry
+STR_GENERATION_PREPARING_TILELOOP                               :{BLACK}Spúšťanie políčkového cyklu
+STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Spúšťanie skriptu
+STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pripravovanie hry
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenie NewGRF súborov
@@ -3296,12 +3347,12 @@ STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Výstavba
 STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nové vozidlá
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Prevádzka vlakov
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Prevádzka automobilov
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Prevádzka cestných vozidiel
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Prevádzka lietadiel
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Prevádzka lodí
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Údržba majetku
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Tržby vlakov
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Tržby automobilov
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Tržby cestných vozidiel
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Tržby lietadiel
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Tržby lodí
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Úroky
@@ -3327,7 +3378,7 @@ STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Zvolený:
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Farebná schéma:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Stroje:
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} vlak{P "" y ov}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} automobil{P "" y ov}
+STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} cestn{P é é ých} vozid{P lo lá iel}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} lietad{P lo lá iel}
 STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} lo{P ď de dí}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Žiadne
@@ -3389,7 +3440,7 @@ STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Názvy p
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
-STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkcia za posledný mesiac
+STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkcia minulý mesiac:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% prepraven{P é é ých})
 STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vycentrovať pohľad na pozíciu továrne. Ctrl+klik otvorí nové okno s pohľadom na továreň
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Úroveň produkcie: {YELLOW}{COMMA}%
@@ -3408,7 +3459,7 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Zmeniť 
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Vlak{P "" y ov}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Automobil{P "" y ov}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Cestn{P é é ých} vozid{P lo lá iel}
 STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Lo{P ď de dí}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Lietad{P lo lá iel}
 
@@ -3431,8 +3482,8 @@ STR_VEHICLE_LIST_REPLACE_VEHICLES                               :Vymeniť vozidl
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :Vykonať servis
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :Poslať do depa
-STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Poslat do garáže
-STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Poslat do lodenice
+STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :Poslať do garáže
+STR_VEHICLE_LIST_SEND_SHIP_TO_DEPOT                             :Poslať do lodenice
 STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Poslať do hangáru
 
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Zastaviť všetky vozidlá v zozname
@@ -3480,9 +3531,11 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nové jednokoľ
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nové magnetické vlaky
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nové automobily
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nové električky
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Železnicne vozidlá
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nové cestné vozidlá
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nové lode
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nove Lietadlo
 ############ range for vehicle availability ends
@@ -3551,7 +3604,7 @@ STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Prepnú�
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Prepnúť zobrazenie/skrytie typu lietadla
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Premenovať typ vlaku
-STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Premenovať typ automobilu
+STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Premenovať typ cestného vozidla
 STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Premenovať typ lode
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Premenovať typ lietadla
 
@@ -3572,7 +3625,7 @@ STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Lode - p
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Lietadlo - pravý kliknutím na lietadlo sa zobrazia informácie
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Presunutím lokomotívy bude predaná
-STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Automobil presunutý sem bude predaný
+STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Vozidlo presunuté sem bude predané
 STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Presunutím lode sem sa predá
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Presunutím lietadla sem sa predá
 
@@ -3594,7 +3647,7 @@ STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nové lo
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nové Lietadlo
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Kúpiť nový vlak
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kúpiť nový automobil
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Kúpiť nové cestné vozidlo
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Vyrobiť novú loď
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Kúpiť nové lietadlo
 
@@ -3638,7 +3691,7 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=z}železnič
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=z}jednokoľajová lokomotíva
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=z}magnetická lokomotíva
 
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}automobil
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=s}cestné vozidlo
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=s}lietadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=z}loď
@@ -3650,7 +3703,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cena: {C
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Výmena {STRING} - {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :{G=m}Vlak
-STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=m}Automobil
+STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :{G=s}Cestné vozidlo
 STR_REPLACE_VEHICLE_SHIP                                        :{G=z}Loď
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :{G=s}Lietadlo
 
@@ -3721,7 +3774,7 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Zobrazi�
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Zobraziť cestovné príkazy lietadla. Ctrl+klik pre zobrazenie cestovného poriadku lietadla
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Zobraziť detaily o vlaku
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Zobraziť detaily o automobile
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Zobraziť detaily o cestnom vozidle
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zobraziť detaily o lodi
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zobraziť detaily o lietadle
 
@@ -3758,7 +3811,7 @@ STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Meno
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pomenovať vlak
-STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Premenovať automobil
+STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Premenovať cestné vozidlo
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Pomenovať loď
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Pomenovat lietadlo
 
@@ -3793,7 +3846,7 @@ STR_VEHICLE_DETAILS_DAYS                                        :Dni
 STR_VEHICLE_DETAILS_PERCENT                                     :Percentáž
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Premenovať vlak
-STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Premenovať automobil
+STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Premenovať cestné vozidlo
 STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Premenovať loď
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Premenovať lietadlo
 
@@ -4131,7 +4184,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vybrať 
 STR_AI_LIST_CANCEL                                              :{BLACK}Zrušiť
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nemeniť skript
 
-STR_SCREENSHOT_CAPTION                                          :Vytvoriť snímku obrazovky
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Vytvoriť snímku obrazovky
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normálna snímka
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Plne priblížená snímka
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Predvolene priblížená snímka
@@ -4488,7 +4541,7 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nie je m
 
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Vlak v ceste
-STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Automobil v ceste
+STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Cestné vozidlo v ceste
 STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Loď v ceste
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Lietadlo v ceste
 
@@ -4498,27 +4551,27 @@ STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Nemožno
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Nie je možné prestavať na nový typ nákladu...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Vlak nemožno pomenovať...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nemožno premenovať automobil...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Nemožno premenovať cestné vozidlo...
 STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Nemožno pomenovať loď...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Nie je možné pomenovať lietadlo...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Nemožno zastaviť/spustiť vlak...
-STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nemožno zastaviť/spustiť automobil...
+STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Nemožno zastaviť/spustiť cestné vozidlo...
 STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Nemožno zastaviť/spustiť loď...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Nemožno zastaviť/spustiť lietadlo...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Vlak sa nedá poslať do depa...
-STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nemožno poslať automobil do garáže...
+STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Nemožno poslať cestné vozidlo do garáže...
 STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Nemožno poslať loď do lodenice...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Nemožno poslať lietadlo do hangáru...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Nemožno kúpiť vlak...
-STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nie je možné zakúpiť automobil...
+STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Nie je možné zakúpiť cestné vozidlo...
 STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Nemožno vyrobiť loď...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Nemožno vyrobiť lietadlo...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Typ vlaku nemôže byť premenovaný...
-STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemožno premenovať typ automobilu...
+STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Nemožno premenovať typ cestného vozidla...
 STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Nemožno premenovať typ lode...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Nemožno premenovať typ lietadla...
 
@@ -4678,35 +4731,35 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=z}Cukrová b
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Bez názvu
 STR_SV_TRAIN_NAME                                               :{G=m}Vlak {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :{G=m}Automobil {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :{G=s}Cestné vozidlo {COMMA}
 STR_SV_SHIP_NAME                                                :{G=z}Loď {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :{G=s}Lietadlo {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Sever
 STR_SV_STNAME_SOUTH                                             :{STRING} Juh
-STR_SV_STNAME_EAST                                              :{STRING} Vychod
-STR_SV_STNAME_WEST                                              :{STRING} Zapad
+STR_SV_STNAME_EAST                                              :{STRING} Východ
+STR_SV_STNAME_WEST                                              :{STRING} Západ
 STR_SV_STNAME_CENTRAL                                           :{STRING} Centrum
-STR_SV_STNAME_TRANSFER                                          :{STRING} Razcestie
+STR_SV_STNAME_TRANSFER                                          :{STRING} Rázcestie
 STR_SV_STNAME_HALT                                              :{STRING} Za horou
-STR_SV_STNAME_VALLEY                                            :{STRING} Udolie
+STR_SV_STNAME_VALLEY                                            :{STRING} Údolie
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Na kopci
 STR_SV_STNAME_WOODS                                             :{STRING} Lesy
-STR_SV_STNAME_LAKESIDE                                          :{STRING} Jazera
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Pri jazere
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Predmestie
 STR_SV_STNAME_AIRPORT                                           :{STRING} Letisko
-STR_SV_STNAME_OILFIELD                                          :{STRING} Vrtna plosina
+STR_SV_STNAME_OILFIELD                                          :{STRING} Vrtná plošina
 STR_SV_STNAME_MINES                                             :{STRING} Bane
-STR_SV_STNAME_DOCKS                                             :{STRING} Pristav
+STR_SV_STNAME_DOCKS                                             :{STRING} Prístav
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
 ##id 0x6020
-STR_SV_STNAME_ANNEXE                                            :{STRING} Zastavka
+STR_SV_STNAME_ANNEXE                                            :{STRING} Zastávka
 STR_SV_STNAME_SIDINGS                                           :{STRING} Vidiek
-STR_SV_STNAME_BRANCH                                            :{STRING} Konecna
-STR_SV_STNAME_UPPER                                             :Horny {STRING}
-STR_SV_STNAME_LOWER                                             :Dolny {STRING}
+STR_SV_STNAME_BRANCH                                            :{STRING} Konečná
+STR_SV_STNAME_UPPER                                             :Horný {STRING}
+STR_SV_STNAME_LOWER                                             :Dolný {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Les
 STR_SV_STNAME_FALLBACK                                          :{STRING} Stanica #{NUM}
@@ -4714,17 +4767,17 @@ STR_SV_STNAME_FALLBACK                                          :{STRING} Stanic
 
 ##id 0x8000
 # Vehicle names
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Parny)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KIRBY_PAUL_TANK_STEAM        :Kirby Paul Tank (Parný)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_250_DIESEL               :MJS 250 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_CHOO_CHOO         :Ploddyphut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_CHOO_CHOO          :Powernaut Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Choo-Choo
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Parny)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Parny)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Parny)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Parny)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Parný)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Parný)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Parný)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Parný)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel DMU (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
@@ -4737,10 +4790,10 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (D
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Elektricky)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elektricky)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elektricky)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elektricky)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Elektrický)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elektrický)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elektrický)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elektrický)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Vagón pre cestujúcich
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Poštový vagón
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Vagón na uhlie
@@ -4768,64 +4821,64 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Vagón na hrač
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Vagón na baterky
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Vagón na malinovku
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Vagón na umelinu
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektricky)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektricky)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektrický)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektrický)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Vagón pre cestujúcich
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Poštový vagón
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COAL_CAR                  :Vagón na uhlie
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Vagon na ropu
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Vagon na dobytok
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Vagon na tovar
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Vagon na obilie
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Vagon na drevo
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_OIL_TANKER                :Vagón na ropu
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_LIVESTOCK_VAN             :Vagón na dobytok
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GOODS_VAN                 :Vagón na tovar
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_GRAIN_HOPPER              :Vagón na obilie
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WOOD_TRUCK                :Vagón na drevo
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_IRON_ORE_HOPPER           :Vagón na železnú rudu
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Vagon na ocel
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Obrneny vagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagon na jedlo
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Vagon na papier
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_STEEL_TRUCK               :Vagón na oceľ
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_ARMORED_VAN               :Obrnený vagón
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FOOD_VAN                  :Vagón na jedlo
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PAPER_TRUCK               :Vagón na papier
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COPPER_ORE_HOPPER         :Vagón na medenú rudu
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Vagon na vodu
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Vagon na ovocie
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Vagon na kaucuk
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Vagon na cukor
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Vagon na cukrovu vatu
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Vagon na karamel
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_WATER_TANKER              :Vagón na vodu
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FRUIT_TRUCK               :Vagón na ovocie
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_RUBBER_TRUCK              :Vagón na kaučuk
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_SUGAR_TRUCK               :Vagón na cukor
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COTTON_CANDY_HOPPER       :Vagón na cukrovú vatu
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOFFEE_HOPPER             :Vagón na karamel
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BUBBLE_VAN                :Vagón na bublinky
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Vagon na kofolu
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Vagon na cukriky
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Vagón na kofolu
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Vagón na cukríky
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Vagón na hračky
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Vagón na baterky
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Vagón na malinovku
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Vagón na umelinu
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elektricky)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Elektricky)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Elektricky)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Elektricky)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Elektrický)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Elektrický)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (Elektrický)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (Elektrický)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Vagon pre cestujucich
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Postovy vagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Vagon na uhlie
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Vagon na ropu
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Vagon na dobytok
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Vagon na tovar
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Vagon na obilie
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Vagon na drevo
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Vagon na zeleznu rudu
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Vagon na ocel
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Obrneny vagon
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Vagon na jedlo
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Vagon na papier
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Vagón pre cestujúcich
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Poštový vagón
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Vagón na uhlie
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Vagón na ropu
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_LIVESTOCK_VAN               :Vagón na dobytok
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GOODS_VAN                   :Vagón na tovar
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_GRAIN_HOPPER                :Vagón na obilie
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WOOD_TRUCK                  :Vagón na drevo
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_IRON_ORE_HOPPER             :Vagón na železnú rudu
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_STEEL_TRUCK                 :Vagón na oceľ
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_ARMORED_VAN                 :Obrnený vagón
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FOOD_VAN                    :Vagón na jedlo
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PAPER_TRUCK                 :Vagón na papier
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COPPER_ORE_HOPPER           :Vagón na medenú rudu
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Vagon na vodu
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Vagon na ovocie
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Vagon na kaucuk
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Vagon na cukor
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Vagon na cukrovu vatu
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Vagon na karamel
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_WATER_TANKER                :Vagón na vodu
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FRUIT_TRUCK                 :Vagón na ovocie
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_RUBBER_TRUCK                :Vagón na kaučuk
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_SUGAR_TRUCK                 :Vagón na cukor
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COTTON_CANDY_HOPPER         :Vagón na cukrovú vatu
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOFFEE_HOPPER               :Vagón na karamel
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :Vagón na bublinky
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Vagon na kofolu
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Vagon na cukriky
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Vagón na kofolu
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Vagón na cukríky
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Vagón na hračky
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Vagón na baterky
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Vagón na malinovku
@@ -4840,9 +4893,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :Ploddyphut MkII
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_COAL_TRUCK                 :Balogh - Uhlie
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_COAL_TRUCK                    :Uhl - Uhlie
 STR_VEHICLE_NAME_ROAD_VEHICLE_DW_COAL_TRUCK                     :DW - Uhlie
-STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS - Posta
-STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard - Posta
-STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry - Posta
+STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_MAIL_TRUCK                    :MPS - Pošta
+STR_VEHICLE_NAME_ROAD_VEHICLE_REYNARD_MAIL_TRUCK                :Reynard - Pošta
+STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_MAIL_TRUCK                  :Perry - Pošta
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_MAIL_TRUCK            :MightyMover - Pošta
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_MAIL_TRUCK            :Powernaught - Pošta
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_MAIL_TRUCK               :Wizzowow - Pošta
@@ -4864,12 +4917,12 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MORELAND_WOOD_TRUCK               :Moreland - Drev
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_IRON_ORE_TRUCK                :MPS - Železná ruda
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_IRON_ORE_TRUCK                :Uhl - Železná ruda
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_IRON_ORE_TRUCK             :Chippy - Železná ruda
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh - Ocel
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl - Ocel
-STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling - Ocel
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh - Obrnene vozidlo
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl - Obrnene vozidlo
-STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster - Obrnene vozidlo
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_STEEL_TRUCK                :Balogh - Oceľ
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_STEEL_TRUCK                   :Uhl - Oceľ
+STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_STEEL_TRUCK               :Kelling - Oceľ
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_ARMORED_TRUCK              :Balogh - Obrnené vozidlo
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_ARMORED_TRUCK                 :Uhl - Obrnené vozidlo
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :Foster - Obrnené vozidlo
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_FOOD_VAN                   :Foster - Jedlo
 STR_VEHICLE_NAME_ROAD_VEHICLE_PERRY_FOOD_VAN                    :Perry - Jedlo
 STR_VEHICLE_NAME_ROAD_VEHICLE_CHIPPY_FOOD_VAN                   :Chippy - Jedlo
@@ -4885,18 +4938,18 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_WATER_TANKER                  :MPS - Voda
 STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_FRUIT_TRUCK                :Balogh - Ovocie
 STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_FRUIT_TRUCK                   :Uhl - Ovocie
 STR_VEHICLE_NAME_ROAD_VEHICLE_KELLING_FRUIT_TRUCK               :Kelling - Ovocie
-STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh - Kaucuk
-STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl - Kaucuk
-STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT - Kaucuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_BALOGH_RUBBER_TRUCK               :Balogh - Kaučuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_UHL_RUBBER_TRUCK                  :Uhl - Kaučuk
+STR_VEHICLE_NAME_ROAD_VEHICLE_RMT_RUBBER_TRUCK                  :RMT - Kaučuk
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_SUGAR_TRUCK           :MightyMover - Cukor
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_SUGAR_TRUCK           :Powernaught - Cukor
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_SUGAR_TRUCK              :Wizzowow - Cukor
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COLA_TRUCK            :MightyMover - Kofola
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COLA_TRUCK            :Powernaught - Kofola
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COLA_TRUCK               :Wizzowow - Kofola
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover - Cukrova vata
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught - Cukrova vata
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow - Cukrova vata
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_COTTON_CANDY          :MightyMover - Cukrová vata
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_COTTON_CANDY          :Powernaught - Cukrová vata
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_COTTON_CANDY_TRUCK       :Wizzowow - Cukrová vata
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_TOFFEE_TRUCK          :MightyMover - Karamel
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_TOFFEE_TRUCK          :Powernaught - Karamel
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_TOFFEE_TRUCK             :Wizzowow - Karamel
