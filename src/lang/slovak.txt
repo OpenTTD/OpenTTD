@@ -1654,7 +1654,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :náhodne
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Mestá môžu staviať cesty: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Povolí mestám budovať cesty kvôli potrebe rozšírenia. Vypnite na zamedzenie mestám budovať cesty kdekoľvek.
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Mestá umožňujú stavbu železničných priecestí: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Povolením nastavenia umožní mestám stavať úrovňové križovania.
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Povolením nastavenia sa umožní mestám stavať železničné priecestia
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :Povoliť mestom určené hlukové limity pre letiská: {STRING}
 STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Ak je nastavenie vypnuté, potom môžu byť dve letiská v jednom meste. Ak je nastavenie zapnuté, počet letísk je obmedzený prijateľnou hlučnosťou, ktorá závisí od počtu obyvateľov a veľkosti letiska a jeho vzdialenosti od mesta
 STR_CONFIG_SETTING_TOWN_FOUNDING                                :Zakladanie nových miest počas hry: {STRING}
@@ -2382,6 +2382,7 @@ STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda 
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Všetko
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Nič
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Vyberte spoločnosti pre zobrazenie
+STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
 STR_LINKGRAPH_LEGEND_UNUSED                                     :{TINY_FONT}{BLACK}nevyužité
@@ -2419,7 +2420,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Postavi�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Postaviť železničný most
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Postaviť železničný tunel
 STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Prepnúť stavbu/odstránenie železničných koľají, návestidiel, smerových bodov a staníc. Podržte Ctrl a budú odstránené viaceré objekty v rade za sebou
-STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertovať/vylepšiť typ železnice
+STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertovať/vylepšiť typ železnice. Shift zobrazí predpokladanú cenu
 
 STR_RAIL_NAME_RAILROAD                                          :Železnica
 STR_RAIL_NAME_ELRAIL                                            :Elektrifikovaná železnica
@@ -2506,7 +2507,11 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Postavi�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Postaviť tunel pre električky
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Prepnúť stavbu/odstraňovanie cesty
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Prepnúť stavbu/odstraňovanie električkovej dráhy
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Konvertovať/vylepšiť typ cesty. Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Konvertovať/vylepšiť typ električkovej trate. Shift zobrazí predpokladanú cenu
 
+STR_ROAD_NAME_ROAD                                              :Cesta
+STR_ROAD_NAME_TRAM                                              :Električková trať
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Orientacia garaze
@@ -2690,8 +2695,12 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Názov l
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Prijíma náklad: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
-STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Rýchlostný limit koľají: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Typ železnice: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Typ cesty: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Typ električkovej trate: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Rýchlostný limit železnice: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Rýchlostný limit cesty: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Rýchlostný limit električkovej trate: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Skaly
@@ -2729,9 +2738,9 @@ STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Železnica vlak
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta s lampami
 STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :Cesta v aleji
-STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Cestné depo
-STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Železnične priecestie
-STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Elektrickova dráha
+STR_LAI_ROAD_DESCRIPTION_ROAD_VEHICLE_DEPOT                     :Garáž
+STR_LAI_ROAD_DESCRIPTION_ROAD_RAIL_LEVEL_CROSSING               :Železničné priecestie
+STR_LAI_ROAD_DESCRIPTION_TRAMWAY                                :Električková trať
 
 # Houses come directly from their building names
 STR_LAI_TOWN_INDUSTRY_DESCRIPTION_UNDER_CONSTRUCTION            :{STRING} (vo výstavbe)
@@ -2781,7 +2790,7 @@ STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvadukt
 
 STR_LAI_OBJECT_DESCRIPTION_TRANSMITTER                          :Vysielac
 STR_LAI_OBJECT_DESCRIPTION_LIGHTHOUSE                           :Maják
-STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Sidlo firmy
+STR_LAI_OBJECT_DESCRIPTION_COMPANY_HEADQUARTERS                 :Sídlo spoločnosti
 STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Spoločnosťou vlastnený pozemok
 
 # About OpenTTD window
@@ -3387,19 +3396,19 @@ STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Infraštruktúra:
 STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} políč{P ko ka ok} železnice
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} políč{P ko ka ok} cesty
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} políč{P ko ka ok} vody
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vodn{P é é ých} políč{P ko ka ok}
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} políč{P ko ka ok} stanice
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} let{P isko iská ísk}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Žiadne
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Postaviť sídlo
-STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Postaviť sídlo firmy
-STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Pozriet sidlo
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Pozrieť sídlo firmy
-STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Premiestnit sidlo
+STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Postaviť sídlo spoločnosti
+STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Pozrieť sídlo
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Pozrieť sídlo spoločnosti
+STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Premiestniť sídlo
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sídlo spoločnosti je možné premiestniť za 1% hodnoty spoločnosti. Shift+klik zobrazí predpokladanú cenu
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaily
-STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ukázať detailné počty infraštruktúry
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobraziť podrobné políčka infraštruktúry
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nová tvár
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Vybrať novú tvár prezidenta
@@ -3425,6 +3434,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}Infrašt
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Políčka železnice:
 STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Semafóry
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Políčka cesty:
+STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Električkové políčka:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vodné políčka:
 STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanále
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stanice:
@@ -3547,7 +3557,7 @@ STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Rýchlos
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Rýchlosť na kanály/rieke: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Prevádzkové náklady: {GOLD}{CURRENCY_LONG}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO_LONG} {STRING}
-STR_PURCHASE_INFO_REFITTABLE                                    :(mozna prestavba)
+STR_PURCHASE_INFO_REFITTABLE                                    :(možná prestavba)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyrobené: {GOLD}{NUM}{BLACK} Životnosť: {GOLD}{COMMA} rok{P "" y ov}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spoľahlivosť: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY_LONG}
@@ -3555,28 +3565,36 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnos�
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY_LONG}{BLACK} Rýchlosť: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Poháňané vagóny: {GOLD}+{POWER}{BLACK} Hmotnosť: {GOLD}+{WEIGHT_SHORT}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prestavatelne na: {GOLD}{STRING}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prestavateľné na: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Všetky druhy nákladu
 STR_PURCHASE_INFO_ALL_BUT                                       :Všetko okrem {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. trakčná sila: {GOLD}{FORCE}
-STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Dosah: {GOLD}{COMMA} políčok
+STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Dolet: {GOLD}{COMMA} políčok
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Výber vlakov. Pre získanie informácií klikni na vlak. CTRL+klik prepne skrytie typu vlaku.
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Výber cestných vozidiel. Pre získanie informácií klikni na vozidlo. CTRL+klik prepne skrytie typu vozidla.
 STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Zoznam lodí. Pre získanie informácií klikni na loď. CTRL+klik prepnie skrytie typu lode.
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Zoznam lietadiel. Pre získanie informácií klikni na lietadlo. CTRL+klik prepnie skrytie typu lietadla.
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kúpiť vozidlo
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Kúpiť vlak
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}Kúpiť vozidlo
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Kúpiť loď
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Kúpiť lietadlo
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Kúpiť a prestavať vlak
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Kúpiť a prestavať vozidlo
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Kúpiť a prestavať loď
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Kúpiť a prestavať lietadlo
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kúpiť vybraný vlak. Shift+klik zobrazí predpokladanú cenu bez nákupu.
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kúpiť vybraný vlak. Shift+klik zobrazí predpokladanú cenu bez nákupu
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kúpiť vybrané vozidlo. Shift+klik zobrazí predpokladanú cenu bez nákupu
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kúpiť vybranú loď. Shift+klik zobrazí predpokladanú cenu bez nákupu
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kúpiť vybrané lietadlo. Shift+klik zobrazí predpokladanú cenu bez nákupu
 
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Kúpiť a prestavať vybraný vlak. Shift+klik zobrazí predpokladanú cenu bez nákupu
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Kúpiť a prestavať vybrané vozidlo. Shift+klik zobrazí predpokladanú cenu bez nákupu
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Kúpiť a prestavať vybranú loď. Shift+klik zobrazí predpokladanú cenu bez nákupu
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Kúpiť a prestavať vybrané lietadlo. Shift+klik zobrazí predpokladanú cenu bez nákupu
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Premenovať
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Premenovať
@@ -3688,10 +3706,12 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Správa 
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Práve sme navrhli nov{G "ý" "ú" "é"} {STRING} - máte záujem o právo exkluzívneho používania na 1 rok? Chceme otestovať vlastnosti tohto modelu pred jeho uvedením na trh.
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=z}železničná lokomotíva
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :{G=z}elektrická lokomotíva
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :{G=z}jednokoľajová lokomotíva
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :{G=z}magnetická lokomotíva
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=s}cestné vozidlo
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :{G=z}električka
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=s}lietadlo
 STR_ENGINE_PREVIEW_SHIP                                         :{G=z}loď
@@ -3699,6 +3719,10 @@ STR_ENGINE_PREVIEW_SHIP                                         :{G=z}loď
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cena: {CURRENCY_LONG} Hmotnosť: {WEIGHT_SHORT}{}Rýchlosť: {VELOCITY}  Výkon: {POWER}{}Prevádzkové náklady: {CURRENCY_LONG}/rok{}Kapacita: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cena: {CURRENCY_LONG} Hmotnosť: {WEIGHT_SHORT}{}Rýchlosť: {VELOCITY}  Sila: {POWER}  Max. T.E.: {6:FORCE}{}Prevádzkové náklady: {4:CURRENCY_LONG}/yr{}Kapacita: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cena: {CURRENCY_LONG} Max. Rýchlosť: {VELOCITY}{}Kapacita: {CARGO_LONG}{}Prevádzkové náklady: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cena: {CURRENCY_LONG} Rýchlosť: {VELOCITY}{}Typ lietadla: {STRING}{}Kapacita: {CARGO_LONG}, {CARGO_LONG}{}Prevádzkové náklady: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}Cena: {CURRENCY_LONG} Rýchlosť: {VELOCITY}{}Typ lietadla: {STRING}{}Kapacita: {CARGO_LONG}{}Prevádzkové náklady: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cena: {CURRENCY_LONG} Rýchlosť: {VELOCITY}{}Typ lietadla: {STRING} Dolet: {COMMA} políčok{}Kapacita: {CARGO_LONG}, {CARGO_LONG}{}Prevádzkové náklady: {CURRENCY_LONG}/rok
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Cena: {CURRENCY_LONG} Rýchlosť: {VELOCITY}{}Typ lietadla: {STRING} Dolet: {COMMA} políčok{}Kapacita: {CARGO_LONG}{}Prevádzkové náklady: {CURRENCY_LONG}/rok
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Výmena {STRING} - {STRING}
@@ -3874,8 +3898,8 @@ STR_VEHICLE_DETAILS_TRAIN_TOTAL_CARGO_TOOLTIP                   :{BLACK}Zobrazi�
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Kapacita: {LTBLUE}
 
 # Vehicle refit
-STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prestavat)
-STR_REFIT_TITLE                                                 :{GOLD}Vyber typ nákladu:
+STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (Prestavať)
+STR_REFIT_TITLE                                                 :{GOLD}Vyberte druh nákladu:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}{}{BLACK}Cena prestavby: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}{}{BLACK}Príjem z prestavby: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nová kapacita: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Cena prestavby: {RED}{CURRENCY_LONG}
@@ -3932,7 +3956,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :Nevykladaj
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmeniť spôsob vykladania pre označený príkaz
 
 STR_ORDER_REFIT                                                 :{BLACK}Prestavba
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyberte typ nákladu na prestavbu v tomto poradí. CTRL+klik na odstránenie príkazu prestavby
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyberte druh nákladu na prestavbu v tomto poradí. Ctrl+klik na odstránenie príkazu prestavby
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Automaticky modernizovať
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Vyber ktorý druh tovaru sa bude automaticky nakladať. Ctrl+Klik pre odstránenie automatického nakladania. Automatické nakladanie musí byť podporované vozidlom
 STR_ORDER_DROP_REFIT_AUTO                                       :Pevný náklad
@@ -4234,8 +4258,8 @@ STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YEL
 STR_FEEDER_INCOME                                               :{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {GREEN}Zisk: {CURRENCY_LONG}
 STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {RED}Náklady: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {RED}Náklady: {CURRENCY_LONG}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Priblizna cena: {CURRENCY_LONG}
-STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Priblizny zisk: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Predpokladaná cena: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Predpokladaný zisk: {CURRENCY_LONG}
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ukladanie hry este bezi,{}pockajte prosim na dokoncenie!
@@ -4463,7 +4487,8 @@ STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprv j
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Žiadne použiteľné železničné koľaje
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Musíš najskôr odstrániť železničné koľaje
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je jednosmerná alebo blokovaná.
-STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Nie sú povolené priecestia pre tento typ železníc
+STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Nie sú povolené priecestia pre tento typ železnice
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Nie sú povolené priecestia pre tento typ cesty
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nemôžeš tu stavať návestidlá...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nemôžeš tu stavať železničné koľaje...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemôžeš tu odstrániť železničné koľaje...
@@ -4483,6 +4508,11 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nemôže
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nemôžeš tu odstrániť električkovú trať...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... nenašla sa cesta
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...nenašla sa električková trať
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Nemôžeš tu konvertovať cestu...
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Nemôžeš tu konvertovať električkovú trať...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Žiadna použiteľná cesta
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Žiadna použiteľná električková trať
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nekompatibilné električkové trate
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tu sa nedá postaviť prieplav...
@@ -4526,7 +4556,7 @@ STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tune
 STR_ERROR_TOO_MANY_OBJECTS                                      :{WHITE}... priveľa objektov
 STR_ERROR_CAN_T_BUILD_OBJECT                                    :{WHITE}Nemožno postaviť objekt...
 STR_ERROR_OBJECT_IN_THE_WAY                                     :{WHITE}V ceste je prekážka
-STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sídlo firmy v ceste
+STR_ERROR_COMPANY_HEADQUARTERS_IN                               :{WHITE}... sídlo spoločnosti v ceste
 STR_ERROR_CAN_T_PURCHASE_THIS_LAND                              :{WHITE}Tento pozemok nie je možné kúpiť...
 STR_ERROR_YOU_ALREADY_OWN_IT                                    :{WHITE}... už to vlastníš!
 
@@ -4535,6 +4565,7 @@ STR_ERROR_GROUP_CAN_T_CREATE                                    :{WHITE}Nie je m
 STR_ERROR_GROUP_CAN_T_DELETE                                    :{WHITE}Nie je možné zrušiť túto skupinu...
 STR_ERROR_GROUP_CAN_T_RENAME                                    :{WHITE}Nie je možné premenovať skupinu...
 STR_ERROR_GROUP_CAN_T_SET_PARENT                                :{WHITE}Nie je možné nastaviť rodičovskú skupinu...
+STR_ERROR_GROUP_CAN_T_SET_PARENT_RECURSION                      :{WHITE}... v skupinovej hierarchii nie sú povolené cykly
 STR_ERROR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                       :{WHITE}Nie je možné odstrániť všetky vozidlá z tejto skupiny...
 STR_ERROR_GROUP_CAN_T_ADD_VEHICLE                               :{WHITE}Nie je možné pridať vozidlo do tejto skupiny
 STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Nie je možné pridať zdielané vozidlo do skupiny
