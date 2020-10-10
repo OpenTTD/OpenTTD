@@ -1,5 +1,5 @@
 ##name Slovak
-##ownname Slovensky
+##ownname Slovenčina
 ##isocode sk_SK
 ##plural 10
 ##textdir ltr
