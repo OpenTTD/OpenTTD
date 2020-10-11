@@ -306,13 +306,13 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zavrieť
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Nadpis okna - potiahni pre posun okna
 STR_TOOLTIP_SHADE                                               :{BLACK}Zabaliť okno - zobraziť len názov okna
 STR_TOOLTIP_DEBUG                                               :{BLACK}Zobraziť NewGRF debugové informácie
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Zmena veľkosti okna na základnú veľkosť. Ctrl+klik uloží aktuálnu veľkosť ako základnú
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Zmeniť veľkosť okna na predvolenú veľkosť. Ctrl+klik uloží aktuálnu veľkosť ako predvolenú
 STR_TOOLTIP_STICKY                                              :{BLACK}Zamknúť toto okno, nebude sa dať zatvoriť klávesou "Zavri všetky okná". Ctrl+klik uloží stav ako predvolený
 STR_TOOLTIP_RESIZE                                              :{BLACK}Uchop a ťahaj pre zmenu veľkosti okna
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Prepnúť veľkosť okna
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Navigačná lišta - posúva zoznam hore/dole
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Posuvná lišta - posúva zoznam doľava/doprava
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolácia budov atď. na rovný terén. CTRL označí oblasť diagonálne. Shift zobrazí odhad nákladov
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Demolovať budovy atď. na rovný terén. Ctrl označí oblasť diagonálne. Shift zobrazí predpokladanú cenu
 
 # Show engines button
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Ukáž skryté
@@ -380,7 +380,7 @@ STR_SORT_BY_POPULATION                                          :Populácia
 STR_SORT_BY_RATING                                              :Hodnotenie
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pozastaviť hru
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Zrýchliť priebeh hry
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Nastavenia
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Uložiť hru, opustiť hru, ukončiť program
@@ -399,8 +399,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Zoznam v
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Zoznam cestných vozidiel spoločnosti. Ctrl+klik prepína zoznam skupín/vozidiel
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Zoznam lodí spoločnosti. Ctrl+klik prepína zoznam skupín/vozidiel
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Zoznam lietadiel spoločnosti. Ctrl+klik prepína zoznam skupín/vozidiel
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Priblížiť
-STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Oddialiť
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Priblížiť pohľad
+STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Oddialiť pohľad
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Výstavba železnice
 STR_TOOLBAR_TOOLTIP_BUILD_ROADS                                 :{BLACK}Výstavba ciest
 STR_TOOLBAR_TOOLTIP_BUILD_TRAMWAYS                              :{BLACK}Výstavba električkových tratí
@@ -425,9 +425,9 @@ STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Generova
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Generovanie priemyslu
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Stavba cesty
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Výstavba električkovej trate
-STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sadenie stromov. Shift zobrazí odhad nákladov
+STR_SCENEDIT_TOOLBAR_PLANT_TREES                                :{BLACK}Sadiť stromy. Shift zobrazí predpokladanú cenu
 STR_SCENEDIT_TOOLBAR_PLACE_SIGN                                 :{BLACK}Umiestniť popis
-STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umiestniť objekt. Shift zobrazí odhad nákladov
+STR_SCENEDIT_TOOLBAR_PLACE_OBJECT                               :{BLACK}Umiestniť objekt. Shift zobrazí predpokladanú cenu
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Uložiť scenár
@@ -442,8 +442,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Ukončiť progr
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Nastavenia hry
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavenia
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Umelá inteligencia / Nastavenia hry
-STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenie NewGRF
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Nastavenia AI/skriptu
+STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenia NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenie priehľadnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobraziť názvy miest
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Zobraziť názvy staníc
@@ -540,7 +540,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Vymazať všetk
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Informácie o pozemku
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Zobraziť / skryť konzolu
-STR_ABOUT_MENU_AI_DEBUG                                         :Umelá inteligencia / Ladenie skriptov
+STR_ABOUT_MENU_AI_DEBUG                                         :Ladenie AI/skriptu
 STR_ABOUT_MENU_SCREENSHOT                                       :Snímka obrazovky
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Zobraziť snímkovú frekvenciu
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :O hre 'OpenTTD'
@@ -837,7 +837,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Zobrazi�
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Zobraziť poslednú správu alebo novinku
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
-STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUZA  *  *
+STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  POZASTAVENÉ  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOULOŽENIE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SA UKLADÁ  *  *
 
@@ -1480,7 +1480,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krátky (31-12-
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Automatická pauza pri štarte novej hry: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ak je zapnuté, hra sa automaticky zapauzuje ked začne nová hra. Toto umožňuje lepšie preskúmanie mapy hry pred začatím.
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Ak je zapnuté, hra sa automaticky pozastaví ked začne nová hra. Toto umožňuje lepšie preskúmanie mapy hry pred začatím.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Ak je hra pozastavená povol: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Zvoľte ktoré akcie môžu byt vykonané keď je hra pozastavená.
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :žiadne akcie
@@ -1847,7 +1847,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Najvyš�
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Nastavenia
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Nastavenia NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Skontrolovať online obsah
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Umelá inteligencia / Nastavenia skriptu
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Nastavenia AI/skriptu
 STR_INTRO_QUIT                                                  :{BLACK}Ukončiť
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Spustiť novú hru. Ctrl+klik preskočí nastavenie mapy
@@ -1864,10 +1864,10 @@ STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vybrať 
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Zobraziť nastavenia hry
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Zobraziť tabuľku hráčov s najvyšším skóre
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Nastavenie zobrazenia
-STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť NewGRF nastavenia
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Zobraziť nastavenia
+STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Zobraziť nastavenia NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zobraz umelú inteligenciu a nastavenia skriptu
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Zobraziť nastavenia AI/skriptu
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ukončiť 'OpenTTD'
 
 STR_INTRO_BASESET                                               :{BLACK}Vo vybranej základnej sade grafiky chýba {NUM} prv{P ok ky kov}. Prosím skontrolujte aktualizácie sady grafiky.
@@ -2498,23 +2498,23 @@ STR_BRIDGE_TUBULAR_SILICON                                      :Krytý plastov�
 # Road construction toolbar
 STR_ROAD_TOOLBAR_ROAD_CONSTRUCTION_CAPTION                      :{WHITE}Výstavba ciest
 STR_ROAD_TOOLBAR_TRAM_CONSTRUCTION_CAPTION                      :{WHITE}Výstavba električkových tratí
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Postaviť časť cesty. Ctrl prepína stavať/odobrať stavbu cesty. Shift zobrazí odhad nákladov
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Postaviť časť električkovej dráhy
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Stavať časti ciest použitím automatického módu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Stavať časti električkovej trate použitím automatického módu. Ctrl prepína stavanie/odstránenie električkovej trate
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Postaviť časť cesty. Ctrl odstráni časť cesty. Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Postaviť časť električkovej trate. Ctrl odstráni časť trate. Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Postaviť časť cesty v automatickom režime. Ctrl odstráni časť cesty. Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Postaviť časť električkovej trate v automatickom režime. Ctrl odstráni časť trate. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Postaviť automobilovú garáž (na výrobu a opravu vozidiel). Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Postaviť električkovú garáž (na výrobu a opravu vozidiel). Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Postaviť autobusovú zastávku. Ctrl umožní spájanie staníc. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Postaviť električkovú zastávku. Ctrl umožní spájanie staníc. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Postaviť vykládku. Ctrl umožní spájanie staníc. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION               :{BLACK}Postaviť električkovú vykládku. Ctrl umožní spájanie staníc. Shift zobrazí predpokladanú cenu
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Prepnút stavbu jednosmerných ciest
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Postaviť cestný most
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Postaviť most pre električky
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Postaviť cestný tunel
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Postaviť tunel pre električky
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Prepnúť stavbu/odstraňovanie cesty
-STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Prepnúť stavbu/odstraňovanie električkovej dráhy
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_ONE_WAY_ROAD                    :{BLACK}Prepnúť stavbu jednosmernej cesty
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_BRIDGE                      :{BLACK}Postaviť cestný most. Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_BRIDGE                   :{BLACK}Postaviť električkový most. Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Postaviť cestný tunel. Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Postaviť električkový tunel. Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Prepnúť na odstránenie cesty
+STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Prepnúť na odstránenie električkovej trate
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Konvertovať/vylepšiť typ cesty. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Konvertovať/vylepšiť typ električkovej trate. Shift zobrazí predpokladanú cenu
 
@@ -2540,13 +2540,13 @@ STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Vybrať 
 # Waterways toolbar (last two for SE only)
 STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Výstavba vodných ciest
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vodné cesty
-STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Stavba kanálov. Shift zobrazí odhad nákladov
-STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Postaviť stavidlá.
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Postaviť časť vodného kanálu. Shift zobrazí predpokladanú cenu
+STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Postaviť stavidlá. Shift zobrazí predpokladanú cenu
 STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Postaviť lodenicu (na výrobu a opravu lodí). Shift zobrazí predpokladanú cenu
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Postaviť prístav. Ctrl umožní spájanie staníc. Shift zobrazí predpokladanú cenu
-STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Postavit boju pouzitelnu pre vyznacenie trasy
-STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Postaviť akvadukt
-STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definovat oblast vody.{}Vytvorí kanál, pri stlacení CTRL na úrovni mora zaplaví okolie
+STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Umiestniť bóju na vyznačenie trasy. Shift zobrazí predpokladanú cenu
+STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Postaviť akvadukt. Shift zobrazí predpokladanú cenu
+STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Definovať oblasť vody.{}Vytvorí vodný kanál, pri stlacení CTRL na úrovni mora zaplaví okolie
 STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Umiestniť rieku.
 
 # Ship depot construction window
@@ -2585,10 +2585,10 @@ STR_STATION_BUILD_NOISE                                         :{BLACK}Vytvára
 
 # Landscaping toolbar
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Úprava terénu
-STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Znížit roh terénu. Ťahaním znížite prvý vybraný roh a celú vybranú oblasť na novú výšku. CTRL označí oblasť diagonálne. Shift zobrazí odhad nákladov
-STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvýšit roh terénu. Ťahaním zvýšite prvý vybraný roh a celú vybranú oblasť na novú výšku. CTRL označí oblasť diagonálne. Shift zobrazí odhad nákladov
-STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Vyrovnať výšku terénu oblasti podľa prvého vybraného rohu. CTRL označí oblasť diagonálne. Shift zobrazí odhad nákladov
-STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakúpiť pozemok pre budúce použitie
+STR_LANDSCAPING_TOOLTIP_LOWER_A_CORNER_OF_LAND                  :{BLACK}Znížiť roh políčka. Ťahaním znížite prvý vybraný roh a vyrovnáte celú vybranú oblasť na novú výšku. Ctrl označí oblasť diagonálne. Shift zobrazí predpokladanú cenu
+STR_LANDSCAPING_TOOLTIP_RAISE_A_CORNER_OF_LAND                  :{BLACK}Zvýšiť roh políčka. Ťahaním zvýšite prvý vybraný roh a vyrovnáte celú vybranú oblasť na novú výšku. Ctrl označí oblasť diagonálne. Shift zobrazí predpokladanú cenu
+STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Vyrovnať výšku terénu podľa vybraného rohu. Ctrl označí oblasť diagonálne. Shift zobrazí predpokladanú cenu
+STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakúpiť pozemok pre budúce použitie. Shift zobrazí predpokladanú cenu
 
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Výber objektov
@@ -2602,10 +2602,10 @@ STR_OBJECT_CLASS_TRNS                                           :Vysielače
 
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Stromy
-STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vybrať typ stromu pre sadenie. Ak sa už strom na mieste nachádza, pridá viac stromov zmiešaných typov nezávisle od vybraného
+STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vybrať druh stromu na sadenie. Ak sa už strom na políčku nachádza, pridá sa viac stromov zmiešaných druhov nezávisle od vybraného druhu
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Nahodne stromy
-STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umiestniť náhodné stromy. Shift prepína nakúp a zobrazenie ceny bez nákupu
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nahodné stromy
+STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umiestniť náhodné stromy. Shift zobrazí predpokladanú cenu
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Náhodné stromy
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadiť stromy náhodne po celej krajine
 
 # Land generation window (SE)
@@ -2968,7 +2968,7 @@ STR_GENERATION_PREPARING_SCRIPT                                 :{BLACK}Spúšť
 STR_GENERATION_PREPARING_GAME                                   :{BLACK}Pripravovanie hry
 
 # NewGRF settings
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenie NewGRF súborov
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenia NewGRF
 STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailné NewGRF informácie
 STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktívne NewGRF súbory
 STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Neaktívne NewGRF súbory
@@ -3001,7 +3001,7 @@ STR_NEWGRF_SETTINGS_TOGGLE_PALETTE_TOOLTIP                      :{BLACK}Prepnú�
 STR_NEWGRF_SETTINGS_APPLY_CHANGES                               :{BLACK}Potvrdit zmeny
 
 STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON                 :{BLACK}Nájsť chýbajúci obsah online
-STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Skontrolovať či chýbajúci obsah je dostupný online
+STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Skontrolovať či je chýbajúci obsah dostupný online
 
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Názov súboru: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}ID GRF: {SILVER}{STRING}
@@ -3152,7 +3152,7 @@ STR_SIGN_LIST_MATCH_CASE                                        :{BLACK}Vyžadov
 STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Brať/nebrať do úvahy veľkosť písmen pri porovnávaní textu popisov s filtrovacím reťazcom
 
 # Sign window
-STR_EDIT_SIGN_CAPTION                                           :{WHITE}Upravit text popisu
+STR_EDIT_SIGN_CAPTION                                           :{WHITE}Upraviť text popisu
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Prejst na dalsiu znacku
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Prejsť na predchádzajúcu značku
 
@@ -3162,13 +3162,13 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadajte 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Mestá
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Žiadne -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (City){BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Veľkomesto){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Názvy miest - kliknite na názov pre pohľad na mesto. Ctrl+klik otvorí nové okno s pohľadom na mesto
 STR_TOWN_POPULATION                                             :{BLACK}Svetová populácia: {COMMA}
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
-STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Mesto)
+STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Veľkomesto)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Obyvateľstvo: {ORANGE}{COMMA}{BLACK}  Domov: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} minulý mesiac: {ORANGE}{COMMA}{BLACK}  najviac: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Tovar potrebný k rozrastu mesta:
@@ -3456,7 +3456,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Semafór
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Políčka cesty:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Električkové políčka:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vodné políčka:
-STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}Kanále
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}K Vodné kanály
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATION_SECT                    :{GOLD}Stanice:
 STR_COMPANY_INFRASTRUCTURE_VIEW_STATIONS                        :{WHITE}Políčka staníc
 STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}Letiská
@@ -3584,7 +3584,7 @@ STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Cena: {G
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rýchlosť: {GOLD}{VELOCITY}{BLACK} Výkon: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rýchlosť: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Rýchlosť na oceáne: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Rýchlosť na kanály/rieke: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Rýchlosť na kanále/rieke: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Prevádzkové náklady: {GOLD}{CURRENCY_LONG}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(možná prestavba)
@@ -4188,7 +4188,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vyberte 
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Umelá inteligencia / Ladenie skriptov
+STR_AI_DEBUG                                                    :{WHITE}Ladenie AI/skriptu
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (v{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Meno skriptu
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Nastavenia
@@ -4209,12 +4209,12 @@ STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Pozri lo
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Nebolo nájdená žiadne použitelné AI.{}Toto AI je hlúpe a nebude nič robiť.{}Môžete si stiahnúť niekoľko AI cez 'Online Obsah' systém.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Jeden z bežiacich skriptov spadol. Prosím nahláste to autorovi a priložte screenshot Debugovacej obrazovky.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Umelá inteligencia / Okno ladenia je dostupné len pre server
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Okno ladenia AI/skriptu je dostupné len pre server
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Umelá inteligencia / Konfigurácia hry
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Nastavenia AI/skriptu
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Skript, ktorý bude načítaný v ďalšej hre
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AIs budú nastavené v ďalšej hre.
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI, ktoré budú načítané v ďalšiej hre
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Človek
 STR_AI_CONFIG_RANDOM_AI                                         :Náhodná AI
 STR_AI_CONFIG_NONE                                              :(žiadne)
@@ -4225,9 +4225,9 @@ STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Posunú�
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Posunúť nižšie vybrané AI v zozname
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}Herný skript
-STR_AI_CONFIG_AI                                                :{SILVER}AIs
+STR_AI_CONFIG_AI                                                :{SILVER}AI (umelá inteligencia)
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Vyber {STRING}
+STR_AI_CONFIG_CHANGE                                            :{BLACK}Vybrať {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :Skript
@@ -4237,7 +4237,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Nastavi�
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Dostupné {STRING}
-STR_AI_LIST_CAPTION_AI                                          :AIs
+STR_AI_LIST_CAPTION_AI                                          :AI
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :Herné skripty
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klikni pre výber skriptu
 
@@ -4274,7 +4274,7 @@ STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING} licencia {STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Zalamovať text
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Zalamovať text v okne tak, aby ho nebolo nutné posúvať
-STR_TEXTFILE_VIEW_README                                        :{BLACK}Zobraz čítajma
+STR_TEXTFILE_VIEW_README                                        :{BLACK}Zobraziť readme
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}Log zmien
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}Licencia
 
@@ -4557,15 +4557,15 @@ STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Žiadna 
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nekompatibilné električkové trate
 
 # Waterway construction errors
-STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tu sa nedá postaviť prieplav...
+STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Tu sa nedá postaviť vodný kanál...
 STR_ERROR_CAN_T_BUILD_LOCKS                                     :{WHITE}Tu sa nedá postaviť stavidlo...
 STR_ERROR_CAN_T_PLACE_RIVERS                                    :{WHITE}Tu nie je možné umiestniť rieku...
 STR_ERROR_MUST_BE_BUILT_ON_WATER                                :{WHITE}... musíš postaviť na vode
 STR_ERROR_CAN_T_BUILD_ON_WATER                                  :{WHITE}... nemôžeš postaviť na vode
 STR_ERROR_CAN_T_BUILD_ON_SEA                                    :{WHITE}... nemôžeš postaviť na otvorenom mori
-STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nemôže byť postavené na kanály
+STR_ERROR_CAN_T_BUILD_ON_CANAL                                  :{WHITE}... nemôže byť postavené na vodnom kanále
 STR_ERROR_CAN_T_BUILD_ON_RIVER                                  :{WHITE}... nemôže byť postavené na rieke
-STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Najprv sa musí zbúrať kanál
+STR_ERROR_MUST_DEMOLISH_CANAL_FIRST                             :{WHITE}Najprv sa musí zbúrať vodný kanál
 STR_ERROR_CAN_T_BUILD_AQUEDUCT_HERE                             :{WHITE}Tu nie je možné postaviť akvadukt...
 
 # Tree related errors
