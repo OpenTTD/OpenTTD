@@ -522,7 +522,7 @@ STR_AIRCRAFT_MENU_AIRPORT_CONSTRUCTION                          :Výstavba letis
 
 ############ range for landscaping menu starts
 STR_LANDSCAPING_MENU_LANDSCAPING                                :Úprava terénu
-STR_LANDSCAPING_MENU_PLANT_TREES                                :Výsadba stromov
+STR_LANDSCAPING_MENU_PLANT_TREES                                :Sadenie stromov
 STR_LANDSCAPING_MENU_PLACE_SIGN                                 :Umiestnenie popisu
 ############ range ends here
 
@@ -2502,8 +2502,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}Postavi�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}Postaviť časť električkovej trate. Ctrl odstráni časť trate. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}Postaviť časť cesty v automatickom režime. Ctrl odstráni časť cesty. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}Postaviť časť električkovej trate v automatickom režime. Ctrl odstráni časť trate. Shift zobrazí predpokladanú cenu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Postaviť automobilovú garáž (na výrobu a opravu vozidiel). Shift zobrazí predpokladanú cenu
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Postaviť električkovú garáž (na výrobu a opravu vozidiel). Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}Postaviť automobilovú garáž (na výrobu a opravu vozidiel). Shift zobrazí odhadovanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}Postaviť električkovú garáž (na výrobu a opravu vozidiel). Shift zobrazí odhadovanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}Postaviť autobusovú zastávku. Ctrl umožní spájanie staníc. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}Postaviť električkovú zastávku. Ctrl umožní spájanie staníc. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}Postaviť vykládku. Ctrl umožní spájanie staníc. Shift zobrazí predpokladanú cenu
@@ -2515,8 +2515,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}Postavi�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Postaviť električkový tunel. Shift zobrazí predpokladanú cenu
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Prepnúť na odstránenie cesty
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Prepnúť na odstránenie električkovej trate
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Konvertovať/vylepšiť typ cesty. Shift zobrazí predpokladanú cenu
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Konvertovať/vylepšiť typ električkovej trate. Shift zobrazí predpokladanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}Konvertovať/vylepšiť typ cesty. Shift zobrazí odhadovanú cenu
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}Konvertovať/vylepšiť typ električkovej trate. Shift zobrazí odhadovanú cenu
 
 STR_ROAD_NAME_ROAD                                              :Cesta
 STR_ROAD_NAME_TRAM                                              :Električková trať
@@ -2542,7 +2542,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Výstavb
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Vodné cesty
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Postaviť časť vodného kanálu. Shift zobrazí predpokladanú cenu
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Postaviť stavidlá. Shift zobrazí predpokladanú cenu
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Postaviť lodenicu (na výrobu a opravu lodí). Shift zobrazí predpokladanú cenu
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Postaviť lodenicu (na výrobu a opravu lodí). Shift zobrazí odhadovanú cenu
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Postaviť prístav. Ctrl umožní spájanie staníc. Shift zobrazí predpokladanú cenu
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Umiestniť bóju na vyznačenie trasy. Shift zobrazí predpokladanú cenu
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Postaviť akvadukt. Shift zobrazí predpokladanú cenu
@@ -2603,7 +2603,7 @@ STR_OBJECT_CLASS_TRNS                                           :Vysielače
 # Tree planting window (last two for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Stromy
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vybrať druh stromu na sadenie. Ak sa už strom na políčku nachádza, pridá sa viac stromov zmiešaných druhov nezávisle od vybraného druhu
-STR_TREES_RANDOM_TYPE                                           :{BLACK}Nahodne stromy
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Náhodný druh stromov
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umiestniť náhodné stromy. Shift zobrazí predpokladanú cenu
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Náhodné stromy
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadiť stromy náhodne po celej krajine
@@ -2625,7 +2625,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Ste si i
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Vytvorenie mesta
 STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nové mesto
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Založiť nové mesto. Shift+klik zobrazí predpokladanú cenu
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Založiť nové mesto. Shift+klik zobrazí odhadovanú cenu
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nahodné mesto
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Postaviť mesto na náhodnej pozícii
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veľa náhodných miest
@@ -3009,8 +3009,8 @@ STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Verzia: 
 STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. kompatibilná verzia: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Paleta: {SILVER}{STRING}
-STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Predvolené (D)
-STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Predvolené (D) / 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Predvolená (D)
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :Predvolená (D) / 32 bpp
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :Zdedené (W)
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :Zdedené (W) / 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}Parametre: {SILVER}{STRING}
@@ -3035,7 +3035,7 @@ STR_SAVE_PRESET_SAVE_TOOLTIP                                    :{BLACK}Uložiť
 STR_NEWGRF_PARAMETERS_CAPTION                                   :{WHITE}Zmeniť NewGRF parametre
 STR_NEWGRF_PARAMETERS_CLOSE                                     :{BLACK}Zatvoriť
 STR_NEWGRF_PARAMETERS_RESET                                     :{BLACK}Resetovať
-STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nastaviť východiskové hodnoty parametrov
+STR_NEWGRF_PARAMETERS_RESET_TOOLTIP                             :{BLACK}Nastaviť predvolené hodnoty parametrov
 STR_NEWGRF_PARAMETERS_DEFAULT_NAME                              :Parameter {NUM}
 STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORANGE}{STRING}
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Počet parametrov: {ORANGE}{NUM}
@@ -3426,7 +3426,7 @@ STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Postavi�
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Pozrieť sídlo
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Pozrieť sídlo spoločnosti
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Premiestniť sídlo
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sídlo spoločnosti je možné premiestniť za 1% hodnoty spoločnosti. Shift+klik zobrazí predpokladanú cenu
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sídlo spoločnosti je možné premiestniť za 1% hodnoty spoločnosti. Shift+klik zobrazí odhadovanú cenu
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaily
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobraziť podrobné políčka infraštruktúry
 
@@ -3441,8 +3441,8 @@ STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Zmeniť 
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Kúpiť 25% podiel v spoločnosti
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Predať 25% podiel v spoločnosti
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kúpiť 25% podiel v tejto spoločnosti. Shift+klik zobrazí predpokladanú cenu bez zakúpenia podielu.
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Predať 25% podiel v tejto spoločnosti. Shift+klik zobrazí predpokladanú cenu bez predaja podielu.
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Kúpiť 25% podiel v tejto spoločnosti. Shift+klik zobrazí odhadovanú cenu bez zakúpenia podielu.
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Predať 25% podiel v tejto spoločnosti. Shift+klik zobrazí odhadovanú cenu bez predaja podielu.
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Názov spoločnosti
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Meno prezidenta
@@ -3621,14 +3621,14 @@ STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Kúpiť 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Kúpiť a prestavať lietadlo
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Kúpiť vybraný vlak. Shift+klik zobrazí predpokladanú cenu bez nákupu
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kúpiť vybrané vozidlo. Shift+klik zobrazí predpokladanú cenu bez nákupu
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kúpiť vybranú loď. Shift+klik zobrazí predpokladanú cenu bez nákupu
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kúpiť vybrané lietadlo. Shift+klik zobrazí predpokladanú cenu bez nákupu
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Kúpiť vybrané vozidlo. Shift+klik zobrazí odhadovanú cenu bez nákupu
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Kúpiť vybranú loď. Shift+klik zobrazí odhadovanú cenu bez nákupu
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Kúpiť vybrané lietadlo. Shift+klik zobrazí odhadovanú cenu bez nákupu
 
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Kúpiť a prestavať vybraný vlak. Shift+klik zobrazí predpokladanú cenu bez nákupu
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Kúpiť a prestavať vybrané vozidlo. Shift+klik zobrazí predpokladanú cenu bez nákupu
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Kúpiť a prestavať vybranú loď. Shift+klik zobrazí predpokladanú cenu bez nákupu
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Kúpiť a prestavať vybrané lietadlo. Shift+klik zobrazí predpokladanú cenu bez nákupu
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Kúpiť a prestavať vybraný vlak. Shift+klik zobrazí odhadovanú cenu bez nákupu
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Kúpiť a prestavať vybrané vozidlo. Shift+klik zobrazí odhadovanú cenu bez nákupu
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Kúpiť a prestavať vybranú loď. Shift+klik zobrazí odhadovanú cenu bez nákupu
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Kúpiť a prestavať vybrané lietadlo. Shift+klik zobrazí odhadovanú cenu bez nákupu
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Premenovať
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Premenovať
@@ -5104,8 +5104,8 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
-STR_FORMAT_BUOY_NAME                                            :{TOWN} Bójka
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Bójka #{COMMA}
+STR_FORMAT_BUOY_NAME                                            :{TOWN} Bója
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Bója #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Spoločnosť {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
