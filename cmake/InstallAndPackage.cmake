@@ -45,7 +45,7 @@ if(OPTION_INSTALL_FHS)
     install(CODE
             "
                 execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${MAN_SOURCE_FILE} ${MAN_BINARY_FILE})
-                execute_process(COMMAND gzip -9 -f ${MAN_BINARY_FILE})
+                execute_process(COMMAND gzip -9 -n -f ${MAN_BINARY_FILE})
             "
             COMPONENT manual)
     install(FILES
