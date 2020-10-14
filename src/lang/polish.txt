@@ -3731,7 +3731,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} p{P ole ola ól} wody
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} p{P ole ola ól} stacji
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lotnisk{P o a ""}
-STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Żaden
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Brak
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Budowa Siedziby
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Zbuduj siedzibę firmy
@@ -3784,9 +3784,9 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} i {NUM} więcej...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nazwy zakładów - kliknij na nazwie zakładu by wyśrodkować na nim widok. Ctrl+klik otwiera nowy podgląd na lokacji zakładu
-STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Akceptowane cargo: {SILVER}{STRING}
-STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Wyprodukowane cargo: {SILVER}{STRING}
-STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Wszystkie typy cargo
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Akceptowany ładunek: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produkowany ładunek: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Wszystkie typy ładunku
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Żadne
 
 # Industry view
@@ -4569,12 +4569,12 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Anuluj
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nie zmieniaj skryptu
 
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Zrób zrzut ekranu
-STR_SCREENSHOT_SCREENSHOT                                       :{BLACK} Normalny zrzut ekranu
-STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Maksymalnie przybliżono na zrzucie ekranu
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalny zrzut ekranu
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Zrzut ekranu z maksymalnym przybliżeniem
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Zrzut ekranu z domyślnym przybliżeniem
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Zrzut ekranu całej mapy
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Zrzut ekranu mapy wysokościowej
-STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK} Zrzut ekranu minimapy
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Zrzut ekranu minimapy
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametry
