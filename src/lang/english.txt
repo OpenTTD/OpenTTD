@@ -1509,6 +1509,12 @@ STR_CONFIG_SETTING_NOSERVICE                                    :Disable servici
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :When enabled, vehicles do not get serviced if they cannot break down
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Enable wagon speed limits: {STRING2}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :When enabled, also use speed limits of wagons for deciding the maximum speed of a train
+STR_CONFIG_SETTING_TRAIN_SPEED_ADAPTION                         :Enable train speed adaption: {STRING2}
+STR_CONFIG_SETTING_TRAIN_SPEED_ADAPTION_HELPTEXT                :If enabled, faster trains behind slower trains slow down instead of catching up and stopping continuously.
+STR_CONFIG_SETTING_TRAIN_SPEED_ADAPTION_TILES                   :Train speed adaption: number of tiles to look ahead: {STRING2}
+STR_CONFIG_SETTING_TRAIN_SPEED_ADAPTION_TILES_HELPTEXT          :How many tiles the train checks in advance
+STR_CONFIG_SETTING_TRAIN_SPEED_ADAPTION_SIGNALS                 :Train speed adaption: number of signals to look ahead: {STRING2}
+STR_CONFIG_SETTING_TRAIN_SPEED_ADAPTION_SIGNALS_HELPTEXT        :How many signals the train checks in advance
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :Disable electric rails: {STRING2}
 STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Enabling this setting disables the requirement to electrify tracks to make electric engines run on them
 
