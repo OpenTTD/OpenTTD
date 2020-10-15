@@ -911,7 +911,7 @@ STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} čaká v leteckom hangári
 
 # Order review system / warnings
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} má veľmi málo príkazov v poriadku
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} má nedostatok príkazov v poriadku
 STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}{VEHICLE} má neplatný príkaz
 STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}{VEHICLE} má dvojité príkazy
 STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}{VEHICLE} má nesprávnu stanicu v zozname
@@ -2410,8 +2410,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Dodáva:
 STR_JOIN_STATION_CAPTION                                        :{WHITE}Spojiť stanicu
 STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Postaviť stanicu oddelene
 
-STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Nasledovať navádzač
-STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Postaviť oddelený navádzač
+STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spojiť smerový bod
+STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Postaviť smerový bod oddelene
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Výstavba železnice
@@ -3233,7 +3233,7 @@ STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nepou
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ciele spoločnosti:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni pre vycentrovanie na priemysel/mesto/políčko. Ctrl+klik otvorí nové okno s priemyslom/mestom/políčkom
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni pre vycentrovanie pohľadu na priemysel/mesto/políčko. Ctrl+klik otvorí nové okno s pohľadom na priemysel/mesto/políčko
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :Otázka
@@ -3362,9 +3362,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Zakáž 
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vycentrovať pohľad na umiestnenie navádzača
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Vycentrovať pohľad na pozíciu smerového bodu. Ctrl+klik otvorí nové okno s pohľadom na smerový bod
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmeniť meno smerového bodu
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vycentrovať pohľad na umiestnenie bójky
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vycentrovať pohľad na pozíciu bóje. Ctrl+klik otvorí nové okno s pohľadom na bóju
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmeniť meno bóje
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Upraviť názvy smerových bodov
@@ -3471,7 +3471,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} a {NUM} ďalšie...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Názvy priemyslu - klikni na meno pre vycentrovanie priemyslu na stred obrazovky
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Názvy priemyslu - klikni na meno pre vycentrovanie pohľadu na priemysel. Ctrl+klik otvorí nové okno s pohľadom na priemysel
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Prijímaný náklad: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produkovaný náklad: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Všetky druhy nákladu
@@ -3481,7 +3481,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Žiadne
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Produkcia minulý mesiac:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% prepraven{P é é ých})
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vycentrovať pohľad na pozíciu továrne. Ctrl+klik otvorí nové okno s pohľadom na továreň
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Vycentrovať pohľad na pozíciu priemyslu. Ctrl+klik otvorí nové okno s pohľadom na priemysel
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Úroveň produkcie: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Priemysel oznámil blížiace sa uzatvorenie!
 
@@ -3713,10 +3713,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Zakúpi 
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Zakúpi kópiu lode. Klikni na toto tlačidlo a následne na loď v depe alebo mimo neho. CTRL+klik skopíruje aj príkazy
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Zakúpi kópiu lietadla. Klikni na toto tlačidlo a potom na lietadlo v hangári alebo mimo neho. CTRL+Klik budú príkazy zdielané. Shift+klik zobrazí odhad nákladov
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Poloha depa uprostred hlavného okna. CTRL+klik otvorí nové okno s pohľadom na depo
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Pohoha garáže uprostred hlavného okna. CTRL+klik otvorí nový pohľad na umiestnenie garáže
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Poloha lodenice uprostred hlavného okna. CTRL+klik otvorí nové okno s pohľadom na lodenicu
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Poloha hangáru uprostred hlavného okna. CTRL+klik otvorí nové okno s pohľadom na hangár
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Vycentrovať pohľad na pozíciu depa. Ctrl+klik otvorí nové okno s pohľadom na depo
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vycentrovať pohľad na pozíciu garáže. Ctrl+klik otvorí nové okno s pohľadom na garáž
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Vycentrovať pohľad na pozíciu lodenice. Ctrl+klik otvorí nové okno s pohľadom na lodenicu
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Vycentrovať pohľad na pozíciu hangáru. Ctrl+klik otvorí nové okno s pohľadom na hangár
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Zobraziť zoznam všetkých vlakov, ktoré majú toto depo v zozname príkazov
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Zobraziť zoznam všetkých vozidiel, ktoré majú túto garáž v zozname príkazov
@@ -4447,7 +4447,7 @@ STR_ERROR_CAN_T_BUILD_CARGO_TRAM_STATION                        :{WHITE}Nemôže
 STR_ERROR_CAN_T_BUILD_DOCK_HERE                                 :{WHITE}Nemôžeš tu postaviť prístav...
 STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nemôžeš tu postaviť letisko...
 
-STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Susedi z viacerými stanicami/výkladkami
+STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Susedí z viacerými stanicami/výkladkami
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stanica je príliš veľká
 STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Príliš veľa staníc/vykládok
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Veľa častí vlakovej stanice
@@ -4480,15 +4480,15 @@ STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Prístav
 STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Letisko musíš najskôr zbúrať
 
 # Waypoint related errors
-STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Pridať viac než jeden existujúci navádzač
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Veľmi blízko k ďaľšiemu navádzaču
+STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Susedí z viacerými smerovými bodmi
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_WAYPOINT                         :{WHITE}Príliš blízko iného smerovému bodu
 
 STR_ERROR_CAN_T_BUILD_TRAIN_WAYPOINT                            :{WHITE}Tu nie je možné postaviť železničný smerový bod...
 STR_ERROR_CAN_T_POSITION_BUOY_HERE                              :{WHITE}Nemôžeš tu postaviť bóju...
 STR_ERROR_CAN_T_CHANGE_WAYPOINT_NAME                            :{WHITE}Názov smerového bodu sa nedá zmeniť...
 
 STR_ERROR_CAN_T_REMOVE_TRAIN_WAYPOINT                           :{WHITE}Tu nie je možné odstrániť železničný smerový bod...
-STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Najprv musí byť odstránený železničný navádzač
+STR_ERROR_MUST_REMOVE_RAILWAYPOINT_FIRST                        :{WHITE}Najprv musí byť odstránený železničný smerový bod
 STR_ERROR_BUOY_IN_THE_WAY                                       :{WHITE}... bója v ceste
 STR_ERROR_BUOY_IS_IN_USE                                        :{WHITE}... bóju používa iná spoločnosť!
 
