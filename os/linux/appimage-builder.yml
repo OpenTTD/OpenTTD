@@ -1,0 +1,94 @@
+# appimage-builder recipe, see https://appimage-builder.readthedocs.io
+version: 1
+
+script: |
+    which unzip || apt-get update ; apt-get install wget unzip -y
+    mkdir -p AppDir/usr/share/icons/hicolor/scalable/apps
+    cp ../media/openttd.svg AppDir/usr/share/icons/hicolor/scalable/apps
+    wget -qcO opengfx.zip https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip
+    unzip opengfx.zip -d AppDir/usr/share/games/openttd/baseset
+    wget -qcO openmsx.zip https://cdn.openttd.org/openmsx-releases/0.3.1/openmsx-0.3.1-all.zip
+    unzip openmsx.zip -d AppDir/usr/share/games/openttd/baseset
+    wget -qcO opensfx.zip https://cdn.openttd.org/opensfx-releases/0.2.3/opensfx-0.2.3-all.zip
+    unzip opensfx.zip -d AppDir/usr/share/games/openttd/baseset
+
+AppDir:
+  path: ./AppDir
+
+  app_info:
+    id: org.openttd.openttd
+    name: openttd
+    icon: openttd
+    version: latest
+    exec: usr/bin/openttd
+
+  apt:
+    arch: amd64
+    sources:
+      - sourceline: 'deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse'
+      - sourceline: 'deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse'
+      - sourceline: 'deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse'
+      - sourceline: 'deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse'
+        key_url: 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3b4fe6acc0b21f32'
+
+    include:
+      - freepats
+      - timidity
+      - libicu66
+      - liblzma5
+      - liblzo2-2
+      - libpng16-16
+      - libsdl1.2debian
+      - libxdg-basedir1
+      - libsdl2-2.0-0
+      - zlib1g
+    exclude:
+      - humanity-icon-theme
+      - adwaita-icon-theme
+      - python3
+      - python3.6
+      - python3-minimal
+      - python3.6-minimal
+      - perl
+      - perl-base
+      - pkg-config
+      - patch
+      - make
+      - dpkg-dev
+
+  after_bundle: |
+    echo "source /etc/timidity/freepats.cfg" | tee AppDir/etc/timidity/timidity.cfg
+
+  runtime:
+    path_mappings:
+      - /usr/share/games/openttd:$APPDIR/usr/share/games/openttd
+      - /etc/timidity:$APPDIR/etc/timidity
+      - /usr/lib/timidity:$APPDIR/usr/lib/timidity
+
+  test:
+    fedora:
+      image: appimagecrafters/tests-env:fedora-30
+      command: ./AppRun
+      use_host_x: true
+    debian:
+      image: appimagecrafters/tests-env:debian-stable
+      command: ./AppRun
+      use_host_x: true
+    arch:
+      image: appimagecrafters/tests-env:archlinux-latest
+      command: ./AppRun
+      use_host_x: true
+    centos:
+      image: appimagecrafters/tests-env:centos-7
+      command: ./AppRun
+      use_host_x: true
+    ubuntu:
+      image: appimagecrafters/tests-env:ubuntu-xenial
+      command: ./AppRun
+      use_host_x: true
+
+AppImage:
+  update-information: "gh-releases-zsync|OpenTTD|OpenTTD|latest|*x86_64.AppImage.zsync"
+  sign-key: None
+  arch: x86_64
+
