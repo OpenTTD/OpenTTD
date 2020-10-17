@@ -467,6 +467,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sound/Musik
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Letzte Mitteilung/Nachricht
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Vergangene Nachrichten
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Alle Nachrichten löschen
 ############ range ends here
 
 ############ range for about menu starts
@@ -1538,6 +1539,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Zeitung
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Farbige Nachrichten erscheinen ab: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jahr in dem die Zeitung in Farbe herausgebracht wird. Vor diesem Jahr erscheint sie in Schwarz-Weiß-Druck
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startdatum: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nie
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Feinere Wirtschaft aktivieren (mehrere, kleinere Veränderungen): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Wird diese Option ausgewählt, ändert sich die Produktionsmenge der Industrien häufiger, aber dafür in kleineren Schritten. Diese Einstellung hat gewöhnlicherweise KEINEN Effekt, wenn die Industrien von NewGRFs bereitgestellt werden
@@ -2616,6 +2618,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Angenommene Frachtarten: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Gleistyp: {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Straßenbahntyp: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Schiene: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Straße: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Höchstgeschwindigkeit Straßenbahn: {LTBLUE}{VELOCITY}
@@ -2769,6 +2772,8 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Grafik-Renderin
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Karten-Rendering
 STR_FRAMETIME_CAPTION_VIDEO                                     :Videoausgabe
 STR_FRAMETIME_CAPTION_SOUND                                     :Sound-Abmischung
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Spielskript
+STR_FRAMETIME_CAPTION_AI                                        :KI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -3367,6 +3372,7 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrien
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Keine -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportiert){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - Klick auf den Namen zentriert Hauptansicht auf die Industrie. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie
@@ -3463,16 +3469,18 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Neue elektrisch
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Neue Einschienenbahnfahrzeuge
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Neue Magnetbahnfahrzeuge
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Neue Fahrzeuge
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Neue Straßenfahrzeuge
 STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Neue Straßenbahnen
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Neue Schienenfahrzeuge
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Neue Straßenfahrzeuge
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Neue Schiffe
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Neue Flugzeuge
 ############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY_LONG}{BLACK} Gewicht: {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Kosten: {GOLD}{CURRENCY_LONG}{BLACK} (Umrüstkosten: {GOLD}{CURRENCY_LONG}{BLACK}) Gewicht: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK} Leistung: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschwindigkeit: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Geschwindigkeit auf dem Meer: {GOLD}{VELOCITY}
@@ -3511,12 +3519,15 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Fahrzeug
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Schiff kaufen und umrüsten
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :Flugzeug kaufen und umrüsten
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Angewähltes Fahrzeug kaufen. Shift+Klick zeigt einen Kostenvoranschlag
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Ausgewähltes Fahrzeug kaufen. Shift+Klick zeigt einen Kostenvoranschlag
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Ausgewähltes Fahrzeug kaufen. Shift+Klick zeigt einen Kostenvoranschlag
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Ausgewähltes Schiff kaufen. Shift+Klick zeigt einen Kostenvoranschlag
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Augewähltes Flugzeug kaufen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Augewähltes Flugzeug kaufen. Shift+Klick zeigt einen Kostenvoranschlag
 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :Ausgewähltes Fahrzeug kaufen und umrüsten. Shift+Klick zeigt einen Kostenvoranschlag
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Ausgewähltes Straßenfahrzeug kaufen und umrüsten. Shift+Klick zeigt einen Kostenvoranschlag
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}Ausgewähltes Schiff kaufen und umrüsten. Shift+Klick zeigt einen Kostenvoranschlag
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Ausgewähltes Flugzeug kaufen und umrüsten. Shift+Klick zeigt einen Kostenvoranschlag
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Umbenennen
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Umbenennen
@@ -4139,6 +4150,8 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Skript n
 STR_SCREENSHOT_CAPTION                                          :{WHITE}Sreenshot erzeugen
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normaler Screenshot
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Screenshot des ganzen Spielfeldes
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Reliefkarten-Screenshot
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap Screenshot
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter
@@ -4434,6 +4447,7 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...hier 
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...hier ist kein Straßenbahngleis
 STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Straßentyp kann hier nicht geändert werden...
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Straßenbahngleistyp kann hier nicht geändert werden...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Keine geeignete Straße
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Keine geeigneten Straßenbahnschienen
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... inkompatible Straßenbahngleise
 
