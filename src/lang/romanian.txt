@@ -263,6 +263,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Activân
 STR_BUTTON_DEFAULT                                              :{BLACK}Prestabilit(e)
 STR_BUTTON_CANCEL                                               :{BLACK}Anulează
 STR_BUTTON_OK                                                   :{BLACK}OK
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Avertisment: Administratorii serverului pot citi orice text introdus aici.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -1289,6 +1290,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Grosimea liniil
 STR_CONFIG_SETTING_LANDSCAPE                                    :Peisaj: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Peisajele definesc scenariile de bază a jocului cu cerințe diferite pentru încărcături și dezvoltare a orașelor. NewGRF și scripturile de joc permit un control mai fin
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator teren: {STRING}
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Generatorul original depinde de setul grafic, și compune forme de teren fixate. TerraGenesis este un generator de zgomot Perlin cu setări de control mai fine
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Tip teren: {STRING}
@@ -1297,6 +1299,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Densitatea indu
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distanța maximă de la marginea hărții pentru rafinării: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinăriile de petrol vor fi construite doar la marginea hărţii, sau pe coastă, în cazul harţilor insulare
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Grosimea stratului de zăpadă: {STRING}
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controlează înălțimea de la care zăpada apare în peisajul sub-arctic. De asemenea, zăpada afectează generarea industriilor și cerințele de creștere a orașelor.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Duritatea terenului (doar pt TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Doar TerraGenesis) Alegeți frecvența dealurilor: Peisajele line au dealuri mai puține și mai întinse. Peisajele dure au multe dealuri și pot arăta repetitiv
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Foarte fin
@@ -1304,6 +1307,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Fin
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Dur
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Foarte dur
 STR_CONFIG_SETTING_VARIETY                                      :Distribuția varietății: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Alege câte râuri să fie generate
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritm amplasare arbori: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Alegeți distribuția copacilor pe hartă: 'Original' plantează copacii dispersați uniform, 'Îmbunătățit' îi plantează grupat
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Niciunul
@@ -1330,6 +1334,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Verde
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Verde închis
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Mov
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Mută harta ținând apăsat click dreapta, poziția cursorului rămânând fixă
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Mută harta cu clic stânga
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Derulare uşoară ecran: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Controlează modul de deplasare a imaginii din ecranul principal când se face click pe harta mică sau când se execută o comandă de deplasare către un obiect anume de pe hartă. Dacă este activată, imaginea se deplasează în mod fluid, altfel imaginea sare direct la zona dorită
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Arată o indicaţie de distanţă la folosirea uneltelor de construcţie: {STRING}
@@ -1363,6 +1368,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Oprit
 
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Autosalvare: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Alege intervalul de timp dintre salvările automate
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Foloseşte formatul datei {STRING} pentru numele salvărilor
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Formatul datei in numele salvărilor
@@ -2661,14 +2667,17 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} Echipa OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}FPS
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Număr de evenimente de joc simulate per secundă.
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Medie
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memorie
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Date bazate pe măsurători {COMMA}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} cadre/s
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 ############ Leave those lines in this order!!
 STR_FRAMERATE_VIDEO                                             :{BLACK}Ieșire video:
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Script joc:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Buclă de joc
@@ -3313,6 +3322,7 @@ STR_GROUP_DEFAULT_ROAD_VEHICLES                                 :Vehicule rutier
 STR_GROUP_DEFAULT_SHIPS                                         :Nave negrupate
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronave negrupate
 
+STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grupuri - click pe un grup pentru lista completă a vehiculelor acestuia
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click pentru a creea un grup
