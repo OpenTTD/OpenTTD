@@ -496,10 +496,10 @@ STR_ORDINAL_NUMBER_15TH                                         :15வது
 ############ range for ordinal numbers ends
 
 ############ range for days starts
-STR_DAY_NUMBER_1ST                                              :1st
-STR_DAY_NUMBER_2ND                                              :2nd
-STR_DAY_NUMBER_3RD                                              :3rd
-STR_DAY_NUMBER_4TH                                              :4th
+STR_DAY_NUMBER_1ST                                              :1வது
+STR_DAY_NUMBER_2ND                                              :2வது
+STR_DAY_NUMBER_3RD                                              :3வது
+STR_DAY_NUMBER_4TH                                              :4வது
 STR_DAY_NUMBER_5TH                                              :5வது
 STR_DAY_NUMBER_6TH                                              :6வது
 STR_DAY_NUMBER_7TH                                              :7வது
@@ -620,6 +620,7 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}மொ�
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TOOLTIP                         :{BLACK}சென்ற வருடம் லாபமடைந்த வாகனங்களின் எண்ணிக்கை. இதில் இரயில், சாலை, விமானம் மற்றும் கப்பல் வாகனங்கள் அடங்கும்
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TOOLTIP                       :{BLACK}குறைந்தபட்ச வருமானம் உடைய வாகனத்தின் லாபம்(இரண்டு வருடங்கள் பழைய வாகனங்கள் மட்டும் கணக்கில் எடுக்கப்பட்டுள்ளது)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TOOLTIP                       :{BLACK}கடந்த 12 காலாண்டுகளில் மிகக் குறைந்த லாபத்துடன் காலாண்டில் செய்யப்பட்ட பணத்தின் அளவு
 STR_PERFORMANCE_DETAIL_DELIVERED_TOOLTIP                        :{BLACK}கடந்த நான்கு காலாண்டுகளில் சேர்க்கப்பட்ட சரக்கு பெட்டிகள்
 STR_PERFORMANCE_DETAIL_CARGO_TOOLTIP                            :{BLACK}கடந்த காலாண்டில் கையாளப்பட்ட சரக்கு வகைகள்
 STR_PERFORMANCE_DETAIL_MONEY_TOOLTIP                            :{BLACK}இந்த நிறுவனம் வங்கியில் வைத்திருக்கும் பணம்
@@ -793,6 +794,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(மேலாளர்)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} நிதியுதவி செய்தது புதிய நகரம் {TOWN} கட்டுவதற்கு!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}{TOWN} என்ற புதிய நகரம் கட்டப்பட்டுள்ளது!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}புது {STRING} கட்டப்படுகிறது {TOWN}அருகில்!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}ப்திய {STRING} தொடங்கப்படுகிறது {TOWN}அருகில்!
@@ -807,6 +809,7 @@ STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} உற்பத்தியை அதிகரித்தது!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} தயாரிப்பு {INDUSTRY} இல் அதிகரித்தது {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} உற்பத்தி 50 சதவீதமாக குறைத்தது
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}{INDUSTRY} பூச்சி தொற்று அழிவை ஏற்படுத்துகிறது!{}உற்பத்தி 50 சதவீதமாக குறைத்தது.
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING} தயாரிப்பு {INDUSTRY} இல் குறைந்தது {COMMA}%!
 
 STR_NEWS_TRAIN_IS_WAITING                                       :{WHITE}{VEHICLE} பணிமனையில் காத்துக்கொண்டிருக்கிறது
@@ -843,7 +846,8 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} இப்போது {STRING} {STRING} ஆகியவற்றை ஏற்றுக்கொள்கிறது
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}மானியம் இனிமேல் தரப்படாது:{}{}{STRING} இருந்து {STRING} {STRING} வரை போக்குவரத்திற்கு மானியம் வழங்கப்படாது
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} இற்கு சேவை மானியம் வழங்கப்படுகிறது!{}{} {STRING} முதல் {STRING} to வரையிலான {STRING} சேவை அடுத்த ஆண்டுக்கு 50% கூடுதல் கட்டணம் செலுத்தும்!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} இற்கு சேவை மானியம் வழங்கப்படுகிறது!{}{} {STRING} முதல் {STRING} வரையிலான {STRING} சேவை அடுத்த ஆண்டுக்கு 50% கூடுதல் கட்டணம் செலுத்தும்!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} இற்கு சேவை மானியம் வழங்கப்படுகிறது!{}{}{STRING} முதல் {STRING} வரையிலான {STRING} சேவை அடுத்த ஆண்டுக்கு 4 மடங்கு கட்டணம் செலுத்தும்!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}இல் சாலை போக்குவரத்து பாதிப்பு!{}{}Road rebuilding programme funded by {STRING} brings 6 months of misery to motorists!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}போக்குவரத்து தனியுரிமை!
@@ -893,7 +897,13 @@ STR_GAME_OPTIONS_CURRENCY_KRW                                   :தென்க
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :தென் ஆப்பிரிக்க ரான்ட் (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :புதிதாக...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :ஜார்ஜிய லாரி (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :ஈரானிய ரியால் (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :புதிய ரஷ்ய ரூபிள் (RUB)
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :மெக்சிகன் பெசோ (MXN)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :புதிய தைவான் டாலர் (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :சீன ரென்மின்பி (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :ஹாங்காங் டாலர் (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :இந்திய ரூபாய் (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}சாலை வாகனங்கள்
@@ -949,6 +959,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}தி�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}திரை அளவினைத் தேர்ந்தெடுக்கவும்
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவை
 
+STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}இடைமுக அளவு
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :சராசரி
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :இரண்டு மடங்கு
@@ -956,7 +967,9 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :நான்க
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}எழுத்துரு அளவு
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :இயல்பான
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :இரண்டு மடங்கு
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :நான்கு மடங்கு
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}அடிப்படை அசைவூட்டம்
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}பயன்படுத்தப்போகும் அடிப்படை அசைவூட்டத்தினை தேர்ந்தெடுக்கவும்
@@ -1119,6 +1132,7 @@ STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :கட்டு
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :கட்டுமான அளவு மற்றும் வாங்கும் செலவுகள் ஆகியவற்றை அமை
 STR_CONFIG_SETTING_RECESSIONS                                   :பொருளதாரத் தேக்கங்கள்: {STRING}
 STR_CONFIG_SETTING_TRAIN_REVERSING                              :நிலையங்களில் இரயில்களை திருப்புவதை அனுமதிக்காதே: {STRING}
+STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :இயக்கப்பட்டால், தலைகீழாக மாறும்போது, அடுத்த இலக்குக்கு குறுகிய பாதை இருந்தாலும், ரயில்கள் டெர்மினஸ் அல்லாத நிலையங்களில் தலைகீழாக மாறாது
 STR_CONFIG_SETTING_DISASTERS                                    :பேரழிவுகள்: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL                                :நகர மறு அமைப்பின் மீது நகராட்சியின் நிலை: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :நிறுவனங்களின் சத்தம் மற்றும் சுற்றுச்சூழல் சேதம் அவர்களின் நகர மதிப்பீட்டை பாதிக்கும் மற்றும் அவற்றின் பகுதியில் மேலும் கட்டுமான நடவடிக்கைகளைத் தேர்வுசெய்க
@@ -1190,6 +1204,7 @@ STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :நகரத்
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}வாகனங்கள் இருக்கும் பொது இந்த அமைப்பினை மாற்ற இயலாது
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :கட்டட பராமரிப்பு: {STRING}
 
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :துவங்கும் நிறுவனத்தின் வண்ணம்: {STRING}
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :விமான நிலையங்கள் என்றும் காலாவதியாகாது: {STRING}
 
@@ -1206,6 +1221,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :தானாக
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} மாத{P 0 "ம்" ங்கள்} முன்னர்
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} மாத{P 0 "ம்" ங்கள்} பின்னர்
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :காலாவதியான வாகனங்களை மாற்றியமைக்கத் தேவையான பணம்: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :தானாக புதுப்பிக்கும் வாகனங்களைக் கருத்தில் கொள்வதற்கு முன் வங்கியில் இருக்க வேண்டிய குறைந்தபட்ச பணம்
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :பிழை செய்திக்கான கால அளவு: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} விநாடி{P 0 "" கள்}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :tooltips இனை காட்டு: {STRING}
@@ -1218,17 +1234,20 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :வரைபட
 STR_CONFIG_SETTING_LANDSCAPE                                    : நிலவெளி: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR                               :நில உருவாக்கி: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :உண்மையான
-STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :புவிதுவக்கம்
+STR_CONFIG_SETTING_TERRAIN_TYPE                                 :நிலவகை: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :தொழிற்சாலை அடர்த்தி: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :வரைபட எல்லையிலிருந்து எண்ணெய் தொழிற்சாலைகள் இருக்கக்கூடிய தூரம்: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :எண்ணெய் சுத்திகரிப்பு நிலையங்கள் வரைபடத்தின் எல்லைகளில் மட்டுமே கட்ட இயலும், அதாவது தீவு வரைபடங்களில் கடற்கரைகளில் கட்ட இயலும்
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :பனி-கோடின் உயரம்: {STRING}
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :நிலப்பகுதியின் சமனில்லாத நிலை (TerraGenesis மட்டும்) : {STRING}
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :நிலப்பகுதியின் சமனில்லாத நிலை (புவிதுவக்கம் மட்டும்) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :மிகவும் சமமான
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :சமமான
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :கரடுமுரடான
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :மிகவும் கரடுமுரடான
+STR_CONFIG_SETTING_VARIETY                                      :பலவகை பரவல்: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :ஆறுகளின் எண்ணிக்கை: {STRING}
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :எத்தனை ஆறுகளை உருவாக்க வேண்டும் என்பதைத் தேர்வுசெய்க
 STR_CONFIG_SETTING_TREE_PLACER                                  :மரங்கள் நடும் வகை: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :உண்மையான
@@ -1249,6 +1268,8 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :சிறுப
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :பச்சை
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :கரும் பச்சை
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :ஊதா
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :வலது சுட்டி பொத்தானைக் கொண்டு வரைபடத்தை நகர்த்தவும்
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :இடது சுட்டி பொத்தானைக் கொண்டு வரைபடத்தை நகர்த்தவும்
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :பார்படத்தின் இலகுவான பக்கமுருட்டல்: {STRING}
 STR_CONFIG_SETTING_LIVERIES                                     :நிறுவன livery களைக் காட்டு: {STRING}
 STR_CONFIG_SETTING_LIVERIES_NONE                                :ஒன்றுமில்லை
@@ -1271,6 +1292,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :அணை
 
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :தானியங்கிபதிவு: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :தானியங்கி விளையாட்டு சேமிப்புகளுக்கு இடையில் இடைவெளியைத் தேர்ந்தெடுக்கவும்
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :{STRING} தேதி வகையினை பதிவுஆட்டங்கள் பெயர்களுக்கு பயன்படுத்தவும்
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :பதிவு ஆட்டங்கள் கோப்புப் பெயர்களில் உள்ள தேதி வகையினை அமை
@@ -1379,6 +1401,9 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :முழு
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :நிற செய்தித்தாள்கள் வெளிவரும் ஆண்டு: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :செய்தித்தாள் அறிவிப்புகள் வண்ணத்தில் அச்சிடப்பட்ட ஆண்டு. இந்த ஆண்டுக்கு முன், இது ஒரே வண்ணமுடைய கருப்பு / வெள்ளை பயன்படுத்துகிறது
 STR_CONFIG_SETTING_STARTING_YEAR                                :தொடங்கும் வருடம்: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :மதிப்பீட்டிற்கான இறுதி ஆண்டு: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :என்றுமில்லை
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :இயல்பான பொருளாதாரத்தினைச் செயல்படுத்தவும் (அதிகமான, சிறிய மாற்றங்கள்): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :மற்ற நிறுவனங்களின் பங்குகளை வாங்குவதை அனுமதிக்கவும்: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :பங்குகள் பரிமாற்றத்திற்கு தேவையான குறைந்தபட்ச நிறுவன வயது: {STRING}
@@ -1404,6 +1429,7 @@ STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 கட்�
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 கட்டங்கள்
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :ஏதொவொரு
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :நகரங்கள் சாலைகளை கட்ட அனுமதி: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :வளர்ச்சிக்கு சாலைகளை உருவாக்க நகரங்களை அனுமதிக்கவும். நகர அதிகாரிகள் சாலைகளை உருவாக்குவதைத் தடுக்க முடக்கு
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :நகரங்கள் சாலைச் சந்திப்புகளை கட்ட அனுமதி: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :இந்த அமைப்பு நகராட்சிகள் இருப்புப்பாதை சந்திக் கடவுகளைக் கட்ட அனுமதிக்கும்
 STR_CONFIG_SETTING_NOISE_LEVEL                                  :விமான நிலையங்களுக்கு நகராட்சியால் நிர்ணயிக்கப்பட்ட இரைச்சல் அளவினை அனுமதிக்கவும்: {STRING}
@@ -1415,6 +1441,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :அனுமத
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :அனுமதிக்கப்படுகிறது, ஆனால் மாற்றியமைக்கப்பட்ட நகர அமைப்பு
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :நகரத்தின் சரக்கு உற்பத்தி: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :இருபடி (அசல்)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :நேரியல்
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :ஆட்டத்தின் போது மரங்களை நடுதல்: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :விளையாட்டின் போது மரங்களின் சீரற்ற தோற்றத்தைக் கட்டுப்படுத்தவும். இது மர வளர்ச்சியை நம்பியுள்ள தொழில்களை பாதிக்கலாம், எடுத்துக்காட்டாக மரம் வெட்டுதல் ஆலைகள்
@@ -1440,11 +1467,11 @@ STR_CONFIG_SETTING_TOWN_GROWTH                                  :நகர வ�
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :நகர வளர்ச்சி வேகம்
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :ஒன்றுமில்லை
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :மெதுவாக
-STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :சாதாரணமாக
+STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :இயல்பான
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :வேகமாக
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :அதிவேகமாக
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :நகரங்கள் மாநகரங்கள் ஆகும் வாய்ப்பு: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 in {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 இல் {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :ஒன்றுமில்லை
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :தொடக்க நகர அளவு பெருக்கம்: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :ஆட்டத்தின் தொடக்கத்தில் மாநகரங்களின் அளவு நகரங்களை ஒப்பிடுகையில்
@@ -1454,6 +1481,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :சமச்ச
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :சமச்சீரான
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :பயணிகள் பரிமாற்றம் வகை: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :அஞ்சல் பரிமாற்றம் வகை: {STRING}
+STR_CONFIG_SETTING_DEMAND_DISTANCE                              :கோரிக்கைகளின் தூரத்தின் விளைவு: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :இதை 0 ஐ விட அதிகமான மதிப்பாக அமைத்தால், சில சரக்குகளின் மூல நிலையம் A க்கும் சாத்தியமான இலக்கு B க்கும் இடையிலான தூரம் A இலிருந்து B க்கு அனுப்பப்படும் சரக்குகளின் அளவை பாதிக்கும். மேலும் தொலைவில் உள்ள B A இலிருந்து குறைவாக உள்ளது சரக்கு அனுப்பப்படும். நீங்கள் அதை அதிகமாக அமைத்தால், குறைந்த சரக்கு தொலைதூர நிலையங்களுக்கு அனுப்பப்படும், மேலும் அதிகமான சரக்குகள் அருகிலுள்ள நிலையங்களுக்கு அனுப்பப்படும்.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :வேக அலகுகள்: {STRING}
@@ -1482,13 +1510,14 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :மெட்ர
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :SI (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :உயரங்கள் அலகுகள்: {STRING}
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :பயனர் இடைமுகத்தில் ஒரு உயரம் காட்டப்படும் போதெல்லாம், தேர்ந்தெடுக்கப்பட்ட அலகுகளில் அதைக் காட்டுங்கள்
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :இம்பீரியல் (அடி)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :மெட்ரிக் (மீ)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :SI (மீ)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :அனைத்துலக முறை அலகு (மீ)
 
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}அசைவூட்டம்
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}ஒலிகள்
-STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Interface
+STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}இடைமுகம்
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE} பொதுவான
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}கட்டுமானம்
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}செய்திகள் / அறிவுரைஞர்கள்
@@ -1499,7 +1528,9 @@ STR_CONFIG_SETTING_VEHICLES_PHYSICS                             :{ORANGE}இய�
 STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}வழி மாற்றல்
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}எல்லைகள்
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}பேரழிவுகள் / விபத்துகள்
+STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}உலகம் உருவாக்குதல்
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}சுற்றுச்சூழல்
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}அதிகாரிகள்
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}நகரங்கள்
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}தொழிற்சாலைகள்
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}சரக்கு பரிமாற்றம்
@@ -1756,6 +1787,7 @@ STR_NETWORK_START_SERVER_UNADVERTISED                           :இல்லை
 STR_NETWORK_START_SERVER_ADVERTISED                             :ஆம்
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} விளையாடுபவர்{P "" கள்}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}அதிகபட்ச வீரர்கள்:
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}வாடிக்கையாளர்களின் அதிகபட்ச எண்ணிக்கையைத் தேர்வுசெய்க. எல்லா இடங்களும் நிரப்பப்பட வேண்டியதில்லை
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} நிறுவன{P ம் ங்கள்}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}அதிகபட்ச நிறுவனங்கள்:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}சர்வர்கு குறிப்பிட்ட அளவு நிறுவனங்களை மட்டுமே அனுமதி
@@ -1972,6 +2004,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} �
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** நீங்கள் கொடுத்தீற்கள் {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}சர்வர் ஆட்டத்தினை முடித்தது
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}சர்வர் மீண்டும் தொடங்குகிறது...{}சற்று பொறுக்கவும்...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} வெளியேற்றப்பட்டார். காரணம்: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}கோப்புகள் பதிவிறக்கம் செய்யப்படுகின்றன
@@ -2061,6 +2094,7 @@ STR_LINKGRAPH_LEGEND_OVERLOADED                                 :{TINY_FONT}{BLA
 STR_STATION_BUILD_COVERAGE_AREA_TITLE                           :{BLACK}செயல்படும் பகுதியினை குறிக்கவும்
 STR_STATION_BUILD_COVERAGE_OFF                                  :{BLACK}நிறுத்து
 STR_STATION_BUILD_COVERAGE_ON                                   :{BLACK}இயக்கு
+STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP                      :{BLACK}முன்மொழியப்பட்ட தளத்தின் கவரேஜ் பகுதியை முன்னிலைப்படுத்தவும்
 STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}ஏற்றுக்கொள்பவை: {GOLD}{CARGO_LIST}
 STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}விநியோகிப்பவை: {GOLD}{CARGO_LIST}
 
@@ -2154,6 +2188,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}சா�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}ட்ராம்வே கட்டுமானம் செய்யவும்/நீக்கவும்
 
 STR_ROAD_NAME_ROAD                                              :சாலை
+STR_ROAD_NAME_TRAM                                              :தண்டூர்தி
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}சாலை வாகன பணிமனை திசையமைப்பு
@@ -2434,19 +2469,28 @@ STR_FRAMERATE_AVERAGE                                           :{WHITE}சர�
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}நினைவாற்றல்
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} நுண்ணொடி
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} மில்லி விநாடி(கள்)
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
 STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
+STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} விநாடி(கள்)
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK} இரயில் நேரம்:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} சாலை வாகனத்தின் பயண நேரம்:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} கப்பல் பயண நேரம்:
+STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} விமான டிக்குகள்:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} உலக சொடுக்குகள்:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} இணைப்பு வரைபட தாமதம்:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK} உலக காட்சிகள்:
+STR_FRAMERATE_VIDEO                                             :{BLACK}வீடியோ வெளியீடு:
 STR_FRAMERATE_SOUND                                             :{BLACK}இசை இயக்கம்:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI மொத்தம்:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :சரக்கு கையாளுதல்
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :சாலை வாகனத்தின் பயண நேரம்
+STR_FRAMETIME_CAPTION_DRAWING                                   :கிராபிக்ஸ் ரெண்டரிங்
+STR_FRAMETIME_CAPTION_SOUND                                     :ஒலி கலவை
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :விளையாட்டின் ஸ்கிரிப்ட்
 STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
@@ -2598,6 +2642,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}இந்�
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}Preset-ஐ பதிவுசெய்
 STR_SAVE_PRESET_TITLE                                           :{BLACK}Preset இற்கு ஒரு பெயரினை இடு
+STR_SAVE_PRESET_CANCEL                                          :{BLACK}இரத்து செய்
 STR_SAVE_PRESET_SAVE                                            :{BLACK}சேமி
 
 # NewGRF parameters window
@@ -2624,6 +2669,7 @@ STR_SPRITE_ALIGNER_NEXT_BUTTON                                  :{BLACK}அட�
 STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}ஸ்பிரைட்டுயிற்கு செல்லவும்
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}முந்தைய ஸ்பிரைட்டு
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}முன்னிருந்தமாதிரி மாற்று
+STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}தற்போதைய ஆஃப்செட்களை மீட்டமைக்கவும்
 STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X ஒதுக்கம்: {NUM}, Y ஒதுக்கம்: {NUM} (சார்பு)
 STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}ஸ்பிரைட்டினைத் தேர்ந்தெடுக்கவும்
 
@@ -2754,12 +2800,14 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :நகராட
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}சிறிய விளம்பர பிரசாரத்தினைத் தொடங்கு, இதனால் பயணிகள் மற்றும் சரக்குகள் உங்களது போக்குவரத்து நிறுவனத்தினைப் பயன்படுத்துவர்.{}செலவு: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}சராசரி விளம்பர பிரசாரத்தினைத் தொடங்கு, இதனால் பயணிகள் மற்றும் சரக்குகள் உங்களது போக்குவரத்து நிறுவனத்தினைப் பயன்படுத்துவர்.{}செலவு: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}பெரிய விளம்பர பிரசாரத்தினைத் தொடங்கு, இதனால் பயணிகள் மற்றும் சரக்குகள் உங்களது போக்குவரத்து நிறுவனத்தினைப் பயன்படுத்துவர்.{}செலவு: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}நகர்ப்புற சாலை நெட்வொர்க்கின் புனரமைப்புக்கு நிதியளிக்கவும். 6 மாதங்கள் வரை சாலை போக்குவரத்துக்கு கணிசமான இடையூறு ஏற்படுகிறது.{}செலவு: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}தங்கள் நிறுவனத்தின் பெருமைக்காக ஓர் சிலையினைக் கட்டவும்.{}செலவு: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} குறிக்கோள்கள்
-STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}பூலோக குறிக்கோள்கள்
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}பூலோக குறிக்கோள்கள்:
+STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}உலகளாவிய குறிக்கோள்கள்
+STR_GOALS_SPECTATOR                                             :உலகளாவிய குறிக்கோள்கள்
+STR_GOALS_GLOBAL_TITLE                                          :{BLACK}உலகளாவிய குறிக்கோள்கள்:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- ஏதுமில்லை -
 STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- இதற்கு அமையாது -
@@ -2956,6 +3004,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}வி�
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}புதிய முகம்
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}மேலாளருக்கு புதிய முகத்தினைத் தேர்ந்தெடு
 STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}நிறக் கோட்பாடு
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}நிறுவன வாகனத்தின் நிறத்தினை மாற்று
 STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}நிறுவனத்தின் பெயர்
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}நிறுவனத்தின் பெயரை மாற்று
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}மேலாளரின் பெயர்
@@ -2985,6 +3034,8 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}தொ�
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- ஒன்றுமில்லை -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}ஏற்றுக்கொள்ளப்படும் சரக்குகள்: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}உற்பத்தி செய்யப்பட்ட சரக்குகள்: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :அனைத்து சரக்கு வகைகள்
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3057,7 +3108,10 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :அனைத்
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}குழுவின் பெயரினை மாற்றவும்
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :இந்த ஆண்டு லாபம்:
+STR_GROUP_PROFIT_LAST_YEAR                                      :கடந்த ஆண்டு லாபம்:
 STR_GROUP_OCCUPANCY                                             :தற்போதைய பயன்பாடு:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :புது இரயில் வாகனங்கள்
@@ -3094,6 +3148,7 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :அனைத்
 STR_PURCHASE_INFO_ALL_BUT                                       :அனைத்தும் {CARGO_LIST} தவிர
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}அதி. இழு திறன்: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}தூரம்: {GOLD}{COMMA} கட்டங்கள்
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}விமான வகை: {GOLD}{STRING}
 
 STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}இரயில் வாகனங்கள் பட்டியல் - மேலும் விவரங்களுக்கு வாகனத்தை சொடுக்கவும்
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}சாலை வாகனங்கள் பட்டியல் - மேலும் விவரங்களுக்கு வாகனத்தை சொடுக்கவும்
@@ -3130,6 +3185,7 @@ STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}மற�
 STR_BUY_VEHICLE_ROAD_VEHICLE_SHOW_TOGGLE_BUTTON                 :{BLACK}காட்சி
 STR_BUY_VEHICLE_SHIP_SHOW_TOGGLE_BUTTON                         :{BLACK}காட்சி
 
+STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}இரயில் வகையினை காட்டு/மறை
 STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}கப்பல் வகையினை காட்டு/மறை
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}இரயில் வாகன வகையின் பெயரினை மாற்றவும்
@@ -3219,6 +3275,7 @@ STR_ENGINE_PREVIEW_SHIP                                         :கப்பல
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}செலவு: {CURRENCY_LONG} எடை: {WEIGHT_SHORT}{}வேகம்: {VELOCITY}  திறன்: {POWER}{}ஓட்டுவதற்கான செலவு: {CURRENCY_LONG}/வரு{}கொள்ளளவு: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}செலவு: {CURRENCY_LONG} எடை: {WEIGHT_SHORT}{}வேகம்: {VELOCITY} திறன்: {POWER}  அதி. T.E.: {6:FORCE}{}ஓட்டுவதற்கான செலவு: {4:CURRENCY_LONG}/வரு{}கொள்ளளவு: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY}{}கொள்ளளவு: {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY}{}விமான வகை: {STRING}{}கொள்ளளவு: {CARGO_LONG}, {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_RUNCOST              :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY}{}விமான வகை: {STRING}{}கொள்ளளவு: {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}செலவு: {CURRENCY_LONG} அதி. வேகம்: {VELOCITY}{}விமான வகை: {STRING} வீச்சு எல்லை: {COMMA} கட்டங்கள்{}கொள்ளளவு: {CARGO_LONG}, {CARGO_LONG}{}ஓட்டும் செலவு: {CURRENCY_LONG}/ஆண்டிற்கு
 
@@ -3334,6 +3391,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} வர�
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} வருடம்{P "" கள்} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}விமான வகை: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}விமான வகை: {LTBLUE}{STRING} {BLACK}வீச்சு எல்லை: {LTBLUE}{COMMA} கட்டங்கள்
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}எடை: {LTBLUE}{WEIGHT_SHORT} {BLACK}திறன்: {LTBLUE}{POWER}{BLACK} அதி. வேகம்: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}எடை: {LTBLUE}{WEIGHT_SHORT} {BLACK}திறன்: {LTBLUE}{POWER}{BLACK} அதி. வேகம்: {LTBLUE}{VELOCITY} {BLACK}அதி. T.E.: {LTBLUE}{FORCE}
@@ -3570,6 +3628,7 @@ STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} கா
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :{STRING} காலத்திற்கு பயணி, அதிகபட்ச வேகம் {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :பயணம் ({STRING}, நேர அட்டவணை இடப்படாதது)
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :({STRING} வரை இரு, நேர அட்டவணை இடப்படாதது)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(பயணி {STRING}, நேர அட்டவணை இடப்படாதது)
 STR_TIMETABLE_STAY_FOR                                          :மற்றும் {STRING} இற்கு நிற்கவும்
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :மற்றும் {STRING} இற்கு பயணிக்கவும்
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}நாள்{P "" "நாட்கள்"}
@@ -3680,6 +3739,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK}இர�
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}வரிவடிவத்தினை மாற்றாதே
 
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}சாதாரண திரைப்பிடிப்பு
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}உயர்படத்தின் திரைப்பிடிப்பு
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} குணாதிசயங்கள்
@@ -3855,6 +3915,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... ப�
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... பனி-கோடின் மேலே மட்டுமே கட்ட முடியும்
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... பனி-கோடின் கீழே மட்டுமே கட்ட முடியும்
 
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}'{STRING}' தொழிற்சாலைகளை நிறுவ தகுந்த இடங்கள் கிடைக்கவில்லை
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}இங்கே இரயில் நிலையம் கட்ட முடியாது...
@@ -3948,6 +4009,7 @@ STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}தக�
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}முதலில் இரயில்வே தடத்தினை எடுக்க வேண்டும்
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}சாலை ஒருவழிப்பாதை அல்லது மறிக்கப்பட்டுள்ளது
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}இந்த வகையிலான இரயில்களுக்கு இருப்புப்பாதை சந்திக் கடவுகள் கிடையாது
+STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}இந்த சாலை வகைக்கு நிலை குறுக்குவெட்டுகள் அனுமதிக்கப்படவில்லை
 STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}இங்கே சிக்னல்களை நிறுவ இயலாது...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}இங்கே இரயில்வே தடங்களை பதிய முடியாது...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}இங்கிருந்து இரயில்வே தடங்களை அகற்ற முடியாது...
@@ -3967,6 +4029,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}இங�
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}இங்கிருந்து ட்ராம்வேயினை நீக்க முடியாது...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...சாலை இல்லை
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...ட்ராம் வழி இல்லை
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}பொருத்தமான சாலை இல்லை
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... இணக்கமற்ற தண்டூர்தி
 
 # Waterway construction errors
