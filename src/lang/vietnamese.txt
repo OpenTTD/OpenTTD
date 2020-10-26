@@ -864,6 +864,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}{STRING} mới đã ra lò! -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Mở cửa sổ gom nhóm và hiện nhóm của phương tiện
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Ga, bến, cảng {STATION} không chấp nhận {STRING} nữa.
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Ga, bến, cảng {STATION} không chấp nhận {STRING} hoặc {STRING} nữa
@@ -934,6 +935,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso México (M
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Tân Đài tệ (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Nhân dân tệ TQ (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Đô-la Hồng Kông (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupee Ấn Độ (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Xe cộ
@@ -948,7 +950,7 @@ STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Lựa ch
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Tiếng Anh (Nguyên bản)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Pháp
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Đức
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Tiếng Anh (Bổ Sung)
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Tiếng Anh (Bổ sung)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Mỹ-Latin
 STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Silly
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Thụy Điển
@@ -1275,7 +1277,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :Khi mở, thì 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :Màu bắt đầu của công ty: {STRING}
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :Thay đổi màu sắc mặc định khi bắt đầu công ty
 
-STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ thành đồ cổ: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Sân bay không bao giờ hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Bật tùy chọn này cho phép tất cả các loại sân bay không bị lỗi thời
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Cảnh báo nếu phương tiện bị thất lạc: {STRING}
@@ -1287,7 +1289,7 @@ STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :có, nhưng tr�
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :tất cả phương tiện
 STR_CONFIG_SETTING_WARN_INCOME_LESS                             :Cảnh báo nếu thu nhập của phương tiện bị âm: {STRING}
 STR_CONFIG_SETTING_WARN_INCOME_LESS_HELPTEXT                    :Nếu bật, sẽ có một thông báo nếu một phương tiện nào đó không có lãi trong một năm
-STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Phương tiện không bao giờ thành đồ cổ: {STRING}
+STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Phương tiện không bao giờ hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Nếu bật, tất cả các model phương tiện sẽ không bị lỗi thời
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Tự thay mới phương tiện nếu hết hạn sử dụng: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Nếu bật, phương tiện gần hết hạn sẽ được tự động thay mới và điều kiện thay mới được thỏa mãn
@@ -1308,6 +1310,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Hiện dân s�
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Hiển thị dân số của đô thị trên nhãn của nó trên bản đồ
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Độ đậm của đường kẻ trong đồ thị: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Độ đậm của đường vẽ trên đồ thị. Một đường mảnh sẽ chính xác hơn, trong khi đó đường đậm sẽ dễ nhìn hơn và màu sắc dễ phân biệt hơn
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Hiển thị tên NewGRF trong cửa sổ xây phương tiện: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Thêm một dòng vào cửa sổ xây phương tiện, hiển thị phương tiện đến từ NewGRF nào.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Nền đất: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Nền đất là định nghĩa cơ bản của các màn chơi với các kiểu hàng hóa và yêu cầu cho sự phát triển đô thị khác nhau. NewGRF và kịch bản chơi cho phép các điều chỉnh nhỏ hơn.
@@ -1545,6 +1549,10 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Đủ
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Tin tức có màu xuất hiện vào năm: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Năm mà các báo chí sẽ được in màu. Trước năm này, tất cả chúng là in đen/trắng
 STR_CONFIG_SETTING_STARTING_YEAR                                :Năm bắt đầu: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Năm kết thúc để tính điểm: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Năm mà ván chơi sẽ kết thúc và tính điểm. Khi năm đó kết thúc, điểm số của công ty sẽ được lưu lại và hiển thị bảng điểm chơi cao nhất, sau đó người chơi vẫn có thể tiếp tục ván chơi.{} Nếu năm được đặt nhỏ hơn năm bắt đầu, bảng điểm chơi cao nhất sẽ không bao giờ được hiển thị.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Không bao giờ
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Nền kinh tế ít biến động: {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Nếu bật, sản lượng của nhà máy sẽ thay đổi thường xuyên hơn, và thay đổi với mức độ nhỏ hơn. Thiết lập này sẽ không có tác dụng nếu kiểu nhà máy định nghĩa bởi NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Cho phép mua cổ phần của các công ty khác: {STRING}
@@ -2161,6 +2169,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Sai mậ
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server bị đầy
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Bạn bị từ chối ở server này
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Bạn bị đá khỏi ván chơi
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Lý do: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Cheat không được phép ở server này
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Bạn vừa gửi lên máy chủ quá nhiều lệnh
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Bạn nhập mật khẩu quá trễ
@@ -2220,6 +2229,7 @@ STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} t�
 STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Bạn cho {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server kết thúc phiên
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server khởi động lại...{}Xin chờ...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} đã bị đá khỏi ván chơi. Lý do: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Đang tải nội dung
@@ -3394,6 +3404,10 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} và hơn {NUM}...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Tên các nhà máy - nháy vào tên để xem vị trí nhà máy. Ctrl+Click mở cửa sổ mới để xem
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Chấp nhận hàng hóa: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Hàng hóa cung cấp: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Tất cả hàng hóa
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Không
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4168,6 +4182,13 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Chấp n
 STR_AI_LIST_CANCEL                                              :{BLACK}Huỷ bỏ
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Không đổi tập lệnh
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Chụp màn hình
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Chụp màn hình bình thường
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Chụp màn hình phóng to đầy đủ
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Chụp màn hình phóng to mặc định
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Chụp toàn bản đồ
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Chụp bản đồ địa hình
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Chụp màn hình bản đồ nhỏ
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Các Thông Số
