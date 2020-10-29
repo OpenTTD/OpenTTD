@@ -999,6 +999,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikói Peso (
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Új Tajvani Dollár (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kínai Renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongi Dollár (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiai Rúpia (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Közúti járművek
