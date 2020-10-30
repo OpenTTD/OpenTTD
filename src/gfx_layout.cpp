@@ -116,7 +116,7 @@ void Font::getGlyphAdvance(LEGlyphID glyph, LEPoint &advance) const
 
 le_bool Font::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &point) const
 {
-	return FALSE;
+	return false;
 }
 
 /**
