@@ -133,7 +133,7 @@ STR_ABBREV_PASSENGERS                                           :{TINY_FONT}PS
 STR_ABBREV_COAL                                                 :{TINY_FONT}SK
 STR_ABBREV_MAIL                                                 :{TINY_FONT}PS
 STR_ABBREV_OIL                                                  :{TINY_FONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}LH
+STR_ABBREV_LIVESTOCK                                            :{TINY_FONT}VE
 STR_ABBREV_GOODS                                                :{TINY_FONT}GD
 STR_ABBREV_GRAIN                                                :{TINY_FONT}GR
 STR_ABBREV_WOOD                                                 :{TINY_FONT}HT
@@ -474,7 +474,7 @@ STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Vee alle boodsk
 ############ range ends here
 
 ############ range for about menu starts
-STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Gebied informasie
+STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Terreininligting
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Skakel terminaal
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Spel skript ontfout
@@ -2605,7 +2605,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Kies die
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Kies die nywerheid om te vertoon
 
 # Land area window
-STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land gebied informasie
+STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Terreininligting
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Koste om skoon te maak: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Koste om skoon te maak: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Wins waneer skoon maak: {LTBLUE}{CURRENCY_LONG}
