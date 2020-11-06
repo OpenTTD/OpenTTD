@@ -1039,7 +1039,7 @@ STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLA
 STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Przejdź do następnej ścieżki
 STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Przejdź do następnej ścieżki
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Zatrzymaj muzykę
-STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Odgrywaj muzykę
+STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Odtwarzaj muzykę
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Przesuń suwaki żeby ustawić głośność dźwięków i muzyki
 STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Wybierz program 'Wszystko'
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Wybierz program 'Stary styl'
@@ -1059,7 +1059,7 @@ STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLA
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Zmień zestaw
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Wyczyść obecny program (tylko Wlasny1 lub Wlasny2)
 STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Zmień wybór muzyki na następny zainstalowany zestaw
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Klik na ścieżce aby dodać do obecnego programu (Wlasny1 i Wlasny2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Kliknij na ścieżce aby dodać do obecnego programu (Wlasny1 lub Wlasny2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknij na ścieżce muzycznej aby usunąć ją z wybranego programu (Wlasny1 lub Wlasny2)
 
 # Highscore window
@@ -1092,15 +1092,15 @@ STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Pokaż z
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Pokaż pojazdy na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Pokaż przedsiębiorstwa na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Pokaż przepływ towarów na mapie
-STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Pokaż drogi na mapie
+STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Pokaż infrastrukturę na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Pokaż roślinność na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Pokaż teren mający właściciela
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klik na typie przedsiębiorstwa żeby przełączyć jego wyświetlanie. Ctrl+klik wyłącza wszystkie typy prócz wybranego. Ponowne Ctrl+klik włącza wszystkie typy przedsiębiorstw
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klik na firmie żeby wyświetlić jej posiadłości. Ctrl+klik wyłącza wszystkie firmy prócz wybranej. Ponowne Ctrl+klik włącza wszystkie firmy
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Kliknij towar by przełączać wyświetlanie jego własności. Ctrl+klik wyłącza wszystkie towary oprócz zaznaczonego. Ponowny Ctrl+klik na nim włącza wszystkie towary
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Klik na typie przedsiębiorstwa przełącza jego wyświetlanie. Ctrl+klik wyłącza wszystkie typy prócz wybranego. Ponowne Ctrl+klik włącza wszystkie typy przedsiębiorstw
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klik na firmie wyświetla jej własność. Ctrl+klik wyłącza wszystkie firmy prócz wybranej. Ponowne Ctrl+klik włącza wszystkie firmy
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Klik na towar przełącza jego wyświetlanie jego przepływu. Ctrl+klik wyłącza wszystkie towary oprócz zaznaczonego. Ponowny Ctrl+klik włącza wszystkie towary
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Drogi
-STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Koleje
+STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Kolej
 STR_SMALLMAP_LEGENDA_STATIONS_AIRPORTS_DOCKS                    :{TINY_FONT}{BLACK}Stacje/Lotniska/Porty
 STR_SMALLMAP_LEGENDA_BUILDINGS_INDUSTRIES                       :{TINY_FONT}{BLACK}Budynki/Przedsiębiorstwa
 STR_SMALLMAP_LEGENDA_VEHICLES                                   :{TINY_FONT}{BLACK}Pojazdy
@@ -1141,8 +1141,8 @@ STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Pokaż w
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nie pokazuj przedsiębiorstw na mapie
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Pokaż wszystkie przedsiębiorstwa na mapie
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Przełącz wyświetlanie mapy wysokości
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nie wyświetlaj posiadłości firmy na mapie
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Wyświetl wszystkie posiadłości firmy na mapie
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nie wyświetlaj własności firm na mapie
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Wyświetl własności wszystkich firm na mapie
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nie wyświetlaj towarów na mapie
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Wyświetl wszystkie towary na mapie
 
@@ -1213,7 +1213,7 @@ STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Odkryte nowe rezerwy ropy w {INDUSTRY}!{} Podwojenie produkcji!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Polepszone metody rolne w {INDUSTRY} spowodują podwojenie produkcji!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produkcja {STRING.d} w {INDUSTRY} wzrasta o {COMMA}%!
-STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}produkcja w {INDUSTRY} maleje o 50%
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Produkcja w {INDUSTRY} maleje o 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Plaga insektów w {INDUSTRY}!{}Produkcja maleje o 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}Produkcja {STRING.d} w {INDUSTRY} maleje o {COMMA}%!
 
@@ -1235,7 +1235,7 @@ STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE
 STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} nie potrafi znaleźć trasy, aby kontynuować
 STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} się zgubił
 STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}Dochód {VEHICLE} w zeszłym roku to {CURRENCY_LONG}
-STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nie może dotrzeć do kolejnego punktu docelowego, ponieważ jest on poza zasięgiem
+STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}{VEHICLE} nie może dotrzeć do kolejnego punktu docelowego, ponieważ punkt ten leży poza jego zasięgiem
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}Zaplanowane przeładowanie zatrzymane {VEHICLE}
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Autoodnowa zawiodła przy {VEHICLE}{}{STRING}
@@ -1332,7 +1332,7 @@ STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francuskie
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Niemieckie
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Angielskie (Rozszerzone)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Południowoamerykańskie
-STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Śmieszne
+STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Śmieszne (Angielskie)
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Szwedzkie
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holenderskie
 STR_GAME_OPTIONS_TOWN_NAME_FINNISH                              :Fińskie
@@ -1484,7 +1484,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
 STR_CITY_APPROVAL_HOSTILE                                       :Wrogie
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pasujących SI...{}Możesz pobrać wszystkie SI przez system "Zawartości online"
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Brak pasujących SI...{}Możesz pobrać wszystkie SI przez system "Dodatki online"
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Ustawienia
@@ -1577,9 +1577,9 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} p{P ole
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Ilość dymu / iskier lokomotywy: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Ustaw jak dużo dymu lub iskier jest emitowanych przez pojazdy
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Model przyspieszania pociągu: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Wybierz model fizyki dla przyspieszania pociągów. Oryginalny model daje takie same mandaty na stokach dla wszystkich pojazdów. Realistyczny model daje mandaty na stokach i zakrętach biorąc pod uwagę różne właściwości, takie jak długość i siłę pociągową
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Wybierz model fizyki przyspieszania pociągów. Przy włączonym modelu oryginalnym, wszystkie pociągi jednakowo zwalniają na stokach. Realistyczny model sprawia, że pociągi zwalniają na stokach i zakrętach, biorąc pod uwagę różne właściwości, takie jak długość i siłę pociągową
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Model przyspieszania samochodów: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Wybierz model fizyki dla przyspieszania pojazdów drogowych. Oryginalny model daje takie same mandaty na stokach dla wszystkich pojazdów. Realistyczny model daje mandaty na stokach biorąc pod uwagę właściwości silnika, np. 'siłę pociągową'
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Wybierz model fizyki przyspieszania pojazdów drogowych. Przy włączonym modelu oryginalnym, wszystkie pojazdy jednakowo zwalniają na stokach. Realistyczny model sprawia, że pojazdy zwalniają, biorąc pod uwagę różne parametry silnika, siła pociągowa
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Nachylenie stoków dla pociągów: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Pochylenie pola stoku dla pociągów. Wyższa wartość utrudnia podjazd pod górę
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
@@ -1605,7 +1605,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Poszukiwania
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Płaska przestrzeń wokół przedsiębiorstw: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Ilość płaskiej przestrzeni wokół zakładu. To zapewnia puste miejsce dostępne przy zakładach do budowy torów itp.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Pozwól na wiele podobnych przedsiębiorstw w mieście: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalnie każde miasto nie chce mieć więcej niż jedno przedsiębiorstwo jednego typu. Ta opcja pozwala na kilka takich samych przedsiębiorstw w jednym mieście
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normalnie żadne miasto nie chce mieć więcej niż jednego przedsiębiorstwa danego typu. Ta opcja pozwala na funkcjonowanie kilku takich samych przedsiębiorstw przy jednym mieście
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Pokaż semafory: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Wybierz po której stronie torów stawiać semafory
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Po lewej
@@ -1615,8 +1615,8 @@ STR_CONFIG_SETTING_SHOWFINANCES                                 :Pokazuj okno fi
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Jeśli włączone, to okienko finansowe pokazuje się na zakończenie każdego roku, by ułatwić śledzenie sytuacji finansowej firmy
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nowe polecenia są domyślnie 'bez zatrzymywania się': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalnie pojazd zatrzyma się na każdej stacji, przez którą przejeżdża. Po włączeniu tej opcji, pojazd przejedzie do swojego celu bez zatrzymywania się. Zwróć uwagę na to, że to ustawienie ma wpływ tylko na nowe polecenia. Pojedyncze polecenia mogą być ustalane bez względu na wartość tej opcji
-STR_CONFIG_SETTING_STOP_LOCATION                                :Rozkazy nowego pociągu kończą się domyślnie na {STRING} peronu
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Miejsce, w którym pociąg domyślnie zatrzyma się na peronie. 'Bliższy koniec' oznacza blisko kierunku przyjazdu, 'środek' oznacza środkową część peronu, a 'daleki koniec' oznacza daleko od kierunku przyjazdu. Zapamiętaj, że to ustawienie określa tylko domyślną wartość dla nowych rozkazów. Wszystkie rozkazy mogą być zmienione, bez względu na wartość ustawienia
+STR_CONFIG_SETTING_STOP_LOCATION                                :Nowe rozkazy pociągu kończą się domyślnie na {STRING} peronu
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Miejsce, w którym pociąg domyślnie zatrzyma się na peronie. 'Początek' oznacza blisko kierunku przyjazdu, 'środek' oznacza środkową część peronu, a 'koniec' oznacza daleko od kierunku przyjazdu. Zapamiętaj, że to ustawienie określa tylko domyślną wartość dla nowych poleceń. Wszystkie rozkazy mogą być zmienione, bez względu na wartość ustawienia
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :początku
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :środku
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :końcu
@@ -1704,7 +1704,7 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Określa ukszta
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Liczba przedsiębiorstw: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Określa liczbę przedsiębiorstw na początku i w trakcie gry
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksymalna odległość od krawędzi dla rafinerii: {STRING}
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerie są budowane tylko w pobliżu krawędzi map, to znaczy na wybrzeżach dla map wyspiarskichOgraniczenie jak daleko od krawędzi mapy mogą być budowane rafinerie i platformy wiertnicze. Na mapach wyspiarskich zapewnia to, że znajdą się blisko wybrzeża. Na mapach większych niż 256 pól, wartość ta jest skalowana w górę.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerie są budowane tylko w pobliżu krawędzi map, to znaczy na wybrzeżach dla map wyspiarskich. To ustawienie pozwala ograniczyć jak daleko od krawędzi mapy mogą być budowane rafinerie i platformy wiertnicze. Na mapach większych niż 256 pól, wartość ta jest skalowana w górę.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Wysokość granicy wiecznych śniegów: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wysokość linii śniegu w klimacie arktycznym. Poziom pokrywy śnieżnej wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Gładkość terenu: {STRING}
@@ -1804,7 +1804,7 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Wlącz obsług�
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Pokazuj wskaźniki załadunku: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Wybierz, czy wskaźnik załadunku pokazuje się nad ładowanym/rozładowywanym pojazdem
 STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Pokazuj rozkłady jazdy w tickach, a nie w dniach: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :W tabelach czasu, czas podróży pokaż w tickach gry zamiast w dniach
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :W rozkładach jazdy, czas podróży pokaż w tickach gry zamiast w dniach
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Pokazuj przyjazdy i odjazdy w rozkładach: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Wyświetlanie przewidywanego przyjazdu i odjazdu w rozkładach
 STR_CONFIG_SETTING_QUICKGOTO                                    :Szybkie tworzenie poleceń pojazdu: {STRING}
@@ -1894,7 +1894,7 @@ STR_CONFIG_SETTING_DISABLE_ELRAILS_HELPTEXT                     :Przy włączony
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN               :Przybycie pierwszego pojazdu do stacji gracza: {STRING}
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OWN_HELPTEXT      :Wyświetl wiadomość w gazecie kiedy pierwszy pojazd dojedzie do stacji gracza
 STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER             :Przybycie pierwszego pojazdu do stacji przeciwnika: {STRING}
-STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Wyświetl wiadomość w gazecie kiedy pierwszy pojazd dojedzie do stacji nowego konkurenta
+STR_CONFIG_SETTING_NEWS_ARRIVAL_FIRST_VEHICLE_OTHER_HELPTEXT    :Wyświetl wiadomość w gazecie kiedy pierwszy pojazd dojedzie do nowej stacji konkurenta
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :Wypadki / klęski: {STRING}
 STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS_HELPTEXT            :Wyświetl wiadomość w gazecie kiedy zdarzy się wypadek lub nastąpi katastrofa
 STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION                     :Informacja firmy: {STRING}
@@ -2201,7 +2201,7 @@ STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Wyjście
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Czy jesteś pewien, że chcesz skończyć tą grę?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Czy jesteś pewien, że chcesz skończyć tę grę?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy jesteś pewny, że chcesz opuścić ten scenariusz?
 
 # Cheat window
@@ -2835,18 +2835,18 @@ STR_ROAD_NAME_TRAM                                              :Tory tramwajowe
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Ukierunkowanie zajezdni samochodowej
-STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wybierz umiejscowienie zajezdni samochodowej
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Orientacja zajezdni tramwajowej
-STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wybierz ukierunkowanie zajezdni tramwajowej
+STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wybierz orientację zajezdni samochodowej
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}Ukierunkowanie zajezdni tramwajowej
+STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}Wybierz orientację zajezdni tramwajowej
 
 # Road vehicle station construction window
 STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Ukierunkowanie przystanku
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Wybierz ukierunkowanie przystanku
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Ukierunkowanie stacji załadunku ciężarówek
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Wybierz ukierunkowanie stacji załadunku ciężarówek
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Ukierunkowanie Przystanku Tramwajowego
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Ukierunkowanie przystanku tramwajowego
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Wybierz ukierunkowanie przystanku tramwajowego
-STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Ukierunkowanie Tramwajowej Stacji Towarowej
+STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Ukierunkowanie tramwajowej stacji załadunkowej
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Wybierz ukierunkowanie tramwajowej stacji załadunkowej
 
 # Waterways toolbar (last two for SE only)
@@ -3002,7 +3002,7 @@ STR_LAND_AREA_INFORMATION_OWNER_N_A                             :Brak
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Właściciel: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Wlasciciel drogi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Właściciel linii tramwajowej: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Wlaściciel linii kolejowej: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Właściciel linii kolejowej: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Lokalne władze: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Brak
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Współrzędne: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
@@ -3512,7 +3512,7 @@ STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Pokaż s
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Ocena transportu firmy:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Możliwe działania:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista rzeczy do zrobienia w tym mieście - klik po więcej detali
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Lista działań do wykonania w tym mieście - kliknięcie pokazuje szczegóły
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Wykonaj
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Wykonaj zaznaczone działanie z listy powyżej
 
@@ -3525,14 +3525,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Ufunduj nowe bu
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kup wyłączność transportową
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Daj łapówkę lokalnym władzom
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Rozpocznij małą kampanię reklamową aby zachęcić pasażerów i fabryki do Twoich usług.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Rozpocznij średnią kampanię reklamową aby zachęcić więcej pasażerów i fabryk do Twoich usług transportowych.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Rozpocznij dużą kampanię reklamową aby zachęcić więcej pasażerów i fabryk do Twoich usług transportowych.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Rozpocznij małą kampanię reklamową aby zachęcić trochę pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Rozpocznij średnią kampanię reklamową aby zachęcić więcej pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Rozpocznij dużą kampanię reklamową aby zachęcić mnóstwo pasażerów i fabryk do korzystania z Twoich usług transportowych.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Ufunduj remont sieci dróg. Powoduje zakłócenia w ruchu ulicznym do 6 miesięcy.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Zbuduj pomnik dla uczczenia Twojej firmy.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Ufundowanie nowych budynków komercyjnych w mieście.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Ufunduj nowe budynki komercyjne w mieście.{}Koszt: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Kup roczną wyłączność na prawa transportowe w mieście. Lokalne władze pozwolą korzystać tylko z usług Twojej firmy.{}Koszt: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom, powiększ swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Daj łapówkę lokalnym władzom. Powiększ swoją ocenę, ryzykując poważne kary w razie złapania.{}Koszt: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Cele firmy {COMPANY}
@@ -3638,7 +3638,7 @@ STR_STATION_VIEW_TO_ANY                                         :{RED}{CARGO_SHO
 STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHORT} za pośrednictwem dowolnej stacji
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} z tej stacji
 STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} zatrzymuje się na tej stacji
-STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} do tej stacji
+STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} na tę stację
 STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} non-stop
 
 STR_STATION_VIEW_GROUP_S_V_D                                    :Źródło-Przez-Cel
@@ -3677,7 +3677,7 @@ STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOIN
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centruj główny widok na posterunku. Ctrl+klik otwiera nowy podgląd na lokacji posterunku
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Zmień nazwę posterunku
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruj główny widok na pozycji boi. Ctrl+klik otwiera nowy podgląd na lokacji boi
-STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmień nazwę boji
+STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Zmień nazwę boi
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę pkt. orientacyjnego
 
@@ -3862,8 +3862,8 @@ STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Zmień n
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Zmień kolor zaznaczonej grupy
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Kliknij, aby ochronić tę grupę przed globalną zamianą pojazdów
 
-STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Skasuj Grupę
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Jesteś pewien, że chcesz skasować tą grupę i wszytskich jej członków?
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Skasuj grupę
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Jesteś pewien, że chcesz skasować tę grupę i wszystkich jej członków?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Dodaj poj. współdzielące
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Usuń wszystkie pojazdy
@@ -3877,15 +3877,15 @@ STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nowe pociągi
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nowe elektryczne pojazdy szynowe
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nowe pociągi elektryczne
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nowe pociągi jednoszynowe
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nowe pociągi Maglev
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nowy pojazd drogowy
-STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nowe pojazdy tramwajowe
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nowe tramwaje
 
 ############ range for vehicle availability starts
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nowe Pojazdy Szynowe
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nowe pojazdy szynowe
 STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Nowe pojazdy drogowe
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nowe statki
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nowy samolot
@@ -3983,10 +3983,10 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} pojazd{P "" y ów}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd/wagon przytrzymując lewy klawisz myszy aby go dodać/usunąć ze składu pociągu, prawy-klik na pociągu aby uzyskać informacje, przytrzymując ctrl dla podanych akcji stosuje zmiany do całego składu pociągu
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - prawy-klik na pojeździe po więcej informacji
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - prawy-kliknij aby uzyskać informacje o statku
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - prawy-klik na samolocie aby uzyskać informacje
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Pociągi - przeciągnij pojazd/wagon przytrzymując lewy klawisz myszy, aby go dodać/usunąć ze składu pociągu, kliknij na pociągu prawym aby uzyskać informacje. Przytrzymanie Ctrl dla podanych akcji stosuje zmiany do całego składu pociągu
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Pojazdy - prawy klik na pojeździe pozwala uzyskać więcej informacji
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Statki - prawy klik pozwala uzyskać informacje o statku
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Samolot - prawy klik na samolocie pozwala uzyskać informacje
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Przeciągnij tutaj pociąg aby go sprzedać
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Przeciągnij tutaj pojazd, aby go sprzedać
@@ -4061,7 +4061,7 @@ STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE.b                          :lokomotywę Mag
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :{G=m}pojazd
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.b                               :pojazd
-STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :pojazd tramwajowy
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramwaj
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :{G=m}samolot
 STR_ENGINE_PREVIEW_AIRCRAFT.b                                   :samolot
@@ -4108,7 +4108,7 @@ STR_REPLACE_ALL_RAILTYPE                                        :Wszystkie pojaz
 STR_REPLACE_ALL_ROADTYPE                                        :Wszystkie pojazdy drogowe
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz dla jakiego typu torów chcesz zastąpić lokomotywy
-STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Wybierz dla jakiego typu dróg chcesz zastąpić silniki
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Wybierz jakiego typu pojazdy chcesz zastąpić
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyświetla typ pojazdu na jaki będzie zastąpiony pojazd zaznaczony po lewej stronie
 STR_REPLACE_RAIL_VEHICLES                                       :Kolej
 STR_REPLACE_ELRAIL_VEHICLES                                     :Kolej elektryczna
@@ -4116,7 +4116,7 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Kolej jednoszyn
 STR_REPLACE_MAGLEV_VEHICLES                                     :Kolej Maglev
 
 STR_REPLACE_ROAD_VEHICLES                                       :Pojazdy drogowe
-STR_REPLACE_TRAM_VEHICLES                                       :Pojazdy tramwajowe
+STR_REPLACE_TRAM_VEHICLES                                       :Tramwaje
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usunięcie wagonów: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje długość pociągu poprzez usuwanie wagonów (począwszy od początku), jeśli wymiana lokomotywy spowoduje wydłużenie pociągu
@@ -4129,10 +4129,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centruj 
 STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centruj główny widok na pozycji statku. Ctrl+klik by podążać za statkiem w głównym oknie
 STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centruj główny widok na pozycji samolotu. Ctrl+klik by podążać za samolotem w głównym oknie
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Wyślij pociąg do warsztatów
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Wyślij pojazd do zajezdni
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Wyślij statek do stoczni
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Wyślij samolot do hangaru
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Wyślij pociąg do warsztatów. Ctrl - tylko serwis
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Wyślij pojazd do zajezdni. Ctrl - tylko serwis
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Wyślij statek do stoczni. Ctrl - tylko serwis
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Wyślij samolot do hangaru. Ctrl - tylko serwis
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Spowoduje zakup kopii pociągu wraz ze wszystkimi wagonami. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik tylko pokazuje szacowany koszt
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Spowoduje zakup kopii pojazdu drogowego. Ctrl+klik spowoduje współdzielenie poleceń. Shift+klik tylko pokazuje szacowany koszt
@@ -4155,7 +4155,7 @@ STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Pokaż p
 STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Pokaż polecenia samolotu. Ctrl+klik pokazuje harmonogram lotów samolotu.
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Pokaż szczegóły pociągu
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Pokaż detale pojazdu
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Pokaż szczegóły pojazdu
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Pokaż szczegóły statku
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Pokaż szczegóły samolotu
 
@@ -4366,7 +4366,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Idź do najbli�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Leć do najbliższego hangaru
 STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
 STR_ORDER_SHARE                                                 :Współdzielenie poleceń
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawia polecenia stacji na 'pełny załadunek dowolnego towaru', polecenia pkt. orientacyjnych na 'bez zatrzymywania się', a polecenia zajezdni na 'serwisuj'. 'Współdzielenie poleceń' lub Ctrl pozwala na dzielenie poleceń z wybranym pojazdem. Kliknięcie pojazdu kopiuje jego polecenia. Polecenie zajezdni wyłącza automatyczne serwisowanie pojazdu
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem. Ctrl ustawi polecenie stacji na 'pełny załadunek dowolnego towaru', pkt. orientacyjnego na 'bez zatrzymywania się', a zajezdni na 'serwisuj'. Kliknięcie innego pojazdu kopiuje jego polecenia, ctrl+klik (lub 'Współdzielenie poleceń') pozwala na dzielenie z nim poleceń. Polecenie zajezdni wyłącza automatyczne serwisowanie pojazdu
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Pokaż wszystkie pojazdy współdzielące te polecenia
 
@@ -4583,11 +4583,11 @@ STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :Game Script
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Zamknij
 STR_AI_SETTINGS_RESET                                           :{BLACK}Resetuj
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Liczba dni, aby aktywować tą SI po uruchomieniu poprzedniej (zwiększ lub zmniejsz): {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Liczba dni do aktywowania tej SI po uruchomieniu poprzedniej (zwiększ lub zmniejsz): {ORANGE}{STRING}
 
 
 # Textfile window
-STR_TEXTFILE_README_CAPTION                                     :{WHITE}'CzytajTo' dla {STRING} {STRING}
+STR_TEXTFILE_README_CAPTION                                     :{WHITE}Plik 'ReadMe' dla {STRING} {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}Zmiany w {STRING} dla {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}Licencja dla {STRING} {STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Zawijaj tekst
@@ -4681,7 +4681,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... niew
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... już zbudowano
 STR_ERROR_OWNED_BY                                              :{WHITE}... w posiadaniu {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... teren jest własnością innej firmy
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... osiągnięto limit terraformowania
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... osiągnięto limit kształtowania terenu
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... osiągnięto limit czyszczenia pól
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... wykorzystano limit sadzenia drzew
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nazwa nie może się powtarzać

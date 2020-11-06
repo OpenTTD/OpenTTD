@@ -784,8 +784,8 @@ STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Zobrazi�
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Zobraziť dopravné trasy na mape
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Zobraziť vegetáciu na mape
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Zobraziť vlastníkov pozemkov na mape
-STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Kliknite na typ priemyslu pre zmenu jeho zobrazenia. Ctrl+Klik skryje všetky priemysly okrem vybraného. Ctrl+Klik znova zobrazí všetky priemysly
-STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Klikni na spoločnosť pre prepnutie zobrazenia jej majetku. Ctrl+Klik skryje všetky spoločnosti okrem vybranej. Ctrl+Klik znova zase zobrazí všetky spoložnosti.
+STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Kliknite na typ priemyslu pre prepnutie jeho zobrazenia. Ctrl+klik skryje všetky druhy priemyslu okrem určeného. Opätovný Ctrl+klik zobrazí všetky druhy priemyslu
+STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Kliknite na spoločnosť pre prepnutie zobrazenia jej majetku. Ctrl+klik skryje všetky spoločnosti okrem vybranej. Opätovný Ctrl+klik zobrazí všetky spoločnosti
 STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Kliknite na náklad pre prepnutie jeho zobrazenia. Ctrl+klik skryje všetky druhy nákladu okrem určeného. Opätovný Ctrl+klik zobrazí všetky druhy nákladu
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Cesty
@@ -800,15 +800,15 @@ STR_SMALLMAP_LEGENDA_AIRCRAFT                                   :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_TRANSPORT_ROUTES                           :{TINY_FONT}{BLACK}Dopravné trasy
 STR_SMALLMAP_LEGENDA_FOREST                                     :{TINY_FONT}{BLACK}Les
 STR_SMALLMAP_LEGENDA_RAILROAD_STATION                           :{TINY_FONT}{BLACK}Železničná stanica
-STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Nakladacia rampa
-STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Autobusová stanica
-STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Letisko
+STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLACK}Vykládka
+STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Autobusová zastávka
+STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Letisko/Heliport
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Prístav
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Nerovný terén
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Trávnatý terén
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Holý terén
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Polia
-STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Lesy
+STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Stromy
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Skaly
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Voda
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Bez vlastníka
@@ -823,14 +823,14 @@ STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STR
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
-STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}zakázať všetky
-STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Povolit vsetky
+STR_SMALLMAP_DISABLE_ALL                                        :{BLACK}Skryť všetko
+STR_SMALLMAP_ENABLE_ALL                                         :{BLACK}Zobraziť všetko
 STR_SMALLMAP_SHOW_HEIGHT                                        :{BLACK}Ukázať výšku
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_INDUSTRIES                     :{BLACK}Nezobraziť žiadny priemysel na mape
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Zobraziť všetok priemysel na mape
-STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Prepnúť zobrazenie výškovej mapy
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nezobrazovať žiadný majetok spoločnosti na mape
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Zobraziť celý majetok spoločnosti na mape
+STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Prepnúť zobrazenie vrstevníc na mape
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}Nezobraziť žiadny majetok spoločností na mape
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Zobraziť majetok všetkých spoločností na mape
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Nezobraziť žiadny náklad na mape
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Zobraziť všetok náklad na mape
 
@@ -1179,7 +1179,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Nastaven
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrovací reťazec:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Rozšíriť všetko
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zbaliť všetky
-STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nie je potrebné vysvetlenie)
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nie je dostupné vysvetlenie)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Pôvodná hodnota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Nastavenie typu: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Nastavenia klienta (neuchovávané v uložených hrách; ovplyvní všetky hry)
@@ -1209,8 +1209,8 @@ STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Zobrazen
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Zobrazenie všetkých výsledkov vyhľadávania nastavením{}{SILVER}kategórie {BLACK}na {WHITE}{STRING} {BLACK}a {SILVER}typu {BLACK}na {WHITE}Všetky typy nastavenia
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Žiadne -
 
-STR_CONFIG_SETTING_OFF                                          :nie
-STR_CONFIG_SETTING_ON                                           :áno
+STR_CONFIG_SETTING_OFF                                          :Nie
+STR_CONFIG_SETTING_ON                                           :Áno
 STR_CONFIG_SETTING_DISABLED                                     :zakázané
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Vypnutý
@@ -1294,8 +1294,8 @@ STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Rovné územie 
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Cena voľného priestoru vedľa priemyslu. Týmto sa zabezpečí voľné miesto pre výstavbu ciest atď.
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :Povoliť viac rovnakých závodov pri jednom meste: {STRING}
 STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Normálne, mesto nechce viac ako jeden priemysel každého typu. Týmto nastavením bude možné niekoľko rovnakých priemyslov v meste
-STR_CONFIG_SETTING_SIGNALSIDE                                   :Ukáž signály (semafory): {STRING}
-STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Zvolte stranu trate na ktorej sa budú umiestňovať semafory
+STR_CONFIG_SETTING_SIGNALSIDE                                   :Zobrazovať návestidlá: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Zvoľte stranu trate na ktorej sa budú umiestňovať návestidlá
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vľavo
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na strane kde sa jazdí
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Vpravo
@@ -1629,25 +1629,25 @@ STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimálny vek 
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Určuje minimálny vek spoločnosti na to, aby od nej mohli ostatné spoločnosti kupovať a predavať podiely.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentáž profitu na zaplatenie podávacieho systému: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Percento príjmov dať na strednú ´nohu´ vo feeder systémoch, získate väčšiu kontrolu nad príjmamy
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Pri ťahaní, umiestni semafóry každý: {STRING} diel
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Nastav vzdialenosť ako ďaleko budú umiestnené semafóry po prekážke na trati (most/tunel/rozcestie) pri ťahaní.
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} diel(ov)
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Pri ťahaní, zachovaj fixnú medzeru medzi semafórmi: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Zvoľte ako sa zachová umiestňovanie semafórov pri CTRL+posun. Ak je vypnuté, semafóry sú umiestnené okolo tunelov alebo mostov aby sa zabránilo dlhým úsekom bez signalizácie. Ak je zapnuité, semafóry sú umiestňované každých N dielov čím sa umožní lepšie rozloženie na paralelných tratiach.
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automaticky stavať semafóry namiesto signálov pred rokom: {STRING}
-STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Zvoľte rok od ktorého sa budú používať elekrické semafóry na tratiach. Pred týmto rokom sa budú používať staré ne-elektrické návestidlá. Funkcionalita je ale stále rovnaká len vzhľad je iný.
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Zapnúť grafické rozhranie stavby signálov: {STRING}
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Zobrazí okno s možnosťou výberu semafóru namiesto rotačnej voľby klikaním pomocou CTRL.
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Štandardne budovaný typ signálov: {STRING}
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Prednastavený typ semafórov na použitie.
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Blokové signály
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Obojsmerné signály
-STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Jednosmerné signály
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Prepínanie medzi typmi signálov: {STRING}
-STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Zvoľte ktoré semafóry budú použité v rotačnej voľbe pomocou CTRL+klik na ikonu stavania semafórov.
-STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :len blokové
-STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :len obojsmerné
-STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :všetky
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Pri ťahaní, umiestni návestidlo každé: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Nastaviť vzdialenosť návestidiel, akou budú umiestnené na trati po najbližšiu prekážku (návestidlo, križovatku), pri stavbe ťahaním
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} políč{P ko ka ok}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Pri ťahaní, zachovať určenú medzeru medzi návestidlami: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Zvoliť ako sa zachová umiestňovanie návestidiel pri Ctrl+ťahaní. Ak je vypnuté, návestidlá sú umiestnené okolo tunelov alebo mostov aby sa zabránilo dlhým úsekom bez návestidiel. Ak je zapnuté, návestidlá sú umiestňované každých n-políčok, čím sa umožní lepšie rozloženie na paralelných tratiach
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automaticky stavať mechanické návestidlá namiesto elektrických pred rokom: {STRING}
+STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Zvoľte rok od ktorého sa budú používať elekrické návestidlá na tratiach. Pred týmto rokom sa budú používať mechanické návestidlá (funkcionalita je ale stále rovnaká, iba vzhľad je rozličný)
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Povoliť grafické rozhranie výberu návestidla: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :Zobraziť okno s možnosťou výberu návestidla, namiesto prepínania typu návestidla Ctrl-klikaním na umiestnené návestidlo
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :Predvolene budovaný typ návestidiel: {STRING}
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :Predvolený typ návestidiel na použitie
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_NORMAL                        :Obyčajné návestidlá
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBS                           :Trasové návestidlá
+STR_CONFIG_SETTING_DEFAULT_SIGNAL_PBSOWAY                       :Jednosmerné trasové návestidlá
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES                           :Prepínanie medzi typmi návestidiel: {STRING}
+STR_CONFIG_SETTING_CYCLE_SIGNAL_TYPES_HELPTEXT                  :Výber návestidiel použitých v zámene pomocou Ctrl+kliku na návestidlo počas umiestňovania návestidiel
+STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Iba blokové návestidlá
+STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Iba trasové návestidlá
+STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Všetky
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Návrh ciest pre nové mestá: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Rozloženie cestnej siete v mestách.
@@ -1807,8 +1807,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Algoritmus hľa
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Vyhľadávač trasy pre cestné vozidlá
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Algoritmus hľadania cesty pre lode: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Vyhľadávač trasy pre lode
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatické obrátenie na semaforoch: {STRING}
-STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Umožniť vlakom otočiť sa na semafóroch, ak tam čakajú dlhý čas.
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Automatické obrátenie na návestidlách: {STRING}
+STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Povoliť vlakom otočiť sa na návestidlách, ak tam čakajú dlhý čas
 
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Zmeniť hodnotu nastavenia
 
@@ -2462,22 +2462,22 @@ STR_STATION_CLASS_WAYP                                          :Smerove body
 
 # Signal window
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Výber návestidla
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Štandardný signál (návestidlo){}Signály sú nutné preto aby nedochádzalo ku zrážke vlakov na trati kde jazdí viac ako 1 vlak
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vstupný signál (semafór){}Zelená svieti dovtedy, kým v nasledujúcom úseku trate je aspoň 1 zelený výstupný signál. Inak ukazuje červenú.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výstupný signál (semafór){}Chová sa rovnako ako štandardný signál, ale je nevyhnutné nastaviť správnu farbu pre vstupné a kombinované pre-signály
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinovaný signál (semafór){}Slúži zároveň ako vstupný aj výstupný signál, Tým umožnuje postaviť "stromovú" hierarchiu signálov.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Smerový signál (návestidlo){}Smerový signál umožní vstúpiť viacerým vlakom na trať z oboch strán, iba ak vlak dokáže bezpečne zastaviť pred návestidlom. Smerový signál môže byť na jednej koľaji proti sebe.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednosmerný signál (návestidlo){}Jednosmerný signál umožňuje vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže bezpečne zastaviť pred návestidlom. Jednosmerné signály nemôžu byť na jednej koľaji proti sebe
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Štandardný signál (elektrický){}Základný typ signálu, dovolí len 1 vlak v jednom bloku v rovnakom čase
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vstupný signál (elektrický){}Zelená tak dlho, kým je aspoň 1 zelený výstupný signál na nasledujúcom úseku trate. Inak ukazuje červenú
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výstupný signál (elektrický){}Funguje rovnako ako štandardný signál, je však nevyhnutné určenie správnej farby na vstupných a kombinovaných signáloch
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinovaný signál (elektrický){}Funguje zároveň ako vstupný aj výstupný signál, Tým umožňuje budovať veľké "stromové" hierarchie signálov
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Obojstranné signály (elektrické){}Obojstranné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Obojstranné signály môžu byť postavené vedľa seba zadnou stranou
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednosmerné signály (elektrické){}Jednosmerné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Jednosmerné signály nemôžu byť postavené vedľa zadnou stranou
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zmena signálu{}Po vybratí, kliknutím na existujúci signál dochádza k zmene na vybraný typ signálu a varianty, Ctrl+klik prepne existujúcu variantu. Shift+klik zobrazí odhad nákladov na zmenu
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Hustota signálov pri stavbe ťahaním
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Znižit hustotu signálov
-STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zvýšit hustotu signálov
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Obyčajné návestidlo (mechanické){}Základný typ návestidla, povolí iba jeden vlak v jednom úseku v rovnakom čase
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Vstupné návestidlo (mechanické){}Zelená tak dlho, kým je aspoň jedno zelené výstupné návestidlo na nasledujúcom úseku trate. Inak ukazuje červenú
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Výstupné návestidlo (mechanické){}Funguje rovnako ako obyčajné návestidlo, je však nevyhnutné na určenie správnej farby na vstupných a kombinovaných návestidlách umiestnených pred ním
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinované návestidlo (mechanické){}Funguje zároveň ako vstupné aj výstupné návestidlo. Tým umožňuje budovať veľké "stromové" hierarchie návestidiel
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Trasové návestidlo (mechanické){}Trasové návestidlo povolí viac vlakov v jednom úseku súčasne, ak má vlak voľnú trasu, ktorú si rezervuje. Bežné trasové návestidla môžu vlaky prechádzať aj opačným smerom
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Jednosmerné trasové návestidlo (mechanické){}Trasové návestidlo povolí viac vlakov v jednom úseku súčasne, ak má vlak voľnú trasu, ktorú si rezervuje. Jednosmerné trasové návestidla môžu vlaky prechádzať iba z prednej strany
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TOOLTIP                          :{BLACK}Obyčajné návestidlo (elektrické){}Základný typ návestidla, povolí iba jeden vlak v jednom úseku v rovnakom čase
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TOOLTIP                         :{BLACK}Vstupné návestidlo (elektrické){}Zelená tak dlho, kým je aspoň jedno zelené výstupné návestidlo na nasledujúcom úseku trate. Inak ukazuje červenú
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Výstupné návestidlo (elektrické){}Funguje rovnako ako obyčajné návestidlo, je však nevyhnutné na určenie správnej farby na vstupných a kombinovaných návestidlách umiestnených pred ním
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinované návestidlo (elektrické){}Funguje zároveň ako vstupné aj výstupné návestidlo. Tým umožňuje budovať veľké "stromové" hierarchie návestidiel
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Trasové návestidlo (elektrické){}Trasové návestidlo povolí viac vlakov v jednom úseku súčasne, ak má vlak voľnú trasu, ktorú si rezervuje. Bežné trasové návestidla môžu vlaky prechádzať aj opačným smerom
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Jednosmerné trasové návestidlo (elektrické){}Trasové návestidlo povolí viac vlakov v jednom úseku súčasne, ak má vlak voľnú trasu, ktorú si rezervuje. Jednosmerné trasové návestidla môžu vlaky prechádzať iba z prednej strany
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Zameniť návestidlo{}Po vybratí, kliknutím na existujúce návestidlo dochádza k zámene na vybraný typ a variantu návestidla. Ctrl+klik prepne existujúcu variantu. Shift+klik zobrazí odhadovanú cenu zámeny
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Hustota návestidiel pri stavbe ťahaním
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Znižit hustotu návestidiel
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Zvýšit hustotu návestidiel
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Vyber železničný most
@@ -2720,28 +2720,28 @@ STR_LAI_CLEAR_DESCRIPTION_SNOW_COVERED_LAND                     :Zasnežený ter
 STR_LAI_CLEAR_DESCRIPTION_DESERT                                :Púšť
 
 STR_LAI_RAIL_DESCRIPTION_TRACK                                  :Železničná trať
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Železnica trať so signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Železnica trať s pre-signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Železnica trať s exit-signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Železnica trať s combo-signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Železnica trať s path signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železnica trať s jednosmernými signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železnica trať s block a pre-signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Železnica trať s block a exit-signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Železnica trať s block a combo-signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Železnica trať s BLOCK a PATH signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Železnica trať s block a jednosmernými signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Železnica trať s pre- and exit-signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Železnica trať s pre- a combo-signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Železnica trať s pre- a path signálmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Železnica trať s pred- a jednosmernými semafórmy
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Železnica trať s výstupnémi a kombinovanými semafórmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Železnica trať s výstupnými semafórmi a semafórmi cesty
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Železnica trať s výstupnými a jednosmernými semafórmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Železnica trať s kombinovanými semafórmi a semafórmi cesty
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Železnica trať s kombinovanými a jednosmernými semafórmi
-STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železnica trať so semáfórmi cesty a jednosmernými
-STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Železnica vlakové depo
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_SIGNALS              :Železničná trať s obyčajnými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRESIGNALS                  :Železničná trať so vstupnými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXITSIGNALS                 :Železničná trať s výstupnými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBOSIGNALS                :Železničná trať s kombinovanými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBSSIGNALS                  :Železničná trať s trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NOENTRYSIGNALS              :Železničná trať s jednosmernými trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PRESIGNALS           :Železničná trať s obyčajnými a vstupnými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_EXITSIGNALS          :Železničná trať s obyčajnými a výstupnými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_COMBOSIGNALS         :Železničná trať s obyčajnými a kombinovanými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_PBSSIGNALS           :Železničná trať s obyčajnými a trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_NORMAL_NOENTRYSIGNALS       :Železničná trať s obyčajnými a jednosmernými trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_EXITSIGNALS             :Železničná trať so vstupnými a výstupnými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_COMBOSIGNALS            :Železničná trať so vstupnými a kombinovanými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_PBSSIGNALS              :Železničná trať so vstupnými a trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PRE_NOENTRYSIGNALS          :Železničná trať so vstupnými a jednosmernými trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_COMBOSIGNALS           :Železničná trať s výstupnými a kombinovanými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_PBSSIGNALS             :Železničná trať s výstupnými a trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_EXIT_NOENTRYSIGNALS         :Železničná trať s výstupnými a jednosmernými trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_PBSSIGNALS            :Železničná trať s kombinovanými a trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_COMBO_NOENTRYSIGNALS        :Železničná trať s kombinovanými a jednosmernými trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRACK_WITH_PBS_NOENTRYSIGNALS          :Železničná trať s trasovými a jednosmernými trasovými návestidlami
+STR_LAI_RAIL_DESCRIPTION_TRAIN_DEPOT                            :Železničné vlakové depo
 
 STR_LAI_ROAD_DESCRIPTION_ROAD                                   :Cesta
 STR_LAI_ROAD_DESCRIPTION_ROAD_WITH_STREETLIGHTS                 :Cesta s lampami
@@ -3196,7 +3196,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Premenovať mes
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Miestna správa {TOWN}
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Oblasť
-STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Zobraziť oblasť miestnej správy mesta
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Zobraziť oblasť pôsobenia miestnej správy mesta
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Hodnotenie dopravných spoločností:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Dostupné činnosti:
@@ -3452,7 +3452,7 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Hľadám
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} - Infraštruktúra
 STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT                       :{GOLD}Políčka železnice:
-STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Semafóry
+STR_COMPANY_INFRASTRUCTURE_VIEW_SIGNALS                         :{WHITE}Návestidlá
 STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT                       :{GOLD}Políčka cesty:
 STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT                       :{GOLD}Električkové políčka:
 STR_COMPANY_INFRASTRUCTURE_VIEW_WATER_SECT                      :{GOLD}Vodné políčka:
@@ -3821,7 +3821,7 @@ STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Zakúpi 
 STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Zakúpi kópiu lode. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Zakúpi kópiu lietadla. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Povoliť vlaku pokračovať v ceste bez čakania na zelenú
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Prinútiť vlak pokračovať cez návestidlo bez čakania na zelenú
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Prestavať vlak na iný druh nákladu
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Prestavať vozidlo na prepravu iný typ nákladu
@@ -4294,8 +4294,8 @@ STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED
 STR_INCOME_FLOAT_COST                                           :{RED}Cena: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Zisk: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Zisk: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Prekladka: {CURRENCY_LONG}
-STR_FEEDER                                                      :{YELLOW}Prekladka: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Prekládka: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Prekládka: {CURRENCY_LONG}
 STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {GREEN}Zisk: {CURRENCY_LONG}
 STR_FEEDER_INCOME                                               :{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {GREEN}Zisk: {CURRENCY_LONG}
 STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Prevod: {CURRENCY_LONG}{WHITE} / {RED}Náklady: {CURRENCY_LONG}
@@ -4525,19 +4525,19 @@ STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(finančný lim
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemožná kombinácia trate
-STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najprv je treba odstrániť semafory
+STR_ERROR_MUST_REMOVE_SIGNALS_FIRST                             :{WHITE}Najskôr je potrebné odstrániť návestidlá
 STR_ERROR_NO_SUITABLE_RAILROAD_TRACK                            :{WHITE}Žiadne použiteľné železničné koľaje
 STR_ERROR_MUST_REMOVE_RAILROAD_TRACK                            :{WHITE}Musíš najskôr odstrániť železničné koľaje
 STR_ERROR_CROSSING_ON_ONEWAY_ROAD                               :{WHITE}Cesta je jednosmerná alebo blokovaná.
 STR_ERROR_CROSSING_DISALLOWED_RAIL                              :{WHITE}Nie sú povolené priecestia pre tento typ železnice
 STR_ERROR_CROSSING_DISALLOWED_ROAD                              :{WHITE}Nie sú povolené priecestia pre tento typ cesty
-STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nemôžeš tu stavať návestidlá...
+STR_ERROR_CAN_T_BUILD_SIGNALS_HERE                              :{WHITE}Nemôžeš tu umiestniť návestidlá...
 STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK                            :{WHITE}Nemôžeš tu stavať železničné koľaje...
 STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}Nemôžeš tu odstrániť železničné koľaje...
-STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nemôžeš tu odstrániť semafory...
-STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Nie je možné zmeniť typ semaforov...
+STR_ERROR_CAN_T_REMOVE_SIGNALS_FROM                             :{WHITE}Nemôžeš tu odstrániť návestidlá...
+STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                     :{WHITE}Tu nie je možné zameniť návestidlá...
 STR_ERROR_THERE_IS_NO_RAILROAD_TRACK                            :{WHITE}...nenašli sa železničné koľaje
-STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nenašlo sa návestidlo
+STR_ERROR_THERE_ARE_NO_SIGNALS                                  :{WHITE}... nenašli sa návestidlá
 
 STR_ERROR_CAN_T_CONVERT_RAIL                                    :{WHITE}Nemôžeš tu konvertovať železnicu...
 
@@ -4669,7 +4669,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Zatiaľ 
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Začnite novú hru po {DATE_SHORT} alebo použite NewGRF, ktoré zabezpečí vozidlá v skoršom čase
 
 # Specific vehicle errors
-STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemôžeš pustiť vlak na červenú keď hrozí nebezpečenstvo...
+STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemôžeš nechať vlak prejsť cez návestidlo keď hrozí nebezpečenstvo...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nemožno zmeniť smer vlaku...
 STR_ERROR_TRAIN_START_NO_POWER                                  :Vlak nemá energiu
 
