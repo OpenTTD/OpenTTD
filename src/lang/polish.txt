@@ -2538,7 +2538,7 @@ STR_NETWORK_ERROR_NOSERVER                                      :{WHITE}Nie moż
 STR_NETWORK_ERROR_NOCONNECTION                                  :{WHITE}Serwer nie odpowiada
 STR_NETWORK_ERROR_NEWGRF_MISMATCH                               :{WHITE}Nie można było połączyć z powodu niezgodności NewGRF
 STR_NETWORK_ERROR_DESYNC                                        :{WHITE}Błąd synchronizacji gry sieciowej.
-STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Połączenie utracone w grze sieciowej.
+STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Utracono połączenie z grą sieciową.
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nie można wczytać zapisanej gry z serwera.
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nie można uruchomić serwera
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nie można połączyć

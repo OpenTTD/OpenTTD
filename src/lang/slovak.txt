@@ -444,7 +444,7 @@ STR_SETTINGS_MENU_GAME_OPTIONS                                  :Možnosti hry
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Nastavenia
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Nastavenia AI/skriptu
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Nastavenia NewGRF
-STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenie priehľadnosti
+STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Nastavenia priehľadnosti
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Zobraziť názvy miest
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Zobraziť názvy staníc
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Zobraziť navigačné body
@@ -452,8 +452,8 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Zobraziť popis
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :Značky a mená konkurentov zobrazené
 STR_SETTINGS_MENU_FULL_ANIMATION                                :Plná animácia
 STR_SETTINGS_MENU_FULL_DETAIL                                   :Plné detaily
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Priesvitné budovy
-STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Priesvitné názvy
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :Priehľadné budovy
+STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :Priehľadné nápisy
 ############ range ends here
 
 ############ range for file menu starts
@@ -2373,17 +2373,17 @@ STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Áno, st
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nie, ukončiť OpenTTD
 
 # Transparency settings window
-STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavenie priehľadnosti
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Prepnúť priehľadnosť názvov staníc. CTRL+klik uzamkne nastavenie
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Prepnúť priehľadnosť stromov. CTRL+klik uzamkne nastavenie
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Prepnúť priehľadnosť domov. CTRL+klik uzamkne nastavenie
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Prepnúť priehľadnosť priemyslu. CTRL+klik uzamkne nastavenie
+STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavenia priehľadnosti
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Prepnúť priehľadnosť nápisov. Ctrl+klik uzamkne nastavenie
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Prepnúť priehľadnosť stromov. Ctrl+klik uzamkne nastavenie
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Prepnúť priehľadnosť domov. Ctrl+klik uzamkne nastavenie
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Prepnúť priehľadnosť priemyslu. Ctrl+klik uzamkne nastavenie
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Prepnúť priehľadnosť stavieb ako stanice, depá, smerové body. Ctrl+klik uzamkne nastavenie
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Prepínať priehľadnosť mostov. CTRL+klik uzamkne nastavenie
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Prepnúť priehľadnosť stavieb ako sú majáky a antény. CTRL+klik uzamkne nastavenie
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Zmena priehľadnosti trakčného vedenia. CTRL+klik uzamkne nastavenie
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Prepnúť zobrazenie ukazateľov nakladania. CTRL+klik uzamkne nastavenie
-STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nastavit objekty neviditelné namiesto priehladných
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Prepnúť priehľadnosť mostov. Ctrl+klik uzamkne nastavenie
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Prepnúť priehľadnosť objektov ako sú majáky a vysielače. Ctrl+klik uzamkne nastavenie
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Prepnúť priehľadnosť trakčného vedenia. Ctrl+klik uzamkne nastavenie
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Prepnúť priehľadnosť ukazateľov nakladania. Ctrl+klik uzamkne nastavenie
+STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Nastaviť objekty neviditeľné namiesto priehľadných
 
 # Linkgraph legend window
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Legenda k smerovaniu nákladu
@@ -2424,10 +2424,10 @@ STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Postavi�
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}Postaviť vlakové depo (na nákup a opravu vlakov). Shift zobrazí odhadovanú cenu
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}Umiestniť smerový bod. Ctrl umožní spájanie smerových bodov. Shift zobrazí odhadovanú cenu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}Postaviť železničnú stanicu. Ctrl umožní spájanie staníc. Shift zobrazí odhadovanú cenu
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Umiestniť železničné signály. Ctrl prepína mechanické/svetelné signály{}Ťahanie umiestní signály na rovnom úseku trate. Ctrl umiestní signály až po najbližšiu križovatku alebo signál{}Ctrl+klik prepína otvorenie okna na výber signálu. Shift zobrazí odhadovanú cenu
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}Umiestniť železničné návestidlá. Ctrl prepína mechanické/svetelné návestidlá{}Ťahanie umiestní návestidlá na rovnom úseku trate. Ctrl umiestní návestidlá až po najbližšiu križovatku alebo návestidlo{}Ctrl+klik prepína otvorenie okna na výber návestidla. Shift zobrazí odhadovanú cenu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_BRIDGE                  :{BLACK}Postaviť železničný most. Shift zobrazí odhadovanú cenu
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TUNNEL                  :{BLACK}Postaviť železničný tunel. Shift zobrazí odhadovanú cenu
-STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Prepnúť na odstránenie železničnej trate, signálov, smerových bodov a staníc. Ctrl odstráni aj koľaj smerového bodu a stanice
+STR_RAIL_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR                :{BLACK}Prepnúť na odstránenie železničnej trate, návestidiel, smerových bodov a staníc. Ctrl odstráni aj koľaj smerového bodu a stanice
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}Konvertovať/vylepšiť typ železnice. Shift zobrazí odhadovanú cenu
 
 STR_RAIL_NAME_RAILROAD                                          :Železnica
@@ -2591,11 +2591,11 @@ STR_LANDSCAPING_LEVEL_LAND_TOOLTIP                              :{BLACK}Vyrovna�
 STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Zakúpiť pozemok pre budúce použitie. Shift zobrazí odhadovanú cenu
 
 # Object construction window
-STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Výber objektov
-STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vybrať objekt na postavenie
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vyberte triedu objektu vybudovaniu
+STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Výber objektu
+STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vyberte objekt na vybudovanie. Shift zobrazí odhadovanú cenu
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vyberte triedu objektu na vybudovanie
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Náhľad objektu
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmery: {GOLD}{NUM} x {NUM} polí
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmery: {GOLD}{NUM} x {NUM} políčok
 
 STR_OBJECT_CLASS_LTHS                                           :Majáky
 STR_OBJECT_CLASS_TRNS                                           :Vysielače
@@ -3059,16 +3059,16 @@ STR_SPRITE_ALIGNER_GOTO_BUTTON                                  :{BLACK}Prejsť 
 STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Prejsť na daný sprite. Ak nie je normálny, prejsť na najbližší normálny sprite
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Predchádzajúci sprite
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Prejsť na predchádzajúci normálny sprite, vynechajúc akékoľvek falošné/prefarbené sprites a sprites fontu použité na začiatku
-STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Reprezentuje aktuálne zvolený objekt. Zarovnanie je ignorované pri vykresľovaní objektu
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Pri hýbaní objektom, sa menia X a Y súradnice
+STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Reprezentuje aktuálne zvolený sprite. Zarovnanie je ignorované pri vykresľovaní sprite-u
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Posúvajte sprite, so súčasnou zmenou X a Y súradnice. Ctrl+klik posunie sprite o osem jednotiek súčasne
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Resetovať relatívne
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Resetovať aktuálne relatívne posunutie
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (absolútne)
 STR_SPRITE_ALIGNER_OFFSETS_REL                                  :{BLACK}X offset: {NUM}, Y offset: {NUM} (relatívne)
-STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vybrať objekt
-STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Vyberte objekt z obrazovky
+STR_SPRITE_ALIGNER_PICKER_BUTTON                                :{BLACK}Vybrať sprite
+STR_SPRITE_ALIGNER_PICKER_TOOLTIP                               :{BLACK}Vyberte sprite z obrazovky
 
-STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ísť na objekt
+STR_SPRITE_ALIGNER_GOTO_CAPTION                                 :{WHITE}Ísť na sprite
 
 # NewGRF (self) generated warnings/errors
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
@@ -3396,7 +3396,7 @@ STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENC
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Požičať {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Zvýšiť veľkosť úveru. Crtl+klik požičia koľko sa dá
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Splatiť {CURRENCY_LONG}
-STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Splatiť časť úveru
+STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Splatiť časť úveru. Ctrl+klik splatí koľko sa dá
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infraštruktúra
 
 # Company view
@@ -3876,7 +3876,7 @@ STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Meno
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Pomenovať vlak
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Premenovať cestné vozidlo
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Pomenovať loď
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Pomenovat lietadlo
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Pomenovať lietadlo
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Prevádzkové náklady: {LTBLUE}{CURRENCY_LONG}/rok
 # The next two need to stay in this order
