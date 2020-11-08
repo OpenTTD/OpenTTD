@@ -409,7 +409,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Výstavb
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Otvoriť panel nástrojov pre úpravy terénu, výsadbu stromov, a pod.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Zobraziť okno zvuku a hudby
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Zobraziť poslednú správu/novinku, nastavenia správ
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informácie o pozemku, konzola, AI ladenie, screenshoty, o OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Informácie o pozemku, konzola, ladenie skriptu, snímky obrazovky, o OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Prepnúť panely nástrojov
 
 # Extra tooltips for the scenario editor toolbar
@@ -1301,7 +1301,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Na strane kde s
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Vpravo
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Zobraziť rozpočet na konci roku: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Ak zapnuté, okno s financiami sa ukáže na konci každého roku a umožňuje tak rýchly náhľad na stav financií spoločnosti.
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nové príkazy sú štandardne 'non-stop': {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nové príkazy sú štandardne 'nonstop': {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normálne, vlak vždy zastaví v každej stanici cez ktorú prechádza. Povolením tohoto nastavenia, vlak bude pokračovať cez všetky stanice ktoré má v ceste až do svojej cieľovej stanice. Uvedomte si to, že toto nastavenie definuje "pôvodné" nastavenie LEN pre nové trasy. Samostatne zadávané cesty môžu byť nastavené aj inak.
 STR_CONFIG_SETTING_STOP_LOCATION                                :Vlaky zastavujú štandardne {STRING} stanice.
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Zvoľte kde zastaví vlak po príjazde do stanice. "Blízky koniec" znamená že vlak zastaví najbližšie ku vstupnému bodu, "Stred" že zastaví v strede stanice a "daleký koniec" že zastaví čo najďalej od vstupného bodu.
@@ -1491,8 +1491,8 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Použit skupiny
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Povolí použitie rozšíreného zoznamu vozidiel pre skupiny
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Zobraziť ukazovatele nakladania/vykladania: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Zvoľte či indikátory nakladania/vykladania budú zobrazené nad vozidlom.
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Zobraziť cestovné poriadky v tikoch namiesto dní: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Zobrazí časy cestovania v časových rozpisoch namiesto dní.
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Zobraziť cestovné poriadky v tiknutiach namiesto dní: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Zobrazí časy cestovania v cestovnom poriadku v herných tiknutiach namiesto dní
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Zobraziť príchody a odchody v cestovných poriadkoch: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Zobrazí predpokladané časy príchodov a odchodov v časových rozpisoch.
 STR_CONFIG_SETTING_QUICKGOTO                                    :Rýchla tvorba cestovného poriadku vozidla: {STRING}
@@ -3200,9 +3200,9 @@ STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Zobrazi�
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Hodnotenie dopravných spoločností:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Dostupné činnosti:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Čo sa dá urobiť v tomto meste - kliknúť na položku pre detaily
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Zoznam vecí, ktoré sa dajú vykonať v tomto meste - kliknúť na položku pre detaily
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Vykonať
-STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Vykonať činnosť zvýraznenú v zozname
+STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Vykonať činnosť zvýraznenú v zozname vyššie
 
 STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :Malá reklamná kampaň
 STR_LOCAL_AUTHORITY_ACTION_MEDIUM_ADVERTISING_CAMPAIGN          :Stredná reklamná kampaň
@@ -3213,13 +3213,13 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financovať vý
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Zakúpiť exkluzívne dopravné práva
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podplatiť miestnu správu
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Spustiť malú reklamnú kampaň vašich dopravných služieb.{} Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Spustiť strednú reklamnú kampaň vašich dopravných služieb.{} Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Spustiť veľkú reklamnú kampaň vašich dopravných služieb.{} Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Spustiť malú reklamnú kampaň, ktorá privedie viac cestujúcich a nákladu k vašej spoločnosti.{} Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Spustiť strednú reklamnú kampaň, ktorá privedie viac cestujúcich a nákladu k vašej spoločnosti.{} Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Spustiť veľkú reklamnú kampaň, ktorá privedie viac cestujúcich a nákladu k vašej spoločnosti.{} Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financovať rekonštrukciu mestskej cestnej siete. Spôsobí dopravný chaos a zápchy trvajúce ďalších 6 mesiacov.{} Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Postaviť sochu na oslavu vašej spoločnosti.{} Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financovať výstavbu administratívnych a obchodných budov.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Zakúpiť exkluzívne dopravné práva na 1 rok pre vašu spoločnosť. Mestský úrad dovolí cestujúcim a nákladu používať len vaše stanice.{} Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financovať výstavbu nových administratívnych a obchodných budov v meste.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Zakúpiť exkluzívne dopravné práva na 1 rok pre vašu spoločnosť. Miestna správa dovolí cestujúcim a nákladu používať len vaše stanice.{} Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplatiť miestnu správu pre zvýšenie hodnotenia tvojej spoločnosti, s rizikom ťažkého postihu pri odhalení!{}Cena: {CURRENCY_LONG}
 
 # Goal window
@@ -3831,10 +3831,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Prestava
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Opačný smer vlaku
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Otočiť vozidlo
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Zobraziť cestovné príkazy vlakov
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Zobraziť cestovné príkazy
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Zobraziť cestovné príkazy lodí. Ctrl+klik pre zobrazenie cestovného poriadku lodí
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Zobraziť cestovné príkazy lietadla. Ctrl+klik pre zobrazenie cestovného poriadku lietadla
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Zobraziť príkazy vlaku. Ctrl+klik zobrazí cestovný poriadok vlaku
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Zobraziť príkazy vozidla. Ctrl+klik zobrazí cestovný poriadok vozidla
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Zobraziť príkazy lode. Ctrl+klik zobrazí cestovný poriadok lode
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Zobraziť príkazy lietadla. Ctrl+klik zobrazí cestovný poriadok lietadla
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Zobraziť detaily o vlaku
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Zobraziť detaily o cestnom vozidle
@@ -3847,7 +3847,7 @@ STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuáln
 STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktuálna činnosť lietadla - kliknutím sa zastaví/spustí. Ctrl+klik presunie pohľad na cieľovú stanicu
 
 # Messages in the start stop button in the vehicle view
-STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Naklada/Vyklada
+STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Nakláda / Vykláda
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}Opúšta
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}Zničené!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Pokazený
@@ -3963,23 +3963,23 @@ STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Prestava
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Prestavať lietadlo na iný druh nákladu
 
 # Order view
-STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Prikazy)
-STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}CP
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Príkazy)
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Cestovný poriadok
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Prepnút na zobrazenie cestovného poriadku
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Zoznam príkazov - kliknúť na príkaz pre označenie. CTRL+klik presunie sa na miesto zmeny
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Zoznam príkazov - kliknúť na príkaz pre označenie. Ctrl+klik presunie pohľad na cieľ príkazu
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - Koniec prikazov - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec zdielanych prikazov - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Koniec príkazov - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Koniec zdieľaných príkazov - -
 
 # Order bottom buttons
-STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
+STR_ORDER_NON_STOP                                              :{BLACK}Nonstop
 STR_ORDER_GO_TO                                                 :Choď do
-STR_ORDER_GO_NON_STOP_TO                                        :Choď non-stop do
+STR_ORDER_GO_NON_STOP_TO                                        :Choď nonstop do
 STR_ORDER_GO_VIA                                                :Choď cez
-STR_ORDER_GO_NON_STOP_VIA                                       :Choď non-stop cez
+STR_ORDER_GO_NON_STOP_VIA                                       :Choď nonstop cez
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmeniť spôsob zastavenia pre označený príkaz
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plne nalož čokoľvek
@@ -3998,30 +3998,30 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmeniť 
 
 STR_ORDER_REFIT                                                 :{BLACK}Prestavba
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vyberte druh nákladu na prestavbu v tomto poradí. Ctrl+klik na odstránenie príkazu prestavby
-STR_ORDER_REFIT_AUTO                                            :{BLACK}Automaticky modernizovať
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Vyber ktorý druh tovaru sa bude automaticky nakladať. Ctrl+Klik pre odstránenie automatického nakladania. Automatické nakladanie musí byť podporované vozidlom
-STR_ORDER_DROP_REFIT_AUTO                                       :Pevný náklad
+STR_ORDER_REFIT_AUTO                                            :{BLACK}Prestavba na stanici
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Vyberte druh nákladu na prestavbu v tomto príkaze. Ctrl+klik pre odstránenie pokynu na prestavbu. Prestavba na staniciach je možná iba ak ju vozidlo podporuje
+STR_ORDER_DROP_REFIT_AUTO                                       :Fixný náklad
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Dostupný náklad
 
-STR_ORDER_SERVICE                                               :{BLACK}Oprava
+STR_ORDER_SERVICE                                               :{BLACK}Servis
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vždy choď
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis, ak je potrebné
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis, ak je potrebný
 STR_ORDER_DROP_HALT_DEPOT                                       :Zastav
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskočiť tento príkaz pokiaľ nie je potrebná oprava
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Preskočiť tento príkaz pokiaľ nie je potrebný servis
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Údaje vozidla na základe ktorých sa vykoná skok
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percento naplnenia
-STR_ORDER_CONDITIONAL_RELIABILITY                               :Spolahlivost
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Spoľahlivosť
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximálna rýchlosť
 STR_ORDER_CONDITIONAL_AGE                                       :Vek vozidla (v rokoch)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vyžaduje servis
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vždy
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :Zostávajúca životnosť (v rokoch)
-STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Max. spoľahlivosť
+STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :Maximálna spoľahlivosť
 
-STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Sposob porovnania údajov vozidla so zadanou hodnotou
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Spôsob porovnania údajov vozidla so zadanou hodnotou
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :je rovné
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nie je rovné
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :je menej ako
@@ -4031,78 +4031,78 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :je viac alebo r
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :je pravda
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :je nepravda
 
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Hodnota, s ktorou sa majú porovnat dáta vozidla
-STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Zadajte hodnotu voci ktorej sa ma porovnat
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Hodnota, s ktorou sa majú porovnať dáta vozidla
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Zadajte hodnotu, s ktorou sa má porovnať
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Preskočiť
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Preskočiť aktuálny príkaz a začať ďalší. CTRL+klik pre skok na označený príkaz
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Preskočiť aktuálny príkaz a začať ďalší. Ctrl+klik pre skok na označený príkaz
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Vymazať
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Vymazať označený príkaz
 STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Vymazať všetky príkazy
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Prestať zdieľať
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Prestať zdieľať zoznam príkazov. Ctrl+Klik naviac zmaže všetky príkazy tohoto vozidla.
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Prestať zdieľať zoznam príkazov. Ctrl+klik naviac zmaže všetky príkazy tohoto vozidla
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Choď do
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Choď do najbližšieho depa
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Choď do najbližšieho hangáru
 STR_ORDER_CONDITIONAL                                           :Podmienený príkaz skoku
 STR_ORDER_SHARE                                                 :Zdieľať príkazy
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vložiť nový príkaz pred označený príkaz alebo na koniec zoznamu. CTRL zmení príkaz pre stanicu na 'plne nalož čokoľvek', waypoint príkazy na pokračuj 'non-stop' a pre depá 'servisuj'. 'Zdieľať príkazy' alebo CTRL umožní vozidlu zdieľať príkazy s vybraným vozidlom. Kliknutím na vozidlo sa skopírujú príkazy z vozidla. Príkaz na presun do depa zneplatní automatické servisovanie vozidla
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Vložiť nový príkaz pred označený príkaz, alebo na koniec zoznamu. Ctrl zmení príkazy pre stanicu na 'plne nalož čokoľvek', príkazy pre smerový bod na 'nonstop' a príkazy pre depo na 'servis'. 'Zdieľať príkazy' alebo Ctrl umožní vozidlu zdieľať príkazy s vybraným vozidlom. Kliknutím na vozidlo sa skopírujú príkazy z vozidla. Príkaz na presun do depa vypne automatický servis vozidla
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Zobraziť všetky vozidlá s rovnakým zoznamom príkazov
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Zobraziť všetky vozidlá, ktoré zdieľajú tento zoznam príkazov
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :Chod cez {WAYPOINT}
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Chod bez zastavky cez {WAYPOINT}
+STR_ORDER_GO_TO_WAYPOINT                                        :Choď cez {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Choď nonstop cez {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Servis v
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Servis non-stop v
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Servis nonstop v
 
 STR_ORDER_NEAREST_DEPOT                                         :najbližší
 STR_ORDER_NEAREST_HANGAR                                        :najbližší hangár
 STR_ORDER_TRAIN_DEPOT                                           :Depo
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Cestné depo
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :Garáž
 STR_ORDER_SHIP_DEPOT                                            :Lodenica
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Prestavba na {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Prestavať na {STRING} a zastaviť)
-STR_ORDER_STOP_ORDER                                            :(Zastaviť)
+STR_ORDER_REFIT_STOP_ORDER                                      :(Prestavba na {STRING} a zastav)
+STR_ORDER_STOP_ORDER                                            :(Zastav)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Predpokladané)
 
 STR_ORDER_FULL_LOAD                                             :(Plne nalož)
-STR_ORDER_FULL_LOAD_ANY                                         :(Plne nalož akýkoľvek náklad)
+STR_ORDER_FULL_LOAD_ANY                                         :(Plne nalož čokoľvek)
 STR_ORDER_NO_LOAD                                               :(Nenakladaj)
-STR_ORDER_UNLOAD                                                :(Vylož a nalož náklad)
+STR_ORDER_UNLOAD                                                :(Vylož a zober náklad)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Vylož a čakaj na plné naloženie)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Vylož a pockaj na plné naloženie akéhokoľvek nákladu)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Vylož a čakaj na plné naloženie čohokoľvek)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Vylož a nechaj prázdne)
-STR_ORDER_TRANSFER                                              :(Prelož a nalož)
+STR_ORDER_TRANSFER                                              :(Prelož a zober náklad)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Prelož a čakaj na plné naloženie)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Prelož a čakaj na plné naloženie akéhokoľvek nákladu)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Prelož a čakaj na plné naloženie čohokoľvek)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Prelož a nechaj prázdne)
 STR_ORDER_NO_UNLOAD                                             :(Nevykladaj a nalož)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nevykladaj a čakaj na plné naloženie)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nevykladaj a čakaj na plné naloženie akéhokoľvek nákladu)
-STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Žiadné vykládanie a nakládanie)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nevykladaj a čakaj na plné naloženie čohokoľvek)
+STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Žiadne vykládanie ani nakládanie)
 
-STR_ORDER_AUTO_REFIT                                            :(Upraviť na {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Plné naloženie s automatickým nakladaním do {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Plné naloženie akéhokoľvek nákladu s automatickým nakladaním do {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Vyložiť a zobrať náklad automaticky do {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Vyložiť a čakať pre plné naloženie automaticky do {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Vylož a čakaj na akékoľvek plné naloženie automaticky do {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Presuň sa a zober náklad s automatickým naložením do {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Presuň sa a čakaj pre plné naloženie automaticky do {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Prelož a čakaj pre akékoľvek plné naloženie s automatickým nakladaním do {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Nevykladať a zobrať náklad s automatickým nakladaním do {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nevykladať a čakať pre plné naloženie s automatickým nakladaním do {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nevykladať a čakať na plné naloženie s nastavením do {STRING})
+STR_ORDER_AUTO_REFIT                                            :(Prestavať na {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Plne nalož s prestavbou na {STRING})
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Plne nalož čokoľvek s prestavbou na {STRING})
+STR_ORDER_UNLOAD_REFIT                                          :(Vylož a zober náklad s prestavbou na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Vylož a čakaj na plné naloženie s prestavbou na {STRING})
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Vylož a čakaj na plné naloženie čohokoľvek s prestavbou na {STRING})
+STR_ORDER_TRANSFER_REFIT                                        :(Prelož a zober náklad s prestavbou na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Prelož a čakaj na plné naloženie s prestavbou na {STRING})
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Prelož a čakaj na plné naloženie čohokoľvek s prestavbou na {STRING})
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Nevykladaj a zober náklad s prestavbou na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Nevykladaj a čakaj na plné naloženie s prestavbou na {STRING})
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Nevykladaj a čakaj na plné naloženie čohokoľvek s prestavbou na {STRING})
 
 STR_ORDER_AUTO_REFIT_ANY                                        :dostupný náklad
 
@@ -4110,11 +4110,11 @@ STR_ORDER_STOP_LOCATION_NEAR_END                                :[blízky koniec
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[stred]
 STR_ORDER_STOP_LOCATION_FAR_END                                 :[ďaleký koniec]
 
-STR_ORDER_OUT_OF_RANGE                                          :{RED} (Nasledovný ciel je mimo dosahu)
+STR_ORDER_OUT_OF_RANGE                                          :{RED} (Nasledovný cieľ je mimo dosahu)
 
 STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Skok na príkaz {COMMA}
-STR_ORDER_CONDITIONAL_NUM                                       :Skok na príkaz {COMMA} ak {STRING} {STRING} {COMMA}
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skok na príkaz {COMMA} ak {STRING} {STRING}
+STR_ORDER_CONDITIONAL_NUM                                       :Skok na príkaz {COMMA}, ak {STRING} {STRING} {COMMA}
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Skok na príkaz {COMMA}, ak {STRING} {STRING}
 
 STR_INVALID_ORDER                                               :{RED} (Neplatný príkaz)
 
@@ -4126,22 +4126,22 @@ STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Prepnú�
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Cestovný poriadok - kliknite na príkaz pre jeho označenie
 
 STR_TIMETABLE_NO_TRAVEL                                         :Necestuj
-STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Cestovanie (automaticky; nastavené po ďalšom zadaní objednávky)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Cesta (neurcený cas)
+STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Cestuj (automaticky; nastavené po ďalšom zadaní príkazu)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Cesta (neurčený čas)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Cestovanie (bez cestovného plánu) s najviac {2:VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR                                        :Cesta {STRING}
-STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Cestovanie na {STRING} s {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Cesta {STRING} s najviac {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Cesta ({STRING}, nerozvrhnuté)
-STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Cesta (for {STRING}, nerozvrhnuté) pri najviac {VELOCITY}
+STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Cesta (for {STRING}, nerozvrhnuté) s najviac {VELOCITY}
 STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(prestávka {STRING}, nerozvrhnuté)
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(cesta {STRING}, nerozvrhnuté)
 STR_TIMETABLE_STAY_FOR                                          :prestávka {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :a cestuj {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}d{P eň ni ní}
-STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tik{P "" y ov}
+STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tiknut{P ie ia í}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Na dokončenie cestovného poriadku je potrebných {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Na dokončenie cestovného poriadku je potrebných min. {STRING} (nie všetko je určené)
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Na dokončenie cestovného poriadku je potrebných aspoň {STRING} (nie všetko je určené)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Toto vozidlo ide presne
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Toto vozidlo mešká {STRING}
@@ -4152,26 +4152,26 @@ STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Tento ce
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Začiatočný dátum
 STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vyberte dátum začiatku cestovného poriadku. Ctrl+klik nastaví počiatočný dátum tohto cestovného poriadku pre všetky vozidlá zdieľajúce tieto príkazy na základe ich relatívneho poradia, ak je cestovný poriadok kompletne vyplnený
 
-STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmenit cas
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmenit dlžku trvania oznaceného príkazu
+STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Zmeniť čas
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmeniť dĺžku trvania označeného príkazu
 
-STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Vymazat cas
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Vymazať dĺžku trvania označeného príkazu
+STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Odstrániť čas
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Odstrániť dĺžku trvania označeného príkazu
 
-STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmeň maximálnu rýchlosť
-STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmeň maximálnu rýchlosť zvoleného poriadku
+STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Zmeniť maximálnu rýchlosť
+STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Zmeniť maximálnu rýchlosť označeného príkazu
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Odstráň obmedzenie maximánej rýchlosti
-STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Odstráň obmedzenie maximánej rýchlosti pre zvolený poriadok
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Odstrániť rýchlostné obmedzenie
+STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Odstrániť obmedzenie maximánej rýchlosti označeného príkazu
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset meskania
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Reset meškania
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Vynulovať počítadlo meškania, takže vozidlo pôjde presne
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Vyplnit
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Naplň časový plán automaticky s hodnotami z nasledujúcej trasy (CTRL-klik - pokúsiť sa udržať čakacie doby)
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaticky vyplniť
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vyplniť časový plán automaticky s hodnotami z nasledujúcej trasy (Ctrl+klik - pokúsiť sa udržať čakacie doby)
 
-STR_TIMETABLE_EXPECTED                                          :{BLACK}Čakať
-STR_TIMETABLE_SCHEDULED                                         :{BLACK}Naplánovaný
+STR_TIMETABLE_EXPECTED                                          :{BLACK}Očakávané
+STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plánované
 STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Prepnúť medzi očakávaným a plánovaným
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :P:

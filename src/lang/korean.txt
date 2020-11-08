@@ -2070,7 +2070,7 @@ STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}설립:
 STR_NETWORK_GAME_LOBBY_VALUE                                    :{SILVER}회사가치: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_CURRENT_BALANCE                          :{SILVER}재정 수익: {WHITE}{CURRENCY_LONG}
 STR_NETWORK_GAME_LOBBY_LAST_YEARS_INCOME                        :{SILVER}작년 수익: {WHITE}{CURRENCY_LONG}
-STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}퍼포먼스: {WHITE}{NUM}
+STR_NETWORK_GAME_LOBBY_PERFORMANCE                              :{SILVER}성취도: {WHITE}{NUM}
 
 STR_NETWORK_GAME_LOBBY_VEHICLES                                 :{SILVER}차량: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
 STR_NETWORK_GAME_LOBBY_STATIONS                                 :{SILVER}역: {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {SHIP}, {NUM} {PLANE}
