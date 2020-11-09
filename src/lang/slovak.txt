@@ -3708,10 +3708,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Klonova�
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klonovať loď
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klonovať lietadlo
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Zakúpi kópiu vlaku vrátane vozňov. Klikni na toto tlačidlo a potom na vlak v depe alebo mimo neho. Stlačením CTRL budú príkazy zdielané. Shift+klik zobrazí odhad nákladov
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Zakúpi kópiu cestného vozidla. Klikni na toto tlačidlo a potom na vozidlo v garáži alebo mimo nej. CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov.
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Zakúpi kópiu lode. Klikni na toto tlačidlo a následne na loď v depe alebo mimo neho. CTRL+klik skopíruje aj príkazy
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Zakúpi kópiu lietadla. Klikni na toto tlačidlo a potom na lietadlo v hangári alebo mimo neho. CTRL+Klik budú príkazy zdielané. Shift+klik zobrazí odhad nákladov
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Zakúpiť kópiu vlaku vrátane vagónov. Kliknite na toto tlačidlo a potom na vlak v depe alebo mimo neho. Ctrl+klik bude zdieľať príkazy. Shift+klik zobrazí odhadovanú cenu
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Zakúpiť kópiu cestného vozidla. Kliknite na toto tlačidlo a potom na vozidlo v garáži alebo mimo nej. Ctrl+klik bude zdieľať príkazy. Shift+klik zobrazí odhadovanú cenu
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Zakúpiť kópiu lode. Kliknite na toto tlačidlo a potom na loď v lodenici alebo mimo nej. Ctrl+klik bude zdieľať príkazy. Shift+klik zobrazí odhadovanú cenu
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Zakúpiť kópiu lietadla. Kliknite na toto tlačidlo a potom na lietadlo v hangári alebo mimo neho. Ctrl+klik bude zdieľať príkazy. Shift+klik zobrazí odhadovanú cenu
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Vycentrovať pohľad na pozíciu depa. Ctrl+klik otvorí nové okno s pohľadom na depo
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vycentrovať pohľad na pozíciu garáže. Ctrl+klik otvorí nové okno s pohľadom na garáž
@@ -3807,19 +3807,19 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zachovan
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Vycentrovať pohľad na pozíciu vlaku. Ctrl+klik bude sledovať vlak
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Vycentrovať pohľad na vozidlo. CTRL+klik bude sledovať vozidlo v hlavnom okne
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Vycentrovať pohľad na loď. Ctrl+klik bude sledovať loď
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Vycentrovať pohľad na lietadlo. Ctrl+klik bude sledovať lietadlo
+STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Vycentrovať pohľad na pozíciu vozidla. Ctrl+klik bude sledovať vozidlo
+STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Vycentrovať pohľad na pozíciu lode. Ctrl+klik bude sledovať loď
+STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Vycentrovať pohľad na pozíciu lietadla. Ctrl+klik bude sledovať lietadlo
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Poslať vlak do depa. CTRL+klik len servis.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Poslať vozidlo do depa. CTRL+klik len servis.
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslať loď do lodenice. CTRL+klik len servis
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslať lietadlo do hangáru. CTRL+klik len servis
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Poslať vlak do depa. Ctrl+klik iba servis
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Poslať vozidlo do garáže. Ctrl+klik iba servis.
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Poslať loď do lodenice. Ctrl+klik iba servis
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Poslať lietadlo do hangáru. Ctrl+klik iba servis
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Zakúpi kópiu vlaku vrátane vozňov. CTRL+klik bude zdieľať príkazy. Shift+Klik ukáže odhadované náklady bez kúpy
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Zakúpi kópiu cestného vozidla. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Zakúpi kópiu lode. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Zakúpi kópiu lietadla. Stlačením CTRL+klik budú príkazy zdieľané. Shift+klik zobrazí odhad nákladov
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Zakúpiť kópiu vlaku vrátane vagónov. Ctrl+klik bude zdieľať príkazy. Shift+klik zobrazí odhadovanú cenu
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Zakúpiť kópiu cestného vozidla. Ctrl+klik bude zdieľať príkazy. Shift+klik zobrazí odhadovanú cenu
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Zakúpiť kópiu lode. Ctrl+klik bude zdieľať príkazy. Shift+klik zobrazí odhadovanú cenu
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Zakúpiť kópiu lietadla. Ctrl+klik bude zdieľať príkazy. Shift+klik zobrazí odhadovanú cenu
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Prinútiť vlak pokračovať cez návestidlo bez čakania na zelenú
 
@@ -3828,8 +3828,8 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Prestava
 STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Prestavať loď na iný druh nákladu
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Prestavať lietadlo na iný druh nákladu
 
-STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Opačný smer vlaku
-STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Otočiť vozidlo
+STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Otočiť vlak naopak
+STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Prinútiť vozidlo otočiť sa naopak
 
 STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Zobraziť príkazy vlaku. Ctrl+klik zobrazí cestovný poriadok vlaku
 STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Zobraziť príkazy vozidla. Ctrl+klik zobrazí cestovný poriadok vozidla
@@ -4507,7 +4507,7 @@ STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... mus�
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Vlaky sa dajú nahradiť len v depe
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Vlak je príliš dlhý
-STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nemôžem otočiť vozidlo...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nemôžem otočiť vozidlo naopak...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... zložené z viacerých jednotiek
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Nekompatibilné typy koľají
 
@@ -4670,7 +4670,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Začnite
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}Nemôžeš nechať vlak prejsť cez návestidlo keď hrozí nebezpečenstvo...
-STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nemožno zmeniť smer vlaku...
+STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}Nemožno otočiť vlak naopak...
 STR_ERROR_TRAIN_START_NO_POWER                                  :Vlak nemá energiu
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Nemôžem otočiť cestné vozidlo...
