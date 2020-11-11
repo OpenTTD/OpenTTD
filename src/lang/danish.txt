@@ -3824,7 +3824,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Vægt: {
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Overskud i år: {LTBLUE}{CURRENCY_LONG} (sidste år: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 
-STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_NO_CAPACITY                                    :{BLACK}Kapacitet: {LTBLUE}Ingen{STRING}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}Kapacitet: {LTBLUE}{CARGO_LONG}{3:STRING}
 STR_VEHICLE_INFO_CAPACITY_MULT                                  :{BLACK}Kapacitet: {LTBLUE}{CARGO_LONG}{3:STRING} (x{4:NUM})
