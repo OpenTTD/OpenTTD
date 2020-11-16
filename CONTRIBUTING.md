@@ -14,7 +14,7 @@ In return, they should reciprocate that respect in addressing your issue or asse
 The [issue tracker](https://github.com/OpenTTD/OpenTTD/issues) is the preferred channel for [bug reports](#bug-reports), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for help playing or using OpenTTD.
-Please try [irc](https://wiki.openttd.org/IRC_channel), or the [forums](https://www.tt-forums.net/)
+Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel), or the [forums](https://www.tt-forums.net/)
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and respect the opinions of others.
 
@@ -23,7 +23,7 @@ Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to
 We reserve the right to delete comments which violate this rule.
 
 * Please **do not** open issues or pull requests regarding add-on content in NewGRF, GameScripts, AIs, etc.
-These are created by third-parties.  Please try [irc](https://wiki.openttd.org/IRC_channel) or the [forums](https://www.tt-forums.net/) to discuss these.
+These are created by third-parties.  Please try [irc](https://wiki.openttd.org/en/Development/IRC%20channel) or the [forums](https://www.tt-forums.net/) to discuss these.
 
 * Please use [the web translator](https://translator.openttd.org/) to submit corrections and improvements to translations of the game.
 
@@ -94,7 +94,7 @@ Although we really appreciate feedback and ideas, we will close feature requests
 
 Many of those ideas etc do have a place on the [forums](https://www.tt-forums.net); and if enough people like it, someone will stand up and make it.
 
-It's usually best discuss in [irc](https://wiki.openttd.org/IRC_channel) before opening a feature request or working on a large feature in a fork.
+It's usually best discuss in [irc](https://wiki.openttd.org/en/Development/IRC%20channel) before opening a feature request or working on a large feature in a fork.
 Discussion in irc can take time, but it can be productive and avoid disappointment :)
 
 
@@ -108,7 +108,7 @@ Pull requests should fit with the [goals of the project](./CONTRIBUTING.md#proje
 
 Every pull request should have a clear scope, with no unrelated commits.
 
-[Code style](https://wiki.openttd.org/Coding_style) must be complied with for pull requests to be accepted; this also includes [commit message format](https://wiki.openttd.org/Coding_style#Commit_message).
+[Code style](https://wiki.openttd.org/en/Development/Coding%20style) must be complied with for pull requests to be accepted; this also includes [commit message format](https://wiki.openttd.org/en/Development/Coding%20style#commit-message).
 
 Adhering to the following process is the best way to get your work included in the project:
 
@@ -136,7 +136,7 @@ contain your feature, change, or fix:
 git checkout upstream/master -b <topic-branch-name>
 ```
 
-4. Commit your changes in logical chunks. Please adhere to these [git commit message guidelines](https://wiki.openttd.org/Commit_style#Commit_message) or your code is unlikely to be merged into the main project.
+4. Commit your changes in logical chunks. Please adhere to these [git commit message guidelines](https://wiki.openttd.org/en/Development/Coding%20style#commit-message) or your code is unlikely to be merged into the main project.
 Use Git's [interactive rebase](https://help.github.com/articles/interactive-rebase) feature to tidy up your commits before making them public.
 
 5. Locally rebase the upstream development branch into your topic branch:
@@ -172,14 +172,14 @@ The results of the CI tests will show on your pull request.
 By clicking on Details you can further zoom in; in case of a failure it will show you why it failed.
 In case of success it will report how awesome you were.
 
-Tip: [commit message format](https://wiki.openttd.org/Coding_style#Commit_message) is a common reason for pull requests to fail validation.
+Tip: [commit message format](https://wiki.openttd.org/en/Development/Coding%20style#commit-message) is a common reason for pull requests to fail validation.
 
 
 ### Are there any development docs?
 
 There is no single source for OpenTTD development docs. It's a complex project with a long history, and multiple APIs.
 
-A good entry point is [Development](https://wiki.openttd.org/Development) on the OpenTTD wiki; this provides links to wiki documentation and other sources.
+A good entry point is [Development](https://wiki.openttd.org/en/Development/) on the OpenTTD wiki; this provides links to wiki documentation and other sources.
 
 The GitHub repo also includes some non-comprehensive documentation in [/docs](./docs).
 

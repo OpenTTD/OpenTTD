@@ -65,13 +65,13 @@ Please report a bug if you find a save that doesn't load.
 
 ## 1.4) Installing and running OpenTTD
 
-OpenTTD is usually straightforward to install, but for more help the wiki [includes an installation guide](https://wiki.openttd.org/Installation).
+OpenTTD is usually straightforward to install, but for more help the wiki [includes an installation guide](https://wiki.openttd.org/en/Manual/Installation).
 
 OpenTTD needs some additional graphics and sound files to run.
 
 For some platforms these will be downloaded during the installation process if required.
 
-For some platforms, you will need to refer to [the installation guide](https://wiki.openttd.org/Installation).
+For some platforms, you will need to refer to [the installation guide](https://wiki.openttd.org/en/Manual/Installation).
 
 
 ### 1.4.1) Free graphics and sound files
@@ -116,7 +116,7 @@ OpenTTD features multiple types of add-on content, which modify gameplay in diff
 
 Most types of add-on content can be downloaded within OpenTTD via the 'Check Online Content' button in the main menu.
 
-Add-on content can also be installed manually, but that's more complicated; the [OpenTTD wiki](https://wiki.openttd.org/OpenTTD) may offer help with that, or the [OpenTTD directory structure guide](./docs/directory_structure.md).
+Add-on content can also be installed manually, but that's more complicated; the [OpenTTD wiki](https://wiki.openttd.org/) may offer help with that, or the [OpenTTD directory structure guide](./docs/directory_structure.md).
 
 ### 1.5.1) AI opponents
 
@@ -138,7 +138,7 @@ A wide range of add-content is available as NewGRFs, including vehicles, industr
 
 NewGRFs can be added via the 'Check Online Content' button in the main menu.
 
-See also the wiki [guide to NewGRFs](https://wiki.openttd.org/NewGRF) and [the forum graphics development section](https://www.tt-forums.net/viewforum.php?f=66).
+See also the wiki [guide to NewGRFs](https://wiki.openttd.org/en/Manual/NewGRF) and [the forum graphics development section](https://www.tt-forums.net/viewforum.php?f=66).
 
 ### 1.5.4) Game scripts
 
@@ -146,7 +146,7 @@ Game scripts can provide additional challenges or changes to the standard OpenTT
 
 Game scripts can be added via the 'Check Online Content' button in the main menu.
 
-See also the wiki [guide to game scripts](https://wiki.openttd.org/Game_script) and [the forum graphics game script section](https://www.tt-forums.net/viewforum.php?f=65).
+See also the wiki [guide to game scripts](https://wiki.openttd.org/en/Manual/Game%20script) and [the forum graphics game script section](https://www.tt-forums.net/viewforum.php?f=65).
 
 ### 1.6) OpenTTD directories
 
@@ -164,14 +164,14 @@ If you want to compile OpenTTD from source, instructions can be found in [COMPIL
 'Official' channels
 
 - [OpenTTD website](https://www.openttd.org)
-- IRC chat using #openttd on irc.oftc.net [more info about our irc channel](https://wiki.openttd.org/Irc)
+- IRC chat using #openttd on irc.oftc.net [more info about our irc channel](https://wiki.openttd.org/en/Development/IRC%20channel)
 - [OpenTTD on Github](https://github.com/openTTD/) for code repositories and for reporting issues
 - [forum.openttd.org](https://forum.openttd.org/) - the primary community forum site for discussing OpenTTD and related games
 - [OpenTTD wiki](https://wiki.openttd.org/) community-maintained wiki, including topics like gameplay guide, detailed explanation of some game mechanics, how to use add-on content (mods) and much more
 
 'Unofficial' channels
 
-- the OpenTTD wiki has a [page listing OpenTTD communities](https://wiki.openttd.org/Community) including some in languages other than English
+- the OpenTTD wiki has a [page listing OpenTTD communities](https://wiki.openttd.org/en/Community/Community) including some in languages other than English
 
 
 ### 2.1) Contributing to OpenTTD
