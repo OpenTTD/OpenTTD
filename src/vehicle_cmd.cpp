@@ -628,6 +628,7 @@ CommandCost CmdStartStopVehicle(DoCommandFlag flags, VehicleID veh_id, bool eval
 		if (v->IsStoppedInDepot() && (flags & DC_AUTOREPLACE) == 0) DeleteVehicleNews(veh_id, STR_NEWS_TRAIN_IS_WAITING + v->type);
 
 		v->vehstatus ^= VS_STOPPED;
+		if (v->vehstatus & VS_STOPPED) v->ResetAutomaticSeparation();
 		if (v->type != VEH_TRAIN) v->cur_speed = 0; // trains can stop 'slowly'
 		v->MarkDirty();
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);

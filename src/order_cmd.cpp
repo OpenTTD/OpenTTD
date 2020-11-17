@@ -1467,6 +1467,36 @@ static bool CheckAircraftOrderDistance(const Aircraft *v_new, const Vehicle *v_o
 }
 
 /**
+ * Enable or disable automatic separation for a vehicle's order list
+ * @param flags operation to perform
+ * @param veh vehicle who's order list is being modified
+ * @param enabled value indicating whether to enable (true) or disable (false) automatic separation
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdOrderAutomaticSeparation(DoCommandFlag flags, VehicleID veh, bool enabled)
+{
+	Vehicle *vehicle = Vehicle::GetIfValid(veh);
+	if (vehicle == nullptr || !vehicle->IsPrimaryVehicle()) return CMD_ERROR;
+
+	CommandCost ret = CheckOwnership(vehicle->owner);
+	if (ret.Failed()) return ret;
+
+	if (flags & DC_EXEC) {
+		vehicle->SetAutomaticSeparationIsEnabled(enabled);
+
+		if (!vehicle->AutomaticSeparationIsEnabled()) {
+			Vehicle *v = vehicle->FirstShared();
+			while (v != nullptr) {
+				v->ResetAutomaticSeparation();
+				v = v->NextShared();
+			}
+		}
+	}
+
+	return CommandCost();
+}
+
+/**
  * Clone/share/copy an order-list of another vehicle.
  * @param flags operation to perform
  * @param action action to perform
@@ -1834,6 +1864,8 @@ void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist, bool reset_order_indic
 		v->orders->FreeChain(keep_orderlist);
 		if (!keep_orderlist) v->orders = nullptr;
 	}
+
+	v->ResetAutomaticSeparation();
 
 	if (reset_order_indices) {
 		v->cur_implicit_order_index = v->cur_real_order_index = 0;

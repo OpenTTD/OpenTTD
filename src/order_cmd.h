@@ -18,6 +18,7 @@ CommandCost CmdModifyOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID se
 CommandCost CmdSkipToOrder(DoCommandFlag flags, VehicleID veh_id, VehicleOrderID sel_ord);
 CommandCost CmdDeleteOrder(DoCommandFlag flags, VehicleID veh_id, VehicleOrderID sel_ord);
 CommandCost CmdInsertOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID sel_ord, const Order &new_order);
+CommandCost CmdOrderAutomaticSeparation(DoCommandFlag flags, VehicleID veh, bool enabled);
 CommandCost CmdOrderRefit(DoCommandFlag flags, VehicleID veh, VehicleOrderID order_number, CargoID cargo);
 CommandCost CmdCloneOrder(DoCommandFlag flags, CloneOptions action, VehicleID veh_dst, VehicleID veh_src);
 CommandCost CmdMoveOrder(DoCommandFlag flags, VehicleID veh, VehicleOrderID moving_order, VehicleOrderID target_order);
@@ -27,6 +28,7 @@ DEF_CMD_TRAIT(CMD_MODIFY_ORDER,       CmdModifyOrder,       CMD_LOCATION,  CMDT_
 DEF_CMD_TRAIT(CMD_SKIP_TO_ORDER,      CmdSkipToOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_DELETE_ORDER,       CmdDeleteOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_INSERT_ORDER,       CmdInsertOrder,       CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
+DEF_CMD_TRAIT(CMD_ORDER_AUTOMATIC_SEPARATION, CmdOrderAutomaticSeparation, 0, CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_ORDER_REFIT,        CmdOrderRefit,        CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_CLONE_ORDER,        CmdCloneOrder,        CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)
 DEF_CMD_TRAIT(CMD_MOVE_ORDER,         CmdMoveOrder,         CMD_LOCATION,  CMDT_ROUTE_MANAGEMENT)

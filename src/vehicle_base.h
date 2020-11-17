@@ -812,6 +812,13 @@ public:
 
 	inline void SetServiceIntervalIsPercent(bool on) { SB(this->vehicle_flags, VF_SERVINT_IS_PERCENT, 1, on); }
 
+	inline bool AutomaticSeparationIsEnabled() const { return (this->orders == nullptr) ? false : this->orders->AutomaticSeparationIsEnabled(); }
+
+	inline void SetAutomaticSeparationIsEnabled(bool enabled) const { if (this->orders != nullptr) this->orders->SetAutomaticSeparationIsEnabled(enabled); }
+
+	bool IsWaitingForAutomaticSeparation() const;
+	void UpdateAutomaticSeparation();
+
 private:
 	/**
 	 * Advance cur_real_order_index to the next real order.

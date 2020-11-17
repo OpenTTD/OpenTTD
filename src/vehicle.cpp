@@ -1537,6 +1537,7 @@ void VehicleEnterDepot(Vehicle *v)
 
 	v->vehstatus |= VS_HIDDEN;
 	v->cur_speed = 0;
+	v->ResetAutomaticSeparation();
 
 	VehicleServiceInDepot(v);
 
@@ -2338,6 +2339,10 @@ void Vehicle::HandleLoading(bool mode)
 			/* Not the first call for this tick, or still loading */
 			if (mode || !HasBit(this->vehicle_flags, VF_LOADING_FINISHED) || this->current_order_time < wait_time) return;
 
+			this->UpdateAutomaticSeparation();
+
+			if (this->IsWaitingForAutomaticSeparation()) return;
+
 			this->PlayLeaveStationSound();
 
 			this->LeaveStation();
@@ -2358,6 +2363,96 @@ void Vehicle::HandleLoading(bool mode)
 	}
 
 	this->IncrementImplicitOrderIndex();
+}
+
+/**
+ * Checks whether a vehicle is waiting for automatic separation (if not,
+ * it is ready to depart)
+ */
+bool Vehicle::IsWaitingForAutomaticSeparation() const {
+	TimerGameTick::Ticks now = TimerGameCalendar::date.base() * Ticks::DAY_TICKS + TimerGameCalendar::date_fract;
+	return this->AutomaticSeparationIsEnabled() && this->first_order_last_departure > now;
+};
+
+/**
+ * If enabled, calculates the departure time for this vehicle based on the
+ * automatic separation feature.
+ */
+void Vehicle::UpdateAutomaticSeparation()
+{
+	/* Check this feature is enabled on the vehicle's orders */
+	if (!this->AutomaticSeparationIsEnabled()) return;
+
+	/* Only perform the separation at the first manual order (saves on storage) */
+	VehicleOrderID first_manual_order = 0;
+	for (Order *o = this->GetFirstOrder(); o != nullptr && o->IsType(OT_IMPLICIT); o = o->next) {
+		++first_manual_order;
+	}
+	if (this->cur_implicit_order_index != first_manual_order) return;
+
+	/* A "last departure" >= now means we've already calculated the separation */
+	TimerGameTick::Ticks now = TimerGameCalendar::date.base() * Ticks::DAY_TICKS + TimerGameCalendar::date_fract;
+	if (this->first_order_last_departure >= now) return;
+
+	/* Calculate round trip time from last departure and now - automatic separation waiting time is not included */
+	if (this->first_order_last_departure > 0) {
+		this->first_order_round_trip_time = now - this->first_order_last_departure;
+	}
+
+	/* To work out the automatic separation waiting time we need to know:
+	 *   - When the last vehicle departed or will depart
+	 *   - Average time to perform the order list (as sum/count)
+	 *   - How many vehicles are currently operating the order list
+	 *   - How many vehicles are currently queuing for the first manual order
+	 */
+	TimerGameTick::Ticks last_departure = 0;
+	TimerGameTick::Ticks round_trip_sum = 0;
+	int round_trip_count = 0;
+	int vehicles = 0;
+	int vehicles_queuing = 0;
+	Vehicle *v = this->FirstShared();
+	while (v != nullptr) {
+		last_departure = std::max(last_departure, v->first_order_last_departure);
+		if (v->first_order_round_trip_time > 0) {
+			round_trip_sum += v->first_order_round_trip_time;
+			round_trip_count++;
+		}
+		/* A stopped vehicle is not included; it might be stopped by player or parked in a depot */
+		if (!(v->vehstatus & VS_STOPPED)) {
+			vehicles++;
+			/* Count vehicles queing for the first manual order but not currently in the station */
+			if (v != this && v->cur_speed == 0 && v->cur_implicit_order_index == first_manual_order && !v->current_order.IsType(OT_LOADING)) {
+				vehicles_queuing++;
+			}
+		}
+		v = v->NextShared();
+	}
+
+	/* Calculate the mean round trip time and separation. The time spent queuing for stations is included in vehicle
+	 * round trip times.
+	 *
+	 * For a single shared order into a single station, this will increase and decrease the separation as needed.
+	 * However, for multiple shared orders into the same station, each shared order can back up the others and all
+	 * the routes will slowly increase their separation until every available vehicle is in the same queue.
+	 *
+	 * To counter this, we need to reduce the round trip time when vehicles are queuing. The scaling here reduces it
+	 * by twice the proportion of queuing vehicles, e.g. if 1/N vehicles are queuing, the RTT is reduced by 2/N.
+	 *
+	 * This is based on the idea that if only M/N vehicles are progressing, the non-queuing RTT is approximately M/N
+	 * of the measured RTT, because (N-M)/N of the RTT is spent in the queue, with the 'twice' coming from the need
+	 * to over-compensate rather than aim exactly for the ideal (which is very approximate here). */
+	TimerGameTick::Ticks round_trip_time = round_trip_count > 0 ? round_trip_sum / round_trip_count : 0;
+	int vehicles_moving_ratio = std::max(1, vehicles - 2 * vehicles_queuing);
+	TimerGameTick::Ticks separation = std::max(1, vehicles > 0 ? round_trip_time * vehicles_moving_ratio / vehicles / vehicles : 1);
+
+	/* Finally we can calculate when this vehicle should depart; if that's in the past, it'll depart right now */
+	this->first_order_last_departure = std::max(last_departure + separation, now);
+
+	/* Debug logging can be quite spammy as it prints a line every time a vehicle departs the first manual order */
+	if (_debug_misc_level >= 4) {
+		SetDParam(0, this->index);
+		Debug(misc, 4, "Orders for {}: RTT = {} [{:.2f} days, {} veh], separation = {} [{:.2f} days, {} veh, {} queuing] / gap = {} [{:.2f} days], wait = {} [{:.2f} days]", GetString(STR_VEHICLE_NAME), round_trip_time, (float)round_trip_time / Ticks::DAY_TICKS, round_trip_count, separation, (float)separation / Ticks::DAY_TICKS, vehicles, vehicles_queuing, now - last_departure, (float)(now - last_departure) / Ticks::DAY_TICKS, this->first_order_last_departure - now, (float)(this->first_order_last_departure - now) / Ticks::DAY_TICKS);
+	}
 }
 
 /**

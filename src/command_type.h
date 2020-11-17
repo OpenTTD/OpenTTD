@@ -239,6 +239,7 @@ enum Commands : uint16_t {
 	CMD_SKIP_TO_ORDER,                ///< skip an order to the next of specific one
 	CMD_DELETE_ORDER,                 ///< delete an order
 	CMD_INSERT_ORDER,                 ///< insert a new order
+	CMD_ORDER_AUTOMATIC_SEPARATION,   ///< set automatic separation
 
 	CMD_CHANGE_SERVICE_INT,           ///< change the server interval of a vehicle
 
