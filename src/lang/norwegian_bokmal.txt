@@ -866,6 +866,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ny{G "" "" tt} {STRING} er nå tilgjengelig!  -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Vis gruppe- og kjøretøyliste basert på kjøretøyets gruppe
 
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} godtar ikke lenger {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} godtar ikke lenger {STRING} eller {STRING}
@@ -1548,6 +1549,8 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Farge i avisen kommer i: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Året der avisannonseringene bli vist i farger. Før dette året blir alle annonseringer vist i svart/hvitt,
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start spillet i år: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Poengsum ved slutten av året: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Året spillet slutter med tanke på poeng. På slutten av dette året, vil firmaets poengsum bli lagret og tavlen med høyeste poengsummer vil vises. Spilleren kan fortsette å spille etter dette.{}Hvis dette er før start året, vil tavlen med høyeste poengsummer aldri vises.
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jevn økonomi (flere, mindre endringer): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Når denne er aktivert, endrer industriproduksjonen seg oftere, og i mindre trinn. Denne innstillingen har vanligvis ingen effekt hvis industriene er fra en NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillat aksjekjøp i andre firmaer: {STRING}
@@ -3119,6 +3122,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Endre bynavnet
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN}s bystyre
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Område
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Vurdering av transportfirma:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Handlinger tilgjengelig:
@@ -3389,6 +3393,10 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinavn - klikk på navn for å gå til industri. Ctrl+klikk åpner et nytt tilleggsvindu over industrien
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Godtatte varer:{SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produserte varer: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Alle varetyper
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ingen
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -4164,6 +4172,8 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Velg det
 STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikke endre skriptet
 
+STR_SCREENSHOT_CAPTION                                          :WHITE}Ta skjermbilde
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Skjermbilde med maksimal zoom
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre
