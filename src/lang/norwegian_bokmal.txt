@@ -937,6 +937,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksikansk peso
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny Taiwan Dollar (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi (INR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kjøretøy
@@ -1312,6 +1313,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Vis byers innby
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Vis inbyggertallet i byer i tittelfeltet på kartet
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graflinjenes tykkelse: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Linjebredde i grafene. En tynn linje er mer presis å lese av, mens en tykkere linje er lettere å se, og farger er lettere å skille
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Legg til en linje i bygg kjøretøy vinduet, som viser hvilken NewGRF det valgte kjøretøyet kommer fra.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Landskap: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Landskap definerer grunnleggende spill-scenarier med forskjellige laster og byers vekstkrav. NewGRF og spill-skript tillater imidlertid finere kontroll
@@ -1551,6 +1553,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Året der avisa
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start spillet i år: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Poengsum ved slutten av året: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Året spillet slutter med tanke på poeng. På slutten av dette året, vil firmaets poengsum bli lagret og tavlen med høyeste poengsummer vil vises. Spilleren kan fortsette å spille etter dette.{}Hvis dette er før start året, vil tavlen med høyeste poengsummer aldri vises.
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldri
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jevn økonomi (flere, mindre endringer): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Når denne er aktivert, endrer industriproduksjonen seg oftere, og i mindre trinn. Denne innstillingen har vanligvis ingen effekt hvis industriene er fra en NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillat aksjekjøp i andre firmaer: {STRING}
@@ -3391,7 +3394,10 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrier
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportert){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} og {NUM} flere...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinavn - klikk på navn for å gå til industri. Ctrl+klikk åpner et nytt tilleggsvindu over industrien
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Godtatte varer:{SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produserte varer: {SILVER}{STRING}
@@ -4173,7 +4179,10 @@ STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikke endre skriptet
 
 STR_SCREENSHOT_CAPTION                                          :WHITE}Ta skjermbilde
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalt skjermbilde
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Skjermbilde med maksimal zoom
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Skjermbilde av hele kartat
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Høydekart skjermbilde
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre
