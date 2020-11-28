@@ -1553,11 +1553,13 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Året der avisa
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start spillet i år: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Poengsum ved slutten av året: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Året spillet slutter med tanke på poeng. På slutten av dette året, vil firmaets poengsum bli lagret og tavlen med høyeste poengsummer vil vises. Spilleren kan fortsette å spille etter dette.{}Hvis dette er før start året, vil tavlen med høyeste poengsummer aldri vises.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldri
 STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jevn økonomi (flere, mindre endringer): {STRING}
 STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Når denne er aktivert, endrer industriproduksjonen seg oftere, og i mindre trinn. Denne innstillingen har vanligvis ingen effekt hvis industriene er fra en NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillat aksjekjøp i andre firmaer: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Når aktivert, tillates kjøp og salg av selskapers aksjer. Aksjer vil kun være tilgjengelig selskaper som når en viss alder
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Sett minimum levetid for et selskap, før andre kan kjøpe og selge aksjer fra dem.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prosentandel av etappe-overskudd som skal betales i innmatingssystem: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Andel av inntekten gitt til de mellomliggende etapper i et overføringssystem, noe som gir mer kontroll over inntektene
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Når du drar en linje, plasser signaler hver: {STRING}
@@ -2169,6 +2171,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Feil pas
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Tjeneren er full
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du er bannlyst fra denne tjeneren
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du ble kastet ut av spillet
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Grunn: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Juksing er ikke tillatt på denne tjeneren
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du sendte for mange kommandoer til serveren
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Du brukte for lang tid på å skrive inn passordet
@@ -3126,6 +3129,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Endre bynavnet
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN}s bystyre
 STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Område
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Vis zonene innenfor de lokale myndigheters grenser
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Vurdering av transportfirma:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Handlinger tilgjengelig:
@@ -3396,6 +3400,8 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportert){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} og {NUM} flere...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinavn - klikk på navn for å gå til industri. Ctrl+klikk åpner et nytt tilleggsvindu over industrien
@@ -4181,8 +4187,10 @@ STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikke end
 STR_SCREENSHOT_CAPTION                                          :WHITE}Ta skjermbilde
 STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normalt skjermbilde
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Skjermbilde med maksimal zoom
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Standard zoomet skjermbilde
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Skjermbilde av hele kartat
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Høydekart skjermbilde
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Oversiktskart skjermbilde
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametre

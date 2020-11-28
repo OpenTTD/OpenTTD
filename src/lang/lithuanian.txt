@@ -837,6 +837,7 @@ STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLA
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Nėra muzikos
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}„{STRING}“
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Takelis
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Pavadinimas
@@ -2793,6 +2794,7 @@ STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Krovinys
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Geležinkelių greičio limitas: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Kelio greičio limitas: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Tramvajaus greičio limitas: {LTBLUE}{VELOCITY}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Akmenys
@@ -2920,6 +2922,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Žaidimo
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nėra informacijos
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}Plėtiniai: {WHITE}{STRING}
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Perrašyti bylą
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Įveskite išsaugomo žaidimo vardą
 
@@ -3241,6 +3244,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Paperka
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Tikslai
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globalūs tikslai
+STR_GOALS_SPECTATOR                                             :Visuotiniai tikslai
 STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Visuotiniai tikslai:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nieko -
@@ -3554,6 +3558,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Iškelti visas 
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pervadinti grupę
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :Šio mėnesio pelnas:
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nauji lokomotyvai
