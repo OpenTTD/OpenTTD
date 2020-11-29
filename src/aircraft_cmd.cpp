@@ -908,7 +908,11 @@ static bool AircraftController(Aircraft *v)
 			v->cur_speed = 0;
 			if (--u->cur_speed == 32) {
 				if (!PlayVehicleSound(v, VSE_START)) {
-					SndPlayVehicleFx(SND_18_HELICOPTER, v);
+					SoundID sfx = AircraftVehInfo(v->engine_type)->sfx;
+					/* For compatibility with old NewGRF we ignore the sfx property, unless a NewGRF-defined sound is used.
+					 * The baseset has only one helicopter sound, so this only limits using plane or cow sounds. */
+					if (sfx < ORIGINAL_SAMPLE_COUNT) sfx = SND_18_HELICOPTER;
+					SndPlayVehicleFx(sfx, v);
 				}
 			}
 		} else {
