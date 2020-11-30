@@ -929,7 +929,5 @@ void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fo
 		sld = (abstract_filetype == FT_HEIGHTMAP) ? &_load_heightmap_dialog_desc : &_load_dialog_desc;
 	}
 
-	_file_to_saveload.abstract_ftype = abstract_filetype;
-
 	new SaveLoadWindow(sld, abstract_filetype, fop);
 }
