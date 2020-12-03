@@ -919,10 +919,9 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	IConsolePrintF(CC_DEFAULT, "Connecting to %s...", ip);
 	if (company != nullptr) {
 		join_as = (CompanyID)atoi(company);
-		IConsolePrintF(CC_DEFAULT, "Connecting as company id %s ...", company);
+		IConsolePrintF(CC_DEFAULT, "Connecting as company id %d ...", join_as);
 		/* Check if we have a valid company id! */
 		if(!Company::IsValidID(join_as) && join_as != COMPANY_SPECTATOR) {
-			IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 			return true;
 		}
 		IConsolePrintF(CC_DEFAULT, "    company-no: %d", join_as);
