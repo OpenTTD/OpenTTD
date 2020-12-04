@@ -615,11 +615,12 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetCompanyHQ():                    33153
   BuildCompanyHQ():                  false
   GetLastErrorString():              ERR_AREA_NOT_CLEAR
-  GetAutoRenewStatus();              false
+  GetAutoRenewStatus();              true
   SetAutoRenewStatus(true);          true
   GetAutoRenewStatus();              true
   SetAutoRenewStatus(true);          true
   SetAutoRenewStatus(false);         true
+  GetAutoRenewStatus();              false
   GetAutoRenewMonths();              6
   SetAutoRenewMonths(-12);           true
   GetAutoRenewMonths();              -12
