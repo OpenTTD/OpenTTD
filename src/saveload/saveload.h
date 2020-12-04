@@ -873,7 +873,18 @@ static inline bool IsNumericType(VarType conv)
  */
 static inline void *GetVariableAddress(const void *object, const SaveLoad *sld)
 {
-	return const_cast<byte *>((const byte*)(sld->global ? nullptr : object) + (ptrdiff_t)sld->address);
+	/* Entry is a global address. */
+	if (sld->global) return sld->address;
+
+	/* Entry is a null-variable, mostly used to read old savegames etc. */
+	if (GetVarMemType(sld->conv) == SLE_VAR_NULL) {
+		assert(sld->address == nullptr);
+		return nullptr;
+	}
+
+	/* Everything else should be a non-null pointer. */
+	assert(object != nullptr);
+	return const_cast<byte *>((const byte *)object + (ptrdiff_t)sld->address);
 }
 
 int64 ReadValue(const void *ptr, VarType conv);
