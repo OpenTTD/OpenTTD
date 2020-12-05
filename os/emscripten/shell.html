@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>OpenTTD</title>
+    <style>
+      body {
+        font-family: Tahoma, Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+      }
+
+      div.background {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAhCAIAAAAJYVFIAAASn0lEQVRYw02Xx45lR4JYw0dcf+/zL01ZkkWiOTJQYzYCJAGj/98IkIZsNlnMrHTPXG/ChxbczPmDsznAgT//7w9P9uHH/d+k+DXWP7zIX31wyXSkhxPAzr4c86Ji+wdX307kj3bQO/q9Fg/d9SYunzN3L+m3bpJr/JmhCK+/dY8ipLXvCpT3MbxZmhDKF9/n+VHWzQqxSwY3ltTErojPcPnqZYrE6GW6uKZXXRrupB/jaordcbFDpxpCQAZvRik9q+lSLsYaOnJVlGsk8bCcE6Yz/P2/vtulh6Eeete7jsbrUUQhTFlK7ixpUdYxvxrtBduyntot+3zRD2l4J8G3HN5r/s2cCw10TArFH+C8tyNKt9rNPDBJYRays23TGfW6iVnSgDFxtOFhy4vxOoZFj91IMbckcKK3mCmKOGaamJUOo+qBUTjGW0ilXzwGBHhkvc/5Os6BnJy/rB2WLMP4/b/syf4Pw69SBaqzMOSDG9fpLT88zo+rBN2/6X/m4eNZfWXTyudPpF+77Fk54zoKozks0fbeE58b2MsaTOTC3RGktW2z1lwgX6TZRJnSpANdmUbrdGObgS5mNJpjokR6YXqDTI7L1171KnR+iHkqOc4D1THP4txSGIkcCpqKDB7WK2V0X6thMibo7Y4kCcfFMdakti83hkzRtg9TynTeoD8j9bGF3xJS4qRhvsJxm/K98HtfPA3N/eHGuokPZla070ctQNXLgRRdRd9b9srsAaQNmjPMHJEY86Uk9wvqbfSC5S6BOWQdnAOmKgI3FvUAAmUX30dKQpT1tkuwkH4h7TACF3u0eM1ULWbTDJ06X+dbNd6Ujn9wDFbzKcK3/2O2z0dyfF3jL9ep2X1S6WH55z/kZTn9zxH/Qc+h2Se3Z/lcRcfLDJ/N64avXnb0y9k806nkqrJkuamOUHTdqAWokkqXYqN838sMc5mJ1aAkATGN59gfic9w9aJqJvA63VgUuA0SBe6hcgrxyMI5i/CGgopVM7aEmIKjUg+gD29eEyTT9Y3nn4HBe9jfBRP5+Io32ztyfEn0j/111KS3LztDutzcfPwJPE6bt2mIYVrLXpL+VvwNLbsafMvhB599i+1NyE+wqLX1rGjpchfaLN5fwLQz/BXJLRbnSc48VDSede8DlhSmtXrF0RyRNS0bL7PF1aqluiWBTcESSGywxPO6C09hKZXXz9OjHDRymGUyy5IkWlk0XbshkHldxg4NYyfx9nOJs2E50yl+uX9PdR2n5N5XD8qolN5s02NHHsW8aeZR4Izuvo3zYltqUE980Uw9qNdr8W5+E3Ov0eaN6KPEL2DeQhtb3ObwjoKkXdogCZhyF53REvtgUEiUnYDjHsrJJDgfwMKQkBFdoUhxVPQdQIDGqY18nIttfrcImiJdofxCIceAEZ/asWjnTkmPf/jX95Zeqzudmu/DuLHl1/mCfZ8NbkrwCkE8uqumfekPdvHLRWhz4LuXUK/ifZ2C+5CdDH8dVcXWp0kpAapAxlqeKEhsExvxQpDAYp5Rm8YrxKWgxaQ0BhEkEgUxLJLElwztso1jsNRgID7t5WhQhzQFSKeHxakQgOkVnXxteivNzIjwwMLim4WSghxv/t6YpwNzNzP/hfrVZboq2otNH8WB+83Mf2PCrOAPcZQl799ad3XoqrXTZLoRP3lD5guJwQ3JnyCRevwwutcMHAt8y9fnLpxify9WrbxEqK9CchJha0gt3cBh+ZcDYdJ3qUM9tDkyea/6pbN4SQJ0SZJl+KitwkiMiyOBrCokeMTcgSbz5Ot5tjHYEeLxdz/+yxX9kdJ1sh7DUlbHabh8wG0S+ryGD0v/XpqxOPRQ5e0j2dzZInzM0fGtrSlIpm4e2HN2bPRb1UvtXZYWUxDnpQlIbRc3e3Eiy7F3bX7X+65ALvNsSOFx1DX1VaAt8eUSlqhSp7YZG+OhTpP8hngDR0AShqJBDShtPZJ9H2mvHTnBgJHccLcx1nuLYrDD67/XXHhmt6M9Ubd+qt8O0SasHlDRahMCbpJ5z90NBMSVf87fSh0/yRrsi1s1qDiLJejMWznRxiOdlS2sV5CaRGyNeAJDkoJ3fHP1fWScjlhlxNtG3GGXBd5QGHkkURBNN3fTkph14IpYka6kjZJTb+Vg41VvyQCnHRm2NGpSliDAYcAW9wFJYz0ECLIB7/8zds/HGv5ZgS9s99Bd3qWM1fOlDD/APo5W4wT7mFRS/NO8rdDm4i8btLmoDnoLXfF4eY5d3EFionlX7WBE1+0yMZAGMoK0ozAD81pPAYiRwrSfZ5BcoGPdOBt69l3qcOfZLOSa55IXM9SRDRoBESU2TRPTZK6N49UkxQm7dQTWDo8w4AA9BCjNkApw1hb/9L8SFg452b2oX5rTu2PGF/Hvi7Ip3vjqwb5tNV5SsnKk9VME4znle3NN4Pr0Ol+N8xUqA5PpN49wIrvkoXvcxLfprpGnWNh7gsTC/gjZGRJLXSntTPWO+HRxne+zZhnSzq3ZuwCEHfmsbSxyItzSW2q2QXSEI5LP0MexfTe7xmfPCS6NVwhQD6yzKHabtNC4/NGfrxUsfhGRX9P9wn9pz5+yqhdhZXCDso60B599i+yn9L6Wz1V0uHBSqUsMxJKo7erTBLtyLHRRbid6Snw5gzMx+xHU0e6KfWzAaC8lxN7yi7La9lRPFinRmGZb7BGp0LYBxdlpbIPlNErzMKMWBC61AZ5GYUezEWILsDEdlWaeQ9ctI/V5mgGpu2la8Oeffsblr4n6ch2bFK+v8zXgywr8sPDf7pq4rzdo/2bPW06T2Z9juofLZqa/D+CaZB7JVF6SkZ09Mvlugm2Fy4YsJccpXLiBo6ZnYe5A2iWVfXmxuN+wEAEA8vd9upZxNVuJmmGxbZqyzerGUcxnNbs+inJt8GBRRxAhLACPsdpGKxU0Wkac8xUT1lkEUSCUY3K/3t7MYK5Qcl3ORJMxmY++eEjM99f0lPA9d/sGPcakaOY2QqUUvwv9bjFTDj4O8Fykq5IdyJ+DYSqK9r2cgWIhffUa+T73fa4nH6HNw2sPkNkUO0nbmV6YOwhzp+zc+6agR15ITDDhdmqN9TKOcmJ2cRakrBDXdvCTHEz8BGQ+awfjDmk8ThZBRojvF4A//Pd2+mObvHs5PX0Qu8c1/uLLx8R8DwOJV2OQBdk8JPa9ZF8XrRO8buYu3XWZfy/ZozQSRDUDeZsMKLa6oTrMmvVoWJV3ciJ1UAwF8jQ/7LNjVjoGYmkXG3SYiOOnwCY8rDko4kqhIGY1Db4WYR/oWC9GGpkSBoDqXc3ANvXvaTYB44PFwCPKgoiY6zKIO7zZ3U/xi3nZxrsH93pwxZ+J+Z5uH5/eYgcv1yZLignInJodjlvqSxx3ZHy30AdzKjXQJfyk2TfY54ibIIVBcivek7KZTzEaKiWaPC932Y2eTK97M0Keyii1UMUROEJiQNJSHCu7AMfGRcVwK/2IXRrAwkEC6fzXRTAqAm+8pm7MeKYxws47QhkSi9UBJ19u83Uzhh7Xx7Kqks30/Jo6dNFTyeJWpFc6foSe4u2fl1oGcXWnbXy8MnnvslOJ3/HNmaqb+NAzcxsfhtv802l61nV8kQ2BZH8PKExxcXbJm7IG6xhM+ax1Eq/iTataxuRd767E5ZPp/YSRGKCmgA4KDXYkAGngcFGhOBLWGzmayQ0IJJh5p8Mwasta53N89zHG6bCGPzXoAaZvZPguY9SSCx4oTqbE/DCz34nPZ3tFzXYykq97+bQW+4t8LWv7wvWNpN/QfBivRsKmfXWnvv9Pao4OPn1v0XwznJ0Eta1L4zyteuQYkfkULsiUCxgxJiz6a99UHKUROIK4m2Sa54IDNM52wf2oJLSp1taKpozWiGoEKGYQ+oA9w96jYl10PQwAFAVI9U8wYLL7w73t8qIqywgiCP4DWQ7C6ZBmVWg+lh+m3K+Rp7H+bqrtwF70pQyaff99NPw3hvgncPkh6Ahvz77PUTrusoNb0vi23/x8mfTy68vv96cBjY/jmUDWh5lBOuj8/6kORbQrSREIQp6l4x01SRrxqqTeA6VAFNFVmUSCKsQNYiIR+N3Pe5xelhNF6cj85kX9kuaAgyPdPdr6biL/NK8bNTqQDGGOYTyHObb5t1q9Mnnfg9O37gnMCAYkqimLt3GUyVCfr4soplW8HuGDPEco72N0XFqwhN5cM+N05Iv7d7zHxfNocKCz1hPs1uI+Mve9axgscLwwKLDQoDxZaFA0sVDAbsuygUBhvAKBYGhkuEKT4vc/H8/jmeo0DLkrv+LmYGlP3Xq0J2org5tRbvjuOVw2aHNJ3KdQvMb2w1vdZ7xkWZ/IbZGvs/dXZm6hE3j9jag9ZpIsRz2z61QHRXGk1AAnVG9uPNYR9wdUtAoMHK038Y1mHVJsnjwEjJetDJ1qsfELBHxajG6jAt6HIR+vNqRXihPjlbcYqZVDo8B5DLb4/ucdTi9D6DfZraV1xm+vc5OglSU1davr1KTlJbXfpfc1W94v9KvQ70/yATMDRgqjubiV0wXSVJ3ryPKH5SXW/E34G03eaHVelM74DnKZ7ucc36LpYOOLHLVt0lkbihKK+OJ7idsEFEiypSFy3pJyRIqwWGcix0Kb+Gm2HCSLRT00GSauM2fvEJwyHVrIDf78b8v0x5aqwlVfE/NlZr9K5VK8+csBxY1727v0G57eQc+u89V0mKrMkqXKdlE4zLaJ6ObcdyXN87XhuGJuT6u3Zpy0tgX4YNlJX2Oy3Cr2ggLu52WGLa36KLMcFpq8IdGX+D7l2+Smm+lZgatxSkFZiRvuq7mBRG94OkLe2GU/acUAr/CHqJgX9gJNmWYI3378coVfD9+p+c8dZ5GhlxX88qZ+K8J3C/891p9a+LTe4X98ew0jsmReZftbOHZwEaTCkNRznWzbWZp+zD1sDTlhn4J5HYPtICcKEuF3A7xQwtLCQh9nlTVy6+sK9GnvLuNSSgmiqqVIjC8iyVwVHXJwP0zSGmhmN4Q3truCORpapB2LYkeSsxxVmFbGAUNP2CX4878t7mVrSJfx21n8cif+q1YBxhfmVwY31FXP9WVeTGlvVHwVcpPeXiXcPzUtmFFye571wuePsE9F9ZKAuwAV9qmijyiwxU4cJYY/YTHxUC5ugFZcujHBMatqUFxMsB4MQmeRuUUgcunr0mIderksBd0hhwkhnilZM2mVoVOUTlSJYEkUJ4HPTplYv4tKg+zbJxDQX+nsetCy/+Oh7Xsw0H83r5uJ/JYVPl2OdHfJVxYj0A/KuXB7i9e7fPi6ZvUtXb0u+SO399hH/zHEhwMbbFA2uPP2NLxCuWHFANEKuHQaAZ7epdPHgkcuuxoyS/qoOoyE9FIgIWU4a6klfep709vF0ImrMidluUp94EoCAAAqOpgNfljj9d9rmHcABua2o70m8jsI8OguuN6/6uebmuX590Z5PySjnav0EFi/XFCMbpR4iFkVyle83KTgeDUPYnPh+k7iF2YPmryBeZOiNKlmTooU71vzfL3mJclA8rC4gYMC5Y0dhDGA0xgS5RSCxMZRHobCi74Bp0nrFKWUBF4bJoVW6UtTUxytttBKh4c7jnNN3vDxv2D7dETpZOhZquA7pmZFdfpqn77b/jh5Hr17sfHVT7HBc0KruFoa0whUdnMvUC78jqxegBWQ9/Kl0PxtkLJXTRruxKoda7W4oR4iy15YMlW0cuK17wrGfYQjjyRIWrwUgPYcVdnG24mRaBEpd13mgxUhq7aBIb5gyNeZ5xIH5IAKlhkfQPkqOLbO4c8//s2vvhYl++03Veo7BBAAYPVjHacuXg+yEeepg9ddUayquxmpfLRXVG+Sm+soZeA1CzmO5qASarbJTaMumbJ6I9578QbmjY8bEQ40vsZhO06WgHiSiwaXHB0DbVeTc/XaZaOXEXGFhj3FMTF7Cc8DeqGxYT5SdTr5wdApqSS1HBJDIWGuQpZbqzW9YJ/h4hBl9O7//v6cZmiX3zXkT8W6WH3m9jDay+C7A/8BVM80FDgeu+cQxJjyPVw2xU6259t4cx4fY8VeDX9B023vryKTrieDkhxngUx1L9LCUBBDNuk+KCe5LpFoOVhPXKMoicJxAi3GeNEKeu74hfjUGszD2kLDYlKJG36yVk80KbWFWgbAew/lX39iRox3n8rfh3982f+Npg3z69FeAwihp674EyCL66PgcbKegMxHc+l9V4LPij9cOmFBW5FS+qb3bQY+RO6Wrt58m0CqgxI8Uxxn+hrT/FVfYlb0fb8GcV+JHclGDjbE5zxfUOA4rSNcONwtvmMgX7TGWVOwtUfT7JtAB4LIxK1NFj8TqY1mPZBRViBf1EoF7Pj/BxpbA439ytNwAAAAAElFTkSuQmCC");
+        border: 0px none;
+        display: flex;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+      }
+
+      div.overlay {
+        height: 40px;
+        margin: 0 auto;
+        opacity: 0;
+        pointer-events: none;
+        position: absolute;
+        text-align: center;
+        transition: opacity 0.3s;
+        width: 100%;
+        z-index: 3;
+      }
+      div.overlay > div {
+        pointer-events: none;
+      }
+
+      div.background > div, div.overlay > div {
+        margin: auto;
+      }
+
+      #filesystem {
+        background-color: #e00000;
+        border: 1px solid #fc6458;
+        color: #fcf880;
+        display: none;
+        outline: #a00000;
+        padding: 0 4px;
+        width: 600px;
+      }
+
+      #title, #message {
+        background-color: #838383;
+        border: 1px solid #a8a8a8;
+        outline: 1px solid #626262;
+        padding: 0 4px;
+        min-width: 260px;
+      }
+
+      #box.error #title, #box.error #message {
+        background-color: #e00000;
+        border: 1px solid #fc6458;
+        outline: #a00000;
+      }
+      #box.error #message {
+        color: #fcf880;
+      }
+
+      #title {
+        color: #fcfcfc;
+        height: 20px;
+        text-shadow: 1px 1px #101010;
+      }
+      #message {
+        color: #101010;
+        height: 54px;
+        padding: 4px 4px;
+      }
+
+      canvas.emscripten {
+        border: 0px none;
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background">
+      <div id="box">
+        <div id="title">
+          Loading ...
+        </div>
+        <div id="message">
+        </div>
+      </div>
+    </div>
+    <div class="overlay" id="overlay">
+      <div id="filesystem">
+        Warning: savegames are stored in the Indexed DB of your browser.<br/>Your browser can delete savegames without notice!
+      </div>
+    </div>
+    <div>
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+    </div>
+
+    <script type='text/javascript'>
+      var statusElement = document.getElementById('status');
+      var progressElement = document.getElementById('progress');
+      var spinnerElement = document.getElementById('spinner');
+
+      var Module = {
+        preRun: [],
+        postRun: [],
+        arguments: [],
+        totalDependencies: 42,
+        doneDependencies: 0,
+        lastDependencies: 1,
+
+        print: function(text) {
+            if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+            console.log(text);
+        },
+
+        printErr: function(text) {
+            if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+            console.error(text);
+        },
+
+        canvas: (function() {
+          var canvas = document.getElementById('canvas');
+
+          // As a default initial behavior, pop up an alert when webgl context is lost. To make your
+          // application robust, you may want to override this behavior before shipping!
+          // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
+          canvas.addEventListener("webglcontextlost", function(e) { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
+
+          return canvas;
+        })(),
+
+        setStatus: function(text) {
+          var m = text.match(/^([^(]+)\((\d+(\.\d+)?)\/(\d+)\)$/);
+
+          if (m) {
+            text = "(" + m[2] + " / " + m[4] + ") " + m[1];
+          }
+
+          document.getElementById("message").innerHTML = text;
+        },
+
+        monitorRunDependencies: function(left) {
+          /* If it goes up, a new dependency was added; down means one is
+           * removed. We only track the latter. */
+          if (left < Module.lastDependencies) {
+            Module.doneDependencies += 1;
+          }
+          Module.lastDependencies = left;
+
+          total = Module.totalDependencies;
+          doing = Module.doneDependencies + 1;
+          if (doing > total) {
+            doing = total;
+          }
+
+          document.getElementById("title").innerHTML = "(" + doing + " / " + total + ") Loading ...";
+          document.getElementById("message").innerHTML = "Preparing game ...";
+        },
+
+        onExit: function() {
+          document.getElementById("canvas").style.display = "none";
+
+          document.getElementById("title").innerHTML = "Thank you for playing!";
+          document.getElementById("message").innerHTML = "We hope you enjoyed OpenTTD!<br/><br/>Reload your browser to restart the game.";
+        },
+
+        onAbort: function() {
+          document.getElementById("canvas").style.display = "none";
+
+          document.getElementById("box").className = "error";
+          document.getElementById("title").innerHTML = "Crash :(";
+          document.getElementById("message").innerHTML = "The game crashed!<br/><br/>Please reload your browser to restart the game.";
+        },
+
+        onWarningFs: function() {
+          document.getElementById("filesystem").style.display = "inline-block";
+          document.getElementById("overlay").style.opacity = 1;
+          setTimeout(function() {
+            document.getElementById("overlay").style.opacity = 0;
+            setTimeout(function() {
+              document.getElementById("filesystem").style.display = "none";
+            }, 300);
+          }, 10000);
+        }
+      };
+
+      window.onerror = function() {
+        Module.onAbort();
+      };
+    </script>
+    {{{ SCRIPT }}}
+  </body>
+</html>

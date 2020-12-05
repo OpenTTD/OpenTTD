@@ -15,6 +15,10 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
 endif()
 
+if (EMSCRIPTEN)
+    set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/os/emscripten/cmake")
+endif()
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_OSX_DEPLOYMENT_TARGET 10.9)
 
@@ -230,6 +234,39 @@ if(APPLE)
         -DWITH_COCOA
         -DENABLE_COCOA_QUARTZ
     )
+endif()
+
+if(EMSCRIPTEN)
+    add_library(WASM::WASM INTERFACE IMPORTED)
+
+    # Allow heap-growth, and start with a bigger memory size.
+    target_link_libraries(WASM::WASM INTERFACE "-s ALLOW_MEMORY_GROWTH=1")
+    target_link_libraries(WASM::WASM INTERFACE "-s INITIAL_MEMORY=33554432")
+
+    # Export functions to Javascript.
+    target_link_libraries(WASM::WASM INTERFACE "-s EXPORTED_FUNCTIONS='[\"_main\", \"_em_openttd_add_server\"]' -s EXTRA_EXPORTED_RUNTIME_METHODS='[\"cwrap\"]'")
+
+    # Preload all the files we generate during build.
+    # As we do not compile with FreeType / FontConfig, we also have no way to
+    # render several languages (like Chinese, ..), so where do you draw the
+    # line what languages to include and which not? In the end, especially as
+    # the more languages you add the slower downloading becomes, we decided to
+    # only ship the English language.
+    target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_BINARY_DIR}/baseset@/baseset")
+    target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_BINARY_DIR}/lang/english.lng@/lang/english.lng")
+    target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/bin/ai@/ai")
+    target_link_libraries(WASM::WASM INTERFACE "--preload-file ${CMAKE_SOURCE_DIR}/bin/game@/game")
+
+    # We use IDBFS for persistent storage.
+    target_link_libraries(WASM::WASM INTERFACE "-lidbfs.js")
+
+    # Use custom pre-js and shell.html.
+    target_link_libraries(WASM::WASM INTERFACE "--pre-js ${CMAKE_SOURCE_DIR}/os/emscripten/pre.js")
+    target_link_libraries(WASM::WASM INTERFACE "--shell-file ${CMAKE_SOURCE_DIR}/os/emscripten/shell.html")
+
+    # Build the .html (which builds the .js, .wasm, and .data too).
+    set_target_properties(openttd PROPERTIES SUFFIX ".html")
+    target_link_libraries(openttd WASM::WASM)
 endif()
 
 if(NOT PERSONAL_DIR STREQUAL "(not set)")

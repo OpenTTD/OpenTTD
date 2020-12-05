@@ -39,6 +39,9 @@
 
 #include "../safeguards.h"
 
+#ifdef __EMSCRIPTEN__
+#	include <emscripten.h>
+#endif
 
 static void ShowNetworkStartServerWindow();
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
@@ -475,6 +478,14 @@ public:
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
 		this->SetFocusedWidget(WID_NG_FILTER);
 
+		/* As the master-server doesn't support "websocket" servers yet, we
+		 * let "os/emscripten/pre.js" hardcode a list of servers people can
+		 * join. This means the serverlist is curated for now, but it is the
+		 * best we can offer. */
+#ifdef __EMSCRIPTEN__
+		EM_ASM(if (window["openttd_server_list"]) openttd_server_list());
+#endif
+
 		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		this->server = this->last_joined;
 		if (this->last_joined != nullptr) NetworkUDPQueryServer(this->last_joined->address);
@@ -614,6 +625,12 @@ public:
 		/* 'NewGRF Settings' button invisible if no NewGRF is used */
 		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_SEL)->SetDisplayedPlane(sel == nullptr || !sel->online || sel->info.grfconfig == nullptr);
 		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_MISSING_SEL)->SetDisplayedPlane(sel == nullptr || !sel->online || sel->info.grfconfig == nullptr || !sel->info.version_compatible || sel->info.compatible);
+
+#ifdef __EMSCRIPTEN__
+		this->SetWidgetDisabledState(WID_NG_FIND, true);
+		this->SetWidgetDisabledState(WID_NG_ADD, true);
+		this->SetWidgetDisabledState(WID_NG_START, true);
+#endif
 
 		this->DrawWidgets();
 	}

@@ -1154,3 +1154,14 @@ bool IsNetworkCompatibleVersion(const char *other)
 	const char *hash2 = ExtractNetworkRevisionHash(other);
 	return hash1 && hash2 && (strncmp(hash1, hash2, GITHASH_SUFFIX_LEN) == 0);
 }
+
+#ifdef __EMSCRIPTEN__
+extern "C" {
+
+void CDECL em_openttd_add_server(const char *host, int port)
+{
+	NetworkUDPQueryServer(NetworkAddress(host, port), true);
+}
+
+}
+#endif

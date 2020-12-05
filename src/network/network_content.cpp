@@ -23,6 +23,10 @@
 #include <zlib.h>
 #endif
 
+#ifdef __EMSCRIPTEN__
+#	include <emscripten.h>
+#endif
+
 #include "../safeguards.h"
 
 extern bool HasScenario(const ContentInfo *ci, bool md5sum);
@@ -289,6 +293,13 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uin
 {
 	bytes = 0;
 
+#ifdef __EMSCRIPTEN__
+	/* Emscripten is loaded via an HTTPS connection. As such, it is very
+	 * difficult to make HTTP connections. So always use the TCP method of
+	 * downloading content. */
+	fallback = true;
+#endif
+
 	ContentIDList content;
 	for (const ContentInfo *ci : this->infos) {
 		if (!ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) continue;
@@ -534,6 +545,10 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 			ExtractTar(GetFullFilename(this->curInfo, false), BASESET_DIR);
 			unlink(GetFullFilename(this->curInfo, false));
 		}
+
+#ifdef __EMSCRIPTEN__
+		EM_ASM(if (window["openttd_syncfs"]) openttd_syncfs());
+#endif
 
 		this->OnDownloadComplete(this->curInfo->id);
 	} else {
