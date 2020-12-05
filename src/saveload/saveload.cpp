@@ -1619,7 +1619,7 @@ void SlObject(void *object, const SaveLoad *sld)
 	}
 
 	for (; sld->cmd != SL_END; sld++) {
-		void *ptr = sld->global ? sld->address : GetVariableAddress(object, sld);
+		void *ptr = GetVariableAddress(object, sld);
 		SlObjectMember(ptr, sld);
 	}
 }
