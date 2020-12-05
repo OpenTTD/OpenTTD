@@ -13,6 +13,9 @@
 #include "string_func.h"
 #include "fileio_func.h"
 #include <fstream>
+#ifdef __EMSCRIPTEN__
+#	include <emscripten.h>
+#endif
 
 #if (defined(_POSIX_C_SOURCE) && _POSIX_C_SOURCE >= 199309L) || (defined(_XOPEN_SOURCE) && _XOPEN_SOURCE >= 500)
 # include <unistd.h>
@@ -113,6 +116,10 @@ bool IniFile::SaveToDisk(const char *filename)
 	if (rename(file_new.c_str(), filename) < 0) {
 		DEBUG(misc, 0, "Renaming %s to %s failed; configuration not saved", file_new.c_str(), filename);
 	}
+#endif
+
+#ifdef __EMSCRIPTEN__
+	EM_ASM(if (window["openttd_syncfs"]) openttd_syncfs());
 #endif
 
 	return true;

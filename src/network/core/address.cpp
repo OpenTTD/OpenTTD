@@ -299,7 +299,15 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 
 	if (!SetNoDelay(sock)) DEBUG(net, 1, "[%s] setting TCP_NODELAY failed", type);
 
-	if (connect(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
+	int err = connect(sock, runp->ai_addr, (int)runp->ai_addrlen);
+#ifdef __EMSCRIPTEN__
+	/* Emscripten is asynchronous, and as such a connect() is still in
+	 * progress by the time the call returns. */
+	if (err != 0 && errno != EINPROGRESS)
+#else
+	if (err != 0)
+#endif
+	{
 		DEBUG(net, 1, "[%s] could not connect %s socket: %s", type, family, strerror(errno));
 		closesocket(sock);
 		return INVALID_SOCKET;

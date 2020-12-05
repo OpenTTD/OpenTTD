@@ -26,7 +26,6 @@
 #include "safeguards.h"
 
 static const int ASCII_LETTERSTART = 32; ///< First printable ASCII letter.
-static const int MAX_FONT_SIZE     = 72; ///< Maximum font size.
 
 /** Default heights for the different sizes of fonts. */
 static const int _default_font_height[FS_END]   = {10, 6, 18, 10};
@@ -201,6 +200,8 @@ bool SpriteFontCache::GetDrawGlyphShadow()
 #if defined(WITH_FREETYPE) || defined(_WIN32)
 
 FreeTypeSettings _freetype;
+
+static const int MAX_FONT_SIZE = 72; ///< Maximum font size.
 
 static const byte FACE_COLOUR = 1;
 static const byte SHADOW_COLOUR = 2;

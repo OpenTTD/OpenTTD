@@ -10,6 +10,55 @@ env:
   CTEST_OUTPUT_ON_FAILURE: 1
 
 jobs:
+  emscripten:
+    name: Emscripten
+
+    runs-on: ubuntu-20.04
+    container:
+      # If you change this version, change the number in the cache step too.
+      image: emscripten/emsdk:2.0.10
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup cache
+      uses: actions/cache@v2
+      with:
+        path: /emsdk/upstream/emscripten/cache
+        key: 2.0.10-${{ runner.os }}
+
+    - name: Build (host tools)
+      run: |
+        mkdir build-host
+        cd build-host
+
+        echo "::group::CMake"
+        cmake .. -DOPTION_TOOLS_ONLY=ON
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        make -j$(nproc) tools
+        echo "::endgroup::"
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        emcmake cmake .. -DHOST_BINARY_DIR=../build-host
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        emmake make -j$(nproc)
+        echo "::endgroup::"
+
   linux:
     name: Linux
 

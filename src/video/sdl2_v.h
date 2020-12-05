@@ -46,6 +46,11 @@ private:
 	void MainLoopCleanup();
 	bool CreateMainSurface(uint w, uint h, bool resize);
 
+#ifdef __EMSCRIPTEN__
+	/* Convert a constant pointer back to a non-constant pointer to a member function. */
+	static void EmscriptenLoop(void *self) { ((VideoDriver_SDL *)self)->LoopOnce(); }
+#endif
+
 	/**
 	 * This is true to indicate that keyboard input is in text input mode, and SDL_TEXTINPUT events are enabled.
 	 */
