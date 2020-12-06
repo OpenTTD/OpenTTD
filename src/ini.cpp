@@ -43,7 +43,7 @@ IniFile::IniFile(const char * const *list_group_names) : IniLoadFile(list_group_
  * @param filename the file to save to.
  * @return true if saving succeeded.
  */
-bool IniFile::SaveToDisk(const char *filename)
+bool IniFile::SaveToDisk(const std::string &filename)
 {
 	/*
 	 * First write the configuration to a (temporary) file and then rename
@@ -96,7 +96,7 @@ bool IniFile::SaveToDisk(const char *filename)
 #	undef strncpy
 	/* Allocate space for one more \0 character. */
 	TCHAR tfilename[MAX_PATH + 1], tfile_new[MAX_PATH + 1];
-	_tcsncpy(tfilename, OTTD2FS(filename), MAX_PATH);
+	_tcsncpy(tfilename, OTTD2FS(filename.c_str()), MAX_PATH);
 	_tcsncpy(tfile_new, OTTD2FS(file_new.c_str()), MAX_PATH);
 	/* SHFileOperation wants a double '\0' terminated string. */
 	tfilename[MAX_PATH - 1] = '\0';
@@ -113,8 +113,8 @@ bool IniFile::SaveToDisk(const char *filename)
 	shfopt.pTo    = tfilename;
 	SHFileOperation(&shfopt);
 #else
-	if (rename(file_new.c_str(), filename) < 0) {
-		DEBUG(misc, 0, "Renaming %s to %s failed; configuration not saved", file_new.c_str(), filename);
+	if (rename(file_new.c_str(), filename.c_str()) < 0) {
+		DEBUG(misc, 0, "Renaming %s to %s failed; configuration not saved", file_new.c_str(), filename.c_str());
 	}
 #endif
 

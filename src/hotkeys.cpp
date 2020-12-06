@@ -16,7 +16,7 @@
 
 #include "safeguards.h"
 
-char *_hotkeys_file;
+std::string _hotkeys_file;
 
 /**
  * List of all HotkeyLists.

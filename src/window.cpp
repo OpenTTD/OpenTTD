@@ -86,7 +86,7 @@ SpecialMouseMode _special_mouse_mode; ///< Mode of the mouse.
 static std::vector<WindowDesc*> *_window_descs = nullptr;
 
 /** Config file to store WindowDesc */
-char *_windows_file;
+std::string _windows_file;
 
 /** Window description constructor. */
 WindowDesc::WindowDesc(WindowPosition def_pos, const char *ini_key, int16 def_width_trad, int16 def_height_trad,

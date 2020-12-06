@@ -12,6 +12,7 @@
 
 #include "core/enum_type.hpp"
 #include "fileio_type.h"
+#include <string>
 
 void FioSeekTo(size_t pos, int mode);
 void FioSeekToFile(uint8 slot, size_t pos);
@@ -64,7 +65,7 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 bool FileExists(const char *filename);
 bool ExtractTar(const char *tar_filename, Subdirectory subdir);
 
-extern const char *_personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
+extern std::string _personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
 
 /** Helper for scanning for files with a given name */
 class FileScanner {
