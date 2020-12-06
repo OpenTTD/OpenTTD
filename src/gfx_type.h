@@ -143,6 +143,7 @@ struct CursorVars {
 	/* Drag data */
 	bool vehchain;                ///< vehicle chain is dragged
 
+	void UpdateCursorPositionRelative(int delta_x, int delta_y);
 	bool UpdateCursorPosition(int x, int y, bool queued_warp);
 
 private:
