@@ -19,6 +19,17 @@ public:
 	virtual void MainLoop() {}
 
 	/**
+	 * Whether the driver has an output from which the user can hear sound.
+	 * Or in other words, whether we should warn the user if no soundset is
+	 * loaded and that loading one would fix the sound problems.
+	 * @return True for all drivers except null.
+	 */
+	virtual bool HasOutput() const
+	{
+		return true;
+	}
+
+	/**
 	 * Get the currently active instance of the sound driver.
 	 */
 	static SoundDriver *GetInstance() {
