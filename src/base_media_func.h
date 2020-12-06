@@ -157,17 +157,17 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 
 	Tbase_set *set = new Tbase_set();
 	IniFile *ini = new IniFile();
-	char *path = stredup(filename + basepath_length);
+	std::string path{ filename + basepath_length };
 	ini->LoadFromDisk(path, BASESET_DIR);
 
-	char *psep = strrchr(path, PATHSEPCHAR);
-	if (psep != nullptr) {
-		psep[1] = '\0';
+	auto psep = path.rfind(PATHSEPCHAR);
+	if (psep != std::string::npos) {
+		path.erase(psep + 1);
 	} else {
-		*path = '\0';
+		path.clear();
 	}
 
-	if (set->FillSetDetails(ini, path, filename)) {
+	if (set->FillSetDetails(ini, path.c_str(), filename)) {
 		Tbase_set *duplicate = nullptr;
 		for (Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
 			if (c->name == set->name || c->shortname == set->shortname) {
@@ -214,7 +214,6 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 	} else {
 		delete set;
 	}
-	free(path);
 
 	delete ini;
 	return ret;

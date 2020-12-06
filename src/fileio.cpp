@@ -53,8 +53,8 @@ static Fio _fio; ///< #Fio instance.
 /** Whether the working directory should be scanned. */
 static bool _do_scan_working_directory = true;
 
-extern char *_config_file;
-extern char *_highscore_file;
+extern std::string _config_file;
+extern std::string _highscore_file;
 
 /**
  * Get position in the current file.
@@ -336,7 +336,7 @@ char *FioGetDirectory(char *buf, const char *last, Subdirectory subdir)
 	}
 
 	/* Could not find the directory, fall back to a base path */
-	strecpy(buf, _personal_dir, last);
+	strecpy(buf, _personal_dir.c_str(), last);
 
 	return buf;
 }
@@ -1064,7 +1064,7 @@ void DetermineBasePaths(const char *exe)
 	char cwd[MAX_PATH];
 	if (getcwd(cwd, MAX_PATH) == nullptr) *cwd = '\0';
 
-	if (_config_file == nullptr) {
+	if (_config_file.empty()) {
 		/* Get the path to working directory of OpenTTD. */
 		if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
 		AppendPathSeparator(tmp, lastof(tmp));
@@ -1073,7 +1073,7 @@ void DetermineBasePaths(const char *exe)
 		_do_scan_working_directory = DoScanWorkingDirectory();
 	} else {
 		/* Use the folder of the config file as working directory. */
-		char *config_dir = stredup(_config_file);
+		char *config_dir = stredup(_config_file.c_str());
 		char *end = strrchr(config_dir, PATHSEPCHAR);
 		if (end == nullptr) {
 			free(config_dir);
@@ -1120,7 +1120,7 @@ extern void cocoaSetApplicationBundleDir();
 }
 #endif /* defined(_WIN32) */
 
-const char *_personal_dir;
+std::string _personal_dir;
 
 /**
  * Acquire the base paths (personal dir and game data dir),
@@ -1149,16 +1149,15 @@ void DeterminePaths(const char *exe)
 		DEBUG(misc, 4, "%s added as search path", _searchpaths[sp]);
 	}
 
-	const char *config_dir;
-	if (_config_file != nullptr) {
+	std::string config_dir;
+	if (!_config_file.empty()) {
 		config_dir = _searchpaths[SP_WORKING_DIR];
 	} else {
 		char personal_dir[MAX_PATH];
 		if (FioFindFullPath(personal_dir, lastof(personal_dir), BASE_DIR, "openttd.cfg") != nullptr) {
 			char *end = strrchr(personal_dir, PATHSEPCHAR);
 			if (end != nullptr) end[1] = '\0';
-			config_dir = stredup(personal_dir);
-			_config_file = str_fmt("%sopenttd.cfg", config_dir);
+			config_dir = personal_dir;
 		} else {
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
 			/* No previous configuration file found. Use the configuration folder from XDG. */
@@ -1168,26 +1167,25 @@ void DeterminePaths(const char *exe)
 					SP_PERSONAL_DIR, SP_BINARY_DIR, SP_WORKING_DIR, SP_SHARED_DIR, SP_INSTALLATION_DIR
 				};
 
-			config_dir = nullptr;
+			config_dir.clear();
 			for (uint i = 0; i < lengthof(new_openttd_cfg_order); i++) {
 				if (IsValidSearchPath(new_openttd_cfg_order[i])) {
-					config_dir = stredup(_searchpaths[new_openttd_cfg_order[i]]);
+					config_dir = _searchpaths[new_openttd_cfg_order[i]];
 					break;
 				}
 			}
-			assert(config_dir != nullptr);
 #endif
-			_config_file = str_fmt("%sopenttd.cfg", config_dir);
 		}
+		_config_file = config_dir + "openttd.cfg";
 	}
 
-	DEBUG(misc, 3, "%s found as config directory", config_dir);
+	DEBUG(misc, 3, "%s found as config directory", config_dir.c_str());
 
-	_highscore_file = str_fmt("%shs.dat", config_dir);
-	extern char *_hotkeys_file;
-	_hotkeys_file = str_fmt("%shotkeys.cfg", config_dir);
-	extern char *_windows_file;
-	_windows_file = str_fmt("%swindows.cfg", config_dir);
+	_highscore_file = config_dir + "hs.dat";
+	extern std::string _hotkeys_file;
+	_hotkeys_file = config_dir + "hotkeys.cfg";
+	extern std::string _windows_file;
+	_windows_file = config_dir + "windows.cfg";
 
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
 	if (config_dir == config_home) {
@@ -1201,25 +1199,23 @@ void DeterminePaths(const char *exe)
 	}
 
 	/* Make the necessary folders */
-	FioCreateDirectory(config_dir);
+	FioCreateDirectory(config_dir.c_str());
 #if defined(WITH_PERSONAL_DIR)
-	FioCreateDirectory(_personal_dir);
+	FioCreateDirectory(_personal_dir.c_str());
 #endif
 
-	DEBUG(misc, 3, "%s found as personal directory", _personal_dir);
+	DEBUG(misc, 3, "%s found as personal directory", _personal_dir.c_str());
 
 	static const Subdirectory default_subdirs[] = {
 		SAVE_DIR, AUTOSAVE_DIR, SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR, SCREENSHOT_DIR
 	};
 
 	for (uint i = 0; i < lengthof(default_subdirs); i++) {
-		char *dir = str_fmt("%s%s", _personal_dir, _subdirs[default_subdirs[i]]);
-		FioCreateDirectory(dir);
-		free(dir);
+		FioCreateDirectory((_personal_dir + _subdirs[default_subdirs[i]]).c_str());
 	}
 
 	/* If we have network we make a directory for the autodownloading of content */
-	_searchpaths[SP_AUTODOWNLOAD_DIR] = str_fmt("%s%s", _personal_dir, "content_download" PATHSEP);
+	_searchpaths[SP_AUTODOWNLOAD_DIR] = str_fmt("%s%s", _personal_dir.c_str(), "content_download" PATHSEP);
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 
 	/* Create the directory for each of the types of content */
@@ -1231,8 +1227,7 @@ void DeterminePaths(const char *exe)
 	}
 
 	extern std::string _log_file;
-	_log_file = _personal_dir;
-	_log_file += "openttd.log";
+	_log_file = _personal_dir + "openttd.log";
 }
 
 /**

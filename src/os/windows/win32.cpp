@@ -451,7 +451,7 @@ char *getcwd(char *buf, size_t size)
 	return buf;
 }
 
-extern char *_config_file;
+extern std::string _config_file;
 
 void DetermineBasePaths(const char *exe)
 {
@@ -482,7 +482,7 @@ void DetermineBasePaths(const char *exe)
 	_searchpaths[SP_SHARED_DIR]   = nullptr;
 #endif
 
-	if (_config_file == nullptr) {
+	if (_config_file.empty()) {
 		/* Get the path to working directory of OpenTTD. */
 		getcwd(tmp, lengthof(tmp));
 		AppendPathSeparator(tmp, lastof(tmp));
@@ -490,7 +490,7 @@ void DetermineBasePaths(const char *exe)
 	} else {
 		/* Use the folder of the config file as working directory. */
 		TCHAR config_dir[MAX_PATH];
-		_tcsncpy(path, convert_to_fs(_config_file, path, lengthof(path)), lengthof(path));
+		_tcsncpy(path, convert_to_fs(_config_file.c_str(), path, lengthof(path)), lengthof(path));
 		if (!GetFullPathName(path, lengthof(config_dir), config_dir, nullptr)) {
 			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
 			_searchpaths[SP_WORKING_DIR] = nullptr;

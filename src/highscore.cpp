@@ -20,7 +20,7 @@
 #include "safeguards.h"
 
 HighScore _highscore_table[SP_HIGHSCORE_END][5]; ///< various difficulty-settings; top 5
-char *_highscore_file; ///< The file to store the highscore data in.
+std::string _highscore_file; ///< The file to store the highscore data in.
 
 static const StringID _endgame_perf_titles[] = {
 	STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN,
@@ -123,7 +123,7 @@ int8 SaveHighScoreValueNetwork()
 /** Save HighScore table to file */
 void SaveToHighScore()
 {
-	FILE *fp = fopen(_highscore_file, "wb");
+	FILE *fp = fopen(_highscore_file.c_str(), "wb");
 
 	if (fp != nullptr) {
 		uint i;
@@ -151,7 +151,7 @@ void SaveToHighScore()
 /** Initialize the highscore table to 0 and if any file exists, load in values */
 void LoadFromHighScore()
 {
-	FILE *fp = fopen(_highscore_file, "rb");
+	FILE *fp = fopen(_highscore_file.c_str(), "rb");
 
 	memset(_highscore_table, 0, sizeof(_highscore_table));
 

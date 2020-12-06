@@ -382,7 +382,7 @@ public:
 				break;
 
 			default:
-				strecpy(o_dir.name, _personal_dir, lastof(o_dir.name));
+				strecpy(o_dir.name, _personal_dir.c_str(), lastof(o_dir.name));
 		}
 
 		switch (this->fop) {
