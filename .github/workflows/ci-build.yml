@@ -94,7 +94,6 @@ jobs:
           liblzo2-dev \
           libsdl1.2-dev \
           libsdl2-dev \
-          libxdg-basedir-dev \
           zlib1g-dev \
           # EOF
         echo "::endgroup::"

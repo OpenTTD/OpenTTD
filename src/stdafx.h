@@ -348,6 +348,11 @@ typedef unsigned char byte;
 #	define PERSONAL_DIR ""
 #endif
 
+/* Define the the platforms that use XDG */
+#if defined(WITH_PERSONAL_DIR) && defined(UNIX) && !defined(__APPLE__)
+#	define USE_XDG
+#endif
+
 /* Check if the types have the bitsizes like we are using them */
 static_assert(sizeof(uint64) == 8);
 static_assert(sizeof(uint32) == 4);
