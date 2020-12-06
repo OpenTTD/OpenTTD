@@ -44,6 +44,10 @@ static std::recursive_mutex *_draw_mutex = nullptr;
 static std::condition_variable_any *_draw_signal = nullptr;
 /** Should we keep continue drawing? */
 static volatile bool _draw_continue;
+/** Whether the cursor is using relative mode. */
+static bool _relative_mode;
+/** Whether we just had a window-enter event. */
+static bool _cursor_new_in_window = false;
 static Palette _local_palette;
 static SDL_Palette *_sdl_palette;
 
@@ -346,6 +350,14 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 bool VideoDriver_SDL::ClaimMousePointer()
 {
 	SDL_ShowCursor(0);
+	if (_relative_mode) {
+		if (SDL_SetRelativeMouseMode(SDL_TRUE) != 0) {
+			DEBUG(driver, 0, "SDL2: relative mouse mode requested, but refused by OS");
+			_relative_mode = 0;
+		} else {
+			DEBUG(driver, 1, "SDL2: using relative mouse mode");
+		}
+	}
 	return true;
 }
 
@@ -505,8 +517,26 @@ int VideoDriver_SDL::PollEvent()
 
 	switch (ev.type) {
 		case SDL_MOUSEMOTION:
-			if (_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y, true)) {
-				SDL_WarpMouseInWindow(_sdl_window, _cursor.pos.x, _cursor.pos.y);
+			if (_relative_mode) {
+				if (_cursor_new_in_window) {
+					/* The cursor just moved into the window; this means we don't
+					* know the absolutely position yet to move relative from.
+					* Before this time, SDL didn't know it either, and this is
+					* why we postpone it till now. Update the absolute position
+					* for this once, and work relative after. */
+					_cursor.pos.x = ev.motion.x;
+					_cursor.pos.y = ev.motion.y;
+					_cursor.dirty = true;
+
+					_cursor_new_in_window = false;
+					SDL_SetRelativeMouseMode(SDL_TRUE);
+				} else {
+					_cursor.UpdateCursorPositionRelative(ev.motion.xrel, ev.motion.yrel);
+				}
+			} else {
+				if (_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y, true)) {
+					SDL_WarpMouseInWindow(_sdl_window, _cursor.pos.x, _cursor.pos.y);
+				}
 			}
 			HandleMouseEvents();
 			break;
@@ -611,6 +641,12 @@ int VideoDriver_SDL::PollEvent()
 			} else if (ev.window.event == SDL_WINDOWEVENT_ENTER) {
 				// mouse entered the window, enable cursor
 				_cursor.in_window = true;
+				if (_relative_mode) {
+					/* Disable relative mouse mode for the first mouse motion,
+					 * so we can pick up the absolutely position again. */
+					_cursor_new_in_window = true;
+					SDL_SetRelativeMouseMode(SDL_FALSE);
+				}
 			} else if (ev.window.event == SDL_WINDOWEVENT_LEAVE) {
 				// mouse left the window, undraw cursor
 				UndrawMouseCursor();
@@ -627,7 +663,8 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 	/* Explicitly disable hardware acceleration. Enabling this causes
 	 * UpdateWindowSurface() to update the window's texture instead of
 	 * its surface. */
-	SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION , "0");
+	SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION, "0");
+	SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1");
 
 	/* Just on the offchance the audio subsystem started before the video system,
 	 * check whether any part of SDL has been initialised before getting here.
@@ -649,6 +686,7 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 	MarkWholeScreenDirty();
 
 	_draw_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
+	_relative_mode = GetDriverParamBool(parm, "relative_mode");
 
 	SDL_StopTextInput();
 	this->edit_box_focused = false;
