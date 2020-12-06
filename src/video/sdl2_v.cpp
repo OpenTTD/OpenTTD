@@ -664,19 +664,90 @@ void VideoDriver_SDL::Stop()
 	}
 }
 
-void VideoDriver_SDL::MainLoop()
+void VideoDriver_SDL::LoopOnce()
 {
-	uint32 cur_ticks = SDL_GetTicks();
-	uint32 last_cur_ticks = cur_ticks;
-	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 	uint32 mod;
 	int numkeys;
 	const Uint8 *keys;
+	uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
+	InteractiveRandom(); // randomness
+
+	while (PollEvent() == -1) {}
+	if (_exit_game) return;
+
+	mod = SDL_GetModState();
+	keys = SDL_GetKeyboardState(&numkeys);
+
+#if defined(_DEBUG)
+	if (_shift_pressed)
+#else
+	/* Speedup when pressing tab, except when using ALT+TAB
+	 * to switch to another application */
+	if (keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0)
+#endif /* defined(_DEBUG) */
+	{
+		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
+	} else if (_fast_forward & 2) {
+		_fast_forward = 0;
+	}
+
+	cur_ticks = SDL_GetTicks();
+	if (SDL_TICKS_PASSED(cur_ticks, next_tick) || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
+		_realtime_tick += cur_ticks - last_cur_ticks;
+		last_cur_ticks = cur_ticks;
+		next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+
+		bool old_ctrl_pressed = _ctrl_pressed;
+
+		_ctrl_pressed  = !!(mod & KMOD_CTRL);
+		_shift_pressed = !!(mod & KMOD_SHIFT);
+
+		/* determine which directional keys are down */
+		_dirkeys =
+			(keys[SDL_SCANCODE_LEFT]  ? 1 : 0) |
+			(keys[SDL_SCANCODE_UP]    ? 2 : 0) |
+			(keys[SDL_SCANCODE_RIGHT] ? 4 : 0) |
+			(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
+		if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+
+		/* The gameloop is the part that can run asynchronously. The rest
+		 * except sleeping can't. */
+		if (_draw_mutex != nullptr) draw_lock.unlock();
+
+		GameLoop();
+
+		if (_draw_mutex != nullptr) draw_lock.lock();
+
+		UpdateWindows();
+		_local_palette = _cur_palette;
+	} else {
+		/* Release the thread while sleeping */
+		if (_draw_mutex != nullptr) draw_lock.unlock();
+		CSleep(1);
+		if (_draw_mutex != nullptr) draw_lock.lock();
+
+		NetworkDrawChatMessage();
+		DrawMouseCursor();
+	}
+
+	/* End of the critical part. */
+	if (_draw_mutex != nullptr && !HasModalProgress()) {
+		_draw_signal->notify_one();
+	} else {
+		/* Oh, we didn't have threads, then just draw unthreaded */
+		CheckPaletteAnim();
+		DrawSurfaceToScreen();
+	}
+}
+
+void VideoDriver_SDL::MainLoop()
+{
+	cur_ticks = SDL_GetTicks();
+	last_cur_ticks = cur_ticks;
+	next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
 	CheckPaletteAnim();
 
-	std::thread draw_thread;
-	std::unique_lock<std::recursive_mutex> draw_lock;
 	if (_draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
 		 * directly in the newly created thread. */
@@ -707,78 +778,16 @@ void VideoDriver_SDL::MainLoop()
 
 	DEBUG(driver, 1, "SDL2: using %sthreads", _draw_threaded ? "" : "no ");
 
-	for (;;) {
-		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
-		InteractiveRandom(); // randomness
-
-		while (PollEvent() == -1) {}
-		if (_exit_game) break;
-
-		mod = SDL_GetModState();
-		keys = SDL_GetKeyboardState(&numkeys);
-
-#if defined(_DEBUG)
-		if (_shift_pressed)
-#else
-		/* Speedup when pressing tab, except when using ALT+TAB
-		 * to switch to another application */
-		if (keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0)
-#endif /* defined(_DEBUG) */
-		{
-			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-		} else if (_fast_forward & 2) {
-			_fast_forward = 0;
-		}
-
-		cur_ticks = SDL_GetTicks();
-		if (SDL_TICKS_PASSED(cur_ticks, next_tick) || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
-			_realtime_tick += cur_ticks - last_cur_ticks;
-			last_cur_ticks = cur_ticks;
-			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-
-			bool old_ctrl_pressed = _ctrl_pressed;
-
-			_ctrl_pressed  = !!(mod & KMOD_CTRL);
-			_shift_pressed = !!(mod & KMOD_SHIFT);
-
-			/* determine which directional keys are down */
-			_dirkeys =
-				(keys[SDL_SCANCODE_LEFT]  ? 1 : 0) |
-				(keys[SDL_SCANCODE_UP]    ? 2 : 0) |
-				(keys[SDL_SCANCODE_RIGHT] ? 4 : 0) |
-				(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
-			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
-
-			/* The gameloop is the part that can run asynchronously. The rest
-			 * except sleeping can't. */
-			if (_draw_mutex != nullptr) draw_lock.unlock();
-
-			GameLoop();
-
-			if (_draw_mutex != nullptr) draw_lock.lock();
-
-			UpdateWindows();
-			_local_palette = _cur_palette;
-		} else {
-			/* Release the thread while sleeping */
-			if (_draw_mutex != nullptr) draw_lock.unlock();
-			CSleep(1);
-			if (_draw_mutex != nullptr) draw_lock.lock();
-
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
-		}
-
-		/* End of the critical part. */
-		if (_draw_mutex != nullptr && !HasModalProgress()) {
-			_draw_signal->notify_one();
-		} else {
-			/* Oh, we didn't have threads, then just draw unthreaded */
-			CheckPaletteAnim();
-			DrawSurfaceToScreen();
-		}
+	while (!_exit_game) {
+		LoopOnce();
 	}
 
+	MainLoopCleanup();
+#endif
+}
+
+void VideoDriver_SDL::MainLoopCleanup()
+{
 	if (_draw_mutex != nullptr) {
 		_draw_continue = false;
 		/* Sending signal if there is no thread blocked
