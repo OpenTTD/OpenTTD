@@ -49,7 +49,7 @@ const char *FiosGetScreenshotDir();
 void SanitizeFilename(char *filename);
 void AppendPathSeparator(std::string &buf);
 void DeterminePaths(const char *exe);
-void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
+std::unique_ptr<char> ReadFileToMem(const std::string &filename, size_t &lenp, size_t maxsize);
 bool FileExists(const std::string &filename);
 bool ExtractTar(const std::string &tar_filename, Subdirectory subdir);
 

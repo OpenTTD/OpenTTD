@@ -1236,28 +1236,27 @@ void SanitizeFilename(char *filename)
  * @return Pointer to new memory containing the loaded data, or \c nullptr if loading failed.
  * @note If \a maxsize less than the length of the file, loading fails.
  */
-void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
+std::unique_ptr<char> ReadFileToMem(const std::string &filename, size_t &lenp, size_t maxsize)
 {
-	FILE *in = fopen(filename, "rb");
+	FILE *in = fopen(filename.c_str(), "rb");
 	if (in == nullptr) return nullptr;
+
+	FileCloser fc(in);
 
 	fseek(in, 0, SEEK_END);
 	size_t len = ftell(in);
 	fseek(in, 0, SEEK_SET);
-	if (len > maxsize) {
-		fclose(in);
-		return nullptr;
-	}
-	byte *mem = MallocT<byte>(len + 1);
-	mem[len] = 0;
-	if (fread(mem, len, 1, in) != 1) {
-		fclose(in);
-		free(mem);
-		return nullptr;
-	}
-	fclose(in);
+	if (len > maxsize) return nullptr;
 
-	*lenp = len;
+	/* std::unique_ptr assumes new/delete unless a custom deleter is supplied.
+	 * As we don't want to have to carry that deleter all over the place, use
+	 * new directly to allocate the memory instead of malloc. */
+	std::unique_ptr<char> mem(static_cast<char *>(::operator new(len + 1)));
+
+	mem.get()[len] = 0;
+	if (fread(mem.get(), len, 1, in) != 1) return nullptr;
+
+	lenp = len;
 	return mem;
 }
 

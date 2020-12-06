@@ -630,7 +630,7 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 	}
 
 #ifdef WITH_ICU_I18N
-	if (_current_collator != nullptr) {
+	if (_current_collator) {
 		UErrorCode status = U_ZERO_ERROR;
 		int result = _current_collator->compareUTF8(s1, s2, status);
 		if (U_SUCCESS(status)) return result;
