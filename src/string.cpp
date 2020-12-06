@@ -362,6 +362,17 @@ bool strtolower(char *str)
 	return changed;
 }
 
+bool strtolower(std::string &str, std::string::size_type offs)
+{
+	bool changed = false;
+	for (auto ch = str.begin() + offs; ch != str.end(); ++ch) {
+		auto new_ch = static_cast<char>(tolower(static_cast<unsigned char>(*ch)));
+		changed |= new_ch != *ch;
+		*ch = new_ch;
+	}
+	return changed;
+}
+
 /**
  * Only allow certain keys. You can define the filter to be used. This makes
  *  sure no invalid keys can get into an editbox, like BELL.

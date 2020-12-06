@@ -27,22 +27,11 @@ void FioReadBlock(void *ptr, size_t size);
 void FioSkipBytes(int n);
 
 /**
- * The search paths OpenTTD could search through.
- * At least one of the slots has to be filled with a path.
- * nullptr paths tell that there is no such path for the
- * current operating system.
- */
-extern const char *_searchpaths[NUM_SEARCHPATHS];
-
-/**
  * Checks whether the given search path is a valid search path
  * @param sp the search path to check
  * @return true if the search path is valid
  */
-static inline bool IsValidSearchPath(Searchpath sp)
-{
-	return sp < NUM_SEARCHPATHS && _searchpaths[sp] != nullptr;
-}
+bool IsValidSearchPath(Searchpath sp);
 
 /** Iterator for all the search paths */
 #define FOR_ALL_SEARCHPATHS(sp) for (sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) if (IsValidSearchPath(sp))

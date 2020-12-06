@@ -25,6 +25,7 @@
 #endif
 #include <sys/stat.h>
 #include <algorithm>
+#include <array>
 #include <sstream>
 
 #ifdef WITH_XDG_BASEDIR
@@ -240,12 +241,28 @@ static const char * const _subdirs[] = {
 };
 static_assert(lengthof(_subdirs) == NUM_SUBDIRS);
 
-const char *_searchpaths[NUM_SEARCHPATHS];
+/**
+ * The search paths OpenTTD could search through.
+ * At least one of the slots has to be filled with a path.
+ * An empty string tells that there is no such path for the
+ * current operating system.
+ */
+std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
 TarList _tar_list[NUM_SUBDIRS];
 TarFileList _tar_filelist[NUM_SUBDIRS];
 
 typedef std::map<std::string, std::string> TarLinkList;
 static TarLinkList _tar_linklist[NUM_SUBDIRS]; ///< List of directory links
+
+/**
+ * Checks whether the given search path is a valid search path
+ * @param sp the search path to check
+ * @return true if the search path is valid
+ */
+bool IsValidSearchPath(Searchpath sp)
+{
+	return sp < _searchpaths.size() && !_searchpaths[sp].empty();
+}
 
 /**
  * Check whether the given file exists
@@ -285,7 +302,7 @@ char *FioGetFullPath(char *buf, const char *last, Searchpath sp, Subdirectory su
 	assert(subdir < NUM_SUBDIRS);
 	assert(sp < NUM_SEARCHPATHS);
 
-	seprintf(buf, last, "%s%s%s", _searchpaths[sp], _subdirs[subdir], filename);
+	seprintf(buf, last, "%s%s%s", _searchpaths[sp].c_str(), _subdirs[subdir], filename);
 	return buf;
 }
 
@@ -309,7 +326,7 @@ char *FioFindFullPath(char *buf, const char *last, Subdirectory subdir, const ch
 		/* Be, as opening files, aware that sometimes the filename
 		 * might be in uppercase when it is in lowercase on the
 		 * disk. Of course Windows doesn't care about casing. */
-		if (strtolower(buf + strlen(_searchpaths[sp]) - 1) && FileExists(buf)) return buf;
+		if (strtolower(buf + _searchpaths[sp].size() - 1) && FileExists(buf)) return buf;
 #endif
 	}
 
@@ -321,7 +338,7 @@ char *FioAppendDirectory(char *buf, const char *last, Searchpath sp, Subdirector
 	assert(subdir < NUM_SUBDIRS);
 	assert(sp < NUM_SEARCHPATHS);
 
-	seprintf(buf, last, "%s%s", _searchpaths[sp], _subdirs[subdir]);
+	seprintf(buf, last, "%s%s", _searchpaths[sp].c_str(), _subdirs[subdir]);
 	return buf;
 }
 
@@ -352,22 +369,22 @@ static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath s
 	MultiByteToWideChar(CP_ACP, 0, mode, -1, Lmode, lengthof(Lmode));
 #endif
 	FILE *f = nullptr;
-	char buf[MAX_PATH];
+	std::string buf;
 
 	if (subdir == NO_DIRECTORY) {
-		strecpy(buf, filename, lastof(buf));
+		buf = filename;
 	} else {
-		seprintf(buf, lastof(buf), "%s%s%s", _searchpaths[sp], _subdirs[subdir], filename);
+		buf = _searchpaths[sp] + _subdirs[subdir] + filename;
 	}
 
 #if defined(_WIN32)
-	if (mode[0] == 'r' && GetFileAttributes(OTTD2FS(buf)) == INVALID_FILE_ATTRIBUTES) return nullptr;
+	if (mode[0] == 'r' && GetFileAttributes(OTTD2FS(buf.c_str())) == INVALID_FILE_ATTRIBUTES) return nullptr;
 #endif
 
-	f = fopen(buf, mode);
+	f = fopen(buf.c_str(), mode);
 #if !defined(_WIN32)
-	if (f == nullptr && strtolower(buf + ((subdir == NO_DIRECTORY) ? 0 : strlen(_searchpaths[sp]) - 1))) {
-		f = fopen(buf, mode);
+	if (f == nullptr && strtolower(buf, subdir == NO_DIRECTORY ? 0 : _searchpaths[sp].size() - 1) ) {
+		f = fopen(buf.c_str(), mode);
 	}
 #endif
 	if (f != nullptr && filesize != nullptr) {
@@ -988,18 +1005,18 @@ static bool ChangeWorkingDirectoryToExecutable(const char *exe)
 bool DoScanWorkingDirectory()
 {
 	/* No working directory, so nothing to do. */
-	if (_searchpaths[SP_WORKING_DIR] == nullptr) return false;
+	if (_searchpaths[SP_WORKING_DIR].empty()) return false;
 
 	/* Working directory is root, so do nothing. */
-	if (strcmp(_searchpaths[SP_WORKING_DIR], PATHSEP) == 0) return false;
+	if (_searchpaths[SP_WORKING_DIR] == PATHSEP) return false;
 
 	/* No personal/home directory, so the working directory won't be that. */
-	if (_searchpaths[SP_PERSONAL_DIR] == nullptr) return true;
+	if (_searchpaths[SP_PERSONAL_DIR].empty()) return true;
 
 	char tmp[MAX_PATH];
-	seprintf(tmp, lastof(tmp), "%s%s", _searchpaths[SP_WORKING_DIR], PERSONAL_DIR);
+	seprintf(tmp, lastof(tmp), "%s%s", _searchpaths[SP_WORKING_DIR].c_str(), PERSONAL_DIR);
 	AppendPathSeparator(tmp, lastof(tmp));
-	return strcmp(tmp, _searchpaths[SP_PERSONAL_DIR]) != 0;
+	return _searchpaths[SP_PERSONAL_DIR] != tmp;
 }
 
 /**
@@ -1016,10 +1033,10 @@ void DetermineBasePaths(const char *exe)
 	free(xdg_data_home);
 
 	AppendPathSeparator(tmp, lastof(tmp));
-	_searchpaths[SP_PERSONAL_DIR_XDG] = stredup(tmp);
+	_searchpaths[SP_PERSONAL_DIR_XDG] = tmp;
 #endif
 #if defined(OS2) || !defined(WITH_PERSONAL_DIR)
-	_searchpaths[SP_PERSONAL_DIR] = nullptr;
+	_searchpaths[SP_PERSONAL_DIR].clear();
 #else
 #ifdef __HAIKU__
 	BPath path;
@@ -1046,19 +1063,19 @@ void DetermineBasePaths(const char *exe)
 		seprintf(tmp, lastof(tmp), "%s" PATHSEP "%s", homedir, PERSONAL_DIR);
 		AppendPathSeparator(tmp, lastof(tmp));
 
-		_searchpaths[SP_PERSONAL_DIR] = stredup(tmp);
+		_searchpaths[SP_PERSONAL_DIR] = tmp;
 		free(homedir);
 	} else {
-		_searchpaths[SP_PERSONAL_DIR] = nullptr;
+		_searchpaths[SP_PERSONAL_DIR].clear();
 	}
 #endif
 
 #if defined(WITH_SHARED_DIR)
 	seprintf(tmp, lastof(tmp), "%s", SHARED_DIR);
 	AppendPathSeparator(tmp, lastof(tmp));
-	_searchpaths[SP_SHARED_DIR] = stredup(tmp);
+	_searchpaths[SP_SHARED_DIR] = tmp;
 #else
-	_searchpaths[SP_SHARED_DIR] = nullptr;
+	_searchpaths[SP_SHARED_DIR].clear();
 #endif
 
 	char cwd[MAX_PATH];
@@ -1068,23 +1085,19 @@ void DetermineBasePaths(const char *exe)
 		/* Get the path to working directory of OpenTTD. */
 		if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
 		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+		_searchpaths[SP_WORKING_DIR] = tmp;
 
 		_do_scan_working_directory = DoScanWorkingDirectory();
 	} else {
 		/* Use the folder of the config file as working directory. */
-		char *config_dir = stredup(_config_file.c_str());
-		char *end = strrchr(config_dir, PATHSEPCHAR);
-		if (end == nullptr) {
-			free(config_dir);
-
+		size_t end = _config_file.find_last_of(PATHSEPCHAR);
+		if (end == std::string::npos) {
 			/* _config_file is not in a folder, so use current directory. */
 			if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
 			AppendPathSeparator(tmp, lastof(tmp));
-			_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+			_searchpaths[SP_WORKING_DIR] = tmp;
 		} else {
-			end[1] = '\0';
-			_searchpaths[SP_WORKING_DIR] = config_dir;
+			_searchpaths[SP_WORKING_DIR] = _config_file.substr(0, end + 1);
 		}
 	}
 
@@ -1092,9 +1105,9 @@ void DetermineBasePaths(const char *exe)
 	if (ChangeWorkingDirectoryToExecutable(exe)) {
 		if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
 		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_BINARY_DIR] = stredup(tmp);
+		_searchpaths[SP_BINARY_DIR] = tmp;
 	} else {
-		_searchpaths[SP_BINARY_DIR] = nullptr;
+		_searchpaths[SP_BINARY_DIR].clear();
 	}
 
 	if (cwd[0] != '\0') {
@@ -1105,17 +1118,17 @@ void DetermineBasePaths(const char *exe)
 	}
 
 #if !defined(GLOBAL_DATA_DIR)
-	_searchpaths[SP_INSTALLATION_DIR] = nullptr;
+	_searchpaths[SP_INSTALLATION_DIR].clear();
 #else
 	seprintf(tmp, lastof(tmp), "%s", GLOBAL_DATA_DIR);
 	AppendPathSeparator(tmp, lastof(tmp));
-	_searchpaths[SP_INSTALLATION_DIR] = stredup(tmp);
+	_searchpaths[SP_INSTALLATION_DIR] = tmp;
 #endif
 #ifdef WITH_COCOA
 extern void cocoaSetApplicationBundleDir();
 	cocoaSetApplicationBundleDir();
 #else
-	_searchpaths[SP_APPLICATION_BUNDLE_DIR] = nullptr;
+	_searchpaths[SP_APPLICATION_BUNDLE_DIR].clear();
 #endif
 }
 #endif /* defined(_WIN32) */
@@ -1146,7 +1159,7 @@ void DeterminePaths(const char *exe)
 	Searchpath sp;
 	FOR_ALL_SEARCHPATHS(sp) {
 		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
-		DEBUG(misc, 4, "%s added as search path", _searchpaths[sp]);
+		DEBUG(misc, 4, "%s added as search path", _searchpaths[sp].c_str());
 	}
 
 	std::string config_dir;
@@ -1215,13 +1228,13 @@ void DeterminePaths(const char *exe)
 	}
 
 	/* If we have network we make a directory for the autodownloading of content */
-	_searchpaths[SP_AUTODOWNLOAD_DIR] = str_fmt("%s%s", _personal_dir.c_str(), "content_download" PATHSEP);
-	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
+	_searchpaths[SP_AUTODOWNLOAD_DIR] = _personal_dir + "content_download" PATHSEP;
+	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR].c_str());
 
 	/* Create the directory for each of the types of content */
 	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR };
 	for (uint i = 0; i < lengthof(dirs); i++) {
-		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR], _subdirs[dirs[i]]);
+		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR].c_str(), _subdirs[dirs[i]]);
 		FioCreateDirectory(tmp);
 		free(tmp);
 	}
