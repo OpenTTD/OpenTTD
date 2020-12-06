@@ -46,6 +46,7 @@ void ValidateString(const char *str);
 void str_fix_scc_encoded(char *str, const char *last);
 void str_strip_colours(char *str);
 bool strtolower(char *str);
+bool strtolower(std::string &str, std::string::size_type offs = 0);
 
 bool StrValid(const char *str, const char *last);
 

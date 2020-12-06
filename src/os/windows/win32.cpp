@@ -29,6 +29,7 @@
 #include <sys/stat.h>
 #include "../../language.h"
 #include "../../thread.h"
+#include <array>
 
 #include "../../safeguards.h"
 
@@ -455,6 +456,8 @@ extern std::string _config_file;
 
 void DetermineBasePaths(const char *exe)
 {
+	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
+
 	char tmp[MAX_PATH];
 	TCHAR path[MAX_PATH];
 #ifdef WITH_PERSONAL_DIR
@@ -463,9 +466,9 @@ void DetermineBasePaths(const char *exe)
 		AppendPathSeparator(tmp, lastof(tmp));
 		strecat(tmp, PERSONAL_DIR, lastof(tmp));
 		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_PERSONAL_DIR] = stredup(tmp);
+		_searchpaths[SP_PERSONAL_DIR] = tmp;
 	} else {
-		_searchpaths[SP_PERSONAL_DIR] = nullptr;
+		_searchpaths[SP_PERSONAL_DIR].clear();
 	}
 
 	if (SUCCEEDED(OTTDSHGetFolderPath(nullptr, CSIDL_COMMON_DOCUMENTS, nullptr, SHGFP_TYPE_CURRENT, path))) {
@@ -473,54 +476,54 @@ void DetermineBasePaths(const char *exe)
 		AppendPathSeparator(tmp, lastof(tmp));
 		strecat(tmp, PERSONAL_DIR, lastof(tmp));
 		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_SHARED_DIR] = stredup(tmp);
+		_searchpaths[SP_SHARED_DIR] = tmp;
 	} else {
-		_searchpaths[SP_SHARED_DIR] = nullptr;
+		_searchpaths[SP_SHARED_DIR].clear();
 	}
 #else
-	_searchpaths[SP_PERSONAL_DIR] = nullptr;
-	_searchpaths[SP_SHARED_DIR]   = nullptr;
+	_searchpaths[SP_PERSONAL_DIR].clear();
+	_searchpaths[SP_SHARED_DIR].clear();
 #endif
 
 	if (_config_file.empty()) {
 		/* Get the path to working directory of OpenTTD. */
 		getcwd(tmp, lengthof(tmp));
 		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+		_searchpaths[SP_WORKING_DIR] = tmp;
 	} else {
 		/* Use the folder of the config file as working directory. */
 		TCHAR config_dir[MAX_PATH];
 		_tcsncpy(path, convert_to_fs(_config_file.c_str(), path, lengthof(path)), lengthof(path));
 		if (!GetFullPathName(path, lengthof(config_dir), config_dir, nullptr)) {
 			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
-			_searchpaths[SP_WORKING_DIR] = nullptr;
+			_searchpaths[SP_WORKING_DIR].clear();
 		} else {
 			strecpy(tmp, convert_from_fs(config_dir, tmp, lengthof(tmp)), lastof(tmp));
 			char *s = strrchr(tmp, PATHSEPCHAR);
 			*(s + 1) = '\0';
-			_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+			_searchpaths[SP_WORKING_DIR] = tmp;
 		}
 	}
 
 	if (!GetModuleFileName(nullptr, path, lengthof(path))) {
 		DEBUG(misc, 0, "GetModuleFileName failed (%lu)\n", GetLastError());
-		_searchpaths[SP_BINARY_DIR] = nullptr;
+		_searchpaths[SP_BINARY_DIR].clear();
 	} else {
 		TCHAR exec_dir[MAX_PATH];
 		_tcsncpy(path, convert_to_fs(exe, path, lengthof(path)), lengthof(path));
 		if (!GetFullPathName(path, lengthof(exec_dir), exec_dir, nullptr)) {
 			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
-			_searchpaths[SP_BINARY_DIR] = nullptr;
+			_searchpaths[SP_BINARY_DIR].clear();
 		} else {
 			strecpy(tmp, convert_from_fs(exec_dir, tmp, lengthof(tmp)), lastof(tmp));
 			char *s = strrchr(tmp, PATHSEPCHAR);
 			*(s + 1) = '\0';
-			_searchpaths[SP_BINARY_DIR] = stredup(tmp);
+			_searchpaths[SP_BINARY_DIR] = tmp;
 		}
 	}
 
-	_searchpaths[SP_INSTALLATION_DIR]       = nullptr;
-	_searchpaths[SP_APPLICATION_BUNDLE_DIR] = nullptr;
+	_searchpaths[SP_INSTALLATION_DIR].clear();
+	_searchpaths[SP_APPLICATION_BUNDLE_DIR].clear();
 }
 
 

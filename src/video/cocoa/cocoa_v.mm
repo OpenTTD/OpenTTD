@@ -34,6 +34,7 @@
 #include "../../window_func.h"
 #include "../../window_gui.h"
 
+#include <array>
 #import <sys/param.h> /* for MAXPATHLEN */
 
 /**
@@ -545,13 +546,15 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
  */
 void cocoaSetApplicationBundleDir()
 {
+	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
+
 	char tmp[MAXPATHLEN];
 	CFAutoRelease<CFURLRef> url(CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle()));
 	if (CFURLGetFileSystemRepresentation(url.get(), true, (unsigned char*)tmp, MAXPATHLEN)) {
 		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = stredup(tmp);
+		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = tmp;
 	} else {
-		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = NULL;
+		_searchpaths[SP_APPLICATION_BUNDLE_DIR].clear();
 	}
 }
 

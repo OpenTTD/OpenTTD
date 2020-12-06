@@ -128,7 +128,7 @@ enum Subdirectory {
 /**
  * Types of searchpaths OpenTTD might use
  */
-enum Searchpath {
+enum Searchpath : unsigned {
 	SP_FIRST_DIR,
 	SP_WORKING_DIR = SP_FIRST_DIR, ///< Search in the working directory
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
