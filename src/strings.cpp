@@ -41,14 +41,14 @@
 
 #include "safeguards.h"
 
-char _config_language_file[MAX_PATH];             ///< The file (name) stored in the configuration.
+std::string _config_language_file;                ///< The file (name) stored in the configuration.
 LanguageList _languages;                          ///< The actual list of language meta data.
 const LanguageMetadata *_current_language = nullptr; ///< The currently loaded language.
 
 TextDirection _current_text_dir; ///< Text direction of the currently selected language.
 
 #ifdef WITH_ICU_I18N
-icu::Collator *_current_collator = nullptr;          ///< Collator for the language currently in use.
+std::unique_ptr<icu::Collator> _current_collator;    ///< Collator for the language currently in use.
 #endif /* WITH_ICU_I18N */
 
 static uint64 _global_string_params_data[20];     ///< Global array of string parameters. To access, use #SetDParam.
@@ -185,10 +185,17 @@ struct LanguagePack : public LanguagePackHeader {
 	char data[]; // list of strings
 };
 
-static char **_langpack_offs;
-static LanguagePack *_langpack;
-static uint _langtab_num[TEXT_TAB_END];   ///< Offset into langpack offs
-static uint _langtab_start[TEXT_TAB_END]; ///< Offset into langpack offs
+struct LoadedLanguagePack {
+	std::unique_ptr<LanguagePack> langpack;
+
+	std::vector<char *> offsets;
+
+	std::array<uint, TEXT_TAB_END> langtab_num;   ///< Offset into langpack offs
+	std::array<uint, TEXT_TAB_END> langtab_start; ///< Offset into langpack offs
+};
+
+static LoadedLanguagePack _langpack;
+
 static bool _scan_for_gender_data = false;  ///< Are we scanning for the gender of the current string? (instead of formatting it)
 
 
@@ -199,7 +206,7 @@ const char *GetStringPtr(StringID string)
 		/* 0xD0xx and 0xD4xx IDs have been converted earlier. */
 		case TEXT_TAB_OLD_NEWGRF: NOT_REACHED();
 		case TEXT_TAB_NEWGRF_START: return GetGRFStringPtr(GetStringIndex(string));
-		default: return _langpack_offs[_langtab_start[GetStringTab(string)] + GetStringIndex(string)];
+		default: return _langpack.offsets[_langpack.langtab_start[GetStringTab(string)] + GetStringIndex(string)];
 	}
 }
 
@@ -253,7 +260,7 @@ char *GetStringWithArgs(char *buffr, StringID string, StringParameters *args, co
 			break;
 	}
 
-	if (index >= _langtab_num[tab]) {
+	if (index >= _langpack.langtab_num[tab]) {
 		if (game_script) {
 			return GetStringWithArgs(buffr, STR_UNDEFINED, args, last);
 		}
@@ -318,7 +325,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 	for (int i = 0; i < max_digits; i++) {
 		if (i == max_digits - fractional_digits) {
 			const char *decimal_separator = _settings_game.locale.digit_decimal_separator;
-			if (decimal_separator == nullptr) decimal_separator = _langpack->digit_decimal_separator;
+			if (decimal_separator == nullptr) decimal_separator = _langpack.langpack->digit_decimal_separator;
 			buff += seprintf(buff, last, "%s", decimal_separator);
 		}
 
@@ -343,7 +350,7 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 static char *FormatCommaNumber(char *buff, int64 number, const char *last, int fractional_digits = 0)
 {
 	const char *separator = _settings_game.locale.digit_group_separator;
-	if (separator == nullptr) separator = _langpack->digit_group_separator;
+	if (separator == nullptr) separator = _langpack.langpack->digit_group_separator;
 	return FormatNumber(buff, number, last, separator, 1, fractional_digits);
 }
 
@@ -382,7 +389,7 @@ static char *FormatBytes(char *buff, int64 number, const char *last)
 	}
 
 	const char *decimal_separator = _settings_game.locale.digit_decimal_separator;
-	if (decimal_separator == nullptr) decimal_separator = _langpack->digit_decimal_separator;
+	if (decimal_separator == nullptr) decimal_separator = _langpack.langpack->digit_decimal_separator;
 
 	if (number < 1024) {
 		id = 0;
@@ -477,7 +484,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 
 	const char *separator = _settings_game.locale.digit_group_separator_currency;
 	if (separator == nullptr && !StrEmpty(_currency->separator)) separator = _currency->separator;
-	if (separator == nullptr) separator = _langpack->digit_group_separator_currency;
+	if (separator == nullptr) separator = _langpack.langpack->digit_group_separator_currency;
 	buff = FormatNumber(buff, number, last, separator);
 	buff = strecpy(buff, multiplier, last);
 
@@ -1721,16 +1728,15 @@ bool LanguagePackHeader::IsValid() const
 bool ReadLanguagePack(const LanguageMetadata *lang)
 {
 	/* Current language pack */
-	size_t len;
-	LanguagePack *lang_pack = (LanguagePack *)ReadFileToMem(lang->file, &len, 1U << 20);
-	if (lang_pack == nullptr) return false;
+	size_t len = 0;
+	std::unique_ptr<LanguagePack> lang_pack(reinterpret_cast<LanguagePack *>(ReadFileToMem(lang->file, len, 1U << 20).release()));
+	if (!lang_pack) return false;
 
 	/* End of read data (+ terminating zero added in ReadFileToMem()) */
-	const char *end = (char *)lang_pack + len + 1;
+	const char *end = (char *)lang_pack.get() + len + 1;
 
 	/* We need at least one byte of lang_pack->data */
 	if (end <= lang_pack->data || !lang_pack->IsValid()) {
-		free(lang_pack);
 		return false;
 	}
 
@@ -1740,55 +1746,46 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 	}
 #endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 
+	std::array<uint, TEXT_TAB_END> tab_start, tab_num;
+
 	uint count = 0;
 	for (uint i = 0; i < TEXT_TAB_END; i++) {
 		uint16 num = lang_pack->offsets[i];
-		if (num > TAB_SIZE) {
-			free(lang_pack);
-			return false;
-		}
+		if (num > TAB_SIZE) return false;
 
-		_langtab_start[i] = count;
-		_langtab_num[i] = num;
+		tab_start[i] = count;
+		tab_num[i] = num;
 		count += num;
 	}
 
 	/* Allocate offsets */
-	char **langpack_offs = MallocT<char *>(count);
+	std::vector<char *> offs(count);
 
 	/* Fill offsets */
 	char *s = lang_pack->data;
 	len = (byte)*s++;
 	for (uint i = 0; i < count; i++) {
-		if (s + len >= end) {
-			free(lang_pack);
-			free(langpack_offs);
-			return false;
-		}
+		if (s + len >= end) return false;
+
 		if (len >= 0xC0) {
 			len = ((len & 0x3F) << 8) + (byte)*s++;
-			if (s + len >= end) {
-				free(lang_pack);
-				free(langpack_offs);
-				return false;
-			}
+			if (s + len >= end) return false;
 		}
-		langpack_offs[i] = s;
+		offs[i] = s;
 		s += len;
 		len = (byte)*s;
 		*s++ = '\0'; // zero terminate the string
 	}
 
-	free(_langpack);
-	_langpack = lang_pack;
-
-	free(_langpack_offs);
-	_langpack_offs = langpack_offs;
+	_langpack.langpack = std::move(lang_pack);
+	_langpack.offsets = std::move(offs);
+	_langpack.langtab_num = tab_num;
+	_langpack.langtab_start = tab_start;
 
 	_current_language = lang;
 	_current_text_dir = (TextDirection)_current_language->text_dir;
 	const char *c_file = strrchr(_current_language->file, PATHSEPCHAR) + 1;
-	strecpy(_config_language_file, c_file, lastof(_config_language_file));
+	_config_language_file = c_file;
 	SetCurrentGrfLangID(_current_language->newgrflangid);
 
 #ifdef _WIN32
@@ -1802,21 +1799,14 @@ bool ReadLanguagePack(const LanguageMetadata *lang)
 #endif
 
 #ifdef WITH_ICU_I18N
-	/* Delete previous collator. */
-	if (_current_collator != nullptr) {
-		delete _current_collator;
-		_current_collator = nullptr;
-	}
-
 	/* Create a collator instance for our current locale. */
 	UErrorCode status = U_ZERO_ERROR;
-	_current_collator = icu::Collator::createInstance(icu::Locale(_current_language->isocode), status);
+	_current_collator.reset(icu::Collator::createInstance(icu::Locale(_current_language->isocode), status));
 	/* Sort number substrings by their numerical value. */
-	if (_current_collator != nullptr) _current_collator->setAttribute(UCOL_NUMERIC_COLLATION, UCOL_ON, status);
+	if (_current_collator) _current_collator->setAttribute(UCOL_NUMERIC_COLLATION, UCOL_ON, status);
 	/* Avoid using the collator if it is not correctly set. */
 	if (U_FAILURE(status)) {
-		delete _current_collator;
-		_current_collator = nullptr;
+		_current_collator.reset();
 	}
 #endif /* WITH_ICU_I18N */
 
@@ -1978,7 +1968,7 @@ void InitializeLanguagePacks()
 		 * configuration file, local environment and last, if nothing found,
 		 * English. */
 		const char *lang_file = strrchr(lng.file, PATHSEPCHAR) + 1;
-		if (strcmp(lang_file, _config_language_file) == 0) {
+		if (_config_language_file == lang_file) {
 			chosen_language = &lng;
 			break;
 		}
@@ -2003,7 +1993,7 @@ void InitializeLanguagePacks()
  */
 const char *GetCurrentLanguageIsoCode()
 {
-	return _langpack->isocode;
+	return _langpack.langpack->isocode;
 }
 
 /**
@@ -2057,10 +2047,10 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 	{
 		if (this->i >= TEXT_TAB_END) return nullptr;
 
-		const char *ret = _langpack_offs[_langtab_start[this->i] + this->j];
+		const char *ret = _langpack.offsets[_langpack.langtab_start[this->i] + this->j];
 
 		this->j++;
-		while (this->i < TEXT_TAB_END && this->j >= _langtab_num[this->i]) {
+		while (this->i < TEXT_TAB_END && this->j >= _langpack.langtab_num[this->i]) {
 			this->i++;
 			this->j = 0;
 		}
@@ -2116,7 +2106,7 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		_freetype.mono.os_handle = nullptr;
 		_freetype.medium.os_handle = nullptr;
 
-		bad_font = !SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid, searcher);
+		bad_font = !SetFallbackFont(&_freetype, _langpack.langpack->isocode, _langpack.langpack->winlangid, searcher);
 
 		free(_freetype.mono.os_handle);
 		free(_freetype.medium.os_handle);

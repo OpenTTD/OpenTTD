@@ -103,7 +103,7 @@ extern LanguageList _languages;
 extern const LanguageMetadata *_current_language;
 
 #ifdef WITH_ICU_I18N
-extern icu::Collator *_current_collator;
+extern std::unique_ptr<icu::Collator> _current_collator;
 #endif /* WITH_ICU_I18N */
 
 bool ReadLanguagePack(const LanguageMetadata *lang);
