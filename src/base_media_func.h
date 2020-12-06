@@ -150,14 +150,14 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 }
 
 template <class Tbase_set>
-bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
+bool BaseMedia<Tbase_set>::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
 {
 	bool ret = false;
-	DEBUG(grf, 1, "Checking %s for base " SET_TYPE " set", filename);
+	DEBUG(grf, 1, "Checking %s for base " SET_TYPE " set", filename.c_str());
 
 	Tbase_set *set = new Tbase_set();
 	IniFile *ini = new IniFile();
-	std::string path{ filename + basepath_length };
+	std::string path{ filename, basepath_length };
 	ini->LoadFromDisk(path, BASESET_DIR);
 
 	auto psep = path.rfind(PATHSEPCHAR);
@@ -167,7 +167,7 @@ bool BaseMedia<Tbase_set>::AddFile(const char *filename, size_t basepath_length,
 		path.clear();
 	}
 
-	if (set->FillSetDetails(ini, path.c_str(), filename)) {
+	if (set->FillSetDetails(ini, path.c_str(), filename.c_str())) {
 		Tbase_set *duplicate = nullptr;
 		for (Tbase_set *c = BaseMedia<Tbase_set>::available_sets; c != nullptr; c = c->next) {
 			if (c->name == set->name || c->shortname == set->shortname) {
@@ -377,7 +377,7 @@ template <class Tbase_set>
 #define INSTANTIATE_BASE_MEDIA_METHODS(repl_type, set_type) \
 	template std::string repl_type::ini_set; \
 	template const char *repl_type::GetExtension(); \
-	template bool repl_type::AddFile(const char *filename, size_t pathlength, const char *tar_filename); \
+	template bool repl_type::AddFile(const std::string &filename, size_t pathlength, const std::string &tar_filename); \
 	template bool repl_type::HasSet(const struct ContentInfo *ci, bool md5sum); \
 	template bool repl_type::SetSet(const std::string &name); \
 	template char *repl_type::GetSetsList(char *p, const char *last); \

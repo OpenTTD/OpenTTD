@@ -74,7 +74,7 @@ public:
 	 * @param tar_filename    the name of the tar file the file is read from.
 	 * @return true if the file is added.
 	 */
-	virtual bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename) = 0;
+	virtual bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) = 0;
 };
 
 /** Helper for scanning for files with tar as extension */
@@ -92,9 +92,9 @@ public:
 		ALL      = BASESET | NEWGRF | AI | SCENARIO | GAME, ///< Scan for everything.
 	};
 
-	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename = nullptr) override;
+	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename = nullptr) override;
 
-	bool AddFile(Subdirectory sd, const char *filename);
+	bool AddFile(Subdirectory sd, const std::string &filename);
 
 	/** Do the scan for Tars. */
 	static uint DoScan(TarScanner::Mode mode);

@@ -32,8 +32,6 @@ public:
 	ScriptInfo() :
 		engine(nullptr),
 		SQ_instance(nullptr),
-		main_script(nullptr),
-		tar_file(nullptr),
 		author(nullptr),
 		name(nullptr),
 		short_name(nullptr),
@@ -89,12 +87,12 @@ public:
 	/**
 	 * Get the filename of the main.nut script.
 	 */
-	const char *GetMainScript() const { return this->main_script; }
+	const char *GetMainScript() const { return this->main_script.c_str(); }
 
 	/**
 	 * Get the filename of the tar the script is in.
 	 */
-	const char *GetTarFile() const { return this->tar_file; }
+	std::string GetTarFile() const { return this->tar_file; }
 
 	/**
 	 * Check if a given method exists.
@@ -152,8 +150,8 @@ protected:
 	ScriptConfigItemList config_list; ///< List of settings from this Script.
 
 private:
-	char *main_script;            ///< The full path of the script.
-	char *tar_file;               ///< If, which tar file the script was in.
+	std::string main_script;      ///< The full path of the script.
+	std::string tar_file;         ///< If, which tar file the script was in.
 	const char *author;           ///< Author of the script.
 	const char *name;             ///< Full name of the script.
 	const char *short_name;       ///< Short name (4 chars) which uniquely identifies the script.

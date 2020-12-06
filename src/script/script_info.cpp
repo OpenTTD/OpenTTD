@@ -39,8 +39,6 @@ ScriptInfo::~ScriptInfo()
 	free(this->date);
 	free(this->instance_name);
 	free(this->url);
-	free(this->main_script);
-	free(this->tar_file);
 	free(this->SQ_instance);
 }
 
@@ -81,9 +79,8 @@ bool ScriptInfo::CheckMethod(const char *name) const
 	}
 
 	/* Get location information of the scanner */
-	info->main_script = stredup(info->scanner->GetMainScript());
-	const char *tar_name = info->scanner->GetTarFile();
-	if (tar_name != nullptr) info->tar_file = stredup(tar_name);
+	info->main_script = info->scanner->GetMainScript();
+	info->tar_file = info->scanner->GetTarFile();
 
 	/* Cache the data the info file gives us. */
 	if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAuthor", &info->author, MAX_GET_OPS)) return SQ_ERROR;

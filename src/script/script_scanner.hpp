@@ -32,12 +32,12 @@ public:
 	/**
 	 * Get the current main script the ScanDir is currently tracking.
 	 */
-	const char *GetMainScript() { return this->main_script; }
+	std::string GetMainScript() { return this->main_script; }
 
 	/**
 	 * Get the current tar file the ScanDir is currently tracking.
 	 */
-	const char *GetTarFile() { return this->tar_file; }
+	std::string GetTarFile() { return this->tar_file; }
 
 	/**
 	 * Get the list of all registered scripts.
@@ -75,7 +75,7 @@ public:
 	 */
 	const char *FindMainScript(const ContentInfo *ci, bool md5sum);
 
-	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename) override;
+	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override;
 
 	/**
 	 * Rescan the script dir.
@@ -83,9 +83,9 @@ public:
 	void RescanDir();
 
 protected:
-	class Squirrel *engine; ///< The engine we're scanning with.
-	char *main_script;      ///< The full path of the script.
-	char *tar_file;         ///< If, which tar file the script was in.
+	class Squirrel *engine;  ///< The engine we're scanning with.
+	std::string main_script; ///< The full path of the script.
+	std::string tar_file;    ///< If, which tar file the script was in.
 
 	ScriptInfoList info_list;        ///< The list of all script.
 	ScriptInfoList info_single_list; ///< The list of all unique script. The best script (highest version) is shown.

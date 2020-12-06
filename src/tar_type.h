@@ -12,30 +12,20 @@
 
 #include <map>
 #include <string>
+#include <array>
 
 #include "fileio_type.h"
 
-/** The define of a TarList. */
-struct TarListEntry {
-	const char *filename;
-	const char *dirname;
-
-	/* MSVC goes copying around this struct after initialisation, so it tries
-	 * to free filename, which isn't set at that moment... but because it
-	 * initializes the variable with garbage, it's going to segfault. */
-	TarListEntry() : filename(nullptr), dirname(nullptr) {}
-	~TarListEntry() { free(this->filename); free(this->dirname); }
-};
 
 struct TarFileListEntry {
-	const char *tar_filename;
+	std::string tar_filename;
 	size_t size;
 	size_t position;
 };
 
-typedef std::map<std::string, TarListEntry> TarList;
+typedef std::map<std::string, std::string> TarList; ///< Map of tar file to tar directory.
 typedef std::map<std::string, TarFileListEntry> TarFileList;
-extern TarList _tar_list[NUM_SUBDIRS];
+extern std::array<TarList, NUM_SUBDIRS> _tar_list;
 extern TarFileList _tar_filelist[NUM_SUBDIRS];
 
 #define FOR_ALL_TARS(tar, sd) for (tar = _tar_filelist[sd].begin(); tar != _tar_filelist[sd].end(); tar++)

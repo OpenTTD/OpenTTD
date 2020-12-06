@@ -23,47 +23,29 @@
 
 #include "../safeguards.h"
 
-bool ScriptScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
+bool ScriptScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
 {
-	free(this->main_script);
-	this->main_script = stredup(filename);
-	if (this->main_script == nullptr) return false;
+	this->main_script = filename;
+	this->tar_file = tar_filename;
 
-	free(this->tar_file);
-	if (tar_filename != nullptr) {
-		this->tar_file = stredup(tar_filename);
-		if (this->tar_file == nullptr) return false;
-	} else {
-		this->tar_file = nullptr;
-	}
-
-	const char *end = this->main_script + strlen(this->main_script) + 1;
-	char *p = strrchr(this->main_script, PATHSEPCHAR);
-	if (p == nullptr) {
-		p = this->main_script;
-	} else {
-		/* Skip over the path separator character. We don't need that. */
-		p++;
-	}
-
-	strecpy(p, "main.nut", end);
+	auto p = this->main_script.rfind(PATHSEPCHAR);
+	this->main_script.erase(p != std::string::npos ? p + 1 : 0);
+	this->main_script += "main.nut";
 
 	if (!FioCheckFileExists(filename, this->subdir) || !FioCheckFileExists(this->main_script, this->subdir)) return false;
 
 	this->ResetEngine();
 	try {
-		this->engine->LoadScript(filename);
+		this->engine->LoadScript(filename.c_str());
 	} catch (Script_FatalError &e) {
-		DEBUG(script, 0, "Fatal error '%s' when trying to load the script '%s'.", e.GetErrorMessage(), filename);
+		DEBUG(script, 0, "Fatal error '%s' when trying to load the script '%s'.", e.GetErrorMessage(), filename.c_str());
 		return false;
 	}
 	return true;
 }
 
 ScriptScanner::ScriptScanner() :
-	engine(nullptr),
-	main_script(nullptr),
-	tar_file(nullptr)
+	engine(nullptr)
 {
 }
 
@@ -87,8 +69,6 @@ ScriptScanner::~ScriptScanner()
 {
 	this->Reset();
 
-	free(this->main_script);
-	free(this->tar_file);
 	delete this->engine;
 }
 
@@ -194,7 +174,7 @@ struct ScriptFileChecksumCreator : FileScanner {
 	}
 
 	/* Add the file and calculate the md5 sum. */
-	virtual bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
+	virtual bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
 	{
 		Md5 checksum;
 		uint8 buffer[1024];
@@ -202,7 +182,7 @@ struct ScriptFileChecksumCreator : FileScanner {
 		byte tmp_md5sum[16];
 
 		/* Open the file ... */
-		FILE *f = FioFOpenFile(filename, "rb", this->dir, &size);
+		FILE *f = FioFOpenFile(filename.c_str(), "rb", this->dir, &size);
 		if (f == nullptr) return false;
 
 		/* ... calculate md5sum... */
@@ -239,9 +219,9 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 	if (!md5sum) return true;
 
 	ScriptFileChecksumCreator checksum(dir);
-	const char *tar_filename = info->GetTarFile();
+	auto tar_filename = info->GetTarFile();
 	TarList::iterator iter;
-	if (tar_filename != nullptr && (iter = _tar_list[dir].find(tar_filename)) != _tar_list[dir].end()) {
+	if (!tar_filename.empty() && (iter = _tar_list[dir].find(tar_filename)) != _tar_list[dir].end()) {
 		/* The main script is in a tar file, so find all files that
 		 * are in the same tar and add them to the MD5 checksumming. */
 		TarFileList::iterator tar;
@@ -253,7 +233,7 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 			const char *ext = strrchr(tar->first.c_str(), '.');
 			if (ext == nullptr || strcasecmp(ext, ".nut") != 0) continue;
 
-			checksum.AddFile(tar->first.c_str(), 0, tar_filename);
+			checksum.AddFile(tar->first, 0, tar_filename);
 		}
 	} else {
 		char path[MAX_PATH];
