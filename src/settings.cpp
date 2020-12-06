@@ -1913,6 +1913,8 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		}
 
 		SetWindowClassesDirty(WC_GAME_OPTIONS);
+
+		if (_save_config) SaveToConfig();
 	}
 
 	return CommandCost();
@@ -1981,12 +1983,15 @@ bool SetSettingValue(uint index, int32 value, bool force_newgame)
 
 		SetWindowClassesDirty(WC_GAME_OPTIONS);
 
+		if (_save_config) SaveToConfig();
 		return true;
 	}
 
 	if (force_newgame) {
 		void *var2 = GetVariableAddress(&_settings_newgame, &sd->save);
 		Write_ValidateSetting(var2, sd, value);
+
+		if (_save_config) SaveToConfig();
 		return true;
 	}
 
@@ -2079,6 +2084,7 @@ bool SetSettingValue(uint index, const char *value, bool force_newgame)
 	}
 	if (sd->desc.proc != nullptr) sd->desc.proc(0);
 
+	if (_save_config) SaveToConfig();
 	return true;
 }
 

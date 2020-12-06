@@ -84,6 +84,7 @@ bool HandleBootstrap();
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern char *_config_file;
+extern bool _save_config = false;
 
 /**
  * Error handling for fatal user errors.
@@ -178,7 +179,7 @@ static void ShowHelp()
 		"  -S sounds_set       = Force the sounds set (see below)\n"
 		"  -M music_set        = Force the music set (see below)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
-		"  -x                  = Do not automatically save to config file on exit\n"
+		"  -x                  = Never save configuration changes to disk\n"
 		"  -q savegame         = Write some information about the savegame and exit\n"
 		"\n",
 		lastof(buf)
@@ -395,19 +396,16 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	char *network_conn;                ///< Information about the server to connect to, or nullptr.
 	const char *join_server_password;  ///< The password to join the server with.
 	const char *join_company_password; ///< The password to join the company with.
-	bool *save_config_ptr;             ///< The pointer to the save config setting.
 	bool save_config;                  ///< The save config setting.
 
 	/**
 	 * Create a new callback.
-	 * @param save_config_ptr Pointer to the save_config local variable which
-	 *                        decides whether to save of exit or not.
 	 */
-	AfterNewGRFScan(bool *save_config_ptr) :
+	AfterNewGRFScan() :
 			startyear(INVALID_YEAR), generation_seed(GENERATE_NEW_SEED),
 			dedicated_host(nullptr), dedicated_port(0), network_conn(nullptr),
 			join_server_password(nullptr), join_company_password(nullptr),
-			save_config_ptr(save_config_ptr), save_config(true)
+			save_config(true)
 	{
 		/* Visual C++ 2015 fails compiling this line (AfterNewGRFScan::generation_seed undefined symbol)
 		 * if it's placed outside a member function, directly in the struct body. */
@@ -438,7 +436,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		WindowDesc::LoadFromConfig();
 
 		/* We have loaded the config, so we may possibly save it. */
-		*save_config_ptr = save_config;
+		_save_config = save_config;
 
 		/* restore saved music volume */
 		MusicDriver::GetInstance()->SetVolume(_settings_client.music.music_vol);
@@ -541,9 +539,7 @@ int openttd_main(int argc, char *argv[])
 	std::string sounds_set;
 	std::string music_set;
 	Dimension resolution = {0, 0};
-	/* AfterNewGRFScan sets save_config to true after scanning completed. */
-	bool save_config = false;
-	std::unique_ptr<AfterNewGRFScan> scanner(new AfterNewGRFScan(&save_config));
+	std::unique_ptr<AfterNewGRFScan> scanner(new AfterNewGRFScan());
 	bool dedicated = false;
 	char *debuglog_conn = nullptr;
 
@@ -847,7 +843,7 @@ int openttd_main(int argc, char *argv[])
 	WaitTillGeneratedWorld(); // Make sure any generate world threads have been joined.
 
 	/* only save config if we have to */
-	if (save_config) {
+	if (_save_config) {
 		SaveToConfig();
 		SaveHotkeysToConfig();
 		WindowDesc::SaveToConfig();
