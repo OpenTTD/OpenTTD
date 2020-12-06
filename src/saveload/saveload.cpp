@@ -2930,7 +2930,7 @@ void FileToSaveLoad::SetMode(SaveLoadOperation fop, AbstractFileType aft, Detail
  */
 void FileToSaveLoad::SetName(const char *name)
 {
-	strecpy(this->name, name, lastof(this->name));
+	this->name = name;
 }
 
 /**

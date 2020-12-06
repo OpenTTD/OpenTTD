@@ -12,6 +12,7 @@
 
 #include "../fileio_type.h"
 #include "../strings_type.h"
+#include <string>
 
 /** SaveLoad versions
  * Previous savegame versions, the trunk revision where they were
@@ -337,7 +338,7 @@ struct FileToSaveLoad {
 	SaveLoadOperation file_op;           ///< File operation to perform.
 	DetailedFileType detail_ftype;   ///< Concrete file type (PNG, BMP, old save, etc).
 	AbstractFileType abstract_ftype; ///< Abstract type of file (scenario, heightmap, etc).
-	char name[MAX_PATH];             ///< Name of the file.
+	std::string name;                ///< Name of the file.
 	char title[255];                 ///< Internal name of the game.
 
 	void SetMode(FiosType ft);

@@ -626,9 +626,9 @@ int openttd_main(int argc, char *argv[])
 				_file_to_saveload.SetMode(SLO_LOAD, is_scenario ? FT_SCENARIO : FT_SAVEGAME, DFT_GAME_FILE);
 
 				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
-				const char *t = strrchr(_file_to_saveload.name, '.');
-				if (t != nullptr) {
-					FiosType ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, t, nullptr, nullptr);
+				auto t = _file_to_saveload.name.find_last_of('.');
+				if (t != std::string::npos) {
+					FiosType ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name.c_str(), _file_to_saveload.name.substr(t).c_str(), nullptr, nullptr);
 					if (ft != FIOS_TYPE_INVALID) _file_to_saveload.SetMode(ft);
 				}
 
@@ -960,7 +960,7 @@ static void MakeNewEditorWorld()
  * @param subdir default directory to look for filename, set to 0 if not needed
  * @param lf Load filter to use, if nullptr: use filename + subdir.
  */
-bool SafeLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = nullptr)
+bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = nullptr)
 {
 	assert(fop == SLO_LOAD);
 	assert(dft == DFT_GAME_FILE || (lf == nullptr && dft == DFT_OLD_GAME_FILE));
@@ -968,7 +968,7 @@ bool SafeLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft,
 
 	_game_mode = newgm;
 
-	switch (lf == nullptr ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(lf)) {
+	switch (lf == nullptr ? SaveOrLoad(filename.c_str(), fop, dft, subdir) : LoadWithFilter(lf)) {
 		case SL_OK: return true;
 
 		case SL_REINIT:
@@ -1127,7 +1127,7 @@ void SwitchToMode(SwitchMode new_mode)
 
 		case SM_SAVE_GAME: // Save game.
 			/* Make network saved games on pause compatible to singleplayer */
-			if (SaveOrLoad(_file_to_saveload.name, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY) != SL_OK) {
+			if (SaveOrLoad(_file_to_saveload.name.c_str(), SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY) != SL_OK) {
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 			} else {
@@ -1136,7 +1136,7 @@ void SwitchToMode(SwitchMode new_mode)
 			break;
 
 		case SM_SAVE_HEIGHTMAP: // Save heightmap.
-			MakeHeightmapScreenshot(_file_to_saveload.name);
+			MakeHeightmapScreenshot(_file_to_saveload.name.c_str());
 			DeleteWindowById(WC_SAVELOAD, 0);
 			break;
 

@@ -220,8 +220,8 @@ const char *FiosBrowseTo(const FiosItem *item);
 
 StringID FiosGetDescText(const char **path, uint64 *total_free);
 bool FiosDelete(const char *name);
-void FiosMakeHeightmapName(char *buf, const char *name, const char *last);
-void FiosMakeSavegameName(char *buf, const char *name, const char *last);
+std::string FiosMakeHeightmapName(const char *name);
+std::string FiosMakeSavegameName(const char *name);
 
 FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last);
 
