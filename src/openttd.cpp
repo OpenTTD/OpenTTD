@@ -968,7 +968,7 @@ bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileTy
 
 	_game_mode = newgm;
 
-	switch (lf == nullptr ? SaveOrLoad(filename.c_str(), fop, dft, subdir) : LoadWithFilter(lf)) {
+	switch (lf == nullptr ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(lf)) {
 		case SL_OK: return true;
 
 		case SL_REINIT:
@@ -1127,7 +1127,7 @@ void SwitchToMode(SwitchMode new_mode)
 
 		case SM_SAVE_GAME: // Save game.
 			/* Make network saved games on pause compatible to singleplayer */
-			if (SaveOrLoad(_file_to_saveload.name.c_str(), SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY) != SL_OK) {
+			if (SaveOrLoad(_file_to_saveload.name, SLO_SAVE, DFT_GAME_FILE, NO_DIRECTORY) != SL_OK) {
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(STR_JUST_RAW_STRING, INVALID_STRING_ID, WL_ERROR);
 			} else {

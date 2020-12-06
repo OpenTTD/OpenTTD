@@ -2413,7 +2413,7 @@ static const SaveLoadFormat *GetSavegameFormat(char *s, byte *compression_level)
 /* actual loader/saver function */
 void InitializeGame(uint size_x, uint size_y, bool reset_date, bool reset_settings);
 extern bool AfterLoadGame();
-extern bool LoadOldSaveGame(const char *file);
+extern bool LoadOldSaveGame(const std::string &file);
 
 /**
  * Clear temporary data that is passed between various saveload phases.
@@ -2769,7 +2769,7 @@ SaveOrLoadResult LoadWithFilter(LoadFilter *reader)
  * @param threaded True when threaded saving is allowed
  * @return Return the result of the action. #SL_OK, #SL_ERROR, or #SL_REINIT ("unload" the game)
  */
-SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded)
+SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded)
 {
 	/* An instance of saving is already active, so don't go saving again */
 	if (_sl.saveinprogress && fop == SLO_SAVE && dft == DFT_GAME_FILE && threaded) {
@@ -2833,7 +2833,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, Detaile
 		}
 
 		if (fop == SLO_SAVE) { // SAVE game
-			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename);
+			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename.c_str());
 			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
 
 			return DoSave(new FileWriter(fh), threaded);
@@ -2841,7 +2841,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, Detaile
 
 		/* LOAD game */
 		assert(fop == SLO_LOAD || fop == SLO_CHECK);
-		DEBUG(desync, 1, "load: %s", filename);
+		DEBUG(desync, 1, "load: %s", filename.c_str());
 		return DoLoad(new FileReader(fh), fop == SLO_CHECK);
 	} catch (...) {
 		/* This code may be executed both for old and new save games. */

@@ -66,7 +66,7 @@ void NORETURN CDECL strgen_fatal(const char *s, ...)
 LanguageStrings ReadRawLanguageStrings(const std::string &file)
 {
 	size_t to_read;
-	FILE *fh = FioFOpenFile(file.c_str(), "rb", GAME_DIR, &to_read);
+	FILE *fh = FioFOpenFile(file, "rb", GAME_DIR, &to_read);
 	if (fh == nullptr) return LanguageStrings();
 
 	FileCloser fhClose(fh);

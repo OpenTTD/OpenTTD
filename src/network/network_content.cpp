@@ -543,7 +543,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 
 		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
-			ExtractTar(fname.c_str(), BASESET_DIR);
+			ExtractTar(fname, BASESET_DIR);
 			unlink(fname.c_str());
 		}
 
