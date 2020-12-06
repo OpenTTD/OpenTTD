@@ -37,7 +37,7 @@ bool IsValidSearchPath(Searchpath sp);
 #define FOR_ALL_SEARCHPATHS(sp) for (sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) if (IsValidSearchPath(sp))
 
 void FioFCloseFile(FILE *f);
-FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
+FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
 bool FioCheckFileExists(const std::string &filename, Subdirectory subdir);
 std::string FioFindFullPath(Subdirectory subdir, const char *filename);
 std::string FioGetDirectory(Searchpath sp, Subdirectory subdir);
@@ -51,7 +51,7 @@ void AppendPathSeparator(std::string &buf);
 void DeterminePaths(const char *exe);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 bool FileExists(const std::string &filename);
-bool ExtractTar(const char *tar_filename, Subdirectory subdir);
+bool ExtractTar(const std::string &tar_filename, Subdirectory subdir);
 
 extern std::string _personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
 

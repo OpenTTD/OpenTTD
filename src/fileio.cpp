@@ -272,7 +272,7 @@ bool IsValidSearchPath(Searchpath sp)
  */
 bool FioCheckFileExists(const std::string &filename, Subdirectory subdir)
 {
-	FILE *f = FioFOpenFile(filename.c_str(), "rb", subdir);
+	FILE *f = FioFOpenFile(filename, "rb", subdir);
 	if (f == nullptr) return false;
 
 	FioFCloseFile(f);
@@ -345,7 +345,7 @@ std::string FioFindDirectory(Subdirectory subdir)
 	return _personal_dir;
 }
 
-static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
+static FILE *FioFOpenFileSp(const std::string &filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
 {
 #if defined(_WIN32) && defined(UNICODE)
 	/* fopen is implemented as a define with ellipses for
@@ -390,17 +390,17 @@ static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath s
  * @return File handle of the opened file, or \c nullptr if the file is not available.
  * @note The file is read from within the tar file, and may not return \c EOF after reading the whole file.
  */
-FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
+FILE *FioFOpenFileTar(const TarFileListEntry &entry, size_t *filesize)
 {
-	FILE *f = fopen(entry->tar_filename, "rb");
+	FILE *f = fopen(entry.tar_filename, "rb");
 	if (f == nullptr) return f;
 
-	if (fseek(f, entry->position, SEEK_SET) < 0) {
+	if (fseek(f, entry.position, SEEK_SET) < 0) {
 		fclose(f);
 		return nullptr;
 	}
 
-	if (filesize != nullptr) *filesize = entry->size;
+	if (filesize != nullptr) *filesize = entry.size;
 	return f;
 }
 
@@ -410,7 +410,7 @@ FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
  * @param subdir Subdirectory to open.
  * @return File handle of the opened file, or \c nullptr if the file is not available.
  */
-FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize)
+FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize)
 {
 	FILE *f = nullptr;
 	Searchpath sp;
@@ -424,11 +424,8 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 
 	/* We can only use .tar in case of data-dir, and read-mode */
 	if (f == nullptr && mode[0] == 'r' && subdir != NO_DIRECTORY) {
-		static const uint MAX_RESOLVED_LENGTH = 2 * (100 + 100 + 155) + 1; // Enough space to hold two filenames plus link. See 'TarHeader'.
-		char resolved_name[MAX_RESOLVED_LENGTH];
-
 		/* Filenames in tars are always forced to be lowercase */
-		strecpy(resolved_name, filename, lastof(resolved_name));
+		std::string resolved_name = filename;
 		strtolower(resolved_name);
 
 		/* Resolve ".." */
@@ -443,36 +440,31 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 				tokens.push_back(token);
 			}
 		}
-		resolved_name[0] = '\0';
+
+		resolved_name.clear();
 		bool first = true;
 		for (const std::string &token : tokens) {
 			if (!first) {
-				strecat(resolved_name, PATHSEP, lastof(resolved_name));
+				resolved_name += PATHSEP;
 			}
-			strecat(resolved_name, token.c_str(), lastof(resolved_name));
+			resolved_name += token;
 			first = false;
 		}
-
-		size_t resolved_len = strlen(resolved_name);
 
 		/* Resolve ONE directory link */
 		for (TarLinkList::iterator link = _tar_linklist[subdir].begin(); link != _tar_linklist[subdir].end(); link++) {
 			const std::string &src = link->first;
 			size_t len = src.length();
-			if (resolved_len >= len && resolved_name[len - 1] == PATHSEPCHAR && strncmp(src.c_str(), resolved_name, len) == 0) {
+			if (resolved_name.length() >= len && resolved_name[len - 1] == PATHSEPCHAR && src.compare(0, len, resolved_name, 0, len) == 0) {
 				/* Apply link */
-				char resolved_name2[MAX_RESOLVED_LENGTH];
-				const std::string &dest = link->second;
-				strecpy(resolved_name2, &(resolved_name[len]), lastof(resolved_name2));
-				strecpy(resolved_name, dest.c_str(), lastof(resolved_name));
-				strecpy(&(resolved_name[dest.length()]), resolved_name2, lastof(resolved_name));
+				resolved_name.replace(0, len, link->second);
 				break; // Only resolve one level
 			}
 		}
 
 		TarFileList::iterator it = _tar_filelist[subdir].find(resolved_name);
 		if (it != _tar_filelist[subdir].end()) {
-			f = FioFOpenFileTar(&((*it).second), filesize);
+			f = FioFOpenFileTar(it->second, filesize);
 		}
 	}
 
@@ -859,7 +851,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
  * @param subdir The sub directory the tar is in.
  * @return false on failure.
  */
-bool ExtractTar(const char *tar_filename, Subdirectory subdir)
+bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 {
 	TarList::iterator it = _tar_list[subdir].find(tar_filename);
 	/* We don't know the file. */
@@ -869,41 +861,38 @@ bool ExtractTar(const char *tar_filename, Subdirectory subdir)
 
 	/* The file doesn't have a sub directory! */
 	if (dirname == nullptr) {
-		DEBUG(misc, 1, "Extracting %s failed; archive rejected, the contents must be in a sub directory", tar_filename);
+		DEBUG(misc, 1, "Extracting %s failed; archive rejected, the contents must be in a sub directory", tar_filename.c_str());
 		return false;
 	}
 
-	char filename[MAX_PATH];
-	strecpy(filename, tar_filename, lastof(filename));
-	char *p = strrchr(filename, PATHSEPCHAR);
+	std::string filename = tar_filename;
+	auto p = filename.find_last_of(PATHSEPCHAR);
 	/* The file's path does not have a separator? */
-	if (p == nullptr) return false;
+	if (p == std::string::npos) return false;
 
-	p++;
-	strecpy(p, dirname, lastof(filename));
-	DEBUG(misc, 8, "Extracting %s to directory %s", tar_filename, filename);
+	filename.replace(p + 1, std::string::npos, dirname);
+	DEBUG(misc, 8, "Extracting %s to directory %s", tar_filename.c_str(), filename.c_str());
 	FioCreateDirectory(filename);
 
 	for (TarFileList::iterator it2 = _tar_filelist[subdir].begin(); it2 != _tar_filelist[subdir].end(); it2++) {
-		if (strcmp((*it2).second.tar_filename, tar_filename) != 0) continue;
+		if (tar_filename != it2->second.tar_filename) continue;
 
-		strecpy(p, (*it2).first.c_str(), lastof(filename));
+		filename.replace(p + 1, std::string::npos, it2->first);
 
-		DEBUG(misc, 9, "  extracting %s", filename);
+		DEBUG(misc, 9, "  extracting %s", filename.c_str());
 
 		/* First open the file in the .tar. */
 		size_t to_copy = 0;
-		FILE *in = FioFOpenFileTar(&(*it2).second, &to_copy);
-		if (in == nullptr) {
-			DEBUG(misc, 6, "Extracting %s failed; could not open %s", filename, tar_filename);
+		std::unique_ptr<FILE, FileDeleter> in(FioFOpenFileTar(it2->second, &to_copy));
+		if (!in) {
+			DEBUG(misc, 6, "Extracting %s failed; could not open %s", filename.c_str(), tar_filename.c_str());
 			return false;
 		}
 
 		/* Now open the 'output' file. */
-		FILE *out = fopen(filename, "wb");
-		if (out == nullptr) {
-			DEBUG(misc, 6, "Extracting %s failed; could not open %s", filename, filename);
-			fclose(in);
+		std::unique_ptr<FILE, FileDeleter> out(fopen(filename.c_str(), "wb"));
+		if (!out) {
+			DEBUG(misc, 6, "Extracting %s failed; could not open %s", filename.c_str(), filename.c_str());
 			return false;
 		}
 
@@ -911,16 +900,12 @@ bool ExtractTar(const char *tar_filename, Subdirectory subdir)
 		char buffer[4096];
 		size_t read;
 		for (; to_copy != 0; to_copy -= read) {
-			read = fread(buffer, 1, min(to_copy, lengthof(buffer)), in);
-			if (read <= 0 || fwrite(buffer, 1, read, out) != read) break;
+			read = fread(buffer, 1, min(to_copy, lengthof(buffer)), in.get());
+			if (read <= 0 || fwrite(buffer, 1, read, out.get()) != read) break;
 		}
 
-		/* Close everything up. */
-		fclose(in);
-		fclose(out);
-
 		if (to_copy != 0) {
-			DEBUG(misc, 6, "Extracting %s failed; still %i bytes to copy", filename, (int)to_copy);
+			DEBUG(misc, 6, "Extracting %s failed; still %i bytes to copy", filename.c_str(), (int)to_copy);
 			return false;
 		}
 	}

@@ -271,7 +271,7 @@ static SavegameType DetermineOldSavegameType(FILE *f, char *title, const char *l
 
 typedef bool LoadOldMainProc(LoadgameState *ls);
 
-bool LoadOldSaveGame(const char *file)
+bool LoadOldSaveGame(const std::string &file)
 {
 	LoadgameState ls;
 
@@ -283,7 +283,7 @@ bool LoadOldSaveGame(const char *file)
 	ls.file = FioFOpenFile(file, "rb", NO_DIRECTORY);
 
 	if (ls.file == nullptr) {
-		DEBUG(oldloader, 0, "Cannot open file '%s'", file);
+		DEBUG(oldloader, 0, "Cannot open file '%s'", file.c_str());
 		return false;
 	}
 
