@@ -40,13 +40,13 @@
 /** Structure for keeping several open files with just one data buffer. */
 struct Fio {
 	byte *buffer, *buffer_end;             ///< position pointer in local buffer and last valid byte of buffer
+	byte buffer_start[FIO_BUFFER_SIZE];    ///< local buffer when read from file
 	size_t pos;                            ///< current (system) position in file
 	FILE *cur_fh;                          ///< current file handle
-	const char *filename;                  ///< current filename
-	FILE *handles[MAX_FILE_SLOTS];         ///< array of file handles we can have open
-	byte buffer_start[FIO_BUFFER_SIZE];    ///< local buffer when read from file
-	const char *filenames[MAX_FILE_SLOTS]; ///< array of filenames we (should) have open
-	char *shortnames[MAX_FILE_SLOTS];      ///< array of short names for spriteloader's use
+	std::string filename;                  ///< current filename
+	std::array<FILE *, MAX_FILE_SLOTS> handles;        ///< array of file handles we can have open
+	std::array<std::string, MAX_FILE_SLOTS> filenames; ///< array of filenames we (should) have open
+	std::array<std::string, MAX_FILE_SLOTS> shortnames;///< array of short names for spriteloader's use
 };
 
 static Fio _fio; ///< #Fio instance.
@@ -73,7 +73,7 @@ size_t FioGetPos()
  */
 const char *FioGetFilename(uint8 slot)
 {
-	return _fio.shortnames[slot];
+	return _fio.shortnames[slot].c_str();
 }
 
 /**
@@ -87,7 +87,7 @@ void FioSeekTo(size_t pos, int mode)
 	_fio.buffer = _fio.buffer_end = _fio.buffer_start + FIO_BUFFER_SIZE;
 	_fio.pos = pos;
 	if (fseek(_fio.cur_fh, _fio.pos, SEEK_SET) < 0) {
-		DEBUG(misc, 0, "Seeking in %s failed", _fio.filename);
+		DEBUG(misc, 0, "Seeking in %s failed", _fio.filename.c_str());
 	}
 }
 
@@ -178,8 +178,7 @@ static inline void FioCloseFile(int slot)
 	if (_fio.handles[slot] != nullptr) {
 		fclose(_fio.handles[slot]);
 
-		free(_fio.shortnames[slot]);
-		_fio.shortnames[slot] = nullptr;
+		_fio.shortnames[slot].clear();
 
 		_fio.handles[slot] = nullptr;
 	}
@@ -199,27 +198,26 @@ void FioCloseAll()
  * @param filename Name of the file at the disk.
  * @param subdir The sub directory to search this file in.
  */
-void FioOpenFile(int slot, const char *filename, Subdirectory subdir)
+void FioOpenFile(int slot, const std::string &filename, Subdirectory subdir)
 {
 	FILE *f;
 
 	f = FioFOpenFile(filename, "rb", subdir);
-	if (f == nullptr) usererror("Cannot open file '%s'", filename);
+	if (f == nullptr) usererror("Cannot open file '%s'", filename.c_str());
 	long pos = ftell(f);
-	if (pos < 0) usererror("Cannot read file '%s'", filename);
+	if (pos < 0) usererror("Cannot read file '%s'", filename.c_str());
 
 	FioCloseFile(slot); // if file was opened before, close it
 	_fio.handles[slot] = f;
 	_fio.filenames[slot] = filename;
 
 	/* Store the filename without path and extension */
-	const char *t = strrchr(filename, PATHSEPCHAR);
-	_fio.shortnames[slot] = stredup(t == nullptr ? filename : t);
-	char *t2 = strrchr(_fio.shortnames[slot], '.');
-	if (t2 != nullptr) *t2 = '\0';
+	auto t = filename.rfind(PATHSEPCHAR);
+	std::string sn = filename.substr(t != std::string::npos ? t + 1 : 0);
+	_fio.shortnames[slot] = sn.substr(0, sn.rfind('.'));
 	strtolower(_fio.shortnames[slot]);
 
-	FioSeekToFile(slot, (uint32)pos);
+	FioSeekToFile(slot, (size_t)pos);
 }
 
 static const char * const _subdirs[] = {

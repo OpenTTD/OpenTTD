@@ -165,11 +165,11 @@ struct SettingsIniFile : IniLoadFile {
 	{
 	}
 
-	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size)
+	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size)
 	{
 		/* Open the text file in binary mode to prevent end-of-line translations
 		 * done by ftell() and friends, as defined by K&R. */
-		FILE *in = fopen(filename, "rb");
+		FILE *in = fopen(filename.c_str(), "rb");
 		if (in == nullptr) return nullptr;
 
 		fseek(in, 0L, SEEK_END);

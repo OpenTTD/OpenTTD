@@ -73,7 +73,7 @@ struct IniLoadFile {
 	 * @param[out] size Size of the opened file.
 	 * @return File handle of the opened file, or \c nullptr.
 	 */
-	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) = 0;
+	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) = 0;
 
 	/**
 	 * Report an error about the file contents.
@@ -90,7 +90,7 @@ struct IniFile : IniLoadFile {
 
 	bool SaveToDisk(const std::string &filename);
 
-	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size);
+	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size);
 	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post);
 };
 

@@ -22,7 +22,7 @@ byte FioReadByte();
 uint16 FioReadWord();
 uint32 FioReadDword();
 void FioCloseAll();
-void FioOpenFile(int slot, const char *filename, Subdirectory subdir);
+void FioOpenFile(int slot, const std::string &filename, Subdirectory subdir);
 void FioReadBlock(void *ptr, size_t size);
 void FioSkipBytes(int n);
 

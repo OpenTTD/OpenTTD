@@ -204,7 +204,7 @@ void IniLoadFile::LoadFromDisk(const std::string &filename, Subdirectory subdir)
 	uint comment_alloc = 0;
 
 	size_t end;
-	FILE *in = this->OpenFile(filename.c_str(), subdir, &end);
+	FILE *in = this->OpenFile(filename, subdir, &end);
 	if (in == nullptr) return;
 
 	end += ftell(in);
