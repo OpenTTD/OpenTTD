@@ -285,10 +285,10 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 			return false;
 		}
 
-		char icon_path[MAX_PATH];
-		if (FioFindFullPath(icon_path, lastof(icon_path), BASESET_DIR, "openttd.32.bmp") != nullptr) {
+		std::string icon_path = FioFindFullPath(BASESET_DIR, "openttd.32.bmp");
+		if (!icon_path.empty()) {
 			/* Give the application an icon */
-			SDL_Surface *icon = SDL_LoadBMP(icon_path);
+			SDL_Surface *icon = SDL_LoadBMP(icon_path.c_str());
 			if (icon != nullptr) {
 				/* Get the colourkey, which will be magenta */
 				uint32 rgbmap = SDL_MapRGB(icon->format, 255, 0, 255);

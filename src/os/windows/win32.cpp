@@ -458,24 +458,23 @@ void DetermineBasePaths(const char *exe)
 {
 	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
 
-	char tmp[MAX_PATH];
 	TCHAR path[MAX_PATH];
 #ifdef WITH_PERSONAL_DIR
 	if (SUCCEEDED(OTTDSHGetFolderPath(nullptr, CSIDL_PERSONAL, nullptr, SHGFP_TYPE_CURRENT, path))) {
-		strecpy(tmp, FS2OTTD(path), lastof(tmp));
-		AppendPathSeparator(tmp, lastof(tmp));
-		strecat(tmp, PERSONAL_DIR, lastof(tmp));
-		AppendPathSeparator(tmp, lastof(tmp));
+		std::string tmp(FS2OTTD(path));
+		AppendPathSeparator(tmp);
+		tmp += PERSONAL_DIR;
+		AppendPathSeparator(tmp);
 		_searchpaths[SP_PERSONAL_DIR] = tmp;
 	} else {
 		_searchpaths[SP_PERSONAL_DIR].clear();
 	}
 
 	if (SUCCEEDED(OTTDSHGetFolderPath(nullptr, CSIDL_COMMON_DOCUMENTS, nullptr, SHGFP_TYPE_CURRENT, path))) {
-		strecpy(tmp, FS2OTTD(path), lastof(tmp));
-		AppendPathSeparator(tmp, lastof(tmp));
-		strecat(tmp, PERSONAL_DIR, lastof(tmp));
-		AppendPathSeparator(tmp, lastof(tmp));
+		std::string tmp(FS2OTTD(path));
+		AppendPathSeparator(tmp);
+		tmp += PERSONAL_DIR;
+		AppendPathSeparator(tmp);
 		_searchpaths[SP_SHARED_DIR] = tmp;
 	} else {
 		_searchpaths[SP_SHARED_DIR].clear();
@@ -486,10 +485,11 @@ void DetermineBasePaths(const char *exe)
 #endif
 
 	if (_config_file.empty()) {
-		/* Get the path to working directory of OpenTTD. */
-		getcwd(tmp, lengthof(tmp));
-		AppendPathSeparator(tmp, lastof(tmp));
-		_searchpaths[SP_WORKING_DIR] = tmp;
+		char cwd[MAX_PATH];
+		getcwd(cwd, lengthof(cwd));
+		std::string cwd_s(cwd);
+		AppendPathSeparator(cwd_s);
+		_searchpaths[SP_WORKING_DIR] = cwd_s;
 	} else {
 		/* Use the folder of the config file as working directory. */
 		TCHAR config_dir[MAX_PATH];
@@ -498,9 +498,10 @@ void DetermineBasePaths(const char *exe)
 			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
 			_searchpaths[SP_WORKING_DIR].clear();
 		} else {
-			strecpy(tmp, convert_from_fs(config_dir, tmp, lengthof(tmp)), lastof(tmp));
-			char *s = strrchr(tmp, PATHSEPCHAR);
-			*(s + 1) = '\0';
+			std::string tmp(FS2OTTD(config_dir));
+			auto pos = tmp.find_last_of(PATHSEPCHAR);
+			if (pos != std::string::npos) tmp.erase(pos + 1);
+
 			_searchpaths[SP_WORKING_DIR] = tmp;
 		}
 	}
@@ -515,9 +516,10 @@ void DetermineBasePaths(const char *exe)
 			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
 			_searchpaths[SP_BINARY_DIR].clear();
 		} else {
-			strecpy(tmp, convert_from_fs(exec_dir, tmp, lengthof(tmp)), lastof(tmp));
-			char *s = strrchr(tmp, PATHSEPCHAR);
-			*(s + 1) = '\0';
+			std::string tmp(FS2OTTD(exec_dir));
+			auto pos = tmp.find_last_of(PATHSEPCHAR);
+			if (pos != std::string::npos) tmp.erase(pos + 1);
+
 			_searchpaths[SP_BINARY_DIR] = tmp;
 		}
 	}

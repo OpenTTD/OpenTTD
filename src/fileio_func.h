@@ -39,16 +39,15 @@ bool IsValidSearchPath(Searchpath sp);
 void FioFCloseFile(FILE *f);
 FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
 bool FioCheckFileExists(const char *filename, Subdirectory subdir);
-char *FioGetFullPath(char *buf, const char *last, Searchpath sp, Subdirectory subdir, const char *filename);
-char *FioFindFullPath(char *buf, const char *last, Subdirectory subdir, const char *filename);
-char *FioAppendDirectory(char *buf, const char *last, Searchpath sp, Subdirectory subdir);
-char *FioGetDirectory(char *buf, const char *last, Subdirectory subdir);
+std::string FioFindFullPath(Subdirectory subdir, const char *filename);
+std::string FioGetDirectory(Searchpath sp, Subdirectory subdir);
+std::string FioFindDirectory(Subdirectory subdir);
 void FioCreateDirectory(const char *name);
 
 const char *FiosGetScreenshotDir();
 
 void SanitizeFilename(char *filename);
-bool AppendPathSeparator(char *buf, const char *last);
+void AppendPathSeparator(std::string &buf);
 void DeterminePaths(const char *exe);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 bool FileExists(const char *filename);
