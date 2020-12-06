@@ -179,7 +179,7 @@ include(LinkPackage)
 link_package(PNG TARGET PNG::PNG ENCOURAGED)
 link_package(ZLIB TARGET ZLIB::ZLIB ENCOURAGED)
 link_package(LIBLZMA TARGET LibLZMA::LibLZMA ENCOURAGED)
-link_package(LZO ENCOURAGED)
+link_package(LZO)
 link_package(XDG_basedir)
 
 if(NOT OPTION_DEDICATED)
