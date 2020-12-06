@@ -131,7 +131,7 @@ enum Subdirectory {
 enum Searchpath : unsigned {
 	SP_FIRST_DIR,
 	SP_WORKING_DIR = SP_FIRST_DIR, ///< Search in the working directory
-#if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
+#ifdef USE_XDG
 	SP_PERSONAL_DIR_XDG,           ///< Search in the personal directory from the XDG specification
 #endif
 	SP_PERSONAL_DIR,               ///< Search in the personal directory
