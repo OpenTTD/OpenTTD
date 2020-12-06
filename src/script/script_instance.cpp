@@ -120,7 +120,7 @@ bool ScriptInstance::LoadCompatibilityScripts(const char *api_version, Subdirect
 	FOR_ALL_SEARCHPATHS(sp) {
 		std::string buf = FioGetDirectory(sp, dir);
 		buf += script_name;
-		if (!FileExists(buf.c_str())) continue;
+		if (!FileExists(buf)) continue;
 
 		if (this->engine->LoadScript(buf.c_str())) return true;
 

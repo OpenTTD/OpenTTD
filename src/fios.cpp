@@ -200,26 +200,26 @@ const char *FiosBrowseTo(const FiosItem *item)
 
 /**
  * Construct a filename from its components in destination buffer \a buf.
- * @param buf Destination buffer.
  * @param path Directory path, may be \c nullptr.
  * @param name Filename.
  * @param ext Filename extension (use \c "" for no extension).
- * @param last Last element of buffer \a buf.
+ * @return The completed filename.
  */
-static void FiosMakeFilename(char *buf, const char *path, const char *name, const char *ext, const char *last)
+static std::string FiosMakeFilename(const std::string *path, const char *name, const char *ext)
 {
+	std::string buf;
+
 	if (path != nullptr) {
-		const char *buf_start = buf;
-		buf = strecpy(buf, path, last);
+		buf = *path;
 		/* Remove trailing path separator, if present */
-		if (buf > buf_start && buf[-1] == PATHSEPCHAR) buf--;
+		if (!buf.empty() && buf.back() == PATHSEPCHAR) buf.pop_back();
 	}
 
 	/* Don't append the extension if it is already there */
 	const char *period = strrchr(name, '.');
 	if (period != nullptr && strcasecmp(period, ext) == 0) ext = "";
 
-	seprintf(buf, last, PATHSEP "%s%s", name, ext);
+	return buf + name + ext;
 }
 
 /**
@@ -227,27 +227,26 @@ static void FiosMakeFilename(char *buf, const char *path, const char *name, cons
  * @param buf Destination buffer for saving the filename.
  * @param name Name of the file.
  * @param last Last element of buffer \a buf.
+ * @return The completed filename.
  */
-void FiosMakeSavegameName(char *buf, const char *name, const char *last)
+std::string FiosMakeSavegameName(const char *name)
 {
 	const char *extension = (_game_mode == GM_EDITOR) ? ".scn" : ".sav";
 
-	FiosMakeFilename(buf, _fios_path->c_str(), name, extension, last);
+	return FiosMakeFilename(_fios_path, name, extension);
 }
 
 /**
  * Construct a filename for a height map.
- * @param buf Destination buffer.
  * @param name Filename.
- * @param last Last element of buffer \a buf.
+ * @return The completed filename.
  */
-void FiosMakeHeightmapName(char *buf, const char *name, const char *last)
+std::string FiosMakeHeightmapName(const char *name)
 {
-	char ext[5];
-	ext[0] = '.';
-	strecpy(ext + 1, GetCurrentScreenshotExtension(), lastof(ext));
+	std::string ext(".");
+	ext += GetCurrentScreenshotExtension();
 
-	FiosMakeFilename(buf, _fios_path->c_str(), name, ext, last);
+	return FiosMakeFilename(_fios_path, name, ext.c_str());
 }
 
 /**
@@ -257,10 +256,8 @@ void FiosMakeHeightmapName(char *buf, const char *name, const char *last)
  */
 bool FiosDelete(const char *name)
 {
-	char filename[512];
-
-	FiosMakeSavegameName(filename, name, lastof(filename));
-	return unlink(filename) == 0;
+	std::string filename = FiosMakeSavegameName(name);
+	return unlink(filename.c_str()) == 0;
 }
 
 typedef FiosType fios_getlist_callback_proc(SaveLoadOperation fop, const char *filename, const char *ext, char *title, const char *last);

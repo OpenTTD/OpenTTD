@@ -270,9 +270,9 @@ bool IsValidSearchPath(Searchpath sp)
  * @param subdir the subdirectory to look in
  * @return true if and only if the file can be opened
  */
-bool FioCheckFileExists(const char *filename, Subdirectory subdir)
+bool FioCheckFileExists(const std::string &filename, Subdirectory subdir)
 {
-	FILE *f = FioFOpenFile(filename, "rb", subdir);
+	FILE *f = FioFOpenFile(filename.c_str(), "rb", subdir);
 	if (f == nullptr) return false;
 
 	FioFCloseFile(f);
@@ -284,9 +284,9 @@ bool FioCheckFileExists(const char *filename, Subdirectory subdir)
  * @param filename the file to test.
  * @return true if and only if the file exists.
  */
-bool FileExists(const char *filename)
+bool FileExists(const std::string &filename)
 {
-	return access(OTTD2FS(filename), 0) == 0;
+	return access(OTTD2FS(filename.c_str()), 0) == 0;
 }
 
 /**
@@ -311,12 +311,12 @@ std::string FioFindFullPath(Subdirectory subdir, const char *filename)
 	FOR_ALL_SEARCHPATHS(sp) {
 		std::string buf = FioGetDirectory(sp, subdir);
 		buf += filename;
-		if (FileExists(buf.c_str())) return buf;
+		if (FileExists(buf)) return buf;
 #if !defined(_WIN32)
 		/* Be, as opening files, aware that sometimes the filename
 		 * might be in uppercase when it is in lowercase on the
 		 * disk. Of course Windows doesn't care about casing. */
-		if (strtolower(buf, _searchpaths[sp].size() - 1) && FileExists(buf.c_str())) return buf;
+		if (strtolower(buf, _searchpaths[sp].size() - 1) && FileExists(buf)) return buf;
 #endif
 	}
 
@@ -338,7 +338,7 @@ std::string FioFindDirectory(Subdirectory subdir)
 	/* Find and return the first valid directory */
 	FOR_ALL_SEARCHPATHS(sp) {
 		std::string ret = FioGetDirectory(sp, subdir);
-		if (FileExists(ret.c_str())) return ret;
+		if (FileExists(ret)) return ret;
 	}
 
 	/* Could not find the directory, fall back to a base path */
@@ -502,14 +502,12 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
  * If the parent directory does not exist, it will try to create that as well.
  * @param name the new name of the directory
  */
-void FioCreateDirectory(const char *name)
+void FioCreateDirectory(const std::string &name)
 {
-	char dirname[MAX_PATH];
-	strecpy(dirname, name, lastof(dirname));
-	char *p = strrchr(dirname, PATHSEPCHAR);
-	if (p != nullptr) {
-		*p = '\0';
-		DIR *dir = ttd_opendir(dirname);
+	auto p = name.find_last_of(PATHSEPCHAR);
+	if (p != std::string::npos) {
+		std::string dirname = name.substr(0, p);
+		DIR *dir = ttd_opendir(dirname.c_str());
 		if (dir == nullptr) {
 			FioCreateDirectory(dirname); // Try creating the parent directory, if we couldn't open it
 		} else {
@@ -520,11 +518,11 @@ void FioCreateDirectory(const char *name)
 	/* Ignore directory creation errors; they'll surface later on, and most
 	 * of the time they are 'directory already exists' errors anyhow. */
 #if defined(_WIN32)
-	CreateDirectory(OTTD2FS(name), nullptr);
+	CreateDirectory(OTTD2FS(name.c_str()), nullptr);
 #elif defined(OS2) && !defined(__INNOTEK_LIBC__)
-	mkdir(OTTD2FS(name));
+	mkdir(OTTD2FS(name.c_str()));
 #else
-	mkdir(OTTD2FS(name), 0755);
+	mkdir(OTTD2FS(name.c_str()), 0755);
 #endif
 }
 
@@ -1198,9 +1196,9 @@ void DeterminePaths(const char *exe)
 	}
 
 	/* Make the necessary folders */
-	FioCreateDirectory(config_dir.c_str());
+	FioCreateDirectory(config_dir);
 #if defined(WITH_PERSONAL_DIR)
-	FioCreateDirectory(_personal_dir.c_str());
+	FioCreateDirectory(_personal_dir);
 #endif
 
 	DEBUG(misc, 3, "%s found as personal directory", _personal_dir.c_str());
@@ -1210,19 +1208,17 @@ void DeterminePaths(const char *exe)
 	};
 
 	for (uint i = 0; i < lengthof(default_subdirs); i++) {
-		FioCreateDirectory((_personal_dir + _subdirs[default_subdirs[i]]).c_str());
+		FioCreateDirectory(_personal_dir + _subdirs[default_subdirs[i]]);
 	}
 
 	/* If we have network we make a directory for the autodownloading of content */
 	_searchpaths[SP_AUTODOWNLOAD_DIR] = _personal_dir + "content_download" PATHSEP;
-	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR].c_str());
+	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
 
 	/* Create the directory for each of the types of content */
 	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR };
 	for (uint i = 0; i < lengthof(dirs); i++) {
-		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR].c_str(), _subdirs[dirs[i]]);
-		FioCreateDirectory(tmp);
-		free(tmp);
+		FioCreateDirectory(FioGetDirectory(SP_AUTODOWNLOAD_DIR, dirs[i]));
 	}
 
 	extern std::string _log_file;
