@@ -317,7 +317,7 @@ bool LoadOldSaveGame(const std::string &file)
 	return true;
 }
 
-void GetOldSaveGameName(const char *file, char *title, const char *last)
+void GetOldSaveGameName(const std::string &file, char *title, const char *last)
 {
 	FILE *f = FioFOpenFile(file, "rb", NO_DIRECTORY);
 

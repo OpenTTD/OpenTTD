@@ -206,7 +206,7 @@ public:
 		this->FileScanner::Scan(".txt", directory, false);
 	}
 
-	bool AddFile(const char *filename, size_t basepath_length, const char *tar_filename) override
+	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename) override
 	{
 		if (exclude == filename) return true;
 
@@ -244,9 +244,9 @@ GameStrings *LoadTranslations()
 		LanguageScanner scanner(gs, filename);
 		std::string ldir = basename + "lang" PATHSEP;
 
-		const char *tar_filename = info->GetTarFile();
+		const std::string tar_filename = info->GetTarFile();
 		TarList::iterator iter;
-		if (tar_filename != nullptr && (iter = _tar_list[GAME_DIR].find(tar_filename)) != _tar_list[GAME_DIR].end()) {
+		if (!tar_filename.empty() && (iter = _tar_list[GAME_DIR].find(tar_filename)) != _tar_list[GAME_DIR].end()) {
 			/* The main script is in a tar file, so find all files that
 			 * are in the same tar and add them to the langfile scanner. */
 			TarFileList::iterator tar;
@@ -258,7 +258,7 @@ GameStrings *LoadTranslations()
 				if (tar->first.size() <= ldir.size() || tar->first.compare(0, ldir.size(), ldir) != 0) continue;
 				if (tar->first.compare(tar->first.size() - 4, 4, ".txt") != 0) continue;
 
-				scanner.AddFile(tar->first.c_str(), 0, tar_filename);
+				scanner.AddFile(tar->first, 0, tar_filename);
 			}
 		} else {
 			/* Scan filesystem */

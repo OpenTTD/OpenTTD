@@ -628,7 +628,7 @@ int openttd_main(int argc, char *argv[])
 				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
 				auto t = _file_to_saveload.name.find_last_of('.');
 				if (t != std::string::npos) {
-					FiosType ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name.c_str(), _file_to_saveload.name.substr(t).c_str(), nullptr, nullptr);
+					FiosType ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, _file_to_saveload.name.substr(t).c_str(), nullptr, nullptr);
 					if (ft != FIOS_TYPE_INVALID) _file_to_saveload.SetMode(ft);
 				}
 

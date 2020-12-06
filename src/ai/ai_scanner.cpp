@@ -32,8 +32,7 @@ void AIScannerInfo::Initialize()
 	ScriptAllocatorScope alloc_scope(this->engine);
 
 	/* Create the dummy AI */
-	free(this->main_script);
-	this->main_script = stredup("%_dummy");
+	this->main_script = "%_dummy";
 	extern void Script_CreateDummyInfo(HSQUIRRELVM vm, const char *type, const char *dir);
 	Script_CreateDummyInfo(this->engine->GetVM(), "AI", "ai");
 }

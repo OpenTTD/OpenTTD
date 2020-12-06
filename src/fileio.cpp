@@ -246,7 +246,7 @@ static_assert(lengthof(_subdirs) == NUM_SUBDIRS);
  * current operating system.
  */
 std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
-TarList _tar_list[NUM_SUBDIRS];
+std::array<TarList, NUM_SUBDIRS> _tar_list;
 TarFileList _tar_filelist[NUM_SUBDIRS];
 
 typedef std::map<std::string, std::string> TarLinkList;
@@ -390,7 +390,7 @@ static FILE *FioFOpenFileSp(const std::string &filename, const char *mode, Searc
  */
 FILE *FioFOpenFileTar(const TarFileListEntry &entry, size_t *filesize)
 {
-	FILE *f = fopen(entry.tar_filename, "rb");
+	FILE *f = fopen(entry.tar_filename.c_str(), "rb");
 	if (f == nullptr) return f;
 
 	if (fseek(f, entry.position, SEEK_SET) < 0) {
@@ -613,16 +613,16 @@ uint TarScanner::DoScan(Subdirectory sd)
  * @param filename The name of the file to add.
  * @return True if the additions went correctly.
  */
-bool TarScanner::AddFile(Subdirectory sd, const char *filename)
+bool TarScanner::AddFile(Subdirectory sd, const std::string &filename)
 {
 	this->subdir = sd;
 	return this->AddFile(filename, 0);
 }
 
-bool TarScanner::AddFile(const char *filename, size_t basepath_length, const char *tar_filename)
+bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
 {
 	/* No tar within tar. */
-	assert(tar_filename == nullptr);
+	assert(tar_filename.empty());
 
 	/* The TAR-header, repeated for every file */
 	struct TarHeader {
@@ -650,16 +650,14 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 	TarList::iterator it = _tar_list[this->subdir].find(filename);
 	if (it != _tar_list[this->subdir].end()) return false;
 
-	FILE *f = fopen(filename, "rb");
+	FILE *f = fopen(filename.c_str(), "rb");
 	/* Although the file has been found there can be
 	 * a number of reasons we cannot open the file.
 	 * Most common case is when we simply have not
 	 * been given read access. */
 	if (f == nullptr) return false;
 
-	const char *dupped_filename = stredup(filename);
-	_tar_list[this->subdir][filename].filename = dupped_filename;
-	_tar_list[this->subdir][filename].dirname = nullptr;
+	_tar_list[this->subdir][filename] = std::string{};
 
 	TarLinkList links; ///< Temporary list to collect links
 
@@ -684,7 +682,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 			/* If we have only zeros in the block, it can be an end-of-file indicator */
 			if (memcmp(&th, &empty[0], 512) == 0) continue;
 
-			DEBUG(misc, 0, "The file '%s' isn't a valid tar-file", filename);
+			DEBUG(misc, 0, "The file '%s' isn't a valid tar-file", filename.c_str());
 			fclose(f);
 			return false;
 		}
@@ -714,7 +712,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 				/* Store this entry in the list */
 				TarFileListEntry entry;
-				entry.tar_filename = dupped_filename;
+				entry.tar_filename = filename;
 				entry.size         = skip;
 				entry.position     = pos;
 
@@ -782,7 +780,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 					}
 
 					if (destpos >= lastof(dest)) {
-						DEBUG(misc, 0, "The length of a link in tar-file '%s' is too large (malformed?)", filename);
+						DEBUG(misc, 0, "The length of a link in tar-file '%s' is too large (malformed?)", filename.c_str());
 						fclose(f);
 						return false;
 					}
@@ -803,7 +801,7 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 
 				/* Store the first directory name we detect */
 				DEBUG(misc, 6, "Found dir in tar: %s", name);
-				if (_tar_list[this->subdir][filename].dirname == nullptr) _tar_list[this->subdir][filename].dirname = stredup(name);
+				if (_tar_list[this->subdir][filename].empty()) _tar_list[this->subdir][filename] = name;
 				break;
 
 			default:
@@ -814,14 +812,14 @@ bool TarScanner::AddFile(const char *filename, size_t basepath_length, const cha
 		/* Skip to the next block.. */
 		skip = Align(skip, 512);
 		if (fseek(f, skip, SEEK_CUR) < 0) {
-			DEBUG(misc, 0, "The file '%s' can't be read as a valid tar-file", filename);
+			DEBUG(misc, 0, "The file '%s' can't be read as a valid tar-file", filename.c_str());
 			fclose(f);
 			return false;
 		}
 		pos += skip;
 	}
 
-	DEBUG(misc, 1, "Found tar '%s' with " PRINTF_SIZE " new files", filename, num);
+	DEBUG(misc, 1, "Found tar '%s' with " PRINTF_SIZE " new files", filename.c_str(), num);
 	fclose(f);
 
 	/* Resolve file links and store directory links.
@@ -855,10 +853,10 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 	/* We don't know the file. */
 	if (it == _tar_list[subdir].end()) return false;
 
-	const char *dirname = (*it).second.dirname;
+	const auto &dirname = (*it).second;
 
 	/* The file doesn't have a sub directory! */
-	if (dirname == nullptr) {
+	if (dirname.empty()) {
 		DEBUG(misc, 1, "Extracting %s failed; archive rejected, the contents must be in a sub directory", tar_filename.c_str());
 		return false;
 	}
@@ -1308,7 +1306,7 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 			num += ScanPath(fs, extension, filename.c_str(), basepath_length, recursive);
 		} else if (S_ISREG(sb.st_mode)) {
 			/* File */
-			if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename.c_str(), basepath_length, nullptr)) num++;
+			if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename, basepath_length, {})) num++;
 		}
 	}
 
@@ -1326,9 +1324,9 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterator tar)
 {
 	uint num = 0;
-	const char *filename = (*tar).first.c_str();
+	const auto &filename = (*tar).first;
 
-	if (MatchesExtension(extension, filename) && fs->AddFile(filename, 0, (*tar).second.tar_filename)) num++;
+	if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename, 0, (*tar).second.tar_filename)) num++;
 
 	return num;
 }
