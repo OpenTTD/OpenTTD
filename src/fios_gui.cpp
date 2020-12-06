@@ -368,22 +368,24 @@ public:
 
 		/* Select the initial directory. */
 		o_dir.type = FIOS_TYPE_DIRECT;
+		std::string dir;
 		switch (this->abstract_filetype) {
 			case FT_SAVEGAME:
-				FioGetDirectory(o_dir.name, lastof(o_dir.name), SAVE_DIR);
+				dir = FioFindDirectory(SAVE_DIR);
 				break;
 
 			case FT_SCENARIO:
-				FioGetDirectory(o_dir.name, lastof(o_dir.name), SCENARIO_DIR);
+				dir = FioFindDirectory(SCENARIO_DIR);
 				break;
 
 			case FT_HEIGHTMAP:
-				FioGetDirectory(o_dir.name, lastof(o_dir.name), HEIGHTMAP_DIR);
+				dir = FioFindDirectory(HEIGHTMAP_DIR);
 				break;
 
 			default:
-				strecpy(o_dir.name, _personal_dir.c_str(), lastof(o_dir.name));
+				dir = _personal_dir;
 		}
+		strecpy(o_dir.name, dir.c_str(), lastof(o_dir.name));
 
 		switch (this->fop) {
 			case SLO_SAVE:

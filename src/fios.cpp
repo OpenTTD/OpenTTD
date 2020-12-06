@@ -19,6 +19,8 @@
 #include "string_func.h"
 #include "tar_type.h"
 #include <sys/stat.h>
+#include <functional>
+#include <optional>
 
 #ifndef _WIN32
 # include <unistd.h>
@@ -29,8 +31,7 @@
 #include "safeguards.h"
 
 /* Variables to display file lists */
-static char *_fios_path;
-static const char *_fios_path_last;
+static std::string *_fios_path = nullptr;
 SortingBits _savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;
 
 /* OS-specific functions are taken from their respective files (win32/unix/os2 .c) */
@@ -138,7 +139,7 @@ const FiosItem *FileList::FindItem(const char *file)
  */
 StringID FiosGetDescText(const char **path, uint64 *total_free)
 {
-	*path = _fios_path;
+	*path = _fios_path->c_str();
 	return FiosGetDiskFreeSpace(*path, total_free) ? STR_SAVELOAD_BYTES_FREE : STR_ERROR_UNABLE_TO_READ_DRIVE;
 }
 
@@ -152,7 +153,8 @@ const char *FiosBrowseTo(const FiosItem *item)
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
 #if defined(_WIN32) || defined(__OS2__)
-			seprintf(_fios_path, _fios_path_last, "%c:" PATHSEP, item->title[0]);
+			assert(_fios_path != nullptr);
+			*_fios_path = std::string{ item->title[0] } + ":" PATHSEP;
 #endif
 			break;
 
@@ -160,25 +162,28 @@ const char *FiosBrowseTo(const FiosItem *item)
 			break;
 
 		case FIOS_TYPE_PARENT: {
-			/* Check for possible nullptr ptr */
-			char *s = strrchr(_fios_path, PATHSEPCHAR);
-			if (s != nullptr && s != _fios_path) {
-				s[0] = '\0'; // Remove last path separator character, so we can go up one level.
+			assert(_fios_path != nullptr);
+			auto s = _fios_path->find_last_of(PATHSEPCHAR);
+			if (s != std::string::npos && s != 0) {
+				_fios_path->erase(s); // Remove last path separator character, so we can go up one level.
 			}
-			s = strrchr(_fios_path, PATHSEPCHAR);
-			if (s != nullptr) {
-				s[1] = '\0'; // go up a directory
+
+			s = _fios_path->find_last_of(PATHSEPCHAR);
+			if (s != std::string::npos) {
+				_fios_path->erase(s + 1); // go up a directory
 			}
 			break;
 		}
 
 		case FIOS_TYPE_DIR:
-			strecat(_fios_path, item->name, _fios_path_last);
-			strecat(_fios_path, PATHSEP, _fios_path_last);
+			assert(_fios_path != nullptr);
+			*_fios_path += item->name;
+			*_fios_path += PATHSEP;
 			break;
 
 		case FIOS_TYPE_DIRECT:
-			seprintf(_fios_path, _fios_path_last, "%s", item->name);
+			assert(_fios_path != nullptr);
+			*_fios_path = item->name;
 			break;
 
 		case FIOS_TYPE_FILE:
@@ -227,7 +232,7 @@ void FiosMakeSavegameName(char *buf, const char *name, const char *last)
 {
 	const char *extension = (_game_mode == GM_EDITOR) ? ".scn" : ".sav";
 
-	FiosMakeFilename(buf, _fios_path, name, extension, last);
+	FiosMakeFilename(buf, _fios_path->c_str(), name, extension, last);
 }
 
 /**
@@ -242,7 +247,7 @@ void FiosMakeHeightmapName(char *buf, const char *name, const char *last)
 	ext[0] = '.';
 	strecpy(ext + 1, GetCurrentScreenshotExtension(), lastof(ext));
 
-	FiosMakeFilename(buf, _fios_path, name, ext, last);
+	FiosMakeFilename(buf, _fios_path->c_str(), name, ext, last);
 }
 
 /**
@@ -365,8 +370,10 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 
 	file_list.Clear();
 
+	assert(_fios_path != nullptr);
+
 	/* A parent directory link exists if we are not in the root directory */
-	if (!FiosIsRoot(_fios_path)) {
+	if (!FiosIsRoot(_fios_path->c_str())) {
 		fios = file_list.Append();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
@@ -375,12 +382,12 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 	}
 
 	/* Show subdirectories */
-	if ((dir = ttd_opendir(_fios_path)) != nullptr) {
+	if ((dir = ttd_opendir(_fios_path->c_str())) != nullptr) {
 		while ((dirent = readdir(dir)) != nullptr) {
 			strecpy(d_name, FS2OTTD(dirent->d_name), lastof(d_name));
 
 			/* found file must be directory, but not '.' or '..' */
-			if (FiosIsValidFile(_fios_path, dirent, &sb) && S_ISDIR(sb.st_mode) &&
+			if (FiosIsValidFile(_fios_path->c_str(), dirent, &sb) && S_ISDIR(sb.st_mode) &&
 					(!FiosIsHiddenFile(dirent) || strncasecmp(d_name, PERSONAL_DIR, strlen(d_name)) == 0) &&
 					strcmp(d_name, ".") != 0 && strcmp(d_name, "..") != 0) {
 				fios = file_list.Append();
@@ -408,7 +415,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 	/* Show files */
 	FiosFileScanner scanner(fop, callback_proc, file_list);
 	if (subdir == NO_DIRECTORY) {
-		scanner.Scan(nullptr, _fios_path, false);
+		scanner.Scan(nullptr, _fios_path->c_str(), false);
 	} else {
 		scanner.Scan(nullptr, subdir, true, true);
 	}
@@ -491,17 +498,11 @@ FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const char *file, co
  */
 void FiosGetSavegameList(SaveLoadOperation fop, FileList &file_list)
 {
-	static char *fios_save_path = nullptr;
-	static char *fios_save_path_last = nullptr;
+	static std::optional<std::string> fios_save_path;
 
-	if (fios_save_path == nullptr) {
-		fios_save_path = MallocT<char>(MAX_PATH);
-		fios_save_path_last = fios_save_path + MAX_PATH - 1;
-		FioGetDirectory(fios_save_path, fios_save_path_last, SAVE_DIR);
-	}
+	if (!fios_save_path) fios_save_path = FioFindDirectory(SAVE_DIR);
 
-	_fios_path = fios_save_path;
-	_fios_path_last = fios_save_path_last;
+	_fios_path = &(*fios_save_path);
 
 	FiosGetFileList(fop, &FiosGetSavegameListCallback, NO_DIRECTORY, file_list);
 }
@@ -546,23 +547,15 @@ static FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const char *f
  */
 void FiosGetScenarioList(SaveLoadOperation fop, FileList &file_list)
 {
-	static char *fios_scn_path = nullptr;
-	static char *fios_scn_path_last = nullptr;
+	static std::optional<std::string> fios_scn_path;
 
 	/* Copy the default path on first run or on 'New Game' */
-	if (fios_scn_path == nullptr) {
-		fios_scn_path = MallocT<char>(MAX_PATH);
-		fios_scn_path_last = fios_scn_path + MAX_PATH - 1;
-		FioGetDirectory(fios_scn_path, fios_scn_path_last, SCENARIO_DIR);
-	}
+	if (!fios_scn_path) fios_scn_path = FioFindDirectory(SCENARIO_DIR);
 
-	_fios_path = fios_scn_path;
-	_fios_path_last = fios_scn_path_last;
+	_fios_path = &(*fios_scn_path);
 
-	char base_path[MAX_PATH];
-	FioGetDirectory(base_path, lastof(base_path), SCENARIO_DIR);
-
-	Subdirectory subdir = (fop == SLO_LOAD && strcmp(base_path, _fios_path) == 0) ? SCENARIO_DIR : NO_DIRECTORY;
+	std::string base_path = FioFindDirectory(SCENARIO_DIR);
+	Subdirectory subdir = (fop == SLO_LOAD && base_path == *_fios_path) ? SCENARIO_DIR : NO_DIRECTORY;
 	FiosGetFileList(fop, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
@@ -593,10 +586,9 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const char *
 		bool match = false;
 		Searchpath sp;
 		FOR_ALL_SEARCHPATHS(sp) {
-			char buf[MAX_PATH];
-			FioAppendDirectory(buf, lastof(buf), sp, HEIGHTMAP_DIR);
+			std::string buf = FioGetDirectory(sp, HEIGHTMAP_DIR);
 
-			if (strncmp(buf, it->second.tar_filename, strlen(buf)) == 0) {
+			if (buf.compare(0, buf.size(), it->second.tar_filename, 0, buf.size()) == 0) {
 				match = true;
 				break;
 			}
@@ -617,22 +609,14 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const char *
  */
 void FiosGetHeightmapList(SaveLoadOperation fop, FileList &file_list)
 {
-	static char *fios_hmap_path = nullptr;
-	static char *fios_hmap_path_last = nullptr;
+	static std::optional<std::string> fios_hmap_path;
 
-	if (fios_hmap_path == nullptr) {
-		fios_hmap_path = MallocT<char>(MAX_PATH);
-		fios_hmap_path_last = fios_hmap_path + MAX_PATH - 1;
-		FioGetDirectory(fios_hmap_path, fios_hmap_path_last, HEIGHTMAP_DIR);
-	}
+	if (!fios_hmap_path) fios_hmap_path = FioFindDirectory(HEIGHTMAP_DIR);
 
-	_fios_path = fios_hmap_path;
-	_fios_path_last = fios_hmap_path_last;
+	_fios_path = &(*fios_hmap_path);
 
-	char base_path[MAX_PATH];
-	FioGetDirectory(base_path, lastof(base_path), HEIGHTMAP_DIR);
-
-	Subdirectory subdir = strcmp(base_path, _fios_path) == 0 ? HEIGHTMAP_DIR : NO_DIRECTORY;
+	std::string base_path = FioFindDirectory(HEIGHTMAP_DIR);
+	Subdirectory subdir = base_path == *_fios_path ? HEIGHTMAP_DIR : NO_DIRECTORY;
 	FiosGetFileList(fop, &FiosGetHeightmapListCallback, subdir, file_list);
 }
 
@@ -642,14 +626,11 @@ void FiosGetHeightmapList(SaveLoadOperation fop, FileList &file_list)
  */
 const char *FiosGetScreenshotDir()
 {
-	static char *fios_screenshot_path = nullptr;
+	static std::optional<std::string> fios_screenshot_path;
 
-	if (fios_screenshot_path == nullptr) {
-		fios_screenshot_path = MallocT<char>(MAX_PATH);
-		FioGetDirectory(fios_screenshot_path, fios_screenshot_path + MAX_PATH - 1, SCREENSHOT_DIR);
-	}
+	if (!fios_screenshot_path) fios_screenshot_path = FioFindDirectory(SCREENSHOT_DIR);
 
-	return fios_screenshot_path;
+	return fios_screenshot_path->c_str();
 }
 
 /** Basic data to distinguish a scenario. Used in the server list window */

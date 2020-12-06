@@ -385,14 +385,14 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
  * @return a statically allocated buffer with the filename or
  *         nullptr when no filename could be made.
  */
-static char *GetFullFilename(const ContentInfo *ci, bool compressed)
+static std::string GetFullFilename(const ContentInfo *ci, bool compressed)
 {
 	Subdirectory dir = GetContentInfoSubDir(ci->type);
-	if (dir == NO_DIRECTORY) return nullptr;
+	if (dir == NO_DIRECTORY) return {};
 
-	static char buf[MAX_PATH];
-	FioGetFullPath(buf, lastof(buf), SP_AUTODOWNLOAD_DIR, dir, ci->filename);
-	strecat(buf, compressed ? ".tar.gz" : ".tar", lastof(buf));
+	std::string buf = FioGetDirectory(SP_AUTODOWNLOAD_DIR, dir);
+	buf += ci->filename;
+	buf += compressed ? ".tar.gz" : ".tar";
 
 	return buf;
 }
@@ -408,13 +408,13 @@ static bool GunzipFile(const ContentInfo *ci)
 	bool ret = true;
 
 	/* Need to open the file with fopen() to support non-ASCII on Windows. */
-	FILE *ftmp = fopen(GetFullFilename(ci, true), "rb");
+	FILE *ftmp = fopen(GetFullFilename(ci, true).c_str(), "rb");
 	if (ftmp == nullptr) return false;
 	/* Duplicate the handle, and close the FILE*, to avoid double-closing the handle later. */
 	gzFile fin = gzdopen(dup(fileno(ftmp)), "rb");
 	fclose(ftmp);
 
-	FILE *fout = fopen(GetFullFilename(ci, false), "wb");
+	FILE *fout = fopen(GetFullFilename(ci, false).c_str(), "wb");
 
 	if (fin == nullptr || fout == nullptr) {
 		ret = false;
@@ -509,8 +509,8 @@ bool ClientNetworkContentSocketHandler::BeforeDownload()
 
 	if (this->curInfo->filesize != 0) {
 		/* The filesize is > 0, so we are going to download it */
-		const char *filename = GetFullFilename(this->curInfo, true);
-		if (filename == nullptr || (this->curFile = fopen(filename, "wb")) == nullptr) {
+		std::string filename = GetFullFilename(this->curInfo, true);
+		if (filename.empty() || (this->curFile = fopen(filename.c_str(), "wb")) == nullptr) {
 			/* Unless that fails of course... */
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
@@ -532,18 +532,19 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	this->curFile = nullptr;
 
 	if (GunzipFile(this->curInfo)) {
-		unlink(GetFullFilename(this->curInfo, true));
+		unlink(GetFullFilename(this->curInfo, true).c_str());
 
 		Subdirectory sd = GetContentInfoSubDir(this->curInfo->type);
 		if (sd == NO_DIRECTORY) NOT_REACHED();
 
 		TarScanner ts;
-		ts.AddFile(sd, GetFullFilename(this->curInfo, false));
+		std::string fname = GetFullFilename(this->curInfo, false);
+		ts.AddFile(sd, fname.c_str());
 
 		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
-			ExtractTar(GetFullFilename(this->curInfo, false), BASESET_DIR);
-			unlink(GetFullFilename(this->curInfo, false));
+			ExtractTar(fname.c_str(), BASESET_DIR);
+			unlink(fname.c_str());
 		}
 
 #ifdef __EMSCRIPTEN__

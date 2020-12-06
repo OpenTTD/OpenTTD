@@ -1959,9 +1959,8 @@ void InitializeLanguagePacks()
 	Searchpath sp;
 
 	FOR_ALL_SEARCHPATHS(sp) {
-		char path[MAX_PATH];
-		FioAppendDirectory(path, lastof(path), sp, LANG_DIR);
-		GetLanguageList(path);
+		std::string path = FioGetDirectory(sp, LANG_DIR);
+		GetLanguageList(path.c_str());
 	}
 	if (_languages.size() == 0) usererror("No available language packs (invalid versions?)");
 

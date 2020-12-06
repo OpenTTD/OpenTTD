@@ -297,65 +297,52 @@ void FioFCloseFile(FILE *f)
 	fclose(f);
 }
 
-char *FioGetFullPath(char *buf, const char *last, Searchpath sp, Subdirectory subdir, const char *filename)
-{
-	assert(subdir < NUM_SUBDIRS);
-	assert(sp < NUM_SEARCHPATHS);
-
-	seprintf(buf, last, "%s%s%s", _searchpaths[sp].c_str(), _subdirs[subdir], filename);
-	return buf;
-}
-
 /**
  * Find a path to the filename in one of the search directories.
- * @param[out] buf Destination buffer for the path.
- * @param last End of the destination buffer.
  * @param subdir Subdirectory to try.
  * @param filename Filename to look for.
- * @return \a buf containing the path if the path was found, else \c nullptr.
+ * @return String containing the path if the path was found, else an empty string.
  */
-char *FioFindFullPath(char *buf, const char *last, Subdirectory subdir, const char *filename)
+std::string FioFindFullPath(Subdirectory subdir, const char *filename)
 {
 	Searchpath sp;
 	assert(subdir < NUM_SUBDIRS);
 
 	FOR_ALL_SEARCHPATHS(sp) {
-		FioGetFullPath(buf, last, sp, subdir, filename);
-		if (FileExists(buf)) return buf;
+		std::string buf = FioGetDirectory(sp, subdir);
+		buf += filename;
+		if (FileExists(buf.c_str())) return buf;
 #if !defined(_WIN32)
 		/* Be, as opening files, aware that sometimes the filename
 		 * might be in uppercase when it is in lowercase on the
 		 * disk. Of course Windows doesn't care about casing. */
-		if (strtolower(buf + _searchpaths[sp].size() - 1) && FileExists(buf)) return buf;
+		if (strtolower(buf, _searchpaths[sp].size() - 1) && FileExists(buf.c_str())) return buf;
 #endif
 	}
 
-	return nullptr;
+	return {};
 }
 
-char *FioAppendDirectory(char *buf, const char *last, Searchpath sp, Subdirectory subdir)
+std::string FioGetDirectory(Searchpath sp, Subdirectory subdir)
 {
 	assert(subdir < NUM_SUBDIRS);
 	assert(sp < NUM_SEARCHPATHS);
 
-	seprintf(buf, last, "%s%s", _searchpaths[sp].c_str(), _subdirs[subdir]);
-	return buf;
+	return _searchpaths[sp] + _subdirs[subdir];
 }
 
-char *FioGetDirectory(char *buf, const char *last, Subdirectory subdir)
+std::string FioFindDirectory(Subdirectory subdir)
 {
 	Searchpath sp;
 
 	/* Find and return the first valid directory */
 	FOR_ALL_SEARCHPATHS(sp) {
-		char *ret = FioAppendDirectory(buf, last, sp, subdir);
-		if (FileExists(buf)) return ret;
+		std::string ret = FioGetDirectory(sp, subdir);
+		if (FileExists(ret.c_str())) return ret;
 	}
 
 	/* Could not find the directory, fall back to a base path */
-	strecpy(buf, _personal_dir.c_str(), last);
-
-	return buf;
+	return _personal_dir;
 }
 
 static FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
@@ -545,21 +532,13 @@ void FioCreateDirectory(const char *name)
  * Appends, if necessary, the path separator character to the end of the string.
  * It does not add the path separator to zero-sized strings.
  * @param buf  string to append the separator to
- * @param last the last element of \a buf.
  * @return true iff the operation succeeded
  */
-bool AppendPathSeparator(char *buf, const char *last)
+void AppendPathSeparator(std::string &buf)
 {
-	size_t s = strlen(buf);
+	if (buf.empty()) return;
 
-	/* Length of string + path separator + '\0' */
-	if (s != 0 && buf[s - 1] != PATHSEPCHAR) {
-		if (&buf[s] >= last) return false;
-
-		seprintf(buf + s, last, "%c", PATHSEPCHAR);
-	}
-
-	return true;
+	if (buf.back() != PATHSEPCHAR) buf.push_back(PATHSEPCHAR);
 }
 
 static void TarAddLink(const std::string &srcParam, const std::string &destParam, Subdirectory subdir)
@@ -1013,9 +992,9 @@ bool DoScanWorkingDirectory()
 	/* No personal/home directory, so the working directory won't be that. */
 	if (_searchpaths[SP_PERSONAL_DIR].empty()) return true;
 
-	char tmp[MAX_PATH];
-	seprintf(tmp, lastof(tmp), "%s%s", _searchpaths[SP_WORKING_DIR].c_str(), PERSONAL_DIR);
-	AppendPathSeparator(tmp, lastof(tmp));
+	std::string tmp = _searchpaths[SP_WORKING_DIR] + PERSONAL_DIR;
+	AppendPathSeparator(tmp);
+
 	return _searchpaths[SP_PERSONAL_DIR] != tmp;
 }
 
@@ -1025,14 +1004,15 @@ bool DoScanWorkingDirectory()
  */
 void DetermineBasePaths(const char *exe)
 {
-	char tmp[MAX_PATH];
+	std::string tmp;
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
 	const char *xdg_data_home = xdgDataHome(nullptr);
-	seprintf(tmp, lastof(tmp), "%s" PATHSEP "%s", xdg_data_home,
-			PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR);
+	tmp = xdg_data_home;
+	tmp += PATHSEP;
+	tmp += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 	free(xdg_data_home);
 
-	AppendPathSeparator(tmp, lastof(tmp));
+	AppendPathSeparator(tmp);
 	_searchpaths[SP_PERSONAL_DIR_XDG] = tmp;
 #endif
 #if defined(OS2) || !defined(WITH_PERSONAL_DIR)
@@ -1060,8 +1040,10 @@ void DetermineBasePaths(const char *exe)
 
 	if (homedir != nullptr) {
 		ValidateString(homedir);
-		seprintf(tmp, lastof(tmp), "%s" PATHSEP "%s", homedir, PERSONAL_DIR);
-		AppendPathSeparator(tmp, lastof(tmp));
+		tmp = homedir;
+		tmp += PATHSEP;
+		tmp += PERSONAL_DIR;
+		AppendPathSeparator(tmp);
 
 		_searchpaths[SP_PERSONAL_DIR] = tmp;
 		free(homedir);
@@ -1071,8 +1053,8 @@ void DetermineBasePaths(const char *exe)
 #endif
 
 #if defined(WITH_SHARED_DIR)
-	seprintf(tmp, lastof(tmp), "%s", SHARED_DIR);
-	AppendPathSeparator(tmp, lastof(tmp));
+	tmp = SHARED_DIR;
+	AppendPathSeparator(tmp);
 	_searchpaths[SP_SHARED_DIR] = tmp;
 #else
 	_searchpaths[SP_SHARED_DIR].clear();
@@ -1083,8 +1065,8 @@ void DetermineBasePaths(const char *exe)
 
 	if (_config_file.empty()) {
 		/* Get the path to working directory of OpenTTD. */
-		if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
-		AppendPathSeparator(tmp, lastof(tmp));
+		tmp = cwd;
+		AppendPathSeparator(tmp);
 		_searchpaths[SP_WORKING_DIR] = tmp;
 
 		_do_scan_working_directory = DoScanWorkingDirectory();
@@ -1093,8 +1075,8 @@ void DetermineBasePaths(const char *exe)
 		size_t end = _config_file.find_last_of(PATHSEPCHAR);
 		if (end == std::string::npos) {
 			/* _config_file is not in a folder, so use current directory. */
-			if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
-			AppendPathSeparator(tmp, lastof(tmp));
+			tmp = cwd;
+			AppendPathSeparator(tmp);
 			_searchpaths[SP_WORKING_DIR] = tmp;
 		} else {
 			_searchpaths[SP_WORKING_DIR] = _config_file.substr(0, end + 1);
@@ -1103,8 +1085,13 @@ void DetermineBasePaths(const char *exe)
 
 	/* Change the working directory to that one of the executable */
 	if (ChangeWorkingDirectoryToExecutable(exe)) {
-		if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
-		AppendPathSeparator(tmp, lastof(tmp));
+		char buf[MAX_PATH];
+		if (getcwd(buf, lengthof(buf)) == nullptr) {
+			tmp.clear();
+		} else {
+			tmp = buf;
+		}
+		AppendPathSeparator(tmp);
 		_searchpaths[SP_BINARY_DIR] = tmp;
 	} else {
 		_searchpaths[SP_BINARY_DIR].clear();
@@ -1120,8 +1107,8 @@ void DetermineBasePaths(const char *exe)
 #if !defined(GLOBAL_DATA_DIR)
 	_searchpaths[SP_INSTALLATION_DIR].clear();
 #else
-	seprintf(tmp, lastof(tmp), "%s", GLOBAL_DATA_DIR);
-	AppendPathSeparator(tmp, lastof(tmp));
+	tmp = GLOBAL_DATA_DIR;
+	AppendPathSeparator(tmp);
 	_searchpaths[SP_INSTALLATION_DIR] = tmp;
 #endif
 #ifdef WITH_COCOA
@@ -1146,14 +1133,13 @@ void DeterminePaths(const char *exe)
 	DetermineBasePaths(exe);
 
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
-	char config_home[MAX_PATH];
-
 	const char *xdg_config_home = xdgConfigHome(nullptr);
-	seprintf(config_home, lastof(config_home), "%s" PATHSEP "%s", xdg_config_home,
-			PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR);
+	std::string config_home(xdg_config_home);
+	config_home += PATHSEP;
+	config_home += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 	free(xdg_config_home);
 
-	AppendPathSeparator(config_home, lastof(config_home));
+	AppendPathSeparator(config_home);
 #endif
 
 	Searchpath sp;
@@ -1166,10 +1152,10 @@ void DeterminePaths(const char *exe)
 	if (!_config_file.empty()) {
 		config_dir = _searchpaths[SP_WORKING_DIR];
 	} else {
-		char personal_dir[MAX_PATH];
-		if (FioFindFullPath(personal_dir, lastof(personal_dir), BASE_DIR, "openttd.cfg") != nullptr) {
-			char *end = strrchr(personal_dir, PATHSEPCHAR);
-			if (end != nullptr) end[1] = '\0';
+		std::string personal_dir = FioFindFullPath(BASE_DIR, "openttd.cfg");
+		if (!personal_dir.empty()) {
+			auto end = personal_dir.find_last_of(PATHSEPCHAR);
+			if (end != std::string::npos) personal_dir.erase(end + 1);
 			config_dir = personal_dir;
 		} else {
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
@@ -1330,21 +1316,21 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 
 	while ((dirent = readdir(dir)) != nullptr) {
 		const char *d_name = FS2OTTD(dirent->d_name);
-		char filename[MAX_PATH];
 
 		if (!FiosIsValidFile(path, dirent, &sb)) continue;
 
-		seprintf(filename, lastof(filename), "%s%s", path, d_name);
+		std::string filename(path);
+		filename += d_name;
 
 		if (S_ISDIR(sb.st_mode)) {
 			/* Directory */
 			if (!recursive) continue;
 			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
-			if (!AppendPathSeparator(filename, lastof(filename))) continue;
-			num += ScanPath(fs, extension, filename, basepath_length, recursive);
+			AppendPathSeparator(filename);
+			num += ScanPath(fs, extension, filename.c_str(), basepath_length, recursive);
 		} else if (S_ISREG(sb.st_mode)) {
 			/* File */
-			if (MatchesExtension(extension, filename) && fs->AddFile(filename, basepath_length, nullptr)) num++;
+			if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename.c_str(), basepath_length, nullptr)) num++;
 		}
 	}
 
@@ -1383,7 +1369,6 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 	this->subdir = sd;
 
 	Searchpath sp;
-	char path[MAX_PATH];
 	TarFileList::iterator tar;
 	uint num = 0;
 
@@ -1391,8 +1376,8 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 		/* Don't search in the working directory */
 		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
 
-		FioAppendDirectory(path, lastof(path), sp, sd);
-		num += ScanPath(this, extension, path, strlen(path), recursive);
+		std::string path = FioGetDirectory(sp, sd);
+		num += ScanPath(this, extension, path.c_str(), path.size(), recursive);
 	}
 
 	if (tars && sd != NO_DIRECTORY) {
@@ -1425,8 +1410,7 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
  */
 uint FileScanner::Scan(const char *extension, const char *directory, bool recursive)
 {
-	char path[MAX_PATH];
-	strecpy(path, directory, lastof(path));
-	if (!AppendPathSeparator(path, lastof(path))) return 0;
-	return ScanPath(this, extension, path, strlen(path), recursive);
+	std::string path(directory);
+	AppendPathSeparator(path);
+	return ScanPath(this, extension, path.c_str(), path.size(), recursive);
 }
