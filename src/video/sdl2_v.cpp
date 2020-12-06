@@ -51,6 +51,11 @@ static volatile bool _draw_continue;
 static Palette _local_palette;
 static SDL_Palette *_sdl_palette;
 
+#ifdef __EMSCRIPTEN__
+/** Whether we just had a window-enter event. */
+static bool _cursor_new_in_window = false;
+#endif
+
 #define MAX_DIRTY_RECTS 100
 static SDL_Rect _dirty_rects[MAX_DIRTY_RECTS];
 static int _num_dirty_rects;
@@ -350,6 +355,9 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 bool VideoDriver_SDL::ClaimMousePointer()
 {
 	SDL_ShowCursor(0);
+#ifdef __EMSCRIPTEN__
+	SDL_SetRelativeMouseMode(SDL_TRUE);
+#endif
 	return true;
 }
 
@@ -509,9 +517,27 @@ int VideoDriver_SDL::PollEvent()
 
 	switch (ev.type) {
 		case SDL_MOUSEMOTION:
+#ifdef __EMSCRIPTEN__
+			if (_cursor_new_in_window) {
+				/* The cursor just moved into the window; this means we don't
+				* know the absolutely position yet to move relative from.
+				* Before this time, SDL didn't know it either, and this is
+				* why we postpone it till now. Update the absolute position
+				* for this once, and work relative after. */
+				_cursor.pos.x = ev.motion.x;
+				_cursor.pos.y = ev.motion.y;
+				_cursor.dirty = true;
+
+				_cursor_new_in_window = false;
+				SDL_SetRelativeMouseMode(SDL_TRUE);
+			} else {
+				_cursor.UpdateCursorPositionRelative(ev.motion.xrel, ev.motion.yrel);
+			}
+#else
 			if (_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y, true)) {
 				SDL_WarpMouseInWindow(_sdl_window, _cursor.pos.x, _cursor.pos.y);
 			}
+#endif
 			HandleMouseEvents();
 			break;
 
@@ -615,6 +641,12 @@ int VideoDriver_SDL::PollEvent()
 			} else if (ev.window.event == SDL_WINDOWEVENT_ENTER) {
 				// mouse entered the window, enable cursor
 				_cursor.in_window = true;
+#ifdef __EMSCRIPTEN__
+				/* Disable relative mouse mode for the first mouse motion,
+				 * so we can pick up the absolutely position again. */
+				_cursor_new_in_window = true;
+				SDL_SetRelativeMouseMode(SDL_FALSE);
+#endif
 			} else if (ev.window.event == SDL_WINDOWEVENT_LEAVE) {
 				// mouse left the window, undraw cursor
 				UndrawMouseCursor();
@@ -631,7 +663,8 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 	/* Explicitly disable hardware acceleration. Enabling this causes
 	 * UpdateWindowSurface() to update the window's texture instead of
 	 * its surface. */
-	SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION , "0");
+	SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION, "0");
+	SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1");
 
 	/* Just on the offchance the audio subsystem started before the video system,
 	 * check whether any part of SDL has been initialised before getting here.
