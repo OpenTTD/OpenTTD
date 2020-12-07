@@ -1761,10 +1761,10 @@ DEF_CONSOLE_CMD(ConContent)
 	}
 
 	if (argc <= 1) {
-		IConsoleHelp("Query, select and download content. Usage: 'content update|upgrade|select [all|id]|unselect [all|id]|state [filter]|download'");
+		IConsoleHelp("Query, select and download content. Usage: 'content update|upgrade|select [id]|unselect [all|id]|state [filter]|download'");
 		IConsoleHelp("  update: get a new list of downloadable content; must be run first");
 		IConsoleHelp("  upgrade: select all items that are upgrades");
-		IConsoleHelp("  select: select a specific item given by its id or 'all' to select all. If no parameter is given, all selected content will be listed");
+		IConsoleHelp("  select: select a specific item given by its id. If no parameter is given, all selected content will be listed");
 		IConsoleHelp("  unselect: unselect a specific item given by its id or 'all' to unselect all");
 		IConsoleHelp("  state: show the download/select state of all downloadable content. Optionally give a filter string");
 		IConsoleHelp("  download: download all content you've selected");
@@ -1790,7 +1790,13 @@ DEF_CONSOLE_CMD(ConContent)
 				OutputContentState(*iter);
 			}
 		} else if (strcasecmp(argv[2], "all") == 0) {
-			_network_content_client.SelectAll();
+			/* The intention of this function was that you could download
+			 * everything after a filter was applied; but this never really
+			 * took off. Instead, a select few people used this functionality
+			 * to download every available package on BaNaNaS. This is not in
+			 * the spirit of this service. Additionally, these few people were
+			 * good for 70% of the consumed bandwidth of BaNaNaS. */
+			IConsolePrintF(CC_ERROR, "'select all' is no longer supported since 1.11");
 		} else {
 			_network_content_client.Select((ContentID)atoi(argv[2]));
 		}
