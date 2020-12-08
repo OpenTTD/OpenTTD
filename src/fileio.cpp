@@ -1192,6 +1192,15 @@ void DeterminePaths(const char *exe)
 		} else {
 			end[1] = '\0';
 		}
+
+		/* When using '-c', which sets _config_file, change the first search
+		 * path to the folder the configuration file is in. This folder is
+		 * also prepared to store autosaves and content you download. This
+		 * means that by using '-c', you create an sandboxed OpenTTD
+		 * installation as far as writing goes. For reading it still uses the
+		 * other search paths to find files, except for content_download.
+		 * Anything else in your personal-dir will be used if possible. */
+		_searchpaths[SP_WORKING_DIR] = config_dir;
 	} else {
 		char personal_dir[MAX_PATH];
 		if (FioFindFullPath(personal_dir, lastof(personal_dir), BASE_DIR, "openttd.cfg") != nullptr) {
