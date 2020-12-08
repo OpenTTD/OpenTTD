@@ -285,19 +285,6 @@ static void AskExitGameCallback(Window *w, bool confirmed)
 
 void AskExitGame()
 {
-#if defined(_WIN32)
-		SetDParam(0, STR_OSNAME_WINDOWS);
-#elif defined(__APPLE__)
-		SetDParam(0, STR_OSNAME_OSX);
-#elif defined(__HAIKU__)
-		SetDParam(0, STR_OSNAME_HAIKU);
-#elif defined(__OS2__)
-		SetDParam(0, STR_OSNAME_OS2);
-#elif defined(SUNOS)
-		SetDParam(0, STR_OSNAME_SUNOS);
-#else
-		SetDParam(0, STR_OSNAME_UNIX);
-#endif
 	ShowQuery(
 		STR_QUIT_CAPTION,
 		STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD,
