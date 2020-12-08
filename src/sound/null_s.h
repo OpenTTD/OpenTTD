@@ -19,6 +19,7 @@ public:
 
 	void Stop() override { }
 	const char *GetName() const override { return "null"; }
+	bool HasOutput() const override { return false; }
 };
 
 /** Factory for the null sound driver. */
