@@ -1808,17 +1808,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}이 버�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}종료
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}정말 이 게임을 끝내고 {STRING}{G 0 "으" ""}로 돌아가시겠습니까?
 STR_QUIT_YES                                                    :{BLACK}예
 STR_QUIT_NO                                                     :{BLACK}아니요
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :{G=f}Windows
-STR_OSNAME_UNIX                                                 :{G=f}Unix
-STR_OSNAME_OSX                                                  :{G=f}OS{NBSP}X
-STR_OSNAME_HAIKU                                                :{G=f}Haiku
-STR_OSNAME_OS2                                                  :{G=f}OS/2
-STR_OSNAME_SUNOS                                                :{G=f}SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}게임 그만하기

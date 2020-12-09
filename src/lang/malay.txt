@@ -1514,17 +1514,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Terjemah
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Keluar
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Adakah anda pasti untuk keluar dari OpenTTD dan kembali ke {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Ya
 STR_QUIT_NO                                                     :{BLACK}Tidak
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Tetingkap
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Tinggalkan Permainan

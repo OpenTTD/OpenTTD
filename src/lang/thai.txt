@@ -1704,17 +1704,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK} กา�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}ออกจากเกม
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}คุณแน่ใจว่าจะออกจากเกม OpenTTD แล้วกลับสู่ {STRING}?
 STR_QUIT_YES                                                    :{BLACK}ใช่
 STR_QUIT_NO                                                     :{BLACK}ไม่
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :ระบบปฏิบัติการ Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ออกไปสู่เมนูหลัก

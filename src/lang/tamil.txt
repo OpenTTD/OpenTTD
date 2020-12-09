@@ -1607,14 +1607,6 @@ STR_QUIT_CAPTION                                                :{WHITE}வெ�
 STR_QUIT_YES                                                    :{BLACK}ஆமாம்
 STR_QUIT_NO                                                     :{BLACK}இல்லை
 
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
-
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ஆட்டத்தை கைவிடு
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}நீங்கள் இந்த ஆட்டத்தினை விட்டு வெளியேறுவதில் உறுதியா?

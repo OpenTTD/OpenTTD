@@ -2108,17 +2108,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}На г�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Выхад
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Вы ўпэўнены, што жадаеце перапыніць гульню й вярнуцца ў {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Так
 STR_QUIT_NO                                                     :{BLACK}Не
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}У галоўнае мэню

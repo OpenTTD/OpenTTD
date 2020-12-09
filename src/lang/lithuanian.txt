@@ -382,6 +382,7 @@ STR_COLOUR_ORANGE                                               :Oranžinė
 STR_COLOUR_BROWN                                                :Ruda
 STR_COLOUR_GREY                                                 :Pilka
 STR_COLOUR_WHITE                                                :Balta
+STR_COLOUR_DEFAULT                                              :Numatytas
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -863,6 +864,7 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLA
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programa - „{STRING}“
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Išvalyti
 STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Panaikinti esamą programą (tik „Speciali 1“ arba „Speciali 2“)
+STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Pakeiskite muzikos pasirinkimą į kitą įdiegtą rinkinį
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Paspauskite ant garso takelio, norėdami įtraukti į sąrašą (tik „Speciali 1“ arba „Speciali 2“)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Spragtelėjus takelį, jis pašalinamas iš dabartinės programos (tik „Speciali 1“ ir „Speciali 2“)
 
@@ -1121,6 +1123,8 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Pietų Afrikos 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Kita...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijos Laris (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irano Rialas (IRR)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinų renminbi (CNY)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Honkongo doleris (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automobilių eismas
@@ -1184,6 +1188,9 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvigubas
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Trigubas
 
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normalus
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dvigubas dydis
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Keturių dydžių
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Bazinis grafikos rinkinys
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pasirinkti naudojimui bazinę grafikos rinkinį
@@ -1536,6 +1543,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Reljefo spalva 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Žalia
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tamsiai žalia
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violetinė
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Perkelkite peržiūros sritį su RMB, pelės padėtis užrakinta
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Tolydi vaizdo slinktis: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Įjungus šią nuostatą ir pakeitus pagrindinio lango rodomą vietą (pvz., spragtelėjus žemėlapyje), vaizdas slinksis tolydžiai. Priešingu atveju vaizdas pasikeis akimirksniu, šuoliškai.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Rodyti matavimo pastabą, kai naudojami įvairūs statybų įrankiai: {STRING}
@@ -1567,6 +1575,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl+Click
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 
+STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :Uždaro langą dešiniuoju pelės klavišu spustelėdami jo vidų. Išjungia patarimą dešiniuoju pelės mygtuku spustelėjimu!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :Automatinis saugojimas: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Laiko tarpsnis tarp automatinių žaidimo išsaugojimų
@@ -1973,17 +1982,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Šiam ve
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Baigti
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ar jūs tikrai norite sustabdyti žaidimą ir grįžti į {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Taip
 STR_QUIT_NO                                                     :{BLACK}Ne
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Palikti Žaidimą
@@ -2609,6 +2609,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}Statyti 
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}Aktyvinti automobilių kelių ir stotelių šalinimo veikseną
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}Aktyvinti tramvajaus bėgių ir stotelių šalinimo veikseną
 
+STR_ROAD_NAME_TRAM                                              :Tramvajus
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}Pasirinkite garažo kryptį
@@ -2792,6 +2793,7 @@ STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Oro uost
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}Plėtinys: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Krovinys priimtas: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
+STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Kelio tipas: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Geležinkelių greičio limitas: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Kelio greičio limitas: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Tramvajaus greičio limitas: {LTBLUE}{VELOCITY}
@@ -2894,9 +2896,18 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} OpenTTD komanda
 
 # Framerate display window
+STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK} Per sekundę pateiktų vaizdo kadrų skaičius.
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Atmintis
+STR_FRAMERATE_DATA_POINTS                                       :{BLACK} Duomenys pagrįsti {COMMA} matavimais
+STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Nuorodos grafiko vėlavimas:
+STR_FRAMERATE_VIDEO                                             :{BLACK}Vaizdo išvestis
+STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Žaidimo skriptas:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Nuorodos grafiko vėlavimas
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI Iš viso skriptų
 ############ End of leave-in-this-order
 
 
@@ -2922,6 +2933,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}Žaidimo
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nėra informacijos
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}Plėtiniai: {WHITE}{STRING}
+STR_SAVELOAD_FILTER_TITLE                                       :{BLACK} Filtro eilutė:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Perrašyti bylą
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Įveskite išsaugomo žaidimo vardą
@@ -3185,6 +3197,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Įrašyk
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Miestai
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}Nėra
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Miestas){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Spragtelėjus ant pavadinimo, miestas bus parodytas ekrano centre. Spragtelėjus laikant nuspaudus „Ctrl“ klavišą, bus atvertas papildomas peržiūros langas į pasirinktą miestą
 STR_TOWN_POPULATION                                             :{BLACK}Pasaulio populiacija: {COMMA}
 
@@ -3216,6 +3229,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Pervardinti mie
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} vietinė valdžia
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Rodyti zoną vietos valdžios ribose
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transporto kompanijų reitingai:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Galimi veiksmai:
@@ -3559,6 +3573,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Iškelti visas 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Pervadinti grupę
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :Šio mėnesio pelnas:
+STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Nauji lokomotyvai
@@ -3570,6 +3585,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nauji automobil
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Nauji lokomotyvai
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Naujos kelių transporto priemonės
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Nauji laivai
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Nauji lėktuvai
 ############ range for vehicle availability ends
@@ -3611,6 +3627,8 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Pirkti p
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Pirkti pažymėtą laivą. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodyta pirkinio kaina nieko realiai nenuperkant
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Pirkti pažymėtą lėktuvą. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodyta pirkinio kaina nieko realiai nenuperkant
 
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK} Pirkti ir paruošti pažymėtą laivą. Shift+paspaudimas rodo numatomą kainą be pirkimo
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Pirkti ir paruošti pažymėtą lėktuvą. Shift+paspaudimas rodo numatomą kainą be pirkimo
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Pervardinti
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Pervardinti
@@ -3728,6 +3746,7 @@ STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kam                      :lokomotyvui
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.ka                       :lokomotyvą
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kuo                      :lokomotyvu
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE.kur                      :lokomotyve
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :elektrinis geležinkelio lokomotyvas
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :vienbėgis lokomotyvas
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.kas                      :vienbėgis lokomotyvas
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE.ko                       :vienbėgio lokomotyvo
@@ -3750,6 +3769,7 @@ STR_ENGINE_PREVIEW_ROAD_VEHICLE.kam                             :automobiliui
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.ka                              :automobilį
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.kuo                             :automobiliu
 STR_ENGINE_PREVIEW_ROAD_VEHICLE.kur                             :automobilyje
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :tramvajaus transporto priemonė
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :lėktuvas
 STR_ENGINE_PREVIEW_AIRCRAFT.kas                                 :lėktuvas
@@ -3769,6 +3789,7 @@ STR_ENGINE_PREVIEW_SHIP.kur                                     :laive
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksploatavimo išlaidos: {CURRENCY_LONG} per metus{}Talpa: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}  Maks. T.E.: {6:FORCE}{}Einamosios išlaidos: {4:CURRENCY_LONG}/yr{}Talpa: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kaina: {CURRENCY_LONG} Didž. Greitis: {VELOCITY}{}Talpa: {CARGO_LONG}{}Eksploatacijos išlaidos: {CURRENCY_LONG}/metams
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY}{}Lėktuvo tipas: {STRING} Nuotolis: {COMMA} tiles{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Eksploatacijos išlaidos: {CURRENCY_LONG}/metams
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti tr. priemones {STRING} - {STRING}
@@ -3802,6 +3823,7 @@ STR_REPLACE_ENGINES                                             :Varikliai
 STR_REPLACE_WAGONS                                              :Vagonai
 
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pasirinkite bėgio tipą, kur dėl variklio norėtumėte pakeisti
+STR_REPLACE_HELP_ROADTYPE                                       :{BLACK}Pasirinkite kelio tipą, kurio automobilius norite pakeisti
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Kaireje lango dalyje pazymeta tr. priemone bus pakeista tr. priemone, kuri yra pazymeta desineje lango puseje
 STR_REPLACE_RAIL_VEHICLES                                       :Paprasti traukiniai
 STR_REPLACE_ELRAIL_VEHICLES                                     :Elektrifikuoti Traukiniai
@@ -3893,6 +3915,7 @@ STR_VEHICLE_INFO_AGE                                            :{COMMA} met{P a
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} met{P ai ai ų} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Didž. greitis: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Maks. greitis: {LTBLUE}{VELOCITY} {BLACK}Lėktuvo tipas: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Svoris: {LTBLUE}{WEIGHT_SHORT} {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Didž. greitis: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Svoris: {LTBLUE}{WEIGHT_SHORT} {BLACK}Galia: {LTBLUE}{POWER}{BLACK} Didž. greitis: {LTBLUE}{VELOCITY} {BLACK}Didž. traukos jėga: {LTBLUE}{FORCE}
 
@@ -4274,6 +4297,9 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Pasirink
 STR_AI_LIST_CANCEL                                              :{BLACK}Atšaukti
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Nekeisti skripto
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Padaryti ekrano nuotrauką
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Aukščių žemėlapio ekrano nuotrauka
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Mini žemėlapio ekrano kopija
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametrai
@@ -4566,6 +4592,8 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Šio kel
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Neįmanoma pašalinti tramvajaus...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... nėra kelio
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... nėra kelio tramvajui
+STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Čia negalima konvertuoti tramvajaus tipo...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE} Nėra tinkamo kelio
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Neimanoma cia iskasti kanalu...

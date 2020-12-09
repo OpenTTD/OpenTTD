@@ -1426,17 +1426,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}هذة �
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}انهاء
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}هل تود اغلاق النسخة المفتوحة و العودة لـ {STRING}?
 STR_QUIT_YES                                                    :{BLACK}نعم
 STR_QUIT_NO                                                     :{BLACK}لا
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :ويندوز
-STR_OSNAME_UNIX                                                 :يونكس
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :هايكو
-STR_OSNAME_OS2                                                  :او اس/2
-STR_OSNAME_SUNOS                                                :صن
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}إغلاق اللعبه

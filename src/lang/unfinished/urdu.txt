@@ -1367,17 +1367,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}اس ت�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}باہر نکلو
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}کیا آپ واقعی OpenTTD کو چھوڑ کر واپس {STRING} میں جانا چاہتے ہیں؟
 STR_QUIT_YES                                                    :{BLACK}ہاں
 STR_QUIT_NO                                                     :{BLACK}نہیں
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :ونڈوز
-STR_OSNAME_UNIX                                                 :یونیکس
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}کھیل چھوڑ دو

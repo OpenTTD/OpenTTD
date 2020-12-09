@@ -655,14 +655,6 @@ STR_QUIT_CAPTION                                                :{WHITE}Вӗҫл
 STR_QUIT_YES                                                    :{BLACK}Ийя
 STR_QUIT_NO                                                     :{BLACK}Ҫук
 
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
-
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Вӑййи ан килӗш
 

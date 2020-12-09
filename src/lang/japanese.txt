@@ -1753,17 +1753,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}この�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}終了
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}このゲームを終了し、{}{STRING}に戻ってもよろしいですか?
 STR_QUIT_YES                                                    :{BLACK}はい
 STR_QUIT_NO                                                     :{BLACK}いいえ
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ゲームを放棄

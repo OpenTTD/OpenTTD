@@ -1180,30 +1180,30 @@ STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrova
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Rozbaliť všetko
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Zabaliť všetko
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(nie je dostupné vysvetlenie)
-STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Pôvodná hodnota: {ORANGE}{STRING}
+STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Predvolená hodnota: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Nastavenie typu: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Nastavenia klienta (neuchovávané v uložených hrách; ovplyvní všetky hry)
-STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Nastavenia hry (uložia sa; ovplyvní iba nové hry)
-STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavenia hry (uložia sa; ovplyvní iba aktuálnu hru)
-STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavenia spoločnosti (uložia sa; ovplyvní iba nové hry)
-STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavenia spoločnosti (uložia sa; ovplyvní iba aktuálnu firmu)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Nastavenie klienta (neukladané v uložených hrách; ovplyvní všetky hry)
+STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Nastavenie hry (ukladané v uložených hrách; ovplyvní iba nové hry)
+STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Nastavenie hry (ukladané v uložených hrách; ovplyvní iba aktuálnu hru)
+STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Nastavenie spoločnosti (ukladané v uložených hrách; ovplyvní iba nové hry)
+STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Nastavenie spoločnosti (ukladané v uložených hrách; ovplyvní iba aktuálnu spoločnosť)
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategória:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Typ:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Obmedzuje zoznam nižšie podľa definovaných nastavení
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Základné (zobrazí iba dôležité nastavenia)
 STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Pokročilé (zobrazí väčšinu nastavení)
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :Odborné (zobrazí všetky nastavenia, vrátane tých podivných)
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Odborné (zobrazí všetky nastavenia, vrátane podivných)
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Nastavenia s odlišnou hodnotou ako je predvolená
 STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Nastavenia s odlišnou hodnotou než aké má tvoja nová hra
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Obmedzuje zoznam nižšie na niektoré typy nastavení
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Všetky typy nastavení
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavenia klienta (nieje uložené; ovplyvní všetky hry)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavenia hry (uložené v uložených hrách; ovplyvní iba nové hry)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavenia hry (uložené v uložených hrách; ovplyvní iba aktuálnu hru)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavenia spoločnosti (uložené v uložených hrách; ovplyvní iba nové hry)
-STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavenia spoločnosti (uchované v uloženej hre; ovplyvnia iba aktuálnu spoločnosť)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Nastavenia klienta (neukladané v uložených hrách; ovplyvnia všetky hry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Nastavenia hry (ukladané v uložených hrách; ovplyvnia iba nové hry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Nastavenia hry (ukladané v uložených hrách; ovplyvnia iba aktuálnu hru)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Nastavenia spoločnosti (ukladané v uložených hrách; ovplyvnia iba nové hry)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Nastavenia spoločnosti (ukladané v uložených hrách; ovplyvnia iba aktuálnu spoločnosť)
 STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Zobrazenie všetkých výsledkov vyhľadávania nastavením{}{SILVER}kategórie {BLACK}na {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Zobrazenie všetkých výsledkov vyhľadávania nastavením{}{SILVER}typu {BLACK}na {WHITE}Všetky typy nastavenia
 STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Zobrazenie všetkých výsledkov vyhľadávania nastavením{}{SILVER}kategórie {BLACK}na {WHITE}{STRING} {BLACK}a {SILVER}typu {BLACK}na {WHITE}Všetky typy nastavenia
@@ -1377,7 +1377,7 @@ STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Klik pravým tl
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zobraziť počet obyvateľov mesta v jeho názve: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zobrazí populáciu mesta v jeho názve.
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Hrúbka čiar v grafe: {STRING}
-STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Hrúbka čiar v grafe. Tenké čiary sú presnejšie, hrubšie zase lepšie viditeľné.
+STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Hrúbka čiar v grafe. Tenké čiary sú presnejšie, hrubšie zasa lepšie viditeľné
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Zobraziť názov NewGRF v okne vozidiel: {STRING}
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Pridá riadok do zoznamu vozidiel, ktorý ukazuje z akého NewGRF vozidlo pochádza.
 
@@ -1425,8 +1425,8 @@ STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automatické op
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Servisovať helikoptéry po každom dosadnutí aj ked nie je na letisku žiadny hangár.
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Otvárať panel úprav terénu s panelmi výstavby: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :Otvoriť panel na úpravu terénu spolu s panelom na stavbu (cesty, železnice...)
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Farba krajiny použitá na malej mape: {STRING}
-STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farby terénu na minimape
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :Farba krajiny použitá na minimape: {STRING}
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Farba terénu na minimape
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Zelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Tmavozelená
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fialová
@@ -1510,17 +1510,17 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Zoskupiť výda
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definujte rozloženie okna s financiami.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Oznamovač správ: {STRING}
-STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Prehrať zvuk pre zhrnuté novinové správy
+STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Prehrať zvuk pri zhrnutých správach
 STR_CONFIG_SETTING_SOUND_NEWS                                   :Noviny: {STRING}
 STR_CONFIG_SETTING_SOUND_NEWS_HELPTEXT                          :Prehrať zvuk pri zobrazení novín
 STR_CONFIG_SETTING_SOUND_NEW_YEAR                               :Koniec roka: {STRING}
-STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Prehrávať zvukové efekty na konci roku zhŕňajúce výkon spoločnosti počas roku v porovnaní s minulým rokom
-STR_CONFIG_SETTING_SOUND_CONFIRM                                :Stavba: {STRING}
-STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Hrať zvukovú správu pri úspešnej stavbe alebo pri iných akciách
+STR_CONFIG_SETTING_SOUND_NEW_YEAR_HELPTEXT                      :Prehrať zvuk na konci roku pri zobrazení zhrnutia výkonu spoločnosti počas roka v porovnaní s minulým rokom
+STR_CONFIG_SETTING_SOUND_CONFIRM                                :Výstavba: {STRING}
+STR_CONFIG_SETTING_SOUND_CONFIRM_HELPTEXT                       :Prehrať zvuk pri úspešnej výstavbe alebo pri iných akciách
 STR_CONFIG_SETTING_SOUND_CLICK                                  :Kliknutia na tlačidlá: {STRING}
-STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pípať pri kliknutí na tlačidlá
-STR_CONFIG_SETTING_SOUND_DISASTER                               :Havárie/zrážky: {STRING}
-STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Prehrávať zvukové efekty nehôd a katastrôf
+STR_CONFIG_SETTING_SOUND_CLICK_HELPTEXT                         :Pípať pri klikaní na tlačidlá
+STR_CONFIG_SETTING_SOUND_DISASTER                               :Katastrofy/nehody: {STRING}
+STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Prehrávať zvukové efekty nehôd a katastrof
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Vozidlá: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Prehrávať zvukové efekty vozidiel
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Prostredie: {STRING}
@@ -1691,15 +1691,15 @@ STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Počet otvoren�
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :vypnuté
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximálna úroveň priblíženia: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximálna úroveň priblíženia pre pozorovanie. Uvedomte si že čím vyššie je možné priblíženie, tým rastie požiadavka na pamäť.
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximálna úroveň priblíženia pohľadu. Vyššie úrovne priblíženia zvyšujú požiadavky na pamäť
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximálna úroveň oddialenia: {STRING}
-STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximálna úroveň oddialenia pre pozorovanie. Uvedomte si že čím vyššie je možné oddialenie, tým rastie požiadavka na pamäť.
-STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4krát
-STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :Dvojnásobný
-STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normálny
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :Dvojnásobný
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4krát
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8krát
+STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximálna úroveň oddialenia pohľadu. Vyššie úrovne oddialenia môžu pri používaní spôsobovať oneskorenie
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4-krát
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2-krát
+STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normálna
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2-krát
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4-krát
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8-krát
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Rozvoj miest: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Rýchlosť rastu miest
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :žiadny
@@ -1875,17 +1875,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}V prekla
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Koniec
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ste si istý, že chcete ukončiť hru a vrátiť sa do {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Áno
 STR_QUIT_NO                                                     :{BLACK}Nie
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Opustiť hru

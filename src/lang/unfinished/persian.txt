@@ -1470,17 +1470,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}این �
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}خروج
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}آیا می‌خواهید از بازی خارج شوید و برگردید به{STRING}?
 STR_QUIT_YES                                                    :{BLACK}بله
 STR_QUIT_NO                                                     :{BLACK}خیر
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :هایکو
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}رها کردن بازی

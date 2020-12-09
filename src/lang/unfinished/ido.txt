@@ -583,11 +583,8 @@ STR_INTRO_GAME_OPTIONS                                          :{BLACK}Ludo Sel
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Livas
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Kad tu esas certa ke tu volas livar OpenTTD ed rivenar a {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Yes
 STR_QUIT_NO                                                     :{BLACK}Ne
-
-# Supported OSes
 
 # Abandon game
 

@@ -1893,17 +1893,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Λείπ
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Έξοδος
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Είστε σίγουροι ότι θέλετε να εγκαταλείψετε το OpenTTD και να επιστρέψετε στο λειτουργικό {STRING};
 STR_QUIT_YES                                                    :{BLACK}Ναι
 STR_QUIT_NO                                                     :{BLACK}Όχι
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Εγκατάλειψη Παιχνιδιού

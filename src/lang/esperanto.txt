@@ -1413,17 +1413,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Ĉi tiu 
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Forlasi
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ĉu vi vere volas fermi la ludon kaj reiri al {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Jes
 STR_QUIT_NO                                                     :{BLACK}Ne
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Vindozo
-STR_OSNAME_UNIX                                                 :Unikso
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Foriri de la ludo

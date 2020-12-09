@@ -510,8 +510,6 @@ STR_INTRO_CAPTION                                               :{WHITE}OpenTTD 
 
 # Quit window
 
-# Supported OSes
-
 # Abandon game
 
 # Cheat window

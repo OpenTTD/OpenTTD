@@ -840,8 +840,6 @@ STR_INTRO_CAPTION                                               :{WHITE}ओप�
 
 # Quit window
 
-# Supported OSes
-
 # Abandon game
 
 # Cheat window

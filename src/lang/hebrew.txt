@@ -1779,17 +1779,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}בתרג
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}צא
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}אתה בטוח שברצונך לצאת ולחזור ל{STRING}?
 STR_QUIT_YES                                                    :{BLACK}כן
 STR_QUIT_NO                                                     :{BLACK}לא
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :חלונות
-STR_OSNAME_UNIX                                                 :יוניקס
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :הייקו
-STR_OSNAME_OS2                                                  :מערכת הפעלה או.אס שתיים
-STR_OSNAME_SUNOS                                                :סולריס
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}עזיבת משחק
