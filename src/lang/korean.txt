@@ -1808,6 +1808,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}이 버�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}종료
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}정말 게임을 종료하시겠습니까?
 STR_QUIT_YES                                                    :{BLACK}예
 STR_QUIT_NO                                                     :{BLACK}아니요
 

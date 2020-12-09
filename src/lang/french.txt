@@ -1808,6 +1808,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Il manqu
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Quitter
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Êtes-vous sûr de vouloir quitter OpenTTD{NBSP}?
 STR_QUIT_YES                                                    :{BLACK}Oui
 STR_QUIT_NO                                                     :{BLACK}Non
 
