@@ -151,6 +151,28 @@ typedef unsigned long in_addr_t;
 
 #endif /* OS/2 */
 
+#ifdef __EMSCRIPTEN__
+/**
+ * Emscripten doesn't set 'addrlen' for accept(), getsockname(), getpeername()
+ * and recvfrom(), which confuses other functions and causes them to crash.
+ * This function needs to be called after these four functions to make sure
+ * 'addrlen' is patched up.
+ *
+ * https://github.com/emscripten-core/emscripten/issues/12996
+ *
+ * @param address The address returned by those four functions.
+ * @return The correct value for addrlen.
+ */
+static inline socklen_t FixAddrLenForEmscripten(struct sockaddr_storage &address)
+{
+	switch (address.ss_family) {
+		case AF_INET6: return sizeof(struct sockaddr_in6);
+		case AF_INET: return sizeof(struct sockaddr_in);
+		default: NOT_REACHED();
+	}
+}
+#endif
+
 /**
  * Try to set the socket into non-blocking mode.
  * @param d The socket to set the non-blocking more for.
