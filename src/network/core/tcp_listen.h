@@ -42,6 +42,9 @@ public:
 			socklen_t sin_len = sizeof(sin);
 			SOCKET s = accept(ls, (struct sockaddr*)&sin, &sin_len);
 			if (s == INVALID_SOCKET) return;
+#ifdef __EMSCRIPTEN__
+			sin_len = FixAddrLenForEmscripten(sin);
+#endif
 
 			SetNonBlocking(s); // XXX error handling?
 

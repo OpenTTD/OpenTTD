@@ -129,6 +129,9 @@ void NetworkUDPSocketHandler::ReceivePackets()
 			/* Did we get the bytes for the base header of the packet? */
 			if (nbytes <= 0) break;    // No data, i.e. no packet
 			if (nbytes <= 2) continue; // Invalid data; try next packet
+#ifdef __EMSCRIPTEN__
+			client_len = FixAddrLenForEmscripten(client_addr);
+#endif
 
 			NetworkAddress address(client_addr, client_len);
 			p.PrepareToRead();
