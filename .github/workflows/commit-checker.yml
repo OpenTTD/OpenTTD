@@ -24,6 +24,12 @@ jobs:
         # the log between HEAD^ and HEAD^2 will be the commits in the pull-request.
         DEPTH=4
         while [ -z "$(git merge-base HEAD^ HEAD^2)" ]; do
+            # Prevent infinite recursion
+            if [ ${DEPTH} -gt 256 ]; then
+                echo "No common parent between '${GITHUB_HEAD_REF}' and '${GITHUB_BASE_REF}'." >&2
+                exit 1
+            fi
+
             git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --deepen=${DEPTH} origin HEAD
             DEPTH=$(( ${DEPTH} * 4 ))
         done
