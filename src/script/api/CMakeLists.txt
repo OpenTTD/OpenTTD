@@ -100,6 +100,23 @@ foreach(API "ai;AI" "game;GS" "template;Template")
         add_dependencies(script_api
                 script_${APILC}_includes
         )
+
+        # Documentation
+        if(DOXYGEN_EXECUTABLE)
+            add_custom_target(docs_${APILC}
+                ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/docs
+                COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile_${APIUC}
+                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                COMMENT "Generating documentation for ${APILC} API"
+            )
+            add_dependencies(docs_${APILC}
+                find_version
+                script_window
+            )
+            add_dependencies(docs
+                docs_${APILC}
+            )
+        endif()
     else()
         add_dependencies(script_api
                 script_${APILC}

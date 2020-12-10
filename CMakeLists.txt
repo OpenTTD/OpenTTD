@@ -72,6 +72,10 @@ find_package(Xaudio2)
 
 find_package(Grfcodec)
 
+if(UNIX)
+    find_package(Doxygen)
+endif()
+
 # IPO is only properly supported from CMake 3.9. Despite the fact we are
 # CMake 3.5, still enable IPO if we detect we are 3.9+.
 if(POLICY CMP0069)
@@ -129,6 +133,23 @@ add_custom_target(find_version
 
 # An empty target for the tools
 add_custom_target(tools)
+
+# Documentation
+if(DOXYGEN_EXECUTABLE)
+    add_custom_target(docs)
+    add_custom_target(docs_source
+        ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/docs
+        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Generating documentation for source"
+    )
+    add_dependencies(docs_source
+        find_version
+    )
+    add_dependencies(docs
+        docs_source
+    )
+endif()
 
 include(SourceList)
 include(Endian)
