@@ -137,4 +137,16 @@ else()
     message(STATUS "Generating CPackProperties.cmake")
     configure_file("${CMAKE_SOURCE_DIR}/CPackProperties.cmake.in"
             "${CPACK_BINARY_DIR}/CPackProperties.cmake" @ONLY)
+
+    message(STATUS "Generating Doxyfile")
+    configure_file("${CMAKE_SOURCE_DIR}/Doxyfile.in"
+            "${CPACK_BINARY_DIR}/Doxyfile")
+
+    message(STATUS "Generating Doxyfile_AI")
+    configure_file("${CMAKE_SOURCE_DIR}/src/script/api/Doxyfile_AI.in"
+            "${CPACK_BINARY_DIR}/Doxyfile_AI")
+
+    message(STATUS "Generating Doxyfile_GS")
+    configure_file("${CMAKE_SOURCE_DIR}/src/script/api/Doxyfile_GS.in"
+            "${CPACK_BINARY_DIR}/Doxyfile_GS")
 endif()
