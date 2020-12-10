@@ -1874,7 +1874,8 @@ STR_INTRO_BASESET                                               :{BLACK}Vo vybra
 STR_INTRO_TRANSLATION                                           :{BLACK}V preklade chýba {NUM} reťaz{P ec ce cov}. Prosím pomôžte urobiť OpenTTD lepším a prihláste sa ako prekladateľ. Viac detailov v readme.txt
 
 # Quit window
-STR_QUIT_CAPTION                                                :{WHITE}Koniec
+STR_QUIT_CAPTION                                                :{WHITE}Ukončiť
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ste si istý, že chcete ukončiť OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Áno
 STR_QUIT_NO                                                     :{BLACK}Nie
 
