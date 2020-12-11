@@ -5,12 +5,6 @@ script: |
     which unzip || apt-get update ; apt-get install wget unzip -y
     mkdir -p AppDir/usr/share/icons/hicolor/scalable/apps
     cp ../media/openttd.svg AppDir/usr/share/icons/hicolor/scalable/apps
-    wget -qcO opengfx.zip https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip
-    unzip opengfx.zip -d AppDir/usr/share/games/openttd/baseset
-    wget -qcO openmsx.zip https://cdn.openttd.org/openmsx-releases/0.3.1/openmsx-0.3.1-all.zip
-    unzip openmsx.zip -d AppDir/usr/share/games/openttd/baseset
-    wget -qcO opensfx.zip https://cdn.openttd.org/opensfx-releases/0.2.3/opensfx-0.2.3-all.zip
-    unzip opensfx.zip -d AppDir/usr/share/games/openttd/baseset
 
 AppDir:
   path: ./AppDir
