@@ -33,28 +33,28 @@ AppDir:
 
     include:
       - freepats
-      - timidity
       - libicu66
       - liblzma5
       - liblzo2-2
       - libpng16-16
       - libsdl1.2debian
-      - libxdg-basedir1
       - libsdl2-2.0-0
+      - libxdg-basedir1
+      - timidity
       - zlib1g
     exclude:
-      - humanity-icon-theme
       - adwaita-icon-theme
-      - python3
-      - python3.6
-      - python3-minimal
-      - python3.6-minimal
+      - dpkg-dev
+      - humanity-icon-theme
+      - make
+      - patch
       - perl
       - perl-base
       - pkg-config
-      - patch
-      - make
-      - dpkg-dev
+      - python3
+      - python3-minimal
+      - python3.6
+      - python3.6-minimal
 
   after_bundle: |
     echo "source /etc/timidity/freepats.cfg" | tee AppDir/etc/timidity/timidity.cfg
