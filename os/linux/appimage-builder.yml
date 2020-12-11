@@ -2,7 +2,6 @@
 version: 1
 
 script: |
-    which unzip || apt-get update ; apt-get install wget unzip -y
     mkdir -p AppDir/usr/share/icons/hicolor/scalable/apps
     cp ../media/openttd.svg AppDir/usr/share/icons/hicolor/scalable/apps
 
