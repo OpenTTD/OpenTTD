@@ -131,6 +131,10 @@ foreach(API "ai;AI" "game;GS" "template;Template")
     )
 endforeach()
 
+if(OPTION_TOOLS_ONLY)
+    return()
+endif()
+
 add_library(openttd::script_api ALIAS script_api)
 
 

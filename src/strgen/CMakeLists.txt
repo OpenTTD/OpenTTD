@@ -22,6 +22,10 @@ if (NOT HOST_BINARY_DIR)
     add_dependencies(tools strgen)
 endif()
 
+if(OPTION_TOOLS_ONLY)
+    return()
+endif()
+
 # Source Files
 add_files(strgen_base.cpp)
 

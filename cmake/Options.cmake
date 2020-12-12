@@ -57,6 +57,12 @@ function(set_options)
     option(OPTION_USE_ASSERTS "Use assertions; leave enabled for nightlies, betas, and RCs" ON)
     option(OPTION_USE_THREADS "Use threads" ON)
     option(OPTION_USE_NSIS "Use NSIS to create windows installer; enable only for stable releases" OFF)
+    option(OPTION_TOOLS_ONLY "Build only tools target" OFF)
+    option(OPTION_DOCS_ONLY "Build only docs target" OFF)
+
+    if (OPTION_DOCS_ONLY)
+        set(OPTION_TOOLS_ONLY ON PARENT_SCOPE)
+    endif()
 endfunction()
 
 # Show the values of the generic options.
