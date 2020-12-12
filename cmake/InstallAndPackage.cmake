@@ -76,6 +76,9 @@ if(WIN32)
         set(ARCHITECTURE "win32")
     endif()
 endif()
+if(APPLE AND CMAKE_OSX_ARCHITECTURES)
+    string(TOLOWER "${CMAKE_OSX_ARCHITECTURES}" ARCHITECTURE)
+endif()
 
 set(CPACK_SYSTEM_NAME "${ARCHITECTURE}")
 
@@ -98,7 +101,7 @@ if(APPLE)
     set(CPACK_GENERATOR "Bundle")
     include(PackageBundle)
 
-    set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macosx")
+    set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macosx-${CPACK_SYSTEM_NAME}")
 elseif(WIN32)
     set(CPACK_GENERATOR "ZIP")
     if(OPTION_USE_NSIS)
