@@ -1807,6 +1807,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Tästä 
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sulje
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Haluatko varmasti poistua OpenTTD:stä?
 STR_QUIT_YES                                                    :{BLACK}Kyllä
 STR_QUIT_NO                                                     :{BLACK}Ei
 
