@@ -32,6 +32,78 @@ set_directory_options()
 include(Static)
 set_static_if_needed()
 
+if(MSVC)
+    # C++17 for MSVC
+    set(CMAKE_CXX_STANDARD 17)
+else()
+    # C++11 for all other targets
+    set(CMAKE_CXX_STANDARD 11)
+endif()
+
+set(CMAKE_CXX_STANDARD_REQUIRED YES)
+set(CMAKE_CXX_EXTENSIONS NO)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
+
+# An empty target for the tools
+add_custom_target(tools)
+
+include(Endian)
+add_endian_definition()
+
+include(CompileFlags)
+compile_flags()
+
+if(APPLE OR UNIX)
+    add_definitions(-DUNIX)
+endif()
+
+if(UNIX)
+    find_package(Doxygen)
+endif()
+
+list(APPEND GENERATED_SOURCE_FILES "${CMAKE_BINARY_DIR}/generated/rev.cpp")
+if(WIN32)
+    list(APPEND GENERATED_SOURCE_FILES "${CMAKE_BINARY_DIR}/generated/ottdres.rc")
+endif()
+
+# Generate a target to determine version, which is execute every 'make' run
+add_custom_target(find_version
+        ${CMAKE_COMMAND}
+                -DFIND_VERSION_BINARY_DIR=${CMAKE_BINARY_DIR}/generated
+                -DCPACK_BINARY_DIR=${CMAKE_BINARY_DIR}
+                -P "${CMAKE_SOURCE_DIR}/cmake/scripts/FindVersion.cmake"
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        BYPRODUCTS ${GENERATED_SOURCE_FILES}
+)
+
+# Documentation
+if(DOXYGEN_EXECUTABLE)
+    add_custom_target(docs)
+    add_custom_target(docs_source
+        ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/docs
+        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Generating documentation for source"
+    )
+    add_dependencies(docs_source
+        find_version
+    )
+    add_dependencies(docs
+        docs_source
+    )
+endif()
+
+include(AddCustomXXXTimestamp)
+
+if(OPTION_TOOLS_ONLY)
+    if(HOST_BINARY_DIR)
+        unset(HOST_BINARY_DIR CACHE)
+    endif()
+    add_subdirectory(${CMAKE_SOURCE_DIR}/src)
+    return()
+endif()
+
 # Prefer -pthread over -lpthread, which is often the better option of the two.
 set(CMAKE_THREAD_PREFER_PTHREAD YES)
 # Make sure we have Threads available.
@@ -72,10 +144,6 @@ find_package(Xaudio2)
 
 find_package(Grfcodec)
 
-if(UNIX)
-    find_package(Doxygen)
-endif()
-
 # IPO is only properly supported from CMake 3.9. Despite the fact we are
 # CMake 3.5, still enable IPO if we detect we are 3.9+.
 if(POLICY CMP0069)
@@ -103,57 +171,7 @@ if(APPLE)
     endif()
 endif()
 
-if(MSVC)
-    # C++17 for MSVC
-    set(CMAKE_CXX_STANDARD 17)
-else()
-    # C++11 for all other targets
-    set(CMAKE_CXX_STANDARD 11)
-endif()
-
-set(CMAKE_CXX_STANDARD_REQUIRED YES)
-set(CMAKE_CXX_EXTENSIONS NO)
-
-set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
-
-list(APPEND GENERATED_SOURCE_FILES "${CMAKE_BINARY_DIR}/generated/rev.cpp")
-if(WIN32)
-    list(APPEND GENERATED_SOURCE_FILES "${CMAKE_BINARY_DIR}/generated/ottdres.rc")
-endif()
-
-# Generate a target to determine version, which is execute every 'make' run
-add_custom_target(find_version
-        ${CMAKE_COMMAND}
-                -DFIND_VERSION_BINARY_DIR=${CMAKE_BINARY_DIR}/generated
-                -DCPACK_BINARY_DIR=${CMAKE_BINARY_DIR}
-                -P "${CMAKE_SOURCE_DIR}/cmake/scripts/FindVersion.cmake"
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        BYPRODUCTS ${GENERATED_SOURCE_FILES}
-)
-
-# An empty target for the tools
-add_custom_target(tools)
-
-# Documentation
-if(DOXYGEN_EXECUTABLE)
-    add_custom_target(docs)
-    add_custom_target(docs_source
-        ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/docs
-        COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-        COMMENT "Generating documentation for source"
-    )
-    add_dependencies(docs_source
-        find_version
-    )
-    add_dependencies(docs
-        docs_source
-    )
-endif()
-
 include(SourceList)
-include(Endian)
-add_endian_definition()
 
 # Needed by rev.cpp
 include_directories(${CMAKE_SOURCE_DIR}/src)
@@ -162,14 +180,10 @@ include_directories(${CMAKE_SOURCE_DIR}/src/3rdparty/squirrel/include)
 
 include(MSVCFilters)
 
-include(CompileFlags)
-compile_flags()
-
 add_executable(openttd WIN32 ${GENERATED_SOURCE_FILES})
 set_target_properties(openttd PROPERTIES OUTPUT_NAME "${BINARY_NAME}")
 # All other files are added via target_sources()
 
-include(AddCustomXXXTimestamp)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src)
 add_subdirectory(${CMAKE_SOURCE_DIR}/media/baseset)
 
@@ -191,10 +205,6 @@ if(IPO_FOUND)
 endif()
 set_target_properties(openttd PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 process_compile_flags()
-
-if(APPLE OR UNIX)
-    add_definitions(-DUNIX)
-endif()
 
 include(LinkPackage)
 link_package(PNG TARGET PNG::PNG ENCOURAGED)

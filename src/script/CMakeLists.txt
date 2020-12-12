@@ -1,5 +1,9 @@
 add_subdirectory(api)
 
+if(OPTION_TOOLS_ONLY)
+    return()
+endif()
+
 add_files(
     script_config.cpp
     script_config.hpp
