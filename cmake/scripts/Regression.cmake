@@ -19,8 +19,8 @@ endif()
 # subsystem to console. The copy is needed as multiple regressions can run
 # at the same time.
 if(EDITBIN_EXECUTABLE)
-    execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${OPENTTD_EXECUTABLE} regression/${REGRESSION_TEST}.exe)
-    set(OPENTTD_EXECUTABLE "regression/${REGRESSION_TEST}.exe")
+    execute_process(COMMAND ${CMAKE_COMMAND} -E copy ${OPENTTD_EXECUTABLE} regression_${REGRESSION_TEST}.exe)
+    set(OPENTTD_EXECUTABLE "regression_${REGRESSION_TEST}.exe")
 
     execute_process(COMMAND ${EDITBIN_EXECUTABLE} /nologo /subsystem:console ${OPENTTD_EXECUTABLE})
 endif()
