@@ -487,6 +487,46 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 }
 
 /**
+ * Parses the first parameter found in a query string and moves query to the
+ * following parameter.
+ *  Format: fieldname0=value0&fieldname1=value1&...
+ *
+ * The fieldname and value variables will be set to the first fieldname and
+ * value substrings found in the query string. Query will point to the following
+ * parameter.
+ * @param query The query string
+ * @return fieldname The fieldname of the parameter
+ * @return value The value of the parameter
+ * @return query The query string updated to the next parameter
+ */
+bool ParseNextQueryParameter(const char **fieldname, const char **value, char **query)
+{
+	if (**query == '\0') return false;
+	*fieldname = *query;
+	for (; **query != '\0'; (*query)++) {
+		switch (**query) {
+			case '=':
+				**query = '\0';
+				*value = *query + 1;
+				break;
+			case '&':
+				**query = '\0';
+				(*query)++;
+				return true;
+			case '%':
+				unsigned int ascii_code;
+				if (strlen(*query) < 3 || sscanf(*query, "%%%2x", &ascii_code) != 1) {
+					fprintf(stderr, "Malformed query string\n");
+					return false;
+				}
+				**query = (char)ascii_code;
+				memmove(*query, *query + 3, strlen(*query) - 3);
+		}
+	}
+	return true;
+}
+
+/**
  * Handle the accepting of a connection to the server.
  * @param s The socket of the new connection.
  * @param address The address of the peer.

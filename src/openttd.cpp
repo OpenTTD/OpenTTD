@@ -394,6 +394,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	uint16 dedicated_port;             ///< Port for the dedicated server.
 	char *network_conn;                ///< Information about the server to connect to, or nullptr.
 	const char *join_server_password;  ///< The password to join the server with.
+	const char *join_company;          ///< The company to join.
 	const char *join_company_password; ///< The password to join the company with.
 	bool *save_config_ptr;             ///< The pointer to the save config setting.
 	bool save_config;                  ///< The save config setting.
@@ -406,8 +407,9 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	AfterNewGRFScan(bool *save_config_ptr) :
 			startyear(INVALID_YEAR), generation_seed(GENERATE_NEW_SEED),
 			dedicated_host(nullptr), dedicated_port(0), network_conn(nullptr),
-			join_server_password(nullptr), join_company_password(nullptr),
-			save_config_ptr(save_config_ptr), save_config(true)
+			join_server_password(nullptr), join_company(nullptr),
+			join_company_password(nullptr), save_config_ptr(save_config_ptr),
+			save_config(true)
 	{
 		/* Visual C++ 2015 fails compiling this line (AfterNewGRFScan::generation_seed undefined symbol)
 		 * if it's placed outside a member function, directly in the struct body. */
@@ -468,10 +470,18 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 
 			ParseConnectionString(&company, &port, network_conn);
 
-			if (company != nullptr) {
-				join_as = (CompanyID)atoi(company);
+			if (company == nullptr) company = join_company;
 
-				if (join_as != COMPANY_SPECTATOR) {
+			if (company != nullptr) {
+				if (strcmp(company, "") == 0) {
+					join_as = COMPANY_SPECTATOR;
+				} else if (strcmp(company, "new") == 0) {
+					join_as = COMPANY_NEW_COMPANY;
+				} else {
+					join_as = (CompanyID)atoi(company);
+				}
+
+				if (join_as != COMPANY_SPECTATOR && join_as != COMPANY_NEW_COMPANY) {
 					join_as--;
 					if (join_as >= MAX_COMPANIES) {
 						delete this;
@@ -509,6 +519,7 @@ static const OptionData _options[] = {
 	 GETOPT_SHORT_VALUE('l'),
 	 GETOPT_SHORT_VALUE('p'),
 	 GETOPT_SHORT_VALUE('P'),
+	 GETOPT_SHORT_VALUE('U'),
 #if !defined(_WIN32)
 	 GETOPT_SHORT_NOVAL('f'),
 #endif
@@ -600,6 +611,40 @@ int openttd_main(int argc, char *argv[])
 		case 'P':
 			scanner->join_company_password = mgo.opt;
 			break;
+		case 'U': {
+			char *p = mgo.opt;
+
+			const char *protocol = "openttd://";
+			if (strncmp(p, protocol, strlen(protocol)) != 0) {
+				fprintf(stderr, "Unknown protocol\n");
+				break;
+			}
+
+			p += strlen(protocol);
+
+			char *network_conn = p;
+			p = strchr(p, '?');
+			*p = '\0';
+			p++;
+			scanner->network_conn = network_conn;
+
+			const char *name = nullptr;
+			const char *value = nullptr;
+			while (ParseNextQueryParameter(&name, &value, &p)) {
+				if (strcmp(name, "password") == 0) {
+					scanner->join_server_password = value;
+				} else if (strcmp(name, "join") == 0) {
+					scanner->join_company = value;
+				} else if (strcmp(name, "companypassword") == 0) {
+					scanner->join_company_password = value;
+				} else if (strcmp(name, "version") == 0) {
+					/* Nothing for now */
+				} else {
+					fprintf(stderr, "Unknown parameter: %s\n", name);
+				}
+			}
+			break;
+		}
 		case 'r': ParseResolution(&resolution, mgo.opt); break;
 		case 't': scanner->startyear = atoi(mgo.opt); break;
 		case 'd': {
