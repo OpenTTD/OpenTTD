@@ -79,12 +79,14 @@ enum NIType {
 	NIT_CARGO, ///< The property is a cargo
 };
 
+typedef const void *NIOffsetProc(const void *b);
+
 /** Representation of the data from a NewGRF property. */
 struct NIProperty {
-	const char *name;       ///< A (human readable) name for the property
-	ptrdiff_t offset;       ///< Offset of the variable in the class
-	byte read_size;         ///< Number of bytes (i.e. byte, word, dword etc)
-	byte prop;              ///< The number of the property
+	const char *name;          ///< A (human readable) name for the property
+	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
+	byte read_size;            ///< Number of bytes (i.e. byte, word, dword etc)
+	byte prop;                 ///< The number of the property
 	byte type;
 };
 
@@ -94,11 +96,11 @@ struct NIProperty {
  * information on when they actually apply.
  */
 struct NICallback {
-	const char *name; ///< The human readable name of the callback
-	ptrdiff_t offset; ///< Offset of the variable in the class
-	byte read_size;   ///< The number of bytes (i.e. byte, word, dword etc) to read
-	byte cb_bit;      ///< The bit that needs to be set for this callback to be enabled
-	uint16 cb_id;     ///< The number of the callback
+	const char *name;          ///< The human readable name of the callback
+	NIOffsetProc *offset_proc; ///< Callback proc to get the actual variable address in memory
+	byte read_size;            ///< The number of bytes (i.e. byte, word, dword etc) to read
+	byte cb_bit;               ///< The bit that needs to be set for this callback to be enabled
+	uint16 cb_id;              ///< The number of the callback
 };
 /** Mask to show no bit needs to be enabled for the callback. */
 static const int CBM_NO_BIT = UINT8_MAX;
@@ -491,7 +493,7 @@ struct NewGRFInspectWindow : Window {
 		if (nif->properties != nullptr) {
 			this->DrawString(r, i++, "Properties:");
 			for (const NIProperty *nip = nif->properties; nip->name != nullptr; nip++) {
-				const void *ptr = (const byte *)base + nip->offset;
+				const void *ptr = nip->offset_proc(base);
 				uint value;
 				switch (nip->read_size) {
 					case 1: value = *(const uint8  *)ptr; break;
@@ -525,7 +527,7 @@ struct NewGRFInspectWindow : Window {
 			this->DrawString(r, i++, "Callbacks:");
 			for (const NICallback *nic = nif->callbacks; nic->name != nullptr; nic++) {
 				if (nic->cb_bit != CBM_NO_BIT) {
-					const void *ptr = (const byte *)base_spec + nic->offset;
+					const void *ptr = nic->offset_proc(base_spec);
 					uint value;
 					switch (nic->read_size) {
 						case 1: value = *(const uint8  *)ptr; break;

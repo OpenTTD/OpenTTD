@@ -392,18 +392,13 @@ static_assert(SIZE_MAX >= UINT32_MAX);
  */
 #define lastof(x) (&x[lengthof(x) - 1])
 
-#define cpp_offsetof(s, m)   (((size_t)&reinterpret_cast<const volatile char&>((((s*)(char*)8)->m))) - 8)
-#if !defined(offsetof)
-#	define offsetof(s, m) cpp_offsetof(s, m)
-#endif /* offsetof */
-
 /**
  * Gets the size of a variable within a class.
  * @param base     The class the variable is in.
  * @param variable The variable to get the size of.
  * @return the size of the variable
  */
-#define cpp_sizeof(base, variable) (sizeof(((base*)8)->variable))
+#define cpp_sizeof(base, variable) (sizeof(std::declval<base>().variable))
 
 /**
  * Gets the length of an array variable within a class.
