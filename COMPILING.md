@@ -83,9 +83,9 @@ make
 
 ## Supported compilers
 
-Every compiler that is supported by CMake and supports C++11, should be
+Every compiler that is supported by CMake and supports C++17, should be
 able to compile OpenTTD. As the exact list of compilers changes constantly,
-we refer to the compiler manual to see if it supports C++11, and to CMake
+we refer to the compiler manual to see if it supports C++17, and to CMake
 to see if it supports your compiler.
 
 ## Compilation of base sets
