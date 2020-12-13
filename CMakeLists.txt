@@ -32,14 +32,7 @@ set_directory_options()
 include(Static)
 set_static_if_needed()
 
-if(MSVC)
-    # C++17 for MSVC
-    set(CMAKE_CXX_STANDARD 17)
-else()
-    # C++11 for all other targets
-    set(CMAKE_CXX_STANDARD 11)
-endif()
-
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
 
