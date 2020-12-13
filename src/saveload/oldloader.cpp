@@ -108,8 +108,6 @@ byte ReadByte(LoadgameState *ls)
  */
 bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 {
-	byte *base_ptr = (byte*)base;
-
 	for (const OldChunks *chunk = chunks; chunk->type != OC_END; chunk++) {
 		if (((chunk->type & OC_TTD) && _savegame_type == SGT_TTO) ||
 				((chunk->type & OC_TTO) && _savegame_type != SGT_TTO)) {
@@ -134,8 +132,8 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 						break;
 
 					case OC_ASSERT:
-						DEBUG(oldloader, 4, "Assert point: 0x%X / 0x%X", ls->total_read, chunk->offset + _bump_assert_value);
-						if (ls->total_read != chunk->offset + _bump_assert_value) throw std::exception();
+						DEBUG(oldloader, 4, "Assert point: 0x%X / 0x%X", ls->total_read, (uint)(size_t)chunk->ptr + _bump_assert_value);
+						if (ls->total_read != (size_t)chunk->ptr + _bump_assert_value) throw std::exception();
 					default: break;
 				}
 			} else {
@@ -153,10 +151,10 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 				}
 
 				/* When both pointers are nullptr, we are just skipping data */
-				if (base_ptr == nullptr && chunk->ptr == nullptr) continue;
+				if (base == nullptr && chunk->ptr == nullptr) continue;
 
-				/* Writing to the var: bits 8 to 15 have the VAR type */
-				if (chunk->ptr == nullptr) ptr = base_ptr + chunk->offset;
+				/* Chunk refers to a struct member, get address in base. */
+				if (chunk->ptr == nullptr) ptr = (byte *)chunk->offset(base);
 
 				/* Write the data */
 				switch (GetOldChunkVarType(chunk->type)) {
