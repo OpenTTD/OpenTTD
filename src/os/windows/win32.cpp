@@ -451,6 +451,7 @@ char *getcwd(char *buf, size_t size)
 	return buf;
 }
 
+extern char *_config_file;
 
 void DetermineBasePaths(const char *exe)
 {
@@ -481,10 +482,25 @@ void DetermineBasePaths(const char *exe)
 	_searchpaths[SP_SHARED_DIR]   = nullptr;
 #endif
 
-	/* Get the path to working directory of OpenTTD */
-	getcwd(tmp, lengthof(tmp));
-	AppendPathSeparator(tmp, lastof(tmp));
-	_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+	if (_config_file == nullptr) {
+		/* Get the path to working directory of OpenTTD. */
+		getcwd(tmp, lengthof(tmp));
+		AppendPathSeparator(tmp, lastof(tmp));
+		_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+	} else {
+		/* Use the folder of the config file as working directory. */
+		TCHAR config_dir[MAX_PATH];
+		_tcsncpy(path, convert_to_fs(_config_file, path, lengthof(path)), lengthof(path));
+		if (!GetFullPathName(path, lengthof(config_dir), config_dir, nullptr)) {
+			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
+			_searchpaths[SP_WORKING_DIR] = nullptr;
+		} else {
+			strecpy(tmp, convert_from_fs(config_dir, tmp, lengthof(tmp)), lastof(tmp));
+			char *s = strrchr(tmp, PATHSEPCHAR);
+			*(s + 1) = '\0';
+			_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+		}
+	}
 
 	if (!GetModuleFileName(nullptr, path, lengthof(path))) {
 		DEBUG(misc, 0, "GetModuleFileName failed (%lu)\n", GetLastError());

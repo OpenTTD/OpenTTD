@@ -1116,11 +1116,32 @@ void DetermineBasePaths(const char *exe)
 	_searchpaths[SP_SHARED_DIR] = nullptr;
 #endif
 
-	if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
-	AppendPathSeparator(tmp, lastof(tmp));
-	_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+	char cwd[MAX_PATH];
+	if (getcwd(cwd, MAX_PATH) == nullptr) *cwd = '\0';
 
-	_do_scan_working_directory = DoScanWorkingDirectory();
+	if (_config_file == nullptr) {
+		/* Get the path to working directory of OpenTTD. */
+		if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
+		AppendPathSeparator(tmp, lastof(tmp));
+		_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+
+		_do_scan_working_directory = DoScanWorkingDirectory();
+	} else {
+		/* Use the folder of the config file as working directory. */
+		char *config_dir = stredup(_config_file);
+		char *end = strrchr(config_dir, PATHSEPCHAR);
+		if (end == nullptr) {
+			free(config_dir);
+
+			/* _config_file is not in a folder, so use current directory. */
+			if (getcwd(tmp, MAX_PATH) == nullptr) *tmp = '\0';
+			AppendPathSeparator(tmp, lastof(tmp));
+			_searchpaths[SP_WORKING_DIR] = stredup(tmp);
+		} else {
+			end[1] = '\0';
+			_searchpaths[SP_WORKING_DIR] = config_dir;
+		}
+	}
 
 	/* Change the working directory to that one of the executable */
 	if (ChangeWorkingDirectoryToExecutable(exe)) {
@@ -1131,9 +1152,9 @@ void DetermineBasePaths(const char *exe)
 		_searchpaths[SP_BINARY_DIR] = nullptr;
 	}
 
-	if (_searchpaths[SP_WORKING_DIR] != nullptr) {
+	if (cwd[0] != '\0') {
 		/* Go back to the current working directory. */
-		if (chdir(_searchpaths[SP_WORKING_DIR]) != 0) {
+		if (chdir(cwd) != 0) {
 			DEBUG(misc, 0, "Failed to return to working directory!");
 		}
 	}
@@ -1183,24 +1204,9 @@ void DeterminePaths(const char *exe)
 		DEBUG(misc, 4, "%s added as search path", _searchpaths[sp]);
 	}
 
-	char *config_dir;
+	const char *config_dir;
 	if (_config_file != nullptr) {
-		config_dir = stredup(_config_file);
-		char *end = strrchr(config_dir, PATHSEPCHAR);
-		if (end == nullptr) {
-			config_dir[0] = '\0';
-		} else {
-			end[1] = '\0';
-		}
-
-		/* When using '-c', which sets _config_file, change the first search
-		 * path to the folder the configuration file is in. This folder is
-		 * also prepared to store autosaves and content you download. This
-		 * means that by using '-c', you create an sandboxed OpenTTD
-		 * installation as far as writing goes. For reading it still uses the
-		 * other search paths to find files, except for content_download.
-		 * Anything else in your personal-dir will be used if possible. */
-		_searchpaths[SP_WORKING_DIR] = config_dir;
+		config_dir = _searchpaths[SP_WORKING_DIR];
 	} else {
 		char personal_dir[MAX_PATH];
 		if (FioFindFullPath(personal_dir, lastof(personal_dir), BASE_DIR, "openttd.cfg") != nullptr) {
