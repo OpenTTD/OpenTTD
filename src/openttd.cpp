@@ -84,7 +84,8 @@ bool HandleBootstrap();
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY);
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern char *_config_file;
-extern bool _save_config = false;
+
+bool _save_config = false;
 
 /**
  * Error handling for fatal user errors.
