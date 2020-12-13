@@ -82,13 +82,14 @@ enum OldChunkType {
 DECLARE_ENUM_AS_BIT_SET(OldChunkType)
 
 typedef bool OldChunkProc(LoadgameState *ls, int num);
+typedef void *OffsetProc(void *base);
 
 struct OldChunks {
 	OldChunkType type;   ///< Type of field
 	uint32 amount;       ///< Amount of fields
 
-	void *ptr;           ///< Pointer where to save the data (may only be set if offset is 0)
-	uint offset;         ///< Offset from basepointer (may only be set if ptr is nullptr)
+	void *ptr;           ///< Pointer where to save the data (takes precedence over #offset)
+	OffsetProc *offset;  ///< Pointer to function that returns the actual memory address of a member (ignored if #ptr is not nullptr)
 	OldChunkProc *proc;  ///< Pointer to function that is called with OC_CHUNK
 };
 
@@ -123,12 +124,12 @@ static inline uint32 ReadUint32(LoadgameState *ls)
  *  - OCL_CHUNK: load another proc to load a part of the savegame, 'amount' times
  *  - OCL_ASSERT: to check if we are really at the place we expect to be.. because old savegames are too binary to be sure ;)
  */
-#define OCL_SVAR(type, base, offset)         { type,                 1, nullptr, (uint)cpp_offsetof(base, offset), nullptr }
-#define OCL_VAR(type, amount, pointer)       { type,            amount, pointer,    0,                             nullptr }
-#define OCL_END()                            { OC_END,               0, nullptr,    0,                             nullptr }
-#define OCL_CNULL(type, amount)              { OC_NULL | type,  amount, nullptr,    0,                             nullptr }
-#define OCL_CCHUNK(type, amount, proc)       { OC_CHUNK | type, amount, nullptr,    0,                             proc }
-#define OCL_ASSERT(type, size)               { OC_ASSERT | type,     1, nullptr, size,                             nullptr }
+#define OCL_SVAR(type, base, offset)         { type,                 1, nullptr, [] (void *b) -> void * { return std::addressof(static_cast<base *>(b)->offset); }, nullptr }
+#define OCL_VAR(type, amount, pointer)       { type,            amount, pointer, nullptr, nullptr }
+#define OCL_END()                            { OC_END,               0, nullptr, nullptr, nullptr }
+#define OCL_CNULL(type, amount)              { OC_NULL | type,  amount, nullptr, nullptr, nullptr }
+#define OCL_CCHUNK(type, amount, proc)       { OC_CHUNK | type, amount, nullptr, nullptr, proc }
+#define OCL_ASSERT(type, size)               { OC_ASSERT | type,     1, (void *)(size_t)size, nullptr, nullptr }
 #define OCL_NULL(amount)        OCL_CNULL((OldChunkType)0, amount)
 #define OCL_CHUNK(amount, proc) OCL_CCHUNK((OldChunkType)0, amount, proc)
 
