@@ -359,7 +359,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	}
 
 	/* Check for the byte-order-mark, and skip it if needed. */
-	char *p = this->text + (strncmp("\xEF\xBB\xBF", this->text, 3) == 0 ? 3 : 0);
+	char *p = this->text + (strncmp(u8"\ufeff", this->text, 3) == 0 ? 3 : 0);
 
 	/* Make sure the string is a valid UTF-8 sequence. */
 	str_validate(p, this->text + filesize, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
