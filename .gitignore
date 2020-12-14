@@ -1,5 +1,5 @@
 /.vs
-/build
+/build*
 CMakeSettings.json
 docs/aidocs/*
 docs/gamedocs/*
