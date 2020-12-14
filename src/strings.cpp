@@ -665,6 +665,7 @@ struct UnitConversion {
 struct Units {
 	UnitConversion c; ///< Conversion
 	StringID s;       ///< String for the unit
+	unsigned int decimal_places; ///< Number of decimal places embedded in the value. For example, 1 if the value is in tenths, and 3 if the value is in thousandths.
 };
 
 /** Information about a specific unit system with a long variant. */
@@ -676,16 +677,17 @@ struct UnitsLong {
 
 /** Unit conversions for velocity. */
 static const Units _units_velocity[] = {
-	{ {   1,  0}, STR_UNITS_VELOCITY_IMPERIAL },
-	{ { 103,  6}, STR_UNITS_VELOCITY_METRIC   },
-	{ {1831, 12}, STR_UNITS_VELOCITY_SI       },
+	{ {    1,  0}, STR_UNITS_VELOCITY_IMPERIAL,     0 },
+	{ {  103,  6}, STR_UNITS_VELOCITY_METRIC,       0 },
+	{ { 1831, 12}, STR_UNITS_VELOCITY_SI,           0 },
+	{ {37888, 16}, STR_UNITS_VELOCITY_GAMEUNITS,    1 },
 };
 
 /** Unit conversions for velocity. */
 static const Units _units_power[] = {
-	{ {   1,  0}, STR_UNITS_POWER_IMPERIAL },
-	{ {4153, 12}, STR_UNITS_POWER_METRIC   },
-	{ {6109, 13}, STR_UNITS_POWER_SI       },
+	{ {   1,  0}, STR_UNITS_POWER_IMPERIAL, 0 },
+	{ {4153, 12}, STR_UNITS_POWER_METRIC,   0 },
+	{ {6109, 13}, STR_UNITS_POWER_SI,       0 },
 };
 
 /** Unit conversions for weight. */
@@ -704,16 +706,16 @@ static const UnitsLong _units_volume[] = {
 
 /** Unit conversions for force. */
 static const Units _units_force[] = {
-	{ {3597,  4}, STR_UNITS_FORCE_IMPERIAL },
-	{ {3263,  5}, STR_UNITS_FORCE_METRIC   },
-	{ {   1,  0}, STR_UNITS_FORCE_SI       },
+	{ {3597,  4}, STR_UNITS_FORCE_IMPERIAL, 0 },
+	{ {3263,  5}, STR_UNITS_FORCE_METRIC,   0 },
+	{ {   1,  0}, STR_UNITS_FORCE_SI,       0 },
 };
 
 /** Unit conversions for height. */
 static const Units _units_height[] = {
-	{ {   3,  0}, STR_UNITS_HEIGHT_IMPERIAL }, // "Wrong" conversion factor for more nicer GUI values
-	{ {   1,  0}, STR_UNITS_HEIGHT_METRIC   },
-	{ {   1,  0}, STR_UNITS_HEIGHT_SI       },
+	{ {   3,  0}, STR_UNITS_HEIGHT_IMPERIAL, 0 }, // "Wrong" conversion factor for more nicer GUI values
+	{ {   1,  0}, STR_UNITS_HEIGHT_METRIC,   0 },
+	{ {   1,  0}, STR_UNITS_HEIGHT_SI,       0 },
 };
 
 /**
@@ -1228,8 +1230,9 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_VELOCITY: { // {VELOCITY}
 				assert(_settings_game.locale.units_velocity < lengthof(_units_velocity));
-				int64 args_array[] = {ConvertKmhishSpeedToDisplaySpeed(args->GetInt64(SCC_VELOCITY))};
-				StringParameters tmp_params(args_array);
+				unsigned int decimal_places = _units_velocity[_settings_game.locale.units_velocity].decimal_places;
+				uint64 args_array[] = {ConvertKmhishSpeedToDisplaySpeed(args->GetInt64(SCC_VELOCITY)), decimal_places};
+				StringParameters tmp_params(args_array, decimal_places ? 2 : 1, nullptr);
 				buff = FormatString(buff, GetStringPtr(_units_velocity[_settings_game.locale.units_velocity].s), &tmp_params, last);
 				break;
 			}
