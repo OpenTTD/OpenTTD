@@ -15,10 +15,10 @@
 #include <string>
 
 /** A non-breaking space. */
-#define NBSP "\xC2\xA0"
+#define NBSP u8"\u00a0"
 
 /** A left-to-right marker, marks the next character as left-to-right. */
-#define LRM "\xE2\x80\x8E"
+#define LRM u8"\u200e"
 
 /**
  * Valid filter types for IsValidChar.
