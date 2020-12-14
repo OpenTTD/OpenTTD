@@ -55,15 +55,15 @@ bool BaseSet<T, Tnum_files, Tsearch_in_tars>::FillSetDetails(IniFile *ini, const
 	}
 
 	fetch_metadata("shortname");
-	for (uint i = 0; item->value.value()[i] != '\0' && i < 4; i++) {
-		this->shortname |= ((uint8)item->value.value()[i]) << (i * 8);
+	for (uint i = 0; (*item->value)[i] != '\0' && i < 4; i++) {
+		this->shortname |= ((uint8)(*item->value)[i]) << (i * 8);
 	}
 
 	fetch_metadata("version");
 	this->version = atoi(item->value->c_str());
 
 	item = metadata->GetItem("fallback", false);
-	this->fallback = (item != nullptr && item->value && item->value.value() != "0" && item->value.value() != "false");
+	this->fallback = (item != nullptr && item->value && *item->value != "0" && *item->value != "false");
 
 	/* For each of the file types we want to find the file, MD5 checksums and warning messages. */
 	IniGroup *files  = ini->GetGroup("files");
