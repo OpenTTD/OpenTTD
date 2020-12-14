@@ -1512,8 +1512,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Llawn
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Bydd newyddion lliw yn ymddangos yn: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Y blwyddyn y caiff cyhoeddiadau newyddion eu hargraffu mewn lliw. Cyn y dyddiad yma rhai du a gwyn fyddent
 STR_CONFIG_SETTING_STARTING_YEAR                                :Blwyddyn dechreuol: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Galluogi economi llyfn (mwy o newidiadau llai): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Pan fe wedi'i alluogi, mae gweithgynhyrchiant diwydiant yn newid yn fwy aml, ac mewn cammau llai. Ni fydd y gosodiad yma yn cael effaith os y defnyddir diwydiannau NewGRF, fel rheol
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Caniatáu prynu cyfranddaliadau mewn cwmnïau eraill: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Pan fo wedi'i alluogi, fe ganiateir prynnu a gwerthu cyfrandalaidau cwmni. Rhaid i gwmni gyrraedd oed penodol cyn y daw eu cyfrandaliadau ar gael
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Canran elw y cymal i'w dalu mewn systemau trosglwyddo: {STRING}

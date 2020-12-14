@@ -1554,8 +1554,7 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Année de fin d
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :À la fin de cette année, le score de la compagnie est enregistré et la fenêtre des meilleurs scores est affichée. Il est quand même possible de continuer de jouer après, mais le score ne sera pas enregistré.{}Si le jeu commence après cette année, les meilleurs scores ne sont jamais affichés.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Jamais
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Permettre une économie stable (petits changements plus nombreux){NBSP}: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Lorsqu'il est activé, la production des industries change plus souvent, et plus faiblement. Ce paramètre est généralement sans effets si les types d'industries sont fournis par un NewGRF
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Type d'économie{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permettre d'acheter des actions d'autres compagnies{NBSP}: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Lorsqu'il est activé, l'achat et la vente des parts de compagnie sont autorisées. Les parts ne seront disponibles que pour les compagnies ayant atteint un certain âge
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Âge minimum de la compagnie pour la vente d'actions{NBSP}: {STRING}

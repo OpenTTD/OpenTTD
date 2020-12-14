@@ -1553,8 +1553,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Penilaian akhir
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Tahun pertandingan berakhir untuk tujuan mencetak gol. Pada akhir tahun ini, skor perusahaan dicatat dan layar skor tertinggi ditampilkan, tetapi para pemain dapat terus bermain setelah itu.{} Jika ini sebelum tahun mulai, layar skor tinggi tidak pernah ditampilkan.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Tidak pernah
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktifkan pertumbuhan ekonomi yang stabil (jarang berubah): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ketika diaktifkan, produksi industri mengalami perubahan lebih sering, dalam gerakan kecil. Pengaturan tidak berpengaruh jika jenis industri disediakan oleh NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ijinkan pembelian saham perusahaan lain: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Jika diaktifkan, pemain dibolehkan membeli saham suatu perusahaan. Saham hanya bisa dibeli saat perusahaan memasuki umur tertentu
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Usia minimum perusahaan untuk memperdagangkan saham: {STRING}

@@ -1553,8 +1553,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Năm kết thú
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Năm mà ván chơi sẽ kết thúc và tính điểm. Khi năm đó kết thúc, điểm số của công ty sẽ được lưu lại và hiển thị bảng điểm chơi cao nhất, sau đó người chơi vẫn có thể tiếp tục ván chơi.{} Nếu năm được đặt nhỏ hơn năm bắt đầu, bảng điểm chơi cao nhất sẽ không bao giờ được hiển thị.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Không bao giờ
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Nền kinh tế ít biến động: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Nếu bật, sản lượng của nhà máy sẽ thay đổi thường xuyên hơn, và thay đổi với mức độ nhỏ hơn. Thiết lập này sẽ không có tác dụng nếu kiểu nhà máy định nghĩa bởi NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Cho phép mua cổ phần của các công ty khác: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Nếu bật, cho phép mua và bán cổ phần công ty. Cổ phần chỉ có thể mua bán nếu công ty đã tồn tại một thời gian nhất định nào đó
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Tuổi công ty tối thiểu để bán cổ phần: {STRING}

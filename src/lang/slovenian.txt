@@ -1661,8 +1661,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Polno
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Barvni časopis se pojavi leta: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Leto začetka barvnega časopisa. Pred tem je črno-bel.
 STR_CONFIG_SETTING_STARTING_YEAR                                :Začetno leto: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Omogoči gladko ekonomijo (več manjših sprememb): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Če je omogočeno, se proizvodnja industrij večkrat spreminja in v manjših razlikah. Nima vpliva na industrije NewGRF.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dovoli kupovanje delnic od drugih podjetij: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Če je omogočeno, se lahko trguje z delnicami podjetij. Na voljo samo po določeni starosti podjetja.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procent osnovnega dobička za plačilo v sklade: {STRING}

@@ -1541,8 +1541,6 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Jahr in dem die
 STR_CONFIG_SETTING_STARTING_YEAR                                :Startdatum: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nie
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Feinere Wirtschaft aktivieren (mehrere, kleinere Veränderungen): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Wird diese Option ausgewählt, ändert sich die Produktionsmenge der Industrien häufiger, aber dafür in kleineren Schritten. Diese Einstellung hat gewöhnlicherweise KEINEN Effekt, wenn die Industrien von NewGRFs bereitgestellt werden
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Handel mit Firmenanteilen erlauben: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Erlaube das Kaufen und Verkaufen von Firmenanteilen. Firmenanteile sind nur verfügbar für Firmen, die hinreichend lange existieren
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimales Alter einer Firma, um an der Börse gehandelt zu werden: {STRING}

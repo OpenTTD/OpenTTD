@@ -1452,8 +1452,6 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Kolorezko albis
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Egunkarien mezuak kolorean imprimatuko diren urtea. Urte hau baino lehenago txuri/beltz monokromoa erabiliko da
 STR_CONFIG_SETTING_STARTING_YEAR                                :Hasierako urtea: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gaitu ekonomia leuna (aldaketa gehiago baina txikiagoak): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Gaitua dagoenean, industrien ekoizpena gehiagotan aldatuko da baina urrats txikiagotan. Aukera honek gehienetan ez du eraginik izango industriak NewGRF batek ezartzen baditu
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Beste konpainien akzioak erostea baimendu: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Gaitua dagoenean, konpainiaren akzioak erostea eta saltzea baimendu. Konpainiak akzioak izateko gutxiengo adin batera iritsi beharko dira
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Elikadura sistemetan ordaindu beharreko irabazien ehunekoa: {STRING}

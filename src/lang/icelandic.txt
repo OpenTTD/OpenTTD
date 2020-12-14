@@ -1440,8 +1440,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Allt
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Fréttir byrja að birtast í lit árið: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Árið sem tilkynningar í dagblöðuðum byrja að vera í lit. Fram að þessum tíma eru blöð í svart/hvítu
 STR_CONFIG_SETTING_STARTING_YEAR                                :Upphafsár: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Virkja jafnan efnahag (fleiri og minni breytingar): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ef þessi stilling er virk breytist framleiðsla í iðnaði oftar og í smærri skrefum. Þessi stilling hefur yfirleitt engin áhrif ef tegund iðnaðar er ákveðinn með NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leyfa hlutabréfakaup í öðrum fyrirtækjum: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ef þessi stilling er virk er hægt að kaupa og selja hlutabréf í fyrirtækjum. Hlutabréf eru aðeins aðgengileg fyrir fyrirtæki sem hafa náð ákveðnum aldri
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Hlutfall hagnaðar sem greiðist til tengiþjónustu: {STRING}

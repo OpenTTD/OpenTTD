@@ -1574,8 +1574,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täielik
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Värvilised uudised ilmuvad aastast {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Värviliste uudiste ilmumise algusaasta. Varasematel aastatel ilmuvad uudised must-valgelt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Alustamise aeg: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Sujuv majandus (rohkem, kuid väikesed muutused): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Toodangumahtude muutused on väiksemad ja sagedasemad. Juhul kui tööstused tulevad NewGRF-ist ei oma see seade tavaliselt mõju
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Aktsiatehingud teiste ettevõtetega: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kui on aktiveeritud siis on ettevõtte aktsiate ostmine ja müümine lubatud. Aktsiad on saadaval ainult ettevõtetel mille vanus on üle teatud piiri
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Protsent tuludest mis läheb 'kanna edasi' süsteemis alumistesse lülidesse: {STRING}

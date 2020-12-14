@@ -1933,8 +1933,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Punktacja na ko
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Rok, w którym gra się kończy na cel punktacji. Na koniec tego roku, punkty firmy są zarejestrowane i ekran wyników najwyższych jest pokazywany, ale gracze mogą po tym dalej grać.{}Jeżeli jest to przed rokiem startowym, ekran wyników najwyższych nie jest nigdy pokazywany.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nigdy
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Pozwól na łagodną ekonomię (więcej małych zmian): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kiedy włączone, produkcja zakładów zmienia się częściej, ale mniejszymi krokami. To ustawienie zazwyczaj nie daje żadnego efektu, jeśli typy zakładów są pobierane z NewGRFów
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Pozwól kupować udziały w innych firmach: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kiedy włączone, pozwala na kupowanie i sprzedawanie udziałów w firmie. Udziały będą dostępne tylko dla firm z odpowiednim stażem
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimalny wiek firmy pozwalający na handel udziałami: {STRING}

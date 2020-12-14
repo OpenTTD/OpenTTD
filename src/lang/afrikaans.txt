@@ -1545,8 +1545,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Telling jaarein
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Die jaar wat die speletjie eindig vir telling doeleindes. Aan die einde van hierdie jaar word die maatskappy se telling aangeteken en die skerm met 'n hoogste telling word vertoon, maar die spelers kan daarna speel.{} As dit voor die beginjaar is, word die skerm met 'n hoogste telling nooit vertoon nie.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nooit
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktiveer geleike ekonomie (meer, kleiner veranderings): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :As dit geaktiveer is sal nywerheidsvervaarding meer gereeld verander met kleiner veranderinge elke keer. Hierdie stelling het gewoonlik geen effek met nywerhede van NewGRFs nie.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Laat die koop van aandeele van ander maatskappye toe: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :As dit geaktiveer is, kan aandele in maatskappye gekoop en verkoop word. Aandele is net in maatskappye beskikbaar na 'n sekere aantal jaar.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimum maatskappyouderdom om aandele te verhandel: {STRING}

@@ -1553,8 +1553,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Slutår for poi
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årstal hvor spillet slutter pointoptælling. Ved slutningen af dette år bliver selskabets point optaget, og topresultater-skærmen bliver vist. Spillerne kan fortsætte med at spille efter dette.{}Hvis dette er før spillets start år, bliver topresultater-skærmen aldrig vist.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktiver rolig økonomi (flere små ændringer): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Når slået til, ændre industriproduktion oftere, og i små trin. Denne indstilling har normalt ingen effekt, hvis industrityper er fastsat af NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillad at købe aktier i andre selskaber: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Hvis aktiveret, tillades køb og salg af selskabsaktier. Aktier vil kun være tilgængelige for selskaber der er nået en hvis alder
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Mindste selskabsalder for aktiehandel: {STRING}

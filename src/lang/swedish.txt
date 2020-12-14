@@ -1553,8 +1553,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Slutår för po
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årtal då spelet slutar räkna poäng. Vid slutet av detta år sparas företagets poäng och listan med de bästa spelresultaten visas, men därefter kan spelarna fortsätta att spela.{}Om årtalet är satt till innan startåret visas aldrig de bästa spelresultaten.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Lugn ekonomi (flera små ändringar): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :När det är aktiverat ändras industriproduktionen oftare och i mindre steg. Den här inställningen har vanligtvis ingen effekt om de olika industrityperna kommer från en NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillåt köp av aktier från andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :När det är aktiverat blir det tillåtet att köpa och sälja andelar i företag. För att dess andelar ska bli tillgängliga måste ett företag ha uppnått en viss ålder
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Lägsta företagsålder för aktiehandel: {STRING}

@@ -1531,8 +1531,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :מלא
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :{STRING} :הצג חדשות צבעוניות החל משנת
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :השנה בה הודעות העיתונות מודפסות בצבע. לפני שנה זו הן מודפסות בשחור-לבן.
 STR_CONFIG_SETTING_STARTING_YEAR                                :{STRING} :שנת התחלה
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :אפשר כלכלה עדינה (יותר, שינויים קטנים יותר): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :כאשר מאופשר, הייצור של תעשיה משתנה לעיתים קרובות יותר, ובצעדים קטנים יותר. להגדרה זו בדרך כלל אין שום השפעה אם סוגי תעשיות מסופקים ע"י NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :אפשר קניית מניות מחברות אחרות: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :כאשר מאופשר, מתיר קנייה ומכירה של מניות של חברות. מניות יהיו זמינות רק עבור חברות המגיעות לגיל מסוים
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :אחוז הרווח מקטע נסיעה לתשלום במערכות הזנה: {STRING}

@@ -1721,8 +1721,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pilnas
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Spalvotos naujienos atsiranda: {STRING} metais
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Metai, kai laikraščių antraštės tampa spalvotos. Iki tol jos būna monochominės
 STR_CONFIG_SETTING_STARTING_YEAR                                :Žaidimo pradžia: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Tolygi ekonomika (daug, bet nežymių pokyčių): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Įgalinus nuostatą pramonės įmonių gamybos pajėgumai kis dažniau ir mažesniais žingsniais. Ši nuostata greičiausiai neturės jokios įtakos, jei pramonės įmonė yra aprašyta papildomame plėtinyjeipai yra numatyti NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leisti pirkti kitų kompanijų akcijas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Leisti pirkti bei parduoti kitų kompanijų akcijas. Akcijos yra platinamos tik įmonei sulaukus tam tikro amžiaus
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Grynojo pelno dalis, mokama tiekėjų sistemoms: {STRING}

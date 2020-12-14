@@ -1297,7 +1297,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plene
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Koloraj novaĵoj aperas en: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Komenca jaro: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktivigu glatan ekonomion (pliaj, etaj ŝanĝoj): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permesu aĉetadon de dividaĵoj en aliaj kompanioj: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Aŭtomate konstruu semaforojn antaŭ: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ebligu la signal-GUI-on: {STRING}

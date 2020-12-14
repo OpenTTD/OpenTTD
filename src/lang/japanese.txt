@@ -1506,8 +1506,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :新聞
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :カラー新聞の開始年: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :新聞がカラー版になる境目の年を設定します
 STR_CONFIG_SETTING_STARTING_YEAR                                :開始年: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :緩やかな経済変動: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :有効にすると、一次産業での生産量はより小幅な変動がより頻繁に起こるようになります。この設定はNewGRFで提供されるような、デフォルト以外の産業に対してはほとんど効果がありません
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :他社株の取引許容: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :有効にすると、ライバル会社の株式を取引できるようになります。この設定を有効にしても、目的の社が設立から丸5年経過していない場合は取引できません
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :区間払いの割合: {STRING}

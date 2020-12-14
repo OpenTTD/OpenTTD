@@ -1621,8 +1621,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Rok ukončenia 
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Rok v ktorom končí hra pre zaznamenanie skóre. Na konci tohto roku sa nahrá skóre spoločnosti a zobrazí sa tabuľka s najvyšším skóre, avšak hráči môžu v hre naďalej pokračovať.{}Ak je tento rok pred začiatkom hry, tabuľka sa nikdy nezobrazí.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nikdy
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Povoliť zmeny ekonomiky (viac menších zmien): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ak je zapnuté, zmeny v produkcii sa budú diať častejšie v malých krokoch.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Povoliť kupovanie podielov v ostatných spoločnostiach: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ak je zapnuté, povolí sa nákup a predaj podielov spoločností. Podiely budú prístupné len pre spoločnosti od urcitého veku.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimálny vek spoločnosti na obchodovanie s podielmi: {STRING}

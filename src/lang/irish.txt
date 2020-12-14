@@ -1506,8 +1506,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Iomlán
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Bíonn nuacht daite ann don chéad uair in: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :An bhliain a thosaítear ar fhógraí nuachtáin daite a chlóbhualadh. Roimh an bhliain sin, úsáidtear dubh/bán monacrómach
 STR_CONFIG_SETTING_STARTING_YEAR                                :Bliain tosaigh: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Cumasaigh geilleagar níos míne (tuilleadh athruithe, agus iad níos lú): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Má dhéantar é a chumasú, athraíonn táirgeadh na dtionscal níos minice, agus i gcéimeanna níos lú. Is iondúil nach mbíonn aon tionchar ag an socrú seo má chuirtear na cineálacha tioinscail ar fáil in NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaigh scaireanna a cheannach ó chuideachtaí eile: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Má tá sé cumasaithe, tá cead scaireanna i gcuideachta a cheannach agus a dhíol. Ní bheidh scaireanna ar fáil ach do chuideachtaí a bhfuil aois áirithe bainte amach acu
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :An céatadán den bhrabús a íocfar ar chuid den turas i gcórais fhriothálacha: {STRING}

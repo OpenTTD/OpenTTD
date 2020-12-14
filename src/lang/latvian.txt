@@ -1555,8 +1555,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Vērtēšanas b
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Spēles beigas gads (tiek izmantots rezultāta noteikšanai). Šī gada beigās uzņēmuma rezultāti tiek ierakstīti un uz ekrāna tiek parādīti labākie rezultāti, bet spēlētāji var turpināt spēlēt arī pēc šī datuma.{}Ja tas ir norādīts pirms spēles sākuma datuma, labākie rezultāti nekad netiek parādīti.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nekad
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Atļaut vienmērīgas izmaiņas ekonomikā: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ja ieslēgts, ražošanas izmaiņas notiek biežāk un ar mazākiem soļiem. Šim iestatījumam parasti nav ietekmes, ja ražotņu veidi ir ieviesti ar NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ja iespējots, ir atļauts pirkt un pārdodot uzņēmumu akcijas. Akcijas būs pieejamas tikai atbilstošu vecumu sasniegušiem uzņēmumiem
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimālais uzņēmuma vecums, lai tirgotos ar akcijām: {STRING}

@@ -1649,8 +1649,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Godina kraja bo
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Godina koje igra završava u smislu bodovanja. Na kraju ove godine, bilježe se bodovi kompanije i prikazuje se tablica najviših bodova ali igrači mogu nastaviti igru.{}Ako je ovo prije početne godine, tablica najviših bodova se nikada neće prikazati.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nikada
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Uključi stabilno gospodarstvo (više manjih izazova): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Kada je uključeno, promjene u industrijskoj proizvodnji su češće ali u manjim rasponima. Ova postavka obično nema efekta ukoliko su industrije postavljene iz nekog NewGRF-a
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dopusti kupovanje udjela u drugim tvrtkama: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kada je uključeno, dopušta se kupnja i prodaja dionica tvrtki. Dionice će postati dostupne samo za tvrtke određene starosti
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Najmanja starost tvrtke za trgovanje udjelima: {STRING}

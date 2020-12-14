@@ -1641,8 +1641,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Ολόκληρ�
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Τα έγχρωμα νέα εμφανίζονται από το: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Το έτος κατά το οποίο οι ανακοινώσεις στην εφημερίδα εκτυπώνονται έγχρωμες. Πριν από αυτό το έτος, εκτυπώνονται μονόχρωμες και ασπρόμαυρες
 STR_CONFIG_SETTING_STARTING_YEAR                                :Έτος εκκίνησης: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Ενεργοποίηση ομαλής οικονομίας (περισσότερες, μικρότερες αλλαγές): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Όταν είναι ενεργοποιημένη, η παραγωγή των βιομηχανιών αλλάζει συχνότερα και σε μικρότερα βήματα. Αυτή η ρύθμιση συνήθως δεν έχει καμία επίδραση όταν οι τύποι των βιομηχανιών παρέχονται από NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ενεργοποίηση της δυνατότητας αγοράς μετοχών από άλλες εταιρίες: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Όταν είναι ενεργοποιημένη, επιτρέπεται η αγοραπωλησία εταιρικών μετοχών. Οι μετοχές θα είναι διαθέσιμες μόνο όταν οι εταιρείες φτάνουν μια ορισμένη ηλικία
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Το ποσοστό κέρδους από το σκέλος μεταφοράς στα συστήματα τροφοδότησης: {STRING}

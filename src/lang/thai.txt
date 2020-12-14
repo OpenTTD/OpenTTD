@@ -1467,8 +1467,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :แสดงข
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :เริ่มใช้งานหนังสือพิมพ์สีในปี: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :เป็นการกำหนดว่าจะเริ่มต้นการใช้งานหนังสือพิมพ์แบบสีเมื่อปีใด
 STR_CONFIG_SETTING_STARTING_YEAR                                :ปีที่เริ่มต้น: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :ยอมให้มีเศรษฐกิจที่ราบรื่น (มากขึ้น, เปลี่ยนแปลงเล็กน้อย): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :เมื่อเปิดใช้งาน อุดสาหกรรมจะมีการเปลี่ยนแปลงผลผลผลิต
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :อนุญาตให้ซื้อหุ้นจากบริษัทอื่นได้: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :เมื่อเปิดการใช้งาน จะสามารถซื้่อชขายหุ้นระหว่างบริษัท จะสามารถซื้อขายหุ้นได้ต่อเมื่อบริษัทเปิดตัวมานานแล้วเท่านั้น
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :เปอเซนต์ของผลกำไรที่จะส่งเข้าสู่ระบบกระจายรายได้: {STRING}

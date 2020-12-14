@@ -1553,8 +1553,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :结束计分年
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :游戏结束计分的年份。在这一年的年底，公司的分数将被记录，并展示高分榜；在此之后玩家仍可继续游戏。{}如果该年份早于游戏开始年份，则高分榜将不会展示。
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :从不
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :启用平滑经济模式 (更多小的经济变化)：{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :“打开”时，工业产量变化频繁而幅度小，如果工业是由NewGRF控制的，本选项不起作用
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :允许购买其他公司的股份：{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :“打开”时，允许买卖其它公司股份。被入股公司必须经营一定年限
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :公司可发售股份的最小已存续年份数：{STRING}

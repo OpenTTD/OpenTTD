@@ -1577,8 +1577,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Punteggi a fine
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Anno in cui il gioco finisce per poter calcolare i punteggi. Alla fine di ques'tanno il punteggio della compagnia viene registrato e viene mostrata la schermata con i punteggi più alti, ma il giocatore può continuare a giocare anche dopo.{}Se quest'anno precede quello di inizio, la schermata dei punteggi non verrà mai mostrata.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Mai
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Abilita economia fluida (cambiamenti piccoli e frequenti): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Se abilitata, la produzione industriale cambia più spesso e a passi più piccoli. Questa impostazione non ha in genere effetto per i tipi di industria aggiunti da un NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permetti l'acquisto di azioni di altre compagnie: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Se abilitata, consente l'acquisto e la vendita di azioni delle compagnie. Le azioni sono disponibili solo per le compagnie che hanno raggiunto una certa età minima
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Età minima della compagnia per lo scambio delle sue azioni: {STRING}

@@ -1716,8 +1716,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Slàn
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Nochdaidh naidheachdan dathte ann an: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Am bliadhna a thèid pàipear-naidheachd dathte a chlò-bhualadh a' chiad turas. Bidh na pàipearan-naidheachd ann an dubh is geal roimhe seo
 STR_CONFIG_SETTING_STARTING_YEAR                                :Bliadhna tòiseachaidh: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Cuir eaconamaidh rèidh an comas (atharraichean nas trice is nas beaga): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ma tha seo air, atharraichidh saothrachadh nan gnìomhachasan nas trice is le ceuman nas lugha. Chan eil buaidh aig seo air seòrsaichean gnìomhachais a chaidh a sholar le NewGRF mar as trice
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ceadaich gun tèid stoca a cheannach bho chompanaidhean eile: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ma tha seo air, ’s urrainn dhut stocan chompanaidhean a cheannach is a reic. Cha bhi stoca ri làimh ach aig companaidhean aig a bheil aois shònraichte
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :A' cheudad dhen phrothaid a gheibh carbadan le tar-aiseag carago: {STRING}

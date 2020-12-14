@@ -1713,8 +1713,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Potpuno
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Vesti u boji se objavljuju počev od godine: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Godina počev od koje se vesti objavljuju u boji. Pre ove godine se objavljuju u crno/beloj tehnici.
 STR_CONFIG_SETTING_STARTING_YEAR                                :Početna godina: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Uključena glatka ekonomija (više, manjih promena): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ako je omogućeno, industrijska proizvodnja se češće menja u manjim koracima. Ako se vrste industrija učitavaju preko NewGRF dodataka ovo podešavanje uglavnom nema efekta
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Dozvoljena kupovina deonica drugih preduzeća: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ako je omogućeno, dozvoljava kupovinu i prodaju deonica preduzeća. Deonice su dostupne tek kad preduzeće dostigne određenu starost
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procenat prihoda koji će biti predan srednjim dionicama prevoza u fider sustavima: {STRING}

@@ -1281,7 +1281,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :ممتلئ
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :الاخبار الملونة تظهر في: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :سنة البدايه: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :السماح بأقتصاد ثابت )تغيرات صغيرة اكثر): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :السماح بشراء حصص من الشركات الاخرى: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :اتاحة استخدام الأشارات بالأعلام قبل :{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :السماح باستخدام اشارات واجهة المستخدم الرسومية: {STRING}

@@ -1311,7 +1311,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :کامل
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :نمایش خبرهای رنگی در سال: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :سال شروع: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :فعال بودن اقتصاد ملایم (بیشتر،تغییرات کوچک انجام می‌شود): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :قابلیت خرید سهام بقیه شرکت‌ها: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :نصب علمک مکانیکی به جای چراغ راهنمایی قبل از سال: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :فعال کردن صفحه واسط کاربری برای نشانگر: {STRING}

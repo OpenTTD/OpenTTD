@@ -1640,8 +1640,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Rok vyhodnocen�
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Rok, kdy je ve hře uzavřeno hodnocení společností. Na konci tohoto roku je zaznamenáno skóre společností a je zobrazena tabulka nejlepších společností, ale ve hře je možné pokračovat i dál.{}Pokud je nastaven rok před rokem počátku hry, tabulka s hodnocením nebude zobrazena nikdy.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nikdy
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Plynulé změny ekonomiky (více menších změn): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Pokud je zapnuto, produkce průmyslu se mění častěji ale změny jsou menší. Toto nastavení většinou nemá vliv na průmysl, který je přidaný novou grafikou
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Povolit kupování podílu z ostatních společností: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Pokud je zapnuto, umožní kupovaní akcií ve společnostech. Akcie jsou k dispozici pouze u společností od určitého stáří
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimální stáří společnosti pro obchod s akciemi: {STRING}

@@ -1553,8 +1553,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Eindjaar voor s
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jaar dat het spel eindigt ten behoeve van de score. Aan het einde van dit jaar wordt de score van het bedrijf vastgelegd en verschijnt het venster met topscores. De spelers kunnen echter doorgaan met spelen.{}Als dit voor het startjaar ligt, verschijnt het venster met topscores niet.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nooit
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Vloeiende economie inschakelen (meer, kleinere veranderingen): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Wanneer dit is ingeschakeld, verandert de productie van industrieën vaker en in kleinere stappen. Deze instelling heeft meestal geen effect als de industriesoorten worden geleverd door een NewGRF.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Kopen van aandelen in andere bedrijven toestaan: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Wanneer ingeschakeld is het toegestaan om bedrijfsaandelen te kopen en te verkopen. Aandelen zullen alleen beschikbaar zijn voor bedrijven die een bepaalde leeftijd hebben bereikt
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimale leeftijd van bedrijf om aandelen te kunnen verhandelen: {STRING}

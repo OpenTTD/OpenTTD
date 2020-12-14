@@ -1512,8 +1512,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pe larg
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Ştirile color apar în: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Anul începând cu care anunțurile din ziar sunt tipărite color. Înainte de acest an, anunturile sunt monocrome (alb/negru)
 STR_CONFIG_SETTING_STARTING_YEAR                                :Anul de început al jocului: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Economie cu schimbări mai reduse, dar mai frecvente: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Dacă este activată, nivelul de producție al industriilor se schimbă mai des și în pași mai mici. Această opțiune de regulă nu are efect dacă tipul industriei este furnizat printr-un NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite cumpărarea de acţiuni de la alte companii: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Dacă este activată, se permite cumpărarea și vânzarea de acțiuni ale companiilor. Acțiunile devin disponibile doar când compania depășește o anumită vârstă
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentul din profitul pe secţiune care să fie plătit pentru alimentare: {STRING}

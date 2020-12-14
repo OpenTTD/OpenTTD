@@ -1554,8 +1554,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Yıl sonu puan�
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Oyunun puan sonucuna göre bittiği yıl. Bu yılın sonunda, şirketin puanı kaydedilir ve yüksek puan ekranında gösterilir ama oyuncular oynamaya devam edebilir.{}Eğer bu başlama yılından önce ise, yüksek puan ekranı gösterilmez.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Asla
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Yüzeysel ekonomi (daha çok ve küçük çapta değişiklikler): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Etkinleştirildiğinde, endüstri üretim miktarı daha sık ve daha küçük adımlarla değişir. Eğer endüstriler bir NewGRF dosyası tarafından sağlanıyorsa bu özellik genellikle etkisiz kalır
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Diğer şirketlerin hisseleri alınabilsin: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Etkinleştirildiğinde, şirketlerin hisse senetlerinin alınıp satılması mümkün olur. Hisse senetleri sadece belli bir yaşa ulaşan şirketler için geçerlidir
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Hisse satmak için gerekli minimum şirket yaşı: {STRING}

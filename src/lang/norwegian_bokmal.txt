@@ -1555,8 +1555,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Poengsum ved sl
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Året spillet slutter med tanke på poeng. På slutten av dette året, vil firmaets poengsum bli lagret og tavlen med høyeste poengsummer vil vises. Spilleren kan fortsette å spille etter dette.{}Hvis dette er før start året, vil tavlen med høyeste poengsummer aldri vises.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldri
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jevn økonomi (flere, mindre endringer): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Når denne er aktivert, endrer industriproduksjonen seg oftere, og i mindre trinn. Denne innstillingen har vanligvis ingen effekt hvis industriene er fra en NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillat aksjekjøp i andre firmaer: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Når aktivert, tillates kjøp og salg av selskapers aksjer. Aksjer vil kun være tilgjengelig selskaper som når en viss alder
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Sett minimum levetid for et selskap, før andre kan kjøpe og selge aksjer fra dem.

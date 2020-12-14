@@ -1365,7 +1365,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Penuh
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Berita berwarna muncul pada tahun: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Tahun permulaan: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gunakan ekonomi baik (perubahan yang lebih kecil): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Benarkan membeli saham syarikat lain: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Bina semafor secara automatik sebelum: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Tetapkan tahun apabila isyarat berjenis elektrik digunakan untuk landasan. Sebelum tahun ini, isyarat bukan elektrik akan digunakan (memiliki fungsi yang sama, tetapi berlainan reka bentuk)

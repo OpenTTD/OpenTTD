@@ -1542,8 +1542,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Noticias a cores aparecem em: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano em que os anúncios de jornal começam a ser mostrados a cores. Antes deste ano, serão mostrados a preto e branco.
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de início: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economia regular (alterações menores): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Quando activa, a produção de indústrias muda frequentemente, em pequenos incrementos. Esta preferência não costuma ter efeito, se os tipos de indústria forem provenientes de um NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar acções de outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Quando activo, permite a compra e venda de acções de companhias. As acções apenas estarão disponíveis quando a companhia atinge uma determinada idade.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Definir a idade mínima de uma companhia a partir da qual outros jogadores poderão comprar ou vender ações da mesma.

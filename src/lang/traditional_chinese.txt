@@ -1508,8 +1508,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :詳細
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :彩色報紙登場年份：{STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :設定報紙轉用彩色印刷的年份。在此之前，所有在報紙上的圖像皆為黑白
 STR_CONFIG_SETTING_STARTING_YEAR                                :開始年份：{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :開啟平滑經濟模式 (更多、更小的變動)：{STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :如啟用此選項，工業會較頻繁地更改其產量，但幅度則較輕微。此選項不會影響由 NewGRF 提供的工業種類
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :允許購買其它公司的股票：{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :啟用此選項以容許公司買賣股票。一所公司必須達到一定的年齡方能買賣股票
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :轉運服務所得的收入百分比： {STRING}

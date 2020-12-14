@@ -1452,7 +1452,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Avisa vert trykt i fargar i: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start spelet i år {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jamn økonomi (fleire, mindre endringar): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillet kjøp av aksjar i andre firma: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Ved trekking, plasser signal kvar: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ruter{P 0 "" s}

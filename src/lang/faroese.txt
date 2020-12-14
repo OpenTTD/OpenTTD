@@ -1441,8 +1441,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fult
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Litaði tíðindir koma frám í: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ári har tíðindabløð verða prentaði í litum. Áðrenn hetta ári eru tíðindabløð svørt/hvít
 STR_CONFIG_SETTING_STARTING_YEAR                                :Byrjunar ár: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gilda mjúkan búskap (fleiri, smærri broytingar): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Um gilda, ídnaðar framleiðsla broytist títtari og í smærri stigum. Henda ásetanin hevur vanliga onga ávirkan um ídnaðinir koma frá einum NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Loyv keypi av partabrøvum frá øðrum fyritøkum: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Um gilda, er loyvt at keypa og selja fyritøku partabrøv. Partabrøv verða einans tøk hjá fyritøkum ið hava rokki ein ávísan aldur
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prosentpartur av deilvinningi at gjalda í veitingar kervum: {STRING}

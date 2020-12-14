@@ -1617,8 +1617,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Játék végi p
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :A játék ebben az évben ér véget pontozás szempontjából. Ennek az évnek a végén a vállalat teljesítménypontszáma rögzítésre kerül, és adott esetben megjelenik a rekord táblán, de a játékosok ezután folytathatják a játékot.{}Ha ez a kezdő év elé van állítva, akkor a rekord tábla sosem jelenik meg.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Soha
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Egyenletes gazdaság (több, kisebb változás): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Bekapcsolva a gazdasági épületek termelése gyakrabban és kisebb lépésekben változik. Ennek a beállításnak általában nincs hatása, ha a gazdasági épületeket NewGRF nyújta
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Más vállalatokból lehet részvényt vásárolni: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Bekapcsolva engedélyezi más vállalatok részvényeinek megvásárlását. A részvények csak akkor elérhetőek, ha a vállalat elért egy bizonyos kort
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Vállalatok minimális életkora részvénykibocsátáshoz: {STRING}

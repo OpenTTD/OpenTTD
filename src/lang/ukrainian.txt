@@ -1681,8 +1681,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Рік закі
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Рік закінчення гри для підрахунку очок. У кінці року додають очки компанії і показують загальний результат, але гравці можуть грати далі.{}Якщо встановлено рік раніший початкового, загальний результат не зʼявиться.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ніколи
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Стабільна економіка: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :При включенні обсяги виробництва підприємств змінюються часто, але не дуже суттєво. Зазвичай ця опція не впливає на підприємства, додані за допомогою NewGRF.
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дозволити придбання акції інших компаній: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :При включенні дозволяє придбання та продаж акцій команій. Акції компанії стають доступними після досягнення деякого віку.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мінімальний вік компанії для торгівлі акціями: {STRING}

@@ -1554,8 +1554,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Año de fin de 
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Año en el que se termina el juego para registrar la puntuación de la empresa y mostrar la tabla de puntuaciones, aunque el jugador puede continuar el juego.{}Cualquier fecha anterior al año de incio hará que la tabla de puntuaciones nunca se muestre.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activar economía fácil (cambios más pequeños): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Al activarse, habrá cambios en la producción industrial continuamente y en menor escala. Normalmente esta opción no afecta los NewGRF de industrias
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Al activarse, se pueden comprar y vender acciones de otras empresas. Las acciones de una empresa solamente estarán disponibles cuando la empresa cumpla una edad determinada
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Edad mínima de la empresa para intercambiar acciones: {STRING}

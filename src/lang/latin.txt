@@ -1719,8 +1719,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completa
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Ephemeris colorata apparet anno: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Eligere annum in quo nuntia periodicorum colorata apparet. Antea, nuntia nigra albaque sunt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Annus initii: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Sinere oeconomiam teretem esse (i.e. plures ac minores mutationes): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Electa, productio industriarum saepius mutat, et minores per gradus. Sed haec electio nihil affert si industriae apparatae sunt a NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Sinere mercari sortes societatum: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Sinere mercari sortes a societatibus. Sortes societatum satis aetatis modo mercari licet
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Centesimae partes lucri pendenda in translatione: {STRING}

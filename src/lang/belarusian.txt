@@ -1854,8 +1854,6 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Год, у як
 STR_CONFIG_SETTING_STARTING_YEAR                                :Год пачатку гульні: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ніколі
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Уключыць лагодную эканоміку (больш дробных зьменаў): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Калі ўключана, вытворчасьць прадпрыемстваў зьмяняецца часьцей ды малымі крокамі. Гэтая наладка звычайна не дае эфэкту, калі тыпы прадпрыемстваў вызначае набор новай ґрафікі (NewGRF).
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дазволіць купляць акцыі іншых кампаніяў: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Калі ўключана, дазваляецца купляць і прадаваць долі ў кампаніях. Акцыі даступны для кампаніяў, якія дасягнулі пэўнага ўзросту.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мін. узрост кампаніі для выпуску акцыяў: {STRING}

@@ -1485,8 +1485,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Full
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Coloured news appears in: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Year that the newspaper announcements get printed in colour. Before this year, it uses monochrome black/white
 STR_CONFIG_SETTING_STARTING_YEAR                                :Starting year: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Enable smooth economy (more, smaller changes): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :When enabled, industry production changes more often, and in smaller steps. This setting has usually no effect, if industry types are provided by a NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Allow buying shares from other companies: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :When enabled, allow buying and selling of company shares. Shares will only be available for companies reaching a certain age
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Percentage of leg profit to pay in feeder systems: {STRING}

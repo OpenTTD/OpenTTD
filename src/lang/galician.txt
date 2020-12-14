@@ -1546,8 +1546,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completo
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Data de aparición das novas en cor: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ano no que os avisos dos xornais son impresos en cor. Antes deste ano, emprégase monocromo branco e negro
 STR_CONFIG_SETTING_STARTING_YEAR                                :Data de comezo: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Habilita-la economía "estable" (máis cambios, pero máis pequenos): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Cando se activa, as producións industriais cambian máis frecuentemente, e a pasos máis curtos
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permiti-la compra de accións de outras compañías: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Cando se activa, permite comprar ou vender accións da compañía. As accións só estarán dispoñíbeis para compañías que acaden certa idade
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Idade mínima da compañía para compraventa de accións: {STRING}

@@ -1552,8 +1552,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :End-Joer vum Sc
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Joer wou d'Spill opgrond vum Scoring ophält. Um Enn vun desem Joer gëtt der Firma hiere Score  gespäichert an an der Highscore-Lëscht ugewisen, mee de Spiller kann dono weider spillen.{}Wann dese Wert virum Startjoer ass, gëtt d'Highscorelëscht nie ugewisen.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nie
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gläichméisseg Wiertschaft aschalten (méi oft an kleng Wiessel): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Wann ugeschalt, ännert d'Industrieproduktioun méi oft, an méi kléngen Schrëtter. Dës Astellung huet keng Auswierkung op NewGRF-Industrien
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Undeeler vun aaneren Firmen kafen: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Wann ugeschalt, dierfen Aktien vu Firmen kaf an verkaf ginn. Aktien si just fir Firme verfügbar, déi en gewëssen Alter erreecht hunn
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimalt Firmenalter fir Aktien ze handelen: {STRING}

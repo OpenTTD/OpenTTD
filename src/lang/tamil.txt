@@ -1404,7 +1404,6 @@ STR_CONFIG_SETTING_STARTING_YEAR                                :தொடங்
 STR_CONFIG_SETTING_ENDING_YEAR                                  :மதிப்பீட்டிற்கான இறுதி ஆண்டு: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :என்றுமில்லை
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :இயல்பான பொருளாதாரத்தினைச் செயல்படுத்தவும் (அதிகமான, சிறிய மாற்றங்கள்): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :மற்ற நிறுவனங்களின் பங்குகளை வாங்குவதை அனுமதிக்கவும்: {STRING}
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :பங்குகள் பரிமாற்றத்திற்கு தேவையான குறைந்தபட்ச நிறுவன வயது: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :இழுத்தால், சிக்னல்களை இடவும், ஒவ்வொறு: {STRING}

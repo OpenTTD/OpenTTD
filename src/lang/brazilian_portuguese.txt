@@ -1554,8 +1554,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Pontuação no 
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No final deste ano, a pontuação da empresa é registrada e a tela de pontuação máxima é exibida, mas os jogadores podem continuar jogando depois disso.{} Se isso for antes do ano inicial, a tela de pontuação máxima nunca será exibida.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Ativar economia regular (alterações menores): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Quando ativado, a produção de indústrias muda com mais frequência, e mais sutilmente
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar ações de outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Se ativado, permite a compra e venda de ações de companhias. Ações de outras empresas poderão serem compradas após um período de tempo após a fundação da empresa
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Idade mínima da companhia para trocar ações: {STRING}

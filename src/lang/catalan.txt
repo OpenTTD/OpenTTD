@@ -1554,8 +1554,6 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Any de puntuaci
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Estableix l'any en què finalitza la partida i es puntua les companyies. Al final d'aquest any, la puntuació de la companyia es guarda i es mostra a la llista de classificació, però els jugadors poden continuar jugant.{}Si l'any de finalització és anterior a l'any d'inici, no es guardaran les puntuacions ni es mostrarà la llista de classificació.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Mai
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Activa economia suau (més canvis però més petits): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Quan està activat, els canvis de producció de la indústria són més habituals, i en passos més petits. Aquest paràmetre usualment no té efecte, si el tipus d'indústria estan proveïts per un NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permet comprar participacions d'altres companyies: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Permet comprar i vendre accions de les companyies. Les accions només estan disponibles per companyies d'una certa edat.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Edat mínima de la companyia per negociar participacions: {STRING}

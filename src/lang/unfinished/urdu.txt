@@ -1238,7 +1238,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :مکمل
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :رنگین خبریں کون سے سال سے شروع ہوں: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :شروعاتی سال: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :مستحکم معیشت فعال کریں: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :دوسری کمپنیوں کے حصص خریدنے کی اجازت: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :پہلے خودکار طریقے سے semaphores بنائیں: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :اشاروں والی GUI فعال کریں: {STRING}

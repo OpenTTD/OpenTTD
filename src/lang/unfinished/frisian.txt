@@ -1495,7 +1495,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Folslein
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Krante verskient yn kleur yn: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :It jier wêrop kranteberjochten oergean op kleur. Foar dit jier oan binne sy swart/wyt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Begjin jier: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jou de ekonomy mear lytse veroarings: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Stea it keapjen fan oandielen ta: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :By slepe, pleats seinen eltse: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} tegel{P 0 "" s}
