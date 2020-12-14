@@ -12,7 +12,7 @@
 
 #include "fileio_type.h"
 #include <string>
-#include "3rdparty/optional/ottd_optional.h"
+#include <optional>
 
 /** Types of groups */
 enum IniGroupType {
@@ -25,7 +25,7 @@ enum IniGroupType {
 struct IniItem {
 	IniItem *next;                    ///< The next item in this group
 	std::string name;                 ///< The name of this item
-	opt::optional<std::string> value; ///< The value of this item
+	std::optional<std::string> value; ///< The value of this item
 	std::string comment;              ///< The comment associated with this item
 
 	IniItem(struct IniGroup *parent, const std::string &name);
