@@ -357,11 +357,11 @@ bool GraphicsSet::FillSetDetails(IniFile *ini, const char *path, const char *ful
 		IniItem *item;
 
 		fetch_metadata("palette");
-		this->palette = (item->value.value()[0] == 'D' || item->value.value()[0] == 'd') ? PAL_DOS : PAL_WINDOWS;
+		this->palette = ((*item->value)[0] == 'D' || (*item->value)[0] == 'd') ? PAL_DOS : PAL_WINDOWS;
 
 		/* Get optional blitter information. */
 		item = metadata->GetItem("blitter", false);
-		this->blitter = (item != nullptr && item->value.value()[0] == '3') ? BLT_32BPP : BLT_8BPP;
+		this->blitter = (item != nullptr && (*item->value)[0] == '3') ? BLT_32BPP : BLT_8BPP;
 	}
 	return ret;
 }
