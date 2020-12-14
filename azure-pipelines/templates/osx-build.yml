@@ -1,9 +1,0 @@
-steps:
-- script: |
-    set -ex
-
-    mkdir build
-    cd build
-    cmake ..
-    make -j2
-  displayName: 'Build'
