@@ -11,6 +11,7 @@
 #define SETTINGS_TYPE_H
 
 #include "date_type.h"
+#include "economy_type.h"
 #include "town_type.h"
 #include "transport_type.h"
 #include "network/core/config.h"
@@ -470,7 +471,7 @@ struct VehicleSettings {
 struct EconomySettings {
 	bool   inflation;                        ///< disable inflation
 	bool   bribe;                            ///< enable bribing the local authority
-	bool   smooth_economy;                   ///< smooth economy
+	EconomyType type;                        ///< economy type (original/smooth/frozen)
 	bool   allow_shares;                     ///< allow the buying/selling of shares
 	uint8  min_years_for_shares;             ///< minimum age of a company for it to trade shares
 	uint8  feeder_payment_share;             ///< percentage of leg payment to virtually pay in feeder systems
