@@ -710,8 +710,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 		 * Do this for all tiles (like trees), not only objects. */
 		ClearedObjectArea *coa = FindClearedObject(end_tile);
 		if (coa == nullptr) {
-			/*C++17: coa = &*/ _cleared_object_areas.push_back({end_tile, TileArea(end_tile, 1, 1)});
-			coa = &_cleared_object_areas.back();
+			coa = &_cleared_object_areas.emplace_back(ClearedObjectArea{ end_tile, TileArea(end_tile, 1, 1) });
 		}
 
 		/* Hide the tile from the terraforming command */

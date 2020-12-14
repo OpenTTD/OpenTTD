@@ -1916,8 +1916,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					tmp_layout.clear();
 					for (;;) {
 						/* no relative bounding box support */
-						/*C++17: DrawTileSeqStruct &dtss = */ tmp_layout.emplace_back();
-						DrawTileSeqStruct &dtss = tmp_layout.back();
+						DrawTileSeqStruct &dtss = tmp_layout.emplace_back();
 						MemSetT(&dtss, 0);
 
 						dtss.delta_x = buf->ReadByte();
@@ -5020,8 +5019,7 @@ static void NewSpriteGroup(ByteReader *buf)
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
 			 * from the outset, so we shall have to keep reallocing. */
 			do {
-				/*C++17: DeterministicSpriteGroupAdjust &adjust = */ adjusts.emplace_back();
-				DeterministicSpriteGroupAdjust &adjust = adjusts.back();
+				DeterministicSpriteGroupAdjust &adjust = adjusts.emplace_back();
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
 				adjust.operation = adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();

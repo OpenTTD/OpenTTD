@@ -142,8 +142,7 @@ struct SmallMap : std::vector<std::pair<T, U> > {
 		for (uint i = 0; i < std::vector<Pair>::size(); i++) {
 			if (key == std::vector<Pair>::operator[](i).first) return std::vector<Pair>::operator[](i).second;
 		}
-		/*C++17: Pair &n = */ std::vector<Pair>::emplace_back();
-		Pair &n = std::vector<Pair>::back();
+		Pair &n = std::vector<Pair>::emplace_back();
 		n.first = key;
 		return n.second;
 	}

@@ -433,8 +433,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 			type_check = CheckBridgeAvailability(brd_type, bridge_len);
 			if (type_check.Succeeded()) {
 				/* bridge is accepted, add to list */
-				/*C++17: BuildBridgeData &item = */ bl->emplace_back();
-				BuildBridgeData &item = bl->back();
+				BuildBridgeData &item = bl->emplace_back();
 				item.index = brd_type;
 				item.spec = GetBridgeSpec(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the

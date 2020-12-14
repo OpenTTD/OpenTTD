@@ -119,8 +119,7 @@ public:
 	 */
 	inline FiosItem *Append()
 	{
-		/*C++17: return &*/ this->files.emplace_back();
-		return &this->files.back();
+		return &this->files.emplace_back();
 	}
 
 	/**
