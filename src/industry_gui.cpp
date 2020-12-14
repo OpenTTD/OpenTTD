@@ -2625,8 +2625,7 @@ struct IndustryCargoesWindow : public Window {
 		_displayed_industries.set(it);
 
 		this->fields.clear();
-		/*C++17: CargoesRow &row = */ this->fields.emplace_back();
-		CargoesRow &row = this->fields.back();
+		CargoesRow &row = this->fields.emplace_back();
 		row.columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
 		row.columns[1].MakeEmpty(CFT_SMALL_EMPTY);
 		row.columns[2].MakeEmpty(CFT_SMALL_EMPTY);
@@ -2641,8 +2640,7 @@ struct IndustryCargoesWindow : public Window {
 		int num_cust = CountMatchingAcceptingIndustries(central_sp->produced_cargo, lengthof(central_sp->produced_cargo)) + houses_accept;
 		int num_indrows = max(3, max(num_supp, num_cust)); // One is needed for the 'it' industry, and 2 for the cargo labels.
 		for (int i = 0; i < num_indrows; i++) {
-			/*C++17: CargoesRow &row = */ this->fields.emplace_back();
-			CargoesRow &row = this->fields.back();
+			CargoesRow &row = this->fields.emplace_back();
 			row.columns[0].MakeEmpty(CFT_EMPTY);
 			row.columns[1].MakeCargo(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
 			row.columns[2].MakeEmpty(CFT_EMPTY);
@@ -2705,8 +2703,7 @@ struct IndustryCargoesWindow : public Window {
 		_displayed_industries.reset();
 
 		this->fields.clear();
-		/*C++17: CargoesRow &row = */ this->fields.emplace_back();
-		CargoesRow &row = this->fields.back();
+		CargoesRow &row = this->fields.emplace_back();
 		row.columns[0].MakeHeader(STR_INDUSTRY_CARGOES_PRODUCERS);
 		row.columns[1].MakeEmpty(CFT_SMALL_EMPTY);
 		row.columns[2].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
@@ -2719,8 +2716,7 @@ struct IndustryCargoesWindow : public Window {
 		int num_cust = CountMatchingAcceptingIndustries(&cid, 1) + houses_accept;
 		int num_indrows = max(num_supp, num_cust);
 		for (int i = 0; i < num_indrows; i++) {
-			/*C++17: CargoesRow &row = */ this->fields.emplace_back();
-			CargoesRow &row = this->fields.back();
+			CargoesRow &row = this->fields.emplace_back();
 			row.columns[0].MakeEmpty(CFT_EMPTY);
 			row.columns[1].MakeCargo(&cid, 1);
 			row.columns[2].MakeEmpty(CFT_EMPTY);

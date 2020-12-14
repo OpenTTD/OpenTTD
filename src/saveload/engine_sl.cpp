@@ -191,8 +191,7 @@ static void Load_EIDS()
 	_engine_mngr.clear();
 
 	while (SlIterateArray() != -1) {
-		/*C++17: EngineIDMapping *eid = &*/ _engine_mngr.emplace_back();
-		EngineIDMapping *eid = &_engine_mngr.back();
+		EngineIDMapping *eid = &_engine_mngr.emplace_back();
 		SlObject(eid, _engine_id_mapping_desc);
 	}
 }

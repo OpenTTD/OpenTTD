@@ -2924,8 +2924,7 @@ bool AfterLoadGame()
 					cur_skip = prev_tile_skip;
 				}
 
-				/*C++17: uint &this_skip = */ skip_frames.push_back(prev_tile_skip);
-				uint &this_skip = skip_frames.back();
+				uint &this_skip = skip_frames.emplace_back(prev_tile_skip);
 
 				/* The following 3 curves now take longer than before */
 				switch (u->state) {
