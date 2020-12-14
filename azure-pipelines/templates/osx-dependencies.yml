@@ -1,5 +1,0 @@
-steps:
-- script: |
-    set -ex
-    HOMEBREW_NO_AUTO_UPDATE=1 brew install pkg-config lzo xz libpng freetype
-  displayName: 'Install dependencies'
