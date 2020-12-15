@@ -9075,7 +9075,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   --Accounting--
     GetCosts():         -5947
     Should be:          -5947
-  GetName():            Road Vehicle 1
+  GetName():            Road Vehicle #1
   SetName():            true
   GetName():            MyVehicleName
   CloneVehicle():       13

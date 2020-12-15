@@ -4732,10 +4732,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Sugar Mine
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Unnamed
-STR_SV_TRAIN_NAME                                               :Train {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Road Vehicle {COMMA}
-STR_SV_SHIP_NAME                                                :Ship {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Aircraft {COMMA}
+STR_SV_TRAIN_NAME                                               :Train #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Road Vehicle #{COMMA}
+STR_SV_SHIP_NAME                                                :Ship #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Aircraft #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING1}
 STR_SV_STNAME_NORTH                                             :{STRING1} North
