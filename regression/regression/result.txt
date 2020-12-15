@@ -594,7 +594,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetBankBalance():                  100000
   GetName():                         (null : 0x00000000)
   GetLoanAmount():                   100000
-  GetMaxLoanAmount():                500000
+  GetMaxLoanAmount():                2000000000
   GetLoanInterval():                 10000
   SetLoanAmount(1):                  false
   SetLoanAmount(100):                false
@@ -606,8 +606,8 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetBankBalance():                  40000
   GetLoanAmount():                   40000
   SetLoanAmount(10000):              true
-  GetBankBalance():                  500000
-  GetLoanAmount():                   500000
+  GetBankBalance():                  2000000000
+  GetLoanAmount():                   2000000000
   GetCompanyHQ():                    -1
   BuildCompanyHQ():                  true
   GetCompanyHQ():                    33151
@@ -848,7 +848,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   GetAirportWidth(9):               -1
   GetAirportHeight(9):              -1
   GetAirportCoverageRadius(9):      -1
-  GetBankBalance():     499790
+  GetBankBalance():     1999999790
   GetPrice():           5400
   BuildAirport():       true
   IsHangarTile():       false
@@ -858,11 +858,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsHangarTile():       true
   IsAirportTile():      true
   GetAirportType():     0
-  GetBankBalance():     489890
+  GetBankBalance():     1999989890
   RemoveAirport():      true
   IsHangarTile():       false
   IsAirportTile():      false
-  GetBankBalance():     489626
+  GetBankBalance():     1999989626
   BuildAirport():       true
 
 --Bridge--
@@ -7314,7 +7314,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsBuoyTile():         false
   IsLockTile():         false
   IsCanalTile():        false
-  GetBankBalance():     479664
+  GetBankBalance():     1999979664
   BuildWaterDepot():    true
   BuildDock():          true
   BuildBuoy():          true
@@ -7327,7 +7327,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsBuoyTile():         true
   IsLockTile():         true
   IsCanalTile():        true
-  GetBankBalance():     465070
+  GetBankBalance():     1999965070
 
 --AIWaypointList(BUOY)--
   Count():             1
@@ -7346,7 +7346,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsBuoyTile():         false
   IsLockTile():         false
   IsCanalTile():        false
-  GetBankBalance():     459675
+  GetBankBalance():     1999959675
   BuildWaterDepot():    true
   BuildDock():          true
 
