@@ -903,7 +903,7 @@ void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo *c
  */
 void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const
 {
-	for (const ContentInfo * const &ci : this->infos) {
+	for (const ContentInfo *ci : this->infos) {
 		if (ci == child) continue;
 
 		for (uint i = 0; i < ci->dependency_count; i++) {
