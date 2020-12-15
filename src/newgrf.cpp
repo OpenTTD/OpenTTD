@@ -6553,19 +6553,45 @@ static void SkipIf(ByteReader *buf)
 		return;
 	}
 
-	uint32 param_val = GetParamVal(param, &cond_val);
+	grfmsg(7, "SkipIf: Test condtype %d, param 0x%02X, condval 0x%08X", condtype, param, cond_val);
 
-	grfmsg(7, "SkipIf: Test condtype %d, param 0x%08X, condval 0x%08X", condtype, param_val, cond_val);
-
-	/*
-	 * Parameter (variable in specs) 0x88 can only have GRF ID checking
-	 * conditions, except conditions 0x0B, 0x0C (cargo availability) and
-	 * 0x0D, 0x0E (Rail type availability) as those ignore the parameter.
-	 * So, when the condition type is one of those, the specific variable
-	 * 0x88 code is skipped, so the "general" code for the cargo
-	 * availability conditions kicks in.
+	/* condtypes that do not use 'param' are always valid.
+	 * condtypes that use 'param' are either not valid for param 0x88, or they are only valid for param 0x88.
 	 */
-	if (param == 0x88 && (condtype < 0x0B || condtype > 0x0E)) {
+	if (condtype >= 0x0B) {
+		/* Tests that ignore 'param' */
+		switch (condtype) {
+			case 0x0B: result = GetCargoIDByLabel(BSWAP32(cond_val)) == CT_INVALID;
+				break;
+			case 0x0C: result = GetCargoIDByLabel(BSWAP32(cond_val)) != CT_INVALID;
+				break;
+			case 0x0D: result = GetRailTypeByLabel(BSWAP32(cond_val)) == INVALID_RAILTYPE;
+				break;
+			case 0x0E: result = GetRailTypeByLabel(BSWAP32(cond_val)) != INVALID_RAILTYPE;
+				break;
+			case 0x0F: {
+				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
+				result = rt == INVALID_ROADTYPE || !RoadTypeIsRoad(rt);
+				break;
+			}
+			case 0x10: {
+				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
+				result = rt != INVALID_ROADTYPE && RoadTypeIsRoad(rt);
+				break;
+			}
+			case 0x11: {
+				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
+				result = rt == INVALID_ROADTYPE || !RoadTypeIsTram(rt);
+				break;
+			}
+			case 0x12: {
+				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
+				result = rt != INVALID_ROADTYPE && RoadTypeIsTram(rt);
+				break;
+			}
+			default: grfmsg(1, "SkipIf: Unsupported condition type %02X. Ignoring", condtype); return;
+		}
+	} else if (param == 0x88) {
 		/* GRF ID checks */
 
 		GRFConfig *c = GetGRFConfig(cond_val, mask);
@@ -6606,7 +6632,8 @@ static void SkipIf(ByteReader *buf)
 			default: grfmsg(1, "SkipIf: Unsupported GRF condition type %02X. Ignoring", condtype); return;
 		}
 	} else {
-		/* Parameter or variable tests */
+		/* Tests that use 'param' and are not GRF ID checks.  */
+		uint32 param_val = GetParamVal(param, &cond_val); // cond_val is modified for param == 0x85
 		switch (condtype) {
 			case 0x00: result = !!(param_val & (1 << cond_val));
 				break;
@@ -6620,34 +6647,6 @@ static void SkipIf(ByteReader *buf)
 				break;
 			case 0x05: result = (param_val & mask) > cond_val;
 				break;
-			case 0x0B: result = GetCargoIDByLabel(BSWAP32(cond_val)) == CT_INVALID;
-				break;
-			case 0x0C: result = GetCargoIDByLabel(BSWAP32(cond_val)) != CT_INVALID;
-				break;
-			case 0x0D: result = GetRailTypeByLabel(BSWAP32(cond_val)) == INVALID_RAILTYPE;
-				break;
-			case 0x0E: result = GetRailTypeByLabel(BSWAP32(cond_val)) != INVALID_RAILTYPE;
-				break;
-			case 0x0F: {
-				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
-				result = rt == INVALID_ROADTYPE || !RoadTypeIsRoad(rt);
-				break;
-			}
-			case 0x10: {
-				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
-				result = rt != INVALID_ROADTYPE && RoadTypeIsRoad(rt);
-				break;
-			}
-			case 0x11: {
-				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
-				result = rt == INVALID_ROADTYPE || !RoadTypeIsTram(rt);
-				break;
-			}
-			case 0x12: {
-				RoadType rt = GetRoadTypeByLabel(BSWAP32(cond_val));
-				result = rt != INVALID_ROADTYPE && RoadTypeIsTram(rt);
-				break;
-			}
 			default: grfmsg(1, "SkipIf: Unsupported condition type %02X. Ignoring", condtype); return;
 		}
 	}
