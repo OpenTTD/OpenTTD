@@ -433,6 +433,7 @@ function Regression::Company()
 	print("  GetAutoRenewStatus();              " + AICompany.GetAutoRenewStatus(AICompany.COMPANY_SELF));
 	print("  SetAutoRenewStatus(true);          " + AICompany.SetAutoRenewStatus(true));
 	print("  SetAutoRenewStatus(false);         " + AICompany.SetAutoRenewStatus(false));
+	print("  GetAutoRenewStatus();              " + AICompany.GetAutoRenewStatus(AICompany.COMPANY_SELF));
 	print("  GetAutoRenewMonths();              " + AICompany.GetAutoRenewMonths(AICompany.COMPANY_SELF));
 	print("  SetAutoRenewMonths(-12);           " + AICompany.SetAutoRenewMonths(-12));
 	print("  GetAutoRenewMonths();              " + AICompany.GetAutoRenewMonths(AICompany.COMPANY_SELF));
