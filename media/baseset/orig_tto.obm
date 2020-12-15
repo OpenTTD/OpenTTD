@@ -8,25 +8,25 @@ version           = 1
 @description_STR_BASEMUSIC_TTO_DESCRIPTION@
 
 [files]
-theme = gm-tto.cat
-old_0 = gm-tto.cat
-old_1 = gm-tto.cat
-old_2 = gm-tto.cat
-old_3 = gm-tto.cat
-old_4 = gm-tto.cat
-old_5 = gm-tto.cat
-old_6 = gm-tto.cat
-old_7 = gm-tto.cat
+theme = GM-TTO.CAT
+old_0 = GM-TTO.CAT
+old_1 = GM-TTO.CAT
+old_2 = GM-TTO.CAT
+old_3 = GM-TTO.CAT
+old_4 = GM-TTO.CAT
+old_5 = GM-TTO.CAT
+old_6 = GM-TTO.CAT
+old_7 = GM-TTO.CAT
 old_8 =
 old_9 =
-new_0 = gm-tto.cat
-new_1 = gm-tto.cat
-new_2 = gm-tto.cat
-new_3 = gm-tto.cat
-new_4 = gm-tto.cat
-new_5 = gm-tto.cat
-new_6 = gm-tto.cat
-new_7 = gm-tto.cat
+new_0 = GM-TTO.CAT
+new_1 = GM-TTO.CAT
+new_2 = GM-TTO.CAT
+new_3 = GM-TTO.CAT
+new_4 = GM-TTO.CAT
+new_5 = GM-TTO.CAT
+new_6 = GM-TTO.CAT
+new_7 = GM-TTO.CAT
 new_8 =
 new_9 =
 ezy_0 =
@@ -60,7 +60,7 @@ new_6 = 14
 new_7 = 3
 
 [md5s]
-gm-tto.cat = 26e85ff84b0063aa5da05dd4698fc76e
+GM-TTO.CAT = 26e85ff84b0063aa5da05dd4698fc76e
 
 [names]
 ; Names get read from the CAT file
