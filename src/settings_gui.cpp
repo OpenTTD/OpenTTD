@@ -2187,12 +2187,14 @@ struct GameSettingsWindow : Window {
 		} else {
 			/* Only open editbox if clicked for the second time, and only for types where it is sensible for. */
 			if (this->last_clicked == pe && sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
+				int64 value64 = value;
 				/* Show the correct currency-translated value */
-				if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
+				if (sd->desc.flags & SGF_CURRENCY) value64 *= _currency->rate;
 
 				this->valuewindow_entry = pe;
-				SetDParam(0, value);
-				ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 10, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
+				SetDParam(0, value64);
+				/* Limit string length to 14 so that MAX_INT32 * max currency rate doesn't exceed MAX_INT64. */
+				ShowQueryString(STR_JUST_INT, STR_CONFIG_SETTING_QUERY_CAPTION, 15, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 			}
 			this->SetDisplayedHelpText(pe);
 		}
@@ -2217,10 +2219,12 @@ struct GameSettingsWindow : Window {
 
 		int32 value;
 		if (!StrEmpty(str)) {
-			value = atoi(str);
+			long long llvalue = atoll(str);
 
 			/* Save the correct currency-translated value */
-			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
+			if (sd->desc.flags & SGF_CURRENCY) llvalue /= _currency->rate;
+
+			value = (int32)ClampToI32(llvalue);
 		} else {
 			value = (int32)(size_t)sd->desc.def;
 		}

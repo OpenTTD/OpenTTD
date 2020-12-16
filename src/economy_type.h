@@ -196,6 +196,8 @@ struct PriceBaseSpec {
 
 /** The "steps" in loan size, in British Pounds! */
 static const int LOAN_INTERVAL = 10000;
+/** The size of loan for a new company, in British Pounds! */
+static const int64 INITIAL_LOAN = 100000;
 
 /**
  * Maximum inflation (including fractional part) without causing overflows in int64 price computations.
