@@ -1139,33 +1139,38 @@ static const SpriteID SPR_IT_TOY_FACTORY_ROBOT        = 4720;
 static const SpriteID SPR_IT_POWER_PLANT_TRANSFORMERS = 2054;
 
 /* small icons of cargo available in station waiting*/
-static const SpriteID SPR_CARGO_PASSENGER             = 4297;
+static const SpriteID SPR_CARGO_PASSENGERS            = 4297;
 static const SpriteID SPR_CARGO_COAL                  = 4298;
 static const SpriteID SPR_CARGO_MAIL                  = 4299;
 static const SpriteID SPR_CARGO_OIL                   = 4300;
 static const SpriteID SPR_CARGO_LIVESTOCK             = 4301;
 static const SpriteID SPR_CARGO_GOODS                 = 4302;
-static const SpriteID SPR_CARGO_GRAIN                 = 4303;
+static const SpriteID SPR_CARGO_GRAIN                 = 4303;  // shared sprite with SPR_CARGO_WHEAT, SPR_CARGO_MAIZE
+static const SpriteID SPR_CARGO_WHEAT                 = 4303;  // shared sprite with SPR_CARGO_GRAIN, SPR_CARGO_MAIZE
+static const SpriteID SPR_CARGO_MAIZE                 = 4303;  // shared sprite with SPR_CARGO_GRAIN, SPR_CARGO_WHEAT
 static const SpriteID SPR_CARGO_WOOD                  = 4304;
 static const SpriteID SPR_CARGO_IRON_ORE              = 4305;
 static const SpriteID SPR_CARGO_STEEL                 = 4306;
-static const SpriteID SPR_CARGO_VALUES_GOLD           = 4307;  // shared between temperate and arctic
+static const SpriteID SPR_CARGO_VALUABLES             = 4307;  // shared between temperate and arctic ( SPR_CARGO_GOLD )
+static const SpriteID SPR_CARGO_GOLD                  = 4307;  // shared between temperate and arctic ( SPR_CARGO_VALUABLES )
 static const SpriteID SPR_CARGO_FRUIT                 = 4308;
 static const SpriteID SPR_CARGO_COPPER_ORE            = 4309;
-static const SpriteID SPR_CARGO_WATERCOLA             = 4310;  // shared between desert and toyland
+static const SpriteID SPR_CARGO_WATER                 = 4310;  // shared between desert and toyland ( SPR_CARGO_COLA )
+static const SpriteID SPR_CARGO_COLA                  = 4310;  // shared between desert and toyland ( SPR_CARGO_WATER )
 static const SpriteID SPR_CARGO_DIAMONDS              = 4311;
 static const SpriteID SPR_CARGO_FOOD                  = 4312;
 static const SpriteID SPR_CARGO_PAPER                 = 4313;
 static const SpriteID SPR_CARGO_RUBBER                = 4314;
-static const SpriteID SPR_CARGO_CANDY                 = 4315;
+static const SpriteID SPR_CARGO_SWEETS                = 4315;
 static const SpriteID SPR_CARGO_SUGAR                 = 4316;
 static const SpriteID SPR_CARGO_TOYS                  = 4317;
-static const SpriteID SPR_CARGO_COTTONCANDY           = 4318;
-static const SpriteID SPR_CARGO_FIZZYDRINK            = 4319;
+static const SpriteID SPR_CARGO_CANDYFLOSS            = 4318;
+static const SpriteID SPR_CARGO_FIZZY_DRINKS          = 4319;
 static const SpriteID SPR_CARGO_TOFFEE                = 4320;
 static const SpriteID SPR_CARGO_BUBBLES               = 4321;
 static const SpriteID SPR_CARGO_PLASTIC               = 4322;
 static const SpriteID SPR_CARGO_BATTERIES             = 4323;
+static const SpriteID SPR_CARGO_NOTHING               = SPR_ASCII_SPACE; // Placeholder for void cargo slots.
 
 /* Effect vehicles */
 static const SpriteID SPR_BULLDOZER_NE = 1416;
