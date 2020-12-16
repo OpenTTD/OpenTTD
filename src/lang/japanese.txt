@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :小麦
 STR_CARGO_PLURAL_RUBBER                                         :ゴム
 STR_CARGO_PLURAL_SUGAR                                          :砂糖
 STR_CARGO_PLURAL_TOYS                                           :おもちゃ
-STR_CARGO_PLURAL_CANDY                                          :お菓子
+STR_CARGO_PLURAL_SWEETS                                         :お菓子
 STR_CARGO_PLURAL_COLA                                           :コーラ
-STR_CARGO_PLURAL_COTTON_CANDY                                   :わたあめ
+STR_CARGO_PLURAL_CANDYFLOSS                                     :わたあめ
 STR_CARGO_PLURAL_BUBBLES                                        :泡
 STR_CARGO_PLURAL_TOFFEE                                         :タフィー
 STR_CARGO_PLURAL_BATTERIES                                      :電池
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :小麦
 STR_CARGO_SINGULAR_RUBBER                                       :ゴム
 STR_CARGO_SINGULAR_SUGAR                                        :砂糖
 STR_CARGO_SINGULAR_TOY                                          :おもちゃ
-STR_CARGO_SINGULAR_CANDY                                        :お菓子
+STR_CARGO_SINGULAR_SWEETS                                       :お菓子
 STR_CARGO_SINGULAR_COLA                                         :コーラ
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :わたあめ
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :わたあめ
 STR_CARGO_SINGULAR_BUBBLE                                       :泡
 STR_CARGO_SINGULAR_TOFFEE                                       :タフィー
 STR_CARGO_SINGULAR_BATTERY                                      :電池

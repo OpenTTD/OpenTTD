@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Vehnää
 STR_CARGO_PLURAL_RUBBER                                         :Kumia
 STR_CARGO_PLURAL_SUGAR                                          :Sokeria
 STR_CARGO_PLURAL_TOYS                                           :Leluja
-STR_CARGO_PLURAL_CANDY                                          :Karkkia
+STR_CARGO_PLURAL_SWEETS                                         :Karkkia
 STR_CARGO_PLURAL_COLA                                           :Limsaa
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Hattaraa
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Hattaraa
 STR_CARGO_PLURAL_BUBBLES                                        :Kuplia
 STR_CARGO_PLURAL_TOFFEE                                         :Toffeeta
 STR_CARGO_PLURAL_BATTERIES                                      :Paristoja
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Vehnä
 STR_CARGO_SINGULAR_RUBBER                                       :Kumi
 STR_CARGO_SINGULAR_SUGAR                                        :Sokeri
 STR_CARGO_SINGULAR_TOY                                          :Lelu
-STR_CARGO_SINGULAR_CANDY                                        :Karkki
+STR_CARGO_SINGULAR_SWEETS                                       :Karkki
 STR_CARGO_SINGULAR_COLA                                         :Limsa
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Hattara
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Hattara
 STR_CARGO_SINGULAR_BUBBLE                                       :Kupla
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffee
 STR_CARGO_SINGULAR_BATTERY                                      :Paristo

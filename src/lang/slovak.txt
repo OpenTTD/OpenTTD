@@ -73,12 +73,12 @@ STR_CARGO_PLURAL_SUGAR                                          :Cukor
 STR_CARGO_PLURAL_SUGAR.g                                        :cukru
 STR_CARGO_PLURAL_TOYS                                           :Hračky
 STR_CARGO_PLURAL_TOYS.g                                         :hračiek
-STR_CARGO_PLURAL_CANDY                                          :Cukríky
+STR_CARGO_PLURAL_SWEETS                                         :Cukríky
 STR_CARGO_PLURAL_CANDY.g                                        :cukríkov
 STR_CARGO_PLURAL_COLA                                           :Kofola
 STR_CARGO_PLURAL_COLA.g                                         :kofoly
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Cukrová vata
-STR_CARGO_PLURAL_COTTON_CANDY.g                                 :cukrovej vaty
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Cukrová vata
+STR_CARGO_PLURAL_CANDYFLOSS.g                                   :cukrovej vaty
 STR_CARGO_PLURAL_BUBBLES                                        :Bublinky
 STR_CARGO_PLURAL_BUBBLES.g                                      :bubliniek
 STR_CARGO_PLURAL_TOFFEE                                         :Karamelky
@@ -138,12 +138,12 @@ STR_CARGO_SINGULAR_SUGAR                                        :Cukor
 STR_CARGO_SINGULAR_SUGAR.g                                      :cukru
 STR_CARGO_SINGULAR_TOY                                          :Hračka
 STR_CARGO_SINGULAR_TOY.g                                        :hračky
-STR_CARGO_SINGULAR_CANDY                                        :Cukrík
-STR_CARGO_SINGULAR_CANDY.g                                      :cukríka
+STR_CARGO_SINGULAR_SWEETS                                       :Cukrík
+STR_CARGO_SINGULAR_SWEETS.g                                     :cukríka
 STR_CARGO_SINGULAR_COLA                                         :Kofola
 STR_CARGO_SINGULAR_COLA.g                                       :kofoly
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Cukrová vata
-STR_CARGO_SINGULAR_COTTON_CANDY.g                               :cukrovej vaty
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Cukrová vata
+STR_CARGO_SINGULAR_CANDYFLOSS.g                                 :cukrovej vaty
 STR_CARGO_SINGULAR_BUBBLE                                       :Bublinka
 STR_CARGO_SINGULAR_BUBBLE.g                                     :bublinky
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamel

@@ -49,9 +49,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Tritiko
 STR_CARGO_PLURAL_RUBBER                                         :Kaŭĉuko
 STR_CARGO_PLURAL_SUGAR                                          :Sukero
 STR_CARGO_PLURAL_TOYS                                           :Ludiloj
-STR_CARGO_PLURAL_CANDY                                          :Dolĉaĵoj
+STR_CARGO_PLURAL_SWEETS                                         :Dolĉaĵoj
 STR_CARGO_PLURAL_COLA                                           :Kolao
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Sukerŝpinaĵoj
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Sukerŝpinaĵoj
 STR_CARGO_PLURAL_BUBBLES                                        :Vezikoj
 STR_CARGO_PLURAL_TOFFEE                                         :Tofeoj
 STR_CARGO_PLURAL_BATTERIES                                      :Baterioj
@@ -83,9 +83,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Tritiko
 STR_CARGO_SINGULAR_RUBBER                                       :Kaŭĉuko
 STR_CARGO_SINGULAR_SUGAR                                        :Sukero
 STR_CARGO_SINGULAR_TOY                                          :Ludilo
-STR_CARGO_SINGULAR_CANDY                                        :Dolĉaĵo
+STR_CARGO_SINGULAR_SWEETS                                       :Dolĉaĵo
 STR_CARGO_SINGULAR_COLA                                         :Kolao
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sukerŝpinaĵo
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Sukerŝpinaĵo
 STR_CARGO_SINGULAR_BUBBLE                                       :Veziko
 STR_CARGO_SINGULAR_TOFFEE                                       :Tofeo
 STR_CARGO_SINGULAR_BATTERY                                      :Baterio

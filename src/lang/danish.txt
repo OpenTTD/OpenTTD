@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Hvede
 STR_CARGO_PLURAL_RUBBER                                         :Gummi
 STR_CARGO_PLURAL_SUGAR                                          :Sukker
 STR_CARGO_PLURAL_TOYS                                           :Legetøj
-STR_CARGO_PLURAL_CANDY                                          :Slik
+STR_CARGO_PLURAL_SWEETS                                         :Slik
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Candyfloss
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Candyfloss
 STR_CARGO_PLURAL_BUBBLES                                        :Bobler
 STR_CARGO_PLURAL_TOFFEE                                         :Karamel
 STR_CARGO_PLURAL_BATTERIES                                      :Batterier
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Hvede
 STR_CARGO_SINGULAR_RUBBER                                       :Gummi
 STR_CARGO_SINGULAR_SUGAR                                        :Sukker
 STR_CARGO_SINGULAR_TOY                                          :Legetøj
-STR_CARGO_SINGULAR_CANDY                                        :Slik
+STR_CARGO_SINGULAR_SWEETS                                       :Slik
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Candyfloss
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Candyfloss
 STR_CARGO_SINGULAR_BUBBLE                                       :Boble
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamel
 STR_CARGO_SINGULAR_BATTERY                                      :Batteri

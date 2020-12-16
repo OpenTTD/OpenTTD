@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :गहू
 STR_CARGO_PLURAL_RUBBER                                         :रबर
 STR_CARGO_PLURAL_SUGAR                                          :साखर
 STR_CARGO_PLURAL_TOYS                                           :खेळणी
-STR_CARGO_PLURAL_CANDY                                          :मिठाई
+STR_CARGO_PLURAL_SWEETS                                         :मिठाई
 STR_CARGO_PLURAL_COLA                                           :शीतपेये
-STR_CARGO_PLURAL_COTTON_CANDY                                   :म्हातारीचा कापूस
+STR_CARGO_PLURAL_CANDYFLOSS                                     :म्हातारीचा कापूस
 STR_CARGO_PLURAL_BUBBLES                                        :बुडबुडे
 STR_CARGO_PLURAL_TOFFEE                                         :टॉफी
 STR_CARGO_PLURAL_BATTERIES                                      :बॅटरी
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :गहू
 STR_CARGO_SINGULAR_RUBBER                                       :रबर
 STR_CARGO_SINGULAR_SUGAR                                        :साखर
 STR_CARGO_SINGULAR_TOY                                          :खेळणी
-STR_CARGO_SINGULAR_CANDY                                        :मिठाई
+STR_CARGO_SINGULAR_SWEETS                                       :मिठाई
 STR_CARGO_SINGULAR_COLA                                         :कोला
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :कँडी फ्लास
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :कँडी फ्लास
 STR_CARGO_SINGULAR_BUBBLE                                       :बुडबुडा
 STR_CARGO_SINGULAR_TOFFEE                                       :टॉफी
 STR_CARGO_SINGULAR_BATTERY                                      :बॅटरी

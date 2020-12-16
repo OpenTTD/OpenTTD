@@ -72,12 +72,12 @@ STR_CARGO_PLURAL_SUGAR                                          :{G=f}Ζάχαρ
 STR_CARGO_PLURAL_SUGAR.geniki                                   :Ζάχαρης
 STR_CARGO_PLURAL_TOYS                                           :{G=n}Παιχνίδια
 STR_CARGO_PLURAL_TOYS.geniki                                    :Παιχνιδιών
-STR_CARGO_PLURAL_CANDY                                          :{G=n}Γλυκίσματα
+STR_CARGO_PLURAL_SWEETS                                         :{G=n}Γλυκίσματα
 STR_CARGO_PLURAL_CANDY.geniki                                   :Γλυκισμάτων
 STR_CARGO_PLURAL_COLA                                           :{G=f}Κόλα
 STR_CARGO_PLURAL_COLA.geniki                                    :Κόλας
-STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=n}Μαλλιά της γριάς
-STR_CARGO_PLURAL_COTTON_CANDY.geniki                            :Μαλλιών της γριάς
+STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=n}Μαλλιά της γριάς
+STR_CARGO_PLURAL_CANDYFLOSS.geniki                              :Μαλλιών της γριάς
 STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Φυσαλίδες
 STR_CARGO_PLURAL_BUBBLES.geniki                                 :Φυσαλίδων
 STR_CARGO_PLURAL_TOFFEE                                         :{G=n}Καραμέλες βουτύρου
@@ -136,11 +136,11 @@ STR_CARGO_SINGULAR_SUGAR                                        :{G=f}Ζάχαρ
 STR_CARGO_SINGULAR_SUGAR.subs                                   :Ζάχαρες
 STR_CARGO_SINGULAR_TOY                                          :{G=n}Παιχνίδι
 STR_CARGO_SINGULAR_TOY.subs                                     :Παιχνίδια
-STR_CARGO_SINGULAR_CANDY                                        :{G=n}Γλυκό
-STR_CARGO_SINGULAR_CANDY.subs                                   :Γλυκα
+STR_CARGO_SINGULAR_SWEETS                                       :{G=n}Γλυκό
+STR_CARGO_SINGULAR_SWEETS.subs                                  :Γλυκα
 STR_CARGO_SINGULAR_COLA                                         :{G=f}Κόλα
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=n}Μαλλί της γριάς
-STR_CARGO_SINGULAR_COTTON_CANDY.subs                            :Μαλλί της γριάς
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :{G=n}Μαλλί της γριάς
+STR_CARGO_SINGULAR_CANDYFLOSS.subs                              :Μαλλί της γριάς
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Φυσαλίδα
 STR_CARGO_SINGULAR_BUBBLE.subs                                  :Φυσαλίδες
 STR_CARGO_SINGULAR_TOFFEE                                       :{G=n}Καραμέλα βουτύρου

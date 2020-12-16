@@ -119,7 +119,7 @@ STR_CARGO_PLURAL_TOYS                                           :{G=np}Ludicra
 STR_CARGO_PLURAL_TOYS.gen                                       :ludicrorum
 STR_CARGO_PLURAL_TOYS.acc                                       :Ludicra
 STR_CARGO_PLURAL_TOYS.dat                                       :Ludicris
-STR_CARGO_PLURAL_CANDY                                          :{G=np}Bellaria
+STR_CARGO_PLURAL_SWEETS                                         :{G=np}Bellaria
 STR_CARGO_PLURAL_CANDY.gen                                      :bellariorum
 STR_CARGO_PLURAL_CANDY.acc                                      :Bellaria
 STR_CARGO_PLURAL_CANDY.dat                                      :Bellariis
@@ -127,10 +127,10 @@ STR_CARGO_PLURAL_COLA                                           :{G=f}Cola
 STR_CARGO_PLURAL_COLA.gen                                       :colae
 STR_CARGO_PLURAL_COLA.acc                                       :Colam
 STR_CARGO_PLURAL_COLA.dat                                       :Colae
-STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=n}Sacchari Xylinum
-STR_CARGO_PLURAL_COTTON_CANDY.gen                               :sacchari xylini
-STR_CARGO_PLURAL_COTTON_CANDY.acc                               :Sacchari Xylinum
-STR_CARGO_PLURAL_COTTON_CANDY.dat                               :Sacchari Xylino
+STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=n}Sacchari Xylinum
+STR_CARGO_PLURAL_CANDYFLOSS.gen                                 :sacchari xylini
+STR_CARGO_PLURAL_CANDYFLOSS.acc                                 :Sacchari Xylinum
+STR_CARGO_PLURAL_CANDYFLOSS.dat                                 :Sacchari Xylino
 STR_CARGO_PLURAL_BUBBLES                                        :{G=fp}Bullae
 STR_CARGO_PLURAL_BUBBLES.gen                                    :bullarum
 STR_CARGO_PLURAL_BUBBLES.acc                                    :Bullas
@@ -246,18 +246,18 @@ STR_CARGO_SINGULAR_TOY                                          :{G=np}Ludicra
 STR_CARGO_SINGULAR_TOY.gen                                      :ludicrorum
 STR_CARGO_SINGULAR_TOY.acc                                      :Ludicra
 STR_CARGO_SINGULAR_TOY.dat                                      :Ludicris
-STR_CARGO_SINGULAR_CANDY                                        :{G=np}Bellaria
-STR_CARGO_SINGULAR_CANDY.gen                                    :bellariorum
-STR_CARGO_SINGULAR_CANDY.acc                                    :Bellaria
-STR_CARGO_SINGULAR_CANDY.dat                                    :Bellariis
+STR_CARGO_SINGULAR_SWEETS                                       :{G=np}Bellaria
+STR_CARGO_SINGULAR_SWEETS.gen                                   :bellariorum
+STR_CARGO_SINGULAR_SWEETS.acc                                   :Bellaria
+STR_CARGO_SINGULAR_SWEETS.dat                                   :Bellariis
 STR_CARGO_SINGULAR_COLA                                         :{G=f}Cola
 STR_CARGO_SINGULAR_COLA.gen                                     :colae
 STR_CARGO_SINGULAR_COLA.acc                                     :Colam
 STR_CARGO_SINGULAR_COLA.dat                                     :Colae
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=n}Sacchari Xylinum
-STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :sacchari xylini
-STR_CARGO_SINGULAR_COTTON_CANDY.acc                             :Sacchari Xylinum
-STR_CARGO_SINGULAR_COTTON_CANDY.dat                             :Sacchari Xylino
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :{G=n}Sacchari Xylinum
+STR_CARGO_SINGULAR_CANDYFLOSS.gen                               :sacchari xylini
+STR_CARGO_SINGULAR_CANDYFLOSS.acc                               :Sacchari Xylinum
+STR_CARGO_SINGULAR_CANDYFLOSS.dat                               :Sacchari Xylino
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=fp}Bullae
 STR_CARGO_SINGULAR_BUBBLE.gen                                   :bullarum
 STR_CARGO_SINGULAR_BUBBLE.acc                                   :Bullas

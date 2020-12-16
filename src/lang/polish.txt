@@ -188,7 +188,7 @@ STR_CARGO_PLURAL_TOYS.b                                         :zabawki
 STR_CARGO_PLURAL_TOYS.n                                         :zabawkami
 STR_CARGO_PLURAL_TOYS.m                                         :zabawkach
 STR_CARGO_PLURAL_TOYS.w                                         :zabawki
-STR_CARGO_PLURAL_CANDY                                          :Słodycze
+STR_CARGO_PLURAL_SWEETS                                         :Słodycze
 STR_CARGO_PLURAL_CANDY.d                                        :słodyczy
 STR_CARGO_PLURAL_CANDY.c                                        :słodyczom
 STR_CARGO_PLURAL_CANDY.b                                        :słodycze
@@ -202,13 +202,13 @@ STR_CARGO_PLURAL_COLA.b                                         :colę
 STR_CARGO_PLURAL_COLA.n                                         :colą
 STR_CARGO_PLURAL_COLA.m                                         :coli
 STR_CARGO_PLURAL_COLA.w                                         :colo
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Wata cukrowa
-STR_CARGO_PLURAL_COTTON_CANDY.d                                 :waty cukrowej
-STR_CARGO_PLURAL_COTTON_CANDY.c                                 :wacie cukrowej
-STR_CARGO_PLURAL_COTTON_CANDY.b                                 :watę cukrową
-STR_CARGO_PLURAL_COTTON_CANDY.n                                 :watą cukrową
-STR_CARGO_PLURAL_COTTON_CANDY.m                                 :wacie cukrowej
-STR_CARGO_PLURAL_COTTON_CANDY.w                                 :wato cukrowa
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Wata cukrowa
+STR_CARGO_PLURAL_CANDYFLOSS.d                                   :waty cukrowej
+STR_CARGO_PLURAL_CANDYFLOSS.c                                   :wacie cukrowej
+STR_CARGO_PLURAL_CANDYFLOSS.b                                   :watę cukrową
+STR_CARGO_PLURAL_CANDYFLOSS.n                                   :watą cukrową
+STR_CARGO_PLURAL_CANDYFLOSS.m                                   :wacie cukrowej
+STR_CARGO_PLURAL_CANDYFLOSS.w                                   :wato cukrowa
 STR_CARGO_PLURAL_BUBBLES                                        :Bąbelki
 STR_CARGO_PLURAL_BUBBLES.d                                      :bąbelków
 STR_CARGO_PLURAL_BUBBLES.c                                      :bąbelkom
@@ -408,12 +408,12 @@ STR_CARGO_SINGULAR_TOY.b                                        :zabawkę
 STR_CARGO_SINGULAR_TOY.n                                        :zabawką
 STR_CARGO_SINGULAR_TOY.m                                        :zabawce
 STR_CARGO_SINGULAR_TOY.w                                        :zabawko
-STR_CARGO_SINGULAR_CANDY                                        :Słodycz
-STR_CARGO_SINGULAR_CANDY.d                                      :słodyczy
-STR_CARGO_SINGULAR_CANDY.c                                      :słodyczy
-STR_CARGO_SINGULAR_CANDY.b                                      :słodycz
-STR_CARGO_SINGULAR_CANDY.n                                      :słodyczą
-STR_CARGO_SINGULAR_CANDY.m                                      :słodyczy
+STR_CARGO_SINGULAR_SWEETS                                       :Słodycz
+STR_CARGO_SINGULAR_SWEETS.d                                     :słodyczy
+STR_CARGO_SINGULAR_SWEETS.c                                     :słodyczy
+STR_CARGO_SINGULAR_SWEETS.b                                     :słodycz
+STR_CARGO_SINGULAR_SWEETS.n                                     :słodyczą
+STR_CARGO_SINGULAR_SWEETS.m                                     :słodyczy
 STR_CARGO_SINGULAR_COLA                                         :Cola
 STR_CARGO_SINGULAR_COLA.d                                       :coli
 STR_CARGO_SINGULAR_COLA.c                                       :coli
@@ -421,13 +421,13 @@ STR_CARGO_SINGULAR_COLA.b                                       :colę
 STR_CARGO_SINGULAR_COLA.n                                       :colą
 STR_CARGO_SINGULAR_COLA.m                                       :coli
 STR_CARGO_SINGULAR_COLA.w                                       :colo
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Wata cukrowa
-STR_CARGO_SINGULAR_COTTON_CANDY.d                               :waty cukrowej
-STR_CARGO_SINGULAR_COTTON_CANDY.c                               :wacie cukrowej
-STR_CARGO_SINGULAR_COTTON_CANDY.b                               :watę cukrową
-STR_CARGO_SINGULAR_COTTON_CANDY.n                               :watą cukrową
-STR_CARGO_SINGULAR_COTTON_CANDY.m                               :wacie cukrowej
-STR_CARGO_SINGULAR_COTTON_CANDY.w                               :wato cukrowa
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Wata cukrowa
+STR_CARGO_SINGULAR_CANDYFLOSS.d                                 :waty cukrowej
+STR_CARGO_SINGULAR_CANDYFLOSS.c                                 :wacie cukrowej
+STR_CARGO_SINGULAR_CANDYFLOSS.b                                 :watę cukrową
+STR_CARGO_SINGULAR_CANDYFLOSS.n                                 :watą cukrową
+STR_CARGO_SINGULAR_CANDYFLOSS.m                                 :wacie cukrowej
+STR_CARGO_SINGULAR_CANDYFLOSS.w                                 :wato cukrowa
 STR_CARGO_SINGULAR_BUBBLE                                       :Bąbelek
 STR_CARGO_SINGULAR_BUBBLE.d                                     :bąbelka
 STR_CARGO_SINGULAR_BUBBLE.c                                     :bąbelkowi

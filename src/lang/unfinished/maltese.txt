@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Qamħ
 STR_CARGO_PLURAL_RUBBER                                         :Lastku
 STR_CARGO_PLURAL_SUGAR                                          :Zokkor
 STR_CARGO_PLURAL_TOYS                                           :Ġugarelli
-STR_CARGO_PLURAL_CANDY                                          :Ħelu
+STR_CARGO_PLURAL_SWEETS                                         :Ħelu
 STR_CARGO_PLURAL_COLA                                           :Koka
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Kandifloss
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Kandifloss
 STR_CARGO_PLURAL_BUBBLES                                        :Bżieżaq
 STR_CARGO_PLURAL_TOFFEE                                         :Tofija
 STR_CARGO_PLURAL_BATTERIES                                      :Batteriji
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Qamħ
 STR_CARGO_SINGULAR_RUBBER                                       :Lastku
 STR_CARGO_SINGULAR_SUGAR                                        :Zokkor
 STR_CARGO_SINGULAR_TOY                                          :Ġugarell
-STR_CARGO_SINGULAR_CANDY                                        :Ħelwa
+STR_CARGO_SINGULAR_SWEETS                                       :Ħelwa
 STR_CARGO_SINGULAR_COLA                                         :Koka
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kandiflos
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Kandiflos
 STR_CARGO_SINGULAR_BUBBLE                                       :Bużżieqa
 STR_CARGO_SINGULAR_TOFFEE                                       :Tofija
 STR_CARGO_SINGULAR_BATTERY                                      :Batterija

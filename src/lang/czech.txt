@@ -102,17 +102,17 @@ STR_CARGO_PLURAL_SUGAR.big                                      :Cukr
 STR_CARGO_PLURAL_TOYS                                           :hračky
 STR_CARGO_PLURAL_TOYS.gen                                       :hraček
 STR_CARGO_PLURAL_TOYS.big                                       :Hračky
-STR_CARGO_PLURAL_CANDY                                          :bonbony
+STR_CARGO_PLURAL_SWEETS                                         :bonbony
 STR_CARGO_PLURAL_CANDY.gen                                      :bonbonů
 STR_CARGO_PLURAL_CANDY.big                                      :Bonbony
 STR_CARGO_PLURAL_COLA                                           :kola
 STR_CARGO_PLURAL_COLA.gen                                       :koly
 STR_CARGO_PLURAL_COLA.acc                                       :kolu
 STR_CARGO_PLURAL_COLA.big                                       :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :cukrová vata
-STR_CARGO_PLURAL_COTTON_CANDY.gen                               :cukrové vaty
-STR_CARGO_PLURAL_COTTON_CANDY.acc                               :cukrovou vatu
-STR_CARGO_PLURAL_COTTON_CANDY.big                               :Cukrová vata
+STR_CARGO_PLURAL_CANDYFLOSS                                     :cukrová vata
+STR_CARGO_PLURAL_CANDYFLOSS.gen                                 :cukrové vaty
+STR_CARGO_PLURAL_CANDYFLOSS.acc                                 :cukrovou vatu
+STR_CARGO_PLURAL_CANDYFLOSS.big                                 :Cukrová vata
 STR_CARGO_PLURAL_BUBBLES                                        :bubliny
 STR_CARGO_PLURAL_BUBBLES.gen                                    :bublin
 STR_CARGO_PLURAL_BUBBLES.big                                    :Bubliny
@@ -157,9 +157,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :pšenice
 STR_CARGO_SINGULAR_RUBBER                                       :kaučuku
 STR_CARGO_SINGULAR_SUGAR                                        :cukru
 STR_CARGO_SINGULAR_TOY                                          :hraček
-STR_CARGO_SINGULAR_CANDY                                        :bonbonů
+STR_CARGO_SINGULAR_SWEETS                                       :bonbonů
 STR_CARGO_SINGULAR_COLA                                         :koly
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :cukrové vaty
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :cukrové vaty
 STR_CARGO_SINGULAR_BUBBLE                                       :bublin
 STR_CARGO_SINGULAR_TOFFEE                                       :karamelu
 STR_CARGO_SINGULAR_BATTERY                                      :baterií

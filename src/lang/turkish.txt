@@ -49,9 +49,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Buğday
 STR_CARGO_PLURAL_RUBBER                                         :Kauçuk
 STR_CARGO_PLURAL_SUGAR                                          :Şeker
 STR_CARGO_PLURAL_TOYS                                           :Oyuncak
-STR_CARGO_PLURAL_CANDY                                          :Tatlı
+STR_CARGO_PLURAL_SWEETS                                         :Tatlı
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Pamuk şeker
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Pamuk şeker
 STR_CARGO_PLURAL_BUBBLES                                        :Baloncuk
 STR_CARGO_PLURAL_TOFFEE                                         :Şekerleme
 STR_CARGO_PLURAL_BATTERIES                                      :Pil
@@ -83,9 +83,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Buğday
 STR_CARGO_SINGULAR_RUBBER                                       :Kauçuk
 STR_CARGO_SINGULAR_SUGAR                                        :Şeker
 STR_CARGO_SINGULAR_TOY                                          :Oyuncak
-STR_CARGO_SINGULAR_CANDY                                        :Tatlı
+STR_CARGO_SINGULAR_SWEETS                                       :Tatlı
 STR_CARGO_SINGULAR_COLA                                         :Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Pamuk helva
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Pamuk helva
 STR_CARGO_SINGULAR_BUBBLE                                       :Balon
 STR_CARGO_SINGULAR_TOFFEE                                       :Şekerleme
 STR_CARGO_SINGULAR_BATTERY                                      :Pil

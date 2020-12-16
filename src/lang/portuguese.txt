@@ -49,9 +49,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Trigo
 STR_CARGO_PLURAL_RUBBER                                         :Borracha
 STR_CARGO_PLURAL_SUGAR                                          :Açúcar
 STR_CARGO_PLURAL_TOYS                                           :Brinquedos
-STR_CARGO_PLURAL_CANDY                                          :Doces
+STR_CARGO_PLURAL_SWEETS                                         :Doces
 STR_CARGO_PLURAL_COLA                                           :Bebida de cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Algodão Doce
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Algodão Doce
 STR_CARGO_PLURAL_BUBBLES                                        :Bolhas
 STR_CARGO_PLURAL_TOFFEE                                         :Caramelo
 STR_CARGO_PLURAL_BATTERIES                                      :Baterias
@@ -83,9 +83,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Trigo
 STR_CARGO_SINGULAR_RUBBER                                       :Borracha
 STR_CARGO_SINGULAR_SUGAR                                        :Açúcar
 STR_CARGO_SINGULAR_TOY                                          :Brinquedos
-STR_CARGO_SINGULAR_CANDY                                        :Doces
+STR_CARGO_SINGULAR_SWEETS                                       :Doces
 STR_CARGO_SINGULAR_COLA                                         :Bebida de cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Algodão Doce
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Algodão Doce
 STR_CARGO_SINGULAR_BUBBLE                                       :Bolhas
 STR_CARGO_SINGULAR_TOFFEE                                       :Caramelo
 STR_CARGO_SINGULAR_BATTERY                                      :Baterias

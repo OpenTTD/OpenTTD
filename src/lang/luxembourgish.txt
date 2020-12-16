@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Weess
 STR_CARGO_PLURAL_RUBBER                                         :Kautschuk
 STR_CARGO_PLURAL_SUGAR                                          :Zocker
 STR_CARGO_PLURAL_TOYS                                           :Spillsaachen
-STR_CARGO_PLURAL_CANDY                                          :Séissegkeeten
+STR_CARGO_PLURAL_SWEETS                                         :Séissegkeeten
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Zockerwatt
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Zockerwatt
 STR_CARGO_PLURAL_BUBBLES                                        :Blosen
 STR_CARGO_PLURAL_TOFFEE                                         :Karamell
 STR_CARGO_PLURAL_BATTERIES                                      :Batterien
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Weess
 STR_CARGO_SINGULAR_RUBBER                                       :Kautschuck
 STR_CARGO_SINGULAR_SUGAR                                        :Zocker
 STR_CARGO_SINGULAR_TOY                                          :Spillsaach
-STR_CARGO_SINGULAR_CANDY                                        :Séissegkeet
+STR_CARGO_SINGULAR_SWEETS                                       :Séissegkeet
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Zockerwatt
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Zockerwatt
 STR_CARGO_SINGULAR_BUBBLE                                       :Blos
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamell
 STR_CARGO_SINGULAR_BATTERY                                      :Batterie

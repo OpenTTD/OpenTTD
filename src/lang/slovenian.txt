@@ -105,16 +105,16 @@ STR_CARGO_PLURAL_SUGAR.d                                        :Sladkorju
 STR_CARGO_PLURAL_TOYS                                           :Igrače
 STR_CARGO_PLURAL_TOYS.r                                         :Igrač
 STR_CARGO_PLURAL_TOYS.d                                         :Igračam
-STR_CARGO_PLURAL_CANDY                                          :Sladkarije
+STR_CARGO_PLURAL_SWEETS                                         :Sladkarije
 STR_CARGO_PLURAL_CANDY.r                                        :Sladkarij
 STR_CARGO_PLURAL_CANDY.d                                        :Sladkarijam
 STR_CARGO_PLURAL_COLA                                           :Cockta
 STR_CARGO_PLURAL_COLA.r                                         :Cockte
 STR_CARGO_PLURAL_COLA.d                                         :Cockti
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Sladkorna pena
-STR_CARGO_PLURAL_COTTON_CANDY.r                                 :Sladkorne pene
-STR_CARGO_PLURAL_COTTON_CANDY.d                                 :Sladkorni peni
-STR_CARGO_PLURAL_COTTON_CANDY.t                                 :Sladkorno peno
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Sladkorna pena
+STR_CARGO_PLURAL_CANDYFLOSS.r                                   :Sladkorne pene
+STR_CARGO_PLURAL_CANDYFLOSS.d                                   :Sladkorni peni
+STR_CARGO_PLURAL_CANDYFLOSS.t                                   :Sladkorno peno
 STR_CARGO_PLURAL_BUBBLES                                        :Mehurčki
 STR_CARGO_PLURAL_BUBBLES.r                                      :Mehurčkov
 STR_CARGO_PLURAL_BUBBLES.d                                      :Mehurčkom
@@ -212,18 +212,18 @@ STR_CARGO_SINGULAR_TOY                                          :Igrača
 STR_CARGO_SINGULAR_TOY.r                                        :Igrače
 STR_CARGO_SINGULAR_TOY.d                                        :Igrači
 STR_CARGO_SINGULAR_TOY.t                                        :Igračo
-STR_CARGO_SINGULAR_CANDY                                        :Sladkarija
-STR_CARGO_SINGULAR_CANDY.r                                      :Sladkarije
-STR_CARGO_SINGULAR_CANDY.d                                      :Sladkariji
-STR_CARGO_SINGULAR_CANDY.t                                      :Sladkarijo
+STR_CARGO_SINGULAR_SWEETS                                       :Sladkarija
+STR_CARGO_SINGULAR_SWEETS.r                                     :Sladkarije
+STR_CARGO_SINGULAR_SWEETS.d                                     :Sladkariji
+STR_CARGO_SINGULAR_SWEETS.t                                     :Sladkarijo
 STR_CARGO_SINGULAR_COLA                                         :Cockta
 STR_CARGO_SINGULAR_COLA.r                                       :Cockte
 STR_CARGO_SINGULAR_COLA.d                                       :Cockti
 STR_CARGO_SINGULAR_COLA.t                                       :Cockto
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sladkorna pena
-STR_CARGO_SINGULAR_COTTON_CANDY.r                               :Sladkorne pene
-STR_CARGO_SINGULAR_COTTON_CANDY.d                               :Sladkorni peni
-STR_CARGO_SINGULAR_COTTON_CANDY.t                               :Sladkorno peno
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Sladkorna pena
+STR_CARGO_SINGULAR_CANDYFLOSS.r                                 :Sladkorne pene
+STR_CARGO_SINGULAR_CANDYFLOSS.d                                 :Sladkorni peni
+STR_CARGO_SINGULAR_CANDYFLOSS.t                                 :Sladkorno peno
 STR_CARGO_SINGULAR_BUBBLE                                       :Mehurček
 STR_CARGO_SINGULAR_BUBBLE.r                                     :Mehurčka
 STR_CARGO_SINGULAR_BUBBLE.d                                     :Mehurčku

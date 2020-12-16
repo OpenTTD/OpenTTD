@@ -50,9 +50,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Пшеница
 STR_CARGO_PLURAL_RUBBER                                         :Каучук
 STR_CARGO_PLURAL_SUGAR                                          :Захар
 STR_CARGO_PLURAL_TOYS                                           :Играчки
-STR_CARGO_PLURAL_CANDY                                          :Сладки
+STR_CARGO_PLURAL_SWEETS                                         :Сладки
 STR_CARGO_PLURAL_COLA                                           :Кола
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Захарен памук
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Захарен памук
 STR_CARGO_PLURAL_BUBBLES                                        :Балони
 STR_CARGO_PLURAL_TOFFEE                                         :Карамел
 STR_CARGO_PLURAL_BATTERIES                                      :Батерии
@@ -84,9 +84,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Пшеница
 STR_CARGO_SINGULAR_RUBBER                                       :Каучук
 STR_CARGO_SINGULAR_SUGAR                                        :Захар
 STR_CARGO_SINGULAR_TOY                                          :Играчки
-STR_CARGO_SINGULAR_CANDY                                        :Сладки
+STR_CARGO_SINGULAR_SWEETS                                       :Сладки
 STR_CARGO_SINGULAR_COLA                                         :Кола
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Захарен памук
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Захарен памук
 STR_CARGO_SINGULAR_BUBBLE                                       :Балони
 STR_CARGO_SINGULAR_TOFFEE                                       :Карамел
 STR_CARGO_SINGULAR_BATTERY                                      :Батерии

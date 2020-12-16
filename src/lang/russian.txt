@@ -96,15 +96,15 @@ STR_CARGO_PLURAL_SUGAR.acc                                      :сахар
 STR_CARGO_PLURAL_TOYS                                           :{G=p}Игрушки
 STR_CARGO_PLURAL_TOYS.gen                                       :игрушек
 STR_CARGO_PLURAL_TOYS.acc                                       :игрушки
-STR_CARGO_PLURAL_CANDY                                          :{G=p}Конфеты
+STR_CARGO_PLURAL_SWEETS                                         :{G=p}Конфеты
 STR_CARGO_PLURAL_CANDY.gen                                      :конфет
 STR_CARGO_PLURAL_CANDY.acc                                      :конфеты
 STR_CARGO_PLURAL_COLA                                           :{G=f}Кола
 STR_CARGO_PLURAL_COLA.gen                                       :колы
 STR_CARGO_PLURAL_COLA.acc                                       :колу
-STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=f}Сахарная вата
-STR_CARGO_PLURAL_COTTON_CANDY.gen                               :сахарной ваты
-STR_CARGO_PLURAL_COTTON_CANDY.acc                               :сахарную вату
+STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=f}Сахарная вата
+STR_CARGO_PLURAL_CANDYFLOSS.gen                                 :сахарной ваты
+STR_CARGO_PLURAL_CANDYFLOSS.acc                                 :сахарную вату
 STR_CARGO_PLURAL_BUBBLES                                        :{G=p}Пузырьки
 STR_CARGO_PLURAL_BUBBLES.gen                                    :пузырьков
 STR_CARGO_PLURAL_BUBBLES.acc                                    :пузырьки
@@ -192,15 +192,15 @@ STR_CARGO_SINGULAR_SUGAR.acc                                    :сахар
 STR_CARGO_SINGULAR_TOY                                          :{G=p}Игрушки
 STR_CARGO_SINGULAR_TOY.gen                                      :игрушек
 STR_CARGO_SINGULAR_TOY.acc                                      :игрушки
-STR_CARGO_SINGULAR_CANDY                                        :{G=p}Конфеты
-STR_CARGO_SINGULAR_CANDY.gen                                    :конфет
-STR_CARGO_SINGULAR_CANDY.acc                                    :конфеты
+STR_CARGO_SINGULAR_SWEETS                                       :{G=p}Конфеты
+STR_CARGO_SINGULAR_SWEETS.gen                                   :конфет
+STR_CARGO_SINGULAR_SWEETS.acc                                   :конфеты
 STR_CARGO_SINGULAR_COLA                                         :{G=f}Кола
 STR_CARGO_SINGULAR_COLA.gen                                     :колы
 STR_CARGO_SINGULAR_COLA.acc                                     :колу
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=f}Сахарная вата
-STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :сахарной ваты
-STR_CARGO_SINGULAR_COTTON_CANDY.acc                             :сахарную вату
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :{G=f}Сахарная вата
+STR_CARGO_SINGULAR_CANDYFLOSS.gen                               :сахарной ваты
+STR_CARGO_SINGULAR_CANDYFLOSS.acc                               :сахарную вату
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=p}Пузырьки
 STR_CARGO_SINGULAR_BUBBLE.gen                                   :пузырьков
 STR_CARGO_SINGULAR_BUBBLE.acc                                   :пузырьки
