@@ -7,157 +7,91 @@
 
 /** @file cargo_const.h Table of all default cargo types */
 
-/** Construction macro for a #CargoSpec structure. */
-#define MK(bt, label, c, e, f, g, h, fr, te, ks1, ks2, ks3, ks4, ks5, l, m, cmult) \
-		{bt, label, c, c, e, cmult, f, {g, h}, fr, te, 0, 0, ks1, ks2, ks3, ks4, ks5, l, m, nullptr, nullptr, 0}
+/** Construction macros for the #CargoSpec StringID entries. */
+#define MK_STR_CARGO_PLURAL(label_plural) STR_CARGO_PLURAL_ ## label_plural
+#define MK_STR_CARGO_SINGULAR(label_singular) STR_CARGO_SINGULAR_ ## label_singular
+#define MK_STR_QUANTITY(label_plural) STR_QUANTITY_ ## label_plural
+#define MK_STR_ABBREV(label_plural) STR_ABBREV_ ## label_plural
+/** Construction macros for the #CargoSpec SpriteID entry. */
+#define MK_SPRITE(label_plural) SPR_CARGO_ ## label_plural
+
+/**
+ * Construction macro for a #CargoSpec structure.
+ * The order of arguments matches the order in which they are defined in #CargoSpec.
+ * Some macros are used to automatically expand to the correct StringID consts, this
+ * means that adding/changing a cargo spec requires updating of the following strings:
+ * - STR_CARGO_PLURAL_<str_plural>
+ * - STR_CARGO_SINGULAR_<str_singular>
+ * - STR_QUANTITY_<str_plural>
+ * - STR_ABBREV_<str_plural>
+ * And the following sprite:
+ * - SPR_CARGO_<str_plural>
+ *
+ * @param bt           Cargo bit number, is #INVALID_CARGO for a non-used spec.
+ * @param label        Unique label of the cargo type.
+ * @param colour       CargoSpec->legend_colour and CargoSpec->rating_colour.
+ * @param weight       Weight of a single unit of this cargo type in 1/16 ton (62.5 kg).
+ * @param mult         Capacity multiplier for vehicles. (8 fractional bits).
+ * @param ip           CargoSpec->initial_payment.
+ * @param td1          CargoSpec->transit_days[0].
+ * @param td2          CargoSpec->transit_days[1].
+ * @param freight      Cargo type is considered to be freight (affects train freight multiplier).
+ * @param te           The effect that delivering this cargo type has on towns. Also affects destination of subsidies.
+ * @param str_plural   The name suffix used to populate CargoSpec->name, CargoSpec->quantifier,
+ *                     CargoSpec->abbrev and CargoSpec->sprite. See above for more detailed information.
+ * @param str_singular The name suffix used to populate CargoSpec->name_single. See above for more information.
+ * @param str_volume   Name of a single unit of cargo of this type.
+ * @param classes      Classes of this cargo type. @see CargoClass
+ */
+#define MK(bt, label, colour, weight, mult, ip, td1, td2, freight, te, str_plural, str_singular, str_volume, classes) \
+		{bt, label, colour, colour, weight, mult, ip, {td1, td2}, freight, te, 0, 0, \
+		MK_STR_CARGO_PLURAL(str_plural), MK_STR_CARGO_SINGULAR(str_singular), str_volume, MK_STR_QUANTITY(str_plural), MK_STR_ABBREV(str_plural), \
+		MK_SPRITE(str_plural), classes, nullptr, nullptr, 0}
+
 /** Cargo types available by default. */
 static const CargoSpec _default_cargo[] = {
-	MK(  0, 'PASS', 152,  1, 3185,  0,  24, false, TE_PASSENGERS,
-		STR_CARGO_PLURAL_PASSENGERS,     STR_CARGO_SINGULAR_PASSENGER,      STR_PASSENGERS, STR_QUANTITY_PASSENGERS,   STR_ABBREV_PASSENGERS,
-		SPR_CARGO_PASSENGER,     CC_PASSENGERS,                    0x400),
-
-	MK(  1, 'COAL',   6, 16, 5916,  7, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_COAL,           STR_CARGO_SINGULAR_COAL,           STR_TONS,       STR_QUANTITY_COAL,         STR_ABBREV_COAL,
-		SPR_CARGO_COAL,          CC_BULK,                          0x100),
-
-	MK(  2, 'MAIL',  15,  4, 4550, 20,  90, false, TE_MAIL,
-		STR_CARGO_PLURAL_MAIL,           STR_CARGO_SINGULAR_MAIL,           STR_BAGS,       STR_QUANTITY_MAIL,         STR_ABBREV_MAIL,
-		SPR_CARGO_MAIL,          CC_MAIL,                          0x200),
-
+	MK(   0, 'PASS', 152,  1, 0x400, 3185,  0,  24, false, TE_PASSENGERS,   PASSENGERS,    PASSENGER, STR_PASSENGERS, CC_PASSENGERS),
+	MK(   1, 'COAL',   6, 16, 0x100, 5916,  7, 255,  true,       TE_NONE,         COAL,         COAL,       STR_TONS, CC_BULK),
+	MK(   2, 'MAIL',  15,  4, 0x200, 4550, 20,  90, false,       TE_MAIL,         MAIL,         MAIL,       STR_BAGS, CC_MAIL),
 	/* Oil in temperate and arctic */
-	MK(  3, 'OIL_', 174, 16, 4437, 25, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_OIL,            STR_CARGO_SINGULAR_OIL,            STR_LITERS,     STR_QUANTITY_OIL,          STR_ABBREV_OIL,
-		SPR_CARGO_OIL,           CC_LIQUID,                        0x100),
-
+	MK(   3, 'OIL_', 174, 16, 0x100, 4437, 25, 255,  true,       TE_NONE,          OIL,          OIL,     STR_LITERS, CC_LIQUID),
 	/* Oil in subtropic */
-	MK(  3, 'OIL_', 174, 16, 4892, 25, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_OIL,            STR_CARGO_SINGULAR_OIL,            STR_LITERS,     STR_QUANTITY_OIL,          STR_ABBREV_OIL,
-		SPR_CARGO_OIL,           CC_LIQUID,                        0x100),
-
-	MK(  4, 'LVST', 208,  3, 4322,  4,  18, true,  TE_NONE,
-		STR_CARGO_PLURAL_LIVESTOCK,      STR_CARGO_SINGULAR_LIVESTOCK,      STR_ITEMS,      STR_QUANTITY_LIVESTOCK,    STR_ABBREV_LIVESTOCK,
-		SPR_CARGO_LIVESTOCK,     CC_PIECE_GOODS,                   0x100),
-
-	MK(  5, 'GOOD', 194,  8, 6144,  5,  28, true,  TE_GOODS,
-		STR_CARGO_PLURAL_GOODS,          STR_CARGO_SINGULAR_GOODS,          STR_CRATES,     STR_QUANTITY_GOODS,        STR_ABBREV_GOODS,
-		SPR_CARGO_GOODS,         CC_EXPRESS,                       0x200),
-
-	MK(  6, 'GRAI', 191, 16, 4778,  4,  40, true,  TE_NONE,
-		STR_CARGO_PLURAL_GRAIN,          STR_CARGO_SINGULAR_GRAIN,          STR_TONS,       STR_QUANTITY_GRAIN,        STR_ABBREV_GRAIN,
-		SPR_CARGO_GRAIN,         CC_BULK,                          0x100),
-
-	MK(  6, 'WHEA', 191, 16, 4778,  4,  40, true,  TE_NONE,
-		STR_CARGO_PLURAL_WHEAT,          STR_CARGO_SINGULAR_WHEAT,          STR_TONS,       STR_QUANTITY_WHEAT,        STR_ABBREV_WHEAT,
-		SPR_CARGO_GRAIN,         CC_BULK,                          0x100),
-
-	MK(  6, 'MAIZ', 191, 16, 4322,  4,  40, true,  TE_NONE,
-		STR_CARGO_PLURAL_MAIZE,          STR_CARGO_SINGULAR_MAIZE,          STR_TONS,       STR_QUANTITY_MAIZE,        STR_ABBREV_MAIZE,
-		SPR_CARGO_GRAIN,         CC_BULK,                          0x100),
-
+	MK(   3, 'OIL_', 174, 16, 0x100, 4892, 25, 255,  true,       TE_NONE,          OIL,          OIL,     STR_LITERS, CC_LIQUID),
+	MK(   4, 'LVST', 208,  3, 0x100, 4322,  4,  18,  true,       TE_NONE,    LIVESTOCK,    LIVESTOCK,      STR_ITEMS, CC_PIECE_GOODS),
+	MK(   5, 'GOOD', 194,  8, 0x200, 6144,  5,  28,  true,      TE_GOODS,        GOODS,        GOODS,     STR_CRATES, CC_EXPRESS),
+	MK(   6, 'GRAI', 191, 16, 0x100, 4778,  4,  40,  true,       TE_NONE,        GRAIN,        GRAIN,       STR_TONS, CC_BULK),
+	MK(   6, 'WHEA', 191, 16, 0x100, 4778,  4,  40,  true,       TE_NONE,        WHEAT,        WHEAT,       STR_TONS, CC_BULK),
+	MK(   6, 'MAIZ', 191, 16, 0x100, 4322,  4,  40,  true,       TE_NONE,        MAIZE,        MAIZE,       STR_TONS, CC_BULK),
 	/* Wood in temperate and arctic */
-	MK(  7, 'WOOD',  84, 16, 5005, 15, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_WOOD,           STR_CARGO_SINGULAR_WOOD,           STR_TONS,       STR_QUANTITY_WOOD,         STR_ABBREV_WOOD,
-		SPR_CARGO_WOOD,          CC_PIECE_GOODS,                   0x100),
-
+	MK(   7, 'WOOD',  84, 16, 0x100, 5005, 15, 255,  true,       TE_NONE,         WOOD,         WOOD,       STR_TONS, CC_PIECE_GOODS),
 	/* Wood in subtropic */
-	MK(  7, 'WOOD',  84, 16, 7964, 15, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_WOOD,           STR_CARGO_SINGULAR_WOOD,           STR_TONS,       STR_QUANTITY_WOOD,         STR_ABBREV_WOOD,
-		SPR_CARGO_WOOD,          CC_PIECE_GOODS,                   0x100),
-
-	MK(  8, 'IORE', 184, 16, 5120,  9, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_IRON_ORE,       STR_CARGO_SINGULAR_IRON_ORE,       STR_TONS,       STR_QUANTITY_IRON_ORE,     STR_ABBREV_IRON_ORE,
-		SPR_CARGO_IRON_ORE,      CC_BULK,                          0x100),
-
-	MK(  9, 'STEL',  10, 16, 5688,  7, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_STEEL,          STR_CARGO_SINGULAR_STEEL,          STR_TONS,       STR_QUANTITY_STEEL,        STR_ABBREV_STEEL,
-		SPR_CARGO_STEEL,         CC_PIECE_GOODS,                   0x100),
-
-	MK( 10, 'VALU', 202,  2, 7509,  1,  32, true,  TE_NONE,
-		STR_CARGO_PLURAL_VALUABLES,      STR_CARGO_SINGULAR_VALUABLES,      STR_BAGS,       STR_QUANTITY_VALUABLES,    STR_ABBREV_VALUABLES,
-		SPR_CARGO_VALUES_GOLD,   CC_ARMOURED,                      0x100),
-
-	MK( 10, 'GOLD', 202,  8, 5802, 10,  40, true,  TE_NONE,
-		STR_CARGO_PLURAL_GOLD,           STR_CARGO_SINGULAR_GOLD,           STR_BAGS,       STR_QUANTITY_GOLD,         STR_ABBREV_GOLD,
-		SPR_CARGO_VALUES_GOLD,   CC_ARMOURED,                      0x100),
-
-	MK( 10, 'DIAM', 202,  2, 5802, 10, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_DIAMONDS,       STR_CARGO_SINGULAR_DIAMOND,        STR_BAGS,       STR_QUANTITY_DIAMONDS,     STR_ABBREV_DIAMONDS,
-		SPR_CARGO_DIAMONDS,      CC_ARMOURED,                      0x100),
-
-	MK( 11, 'PAPR',  10, 16, 5461,  7,  60, true,  TE_NONE,
-		STR_CARGO_PLURAL_PAPER,          STR_CARGO_SINGULAR_PAPER,          STR_TONS,       STR_QUANTITY_PAPER,        STR_ABBREV_PAPER,
-		SPR_CARGO_PAPER,         CC_PIECE_GOODS,                   0x100),
-
-	MK( 12, 'FOOD',  48, 16, 5688,  0,  30, true,  TE_FOOD,
-		STR_CARGO_PLURAL_FOOD,           STR_CARGO_SINGULAR_FOOD,           STR_TONS,       STR_QUANTITY_FOOD,         STR_ABBREV_FOOD,
-		SPR_CARGO_FOOD,          CC_EXPRESS     | CC_REFRIGERATED, 0x100),
-
-	MK( 13, 'FRUT', 208, 16, 4209,  0,  15, true,  TE_NONE,
-		STR_CARGO_PLURAL_FRUIT,          STR_CARGO_SINGULAR_FRUIT,          STR_TONS,       STR_QUANTITY_FRUIT,        STR_ABBREV_FRUIT,
-		SPR_CARGO_FRUIT,         CC_BULK        | CC_REFRIGERATED, 0x100),
-
-	MK( 14, 'CORE', 184, 16, 4892, 12, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_COPPER_ORE,     STR_CARGO_SINGULAR_COPPER_ORE,     STR_TONS,       STR_QUANTITY_COPPER_ORE,   STR_ABBREV_COPPER_ORE,
-		SPR_CARGO_COPPER_ORE,    CC_BULK,                          0x100),
-
-	MK( 15, 'WATR',  10, 16, 4664, 20,  80, true,  TE_WATER,
-		STR_CARGO_PLURAL_WATER,          STR_CARGO_SINGULAR_WATER,          STR_LITERS,     STR_QUANTITY_WATER,        STR_ABBREV_WATER,
-		SPR_CARGO_WATERCOLA,     CC_LIQUID,                        0x100),
-
-	MK( 16, 'RUBR',   6, 16, 4437,  2,  20, true,  TE_NONE,
-		STR_CARGO_PLURAL_RUBBER,         STR_CARGO_SINGULAR_RUBBER,         STR_LITERS,     STR_QUANTITY_RUBBER,       STR_ABBREV_RUBBER,
-		SPR_CARGO_RUBBER,        CC_LIQUID,                        0x100),
-
-	MK( 17, 'SUGR',   6, 16, 4437, 20, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_SUGAR,          STR_CARGO_SINGULAR_SUGAR,          STR_TONS,       STR_QUANTITY_SUGAR,        STR_ABBREV_SUGAR,
-		SPR_CARGO_SUGAR,         CC_BULK,                          0x100),
-
-	MK( 18, 'TOYS', 174,  2, 5574, 25, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_TOYS,           STR_CARGO_SINGULAR_TOY,            STR_ITEMS,      STR_QUANTITY_TOYS,         STR_ABBREV_TOYS,
-		SPR_CARGO_TOYS,          CC_PIECE_GOODS,                   0x100),
-
-	MK( 19, 'BATT', 208,  4, 4322,  2,  30, true,  TE_NONE,
-		STR_CARGO_PLURAL_BATTERIES,      STR_CARGO_SINGULAR_BATTERY,        STR_ITEMS,      STR_QUANTITY_BATTERIES,    STR_ABBREV_BATTERIES,
-		SPR_CARGO_BATTERIES,     CC_PIECE_GOODS,                   0x100),
-
-	MK( 20, 'SWET', 194,  5, 6144,  8,  40, true,  TE_GOODS,
-		STR_CARGO_PLURAL_CANDY,          STR_CARGO_SINGULAR_CANDY,          STR_BAGS,       STR_QUANTITY_SWEETS,       STR_ABBREV_SWEETS,
-		SPR_CARGO_CANDY,         CC_EXPRESS,                       0x200),
-
-	MK( 21, 'TOFF', 191, 16, 4778, 14,  60, true,  TE_NONE,
-		STR_CARGO_PLURAL_TOFFEE,         STR_CARGO_SINGULAR_TOFFEE,         STR_TONS,       STR_QUANTITY_TOFFEE,       STR_ABBREV_TOFFEE,
-		SPR_CARGO_TOFFEE,        CC_BULK,                          0x100),
-
-	MK( 22, 'COLA',  84, 16, 4892,  5,  75, true,  TE_NONE,
-		STR_CARGO_PLURAL_COLA,           STR_CARGO_SINGULAR_COLA,           STR_LITERS,     STR_QUANTITY_COLA,         STR_ABBREV_COLA,
-		SPR_CARGO_WATERCOLA,     CC_LIQUID,                        0x100),
-
-	MK( 23, 'CTCD', 184, 16, 5005, 10,  25, true,  TE_NONE,
-		STR_CARGO_PLURAL_COTTON_CANDY,   STR_CARGO_SINGULAR_COTTON_CANDY,   STR_TONS,       STR_QUANTITY_CANDYFLOSS,   STR_ABBREV_CANDYFLOSS,
-		SPR_CARGO_COTTONCANDY,   CC_BULK,                          0x100),
-
-	MK( 24, 'BUBL',  10,  1, 5077, 20,  80, true,  TE_NONE,
-		STR_CARGO_PLURAL_BUBBLES,        STR_CARGO_SINGULAR_BUBBLE,         STR_ITEMS,      STR_QUANTITY_BUBBLES,      STR_ABBREV_BUBBLES,
-		SPR_CARGO_BUBBLES,       CC_PIECE_GOODS,                   0x100),
-
-	MK( 25, 'PLST', 202, 16, 4664, 30, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_PLASTIC,        STR_CARGO_SINGULAR_PLASTIC,        STR_LITERS,     STR_QUANTITY_PLASTIC,      STR_ABBREV_PLASTIC,
-		SPR_CARGO_PLASTIC,       CC_LIQUID,                        0x100),
-
-	MK( 26, 'FZDR',  48,  2, 6250, 30,  50, true,  TE_FOOD,
-		STR_CARGO_PLURAL_FIZZY_DRINKS,   STR_CARGO_SINGULAR_FIZZY_DRINK,    STR_ITEMS,      STR_QUANTITY_FIZZY_DRINKS, STR_ABBREV_FIZZY_DRINKS,
-		SPR_CARGO_FIZZYDRINK,    CC_PIECE_GOODS,                   0x100),
+	MK(   7, 'WOOD',  84, 16, 0x100, 7964, 15, 255,  true,       TE_NONE,         WOOD,         WOOD,       STR_TONS, CC_PIECE_GOODS),
+	MK(   8, 'IORE', 184, 16, 0x100, 5120,  9, 255,  true,       TE_NONE,     IRON_ORE,     IRON_ORE,       STR_TONS, CC_BULK),
+	MK(   9, 'STEL',  10, 16, 0x100, 5688,  7, 255,  true,       TE_NONE,        STEEL,        STEEL,       STR_TONS, CC_PIECE_GOODS),
+	MK(  10, 'VALU', 202,  2, 0x100, 7509,  1,  32,  true,       TE_NONE,    VALUABLES,    VALUABLES,       STR_BAGS, CC_ARMOURED),
+	MK(  10, 'GOLD', 202,  8, 0x100, 5802, 10,  40,  true,       TE_NONE,         GOLD,         GOLD,       STR_BAGS, CC_ARMOURED),
+	MK(  10, 'DIAM', 202,  2, 0x100, 5802, 10, 255,  true,       TE_NONE,     DIAMONDS,      DIAMOND,       STR_BAGS, CC_ARMOURED),
+	MK(  11, 'PAPR',  10, 16, 0x100, 5461,  7,  60,  true,       TE_NONE,        PAPER,        PAPER,       STR_TONS, CC_PIECE_GOODS),
+	MK(  12, 'FOOD',  48, 16, 0x100, 5688,  0,  30,  true,       TE_FOOD,         FOOD,         FOOD,       STR_TONS, CC_EXPRESS | CC_REFRIGERATED),
+	MK(  13, 'FRUT', 208, 16, 0x100, 4209,  0,  15,  true,       TE_NONE,        FRUIT,        FRUIT,       STR_TONS, CC_BULK | CC_REFRIGERATED),
+	MK(  14, 'CORE', 184, 16, 0x100, 4892, 12, 255,  true,       TE_NONE,   COPPER_ORE,   COPPER_ORE,       STR_TONS, CC_BULK),
+	MK(  15, 'WATR',  10, 16, 0x100, 4664, 20,  80,  true,      TE_WATER,        WATER,        WATER,     STR_LITERS, CC_LIQUID),
+	MK(  16, 'RUBR',   6, 16, 0x100, 4437,  2,  20,  true,       TE_NONE,       RUBBER,       RUBBER,     STR_LITERS, CC_LIQUID),
+	MK(  17, 'SUGR',   6, 16, 0x100, 4437, 20, 255,  true,       TE_NONE,        SUGAR,        SUGAR,       STR_TONS, CC_BULK),
+	MK(  18, 'TOYS', 174,  2, 0x100, 5574, 25, 255,  true,       TE_NONE,         TOYS,          TOY,      STR_ITEMS, CC_PIECE_GOODS),
+	MK(  19, 'BATT', 208,  4, 0x100, 4322,  2,  30,  true,       TE_NONE,    BATTERIES,      BATTERY,      STR_ITEMS, CC_PIECE_GOODS),
+	MK(  20, 'SWET', 194,  5, 0x200, 6144,  8,  40,  true,      TE_GOODS,       SWEETS,       SWEETS,       STR_BAGS, CC_EXPRESS),
+	MK(  21, 'TOFF', 191, 16, 0x100, 4778, 14,  60,  true,       TE_NONE,       TOFFEE,       TOFFEE,       STR_TONS, CC_BULK),
+	MK(  22, 'COLA',  84, 16, 0x100, 4892,  5,  75,  true,       TE_NONE,         COLA,         COLA,     STR_LITERS, CC_LIQUID),
+	MK(  23, 'CTCD', 184, 16, 0x100, 5005, 10,  25,  true,       TE_NONE,   CANDYFLOSS,   CANDYFLOSS,       STR_TONS, CC_BULK),
+	MK(  24, 'BUBL',  10,  1, 0x100, 5077, 20,  80,  true,       TE_NONE,      BUBBLES,       BUBBLE,      STR_ITEMS, CC_PIECE_GOODS),
+	MK(  25, 'PLST', 202, 16, 0x100, 4664, 30, 255,  true,       TE_NONE,      PLASTIC,      PLASTIC,     STR_LITERS, CC_LIQUID),
+	MK(  26, 'FZDR',  48,  2, 0x100, 6250, 30,  50,  true,       TE_FOOD, FIZZY_DRINKS,  FIZZY_DRINK,      STR_ITEMS, CC_PIECE_GOODS),
 
 	/* Void slot in temperate */
-	MK( 0xFF,    0,   1,  0, 5688,  0,  30, true,  TE_NONE,
-		STR_CARGO_PLURAL_NOTHING,        STR_CARGO_SINGULAR_NOTHING,        STR_TONS,       STR_QUANTITY_NOTHING,      STR_ABBREV_NOTHING,
-		SPR_ASCII_SPACE,         CC_NOAVAILABLE,                   0x100),
-
+	MK(0xFF,      0,   1,  0, 0x100, 5688,  0,  30,  true,       TE_NONE,      NOTHING,      NOTHING,       STR_TONS, CC_NOAVAILABLE),
 	/* Void slot in arctic */
-	MK( 0xFF,    0, 184,  0, 5120,  9, 255, true,  TE_NONE,
-		STR_CARGO_PLURAL_NOTHING,        STR_CARGO_SINGULAR_NOTHING,        STR_TONS,       STR_QUANTITY_NOTHING,      STR_ABBREV_NOTHING,
-		SPR_ASCII_SPACE,         CC_NOAVAILABLE,                   0x100),
-
+	MK(0xFF,      0, 184,  0, 0x100, 5120,  9, 255,  true,       TE_NONE,      NOTHING,      NOTHING,       STR_TONS, CC_NOAVAILABLE),
 };
 
 
