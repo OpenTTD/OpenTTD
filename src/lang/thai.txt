@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :ข้าวส
 STR_CARGO_PLURAL_RUBBER                                         :ยางพารา
 STR_CARGO_PLURAL_SUGAR                                          :น้ำตาล
 STR_CARGO_PLURAL_TOYS                                           :ของเล่น
-STR_CARGO_PLURAL_CANDY                                          :ขนมสายไหม
+STR_CARGO_PLURAL_SWEETS                                         :ขนมสายไหม
 STR_CARGO_PLURAL_COLA                                           :โคล่า
-STR_CARGO_PLURAL_COTTON_CANDY                                   :ขนมสายไหม
+STR_CARGO_PLURAL_CANDYFLOSS                                     :ขนมสายไหม
 STR_CARGO_PLURAL_BUBBLES                                        :ฟอง
 STR_CARGO_PLURAL_TOFFEE                                         :ลูกอม
 STR_CARGO_PLURAL_BATTERIES                                      :ถ่านไฟฉาย
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :ข้าวส
 STR_CARGO_SINGULAR_RUBBER                                       :ยางพารา
 STR_CARGO_SINGULAR_SUGAR                                        :น้ำตาล
 STR_CARGO_SINGULAR_TOY                                          :ของเล่น
-STR_CARGO_SINGULAR_CANDY                                        :ขนมสายไหม
+STR_CARGO_SINGULAR_SWEETS                                       :ขนมสายไหม
 STR_CARGO_SINGULAR_COLA                                         :โคล่า
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :ขนมสายไหม
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :ขนมสายไหม
 STR_CARGO_SINGULAR_BUBBLE                                       :ฟอง
 STR_CARGO_SINGULAR_TOFFEE                                       :ลูกอม
 STR_CARGO_SINGULAR_BATTERY                                      :ถ่านไฟฉาย

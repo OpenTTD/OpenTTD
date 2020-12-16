@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :小麦
 STR_CARGO_PLURAL_RUBBER                                         :橡胶
 STR_CARGO_PLURAL_SUGAR                                          :蔗糖
 STR_CARGO_PLURAL_TOYS                                           :玩具
-STR_CARGO_PLURAL_CANDY                                          :糖果
+STR_CARGO_PLURAL_SWEETS                                         :糖果
 STR_CARGO_PLURAL_COLA                                           :可乐
-STR_CARGO_PLURAL_COTTON_CANDY                                   :棉花糖
+STR_CARGO_PLURAL_CANDYFLOSS                                     :棉花糖
 STR_CARGO_PLURAL_BUBBLES                                        :泡泡
 STR_CARGO_PLURAL_TOFFEE                                         :太妃糖
 STR_CARGO_PLURAL_BATTERIES                                      :电池
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :小麦
 STR_CARGO_SINGULAR_RUBBER                                       :橡胶
 STR_CARGO_SINGULAR_SUGAR                                        :蔗糖
 STR_CARGO_SINGULAR_TOY                                          :玩具
-STR_CARGO_SINGULAR_CANDY                                        :糖果
+STR_CARGO_SINGULAR_SWEETS                                       :糖果
 STR_CARGO_SINGULAR_COLA                                         :可乐
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :棉花糖
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :棉花糖
 STR_CARGO_SINGULAR_BUBBLE                                       :泡泡
 STR_CARGO_SINGULAR_TOFFEE                                       :太妃糖
 STR_CARGO_SINGULAR_BATTERY                                      :电池

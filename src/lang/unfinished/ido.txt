@@ -47,9 +47,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Frumento
 STR_CARGO_PLURAL_RUBBER                                         :Kauchuko
 STR_CARGO_PLURAL_SUGAR                                          :Sukro
 STR_CARGO_PLURAL_TOYS                                           :Ludili
-STR_CARGO_PLURAL_CANDY                                          :Bonboni
+STR_CARGO_PLURAL_SWEETS                                         :Bonboni
 STR_CARGO_PLURAL_COLA                                           :Kolao
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Kandi-lanugo
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Kandi-lanugo
 STR_CARGO_PLURAL_BUBBLES                                        :Buli
 STR_CARGO_PLURAL_TOFFEE                                         :Karamelo
 STR_CARGO_PLURAL_BATTERIES                                      :Baterii
@@ -81,9 +81,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Frumento
 STR_CARGO_SINGULAR_RUBBER                                       :Kauchuko
 STR_CARGO_SINGULAR_SUGAR                                        :Sukro
 STR_CARGO_SINGULAR_TOY                                          :Ludilo
-STR_CARGO_SINGULAR_CANDY                                        :Bonbono
+STR_CARGO_SINGULAR_SWEETS                                       :Bonbono
 STR_CARGO_SINGULAR_COLA                                         :Kolao
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kandi-lanugo
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Kandi-lanugo
 STR_CARGO_SINGULAR_BUBBLE                                       :Bulo
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamelo
 STR_CARGO_SINGULAR_BATTERY                                      :Baterio

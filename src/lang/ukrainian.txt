@@ -95,15 +95,15 @@ STR_CARGO_PLURAL_SUGAR.z                                        :цукор
 STR_CARGO_PLURAL_TOYS                                           :іграшки
 STR_CARGO_PLURAL_TOYS.r                                         :іграшок
 STR_CARGO_PLURAL_TOYS.z                                         :іграшки
-STR_CARGO_PLURAL_CANDY                                          :солодощі
+STR_CARGO_PLURAL_SWEETS                                         :солодощі
 STR_CARGO_PLURAL_CANDY.r                                        :солодощів
 STR_CARGO_PLURAL_CANDY.z                                        :солодощі
 STR_CARGO_PLURAL_COLA                                           :кола
 STR_CARGO_PLURAL_COLA.r                                         :коли
 STR_CARGO_PLURAL_COLA.z                                         :колу
-STR_CARGO_PLURAL_COTTON_CANDY                                   :солодка вата
-STR_CARGO_PLURAL_COTTON_CANDY.r                                 :солодкої вати
-STR_CARGO_PLURAL_COTTON_CANDY.z                                 :солодку вату
+STR_CARGO_PLURAL_CANDYFLOSS                                     :солодка вата
+STR_CARGO_PLURAL_CANDYFLOSS.r                                   :солодкої вати
+STR_CARGO_PLURAL_CANDYFLOSS.z                                   :солодку вату
 STR_CARGO_PLURAL_BUBBLES                                        :бульбашки
 STR_CARGO_PLURAL_BUBBLES.r                                      :бульбашок
 STR_CARGO_PLURAL_BUBBLES.z                                      :бульбашки
@@ -191,15 +191,15 @@ STR_CARGO_SINGULAR_SUGAR.z                                      :цукор
 STR_CARGO_SINGULAR_TOY                                          :іграшки
 STR_CARGO_SINGULAR_TOY.r                                        :іграшок
 STR_CARGO_SINGULAR_TOY.z                                        :іграшки
-STR_CARGO_SINGULAR_CANDY                                        :цукерки
-STR_CARGO_SINGULAR_CANDY.r                                      :цукерок
-STR_CARGO_SINGULAR_CANDY.z                                      :цукерки
+STR_CARGO_SINGULAR_SWEETS                                       :цукерки
+STR_CARGO_SINGULAR_SWEETS.r                                     :цукерок
+STR_CARGO_SINGULAR_SWEETS.z                                     :цукерки
 STR_CARGO_SINGULAR_COLA                                         :кола
 STR_CARGO_SINGULAR_COLA.r                                       :коли
 STR_CARGO_SINGULAR_COLA.z                                       :колу
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :солодка вата
-STR_CARGO_SINGULAR_COTTON_CANDY.r                               :солодкої вати
-STR_CARGO_SINGULAR_COTTON_CANDY.z                               :солодку вату
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :солодка вата
+STR_CARGO_SINGULAR_CANDYFLOSS.r                                 :солодкої вати
+STR_CARGO_SINGULAR_CANDYFLOSS.z                                 :солодку вату
 STR_CARGO_SINGULAR_BUBBLE                                       :бульбашки
 STR_CARGO_SINGULAR_BUBBLE.r                                     :бульбашок
 STR_CARGO_SINGULAR_BUBBLE.z                                     :бульбашки

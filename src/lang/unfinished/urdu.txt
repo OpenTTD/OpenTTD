@@ -49,9 +49,9 @@ STR_CARGO_PLURAL_WHEAT                                          :گندم
 STR_CARGO_PLURAL_RUBBER                                         :ربڑ
 STR_CARGO_PLURAL_SUGAR                                          :چینی
 STR_CARGO_PLURAL_TOYS                                           :کھلونے
-STR_CARGO_PLURAL_CANDY                                          :مٹھایاں
+STR_CARGO_PLURAL_SWEETS                                         :مٹھایاں
 STR_CARGO_PLURAL_COLA                                           :کوئلہ
-STR_CARGO_PLURAL_COTTON_CANDY                                   :کینڈی فلاس
+STR_CARGO_PLURAL_CANDYFLOSS                                     :کینڈی فلاس
 STR_CARGO_PLURAL_BUBBLES                                        :بلبلے
 STR_CARGO_PLURAL_TOFFEE                                         :ٹافی
 STR_CARGO_PLURAL_BATTERIES                                      :بیٹریاں
@@ -83,9 +83,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :گندم
 STR_CARGO_SINGULAR_RUBBER                                       :ربڑ
 STR_CARGO_SINGULAR_SUGAR                                        :چینی
 STR_CARGO_SINGULAR_TOY                                          :کھلونا
-STR_CARGO_SINGULAR_CANDY                                        :مٹھائی
+STR_CARGO_SINGULAR_SWEETS                                       :مٹھائی
 STR_CARGO_SINGULAR_COLA                                         :کولا
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :کینڈی فلاس
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :کینڈی فلاس
 STR_CARGO_SINGULAR_BUBBLE                                       :بلبلہ
 STR_CARGO_SINGULAR_TOFFEE                                       :ٹافی
 STR_CARGO_SINGULAR_BATTERY                                      :بیٹری

@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :قمح
 STR_CARGO_PLURAL_RUBBER                                         :مطاط
 STR_CARGO_PLURAL_SUGAR                                          :سكر
 STR_CARGO_PLURAL_TOYS                                           :دُمَي
-STR_CARGO_PLURAL_CANDY                                          :حلويات
+STR_CARGO_PLURAL_SWEETS                                         :حلويات
 STR_CARGO_PLURAL_COLA                                           :كولا
-STR_CARGO_PLURAL_COTTON_CANDY                                   :سكر نبات
+STR_CARGO_PLURAL_CANDYFLOSS                                     :سكر نبات
 STR_CARGO_PLURAL_BUBBLES                                        :فقاعات
 STR_CARGO_PLURAL_TOFFEE                                         :توفي
 STR_CARGO_PLURAL_BATTERIES                                      :بطاريات
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :قمح
 STR_CARGO_SINGULAR_RUBBER                                       :مطاط
 STR_CARGO_SINGULAR_SUGAR                                        :سكر
 STR_CARGO_SINGULAR_TOY                                          :دُمِيه
-STR_CARGO_SINGULAR_CANDY                                        :حلويات
+STR_CARGO_SINGULAR_SWEETS                                       :حلويات
 STR_CARGO_SINGULAR_COLA                                         :كولا
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :سكر نبات
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :سكر نبات
 STR_CARGO_SINGULAR_BUBBLE                                       :فقاعات
 STR_CARGO_SINGULAR_TOFFEE                                       :توفي
 STR_CARGO_SINGULAR_BATTERY                                      :بطاريات

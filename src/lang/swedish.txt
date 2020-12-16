@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Vete
 STR_CARGO_PLURAL_RUBBER                                         :Gummi
 STR_CARGO_PLURAL_SUGAR                                          :Socker
 STR_CARGO_PLURAL_TOYS                                           :Leksaker
-STR_CARGO_PLURAL_CANDY                                          :Godis
+STR_CARGO_PLURAL_SWEETS                                         :Godis
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Sockervadd
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Sockervadd
 STR_CARGO_PLURAL_BUBBLES                                        :Bubblor
 STR_CARGO_PLURAL_TOFFEE                                         :Knäck
 STR_CARGO_PLURAL_BATTERIES                                      :Batterier
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Spannmål
 STR_CARGO_SINGULAR_RUBBER                                       :Gummi
 STR_CARGO_SINGULAR_SUGAR                                        :Socker
 STR_CARGO_SINGULAR_TOY                                          :Leksak
-STR_CARGO_SINGULAR_CANDY                                        :Godis
+STR_CARGO_SINGULAR_SWEETS                                       :Godis
 STR_CARGO_SINGULAR_COLA                                         :Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sockervadd
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Sockervadd
 STR_CARGO_SINGULAR_BUBBLE                                       :Bubbla
 STR_CARGO_SINGULAR_TOFFEE                                       :Knäck
 STR_CARGO_SINGULAR_BATTERY                                      :Batteri

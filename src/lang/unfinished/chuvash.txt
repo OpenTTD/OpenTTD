@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Тулă
 STR_CARGO_PLURAL_RUBBER                                         :Каучук
 STR_CARGO_PLURAL_SUGAR                                          :Сахăр
 STR_CARGO_PLURAL_TOYS                                           :Теттесем
-STR_CARGO_PLURAL_CANDY                                          :Канфетсем
+STR_CARGO_PLURAL_SWEETS                                         :Канфетсем
 STR_CARGO_PLURAL_COLA                                           :Кола
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Сахăр ваткĕ
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Сахăр ваткĕ
 STR_CARGO_PLURAL_BUBBLES                                        :Хӑмпӑҫӑмсем
 STR_CARGO_PLURAL_TOFFEE                                         :Карамель
 STR_CARGO_PLURAL_BATTERIES                                      :Батарейкасем
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Тулă
 STR_CARGO_SINGULAR_RUBBER                                       :Каучук
 STR_CARGO_SINGULAR_SUGAR                                        :Сахăр
 STR_CARGO_SINGULAR_TOY                                          :Тетте
-STR_CARGO_SINGULAR_CANDY                                        :Канфетсем
+STR_CARGO_SINGULAR_SWEETS                                       :Канфетсем
 STR_CARGO_SINGULAR_COLA                                         :Кола
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Сахăр ваткĕ
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Сахăр ваткĕ
 STR_CARGO_SINGULAR_BUBBLE                                       :Хӑмпӑҫӑм
 STR_CARGO_SINGULAR_TOFFEE                                       :Карамель
 STR_CARGO_SINGULAR_BATTERY                                      :Батарейкасем

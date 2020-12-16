@@ -50,9 +50,9 @@ STR_CARGO_PLURAL_WHEAT                                          :חיטה
 STR_CARGO_PLURAL_RUBBER                                         :גומי
 STR_CARGO_PLURAL_SUGAR                                          :סוכר
 STR_CARGO_PLURAL_TOYS                                           :צעצועים
-STR_CARGO_PLURAL_CANDY                                          :ממתקים
+STR_CARGO_PLURAL_SWEETS                                         :ממתקים
 STR_CARGO_PLURAL_COLA                                           :קולה
-STR_CARGO_PLURAL_COTTON_CANDY                                   :שערות סבתא
+STR_CARGO_PLURAL_CANDYFLOSS                                     :שערות סבתא
 STR_CARGO_PLURAL_BUBBLES                                        :בועות
 STR_CARGO_PLURAL_TOFFEE                                         :טופי
 STR_CARGO_PLURAL_BATTERIES                                      :סוללות
@@ -92,10 +92,10 @@ STR_CARGO_SINGULAR_RUBBER                                       :גומי
 STR_CARGO_SINGULAR_SUGAR                                        :סוכר
 STR_CARGO_SINGULAR_TOY                                          :צעצוע
 STR_CARGO_SINGULAR_TOY.plural                                   :צעצועים
-STR_CARGO_SINGULAR_CANDY                                        :ממתק
-STR_CARGO_SINGULAR_CANDY.plural                                 :ממתקים
+STR_CARGO_SINGULAR_SWEETS                                       :ממתק
+STR_CARGO_SINGULAR_SWEETS.plural                                :ממתקים
 STR_CARGO_SINGULAR_COLA                                         :קולה
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :צמר גפן מתוק
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :צמר גפן מתוק
 STR_CARGO_SINGULAR_BUBBLE                                       :בועה
 STR_CARGO_SINGULAR_BUBBLE.plural                                :בועות
 STR_CARGO_SINGULAR_TOFFEE                                       :טופי

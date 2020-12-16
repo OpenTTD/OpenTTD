@@ -166,7 +166,7 @@ STR_CARGO_PLURAL_TOYS.dat                                       :цацкам
 STR_CARGO_PLURAL_TOYS.acc                                       :цацкі
 STR_CARGO_PLURAL_TOYS.abl                                       :цацкамі
 STR_CARGO_PLURAL_TOYS.pre                                       :цацках
-STR_CARGO_PLURAL_CANDY                                          :{G=p}Цукеркi
+STR_CARGO_PLURAL_SWEETS                                         :{G=p}Цукеркi
 STR_CARGO_PLURAL_CANDY.gen                                      :цукерак
 STR_CARGO_PLURAL_CANDY.dat                                      :цукеркам
 STR_CARGO_PLURAL_CANDY.acc                                      :цукеркі
@@ -178,12 +178,12 @@ STR_CARGO_PLURAL_COLA.dat                                       :коле
 STR_CARGO_PLURAL_COLA.acc                                       :колу
 STR_CARGO_PLURAL_COLA.abl                                       :колай
 STR_CARGO_PLURAL_COLA.pre                                       :коле
-STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=f}Цукровая баўна
-STR_CARGO_PLURAL_COTTON_CANDY.gen                               :цукровай баўны
-STR_CARGO_PLURAL_COTTON_CANDY.dat                               :цукровай баўне
-STR_CARGO_PLURAL_COTTON_CANDY.acc                               :цукровую баўну
-STR_CARGO_PLURAL_COTTON_CANDY.abl                               :цукровай баўнай
-STR_CARGO_PLURAL_COTTON_CANDY.pre                               :цукровай баўне
+STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=f}Цукровая баўна
+STR_CARGO_PLURAL_CANDYFLOSS.gen                                 :цукровай баўны
+STR_CARGO_PLURAL_CANDYFLOSS.dat                                 :цукровай баўне
+STR_CARGO_PLURAL_CANDYFLOSS.acc                                 :цукровую баўну
+STR_CARGO_PLURAL_CANDYFLOSS.abl                                 :цукровай баўнай
+STR_CARGO_PLURAL_CANDYFLOSS.pre                                 :цукровай баўне
 STR_CARGO_PLURAL_BUBBLES                                        :{G=p}Бурбалкi
 STR_CARGO_PLURAL_BUBBLES.gen                                    :бурбалак
 STR_CARGO_PLURAL_BUBBLES.dat                                    :бурбалкам
@@ -355,24 +355,24 @@ STR_CARGO_SINGULAR_TOY.dat                                      :цаццы
 STR_CARGO_SINGULAR_TOY.acc                                      :цацку
 STR_CARGO_SINGULAR_TOY.abl                                      :цацкай
 STR_CARGO_SINGULAR_TOY.pre                                      :цаццы
-STR_CARGO_SINGULAR_CANDY                                        :{G=f}Цукерка
-STR_CARGO_SINGULAR_CANDY.gen                                    :цукеркі
-STR_CARGO_SINGULAR_CANDY.dat                                    :цукерцы
-STR_CARGO_SINGULAR_CANDY.acc                                    :цукерку
-STR_CARGO_SINGULAR_CANDY.abl                                    :цукеркай
-STR_CARGO_SINGULAR_CANDY.pre                                    :цукерцы
+STR_CARGO_SINGULAR_SWEETS                                       :{G=f}Цукерка
+STR_CARGO_SINGULAR_SWEETS.gen                                   :цукеркі
+STR_CARGO_SINGULAR_SWEETS.dat                                   :цукерцы
+STR_CARGO_SINGULAR_SWEETS.acc                                   :цукерку
+STR_CARGO_SINGULAR_SWEETS.abl                                   :цукеркай
+STR_CARGO_SINGULAR_SWEETS.pre                                   :цукерцы
 STR_CARGO_SINGULAR_COLA                                         :{G=f}Кола
 STR_CARGO_SINGULAR_COLA.gen                                     :колы
 STR_CARGO_SINGULAR_COLA.dat                                     :коле
 STR_CARGO_SINGULAR_COLA.acc                                     :колу
 STR_CARGO_SINGULAR_COLA.abl                                     :колай
 STR_CARGO_SINGULAR_COLA.pre                                     :коле
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=f}Цукровая баўна
-STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :цукровай баўны
-STR_CARGO_SINGULAR_COTTON_CANDY.dat                             :цукровай баўне
-STR_CARGO_SINGULAR_COTTON_CANDY.acc                             :цукровую баўну
-STR_CARGO_SINGULAR_COTTON_CANDY.abl                             :цукровай баўнай
-STR_CARGO_SINGULAR_COTTON_CANDY.pre                             :цукровай баўне
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :{G=f}Цукровая баўна
+STR_CARGO_SINGULAR_CANDYFLOSS.gen                               :цукровай баўны
+STR_CARGO_SINGULAR_CANDYFLOSS.dat                               :цукровай баўне
+STR_CARGO_SINGULAR_CANDYFLOSS.acc                               :цукровую баўну
+STR_CARGO_SINGULAR_CANDYFLOSS.abl                               :цукровай баўнай
+STR_CARGO_SINGULAR_CANDYFLOSS.pre                               :цукровай баўне
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Бурбалка
 STR_CARGO_SINGULAR_BUBBLE.gen                                   :бурбалкі
 STR_CARGO_SINGULAR_BUBBLE.dat                                   :бурбалцы

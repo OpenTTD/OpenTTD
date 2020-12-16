@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Grâu
 STR_CARGO_PLURAL_RUBBER                                         :Cauciuc
 STR_CARGO_PLURAL_SUGAR                                          :Zahăr
 STR_CARGO_PLURAL_TOYS                                           :Jucării
-STR_CARGO_PLURAL_CANDY                                          :Dulciuri
+STR_CARGO_PLURAL_SWEETS                                         :Dulciuri
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Vată de zahăr
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Vată de zahăr
 STR_CARGO_PLURAL_BUBBLES                                        :Balonașe
 STR_CARGO_PLURAL_TOFFEE                                         :Caramele
 STR_CARGO_PLURAL_BATTERIES                                      :Baterii
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Grâu
 STR_CARGO_SINGULAR_RUBBER                                       :Cauciuc
 STR_CARGO_SINGULAR_SUGAR                                        :Zahăr
 STR_CARGO_SINGULAR_TOY                                          :Jucărie
-STR_CARGO_SINGULAR_CANDY                                        :Dulciuri
+STR_CARGO_SINGULAR_SWEETS                                       :Dulciuri
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Vată de zahăr
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Vată de zahăr
 STR_CARGO_SINGULAR_BUBBLE                                       :Balonaș
 STR_CARGO_SINGULAR_TOFFEE                                       :Caramea
 STR_CARGO_SINGULAR_BATTERY                                      :Baterie

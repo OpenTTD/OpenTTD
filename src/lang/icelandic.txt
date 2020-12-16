@@ -49,9 +49,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Hveiti
 STR_CARGO_PLURAL_RUBBER                                         :Gúmmí
 STR_CARGO_PLURAL_SUGAR                                          :Sykur
 STR_CARGO_PLURAL_TOYS                                           :Leikföng
-STR_CARGO_PLURAL_CANDY                                          :Sælgæti
+STR_CARGO_PLURAL_SWEETS                                         :Sælgæti
 STR_CARGO_PLURAL_COLA                                           :Kóladrykkir
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Sykurfrauð
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Sykurfrauð
 STR_CARGO_PLURAL_BUBBLES                                        :Kúlur
 STR_CARGO_PLURAL_TOFFEE                                         :Toffý
 STR_CARGO_PLURAL_BATTERIES                                      :Rafhlöður
@@ -83,9 +83,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Hveitis
 STR_CARGO_SINGULAR_RUBBER                                       :Gúmmí
 STR_CARGO_SINGULAR_SUGAR                                        :Sykur
 STR_CARGO_SINGULAR_TOY                                          :Leikfanga
-STR_CARGO_SINGULAR_CANDY                                        :Sælgætis
+STR_CARGO_SINGULAR_SWEETS                                       :Sælgætis
 STR_CARGO_SINGULAR_COLA                                         :Kóladrykkja
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sykurfrauðs
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Sykurfrauðs
 STR_CARGO_SINGULAR_BUBBLE                                       :Kúlu
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffý
 STR_CARGO_SINGULAR_BATTERY                                      :Rafhlöðu

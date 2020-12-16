@@ -119,7 +119,7 @@ STR_CARGO_PLURAL_TOYS                                           :igračke
 STR_CARGO_PLURAL_TOYS.big                                       :Igračke
 STR_CARGO_PLURAL_TOYS.gen                                       :igračaka
 STR_CARGO_PLURAL_TOYS.aku                                       :igračke
-STR_CARGO_PLURAL_CANDY                                          :slatkiši
+STR_CARGO_PLURAL_SWEETS                                         :slatkiši
 STR_CARGO_PLURAL_CANDY.big                                      :Slatkiši
 STR_CARGO_PLURAL_CANDY.gen                                      :slatkiša
 STR_CARGO_PLURAL_CANDY.aku                                      :slatkiše
@@ -127,10 +127,10 @@ STR_CARGO_PLURAL_COLA                                           :kola
 STR_CARGO_PLURAL_COLA.big                                       :Kola
 STR_CARGO_PLURAL_COLA.gen                                       :kole
 STR_CARGO_PLURAL_COLA.aku                                       :kolu
-STR_CARGO_PLURAL_COTTON_CANDY                                   :šećerna vuna
-STR_CARGO_PLURAL_COTTON_CANDY.big                               :Šećerna vuna
-STR_CARGO_PLURAL_COTTON_CANDY.gen                               :šećerne vune
-STR_CARGO_PLURAL_COTTON_CANDY.aku                               :šećernu vunu
+STR_CARGO_PLURAL_CANDYFLOSS                                     :šećerna vuna
+STR_CARGO_PLURAL_CANDYFLOSS.big                                 :Šećerna vuna
+STR_CARGO_PLURAL_CANDYFLOSS.gen                                 :šećerne vune
+STR_CARGO_PLURAL_CANDYFLOSS.aku                                 :šećernu vunu
 STR_CARGO_PLURAL_BUBBLES                                        :mehurići
 STR_CARGO_PLURAL_BUBBLES.big                                    :Mehurići
 STR_CARGO_PLURAL_BUBBLES.gen                                    :mehurića
@@ -246,18 +246,18 @@ STR_CARGO_SINGULAR_TOY                                          :igračka
 STR_CARGO_SINGULAR_TOY.big                                      :Igračka
 STR_CARGO_SINGULAR_TOY.gen                                      :igračke
 STR_CARGO_SINGULAR_TOY.aku                                      :igračku
-STR_CARGO_SINGULAR_CANDY                                        :slatkiš
-STR_CARGO_SINGULAR_CANDY.big                                    :Slatkiš
-STR_CARGO_SINGULAR_CANDY.gen                                    :slatkiša
-STR_CARGO_SINGULAR_CANDY.aku                                    :slatkiš
+STR_CARGO_SINGULAR_SWEETS                                       :slatkiš
+STR_CARGO_SINGULAR_SWEETS.big                                   :Slatkiš
+STR_CARGO_SINGULAR_SWEETS.gen                                   :slatkiša
+STR_CARGO_SINGULAR_SWEETS.aku                                   :slatkiš
 STR_CARGO_SINGULAR_COLA                                         :kola
 STR_CARGO_SINGULAR_COLA.big                                     :Kola
 STR_CARGO_SINGULAR_COLA.gen                                     :kole
 STR_CARGO_SINGULAR_COLA.aku                                     :kolu
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :šećerna vuna
-STR_CARGO_SINGULAR_COTTON_CANDY.big                             :Šećerna vuna
-STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :šećerne vune
-STR_CARGO_SINGULAR_COTTON_CANDY.aku                             :šećernu vunu
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :šećerna vuna
+STR_CARGO_SINGULAR_CANDYFLOSS.big                               :Šećerna vuna
+STR_CARGO_SINGULAR_CANDYFLOSS.gen                               :šećerne vune
+STR_CARGO_SINGULAR_CANDYFLOSS.aku                               :šećernu vunu
 STR_CARGO_SINGULAR_BUBBLE                                       :mehurić
 STR_CARGO_SINGULAR_BUBBLE.big                                   :Mehurić
 STR_CARGO_SINGULAR_BUBBLE.gen                                   :mehurića

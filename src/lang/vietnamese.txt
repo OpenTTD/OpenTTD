@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Bột mì
 STR_CARGO_PLURAL_RUBBER                                         :Cao su
 STR_CARGO_PLURAL_SUGAR                                          :Đường
 STR_CARGO_PLURAL_TOYS                                           :Đồ chơi
-STR_CARGO_PLURAL_CANDY                                          :Kẹo
+STR_CARGO_PLURAL_SWEETS                                         :Kẹo
 STR_CARGO_PLURAL_COLA                                           :Nước cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Kẹo bông
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Kẹo bông
 STR_CARGO_PLURAL_BUBBLES                                        :Bong bóng
 STR_CARGO_PLURAL_TOFFEE                                         :Kẹo bơ cứng
 STR_CARGO_PLURAL_BATTERIES                                      :Pin
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Bột mì
 STR_CARGO_SINGULAR_RUBBER                                       :Cao su
 STR_CARGO_SINGULAR_SUGAR                                        :Đường
 STR_CARGO_SINGULAR_TOY                                          :Đồ chơi
-STR_CARGO_SINGULAR_CANDY                                        :Kẹo
+STR_CARGO_SINGULAR_SWEETS                                       :Kẹo
 STR_CARGO_SINGULAR_COLA                                         :Nước cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kẹo bông
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Kẹo bông
 STR_CARGO_SINGULAR_BUBBLE                                       :Bong bóng
 STR_CARGO_SINGULAR_TOFFEE                                       :Kẹo bơ cứng
 STR_CARGO_SINGULAR_BATTERY                                      :Pin

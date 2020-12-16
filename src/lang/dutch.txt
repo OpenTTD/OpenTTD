@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Tarwe
 STR_CARGO_PLURAL_RUBBER                                         :Rubber
 STR_CARGO_PLURAL_SUGAR                                          :Suiker
 STR_CARGO_PLURAL_TOYS                                           :Speelgoed
-STR_CARGO_PLURAL_CANDY                                          :Snoep
+STR_CARGO_PLURAL_SWEETS                                         :Snoep
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Suikerspin
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Suikerspin
 STR_CARGO_PLURAL_BUBBLES                                        :Bellen
 STR_CARGO_PLURAL_TOFFEE                                         :Toffee
 STR_CARGO_PLURAL_BATTERIES                                      :Batterijen
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Tarwe
 STR_CARGO_SINGULAR_RUBBER                                       :Rubber
 STR_CARGO_SINGULAR_SUGAR                                        :Suiker
 STR_CARGO_SINGULAR_TOY                                          :Speelgoed
-STR_CARGO_SINGULAR_CANDY                                        :Snoep
+STR_CARGO_SINGULAR_SWEETS                                       :Snoep
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Suikerspin
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Suikerspin
 STR_CARGO_SINGULAR_BUBBLE                                       :Bubbel
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffee
 STR_CARGO_SINGULAR_BATTERY                                      :Batterij

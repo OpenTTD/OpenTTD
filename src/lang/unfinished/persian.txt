@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :گندم
 STR_CARGO_PLURAL_RUBBER                                         :کائوچو
 STR_CARGO_PLURAL_SUGAR                                          :شکر
 STR_CARGO_PLURAL_TOYS                                           :اسباب بازی
-STR_CARGO_PLURAL_CANDY                                          :شیرینی
+STR_CARGO_PLURAL_SWEETS                                         :شیرینی
 STR_CARGO_PLURAL_COLA                                           :نوشابه
-STR_CARGO_PLURAL_COTTON_CANDY                                   :پشمک
+STR_CARGO_PLURAL_CANDYFLOSS                                     :پشمک
 STR_CARGO_PLURAL_BUBBLES                                        :حباب
 STR_CARGO_PLURAL_TOFFEE                                         :تافی
 STR_CARGO_PLURAL_BATTERIES                                      :باتری
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :گندم
 STR_CARGO_SINGULAR_RUBBER                                       :کائوچو
 STR_CARGO_SINGULAR_SUGAR                                        :شکر
 STR_CARGO_SINGULAR_TOY                                          :اسباب بازی
-STR_CARGO_SINGULAR_CANDY                                        :شیرینی
+STR_CARGO_SINGULAR_SWEETS                                       :شیرینی
 STR_CARGO_SINGULAR_COLA                                         :نوشابه
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :پشمک
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :پشمک
 STR_CARGO_SINGULAR_BUBBLE                                       :حباب
 STR_CARGO_SINGULAR_TOFFEE                                       :تافی
 STR_CARGO_SINGULAR_BATTERY                                      :باتری

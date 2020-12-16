@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Weet
 STR_CARGO_PLURAL_RUBBER                                         :Rubber
 STR_CARGO_PLURAL_SUGAR                                          :Sûker
 STR_CARGO_PLURAL_TOYS                                           :Boartersguod
-STR_CARGO_PLURAL_CANDY                                          :Snobbersguod
+STR_CARGO_PLURAL_SWEETS                                         :Snobbersguod
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Sûkerspin
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Sûkerspin
 STR_CARGO_PLURAL_BUBBLES                                        :Bubbels
 STR_CARGO_PLURAL_TOFFEE                                         :Toffee
 STR_CARGO_PLURAL_BATTERIES                                      :Batterijen
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Weet
 STR_CARGO_SINGULAR_RUBBER                                       :Rubber
 STR_CARGO_SINGULAR_SUGAR                                        :Sûker
 STR_CARGO_SINGULAR_TOY                                          :Boartersguod
-STR_CARGO_SINGULAR_CANDY                                        :Snobbersguod
+STR_CARGO_SINGULAR_SWEETS                                       :Snobbersguod
 STR_CARGO_SINGULAR_COLA                                         :Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sûkerspin
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Sûkerspin
 STR_CARGO_SINGULAR_BUBBLE                                       :Bûle
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffee
 STR_CARGO_SINGULAR_BATTERY                                      :Batterij

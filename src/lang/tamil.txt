@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :கோதும
 STR_CARGO_PLURAL_RUBBER                                         :இறப்பர்
 STR_CARGO_PLURAL_SUGAR                                          :சர்க்கரை
 STR_CARGO_PLURAL_TOYS                                           :பொம்மைகள்
-STR_CARGO_PLURAL_CANDY                                          :இனிப்புகள்
+STR_CARGO_PLURAL_SWEETS                                         :இனிப்புகள்
 STR_CARGO_PLURAL_COLA                                           :கோலா
-STR_CARGO_PLURAL_COTTON_CANDY                                   :பஞ்சுமிட்டாய்
+STR_CARGO_PLURAL_CANDYFLOSS                                     :பஞ்சுமிட்டாய்
 STR_CARGO_PLURAL_BUBBLES                                        :குமிழிகள்
 STR_CARGO_PLURAL_TOFFEE                                         :மிட்டாய்கள்
 STR_CARGO_PLURAL_BATTERIES                                      :பாட்டரிகள்
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :கோதும
 STR_CARGO_SINGULAR_RUBBER                                       :இறப்பர்
 STR_CARGO_SINGULAR_SUGAR                                        :சர்க்கரை
 STR_CARGO_SINGULAR_TOY                                          :பொம்மை
-STR_CARGO_SINGULAR_CANDY                                        :இனிப்பு
+STR_CARGO_SINGULAR_SWEETS                                       :இனிப்பு
 STR_CARGO_SINGULAR_COLA                                         :கோலா
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :பஞ்சுமிட்டாய்
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :பஞ்சுமிட்டாய்
 STR_CARGO_SINGULAR_BUBBLE                                       :குமிழி
 STR_CARGO_SINGULAR_TOFFEE                                       :மிட்டாய்
 STR_CARGO_SINGULAR_BATTERY                                      :மின்கலம்

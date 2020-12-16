@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Gwenith
 STR_CARGO_PLURAL_RUBBER                                         :Rwber
 STR_CARGO_PLURAL_SUGAR                                          :Siwgr
 STR_CARGO_PLURAL_TOYS                                           :Teganau
-STR_CARGO_PLURAL_CANDY                                          :Melysion
+STR_CARGO_PLURAL_SWEETS                                         :Melysion
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Candifflos
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Candifflos
 STR_CARGO_PLURAL_BUBBLES                                        :Swigod
 STR_CARGO_PLURAL_TOFFEE                                         :Toffi
 STR_CARGO_PLURAL_BATTERIES                                      :Baterïau
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Gwenith
 STR_CARGO_SINGULAR_RUBBER                                       :Rwber
 STR_CARGO_SINGULAR_SUGAR                                        :Siwgr
 STR_CARGO_SINGULAR_TOY                                          :Tegan
-STR_CARGO_SINGULAR_CANDY                                        :Melysyn
+STR_CARGO_SINGULAR_SWEETS                                       :Melysyn
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Candifflos
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Candifflos
 STR_CARGO_SINGULAR_BUBBLE                                       :Swigen
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffi
 STR_CARGO_SINGULAR_BATTERY                                      :Batri

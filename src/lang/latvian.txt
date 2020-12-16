@@ -50,9 +50,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Kvieši
 STR_CARGO_PLURAL_RUBBER                                         :Kaučuks
 STR_CARGO_PLURAL_SUGAR                                          :Cukurs
 STR_CARGO_PLURAL_TOYS                                           :Rotaļlietas
-STR_CARGO_PLURAL_CANDY                                          :Saldumi
+STR_CARGO_PLURAL_SWEETS                                         :Saldumi
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Cukurvate
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Cukurvate
 STR_CARGO_PLURAL_BUBBLES                                        :Burbuļi
 STR_CARGO_PLURAL_TOFFEE                                         :Īriss
 STR_CARGO_PLURAL_BATTERIES                                      :Baterijas
@@ -84,9 +84,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Kvieši
 STR_CARGO_SINGULAR_RUBBER                                       :Kaučuks
 STR_CARGO_SINGULAR_SUGAR                                        :Cukurs
 STR_CARGO_SINGULAR_TOY                                          :Rotaļlieta
-STR_CARGO_SINGULAR_CANDY                                        :Saldumi
+STR_CARGO_SINGULAR_SWEETS                                       :Saldumi
 STR_CARGO_SINGULAR_COLA                                         :Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Cukurvate
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Cukurvate
 STR_CARGO_SINGULAR_BUBBLE                                       :Burbuļi
 STR_CARGO_SINGULAR_TOFFEE                                       :Īriss
 STR_CARGO_SINGULAR_BATTERY                                      :Baterijas

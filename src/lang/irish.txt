@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Cruinneacht
 STR_CARGO_PLURAL_RUBBER                                         :Rubar
 STR_CARGO_PLURAL_SUGAR                                          :Siúcra
 STR_CARGO_PLURAL_TOYS                                           :Bréagáin
-STR_CARGO_PLURAL_CANDY                                          :Milseáin
+STR_CARGO_PLURAL_SWEETS                                         :Milseáin
 STR_CARGO_PLURAL_COLA                                           :Cóla
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Scamall siúcra
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Scamall siúcra
 STR_CARGO_PLURAL_BUBBLES                                        :Súilíní
 STR_CARGO_PLURAL_TOFFEE                                         :Taifí
 STR_CARGO_PLURAL_BATTERIES                                      :Cadhnraí
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Cruithneacht
 STR_CARGO_SINGULAR_RUBBER                                       :Rubar
 STR_CARGO_SINGULAR_SUGAR                                        :Siúcra
 STR_CARGO_SINGULAR_TOY                                          :Bréagán
-STR_CARGO_SINGULAR_CANDY                                        :Milseán
+STR_CARGO_SINGULAR_SWEETS                                       :Milseán
 STR_CARGO_SINGULAR_COLA                                         :Cóla
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Scamall siúcra
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Scamall siúcra
 STR_CARGO_SINGULAR_BUBBLE                                       :Súilín
 STR_CARGO_SINGULAR_TOFFEE                                       :Taifí
 STR_CARGO_SINGULAR_BATTERY                                      :Ceallra

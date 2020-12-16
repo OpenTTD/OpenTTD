@@ -72,12 +72,12 @@ STR_CARGO_PLURAL_SUGAR                                          :Suhkur
 STR_CARGO_PLURAL_SUGAR.g                                        :Suhkru
 STR_CARGO_PLURAL_TOYS                                           :Mänguasjad
 STR_CARGO_PLURAL_TOYS.g                                         :Mänguasjade
-STR_CARGO_PLURAL_CANDY                                          :Maiustused
+STR_CARGO_PLURAL_SWEETS                                         :Maiustused
 STR_CARGO_PLURAL_CANDY.g                                        :Maiustuste
 STR_CARGO_PLURAL_COLA                                           :Koola
 STR_CARGO_PLURAL_COLA.g                                         :Koola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Suhkruvatt
-STR_CARGO_PLURAL_COTTON_CANDY.g                                 :Suhkruvati
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Suhkruvatt
+STR_CARGO_PLURAL_CANDYFLOSS.g                                   :Suhkruvati
 STR_CARGO_PLURAL_BUBBLES                                        :Mullid
 STR_CARGO_PLURAL_BUBBLES.g                                      :Mullide
 STR_CARGO_PLURAL_TOFFEE                                         :Iiris
@@ -137,9 +137,9 @@ STR_CARGO_SINGULAR_SUGAR                                        :Suhkur
 STR_CARGO_SINGULAR_SUGAR.g                                      :Suhkru
 STR_CARGO_SINGULAR_TOY                                          :Mänguasjad
 STR_CARGO_SINGULAR_TOY.g                                        :Mänguasjade
-STR_CARGO_SINGULAR_CANDY                                        :Maiustus
+STR_CARGO_SINGULAR_SWEETS                                       :Maiustus
 STR_CARGO_SINGULAR_COLA                                         :Koola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Suhkruvatt
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Suhkruvatt
 STR_CARGO_SINGULAR_BUBBLE                                       :Mullid
 STR_CARGO_SINGULAR_TOFFEE                                       :Iiris
 STR_CARGO_SINGULAR_TOFFEE.g                                     :Iirise

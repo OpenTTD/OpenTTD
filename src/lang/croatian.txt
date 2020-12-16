@@ -73,12 +73,12 @@ STR_CARGO_PLURAL_SUGAR                                          :Šećer
 STR_CARGO_PLURAL_SUGAR.gen                                      :šećera
 STR_CARGO_PLURAL_TOYS                                           :Igračke
 STR_CARGO_PLURAL_TOYS.gen                                       :igračaka
-STR_CARGO_PLURAL_CANDY                                          :Slatkiši
+STR_CARGO_PLURAL_SWEETS                                         :Slatkiši
 STR_CARGO_PLURAL_CANDY.gen                                      :slatkiša
 STR_CARGO_PLURAL_COLA                                           :Cola
 STR_CARGO_PLURAL_COLA.gen                                       :cole
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Šećerna vuna
-STR_CARGO_PLURAL_COTTON_CANDY.gen                               :šećerne vune
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Šećerna vuna
+STR_CARGO_PLURAL_CANDYFLOSS.gen                                 :šećerne vune
 STR_CARGO_PLURAL_BUBBLES                                        :Baloni
 STR_CARGO_PLURAL_BUBBLES.gen                                    :balona
 STR_CARGO_PLURAL_TOFFEE                                         :Mliječne karamele
@@ -161,15 +161,15 @@ STR_CARGO_SINGULAR_SUGAR.aku                                    :šećer
 STR_CARGO_SINGULAR_TOY                                          :Igračka
 STR_CARGO_SINGULAR_TOY.gen                                      :igračaka
 STR_CARGO_SINGULAR_TOY.aku                                      :igračku
-STR_CARGO_SINGULAR_CANDY                                        :Slatkiš
-STR_CARGO_SINGULAR_CANDY.gen                                    :slatkiša
-STR_CARGO_SINGULAR_CANDY.aku                                    :slatkiš
+STR_CARGO_SINGULAR_SWEETS                                       :Slatkiš
+STR_CARGO_SINGULAR_SWEETS.gen                                   :slatkiša
+STR_CARGO_SINGULAR_SWEETS.aku                                   :slatkiš
 STR_CARGO_SINGULAR_COLA                                         :Cola
 STR_CARGO_SINGULAR_COLA.gen                                     :cole
 STR_CARGO_SINGULAR_COLA.aku                                     :colu
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Šećerna vuna
-STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :šećerne vune
-STR_CARGO_SINGULAR_COTTON_CANDY.aku                             :šećernu vunu
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Šećerna vuna
+STR_CARGO_SINGULAR_CANDYFLOSS.gen                               :šećerne vune
+STR_CARGO_SINGULAR_CANDYFLOSS.aku                               :šećernu vunu
 STR_CARGO_SINGULAR_BUBBLE                                       :Balon
 STR_CARGO_SINGULAR_BUBBLE.gen                                   :balona
 STR_CARGO_SINGULAR_BUBBLE.aku                                   :balon

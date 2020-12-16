@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Garia
 STR_CARGO_PLURAL_RUBBER                                         :Goma
 STR_CARGO_PLURAL_SUGAR                                          :Azukrea
 STR_CARGO_PLURAL_TOYS                                           :Jostailuak
-STR_CARGO_PLURAL_CANDY                                          :Gozokiak
+STR_CARGO_PLURAL_SWEETS                                         :Gozokiak
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Kotoiezko Azukrea
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Kotoiezko Azukrea
 STR_CARGO_PLURAL_BUBBLES                                        :Burbuilak
 STR_CARGO_PLURAL_TOFFEE                                         :Gozoki lehengaia
 STR_CARGO_PLURAL_BATTERIES                                      :Pilak
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Garia
 STR_CARGO_SINGULAR_RUBBER                                       :Goma
 STR_CARGO_SINGULAR_SUGAR                                        :Azukrea
 STR_CARGO_SINGULAR_TOY                                          :Jostailua
-STR_CARGO_SINGULAR_CANDY                                        :Gozoki
+STR_CARGO_SINGULAR_SWEETS                                       :Gozoki
 STR_CARGO_SINGULAR_COLA                                         :Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Kotoiezko Azukrea
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Kotoiezko Azukrea
 STR_CARGO_SINGULAR_BUBBLE                                       :Burbuila
 STR_CARGO_SINGULAR_TOFFEE                                       :Gozoki lehengaia
 STR_CARGO_SINGULAR_BATTERY                                      :Pila

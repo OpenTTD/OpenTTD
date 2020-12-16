@@ -48,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Gandum
 STR_CARGO_PLURAL_RUBBER                                         :Karet
 STR_CARGO_PLURAL_SUGAR                                          :Gula
 STR_CARGO_PLURAL_TOYS                                           :Mainan
-STR_CARGO_PLURAL_CANDY                                          :Manisan
+STR_CARGO_PLURAL_SWEETS                                         :Manisan
 STR_CARGO_PLURAL_COLA                                           :Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Arum Manis
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Arum Manis
 STR_CARGO_PLURAL_BUBBLES                                        :Gelembung
 STR_CARGO_PLURAL_TOFFEE                                         :Gula-gula
 STR_CARGO_PLURAL_BATTERIES                                      :Baterai
@@ -82,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Gandum
 STR_CARGO_SINGULAR_RUBBER                                       :Karet
 STR_CARGO_SINGULAR_SUGAR                                        :Gula
 STR_CARGO_SINGULAR_TOY                                          :Mainan
-STR_CARGO_SINGULAR_CANDY                                        :Manisan
+STR_CARGO_SINGULAR_SWEETS                                       :Manisan
 STR_CARGO_SINGULAR_COLA                                         :Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Arum Manis
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Arum Manis
 STR_CARGO_SINGULAR_BUBBLE                                       :Gelembung
 STR_CARGO_SINGULAR_TOFFEE                                       :Gula-gula
 STR_CARGO_SINGULAR_BATTERY                                      :Baterai
