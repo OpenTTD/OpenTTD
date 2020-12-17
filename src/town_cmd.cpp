@@ -1088,6 +1088,54 @@ static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
 }
 
 /**
+ * Checks if a town road can be continued on the other side of a bridge.
+ *
+ * @param end_tile The end tile of the bridge
+ * @param bridge_dir The direction of the bridge
+ * @return true if the road can be continued, else false
+ */
+static bool CanRoadContinueAfterBridge(const Town* t, const TileIndex end_tile, const DiagDirection bridge_dir)
+{
+	const int delta = TileOffsByDiagDir(bridge_dir); // +1 tile in the direction of the bridge
+	TileIndex next_tile = end_tile + delta; // The tile beyond the bridge
+	RoadBits rcmd = DiagDirToRoadBits(ReverseDiagDir(bridge_dir)); // The road bits that would be built after extending the bridge.
+	RoadType rt = GetTownRoadType(t); // The road type being built by the town.
+
+	/* Before we try anything, make sure the tile is on the map and not the void. */
+	if (!IsValidTile(end_tile + delta)) return false;
+
+	/* If the next tile is a bridge or tunnel, allow if it's a road bridge/tunnel continuing in the same direction. */
+	if (IsTileType(next_tile, MP_TUNNELBRIDGE)) {
+		if (GetTunnelBridgeTransportType(next_tile) == TRANSPORT_ROAD && GetTunnelBridgeDirection(next_tile) == bridge_dir) return true;
+	}
+
+	/* If the next tile is a station, allow if it's a road station facing the proper direction. */
+	if (IsTileType(next_tile, MP_STATION)) {
+		/* If the next tile is a road station, allow if it's facing the same direction, otherwise disallow. */
+		if (IsRoadStop(next_tile)) {
+			if (GetRoadStopDir(next_tile) == ReverseDiagDir(bridge_dir)) return true;
+		}
+	}
+
+	/* If the next tile is a railroad track, check if towns are allowed to build level crossings. If both are true, reject. Else allow DoCommand to determine if the rail track is buildable. */
+	if (IsTileType(next_tile, MP_RAILWAY) && !_settings_game.economy.allow_town_level_crossings) return false;
+
+	/* If a road tile can be built, the bridge is allowed. */
+	if (DoCommand(next_tile, rcmd | (rt << 4), t->index, DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD).Succeeded()) return true;
+		//(IsRoadAllowedHere(t, next_tile, bridge_dir)) return true;
+
+	/* If the next tile is a road depot, allow if it's facing the new bridge. */
+	if (IsTileType(next_tile, MP_ROAD)) {
+		if (IsRoadDepot(next_tile)) {
+			if (GetRoadDepotDirection(next_tile) == ReverseDiagDir(bridge_dir)) return true;
+		}
+	}
+
+	/* If none of the above checks are true, the road cannot be continued and the bridge is rejected. */
+	return false;
+}
+
+/**
  * Grows the town with a bridge.
  *  At first we check if a bridge is reasonable.
  *  If so we check if we are able to build it.
@@ -1136,8 +1184,11 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 		} while (IsValidTile(bridge_tile) && (IsWaterTile(bridge_tile) || IsPlainRailTile(bridge_tile) || (IsNormalRoadTile(bridge_tile) && GetDisallowedRoadDirections(bridge_tile) != DRD_NONE)));
 	}
 
-	/* no water tiles in between? */
+	/* Don't allow bridges with no span between end tiles. */
 	if (bridge_length == 1) return false;
+
+	/* Make sure the road can be continued past the bridge. At this point, bridge_tile holds the end tile of the bridge. */
+	if (!CanRoadContinueAfterBridge(t, bridge_tile, bridge_dir)) return false;
 
 	for (uint8 times = 0; times <= 22; times++) {
 		byte bridge_type = RandomRange(MAX_BRIDGES - 1);
