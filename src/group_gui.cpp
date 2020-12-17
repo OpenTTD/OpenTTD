@@ -726,33 +726,42 @@ public:
 				if (id_v >= this->vehgroups.size()) return; // click out of list bound
 
 				const GUIVehicleGroup &vehgroup = this->vehgroups[id_v];
+
+				const Vehicle *v = nullptr;
+
 				switch (this->grouping) {
 					case GB_NONE: {
-						const Vehicle *v = vehgroup.GetSingleVehicle();
-						if (VehicleClicked(v)) break;
-
-						this->vehicle_sel = v->index;
-
-						if (_ctrl_pressed) {
-							this->SelectGroup(v->group_id);
-						}
-
-						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
-						SetMouseCursorVehicle(v, EIT_IN_LIST);
-						_cursor.vehchain = true;
-
-						this->SetDirty();
+						const Vehicle *v2 = vehgroup.GetSingleVehicle();
+						if (VehicleClicked(v2)) break;
+						v = v2;
 						break;
 					}
 
-					case GB_SHARED_ORDERS:
+					case GB_SHARED_ORDERS: {
 						assert(vehgroup.NumVehicles() > 0);
-						/* No drag-and-drop support for shared order grouping; we immediately open the shared orders window */
-						ShowVehicleListWindow(vehgroup.vehicles_begin[0]);
+						v = vehgroup.vehicles_begin[0];
+						/*
+						No VehicleClicked(v) support for now, because don't want
+						to enable any contextual actions except perhaps clicking/ctrl-clicking to clone orders.
+						*/
 						break;
+					}
 
 					default:
 						NOT_REACHED();
+				}
+				if (v) {
+					this->vehicle_sel = v->index;
+
+					if (_ctrl_pressed) {
+						this->SelectGroup(v->group_id);
+					}
+
+					SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
+					SetMouseCursorVehicle(v, EIT_IN_LIST);
+					_cursor.vehchain = true;
+
+					this->SetDirty();
 				}
 
 				break;
@@ -838,7 +847,7 @@ public:
 	{
 		switch (widget) {
 			case WID_GL_DEFAULT_VEHICLES: // Ungrouped vehicles
-				DoCommandP(0, DEFAULT_GROUP, this->vehicle_sel | (_ctrl_pressed ? 1 << 31 : 0), CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE));
+				DoCommandP(0, DEFAULT_GROUP, this->vehicle_sel | (_ctrl_pressed || this->grouping == GB_SHARED_ORDERS ? 1 << 31 : 0), CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE));
 
 				this->vehicle_sel = INVALID_VEHICLE;
 				this->group_over = INVALID_GROUP;
@@ -855,7 +864,7 @@ public:
 				uint id_g = this->group_sb->GetScrolledRowFromWidget(pt.y, this, WID_GL_LIST_GROUP, 0, this->tiny_step_height);
 				GroupID new_g = id_g >= this->groups.size() ? NEW_GROUP : this->groups[id_g]->index;
 
-				DoCommandP(0, new_g, vindex | (_ctrl_pressed ? 1 << 31 : 0), CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE), new_g == NEW_GROUP ? CcAddVehicleNewGroup : nullptr);
+				DoCommandP(0, new_g, vindex | (_ctrl_pressed || this->grouping == GB_SHARED_ORDERS ? 1 << 31 : 0), CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_ERROR_GROUP_CAN_T_ADD_VEHICLE), new_g == NEW_GROUP ? CcAddVehicleNewGroup : nullptr);
 				break;
 			}
 
@@ -877,9 +886,17 @@ public:
 						}
 						break;
 					}
-					case GB_SHARED_ORDERS:
-						/* Currently no drag-and-drop support when grouped by shared orders.  Modify this if we want to support some drag-drop behaviour for shared order list items. */
-						NOT_REACHED();
+
+					case GB_SHARED_ORDERS: {
+						const Vehicle *v = vehgroup.vehicles_begin[0];
+						/* We do not support VehicleClicked() here since the contextual action may only make sense for individual vehicles */
+
+						if (vindex == v->index) {
+							ShowVehicleListWindow(v);
+						}
+						break;
+					}
+
 					default:
 						NOT_REACHED();
 				}
