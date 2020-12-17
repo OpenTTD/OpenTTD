@@ -274,9 +274,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :½!"#¤%&/()=?`
 
 # Measurement tooltip
 STR_MEASURE_LENGTH                                              :{BLACK}Pituus: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Pinta-ala: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Pinta-ala: {NUM}×{NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Pituus: {NUM}{}Korkeusero: {HEIGHT}
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pinta-ala: {NUM} x {NUM}{}Korkeusero: {HEIGHT}
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pinta-ala: {NUM}×{NUM}{}Korkeusero: {HEIGHT}
 
 
 # These are used in buttons
@@ -1026,7 +1026,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täyskuv
 # Custom currency window
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuutta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vaihtokurssi: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vaihtokurssi: {ORANGE}{CURRENCY_LONG} = {COMMA} £
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Pienennä vaihtokurssia verrattuna puntaan (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Suurenna vaihtokurssia verrattuna puntaan (£)
 STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Aseta vaihtokurssi valuutallesi verrattuna puntaan (£)
@@ -1261,7 +1261,7 @@ STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Rahdin painoker
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Määritä rahdin kuljettamisen vaikutus junissa. Korkeammat arvot tekevät rahdin kuljettamisesta raskaampaa junille, erityisesti mäissä
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Lentokoneiden nopeuskerroin: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Määritä lentokoneiden suhteellinen nopeus verrattuna toisiin kulkuneuvotyyppeihin, jotta vähennetään ilma-alusksilla tehtyjen kuljetusten tuottoa
-STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1 / {COMMA}
+STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1/{COMMA}
 STR_CONFIG_SETTING_PLANE_CRASHES                                :Lento-onnettomuuksien määrä: {STRING}
 STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Määrittää lento-onnettomuuksien todennäköisyyden.{}¹ Isot lentokoneet voivat kuitenkin aina tuhoutua pienille lentokentille laskeutuessaan.
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ei yhtään¹
@@ -1296,7 +1296,7 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Uudista kulkune
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Mikäli käytössä, lähellä käyttöikänsä loppua oleva kulkuneuvo korvataan automaattisesti
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Uudista automaattisesti {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Suhteellinen ikä, jonka jälkeen kulkuneuvo voidaan uudistaa automaattisesti
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} kuukau{P 0 tta tta} ennen kulkuneuvon käyttöiän loppua
+STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} kuukau{P 0 si tta} ennen kulkuneuvon käyttöiän loppua
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} kuukau{P 0 si tta} jälkeen kulkuneuvon käyttöiän lopun
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Vähimmäisrahamäärä kulkuneuvon automaattiseen uudistukseen: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Pienin rahamäärä, joka on oltava pankissa ennen kulkuneuvojen automaattista uudistamista
@@ -1315,7 +1315,7 @@ STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Näytä NewGRF:
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Lisää kulkuneuvovalikoimaikkunaan rivin, joka kertoo mistä NewGRF:stä valittu kulkuneuvo on peräisin.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Maasto: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Maasto vaikuttaa useisiin pelin peruselementteihin, kuten rahtiin ja kuntien kasvuedellytyksiin. NewGRF:t ja peliskriptit voivat kuitenkin vaikuttaa tarkemmin pelin kulkuun
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Maasto vaikuttaa useisiin pelin peruselementteihin, kuten rahtiin ja kuntien kasvuedellytyksiin. NewGRF:t ja peliskriptit voivat kuitenkin vaikuttaa tarkemmin pelin kulkuun.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maastogeneraattori: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Alkuperäinen maastonluoja riippuu perusgrafiikkapaketista ja luo ennalta määritettyjä maastonmuotoja. TerraGenesis luo maastoa Perlin-kohinan perusteella ja mahdollistaa asetusten tarkemman määrittelyn
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
@@ -1487,7 +1487,7 @@ STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Vaikea
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Salli tekoälyt moninpelissä: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Sallii tietokonepelaajien osallistumisen moninpeleihin
-STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodet ennen skriptin pysäyttämistä: {STRING}
+STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :Operaatiokoodien määrä ennen skriptin pysäyttämistä: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Suurin sallittu määrä laskutoimituksia, jonka skripti voi suorittaa yhden vuoron aikana
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :Skriptikohtainen muistinkäyttö enintään: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :Kuinka paljon muistia yksittäinen skripti saa käyttää, ennen kuin se pakotetaan lopettamaan. Jos kartta on iso, tätä arvoa voi joutua suurentamaan.
@@ -1645,7 +1645,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Nopea
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Erittäin nopea
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Kaupunkien osuus: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Kaupunkien määrä: kaupungit ovat isompia jo alussa ja kasvavat nopeammin kuin muut kunnat
-STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 / {COMMA}
+STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1/{COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Ei yhtään
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Kasvukerroin alussa: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Kaupunkien keskimääräinen koko suhteessa muihin kuntiin pelin alussa
@@ -2159,7 +2159,7 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Verkkope
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Palvelimen pelitallennetta ei voi ladata
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Palvelinta ei voitu käynnistää
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Yhdistäminen ei onnistunut
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Yhteys #{NUM} aikakatkaistiin
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Yhteys nro {NUM} aikakatkaistiin
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokollavirhe tapahtui ja yhteys suljettiin
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Tämän asiakkaan versio ei vastaa palvelimen versiota
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Väärä salasana
@@ -2216,10 +2216,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :peliskripti
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :poistutaan
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} on liittynyt peliin
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} liittyi peliin (Asiakas #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} on liittynyt yhtiöön #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} liittyi peliin (asiakas nro {2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} on liittynyt yhtiöön nro {2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} on liittynyt katselijoihin
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} on aloittanut uuden yhtiön (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} on aloittanut uuden yhtiön (nro {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on poistunut pelistä ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi yhtiöllesi {2:CURRENCY_LONG}
@@ -2524,7 +2524,7 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektin
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Valitse rakennettava objekti. Shift vaihtaa rakennustilan ja kustannusarvion välillä
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Valitse rakennettavan objektin luokka
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objektin esikatselu
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Koko: {GOLD}{NUM} × {NUM} ruutua
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Koko: {GOLD}{NUM}×{NUM} ruutua
 
 STR_OBJECT_CLASS_LTHS                                           :Majakat
 STR_OBJECT_CLASS_TRNS                                           :Lähettimet
@@ -2622,7 +2622,7 @@ STR_LAND_AREA_INFORMATION_TRAM_OWNER                            :{BLACK}Raitioti
 STR_LAND_AREA_INFORMATION_RAIL_OWNER                            :{BLACK}Rautatien omistaja: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Kunta: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :Ei mitään
-STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaatit: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
+STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaatit: {LTBLUE}{NUM}×{NUM}×{NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Rakennettu: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Aseman luokka: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Aseman tyyppi: {LTBLUE}{STRING}
@@ -2862,7 +2862,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuaali
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Korkeuskartan kierto:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Korkeuskartan nimi:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Koko:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}×{NUM}
 
 STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Muuta suurinta sallittua kartan korkeutta
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Vaihda lumirajan korkeutta
@@ -2885,7 +2885,7 @@ STR_GENERATION_ABORT                                            :{BLACK}Peruuta
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Keskeytä maailman luominen
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Haluatko varmasti keskeyttää maan luomisen?
 STR_GENERATION_PROGRESS                                         :{WHITE}{NUM}{NBSP}% valmiina
-STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / {NUM}
+STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM}/{NUM}
 STR_GENERATION_WORLD_GENERATION                                 :{BLACK}Maailman luominen
 STR_GENERATION_RIVER_GENERATION                                 :{BLACK}Jokien luominen
 STR_GENERATION_TREE_GENERATION                                  :{BLACK}Puiden luominen
@@ -3072,7 +3072,7 @@ STR_INVALID_VEHICLE                                             :<virheellinen k
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Skannataan NewGRF-tiedostoja
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Skannataan NewGRF-tiedostoja. Tiedostojen määrästä riippuen riippuen tässä voi kestää hetki...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" ää} skannattu. Arvioitu kokonaismäärä {NUM} NewGRF{P "" ää}
+STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" :ää} skannattu. Arvioitu kokonaismäärä {NUM} NewGRF{P "" :ää}.
 STR_NEWGRF_SCAN_ARCHIVES                                        :Skannataan arkistoja
 
 # Sign list window
@@ -3516,7 +3516,7 @@ STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Nopeus m
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Nopeus kanaalissa/joella: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökustannus: {GOLD}{CURRENCY_LONG}/vuosi
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{CARGO_LONG} {STRING}
-STR_PURCHASE_INFO_REFITTABLE                                    :(sovitettava)
+STR_PURCHASE_INFO_REFITTABLE                                    :(sovitettavissa)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuo{P si tta}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Enimmäisluotettavuus: {GOLD}{COMMA}{NBSP}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Hinta: {GOLD}{CURRENCY_LONG}
@@ -3850,11 +3850,11 @@ STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE
 
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}Kokonaisrahtikapasiteetti:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT})
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}- {CARGO_LONG} ({CARGO_SHORT}) (x{NUM})
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_MULT                   :{LTBLUE}– {CARGO_LONG} ({CARGO_SHORT}) (×{NUM})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}Tyhjä
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} asemalta {STATION}
-STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} asemalta {STATION} (x{NUM})
+STR_VEHICLE_DETAILS_CARGO_FROM_MULT                             :{LTBLUE}{CARGO_LONG} asemalta {STATION} (×{NUM})
 
 STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}Rahti
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}Näytä kuljetettavan rahdin tiedot
@@ -3877,7 +3877,7 @@ STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Uusi kap
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Valitse sovitettavat kulkuneuvot. Hiirellä vetäminen sallii useamman kulkuneuvon valinnan. Tyhjän alueen napsautus valitsee koko kulkuneuvon. Ctrl+Klik valitsee kulkuneuvon ja sitä seuraavan ketjun
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Valitse junan rahtityyppi
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Valitse ajoneuvolla ajettava rahti
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Valitse ajoneuvolla kuljetettava rahti
 STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Valitse laivan kuljettama rahtityyppi
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Valitse kuljetettavan rahdin tyyppi
 
@@ -3887,7 +3887,7 @@ STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Sovita l
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Sovita ilma-alus
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Sovita juna kuljettamaan valittua rahtityyppiä
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Muuta ajoneuvo rahtaamaan korostettua rahtityyppiä.
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Muuta ajoneuvo kuljettamaan korostettua rahtityyppiä.
 STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Sovita laiva valitulle rahtityypille
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Sovita lentokone kuljettamaan valittua rahtityyppiä
 
@@ -3997,7 +3997,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRIN
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :(Sovita {STRING})
-STR_ORDER_REFIT_STOP_ORDER                                      :(Sovita rahtityypiksi {STRING} ja pysähdy)
+STR_ORDER_REFIT_STOP_ORDER                                      :(Sovita rahtityypille {STRING} ja pysähdy)
 STR_ORDER_STOP_ORDER                                            :(Pysähdy)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
@@ -4021,17 +4021,17 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei lastin purk
 STR_ORDER_NO_UNLOAD_NO_LOAD                                     :(Ei purkua eikä lastausta)
 
 STR_ORDER_AUTO_REFIT                                            :(Sovita rahdille {STRING})
-STR_ORDER_FULL_LOAD_REFIT                                       :(Täysi lasti ja sovitus rahdille {STRING})
-STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Täysi lasti mitä tahansa rahtia sekä sovita rahdille {STRING})
-STR_ORDER_UNLOAD_REFIT                                          :(Pura ja ota rahti sekä sovita rahdille {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Pura ja odota täyttä lastia sekä sovita rahdille {STRING})
-STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Pura ja odota mitä tahansa täyttä lastia sekä sovita rahdille {STRING})
-STR_ORDER_TRANSFER_REFIT                                        :(Siirrä ja ota rahti sekä sovita rahdille {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Siirrä ja odota täyttä lastia sekä sovita rahdille {STRING})
-STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Siirrä ja odota mitä tahansa täyttä lastia sekä sovita rahdille {STRING})
-STR_ORDER_NO_UNLOAD_REFIT                                       :(Ei purkua ja ota rahti sekä sovita rahdille {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ei purkua ja odota täyttä lastia sekä sovita rahdille {STRING})
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ei purkua ja odota mitä tahansa täyttä lastia sekä sovita rahdille {STRING})
+STR_ORDER_FULL_LOAD_REFIT                                       :(Sovita rahdille {STRING} ja lastaa täyteen)
+STR_ORDER_FULL_LOAD_ANY_REFIT                                   :(Sovita rahdille {STRING} ja lastaa täyteen mitä tahansa rahtia)
+STR_ORDER_UNLOAD_REFIT                                          :(Pura lasti, sovita rahdille {STRING}, ota rahti)
+STR_ORDER_UNLOAD_FULL_LOAD_REFIT                                :(Pura lasti, sovita rahdille {STRING}, odota täyttä lastia)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY_REFIT                            :(Pura lasti, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
+STR_ORDER_TRANSFER_REFIT                                        :(Siirrä, sovita rahdille {STRING}, ota rahti)
+STR_ORDER_TRANSFER_FULL_LOAD_REFIT                              :(Siirrä, sovita rahdille {STRING}, odota täyttä lastia)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY_REFIT                          :(Siirrä, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
+STR_ORDER_NO_UNLOAD_REFIT                                       :(Ei purkua, sovita rahdille {STRING}, ota rahti)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(Ei purkua, sovita rahdille {STRING}, odota täyttä lastia)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(Ei purkua, sovita rahdille {STRING}, odota mitä tahansa täyttä lastia)
 
 STR_ORDER_AUTO_REFIT_ANY                                        :saatavilla oleva rahti
 
@@ -4764,7 +4764,7 @@ STR_SV_STNAME_UPPER                                             :Ylä-{STRING}
 STR_SV_STNAME_LOWER                                             :Ala-{STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING}, helikopterikenttä
 STR_SV_STNAME_FOREST                                            :{STRING}, metsä
-STR_SV_STNAME_FALLBACK                                          :{STRING}, asema #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING}, asema {NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -5033,20 +5033,21 @@ STR_FORMAT_DATE_SHORT                                           :{STRING} {NUM}
 STR_FORMAT_DATE_LONG                                            :{STRING} {STRING} {NUM}
 STR_FORMAT_DATE_ISO                                             :{2:NUM}-{1:STRING}-{0:STRING}
 
-STR_FORMAT_BUOY_NAME                                            :{TOWN} Poiju
-STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Poiju #{COMMA}
-STR_FORMAT_COMPANY_NUM                                          :(Yhtiö {COMMA})
+STR_FORMAT_BUOY_NAME                                            :{TOWN}, poiju
+STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN}, poiju {COMMA}
+STR_FORMAT_COMPANY_NUM                                          :(yhtiö {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Ryhmä {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} ({STRING})
-STR_FORMAT_WAYPOINT_NAME                                        :Reittipiste: {TOWN}
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Reittipiste: {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME                                        :{TOWN}, reittipiste
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN}, reittipiste {COMMA}
 
-STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Veturitalli
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Veturitalli #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Ajoneuvovarikko
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Ajoneuvovarikko #{COMMA}
-STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Telakka
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Telakka #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN}, veturitalli
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN}, veturitalli {COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN}, ajoneuvovarikko
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN}, ajoneuvovarikko {COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN}, telakka
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN}, telakka {COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Lentokonehalli
 
 STR_UNKNOWN_STATION                                             :tuntematon asema
