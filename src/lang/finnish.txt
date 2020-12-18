@@ -3426,10 +3426,10 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Muokkaa 
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuta tuotantotasoa (prosentteina, 800{NBSP}% asti)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} juna{P "" a}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} ajoneuvo{P "" a}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} laiva{P "" a}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} ilma-alus{P "" ta}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} – {COMMA} juna{P "" a}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} – {COMMA} ajoneuvo{P "" a}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} – {COMMA} laiva{P "" a}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} – {COMMA} ilma-alus{P "" ta}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Junat – napsauta junaa saadaksesi tietoja
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Ajoneuvot – napsauta ajoneuvoa saadaksesi tietoja

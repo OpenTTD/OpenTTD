@@ -5038,6 +5038,7 @@ STR_FORMAT_BUOY_NAME                                            :Bouée de {TOWN
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Bouée de {TOWN} n°{NBSP}{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Compagnie {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Groupe {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} - {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Point de contrôle de {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Point de contrôle de {TOWN} n°{NBSP}{COMMA}

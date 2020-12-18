@@ -320,6 +320,7 @@ STR_COLOUR_DEFAULT                                              :По умолч
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}мил{P я и ь}/ч
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}км/ч
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}м/с
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}клет{P ка ки ок}/день
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}лс
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}лс
@@ -881,7 +882,7 @@ STR_SMALLMAP_LEGENDA_TRUCK_LOADING_BAY                          :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_BUS_STATION                                :{TINY_FONT}{BLACK}Автобусная станция
 STR_SMALLMAP_LEGENDA_AIRPORT_HELIPORT                           :{TINY_FONT}{BLACK}Аэропорт/Вертодром
 STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLACK}Пристань
-STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Неровность
+STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Бездорожье
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Трава
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Пустырь
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Поля
@@ -1466,7 +1467,7 @@ STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Показыв�
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Показывать название модуля NewGRF, содержащего выбранную модель транспортного средства, в окне покупки транспорта.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Тип карты: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Выбор типа карты определяет основу игрового процесса, например, доступные типы транспорта и грузов, различные условия роста городов. Всё это также может быть изменено с помощью модулей NewGRF и игровых скриптов.
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Тип карты определяет основу игрового процесса, например, доступные типы транспорта и грузов, различные условия роста городов. Всё это также может быть изменено с помощью модулей NewGRF и игровых скриптов.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Генератор ландшафта: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Оригинальный генератор рассчитан на базовый графический набор и создаёт ландшафт из типовых элементов.{}TerraGenesis использует для создания ландшафта шум Перлина и более тонко настраивается.
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Оригинальный
@@ -1705,6 +1706,11 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Последн�
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :По прошествии указанного года рассчитывается рейтинг компании и выводится таблица рекордов. После этого игру можно продолжить.{}Если указанный год предшествует году начала игры, то таблица рекордов не отображается.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Никогда
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Экономика: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :При плавной экономике изменения в производительности предприятий небольшие и происходят чаще.{}При стабильной экономике предприятия не закрываются и не меняют производительность.{}Типы предприятий, добавленные с помощью NewGRF, могут игнорировать эту настройку.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :классическая
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :плавная
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :стабильная
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Разрешить торговлю акциями других компаний: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Разрешает торговлю акциями транспортных компаний. Акции выпускаются компаниями через некоторое время после основания.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мин. возраст компании для выпуска акций: {STRING}
@@ -1957,6 +1963,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}На э�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Выход
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Вы уверены, что хотите выйти из OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Да
 STR_QUIT_NO                                                     :{BLACK}Нет
 
@@ -2813,7 +2820,7 @@ STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Огра
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Камни
-STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Неровность
+STR_LAI_CLEAR_DESCRIPTION_ROUGH_LAND                            :Бездорожье
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :Пустырь
 STR_LAI_CLEAR_DESCRIPTION_GRASS                                 :Трава
 STR_LAI_CLEAR_DESCRIPTION_FIELDS                                :Поля

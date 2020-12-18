@@ -1383,7 +1383,7 @@ STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Zobraziť názo
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Pridá riadok do zoznamu vozidiel, ktorý ukazuje z akého NewGRF vozidlo pochádza.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Krajina: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Krajiny definuje základný herný scenár s rôznymi tovarmi a veľkosťami miest. NewGRF a Herný Skript umožňujú ich lepšiu kontrolu
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Krajiny definujú základný herný scenár s rôznymi druhmi nákladu a požiadavkami na rast miest. NewGRF a herné skripty umožňujú ich lepšiu kontrolu
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generátor uzemia: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Pôvodný generátor závisí na základnej grafickej sade a skladá pevné tvary krajiny. TerraGenesis je generátor postavený na Perlinovom šume s jemnejšími možnosťami nastavenia
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Pôvodný
@@ -1622,6 +1622,11 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Rok ukončenia 
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Rok v ktorom končí hra pre zaznamenanie skóre. Na konci tohto roku sa nahrá skóre spoločnosti a zobrazí sa tabuľka s najvyšším skóre, avšak hráči môžu v hre naďalej pokračovať.{}Ak je tento rok pred začiatkom hry, tabuľka sa nikdy nezobrazí.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nikdy
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Typ ekonomiky: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Plynulá ekonomika robí zmeny v produkcii častejšie a v menších krokoch. Zamrznutá ekonomika neumožňuje zmeny v produkcii, ani zatváranie priemyslu. Toto nastavenie nemusí ovplyvňovať priemysel z NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Originálna
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Plynulá
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Zamrznutá
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Povoliť kupovanie podielov v ostatných spoločnostiach: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ak je zapnuté, povolí sa nákup a predaj podielov spoločností. Podiely budú prístupné len pre spoločnosti od urcitého veku.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimálny vek spoločnosti na obchodovanie s podielmi: {STRING}
@@ -2222,7 +2227,7 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Sieť - 
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Nedokážem nahrať hru zo servera
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Server nemôžem spustiť
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nemozem sa pripojit.
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Vypršal časový limit pre spojenie #{NUM}
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Vypršal časový limit pre spojenie č. {NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Chyba vznikla v protokole a spojenie je zatvorene.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revizia hry u tohto klienta nezodpoveda revizii hry na serveri.
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Nespravne heslo.
@@ -2279,10 +2284,10 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :herný skript
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odchádza
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} vstúpil do hry
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} vstúpil do hry (Client #{2:NUM})
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} sa pripojil do spoločnosti #{2:NUM}
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} vstúpil do hry (klient č. {2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} sa pripojil do spoločnosti č. {2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} sa pripojil k pozorovateľom
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} založil novú spoločnosť (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} založil novú spoločnosť (č. {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} opustil hru ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} zmenil/-a svoje meno na {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} dal ti spoločnosť {2:CURRENCY_LONG}
@@ -4795,10 +4800,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=z}Cukrová b
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Bez názvu
-STR_SV_TRAIN_NAME                                               :{G=m}Vlak {COMMA}
+STR_SV_TRAIN_NAME                                               :{G=m}Vlak č. {COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :{G=s}Cestné vozidlo {COMMA}
-STR_SV_SHIP_NAME                                                :{G=z}Loď {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :{G=s}Lietadlo {COMMA}
+STR_SV_SHIP_NAME                                                :{G=z}Loď č. {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :{G=s}Lietadlo č. {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Sever
@@ -4827,7 +4832,7 @@ STR_SV_STNAME_UPPER                                             :Horný {STRING}
 STR_SV_STNAME_LOWER                                             :Dolný {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
 STR_SV_STNAME_FOREST                                            :{STRING} Les
-STR_SV_STNAME_FALLBACK                                          :{STRING} Stanica #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stanica č. {NUM}
 ############ end of savegame specific region!
 
 ##id 0x8000
@@ -5100,12 +5105,13 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} Bója
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Bója #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Spoločnosť {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Skupina {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} č. {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Smerový bod {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Smerový bod {TOWN} #{COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :Vlakové depo {TOWN}
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Vlakové depo {TOWN} #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :Vlakové depo {TOWN} č. {COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :Garáž {TOWN}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :Garáž {TOWN} #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :Lodenica {TOWN}
