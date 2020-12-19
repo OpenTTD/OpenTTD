@@ -297,7 +297,7 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 	this->window_height = height;
 	this->buffer_depth = bpp;
 
-	[ this->window center ];
+	[ (OTTD_CocoaWindow *)this->window center ];
 
 	/* Only recreate the view if it doesn't already exist */
 	if (this->cocoaview == nil) {
