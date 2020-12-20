@@ -196,6 +196,7 @@ STR_COLOUR_DEFAULT                                              :Noklusējuma
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}jūdzes stundā
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}lauciņi/diena
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}ZS
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ZS
@@ -1555,6 +1556,11 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Vērtēšanas b
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Spēles beigas gads (tiek izmantots rezultāta noteikšanai). Šī gada beigās uzņēmuma rezultāti tiek ierakstīti un uz ekrāna tiek parādīti labākie rezultāti, bet spēlētāji var turpināt spēlēt arī pēc šī datuma.{}Ja tas ir norādīts pirms spēles sākuma datuma, labākie rezultāti nekad netiek parādīti.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nekad
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Ekonomikas tips: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Vienmērīga ekonomika liek mainīt ražošanas apjomus biežāk un mazākos soļos. Saldēta ekonomika aptur ražošanas izmaiņas un nozaru slēgšanu. Šim iestatījumam var nebūt ietekmes, ja nozares veidus nodrošina NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Orģināls
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Gluds
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Saldēts
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Atļaut akciju pirkšanu no citiem uzņēmumiem: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ja iespējots, ir atļauts pirkt un pārdodot uzņēmumu akcijas. Akcijas būs pieejamas tikai atbilstošu vecumu sasniegušiem uzņēmumiem
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimālais uzņēmuma vecums, lai tirgotos ar akcijām: {STRING}
@@ -1675,6 +1681,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Vai lietotāja 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :impērijas, britu (jūdzes stundā)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :metriskās (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI, starptautiskās (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Spēles vienības (lauciņi/dienas)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Transportlīdzekļu jaudas mērvienības: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Vai lietotāja saskarnē rāda transporta līdzekļa jaudu, rādīt norādītajās mērvienībās
@@ -1809,6 +1816,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Šim tul
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Iziet
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Vai esat pārliecināts ka vēlaties iziet no OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Jā
 STR_QUIT_NO                                                     :{BLACK}Nē
 
@@ -5040,6 +5048,7 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} boja
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} boja Nr. #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :({COMMA}. uzņēmums)
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Pieturas punkts {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Pieturas punkts {TOWN} #{COMMA}

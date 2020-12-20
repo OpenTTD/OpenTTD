@@ -5038,6 +5038,7 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} 부표
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} 부표 #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(회사 {COMMA})
 STR_FORMAT_GROUP_NAME                                           :그룹 {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} 경유지
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} 경유지 #{COMMA}
