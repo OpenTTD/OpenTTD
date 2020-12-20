@@ -783,7 +783,7 @@ void OnTick_Trees()
 
 static TrackStatus GetTileTrackStatus_Trees(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
-	return 0;
+	return (mode == TRANSPORT_WATER) ? CombineTrackStatus(TRACKDIR_BIT_MASK, TRACKDIR_BIT_NONE) : 0;
 }
 
 static void ChangeTileOwner_Trees(TileIndex tile, Owner old_owner, Owner new_owner)

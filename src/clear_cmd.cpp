@@ -351,7 +351,7 @@ get_out:;
 
 static TrackStatus GetTileTrackStatus_Clear(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
-	return 0;
+	return (mode == TRANSPORT_WATER) ? CombineTrackStatus(TRACKDIR_BIT_MASK, TRACKDIR_BIT_NONE) : 0;
 }
 
 static const StringID _clear_land_str[] = {

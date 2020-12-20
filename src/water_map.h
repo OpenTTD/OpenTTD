@@ -299,6 +299,11 @@ static inline bool IsLock(TileIndex t)
 	return GetWaterTileType(t) == WATER_TILE_LOCK;
 }
 
+static inline bool IsLockTile(TileIndex t)
+{
+	return IsTileType(t, MP_WATER) && GetWaterTileType(t) == WATER_TILE_LOCK;
+}
+
 /**
  * Get the direction of the water lock.
  * @param t Water tile to query.

@@ -55,7 +55,7 @@ WaterClass GetEffectiveWaterClass(TileIndex tile)
 		assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
 		return WATER_CLASS_SEA;
 	}
-	NOT_REACHED();
+	return WATER_CLASS_CANAL;
 }
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
@@ -779,6 +779,7 @@ static void ShipController(Ship *v)
 	/* update image of ship, as well as delta XY */
 	v->x_pos = gp.x;
 	v->y_pos = gp.y;
+	if (v->state != TRACK_BIT_WORMHOLE && !IsLockTile(v->tile)) v->z_pos = GetSlopePixelZ(gp.x, gp.y);
 
 getout:
 	v->UpdatePosition();
