@@ -44,18 +44,18 @@ typedef BOOL (WINAPI *PFNTRACKMOUSEEVENT)(LPTRACKMOUSEEVENT lpEventTrack);
 static PFNTRACKMOUSEEVENT _pTrackMouseEvent = nullptr;
 
 static struct {
-	HWND main_wnd;
-	HBITMAP dib_sect;
-	void *buffer_bits;
-	HPALETTE gdi_palette;
-	RECT update_rect;
-	int width;
-	int height;
-	int width_org;
-	int height_org;
-	bool fullscreen;
-	bool has_focus;
-	bool running;
+	HWND main_wnd;        ///< Handle to system window.
+	HBITMAP dib_sect;     ///< System bitmap object referencing our rendering buffer.
+	void *buffer_bits;    ///< Internal rendering buffer.
+	HPALETTE gdi_palette; ///< Palette object for 8bpp blitter.
+	RECT update_rect;     ///< Current dirty rect.
+	int width;            ///< Width in pixels of our display surface.
+	int height;           ///< Height in pixels of our display surface.
+	int width_org;        ///< Original monitor resolution width, before we changed it.
+	int height_org;       ///< Original monitor resolution height, before we changed it.
+	bool fullscreen;      ///< Whether to use (true) fullscreen mode.
+	bool has_focus;       ///< Does our window have system focus?
+	bool running;         ///< Is the main loop running?
 } _wnd;
 
 bool _force_full_redraw;
@@ -262,6 +262,8 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT_PTR event, DW
  */
 bool VideoDriver_Win32::MakeWindow(bool full_screen)
 {
+	/* full_screen is whether the new window should be fullscreen,
+	 * _wnd.fullscreen is whether the current window is. */
 	_fullscreen = full_screen;
 
 	/* recreate window? */
