@@ -46,10 +46,6 @@ struct Fio {
 	byte buffer_start[FIO_BUFFER_SIZE];    ///< local buffer when read from file
 	const char *filenames[MAX_FILE_SLOTS]; ///< array of filenames we (should) have open
 	char *shortnames[MAX_FILE_SLOTS];      ///< array of short names for spriteloader's use
-#if defined(LIMITED_FDS)
-	uint open_handles;                     ///< current amount of open handles
-	uint usage_count[MAX_FILE_SLOTS];      ///< count how many times this file has been opened
-#endif /* LIMITED_FDS */
 };
 
 static Fio _fio; ///< #Fio instance.
@@ -94,18 +90,6 @@ void FioSeekTo(size_t pos, int mode)
 	}
 }
 
-#if defined(LIMITED_FDS)
-static void FioRestoreFile(int slot)
-{
-	/* Do we still have the file open, or should we reopen it? */
-	if (_fio.handles[slot] == nullptr) {
-		DEBUG(misc, 6, "Restoring file '%s' in slot '%d' from disk", _fio.filenames[slot], slot);
-		FioOpenFile(slot, _fio.filenames[slot]);
-	}
-	_fio.usage_count[slot]++;
-}
-#endif /* LIMITED_FDS */
-
 /**
  * Switch to a different file and seek to a position.
  * @param slot Slot number of the new file.
@@ -113,12 +97,7 @@ static void FioRestoreFile(int slot)
  */
 void FioSeekToFile(uint8 slot, size_t pos)
 {
-	FILE *f;
-#if defined(LIMITED_FDS)
-	/* Make sure we have this file open */
-	FioRestoreFile(slot);
-#endif /* LIMITED_FDS */
-	f = _fio.handles[slot];
+	FILE *f = _fio.handles[slot];
 	assert(f != nullptr);
 	_fio.cur_fh = f;
 	_fio.filename = _fio.filenames[slot];
@@ -202,9 +181,6 @@ static inline void FioCloseFile(int slot)
 		_fio.shortnames[slot] = nullptr;
 
 		_fio.handles[slot] = nullptr;
-#if defined(LIMITED_FDS)
-		_fio.open_handles--;
-#endif /* LIMITED_FDS */
 	}
 }
 
@@ -216,30 +192,6 @@ void FioCloseAll()
 	}
 }
 
-#if defined(LIMITED_FDS)
-static void FioFreeHandle()
-{
-	/* If we are about to open a file that will exceed the limit, close a file */
-	if (_fio.open_handles + 1 == LIMITED_FDS) {
-		uint i, count;
-		int slot;
-
-		count = UINT_MAX;
-		slot = -1;
-		/* Find the file that is used the least */
-		for (i = 0; i < lengthof(_fio.handles); i++) {
-			if (_fio.handles[i] != nullptr && _fio.usage_count[i] < count) {
-				count = _fio.usage_count[i];
-				slot  = i;
-			}
-		}
-		assert(slot != -1);
-		DEBUG(misc, 6, "Closing filehandler '%s' in slot '%d' because of fd-limit", _fio.filenames[slot], slot);
-		FioCloseFile(slot);
-	}
-}
-#endif /* LIMITED_FDS */
-
 /**
  * Open a slotted file.
  * @param slot Index to assign.
@@ -250,9 +202,6 @@ void FioOpenFile(int slot, const char *filename, Subdirectory subdir)
 {
 	FILE *f;
 
-#if defined(LIMITED_FDS)
-	FioFreeHandle();
-#endif /* LIMITED_FDS */
 	f = FioFOpenFile(filename, "rb", subdir);
 	if (f == nullptr) usererror("Cannot open file '%s'", filename);
 	long pos = ftell(f);
@@ -269,10 +218,6 @@ void FioOpenFile(int slot, const char *filename, Subdirectory subdir)
 	if (t2 != nullptr) *t2 = '\0';
 	strtolower(_fio.shortnames[slot]);
 
-#if defined(LIMITED_FDS)
-	_fio.usage_count[slot] = 0;
-	_fio.open_handles++;
-#endif /* LIMITED_FDS */
 	FioSeekToFile(slot, (uint32)pos);
 }
 
