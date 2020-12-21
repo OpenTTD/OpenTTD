@@ -971,6 +971,8 @@ static void GenerateTerrain(int type, uint flag)
  */
 void DetermineSnowLineHeight(int flat_world_height)
 {
+	if (!_settings_client.gui.determine_snowline_height) return;
+
 	if (flat_world_height >= 0) { // generating a flat world
 		/* This doesn't require the extensive computations below */
 		int max_value = std::min(MAX_SNOWLINE_HEIGHT, std::max(MIN_SNOWLINE_HEIGHT, (uint)(flat_world_height - 2)));

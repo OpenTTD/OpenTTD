@@ -122,6 +122,7 @@ struct GUISettings {
 	bool   timetable_arrival_departure;      ///< show arrivals and departures in vehicle timetables
 	bool   right_mouse_wnd_close;            ///< close window with right click
 	bool   pause_on_newgame;                 ///< whether to start new games paused or not
+	bool   determine_snowline_height;        ///< whether to automatically determine and set snow line height upon map generation
 	bool   enable_signal_gui;                ///< show the signal GUI when the signal button is pressed
 	Year   coloured_news_year;               ///< when does newspaper become coloured?
 	bool   timetable_in_ticks;               ///< whether to show the timetable in ticks rather than days

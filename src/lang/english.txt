@@ -1336,8 +1336,10 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industry densit
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Set how many industries should be generated and what level should be maintained during the game
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distance from edge for Oil industries: {STRING2}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limit for how far from the map border oil refineries and oil rigs can be constructed. On island maps this ensures they are near the coast. On maps larger than 256 tiles, this value is scaled up.
+STR_CONFIG_SETTING_DETERMINE_SNOWLINE_HEIGHT                    :Autofill snow line height: {STRING2}
+STR_CONFIG_SETTING_DETERMINE_SNOWLINE_HEIGHT_HELPTEXT           :Automatically determine and set at what height snow starts in sub-arctic landscape upon world generation.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING2}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Control at what height snow starts in sub-arctic landscape. Snow also affects industry generation and town growth requirements
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Manually control at what height snow starts in sub-arctic landscape. Snow also affects industry generation and town growth requirements
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain: {STRING2}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Choose the frequency of hills: Smooth landscapes have fewer, more wide-spread hills. Rough landscapes have many hills, which may look repetitive
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
