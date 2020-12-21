@@ -114,31 +114,38 @@ elseif(UNIX)
     # With FHS, we can create deb/rpm/... Without it, they would be horribly broken
     # and not work. The other way around is also true; with FHS they are not
     # usable, and only flat formats work.
-    if(OPTION_INSTALL_FHS)
-        set(CPACK_GENERATOR "DEB")
-        include(PackageDeb)
-    else()
+    if(NOT OPTION_INSTALL_FHS)
         set(CPACK_GENERATOR "TXZ")
-    endif()
-
-    find_program(LSB_RELEASE_EXEC lsb_release)
-    execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
-        OUTPUT_VARIABLE LSB_RELEASE_ID
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
-    if(NOT LSB_RELEASE_ID)
-        set(PLATFORM "generic")
-    elseif(LSB_RELEASE_ID STREQUAL "Ubuntu" OR LSB_RELEASE_ID STREQUAL "Debian")
-        execute_process(COMMAND ${LSB_RELEASE_EXEC} -cs
-            OUTPUT_VARIABLE LSB_RELEASE_CODENAME
+    else()
+        find_program(LSB_RELEASE_EXEC lsb_release)
+        execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
+            OUTPUT_VARIABLE LSB_RELEASE_ID
             OUTPUT_STRIP_TRAILING_WHITESPACE
         )
-        string(TOLOWER "${LSB_RELEASE_ID}-${LSB_RELEASE_CODENAME}" PLATFORM)
-    else()
-        message(FATAL_ERROR "Unknown Linux distribution found for packaging; please consider creating a Pull Request to add support for this distribution.")
+        if(NOT LSB_RELEASE_ID)
+            set(PLATFORM "generic")
+            set(CPACK_GENERATOR "TXZ")
+
+            message(WARNING "Unknown Linux distribution found for packaging; can only pack to a txz. Please consider creating a Pull Request to add support for this distribution.")
+        elseif(LSB_RELEASE_ID STREQUAL "Ubuntu" OR LSB_RELEASE_ID STREQUAL "Debian")
+            execute_process(COMMAND ${LSB_RELEASE_EXEC} -cs
+                OUTPUT_VARIABLE LSB_RELEASE_CODENAME
+                OUTPUT_STRIP_TRAILING_WHITESPACE
+            )
+            string(TOLOWER "${LSB_RELEASE_ID}-${LSB_RELEASE_CODENAME}" PLATFORM)
+
+            set(CPACK_GENERATOR "DEB")
+            include(PackageDeb)
+        else()
+            set(PLATFORM "unknown")
+            set(CPACK_GENERATOR "TXZ")
+
+            message(WARNING "Unknown LSB-based Linux distribution '${LSB_RELEASE_ID}' found for packaging; can only pack to a txz. Please consider creating a Pull Request to add support for this distribution.")
+        endif()
+
+        set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-linux-${PLATFORM}-${CPACK_SYSTEM_NAME}")
     endif()
 
-    set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-linux-${PLATFORM}-${CPACK_SYSTEM_NAME}")
 else()
     message(FATAL_ERROR "Unknown OS found for packaging; please consider creating a Pull Request to add support for this OS.")
 endif()
