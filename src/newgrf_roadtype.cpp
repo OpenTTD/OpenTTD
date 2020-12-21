@@ -45,7 +45,7 @@
 			const Town *t = nullptr;
 			if (IsRoadDepotTile(this->tile)) {
 				t = Depot::GetByTile(this->tile)->town;
-			} else if (IsTileType(this->tile, MP_ROAD)) {
+			} else {
 				t = ClosestTownFromTile(this->tile, UINT_MAX);
 			}
 			return t != nullptr ? GetTownRadiusGroup(t, this->tile) : HZB_TOWN_EDGE;
