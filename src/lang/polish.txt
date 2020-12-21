@@ -573,6 +573,7 @@ STR_COLOUR_DEFAULT                                              :Domyślny
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}p{P ole ola ól}/dzień
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}KM
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}KM
@@ -1694,7 +1695,7 @@ STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Pokaż nazwę N
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Dodaj linię do okna budowy pojazdów, pokazujących z którego NewGRF'a wybrany pojazd pochodzi.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Krajobraz: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Krajobrazy określają podstawowe scenariusze gry, które różnią się przedsiębiorstwami, towarami i wymogami dla rozwoju miast. Pliki NewGRF i skrypty umożliwiają dokładniejszą kontrolę warunków rozgrywki
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Krajobrazy określają podstawowe scenariusze gry, które różnią się przedsiębiorstwami, ładunkiem i wymogami dla rozwoju miast. Pliki NewGRF i skrypty umożliwiają dokładniejszą kontrolę warunków rozgrywki
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generator krajobrazu: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Oryginalny generator tworzy tylko proste kształty krajobrazu i jest zależny od podstawowego zestawu grafiki. TerraGenesis jest oparty na generatorze szumu Perlina, który umożliwia precyzyjną kontrolę parametrów
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Oryginalny
@@ -1933,6 +1934,11 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Punktacja na ko
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Rok, w którym gra się kończy na cel punktacji. Na koniec tego roku, punkty firmy są zarejestrowane i ekran wyników najwyższych jest pokazywany, ale gracze mogą po tym dalej grać.{}Jeżeli jest to przed rokiem startowym, ekran wyników najwyższych nie jest nigdy pokazywany.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nigdy
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Typ ekonomii: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Płynna ekonomia oznacza, że zmiany w produkcji zachodzą częściej i w mniejszych krokach. Zamrożona gospodarka zatrzymuje zmiany w produkcji i zamykanie przedsiębiorstw. To ustawienie może nie mieć żadnego wpływu, jeśli przemysł jest regulowany przez NewGRFy.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Oryginalna
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Płynna
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Zamrożona
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Pozwól kupować udziały w innych firmach: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Kiedy włączone, pozwala na kupowanie i sprzedawanie udziałów w firmie. Udziały będą dostępne tylko dla firm z odpowiednim stażem
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimalny wiek firmy pozwalający na handel udziałami: {STRING}
@@ -2053,6 +2059,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Kiedy prędkoś
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperialne (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metryczne (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Jednostki gry (pola/dzień)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Jednostka mocy pojazdów: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Kiedy moc pojazdu jest pokazywana w interfejsie użytkownika, wyświetl ją w wybranych jednostkach
@@ -2185,6 +2192,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Tej wers
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Wyjście
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Czy jesteś pewien, że chcesz wyjść z OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Tak
 STR_QUIT_NO                                                     :{BLACK}Nie
 
@@ -4756,7 +4764,7 @@ STR_ERROR_CAN_T_BUILD_AIRPORT_HERE                              :{WHITE}Nie moż
 
 STR_ERROR_ADJOINS_MORE_THAN_ONE_EXISTING                        :{WHITE}Przylega do więcej niż jednej stacji
 STR_ERROR_STATION_TOO_SPREAD_OUT                                :{WHITE}... stacja zbyt rozległa
-STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Za duzo stacji
+STR_ERROR_TOO_MANY_STATIONS_LOADING                             :{WHITE}Za dużo stacji
 STR_ERROR_TOO_MANY_STATION_SPECS                                :{WHITE}Za dużo części stacji kolejowej
 STR_ERROR_TOO_MANY_BUS_STOPS                                    :{WHITE}Zbyt wiele przystanków autobusowych
 STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Zbyt wiele stacji załadunku ciężarówek
@@ -5452,6 +5460,7 @@ STR_FORMAT_BUOY_NAME                                            :Boja {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Boja {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupa {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Post. {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Post. {TOWN} #{COMMA}

@@ -320,7 +320,7 @@ STR_COLOUR_DEFAULT                                              :По умолч
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}мил{P я и ь}/ч
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}км/ч
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}м/с
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}клет{P ка ки ок}/день
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}кл./день
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}лс
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}лс
@@ -1831,6 +1831,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Показыв�
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :английская (миль/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :метрическая (км/ч)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :СИ (м/с)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :внутриигровая (клетки в день)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Система единиц для мощности: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Показывать значения мощности двигателей транспортных средств в выбранной системе единиц
@@ -1878,7 +1879,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Мар�
 STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Ограничения
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Аварии и катастрофы
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Создание карты
-STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Окружающая среда
+STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Окружение
 STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Городская администрация
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Города
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Предприятия
@@ -5265,6 +5266,7 @@ STR_FORMAT_BUOY_NAME                                            :Буй {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Буй {TOWN} №{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Компания {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Группа {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} (№{COMMA})
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Точка пути {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Точка пути {TOWN} №{COMMA}
