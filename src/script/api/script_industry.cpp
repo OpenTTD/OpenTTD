@@ -10,7 +10,10 @@
 #include "../../stdafx.h"
 #include "script_industry.hpp"
 #include "script_cargo.hpp"
+#include "script_company.hpp"
+#include "script_error.hpp"
 #include "script_map.hpp"
+#include "../../company_base.h"
 #include "../../industry.h"
 #include "../../strings_func.h"
 #include "../../station_base.h"
@@ -240,4 +243,42 @@ bool ScriptIndustry::SetControlFlags(IndustryID industry_id, uint32 control_flag
 	if (!IsValidIndustry(industry_id)) return false;
 
 	return ScriptObject::DoCommand(0, industry_id, 0 | ((control_flags & ::INDCTL_MASK) << 8), CMD_INDUSTRY_CTRL);
+}
+
+/* static */ ScriptCompany::CompanyID ScriptIndustry::GetExclusiveSupplier(IndustryID industry_id)
+{
+	if (!IsValidIndustry(industry_id)) return ScriptCompany::COMPANY_INVALID;
+
+	auto company_id = ::Industry::Get(industry_id)->exclusive_supplier;
+	if (!::Company::IsValidID(company_id)) return ScriptCompany::COMPANY_INVALID;
+
+	return (ScriptCompany::CompanyID)((byte)company_id);
+}
+
+/* static */ bool ScriptIndustry::SetExclusiveSupplier(IndustryID industry_id, ScriptCompany::CompanyID company_id)
+{
+	EnforcePrecondition(false, IsValidIndustry(industry_id));
+
+	auto company = ScriptCompany::ResolveCompanyID(company_id);
+	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
+	return ScriptObject::DoCommand(0, industry_id, 1 | (((uint8)owner) << 16), CMD_INDUSTRY_CTRL);
+}
+
+/* static */ ScriptCompany::CompanyID ScriptIndustry::GetExclusiveConsumer(IndustryID industry_id)
+{
+	if (!IsValidIndustry(industry_id)) return ScriptCompany::COMPANY_INVALID;
+
+	auto company_id = ::Industry::Get(industry_id)->exclusive_consumer;
+	if (!::Company::IsValidID(company_id)) return ScriptCompany::COMPANY_INVALID;
+
+	return (ScriptCompany::CompanyID)((byte)company_id);
+}
+
+/* static */ bool ScriptIndustry::SetExclusiveConsumer(IndustryID industry_id, ScriptCompany::CompanyID company_id)
+{
+	EnforcePrecondition(false, IsValidIndustry(industry_id));
+
+	auto company = ScriptCompany::ResolveCompanyID(company_id);
+	::Owner owner = (company == ScriptCompany::COMPANY_INVALID ? ::INVALID_OWNER : (::Owner)company);
+	return ScriptObject::DoCommand(0, industry_id, 2 | (((uint8)owner) << 16), CMD_INDUSTRY_CTRL);
 }

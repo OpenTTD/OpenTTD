@@ -4013,7 +4013,7 @@ static bool CanMoveGoodsToStation(const Station *st, CargoID type)
 	return true;
 }
 
-uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations)
+uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations, Owner exclusivity)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
 	if (all_stations->empty()) return 0;
@@ -4024,6 +4024,7 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 	std::vector<StationInfo> used_stations;
 
 	for (Station *st : *all_stations) {
+		if (exclusivity != INVALID_OWNER && exclusivity != st->owner) continue;
 		if (!CanMoveGoodsToStation(st, type)) continue;
 
 		/* Avoid allocating a vector if there is only one station to significantly

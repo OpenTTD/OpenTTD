@@ -17,6 +17,7 @@
 #include "town.h"
 #include "news_func.h"
 #include "cheat_type.h"
+#include "company_base.h"
 #include "genworld.h"
 #include "tree_map.h"
 #include "newgrf_cargo.h"
@@ -539,7 +540,7 @@ static bool TransportIndustryGoods(TileIndex tile)
 
 			i->this_month_production[j] += cw;
 
-			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, &i->stations_near);
+			uint am = MoveGoodsToStation(i->produced_cargo[j], cw, ST_INDUSTRY, i->index, &i->stations_near, i->exclusive_consumer);
 			i->this_month_transported[j] += am;
 
 			moved_cargo |= (am != 0);
@@ -946,6 +947,9 @@ static void ChangeTileOwner_Industry(TileIndex tile, Owner old_owner, Owner new_
 	/* If the founder merges, the industry was created by the merged company */
 	Industry *i = Industry::GetByTile(tile);
 	if (i->founder == old_owner) i->founder = (new_owner == INVALID_OWNER) ? OWNER_NONE : new_owner;
+
+	if (i->exclusive_supplier == old_owner) i->exclusive_supplier = new_owner;
+	if (i->exclusive_consumer == old_owner) i->exclusive_consumer = new_owner;
 }
 
 /**
@@ -1764,6 +1768,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	 * else, chosen layout + 1 */
 	i->selected_layout = (byte)(layout_index + 1);
 
+	i->exclusive_supplier = INVALID_OWNER;
+	i->exclusive_consumer = INVALID_OWNER;
+
 	i->prod_level = PRODLEVEL_DEFAULT;
 
 	/* Call callbacks after the regular fields got initialised. */
@@ -2058,8 +2065,13 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0 - 7) - action to perform:
  *                      0 = set control flags
+ *                      1 = set exclusive supplier
+ *                      2 = set exclusive consumer
  * - p2 = (bit 8 - 15) - IndustryControlFlags
  *                       (only used with set control flags)
+ * - p2 = (bit 16 - 23) - CompanyID to set or INVALID_OWNER (available to everyone) or
+ *                        OWNER_NONE (neutral stations only) or OWNER_DEITY (no one)
+ *                        (only used with set exclusive supplier / consumer)
  * @param text unused
  * @return Empty cost or an error.
  */
@@ -2077,6 +2089,24 @@ CommandCost CmdIndustryCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			IndustryControlFlags ctlflags = (IndustryControlFlags)GB(p2, 8, 8) & INDCTL_MASK;
 
 			if (flags & DC_EXEC) ind->ctlflags = ctlflags;
+
+			break;
+		}
+
+		case 1:
+		case 2: {
+			Owner company_id = (Owner)GB(p2, 16, 8);
+
+			if (company_id != OWNER_NONE && company_id != INVALID_OWNER && company_id != OWNER_DEITY
+				&& !Company::IsValidID(company_id)) return CMD_ERROR;
+
+			if (flags & DC_EXEC) {
+				if (action == 1) {
+					ind->exclusive_supplier = company_id;
+				} else {
+					ind->exclusive_consumer = company_id;
+				}
+			}
 
 			break;
 		}

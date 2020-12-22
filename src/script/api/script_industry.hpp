@@ -10,8 +10,9 @@
 #ifndef SCRIPT_INDUSTRY_HPP
 #define SCRIPT_INDUSTRY_HPP
 
-#include "script_object.hpp"
+#include "script_company.hpp"
 #include "script_date.hpp"
+#include "script_object.hpp"
 #include "../../industry.h"
 
 /**
@@ -259,6 +260,47 @@ public:
 	 * @api -ai
 	 */
 	static bool SetControlFlags(IndustryID industry_id, uint32 control_flags);
+
+	/**
+	 * Find out which company currently has the exclusive rights to deliver cargo to the industry.
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return The company that has the exclusive rights. The value
+	 *         ScriptCompany::COMPANY_INVALID means that there are currently no
+	 *         exclusive rights given out to anyone.
+	 */
+	static ScriptCompany::CompanyID GetExclusiveSupplier(IndustryID industry_id);
+
+	/**
+	 * Sets or resets the company that has exclusive right to deliver cargo to the industry.
+	 * @param industry_id The index of the industry.
+	 * @param company_id The company to set (ScriptCompany::COMPANY_INVALID to reset).
+	 * @pre IsValidIndustry(industry_id).
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetExclusiveSupplier(IndustryID industry_id, ScriptCompany::CompanyID company_id);
+
+	/**
+	 * Find out which company currently has the exclusive rights to take cargo from the industry.
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return The company that has the exclusive rights. The value
+	 *         ScriptCompany::COMPANY_SPECTATOR means that there are currently no
+	 *         exclusive rights given out to anyone.
+	 */
+	static ScriptCompany::CompanyID GetExclusiveConsumer(IndustryID industry_id);
+
+	/**
+	 * Sets or resets the company that has exclusive right to take cargo from the industry.
+	 * @param industry_id The index of the industry.
+	 * @param company_id The company to set (ScriptCompany::COMPANY_INVALID to reset).
+	 * @pre IsValidIndustry(industry_id).
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetExclusiveConsumer(IndustryID industry_id, ScriptCompany::CompanyID company_id);
+
 };
 
 #endif /* SCRIPT_INDUSTRY_HPP */
