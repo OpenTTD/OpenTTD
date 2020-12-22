@@ -4254,6 +4254,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Savegame is mad
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :File not readable
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File not writeable
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data integrity check failed
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Savegame is made with a modified version
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game was saved in version without tram support. All trams have been removed
 

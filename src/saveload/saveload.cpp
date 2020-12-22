@@ -2689,6 +2689,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 
 			/* Is the version higher than the current? */
 			if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
+			if (_sl_version >= SLV_START_PATCHPACKS && _sl_version <= SLV_END_PATCHPACKS) SlError(STR_GAME_SAVELOAD_ERROR_PATCHPACK);
 			break;
 		}
 
