@@ -304,6 +304,22 @@ enum SaveLoadVersion : uint16 {
 	SLV_ENDING_YEAR,                        ///< 218  PR#7747 v1.10 Configurable ending year.
 	SLV_REMOVE_TOWN_CARGO_CACHE,            ///< 219  PR#8258 Remove town cargo acceptance and production caches.
 
+	/* Patchpacks for a while considered it a good idea to jump a few versions
+	 * above our version for their savegames. But as time continued, this gap
+	 * has been closing, up to the point we would start to reuse versions from
+	 * their patchpacks. This is not a problem from our perspective: the
+	 * savegame will simply fail to load because they all contain chunks we
+	 * cannot digest. But, this gives for ugly errors. As we have plenty of
+	 * versions anyway, we simply skip the versions we know belong to
+	 * patchpacks. This way we can present the user with a clean error
+	 * indicate he is loading a savegame from a patchpack.
+	 * For future patchpack creators: please follow a system like JGRPP, where
+	 * the version is masked with 0x8000, and the true version is stored in
+	 * its own chunk with feature toggles.
+	 */
+	SLV_START_PATCHPACKS,                   ///< 220  First known patchpack to use a version just above ours.
+	SLV_END_PATCHPACKS = 286,               ///< 286  Last known patchpack to use a version just above ours.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 
