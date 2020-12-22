@@ -103,8 +103,8 @@ STR_CARGO_PLURAL_TOYS                                           :hračky
 STR_CARGO_PLURAL_TOYS.gen                                       :hraček
 STR_CARGO_PLURAL_TOYS.big                                       :Hračky
 STR_CARGO_PLURAL_SWEETS                                         :bonbony
-STR_CARGO_PLURAL_CANDY.gen                                      :bonbonů
-STR_CARGO_PLURAL_CANDY.big                                      :Bonbony
+STR_CARGO_PLURAL_SWEETS.gen                                     :bonbonů
+STR_CARGO_PLURAL_SWEETS.big                                     :Bonbony
 STR_CARGO_PLURAL_COLA                                           :kola
 STR_CARGO_PLURAL_COLA.gen                                       :koly
 STR_CARGO_PLURAL_COLA.acc                                       :kolu

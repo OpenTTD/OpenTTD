@@ -106,8 +106,8 @@ STR_CARGO_PLURAL_TOYS                                           :Igrače
 STR_CARGO_PLURAL_TOYS.r                                         :Igrač
 STR_CARGO_PLURAL_TOYS.d                                         :Igračam
 STR_CARGO_PLURAL_SWEETS                                         :Sladkarije
-STR_CARGO_PLURAL_CANDY.r                                        :Sladkarij
-STR_CARGO_PLURAL_CANDY.d                                        :Sladkarijam
+STR_CARGO_PLURAL_SWEETS.r                                       :Sladkarij
+STR_CARGO_PLURAL_SWEETS.d                                       :Sladkarijam
 STR_CARGO_PLURAL_COLA                                           :Cockta
 STR_CARGO_PLURAL_COLA.r                                         :Cockte
 STR_CARGO_PLURAL_COLA.d                                         :Cockti

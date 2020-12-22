@@ -74,7 +74,7 @@ STR_CARGO_PLURAL_SUGAR.gen                                      :šećera
 STR_CARGO_PLURAL_TOYS                                           :Igračke
 STR_CARGO_PLURAL_TOYS.gen                                       :igračaka
 STR_CARGO_PLURAL_SWEETS                                         :Slatkiši
-STR_CARGO_PLURAL_CANDY.gen                                      :slatkiša
+STR_CARGO_PLURAL_SWEETS.gen                                     :slatkiša
 STR_CARGO_PLURAL_COLA                                           :Cola
 STR_CARGO_PLURAL_COLA.gen                                       :cole
 STR_CARGO_PLURAL_CANDYFLOSS                                     :Šećerna vuna

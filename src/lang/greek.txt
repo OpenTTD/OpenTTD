@@ -73,7 +73,7 @@ STR_CARGO_PLURAL_SUGAR.geniki                                   :Ζάχαρης
 STR_CARGO_PLURAL_TOYS                                           :{G=n}Παιχνίδια
 STR_CARGO_PLURAL_TOYS.geniki                                    :Παιχνιδιών
 STR_CARGO_PLURAL_SWEETS                                         :{G=n}Γλυκίσματα
-STR_CARGO_PLURAL_CANDY.geniki                                   :Γλυκισμάτων
+STR_CARGO_PLURAL_SWEETS.geniki                                  :Γλυκισμάτων
 STR_CARGO_PLURAL_COLA                                           :{G=f}Κόλα
 STR_CARGO_PLURAL_COLA.geniki                                    :Κόλας
 STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=n}Μαλλιά της γριάς

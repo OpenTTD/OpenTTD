@@ -74,7 +74,7 @@ STR_CARGO_PLURAL_SUGAR.g                                        :cukru
 STR_CARGO_PLURAL_TOYS                                           :Hračky
 STR_CARGO_PLURAL_TOYS.g                                         :hračiek
 STR_CARGO_PLURAL_SWEETS                                         :Cukríky
-STR_CARGO_PLURAL_CANDY.g                                        :cukríkov
+STR_CARGO_PLURAL_SWEETS.g                                       :cukríkov
 STR_CARGO_PLURAL_COLA                                           :Kofola
 STR_CARGO_PLURAL_COLA.g                                         :kofoly
 STR_CARGO_PLURAL_CANDYFLOSS                                     :Cukrová vata

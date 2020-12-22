@@ -120,9 +120,9 @@ STR_CARGO_PLURAL_TOYS.big                                       :Igračke
 STR_CARGO_PLURAL_TOYS.gen                                       :igračaka
 STR_CARGO_PLURAL_TOYS.aku                                       :igračke
 STR_CARGO_PLURAL_SWEETS                                         :slatkiši
-STR_CARGO_PLURAL_CANDY.big                                      :Slatkiši
-STR_CARGO_PLURAL_CANDY.gen                                      :slatkiša
-STR_CARGO_PLURAL_CANDY.aku                                      :slatkiše
+STR_CARGO_PLURAL_SWEETS.big                                     :Slatkiši
+STR_CARGO_PLURAL_SWEETS.gen                                     :slatkiša
+STR_CARGO_PLURAL_SWEETS.aku                                     :slatkiše
 STR_CARGO_PLURAL_COLA                                           :kola
 STR_CARGO_PLURAL_COLA.big                                       :Kola
 STR_CARGO_PLURAL_COLA.gen                                       :kole

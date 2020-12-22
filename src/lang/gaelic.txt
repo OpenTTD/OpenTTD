@@ -120,9 +120,9 @@ STR_CARGO_PLURAL_TOYS.nom                                       :Dèideagan
 STR_CARGO_PLURAL_TOYS.gen                                       :Dhèideagan
 STR_CARGO_PLURAL_TOYS.dat                                       :Dèideagan
 STR_CARGO_PLURAL_SWEETS                                         :{G=m}Mìlseanan
-STR_CARGO_PLURAL_CANDY.nom                                      :Mìlseanan
-STR_CARGO_PLURAL_CANDY.gen                                      :Mhìlseanan
-STR_CARGO_PLURAL_CANDY.dat                                      :Mìlseanan
+STR_CARGO_PLURAL_SWEETS.nom                                     :Mìlseanan
+STR_CARGO_PLURAL_SWEETS.gen                                     :Mhìlseanan
+STR_CARGO_PLURAL_SWEETS.dat                                     :Mìlseanan
 STR_CARGO_PLURAL_COLA                                           :{G=m}Cola
 STR_CARGO_PLURAL_COLA.nom                                       :Cola
 STR_CARGO_PLURAL_COLA.gen                                       :Cola

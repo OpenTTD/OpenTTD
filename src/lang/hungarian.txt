@@ -73,7 +73,7 @@ STR_CARGO_PLURAL_SUGAR.t                                        :cukrot
 STR_CARGO_PLURAL_TOYS                                           :Játék
 STR_CARGO_PLURAL_TOYS.t                                         :játékot
 STR_CARGO_PLURAL_SWEETS                                         :Cukorka
-STR_CARGO_PLURAL_CANDY.t                                        :cukorkát
+STR_CARGO_PLURAL_SWEETS.t                                       :cukorkát
 STR_CARGO_PLURAL_COLA                                           :Kóla
 STR_CARGO_PLURAL_COLA.t                                         :kólát
 STR_CARGO_PLURAL_CANDYFLOSS                                     :Vattacukor

@@ -73,7 +73,7 @@ STR_CARGO_PLURAL_SUGAR.g                                        :Suhkru
 STR_CARGO_PLURAL_TOYS                                           :Mänguasjad
 STR_CARGO_PLURAL_TOYS.g                                         :Mänguasjade
 STR_CARGO_PLURAL_SWEETS                                         :Maiustused
-STR_CARGO_PLURAL_CANDY.g                                        :Maiustuste
+STR_CARGO_PLURAL_SWEETS.g                                       :Maiustuste
 STR_CARGO_PLURAL_COLA                                           :Koola
 STR_CARGO_PLURAL_COLA.g                                         :Koola
 STR_CARGO_PLURAL_CANDYFLOSS                                     :Suhkruvatt

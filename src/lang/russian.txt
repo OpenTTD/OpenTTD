@@ -97,8 +97,8 @@ STR_CARGO_PLURAL_TOYS                                           :{G=p}Игруш
 STR_CARGO_PLURAL_TOYS.gen                                       :игрушек
 STR_CARGO_PLURAL_TOYS.acc                                       :игрушки
 STR_CARGO_PLURAL_SWEETS                                         :{G=p}Конфеты
-STR_CARGO_PLURAL_CANDY.gen                                      :конфет
-STR_CARGO_PLURAL_CANDY.acc                                      :конфеты
+STR_CARGO_PLURAL_SWEETS.gen                                     :конфет
+STR_CARGO_PLURAL_SWEETS.acc                                     :конфеты
 STR_CARGO_PLURAL_COLA                                           :{G=f}Кола
 STR_CARGO_PLURAL_COLA.gen                                       :колы
 STR_CARGO_PLURAL_COLA.acc                                       :колу
