@@ -320,6 +320,8 @@ enum SaveLoadVersion : uint16 {
 	SLV_START_PATCHPACKS,                   ///< 220  First known patchpack to use a version just above ours.
 	SLV_END_PATCHPACKS = 286,               ///< 286  Last known patchpack to use a version just above ours.
 
+	SLV_GS_INDUSTRY_CONTROL,                ///< 287  PR#7912 GS industry control.
+
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
 

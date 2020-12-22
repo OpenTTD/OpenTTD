@@ -35,6 +35,26 @@ enum ProductionLevels {
 };
 
 /**
+ * Flags to control/override the behaviour of an industry.
+ * These flags are controlled by game scripts.
+ */
+enum IndustryControlFlags : byte {
+	/** No flags in effect */
+	INDCTL_NONE                   = 0,
+	/** When industry production change is evaluated, rolls to decrease are ignored. */
+	INDCTL_NO_PRODUCTION_DECREASE = 1 << 0,
+	/** When industry production change is evaluated, rolls to increase are ignored. */
+	INDCTL_NO_PRODUCTION_INCREASE = 1 << 1,
+	/**
+	 * Industry can not close regardless of production level or time since last delivery.
+	 * This does not prevent a closure already announced. */
+	INDCTL_NO_CLOSURE             = 1 << 2,
+	/** Mask of all flags set */
+	INDCTL_MASK = INDCTL_NO_PRODUCTION_DECREASE | INDCTL_NO_PRODUCTION_INCREASE | INDCTL_NO_CLOSURE,
+};
+DECLARE_ENUM_AS_BIT_SET(IndustryControlFlags);
+
+/**
  * Defines the internal data of a functional industry.
  */
 struct Industry : IndustryPool::PoolItem<&_industry_pool> {
@@ -59,6 +79,7 @@ struct Industry : IndustryPool::PoolItem<&_industry_pool> {
 	byte random_colour;            ///< randomized colour of the industry, for display purpose
 	Year last_prod_year;           ///< last year of production
 	byte was_cargo_delivered;      ///< flag that indicate this has been the closest industry chosen for cargo delivery by a station. see DeliverGoodsToIndustry
+	IndustryControlFlags ctlflags; ///< flags overriding standard behaviours
 
 	PartOfSubsidy part_of_subsidy; ///< NOSAVE: is this industry a source/destination of a subsidy?
 	StationList stations_near;     ///< NOSAVE: List of nearby stations.

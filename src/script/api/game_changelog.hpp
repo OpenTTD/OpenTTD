@@ -21,6 +21,10 @@
  * \li GSEventStoryPageButtonClick
  * \li GSEventStoryPageTileSelect
  * \li GSEventStoryPageVehicleSelect
+ * \li GSIndustry::GetCargoLastAcceptedDate
+ * \li GSIndustry::GetControlFlags
+ * \li GSIndustry::GetLastProductionYear
+ * \li GSIndustry::SetControlFlags
  * \li GSStoryPage::MakePushButtonReference
  * \li GSStoryPage::MakeTileButtonReference
  * \li GSStoryPage::MakeVehicleButtonReference
