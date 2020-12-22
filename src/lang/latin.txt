@@ -120,9 +120,9 @@ STR_CARGO_PLURAL_TOYS.gen                                       :ludicrorum
 STR_CARGO_PLURAL_TOYS.acc                                       :Ludicra
 STR_CARGO_PLURAL_TOYS.dat                                       :Ludicris
 STR_CARGO_PLURAL_SWEETS                                         :{G=np}Bellaria
-STR_CARGO_PLURAL_CANDY.gen                                      :bellariorum
-STR_CARGO_PLURAL_CANDY.acc                                      :Bellaria
-STR_CARGO_PLURAL_CANDY.dat                                      :Bellariis
+STR_CARGO_PLURAL_SWEETS.gen                                     :bellariorum
+STR_CARGO_PLURAL_SWEETS.acc                                     :Bellaria
+STR_CARGO_PLURAL_SWEETS.dat                                     :Bellariis
 STR_CARGO_PLURAL_COLA                                           :{G=f}Cola
 STR_CARGO_PLURAL_COLA.gen                                       :colae
 STR_CARGO_PLURAL_COLA.acc                                       :Colam

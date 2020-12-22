@@ -96,8 +96,8 @@ STR_CARGO_PLURAL_TOYS                                           :іграшки
 STR_CARGO_PLURAL_TOYS.r                                         :іграшок
 STR_CARGO_PLURAL_TOYS.z                                         :іграшки
 STR_CARGO_PLURAL_SWEETS                                         :солодощі
-STR_CARGO_PLURAL_CANDY.r                                        :солодощів
-STR_CARGO_PLURAL_CANDY.z                                        :солодощі
+STR_CARGO_PLURAL_SWEETS.r                                       :солодощів
+STR_CARGO_PLURAL_SWEETS.z                                       :солодощі
 STR_CARGO_PLURAL_COLA                                           :кола
 STR_CARGO_PLURAL_COLA.r                                         :коли
 STR_CARGO_PLURAL_COLA.z                                         :колу

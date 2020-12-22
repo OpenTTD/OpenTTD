@@ -167,11 +167,11 @@ STR_CARGO_PLURAL_TOYS.acc                                       :цацкі
 STR_CARGO_PLURAL_TOYS.abl                                       :цацкамі
 STR_CARGO_PLURAL_TOYS.pre                                       :цацках
 STR_CARGO_PLURAL_SWEETS                                         :{G=p}Цукеркi
-STR_CARGO_PLURAL_CANDY.gen                                      :цукерак
-STR_CARGO_PLURAL_CANDY.dat                                      :цукеркам
-STR_CARGO_PLURAL_CANDY.acc                                      :цукеркі
-STR_CARGO_PLURAL_CANDY.abl                                      :цукеркамі
-STR_CARGO_PLURAL_CANDY.pre                                      :цукерках
+STR_CARGO_PLURAL_SWEETS.gen                                     :цукерак
+STR_CARGO_PLURAL_SWEETS.dat                                     :цукеркам
+STR_CARGO_PLURAL_SWEETS.acc                                     :цукеркі
+STR_CARGO_PLURAL_SWEETS.abl                                     :цукеркамі
+STR_CARGO_PLURAL_SWEETS.pre                                     :цукерках
 STR_CARGO_PLURAL_COLA                                           :{G=f}Кола
 STR_CARGO_PLURAL_COLA.gen                                       :колы
 STR_CARGO_PLURAL_COLA.dat                                       :коле
