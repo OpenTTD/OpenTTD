@@ -255,6 +255,8 @@ STR_SORT_BY_FACILITY                                            :Stacion-tipo
 STR_SORT_BY_POWER                                               :Povo
 STR_SORT_BY_POPULATION                                          :Populo
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzas ludo
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Selekti

@@ -309,6 +309,8 @@ STR_SORT_BY_RANGE                                               :வரையற
 STR_SORT_BY_POPULATION                                          :மக்கள் தொகை
 STR_SORT_BY_RATING                                              :மதிப்பீடு
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}இடை நிறுத்து
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}அதி வேகமாக விளையாடு

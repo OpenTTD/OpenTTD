@@ -312,6 +312,8 @@ STR_SORT_BY_RANGE                                               :Обхват
 STR_SORT_BY_POPULATION                                          :Население
 STR_SORT_BY_RATING                                              :Рейтинг
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Бързо превъртане на играта

@@ -498,6 +498,8 @@ STR_SORT_BY_RANGE                                               :Dlùths
 STR_SORT_BY_POPULATION                                          :Àireamh-shluaigh
 STR_SORT_BY_RATING                                              :Rangachadh
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Cuir an geama na stad / a' dol
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Cuir an geama air adhart gu luath

@@ -500,6 +500,8 @@ STR_SORT_BY_RANGE                                               :Distantia volat
 STR_SORT_BY_POPULATION                                          :Numero Incolarum
 STR_SORT_BY_RATING                                              :Censione
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Ludum intermittere
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Ludum adcelerare

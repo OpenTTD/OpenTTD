@@ -203,6 +203,8 @@ STR_SORT_BY_COST                                                :Хак
 STR_SORT_BY_POWER                                               :Хӑватлӑх
 STR_SORT_BY_POPULATION                                          :Ҫынисем
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Вӑййи тӑхтав
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Вӑййи хӑвӑртлат

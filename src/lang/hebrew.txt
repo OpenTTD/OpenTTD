@@ -324,6 +324,8 @@ STR_SORT_BY_RANGE                                               :טווח
 STR_SORT_BY_POPULATION                                          :אכלוסיה
 STR_SORT_BY_RATING                                              :דרוג
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}השהה משחק
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}הרץ את הזמן במהירות

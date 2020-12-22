@@ -317,6 +317,8 @@ STR_SORT_BY_RANGE                                               :항속거리
 STR_SORT_BY_POPULATION                                          :인구
 STR_SORT_BY_RATING                                              :등급
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}게임을 일시 정지합니다.
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}게임 시간을 빠르게 가도록 합니다.
@@ -2251,7 +2253,7 @@ STR_CONTENT_OPEN_URL                                            :{BLACK}웹 사�
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}이 컨텐츠의 웹 사이트를 방문합니다
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운로드
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}선택한 콘텐츠의 다운로드를 시작합니다
-STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}다운로드 할 파일의 총 용량: {WHITE}{BYTES}
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}다운로드할 파일의 총 용량: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}콘텐츠 정보
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}이 콘텐츠를 선택하지 않았습니다
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}이 콘텐츠를 다운로드하기 위해 선택하였습니다
@@ -2269,7 +2271,7 @@ STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}필요한 요소: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}태그: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD가 "zlib" 지원 기능이 없는 상태에서 빌드되었습니다...
-STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠를 다운로드 할 수 없습니다!
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠를 다운로드할 수 없습니다!
 
 # Order of these is important!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=m}기본 그래픽

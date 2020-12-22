@@ -290,6 +290,8 @@ STR_SORT_BY_RANGE                                               :опсег
 STR_SORT_BY_POPULATION                                          :Населеност
 STR_SORT_BY_RATING                                              :Рејтинг
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Паузирај ја играта
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Брзо нанапред играта

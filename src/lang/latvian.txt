@@ -318,6 +318,8 @@ STR_SORT_BY_RANGE                                               :apgabala
 STR_SORT_BY_POPULATION                                          :iedzīvotāju skaita
 STR_SORT_BY_RATING                                              :vērtējuma
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzēt spēli
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Paātrināta spēle

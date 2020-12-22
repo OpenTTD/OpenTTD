@@ -298,6 +298,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :سامان کی
 STR_SORT_BY_RANGE                                               :پہنچ
 STR_SORT_BY_POPULATION                                          :آبادی
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK} کھیل میں وقفھ لیجیئے
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK} کھیل کو تیزی سے بڑھایئں

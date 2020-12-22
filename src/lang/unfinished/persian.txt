@@ -300,6 +300,8 @@ STR_SORT_BY_RANGE                                               :بازه
 STR_SORT_BY_POPULATION                                          :جمعیت
 STR_SORT_BY_RATING                                              :نرخ
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}وقفه موقت بازی
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}بالا بردن سرعت بازی

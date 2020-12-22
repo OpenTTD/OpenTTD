@@ -316,6 +316,8 @@ STR_SORT_BY_RANGE                                               :Alcance
 STR_SORT_BY_POPULATION                                          :Población
 STR_SORT_BY_RATING                                              :Calificación
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar juego
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Avance rápido del juego

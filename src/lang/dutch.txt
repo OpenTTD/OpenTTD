@@ -315,6 +315,8 @@ STR_SORT_BY_RANGE                                               :Bereik
 STR_SORT_BY_POPULATION                                          :Aantal inwoners
 STR_SORT_BY_RATING                                              :Waardering
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hiermee pauzeer je het spel
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Hiermee verhoog je de spelsnelheid

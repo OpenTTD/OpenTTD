@@ -312,6 +312,8 @@ STR_SORT_BY_RANGE                                               :Rekkevidde
 STR_SORT_BY_POPULATION                                          :Innbyggjartal
 STR_SORT_BY_RATING                                              :Vurdering
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Dobbel fart på spelet

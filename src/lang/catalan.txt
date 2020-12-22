@@ -195,6 +195,7 @@ STR_COLOUR_DEFAULT                                              :Per defecte
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}cel·les/dia
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}cv
@@ -315,6 +316,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacitat de c�
 STR_SORT_BY_RANGE                                               :Abast
 STR_SORT_BY_POPULATION                                          :Població
 STR_SORT_BY_RATING                                              :Qualificació
+
+# Group by options for vehicle list
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Posa en pausa o reprèn la partida
@@ -1554,6 +1557,11 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Any de puntuaci
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Estableix l'any en què finalitza la partida i es puntua les companyies. Al final d'aquest any, la puntuació de la companyia es guarda i es mostra a la llista de classificació, però els jugadors poden continuar jugant.{}Si l'any de finalització és anterior a l'any d'inici, no es guardaran les puntuacions ni es mostrarà la llista de classificació.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Mai
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipus d'economia: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Una economia suau implica canvis freqüents però petits en productivitat. En una economia congelada no hi ha canvis de productivitat ni tancament d'indústries. Aquesta configuració pot no tenir cap efecte si els tipus d'indústria venen predeterminats per un NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suau
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :{G=Femenin}Congelada
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permet comprar participacions d'altres companyies: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Permet comprar i vendre accions de les companyies. Les accions només estan disponibles per companyies d'una certa edat.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Edat mínima de la companyia per negociar participacions: {STRING}
@@ -1674,6 +1682,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Quan es mostren
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Mètric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unitats del joc (cel·les/dia)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unitats de potència dels vehicles: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Quan es mostra la potència d'un vehicle a la interfície d'usuari, presenta-la en les unitats seleccionades
@@ -1806,6 +1815,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}A aquest
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Surt
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Esteu segur que voleu sortir de l'OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Sí
 STR_QUIT_NO                                                     :{BLACK}No
 
@@ -4725,10 +4735,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=Femenin}Mina
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sense nom
-STR_SV_TRAIN_NAME                                               :{G=Masculin}Tren {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :{G=Masculin}Automòbil {COMMA}
-STR_SV_SHIP_NAME                                                :{G=Masculin}Vaixell {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :{G=Masculin}Avió {COMMA}
+STR_SV_TRAIN_NAME                                               :{G=Masculin}Tren #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :{G=Masculin}Automòbil #{COMMA}
+STR_SV_SHIP_NAME                                                :{G=Masculin}Vaixell #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :{G=Masculin}Avió #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Nord
@@ -5030,6 +5040,7 @@ STR_FORMAT_BUOY_NAME                                            :Boia de {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Boia de {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :{G=Femenin}(Companyia {COMMA})
 STR_FORMAT_GROUP_NAME                                           :{G=Masculin}Grup {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}: {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Punt de pas de {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Punt de pas de {TOWN} #{COMMA}

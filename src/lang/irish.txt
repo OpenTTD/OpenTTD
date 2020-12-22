@@ -310,6 +310,8 @@ STR_SORT_BY_RANGE                                               :Raon
 STR_SORT_BY_POPULATION                                          :Daonra
 STR_SORT_BY_RATING                                              :Rátáil
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Cuir an cluiche ar sos
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Bog an cluiche ar aghaidh go scioptha

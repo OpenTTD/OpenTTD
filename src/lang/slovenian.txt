@@ -463,6 +463,8 @@ STR_SORT_BY_RANGE                                               :Domet
 STR_SORT_BY_POPULATION                                          :Prebivalstvo
 STR_SORT_BY_RATING                                              :Ocena
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Premor
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Hitro naprej

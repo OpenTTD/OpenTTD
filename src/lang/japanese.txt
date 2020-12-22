@@ -310,6 +310,8 @@ STR_SORT_BY_RANGE                                               :航続距離
 STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_RATING                                              :レーティング
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}ゲームをポーズします
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}ゲームスピードを早くします

@@ -304,6 +304,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Ŝarĝkapablo
 STR_SORT_BY_RANGE                                               :Atingopovo
 STR_SORT_BY_POPULATION                                          :Enloĝantaro
 
+# Group by options for vehicle list
+
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Paŭzigu la ludon
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Rapide pluirigu la ludon
