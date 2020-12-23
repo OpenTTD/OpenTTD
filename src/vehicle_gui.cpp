@@ -3111,6 +3111,8 @@ public:
 			} else { // no train
 				str = STR_VEHICLE_STATUS_STOPPED;
 			}
+		} else if (HasBit(v->vehicle_flags, VF_IS_SERVICING)) {
+			str = STR_VEHICLE_STATUS_SERVICING;
 		} else if (v->IsInDepot() && v->IsWaitingForUnbunching()) {
 			str = STR_VEHICLE_STATUS_WAITING_UNBUNCHING;
 		} else if (v->type == VEH_TRAIN && HasBit(Train::From(v)->flags, VRF_TRAIN_STUCK) && !v->current_order.IsType(OT_LOADING)) {

@@ -4441,6 +4441,7 @@ STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stopped
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - Stopping
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}No power
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Waiting for free path
+STR_VEHICLE_STATUS_SERVICING                                    :{LTBLUE}Servicing vehicle
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Too far to next destination
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - Heading for {0:STATION}
@@ -4928,6 +4929,8 @@ STR_PERCENT_DOWN_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWN_ARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINY_FONT}{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
 STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UP_ARROW}{DOWN_ARROW}
+STR_SERVICING_INDICATOR_SMALL                                   :{TINY_FONT}{LTBLUE}Servicing ({NUM}{NBSP}%)
+STR_SERVICING_INDICATOR                                         :{LTBLUE}Servicing ({NUM}{NBSP}%)
 STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHITE}{NUM}%
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 

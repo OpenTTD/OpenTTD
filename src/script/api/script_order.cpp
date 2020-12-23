@@ -485,11 +485,10 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 				 * to a depot (other vehicle types). */
 				if (::Vehicle::Get(vehicle_id)->type == VEH_AIRCRAFT) {
 					if (!::IsTileType(destination, MP_STATION)) return false;
-					order.MakeGoToDepot(::GetStationIndex(destination), odtf, onsf, odaf);
 				} else {
 					if (::IsTileType(destination, MP_STATION)) return false;
-					order.MakeGoToDepot(::GetDepotIndex(destination), odtf, onsf, odaf);
 				}
+				order.MakeGoToDepot(::GetDepotIndex(destination), odtf, onsf, odaf);
 			}
 			break;
 		}

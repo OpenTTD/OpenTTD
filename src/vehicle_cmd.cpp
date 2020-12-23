@@ -1131,3 +1131,85 @@ CommandCost CmdChangeServiceInt(DoCommandFlag flags, VehicleID veh_id, uint16_t 
 
 	return CommandCost();
 }
+
+const uint16_t DEFAULT_SERVICE_TIME = 1 << 7;
+const uint16_t TRAIN_SERVICE_TIME = 1 << 8;
+
+/**
+ * A vehicle that entered an extended depot, starts servicing.
+ */
+void Vehicle::StartService()
+{
+	assert(IsExtendedDepotTile(this->tile));
+
+	switch (this->type) {
+		case VEH_AIRCRAFT:
+		case VEH_ROAD:
+		case VEH_SHIP: {
+			this->wait_counter = DEFAULT_SERVICE_TIME;
+			break;
+		}
+
+		case VEH_TRAIN: {
+			this->wait_counter = TRAIN_SERVICE_TIME;
+			break;
+		}
+
+		default: NOT_REACHED();
+	}
+
+	this->cur_speed = 0;
+	this->subspeed = 0;
+
+	SetBit(this->vehicle_flags, VF_IS_SERVICING);
+	SetWindowWidgetDirty(WC_VEHICLE_VIEW, this->index, WID_VV_START_STOP);
+	assert(this->fill_percent_te_id == INVALID_TE_ID);
+	this->fill_percent_te_id = ShowFillingPercent(this->x_pos, this->y_pos, this->z_pos + 20, 0, STR_SERVICING_INDICATOR);
+}
+
+/**
+ * Check if vehicle is servicing.
+ * If it is servicing, decrease time till finishing the servicing.
+ * It services the vehicle when servicing time ends.
+ * @return true if the vehicle is still servicing, false if it is not servicing.
+ */
+bool Vehicle::ContinueServicing()
+{
+	if (!HasBit(this->vehicle_flags, VF_IS_SERVICING)) return false;
+
+	/* Update text effect every 16 ticks. */
+	if ((this->wait_counter & 15) == 0) {
+		uint8_t percent;
+		uint16_t max = this->type == VEH_TRAIN ? TRAIN_SERVICE_TIME : DEFAULT_SERVICE_TIME;
+		/* Return the percentage */
+		if ((max - this->wait_counter) * 2 < max) {
+			/* Less than 50%; round up, so that 0% means really empty. */
+			percent = (uint8_t)CeilDiv((max - this->wait_counter) * 100, max);
+		} else {
+			/* More than 50%; round down, so that 100% means really full. */
+			percent = (uint8_t)(((max - this->wait_counter) * 100) / max);
+		}
+
+		if (this->fill_percent_te_id == INVALID_TE_ID) {
+			this->fill_percent_te_id = ShowFillingPercent(this->x_pos, this->y_pos, this->z_pos + 20, percent, STR_SERVICING_INDICATOR);
+		} else {
+			UpdateFillingPercent(this->fill_percent_te_id, percent, STR_SERVICING_INDICATOR);
+		}
+	}
+
+	if (this->wait_counter--) return true;
+
+	VehicleServiceInExtendedDepot(this);
+	this->StopServicing();
+	return false;
+}
+
+void Vehicle::StopServicing()
+{
+	this->wait_counter = 0;
+
+	/* End servicing. */
+	ClrBit(this->vehicle_flags, VF_IS_SERVICING);
+	HideFillingPercent(&this->fill_percent_te_id);
+	InvalidateWindowData(WC_VEHICLE_VIEW, this->index);
+}

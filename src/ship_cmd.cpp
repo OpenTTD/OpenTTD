@@ -374,6 +374,25 @@ static bool CheckReverseShip(const Ship *v, Trackdir *trackdir = nullptr)
 	return YapfShipCheckReverse(v, trackdir);
 }
 
+void HandleShipEnterDepot(Ship *v)
+{
+	assert(IsShipDepotTile(v->tile));
+
+	if (IsExtendedDepot(v->tile)) {
+		v->state |= TRACK_BIT_DEPOT;
+		v->cur_speed = 0;
+		v->UpdateCache();
+		v->UpdateViewport(true, true);
+		SetWindowClassesDirty(WC_SHIPS_LIST);
+		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+
+		InvalidateWindowData(WC_VEHICLE_DEPOT, GetDepotIndex(v->tile));
+		v->StartService();
+	} else {
+		VehicleEnterDepot(v);
+	}
+}
+
 static bool CheckShipLeaveDepot(Ship *v)
 {
 	if (!v->IsChainInDepot()) return false;
