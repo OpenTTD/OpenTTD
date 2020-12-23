@@ -2727,17 +2727,8 @@ set_ground:
 
 static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
-	/* Case of half tile slope with water. */
-	if (mode == TRANSPORT_WATER && IsPlainRail(tile) && GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(GetTileSlope(tile))) {
-		TrackBits tb = GetTrackBits(tile);
-		switch (tb) {
-			default: NOT_REACHED();
-			case TRACK_BIT_UPPER: tb = TRACK_BIT_LOWER; break;
-			case TRACK_BIT_LOWER: tb = TRACK_BIT_UPPER; break;
-			case TRACK_BIT_LEFT:  tb = TRACK_BIT_RIGHT; break;
-			case TRACK_BIT_RIGHT: tb = TRACK_BIT_LEFT;  break;
-		}
-		return CombineTrackStatus(TrackBitsToTrackdirBits(tb), TRACKDIR_BIT_NONE);
+	if (mode == TRANSPORT_WATER && !IsRailDepot(tile)) {
+		return CombineTrackStatus(TRACKDIR_BIT_MASK, TRACKDIR_BIT_NONE);
 	}
 
 	if (mode != TRANSPORT_RAIL) return 0;

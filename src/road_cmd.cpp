@@ -2013,6 +2013,10 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, u
 	TrackdirBits trackdirbits = TRACKDIR_BIT_NONE;
 	TrackdirBits red_signals = TRACKDIR_BIT_NONE; // crossing barred
 	switch (mode) {
+		case TRANSPORT_WATER:
+			if (!IsRoadDepot(tile)) trackdirbits = TRACKDIR_BIT_MASK;
+			break;
+
 		case TRANSPORT_RAIL:
 			if (IsLevelCrossing(tile)) trackdirbits = TrackBitsToTrackdirBits(GetCrossingRailBits(tile));
 			break;
