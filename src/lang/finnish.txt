@@ -315,8 +315,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Rahtikapasiteet
 STR_SORT_BY_RANGE                                               :Toimintasäde
 STR_SORT_BY_POPULATION                                          :Asukasluku
 STR_SORT_BY_RATING                                              :Arvio
+STR_SORT_BY_NUM_VEHICLES                                        :Kulkuneuvojen määrä
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Kokonaistuotto viime vuonna
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Kokonaistuotto tänä vuonna
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Keskimääräinen tuotto viime vuonna
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Keskimääräinen tuotto tänä vuonna
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Ei mitään
+STR_GROUP_BY_SHARED_ORDERS                                      :Jaetut käskyt
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Tauko
@@ -773,6 +780,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Näytä 
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Näytä viimeisin viesti tai uutisraportti
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  TAUKO  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  TAUKO (odotetaan yhteyskuvaajan päivittymistä) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMAATTITALLENNUS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  TALLENNETAAN PELIÄ  *  *
 
@@ -2210,11 +2218,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Peli yhä pysä
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Peli yhä pysäytetty ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Peli yhä pysäytetty ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Peli yhä pysäytetty ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Peli yhä pysäytetty ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Peliä jatketaan ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :pelaajien määrä
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :yhdistäviä pelaajia
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuaalinen
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :peliskripti
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :odotetaan yhteyskuvaajan päivittymistä
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :poistutaan
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} on liittynyt peliin
@@ -4243,10 +4253,11 @@ STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Tiedosto
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Lataus epäonnistui.{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Sisäinen virhe: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Viallinen tallennus – {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Tallennus on tehty uudemalla versiolla
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Tallennus on tehty uudemmalla versiolla
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Tiedostoa ei voi lukea
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Tiedostoa ei voi kirjoittaa
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Tietojen varmistustarkistus epäonnistui
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Tallennus on tehty muokatulla versiolla
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ei saatavilla>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu
 
