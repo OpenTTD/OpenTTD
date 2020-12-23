@@ -330,6 +330,9 @@ add_files(
     palette_func.h
     pbs.cpp
     pbs.h
+    platform_func.h
+    platform_type.h
+    platform.cpp
     progress.cpp
     progress.h
     querystring_gui.h
