@@ -68,6 +68,7 @@
 #include "cheat_type.h"
 #include "road_func.h"
 #include "depot_base.h"
+#include "platform_func.h"
 
 #include "widgets/station_widget.h"
 
@@ -1240,9 +1241,10 @@ CommandCost FindJoiningWaypoint(StationID existing_waypoint, StationID waypoint_
 static void FreeTrainReservation(Train *v)
 {
 	FreeTrainTrackReservation(v);
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
+	if (IsPlatformTile(v->tile)) SetPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), false);
 	v = v->Last();
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), false);
+	if (IsPlatformTile(v->tile)) SetPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), false);
+
 }
 
 /**
@@ -1251,10 +1253,10 @@ static void FreeTrainReservation(Train *v)
  */
 static void RestoreTrainReservation(Train *v)
 {
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
+	if (IsPlatformTile(v->tile)) SetPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 	TryPathReserve(v, true, true);
 	v = v->Last();
-	if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
+	if (IsPlatformTile(v->tile)) SetPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(v->GetVehicleTrackdir())), true);
 }
 
 /**
@@ -1522,21 +1524,21 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 			TileIndex platform_end = tile;
 
 			/* We can only account for tiles that are reachable from this tile, so ignore primarily blocked tiles while finding the platform begin and end. */
-			for (TileIndex next_tile = platform_begin - tile_offset; IsCompatibleTrainStationTile(next_tile, platform_begin); next_tile -= tile_offset) {
+			for (TileIndex next_tile = platform_begin - tile_offset; IsCompatiblePlatformTile(next_tile, platform_begin); next_tile -= tile_offset) {
 				platform_begin = next_tile;
 			}
-			for (TileIndex next_tile = platform_end + tile_offset; IsCompatibleTrainStationTile(next_tile, platform_end); next_tile += tile_offset) {
+			for (TileIndex next_tile = platform_end + tile_offset; IsCompatiblePlatformTile(next_tile, platform_end); next_tile += tile_offset) {
 				platform_end = next_tile;
 			}
 
 			/* If there is at least on reservation on the platform, we reserve the whole platform. */
 			bool reservation = false;
 			for (TileIndex t = platform_begin; !reservation && t <= platform_end; t += tile_offset) {
-				reservation = HasStationReservation(t);
+				reservation = HasPlatformReservation(t);
 			}
 
 			if (reservation) {
-				SetRailStationPlatformReservation(platform_begin, dir, true);
+				SetPlatformReservation(platform_begin, dir, true);
 			}
 		}
 

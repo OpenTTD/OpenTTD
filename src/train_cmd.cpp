@@ -39,6 +39,7 @@
 #include "timer/timer_game_calendar.h"
 #include "timer/timer_game_economy.h"
 #include "depot_base.h"
+#include "platform_func.h"
 
 #include "table/strings.h"
 #include "table/train_sprites.h"
@@ -263,9 +264,9 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
  */
 int GetTrainStopLocation(StationID station_id, TileIndex tile, const Train *v, int *station_ahead, int *station_length)
 {
-	const Station *st = Station::Get(station_id);
-	*station_ahead  = st->GetPlatformLength(tile, DirToDiagDir(v->direction)) * TILE_SIZE;
-	*station_length = st->GetPlatformLength(tile) * TILE_SIZE;
+	assert(IsRailStationTile(tile));
+	*station_ahead  = GetPlatformLength(tile, DirToDiagDir(v->direction)) * TILE_SIZE;
+	*station_length = GetPlatformLength(tile) * TILE_SIZE;
 
 	/* Default to the middle of the station for stations stops that are not in
 	 * the order list like intermediate stations when non-stop is disabled */
@@ -2183,7 +2184,7 @@ void ReverseTrainDirection(Train *v)
 		/* If we are on a depot tile facing outwards, do not treat the current tile as safe. */
 		if (IsStandardRailDepotTile(v->tile) && TrackdirToExitdir(v->GetVehicleTrackdir()) == GetRailDepotDirection(v->tile)) first_tile_okay = false;
 
-		if (IsRailStationTile(v->tile)) SetRailStationPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
+		if (IsPlatformTile(v->tile)) SetPlatformReservation(v->tile, TrackdirToExitdir(v->GetVehicleTrackdir()), true);
 		if (TryPathReserve(v, false, first_tile_okay)) {
 			/* Do a look-ahead now in case our current tile was already a safe tile. */
 			CheckNextTrainTile(v);
@@ -2526,8 +2527,8 @@ static void ClearPathReservation(const Train *v, TileIndex tile, Trackdir track_
 		TileIndex new_tile = TileAddByDiagDir(tile, dir);
 		/* If the new tile is not a further tile of the same station, we
 		 * clear the reservation for the whole platform. */
-		if (!IsCompatibleTrainStationTile(new_tile, tile)) {
-			SetRailStationPlatformReservation(tile, ReverseDiagDir(dir), false);
+		if (!IsCompatiblePlatformTile(new_tile, tile)) {
+			SetPlatformReservation(tile, ReverseDiagDir(dir), false);
 		}
 	} else {
 		/* Any other tile */

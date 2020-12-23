@@ -342,6 +342,9 @@ add_files(
     picker_func.h
     picker_gui.cpp
     picker_gui.h
+    platform_func.h
+    platform_type.h
+    platform.cpp
     progress.cpp
     progress.h
     querystring_gui.h
