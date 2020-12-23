@@ -357,14 +357,13 @@ void ShowGoalsList(CompanyID company)
 
 /** Ask a question about a goal. */
 struct GoalQuestionWindow : public Window {
-	char *question; ///< Question to ask (private copy).
-	int buttons;    ///< Number of valid buttons in #button.
-	int button[3];  ///< Buttons to display.
-	byte type;      ///< Type of question.
+	char *question;     ///< Question to ask (private copy).
+	int buttons;        ///< Number of valid buttons in #button.
+	int button[3];      ///< Buttons to display.
+	TextColour colour;  ///< Colour of the question text.
 
-	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, byte type, uint32 button_mask, const char *question) : Window(desc), type(type)
+	GoalQuestionWindow(WindowDesc *desc, WindowNumber window_number, TextColour colour, uint32 button_mask, const char *question) : Window(desc), colour(colour)
 	{
-		assert(type < GOAL_QUESTION_TYPE_COUNT);
 		this->question = stredup(question);
 
 		/* Figure out which buttons we have to enable. */
@@ -391,10 +390,6 @@ struct GoalQuestionWindow : public Window {
 	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
-			case WID_GQ_CAPTION:
-				SetDParam(0, STR_GOAL_QUESTION_CAPTION_QUESTION + this->type);
-				break;
-
 			case WID_GQ_BUTTON_1:
 				SetDParam(0, STR_GOAL_QUESTION_BUTTON_CANCEL + this->button[0]);
 				break;
@@ -442,15 +437,15 @@ struct GoalQuestionWindow : public Window {
 		if (widget != WID_GQ_QUESTION) return;
 
 		SetDParamStr(0, this->question);
-		DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK, SA_TOP | SA_HOR_CENTER);
+		DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_JUST_RAW_STRING, this->colour, SA_TOP | SA_HOR_CENTER);
 	}
 };
 
 /** Widgets of the goal question window. */
-static const NWidgetPart _nested_goal_question_widgets[] = {
+static const NWidgetPart _nested_goal_question_widgets_question[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
-		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_GQ_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_GQ_CAPTION), SetDataTip(STR_GOAL_QUESTION_CAPTION_QUESTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
 		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetPadding(8, 8, 8, 8), SetFill(1, 0),
@@ -472,12 +467,107 @@ static const NWidgetPart _nested_goal_question_widgets[] = {
 	EndContainer(),
 };
 
-static WindowDesc _goal_question_list_desc(
-	WDP_CENTER, nullptr, 0, 0,
-	WC_GOAL_QUESTION, WC_NONE,
-	WDF_CONSTRUCTION,
-	_nested_goal_question_widgets, lengthof(_nested_goal_question_widgets)
-);
+static const NWidgetPart _nested_goal_question_widgets_info[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE),
+		NWidget(WWT_CAPTION, COLOUR_LIGHT_BLUE, WID_GQ_CAPTION), SetDataTip(STR_GOAL_QUESTION_CAPTION_INFORMATION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetPadding(8, 8, 8, 8), SetFill(1, 0),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTONS),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(85, 10, 85),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(65, 10, 65),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_2), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(25, 10, 25),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_2), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_3), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+	EndContainer(),
+};
+
+static const NWidgetPart _nested_goal_question_widgets_warning[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_YELLOW),
+		NWidget(WWT_CAPTION, COLOUR_YELLOW, WID_GQ_CAPTION), SetDataTip(STR_GOAL_QUESTION_CAPTION_WARNING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_YELLOW),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetPadding(8, 8, 8, 8), SetFill(1, 0),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTONS),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(85, 10, 85),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(65, 10, 65),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_2), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(25, 10, 25),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_2), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_3), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+	EndContainer(),
+};
+
+static const NWidgetPart _nested_goal_question_widgets_error[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED),
+		NWidget(WWT_CAPTION, COLOUR_RED, WID_GQ_CAPTION), SetDataTip(STR_GOAL_QUESTION_CAPTION_ERROR, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_RED),
+		NWidget(WWT_EMPTY, INVALID_COLOUR, WID_GQ_QUESTION), SetMinimalSize(300, 0), SetPadding(8, 8, 8, 8), SetFill(1, 0),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTONS),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(85, 10, 85),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(65, 10, 65),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_2), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(25, 10, 25),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_1), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_2), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_3), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
+			EndContainer(),
+		EndContainer(),
+		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+	EndContainer(),
+};
+
+static WindowDesc _goal_question_list_desc[] = {
+	{
+		WDP_CENTER, nullptr, 0, 0,
+		WC_GOAL_QUESTION, WC_NONE,
+		WDF_CONSTRUCTION,
+		_nested_goal_question_widgets_question, lengthof(_nested_goal_question_widgets_question),
+	},
+	{
+		WDP_CENTER, nullptr, 0, 0,
+		WC_GOAL_QUESTION, WC_NONE,
+		WDF_CONSTRUCTION,
+		_nested_goal_question_widgets_info, lengthof(_nested_goal_question_widgets_info),
+	},
+	{
+		WDP_CENTER, nullptr, 0, 0,
+		WC_GOAL_QUESTION, WC_NONE,
+		WDF_CONSTRUCTION,
+		_nested_goal_question_widgets_warning, lengthof(_nested_goal_question_widgets_warning),
+	},
+	{
+		WDP_CENTER, nullptr, 0, 0,
+		WC_GOAL_QUESTION, WC_NONE,
+		WDF_CONSTRUCTION,
+		_nested_goal_question_widgets_error, lengthof(_nested_goal_question_widgets_error),
+	},
+};
 
 /**
  * Display a goal question.
@@ -488,5 +578,6 @@ static WindowDesc _goal_question_list_desc(
  */
 void ShowGoalQuestion(uint16 id, byte type, uint32 button_mask, const char *question)
 {
-	new GoalQuestionWindow(&_goal_question_list_desc, id, type, button_mask, question);
+	assert(type < GOAL_QUESTION_TYPE_COUNT);
+	new GoalQuestionWindow(&_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);
 }
