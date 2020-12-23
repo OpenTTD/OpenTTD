@@ -34,6 +34,7 @@
 #include "framerate_type.h"
 #include "industry.h"
 #include "industry_map.h"
+#include "train.h"
 
 #include "table/strings.h"
 
@@ -617,6 +618,28 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 	return false;
 }
 
+static Vehicle *EnumCheckShipCrashTrain(Vehicle *v, void *data)
+{
+	extern uint TrainCrashed(Train *v);
+
+	const Ship *u = (Ship*)data;
+	if (v->type == VEH_TRAIN && !(v->vehstatus & VS_CRASHED) &&
+			abs(v->z_pos - u->z_pos) <= 6 &&
+			abs(v->x_pos - u->x_pos) <= 8 &&
+			abs(v->y_pos - u->y_pos) <= 8) {
+		Train* t = Train::From(v)->First();
+		if (t->IsPrimaryVehicle()) TrainCrashed(t);
+	}
+	return nullptr;
+}
+
+static void ShipCheckTrainCrash(Ship *v)
+{
+	if (v->state != TRACK_BIT_WORMHOLE) {
+		FindVehicleOnPosXY(v->x_pos, v->y_pos, v, EnumCheckShipCrashTrain);
+	}
+}
+
 static void ShipController(Ship *v)
 {
 	uint32 r;
@@ -626,6 +649,8 @@ static void ShipController(Ship *v)
 
 	v->tick_counter++;
 	v->current_order_time++;
+
+	ShipCheckTrainCrash(v);
 
 	if (v->HandleBreakdown()) return;
 

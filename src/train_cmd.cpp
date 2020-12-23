@@ -2952,7 +2952,7 @@ uint Train::Crash(bool flooded)
  * @param v first vehicle of chain
  * @return number of victims (including 2 drivers; zero if train was already crashed)
  */
-static uint TrainCrashed(Train *v)
+uint TrainCrashed(Train *v)
 {
 	uint num = 0;
 
