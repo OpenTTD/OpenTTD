@@ -5341,6 +5341,7 @@ STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Too many
 STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}Can't change servicing interval...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehicle is destroyed
+STR_ERROR_NO_FREE_DEPOT                                         :{WHITE}... there is no free depot
 
 STR_ERROR_CAN_T_CLONE_VEHICLE_LIST                              :{WHITE}... not all vehicles are identical
 
