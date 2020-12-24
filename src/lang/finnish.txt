@@ -4257,7 +4257,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Tallennus on te
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Tiedostoa ei voi lukea
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Tiedostoa ei voi kirjoittaa
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Tietojen varmistustarkistus epäonnistui
-STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Tallennus on tehty muokatulla versiolla
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Tallennus on tehty muunnellulla versiolla
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<ei saatavilla>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu
 
