@@ -681,7 +681,7 @@ static void TileLoop_Trees(TileIndex tile)
 						break;
 
 					case 1: // add a tree
-						if (GetTreeCount(tile) < 4) {
+						if (GetTreeCount(tile) < 4 && CanPlantExtraTrees(tile)) {
 							AddTreeCount(tile, 1);
 							SetTreeGrowth(tile, 0);
 							break;
@@ -713,13 +713,13 @@ static void TileLoop_Trees(TileIndex tile)
 			break;
 
 		case 6: // final stage of tree destruction
-			if (GetTreeCount(tile) > 1) {
+			 if (!CanPlantExtraTrees(tile)) {
+				/* if trees can't spread just plant a new one to prevent deforestation */
+				SetTreeGrowth(tile, 0);
+			} else if (GetTreeCount(tile) > 1) {
 				/* more than one tree, delete it */
 				AddTreeCount(tile, -1);
 				SetTreeGrowth(tile, 3);
-			} else if (!CanPlantExtraTrees(tile)) {
-				/* if trees can't spread just plant a new one to prevent deforestation */
-				SetTreeGrowth(tile, 0);
 			} else {
 				/* just one tree, change type into MP_CLEAR */
 				switch (GetTreeGround(tile)) {
