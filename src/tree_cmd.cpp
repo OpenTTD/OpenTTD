@@ -42,9 +42,10 @@ enum TreePlacer {
 
 /** Where to place trees while in-game? */
 enum ExtraTreePlacement {
-	ETP_NONE,       ///< Place trees on no tiles
-	ETP_RAINFOREST, ///< Place trees only on rainforest tiles
-	ETP_ALL,        ///< Place trees on all tiles
+	ETP_NO_SPREAD,           ///< Grow trees on tiles that have them but don't spread to new ones
+	ETP_SPREAD_RAINFOREST,   ///< Grow trees on tiles that have them, only spread to new ones in rainforests
+	ETP_SPREAD_ALL,          ///< Grow trees and spread them without restrictions
+	ETP_NO_GROWTH_NO_SPREAD, ///< Don't grow trees and don't spread them at all
 };
 
 /** Determines when to consider building more trees. */
@@ -635,8 +636,8 @@ static void TileLoopTreesAlps(TileIndex tile)
 static bool CanPlantExtraTrees(TileIndex tile)
 {
 	return ((_settings_game.game_creation.landscape == LT_TROPIC && GetTropicZone(tile) == TROPICZONE_RAINFOREST) ?
-		_settings_game.construction.extra_tree_placement != ETP_NONE :
-		_settings_game.construction.extra_tree_placement == ETP_ALL);
+		(_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) :
+		_settings_game.construction.extra_tree_placement == ETP_SPREAD_ALL);
 }
 
 static void TileLoop_Trees(TileIndex tile)
@@ -662,6 +663,9 @@ static void TileLoop_Trees(TileIndex tile)
 			MarkTileDirtyByTile(tile);
 		}
 	}
+
+	if (_settings_game.construction.extra_tree_placement == ETP_NO_GROWTH_NO_SPREAD) return;
+
 	if (GetTreeCounter(tile) < 15) {
 		AddTreeCounter(tile, 1);
 		return;
@@ -755,8 +759,8 @@ static void TileLoop_Trees(TileIndex tile)
 
 void OnTick_Trees()
 {
-	/* Don't place trees if that's not allowed */
-	if (_settings_game.construction.extra_tree_placement == ETP_NONE) return;
+	/* Don't spread trees if that's not allowed */
+	if (_settings_game.construction.extra_tree_placement == ETP_NO_SPREAD || _settings_game.construction.extra_tree_placement == ETP_NO_GROWTH_NO_SPREAD) return;
 
 	uint32 r;
 	TileIndex tile;
@@ -771,7 +775,7 @@ void OnTick_Trees()
 	}
 
 	/* byte underflow */
-	if (--_trees_tick_ctr != 0 || _settings_game.construction.extra_tree_placement != ETP_ALL) return;
+	if (--_trees_tick_ctr != 0 || _settings_game.construction.extra_tree_placement == ETP_SPREAD_RAINFOREST) return;
 
 	/* place a tree at a random spot */
 	r = Random();
