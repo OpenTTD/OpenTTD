@@ -2087,8 +2087,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Atharrai
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ioma-chluicheadair
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Sanasaichte
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Dèan taghadh eadar geama sanasaichte (eadar-lìon) no gun sanasachadh (lìonra ionadail, LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Sanasaichte
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Dèan taghadh eadar geama sanasaichte (eadar-lìon) no gun sanasachadh (lìonra ionadail, LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Gun sanasachadh
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sanasaichte
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ainm cluicheadair:

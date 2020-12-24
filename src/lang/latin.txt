@@ -2094,8 +2094,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mutare f
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Modus Plurium Lusorum
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Ostensum
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Eligere servatrum ostensum (interretis) aut non ostensum (LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Ostensum
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Eligere servatrum ostensum (interretis) aut non ostensum (LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Non
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ita
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nomen lusoris:

@@ -1939,8 +1939,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Modifier
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijoueurs
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Publiée
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Choisir entre une partie publiée (internet) et une partie non publiée (Réseau local, LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publiée
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Choisir entre une partie publiée (internet) et une partie non publiée (Réseau local, LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Non
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Oui
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nom du joueur{NBSP}:

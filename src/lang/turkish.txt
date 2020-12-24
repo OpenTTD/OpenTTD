@@ -1931,8 +1931,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Kravatı
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Çok Oyunculu
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Duyurulan
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Duyurulan (internet) ve duyurulmayan (yerel ağ, LAN) oyun türlerinden birini seçin
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Duyurulan
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Duyurulan (internet) ve duyurulmayan (yerel ağ, LAN) oyun türlerinden birini seçin
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Hayır
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Evet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Oyuncu adı:

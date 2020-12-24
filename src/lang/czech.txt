@@ -2017,8 +2017,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Změnit 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Vypsané
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vyber mezi propagovanou (internet) a nepropagovanou (Místní síť, LAN) hrou
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Vypsané
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vyber mezi propagovanou (internet) a nepropagovanou (Místní síť, LAN) hrou
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ano
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Jméno hráče:

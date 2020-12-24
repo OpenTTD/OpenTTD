@@ -2058,8 +2058,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Змін
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Мережева гра
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Інтернет
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Вибір між рекламованою (інтернет) і не рекламованою (локальна мережа, LAN) грою
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Інтернет
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Вибір між рекламованою (інтернет) і не рекламованою (локальна мережа, LAN) грою
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ні
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Так
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ім'я гравця:

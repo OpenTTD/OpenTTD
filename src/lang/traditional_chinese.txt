@@ -1878,8 +1878,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}改變�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}多人遊戲
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}已啟用宣傳
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}選擇是否在互聯網上宣傳此遊戲
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}已啟用宣傳
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}選擇是否在互聯網上宣傳此遊戲
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :否
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :是
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名稱：

@@ -1930,8 +1930,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ændre s
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Netværksspil
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Offentlig
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vælg mellem et offentligt (internet) og et ikke offentligt (lokalnetværk, LAN) spil
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Offentlig
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vælg mellem et offentligt (internet) og et ikke offentligt (lokalnetværk, LAN) spil
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nej
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spiller navn:

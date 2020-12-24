@@ -1931,8 +1931,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Alterar 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multi-jogador
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :[BLACK}Publicado
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Selecione entre um jogo publicado (internet) ou não publicado (Rede de Área Local, LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :[BLACK}Publicado
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Selecione entre um jogo publicado (internet) ou não publicado (Rede de Área Local, LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Não
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sim
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nome:

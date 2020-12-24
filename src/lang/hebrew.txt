@@ -1901,8 +1901,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK} שנה 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}משחק רשת
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}מפורסם
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}בחר בין משחק מפורסם (אינטרנטי) ומשחק לא מפורסם (רשת מקומית, LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}מפורסם
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}בחר בין משחק מפורסם (אינטרנטי) ומשחק לא מפורסם (רשת מקומית, LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :לא
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :כן
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK} :שם השחקן

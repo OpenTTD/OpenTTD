@@ -1942,8 +1942,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Izsludināt
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Izvēlieties starp reklamēto (interneta) un nereklamēto (lokālā tīkla, LAN) spēli
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Izsludināt
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Izvēlieties starp reklamēto (interneta) un nereklamēto (lokālā tīkla, LAN) spēli
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nē
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jā
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spēlētāja vārds:

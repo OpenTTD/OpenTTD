@@ -1947,8 +1947,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}넥타�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}멀티 플레이
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}공개 여부
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}공개된 게임(인터넷)과 비공개된 게임(LAN) 중에서 선택하십시오.
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}공개 여부
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}공개된 게임(인터넷)과 비공개된 게임(LAN) 중에서 선택하십시오.
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :아니요
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :예
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}플레이어 이름:

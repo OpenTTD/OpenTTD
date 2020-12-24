@@ -1930,8 +1930,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ubah das
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Bermain bersama
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Diiklankan
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Pilih antara permainan diiklankan (internet) dan tidak diiklankan (Jaringan wilayah lokal, LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Diiklankan
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Pilih antara permainan diiklankan (internet) dan tidak diiklankan (Jaringan wilayah lokal, LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Tidak
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ya
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nama pemain:

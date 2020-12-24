@@ -1939,8 +1939,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Canvia l
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijugador
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Anunciat
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Escull entre una partida anunciada (internet) i una partida no anunciada (xarxa d'àrea local, LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Anunciat
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Escull entre una partida anunciada (internet) i una partida no anunciada (xarxa d'àrea local, LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :No
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sí
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nom del jugador:

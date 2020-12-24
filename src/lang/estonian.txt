@@ -1944,8 +1944,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaheta k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mitmikmäng
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Reklaamitav
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Valib reklaamitava (internet) või mittereklaamitava (kohtvõrk, LAN) mängu
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Reklaamitav
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Valib reklaamitava (internet) või mittereklaamitava (kohtvõrk, LAN) mängu
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ei
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jah
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Mängija nimi:

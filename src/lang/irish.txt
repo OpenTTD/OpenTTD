@@ -1875,8 +1875,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Athraigh
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ilimreoirí
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Fógartha
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Roghnaigh idir cluiche fógartha (idirlín) agus cluiche neamhfhógartha (Líonra Achair Logánta, LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Fógartha
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Roghnaigh idir cluiche fógartha (idirlín) agus cluiche neamhfhógartha (Líonra Achair Logánta, LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Níl
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Tá
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ainm imreora:

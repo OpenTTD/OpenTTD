@@ -2318,8 +2318,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmień k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Gra wieloosobowa
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Publiczny
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Wybierz między rozgrywkami reklamowanymi (internetowymi) a niereklamowanymi (w sieci lokalnej LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publiczny
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Wybierz między rozgrywkami reklamowanymi (internetowymi) a niereklamowanymi (w sieci lokalnej LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nie
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Tak
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nazwa gracza:

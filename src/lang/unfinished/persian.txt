@@ -1590,7 +1590,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}تغیی
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}چندنفره
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}تبلیغ دار
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}تبلیغ دار
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :خیر
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :بله
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}نام بازیگر:

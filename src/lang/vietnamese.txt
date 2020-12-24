@@ -1932,8 +1932,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đ�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ván Chơi Mạng
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Đã quảng bá
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Lựa chọn ván chơi quảng bá (ra ngoài internet) và không quảng bá (Local Area Network, LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Đã quảng bá
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Lựa chọn ván chơi quảng bá (ra ngoài internet) và không quảng bá (Local Area Network, LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Không
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Có
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Tên người chơi:

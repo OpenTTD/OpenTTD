@@ -1842,8 +1842,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cмен�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Онлайн играчи
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Рекламирана
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Избери игра измежду рекламирана през интернет или нерекламирана през Локален интернет хост или ЛАН
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Рекламирана
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Избери игра измежду рекламирана през интернет или нерекламирана през Локален интернет хост или ЛАН
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Не
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Да
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Име на играч:
