@@ -24,8 +24,8 @@ private:
 
 	/**
 	 * The actual classes.
-	 * @note We store pointers to membes of this array in various places outside this class (e.g. to 'name' for GRF string resolving).
-	 *       Thus this must be a static array, and cannot be a self-resizing SmallVector or similar.
+	 * @note We store pointers to members of this array in various places outside this class (e.g. to 'name' for GRF string resolving).
+	 *       Thus this must be a static array, and cannot be a self-resizing vector or similar.
 	 */
 	static NewGRFClass<Tspec, Tid, Tmax> classes[Tmax];
 
