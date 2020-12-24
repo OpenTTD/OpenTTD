@@ -55,15 +55,6 @@ static const StringID _connection_types_dropdown[] = {
 	INVALID_STRING_ID
 };
 
-/**
- * Advertisement options in the server list
- */
-static const StringID _lan_internet_types_dropdown[] = {
-	STR_NETWORK_SERVER_LIST_ADVERTISED_NO,
-	STR_NETWORK_SERVER_LIST_ADVERTISED_YES,
-	INVALID_STRING_ID
-};
-
 static std::vector<StringID> _language_dropdown;
 
 void SortNetworkLanguages()
@@ -503,27 +494,12 @@ public:
 		this->last_sorting = this->servers.GetListing();
 	}
 
-	void SetStringParameters(int widget) const override
-	{
-		switch (widget) {
-			case WID_NG_CONN_BTN:
-				SetDParam(0, _lan_internet_types_dropdown[_settings_client.network.lan_internet]);
-				break;
-		}
-	}
-
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
-			case WID_NG_CONN_BTN:
-				*size = maxdim(*size, maxdim(GetStringBoundingBox(_lan_internet_types_dropdown[0]), GetStringBoundingBox(_lan_internet_types_dropdown[1])));
-				size->width += padding.width;
-				size->height += padding.height;
-				break;
-
 			case WID_NG_MATRIX:
 				resize->height = WD_MATRIX_TOP + max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + WD_MATRIX_BOTTOM;
-				size->height = 10 * resize->height;
+				size->height = 12 * resize->height;
 				break;
 
 			case WID_NG_LASTJOINED:
@@ -559,10 +535,6 @@ public:
 				size->width += 2 * Window::SortButtonWidth(); // Make space for the arrow
 				SetDParamMaxValue(0, 5);
 				*size = maxdim(*size, GetStringBoundingBox(STR_JUST_INT));
-				break;
-
-			case WID_NG_DETAILS_SPACER:
-				size->height = 20 + 12 * FONT_HEIGHT_NORMAL;
 				break;
 		}
 	}
@@ -627,7 +599,8 @@ public:
 		this->GetWidget<NWidgetStacked>(WID_NG_NEWGRF_MISSING_SEL)->SetDisplayedPlane(sel == nullptr || !sel->online || sel->info.grfconfig == nullptr || !sel->info.version_compatible || sel->info.compatible);
 
 #ifdef __EMSCRIPTEN__
-		this->SetWidgetDisabledState(WID_NG_FIND, true);
+		this->SetWidgetDisabledState(WID_NG_SEARCH_INTERNET, true);
+		this->SetWidgetDisabledState(WID_NG_SEARCH_LAN, true);
 		this->SetWidgetDisabledState(WID_NG_ADD, true);
 		this->SetWidgetDisabledState(WID_NG_START, true);
 #endif
@@ -715,10 +688,6 @@ public:
 				DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 				break;
 
-			case WID_NG_CONN_BTN: // 'Connection' droplist
-				ShowDropDownMenu(this, _lan_internet_types_dropdown, _settings_client.network.lan_internet, WID_NG_CONN_BTN, 0, 0); // do it for widget WID_NSS_CONN_BTN
-				break;
-
 			case WID_NG_NAME:    // Sort by name
 			case WID_NG_CLIENTS: // Sort by connected clients
 			case WID_NG_MAPSIZE: // Sort by map size
@@ -763,11 +732,12 @@ public:
 				break;
 			}
 
-			case WID_NG_FIND: // Find server automatically
-				switch (_settings_client.network.lan_internet) {
-					case 0: NetworkUDPSearchGame(); break;
-					case 1: NetworkUDPQueryMasterServer(); break;
-				}
+			case WID_NG_SEARCH_INTERNET:
+				NetworkUDPQueryMasterServer();
+				break;
+
+			case WID_NG_SEARCH_LAN:
+				NetworkUDPSearchGame();
 				break;
 
 			case WID_NG_ADD: // Add a server
@@ -803,20 +773,6 @@ public:
 				if (this->server != nullptr) ShowMissingContentWindow(this->server->info.grfconfig);
 				break;
 		}
-	}
-
-	void OnDropdownSelect(int widget, int index) override
-	{
-		switch (widget) {
-			case WID_NG_CONN_BTN:
-				_settings_client.network.lan_internet = index;
-				break;
-
-			default:
-				NOT_REACHED();
-		}
-
-		this->SetDirty();
 	}
 
 	/**
@@ -965,12 +921,6 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 				/* LEFT SIDE */
 				NWidget(NWID_VERTICAL), SetPIP(0, 7, 0),
 					NWidget(NWID_HORIZONTAL), SetPIP(0, 7, 0),
-						NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NG_CONNECTION), SetDataTip(STR_NETWORK_SERVER_LIST_ADVERTISED, STR_NULL),
-						NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, WID_NG_CONN_BTN),
-											SetDataTip(STR_BLACK_STRING, STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP),
-						NWidget(NWID_SPACER), SetFill(1, 0), SetResize(1, 0),
-					EndContainer(),
-					NWidget(NWID_HORIZONTAL), SetPIP(0, 7, 0),
 						NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NG_FILTER_LABEL), SetDataTip(STR_LIST_FILTER_TITLE, STR_NULL),
 						NWidget(WWT_EDITBOX, COLOUR_LIGHT_BLUE, WID_NG_FILTER), SetMinimalSize(251, 12), SetFill(1, 0), SetResize(1, 0),
 											SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
@@ -1029,7 +979,8 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(NWID_VERTICAL),
 					NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 7, 4),
-						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_FIND), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_FIND_SERVER, STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_SEARCH_INTERNET), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET, STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP),
+						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_SEARCH_LAN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN, STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_ADD), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_ADD_SERVER, STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_START), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_NETWORK_SERVER_LIST_START_SERVER, STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_CANCEL), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_BUTTON_CANCEL, STR_NULL),

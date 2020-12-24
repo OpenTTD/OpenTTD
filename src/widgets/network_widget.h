@@ -14,8 +14,6 @@
 enum NetworkGameWidgets {
 	WID_NG_MAIN,               ///< Main panel.
 
-	WID_NG_CONNECTION,         ///< Label in front of connection droplist.
-	WID_NG_CONN_BTN,           ///< 'Connection' droplist button.
 	WID_NG_CLIENT_LABEL,       ///< Label in front of client name edit box.
 	WID_NG_CLIENT,             ///< Panel with editbox to set client name.
 	WID_NG_FILTER_LABEL,       ///< Label in front of the filter/search edit box.
@@ -45,7 +43,8 @@ enum NetworkGameWidgets {
 	WID_NG_NEWGRF_MISSING,     ///< 'Find missing NewGRF online' button.
 	WID_NG_NEWGRF_MISSING_SEL, ///< Selection widget for the above button.
 
-	WID_NG_FIND,               ///< 'Find server' button.
+	WID_NG_SEARCH_INTERNET,    ///< 'Search internet server' button.
+	WID_NG_SEARCH_LAN,         ///< 'Search LAN server' button.
 	WID_NG_ADD,                ///< 'Add server' button.
 	WID_NG_START,              ///< 'Start server' button.
 	WID_NG_CANCEL,             ///< 'Cancel' button.
