@@ -120,7 +120,7 @@ struct Train final : public GroundVehicle<Train, VEH_TRAIN> {
 	Money GetRunningCost() const override;
 	int GetCursorImageOffset() const;
 	int GetDisplayImageWidth(Point *offset = nullptr) const;
-	bool IsInDepot() const override { return this->track == TRACK_BIT_DEPOT; }
+	bool IsInDepot() const override { return HasBit((uint8_t)this->track, TRACK_DEPOT); }
 	bool Tick() override;
 	void OnNewCalendarDay() override;
 	void OnNewEconomyDay() override;
