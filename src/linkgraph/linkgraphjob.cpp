@@ -38,7 +38,8 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 		link_graph(orig),
 		settings(_settings_game.linkgraph),
 		join_date(_date + _settings_game.linkgraph.recalc_time),
-		job_completed(false)
+		job_completed(false),
+		job_aborted(false)
 {
 }
 
@@ -91,6 +92,11 @@ LinkGraphJob::~LinkGraphJob()
 	/* Don't update stuff from other pools, when everything is being removed.
 	 * Accessing other pools may be invalid. */
 	if (CleaningPool()) return;
+
+	/* If the job has been aborted, the job state is invalid.
+	 * This should never be reached, as once the job has been marked as aborted
+	 * the only valid job operation is to clear the LinkGraphJob pool. */
+	assert(!this->IsJobAborted());
 
 	/* Link graph has been merged into another one. */
 	if (!LinkGraph::IsValidID(this->link_graph.index)) return;
