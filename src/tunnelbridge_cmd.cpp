@@ -719,7 +719,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 		/* CMD_TERRAFORM_LAND may append further items to _cleared_object_areas,
 		 * however it will never erase or re-order existing items.
-		 * _cleared_object_areas is a value-type SmallVector, therefore appending items
+		 * _cleared_object_areas is a value-type self-resizing vector, therefore appending items
 		 * may result in a backing-store re-allocation, which would invalidate the coa pointer.
 		 * The index of the coa pointer into the _cleared_object_areas vector remains valid,
 		 * and can be used safely after the CMD_TERRAFORM_LAND operation.
