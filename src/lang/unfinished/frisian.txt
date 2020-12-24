@@ -1800,8 +1800,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Feroarje
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Advertearre
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Kies tusken in advertearre (ynternet) of in net-advertearre (LAN) spul
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Advertearre
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Kies tusken in advertearre (ynternet) of in net-advertearre (LAN) spul
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nee
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Namme fan spieler:

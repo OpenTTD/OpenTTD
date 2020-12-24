@@ -1923,8 +1923,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia-l
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multixogador
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Anunciado
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Escolle entre unha partida con anuncios (internet) ou sen eles (LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Anunciado
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Escolle entre unha partida con anuncios (internet) ou sen eles (LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Non
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Si
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nome do xogador:

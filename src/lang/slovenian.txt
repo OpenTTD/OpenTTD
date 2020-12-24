@@ -2031,8 +2031,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Spremeni
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Več igralcev
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Oglaševano
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Izberi med oglaševano (internet) in neoglaševano (Local Area Network, LAN) igro
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Oglaševano
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Izberi med oglaševano (internet) in neoglaševano (Local Area Network, LAN) igro
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Da
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ime igralca:

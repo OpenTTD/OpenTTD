@@ -1946,8 +1946,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaihda s
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Moninpeli
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Mainostettu
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Valitse mainostettu (internet) tai ei-mainostettu (paikallisverkko, LAN) peli
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Mainostettu
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Valitse mainostettu (internet) tai ei-mainostettu (paikallisverkko, LAN) peli
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ei
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Kyllä
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Pelaajan nimi

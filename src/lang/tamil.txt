@@ -1720,7 +1720,7 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Tie அ�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}பல்வீரர்
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}விளம்பரப்படுத்தப்பட்ட
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}விளம்பரப்படுத்தப்பட்ட
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :இல்லை
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :ஆம்
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}விளையாடுபவரின் பெயர்:

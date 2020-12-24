@@ -1824,8 +1824,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}เป�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}เล่นหลายคน
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}การประกาศ
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}เลือกระหว่างการโฆษณา (internet) หรือไม่โฆษณา (Local Area Network, LAN) เกม
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}การประกาศ
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}เลือกระหว่างการโฆษณา (internet) หรือไม่โฆษณา (Local Area Network, LAN) เกม
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :ไม่ใช่
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :ใช่
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}ชื่อผู้เล่น:

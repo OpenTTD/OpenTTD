@@ -1931,8 +1931,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Endre sl
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Flerspiller
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Annonsert
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Velg mellom et utlyst (internett) og et ikke utlyst (Lokalnettverk, LAN) spill
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Annonsert
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Velg mellom et utlyst (internett) og et ikke utlyst (Lokalnettverk, LAN) spill
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nei
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spillernavn:

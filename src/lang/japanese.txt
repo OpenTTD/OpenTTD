@@ -1875,8 +1875,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ネク�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}マルチプレイヤーゲーム
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}ゲーム公示
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}ゲームを公示(インターネット)するか、非公示(LAN)にするかを選びます
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}ゲーム公示
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}ゲームを公示(インターネット)するか、非公示(LAN)にするかを選びます
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :非公示
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :公示
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}プレイヤー名:

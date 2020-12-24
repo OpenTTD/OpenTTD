@@ -1799,8 +1799,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Byt slip
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Fleirspelar
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Kunngjort
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vel mellom spel på internett (kunngjort) og spel på lokalt nett (ikkje kunngjort)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Kunngjort
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vel mellom spel på internett (kunngjort) og spel på lokalt nett (ikkje kunngjort)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nei
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelarnamn:

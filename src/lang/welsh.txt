@@ -1883,8 +1883,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Newid te
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Amlchwaraewr
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Hysbys
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Dewis rhwyd gêm a hysbysebir (rhyngrwyd) neu un anhysbys (rhwydwaith leol)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Hysbys
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Dewis rhwyd gêm a hysbysebir (rhyngrwyd) neu un anhysbys (rhwydwaith leol)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Na
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ia
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Enw chwaraewr:

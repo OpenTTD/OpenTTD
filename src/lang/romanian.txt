@@ -1868,8 +1868,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Publicat
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Alege între un joc publicat (prin Internet) și unul privat (reț) game
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publicat
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Alege între un joc publicat (prin Internet) și unul privat (reț) game
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nu
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Da
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Numele jucătorului:

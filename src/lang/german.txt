@@ -1916,8 +1916,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatte
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mehrspieler
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Angekündigt
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Zwischen öffentlich angekündigtem (Internet) und nicht angekündigtem (Local Area Network, LAN) Spiel wählen
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Angekündigt
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Zwischen öffentlich angekündigtem (Internet) und nicht angekündigtem (Local Area Network, LAN) Spiel wählen
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nein
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spielername:

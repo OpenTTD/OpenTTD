@@ -2006,8 +2006,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmeniť 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hra pre viac hráčov
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Zverejnené
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vyberte medzi zverejnenou (internet) alebo nezverejnenou (lokálna sieť, LAN) hrou
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Zverejnené
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vyberte medzi zverejnenou (internet) alebo nezverejnenou (lokálna sieť, LAN) hrou
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nie
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Áno
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Meno hráča:

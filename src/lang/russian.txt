@@ -2090,8 +2090,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Изме
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сетевая игра
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Интернет
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Выберите между игрой через Интернет, либо в локальной сети
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Интернет
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Выберите между игрой через Интернет, либо в локальной сети
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Нет
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Да
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Имя игрока:

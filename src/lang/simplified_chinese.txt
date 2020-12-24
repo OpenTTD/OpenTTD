@@ -1930,8 +1930,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}选择�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}联机游戏
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}发布到互联网
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}选择是否将游戏发布到官方服务器列表。发布的话，可以让互联网上的玩家找到你的服务器并加入游戏，否则进行局域网内的游戏。
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}发布到互联网
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}选择是否将游戏发布到官方服务器列表。发布的话，可以让互联网上的玩家找到你的服务器并加入游戏，否则进行局域网内的游戏。
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :否
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :是
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名称：

@@ -1931,8 +1931,8 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambiar 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijugador
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Público
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Permitir escoger entre una partida pública (Internet) y una partida privada (LAN)
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Público
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Permitir escoger entre una partida pública (Internet) y una partida privada (LAN)
 STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :No
 STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sí
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nombre del jugador:
