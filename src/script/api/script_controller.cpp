@@ -77,9 +77,9 @@ ScriptController::ScriptController(CompanyID company) :
 
 ScriptController::~ScriptController()
 {
-	for (LoadedLibraryList::iterator iter = this->loaded_library.begin(); iter != this->loaded_library.end(); iter++) {
-		free((*iter).second);
-		free((*iter).first);
+	for (const auto &item : this->loaded_library) {
+		free(item.second);
+		free(item.first);
 	}
 
 	this->loaded_library.clear();
@@ -129,9 +129,9 @@ ScriptController::~ScriptController()
 
 	char fake_class[1024];
 
-	LoadedLibraryList::iterator iter = controller->loaded_library.find(library_name);
-	if (iter != controller->loaded_library.end()) {
-		strecpy(fake_class, (*iter).second, lastof(fake_class));
+	LoadedLibraryList::iterator it = controller->loaded_library.find(library_name);
+	if (it != controller->loaded_library.end()) {
+		strecpy(fake_class, (*it).second, lastof(fake_class));
 	} else {
 		int next_number = ++controller->loaded_library_count;
 

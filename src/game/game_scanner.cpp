@@ -60,11 +60,10 @@ GameInfo *GameScannerInfo::FindInfo(const char *nameParam, int versionParam, boo
 
 	/* See if there is a compatible Game script which goes by that name, with the highest
 	 *  version which allows loading the requested version */
-	ScriptInfoList::iterator it = this->info_list.begin();
-	for (; it != this->info_list.end(); it++) {
-		GameInfo *i = static_cast<GameInfo *>((*it).second);
+	for (const auto &item : this->info_list) {
+		GameInfo *i = static_cast<GameInfo *>(item.second);
 		if (strcasecmp(game_name, i->GetName()) == 0 && i->CanLoadFromVersion(versionParam) && (version == -1 || i->GetVersion() > version)) {
-			version = (*it).second->GetVersion();
+			version = item.second->GetVersion();
 			info = i;
 		}
 	}
@@ -97,8 +96,8 @@ GameLibrary *GameScannerLibrary::FindLibrary(const char *library, int version)
 	strtolower(library_name);
 
 	/* Check if the library + version exists */
-	ScriptInfoList::iterator iter = this->info_list.find(library_name);
-	if (iter == this->info_list.end()) return nullptr;
+	ScriptInfoList::iterator it = this->info_list.find(library_name);
+	if (it == this->info_list.end()) return nullptr;
 
-	return static_cast<GameLibrary *>((*iter).second);
+	return static_cast<GameLibrary *>((*it).second);
 }

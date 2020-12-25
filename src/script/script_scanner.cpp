@@ -103,14 +103,12 @@ void ScriptScanner::RescanDir()
 
 void ScriptScanner::Reset()
 {
-	ScriptInfoList::iterator it = this->info_list.begin();
-	for (; it != this->info_list.end(); it++) {
-		free((*it).first);
-		delete (*it).second;
+	for (const auto &item : this->info_list) {
+		free(item.first);
+		delete item.second;
 	}
-	it = this->info_single_list.begin();
-	for (; it != this->info_single_list.end(); it++) {
-		free((*it).first);
+	for (const auto &item : this->info_single_list) {
+		free(item.first);
 	}
 
 	this->info_list.clear();
@@ -171,9 +169,8 @@ char *ScriptScanner::GetConsoleList(char *p, const char *last, bool newest_only)
 {
 	p += seprintf(p, last, "List of %s:\n", this->GetScannerName());
 	const ScriptInfoList &list = newest_only ? this->info_single_list : this->info_list;
-	ScriptInfoList::const_iterator it = list.begin();
-	for (; it != list.end(); it++) {
-		ScriptInfo *i = (*it).second;
+	for (const auto &item : list) {
+		ScriptInfo *i = item.second;
 		p += seprintf(p, last, "%10s (v%d): %s\n", i->GetName(), i->GetVersion(), i->GetDescription());
 	}
 	p += seprintf(p, last, "\n");
@@ -273,16 +270,16 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 
 bool ScriptScanner::HasScript(const ContentInfo *ci, bool md5sum)
 {
-	for (ScriptInfoList::iterator it = this->info_list.begin(); it != this->info_list.end(); it++) {
-		if (IsSameScript(ci, md5sum, (*it).second, this->GetDirectory())) return true;
+	for (const auto &item : this->info_list) {
+		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return true;
 	}
 	return false;
 }
 
 const char *ScriptScanner::FindMainScript(const ContentInfo *ci, bool md5sum)
 {
-	for (ScriptInfoList::iterator it = this->info_list.begin(); it != this->info_list.end(); it++) {
-		if (IsSameScript(ci, md5sum, (*it).second, this->GetDirectory())) return (*it).second->GetMainScript();
+	for (const auto &item : this->info_list) {
+		if (IsSameScript(ci, md5sum, item.second, this->GetDirectory())) return item.second->GetMainScript();
 	}
 	return nullptr;
 }
