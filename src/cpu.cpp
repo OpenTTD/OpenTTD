@@ -66,6 +66,12 @@ uint64 ottd_rdtsc()
 # define RDTSC_AVAILABLE
 #endif
 
+#if defined(__EMSCRIPTEN__) && !defined(RDTSC_AVAILABLE)
+/* On emscripten doing TIC/TOC would be ill-advised */
+uint64 ottd_rdtsc() {return 0;}
+# define RDTSC_AVAILABLE
+#endif
+
 /* In all other cases we have no support for rdtsc. No major issue,
  * you just won't be able to profile your code with TIC()/TOC() */
 #if !defined(RDTSC_AVAILABLE)
