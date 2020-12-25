@@ -722,7 +722,7 @@ bool AddInflation(bool check_year)
 	 * inflation doesn't add anything after that either; it even makes playing
 	 * it impossible due to the diverging cost and income rates.
 	 */
-	if (check_year && (_cur_year - _settings_game.game_creation.starting_year) >= (ORIGINAL_MAX_YEAR - ORIGINAL_BASE_YEAR)) return true;
+	if (check_year && (_cur_year < ORIGINAL_BASE_YEAR || _cur_year >= ORIGINAL_MAX_YEAR)) return true;
 
 	if (_economy.inflation_prices == MAX_INFLATION || _economy.inflation_payment == MAX_INFLATION) return true;
 
@@ -913,6 +913,14 @@ void StartupEconomy()
 	_economy.infl_amount = _settings_game.difficulty.initial_interest;
 	_economy.infl_amount_pr = max(0, _settings_game.difficulty.initial_interest - 1);
 	_economy.fluct = GB(Random(), 0, 8) + 168;
+
+	if (_settings_game.economy.inflation) {
+		/* Apply inflation that happened before our game start year. */
+		int months = (min(_cur_year, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR) * 12;
+		for (int i = 0; i < months; i++) {
+			AddInflation(false);
+		}
+	}
 
 	/* Set up prices */
 	RecomputePrices();
