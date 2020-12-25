@@ -1619,7 +1619,11 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Neliöllinen (a
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarinen
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puiden istutus pelissä: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi sahat
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin, jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi sahat.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Puut kasvavat, mutta eivät leviä {RED}(rikkoo sahan)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Puut kasvavat, mutta leviävät vain sademetsissä
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Puut kasvavat ja leviävät kaikkialla
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Puut eivät kasva eivätkä leviä {RED}(rikkoo sahan)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Päätyökalupalkin sijainti: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ruudun yläreunassa olevan työkalupalkin sijainti vaakasuunnassa
@@ -1983,6 +1987,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Liity pe
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Päivitä
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Päivitä palvelintiedot
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Etsi internetistä
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Etsi julkisia palvelimia internetistä
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Etsi lähiverkosta
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Etsi palvelimia lähiverkosta
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lisää palvelin
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lisää palvelin listaan, joka käydään läpi aina uusia pelejä haettaessa
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Käynnistä palvelin
@@ -4720,7 +4728,7 @@ STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Lähde
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Vesitorni
 STR_INDUSTRY_NAME_FACTORY_2                                     :Tehdas
 STR_INDUSTRY_NAME_FARM_2                                        :Maatila
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Hakkuualue
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Saha
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Hattarametsä
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Karkkitehdas
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Paristomaatila
