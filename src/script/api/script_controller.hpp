@@ -23,7 +23,6 @@
  *  script that matches to the specified version as close as possible. It tries
  *  (from first to last, stopping as soon as the attempt succeeds)
  *
- *  - load the exact same version of the same script,
  *  - load the latest version of the same script that supports loading data from
  *    the saved version (the version of saved data must be equal or greater
  *    than ScriptInfo::MinVersionToLoad),
