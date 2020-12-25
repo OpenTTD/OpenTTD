@@ -1172,7 +1172,24 @@ DEF_CONSOLE_CMD(ConStartAI)
 
 	AIConfig *config = AIConfig::GetConfig((CompanyID)n);
 	if (argc >= 2) {
-		config->Change(argv[1], -1, true);
+		config->Change(argv[1], -1, false);
+
+		/* If the name is not found, and there is a dot in the name,
+		 * try again with the assumption everything right of the dot is
+		 * the version the user wants to load. */
+		if (!config->HasScript()) {
+			char *name = stredup(argv[1]);
+			char *e = strrchr(name, '.');
+			if (e != nullptr) {
+				*e = '\0';
+				e++;
+
+				int version = atoi(e);
+				config->Change(name, version, true);
+			}
+			free(name);
+		}
+
 		if (!config->HasScript()) {
 			IConsoleWarning("Failed to load the specified AI");
 			return true;
