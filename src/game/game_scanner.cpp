@@ -40,20 +40,10 @@ GameInfo *GameScannerInfo::FindInfo(const char *nameParam, int versionParam, boo
 	strecpy(game_name, nameParam, lastof(game_name));
 	strtolower(game_name);
 
-	GameInfo *info = nullptr;
-	int version = -1;
-
 	if (versionParam == -1) {
 		/* We want to load the latest version of this Game script; so find it */
 		if (this->info_single_list.find(game_name) != this->info_single_list.end()) return static_cast<GameInfo *>(this->info_single_list[game_name]);
-
-		/* If we didn't find a match Game script, maybe the user included a version */
-		char *e = strrchr(game_name, '.');
-		if (e == nullptr) return nullptr;
-		*e = '\0';
-		e++;
-		versionParam = atoi(e);
-		/* Continue like we were calling this function with a version. */
+		return nullptr;
 	}
 
 	if (force_exact_match) {
@@ -62,7 +52,11 @@ GameInfo *GameScannerInfo::FindInfo(const char *nameParam, int versionParam, boo
 		seprintf(game_name_tmp, lastof(game_name_tmp), "%s.%d", game_name, versionParam);
 		strtolower(game_name_tmp);
 		if (this->info_list.find(game_name_tmp) != this->info_list.end()) return static_cast<GameInfo *>(this->info_list[game_name_tmp]);
+		return nullptr;
 	}
+
+	GameInfo *info = nullptr;
+	int version = -1;
 
 	/* See if there is a compatible Game script which goes by that name, with the highest
 	 *  version which allows loading the requested version */

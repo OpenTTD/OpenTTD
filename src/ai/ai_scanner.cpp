@@ -101,20 +101,10 @@ AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool fo
 	strecpy(ai_name, nameParam, lastof(ai_name));
 	strtolower(ai_name);
 
-	AIInfo *info = nullptr;
-	int version = -1;
-
 	if (versionParam == -1) {
 		/* We want to load the latest version of this AI; so find it */
 		if (this->info_single_list.find(ai_name) != this->info_single_list.end()) return static_cast<AIInfo *>(this->info_single_list[ai_name]);
-
-		/* If we didn't find a match AI, maybe the user included a version */
-		char *e = strrchr(ai_name, '.');
-		if (e == nullptr) return nullptr;
-		*e = '\0';
-		e++;
-		versionParam = atoi(e);
-		/* Continue, like we were calling this function with a version. */
+		return nullptr;
 	}
 
 	if (force_exact_match) {
@@ -123,7 +113,11 @@ AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool fo
 		seprintf(ai_name_tmp, lastof(ai_name_tmp), "%s.%d", ai_name, versionParam);
 		strtolower(ai_name_tmp);
 		if (this->info_list.find(ai_name_tmp) != this->info_list.end()) return static_cast<AIInfo *>(this->info_list[ai_name_tmp]);
+		return nullptr;
 	}
+
+	AIInfo *info = nullptr;
+	int version = -1;
 
 	/* See if there is a compatible AI which goes by that name, with the highest
 	 *  version which allows loading the requested version */
