@@ -1734,9 +1734,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :лінійна 
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Поява дерев під час гри: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Налаштування випадкової появи дерев на карті в процесі гри. Ця настройка також впливає на відповідні підприємства, такі як лісопилки.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Відсутня {RED}(зупиняє лісопилки)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Тільки у тропіках
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Скрізь
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиція головного меню: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Горизонтальна позиція основної панелі інструментів.
@@ -2058,10 +2055,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Змін
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Мережева гра
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Інтернет
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Вибір між рекламованою (інтернет) і не рекламованою (локальна мережа, LAN) грою
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ні
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Так
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ім'я гравця:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ім'я, за яким тебе розпізнаватимуть інші гравці
 
@@ -2102,8 +2095,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Приє
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Оновити сервер
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Оновити інформацію про сервер
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Знайти сервер
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Пошук мережі для сервера
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Додати сервер
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Додає сервер до списку, який завжди буде перевірятись на поточні ігри
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Створити сервер
@@ -2120,6 +2111,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Встановити пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Захистіть вашу гру паролем, якщо не бажаєте загального доступу
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Інтернет
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Вибір між рекламованою (інтернет) і не рекламованою (локальна мережа, LAN) грою
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ні
 STR_NETWORK_START_SERVER_ADVERTISED                             :Так
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клієнт{P "" а ів}

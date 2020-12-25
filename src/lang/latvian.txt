@@ -1614,9 +1614,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineārs
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Koku izvietojums spēlē: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Vadīt nejaušu koku parādīšanos spēles laikā. Tas var ietekmēt no kokaudzēšanas atkarīgas ražotnes, piemēram kokzāģētavas
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nav {RED}(nedarbosies kokzāģētavas)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tikai lietusmežos
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Galvenās rīkjoslas novietojums: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Galvenās rīkjoslas horizontālais novietojums ekrāna augšējā daļā
@@ -1942,10 +1939,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Izsludināt
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Izvēlieties starp reklamēto (interneta) un nereklamēto (lokālā tīkla, LAN) spēli
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nē
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jā
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spēlētāja vārds:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pēc šā vārda jūs atpazīs citi spēlētāji
 
@@ -1986,8 +1979,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pievieno
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atsvaidzināt serveri
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atsvaidzināt servera informāciju
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Atrast serveri
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Meklēt serveri tīklā
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pievienot serveri
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pievienot serveri sarakstam, kurš vienmēr tiks pārbaudīts vai tajā nav palaistas spēles
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Palaist serveri
@@ -2004,6 +1995,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spēles 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Uzstādīt paroli
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Aizsargā jūsu spēli ar paroli, ja nevēlaties lai tā būtu publiski pieejama
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Izsludināt
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Izvēlieties starp reklamēto (interneta) un nereklamēto (lokālā tīkla, LAN) spēli
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nē
 STR_NETWORK_START_SERVER_ADVERTISED                             :Jā
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} spēlētāj{P s i u}

@@ -1608,9 +1608,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Tuyến tính
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Trồng cây trong trò chơi: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Điều khiển sự xuất hiện tự dộng của cây cối khi đang chơi. Điều này có thể ảnh hưởng đến những nhà máy dựa vào cây cối, ví dự như nhà máy chế biến gỗgỗ
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :không có {RED}(nhà máy chế biến gỗ bị ngưng)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Chỉ trong rừng nhiệt đới
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Mọi nơi
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Vị trí của thanh công cụ chính: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Vị trí nằm ngang của thanh công cụ chính ở phía trên màn hình
@@ -1932,10 +1929,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đ�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ván Chơi Mạng
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Đã quảng bá
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Lựa chọn ván chơi quảng bá (ra ngoài internet) và không quảng bá (Local Area Network, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Không
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Có
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Tên người chơi:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Đây là tên khác mà người chơi sẽ nhận ra bạn
 
@@ -1976,8 +1969,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Vào gam
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Refresh server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Refresh thông tin server
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Tìm server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Tìm server trong mạng
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Thêm server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Thêm server vào danh sách luôn được chọn khi chạy game.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tạo server
@@ -1994,6 +1985,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Tên c�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Đặt mật khẩu
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bảo vệ game của bạn bằng mật khẩu nếu bạn không muốn người khác vào tùy tiện
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Đã quảng bá
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Lựa chọn ván chơi quảng bá (ra ngoài internet) và không quảng bá (Local Area Network, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Không
 STR_NETWORK_START_SERVER_ADVERTISED                             :Có
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy trạm

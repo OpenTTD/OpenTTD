@@ -1620,9 +1620,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarinen
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puiden istutus pelissä: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi sahat
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ei ollenkaan {RED}(rikkoo sahan)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Vain sademetsiin
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Kaikkialle
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Päätyökalupalkin sijainti: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ruudun yläreunassa olevan työkalupalkin sijainti vaakasuunnassa
@@ -1946,10 +1943,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaihda s
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Moninpeli
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Mainostettu
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Valitse mainostettu (internet) tai ei-mainostettu (paikallisverkko, LAN) peli
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ei
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Kyllä
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Pelaajan nimi
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Pelaajat tunnistetaan ja erotetaan toisistaan nimien avulla
 
@@ -1990,8 +1983,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Liity pe
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Päivitä
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Päivitä palvelintiedot
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Etsi palvelin
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Etsi palvelin verkosta
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lisää palvelin
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lisää palvelin listaan, joka käydään läpi aina uusia pelejä haettaessa
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Käynnistä palvelin
@@ -2008,6 +1999,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nimi nä
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Aseta salasana
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Jos peliin ei halua ulkopuolisia, voi sen suojata salasanalla
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Mainostettu
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Valitse mainostettu (internet) tai ei-mainostettu (paikallisverkko, LAN) peli
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ei
 STR_NETWORK_START_SERVER_ADVERTISED                             :Kyllä
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} asiakas{P "" ta}

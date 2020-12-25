@@ -1395,9 +1395,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Dibenarkan
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dibenarkan, susunan bandar sendiri
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Peletakan pokok-pokok dalam permainan: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Tiada {RED}(kilang kayu tidak berfungsi)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Hanya di hutan hujan
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Setiap tempat
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Kedudukan palang alat utama: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Kedudukan bar status: {STRING}
@@ -1677,8 +1674,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Sertai p
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Kemaskini
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Kemaskini maklumat pelayan
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Cari pelayan
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cari rangkaian untuk pelayan
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Tambah pelayan
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Memasukkan pelayan ke dalam senarai yang sentiasa akan disemak untuk permainan yang sedang berjalan.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Mulakan pelayan

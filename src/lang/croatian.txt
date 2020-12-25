@@ -1702,9 +1702,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linearno
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Smještaj drveća u igri: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontroliraj nasumično pojavljivanje stabala tijekom igre. Ovo može utjecati na industrije koje ovise o rastu stabala, npr. pilane
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nigdje {RED}(uništava pilanu)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Samo u kišnim šumama
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Posvuda
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Položaj glavne alatne trake: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Vodoravna pozicija glavne alatne trake na vrhu zaslona
@@ -2026,10 +2023,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Promijen
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Više igrača
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Sa oglasima
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Odaberi između igre s oglasima (internet) i bez oglasa (Local Area Network, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Da
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ime igrača:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ovo je ime po kojem će te drugi igrači raspoznavati
 
@@ -2070,8 +2063,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pridruž
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Osvježi poslužitelj
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Osvježi podatke o poslužitelju
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Pronađi poslužitelj
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Pronađi poslužitelje u mreži
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj poslužitelj
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaje poslužitelj na popis koji će uvijek biti provjeren postoje li igre u tijeku.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Pokreni poslužitelj
@@ -2088,6 +2079,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Ime igre
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Postavi zaporku
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zaštiti svoju igru pomoću zaporke ukoliko ne želiš da bude javno dostupna
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Sa oglasima
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Odaberi između igre s oglasima (internet) i bez oglasa (Local Area Network, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
 STR_NETWORK_START_SERVER_ADVERTISED                             :Da
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klijen{P t ta ata}

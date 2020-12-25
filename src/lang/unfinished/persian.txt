@@ -1340,9 +1340,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :مجاز
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :آزاد و با نمایه دلخواه
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :محل قرارگرفتن درخت‌ها: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :هیچکدام{RED}(سبب تعطیلی صنعت چوب والوار می‌شود)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :فقط در جنگلهای بارانی
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :همه جا
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :محل نوار ابزار اصلی: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :محل نوار وضعیت: {STRING}
@@ -1590,9 +1587,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}تغیی
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}چندنفره
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}تبلیغ دار
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :خیر
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :بله
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}نام بازیگر:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}این نامی است که بقیه بازیگران شما را به آن نام می شناسند
 
@@ -1633,8 +1627,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}الحا
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}تازه سازی سرویس دهنده
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}تازه سازی اطلاعات سرویس دهنده
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}جستجوی سرویس دهنده
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}جستجو در شبکه برای سرویس دهنده
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}اضافه کردن سرویس دهنده
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}اضافه کردن یک سرویس دهنده به لیست که هربار برای بازی در حال اجرا آزمایش می گردد
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}اجرای سرویس دهنده
@@ -1651,6 +1643,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}بازی
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}ثبت رمز
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}اگر بازی برای استفاده همگان نیست، بازی خود را با رمز محافظت کنید
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}تبلیغ دار
 STR_NETWORK_START_SERVER_UNADVERTISED                           :خیر
 STR_NETWORK_START_SERVER_ADVERTISED                             :بله
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} سرویس گیرنده

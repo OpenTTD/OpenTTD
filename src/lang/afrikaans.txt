@@ -1598,9 +1598,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineêre
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Binne speletjie plasing van bome: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Beheer die ewekansige voorkoms van bome tydens die spel. Dit kan 'n invloed op nywerhede hê wat staatmaak op die groei van bome, byvoorbeeld hout meulens
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Geen {RED}(breek timmerhout meul)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Slegs in reënwoude
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Orals
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posisie van hoof werktuigbaan: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontale posisie van die hoof nutsbalk aan die bokant van die skerm
@@ -1921,10 +1918,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multispeler
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Openbaar
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Kies tussen 'n openbare (internet) of 'n plaaslike (LAN) spel
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nee
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Speler naam:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Die is die naam waarmee ander spelers sal jou aanwys
 
@@ -1965,8 +1958,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Verbind 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Vervris verskaffer
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Vervris die verskaffer inligting
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Soek bediener
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Versoek netwerk vir 'n verskaffer
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Voeg bediender by
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voeg 'n verskaffer by die lys wat altyd ondersoek sal word vir speletjies wat reeds aan die gang is
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Begin bediener
@@ -1983,6 +1974,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Die spel
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Stel wagwoord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskerm jou spel met 'n wagwoord as jy wil dit nie publieke toepassing laat wees nie
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Openbaar
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Kies tussen 'n openbare (internet) of 'n plaaslike (LAN) spel
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nee
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Klient{P "" e}

@@ -1607,9 +1607,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Posicionamento de árvores: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla o nascimento aleatório de árvores durante o jogo. Isso pode afetar indústrias que dependem do crescimento de árvores, como serrarias
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nenhum {RED}(extingue a serraria)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Apenas nas florestas tropicais
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Em todo o lugar
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posição da barra de ferramentas principal: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posição horizontal da barra de ferramentas principal no topo da tela
@@ -1931,10 +1928,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Alterar 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multi-jogador
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :[BLACK}Publicado
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Selecione entre um jogo publicado (internet) ou não publicado (Rede de Área Local, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Não
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sim
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nome:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Este é o nome pelo qual os outros jogadores irão te identificar
 
@@ -1975,8 +1968,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Entrar n
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atualizar dados
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atualiza as informações sobre o servidor
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Localizar servidor
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Pesquisar por um servidor na rede
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Adicionar servidor
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adiciona um servidor à lista que será sempre verificada se existem jogos ocorrendo
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
@@ -1993,6 +1984,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}O nome d
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Definir senha
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteja o jogo com uma senha se não desejar que seja publicamente acessível
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :[BLACK}Publicado
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Selecione entre um jogo publicado (internet) ou não publicado (Rede de Área Local, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Não
 STR_NETWORK_START_SERVER_ADVERTISED                             :Sim
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}

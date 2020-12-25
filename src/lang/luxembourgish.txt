@@ -1605,9 +1605,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Bamplazéirung: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrolléiert zoufälleg Optauche vu Beem während dem Spill. Dëst kann Industrie beaflossen, déi op d'Wuessen vu Beem ugewisen sinn
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Keng{RED}(zerstéiert Bauholzfabrik)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Nëmmen am Reebësch
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Iwwerall
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Positioun vun der Haapt-Toolbar: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontal Positioun vun der Haapt-Toolbar uewen um Schierm
@@ -1929,10 +1926,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatt 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Ugekënnegt
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Wiel tëschent engem ugekënnegten (Internet) an net ugekënnegten (LAN) Spill
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nee
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Jo
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spillernumm:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Daat ass den Numm mat deem iech déi aner Spiller Identifizéieren kënnen
 
@@ -1973,8 +1966,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Spill b�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Server erneieren
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Serverinfo erneieren
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Server sichen
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Am Netzwierk no engem Server sichen
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Server bäisetzen
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Setzt en Server op d'Lëscht wou ëmmer no enger Partie gesicht gëtt
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Server starten
@@ -1991,6 +1982,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Den Numm
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Passwuert setzen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}En Passwuert fir d'Spill setzen, dass et net Public accessibel ass
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Ugekënnegt
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Wiel tëschent engem ugekënnegten (Internet) an net ugekënnegten (LAN) Spill
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nee
 STR_NETWORK_START_SERVER_ADVERTISED                             :Jo
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Spiller

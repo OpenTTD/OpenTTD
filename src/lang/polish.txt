@@ -1992,9 +1992,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Liniowy
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Rozmieszczenie drzew w grze: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Losowe pojawianie się drzew podczas gry. Może mieć to wpływ na zakłady opierające się na wyrastaniu drzew, np. tartaki
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Brak {RED}(tartaki nie działają)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Tylko w lasach deszczowych
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Wszędzie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozycja głównego paska narzędzi: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Pozioma pozycja głównego paska narzędzi na górze ekranu
@@ -2318,10 +2315,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmień k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Gra wieloosobowa
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publiczny
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Wybierz między rozgrywkami reklamowanymi (internetowymi) a niereklamowanymi (w sieci lokalnej LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nie
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Tak
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nazwa gracza:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}To jest nazwa pod którą będą Cię widzieć inni gracze
 
@@ -2362,8 +2355,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Przyłą
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Odśwież serwer
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Odśwież informacje o serwerze
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Znajdź serwery
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Przeszukuje sieć w poszukiwaniu serwera
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj serwer
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaj serwer do listy, która będzie przeszukiwana w poszukiwaniu uruchomionych gier
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom serwer
@@ -2380,6 +2371,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nazwa gr
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Ustaw hasło
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zabezpiecz grę hasłem jeśli nie chcesz, by była publicznie dostępna
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publiczny
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Wybierz między rozgrywkami reklamowanymi (internetowymi) a niereklamowanymi (w sieci lokalnej LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nie
 STR_NETWORK_START_SERVER_ADVERTISED                             :Tak
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ów ów}

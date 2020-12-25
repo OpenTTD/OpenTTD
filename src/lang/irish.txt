@@ -1553,9 +1553,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :ceadaithe, leag
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Áit a chuirtear crainnte sa chluiche: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Rialaigh an áit a gcuirfear na crainn go fánach i rith an chluiche. D'fhéadfadh tionchar a bheith aige seo ar thionscail a bhíonn ag brath ar fhás na gcrann, muilte adhmaid mar shampla
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ná dean{RED}(bristear an muileann adhmaid)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :i bhforaois bháistí amháin
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :gach áit
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Suíomh an phríomhbharra uirlisí: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Suíomh cothrománach an phríomhbharra uirlise ag barr an scáileáin
@@ -1875,10 +1872,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Athraigh
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ilimreoirí
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Fógartha
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Roghnaigh idir cluiche fógartha (idirlín) agus cluiche neamhfhógartha (Líonra Achair Logánta, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Níl
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Tá
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ainm imreora:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Seo an t-ainm faoina mbeidh imreoirí eile in ann tú a aithint
 
@@ -1919,8 +1912,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Téigh i
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Athnuaigh an freastalaí
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Athnuaigh faisnéis an fhreastalaí
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Aimsigh freastalaí
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cuardaigh líonra le haghaidh freastalaí
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Cuir freastalaí leis
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Cuirtear freastalaí leis an liosta a sheiceálfar i gcónaí le haghaidh cluichí ar rith.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tosaigh freastalaí
@@ -1937,6 +1928,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Taispeá
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Socraigh pasfhocal
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Cosain do chluiche le pasfhocal más mian leat nach mbeidh rochtain phoiblí air
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Fógartha
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Roghnaigh idir cluiche fógartha (idirlín) agus cluiche neamhfhógartha (Líonra Achair Logánta, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Níl
 STR_NETWORK_START_SERVER_ADVERTISED                             :Tá
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} {P ch ch ch gc c}lia{P "" "" "" "" i}nt

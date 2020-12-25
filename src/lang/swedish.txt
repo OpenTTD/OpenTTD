@@ -1606,9 +1606,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linjär
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Placering av träd i spelläge: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrollera den slumpmässiga uppkomsten av träd under spelets gång. Detta kan påverka industrier som är beroende av växande träd, till exempel sågverk
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Inga {RED}(förstör sågverk)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Bara i regnskogar
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Överallt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Verktygsradens position: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Verktygsradens horisontella position i skärmens överkant
@@ -1930,10 +1927,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ändra s
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Flera spelare
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publikt
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Välj mellan ett publikt (internet) eller icke publikt (Local Area Network. LAN) spel
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nej
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelarnamn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Namnet som andra spelare kommer se dej som
 
@@ -1974,8 +1967,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Gå med 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Uppdatera server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Uppdatera server info
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Leta server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Sök i nätverket efter en server
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lägg till server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lägg till en server till listan som alltid kommer kontrolleras för aktiva spel
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Starta server
@@ -1992,6 +1983,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Namnet p
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Bestäm lösenord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Skydda spelet med ett lösenord så att inte andra än dem som har lösenordet kan gå med i spelet
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publikt
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Välj mellan ett publikt (internet) eller icke publikt (Local Area Network. LAN) spel
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nej
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}

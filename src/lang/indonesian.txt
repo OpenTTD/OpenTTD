@@ -1606,9 +1606,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linier
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Penempatan pohon dalam permainan: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Mengendalikan kemunculan pohon dalam permainan. Ini akan berefek pada industri yang memerlukan pohon, contohnya pengolahan kayu gelondongan
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Tidak ada {RED}(memotong Pabrik Pengolahan Kayu Gelondongan)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Hanya pada hutan hujan
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Dimanapun
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posisi toolbar utama: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posisi horizontal toolbar utama di bagian atas layar
@@ -1930,10 +1927,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ubah das
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Bermain bersama
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Diiklankan
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Pilih antara permainan diiklankan (internet) dan tidak diiklankan (Jaringan wilayah lokal, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Tidak
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ya
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nama pemain:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ini adalah nama yang akan terlihat oleh pemain lain
 
@@ -1974,8 +1967,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Bergabun
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Cek server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Periksa lagi status server
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Cari server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cari jaringan server
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Tambah server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Daftarkan server baru yang akan dipantau aktivitasnya
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Mulai server
@@ -1992,6 +1983,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nama per
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Atur kata sandi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Lindungi permainan ini dengan kata kunci jika anda tidak ingin membiarkannya terbuka untuk umum
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Diiklankan
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Pilih antara permainan diiklankan (internet) dan tidak diiklankan (Jaringan wilayah lokal, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Tidak
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ya
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klien

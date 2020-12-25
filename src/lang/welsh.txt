@@ -1559,9 +1559,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Caniatáu, cynl
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Gosod coed mewn gêm: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Rheoli ymddangosiad coed ar hap yn ystod y gêm. Gall hyn effeithio ar ddiwydiannau sy'n ddibynnol ar dyfiant coed, megis melinau coed
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Dim {RED}(yn torri'r felin goed)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Mewn glawgoedwigoedd yn unig
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Pob man
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Safle'r prif far offer: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Lleoliad llorweddol y brif bar offer ar frig y sgrin
@@ -1883,10 +1880,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Newid te
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Amlchwaraewr
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Hysbys
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Dewis rhwyd gêm a hysbysebir (rhyngrwyd) neu un anhysbys (rhwydwaith leol)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Na
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ia
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Enw chwaraewr:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Byddwch chi'n ymddangos i'r chwaraewyr eraill dan yr enw hwn
 
@@ -1927,8 +1920,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Ymuno â
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Adnewyddu'r gweinydd
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Adnewyddu'r wybodaeth am y gweinydd
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Canfod gweinydd
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Chwilio'r rhwydwaith am weinydd
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Ychwanegu gweinydd
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Ychwanegu gweinydd i'r rhestr a gaiff ei wirio bob tro am gemau sy'n rhedeg
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Dechrau gweinydd
@@ -1945,6 +1936,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Bydd y g
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Gosod cyfrinair
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Diogelwch eich gêm â chyfrinair os nad ydych am i fynediad ato fod yn gyhoeddus
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Hysbys
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Dewis rhwyd gêm a hysbysebir (rhyngrwyd) neu un anhysbys (rhwydwaith leol)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Na
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ia
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} gwestai

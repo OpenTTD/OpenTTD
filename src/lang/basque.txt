@@ -1499,9 +1499,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Gaitua herrien 
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Zuhaitzen landaketa jokoan: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Jokoa bitartean zuhaitzen ausazko landatzea kontrolatu. Zuhaitzen landatzean oinarritzen diren industriei eragin dezake, zerrategiei adibidez
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ezer ez {RED}(Paisai tropikalean zerrategiak hautsiko ditu)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Bakarrik basoetan
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Leku guztietan
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Tresna barra nagusiaren kokapena: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Tresna barra nagusia posizio horizontalean pantailaren goiko aldean
@@ -1794,8 +1791,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Aldatu k
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijokalaria
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ez
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Bai
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Jokalariaren izena:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Izen honen bidez ezagutua izango zara beste jokalarien artean
 
@@ -1836,8 +1831,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Jokoan s
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Zerbitzaria freskatu
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Zerbitzariaren informazioa freskatu
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Zerbitzaria bilatu
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Sarean zerbitzariak bilatu
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Zerbitzaria gehitu
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Zerrendara zerbitzari bat gehitu martxa dauden jokoak bilatuko dituena
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Zerbitzari bat sortu

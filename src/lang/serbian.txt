@@ -1760,9 +1760,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :dozvoljeno, zas
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Rasejavanje drveća tokom partije: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrola nasumične pojave drveća u toku igre. Ovo može uticati na industrije koje zavise o rastu drveća, na primer pilana
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :{G=srednji}nikakvo {RED}(onesposobljava rad drvnih kombinata)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :samo u tropskim šumama
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :svuda
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Lokacija glavne trake sa alatima: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontalna pozicija glavne trake s alatkama na vrhu ekrana
@@ -2082,10 +2079,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Promena 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mrežna partija
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK} Sa reklamama
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Odaberite između igre s oglasima (internet) i bez oglasa (Local Area Network, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Da
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ime igrača:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Sa ovim imenom će Vas drugi igrači (pre)poznavati
 
@@ -2126,8 +2119,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Priklju�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Ažuriranje servera
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ažurirajte podatke sa servera
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Pronađi server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Pretražuje mrežu kako bi pronašao servere
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaje server na spisak na kojem se uvek proverava za aktivne partije
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Pokreni server
@@ -2144,6 +2135,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Naziv pa
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Postavi lozinku
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ukoliko ne želite da bude javno dostupna zaštitite Vašu partiju lozinkom
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK} Sa reklamama
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Odaberite između igre s oglasima (internet) i bez oglasa (Local Area Network, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
 STR_NETWORK_START_SERVER_ADVERTISED                             :Da
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} igrač{P "" a a}

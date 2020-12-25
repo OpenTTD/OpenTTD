@@ -1607,9 +1607,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Doğrusal
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Oyunda ağaç dikme: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Oyundaki rastgele ağaçların görünümünü kontrol eder. Bu, ağaçların büyümesine bağımlı olan endüstrileri etkileyebilir, örneğin keresteciler gibi
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Hiçbiri {RED}(kauçuk fabrikasını yok eder)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Yalnız yağmur ormanlarında
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Her yerde
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Ana araç çubuğu konumu: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ekranın üst kısmındaki ana araç çubuğunun yatay konumu
@@ -1931,10 +1928,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Kravatı
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Çok Oyunculu
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Duyurulan
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Duyurulan (internet) ve duyurulmayan (yerel ağ, LAN) oyun türlerinden birini seçin
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Hayır
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Evet
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Oyuncu adı:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Oyuncuların görecegi adınızı seçin
 
@@ -1975,8 +1968,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Oyuna gi
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Sunucuyu tazele
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Sunucu bilgisini tazele
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Sunucu bul
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Sunucu bulmak için bir agi ara
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Sunucu ekle
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Her zaman çalışan oyunlarına bakabilmek için bir sunucu ekle
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Sunucu başlat
@@ -1993,6 +1984,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Bu oyun 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Parola koy
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Erişimi kısıtlamak için oyuna parola koy
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Duyurulan
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Duyurulan (internet) ve duyurulmayan (yerel ağ, LAN) oyun türlerinden birini seçin
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Hayır
 STR_NETWORK_START_SERVER_ADVERTISED                             :Evet
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} istemci

@@ -1670,9 +1670,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineáris
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Játékbeli faelhelyezkedés: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Fák véletlenszerű megjelenésének szabályozása a játék során. Ez befolyásolhatja a gazdasági épületeket, melyek a fák növekedésétől függnek, mint a favágók
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :sehol {RED}(favágók ellehetetlenítése)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :csak esőerdőkben
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :mindenhol
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :A fő eszközsor helye: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :A fő eszközsor vízszintes elhelyezésének beállítása a képernyő tetején
@@ -1994,10 +1991,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Nyakkend
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hálózati játék
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Hírdetett
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Válassz hírdetett (internet) és nem hírdetett (helyi hálózat, LAN) játék közül.
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nem
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Igen
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Játékos neve:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}A többi játékos ilyen néven fog ismerni Téged.
 
@@ -2038,8 +2031,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Csatlako
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Szerver frissítése
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Szerver infó frissítése
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Szerver keresése
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Szerver keresése a hálózaton
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Szerver hozzáadása
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Hozzáadja a szervert a listához, így később gyorsabban tudsz hozzá csatlakozni
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Szerver indítása
@@ -2056,6 +2047,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}A játé
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Jelszó beállítása
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Védd le a játékodat jelszóval, ha nem akarod hogy illetéktelenek csatlakozzanak
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Hírdetett
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Válassz hírdetett (internet) és nem hírdetett (helyi hálózat, LAN) játék közül.
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nem
 STR_NETWORK_START_SERVER_ADVERTISED                             :Igen
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kliens

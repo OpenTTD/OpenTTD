@@ -1613,9 +1613,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineal
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Disposició de nous arbres durant la partida: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla l'aparició aleatòria dels arbres durant una partida. Això podria afectar a les indústries que es basen en el creixement dels arbres, per exemple les serradores
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Cap {RED}(inhabilita la serradora)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Només a les selves tropicals
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :A tot arreu
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posició de la barra d'eines principal: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posició horitzontal de la barra principal a la part superior de la pantalla
@@ -1939,10 +1936,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Canvia l
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijugador
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Anunciat
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Escull entre una partida anunciada (internet) i una partida no anunciada (xarxa d'àrea local, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :No
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sí
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nom del jugador:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Aquest és el nom amb el que els altres jugadors t'identificaran
 
@@ -1983,8 +1976,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Connecta
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualitza servidor
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualitza la informació del servidor
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Busca servidor
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cercant un servidor a la xarxa
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Afegeix un servidor
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Afegeix un servidor a la llista que sempre es comprovarà per buscar partides en marxa
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Inicia el servidor
@@ -2001,6 +1992,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}El nom d
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Posa una contrasenya
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegeix la teva partida amb una contrasenya si no vols que sigui accessible a desconeguts
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Anunciat
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Escull entre una partida anunciada (internet) i una partida no anunciada (xarxa d'àrea local, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :No
 STR_NETWORK_START_SERVER_ADVERTISED                             :Sí
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}

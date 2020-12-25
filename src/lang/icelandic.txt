@@ -1487,9 +1487,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Leyft, sérsni�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Staðsetning trjáa í leik: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Stjórnar hvernig tré birtast meðan á leiknum stendur. Þessi stilling getur haft áhrif á iðnað sem byggir á trjám, til dæmis timburverksmiðjur
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Engin {RED}(skemmir timburverksmiðjur)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :aðeins í regnskógum
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :allstaðar
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Staðsetning tækjasláar: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Lárétt staða aðal tækjasláar efst á skjánum
@@ -1778,8 +1775,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Tengjast
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Endurnýja þjón
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Endurnýja upplýsingar um þjón
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Finna þjón
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Leita að þjónum á neti
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Bæta við þjóni
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Bætir þjóni við listann, hann mun alltaf vera athugaður þegar leitað er eftir leikjum í gangi
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Hefja þjón

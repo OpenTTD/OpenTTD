@@ -1907,9 +1907,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :лінейна�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Расстаноўка дрэваў у гульні: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Кантроль адвольнага з'яўленьня дрэваў падчас гульні. Гэта можа закрануць прадпрыемствы, якія залежаць ад росту дрэваў, напрыклад, пільні.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :адключана {RED}(пільні ня змогуць працаваць)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :толькі ў трапічных джунґлях
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :усюды
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Разьмяшчэньне галоўнай панэлі: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Гарызантальнае разьмяшчэньне галоўнай панэлі інструмэнтаў зьверху экрана.
@@ -2231,10 +2228,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Зьмя
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сеткавая гульня
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Інтэрнэт
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Выберыце паміж гульнёй праз Інтэрнэт або ў лакальнай сетцы
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Не
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Так
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Імя гульца:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Гэта ваша імя, якое будзе бачна іншым гульцам
 
@@ -2275,8 +2268,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Далу
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Абнавіць сэрвэр
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Абнавіць iнфармацыю аб сэрвэры
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Знайсьці сэрвэр
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Знайсьці сэрвэры, якія зараз ёсьць у сетцы
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Дадаць сэрвэр
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Дадаць сэрвэр у сьпіс, які будзе аўтаматычна правярацца на ідучыя гульні
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Запуск сэрвэра
@@ -2293,6 +2284,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Усталяваць пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Абараніце вашу гульню паролем, калі ня хочаце рабіць яе публічна даступнай
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Інтэрнэт
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Выберыце паміж гульнёй праз Інтэрнэт або ў лакальнай сетцы
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Не
 STR_NETWORK_START_SERVER_ADVERTISED                             :Так
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клiент{P "" ы аў}

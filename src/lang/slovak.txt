@@ -1680,9 +1680,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineárne
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Umiestnenie stromov počas hry: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Riadi náhodný výskyt stromov počas hry. Toto môže ovplyvniť priemysel úzko spojený s rastom stromov ako napríklad Píla.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :žiadne {RED}(znefunkční pílu)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Len v dažďových pralesoch
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :všade
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozícia hlavného menu: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontálna poloha hlavného ovládacieho panela na vrchu obrazovky
@@ -2006,10 +2003,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmeniť 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hra pre viac hráčov
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Zverejnené
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vyberte medzi zverejnenou (internet) alebo nezverejnenou (lokálna sieť, LAN) hrou
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nie
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Áno
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Meno hráča:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Toto je meno podla ktoreho vas ostatny identifikuju
 
@@ -2050,8 +2043,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pripojit
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Obnoviť server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Obnovit info o serveri
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Nájsť server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Hladať server po sieti
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pridať server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pridá server do zoznamu, v ktorom sa vždy budú hľadať prebiehajúce hry
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustiť server
@@ -2068,6 +2059,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Názov h
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastaviť heslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zabezpeč hru heslom, ak nechceš povoliť verejný prístup
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Zverejnené
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vyberte medzi zverejnenou (internet) alebo nezverejnenou (lokálna sieť, LAN) hrou
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nie
 STR_NETWORK_START_SERVER_ADVERTISED                             :Áno
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i ov}

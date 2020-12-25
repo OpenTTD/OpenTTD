@@ -1764,9 +1764,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :линейна�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Размножение деревьев в игре: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Настройка возможности самостоятельного размножения деревьев в игре. Это может влиять на работоспособность некоторых предприятий, например, лесопилок.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :отключена {RED}(лесопилки не смогут работать)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :только в тропических лесах
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :везде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Положение главной панели инструментов: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Горизонтальное расположение основной панели инструментов в верхней части экрана
@@ -2090,10 +2087,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Изме
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сетевая игра
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Интернет
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Выберите между игрой через Интернет, либо в локальной сети
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Нет
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Да
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Имя игрока:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Это имя, которое будет видно другим игрокам
 
@@ -2134,8 +2127,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Прис
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Обновить сервер
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Обновить информацию о сервере
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Обновить
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Обновить список серверов, которые сейчас есть в сети
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Добавить сервер
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Добавить сервер в список, который будет автоматически проверяться на идущие игры
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Запуск сервера
@@ -2152,6 +2143,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Установить пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитите вашу игру паролем, если не хотите, чтобы к ней могли подключиться посторонние.
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Интернет
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Выберите между игрой через Интернет, либо в локальной сети
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Нет
 STR_NETWORK_START_SERVER_ADVERTISED                             :Да
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" а ов}

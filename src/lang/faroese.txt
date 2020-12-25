@@ -1697,8 +1697,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Broyt sl
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hópspæl
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nei
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spælara navn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Hetta er navni aðrir spælarir fara at kenna teg vi
 
@@ -1739,8 +1737,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Tak lut 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Endurnýggja servara
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Endurnýggja kunning um servara
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Finn servara
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Leita eftir servara á netverki
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Legg servara aftrat
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Leggur ein servara til listan sum altíð verður kannaður fyri koyrandi spøl
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Set servara í gongd

@@ -1555,9 +1555,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :允許，可自
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :遊戲中產生樹木的地點：{STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制遊戲內是否隨意種植樹木。此選項可能會影響一些依賴樹木的工業 (例如熱帶氣候的伐木場)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :不產生 {RED}(伐木場會停止運作)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :只在雨林區產生
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :到處產生
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :主工具列位置：{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :設定主工具列在螢幕頂部的位置
@@ -1878,10 +1875,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}改變�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}多人遊戲
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}已啟用宣傳
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}選擇是否在互聯網上宣傳此遊戲
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :否
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :是
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名稱：
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}這是其他玩家辨認您的名稱
 
@@ -1922,8 +1915,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}加入�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}更新伺服器
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}更新伺服器資訊
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}尋找伺服器
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}尋找網路上的伺服器
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}新增伺服器
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}在清單新增會檢查遊戲進行的伺服器
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}起動伺服器
@@ -1940,6 +1931,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}遊戲�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}設定密碼
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果您不想讓大眾連線的話，可以用密碼保護遊戲
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}已啟用宣傳
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}選擇是否在互聯網上宣傳此遊戲
 STR_NETWORK_START_SERVER_UNADVERTISED                           :否
 STR_NETWORK_START_SERVER_ADVERTISED                             :是
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 玩家

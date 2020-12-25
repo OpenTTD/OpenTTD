@@ -1621,9 +1621,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :선형
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :게임 진행 중에 나무가 자동적으로 번식: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :게임 중에 나무가 자동적으로 번식하는지 여부를 조절합니다. 이 설정을 조정하면, 아열대 기후의 벌목소처럼 나무의 성장에 의존하는 산업시설에 영향을 끼칠 수 있습니다.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :자라지 않음 {RED}(제재소에 의해 벌목될 수 있음)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :열대 우림 지역에서만
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :어디서나
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :주메뉴의 위치: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :주 메뉴가 화면 상단의 어느 위치에 표시될지를 선택합니다.
@@ -1947,10 +1944,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}넥타�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}멀티 플레이
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}공개 여부
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}공개된 게임(인터넷)과 비공개된 게임(LAN) 중에서 선택하십시오.
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :아니요
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :예
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}플레이어 이름:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}다른 사람들에게 보여줄 당신의 이름입니다.
 
@@ -1991,8 +1984,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}게임 �
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}새로고침
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}서버 정보를 새로 고칩니다.
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}서버 검색
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}네트워크에 등록되어 있는 서버를 검색합니다.
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}서버 추가
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}서버를 목록에 수동으로 추가합니다.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}서버 열기
@@ -2009,6 +2000,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}멀티�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}비밀번호 설정
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}서버에 공개적으로 접근하는 것을 막고 싶을 때 비밀번호를 걸어 보호합니다.
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}공개 여부
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}공개된 게임(인터넷)과 비공개된 게임(LAN) 중에서 선택하십시오.
 STR_NETWORK_START_SERVER_UNADVERTISED                           :아니요
 STR_NETWORK_START_SERVER_ADVERTISED                             :예
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}명

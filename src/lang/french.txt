@@ -1613,9 +1613,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linéaire
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plantation d'arbres durant la partie{NBSP}: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Contrôle l'apparition aléatoire des arbres durant la partie. Cela peut affecter les industries qui dépendent de la croissance des arbres, par exemple les scieries
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nulle part {RED}(les scieries ne fonctionneront plus)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Seulement dans les forêts tropicales
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Partout
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position de la barre d'outils principale{NBSP}: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Position horizontale de la barre d'outils principale en haut de l'écran
@@ -1939,10 +1936,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Modifier
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijoueurs
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publiée
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Choisir entre une partie publiée (internet) et une partie non publiée (Réseau local, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Non
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Oui
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nom du joueur{NBSP}:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Ceci est le nom sous lequel vous serez connu des autres joueurs
 
@@ -1983,8 +1976,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Rejoindr
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualiser
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualiser les informations sur le serveur
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Trouver un serveur
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Chercher un serveur sur le réseau
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Ajouter un serveur
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Ajouter un serveur à la liste de ceux parmi lesquels des parties en cours seront toujours cherchées
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Démarrer le serveur
@@ -2001,6 +1992,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Les autr
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Choisir le mot de passe
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protégez votre partie avec un mot de passe si vous ne souhaitez pas que d'autres l'utilisent
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publiée
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Choisir entre une partie publiée (internet) et une partie non publiée (Réseau local, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Non
 STR_NETWORK_START_SERVER_ADVERTISED                             :Oui
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}

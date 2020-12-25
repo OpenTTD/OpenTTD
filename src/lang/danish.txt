@@ -1606,9 +1606,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineær
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Placering af træer i spillet: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontroller den tilfældige fremkomst af træer i løbet af spillet. Dette vil påvirke industrier der afhænger træers vækst, f.eks. savværker
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Ingen {RED}(ødelægger træfabrik)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Kun i regnskove
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Alle steder
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Placering af værktøjslinje: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horisontal placering af hovedværktøjlinjen i toppen af skærmen
@@ -1930,10 +1927,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ændre s
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Netværksspil
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Offentlig
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vælg mellem et offentligt (internet) og et ikke offentligt (lokalnetværk, LAN) spil
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nej
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spiller navn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dette er det navn, som andre spillere vil kende dig ved
 
@@ -1974,8 +1967,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Tilslut 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Genopfrisk server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Genopfrisk serverens info
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Find server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Søg netværket for en server
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Tilføj server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Tilføjer en server til listen, som altid vil blive tjekket for kørerende spil.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start server
@@ -1992,6 +1983,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Navnet v
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sæt kodeord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskyt dit spil med et kodeord hvis du ikke vil have fremmede med
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Offentlig
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vælg mellem et offentligt (internet) og et ikke offentligt (lokalnetværk, LAN) spil
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nej
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}

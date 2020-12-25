@@ -1558,9 +1558,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permis, aspect 
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Poziţionarea copacilor în joc: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlează apariția aleatoare a copacilor în joc. Este posibil ca această opțiune să afecteze industrii care depind de creșterea copacilor, cum ar fi fabricile de cherestea
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :niciunul {RED}(afectează producţia fabricii de cherestea)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :doar în pădurile tropicale
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :peste tot
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Poziţia barei principale de instrumente: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Poziţia orizontală a barei principale în partea de sus a ecranului
@@ -1868,10 +1865,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publicat
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Alege între un joc publicat (prin Internet) și unul privat (reț) game
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nu
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Da
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Numele jucătorului:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Acesta este numele prin care te vor identifica ceilalţi
 
@@ -1912,8 +1905,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Intră �
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualizează serverul
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualizează informaţiile despre server
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Caută server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Caută un server în reţea
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Adaugă un server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adaugă un server la lista care va fi verificată pentru jocuri active
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Porneşte serverul
@@ -1930,6 +1921,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Numele j
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Pune parolă
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protejează-ţi jocul cu o parolă dacă nu vrei să intre jucători neautorizaţi
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publicat
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Alege între un joc publicat (prin Internet) și unul privat (reț) game
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nu
 STR_NETWORK_START_SERVER_ADVERTISED                             :Da
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} clien{P t ţi}

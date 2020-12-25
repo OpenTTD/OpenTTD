@@ -1316,9 +1316,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :مسموح
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :مسموح - نمط مدينة قابل للتعديل
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :اضافة الاشجار اثناء اللعب: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :بدون {RED}-المشغولات الخشبية معطل-
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :الغابات الماطرة فقط
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :كل مكان
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :موقع شريط الأدوات الرئيسي: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :موقع شريط المعلومات: {STRING}
@@ -1594,8 +1591,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}أنضم
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}حدث الخادم
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}حدث معلومات الخادم
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}إبحث عن خوادم
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}أبحث في الشبكة عن خادم
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}اضف خادم - سيرفر
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}اضف خادم (سيرفر) و الذي سوف يفحص اذا كان هناك لعبة قيد التشغيل حاليا
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}أبدأ الخادم

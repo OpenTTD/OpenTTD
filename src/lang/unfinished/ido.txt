@@ -555,7 +555,6 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Violkolora
 
 
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :omnube
 
 
 

@@ -1768,9 +1768,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Leista, pasirin
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Savaiminis medžių atsiradimas: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Savaiminio medžių išdygimo nuostatos. Atkreipkite dėmesį, kad šios nuostatos gali paveikti kai kurių pramonės įmonių, pvz., lentpjūvių, darbą
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :nėra {RED}(trukdo lentpjūvėms)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :tik tropiniuose miškuose
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Visur
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pagrindinės įrankių juostos pozicija: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Pagrindinės įrankių lentelės horizontali padėtis ekrano viršuje
@@ -2104,10 +2101,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Pakeisti
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Žaidimas tinkle
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Reklamuoti
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Pasirinkite tarp reklamuojamo (internetas) ir nereklamuojamo (Vietinis Tinklas, LAN) žaidimo
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Taip
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Žaidėjo vardas:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Tai vardas, pagal kurį kiti žaidėjai jus atpažins
 
@@ -2148,8 +2141,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Jungtis
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atnaujinti serverį
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atnaujinti serverio informaciją
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Rasti serveri
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Ieškoti serverio
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pridėti serverį
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Prideda serverį į sąrašą, kuris tikrinamas ieškant žaidimų
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Sukurti serverį
@@ -2166,6 +2157,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Žaidimo
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nustatyti slaptažodi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Apsaugokite savo žaidimą slaptažodžiu, jei nenorite, kad jis būtų viešai prieinamas
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Reklamuoti
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Pasirinkite tarp reklamuojamo (internetas) ir nereklamuojamo (Vietinis Tinklas, LAN) žaidimo
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
 STR_NETWORK_START_SERVER_ADVERTISED                             :Taip
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P as ai ų}

@@ -1763,9 +1763,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Ceadaichte, co-
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Cur nan craobh sa gheama: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Cùm smachd air na craobhan a nochdas sa gheama air thuaiream. Dh'fhaoidte gun toir seo buaidh air gnìomhachasan a tha an eisimeil fàs nan craobhan a leithid muileannan-fiodha
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Chan eil gin {RED}(brisidh seo muileannan-fiodha)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Ann an coilltean-uisge a-mhàin
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Àite sam bith
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Ionad a' phrìomh bhàir-inneal: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ionad còmhnard a' phrìomh bhàir-inneal air barr na sgrìn
@@ -2087,10 +2084,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Atharrai
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ioma-chluicheadair
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Sanasaichte
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Dèan taghadh eadar geama sanasaichte (eadar-lìon) no gun sanasachadh (lìonra ionadail, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Gun sanasachadh
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sanasaichte
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ainm cluicheadair:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Seo an t-ainm leis an aithnich cluicheadairean eile thu
 
@@ -2131,8 +2124,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Gabh sa 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Ath-nuadhaich am frithealaiche
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ath-nuadhaich fiosrachadh an fhrithealaiche
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Lorg frithealaiche
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Lorg san lìonraidh airson frithealaiche
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Cuir frithealaiche ris
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Cuiridh seo frithealaiche ris an liosta gus an tèid sùil a thoirt air airson geamannan nan ruith
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Tòisich frithealaiche
@@ -2149,6 +2140,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Thèid a
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Suidhich facal-faire
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Dìon an geama agad le facal-faire ach nach eil e ri fhaighinn gu poblach
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Sanasaichte
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Dèan taghadh eadar geama sanasaichte (eadar-lìon) no gun sanasachadh (lìonra ionadail, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Chan eil
 STR_NETWORK_START_SERVER_ADVERTISED                             :Tha
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} {P chliant chliant cliantan cliant}

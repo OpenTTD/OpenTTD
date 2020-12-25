@@ -1606,9 +1606,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineair
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plaatsing van bomen in het spel: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Beheert het willekeurig verschijnen van bomen tijdens het spel. Dit kan gevolgen hebben voor industrietakken die afhankelijk zijn van groei van bomen, bijvoorbeeld houtzagerijen.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Geen {RED}(houtzagerijen werken niet)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Alleen in regenwouden
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Overal
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Positie van algemene knoppenbalk: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontale positie van de algemene taakbalk aan de bovenkant van het scherm.
@@ -1930,10 +1927,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Netwerkspel
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Openbaar
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Kies tussen een openbaar (internet) en een niet-openbaar (Local Area Network, LAN) spel
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nee
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelersnaam:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dit is de naam waarmee andere spelers je herkennen
 
@@ -1974,8 +1967,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Meespele
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Ververs server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ververs de informatie over deze server
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Server zoeken
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Zoek op het netwerk naar een server
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Voeg server toe
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voegt een server toe aan de lijst die altijd gecontroleerd zal worden op draaiende spellen
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start server
@@ -1992,6 +1983,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De speln
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Wachtwoord instellen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beveilig je spel met een wachtwoord als je niet wilt dat dit algemeen toegankelijk is
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Openbaar
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Kies tussen een openbaar (internet) en een niet-openbaar (Local Area Network, LAN) spel
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nee
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} speler{P "" s}

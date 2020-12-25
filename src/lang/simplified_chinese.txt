@@ -1606,9 +1606,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :线性
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :树木自动生长： {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制游戏中数目的随机生长，这将影响依赖树木的工业，比如木材厂
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :无 {RED}(损坏伐木场)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :仅在雨林中
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :任意地点
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :主工具栏位置：{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :主工具栏在屏幕上方的位置
@@ -1930,10 +1927,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}选择�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}联机游戏
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}发布到互联网
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}选择是否将游戏发布到官方服务器列表。发布的话，可以让互联网上的玩家找到你的服务器并加入游戏，否则进行局域网内的游戏。
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :否
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :是
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名称：
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}其他玩家将通过该名字来认识您
 
@@ -1974,8 +1967,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}加入�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}刷新服务器
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}刷新服务器信息
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}搜索服务器
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}在网络上搜索服务器
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}添加服务器
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}添加一个永远显示在列表中的服务器
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}启动服务器
@@ -1992,6 +1983,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}游戏�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}设置密码：
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果不希望你的游戏被外人加入，请设置一个密码
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}发布到互联网
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}选择是否将游戏发布到官方服务器列表。发布的话，可以让互联网上的玩家找到你的服务器并加入游戏，否则进行局域网内的游戏。
 STR_NETWORK_START_SERVER_UNADVERTISED                           :否
 STR_NETWORK_START_SERVER_ADVERTISED                             :是
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 客户端

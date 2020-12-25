@@ -1548,9 +1548,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Разреше�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Разпределяне на дърветата в гората: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Контролирайте случайното появяване на дървета по време на игра. Това може да засегне промишленостите, които зависят от растежа на дървета, като например дърводелниците
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Без {RED}(разваля дъскорезницата)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Само в дъждовни гори
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Навсякъде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиция на лентата за инструменти: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Хоризонтално позициониране на основната лента в горната част на екрана
@@ -1842,10 +1839,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cмен�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Онлайн играчи
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Рекламирана
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Избери игра измежду рекламирана през интернет или нерекламирана през Локален интернет хост или ЛАН
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Не
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Да
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Име на играч:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Чрез това име другите играчи ще ви идентифицират
 
@@ -1886,8 +1879,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Прис
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Обновяване сървъра
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Обновява информацията за съръра
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Търсене на сървър
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Претърсване на мрежата за сървър
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Добави сървър
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Добяви сървър към списакът, който винаги ще бъде проверяван за активни игри.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Пускане на сървър
@@ -1904,6 +1895,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Имет
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Поставяне на парола
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитаване на вашата игра с парола за да не е публично достъпна
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Рекламирана
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Избери игра измежду рекламирана през интернет или нерекламирана през Локален интернет хост или ЛАН
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Не
 STR_NETWORK_START_SERVER_ADVERTISED                             :Да
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" s}

@@ -1592,9 +1592,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Platzierung von Bäumen während des Spiels: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Lege das Ausmaß des zufälligen Baumwachstums während des Spiels fest. Dies kann Industrien wie die Sägemühle beeinflussen, welche auf nachwachsende Bäume angewiesen sind
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nirgends {RED}(macht Sägemühle nutzlos)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Nur im Regenwald
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :überall
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position der Werkzeugleiste: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontale Position der Bauleiste am oberen Bildschirmrand
@@ -1916,10 +1913,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatte
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mehrspieler
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Angekündigt
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Zwischen öffentlich angekündigtem (Internet) und nicht angekündigtem (Local Area Network, LAN) Spiel wählen
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nein
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spielername:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dieser Name dient zur Identifizierung anderen Spielern gegenüber
 
@@ -1960,8 +1953,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Spiel be
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Aktualisieren
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Aktualisiert die Serverinformationen
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Server suchen
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Netzwerk nach einem Server durchsuchen
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Server hinzufügen
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Fügt einen Server zu der Liste von Servern hinzu, die immer nach laufenden Spielen kontrolliert werden
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Server starten
@@ -1978,6 +1969,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Der Name
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Passwort setzen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ein Passwort verhindert, dass unbefugte Leute beitreten
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Angekündigt
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Zwischen öffentlich angekündigtem (Internet) und nicht angekündigtem (Local Area Network, LAN) Spiel wählen
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nein
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Teilnehmer

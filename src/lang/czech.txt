@@ -1693,9 +1693,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineární
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Umístění stromů ve hře: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Náhodné umisťování stromů během hry. Může ovlivnit průmysl závisející na růstu stromů, například pily.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Žádné {RED}(nefunguje pila)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Jen v deštných pralesech
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Všude
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Umístění hlavní lišty: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontální pozice hlavního panelu v horní části obrazovky
@@ -2017,10 +2014,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Změnit 
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Vypsané
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vyber mezi propagovanou (internet) a nepropagovanou (Místní síť, LAN) hrou
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ano
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Jméno hráče:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Podle tohoto jména tě ostatní hráči poznají
 
@@ -2061,8 +2054,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Přidat 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Obnovit info
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Znovu načte informace o serveru
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Najít server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Hledat server v síti
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Přidat server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Přidá server do seznamu, ve kterém se budou hledat běžící hry
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustit server
@@ -2079,6 +2070,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Jméno h
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastavit heslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Svoji hru si můžeš ochránit heslem, když nechceš, aby se ti do ni hlásili jiní lidé
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Vypsané
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vyber mezi propagovanou (internet) a nepropagovanou (Místní síť, LAN) hrou
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ano
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i ů}

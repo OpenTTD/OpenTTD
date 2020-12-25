@@ -1446,9 +1446,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :நேரிய
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :ஆட்டத்தின் போது மரங்களை நடுதல்: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :விளையாட்டின் போது மரங்களின் சீரற்ற தோற்றத்தைக் கட்டுப்படுத்தவும். இது மர வளர்ச்சியை நம்பியுள்ள தொழில்களை பாதிக்கலாம், எடுத்துக்காட்டாக மரம் வெட்டுதல் ஆலைகள்
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ஒன்றுமில்லை {RED}(மர மில்லை உடைக்கும்)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :மழைக் காடுகளில் மட்டும்
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :எங்கும்
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :முக்கிய toolbarஇன் அமைப்பு இடம்: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :status barஇன் அமைப்பு இடம்: {STRING}
@@ -1720,9 +1717,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Tie அ�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}பல்வீரர்
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}விளம்பரப்படுத்தப்பட்ட
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :இல்லை
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :ஆம்
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}விளையாடுபவரின் பெயர்:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}இந்தப் பெயரில் பிறர் உன்னை அறிவர்
 
@@ -1762,8 +1756,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}ஆட�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}சர்வரினை புதுப்பிக்கவும்
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}சர்வரின் விவரத்தினை புதுப்பிக்கவும்
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}சர்வரினைத் தேடு
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}சர்வரினை இணையத்தில் தேடு
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}சர்வரினை இணை
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}சர்வரினை ஆரம்பி
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}தங்களின் சர்வரினை ஆரம்பிக்கவும்
@@ -1776,6 +1768,7 @@ STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}பு�
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}விளையாட்டு பெயர்:
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}கடவுச்சொல்லினை அமைக்கவும்
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}விளம்பரப்படுத்தப்பட்ட
 STR_NETWORK_START_SERVER_UNADVERTISED                           :இல்லை
 STR_NETWORK_START_SERVER_ADVERTISED                             :ஆம்
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} விளையாடுபவர்{P "" கள்}

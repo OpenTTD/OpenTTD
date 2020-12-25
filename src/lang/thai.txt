@@ -1514,9 +1514,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :ยอม, ร�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :การปลูกป่า: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :ควบคุมการสุ่มการเจริญเติบโตของต้นไม้ระหว่างเล่นเกม
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ไม่มี {RED}(ไม่มีโรงเลื่อยไม้)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :เฉพาะในป่าฝนเท่านั้น
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ทุกหนทุกแห่ง
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :ตำแหน่งแถบเครื่องมือหลัก: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :ตำแหน่งของปุ่มเครื่องมือต่างๆด้านบนของจอภาพ
@@ -1824,10 +1821,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}เป�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}เล่นหลายคน
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}การประกาศ
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}เลือกระหว่างการโฆษณา (internet) หรือไม่โฆษณา (Local Area Network, LAN) เกม
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :ไม่ใช่
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :ใช่
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}ชื่อผู้เล่น:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}เป็นชื่อที่ผู้เล่นคนอื่นจะมองเห็น
 
@@ -1868,8 +1861,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}เข�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}เรียกดูเซิร์ฟเวอร์ใหม่
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}เรียกดูข้อมูลเซิร์ฟเวอร์ใหม่
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}หาเซิร์ฟเวอร์
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}ค้นหาเซิร์ฟเวอร์ในเครือข่าย
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}เพิ่มเซิร์ฟเวอร์
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}เพิ่มเซิร์ฟเวอร์เข้าไปในรายการซึ่งจะถูกตรวจสอบเพื่อเข้าเล่นเกม
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}เริ่มเซิร์ฟเวอร์ใหม่
@@ -1886,6 +1877,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}ชื�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}กำหนดรหัสผ่าน
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ป้องกันเกมด้วยรหัสผ่านหากไม่ต้องการให้มีการเข้าร่วมจากบุคคลทั่วไป
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}การประกาศ
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}เลือกระหว่างการโฆษณา (internet) หรือไม่โฆษณา (Local Area Network, LAN) เกม
 STR_NETWORK_START_SERVER_UNADVERTISED                           :ไม่ใช่
 STR_NETWORK_START_SERVER_ADVERTISED                             :ใช่
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} ลูกข่าย

@@ -1267,9 +1267,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :اجازت ہے
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :اپنی مرضی کے شہر کے پھیلاو کی اجازت ہے
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :کھیل میں درخت لگانے کی اجازت: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :کوئی نہیں {RED}(لکڑ مل ٹوٹ گئی)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :صرف بارش کے جنگلوں میں
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ہر جگہ
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :بنیادی ٹول بار کی جگہ: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :حالات کی پٹی: {STRING}
@@ -1526,8 +1523,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}کھیل
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}سرور کو تازہ کریں
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}سرور کی معلومات کو تازہ کریں
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}سرور ڈھونڈیں
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}سرور کے لئے نیٹ ورک تلاش کریں
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}سرور شامل کریں
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}سرور کو اس فہرست میں شامل کریں جو ہمیشہ کھیل شروع کرنے کے لئے پرکھی جاتی ہے
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}سرور شروع کریں

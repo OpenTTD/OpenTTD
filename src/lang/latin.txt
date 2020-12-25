@@ -1770,9 +1770,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linearis
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Positio arborum in ludo: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Quomodo arbores apparent intra ludum. Forsitan industriae afficiuntur quibus necesse sunt arbores, e.g. castra lignatorum
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nulla {RED}(rumpit castra lignatorum)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Modo in silvis plivualibus
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Ubique
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Locus primariae arcae instrumentorum: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Locus horizontalis arcae instrumentorum primariae apud apicem fenestrae
@@ -2094,10 +2091,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mutare f
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Modus Plurium Lusorum
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Ostensum
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Eligere servatrum ostensum (interretis) aut non ostensum (LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Non
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ita
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nomen lusoris:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Hoc est nomen tuum aliis lusoribus visibile
 
@@ -2138,8 +2131,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Ludum iu
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Servatrum instaurare
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Iterum arcessere indicia servatri
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Servatrum quaerere
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Quarere servatrum in rete
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Addere servatrum
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Addit servatrum indici quod semper inspicetur si ludus activus insit
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Servatrum incohare
@@ -2156,6 +2147,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Hoc ludi
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Elige tesseram
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Custodire tessera ludum tuum, si non vis publicos iungere
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Ostensum
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Eligere servatrum ostensum (interretis) aut non ostensum (LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Non
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ita
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} clien{P s tes}

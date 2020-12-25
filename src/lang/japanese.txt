@@ -1553,9 +1553,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :有効(道路�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :樹木の自然成長: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :ゲーム中、ランダムに生えてくる樹種を設定します。設定によっては樹木の生育に依存する産業に悪影響が生じる可能性があります(「不可」にした場合、亜熱帯地域の伐採所を機能させ続けるためには手動で植林し続ける必要があります)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :不能 {RED}(亜熱帯地域の伐採所に影響)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :熱帯雨林地帯のみ
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :全地域
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :メインツールバーの位置: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :画面上のメインツールバーの位置を決めます
@@ -1875,10 +1872,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ネク�
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}マルチプレイヤーゲーム
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}ゲーム公示
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}ゲームを公示(インターネット)するか、非公示(LAN)にするかを選びます
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :非公示
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :公示
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}プレイヤー名:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}他のプレーヤーがあなたを特定するために使う名前です
 
@@ -1919,8 +1912,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}ゲー�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}サーバーを更新
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}サーバー情報を更新します
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}サーバーを検索
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}ネットワーク上のサーバーを検索します
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}サーバーを追加
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}検索時、常に稼働確認するサーバーのリストに追加します
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}サーバーを開始
@@ -1937,6 +1928,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}ゲー�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}パスワードを設定
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ゲームをパスワードで保護することができます。一般から公然とアクセスされたくない場合等に設定します
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}ゲーム公示
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}ゲームを公示(インターネット)するか、非公示(LAN)にするかを選びます
 STR_NETWORK_START_SERVER_UNADVERTISED                           :非公示
 STR_NETWORK_START_SERVER_ADVERTISED                             :公示
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}接続者数: {NUM}

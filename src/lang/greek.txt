@@ -1692,9 +1692,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Γραμμικ�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Τοποθέτηση δέντρων εντός παιχνιδιού: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Έλεγχος της τυχαίας εμφάνισης δέντρων κατά τη διάρκεια του παιχνιδιού. Αυτό είναι πιθανό να επηρεάσει βιομηχανίες που εξαρτώνται από την ανάπτυξη των δέντρων, όπως για παράδειγμα οι υλοτομίες
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Κανένα {RED}(καταστρέφει το ξυλουργείο)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Μόνο σε τροπικά δάση
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Παντού
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Θέση κύριας εργαλειοθήκης: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Οριζόντια τοποθέτηση της κύριας γραμμής εργαλείων στο επάνω μέρος της οθόνης
@@ -2016,10 +2013,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλα
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παικτών
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Διαφημιζόμενο
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Επιλογή ανάμεσα σε ένα διαφημιζόμενο (διαδίκτυο) ή μη διαφημιζόμενο (Τοπικό Δίκτυο/LAN) παιχνίδι
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Όχι
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ναι
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Όνομα παίκτη:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Αυτό είναι το όνομα με το οποίο θα σας αναγνωρίζουν οι άλλοι παίκτες
 
@@ -2060,8 +2053,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Συμμ
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Ανανέωση διακομιστή
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ανανεώση πληροφοριών του διακομιστή
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Αναζήτηση διακομιστή
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Ψάξτε το δίκτυο για ένα διακομιστή
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Προσθήκη διακομιστή
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Προσθέτει ένα διακομιστή στη λίστα ο οποίος θα ελέγχεται κάθε φορά για ενεργά παιχνίδια.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Εκκίνηση διακομιστή
@@ -2078,6 +2069,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Το ό�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Θέση κωδικού
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Προστατέψτε το παιχνίδι με έναν κωδικό εάν δε θέλετε να είναι δημοσίως προσβάσιμο
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Διαφημιζόμενο
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Επιλογή ανάμεσα σε ένα διαφημιζόμενο (διαδίκτυο) ή μη διαφημιζόμενο (Τοπικό Δίκτυο/LAN) παιχνίδι
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Όχι
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ναι
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} συμπαίκτ{P ης ες}

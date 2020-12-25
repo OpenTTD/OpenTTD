@@ -1630,9 +1630,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineare
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Collocazione di alberi durante la partita: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlla la comparsa casuale di alberi durante una partita. Può influenzare le industrie che dipendono dalla crescita degli alberi, come le segherie
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nessuna {RED}(funzionamento errato segherie)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Solo nelle foreste pluviali
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Ovunque
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posizione barra degli strumenti principale: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posizione orizzontale della barra degli strumenti principale sul bordo superiore dello schermo
@@ -1954,10 +1951,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambia l
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multigiocatore
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Pubblico
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Sceglie fra partita pubblica (su Internet) o privata (su rete locale, LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :No
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Sì
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nome giocatore:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Questo è il nome con cui si verrà identificati dagli altri giocatori
 
@@ -1998,8 +1991,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Entra ne
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Aggiorna
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Aggiorna le informazioni sul server
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Trova server
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Cerca un server sulla rete
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Aggiungi server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Aggiunge un server alla lista di server in cui cercare sempre partite in corso
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Avvia server
@@ -2016,6 +2007,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Il nome 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Imposta password
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegge la partita con una password in modo che non sia accessibile pubblicamente
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Pubblico
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Sceglie fra partita pubblica (su Internet) o privata (su rete locale, LAN)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :No
 STR_NETWORK_START_SERVER_ADVERTISED                             :Sì
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client

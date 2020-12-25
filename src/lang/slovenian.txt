@@ -1708,9 +1708,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Dovoljeno, obli
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Sajenje dreves znotraj igre: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Nadziraj naključne vrste dreves med igro. To lahko vpliva na industrije, ki so odvisne od rasti dreves, na primer gozdarski obrat.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nikjer {RED}(onemogoči gozdarski obrat)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Samo v deževnih gozovih
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Povsod
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozicija glavne orodne vrstice: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Vodoravna pozicija glavne orodne vrstice na vrhu zaslona.
@@ -2031,10 +2028,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Spremeni
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Več igralcev
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Oglaševano
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Izberi med oglaševano (internet) in neoglaševano (Local Area Network, LAN) igro
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Ne
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Da
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ime igralca:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}To je ime, po katerem te prepoznajo drugi igralci
 
@@ -2075,8 +2068,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pridruž
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Osveži strežnik
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Osveži informacije strežnika
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Najdi strežnik
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Poišči strežnik na mreži
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj strežnik
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Doda strežnik na seznam, ki bo vedno preverjen za pognane igre
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Poženi strežnik
@@ -2093,6 +2084,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Ime bo p
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastavi geslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zaščiti igro z geslom, če želiš preprečiti dostop nepovabljenim
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Oglaševano
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Izberi med oglaševano (internet) in neoglaševano (Local Area Network, LAN) igro
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
 STR_NETWORK_START_SERVER_ADVERTISED                             :Da
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} gost{P "" a i ov}

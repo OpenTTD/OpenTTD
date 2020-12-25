@@ -1489,9 +1489,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillete
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillete, eigendefinert oppsett av by
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plassering av tre i spelet: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ingen {RED}(øydelegg sagbruk)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskogen
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :over alt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Plassering av hovudverktøylinje: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Plassering av verktøylinja øvst på skjermen
@@ -1799,10 +1796,6 @@ STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Byt slip
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Fleirspelar
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Kunngjort
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vel mellom spel på internett (kunngjort) og spel på lokalt nett (ikkje kunngjort)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nei
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelarnamn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dette er namnet andre spelarar vil identifisere deg med
 
@@ -1843,8 +1836,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Bli med 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Oppdater tenar
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Oppdater tenarinformasjon
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Finn tenar
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Søk på nettverket etter ein tenar
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Legg til tenar
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Legg til ein tenar i lista over tenarar som alltid vil verte sjekka for aktive spel.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start tenar
@@ -1861,6 +1852,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spelnamn
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set passord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskytt spelet ditt med passord så ikkje kven som helst kan verte med på det
 
+STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Kunngjort
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Vel mellom spel på internett (kunngjort) og spel på lokalt nett (ikkje kunngjort)
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nei
 STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
