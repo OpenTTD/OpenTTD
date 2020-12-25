@@ -127,7 +127,7 @@ struct AIListWindow : public Window {
 					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_ORANGE);
 					y += this->line_height;
 				}
-				int i = 1;
+				int i = 0;
 				for (const auto &item : *this->info_list) {
 					i++;
 					if (this->vscroll->IsVisible(i)) {
@@ -139,7 +139,7 @@ struct AIListWindow : public Window {
 			}
 			case WID_AIL_INFO_BG: {
 				AIInfo *selected_info = nullptr;
-				int i = 1;
+				int i = 0;
 				for (const auto &item : *this->info_list) {
 					i++;
 					if (this->selected == i - 1) selected_info = static_cast<AIInfo *>(item.second);
