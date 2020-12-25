@@ -31,7 +31,10 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 			*e = '\0';
 			e++;
 			int versionParam = atoi(e);
-			if (this->version != versionParam) this->name = stredup(GetInfo()->GetName());
+			if (this->version != versionParam) {
+				free(this->name);
+				this->name = stredup(GetInfo()->GetName());
+			}
 		}
 	}
 	this->is_random = is_random;
