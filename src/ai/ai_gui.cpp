@@ -87,8 +87,8 @@ struct AIListWindow : public Window {
 		if (GetConfig(slot)->HasScript()) {
 			ScriptInfo *info = GetConfig(slot)->GetInfo();
 			int i = 0;
-			for (ScriptInfoList::const_iterator it = this->info_list->begin(); it != this->info_list->end(); it++, i++) {
-				if ((*it).second == info) {
+			for (const auto &item : *this->info_list) {
+				if (item.second == info) {
 					this->selected = i;
 					break;
 				}
@@ -127,10 +127,11 @@ struct AIListWindow : public Window {
 					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_LEFT, y + WD_MATRIX_TOP, this->slot == OWNER_DEITY ? STR_AI_CONFIG_NONE : STR_AI_CONFIG_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_ORANGE);
 					y += this->line_height;
 				}
-				ScriptInfoList::const_iterator it = this->info_list->begin();
-				for (int i = 1; it != this->info_list->end(); i++, it++) {
+				int i = 1;
+				for (const auto &item : *this->info_list) {
+					i++;
 					if (this->vscroll->IsVisible(i)) {
-						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, (*it).second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
+						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, item.second->GetName(), (this->selected == i - 1) ? TC_WHITE : TC_ORANGE);
 						y += this->line_height;
 					}
 				}
@@ -138,9 +139,10 @@ struct AIListWindow : public Window {
 			}
 			case WID_AIL_INFO_BG: {
 				AIInfo *selected_info = nullptr;
-				ScriptInfoList::const_iterator it = this->info_list->begin();
-				for (int i = 1; selected_info == nullptr && it != this->info_list->end(); i++, it++) {
-					if (this->selected == i - 1) selected_info = static_cast<AIInfo *>((*it).second);
+				int i = 1;
+				for (const auto &item : *this->info_list) {
+					i++;
+					if (this->selected == i - 1) selected_info = static_cast<AIInfo *>(item.second);
 				}
 				/* Some info about the currently selected AI. */
 				if (selected_info != nullptr) {
@@ -334,11 +336,10 @@ struct AISettingsWindow : public Window {
 	{
 		visible_settings.clear();
 
-		ScriptConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
-		for (; it != this->ai_config->GetConfigList()->end(); it++) {
-			bool no_hide = (it->flags & SCRIPTCONFIG_DEVELOPER) == 0;
+		for (const auto &item : *this->ai_config->GetConfigList()) {
+			bool no_hide = (item.flags & SCRIPTCONFIG_DEVELOPER) == 0;
 			if (no_hide || _settings_client.gui.ai_developer_tools) {
-				visible_settings.push_back(&(*it));
+				visible_settings.push_back(&item);
 			}
 		}
 
