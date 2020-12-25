@@ -101,16 +101,17 @@ static void Load_AIPL()
 				/* No version of the AI available that can load the data. Try to load the
 				 * latest version of the AI instead. */
 				config->Change(script_name, -1, false, _ai_saveload_is_random);
+				if (versionParam == -1) versionParam = _ai_saveload_version;
 				if (!config->HasScript()) {
 					if (strcmp(script_name, "%_dummy") != 0) {
-						DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", script_name, _ai_saveload_version);
+						DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", script_name, versionParam);
 						DEBUG(script, 0, "A random other AI will be loaded in its place.");
 					} else {
 						DEBUG(script, 0, "The savegame had no AIs available at the time of saving.");
 						DEBUG(script, 0, "A random available AI will be loaded now.");
 					}
 				} else {
-					DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", script_name, _ai_saveload_version);
+					DEBUG(script, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", script_name, versionParam);
 					DEBUG(script, 0, "The latest version of that AI has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 				}
 				/* Make sure the AI doesn't get the saveload data, as he was not the
