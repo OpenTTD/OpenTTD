@@ -111,17 +111,17 @@ ScriptController::~ScriptController()
 	Squirrel *engine = ScriptObject::GetActiveInstance()->engine;
 	HSQUIRRELVM vm = engine->GetVM();
 
-	/* Internally we store libraries as 'library.version' */
-	char library_name[1024];
-	seprintf(library_name, lastof(library_name), "%s.%d", library, version);
-	strtolower(library_name);
-
 	ScriptInfo *lib = ScriptObject::GetActiveInstance()->FindLibrary(library, version);
 	if (lib == nullptr) {
 		char error[1024];
 		seprintf(error, lastof(error), "couldn't find library '%s' with version %d", library, version);
 		throw sq_throwerror(vm, error);
 	}
+
+	/* Internally we store libraries as 'library.version' */
+	char library_name[1024];
+	seprintf(library_name, lastof(library_name), "%s.%d", library, version);
+	strtolower(library_name);
 
 	/* Get the current table/class we belong to */
 	HSQOBJECT parent;
