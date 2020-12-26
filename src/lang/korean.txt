@@ -1243,7 +1243,7 @@ STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :선로의 어�
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :왼쪽에
 STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :진행 방향에
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :오른쪽에
-STR_CONFIG_SETTING_SHOWFINANCES                                 :연말에 자동으로 재정 창을 띄움: {STRING}
+STR_CONFIG_SETTING_SHOWFINANCES                                 :연말에 자동으로 재정 창을 띄우기: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :이 설정을 켜면. 회사의 재정 상태를 확인하기 쉽도록 매년 말에 재정 창이 자동으로 뜹니다.
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :새로 지정하는 경로는 기본적으로 '직행'으로 처리: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :일반적으로 차량은 경로 상에 있는 모든 역에 정차하게 되어있습니다. 이 설정을 켜면, 차량이 마지막 목적지까지 정차없이 모든 역을 통과할 것입니다. 이 설정은 새로 경로를 지정하는 차량에만 적용되는 점을 알아두십시오. 하지만 각 차량의 경로는 두 가지 방법 중에 원하는 대로 다시 설정할 수 있습니다.
@@ -1292,7 +1292,7 @@ STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :새 회사에�
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :이 설정을 켜면, 소형 공항을 포함한 모든 공항 종류를 도입 이후에 계속 사용할 수 있게 됩니다.
 
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :차량이 길을 잃으면 경고: {STRING}
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :차량이 길을 잃으면 경고하기: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :다음 목적지로 가기 위한 경로를 찾을 수 없는 차량이 있으면 뉴스 메시지로 알려줍니다.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :차량의 경로를 검사: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :이 설정을 켜면, 차량의 경로를 주기적으로 검사하여 문제가 발견되면 뉴스 메시지로 알려줍니다.
@@ -1316,7 +1316,7 @@ STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :오류 메시�
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA}초 동안
 STR_CONFIG_SETTING_HOVER_DELAY                                  :도움말 보이기: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :마우스를 올려놓았을 때 도움말이 뜨는데 걸리는 시간을 설정합니다. 마우스 오른쪽 클릭으로 바로 뜨도록 할 수도 있습니다.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :마우스를 {COMMA}밀리초 동안 올려놓기 (1밀리초 = 1/1000초)
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :마우스를 {COMMA}밀리초 동안 올려놓기
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :마우스 오른쪽 클릭
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :도시 이름 옆에 도시의 인구 수를 표시함: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :도시 이름 옆에 도시의 인구 수를 표시합니다.
@@ -1367,7 +1367,7 @@ STR_CONFIG_SETTING_STATION_SPREAD                               :역의 최대 �
 STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :역의 최대 크기를 설정합니다. 값이 높으면 게임이 느려질 수도 있습니다.
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :헬리콥터를 발착장에서 자동으로 점검: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :공항에 격납고가 없어도 헬리콥터가 공항에 착륙할 때마다 점검을 하도록 합니다.
-STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :철도/도로/항만/공항 건설창을 띄울 때 지형 편집창도 같이 띄움: {STRING}
+STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :철도/도로/항만/공항 건설창을 띄울 때 지형 편집창도 같이 띄우기: {STRING}
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR_HELPTEXT              :수송 시설과 관련된 건설 창을 열 때 지형 편집 창을 같이 엽니다.
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR                         :소형지도 창에 표시될 땅의 색상: {STRING}
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :소형지도 창에 사용할 지형의 색상을 선택합니다.
@@ -1417,7 +1417,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :창 내부를 �
 STR_CONFIG_SETTING_AUTOSAVE                                     :자동 저장: {STRING}
 STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :게임을 자동으로 저장할 간격을 선택하십시오.
 
-STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :저장 파일의 이름으로 {STRING} 날짜 형식을 사용합니다.
+STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :저장 파일 이름으로 {STRING} 날짜 형식을 사용
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :게임 저장 파일 이름에 사용할 날짜 형식을 선택합니다.
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :긴 (2012년 1월 1일)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧은 (2012.01.01)
@@ -1501,7 +1501,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :멀티 플레�
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :게임 스크립트가 중지되기 직전에 계산할 수 있는 최대 횟수: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :게임 스크립트가 한 단계에서 계산할 수 있는 최대 계산 횟수를 설정합니다.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :스크립트당 최대 메모리 사용량: {STRING}
-STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :강제로 종료되기 전에 단일 스크립트가 사용할 수 있는 메모리의 양입니다. 크기가 큰 맵에서는 값을 크게 설정해야할 수도 있습니다.
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :스크립트 하나가 강제 종료되기 전까지 사용할 수 있는 메모리의 양입니다. 크기가 큰 맵에서는 값을 크게 설정해야할 수도 있습니다.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :신뢰도에 따른 정비 설정: {STRING}
@@ -1572,7 +1572,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :부드러움
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :멈춤
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :다른 회사의 지분을 사는 것을 허용: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :이 설정을 켜면, 회사의 지분을 거래할 수 있게 됩니다. 회사의 지분을 거래하려면 해당 회사가 어느 정도 오래되어야 합니다.
-STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :지분 거래를 허용할 최소 회사 나이: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :지분 거래를 허용할 최소 회사 나이: {STRING}년
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :지분을 사고 팔기 위해 필요한 회사의 최소 나이를 설정합니다.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :환승시 벌어들이는 중간 수익의 비율: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :더 많은 수익을 내기 위해, 수송 관계상 중간 구간에게 주어진 수익의 비율을 설정합니다.
@@ -1583,7 +1583,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :드래그할 �
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :신호기를 CTRL+드래그 하여 설치할 때의 행동을 선택합니다. 이 설정을 끄면, 신호기가 없는 긴 폐색을 만들지 않기 위해 터널이나 다리 주변에 먼저 신호기가 설치될 것입니다. 이 설정을 켜면, 신호기는 터널/다리와 상관없이 매 n개의 칸마다 설치될 것입니다.
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :전자식 신호기의 사용: {STRING}년 이후에
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :전자식 신호기를 사용할 수 있는 연도를 설정합니다. 이 이전에는 구식 신호기만 사용 가능합니다. (두 신호기는 기능적으로는 동일하고 모습만 다릅니다.)
-STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :신호기 설치시 신호기 선택 창을 띄움: {STRING}
+STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :신호기 설치시 신호기 선택 창을 띄우기: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI_HELPTEXT                   :설치할 신호기 종류를 고를 수 있는 신호기 선택 창을 표시합니다. 이 설정을 끄면, 신호기 선택 창 없이 CTRL+클릭 만으로 신호기의 종류를 바꿔야 합니다.
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :기본적으로 만들 신호기 종류: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE_HELPTEXT                 :기본으로 설치할 신호기의 종류를 선택합니다.
@@ -1619,8 +1619,12 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :도시의 전�
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :제곱 (기본)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :선형
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :게임 진행 중에 나무가 자동적으로 번식: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :게임 중에 나무가 자동적으로 번식하는지 여부를 조절합니다. 이 설정을 조정하면, 아열대 기후의 벌목소처럼 나무의 성장에 의존하는 산업시설에 영향을 끼칠 수 있습니다.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :나무의 성장과 확장: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :게임 플레이 중 나무의 성장과 확장 여부를 조절합니다. 이 설정을 조정하면, 아열대 기후의 벌목소처럼 나무의 성장에 의존하는 산업시설에 영향을 끼칠 수 있습니다.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :성장은 하되 확장은 안 함 {RED}(제재소가 멈출 수 있음)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :성장은 하되 열대 우림에서만 확장함
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :어디서나 성장하고 확장함
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :성장과 확장 모두 안 함 {RED}(제재소가 멈출 수 있음)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :주메뉴의 위치: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :주 메뉴가 화면 상단의 어느 위치에 표시될지를 선택합니다.
@@ -1984,6 +1988,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}게임 �
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}새로고침
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}서버 정보를 새로 고칩니다.
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}인터넷 검색
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}인터넷에서 공개 서버를 검색합니다
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}LAN 검색
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}로컬 영역 네트워크에서 서버를 검색합니다
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}서버 추가
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}서버를 목록에 수동으로 추가합니다.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}서버 열기
