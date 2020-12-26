@@ -180,9 +180,6 @@ public:
 	 */
 	virtual bool IsActive() = 0;
 
-	/** Makes the *game region* of the window 100% opaque. */
-	virtual void SetPortAlphaOpaque() { return; };
-
 	/** Whether the window was successfully resized
 	 * @return whether the window was successfully resized
 	 */

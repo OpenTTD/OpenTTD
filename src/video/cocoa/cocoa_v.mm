@@ -370,8 +370,6 @@ public:
 
 	virtual bool IsActive() { return active; }
 
-
-	void SetPortAlphaOpaque();
 	bool WindowResized();
 };
 
@@ -771,19 +769,14 @@ bool WindowQuartzSubdriver::MouseIsInsideView(NSPoint *pt)
 	return [ cocoaview mouse:*pt inRect:[ this->cocoaview bounds ] ];
 }
 
-
-/* This function makes the *game region* of the window 100% opaque.
- * The genie effect uses the alpha component. Otherwise,
- * it doesn't seem to matter what value it has.
- */
-void WindowQuartzSubdriver::SetPortAlphaOpaque()
+/** Clear buffer to opaque black. */
+static void ClearWindowBuffer(uint32 *buffer, uint32 pitch, uint32 height)
 {
-	uint32 *pixels = (uint32*)this->window_buffer;
-	uint32  pitch  = this->window_width;
-
-	for (int y = 0; y < this->window_height; y++)
-		for (int x = 0; x < this->window_width; x++) {
-		pixels[y * pitch + x] |= 0xFF000000;
+	uint32 fill = Colour(0, 0, 0).data;
+	for (uint32 y = 0; y < height; y++) {
+		for (uint32 x = 0; x < pitch; x++) {
+			buffer[y * pitch + x] = fill;
+		}
 	}
 }
 
@@ -798,7 +791,9 @@ bool WindowQuartzSubdriver::WindowResized()
 
 	/* Create Core Graphics Context */
 	free(this->window_buffer);
-	this->window_buffer = (uint32*)malloc(this->window_width * this->window_height * 4);
+	this->window_buffer = malloc(this->window_width * this->window_height * sizeof(uint32));
+	/* Initialize with opaque black. */
+	ClearWindowBuffer((uint32 *)this->window_buffer, this->window_width, this->window_height);
 
 	CGContextRelease(this->cgcontext);
 	this->cgcontext = CGBitmapContextCreate(
