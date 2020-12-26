@@ -12,7 +12,9 @@
 #include "../../rev.h"
 #include "macos.h"
 #include "../../string_func.h"
+#include "../../fileio_func.h"
 #include <pthread.h>
+#include <array>
 
 #define Rect  OTTDRect
 #define Point OTTDPoint
@@ -38,6 +40,10 @@ typedef struct {
 } OTTDOperatingSystemVersion;
 
 #define NSOperatingSystemVersion OTTDOperatingSystemVersion
+#endif
+
+#ifdef WITH_COCOA
+static NSAutoreleasePool *_ottd_autorelease_pool;
 #endif
 
 /**
@@ -191,6 +197,45 @@ bool GetClipboardContents(char *buffer, const char *last)
 
 	return true;
 }
+
+/** Set the application's bundle directory.
+ *
+ * This is needed since OS X application bundles do not have a
+ * current directory and the data files are 'somewhere' in the bundle.
+ */
+void CocoaSetApplicationBundleDir()
+{
+	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
+
+	char tmp[MAXPATHLEN];
+	CFAutoRelease<CFURLRef> url(CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle()));
+	if (CFURLGetFileSystemRepresentation(url.get(), true, (unsigned char *)tmp, MAXPATHLEN)) {
+		_searchpaths[SP_APPLICATION_BUNDLE_DIR] = tmp;
+		AppendPathSeparator(_searchpaths[SP_APPLICATION_BUNDLE_DIR]);
+	} else {
+		_searchpaths[SP_APPLICATION_BUNDLE_DIR].clear();
+	}
+}
+
+/**
+ * Setup autorelease for the application pool.
+ *
+ * These are called from main() to prevent a _NSAutoreleaseNoPool error when
+ * exiting before the cocoa video driver has been loaded
+ */
+void CocoaSetupAutoreleasePool()
+{
+	_ottd_autorelease_pool = [ [ NSAutoreleasePool alloc ] init ];
+}
+
+/**
+ * Autorelease the application pool.
+ */
+void CocoaReleaseAutoreleasePool()
+{
+	[ _ottd_autorelease_pool release ];
+}
+
 #endif
 
 /**

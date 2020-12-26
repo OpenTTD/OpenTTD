@@ -12,6 +12,8 @@
 
 #include "../video_driver.hpp"
 
+extern bool _cocoa_video_started;
+
 class VideoDriver_Cocoa : public VideoDriver {
 public:
 	const char *Start(const StringList &param) override;
@@ -198,60 +200,5 @@ void QZ_GameSizeChanged();
 void QZ_GameLoop();
 
 uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
-
-/** Category of NSCursor to allow cursor showing/hiding */
-@interface NSCursor (OTTD_QuickdrawCursor)
-+ (NSCursor *) clearCocoaCursor;
-@end
-
-/** Subclass of NSWindow to cater our special needs */
-@interface OTTD_CocoaWindow : NSWindow {
-	CocoaSubdriver *driver;
-}
-
-- (void)setDriver:(CocoaSubdriver*)drv;
-
-- (void)miniaturize:(id)sender;
-- (void)display;
-- (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
-- (void)appDidHide:(NSNotification*)note;
-- (void)appWillUnhide:(NSNotification*)note;
-- (void)appDidUnhide:(NSNotification*)note;
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
-@end
-
-/** Subclass of NSView to fix Quartz rendering and mouse awareness */
-@interface OTTD_CocoaView : NSView <NSTextInputClient>
-{
-	CocoaSubdriver *driver;
-	NSTrackingRectTag trackingtag;
-}
-- (void)setDriver:(CocoaSubdriver*)drv;
-- (void)drawRect:(NSRect)rect;
-- (BOOL)isOpaque;
-- (BOOL)acceptsFirstResponder;
-- (BOOL)becomeFirstResponder;
-- (void)setTrackingRect;
-- (void)clearTrackingRect;
-- (void)resetCursorRects;
-- (void)viewWillMoveToWindow:(NSWindow *)win;
-- (void)viewDidMoveToWindow;
-- (void)mouseEntered:(NSEvent *)theEvent;
-- (void)mouseExited:(NSEvent *)theEvent;
-@end
-
-/** Delegate for our NSWindow to send ask for quit on close */
-@interface OTTD_CocoaWindowDelegate : NSObject <NSWindowDelegate>
-{
-	CocoaSubdriver *driver;
-}
-
-- (void)setDriver:(CocoaSubdriver*)drv;
-
-- (BOOL)windowShouldClose:(id)sender;
-- (void)windowDidEnterFullScreen:(NSNotification *)aNotification;
-- (void)windowDidChangeScreenProfile:(NSNotification *)aNotification;
-@end
-
 
 #endif /* VIDEO_COCOA_H */

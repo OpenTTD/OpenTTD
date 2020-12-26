@@ -235,8 +235,8 @@ void ShowOSErrorBox(const char *buf, bool system)
 #endif
 
 #ifdef WITH_COCOA
-void cocoaSetupAutoreleasePool();
-void cocoaReleaseAutoreleasePool();
+void CocoaSetupAutoreleasePool();
+void CocoaReleaseAutoreleasePool();
 #endif
 
 int CDECL main(int argc, char *argv[])
@@ -245,7 +245,7 @@ int CDECL main(int argc, char *argv[])
 	for (int i = 0; i < argc; i++) ValidateString(argv[i]);
 
 #ifdef WITH_COCOA
-	cocoaSetupAutoreleasePool();
+	CocoaSetupAutoreleasePool();
 	/* This is passed if we are launched by double-clicking */
 	if (argc >= 2 && strncmp(argv[1], "-psn", 4) == 0) {
 		argv[1] = nullptr;
@@ -261,7 +261,7 @@ int CDECL main(int argc, char *argv[])
 	int ret = openttd_main(argc, argv);
 
 #ifdef WITH_COCOA
-	cocoaReleaseAutoreleasePool();
+	CocoaReleaseAutoreleasePool();
 #endif
 
 	return ret;

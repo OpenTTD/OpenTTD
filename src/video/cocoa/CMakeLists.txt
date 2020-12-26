@@ -2,7 +2,8 @@ add_files(
     cocoa_keys.h
     cocoa_v.h
     cocoa_v.mm
+    cocoa_wnd.h
+    cocoa_wnd.mm
     event.mm
-    wnd_quartz.mm
     CONDITION APPLE
 )
