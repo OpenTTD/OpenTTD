@@ -92,6 +92,8 @@ struct AIListWindow : public Window {
 					this->selected = i;
 					break;
 				}
+
+				i++;
 			}
 		}
 	}
