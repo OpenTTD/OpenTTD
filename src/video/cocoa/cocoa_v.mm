@@ -163,23 +163,6 @@ void QZ_GameSizeChanged()
 }
 
 /**
- * Find a suitable cocoa window subdriver.
- *
- * @param width Width of display area.
- * @param height Height of display area.
- * @param bpp Colour depth of display area.
- * @return Pointer to window subdriver.
- */
-static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
-{
-#if defined(ENABLE_COCOA_QUARTZ)
-	return QZ_CreateWindowQuartzSubdriver(width, height, bpp);
-#else
-	return nullptr;
-#endif
-}
-
-/**
  * Find a suitable cocoa subdriver.
  *
  * @param width Width of display area.
@@ -191,7 +174,7 @@ static CocoaSubdriver *QZ_CreateWindowSubdriver(int width, int height, int bpp)
  */
 static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool fullscreen, bool fallback)
 {
-	CocoaSubdriver *ret = QZ_CreateWindowSubdriver(width, height, bpp);
+	CocoaSubdriver *ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
 	if (ret != nullptr && fullscreen) ret->ToggleFullscreen();
 
 	if (ret != nullptr) return ret;
@@ -199,7 +182,7 @@ static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool f
 
 	/* Try again in 640x480 windowed */
 	DEBUG(driver, 0, "Setting video mode failed, falling back to 640x480 windowed mode.");
-	ret = QZ_CreateWindowSubdriver(640, 480, bpp);
+	ret = QZ_CreateWindowQuartzSubdriver(640, 480, bpp);
 	if (ret != nullptr) return ret;
 
 	return nullptr;
@@ -228,7 +211,7 @@ void VideoDriver_Cocoa::Stop()
  */
 const char *VideoDriver_Cocoa::Start(const StringList &parm)
 {
-	if (!MacOSVersionIsAtLeast(10, 6, 0)) return "The Cocoa video driver requires Mac OS X 10.6 or later.";
+	if (!MacOSVersionIsAtLeast(10, 7, 0)) return "The Cocoa video driver requires Mac OS X 10.7 or later.";
 
 	if (_cocoa_video_started) return "Already started";
 	_cocoa_video_started = true;
@@ -239,6 +222,11 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 	int width  = _cur_resolution.width;
 	int height = _cur_resolution.height;
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+
+	if (bpp != 8 && bpp != 32) {
+		Stop();
+		return "The cocoa quartz subdriver only supports 8 and 32 bpp.";
+	}
 
 	_cocoa_subdriver = QZ_CreateSubdriver(width, height, bpp, _fullscreen, true);
 	if (_cocoa_subdriver == NULL) {
@@ -331,8 +319,6 @@ void VideoDriver_Cocoa::EditBoxLostFocus()
 	/* Clear any marked string from the current edit box. */
 	HandleTextInput(NULL, true);
 }
-
-#ifdef ENABLE_COCOA_QUARTZ
 
 class WindowQuartzSubdriver;
 
@@ -850,16 +836,6 @@ bool WindowQuartzSubdriver::WindowResized()
 
 CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 {
-	if (!MacOSVersionIsAtLeast(10, 7, 0)) {
-		DEBUG(driver, 0, "The cocoa quartz subdriver requires Mac OS X 10.7 or later.");
-		return NULL;
-	}
-
-	if (bpp != 8 && bpp != 32) {
-		DEBUG(driver, 0, "The cocoa quartz subdriver only supports 8 and 32 bpp.");
-		return NULL;
-	}
-
 	WindowQuartzSubdriver *ret = new WindowQuartzSubdriver();
 
 	if (!ret->ChangeResolution(width, height, bpp)) {
@@ -869,6 +845,5 @@ CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
 
 	return ret;
 }
-#endif /* ENABLE_COCOA_QUARTZ */
 
 #endif /* WITH_COCOA */
