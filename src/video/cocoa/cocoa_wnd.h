@@ -32,7 +32,6 @@ extern NSString *OTTDMainLaunchGameEngine;
 - (void)display;
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
 - (void)appDidHide:(NSNotification*)note;
-- (void)appWillUnhide:(NSNotification*)note;
 - (void)appDidUnhide:(NSNotification*)note;
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
 @end

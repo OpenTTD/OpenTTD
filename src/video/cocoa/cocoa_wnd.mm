@@ -291,9 +291,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
  */
 - (void)miniaturize:(id)sender
 {
-	/* make the alpha channel opaque so anim won't have holes in it */
-	driver->SetPortAlphaOpaque();
-
 	/* window is hidden now */
 	driver->active = false;
 
@@ -308,8 +305,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
  */
 - (void)display
 {
-	driver->SetPortAlphaOpaque();
-
 	/* save current visible surface */
 	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
 
@@ -342,13 +337,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	driver->active = false;
 }
 /**
- * Fade-in the application and restore display plane
- */
-- (void)appWillUnhide:(NSNotification*)note
-{
-	driver->SetPortAlphaOpaque ();
-}
-/**
  * Unhide and restore display plane and re-activate driver
  */
 - (void)appDidUnhide:(NSNotification*)note
@@ -366,9 +354,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	[ [ NSNotificationCenter defaultCenter ] addObserver:self
 		selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
-
-	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-		selector:@selector(appWillUnhide:) name:NSApplicationWillUnhideNotification object:NSApp ];
 
 	return [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ];
 }
