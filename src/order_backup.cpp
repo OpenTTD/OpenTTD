@@ -56,8 +56,7 @@ OrderBackup::OrderBackup(const Vehicle *v, uint32 user)
 		Order **tail = &this->orders;
 
 		/* Count the number of orders */
-		const Order *order;
-		FOR_VEHICLE_ORDERS(v, order) {
+		for (const Order *order : v->Orders()) {
 			Order *copy = new Order();
 			copy->AssignOrder(*order);
 			*tail = copy;

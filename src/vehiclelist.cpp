@@ -118,9 +118,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 		case VL_STATION_LIST:
 			for (const Vehicle *v : Vehicle::Iterate()) {
 				if (v->type == vli.vtype && v->IsPrimaryVehicle()) {
-					const Order *order;
-
-					FOR_VEHICLE_ORDERS(v, order) {
+					for (const Order *order : v->Orders()) {
 						if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT) || order->IsType(OT_IMPLICIT))
 								&& order->GetDestination() == vli.index) {
 							list->push_back(v);
@@ -165,9 +163,7 @@ bool GenerateVehicleSortList(VehicleList *list, const VehicleListIdentifier &vli
 		case VL_DEPOT_LIST:
 			for (const Vehicle *v : Vehicle::Iterate()) {
 				if (v->type == vli.vtype && v->IsPrimaryVehicle()) {
-					const Order *order;
-
-					FOR_VEHICLE_ORDERS(v, order) {
+					for (const Order *order : v->Orders()) {
 						if (order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == vli.index) {
 							list->push_back(v);
 							break;

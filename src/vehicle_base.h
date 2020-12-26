@@ -969,6 +969,55 @@ public:
 
 		return v;
 	}
+
+	/**
+	 * Iterator to iterate orders
+	 * Supports deletion of current order
+	 */
+	struct OrderIterator {
+		typedef Order value_type;
+		typedef Order* pointer;
+		typedef Order& reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
+
+		explicit OrderIterator(OrderList *list) : list(list), prev(nullptr)
+		{
+			this->order = (this->list == nullptr) ? nullptr : this->list->GetFirstOrder();
+		}
+
+		bool operator==(const OrderIterator &other) const { return this->order == other.order; }
+		bool operator!=(const OrderIterator &other) const { return !(*this == other); }
+		Order * operator*() const { return this->order; }
+		OrderIterator & operator++()
+		{
+			this->prev = (this->prev == nullptr) ? this->list->GetFirstOrder() : this->prev->next;
+			this->order = (this->prev == nullptr) ? nullptr : this->prev->next;
+			return *this;
+		}
+
+	private:
+		OrderList *list;
+		Order *order;
+		Order *prev;
+	};
+
+	/**
+	 * Iterable ensemble of orders
+	 */
+	struct IterateWrapper {
+		OrderList *list;
+		IterateWrapper(OrderList *list = nullptr) : list(list) {}
+		OrderIterator begin() { return OrderIterator(this->list); }
+		OrderIterator end() { return OrderIterator(nullptr); }
+		bool empty() { return this->begin() == this->end(); }
+	};
+
+	/**
+	 * Returns an iterable ensemble of orders of a vehicle
+	 * @return an iterable ensemble of orders of a vehicle
+	 */
+	IterateWrapper Orders() const { return IterateWrapper(this->orders.list); }
 };
 
 /**

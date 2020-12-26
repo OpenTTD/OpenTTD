@@ -2486,8 +2486,7 @@ bool HasStationInUse(StationID station, bool include_company, CompanyID company)
 {
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if ((v->owner == company) == include_company) {
-			const Order *order;
-			FOR_VEHICLE_ORDERS(v, order) {
+			for (const Order *order : v->Orders()) {
 				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station) {
 					return true;
 				}

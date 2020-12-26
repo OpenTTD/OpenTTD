@@ -969,8 +969,7 @@ void InsertOrder(Vehicle *v, Order *new_o, VehicleOrderID sel_ord)
 
 	/* As we insert an order, the order to skip to will be 'wrong'. */
 	VehicleOrderID cur_order_id = 0;
-	Order *order;
-	FOR_VEHICLE_ORDERS(v, order) {
+	for (Order *order : v->Orders()) {
 		if (order->IsType(OT_CONDITIONAL)) {
 			VehicleOrderID order_id = order->GetConditionSkipToOrder();
 			if (order_id >= sel_ord) {
@@ -1090,8 +1089,7 @@ void DeleteOrder(Vehicle *v, VehicleOrderID sel_ord)
 
 	/* As we delete an order, the order to skip to will be 'wrong'. */
 	VehicleOrderID cur_order_id = 0;
-	Order *order = nullptr;
-	FOR_VEHICLE_ORDERS(v, order) {
+	for (Order *order : v->Orders()) {
 		if (order->IsType(OT_CONDITIONAL)) {
 			VehicleOrderID order_id = order->GetConditionSkipToOrder();
 			if (order_id >= sel_ord) {
@@ -1225,8 +1223,7 @@ CommandCost CmdMoveOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		}
 
 		/* As we move an order, the order to skip to will be 'wrong'. */
-		Order *order;
-		FOR_VEHICLE_ORDERS(v, order) {
+		for (Order *order : v->Orders()) {
 			if (order->IsType(OT_CONDITIONAL)) {
 				VehicleOrderID order_id = order->GetConditionSkipToOrder();
 				if (order_id == moving_order) {
@@ -1560,9 +1557,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			/* Is the vehicle already in the shared list? */
 			if (src->FirstShared() == dst->FirstShared()) return CMD_ERROR;
 
-			const Order *order;
-
-			FOR_VEHICLE_ORDERS(src, order) {
+			for (const Order *order : src->Orders()) {
 				if (!OrderGoesToStation(dst, order)) continue;
 
 				/* Allow copying unreachable destinations if they were already unreachable for the source.
@@ -1613,8 +1608,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 
 			/* Trucks can't copy all the orders from busses (and visa versa),
 			 * and neither can helicopters and aircraft. */
-			const Order *order;
-			FOR_VEHICLE_ORDERS(src, order) {
+			for (const Order *order : src->Orders()) {
 				if (OrderGoesToStation(dst, order) &&
 						!CanVehicleUseStation(dst, Station::Get(order->GetDestination()))) {
 					return_cmd_error(STR_ERROR_CAN_T_COPY_SHARE_ORDER);
@@ -1632,7 +1626,6 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 			}
 
 			if (flags & DC_EXEC) {
-				const Order *order;
 				Order *first = nullptr;
 				Order **order_dst;
 
@@ -1642,7 +1635,7 @@ CommandCost CmdCloneOrder(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 				DeleteVehicleOrders(dst, true, dst->GetNumOrders() != src->GetNumOrders());
 
 				order_dst = &first;
-				FOR_VEHICLE_ORDERS(src, order) {
+				for (const Order *order : src->Orders()) {
 					*order_dst = new Order();
 					(*order_dst)->AssignOrder(*order);
 					order_dst = &(*order_dst)->next;
@@ -1749,13 +1742,12 @@ void CheckOrders(const Vehicle *v)
 
 	/* Only check every 20 days, so that we don't flood the message log */
 	if (v->owner == _local_company && v->day_counter % 20 == 0) {
-		const Order *order;
 		StringID message = INVALID_STRING_ID;
 
 		/* Check the order list */
 		int n_st = 0;
 
-		FOR_VEHICLE_ORDERS(v, order) {
+		for (const Order *order : v->Orders()) {
 			/* Dummy order? */
 			if (order->IsType(OT_DUMMY)) {
 				message = STR_NEWS_VEHICLE_HAS_VOID_ORDER;
@@ -1829,7 +1821,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination, bool 
 
 		/* Clear the order from the order-list */
 		int id = -1;
-		FOR_VEHICLE_ORDERS(v, order) {
+		for (Order *order : v->Orders()) {
 			id++;
 restart:
 
@@ -1879,9 +1871,7 @@ restart:
  */
 bool Vehicle::HasDepotOrder() const
 {
-	const Order *order;
-
-	FOR_VEHICLE_ORDERS(this, order) {
+	for (const Order *order : this->Orders()) {
 		if (order->IsType(OT_GOTO_DEPOT)) return true;
 	}
 
@@ -1940,9 +1930,7 @@ uint16 GetServiceIntervalClamped(uint interval, bool ispercent)
  */
 static bool CheckForValidOrders(const Vehicle *v)
 {
-	const Order *order;
-
-	FOR_VEHICLE_ORDERS(v, order) {
+	for (const Order *order : v->Orders()) {
 		switch (order->GetType()) {
 			case OT_GOTO_STATION:
 			case OT_GOTO_DEPOT:

@@ -2609,8 +2609,7 @@ static int WhoCanServiceIndustry(Industry *ind)
 		 * We cannot check the first of shared orders only, since the first vehicle in such a chain
 		 * may have a different cargo type.
 		 */
-		const Order *o;
-		FOR_VEHICLE_ORDERS(v, o) {
+		for (const Order *o : v->Orders()) {
 			if (o->IsType(OT_GOTO_STATION) && !(o->GetUnloadType() & OUFB_TRANSFER)) {
 				/* Vehicle visits a station to load or unload */
 				Station *st = Station::Get(o->GetDestination());

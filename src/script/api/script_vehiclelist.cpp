@@ -31,9 +31,7 @@ ScriptVehicleList_Station::ScriptVehicleList_Station(StationID station_id)
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle()) {
-			const Order *order;
-
-			FOR_VEHICLE_ORDERS(v, order) {
+			for (const Order *order : v->Orders()) {
 				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station_id) {
 					this->AddItem(v->index);
 					break;
@@ -81,9 +79,7 @@ ScriptVehicleList_Depot::ScriptVehicleList_Depot(TileIndex tile)
 
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if ((v->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && v->IsPrimaryVehicle() && v->type == type) {
-			const Order *order;
-
-			FOR_VEHICLE_ORDERS(v, order) {
+			for (const Order *order : v->Orders()) {
 				if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == dest) {
 					this->AddItem(v->index);
 					break;
