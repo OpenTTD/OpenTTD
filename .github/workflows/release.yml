@@ -479,8 +479,7 @@ jobs:
         useVcpkgToolchainFile: false
         buildDirectory: '${{ github.workspace }}/build-host'
         buildWithCMakeArgs: '--target tools'
-        cmakeBuildType: RelWithDebInfo
-        cmakeAppendedArgs: ' -GNinja -DOPTION_TOOLS_ONLY=ON'
+        cmakeAppendedArgs: ' -GNinja -DOPTION_TOOLS_ONLY=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo'
 
     - name: Install MSVC problem matcher
       uses: ammaraskar/msvc-problem-matcher@master
@@ -492,8 +491,7 @@ jobs:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
         useVcpkgToolchainFile: true
         buildDirectory: '${{ github.workspace }}/build'
-        cmakeBuildType: RelWithDebInfo
-        cmakeAppendedArgs: ' -GNinja -DOPTION_USE_NSIS=ON -DHOST_BINARY_DIR=${{ github.workspace }}/build-host'
+        cmakeAppendedArgs: ' -GNinja -DOPTION_USE_NSIS=ON -DHOST_BINARY_DIR=${{ github.workspace }}/build-host -DCMAKE_BUILD_TYPE=RelWithDebInfo'
 
     - name: Build (without installer)
       if: needs.source.outputs.is_tag != 'true' || matrix.arch == 'arm64'
@@ -502,8 +500,7 @@ jobs:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
         useVcpkgToolchainFile: true
         buildDirectory: '${{ github.workspace }}/build'
-        cmakeBuildType: RelWithDebInfo
-        cmakeAppendedArgs: ' -GNinja -DHOST_BINARY_DIR=${{ github.workspace }}/build-host'
+        cmakeAppendedArgs: ' -GNinja -DHOST_BINARY_DIR=${{ github.workspace }}/build-host -DCMAKE_BUILD_TYPE=RelWithDebInfo'
 
     - name: Create bundles
       shell: bash
