@@ -232,7 +232,6 @@ if(APPLE)
 
     add_definitions(
         -DWITH_COCOA
-        -DENABLE_COCOA_QUARTZ
     )
 endif()
 

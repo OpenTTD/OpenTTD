@@ -191,9 +191,7 @@ public:
 
 extern CocoaSubdriver *_cocoa_subdriver;
 
-#ifdef ENABLE_COCOA_QUARTZ
 CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp);
-#endif
 
 void QZ_GameSizeChanged();
 
