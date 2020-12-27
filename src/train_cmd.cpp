@@ -1676,26 +1676,57 @@ static bool TrainApproachingCrossing(TileIndex tile)
 	return HasVehicleOnPos(tile_from, &tile, &TrainApproachingCrossingEnum);
 }
 
+/**
+ * Checks if the crossing should be closed
+ * @return true if the crossing has a path reservation, or if there is a vehicle on or approaching the crossing
+ */
+static inline bool ShouldCloseLevelCrossing(TileIndex tile)
+{
+	return HasCrossingReservation(tile) || HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
+}
 
 /**
- * Sets correct crossing state
+ * Sets correct crossing closed state
  * @param tile tile to update
+ * @param new_state close or open the level crossing
  * @param sound should we play sound?
  * @pre tile is a rail-road crossing
  */
-void UpdateLevelCrossing(TileIndex tile, bool sound)
+static void UpdateLevelCrossingTile(TileIndex tile, bool new_state, bool sound)
 {
 	assert(IsLevelCrossingTile(tile));
 
-	/* reserved || train on crossing || train approaching crossing */
-	bool new_state = HasCrossingReservation(tile) || HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
+	if (new_state == IsCrossingBarred(tile)) return;
 
-	if (new_state != IsCrossingBarred(tile)) {
-		if (new_state && sound) {
-			if (_settings_client.sound.ambient) SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
-		}
-		SetCrossingBarred(tile, new_state);
-		MarkTileDirtyByTile(tile);
+	if (new_state && sound && _settings_client.sound.ambient) SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
+	SetCrossingBarred(tile, new_state);
+	MarkTileDirtyByTile(tile);
+}
+
+/**
+ * Iterates over the adjacent crossings, checks whether any should be closed, and then closes all or none of them
+ * @param tile tile to update
+ * @param sound should we play sound?
+ */
+void UpdateLevelCrossing(TileIndex tile, bool sound)
+{
+	bool adjacent_state = false;
+	if (!IsLevelCrossingTile(tile)) return;
+
+	Axis axis = GetCrossingRoadAxis(tile);
+
+	for (TileIndex t = tile; !adjacent_state && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, AxisToDiagDir(GetCrossingRoadAxis(t)))) {
+		adjacent_state |= ShouldCloseLevelCrossing(t);
+	}
+	for (TileIndex t = tile; !adjacent_state && IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, ReverseDiagDir(AxisToDiagDir(GetCrossingRoadAxis(t))))) {
+		adjacent_state |= ShouldCloseLevelCrossing(t);
+	}
+
+	for (TileIndex t = tile; IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, AxisToDiagDir(GetCrossingRoadAxis(t)))) {
+		UpdateLevelCrossingTile(t, adjacent_state, sound);
+	}
+	for (TileIndex t = tile; IsLevelCrossingTile(t) && GetCrossingRoadAxis(t) == axis; t = TileAddByDiagDir(t, ReverseDiagDir(AxisToDiagDir(GetCrossingRoadAxis(t))))) {
+		UpdateLevelCrossingTile(t, adjacent_state, sound);
 	}
 }
 
@@ -1708,9 +1739,8 @@ void UpdateLevelCrossing(TileIndex tile, bool sound)
 static inline void MaybeBarCrossingWithSound(TileIndex tile)
 {
 	if (!IsCrossingBarred(tile)) {
-		BarCrossing(tile);
-		if (_settings_client.sound.ambient) SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
-		MarkTileDirtyByTile(tile);
+		SetCrossingReservation(tile, true);
+		UpdateLevelCrossing(tile, true);
 	}
 }
 
