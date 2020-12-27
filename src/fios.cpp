@@ -219,7 +219,7 @@ static std::string FiosMakeFilename(const std::string *path, const char *name, c
 	const char *period = strrchr(name, '.');
 	if (period != nullptr && strcasecmp(period, ext) == 0) ext = "";
 
-	return buf + name + ext;
+	return buf + PATHSEP + name + ext;
 }
 
 /**
