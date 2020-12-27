@@ -12,6 +12,7 @@
 
 /** Widgets of the #LandInfoWindow class. */
 enum LandInfoWidgets {
+	WID_LI_LOCATION, ///< Scroll to location.
 	WID_LI_BACKGROUND, ///< Background of the window.
 };
 
