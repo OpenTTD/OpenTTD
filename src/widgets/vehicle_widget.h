@@ -15,7 +15,9 @@ enum VehicleViewWidgets {
 	WID_VV_CAPTION,            ///< Caption of window.
 	WID_VV_VIEWPORT,           ///< Viewport widget.
 	WID_VV_START_STOP,         ///< Start or stop this vehicle, and show information about the current state.
-	WID_VV_CENTER_MAIN_VIEW,   ///< Center the main view on this vehicle.
+	WID_VV_RENAME,             ///< Rename vehicle
+	WID_VV_LOCATION,           ///< Center the main view on this vehicle.
+	WID_VV_ORDER_LOCATION,     ///< Center the main view on the order's target location.
 	WID_VV_GOTO_DEPOT,         ///< Order this vehicle to go to the depot.
 	WID_VV_REFIT,              ///< Open the refit window.
 	WID_VV_SHOW_ORDERS,        ///< Show the orders of this vehicle.
@@ -43,7 +45,6 @@ enum VehicleRefitWidgets {
 /** Widgets of the #VehicleDetailsWindow class. */
 enum VehicleDetailsWidgets {
 	WID_VD_CAPTION,                     ///< Caption of window.
-	WID_VD_RENAME_VEHICLE,              ///< Rename this vehicle.
 	WID_VD_TOP_DETAILS,                 ///< Panel with generic details.
 	WID_VD_INCREASE_SERVICING_INTERVAL, ///< Increase the servicing interval.
 	WID_VD_DECREASE_SERVICING_INTERVAL, ///< Decrease the servicing interval.
