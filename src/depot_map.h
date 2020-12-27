@@ -12,24 +12,25 @@
 
 #include "station_map.h"
 
+static const uint8_t DEPOT_TYPE = 0x02;
+
 /**
  * Check if a tile is a depot and it is a depot of the given type.
  */
 inline bool IsDepotTypeTile(Tile tile, TransportType type)
 {
+	if (type == TRANSPORT_AIR) return IsHangarTile(tile);
+
+	if (GB(tile.m5(), 6, 2) != DEPOT_TYPE) return false;
+
 	switch (type) {
 		default: NOT_REACHED();
 		case TRANSPORT_RAIL:
-			return IsRailDepotTile(tile);
-
+			return IsTileType(tile, MP_RAILWAY);
 		case TRANSPORT_ROAD:
-			return IsRoadDepotTile(tile);
-
+			return IsTileType(tile, MP_ROAD);
 		case TRANSPORT_WATER:
-			return IsShipDepotTile(tile);
-
-		case TRANSPORT_AIR:
-			return IsHangarTile(tile);
+			return IsTileType(tile, MP_WATER);
 	}
 }
 
@@ -40,7 +41,11 @@ inline bool IsDepotTypeTile(Tile tile, TransportType type)
  */
 inline bool IsDepotTile(Tile tile)
 {
-	return IsRailDepotTile(tile) || IsRoadDepotTile(tile) || IsShipDepotTile(tile) || IsHangarTile(tile);
+	TileType type = GetTileType(tile);
+	if (type == MP_STATION) return IsHangar(tile);
+	if (GB(tile.m5(), 6, 2) != DEPOT_TYPE) return false;
+
+	return type == MP_RAILWAY || type == MP_ROAD || type == MP_WATER;
 }
 
 extern DepotID GetHangarIndex(TileIndex t);
