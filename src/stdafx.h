@@ -348,19 +348,14 @@ typedef unsigned char byte;
 #	define PERSONAL_DIR ""
 #endif
 
-/* Compile time assertions. Prefer c++0x static_assert().
- * Older compilers cannot evaluate some expressions at compile time,
- * typically when templates are involved, try assert_tcompile() in those cases. */
+/* Compile time assertions. Prefer c++0x static_assert(). */
 #if __cplusplus >= 201103L || (defined(_MSC_VER) && _MSC_VER >= 1600)
 #	define assert_compile(expr) static_assert(expr, #expr )
-#	define assert_tcompile(expr) assert_compile(expr)
 #elif defined(__OS2__)
 	/* Disabled for OS/2 */
 #	define assert_compile(expr)
-#	define assert_tcompile(expr) assert_compile(expr)
 #else
 #	define assert_compile(expr) typedef int __ct_assert__[1 - 2 * !(expr)]
-#	define assert_tcompile(expr) assert(expr)
 #endif
 
 /* Check if the types have the bitsizes like we are using them */
