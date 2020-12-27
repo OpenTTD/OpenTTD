@@ -92,7 +92,7 @@ public:
 		ALL      = BASESET | NEWGRF | AI | SCENARIO | GAME, ///< Scan for everything.
 	};
 
-	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename = nullptr) override;
+	bool AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename = {}) override;
 
 	bool AddFile(Subdirectory sd, const std::string &filename);
 

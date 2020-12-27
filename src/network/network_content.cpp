@@ -539,7 +539,7 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 
 		TarScanner ts;
 		std::string fname = GetFullFilename(this->curInfo, false);
-		ts.AddFile(sd, fname.c_str());
+		ts.AddFile(sd, fname);
 
 		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
