@@ -2517,7 +2517,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño:
 STR_OBJECT_CLASS_LTHS                                           :Faros
 STR_OBJECT_CLASS_TRNS                                           :Torres de transmisión
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árboles
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Elegir el tipo de árboles a plantar. Si la casilla ya tiene un árbol, se añadirán más árboles de distintos tipos sin importar el tipo elegido
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tipo aleatorio

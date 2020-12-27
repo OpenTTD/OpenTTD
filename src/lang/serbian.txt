@@ -2661,7 +2661,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Veličin
 STR_OBJECT_CLASS_LTHS                                           :Svetionici
 STR_OBJECT_CLASS_TRNS                                           :Repetitori
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drveće
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izbor vrste drveća za sađenje. Ako pločica već ima drveće, ovim će se dodati još drveća ali mešanih vrsta, bez obzira na odabranu vrstu
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drveće proizvoljne vrste

@@ -317,8 +317,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :kravnesības
 STR_SORT_BY_RANGE                                               :apgabala
 STR_SORT_BY_POPULATION                                          :iedzīvotāju skaita
 STR_SORT_BY_RATING                                              :vērtējuma
+STR_SORT_BY_NUM_VEHICLES                                        :Autotransporta līdzekļu skaits
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Kopējā peļņa pagājušajā gadā
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Kopējā peļņa šogad
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Vidējā peļņa iepriekšējā gadā
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Vidējā peļņa šajā gadā
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Nav
+STR_GROUP_BY_SHARED_ORDERS                                      :Koplietojamie rīkojumi
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauzēt spēli
@@ -775,6 +782,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Rādīt 
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Rādīt pēdējo ziņojumu vai avīzes rakstu
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAUZE  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE} * * PAUZE (gaida saites diagrammas atjaunināšanu) * *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMĀTISKĀ SAGLABĀŠANA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPĒLE TIEK SAGLABĀTA *  *
 
@@ -1614,6 +1622,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineārs
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Koku izvietojums spēlē: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Vadīt nejaušu koku parādīšanos spēles laikā. Tas var ietekmēt no kokaudzēšanas atkarīgas ražotnes, piemēram kokzāģētavas
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Augt, bet neizplatās {RED} (salauž kokzāģētavas)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Aug, bet izplatās tikai lietus mežos
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Aug un izplatās visur
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Augt, bet neizplatās {RED} (salauž kokzāģētavas)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Galvenās rīkjoslas novietojums: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Galvenās rīkjoslas horizontālais novietojums ekrāna augšējā daļā
@@ -1979,6 +1991,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pievieno
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atsvaidzināt serveri
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atsvaidzināt servera informāciju
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :Meklēt internetā
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Meklēt publiskos serverus internetā
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Meklēt LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Meklēt serverus lokālajā tīklā
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pievienot serveri
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pievienot serveri sarakstam, kurš vienmēr tiks pārbaudīts vai tajā nav palaistas spēles
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Palaist serveri
@@ -2207,11 +2223,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spēle joprojā
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spēle joprojām pauzēta ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spēle joprojām pauzēta ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spēle vēl aizvien ir pauzēta ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Spēle joprojām pauzēta ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spēle atsākta ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :spēlētāju skaits
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :savieno spēlētājus
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuālā
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spēles skripts
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :gaida uz saišu grafika atjaunošanu
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :aizeju
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ir pievienojies spēlei
@@ -2528,7 +2546,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Izmērs:
 STR_OBJECT_CLASS_LTHS                                           :Bākas
 STR_OBJECT_CLASS_TRNS                                           :Raidītāji
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Koki
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izvēlēties koka veidu stādīšanai. Ja lauciņš jau ir koks, tas pievienos vairāk jauktu veidu kokus neatkarīgi no izvēlētā veida
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Nejauši izvēlēta veida koki
@@ -4251,6 +4269,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spēle ir sagla
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Failu nevar nolasīt
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Failā nevar ierakstīt
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Datu integritātes pārbaude neizdevās
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Saglabāšana notiek ar modificētu versiju
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nav pieejams>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spēle tika saglabāta bez tramvaju atbalsta. Visi tramvaji tika aizvākti.
 

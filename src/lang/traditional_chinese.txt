@@ -2456,7 +2456,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小�
 STR_OBJECT_CLASS_LTHS                                           :燈塔
 STR_OBJECT_CLASS_TRNS                                           :天線塔
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}樹木
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}選擇要種植的樹種。無論您選擇了甚麼樹種，如所點擊的方格本身已經有樹，遊戲會在該方格加上一棵隨機樹種的樹
 STR_TREES_RANDOM_TYPE                                           :{BLACK}隨機種類樹木

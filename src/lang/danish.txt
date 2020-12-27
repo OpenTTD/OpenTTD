@@ -2516,7 +2516,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Størrel
 STR_OBJECT_CLASS_LTHS                                           :Fyrtårn
 STR_OBJECT_CLASS_TRNS                                           :Sendere
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Træer
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vælg typen af træer der skal plantes. Hvis feltet allerede har et træ, vil dette tilføje flere træer i blandede typer, uafhængigt af den valgte type
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Træer af tilfældig type

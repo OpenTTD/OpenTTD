@@ -2516,7 +2516,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}大小: 
 STR_OBJECT_CLASS_LTHS                                           :灯塔
 STR_OBJECT_CLASS_TRNS                                           :发射机
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}树木
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}选择要种植的树木类型。如果格子内已经有树木，将种植随机类型的树木
 STR_TREES_RANDOM_TYPE                                           :{BLACK}随机类型的树木

@@ -2419,7 +2419,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Разм
 STR_OBJECT_CLASS_LTHS                                           :Фарове
 STR_OBJECT_CLASS_TRNS                                           :Предаватели
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дървета
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Избор на вид дърво за засаждане. Ако на полето вече съществува дърво, ще бъдат добавени повече дървета от различни видове, независимо от избора на вид
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Дървета от произволен тип

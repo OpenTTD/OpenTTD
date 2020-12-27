@@ -2253,7 +2253,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grutte: 
 STR_OBJECT_CLASS_LTHS                                           :Fjoertoer
 STR_OBJECT_CLASS_TRNS                                           :Stjoerders
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Beammen
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selektear soart beam. As it fakje al in beam hat, sil dit mear beamen tafoege fan it mixed soart ûnôfhinklike fan it selekteare soart
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Samar in soart beam

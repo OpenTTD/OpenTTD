@@ -2647,7 +2647,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Розм
 STR_OBJECT_CLASS_LTHS                                           :Маяки
 STR_OBJECT_CLASS_TRNS                                           :Ретранслятори
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дерева
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Оберіть тип дерева для посадки. Клітинки, які вже містять дерева, доповнюються новими деревами різного типу незалежно від обраного.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Дерева випадкового типу

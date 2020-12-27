@@ -2103,7 +2103,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}حجم: 
 STR_OBJECT_CLASS_LTHS                                           :مناراة ضوئية
 STR_OBJECT_CLASS_TRNS                                           :النواقل
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}اشجار
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK} اختر نوع الشجر لزراعتة, اذا المربع يحتوي على اشجار فهذا الامر يضيف المزيد
 STR_TREES_RANDOM_TYPE                                           :{BLACK}شجر عشوائي

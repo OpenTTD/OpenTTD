@@ -2162,7 +2162,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}اندا
 STR_OBJECT_CLASS_LTHS                                           :فانوس دریایی
 STR_OBJECT_CLASS_TRNS                                           :فرستنده
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}درختان
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}نوع درخت را مشخص کنید تا کاشته شود. اگر این قطعه دارای درخت باشد، مستقل از نوع انتخاب شده، درخت کاشته میشود.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}درختان با نوع تصادفی

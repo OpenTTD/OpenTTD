@@ -2515,7 +2515,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Gréisst
 STR_OBJECT_CLASS_LTHS                                           :Liichttierm
 STR_OBJECT_CLASS_TRNS                                           :Antennen
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Beem
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wielt de Baamtyp. Wann d'Feld schons e Baam huet, ginn méi Beem vu verschiddenen Arten gesat
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Zoufälleg Beem

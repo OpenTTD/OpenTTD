@@ -2543,7 +2543,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}크기: 
 STR_OBJECT_CLASS_LTHS                                           :등대
 STR_OBJECT_CLASS_TRNS                                           :송신기
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}나무
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}심고싶은 나무의 종류를 선택합니다. 이미 나무가 심어져있는 경우에는 선택한 나무의 크기를 키웁니다
 STR_TREES_RANDOM_TYPE                                           :{BLACK}여러 종류의 나무 같이 심기

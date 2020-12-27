@@ -2683,7 +2683,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dydis la
 STR_OBJECT_CLASS_LTHS                                           :Švyturiai
 STR_OBJECT_CLASS_TRNS                                           :Siųstuvai
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pasirinkite medžio rūšį
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pasirinkite norimų sodinti medžių tipą. Jei langelyje jau auga koks nors medis, bus pasodinti atsitiktiniai, nebūtinai pasirinktos rūšies, medžiai
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitiktiniai medžiai tempiant

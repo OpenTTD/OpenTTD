@@ -650,7 +650,7 @@ STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Aghzel il-klassi tal-oggett li se tibni
 
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 
 # Land generation window (SE)
 

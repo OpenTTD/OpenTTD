@@ -2609,7 +2609,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost
 STR_OBJECT_CLASS_LTHS                                           :Svetilniki
 STR_OBJECT_CLASS_TRNS                                           :Oddajniki
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drevesa
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Izberi vrsto drevesa za sajenje. Če polje že vsebuje drevesa, bodo dodatna drevesa mešanega tipa neodvisno od izbire
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drevesa naključne vrste

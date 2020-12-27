@@ -2686,7 +2686,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Meud: {G
 STR_OBJECT_CLASS_LTHS                                           :Taighean-solais
 STR_OBJECT_CLASS_TRNS                                           :Tùir chraobh-sgaoilidh
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Craobhan
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Tagh seòrsa na craoibhe airson cur. Ma tha craobh air an leac mu thràth, cuiridh seo barrachd chraobhan aig a bheil caochladh dhe sheòrsachan a tha neo-eisimeileach on t-seòrsa a thagh thu
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Craobhan dhe sheòrsa air thuaiream

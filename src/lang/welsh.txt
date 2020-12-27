@@ -2461,7 +2461,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Maint: {
 STR_OBJECT_CLASS_LTHS                                           :Goleudai
 STR_OBJECT_CLASS_TRNS                                           :Tyrrau Darlledu
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Coed
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Dewiswch y math o goeden i'w phlannu. Os oes coeden yno'n barod, bydd hyn yn plannu mwy o goed o fath ar hap
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Coed o fath ar hap

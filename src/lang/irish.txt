@@ -2453,7 +2453,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méid: {
 STR_OBJECT_CLASS_LTHS                                           :Tithe solais
 STR_OBJECT_CLASS_TRNS                                           :Tarchuradóirí
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Crainnte
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Roghnaigh an cineál crainn le cur
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Crainnte randamacha

@@ -2525,7 +2525,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Mida: {G
 STR_OBJECT_CLASS_LTHS                                           :Fars
 STR_OBJECT_CLASS_TRNS                                           :Transmissors
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipus d'arbre a plantar. Si la casella ja conté un arbre, s'afegiran més arbres d'altres espècies independentment de quin estigui seleccionat
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres de tipus aleatori

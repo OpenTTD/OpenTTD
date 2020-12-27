@@ -2596,7 +2596,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Μέγε
 STR_OBJECT_CLASS_LTHS                                           :Φάροι
 STR_OBJECT_CLASS_TRNS                                           :Αναμεταδότες
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Δέντρα
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση. Αν το τετραγωνίδιο έχει ήδη ένα δέντρο, αυτό θα προσθέσει περισσότερα δέντρα μεικτών τύπων ανεξάρτητα από τον επιλεγμένο τύπο
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Δέντρα τυχαίου τύπου

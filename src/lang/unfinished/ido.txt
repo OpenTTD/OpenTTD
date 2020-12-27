@@ -729,7 +729,7 @@ STR_AIRPORT_CLASS_HELIPORTS                                     :Helikoptero-aer
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeso: {GOLD}{NUM} x {NUM} kareli
 
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 
 # Land generation window (SE)
 

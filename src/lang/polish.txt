@@ -2904,7 +2904,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Rozmiar:
 STR_OBJECT_CLASS_LTHS                                           :Latarnie morskie
 STR_OBJECT_CLASS_TRNS                                           :Nadajniki
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drzewa
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wybierz typ drzew do sadzenia. Jeśli na wybranym miejscu są już drzewa, to dodasz więcej drzew różnego typu, bez względu na wybraną opcję.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa różnych rodzajów

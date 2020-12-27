@@ -2603,7 +2603,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Velikost
 STR_OBJECT_CLASS_LTHS                                           :Majáky
 STR_OBJECT_CLASS_TRNS                                           :Vysílače
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Stromy
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Zvol druh stromu na vysazení. Pokud se na políčku už nějaký strom nachází, přidá se k němu několik různých druhů bez ohledu na výběr druhu
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Různé stromy

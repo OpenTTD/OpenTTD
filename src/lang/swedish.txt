@@ -2516,7 +2516,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storlek:
 STR_OBJECT_CLASS_LTHS                                           :Fyrar
 STR_OBJECT_CLASS_TRNS                                           :Sändare
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Träd
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Välj trädtyp att plantera. Om rutan redan har ett träd, kommer ytterliggare träd att vara av slumpmässig typ oberoende av vilken trädtyp som valts
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Träd av slumpvald typ

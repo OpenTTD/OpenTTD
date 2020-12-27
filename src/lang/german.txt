@@ -2498,7 +2498,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Größe:
 STR_OBJECT_CLASS_LTHS                                           :Leuchttürme
 STR_OBJECT_CLASS_TRNS                                           :Sendemasten
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bäume
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Wähle die zu pflanzende Baumart. Wenn auf dem Feld schon ein Baum steht, wird eine zufällige Baumart gepflanzt
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufällige Baumart

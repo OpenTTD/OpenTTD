@@ -2203,7 +2203,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Saiz: {G
 STR_OBJECT_CLASS_LTHS                                           :Rumah Api
 STR_OBJECT_CLASS_TRNS                                           :Pemancar
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pokok-pokok
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pilih jenis pokok untuk ditanam
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Jenis pokok yang rawak

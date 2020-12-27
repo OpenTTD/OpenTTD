@@ -2516,7 +2516,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte:
 STR_OBJECT_CLASS_LTHS                                           :Vuurtorens
 STR_OBJECT_CLASS_TRNS                                           :Zendmasten
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Bomen
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies een soort boom om te planten. Als de tegel al bomen bevat, komen er meer bomen van verschillende typen bij, onafhankelijk van het geselecteerde type.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeurige soorten bomen

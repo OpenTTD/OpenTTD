@@ -2479,7 +2479,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}גודל
 STR_OBJECT_CLASS_LTHS                                           :מגדלורים
 STR_OBJECT_CLASS_TRNS                                           :אנטנות
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}עצים
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}בחר סוג עץ לנטיעה. במידה ויש עץ במשבצת, יתווספו עצים נוספים מסוגים שונים ללא קשר לסוג הנבחר
 STR_TREES_RANDOM_TYPE                                           :{BLACK}עצים מסוג אקראי

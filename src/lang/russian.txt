@@ -441,8 +441,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Вместим�
 STR_SORT_BY_RANGE                                               :Дальность полёта
 STR_SORT_BY_POPULATION                                          :Население
 STR_SORT_BY_RATING                                              :Рейтинг
+STR_SORT_BY_NUM_VEHICLES                                        :Количество транспортных средств
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Общая прибыль в прошлом году
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Общая прибыль в этом году
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Средняя прибыль в прошлом году
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Средняя прибыль в этом году
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Нет
+STR_GROUP_BY_SHARED_ORDERS                                      :Общие задания
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
@@ -918,6 +925,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Отоб
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Показать последнее сообщение или новость
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  ПАУЗА  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  ПАУЗА (ожидает обновления графы ссылок) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}АВТОСОХРАНЕНИЕ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  СОХРАНЕНИЕ ИГРЫ  *  *
 
@@ -1764,6 +1772,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :линейна�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Размножение деревьев в игре: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Настройка возможности самостоятельного размножения деревьев в игре. Это может влиять на работоспособность некоторых предприятий, например, лесопилок.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Растут, но не распространяются {RED}(ломается лесопилка)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Растут, но распространяются только в тропических лесах
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Растут и распространяются везде
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Не растут, не распространяются {RED} (ломается лесопилка)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Положение главной панели инструментов: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Горизонтальное расположение основной панели инструментов в верхней части экрана
@@ -2127,6 +2139,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Прис
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Обновить сервер
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Обновить информацию о сервере
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Искать в интернете
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK} Искать в Интернете общедоступные серверы
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Искать LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK} Поиск серверов в локальной сети
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Добавить сервер
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Добавить сервер в список, который будет автоматически проверяться на идущие игры
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Запуск сервера
@@ -2355,11 +2371,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Игра всё
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Игра всё ещё остановлена ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Игра всё ещё остановлена ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Игра всё еще в паузе ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Игра всё ещё остановлена ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Игра продолжена ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :количество игроков
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :подключение клиентов
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :вручную
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игровой скрипт
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :ожидает обновления графы ссылок
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :покинул
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} подключился к игре
@@ -2704,7 +2722,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Разм
 STR_OBJECT_CLASS_LTHS                                           :Маяки
 STR_OBJECT_CLASS_TRNS                                           :Передатчики
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Деревья
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выберите тип деревьев для посадки. Если на участке уже есть деревья, будут добавлены несколько деревьев различного типа, независимо от выбранного.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Деревья случайного типа
@@ -4432,6 +4450,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сохране�
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Файл не читается
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Незаписываемый файл
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Нарушена целостность
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Сохранение игры выполнено с модифицированной версией
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<недоступно>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Игра была сохранена в версии без поддержки трамваев. Все трамваи удалены.
 

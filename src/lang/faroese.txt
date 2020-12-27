@@ -2207,7 +2207,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Stødd: 
 STR_OBJECT_CLASS_LTHS                                           :Vitar
 STR_OBJECT_CLASS_TRNS                                           :Sendarir
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trø
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tilvildarlig træ sløg
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tilvildarlig trø

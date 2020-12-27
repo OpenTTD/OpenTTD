@@ -2502,7 +2502,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamanho:
 STR_OBJECT_CLASS_LTHS                                           :Faróis
 STR_OBJECT_CLASS_TRNS                                           :Transmissores
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árvores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Escolha um tipo de árvore para plantar. Se o quadrado já tiver uma árvore, serão adicionadas mais árvores de difrentes tipos independentemente do tipo selecionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores de tipo aleatório

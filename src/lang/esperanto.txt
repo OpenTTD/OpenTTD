@@ -2061,7 +2061,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeco
 STR_OBJECT_CLASS_LTHS                                           :Lumturoj
 STR_OBJECT_CLASS_TRNS                                           :Transigantoj
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arboj
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Elektu arbo-tipon por planti. Kiam la regiono jam havas arbojn, aliaj arb-tipoj plantiĝos
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arboj de hazardaj tipoj

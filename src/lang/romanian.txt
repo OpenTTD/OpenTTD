@@ -2446,7 +2446,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Dimensiu
 STR_OBJECT_CLASS_LTHS                                           :Faruri
 STR_OBJECT_CLASS_TRNS                                           :Transmiţătoare
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbori
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Alege specia de arbori de plantat. Dacă există deja un arbore în locația dorită, se vor adăuga arbori de tip mixt, indiferent de specia selectată
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbori din specii aleatoare

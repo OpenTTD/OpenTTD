@@ -2833,7 +2833,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Паме
 STR_OBJECT_CLASS_LTHS                                           :Маякi
 STR_OBJECT_CLASS_TRNS                                           :Перадатчыкi
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дрэвы
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Выберыце тып дрэваў для пасадкі. Калі на ўчастку ўжо ёсьць дрэвы, будуць дададзены некалькі дрэваў рознага тыпу, незалежна ад выбранага.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Дрэвы розных відаў

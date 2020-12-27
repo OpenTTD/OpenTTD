@@ -2377,7 +2377,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storleik
 STR_OBJECT_CLASS_LTHS                                           :Fyrtårn
 STR_OBJECT_CLASS_TRNS                                           :Radiosendarar
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Tre
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vel typen tre som skal plantast. Om ruta allereie har eit tre, vil dette leggje til fleire tre av ulike typar uavhengig av den valde typen
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tre av tilfeldig type

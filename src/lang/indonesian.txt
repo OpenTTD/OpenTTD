@@ -2516,7 +2516,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Ukuran: 
 STR_OBJECT_CLASS_LTHS                                           :Mercusuar
 STR_OBJECT_CLASS_TRNS                                           :Pemancar
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Pepohonan
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Pilih jenis pohon untuk ditanam. Jika pohon sudah tertanam, ini akan menambah jenis pohon secara acak dari tipe yang sama.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tanam pohon secara acak

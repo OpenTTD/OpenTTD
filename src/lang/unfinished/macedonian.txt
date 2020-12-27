@@ -1112,7 +1112,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Голе
 STR_OBJECT_CLASS_LTHS                                           :Светилници
 STR_OBJECT_CLASS_TRNS                                           :Предаватели
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Генерирање на терен

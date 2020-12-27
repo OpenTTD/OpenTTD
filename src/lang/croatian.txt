@@ -2612,7 +2612,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Veličin
 STR_OBJECT_CLASS_LTHS                                           :Svjetionici
 STR_OBJECT_CLASS_TRNS                                           :Odašiljači
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Drveće
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Odaberi vrstu drveta za sadnju. Ako polje već ima drvo, ovo će dodati još drveća raznih vrsta neovisno o odabranoj vrsti
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Raznovrsno drveće

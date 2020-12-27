@@ -2580,7 +2580,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méret: 
 STR_OBJECT_CLASS_LTHS                                           :Világítótornyok
 STR_OBJECT_CLASS_TRNS                                           :Adótornyok
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Fák
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Ültetendő fa kiválasztása. Ha már van fa a mezőn, akkor újabb fák ültetése a kiválasztott fatípustól függetlenül
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletlenszerű fafélék

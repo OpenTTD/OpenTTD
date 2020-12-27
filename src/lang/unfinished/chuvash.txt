@@ -891,7 +891,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Виҫе
 STR_OBJECT_CLASS_LTHS                                           :Маяксем
 STR_OBJECT_CLASS_TRNS                                           :Передатчиксем
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 
 # Land generation window (SE)
 

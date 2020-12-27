@@ -2517,7 +2517,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Boyut: {
 STR_OBJECT_CLASS_LTHS                                           :Deniz fenerleri
 STR_OBJECT_CLASS_TRNS                                           :Vericiler
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Ağaçlar
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Dikilecek ağaç türünü seçin. Eğer alan zaten ağaç içeriyorsa, bu seçimden bağımsız olarak karışık ağaç türleri ekleyecek.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Rastgele türde ağaçlar

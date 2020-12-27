@@ -2688,7 +2688,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Magnitud
 STR_OBJECT_CLASS_LTHS                                           :Phari
 STR_OBJECT_CLASS_TRNS                                           :Emissoria
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Eligere arborem serendam. Si tegula iam arborem habet, plures arbores fortuitas addentur (forsitan non idem typus arboris)
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbor fortuita

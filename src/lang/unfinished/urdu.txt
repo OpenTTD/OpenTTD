@@ -2034,7 +2034,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}سائز
 STR_OBJECT_CLASS_LTHS                                           :روشنی کے مینار
 STR_OBJECT_CLASS_TRNS                                           :ٹرانسمیٹرز
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}درخت
 STR_TREES_RANDOM_TYPE                                           :{BLACK}مختلف اقسام کے درخت
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}مختلف اقسام کے درخت لگائیں۔ Shift تعمیر/اندازاّ خرچے میں تدویم کرتا ہے۔

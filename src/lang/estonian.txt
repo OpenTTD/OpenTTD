@@ -2526,7 +2526,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Suurus: 
 STR_OBJECT_CLASS_LTHS                                           :Majakad
 STR_OBJECT_CLASS_TRNS                                           :Saatejaamad
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Puud
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vali istutatava puu liik. Kui ruudus juba on puu, siis lisatakse rohkem eri liikide puid, olenemata valikust
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Suvalised puutüübid

@@ -2453,7 +2453,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}サイ�
 STR_OBJECT_CLASS_LTHS                                           :灯台
 STR_OBJECT_CLASS_TRNS                                           :電波塔
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}植林
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}植林する樹類を選択します。既に木がある場合は追加で植林されます
 STR_TREES_RANDOM_TYPE                                           :{BLACK}ランダムな樹類

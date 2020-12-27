@@ -2507,7 +2507,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamaño:
 STR_OBJECT_CLASS_LTHS                                           :Faros
 STR_OBJECT_CLASS_TRNS                                           :Transmisores
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Árbores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona-lo tipo de árbore a plantar. Se xa hai unha árbore no cadro, isto engadirá máis árbores de varios tipos independentemente do tipo seleccionado
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Árbores de tipo aleatorio

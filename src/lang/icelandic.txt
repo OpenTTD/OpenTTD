@@ -2305,7 +2305,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Stærð:
 STR_OBJECT_CLASS_LTHS                                           :Vitar
 STR_OBJECT_CLASS_TRNS                                           :Sendar
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Tré
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Veldu trjátegund sem á að gróðursetja. Ef það er fyrir tré á reitnum, verðu fleiri trjám mismunandi trjám plantað óhað hvaða tegund hefur verið valin
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tré af handahófskenndri gerð

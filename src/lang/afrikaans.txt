@@ -2507,7 +2507,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grootte:
 STR_OBJECT_CLASS_LTHS                                           :Vuurtorings
 STR_OBJECT_CLASS_TRNS                                           :Stuurders
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Boome
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Kies tipe boom om te plant. Indien die teel reeds 'n boom op het sal enige tipe bome by geplant word, ongeag van die gekose tipe
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Bome van lukraake tipe

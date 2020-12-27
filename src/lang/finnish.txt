@@ -2542,7 +2542,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Koko: {G
 STR_OBJECT_CLASS_LTHS                                           :Majakat
 STR_OBJECT_CLASS_TRNS                                           :Lähettimet
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Puita
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Valitse istutettava puutyyppi. Jos ruudussa on jo puu, tämä lisää uusia puita riippumatta valitun puun tyypistä
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Sattumanvaraisia puita
@@ -3255,7 +3255,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä 
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}Kuukausittainen tarjonta ja paikallinen arvio:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}{NBSP}%)
 
-STR_STATION_VIEW_GROUP                                          :{BLACK}Järjestä
+STR_STATION_VIEW_GROUP                                          :{BLACK}Ryhmittele
 STR_STATION_VIEW_WAITING_STATION                                :Asema: Odottaa
 STR_STATION_VIEW_WAITING_AMOUNT                                 :Määrä: Odottaa
 STR_STATION_VIEW_PLANNED_STATION                                :Asema: Suunniteltu

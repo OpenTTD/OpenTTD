@@ -2518,7 +2518,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Kích th
 STR_OBJECT_CLASS_LTHS                                           :Đèn biển
 STR_OBJECT_CLASS_TRNS                                           :Tháp tín hiệu
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Cây Cối
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Chọn loại cây để trồng. Nếu ô đó đã có cây, thao tác này sẽ thêm hỗn hợp nhiều cây khác độc lập với loại đã chọn
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Loại cây ngẫu nhiên

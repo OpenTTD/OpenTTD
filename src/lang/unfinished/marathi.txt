@@ -1053,7 +1053,7 @@ STR_AIRPORT_CLASS_LARGE                                         :मोठं �
 # Object construction window
 
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}झाड
 
 # Land generation window (SE)

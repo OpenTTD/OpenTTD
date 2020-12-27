@@ -2525,7 +2525,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Taille{N
 STR_OBJECT_CLASS_LTHS                                           :Phares
 STR_OBJECT_CLASS_TRNS                                           :Transmetteurs
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Choix du type d'arbre. S'il y a déjà un arbre dans la case, plusieurs arbres de types différents y seront ajoutés, indépendamment du type sélectionné.
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Au hasard

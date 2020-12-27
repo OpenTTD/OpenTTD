@@ -2402,7 +2402,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}ขน�
 STR_OBJECT_CLASS_LTHS                                           :ประภาคาร
 STR_OBJECT_CLASS_TRNS                                           :เครื่องส่งสัญญาณ
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}ต้นไม้
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}เลือกชนิดของต้นไม้
 STR_TREES_RANDOM_TYPE                                           :{BLACK}สุ่มชนิดของต้นไม้

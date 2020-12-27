@@ -2365,7 +2365,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Tamainua
 STR_OBJECT_CLASS_LTHS                                           :Itsasargiak
 STR_OBJECT_CLASS_TRNS                                           :Igorgailuak
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Zuhaitzak
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK} Aukeratu landatuko diren zuhaitz motak. Laukiak zuhaitza badauka mota ezberdinetako zuhaitz gehio geituko ditu
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Ausazko zuhaitz motak
