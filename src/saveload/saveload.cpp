@@ -1142,7 +1142,7 @@ static size_t ReferenceToInt(const void *obj, SLRefType rt)
  */
 static void *IntToReference(size_t index, SLRefType rt)
 {
-	assert_compile(sizeof(size_t) <= sizeof(void *));
+	static_assert(sizeof(size_t) <= sizeof(void *));
 
 	assert(_sl.action == SLA_PTRS);
 

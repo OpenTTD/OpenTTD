@@ -100,7 +100,7 @@ static const SaveLoad * const _glog_desc[] = {
 	_glog_emergency_desc,
 };
 
-assert_compile(lengthof(_glog_desc) == GLCT_END);
+static_assert(lengthof(_glog_desc) == GLCT_END);
 
 static void Load_GLOG_common(LoggedAction *&gamelog_action, uint &gamelog_actions)
 {

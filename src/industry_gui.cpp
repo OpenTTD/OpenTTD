@@ -145,7 +145,7 @@ enum CargoSuffixInOut {
 template <typename TC, typename TS>
 static inline void GetAllCargoSuffixes(CargoSuffixInOut use_input, CargoSuffixType cst, const Industry *ind, IndustryType ind_type, const IndustrySpec *indspec, const TC &cargoes, TS &suffixes)
 {
-	assert_compile(lengthof(cargoes) <= lengthof(suffixes));
+	static_assert(lengthof(cargoes) <= lengthof(suffixes));
 
 	if (indspec->behaviour & INDUSTRYBEH_CARGOTYPES_UNLIMITED) {
 		/* Reworked behaviour with new many-in-many-out scheme */
@@ -2201,8 +2201,8 @@ private:
 	}
 };
 
-assert_compile(MAX_CARGOES >= cpp_lengthof(IndustrySpec, produced_cargo));
-assert_compile(MAX_CARGOES >= cpp_lengthof(IndustrySpec, accepts_cargo));
+static_assert(MAX_CARGOES >= cpp_lengthof(IndustrySpec, produced_cargo));
+static_assert(MAX_CARGOES >= cpp_lengthof(IndustrySpec, accepts_cargo));
 
 int CargoesField::small_height;      ///< Height of the header row.
 int CargoesField::normal_height;     ///< Height of the non-header rows.

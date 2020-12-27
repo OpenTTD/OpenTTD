@@ -62,7 +62,7 @@ enum SignalOffsets {
  */
 void ResetRailTypes()
 {
-	assert_compile(lengthof(_original_railtypes) <= lengthof(_railtypes));
+	static_assert(lengthof(_original_railtypes) <= lengthof(_railtypes));
 
 	uint i = 0;
 	for (; i < lengthof(_original_railtypes); i++) _railtypes[i] = _original_railtypes[i];

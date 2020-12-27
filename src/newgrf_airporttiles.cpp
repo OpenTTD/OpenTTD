@@ -37,7 +37,7 @@ AirportTileOverrideManager _airporttile_mngr(NEW_AIRPORTTILE_OFFSET, NUM_AIRPORT
 {
 	/* should be assert(gfx < lengthof(tiles)), but that gives compiler warnings
 	 * since it's always true if the following holds: */
-	assert_compile(MAX_UVALUE(StationGfx) + 1 == lengthof(tiles));
+	static_assert(MAX_UVALUE(StationGfx) + 1 == lengthof(tiles));
 	return &AirportTileSpec::tiles[gfx];
 }
 

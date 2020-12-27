@@ -83,7 +83,7 @@ static const char * const _music_file_names[] = {
 	"ezy_0", "ezy_1", "ezy_2", "ezy_3", "ezy_4", "ezy_5", "ezy_6", "ezy_7", "ezy_8", "ezy_9",
 };
 /** Make sure we aren't messing things up. */
-assert_compile(lengthof(_music_file_names) == NUM_SONGS_AVAILABLE);
+static_assert(lengthof(_music_file_names) == NUM_SONGS_AVAILABLE);
 
 template <class T, size_t Tnum_files, bool Tsearch_in_tars>
 /* static */ const char * const *BaseSet<T, Tnum_files, Tsearch_in_tars>::file_names = _music_file_names;

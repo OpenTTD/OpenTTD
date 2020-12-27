@@ -681,7 +681,7 @@ struct TooltipsWindow : public Window
 	{
 		this->parent = parent;
 		this->string_id = str;
-		assert_compile(sizeof(this->params[0]) == sizeof(params[0]));
+		static_assert(sizeof(this->params[0]) == sizeof(params[0]));
 		assert(paramcount <= lengthof(this->params));
 		if (paramcount > 0) memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;

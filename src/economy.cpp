@@ -1258,7 +1258,7 @@ void PrepareUnload(Vehicle *front_v)
 	assert(front_v->cargo_payment == nullptr);
 	/* One CargoPayment per vehicle and the vehicle limit equals the
 	 * limit in number of CargoPayments. Can't go wrong. */
-	assert_compile(CargoPaymentPool::MAX_SIZE == VehiclePool::MAX_SIZE);
+	static_assert(CargoPaymentPool::MAX_SIZE == VehiclePool::MAX_SIZE);
 	assert(CargoPayment::CanAllocateItem());
 	front_v->cargo_payment = new CargoPayment(front_v);
 

@@ -93,7 +93,7 @@ struct OldChunks {
 };
 
 /* If it fails, check lines above.. */
-assert_compile(sizeof(TileIndex) == 4);
+static_assert(sizeof(TileIndex) == 4);
 
 extern uint _bump_assert_value;
 byte ReadByte(LoadgameState *ls);

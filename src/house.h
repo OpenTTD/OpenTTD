@@ -64,7 +64,7 @@ enum HouseZonesBits {
 	HZB_TOWN_CENTRE,
 	HZB_END,
 };
-assert_compile(HZB_END == 5);
+static_assert(HZB_END == 5);
 
 DECLARE_POSTFIX_INCREMENT(HouseZonesBits)
 

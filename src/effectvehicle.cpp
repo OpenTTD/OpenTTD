@@ -546,7 +546,7 @@ static EffectInitProc * const _effect_init_procs[] = {
 	SmokeInit,          // EV_BREAKDOWN_SMOKE_AIRCRAFT
 	SmokeInit,          // EV_COPPER_MINE_SMOKE
 };
-assert_compile(lengthof(_effect_init_procs) == EV_END);
+static_assert(lengthof(_effect_init_procs) == EV_END);
 
 /** Functions for controlling effect vehicles at each tick. */
 static EffectTickProc * const _effect_tick_procs[] = {
@@ -563,7 +563,7 @@ static EffectTickProc * const _effect_tick_procs[] = {
 	SmokeTick,          // EV_BREAKDOWN_SMOKE_AIRCRAFT
 	SmokeTick,          // EV_COPPER_MINE_SMOKE
 };
-assert_compile(lengthof(_effect_tick_procs) == EV_END);
+static_assert(lengthof(_effect_tick_procs) == EV_END);
 
 /** Transparency options affecting the effects. */
 static const TransparencyOption _effect_transparency_options[] = {
@@ -580,7 +580,7 @@ static const TransparencyOption _effect_transparency_options[] = {
 	TO_INVALID,         // EV_BREAKDOWN_SMOKE_AIRCRAFT
 	TO_INDUSTRIES,      // EV_COPPER_MINE_SMOKE
 };
-assert_compile(lengthof(_effect_transparency_options) == EV_END);
+static_assert(lengthof(_effect_transparency_options) == EV_END);
 
 
 /**

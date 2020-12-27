@@ -348,14 +348,12 @@ typedef unsigned char byte;
 #	define PERSONAL_DIR ""
 #endif
 
-#define assert_compile(expr) static_assert(expr, #expr)
-
 /* Check if the types have the bitsizes like we are using them */
-assert_compile(sizeof(uint64) == 8);
-assert_compile(sizeof(uint32) == 4);
-assert_compile(sizeof(uint16) == 2);
-assert_compile(sizeof(uint8)  == 1);
-assert_compile(SIZE_MAX >= UINT32_MAX);
+static_assert(sizeof(uint64) == 8);
+static_assert(sizeof(uint32) == 4);
+static_assert(sizeof(uint16) == 2);
+static_assert(sizeof(uint8)  == 1);
+static_assert(SIZE_MAX >= UINT32_MAX);
 
 #ifndef M_PI_2
 #define M_PI_2 1.57079632679489661923

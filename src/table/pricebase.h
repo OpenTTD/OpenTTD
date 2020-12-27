@@ -80,4 +80,4 @@ extern const PriceBaseSpec _price_base_specs[] = {
 	{    100, PCAT_RUNNING,      GSF_END,          PR_STATION_VALUE      }, ///< PR_INFRASTRUCTURE_STATION
 	{   5000, PCAT_RUNNING,      GSF_END,          PR_BUILD_STATION_AIRPORT}, ///< PR_INFRASTRUCTURE_AIRPORT
 };
-assert_compile(lengthof(_price_base_specs) == PR_END);
+static_assert(lengthof(_price_base_specs) == PR_END);

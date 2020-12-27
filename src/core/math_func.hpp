@@ -112,7 +112,7 @@ static inline T Align(const T x, uint n)
 template <typename T>
 static inline T *AlignPtr(T *x, uint n)
 {
-	assert_compile(sizeof(size_t) == sizeof(void *));
+	static_assert(sizeof(size_t) == sizeof(void *));
 	return reinterpret_cast<T *>(Align((size_t)x, n));
 }
 

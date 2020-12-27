@@ -618,9 +618,9 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 static const size_t S_FREE_MASK = sizeof(size_t) - 1;
 
 /* to make sure nobody adds things to MemBlock without checking S_FREE_MASK first */
-assert_compile(sizeof(MemBlock) == sizeof(size_t));
+static_assert(sizeof(MemBlock) == sizeof(size_t));
 /* make sure it's a power of two */
-assert_compile((sizeof(size_t) & (sizeof(size_t) - 1)) == 0);
+static_assert((sizeof(size_t) & (sizeof(size_t) - 1)) == 0);
 
 static inline MemBlock *NextBlock(MemBlock *block)
 {

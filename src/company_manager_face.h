@@ -83,7 +83,7 @@ static const CompanyManagerFaceBitsInfo _cmf_info[] = {
 	/* CMFV_GLASSES         */ { 31, 1, {  2,  2,  2,  2 }, { 0x347, 0x347, 0x3AE, 0x3AE } }  ///< Depends on CMFV_HAS_GLASSES
 };
 /** Make sure the table's size is right. */
-assert_compile(lengthof(_cmf_info) == CMFV_END);
+static_assert(lengthof(_cmf_info) == CMFV_END);
 
 /**
  * Gets the company manager's face bits for the given company manager's face variable

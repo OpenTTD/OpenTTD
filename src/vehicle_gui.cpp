@@ -2009,10 +2009,10 @@ void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileInde
 
 /* Unified vehicle GUI - Vehicle Details Window */
 
-assert_compile(WID_VD_DETAILS_CARGO_CARRIED    == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_CARGO   );
-assert_compile(WID_VD_DETAILS_TRAIN_VEHICLES   == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_INFO    );
-assert_compile(WID_VD_DETAILS_CAPACITY_OF_EACH == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_CAPACITY);
-assert_compile(WID_VD_DETAILS_TOTAL_CARGO      == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_TOTALS  );
+static_assert(WID_VD_DETAILS_CARGO_CARRIED    == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_CARGO   );
+static_assert(WID_VD_DETAILS_TRAIN_VEHICLES   == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_INFO    );
+static_assert(WID_VD_DETAILS_CAPACITY_OF_EACH == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_CAPACITY);
+static_assert(WID_VD_DETAILS_TOTAL_CARGO      == WID_VD_DETAILS_CARGO_CARRIED + TDW_TAB_TOTALS  );
 
 /** Vehicle details widgets (other than train). */
 static const NWidgetPart _nested_nontrain_vehicle_details_widgets[] = {
@@ -2554,10 +2554,10 @@ static WindowDesc _train_view_desc(
 
 /* Just to make sure, nobody has changed the vehicle type constants, as we are
 	 using them for array indexing in a number of places here. */
-assert_compile(VEH_TRAIN == 0);
-assert_compile(VEH_ROAD == 1);
-assert_compile(VEH_SHIP == 2);
-assert_compile(VEH_AIRCRAFT == 3);
+static_assert(VEH_TRAIN == 0);
+static_assert(VEH_ROAD == 1);
+static_assert(VEH_SHIP == 2);
+static_assert(VEH_AIRCRAFT == 3);
 
 /** Zoom levels for vehicle views indexed by vehicle type. */
 static const ZoomLevel _vehicle_view_zoom_levels[] = {

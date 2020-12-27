@@ -2438,7 +2438,7 @@ struct CompanyWindow : Window
 				if (amounts[0] + amounts[1] + amounts[2] + amounts[3] == 0) {
 					DrawString(r.left, r.right, y, STR_COMPANY_VIEW_VEHICLES_NONE);
 				} else {
-					assert_compile(lengthof(amounts) == lengthof(_company_view_vehicle_count_strings));
+					static_assert(lengthof(amounts) == lengthof(_company_view_vehicle_count_strings));
 
 					for (uint i = 0; i < lengthof(amounts); i++) {
 						if (amounts[i] != 0) {

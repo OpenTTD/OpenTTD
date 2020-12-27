@@ -556,8 +556,8 @@ void VehicleCargoList::InvalidateCache()
 template<VehicleCargoList::MoveToAction Tfrom, VehicleCargoList::MoveToAction Tto>
 uint VehicleCargoList::Reassign(uint max_move, TileOrStationID)
 {
-	assert_compile(Tfrom != MTA_TRANSFER && Tto != MTA_TRANSFER);
-	assert_compile(Tfrom - Tto == 1 || Tto - Tfrom == 1);
+	static_assert(Tfrom != MTA_TRANSFER && Tto != MTA_TRANSFER);
+	static_assert(Tfrom - Tto == 1 || Tto - Tfrom == 1);
 	max_move = min(this->action_counts[Tfrom], max_move);
 	this->action_counts[Tfrom] -= max_move;
 	this->action_counts[Tto] += max_move;
