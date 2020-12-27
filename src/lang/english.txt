@@ -234,8 +234,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Select s
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Select sorting criteria
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Select filtering criteria
 STR_BUTTON_SORT_BY                                              :{BLACK}Sort by
-STR_BUTTON_LOCATION                                             :{BLACK}Location
-STR_BUTTON_RENAME                                               :{BLACK}Rename
 STR_BUTTON_CATCHMENT                                            :{BLACK}Coverage
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Toggle coverage area display
 
