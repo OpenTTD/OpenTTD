@@ -25,6 +25,7 @@
 #include "core/geometry_func.hpp"
 #include "hotkeys.h"
 #include "transparency.h"
+#include "gui.h"
 
 #include "widgets/sign_widget.h"
 
@@ -486,6 +487,17 @@ struct SignWindow : Window, SignList {
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
+			case WID_QES_LOCATION: {
+				const Sign *si = Sign::Get(this->cur_sign);
+				TileIndex tile = TileVirtXY(si->x, si->y);
+				if (_ctrl_pressed) {
+					ShowExtraViewportWindow(tile);
+				} else {
+					ScrollMainWindowToTile(tile);
+				}
+				break;
+			}
+
 			case WID_QES_PREVIOUS:
 			case WID_QES_NEXT: {
 				const Sign *si = this->PrevNextSign(widget == WID_QES_NEXT);
@@ -523,6 +535,7 @@ static const NWidgetPart _nested_query_sign_edit_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY, WID_QES_CAPTION), SetDataTip(STR_WHITE_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_QES_LOCATION), SetMinimalSize(12, 14), SetDataTip(SPR_GOTO_LOCATION, STR_EDIT_SIGN_LOCATION_TOOLTIP),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY),
 		NWidget(WWT_EDITBOX, COLOUR_GREY, WID_QES_TEXT), SetMinimalSize(256, 12), SetDataTip(STR_EDIT_SIGN_SIGN_OSKTITLE, STR_NULL), SetPadding(2, 2, 2, 2),
