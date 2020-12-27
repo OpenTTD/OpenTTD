@@ -31,7 +31,7 @@ public:
 		uint8 m;
 		uint8 v;
 	};
-	assert_compile(sizeof(MapValue) == 2);
+	static_assert(sizeof(MapValue) == 2);
 
 	/** Helper for creating specialised functions for specific optimisations. */
 	enum ReadMode {

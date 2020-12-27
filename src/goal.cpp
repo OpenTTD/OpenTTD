@@ -248,7 +248,7 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	CompanyID company = (CompanyID)GB(p1, 16, 8);
 	ClientID client = (ClientID)GB(p1, 16, 16);
 
-	assert_compile(GOAL_QUESTION_BUTTON_COUNT < 29);
+	static_assert(GOAL_QUESTION_BUTTON_COUNT < 29);
 	uint32 button_mask = GB(p2, 0, GOAL_QUESTION_BUTTON_COUNT);
 	byte type = GB(p2, 29, 2);
 	bool is_client = HasBit(p2, 31);

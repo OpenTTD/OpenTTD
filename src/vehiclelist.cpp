@@ -25,7 +25,7 @@ uint32 VehicleListIdentifier::Pack() const
 	assert(this->vtype   < (1 <<  2));
 	assert(this->index   < (1 << 20));
 	assert(this->type    < VLT_END);
-	assert_compile(VLT_END <= (1 <<  3));
+	static_assert(VLT_END <= (1 <<  3));
 
 	return c << 28 | this->type << 23 | this->vtype << 26 | this->index;
 }

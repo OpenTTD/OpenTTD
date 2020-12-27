@@ -34,8 +34,8 @@
 /* DestinationID must be at least as large as every these below, because it can
  * be any of them
  */
-assert_compile(sizeof(DestinationID) >= sizeof(DepotID));
-assert_compile(sizeof(DestinationID) >= sizeof(StationID));
+static_assert(sizeof(DestinationID) >= sizeof(DepotID));
+static_assert(sizeof(DestinationID) >= sizeof(StationID));
 
 OrderPool _order_pool("Order");
 INSTANTIATE_POOL_METHODS(Order)

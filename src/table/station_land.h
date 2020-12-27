@@ -988,7 +988,7 @@ static const DrawTileSprites _station_display_datas_waypoint[] = {
 
 /* Default waypoint is also drawn as fallback for NewGRF waypoints.
  * As these are drawn/build like stations, they may use the same number of layouts. */
-assert_compile(lengthof(_station_display_datas_rail) == lengthof(_station_display_datas_waypoint));
+static_assert(lengthof(_station_display_datas_rail) == lengthof(_station_display_datas_waypoint));
 
 static const DrawTileSprites * const _station_display_datas[] = {
 	_station_display_datas_rail,

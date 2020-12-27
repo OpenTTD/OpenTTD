@@ -86,7 +86,7 @@ struct LanguagePackHeader {
 	}
 };
 /** Make sure the size is right. */
-assert_compile(sizeof(LanguagePackHeader) % 4 == 0);
+static_assert(sizeof(LanguagePackHeader) % 4 == 0);
 
 /** Metadata about a single language. */
 struct LanguageMetadata : public LanguagePackHeader {

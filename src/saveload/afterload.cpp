@@ -2182,7 +2182,7 @@ bool AfterLoadGame()
 			for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end(); ++iter) {
 				/* There are always as many CargoPayments as Vehicles. We need to make the
 				 * assert() in Pool::GetNew() happy by calling CanAllocateItem(). */
-				assert_compile(CargoPaymentPool::MAX_SIZE == VehiclePool::MAX_SIZE);
+				static_assert(CargoPaymentPool::MAX_SIZE == VehiclePool::MAX_SIZE);
 				assert(CargoPayment::CanAllocateItem());
 				Vehicle *v = *iter;
 				if (v->cargo_payment == nullptr) v->cargo_payment = new CargoPayment(v);

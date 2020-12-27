@@ -1788,7 +1788,7 @@ static const DrawBuildingsTileStruct _town_draw_tile_data[] = {
 };
 #undef M
 /** Make sure we have the right number of elements: 4 variants * 4 build stages for each house */
-assert_compile(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
+static_assert(lengthof(_town_draw_tile_data) == (NEW_HOUSE_OFFSET) * 4 * 4);
 
 /**
  * Describes the data that defines each house in the game
@@ -2276,4 +2276,4 @@ static const HouseSpec _original_house_specs[] = {
 #undef MS
 
 /** Make sure we have the right number of elements: one entry for each house */
-assert_compile(lengthof(_original_house_specs) == NEW_HOUSE_OFFSET);
+static_assert(lengthof(_original_house_specs) == NEW_HOUSE_OFFSET);

@@ -1545,11 +1545,11 @@ enum SpriteMasks {
 	PALETTE_MASK = MAX_PALETTES - 1,       ///< The mask for the auxiliary sprite (the one that takes care of recolouring)
 };
 
-assert_compile( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
-assert_compile( (1 << RECOLOUR_BIT & SPRITE_MASK) == 0 );
-assert_compile( TRANSPARENT_BIT != RECOLOUR_BIT );
-assert_compile( (1 << TRANSPARENT_BIT & PALETTE_MASK) == 0);
-assert_compile( (1 << RECOLOUR_BIT & PALETTE_MASK) == 0 );
+static_assert( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
+static_assert( (1 << RECOLOUR_BIT & SPRITE_MASK) == 0 );
+static_assert( TRANSPARENT_BIT != RECOLOUR_BIT );
+static_assert( (1 << TRANSPARENT_BIT & PALETTE_MASK) == 0);
+static_assert( (1 << RECOLOUR_BIT & PALETTE_MASK) == 0 );
 
 
 static const PaletteID PAL_NONE                    = 0;

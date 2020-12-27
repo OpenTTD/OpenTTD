@@ -424,7 +424,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	{
 		/* Visual C++ 2015 fails compiling this line (AfterNewGRFScan::generation_seed undefined symbol)
 		 * if it's placed outside a member function, directly in the struct body. */
-		assert_compile(sizeof(generation_seed) == sizeof(_settings_game.game_creation.generation_seed));
+		static_assert(sizeof(generation_seed) == sizeof(_settings_game.game_creation.generation_seed));
 	}
 
 	virtual void OnNewGRFsScanned()

@@ -41,9 +41,9 @@ DECLARE_POSTFIX_INCREMENT(ClientID)
 static ClientID _network_client_id = CLIENT_ID_FIRST;
 
 /** Make very sure the preconditions given in network_type.h are actually followed */
-assert_compile(MAX_CLIENT_SLOTS > MAX_CLIENTS);
+static_assert(MAX_CLIENT_SLOTS > MAX_CLIENTS);
 /** Yes... */
-assert_compile(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENT_SLOTS);
+static_assert(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENT_SLOTS);
 
 /** The pool with clients. */
 NetworkClientSocketPool _networkclientsocket_pool("NetworkClientSocket");
@@ -223,7 +223,7 @@ ServerNetworkGameSocketHandler::ServerNetworkGameSocketHandler(SOCKET s) : Netwo
 	/* The Socket and Info pools need to be the same in size. After all,
 	 * each Socket will be associated with at most one Info object. As
 	 * such if the Socket was allocated the Info object can as well. */
-	assert_compile(NetworkClientSocketPool::MAX_SIZE == NetworkClientInfoPool::MAX_SIZE);
+	static_assert(NetworkClientSocketPool::MAX_SIZE == NetworkClientInfoPool::MAX_SIZE);
 }
 
 /**
@@ -311,7 +311,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 
 	/* We can't go over the MAX_CLIENTS limit here. However, the
 	 * pool must have place for all clients and ourself. */
-	assert_compile(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENTS + 1);
+	static_assert(NetworkClientSocketPool::MAX_SIZE == MAX_CLIENTS + 1);
 	assert(!accept || ServerNetworkGameSocketHandler::CanAllocateItem());
 	return accept;
 }
@@ -1962,7 +1962,7 @@ void NetworkServerShowStatusToConsole()
 		"ready",
 		"active"
 	};
-	assert_compile(lengthof(stat_str) == NetworkClientSocket::STATUS_END);
+	static_assert(lengthof(stat_str) == NetworkClientSocket::STATUS_END);
 
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		NetworkClientInfo *ci = cs->GetInfo();

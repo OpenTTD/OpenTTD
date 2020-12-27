@@ -324,7 +324,7 @@ const char *_network_join_server_password = nullptr;
 const char *_network_join_company_password = nullptr;
 
 /** Make sure the server ID length is the same as a md5 hash. */
-assert_compile(NETWORK_SERVER_ID_LENGTH == 16 * 2 + 1);
+static_assert(NETWORK_SERVER_ID_LENGTH == 16 * 2 + 1);
 
 /***********
  * Sending functions
@@ -682,7 +682,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 		STR_NETWORK_ERROR_TIMEOUT_MAP,       // NETWORK_ERROR_TIMEOUT_MAP
 		STR_NETWORK_ERROR_TIMEOUT_JOIN,      // NETWORK_ERROR_TIMEOUT_JOIN
 	};
-	assert_compile(lengthof(network_error_strings) == NETWORK_ERROR_END);
+	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
 	NetworkErrorCode error = (NetworkErrorCode)p->Recv_uint8();
 

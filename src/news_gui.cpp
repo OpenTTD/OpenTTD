@@ -244,7 +244,7 @@ static NewsTypeData _news_type_data[] = {
 	NewsTypeData("news_display.general",           60, SND_BEGIN       ),  ///< NT_GENERAL
 };
 
-assert_compile(lengthof(_news_type_data) == NT_END);
+static_assert(lengthof(_news_type_data) == NT_END);
 
 /**
  * Return the news display option.

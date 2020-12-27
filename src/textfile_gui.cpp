@@ -390,7 +390,7 @@ const char *GetTextfile(TextfileType type, Subdirectory dir, const char *filenam
 		"changelog",
 		"license",
 	};
-	assert_compile(lengthof(prefixes) == TFT_END);
+	static_assert(lengthof(prefixes) == TFT_END);
 
 	const char *prefix = prefixes[type];
 

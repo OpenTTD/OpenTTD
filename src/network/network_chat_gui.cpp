@@ -31,7 +31,7 @@
 
 /** The draw buffer must be able to contain the chat message, client name and the "[All]" message,
  * some spaces and possible translations of [All] to other languages. */
-assert_compile((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH + NETWORK_NAME_LENGTH + 40);
+static_assert((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH + NETWORK_NAME_LENGTH + 40);
 
 /** Spacing between chat lines. */
 static const uint NETWORK_CHAT_LINE_SPACING = 3;

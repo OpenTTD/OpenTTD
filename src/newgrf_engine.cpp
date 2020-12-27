@@ -1313,7 +1313,7 @@ void FillNewGRFVehicleCache(const Vehicle *v)
 		{ 0x43, NCVV_COMPANY_INFORMATION },
 		{ 0x4D, NCVV_POSITION_IN_VEHICLE },
 	};
-	assert_compile(NCVV_END == lengthof(cache_entries));
+	static_assert(NCVV_END == lengthof(cache_entries));
 
 	/* Resolve all the variables, so their caches are set. */
 	for (size_t i = 0; i < lengthof(cache_entries); i++) {

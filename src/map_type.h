@@ -24,7 +24,7 @@ struct Tile {
 	byte   m5;          ///< General purpose
 };
 
-assert_compile(sizeof(Tile) == 8);
+static_assert(sizeof(Tile) == 8);
 
 /**
  * Data that is stored per tile. Also used Tile for this.

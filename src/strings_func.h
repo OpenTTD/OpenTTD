@@ -84,7 +84,7 @@ public:
 		offset(0),
 		num_param(Tnum_param)
 	{
-		assert_compile(sizeof(data[0]) == sizeof(uint64));
+		static_assert(sizeof(data[0]) == sizeof(uint64));
 	}
 
 	/**

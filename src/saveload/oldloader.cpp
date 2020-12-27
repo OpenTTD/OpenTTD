@@ -243,7 +243,7 @@ static inline bool CheckOldSavegameType(FILE *f, char *temp, const char *last, u
 
 static SavegameType DetermineOldSavegameType(FILE *f, char *title, const char *last)
 {
-	assert_compile(TTD_HEADER_SIZE >= TTO_HEADER_SIZE);
+	static_assert(TTD_HEADER_SIZE >= TTO_HEADER_SIZE);
 	char temp[TTD_HEADER_SIZE] = "Unknown";
 
 	SavegameType type = SGT_TTO;

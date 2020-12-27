@@ -67,7 +67,7 @@ public:
 	FixedSizeArray()
 	{
 		/* Ensure the size won't overflow. */
-		assert_compile(C < (SIZE_MAX - HeaderSize) / Tsize);
+		static_assert(C < (SIZE_MAX - HeaderSize) / Tsize);
 
 		/* allocate block for header + items (don't construct items) */
 		data = (T*)((MallocT<byte>(HeaderSize + C * Tsize)) + HeaderSize);

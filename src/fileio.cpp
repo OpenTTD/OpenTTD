@@ -238,7 +238,7 @@ static const char * const _subdirs[] = {
 	"game" PATHSEP "library" PATHSEP,
 	"screenshot" PATHSEP,
 };
-assert_compile(lengthof(_subdirs) == NUM_SUBDIRS);
+static_assert(lengthof(_subdirs) == NUM_SUBDIRS);
 
 const char *_searchpaths[NUM_SEARCHPATHS];
 TarList _tar_list[NUM_SUBDIRS];

@@ -61,7 +61,7 @@ RoadTypes _roadtypes_type;
  */
 void ResetRoadTypes()
 {
-	assert_compile(lengthof(_original_roadtypes) <= lengthof(_roadtypes));
+	static_assert(lengthof(_original_roadtypes) <= lengthof(_roadtypes));
 
 	uint i = 0;
 	for (; i < lengthof(_original_roadtypes); i++) _roadtypes[i] = _original_roadtypes[i];

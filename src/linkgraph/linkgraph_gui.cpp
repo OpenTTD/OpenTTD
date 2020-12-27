@@ -454,7 +454,7 @@ static const NWidgetPart _nested_linkgraph_legend_widgets[] = {
 	EndContainer()
 };
 
-assert_compile(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
+static_assert(WID_LGL_SATURATION_LAST - WID_LGL_SATURATION_FIRST ==
 		lengthof(LinkGraphOverlay::LINK_COLOURS) - 1);
 
 static WindowDesc _linkgraph_legend_desc(

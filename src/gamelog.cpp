@@ -45,7 +45,7 @@ static const char * GetGamelogRevisionString()
 {
 	/* Allocate a buffer larger than necessary (git revision hash is 40 bytes) to avoid truncation later */
 	static char gamelog_revision[48] = { 0 };
-	assert_compile(lengthof(gamelog_revision) > GAMELOG_REVISION_LENGTH);
+	static_assert(lengthof(gamelog_revision) > GAMELOG_REVISION_LENGTH);
 
 	if (IsReleasedVersion()) {
 		return _openttd_revision;
@@ -167,7 +167,7 @@ static const char * const la_text[] = {
 	"emergency savegame",
 };
 
-assert_compile(lengthof(la_text) == GLAT_END);
+static_assert(lengthof(la_text) == GLAT_END);
 
 /**
  * Information about the presence of a Grf at a certain point during gamelog history

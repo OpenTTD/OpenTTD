@@ -48,8 +48,8 @@ enum CargoCompanyBits {
 	CCB_COMPANY_LENGTH         = 4,  ///< Number of bits of the company field.
 };
 
-assert_compile(NUM_CARGO     <= (1 << CCB_CARGO_TYPE_LENGTH));
-assert_compile(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
+static_assert(NUM_CARGO     <= (1 << CCB_CARGO_TYPE_LENGTH));
+static_assert(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
 
 
 /**
