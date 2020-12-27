@@ -3100,6 +3100,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Toggle m
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edit sign text
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centre the main view on sign location. Ctrl+Click opens a new viewport on sign location
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Go to next sign
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Go to previous sign
 
