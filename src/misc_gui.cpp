@@ -25,6 +25,7 @@
 #include "newgrf_debug.h"
 #include "zoom_func.h"
 #include "guitimer_func.h"
+#include "viewport_func.h"
 #include "rev.h"
 
 #include "widgets/misc_widget.h"
@@ -46,6 +47,7 @@ static const NWidgetPart _nested_land_info_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
 		NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_LAND_AREA_INFORMATION_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_LI_LOCATION), SetMinimalSize(12, 14), SetDataTip(SPR_GOTO_LOCATION, STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP),
 		NWidget(WWT_DEBUGBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_LI_BACKGROUND), EndContainer(),
@@ -359,6 +361,19 @@ public:
 	void ShowNewGRFInspectWindow() const override
 	{
 		::ShowNewGRFInspectWindow(GetGrfSpecFeature(this->tile), this->tile);
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		switch (widget) {
+			case WID_LI_LOCATION:
+				if (_ctrl_pressed) {
+					ShowExtraViewportWindow(this->tile);
+				} else {
+					ScrollMainWindowToTile(this->tile);
+				}
+				break;
+		}
 	}
 
 	/**

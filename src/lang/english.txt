@@ -2630,6 +2630,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Select t
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Area Information
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centre the main view on tile location. Ctrl+Click opens a new viewport on tile location
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cost to clear: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cost to clear: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Revenue when cleared: {LTBLUE}{CURRENCY_LONG}
