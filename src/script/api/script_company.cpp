@@ -204,8 +204,10 @@
 
 	if (loan == GetLoanAmount()) return true;
 
+	Money amount = abs(loan - GetLoanAmount());
+
 	return ScriptObject::DoCommand(0,
-			abs(loan - GetLoanAmount()), 2,
+			amount >> 32, (amount & 0xFFFFFFFC) | 2,
 			(loan > GetLoanAmount()) ? CMD_INCREASE_LOAN : CMD_DECREASE_LOAN);
 }
 
