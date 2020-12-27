@@ -127,6 +127,26 @@ void ScriptConfig::ResetSettings()
 	this->settings.clear();
 }
 
+void ScriptConfig::ResetEditableSettings(bool yet_to_start)
+{
+	if (this->info == nullptr) return ResetSettings();
+
+	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end();) {
+		const ScriptConfigItem *config_item = this->info->GetConfigItem(it->first);
+		assert(config_item != nullptr);
+
+		bool editable = yet_to_start || (config_item->flags & SCRIPTCONFIG_INGAME) != 0;
+		bool visible = _settings_client.gui.ai_developer_tools || (config_item->flags & SCRIPTCONFIG_DEVELOPER) == 0;
+
+		if (editable && visible) {
+			free(it->first);
+			it = this->settings.erase(it);
+		} else {
+			it++;
+		}
+	}
+}
+
 void ScriptConfig::AddRandomDeviation()
 {
 	for (const auto &item : *this->GetConfigList()) {

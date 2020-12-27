@@ -135,6 +135,11 @@ public:
 	void ResetSettings();
 
 	/**
+	 * Reset only editable and visible settings to their default value.
+	 */
+	void ResetEditableSettings(bool yet_to_start);
+
+	/**
 	 * Randomize all settings the Script requested to be randomized.
 	 */
 	virtual void AddRandomDeviation();
