@@ -949,7 +949,14 @@ static bool AircraftController(Aircraft *v)
 			return false;
 		}
 
-		/* Vehicle is now at the airport. */
+		/* Vehicle is now at the airport.
+		 * Helicopter has arrived at the target landing pad, so the current position is also where it should land.
+		 * Except for Oilrigs which are special due to being a 1x1 station, and helicopters land outside it. */
+		if (st->airport.type != AT_OILRIG) {
+			x = v->x_pos;
+			y = v->y_pos;
+			tile = TileVirtXY(x, y);
+		}
 		v->tile = tile;
 
 		/* Find altitude of landing position. */
