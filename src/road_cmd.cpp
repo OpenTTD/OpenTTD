@@ -1191,7 +1191,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		dep->build_date = _date;
 
 		/* A road depot has two road bits. */
-		UpdateCompanyRoadInfrastructure(rt, _current_company, 2);
+		UpdateCompanyRoadInfrastructure(rt, _current_company, ROAD_DEPOT_TRACKBIT_FACTOR);
 
 		MakeRoadDepot(tile, _current_company, dep->index, dir, rt);
 		MarkTileDirtyByTile(tile);
@@ -1217,7 +1217,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, DoCommandFlag flags)
 			/* A road depot has two road bits. */
 			RoadType rt = GetRoadTypeRoad(tile);
 			if (rt == INVALID_ROADTYPE) rt = GetRoadTypeTram(tile);
-			c->infrastructure.road[rt] -= 2;
+			c->infrastructure.road[rt] -= ROAD_DEPOT_TRACKBIT_FACTOR;
 			DirtyCompanyInfrastructureWindows(c->index);
 		}
 
@@ -2405,14 +2405,22 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				}
 			}
 
-			uint num_pieces = CountBits(GetAnyRoadBits(tile, rtt));;
+			uint num_pieces = CountBits(GetAnyRoadBits(tile, rtt));
+			if (tt == MP_STATION && IsStandardRoadStopTile(tile)) {
+				num_pieces *= ROAD_STOP_TRACKBIT_FACTOR;
+			} else if (tt == MP_ROAD && IsRoadDepot(tile)) {
+				num_pieces *= ROAD_DEPOT_TRACKBIT_FACTOR;
+			}
+
 			found_convertible_road = true;
 			cost.AddCost(num_pieces * RoadConvertCost(from_type, to_type));
 
 			if (flags & DC_EXEC) { // we can safely convert, too
 				/* Update the company infrastructure counters. */
-				if (!IsRoadStopTile(tile) && owner == _current_company) {
-					ConvertRoadTypeOwner(tile, num_pieces, owner, from_type, to_type);
+				if (owner == _current_company) {
+					Company * c = Company::Get(_current_company);
+					c->infrastructure.road[from_type] -= num_pieces;
+					c->infrastructure.road[to_type] += num_pieces;
 				}
 
 				/* Perform the conversion */
@@ -2460,8 +2468,9 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (flags & DC_EXEC) {
 				/* Update the company infrastructure counters. */
 				if (owner == _current_company) {
-					ConvertRoadTypeOwner(tile, num_pieces, owner, from_type, to_type);
-					ConvertRoadTypeOwner(endtile, num_pieces, owner, from_type, to_type);
+					/* Each piece should be counted TUNNELBRIDGE_TRACKBIT_FACTOR times
+					 * for the infrastructure counters (cause of #8297). */
+					ConvertRoadTypeOwner(tile, num_pieces * TUNNELBRIDGE_TRACKBIT_FACTOR, owner, from_type, to_type);
 					SetTunnelBridgeOwner(tile, endtile, _current_company);
 				}
 
