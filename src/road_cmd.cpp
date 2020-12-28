@@ -2388,9 +2388,22 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			}
 		}
 
+		bool is_owner_town = (owner == OWNER_TOWN);
+		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
+
 		/* Vehicle on the tile when not converting normal <-> powered
 		 * Tunnels and bridges have special check later */
 		if (tt != MP_TUNNELBRIDGE) {
+			/* Base the ability to replace town roads on the town's acceptance
+			 * of road destruction. */
+			if (is_owner_town) {
+				CommandCost ret = CheckforTownRating(DC_NONE, t, ROAD_REMOVE);
+				if (ret.Failed()) {
+					error = ret;
+					continue;
+				}
+			}
+
 			if (!HasPowerOnRoad(from_type, to_type)) {
 				CommandCost ret = EnsureNoVehicleOnGround(tile);
 				if (ret.Failed()) {
@@ -2429,6 +2442,15 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				}
 			}
 		} else {
+			/* Base the ability to replace town road bridges on the town's acceptance
+			 * of bridge destruction. */
+			if (is_owner_town) {
+				CommandCost ret = CheckforTownRating(DC_NONE, t, TUNNELBRIDGE_REMOVE);
+				if (ret.Failed()) {
+					error = ret;
+					continue;
+				}
+			}
 			TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
 
 			/* If both ends of tunnel/bridge are in the range, do not try to convert twice -
