@@ -379,8 +379,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Kapacita nákla
 STR_SORT_BY_RANGE                                               :Rozsah
 STR_SORT_BY_POPULATION                                          :Populácia
 STR_SORT_BY_RATING                                              :Hodnotenie
+STR_SORT_BY_NUM_VEHICLES                                        :Počet vozidiel
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Celkový profit v minulom roku
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Celkový profit v tomto roku
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Priemerný profit v minulom roku
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Priemerný profit v tomto roku
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Žiadne
+STR_GROUP_BY_SHARED_ORDERS                                      :Zdieľané príkazy
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pozastaviť hru
@@ -841,6 +848,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Zobrazi�
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Zobraziť poslednú správu alebo novinku
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  POZASTAVENÉ  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  POZASTAVENÉ (čaká sa na aktualizovanie spojovacieho grafu) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOULOŽENIE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  HRA SA UKLADÁ  *  *
 
@@ -1312,7 +1320,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :na začiatku
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :v strede
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :na konci
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Posúvať pohľad, keď je kurzor myši na okraji okna: {STRING}
-STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ak je povolené, zobrazenia sa budú meniť keď je myš pri okraji okna
+STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Ak je zapnuté, pohľady sa budú posúvať, keď je myš pri okraji okna
 STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Vypnuté
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Hlavný pohľad, iba na celú obrazovku
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Hlavný podľad
@@ -1373,12 +1381,12 @@ STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Minimálna suma
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Trvanie zobrazenia chybovej hlášky: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Trvanie zobrazenia chybovej hlášky v červenom okne. Uvedomte si že niektoré "kritické" správy nezmiznú po uplynutí času, ale musia byť zatvorené ručne.
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sek{P unda undy únd}
-STR_CONFIG_SETTING_HOVER_DELAY                                  :Ukáž nápovedu: {STRING}
-STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oneskorenie pred tým ako bude zobrazená nápoveda po ukázaní myšou. Nápoveda môže byť eventuálne nastavené aj na PRAVÉ tlačítko myši.
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Zobrazenie na {COMMA} sekúnd
-STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Klik pravým tlačítkom
+STR_CONFIG_SETTING_HOVER_DELAY                                  :Ukázať nápovedu: {STRING}
+STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Oneskorenie pred zobrazením nápovedy po prejdení prvku rozhrania myšou. Nápoveda môže byť eventuálne nastavené aj na kliknutie pravým tlačidlom myši pri hodnote 0.
+STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Zobrazenie po {COMMA} milisekundách
+STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Klik pravým tlačidlom
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Zobraziť počet obyvateľov mesta v jeho názve: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zobrazí populáciu mesta v jeho názve.
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Zobrazí populáciu mesta na mape v jeho názve
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Hrúbka čiar v grafe: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Hrúbka čiar v grafe. Tenké čiary sú presnejšie, hrubšie zasa lepšie viditeľné
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Zobraziť názov NewGRF v okne vozidiel: {STRING}
@@ -1442,21 +1450,21 @@ STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Pohyb mapy s ľ
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Plynulé posúvanie pohľadu: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Nastaví ako bude reagovať posúvanie na špecifickú pozíciu po kliknutí na minimapu, alebo po zadaní príkazu na presun na zadaný objekt. Ak je zapnuté, pohľad sa presúva plynulo. Ak je vypnuté, pohľad skočí priamo na zadané miesto/objekt.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Zobraziť údaje o rozmeroch pri výstavbe: {STRING}
-STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Zobrazí vzdialenosť v dieloch a prevýšenie pri konštrukcii ťahaním.
-STR_CONFIG_SETTING_LIVERIES                                     :Zobraziť farby vozidiel spoločnosti: {STRING}
-STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Kontrola použitia vozidla-typ špecifických livrej vozidiel (v rozpore so špecificikami podniku)
-STR_CONFIG_SETTING_LIVERIES_NONE                                :žiadne
-STR_CONFIG_SETTING_LIVERIES_OWN                                 :vlastná spoločnosť
-STR_CONFIG_SETTING_LIVERIES_ALL                                 :všetky spoločnosti
+STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Zobrazí vzdialenosť v políčkach a prevýšenie pri konštrukcii ťahaním
+STR_CONFIG_SETTING_LIVERIES                                     :Zobraziť špecifické farby vozidiel: {STRING}
+STR_CONFIG_SETTING_LIVERIES_HELPTEXT                            :Ovláda použitie špecifickej farby pre typy vozidiel (na rozdiel od používania farieb daných spoločnosťou)
+STR_CONFIG_SETTING_LIVERIES_NONE                                :Žiadne
+STR_CONFIG_SETTING_LIVERIES_OWN                                 :Vlastná spoločnosť
+STR_CONFIG_SETTING_LIVERIES_ALL                                 :Všetky spoločnosti
 STR_CONFIG_SETTING_PREFER_TEAMCHAT                              :Preferovať tímový chat s klávesou <ENTER>: {STRING}
 STR_CONFIG_SETTING_PREFER_TEAMCHAT_HELPTEXT                     :Prepni systém odosielania správ medzi interným a verejným chatom. <ENTER> respektíve <CTRL+ENTER>
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING                        :Funkcia rolovacieho kolieska myši: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Povolí posúvanie pomocou 2 dimenzionálnych kolečiek myši.
-STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :zvacšit mapu
+STR_CONFIG_SETTING_SCROLLWHEEL_SCROLLING_HELPTEXT               :Povolí posúvanie pomocou dvoj-dimenzionálnych kolečiek myši
+STR_CONFIG_SETTING_SCROLLWHEEL_ZOOM                             :Priblížovať mapu
 STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Posúvať pohľad
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Vypnuté
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Rýchlosť posúvania pohľadu: {STRING}
-STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Nastav citlivosť posúvania koliečkom myši.
+STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Nastavte citlivosť posúvania kolieskom myši
 STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klávesnica na obrazovke: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vyberte spôsob, ktorým chcete otvárať klávesnicu na obrazovke, ktorou môžete vpisovať hodnoty do textových polí ukazovacím zariadením. Mienené pre malé zariadenia bez klávesnice
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Vypnuté
@@ -1505,8 +1513,8 @@ STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Typ železnice 
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :prvé dostupné
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :posledné dostupné
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :najpoužívanejšie
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Zobraziť rezervovácia pre trate: {STRING}
-STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dajte obsadenej trati inú farbu na pomoc pri problémoch s vlakmi odmietajúcimi vstúpiť na časť danej trate
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION                       :Zobraziť rezerváciu pre trate: {STRING}
+STR_CONFIG_SETTING_SHOW_TRACK_RESERVATION_HELPTEXT              :Dá obsadenej trati inú farbu na pomoc pri problémoch s vlakmi odmietajúcimi vstúpiť do úseku danej trate
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Zachovať stavebné nástroje aktívne aj po použití: {STRING}
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zachovaj okno s nástrojmi na stavbu mostov/tunelov otvorené aj po použití
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Zoskupiť výdavky v okne financií spoločnosti: {STRING}
@@ -1679,7 +1687,11 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Kvadratické
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineárne
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Umiestnenie stromov počas hry: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Riadi náhodný výskyt stromov počas hry. Toto môže ovplyvniť priemysel úzko spojený s rastom stromov ako napríklad Píla.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Riadi náhodný výskyt stromov počas hry. Toto môže ovplyvniť priemysel závislý na raste stromov, ako napríklad píly v subtropickej krajine
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Rastú, ale nešíria sa {RED}(znefunkční pílu)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Rastú, ale šíria sa iba v pralese
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Rastú a šíria sa všade
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Nerastú, nešíria sa {RED}(znefunkční pílu)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozícia hlavného menu: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontálna poloha hlavného ovládacieho panela na vrchu obrazovky
@@ -1688,11 +1700,11 @@ STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Horizontálna p
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Rádius uchytenia okna: {STRING}
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Vzdialenosť medzi oknami pred tým ako je okno pripojené automaticky k vedľajšiemu oknu
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P "" y ov}
-STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :vypnuté
+STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Vypnuté
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Maximálný počet nepriľnavých okien: {STRING}
-STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Počet otvorených neprilepených okien pred tým ako sa najstrašie okno automatický zatvorí
+STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Počet otvorených nepriľnavých okien pred tým ako sa najstrašie okno automatický zatvorí, aby vytvorilo priestor pre ďalšie okná
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
-STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :vypnuté
+STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :Vypnuté
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximálna úroveň priblíženia: {STRING}
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximálna úroveň priblíženia pohľadu. Vyššie úrovne priblíženia zvyšujú požiadavky na pamäť
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximálna úroveň oddialenia: {STRING}
@@ -2043,6 +2055,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Pripojit
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Obnoviť server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Obnovit info o serveri
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Prehľadať internet
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Prehľadať verejné servery na internete
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Prehľadať LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Prehľadať servery na lokálnej sieti
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Pridať server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Pridá server do zoznamu, v ktorom sa vždy budú hľadať prebiehajúce hry
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Spustiť server
@@ -2270,12 +2286,14 @@ STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Hra pozastaven�
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Hra stále pozastavená ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Hra stále pozastavená ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Hra stále pozastavená ({STRING}, {STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Hra je pozastavená ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Hra stále pozastavená ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Hra stále pozastavená ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Hra pokračuje ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :počet hráčov
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :pripájanie klientov
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuálne
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :herný skript
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :čaká sa na aktualizovanie spojovacieho grafu
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :odchádza
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} vstúpil do hry
@@ -2599,6 +2617,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Náhodn�
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Umiestniť stromy náhodného druhu. Shift zobrazí odhadovanú cenu
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Náhodné stromy
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Zasadiť stromy náhodne po celej krajine
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normálne
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Sadiť stromy po jednom, ťahaním po krajine.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Porast
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Sadiť malé porasty ťahaním po krajine.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Les
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Sadiť veľké lesy ťahaním po krajine.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generovanie územia
@@ -4308,6 +4332,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Hra bola ulože
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Súbor nie je možné prečítať
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Súbor nie je možné zapísať
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Kontrola integrity dát zlyhala
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Hra bola uložená v modifikovanej verzii
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nedostupné>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Hra bola uložená vo verzii bez električiek. Vsetky električky boli odstránené
 

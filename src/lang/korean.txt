@@ -2550,6 +2550,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}여러 �
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}여러 종류의 나무를 심습니다. SHIFT 키를 이용하면 예상 비용을 볼 수 있습니다
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}무작위로 나무 심기
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}전 지역에 걸쳐 무작위로 나무를 심습니다
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}일반
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}지면을 드래그해서 나무를 하나씩 놓습니다.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}작은 숲
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}지면을 드래그해서 작은 숲을 만듭니다.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}큰 숲
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}지면을 드래그해서 큰 숲을 만듭니다.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}지형 만들기

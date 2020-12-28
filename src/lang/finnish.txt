@@ -2549,6 +2549,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Sattuman
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Aseta sattumanvaraisia puita. Shift vaihtaa istutustilan ja kustannusarvion välillä
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Satunnaisia puita.
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Istuta puita satunnaisesti maastoon
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Tavallinen
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Istuta yksittäisiä puita vetämällä.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Metsikkö
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Istuta pieniä metsiä vetämällä.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Metsä
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Istuta isoja metsiä vetämällä.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Maanrakennus
