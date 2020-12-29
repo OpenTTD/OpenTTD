@@ -1224,9 +1224,9 @@ STR_CONFIG_SETTING_OFF                                          :Nie
 STR_CONFIG_SETTING_ON                                           :Áno
 STR_CONFIG_SETTING_DISABLED                                     :zakázané
 
-STR_CONFIG_SETTING_COMPANIES_OFF                                :Vypnutý
-STR_CONFIG_SETTING_COMPANIES_OWN                                :vlastná spoločnosť
-STR_CONFIG_SETTING_COMPANIES_ALL                                :všetky spoločnosti
+STR_CONFIG_SETTING_COMPANIES_OFF                                :Vypnuté
+STR_CONFIG_SETTING_COMPANIES_OWN                                :Vlastná spoločnosť
+STR_CONFIG_SETTING_COMPANIES_ALL                                :Všetky spoločnosti
 
 STR_CONFIG_SETTING_NONE                                         :Žiadne
 STR_CONFIG_SETTING_ORIGINAL                                     :Pôvodné
@@ -3252,10 +3252,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ciele sp
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni pre vycentrovanie pohľadu na priemysel/mesto/políčko. Ctrl+klik otvorí nové okno s pohľadom na priemysel/mesto/políčko
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Otázka
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informácie
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Varovanie
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Chyba
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Otázka
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informácia
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Varovanie
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Chyba
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Zrušiť

@@ -3184,10 +3184,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Yhtiön 
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Keskitä päänäkymä laitokseen/kuntaan/ruutuun napsauttamalla tavoitetta. Ctrl+Klik avaa uuden näkymän laitoksen/kunnan/ruudun sijaintiin
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Kysymys
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Tietoa
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Varoitus
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Virhe
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Kysymys
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Tietoa
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Varoitus
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Virhe
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Peruuta
