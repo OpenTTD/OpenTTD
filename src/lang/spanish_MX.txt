@@ -195,6 +195,7 @@ STR_COLOUR_DEFAULT                                              :Predefinido
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}casillas/día
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}cv
@@ -315,8 +316,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacidad de ca
 STR_SORT_BY_RANGE                                               :Alcance
 STR_SORT_BY_POPULATION                                          :Población
 STR_SORT_BY_RATING                                              :Evaluación
+STR_SORT_BY_NUM_VEHICLES                                        :Número de vehículos
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Ganancias totales del año pasado
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Ganancias totales de este año
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Ganancias promedio del año pasado
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Ganancias promedio de este año
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Ninguno
+STR_GROUP_BY_SHARED_ORDERS                                      :Órdenes compartidas
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Poner en pausa
@@ -773,6 +781,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Muestra 
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar último mensaje o noticia
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  EN PAUSA  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  EN PAUSA (esperando actualización de gráf. de distribución) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}GUARDADO AUTOMÁTICO
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  GUARDANDO PARTIDA  *  *
 
@@ -1556,6 +1565,11 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Año de fin de 
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Año en el que se termina el juego para registrar la puntuación de la empresa y mostrar la tabla de puntuaciones, aunque el jugador puede continuar el juego.{}Cualquier fecha anterior al año de incio hará que la tabla de puntuaciones nunca se muestre.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de economía: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :La economía suave provoca cambios menores pero continuos en la producción. La economía congelada impide el cierre de industrias y los cambios en la producción. Esta configuración podría tener efecto nulo si algún NewGRF incluye tipos de industrias.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Congelada
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Al activarse, se pueden comprar y vender acciones de otras empresas. Las acciones de una empresa solamente estarán disponibles cuando la empresa cumpla una edad determinada
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Edad mínima de la empresa para intercambiar acciones: {STRING}
@@ -1607,6 +1621,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineal
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Crecimiento de árboles durante la partida: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlar la aparición aleatoria de árboles durante la partida. Esto puede afectar industrias que dependen del crecimiento de árboles, como los aserraderos
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Crecer pero no expandir {RED}(rompe el aserradero)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Crecer pero solo expandir en bosques
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Crecer y expandir por todos lados
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :No crecer ni expandir {RED}(rompe el aserradero)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posición de la barra de herramientas principal: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posición horizontal de la barra de herramientas principal en la parte superior de la pantalla
@@ -1673,6 +1691,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Cada vez que se
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unidades del juego (casillas/día)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potencia de vehículos: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Cada vez que se muestre la potencia de un vehículo en la interfaz de usuario, se emplearán las unidades elegidas
@@ -1805,6 +1824,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}A esta t
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Salir
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}¿Estás seguro de salir de OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Sí
 STR_QUIT_NO                                                     :{BLACK}No
 
@@ -1968,6 +1988,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Unirse a
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Volver a cargar servidor
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Volver a cargar información del servidor
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Buscar en internet
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Buscar servidores públicos en internet
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Buscar en red local
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Buscar servidores en la red local
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Añadir servidor
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Añadir el servidor a una lista que siempre será analizada en busca de partidas activas
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
@@ -2196,11 +2220,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Partida aún en
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Partida aún en pausa ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Partida aún en pausa ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Partida aún en pausa ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Partida aún en pausa ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Partida reanudada ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :número de jugadores
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :clientes conectándose
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script de juego
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :esperando actualización de gráf. de distribución
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saliendo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se unió a la partida
@@ -2524,6 +2550,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Tipo ale
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Colocar árboles de distinto tipo al azar. Mayús muestra una estimación del precio
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Árboles al azar
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta árboles al azar sobre el terreno
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantar árboles individuales al arrastrar sobre el terreno.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Arboleda
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Plantar bosques pequeños al arrastrar sobre el terreno.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Bosque
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantar grandes bosques al arrastrar sobre el terreno.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generación de terreno
@@ -3153,10 +3185,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metas de
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clic en una meta para centrar la vista principal en la casilla, industria o pueblo. Ctrl+Clic abre una nueva ventana de vista en dicha ubicación
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pregunta
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Información
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Advertencia
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Error
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pregunta
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Información
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Advertencia
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Error
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar
@@ -4233,6 +4265,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida guar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :No se puede leer el archivo
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No se puede escribir en el archivo
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :El análisis de integridad de los datos falló
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :El juego guardado es de una versión modificada
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<no disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}La partida fue guardada en una versión que no admite tranvías. Todos los tranvías serán eliminados
 
@@ -4720,10 +4753,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de az
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sin nombre
-STR_SV_TRAIN_NAME                                               :Tren {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Vehículo de carretera {COMMA}
-STR_SV_SHIP_NAME                                                :Barco {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
+STR_SV_TRAIN_NAME                                               :Tren #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Vehículo de carretera #{COMMA}
+STR_SV_SHIP_NAME                                                :Barco #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Aeronave #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Norte
@@ -5025,6 +5058,7 @@ STR_FORMAT_BUOY_NAME                                            :Boya {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Boya {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Empresa {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupo {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING}, {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Punto de ruta, {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Punto de ruta #{1:COMMA}, {0:TOWN}

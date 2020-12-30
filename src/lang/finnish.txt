@@ -3901,7 +3901,7 @@ STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Valitse 
 STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Valitse kuljetettavan rahdin tyyppi
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Sovita juna
-STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Korjaa ajoneuvo.
+STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Sovita ajoneuvo
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Sovita laiva
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Sovita ilma-alus
 
@@ -4568,7 +4568,7 @@ STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Laiva on
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Ilma-alus on tiellä
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Junaa ei voi sovittaa...
-STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ajoneuvoa ei voida korjata.
+STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Ajoneuvoa ei voi sovittaa…
 STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Laivaa ei voi sovittaa...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Ilma-alusta ei voi sovittaa...
 

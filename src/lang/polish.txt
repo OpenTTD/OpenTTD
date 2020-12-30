@@ -694,8 +694,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Ładowność
 STR_SORT_BY_RANGE                                               :Zasięg
 STR_SORT_BY_POPULATION                                          :Liczba mieszkańców
 STR_SORT_BY_RATING                                              :Ocena
+STR_SORT_BY_NUM_VEHICLES                                        :Ilość pojazdów
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Całkowity zysk w zeszłym roku
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Całkowity zysk w obecnym roku
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Średni zysk w zeszłym roku
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Średni zysk w obecnym roku
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Brak
+STR_GROUP_BY_SHARED_ORDERS                                      :Polecenia współdzielone
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
@@ -1153,6 +1160,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Wyświet
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Pokaż ostatnią wiadomość lub ogłoszenie
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  PAUZA  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  PAUZA (oczekiwanie na aktualizację wykresów) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOZAPIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ZAPISYWANIE GRY  *  *
 
@@ -1992,6 +2000,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Liniowy
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Rozmieszczenie drzew w grze: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Losowe pojawianie się drzew podczas gry. Może mieć to wpływ na zakłady opierające się na wyrastaniu drzew, np. tartaki
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Rosną, ale nie rozprzestrzeniają się {RED}(Klimat tropikalny: Tartaki nie działają)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Rosną, ale rozprzestrzeniają się tylko w lasach deszczowych
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Rosną i rozprzestrzeniają się wszędzie
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Nie rosną, nie rozprzestrzeniają się {RED}(Klimat tropikalny: Tartaki nie działają)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Pozycja głównego paska narzędzi: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Pozioma pozycja głównego paska narzędzi na górze ekranu
@@ -2355,6 +2367,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Przyłą
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Odśwież serwer
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Odśwież informacje o serwerze
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :Przeszukaj internet
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Znajdź w internecie serwery publiczne
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :Przeszukaj LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :Znajdź serwery w sieci lokalnej
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj serwer
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaj serwer do listy, która będzie przeszukiwana w poszukiwaniu uruchomionych gier
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom serwer
@@ -2583,11 +2599,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Gra nadal wstrz
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Gra nadal wstrzymana ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Gra nadal wstrzymana ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Gra wciąż wstrzymana ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Gra wciąż wstrzymana ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Gra wznowiona ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :ilość graczy
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :łączenie klientów
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ręczny
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :skrypt gry
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :oczekiwanie na aktualizację wykresów
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :opuszczanie
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} dołączył do gry.
@@ -2911,6 +2929,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Drzewa r
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Sadzenie drzew różnych rodzajów. Shift przełącza pomiędzy trybem sadzenia a szacowaniem jego kosztów
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Losowe drzewa
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Pokryj losowo krajobraz drzewami
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normalny
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :Sadź pojedyncze drzewa, przeciągając nad terenem.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :Zagajnik
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :Sadź niewielkie lasy, przeciągając nad terenem.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :Las
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :Sadź duże lasy, przeciągając nad terenem.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Tworzenie terenu
@@ -4626,6 +4650,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Zapisana gra zr
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Plik nie jest odczytywalny
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Plik nie jest zapisywalny
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Sprawdzenie integralności danych nie powiodło się
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Zapis jest stworzony w zmodyfikowanej wersji gry
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Gra została zapisana w wersji nie obsługującej tramwajów. Wszystkie tramwaje zostały usunięte
 

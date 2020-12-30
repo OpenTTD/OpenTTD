@@ -3358,10 +3358,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Зада
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Щёлкните по задаче, чтобы показать предприятие/город/клетку. Ctrl+щелчок показывает в новом окне.
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Вопрос
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Информация
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Предупреждение
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Ошибка
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Вопрос
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Информация
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Предупреждение
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Ошибка
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Отменить

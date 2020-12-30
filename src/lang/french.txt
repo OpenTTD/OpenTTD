@@ -316,8 +316,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacité
 STR_SORT_BY_RANGE                                               :Rayon d'action
 STR_SORT_BY_POPULATION                                          :Population
 STR_SORT_BY_RATING                                              :Qualité de service
+STR_SORT_BY_NUM_VEHICLES                                        :Nombre de véhicules
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Profit total l'année précédente
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Profit total cette année
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Profit moyen l'année précédente
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Profit moyen cette année
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Aucun
+STR_GROUP_BY_SHARED_ORDERS                                      :Ordres partagés
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Mettre le jeu en pause
@@ -774,6 +781,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Afficher
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Afficher le dernier message ou bulletin
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  SUSPENDU  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * SUSPENDU (en attente du recalcul des liens du graphique) * *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ENREGISTREMENT AUTOMATIQUE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAUVEGARDE EN COURS  *  *
 
@@ -1613,6 +1621,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linéaire
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plantation d'arbres durant la partie{NBSP}: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Contrôle l'apparition aléatoire des arbres durant la partie. Cela peut affecter les industries qui dépendent de la croissance des arbres, par exemple les scieries
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Croissance sans propagation {RED}(casse les scieries)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Croissance mais propagation uniquement dans les régions tropicales
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Croissance et propagation partout
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Pas de croissance, pas de propagation {RED}(casse les scieries)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Position de la barre d'outils principale{NBSP}: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Position horizontale de la barre d'outils principale en haut de l'écran
@@ -1650,10 +1662,10 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Aucune
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicateur initial pour la taille des métropoles{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Taille moyenne des métropoles par rapport aux villes normales au début de la partie
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Réactualiser le graphique de la distribution tous les {STRING}{NBSP}jour{P 0:2 "" s}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Intervalle entre la recalculation des liens du graphique. À chaque itération, une seule composante du graphique est recalculée. Donc, une valeur X pour ce réglage ne signifie pas que le graphique est réactualisé entièrement tous les X jours. Plus l'intervalle est court, plus de temps CPU est nécessaire pour la recalculation. Plus il est long, et plus de temps sera nécessaire pour que la distribution s'effectue sur de nouvelles routes.
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Recalculer le graphe de distribution tous les {STRING}{NBSP}jour{P 0:2 "" s}
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Intervalle entre le recalcul du graphe de distribution. À chaque itération, une seule composante du graphe est recalculée. Donc, une valeur X pour ce réglage ne signifie pas que le graphe est réactualisé entièrement tous les X jours. Plus l'intervalle est court, plus de temps CPU est nécessaire pour la recalcul. Plus il est long, et plus de temps sera nécessaire pour que la distribution s'effectue sur de nouvelles routes.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Prendre {STRING}{NBSP}jour{P 0:2 "" s} pour recalculer le graphe de distribution
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Durée maximale (en jours) de la réactualisation d'une composante du graphique. À chaque itération, un thread est initié, qui a une durée maximale définie par ce réglage. Plus celui-ci est court, plus la probabilité que le thread ne termine pas sa tâche à temps est élevée. Le jeu s'interrompt alors jusqu'à la fin de la recalculation ("lag"). Plus le réglage est long, et moins rapidement la distribution sera réactualisée en cas de changement de routes.
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Durée maximale (en jours) du recalcul d'une composante du graphe. À chaque itération, un thread est initié, qui a une durée maximale définie par ce réglage. Plus celui-ci est court, plus la probabilité que le thread ne termine pas sa tâche à temps est élevée. Le jeu s'interrompt alors jusqu'à la fin du recalcul ("lag"). Plus le réglage est long, et moins rapidement la distribution sera réactualisée en cas de changement de routes.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuel
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymétrique
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symétrique
@@ -1666,7 +1678,7 @@ STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :La classe de ca
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Type de distribution pour les autres classes de cargaison{NBSP}: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"asymétrique" signifie qu'une quantité arbitraire de cargaison peut être envoyée dans les deux directions. "manuel" signifie qu'aucune distribution n'est mise en place pour la cargaison.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Précision de la distribution{NBSP}: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Plus ce réglage est élevé, plus la réactualisation du graphique de distribution occupe de temps CPU. S'il est trop élevé, cela peut produire de la latence ("lag"). Au contraire, plus la valeur est basse, plus la distribution sera imprécise et l'on risque de voir des cargaisons ne pas aller vers la destination attendue.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Plus ce réglage est élevé, plus le recalcul du graphe de distribution occupe de temps CPU. S'il est trop élevé, cela peut produire de la latence ("lag"). Au contraire, plus la valeur est basse, plus la distribution sera imprécise et l'on risque de voir des cargaisons ne pas aller vers la destination attendue.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Effet de la distance sur la demande{NBSP}: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Si cette valeur est supérieure à 0, la distance entre la station d'origine A d'une cargaison et une possible destination B a un impact sur la quantité de cargaison envoyée de A vers B. Plus la distance est grande entre les deux, moins de cargaison sera envoyée. Plus cette valeur est élevée, moins de cargaison sera envoyée vers des stations lointaines, et plus vers les stations plus proches.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Quantité de cargaison renvoyée en mode symétrique{NBSP}: {STRING}
@@ -1976,6 +1988,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Rejoindr
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Actualiser
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Actualiser les informations sur le serveur
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Recherche internet
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Rechercher des serveurs publiés sur internet
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Recherche LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Rechercher des serveurs sur le réseau local
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Ajouter un serveur
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Ajouter un serveur à la liste de ceux parmi lesquels des parties en cours seront toujours cherchées
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Démarrer le serveur
@@ -2204,11 +2220,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Partie toujours
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Partie toujours suspendue ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Partie toujours suspendue ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Partie toujours suspendue ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Partie toujours suspendue ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Reprise de la partie ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nombre de joueurs
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :connexion de clients
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuel
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script de jeu
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :en attente du recalcul du graphe de liens
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :départ
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} a rejoint la partie
@@ -2532,6 +2550,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Au hasar
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Planter des arbres provenant d'espèces choisies au hasard.{}Shift pour afficher seulement le coût estimé.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Ajouter des arbres au hasard
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Semer des arbres au hasard sur l'ensemble du terrain
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Planter de simples arbres en glissant sur le terrain
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Bosquet
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Planter de petites forêts en glissant sur le terrain
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Forêt
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planter de larges forêts en glissant sur le terrain
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Création du terrain
@@ -2764,7 +2788,7 @@ STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Ticks 
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ticks des navires{NBSP}:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Ticks des aéroplanes{NBSP}:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Ticks du monde{NBSP}:
-STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Délai du flux des marchandises{NBSP}:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Délai du graphe de distribution{NBSP}:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Rendu des graphismes{NBSP}:
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vues{NBSP}:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Sortie vidéo{NBSP}:
@@ -2781,7 +2805,7 @@ STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticks des véhi
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks des navires
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Ticks des aéroplanes
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Ticks du monde
-STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Délai du flux des marchandises
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Délai du graphe de distribution
 STR_FRAMETIME_CAPTION_DRAWING                                   :Rendu des graphismes
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Rendu des vues
 STR_FRAMETIME_CAPTION_VIDEO                                     :Sortie vidéo
@@ -3161,10 +3185,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Objectif
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliquer sur l'objectif pour centrer la vue principale sur l'industrie, la ville ou la case. Ctrl-clic pour ouvrir une nouvelle vue sur l'industrie, la ville ou la case.
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Question
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informations
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Attention
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Erreur
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Question
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informations
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Attention
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Erreur
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Annuler
@@ -4241,6 +4265,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sauvegarde modi
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fichier illisible
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichier protégé en écriture
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Échec du contrôle d'intégrité des données
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Sauvegarde créée avec une version modifiée
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<non disponible>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
 
