@@ -661,6 +661,8 @@ void StartupOneEngine(Engine *e, Date aging_date)
 		e->flags |= ENGINE_AVAILABLE;
 	}
 
+	RestoreRandomSeeds(saved_seeds);
+
 	e->reliability_start = GB(r, 16, 14) + 0x7AE0;
 	r = Random();
 	e->reliability_max   = GB(r,  0, 14) + 0xBFFF;
@@ -673,7 +675,6 @@ void StartupOneEngine(Engine *e, Date aging_date)
 
 	e->reliability_spd_dec = ei->decay_speed << 2;
 
-	RestoreRandomSeeds(saved_seeds);
 	CalcEngineReliability(e);
 
 	/* prevent certain engines from ever appearing. */
