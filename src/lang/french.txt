@@ -781,7 +781,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Afficher
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Afficher le dernier message ou bulletin
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  SUSPENDU  *  *
-STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * SUSPENDU (en attente du recalcul des liens du graphique) * *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  SUSPENDU (en attente du recalcul des liens du graphique)  *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}ENREGISTREMENT AUTOMATIQUE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SAUVEGARDE EN COURS  *  *
 

@@ -3692,11 +3692,11 @@ STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :sähköradan ve
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :yksiraiteisen veturi
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :Maglev-veturi
 
-STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ajoneuvon
-STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :raitiovaunun
+STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :ajoneuvo
+STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :raitiovaunu
 
-STR_ENGINE_PREVIEW_AIRCRAFT                                     :ilma-aluksen
-STR_ENGINE_PREVIEW_SHIP                                         :laivan
+STR_ENGINE_PREVIEW_AIRCRAFT                                     :ilma-alus
+STR_ENGINE_PREVIEW_SHIP                                         :laiva
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY_LONG}/vuosi{}Kapasiteetti: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Hinta: {CURRENCY_LONG} Paino: {WEIGHT_SHORT}{}Nopeus: {VELOCITY}  Teho: {POWER}  Maks. vetovoima: {6:FORCE}{}Käyttökustannukset: {4:CURRENCY_LONG}/v{}Kapasiteetti: {5:CARGO_LONG}
