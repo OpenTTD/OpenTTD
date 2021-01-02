@@ -122,25 +122,37 @@ elseif(UNIX)
             OUTPUT_VARIABLE LSB_RELEASE_ID
             OUTPUT_STRIP_TRAILING_WHITESPACE
         )
-        if(NOT LSB_RELEASE_ID)
+        if(LSB_RELEASE_ID)
+            if(LSB_RELEASE_ID STREQUAL "Ubuntu" OR LSB_RELEASE_ID STREQUAL "Debian")
+                execute_process(COMMAND ${LSB_RELEASE_EXEC} -cs
+                    OUTPUT_VARIABLE LSB_RELEASE_CODENAME
+                    OUTPUT_STRIP_TRAILING_WHITESPACE
+                )
+                string(TOLOWER "${LSB_RELEASE_ID}-${LSB_RELEASE_CODENAME}" PLATFORM)
+
+                set(CPACK_GENERATOR "DEB")
+                include(PackageDeb)
+            else()
+                set(UNSUPPORTED_PLATFORM_NAME "LSB-based Linux distribution '${LSB_RELEASE_ID}'")
+            endif()
+        elseif(EXISTS "/etc/os-release")
+            file(STRINGS "/etc/os-release" OS_RELEASE_CONTENTS REGEX "^ID=")
+            string(REGEX MATCH "ID=(.*)" _ ${OS_RELEASE_CONTENTS})
+            set(DISTRO_ID ${CMAKE_MATCH_1})
+            if(DISTRO_ID STREQUAL "arch")
+                set(PLATFORM "generic")
+                set(CPACK_GENERATOR "TXZ")
+            else()
+                set(UNSUPPORTED_PLATFORM_NAME "Linux distribution '${DISTRO_ID}' from /etc/os-release")
+            endif()
+        else()
+            set(UNSUPPORTED_PLATFORM_NAME "Linux distribution")
+        endif()
+
+        if(NOT PLATFORM)
             set(PLATFORM "generic")
             set(CPACK_GENERATOR "TXZ")
-
-            message(WARNING "Unknown Linux distribution found for packaging; can only pack to a txz. Please consider creating a Pull Request to add support for this distribution.")
-        elseif(LSB_RELEASE_ID STREQUAL "Ubuntu" OR LSB_RELEASE_ID STREQUAL "Debian")
-            execute_process(COMMAND ${LSB_RELEASE_EXEC} -cs
-                OUTPUT_VARIABLE LSB_RELEASE_CODENAME
-                OUTPUT_STRIP_TRAILING_WHITESPACE
-            )
-            string(TOLOWER "${LSB_RELEASE_ID}-${LSB_RELEASE_CODENAME}" PLATFORM)
-
-            set(CPACK_GENERATOR "DEB")
-            include(PackageDeb)
-        else()
-            set(PLATFORM "unknown")
-            set(CPACK_GENERATOR "TXZ")
-
-            message(WARNING "Unknown LSB-based Linux distribution '${LSB_RELEASE_ID}' found for packaging; can only pack to a txz. Please consider creating a Pull Request to add support for this distribution.")
+            message(WARNING "Unknown ${UNSUPPORTED_PLATFORM_NAME} found for packaging; can only pack to a txz. Please consider creating a Pull Request to add support for this distribution.")
         endif()
 
         set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-linux-${PLATFORM}-${CPACK_SYSTEM_NAME}")
