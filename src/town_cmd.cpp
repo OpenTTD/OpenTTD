@@ -954,6 +954,7 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 
 static void LevelTownLand(TileIndex tile)
 {
+	if (_generating_world) return;
 	assert(tile < MapSize());
 
 	/* Don't terraform if land is plain or if there's a house there. */
