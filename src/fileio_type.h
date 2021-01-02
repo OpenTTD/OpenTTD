@@ -140,6 +140,8 @@ enum Searchpath : unsigned {
 	SP_INSTALLATION_DIR,           ///< Search in the installation directory
 	SP_APPLICATION_BUNDLE_DIR,     ///< Search within the application bundle
 	SP_AUTODOWNLOAD_DIR,           ///< Search within the autodownload directory
+	SP_AUTODOWNLOAD_PERSONAL_DIR,  ///< Search within the autodownload directory located in the personal directory
+	SP_AUTODOWNLOAD_PERSONAL_DIR_XDG, ///< Search within the autodownload directory located in the personal directory (XDG variant)
 	NUM_SEARCHPATHS
 };
 
