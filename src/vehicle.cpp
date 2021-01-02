@@ -1091,6 +1091,23 @@ static void DoDrawVehicle(const Vehicle *v)
 		if (to != TO_INVALID && (IsTransparencySet(to) || IsInvisibilitySet(to))) return;
 	}
 
+	/*
+	 * If the vehicle sprite was not updated despite further viewport changes, we need
+	 * to update it before drawing.
+	 *
+	 * I'm not keen on casting to mutable - it's the approach JGR uses in JGRPP but I
+	 * wonder if there's a cleaner option (even though we can only take the decision
+	 * whether to update once we already know the vehicle is going to appear in a
+	 * viewport)
+	 */
+	if (v->rstate.sprite_has_viewport_changes) {
+		Vehicle* v_mutable = const_cast<Vehicle*>(v);
+		VehicleSpriteSeq seq;
+		v_mutable->GetImage(v_mutable->direction, EIT_ON_MAP, &seq);
+		v_mutable->sprite_seq = seq;
+		v_mutable->rstate.sprite_has_viewport_changes = false;
+	}
+
 	StartSpriteCombine();
 	for (uint i = 0; i < v->sprite_seq.count; ++i) {
 		PaletteID pal2 = v->sprite_seq.seq[i].pal;
@@ -1139,6 +1156,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 			const Vehicle *v = _vehicle_viewport_hash[x + y]; // already masked & 0xFFF
 
 			while (v != nullptr) {
+
 				if (!(v->vehstatus & VS_HIDDEN) &&
 						l <= v->coord.right &&
 						t <= v->coord.bottom &&
@@ -1146,6 +1164,23 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 						b >= v->coord.top) {
 					DoDrawVehicle(v);
 				}
+				else {
+					/*
+					 * Indicate that this vehicle was considered for rendering in a viewport,
+					 * and we therefore need to update sprites more frequently in case a callback
+					 * will change the bounding box to one which will cause the sprite to be
+					 * displayed.
+					 *
+					 * This reduces the chances of flicker when sprites enter the screen, if they
+					 * are part of a newgrf vehicle set which changes bounding boxes within a
+					 * single vehicle direction.
+					 *
+					 * TODO: is there a cleaner solution than casting to a mutable type?
+					 */
+					Vehicle* v_mutable = const_cast<Vehicle*>(v);
+					v_mutable->rstate.is_viewport_candidate = true;
+				}
+
 				v = v->hash_viewport_next;
 			}
 

@@ -124,6 +124,13 @@ struct VehicleCache {
 	byte cached_vis_effect;  ///< Visual effect to show (see #VisualEffect)
 };
 
+/** Values for controlling how a vehicle's sprites are refreshed */
+struct VehicleSpriteRefreshState {
+	Direction last_direction;         ///< Last direction we obtained sprites for
+	bool is_viewport_candidate;       ///< The vehicle has been in the hash for a shown viewport recently
+	bool sprite_has_viewport_changes; ///< There have been viewport changes since the sprite was last updated
+};
+
 /** Sprite sequence for a vehicle part. */
 struct VehicleSpriteSeq {
 	PalSpriteID seq[4];
@@ -326,6 +333,8 @@ public:
 
 	NewGRFCache grf_cache;              ///< Cache of often used calculated NewGRF values
 	VehicleCache vcache;                ///< Cache of often used vehicle values.
+
+	VehicleSpriteRefreshState rstate;   ///< Values relating to whether sprites should be refreshed, see #VehicleSpriteRefreshState
 
 	Vehicle(VehicleType type = VEH_INVALID);
 
@@ -1169,16 +1178,42 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	inline void UpdateViewport(bool force_update, bool update_delta)
 	{
+		bool sprite_has_changed = false;
+
 		/* Skip updating sprites on dedicated servers without screen */
 		if (_network_dedicated) return;
 
 		/* Explicitly choose method to call to prevent vtable dereference -
 		 * it gives ~3% runtime improvements in games with many vehicles */
 		if (update_delta) ((T *)this)->T::UpdateDeltaXY();
-		VehicleSpriteSeq seq;
-		((T *)this)->T::GetImage(this->direction, EIT_ON_MAP, &seq);
-		if (force_update || this->sprite_seq != seq) {
-			this->sprite_seq = seq;
+
+		/*
+		 * Only check for a new sprite sequence if the vehicle direction
+		 * has changed since we last checked it, assuming that otherwise
+		 * there won't be enough change in bounding box or offsets to need
+		 * to resolve a new sprite.
+		 */
+		if (this->direction != this->rstate.last_direction || this->rstate.is_viewport_candidate) {
+			VehicleSpriteSeq seq;
+
+			((T*)this)->T::GetImage(this->direction, EIT_ON_MAP, &seq);
+			if (this->sprite_seq != seq) {
+				sprite_has_changed = true;
+				this->sprite_seq = seq;
+			}
+
+			this->rstate.last_direction = this->direction;
+			this->rstate.is_viewport_candidate = false;
+			this->rstate.sprite_has_viewport_changes = false;
+		} else {
+			/*
+			 * Changes could still be relevant when we render the vehicle even if
+			 * they don't alter the bounding box
+			 */
+			this->rstate.sprite_has_viewport_changes = true;
+		}
+
+		if (force_update || sprite_has_changed) {
 			this->Vehicle::UpdateViewport(true);
 		}
 	}
