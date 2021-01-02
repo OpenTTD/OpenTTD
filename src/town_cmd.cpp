@@ -48,6 +48,7 @@
 #include "object_base.h"
 #include "ai/ai.hpp"
 #include "game/game.hpp"
+#include "water.h"
 #include "town_cmd.h"
 #include "landscape_cmd.h"
 #include "road_cmd.h"
@@ -1095,7 +1096,7 @@ static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 			CommandCost res = CMD_ERROR;
 			if (!_generating_world && Chance16(1, 10)) {
 				/* Note: Do not replace "^ SLOPE_ELEVATED" with ComplementSlope(). The slope might be steep. */
-				res = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER,
+				res = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(DC_EXEC | DC_AUTO | DC_NO_WATER | DC_NO_TERRAFORM_FLOOD,
 						tile, Chance16(1, 16) ? cur_slope : cur_slope ^ SLOPE_ELEVATED, false));
 			}
 			if (res.Failed() && Chance16(1, 3)) {
@@ -1112,9 +1113,9 @@ static bool TerraformTownTile(TileIndex tile, Slope edges, bool dir)
 {
 	assert(tile < Map::Size());
 
-	CommandCost r = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(DC_AUTO | DC_NO_WATER, tile, edges, dir));
+	CommandCost r = std::get<0>(Command<CMD_TERRAFORM_LAND>::Do(DC_AUTO | DC_NO_WATER | DC_NO_TERRAFORM_FLOOD, tile, edges, dir));
 	if (r.Failed() || r.GetCost() >= (_price[PR_TERRAFORM] + 2) * 8) return false;
-	Command<CMD_TERRAFORM_LAND>::Do(DC_AUTO | DC_NO_WATER | DC_EXEC, tile, edges, dir);
+	Command<CMD_TERRAFORM_LAND>::Do(DC_AUTO | DC_NO_WATER | DC_NO_TERRAFORM_FLOOD | DC_EXEC, tile, edges, dir);
 	return true;
 }
 
@@ -1131,6 +1132,31 @@ static void LevelTownLand(TileIndex tile)
 	if (!TerraformTownTile(tile, ~tileh & SLOPE_ELEVATED, true)) {
 		TerraformTownTile(tile, tileh & SLOPE_ELEVATED, false);
 	}
+}
+
+/**
+ * Check if a town can safely terraform a tile without it being flooded by the ocean.
+ *
+ * @param tile Tile to check.
+ * @param z_new The new height the tile would get after being terraformed.
+ * @param tileh_new The new slope type the tile would get after being terraformed.
+ * @return true iff a tile with or without a flooding behaviour can be terraformed.
+ * @note This function is intended to be used for the town growth algorithm using the terraform command.
+ */
+bool CanTownTerraformTileWithoutFlooding(TileIndex tile, int z_new, Slope tileh_new)
+{
+	/* This function is intended to be used for the town growth algorithm using the terraform command. */
+	assert(_current_company == OWNER_TOWN);
+
+	if (GetFloodingBehaviour(tile) != FLOOD_NONE) {
+		return z_new != 0 || (!IsSlopeWithOneCornerRaised(tileh_new) && tileh_new != SLOPE_FLAT);
+	}
+
+	if (_settings_game.construction.freeform_edges && DistanceFromEdge(tile) == 1) {
+		return tileh_new != SLOPE_FLAT;
+	}
+
+	return true;
 }
 
 /**
@@ -1460,8 +1486,8 @@ static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDi
 
 	/* Attempt to build the tunnel. Return false if it fails to let the town build a road instead. */
 	RoadType rt = GetTownRoadType();
-	if (Command<CMD_BUILD_TUNNEL>::Do(CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt).Succeeded()) {
-		Command<CMD_BUILD_TUNNEL>::Do(DC_EXEC | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt);
+	if (Command<CMD_BUILD_TUNNEL>::Do(DC_NO_TERRAFORM_FLOOD | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt).Succeeded()) {
+		Command<CMD_BUILD_TUNNEL>::Do(DC_EXEC | DC_NO_TERRAFORM_FLOOD | CommandFlagsToDCFlags(GetCommandFlags<CMD_BUILD_TUNNEL>()), tile, TRANSPORT_ROAD, rt);
 		_grow_town_result = GROWTH_SUCCEED;
 		return true;
 	}

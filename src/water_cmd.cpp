@@ -37,6 +37,7 @@
 #include "company_gui.h"
 #include "newgrf_generic.h"
 #include "industry.h"
+#include "town.h"
 #include "water_cmd.h"
 #include "landscape_cmd.h"
 #include "pathfinder/water_regions.h"
@@ -1409,10 +1410,16 @@ static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *, TileIndex, int, int)
 	return VETSB_CONTINUE;
 }
 
-static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, int, Slope)
+static CommandCost TerraformTile_Water(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
 {
 	/* Canals can't be terraformed */
 	if (IsWaterTile(tile) && IsCanal(tile)) return CommandCost(STR_ERROR_MUST_DEMOLISH_CANAL_FIRST);
+
+	if (flags & DC_NO_TERRAFORM_FLOOD) {
+		if (!CanTownTerraformTileWithoutFlooding(tile, z_new, tileh_new)) {
+			return CMD_ERROR;
+		}
+	}
 
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }

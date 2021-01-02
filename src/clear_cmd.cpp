@@ -15,6 +15,7 @@
 #include "viewport_func.h"
 #include "core/random_func.hpp"
 #include "newgrf_generic.h"
+#include "town.h"
 #include "landscape_cmd.h"
 
 #include "table/strings.h"
@@ -351,8 +352,14 @@ static void ChangeTileOwner_Clear(TileIndex, Owner, Owner)
 	return;
 }
 
-static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlag flags, int, Slope)
+static CommandCost TerraformTile_Clear(TileIndex tile, DoCommandFlag flags, int z_new, Slope tileh_new)
 {
+	if (flags & DC_NO_TERRAFORM_FLOOD) {
+		if (!CanTownTerraformTileWithoutFlooding(tile, z_new, tileh_new)) {
+			return CMD_ERROR;
+		}
+	}
+
 	return Command<CMD_LANDSCAPE_CLEAR>::Do(flags, tile);
 }
 
