@@ -70,7 +70,7 @@ static bool ModeSorter(const OTTD_Point &p1, const OTTD_Point &p2)
 
 static void QZ_GetDisplayModeInfo(CFArrayRef modes, CFIndex i, int &bpp, uint16 &width, uint16 &height)
 {
-	CGDisplayModeRef mode = (CGDisplayModeRef)CFArrayGetValueAtIndex(modes, i);
+	CGDisplayModeRef mode = static_cast<CGDisplayModeRef>(const_cast<void *>(CFArrayGetValueAtIndex(modes, i)));
 
 	width = (uint16)CGDisplayModeGetWidth(mode);
 	height = (uint16)CGDisplayModeGetHeight(mode);

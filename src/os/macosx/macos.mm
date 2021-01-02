@@ -72,6 +72,10 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 	}
 
 #if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_10)
+#ifdef __clang__
+#	pragma clang diagnostic push
+#	pragma clang diagnostic ignored "-Wdeprecated-declarations"
+#endif
 	SInt32 systemVersion, version_major, version_minor, version_bugfix;
 	if (Gestalt(gestaltSystemVersion, &systemVersion) == noErr) {
 		if (systemVersion >= 0x1040) {
@@ -84,6 +88,9 @@ void GetMacOSVersion(int *return_major, int *return_minor, int *return_bugfix)
 			*return_bugfix = (int)GB(systemVersion, 0, 4);
 		}
 	}
+#ifdef __clang__
+#	pragma clang diagnostic pop
+#endif
 #endif
 }
 
