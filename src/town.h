@@ -313,7 +313,7 @@ inline uint16_t TownTicksToGameTicks(uint16_t ticks)
 	return (std::min(ticks, MAX_TOWN_GROWTH_TICKS) + 1) * Ticks::TOWN_GROWTH_TICKS - 1;
 }
 
-
+bool CanTownTerraformTileWithoutFlooding(TileIndex tile, int z_new, Slope tileh_new);
 RoadType GetTownRoadType();
 
 #endif /* TOWN_H */
