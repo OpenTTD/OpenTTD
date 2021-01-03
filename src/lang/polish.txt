@@ -2249,8 +2249,8 @@ STR_LIVERY_DIESEL                                               :Lokomotywa spal
 STR_LIVERY_ELECTRIC                                             :Lokomotywa elektryczna
 STR_LIVERY_MONORAIL                                             :Lokomotywa jednoszynowa
 STR_LIVERY_MAGLEV                                               :Lokomotywa Maglev
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_DMU                                                  :SZT
+STR_LIVERY_EMU                                                  :EZT
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Wagon pasażerski (parowóz)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Wagon pasażerski (spalinowy)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Wagon pasażerski (elektryczny)
