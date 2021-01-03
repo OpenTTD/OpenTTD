@@ -1009,17 +1009,24 @@ void DetermineBasePaths(const char *exe)
 		tmp += PATHSEP;
 		tmp += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 		AppendPathSeparator(tmp);
-
 		_searchpaths[SP_PERSONAL_DIR_XDG] = tmp;
+
+		tmp += "content_download";
+		AppendPathSeparator(tmp);
+		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR_XDG] = tmp;
 	} else if (!homedir.empty()) {
 		tmp = homedir;
 		tmp += PATHSEP ".local" PATHSEP "share" PATHSEP;
 		tmp += PERSONAL_DIR[0] == '.' ? &PERSONAL_DIR[1] : PERSONAL_DIR;
 		AppendPathSeparator(tmp);
-
 		_searchpaths[SP_PERSONAL_DIR_XDG] = tmp;
+
+		tmp += "content_download";
+		AppendPathSeparator(tmp);
+		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR_XDG] = tmp;
 	} else {
 		_searchpaths[SP_PERSONAL_DIR_XDG].clear();
+		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR_XDG].clear();
 	}
 #endif
 
@@ -1031,10 +1038,14 @@ void DetermineBasePaths(const char *exe)
 		tmp += PATHSEP;
 		tmp += PERSONAL_DIR;
 		AppendPathSeparator(tmp);
-
 		_searchpaths[SP_PERSONAL_DIR] = tmp;
+
+		tmp += "content_download";
+		AppendPathSeparator(tmp);
+		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR] = tmp;
 	} else {
 		_searchpaths[SP_PERSONAL_DIR].clear();
+		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR].clear();
 	}
 #endif
 

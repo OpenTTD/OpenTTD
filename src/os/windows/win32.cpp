@@ -466,6 +466,10 @@ void DetermineBasePaths(const char *exe)
 		tmp += PERSONAL_DIR;
 		AppendPathSeparator(tmp);
 		_searchpaths[SP_PERSONAL_DIR] = tmp;
+
+		tmp += "content_download";
+		AppendPathSeparator(tmp);
+		_searchpaths[SP_AUTODOWNLOAD_PERSONAL_DIR] = tmp;
 	} else {
 		_searchpaths[SP_PERSONAL_DIR].clear();
 	}
