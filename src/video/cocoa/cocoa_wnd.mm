@@ -73,7 +73,7 @@ static OTTDMain *_ottd_main;
 	[ _cocoa_subdriver->cocoaview resetCursorRects ];
 
 	/* Hand off to main application code. */
-	QZ_GameLoop();
+	static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance())->GameLoop();
 
 	/* We are done, thank you for playing. */
 	[ self performSelectorOnMainThread:@selector(stopEngine) withObject:nil waitUntilDone:FALSE ];
