@@ -18,7 +18,6 @@ extern bool _cocoa_video_started;
 
 class VideoDriver_Cocoa : public VideoDriver {
 private:
-	bool fullscreen_on_mainloop; ///< Switch to fullscreen once the main loop is running?
 	Dimension orig_res;          ///< Saved window size for non-fullscreen mode.
 
 public:

@@ -156,6 +156,7 @@ static void QZ_UpdateVideoModes()
 static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool fullscreen, bool fallback)
 {
 	CocoaSubdriver *ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
+	if (ret != nullptr && fullscreen) ret->ToggleFullscreen(fullscreen);
 
 	if (ret != nullptr) return ret;
 	if (!fallback) return nullptr;
@@ -209,9 +210,6 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 		return "The cocoa quartz subdriver only supports 8 and 32 bpp.";
 	}
 
-	/* Defer fullscreen toggle until the main loop is running,
-	 * as otherwise a grey bar will be stuck on top of the window. */
-	this->fullscreen_on_mainloop = _fullscreen;
 	_cocoa_subdriver = QZ_CreateSubdriver(width, height, bpp, _fullscreen, true);
 	if (_cocoa_subdriver == NULL) {
 		Stop();

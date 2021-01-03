@@ -652,12 +652,6 @@ void VideoDriver_Cocoa::GameLoop()
 
 		while (QZ_PollEvent()) {}
 
-		/* If we do that right after window creation, a grey bar will be left at the top. */
-		if (this->fullscreen_on_mainloop) {
-			this->fullscreen_on_mainloop = false;
-			_cocoa_subdriver->ToggleFullscreen(true);
-		}
-
 		if (_exit_game) {
 			/* Restore saved resolution if in fullscreen mode. */
 			if (_cocoa_subdriver->IsFullscreen()) _cur_resolution = this->orig_res;
