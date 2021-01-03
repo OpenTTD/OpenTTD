@@ -665,12 +665,12 @@ void StartupOneEngine(Engine *e, Date aging_date)
 
 	RestoreRandomSeeds(saved_seeds);
 
-	e->reliability_start = GB(r, 16, 14) + 0x7AE0;
 	r = Random();
+	e->reliability_start = GB(r, 16, 14) + 0x7AE0;
 	e->reliability_max   = GB(r,  0, 14) + 0xBFFF;
-	e->reliability_final = GB(r, 16, 14) + 0x3FFF;
 
 	r = Random();
+	e->reliability_final = GB(r, 16, 14) + 0x3FFF;
 	e->duration_phase_1 = GB(r, 0, 5) + 7;
 	e->duration_phase_2 = GB(r, 5, 4) + ei->base_life * 12 - 96;
 	e->duration_phase_3 = GB(r, 9, 7) + 120;
