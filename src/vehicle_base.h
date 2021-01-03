@@ -124,13 +124,6 @@ struct VehicleCache {
 	byte cached_vis_effect;  ///< Visual effect to show (see #VisualEffect)
 };
 
-/** Values for controlling how a vehicle's sprites are refreshed */
-struct VehicleSpriteRefreshState {
-	Direction last_direction;         ///< Last direction we obtained sprites for
-	bool is_viewport_candidate;       ///< The vehicle has been in the hash for a shown viewport recently
-	bool sprite_has_viewport_changes; ///< There have been viewport changes since the sprite was last updated
-};
-
 /** Sprite sequence for a vehicle part. */
 struct VehicleSpriteSeq {
 	PalSpriteID seq[4];
@@ -186,6 +179,17 @@ struct VehicleSpriteSeq {
 
 	void GetBounds(Rect *bounds) const;
 	void Draw(int x, int y, PaletteID default_pal, bool force_pal) const;
+};
+
+/**
+ * Cache for vehicle sprites and values relating to whether they should be updated before drawing,
+ * or calculating the viewport.
+ */
+struct MutableSpriteCache {
+	Direction last_direction;                 ///< Last direction we obtained sprites for
+	mutable bool is_viewport_candidate;       ///< The vehicle has been in the hash for a shown viewport recently
+	mutable bool sprite_has_viewport_changes; ///< There have been viewport changes since the sprite was last updated
+	mutable VehicleSpriteSeq sprite_seq;      ///< Vehicle appearance.
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */
@@ -282,7 +286,6 @@ public:
 	 * 0xff == reserved for another custom sprite
 	 */
 	byte spritenum;
-	VehicleSpriteSeq sprite_seq;        ///< Vehicle appearance.
 	byte x_extent;                      ///< x-extent of vehicle bounding box
 	byte y_extent;                      ///< y-extent of vehicle bounding box
 	byte z_extent;                      ///< z-extent of vehicle bounding box
@@ -334,7 +337,7 @@ public:
 	NewGRFCache grf_cache;              ///< Cache of often used calculated NewGRF values
 	VehicleCache vcache;                ///< Cache of often used vehicle values.
 
-	VehicleSpriteRefreshState rstate;   ///< Values relating to whether sprites should be refreshed, see #VehicleSpriteRefreshState
+	MutableSpriteCache sprite_cache;    ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
 
 	Vehicle(VehicleType type = VEH_INVALID);
 
@@ -1044,7 +1047,7 @@ struct SpecializedVehicle : public Vehicle {
 	 */
 	inline SpecializedVehicle<T, Type>() : Vehicle(Type)
 	{
-		this->sprite_seq.count = 1;
+		this->sprite_cache.sprite_seq.count = 1;
 	}
 
 	/**
@@ -1193,24 +1196,24 @@ struct SpecializedVehicle : public Vehicle {
 		 * there won't be enough change in bounding box or offsets to need
 		 * to resolve a new sprite.
 		 */
-		if (this->direction != this->rstate.last_direction || this->rstate.is_viewport_candidate) {
+		if (this->direction != this->sprite_cache.last_direction || this->sprite_cache.is_viewport_candidate) {
 			VehicleSpriteSeq seq;
 
 			((T*)this)->T::GetImage(this->direction, EIT_ON_MAP, &seq);
-			if (this->sprite_seq != seq) {
+			if (this->sprite_cache.sprite_seq != seq) {
 				sprite_has_changed = true;
-				this->sprite_seq = seq;
+				this->sprite_cache.sprite_seq = seq;
 			}
 
-			this->rstate.last_direction = this->direction;
-			this->rstate.is_viewport_candidate = false;
-			this->rstate.sprite_has_viewport_changes = false;
+			this->sprite_cache.last_direction = this->direction;
+			this->sprite_cache.is_viewport_candidate = false;
+			this->sprite_cache.sprite_has_viewport_changes = false;
 		} else {
 			/*
 			 * Changes could still be relevant when we render the vehicle even if
 			 * they don't alter the bounding box
 			 */
-			this->rstate.sprite_has_viewport_changes = true;
+			this->sprite_cache.sprite_has_viewport_changes = true;
 		}
 
 		if (force_update || sprite_has_changed) {

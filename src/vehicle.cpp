@@ -1094,25 +1094,19 @@ static void DoDrawVehicle(const Vehicle *v)
 	/*
 	 * If the vehicle sprite was not updated despite further viewport changes, we need
 	 * to update it before drawing.
-	 *
-	 * I'm not keen on casting to mutable - it's the approach JGR uses in JGRPP but I
-	 * wonder if there's a cleaner option (even though we can only take the decision
-	 * whether to update once we already know the vehicle is going to appear in a
-	 * viewport)
 	 */
-	if (v->rstate.sprite_has_viewport_changes) {
-		Vehicle* v_mutable = const_cast<Vehicle*>(v);
+	if (v->sprite_cache.sprite_has_viewport_changes) {
 		VehicleSpriteSeq seq;
-		v_mutable->GetImage(v_mutable->direction, EIT_ON_MAP, &seq);
-		v_mutable->sprite_seq = seq;
-		v_mutable->rstate.sprite_has_viewport_changes = false;
+		v->GetImage(v->direction, EIT_ON_MAP, &seq);
+		v->sprite_cache.sprite_seq = seq;
+		v->sprite_cache.sprite_has_viewport_changes = false;
 	}
 
 	StartSpriteCombine();
-	for (uint i = 0; i < v->sprite_seq.count; ++i) {
-		PaletteID pal2 = v->sprite_seq.seq[i].pal;
+	for (uint i = 0; i < v->sprite_cache.sprite_seq.count; ++i) {
+		PaletteID pal2 = v->sprite_cache.sprite_seq.seq[i].pal;
 		if (!pal2 || (v->vehstatus & VS_CRASHED)) pal2 = pal;
-		AddSortableSpriteToDraw(v->sprite_seq.seq[i].sprite, pal2, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
+		AddSortableSpriteToDraw(v->sprite_cache.sprite_seq.seq[i].sprite, pal2, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
 			v->x_extent, v->y_extent, v->z_extent, v->z_pos, shadowed, v->x_bb_offs, v->y_bb_offs);
 	}
 	EndSpriteCombine();
@@ -1175,10 +1169,10 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 					 * are part of a newgrf vehicle set which changes bounding boxes within a
 					 * single vehicle direction.
 					 *
-					 * TODO: is there a cleaner solution than casting to a mutable type?
+					 * TODO: this will consider too many false positives, use the bounding box
+					 * information or something which better narrows down the candidates.
 					 */
-					Vehicle* v_mutable = const_cast<Vehicle*>(v);
-					v_mutable->rstate.is_viewport_candidate = true;
+					v->sprite_cache.is_viewport_candidate = true;
 				}
 
 				v = v->hash_viewport_next;
@@ -1605,7 +1599,7 @@ void Vehicle::UpdatePosition()
 void Vehicle::UpdateViewport(bool dirty)
 {
 	Rect new_coord;
-	this->sprite_seq.GetBounds(&new_coord);
+	this->sprite_cache.sprite_seq.GetBounds(&new_coord);
 
 	Point pt = RemapCoords(this->x_pos + this->x_offs, this->y_pos + this->y_offs, this->z_pos);
 	new_coord.left   += pt.x;

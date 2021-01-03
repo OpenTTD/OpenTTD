@@ -301,7 +301,7 @@ CommandCost CmdBuildRoadVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 
-		v->sprite_seq.Set(SPR_IMG_QUERY);
+		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
 		v->SetFrontEngine();
 

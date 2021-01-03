@@ -341,8 +341,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 		v->date_of_last_service = _date;
 		v->build_year = u->build_year = _cur_year;
 
-		v->sprite_seq.Set(SPR_IMG_QUERY);
-		u->sprite_seq.Set(SPR_IMG_QUERY);
+		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
+		u->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 
 		v->random_bits = VehicleRandomBits();
 		u->random_bits = VehicleRandomBits();
@@ -374,7 +374,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, DoCommandFlag flags, const Engine *
 			w->vehstatus = VS_HIDDEN | VS_UNCLICKABLE;
 			w->spritenum = 0xFF;
 			w->subtype = AIR_ROTOR;
-			w->sprite_seq.Set(SPR_ROTOR_STOPPED);
+			w->sprite_cache.sprite_seq.Set(SPR_ROTOR_STOPPED);
 			w->random_bits = VehicleRandomBits();
 			/* Use rotor's air.state to store the rotor animation frame */
 			w->state = HRS_ROTOR_STOPPED;
@@ -497,7 +497,7 @@ static void HelicopterTickHandler(Aircraft *v)
 	if (spd == 0) {
 		u->state = HRS_ROTOR_STOPPED;
 		GetRotorImage(v, EIT_ON_MAP, &seq);
-		if (u->sprite_seq == seq) return;
+		if (u->sprite_cache.sprite_seq == seq) return;
 	} else if (tick >= spd) {
 		u->tick_counter = 0;
 		u->state++;
@@ -507,7 +507,7 @@ static void HelicopterTickHandler(Aircraft *v)
 		return;
 	}
 
-	u->sprite_seq = seq;
+	u->sprite_cache.sprite_seq = seq;
 
 	u->UpdatePositionAndViewport();
 }
@@ -528,7 +528,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 	v->UpdatePosition();
 	v->UpdateViewport(true, false);
 	if (v->subtype == AIR_HELICOPTER) {
-		GetRotorImage(v, EIT_ON_MAP, &v->Next()->Next()->sprite_seq);
+		GetRotorImage(v, EIT_ON_MAP, &v->Next()->Next()->sprite_cache.sprite_seq);
 	}
 
 	Aircraft *u = v->Next();
@@ -540,7 +540,7 @@ void SetAircraftPosition(Aircraft *v, int x, int y, int z)
 
 	safe_y = Clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
 	u->z_pos = GetSlopePixelZ(safe_x, safe_y);
-	u->sprite_seq.CopyWithoutPalette(v->sprite_seq); // the shadow is never coloured
+	u->sprite_cache.sprite_seq.CopyWithoutPalette(v->sprite_cache.sprite_seq); // the shadow is never coloured
 
 	u->UpdatePositionAndViewport();
 
@@ -1278,7 +1278,7 @@ void Aircraft::MarkDirty()
 	this->colourmap = PAL_NONE;
 	this->UpdateViewport(true, false);
 	if (this->subtype == AIR_HELICOPTER) {
-		GetRotorImage(this, EIT_ON_MAP, &this->Next()->Next()->sprite_seq);
+		GetRotorImage(this, EIT_ON_MAP, &this->Next()->Next()->sprite_cache.sprite_seq);
 	}
 }
 
