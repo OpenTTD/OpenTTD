@@ -67,6 +67,7 @@ extern NSString *OTTDMainLaunchGameEngine;
 - (BOOL)windowShouldClose:(id)sender;
 - (void)windowDidEnterFullScreen:(NSNotification *)aNotification;
 - (void)windowDidChangeScreenProfile:(NSNotification *)aNotification;
+- (NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions;
 @end
 
 
