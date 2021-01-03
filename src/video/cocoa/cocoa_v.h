@@ -140,7 +140,7 @@ public:
 	/** Toggle between fullscreen and windowed mode
 	 * @return whether switch was successful
 	 */
-	virtual bool ToggleFullscreen() { return false; };
+	virtual bool ToggleFullscreen(bool fullscreen) { return false; };
 
 	/** Return the width of the current view
 	 * @return width of the current view

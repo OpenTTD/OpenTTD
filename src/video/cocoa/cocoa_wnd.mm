@@ -860,5 +860,11 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	if (!driver->setup) driver->WindowResized();
 }
 
+/** Presentation options to use for fullsreen mode. */
+- (NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions
+{
+	return NSApplicationPresentationFullScreen | NSApplicationPresentationHideMenuBar | NSApplicationPresentationHideDock;
+}
+
 @end
 #endif /* WITH_COCOA */

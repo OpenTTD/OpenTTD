@@ -175,7 +175,7 @@ void QZ_GameSizeChanged()
 static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool fullscreen, bool fallback)
 {
 	CocoaSubdriver *ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
-	if (ret != nullptr && fullscreen) ret->ToggleFullscreen();
+	if (ret != nullptr && fullscreen) ret->ToggleFullscreen(fullscreen);
 
 	if (ret != nullptr) return ret;
 	if (!fallback) return nullptr;
@@ -297,7 +297,7 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 {
 	assert(_cocoa_subdriver != NULL);
 
-	return _cocoa_subdriver->ToggleFullscreen();
+	return _cocoa_subdriver->ToggleFullscreen(full_screen);
 }
 
 /**
@@ -355,8 +355,8 @@ public:
 
 	virtual bool ChangeResolution(int w, int h, int bpp);
 
-	virtual bool IsFullscreen() { return false; }
-	virtual bool ToggleFullscreen(); /* Full screen mode on OSX 10.7 */
+	virtual bool IsFullscreen();
+	virtual bool ToggleFullscreen(bool fullscreen); /* Full screen mode on OSX 10.7 */
 
 	virtual int GetWidth() { return window_width; }
 	virtual int GetHeight() { return window_height; }
@@ -474,11 +474,18 @@ void WindowQuartzSubdriver::GetDeviceInfo()
 	CGDisplayModeRelease(cur_mode);
 }
 
+bool WindowQuartzSubdriver::IsFullscreen()
+{
+	return this->window != nil && ([ this->window styleMask ] & NSWindowStyleMaskFullScreen) != 0;
+}
+
 /** Switch to full screen mode on OSX 10.7
  * @return Whether we switched to full screen
  */
-bool WindowQuartzSubdriver::ToggleFullscreen()
+bool WindowQuartzSubdriver::ToggleFullscreen(bool fullscreen)
 {
+	if (this->IsFullscreen() == fullscreen) return true;
+
 	if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
 		[ this->window performSelector:@selector(toggleFullScreen:) withObject:this->window ];
 		return true;
@@ -531,8 +538,6 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 			NSButton* fullscreenButton = [ this->window standardWindowButton:NSWindowFullScreenButton ];
 			[ fullscreenButton setAction:@selector(toggleFullScreen:) ];
 			[ fullscreenButton setTarget:this->window ];
-
-			[ this->window setCollectionBehavior: NSWindowCollectionBehaviorFullScreenPrimary ];
 		}
 
 		[ this->window setDriver:this ];
