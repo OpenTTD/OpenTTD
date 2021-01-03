@@ -144,25 +144,6 @@ static void QZ_UpdateVideoModes()
 }
 
 /**
- * Handle a change of the display area.
- */
-void QZ_GameSizeChanged()
-{
-	if (_cocoa_subdriver == NULL) return;
-
-	/* Tell the game that the resolution has changed */
-	_screen.width = _cocoa_subdriver->GetWidth();
-	_screen.height = _cocoa_subdriver->GetHeight();
-	_screen.pitch = _cocoa_subdriver->GetWidth();
-	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
-	_fullscreen = _cocoa_subdriver->IsFullscreen();
-
-	BlitterFactory::GetCurrentBlitter()->PostResize();
-
-	GameSizeChanged();
-}
-
-/**
  * Find a suitable cocoa subdriver.
  *
  * @param width Width of display area.
@@ -175,7 +156,6 @@ void QZ_GameSizeChanged()
 static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool fullscreen, bool fallback)
 {
 	CocoaSubdriver *ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
-	if (ret != nullptr && fullscreen) ret->ToggleFullscreen(fullscreen);
 
 	if (ret != nullptr) return ret;
 	if (!fallback) return nullptr;
@@ -219,6 +199,7 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 	/* Don't create a window or enter fullscreen if we're just going to show a dialog. */
 	if (!CocoaSetupApplication()) return NULL;
 
+	this->orig_res = _cur_resolution;
 	int width  = _cur_resolution.width;
 	int height = _cur_resolution.height;
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
@@ -228,13 +209,16 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 		return "The cocoa quartz subdriver only supports 8 and 32 bpp.";
 	}
 
+	/* Defer fullscreen toggle until the main loop is running,
+	 * as otherwise a grey bar will be stuck on top of the window. */
+	this->fullscreen_on_mainloop = _fullscreen;
 	_cocoa_subdriver = QZ_CreateSubdriver(width, height, bpp, _fullscreen, true);
 	if (_cocoa_subdriver == NULL) {
 		Stop();
 		return "Could not create subdriver";
 	}
 
-	QZ_GameSizeChanged();
+	this->GameSizeChanged();
 	QZ_UpdateVideoModes();
 
 	return NULL;
@@ -281,7 +265,7 @@ bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 
 	bool ret = _cocoa_subdriver->ChangeResolution(w, h, BlitterFactory::GetCurrentBlitter()->GetScreenDepth());
 
-	QZ_GameSizeChanged();
+	this->GameSizeChanged();
 	QZ_UpdateVideoModes();
 
 	return ret;
@@ -318,6 +302,29 @@ void VideoDriver_Cocoa::EditBoxLostFocus()
 	if (_cocoa_subdriver != NULL) [ [ _cocoa_subdriver->cocoaview inputContext ] discardMarkedText ];
 	/* Clear any marked string from the current edit box. */
 	HandleTextInput(NULL, true);
+}
+
+/**
+ * Handle a change of the display area.
+ */
+void VideoDriver_Cocoa::GameSizeChanged()
+{
+	if (_cocoa_subdriver == nullptr) return;
+
+	/* Tell the game that the resolution has changed */
+	_screen.width = _cocoa_subdriver->GetWidth();
+	_screen.height = _cocoa_subdriver->GetHeight();
+	_screen.pitch = _cocoa_subdriver->GetWidth();
+	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
+
+	/* Store old window size if we entered fullscreen mode. */
+	bool fullscreen = _cocoa_subdriver->IsFullscreen();
+	if (fullscreen && !_fullscreen) this->orig_res = _cur_resolution;
+	_fullscreen = fullscreen;
+
+	BlitterFactory::GetCurrentBlitter()->PostResize();
+
+	::GameSizeChanged();
 }
 
 class WindowQuartzSubdriver;
@@ -825,7 +832,7 @@ bool WindowQuartzSubdriver::WindowResized()
 		}
 	}
 
-	QZ_GameSizeChanged();
+	static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance())->GameSizeChanged();
 
 	/* Redraw screen */
 	this->num_dirty_rects = MAX_DIRTY_RECTS;

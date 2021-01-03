@@ -11,10 +11,16 @@
 #define VIDEO_COCOA_H
 
 #include "../video_driver.hpp"
+#include "../../core/geometry_type.hpp"
+
 
 extern bool _cocoa_video_started;
 
 class VideoDriver_Cocoa : public VideoDriver {
+private:
+	bool fullscreen_on_mainloop; ///< Switch to fullscreen once the main loop is running?
+	Dimension orig_res;          ///< Saved window size for non-fullscreen mode.
+
 public:
 	const char *Start(const StringList &param) override;
 
@@ -59,6 +65,16 @@ public:
 	 * @return driver name
 	 */
 	const char *GetName() const override { return "cocoa"; }
+
+	/* --- The following methods should be private, but can't be due to Obj-C limitations. --- */
+
+	/** Main game loop. */
+	void GameLoop(); // In event.mm.
+
+private:
+	friend class WindowQuartzSubdriver;
+
+	void GameSizeChanged();
 };
 
 class FVideoDriver_Cocoa : public DriverFactoryBase {
@@ -189,10 +205,6 @@ public:
 extern CocoaSubdriver *_cocoa_subdriver;
 
 CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp);
-
-void QZ_GameSizeChanged();
-
-void QZ_GameLoop();
 
 uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
 
