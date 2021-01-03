@@ -569,7 +569,8 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 		[ this->window setContentSize:contentRect.size ];
 
 		/* Ensure frame height - title bar height >= view height */
-		contentRect.size.height = Clamp(height, 0, (int)[ this->window frame ].size.height - 22 /* 22 is the height of title bar of window*/);
+		float content_height = [ this->window contentRectForFrameRect:[ this->window frame ] ].size.height;
+		contentRect.size.height = Clamp(height, 0, (int)content_height);
 
 		if (this->cocoaview != nil) {
 			height = (int)contentRect.size.height;
