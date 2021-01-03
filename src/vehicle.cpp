@@ -1124,11 +1124,15 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 	const int t = dpi->top;
 	const int b = dpi->top + dpi->height;
 
+	/* Border size of MAX_VEHICLE_PIXEL_xy */
+	const int xb = MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE;
+	const int yb = MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE;
+
 	/* The hash area to scan */
 	int xl, xu, yl, yu;
 
-	if (dpi->width + (MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE) < GEN_HASHX_SIZE) {
-		xl = GEN_HASHX(l - MAX_VEHICLE_PIXEL_X * ZOOM_LVL_BASE);
+	if (dpi->width + xb < GEN_HASHX_SIZE) {
+		xl = GEN_HASHX(l - xb);
 		xu = GEN_HASHX(r);
 	} else {
 		/* scan whole hash row */
@@ -1136,8 +1140,8 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 		xu = GEN_HASHX_MASK;
 	}
 
-	if (dpi->height + (MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE) < GEN_HASHY_SIZE) {
-		yl = GEN_HASHY(t - MAX_VEHICLE_PIXEL_Y * ZOOM_LVL_BASE);
+	if (dpi->height + yb < GEN_HASHY_SIZE) {
+		yl = GEN_HASHY(t - yb);
 		yu = GEN_HASHY(b);
 	} else {
 		/* scan whole column */
@@ -1158,9 +1162,14 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 						b >= v->coord.top) {
 					DoDrawVehicle(v);
 				}
-				else {
+				else if (l <= v->coord.right + xb &&
+					t <= v->coord.bottom + yb &&
+					r >= v->coord.left - xb &&
+					b >= v->coord.top - yb)
+				{
 					/*
 					 * Indicate that this vehicle was considered for rendering in a viewport,
+					 * is within the bounds where a sprite could be valid for rendering
 					 * and we therefore need to update sprites more frequently in case a callback
 					 * will change the bounding box to one which will cause the sprite to be
 					 * displayed.
@@ -1168,9 +1177,6 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 					 * This reduces the chances of flicker when sprites enter the screen, if they
 					 * are part of a newgrf vehicle set which changes bounding boxes within a
 					 * single vehicle direction.
-					 *
-					 * TODO: this will consider too many false positives, use the bounding box
-					 * information or something which better narrows down the candidates.
 					 */
 					v->sprite_cache.is_viewport_candidate = true;
 				}

@@ -186,10 +186,10 @@ struct VehicleSpriteSeq {
  * or calculating the viewport.
  */
 struct MutableSpriteCache {
-	Direction last_direction;                 ///< Last direction we obtained sprites for
-	mutable bool is_viewport_candidate;       ///< The vehicle has been in the hash for a shown viewport recently
-	mutable bool sprite_has_viewport_changes; ///< There have been viewport changes since the sprite was last updated
-	mutable VehicleSpriteSeq sprite_seq;      ///< Vehicle appearance.
+	Direction last_direction;         ///< Last direction we obtained sprites for
+	bool is_viewport_candidate;       ///< The vehicle has been in the hash for a shown viewport recently
+	bool sprite_has_viewport_changes; ///< There have been viewport changes since the sprite was last updated
+	VehicleSpriteSeq sprite_seq;      ///< Vehicle appearance.
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */
@@ -337,7 +337,7 @@ public:
 	NewGRFCache grf_cache;              ///< Cache of often used calculated NewGRF values
 	VehicleCache vcache;                ///< Cache of often used vehicle values.
 
-	MutableSpriteCache sprite_cache;    ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
+	mutable MutableSpriteCache sprite_cache; ///< Cache of sprites and values related to recalculating them, see #MutableSpriteCache
 
 	Vehicle(VehicleType type = VEH_INVALID);
 
