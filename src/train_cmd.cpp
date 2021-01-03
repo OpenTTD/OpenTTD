@@ -624,7 +624,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
-		v->sprite_seq.Set(SPR_IMG_QUERY);
+		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
 
 		v->group_id = DEFAULT_GROUP;
@@ -690,7 +690,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->engine_type = v->engine_type;
 	u->date_of_last_service = v->date_of_last_service;
 	u->build_year = v->build_year;
-	u->sprite_seq.Set(SPR_IMG_QUERY);
+	u->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 	u->random_bits = VehicleRandomBits();
 	v->SetMultiheaded();
 	u->SetMultiheaded();
@@ -756,7 +756,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_trains);
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
-		v->sprite_seq.Set(SPR_IMG_QUERY);
+		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
 
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);

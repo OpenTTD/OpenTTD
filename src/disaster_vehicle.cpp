@@ -110,7 +110,7 @@ void DisasterVehicle::UpdateImage()
 {
 	SpriteID img = this->image_override;
 	if (img == 0) img = _disaster_images[this->subtype][this->direction];
-	this->sprite_seq.Set(img);
+	this->sprite_cache.sprite_seq.Set(img);
 }
 
 /**
@@ -498,7 +498,7 @@ static bool DisasterTick_Helicopter_Rotors(DisasterVehicle *v)
 	v->tick_counter++;
 	if (HasBit(v->tick_counter, 0)) return true;
 
-	SpriteID &cur_image = v->sprite_seq.seq[0].sprite;
+	SpriteID &cur_image = v->sprite_cache.sprite_seq.seq[0].sprite;
 	if (++cur_image > SPR_ROTOR_MOVING_3) cur_image = SPR_ROTOR_MOVING_1;
 
 	v->UpdatePositionAndViewport();

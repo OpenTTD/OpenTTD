@@ -1153,7 +1153,7 @@ static const OldChunks vehicle_chunk[] = {
 
 	OCL_SVAR(  OC_UINT8, Vehicle, owner ),
 	OCL_SVAR(   OC_TILE, Vehicle, tile ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, sprite_seq.seq[0].sprite ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, sprite_cache.sprite_seq.seq[0].sprite ),
 
 	OCL_NULL( 8 ),        ///< Vehicle sprite box, calculated automatically
 
@@ -1246,7 +1246,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			if (v == nullptr) continue;
 			v->refit_cap = v->cargo_cap;
 
-			SpriteID sprite = v->sprite_seq.seq[0].sprite;
+			SpriteID sprite = v->sprite_cache.sprite_seq.seq[0].sprite;
 			/* no need to override other sprites */
 			if (IsInsideMM(sprite, 1460, 1465)) {
 				sprite += 580; // aircraft smoke puff
@@ -1257,7 +1257,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			} else if (IsInsideMM(sprite, 2516, 2539)) {
 				sprite += 1385; // rotor or disaster-related vehicles
 			}
-			v->sprite_seq.seq[0].sprite = sprite;
+			v->sprite_cache.sprite_seq.seq[0].sprite = sprite;
 
 			switch (v->type) {
 				case VEH_TRAIN: {
