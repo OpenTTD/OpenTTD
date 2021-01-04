@@ -35,6 +35,9 @@ public:
 		/** Another tunnel is in the way */
 		ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY,        // [STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY]
 
+		/** Another tunnel is in the way */
+		ERR_TUNNEL_MINE_INDUSTRY_IN_THE_WAY,         // [STR_ERROR_MINE_INDUSTRY_IN_THE_WAY]
+
 		/** Unable to excavate land at the end to create the tunnel's exit */
 		ERR_TUNNEL_END_SITE_UNSUITABLE,              // [STR_ERROR_UNABLE_TO_EXCAVATE_LAND]
 	};
@@ -90,6 +93,7 @@ public:
 	 * @exception ScriptTunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER
 	 * @exception ScriptTunnel::ERR_TUNNEL_START_SITE_UNSUITABLE
 	 * @exception ScriptTunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY
+	 * @exception ScriptTunnel::ERR_TUNNEL_MINE_INDUSTRY_IN_THE_WAY
 	 * @exception ScriptTunnel::ERR_TUNNEL_END_SITE_UNSUITABLE
 	 * @return Whether the tunnel has been/can be build or not.
 	 * @note The slope of a tile can be determined by ScriptTile::GetSlope(TileIndex).

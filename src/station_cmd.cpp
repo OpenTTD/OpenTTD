@@ -154,24 +154,7 @@ static int CountMapSquareAround(TileIndex tile, CMSAMatcher cmp)
  */
 static bool CMSAMine(TileIndex tile)
 {
-	/* No industry */
-	if (!IsTileType(tile, MP_INDUSTRY)) return false;
-
-	const Industry *ind = Industry::GetByTile(tile);
-
-	/* No extractive industry */
-	if ((GetIndustrySpec(ind->type)->life_type & INDUSTRYLIFE_EXTRACTIVE) == 0) return false;
-
-	for (uint i = 0; i < lengthof(ind->produced_cargo); i++) {
-		/* The industry extracts something non-liquid, i.e. no oil or plastic, so it is a mine.
-		 * Also the production of passengers and mail is ignored. */
-		if (ind->produced_cargo[i] != CT_INVALID &&
-				(CargoSpec::Get(ind->produced_cargo[i])->classes & (CC_LIQUID | CC_PASSENGERS | CC_MAIL)) == 0) {
-			return true;
-		}
-	}
-
-	return false;
+	return IsTileMineIndustry(tile);
 }
 
 /**

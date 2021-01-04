@@ -79,6 +79,7 @@ static inline bool IsIndustryCompleted(TileIndex t)
 }
 
 IndustryType GetIndustryType(TileIndex tile);
+bool IsTileMineIndustry(TileIndex tile);
 
 /**
  * Set if the industry that owns the tile as under construction or not

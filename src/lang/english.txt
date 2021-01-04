@@ -1228,6 +1228,8 @@ STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maximum bridge 
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maximum height for building bridges
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximum tunnel length: {STRING2}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximum length for building tunnels
+STR_CONFIG_SETTING_MIN_TUNNEL_DEPTH_UNDER_MINE                  :Minimum tunnel depth under mines: {STRING2}
+STR_CONFIG_SETTING_MIN_TUNNEL_DEPTH_UNDER_MINE_HELPTEXT         :Minimum depth required for building tunnels under mines
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manual primary industry construction method: {STRING2}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Method of funding a primary industry. 'none' means it is not possible to fund any, 'prospecting' means funding is possible, but construction occurs in a random spot on the map and may as well fail, 'as other industries' means raw industries can be constructed by companies like processing industries in any position they like
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :None
@@ -4539,6 +4541,7 @@ STR_ERROR_CAN_T_BUILD_TUNNEL_HERE                               :{WHITE}Can't bu
 STR_ERROR_SITE_UNSUITABLE_FOR_TUNNEL                            :{WHITE}Site unsuitable for tunnel entrance
 STR_ERROR_MUST_DEMOLISH_TUNNEL_FIRST                            :{WHITE}Must demolish tunnel first
 STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY                             :{WHITE}Another tunnel in the way
+STR_ERROR_MINE_INDUSTRY_IN_THE_WAY                              :{WHITE}Unable to build tunnel under mine
 STR_ERROR_TUNNEL_THROUGH_MAP_BORDER                             :{WHITE}Tunnel would end out of the map
 STR_ERROR_UNABLE_TO_EXCAVATE_LAND                               :{WHITE}Unable to excavate land for other end of tunnel
 STR_ERROR_TUNNEL_TOO_LONG                                       :{WHITE}... tunnel too long

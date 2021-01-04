@@ -23,6 +23,7 @@
 #include "pathfinder/yapf/yapf_cache.h"
 #include "newgrf_sound.h"
 #include "autoslope.h"
+#include "industry_map.h"
 #include "tunnelbridge_map.h"
 #include "strings_func.h"
 #include "date_func.h"
@@ -676,6 +677,10 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, DoCommandFlag flags, uint32 p1,
 
 		if (!_cheats.crossing_tunnels.value && IsTunnelInWayDir(end_tile, start_z, tunnel_in_way_dir)) {
 			return_cmd_error(STR_ERROR_ANOTHER_TUNNEL_IN_THE_WAY);
+		}
+
+		if (IsTileMineIndustry(end_tile) && end_z - start_z < _settings_game.construction.min_tunnel_depth_under_mine) {
+			return_cmd_error(STR_ERROR_MINE_INDUSTRY_IN_THE_WAY);
 		}
 
 		tiles++;
