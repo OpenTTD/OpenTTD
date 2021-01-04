@@ -2078,7 +2078,6 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 		strecpy(settings->medium.font, font_name, lastof(settings->medium.font));
 		strecpy(settings->large.font,  font_name, lastof(settings->large.font));
 
-		free(settings->medium.os_handle); // Only free one, they are all the same pointer.
 		settings->small.os_handle = os_data;
 		settings->medium.os_handle = os_data;
 		settings->large.os_handle = os_data;
@@ -2115,9 +2114,6 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 		_freetype.medium.os_handle = nullptr;
 
 		bad_font = !SetFallbackFont(&_freetype, _langpack.langpack->isocode, _langpack.langpack->winlangid, searcher);
-
-		free(_freetype.mono.os_handle);
-		free(_freetype.medium.os_handle);
 
 		memcpy(&_freetype, &backup, sizeof(backup));
 
