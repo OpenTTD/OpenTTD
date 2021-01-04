@@ -196,7 +196,6 @@ void TextfileWindow::SetupScrollbars()
 {
 #if defined(WITH_FREETYPE) || defined(_WIN32)
 	strecpy(settings->mono.font, font_name, lastof(settings->mono.font));
-	free(settings->mono.os_handle);
 	settings->mono.os_handle = os_data;
 #endif
 }

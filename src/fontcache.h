@@ -217,7 +217,7 @@ struct FreeTypeSubSetting {
 	uint size;           ///< The (requested) size of the font.
 	bool aa;             ///< Whether to do anti aliasing or not.
 
-	const void *os_handle = nullptr; ///< Optional native OS font info.
+	const void *os_handle = nullptr; ///< Optional native OS font info. Only valid during font search.
 };
 
 /** Settings for the freetype fonts. */
