@@ -263,12 +263,8 @@ static CommandCost CheckTrackCombination(TileIndex tile, TrackBits to_build, uin
 	}
 
 	/* Let's see if we may build this */
-	if ((flags & DC_NO_RAIL_OVERLAP) || HasSignals(tile)) {
-		/* If we are not allowed to overlap (flag is on for ai companies or we have
-		 * signals on the tile), check that */
-		if (future != TRACK_BIT_HORZ && future != TRACK_BIT_VERT) {
-			return_cmd_error((flags & DC_NO_RAIL_OVERLAP) ? STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION : STR_ERROR_MUST_REMOVE_SIGNALS_FIRST);
-		}
+	if (HasSignals(tile) && future != TRACK_BIT_HORZ && future != TRACK_BIT_VERT) {
+		return_cmd_error(STR_ERROR_MUST_REMOVE_SIGNALS_FIRST);
 	}
 	/* Normally, we may overlap and any combination is valid */
 	return CommandCost();
