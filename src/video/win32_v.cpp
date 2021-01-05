@@ -27,7 +27,6 @@
 #include <imm.h>
 #include <mutex>
 #include <condition_variable>
-#include <algorithm>
 
 #include "../safeguards.h"
 
@@ -903,8 +902,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 			w = r->right - r->left - (r2.right - r2.left);
 			h = r->bottom - r->top - (r2.bottom - r2.top);
-			w = max(w, 64);
-			h = max(h, 64);
+			w = std::max(w, 64);
+			h = std::max(h, 64);
 			SetRect(&r2, 0, 0, w, h);
 
 			AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
@@ -1037,8 +1036,8 @@ static bool AllocateDibSection(int w, int h, bool force)
 	HDC dc;
 	uint bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
-	w = max(w, 64);
-	h = max(h, 64);
+	w = std::max(w, 64);
+	h = std::max(h, 64);
 
 	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 

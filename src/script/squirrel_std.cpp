@@ -25,7 +25,7 @@ SQInteger SquirrelStd::min(HSQUIRRELVM vm)
 
 	sq_getinteger(vm, 2, &tmp1);
 	sq_getinteger(vm, 3, &tmp2);
-	sq_pushinteger(vm, ::min(tmp1, tmp2));
+	sq_pushinteger(vm, std::min(tmp1, tmp2));
 	return 1;
 }
 
@@ -35,7 +35,7 @@ SQInteger SquirrelStd::max(HSQUIRRELVM vm)
 
 	sq_getinteger(vm, 2, &tmp1);
 	sq_getinteger(vm, 3, &tmp2);
-	sq_pushinteger(vm, ::max(tmp1, tmp2));
+	sq_pushinteger(vm, std::max(tmp1, tmp2));
 	return 1;
 }
 

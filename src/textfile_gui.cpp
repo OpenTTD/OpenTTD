@@ -98,7 +98,7 @@ uint TextfileWindow::GetContentHeight()
 			resize->height = 1;
 
 			size->height = 4 * resize->height + TOP_SPACING + BOTTOM_SPACING; // At least 4 lines are visible.
-			size->width = max(200u, size->width); // At least 200 pixels wide.
+			size->width = std::max(200u, size->width); // At least 200 pixels wide.
 			break;
 	}
 }
@@ -112,7 +112,7 @@ void TextfileWindow::SetupScrollbars()
 	} else {
 		uint max_length = 0;
 		for (uint i = 0; i < this->lines.size(); i++) {
-			max_length = max(max_length, GetStringBoundingBox(this->lines[i], FS_MONO).width);
+			max_length = std::max(max_length, GetStringBoundingBox(this->lines[i], FS_MONO).width);
 		}
 		this->vscroll->SetCount((uint)this->lines.size() * FONT_HEIGHT_MONO);
 		this->hscroll->SetCount(max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);

@@ -14,7 +14,6 @@
 #include "../core/endian_func.hpp"
 #include "../base_media_base.h"
 #include "midi.h"
-#include <algorithm>
 
 #include "../console_func.h"
 #include "../console_internal.h"

@@ -193,8 +193,8 @@ struct NewGRFParametersWindow : public Window {
 		switch (widget) {
 			case WID_NP_NUMPAR_DEC:
 			case WID_NP_NUMPAR_INC: {
-				size->width  = max(SETTING_BUTTON_WIDTH / 2, FONT_HEIGHT_NORMAL);
-				size->height = max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL);
+				size->width  = std::max(SETTING_BUTTON_WIDTH / 2, FONT_HEIGHT_NORMAL);
+				size->height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL);
 				break;
 			}
 
@@ -208,7 +208,7 @@ struct NewGRFParametersWindow : public Window {
 			}
 
 			case WID_NP_BACKGROUND:
-				this->line_height = max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				this->line_height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 
 				resize->width = 1;
 				resize->height = this->line_height;
@@ -721,25 +721,25 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_FILE_LIST:
 			{
 				Dimension d = maxdim(GetSpriteSize(SPR_SQUARE), GetSpriteSize(SPR_WARNING_SIGN));
-				resize->height = max(d.height + 2U, FONT_HEIGHT_NORMAL + 2U);
-				size->height = max(size->height, WD_FRAMERECT_TOP + 6 * resize->height + WD_FRAMERECT_BOTTOM);
+				resize->height = std::max(d.height + 2U, FONT_HEIGHT_NORMAL + 2U);
+				size->height = std::max(size->height, WD_FRAMERECT_TOP + 6 * resize->height + WD_FRAMERECT_BOTTOM);
 				break;
 			}
 
 			case WID_NS_AVAIL_LIST:
-				resize->height = max(12, FONT_HEIGHT_NORMAL + 2);
-				size->height = max(size->height, WD_FRAMERECT_TOP + 8 * resize->height + WD_FRAMERECT_BOTTOM);
+				resize->height = std::max(12, FONT_HEIGHT_NORMAL + 2);
+				size->height = std::max(size->height, WD_FRAMERECT_TOP + 8 * resize->height + WD_FRAMERECT_BOTTOM);
 				break;
 
 			case WID_NS_NEWGRF_INFO_TITLE: {
 				Dimension dim = GetStringBoundingBox(STR_NEWGRF_SETTINGS_INFO_TITLE);
-				size->height = max(size->height, dim.height + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM);
-				size->width  = max(size->width,  dim.width  + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+				size->height = std::max(size->height, dim.height + WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM);
+				size->width  = std::max(size->width,  dim.width  + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
 				break;
 			}
 
 			case WID_NS_NEWGRF_INFO:
-				size->height = max(size->height, WD_FRAMERECT_TOP + 10 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM + padding.height + 2);
+				size->height = std::max(size->height, WD_FRAMERECT_TOP + 10 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM + padding.height + 2);
 				break;
 
 			case WID_NS_PRESET_LIST: {
@@ -877,7 +877,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 				uint y = r.top + WD_FRAMERECT_TOP;
 				uint min_index = this->vscroll2->GetPosition();
-				uint max_index = min(min_index + this->vscroll2->GetCapacity(), (uint)this->avails.size());
+				uint max_index = std::min(min_index + this->vscroll2->GetCapacity(), (uint)this->avails.size());
 
 				for (uint i = min_index; i < max_index; i++) {
 					const GRFConfig *c = this->avails[i];
@@ -1311,7 +1311,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WKC_PAGEDOWN:
 				/* scroll down a page */
-				this->avail_pos = min(this->avail_pos + this->vscroll2->GetCapacity(), (int)this->avails.size() - 1);
+				this->avail_pos = std::min(this->avail_pos + this->vscroll2->GetCapacity(), (int)this->avails.size() - 1);
 				break;
 
 			case WKC_HOME:
@@ -1363,7 +1363,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				for (from_prev = &this->actives; *from_prev != this->active_sel; from_prev = &(*from_prev)->next, from_pos++) {}
 
 				/* Gets the drag-and-drop destination offset. Ignore the last dummy line. */
-				int to_pos = min(this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST), this->vscroll->GetCount() - 2);
+				int to_pos = std::min(this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST), this->vscroll->GetCount() - 2);
 				if (to_pos != from_pos) { // Don't move NewGRF file over itself.
 					/* Get pointer to destination position. */
 					GRFConfig **to_prev = &this->actives;
@@ -1381,7 +1381,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					this->InvalidateData();
 				}
 			} else if (this->avail_sel != nullptr) {
-				int to_pos = min(this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST), this->vscroll->GetCount() - 1);
+				int to_pos = std::min(this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST), this->vscroll->GetCount() - 1);
 				this->AddGRFToActive(to_pos);
 			}
 		} else if (widget == WID_NS_AVAIL_LIST && this->active_sel != nullptr) {
@@ -1407,7 +1407,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			/* An NewGRF file is dragged over the active list. */
 			int to_pos = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST);
 			/* Skip the last dummy line if the source is from the active list. */
-			to_pos = min(to_pos, this->vscroll->GetCount() - (this->active_sel != nullptr ? 2 : 1));
+			to_pos = std::min(to_pos, this->vscroll->GetCount() - (this->active_sel != nullptr ? 2 : 1));
 
 			if (to_pos != this->active_over) {
 				this->active_over = to_pos;
@@ -1620,8 +1620,8 @@ public:
 		uint min_inf_height = this->inf->smallest_y + this->inf->padding_top + this->inf->padding_bottom;
 
 		/* Smallest window is in two column mode. */
-		this->smallest_x = max(min_avs_width, min_acs_width) + INTER_COLUMN_SPACING + min_inf_width;
-		this->smallest_y = max(min_inf_height, min_acs_height + INTER_LIST_SPACING + min_avs_height);
+		this->smallest_x = std::max(min_avs_width, min_acs_width) + INTER_COLUMN_SPACING + min_inf_width;
+		this->smallest_y = std::max(min_inf_height, min_acs_height + INTER_LIST_SPACING + min_avs_height);
 
 		/* Filling. */
 		this->fill_x = LeastCommonMultiple(this->avs->fill_x, this->acs->fill_x);
@@ -1651,7 +1651,7 @@ public:
 		uint min_acs_width = this->acs->smallest_x + this->acs->padding_left + this->acs->padding_right;
 		uint min_inf_width = this->inf->smallest_x + this->inf->padding_left + this->inf->padding_right;
 
-		uint min_list_width = max(min_avs_width, min_acs_width); // Smallest width of the lists such that they have equal width (incl padding).
+		uint min_list_width = std::max(min_avs_width, min_acs_width); // Smallest width of the lists such that they have equal width (incl padding).
 		uint avs_extra_width = min_list_width - min_avs_width;   // Additional width needed for avs to reach min_list_width.
 		uint acs_extra_width = min_list_width - min_acs_width;   // Additional width needed for acs to reach min_list_width.
 
@@ -1664,10 +1664,10 @@ public:
 		uint extra_width, inf_width;
 		if (use_three_columns) {
 			extra_width = given_width - min_three_columns;
-			inf_width = min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
+			inf_width = std::min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
 		} else {
 			extra_width = given_width - min_two_columns;
-			inf_width = min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
+			inf_width = std::min(MAX_EXTRA_INFO_WIDTH, extra_width / 2);
 		}
 		inf_width = ComputeMaxSize(this->inf->smallest_x, this->inf->smallest_x + inf_width, this->inf->GetHorizontalStepSize(sizing));
 		extra_width -= inf_width - this->inf->smallest_x;
@@ -1677,9 +1677,9 @@ public:
 		if (use_three_columns) {
 			/* Three column display, first make both lists equally wide, then divide whatever is left between both lists.
 			 * Only keep track of what avs gets, all other space goes to acs. */
-			uint avs_width = min(avs_extra_width, extra_width);
+			uint avs_width = std::min(avs_extra_width, extra_width);
 			extra_width -= avs_width;
-			extra_width -= min(acs_extra_width, extra_width);
+			extra_width -= std::min(acs_extra_width, extra_width);
 			avs_width += extra_width / 2;
 
 			avs_width = ComputeMaxSize(this->avs->smallest_x, this->avs->smallest_x + avs_width, this->avs->GetHorizontalStepSize(sizing));
@@ -1754,7 +1754,7 @@ public:
 				}
 				uint dx = this->acs->current_x + this->acs->padding_left + this->acs->padding_right;
 				if (this->editable) {
-					dx = max(dx, this->avs->current_x + this->avs->padding_left + this->avs->padding_right);
+					dx = std::max(dx, this->avs->current_x + this->avs->padding_left + this->avs->padding_right);
 				}
 				x += dx + INTER_COLUMN_SPACING + this->inf->padding_left;
 				this->inf->AssignSizePosition(sizing, x, y + this->inf->padding_top, inf_width, inf_height, rtl);
@@ -1914,10 +1914,10 @@ NWidgetBase* NewGRFDisplay(int *biggest_index)
 
 	int biggest2;
 	NWidgetBase *acs = MakeNWidgets(_nested_newgrf_actives_widgets, lengthof(_nested_newgrf_actives_widgets), &biggest2, nullptr);
-	*biggest_index = max(*biggest_index, biggest2);
+	*biggest_index = std::max(*biggest_index, biggest2);
 
 	NWidgetBase *inf = MakeNWidgets(_nested_newgrf_infopanel_widgets, lengthof(_nested_newgrf_infopanel_widgets), &biggest2, nullptr);
-	*biggest_index = max(*biggest_index, biggest2);
+	*biggest_index = std::max(*biggest_index, biggest2);
 
 	return new NWidgetNewGRFDisplay(avs, acs, inf);
 }
@@ -2077,8 +2077,8 @@ struct SavePresetWindow : public Window {
 				size->height = 0;
 				for (uint i = 0; i < this->presets.size(); i++) {
 					Dimension d = GetStringBoundingBox(this->presets[i].c_str());
-					size->width = max(size->width, d.width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
-					resize->height = max(resize->height, d.height);
+					size->width = std::max(size->width, d.width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+					resize->height = std::max(resize->height, d.height);
 				}
 				size->height = ClampU((uint)this->presets.size(), 5, 20) * resize->height + 1;
 				break;
@@ -2096,7 +2096,7 @@ struct SavePresetWindow : public Window {
 				int offset_y = (step_height - FONT_HEIGHT_NORMAL) / 2;
 				uint y = r.top + WD_FRAMERECT_TOP;
 				uint min_index = this->vscroll->GetPosition();
-				uint max_index = min(min_index + this->vscroll->GetCapacity(), (uint)this->presets.size());
+				uint max_index = std::min(min_index + this->vscroll->GetCapacity(), (uint)this->presets.size());
 
 				for (uint i = min_index; i < max_index; i++) {
 					if ((int)i == this->selected) GfxFillRect(r.left + 1, y, r.right - 1, y + step_height - 2, PC_DARK_BLUE);
@@ -2209,7 +2209,7 @@ struct ScanProgressWindow : public Window {
 				SetDParamMaxDigits(1, 4);
 				/* We really don't know the width. We could determine it by scanning the NewGRFs,
 				 * but this is the status window for scanning them... */
-				size->width = max(400U, GetStringBoundingBox(STR_NEWGRF_SCAN_STATUS).width);
+				size->width = std::max(400U, GetStringBoundingBox(STR_NEWGRF_SCAN_STATUS).width);
 				size->height = FONT_HEIGHT_NORMAL * 2 + WD_PAR_VSEP_NORMAL;
 				break;
 		}
@@ -2221,7 +2221,7 @@ struct ScanProgressWindow : public Window {
 			case WID_SP_PROGRESS_BAR: {
 				/* Draw the % complete with a bar and a text */
 				DrawFrameRect(r.left, r.top, r.right, r.bottom, COLOUR_GREY, FR_BORDERONLY);
-				uint percent = scanned * 100 / max(1U, _settings_client.gui.last_newgrf_count);
+				uint percent = scanned * 100 / std::max(1U, _settings_client.gui.last_newgrf_count);
 				DrawFrameRect(r.left + 1, r.top + 1, (int)((r.right - r.left - 2) * percent / 100) + r.left + 1, r.bottom - 1, COLOUR_MAUVE, FR_NONE);
 				SetDParam(0, percent);
 				DrawString(r.left, r.right, r.top + 5, STR_GENERATION_PROGRESS, TC_FROMSTRING, SA_HOR_CENTER);

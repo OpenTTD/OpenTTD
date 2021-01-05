@@ -99,7 +99,7 @@ public:
 			if (StrEmpty(this->landinfo_data[i])) break;
 
 			uint width = GetStringBoundingBox(this->landinfo_data[i]).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
-			size->width = max(size->width, width);
+			size->width = std::max(size->width, width);
 
 			size->height += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 			if (i == 0) size->height += 4;
@@ -107,7 +107,7 @@ public:
 
 		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) {
 			uint width = GetStringBoundingBox(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
-			size->width = max(size->width, min(300u, width));
+			size->width = std::max(size->width, std::min(300u, width));
 			SetDParamStr(0, this->landinfo_data[LAND_INFO_MULTICENTER_LINE]);
 			size->height += GetStringHeight(STR_JUST_RAW_STRING, size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
 		}
@@ -510,7 +510,7 @@ struct AboutWindow : public Window {
 
 		d.width = 0;
 		for (uint i = 0; i < lengthof(_credits); i++) {
-			d.width = max(d.width, GetStringBoundingBox(_credits[i]).width);
+			d.width = std::max(d.width, GetStringBoundingBox(_credits[i]).width);
 		}
 		*size = maxdim(*size, d);
 	}
@@ -706,7 +706,7 @@ struct TooltipsWindow : public Window
 		 * Clamp value to below main toolbar and above statusbar. If tooltip would
 		 * go below window, flip it so it is shown above the cursor */
 		pt.y = Clamp(_cursor.pos.y + _cursor.total_size.y + _cursor.total_offs.y + 5, scr_top, scr_bot);
-		if (pt.y + sm_height > scr_bot) pt.y = min(_cursor.pos.y + _cursor.total_offs.y - 5, scr_bot) - sm_height;
+		if (pt.y + sm_height > scr_bot) pt.y = std::min(_cursor.pos.y + _cursor.total_offs.y - 5, scr_bot) - sm_height;
 		pt.x = sm_width >= _screen.width ? 0 : Clamp(_cursor.pos.x - (sm_width >> 1), 0, _screen.width - sm_width);
 
 		return pt;
@@ -717,7 +717,7 @@ struct TooltipsWindow : public Window
 		/* There is only one widget. */
 		for (uint i = 0; i != this->paramcount; i++) SetDParam(i, this->params[i]);
 
-		size->width  = min(GetStringBoundingBox(this->string_id).width, ScaleGUITrad(194));
+		size->width  = std::min<uint>(GetStringBoundingBox(this->string_id).width, ScaleGUITrad(194));
 		size->height = GetStringHeight(this->string_id, size->width);
 
 		/* Increase slightly to have some space around the box. */
@@ -817,7 +817,7 @@ void QueryString::DrawEditBox(const Window *w, int wid) const
 	/* We will take the current widget length as maximum width, with a small
 	 * space reserved at the end for the caret to show */
 	const Textbuf *tb = &this->text;
-	int delta = min(0, (right - left) - tb->pixels - 10);
+	int delta = std::min(0, (right - left) - tb->pixels - 10);
 
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 
@@ -855,7 +855,7 @@ Point QueryString::GetCaretPosition(const Window *w, int wid) const
 
 	/* Clamp caret position to be inside out current width. */
 	const Textbuf *tb = &this->text;
-	int delta = min(0, (right - left) - tb->pixels - 10);
+	int delta = std::min(0, (right - left) - tb->pixels - 10);
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 
 	Point pt = {left + WD_FRAMERECT_LEFT + tb->caretxoffs + delta, (int)wi->pos_y + WD_FRAMERECT_TOP};
@@ -888,7 +888,7 @@ Rect QueryString::GetBoundingRect(const Window *w, int wid, const char *from, co
 
 	/* Clamp caret position to be inside our current width. */
 	const Textbuf *tb = &this->text;
-	int delta = min(0, (right - left) - tb->pixels - 10);
+	int delta = std::min(0, (right - left) - tb->pixels - 10);
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 
 	/* Get location of first and last character. */
@@ -927,7 +927,7 @@ const char *QueryString::GetCharAtPosition(const Window *w, int wid, const Point
 
 	/* Clamp caret position to be inside our current width. */
 	const Textbuf *tb = &this->text;
-	int delta = min(0, (right - left) - tb->pixels - 10);
+	int delta = std::min(0, (right - left) - tb->pixels - 10);
 	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
 
 	return ::GetCharAtPosition(tb->buf, pt.x - delta - left);

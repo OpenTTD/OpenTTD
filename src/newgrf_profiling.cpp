@@ -148,7 +148,7 @@ uint32 NewGRFProfiler::FinishAll()
 	for (NewGRFProfiler &pr : _newgrf_profilers) {
 		if (pr.active) {
 			total_microseconds += pr.Finish();
-			max_ticks = max(max_ticks, _tick_counter - pr.start_tick);
+			max_ticks = std::max(max_ticks, _tick_counter - pr.start_tick);
 		}
 	}
 

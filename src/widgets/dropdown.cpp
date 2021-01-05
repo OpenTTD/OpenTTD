@@ -83,7 +83,7 @@ DropDownListIconItem::DropDownListIconItem(SpriteID sprite, PaletteID pal, Strin
 
 uint DropDownListIconItem::Height(uint width) const
 {
-	return max(this->dim.height, (uint)FONT_HEIGHT_NORMAL);
+	return std::max(this->dim.height, (uint)FONT_HEIGHT_NORMAL);
 }
 
 uint DropDownListIconItem::Width() const
@@ -381,7 +381,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 
 	for (const auto &item : list) {
 		height += item->Height(width);
-		if (auto_width) max_item_width = max(max_item_width, item->Width() + 5);
+		if (auto_width) max_item_width = std::max(max_item_width, item->Width() + 5);
 	}
 
 	/* Scrollbar needed? */
@@ -391,12 +391,12 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 	bool above = false;
 
 	/* Available height below (or above, if the dropdown is placed above the widget). */
-	uint available_height = (uint)max(GetMainViewBottom() - top - 4, 0);
+	uint available_height = std::max(GetMainViewBottom() - top - 4, 0);
 
 	/* If the dropdown doesn't fully fit below the widget... */
 	if (height > available_height) {
 
-		uint available_height_above = (uint)max(w->top + wi_rect.top - GetMainViewTop() - 4, 0);
+		uint available_height_above = std::max(w->top + wi_rect.top - GetMainViewTop() - 4, 0);
 
 		/* Put the dropdown above if there is more available space. */
 		if (available_height_above > available_height) {
@@ -426,7 +426,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 		}
 	}
 
-	if (auto_width) width = max(width, max_item_width);
+	if (auto_width) width = std::max(width, max_item_width);
 
 	Point dw_pos = { w->left + (_current_text_dir == TD_RTL ? wi_rect.right + 1 - (int)width : wi_rect.left), top};
 	Dimension dw_size = {width, height};

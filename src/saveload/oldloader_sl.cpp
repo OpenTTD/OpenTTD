@@ -392,7 +392,7 @@ static bool FixTTOEngines()
 	for (uint i = 0; i < lengthof(_orig_ship_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_SHIP, i);
 	for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
 
-	Date aging_date = min(_date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
+	Date aging_date = std::min(_date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
 
 	for (EngineID i = 0; i < 256; i++) {
 		int oi = ttd_to_tto[i];
@@ -1823,7 +1823,7 @@ bool LoadTTOMain(LoadgameState *ls)
 	 * "increase them to compensate for the faster time advance in TTD compared to TTO
 	 * which otherwise would cause much less income while the annual running costs of
 	 * the vehicles stay the same" */
-	_economy.inflation_payment = min(_economy.inflation_payment * 124 / 74, MAX_INFLATION);
+	_economy.inflation_payment = std::min(_economy.inflation_payment * 124 / 74, MAX_INFLATION);
 
 	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTO savegame successfully converted");

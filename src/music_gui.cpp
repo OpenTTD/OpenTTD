@@ -505,7 +505,7 @@ struct MusicTrackSelectionWindow : public Window {
 					SetDParam(1, 2);
 					SetDParamStr(2, song->songname);
 					Dimension d2 = GetStringBoundingBox(STR_PLAYLIST_TRACK_NAME);
-					d.width = max(d.width, d2.width);
+					d.width = std::max(d.width, d2.width);
 					d.height += d2.height;
 				}
 				d.width += padding.width;

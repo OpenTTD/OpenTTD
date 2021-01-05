@@ -28,15 +28,15 @@ static Slope GetTileSlopeGivenHeight(int hnorth, int hwest, int heast, int hsout
 	 *
 	 * Also, there is at most 1 corner with height difference of 2.
 	 */
-	int hminnw = min(hnorth, hwest);
-	int hmines = min(heast, hsouth);
-	int hmin = min(hminnw, hmines);
+	int hminnw = std::min(hnorth, hwest);
+	int hmines = std::min(heast, hsouth);
+	int hmin = std::min(hminnw, hmines);
 
 	if (h != nullptr) *h = hmin;
 
-	int hmaxnw = max(hnorth, hwest);
-	int hmaxes = max(heast, hsouth);
-	int hmax = max(hmaxnw, hmaxes);
+	int hmaxnw = std::max(hnorth, hwest);
+	int hmaxes = std::max(heast, hsouth);
+	int hmax = std::max(hmaxnw, hmaxes);
 
 	Slope r = SLOPE_FLAT;
 
@@ -60,8 +60,8 @@ Slope GetTileSlope(TileIndex tile, int *h)
 {
 	uint x1 = TileX(tile);
 	uint y1 = TileY(tile);
-	uint x2 = min(x1 + 1, MapMaxX());
-	uint y2 = min(y1 + 1, MapMaxY());
+	uint x2 = std::min(x1 + 1, MapMaxX());
+	uint y2 = std::min(y1 + 1, MapMaxY());
 
 	int hnorth = TileHeight(tile);           // Height of the North corner.
 	int hwest  = TileHeight(TileXY(x2, y1)); // Height of the West corner.
@@ -101,8 +101,8 @@ bool IsTileFlat(TileIndex tile, int *h)
 {
 	uint x1 = TileX(tile);
 	uint y1 = TileY(tile);
-	uint x2 = min(x1 + 1, MapMaxX());
-	uint y2 = min(y1 + 1, MapMaxY());
+	uint x2 = std::min(x1 + 1, MapMaxX());
+	uint y2 = std::min(y1 + 1, MapMaxY());
 
 	uint z = TileHeight(tile);
 	if (TileHeight(TileXY(x2, y1)) != z) return false;
@@ -122,15 +122,15 @@ int GetTileZ(TileIndex tile)
 {
 	uint x1 = TileX(tile);
 	uint y1 = TileY(tile);
-	uint x2 = min(x1 + 1, MapMaxX());
-	uint y2 = min(y1 + 1, MapMaxY());
+	uint x2 = std::min(x1 + 1, MapMaxX());
+	uint y2 = std::min(y1 + 1, MapMaxY());
 
-	int h =    TileHeight(tile);            // N corner
-	h = min(h, TileHeight(TileXY(x2, y1))); // W corner
-	h = min(h, TileHeight(TileXY(x1, y2))); // E corner
-	h = min(h, TileHeight(TileXY(x2, y2))); // S corner
-
-	return h;
+	return std::min({
+		TileHeight(tile),           // N corner
+		TileHeight(TileXY(x2, y1)), // W corner
+		TileHeight(TileXY(x1, y2)), // E corner
+		TileHeight(TileXY(x2, y2)), // S corner
+	});
 }
 
 /**
@@ -142,13 +142,13 @@ int GetTileMaxZ(TileIndex t)
 {
 	uint x1 = TileX(t);
 	uint y1 = TileY(t);
-	uint x2 = min(x1 + 1, MapMaxX());
-	uint y2 = min(y1 + 1, MapMaxY());
+	uint x2 = std::min(x1 + 1, MapMaxX());
+	uint y2 = std::min(y1 + 1, MapMaxY());
 
-	int h =         TileHeight(t);               // N corner
-	h = max<int>(h, TileHeight(TileXY(x2, y1))); // W corner
-	h = max<int>(h, TileHeight(TileXY(x1, y2))); // E corner
-	h = max<int>(h, TileHeight(TileXY(x2, y2))); // S corner
-
-	return h;
+	return std::max({
+		TileHeight(t),              // N corner
+		TileHeight(TileXY(x2, y1)), // W corner
+		TileHeight(TileXY(x1, y2)), // E corner
+		TileHeight(TileXY(x2, y2)), // S corner
+	});
 }

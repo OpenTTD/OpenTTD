@@ -977,7 +977,7 @@ public:
 		}
 		if (newstation) {
 			_railstation.station_count = StationClass::Get(_railstation.station_class)->GetSpecCount();
-			_railstation.station_type = min(_railstation.station_type, _railstation.station_count - 1);
+			_railstation.station_type = std::min<int>(_railstation.station_type, _railstation.station_count - 1);
 
 			int count = 0;
 			for (uint i = 0; i < StationClass::GetClassCount(); i++) {
@@ -985,7 +985,7 @@ public:
 				count++;
 			}
 			this->vscroll->SetCount(count);
-			this->vscroll->SetPosition(Clamp(_railstation.station_class - 2, 0, max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
+			this->vscroll->SetPosition(Clamp(_railstation.station_class - 2, 0, std::max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
 
 			NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX);
 			matrix->SetScrollbar(this->vscroll2);
@@ -1059,7 +1059,7 @@ public:
 					if (i == STAT_CLASS_WAYP) continue;
 					d = maxdim(d, GetStringBoundingBox(StationClass::Get((StationClassID)i)->name));
 				}
-				size->width = max(size->width, d.width + padding.width);
+				size->width = std::max(size->width, d.width + padding.width);
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
 				size->height = 5 * this->line_height;
 				resize->height = this->line_height;
@@ -1085,7 +1085,7 @@ public:
 						d = maxdim(d, GetStringBoundingBox(str));
 					}
 				}
-				size->width = max(size->width, d.width + padding.width);
+				size->width = std::max(size->width, d.width + padding.width);
 				break;
 			}
 
@@ -1334,7 +1334,7 @@ public:
 							_railstation.station_class = (StationClassID)i;
 							StationClass *stclass = StationClass::Get(_railstation.station_class);
 							_railstation.station_count = stclass->GetSpecCount();
-							_railstation.station_type  = min((int)_railstation.station_type, max(0, (int)_railstation.station_count - 1));
+							_railstation.station_type  = std::min((int)_railstation.station_type, std::max(0, (int)_railstation.station_count - 1));
 
 							this->CheckSelectedSize(stclass->GetSpec(_railstation.station_type));
 
@@ -1539,9 +1539,9 @@ public:
 				for (uint lowered = 0; lowered < 2; lowered++) {
 					Point offset;
 					Dimension sprite_size = GetSpriteSize(rti->gui_sprites.signals[type][variant][lowered], &offset);
-					this->sig_sprite_bottom_offset = max<int>(this->sig_sprite_bottom_offset, sprite_size.height);
-					this->sig_sprite_size.width = max<int>(this->sig_sprite_size.width, sprite_size.width - offset.x);
-					this->sig_sprite_size.height = max<int>(this->sig_sprite_size.height, sprite_size.height - offset.y);
+					this->sig_sprite_bottom_offset = std::max<int>(this->sig_sprite_bottom_offset, sprite_size.height);
+					this->sig_sprite_size.width = std::max<int>(this->sig_sprite_size.width, sprite_size.width - offset.x);
+					this->sig_sprite_size.height = std::max<int>(this->sig_sprite_size.height, sprite_size.height - offset.y);
 				}
 			}
 		}
@@ -1551,10 +1551,10 @@ public:
 	{
 		if (widget == WID_BS_DRAG_SIGNALS_DENSITY_LABEL) {
 			/* Two digits for signals density. */
-			size->width = max(size->width, 2 * GetDigitWidth() + padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT);
+			size->width = std::max(size->width, 2 * GetDigitWidth() + padding.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT);
 		} else if (IsInsideMM(widget, WID_BS_SEMAPHORE_NORM, WID_BS_ELECTRIC_PBS_OWAY + 1)) {
-			size->width = max(size->width, this->sig_sprite_size.width + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT);
-			size->height = max(size->height, this->sig_sprite_size.height + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
+			size->width = std::max(size->width, this->sig_sprite_size.width + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT);
+			size->height = std::max(size->height, this->sig_sprite_size.height + WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM);
 		}
 	}
 

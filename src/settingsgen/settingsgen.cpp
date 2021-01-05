@@ -58,7 +58,7 @@ public:
 	 */
 	size_t Add(const char *text, size_t length)
 	{
-		size_t store_size = min(length, OUTPUT_BLOCK_SIZE - this->size);
+		size_t store_size = std::min(length, OUTPUT_BLOCK_SIZE - this->size);
 		assert(store_size <= OUTPUT_BLOCK_SIZE);
 		MemCpyT(this->data + this->size, text, store_size);
 		this->size += store_size;

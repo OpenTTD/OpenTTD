@@ -71,7 +71,7 @@ void LinkGraph::Compress()
 		for (NodeID node2 = 0; node2 < this->Size(); ++node2) {
 			BaseEdge &edge = this->edges[node1][node2];
 			if (edge.capacity > 0) {
-				edge.capacity = max(1U, edge.capacity / 2);
+				edge.capacity = std::max(1U, edge.capacity / 2);
 				edge.usage /= 2;
 			}
 		}
@@ -163,8 +163,7 @@ NodeID LinkGraph::AddNode(const Station *st)
 	this->nodes.emplace_back();
 	/* Avoid reducing the height of the matrix as that is expensive and we
 	 * most likely will increase it again later which is again expensive. */
-	this->edges.Resize(new_node + 1U,
-			max(new_node + 1U, this->edges.Height()));
+	this->edges.Resize(new_node + 1U, std::max(new_node + 1U, this->edges.Height()));
 
 	this->nodes[new_node].Init(st->xy, st->index,
 			HasBit(good.status, GoodsEntry::GES_ACCEPTANCE));
@@ -266,8 +265,8 @@ void LinkGraph::Edge::Update(uint capacity, uint usage, EdgeUpdateMode mode)
 		this->edge.capacity += capacity;
 		this->edge.usage += usage;
 	} else if (mode & EUM_REFRESH) {
-		this->edge.capacity = max(this->edge.capacity, capacity);
-		this->edge.usage = max(this->edge.usage, usage);
+		this->edge.capacity = std::max(this->edge.capacity, capacity);
+		this->edge.usage = std::max(this->edge.usage, usage);
 	}
 	if (mode & EUM_UNRESTRICTED) this->edge.last_unrestricted_update = _date;
 	if (mode & EUM_RESTRICTED) this->edge.last_restricted_update = _date;

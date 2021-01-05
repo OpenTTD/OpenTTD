@@ -2015,7 +2015,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		if (started > 0) {
 			IConsolePrintF(CC_DEBUG, "Started profiling for GRFID%s %s", (started > 1) ? "s" : "", grfids.c_str());
 			if (argc >= 3) {
-				int days = max(atoi(argv[2]), 1);
+				int days = std::max(atoi(argv[2]), 1);
 				_newgrf_profile_end_date = _date + days;
 
 				char datestrbuf[32]{ 0 };

@@ -41,8 +41,8 @@ struct SetDateWindow : Window {
 	SetDateWindow(WindowDesc *desc, WindowNumber window_number, Window *parent, Date initial_date, Year min_year, Year max_year, SetDateCallback *callback) :
 			Window(desc),
 			callback(callback),
-			min_year(max(MIN_YEAR, min_year)),
-			max_year(min(MAX_YEAR, max_year))
+			min_year(std::max(MIN_YEAR, min_year)),
+			max_year(std::min(MAX_YEAR, max_year))
 	{
 		assert(this->min_year <= this->max_year);
 		this->parent = parent;

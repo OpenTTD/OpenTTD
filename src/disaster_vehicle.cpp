@@ -193,7 +193,7 @@ void DisasterVehicle::UpdatePosition(int x, int y, int z)
 		int safe_y = Clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
 
 		u->x_pos = x;
-		u->y_pos = y - 1 - (max(z - GetSlopePixelZ(safe_x, safe_y), 0) >> 3);
+		u->y_pos = y - 1 - (std::max(z - GetSlopePixelZ(safe_x, safe_y), 0) >> 3);
 		safe_y = Clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
 		u->z_pos = GetSlopePixelZ(safe_x, safe_y);
 		u->direction = this->direction;

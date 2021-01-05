@@ -240,8 +240,8 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			int z_E = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
 
 			/* Find min and max height of tile */
-			int z_min = min(min(z_N, z_W), min(z_S, z_E));
-			int z_max = max(max(z_N, z_W), max(z_S, z_E));
+			int z_min = std::min({z_N, z_W, z_S, z_E});
+			int z_max = std::max({z_N, z_W, z_S, z_E});
 
 			/* Compute tile slope */
 			Slope tileh = (z_max > z_min + 1 ? SLOPE_STEEP : SLOPE_FLAT);

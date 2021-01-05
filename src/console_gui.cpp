@@ -194,7 +194,7 @@ struct IConsoleWindow : Window
 	 */
 	void Scroll(int amount)
 	{
-		int max_scroll = max<int>(0, IConsoleLine::size + 1 - this->height / this->line_height);
+		int max_scroll = std::max(0, IConsoleLine::size + 1 - this->height / this->line_height);
 		IConsoleWindow::scroll = Clamp<int>(IConsoleWindow::scroll + amount, 0, max_scroll);
 		this->SetDirty();
 	}
@@ -231,7 +231,7 @@ struct IConsoleWindow : Window
 	{
 		if (IConsoleLine::Truncate() &&
 				(IConsoleWindow::scroll > IConsoleLine::size)) {
-			IConsoleWindow::scroll = max(0, IConsoleLine::size - (this->height / this->line_height) + 1);
+			IConsoleWindow::scroll = std::max(0, IConsoleLine::size - (this->height / this->line_height) + 1);
 			this->SetDirty();
 		}
 	}
@@ -341,7 +341,7 @@ struct IConsoleWindow : Window
 
 	Point GetCaretPosition() const override
 	{
-		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
+		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 		Point pt = {this->line_offset + delta + _iconsole_cmdline.caretxoffs, this->height - this->line_height};
 
 		return pt;
@@ -349,7 +349,7 @@ struct IConsoleWindow : Window
 
 	Rect GetTextBoundingRect(const char *from, const char *to) const override
 	{
-		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
+		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
 		Point p1 = GetCharPosInString(_iconsole_cmdline.buf, from, FS_NORMAL);
 		Point p2 = from != to ? GetCharPosInString(_iconsole_cmdline.buf, from) : p1;
@@ -360,7 +360,7 @@ struct IConsoleWindow : Window
 
 	const char *GetTextCharacterAtPosition(const Point &pt) const override
 	{
-		int delta = min(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
+		int delta = std::min<int>(this->width - this->line_offset - _iconsole_cmdline.pixels - ICON_RIGHT_BORDERWIDTH, 0);
 
 		if (!IsInsideMM(pt.y, this->height - this->line_height, this->height)) return nullptr;
 

@@ -98,10 +98,10 @@ CommandCost CmdDecreaseLoan(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	switch (p2 & 3) {
 		default: return CMD_ERROR; // Invalid method
 		case 0: // Pay back one step
-			loan = min(c->current_loan, (Money)LOAN_INTERVAL);
+			loan = std::min(c->current_loan, (Money)LOAN_INTERVAL);
 			break;
 		case 1: // Pay back as much as possible
-			loan = max(min(c->current_loan, c->money), (Money)LOAN_INTERVAL);
+			loan = std::max(std::min(c->current_loan, c->money), (Money)LOAN_INTERVAL);
 			loan -= loan % LOAN_INTERVAL;
 			break;
 		case 2: // Repay the given amount of loan

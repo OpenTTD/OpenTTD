@@ -431,7 +431,7 @@ int FallbackParagraphLayout::FallbackLine::GetLeading() const
 {
 	int leading = 0;
 	for (const auto &run : *this) {
-		leading = max(leading, run.GetLeading());
+		leading = std::max(leading, run.GetLeading());
 	}
 
 	return leading;
@@ -747,7 +747,7 @@ Dimension Layouter::GetBounds()
 {
 	Dimension d = { 0, 0 };
 	for (const auto &l : *this) {
-		d.width = max<uint>(d.width, l->GetWidth());
+		d.width = std::max<uint>(d.width, l->GetWidth());
 		d.height += l->GetLeading();
 	}
 	return d;

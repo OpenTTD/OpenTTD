@@ -538,7 +538,7 @@ struct NewsWindow : Window {
 		int count = this->timer.CountElapsed(delta_ms);
 		if (count > 0) {
 			/* Scroll up newsmessages from the bottom */
-			int newtop = max(this->top - 2 * count, _screen.height - this->height - this->status_height - this->chat_height);
+			int newtop = std::max(this->top - 2 * count, _screen.height - this->height - this->status_height - this->chat_height);
 			this->SetWindowTop(newtop);
 		}
 
@@ -556,8 +556,8 @@ private:
 	{
 		if (this->top == newtop) return;
 
-		int mintop = min(newtop, this->top);
-		int maxtop = max(newtop, this->top);
+		int mintop = std::min(newtop, this->top);
+		int maxtop = std::max(newtop, this->top);
 		if (this->viewport != nullptr) this->viewport->top += newtop - this->top;
 		this->top = newtop;
 
@@ -1148,7 +1148,7 @@ struct MessageHistoryWindow : Window {
 			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width;
 
 			size->height = 4 * resize->height + this->top_spacing + this->bottom_spacing; // At least 4 lines are visible.
-			size->width = max(200u, size->width); // At least 200 pixels wide.
+			size->width = std::max(200u, size->width); // At least 200 pixels wide.
 		}
 	}
 

@@ -17,7 +17,6 @@
 
 #include "stdafx.h"
 
-#include <algorithm>
 #include <array>
 
 #include "newgrf.h"
@@ -179,7 +178,7 @@ struct UnmappedChoiceList {
 				*d++ = i + 1;
 
 				/* "<LENn>": Limit the length of the string to 0xFFFE to leave space for the '\0'. */
-				size_t len = min<size_t>(0xFFFE, str.size());
+				size_t len = std::min<size_t>(0xFFFE, str.size());
 				*d++ = GB(len + 1, 8, 8);
 				*d++ = GB(len + 1, 0, 8);
 
@@ -222,7 +221,7 @@ struct UnmappedChoiceList {
 				const auto &str = this->strings[this->strings.find(idx) != this->strings.end() ? idx : 0].str();
 				/* Limit the length of the string we copy to 0xFE. The length is written above
 				 * as a byte and we need room for the final '\0'. */
-				size_t len = min<size_t>(0xFE, str.size());
+				size_t len = std::min<size_t>(0xFE, str.size());
 				dest.write(str.c_str(), len);
 				*d++ = '\0';
 			}
@@ -936,7 +935,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 
 			case SCC_NEWGRF_ROTATE_TOP_4_WORDS:     _newgrf_textrefstack.RotateTop4Words(); break;
 			case SCC_NEWGRF_PUSH_WORD:              _newgrf_textrefstack.PushWord(Utf8Consume(str)); break;
-			case SCC_NEWGRF_UNPRINT:                *buff = max(*buff - Utf8Consume(str), buf_start); break;
+			case SCC_NEWGRF_UNPRINT:                *buff = std::max(*buff - Utf8Consume(str), buf_start); break;
 
 			case SCC_NEWGRF_PRINT_WORD_CARGO_LONG:
 			case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:

@@ -22,7 +22,7 @@
 Dimension maxdim(const Dimension &d1, const Dimension &d2)
 {
 	Dimension d;
-	d.width  = max(d1.width,  d2.width);
-	d.height = max(d1.height, d2.height);
+	d.width  = std::max(d1.width,  d2.width);
+	d.height = std::max(d1.height, d2.height);
 	return d;
 }

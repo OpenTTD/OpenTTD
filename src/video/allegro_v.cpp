@@ -26,7 +26,6 @@
 #include "../thread.h"
 #include "allegro_v.h"
 #include <allegro.h>
-#include <algorithm>
 
 #include "../safeguards.h"
 

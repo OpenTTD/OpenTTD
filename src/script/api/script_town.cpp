@@ -172,7 +172,7 @@
 		default:
 			EnforcePrecondition(false, (days_between_town_growth * DAY_TICKS / TOWN_GROWTH_TICKS) <= MAX_TOWN_GROWTH_TICKS);
 			/* Don't use growth_rate 0 as it means GROWTH_NORMAL */
-			growth_rate = max(days_between_town_growth * DAY_TICKS, 2u) - 1;
+			growth_rate = std::max(days_between_town_growth * DAY_TICKS, 2u) - 1;
 			break;
 	}
 
@@ -376,7 +376,7 @@
 	for (const Station *st : Station::Iterate()) {
 		if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
 	}
-	return max(0, 2 - num);
+	return std::max(0, 2 - num);
 }
 
 /* static */ ScriptTown::RoadLayout ScriptTown::GetRoadLayout(TownID town_id)

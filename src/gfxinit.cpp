@@ -405,7 +405,7 @@ MD5File::ChecksumResult MD5File::CheckMD5(Subdirectory subdir, size_t max_size) 
 
 	if (f == nullptr) return CR_NO_FILE;
 
-	size = min(size, max_size);
+	size = std::min(size, max_size);
 
 	Md5 checksum;
 	uint8 buffer[1024];

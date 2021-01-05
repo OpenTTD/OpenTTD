@@ -392,7 +392,7 @@ public:
 	 */
 	inline static int GetCapacityRatio(int free, uint total)
 	{
-		return Clamp(free, PATH_CAP_MIN_FREE, PATH_CAP_MAX_FREE) * PATH_CAP_MULTIPLIER / max(total, 1U);
+		return Clamp(free, PATH_CAP_MIN_FREE, PATH_CAP_MAX_FREE) * PATH_CAP_MULTIPLIER / std::max(total, 1U);
 	}
 
 	/**

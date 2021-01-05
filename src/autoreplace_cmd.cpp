@@ -115,7 +115,7 @@ void CheckCargoCapacity(Vehicle *v)
 			assert(dest->cargo.TotalCount() == dest->cargo.ActionCount(VehicleCargoList::MTA_KEEP));
 			if (dest->cargo.TotalCount() >= dest->cargo_cap || dest->cargo_type != src->cargo_type) continue;
 
-			uint amount = min(to_spread, dest->cargo_cap - dest->cargo.TotalCount());
+			uint amount = std::min(to_spread, dest->cargo_cap - dest->cargo.TotalCount());
 			src->cargo.Shift(amount, &dest->cargo);
 			to_spread -= amount;
 		}
@@ -157,7 +157,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 			}
 			if (dest->cargo_type != src->cargo_type) continue;
 
-			uint amount = min(src->cargo.TotalCount(), dest->cargo_cap - dest->cargo.TotalCount());
+			uint amount = std::min(src->cargo.TotalCount(), dest->cargo_cap - dest->cargo.TotalCount());
 			if (amount <= 0) continue;
 
 			src->cargo.Shift(amount, &dest->cargo);

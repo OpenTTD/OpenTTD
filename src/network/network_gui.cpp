@@ -123,7 +123,7 @@ public:
 		/* First initialise some variables... */
 		for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
 			child_wid->SetupSmallestSize(w, init_array);
-			this->smallest_y = max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
+			this->smallest_y = std::max(this->smallest_y, child_wid->smallest_y + child_wid->padding_top + child_wid->padding_bottom);
 		}
 
 		/* ... then in a second pass make sure the 'current' sizes are set. Won't change for most widgets. */
@@ -498,12 +498,12 @@ public:
 	{
 		switch (widget) {
 			case WID_NG_MATRIX:
-				resize->height = WD_MATRIX_TOP + max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + WD_MATRIX_BOTTOM;
+				resize->height = WD_MATRIX_TOP + std::max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + WD_MATRIX_BOTTOM;
 				size->height = 12 * resize->height;
 				break;
 
 			case WID_NG_LASTJOINED:
-				size->height = WD_MATRIX_TOP + max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + WD_MATRIX_BOTTOM;
+				size->height = WD_MATRIX_TOP + std::max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + WD_MATRIX_BOTTOM;
 				break;
 
 			case WID_NG_LASTJOINED_SPACER:
@@ -545,7 +545,7 @@ public:
 			case WID_NG_MATRIX: {
 				uint16 y = r.top;
 
-				const int max = min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (int)this->servers.size());
+				const int max = std::min(this->vscroll->GetPosition() + this->vscroll->GetCapacity(), (int)this->servers.size());
 
 				for (int i = this->vscroll->GetPosition(); i < max; ++i) {
 					const NetworkGameList *ngl = this->servers[i];
@@ -812,7 +812,7 @@ public:
 				case WKC_PAGEDOWN:
 					/* scroll down a page */
 					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
-					this->list_pos = min(this->list_pos + this->vscroll->GetCapacity(), (int)this->servers.size() - 1);
+					this->list_pos = std::min(this->list_pos + this->vscroll->GetCapacity(), (int)this->servers.size() - 1);
 					break;
 				case WKC_HOME:
 					/* jump to beginning */
@@ -904,7 +904,7 @@ GUIGameServerList::FilterFunction * const NetworkGameWindow::filter_funcs[] = {
 
 static NWidgetBase *MakeResizableHeader(int *biggest_index)
 {
-	*biggest_index = max<int>(*biggest_index, WID_NG_INFO);
+	*biggest_index = std::max<int>(*biggest_index, WID_NG_INFO);
 	return new NWidgetServerListHeader();
 }
 
@@ -1861,13 +1861,13 @@ struct NetworkClientListWindow : Window {
 	{
 		if (widget != WID_CL_PANEL) return;
 
-		this->server_client_width = max(GetStringBoundingBox(STR_NETWORK_SERVER).width, GetStringBoundingBox(STR_NETWORK_CLIENT).width) + WD_FRAMERECT_RIGHT;
+		this->server_client_width = std::max(GetStringBoundingBox(STR_NETWORK_SERVER).width, GetStringBoundingBox(STR_NETWORK_CLIENT).width) + WD_FRAMERECT_RIGHT;
 		this->icon_size = GetSpriteSize(SPR_COMPANY_ICON);
-		this->line_height = max(this->icon_size.height + 2U, (uint)FONT_HEIGHT_NORMAL);
+		this->line_height = std::max(this->icon_size.height + 2U, (uint)FONT_HEIGHT_NORMAL);
 
 		uint width = 100; // Default width
 		for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-			width = max(width, GetStringBoundingBox(ci->client_name).width);
+			width = std::max(width, GetStringBoundingBox(ci->client_name).width);
 		}
 
 		size->width = WD_FRAMERECT_LEFT + this->server_client_width + this->icon_size.width + WD_FRAMERECT_LEFT + width + WD_FRAMERECT_RIGHT;
@@ -2028,18 +2028,18 @@ struct NetworkJoinStatusWindow : Window {
 		/* Account for the statuses */
 		uint width = 0;
 		for (uint i = 0; i < NETWORK_JOIN_STATUS_END; i++) {
-			width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + i).width);
+			width = std::max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_1 + i).width);
 		}
 
 		/* For the number of waiting (other) players */
 		SetDParamMaxValue(0, MAX_CLIENTS);
-		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_WAITING).width);
+		width = std::max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_WAITING).width);
 
 		/* Account for downloading ~ 10 MiB */
 		SetDParamMaxDigits(0, 8);
 		SetDParamMaxDigits(1, 8);
-		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_1).width);
-		width = max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_2).width);
+		width = std::max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_1).width);
+		width = std::max(width, GetStringBoundingBox(STR_NETWORK_CONNECTING_DOWNLOADING_2).width);
 
 		/* Give a bit more clearing for the widest strings than strictly needed */
 		size->width = width + WD_FRAMERECT_LEFT + WD_FRAMERECT_BOTTOM + 10;

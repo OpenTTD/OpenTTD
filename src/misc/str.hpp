@@ -92,7 +92,7 @@ struct CStrA : public CBlobT<char>
 	/** Add formatted string (like vsprintf) at the end of existing contents. */
 	int AddFormatL(const char *format, va_list args) WARN_FORMAT(2, 0)
 	{
-		size_t addSize = max<size_t>(strlen(format), 16);
+		size_t addSize = std::max<size_t>(strlen(format), 16);
 		addSize += addSize / 2;
 		int ret;
 		int err = 0;

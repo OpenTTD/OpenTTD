@@ -46,7 +46,7 @@ public:
 		if (index < Tmax_size) {
 			this->data[index].valid = true;
 			this->first_free = index + 1;
-			this->first_unused = max(this->first_unused, this->first_free);
+			this->first_unused = std::max(this->first_unused, this->first_free);
 		}
 		return index;
 	}
@@ -58,7 +58,7 @@ public:
 	inline void Destroy(Tindex index)
 	{
 		this->data[index].valid = false;
-		this->first_free = min(this->first_free, index);
+		this->first_free = std::min(this->first_free, index);
 	}
 
 private:

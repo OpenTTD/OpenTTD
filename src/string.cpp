@@ -62,7 +62,7 @@ int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
 {
 	ptrdiff_t diff = last - str;
 	if (diff < 0) return 0;
-	return min((int)diff, vsnprintf(str, diff + 1, format, ap));
+	return std::min(static_cast<int>(diff), vsnprintf(str, diff + 1, format, ap));
 }
 
 /**

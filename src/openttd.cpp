@@ -290,8 +290,8 @@ static void ParseResolution(Dimension *res, const char *s)
 		return;
 	}
 
-	res->width  = max(strtoul(s, nullptr, 0), 64UL);
-	res->height = max(strtoul(t + 1, nullptr, 0), 64UL);
+	res->width  = std::max(strtoul(s, nullptr, 0), 64UL);
+	res->height = std::max(strtoul(t + 1, nullptr, 0), 64UL);
 }
 
 

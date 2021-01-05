@@ -154,7 +154,7 @@ void NetworkUndrawChatMessage()
 		int width  = _chatmsg_box.width;
 		int height = _chatmsg_box.height;
 		if (y < 0) {
-			height = max(height + y, min(_chatmsg_box.height, _screen.height));
+			height = std::max(height + y, std::min(_chatmsg_box.height, _screen.height));
 			y = 0;
 		}
 		if (x + width >= _screen.width) {
@@ -214,7 +214,7 @@ void NetworkDrawChatMessage()
 	int width  = _chatmsg_box.width;
 	int height = _chatmsg_box.height;
 	if (y < 0) {
-		height = max(height + y, min(_chatmsg_box.height, _screen.height));
+		height = std::max(height + y, std::min(_chatmsg_box.height, _screen.height));
 		y = 0;
 	}
 	if (x + width >= _screen.width) {
@@ -235,7 +235,7 @@ void NetworkDrawChatMessage()
 		string_height += GetStringLineCount(STR_JUST_RAW_STRING, width - 1) * FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING;
 	}
 
-	string_height = min(string_height, MAX_CHAT_MESSAGES * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING));
+	string_height = std::min<uint>(string_height, MAX_CHAT_MESSAGES * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING));
 
 	int top = _screen.height - _chatmsg_box.y - string_height - 2;
 	int bottom = _screen.height - _chatmsg_box.y - 2;

@@ -223,8 +223,8 @@ void LinkGraphJob::NodeAnnotation::Init(uint supply)
  */
 void Path::Fork(Path *base, uint cap, int free_cap, uint dist)
 {
-	this->capacity = min(base->capacity, cap);
-	this->free_capacity = min(base->free_capacity, free_cap);
+	this->capacity = std::min(base->capacity, cap);
+	this->free_capacity = std::min(base->free_capacity, free_cap);
 	this->distance = base->distance + dist;
 	assert(this->distance > 0);
 	if (this->parent != base) {
@@ -250,7 +250,7 @@ uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
 		if (max_saturation != UINT_MAX) {
 			uint usable_cap = edge.Capacity() * max_saturation / 100;
 			if (usable_cap > edge.Flow()) {
-				new_flow = min(new_flow, usable_cap - edge.Flow());
+				new_flow = std::min(new_flow, usable_cap - edge.Flow());
 			} else {
 				return 0;
 			}
