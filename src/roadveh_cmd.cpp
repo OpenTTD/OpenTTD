@@ -1038,9 +1038,7 @@ static bool RoadVehLeaveDepot(RoadVehicle *v, bool first)
 	v->state = tdir;
 	v->frame = RVC_DEPOT_START_FRAME;
 
-	v->x_pos = x;
-	v->y_pos = y;
-	v->UpdatePosition();
+	v->Travel(x, y);
 	v->UpdateInclination(true, true);
 
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
@@ -1168,16 +1166,12 @@ bool IndividualRoadVehicleController(RoadVehicle *v, const RoadVehicle *prev)
 
 		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			/* Vehicle has just entered a bridge or tunnel */
-			v->x_pos = gp.x;
-			v->y_pos = gp.y;
-			v->UpdatePosition();
+			v->Travel(gp.x, gp.y);
 			v->UpdateInclination(true, true);
 			return true;
 		}
 
-		v->x_pos = gp.x;
-		v->y_pos = gp.y;
-		v->UpdatePosition();
+		v->Travel(gp.x, gp.y);
 		if ((v->vehstatus & VS_HIDDEN) == 0) v->Vehicle::UpdateViewport(true);
 		return true;
 	}
@@ -1339,9 +1333,7 @@ again:
 			v->direction = new_dir;
 			if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
 		}
-		v->x_pos = x;
-		v->y_pos = y;
-		v->UpdatePosition();
+		v->Travel(x, y);
 		RoadZPosAffectSpeed(v, v->UpdateInclination(true, true));
 		return true;
 	}
@@ -1405,9 +1397,7 @@ again:
 			if (_settings_game.vehicle.roadveh_acceleration_model == AM_ORIGINAL) v->cur_speed -= v->cur_speed >> 2;
 		}
 
-		v->x_pos = x;
-		v->y_pos = y;
-		v->UpdatePosition();
+		v->Travel(x, y);
 		RoadZPosAffectSpeed(v, v->UpdateInclination(true, true));
 		return true;
 	}
@@ -1493,9 +1483,7 @@ again:
 				/* Check if next inline bay is free and has compatible road. */
 				if (RoadStop::IsDriveThroughRoadStopContinuation(v->tile, next_tile) && HasTileAnyRoadType(next_tile, v->compatible_roadtypes)) {
 					v->frame++;
-					v->x_pos = x;
-					v->y_pos = y;
-					v->UpdatePosition();
+					v->Travel(x, y);
 					RoadZPosAffectSpeed(v, v->UpdateInclination(true, false));
 					return true;
 				}
@@ -1542,9 +1530,7 @@ again:
 	/* Move to next frame unless vehicle arrived at a stop position
 	 * in a depot or entered a tunnel/bridge */
 	if (!HasBit(r, VETS_ENTERED_WORMHOLE)) v->frame++;
-	v->x_pos = x;
-	v->y_pos = y;
-	v->UpdatePosition();
+	v->Travel(x, y);
 	RoadZPosAffectSpeed(v, v->UpdateInclination(false, true));
 	return true;
 }

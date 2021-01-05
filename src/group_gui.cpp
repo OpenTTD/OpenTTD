@@ -380,6 +380,8 @@ public:
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
+		const uint num_info_lines = 5; // see drawing code in DrawWidget()
+
 		switch (widget) {
 			case WID_GL_LIST_GROUP: {
 				size->width = this->ComputeGroupInfoSize();
@@ -395,7 +397,7 @@ public:
 				max_icon_height = max(max_icon_height, GetSpriteSize(this->GetWidget<NWidgetCore>(WID_GL_REPLACE_PROTECTION)->widget_data).height);
 
 				/* ... minus the height of the group info ... */
-				max_icon_height += (FONT_HEIGHT_NORMAL * 3) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				max_icon_height += (FONT_HEIGHT_NORMAL * num_info_lines) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
 				/* Get a multiple of tiny_step_height of that amount */
 				size->height = Ceil(size->height - max_icon_height, tiny_step_height);
@@ -431,7 +433,7 @@ public:
 			}
 
 			case WID_GL_INFO: {
-				size->height = (FONT_HEIGHT_NORMAL * 3) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				size->height = (FONT_HEIGHT_NORMAL * num_info_lines) + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 				break;
 			}
 		}
@@ -563,31 +565,59 @@ public:
 				break;
 
 			case WID_GL_INFO: {
-				Money this_year = 0;
-				Money last_year = 0;
+				Money profit_this_year = 0;
+				Money profit_last_year = 0;
+				OverflowSafeInt32 potential_this_year = 0;
+				OverflowSafeInt32 potential_last_year = 0;
+				OverflowSafeInt32 delivered_this_year = 0;
+				OverflowSafeInt32 delivered_last_year = 0;
 				uint64 occupancy = 0;
 
 				for (const Vehicle * const v : this->vehicles) {
 					assert(v->owner == this->owner);
 
-					this_year += v->GetDisplayProfitThisYear();
-					last_year += v->GetDisplayProfitLastYear();
+					profit_this_year += v->GetDisplayProfitThisYear();
+					profit_last_year += v->GetDisplayProfitLastYear();
+					potential_this_year += v->potential_cargotiles_this_year;
+					potential_last_year += v->potential_cargotiles_last_year;
+					delivered_this_year += v->delivered_cargotiles_this_year;
+					delivered_last_year += v->delivered_cargotiles_last_year;
 					occupancy += v->trip_occupancy;
 				}
 
 				const int left  = r.left + WD_FRAMERECT_LEFT + 8;
 				const int right = r.right - WD_FRAMERECT_RIGHT - 8;
 
+				/* Remember to change num_info_lines in UpdateWidgetSize if the number of lines changes. */
+				/* Line 1: Group profit this year */
 				int y = r.top + WD_FRAMERECT_TOP;
 				DrawString(left, right, y, STR_GROUP_PROFIT_THIS_YEAR, TC_BLACK);
-				SetDParam(0, this_year);
+				SetDParam(0, profit_this_year);
 				DrawString(left, right, y, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
 
+				/* Line 2: Group profit last year */
 				y += FONT_HEIGHT_NORMAL;
 				DrawString(left, right, y, STR_GROUP_PROFIT_LAST_YEAR, TC_BLACK);
-				SetDParam(0, last_year);
+				SetDParam(0, profit_last_year);
 				DrawString(left, right, y, STR_JUST_CURRENCY_LONG, TC_BLACK, SA_RIGHT);
 
+				/* Line 3: Group efficiency this year */
+				y += FONT_HEIGHT_NORMAL;
+				DrawString(left, right, y, STR_GROUP_EFFICIENCY_THIS_YEAR, TC_BLACK);
+				if (potential_this_year > 0) {
+					SetDParam(0, delivered_this_year * 100 / potential_this_year);
+					DrawString(left, right, y, STR_GROUP_EFFICIENCY_VALUE, TC_BLACK, SA_RIGHT);
+				}
+
+				/* Line 4: Group efficiency last year */
+				y += FONT_HEIGHT_NORMAL;
+				DrawString(left, right, y, STR_GROUP_EFFICIENCY_LAST_YEAR, TC_BLACK);
+				if (potential_last_year > 0) {
+					SetDParam(0, delivered_last_year * 100 / potential_last_year);
+					DrawString(left, right, y, STR_GROUP_EFFICIENCY_VALUE, TC_BLACK, SA_RIGHT);
+				}
+
+				/* Line 5: Current group occupancy value */
 				y += FONT_HEIGHT_NORMAL;
 				DrawString(left, right, y, STR_GROUP_OCCUPANCY, TC_BLACK);
 				const size_t vehicle_count = this->vehicles.size();

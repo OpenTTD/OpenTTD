@@ -249,6 +249,11 @@ public:
 	Money profit_last_year;             ///< Profit last year << 8, low 8 bits are fract
 	Money value;                        ///< Value of the vehicle
 
+	OverflowSafeInt32 delivered_cargotiles_this_year; ///< How many cargo units * distance were delivered this year
+	OverflowSafeInt32 delivered_cargotiles_last_year; ///< How many cargo units * distance were delivered last year
+	OverflowSafeInt32 potential_cargotiles_this_year; ///< How many cargo units * distance could have been delivered this year
+	OverflowSafeInt32 potential_cargotiles_last_year; ///< How many cargo units * distance could have been delivered last year
+
 	CargoPayment *cargo_payment;        ///< The cargo payment we're currently in
 
 	Rect coord;                         ///< NOSAVE: Graphical bounding box of the vehicle, i.e. what to redraw on moves.
@@ -303,6 +308,7 @@ public:
 	byte acceleration;                  ///< used by train & aircraft
 	uint32 motion_counter;              ///< counter to occasionally play a vehicle sound.
 	byte progress;                      ///< The percentage (if divided by 256) this vehicle already crossed the tile unit.
+	uint16 cd_distance;                 ///< Distance (in sub-tiles) traveled for potential cargotiles calculation
 
 	byte random_bits;                   ///< Bits used for determining which randomized variational spritegroups to use when drawing.
 	byte waiting_triggers;              ///< Triggers to be yet matched before rerandomizing the random bits.
@@ -581,6 +587,30 @@ public:
 	 */
 	Money GetDisplayProfitLastYear() const { return (this->profit_last_year >> 8); }
 
+	/**
+	 * Get transportation efficiency of the vehicle this year.
+	 * The percentage of capacity delivered over capacity potential.
+	 * @return percentage efficiency, 0 if vehicle had no potential
+	 */
+	int32 GetEfficiencyThisYear() const
+	{
+		if (this->potential_cargotiles_this_year == 0) return 0;
+		return this->delivered_cargotiles_this_year * 100 / this->potential_cargotiles_this_year;
+	}
+
+	/**
+	* Get transportation efficiency of the vehicle last year.
+	* The percentage of capacity delivered over capacity potential.
+	* @return percentage efficiency, 0 if vehicle had no potential
+	*/
+	int32 GetEfficiencyLastYear() const
+	{
+		if (this->potential_cargotiles_last_year == 0) return 0;
+		return this->delivered_cargotiles_last_year * 100 / this->potential_cargotiles_last_year;
+	}
+
+	void AddCargoPotentialPenalty(int ticks);
+
 	void SetNext(Vehicle *next);
 
 	/**
@@ -730,6 +760,11 @@ public:
 
 		this->profit_this_year = src->profit_this_year;
 		this->profit_last_year = src->profit_last_year;
+
+		this->delivered_cargotiles_last_year = src->delivered_cargotiles_last_year;
+		this->delivered_cargotiles_this_year = src->delivered_cargotiles_this_year;
+		this->potential_cargotiles_last_year = src->potential_cargotiles_last_year;
+		this->potential_cargotiles_this_year = src->potential_cargotiles_this_year;
 	}
 
 
@@ -766,6 +801,7 @@ public:
 	void UpdateVisualEffect(bool allow_power_change = true);
 	void ShowVisualEffect() const;
 
+	void Travel(int x, int y);
 	void UpdatePosition();
 	void UpdateViewport(bool dirty);
 	void UpdatePositionAndViewport();

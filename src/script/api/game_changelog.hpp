@@ -39,6 +39,12 @@
  * API additions:
  * \li GSVehicle::BuildVehicleWithRefit
  * \li GSVehicle::GetBuildWithRefitCapacity
+ * \li GSVehicle::GetEfficiencyThisYear
+ * \li GSVehicle::GetEfficiencyLastYear
+ * \li GSVehicle::GetCargoTilesPotentialThisYear
+ * \li GSVehicle::GetCargoTilesPotentialLastYear
+ * \li GSVehicle::GetCargoTilesDeliveredThisYear
+ * \li GSVehicle::GetCargoTilesDeliveredLastYear
  * \li GSRoad::GetName
  * \li GSRoad::RoadVehCanRunOnRoad
  * \li GSRoad::RoadVehHasPowerOnRoad

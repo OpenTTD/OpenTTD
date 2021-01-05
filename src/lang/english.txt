@@ -290,6 +290,8 @@ STR_SORT_BY_TRANSPORTED                                         :Transported
 STR_SORT_BY_NUMBER                                              :Number
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit last year
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit this year
+STR_SORT_BY_EFFICIENCY_LAST_YEAR                                :Efficiency last year
+STR_SORT_BY_EFFICIENCY_THIS_YEAR                                :Efficiency this year
 STR_SORT_BY_AGE                                                 :Age
 STR_SORT_BY_RELIABILITY                                         :Reliability
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total capacity per cargo type
@@ -1115,6 +1117,14 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
+STR_VEHICLE_SCORING_PROFIT                                      :Profit
+STR_VEHICLE_SCORING_EFFICIENCY                                  :Efficiency
+
+STR_IDLING_PENALTY_NONE                                         :None
+STR_IDLING_PENALTY_LOW                                          :Low
+STR_IDLING_PENALTY_MEDIUM                                       :Medium
+STR_IDLING_PENALTY_HIGH                                         :High
+
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}You can download several AIs via the 'Online Content' system
 
 # Settings tree window
@@ -1190,6 +1200,8 @@ STR_CONFIG_SETTING_DISASTERS                                    :Disasters: {STR
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Town council's attitude towards area restructuring: {STRING2}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Choose how much noise and environmental damage by companies affect their town rating and further construction actions in their area
+STR_CONFIG_SETTING_EFFICIENCY_IDLE_PENALTY                      :Efficiency penalty for vehicles idling at stations: {STRING2}
+STR_CONFIG_SETTING_EFFICIENCY_IDLE_PENALTY_HELPTEXT             :Vehicles sitting idle at a station (neither receiving or unloading cargo) will receive an Efficiency penalty based on running at 1/4, 1/2, or 3/4 speed.
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximum map height: {STRING2}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Set the maximum allowed height for mountains on the map
@@ -3454,7 +3466,9 @@ STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Road veh
 STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Ships - click on ship for information
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Aircraft - click on aircraft for information
 
+STR_VEHICLE_LIST_PROFIT_EFFICIENCY_LINE                         :{STRING2}   {STRING2}
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Profit this year: {CURRENCY_LONG} (last year: {CURRENCY_LONG})
+STR_VEHICLE_LIST_EFFICIENCY_THIS_YEAR_LAST_YEAR                 :{TINY_FONT}{BLACK}Efficiency this year: {NUM}% (last year: {NUM}%)
 
 STR_VEHICLE_LIST_AVAILABLE_TRAINS                               :Available Trains
 STR_VEHICLE_LIST_AVAILABLE_ROAD_VEHICLES                        :Available Vehicles
@@ -3509,6 +3523,9 @@ STR_GROUP_PROFIT_THIS_YEAR                                      :Profit this yea
 STR_GROUP_PROFIT_LAST_YEAR                                      :Profit last year:
 STR_GROUP_OCCUPANCY                                             :Current usage:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
+STR_GROUP_EFFICIENCY_THIS_YEAR                                  :Efficiency this year:
+STR_GROUP_EFFICIENCY_LAST_YEAR                                  :Efficiency last year:
+STR_GROUP_EFFICIENCY_VALUE                                      :{NUM}%
 
 # Build vehicle window
 STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :New Rail Vehicles
@@ -3837,6 +3854,7 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Weight: 
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Weight: {LTBLUE}{WEIGHT_SHORT} {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY} {BLACK}Max. T.E.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Profit this year: {LTBLUE}{CURRENCY_LONG} (last year: {CURRENCY_LONG})
+STR_VEHICLE_INFO_EFFICIENCY_THIS_YEAR_LAST_YEAR                 :{BLACK}Efficiency this year: {LTBLUE}{NUM}% (last year: {NUM}%)
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE} {BLACK}Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY_LONG}

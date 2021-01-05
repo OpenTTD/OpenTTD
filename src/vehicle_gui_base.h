@@ -27,10 +27,12 @@ struct GUIVehicleGroup {
 	VehicleList::const_iterator vehicles_end;      ///< Pointer to past-the-end element of this vehicle group.
 	Money display_profit_this_year;                ///< Total profit for the vehicle group this year.
 	Money display_profit_last_year;                ///< Total profit for the vehicle group laste year.
+	int32 display_efficiency_this_year;            ///< Efficient (average) for the vehicle group this year.
+	int32 display_efficiency_last_year;            ///< Efficient (average) for the vehicle group this year.
 	Date age;                                      ///< Age in days of oldest vehicle in the group.
 
-	GUIVehicleGroup(VehicleList::const_iterator vehicles_begin, VehicleList::const_iterator vehicles_end, Money display_profit_this_year, Money display_profit_last_year, Date age)
-		: vehicles_begin(vehicles_begin), vehicles_end(vehicles_end), display_profit_this_year(display_profit_this_year), display_profit_last_year(display_profit_last_year), age(age) {}
+	GUIVehicleGroup(VehicleList::const_iterator vehicles_begin, VehicleList::const_iterator vehicles_end, Money display_profit_this_year, Money display_profit_last_year, int32 display_efficiency_this_year, int32 display_efficiency_last_year, Date age)
+		: vehicles_begin(vehicles_begin), vehicles_end(vehicles_end), display_profit_this_year(display_profit_this_year), display_profit_last_year(display_profit_last_year), display_efficiency_this_year(display_efficiency_this_year), display_efficiency_last_year(display_efficiency_last_year), age(age) {}
 
 	std::ptrdiff_t NumVehicles() const
 	{

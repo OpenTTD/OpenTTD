@@ -50,6 +50,8 @@ static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleNameSorter;
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleAgeSorter;
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleProfitThisYearSorter;
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleProfitLastYearSorter;
+static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleEfficiencyThisYearSorter;
+static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleEfficiencyLastYearSorter;
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleCargoSorter;
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleReliabilitySorter;
 static BaseVehicleListWindow::VehicleIndividualSortFunction VehicleMaxSpeedSorter;
@@ -77,6 +79,8 @@ BaseVehicleListWindow::VehicleGroupSortFunction * const BaseVehicleListWindow::v
 	&VehicleIndividualToGroupSorterWrapper<VehicleAgeSorter>,
 	&VehicleIndividualToGroupSorterWrapper<VehicleProfitThisYearSorter>,
 	&VehicleIndividualToGroupSorterWrapper<VehicleProfitLastYearSorter>,
+	&VehicleIndividualToGroupSorterWrapper<VehicleEfficiencyThisYearSorter>,
+	&VehicleIndividualToGroupSorterWrapper<VehicleEfficiencyLastYearSorter>,
 	&VehicleIndividualToGroupSorterWrapper<VehicleCargoSorter>,
 	&VehicleIndividualToGroupSorterWrapper<VehicleReliabilitySorter>,
 	&VehicleIndividualToGroupSorterWrapper<VehicleMaxSpeedSorter>,
@@ -93,6 +97,8 @@ const StringID BaseVehicleListWindow::vehicle_group_none_sorter_names[] = {
 	STR_SORT_BY_AGE,
 	STR_SORT_BY_PROFIT_THIS_YEAR,
 	STR_SORT_BY_PROFIT_LAST_YEAR,
+	STR_SORT_BY_EFFICIENCY_THIS_YEAR,
+	STR_SORT_BY_EFFICIENCY_LAST_YEAR,
 	STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE,
 	STR_SORT_BY_RELIABILITY,
 	STR_SORT_BY_MAX_SPEED,
@@ -187,7 +193,7 @@ void BaseVehicleListWindow::BuildVehicleList()
 	if (this->grouping == GB_NONE) {
 		uint max_unitnumber = 0;
 		for (auto it = this->vehicles.begin(); it != this->vehicles.end(); ++it) {
-			this->vehgroups.emplace_back(it, it + 1, (*it)->GetDisplayProfitThisYear(), (*it)->GetDisplayProfitLastYear(), (*it)->age);
+			this->vehgroups.emplace_back(it, it + 1, (*it)->GetDisplayProfitThisYear(), (*it)->GetDisplayProfitLastYear(), (*it)->GetEfficiencyThisYear(), (*it)->GetEfficiencyLastYear(), (*it)->age);
 
 			max_unitnumber = max<uint>(max_unitnumber, (*it)->unitnumber);
 		}
@@ -208,15 +214,24 @@ void BaseVehicleListWindow::BuildVehicleList()
 
 			Money display_profit_this_year = 0;
 			Money display_profit_last_year = 0;
+			int32 display_efficiency_this_year = 0;
+			int32 display_efficiency_last_year = 0;
 			Date age = 0;
+			int count = 0;
 			for (auto it = begin; it != end; ++it) {
 				const Vehicle * const v = (*it);
 				display_profit_this_year += v->GetDisplayProfitThisYear();
 				display_profit_last_year += v->GetDisplayProfitLastYear();
+				display_efficiency_this_year += v->GetEfficiencyThisYear();
+				display_efficiency_last_year += v->GetEfficiencyLastYear();
 				age = max<Date>(age, v->age);
+				count += 1;
 			}
 
-			this->vehgroups.emplace_back(begin, end, display_profit_this_year, display_profit_last_year, age);
+			display_efficiency_this_year = display_efficiency_this_year * 100 / count / 100;
+			display_efficiency_last_year = display_efficiency_last_year * 100 / count / 100;
+
+			this->vehgroups.emplace_back(begin, end, display_profit_this_year, display_profit_last_year, display_efficiency_this_year, display_efficiency_last_year, age);
 
 			max_num_vehicles = max<uint>(max_num_vehicles, static_cast<uint>(end - begin));
 
@@ -1254,6 +1269,20 @@ static bool VehicleProfitLastYearSorter(const Vehicle * const &a, const Vehicle 
 	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
 }
 
+/** Sort vehicles by this year actual/potential delivered cargotiles */
+static bool VehicleEfficiencyThisYearSorter(const Vehicle * const &a, const Vehicle * const &b)
+{
+	int r = ClampToI32(a->GetEfficiencyThisYear() - b->GetEfficiencyThisYear());
+	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
+}
+
+/** Sort vehicles by last year actual/potential delivered cargotiles */
+static bool VehicleEfficiencyLastYearSorter(const Vehicle * const &a, const Vehicle * const &b)
+{
+	int r = ClampToI32(a->GetEfficiencyLastYear() - b->GetEfficiencyLastYear());
+	return (r != 0) ? r < 0 : VehicleNumberSorter(a, b);
+}
+
 /** Sort vehicles by their cargo */
 static bool VehicleCargoSorter(const Vehicle * const &a, const Vehicle * const &b)
 {
@@ -1539,10 +1568,14 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 	for (uint i = this->vscroll->GetPosition(); i < max; ++i) {
 
 		const GUIVehicleGroup &vehgroup = this->vehgroups[i];
+		SetDParam(0, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
+		SetDParam(1, vehgroup.display_profit_this_year);
+		SetDParam(2, vehgroup.display_profit_last_year);
+		SetDParam(3, STR_VEHICLE_LIST_EFFICIENCY_THIS_YEAR_LAST_YEAR);
+		SetDParam(4, vehgroup.display_efficiency_this_year);
+		SetDParam(5, vehgroup.display_efficiency_last_year);
 
-		SetDParam(0, vehgroup.display_profit_this_year);
-		SetDParam(1, vehgroup.display_profit_last_year);
-		DrawString(text_left, text_right, y + line_height - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
+		DrawString(text_left, text_right, y + line_height - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1, STR_VEHICLE_LIST_PROFIT_EFFICIENCY_LINE);
 
 		DrawVehicleProfitButton(vehgroup.age, vehgroup.display_profit_last_year, vehgroup.NumVehicles(), vehicle_button_x, y + FONT_HEIGHT_NORMAL + 3);
 
@@ -2159,7 +2192,7 @@ struct VehicleDetailsWindow : Window {
 		switch (widget) {
 			case WID_VD_TOP_DETAILS: {
 				Dimension dim = { 0, 0 };
-				size->height = WD_FRAMERECT_TOP + 4 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
+				size->height = WD_FRAMERECT_TOP + 5 * FONT_HEIGHT_NORMAL + WD_FRAMERECT_BOTTOM;
 
 				for (uint i = 0; i < 4; i++) SetDParamMaxValue(i, INT16_MAX);
 				static const StringID info_strings[] = {
@@ -2167,6 +2200,7 @@ struct VehicleDetailsWindow : Window {
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED,
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE,
 					STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR,
+					STR_VEHICLE_INFO_EFFICIENCY_THIS_YEAR_LAST_YEAR,
 					STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS
 				};
 				for (uint i = 0; i < lengthof(info_strings); i++) {
@@ -2315,6 +2349,12 @@ struct VehicleDetailsWindow : Window {
 				SetDParam(0, v->GetDisplayProfitThisYear());
 				SetDParam(1, v->GetDisplayProfitLastYear());
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR);
+				y += FONT_HEIGHT_NORMAL;
+
+				/* Draw efficiency rating */
+				SetDParam(0, v->GetEfficiencyThisYear());
+				SetDParam(1, v->GetEfficiencyLastYear());
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_VEHICLE_INFO_EFFICIENCY_THIS_YEAR_LAST_YEAR);
 				y += FONT_HEIGHT_NORMAL;
 
 				/* Draw breakdown & reliability */

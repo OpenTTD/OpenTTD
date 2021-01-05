@@ -926,7 +926,6 @@ void StartupEconomy()
 	RecomputePrices();
 
 	StartupIndustryDailyChanges(true); // As we are starting a new game, initialize the counter too
-
 }
 
 /**
@@ -1183,6 +1182,7 @@ CargoPayment::~CargoPayment()
 
 	SubtractMoneyFromCompany(CommandCost(this->front->GetExpenseType(true), -this->route_profit));
 	this->front->profit_this_year += (this->visual_profit + this->visual_transfer) << 8;
+	this->front->delivered_cargotiles_this_year += this->cargo_distance;
 
 	if (this->route_profit != 0 && IsLocalCompany() && !PlayVehicleSound(this->front, VSE_LOAD_UNLOAD)) {
 		SndPlayVehicleFx(SND_14_CASHTILL, this->front);
@@ -1216,6 +1216,12 @@ void CargoPayment::PayFinalDelivery(const CargoPacket *cp, uint count)
 
 	/* The vehicle's profit is whatever route profit there is minus feeder shares. */
 	this->visual_profit += profit - cp->FeederShare(count);
+
+	/* Delivered cargo over distance uses the single-leg calculation
+	 * similar to Transfer, as a measure of the activity/usefulness
+	 * of the vehicle */
+	uint leg_distance = DistanceManhattan(cp->LoadedAtXY(), Station::Get(this->current_station)->xy);
+	this->cargo_distance += count * leg_distance;
 }
 
 /**
@@ -1236,6 +1242,8 @@ Money CargoPayment::PayTransfer(const CargoPacket *cp, uint count)
 
 	profit = profit * _settings_game.economy.feeder_payment_share / 100;
 
+	const uint leg_distance = DistanceManhattan(cp->LoadedAtXY(), Station::Get(this->current_station)->xy);
+	this->cargo_distance += count * leg_distance; // accumulate cargo over distance
 	this->visual_transfer += profit; // accumulate transfer profits for whole vehicle
 	return profit; // account for the (virtual) profit already made for the cargo packet
 }
@@ -1869,6 +1877,11 @@ static void LoadUnloadVehicle(Vehicle *front)
 			 * links die while it's loading. */
 			if (!finished_loading) LinkRefresher::Run(front, true, true);
 		}
+
+		/* If the vehicle did not load/unload anything during this period,
+		 * and did not just finish up loading, count up the potential delivered
+		 * cargo-tiles as a penalty for sitting idle at a station. */
+		if (!finished_loading) front->AddCargoPotentialPenalty(front->load_unload_ticks);
 
 		SB(front->vehicle_flags, VF_LOADING_FINISHED, 1, finished_loading);
 	}

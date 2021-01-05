@@ -1007,6 +1007,13 @@ void CallVehicleTicks()
 						break;
 				}
 
+				/* Add potential transported cargo-distance for whole tiles traveled */
+				if (v->cd_distance >= TILE_SIZE) {
+					int tiles = v->cd_distance / TILE_SIZE;
+					v->cd_distance -= tiles * TILE_SIZE;
+					v->potential_cargotiles_this_year += tiles * v->GetConsistTotalCapacity();
+				}
+
 				v->motion_counter += front->cur_speed;
 				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
 				if (GB(v->motion_counter, 0, 8) < front->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
@@ -1587,6 +1594,23 @@ void VehicleEnterDepot(Vehicle *v)
 	}
 }
 
+
+/**
+ * Move to the x, y coordinates as part of regular travel.
+ * @param x  new x position (sub-tile units)
+ * @param y  new y position (sub-tile units)
+ */
+void Vehicle::Travel(int x, int y)
+{
+	/* Update cargotiles delta distance */
+	const int delta = abs(this->x_pos - x) + abs(this->y_pos - y);
+	const int new_cd_distance = (int)this->cd_distance + delta;
+	this->cd_distance = (uint16)min<int>(new_cd_distance, std::numeric_limits<decltype(this->cd_distance)>::max());
+
+	this->x_pos = x;
+	this->y_pos = y;
+	this->UpdatePosition();
+}
 
 /**
  * Update the position of the vehicle. This will update the hash that tells
@@ -2689,6 +2713,21 @@ void Vehicle::ShowVisualEffect() const
 }
 
 /**
+ * Add penalty cargo-distance-traveled values for an idling vehicle.
+ * @param ticks How many ticks of idling to add penalty for
+ */
+void Vehicle::AddCargoPotentialPenalty(int ticks)
+{
+	if (_settings_game.economy.idle_loading_ct_penalty > 0) {
+		int assumed_speed = this->GetDisplayMaxSpeed(); // internal speed units differ by vehicle type, but display speed should always be actual movement capability per 256 ticks
+		int potential = assumed_speed * this->GetConsistTotalCapacity(); // 16x potential cargo-tiles transported in 256 ticks
+		potential = (potential * ticks + 255) / 256; // potential over actual ticks passed, rounding up
+		potential = potential * _settings_game.economy.idle_loading_ct_penalty / 4;
+		this->potential_cargotiles_this_year += (potential + TILE_SIZE - 1) / TILE_SIZE; // divide sub-tiles to whole tiles, rounding up
+	}
+}
+
+/**
  * Set the next vehicle of this vehicle.
  * @param next the next vehicle. nullptr removes the next vehicle.
  */
@@ -2792,6 +2831,10 @@ void VehiclesYearlyLoop()
 
 			v->profit_last_year = v->profit_this_year;
 			v->profit_this_year = 0;
+			v->delivered_cargotiles_last_year = v->delivered_cargotiles_this_year;
+			v->delivered_cargotiles_this_year = 0;
+			v->potential_cargotiles_last_year = v->potential_cargotiles_this_year;
+			v->potential_cargotiles_this_year = 0;
 			SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
 		}
 	}

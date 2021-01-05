@@ -764,9 +764,7 @@ static void ShipController(Ship *v)
 	} else {
 		/* On a bridge */
 		if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
-			v->x_pos = gp.x;
-			v->y_pos = gp.y;
-			v->UpdatePosition();
+			v->Travel(gp.x, gp.y);
 			if ((v->vehstatus & VS_HIDDEN) == 0) v->Vehicle::UpdateViewport(true);
 			return;
 		}
@@ -777,11 +775,9 @@ static void ShipController(Ship *v)
 	}
 
 	/* update image of ship, as well as delta XY */
-	v->x_pos = gp.x;
-	v->y_pos = gp.y;
+	v->Travel(gp.x, gp.y);
 
 getout:
-	v->UpdatePosition();
 	v->UpdateViewport(true, true);
 	return;
 
@@ -792,6 +788,7 @@ reverse_direction:
 	v->rotation_y_pos = v->y_pos;
 	v->cur_speed = 0;
 	v->path.clear();
+	v->UpdatePosition();
 	goto getout;
 }
 

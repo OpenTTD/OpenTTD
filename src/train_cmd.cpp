@@ -1480,7 +1480,7 @@ void Train::UpdateDeltaXY()
 }
 
 /**
- * Mark a train as stuck and stop it if it isn't stopped right now.
+ * Mark a train as stuck (can't reserve PBS path) and stop it if it isn't stopped right now.
  * @param v %Train to mark as being stuck.
  */
 static void MarkTrainAsStuck(Train *v)
@@ -1797,7 +1797,7 @@ void ReverseTrainDirection(Train *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
-	/* Clear path reservation in front if train is not stuck. */
+	/* If stuck at a PBS signal, train does not have a path reservation to free, otherwise free the path */
 	if (!HasBit(v->flags, VRF_TRAIN_STUCK)) FreeTrainTrackReservation(v);
 
 	/* Check if we were approaching a rail/road-crossing */
@@ -2722,6 +2722,7 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 		return false;
 	}
 
+	/* At this point, a path reservation has been made, and the train can no longer be stuck */
 	if (HasBit(v->flags, VRF_TRAIN_STUCK)) {
 		v->wait_counter = 0;
 		SetWindowWidgetDirty(WC_VEHICLE_VIEW, v->index, WID_VV_START_STOP);
@@ -3074,6 +3075,9 @@ static Vehicle *CheckTrainAtSignal(Vehicle *v, void *data)
 	return t;
 }
 
+/** Interval in ticks between adding idling penalty (cargo-tiles) to trains waiting at signals etc. */
+static const int TRAIN_CT_IDLE_PENALTY_INTERVAL = 32;
+
 /**
  * Move a vehicle chain one movement stop forwards.
  * @param v First vehicle to move.
@@ -3172,19 +3176,36 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 						/* In front of a red signal */
 						Trackdir i = FindFirstTrackdir(trackdirbits);
 
-						/* Don't handle stuck trains here. */
+						/* Don't handle trains waiting at path signals here. */
 						if (HasBit(v->flags, VRF_TRAIN_STUCK)) return false;
 
+						/* One-way or two-way signal? */
 						if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
+							/* One-way signal, trains cannot pass from opposite direction */
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255; // make sure that every bit of acceleration will hit the signal again, so speed stays 0.
-							if (!_settings_game.pf.reverse_at_signals || ++v->wait_counter < _settings_game.pf.wait_oneway_signal * DAY_TICKS * 2) return false;
+							/* Increment wait counter and maybe apply idling penalty.
+							 * Note that wait_counter effectively increments at 2 per tick at block signals. */
+							++v->wait_counter;
+							if (v->wait_counter % (2 * TRAIN_CT_IDLE_PENALTY_INTERVAL) == 0) v->AddCargoPotentialPenalty(TRAIN_CT_IDLE_PENALTY_INTERVAL);
+							/* If the train may not reverse at the signal, or it is not yet time to reverse, abort further movement.
+							 * Note that previously, wait_counter was only incremented if reverse_at_signals was true,
+							 * the value is unused when !reverse_at_signals so the order of operations does not matter. */
+							if (!_settings_game.pf.reverse_at_signals || v->wait_counter < _settings_game.pf.wait_oneway_signal * DAY_TICKS * 2) return false;
 						} else if (HasSignalOnTrackdir(gp.new_tile, i)) {
+							/* Two way signal, trains may pass from both directions */
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255; // make sure that every bit of acceleration will hit the signal again, so speed stays 0.
-							if (!_settings_game.pf.reverse_at_signals || ++v->wait_counter < _settings_game.pf.wait_twoway_signal * DAY_TICKS * 2) {
+							/* Increment wait counter and maybe apply idling penalty.
+							 * Note that wait_counter effectively increments at 2 per tick at block signals. */
+							++v->wait_counter;
+							if (v->wait_counter % (2 * TRAIN_CT_IDLE_PENALTY_INTERVAL) == 0) v->AddCargoPotentialPenalty(TRAIN_CT_IDLE_PENALTY_INTERVAL);
+							/* If the train may not reverse at the signal, or it is not yet time to reverse,
+							 * check for train going opposite direction beyond the signal, and otherwise abort further movement.
+							 * Same comment as above regarding wait_counter incrementing/order of operations applies here. */
+							if (!_settings_game.pf.reverse_at_signals || v->wait_counter < _settings_game.pf.wait_twoway_signal * DAY_TICKS * 2) {
 								DiagDirection exitdir = TrackdirToExitdir(i);
 								TileIndex o_tile = TileAddByDiagDir(gp.new_tile, exitdir);
 
@@ -3323,9 +3344,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 					gp.old_tile = GetOtherTunnelBridgeEnd(gp.old_tile);
 				}
 			} else {
-				v->x_pos = gp.x;
-				v->y_pos = gp.y;
-				v->UpdatePosition();
+				v->Travel(gp.x, gp.y);
 				if ((v->vehstatus & VS_HIDDEN) == 0) v->Vehicle::UpdateViewport(true);
 				continue;
 			}
@@ -3334,9 +3353,7 @@ bool TrainController(Train *v, Vehicle *nomove, bool reverse)
 		/* update image of train, as well as delta XY */
 		v->UpdateDeltaXY();
 
-		v->x_pos = gp.x;
-		v->y_pos = gp.y;
-		v->UpdatePosition();
+		v->Travel(gp.x, gp.y);
 
 		/* update the Z position of the vehicle */
 		int old_z = v->UpdateInclination(gp.new_tile != gp.old_tile, false);
@@ -3779,9 +3796,12 @@ static bool TrainLocoHandler(Train *v, bool mode)
 		CheckNextTrainTile(v);
 	}
 
-	/* Handle stuck trains. */
+	/* Handle train waiting at a PBS signal, where no reservation could be made right now */
 	if (!mode && HasBit(v->flags, VRF_TRAIN_STUCK)) {
 		++v->wait_counter;
+
+		/* Apply waiting penalty once in a while */
+		if (v->wait_counter % TRAIN_CT_IDLE_PENALTY_INTERVAL == 0) v->AddCargoPotentialPenalty(TRAIN_CT_IDLE_PENALTY_INTERVAL);
 
 		/* Should we try reversing this tick if still stuck? */
 		bool turn_around = v->wait_counter % (_settings_game.pf.wait_for_pbs_path * DAY_TICKS) == 0 && _settings_game.pf.reverse_at_signals;
