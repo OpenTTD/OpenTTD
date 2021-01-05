@@ -2388,6 +2388,17 @@ CommandCost CmdConvertRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			}
 		}
 
+		/* Base the ability to replace town roads and bridges on the town's
+		 * acceptance of destructive actions. */
+		if (owner == OWNER_TOWN) {
+			Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
+			CommandCost ret = CheckforTownRating(DC_NONE, t, tt == MP_TUNNELBRIDGE ? TUNNELBRIDGE_REMOVE : ROAD_REMOVE);
+			if (ret.Failed()) {
+				error = ret;
+				continue;
+			}
+		}
+
 		/* Vehicle on the tile when not converting normal <-> powered
 		 * Tunnels and bridges have special check later */
 		if (tt != MP_TUNNELBRIDGE) {
