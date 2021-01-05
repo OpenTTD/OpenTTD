@@ -1047,13 +1047,9 @@ struct QueryStringWindow : public Window
 	void OnOk()
 	{
 		if (this->editbox.orig == nullptr || strcmp(this->editbox.text.buf, this->editbox.orig) != 0) {
-			/* If the parent is nullptr, the editbox is handled by general function
-			 * HandleOnEditText */
-			if (this->parent != nullptr) {
-				this->parent->OnQueryTextFinished(this->editbox.text.buf);
-			} else {
-				HandleOnEditText(this->editbox.text.buf);
-			}
+			assert(this->parent != nullptr);
+
+			this->parent->OnQueryTextFinished(this->editbox.text.buf);
 			this->editbox.handled = true;
 		}
 	}
@@ -1113,13 +1109,14 @@ static WindowDesc _query_string_desc(
  * @param str StringID for the text shown in the textbox
  * @param caption StringID of text shown in caption of querywindow
  * @param maxsize maximum size in bytes or characters (including terminating '\0') depending on flags
- * @param parent pointer to a Window that will handle the events (ok/cancel) of this
- *        window. If nullptr, results are handled by global function HandleOnEditText
+ * @param parent pointer to a Window that will handle the events (ok/cancel) of this window.
  * @param afilter filters out unwanted character input
  * @param flags various flags, @see QueryStringFlags
  */
 void ShowQueryString(StringID str, StringID caption, uint maxsize, Window *parent, CharSetFilter afilter, QueryStringFlags flags)
 {
+	assert(parent != nullptr);
+
 	DeleteWindowByClass(WC_QUERY_STRING);
 	new QueryStringWindow(str, caption, ((flags & QSF_LEN_IN_CHARS) ? MAX_CHAR_LENGTH : 1) * maxsize, maxsize, &_query_string_desc, parent, afilter, flags);
 }

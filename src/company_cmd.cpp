@@ -11,6 +11,7 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "company_gui.h"
+#include "core/backup_type.hpp"
 #include "town.h"
 #include "news_func.h"
 #include "cmd_helper.h"
@@ -1178,4 +1179,51 @@ uint32 CompanyInfrastructure::GetTramTotal() const
 		if (RoadTypeIsTram(rt)) total += this->road[rt];
 	}
 	return total;
+}
+
+/**
+ * Transfer funds (money) from one company to another.
+ * To prevent abuse in multiplayer games you can only send money to other
+ * companies if you have paid off your loan (either explicitly, or implicitly
+ * given the fact that you have more money than loan).
+ * @param tile unused
+ * @param flags operation to perform
+ * @param p1 the amount of money to transfer; max 20.000.000
+ * @param p2 the company to transfer the money to
+ * @param text unused
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+{
+	if (!_settings_game.economy.give_money) return CMD_ERROR;
+
+	const Company *c = Company::Get(_current_company);
+	CommandCost amount(EXPENSES_OTHER, min((Money)p1, (Money)20000000LL));
+	CompanyID dest_company = (CompanyID)p2;
+
+	/* You can only transfer funds that is in excess of your loan */
+	if (c->money - c->current_loan < amount.GetCost() || amount.GetCost() < 0) return_cmd_error(STR_ERROR_INSUFFICIENT_FUNDS);
+	if (!Company::IsValidID(dest_company)) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		/* Add money to company */
+		Backup<CompanyID> cur_company(_current_company, dest_company, FILE_LINE);
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
+		cur_company.Restore();
+
+		if (_networking) {
+			char dest_company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
+			SetDParam(0, dest_company);
+			GetString(dest_company_name, STR_COMPANY_NAME, lastof(dest_company_name));
+
+			char from_company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
+			SetDParam(0, _current_company);
+			GetString(from_company_name, STR_COMPANY_NAME, lastof(from_company_name));
+
+			NetworkTextMessage(NETWORK_ACTION_GIVE_MONEY, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
+		}
+	}
+
+	/* Subtract money from local-company */
+	return amount;
 }

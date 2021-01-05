@@ -8,6 +8,7 @@
 /** @file company_gui.cpp %Company related GUIs. */
 
 #include "stdafx.h"
+#include "currency.h"
 #include "error.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -2208,6 +2209,12 @@ static const NWidgetPart _nested_company_widgets[] = {
 					NWidget(NWID_VERTICAL), SetPIP(4, 2, 4),
 						NWidget(NWID_SPACER), SetFill(0, 1),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, 4, 0),
+							NWidget(NWID_SPACER), SetFill(1, 0),
+							NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_GIVE_MONEY),
+								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_GIVE_MONEY), SetDataTip(STR_COMPANY_VIEW_GIVE_MONEY_BUTTON, STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP),
+							EndContainer(),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL), SetPIP(0, 4, 0),
 							NWidget(WWT_EMPTY, COLOUR_GREY, WID_C_HAS_PASSWORD),
 							NWidget(NWID_SELECTION, INVALID_COLOUR, WID_C_SELECT_MULTIPLAYER),
 								NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_C_COMPANY_PASSWORD), SetDataTip(STR_COMPANY_VIEW_PASSWORD, STR_COMPANY_VIEW_PASSWORD_TOOLTIP),
@@ -2329,6 +2336,14 @@ struct CompanyWindow : Window
 				reinit = true;
 			}
 
+			/* Enable/disable 'Give money' button. */
+			plane = ((local || _local_company == COMPANY_SPECTATOR || !_settings_game.economy.give_money) ? SZSP_NONE : 0);
+			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_GIVE_MONEY);
+			if (plane != wi->shown_plane) {
+				wi->SetDisplayedPlane(plane);
+				reinit = true;
+			}
+
 			/* Multiplayer buttons. */
 			plane = ((!_networking) ? (int)SZSP_NONE : (int)(local ? CWP_MP_C_PWD : CWP_MP_C_JOIN));
 			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_MULTIPLAYER);
@@ -2402,16 +2417,17 @@ struct CompanyWindow : Window
 			case WID_C_BUILD_HQ:
 			case WID_C_RELOCATE_HQ:
 			case WID_C_VIEW_INFRASTRUCTURE:
+			case WID_C_GIVE_MONEY:
 			case WID_C_COMPANY_PASSWORD:
 			case WID_C_COMPANY_JOIN:
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_VIEW_HQ_BUTTON).width);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_BUILD_HQ_BUTTON).width);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_RELOCATE_HQ).width);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON).width);
+				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_GIVE_MONEY_BUTTON).width);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_PASSWORD).width);
 				size->width = max(size->width, GetStringBoundingBox(STR_COMPANY_VIEW_JOIN).width);
 				break;
-
 
 			case WID_C_HAS_PASSWORD:
 				*size = maxdim(*size, GetSpriteSize(SPR_LOCK));
@@ -2607,6 +2623,11 @@ struct CompanyWindow : Window
 				ShowCompanyInfrastructure((CompanyID)this->window_number);
 				break;
 
+			case WID_C_GIVE_MONEY:
+				this->query_widget = WID_C_GIVE_MONEY;
+				ShowQueryString(STR_EMPTY, STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION, 30, this, CS_NUMERAL, QSF_NONE);
+				break;
+
 			case WID_C_BUY_SHARE:
 				DoCommandP(0, this->window_number, 0, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS));
 				break;
@@ -2662,6 +2683,14 @@ struct CompanyWindow : Window
 
 		switch (this->query_widget) {
 			default: NOT_REACHED();
+
+			case WID_C_GIVE_MONEY: {
+				Money money = (Money)(strtoull(str, nullptr, 10) / _currency->rate);
+				uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
+
+				DoCommandP(0, money_c, this->window_number, CMD_GIVE_MONEY | CMD_MSG(STR_ERROR_CAN_T_GIVE_MONEY));
+				break;
+			}
 
 			case WID_C_PRESIDENT_NAME:
 				DoCommandP(0, 0, 0, CMD_RENAME_PRESIDENT | CMD_MSG(STR_ERROR_CAN_T_CHANGE_PRESIDENT), nullptr, str);

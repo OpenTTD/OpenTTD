@@ -1632,8 +1632,7 @@ NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company)
 }
 
 /* The window below gives information about the connected clients
- *  and also makes able to give money to them, kick them (if server)
- *  and stuff like that. */
+ * and also makes able to kick them (if server) and stuff like that. */
 
 extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 
@@ -1663,11 +1662,6 @@ static void ClientList_Kick(const NetworkClientInfo *ci)
 static void ClientList_Ban(const NetworkClientInfo *ci)
 {
 	NetworkServerKickOrBanIP(ci->client_id, true, nullptr);
-}
-
-static void ClientList_GiveMoney(const NetworkClientInfo *ci)
-{
-	ShowNetworkGiveMoneyWindow(ci->client_playas);
 }
 
 static void ClientList_SpeakToClient(const NetworkClientInfo *ci)
@@ -1725,13 +1719,6 @@ struct NetworkClientListPopupWindow : Window {
 			this->AddAction(STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY, &ClientList_SpeakToCompany);
 		}
 		this->AddAction(STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL, &ClientList_SpeakToAll);
-
-		if (_network_own_client_id != ci->client_id) {
-			/* We are no spectator and the company we want to give money to is no spectator and money gifts are allowed. */
-			if (Company::IsValidID(_local_company) && Company::IsValidID(ci->client_playas) && _settings_game.economy.give_money) {
-				this->AddAction(STR_NETWORK_CLIENTLIST_GIVE_MONEY, &ClientList_GiveMoney);
-			}
-		}
 
 		/* A server can kick clients (but not himself). */
 		if (_network_server && _network_own_client_id != ci->client_id) {

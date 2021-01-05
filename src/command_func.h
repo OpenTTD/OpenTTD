@@ -96,7 +96,6 @@ CommandCallback CcBuildIndustry;
 CommandCallback CcPlaySound_EXPLOSION;
 CommandCallback CcPlaceSign;
 CommandCallback CcTerraform;
-CommandCallback CcGiveMoney;
 
 /* rail_gui.cpp */
 CommandCallback CcPlaySound_SPLAT_RAIL;
