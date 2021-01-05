@@ -225,6 +225,7 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}انتخ
 STR_BUTTON_SORT_BY                                              :{BLACK}مرتب کردن بر اساس
 STR_BUTTON_LOCATION                                             :{BLACK}مختصات
 STR_BUTTON_RENAME                                               :{BLACK}نام گزاری
+STR_BUTTON_CATCHMENT                                            :{BLACK}تحت پوشش
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}بستن پنجره
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان پنجره - پرای جابجا کردن پنجره این قسمت را بکشید.
@@ -299,6 +300,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :ظرفیت مح
 STR_SORT_BY_RANGE                                               :بازه
 STR_SORT_BY_POPULATION                                          :جمعیت
 STR_SORT_BY_RATING                                              :نرخ
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :میانگین سود سال گذشته
 
 # Group by options for vehicle list
 
@@ -461,6 +463,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :باز و بسته کردن کنسول
 STR_ABOUT_MENU_AI_DEBUG                                         :خطایابی هوش مصنوعی
 STR_ABOUT_MENU_SCREENSHOT                                       :تصویر از بازی
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :نمایش دادن frame rate
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' درباره
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :تراز کردن تصویر گرافیکی
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :باز/بسته کردن محدوده جعبه ها
@@ -1459,6 +1462,7 @@ STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}انتخ
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}انتخاب «سرزمین اسباب بازی‌ها» برای سبک بازی
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}نشان دادن تنظیمات بازی
+STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}نمایش جدول بالاترین امتیازات
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}نمایش تنظیمات NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}بررسی وجود مجموعه ها و به روز رسانی های جدید در اینترنت
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}نمایش تنظیمات هوش مصنوعی و اسکریپت های بازی
@@ -1468,6 +1472,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}این �
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}خروج
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}آیا مطمئن هستی که میخواهی از OpenTTD خارج شوی؟
 STR_QUIT_YES                                                    :{BLACK}بله
 STR_QUIT_NO                                                     :{BLACK}خیر
 
@@ -2362,6 +2367,8 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} The OpenTTD team
 
 # Framerate display window
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}حافظه
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
@@ -2702,7 +2709,7 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}اهدا
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}روی هدف کلیک کنید تا نمای اصلی را به مرکز صنایع/شهر/قطعه ببرد. Ctrl+Click یک نمای جدید از محل صنایع/شهر قطعه باز می کند
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :سوال
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}سوال
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :لغو
@@ -2736,6 +2743,7 @@ STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}روی �
 
 # Story book window
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}کتابچه راهنمای عمومی
+STR_STORY_BOOK_SPECTATOR                                        :کتاب داستان جهانی
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}رجوع به هدف نامعتبر
 
 # Station list window
@@ -2765,6 +2773,7 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE                           :{BLACK}تولی
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}همگروه با
+STR_STATION_VIEW_WAITING_STATION                                :ایستگاه: منتظر است
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} از {STATION}
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} ازطریق {STATION}
 STR_STATION_VIEW_TO                                             :{YELLOW}{CARGO_SHORT} به {STATION}
@@ -2924,6 +2933,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :ماشین ها
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :وسایل ریل خط آهن
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :کشتی های جدید
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :هواپیمای جدید
 ############ range for vehicle availability ends
 
@@ -2938,6 +2948,7 @@ STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}لیست
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}ساخت وسیله نقلیه
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_BUTTON                 :{BLACK}خرید وسیله نقلیه
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}خرید کشتی
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}خرید هواپیما
 
 
@@ -3041,6 +3052,7 @@ STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK} ستو�
 
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}برای توقف جایگزین کردن برای نوع انتخاب شده در سمت چپ کلیک کنید
 
+STR_REPLACE_ENGINES                                             :موتور ها
 
 STR_REPLACE_ELRAIL_VEHICLES                                     :وسایل نقلیه ریلی برقی
 
@@ -3227,9 +3239,11 @@ STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}پاک �
 # AI debug window
 STR_AI_DEBUG                                                    :{WHITE}رفع اشکالات کد هوش مصنوعی
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}نام کد
+STR_AI_DEBUG_SETTINGS                                           :{BLACK}تنظیمات
 STR_AI_DEBUG_RELOAD                                             :{BLACK}بازگشایی مجدد هوش مصنوعی
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}از بین بردن هوش مصنوعی. بازگشایی اسکریپت. و شروع مجدد هوش مصنوعی
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}فعالسازی/غیر فعال سازی توقف هنگامی که هوش مصنوعی گزارشی با متن توقف تولید می کند
+STR_AI_DEBUG_CONTINUE                                           :{BLACK}ادامه
 STR_AI_GAME_SCRIPT                                              :{BLACK}کدبازی
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}دیدن گزارش های کد بازی
 
@@ -3243,6 +3257,10 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :بازیکن آ
 STR_AI_CONFIG_RANDOM_AI                                         :انتخاب هوش مصنوعی به صورت اتفاقی
 STR_AI_CONFIG_NONE                                              :(هیچکدام)
 
+STR_AI_CONFIG_MOVE_UP                                           :حرکت به بالا
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}حرکت دادن AI انتخاب شده به سمت بالا در لیست
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}حرکت به پایین
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}حرکت دادن AI انتخاب شده به سمت پایین در لیست
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}کدبازی
 STR_AI_CONFIG_AI                                                :{SILVER}هوشهای مصنوعی
@@ -3316,6 +3334,7 @@ STR_ERROR_HEIGHTMAP_TOO_LARGE                                   :{WHITE}تصوی
 # Soundset messages
 
 # Screenshot related messages
+STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}اسکرین شات بزرگ
 
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}تصویر با موفقیت در {STRING} ذخیره شد
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}تصویر از بازی ذخیره نشد
@@ -3677,10 +3696,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :معدن شکر
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :بی نام
-STR_SV_TRAIN_NAME                                               :قطار {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :خودرو جاده ای {COMMA}
-STR_SV_SHIP_NAME                                                :کشتی {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :هواپیما {COMMA}
+STR_SV_TRAIN_NAME                                               :قطار #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :خودرو جاده ای #{COMMA}
+STR_SV_SHIP_NAME                                                :کشتی #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :هواپیما #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} شمال
