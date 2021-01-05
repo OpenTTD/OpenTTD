@@ -20,7 +20,6 @@
 struct Window;
 
 /* main_gui.cpp */
-void HandleOnEditText(const char *str);
 void InitializeGUI();
 
 /* settings_gui.cpp */

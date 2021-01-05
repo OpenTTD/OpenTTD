@@ -46,6 +46,9 @@ enum CompanyWidgets {
 
 	WID_C_VIEW_INFRASTRUCTURE,        ///< Panel about infrastructure.
 
+	WID_C_SELECT_GIVE_MONEY,          ///< Selection widget for the give money button.
+	WID_C_GIVE_MONEY,                 ///< Button to give money.
+
 	WID_C_HAS_PASSWORD,               ///< Has company password lock.
 	WID_C_SELECT_MULTIPLAYER,         ///< Multiplayer selection panel.
 	WID_C_COMPANY_PASSWORD,           ///< Button to set company password.
