@@ -2294,7 +2294,7 @@ struct CompanyWindow : Window
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
 				this->InvalidateData();
-				return;
+				reinit = true;
 			}
 
 			/* Build HQ button handling. */
@@ -2302,8 +2302,7 @@ struct CompanyWindow : Window
 			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_VIEW_BUILD_HQ);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
-				this->SetDirty();
-				return;
+				reinit = true;
 			}
 
 			this->SetWidgetDisabledState(WID_C_VIEW_HQ, c->location_of_HQ == INVALID_TILE);
@@ -2313,8 +2312,7 @@ struct CompanyWindow : Window
 			wi = this->GetWidget<NWidgetStacked>(WID_C_SELECT_RELOCATE);
 			if (plane != wi->shown_plane) {
 				wi->SetDisplayedPlane(plane);
-				this->SetDirty();
-				return;
+				reinit = true;
 			}
 
 			/* Owners of company */
