@@ -1161,7 +1161,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 
 	/* To prevent really small towns from building disproportionately
 	 * long bridges, make the max a function of its population. */
-	int base_bridge_length = 4;
+	int base_bridge_length = 5;
 	int max_bridge_length = t->cache.population / 1000 + base_bridge_length;
 
 	if (slope == SLOPE_FLAT) {
