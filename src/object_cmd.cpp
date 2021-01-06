@@ -248,7 +248,14 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			} else {
 				if (!allow_ground) return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 				/* For non-water tiles, we'll have to clear it before building. */
-				cost.AddCost(DoCommand(t, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR));
+
+				/* When relocating HQ, allow it to be relocated (partial) on itself. */
+				if (!(type == OBJECT_HQ &&
+						IsTileType(t, MP_OBJECT) &&
+						IsTileOwner(t, _current_company) &&
+						IsObjectType(t, OBJECT_HQ))) {
+					cost.AddCost(DoCommand(t, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR));
+				}
 			}
 		}
 
