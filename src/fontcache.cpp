@@ -756,7 +756,7 @@ public:
 	virtual GlyphID MapCharToGlyph(WChar key);
 	virtual const char *GetFontName() { return WIDE_TO_MB(this->logfont.lfFaceName); }
 	virtual bool IsBuiltInFont() { return false; }
-	virtual void *GetOSHandle() { return &this->logfont; }
+	virtual const void *GetOSHandle() { return &this->logfont; }
 };
 
 

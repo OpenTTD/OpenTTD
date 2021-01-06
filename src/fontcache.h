@@ -127,7 +127,7 @@ public:
 	 * Get the native OS font handle, if there is one.
 	 * @return Opaque OS font handle.
 	 */
-	virtual void *GetOSHandle()
+	virtual const void *GetOSHandle()
 	{
 		return nullptr;
 	}
