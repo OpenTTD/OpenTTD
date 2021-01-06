@@ -214,6 +214,38 @@ CommandCost CheckBridgeAvailability(BridgeType bridge_type, uint bridge_len, DoC
 }
 
 /**
+ * Calculate the base cost of clearing a tunnel/bridge per tile.
+ * @param tile Start tile of the tunnel/bridge.
+ * @return How much clearing this tunnel/bridge costs per tile.
+ */
+static Money TunnelBridgeClearCost(TileIndex tile, Price base_price)
+{
+	Money base_cost = _price[base_price];
+
+	/* Add the cost of the transport that is on the tunnel/bridge. */
+	switch (GetTunnelBridgeTransportType(tile)) {
+		case TRANSPORT_ROAD: {
+			RoadType road_rt = GetRoadTypeRoad(tile);
+			RoadType tram_rt = GetRoadTypeTram(tile);
+
+			if (road_rt != INVALID_ROADTYPE) {
+				base_cost += 2 * RoadClearCost(road_rt);
+			}
+			if (tram_rt != INVALID_ROADTYPE) {
+				base_cost += 2 * RoadClearCost(tram_rt);
+			}
+		} break;
+
+		case TRANSPORT_RAIL: base_cost += RailClearCost(GetRailType(tile)); break;
+		/* Aquaducts have their own clear price. */
+		case TRANSPORT_WATER: base_cost = _price[PR_CLEAR_AQUEDUCT]; break;
+		default: break;
+	}
+
+	return base_cost;
+}
+
+/**
  * Build a Bridge
  * @param end_tile end tile
  * @param flags type of operation
@@ -373,7 +405,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, DoCommandFlag flags, uint32 p1, u
 			return_cmd_error(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER);
 		}
 
-		cost.AddCost(bridge_len * _price[PR_CLEAR_BRIDGE]); // The cost of clearing the current bridge.
+		/* The cost of clearing the current bridge. */
+		cost.AddCost(bridge_len * TunnelBridgeClearCost(tile_start, PR_CLEAR_BRIDGE));
 		owner = GetTileOwner(tile_start);
 
 		/* If bridge belonged to bankrupt company, it has a new owner now */
@@ -849,6 +882,7 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
+	Money base_cost = TunnelBridgeClearCost(tile, PR_CLEAR_TUNNEL);
 	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
 
 	if (flags & DC_EXEC) {
@@ -889,7 +923,8 @@ static CommandCost DoClearTunnel(TileIndex tile, DoCommandFlag flags)
 			DoClearSquare(endtile);
 		}
 	}
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_CLEAR_TUNNEL] * len);
+
+	return CommandCost(EXPENSES_CONSTRUCTION, len * base_cost);
 }
 
 
@@ -928,7 +963,7 @@ static CommandCost DoClearBridge(TileIndex tile, DoCommandFlag flags)
 		ChangeTownRating(t, RATING_TUNNEL_BRIDGE_DOWN_STEP, RATING_TUNNEL_BRIDGE_MINIMUM, flags);
 	}
 
-	Money base_cost = (GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) ? _price[PR_CLEAR_BRIDGE] : _price[PR_CLEAR_AQUEDUCT];
+	Money base_cost = TunnelBridgeClearCost(tile, PR_CLEAR_BRIDGE);
 	uint len = GetTunnelBridgeLength(tile, endtile) + 2; // Don't forget the end tiles.
 
 	if (flags & DC_EXEC) {
