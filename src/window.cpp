@@ -2158,8 +2158,8 @@ void ResizeWindow(Window *w, int delta_x, int delta_y, bool clamp_to_screen)
 			 * the resolution clamp it in such a manner that it stays within the bounds. */
 			int new_right  = w->left + w->width  + delta_x;
 			int new_bottom = w->top  + w->height + delta_y;
-			if (new_right  >= (int)_cur_resolution.width)  delta_x -= Ceil(new_right  - _cur_resolution.width,  std::max(1U, w->nested_root->resize_x));
-			if (new_bottom >= (int)_cur_resolution.height) delta_y -= Ceil(new_bottom - _cur_resolution.height, std::max(1U, w->nested_root->resize_y));
+			if (new_right  >= (int)_screen.width)  delta_x -= Ceil(new_right  - _screen.width,  std::max(1U, w->nested_root->resize_x));
+			if (new_bottom >= (int)_screen.height) delta_y -= Ceil(new_bottom - _screen.height, std::max(1U, w->nested_root->resize_y));
 		}
 
 		w->SetDirty();
@@ -3468,7 +3468,7 @@ void ReInitAllWindows()
 	NetworkReInitChatBoxSize();
 
 	/* Make sure essential parts of all windows are visible */
-	RelocateAllWindows(_cur_resolution.width, _cur_resolution.height);
+	RelocateAllWindows(_screen.width, _screen.height);
 	MarkWholeScreenDirty();
 }
 
