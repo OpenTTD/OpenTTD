@@ -961,7 +961,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 # Network client list
 
 
-
 # Network set password
 
 # Network company info join/password

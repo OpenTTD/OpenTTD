@@ -1649,7 +1649,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}نئی �
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :ٹھڈا
 STR_NETWORK_CLIENTLIST_BAN                                      :پابندی
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :پیسے دئیں
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :سب سے بات کریں
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :کمپنی سے بات کریں
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :پرائیویٹ پیغام
@@ -1657,8 +1656,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :پرائیوی�
 STR_NETWORK_SERVER                                              :سرور
 STR_NETWORK_CLIENT                                              :کلائینٹ
 STR_NETWORK_SPECTATORS                                          :ناظرین
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}بتائیں آپ کتنے پیسے بھیجنا چاہتے ہیں
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}بتایا گیا پاس ورڈ محفوظ نہ کریں
@@ -1759,8 +1756,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ن
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} نے نئی کمپنی شروع کی ہے (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} نے کھیل چھوڑ دیا ہے ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نے اپنا نام بدل کر {STRING} رکھ لیا ہے
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} نے آپ کی کمپنی کو {2:CURRENCY_LONG} دئیے ہیں
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** آپ نے {1:STRING} کو {2:CURRENCY_LONG} دئیے ہیں
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرور نے سیشن بند کر دیا
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}سرور دوبارہ سے سٹارٹ ہو رہا ہے - - -{}برائے مہربانی انتظار فرمائیے ۔ ۔ ۔
 

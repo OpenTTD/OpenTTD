@@ -2121,7 +2121,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Neue Firma
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Hinauswerfen
 STR_NETWORK_CLIENTLIST_BAN                                      :Sperren
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Geld schenken
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mit allen sprechen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mit Firma sprechen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Private Nachricht
@@ -2129,8 +2128,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Private Nachric
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Teilnehmer
 STR_NETWORK_SPECTATORS                                          :Zuschauer
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wieviel Geld soll übergeben werden?
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Eingegebenes Passwort nicht speichern
@@ -2233,8 +2230,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} is
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} hat eine neue Firma gegründet (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} hat das Spiel verlassen ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hat seinen/ihren Namen in {STRING} geändert
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gab der eigenen Firma {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Die eigene Firma übergab {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Der Server hat das Spiel beendet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Der Server startet neu...{}Bitte warten...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} wurde vom Server hinausgeworfen. Grund: ({STRING})

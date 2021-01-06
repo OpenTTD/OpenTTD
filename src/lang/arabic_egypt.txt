@@ -1717,7 +1717,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :شركة جدي
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :اطرد
 STR_NETWORK_CLIENTLIST_BAN                                      :بان
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :اعط اموال
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :تحدث مع الكل
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :تحدث لشركة
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :رسالة خاصة
@@ -1725,8 +1724,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :رسالة خا
 STR_NETWORK_SERVER                                              :خادم
 STR_NETWORK_CLIENT                                              :عميل
 STR_NETWORK_SPECTATORS                                          :المشاهدين
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}ادخل رقم المبلغ الذى تود إعطائه
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}لا تحفظ كلمة المرور المدخلة
@@ -1817,8 +1814,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ا
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} قد بدأ شركة جديدة: (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} قد غادر اللعبة : - {2:STRING}-
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} قد غير اسمه / اسمها الى {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} اعطى شركتك : {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** انت اعطيت {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}اقفل الخادم الجلسة
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}يتم بدأ الخادم من جديد ...{} الرجاء الأنتظار
 

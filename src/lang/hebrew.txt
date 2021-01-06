@@ -2068,7 +2068,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :חברה חדש
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :בעט
 STR_NETWORK_CLIENTLIST_BAN                                      :חסימה
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :נתן כסף
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :דבר לכולם
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :דבר לחברה
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :הודעה פרטית
@@ -2076,8 +2075,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :הודעה פר
 STR_NETWORK_SERVER                                              :שרת
 STR_NETWORK_CLIENT                                              :לקוח
 STR_NETWORK_SPECTATORS                                          :צופים
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}הכנס סכום כסף שברצונך לתת
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}בטל שמירת הסיסמה החדשה
@@ -2178,8 +2175,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :.הצטרף ל�
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :{2:NUM} הקים חברה חדשה {NBSP}{0:STRING} ***
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :({2:STRING}) עזב את המשחק {NBSP}{0:STRING} ***
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :{STRING} שינה את שמו ל {STRING} ***
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :{2:CURRENCY_LONG} נתן לחברתך {NBSP}{0:STRING} ***
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :{2:CURRENCY_LONG} {1:STRING} נתת ל ***
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}השרת סגר את המשחק
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}השרת מופעל מחדש...{}אנא המתן...
 

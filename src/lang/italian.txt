@@ -2122,7 +2122,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nuova compagnia
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Espelli
 STR_NETWORK_CLIENTLIST_BAN                                      :Bandisci
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dona denaro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parla a tutti
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Parla alla compagnia
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Messaggio privato
@@ -2130,8 +2129,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Messaggio priva
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spettatori
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inserire la quantità di denaro da donare
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non salvare la password inserita
@@ -2233,8 +2230,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} è
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha avviato una nuova compagnia (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha abbandonato la partita ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiato nome in {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha donato alla tua compagnia {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Hai donato {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Il server ha chiuso la sessione
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Il server si sta riavviando...{}Attendere prego...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} è stato espulso. Motivo: ({STRING})

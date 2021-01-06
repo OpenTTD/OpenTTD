@@ -2050,7 +2050,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Cwmni newydd
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Cicio
 STR_NETWORK_CLIENTLIST_BAN                                      :Gwahardd
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Rhoi arian
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Siarad â phawb
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Siarad a'r cwmni
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Neges breifat
@@ -2058,8 +2057,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Neges breifat
 STR_NETWORK_SERVER                                              :Gweinydd
 STR_NETWORK_CLIENT                                              :Gwestai
 STR_NETWORK_SPECTATORS                                          :Gwylwyr
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nodwch faint o arian yr hoffech chi ei roi
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Peidio cadw'r cyfrinair a roddwyd
@@ -2160,8 +2157,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Mae {STRING
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Mae {STRING} wedi dechrau cwmni newydd (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {STRING} wedi gadael y gêm ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Mae {STRING} wedi newid ei (h)enw i {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Rhoddodd {STRING} {2:CURRENCY_LONG} i'ch cwmni
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Fe roddoch chi {2:CURRENCY_LONG} {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Fe gaewyd y sesiwn gan y gweinydd
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
 

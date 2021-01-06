@@ -2035,7 +2035,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Companie nouă
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Dă afară
 STR_NETWORK_CLIENTLIST_BAN                                      :Interzice acces
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donează bani
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Vorbeşte către toţi
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Vorbeşte către companie
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mesaj privat
@@ -2043,8 +2042,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mesaj privat
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectatori
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduceţi suma pe care o oferiţi
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Parola introdusă nu se va salva
@@ -2145,8 +2142,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a 
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a început o companie nouă (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a ieşit din joc ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} şi-a schimbat numele în {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a dat companiei tale {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Ai dat {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serverul a închis conexiunea
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serverul este repornit...{}Vă rugăm aşteptaţi...
 

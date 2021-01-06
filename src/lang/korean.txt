@@ -2123,7 +2123,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :새 회사
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :추방
 STR_NETWORK_CLIENTLIST_BAN                                      :차단
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :돈 보내기
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :모두에게 말하기
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :이 회사에게 말하기
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :귓속말하기
@@ -2131,8 +2130,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :귓속말하기
 STR_NETWORK_SERVER                                              :서버
 STR_NETWORK_CLIENT                                              :접속자
 STR_NETWORK_SPECTATORS                                          :관전자
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}송금하고 싶은 양을 입력하세요
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}입력한 비밀번호는 저장하지 않기
@@ -2236,8 +2233,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} 님이 새로운 회사({2:NUM}번)를 창설하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} 님이 퇴장하셨습니다 (사유: {2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 님의 이름이 {STRING}(으)로 바뀌었습니다
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 님이 당신에게 {2:CURRENCY_LONG}만큼의 돈을 보내셨습니다
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} 님에게 {2:CURRENCY_LONG}만큼의 돈을 보냈습니다
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 게임을 종료하였습니다
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버가 재시작되고 있습니다...{}기다려주세요...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} - 서버에서 강제로 추방되었습니다. 사유: ({STRING})

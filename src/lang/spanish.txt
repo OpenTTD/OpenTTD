@@ -2099,7 +2099,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nueva empresa
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Expulsar
 STR_NETWORK_CLIENTLIST_BAN                                      :Banear
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar dinero
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Hablar a todos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Hablar a empresa
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensaje privado
@@ -2107,8 +2106,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensaje privado
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduce la cantidad de dinero que deseas dar
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}No guardar la contraseña introducida
@@ -2210,8 +2207,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha creado una nueva empresa (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha abandonado el juego ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiado su nombre a {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} da a tu empresa {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Entregas a la empresa {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha cerrado la sesión
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Se está reiniciando el servidor...{}Espere por favor...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ha sido expulsado. Razón: ({STRING})

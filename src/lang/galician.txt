@@ -2091,7 +2091,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova compañía
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Chimpar
 STR_NETWORK_CLIENTLIST_BAN                                      :Bloquear
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar cartos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar a todos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Falar con compañía
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensaxe privada
@@ -2099,8 +2098,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensaxe privada
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introduce a cantidade de cartos que queres dar
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Non grava-lo contrasinal introducido
@@ -2201,8 +2198,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} un
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} comezou unha nova compañía (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} saiu da partida ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} cambiou o seu nome a {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu á túa companía {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Diches a {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor pechou a sesión
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor estase a reiniciar...{}Agarda por favor...
 

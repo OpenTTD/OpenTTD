@@ -2126,7 +2126,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Jauns uzņēmum
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Izmest
 STR_NETWORK_CLIENTLIST_BAN                                      :Aizliegt
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Iedot naudu
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Runāt ar visiem
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Runāt ar uzņēmumu
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privāts ziņojums
@@ -2134,8 +2133,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privāts ziņoj
 STR_NETWORK_SERVER                                              :Serveris
 STR_NETWORK_CLIENT                                              :Spēlētājs
 STR_NETWORK_SPECTATORS                                          :Novērotāji
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ievadiet cik daudz naudas vēlaties dot
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Nesaglabāt ievadīto paroli
@@ -2239,8 +2236,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ir
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ir nodibinājis jaunu uzņēmumu (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ir pametis spēli ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ir nomainījis savu nosaukumu uz {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} iedeva jūsu uzņēmumam {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Jūs iedevāt {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveris beidza sesiju
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris pārstartējas...{}Lūdzu uzgaidiet...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} tika izmests. Iemesls: ({STRING})

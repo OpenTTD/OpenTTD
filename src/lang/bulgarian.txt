@@ -2009,7 +2009,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Нова фир
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Изгони
 STR_NETWORK_CLIENTLIST_BAN                                      :Бан
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Дай пари
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Кажи на всички
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Кажи на компания
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Лично съобщение
@@ -2017,8 +2016,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Лично съ
 STR_NETWORK_SERVER                                              :Сървър
 STR_NETWORK_CLIENT                                              :Клиент
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Въведете количеството пари, което искате да дадете
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Незапазвай паролата
@@ -2119,8 +2116,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} с
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} създаде нова компания (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} напусна играта ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} си промени името на {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} изпрати {2:CURRENCY_LONG} на твоята компания
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Ти даде {2:CURRENCY_LONG} на {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сървърът прекъсна сесията
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сървърът се рестартира...{}Моля изчакайте...
 

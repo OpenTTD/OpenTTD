@@ -2042,7 +2042,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新会社
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :追放
 STR_NETWORK_CLIENTLIST_BAN                                      :参入禁止
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :送金
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :全員へ発言
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :チームへ発言
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :個人的なメッセージ
@@ -2050,8 +2049,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :個人的なメ
 STR_NETWORK_SERVER                                              :サーバー
 STR_NETWORK_CLIENT                                              :クライアント
 STR_NETWORK_SPECTATORS                                          :観覧者
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}送りたい金額を入力
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}入力したパスワードを保存しない
@@ -2152,8 +2149,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} が新会社 (#{2:NUM}) を設立しました
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} が退出しました({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} は名前を {STRING} に変更しました
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} が {2:CURRENCY_LONG} を送金してくれました
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} に {2:CURRENCY_LONG} を送金しました
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}サーバがセッションを終了しました
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}このサーバーは再起動中です…{}しばらくお待ちください…
 

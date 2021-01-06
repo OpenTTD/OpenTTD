@@ -2042,7 +2042,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Cuideachta nua
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Ciceáil
 STR_NETWORK_CLIENTLIST_BAN                                      :Toirmisc
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Tabhair airgead
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Labhair le cách
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Labhair le cuideachta
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Teacht. phríobháideach
@@ -2050,8 +2049,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Teacht. phríob
 STR_NETWORK_SERVER                                              :Freastalaí
 STR_NETWORK_CLIENT                                              :Cliant
 STR_NETWORK_SPECTATORS                                          :Féachadóirí
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Iontráil an méid airgid is mian leat a thabhairt
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ná sábháil an pasfhocal a iontráladh
@@ -2152,8 +2149,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Tá {STRING
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Thosaigh {STRING} cuideachta nua (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** D'fhág {STRING} an cluiche ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** D'athraigh {STRING} a (h)ainm go {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Thug {STRING} {2:CURRENCY_LONG} dod' chuideachta
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Thug tú {2:CURRENCY_LONG} do {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Dhún an freastalaí an seisiún
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tá an freastalaí á atosú...{}Fan go fóill...
 

@@ -1697,7 +1697,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova kompanio
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Forbatu
 STR_NETWORK_CLIENTLIST_BAN                                      :Bari
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donu monon
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parolu al ĉiuj
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Parolu al kompanio
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privata mesaĝo
@@ -1705,8 +1704,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privata mesaĝo
 STR_NETWORK_SERVER                                              :Servilo
 STR_NETWORK_CLIENT                                              :Kliento
 STR_NETWORK_SPECTATORS                                          :Spektantoj
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Tajpu kiom da mono vi volas doni
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne konservu la pasvorton.
@@ -1795,8 +1792,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} i�
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ekis novan kompanion (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ĉesis la ludon ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ŝanĝis sian nomon al {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} donis al via kompanio {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Vi donis {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}La servilo restartiĝas...{}Bonvolu atendi...
 

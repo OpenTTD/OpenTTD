@@ -2271,7 +2271,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nauja įmonė
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Išmesti (Kick)
 STR_NETWORK_CLIENTLIST_BAN                                      :Užblokuoti
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Duoti pinigų
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Sakyti visiems
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Sakyti kompanijai
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privati žinutė
@@ -2279,8 +2278,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privati žinut�
 STR_NETWORK_SERVER                                              :Serveris
 STR_NETWORK_CLIENT                                              :Žaidėjas
 STR_NETWORK_SPECTATORS                                          :Stebėtojai
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Įveskite kiekį pinigų, kurį norite gauti
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Neišsaugotas įvestas slaptažodis
@@ -2381,8 +2378,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} pr
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} pradėjo naują kompaniją (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} paliko žaidimą ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} pasikeitė vardą į {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} turi savo kompaniją {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Jūs gavote {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveris užsidarė
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris persikrauna...{}Prašau palaukti...
 

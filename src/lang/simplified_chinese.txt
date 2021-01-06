@@ -2098,7 +2098,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新公司
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :踢出
 STR_NETWORK_CLIENTLIST_BAN                                      :禁止
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :送钱
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :向全体人广播
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :向本公司广播
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :私聊
@@ -2106,8 +2105,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :私聊
 STR_NETWORK_SERVER                                              :服务器
 STR_NETWORK_CLIENT                                              :客户端
 STR_NETWORK_SPECTATORS                                          :旁观者
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}请输入您想赠与的资金数
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不保存所输入的密码
@@ -2209,8 +2206,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} 成立了新公司 (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} 已离开游戏 ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已更改姓名为 {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 送给您的公司 {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 您送了 {2:CURRENCY_LONG} 给 {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}服务器关闭了进程
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}服务器正在重新启动。{}请等待……
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 被踢出服务器。原因：({STRING})

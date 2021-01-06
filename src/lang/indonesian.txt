@@ -2098,7 +2098,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Buat Perusahaan
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Usir
 STR_NETWORK_CLIENTLIST_BAN                                      :Larangan
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Kirim uang
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Bicara ke semua
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Bicara ke perusahaan
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Pesan pribadi
@@ -2106,8 +2105,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Pesan pribadi
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klien
 STR_NETWORK_SPECTATORS                                          :Penonton
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan jumlah uang yang akan diberikan
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Jangan simpan kata sandi yang telah dimasukkan
@@ -2209,8 +2206,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} be
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} mulai mendirikan perusahaan (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} meninggalkan permainan ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} telah mengganti namanya menjadi {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} telah memberi perusahaanmu {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Anda telah memberi {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server menutup sesi
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server memulai ulang...{}Tunggulah...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} telah dikeluarkan. Alasan: ({STRING})

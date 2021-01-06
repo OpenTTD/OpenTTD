@@ -2097,7 +2097,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nei Firma
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kicken
 STR_NETWORK_CLIENTLIST_BAN                                      :Bannen
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Sue ginn
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mat alle schwetzen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mat der Firma schwetzen
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privatmessage
@@ -2105,8 +2104,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privatmessage
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Spiller
 STR_NETWORK_SPECTATORS                                          :Zuschauer
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Gëff de Betrag un deens du wëlls ginn
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Späicher d'Passwuert net
@@ -2208,8 +2205,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} as
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} huet eng nei Firma gegrënnt (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} huet d'Spill verlooss ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} huet säin Numm op {STRING} gewiesselt
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} huet ärer Firma {2:CURRENCY_LONG} ginn
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Du hues dem {1:STRING} {2:CURRENCY_LONG} ginn
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De Server huet d'Sessioun zougemaach
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De Server gëtt nei gestart...{}W.e.g. waarden...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} gouf gekickt. Grond: ({STRING})

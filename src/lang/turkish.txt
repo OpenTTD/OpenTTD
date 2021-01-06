@@ -2099,7 +2099,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Yeni şirket
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :At
 STR_NETWORK_CLIENTLIST_BAN                                      :Yasakla
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Para ver
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Herkesle konuş
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Şirketle konuş
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Özel mesaj
@@ -2107,8 +2106,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Özel mesaj
 STR_NETWORK_SERVER                                              :Sunucu
 STR_NETWORK_CLIENT                                              :İstemci
 STR_NETWORK_SPECTATORS                                          :İzleyiciler
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vermek istediğiniz para miktarını girin
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Girilen parolayı kaydetme
@@ -2210,8 +2207,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} g�
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} yeni bir şirket kurdu (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} oyunu terketti ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} adını {STRING} olarak değiştirdi
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} şirketinize {2:CURRENCY_LONG} verdi
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} oyuncusuna {2:CURRENCY_LONG} verdiniz
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Sunucu kapandı
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Sunucu baştan başlatılıyor...{}Lütfen bekleyin...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} atıldı. Sebep: ({STRING})

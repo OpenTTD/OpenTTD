@@ -1879,7 +1879,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :புதிய
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :உதை
 STR_NETWORK_CLIENTLIST_BAN                                      :அனுமதிக்காதே
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :பணம் தா
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :அனைவருடனும் பேசு
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :நிறுவனத்திடம் பேசு
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :இரகசிய தகவல்
@@ -1887,8 +1886,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :இரகசி
 STR_NETWORK_SERVER                                              :சர்வர்
 STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :கவனிப்பவர்கள்
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}கொடுக்கப்படும் பணத்தின் அளவினை இடவும்
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}கடவுச்சொல்லினை நினைவில் வைத்திருக்காதே
@@ -1986,8 +1983,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} புதிய நிறுவனம் (#{2:NUM})வை துவக்கி உள்ளார்
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ஆட்டத்தை விட்டு வெளியேரினார் ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} அவரது/அவளது பெயரினை {STRING} என்று மாற்றினார்
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} தங்கள் நிறுவனத்திற்கு {2:CURRENCY_LONG} கொடுத்தார்
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** நீங்கள் கொடுத்தீற்கள் {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}சர்வர் ஆட்டத்தினை முடித்தது
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}சர்வர் மீண்டும் தொடங்குகிறது...{}சற்று பொறுக்கவும்...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} வெளியேற்றப்பட்டார். காரணம்: ({STRING})

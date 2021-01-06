@@ -1966,7 +1966,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nytt firma
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kast ut
 STR_NETWORK_CLIENTLIST_BAN                                      :Svartelist
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Gje pengar
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Snakk til alle
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Snakk til firma
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privat melding
@@ -1974,8 +1973,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privat melding
 STR_NETWORK_SERVER                                              :Tenar
 STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Tilskodarar
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv inn kor mykje pengar du ønskar å gje
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ikkje lagre passordet
@@ -2076,8 +2073,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ha
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har starta eit nytt firma (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har forlatt spelet ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har endra namnet sitt til {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav firmaet ditt {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Du gav {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tenaren avslutta spelet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tenaren startar om att...{}Vær venleg og vent...
 

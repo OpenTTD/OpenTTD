@@ -2162,7 +2162,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Új vállalat
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kirúgás
 STR_NETWORK_CLIENTLIST_BAN                                      :Kitiltás
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Pénz adományozása
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Üzenet mindenkinek
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Üzenet a vállalatnak
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privát üzenet
@@ -2170,8 +2169,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privát üzenet
 STR_NETWORK_SERVER                                              :Szerver
 STR_NETWORK_CLIENT                                              :Kliens
 STR_NETWORK_SPECTATORS                                          :Megfigyelők
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Add meg a küldeni kívánt pénz mennyiségét
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne mentsd el a megadott jelszót
@@ -2273,8 +2270,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} cs
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} új vállalatot alapított (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} kilépett a játékból ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} nevet változtatott. Új neve: {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a következő összeget utalta vállalatodnak: {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} vállalatnak sikeresen átutaltál {2:CURRENCY_LONG}-t
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}A szerver leállította a játékot
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}A szerver újraindul...{}Türelem...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ki lett rúgva. Oka: ({STRING})

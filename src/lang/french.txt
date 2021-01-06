@@ -2123,7 +2123,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nouvelle compag
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Exclure
 STR_NETWORK_CLIENTLIST_BAN                                      :Bannir
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donner de l'argent
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parler à tous
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Parler à la compagnie
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Message privé
@@ -2131,8 +2130,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Message privé
 STR_NETWORK_SERVER                                              :Serveur
 STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectateurs
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entrer le montant que vous voulez donner
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne pas sauver le mot de passe entré
@@ -2236,8 +2233,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a 
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a lancé une nouvelle compagnie (n°{NBSP}{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a quitté la partie ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} a changé son nom en {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a donné {2:CURRENCY_LONG} à votre compagnie
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Vous avez donné {2:CURRENCY_LONG} à {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Le serveur a fermé la session
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Le serveur redémarre...{}Veuillez patienter...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} a été exclu. Raison{NBSP}: ({STRING})

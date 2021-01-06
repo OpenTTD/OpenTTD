@@ -1991,7 +1991,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :บริษั
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :เตะ
 STR_NETWORK_CLIENTLIST_BAN                                      :แบน
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :ให้เงิน
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :พูดกับผู้เล่นทั้งหมด
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :พูดกับผู้เล่นในบริษัทเดียวกัน
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :ข้อความส่วนตัว
@@ -1999,8 +1998,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :ข้อคว
 STR_NETWORK_SERVER                                              :เซิฟเวอร์
 STR_NETWORK_CLIENT                                              :ลูกข่าย
 STR_NETWORK_SPECTATORS                                          :ผู้ชม
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}กรอกจำนวนเงินที่ต้องการจะให้
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}ไม่ทำการเก็บพาสเวิร์ดที่กรอกไว้แล้ว
@@ -2101,8 +2098,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ได้ทำการสร้างบริษัทใหม่ (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ได้ออกจากเกม ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ได้ทำการเปลี่ยนชื่อเป็น {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ยกบริษัทให้คุณ {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** คุณให้ {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}เซิฟเวอร์ปืดเซสซั่นนี้
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}เซิฟเวอร์กำลังทำการเริ่มต้นใหม่...{}กรุณารอซักครู่...
 

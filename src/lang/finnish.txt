@@ -2122,7 +2122,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Uusi yhtiö
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Potkaise
 STR_NETWORK_CLIENTLIST_BAN                                      :Kiellä
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Anna rahaa
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Puhu kaikille
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Puhu yhtiölle
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Yksityinen viesti
@@ -2130,8 +2129,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Yksityinen vies
 STR_NETWORK_SERVER                                              :Palvelin
 STR_NETWORK_CLIENT                                              :Pelaaja
 STR_NETWORK_SPECTATORS                                          :Katsojat
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Syötä rahamäärä, jonka haluat antaa
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Älä tallenna syötettyä salasanaa
@@ -2235,8 +2232,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} on
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} on aloittanut uuden yhtiön (nro {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on poistunut pelistä ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi yhtiöllesi {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Annoit yhtiölle {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
 STR_NETWORK_MESSAGE_KICKED                                      :{STRING} potkaistiin ulos. Syy: ({STRING})

@@ -2096,7 +2096,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :New company
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
 STR_NETWORK_CLIENTLIST_BAN                                      :Ban
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Give money
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Speak to all
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Speak to company
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Private message
@@ -2104,8 +2103,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Private message
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
 STR_NETWORK_SPECTATORS                                          :Spectators
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Do not save the entered password
@@ -2206,8 +2203,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ha
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} has started a new company (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} has left the game ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} has changed his/her name to {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gave your company {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** You gave {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}The server closed the session
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}The server is restarting...{}Please wait...
 

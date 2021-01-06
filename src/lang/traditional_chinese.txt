@@ -2045,7 +2045,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新公司
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :踢除
 STR_NETWORK_CLIENTLIST_BAN                                      :封鎖
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :給錢
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :對全員說話
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :對公司說話
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :私人訊息
@@ -2053,8 +2052,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :私人訊息
 STR_NETWORK_SERVER                                              :伺服器
 STR_NETWORK_CLIENT                                              :用戶端
 STR_NETWORK_SPECTATORS                                          :旁觀者
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}請輸入你要付出多少資金
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不要儲存所輸入的密碼
@@ -2155,8 +2152,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} 已建立新公司 (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} 已離開遊戲 ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已修改其名稱為 {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} 付給你的公司 {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** 你付給 {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}伺服器關閉連線
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}伺服器重新啟動中...{}請稍候...
 

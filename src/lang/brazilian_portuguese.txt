@@ -2099,7 +2099,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova Companhia
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Banir
 STR_NETWORK_CLIENTLIST_BAN                                      :Banir
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dar dinheiro
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Falar com todos
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Falar com a empresa
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensagem privada
@@ -2107,8 +2106,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensagem privad
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente
 STR_NETWORK_SPECTATORS                                          :Espectadores
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entre a quantia a ser dada
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Não salvar a senha digitada
@@ -2210,8 +2207,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} es
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} abriu uma nova companhia (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} saiu do jogo ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} mudou seu nome para {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu à sua companhia{2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Você deu a {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor fechou a sessão
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor está reiniciando...{}Aguarde...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} foi kickado. Motivo: ({STRING})

@@ -1901,7 +1901,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nýtt fyrirtæk
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Sparka
 STR_NETWORK_CLIENTLIST_BAN                                      :Banna
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Gefa pening
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Tala við alla
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Tala við fyrirtæki
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Einkaskilaboð
@@ -1909,8 +1908,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Einkaskilaboð
 STR_NETWORK_SERVER                                              :Þjónn
 STR_NETWORK_CLIENT                                              :Notandi
 STR_NETWORK_SPECTATORS                                          :Áhorfendur
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sláðu inn peningaupphæð sem þú vilt láta af hendi rakna
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ekki vista innslegið lykilorð
@@ -2011,8 +2008,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ho
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} stofnaði nýtt fyrirtæki (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} yfirgefur leikinn ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heitir nú {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} sendi þér {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Þú gafst {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Þjónninn sleit tengingunni
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Verið er að endurræsa þjóninn...{}Vinsamlega bíðið...
 

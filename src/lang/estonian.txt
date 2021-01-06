@@ -2113,7 +2113,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Uus ettevõte
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Viska välja
 STR_NETWORK_CLIENTLIST_BAN                                      :Bänn
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Anna raha
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Räägi kõigiga
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Räägi ettevõttega
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privaatne sõnum
@@ -2121,8 +2120,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privaatne sõnu
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Vaatlejad
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sisesta summa mida anda
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Sisestatud salasõna ei salvestata
@@ -2224,8 +2221,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} li
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} alustas uue ettevõtte (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} lahkus mängust ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} uus nimi on {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} andis su ettevõttele {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Sa andsid {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server sulges sessiooni
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server restardib...{}Palun oota...
 

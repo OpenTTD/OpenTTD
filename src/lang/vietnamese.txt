@@ -2100,7 +2100,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Công ty mới
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Đá
 STR_NETWORK_CLIENTLIST_BAN                                      :Cấm
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Cho tiền
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Nói với tất cả
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Nói cho công ty
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Thông điệp riêng
@@ -2108,8 +2107,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Thông điệp 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Máy trạm
 STR_NETWORK_SPECTATORS                                          :Người xem
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nhập số tiền muốn cho đi
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Không được ghi mật khẩu đã nhập
@@ -2211,8 +2208,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} v�
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} khai trương công ty mới (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} rời bỏ ván chơi ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} đổi tên thành {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} tặng công ty bạn {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Bạn cho {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server kết thúc phiên
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server khởi động lại...{}Xin chờ...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} đã bị đá khỏi ván chơi. Lý do: ({STRING})

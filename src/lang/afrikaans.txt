@@ -2089,7 +2089,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nuwe maatskapy
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Skop
 STR_NETWORK_CLIENTLIST_BAN                                      :Verbod
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Gee geld
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Praat met almal
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Praat met maatskappy
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privaate boodskap
@@ -2097,8 +2096,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privaate boodsk
 STR_NETWORK_SERVER                                              :Verskaffer
 STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Aanskouers
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sleutel die bedrag geld in wat u wil gee
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Moenie die ingesleutelde wagwoord bewaar nie
@@ -2200,8 +2197,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} he
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} het 'n nuwe maatskappy gestig (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} het die spel verlaat ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} het sy/haar naam verander na {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} het jou besigheid {2:CURRENCY_LONG} gegee
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Jy het {1:STRING} {2:CURRENCY_LONG} gegee
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Die verskaffer het die sessie toegemaak
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Die verskaffer is besig om te weerbegin...{}Wag asb...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} is geskop. Rede: ({STRING})

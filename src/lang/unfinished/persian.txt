@@ -1761,7 +1761,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}شرکت
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :اخراج
 STR_NETWORK_CLIENTLIST_BAN                                      :قدغن کردن
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :پول دادن
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :گفتگو با همه
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :گفتگو با شرکت
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :پیام خصوصی
@@ -1769,8 +1768,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :پیام خصو
 STR_NETWORK_SERVER                                              :سرویس دهنده
 STR_NETWORK_CLIENT                                              :سرویس گیرنده
 STR_NETWORK_SPECTATORS                                          :تماشاگران
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}مقدار پولی که می خواهید دریافت نمایید را وارد کنید
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}رمز وارد شده را به خاطر نسپار
@@ -1871,8 +1868,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ب
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} یک شرکت جدید آغاز کرد (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} از بازی بیرون رفت ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} نامش را به {STRING} تغییر داد
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} به شرکت شما {2:CURRENCY_LONG} پول داد
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** شما {1:STRING}به شرکت {2:CURRENCY_LONG} دادید
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}سرویس دهنده جلسه را تعطیل کرد
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}راه اندازی مجدد سرویس دهنده...{}لطفا صبر کنید...
 

@@ -2254,7 +2254,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Companaidh ùr
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Thoir a bhròg dha
 STR_NETWORK_CLIENTLIST_BAN                                      :Toirmisg
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Thoir airgead dha
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Bruidhinn ris a h-uile duine
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Bruidhinn ris a' chompanaidh
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Teachdaireachd phrìobhaideach
@@ -2262,8 +2261,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Teachdaireachd 
 STR_NETWORK_SERVER                                              :Frithealaiche
 STR_NETWORK_CLIENT                                              :Cliant
 STR_NETWORK_SPECTATORS                                          :Amharcaichean
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Cuir a-steach na tha thu airson toirt seachad
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Na sàbhail am facal-faire air a chur a-steach
@@ -2364,8 +2361,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Ghabh {STRI
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Stèidhich {STRING} companaidh ùr ({2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Dh'fhalbh {STRING} an geama ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Dh'atharraich {0:STRING} (a h-)ainm gu {1:STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Thug {STRING} {2:CURRENCY_LONG} dhan chompanaidh agad
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Thug thu {2:CURRENCY_LONG} dha {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Dhùin am frithealaiche an seisean
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tha am frithealaiche ag ath-thòiseachadh...{}Fuirich greis...
 

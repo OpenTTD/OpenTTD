@@ -2274,7 +2274,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Новая ко
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Отключить
 STR_NETWORK_CLIENTLIST_BAN                                      :Бан
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Передать деньги
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Сказать всем
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Говорить с компанией
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Личное сообщение
@@ -2282,8 +2281,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Личное с
 STR_NETWORK_SERVER                                              :Сервер
 STR_NETWORK_CLIENT                                              :Клиент
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введите сумму денег, которую вы хотите передать
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не сохранять пароль
@@ -2387,8 +2384,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} п
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} основал новую компанию (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} покинул игру ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} изменил имя на {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} передал вашей компании {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Вы передали {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрыл сессию
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сервер перезапускается...{}Пожалуйста, подождите...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} был исключён из игры. Причина: ({STRING})

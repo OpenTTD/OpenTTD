@@ -2098,7 +2098,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nytt företag
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Kasta ut
 STR_NETWORK_CLIENTLIST_BAN                                      :Bannlys
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Ge pengar
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Prata med alla
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Prata med alla i företaget
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privat meddelande
@@ -2106,8 +2105,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privat meddelan
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Åskådare
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv in mängd pengar som du vill ge
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Spara inte det inmatade lösenordet
@@ -2209,8 +2206,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ha
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har startat ett nytt företag (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har lämnat spelet ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har ändrat hans/hennes namn till {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav ditt företag {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** You gave {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servern avslutade sessionen
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servern startar om...{}Var vänlig vänta...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} kastades ut. Orsak: ({STRING})

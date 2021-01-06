@@ -1943,7 +1943,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nei Bedr
 
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Skoppe
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Jouw jild
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Tsjin elkenien prate
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Praat mei bedriuw
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Priveeberjocht
@@ -1951,7 +1950,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Priveeberjocht
 STR_NETWORK_SERVER                                              :Tsjinner
 STR_NETWORK_CLIENT                                              :Kliïnt
 STR_NETWORK_SPECTATORS                                          :Taskôgers
-
 
 # Network set password
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Jou it bedriuw it nije wachtwurd

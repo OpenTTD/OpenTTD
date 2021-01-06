@@ -787,7 +787,6 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 # Network client list
 
 
-
 # Network set password
 
 # Network company info join/password

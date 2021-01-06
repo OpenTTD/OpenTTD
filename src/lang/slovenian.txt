@@ -2198,7 +2198,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Novo podjetje
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Brcni
 STR_NETWORK_CLIENTLIST_BAN                                      :Blokiraj
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj denar
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Pogovor vsem
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Pogovor podjetju
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Zasebno sporočilo
@@ -2206,8 +2205,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Zasebno sporoč
 STR_NETWORK_SERVER                                              :Strežnik
 STR_NETWORK_CLIENT                                              :Gost
 STR_NETWORK_SPECTATORS                                          :Gledalci
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vpiši znesek denarja za darovanje
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne shrani vnešenega gesla
@@ -2308,8 +2305,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} na novo ustvarja podjetje (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} odstopa od igre ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} je opravil/a spremembo imena v {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} je podarilo tvojemu podjetju {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Podjetju {1:STRING} je bil podarjen znesek {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Strežnik je zaprl sejo
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Strežnik se zaganja...{}Prosim počakaj...
 

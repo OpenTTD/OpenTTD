@@ -2184,7 +2184,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Νέα εται
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Εκδίωξη
 STR_NETWORK_CLIENTLIST_BAN                                      :Απαγόρευση
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Δώστε χρήματα
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Μιλήστε σε όλους
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Μιλήστε στην εταιρεία
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Προσωπικό μήνυμα
@@ -2192,8 +2191,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Προσωπι�
 STR_NETWORK_SERVER                                              :Διακομιστής
 STR_NETWORK_CLIENT                                              :Πελάτης
 STR_NETWORK_SPECTATORS                                          :Θεατές
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Εισάγετε το πόσο των χρημάτων που θέλετε να δώσετε
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Να μην αποθηκευτεί ο κωδικός
@@ -2294,8 +2291,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} σ
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ξεκίνησε μια νέα εταιρία (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} αποχώρησε από το παιχνίδι ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} άλλαξαν το όνομά τους σε {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} έδωσαν στην εταιρία σας {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Δώσατε {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Ο διακομιστής έκλεισε την συνεδρία
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Ο διακομιστής επανεκκινεί...{}Παρακαλώ περιμένετε...
 

@@ -2262,7 +2262,6 @@ STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Societas Nova
 # Network client list
 STR_NETWORK_CLIENTLIST_KICK                                     :Dimittere
 STR_NETWORK_CLIENTLIST_BAN                                      :Expellere
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dare pecuniam
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Ad omnes loqui
 STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Ad societatem loqui
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Ad clientem loqui
@@ -2270,8 +2269,6 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Ad clientem loq
 STR_NETWORK_SERVER                                              :Servatrum
 STR_NETWORK_CLIENT                                              :Cliens
 STR_NETWORK_SPECTATORS                                          :Spectatores
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inscribe quantitatem pecuniae dandam
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Relinquere tesseram inscriptam
@@ -2372,8 +2369,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} sp
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} novam societatem incipit (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ludum disiungit ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} nomen suum mutat ad {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} tuae societati largitur {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Largiris {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servatrum iam clausum est
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servatrum resumit...{}Maneas...
 
