@@ -71,7 +71,7 @@ static WindowDesc _errmsg_face_desc(
  * @param data The data to copy.
  */
 ErrorMessageData::ErrorMessageData(const ErrorMessageData &data) :
-	duration(data.duration), textref_stack_grffile(data.textref_stack_grffile), textref_stack_size(data.textref_stack_size),
+	display_timer(data.display_timer), textref_stack_grffile(data.textref_stack_grffile), textref_stack_size(data.textref_stack_size),
 	summary_msg(data.summary_msg), detailed_msg(data.detailed_msg), position(data.position), face(data.face)
 {
 	memcpy(this->textref_stack, data.textref_stack, sizeof(this->textref_stack));
@@ -103,7 +103,6 @@ ErrorMessageData::~ErrorMessageData()
  * @param textref_stack Values to put on the #TextRefStack.
  */
 ErrorMessageData::ErrorMessageData(StringID summary_msg, StringID detailed_msg, uint duration, int x, int y, const GRFFile *textref_stack_grffile, uint textref_stack_size, const uint32 *textref_stack) :
-	duration(duration),
 	textref_stack_grffile(textref_stack_grffile),
 	textref_stack_size(textref_stack_size),
 	summary_msg(summary_msg),
@@ -119,6 +118,8 @@ ErrorMessageData::ErrorMessageData(StringID summary_msg, StringID detailed_msg, 
 	if (textref_stack_size > 0) MemCpyT(this->textref_stack, textref_stack, textref_stack_size);
 
 	assert(summary_msg != INVALID_STRING_ID);
+
+	this->display_timer.SetInterval(duration * 3000);
 }
 
 /**
@@ -297,16 +298,14 @@ public:
 	void OnMouseLoop() override
 	{
 		/* Disallow closing the window too easily, if timeout is disabled */
-		if (_right_button_down && this->duration != 0) delete this;
+		if (_right_button_down && !this->display_timer.HasElapsed()) delete this;
 	}
 
-	void OnHundredthTick() override
+	void OnRealtimeTick(uint delta_ms) override
 	{
-		/* Timeout enabled? */
-		if (this->duration != 0) {
-			this->duration--;
-			if (this->duration == 0) delete this;
-		}
+		if (this->display_timer.CountElapsed(delta_ms) == 0) return;
+
+		delete this;
 	}
 
 	~ErrmsgWindow()
@@ -321,7 +320,7 @@ public:
 	 */
 	bool IsCritical()
 	{
-		return this->duration == 0;
+		return this->display_timer.HasElapsed();
 	}
 };
 

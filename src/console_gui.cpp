@@ -12,6 +12,7 @@
 #include "window_gui.h"
 #include "console_gui.h"
 #include "console_internal.h"
+#include "guitimer_func.h"
 #include "window_func.h"
 #include "string_func.h"
 #include "strings_func.h"
@@ -171,6 +172,7 @@ struct IConsoleWindow : Window
 	static int scroll;
 	int line_height;   ///< Height of one line of text in the console.
 	int line_offset;
+	GUITimer truncate_timer;
 
 	IConsoleWindow() : Window(&_console_window_desc)
 	{
@@ -179,6 +181,7 @@ struct IConsoleWindow : Window
 		this->line_offset = GetStringBoundingBox("] ").width + 5;
 
 		this->InitNested(0);
+		this->truncate_timer.SetInterval(3000);
 		ResizeWindow(this, _screen.width, _screen.height / 3);
 	}
 
@@ -227,8 +230,10 @@ struct IConsoleWindow : Window
 		}
 	}
 
-	void OnHundredthTick() override
+	void OnRealtimeTick(uint delta_ms) override
 	{
+		if (this->truncate_timer.CountElapsed(delta_ms) == 0) return;
+
 		if (IConsoleLine::Truncate() &&
 				(IConsoleWindow::scroll > IConsoleLine::size)) {
 			IConsoleWindow::scroll = std::max(0, IConsoleLine::size - (this->height / this->line_height) + 1);
