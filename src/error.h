@@ -13,6 +13,7 @@
 #include "strings_type.h"
 #include "company_type.h"
 #include "core/geometry_type.hpp"
+#include "guitimer_func.h"
 
 struct GRFFile;
 
@@ -27,7 +28,7 @@ enum WarningLevel {
 /** The data of the error message. */
 class ErrorMessageData {
 protected:
-	uint duration;                  ///< Length of display of the message. 0 means forever,
+	GUITimer display_timer;         ///< Timer before closing the message.
 	uint64 decode_params[20];       ///< Parameters of the message strings.
 	const char *strings[20];        ///< Copies of raw strings that were used.
 	const GRFFile *textref_stack_grffile; ///< NewGRF that filled the #TextRefStack for the error message.
