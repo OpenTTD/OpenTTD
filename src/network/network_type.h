@@ -11,6 +11,9 @@
 #define NETWORK_TYPE_H
 
 #include "core/game.h"
+#include "../3rdparty/libhydrogen/hydrogen.h"
+
+#define CRYPTO_CHALLENGE_LEN 16
 
 /** How many clients can we have */
 static const uint MAX_CLIENTS = 255;

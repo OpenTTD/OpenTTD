@@ -56,6 +56,8 @@ enum PacketGameType {
 	PACKET_CLIENT_NEWGRFS_CHECKED,       ///< Client acknowledges that it has all required NewGRFs.
 
 	/* Checking the game, and then company passwords. */
+	PACKET_SERVER_NEED_KEYAUTH,          ///< Server requests authentication challenge.
+	PACKET_CLIENT_KEYAUTH,               ///< Clients sends authentication challenge.
 	PACKET_SERVER_NEED_GAME_PASSWORD,    ///< Server requests the (hashed) game password.
 	PACKET_CLIENT_GAME_PASSWORD,         ///< Clients sends the (hashed) game password.
 	PACKET_SERVER_NEED_COMPANY_PASSWORD, ///< Server requests the (hashed) company password.
@@ -226,6 +228,13 @@ protected:
 	virtual NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet *p);
 
 	/**
+	 * Server requests crypto authentication from client.
+	 * 16 * uint8  Random data for challenge.
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_SERVER_NEED_KEYAUTH(Packet *p);
+
+	/**
 	 * Indication to the client that the server needs a game password.
 	 * @param p The packet that was just received.
 	 */
@@ -238,6 +247,14 @@ protected:
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_NEED_COMPANY_PASSWORD(Packet *p);
+
+	/**
+	 * Client responds with signed challenge.
+	 * 32 * uint8  Public key.
+	 * 64 * uint8  Signature.
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_CLIENT_KEYAUTH(Packet *p);
 
 	/**
 	 * Send a password to the server to authorize:

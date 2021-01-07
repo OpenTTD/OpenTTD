@@ -24,6 +24,7 @@ private:
 		STATUS_COMPANY_INFO,  ///< We are trying to get company information.
 		STATUS_JOIN,          ///< We are trying to join a server.
 		STATUS_NEWGRFS_CHECK, ///< Last action was checking NewGRFs.
+		STATUS_AUTH_KEY,      ///< Last action was requesting crypto challenge.
 		STATUS_AUTH_GAME,     ///< Last action was requesting game (server) password.
 		STATUS_AUTH_COMPANY,  ///< Last action was requesting company password.
 		STATUS_AUTHORIZED,    ///< The client is authorized at the server.
@@ -46,6 +47,7 @@ protected:
 	NetworkRecvStatus Receive_SERVER_COMPANY_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_NEED_GAME_PASSWORD(Packet *p) override;
+	NetworkRecvStatus Receive_SERVER_NEED_KEYAUTH(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_NEED_COMPANY_PASSWORD(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_WELCOME(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_WAIT(Packet *p) override;
@@ -113,5 +115,8 @@ extern CompanyID _network_join_as;
 
 extern const char *_network_join_server_password;
 extern const char *_network_join_company_password;
+
+extern uint8 _network_key_material[hydro_sign_SEEDBYTES];
+extern struct hydro_sign_keypair _network_keypair;
 
 #endif /* NETWORK_CLIENT_H */

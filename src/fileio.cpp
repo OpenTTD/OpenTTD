@@ -1243,6 +1243,8 @@ void DeterminePaths(const char *exe)
 	_hotkeys_file = str_fmt("%shotkeys.cfg", config_dir);
 	extern char *_windows_file;
 	_windows_file = str_fmt("%swindows.cfg", config_dir);
+	extern char *_crypto_secrets_file;
+	_crypto_secrets_file = str_fmt("%scrypto_secrets.cfg", config_dir);
 
 #if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
 	if (config_dir == config_home) {

@@ -485,6 +485,26 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+/** Request the keyauth. */
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedKeyauth()
+{
+	/* Invalid packet when status is STATUS_AUTH_KEY or higher */
+	if (this->status >= STATUS_AUTH_KEY) return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+
+	this->status = STATUS_AUTH_KEY;
+	/* Reset 'lag' counters */
+	this->last_frame = this->last_frame_server = _frame_counter;
+
+	Packet *p = new Packet(PACKET_SERVER_NEED_KEYAUTH);
+	hydro_random_buf(challenge, sizeof(challenge));
+	for (size_t i = 0; i < sizeof(challenge); i++) {
+		p->Send_uint8(challenge[i]);
+	}
+
+	this->SendPacket(p);
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
 /** Request the game password. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendNeedGamePassword()
 {
@@ -870,18 +890,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	NetworkClientInfo *ci = this->GetInfo();
-
-	/* We now want a password from the client else we do not allow him in! */
-	if (!StrEmpty(_settings_client.network.server_password)) {
-		return this->SendNeedGamePassword();
-	}
-
-	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-		return this->SendNeedCompanyPassword();
-	}
-
-	return this->SendWelcome();
+	return this->SendNeedKeyauth();
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
@@ -976,12 +985,50 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_PASSWORD(P
 		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
 	}
 
-	const NetworkClientInfo *ci = this->GetInfo();
-	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
-		return this->SendNeedCompanyPassword();
-	}
+	NetworkClientInfo *ci = this->GetInfo();
 
 	/* Valid password, allow user */
+	if (Company::IsValidID(ci->client_playas)) {
+		if (!StrEmpty(_network_company_states[ci->client_playas].password)) {
+			return this->SendNeedCompanyPassword();
+		}
+	}
+
+	return this->SendWelcome();
+}
+
+NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_KEYAUTH(Packet *p)
+{
+	if (this->status != STATUS_AUTH_KEY) {
+		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	}
+
+	NetworkClientInfo *ci = this->GetInfo();
+
+	for (size_t i = 0; i < sizeof(ci->pubkey); i++) {
+		ci->pubkey[i] = p->Recv_uint8();
+	}
+
+	uint8 signature[hydro_sign_BYTES];
+	for (size_t i = 0; i < sizeof(signature); i++) {
+		signature[i] = p->Recv_uint8();
+	}
+
+	if (hydro_sign_verify(signature, challenge, sizeof(challenge), "KEY_AUTH", ci->pubkey) != 0) {
+		return this->CloseConnection(NETWORK_RECV_STATUS_MALFORMED_PACKET);
+	}
+
+	/* We now want a password from the client else we do not allow him in! */
+	if (!StrEmpty(_settings_client.network.server_password)) {
+		return this->SendNeedGamePassword();
+	}
+
+	if (Company::IsValidID(ci->client_playas)) {
+		if (!StrEmpty(_network_company_states[ci->client_playas].password)) {
+			return this->SendNeedCompanyPassword();
+		}
+	}
+
 	return this->SendWelcome();
 }
 
@@ -997,11 +1044,15 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWOR
 	/* Check company password. Allow joining if we cleared the password meanwhile.
 	 * Also, check the company is still valid - client could be moved to spectators
 	 * in the middle of the authorization process */
-	CompanyID playas = this->GetInfo()->client_playas;
-	if (Company::IsValidID(playas) && !StrEmpty(_network_company_states[playas].password) &&
-			strcmp(password, _network_company_states[playas].password) != 0) {
-		/* Password is invalid */
-		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
+	const NetworkClientInfo *ci = this->GetInfo();
+	if (Company::IsValidID(ci->client_playas)) {
+		if (!StrEmpty(_network_company_states[ci->client_playas].password) && strcmp(password, _network_company_states[ci->client_playas].password) == 0) {
+			return this->SendWelcome();
+		}
+
+		if (!StrEmpty(_network_company_states[ci->client_playas].password)) {
+			return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
+		}
 	}
 
 	return this->SendWelcome();
@@ -1878,11 +1929,12 @@ void NetworkServer_Tick(bool send_frame)
 				}
 				break;
 
+			case NetworkClientSocket::STATUS_AUTH_KEY:
 			case NetworkClientSocket::STATUS_AUTH_GAME:
 			case NetworkClientSocket::STATUS_AUTH_COMPANY:
 				/* These don't block? */
 				if (lag > _settings_client.network.max_password_time) {
-					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to enter the password", cs->client_id, _settings_client.network.max_password_time);
+					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to authorize", cs->client_id, _settings_client.network.max_password_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_PASSWORD);
 					continue;
 				}
@@ -1953,6 +2005,7 @@ void NetworkServerShowStatusToConsole()
 	static const char * const stat_str[] = {
 		"inactive",
 		"checking NewGRFs",
+		"authorizing (crypto challenge)",
 		"authorizing (server password)",
 		"authorizing (company password)",
 		"authorized",

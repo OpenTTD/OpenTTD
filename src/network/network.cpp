@@ -33,6 +33,7 @@
 #include "../core/pool_func.hpp"
 #include "../gfx_func.h"
 #include "../error.h"
+#include "../ini_type.h"
 
 #include "../safeguards.h"
 
@@ -660,6 +661,18 @@ public:
 	}
 };
 
+/* Generate keypair to use with current server. */
+void NetworkGenerateKeypair()
+{
+	uint8 key_seed[hydro_sign_SEEDBYTES];
+
+	hydro_hash_state hash;
+	hydro_hash_init(&hash, "KEY_MAKE", nullptr);
+	hydro_hash_update(&hash, _network_key_material, sizeof(_network_key_material));
+	hydro_hash_final(&hash, key_seed, sizeof(key_seed));
+
+	hydro_sign_keygen_deterministic(&_network_keypair, key_seed);
+}
 
 /* Used by clients, to connect to a server */
 void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const char *join_server_password, const char *join_company_password)
@@ -673,6 +686,8 @@ void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const c
 	_network_join_as = join_as;
 	_network_join_server_password = join_server_password;
 	_network_join_company_password = join_company_password;
+
+	NetworkGenerateKeypair();
 
 	NetworkDisconnect();
 	NetworkInitialize();
@@ -691,6 +706,8 @@ static void NetworkInitGameInfo()
 
 	/* The server is a client too */
 	_network_game_info.clients_on = _network_dedicated ? 0 : 1;
+
+	NetworkGenerateKeypair();
 
 	/* There should be always space for the server. */
 	assert(NetworkClientInfo::CanAllocateItem());
@@ -1048,6 +1065,43 @@ void NetworkStartDebugLog(NetworkAddress address)
 	DEBUG(net, 0, "DEBUG() is now redirected");
 }
 
+/** Config file to store crypto identities. */
+char *_crypto_secrets_file;
+
+bool NetworkReadKeyMaterial()
+{
+	IniFile ini;
+	ini.LoadFromDisk(_crypto_secrets_file, NO_DIRECTORY);
+
+	IniGroup *group = ini.GetGroup("identity");
+
+	IniItem *item = group->GetItem("0", false);
+	if (item == nullptr || !item->value) return false;
+
+	std::string hex_data = *item->value;
+	if (hydro_hex2bin(_network_key_material, sizeof(_network_key_material), hex_data.data(), hex_data.size(), nullptr, nullptr) != sizeof(_network_key_material)) return false;
+
+	return true;
+}
+
+void NetworkGenerateKeyMaterial()
+{
+	hydro_random_buf(_network_key_material, sizeof(_network_key_material));
+
+	char key_material_hex[sizeof(_network_key_material) * 2 + 1];
+	hydro_bin2hex(key_material_hex, sizeof(key_material_hex), _network_key_material, sizeof(_network_key_material));
+
+	IniFile ini;
+	ini.LoadFromDisk(_crypto_secrets_file, NO_DIRECTORY);
+
+	IniGroup *group = ini.GetGroup("identity");
+
+	IniItem *item = group->GetItem("0", true);
+	item->SetValue(key_material_hex);
+
+	ini.SaveToDisk(_crypto_secrets_file);
+}
+
 /** This tries to launch the network for a given OS */
 void NetworkStartUp()
 {
@@ -1063,6 +1117,9 @@ void NetworkStartUp()
 	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateServerId();
 
 	memset(&_network_game_info, 0, sizeof(_network_game_info));
+
+	hydro_init();
+	if (!NetworkReadKeyMaterial()) NetworkGenerateKeyMaterial();
 
 	NetworkInitialize();
 	DEBUG(net, 3, "[core] network online, multiplayer available");

@@ -322,6 +322,11 @@ const char *_network_join_server_password = nullptr;
 /** Company password from -P argument */
 const char *_network_join_company_password = nullptr;
 
+/** Our crypto key material for the current identity */
+uint8 _network_key_material[hydro_sign_SEEDBYTES];
+/** Our crypto keypair for the current server */
+struct hydro_sign_keypair _network_keypair;
+
 /** Make sure the server ID length is the same as a md5 hash. */
 assert_compile(NETWORK_SERVER_ID_LENGTH == 16 * 2 + 1);
 
@@ -736,6 +741,32 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 	/* NewGRF mismatch, bail out */
 	ShowErrorMessage(STR_NETWORK_ERROR_NEWGRF_MISMATCH, INVALID_STRING_ID, WL_CRITICAL);
 	return ret;
+}
+
+NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_KEYAUTH(Packet *p)
+{
+	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_KEY) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	this->status = STATUS_AUTH_KEY;
+
+	uint8 challenge[CRYPTO_CHALLENGE_LEN];
+	uint8 signature[hydro_sign_BYTES];
+
+	for (size_t i = 0; i < sizeof(challenge); i++) {
+		challenge[i] = p->Recv_uint8();
+	}
+
+	hydro_sign_create(signature, challenge, sizeof(challenge), "KEY_AUTH", _network_keypair.sk);
+
+	Packet *r = new Packet(PACKET_CLIENT_KEYAUTH);
+	for (size_t i = 0; i < sizeof(_network_keypair.pk); i++) {
+		r->Send_uint8(_network_keypair.pk[i]);
+	}
+	for (size_t i = 0; i < sizeof(signature); i++) {
+		r->Send_uint8(signature[i]);
+	}
+	my_client->SendPacket(r);
+
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_GAME_PASSWORD(Packet *p)
