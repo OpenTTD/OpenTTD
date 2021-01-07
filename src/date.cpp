@@ -28,8 +28,6 @@ Date      _date;       ///< Current date in days (day counter)
 DateFract _date_fract; ///< Fractional part of the day.
 uint16 _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick counter for setting off various events
 
-int32 _old_ending_year_slv_105; ///< Old ending year for savegames before SLV_105
-
 /**
  * Set the date.
  * @param date  New date
