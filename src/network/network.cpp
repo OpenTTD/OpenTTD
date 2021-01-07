@@ -174,6 +174,20 @@ const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *passw
 }
 
 /**
+ * (Un)protect company using a pubkey.
+ * @param company_id ID of the company
+ * @param protect Whether to protect or unprotect
+ */
+void NetworkChangeCompanyPubkey(CompanyID company_id, bool protect)
+{
+	if (_network_server) {
+		NetworkServerSetCompanyPubkey(company_id, protect ? _network_keypair.pk : nullptr);
+	} else {
+		NetworkClientSetCompanyPubkey(protect);
+	}
+}
+
+/**
  * Hash the given password using server ID and game seed.
  * @param password Password to hash.
  * @param password_server_id Server ID.

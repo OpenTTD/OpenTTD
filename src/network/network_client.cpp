@@ -479,6 +479,19 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const char *pa
 }
 
 /**
+ * Tell the server that we like to (un)protect the company using a pubkey.
+ * @param protect Whether to protect or unprotect.
+ */
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetCompanyPubkey(bool protect)
+{
+	Packet *p = new Packet(PACKET_CLIENT_PROTECT_COMPANY);
+
+	p->Send_bool(protect);
+	my_client->SendPacket(p);
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+/**
  * Tell the server that we like to change the name of the client.
  * @param name The new name.
  */
@@ -1324,6 +1337,15 @@ void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const 
 void NetworkClientSetCompanyPassword(const char *password)
 {
 	MyClient::SendSetPassword(password);
+}
+
+/**
+ * (Un)protect company using a pubkey.
+ * @param protect Whether to protect or unprotect
+ */
+void NetworkClientSetCompanyPubkey(bool protect)
+{
+	MyClient::SendSetCompanyPubkey(protect);
 }
 
 /**

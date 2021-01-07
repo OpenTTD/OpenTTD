@@ -107,6 +107,7 @@ enum PacketGameType {
 
 	/* Configuration updates. */
 	PACKET_CLIENT_SET_PASSWORD,          ///< A client (re)sets its company's password.
+	PACKET_CLIENT_PROTECT_COMPANY,       ///< A client (un)protects its company, revoking or granting access to specific pubkey.
 	PACKET_CLIENT_SET_NAME,              ///< A client changes its name.
 	PACKET_SERVER_COMPANY_UPDATE,        ///< Information (password) of a company changed.
 	PACKET_SERVER_CONFIG_UPDATE,         ///< Some network configuration important to the client changed.
@@ -201,7 +202,7 @@ protected:
 	 * uint64  Money.
 	 * uint64  Income.
 	 * uint16  Performance (last quarter).
-	 * bool    Company is password protected.
+	 * bool    Company is protected.
 	 * uint16  Number of trains.
 	 * uint16  Number of lorries.
 	 * uint16  Number of busses.
@@ -417,6 +418,13 @@ protected:
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_CLIENT_SET_PASSWORD(Packet *p);
+
+	/**
+	 * Protect company using client pubkey.
+	 * bool  True for protect, false for unprotect.
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_CLIENT_PROTECT_COMPANY(Packet *p);
 
 	/**
 	 * Gives the client a new name:

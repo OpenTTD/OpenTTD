@@ -34,6 +34,7 @@ protected:
 	NetworkRecvStatus Receive_CLIENT_COMMAND(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_CHAT(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_SET_PASSWORD(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_PROTECT_COMPANY(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_SET_NAME(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_QUIT(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_ERROR(Packet *p) override;
@@ -122,6 +123,7 @@ public:
 
 void NetworkServer_Tick(bool send_frame);
 void NetworkServerSetCompanyPassword(CompanyID company_id, const char *password, bool already_hashed = true);
+void NetworkServerSetCompanyPubkey(CompanyID company_id, const uint8 *pubkey);
 void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded);
 
 #endif /* NETWORK_SERVER_H */

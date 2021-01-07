@@ -94,6 +94,7 @@ public:
 
 	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data);
 	static NetworkRecvStatus SendSetPassword(const char *password);
+	static NetworkRecvStatus SendSetCompanyPubkey(bool protect);
 	static NetworkRecvStatus SendSetName(const char *name);
 	static NetworkRecvStatus SendRCon(const char *password, const char *command);
 	static NetworkRecvStatus SendMove(CompanyID company, const char *password);
@@ -110,6 +111,7 @@ typedef ClientNetworkGameSocketHandler MyClient;
 
 void NetworkClient_Connected();
 void NetworkClientSetCompanyPassword(const char *password);
+void NetworkClientSetCompanyPubkey(bool protect);
 
 extern CompanyID _network_join_as;
 
