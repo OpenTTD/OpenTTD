@@ -129,14 +129,16 @@ macro(compile_flags)
         endif()
 
         if(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
-            include(CheckCXXCompilerFlag)
-            check_cxx_compiler_flag("-mno-sse4" NO_SSE4_FOUND)
+            if (NOT CMAKE_OSX_ARCHITECTURES STREQUAL "arm64")
+                include(CheckCXXCompilerFlag)
+                check_cxx_compiler_flag("-mno-sse4" NO_SSE4_FOUND)
 
-            if(NO_SSE4_FOUND)
-                add_compile_options(
-                    # Don't use SSE4 for general sources to increase compatibility.
-                    -mno-sse4
-                )
+                if(NO_SSE4_FOUND)
+                    add_compile_options(
+                        # Don't use SSE4 for general sources to increase compatibility.
+                        -mno-sse4
+                    )
+                endif()
             endif()
         endif()
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Intel")
