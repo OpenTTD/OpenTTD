@@ -2232,6 +2232,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} on
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} on aloittanut uuden yhtiön (nro {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} on poistunut pelistä ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} on muuttanut nimekseen {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} antoi {2:CURRENCY_LONG} yhtiölle {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Palvelin sulki istunnon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...
 STR_NETWORK_MESSAGE_KICKED                                      :{STRING} potkaistiin ulos. Syy: ({STRING})
@@ -3372,6 +3373,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Siirrä 
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Rakenna yhtiön päärakennus muualle, kustannus 1{NBSP}% yhtiön arvosta. Shift+Klik näyttää kustannusarvion sijoittamatta päärakennusta uudelleen
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Yksityiskohdat
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Näytä tarkka infrastruktuurin määrä
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Anna rahaa
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Anna rahaa tälle yhtiölle
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Uudet kasvot
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Valitse uudet kasvot pääjohtajalle
@@ -3389,6 +3392,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Myy 25{N
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Yhtiön nimi
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Pääjohtajan nimi
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Syötä annettava rahamäärä
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Etsimme kuljetusyhtiötä, joka ottaisi haltuunsa yhtiömme{}{}Haluatko ostaa yhtiön {COMPANY} hintaan {CURRENCY_LONG}?
 
@@ -4340,6 +4344,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ei l
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... tarvitaan {CURRENCY_LONG}.
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Lainaa ei voi lyhentää...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Pankista lainattua rahaa ei voi antaa pois...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Tälle yhtiölle ei voi antaa rahaa…
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Yhtiötä ei voi ostaa...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Yhtiön päärakennusta ei voi rakentaa...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Tästä yhtiöstä ei voi ostaa 25{NBSP}%:n osuutta...

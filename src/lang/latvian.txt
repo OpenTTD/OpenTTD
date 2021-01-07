@@ -2548,6 +2548,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Nejauši
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Izvietot nejaušus kokus. Shift pārslēdz būve/rādīt izmaksu tāmi
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Nejauši koki
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Stādīt nejaušus kokus visā ainavā
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normāls
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Stādiet atsevišķus kokus, velkot pāri ainavai.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Birze
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Stādiet mazus mežus, velkot pāri ainavai.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Mežs
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Stādiet lielos mežus, velkot pāri ainavai.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Zemes radīšana
@@ -3181,10 +3187,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Uzņēmu
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikšķināt uz mērķa, lai centrētu galveno skatu uz ražotni/pilsētu/lauciņu. Ctrl+klikšķis atver jaunu skatvietu uz ražotni/pilsētu/lauciņu
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Jautājums
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informācija
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Brīdinājums
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Kļūda
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Jautājums
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informācija
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Brīdinājums
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Kļūda
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Atcelt
@@ -3376,6 +3382,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Pārviet
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Pārcelt uzņēmuma centrālo biroju uz citu vietu samaksājot 1% no uzņēmuma vērtības. Shift+klikšķis parāda izmaksu novērtējumu, nemainot biroja atrašanās vietu
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Sīkāk
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Skatīt detalizētāku infrastruktūras uzskaiti
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Iedot naudu
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Iedot naudu šai kompānijai
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Jauna seja
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Izvēlēties jaunu seju vadītājam
@@ -3393,6 +3401,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Pārdot 
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Uzņēmuma nosaukums
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Vadītāja vārds
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Ievadiet naudas daudzumu, kuru vēlaties atdot
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Mēs meklējam transporta uzņēmumu, kurš vēlētos pārņemt mūsējo.{}{}Vai Jūs vēlaties pirkt {COMPANY} par {CURRENCY_LONG}?
 
@@ -4345,6 +4354,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nav 
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}...{CURRENCY_LONG} nepieciešams
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nevar atmaksāt aizdevumu...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Bankas aizdoto naudu nevar dot projām...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Nav iespējams atdot naudu šai kompānijai...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nevar nopirkt uzņēmumu...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nevar uzbūvēt uzņēmuma biroju...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nevar nopirkt 25% daļu šajā uzņēmumā...

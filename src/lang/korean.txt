@@ -2233,6 +2233,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} 님이 새로운 회사({2:NUM}번)를 창설하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} 님이 퇴장하셨습니다 (사유: {2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 님의 이름이 {STRING}(으)로 바뀌었습니다
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} 님이 {1:STRING}에게 {2:CURRENCY_LONG}만큼의 돈을 보내셨습니다
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 게임을 종료하였습니다
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버가 재시작되고 있습니다...{}기다려주세요...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} - 서버에서 강제로 추방되었습니다. 사유: ({STRING})
@@ -3373,6 +3374,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}본사 �
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}회사가치의 1% 가격을 들여 본사를 다른 위치로 옮깁니다. SHIFT+클릭을 사용하면 예상 비용을 볼 수 있습니다
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}상세정보
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}기반시설 상세정보 창을 엽니다
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}돈 보내기
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}이 회사에 돈을 보냅니다
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}새 얼굴
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}사장의 얼굴을 선택합니다
@@ -3390,6 +3393,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}이 회�
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :회사 이름
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :사장 이름
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :보내고자 하는 돈의 액수를 입력하세요
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}저희 회사를 거두어주실 운송 회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY_LONG}의 가격으로 인수합병하시겠습니까?
 
@@ -4341,6 +4345,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... 값�
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} 만큼의 돈이 필요합니다
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}대출금을 갚을 수 없습니다...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}은행에서 빌린 돈은 송금할 수 없습니다...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}이 회사에 돈을 보낼 수 없습니다...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}회사를 인수할 수 없습니다...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}본사를 건설할 수 없습니다...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}이 회사 지분의 25%를 매입할 수 없습니다...

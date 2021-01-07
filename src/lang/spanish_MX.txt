@@ -2233,6 +2233,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} creó una nueva empresa (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} salió de la partida ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} cambió su nombre a {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} le transfirió {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha cerrado la sesión
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Se está reiniciando el servidor...{}Espera por favor...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ha sido expulsado. Razón: ({STRING})
@@ -3373,6 +3374,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Reubicar
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reubicar la sede de la empresa a cualquier otro lugar con el costo del 1% del valor total de la empresa. Mayús+Clic muestra una estimación del precio sin mover la sede
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalles
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver informe detallado de infraestructura
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Transferir capital
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Transferir capital a esta empresa
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nueva cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Elegir nueva cara para el presidente
@@ -3390,6 +3393,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vender 2
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nombre de la empresa
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nombre del presidente
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Cantidad de dinero a transferir
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Buscamos una empresa de transportes que quiera adquirir la nuestra.{}{}¿Comprar {COMPANY} por {CURRENCY_LONG}?
 
@@ -4341,6 +4345,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... no h
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... se requieren {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}No se puede pagar préstamo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}No se puede regalar dinero que fue prestado de un banco...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}No se puede transferir capital a esta empresa...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No se puede comprar la empresa...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}No se puede construir la sede de la empresa...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}No se puede comprar el 25% de acciones...
