@@ -322,6 +322,11 @@ void VideoDriver_Cocoa::GameSizeChanged()
 	BlitterFactory::GetCurrentBlitter()->PostResize();
 
 	::GameSizeChanged();
+
+	/* We need to store the window size as non-Retina size in
+	* the config file to get same windows size on next start. */
+	_cur_resolution.width = [ this->cocoaview frame ].size.width;
+	_cur_resolution.height = [ this->cocoaview frame ].size.height;
 }
 
 /**
@@ -491,7 +496,7 @@ void VideoDriver_Cocoa::Draw(bool force_update)
 
 		/* Normally drawRect will be automatically called by Mac OS X during next update cycle,
 		 * and then blitting will occur. If force_update is true, it will be done right now. */
-		[ this->cocoaview setNeedsDisplayInRect:dirtyrect ];
+		[ this->cocoaview setNeedsDisplayInRect:[ this->cocoaview getVirtualRect:dirtyrect ] ];
 		if (force_update) [ this->cocoaview displayIfNeeded ];
 	}
 
@@ -530,7 +535,7 @@ void VideoDriver_Cocoa::AllocateBackingStore()
 {
 	if (this->window == nil || this->cocoaview == nil || this->setup) return;
 
-	NSRect newframe = [ this->cocoaview frame ];
+	NSRect newframe = [ this->cocoaview getRealRect:[ this->cocoaview frame ] ];
 
 	this->window_width = (int)newframe.size.width;
 	this->window_height = (int)newframe.size.height;
@@ -741,6 +746,13 @@ void VideoDriver_Cocoa::GameLoop()
 	CGImageRef fullImage = CGBitmapContextCreateImage(driver->cgcontext);
 	self.layer.contents = (__bridge id)fullImage;
 	CGImageRelease(fullImage);
+}
+
+- (void)viewDidChangeBackingProperties
+{
+	[ super viewDidChangeBackingProperties ];
+
+	self.layer.contentsScale = [ driver->cocoaview getContentsScale ];
 }
 
 @end

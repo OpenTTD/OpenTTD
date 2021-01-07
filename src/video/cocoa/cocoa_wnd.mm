@@ -417,6 +417,30 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	float _current_magnification;
 	NSUInteger _current_mods;
 	bool _emulated_down;
+	bool _use_hidpi;
+}
+
+- (instancetype)initWithFrame:(NSRect)frameRect
+{
+	if (self = [ super initWithFrame:frameRect ]) {
+		self->_use_hidpi = [ self respondsToSelector:@selector(convertRectToBacking:) ] && [ self respondsToSelector:@selector(convertRectFromBacking:) ];
+	}
+	return self;
+}
+
+- (NSRect)getRealRect:(NSRect)rect
+{
+	return _use_hidpi ? [ self convertRectToBacking:rect ] : rect;
+}
+
+- (NSRect)getVirtualRect:(NSRect)rect
+{
+	return _use_hidpi ? [ self convertRectFromBacking:rect ] : rect;
+}
+
+- (CGFloat)getContentsScale
+{
+	return _use_hidpi && self.window != nil ? [ self.window backingScaleFactor ] : 1.0f;
 }
 
 /**
@@ -483,15 +507,13 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	if ([ e window ] == nil) pt = [ self.window convertRectFromScreen:NSMakeRect(pt.x, pt.y, 0, 0) ].origin;
 	pt = [ self convertPoint:pt fromView:nil ];
 
-	pt.y = self.bounds.size.height - pt.y;
-
-	return pt;
+	return [ self getRealRect:NSMakeRect(pt.x, self.bounds.size.height - pt.y, 0, 0) ].origin;
 }
 
 - (void)internalMouseMoveEvent:(NSEvent *)event
 {
 	if (_cursor.fix_at) {
-		_cursor.UpdateCursorPositionRelative(event.deltaX, event.deltaY);
+		_cursor.UpdateCursorPositionRelative(event.deltaX * self.getContentsScale, event.deltaY * self.getContentsScale);
 	} else {
 		NSPoint pt = [ self mousePositionFromEvent:event ];
 		_cursor.UpdateCursorPosition(pt.x, pt.y, false);
