@@ -7327,7 +7327,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsBuoyTile():         true
   IsLockTile():         true
   IsCanalTile():        true
-  GetBankBalance():     1999965070
+  GetBankBalance():     1999965040
 
 --AIWaypointList(BUOY)--
   Count():             1
@@ -7346,7 +7346,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
   IsBuoyTile():         false
   IsLockTile():         false
   IsCanalTile():        false
-  GetBankBalance():     1999959675
+  GetBankBalance():     1999959645
   BuildWaterDepot():    true
   BuildDock():          true
 
