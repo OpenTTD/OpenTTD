@@ -46,6 +46,8 @@
  * Read http://developer.apple.com/releasenotes/Cocoa/Objective-C++.html for more information.
  */
 
+bool _allow_hidpi_window = true; // Referenced from table/misc_settings.ini
+
 @interface OTTDMain : NSObject <NSApplicationDelegate>
 @end
 
@@ -417,13 +419,13 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	float _current_magnification;
 	NSUInteger _current_mods;
 	bool _emulated_down;
-	bool _use_hidpi;
+	bool _use_hidpi; ///< Render content in native resolution?
 }
 
 - (instancetype)initWithFrame:(NSRect)frameRect
 {
 	if (self = [ super initWithFrame:frameRect ]) {
-		self->_use_hidpi = [ self respondsToSelector:@selector(convertRectToBacking:) ] && [ self respondsToSelector:@selector(convertRectFromBacking:) ];
+		self->_use_hidpi = _allow_hidpi_window && [ self respondsToSelector:@selector(convertRectToBacking:) ] && [ self respondsToSelector:@selector(convertRectFromBacking:) ];
 	}
 	return self;
 }
