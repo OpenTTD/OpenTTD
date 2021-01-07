@@ -91,7 +91,7 @@ void CcPlaySound_SPLAT_RAIL(const CommandCost &result, TileIndex tile, uint32 p1
 
 static void GenericPlaceRail(TileIndex tile, int cmd)
 {
-	DoCommandP(tile, _cur_railtype, cmd,
+	DoCommandP(tile, _cur_railtype, cmd | (_settings_client.gui.auto_remove_signals << 3),
 			_remove_button_clicked ?
 			CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
 			CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK),
@@ -107,10 +107,11 @@ static void GenericPlaceRail(TileIndex tile, int cmd)
  */
 static void PlaceExtraDepotRail(TileIndex tile, DiagDirection dir, Track track)
 {
-	if (GetRailTileType(tile) != RAIL_TILE_NORMAL) return;
+	if (GetRailTileType(tile) == RAIL_TILE_DEPOT) return;
+	if (GetRailTileType(tile) == RAIL_TILE_SIGNALS && !_settings_client.gui.auto_remove_signals) return;
 	if ((GetTrackBits(tile) & DiagdirReachesTracks(dir)) == 0) return;
 
-	DoCommandP(tile, _cur_railtype, track, CMD_BUILD_SINGLE_RAIL);
+	DoCommandP(tile, _cur_railtype, track | (_settings_client.gui.auto_remove_signals << 3), CMD_BUILD_SINGLE_RAIL);
 }
 
 /** Additional pieces of track to add at the entrance of a depot. */
@@ -350,7 +351,8 @@ static void BuildRailClick_Remove(Window *w)
 
 static void DoRailroadTrack(int mode)
 {
-	DoCommandP(TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), _cur_railtype | (mode << 6),
+	uint32 p2 = _cur_railtype | (mode << 6) | (_settings_client.gui.auto_remove_signals << 11);
+	DoCommandP(TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), p2,
 			_remove_button_clicked ?
 			CMD_REMOVE_RAILROAD_TRACK | CMD_MSG(STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK) :
 			CMD_BUILD_RAILROAD_TRACK  | CMD_MSG(STR_ERROR_CAN_T_BUILD_RAILROAD_TRACK),
