@@ -144,17 +144,14 @@ struct BuildDocksToolbarWindow : Window {
 				break;
 
 			case WID_DT_DEPOT: // Build depot button
-				if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
 				if (HandlePlacePushButton(this, WID_DT_DEPOT, SPR_CURSOR_SHIP_DEPOT, HT_RECT)) ShowBuildDocksDepotPicker(this);
 				break;
 
 			case WID_DT_STATION: // Build station button
-				if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
 				if (HandlePlacePushButton(this, WID_DT_STATION, SPR_CURSOR_DOCK, HT_SPECIAL)) ShowBuildDockStationPicker(this);
 				break;
 
 			case WID_DT_BUOY: // Build buoy button
-				if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
 				HandlePlacePushButton(this, WID_DT_BUOY, SPR_CURSOR_BUOY, HT_RECT);
 				break;
 

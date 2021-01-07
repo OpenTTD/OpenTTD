@@ -437,18 +437,6 @@ struct BuildRailToolbarWindow : Window {
 	}
 
 	/**
-	 * Some data on this window has become invalid.
-	 * @param data Information about the changed data.
-	 * @param gui_scope Whether the call is done from GUI scope. You may not do everything when not in GUI scope. See #InvalidateWindowData() for details.
-	 */
-	void OnInvalidateData(int data = 0, bool gui_scope = true) override
-	{
-		if (!gui_scope) return;
-
-		if (!CanBuildVehicleInfrastructure(VEH_TRAIN)) delete this;
-	}
-
-	/**
 	 * Configures the rail toolbar for railtype given
 	 * @param railtype the railtype to display
 	 */
@@ -781,7 +769,6 @@ struct BuildRailToolbarWindow : Window {
  */
 static EventState RailToolbarGlobalHotkeys(int hotkey)
 {
-	if (_game_mode != GM_NORMAL || !CanBuildVehicleInfrastructure(VEH_TRAIN)) return ES_NOT_HANDLED;
 	extern RailType _last_built_railtype;
 	Window *w = ShowBuildRailToolbar(_last_built_railtype);
 	if (w == nullptr) return ES_NOT_HANDLED;

@@ -304,7 +304,17 @@ struct BuildRoadToolbarWindow : Window {
 	{
 		if (!gui_scope) return;
 
-		if (_game_mode != GM_EDITOR && !CanBuildVehicleInfrastructure(VEH_ROAD, GetRoadTramType(this->roadtype))) delete this;
+		bool can_build = CanBuildVehicleInfrastructure(VEH_ROAD, GetRoadTramType(this->roadtype));
+		this->SetWidgetsDisabledState(!can_build,
+			WID_ROT_DEPOT,
+			WID_ROT_BUS_STATION,
+			WID_ROT_TRUCK_STATION,
+			WIDGET_LIST_END);
+		if (!can_build) {
+			DeleteWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
+			DeleteWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);
+			DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
+		}
 	}
 
 	void Initialize(RoadType roadtype)
@@ -434,7 +444,6 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case WID_ROT_DEPOT:
-				if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD, GetRoadTramType(this->roadtype))) return;
 				if (HandlePlacePushButton(this, WID_ROT_DEPOT, this->rti->cursor.depot, HT_RECT)) {
 					ShowRoadDepotPicker(this);
 					this->last_started_action = widget;
@@ -442,7 +451,6 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case WID_ROT_BUS_STATION:
-				if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD, GetRoadTramType(this->roadtype))) return;
 				if (HandlePlacePushButton(this, WID_ROT_BUS_STATION, SPR_CURSOR_BUS_STATION, HT_RECT)) {
 					ShowRVStationPicker(this, ROADSTOP_BUS);
 					this->last_started_action = widget;
@@ -450,7 +458,6 @@ struct BuildRoadToolbarWindow : Window {
 				break;
 
 			case WID_ROT_TRUCK_STATION:
-				if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD, GetRoadTramType(this->roadtype))) return;
 				if (HandlePlacePushButton(this, WID_ROT_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, HT_RECT)) {
 					ShowRVStationPicker(this, ROADSTOP_TRUCK);
 					this->last_started_action = widget;
@@ -711,7 +718,6 @@ static EventState RoadTramToolbarGlobalHotkeys(int hotkey, RoadType last_build, 
 	Window* w = nullptr;
 	switch (_game_mode) {
 		case GM_NORMAL:
-			if (!CanBuildVehicleInfrastructure(VEH_ROAD, rtt)) return ES_NOT_HANDLED;
 			w = ShowBuildRoadToolbar(last_build);
 			break;
 

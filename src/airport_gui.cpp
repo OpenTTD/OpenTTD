@@ -71,6 +71,7 @@ struct BuildAirToolbarWindow : Window {
 	BuildAirToolbarWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
+		this->OnInvalidateData();
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 		this->last_user_action = WIDGET_LIST_END;
 	}
@@ -90,7 +91,13 @@ struct BuildAirToolbarWindow : Window {
 	{
 		if (!gui_scope) return;
 
-		if (!CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) delete this;
+		bool can_build = CanBuildVehicleInfrastructure(VEH_AIRCRAFT);
+		this->SetWidgetsDisabledState(!can_build,
+			WID_AT_AIRPORT,
+			WIDGET_LIST_END);
+		if (!can_build) {
+			DeleteWindowById(WC_BUILD_STATION, TRANSPORT_AIR);
+		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -160,7 +167,6 @@ struct BuildAirToolbarWindow : Window {
  */
 static EventState AirportToolbarGlobalHotkeys(int hotkey)
 {
-	if (_game_mode != GM_NORMAL || !CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) return ES_NOT_HANDLED;
 	Window *w = ShowBuildAirToolbar();
 	if (w == nullptr) return ES_NOT_HANDLED;
 	return w->OnHotkey(hotkey);
