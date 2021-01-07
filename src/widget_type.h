@@ -285,6 +285,7 @@ public:
 
 	void SetIndex(int index);
 	void SetDataTip(uint32 widget_data, StringID tool_tip);
+	void SetToolTip(StringID tool_tip);
 
 	inline void SetLowered(bool lowered);
 	inline bool IsLowered() const;

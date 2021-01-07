@@ -2353,6 +2353,9 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Build a
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Join waypoint
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Build a separate waypoint
 
+# Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Disabled as currently no vehicles are available for this infrastructure
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Railway Construction
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Electrified Railway Construction

@@ -303,8 +303,9 @@ struct BuildRoadToolbarWindow : Window {
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (!gui_scope) return;
+		RoadTramType rtt = GetRoadTramType(this->roadtype);
 
-		bool can_build = CanBuildVehicleInfrastructure(VEH_ROAD, GetRoadTramType(this->roadtype));
+		bool can_build = CanBuildVehicleInfrastructure(VEH_ROAD, rtt);
 		this->SetWidgetsDisabledState(!can_build,
 			WID_ROT_DEPOT,
 			WID_ROT_BUS_STATION,
@@ -314,6 +315,15 @@ struct BuildRoadToolbarWindow : Window {
 			DeleteWindowById(WC_BUS_STATION, TRANSPORT_ROAD);
 			DeleteWindowById(WC_TRUCK_STATION, TRANSPORT_ROAD);
 			DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_ROAD);
+
+			/* Show in the tooltip why this button is disabled. */
+			this->GetWidget<NWidgetCore>(WID_ROT_DEPOT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
+			this->GetWidget<NWidgetCore>(WID_ROT_BUS_STATION)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
+			this->GetWidget<NWidgetCore>(WID_ROT_TRUCK_STATION)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
+		} else {
+			this->GetWidget<NWidgetCore>(WID_ROT_DEPOT)->SetToolTip(rtt == RTT_ROAD ? STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT : STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT);
+			this->GetWidget<NWidgetCore>(WID_ROT_BUS_STATION)->SetToolTip(rtt == RTT_ROAD ? STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION : STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION);
+			this->GetWidget<NWidgetCore>(WID_ROT_TRUCK_STATION)->SetToolTip(rtt == RTT_ROAD ? STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY : STR_ROAD_TOOLBAR_TOOLTIP_BUILD_CARGO_TRAM_STATION);
 		}
 	}
 
