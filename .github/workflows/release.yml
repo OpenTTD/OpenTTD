@@ -366,8 +366,10 @@ jobs:
         include:
         - arch: x64
           full_arch: x86_64
+        - arch: arm64
+          full_arch: arm64
 
-    runs-on: macos-11.0
+    runs-on: macos-10.15
     env:
       MACOSX_DEPLOYMENT_TARGET: 10.9
 
@@ -381,11 +383,20 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
+    # The following step can be removed and the default vcpkg installation
+    # (/usr/local/share/vcpkg) restored when the build VM is updated with a revision of
+    # vcpkg dating from roughly 01/01/2021 or later.
+    - name: Update vcpkg
+      run: |
+        cd /tmp
+        git clone https://github.com/Microsoft/vcpkg
+
     - name: Prepare vcpkg (with cache)
       uses: lukka/run-vcpkg@v6
       with:
-        vcpkgDirectory: '/usr/local/share/vcpkg'
-        doNotUpdateVcpkg: true
+        vcpkgDirectory: '/tmp/vcpkg'
+        doNotUpdateVcpkg: false
+        vcpkgGitCommitId: 2a42024b53ebb512fb5dd63c523338bf26c8489c
         vcpkgArguments: 'freetype liblzma lzo'
         vcpkgTriplet: '${{ matrix.arch }}-osx'
 
@@ -418,7 +429,7 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_OSX_ARCHITECTURES=${{ matrix.full_arch }} \
           -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-osx \
-          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=/tmp/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           # EOF
