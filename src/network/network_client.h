@@ -96,7 +96,7 @@ public:
 	static NetworkRecvStatus SendSetPassword(const char *password);
 	static NetworkRecvStatus SendSetCompanyPubkey(bool protect);
 	static NetworkRecvStatus SendSetName(const char *name);
-	static NetworkRecvStatus SendRCon(const char *password, const char *command);
+	static NetworkRecvStatus SendRCon(const char *command);
 	static NetworkRecvStatus SendMove(CompanyID company, const char *password);
 
 	static bool IsConnected();

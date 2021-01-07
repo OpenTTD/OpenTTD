@@ -653,17 +653,17 @@ DEF_CONSOLE_CMD(ConUnpauseGame)
 DEF_CONSOLE_CMD(ConRcon)
 {
 	if (argc == 0) {
-		IConsoleHelp("Remote control the server from another client. Usage: 'rcon <password> <command>'");
+		IConsoleHelp("Remote control the server from another client. Usage: 'rcon <command>'");
 		IConsoleHelp("Remember to enclose the command in quotes, otherwise only the first parameter is sent");
 		return true;
 	}
 
-	if (argc < 3) return false;
+	if (argc < 2) return false;
 
 	if (_network_server) {
-		IConsoleCmdExec(argv[2]);
+		IConsoleCmdExec(argv[1]);
 	} else {
-		NetworkClientSendRcon(argv[1], argv[2]);
+		NetworkClientSendRcon(argv[1]);
 	}
 	return true;
 }
@@ -2186,8 +2186,7 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("net_sync_freq",         "setting sync_freq %+");
 	IConsoleAliasRegister("server_pw",             "setting server_password %+");
 	IConsoleAliasRegister("server_password",       "setting server_password %+");
-	IConsoleAliasRegister("rcon_pw",               "setting rcon_password %+");
-	IConsoleAliasRegister("rcon_password",         "setting rcon_password %+");
+	IConsoleAliasRegister("rcon_pubkey",           "setting rcon_pubkey %+");
 	IConsoleAliasRegister("name",                  "setting client_name %+");
 	IConsoleAliasRegister("server_name",           "setting server_name %+");
 	IConsoleAliasRegister("server_port",           "setting server_port %+");

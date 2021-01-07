@@ -1531,16 +1531,20 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	char pass[NETWORK_PASSWORD_LENGTH];
+	NetworkClientInfo *ci = this->GetInfo();
 	char command[NETWORK_RCONCOMMAND_LENGTH];
 
-	if (StrEmpty(_settings_client.network.rcon_password)) return NETWORK_RECV_STATUS_OKAY;
+	if (StrEmpty(_settings_client.network.rcon_pubkey)) return NETWORK_RECV_STATUS_OKAY;
 
-	p->Recv_string(pass, sizeof(pass));
 	p->Recv_string(command, sizeof(command));
 
-	if (strcmp(pass, _settings_client.network.rcon_password) != 0) {
-		DEBUG(net, 0, "[rcon] wrong password from client-id %d", this->client_id);
+	uint8 authorized_pubkey[hydro_sign_PUBLICKEYBYTES];
+	if (hydro_hex2bin(authorized_pubkey, sizeof(authorized_pubkey), _settings_client.network.rcon_pubkey, strlen(_settings_client.network.rcon_pubkey), nullptr, nullptr) != sizeof(authorized_pubkey)) {
+		return NETWORK_RECV_STATUS_OKAY;
+	}
+
+	if (memcmp(ci->pubkey, authorized_pubkey, sizeof(authorized_pubkey)) != 0) {
+		DEBUG(net, 0, "[rcon] unauthorized client-id %d", this->client_id);
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 

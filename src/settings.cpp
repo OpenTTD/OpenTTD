@@ -1382,10 +1382,10 @@ static bool UpdateServerPassword(int32 p1)
 	return true;
 }
 
-static bool UpdateRconPassword(int32 p1)
+static bool UpdateRconPubkey(int32 p1)
 {
-	if (strcmp(_settings_client.network.rcon_password, "*") == 0) {
-		_settings_client.network.rcon_password[0] = '\0';
+	if (strcmp(_settings_client.network.rcon_pubkey, "*") == 0) {
+		_settings_client.network.rcon_pubkey[0] = '\0';
 	}
 
 	return true;

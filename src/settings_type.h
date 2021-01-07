@@ -252,7 +252,7 @@ struct NetworkSettings {
 	bool   server_admin_chat;                             ///< allow private chat for the server to be distributed to the admin network
 	char   server_name[NETWORK_NAME_LENGTH];              ///< name of the server
 	char   server_password[NETWORK_PASSWORD_LENGTH];      ///< password for joining this server
-	char   rcon_password[NETWORK_PASSWORD_LENGTH];        ///< password for rconsole (server side)
+	char   rcon_pubkey[128];                              ///< pubkey for rconsole (server side)
 	char   admin_password[NETWORK_PASSWORD_LENGTH];       ///< password for the admin network
 	bool   server_advertise;                              ///< advertise the server to the masterserver
 	uint8  lan_internet;                                  ///< search on the LAN or internet for servers
