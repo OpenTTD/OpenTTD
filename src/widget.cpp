@@ -895,6 +895,15 @@ void NWidgetCore::SetDataTip(uint32 widget_data, StringID tool_tip)
 	this->tool_tip = tool_tip;
 }
 
+/**
+ * Set the tool tip of the nested widget.
+ * @param tool_tip Tool tip string to use.
+ */
+void NWidgetCore::SetToolTip(StringID tool_tip)
+{
+	this->tool_tip = tool_tip;
+}
+
 void NWidgetCore::FillNestedArray(NWidgetBase **array, uint length)
 {
 	if (this->index >= 0 && (uint)(this->index) < length) array[this->index] = this;
