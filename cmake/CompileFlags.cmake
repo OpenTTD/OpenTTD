@@ -64,7 +64,7 @@ macro(compile_flags)
             -Wformat-security
             -Wformat=2
             -Winit-self
-            -Wnon-virtual-dtor
+            $<$<COMPILE_LANGUAGE:CXX>:-Wnon-virtual-dtor>
 
             # Often parameters are unused, which is fine.
             -Wno-unused-parameter
