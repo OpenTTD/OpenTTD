@@ -29,5 +29,7 @@
         <string>Copyright 2004-${CURRENT_YEAR} The OpenTTD team</string>
         <key>NSPrincipalClass</key>
         <string>NSApplication</string>
+        <key>NSHighResolutionCapable</key>
+        <string>True</string>
 </dict>
 </plist>

@@ -38,6 +38,9 @@ extern NSString *OTTDMainLaunchGameEngine;
 
 /** Subclass of NSView to support mouse awareness and text input. */
 @interface OTTD_CocoaView : NSView <NSTextInputClient>
+- (NSRect)getRealRect:(NSRect)rect;
+- (NSRect)getVirtualRect:(NSRect)rect;
+- (CGFloat)getContentsScale;
 - (NSPoint)mousePositionFromEvent:(NSEvent *)e;
 @end
 
