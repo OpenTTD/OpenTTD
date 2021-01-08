@@ -4021,6 +4021,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Refit to {STRI
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING1}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Can't use station){POP_COLOUR} {STRING} {STATION} {STRING1}
 
 STR_ORDER_IMPLICIT                                              :(Implicit)
 
