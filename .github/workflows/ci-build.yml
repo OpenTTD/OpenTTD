@@ -220,6 +220,18 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    # "restore-cache" which is done by "run-vcpkg" uses Windows tar.
+    # A git clone on windows marks a few files as read-only; when Windows tar
+    # tries to extract the cache over this folder, it fails, despite the files
+    # being identical. This failure shows up as an warning in the logs. We
+    # avoid this by simply removing the read-only mark from the git folder.
+    # In other words: this is a hack!
+    # See: https://github.com/lukka/run-vcpkg/issues/61
+    - name: Remove read-only flag from vcpkg git folder
+      shell: powershell
+      run: |
+        attrib -r "c:\vcpkg\.git\*.*" /s
+
     - name: Prepare vcpkg (with cache)
       uses: lukka/run-vcpkg@v6
       with:
