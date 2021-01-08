@@ -1046,9 +1046,9 @@ void SwitchToMode(SwitchMode new_mode)
 			MakeNewEditorWorld();
 			break;
 
-		case SM_RESTARTGAME: // Restart --> Current settings preserved
+		case SM_RELOADGAME: // Reload with what-ever started the game
 			if (_file_to_saveload.abstract_ftype == FT_SAVEGAME || _file_to_saveload.abstract_ftype == FT_SCENARIO) {
-				/* Restart current savegame/scenario */
+				/* Reload current savegame/scenario */
 				_switch_mode = _game_mode == GM_EDITOR ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
 				SwitchToMode(_switch_mode);
 				break;
@@ -1062,6 +1062,7 @@ void SwitchToMode(SwitchMode new_mode)
 			MakeNewGame(false, new_mode == SM_NEWGAME);
 			break;
 
+		case SM_RESTARTGAME: // Restart --> 'Random game' with current settings
 		case SM_NEWGAME: // New Game --> 'Random game'
 			if (_network_server) {
 				seprintf(_network_game_info.map_name, lastof(_network_game_info.map_name), "Random Map");

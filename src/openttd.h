@@ -25,6 +25,7 @@ enum SwitchMode {
 	SM_NONE,
 	SM_NEWGAME,           ///< New Game --> 'Random game'.
 	SM_RESTARTGAME,       ///< Restart --> 'Random game' with current settings.
+	SM_RELOADGAME,        ///< Reload the savegame / scenario / heightmap you started the game with.
 	SM_EDITOR,            ///< Switch to scenario editor.
 	SM_LOAD_GAME,         ///< Load game, Play Scenario.
 	SM_MENU,              ///< Switch to game intro menu.
