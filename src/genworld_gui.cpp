@@ -513,7 +513,7 @@ struct GenerateLandscapeWindow : public Window {
 			}
 		}
 		size->width += padding.width;
-		size->height = max(size->height, (uint)(FONT_HEIGHT_NORMAL + WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM));
+		size->height = std::max(size->height, (uint)(FONT_HEIGHT_NORMAL + WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM));
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override
@@ -1214,7 +1214,7 @@ struct GenerateProgressWindow : public Window {
 
 			case WID_GP_PROGRESS_TEXT:
 				for (uint i = 0; i < GWP_CLASS_COUNT; i++) {
-					size->width = max(size->width, GetStringBoundingBox(_generation_class_table[i]).width);
+					size->width = std::max(size->width, GetStringBoundingBox(_generation_class_table[i]).width);
 				}
 				size->height = FONT_HEIGHT_NORMAL * 2 + WD_PAR_VSEP_NORMAL;
 				break;

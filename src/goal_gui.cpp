@@ -291,7 +291,7 @@ struct GoalListWindow : public Window {
 		}
 
 		NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_GOAL_LIST);
-		uint progress_col_width = min(max_width, wid->current_x);
+		uint progress_col_width = std::min(max_width, wid->current_x);
 
 		/* Draw goal list. */
 		this->DrawListColumn(GC_PROGRESS, wid, progress_col_width);

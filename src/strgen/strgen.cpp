@@ -304,7 +304,7 @@ struct HeaderFileWriter : HeaderWriter, FileWriter {
 		/* Find the plural form with the most amount of cases. */
 		int max_plural_forms = 0;
 		for (uint i = 0; i < lengthof(_plural_forms); i++) {
-			max_plural_forms = max(max_plural_forms, _plural_forms[i].plural_count);
+			max_plural_forms = std::max(max_plural_forms, _plural_forms[i].plural_count);
 		}
 
 		fprintf(this->fh,

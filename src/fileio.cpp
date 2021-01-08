@@ -24,7 +24,6 @@
 #include <pwd.h>
 #endif
 #include <sys/stat.h>
-#include <algorithm>
 #include <array>
 #include <sstream>
 
@@ -125,7 +124,7 @@ byte FioReadByte()
 void FioSkipBytes(int n)
 {
 	for (;;) {
-		int m = min(_fio.buffer_end - _fio.buffer, n);
+		int m = std::min<int>(_fio.buffer_end - _fio.buffer, n);
 		_fio.buffer += m;
 		n -= m;
 		if (n == 0) break;
@@ -892,7 +891,7 @@ bool ExtractTar(const std::string &tar_filename, Subdirectory subdir)
 		char buffer[4096];
 		size_t read;
 		for (; to_copy != 0; to_copy -= read) {
-			read = fread(buffer, 1, min(to_copy, lengthof(buffer)), in.get());
+			read = fread(buffer, 1, std::min(to_copy, lengthof(buffer)), in.get());
 			if (read <= 0 || fwrite(buffer, 1, read, out.get()) != read) break;
 		}
 

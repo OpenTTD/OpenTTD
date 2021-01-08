@@ -125,7 +125,7 @@ public:
 				for (uint i = 0; i < ObjectClass::GetClassCount(); i++) {
 					ObjectClass *objclass = ObjectClass::Get((ObjectClassID)i);
 					if (objclass->GetUISpecCount() == 0) continue;
-					size->width = max(size->width, GetStringBoundingBox(objclass->name).width);
+					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width);
 				}
 				size->width += padding.width;
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
@@ -161,7 +161,7 @@ public:
 					const ObjectSpec *spec = ObjectSpec::Get(i);
 					if (!spec->IsEverAvailable()) continue;
 					two_wide |= spec->views >= 2;
-					height[spec->views / 4] = max<int>(ObjectSpec::Get(i)->height, height[spec->views / 4]);
+					height[spec->views / 4] = std::max<int>(ObjectSpec::Get(i)->height, height[spec->views / 4]);
 				}
 
 				/* Determine the pixel heights. */
@@ -174,7 +174,7 @@ public:
 				 * we want these columns to be slightly less wide. When there are two rows, then
 				 * determine the size of the widgets based on the maximum size for a single row
 				 * of widgets, or just the twice the widget height of the two row ones. */
-				size->height = max(height[0], height[1] * 2 + 2);
+				size->height = std::max(height[0], height[1] * 2 + 2);
 				if (two_wide) {
 					size->width  = (3 * ScaleGUITrad(TILE_PIXELS) + 2 * OBJECT_MARGIN) * 2 + 2;
 				} else {
@@ -274,7 +274,7 @@ public:
 						DrawOrigTileSeqInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - ScaleGUITrad(TILE_PIXELS), dts, PAL_NONE);
 					} else {
 						DrawNewObjectTileInGUI((r.right - r.left) / 2 - 1, r.bottom - r.top - OBJECT_MARGIN - ScaleGUITrad(TILE_PIXELS), spec,
-								min(_selected_object_view, spec->views - 1));
+								std::min<int>(_selected_object_view, spec->views - 1));
 					}
 					_cur_dpi = old_dpi;
 				}
@@ -332,7 +332,7 @@ public:
 		_selected_object_index = object_index;
 		if (_selected_object_index != -1) {
 			const ObjectSpec *spec = ObjectClass::Get(_selected_object_class)->GetSpec(_selected_object_index);
-			_selected_object_view = min(_selected_object_view, spec->views - 1);
+			_selected_object_view = std::min<int>(_selected_object_view, spec->views - 1);
 			this->ReInit();
 		} else {
 			_selected_object_view = 0;

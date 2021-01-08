@@ -243,7 +243,7 @@ static void AddKey(NWidgetHorizontal *hor, int height, int num_half, WidgetType 
 		hor->Add(leaf);
 	}
 
-	*biggest_index = max(*biggest_index, widnum);
+	*biggest_index = std::max(*biggest_index, widnum);
 }
 
 /** Construct the top row keys (cancel, ok, backspace). */

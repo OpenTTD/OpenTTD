@@ -83,7 +83,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 					dst = dst_end - bp->skip_left;
 					dst_end = dst + bp->width;
 
-					n = min<uint>(n - d, (uint)bp->width);
+					n = std::min(n - d, (uint)bp->width);
 					goto draw;
 				}
 				dst += n;
@@ -98,7 +98,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 		dst_end += bp->width;
 
 		while (dst < dst_end) {
-			n = min<uint>(*src_n++, (uint)(dst_end - dst));
+			n = std::min<uint>(*src_n++, dst_end - dst);
 
 			if (src_px->a == 0) {
 				dst += n;
@@ -324,7 +324,7 @@ Sprite *Blitter_32bppOptimized::Encode(const SpriteLoader::Sprite *sprite, Alloc
 					*dst_n = src->m;
 					if (src->m != 0) {
 						/* Get brightest value */
-						uint8 rgb_max = max(src->r, max(src->g, src->b));
+						uint8 rgb_max = std::max({src->r, src->g, src->b});
 
 						/* Black pixel (8bpp or old 32bpp image), so use default value */
 						if (rgb_max == 0) rgb_max = DEFAULT_BRIGHTNESS;

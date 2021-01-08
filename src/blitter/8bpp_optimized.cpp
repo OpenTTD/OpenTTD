@@ -80,7 +80,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 			dst += trans;
 			width -= trans;
 			if (width <= 0 || pixels == 0) continue;
-			pixels = min<uint>(pixels, (uint)width);
+			pixels = std::min<uint>(pixels, width);
 			width -= pixels;
 
 			switch (mode) {

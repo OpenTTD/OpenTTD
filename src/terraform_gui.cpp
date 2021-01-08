@@ -409,13 +409,13 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 			/* Raise land */
 			h = MAX_TILE_HEIGHT;
 			TILE_AREA_LOOP(tile2, ta) {
-				h = min(h, TileHeight(tile2));
+				h = std::min(h, TileHeight(tile2));
 			}
 		} else {
 			/* Lower land */
 			h = 0;
 			TILE_AREA_LOOP(tile2, ta) {
-				h = max(h, TileHeight(tile2));
+				h = std::max(h, TileHeight(tile2));
 			}
 		}
 
@@ -547,8 +547,8 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 	{
 		if (widget != WID_ETT_DOTS) return;
 
-		size->width  = max<uint>(size->width,  ScaleGUITrad(59));
-		size->height = max<uint>(size->height, ScaleGUITrad(31));
+		size->width  = std::max<uint>(size->width,  ScaleGUITrad(59));
+		size->height = std::max<uint>(size->height, ScaleGUITrad(31));
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override

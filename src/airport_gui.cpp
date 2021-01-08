@@ -314,7 +314,7 @@ public:
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
 
-					size->width = max(size->width, GetStringBoundingBox(as->name).width);
+					size->width = std::max(size->width, GetStringBoundingBox(as->name).width);
 				}
 
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;

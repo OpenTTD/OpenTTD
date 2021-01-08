@@ -76,7 +76,7 @@ namespace {
 			this->prev_index = this->next_index;
 			this->next_index += 1;
 			if (this->next_index >= NUM_FRAMERATE_POINTS) this->next_index = 0;
-			this->num_valid = min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
+			this->num_valid = std::min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
 		}
 
 		/** Begin an accumulation of multiple measurements into a single value, from a given start time */
@@ -87,7 +87,7 @@ namespace {
 			this->prev_index = this->next_index;
 			this->next_index += 1;
 			if (this->next_index >= NUM_FRAMERATE_POINTS) this->next_index = 0;
-			this->num_valid = min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
+			this->num_valid = std::min(NUM_FRAMERATE_POINTS, this->num_valid + 1);
 
 			this->acc_duration = 0;
 			this->acc_timestamp = start_time;
@@ -115,7 +115,7 @@ namespace {
 		/** Get average cycle processing time over a number of data points */
 		double GetAverageDurationMilliseconds(int count)
 		{
-			count = min(count, this->num_valid);
+			count = std::min(count, this->num_valid);
 
 			int first_point = this->prev_index - count;
 			if (first_point < 0) first_point += NUM_FRAMERATE_POINTS;
@@ -395,7 +395,7 @@ struct FramerateWindow : Window {
 		{
 			const double threshold_good = target * 0.95;
 			const double threshold_bad = target * 2 / 3;
-			value = min(9999.99, value);
+			value = std::min(9999.99, value);
 			this->value = (uint32)(value * 100);
 			this->strid = (value > threshold_good) ? STR_FRAMERATE_FPS_GOOD : (value < threshold_bad) ? STR_FRAMERATE_FPS_BAD : STR_FRAMERATE_FPS_WARN;
 		}
@@ -404,7 +404,7 @@ struct FramerateWindow : Window {
 		{
 			const double threshold_good = target / 3;
 			const double threshold_bad = target;
-			value = min(9999.99, value);
+			value = std::min(9999.99, value);
 			this->value = (uint32)(value * 100);
 			this->strid = (value < threshold_good) ? STR_FRAMERATE_MS_GOOD : (value > threshold_bad) ? STR_FRAMERATE_MS_BAD : STR_FRAMERATE_MS_WARN;
 		}
@@ -422,8 +422,8 @@ struct FramerateWindow : Window {
 	CachedDecimal times_shortterm[PFE_MAX]; ///< cached short term average times
 	CachedDecimal times_longterm[PFE_MAX];  ///< cached long term average times
 
-	static const int VSPACING = 3;          ///< space between column heading and values
-	static const int MIN_ELEMENTS = 5;      ///< smallest number of elements to display
+	static constexpr int VSPACING = 3;          ///< space between column heading and values
+	static constexpr int MIN_ELEMENTS = 5;      ///< smallest number of elements to display
 
 	FramerateWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
@@ -435,7 +435,7 @@ struct FramerateWindow : Window {
 		this->next_update.SetInterval(100);
 
 		/* Window is always initialised to MIN_ELEMENTS height, resize to contain num_displayed */
-		ResizeWindow(this, 0, (max(MIN_ELEMENTS, this->num_displayed) - MIN_ELEMENTS) * FONT_HEIGHT_NORMAL);
+		ResizeWindow(this, 0, (std::max(MIN_ELEMENTS, this->num_displayed) - MIN_ELEMENTS) * FONT_HEIGHT_NORMAL);
 	}
 
 	void OnRealtimeTick(uint delta_ms) override
@@ -486,7 +486,7 @@ struct FramerateWindow : Window {
 			this->num_active = new_active;
 			Scrollbar *sb = this->GetScrollbar(WID_FRW_SCROLLBAR);
 			sb->SetCount(this->num_active);
-			sb->SetCapacity(min(this->num_displayed, this->num_active));
+			sb->SetCapacity(std::min(this->num_displayed, this->num_active));
 			this->ReInit();
 		}
 	}
@@ -555,7 +555,7 @@ struct FramerateWindow : Window {
 						SetDParamStr(1, GetAIName(e - PFE_AI0));
 						line_size = GetStringBoundingBox(STR_FRAMERATE_AI);
 					}
-					size->width = max(size->width, line_size.width);
+					size->width = std::max(size->width, line_size.width);
 				}
 				break;
 			}
@@ -567,7 +567,7 @@ struct FramerateWindow : Window {
 				SetDParam(0, 999999);
 				SetDParam(1, 2);
 				Dimension item_size = GetStringBoundingBox(STR_FRAMERATE_MS_GOOD);
-				size->width = max(size->width, item_size.width);
+				size->width = std::max(size->width, item_size.width);
 				size->height += FONT_HEIGHT_NORMAL * MIN_ELEMENTS + VSPACING;
 				resize->width = 0;
 				resize->height = FONT_HEIGHT_NORMAL;
@@ -769,7 +769,7 @@ struct FrametimeGraphWindow : Window {
 			Dimension size_s_label = GetStringBoundingBox(STR_FRAMERATE_GRAPH_SECONDS);
 
 			/* Size graph in height to fit at least 10 vertical labels with space between, or at least 100 pixels */
-			graph_size.height = max<uint>(100, 10 * (size_ms_label.height + 1));
+			graph_size.height = std::max(100u, 10 * (size_ms_label.height + 1));
 			/* Always 2:1 graph area */
 			graph_size.width = 2 * graph_size.height;
 			*size = graph_size;
@@ -980,7 +980,7 @@ struct FrametimeGraphWindow : Window {
 				TextColour tc_peak = (TextColour)(TC_IS_PALETTE_COLOUR | c_peak);
 				GfxFillRect(peak_point.x - 1, peak_point.y - 1, peak_point.x + 1, peak_point.y + 1, c_peak);
 				SetDParam(0, peak_value * 1000 / TIMESTAMP_PRECISION);
-				int label_y = max(y_max, peak_point.y - FONT_HEIGHT_SMALL);
+				int label_y = std::max(y_max, peak_point.y - FONT_HEIGHT_SMALL);
 				if (peak_point.x - x_zero > (int)this->graph_size.width / 2) {
 					DrawString(x_zero, peak_point.x - 2, label_y, STR_FRAMERATE_GRAPH_MILLISECONDS, tc_peak, SA_RIGHT | SA_FORCE, false, FS_SMALL);
 				} else {

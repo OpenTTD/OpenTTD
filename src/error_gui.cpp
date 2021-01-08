@@ -189,7 +189,7 @@ public:
 				CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
 				if (this->textref_stack_size > 0) StartTextRefStackUsage(this->textref_stack_grffile, this->textref_stack_size, this->textref_stack);
 
-				int text_width = max(0, (int)size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
+				int text_width = std::max(0, (int)size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
 				this->height_summary = GetStringHeight(this->summary_msg, text_width);
 				this->height_detailed = (this->detailed_msg == INVALID_STRING_ID) ? 0 : GetStringHeight(this->detailed_msg, text_width);
 
@@ -198,13 +198,13 @@ public:
 				uint panel_height = WD_FRAMERECT_TOP + this->height_summary + WD_FRAMERECT_BOTTOM;
 				if (this->detailed_msg != INVALID_STRING_ID) panel_height += this->height_detailed + WD_PAR_VSEP_WIDE;
 
-				size->height = max(size->height, panel_height);
+				size->height = std::max(size->height, panel_height);
 				break;
 			}
 			case WID_EM_FACE: {
 				Dimension face_size = GetSpriteSize(SPR_GRADIENT);
-				size->width = max(size->width, face_size.width);
-				size->height = max(size->height, face_size.height);
+				size->width = std::max(size->width, face_size.width);
+				size->height = std::max(size->height, face_size.height);
 				break;
 			}
 		}

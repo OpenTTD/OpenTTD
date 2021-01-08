@@ -437,8 +437,8 @@ protected:
 				int right_offset = (right_width == 0) ? 0 : (right_width + element_dist);
 				if (left_offset + right_offset + min_required_width >= max_width) {
 					/* Width of floats leave too little for main content, push down */
-					main_y = max(main_y, left_y);
-					main_y = max(main_y, right_y);
+					main_y = std::max(main_y, left_y);
+					main_y = std::max(main_y, right_y);
 					left_width = right_width = 0;
 					left_offset = right_offset = 0;
 					/* Do not add element_dist here, to keep together elements which were supposed to float besides each other. */
@@ -469,7 +469,7 @@ protected:
 				main_y += element_dist;
 				/* Clear all floats */
 				left_width = right_width = 0;
-				left_y = right_y = main_y = max(main_y, max(left_y, right_y));
+				left_y = right_y = main_y = std::max({main_y, left_y, right_y});
 				left_floats.clear();
 				right_floats.clear();
 			} else {
@@ -478,7 +478,7 @@ protected:
 				int &cur_y = (fl == ElementFloat::Left) ? left_y : right_y;
 				std::vector<size_t> &cur_floats = (fl == ElementFloat::Left) ? left_floats : right_floats;
 				/* Position element */
-				cur_width = max(cur_width, this->GetPageElementFloatWidth(*pe));
+				cur_width = std::max(cur_width, this->GetPageElementFloatWidth(*pe));
 				LayoutCacheElement ce{ pe, {} };
 				ce.bounds.left = (fl == ElementFloat::Left) ? 0 : (max_width - cur_width);
 				ce.bounds.right = (fl == ElementFloat::Left) ? cur_width : max_width;
@@ -507,7 +507,7 @@ protected:
 		this->EnsureStoryPageElementLayout();
 
 		/* The largest bottom coordinate of any element is the height of the content */
-		uint max_y = std::accumulate(this->layout_cache.begin(), this->layout_cache.end(), 0, [](uint max_y, const LayoutCacheElement &ce) -> uint { return max<uint>(max_y, ce.bounds.bottom); });
+		uint max_y = std::accumulate(this->layout_cache.begin(), this->layout_cache.end(), 0, [](uint max_y, const LayoutCacheElement &ce) -> uint { return std::max<uint>(max_y, ce.bounds.bottom); });
 
 		return max_y;
 	}
@@ -526,7 +526,7 @@ protected:
 	void DrawActionElement(int &y_offset, int width, int line_height, SpriteID action_sprite, StringID string_id = STR_JUST_RAW_STRING) const
 	{
 		Dimension sprite_dim = GetSpriteSize(action_sprite);
-		uint element_height = max(sprite_dim.height, (uint)line_height);
+		uint element_height = std::max(sprite_dim.height, (uint)line_height);
 
 		uint sprite_top = y_offset + (element_height - sprite_dim.height) / 2;
 		uint text_top = y_offset + (element_height - line_height) / 2;

@@ -845,7 +845,7 @@ void SmallMapWindow::DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, 
 		if (min_xy == 1 && (xc == 0 || yc == 0)) {
 			if (this->zoom == 1) continue; // The tile area is empty, don't draw anything.
 
-			ta = TileArea(TileXY(max(min_xy, xc), max(min_xy, yc)), this->zoom - (xc == 0), this->zoom - (yc == 0));
+			ta = TileArea(TileXY(std::max(min_xy, xc), std::max(min_xy, yc)), this->zoom - (xc == 0), this->zoom - (yc == 0));
 		} else {
 			ta = TileArea(TileXY(xc, yc), this->zoom, this->zoom);
 		}
@@ -853,8 +853,8 @@ void SmallMapWindow::DrawSmallMapColumn(void *dst, uint xc, uint yc, int pitch, 
 
 		uint32 val = this->GetTileColours(ta);
 		uint8 *val8 = (uint8 *)&val;
-		int idx = max(0, -start_pos);
-		for (int pos = max(0, start_pos); pos < end_pos; pos++) {
+		int idx = std::max(0, -start_pos);
+		for (int pos = std::max(0, start_pos); pos < end_pos; pos++) {
 			blitter->SetPixel(dst, idx, 0, val8[idx]);
 			idx++;
 		}
@@ -986,7 +986,7 @@ void SmallMapWindow::DrawSmallMap(DrawPixelInfo *dpi) const
 		if (x >= -3) {
 			if (x >= dpi->width) break; // Exit the loop.
 
-			int end_pos = min(dpi->width, x + 4);
+			int end_pos = std::min(dpi->width, x + 4);
 			int reps = (dpi->height - y + 1) / 2; // Number of lines.
 			if (reps > 0) {
 				this->DrawSmallMapColumn(ptr, tile_x, tile_y, dpi->pitch * 2, reps, x, end_pos, blitter);
@@ -1159,17 +1159,17 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 				}
 			} else {
 				if (tbl->col_break) {
-					this->min_number_of_fixed_rows = max(this->min_number_of_fixed_rows, height);
+					this->min_number_of_fixed_rows = std::max(this->min_number_of_fixed_rows, height);
 					height = 0;
 					num_columns++;
 				}
 				height++;
 				str = tbl->legend;
 			}
-			min_width = max(GetStringBoundingBox(str).width, min_width);
+			min_width = std::max(GetStringBoundingBox(str).width, min_width);
 		}
-		this->min_number_of_fixed_rows = max(this->min_number_of_fixed_rows, height);
-		this->min_number_of_columns = max(this->min_number_of_columns, num_columns);
+		this->min_number_of_fixed_rows = std::max(this->min_number_of_fixed_rows, height);
+		this->min_number_of_columns = std::max(this->min_number_of_columns, num_columns);
 	}
 
 	/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
@@ -1317,8 +1317,8 @@ inline uint SmallMapWindow::GetNumberRowsLegend(uint columns) const
 {
 	/* Reserve one column for link colours */
 	uint num_rows_linkstats = CeilDiv(_smallmap_cargo_count, columns - 1);
-	uint num_rows_others = CeilDiv(max(_smallmap_industry_count, _smallmap_company_count), columns);
-	return max(this->min_number_of_fixed_rows, max(num_rows_linkstats, num_rows_others));
+	uint num_rows_others = CeilDiv(std::max(_smallmap_industry_count, _smallmap_company_count), columns);
+	return std::max({this->min_number_of_fixed_rows, num_rows_linkstats, num_rows_others});
 }
 
 /**
@@ -1652,7 +1652,7 @@ void SmallMapWindow::SmallMapCenterOnCurrentPos()
 	int sub;
 	const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_SM_MAP);
 	Point sxy = this->ComputeScroll(viewport_center.x / (int)TILE_SIZE, viewport_center.y / (int)TILE_SIZE,
-			max(0, (int)wid->current_x / 2 - 2), wid->current_y / 2, &sub);
+			std::max(0, (int)wid->current_x / 2 - 2), wid->current_y / 2, &sub);
 	this->SetNewScroll(sxy.x, sxy.y, sub);
 	this->SetDirty();
 }
@@ -1705,12 +1705,12 @@ public:
 
 		this->smallmap_window = dynamic_cast<SmallMapWindow *>(w);
 		assert(this->smallmap_window != nullptr);
-		this->smallest_x = max(display->smallest_x, bar->smallest_x + smallmap_window->GetMinLegendWidth());
-		this->smallest_y = display->smallest_y + max(bar->smallest_y, smallmap_window->GetLegendHeight(smallmap_window->min_number_of_columns));
-		this->fill_x = max(display->fill_x, bar->fill_x);
-		this->fill_y = (display->fill_y == 0 && bar->fill_y == 0) ? 0 : min(display->fill_y, bar->fill_y);
-		this->resize_x = max(display->resize_x, bar->resize_x);
-		this->resize_y = min(display->resize_y, bar->resize_y);
+		this->smallest_x = std::max(display->smallest_x, bar->smallest_x + smallmap_window->GetMinLegendWidth());
+		this->smallest_y = display->smallest_y + std::max(bar->smallest_y, smallmap_window->GetLegendHeight(smallmap_window->min_number_of_columns));
+		this->fill_x = std::max(display->fill_x, bar->fill_x);
+		this->fill_y = (display->fill_y == 0 && bar->fill_y == 0) ? 0 : std::min(display->fill_y, bar->fill_y);
+		this->resize_x = std::max(display->resize_x, bar->resize_x);
+		this->resize_y = std::min(display->resize_y, bar->resize_y);
 	}
 
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override
@@ -1731,7 +1731,7 @@ public:
 			bar->AssignSizePosition(ST_SMALLEST, x, y + display->smallest_y, bar->smallest_x, bar->smallest_y, rtl);
 		}
 
-		uint bar_height = max(bar->smallest_y, this->smallmap_window->GetLegendHeight(this->smallmap_window->GetNumberColumnsLegend(given_width - bar->smallest_x)));
+		uint bar_height = std::max(bar->smallest_y, this->smallmap_window->GetLegendHeight(this->smallmap_window->GetNumberColumnsLegend(given_width - bar->smallest_x)));
 		uint display_height = given_height - bar_height;
 		display->AssignSizePosition(ST_RESIZE, x, y, given_width, display_height, rtl);
 		bar->AssignSizePosition(ST_RESIZE, x, y + display_height, given_width, bar_height, rtl);

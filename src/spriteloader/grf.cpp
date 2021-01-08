@@ -164,7 +164,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 					if (colour_fmt & SCC_PAL) {
 						switch (sprite_type) {
 							case ST_NORMAL: data->m = _palette_remap_grf[file_slot] ? _palmap_w2d[*dest] : *dest; break;
-							case ST_FONT:   data->m = min(*dest, 2u); break;
+							case ST_FONT:   data->m = std::min<uint>(*dest, 2u); break;
 							default:        data->m = *dest; break;
 						}
 						/* Magic blue. */
@@ -200,7 +200,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t fi
 			if (colour_fmt & SCC_PAL) {
 				switch (sprite_type) {
 					case ST_NORMAL: sprite->data[i].m = _palette_remap_grf[file_slot] ? _palmap_w2d[*pixel] : *pixel; break;
-					case ST_FONT:   sprite->data[i].m = min(*pixel, 2u); break;
+					case ST_FONT:   sprite->data[i].m = std::min<uint>(*pixel, 2u); break;
 					default:        sprite->data[i].m = *pixel; break;
 				}
 				/* Magic blue. */

@@ -12,7 +12,6 @@
 #include "newgrf_cargo.h"
 #include "string_func.h"
 #include "strings_func.h"
-#include <algorithm>
 
 #include "table/sprites.h"
 #include "table/strings.h"

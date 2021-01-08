@@ -388,7 +388,7 @@ void EmitPlural(Buffer *buffer, char *buf, int value)
 	int argidx = _cur_argidx;
 	int offset = -1;
 	int expected = _plural_forms[_lang.plural_form].plural_count;
-	const char **words = AllocaM(const char *, max(expected, MAX_PLURALS));
+	const char **words = AllocaM(const char *, std::max(expected, MAX_PLURALS));
 	int nw = 0;
 
 	/* Parse out the number, if one exists. Otherwise default to prev arg. */
@@ -489,7 +489,7 @@ static uint ResolveCaseName(const char *str, size_t len)
 {
 	/* First get a clean copy of only the case name, then resolve it. */
 	char case_str[CASE_GENDER_LEN];
-	len = min(lengthof(case_str) - 1, len);
+	len = std::min(lengthof(case_str) - 1, len);
 	memcpy(case_str, str, len);
 	case_str[len] = '\0';
 

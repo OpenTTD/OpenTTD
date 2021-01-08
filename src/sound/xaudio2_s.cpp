@@ -193,7 +193,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 
 	// Limit buffer size to prevent overflows
 	int bufsize = GetDriverParamInt(parm, "bufsize", 8192);
-	bufsize = min(bufsize, UINT16_MAX);
+	bufsize = std::min<int>(bufsize, UINT16_MAX);
 
 	_voice_context = new StreamingVoiceContext(bufsize * 4);
 

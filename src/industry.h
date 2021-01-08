@@ -10,7 +10,6 @@
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
-#include <algorithm>
 #include "newgrf_storage.h"
 #include "subsidy_type.h"
 #include "industry_map.h"

@@ -388,7 +388,7 @@ static inline Money RailClearCost(RailType railtype)
 	 * cost.
 	 */
 	assert(railtype < RAILTYPE_END);
-	return max(_price[PR_CLEAR_RAIL], -RailBuildCost(railtype) * 3 / 4);
+	return std::max(_price[PR_CLEAR_RAIL], -RailBuildCost(railtype) * 3 / 4);
 }
 
 /**
@@ -408,8 +408,8 @@ static inline Money RailConvertCost(RailType from, RailType to)
 	 * build costs, if the target type is more expensive (material upgrade costs).
 	 * Upgrade can never be more expensive than re-building. */
 	if (HasPowerOnRail(from, to) || HasPowerOnRail(to, from)) {
-		Money upgradecost = RailBuildCost(to) / 8 + max((Money)0, RailBuildCost(to) - RailBuildCost(from));
-		return min(upgradecost, rebuildcost);
+		Money upgradecost = RailBuildCost(to) / 8 + std::max((Money)0, RailBuildCost(to) - RailBuildCost(from));
+		return std::min(upgradecost, rebuildcost);
 	}
 
 	/* make the price the same as remove + build new type for rail types

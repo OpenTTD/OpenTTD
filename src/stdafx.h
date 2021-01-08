@@ -85,6 +85,7 @@
 #	define INT8_MIN   (-INT8_MAX - 1)
 #endif
 
+#include <algorithm>
 #include <cstdio>
 #include <cstddef>
 #include <cstring>

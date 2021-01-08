@@ -552,14 +552,14 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, Carg
 
 	/* Top town building generates 10, so to make HQ interesting, the top
 	 * type makes 20. */
-	acceptance[CT_PASSENGERS] += max(1U, level);
+	acceptance[CT_PASSENGERS] += std::max(1U, level);
 	SetBit(*always_accepted, CT_PASSENGERS);
 
 	/* Top town building generates 4, HQ can make up to 8. The
 	 * proportion passengers:mail is different because such a huge
 	 * commercial building generates unusually high amount of mail
 	 * correspondence per physical visitor. */
-	acceptance[CT_MAIL] += max(1U, level / 2);
+	acceptance[CT_MAIL] += std::max(1U, level / 2);
 	SetBit(*always_accepted, CT_MAIL);
 }
 

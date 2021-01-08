@@ -170,7 +170,7 @@ struct MemoryDumper {
 		size_t t = this->GetSize();
 
 		while (t > 0) {
-			size_t to_write = min(MEMORY_CHUNK_SIZE, t);
+			size_t to_write = std::min(MEMORY_CHUNK_SIZE, t);
 
 			writer->Write(this->blocks[i++], to_write);
 			t -= to_write;
@@ -856,7 +856,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 static inline size_t SlCalcNetStringLen(const char *ptr, size_t length)
 {
 	if (ptr == nullptr) return 0;
-	return min(strlen(ptr), length - 1);
+	return std::min(strlen(ptr), length - 1);
 }
 
 /**

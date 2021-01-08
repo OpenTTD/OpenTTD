@@ -369,7 +369,7 @@ protected:
 		 * somewhat gradually. But never lower than the maximum speed. */
 		int tempmax = max_speed;
 		if (this->cur_speed > max_speed) {
-			tempmax = max(this->cur_speed - (this->cur_speed / 10) - 1, max_speed);
+			tempmax = std::max(this->cur_speed - (this->cur_speed / 10) - 1, max_speed);
 		}
 
 		/* Enforce a maximum and minimum speed. Normally we would use something like
@@ -377,7 +377,7 @@ protected:
 		 * threshold for some reason. That makes acceleration fail and assertions
 		 * happen in Clamp. So make it explicit that min_speed overrules the maximum
 		 * speed by explicit ordering of min and max. */
-		this->cur_speed = spd = max(min(this->cur_speed + ((int)spd >> 8), tempmax), min_speed);
+		this->cur_speed = spd = std::max(std::min(this->cur_speed + ((int)spd >> 8), tempmax), min_speed);
 
 		int scaled_spd = this->GetAdvanceSpeed(spd);
 

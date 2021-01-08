@@ -434,7 +434,7 @@ public:
 					std::string cargostring = this->MakeCargoListString(indsp->accepts_cargo, cargo_suffix, lengthof(indsp->accepts_cargo), STR_INDUSTRY_VIEW_REQUIRES_N_CARGO);
 					Dimension strdim = GetStringBoundingBox(cargostring.c_str());
 					if (strdim.width > max_minwidth) {
-						extra_lines_req = max(extra_lines_req, strdim.width / max_minwidth + 1);
+						extra_lines_req = std::max(extra_lines_req, strdim.width / max_minwidth + 1);
 						strdim.width = max_minwidth;
 					}
 					d = maxdim(d, strdim);
@@ -444,7 +444,7 @@ public:
 					cargostring = this->MakeCargoListString(indsp->produced_cargo, cargo_suffix, lengthof(indsp->produced_cargo), STR_INDUSTRY_VIEW_PRODUCES_N_CARGO);
 					strdim = GetStringBoundingBox(cargostring.c_str());
 					if (strdim.width > max_minwidth) {
-						extra_lines_prd = max(extra_lines_prd, strdim.width / max_minwidth + 1);
+						extra_lines_prd = std::max(extra_lines_prd, strdim.width / max_minwidth + 1);
 						strdim.width = max_minwidth;
 					}
 					d = maxdim(d, strdim);
@@ -966,22 +966,22 @@ public:
 						case EA_MULTIPLIER:
 							if (button == 1) {
 								if (i->prod_level <= PRODLEVEL_MINIMUM) return;
-								i->prod_level = max<uint>(i->prod_level / 2, PRODLEVEL_MINIMUM);
+								i->prod_level = std::max<uint>(i->prod_level / 2, PRODLEVEL_MINIMUM);
 							} else {
 								if (i->prod_level >= PRODLEVEL_MAXIMUM) return;
-								i->prod_level = minu(i->prod_level * 2, PRODLEVEL_MAXIMUM);
+								i->prod_level = std::min<uint>(i->prod_level * 2, PRODLEVEL_MAXIMUM);
 							}
 							break;
 
 						case EA_RATE:
 							if (button == 1) {
 								if (i->production_rate[line - IL_RATE1] <= 0) return;
-								i->production_rate[line - IL_RATE1] = max(i->production_rate[line - IL_RATE1] / 2, 0);
+								i->production_rate[line - IL_RATE1] = std::max(i->production_rate[line - IL_RATE1] / 2, 0);
 							} else {
 								if (i->production_rate[line - IL_RATE1] >= 255) return;
 								/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
 								int new_prod = i->production_rate[line - IL_RATE1] == 0 ? 1 : i->production_rate[line - IL_RATE1] * 2;
-								i->production_rate[line - IL_RATE1] = minu(new_prod, 255);
+								i->production_rate[line - IL_RATE1] = std::min<uint>(new_prod, 255);
 							}
 							break;
 
@@ -1468,7 +1468,7 @@ protected:
 		}
 
 		/* Display first 3 cargos */
-		for (size_t j = 0; j < min<size_t>(3, cargos.size()); j++) {
+		for (size_t j = 0; j < std::min<size_t>(3, cargos.size()); j++) {
 			CargoInfo ci = cargos[j];
 			SetDParam(p++, STR_INDUSTRY_DIRECTORY_ITEM_INFO);
 			SetDParam(p++, std::get<0>(ci));
@@ -2399,10 +2399,10 @@ struct IndustryCargoesWindow : public Window {
 			const IndustrySpec *indsp = GetIndustrySpec(it);
 			if (!indsp->enabled) continue;
 			this->ind_textsize = maxdim(this->ind_textsize, GetStringBoundingBox(indsp->name));
-			CargoesField::max_cargoes = max<uint>(CargoesField::max_cargoes, std::count_if(indsp->accepts_cargo, endof(indsp->accepts_cargo), IsCargoIDValid));
-			CargoesField::max_cargoes = max<uint>(CargoesField::max_cargoes, std::count_if(indsp->produced_cargo, endof(indsp->produced_cargo), IsCargoIDValid));
+			CargoesField::max_cargoes = std::max<uint>(CargoesField::max_cargoes, std::count_if(indsp->accepts_cargo, endof(indsp->accepts_cargo), IsCargoIDValid));
+			CargoesField::max_cargoes = std::max<uint>(CargoesField::max_cargoes, std::count_if(indsp->produced_cargo, endof(indsp->produced_cargo), IsCargoIDValid));
 		}
-		d.width = max(d.width, this->ind_textsize.width);
+		d.width = std::max(d.width, this->ind_textsize.width);
 		d.height = this->ind_textsize.height;
 		this->ind_textsize = maxdim(this->ind_textsize, GetStringBoundingBox(STR_INDUSTRY_CARGOES_SELECT_INDUSTRY));
 
@@ -2420,7 +2420,7 @@ struct IndustryCargoesWindow : public Window {
 		d.width  += 2 * HOR_TEXT_PADDING;
 		/* Ensure the height is enough for the industry type text, for the horizontal connections, and for the cargo labels. */
 		uint min_ind_height = CargoesField::VERT_CARGO_EDGE * 2 + CargoesField::max_cargoes * FONT_HEIGHT_NORMAL + (CargoesField::max_cargoes - 1) *  CargoesField::VERT_CARGO_SPACE;
-		d.height = max(d.height + 2 * VERT_TEXT_PADDING, min_ind_height);
+		d.height = std::max(d.height + 2 * VERT_TEXT_PADDING, min_ind_height);
 
 		CargoesField::industry_width = d.width;
 		CargoesField::normal_height = d.height + CargoesField::VERT_INTER_INDUSTRY_SPACE;
@@ -2437,11 +2437,11 @@ struct IndustryCargoesWindow : public Window {
 				break;
 
 			case WID_IC_IND_DROPDOWN:
-				size->width = max(size->width, this->ind_textsize.width + padding.width);
+				size->width = std::max(size->width, this->ind_textsize.width + padding.width);
 				break;
 
 			case WID_IC_CARGO_DROPDOWN:
-				size->width = max(size->width, this->cargo_textsize.width + padding.width);
+				size->width = std::max(size->width, this->cargo_textsize.width + padding.width);
 				break;
 		}
 	}
@@ -2638,7 +2638,7 @@ struct IndustryCargoesWindow : public Window {
 		/* Make a field consisting of two cargo columns. */
 		int num_supp = CountMatchingProducingIndustries(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo)) + houses_supply;
 		int num_cust = CountMatchingAcceptingIndustries(central_sp->produced_cargo, lengthof(central_sp->produced_cargo)) + houses_accept;
-		int num_indrows = max(3, max(num_supp, num_cust)); // One is needed for the 'it' industry, and 2 for the cargo labels.
+		int num_indrows = std::max(3, std::max(num_supp, num_cust)); // One is needed for the 'it' industry, and 2 for the cargo labels.
 		for (int i = 0; i < num_indrows; i++) {
 			CargoesRow &row = this->fields.emplace_back();
 			row.columns[0].MakeEmpty(CFT_EMPTY);
@@ -2714,7 +2714,7 @@ struct IndustryCargoesWindow : public Window {
 		bool houses_accept = HousesCanAccept(&cid, 1);
 		int num_supp = CountMatchingProducingIndustries(&cid, 1) + houses_supply + 1; // Ensure room for the cargo label.
 		int num_cust = CountMatchingAcceptingIndustries(&cid, 1) + houses_accept;
-		int num_indrows = max(num_supp, num_cust);
+		int num_indrows = std::max(num_supp, num_cust);
 		for (int i = 0; i < num_indrows; i++) {
 			CargoesRow &row = this->fields.emplace_back();
 			row.columns[0].MakeEmpty(CFT_EMPTY);

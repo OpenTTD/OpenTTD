@@ -113,7 +113,7 @@ public:
 		 * Get the date of the last update to any part of the edge's capacity.
 		 * @return Last update.
 		 */
-		Date LastUpdate() const { return max(this->edge.last_unrestricted_update, this->edge.last_restricted_update); }
+		Date LastUpdate() const { return std::max(this->edge.last_unrestricted_update, this->edge.last_restricted_update); }
 	};
 
 	/**
@@ -453,7 +453,7 @@ public:
 	 */
 	inline static uint Scale(uint val, uint target_age, uint orig_age)
 	{
-		return val > 0 ? max(1U, val * target_age / orig_age) : 0;
+		return val > 0 ? std::max(1U, val * target_age / orig_age) : 0;
 	}
 
 	/** Bare constructor, only for save/load. */

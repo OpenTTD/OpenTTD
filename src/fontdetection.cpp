@@ -222,7 +222,7 @@ static const char *GetEnglishFontName(const ENUMLOGFONTEX *logfont)
 		offset += buf[pos++];
 
 		/* Don't buffer overflow */
-		length = min(length, MAX_PATH - 1);
+		length = std::min(length, MAX_PATH - 1);
 		for (uint j = 0; j < length; j++) font_name[j] = buf[stringOffset + offset + j];
 		font_name[length] = '\0';
 

@@ -190,7 +190,7 @@ uint DistanceMax(TileIndex t0, TileIndex t1)
 {
 	const uint dx = Delta(TileX(t0), TileX(t1));
 	const uint dy = Delta(TileY(t0), TileY(t1));
-	return max(dx, dy);
+	return std::max(dx, dy);
 }
 
 
@@ -220,9 +220,9 @@ uint DistanceFromEdge(TileIndex tile)
 	const uint yl = TileY(tile);
 	const uint xh = MapSizeX() - 1 - xl;
 	const uint yh = MapSizeY() - 1 - yl;
-	const uint minl = min(xl, yl);
-	const uint minh = min(xh, yh);
-	return min(minl, minh);
+	const uint minl = std::min(xl, yl);
+	const uint minh = std::min(xh, yh);
+	return std::min(minl, minh);
 }
 
 /**

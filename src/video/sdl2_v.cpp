@@ -26,7 +26,6 @@
 #include <SDL.h>
 #include <mutex>
 #include <condition_variable>
-#include <algorithm>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #	include <emscripten/html5.h>
@@ -635,8 +634,8 @@ int VideoDriver_SDL::PollEvent()
 				// Force a redraw of the entire screen.
 				_num_dirty_rects = MAX_DIRTY_RECTS + 1;
 			} else if (ev.window.event == SDL_WINDOWEVENT_SIZE_CHANGED) {
-				int w = max(ev.window.data1, 64);
-				int h = max(ev.window.data2, 64);
+				int w = std::max(ev.window.data1, 64);
+				int h = std::max(ev.window.data2, 64);
 				CreateMainSurface(w, h, w != ev.window.data1 || h != ev.window.data2);
 			} else if (ev.window.event == SDL_WINDOWEVENT_ENTER) {
 				// mouse entered the window, enable cursor

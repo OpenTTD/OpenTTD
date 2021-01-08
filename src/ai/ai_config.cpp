@@ -39,7 +39,7 @@ AIConfig::AIConfig(const AIConfig *config) : ScriptConfig(config)
 	 * This is necessary because the ScriptConfig constructor will instead call
 	 * ScriptConfig::AddRandomDeviation(). */
 	int start_date = config->GetSetting("start_date");
-	this->SetSetting("start_date", start_date != 0 ? max(1, this->GetSetting("start_date")) : 0);
+	this->SetSetting("start_date", start_date != 0 ? std::max(1, this->GetSetting("start_date")) : 0);
 }
 
 /* static */ AIConfig *AIConfig::GetConfig(CompanyID company, ScriptSettingSource source)
@@ -134,5 +134,5 @@ void AIConfig::AddRandomDeviation()
 
 	/* start_date = 0 is a special case, where random deviation does not occur.
 	 * If start_date was not already 0, then a minimum value of 1 must apply. */
-	this->SetSetting("start_date", start_date != 0 ? max(1, this->GetSetting("start_date")) : 0);
+	this->SetSetting("start_date", start_date != 0 ? std::max(1, this->GetSetting("start_date")) : 0);
 }

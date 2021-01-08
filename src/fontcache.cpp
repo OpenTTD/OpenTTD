@@ -492,7 +492,7 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
 			int diff = scaled_height - ScaleFontTrad(_default_font_height[FS_SMALL]);
-			pixels = Clamp(min(head->Lowest_Rec_PPEM, 20) + diff, scaled_height, MAX_FONT_SIZE);
+			pixels = Clamp(std::min<uint>(head->Lowest_Rec_PPEM, 20u) + diff, scaled_height, MAX_FONT_SIZE);
 		}
 	} else {
 		pixels = ScaleFontTrad(pixels);
@@ -656,8 +656,8 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	aa = (slot->bitmap.pixel_mode == FT_PIXEL_MODE_GRAY);
 
 	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel */
-	uint width  = max(1U, (uint)slot->bitmap.width + (this->fs == FS_NORMAL));
-	uint height = max(1U, (uint)slot->bitmap.rows  + (this->fs == FS_NORMAL));
+	uint width  = std::max(1U, (uint)slot->bitmap.width + (this->fs == FS_NORMAL));
+	uint height = std::max(1U, (uint)slot->bitmap.rows  + (this->fs == FS_NORMAL));
 
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > 256 || height > 256) usererror("Font glyph is too large");
@@ -797,7 +797,7 @@ void Win32FontCache::SetFontSize(FontSize fs, int pixels)
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
 			int diff = scaled_height - ScaleFontTrad(_default_font_height[FS_SMALL]);
-			pixels = Clamp(min(otm->otmusMinimumPPEM, 20) + diff, scaled_height, MAX_FONT_SIZE);
+			pixels = Clamp(std::min(otm->otmusMinimumPPEM, 20u) + diff, scaled_height, MAX_FONT_SIZE);
 
 			SelectObject(dc, old);
 			DeleteObject(temp);
@@ -851,7 +851,7 @@ void Win32FontCache::ClearFontCache()
 	MAT2 mat = { {0, 1}, {0, 0}, {0, 0}, {0, 1} };
 
 	/* Make a guess for the needed memory size. */
-	DWORD size = this->glyph_size.cy * Align(aa ? this->glyph_size.cx : max(this->glyph_size.cx / 8l, 1l), 4); // Bitmap data is DWORD-aligned rows.
+	DWORD size = this->glyph_size.cy * Align(aa ? this->glyph_size.cx : std::max(this->glyph_size.cx / 8l, 1l), 4); // Bitmap data is DWORD-aligned rows.
 	byte *bmp = AllocaM(byte, size);
 	size = GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
 
@@ -868,8 +868,8 @@ void Win32FontCache::ClearFontCache()
 	}
 
 	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel. */
-	uint width = max(1U, (uint)gm.gmBlackBoxX + (this->fs == FS_NORMAL));
-	uint height = max(1U, (uint)gm.gmBlackBoxY + (this->fs == FS_NORMAL));
+	uint width = std::max(1U, (uint)gm.gmBlackBoxX + (this->fs == FS_NORMAL));
+	uint height = std::max(1U, (uint)gm.gmBlackBoxY + (this->fs == FS_NORMAL));
 
 	/* Limit glyph size to prevent overflows later on. */
 	if (width > 256 || height > 256) usererror("Font glyph is too large");
@@ -889,7 +889,7 @@ void Win32FontCache::ClearFontCache()
 		 * For anti-aliased rendering, GDI uses the strange value range of 0 to 64,
 		 * inclusively. To map this to 0 to 255, we shift left by two and then
 		 * subtract one. */
-		uint pitch = Align(aa ? gm.gmBlackBoxX : max(gm.gmBlackBoxX / 8u, 1u), 4);
+		uint pitch = Align(aa ? gm.gmBlackBoxX : std::max(gm.gmBlackBoxX / 8u, 1u), 4);
 
 		/* Draw shadow for medium size. */
 		if (this->fs == FS_NORMAL && !aa) {

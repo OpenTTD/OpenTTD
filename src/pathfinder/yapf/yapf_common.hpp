@@ -164,7 +164,7 @@ public:
 		int y2 = 2 * TileY(m_destTile);
 		int dx = abs(x1 - x2);
 		int dy = abs(y1 - y2);
-		int dmin = min(dx, dy);
+		int dmin = std::min(dx, dy);
 		int dxy = abs(dx - dy);
 		int d = dmin * YAPF_TILE_CORNER_LENGTH + (dxy - 1) * (YAPF_TILE_LENGTH / 2);
 		n.m_estimate = n.m_cost + d;

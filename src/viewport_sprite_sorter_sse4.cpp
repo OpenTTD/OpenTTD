@@ -84,7 +84,7 @@ void ViewportSortParentSpritesSSE41(ParentSpriteToSortVector *psdv)
 		 * Also min coordinates can be > max so using max(xmin, xmax) + max(ymin, ymax)
 		 * to ensure that we iterate the current sprite as we need to remove it from the list.
 		 */
-		auto ssum = max(s->xmax, s->xmin) + max(s->ymax, s->ymin);
+		auto ssum = std::max(s->xmax, s->xmin) + std::max(s->ymax, s->ymin);
 		auto prev = sprite_list.before_begin();
 		auto x = sprite_list.begin();
 		while (x != sprite_list.end() && ((*x).first <= ssum)) {

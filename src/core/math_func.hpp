@@ -11,66 +11,6 @@
 #define MATH_FUNC_HPP
 
 /**
- * Returns the maximum of two values.
- *
- * This function returns the greater value of two given values.
- * If they are equal the value of a is returned.
- *
- * @param a The first value
- * @param b The second value
- * @return The greater value or a if equals
- */
-template <typename T>
-static inline T max(const T a, const T b)
-{
-	return (a >= b) ? a : b;
-}
-
-/**
- * Returns the minimum of two values.
- *
- * This function returns the smaller value of two given values.
- * If they are equal the value of b is returned.
- *
- * @param a The first value
- * @param b The second value
- * @return The smaller value or b if equals
- */
-template <typename T>
-static inline T min(const T a, const T b)
-{
-	return (a < b) ? a : b;
-}
-
-/**
- * Returns the minimum of two integer.
- *
- * This function returns the smaller value of two given integers.
- *
- * @param a The first integer
- * @param b The second integer
- * @return The smaller value
- */
-static inline int min(const int a, const int b)
-{
-	return min<int>(a, b);
-}
-
-/**
- * Returns the minimum of two unsigned integers.
- *
- * This function returns the smaller value of two given unsigned integers.
- *
- * @param a The first unsigned integer
- * @param b The second unsigned integer
- * @return The smaller value
- */
-static inline uint minu(const uint a, const uint b)
-{
-	return min<uint>(a, b);
-}
-
-/**
  * Returns the absolute value of (scalar) variable.
  *
  * @note assumes variable to be signed
@@ -216,7 +156,7 @@ static inline uint16 ClampToU16(const uint64 a)
 	 * match for min(uint64, uint) than uint64 min(uint64, uint64). As such we
 	 * need to cast the UINT16_MAX to prevent MSVC from displaying its
 	 * infinite loads of warnings. */
-	return static_cast<uint16>(min<uint64>(a, static_cast<uint64>(UINT16_MAX)));
+	return static_cast<uint16>(std::min(a, static_cast<uint64>(UINT16_MAX)));
 }
 
 /**
