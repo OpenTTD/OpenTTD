@@ -928,6 +928,10 @@ static void MakeNewGameDone()
 static void MakeNewGame(bool from_heightmap, bool reset_settings)
 {
 	_game_mode = GM_NORMAL;
+	if (!from_heightmap) {
+		/* "reload" command needs to know what mode we were in. */
+		_file_to_saveload.SetMode(SLO_INVALID, FT_INVALID, DFT_INVALID);
+	}
 
 	ResetGRFConfig(true);
 
@@ -943,6 +947,8 @@ static void MakeNewEditorWorldDone()
 static void MakeNewEditorWorld()
 {
 	_game_mode = GM_EDITOR;
+	/* "reload" command needs to know what mode we were in. */
+	_file_to_saveload.SetMode(SLO_INVALID, FT_INVALID, DFT_INVALID);
 
 	ResetGRFConfig(true);
 
@@ -1052,9 +1058,9 @@ void SwitchToMode(SwitchMode new_mode)
 				SwitchToMode(_switch_mode);
 				break;
 			}
-			/* No break here, to enter the next case:
-			 * Restart --> 'Random game' with current settings */
-			FALLTHROUGH;
+
+			MakeNewGame(false, new_mode == SM_NEWGAME);
+			break;
 
 		case SM_NEWGAME: // New Game --> 'Random game'
 			if (_network_server) {
