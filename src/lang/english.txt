@@ -4474,6 +4474,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Wrong depot typ
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is too long after replacement
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}No autoreplace/renew rules applied
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(money limit)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}New vehicle can't carry {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}New vehicle can't do refit in order {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Impossible track combination

@@ -20,6 +20,8 @@
 #include "vehiclelist.h"
 #include "road.h"
 #include "ai/ai.hpp"
+#include "news_func.h"
+#include "strings_func.h"
 
 #include "table/strings.h"
 
@@ -192,6 +194,29 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_ty
 }
 
 /**
+ * Gets the index of the first refit order that is incompatible with the requested engine type
+ * @param v The vehicle to be replaced
+ * @param engine_type The type we want to replace with
+ * @return index of the incompatible order or -1 if none were found
+ */
+static int GetIncompatibleRefitOrderIdForAutoreplace(const Vehicle *v, EngineID engine_type)
+{
+	CargoTypes union_refit_mask = GetUnionOfArticulatedRefitMasks(engine_type, false);
+
+	const Order *o;
+	const Vehicle *u = (v->type == VEH_TRAIN) ? v->First() : v;
+
+	const OrderList *orders = u->orders.list;
+	for (VehicleOrderID i = 0; i < orders->GetNumOrders(); i++) {
+		o = orders->GetOrderAt(i);
+		if (!o->IsRefit()) continue;
+		if (!HasBit(union_refit_mask, o->GetRefitCargo())) return i;
+	}
+
+	return -1;
+}
+
+/**
  * Function to find what type of cargo to refit to when autoreplacing
  * @param *v Original vehicle that is being replaced.
  * @param engine_type The EngineID of the vehicle that is being replaced to
@@ -293,7 +318,23 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 
 	/* Does it need to be refitted */
 	CargoID refit_cargo = GetNewCargoTypeForReplace(old_veh, e, part_of_chain);
-	if (refit_cargo == CT_INVALID) return CommandCost(); // incompatible cargoes
+	if (refit_cargo == CT_INVALID) {
+		SetDParam(0, old_veh->index);
+
+		int order_id = GetIncompatibleRefitOrderIdForAutoreplace(old_veh, e);
+		if (order_id != -1) {
+			/* Orders contained a refit order that is incompatible with the new vehicle. */
+			SetDParam(1, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT);
+			SetDParam(2, order_id + 1); // 1-based indexing for display
+		} else {
+			/* Current cargo is incompatible with the new vehicle. */
+			SetDParam(1, STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO);
+			SetDParam(2, CargoSpec::Get(old_veh->cargo_type)->name);
+		}
+
+		AddVehicleAdviceNewsItem(STR_NEWS_VEHICLE_AUTORENEW_FAILED, old_veh->index);
+		return CommandCost();
+	}
 
 	/* Build the new vehicle */
 	cost = DoCommand(old_veh->tile, e | (CT_INVALID << 24), 0, DC_EXEC | DC_AUTOREPLACE, GetCmdBuildVeh(old_veh));
