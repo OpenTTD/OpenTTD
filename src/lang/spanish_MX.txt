@@ -2352,6 +2352,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Constru
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir puntos de ruta
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir aparte
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcción de ferrocarril
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcción ferrocarril eléctrico

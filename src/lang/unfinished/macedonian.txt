@@ -1044,6 +1044,8 @@ STR_STATION_BUILD_SUPPLIES_CARGO                                :{BLACK}Зали
 # Join station window
 
 
+# Generic toolbar
+
 # Rail construction toolbar
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}Изгради пруга користејки 'Авто-пруга' мод

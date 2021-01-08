@@ -1452,6 +1452,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Conserver les o
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Garde les outils de construction de ponts, tunnels, etc. ouverts après usage
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Regrouper les dépenses dans la fenêtre des finances{NBSP}: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Définit la mise en forme de la fenêtre des dépenses de la compagnie
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Retire automatiquement les signaux durant la construction de la voie ferrée: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Retire automatiquement les signaux durant la construction de la voie ferrée si les signaux sont sur le chemin. A noter que ça peut potentiellement mener à des accidents de trains.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Bulletin{NBSP}: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Jouer un son pour les bulletins
@@ -2233,6 +2235,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a 
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a lancé une nouvelle compagnie (n°{NBSP}{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a quitté la partie ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} a changé son nom en {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a donné {2:CURRENCY_LONG} à {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Le serveur a fermé la session
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Le serveur redémarre...{}Veuillez patienter...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} a été exclu. Raison{NBSP}: ({STRING})
@@ -2350,6 +2353,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Constru
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Joindre un point de contrôle
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construire un point de contrôle séparé
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construction de voie ferrée
@@ -3373,6 +3378,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Déména
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruire ailleurs le siège de la compagnie pour le prix de 1{NBSP}% de sa valeur.{}Shift-clic pour afficher seulement le coût estimé.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Détails
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Afficher le détail des calculs d'infrastructure
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :Donner de l’argent
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Donner de l’argent à cette compagnie
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nouveau visage
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Choix d'un nouveau visage pour le P.D.G.
@@ -3390,6 +3397,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Vendre 2
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nom de la société
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom du P.D.G.
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Entrer le montant que vous souhaiter donner
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Nous sommes à la recherche d'un repreneur pour notre compagnie{}{}Voulez-vous acheter {COMPANY} pour {CURRENCY_LONG}{NBSP}?
 
@@ -4341,6 +4349,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... empr
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} nécessaires
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossible de rembourser...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Impossible de distribuer de l'argent emprunté à la banque...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Vous ne pouvez pas donner de l’argent à cette compagnie
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossible d'acheter la compagnie...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Impossible de construire le siège...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Impossible d'acheter 25{NBSP}% des parts...

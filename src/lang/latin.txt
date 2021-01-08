@@ -2496,6 +2496,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Struere
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Iungere interlocum
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Struere discretum interlocum
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Constructio Ferriviarum
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Constructio Electricarum Ferriviarum

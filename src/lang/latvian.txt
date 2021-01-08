@@ -2354,6 +2354,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Būvēt
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Pievienot pieturas punktu
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Uzbūvēt jaunu maršruta punktu
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Dzelzceļa būvniecība
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrificētā dzelzceļa būvniecība

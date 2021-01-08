@@ -2177,6 +2177,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Geltoki
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Bidepuntua lotu
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ibilbide puntu bereizitua eraiki
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Trenbidea eraiki
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Trenbide elektrikoa eraiki

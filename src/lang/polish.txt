@@ -1831,6 +1831,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pozostaw aktywn
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zachowaj narzędzia budowy mostów, tuneli, itp. po użyciu
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Pogrupuj wydatki w oknie finsnasów firmy: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Określa układ okienka wydatków firmy
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatycznie usuwaj sygnały podczas budowy torów: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatycznie usuwaj sygnały, które przeszkadzają w budowie toru. Pamiętaj, że może to doprowadzić do zderzenia pociągów, w przypadku usunięcia ważnych sygnałów.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Pasek informacji: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Odtwarzaj dźwięk dla podsumowania wiadomości
@@ -2730,6 +2732,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Zbuduj 
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Połącz posterunki
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny posterunek
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstrukcja linii kolejowej

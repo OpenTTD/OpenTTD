@@ -2258,6 +2258,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Constru
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneşte punctul de tranzit
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construieşte un punct de tranzit separat
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcţie cale ferată
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Construcţie cale ferată electrificată

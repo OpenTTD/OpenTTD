@@ -1451,6 +1451,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pidä rakennust
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Pidä siltojen, tunneleiden, jne. rakennustyökalut käytössä käytön jälkeen
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ryhmitä kulut yhtiön rahoitusikkunassa: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Määritä asettelu yhtiön rahoitusikkunalle
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Poista automaattisesti opastimia rautateitä rakennettaessa: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Poista automaattisesti opastimia, jos ne ovat rautatien rakentamisen tiellä. Huomaa, että tämä saattaa johtaa junien yhteentörmäyksiin.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Uutiset: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Toista ääni tiivistetyille uutisviesteille
@@ -2350,6 +2352,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Rakenna
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liitä reittipiste
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Rakenna erillinen reittipiste
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Rautatien rakentaminen

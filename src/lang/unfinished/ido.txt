@@ -677,6 +677,8 @@ STR_STATION_BUILD_ACCEPTS_CARGO                                 :{BLACK}Aceptas:
 # Join station window
 
 
+# Generic toolbar
+
 # Rail construction toolbar
 
 

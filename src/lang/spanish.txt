@@ -195,6 +195,7 @@ STR_COLOUR_DEFAULT                                              :Por Defecto
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL} {NBSP}casillas/día
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}cv
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}cv
@@ -1451,6 +1452,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantener activa
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantiene las herramientas de construcción de puentes, túneles, etcétera, abiertas después de su uso
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar costes en la ventana de finanzas: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define el diseño de la ventana de finanzas
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Elimina automáticamente las señales durante la construcción del ferrocarril: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimine automáticamente las señales durante la construcción del carril si las señales están en el camino. Tenga en cuenta que esto puede provocar accidentes de tren.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Noticias resumidas: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproducir sonido para mensajes de noticias resumidos
@@ -1566,6 +1569,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de economía: {STRING}
 STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :La economía fluida hace que los cambios de producción sean más frecuentes y en pasos más pequeños. La economía congelada detiene los cambios de producción y los cierres de industrias. Esta configuración puede no tener efecto si los tipos de industria los proporciona un NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Congelado
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
@@ -1620,6 +1624,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineal
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Crecimiento de árboles durante el juego: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla la aparición aleatoria de árboles durante la partida. Esto puede afectar a industrias que dependen del crecimiento de árboles, como los aserraderos
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Crecer, pero no extienda {RED}(rompe al aserradero)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Crece pero solo se extiende en las selvas tropicales
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Crece y difunde por todas partes
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :No crezcas, no te extiendas {RED}(rompe el aserradero)
 
@@ -1688,7 +1693,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Cada vez que se
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unidades de juego (fichas/día)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unidades de juego (casillas/día)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidades de potencia de vehículos: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Cada vez que se muestra la potencia de un vehículo en la interfaz de usuario, se emplean las unidades seleccionadas
@@ -1821,6 +1826,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}A esta t
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Salir
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}¿Está seguro de salir de OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Sí
 STR_QUIT_NO                                                     :{BLACK}No
 
@@ -2229,6 +2235,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} se
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha creado una nueva empresa (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha abandonado el juego ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha cambiado su nombre a {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} dio {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha cerrado la sesión
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Se está reiniciando el servidor...{}Espere por favor...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ha sido expulsado. Razón: ({STRING})
@@ -2346,6 +2353,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Constru
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir punto de ruta
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir un punto de ruta separado
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcción de Ferrocarril
@@ -3176,10 +3185,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metas de
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clic en una meta para centrar la vista principal en la casilla, industria o municipio. Ctrl+Clic abre una nueva vista en esa localización
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pregunta
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Información
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Advertencia
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Error
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pregunta
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Información
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Advertencia
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Error
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar
@@ -3370,6 +3379,7 @@ STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reubica 
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalles
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver informe detallado de infraestructura
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar dinero
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Dar dinero a esta empresa
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nueva Cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Selecciona nueva cara para el presidente
@@ -4747,9 +4757,9 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de Az
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sin nombre
-STR_SV_TRAIN_NAME                                               :Tren {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Vehículo de carretera {COMMA}
-STR_SV_SHIP_NAME                                                :Barco {COMMA}
+STR_SV_TRAIN_NAME                                               :Tren #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Vehículo de carretera #{COMMA}
+STR_SV_SHIP_NAME                                                :Barco #{COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}

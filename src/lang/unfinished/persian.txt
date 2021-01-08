@@ -1979,6 +1979,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}ساخ�
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}پیوستن نقطه مسیر
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}ساخت یک نقطه مسیر جداگانه
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :ساخت راه آهن
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :ساخت و ساز ریل برقی

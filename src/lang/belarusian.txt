@@ -2640,6 +2640,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Паб�
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Аб'яднаць пункты шляху
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Пабудаваць асобны пункт шляху
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Чыгунка
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Электрыфікаваная чыгунка

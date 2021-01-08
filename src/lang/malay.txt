@@ -2015,6 +2015,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bina st
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Sambungkan tandatuju
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bina tandatuju yang berasingan
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Pembinaan Landasan Keretapi
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Pembinaan Landasan Keretapi Berelektrik

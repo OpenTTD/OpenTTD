@@ -1452,6 +1452,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :건설 도구�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :다리, 터널 등의 건설 도구를 사용 후에도 계속 열어둔 채로 놔둡니다.
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :재정 창에서 비용을 종류별로 묶어서 표시: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :재정 창에 나타나는 회사 비용을 어떻게 표시할지 설정합니다.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :선로 건설 중 신호기 자동 제거: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :신호기가 이미 있는 선로에 선로를 추가로 설치하면 신호기를 자동으로 제거합니다. 잘못 사용하면 잠재적으로 열차가 충돌할 수 있다는 점을 명심하세요.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :뉴스 자막: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :요약된 뉴스 메시지가 나타나면 효과음을 재생합니다.
@@ -2351,6 +2353,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}분리�
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}연결할 경유지
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}분리된 경유지를 새로 만들기
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :선로 건설

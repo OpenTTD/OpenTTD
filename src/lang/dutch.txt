@@ -194,6 +194,7 @@ STR_COLOUR_DEFAULT                                              :Standaard
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/u
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}tegels/dag
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}pk
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}pk
@@ -314,8 +315,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Vrachtcapacitei
 STR_SORT_BY_RANGE                                               :Bereik
 STR_SORT_BY_POPULATION                                          :Aantal inwoners
 STR_SORT_BY_RATING                                              :Waardering
+STR_SORT_BY_NUM_VEHICLES                                        :Aantal voertuigen
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Totale winst vorig jaar
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Totale winst dit jaar
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Gemiddelde winst vorig jaar
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Gemiddelde winst dit jaar
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Geen
+STR_GROUP_BY_SHARED_ORDERS                                      :Gedeelde orders
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hiermee pauzeer je het spel
@@ -772,6 +780,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Alle vra
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Laatste (nieuws-)bericht weergeven
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  GEPAUZEERD  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * GEPAUZEERD (wacht op bijwerken koppelinggrafiek) * *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMATISCH OPSLAAN
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPEL WORDT OPGESLAGEN  *  *
 
@@ -1442,6 +1451,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Bouwgereedschap
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Houd de bouwhulpmiddelen voor bruggen, tunnels, enz. open na gebruik
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Uitgaven in bedrijfsfinanciënvenster groeperen: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definieer de lay-out voor het bedrijfsuitgavenvenster
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatisch seinen verwijderen tijdens spooraanleg: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Seinen automatisch verwijderen tijdens spooraanleg als deze in de weg staan. Dit kan botsingen veroorzaken.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Nieuwsticker: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Speel geluidseffecten af bij korte nieuwsberichten
@@ -1555,6 +1566,11 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Eindjaar voor s
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jaar dat het spel eindigt ten behoeve van de score. Aan het einde van dit jaar wordt de score van het bedrijf vastgelegd en verschijnt het venster met topscores. De spelers kunnen echter doorgaan met spelen.{}Als dit voor het startjaar ligt, verschijnt het venster met topscores niet.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nooit
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Type economie: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Bij gelijkmatige economie zijn er vaker wijzigingen in productie, die in kleinere stappen verlopen. Bij vaste economie zijn er geen wijzigingen in productie en sluiten bedrijven niet. Deze instelling werkt misschien niet als de soorten industrie worden geleverd in een NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Origineel
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Gelijkmatig
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Vast
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Kopen van aandelen in andere bedrijven toestaan: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Wanneer ingeschakeld is het toegestaan om bedrijfsaandelen te kopen en te verkopen. Aandelen zullen alleen beschikbaar zijn voor bedrijven die een bepaalde leeftijd hebben bereikt
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimale leeftijd van bedrijf om aandelen te kunnen verhandelen: {STRING}
@@ -1606,6 +1622,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineair
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plaatsing van bomen in het spel: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Beheert het willekeurig verschijnen van bomen tijdens het spel. Dit kan gevolgen hebben voor industrietakken die afhankelijk zijn van groei van bomen, bijvoorbeeld houtzagerijen.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Groeien maar niet verspreiden {RED}(houtzagerijen werken niet meer)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Groeien, maar alleen verspreiden in regenwoud
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Overal groeien en verspreiden
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Niet groeien, niet verspreiden {RED}(houtzagerijen werken niet meer)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Positie van algemene knoppenbalk: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontale positie van de algemene taakbalk aan de bovenkant van het scherm.
@@ -1672,6 +1692,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Wanneer een sne
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperiaal (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrisch (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Speleenheden (tegels/dag)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Voertuigkrachteenheden: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Als het verbruik van een voertuig wordt weergegeven in het gebruikersscherm, gebruik dan de geselecteerde eenheden
@@ -1804,6 +1825,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Deze ver
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Afsluiten
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Weet je zeker dat je OpenTTD wilt verlaten?
 STR_QUIT_YES                                                    :{BLACK}Ja
 STR_QUIT_NO                                                     :{BLACK}Nee
 
@@ -1967,6 +1989,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Meespele
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Ververs server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Ververs de informatie over deze server
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Op internet zoeken
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Op het internet zoeken naar openbare servers
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Op LAN zoeken
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Op lokaal netwerk zoeken naar servers
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Voeg server toe
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Voegt een server toe aan de lijst die altijd gecontroleerd zal worden op draaiende spellen
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start server
@@ -2192,11 +2218,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spel nog steeds
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel nog steeds gepauzeerd ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel nog steeds gepauzeerd ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spel nog steeds gepauzeerd ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Spel nog steeds gepauzeerd ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spel vervolgd ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :aantal spelers
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :spelers maken verbinding
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :Handmatig
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spelscript
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :wacht op bijwerken koppelinggrafiek
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :vertrekt
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} heeft zich bij het spel gevoegd
@@ -2206,6 +2234,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ki
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} heeft een nieuw bedrijf opgericht (nr. {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} heeft het spel verlaten ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heeft zijn/haar naam gewijzigd naar {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gaf {2:CURRENCY_LONG} aan {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De server heeft de sessie gesloten
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De server wordt opnieuw gestart...{}Wacht alstublieft...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} is eruit geschopt. Reden: ({STRING})
@@ -2323,6 +2352,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Een los
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Routepunt samenvoegen
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Los routepunt bouwen
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Spoorwegen bouwen
@@ -2518,6 +2549,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Willekeu
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Willekeurig bomen planten. Shift+klik wisselt tussen bouwen/verwachte kosten.
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Willekeurige bomen
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Hiermee plant je bomen willekeurig over het landschap
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normaal
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Losse bomen planten door over het landschap te slepen
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Groepje bomen
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Kleine bossen planten door over het landschap te slepen
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Bos
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Grote bossen planten door over het landschap te slepen
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landontwikkeling
@@ -3147,10 +3184,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Bedrijfs
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik op doel centreert venster op industrie/stad/tegel. Ctrl+Klik opent een nieuw venster op de locatie van de industrie/stad/tegel.
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Vraag
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informatie
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Waarschuwing
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Fout
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Vraag
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informatie
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Waarschuwing
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Fout
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Annuleren
@@ -3340,6 +3377,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Hoofdkan
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Hoofdkantoor verplaatsen voor 1% van de bedrijfswaarde. Shift+klik geeft de verwachte kosten zonder hoofdkantoor te verplaatsen.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Details
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Gedetailleerde aantallen infrastructuur bekijken
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Geld geven
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Geld geven aan dit bedrijf
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nieuw gezicht
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Nieuw gezicht voor directeur kiezen
@@ -3357,6 +3396,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Verkoop 
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Bedrijfsnaam
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Naam van directeur
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Voer het bedrag in om weg te geven
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}We zoeken een transportbedrijf dat ons bedrijf over kan nemen.{}{}Wil je {COMPANY} kopen voor {CURRENCY_LONG}?
 
@@ -4227,6 +4267,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Opgeslagen spel
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Bestand is niet leesbaar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Bestand is niet schrijfbaar
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Data-integriteitscontrole mislukt
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Opgeslagen spel is gemaakt met een aangepaste versie
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<niet beschikbaar>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spel was opgeslagen in een versie zonder tramondersteuning. Alle trams zijn verwijderd
 
@@ -4307,6 +4348,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... geen
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} benodigd
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan de lening niet afbetalen..
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan geen geld weggeven dat van de bank geleend is...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Kan geen geld weggeven aan dit bedrijf...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan het bedrijf niet kopen...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan bedrijfshoofdkantoor niet bouwen...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan geen 25% aandeel in dit bedrijf kopen...
@@ -4714,10 +4756,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Suikermijn
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Geen naam
-STR_SV_TRAIN_NAME                                               :Trein {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Wegvoertuig {COMMA}
-STR_SV_SHIP_NAME                                                :Schip {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Vliegtuig {COMMA}
+STR_SV_TRAIN_NAME                                               :Trein #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Wegvoertuig #{COMMA}
+STR_SV_SHIP_NAME                                                :Schip #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Vliegtuig #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Noord
@@ -5019,6 +5061,7 @@ STR_FORMAT_BUOY_NAME                                            :Boei {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Boei {TOWN} {COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Bedrijf {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Groep {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Routepunt {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Routepunt {TOWN} {COMMA}

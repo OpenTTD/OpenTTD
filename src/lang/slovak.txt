@@ -2418,6 +2418,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Postavi
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spojiť smerový bod
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Postaviť smerový bod oddelene
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Výstavba železnice
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Výstavba elektrifikovanej železnice

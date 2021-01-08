@@ -605,6 +605,8 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Join station window
 
 
+# Generic toolbar
+
 # Rail construction toolbar
 
 

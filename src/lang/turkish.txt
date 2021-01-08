@@ -2325,6 +2325,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Ayrı b
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Yerimini birleştir
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Ayrı bir yerimi yap
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Demiryolu Yapımı
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Elektrikli Ray Yapımı

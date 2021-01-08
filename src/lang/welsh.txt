@@ -2273,6 +2273,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Adeilad
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uno pwynt llwybro
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Adeiladu pwynt llwybro annibynnol
 
+# Generic toolbar
+
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Adeiladu Rheilffyrdd
 STR_RAIL_TOOLBAR_ELRAIL_CONSTRUCTION_CAPTION                    :Adeiladu Rheilffyrdd Drydan
