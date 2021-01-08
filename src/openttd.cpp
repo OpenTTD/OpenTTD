@@ -708,14 +708,12 @@ int openttd_main(int argc, char *argv[])
 
 	if (resolution.width != 0) _cur_resolution = resolution;
 
-	/*
-	 * The width and height must be at least 1 pixel and width times
-	 * height times bytes per pixel must still fit within a 32 bits
-	 * integer, even for 32 bpp video modes. This way all internal
-	 * drawing routines work correctly.
-	 */
-	_cur_resolution.width  = ClampU(_cur_resolution.width,  1, UINT16_MAX / 2);
-	_cur_resolution.height = ClampU(_cur_resolution.height, 1, UINT16_MAX / 2);
+	/* Limit width times height times bytes per pixel to fit a 32 bit
+	 * integer, This way all internal drawing routines work correctly.
+	 * A resolution that has one component as 0 is treated as a marker to
+	 * auto-detect a good window size. */
+	_cur_resolution.width  = std::min(_cur_resolution.width, UINT16_MAX / 2u);
+	_cur_resolution.height = std::min(_cur_resolution.height, UINT16_MAX / 2u);
 
 	/* Assume the cursor starts within the game as not all video drivers
 	 * get an event that the cursor is within the window when it is opened.

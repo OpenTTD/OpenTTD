@@ -614,6 +614,8 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 	}
 	if (ret_code < 0) return SDL_GetError();
 
+	this->UpdateAutoResolution();
+
 	GetVideoModes();
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height)) {
 		return SDL_GetError();

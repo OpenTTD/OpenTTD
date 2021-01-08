@@ -674,6 +674,8 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 	}
 	if (ret_code < 0) return SDL_GetError();
 
+	this->UpdateAutoResolution();
+
 	GetVideoModes();
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height, false)) {
 		return SDL_GetError();
@@ -928,6 +930,14 @@ void VideoDriver_SDL::AcquireBlitterLock()
 void VideoDriver_SDL::ReleaseBlitterLock()
 {
 	if (_draw_mutex != nullptr) _draw_mutex->unlock();
+}
+
+Dimension VideoDriver_SDL::GetScreenSize() const
+{
+	SDL_DisplayMode mode;
+	if (SDL_GetCurrentDisplayMode(0, &mode) != 0) return VideoDriver::GetScreenSize();
+
+	return { static_cast<uint>(mode.w), static_cast<uint>(mode.h) };
 }
 
 #endif /* WITH_SDL2 */

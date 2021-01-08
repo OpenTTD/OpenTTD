@@ -200,6 +200,8 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 	/* Don't create a window or enter fullscreen if we're just going to show a dialog. */
 	if (!CocoaSetupApplication()) return NULL;
 
+	this->UpdateAutoResolution();
+
 	this->orig_res = _cur_resolution;
 	int width  = _cur_resolution.width;
 	int height = _cur_resolution.height;
@@ -300,6 +302,15 @@ void VideoDriver_Cocoa::EditBoxLostFocus()
 	if (_cocoa_subdriver != NULL) [ [ _cocoa_subdriver->cocoaview inputContext ] discardMarkedText ];
 	/* Clear any marked string from the current edit box. */
 	HandleTextInput(NULL, true);
+}
+
+/**
+ * Get the resolution of the main screen.
+ */
+Dimension VideoDriver_Cocoa::GetScreenSize() const
+{
+	NSRect frame = [ [ NSScreen mainScreen ] frame ];
+	return { static_cast<uint>(NSWidth(frame)), static_cast<uint>(NSHeight(frame)) };
 }
 
 /**

@@ -40,6 +40,9 @@ public:
 	const char *GetName() const override { return "win32"; }
 
 	bool MakeWindow(bool full_screen);
+
+protected:
+	Dimension GetScreenSize() const override;
 };
 
 /** The factory for Windows' video driver. */
