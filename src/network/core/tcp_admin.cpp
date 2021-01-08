@@ -62,6 +62,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 		case ADMIN_PACKET_ADMIN_RCON:             return this->Receive_ADMIN_RCON(p);
 		case ADMIN_PACKET_ADMIN_GAMESCRIPT:       return this->Receive_ADMIN_GAMESCRIPT(p);
 		case ADMIN_PACKET_ADMIN_PING:             return this->Receive_ADMIN_PING(p);
+		case ADMIN_PACKET_ADMIN_KEYAUTH:          return this->Receive_ADMIN_KEYAUTH(p);
 
 		case ADMIN_PACKET_SERVER_FULL:            return this->Receive_SERVER_FULL(p);
 		case ADMIN_PACKET_SERVER_BANNED:          return this->Receive_SERVER_BANNED(p);
@@ -90,6 +91,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 		case ADMIN_PACKET_SERVER_CMD_LOGGING:     return this->Receive_SERVER_CMD_LOGGING(p);
 		case ADMIN_PACKET_SERVER_RCON_END:        return this->Receive_SERVER_RCON_END(p);
 		case ADMIN_PACKET_SERVER_PONG:            return this->Receive_SERVER_PONG(p);
+		case ADMIN_PACKET_SERVER_NEED_KEYAUTH:    return this->Receive_SERVER_NEED_KEYAUTH(p);
 
 		default:
 			if (this->HasClientQuit()) {
@@ -141,6 +143,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p) { ret
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_RCON); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_GAMESCRIPT); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_PING(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_PING); }
+NetworkRecvStatus NetworkAdminSocketHandler::Receive_ADMIN_KEYAUTH(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_ADMIN_KEYAUTH); }
 
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_FULL(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_FULL); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_BANNED(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_BANNED); }
@@ -169,3 +172,4 @@ NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CMD_NAMES(Packet *p)
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_CMD_LOGGING(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_CMD_LOGGING); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_RCON_END(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_RCON_END); }
 NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_PONG(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_PONG); }
+NetworkRecvStatus NetworkAdminSocketHandler::Receive_SERVER_NEED_KEYAUTH(Packet *p) { return this->ReceiveInvalidPacket(ADMIN_PACKET_SERVER_NEED_KEYAUTH); }

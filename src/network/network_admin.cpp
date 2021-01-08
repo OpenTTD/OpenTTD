@@ -83,7 +83,7 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
  */
 /* static */ bool ServerNetworkAdminSocketHandler::AllowConnection()
 {
-	bool accept = !StrEmpty(_settings_client.network.admin_password) && _network_admins_connected < MAX_ADMINS;
+	bool accept = !StrEmpty(_settings_client.network.admin_pubkey) && _network_admins_connected < MAX_ADMINS;
 	/* We can't go over the MAX_ADMINS limit here. However, if we accept
 	 * the connection, there has to be space in the pool. */
 	assert_compile(NetworkAdminSocketPool::MAX_SIZE == MAX_ADMINS);
@@ -95,7 +95,7 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 /* static */ void ServerNetworkAdminSocketHandler::Send()
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::Iterate()) {
-		if (as->status == ADMIN_STATUS_INACTIVE && as->realtime_connect + ADMIN_AUTHORISATION_TIMEOUT < _realtime_tick) {
+		if (as->status != ADMIN_STATUS_ACTIVE && as->realtime_connect + ADMIN_AUTHORISATION_TIMEOUT < _realtime_tick) {
 			DEBUG(net, 1, "[admin] Admin did not send its authorisation within %d seconds", ADMIN_AUTHORISATION_TIMEOUT / 1000);
 			as->CloseConnection(true);
 			continue;
@@ -158,12 +158,31 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendProtocol()
 	p->Send_bool(false);
 	this->SendPacket(p);
 
-	return this->SendWelcome();
+	return this->SendNeedKeyauth();
+}
+
+/** Request crypto challenge from the admin. */
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendNeedKeyauth()
+{
+	this->status = ADMIN_STATUS_KEYAUTH;
+
+	Packet *p = new Packet(ADMIN_PACKET_SERVER_NEED_KEYAUTH);
+
+	hydro_random_buf(challenge, sizeof(challenge));
+	for (size_t i = 0; i < sizeof(challenge); i++) {
+		p->Send_uint8(challenge[i]);
+	}
+
+	this->SendPacket(p);
+
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /** Send a welcome message to the admin. */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendWelcome()
 {
+	this->status = ADMIN_STATUS_ACTIVE;
+
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_WELCOME);
 
 	p->Send_string(_settings_client.network.server_name);
@@ -511,7 +530,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16 colour, const
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != ADMIN_STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	char command[NETWORK_RCONCOMMAND_LENGTH];
 
@@ -527,7 +546,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p)
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Packet *p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != ADMIN_STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	char json[NETWORK_GAMESCRIPT_JSON_LENGTH];
 
@@ -541,7 +560,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Pack
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_PING(Packet *p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != ADMIN_STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	uint32 d1 = p->Recv_uint32();
 
@@ -663,15 +682,6 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet *p)
 {
 	if (this->status != ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	char password[NETWORK_PASSWORD_LENGTH];
-	p->Recv_string(password, sizeof(password));
-
-	if (StrEmpty(_settings_client.network.admin_password) ||
-			strcmp(password, _settings_client.network.admin_password) != 0) {
-		/* Password is invalid */
-		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
-	}
-
 	p->Recv_string(this->admin_name, sizeof(this->admin_name));
 	p->Recv_string(this->admin_version, sizeof(this->admin_version));
 
@@ -680,11 +690,39 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet *p)
 		return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
 	}
 
-	this->status = ADMIN_STATUS_ACTIVE;
-
 	DEBUG(net, 1, "[admin] '%s' (%s) has connected", this->admin_name, this->admin_version);
 
 	return this->SendProtocol();
+}
+
+NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_KEYAUTH(Packet *p)
+{
+	if (this->status != ADMIN_STATUS_KEYAUTH) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+
+	uint8 pubkey[hydro_sign_PUBLICKEYBYTES];
+	for (size_t i = 0; i < sizeof(pubkey); i++) {
+		pubkey[i] = p->Recv_uint8();
+	}
+
+	uint8 signature[hydro_sign_BYTES];
+	for (size_t i = 0; i < sizeof(signature); i++) {
+		signature[i] = p->Recv_uint8();
+	}
+
+	if (hydro_sign_verify(signature, challenge, sizeof(challenge), "KEY_AUTH", pubkey) != 0) {
+		return this->CloseConnection();
+	}
+
+	uint8 authorized_pubkey[hydro_sign_PUBLICKEYBYTES];
+	if (hydro_hex2bin(authorized_pubkey, sizeof(authorized_pubkey), _settings_client.network.admin_pubkey, strlen(_settings_client.network.admin_pubkey), nullptr, nullptr) != sizeof(authorized_pubkey)) {
+		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
+	}
+
+	if (memcmp(pubkey, authorized_pubkey, sizeof(authorized_pubkey)) != 0) {
+		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
+	}
+
+	return this->SendWelcome();
 }
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_QUIT(Packet *p)
@@ -695,7 +733,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_QUIT(Packet *p)
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENCY(Packet *p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != ADMIN_STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	AdminUpdateType type = (AdminUpdateType)p->Recv_uint16();
 	AdminUpdateFrequency freq = (AdminUpdateFrequency)p->Recv_uint16();
@@ -713,7 +751,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENC
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != ADMIN_STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	AdminUpdateType type = (AdminUpdateType)p->Recv_uint8();
 	uint32 d1 = p->Recv_uint32();
@@ -779,7 +817,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 
 NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p)
 {
-	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
+	if (this->status != ADMIN_STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
 	DestType desttype = (DestType)p->Recv_uint8();

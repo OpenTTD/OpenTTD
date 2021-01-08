@@ -22,7 +22,7 @@
  * This protocol may only be extended to ensure stability.
  */
 enum PacketAdminType {
-	ADMIN_PACKET_ADMIN_JOIN,             ///< The admin announces and authenticates itself to the server.
+	ADMIN_PACKET_ADMIN_JOIN,             ///< The admin announces itself to the server.
 	ADMIN_PACKET_ADMIN_QUIT,             ///< The admin tells the server that it is quitting.
 	ADMIN_PACKET_ADMIN_UPDATE_FREQUENCY, ///< The admin tells the server the update frequency of a particular piece of information.
 	ADMIN_PACKET_ADMIN_POLL,             ///< The admin explicitly polls for a piece of information.
@@ -30,6 +30,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_ADMIN_RCON,             ///< The admin sends a remote console command.
 	ADMIN_PACKET_ADMIN_GAMESCRIPT,       ///< The admin sends a JSON string for the GameScript.
 	ADMIN_PACKET_ADMIN_PING,             ///< The admin sends a ping to the server, expecting a ping-reply (PONG) packet.
+	ADMIN_PACKET_ADMIN_KEYAUTH,          ///< The admin submits crypto challenge to the server.
 
 	ADMIN_PACKET_SERVER_FULL = 100,      ///< The server tells the admin it cannot accept the admin.
 	ADMIN_PACKET_SERVER_BANNED,          ///< The server tells the admin it is banned.
@@ -59,6 +60,7 @@ enum PacketAdminType {
 	ADMIN_PACKET_SERVER_GAMESCRIPT,      ///< The server gives the admin information from the GameScript in JSON.
 	ADMIN_PACKET_SERVER_RCON_END,        ///< The server indicates that the remote console command has completed.
 	ADMIN_PACKET_SERVER_PONG,            ///< The server replies to a ping request from the admin.
+	ADMIN_PACKET_SERVER_NEED_KEYAUTH,    ///< The server requests crypto challenge from the admin.
 
 	INVALID_ADMIN_PACKET = 0xFF,         ///< An invalid marker for admin packets.
 };
@@ -66,6 +68,7 @@ enum PacketAdminType {
 /** Status of an admin. */
 enum AdminStatus {
 	ADMIN_STATUS_INACTIVE,      ///< The admin is not connected nor active.
+	ADMIN_STATUS_KEYAUTH,       ///< The admin is connected and we're waiting for crypto challenge response.
 	ADMIN_STATUS_ACTIVE,        ///< The admin is active.
 	ADMIN_STATUS_END,           ///< Must ALWAYS be on the end of this list!! (period)
 };
@@ -112,12 +115,12 @@ protected:
 	char admin_name[NETWORK_CLIENT_NAME_LENGTH];           ///< Name of the admin.
 	char admin_version[NETWORK_REVISION_LENGTH];           ///< Version string of the admin.
 	AdminStatus status;                                    ///< Status of this admin.
+	uint8 challenge[CRYPTO_CHALLENGE_LEN];                 ///< Random crypto challenge that we sent to the admin.
 
 	NetworkRecvStatus ReceiveInvalidPacket(PacketAdminType type);
 
 	/**
 	 * Join the admin network:
-	 * string  Password the server is expecting for this network.
 	 * string  Name of the application being used to connect.
 	 * string  Version string of the application being used to connect.
 	 * @param p The packet that was just received.
@@ -186,6 +189,15 @@ protected:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus Receive_ADMIN_PING(Packet *p);
+
+	/**
+	 * Admin responds with signed challenge.
+         * 32 * uint8  Public key.
+         * 64 * uint8  Signature.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_ADMIN_KEYAUTH(Packet *p);
 
 	/**
 	 * The server is full (connection gets closed).
@@ -468,6 +480,14 @@ protected:
 	 * @return The state the network should have.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_PONG(Packet *p);
+
+	/**
+	 * Server requests crypto authentication from the admin.
+         * 16 * uint8  Random data for challenge.
+	 * @param p The packet that was just received.
+	 * @return The state the network should have.
+	 */
+	virtual NetworkRecvStatus Receive_SERVER_NEED_KEYAUTH(Packet *p);
 
 	/**
 	 * Notify the admin connection that the rcon command has finished.
