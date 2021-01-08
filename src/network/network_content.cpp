@@ -743,6 +743,7 @@ public:
 	void OnConnect(SOCKET s) override
 	{
 		assert(_network_content_client.sock == INVALID_SOCKET);
+		_network_content_client.lastActivity = _realtime_tick;
 		_network_content_client.isConnecting = false;
 		_network_content_client.sock = s;
 		_network_content_client.Reopen();
@@ -755,8 +756,6 @@ public:
  */
 void ClientNetworkContentSocketHandler::Connect()
 {
-	this->lastActivity = _realtime_tick;
-
 	if (this->sock != INVALID_SOCKET || this->isConnecting) return;
 	this->isConnecting = true;
 	new NetworkContentConnecter(NetworkAddress(NETWORK_CONTENT_SERVER_HOST, NETWORK_CONTENT_SERVER_PORT, AF_UNSPEC));
