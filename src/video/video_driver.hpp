@@ -13,6 +13,7 @@
 #include "../driver.h"
 #include "../core/geometry_type.hpp"
 #include "../core/math_func.hpp"
+#include "../zoom_type.h"
 #include <vector>
 
 extern std::string _ini_videodriver;
@@ -106,6 +107,18 @@ public:
 	virtual void EditBoxGainedFocus() {}
 
 	/**
+	 * Get a suggested default GUI zoom taking screen DPI into account.
+	 */
+	virtual ZoomLevel GetSuggestedUIZoom()
+	{
+		float dpi_scale = this->GetDPIScale();
+
+		if (dpi_scale >= 3.0f) return ZOOM_LVL_NORMAL;
+		if (dpi_scale >= 1.5f) return ZOOM_LVL_OUT_2X;
+		return ZOOM_LVL_OUT_4X;
+	}
+
+	/**
 	 * Get the currently active instance of the video driver.
 	 */
 	static VideoDriver *GetInstance() {
@@ -113,10 +126,16 @@ public:
 	}
 
 protected:
-	/*
+	/**
 	 * Get the resolution of the main screen.
 	 */
 	virtual Dimension GetScreenSize() const { return { DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT }; }
+
+	/**
+	 * Get DPI scaling factor of the screen OTTD is displayed on.
+	 * @return 1.0 for default platform DPI, > 1.0 for higher DPI values, and < 1.0 for smaller DPI values.
+	 */
+	virtual float GetDPIScale() { return 1.0f; }
 
 	/**
 	 * Apply resolution auto-detection and clamp to sensible defaults.

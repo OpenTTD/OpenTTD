@@ -771,6 +771,7 @@ int openttd_main(int argc, char *argv[])
 
 	/* Initialize the zoom level of the screen to normal */
 	_screen.zoom = ZOOM_LVL_NORMAL;
+	UpdateGUIZoom();
 
 	NetworkStartUp(); // initialize network-core
 
