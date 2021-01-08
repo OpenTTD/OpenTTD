@@ -136,8 +136,12 @@
 #	endif
 #endif /* __GNUC__ || __clang__ */
 
-#if defined(__GNUC__)
-#	define NOACCESS(args) __attribute__ ((access (none, args)))
+#if defined __has_attribute
+#	if __has_attribute (access)
+#		define NOACCESS(args) __attribute__ ((access (none, args)))
+#	else
+#		define NOACCESS(args)
+#	endif
 #else
 #	define NOACCESS(args)
 #endif
