@@ -43,6 +43,8 @@ public:
 
 protected:
 	Dimension GetScreenSize() const override;
+
+	float GetDPIScale() override;
 };
 
 /** The factory for Windows' video driver. */
