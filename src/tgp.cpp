@@ -234,7 +234,27 @@ static height_t TGPGetMaxHeight()
 		{  12,  19,  25,  31,  67,  75,  87 }, ///< Alpinist
 	};
 
-	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][std::min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS];
+	int map_size_bucket = std::min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS;
+	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][map_size_bucket];
+
+	/* Arctic needs snow to have all industries, so make sure we allow TGP to generate this high. */
+	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
+		max_height_from_table += _settings_newgame.game_creation.snow_line_height;
+		/* Make flat a bit more flat by removing "very flat" from it, to somewhat compensate for the increase we just did. */
+		if (_settings_game.difficulty.terrain_type > 0) {
+			max_height_from_table -= max_height[_settings_game.difficulty.terrain_type - 1][map_size_bucket];
+		}
+	}
+	/* Tropic needs tropical forest to have all industries, so make sure we allow TGP to generate this high.
+	 * Tropic forest always starts at 1/4th of the max height. */
+	if (_settings_game.game_creation.landscape == LT_TROPIC) {
+		max_height_from_table += CeilDiv(_settings_game.construction.max_heightlevel, 4);
+		/* Make flat a bit more flat by removing "very flat" from it, to somewhat compensate for the increase we just did. */
+		if (_settings_game.difficulty.terrain_type > 0) {
+			max_height_from_table -= max_height[_settings_game.difficulty.terrain_type - 1][map_size_bucket];
+		}
+	}
+
 	return I2H(std::min<uint>(max_height_from_table, _settings_game.construction.max_heightlevel));
 }
 
