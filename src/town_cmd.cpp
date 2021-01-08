@@ -1112,6 +1112,7 @@ static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
  * Checks if a town road can be continued into the next tile.
  *  Road vehicle stations, bridges, and tunnels are fine, as long as they are facing the right direction.
  *
+ * @param t The current town
  * @param tile The tile where the road would be built
  * @param road_dir The direction of the road
  * @return true if the road can be continued, else false
@@ -1133,8 +1134,8 @@ static bool CanRoadContinueIntoNextTile(const Town* t, const TileIndex tile, con
 
 	/* If the next tile is a station, allow if it's a road station facing the proper direction. Otherwise return false. */
 	if (IsTileType(next_tile, MP_STATION)) {
-		/* If the next tile is a road station, allow if it's facing the same direction, otherwise disallow. */
-		return IsRoadStop(next_tile) && GetRoadStopDir(next_tile) == ReverseDiagDir(road_dir);
+		/* If the next tile is a road station, allow if it can be entered by the new tunnel/bridge, otherwise disallow. */
+		return IsRoadStop(next_tile) && (GetRoadStopDir(next_tile) == ReverseDiagDir(road_dir) || (IsDriveThroughStopTile(next_tile) && GetRoadStopDir(next_tile) == road_dir));
 	}
 
 	/* If the next tile is a road depot, allow if it's facing the right way. */
