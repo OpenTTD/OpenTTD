@@ -1682,7 +1682,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Segur
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trukoak
 STR_CHEATS_TOOLTIP                                              :{BLACK}Kontrol laukiek erakutsiko dute trukoak erabili badituzu
-STR_CHEATS_WARNING                                              :{BLACK}Abisua! Zure kideak traizionatzear zaude. Gogoratu traizioa ez dela inoiz ahaztuko
 STR_CHEAT_MONEY                                                 :{LTBLUE}Dirua {CURRENCY_LONG}-etan areagotu
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE} {ORANGE}{COMMA} konpainiarekin jolastu
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magikoa (edozer ezabatzen du): {ORANGE}{STRING}

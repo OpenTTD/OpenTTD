@@ -1816,7 +1816,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juksekoder
 STR_CHEATS_TOOLTIP                                              :{BLACK}Avkrysningsbokser indikerer om du har brukt denne juksekoden tidligere
-STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er i ferd med å bedra dine motstandere. Vær klar over at en slik skammelig oppførsel vil bli husket i all evighet
 STR_CHEAT_MONEY                                                 :{LTBLUE}Øk pengebeholdningen med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, uflyttbare objekter): {ORANGE}{STRING}

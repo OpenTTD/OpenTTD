@@ -1806,7 +1806,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Is jy s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Kullery
 STR_CHEATS_TOOLTIP                                              :{BLACK}Keuseblokkies wys aan as jy die kulkode voorheen gebruik het
-STR_CHEATS_WARNING                                              :{BLACK}Waarskuwing! U staan op die punt om jou mededinger te veraai. Hou in gedagte dat so 'n skande vir ewigheid sal onthou word.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Vermeerder geld met {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Speel as maatskappy: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tower stootskraper (verwyder nywerhede, onbeweegbare voorwerpe): {ORANGE}{STRING}

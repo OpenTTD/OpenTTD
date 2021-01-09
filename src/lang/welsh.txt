@@ -1768,7 +1768,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ydych c
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Twyllo
 STR_CHEATS_TOOLTIP                                              :{BLACK}Mae'r blychau marcio'n dangos os ydych chi wedi twyllo neu beidio, gan nodi sut
-STR_CHEATS_WARNING                                              :{BLACK}Rhybudd! Rydych ar fin bradychu eich cydgystadleuwyr. Cofiwch y bydd y fath gywilydd yn cael ei gofio o'r awr hon hyd byth
 STR_CHEAT_MONEY                                                 :{LTBLUE}Cynyddu arian {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Chwarae fel cwmni: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tarw Dur Hud (chwalu diwydiannau, gwrthrychau nad oes modd eu chwalu): {ORANGE}{STRING}

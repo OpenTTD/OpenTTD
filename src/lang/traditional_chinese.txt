@@ -1763,7 +1763,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}你確�
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
 STR_CHEATS_TOOLTIP                                              :{BLACK}方塊被勾選代表您用過這個密技
-STR_CHEATS_WARNING                                              :{BLACK}警告！您正準備背叛您的競爭對手。請記住這種恥辱將永傳不朽
 STR_CHEAT_MONEY                                                 :{LTBLUE}增加金錢：{CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}切換玩家操控的公司：{ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土機 (可摧毀工業、無法移除的物件)：{ORANGE}{STRING}

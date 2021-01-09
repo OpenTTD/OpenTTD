@@ -1979,7 +1979,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esne ce
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Tricae
 STR_CHEATS_TOOLTIP                                              :{BLACK}Quadrum signi plenum indicat trica iam a te usa est
-STR_CHEATS_WARNING                                              :{BLACK}Cave! Competitores tuas falsurus es! Memento tantam infamiam memoria omnium in aeternum teneri!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augere pecuniam {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludens es in loco societatis: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magica machina aggerandi (removet industrias, obiecta immobilia): {ORANGE}{STRING}

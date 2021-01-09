@@ -1484,7 +1484,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}آیا 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}تقلبها
 STR_CHEATS_TOOLTIP                                              :{BLACK}جعبه انتخاب ها نشان می دهند که قبلا از چه تقلبی استفاده کردید
-STR_CHEATS_WARNING                                              :{BLACK}هشدار!شما می خواهید که به رقبای همکارتان خیانت کنید. بدانید که چنین رسوایی تا ابد به یاد خواهد ماند
 STR_CHEAT_MONEY                                                 :{LTBLUE}اضافه کردن پول به مقدار {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}بازی به عنوان شرکت: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}بولدوزر جادویی(ازبین بردن صنایع و اشیاء غیرقابل حرکت): {ORANGE}{STRING}

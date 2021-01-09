@@ -2116,7 +2116,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Вы ў
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Махлярства (чыты)
 STR_CHEATS_TOOLTIP                                              :{BLACK}Птушкі паказваюць, ці выкарыстоўвалі Вы гэты чыт раней
-STR_CHEATS_WARNING                                              :{BLACK}Увага, Вы зьбіраецеся здрадзіць сваім спаборнікам! Гэтага вам ніколі не даруюць!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Дадаць {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Гульня за кампанію: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Чароўны дынамiт (знос УСЯГО): {ORANGE}{STRING}

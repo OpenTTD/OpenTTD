@@ -1787,7 +1787,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}האם 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}(cheats) טריקים
 STR_CHEATS_TOOLTIP                                              :{BLACK}תיבות הסימון מציינות האם השתמשת בטריק הנתון בעבר
-STR_CHEATS_WARNING                                              :{BLACK}אזהרה! את/ה עומ/ת לבגוד בחבריך למשחק. קח/י בחשבון שחרפה כזו תיזכר לנצח.
 STR_CHEAT_MONEY                                                 :{LTBLUE}{CURRENCY_LONG}- הגדל את כמות הכסף במאזנך ל
 STR_CHEAT_CHANGE_COMPANY                                        :{ORANGE}{COMMA}{LTBLUE} :שחק כבעלי החברה
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}טרקטור אימתני (הסרת מפעלים, רכיבים שאי אפשר להזיז): {ORANGE}{STRING}

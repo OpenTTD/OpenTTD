@@ -1903,7 +1903,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ste si 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
 STR_CHEATS_TOOLTIP                                              :{BLACK}Zaškrtávacie pole indikuje opakované použite cheatu
-STR_CHEATS_WARNING                                              :{BLACK}Varovanie! Chceš oklamať svojich protihráčov. Pamätajte že táto hanba bude zapísaná naveky
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zvýšiť hotovosť o {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrať za spoločnosť: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozér (odstráni priemysel a nehnuteľnosti): {ORANGE}{STRING}

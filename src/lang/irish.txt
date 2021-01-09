@@ -1761,7 +1761,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}An bhfu
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Caimiléireacht
 STR_CHEATS_TOOLTIP                                              :{BLACK}Tugann ticbhoscaí le fios más rud é gur úsáid tú an chaimiléireacht seo roimhe seo
-STR_CHEATS_WARNING                                              :{BLACK}Rabhadh! Tá tú ar tí feall a imirt ar do chomhimreoirí. Coinnigh i gcuimhne nach ndéanfar dearmad go brách ar a leithead de náire.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Méadaigh airgead de {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ag imirt mar chuideachta: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Ollscartaire draíochta (bain tionscail, nithe dobhogtha): {ORANGE}{STRING}

@@ -1839,7 +1839,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Vai tie
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Blēdības
 STR_CHEATS_TOOLTIP                                              :{BLACK}Atzīmētās rūtiņas norāda uz to, vai esat jau izmantojis šo blēdību
-STR_CHEATS_WARNING                                              :{BLACK}Brīdinājums! Jūs grasāties būt neuzticams saviem spēles biedriem, sāncenšiem. Iegaumējiet, ka šādu negodu viņi atcerēsies mūžīgi
 STR_CHEAT_MONEY                                                 :{LTBLUE}Palielināt naudas līdzekļus par {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spēlēt kā uzņēmumam: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Burvju buldozers (nojauc ražotnes, nepārvietojamus objektus): {ORANGE}{STRING}

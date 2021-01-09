@@ -1901,7 +1901,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Είσ�
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Απατεωνιές
 STR_CHEATS_TOOLTIP                                              :{BLACK}Τα κουτάκια δείχνουν αν έχετε ξαναχρησιμοποιήσει αυτή την απατεωνιά
-STR_CHEATS_WARNING                                              :{BLACK}Προσοχή! Είστε έτοιμοι να προδώσετε τους φίλους ανταγωνιστές σας. Θυμηθείτε ότι αυτή η ντροπή θα μείνει για πάντα.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Αύξηση χρημάτων κατά {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Παίζετε με την εταιρία: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Μαγική μπουλντόζα (αφαιρεί βιομηχανίες, αμετακίνητα αντικείμενα): {ORANGE}{STRING}

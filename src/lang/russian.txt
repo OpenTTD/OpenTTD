@@ -1987,7 +1987,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Вы у
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Читы
 STR_CHEATS_TOOLTIP                                              :{BLACK}Галочки показывают, использовали ли Вы этот чит раньше
-STR_CHEATS_WARNING                                              :{BLACK}Внимание, вы собираетесь предать своих соперников! Этого вам никогда не простят!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Добавить {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Игра за компанию: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный динамит (снос ВСЕГО): {ORANGE}{STRING}

@@ -1626,7 +1626,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ertu vi
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Svindl
 STR_CHEATS_TOOLTIP                                              :{BLACK}Valreitur segir til um ef þú hefur notað þetta svindl áður
-STR_CHEATS_WARNING                                              :{BLACK}Aðvörun! Þú ert í þann mund að svíkja keppinauta þína. Hafðu í huga að þess lags svívirðing mun ætíð höfð í minnum
 STR_CHEAT_MONEY                                                 :{LTBLUE}Auka pening um {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spila sem fyrirtæki: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Töfrajarðýta (eyðir iðnaði, óeyðanlegum hlutum): {ORANGE}{STRING}

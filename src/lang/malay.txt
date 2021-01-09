@@ -1523,7 +1523,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Pastika
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Penipuan (Cheats)
 STR_CHEATS_TOOLTIP                                              :{BLACK}Kotak bertanda menunjukkan anda pernah menggunakan penipuan (cheats) ini
-STR_CHEATS_WARNING                                              :{BLACK}Amaran! Anda akan mengkhianati rakan-rakan pesaing anda. Perbuatan yang mengaibkan ini tidak akan dilupakan selama-lamanya.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambahkan wang sebanyak {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai syarikat: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Jentolak ajaib (buang industri dan objek lain yang biasanya tidak boleh dibuang): {ORANGE}{STRING}

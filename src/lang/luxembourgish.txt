@@ -1814,7 +1814,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Sécher
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheater
 STR_CHEATS_TOOLTIP                                              :{BLACK}Checkboxen weisen un dass du den Cheat schon eng Kéier benotzt hues
-STR_CHEATS_WARNING                                              :{BLACK}Warnung! Du bass um Wee de Géigner ze verroden. Sou eng Ongnod gëtt bis an all Éiwegkeet behalen
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suen ëm {CURRENCY_LONG} erhéijen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Als Firma {ORANGE}{COMMA} spillen
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magësche Bulldozer (Industrien ofrappen, onzerstéierbar Objeten): {ORANGE}{STRING}

@@ -1815,7 +1815,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apa and
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Kode Curang
 STR_CHEATS_TOOLTIP                                              :{BLACK}Daftar cek ini mengindikasikan bahwa anda telah menggunakan kode curang ini sebelumnya
-STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan mencurangi pemain lainnya. Kecurangan ini akan tetap tercatat selama game berjalan
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai pemain: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, objek tidak bergerak): {ORANGE}{STRING}

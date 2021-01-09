@@ -1442,7 +1442,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}هل ت
 # Cheat window
 STR_CHEATS                                                      :{WHITE}اسرار
 STR_CHEATS_TOOLTIP                                              :{BLACK}علامة صح اذا استخدمت هذا السرمن قبل
-STR_CHEATS_WARNING                                              :{BLACK}تحذير! انت على وشك ان تغش منافسيك. إعلم انهم سيتذكرون عليك هذا العار للإبد
 STR_CHEAT_MONEY                                                 :{LTBLUE}زيادة السيولة بـ {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}العب كشركة{ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}الجرافة السحرية - لازالة المصانع و الاجسام غير القابلة للازالة.{ORANGE}{STRING}

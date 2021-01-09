@@ -1815,7 +1815,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Är du 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Fusk
 STR_CHEATS_TOOLTIP                                              :{BLACK}Checkboxar indikerar om du använt det här fusket förut
-STR_CHEATS_WARNING                                              :{BLACK}Varning! Du är på väg att förråda dina motståndare. Kom ihåg att detta inte kommer glömmas
 STR_CHEAT_MONEY                                                 :{LTBLUE}Öka pengar med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelar som företag:: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (ta bort industrier, oflyttbara objekt etc.): {ORANGE}{STRING}

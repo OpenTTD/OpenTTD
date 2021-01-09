@@ -1879,7 +1879,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Biztosa
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Csalások
 STR_CHEATS_TOOLTIP                                              :{BLACK}A kijelölőnégyzetek jelzik a csalások eddigi használatát
-STR_CHEATS_WARNING                                              :{BLACK}Figyelem! Te épp a versenytársaidat készülöd elárulni. Sose felejtsd el, hogy egy ilyen szégyenletes tett sose merül feledésbe
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tőkeemelés {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Irányított vállalat: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, mozgathatatlan objektumokat): {ORANGE}{STRING}

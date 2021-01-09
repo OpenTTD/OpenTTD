@@ -1808,7 +1808,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Estás 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampulladas
 STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de confirmación indican se usaches esta trampa antes
-STR_CHEATS_WARNING                                              :{BLACK}Coidado! Estás a piques de traizoar aos teus competidores. Ten en conta que un escándalo coma este vai ser lembrado eternamente
 STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementar os cartos en {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Xogando coma compañía: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadora máxica (elimina industrias, obxectos non eliminables): {ORANGE}{STRING}

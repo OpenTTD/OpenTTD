@@ -2217,7 +2217,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy jes
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Oszustwa
 STR_CHEATS_TOOLTIP                                              :{BLACK}Pole wyboru wskazuje, czy użyłeś już wcześniej tego oszustwa
-STR_CHEATS_WARNING                                              :{BLACK}Ostrzeżenie! Właśnie chcesz zdradzić swoich współzawodników. Miej na uwadze, że taka hańba będzie pamiętana na wieczność
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwiększ ilość pieniędzy o {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, nieprzesuwalnych obiektów): {ORANGE}{STRING}

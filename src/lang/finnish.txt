@@ -1837,7 +1837,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Lopetet
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Huijaukset
 STR_CHEATS_TOOLTIP                                              :{BLACK}Valintaruudut osoittavat, oletko käyttänyt huijausta aiemmin
-STR_CHEATS_WARNING                                              :{BLACK}Varoitus! Olet juuri pettämässä kanssakilpailijoitasi. Pidä mielessä, että tällainen häväistys pidetään mielessä ikuisuuden ajan
 STR_CHEAT_MONEY                                                 :{LTBLUE}Anna lisää rahaa: {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hallinnassa oleva yhtiö: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Taikapuskutraktori (poista teollisuutta, liikuttamattomia kohteita): {ORANGE}{STRING}
@@ -2354,6 +2353,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Liitä r
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Rakenna erillinen reittipiste
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Ei käytössä, koska tälle infrastruktuurille ei ole kulkuneuvoja tällä hetkellä
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Rautatien rakentaminen
@@ -4023,6 +4023,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Sovita rahtity
 STR_ORDER_STOP_ORDER                                            :(Pysähdy)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Asema ei käytettävissä){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Ehdoton)
 
@@ -4475,6 +4476,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Väärä varikk
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} on liian pitkä korvaamisen jälkeen
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ei käytössä olevia itsekorvaus- tai itseuudistussääntöjä
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(rahoitusraja)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Uusi kulkuneuvo ei voi kuljettaa {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Uutta kulkuneuvoa ei voida uudelleensovittaa käskyssä {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Mahdoton ratayhdistelmä.

@@ -1990,7 +1990,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ar tikr
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Sukčiavimai
 STR_CHEATS_TOOLTIP                                              :{BLACK}Laukeliai rodo ar jus naudojote šį triuką prieš tai
-STR_CHEATS_WARNING                                              :{BLACK}Dėmesio! Tu bandai išduoti vargšus savo varžovus. Tai bus tavo gėda visiems laikams ir niekada neužmiršta.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Padauginti pinigų {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Žaidiama už kompaniją: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiškas buldozeris (pašalina gamyklas ir nepajudinamus objektus): {ORANGE}{STRING}

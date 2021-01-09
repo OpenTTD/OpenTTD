@@ -1911,7 +1911,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Doista 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Varanje
 STR_CHEATS_TOOLTIP                                              :{BLACK}Kvačice ukazuju na to jesi li koristio ovo varanje prije
-STR_CHEATS_WARNING                                              :{BLACK}Upozorenje! Upravo se spremaš izdati svoj kolege natjecatelje. Imaj na umu da se takva sramota pamti zauvijek
 STR_CHEAT_MONEY                                                 :{LTBLUE}Povećaj novce za iznos {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Igraj kao tvrtka: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magični buldožer (uklanja industrije, nepokretne objekte): {ORANGE}{STRING}

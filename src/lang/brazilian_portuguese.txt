@@ -1816,7 +1816,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Você t
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trapaças
 STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de verificação indicam se você usou esta trapaça antes
-STR_CHEATS_WARNING                                              :{BLACK}Atenção! Você está prestes a trair os seus companheiros oponentes. Tenha em mente que tal desgraça será lembrada pela eternidade
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando pela Co.: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadeira mágica (destrói indústrias, objetos estáticos): {ORANGE}{STRING}

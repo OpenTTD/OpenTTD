@@ -1803,7 +1803,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Tem a c
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Truques
 STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de verificação indicam se já usou este truque antes
-STR_CHEATS_WARNING                                              :{BLACK} Atenção! Está prestes a trair seus concorrentes. Tenha em mente que a desonra será lembrada para a eternidade
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando como empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, objectos amovíveis etc.): {ORANGE}{STRING}

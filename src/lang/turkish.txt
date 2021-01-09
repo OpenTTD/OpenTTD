@@ -1816,7 +1816,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bu sena
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Hileler
 STR_CHEATS_TOOLTIP                                              :{BLACK}Onay kutuları bu hilenin daha önce kullanılıp kullanmadığını bildirir.
-STR_CHEATS_WARNING                                              :{BLACK}Uyarı! Rakiplerine ihanet etmek üzeresin. Böyle bir davranışı sonsuza dek unutmayacaklarını akılda tut
 STR_CHEAT_MONEY                                                 :{LTBLUE}Parayı {CURRENCY_LONG} kadar arttır
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Oynanan şirket: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldozer (fabrikaları, silinemeyen nesneleri siler): {ORANGE}{STRING}

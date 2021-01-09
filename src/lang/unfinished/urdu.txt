@@ -1376,7 +1376,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}کیا 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}دھوکے
 STR_CHEATS_TOOLTIP                                              :{BLACK}چیک باکسز سے ظاہر ہوتا ہے کہ آپ نے یہ دھوکا پہلے بھی کیا یے
-STR_CHEATS_WARNING                                              :{BLACK}انتباہ! آپ ساتھی کھلاڑیوں کو دھوکہ دینے جا رہے ہیں
 STR_CHEAT_MONEY                                                 :{LTBLUE}رقم کو {CURRENCY_LONG} سے بڑھائیں
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}اس کمپنی کی طور پر کھیلیں: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}جادوئی دھماکہ خیز (نہ ٹوٹنے والی چیزیں بھی توڑ دے): {ORANGE}{STRING}

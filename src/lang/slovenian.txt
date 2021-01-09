@@ -1916,7 +1916,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Zagotov
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Goljufije
 STR_CHEATS_TOOLTIP                                              :{BLACK}Kljukice kažejo, če so bile goljufije že kdaj uporabljene
-STR_CHEATS_WARNING                                              :{BLACK}Pozor! Nameravaš izdati svoje tekmece. Tako sramotno dejanje bo zabeleženo za vselej
 STR_CHEAT_MONEY                                                 :{LTBLUE}Povečaj denar za {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Igra kot podjetje: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čarobni buldožer (odstrani industrije, neodstranljive objekte): {ORANGE}{STRING}

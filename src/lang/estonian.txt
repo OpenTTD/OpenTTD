@@ -1829,7 +1829,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Kas sa 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Petmine
 STR_CHEATS_TOOLTIP                                              :{BLACK}Märgistatud kastid näitavad et, kas sa oled varem seda pettust kasutanud
-STR_CHEATS_WARNING                                              :{BLACK}Hoiatus! Sa kavatsed oma konkurente reeta. Pea meeles, et sellisest häbist ei saa sa enam kunagi lahti
 STR_CHEAT_MONEY                                                 :{LTBLUE}Suurenda raha hulka {CURRENCY_LONG} võrra
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Mängimine ettevõttena: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Võlubuldooser (eemaldab tööstused, paiksed objektid): {ORANGE}{STRING}

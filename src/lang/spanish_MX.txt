@@ -1836,7 +1836,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Está
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucos
 STR_CHEATS_TOOLTIP                                              :{BLACK}Las casillas marcadas indican que ya se usó este truco
-STR_CHEATS_WARNING                                              :{BLACK}¡Atención! Estás a punto de traicionar a tus competidores. Recuerda que siempre se recordará tal deshonra
 STR_CHEAT_MONEY                                                 :{LTBLUE}Añadir {CURRENCY_LONG} en efectivo
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugar como la empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Excavadora mágica (elimina industrias y objetos inamovibles): {ORANGE}{STRING}

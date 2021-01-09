@@ -1753,7 +1753,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Eşti s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheat-uri
 STR_CHEATS_TOOLTIP                                              :{BLACK}Bifa vă indică dacă aţi folosit anterior acest cheat
-STR_CHEATS_WARNING                                              :{BLACK}Atenţie! Eşti pe cale să-ţi trădezi colegii de joc! Nu uita că această ruşine va rămâne înregistrată pentru totdeauna
 STR_CHEAT_MONEY                                                 :{LTBLUE}Măreşte fondurile cu {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Joacă drept compania: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demolează industrii şi lucruri amovibile): {ORANGE}{STRING}

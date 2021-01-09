@@ -1588,7 +1588,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er tú 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Snýt
 STR_CHEATS_TOOLTIP                                              :{BLACK}Flugubeins kassanir vísa um tú hevur nýtt hetta snýti áður
-STR_CHEATS_WARNING                                              :{BLACK}Ávaring! Tú er í holt við at svíkja tínar kappingarneytar. Hav í huga at ein slík vanæra verður aldrin gloymd á ævini
 STR_CHEAT_MONEY                                                 :{LTBLUE}Hækka pening við {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spælir sum fyritøka: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Gandaður bulldosari (bein burtur ídnaðir, lutir ið ikki kunnu flytast): {ORANGE}{STRING}

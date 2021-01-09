@@ -1452,6 +1452,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Mantingues les 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantingues les eines de construcció pels ponts, túnels, etc. obertes després d'utilitzar-les
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupa les despeses a la finestra de finances de la companyia: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Defineix la disposició de la companyia a la finestra de despeses
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Treu automàticament els senyals durant la construcció ferroviària: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Treu automàticament els senyals ferroviaris que hi hagi pel mig durant la construcció de rail. Aneu amb compte ja que pot provocar col·lisions de trens.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Barra de notícies: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reprodueix un so quan apareixen les notícies resumides a la barra inferior
@@ -1836,7 +1838,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esteu s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampes
 STR_CHEATS_TOOLTIP                                              :{BLACK}Les caselles de selecció indiquen si heu fet servir aquesta trampa.
-STR_CHEATS_WARNING                                              :{BLACK}Atenció! Esteu a punt d'enredar als altres jugadors. Penseu que una cosa així serà recordada per tota l'eternitat.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenta els diners de la companyia actual en {CURRENCY_LONG}.
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Juga amb la companyia: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries i altres objectes inamovibles): {ORANGE}{STRING}
@@ -2233,6 +2234,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} s'
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ha començat una nova companyia (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ha deixat la partida ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ha canviat el seu nom a {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ha donat {2:CURRENCY_LONG} a {1:STRING}.
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}El servidor ha tancat la sessió
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}El servidor està reiniciant...{}Espera un moment...
 STR_NETWORK_MESSAGE_KICKED                                      :*** S'ha expulsat {STRING}. Motiu: {STRING}
@@ -2352,6 +2354,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uneix pu
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construeix un punt de pas separat
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}S'ha desactivat ja que actualment no disposeu de vehicles per usar aquesta infraestructura.
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construcció de ferrocarril
@@ -3375,6 +3378,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Trasllad
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Trasllada la seu a un altre lloc amb el cost d'un 1% del valor de la companyia. Amb Maj+Clic, mostra el cost estimat sense traslladar la seu.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalls
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Veure els detalls de la infraestructura de la companyia.
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dóna diners
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Doneu diners a aquesta companyia.
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Modifica la cara
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Modifica la cara del president de la companyia.
@@ -3392,6 +3397,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Ven un 2
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nom de la companyia
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nom del president
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Escriviu la quantitat de diners que voleu donar
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Estem venent la nostra companyia de transports.{}{}Vols comprar {COMPANY} per {CURRENCY_LONG}?
 
@@ -4018,6 +4024,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Remodela a {ST
 STR_ORDER_STOP_ORDER                                            :(Para)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(No pot usar l'estació){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Implícit)
 
@@ -4343,6 +4350,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... No q
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} necessaris
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}No es pot amortitzar préstec...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}No es poden regalar els diners deixats pel banc...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}No podeu donar diners a aquesta companyia...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}No pots comprar la companyia...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}No es pot construir la seu de la companyia...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}No pots comprar el 25% de participació en aquesta companyia...
@@ -4469,6 +4477,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipus de cotxer
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} és massa llarg després de la substitució
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}No s'han aplicat normes d'autosubstitució/renovació
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(límit de diners)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}El vehicle nou no pot portar {STRING}.
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}El vehicle nou no pot complir el remodelat de l'ordre {NUM}.
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Combinació de vies impossible

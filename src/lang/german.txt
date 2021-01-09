@@ -1834,7 +1834,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Soll da
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TOOLTIP                                              :{BLACK}Die Kontrollkästchen zeigen an, ob dieser Cheat schonmal verwendet worden ist
-STR_CHEATS_WARNING                                              :{BLACK}Achtung! Hiermit betrügt man seine Mitbewerber. Man sollte bedenken, dass sie das niemals verzeihen werden
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kontostand um {CURRENCY_LONG} erhöhen
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiele die Firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Mächtigeres Abrisswerkzeug (entfernt Industrien und unbewegliche Objekte): {ORANGE}{STRING}

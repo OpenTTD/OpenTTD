@@ -1838,7 +1838,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}정말 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}치트
 STR_CHEATS_TOOLTIP                                              :{BLACK}체크박스의 체크 표시는 이전에 이 치트를 사용했는지 여부를 나타냅니다.
-STR_CHEATS_WARNING                                              :{BLACK}경고! 치트는 경쟁자를 속이는 행위입니다. 치트를 사용한 기록은 절대 지워지지 않음을 명심하십시오.
 STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY_LONG} 만큼 증가
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설이나 옮길 수 없는 건물 제거): {ORANGE}{STRING}
@@ -2355,6 +2354,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}연결�
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}분리된 경유지를 새로 만들기
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}현재 이 기반 시설에서 사용할 수 있는 차량이 없어 비활성화되었습니다
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :선로 건설
@@ -4024,6 +4024,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}에서
 STR_ORDER_STOP_ORDER                                            :(멈춤)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(이 역을 이용할 수 없음){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(자동)
 
@@ -4476,6 +4477,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :잘못된 차�
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} : 교체된지 너무 오래되었습니다
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}자동 교체/갱신 규칙이 적용되지 않았습니다
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(자금 부족)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}새로 교체된 차량이 {0:STRING}{G 0 "을" "를"} 실을 수 없습니다
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}새로 교체된 차량이 경로 {NUM} 대로 개조될 수 없습니다
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}불가능한 트랙 조합입니다

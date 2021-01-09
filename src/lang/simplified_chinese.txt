@@ -1815,7 +1815,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}你确�
 # Cheat window
 STR_CHEATS                                                      :{WHITE}作弊
 STR_CHEATS_TOOLTIP                                              :{BLACK}标志您是否用过此作弊选项的单选框
-STR_CHEATS_WARNING                                              :{BLACK}注意！作弊是不光彩的！所有作弊都将被记录下来！
 STR_CHEAT_MONEY                                                 :{LTBLUE}增加 {CURRENCY_LONG} 现金
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}作为{ORANGE}{COMMA}进行游戏
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}神奇推土机 (清除工业设施和其他不可移除物)： {ORANGE}{STRING}

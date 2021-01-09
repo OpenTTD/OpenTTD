@@ -1817,7 +1817,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Bạn c
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TOOLTIP                                              :{BLACK}Ô đánh dấu cho biết nếu bạn đã từng dùng mã ăn gian đó
-STR_CHEATS_WARNING                                              :{BLACK}Cảnh báo! Bạn muốn lừa dối những đối thủ thành thực của bạn ư? Những hành động đó của bạn sẽ là vết nhơ suốt đời!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tăng số tiền lên {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Điều khiển công ty: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Xe ủi thần kỳ (xóa bỏ nhà máy, vật không thể di chuyển): {ORANGE}{STRING}

@@ -1839,7 +1839,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Si è s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucchi
 STR_CHEATS_TOOLTIP                                              :{BLACK}Le caselle indicano se un trucco è già stato usato una volta
-STR_CHEATS_WARNING                                              :{BLACK}Attenzione! Stai per tradire i tuoi avversari. Ricordati che un così grande disonore sarà ricordato per l'eternità
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumenta denaro di {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Compagnia controllata: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magico (rimuove industrie e oggetti fissi): {ORANGE}{STRING}

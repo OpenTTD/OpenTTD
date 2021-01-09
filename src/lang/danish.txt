@@ -1815,7 +1815,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Snydefunktioner
 STR_CHEATS_TOOLTIP                                              :{BLACK}Checkbokse viser, om du har brugt denne snydefunktion før
-STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er ved at forråde dine modstandere. Tænk lige på at dette vil blive husket i al evighed.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Forøg kassebeholdning med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som firmaet: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}

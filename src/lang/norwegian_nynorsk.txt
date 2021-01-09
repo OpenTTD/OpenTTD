@@ -1685,7 +1685,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juks
 STR_CHEATS_TOOLTIP                                              :{BLACK}Avkrysningsbokser fortel at du har nytta denne juksekoden tidlegare
-STR_CHEATS_WARNING                                              :{BLACK}Åtvaring! Du er i ferd med å forråda motspelarane. Vær klar over at denne skammelige handlinga vil bli hugsa i all framtid.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Auk pengebehaldninga med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Speler som firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industriar, uflyttbare ting): {ORANGE}{STRING}

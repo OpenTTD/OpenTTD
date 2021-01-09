@@ -1761,7 +1761,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}この�
 # Cheat window
 STR_CHEATS                                                      :{WHITE}チート
 STR_CHEATS_TOOLTIP                                              :{BLACK}以前にこのチートを使用したことがあることを示します
-STR_CHEATS_WARNING                                              :{BLACK}注意: チートを使用すると、競争者に裏切りと見做され、永久に呪われる可能性があります
 STR_CHEAT_MONEY                                                 :{LTBLUE}預金残高を{CURRENCY_LONG}増やす
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}会社: {ORANGE}{COMMA}を乗っ取ってプレイする
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}魔法のブルドーザー(産業拠点等、何でも撤去できる): {ORANGE}{STRING}

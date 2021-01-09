@@ -1837,7 +1837,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Weet je
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Valsspelen
 STR_CHEATS_TOOLTIP                                              :{BLACK}Keuzevakjes geven aan of je deze manier van valsspelen eerder hebt gebruikt
-STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je medespelers te verraden. Onthoud dat zo'n schande eeuwig wordt onthouden
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kapitaal vergroten met {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelen als bedrijf: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}

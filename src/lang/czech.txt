@@ -1902,7 +1902,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Určite
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
 STR_CHEATS_TOOLTIP                                              :{BLACK}Zaškrtávací políčka ukazují, jestli jsi tento cheat už použil
-STR_CHEATS_WARNING                                              :{BLACK}Varování! Chystáš se podvést ostatní hráče. Pamatuj si, že tento podlý čin nebude nikdy zapomenut!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Navýšit peníze o {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrát jako společnost: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozer (odstraní průmysl a další objekty): {ORANGE}{STRING}

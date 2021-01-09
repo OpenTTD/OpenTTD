@@ -1422,7 +1422,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ĉu vi 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Filudaĵoj
 STR_CHEATS_TOOLTIP                                              :{BLACK}La kvadratetoj indikas ĉu vi jam uzis la filudaĵon antaŭe.
-STR_CHEATS_WARNING                                              :{BLACK}Atentu! Vi preskaŭ perfidos viajn kunulajn konkurantojn. Memoru ke io tia rememoriĝos eterne
 STR_CHEAT_MONEY                                                 :{LTBLUE}Altigu monkvanton per {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludanta kiel kompanio: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magia forigilo (forviŝu industriojn, nemovebla objektoj): {ORANGE}{STRING}

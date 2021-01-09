@@ -1972,7 +1972,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}A bheil
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cealgaireachd
 STR_CHEATS_TOOLTIP                                              :{BLACK}Is ciall dha bhogsaichean-cromaige gun deach a' chealgaireachd seo a chleachdadh roimhe
-STR_CHEATS_WARNING                                              :{BLACK}Rabhadh! Tha thu gu bhith a' mealladh nan co-fharpaiseach agad. Thoir an aire gun cumar cuimhne air an tàmailt seo gu bràth tuilleadh
 STR_CHEAT_MONEY                                                 :{LTBLUE}Meudaich an t-airgead le {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}A' cluich mar a' chompanaidh: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer draoidheach (thoir air falbh gnìomhachasan, oibseactan do-ghluasad): {ORANGE}{STRING}

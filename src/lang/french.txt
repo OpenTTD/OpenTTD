@@ -1838,7 +1838,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Êtes-v
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Triches
 STR_CHEATS_TOOLTIP                                              :{BLACK}Les cases à cocher montrent si vous avez déjà utilisé cette triche auparavant
-STR_CHEATS_WARNING                                              :{BLACK}Attention{NBSP}! Vous êtes sur le point de trahir vos adversaires. Vous et votre famille serez déshonoré pour l'éternité.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenter l'argent de {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jouer en tant que compagnie{NBSP}: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement des industries et des objets fixes){NBSP}: {ORANGE}{STRING}
