@@ -186,9 +186,10 @@ struct VehicleSpriteSeq {
  * or calculating the viewport.
  */
 struct MutableSpriteCache {
-	Direction last_direction;         ///< Last direction we obtained sprites for
-	bool revalidate_before_draw;      ///< We need to do a GetImage() and check bounds before drawing this sprite
-	VehicleSpriteSeq sprite_seq;      ///< Vehicle appearance.
+	Direction last_direction;     ///< Last direction we obtained sprites for
+	bool revalidate_before_draw;  ///< We need to do a GetImage() and check bounds before drawing this sprite
+	Rect old_coord;               ///< Co-ordinates from the last valid bounding box
+	VehicleSpriteSeq sprite_seq;  ///< Vehicle appearance.
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */
@@ -767,7 +768,7 @@ public:
 
 	void UpdatePosition();
 	void UpdateViewport(bool dirty);
-	void UpdateBoundingBoxCoordinates();
+	void UpdateBoundingBoxCoordinates(bool update_cache);
 	void UpdatePositionAndViewport();
 	void MarkAllViewportsDirty() const;
 

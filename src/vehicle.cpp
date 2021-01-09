@@ -346,6 +346,7 @@ Vehicle::Vehicle(VehicleType type)
 {
 	this->type               = type;
 	this->coord.left         = INVALID_COORD;
+	this->sprite_cache.old_coord.left = INVALID_COORD;
 	this->group_id           = DEFAULT_GROUP;
 	this->fill_percent_te_id = INVALID_TE_ID;
 	this->first              = this;
@@ -879,7 +880,7 @@ Vehicle::~Vehicle()
 	delete v;
 
 	UpdateVehicleTileHash(this, true);
-	UpdateVehicleViewportHash(this, INVALID_COORD, 0, this->coord.left, this->coord.top);
+	UpdateVehicleViewportHash(this, INVALID_COORD, 0, this->sprite_cache.old_coord.left, this->sprite_cache.old_coord.top);
 	DeleteVehicleNews(this->index, INVALID_STRING_ID);
 	DeleteNewGRFInspectWindow(GetGrfSpecFeature(this->type), this->index);
 }
@@ -1142,7 +1143,8 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 
 			while (v != nullptr) {
 
-				if (l <= v->coord.right + xb &&
+				if (!(v->vehstatus & VS_HIDDEN) &&
+					l <= v->coord.right + xb &&
 					t <= v->coord.bottom + yb &&
 					r >= v->coord.left - xb &&
 					b >= v->coord.top - yb)
@@ -1157,6 +1159,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 
 						if (v->sprite_cache.sprite_seq != seq) {
 							v->sprite_cache.sprite_seq = seq;
+
 							/*
 							 * A sprite change may also result in a bounding box change,
 							 * so we need to update the bounding box again before we
@@ -1167,13 +1170,12 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 							 * of the vehicle.
 							 */
 							Vehicle* v_mutable = const_cast<Vehicle*>(v);
-							v_mutable->Vehicle::UpdateBoundingBoxCoordinates();
+							v_mutable->Vehicle::UpdateBoundingBoxCoordinates(false);
 						}
 						v->sprite_cache.revalidate_before_draw = false;
 					}
 
-					if (!(v->vehstatus & VS_HIDDEN) &&
-						l <= v->coord.right &&
+					if (l <= v->coord.right &&
 						t <= v->coord.bottom &&
 						r >= v->coord.left &&
 						b >= v->coord.top) {
@@ -1599,18 +1601,26 @@ void Vehicle::UpdatePosition()
 
 /*
  * Update the bounding box co-ordinates of the vehicle
+ * @param update_cache Update the cached values for previous co-ordinate values
 */
-void Vehicle::UpdateBoundingBoxCoordinates()
+void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache)
 {
 	Rect new_coord;
 	this->sprite_cache.sprite_seq.GetBounds(&new_coord);
 
 	Point pt = RemapCoords(this->x_pos + this->x_offs, this->y_pos + this->y_offs, this->z_pos);
-	new_coord.left += pt.x;
-	new_coord.top += pt.y;
-	new_coord.right += pt.x + 2 * ZOOM_LVL_BASE;
+	new_coord.left   += pt.x;
+	new_coord.top    += pt.y;
+	new_coord.right  += pt.x + 2 * ZOOM_LVL_BASE;
 	new_coord.bottom += pt.y + 2 * ZOOM_LVL_BASE;
 
+	if (update_cache) {
+		/*
+		 * If the old coordinates are invalid, set the cache to the new coordinates for correct
+		 * behaviour the next time the coordinate cache is checked.
+		 */
+		this->sprite_cache.old_coord = this->coord.left == INVALID_COORD ? new_coord : this->coord;
+	}
 
 	this->coord = new_coord;
 }
@@ -1622,9 +1632,10 @@ void Vehicle::UpdateBoundingBoxCoordinates()
  */
 void Vehicle::UpdateViewport(bool dirty)
 {
-	Rect old_coord = this->coord;
+	Rect old_coord;
+	old_coord = this->sprite_cache.old_coord;
 
-	this->UpdateBoundingBoxCoordinates();
+	this->UpdateBoundingBoxCoordinates(true);
 	UpdateVehicleViewportHash(this, this->coord.left, this->coord.top, old_coord.left, old_coord.top);
 
 	if (dirty) {
