@@ -187,8 +187,7 @@ struct VehicleSpriteSeq {
  */
 struct MutableSpriteCache {
 	Direction last_direction;         ///< Last direction we obtained sprites for
-	bool is_viewport_candidate;       ///< The vehicle has been in the hash for a shown viewport recently
-	bool sprite_has_viewport_changes; ///< There have been viewport changes since the sprite was last updated
+	bool revalidate_before_draw;      ///< We need to do a GetImage() and check bounds before drawing this sprite
 	VehicleSpriteSeq sprite_seq;      ///< Vehicle appearance.
 };
 
@@ -768,6 +767,7 @@ public:
 
 	void UpdatePosition();
 	void UpdateViewport(bool dirty);
+	void UpdateBoundingBoxCoordinates();
 	void UpdatePositionAndViewport();
 	void MarkAllViewportsDirty() const;
 
@@ -1196,7 +1196,7 @@ struct SpecializedVehicle : public Vehicle {
 		 * there won't be enough change in bounding box or offsets to need
 		 * to resolve a new sprite.
 		 */
-		if (this->direction != this->sprite_cache.last_direction || this->sprite_cache.is_viewport_candidate) {
+		if (this->direction != this->sprite_cache.last_direction) {
 			VehicleSpriteSeq seq;
 
 			((T*)this)->T::GetImage(this->direction, EIT_ON_MAP, &seq);
@@ -1206,14 +1206,14 @@ struct SpecializedVehicle : public Vehicle {
 			}
 
 			this->sprite_cache.last_direction = this->direction;
-			this->sprite_cache.is_viewport_candidate = false;
-			this->sprite_cache.sprite_has_viewport_changes = false;
+			this->sprite_cache.revalidate_before_draw = false;
 		} else {
 			/*
-			 * Changes could still be relevant when we render the vehicle even if
-			 * they don't alter the bounding box
+			 * A change that could potentially invalidate the sprite has been
+			 * made, signal that we should still resolve it before drawing on a
+			 * viewport.
 			 */
-			this->sprite_cache.sprite_has_viewport_changes = true;
+			this->sprite_cache.revalidate_before_draw = true;
 		}
 
 		if (force_update || sprite_has_changed) {

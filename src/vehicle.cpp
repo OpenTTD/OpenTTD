@@ -643,11 +643,9 @@ static void UpdateVehicleTileHash(Vehicle *v, bool remove)
 
 static Vehicle *_vehicle_viewport_hash[1 << (GEN_HASHX_BITS + GEN_HASHY_BITS)];
 
-static void UpdateVehicleViewportHash(Vehicle *v, int x, int y)
+static void UpdateVehicleViewportHash(Vehicle *v, int x, int y, int old_x, int old_y)
 {
 	Vehicle **old_hash, **new_hash;
-	int old_x = v->coord.left;
-	int old_y = v->coord.top;
 
 	new_hash = (x == INVALID_COORD) ? nullptr : &_vehicle_viewport_hash[GEN_HASH(x, y)];
 	old_hash = (old_x == INVALID_COORD) ? nullptr : &_vehicle_viewport_hash[GEN_HASH(old_x, old_y)];
@@ -881,7 +879,7 @@ Vehicle::~Vehicle()
 	delete v;
 
 	UpdateVehicleTileHash(this, true);
-	UpdateVehicleViewportHash(this, INVALID_COORD, 0);
+	UpdateVehicleViewportHash(this, INVALID_COORD, 0, this->coord.left, this->coord.top);
 	DeleteVehicleNews(this->index, INVALID_STRING_ID);
 	DeleteNewGRFInspectWindow(GetGrfSpecFeature(this->type), this->index);
 }
@@ -1091,17 +1089,6 @@ static void DoDrawVehicle(const Vehicle *v)
 		if (to != TO_INVALID && (IsTransparencySet(to) || IsInvisibilitySet(to))) return;
 	}
 
-	/*
-	 * If the vehicle sprite was not updated despite further viewport changes, we need
-	 * to update it before drawing.
-	 */
-	if (v->sprite_cache.sprite_has_viewport_changes) {
-		VehicleSpriteSeq seq;
-		v->GetImage(v->direction, EIT_ON_MAP, &seq);
-		v->sprite_cache.sprite_seq = seq;
-		v->sprite_cache.sprite_has_viewport_changes = false;
-	}
-
 	StartSpriteCombine();
 	for (uint i = 0; i < v->sprite_cache.sprite_seq.count; ++i) {
 		PaletteID pal2 = v->sprite_cache.sprite_seq.seq[i].pal;
@@ -1155,30 +1142,43 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 
 			while (v != nullptr) {
 
-				if (!(v->vehstatus & VS_HIDDEN) &&
-						l <= v->coord.right &&
-						t <= v->coord.bottom &&
-						r >= v->coord.left &&
-						b >= v->coord.top) {
-					DoDrawVehicle(v);
-				}
-				else if (l <= v->coord.right + xb &&
+				if (l <= v->coord.right + xb &&
 					t <= v->coord.bottom + yb &&
 					r >= v->coord.left - xb &&
 					b >= v->coord.top - yb)
 				{
 					/*
-					 * Indicate that this vehicle was considered for rendering in a viewport,
-					 * is within the bounds where a sprite could be valid for rendering
-					 * and we therefore need to update sprites more frequently in case a callback
-					 * will change the bounding box to one which will cause the sprite to be
-					 * displayed.
-					 *
-					 * This reduces the chances of flicker when sprites enter the screen, if they
-					 * are part of a newgrf vehicle set which changes bounding boxes within a
-					 * single vehicle direction.
+					 * This vehicle can potentially be drawn as part of this viewport and
+					 * needs to be revalidated, as the sprite may not be correct.
 					 */
-					v->sprite_cache.is_viewport_candidate = true;
+					if (v->sprite_cache.revalidate_before_draw) {
+						VehicleSpriteSeq seq;
+						v->GetImage(v->direction, EIT_ON_MAP, &seq);
+
+						if (v->sprite_cache.sprite_seq != seq) {
+							v->sprite_cache.sprite_seq = seq;
+							/*
+							 * A sprite change may also result in a bounding box change,
+							 * so we need to update the bounding box again before we
+							 * check to see if the vehicle should be drawn. Note that
+							 * we can't interfere with the viewport hash at this point,
+							 * so we keep the original hash on the assumption there will
+							 * not be a significant change in the top and left coordinates
+							 * of the vehicle.
+							 */
+							Vehicle* v_mutable = const_cast<Vehicle*>(v);
+							v_mutable->Vehicle::UpdateBoundingBoxCoordinates();
+						}
+						v->sprite_cache.revalidate_before_draw = false;
+					}
+
+					if (!(v->vehstatus & VS_HIDDEN) &&
+						l <= v->coord.right &&
+						t <= v->coord.bottom &&
+						r >= v->coord.left &&
+						b >= v->coord.top) {
+						DoDrawVehicle(v);
+					}
 				}
 
 				v = v->hash_viewport_next;
@@ -1597,6 +1597,24 @@ void Vehicle::UpdatePosition()
 	UpdateVehicleTileHash(this, false);
 }
 
+/*
+ * Update the bounding box co-ordinates of the vehicle
+*/
+void Vehicle::UpdateBoundingBoxCoordinates()
+{
+	Rect new_coord;
+	this->sprite_cache.sprite_seq.GetBounds(&new_coord);
+
+	Point pt = RemapCoords(this->x_pos + this->x_offs, this->y_pos + this->y_offs, this->z_pos);
+	new_coord.left += pt.x;
+	new_coord.top += pt.y;
+	new_coord.right += pt.x + 2 * ZOOM_LVL_BASE;
+	new_coord.bottom += pt.y + 2 * ZOOM_LVL_BASE;
+
+
+	this->coord = new_coord;
+}
+
 /**
  * Update the vehicle on the viewport, updating the right hash and setting the
  *  new coordinates.
@@ -1604,19 +1622,10 @@ void Vehicle::UpdatePosition()
  */
 void Vehicle::UpdateViewport(bool dirty)
 {
-	Rect new_coord;
-	this->sprite_cache.sprite_seq.GetBounds(&new_coord);
-
-	Point pt = RemapCoords(this->x_pos + this->x_offs, this->y_pos + this->y_offs, this->z_pos);
-	new_coord.left   += pt.x;
-	new_coord.top    += pt.y;
-	new_coord.right  += pt.x + 2 * ZOOM_LVL_BASE;
-	new_coord.bottom += pt.y + 2 * ZOOM_LVL_BASE;
-
-	UpdateVehicleViewportHash(this, new_coord.left, new_coord.top);
-
 	Rect old_coord = this->coord;
-	this->coord = new_coord;
+
+	this->UpdateBoundingBoxCoordinates();
+	UpdateVehicleViewportHash(this, this->coord.left, this->coord.top, old_coord.left, old_coord.top);
 
 	if (dirty) {
 		if (old_coord.left == INVALID_COORD) {
