@@ -37,6 +37,7 @@
 #include "smallmap_gui.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/industry_widget.h"
+#include "clear_map.h"
 
 #include "table/strings.h"
 
@@ -244,6 +245,14 @@ static const NWidgetPart _nested_build_industry_widgets[] = {
 		NWidget(WWT_DEFSIZEBOX, COLOUR_DARK_GREEN),
 		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
 	EndContainer(),
+	NWidget(NWID_SELECTION, COLOUR_DARK_GREEN, WID_DPI_SCENARIO_EDITOR_PANE),
+		NWidget(NWID_VERTICAL),
+			NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_DPI_CREATE_RANDOM_INDUSTRIES_WIDGET), SetMinimalSize(0, 12), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP),
+			NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_DPI_REMOVE_ALL_INDUSTRIES_WIDGET), SetMinimalSize(0, 12), SetFill(1, 0), SetResize(1, 0),
+					SetDataTip(STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES, STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP),
+		EndContainer(),
+	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_MATRIX, COLOUR_DARK_GREEN, WID_DPI_MATRIX_WIDGET), SetMatrixDataTip(1, 0, STR_FUND_INDUSTRY_SELECTION_TOOLTIP), SetFill(1, 0), SetResize(1, 1), SetScrollbar(WID_DPI_SCROLLBAR),
 		NWidget(NWID_VSCROLLBAR, COLOUR_DARK_GREEN, WID_DPI_SCROLLBAR),
@@ -289,11 +298,6 @@ class BuildIndustryWindow : public Window {
 			this->enabled[i] = false;
 		}
 
-		if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
-			this->index[this->count] = INVALID_INDUSTRYTYPE;
-			this->enabled[this->count] = true;
-			this->count++;
-		}
 		/* Fill the arrays with industries.
 		 * The tests performed after the enabled allow to load the industries
 		 * In the same way they are inserted by grf (if any)
@@ -392,6 +396,13 @@ public:
 		this->FinishInitNested(0);
 
 		this->SetButtons();
+
+		/* Show scenario editor tools in editor. */
+		if (_game_mode != GM_EDITOR) {
+			auto *se_tools = this->GetWidget<NWidgetStacked>(WID_DPI_SCENARIO_EDITOR_PANE);
+			se_tools->SetDisplayedPlane(SZSP_HORIZONTAL);
+			this->ReInit();
+		}
 	}
 
 	void OnInit() override
@@ -578,9 +589,53 @@ public:
 		}
 	}
 
+	static void AskManyRandomIndustriesCallback(Window *w, bool confirmed)
+	{
+		if (!confirmed) return;
+
+		if (Town::GetNumItems() == 0) {
+			ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_INDUSTRIES, STR_ERROR_MUST_FOUND_TOWN_FIRST, WL_INFO);
+		} else {
+			extern void GenerateIndustries();
+			_generating_world = true;
+			GenerateIndustries();
+			_generating_world = false;
+		}
+	}
+
+	static void AskRemoveAllIndustriesCallback(Window *w, bool confirmed)
+	{
+		if (!confirmed) return;
+
+		for (Industry* industry : Industry::Iterate()) delete industry;
+
+		/* Clear farmland. */
+		for (TileIndex tile = 0; tile < MapSize(); tile++) {
+			if (IsTileType(tile, MP_CLEAR) && GetRawClearGround(tile) == CLEAR_FIELDS) {
+				MakeClear(tile, CLEAR_GRASS, 3);
+			}
+		}
+
+		MarkWholeScreenDirty();
+	}
+
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		switch (widget) {
+			case WID_DPI_CREATE_RANDOM_INDUSTRIES_WIDGET: {
+				assert(_game_mode == GM_EDITOR);
+				this->HandleButtonClick(WID_DPI_CREATE_RANDOM_INDUSTRIES_WIDGET);
+				ShowQuery(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY, nullptr, AskManyRandomIndustriesCallback);
+				break;
+			}
+
+			case WID_DPI_REMOVE_ALL_INDUSTRIES_WIDGET: {
+				assert(_game_mode == GM_EDITOR);
+				this->HandleButtonClick(WID_DPI_REMOVE_ALL_INDUSTRIES_WIDGET);
+				ShowQuery(STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION, STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY, nullptr, AskRemoveAllIndustriesCallback);
+				break;
+			}
+
 			case WID_DPI_MATRIX_WIDGET: {
 				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_DPI_MATRIX_WIDGET);
 				if (y < this->count) { // Is it within the boundaries of available data?
@@ -610,22 +665,14 @@ public:
 				break;
 
 			case WID_DPI_FUND_WIDGET: {
-				if (this->selected_type == INVALID_INDUSTRYTYPE) {
-					this->HandleButtonClick(WID_DPI_FUND_WIDGET);
-
-					if (Town::GetNumItems() == 0) {
-						ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_INDUSTRIES, STR_ERROR_MUST_FOUND_TOWN_FIRST, WL_INFO);
+				if (this->selected_type != INVALID_INDUSTRYTYPE)
+				{
+					if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && GetIndustrySpec(this->selected_type)->IsRawIndustry()) {
+						DoCommandP(0, this->selected_type, InteractiveRandom(), CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+						this->HandleButtonClick(WID_DPI_FUND_WIDGET);
 					} else {
-						extern void GenerateIndustries();
-						_generating_world = true;
-						GenerateIndustries();
-						_generating_world = false;
+						HandlePlacePushButton(this, WID_DPI_FUND_WIDGET, SPR_CURSOR_INDUSTRY, HT_RECT);
 					}
-				} else if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && GetIndustrySpec(this->selected_type)->IsRawIndustry()) {
-					DoCommandP(0, this->selected_type, InteractiveRandom(), CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
-					this->HandleButtonClick(WID_DPI_FUND_WIDGET);
-				} else {
-					HandlePlacePushButton(this, WID_DPI_FUND_WIDGET, SPR_CURSOR_INDUSTRY, HT_RECT);
 				}
 				break;
 			}
