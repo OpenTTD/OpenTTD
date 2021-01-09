@@ -1109,6 +1109,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
 --AICargo--
   Cargo -1
     IsValidCargo():          false
+    GetName():               '(null : 0x00000000)'
     GetCargoLabel():         '(null : 0x00000000)'
     IsFreight():             false
     HasCargoClass():         false
@@ -1120,6 +1121,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 0
     IsValidCargo():          true
+    GetName():               'Passengers'
     GetCargoLabel():         'PASS'
     IsFreight():             false
     HasCargoClass():         true
@@ -1131,6 +1133,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 0
   Cargo 1
     IsValidCargo():          true
+    GetName():               'Coal'
     GetCargoLabel():         'COAL'
     IsFreight():             true
     HasCargoClass():         false
@@ -1142,6 +1145,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 2
     IsValidCargo():          true
+    GetName():               'Mail'
     GetCargoLabel():         'MAIL'
     IsFreight():             false
     HasCargoClass():         false
@@ -1153,6 +1157,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 3
     IsValidCargo():          true
+    GetName():               'Oil'
     GetCargoLabel():         'OIL_'
     IsFreight():             true
     HasCargoClass():         false
@@ -1164,6 +1169,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 4
     IsValidCargo():          true
+    GetName():               'Livestock'
     GetCargoLabel():         'LVST'
     IsFreight():             true
     HasCargoClass():         false
@@ -1175,6 +1181,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 5
     IsValidCargo():          true
+    GetName():               'Goods'
     GetCargoLabel():         'GOOD'
     IsFreight():             true
     HasCargoClass():         false
@@ -1186,6 +1193,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 6
     IsValidCargo():          true
+    GetName():               'Grain'
     GetCargoLabel():         'GRAI'
     IsFreight():             true
     HasCargoClass():         false
@@ -1197,6 +1205,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 7
     IsValidCargo():          true
+    GetName():               'Wood'
     GetCargoLabel():         'WOOD'
     IsFreight():             true
     HasCargoClass():         false
@@ -1208,6 +1217,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 8
     IsValidCargo():          true
+    GetName():               'Iron Ore'
     GetCargoLabel():         'IORE'
     IsFreight():             true
     HasCargoClass():         false
@@ -1219,6 +1229,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 9
     IsValidCargo():          true
+    GetName():               'Steel'
     GetCargoLabel():         'STEL'
     IsFreight():             true
     HasCargoClass():         false
@@ -1230,6 +1241,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 10
     IsValidCargo():          true
+    GetName():               'Valuables'
     GetCargoLabel():         'VALU'
     IsFreight():             true
     HasCargoClass():         false
@@ -1241,6 +1253,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 11
     IsValidCargo():          false
+    GetName():               '(null : 0x00000000)'
     GetCargoLabel():         '(null : 0x00000000)'
     IsFreight():             false
     HasCargoClass():         false
@@ -1252,6 +1265,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 12
     IsValidCargo():          false
+    GetName():               '(null : 0x00000000)'
     GetCargoLabel():         '(null : 0x00000000)'
     IsFreight():             false
     HasCargoClass():         false
@@ -1263,6 +1277,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 13
     IsValidCargo():          false
+    GetName():               '(null : 0x00000000)'
     GetCargoLabel():         '(null : 0x00000000)'
     IsFreight():             false
     HasCargoClass():         false
@@ -1274,6 +1289,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadVehicleTypeForCargo(): 1
   Cargo 14
     IsValidCargo():          false
+    GetName():               '(null : 0x00000000)'
     GetCargoLabel():         '(null : 0x00000000)'
     IsFreight():             false
     HasCargoClass():         false

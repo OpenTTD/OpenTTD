@@ -332,7 +332,8 @@ function Regression::Cargo()
 	for (local i = -1; i < 15; i++) {
 		print("  Cargo " + i);
 		print("    IsValidCargo():          " + AICargo.IsValidCargo(i));
-		print("    GetCargoLabel():         '" + AICargo.GetCargoLabel(i)+ "'");
+		print("    GetName():               '" + AICargo.GetName(i) + "'");
+		print("    GetCargoLabel():         '" + AICargo.GetCargoLabel(i) + "'");
 		print("    IsFreight():             " + AICargo.IsFreight(i));
 		print("    HasCargoClass():         " + AICargo.HasCargoClass(i, AICargo.CC_PASSENGERS));
 		print("    GetTownEffect():         " + AICargo.GetTownEffect(i));

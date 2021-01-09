@@ -11,7 +11,9 @@
 #include "script_cargo.hpp"
 #include "../../economy_func.h"
 #include "../../core/bitmath_func.hpp"
+#include "../../strings_func.h"
 #include "../../settings_type.h"
+#include "table/strings.h"
 
 #include "../../safeguards.h"
 
@@ -23,6 +25,14 @@
 /* static */ bool ScriptCargo::IsValidTownEffect(TownEffect towneffect_type)
 {
 	return (towneffect_type >= (TownEffect)TE_BEGIN && towneffect_type < (TownEffect)TE_END);
+}
+
+/* static */ char *ScriptCargo::GetName(CargoID cargo_type)
+{
+	if (!IsValidCargo(cargo_type)) return nullptr;
+
+	::SetDParam(0, 1 << cargo_type);
+	return GetString(STR_JUST_CARGO_LIST);
 }
 
 /* static */ char *ScriptCargo::GetCargoLabel(CargoID cargo_type)

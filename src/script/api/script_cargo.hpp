@@ -85,6 +85,14 @@ public:
 	static bool IsValidTownEffect(TownEffect towneffect_type);
 
 	/**
+	 * Get the name of the cargo type.
+	 * @param cargo_type The cargo type to get the name of.
+	 * @pre IsValidCargo(cargo_type).
+	 * @return The name of the cargo type.
+	 */
+	static char *GetName(CargoID cargo_type);
+
+	/**
 	 * Gets the string representation of the cargo label.
 	 * @param cargo_type The cargo to get the string representation of.
 	 * @pre ScriptCargo::IsValidCargo(cargo_type).
