@@ -393,7 +393,7 @@ void CDECL grfmsg(int severity, const char *str, ...)
  * @param grfid The grfID to obtain the file for
  * @return The file.
  */
-static GRFFile *GetFileByGRFID(uint32 grfid)
+GRFFile *GetFileByGRFID(uint32 grfid)
 {
 	for (GRFFile * const file : _grf_files) {
 		if (file->grfid == grfid) return file;
