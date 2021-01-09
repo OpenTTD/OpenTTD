@@ -12,7 +12,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-class CocoaSubdriver;
+class WindowQuartzSubdriver;
 
 extern NSString *OTTDMainLaunchGameEngine;
 
@@ -23,10 +23,10 @@ extern NSString *OTTDMainLaunchGameEngine;
 
 /** Subclass of NSWindow to cater our special needs */
 @interface OTTD_CocoaWindow : NSWindow {
-	CocoaSubdriver *driver;
+	WindowQuartzSubdriver *driver;
 }
 
-- (void)setDriver:(CocoaSubdriver*)drv;
+- (void)setDriver:(WindowQuartzSubdriver *)drv;
 
 - (void)miniaturize:(id)sender;
 - (void)display;
@@ -39,10 +39,10 @@ extern NSString *OTTDMainLaunchGameEngine;
 /** Subclass of NSView to fix Quartz rendering and mouse awareness */
 @interface OTTD_CocoaView : NSView <NSTextInputClient>
 {
-	CocoaSubdriver *driver;
+	WindowQuartzSubdriver *driver;
 	NSTrackingRectTag trackingtag;
 }
-- (void)setDriver:(CocoaSubdriver*)drv;
+- (void)setDriver:(WindowQuartzSubdriver *)drv;
 - (void)drawRect:(NSRect)rect;
 - (BOOL)isOpaque;
 - (BOOL)acceptsFirstResponder;
@@ -59,10 +59,10 @@ extern NSString *OTTDMainLaunchGameEngine;
 /** Delegate for our NSWindow to send ask for quit on close */
 @interface OTTD_CocoaWindowDelegate : NSObject <NSWindowDelegate>
 {
-	CocoaSubdriver *driver;
+	WindowQuartzSubdriver *driver;
 }
 
-- (void)setDriver:(CocoaSubdriver*)drv;
+- (void)setDriver:(WindowQuartzSubdriver *)drv;
 
 - (BOOL)windowShouldClose:(id)sender;
 - (void)windowDidEnterFullScreen:(NSNotification *)aNotification;

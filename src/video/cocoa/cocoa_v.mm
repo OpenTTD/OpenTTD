@@ -56,7 +56,7 @@
 #endif
 
 bool _cocoa_video_started = false;
-CocoaSubdriver *_cocoa_subdriver = NULL;
+WindowQuartzSubdriver *_cocoa_subdriver = NULL;
 
 
 static bool ModeSorter(const OTTD_Point &p1, const OTTD_Point &p2)
@@ -143,32 +143,6 @@ static void QZ_UpdateVideoModes()
 	}
 }
 
-/**
- * Find a suitable cocoa subdriver.
- *
- * @param width Width of display area.
- * @param height Height of display area.
- * @param bpp Colour depth of display area.
- * @param fullscreen Whether a fullscreen mode is requested.
- * @param fallback Whether we look for a fallback driver.
- * @return Pointer to window subdriver.
- */
-static CocoaSubdriver *QZ_CreateSubdriver(int width, int height, int bpp, bool fullscreen, bool fallback)
-{
-	CocoaSubdriver *ret = QZ_CreateWindowQuartzSubdriver(width, height, bpp);
-	if (ret != nullptr && fullscreen) ret->ToggleFullscreen(fullscreen);
-
-	if (ret != nullptr) return ret;
-	if (!fallback) return nullptr;
-
-	/* Try again in 640x480 windowed */
-	DEBUG(driver, 0, "Setting video mode failed, falling back to 640x480 windowed mode.");
-	ret = QZ_CreateWindowQuartzSubdriver(640, 480, bpp);
-	if (ret != nullptr) return ret;
-
-	return nullptr;
-}
-
 
 static FVideoDriver_Cocoa iFVideoDriver_Cocoa;
 
@@ -182,7 +156,7 @@ void VideoDriver_Cocoa::Stop()
 	CocoaExitApplication();
 
 	delete _cocoa_subdriver;
-	_cocoa_subdriver = NULL;
+	_cocoa_subdriver = nullptr;
 
 	_cocoa_video_started = false;
 }
@@ -198,7 +172,7 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 	_cocoa_video_started = true;
 
 	/* Don't create a window or enter fullscreen if we're just going to show a dialog. */
-	if (!CocoaSetupApplication()) return NULL;
+	if (!CocoaSetupApplication()) return nullptr;
 
 	this->UpdateAutoResolution();
 
@@ -212,11 +186,13 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 		return "The cocoa quartz subdriver only supports 8 and 32 bpp.";
 	}
 
-	_cocoa_subdriver = QZ_CreateSubdriver(width, height, bpp, _fullscreen, true);
-	if (_cocoa_subdriver == NULL) {
+	_cocoa_subdriver = new WindowQuartzSubdriver();
+	if (!_cocoa_subdriver->ChangeResolution(width, height, bpp)) {
 		Stop();
 		return "Could not create subdriver";
 	}
+
+	if (_fullscreen) _cocoa_subdriver->ToggleFullscreen(_fullscreen);
 
 	this->GameSizeChanged();
 	QZ_UpdateVideoModes();
@@ -340,59 +316,14 @@ class WindowQuartzSubdriver;
 
 /* Subclass of OTTD_CocoaView to fix Quartz rendering */
 @interface OTTD_QuartzView : OTTD_CocoaView
-- (void)setDriver:(WindowQuartzSubdriver*)drv;
+- (void)setDriver:(WindowQuartzSubdriver *)drv;
 - (void)drawRect:(NSRect)invalidRect;
 @end
-
-class WindowQuartzSubdriver : public CocoaSubdriver {
-private:
-	/**
-	 * This function copies 8bpp pixels from the screen buffer in 32bpp windowed mode.
-	 *
-	 * @param left The x coord for the left edge of the box to blit.
-	 * @param top The y coord for the top edge of the box to blit.
-	 * @param right The x coord for the right edge of the box to blit.
-	 * @param bottom The y coord for the bottom edge of the box to blit.
-	 */
-	void BlitIndexedToView32(int left, int top, int right, int bottom);
-
-	virtual void GetDeviceInfo();
-	virtual bool SetVideoMode(int width, int height, int bpp);
-
-public:
-	WindowQuartzSubdriver();
-	virtual ~WindowQuartzSubdriver();
-
-	virtual void Draw(bool force_update);
-	virtual void MakeDirty(int left, int top, int width, int height);
-	virtual void UpdatePalette(uint first_color, uint num_colors);
-
-	virtual uint ListModes(OTTD_Point *modes, uint max_modes);
-
-	virtual bool ChangeResolution(int w, int h, int bpp);
-
-	virtual bool IsFullscreen();
-	virtual bool ToggleFullscreen(bool fullscreen); /* Full screen mode on OSX 10.7 */
-
-	virtual int GetWidth() { return window_width; }
-	virtual int GetHeight() { return window_height; }
-	virtual void *GetPixelBuffer() { return buffer_depth == 8 ? pixel_buffer : window_buffer; }
-
-	/* Convert local coordinate to window server (CoreGraphics) coordinate */
-	virtual CGPoint PrivateLocalToCG(NSPoint *p);
-
-	virtual NSPoint GetMouseLocation(NSEvent *event);
-	virtual bool MouseIsInsideView(NSPoint *pt);
-
-	virtual bool IsActive() { return active; }
-
-	bool WindowResized();
-};
 
 
 @implementation OTTD_QuartzView
 
-- (void)setDriver:(WindowQuartzSubdriver*)drv
+- (void)setDriver:(WindowQuartzSubdriver *)drv
 {
 	driver = drv;
 }
@@ -848,19 +779,6 @@ bool WindowQuartzSubdriver::WindowResized()
 	this->num_dirty_rects = MAX_DIRTY_RECTS;
 
 	return true;
-}
-
-
-CocoaSubdriver *QZ_CreateWindowQuartzSubdriver(int width, int height, int bpp)
-{
-	WindowQuartzSubdriver *ret = new WindowQuartzSubdriver();
-
-	if (!ret->ChangeResolution(width, height, bpp)) {
-		delete ret;
-		return NULL;
-	}
-
-	return ret;
 }
 
 #endif /* WITH_COCOA */

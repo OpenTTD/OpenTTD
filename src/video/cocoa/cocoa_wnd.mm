@@ -282,7 +282,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 @implementation OTTD_CocoaWindow
 
-- (void)setDriver:(CocoaSubdriver*)drv
+- (void)setDriver:(WindowQuartzSubdriver *)drv
 {
 	driver = drv;
 }
@@ -404,7 +404,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 /**
  * Initialize the driver
  */
-- (void)setDriver:(CocoaSubdriver*)drv
+- (void)setDriver:(WindowQuartzSubdriver *)drv
 {
 	driver = drv;
 }
@@ -810,7 +810,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 
 @implementation OTTD_CocoaWindowDelegate
 /** Initialize the video driver */
-- (void)setDriver:(CocoaSubdriver*)drv
+- (void)setDriver:(WindowQuartzSubdriver *)drv
 {
 	driver = drv;
 }
