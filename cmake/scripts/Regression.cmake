@@ -74,23 +74,30 @@ list(LENGTH REGRESSION_EXPECTED REGRESSION_EXPECTED_LENGTH)
 
 # Compare the output
 foreach(RESULT IN LISTS REGRESSION_RESULT)
-    list(GET REGRESSION_EXPECTED ${ARGC} EXPECTED)
+    unset(EXPECTED)
+    if(ARGC LESS REGRESSION_EXPECTED_LENGTH)
+        list(GET REGRESSION_EXPECTED ${ARGC} EXPECTED)
+    endif()
+
+    math(EXPR ARGC "${ARGC} + 1")
 
     if(NOT RESULT STREQUAL EXPECTED)
         message("${ARGC}: - ${EXPECTED}")
         message("${ARGC}: + ${RESULT}'")
         set(ERROR YES)
     endif()
-
-    math(EXPR ARGC "${ARGC} + 1")
 endforeach()
 
 if(NOT REGRESSION_EXPECTED_LENGTH EQUAL ARGC)
-    math(EXPR MISSING "${REGRESSION_EXPECTED_LENGTH} - ${ARGC}")
-    message("(${MISSING} more lines were expected than found)")
+    message("(${REGRESSION_EXPECTED_LENGTH} lines were expected but ${ARGC} were found)")
     set(ERROR YES)
 endif()
 
 if(ERROR)
-    message(FATAL_ERROR "Regression failed")
+    # Ouput the regression result to a file
+    set(REGRESSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/regression_${REGRESSION_TEST}_output.txt")
+    string(REPLACE ";" "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
+    file(WRITE ${REGRESSION_FILE} "${REGRESSION_RESULT}")
+
+    message(FATAL_ERROR "Regression failed - Output in ${REGRESSION_FILE}")
 endif()
