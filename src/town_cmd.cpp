@@ -1349,6 +1349,9 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 	assert(tile < MapSize());
 
+	/* Don't allow junctions on roadtypes which can't be built by towns. */
+	if (IsTileType(tile, MP_ROAD) && !HasBit(GetRoadTypeInfo(GetRoadTypeRoad(tile))->flags, ROTF_TOWN_BUILD)) return;
+
 	if (cur_rb == ROAD_NONE) {
 		/* Tile has no road. First reset the status counter
 		 * to say that this is the last iteration. */
