@@ -105,7 +105,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 		case MP_ROAD:
 			if (IsLevelCrossing(tile) && !HasCrossingReservation(tile)) {
 				SetCrossingReservation(tile, true);
-				UpdateLevelCrossing(tile, false);
+				UpdateLevelCrossing(tile);
 				return true;
 			}
 			break;
