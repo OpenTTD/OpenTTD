@@ -37,7 +37,6 @@
 #include "../../core/math_func.hpp"
 #include "../../framerate_type.h"
 
-#include <array>
 #import <sys/param.h> /* for MAXPATHLEN */
 
 /**
@@ -59,87 +58,41 @@ bool _cocoa_video_started = false;
 WindowQuartzSubdriver *_cocoa_subdriver = NULL;
 
 
-static bool ModeSorter(const OTTD_Point &p1, const OTTD_Point &p2)
-{
-	if (p1.x < p2.x) return true;
-	if (p1.x > p2.x) return false;
-	if (p1.y < p2.y) return true;
-	if (p1.y > p2.y) return false;
-	return false;
-}
-
-static void QZ_GetDisplayModeInfo(CFArrayRef modes, CFIndex i, int &bpp, uint16 &width, uint16 &height)
-{
-	CGDisplayModeRef mode = static_cast<CGDisplayModeRef>(const_cast<void *>(CFArrayGetValueAtIndex(modes, i)));
-
-	width = (uint16)CGDisplayModeGetWidth(mode);
-	height = (uint16)CGDisplayModeGetHeight(mode);
-
-#if (MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_11)
-	/* Extract bit depth from mode string. */
-	CFAutoRelease<CFStringRef> pixEnc(CGDisplayModeCopyPixelEncoding(mode));
-	if (CFStringCompare(pixEnc.get(), CFSTR(IO32BitDirectPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) bpp = 32;
-	if (CFStringCompare(pixEnc.get(), CFSTR(IO16BitDirectPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) bpp = 16;
-	if (CFStringCompare(pixEnc.get(), CFSTR(IO8BitIndexedPixels), kCFCompareCaseInsensitive) == kCFCompareEqualTo) bpp = 8;
-#else
-	/* CGDisplayModeCopyPixelEncoding is deprecated on OSX 10.11+, but there are no 8 bpp modes anyway... */
-	bpp = 32;
-#endif
-}
-
-uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int device_depth)
-{
-	CFAutoRelease<CFArrayRef> mode_list(CGDisplayCopyAllDisplayModes(display_id, nullptr));
-	CFIndex num_modes = CFArrayGetCount(mode_list.get());
-
-	/* Build list of modes with the requested bpp */
-	uint count = 0;
-	for (CFIndex i = 0; i < num_modes && count < max_modes; i++) {
-		int bpp;
-		uint16 width, height;
-
-		QZ_GetDisplayModeInfo(mode_list.get(), i, bpp, width, height);
-
-		if (bpp != device_depth) continue;
-
-		/* Check if mode is already in the list */
-		bool hasMode = false;
-		for (uint i = 0; i < count; i++) {
-			if (modes[i].x == width &&  modes[i].y == height) {
-				hasMode = true;
-				break;
-			}
-		}
-
-		if (hasMode) continue;
-
-		/* Add mode to the list */
-		modes[count].x = width;
-		modes[count].y = height;
-		count++;
-	}
-
-	/* Sort list smallest to largest */
-	std::sort(modes, modes + count, ModeSorter);
-
-	return count;
-}
+/** List of common display/window sizes. */
+static const Dimension _default_resolutions[] = {
+	{  640,  480 },
+	{  800,  600 },
+	{ 1024,  768 },
+	{ 1152,  864 },
+	{ 1280,  800 },
+	{ 1280,  960 },
+	{ 1280, 1024 },
+	{ 1400, 1050 },
+	{ 1600, 1200 },
+	{ 1680, 1050 },
+	{ 1920, 1200 },
+	{ 2560, 1440 }
+};
 
 /**
  * Update the video modus.
- *
- * @pre _cocoa_subdriver != NULL
  */
-static void QZ_UpdateVideoModes()
+void VideoDriver_Cocoa::UpdateVideoModes()
 {
-	assert(_cocoa_subdriver != NULL);
-
-	OTTD_Point modes[32];
-	uint count = _cocoa_subdriver->ListModes(modes, lengthof(modes));
-
 	_resolutions.clear();
-	for (uint i = 0; i < count; i++) {
-		_resolutions.emplace_back(modes[i].x, modes[i].y);
+
+	if (_cocoa_subdriver != nullptr && _cocoa_subdriver->IsFullscreen()) {
+		/* Full screen, there is only one possible resolution. */
+		NSSize screen = [ [ _cocoa_subdriver->window screen ] frame ].size;
+		_resolutions.emplace_back((uint)screen.width, (uint)screen.height);
+	} else {
+		/* Windowed; offer a selection of common window sizes up until the
+		 * maximum usable screen space. This excludes the menu and dock areas. */
+		NSSize maxSize = [ [ NSScreen mainScreen] visibleFrame ].size;
+		for (const auto &d : _default_resolutions) {
+			if (d.width < maxSize.width && d.height < maxSize.height) _resolutions.push_back(d);
+		}
+		_resolutions.emplace_back((uint)maxSize.width, (uint)maxSize.height);
 	}
 }
 
@@ -195,7 +148,7 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 	if (_fullscreen) _cocoa_subdriver->ToggleFullscreen(_fullscreen);
 
 	this->GameSizeChanged();
-	QZ_UpdateVideoModes();
+	this->UpdateVideoModes();
 
 	return NULL;
 }
@@ -242,7 +195,6 @@ bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 	bool ret = _cocoa_subdriver->ChangeResolution(w, h, BlitterFactory::GetCurrentBlitter()->GetScreenDepth());
 
 	this->GameSizeChanged();
-	QZ_UpdateVideoModes();
 
 	return ret;
 }
@@ -257,7 +209,9 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 {
 	assert(_cocoa_subdriver != NULL);
 
-	return _cocoa_subdriver->ToggleFullscreen(full_screen);
+	bool res = _cocoa_subdriver->ToggleFullscreen(full_screen);
+	this->UpdateVideoModes();
+	return res;
 }
 
 /**
@@ -666,11 +620,6 @@ void WindowQuartzSubdriver::UpdatePalette(uint first_color, uint num_colors)
 	}
 
 	this->num_dirty_rects = MAX_DIRTY_RECTS;
-}
-
-uint WindowQuartzSubdriver::ListModes(OTTD_Point *modes, uint max_modes)
-{
-	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, this->buffer_depth);
 }
 
 bool WindowQuartzSubdriver::ChangeResolution(int w, int h, int bpp)
