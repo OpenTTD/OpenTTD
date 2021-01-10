@@ -31,7 +31,7 @@
 {
 	if (!IsValidCargo(cargo_type)) return nullptr;
 
-	::SetDParam(0, 1 << cargo_type);
+	::SetDParam(0, 1ULL << cargo_type);
 	return GetString(STR_JUST_CARGO_LIST);
 }
 
