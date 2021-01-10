@@ -3794,6 +3794,8 @@ void IncreaseStats(Station *st, CargoID cargo, StationID next_station_id, uint c
  */
 void IncreaseStats(Station *st, const Vehicle *front, StationID next_station_id)
 {
+	bool current_order_is_implicit = front->current_order.IsType(OT_IMPLICIT);
+
 	for (const Vehicle *v = front; v != nullptr; v = v->Next()) {
 		if (v->refit_cap > 0) {
 			/* The cargo count can indeed be higher than the refit_cap if
@@ -3802,6 +3804,13 @@ void IncreaseStats(Station *st, const Vehicle *front, StationID next_station_id)
 			 * among the wagons in that case.
 			 * As usage is not such an important figure anyway we just
 			 * ignore the additional cargo then.*/
+			Station *next_station = Station::Get(next_station_id);
+			if (current_order_is_implicit && !HasBit(GetAcceptanceMask(next_station), v->cargo_type)) {
+				/* Prevent node links to be created for implicit stops
+				 * whose stations do not accept the provided cargo. */
+				break;
+			}
+
 			IncreaseStats(st, v->cargo_type, next_station_id, v->refit_cap,
 					std::min<uint>(v->refit_cap, v->cargo.StoredCount()), EUM_INCREASE);
 		}
