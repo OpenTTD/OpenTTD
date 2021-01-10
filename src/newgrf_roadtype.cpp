@@ -133,6 +133,37 @@ SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSp
 }
 
 /**
+ * Translate an index to the GRF-local road/tramtype-translation table into a RoadType.
+ * @param rtt       Whether to index the road- or tramtype-table.
+ * @param tracktype Index into GRF-local translation table.
+ * @param grffile   Originating GRF file.
+ * @return RoadType or INVALID_ROADTYPE if the roadtype is unknown.
+ */
+RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8 tracktype, const GRFFile *grffile)
+{
+	/* Because OpenTTD mixes RoadTypes and TramTypes into the same type,
+	 * the mapping of the original road- and tramtypes does not match the default GRF-local mapping.
+	 * So, this function cannot provide any similar behavior to GetCargoTranslation() and GetRailTypeTranslation()
+	 * when the GRF defines no translation table.
+	 * But since there is only one default road/tram-type, this makes little sense anyway.
+	 * So for GRF without translation table, we always return INVALID_ROADTYPE.
+	 */
+
+	if (grffile == nullptr) return INVALID_ROADTYPE;
+
+	const auto &list = rtt == RTT_TRAM ? grffile->tramtype_list : grffile->roadtype_list;
+	if (tracktype >= list.size()) return INVALID_ROADTYPE;
+
+	/* Look up roadtype including alternate labels. */
+	RoadType result = GetRoadTypeByLabel(list[tracktype]);
+
+	/* Check whether the result is actually the wanted road/tram-type */
+	if (result != INVALID_ROADTYPE && GetRoadTramType(result) != rtt) return INVALID_ROADTYPE;
+
+	return result;
+}
+
+/**
  * Perform a reverse roadtype lookup to get the GRF internal ID.
  * @param roadtype The global (OpenTTD) roadtype.
  * @param grffile The GRF to do the lookup for.

@@ -702,6 +702,36 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 			return ret;
 		}
 
+		case 0x63:
+			/* Tile compatibility wrt. arbitrary track-type
+			 * Format:
+			 *  bit 0: Type 'parameter' is known.
+			 *  bit 1: Engines with type 'parameter' are compatible with this tile.
+			 *  bit 2: Engines with type 'parameter' are powered on this tile.
+			 *  bit 3: This tile has type 'parameter' or it is considered equivalent (alternate labels).
+			 */
+			switch (v->type) {
+				case VEH_TRAIN: {
+					RailType param_type = GetRailTypeTranslation(parameter, object->ro.grffile);
+					if (param_type == INVALID_RAILTYPE) return 0x00;
+					RailType tile_type = GetTileRailType(v->tile);
+					if (tile_type == param_type) return 0x0F;
+					return (HasPowerOnRail(param_type, tile_type) ? 0x04 : 0x00) |
+							(IsCompatibleRail(param_type, tile_type) ? 0x02 : 0x00) |
+							0x01;
+				}
+				case VEH_ROAD: {
+					RoadTramType rtt = GetRoadTramType(RoadVehicle::From(v)->roadtype);
+					RoadType param_type = GetRoadTypeTranslation(rtt, parameter, object->ro.grffile);
+					if (param_type == INVALID_ROADTYPE) return 0x00;
+					RoadType tile_type = GetRoadType(v->tile, rtt);
+					if (tile_type == param_type) return 0x0F;
+					return (HasPowerOnRoad(param_type, tile_type) ? 0x06 : 0x00) |
+							0x01;
+				}
+				default: return 0x00;
+			}
+
 		case 0xFE:
 		case 0xFF: {
 			uint16 modflags = 0;

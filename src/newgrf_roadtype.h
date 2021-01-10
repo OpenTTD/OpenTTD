@@ -48,6 +48,7 @@ struct RoadTypeResolverObject : public ResolverObject {
 
 SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSpriteGroup rtsg, TileContext context = TCX_NORMAL, uint *num_results = nullptr);
 
+RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8 tracktype, const GRFFile *grffile);
 uint8 GetReverseRoadTypeTranslation(RoadType roadtype, const GRFFile *grffile);
 
 #endif /* NEWGRF_ROADTYPE_H */
