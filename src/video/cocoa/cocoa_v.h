@@ -77,6 +77,7 @@ private:
 	friend class WindowQuartzSubdriver;
 
 	void GameSizeChanged();
+	void UpdateVideoModes();
 };
 
 class FVideoDriver_Cocoa : public DriverFactoryBase {
@@ -209,7 +210,5 @@ public:
 };
 
 extern WindowQuartzSubdriver *_cocoa_subdriver;
-
-uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
 
 #endif /* VIDEO_COCOA_H */
