@@ -1838,6 +1838,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}정말 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}치트
 STR_CHEATS_TOOLTIP                                              :{BLACK}체크박스의 체크 표시는 이전에 이 치트를 사용했는지 여부를 나타냅니다.
+STR_CHEATS_NOTE                                                 :{BLACK}참고: 치트 사용 여부는 저장 파일에 기록될 것입니다
 STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY_LONG} 만큼 증가
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설이나 옮길 수 없는 건물 제거): {ORANGE}{STRING}

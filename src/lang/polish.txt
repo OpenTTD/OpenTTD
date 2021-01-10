@@ -2217,6 +2217,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Czy jes
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Oszustwa
 STR_CHEATS_TOOLTIP                                              :{BLACK}Pole wyboru wskazuje, czy użyłeś już wcześniej tego oszustwa
+STR_CHEATS_NOTE                                                 :{BLACK}Uwaga: każde użycie tych ustawień zostanie zanotowane w pliku zapisu gry
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwiększ ilość pieniędzy o {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, nieprzesuwalnych obiektów): {ORANGE}{STRING}
@@ -2733,6 +2734,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Połącz
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Zbuduj oddzielny posterunek
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Nieaktywne, ponieważ nie są dostępne pojazdy korzystające z takiej infrastruktury
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstrukcja linii kolejowej
@@ -4408,6 +4410,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Przebuduj na {
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Nie może korzystać ze stacji){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(sugerowany)
 
@@ -4860,6 +4863,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Zły typ zajezd
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} jest za długi po wymianie
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Brak reguł autozastępowania/odnawiania
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limit funduszy)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}{STRING} to ładunek nieobsługiwany przez ten pojazd.
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nowy pojazd nie może być tak przebudowywany (polecenie {NUM})
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Niemożliwa kombinacja torów
