@@ -44,4 +44,5 @@ Some things are not automated, and forgotten often. This list is a reminder for 
     * ai_changelog.hpp, gs_changelog.hpp need updating.
     * The compatibility wrappers (compat_*.nut) need updating.
 * This PR affects the NewGRF API? (label 'needs review: NewGRF')
+    * newgrf_debug_data.h may need updating.
     * [PR must be added to API tracker](https://wiki.openttd.org/en/Development/NewGRF/Specification%20Status)
