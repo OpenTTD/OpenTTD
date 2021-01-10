@@ -784,7 +784,7 @@ CommandCost CmdBuildRoad(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 				bool reserved = HasBit(GetRailReservationTrackBits(tile), railtrack);
 				MakeRoadCrossing(tile, company, company, GetTileOwner(tile), roaddir, GetRailType(tile), rtt == RTT_ROAD ? rt : INVALID_ROADTYPE, (rtt == RTT_TRAM) ? rt : INVALID_ROADTYPE, p2);
 				SetCrossingReservation(tile, reserved);
-				UpdateLevelCrossing(tile, false);
+				UpdateLevelCrossing(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			return CommandCost(EXPENSES_CONSTRUCTION, 2 * RoadBuildCost(rt));
