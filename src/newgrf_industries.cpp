@@ -311,6 +311,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		case 0x70:
 		case 0x71: {
 			CargoID cargo = GetCargoTranslation(parameter, this->ro.grffile);
+			if (cargo == CT_INVALID) return 0;
 			int index = this->industry->GetCargoProducedIndex(cargo);
 			if (index < 0) return 0; // invalid cargo
 			switch (variable) {
@@ -329,6 +330,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		case 0x6E:
 		case 0x6F: {
 			CargoID cargo = GetCargoTranslation(parameter, this->ro.grffile);
+			if (cargo == CT_INVALID) return 0;
 			int index = this->industry->GetCargoAcceptedIndex(cargo);
 			if (index < 0) return 0; // invalid cargo
 			if (variable == 0x6E) return this->industry->last_cargo_accepted_at[index];
