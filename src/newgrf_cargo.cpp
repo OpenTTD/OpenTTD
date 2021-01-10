@@ -91,7 +91,10 @@ uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const
 CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit)
 {
 	/* Pre-version 7 uses the 'climate dependent' ID in callbacks and properties, i.e. cargo is the cargo ID */
-	if (grffile->grf_version < 7 && !usebit) return cargo;
+	if (grffile->grf_version < 7 && !usebit) {
+		if (cargo >= CargoSpec::GetArraySize() || !CargoSpec::Get(cargo)->IsValid()) return CT_INVALID;
+		return cargo;
+	}
 
 	/* Other cases use (possibly translated) cargobits */
 
