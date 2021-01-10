@@ -1169,8 +1169,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 							 * not be a significant change in the top and left coordinates
 							 * of the vehicle.
 							 */
-							Vehicle* v_mutable = const_cast<Vehicle*>(v);
-							v_mutable->Vehicle::UpdateBoundingBoxCoordinates(false);
+							v->UpdateBoundingBoxCoordinates(false);
 						}
 						v->sprite_cache.revalidate_before_draw = false;
 					}
@@ -1599,11 +1598,11 @@ void Vehicle::UpdatePosition()
 	UpdateVehicleTileHash(this, false);
 }
 
-/*
+/**
  * Update the bounding box co-ordinates of the vehicle
  * @param update_cache Update the cached values for previous co-ordinate values
 */
-void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache)
+void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache) const
 {
 	Rect new_coord;
 	this->sprite_cache.sprite_seq.GetBounds(&new_coord);
@@ -1621,19 +1620,30 @@ void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache)
 		 */
 		this->sprite_cache.old_coord = this->coord.left == INVALID_COORD ? new_coord : this->coord;
 	}
+	else {
+		/* The sprite was updated within a direction, increase the bounding box variance values if necessary */
+		this->sprite_cache.x_variance = std::max(this->sprite_cache.old_coord.left - new_coord.left,     this->sprite_cache.x_variance);
+		this->sprite_cache.x_variance = std::max(new_coord.right - this->sprite_cache.old_coord.right,   this->sprite_cache.x_variance);
+		this->sprite_cache.y_variance = std::max(this->sprite_cache.old_coord.top - new_coord.top,       this->sprite_cache.y_variance);
+		this->sprite_cache.y_variance = std::max(new_coord.bottom - this->sprite_cache.old_coord.bottom, this->sprite_cache.y_variance);
+
+		/* Extend the bounds of the existing cached bounding box so the next dirty window is correct */
+		this->sprite_cache.old_coord.left   = std::min(this->sprite_cache.old_coord.left,   this->coord.left);
+		this->sprite_cache.old_coord.top    = std::min(this->sprite_cache.old_coord.top,    this->coord.top);
+		this->sprite_cache.old_coord.right  = std::max(this->sprite_cache.old_coord.right,  this->coord.right);
+		this->sprite_cache.old_coord.bottom = std::max(this->sprite_cache.old_coord.bottom, this->coord.bottom);
+	}
 
 	this->coord = new_coord;
 }
 
 /**
- * Update the vehicle on the viewport, updating the right hash and setting the
- *  new coordinates.
+ * Update the vehicle on the viewport, updating the right hash and setting the new coordinates.
  * @param dirty Mark the (new and old) coordinates of the vehicle as dirty.
  */
 void Vehicle::UpdateViewport(bool dirty)
 {
-	Rect old_coord;
-	old_coord = this->sprite_cache.old_coord;
+	Rect old_coord = this->sprite_cache.old_coord;
 
 	this->UpdateBoundingBoxCoordinates(true);
 	UpdateVehicleViewportHash(this, this->coord.left, this->coord.top, old_coord.left, old_coord.top);
@@ -1643,10 +1653,10 @@ void Vehicle::UpdateViewport(bool dirty)
 			this->MarkAllViewportsDirty();
 		} else {
 			::MarkAllViewportsDirty(
-					std::min(old_coord.left,   this->coord.left),
-					std::min(old_coord.top,    this->coord.top),
-					std::max(old_coord.right,  this->coord.right),
-					std::max(old_coord.bottom, this->coord.bottom));
+					std::min(this->sprite_cache.old_coord.left,   this->coord.left)   - this->sprite_cache.x_variance,
+					std::min(this->sprite_cache.old_coord.top,    this->coord.top)    - this->sprite_cache.y_variance,
+					std::max(this->sprite_cache.old_coord.right,  this->coord.right)  + this->sprite_cache.x_variance,
+					std::max(this->sprite_cache.old_coord.bottom, this->coord.bottom) + this->sprite_cache.y_variance);
 		}
 	}
 }

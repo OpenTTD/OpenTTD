@@ -189,6 +189,8 @@ struct MutableSpriteCache {
 	Direction last_direction;     ///< Last direction we obtained sprites for
 	bool revalidate_before_draw;  ///< We need to do a GetImage() and check bounds before drawing this sprite
 	Rect old_coord;               ///< Co-ordinates from the last valid bounding box
+	int x_variance;               ///< How much the width of the sprite can vary within a single direction
+	int y_variance;               ///< How much the height of the sprite can vary within a single direction
 	VehicleSpriteSeq sprite_seq;  ///< Vehicle appearance.
 };
 
@@ -251,7 +253,7 @@ public:
 
 	CargoPayment *cargo_payment;        ///< The cargo payment we're currently in
 
-	Rect coord;                         ///< NOSAVE: Graphical bounding box of the vehicle, i.e. what to redraw on moves.
+	mutable Rect coord;                 ///< NOSAVE: Graphical bounding box of the vehicle, i.e. what to redraw on moves.
 
 	Vehicle *hash_viewport_next;        ///< NOSAVE: Next vehicle in the visual location hash.
 	Vehicle **hash_viewport_prev;       ///< NOSAVE: Previous vehicle in the visual location hash.
@@ -768,7 +770,7 @@ public:
 
 	void UpdatePosition();
 	void UpdateViewport(bool dirty);
-	void UpdateBoundingBoxCoordinates(bool update_cache);
+	void UpdateBoundingBoxCoordinates(bool update_cache) const;
 	void UpdatePositionAndViewport();
 	void MarkAllViewportsDirty() const;
 
