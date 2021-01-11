@@ -325,6 +325,9 @@ protected:
 		/* Where to draw the X axis. Use floating point to avoid overflowing and results of zero. */
 		x_axis_offset = (int)((r.bottom - r.top) * (double)interval.highest / (double)interval_size);
 
+		/* Draw the background of the graph itself. */
+		GfxFillRect(r.left, r.top, r.right, r.bottom, GREY_SCALE(2));
+
 		/* Draw the vertical grid lines. */
 
 		/* Don't draw the first line, as that's where the axis will be. */
