@@ -856,8 +856,6 @@ static void MaybeCrashAirplane(Aircraft *v);
  */
 static bool AircraftController(Aircraft *v)
 {
-	int count;
-
 	/* nullptr if station is invalid */
 	const Station *st = Station::GetIfValid(v->targetairport);
 	/* INVALID_TILE if there is no station */
@@ -917,7 +915,7 @@ static bool AircraftController(Aircraft *v)
 			}
 		} else {
 			u->cur_speed = 32;
-			count = UpdateAircraftSpeed(v);
+			int count = UpdateAircraftSpeed(v);
 			if (count > 0) {
 				v->tile = 0;
 
@@ -972,7 +970,7 @@ static bool AircraftController(Aircraft *v)
 			}
 			u->cur_speed += 4;
 		} else {
-			count = UpdateAircraftSpeed(v);
+			int count = UpdateAircraftSpeed(v);
 			if (count > 0) {
 				if (v->z_pos > z) {
 					SetAircraftPosition(v, v->x_pos, v->y_pos, std::max(v->z_pos - count, z));
@@ -1023,8 +1021,15 @@ static bool AircraftController(Aircraft *v)
 	if (amd.flag & AMED_LAND)       { speed_limit = SPEED_LIMIT_APPROACH; hard_limit = false; }
 	if (amd.flag & AMED_BRAKE)      { speed_limit = SPEED_LIMIT_TAXI;     hard_limit = false; }
 
-	count = UpdateAircraftSpeed(v, speed_limit, hard_limit);
+	int count = UpdateAircraftSpeed(v, speed_limit, hard_limit);
 	if (count == 0) return false;
+
+	/* If the plane will be a few subpixels away from the destination after
+	 * this movement loop, start nudging him towards the exact position for
+	 * the whole loop. Otherwise, heavily depending on the speed of the plane,
+	 * it is possible we totally overshoot the target, causing the plane to
+	 * make a loop, and trying again, and again, and again .. */
+	bool nudge_towards_target = static_cast<uint>(count) + 3 > dist;
 
 	if (v->turn_counter != 0) v->turn_counter--;
 
@@ -1032,7 +1037,7 @@ static bool AircraftController(Aircraft *v)
 
 		GetNewVehiclePosResult gp;
 
-		if (dist < 4 || (amd.flag & AMED_LAND)) {
+		if (nudge_towards_target || (amd.flag & AMED_LAND)) {
 			/* move vehicle one pixel towards target */
 			gp.x = (v->x_pos != (x + amd.x)) ?
 					v->x_pos + ((x + amd.x > v->x_pos) ? 1 : -1) :
