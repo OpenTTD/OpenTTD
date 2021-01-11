@@ -192,6 +192,7 @@ STR_COLOUR_WHITE                                                :ابيض
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}ميل/س
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}كم/س
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}م/ث
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}مربعات/ اليوم
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}حصان
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}حصان
@@ -226,6 +227,7 @@ STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}حدد �
 STR_BUTTON_SORT_BY                                              :{BLACK} رتب بـ
 STR_BUTTON_LOCATION                                             :{BLACK}الموقع
 STR_BUTTON_RENAME                                               :{BLACK}اعادة تسمية
+STR_BUTTON_CATCHMENT                                            :{BLACK}مدى التغطية
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}اغلاق الاطار
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان الاطار- اسحب لتحريك الاطار
@@ -880,6 +882,8 @@ STR_GAME_OPTIONS_CURRENCY_TRY                                   :ليرة ترك
 STR_GAME_OPTIONS_CURRENCY_SKK                                   :كرونا سلوفاكية (SKK)
 STR_GAME_OPTIONS_CURRENCY_BRL                                   :ريال برازيلي (BRL)
 STR_GAME_OPTIONS_CURRENCY_EEK                                   :كرونا استونية (EEK)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :وون كوريا الجنوبية (KRW)
+STR_GAME_OPTIONS_CURRENCY_ZAR                                   :راند جنوب أفريقيا (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :مخصص ...
 ############ end of currency region
 
@@ -1088,6 +1092,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :السماح ب
 STR_CONFIG_SETTING_CATCHMENT                                    :السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :كمية دخان/شرار القطارات:{STRING}
+STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :حدد مقدار الدخان أو عدد الشرارت من المركبات
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :موديل تسارع القطارات: {STRING}
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :نمط تسارع عربات الطريق: {STRING}
 STR_CONFIG_SETTING_FORBID_90_DEG                                :منع القطارات والسفن من الدوران بزاوية تسعين درجة : {STRING}
@@ -1098,6 +1103,7 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :بدون
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ككل المصانع الأخرى
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :تنقيب
 STR_CONFIG_SETTING_MULTIPINDTOWN                                :السماح بوجود أكثر من مصنع من نفس النوع في المدينة الواحدة: {STRING}
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :على جانب القيادة
 STR_CONFIG_SETTING_SHOWFINANCES                                 :أعرض نافذة المالية في آخر السنة: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :الامر الجديد - بدون توقف - قياسيا: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION                                :اوامر القطار الجديدة تتوقف قياسيا في {STRING} رصيف المحطة
@@ -1117,6 +1123,7 @@ STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :منخفض
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :طبيعي
 STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :السماح للعربات بالعبور خلال المواقف المملوكة داخل المدن: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :السماح بمرور العربات خلال المحطات المملوكة للمنافسين: {STRING}
+STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :السماح ببناء مواقف السيارات على الطرق المملوكة لشركات أخرى
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}تغير هذا الخيار غير متاح عندما يكون هناك عربات
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :صيانة البنية التحتية: {STRING}
 
@@ -1244,6 +1251,7 @@ STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :عطل ادوا
 STR_CONFIG_SETTING_MAX_TRAINS                                   :الحد الأعلى لعدد القطارات لكل شركة: {STRING}
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :الحد الأعلى لعدد العربات لكل شركة: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :الحد الأعلى لعدد الطائرات لكل شركة: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :الحد الأقصى لعدد الطائرات التي يمكن أن تمتلكها الشركة
 STR_CONFIG_SETTING_MAX_SHIPS                                    :الحد الأعلى لعدد السفن لكل شركة: {STRING}
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :حظر القطارات على الحاسوب: {STRING}
@@ -1251,6 +1259,7 @@ STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :حظر العر
 STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :حظر الطائرات على الحاسوب: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :حظر السفن على الحاسوب: {STRING}
 
+STR_CONFIG_SETTING_AI_PROFILE_EASY                              :سهل
 
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :السماح بالذكاء الصناعي في اللعب الجماعي : {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcodes قبل تعليق الاسكربت: {STRING}
@@ -1289,6 +1298,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :ممتلئ
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :الاخبار الملونة تظهر في: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :سنة البدايه: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :لا تنتهي
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :السماح بشراء حصص من الشركات الاخرى: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :اتاحة استخدام الأشارات بالأعلام قبل :{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :السماح باستخدام اشارات واجهة المستخدم الرسومية: {STRING}
@@ -1336,11 +1346,15 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :سريع
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :سريع جدا
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضاعف المدن المبدئي: {STRING}
 
+STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :ضبط هذا إلى أقل من 100٪ يؤدي إلى جعل التوزيع المتماثل يتصرف مثل التوزيع غير المتماثل. سيتم إعادة شحنات أقل غصبا إذا تم إرسال مبلغ معين إلى المحطة. إذا قمت بتعيينه على 0٪ ، فإن التوزيع المتماثل يتصرف تمامًا مثل التوزيع غير المتماثل
+
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :(متري (كم / ساعة
 
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :(متري (طن
 
 
-
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     ::وحدات جهد الجر {STRING}
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :م) متري)
 
@@ -1829,6 +1843,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} اخت�
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK} ضع علامة على التحديثات للمحتويات الموجودة و التي سيتم تحميلها
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} مسح الكل
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} ضع علامة على المحتوى التي لن يتم تحميلها
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}بحث المواقع الخارجية
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}مُرَشِح:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK} تحميل
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK} ابدأ تحميل المحتويات المختارة
@@ -2201,6 +2216,7 @@ STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: 
 STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}الشحنة المقبولة: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA} /8 {STRING})
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}:نوع الطريق {LTBLUE}{STRING}
+STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}:نوع الترام {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}حدود سرعة سكة الحديد: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}حدود سرعه الطريق: {LTBLUE}{VELOCITY}
 
@@ -2302,9 +2318,12 @@ STR_ABOUT_VERSION                                               :{BLACK}النس
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}النسخة المفتوحة {COPYRIGHT}2002-{STRING} فريق النسخة المفتوحة
 
 # Framerate display window
+STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} صورة في الثانية
 ############ Leave those lines in this order!!
+STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GAMESCRIPT                                :كتابة اللعبة
 ############ End of leave-in-this-order
 
 
@@ -2330,6 +2349,7 @@ STR_SAVELOAD_DETAIL_CAPTION                                     :{BLACK}تفاص
 STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}لا توجد معلومات متاحة
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}اضافات جديدة: {WHITE}{STRING}
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}الكتابة على الملف
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}ادخل اسم الحفظ للعبة
 
@@ -2640,6 +2660,7 @@ STR_GOAL_QUESTION_CAPTION_WARNING                               :تحذير
 STR_GOAL_QUESTION_CAPTION_ERROR                                 :خطا
 
 ############ Start of Goal Question button list
+STR_GOAL_QUESTION_BUTTON_RETRY                                  :إعادة المحاولة
 ############ End of Goal Question button list
 
 # Subsidies window
@@ -2652,6 +2673,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}اضغط على الخدمة لتوسيط الخريطة على المصنع/المدينة. اضغط + كنترول لفتح شاشة عرض جديدة للمدينة.
 
 # Story book window
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}كتاب القصة
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}اسم المحطة - اضغط على اسم المحطة لتوسيطها في الشاشة. اضغط + كنترول لفتح شاشة عرض جديدة بمنطقة المحطة.
@@ -2677,6 +2699,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}يقبل
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}معدل النقل
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}اظهار معدل النقل للمحطة
 
+STR_STATION_VIEW_WAITING_AMOUNT                                 :الكمية: في الانتظار
 
 
 ############ range for rating starts
@@ -2786,7 +2809,9 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}نحن �
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}صناعات
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}-بدون-
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}اسماء المصانع - اضغط على اسم المصنع لتوسيط الشاشة عليه. اضغط + كنترول لفتح شاشة عرض جديدة لمنطقة المصنع.
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :بدون
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -2893,6 +2918,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK} الس�
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK} العربات ذات الطاقة: {GOLD}+{POWER}{BLACK} الوزن: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}يمكن تعديلها الى: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :كل انواع الحمولة
+STR_PURCHASE_INFO_NONE                                          :بدون
 STR_PURCHASE_INFO_ALL_BUT                                       :الكل الا {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}تأثير الجذب القصى: {GOLD}{FORCE}
 
@@ -2925,6 +2951,7 @@ STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}اعاد
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}اعادة تسمية نوع الطائرة
 
 
+STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}عرض
 
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}   تبيدل بين إخفاء / عرض نوع الطائرة
 
@@ -3191,6 +3218,7 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}السع
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (تغيير)
 STR_REFIT_TITLE                                                 :{GOLD}اختر نوع الحمولة ...
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}{}{BLACK}تكلفة التغيير: {RED}{CURRENCY_LONG}
+STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}:المساحة الجديدة {GOLD}{CARGO_LONG}{}{BLACK}:الدخل من التجديد {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}السعة الجديدة: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}تكلفة اعادة التهيئة: {RED}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}اختر العربة لاعادة تهيئتها. اسحب بالفارة لاختيار عدة عربات. اضغط على مساحة خالية لاختيار كل العربات. اضغط + كنترول لاختيار العربة الحالية وما بعدها.
 
@@ -3478,6 +3506,7 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK} اخت�
 STR_AI_LIST_CANCEL                                              :{BLACK} الغاء
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK} لا تغير الذكاء الصناعي
 
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}التقط لقطة شاشة كاملة
 
 # AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK} اغلاق
@@ -3752,6 +3781,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}تعذر
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}تعذر إزاله سكه الترام من هنا...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... لا يوجد طريق
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... لا يوجد سكه ترام هنا
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}لا يوجد ترام مناسب
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}تعذر بناء القناه هنا...

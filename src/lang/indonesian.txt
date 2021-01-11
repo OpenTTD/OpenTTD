@@ -314,6 +314,9 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Kapasitas muata
 STR_SORT_BY_RANGE                                               :Jangkauan
 STR_SORT_BY_POPULATION                                          :Populasi
 STR_SORT_BY_RATING                                              :Peringkat
+STR_SORT_BY_NUM_VEHICLES                                        :Jumlah kendaraan
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Total laba tahun ini
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Laba rata-rata tahun lalu
 
 # Group by options for vehicle list
 
@@ -772,6 +775,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Tampilka
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Tampilkan pesan atau laporan berita terakhir
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  BERHENTI  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * PAUSED (menunggu pembaruan grafik tautan) * *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}SIMPAN OTOMATIS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  MENYIMPAN PERMAINAN  *  *
 
@@ -1316,7 +1320,7 @@ STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Tampilkan nama 
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Tambahkan garis ke jendela beli kendaraan, yang menunjukkan NewGRF kendaraan yang dipilih berasal.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Bentang Darat: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Bentang darat akan menegaskan skenario bermain dasar dengan muatan berbeda dan kebutuhan pertumbuhan kota. Data NewGRF dan Game Script lain membolehkan lebih banyak pengaturan.
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Lanskap mendefinisikan skenario gameplay dasar dengan kargo yang berbeda dan persyaratan pertumbuhan kota. NewGRF dan Game Scripts memungkinkan kontrol yang lebih halus
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Pembangkit dataran: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Pembuat yang orisinil tergantung pada kelompok grafik yang dasar, dan membuat bentang darat yang tertentu. TerraGenesis adalah pembuat yang berbasis Perlin Noise, dengan pengaturan kuasa yang lebih spesifik
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Asli
@@ -1442,6 +1446,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Toolbar tetap a
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menjagakan alat pembangunan untuk jembatan, terowongan, etc. buka setelah dipakai
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kelompokkan pengeluaran perusahaan dalam neraca: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Mendefinisikan tata ruang untuk tetingkap biaya perusahaan
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Secara otomatis menghapus sinyal selama konstruksi rel: {STRING}
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Ticker berita: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Mainkan suara untuk pesanan berita yang diringkas
@@ -1555,6 +1560,10 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Penilaian akhir
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Tahun pertandingan berakhir untuk tujuan mencetak gol. Pada akhir tahun ini, skor perusahaan dicatat dan layar skor tertinggi ditampilkan, tetapi para pemain dapat terus bermain setelah itu.{} Jika ini sebelum tahun mulai, layar skor tinggi tidak pernah ditampilkan.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Tidak pernah
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipe ekonomi: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Ekonomi yang lancar membuat perubahan produksi lebih sering, dan dalam langkah yang lebih kecil. Ekonomi beku menghentikan perubahan produksi dan penutupan industri. Pengaturan ini mungkin tidak berpengaruh jika jenis industri disediakan oleh NewGRF.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Asli
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Halus
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ijinkan pembelian saham perusahaan lain: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Jika diaktifkan, pemain dibolehkan membeli saham suatu perusahaan. Saham hanya bisa dibeli saat perusahaan memasuki umur tertentu
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Usia minimum perusahaan untuk memperdagangkan saham: {STRING}
@@ -1606,6 +1615,9 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linier
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Penempatan pohon dalam permainan: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Mengendalikan kemunculan pohon dalam permainan. Ini akan berefek pada industri yang memerlukan pohon, contohnya pengolahan kayu gelondongan
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Tumbuh tapi jangan menyebar {RED}(memecahkan pabrik kayu)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Tumbuh tetapi hanya tersebar di hutan hujan
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Jangan tumbuh, jangan menyebar {RED}(menghancurkan pabrik kayu)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posisi toolbar utama: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posisi horizontal toolbar utama di bagian atas layar
@@ -1815,6 +1827,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Apa and
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Kode Curang
 STR_CHEATS_TOOLTIP                                              :{BLACK}Daftar cek ini mengindikasikan bahwa anda telah menggunakan kode curang ini sebelumnya
+STR_CHEATS_NOTE                                                 :{BLACK}Catatan: setiap penggunaan pengaturan ini akan direkam oleh savegame
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Bermain sebagai pemain: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, objek tidak bergerak): {ORANGE}{STRING}
@@ -1966,6 +1979,9 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Bergabun
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Cek server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Periksa lagi status server
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Cari di internet untuk server publik
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}CARI LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Cari jaringan area lokal untuk server
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Tambah server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Daftarkan server baru yang akan dipantau aktivitasnya
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Mulai server
@@ -2191,11 +2207,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Permainan masih
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Permainan masih dihentikan ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Permainan masih dihentikan ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Permainan masih dijeda({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Permainan dilanjutkan ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :jumlah pemain
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :menghubungkan ke klien
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :skrip permainan
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :menunggu pembaruan grafik link
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :pergi
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} telah bergabung
@@ -2324,6 +2342,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Gabungka
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Pisahkan waypoint
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Dinonaktifkan karena saat ini tidak ada kendaraan yang tersedia untuk infrastruktur ini
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Pembangunan Rel Kereta
@@ -2519,6 +2538,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Tanam po
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Tempatkan tipe tumbuhan secara acak. Shift untuk menampilkan perkiraan biaya
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Pohon Acak
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Menanam pohon secara acak pada lansekap
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Tanam pohon tunggal dengan menyeret ke atas lanskap.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Kelompok Pohon
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Tanam hutan kecil dengan menyeret ke atas lanskap.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Hutan
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Tanam hutan besar dengan menyeret ke atas lanskap.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Pertumbuhan Wilayah
@@ -3984,6 +4009,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Pasang {STRING
 STR_ORDER_STOP_ORDER                                            :(Berhenti)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Tidak dapat menggunakan stasiun){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Terkandung)
 
@@ -4228,6 +4254,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Berkas simpanan
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Berkas tidak terbaca
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Berkas tidak dapat ditulisi
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Pemeriksaan integritas data gagal
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Simpanan permainan dibuat dengan versi yang dimodifikasi
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<not available>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Game telah disimpan pada versi tanpa dukungan trem. Semua Trem telah dihilangkan
 
@@ -4308,6 +4335,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... tida
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... dibutuhkan {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Tidak dapat membayar hutang...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Tidak dapat memberikan uang yang berasal dari pinjaman bank...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Tidak bisa memberikan uang kepada perusahaan ini...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Tidak dapat membeli perusahaan...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Tidak dapat membangun kantor pusat perusahaan...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Tidak dapat membeli 25% saham perusahaan ini...
@@ -4434,6 +4462,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis bengkel s
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} jadi terlalu panjang setelah diganti
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Tidak ada aturan peremajaan otomatis yang berlaku
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(batas min. uang)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Kendaraan baru tidak dapat melakukan perbaikan dalam urutan {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Kombinasi rel yang mustahil
