@@ -232,8 +232,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Hautatu 
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Aukeratu ordenatze irizpideak
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Aukeratu iragazki irizpideak
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenatu
-STR_BUTTON_LOCATION                                             :{BLACK}Kokapena
-STR_BUTTON_RENAME                                               :{BLACK}Berrizendatu
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lehioa itxi
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Leiho izena - Arrastatu hau leihoa mugitzeko
@@ -3430,10 +3428,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ordezkat
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Ikuspegi nagusia trenean kokatu. Ktrl+klik trena ikuspegi nagusiarekin jarraitzeko
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Ikuspegi nagusia errepide ibilgailuan kokatu. Ktrl+klik errepide ibilgailua ikuspegi nagusiarekin jarraitzeko
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Ikuspegi nagusia itsasontzian kokatu. Ktrl+klik itsasontzia ikuspegi nagusiarekin jarraitzeko
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Ikuspegi nagusia hegazkinean kokatu. Ktrl+klik hegazkina ikuspegi nagusiarekin jarraitzeko
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Trena gordailura bidali. Ktrl+klik bakarrik mantenimendua egiteko
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Errepide ibilgailua gordailura bidali. Ktrl+klik bakarrik mantenimendua egiteko
@@ -3465,10 +3459,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Errepide
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Itsasontziaren xehetasunak ikusi
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Hegazkinaren xehetasunak ikusi
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trena orain egiten ari den ekitza - Klik trena gelditzeko/abiarazteko. Krtl+klik helmugara bideratzeko
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Ibilgailua orain egiten ari duen ekitza - Klik ibilgailua gelditzeko/abiarazteko. Krtl+klik helmugara bideratzeko
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Itsasontzia orain egiten ari duen ekitza - Klik itsasontzia gelditzeko/abiarazteko. Krtl+klik helmugara bideratzeko
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Hegazkina orain egiten ari duen ekitza - Klik hegazkina gelditzeko/abiarazteko. Krtl+klik helmugara bideratzeko
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Kargatzen/Deskargatzen

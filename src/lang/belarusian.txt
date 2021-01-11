@@ -545,8 +545,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Зьме
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Зьмена крытэрыю сартаваньня
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберыце фiльтр
 STR_BUTTON_SORT_BY                                              :{BLACK}Сартаваньне
-STR_BUTTON_LOCATION                                             :{BLACK}Агляд
-STR_BUTTON_RENAME                                               :{BLACK}Перайменаваць
 STR_BUTTON_CATCHMENT                                            :{BLACK}Ахоп
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыць вакно
@@ -4011,10 +4009,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дазв
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Паказаць цягнiк у галоўным вакне. Ctrl+клік — сачыць за цягнiком у галоўным вакне.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Паказаць аўтамабiль у галоўным вакне. Ctrl+клік — сачыць за ім у галоўным вакне.
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Паказаць карабель у галоўным вакне. Ctrl+клік будзе сачыць за караблём у галоўным вакне.
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Паказаць паветранае судна у галоўным вакне. Ctrl+клік — сачыць за ім у галоўным вакне.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Паслаць цягнiк у дэпо. Ctrl+клік — толькі для абслугоўваньня.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Паслаць аўтамабiль у гараж. Ctrl+клік — толькі для абслугоўваньня.
@@ -4046,10 +4040,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Пака
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Паказаць зьвесткі аб караблi
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Паказаць зьвесткі аб авiятранспарце
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Бягучае дзеяньне цягнiка; клікніце для яго спыненьня/запуску. Ctrl+клік — агляд пункта прызначэньня.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Бягучае дзеяньне аўтамабiля; клікніце для яго спыненьня/запуску. Ctrl+клік — агляд пункта прызначэньня.
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Бягучае дзеяньне карабля; клікніце для яго спыненьня/запуску. Ctrl+клік — агляд пункта прызначэньня.
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Бягучае дзеяньне паветранага судна; клікніце для яго спыненьня/запуску. Ctrl+клік — агляд пункта прызначэньня.
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Разгрузка / Пагрузка

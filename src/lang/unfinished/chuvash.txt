@@ -165,7 +165,6 @@ STR_UNITS_POWER_SI                                              :{COMMA}кВт
 
 # Common window strings
 
-STR_BUTTON_RENAME                                               :{BLACK}Ята улӑштар
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Чӳречене хуп
 
@@ -1180,6 +1179,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} 
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
+
 
 
 

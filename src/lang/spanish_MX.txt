@@ -235,8 +235,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Elegir o
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Elegir criterio de orden
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Elegir criterio de filtrado
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
-STR_BUTTON_LOCATION                                             :{BLACK}Ubicación
-STR_BUTTON_RENAME                                               :{BLACK}Cambiar nombre
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Mostrar u ocultar área de cobertura
 
@@ -1836,6 +1834,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}¿Está
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trucos
 STR_CHEATS_TOOLTIP                                              :{BLACK}Las casillas marcadas indican que ya se usó este truco
+STR_CHEATS_NOTE                                                 :{BLACK}Nota: todo uso de esta configuración se guardará en el archivo de juego
 STR_CHEAT_MONEY                                                 :{LTBLUE}Añadir {CURRENCY_LONG} en efectivo
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugar como la empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Excavadora mágica (elimina industrias y objetos inamovibles): {ORANGE}{STRING}
@@ -3755,10 +3754,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer qu
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar la vista en la ubicación del tren. Ctrl+Clic sigue al tren en la vista principal
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrar vista en la ubicación del vehículo. Ctrl+Clic sigue al vehículo en la vista principal
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar vista en la ubicación del barco. Ctrl+Clic sigue al barco en la vista principal
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrar vista en la ubicación de la aeronave. Ctrl+Clic sigue a la aeronave en la vista principal
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren al depósito. Ctrl+Clic para realizar solamente mantenimiento
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar vehículo al depósito. Ctrl+Clic para realizar solamente mantenimiento
@@ -3790,10 +3785,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Ver deta
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Ver detalles del barco
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Ver detalles de la aeronave
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Actividad del tren. Clic para detener o poner en marcha. Ctrl+Clic para desplazarse hasta el destino
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Actividad del vehículo. Clic para detener o poner en marcha. Ctrl+Clic para desplazarse hasta el destino
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Actividad del barco. Clic para detener o poner en marcha. Ctrl+Clic para desplazarse hasta el destino
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Actividad de la aeronave. Clic para aterrizar o despegar. Ctrl+Clic para desplazarse hasta el destino
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Cargando/Descargando

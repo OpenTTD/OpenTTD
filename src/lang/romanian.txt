@@ -232,8 +232,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Alegeți
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Alegeți criteriul de sortare
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Alegeți criteriul de filtrare
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordonează
-STR_BUTTON_LOCATION                                             :{BLACK}Locație
-STR_BUTTON_RENAME                                               :{BLACK}Nume nou
 STR_BUTTON_CATCHMENT                                            :Arie de acoperire
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Închide fereastra
@@ -3543,10 +3541,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fă opti
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrează imaginea pe locaţia curentă a trenului. Ctrl-click va urmări trenul
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrează imaginea pe locaţia curentă a autovehiculului. Ctrl-click va urmări autovehiculul
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrează imaginea pe locaţia curentă a navei. Ctrl-click va urmări nava
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrează imaginea pe locaţia curentă a aeronavei. Ctrl-click va urmări aeronava
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Trimite trenul într-un depou
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Trimite autovehiculul la autobază. Ctrl+clic pentru service
@@ -3578,10 +3572,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Afişeaz
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Afişează detaliile navei
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Afişează detaliile aeronavei
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Comanda curentă a trenului - clic aici pentru a opri/porni trenul. Ctrl+Click pentru a vedea destinaţia
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Comanda curentă a autovehiculului - clic aici pentru a opri/porni autovehiculul. Ctrl+Click pentru a vedea destinatia
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Comanda curentă a navei - clic aici pentru a opri/porni nava. Ctrl+Click pentru a vedea destinaţia
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Comanda curentă a aeronavei - clic aici pentru a opri/porni aeronava
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Încărcare / Descărcare

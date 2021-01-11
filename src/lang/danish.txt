@@ -233,8 +233,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vælg so
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vælg sorteringskriterie
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vælg filtreringskriterier
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortér på
-STR_BUTTON_LOCATION                                             :{BLACK}Lokalitet
-STR_BUTTON_RENAME                                               :{BLACK}Omdøb
 STR_BUTTON_CATCHMENT                                            :{BLACK}Dækning
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Aktiver visning af dækningsområde
 
@@ -3718,10 +3716,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få auto
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrér skærmen over togets lokalitet. Ctrl-Klik vil følge toget i hovedvinduet
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrér skærmen over køretøjets lokalitet. Ctrl-Klik vil følge køretøjet i hovedvinduet
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrér skærmen over skibets lokalitet. Ctrl-Klik vil følge skibet i hovedvinduet
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrér skærmen over flyets lokalitet. Ctrl+Klik vil følge flyet i hovedvinduet
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send toget til remise. CTRL+klik vil kun servicere
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send køretøjet til værksted. CTRL+klik vil kun servicere
@@ -3753,10 +3747,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Vis kør
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Vis detaljer omkring skibet
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Vis detaljet omkring flyet
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Nuværende opførsel - klik her for at starte/stoppe toget. Ctrl+Click for at scrolle til destinationen
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nuværende opførsel - klik her for at stoppe/starte køretøjet. Ctrl+Click for at scrolle til destinationen
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuværende opførsel - klik her for at starte/stoppe skibet. Ctrl+Click for at scrolle til destinationen
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nuværende opførsel - klik her for at starte/stoppe flyet. Ctrl+Click for at scrolle til destinationen
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Læsser / Aflæsser

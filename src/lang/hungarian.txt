@@ -296,8 +296,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Csökken
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sorbarendezési feltétel
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Szűrési feltétel kiválasztása
 STR_BUTTON_SORT_BY                                              :{BLACK}Rendezés
-STR_BUTTON_LOCATION                                             :{BLACK}Megnéz
-STR_BUTTON_RENAME                                               :{BLACK}Átnevez
 STR_BUTTON_CATCHMENT                                            :{BLACK}Lefedett terület
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Az állomás által lefedett terület mutatása
 
@@ -3782,10 +3780,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az autom
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Közelítés a vonat jelenlegi helyzetére. Ctrl+kattintással a vonat követése a fő nézetben
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Közelítés a jármű jelenlegi helyzetére. Ctrl+kattintással a jármű követése a fő nézetben
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Közelítés a hajó jelenlegi helyzetére. Ctrl+kattintással a hajó követése a fő nézetben
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Közelítés a repülőgép jelenlegi helyzetére. Ctrl+kattintással a repülőgép követése a fő nézetben
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}A járműtelepre küldi a vonatot. Ctrl+kattintással csak javításra
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Garázsba küldi a járművet. Ctrl+kattintással csak javításra
@@ -3817,10 +3811,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}A közú
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}A hajó adatai
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}A repülőgép adatai
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktuális vonatmozgás - kattints ide a vonat elindításához vagy megállításához. Ctrl+kattintással az utasítások váltása
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktuális járműmozgás - kattints ide a jármű elindításához vagy megállításához. Ctrl+kattintással az utasítások váltása
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuális hajómozgás - kattints ide a hajó elindításhoz vagy megállításhoz. Ctrl+kattintással az utasítások váltása
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktuális repülőgépmozgás - kattints ide a repülőgép elindításához vagy megállításához. Ctrl+kattintással az utasítások váltása
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Berakodás / Kirakodás

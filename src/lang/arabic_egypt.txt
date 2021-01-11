@@ -225,8 +225,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK} اخت�
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK} اختر نوع الترتيب
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}حدد معايير المُرَشِح
 STR_BUTTON_SORT_BY                                              :{BLACK} رتب بـ
-STR_BUTTON_LOCATION                                             :{BLACK}الموقع
-STR_BUTTON_RENAME                                               :{BLACK}اعادة تسمية
 STR_BUTTON_CATCHMENT                                            :{BLACK}مدى التغطية
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}اغلاق الاطار
@@ -3089,10 +3087,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK} الم�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}ضع القطار في مركز شاشة العرض. مفتاح كنترول لمتابعة حركة القطار.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}وضع العربة في مركز شاشة العرض. مفتاح كنترول سيتابع حركة العربة.
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}عرض السفينة في مركز الشاشة. مفتاح كنترول سيتابع حركة السفينة.
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}وضع الطائرة في مركز الشاشة. مفتاح كنترول سيتابع حركة الطائرة
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK} ارسل القطار للورشة - مفتاح التحكم (كنترول) + الضغط سيرسله لصيانة فقط
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}ارسل العربة الى الورشة. مفتاح التحكم (كنترول) + الضغط ترسل للصيانة فقط
@@ -3124,10 +3118,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}عرض �
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}عرض تفاصيل السفينة
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}عرض تفاصيل الطائرة
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}حركة القطار الحالية - اضغط هنا لايقاف / تشغيل القطار
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}حركة العربة الحالية - اضغط هنا لايقاف / تشغيل العربة
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}امر السفينة الحالي - اضغط لايقاف / تشغيل السفينة
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}وضع الطائرة الحالي - اضغط هنا لايقاف / تشغيل الطائرة
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}تحميل / تفريغ

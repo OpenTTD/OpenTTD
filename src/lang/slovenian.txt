@@ -384,8 +384,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Izberite
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Izberite kriterij razvrščanja
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Izberite kriterij filtriranja
 STR_BUTTON_SORT_BY                                              :{BLACK}Razvrsti po
-STR_BUTTON_LOCATION                                             :{BLACK}Mesto
-STR_BUTTON_RENAME                                               :{BLACK}Preimenuj
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Zapri okno
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Naziv okna - s tem lahko premaknete okno
@@ -3690,10 +3688,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli s
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Osredotoči pogled na lokacijo vlaka. Ctrl+Klik odpre nov pogled na lokaciji vlaka
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Osredotoči pogled na lokacijo vozila. Ctrl+Klik odpre nov pogled na lokaciji vozila
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Osredotoči pogled na lokacijo ladje. Ctrl+Klik odpre nov pogled na lokaciji ladje
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Osredotoči pogled na lokacijo letala. Ctrl+Klik odpre nov pogled na lokaciji letala
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Pošlji vlak v železniško garažo. Ctrl+Klik samo na servis
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošlji vozilo v garažo. Ctrl+Klik samo na servis
@@ -3725,10 +3719,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Prikaži
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Prikaži podrobnosti ladje
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Prikaži podrobnosti letala
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Dejanje trenutnega vlaka - klikni za izklop/zagon vlaka. Ctrl+Klik za premik na destinacijo
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Dejanja trenutnega vozila - klikni za ustavitev/zagon vozila. Ctrl+Klik za premik na destinacijo
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Dejanje trenutne ladje - klikni za ustavitev/zagon ladje. Ctrl+Klik za premik na destinacijo
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Dejanje trenutnega letala - klikni za ustavitev/zagon letala. Ctrl+Klik za premik na destinacijo
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Natovarjanje / Raztovarjanje

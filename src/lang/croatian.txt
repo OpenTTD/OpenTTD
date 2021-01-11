@@ -329,8 +329,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Odaberi 
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Odaberi kriterij za sortiranje
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Odaberi kriterij filtriranja
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortiraj prema
-STR_BUTTON_LOCATION                                             :{BLACK}Lokacija
-STR_BUTTON_RENAME                                               :{BLACK}Preimenuj
 STR_BUTTON_CATCHMENT                                            :{BLACK}Područje pokrivanja
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Uključi prikaz područja pokrivanja
 
@@ -3814,10 +3812,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automats
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centriranje glavnog prozora na lokaciju vlaka. Ctrl+klik slijedi vlak u glavni prozor
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centriranje glavnog prozora na lokaciju vozila. Ctrl+klik slijedi vozilo u glavni prozor
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centriranje glavnog prozora na lokaciju broda. Ctrl+klik slijedi brod u glavni prozor
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centriranje glavnog prozora na lokaciju zrakoplova. Ctrl+klik slijedi zrakoplov u glavni prozor
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Pošalji vlak u spremište. CTRL+klik će samo servisirati
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošalji vozilo u spremište. Ctrl+klik će samo servisirati
@@ -3849,10 +3843,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Pokaži 
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Pokaži detalje broda
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Pokaži detalje zrakoplova
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Trenutna radnja vlaka - pritisni za zaustavljanje/pokretanje vlaka. Ctrl+klik za odlazak do odredišta.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Trenutna radnja vozila - pritisni za zaustavljanje/pokretanje vozila. Ctlr+klik za odlazak do odredišta.
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Trenutna radnja broda - pritisni za zaustavljanje/pokretanje broda. Ctrl+klik za odlazak do odredišta.
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Trenutna radnja zrakoplova - pritisni za zaustavljanje/pokretanje zrakoplova. Ctrl+klik za odlazak do odredišta.
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Ukrcaj / Iskrcaj

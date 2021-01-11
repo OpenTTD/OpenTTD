@@ -233,8 +233,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Richtung
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Argument fir ze sortéieren
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Filterkritère wielen
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortéier no
-STR_BUTTON_LOCATION                                             :{BLACK}Plaz
-STR_BUTTON_RENAME                                               :{BLACK}Ëmbenennen
 STR_BUTTON_CATCHMENT                                            :{BLACK}Reechwäit
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Reechwäit uweisen un/ausschalten
 
@@ -3717,10 +3715,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mécht d
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op den Zuch. Ctrl+Klick follegt dem Zuch an der Haaptusiicht
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Zentréiert d'Usiicht op d'Gefier. Ctrl+Klick follegt dem Gefier an der Haaptusiicht
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Zentréiert d'Usiicht op d'Schëff. Ctrl+Klick follegt dem Schëff an der Haaptusiicht
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Zentréiert d'Usiicht op de Fliger. Ctrl+Klick follegt dem Fliger an der Haaptusiicht
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Schéckt den Zuch an de Schapp. Ctrl+Klick fir nëmmen Revisioun
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Schéckt d'Gefier an den Depot. Ctrl+Klick fir nëmmen Revisioun
@@ -3752,10 +3746,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Weist St
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Weis Schëffsdetailer
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Weist d'Fligerdetailer
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Momentan Aktioun - klick hei fir den Zuch ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Momentan Aktioun - klick hei fir d'Gefier ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Momentan Aktioun - Klick hei fir d'Schëff ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Momentan Aktioun - Klick hei fir de Fliger ze stoppen/starten. Ctrl+Klick fir op Destinatioun ze scrollen
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lueden / Entlueden

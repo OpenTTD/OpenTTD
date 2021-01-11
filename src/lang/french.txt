@@ -235,8 +235,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Choisir 
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Choisir le critère de tri
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Choisir le critère de filtrage
 STR_BUTTON_SORT_BY                                              :{BLACK}Trier par
-STR_BUTTON_LOCATION                                             :{BLACK}Emplacement
-STR_BUTTON_RENAME                                               :{BLACK}Renommer
 STR_BUTTON_CATCHMENT                                            :{BLACK}Couverture
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Basculer l'affichage de la zone couverte
 
@@ -3759,10 +3757,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Si l'aut
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrer la vue sur le train. Ctrl-clic pour le suivre dans la vue principale.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrer la vue sur le véhicule. Ctrl-clic pour le suivre dans la vue principale.
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrer la vue sur le navire. Ctrl-clic pour le suivre dans la vue principale.
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrer la vue sur l'aéronef. Ctrl-clic pour le suivre dans la vue principale.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envoyer le train au dépôt.{}Ctrl-clic pour un entretien seul.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envoyer le véhicule au dépôt.{}Ctrl-clic pour un entretien seul.
@@ -3794,10 +3788,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Afficher
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Afficher les détails du navire
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Afficher les détails de l'aéronef
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Action courante du train - Cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur sa destination.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Action courante du véhicule routier - Cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur sa destination.
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Action courante du navire - Cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur sa destination.
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Action courante de l'aéronef - Cliquer pour le démarrer/l'arrêter. Ctrl-clic pour centrer la vue sur sa destination.
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Chargement/Déchargement

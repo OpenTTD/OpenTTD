@@ -419,8 +419,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Tagh òr
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Tagh cuspairean-deuchainn an t-seòrsachaidh
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Tagh cuspairean-deuchainn a' chriathraidh
 STR_BUTTON_SORT_BY                                              :{BLACK}Seòrsaich a-rèir
-STR_BUTTON_LOCATION                                             :{BLACK}Ionad
-STR_BUTTON_RENAME                                               :{BLACK}Thoir ainm ùr air
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Dùin an uinneag
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tiotal na h-uinneige - slaod seo gus an uinneag a ghluasad
@@ -3826,10 +3824,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Glèidh 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Meadhanaich am prìomh-shealladh air an trèan. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na trèan
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Meadhanaich am prìomh-shealladh air a' charbad. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' charbaid
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Meadhanaich am prìomh-shealladh air an long. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad na luinge
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Meadhanaich am prìomh-shealladh air a' charbad-adhair. Fosglaidh Ctrl+briogadh port-seallaidh ùr air ionad a' charbaid-adhair
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Cuir an trèan dhan trèan-lann. Cha dèan Ctrl+briogadh ach obair-ghlèidhidh
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Cuir carbad dhan gharaids. Cha dèan Ctrl+briogadh ach obair-ghlèidhidh
@@ -3861,10 +3855,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Seall mi
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Seall mion-fhiosrachadh na luinge
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Seall mion-fhiosrachadh a' charbaid
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gnìomh na trèan seo - briog gus an trèan a chur a' dol/na stad. Sgrolaich dhan cheann-uidhe le Ctrl+briogadh
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gnìomh a' charbaid seo - briog gus an carbad a chur a' dol/na stad. Sgrolaich dhan cheann-uidhe le Ctrl+briogadh
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gnìomh na luinge seo - briog gus an long a chur a' dol/na stad. Sgrolaich dhan cheann-uidhe le Ctrl+briogadh
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gnìomh a' charbaid-adhair seo - briog gus an carbad a chur a' dol/na stad. Sgrolaich dhan cheann-uidhe le Ctrl+briogadh
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}A' luchdadh / dì-luchdadh

@@ -245,8 +245,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}(בחר(
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}בחר\י קרטריון מיון
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}בחר קריטריון סינון
 STR_BUTTON_SORT_BY                                              :{BLACK}מיון לפי
-STR_BUTTON_LOCATION                                             :{BLACK}מיקום
-STR_BUTTON_RENAME                                               :{BLACK}שנה שם
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}סגור חלון
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}כותרת החלון - גרור להזזה
@@ -3604,10 +3602,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}שמור
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}מרכז את התצוגה על מיקום הרכבת. Ctrl+לחיצה יעקוב אחרי הרכבת בתצוגה הראשית
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}מרכז את התצוגה על מיקומו של כלי הרכב. Ctrl+לחיצה יעקוב אחרי כלי הרכב בתצוגה הראשית
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}מקד את התצוגה הראשית על כלי השייט. Ctrl+לחיצה יעקוב אחרי כל השייט בתצוגה הראשית
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}מקד את התצוגה הראשית על כלי הטייס. Ctrl+לחיצה יעקוב אחרי כלי הטייס בתצוגה הראשית
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}.שלח את הרכבת למוסך
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}.שלח את כלי הרכב למוסך
@@ -3639,10 +3633,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}הצג �
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}הצג פרטי כלי שייט
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}הצג פרטי כלי טייס
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}פעולה רכבת נוכחית - לחץ כדי לעצור/להפעיל את הרכבת. Ctrl+לחיצה על מנת לגרור ליעד
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}פעולת כלי רכב נוכחי - לחץ כדי לעצור/להפעיל את כלי הרכב. Ctrl+לחיצה כדי לגלול ליעד
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}פעולת כלי שייט נוכחי - לחץ כדי לעצור/להפעיל את כלי השייט. Ctrl+לחיצה כדי לגלול ליעד
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}פעולת כלי טייס נוכחי - לחץ כדי לעצור/להפעיל את כלי השייט. Ctrl+לחיצה כדי לגלול ליעד
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}טעינה / פריקה

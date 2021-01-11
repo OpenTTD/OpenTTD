@@ -233,8 +233,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vel sort
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vel sorteringskriterium
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vel filtreringskriterium
 STR_BUTTON_SORT_BY                                              :{BLACK}Sorter etter
-STR_BUTTON_LOCATION                                             :{BLACK}Stad
-STR_BUTTON_RENAME                                               :{BLACK}Gje nytt namn
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lukk vindauge
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tittel på vindauget - dra for å flytte vindauget
@@ -3453,10 +3451,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Lat den 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Syne toget sin gjeldande posisjon. CTRL+klikk vil følgja toget i hovudvindauget
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Syne køyretøyet sin gjeldande posisjon. CTRL+klikk vil følgja køyretøyet i hovudvindauget
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Syne skipet sin gjeldande posisjon. CTRL+klikk vil følgja skipet i hovudvindauget
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Syne luftfartøyet sin gjeldande posisjon. CTRL+klikk vil følgja luftfartøyet i hovudvindauget
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send toget til togstallen. CTRL+klikk for å berre utføre vedlikehald
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send køyretøyet til garasjen. CTRL+klikk for å berre sende til vedlikehald
@@ -3488,10 +3482,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Syne kø
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Syne skipsdetaljar
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Syne detaljar om luftfartøy
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gjeldande togstatus - klikk her for å stoppe/starte tog. CTRL+klikk ruller til destinasjonen
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gjeldande køyretøystatus - klikk her for å stoppa/starta køyretøy. CTRL+klikk ruller til destinasjonen
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldende skipsstatus - klikk her for å stoppe/starte skip. CTRL+klikk ruller til destinasjonen
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gjeldande luftfartøystatus - klikk her for å stoppe/starte luftfartøy. CTRL+klikk ruller til destinasjonen
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lastar / Lossar

@@ -231,8 +231,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ�
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}並べ替えの基準を選択します
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}フィルタリングの基準を選択します
 STR_BUTTON_SORT_BY                                              :{BLACK}並べ替え
-STR_BUTTON_LOCATION                                             :{BLACK}所在地に移動
-STR_BUTTON_RENAME                                               :{BLACK}名前を変更
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ウィンドウを閉じます
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ウィンドウのタイトルです。ドラッグでウィンドウが移動できます
@@ -3536,10 +3534,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}機関�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}メイン画面を列車の場所に移動します。Ctrl+クリックで、そのまま列車を追跡します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}メイン画面を車両の場所に移動します。Ctrl+クリックで、そのまま車両を追跡します
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}メイン画面を船舶の場所に移動します。Ctrl+クリックで、そのまま船舶を追跡します
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}メイン画面を航空機の場所に移動します。Ctrl+クリックで、そのまま航空機を追跡します
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}列車を列車庫へ回送します。Ctrl+クリックすると点検後、再出庫します
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}車両を車庫へ回送します。Ctrl+クリックすると点検後、再出庫します
@@ -3571,10 +3565,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}車両�
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}船舶の情報を表示
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}航空機の情報を表示します
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}列車の現在の動作 - 運用開始/運用停止するにはここをクリックします。Ctrl+クリックで目的地に移動します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}車両の現在の動作 - 運用開始/運用停止するにはここをクリックします。Ctrl+クリックで目的地に移動します
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}船舶の現在の動作 - 運用開始/運用停止するにはここをここへクリックします。Ctrl+クリックで目的地に移動します
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}航空機の現在の動作 - 運用開始/運用停止するにはここをクリックします。Ctrl+クリックで目的地に移動します
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}積み降ろし中

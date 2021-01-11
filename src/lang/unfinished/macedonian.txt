@@ -222,8 +222,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Избе
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Изберете критериум за сортирање
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Изберете филтрирање критериуми
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортирање според
-STR_BUTTON_LOCATION                                             :{BLACK}Локација
-STR_BUTTON_RENAME                                               :{BLACK}Преименувај
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Затвори го прозорецот
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Наслов на прозорец - влечи тука за да го поместиш прозорецот
@@ -1515,7 +1513,6 @@ STR_REPLACE_VEHICLE_AIRCRAFT                                    :Летало
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Центар главниот приказ на локација авионот. Ctrl + клик ќе го следат авион во главниот приказ
 
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Прати го авионот во хангар. CTRL+клик ќе го прати само на сервис
 
@@ -1528,7 +1525,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Прик
 
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Прикажи детали за авионот
 
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Сега авиони акција - кликни за да се запре / проектот авиони. Ctrl + Кликнете да дојдете до дестинацијата
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Премногу далеку за да следната дестинација

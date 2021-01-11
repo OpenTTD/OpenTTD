@@ -233,8 +233,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Chọn t
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Chọn tiêu chí sắp xếp
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Chọn tiêu chí lọc bỏ
 STR_BUTTON_SORT_BY                                              :{BLACK}Sắp xếp bởi
-STR_BUTTON_LOCATION                                             :{BLACK}Vị trí
-STR_BUTTON_RENAME                                               :{BLACK}Đổi tên
 STR_BUTTON_CATCHMENT                                            :{BLACK}Vùng che phủ
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Đổi ẩn/hiện vùng che phủ
 
@@ -3720,10 +3718,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Tự đ�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Xem vị trí đoàn tàu. Ctrl+Click mở cửa sổ mới để theo dõi
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Xem vị trí ôtô. Ctrl+Click mở cửa sổ mới để theo dõi
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Xem vị trí tàu thuỷ. Ctrl+Click mở cửa sổ mới để theo dõi
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Xem vị trí máy bay. Ctrl+Click mở cửa sổ mới để theo dõi
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Đưa tàu về xưởng. Ctrl+Click sẽ gửi về bảo trì thôi
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Đưa ôtô về xưởng. Ctrl+Click sẽ gửi về bảo trì thôi
@@ -3755,10 +3749,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Hiện c
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Hiện chi tiết tàu thuỷ
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Hiện chi tiết máy bay
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Thao tác với đoàn tàu - bấm để dừng/chạy tàu. Ctrl+Click để chuyển điểm đến
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Thao tác với ôtô - bấm để dừng/chạy ôtô. Ctrl+Click để chuyển điểm đến
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Thao tác với tàu thuỷ - bấm để dừng/chạy tàu. Ctrl+Click để chuyển điểm đến
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Thao tác với máy bay - bấm để dừng/chạy máy bay. Ctrl+Click để chuyển điểm đến
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Bốc/dỡ hàng

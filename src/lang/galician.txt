@@ -234,8 +234,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Seleccio
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecciona o criterio de ordenación
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecciona o criterio de filtrado
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordenar por
-STR_BUTTON_LOCATION                                             :{BLACK}Situación
-STR_BUTTON_RENAME                                               :{BLACK}Renomear
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Alternar amosar área de cobertura
 
@@ -3705,10 +3703,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facer qu
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar a vista principal na situación do tren. Ctrl+click seguirá ao tren na vista principal
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centrar a vista principal na situación do vehículo. Ctrl+click seguirá ao vehículo na vista principal
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar a vista principal na situación do barco. Ctrl+click seguirá ao barco na vista principal
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centra-la vista principal na situación do avión. Ctrl+click seguirá ao avión na vista principal
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren ao depósito. Ctrl+click para facer só servizo
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia-lo vehículo ao depósito. Ctrl click para facer só servizo
@@ -3740,10 +3734,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra-l
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra-los detalles do barco
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra-los detalles do avión
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Acción actual do tren - pincha para deter/arrancar o tren. Ctrl+click para desprazarse ao destino
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Acción actual do vehículo - pincha para parar/arrancar o vehículo. Ctrl+click para desprazarse ao destino
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Acción actual do barco - pincha para parar/arrancar o barco. Ctrl+click para desprazarse ao destino
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Acción actual do avión - pincha para parar/arrancar o avión. Ctrl+click para desprazarse ao destino
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Cargando / Descargando

@@ -234,8 +234,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Selecion
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Selecione critério de classificação
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selecione critério para filtração
 STR_BUTTON_SORT_BY                                              :{BLACK}Classificar por
-STR_BUTTON_LOCATION                                             :{BLACK}Local
-STR_BUTTON_RENAME                                               :{BLACK}Renomear
 STR_BUTTON_CATCHMENT                                            :{BLACK}Cobertura
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Alternar a visão da área de cobertura
 
@@ -3719,10 +3717,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faz auto
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centrar visão no local do trem. Ctrl+Clique seguirá o trem na visão principal.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centralizar visualização na localização do veículo. Ctrl+Clique segue o veículo
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centrar visão no local da embarcação. Ctrl+Clique seguirá o navio na visão
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centrar visão no local da aeronave. Ctrl+Clique seguirá a aeronave na visão
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar trem para o depósito
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar veículo para a garagem. CTRL+clique irá apenas reparar
@@ -3754,10 +3748,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Exibir d
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Exibir detalhes da embarcação
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Exibir detalhes da aeronave
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Tarefa atual do trem - clique aqui para iniciar/parar o trem. Ctrl+Clique para mostrar o destino
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Tarefa atual do veículo - clique aqui para iniciar/parar veículo. Ctrl+Clique para mostrar o destino.
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Tarefa atual da embarcação - clique aqui para iniciar/parar embarcação. Ctrl+Clique para mostrar o destino.
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Tarefa atual da aeronave - clique aqui para iniciar/parar a aeronave. Ctrl+Clique para mostrar o destino.
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregando / descarregando

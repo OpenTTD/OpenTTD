@@ -233,8 +233,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Pilih mo
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Pilih kriteria pengurutan
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Pilih kriteria
 STR_BUTTON_SORT_BY                                              :{BLACK}Urutkan
-STR_BUTTON_LOCATION                                             :{BLACK}Lokasi
-STR_BUTTON_RENAME                                               :{BLACK}Ubah nama
 STR_BUTTON_CATCHMENT                                            :{BLACK}Jangkauan
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Tombol tampilan area cakupan
 
@@ -3743,10 +3741,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Arahkan pandangan pada lokasi kereta. Ctrl+Click akan mengikuti kereta pada pandangan utama.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Arahkan pandangan utama pada lokasi kendaraan. Ctrl+Click akan mengikuti kendaraan pada pandangan utama
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Arahkan pandangan utama pada lokasi kapal. Ctrl+Click akan mengikuti kapal pada pandangan utama
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Arahkan pandangan utama pada lokasi pesawat. Ctrl+Click akan mengikuti pesawat pada pandangan utama
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Perintahkan kereta berhenti di depo. CTRL+klik untuk memerintahkan perbaikan saja
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Perintahkan kendaraan berhenti di bengkel. CTRL+klik hanya akan memerintahkan perbaikan di bengkel
@@ -3778,10 +3772,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Tampilka
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Tampilkan detail kapal
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Tampilkan detail pesawat
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aksi kereta saat ini - klik untuk menjalankan/menghentikan kereta. Ctrl-Click untuk melihat tujuan.
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Kegiatan kendaraan saat ini - klik untuk menghentikan/menjalankan kendaraan. Ctrl-Click untuk melihat tujuan.
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aksi kapal saat ini - klik untuk menghentikan / menjalankan kapal. Ctrl-Click untuk melihat tujuan.
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aksi pesawat saat ini - klik untuk menghentikan/menjalankan pesawat. Ctrl-Click untuk melihat tujuan.
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Bongkar/Muat

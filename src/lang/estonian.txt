@@ -288,8 +288,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vali jä
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vali järjekord
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vali sõelumisalused
 STR_BUTTON_SORT_BY                                              :{BLACK}Järjekord:
-STR_BUTTON_LOCATION                                             :{BLACK}Asukoht
-STR_BUTTON_RENAME                                               :{BLACK}Nimevahetus
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Sulge aken
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Akna pealkiri. Liigutamiseks lohista seda hiirega.
@@ -3638,10 +3636,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Sunni au
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Vaate viimine rongi asukohale
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Keskenda vaade veovahendile
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Vii vaade laeva asukohale
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Vii peavaade lennukile
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Saada rong depoosse
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Saada sõiduk garaaži. Ctrl+klõps, et ainult teenindada
@@ -3673,10 +3667,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Näita m
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Näita laeva täpsustusi
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Näita lennuki täpsustusi
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Praegune rongi tegevus - rongi käivitamiseks või peatamiseks vajuta siia. Ctrl+klõps näitab sihtkohta
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Transpordivahendi praegune tegevus - sõiduki peatamiseks või startimiseks klõpsa siia. Ctrl+klõps näitab sihtkohta
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Praegune laeva tegevus - Laeva käivitamiseks või peatamiseks vajuta siia. Ctrl+klõps näitab sihtkohta
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Praegune lennuki tegevus - lennuki peatamiseks või käivitamiseks vajuta siia. Ctrl+klõps näitab sihtkohta
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Veose ümberlaadimine

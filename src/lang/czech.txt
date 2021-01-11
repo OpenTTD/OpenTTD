@@ -308,8 +308,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vyber zp
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vyber, podle čeho se má třídit
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vyber třídící podmínku
 STR_BUTTON_SORT_BY                                              :{BLACK}Řadit podle
-STR_BUTTON_LOCATION                                             :{BLACK}Umístění
-STR_BUTTON_RENAME                                               :{BLACK}Přejmenovat
 STR_BUTTON_CATCHMENT                                            :{BLACK}Pokrytí
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Zapnout/vypnout zvýrazňování oblasti pokrytí
 
@@ -3812,10 +3810,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce a
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Vycentrovat pohled na vlak. Ctrl+Klik otevře nový pohled
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Vycentrovat pohled na vozidlo. Ctrl+Klik otevře nový pohled
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Vycentrovat pohled na loď. Ctrl+Klik otevře nový pohled
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Vycentrovat pohled na letadlo. Ctrl+Klik otevře nový pohled
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Poslat vlak do depa. Ctrl+Klik pouze pro provedení oprav
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Pošli vozidlo do garáže. Ctrl+Klik pouze provede opravy
@@ -3847,10 +3841,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Ukaž de
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Ukázat detaily lodi
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Ukázat detaily letadla
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Současná činnost vlaku - když sem klikneš, vlak se zastaví nebo rozjede. Když ještě podržíš Ctrl, pohled se posune na cílovou stanici
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Současná činnost vozidla - klikni sem pro zastavení/rozjetí
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Současná činnost plavidla - pro zastavení či rozjetí, klikni sem
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Činnost letadla - stiskni pro rozjetí/zastavení letadla
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Nakládá nebo vykládá
