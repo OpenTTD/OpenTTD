@@ -1,0 +1,59 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Diagonal Crossing Sprites by Maedhros"
+   -1 * 3	 05 19 34
+   -1 sprites/diag_cross.png 8bpp  18   8  17  23 -24   4 normal
+   -1 sprites/diag_cross.png 8bpp  50   8  20  22 -25   5 normal
+   -1 sprites/diag_cross.png 8bpp  82   8  20  22   7   5 normal
+   -1 sprites/diag_cross.png 8bpp 114   8  20  23   6   3 normal
+   -1 sprites/diag_cross.png 8bpp 146   8  42  10 -21   3 normal
+   -1 sprites/diag_cross.png 8bpp 194   8  40   7 -19   2 normal
+   -1 sprites/diag_cross.png 8bpp 242   8  43   9 -19  19 normal
+   -1 sprites/diag_cross.png 8bpp 290   8  42  10 -22  17 normal
+   -1 sprites/diag_cross.png 8bpp 338   8  10  19 -21   6 normal
+   -1 sprites/diag_cross.png 8bpp 354   8  10  19 -21   6 normal
+   -1 sprites/diag_cross.png 8bpp 370   8  10  19  13   6 normal
+   -1 sprites/diag_cross.png 8bpp 386   8  10  19  13   6 normal
+   -1 sprites/diag_cross.png 8bpp 402   8  40   6 -19   4 normal
+   -1 sprites/diag_cross.png 8bpp 450   8  40   6 -19   4 normal
+   -1 sprites/diag_cross.png 8bpp 498   8  40   6 -19  21 normal
+   -1 sprites/diag_cross.png 8bpp 546   8  40   6 -19  21 normal
+   -1 sprites/diag_cross.png 8bpp 594   8  14  20 -21   4 normal
+   -1 sprites/diag_cross.png 8bpp 626   8  16  21 -23   6 normal
+   -1 sprites/diag_cross.png 8bpp 658   8  16  21   9   6 normal
+   -1 sprites/diag_cross.png 8bpp 690   8  16  21   8   4 normal
+   -1 sprites/diag_cross.png 8bpp 722   8  42  10 -23   3 normal
+   -1 sprites/diag_cross.png 8bpp   2  56  40  10 -17   3 normal
+   -1 sprites/diag_cross.png 8bpp  50  56  40   9 -15  19 normal
+   -1 sprites/diag_cross.png 8bpp  98  56  40   9 -23  19 normal
+   -1 sprites/diag_cross.png 8bpp 146  56  18  21 -24   3 normal
+   -1 sprites/diag_cross.png 8bpp 178  56  18  21 -24   7 normal
+   -1 sprites/diag_cross.png 8bpp 210  56  18  21   8   7 normal
+   -1 sprites/diag_cross.png 8bpp 242  56  18  21   8   3 normal
+   -1 sprites/diag_cross.png 8bpp 274  56  44  11 -25   2 normal
+   -1 sprites/diag_cross.png 8bpp 338  56  44  11 -17   2 normal
+   -1 sprites/diag_cross.png 8bpp 402  56  40  11 -15  18 normal
+   -1 sprites/diag_cross.png 8bpp 450  56  40  11 -23  18 normal
+   -1 sprites/diag_cross.png 8bpp 498  56  14  22 -22   5 normal
+   -1 sprites/diag_cross.png 8bpp 530  56  14  22 -22   5 normal
+   -1 sprites/diag_cross.png 8bpp 562  56  14  22  10   4 normal
+   -1 sprites/diag_cross.png 8bpp 594  56  14  22  10   4 normal
+   -1 sprites/diag_cross.png 8bpp 626  56  46   9 -21   3 normal
+   -1 sprites/diag_cross.png 8bpp 690  56  46   9 -21   3 normal
+   -1 sprites/diag_cross.png 8bpp   2  88  46   9 -23  19 normal
+   -1 sprites/diag_cross.png 8bpp  66  88  46   9 -23  19 normal
+   -1 sprites/diag_cross.png 8bpp 130  88  12  21 -21   5 normal
+   -1 sprites/diag_cross.png 8bpp 162  88  12  21 -21   5 normal
+   -1 sprites/diag_cross.png 8bpp 194  88  12  21  11   5 normal
+   -1 sprites/diag_cross.png 8bpp 226  88  12  21  11   5 normal
+   -1 sprites/diag_cross.png 8bpp 258  88  44   7 -21   4 normal
+   -1 sprites/diag_cross.png 8bpp 322  88  44   7 -21   4 normal
+   -1 sprites/diag_cross.png 8bpp 386  88  44   7 -22  20 normal
+   -1 sprites/diag_cross.png 8bpp 450  88  44   7 -22  20 normal
+   -1 sprites/diag_cross.png 8bpp 514  88   6   6  -3   3 normal
+   -1 sprites/diag_cross.png 8bpp 530  88   6   6  -3   3 normal
+   -1 sprites/diag_cross.png 8bpp 546  88   6   6  -3   3 normal
+   -1 sprites/diag_cross.png 8bpp 562  88   6   6  -3   3 normal

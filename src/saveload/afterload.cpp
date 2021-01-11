@@ -1963,7 +1963,7 @@ bool AfterLoadGame()
 					break;
 
 				case MP_ROAD: // Clear PBS reservation on crossing
-					if (IsLevelCrossing(t)) SetCrossingReservation(t, false);
+					if (IsLevelCrossing(t)) ClrBit(_m[t].m5, 4);
 					break;
 
 				case MP_STATION: // Clear PBS reservation on station
@@ -1983,6 +1983,20 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_101)) {
 		for (const Train *t : Train::Iterate()) {
 			if (t->First() == t) t->ReserveTrackUnderConsist();
+		}
+	}
+
+	/* In diagonal crossings patch, level crossings were changed to store the rail
+	 * direction, to allow for diagonal level crossings. We need to add the
+	 * rail direction to all existing level crossings. */
+	if (IsSavegameVersionBefore(SLV_DIAG_CROSSINGS)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsLevelCrossingTile(t)) {
+				Axis road = GetCrossingRoadAxis(t);
+				Track track = (road == AXIS_Y) ? TRACK_X : TRACK_Y;
+				_m[t].m5 &= 0xF1;
+				_m[t].m5 |= track << 1;
+			}
 		}
 	}
 

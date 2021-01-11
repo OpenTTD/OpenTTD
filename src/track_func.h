@@ -14,6 +14,7 @@
 #include "track_type.h"
 #include "direction_func.h"
 #include "slope_func.h"
+#include "direction_func.h"
 
 /**
  * Iterate through each set Track in a TrackBits value.
@@ -449,6 +450,11 @@ static inline DiagDirection TrackdirToExitdir(Trackdir trackdir)
 	assert(IsValidTrackdirForRoadVehicle(trackdir));
 	extern const DiagDirection _trackdir_to_exitdir[TRACKDIR_END];
 	return _trackdir_to_exitdir[trackdir];
+}
+
+static inline DiagDirection TrackdirToEntrydir(Trackdir trackdir)
+{
+	return ReverseDiagDir(TrackdirToExitdir(ReverseTrackdir(trackdir)));
 }
 
 /**

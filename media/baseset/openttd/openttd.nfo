@@ -99,3 +99,4 @@
 #include "mono.nfo"
 #include "tunnel_portals.nfo"
 #include "palette.nfo"
+#include "diag_cross.nfo"

@@ -1665,15 +1665,19 @@ static bool TrainApproachingCrossing(TileIndex tile)
 {
 	assert(IsLevelCrossingTile(tile));
 
-	DiagDirection dir = AxisToDiagDir(GetCrossingRailAxis(tile));
-	TileIndex tile_from = tile + TileOffsByDiagDir(dir);
+	TrackBits tracks = GetCrossingRailBits(tile);
+	while (tracks != TRACK_BIT_NONE) {
+		DiagDirection dir = TrackdirToExitdir(TrackToTrackdir(RemoveFirstTrack(&tracks)));
+		TileIndex tile_from = tile + TileOffsByDiagDir(dir);
 
-	if (HasVehicleOnPos(tile_from, &tile, &TrainApproachingCrossingEnum)) return true;
+		if (HasVehicleOnPos(tile_from, &tile, &TrainApproachingCrossingEnum)) return true;
 
-	dir = ReverseDiagDir(dir);
-	tile_from = tile + TileOffsByDiagDir(dir);
+		dir = ReverseDiagDir(dir);
+		tile_from = tile + TileOffsByDiagDir(dir);
 
-	return HasVehicleOnPos(tile_from, &tile, &TrainApproachingCrossingEnum);
+		if (HasVehicleOnPos(tile_from, &tile, &TrainApproachingCrossingEnum)) return true;
+	}
+	return false;
 }
 
 /**
@@ -1682,7 +1686,7 @@ static bool TrainApproachingCrossing(TileIndex tile)
  */
 static inline bool ShouldCloseLevelCrossing(TileIndex tile)
 {
-	return HasCrossingReservation(tile) || HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
+	return (GetCrossingReservationTrackBits(tile) != TRACK_BIT_NONE) || HasVehicleOnPos(tile, nullptr, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
 }
 
 /**
@@ -1863,7 +1867,7 @@ void ReverseTrainDirection(Train *v)
 	/* maybe we are approaching crossing now, after reversal */
 	crossing = TrainApproachingCrossingTile(v);
 	if (crossing != INVALID_TILE) {
-		SetCrossingReservation(crossing, true);
+		SetCrossingReservation(crossing, v->track, true);
 		UpdateLevelCrossing(crossing);
 	}
 
@@ -3749,7 +3753,7 @@ static bool TrainCheckIfLineEnds(Train *v, bool reverse)
 
 	/* approaching a rail/road crossing? then make it red */
 	if (IsLevelCrossingTile(tile)) {
-		SetCrossingReservation(tile, true);
+		SetCrossingReservation(tile, TrackdirBitsToTrackBits(trackdirbits), true);
 		UpdateLevelCrossing(tile);
 	}
 

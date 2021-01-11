@@ -22,6 +22,7 @@ enum RoadTileType {
 	ROAD_TILE_NORMAL,   ///< Normal road
 	ROAD_TILE_CROSSING, ///< Level crossing
 	ROAD_TILE_DEPOT,    ///< Depot (one entrance)
+	ROAD_TILE_DOUBLE_CROSSING, ///< Road Crossing with two rail trackbits
 };
 
 /**
@@ -83,7 +84,7 @@ static inline bool IsNormalRoadTile(TileIndex t)
  */
 static inline bool IsLevelCrossing(TileIndex t)
 {
-	return GetRoadTileType(t) == ROAD_TILE_CROSSING;
+	return GetRoadTileType(t) == ROAD_TILE_CROSSING || GetRoadTileType(t) == ROAD_TILE_DOUBLE_CROSSING;
 }
 
 /**
@@ -329,18 +330,6 @@ static inline Axis GetCrossingRoadAxis(TileIndex t)
 }
 
 /**
- * Get the rail axis of a level crossing.
- * @param t The tile to query.
- * @pre IsLevelCrossing(t)
- * @return The axis of the rail.
- */
-static inline Axis GetCrossingRailAxis(TileIndex t)
-{
-	assert(IsLevelCrossing(t));
-	return OtherAxis((Axis)GetCrossingRoadAxis(t));
-}
-
-/**
  * Get the road bits of a level crossing.
  * @param tile The tile to query.
  * @return The present road bits.
@@ -351,36 +340,18 @@ static inline RoadBits GetCrossingRoadBits(TileIndex tile)
 }
 
 /**
- * Get the rail track of a level crossing.
- * @param tile The tile to query.
- * @return The rail track.
- */
-static inline Track GetCrossingRailTrack(TileIndex tile)
-{
-	return AxisToTrack(GetCrossingRailAxis(tile));
-}
-
-/**
  * Get the rail track bits of a level crossing.
  * @param tile The tile to query.
  * @return The rail track bits.
  */
 static inline TrackBits GetCrossingRailBits(TileIndex tile)
 {
-	return AxisToTrackBits(GetCrossingRailAxis(tile));
-}
-
-
-/**
- * Get the reservation state of the rail crossing
- * @param t the crossing tile
- * @return reservation state
- * @pre IsLevelCrossingTile(t)
- */
-static inline bool HasCrossingReservation(TileIndex t)
-{
-	assert(IsLevelCrossingTile(t));
-	return HasBit(_m[t].m5, 4);
+	assert(IsLevelCrossingTile(tile));
+	if (GetRoadTileType(tile) == ROAD_TILE_CROSSING) return TrackToTrackBits((Track)GB(_m[tile].m5, 1, 3));
+	Direction dir = (Direction)GB(_m[tile].m5, 1, 2);
+	if (dir == DIR_E) return TRACK_BIT_UPPER | TRACK_BIT_LOWER;
+	if (dir == DIR_N) return TRACK_BIT_LEFT  | TRACK_BIT_RIGHT;
+	return INVALID_TRACK_BIT;
 }
 
 /**
@@ -390,10 +361,17 @@ static inline bool HasCrossingReservation(TileIndex t)
  * @param b the reservation state
  * @pre IsLevelCrossingTile(t)
  */
-static inline void SetCrossingReservation(TileIndex t, bool b)
+static inline void SetCrossingReservation(TileIndex t, TrackBits tb, bool b)
 {
 	assert(IsLevelCrossingTile(t));
-	SB(_m[t].m5, 4, 1, b ? 1 : 0);
+	if (tb > TRACK_BIT_ALL) return;
+	tb &= GetCrossingRailBits(t);
+	if (GetRoadTileType(t) == ROAD_TILE_DOUBLE_CROSSING && (tb & (TRACK_BIT_UPPER | TRACK_BIT_LEFT))) {
+		SB(_m[t].m5, 3, 1, b ? 1 : 0);
+		tb &= ~(TRACK_BIT_UPPER | TRACK_BIT_LEFT);
+	} else if (tb != TRACK_BIT_NONE) {
+		SB(_m[t].m5, 4, 1, b ? 1 : 0);
+	}
 }
 
 /**
@@ -404,7 +382,37 @@ static inline void SetCrossingReservation(TileIndex t, bool b)
  */
 static inline TrackBits GetCrossingReservationTrackBits(TileIndex t)
 {
-	return HasCrossingReservation(t) ? GetCrossingRailBits(t) : TRACK_BIT_NONE;
+	assert(IsLevelCrossingTile(t));
+	if (GetRoadTileType(t) == ROAD_TILE_DOUBLE_CROSSING) {
+		 return (HasBit(_m[t].m5, 3) ? GetCrossingRailBits(t) & (TRACK_BIT_UPPER | TRACK_BIT_LEFT) : TRACK_BIT_NONE) |
+			(HasBit(_m[t].m5, 4) ? GetCrossingRailBits(t) & (TRACK_BIT_LOWER | TRACK_BIT_RIGHT) : TRACK_BIT_NONE);
+	}
+	return HasBit(_m[t].m5, 4) ? GetCrossingRailBits(t) : TRACK_BIT_NONE;
+}
+
+/**
+ * Get the reservation state of a specific track of the rail crossing
+ * @param t the crossing tile
+ * @param tr the track to be checked
+ * @return reservation state
+ * @pre IsLevelCrossingTile(t)
+ */
+static inline bool HasCrossingReservationTrack(TileIndex t, Track tr)
+{
+	assert(IsLevelCrossingTile(t));
+	return (GetCrossingReservationTrackBits(t) & TrackToTrackBits(tr)) != TRACK_BIT_NONE;
+}
+
+/**
+ * Get the reservation state of the rail crossing
+ * @param t the crossing tile
+ * @return reservation state
+ * @pre IsLevelCrossingTile(t)
+ */
+static inline bool HasCrossingReservation(TileIndex t)
+{
+	assert(IsLevelCrossingTile(t));
+	return (GetCrossingReservationTrackBits(t)) != TRACK_BIT_NONE;
 }
 
 /**
@@ -639,14 +647,28 @@ static inline void MakeRoadNormal(TileIndex t, RoadBits bits, RoadType road_rt, 
  * @param tram_rt The tram roadtype to set for the tile.
  * @param town    Town ID if the road is a town-owned road.
  */
-static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner tram, Owner rail, Axis roaddir, RailType rat, RoadType road_rt, RoadType tram_rt, uint town)
+static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner tram, Owner rail, Axis roaddir, Track track, bool doubletrack, RailType rat, RoadType road_rt, RoadType tram_rt, uint town)
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, rail);
 	_m[t].m2 = town;
 	_m[t].m3 = 0;
 	_m[t].m4 = INVALID_ROADTYPE;
-	_m[t].m5 = ROAD_TILE_CROSSING << 6 | roaddir;
+	_m[t].m5 = roaddir;
+	if (doubletrack) {
+		_m[t].m5 |= ROAD_TILE_DOUBLE_CROSSING << 6;
+		/* bit-stuffing of Direction-ish, 2 Bits*/
+		switch (track) {
+			case TRACK_LEFT: case TRACK_RIGHT:  _m[t].m5 |= DIR_N  << 1; break;
+			//case TRACK_X:                       _m[t].m5 |= DIR_NE << 1; break;
+			case TRACK_UPPER: case TRACK_LOWER: _m[t].m5 |= DIR_E  << 1; break;
+			//case TRACK_Y:                       _m[t].m5 |= DIR_SE << 1; break;
+			default: NOT_REACHED();
+		}
+	} else {
+		_m[t].m5 |= ROAD_TILE_CROSSING << 6;
+		_m[t].m5 |= track << 1;
+	}
 	SB(_me[t].m6, 2, 4, 0);
 	_me[t].m7 = road;
 	_me[t].m8 = INVALID_ROADTYPE << 6 | rat;
