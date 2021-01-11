@@ -646,8 +646,9 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 					w->engine_type == e->index &&   ///< Same type
 					w->First() != v &&              ///< Don't connect to ourself
 					!(w->vehstatus & VS_CRASHED)) { ///< Not crashed/flooded
-				DoCommand(0, v->index | 1 << 20, w->Last()->index, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
-				break;
+				if (DoCommand(0, v->index | 1 << 20, w->Last()->index, DC_EXEC, CMD_MOVE_RAIL_VEHICLE).Succeeded()) {
+					break;
+				}
 			}
 		}
 	}
@@ -959,11 +960,24 @@ static CommandCost CheckNewTrain(Train *original_dst, Train *dst, Train *origina
 static CommandCost CheckTrainAttachment(Train *t)
 {
 	/* No multi-part train, no need to check. */
-	if (t == nullptr || t->Next() == nullptr || !t->IsEngine()) return CommandCost();
+	if (t == nullptr || t->Next() == nullptr) return CommandCost();
 
 	/* The maximum length for a train. For each part we decrease this by one
 	 * and if the result is negative the train is simply too long. */
 	int allowed_len = _settings_game.vehicle.max_train_length * TILE_SIZE - t->gcache.cached_veh_length;
+
+	/* For free-wagon chains, check if they are within the max_train_length limit. */
+	if (!t->IsEngine()) {
+		t = t->Next();
+		while (t != nullptr) {
+			allowed_len -= t->gcache.cached_veh_length;
+
+			t = t->Next();
+		}
+
+		if (allowed_len < 0) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
+		return CommandCost();
+	}
 
 	Train *head = t;
 	Train *prev = t;
