@@ -2631,6 +2631,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Choisir 
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informations sur le terrain
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centrer la vue sur la case. Ctrl-clic pour ouvrir une nouvelle vue sur la case
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Coût si démolition{NBSP}: {LTBLUE}N/D
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Coût si démolition{NBSP}: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Gain si démolition{NBSP}: {LTBLUE}{CURRENCY_LONG}
@@ -3101,6 +3102,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Activer 
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Éditer le texte du panneau
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centrer la vue sur le panneau. Ctrl-clic pour ouvrir une nouvelle vue sur le panneau
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Aller au panneau suivant
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Aller au panneau précédent
 
@@ -3757,6 +3759,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Si l'aut
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centrer la vue sur le train. Double clic pour le suivre dans la vue principale. Ctrl-clic pour ouvrir une nouvelle vue sur le train
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centrer la vue sur le véhicule. Double clic pour le suivre dans la vue principale. Ctrl-clic pour ouvrir une nouvelle vue sur le véhicule
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrer la vue sur le navire. Double clic pour le suivre dans la vue principale. Ctrl-clic pour ouvrir une nouvelle vue sur le navire
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrer la vue sur l'aéronef. Double clic pour le suivre dans la vue principale. Ctrl-clic pour ouvrir une nouvelle vue sur l'aéronef
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envoyer le train au dépôt.{}Ctrl-clic pour un entretien seul.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envoyer le véhicule au dépôt.{}Ctrl-clic pour un entretien seul.
@@ -3788,7 +3794,12 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Afficher
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Afficher les détails du navire
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Afficher les détails de l'aéronef
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Action courante du train - cliquer pour le démarrer/l'arrêter
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Action courante du véhicule - cliquer pour le démarrer/l'arrêter
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Action courante du navire - cliquer pour le démarrer/l'arrêter
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Action courante de l'aéronef - cliquer pour le démarrer/l'arrêter
 
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrer la vue sur la destination. Ctrl-clic pour ouvrir une nouvelle vue sur la destination
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Chargement/Déchargement

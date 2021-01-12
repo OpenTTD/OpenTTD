@@ -1615,6 +1615,7 @@ STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Penempatan poho
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Mengendalikan kemunculan pohon dalam permainan. Ini akan berefek pada industri yang memerlukan pohon, contohnya pengolahan kayu gelondongan
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Tumbuh tapi jangan menyebar {RED}(memecahkan pabrik kayu)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Tumbuh tetapi hanya tersebar di hutan hujan
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Tumbuh dan menyebar ke mana-mana
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Jangan tumbuh, jangan menyebar {RED}(menghancurkan pabrik kayu)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posisi toolbar utama: {STRING}
@@ -3088,6 +3089,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Hidup ma
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Ubah tulisan di tanda pengenal
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Pusatkan tampilan utama pada lokasi tanda tangan. Ctrl+Klik membuka viewport baru pada lokasi tanda tangan
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Pergi sampai rambu berikutnya
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Pergi ke rambu sebelumnya
 
@@ -3364,6 +3366,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Pindah K
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Membangun kembali kantor pusat perusahaan di tempat lain dengan 1% ongkos dari nilai perusahaan. Shift untuk menampilkan perkiraan biaya
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detail
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Lihat jumlah infrastruktur lebih detail
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Berikan uang
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Berikan uang kepada perusahaan ini
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Ganti Wajah
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Pilih wajah baru pimpinan
@@ -3741,6 +3745,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Tampilan utama pusat di lokasi kapal. Klik ganda akan mengikuti kapal dalam tampilan utama. Ctrl+Click membuka viewport baru di lokasi kapal
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Perintahkan kereta berhenti di depo. CTRL+klik untuk memerintahkan perbaikan saja
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Perintahkan kendaraan berhenti di bengkel. CTRL+klik hanya akan memerintahkan perbaikan di bengkel
@@ -3772,6 +3777,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Tampilka
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Tampilkan detail kapal
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Tampilkan detail pesawat
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Aksi kereta saat ini - klik untuk menghentikan/memulai kereta
 
 
 # Messages in the start stop button in the vehicle view
@@ -4453,6 +4459,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Jenis bengkel s
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} jadi terlalu panjang setelah diganti
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Tidak ada aturan peremajaan otomatis yang berlaku
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(batas min. uang)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Kendaraan baru tidak bisa membawa {STRING}
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Kendaraan baru tidak dapat melakukan perbaikan dalam urutan {NUM}
 
 # Rail construction errors

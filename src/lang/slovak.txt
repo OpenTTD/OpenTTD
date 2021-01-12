@@ -1721,10 +1721,10 @@ STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :normálny
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :rýchly
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Veľmi rýchly
 STR_CONFIG_SETTING_LARGER_TOWNS                                 :Podiel miest ktoré sa stanú veľkomestami: {STRING}
-STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Množstvo miest ktoré sa stanú veľkomestami, teda tie ktoré začali väčšie a rastú rýchlejšie.
+STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Množstvo miest, ktoré sa stanú veľkomestami, teda tie ktoré začali väčšie a rastú rýchlejšie.
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 z {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :žiadne
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Násobok pociatocnej velkosti mesta: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Násobok počiatočnej veľkosti mesta: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Priemerná veľkosť veľkomiest v porovnaní k mestám na začiatku hry.
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Aktualizovať distribučný graf každ{P 0:2 "ý" "é" "ých"} {STRING} {P 0:2 "deň" "dni" "dní"}
@@ -2134,7 +2134,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Litovsky
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Sieťová hra - čakáreň
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Pripravuje sa k vstupu: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Aktualny zoznam spolocnosti v tejto hre. Bud mozes do jednej vstupit, alebo zalozit novu spolocnost.
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Aktuálny zoznam spoločností v tejto hre. Buď môžeš do jednej vstúpiť, alebo založiť novú spoločnosť.
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}INFO O SPOLOCNOSTI
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Názov spoločnosti: {WHITE}{STRING}
@@ -2445,7 +2445,7 @@ STR_BUILD_DEPOT_TRAIN_ORIENTATION_TOOLTIP                       :{BLACK}Vybrať 
 
 # Rail waypoint construction window
 STR_WAYPOINT_CAPTION                                            :{WHITE}Smerový bod
-STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vyber typ kontrolneho bodu
+STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vyber typ kontrolného bodu
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Výber železničnej stanice
@@ -2788,21 +2788,21 @@ STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Lodenica
 STR_LAI_TUNNEL_DESCRIPTION_RAILROAD                             :Železničný tunel
 STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Cestný tunel
 
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Ocelovy zavesny zeleznicny most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Ocelovy pilierovy zeleznicny most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Ocelovy visuty zeleznicny most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Vystuzeny zavesny betonovy zeleznicny most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Dreveny zeleznicny most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betonovy zeleznicny most
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Kryty zeleznicny most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Oceľový závesný železničný most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Oceľový pilierový železničný most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Oceľový visutý železničný most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Vystužený závesný betónový železničný most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Drevený železničný most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betónový železničný most
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Krytý železničný most
 
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Ocelovy zavesny cestny most
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Ocelovy pilierovy cestny most
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Ocelovy visuty cestny most
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Vystuzeny zavesny betonovy cestny most
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Dreveny cestny most
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonovy cestny most
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Kryty cestny most
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Oceľový závesný cestný most
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Oceľovy pilierový cestný most
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Oceľový visutý cestný most
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Vystužený závesný betónový cestný most
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Drevený cestný most
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betónový cestný most
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Krytý cestný most
 
 STR_LAI_BRIDGE_DESCRIPTION_AQUEDUCT                             :Akvadukt
 
@@ -2942,12 +2942,12 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuáln
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Orientácia výškovej mapy:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Názov výškovej mapy:
-STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Velkost:
+STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Veľkosť:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
 STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Zmeniť maximálnu výšku mapy
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Zmeniť výšku hranice snehu
-STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Zmenit rok zaciatku hry
+STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Zmeniť rok začiatku hry
 
 # SE Map generation
 STR_SE_MAPGEN_CAPTION                                           :{WHITE}Typ scenara
@@ -3439,6 +3439,7 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Premiest
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sídlo spoločnosti je možné premiestniť za 1% hodnoty spoločnosti. Shift+klik zobrazí odhadovanú cenu
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaily
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobraziť podrobné políčka infraštruktúry
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Presuň peniaze do tejto spoločnosti
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nová tvár
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Vybrať novú tvár prezidenta
@@ -3847,6 +3848,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Zobrazi�
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zobraziť detaily o lodi
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zobraziť detaily o lietadle
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Činnosť aktuálneho vlaku - kliknite na zastavenie/spustenie vlaku
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Činnosť aktuálneho cestného vozidla - kliknite na zastavenie/spustenie cestného vozidla
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Činnosť aktuálnej lode - kliknite na zastavenie/spustenie lode
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Činnosť aktuálneho lietadla - kliknite na zastavenie/spustenie lietadla
 
 
 # Messages in the start stop button in the vehicle view
