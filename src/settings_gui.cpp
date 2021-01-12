@@ -17,6 +17,7 @@
 #include "town.h"
 #include "settings_internal.h"
 #include "newgrf_townname.h"
+#include "townname_type.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "string_func.h"
@@ -73,7 +74,6 @@ static const StringID _font_zoom_dropdown[] = {
 	INVALID_STRING_ID,
 };
 
-int _nb_orig_names = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1; ///< Number of original town names.
 static StringID *_grf_names = nullptr; ///< Pointer to town names defined by NewGRFs.
 static int _nb_grf_names = 0;       ///< Number of town names defined by NewGRFs.
 
@@ -97,8 +97,8 @@ void InitGRFTownGeneratorNames()
  */
 static inline StringID TownName(int town_name)
 {
-	if (town_name < _nb_orig_names) return STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + town_name;
-	town_name -= _nb_orig_names;
+	if (town_name < BUILTIN_TOWNNAME_GENERATOR_COUNT) return STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + town_name;
+	town_name -= BUILTIN_TOWNNAME_GENERATOR_COUNT;
 	if (town_name < _nb_grf_names) return _grf_names[town_name];
 	return STR_UNDEFINED;
 }
@@ -245,7 +245,7 @@ struct GameOptionsWindow : Window {
 
 				/* Add and sort newgrf townnames generators */
 				for (int i = 0; i < _nb_grf_names; i++) {
-					int result = _nb_orig_names + i;
+					int result = BUILTIN_TOWNNAME_GENERATOR_COUNT + i;
 					list.emplace_back(new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0));
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
@@ -258,7 +258,7 @@ struct GameOptionsWindow : Window {
 				}
 
 				/* Add and sort original townnames generators */
-				for (int i = 0; i < _nb_orig_names; i++) {
+				for (int i = 0; i < BUILTIN_TOWNNAME_GENERATOR_COUNT; i++) {
 					list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, enabled_item != i && enabled_item >= 0));
 				}
 				std::sort(list.begin() + newgrf_size, list.end(), DropDownListStringItem::NatSortFunc);
