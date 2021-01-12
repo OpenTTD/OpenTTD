@@ -27,6 +27,8 @@
 #include "saveload/saveload.h"
 #include "progress.h"
 #include "error.h"
+#include "newgrf_townname.h"
+#include "townname_type.h"
 
 #include "widgets/genworld_widget.h"
 
@@ -112,6 +114,7 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_DATE, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SMOOTHNESS, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_RIVERS, STR_NULL), SetFill(1, 1),
+						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_FRAME, STR_NULL), SetFill(1, 1),
 					EndContainer(),
 					NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
 						/* Max. heightlevel. */
@@ -134,6 +137,7 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 						EndContainer(),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_SMOOTHNESS_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_RIVER_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
+						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWNNAME_DROPDOWN), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP), SetFill(1, 0),
 					EndContainer(),
 				EndContainer(),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_GL_GENERATE_BUTTON), SetMinimalSize(84, 0), SetDataTip(STR_MAPGEN_GENERATE, STR_NULL), SetFill(1, 1),
@@ -225,6 +229,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_MAX_HEIGHTLEVEL, STR_NULL), SetFill(1, 1),
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SNOW_LINE_HEIGHT, STR_NULL), SetFill(1, 1),
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_DATE, STR_NULL), SetFill(1, 1),
+								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_FRAME, STR_NULL), SetFill(1, 1),
 							EndContainer(),
 							NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
 								NWidget(NWID_HORIZONTAL),
@@ -242,6 +247,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 									NWidget(WWT_PUSHTXTBTN, COLOUR_ORANGE, WID_GL_START_DATE_TEXT), SetDataTip(STR_BLACK_DATE_LONG, STR_NULL), SetFill(1, 0),
 									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_START_DATE_UP), SetDataTip(SPR_ARROW_UP, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD), SetFill(0, 1),
 								EndContainer(),
+								NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWNNAME_DROPDOWN), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP), SetFill(1, 0),
 							EndContainer(),
 						EndContainer(),
 						NWidget(WWT_PUSHTXTBTN, COLOUR_GREEN, WID_GL_GENERATE_BUTTON), SetMinimalSize(84, 0), SetDataTip(STR_MAPGEN_GENERATE, STR_NULL), SetFill(1, 1),
@@ -288,6 +294,34 @@ static DropDownList BuildMapsizeDropDown()
 
 	return list;
 }
+
+static DropDownList BuildTownNameDropDown()
+{
+	DropDownList list;
+
+	/* Add and sort newgrf townnames generators */
+	const auto &grf_names = GetGRFTownNameList();
+	for (uint i = 0; i < grf_names.size(); i++) {
+		list.emplace_back(new DropDownListStringItem(grf_names[i], BUILTIN_TOWNNAME_GENERATOR_COUNT + i, false));
+	}
+	std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
+
+	size_t newgrf_size = list.size();
+	/* Insert newgrf_names at the top of the list */
+	if (newgrf_size > 0) {
+		list.emplace_back(new DropDownListItem(-1, false)); // separator line
+		newgrf_size++;
+	}
+
+	/* Add and sort original townnames generators */
+	for (uint i = 0; i < BUILTIN_TOWNNAME_GENERATOR_COUNT; i++) {
+		list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + i, i, false));
+	}
+	std::sort(list.begin() + newgrf_size, list.end(), DropDownListStringItem::NatSortFunc);
+
+	return list;
+}
+
 
 static const StringID _elevations[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_TYPE_FLAT, STR_TERRAIN_TYPE_HILLY, STR_TERRAIN_TYPE_MOUNTAINOUS, STR_TERRAIN_TYPE_ALPINIST, INVALID_STRING_ID};
 static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LOW, STR_SEA_LEVEL_MEDIUM, STR_SEA_LEVEL_HIGH, STR_SEA_LEVEL_CUSTOM, INVALID_STRING_ID};
@@ -343,6 +377,15 @@ struct GenerateLandscapeWindow : public Window {
 					SetDParam(0, _num_towns[_settings_newgame.difficulty.number_towns]);
 				}
 				break;
+
+			case WID_GL_TOWNNAME_DROPDOWN: {
+				uint gen = _settings_newgame.game_creation.town_name;
+				StringID name = gen < BUILTIN_TOWNNAME_GENERATOR_COUNT ?
+						STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + gen :
+						GetGRFTownNameName(gen - BUILTIN_TOWNNAME_GENERATOR_COUNT);
+				SetDParam(0, name);
+				break;
+			}
 
 			case WID_GL_INDUSTRY_PULLDOWN:   SetDParam(0, _game_mode == GM_EDITOR ? STR_CONFIG_SETTING_OFF : _num_inds[_settings_newgame.difficulty.industry_density]); break;
 			case WID_GL_LANDSCAPE_PULLDOWN:  SetDParam(0, _landscape[_settings_newgame.game_creation.land_generator]); break;
@@ -540,6 +583,10 @@ struct GenerateLandscapeWindow : public Window {
 				ShowDropDownMenu(this, _num_towns, _settings_newgame.difficulty.number_towns, WID_GL_TOWN_PULLDOWN, 0, 0);
 				break;
 
+			case WID_GL_TOWNNAME_DROPDOWN: // Townname generator
+				ShowDropDownList(this, BuildTownNameDropDown(), _settings_newgame.game_creation.town_name, WID_GL_TOWNNAME_DROPDOWN);
+				break;
+
 			case WID_GL_INDUSTRY_PULLDOWN: // Number of industries
 				ShowDropDownMenu(this, _num_inds, _settings_newgame.difficulty.industry_density, WID_GL_INDUSTRY_PULLDOWN, 0, 0);
 				break;
@@ -725,6 +772,13 @@ struct GenerateLandscapeWindow : public Window {
 					ShowQueryString(STR_JUST_INT, STR_MAPGEN_NUMBER_OF_TOWNS, 5, this, CS_NUMERAL, QSF_NONE);
 				}
 				_settings_newgame.difficulty.number_towns = index;
+				break;
+
+			case WID_GL_TOWNNAME_DROPDOWN: // Town names
+				if (_game_mode == GM_MENU || Town::GetNumItems() == 0) {
+					_settings_newgame.game_creation.town_name = index;
+					SetWindowDirty(WC_GAME_OPTIONS, WN_GAME_OPTIONS_GAME_OPTIONS);
+				}
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN: _settings_newgame.difficulty.industry_density = index; break;
