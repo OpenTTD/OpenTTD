@@ -16,7 +16,6 @@ enum GameOptionsWidgets {
 	WID_GO_CURRENCY_DROPDOWN,      ///< Currency dropdown.
 	WID_GO_DISTANCE_DROPDOWN,      ///< Measuring unit dropdown.
 	WID_GO_ROADSIDE_DROPDOWN,      ///< Dropdown to select the road side (to set the right side ;)).
-	WID_GO_TOWNNAME_DROPDOWN,      ///< Town name dropdown.
 	WID_GO_AUTOSAVE_DROPDOWN,      ///< Dropdown to say how often to autosave.
 	WID_GO_LANG_DROPDOWN,          ///< Language dropdown.
 	WID_GO_RESOLUTION_DROPDOWN,    ///< Dropdown for the resolution.
