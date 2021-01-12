@@ -8,7 +8,7 @@
         <key>CFBundleDisplayName</key>
         <string>${CPACK_BUNDLE_NAME}</string>
         <key>CFBundleExecutable</key>
-        <string>${CPACK_BUNDLE_NAME}</string>
+        <string>openttd</string>
         <key>CFBundleGetInfoString</key>
         <string>#CPACK_PACKAGE_VERSION#, Copyright 2004-${CURRENT_YEAR} The OpenTTD team</string>
         <key>CFBundleIconFile</key>
