@@ -347,7 +347,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	PLOGFONT os_data = MallocT<LOGFONT>(1);
 	*os_data = logfont->elfLogFont;
 	info->callback->SetFontNames(info->settings, font_name, os_data);
-	if (info->callback->FindMissingGlyphs(nullptr)) return 1;
+	if (info->callback->FindMissingGlyphs()) return 1;
 	DEBUG(freetype, 1, "Fallback font: %s (%s)", font_name, english_name);
 	return 0; // stop enumerating
 }
@@ -477,7 +477,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 		/* Save result. */
 		callback->SetFontNames(settings, name);
-		if (!callback->FindMissingGlyphs(nullptr)) {
+		if (!callback->FindMissingGlyphs()) {
 			DEBUG(freetype, 2, "CT-Font for %s: %s", language_isocode, name);
 			result = true;
 			break;
@@ -488,10 +488,10 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 		/* For some OS versions, the font 'Arial Unicode MS' does not report all languages it
 		 * supports. If we didn't find any other font, just try it, maybe we get lucky. */
 		callback->SetFontNames(settings, "Arial Unicode MS");
-		result = !callback->FindMissingGlyphs(nullptr);
+		result = !callback->FindMissingGlyphs();
 	}
 
-	callback->FindMissingGlyphs(nullptr);
+	callback->FindMissingGlyphs();
 	return result;
 }
 
@@ -623,7 +623,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 			callback->SetFontNames(settings, (const char*)file);
 
-			bool missing = callback->FindMissingGlyphs(nullptr);
+			bool missing = callback->FindMissingGlyphs();
 			DEBUG(freetype, 1, "Font \"%s\" misses%s glyphs", file, missing ? "" : " no");
 
 			if (!missing) {
