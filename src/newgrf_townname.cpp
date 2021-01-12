@@ -17,9 +17,12 @@
 #include "core/alloc_func.hpp"
 #include "string_func.h"
 
+#include "table/strings.h"
+
 #include "safeguards.h"
 
 static GRFTownName *_grf_townnames = nullptr;
+static std::vector<StringID> _grf_townname_names;
 
 GRFTownName *GetGRFTownName(uint32 grfid)
 {
@@ -101,16 +104,24 @@ char *GRFTownNameGenerate(char *buf, uint32 grfid, uint16 gen, uint32 seed, cons
 	return buf;
 }
 
-StringID *GetGRFTownNameList()
+
+/** Allocate memory for the NewGRF town names. */
+void InitGRFTownGeneratorNames()
 {
-	int nb_names = 0, n = 0;
-	for (GRFTownName *t = _grf_townnames; t != nullptr; t = t->next) nb_names += t->nb_gen;
-	StringID *list = MallocT<StringID>(nb_names + 1);
+	_grf_townname_names.clear();
 	for (GRFTownName *t = _grf_townnames; t != nullptr; t = t->next) {
-		for (int j = 0; j < t->nb_gen; j++) list[n++] = t->name[j];
+		for (int j = 0; j < t->nb_gen; j++) _grf_townname_names.push_back(t->name[j]);
 	}
-	list[n] = INVALID_STRING_ID;
-	return list;
+}
+
+const std::vector<StringID>& GetGRFTownNameList()
+{
+	return _grf_townname_names;
+}
+
+StringID GetGRFTownNameName(uint gen)
+{
+	return gen < _grf_townname_names.size() ? _grf_townname_names[gen] : STR_UNDEFINED;
 }
 
 void CleanUpGRFTownNames()

@@ -72,34 +72,9 @@ static const StringID _font_zoom_dropdown[] = {
 	INVALID_STRING_ID,
 };
 
-static StringID *_grf_names = nullptr; ///< Pointer to town names defined by NewGRFs.
-static int _nb_grf_names = 0;       ///< Number of town names defined by NewGRFs.
-
 static Dimension _circle_size; ///< Dimension of the circle +/- icon. This is here as not all users are within the class of the settings window.
 
 static const void *ResolveVariableAddress(const GameSettings *settings_ptr, const SettingDesc *sd);
-
-/** Allocate memory for the NewGRF town names. */
-void InitGRFTownGeneratorNames()
-{
-	free(_grf_names);
-	_grf_names = GetGRFTownNameList();
-	_nb_grf_names = 0;
-	for (StringID *s = _grf_names; *s != INVALID_STRING_ID; s++) _nb_grf_names++;
-}
-
-/**
- * Get a town name.
- * @param town_name Number of the wanted town name.
- * @return Name of the town as string ID.
- */
-static inline StringID TownName(int town_name)
-{
-	if (town_name < BUILTIN_TOWNNAME_GENERATOR_COUNT) return STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + town_name;
-	town_name -= BUILTIN_TOWNNAME_GENERATOR_COUNT;
-	if (town_name < _nb_grf_names) return _grf_names[town_name];
-	return STR_UNDEFINED;
-}
 
 /**
  * Get index of the current screen resolution.
@@ -242,9 +217,10 @@ struct GameOptionsWindow : Window {
 				int enabled_item = (_game_mode == GM_MENU || Town::GetNumItems() == 0) ? -1 : *selected_index;
 
 				/* Add and sort newgrf townnames generators */
-				for (int i = 0; i < _nb_grf_names; i++) {
+				const auto &grf_names = GetGRFTownNameList();
+				for (uint i = 0; i < grf_names.size(); i++) {
 					int result = BUILTIN_TOWNNAME_GENERATOR_COUNT + i;
-					list.emplace_back(new DropDownListStringItem(_grf_names[i], result, enabled_item != result && enabled_item >= 0));
+					list.emplace_back(new DropDownListStringItem(grf_names[i], result, enabled_item != result && enabled_item >= 0));
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
 
@@ -329,7 +305,14 @@ struct GameOptionsWindow : Window {
 		switch (widget) {
 			case WID_GO_CURRENCY_DROPDOWN:   SetDParam(0, _currency_specs[this->opt->locale.currency].name); break;
 			case WID_GO_ROADSIDE_DROPDOWN:   SetDParam(0, STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT + this->opt->vehicle.road_side); break;
-			case WID_GO_TOWNNAME_DROPDOWN:   SetDParam(0, TownName(this->opt->game_creation.town_name)); break;
+			case WID_GO_TOWNNAME_DROPDOWN: {
+				int gen = this->opt->game_creation.town_name;
+				StringID name = gen < BUILTIN_TOWNNAME_GENERATOR_COUNT ?
+						STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH + gen :
+						GetGRFTownNameName(gen - BUILTIN_TOWNNAME_GENERATOR_COUNT);
+				SetDParam(0, name);
+				break;
+			}
 			case WID_GO_AUTOSAVE_DROPDOWN:   SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
 			case WID_GO_LANG_DROPDOWN:       SetDParamStr(0, _current_language->own_name); break;
 			case WID_GO_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _resolutions.size() ? STR_GAME_OPTIONS_RESOLUTION_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
