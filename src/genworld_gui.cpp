@@ -84,7 +84,6 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TERRAIN_TYPE, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_VARIETY, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_SEA_LAKES, STR_NULL), SetFill(1, 1),
-					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TREE_PLACER, STR_NULL), SetFill(1, 1),
 					NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_BORDER_TYPE, STR_NULL), SetFill(1, 1),
 				EndContainer(),
 				/* Widgets at the right of the labels. */
@@ -100,7 +99,6 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TERRAIN_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_VARIETY_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_WATER_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
-					NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TREE_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 					NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_BORDERS_RANDOM), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 				EndContainer(),
 			EndContainer(),
@@ -202,7 +200,6 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_TOWNS, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_NUMBER_OF_INDUSTRIES, STR_NULL), SetFill(1, 1),
 				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_RIVERS, STR_NULL), SetFill(1, 1),
-				NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_TREE_PLACER, STR_NULL), SetFill(1, 1),
 			EndContainer(),
 			/* Widgets at the right of the labels. */
 			NWidget(NWID_VERTICAL), SetPIP(0, 4, 0),
@@ -219,7 +216,6 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TOWN_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_INDUSTRY_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_RIVER_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_DROPDOWN, COLOUR_ORANGE, WID_GL_TREE_PULLDOWN), SetDataTip(STR_JUST_STRING, STR_NULL), SetFill(1, 0),
 					EndContainer(),
 					NWidget(NWID_VERTICAL), SetPIP(0, 4, 0),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
@@ -297,7 +293,6 @@ static const StringID _elevations[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_
 static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LOW, STR_SEA_LEVEL_MEDIUM, STR_SEA_LEVEL_HIGH, STR_SEA_LEVEL_CUSTOM, INVALID_STRING_ID};
 static const StringID _rivers[]      = {STR_RIVERS_NONE, STR_RIVERS_FEW, STR_RIVERS_MODERATE, STR_RIVERS_LOT, INVALID_STRING_ID};
 static const StringID _smoothness[]  = {STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
-static const StringID _tree_placer[] = {STR_CONFIG_SETTING_TREE_PLACER_NONE, STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL, STR_CONFIG_SETTING_TREE_PLACER_IMPROVED, INVALID_STRING_ID};
 static const StringID _rotation[]    = {STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
 static const StringID _landscape[]   = {STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL, STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
 static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_NUM_LOW, STR_NUM_NORMAL, STR_NUM_HIGH, STR_NUM_CUSTOM, INVALID_STRING_ID};
@@ -321,10 +316,9 @@ struct GenerateLandscapeWindow : public Window {
 
 		this->mode = (GenerateLandscapeWindowMode)this->window_number;
 
-		/* Disable town, industry and trees in SE */
+		/* Disable town and industry in SE */
 		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
 		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
-		this->SetWidgetDisabledState(WID_GL_TREE_PULLDOWN,     _game_mode == GM_EDITOR);
 
 		this->OnInvalidateData();
 	}
@@ -352,7 +346,6 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_INDUSTRY_PULLDOWN:   SetDParam(0, _game_mode == GM_EDITOR ? STR_CONFIG_SETTING_OFF : _num_inds[_settings_newgame.difficulty.industry_density]); break;
 			case WID_GL_LANDSCAPE_PULLDOWN:  SetDParam(0, _landscape[_settings_newgame.game_creation.land_generator]); break;
-			case WID_GL_TREE_PULLDOWN:       SetDParam(0, _tree_placer[_settings_newgame.game_creation.tree_placer]); break;
 			case WID_GL_TERRAIN_PULLDOWN:    SetDParam(0, _elevations[_settings_newgame.difficulty.terrain_type]); break;
 
 			case WID_GL_WATER_PULLDOWN:
@@ -477,7 +470,6 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_INDUSTRY_PULLDOWN:   strs = _num_inds; break;
 			case WID_GL_LANDSCAPE_PULLDOWN:  strs = _landscape; break;
-			case WID_GL_TREE_PULLDOWN:       strs = _tree_placer; break;
 			case WID_GL_TERRAIN_PULLDOWN:    strs = _elevations; break;
 			case WID_GL_WATER_PULLDOWN:
 				strs = _sea_lakes;
@@ -634,10 +626,6 @@ struct GenerateLandscapeWindow : public Window {
 				ShowQueryString(STR_JUST_INT, STR_MAPGEN_SNOW_LINE_QUERY_CAPT, 4, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
-			case WID_GL_TREE_PULLDOWN: // Tree placer
-				ShowDropDownMenu(this, _tree_placer, _settings_newgame.game_creation.tree_placer, WID_GL_TREE_PULLDOWN, 0, 0);
-				break;
-
 			case WID_GL_LANDSCAPE_PULLDOWN: // Landscape generator
 				ShowDropDownMenu(this, _landscape, _settings_newgame.game_creation.land_generator, WID_GL_LANDSCAPE_PULLDOWN, 0, 0);
 				break;
@@ -717,7 +705,6 @@ struct GenerateLandscapeWindow : public Window {
 		switch (widget) {
 			case WID_GL_MAPSIZE_X_PULLDOWN:     _settings_newgame.game_creation.map_x = index; break;
 			case WID_GL_MAPSIZE_Y_PULLDOWN:     _settings_newgame.game_creation.map_y = index; break;
-			case WID_GL_TREE_PULLDOWN:          _settings_newgame.game_creation.tree_placer = index; break;
 			case WID_GL_RIVER_PULLDOWN:         _settings_newgame.game_creation.amount_of_rivers = index; break;
 			case WID_GL_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
 			case WID_GL_VARIETY_PULLDOWN:       _settings_newgame.game_creation.variety = index; break;
