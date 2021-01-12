@@ -15,10 +15,13 @@
 
 #include "newgrf_townname.h"
 #include "town_type.h"
+#include "string_type.h"
 #include <set>
 #include <string>
 
 typedef std::set<std::string> TownNames;
+
+static constexpr uint BUILTIN_TOWNNAME_GENERATOR_COUNT = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1; ///< Number of built-in town name generators.
 
 /**
  * Struct holding parameters used to generate town name.
@@ -34,10 +37,9 @@ struct TownNameParams {
 	 */
 	TownNameParams(byte town_name)
 	{
-		extern int _nb_orig_names;
-		bool grf = town_name >= _nb_orig_names;
-		this->grfid = grf ? GetGRFTownNameId(town_name - _nb_orig_names) : 0;
-		this->type = grf ? GetGRFTownNameType(town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + town_name;
+		bool grf = town_name >= BUILTIN_TOWNNAME_GENERATOR_COUNT;
+		this->grfid = grf ? GetGRFTownNameId(town_name - BUILTIN_TOWNNAME_GENERATOR_COUNT) : 0;
+		this->type = grf ? GetGRFTownNameType(town_name - BUILTIN_TOWNNAME_GENERATOR_COUNT) : SPECSTR_TOWNNAME_START + town_name;
 	}
 
 	TownNameParams(const Town *t);
