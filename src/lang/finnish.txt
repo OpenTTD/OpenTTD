@@ -229,7 +229,7 @@ STR_LIST_FILTER_TITLE                                           :{BLACK}Suodatin
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK}Syötä suodatinteksti
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}Syötä avainsana suodattaaksesi listan
 
-STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Valitse ryhmittelyjärjestys
+STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}Valitse ryhmittelytapa
 STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Valitse järjestys (laskeva/nouseva)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Valitse järjestyskriteeri
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Valitse suodatuskriteerit
