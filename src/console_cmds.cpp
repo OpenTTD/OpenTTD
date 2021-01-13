@@ -2106,33 +2106,31 @@ static void ConDumpRoadTypes()
 	IConsolePrintF(CC_DEFAULT, "    h = hidden");
 	IConsolePrintF(CC_DEFAULT, "    T = buildable by towns");
 
-	extern RoadTypeInfo _roadtypes[ROADTYPE_END];
-	std::set<uint32> grfids;
+	std::map<uint32, const GRFFile *> grfs;
 	for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
-		const RoadTypeInfo &rti = _roadtypes[rt];
-		if (rti.label == 0) continue;
+		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
+		if (rti->label == 0) continue;
 		uint32 grfid = 0;
-		if (rti.grffile[ROTSG_GROUND] != nullptr) {
-			grfid = rti.grffile[ROTSG_GROUND]->grfid;
-			grfids.insert(grfid);
+		const GRFFile *grf = rti->grffile[ROTSG_GROUND];
+		if (grf != nullptr) {
+			grfid = grf->grfid;
+			grfs.emplace(grfid, grf);
 		}
 		IConsolePrintF(CC_DEFAULT, "  %02u %s %c%c%c%c, Flags: %c%c%c%c%c, GRF: %08X, %s",
 				(uint) rt,
 				RoadTypeIsTram(rt) ? "Tram" : "Road",
-				rti.label >> 24, rti.label >> 16, rti.label >> 8, rti.label,
-				HasBit(rti.flags, ROTF_CATENARY)          ? 'c' : '-',
-				HasBit(rti.flags, ROTF_NO_LEVEL_CROSSING) ? 'l' : '-',
-				HasBit(rti.flags, ROTF_NO_HOUSES)         ? 'X' : '-',
-				HasBit(rti.flags, ROTF_HIDDEN)            ? 'h' : '-',
-				HasBit(rti.flags, ROTF_TOWN_BUILD)        ? 'T' : '-',
+				rti->label >> 24, rti->label >> 16, rti->label >> 8, rti->label,
+				HasBit(rti->flags, ROTF_CATENARY)          ? 'c' : '-',
+				HasBit(rti->flags, ROTF_NO_LEVEL_CROSSING) ? 'l' : '-',
+				HasBit(rti->flags, ROTF_NO_HOUSES)         ? 'X' : '-',
+				HasBit(rti->flags, ROTF_HIDDEN)            ? 'h' : '-',
+				HasBit(rti->flags, ROTF_TOWN_BUILD)        ? 'T' : '-',
 				BSWAP32(grfid),
-				GetStringPtr(rti.strings.name)
+				GetStringPtr(rti->strings.name)
 		);
 	}
-	for (uint32 grfid : grfids) {
-		extern GRFFile *GetFileByGRFID(uint32 grfid);
-		const GRFFile *grffile = GetFileByGRFID(grfid);
-		IConsolePrintF(CC_DEFAULT, "  GRF: %08X = %s", BSWAP32(grfid), grffile ? grffile->filename : "????");
+	for (const auto &grf : grfs) {
+		IConsolePrintF(CC_DEFAULT, "  GRF: %08X = %s", BSWAP32(grf.first), grf.second->filename);
 	}
 }
 
@@ -2146,14 +2144,15 @@ static void ConDumpRailTypes()
 	IConsolePrintF(CC_DEFAULT, "    a = always allow 90 degree turns");
 	IConsolePrintF(CC_DEFAULT, "    d = always disallow 90 degree turns");
 
-	std::set<uint32> grfids;
+	std::map<uint32, const GRFFile *> grfs;
 	for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
 		const RailtypeInfo *rti = GetRailTypeInfo(rt);
 		if (rti->label == 0) continue;
 		uint32 grfid = 0;
-		if (rti->grffile[ROTSG_GROUND] != nullptr) {
-			grfid = rti->grffile[ROTSG_GROUND]->grfid;
-			grfids.insert(grfid);
+		const GRFFile *grf = rti->grffile[RTSG_GROUND];
+		if (grf != nullptr) {
+			grfid = grf->grfid;
+			grfs.emplace(grfid, grf);
 		}
 		IConsolePrintF(CC_DEFAULT, "  %02u %c%c%c%c, Flags: %c%c%c%c%c%c, GRF: %08X, %s",
 				(uint) rt,
@@ -2168,10 +2167,8 @@ static void ConDumpRailTypes()
 				GetStringPtr(rti->strings.name)
 		);
 	}
-	for (uint32 grfid : grfids) {
-		extern GRFFile *GetFileByGRFID(uint32 grfid);
-		const GRFFile *grffile = GetFileByGRFID(grfid);
-		IConsolePrintF(CC_DEFAULT, "  GRF: %08X = %s", BSWAP32(grfid), grffile ? grffile->filename : "????");
+	for (const auto &grf : grfs) {
+		IConsolePrintF(CC_DEFAULT, "  GRF: %08X = %s", BSWAP32(grf.first), grf.second->filename);
 	}
 }
 
@@ -2190,14 +2187,15 @@ static void ConDumpCargoTypes()
 	IConsolePrintF(CC_DEFAULT, "    c = covered/sheltered");
 	IConsolePrintF(CC_DEFAULT, "    S = special");
 
-	std::set<uint32> grfids;
+	std::map<uint32, const GRFFile *> grfs;
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		const CargoSpec *spec = CargoSpec::Get(i);
 		if (!spec->IsValid()) continue;
 		uint32 grfid = 0;
-		if (spec->grffile != nullptr) {
-			grfid = spec->grffile->grfid;
-			grfids.insert(grfid);
+		const GRFFile *grf = spec->grffile;
+		if (grf != nullptr) {
+			grfid = grf->grfid;
+			grfs.emplace(grfid, grf);
 		}
 		IConsolePrintF(CC_DEFAULT, "  %02u Bit: %2u, Label: %c%c%c%c, Callback mask: 0x%02X, Cargo class: %c%c%c%c%c%c%c%c%c%c%c, GRF: %08X, %s",
 				(uint) i,
@@ -2219,10 +2217,8 @@ static void ConDumpCargoTypes()
 				GetStringPtr(spec->name)
 		);
 	}
-	for (uint32 grfid : grfids) {
-		extern GRFFile *GetFileByGRFID(uint32 grfid);
-		const GRFFile *grffile = GetFileByGRFID(grfid);
-		IConsolePrintF(CC_DEFAULT, "  GRF: %08X = %s", BSWAP32(grfid), grffile ? grffile->filename : "????");
+	for (const auto &grf : grfs) {
+		IConsolePrintF(CC_DEFAULT, "  GRF: %08X = %s", BSWAP32(grf.first), grf.second->filename);
 	}
 }
 
