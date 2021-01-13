@@ -1114,7 +1114,7 @@ static bool AircraftController(Aircraft *v)
 		if ((amd.flag & (AMED_LAND | AMED_BRAKE)) && st != nullptr) {
 			assert(st->airport.HasHangar());
 			TileIndex hangar_tile = st->airport.GetHangarTile(0);
-			airport_z = TilePixelHeight(hangar_tile) + 1; // To avoid clashing with the shadow
+			airport_z = GetTileMaxPixelZ(hangar_tile) + 1; // To avoid clashing with the shadow
 		}
 
 		if (amd.flag & AMED_LAND) {
