@@ -24,6 +24,8 @@ const char *VideoDriver_Null::Start(const StringList &parm)
 	_set_error_mode(_OUT_TO_STDERR);
 #endif
 
+	this->UpdateAutoResolution();
+
 	this->ticks = GetDriverParamInt(parm, "ticks", 1000);
 	_screen.width  = _screen.pitch = _cur_resolution.width;
 	_screen.height = _cur_resolution.height;

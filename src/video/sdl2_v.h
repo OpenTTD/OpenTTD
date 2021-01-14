@@ -40,6 +40,10 @@ public:
 	void EditBoxLostFocus() override;
 
 	const char *GetName() const override { return "sdl"; }
+
+protected:
+	Dimension GetScreenSize() const override;
+
 private:
 	int PollEvent();
 	void LoopOnce();

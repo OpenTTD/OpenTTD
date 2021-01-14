@@ -1114,6 +1114,8 @@ static FVideoDriver_Win32 iFVideoDriver_Win32;
 
 const char *VideoDriver_Win32::Start(const StringList &parm)
 {
+	this->UpdateAutoResolution();
+
 	memset(&_wnd, 0, sizeof(_wnd));
 
 	RegisterWndClass();
@@ -1342,4 +1344,9 @@ void VideoDriver_Win32::EditBoxLostFocus()
 	CancelIMEComposition(_wnd.main_wnd);
 	SetCompositionPos(_wnd.main_wnd);
 	SetCandidatePos(_wnd.main_wnd);
+}
+
+Dimension VideoDriver_Win32::GetScreenSize() const
+{
+	return { static_cast<uint>(GetSystemMetrics(SM_CXSCREEN)), static_cast<uint>(GetSystemMetrics(SM_CYSCREEN)) };
 }

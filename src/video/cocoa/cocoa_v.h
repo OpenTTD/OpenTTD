@@ -70,6 +70,9 @@ public:
 	/** Main game loop. */
 	void GameLoop(); // In event.mm.
 
+protected:
+	Dimension GetScreenSize() const override;
+
 private:
 	friend class WindowQuartzSubdriver;
 

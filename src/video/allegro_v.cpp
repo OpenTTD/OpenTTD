@@ -417,6 +417,8 @@ const char *VideoDriver_Allegro::Start(const StringList &parm)
 	}
 	_allegro_instance_count++;
 
+	this->UpdateAutoResolution();
+
 	install_timer();
 	install_mouse();
 	install_keyboard();
