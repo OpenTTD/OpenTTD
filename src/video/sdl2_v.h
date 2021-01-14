@@ -64,6 +64,7 @@ private:
 	uint32 last_cur_ticks;
 	uint32 next_tick;
 
+	int startup_display;
 	std::thread draw_thread;
 	std::unique_lock<std::recursive_mutex> draw_lock;
 };

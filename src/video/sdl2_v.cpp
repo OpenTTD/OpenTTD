@@ -272,10 +272,15 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 			flags |= SDL_WINDOW_FULLSCREEN;
 		}
 
+		int x = SDL_WINDOWPOS_UNDEFINED, y = SDL_WINDOWPOS_UNDEFINED;
+		SDL_Rect r;
+		if (SDL_GetDisplayBounds(this->startup_display, &r) == 0) {
+			x = r.x + (r.w - w) / 2;
+			y = r.y + (r.h - h) / 4; // decent desktops have taskbars at the bottom
+		}
 		_sdl_window = SDL_CreateWindow(
 			caption,
-			SDL_WINDOWPOS_UNDEFINED,
-			SDL_WINDOWPOS_UNDEFINED,
+			x, y,
 			w, h,
 			flags);
 
@@ -674,6 +679,23 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 	}
 	if (ret_code < 0) return SDL_GetError();
 
+	this->startup_display = GetDriverParamInt(parm, "display", -1);
+	int num_displays = SDL_GetNumVideoDisplays();
+	if (!IsInsideBS(this->startup_display, 0, num_displays)) {
+		/* Mouse position decides which display to use */
+		int mx, my;
+		SDL_GetGlobalMouseState(&mx, &my);
+		this->startup_display = 0; // used when mouse is on no screen...
+		for (int display = 0; display < num_displays; ++display) {
+			SDL_Rect r;
+			if (SDL_GetDisplayBounds(display, &r) == 0 && IsInsideBS(mx, r.x, r.w) && IsInsideBS(my, r.y, r.h)) {
+				DEBUG(driver, 1, "SDL2: Mouse is at (%d, %d), use display %d (%d, %d, %d, %d)", mx, my, display, r.x, r.y, r.w, r.h);
+				this->startup_display = display;
+				break;
+			}
+		}
+	}
+
 	this->UpdateAutoResolution();
 
 	GetVideoModes();
@@ -935,7 +957,7 @@ void VideoDriver_SDL::ReleaseBlitterLock()
 Dimension VideoDriver_SDL::GetScreenSize() const
 {
 	SDL_DisplayMode mode;
-	if (SDL_GetCurrentDisplayMode(0, &mode) != 0) return VideoDriver::GetScreenSize();
+	if (SDL_GetCurrentDisplayMode(this->startup_display, &mode) != 0) return VideoDriver::GetScreenSize();
 
 	return { static_cast<uint>(mode.w), static_cast<uint>(mode.h) };
 }
