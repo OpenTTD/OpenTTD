@@ -298,7 +298,7 @@ private:
 		x = rtl ? x - 2 - this->column_size[VGC_PROFIT].width : x + 2 + this->column_size[VGC_AUTOREPLACE].width;
 		SpriteID spr;
 		uint num_profit_vehicle = GetGroupNumProfitVehicle(this->vli.company, g_id, this->vli.vtype);
-		Money profit_last_year = GetGroupProfitLastYear(this->vli.company, g_id, this->vli.vtype);
+		Money profit_last_year = GetGroupProfitLastYearMinAge(this->vli.company, g_id, this->vli.vtype);
 		if (num_profit_vehicle == 0) {
 			spr = SPR_PROFIT_NA;
 		} else if (profit_last_year < 0) {
