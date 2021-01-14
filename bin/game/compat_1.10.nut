@@ -6,3 +6,10 @@
  */
 
 GSLog.Info("1.10 API compatibility in effect.");
+
+/* 1.11 adds a tile parameter. */
+GSCompany._ChangeBankBalance <- GSCompany.ChangeBankBalance;
+GSCompany.ChangeBankBalance <- function(company, delta, expenses_type)
+{
+	return GSCompany._ChangeBankBalance(company, delta, expenses_type, GSMap.TILE_INVALID);
+}
