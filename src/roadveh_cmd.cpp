@@ -1389,7 +1389,16 @@ again:
 		int y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
 
 		Direction new_dir = RoadVehGetSlidingDirection(v, x, y);
-		if (v->IsFrontEngine() && RoadVehFindCloseTo(v, x, y, new_dir) != nullptr) return false;
+		if (v->IsFrontEngine() && RoadVehFindCloseTo(v, x, y, new_dir) != nullptr) {
+			/* We are blocked. */
+			v->cur_speed = 0;
+			if (!v->path.empty()) {
+				/* Prevent pathfinding rerun as we already know where we are heading to. */
+				v->path.tile.push_front(v->tile);
+				v->path.td.push_front(dir);
+			}
+			return false;
+		}
 
 		uint32 r = VehicleEnterTile(v, v->tile, x, y);
 		if (HasBit(r, VETS_CANNOT_ENTER)) {
