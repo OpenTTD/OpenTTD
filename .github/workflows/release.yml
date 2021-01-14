@@ -452,6 +452,10 @@ jobs:
         make -j$(sysctl -n hw.logicalcpu) package
         echo "::endgroup::"
 
+        # Remove the sha256 files CPack generates; we will do this ourself at
+        # the end of this workflow.
+        rm -f bundles/*.sha256
+
     - name: Install gon
       env:
         HOMEBREW_NO_AUTO_UPDATE: 1
