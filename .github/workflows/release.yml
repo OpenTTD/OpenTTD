@@ -360,15 +360,6 @@ jobs:
     name: MacOS
     needs: source
 
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - arch: x64
-          full_arch: x86_64
-        - arch: arm64
-          full_arch: arm64
-
     runs-on: macos-10.15
     env:
       MACOSX_DEPLOYMENT_TARGET: 10.9
@@ -397,8 +388,7 @@ jobs:
         vcpkgDirectory: '/usr/local/share/vcpkg'
         doNotUpdateVcpkg: false
         vcpkgGitCommitId: 2a42024b53ebb512fb5dd63c523338bf26c8489c
-        vcpkgArguments: 'freetype liblzma lzo'
-        vcpkgTriplet: '${{ matrix.arch }}-osx'
+        vcpkgArguments: 'freetype:x64-osx liblzma:x64-osx lzo:x64-osx freetype:arm64-osx liblzma:arm64-osx lzo:arm64-osx'
 
     - name: Build tools
       run: |
@@ -430,15 +420,35 @@ jobs:
       # If this is run on a fork, there may not be a certificate set up - continue in this case
       continue-on-error: true
 
-    - name: Build
+    - name: Build arm64
       run: |
-        mkdir build
-        cd build
+        mkdir build-arm64
+        cd build-arm64
 
         echo "::group::CMake"
         cmake ${GITHUB_WORKSPACE} \
-          -DCMAKE_OSX_ARCHITECTURES=${{ matrix.full_arch }} \
-          -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-osx \
+          -DCMAKE_OSX_ARCHITECTURES=arm64 \
+          -DVCPKG_TARGET_TRIPLET=arm64-osx \
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(sysctl -n hw.logicalcpu) cores"
+        make -j$(sysctl -n hw.logicalcpu)
+        echo "::endgroup::"
+
+    - name: Build x64
+      run: |
+        mkdir build-x64
+        cd build-x64
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -DCMAKE_OSX_ARCHITECTURES=x86_64 \
+          -DVCPKG_TARGET_TRIPLET=x64-osx \
           -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -446,6 +456,19 @@ jobs:
           "-DCPACK_BUNDLE_APPLE_CODESIGN_PARAMETER=--deep -f --options runtime" \
           # EOF
         echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(sysctl -n hw.logicalcpu) cores"
+        make -j$(sysctl -n hw.logicalcpu)
+        echo "::endgroup::"
+
+    - name: Build package
+      run: |
+        cd build-x64
+
+        # Combine the `openttd` binaries from each build into a single file
+        lipo -create -output openttd-universal ../build-*/openttd
+        mv openttd-universal openttd
 
         echo "::group::Build"
         echo "Running on $(sysctl -n hw.logicalcpu) cores"
@@ -469,14 +492,14 @@ jobs:
         AC_USERNAME: ${{ secrets.APPLE_DEVELOPER_APP_USERNAME }}
         AC_PASSWORD: ${{ secrets.APPLE_DEVELOPER_APP_PASSWORD }}
       run: |
-        cd build
+        cd build-x64
         ../os/macosx/notarize.sh
 
     - name: Store bundles
       uses: actions/upload-artifact@v2
       with:
-        name: openttd-macos-${{ matrix.arch }}
-        path: build/bundles
+        name: openttd-macos-universal
+        path: build-x64/bundles
         retention-days: 5
 
   windows:
