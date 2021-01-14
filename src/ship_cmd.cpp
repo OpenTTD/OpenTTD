@@ -618,6 +618,69 @@ bool IsShipDestinationTile(TileIndex tile, StationID station)
 	return false;
 }
 
+/** Temporary data storage for testing ships on a tile. */
+struct ShipCollideChecker {
+	Ship* v; ///< %Ship we are testing for collision.
+	uint8 priority; ///< Stores the priority we assign to the ship.
+};
+
+/**
+ * Ship collision test function.
+ *  When called by FindVehicleOnPos(), this assigns a priority to each ship on the tile. Priority 0 gets to continue, all others stop.
+ * @param v %Ship to test collision with.
+ * @param data %Ship being examined.
+ * @return \c nullptr (always continue search)
+ */
+static Vehicle *PrioritizeShipsOnTile(Vehicle* v, void* data)
+{
+	ShipCollideChecker *scc = (ShipCollideChecker*)data;
+
+	/* Ships don't consider themselves, or any stopped vehicles. */
+	if ((v == scc->v) || (scc->v->cur_speed == 0)) return nullptr;
+
+	/* If ships are going the same direction, prioritize speed. */
+	if (v->GetCurrentMaxSpeed() > scc->v->GetCurrentMaxSpeed()) {
+			scc->priority += 1;
+		/* If speed is the same, prioritize amount of cargo carried. */
+	} else if (v->GetCurrentMaxSpeed() == scc->v->GetCurrentMaxSpeed()) {
+		if (v->cargo.StoredCount() > scc->v->cargo.StoredCount()) {
+			scc->priority += 1;
+			/* If cargo is the same, use the vehicle index as the final tiebreaker. */
+		} else if (v->cargo.StoredCount() == scc->v->cargo.StoredCount()) {
+			if (v->index < scc->v->index) {
+				scc->priority += 1;
+			}
+		}
+	}
+
+	return nullptr; // continue searching
+}
+
+/**
+ * Handle all aspects of two ships which enter the same tile.
+ * @param v Ship being checked
+ * @return true if the ship encounters another ship and is stopped, else return false.
+ */
+static bool HandleShipEncounter(Ship* v)
+{
+	ShipCollideChecker scc;
+	scc.v = v;
+	scc.priority = 0;
+
+	FindVehicleOnPos(v->tile, &scc, PrioritizeShipsOnTile);
+
+	/* Stop any ship still moving with a priority above 0. */
+	if ((scc.priority > 0) && (v->cur_speed != 0)) {
+		v->cur_speed = 0; // stop the vehicle
+		v->MarkDirty(); // Update graphics after speed is zeroed
+		SetWindowDirty(WC_VEHICLE_VIEW, v->index);
+		SetWindowDirty(WC_VEHICLE_DETAILS, v->index);
+
+		return true;
+	}
+	return false;
+}
+
 static void ShipController(Ship *v)
 {
 	uint32 r;
@@ -638,6 +701,8 @@ static void ShipController(Ship *v)
 	if (v->current_order.IsType(OT_LOADING)) return;
 
 	if (CheckShipLeaveDepot(v)) return;
+
+	if (_settings_game.vehicle.ships_yield && HandleShipEncounter(v)) return;
 
 	v->ShowVisualEffect();
 
