@@ -189,8 +189,7 @@ struct MutableSpriteCache {
 	Direction last_direction;     ///< Last direction we obtained sprites for
 	bool revalidate_before_draw;  ///< We need to do a GetImage() and check bounds before drawing this sprite
 	Rect old_coord;               ///< Co-ordinates from the last valid bounding box
-	int x_variance;               ///< How much the width of the sprite can vary within a single direction
-	int y_variance;               ///< How much the height of the sprite can vary within a single direction
+	bool is_viewport_candidate;   ///< This vehicle can potentially be drawn on a viewport
 	VehicleSpriteSeq sprite_seq;  ///< Vehicle appearance.
 };
 
@@ -772,7 +771,7 @@ public:
 	void UpdateViewport(bool dirty);
 	void UpdateBoundingBoxCoordinates(bool update_cache) const;
 	void UpdatePositionAndViewport();
-	void MarkAllViewportsDirty() const;
+	bool MarkAllViewportsDirty() const;
 
 	inline uint16 GetServiceInterval() const { return this->service_interval; }
 
@@ -1199,7 +1198,7 @@ struct SpecializedVehicle : public Vehicle {
 		 * there won't be enough change in bounding box or offsets to need
 		 * to resolve a new sprite.
 		 */
-		if (this->direction != this->sprite_cache.last_direction) {
+		if (this->direction != this->sprite_cache.last_direction || this->sprite_cache.is_viewport_candidate) {
 			VehicleSpriteSeq seq;
 
 			((T*)this)->T::GetImage(this->direction, EIT_ON_MAP, &seq);

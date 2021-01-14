@@ -1157,9 +1157,8 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 						VehicleSpriteSeq seq;
 						v->GetImage(v->direction, EIT_ON_MAP, &seq);
 
-						if (v->sprite_cache.sprite_seq != seq) {
+						if (seq.IsValid() && v->sprite_cache.sprite_seq != seq) {
 							v->sprite_cache.sprite_seq = seq;
-
 							/*
 							 * A sprite change may also result in a bounding box change,
 							 * so we need to update the bounding box again before we
@@ -1170,17 +1169,17 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 							 * of the vehicle.
 							 */
 							v->UpdateBoundingBoxCoordinates(false);
+
 						}
+
 						v->sprite_cache.revalidate_before_draw = false;
 					}
 
 					if (l <= v->coord.right &&
 						t <= v->coord.bottom &&
 						r >= v->coord.left &&
-						b >= v->coord.top) {
-						DoDrawVehicle(v);
+						b >= v->coord.top) DoDrawVehicle(v);
 					}
-				}
 
 				v = v->hash_viewport_next;
 			}
@@ -1621,12 +1620,6 @@ void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache) const
 		this->sprite_cache.old_coord = this->coord.left == INVALID_COORD ? new_coord : this->coord;
 	}
 	else {
-		/* The sprite was updated within a direction, increase the bounding box variance values if necessary */
-		this->sprite_cache.x_variance = std::max(this->sprite_cache.old_coord.left - new_coord.left,     this->sprite_cache.x_variance);
-		this->sprite_cache.x_variance = std::max(new_coord.right - this->sprite_cache.old_coord.right,   this->sprite_cache.x_variance);
-		this->sprite_cache.y_variance = std::max(this->sprite_cache.old_coord.top - new_coord.top,       this->sprite_cache.y_variance);
-		this->sprite_cache.y_variance = std::max(new_coord.bottom - this->sprite_cache.old_coord.bottom, this->sprite_cache.y_variance);
-
 		/* Extend the bounds of the existing cached bounding box so the next dirty window is correct */
 		this->sprite_cache.old_coord.left   = std::min(this->sprite_cache.old_coord.left,   this->coord.left);
 		this->sprite_cache.old_coord.top    = std::min(this->sprite_cache.old_coord.top,    this->coord.top);
@@ -1650,13 +1643,13 @@ void Vehicle::UpdateViewport(bool dirty)
 
 	if (dirty) {
 		if (old_coord.left == INVALID_COORD) {
-			this->MarkAllViewportsDirty();
+			this->sprite_cache.is_viewport_candidate = this->MarkAllViewportsDirty();
 		} else {
-			::MarkAllViewportsDirty(
-					std::min(this->sprite_cache.old_coord.left,   this->coord.left)   - this->sprite_cache.x_variance,
-					std::min(this->sprite_cache.old_coord.top,    this->coord.top)    - this->sprite_cache.y_variance,
-					std::max(this->sprite_cache.old_coord.right,  this->coord.right)  + this->sprite_cache.x_variance,
-					std::max(this->sprite_cache.old_coord.bottom, this->coord.bottom) + this->sprite_cache.y_variance);
+			this->sprite_cache.is_viewport_candidate = ::MarkAllViewportsDirty(
+				std::min(this->sprite_cache.old_coord.left, this->coord.left),
+				std::min(this->sprite_cache.old_coord.top, this->coord.top),
+				std::max(this->sprite_cache.old_coord.right, this->coord.right),
+				std::max(this->sprite_cache.old_coord.bottom, this->coord.bottom));
 		}
 	}
 }
@@ -1672,10 +1665,11 @@ void Vehicle::UpdatePositionAndViewport()
 
 /**
  * Marks viewports dirty where the vehicle's image is.
+ * @return true if at least one viewport has a dirty block
  */
-void Vehicle::MarkAllViewportsDirty() const
+bool Vehicle::MarkAllViewportsDirty() const
 {
-	::MarkAllViewportsDirty(this->coord.left, this->coord.top, this->coord.right, this->coord.bottom);
+	return ::MarkAllViewportsDirty(this->coord.left, this->coord.top, this->coord.right, this->coord.bottom);
 }
 
 /**
