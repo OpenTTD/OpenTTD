@@ -748,6 +748,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}거친 땅
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}잔디 땅
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}맨 땅
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}열대우림
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}들판
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}나무
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}바위

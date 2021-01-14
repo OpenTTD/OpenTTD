@@ -1836,6 +1836,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esteu s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trampes
 STR_CHEATS_TOOLTIP                                              :{BLACK}Les caselles de selecció indiquen si heu fet servir aquesta trampa.
+STR_CHEATS_NOTE                                                 :{BLACK}Nota: Qualsevol ús d'aquests paràmetres serà enregistrat per la partida guardada
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenta els diners de la companyia actual en {CURRENCY_LONG}.
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Juga amb la companyia: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries i altres objectes inamovibles): {ORANGE}{STRING}
@@ -3100,6 +3101,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Commuta 
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Edita el text del senyal
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centra la vista principal en la senyal. Amb Ctrl+Clic, obre una nova vista centrada en la senyal.
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Vés al proper senyal
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Vés al senyal anterior
 

@@ -194,6 +194,7 @@ STR_COLOUR_DEFAULT                                              :Standar
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mil/j
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/jam
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}meter/detik
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}ubin/hari
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}dk
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}dk
@@ -313,10 +314,14 @@ STR_SORT_BY_RANGE                                               :Jangkauan
 STR_SORT_BY_POPULATION                                          :Populasi
 STR_SORT_BY_RATING                                              :Peringkat
 STR_SORT_BY_NUM_VEHICLES                                        :Jumlah kendaraan
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Total laba tahun lalu
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Total laba tahun ini
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Laba rata-rata tahun lalu
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Laba rata-rata tahun ini
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Tidak ada
+STR_GROUP_BY_SHARED_ORDERS                                      :Perintah bersama
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Hentikan sementara permainan
@@ -742,6 +747,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Daratan terjal
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Daratan berumput
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Lahan kritis
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Hutan hujan
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Ladang
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Pepohonan
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Bebatuan
@@ -1445,6 +1451,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menjagakan alat
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kelompokkan pengeluaran perusahaan dalam neraca: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Mendefinisikan tata ruang untuk tetingkap biaya perusahaan
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Secara otomatis menghapus sinyal selama konstruksi rel: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Menghapus sinyal secara otomatis selama konstruksi rel jika sinyal menghalangi. Perhatikan bahwa hal ini berpotensi menyebabkan kecelakaan kereta api.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Ticker berita: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Mainkan suara untuk pesanan berita yang diringkas
@@ -1562,6 +1569,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipe ekonomi: {
 STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Ekonomi yang lancar membuat perubahan produksi lebih sering, dan dalam langkah yang lebih kecil. Ekonomi beku menghentikan perubahan produksi dan penutupan industri. Pengaturan ini mungkin tidak berpengaruh jika jenis industri disediakan oleh NewGRF.
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Asli
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Halus
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Beku
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Ijinkan pembelian saham perusahaan lain: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Jika diaktifkan, pemain dibolehkan membeli saham suatu perusahaan. Saham hanya bisa dibeli saat perusahaan memasuki umur tertentu
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Usia minimum perusahaan untuk memperdagangkan saham: {STRING}
@@ -1683,6 +1691,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Apabila kecepat
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mpj)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrik (km/j)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/d)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unit permainan (ubin/hari)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Satuan daya kendaraan: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Apabila daya kendaraan ditampilkan di antarmuka, nyatakan di satuan yang dipilih
@@ -1815,6 +1824,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Terjemah
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Keluar
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Anda yakin ingin keluar dari OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Ya
 STR_QUIT_NO                                                     :{BLACK}Tidak
 
@@ -1978,6 +1988,7 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Bergabun
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Cek server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Periksa lagi status server
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Cari di internet
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Cari di internet untuk server publik
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}CARI LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Cari jaringan area lokal untuk server
@@ -2222,6 +2233,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} be
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} mulai mendirikan perusahaan (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} meninggalkan permainan ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} telah mengganti namanya menjadi {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} memberikan {2:CURRENCY_LONG} kepada {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server menutup sesi
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server memulai ulang...{}Tunggulah...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} telah dikeluarkan. Alasan: ({STRING})
@@ -2619,6 +2631,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Pilih in
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informasi area daratan
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Pusatkan tampilan utama pada lokasi ubin. Ctrl+Klik membuka viewport baru pada lokasi petak
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Biaya penghancuran: {LTBLUE}tidak ada
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Biaya penghancuran: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Nilai jual kembali: {LTBLUE}{CURRENCY_LONG}
@@ -3173,10 +3186,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Target p
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik pada tujuan untuk mengarahkan pandangan pada tengah industri/kota/kotak. Ctrl+klik untuk membuka jendela baru pada lokasi industri/kota/kotak
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pertanyaan
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informasi
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Peringatan
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Kesalahan
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pertanyaan
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informasi
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Peringatan
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Kesalahan
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Batal
@@ -3385,6 +3398,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Jual 25%
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Nama Perusahaan
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Nama Pimpinan
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Masukkan jumlah uang yang ingin Anda berikan
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY_LONG}?
 
@@ -3745,7 +3759,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Pandangan utama lokasi pusat kereta api. Klik ganda akan mengikuti kereta di tampilan utama. Ctrl+Click membuka viewport baru pada lokasi kereta
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Pandangan utama lokasi kendaraan. Klik dua kali akan mengikuti kendaraan dalam tampilan utama. Ctrl+Click membuka viewport baru pada lokasi kendaraan
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Tampilan utama pusat di lokasi kapal. Klik ganda akan mengikuti kapal dalam tampilan utama. Ctrl+Click membuka viewport baru di lokasi kapal
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Pandangan utama pusat lokasi pesawat. Klik dua kali akan mengikuti pesawat dalam tampilan utama. Ctrl+Click membuka viewport baru pada lokasi pesawat
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Perintahkan kereta berhenti di depo. CTRL+klik untuk memerintahkan perbaikan saja
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Perintahkan kendaraan berhenti di bengkel. CTRL+klik hanya akan memerintahkan perbaikan di bengkel
@@ -3778,7 +3795,11 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Tampilka
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Tampilkan detail pesawat
 
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Aksi kereta saat ini - klik untuk menghentikan/memulai kereta
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Aksi kendaraan saat ini - klik untuk menghentikan/memulai kendaraan
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Aksi kapal saat ini - klik untuk menghentikan/menjalankan kapal
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Aksi Pesawat saat ini - klik untuk menghentikan/memulai Pesawat
 
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Tampilan utama pusat pada tujuan pesanan. Ctrl+Click membuka viewport baru pada lokasi tujuan pesanan
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Bongkar/Muat
@@ -4742,10 +4763,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Tambang Gula
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Tanpa nama
-STR_SV_TRAIN_NAME                                               :Kereta {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Kendaraan Jalan Raya {COMMA}
-STR_SV_SHIP_NAME                                                :Kapal {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Pesawat {COMMA}
+STR_SV_TRAIN_NAME                                               :Kereta #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Kendaraan Jalan Raya #{COMMA}
+STR_SV_SHIP_NAME                                                :Kapal #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Pesawat #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Utara
@@ -5047,6 +5068,7 @@ STR_FORMAT_BUOY_NAME                                            :Pelampung {TOWN
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Pelampung {TOWN} #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Perusahaan {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Kelompok {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{1:STRING} {0:TOWN}
 STR_FORMAT_WAYPOINT_NAME                                        :Waypoint {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Waypoint {TOWN} #{COMMA}
