@@ -383,18 +383,18 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
-    # The following step can be removed and the default vcpkg installation
-    # (/usr/local/share/vcpkg) restored when the build VM is updated with a revision of
-    # vcpkg dating from roughly 01/01/2021 or later.
+    # The following step can be removed when the build VM is updated with a revision of
+    # vcpkg dating from roughly 01/01/2021 or later. At that point, `doNotUpdateVcpkg`
+    # can be set to `true` and the `vcpkgGitCommitId` can be removed.
     - name: Update vcpkg
       run: |
-        cd /tmp
-        git clone https://github.com/Microsoft/vcpkg
+        cd /usr/local/share/vcpkg
+        git fetch --unshallow
 
     - name: Prepare vcpkg (with cache)
       uses: lukka/run-vcpkg@v6
       with:
-        vcpkgDirectory: '/tmp/vcpkg'
+        vcpkgDirectory: '/usr/local/share/vcpkg'
         doNotUpdateVcpkg: false
         vcpkgGitCommitId: 2a42024b53ebb512fb5dd63c523338bf26c8489c
         vcpkgArguments: 'freetype liblzma lzo'
@@ -439,7 +439,7 @@ jobs:
         cmake ${GITHUB_WORKSPACE} \
           -DCMAKE_OSX_ARCHITECTURES=${{ matrix.full_arch }} \
           -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-osx \
-          -DCMAKE_TOOLCHAIN_FILE=/tmp/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
           -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
           -DCMAKE_BUILD_TYPE=RelWithDebInfo \
           -DCPACK_BUNDLE_APPLE_CERT_APP=${{ secrets.APPLE_DEVELOPER_CERTIFICATE_ID }} \
