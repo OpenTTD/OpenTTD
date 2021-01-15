@@ -423,6 +423,11 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 		/* Copy other things which cannot be copied by a command and which shall not stay resetted from the build vehicle command */
 		new_head->CopyVehicleConfigAndStatistics(old_head);
 
+		GroupStatistics &stats_all = GroupStatistics::GetAllGroup(new_head);
+		GroupStatistics &stats = GroupStatistics::Get(new_head);
+		stats_all.profit_last_year += new_head->GetDisplayProfitLastYear();
+		stats.profit_last_year += new_head->GetDisplayProfitLastYear();
+
 		/* Switch vehicle windows/news to the new vehicle, so they are not closed/deleted when the old vehicle is sold */
 		ChangeVehicleViewports(old_head->index, new_head->index);
 		ChangeVehicleViewWindow(old_head->index, new_head->index);
