@@ -30,6 +30,7 @@
  * \li GSIndustry::SetControlFlags
  * \li GSIndustry::SetExclusiveConsumer
  * \li GSIndustry::SetExclusiveSupplier
+ * \li GSIndustry::SetText
  * \li GSStoryPage::MakePushButtonReference
  * \li GSStoryPage::MakeTileButtonReference
  * \li GSStoryPage::MakeVehicleButtonReference

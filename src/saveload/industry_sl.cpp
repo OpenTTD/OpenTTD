@@ -72,6 +72,7 @@ static const SaveLoad _industry_desc[] = {
 
 	SLE_CONDNULL(1, SLV_82, SLV_197), // random_triggers
 	SLE_CONDVAR(Industry, random,                     SLE_UINT16,                SLV_82, SL_MAX_VERSION),
+	SLE_CONDSSTR(Industry, text,     SLE_STR | SLF_ALLOW_CONTROL,     SLV_INDUSTRY_TEXT, SL_MAX_VERSION),
 
 	SLE_CONDNULL(32, SLV_2, SLV_144), // old reserved space
 

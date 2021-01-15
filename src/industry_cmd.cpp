@@ -40,6 +40,8 @@
 #include "object_base.h"
 #include "game/game.hpp"
 #include "error.h"
+#include "cmd_helper.h"
+#include "string_func.h"
 
 #include "table/strings.h"
 #include "table/industry_land.h"
@@ -2063,16 +2065,13 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param flags Type of operation.
  * @param p1 IndustryID
  * @param p2 various bitstuffed elements
- * - p2 = (bit 0 - 7) - action to perform:
- *                      0 = set control flags
- *                      1 = set exclusive supplier
- *                      2 = set exclusive consumer
+ * - p2 = (bit 0 - 7) - IndustryAction to perform
  * - p2 = (bit 8 - 15) - IndustryControlFlags
  *                       (only used with set control flags)
  * - p2 = (bit 16 - 23) - CompanyID to set or INVALID_OWNER (available to everyone) or
  *                        OWNER_NONE (neutral stations only) or OWNER_DEITY (no one)
  *                        (only used with set exclusive supplier / consumer)
- * @param text unused
+ * @param text - Additional industry text (only used with set text action)
  * @return Empty cost or an error.
  */
 CommandCost CmdIndustryCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
@@ -2082,10 +2081,10 @@ CommandCost CmdIndustryCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	Industry *ind = Industry::GetIfValid(p1);
 	if (ind == nullptr) return CMD_ERROR;
 
-	uint8 action = GB(p2, 0, 8);
+	auto action = static_cast<IndustryAction>(GB(p2, 0, 8));
 
 	switch (action) {
-		case 0: {
+		case IndustryAction::SetControlFlags: {
 			IndustryControlFlags ctlflags = (IndustryControlFlags)GB(p2, 8, 8) & INDCTL_MASK;
 
 			if (flags & DC_EXEC) ind->ctlflags = ctlflags;
@@ -2093,21 +2092,28 @@ CommandCost CmdIndustryCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			break;
 		}
 
-		case 1:
-		case 2: {
+		case IndustryAction::SetExclusiveSupplier:
+		case IndustryAction::SetExclusiveConsumer: {
 			Owner company_id = (Owner)GB(p2, 16, 8);
 
 			if (company_id != OWNER_NONE && company_id != INVALID_OWNER && company_id != OWNER_DEITY
 				&& !Company::IsValidID(company_id)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				if (action == 1) {
+				if (action == IndustryAction::SetExclusiveSupplier) {
 					ind->exclusive_supplier = company_id;
 				} else {
 					ind->exclusive_consumer = company_id;
 				}
 			}
 
+			break;
+		}
+
+		case IndustryAction::SetText: {
+			ind->text.clear();
+			if (!StrEmpty(text)) ind->text = text;
+			InvalidateWindowData(WC_INDUSTRY_VIEW, ind->index);
 			break;
 		}
 
