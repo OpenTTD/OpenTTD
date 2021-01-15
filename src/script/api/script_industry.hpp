@@ -82,6 +82,16 @@ public:
 	static char *GetName(IndustryID industry_id);
 
 	/**
+	 * Set the custom text of an industry, shown in the GUI.
+	 * @param industry_id The industry to set the custom text of.
+	 * @param text The text to set it to (can be either a raw string, or a ScriptText object). If null is passed, the text will be removed.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetText(IndustryID industry_id, Text *text);
+
+	/**
 	 * See whether an industry currently accepts a certain cargo.
 	 * @param industry_id The index of the industry.
 	 * @param cargo_id The index of the cargo.

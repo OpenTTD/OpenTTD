@@ -15,6 +15,7 @@
 #include "script_map.hpp"
 #include "../../company_base.h"
 #include "../../industry.h"
+#include "../../string_func.h"
 #include "../../strings_func.h"
 #include "../../station_base.h"
 #include "../../newgrf_industries.h"
@@ -45,6 +46,20 @@
 
 	::SetDParam(0, industry_id);
 	return GetString(STR_INDUSTRY_NAME);
+}
+
+/* static */ bool ScriptIndustry::SetText(IndustryID industry_id, Text *text)
+{
+	CCountedPtr<Text> counter(text);
+
+	const char *encoded_text = nullptr;
+	if (text != nullptr) {
+		encoded_text = text->GetEncodedText();
+		EnforcePreconditionEncodedText(false, encoded_text);
+	}
+	EnforcePrecondition(false, IsValidIndustry(industry_id));
+
+	return ScriptObject::DoCommand(0, industry_id, static_cast<uint32>(IndustryAction::SetText), CMD_INDUSTRY_CTRL, encoded_text);
 }
 
 /* static */ ScriptIndustry::CargoAcceptState ScriptIndustry::IsCargoAccepted(IndustryID industry_id, CargoID cargo_id)
