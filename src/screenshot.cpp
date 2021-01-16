@@ -25,6 +25,7 @@
 #include "window_func.h"
 #include "tile_map.h"
 #include "landscape.h"
+#include "video/video_driver.hpp"
 
 #include "table/strings.h"
 
@@ -881,6 +882,8 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
  */
 bool MakeScreenshot(ScreenshotType t, const char *name)
 {
+	VideoDriver::VideoBufferLocker lock;
+
 	if (t == SC_VIEWPORT) {
 		/* First draw the dirty parts of the screen and only then change the name
 		 * of the screenshot. This way the screenshot will always show the name

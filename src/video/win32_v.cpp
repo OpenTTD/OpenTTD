@@ -26,8 +26,6 @@
 #include "win32_v.h"
 #include <windows.h>
 #include <imm.h>
-#include <mutex>
-#include <condition_variable>
 
 #include "../safeguards.h"
 
@@ -53,14 +51,6 @@ bool _window_maximize;
 static Dimension _bck_resolution;
 DWORD _imm_props;
 
-/** Whether the drawing is/may be done in a separate thread. */
-static bool _draw_threaded;
-/** Mutex to keep the access to the shared memory controlled. */
-static std::recursive_mutex *_draw_mutex = nullptr;
-/** Signal to draw the next frame. */
-static std::condition_variable_any *_draw_signal = nullptr;
-/** Should we keep continue drawing? */
-static volatile bool _draw_continue;
 /** Local copy of the palette for use in the drawing thread. */
 static Palette _local_palette;
 
@@ -934,34 +924,34 @@ void VideoDriver_Win32Base::MainLoop()
 
 	std::thread draw_thread;
 
-	if (_draw_threaded) {
+	if (this->draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
 		 * directly in the newly created thread. */
 		try {
-			_draw_signal = new std::condition_variable_any();
-			_draw_mutex = new std::recursive_mutex();
+			this->draw_signal = new std::condition_variable_any();
+			this->draw_mutex = new std::recursive_mutex();
 		} catch (...) {
-			_draw_threaded = false;
+			this->draw_threaded = false;
 		}
 
-		if (_draw_threaded) {
-			this->draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+		if (this->draw_threaded) {
+			this->draw_lock = std::unique_lock<std::recursive_mutex>(*this->draw_mutex);
 
-			_draw_continue = true;
-			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-win32", &VideoDriver_Win32Base::PaintThreadThunk, this);
+			this->draw_continue = true;
+			this->draw_threaded = StartNewThread(&draw_thread, "ottd:draw-win32", &VideoDriver_Win32Base::PaintThreadThunk, this);
 
 			/* Free the mutex if we won't be able to use it. */
-			if (!_draw_threaded) {
+			if (!this->draw_threaded) {
 				this->draw_lock.unlock();
 				this->draw_lock.release();
-				delete _draw_mutex;
-				delete _draw_signal;
-				_draw_mutex = nullptr;
-				_draw_signal = nullptr;
+				delete this->draw_mutex;
+				delete this->draw_signal;
+				this->draw_mutex = nullptr;
+				this->draw_signal = nullptr;
 			} else {
 				DEBUG(driver, 1, "Threaded drawing enabled");
 				/* Wait till the draw thread has started itself. */
-				_draw_signal->wait(*_draw_mutex);
+				this->draw_signal->wait(*this->draw_mutex);
 			}
 		}
 	}
@@ -982,8 +972,8 @@ void VideoDriver_Win32Base::MainLoop()
 		GdiFlush();
 
 		if (this->Tick()) {
-			if (_draw_mutex != nullptr && !HasModalProgress()) {
-				_draw_signal->notify_one();
+			if (this->draw_mutex != nullptr && !HasModalProgress()) {
+				this->draw_signal->notify_one();
 			} else {
 				this->Paint();
 			}
@@ -991,19 +981,19 @@ void VideoDriver_Win32Base::MainLoop()
 		this->SleepTillNextTick();
 	}
 
-	if (_draw_threaded) {
-		_draw_continue = false;
+	if (this->draw_threaded) {
+		this->draw_continue = false;
 		/* Sending signal if there is no thread blocked
 		 * is very valid and results in noop */
-		_draw_signal->notify_all();
+		this->draw_signal->notify_all();
 		if (this->draw_lock.owns_lock()) this->draw_lock.unlock();
 		this->draw_lock.release();
 		draw_thread.join();
 
-		delete _draw_mutex;
-		delete _draw_signal;
+		delete this->draw_mutex;
+		delete this->draw_signal;
 
-		_draw_mutex = nullptr;
+		this->draw_mutex = nullptr;
 	}
 }
 
@@ -1025,7 +1015,7 @@ void VideoDriver_Win32Base::ClientSizeChanged(int w, int h)
 bool VideoDriver_Win32Base::ChangeResolution(int w, int h)
 {
 	std::unique_lock<std::recursive_mutex> lock;
-	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+	if (this->draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*this->draw_mutex);
 
 	if (_window_maximize) ShowWindow(this->main_wnd, SW_SHOWNORMAL);
 
@@ -1038,25 +1028,25 @@ bool VideoDriver_Win32Base::ChangeResolution(int w, int h)
 bool VideoDriver_Win32Base::ToggleFullscreen(bool full_screen)
 {
 	std::unique_lock<std::recursive_mutex> lock;
-	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+	if (this->draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*this->draw_mutex);
 
 	return this->MakeWindow(full_screen);
 }
 
 void VideoDriver_Win32Base::AcquireBlitterLock()
 {
-	if (_draw_mutex != nullptr) _draw_mutex->lock();
+	if (this->draw_mutex != nullptr) this->draw_mutex->lock();
 }
 
 void VideoDriver_Win32Base::ReleaseBlitterLock()
 {
-	if (_draw_mutex != nullptr) _draw_mutex->unlock();
+	if (this->draw_mutex != nullptr) this->draw_mutex->unlock();
 }
 
 void VideoDriver_Win32Base::EditBoxLostFocus()
 {
 	std::unique_lock<std::recursive_mutex> lock;
-	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+	if (this->draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*this->draw_mutex);
 
 	CancelIMEComposition(this->main_wnd);
 	SetCompositionPos(this->main_wnd);
@@ -1110,7 +1100,10 @@ float VideoDriver_Win32Base::GetDPIScale()
 
 bool VideoDriver_Win32Base::LockVideoBuffer()
 {
-	if (_draw_threaded) this->draw_lock.lock();
+	if (this->buffer_locked) return false;
+	this->buffer_locked = true;
+
+	if (this->draw_threaded) this->draw_lock.lock();
 
 	_screen.dst_ptr = this->GetVideoPointer();
 
@@ -1119,7 +1112,8 @@ bool VideoDriver_Win32Base::LockVideoBuffer()
 
 void VideoDriver_Win32Base::UnlockVideoBuffer()
 {
-	if (_draw_threaded) this->draw_lock.unlock();
+	if (this->draw_threaded) this->draw_lock.unlock();
+	this->buffer_locked = false;
 }
 
 
@@ -1137,7 +1131,7 @@ const char *VideoDriver_Win32GDI::Start(const StringList &param)
 
 	MarkWholeScreenDirty();
 
-	_draw_threaded = !GetDriverParam(param, "no_threads") && !GetDriverParam(param, "no_thread") && std::thread::hardware_concurrency() > 1;
+	this->draw_threaded = !GetDriverParam(param, "no_threads") && !GetDriverParam(param, "no_thread") && std::thread::hardware_concurrency() > 1;
 
 	return nullptr;
 }
@@ -1284,19 +1278,19 @@ void VideoDriver_Win32GDI::Paint()
 void VideoDriver_Win32GDI::PaintThread()
 {
 	/* First tell the main thread we're started */
-	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
-	_draw_signal->notify_one();
+	std::unique_lock<std::recursive_mutex> lock(*this->draw_mutex);
+	this->draw_signal->notify_one();
 
 	/* Now wait for the first thing to draw! */
-	_draw_signal->wait(*_draw_mutex);
+	this->draw_signal->wait(*this->draw_mutex);
 
-	while (_draw_continue) {
+	while (this->draw_continue) {
 		this->Paint();
 
 		/* Flush GDI buffer to ensure drawing here doesn't conflict with any GDI usage in the main WndProc. */
 		GdiFlush();
 
-		_draw_signal->wait(*_draw_mutex);
+		this->draw_signal->wait(*this->draw_mutex);
 	}
 }
 
@@ -1357,7 +1351,7 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 
 	this->ClientSizeChanged(_wnd.width, _wnd.height);
 
-	_draw_threaded = false;
+	this->draw_threaded = false;
 	MarkWholeScreenDirty();
 
 	return nullptr;
