@@ -182,23 +182,6 @@ static uint MapWindowsKey(uint sym)
 	return key;
 }
 
-static bool AllocateDibSection(int w, int h, bool force = false);
-
-static void ClientSizeChanged(int w, int h)
-{
-	/* allocate new dib section of the new size */
-	if (AllocateDibSection(w, h)) {
-		/* mark all palette colours dirty */
-		_cur_palette.first_dirty = 0;
-		_cur_palette.count_dirty = 256;
-		_local_palette = _cur_palette;
-
-		BlitterFactory::GetCurrentBlitter()->PostResize();
-
-		GameSizeChanged();
-	}
-}
-
 #ifdef _DEBUG
 /* Keep this function here..
  * It allows you to redraw the screen from within the MSVC debugger */
@@ -325,69 +308,6 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 
 	GameSizeChanged(); // invalidate all windows, force redraw
 	return true; // the request succeeded
-}
-
-/** Do palette animation and blit to the window. */
-void VideoDriver_Win32Base::Paint()
-{
-	PerformanceMeasurer framerate(PFE_VIDEO);
-
-	if (IsEmptyRect(_dirty_rect)) return;
-
-	HDC dc = GetDC(_wnd.main_wnd);
-	HDC dc2 = CreateCompatibleDC(dc);
-
-	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
-	HPALETTE old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
-
-	if (_cur_palette.count_dirty != 0) {
-		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
-
-		switch (blitter->UsePaletteAnimation()) {
-			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				UpdatePalette(dc2, _local_palette.first_dirty, _local_palette.count_dirty);
-				break;
-
-			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_local_palette);
-				break;
-
-			case Blitter::PALETTE_ANIMATION_NONE:
-				break;
-
-			default:
-				NOT_REACHED();
-		}
-		_cur_palette.count_dirty = 0;
-	}
-
-	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
-	SelectPalette(dc, old_palette, TRUE);
-	SelectObject(dc2, old_bmp);
-	DeleteDC(dc2);
-
-	ReleaseDC(_wnd.main_wnd, dc);
-
-	_dirty_rect = {};
-}
-
-void VideoDriver_Win32Base::PaintThread()
-{
-	/* First tell the main thread we're started */
-	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
-	_draw_signal->notify_one();
-
-	/* Now wait for the first thing to draw! */
-	_draw_signal->wait(*_draw_mutex);
-
-	while (_draw_continue) {
-		this->Paint();
-
-		/* Flush GDI buffer to ensure drawing here doesn't conflict with any GDI usage in the main WndProc. */
-		GdiFlush();
-
-		_draw_signal->wait(*_draw_mutex);
-	}
 }
 
 /* static */ void VideoDriver_Win32Base::PaintThreadThunk(VideoDriver_Win32Base *drv)
@@ -622,18 +542,9 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			if ((HWND)wParam == hwnd) return 0;
 			FALLTHROUGH;
 
-		case WM_QUERYNEWPALETTE: {
-			HDC hDC = GetWindowDC(hwnd);
-			HPALETTE hOldPalette = SelectPalette(hDC, _wnd.gdi_palette, FALSE);
-			UINT nChanged = RealizePalette(hDC);
-
-			SelectPalette(hDC, hOldPalette, TRUE);
-			ReleaseDC(hwnd, hDC);
-			if (nChanged != 0) {
-				video_driver->MakeDirty(0, 0, _screen.width, _screen.height);
-			}
+		case WM_QUERYNEWPALETTE:
+			video_driver->PaletteChanged(hwnd);
 			return 0;
-		}
 
 		case WM_CLOSE:
 			HandleExitGameRequest();
@@ -839,7 +750,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				 * switched to fullscreen from a maximized state */
 				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
 				if (_window_maximize || _fullscreen) _bck_resolution = _cur_resolution;
-				ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
+				video_driver->ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
 			}
 			return 0;
 
@@ -976,43 +887,6 @@ static void RegisterWndClass()
 
 	registered = true;
 	if (!RegisterClass(&wnd)) usererror("RegisterClass failed");
-}
-
-static bool AllocateDibSection(int w, int h, bool force)
-{
-	BITMAPINFO *bi;
-	HDC dc;
-	uint bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-
-	w = std::max(w, 64);
-	h = std::max(h, 64);
-
-	if (!force && w == _screen.width && h == _screen.height) return false;
-
-	bi = (BITMAPINFO*)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
-	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
-	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
-
-	bi->bmiHeader.biWidth = _wnd.width = w;
-	bi->bmiHeader.biHeight = -(_wnd.height = h);
-
-	bi->bmiHeader.biPlanes = 1;
-	bi->bmiHeader.biBitCount = bpp;
-	bi->bmiHeader.biCompression = BI_RGB;
-
-	if (_wnd.dib_sect) DeleteObject(_wnd.dib_sect);
-
-	dc = GetDC(0);
-	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID**)&_wnd.buffer_bits, nullptr, 0);
-	if (_wnd.dib_sect == nullptr) usererror("CreateDIBSection failed");
-	ReleaseDC(0, dc);
-
-	_screen.width = w;
-	_screen.pitch = (bpp == 8) ? Align(w, 4) : w;
-	_screen.height = h;
-	_screen.dst_ptr = _wnd.buffer_bits;
-
-	return true;
 }
 
 static const Dimension default_resolutions[] = {
@@ -1183,6 +1057,21 @@ void VideoDriver_Win32Base::MainLoop()
 	}
 }
 
+void VideoDriver_Win32Base::ClientSizeChanged(int w, int h)
+{
+	/* Allocate backing store of the new size. */
+	if (this->AllocateBackingStore(w, h)) {
+		/* Mark all palette colours dirty. */
+		_cur_palette.first_dirty = 0;
+		_cur_palette.count_dirty = 256;
+		_local_palette = _cur_palette;
+
+		BlitterFactory::GetCurrentBlitter()->PostResize();
+
+		GameSizeChanged();
+	}
+}
+
 bool VideoDriver_Win32Base::ChangeResolution(int w, int h)
 {
 	std::unique_lock<std::recursive_mutex> lock;
@@ -1303,7 +1192,7 @@ const char *VideoDriver_Win32GDI::Start(const StringList &param)
 	_wnd.width_org = _cur_resolution.width;
 	_wnd.height_org = _cur_resolution.height;
 
-	AllocateDibSection(_cur_resolution.width, _cur_resolution.height);
+	this->AllocateBackingStore(_cur_resolution.width, _cur_resolution.height);
 	this->MakeWindow(_fullscreen);
 
 	MarkWholeScreenDirty();
@@ -1323,8 +1212,116 @@ void VideoDriver_Win32GDI::Stop()
 	MyShowCursor(true);
 }
 
+bool VideoDriver_Win32GDI::AllocateBackingStore(int w, int h, bool force)
+{
+	uint bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+
+	w = std::max(w, 64);
+	h = std::max(h, 64);
+
+	if (!force && w == _screen.width && h == _screen.height) return false;
+
+	BITMAPINFO *bi = (BITMAPINFO *)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
+	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
+	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+
+	bi->bmiHeader.biWidth = _wnd.width = w;
+	bi->bmiHeader.biHeight = -(_wnd.height = h);
+
+	bi->bmiHeader.biPlanes = 1;
+	bi->bmiHeader.biBitCount = bpp;
+	bi->bmiHeader.biCompression = BI_RGB;
+
+	if (_wnd.dib_sect) DeleteObject(_wnd.dib_sect);
+
+	HDC dc = GetDC(0);
+	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID **)&_wnd.buffer_bits, nullptr, 0);
+	if (_wnd.dib_sect == nullptr) usererror("CreateDIBSection failed");
+	ReleaseDC(0, dc);
+
+	_screen.width = w;
+	_screen.pitch = (bpp == 8) ? Align(w, 4) : w;
+	_screen.height = h;
+	_screen.dst_ptr = _wnd.buffer_bits;
+
+	return true;
+}
+
 bool VideoDriver_Win32GDI::AfterBlitterChange()
 {
 	assert(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 0);
-	return AllocateDibSection(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
+	return this->AllocateBackingStore(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
+}
+
+void VideoDriver_Win32GDI::PaletteChanged(HWND hWnd)
+{
+	HDC hDC = GetWindowDC(hWnd);
+	HPALETTE hOldPalette = SelectPalette(hDC, _wnd.gdi_palette, FALSE);
+	UINT nChanged = RealizePalette(hDC);
+
+	SelectPalette(hDC, hOldPalette, TRUE);
+	ReleaseDC(hWnd, hDC);
+	if (nChanged != 0) this->MakeDirty(0, 0, _screen.width, _screen.height);
+}
+
+void VideoDriver_Win32GDI::Paint()
+{
+	PerformanceMeasurer framerate(PFE_VIDEO);
+
+	if (IsEmptyRect(_dirty_rect)) return;
+
+	HDC dc = GetDC(_wnd.main_wnd);
+	HDC dc2 = CreateCompatibleDC(dc);
+
+	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
+	HPALETTE old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
+
+	if (_cur_palette.count_dirty != 0) {
+		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+
+		switch (blitter->UsePaletteAnimation()) {
+			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+				UpdatePalette(dc2, _local_palette.first_dirty, _local_palette.count_dirty);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_BLITTER:
+				blitter->PaletteAnimate(_local_palette);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_NONE:
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+		_cur_palette.count_dirty = 0;
+	}
+
+	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	SelectPalette(dc, old_palette, TRUE);
+	SelectObject(dc2, old_bmp);
+	DeleteDC(dc2);
+
+	ReleaseDC(_wnd.main_wnd, dc);
+
+	_dirty_rect = {};
+}
+
+void VideoDriver_Win32GDI::PaintThread()
+{
+	/* First tell the main thread we're started */
+	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
+	_draw_signal->notify_one();
+
+	/* Now wait for the first thing to draw! */
+	_draw_signal->wait(*_draw_mutex);
+
+	while (_draw_continue) {
+		this->Paint();
+
+		/* Flush GDI buffer to ensure drawing here doesn't conflict with any GDI usage in the main WndProc. */
+		GdiFlush();
+
+		_draw_signal->wait(*_draw_mutex);
+	}
 }
