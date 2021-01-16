@@ -2451,6 +2451,26 @@ bool HandleTrainEnterDepot(Train *v)
 	return true;
 }
 
+
+static bool CheckReverseTrain(const Train *v)
+{
+	if (_settings_game.difficulty.line_reverse_mode != 0 ||
+			v->track == TRACK_BIT_DEPOT || v->track == TRACK_BIT_WORMHOLE ||
+			!(v->direction & 1)) {
+		return false;
+	}
+
+	assert(v->track != TRACK_BIT_NONE);
+
+	switch (_settings_game.pf.pathfinder_for_trains) {
+		case VPF_NPF: return NPFTrainCheckReverse(v);
+		case VPF_YAPF: return YapfTrainCheckReverse(v);
+
+		default: NOT_REACHED();
+	}
+}
+
+
 /**
  * Will the train stay in the depot the next tick?
  * @param v %Train to check.
@@ -2470,6 +2490,8 @@ static bool CheckTrainStayInDepot(Train *v)
 		v->UpdatePosition();
 		v->UpdateViewport(true, true);
 		v->UpdateAcceleration();
+		ProcessOrders(v);
+		if (CheckReverseTrain(v)) ReverseTrainDirection(v);
 		InvalidateWindowData(WC_VEHICLE_DEPOT, depot_id);
 		return false;
 	} else {
@@ -3129,24 +3151,6 @@ bool TryPathReserve(Train *v, bool mark_as_stuck, bool first_tile_okay)
 	return true;
 }
 
-
-static bool CheckReverseTrain(const Train *v)
-{
-	if (_settings_game.difficulty.line_reverse_mode != 0 ||
-			v->track == TRACK_BIT_DEPOT || v->track == TRACK_BIT_WORMHOLE ||
-			!(v->direction & 1)) {
-		return false;
-	}
-
-	assert(v->track != TRACK_BIT_NONE);
-
-	switch (_settings_game.pf.pathfinder_for_trains) {
-		case VPF_NPF: return NPFTrainCheckReverse(v);
-		case VPF_YAPF: return YapfTrainCheckReverse(v);
-
-		default: NOT_REACHED();
-	}
-}
 
 /**
  * Get the location of the next station to visit.
