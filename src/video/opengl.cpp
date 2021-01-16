@@ -68,6 +68,7 @@ static PFNGLGETATTRIBLOCATIONPROC _glGetAttribLocation;
 static PFNGLENABLEVERTEXATTRIBARRAYPROC _glEnableVertexAttribArray;
 static PFNGLDISABLEVERTEXATTRIBARRAYPROC _glDisableVertexAttribArray;
 static PFNGLVERTEXATTRIBPOINTERARBPROC _glVertexAttribPointer;
+static PFNGLBINDFRAGDATALOCATIONPROC _glBindFragDataLocation;
 
 /** A simple 2D vertex with just position and texture. */
 struct Simple2DVertex {
@@ -243,6 +244,15 @@ static bool BindShaderExtensions()
 		_glVertexAttribPointer = (PFNGLVERTEXATTRIBPOINTERARBPROC)GetOGLProcAddress("glVertexAttribPointerARB");
 	}
 
+	/* Bind functions only needed when using GLSL 1.50 shaders. */
+	if (IsOpenGLVersionAtLeast(3, 0)) {
+		_glBindFragDataLocation = (PFNGLBINDFRAGDATALOCATIONPROC)GetOGLProcAddress("glBindFragDataLocation");
+	} else if (IsOpenGLExtensionSupported("GL_EXT_gpu_shader4")) {
+		_glBindFragDataLocation = (PFNGLBINDFRAGDATALOCATIONPROC)GetOGLProcAddress("glBindFragDataLocationEXT");
+	} else {
+		_glBindFragDataLocation = nullptr;
+	}
+
 	return _glCreateProgram != nullptr && _glDeleteProgram != nullptr && _glLinkProgram != nullptr && _glGetProgramiv != nullptr && _glGetProgramInfoLog != nullptr &&
 		_glCreateShader != nullptr && _glDeleteShader != nullptr && _glShaderSource != nullptr && _glCompileShader != nullptr && _glAttachShader != nullptr &&
 		_glGetShaderiv != nullptr && _glGetShaderInfoLog != nullptr && _glGetUniformLocation != nullptr && _glUniform1i != nullptr &&
@@ -386,6 +396,7 @@ const char *OpenGLBackend::Init()
 	/* Check for shader objects. */
 	if (!IsOpenGLVersionAtLeast(2, 0) && (!IsOpenGLExtensionSupported("GL_ARB_shader_objects") || !IsOpenGLExtensionSupported("GL_ARB_fragment_shader") || !IsOpenGLExtensionSupported("GL_ARB_vertex_shader"))) return "No shader support";
 	if (!BindShaderExtensions()) return "Failed to bind shader extension functions";
+	if (IsOpenGLVersionAtLeast(3, 2) && _glBindFragDataLocation == nullptr) return "OpenGL claims to support version 3.2 but doesn't have glBindFragDataLocation";
 
 	DEBUG(driver, 2, "OpenGL shading language version: %s", (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
 
@@ -506,7 +517,7 @@ bool OpenGLBackend::InitShaders()
 	int glsl_major  = ver[0] - '0';
 	int glsl_minor = ver[2] - '0';
 
-	bool glsl_150 = (IsOpenGLVersionAtLeast(3, 2) || glsl_major > 1 || (glsl_major == 1 && glsl_minor >= 5));
+	bool glsl_150 = (IsOpenGLVersionAtLeast(3, 2) || glsl_major > 1 || (glsl_major == 1 && glsl_minor >= 5)) && _glBindFragDataLocation != nullptr;
 
 	/* Create vertex shader. */
 	GLuint vert_shader = _glCreateShader(GL_VERTEX_SHADER);
@@ -524,6 +535,12 @@ bool OpenGLBackend::InitShaders()
 	this->vid_program = _glCreateProgram();
 	_glAttachShader(this->vid_program, vert_shader);
 	_glAttachShader(this->vid_program, frag_shader);
+
+	if (glsl_150) {
+		/* Bind fragment shader outputs. */
+		_glBindFragDataLocation(this->vid_program, 0, "colour");
+	}
+
 	_glLinkProgram(this->vid_program);
 	if (!VerifyProgram(this->vid_program)) return false;
 
