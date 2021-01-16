@@ -27,6 +27,9 @@ public:
 	const char *GetName() override { return "32bpp-optimized"; }
 
 	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
+
+protected:
+	template <bool Tpal_to_rgb> Sprite *EncodeInternal(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
 };
 
 /** Factory for the optimised 32 bpp blitter (without palette animation). */

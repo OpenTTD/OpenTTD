@@ -252,7 +252,7 @@ void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 	}
 }
 
-Sprite *Blitter_32bppOptimized::Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
+template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
 {
 	/* streams of pixels (a, r, g, b channels)
 	 *
@@ -322,7 +322,7 @@ Sprite *Blitter_32bppOptimized::Encode(const SpriteLoader::Sprite *sprite, Alloc
 				if (a != 0) {
 					dst_px->a = a;
 					*dst_n = src->m;
-					if (src->m != 0) {
+					if (Tpal_to_rgb && src->m != 0) {
 						/* Get brightest value */
 						uint8 rgb_max = std::max({src->r, src->g, src->b});
 
@@ -396,4 +396,12 @@ Sprite *Blitter_32bppOptimized::Encode(const SpriteLoader::Sprite *sprite, Alloc
 	}
 
 	return dest_sprite;
+}
+
+template Sprite *Blitter_32bppOptimized::EncodeInternal<true>(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
+template Sprite *Blitter_32bppOptimized::EncodeInternal<false>(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
+
+Sprite *Blitter_32bppOptimized::Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
+{
+	return this->EncodeInternal<true>(sprite, allocator);
 }
