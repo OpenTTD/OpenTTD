@@ -23,15 +23,6 @@
 
 extern const byte _palmap_w2d[];
 
-/** The different colour components a sprite can have. */
-enum SpriteColourComponent {
-	SCC_RGB   = 1 << 0, ///< Sprite has RGB.
-	SCC_ALPHA = 1 << 1, ///< Sprite has alpha.
-	SCC_PAL   = 1 << 2, ///< Sprite has palette data.
-	SCC_MASK  = SCC_RGB | SCC_ALPHA | SCC_PAL, ///< Mask of valid colour bits.
-};
-DECLARE_ENUM_AS_BIT_SET(SpriteColourComponent)
-
 /**
  * We found a corrupted sprite. This means that the sprite itself
  * contains invalid data or is too small for the given dimensions.
@@ -234,6 +225,7 @@ uint8 LoadSpriteV1(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 	sprite[zoom_lvl].width  = FioReadWord();
 	sprite[zoom_lvl].x_offs = FioReadWord();
 	sprite[zoom_lvl].y_offs = FioReadWord();
+	sprite[zoom_lvl].colours = SCC_PAL;
 
 	if (sprite[zoom_lvl].width > INT16_MAX) {
 		WarnCorruptSprite(file_slot, file_pos, __LINE__);
@@ -301,6 +293,8 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 			if (colour & SCC_RGB)   bpp += 3; // Has RGB data.
 			if (colour & SCC_ALPHA) bpp++;    // Has alpha data.
 			if (colour & SCC_PAL)   bpp++;    // Has palette data.
+
+			sprite[zoom_lvl].colours = (SpriteColourComponent)colour;
 
 			/* For chunked encoding we store the decompressed size in the file,
 			 * otherwise we can calculate it from the image dimensions. */

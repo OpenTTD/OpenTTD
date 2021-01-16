@@ -351,6 +351,7 @@ const Sprite *TrueTypeFontCache::GetGlyph(GlyphID key)
 				0,  // x_offs
 				0,  // y_offs
 				ST_FONT,
+				SCC_PAL,
 				builtin_questionmark_data
 			};
 
@@ -614,6 +615,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	SpriteLoader::Sprite sprite;
 	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
 	sprite.type = ST_FONT;
+	sprite.colours = (aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
 	sprite.width = width;
 	sprite.height = height;
 	sprite.x_offs = slot->bitmap_left;
@@ -676,7 +678,6 @@ const void *FreeTypeFontCache::InternalGetFontTable(uint32 tag, size_t &length)
 	length = len;
 	return result;
 }
-
 #endif /* WITH_FREETYPE */
 
 
