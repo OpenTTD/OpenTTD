@@ -38,15 +38,6 @@
 #define PM_QS_INPUT 0x20000
 #endif
 
-static struct {
-	int width;            ///< Width in pixels of our display surface.
-	int height;           ///< Height in pixels of our display surface.
-	int width_org;        ///< Original monitor resolution width, before we changed it.
-	int height_org;       ///< Original monitor resolution height, before we changed it.
-	bool has_focus;       ///< Does our window have system focus?
-	bool running;         ///< Is the main loop running?
-} _wnd;
-
 bool _window_maximize;
 static Dimension _bck_resolution;
 DWORD _imm_props;
@@ -162,8 +153,8 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 			DM_PELSWIDTH |
 			DM_PELSHEIGHT;
 		settings.dmBitsPerPel = this->GetFullscreenBpp();
-		settings.dmPelsWidth  = _wnd.width_org;
-		settings.dmPelsHeight = _wnd.height_org;
+		settings.dmPelsWidth  = this->width_org;
+		settings.dmPelsHeight = this->height_org;
 
 		/* Check for 8 bpp support. */
 		if (settings.dmBitsPerPel == 8 && ChangeDisplaySettings(&settings, CDS_FULLSCREEN | CDS_TEST) != DISP_CHANGE_SUCCESSFUL) {
@@ -189,8 +180,8 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 		/* restore display? */
 		ChangeDisplaySettings(nullptr, 0);
 		/* restore the resolution */
-		_wnd.width = _bck_resolution.width;
-		_wnd.height = _bck_resolution.height;
+		this->width = _bck_resolution.width;
+		this->height = _bck_resolution.height;
 	}
 
 	{
@@ -202,12 +193,12 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 		this->fullscreen = full_screen;
 		if (this->fullscreen) {
 			style = WS_POPUP;
-			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
+			SetRect(&r, 0, 0, this->width_org, this->height_org);
 		} else {
 			style = WS_OVERLAPPEDWINDOW;
 			/* On window creation, check if we were in maximize mode before */
 			if (_window_maximize) showstyle = SW_SHOWMAXIMIZED;
-			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
+			SetRect(&r, 0, 0, this->width, this->height);
 		}
 
 		AdjustWindowRect(&r, style, FALSE);
@@ -758,12 +749,12 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 
 		case WM_SETFOCUS:
-			_wnd.has_focus = true;
+			video_driver->has_focus = true;
 			SetCompositionPos(hwnd);
 			break;
 
 		case WM_KILLFOCUS:
-			_wnd.has_focus = false;
+			video_driver->has_focus = false;
 			break;
 
 		case WM_ACTIVATE: {
@@ -851,14 +842,12 @@ void VideoDriver_Win32Base::Initialize()
 {
 	this->UpdateAutoResolution();
 
-	memset(&_wnd, 0, sizeof(_wnd));
-
 	RegisterWndClass();
 	FindResolutions(this->GetFullscreenBpp());
 
 	/* fullscreen uses those */
-	_wnd.width  = _wnd.width_org  = _cur_resolution.width;
-	_wnd.height = _wnd.height_org = _cur_resolution.height;
+	this->width  = this->width_org  = _cur_resolution.width;
+	this->height = this->height_org = _cur_resolution.height;
 
 	DEBUG(driver, 2, "Resolution for display: %ux%u", _cur_resolution.width, _cur_resolution.height);
 }
@@ -888,8 +877,8 @@ void VideoDriver_Win32Base::InputLoop()
 {
 	bool old_ctrl_pressed = _ctrl_pressed;
 
-	_ctrl_pressed = _wnd.has_focus && GetAsyncKeyState(VK_CONTROL) < 0;
-	_shift_pressed = _wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0;
+	_ctrl_pressed = this->has_focus && GetAsyncKeyState(VK_CONTROL) < 0;
+	_shift_pressed = this->has_focus && GetAsyncKeyState(VK_SHIFT) < 0;
 
 #if defined(_DEBUG)
 	if (_shift_pressed)
@@ -905,7 +894,7 @@ void VideoDriver_Win32Base::InputLoop()
 	}
 
 	/* Determine which directional keys are down. */
-	if (_wnd.has_focus) {
+	if (this->has_focus) {
 		_dirkeys =
 			(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) +
 			(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
@@ -955,8 +944,6 @@ void VideoDriver_Win32Base::MainLoop()
 			}
 		}
 	}
-
-	_wnd.running = true;
 
 	for (;;) {
 		InteractiveRandom(); // randomness
@@ -1019,8 +1006,8 @@ bool VideoDriver_Win32Base::ChangeResolution(int w, int h)
 
 	if (_window_maximize) ShowWindow(this->main_wnd, SW_SHOWNORMAL);
 
-	_wnd.width = _wnd.width_org = w;
-	_wnd.height = _wnd.height_org = h;
+	this->width = this->width_org = w;
+	this->height = this->height_org = h;
 
 	return this->MakeWindow(_fullscreen); // _wnd.fullscreen screws up ingame resolution switching
 }
@@ -1157,8 +1144,8 @@ bool VideoDriver_Win32GDI::AllocateBackingStore(int w, int h, bool force)
 	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 
-	bi->bmiHeader.biWidth = _wnd.width = w;
-	bi->bmiHeader.biHeight = -(_wnd.height = h);
+	bi->bmiHeader.biWidth = this->width = w;
+	bi->bmiHeader.biHeight = -(this->height = h);
 
 	bi->bmiHeader.biPlanes = 1;
 	bi->bmiHeader.biBitCount = bpp;
@@ -1265,7 +1252,7 @@ void VideoDriver_Win32GDI::Paint()
 		_cur_palette.count_dirty = 0;
 	}
 
-	BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+	BitBlt(dc, 0, 0, this->width, this->height, dc2, 0, 0, SRCCOPY);
 	SelectPalette(dc, old_palette, TRUE);
 	SelectObject(dc2, old_bmp);
 	DeleteDC(dc2);
@@ -1349,7 +1336,7 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 		return err;
 	}
 
-	this->ClientSizeChanged(_wnd.width, _wnd.height);
+	this->ClientSizeChanged(this->width, this->height);
 
 	this->draw_threaded = false;
 	MarkWholeScreenDirty();
@@ -1419,14 +1406,14 @@ bool VideoDriver_Win32OpenGL::ToggleFullscreen(bool full_screen)
 	this->DestroyContext();
 	bool res = this->VideoDriver_Win32Base::ToggleFullscreen(full_screen);
 	res &= this->AllocateContext() == nullptr;
-	this->ClientSizeChanged(_wnd.width, _wnd.height);
+	this->ClientSizeChanged(this->width, this->height);
 	return res;
 }
 
 bool VideoDriver_Win32OpenGL::AfterBlitterChange()
 {
 	assert(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 0);
-	this->ClientSizeChanged(_wnd.width, _wnd.height);
+	this->ClientSizeChanged(this->width, this->height);
 	return true;
 }
 
@@ -1434,8 +1421,8 @@ bool VideoDriver_Win32OpenGL::AllocateBackingStore(int w, int h, bool force)
 {
 	if (!force && w == _screen.width && h == _screen.height) return false;
 
-	_wnd.width = w = std::max(w, 64);
-	_wnd.height = h = std::max(h, 64);
+	this->width = w = std::max(w, 64);
+	this->height = h = std::max(h, 64);
 
 	if (this->gl_rc == nullptr) return false;
 
