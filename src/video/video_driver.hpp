@@ -86,6 +86,20 @@ public:
 	}
 
 	/**
+	 * Get whether the mouse cursor is drawn by the video driver.
+	 * @return True if cursor drawing is done by the video driver.
+	 */
+	virtual bool UseSystemCursor()
+	{
+		return false;
+	}
+
+	/**
+	 * Clear all cached sprites.
+	 */
+	virtual void ClearSystemSprites() {}
+
+	/**
 	 * Whether the driver has a graphical user interface with the end user.
 	 * Or in other words, whether we should spawn a thread for world generation
 	 * and NewGRF scanning so the graphical updates can keep coming. Otherwise
