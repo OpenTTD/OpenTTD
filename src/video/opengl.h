@@ -14,6 +14,7 @@
 
 #include "../core/alloc_type.hpp"
 #include "../core/geometry_type.hpp"
+#include "../gfx_type.h"
 
 typedef void (*OGLProc)();
 typedef OGLProc (*GetOGLProcAddressProc)(const char *proc);
@@ -28,9 +29,11 @@ private:
 
 	GLuint vid_pbo;     ///< Pixel buffer object storing the memory used for the video driver to draw to.
 	GLuint vid_texture; ///< Texture handle for the video buffer texture.
-	GLuint vid_program; ///< Shader program for rendering the video buffer.
+	GLuint vid_program; ///< Shader program for rendering a RGBA video buffer.
+	GLuint pal_program; ///< Shader program for rendering a paletted video buffer.
 	GLuint vao_quad;    ///< Vertex array object storing the rendering state for the fullscreen quad.
 	GLuint vbo_quad;    ///< Vertex buffer with a fullscreen quad.
+	GLuint pal_texture; ///< Palette lookup texture.
 
 	OpenGLBackend();
 	~OpenGLBackend();
@@ -47,6 +50,7 @@ public:
 	static const char *Create(GetOGLProcAddressProc get_proc);
 	static void Destroy();
 
+	void UpdatePalette(const Colour *pal, uint first, uint length);
 	bool Resize(int w, int h, bool force = false);
 	void Paint();
 

@@ -51,3 +51,28 @@ static const char *_frag_shader_direct_150[] = {
 	"  colour = texture(colour_tex, colour_tex_uv);",
 	"}",
 };
+
+/** Fragment shader that performs a palette lookup to read the colour from an 8bpp texture. */
+static const char *_frag_shader_palette[] = {
+	"#version 110\n",
+	"uniform sampler2D colour_tex;",
+	"uniform sampler1D palette;",
+	"varying vec2 colour_tex_uv;",
+	"void main() {",
+	"  float idx = texture2D(colour_tex, colour_tex_uv).r;",
+	"  gl_FragData[0] = texture1D(palette, idx);",
+	"}",
+};
+
+/** GLSL 1.50 fragment shader that performs a palette lookup to read the colour from an 8bpp texture. */
+static const char *_frag_shader_palette_150[] = {
+	"#version 150\n",
+	"uniform sampler2D colour_tex;",
+	"uniform sampler1D palette;",
+	"in vec2 colour_tex_uv;",
+	"out vec4 colour;",
+	"void main() {",
+	"  float idx = texture(colour_tex, colour_tex_uv).r;",
+	"  colour = texture(palette, idx);",
+	"}",
+};
