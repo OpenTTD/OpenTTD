@@ -101,7 +101,7 @@ if(APPLE)
     set(CPACK_GENERATOR "Bundle")
     include(PackageBundle)
 
-    set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macosx-${CPACK_SYSTEM_NAME}")
+    set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-macos-${CPACK_SYSTEM_NAME}")
 elseif(WIN32)
     set(CPACK_GENERATOR "ZIP")
     if(OPTION_USE_NSIS)
