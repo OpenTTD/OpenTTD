@@ -41,7 +41,6 @@
 #endif
 
 static struct {
-	void *buffer_bits;    ///< Internal rendering buffer.
 	int width;            ///< Width in pixels of our display surface.
 	int height;           ///< Height in pixels of our display surface.
 	int width_org;        ///< Original monitor resolution width, before we changed it.
@@ -1112,7 +1111,9 @@ float VideoDriver_Win32Base::GetDPIScale()
 bool VideoDriver_Win32Base::LockVideoBuffer()
 {
 	if (_draw_threaded) this->draw_lock.lock();
-	_screen.dst_ptr = _wnd.buffer_bits;
+
+	_screen.dst_ptr = this->GetVideoPointer();
+
 	return true;
 }
 
@@ -1172,14 +1173,14 @@ bool VideoDriver_Win32GDI::AllocateBackingStore(int w, int h, bool force)
 	if (this->dib_sect) DeleteObject(this->dib_sect);
 
 	HDC dc = GetDC(0);
-	this->dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID **)&_wnd.buffer_bits, nullptr, 0);
+	this->dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID **)&this->buffer_bits, nullptr, 0);
 	if (this->dib_sect == nullptr) usererror("CreateDIBSection failed");
 	ReleaseDC(0, dc);
 
 	_screen.width = w;
 	_screen.pitch = (bpp == 8) ? Align(w, 4) : w;
 	_screen.height = h;
-	_screen.dst_ptr = _wnd.buffer_bits;
+	_screen.dst_ptr = this->GetVideoPointer();
 
 	return true;
 }
@@ -1307,10 +1308,10 @@ void VideoDriver_Win32GDI::PaintThread()
 {
 	static int _fooctr;
 
-	_screen.dst_ptr = _wnd.buffer_bits;
-	UpdateWindows();
-
 	VideoDriver_Win32GDI *drv = static_cast<VideoDriver_Win32GDI *>(VideoDriver::GetInstance());
+
+	_screen.dst_ptr = drv->GetVideoPointer();
+	UpdateWindows();
 
 	drv->Paint();
 	GdiFlush();
@@ -1445,10 +1446,12 @@ bool VideoDriver_Win32OpenGL::AllocateBackingStore(int w, int h, bool force)
 	if (this->gl_rc == nullptr) return false;
 
 	this->dirty_rect = {};
+	return OpenGLBackend::Get()->Resize(w, h, force);
+}
 
-	bool res = OpenGLBackend::Get()->Resize(w, h);
-	_wnd.buffer_bits = OpenGLBackend::Get()->GetVideoBuffer();
-	return res;
+void *VideoDriver_Win32OpenGL::GetVideoPointer()
+{
+	return OpenGLBackend::Get()->GetVideoBuffer();
 }
 
 void VideoDriver_Win32OpenGL::Paint()

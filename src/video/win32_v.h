@@ -55,6 +55,8 @@ protected:
 	virtual uint8 GetFullscreenBpp();
 	/** (Re-)create the backing store. */
 	virtual bool AllocateBackingStore(int w, int h, bool force = false) = 0;
+	/** Get a pointer to the video buffer. */
+	virtual void *GetVideoPointer() = 0;
 	/** Palette of the window has changed. */
 	virtual void PaletteChanged(HWND hWnd) = 0;
 
@@ -68,7 +70,7 @@ private:
 /** The GDI video driver for windows. */
 class VideoDriver_Win32GDI : public VideoDriver_Win32Base {
 public:
-	VideoDriver_Win32GDI() : dib_sect(nullptr), gdi_palette(nullptr) {}
+	VideoDriver_Win32GDI() : dib_sect(nullptr), gdi_palette(nullptr), buffer_bits(nullptr) {}
 
 	const char *Start(const StringList &param) override;
 
@@ -81,8 +83,10 @@ public:
 protected:
 	HBITMAP  dib_sect;      ///< System bitmap object referencing our rendering buffer.
 	HPALETTE gdi_palette;   ///< Palette object for 8bpp blitter.
+	void     *buffer_bits;  ///< Internal rendering buffer.
 
 	void Paint() override;
+	void *GetVideoPointer() override { return this->buffer_bits; }
 	void PaintThread() override;
 
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
@@ -130,6 +134,7 @@ protected:
 	void PaintThread() override {}
 
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
+	void *GetVideoPointer() override;
 	void PaletteChanged(HWND hWnd) override {}
 
 	const char *AllocateContext();
