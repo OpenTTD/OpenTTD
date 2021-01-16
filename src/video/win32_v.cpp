@@ -975,24 +975,24 @@ static void RegisterWndClass()
 {
 	static bool registered = false;
 
-	if (!registered) {
-		HINSTANCE hinst = GetModuleHandle(nullptr);
-		WNDCLASS wnd = {
-			CS_OWNDC,
-			WndProcGdi,
-			0,
-			0,
-			hinst,
-			LoadIcon(hinst, MAKEINTRESOURCE(100)),
-			LoadCursor(nullptr, IDC_ARROW),
-			0,
-			0,
-			_T("OTTD")
-		};
+	if (registered) return;
 
-		registered = true;
-		if (!RegisterClass(&wnd)) usererror("RegisterClass failed");
-	}
+	HINSTANCE hinst = GetModuleHandle(nullptr);
+	WNDCLASS wnd = {
+		CS_OWNDC,
+		WndProcGdi,
+		0,
+		0,
+		hinst,
+		LoadIcon(hinst, MAKEINTRESOURCE(100)),
+		LoadCursor(nullptr, IDC_ARROW),
+		0,
+		0,
+		_T("OTTD")
+	};
+
+	registered = true;
+	if (!RegisterClass(&wnd)) usererror("RegisterClass failed");
 }
 
 static bool AllocateDibSection(int w, int h, bool force)
