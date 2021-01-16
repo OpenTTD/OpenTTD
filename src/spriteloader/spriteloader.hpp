@@ -82,5 +82,14 @@ public:
 	 * Convert a sprite from the loader to our own format.
 	 */
 	virtual Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) = 0;
+
+	/**
+	 * Get the value which the height and width on a sprite have to be aligned by.
+	 * @return The needed alignment or 0 if any alignment is accepted.
+	 */
+	virtual uint GetSpriteAlignment()
+	{
+		return 0;
+	}
 };
 #endif /* SPRITELOADER_HPP */

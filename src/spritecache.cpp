@@ -295,7 +295,7 @@ static bool PadSingleSprite(SpriteLoader::Sprite *sprite, ZoomLevel zoom, uint p
 	return true;
 }
 
-static bool PadSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail)
+static bool PadSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail, SpriteEncoder *encoder)
 {
 	/* Get minimum top left corner coordinates. */
 	int min_xoffs = INT32_MAX;
@@ -317,6 +317,13 @@ static bool PadSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail)
 		}
 	}
 
+	/* Align height and width if required to match the needs of the sprite encoder. */
+	uint align = encoder->GetSpriteAlignment();
+	if (align != 0) {
+		max_width  = Align(max_width,  align);
+		max_height = Align(max_height, align);
+	}
+
 	/* Pad sprites where needed. */
 	for (ZoomLevel zoom = ZOOM_LVL_BEGIN; zoom != ZOOM_LVL_END; zoom++) {
 		if (HasBit(sprite_avail, zoom)) {
@@ -336,7 +343,7 @@ static bool PadSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail)
 	return true;
 }
 
-static bool ResizeSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail, uint32 file_slot, uint32 file_pos)
+static bool ResizeSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail, uint32 file_slot, uint32 file_pos, SpriteEncoder *encoder)
 {
 	/* Create a fully zoomed image if it does not exist */
 	ZoomLevel first_avail = static_cast<ZoomLevel>(FIND_FIRST_BIT(sprite_avail));
@@ -346,7 +353,7 @@ static bool ResizeSprites(SpriteLoader::Sprite *sprite, uint8 sprite_avail, uint
 	}
 
 	/* Pad sprites to make sizes match. */
-	if (!PadSprites(sprite, sprite_avail)) return false;
+	if (!PadSprites(sprite, sprite_avail, encoder)) return false;
 
 	/* Create other missing zoom levels */
 	for (ZoomLevel zoom = ZOOM_LVL_OUT_2X; zoom != ZOOM_LVL_END; zoom++) {
@@ -468,7 +475,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		return s;
 	}
 
-	if (!ResizeSprites(sprite, sprite_avail, file_slot, sc->id)) {
+	if (!ResizeSprites(sprite, sprite_avail, file_slot, sc->id, encoder)) {
 		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't resize the fallback sprite. What should I do?");
 		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL, allocator, encoder);
 	}
