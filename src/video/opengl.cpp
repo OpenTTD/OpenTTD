@@ -23,10 +23,12 @@
 #include "../3rdparty/opengl/glext.h"
 
 #include "opengl.h"
-#include "../core/mem_func.hpp"
 #include "../core/geometry_func.hpp"
+#include "../core/mem_func.hpp"
+#include "../core/math_func.hpp"
 #include "../gfx_func.h"
 #include "../debug.h"
+#include "../blitter/factory.hpp"
 
 #include "../table/opengl_shader.h"
 
@@ -36,6 +38,8 @@
 
 static PFNGLDEBUGMESSAGECONTROLPROC _glDebugMessageControl;
 static PFNGLDEBUGMESSAGECALLBACKPROC _glDebugMessageCallback;
+
+static PFNGLACTIVETEXTUREPROC _glActiveTexture;
 
 static PFNGLGENBUFFERSPROC _glGenBuffers;
 static PFNGLDELETEBUFFERSPROC _glDeleteBuffers;
@@ -153,6 +157,18 @@ static byte _gl_minor_ver = 0; ///< Minor OpenGL version.
 bool IsOpenGLVersionAtLeast(byte major, byte minor)
 {
 	return (_gl_major_ver > major) || (_gl_major_ver == major && _gl_minor_ver >= minor);
+}
+
+/** Bind texture-related extension functions. */
+static bool BindTextureExtensions()
+{
+	if (IsOpenGLVersionAtLeast(1, 3)) {
+		_glActiveTexture = (PFNGLACTIVETEXTUREPROC)GetOGLProcAddress("glActiveTexture");
+	} else {
+		_glActiveTexture = (PFNGLACTIVETEXTUREPROC)GetOGLProcAddress("glActiveTextureARB");
+	}
+
+	return _glActiveTexture != nullptr;
 }
 
 /** Bind vertex buffer object extension functions. */
@@ -351,6 +367,7 @@ OpenGLBackend::~OpenGLBackend()
 {
 	if (_glDeleteProgram != nullptr) {
 		_glDeleteProgram(this->vid_program);
+		_glDeleteProgram(this->pal_program);
 	}
 	if (_glDeleteVertexArrays != nullptr) _glDeleteVertexArrays(1, &this->vao_quad);
 	if (_glDeleteBuffers != nullptr) {
@@ -358,6 +375,7 @@ OpenGLBackend::~OpenGLBackend()
 		_glDeleteBuffers(1, &this->vid_pbo);
 	}
 	glDeleteTextures(1, &this->vid_texture);
+	glDeleteTextures(1, &this->pal_texture);
 }
 
 /**
@@ -385,6 +403,9 @@ const char *OpenGLBackend::Init()
 	if (!IsOpenGLVersionAtLeast(1, 3)) return "OpenGL version >= 1.3 required";
 	/* Check for non-power-of-two texture support. */
 	if (!IsOpenGLVersionAtLeast(2, 0) && !IsOpenGLExtensionSupported("GL_ARB_texture_non_power_of_two")) return "Non-power-of-two textures not supported";
+	/* Check for single element texture formats. */
+	if (!IsOpenGLVersionAtLeast(3, 0) && !IsOpenGLExtensionSupported("GL_ARB_texture_rg")) return "Single element texture formats not supported";
+	if (!BindTextureExtensions()) return "Failed to bind texture extension functions";
 	/* Check for vertex buffer objects. */
 	if (!IsOpenGLVersionAtLeast(1, 5) && !IsOpenGLExtensionSupported("ARB_vertex_buffer_object")) return "Vertex buffer objects not supported";
 	if (!BindVBOExtension()) return "Failed to bind VBO extension functions";
@@ -413,10 +434,31 @@ const char *OpenGLBackend::Init()
 	glBindTexture(GL_TEXTURE_2D, 0);
 	if (glGetError() != GL_NO_ERROR) return "Can't generate video buffer texture";
 
-	/* Bind texture to shader program. */
+	/* Setup palette texture. */
+	glGenTextures(1, &this->pal_texture);
+	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_LEVEL, 0);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGBA8, 256, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
+	glBindTexture(GL_TEXTURE_1D, 0);
+	if (glGetError() != GL_NO_ERROR) return "Can't generate palette lookup texture";
+
+	/* Bind uniforms in RGB rendering shader program. */
 	GLint tex_location = _glGetUniformLocation(this->vid_program, "colour_tex");
+	GLint palette_location = _glGetUniformLocation(this->vid_program, "palette");
 	_glUseProgram(this->vid_program);
-	_glUniform1i(tex_location, 0); // Texture unit 0.
+	_glUniform1i(tex_location, 0);     // Texture unit 0.
+	_glUniform1i(palette_location, 1); // Texture unit 1.
+
+	/* Bind uniforms in palette rendering shader program. */
+	tex_location = _glGetUniformLocation(this->pal_program, "colour_tex");
+	palette_location = _glGetUniformLocation(this->pal_program, "palette");
+	_glUseProgram(this->pal_program);
+	_glUniform1i(tex_location, 0);     // Texture unit 0.
+	_glUniform1i(palette_location, 1); // Texture unit 1.
 
 	/* Create pixel buffer object as video buffer storage. */
 	_glGenBuffers(1, &this->vid_pbo);
@@ -525,27 +567,42 @@ bool OpenGLBackend::InitShaders()
 	_glCompileShader(vert_shader);
 	if (!VerifyShader(vert_shader)) return false;
 
-	/* Create fragment shader. */
-	GLuint frag_shader = _glCreateShader(GL_FRAGMENT_SHADER);
-	_glShaderSource(frag_shader, glsl_150 ? lengthof(_frag_shader_direct_150) : lengthof(_frag_shader_direct), glsl_150 ? _frag_shader_direct_150 : _frag_shader_direct, nullptr);
-	_glCompileShader(frag_shader);
-	if (!VerifyShader(frag_shader)) return false;
+	/* Create fragment shader for plain RGBA. */
+	GLuint frag_shader_rgb = _glCreateShader(GL_FRAGMENT_SHADER);
+	_glShaderSource(frag_shader_rgb, glsl_150 ? lengthof(_frag_shader_direct_150) : lengthof(_frag_shader_direct), glsl_150 ? _frag_shader_direct_150 : _frag_shader_direct, nullptr);
+	_glCompileShader(frag_shader_rgb);
+	if (!VerifyShader(frag_shader_rgb)) return false;
+
+	/* Create fragment shader for paletted only. */
+	GLuint frag_shader_pal = _glCreateShader(GL_FRAGMENT_SHADER);
+	_glShaderSource(frag_shader_pal, glsl_150 ? lengthof(_frag_shader_palette_150) : lengthof(_frag_shader_palette), glsl_150 ? _frag_shader_palette_150 : _frag_shader_palette, nullptr);
+	_glCompileShader(frag_shader_pal);
+	if (!VerifyShader(frag_shader_pal)) return false;
 
 	/* Link shaders to program. */
 	this->vid_program = _glCreateProgram();
 	_glAttachShader(this->vid_program, vert_shader);
-	_glAttachShader(this->vid_program, frag_shader);
+	_glAttachShader(this->vid_program, frag_shader_rgb);
+
+	this->pal_program = _glCreateProgram();
+	_glAttachShader(this->pal_program, vert_shader);
+	_glAttachShader(this->pal_program, frag_shader_pal);
 
 	if (glsl_150) {
 		/* Bind fragment shader outputs. */
 		_glBindFragDataLocation(this->vid_program, 0, "colour");
+		_glBindFragDataLocation(this->pal_program, 0, "colour");
 	}
 
 	_glLinkProgram(this->vid_program);
 	if (!VerifyProgram(this->vid_program)) return false;
 
+	_glLinkProgram(this->pal_program);
+	if (!VerifyProgram(this->pal_program)) return false;
+
 	_glDeleteShader(vert_shader);
-	_glDeleteShader(frag_shader);
+	_glDeleteShader(frag_shader_rgb);
+	_glDeleteShader(frag_shader_pal);
 
 	return true;
 }
@@ -561,24 +618,53 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 {
 	if (!force && _screen.width == w && _screen.height == h) return false;
 
+	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+	int pitch = bpp != 32 ? Align(w, 4) : w;
+
 	glViewport(0, 0, w, h);
 
 	/* Re-allocate video buffer texture and backing store. */
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
-	_glBufferData(GL_PIXEL_UNPACK_BUFFER, w * h * 4, nullptr, GL_DYNAMIC_READ); // Buffer content has to persist from frame to frame and is read back by the blitter, which means a READ usage hint.
+	_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h * bpp / 8, nullptr, GL_DYNAMIC_READ); // Buffer content has to persist from frame to frame and is read back by the blitter, which means a READ usage hint.
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
+	_glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
+	switch (bpp) {
+		case 8:
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
+			break;
+
+		default:
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
+			break;
+	}
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	/* Set new viewport. */
 	_screen.height = h;
 	_screen.width = w;
-	_screen.pitch = w;
+	_screen.pitch = pitch;
 	_screen.dst_ptr = nullptr;
 
 	return true;
+}
+
+/**
+ * Update the stored palette.
+ * @param pal Palette array with at least 256 elements.
+ * @param first First entry to update.
+ * @param length Number of entries to update.
+ */
+void OpenGLBackend::UpdatePalette(const Colour *pal, uint first, uint length)
+{
+	assert(first + length <= 256);
+
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+	_glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
+	glTexSubImage1D(GL_TEXTURE_1D, 0, first, length, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, pal + first);
 }
 
 /**
@@ -589,8 +675,11 @@ void OpenGLBackend::Paint()
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	/* Blit video buffer to screen. */
+	_glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
-	_glUseProgram(this->vid_program);
+	_glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
+	_glUseProgram(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 8 ? this->pal_program : this->vid_program);
 	_glBindVertexArray(this->vao_quad);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
@@ -618,9 +707,18 @@ void OpenGLBackend::ReleaseVideoBuffer(const Rect &update_rect)
 
 	/* Update changed rect of the video buffer texture. */
 	if (!IsEmptyRect(update_rect)) {
+		_glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, this->vid_texture);
 		glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
-		glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid *)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
+		switch (BlitterFactory::GetCurrentBlitter()->GetScreenDepth()) {
+			case 8:
+				glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
+				break;
+
+			default:
+				glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid *)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
+				break;
+		}
 	}
 }
 

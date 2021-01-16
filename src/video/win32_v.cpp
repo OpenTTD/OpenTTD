@@ -1417,7 +1417,7 @@ static FVideoDriver_Win32OpenGL iFVideoDriver_Win32OpenGL;
 
 const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 {
-	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32) return "Only 32bpp blitters supported";
+	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
 	Dimension old_res = _cur_resolution; // Save current screen resolution in case of errors, as MakeWindow invalidates it.
 	this->vsync = GetDriverParamBool(param, "vsync");
@@ -1565,6 +1565,9 @@ void VideoDriver_Win32OpenGL::Paint()
 				break;
 
 			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+				OpenGLBackend::Get()->UpdatePalette(_local_palette.palette, _local_palette.first_dirty, _local_palette.count_dirty);
+				break;
+
 			case Blitter::PALETTE_ANIMATION_NONE:
 				break;
 

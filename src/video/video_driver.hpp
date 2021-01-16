@@ -99,6 +99,15 @@ public:
 	}
 
 	/**
+	 * Has this video driver an efficient code path for palette animated 8-bpp sprites?
+	 * @return True if the driver has an efficient code path for 8-bpp.
+	 */
+	virtual bool HasEfficient8Bpp() const
+	{
+		return false;
+	}
+
+	/**
 	 * An edit box lost the input focus. Abort character compositing if necessary.
 	 */
 	virtual void EditBoxLostFocus() {}
