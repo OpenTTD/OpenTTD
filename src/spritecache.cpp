@@ -404,10 +404,14 @@ static void *ReadRecolourSprite(uint16 file_slot, uint num)
  * @param id          Sprite number.
  * @param sprite_type Type of sprite.
  * @param allocator   Allocator function to use.
+ * @param encoder     Sprite encoder to use.
  * @return Read sprite data.
  */
-static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_type, AllocatorProc *allocator)
+static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_type, AllocatorProc *allocator, SpriteEncoder *encoder)
 {
+	/* Use current blitter if no other sprite encoder is given. */
+	if (encoder == nullptr) encoder = BlitterFactory::GetCurrentBlitter();
+
 	uint8 file_slot = sc->file_slot;
 	size_t file_pos = sc->file_pos;
 
@@ -422,7 +426,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	sprite[ZOOM_LVL_NORMAL].type = sprite_type;
 
 	SpriteLoaderGrf sprite_loader(sc->container_ver);
-	if (sprite_type != ST_MAPGEN && BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 32) {
+	if (sprite_type != ST_MAPGEN && encoder->Is32BppSupported()) {
 		/* Try for 32bpp sprites first. */
 		sprite_avail = sprite_loader.LoadSprite(sprite, file_slot, file_pos, sprite_type, true);
 	}
@@ -433,7 +437,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	if (sprite_avail == 0) {
 		if (sprite_type == ST_MAPGEN) return nullptr;
 		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
-		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL, allocator);
+		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL, allocator, encoder);
 	}
 
 	if (sprite_type == ST_MAPGEN) {
@@ -466,7 +470,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 
 	if (!ResizeSprites(sprite, sprite_avail, file_slot, sc->id)) {
 		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't resize the fallback sprite. What should I do?");
-		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL, allocator);
+		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL, allocator, encoder);
 	}
 
 	if (sprite->type == ST_FONT && ZOOM_LVL_FONT != ZOOM_LVL_NORMAL) {
@@ -478,7 +482,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		sprite[ZOOM_LVL_NORMAL].data   = sprite[ZOOM_LVL_FONT].data;
 	}
 
-	return BlitterFactory::GetCurrentBlitter()->Encode(sprite, allocator);
+	return encoder->Encode(sprite, allocator);
 }
 
 
@@ -845,9 +849,10 @@ static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, S
  * @param sprite Sprite to read.
  * @param type Expected sprite type.
  * @param allocator Allocator function to use. Set to nullptr to use the usual sprite cache.
+ * @param encoder Sprite encoder to use. Set to nullptr to use the currently active blitter.
  * @return Sprite raw data
  */
-void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator)
+void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator, SpriteEncoder *encoder)
 {
 	assert(type != ST_MAPGEN || IsMapgenSpriteID(sprite));
 	assert(type < ST_INVALID);
@@ -863,19 +868,19 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator)
 
 	if (sc->type != type) return HandleInvalidSpriteRequest(sprite, type, sc, allocator);
 
-	if (allocator == nullptr) {
+	if (allocator == nullptr && encoder == nullptr) {
 		/* Load sprite into/from spritecache */
 
 		/* Update LRU */
 		sc->lru = ++_sprite_lru_counter;
 
 		/* Load the sprite, if it is not loaded, yet */
-		if (sc->ptr == nullptr) sc->ptr = ReadSprite(sc, sprite, type, AllocSprite);
+		if (sc->ptr == nullptr) sc->ptr = ReadSprite(sc, sprite, type, AllocSprite, nullptr);
 
 		return sc->ptr;
 	} else {
 		/* Do not use the spritecache, but a different allocator. */
-		return ReadSprite(sc, sprite, type, allocator);
+		return ReadSprite(sc, sprite, type, allocator, encoder);
 	}
 }
 

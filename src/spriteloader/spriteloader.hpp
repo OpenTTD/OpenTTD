@@ -13,6 +13,9 @@
 #include "../core/alloc_type.hpp"
 #include "../gfx_type.h"
 
+struct Sprite;
+typedef void *AllocatorProc(size_t size);
+
 /** Interface for the loader of our sprites. */
 class SpriteLoader {
 public:
@@ -64,4 +67,20 @@ public:
 	virtual ~SpriteLoader() { }
 };
 
+/** Interface for something that can encode a sprite. */
+class SpriteEncoder {
+public:
+
+	virtual ~SpriteEncoder() { }
+
+	/**
+	 * Can the sprite encoder make use of RGBA sprites?
+	 */
+	virtual bool Is32BppSupported() = 0;
+
+	/**
+	 * Convert a sprite from the loader to our own format.
+	 */
+	virtual Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) = 0;
+};
 #endif /* SPRITELOADER_HPP */

@@ -11,6 +11,7 @@
 #define SPRITECACHE_H
 
 #include "gfx_type.h"
+#include "spriteloader/spriteloader.hpp"
 
 /** Data structure describing a sprite. */
 struct Sprite {
@@ -25,7 +26,7 @@ extern uint _sprite_cache_size;
 
 typedef void *AllocatorProc(size_t size);
 
-void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator = nullptr);
+void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator = nullptr, SpriteEncoder *encoder = nullptr);
 bool SpriteExists(SpriteID sprite);
 
 SpriteType GetSpriteType(SpriteID sprite);
