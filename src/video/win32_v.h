@@ -15,7 +15,9 @@
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
 public:
-	VideoDriver_Win32Base() : main_wnd(nullptr) {}
+	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false) {}
+
+	void Stop() override;
 
 	void MakeDirty(int left, int top, int width, int height) override;
 
@@ -35,6 +37,7 @@ public:
 
 protected:
 	HWND    main_wnd;      ///< Handle to system window.
+	bool    fullscreen;    ///< Whether to use (true) fullscreen mode.
 
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;
@@ -43,7 +46,9 @@ protected:
 	void UnlockVideoBuffer() override;
 	void CheckPaletteAnim() override;
 
+	void Initialize();
 	bool MakeWindow(bool full_screen);
+	virtual uint8 GetFullscreenBpp();
 
 	/** (Re-)create the backing store. */
 	virtual bool AllocateBackingStore(int w, int h, bool force = false) = 0;

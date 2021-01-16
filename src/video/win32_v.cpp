@@ -46,7 +46,6 @@ static struct {
 	int height;           ///< Height in pixels of our display surface.
 	int width_org;        ///< Original monitor resolution width, before we changed it.
 	int height_org;       ///< Original monitor resolution height, before we changed it.
-	bool fullscreen;      ///< Whether to use (true) fullscreen mode.
 	bool has_focus;       ///< Does our window have system focus?
 	bool running;         ///< Is the main loop running?
 } _wnd;
@@ -142,6 +141,13 @@ static uint MapWindowsKey(uint sym)
 	return key;
 }
 
+/** Colour depth to use for fullscreen display modes. */
+uint8 VideoDriver_Win32Base::GetFullscreenBpp()
+{
+	/* Check modes for the relevant fullscreen bpp */
+	return _support8bpp != S8BPP_HARDWARE ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+}
+
 /**
  * Instantiate a new window.
  * @param full_screen Whether to make a full screen window or not.
@@ -154,7 +160,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 	_fullscreen = full_screen;
 
 	/* recreate window? */
-	if ((full_screen || _wnd.fullscreen) && this->main_wnd) {
+	if ((full_screen || this->fullscreen) && this->main_wnd) {
 		DestroyWindow(this->main_wnd);
 		this->main_wnd = 0;
 	}
@@ -168,13 +174,12 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 			DM_BITSPERPEL |
 			DM_PELSWIDTH |
 			DM_PELSHEIGHT;
-		settings.dmBitsPerPel = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+		settings.dmBitsPerPel = this->GetFullscreenBpp();
 		settings.dmPelsWidth  = _wnd.width_org;
 		settings.dmPelsHeight = _wnd.height_org;
 
 		/* Check for 8 bpp support. */
-		if (settings.dmBitsPerPel == 8 &&
-				(_support8bpp != S8BPP_HARDWARE || ChangeDisplaySettings(&settings, CDS_FULLSCREEN | CDS_TEST) != DISP_CHANGE_SUCCESSFUL)) {
+		if (settings.dmBitsPerPel == 8 && ChangeDisplaySettings(&settings, CDS_FULLSCREEN | CDS_TEST) != DISP_CHANGE_SUCCESSFUL) {
 			settings.dmBitsPerPel = 32;
 		}
 
@@ -193,7 +198,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 			this->MakeWindow(false);  // don't care about the result
 			return false;  // the request failed
 		}
-	} else if (_wnd.fullscreen) {
+	} else if (this->fullscreen) {
 		/* restore display? */
 		ChangeDisplaySettings(nullptr, 0);
 		/* restore the resolution */
@@ -207,8 +212,8 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 		int w, h;
 
 		showstyle = SW_SHOWNORMAL;
-		_wnd.fullscreen = full_screen;
-		if (_wnd.fullscreen) {
+		this->fullscreen = full_screen;
+		if (this->fullscreen) {
 			style = WS_POPUP;
 			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
 		} else {
@@ -661,7 +666,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 			switch (wParam) {
 				case VK_RETURN:
 				case 'F': // Full Screen on ALT + ENTER/F
-					ToggleFullScreen(!_wnd.fullscreen);
+					ToggleFullScreen(!video_driver->fullscreen);
 					return 0;
 
 				case VK_MENU: // Just ALT
@@ -780,7 +785,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 			bool active = (LOWORD(wParam) != WA_INACTIVE);
 			bool minimized = (HIWORD(wParam) != 0);
-			if (_wnd.fullscreen) {
+			if (video_driver->fullscreen) {
 				if (active && minimized) {
 					/* Restore the game window */
 					ShowWindow(hwnd, SW_RESTORE);
@@ -836,20 +841,12 @@ static const Dimension default_resolutions[] = {
 	{ 1920, 1200 }
 };
 
-static void FindResolutions()
+static void FindResolutions(uint8 bpp)
 {
-	uint i;
-	DEVMODEA dm;
-
-	/* Check modes for the relevant fullscreen bpp */
-	uint bpp = _support8bpp != S8BPP_HARDWARE ? 32 : BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-
 	_resolutions.clear();
 
-	/* XXX - EnumDisplaySettingsW crashes with unicows.dll on Windows95
-	 * Doesn't really matter since we don't pass a string anyways, but still
-	 * a letdown */
-	for (i = 0; EnumDisplaySettingsA(nullptr, i, &dm) != 0; i++) {
+	DEVMODE dm;
+	for (uint i = 0; EnumDisplaySettings(nullptr, i, &dm) != 0; i++) {
 		if (dm.dmBitsPerPel != bpp || dm.dmPelsWidth < 640 || dm.dmPelsHeight < 480) continue;
 		if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(dm.dmPelsWidth, dm.dmPelsHeight)) != _resolutions.end()) continue;
 		_resolutions.emplace_back(dm.dmPelsWidth, dm.dmPelsHeight);
@@ -863,6 +860,29 @@ static void FindResolutions()
 	SortResolutions();
 }
 
+void VideoDriver_Win32Base::Initialize()
+{
+	this->UpdateAutoResolution();
+
+	memset(&_wnd, 0, sizeof(_wnd));
+
+	RegisterWndClass();
+	FindResolutions(this->GetFullscreenBpp());
+
+	/* fullscreen uses those */
+	_wnd.width  = _wnd.width_org  = _cur_resolution.width;
+	_wnd.height = _wnd.height_org = _cur_resolution.height;
+
+	DEBUG(driver, 2, "Resolution for display: %ux%u", _cur_resolution.width, _cur_resolution.height);
+}
+
+void VideoDriver_Win32Base::Stop()
+{
+	DestroyWindow(this->main_wnd);
+
+	if (this->fullscreen) ChangeDisplaySettings(nullptr, 0);
+	MyShowCursor(true);
+}
 void VideoDriver_Win32Base::MakeDirty(int left, int top, int width, int height)
 {
 	Rect r = {left, top, left + width, top + height};
@@ -1109,22 +1129,9 @@ const char *VideoDriver_Win32GDI::Start(const StringList &param)
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
-	this->UpdateAutoResolution();
-
-	memset(&_wnd, 0, sizeof(_wnd));
-
-	RegisterWndClass();
+	this->Initialize();
 
 	this->MakePalette();
-
-	FindResolutions();
-
-	DEBUG(driver, 2, "Resolution for display: %ux%u", _cur_resolution.width, _cur_resolution.height);
-
-	/* fullscreen uses those */
-	_wnd.width_org = _cur_resolution.width;
-	_wnd.height_org = _cur_resolution.height;
-
 	this->AllocateBackingStore(_cur_resolution.width, _cur_resolution.height);
 	this->MakeWindow(_fullscreen);
 
@@ -1139,10 +1146,8 @@ void VideoDriver_Win32GDI::Stop()
 {
 	DeleteObject(this->gdi_palette);
 	DeleteObject(this->dib_sect);
-	DestroyWindow(this->main_wnd);
 
-	if (_wnd.fullscreen) ChangeDisplaySettings(nullptr, 0);
-	MyShowCursor(true);
+	this->VideoDriver_Win32Base::Stop();
 }
 
 bool VideoDriver_Win32GDI::AllocateBackingStore(int w, int h, bool force)
