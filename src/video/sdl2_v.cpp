@@ -7,8 +7,6 @@
 
 /** @file sdl2_v.cpp Implementation of the SDL2 video driver. */
 
-#ifdef WITH_SDL2
-
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../gfx_func.h"
@@ -962,5 +960,3 @@ Dimension VideoDriver_SDL::GetScreenSize() const
 
 	return { static_cast<uint>(mode.w), static_cast<uint>(mode.h) };
 }
-
-#endif /* WITH_SDL2 */
