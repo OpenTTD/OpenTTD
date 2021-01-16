@@ -392,8 +392,10 @@ OpenGLBackend::~OpenGLBackend()
 	if (_glDeleteBuffers != nullptr) {
 		_glDeleteBuffers(1, &this->vbo_quad);
 		_glDeleteBuffers(1, &this->vid_pbo);
+		_glDeleteBuffers(1, &this->anim_pbo);
 	}
 	glDeleteTextures(1, &this->vid_texture);
+	glDeleteTextures(1, &this->anim_texture);
 	glDeleteTextures(1, &this->pal_texture);
 }
 
@@ -458,6 +460,17 @@ const char *OpenGLBackend::Init()
 	glBindTexture(GL_TEXTURE_2D, 0);
 	if (glGetError() != GL_NO_ERROR) return "Can't generate video buffer texture";
 
+	/* Setup video buffer texture. */
+	glGenTextures(1, &this->anim_texture);
+	glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	if (glGetError() != GL_NO_ERROR) return "Can't generate animation buffer texture";
+
 	/* Setup palette texture. */
 	glGenTextures(1, &this->pal_texture);
 	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
@@ -505,10 +518,13 @@ const char *OpenGLBackend::Init()
 	_glUniform1i(tex_location, 0);     // Texture unit 0.
 	_glUniform1i(palette_location, 1); // Texture unit 1.
 	_glUniform1i(remap_location, 2);   // Texture unit 2.
+	(void)glGetError(); // Clear errors.
 
 	/* Create pixel buffer object as video buffer storage. */
 	_glGenBuffers(1, &this->vid_pbo);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
+	_glGenBuffers(1, &this->anim_pbo);
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
 	if (glGetError() != GL_NO_ERROR) return "Can't allocate pixel buffer for video buffer";
 
 	/* Prime vertex buffer with a full-screen quad and store
@@ -686,7 +702,7 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 	if (!force && _screen.width == w && _screen.height == h) return false;
 
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-	int pitch = bpp != 32 ? Align(w, 4) : w;
+	int pitch = Align(w, 4);
 
 	glViewport(0, 0, w, h);
 
@@ -715,6 +731,23 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
 			break;
 	}
+
+	/* Does this blitter need a separate animation buffer? */
+	if (BlitterFactory::GetCurrentBlitter()->NeedsAnimationBuffer()) {
+		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
+		_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h, NULL, GL_DYNAMIC_READ); // Buffer content has to persist from frame to frame and is read back by the blitter, which means a READ usage hint.
+		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+
+		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, NULL);
+	} else {
+		/* Allocate dummy texture that always reads as 0 == no remap. */
+		uint dummy = 0;
+		glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1, 1, 0, GL_RED, GL_UNSIGNED_BYTE, &dummy);
+	}
+
 	glBindTexture(GL_TEXTURE_2D, 0);
 
 	/* Set new viewport. */
@@ -761,7 +794,18 @@ void OpenGLBackend::Paint()
 	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
 	_glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
-	_glUseProgram(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 8 ? this->pal_program : this->vid_program);
+	/* Is the blitter relying on a separate animation buffer? */
+	if (BlitterFactory::GetCurrentBlitter()->NeedsAnimationBuffer()) {
+		_glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+		_glUseProgram(this->remap_program);
+		_glUniform4f(this->remap_sprite_loc, 0.0f, 0.0f, 1.0f, 1.0f);
+		_glUniform2f(this->remap_screen_loc, 1.0f, 1.0f);
+		_glUniform1f(this->remap_zoom_loc, 0);
+		_glUniform1i(this->remap_rgb_loc, 1);
+	} else {
+		_glUseProgram(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 8 ? this->pal_program : this->vid_program);
+	}
 	_glBindVertexArray(this->vao_quad);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
@@ -815,6 +859,18 @@ void *OpenGLBackend::GetVideoBuffer()
 }
 
 /**
+ * Get a pointer to the memory for the separate animation buffer.
+ * @return Pointer to draw on.
+ */
+uint8 *OpenGLBackend::GetAnimBuffer()
+{
+	if (this->anim_pbo == 0) return nullptr;
+
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
+	return (uint8 *)_glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+}
+
+/**
  * Update video buffer texture after the video buffer was filled.
  * @param update_rect Rectangle encompassing the dirty region of the video buffer.
  */
@@ -839,6 +895,26 @@ void OpenGLBackend::ReleaseVideoBuffer(const Rect &update_rect)
 				glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid *)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
 				break;
 		}
+	}
+}
+
+/**
+ * Update animation buffer texture after the animation buffer was filled.
+ * @param update_rect Rectangle encompassing the dirty region of the animation buffer.
+ */
+void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
+{
+	if (this->anim_pbo == 0) return;
+
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
+	_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+
+	/* Update changed rect of the video buffer texture. */
+	if (update_rect.left != update_rect.right) {
+		_glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+		glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
+		glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
 	}
 }
 

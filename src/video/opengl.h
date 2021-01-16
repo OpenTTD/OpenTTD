@@ -39,6 +39,9 @@ private:
 	GLuint vbo_quad;    ///< Vertex buffer with a fullscreen quad.
 	GLuint pal_texture; ///< Palette lookup texture.
 
+	GLuint anim_pbo;     ///< Pixel buffer object storing the memory used for the animation buffer.
+	GLuint anim_texture; ///< Texture handle for the animation buffer texture.
+
 	GLuint remap_program;    ///< Shader program for blending and rendering a RGBA + remap texture.
 	GLint  remap_sprite_loc; ///< Uniform location for sprite parameters.
 	GLint  remap_screen_loc; ///< Uniform location for screen size;
@@ -72,7 +75,9 @@ public:
 	void ClearCursorCache();
 
 	void *GetVideoBuffer();
+	uint8 *GetAnimBuffer();
 	void ReleaseVideoBuffer(const Rect &update_rect);
+	void ReleaseAnimBuffer(const Rect &update_rect);
 
 	/* SpriteEncoder */
 
