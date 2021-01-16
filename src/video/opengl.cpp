@@ -41,6 +41,10 @@ static PFNGLBUFFERDATAPROC _glBufferData;
 static PFNGLMAPBUFFERPROC _glMapBuffer;
 static PFNGLUNMAPBUFFERPROC _glUnmapBuffer;
 
+static PFNGLGENVERTEXARRAYSPROC _glGenVertexArrays;
+static PFNGLDELETEVERTEXARRAYSPROC _glDeleteVertexArrays;
+static PFNGLBINDVERTEXARRAYPROC _glBindVertexArray;
+
 /** A simple 2D vertex with just position and texture. */
 struct Simple2DVertex {
 	float x, y;
@@ -148,6 +152,25 @@ static bool BindVBOExtension()
 	return _glGenBuffers != nullptr && _glDeleteBuffers != nullptr && _glBindBuffer != nullptr && _glBufferData != nullptr && _glMapBuffer != nullptr && _glUnmapBuffer != nullptr;
 }
 
+/** Bind vertex array object extension functions. */
+static bool BindVBAExtension()
+{
+	/* The APPLE and ARB variants have different semantics (that don't matter for us).
+	 *  Successfully getting pointers to one variant doesn't mean it is supported for
+	 *  the current context. Always check the extension strings as well. */
+	if (IsOpenGLVersionAtLeast(3, 0) || IsOpenGLExtensionSupported("GL_ARB_vertex_array_object")) {
+		_glGenVertexArrays = (PFNGLGENVERTEXARRAYSPROC)GetOGLProcAddress("glGenVertexArrays");
+		_glDeleteVertexArrays = (PFNGLDELETEVERTEXARRAYSPROC)GetOGLProcAddress("glDeleteVertexArrays");
+		_glBindVertexArray = (PFNGLBINDVERTEXARRAYPROC)GetOGLProcAddress("glBindVertexArray");
+	} else if (IsOpenGLExtensionSupported("GL_APPLE_vertex_array_object")) {
+		_glGenVertexArrays = (PFNGLGENVERTEXARRAYSPROC)GetOGLProcAddress("glGenVertexArraysAPPLE");
+		_glDeleteVertexArrays = (PFNGLDELETEVERTEXARRAYSPROC)GetOGLProcAddress("glDeleteVertexArraysAPPLE");
+		_glBindVertexArray = (PFNGLBINDVERTEXARRAYPROC)GetOGLProcAddress("glBindVertexArrayAPPLE");
+	}
+
+	return _glGenVertexArrays != nullptr && _glDeleteVertexArrays != nullptr && _glBindVertexArray != nullptr;
+}
+
 /** Callback to receive OpenGL debug messages. */
 void APIENTRY DebugOutputCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam)
 {
@@ -238,6 +261,7 @@ OpenGLBackend::OpenGLBackend()
  */
 OpenGLBackend::~OpenGLBackend()
 {
+	if (_glDeleteVertexArrays != nullptr) _glDeleteVertexArrays(1, &this->vao_quad);
 	if (_glDeleteBuffers != nullptr) {
 		_glDeleteBuffers(1, &this->vbo_quad);
 	}
@@ -273,6 +297,9 @@ const char *OpenGLBackend::Init()
 	/* Check for vertex buffer objects. */
 	if (!IsOpenGLVersionAtLeast(1, 5) && !IsOpenGLExtensionSupported("ARB_vertex_buffer_object")) return "Vertex buffer objects not supported";
 	if (!BindVBOExtension()) return "Failed to bind VBO extension functions";
+	/* Check for vertex array objects. */
+	if (!IsOpenGLVersionAtLeast(3, 0) && (!IsOpenGLExtensionSupported("GL_ARB_vertex_array_object") || !IsOpenGLExtensionSupported("GL_APPLE_vertex_array_object"))) return "Vertex array objects not supported";
+	if (!BindVBAExtension()) return "Failed to bind VBA extension functions";
 
 	/* Setup video buffer texture. */
 	glGenTextures(1, &this->vid_texture);
@@ -285,7 +312,8 @@ const char *OpenGLBackend::Init()
 	glBindTexture(GL_TEXTURE_2D, 0);
 	if (glGetError() != GL_NO_ERROR) return "Can't generate video buffer texture";
 
-	/* Prime vertex buffer with a full-screen quad. */
+	/* Prime vertex buffer with a full-screen quad and store
+	 * the corresponding state in a vertex array object. */
 	static const Simple2DVertex vert_array[] = {
 		//  x     y    u    v
 		{  1.f, -1.f, 1.f, 1.f },
@@ -294,13 +322,21 @@ const char *OpenGLBackend::Init()
 		{ -1.f,  1.f, 0.f, 0.f },
 	};
 
+	/* Create VAO. */
+	_glGenVertexArrays(1, &this->vao_quad);
+	_glBindVertexArray(this->vao_quad);
+
+	/* Create and fill VBO. */
 	_glGenBuffers(1, &this->vbo_quad);
 	_glBindBuffer(GL_ARRAY_BUFFER, this->vbo_quad);
 	_glBufferData(GL_ARRAY_BUFFER, sizeof(vert_array), vert_array, GL_STATIC_DRAW);
 	if (glGetError() != GL_NO_ERROR) return "Can't generate VBO for fullscreen quad";
-
+	/* Set vertex state. */
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glVertexPointer(2, GL_FLOAT, sizeof(Simple2DVertex), (GLvoid *)offsetof(Simple2DVertex, x));
+	glTexCoordPointer(2, GL_FLOAT, sizeof(Simple2DVertex), (GLvoid *)offsetof(Simple2DVertex, u));
+	_glBindVertexArray(0);
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glDisable(GL_DEPTH_TEST);
@@ -358,9 +394,7 @@ void OpenGLBackend::Paint(Rect update_rect)
 	}
 
 	/* Blit video buffer to screen. */
-	_glBindBuffer(GL_ARRAY_BUFFER, this->vbo_quad);
-	glVertexPointer(2, GL_FLOAT, sizeof(Simple2DVertex), (GLvoid *)offsetof(Simple2DVertex, x));
-	glTexCoordPointer(2, GL_FLOAT, sizeof(Simple2DVertex), (GLvoid *)offsetof(Simple2DVertex, u));
+	_glBindVertexArray(this->vao_quad);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
