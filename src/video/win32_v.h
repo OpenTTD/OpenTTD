@@ -11,11 +11,13 @@
 #define VIDEO_WIN32_H
 
 #include "video_driver.hpp"
+#include <mutex>
+#include <condition_variable>
 
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
 public:
-	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false) {}
+	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false), draw_mutex(nullptr), draw_signal(nullptr) {}
 
 	void Stop() override;
 
@@ -36,9 +38,16 @@ public:
 	void EditBoxLostFocus() override;
 
 protected:
-	HWND    main_wnd;      ///< Handle to system window.
-	bool    fullscreen;    ///< Whether to use (true) fullscreen mode.
-	Rect    dirty_rect;    ///< Region of the screen that needs redrawing.
+	HWND main_wnd;          ///< Handle to system window.
+	bool fullscreen;        ///< Whether to use (true) fullscreen mode.
+	Rect dirty_rect;        ///< Region of the screen that needs redrawing.
+
+	bool draw_threaded;          ///< Whether the drawing is/may be done in a separate thread.
+	bool buffer_locked;          ///< Video buffer was locked by the main thread.
+	volatile bool draw_continue; ///< Should we keep continue drawing?
+
+	std::recursive_mutex *draw_mutex;         ///< Mutex to keep the access to the shared memory controlled.
+	std::condition_variable_any *draw_signal; ///< Signal to draw the next frame.
 
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;

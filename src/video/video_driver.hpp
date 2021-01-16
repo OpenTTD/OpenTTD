@@ -127,6 +127,25 @@ public:
 		return static_cast<VideoDriver*>(*DriverFactoryBase::GetActiveDriver(Driver::DT_VIDEO));
 	}
 
+	/**
+	 * Helper struct to ensure the video buffer is locked and ready for drawing. The destructor
+	 * will make sure the buffer is unlocked no matter how the scope is exited.
+	 */
+	struct VideoBufferLocker {
+		VideoBufferLocker()
+		{
+			this->unlock = VideoDriver::GetInstance()->LockVideoBuffer();
+		}
+
+		~VideoBufferLocker()
+		{
+			if (this->unlock) VideoDriver::GetInstance()->UnlockVideoBuffer();
+		}
+
+	private:
+		bool unlock; ///< Stores if the lock did anything that has to be undone.
+	};
+
 protected:
 	const uint ALLOWED_DRIFT = 5; ///< How many times videodriver can miss deadlines without it being overly compensated.
 
