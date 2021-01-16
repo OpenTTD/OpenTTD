@@ -626,6 +626,15 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 	/* Re-allocate video buffer texture and backing store. */
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
 	_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h * bpp / 8, nullptr, GL_DYNAMIC_READ); // Buffer content has to persist from frame to frame and is read back by the blitter, which means a READ usage hint.
+	if (bpp == 32) {
+		/* Initialize backing store alpha to opaque for 32bpp modes. */
+		Colour black(0, 0, 0);
+		uint32 *buf = (uint32 *)_glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+		for (int i = 0; i < pitch * h; i++) {
+			*buf++ = black.data;
+		}
+		_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+	}
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
 	_glActiveTexture(GL_TEXTURE0);
