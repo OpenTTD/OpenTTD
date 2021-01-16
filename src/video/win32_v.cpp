@@ -1520,6 +1520,11 @@ bool VideoDriver_Win32OpenGL::AfterBlitterChange()
 	return true;
 }
 
+void VideoDriver_Win32OpenGL::ClearSystemSprites()
+{
+	OpenGLBackend::Get()->ClearCursorCache();
+}
+
 bool VideoDriver_Win32OpenGL::AllocateBackingStore(int w, int h, bool force)
 {
 	if (!force && w == _screen.width && h == _screen.height) return false;
@@ -1554,30 +1559,21 @@ void VideoDriver_Win32OpenGL::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
-	if (IsEmptyRect(this->dirty_rect)) return;
-
 	if (_cur_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
-		switch (blitter->UsePaletteAnimation()) {
-			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_local_palette);
-				break;
-
-			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				OpenGLBackend::Get()->UpdatePalette(_local_palette.palette, _local_palette.first_dirty, _local_palette.count_dirty);
-				break;
-
-			case Blitter::PALETTE_ANIMATION_NONE:
-				break;
-
-			default:
-				NOT_REACHED();
+		/* Always push a changed palette to OpenGL. */
+		OpenGLBackend::Get()->UpdatePalette(_local_palette.palette, _local_palette.first_dirty, _local_palette.count_dirty);
+		if (blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_BLITTER) {
+			blitter->PaletteAnimate(_local_palette);
 		}
+
 		_cur_palette.count_dirty = 0;
 	}
 
 	OpenGLBackend::Get()->Paint();
+	if (_cursor.in_window) OpenGLBackend::Get()->DrawMouseCursor();
+
 	SwapBuffers(this->dc);
 }
 

@@ -15,6 +15,8 @@
 #include "../core/alloc_type.hpp"
 #include "../core/geometry_type.hpp"
 #include "../gfx_type.h"
+#include "../spriteloader/spriteloader.hpp"
+#include "../misc/lrucache.hpp"
 
 typedef void (*OGLProc)();
 typedef OGLProc (*GetOGLProcAddressProc)(const char *proc);
@@ -22,8 +24,10 @@ typedef OGLProc (*GetOGLProcAddressProc)(const char *proc);
 bool IsOpenGLVersionAtLeast(byte major, byte minor);
 const char *FindStringInExtensionList(const char *string, const char *substring);
 
+class OpenGLSprite;
+
 /** Platform-independent back-end class for OpenGL video drivers. */
-class OpenGLBackend : public ZeroedMemoryAllocator {
+class OpenGLBackend : public ZeroedMemoryAllocator, SpriteEncoder {
 private:
 	static OpenGLBackend *instance; ///< Singleton instance pointer.
 
@@ -35,11 +39,21 @@ private:
 	GLuint vbo_quad;    ///< Vertex buffer with a fullscreen quad.
 	GLuint pal_texture; ///< Palette lookup texture.
 
+	GLuint remap_program;    ///< Shader program for blending and rendering a RGBA + remap texture.
+	GLint  remap_sprite_loc; ///< Uniform location for sprite parameters.
+	GLint  remap_screen_loc; ///< Uniform location for screen size;
+	GLint  remap_zoom_loc;   ///< Uniform location for sprite zoom;
+	GLint  remap_rgb_loc;    ///< Uniform location for RGB mode flag;
+
+	LRUCache<SpriteID, Sprite> cursor_cache; ///< Cache of encoded cursor sprites.
+
 	OpenGLBackend();
 	~OpenGLBackend();
 
 	const char *Init();
 	bool InitShaders();
+
+	void RenderOglSprite(OpenGLSprite *gl_sprite, uint x, uint y, ZoomLevel zoom);
 
 public:
 	/** Get singleton instance of this class. */
@@ -54,8 +68,48 @@ public:
 	bool Resize(int w, int h, bool force = false);
 	void Paint();
 
+	void DrawMouseCursor();
+	void ClearCursorCache();
+
 	void *GetVideoBuffer();
 	void ReleaseVideoBuffer(const Rect &update_rect);
+
+	/* SpriteEncoder */
+
+	bool Is32BppSupported() override { return true; }
+	uint GetSpriteAlignment() override { return 1u << (ZOOM_LVL_COUNT - 1); }
+	Sprite *Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator) override;
+};
+
+
+/** Class that encapsulates a RGBA texture together with a paletted remap texture. */
+class OpenGLSprite {
+private:
+	/** Enum of all used OpenGL texture objects. */
+	enum Texture {
+		TEX_RGBA,    ///< RGBA texture part.
+		TEX_REMAP,   ///< Remap texture part.
+		NUM_TEX
+	};
+
+	Dimension dim;
+	GLuint tex[NUM_TEX]; ///< The texture objects.
+
+	static GLuint dummy_tex[NUM_TEX]; ///< 1x1 dummy textures to substitute for unused sprite components.
+
+	static bool Create();
+	static void Destroy();
+
+	bool BindTextures();
+
+public:
+	OpenGLSprite(uint width, uint height, uint levels, SpriteColourComponent components);
+	~OpenGLSprite();
+
+	void Update(uint width, uint height, uint level, const SpriteLoader::CommonPixel *data);
+	Dimension GetSize(ZoomLevel level) const;
+
+	friend class OpenGLBackend;
 };
 
 #endif /* VIDEO_OPENGL_H */
