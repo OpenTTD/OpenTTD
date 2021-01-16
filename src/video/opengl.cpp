@@ -11,6 +11,11 @@
 
 #include "../stdafx.h"
 
+/* Define to disable buffer syncing. Will increase max fast forward FPS but produces artifacts. Mainly useful for performance testing. */
+// #define NO_GL_BUFFER_SYNC
+/* Define to enable persistent buffer mapping on AMD GPUs. */
+// #define GL_MAP_PERSISTENT_AMD
+
 #if defined(_WIN32)
 #	include <windows.h>
 #endif
@@ -49,6 +54,12 @@ static PFNGLBINDBUFFERPROC _glBindBuffer;
 static PFNGLBUFFERDATAPROC _glBufferData;
 static PFNGLMAPBUFFERPROC _glMapBuffer;
 static PFNGLUNMAPBUFFERPROC _glUnmapBuffer;
+
+static PFNGLBUFFERSTORAGEPROC _glBufferStorage;
+static PFNGLMAPBUFFERRANGEPROC _glMapBufferRange;
+static PFNGLCLIENTWAITSYNCPROC _glClientWaitSync;
+static PFNGLFENCESYNCPROC _glFenceSync;
+static PFNGLDELETESYNCPROC _glDeleteSync;
 
 static PFNGLGENVERTEXARRAYSPROC _glGenVertexArrays;
 static PFNGLDELETEVERTEXARRAYSPROC _glDeleteVertexArrays;
@@ -290,6 +301,31 @@ static bool BindShaderExtensions()
 		_glVertexAttribPointer != nullptr;
 }
 
+/** Bind extension functions for persistent buffer mapping. */
+static bool BindPersistentBufferExtensions()
+{
+	/* Optional functions for persistent buffer mapping. */
+	if (IsOpenGLVersionAtLeast(3, 0)) {
+		_glMapBufferRange = (PFNGLMAPBUFFERRANGEPROC)GetOGLProcAddress("glMapBufferRange");
+	}
+	if (IsOpenGLVersionAtLeast(4, 4) || IsOpenGLExtensionSupported("GL_ARB_buffer_storage")) {
+		_glBufferStorage = (PFNGLBUFFERSTORAGEPROC)GetOGLProcAddress("glBufferStorage");
+	}
+#ifndef NO_GL_BUFFER_SYNC
+	if (IsOpenGLVersionAtLeast(3, 2) || IsOpenGLExtensionSupported("GL_ARB_sync")) {
+		_glClientWaitSync = (PFNGLCLIENTWAITSYNCPROC)GetOGLProcAddress("glClientWaitSync");
+		_glFenceSync = (PFNGLFENCESYNCPROC)GetOGLProcAddress("glFenceSync");
+		_glDeleteSync = (PFNGLDELETESYNCPROC)GetOGLProcAddress("glDeleteSync");
+	}
+#endif
+
+	return _glMapBufferRange != nullptr && _glBufferStorage != nullptr
+#ifndef NO_GL_BUFFER_SYNC
+		&& _glClientWaitSync != nullptr && _glFenceSync != nullptr && _glDeleteSync != nullptr
+#endif
+		;
+}
+
 /** Callback to receive OpenGL debug messages. */
 void APIENTRY DebugOutputCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam)
 {
@@ -439,6 +475,25 @@ const char *OpenGLBackend::Init()
 	if (!IsOpenGLVersionAtLeast(2, 0) && (!IsOpenGLExtensionSupported("GL_ARB_shader_objects") || !IsOpenGLExtensionSupported("GL_ARB_fragment_shader") || !IsOpenGLExtensionSupported("GL_ARB_vertex_shader"))) return "No shader support";
 	if (!BindShaderExtensions()) return "Failed to bind shader extension functions";
 	if (IsOpenGLVersionAtLeast(3, 2) && _glBindFragDataLocation == nullptr) return "OpenGL claims to support version 3.2 but doesn't have glBindFragDataLocation";
+
+	this->persistent_mapping_supported = IsOpenGLVersionAtLeast(3, 0) && (IsOpenGLVersionAtLeast(4, 4) || IsOpenGLExtensionSupported("GL_ARB_buffer_storage"));
+#ifndef NO_GL_BUFFER_SYNC
+	this->persistent_mapping_supported = this->persistent_mapping_supported && (IsOpenGLVersionAtLeast(3, 2) || IsOpenGLExtensionSupported("GL_ARB_sync"));
+#endif
+
+#ifndef GL_MAP_PERSISTENT_AMD
+	if (this->persistent_mapping_supported && (strstr(vend, "AMD") != nullptr || strstr(renderer, "Radeon") != nullptr)) {
+		/* AMD GPUs seem to perform badly with persistent buffer mapping, disable it for them. */
+		DEBUG(driver, 3, "OpenGL: Detected AMD GPU, not using persistent buffer mapping due to performance problems");
+		this->persistent_mapping_supported = false;
+	}
+#endif
+
+	if (this->persistent_mapping_supported && !BindPersistentBufferExtensions()) {
+		DEBUG(driver, 1, "OpenGL claims to support persistent buffer mapping but doesn't export all functions, not using persistent mapping.");
+		this->persistent_mapping_supported = false;
+	}
+	if (this->persistent_mapping_supported) DEBUG(driver, 3, "OpenGL: Using persistent buffer mapping");
 
 	/* Check available texture units. */
 	GLint max_tex_units = 0;
@@ -706,9 +761,18 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 	glViewport(0, 0, w, h);
 
-	/* Re-allocate video buffer texture and backing store. */
-	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
-	_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h * bpp / 8, nullptr, GL_DYNAMIC_READ); // Buffer content has to persist from frame to frame and is read back by the blitter, which means a READ usage hint.
+	this->vid_buffer = nullptr;
+	if (this->persistent_mapping_supported) {
+		_glDeleteBuffers(1, &this->vid_pbo);
+		_glGenBuffers(1, &this->vid_pbo);
+		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
+		_glBufferStorage(GL_PIXEL_UNPACK_BUFFER, pitch * h * bpp / 8, nullptr, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT | GL_CLIENT_STORAGE_BIT);
+	} else {
+		/* Re-allocate video buffer texture and backing store. */
+		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
+		_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h * bpp / 8, nullptr, GL_DYNAMIC_DRAW);
+	}
+
 	if (bpp == 32) {
 		/* Initialize backing store alpha to opaque for 32bpp modes. */
 		Colour black(0, 0, 0);
@@ -734,13 +798,28 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 	/* Does this blitter need a separate animation buffer? */
 	if (BlitterFactory::GetCurrentBlitter()->NeedsAnimationBuffer()) {
-		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
-		_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h, NULL, GL_DYNAMIC_READ); // Buffer content has to persist from frame to frame and is read back by the blitter, which means a READ usage hint.
+		this->anim_buffer = nullptr;
+		if (this->persistent_mapping_supported) {
+			_glDeleteBuffers(1, &this->anim_pbo);
+			_glGenBuffers(1, &this->anim_pbo);
+			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
+			_glBufferStorage(GL_PIXEL_UNPACK_BUFFER, pitch * h, nullptr, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT | GL_CLIENT_STORAGE_BIT);
+		} else {
+			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
+			_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h, nullptr, GL_DYNAMIC_DRAW);
+		}
 		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
 		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, NULL);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
 	} else {
+		if (this->anim_buffer != nullptr) {
+			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
+			_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+			this->anim_buffer = nullptr;
+		}
+
 		/* Allocate dummy texture that always reads as 0 == no remap. */
 		uint dummy = 0;
 		glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
@@ -854,8 +933,19 @@ void OpenGLBackend::ClearCursorCache()
  */
 void *OpenGLBackend::GetVideoBuffer()
 {
-	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
-	return _glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+#ifndef NO_GL_BUFFER_SYNC
+	if (this->sync_vid_mapping != nullptr) _glClientWaitSync(this->sync_vid_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 10000000);
+#endif
+
+	if (!this->persistent_mapping_supported) {
+		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
+		this->vid_buffer = _glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+	} else if (this->vid_buffer == nullptr) {
+		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
+		this->vid_buffer = _glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, _screen.pitch * _screen.height * BlitterFactory::GetCurrentBlitter()->GetScreenDepth() / 8, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
+	}
+
+	return this->vid_buffer;
 }
 
 /**
@@ -866,8 +956,19 @@ uint8 *OpenGLBackend::GetAnimBuffer()
 {
 	if (this->anim_pbo == 0) return nullptr;
 
-	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
-	return (uint8 *)_glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+#ifndef NO_GL_BUFFER_SYNC
+	if (this->sync_anim_mapping != nullptr) _glClientWaitSync(this->sync_anim_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 10000000);
+#endif
+
+	if (!this->persistent_mapping_supported) {
+		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
+		this->anim_buffer = _glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+	} else if (this->anim_buffer == nullptr) {
+		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
+		this->anim_buffer = _glMapBufferRange(GL_PIXEL_UNPACK_BUFFER, 0, _screen.pitch * _screen.height, GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT);
+	}
+
+	return (uint8 *)this->anim_buffer;
 }
 
 /**
@@ -879,7 +980,17 @@ void OpenGLBackend::ReleaseVideoBuffer(const Rect &update_rect)
 	assert(this->vid_pbo != 0);
 
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
-	_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+	if (!this->persistent_mapping_supported) {
+		_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+		this->vid_buffer = nullptr;
+	}
+
+#ifndef NO_GL_BUFFER_SYNC
+	if (this->persistent_mapping_supported) {
+		_glDeleteSync(this->sync_vid_mapping);
+		this->sync_vid_mapping = nullptr;
+	}
+#endif
 
 	/* Update changed rect of the video buffer texture. */
 	if (!IsEmptyRect(update_rect)) {
@@ -895,6 +1006,10 @@ void OpenGLBackend::ReleaseVideoBuffer(const Rect &update_rect)
 				glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid *)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
 				break;
 		}
+
+#ifndef NO_GL_BUFFER_SYNC
+		if (this->persistent_mapping_supported) this->sync_vid_mapping = _glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
+#endif
 	}
 }
 
@@ -907,7 +1022,17 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 	if (this->anim_pbo == 0) return;
 
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
-	_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+	if (!this->persistent_mapping_supported) {
+		_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+		this->anim_buffer = nullptr;
+	}
+
+#ifndef NO_GL_BUFFER_SYNC
+	if (this->persistent_mapping_supported) {
+		_glDeleteSync(this->sync_anim_mapping);
+		this->sync_anim_mapping = nullptr;
+	}
+#endif
 
 	/* Update changed rect of the video buffer texture. */
 	if (update_rect.left != update_rect.right) {
@@ -915,6 +1040,10 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
 		glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
 		glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
+
+#ifndef NO_GL_BUFFER_SYNC
+		if (this->persistent_mapping_supported) this->sync_anim_mapping = _glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
+#endif
 	}
 }
 
