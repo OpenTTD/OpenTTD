@@ -122,6 +122,24 @@ public:
 	}
 
 	/**
+	 * Does this video driver support a separate animation buffer in addition to the colour buffer?
+	 * @return True if a separate animation buffer is supported.
+	 */
+	virtual bool HasAnimBuffer()
+	{
+		return false;
+	}
+
+	/**
+	 * Get a pointer to the animation buffer of the video back-end.
+	 * @return Pointer to the buffer or nullptr if no animation buffer is supported.
+	 */
+	virtual uint8 *GetAnimBuffer()
+	{
+		return nullptr;
+	}
+
+	/**
 	 * An edit box lost the input focus. Abort character compositing if necessary.
 	 */
 	virtual void EditBoxLostFocus() {}

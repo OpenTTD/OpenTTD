@@ -186,6 +186,14 @@ public:
 	virtual Blitter::PaletteAnimation UsePaletteAnimation() = 0;
 
 	/**
+	 * Does this blitter require a separate animation buffer from the video backend?
+	 */
+	virtual bool NeedsAnimationBuffer()
+	{
+		return false;
+	}
+
+	/**
 	 * Get the name of the blitter, the same as the Factory-instance returns.
 	 */
 	virtual const char *GetName() = 0;
