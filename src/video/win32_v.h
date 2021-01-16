@@ -37,14 +37,19 @@ protected:
 	void InputLoop() override;
 	bool LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;
-	void Paint() override;
-	void PaintThread() override;
 	void CheckPaletteAnim() override;
 
 	bool MakeWindow(bool full_screen);
 
+	/** (Re-)create the backing store. */
+	virtual bool AllocateBackingStore(int w, int h, bool force = false) = 0;
+	/** Palette of the window has changed. */
+	virtual void PaletteChanged(HWND hWnd) = 0;
+
 private:
 	std::unique_lock<std::recursive_mutex> draw_lock;
+
+	void ClientSizeChanged(int w, int h);
 
 	static void PaintThreadThunk(VideoDriver_Win32Base *drv);
 
@@ -60,6 +65,13 @@ public:
 	bool AfterBlitterChange() override;
 
 	const char *GetName() const override { return "win32"; }
+
+protected:
+	void Paint() override;
+	void PaintThread() override;
+
+	bool AllocateBackingStore(int w, int h, bool force = false) override;
+	void PaletteChanged(HWND hWnd) override;
 };
 
 /** The factory for Windows' video driver. */
