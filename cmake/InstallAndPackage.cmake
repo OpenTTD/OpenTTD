@@ -70,10 +70,15 @@ endif()
 # Windows is a bit more annoying to detect; using the size of void pointer
 # seems to be the most robust.
 if(WIN32)
-    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-        set(ARCHITECTURE "win64")
+    # Check if the MSVC platform has been defined
+    if ("$ENV{Platform}" STREQUAL "arm64")
+        set(ARCHITECTURE "arm64")
     else()
-        set(ARCHITECTURE "win32")
+        if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+            set(ARCHITECTURE "win64")
+        else()
+            set(ARCHITECTURE "win32")
+        endif()
     endif()
 endif()
 if(APPLE AND CMAKE_OSX_ARCHITECTURES)

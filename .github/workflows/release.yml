@@ -513,6 +513,7 @@ jobs:
         include:
         - arch: x86
         - arch: x64
+        - arch: arm64
 
     runs-on: windows-latest
 
@@ -560,7 +561,7 @@ jobs:
       uses: ammaraskar/msvc-problem-matcher@master
 
     - name: Build (with installer)
-      if: needs.source.outputs.is_tag == 'true' && matrix.arch != 'arm64'
+      if: needs.source.outputs.is_tag == 'true'
       uses: lukka/run-cmake@v3
       with:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
@@ -569,7 +570,7 @@ jobs:
         cmakeAppendedArgs: ' -GNinja -DOPTION_USE_NSIS=ON -DHOST_BINARY_DIR=${{ github.workspace }}/build-host -DCMAKE_BUILD_TYPE=RelWithDebInfo'
 
     - name: Build (without installer)
-      if: needs.source.outputs.is_tag != 'true' || matrix.arch == 'arm64'
+      if: needs.source.outputs.is_tag != 'true'
       uses: lukka/run-cmake@v3
       with:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
