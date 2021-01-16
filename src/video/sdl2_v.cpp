@@ -282,7 +282,6 @@ static uint FindStartupDisplay(uint startup_display)
 bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 {
 	SDL_Surface *newscreen;
-	char caption[50];
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	GetAvailableVideoMode(&w, &h);
@@ -291,8 +290,6 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 
 	/* Free any previously allocated shadow surface */
 	if (_sdl_surface != nullptr && _sdl_surface != _sdl_realscreen) SDL_FreeSurface(_sdl_surface);
-
-	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
 
 	if (_sdl_window == nullptr) {
 		Uint32 flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
@@ -307,6 +304,9 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 			x = r.x + std::max(0, r.w - static_cast<int>(w)) / 2;
 			y = r.y + std::max(0, r.h - static_cast<int>(h)) / 4; // decent desktops have taskbars at the bottom
 		}
+
+		char caption[50];
+		seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
 		_sdl_window = SDL_CreateWindow(
 			caption,
 			x, y,
