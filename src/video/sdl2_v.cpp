@@ -201,26 +201,38 @@ static void DrawSurfaceToScreenThread()
 	}
 }
 
-static void GetVideoModes()
-{
-	int modes = SDL_GetNumDisplayModes(0);
-	if (modes == 0) usererror("sdl: no modes available");
+static const Dimension default_resolutions[] = {
+	{  640,  480 },
+	{  800,  600 },
+	{ 1024,  768 },
+	{ 1152,  864 },
+	{ 1280,  800 },
+	{ 1280,  960 },
+	{ 1280, 1024 },
+	{ 1400, 1050 },
+	{ 1600, 1200 },
+	{ 1680, 1050 },
+	{ 1920, 1200 }
+};
 
+static void FindResolutions()
+{
 	_resolutions.clear();
 
-	SDL_DisplayMode mode;
-	for (int i = 0; i < modes; i++) {
+	for (int i = 0; i < SDL_GetNumDisplayModes(0); i++) {
+		SDL_DisplayMode mode;
 		SDL_GetDisplayMode(0, i, &mode);
 
-		uint w = mode.w;
-		uint h = mode.h;
-
-		if (w < 640 || h < 480) continue; // reject too small resolutions
-
-		if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(w, h)) != _resolutions.end()) continue;
-		_resolutions.emplace_back(w, h);
+		if (mode.w < 640 || mode.h < 480) continue;
+		if (std::find(_resolutions.begin(), _resolutions.end(), Dimension(mode.w, mode.h)) != _resolutions.end()) continue;
+		_resolutions.emplace_back(mode.w, mode.h);
 	}
-	if (_resolutions.empty()) usererror("No usable screen resolutions found!\n");
+
+	/* We have found no resolutions, show the default list */
+	if (_resolutions.empty()) {
+		_resolutions.assign(std::begin(default_resolutions), std::end(default_resolutions));
+	}
+
 	SortResolutions();
 }
 
@@ -696,7 +708,8 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 
 	this->UpdateAutoResolution();
 
-	GetVideoModes();
+	FindResolutions();
+
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height, false)) {
 		return SDL_GetError();
 	}
