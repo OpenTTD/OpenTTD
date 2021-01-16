@@ -258,8 +258,6 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 
 	DEBUG(driver, 1, "SDL2: using mode %ux%ux%d", w, h, bpp);
 
-	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
-
 	/* Free any previously allocated shadow surface */
 	if (_sdl_surface != nullptr && _sdl_surface != _sdl_realscreen) SDL_FreeSurface(_sdl_surface);
 
@@ -664,6 +662,8 @@ int VideoDriver_SDL::PollEvent()
 
 const char *VideoDriver_SDL::Start(const StringList &parm)
 {
+	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
+
 	/* Explicitly disable hardware acceleration. Enabling this causes
 	 * UpdateWindowSurface() to update the window's texture instead of
 	 * its surface. */
@@ -939,6 +939,7 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 
 bool VideoDriver_SDL::AfterBlitterChange()
 {
+	assert(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 0);
 	int w, h;
 	SDL_GetWindowSize(_sdl_window, &w, &h);
 	return CreateMainSurface(w, h, false);

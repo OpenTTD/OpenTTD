@@ -1004,8 +1004,6 @@ static bool AllocateDibSection(int w, int h, bool force)
 	w = std::max(w, 64);
 	h = std::max(h, 64);
 
-	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
-
 	if (!force && w == _screen.width && h == _screen.height) return false;
 
 	bi = (BITMAPINFO*)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
@@ -1016,7 +1014,7 @@ static bool AllocateDibSection(int w, int h, bool force)
 	bi->bmiHeader.biHeight = -(_wnd.height = h);
 
 	bi->bmiHeader.biPlanes = 1;
-	bi->bmiHeader.biBitCount = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+	bi->bmiHeader.biBitCount = bpp;
 	bi->bmiHeader.biCompression = BI_RGB;
 
 	if (_wnd.dib_sect) DeleteObject(_wnd.dib_sect);
@@ -1079,6 +1077,8 @@ static FVideoDriver_Win32 iFVideoDriver_Win32;
 
 const char *VideoDriver_Win32::Start(const StringList &parm)
 {
+	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
+
 	this->UpdateAutoResolution();
 
 	memset(&_wnd, 0, sizeof(_wnd));
@@ -1288,6 +1288,7 @@ bool VideoDriver_Win32::ToggleFullscreen(bool full_screen)
 
 bool VideoDriver_Win32::AfterBlitterChange()
 {
+	assert(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 0);
 	return AllocateDibSection(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
 }
 
