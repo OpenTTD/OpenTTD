@@ -54,6 +54,7 @@ static PFNGLBINDBUFFERPROC _glBindBuffer;
 static PFNGLBUFFERDATAPROC _glBufferData;
 static PFNGLMAPBUFFERPROC _glMapBuffer;
 static PFNGLUNMAPBUFFERPROC _glUnmapBuffer;
+static PFNGLCLEARBUFFERSUBDATAPROC _glClearBufferSubData;
 
 static PFNGLBUFFERSTORAGEPROC _glBufferStorage;
 static PFNGLMAPBUFFERRANGEPROC _glMapBufferRange;
@@ -207,6 +208,12 @@ static bool BindVBOExtension()
 		_glBufferData = (PFNGLBUFFERDATAPROC)GetOGLProcAddress("glBufferDataARB");
 		_glMapBuffer = (PFNGLMAPBUFFERPROC)GetOGLProcAddress("glMapBufferARB");
 		_glUnmapBuffer = (PFNGLUNMAPBUFFERPROC)GetOGLProcAddress("glUnmapBufferARB");
+	}
+
+	if (IsOpenGLVersionAtLeast(4, 3) || IsOpenGLExtensionSupported("GL_ARB_clear_buffer_object")) {
+		_glClearBufferSubData = (PFNGLCLEARBUFFERSUBDATAPROC)GetOGLProcAddress("glClearBufferSubData");
+	} else {
+		_glClearBufferSubData = nullptr;
 	}
 
 	return _glGenBuffers != nullptr && _glDeleteBuffers != nullptr && _glBindBuffer != nullptr && _glBufferData != nullptr && _glMapBuffer != nullptr && _glUnmapBuffer != nullptr;
@@ -776,11 +783,15 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 	if (bpp == 32) {
 		/* Initialize backing store alpha to opaque for 32bpp modes. */
 		Colour black(0, 0, 0);
-		uint32 *buf = (uint32 *)_glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
-		for (int i = 0; i < pitch * h; i++) {
-			*buf++ = black.data;
+		if (_glClearBufferSubData != nullptr) {
+			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_RGBA8, 0, pitch * h * bpp / 8, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &black.data);
+		} else {
+			uint32 *buf = (uint32 *)_glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+			for (int i = 0; i < pitch * h; i++) {
+				*buf++ = black.data;
+			}
+			_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
 		}
-		_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
 	}
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
