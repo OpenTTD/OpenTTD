@@ -34,6 +34,19 @@
 static PFNGLDEBUGMESSAGECONTROLPROC _glDebugMessageControl;
 static PFNGLDEBUGMESSAGECALLBACKPROC _glDebugMessageCallback;
 
+static PFNGLGENBUFFERSPROC _glGenBuffers;
+static PFNGLDELETEBUFFERSPROC _glDeleteBuffers;
+static PFNGLBINDBUFFERPROC _glBindBuffer;
+static PFNGLBUFFERDATAPROC _glBufferData;
+static PFNGLMAPBUFFERPROC _glMapBuffer;
+static PFNGLUNMAPBUFFERPROC _glUnmapBuffer;
+
+/** A simple 2D vertex with just position and texture. */
+struct Simple2DVertex {
+	float x, y;
+	float u, v;
+};
+
 /* static */ OpenGLBackend *OpenGLBackend::instance = nullptr;
 
 GetOGLProcAddressProc GetOGLProcAddress;
@@ -111,6 +124,28 @@ static byte _gl_minor_ver = 0; ///< Minor OpenGL version.
 bool IsOpenGLVersionAtLeast(byte major, byte minor)
 {
 	return (_gl_major_ver > major) || (_gl_major_ver == major && _gl_minor_ver >= minor);
+}
+
+/** Bind vertex buffer object extension functions. */
+static bool BindVBOExtension()
+{
+	if (IsOpenGLVersionAtLeast(1, 5)) {
+		_glGenBuffers = (PFNGLGENBUFFERSPROC)GetOGLProcAddress("glGenBuffers");
+		_glDeleteBuffers = (PFNGLDELETEBUFFERSPROC)GetOGLProcAddress("glDeleteBuffers");
+		_glBindBuffer = (PFNGLBINDBUFFERPROC)GetOGLProcAddress("glBindBuffer");
+		_glBufferData = (PFNGLBUFFERDATAPROC)GetOGLProcAddress("glBufferData");
+		_glMapBuffer = (PFNGLMAPBUFFERPROC)GetOGLProcAddress("glMapBuffer");
+		_glUnmapBuffer = (PFNGLUNMAPBUFFERPROC)GetOGLProcAddress("glUnmapBuffer");
+	} else {
+		_glGenBuffers = (PFNGLGENBUFFERSPROC)GetOGLProcAddress("glGenBuffersARB");
+		_glDeleteBuffers = (PFNGLDELETEBUFFERSPROC)GetOGLProcAddress("glDeleteBuffersARB");
+		_glBindBuffer = (PFNGLBINDBUFFERPROC)GetOGLProcAddress("glBindBufferARB");
+		_glBufferData = (PFNGLBUFFERDATAPROC)GetOGLProcAddress("glBufferDataARB");
+		_glMapBuffer = (PFNGLMAPBUFFERPROC)GetOGLProcAddress("glMapBufferARB");
+		_glUnmapBuffer = (PFNGLUNMAPBUFFERPROC)GetOGLProcAddress("glUnmapBufferARB");
+	}
+
+	return _glGenBuffers != nullptr && _glDeleteBuffers != nullptr && _glBindBuffer != nullptr && _glBufferData != nullptr && _glMapBuffer != nullptr && _glUnmapBuffer != nullptr;
 }
 
 /** Callback to receive OpenGL debug messages. */
@@ -203,6 +238,9 @@ OpenGLBackend::OpenGLBackend()
  */
 OpenGLBackend::~OpenGLBackend()
 {
+	if (_glDeleteBuffers != nullptr) {
+		_glDeleteBuffers(1, &this->vbo_quad);
+	}
 	glDeleteTextures(1, &this->vid_texture);
 	free(this->vid_buffer);
 }
@@ -232,6 +270,9 @@ const char *OpenGLBackend::Init()
 	if (!IsOpenGLVersionAtLeast(1, 3)) return "OpenGL version >= 1.3 required";
 	/* Check for non-power-of-two texture support. */
 	if (!IsOpenGLVersionAtLeast(2, 0) && !IsOpenGLExtensionSupported("GL_ARB_texture_non_power_of_two")) return "Non-power-of-two textures not supported";
+	/* Check for vertex buffer objects. */
+	if (!IsOpenGLVersionAtLeast(1, 5) && !IsOpenGLExtensionSupported("ARB_vertex_buffer_object")) return "Vertex buffer objects not supported";
+	if (!BindVBOExtension()) return "Failed to bind VBO extension functions";
 
 	/* Setup video buffer texture. */
 	glGenTextures(1, &this->vid_texture);
@@ -244,12 +285,20 @@ const char *OpenGLBackend::Init()
 	glBindTexture(GL_TEXTURE_2D, 0);
 	if (glGetError() != GL_NO_ERROR) return "Can't generate video buffer texture";
 
-	/* Prime vertex array with a full-screen quad. */
-	static const float vert_array[] = { 1.f, -1.f, 1.f, 1.f, -1.f, -1.f, -1.f, 1.f };
-	static const float tex_array[]  = { 1.f,  1.f, 1.f, 0.f,  0.f,  1.f,  0.f, 0.f };
+	/* Prime vertex buffer with a full-screen quad. */
+	static const Simple2DVertex vert_array[] = {
+		//  x     y    u    v
+		{  1.f, -1.f, 1.f, 1.f },
+		{  1.f,  1.f, 1.f, 0.f },
+		{ -1.f, -1.f, 0.f, 1.f },
+		{ -1.f,  1.f, 0.f, 0.f },
+	};
 
-	glVertexPointer(2, GL_FLOAT, 0, vert_array);
-	glTexCoordPointer(2, GL_FLOAT, 0, tex_array);
+	_glGenBuffers(1, &this->vbo_quad);
+	_glBindBuffer(GL_ARRAY_BUFFER, this->vbo_quad);
+	_glBufferData(GL_ARRAY_BUFFER, sizeof(vert_array), vert_array, GL_STATIC_DRAW);
+	if (glGetError() != GL_NO_ERROR) return "Can't generate VBO for fullscreen quad";
+
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
@@ -309,6 +358,9 @@ void OpenGLBackend::Paint(Rect update_rect)
 	}
 
 	/* Blit video buffer to screen. */
+	_glBindBuffer(GL_ARRAY_BUFFER, this->vbo_quad);
+	glVertexPointer(2, GL_FLOAT, sizeof(Simple2DVertex), (GLvoid *)offsetof(Simple2DVertex, x));
+	glTexCoordPointer(2, GL_FLOAT, sizeof(Simple2DVertex), (GLvoid *)offsetof(Simple2DVertex, u));
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 

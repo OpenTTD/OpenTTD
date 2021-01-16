@@ -27,6 +27,7 @@ private:
 
 	void *vid_buffer;   ///< Pointer to the memory used for the video driver to draw to.
 	GLuint vid_texture; ///< Texture handle for the video buffer texture.
+	GLuint vbo_quad;    ///< Vertex buffer with a fullscreen quad.
 
 	OpenGLBackend();
 	~OpenGLBackend();
