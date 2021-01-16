@@ -25,7 +25,7 @@ class OpenGLBackend : public ZeroedMemoryAllocator {
 private:
 	static OpenGLBackend *instance; ///< Singleton instance pointer.
 
-	void *vid_buffer;   ///< Pointer to the memory used for the video driver to draw to.
+	GLuint vid_pbo;     ///< Pixel buffer object storing the memory used for the video driver to draw to.
 	GLuint vid_texture; ///< Texture handle for the video buffer texture.
 	GLuint vao_quad;    ///< Vertex array object storing the rendering state for the fullscreen quad.
 	GLuint vbo_quad;    ///< Vertex buffer with a fullscreen quad.
@@ -45,13 +45,10 @@ public:
 	static void Destroy();
 
 	bool Resize(int w, int h, bool force = false);
-	void Paint(Rect update_rect);
+	void Paint();
 
-	/**
-	 * Get a pointer to the memory for the video driver to draw to.
-	 * @return Pointer to draw on.
-	 */
-	void *GetVideoBuffer() { return this->vid_buffer; }
+	void *GetVideoBuffer();
+	void ReleaseVideoBuffer(const Rect &update_rect);
 };
 
 #endif /* VIDEO_OPENGL_H */
