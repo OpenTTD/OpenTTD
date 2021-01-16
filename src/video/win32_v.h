@@ -63,7 +63,7 @@ protected:
 
 	void Initialize();
 	bool MakeWindow(bool full_screen);
-	void ClientSizeChanged(int w, int h);
+	void ClientSizeChanged(int w, int h, bool force = false);
 
 	/** Get screen depth to use for fullscreen mode. */
 	virtual uint8 GetFullscreenBpp();
@@ -71,6 +71,8 @@ protected:
 	virtual bool AllocateBackingStore(int w, int h, bool force = false) = 0;
 	/** Get a pointer to the video buffer. */
 	virtual void *GetVideoPointer() = 0;
+	/** Hand video buffer back to the painting backend. */
+	virtual void ReleaseVideoPointer() {}
 	/** Palette of the window has changed. */
 	virtual void PaletteChanged(HWND hWnd) = 0;
 
@@ -149,6 +151,7 @@ protected:
 
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
 	void *GetVideoPointer() override;
+	void ReleaseVideoPointer() override;
 	void PaletteChanged(HWND hWnd) override {}
 
 	const char *AllocateContext();

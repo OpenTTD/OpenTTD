@@ -264,9 +264,9 @@ OpenGLBackend::~OpenGLBackend()
 	if (_glDeleteVertexArrays != nullptr) _glDeleteVertexArrays(1, &this->vao_quad);
 	if (_glDeleteBuffers != nullptr) {
 		_glDeleteBuffers(1, &this->vbo_quad);
+		_glDeleteBuffers(1, &this->vid_pbo);
 	}
 	glDeleteTextures(1, &this->vid_texture);
-	free(this->vid_buffer);
 }
 
 /**
@@ -297,6 +297,8 @@ const char *OpenGLBackend::Init()
 	/* Check for vertex buffer objects. */
 	if (!IsOpenGLVersionAtLeast(1, 5) && !IsOpenGLExtensionSupported("ARB_vertex_buffer_object")) return "Vertex buffer objects not supported";
 	if (!BindVBOExtension()) return "Failed to bind VBO extension functions";
+	/* Check for pixel buffer objects. */
+	if (!IsOpenGLVersionAtLeast(2, 1) && !IsOpenGLExtensionSupported("GL_ARB_pixel_buffer_object")) return "Pixel buffer objects not supported";
 	/* Check for vertex array objects. */
 	if (!IsOpenGLVersionAtLeast(3, 0) && (!IsOpenGLExtensionSupported("GL_ARB_vertex_array_object") || !IsOpenGLExtensionSupported("GL_APPLE_vertex_array_object"))) return "Vertex array objects not supported";
 	if (!BindVBAExtension()) return "Failed to bind VBA extension functions";
@@ -311,6 +313,11 @@ const char *OpenGLBackend::Init()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	if (glGetError() != GL_NO_ERROR) return "Can't generate video buffer texture";
+
+	/* Create pixel buffer object as video buffer storage. */
+	_glGenBuffers(1, &this->vid_pbo);
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
+	if (glGetError() != GL_NO_ERROR) return "Can't allocate pixel buffer for video buffer";
 
 	/* Prime vertex buffer with a full-screen quad and store
 	 * the corresponding state in a vertex array object. */
@@ -355,13 +362,14 @@ const char *OpenGLBackend::Init()
  */
 bool OpenGLBackend::Resize(int w, int h, bool force)
 {
-	if (!force && _screen.width == w && _screen.height == h && this->vid_buffer != nullptr) return false;
+	if (!force && _screen.width == w && _screen.height == h) return false;
 
 	glViewport(0, 0, w, h);
 
-	/* Re-allocate video buffer texture. */
-	free(this->vid_buffer);
-	this->vid_buffer = CallocT<uint32>(w * h); // 32bpp
+	/* Re-allocate video buffer texture and backing store. */
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
+	_glBufferData(GL_PIXEL_UNPACK_BUFFER, w * h * 4, nullptr, GL_DYNAMIC_READ); // Buffer content has to persist from frame to frame and is read back by the blitter, which means a READ usage hint.
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
 	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
@@ -371,30 +379,50 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 	_screen.height = h;
 	_screen.width = w;
 	_screen.pitch = w;
-	_screen.dst_ptr = this->GetVideoBuffer();
+	_screen.dst_ptr = nullptr;
 
 	return true;
 }
 
 /**
  * Render video buffer to the screen.
- * @param update_rect Rectangle encompassing the dirty region of the video buffer.
  */
-void OpenGLBackend::Paint(Rect update_rect)
+void OpenGLBackend::Paint()
 {
-	assert(this->vid_buffer != nullptr);
-
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	/* Update changed rect of the video buffer texture. */
-	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
-	if (!IsEmptyRect(update_rect)) {
-		glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
-		glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (uint32 *)this->vid_buffer + update_rect.top * _screen.pitch + update_rect.left);
-	}
-
 	/* Blit video buffer to screen. */
+	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
 	_glBindVertexArray(this->vao_quad);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+}
+
+/**
+ * Get a pointer to the memory for the video driver to draw to.
+ * @return Pointer to draw on.
+ */
+void *OpenGLBackend::GetVideoBuffer()
+{
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
+	return _glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
+}
+
+/**
+ * Update video buffer texture after the video buffer was filled.
+ * @param update_rect Rectangle encompassing the dirty region of the video buffer.
+ */
+void OpenGLBackend::ReleaseVideoBuffer(const Rect &update_rect)
+{
+	assert(this->vid_pbo != 0);
+
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
+	_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+
+	/* Update changed rect of the video buffer texture. */
+	if (!IsEmptyRect(update_rect)) {
+		glBindTexture(GL_TEXTURE_2D, this->vid_texture);
+		glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
+		glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid *)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
+	}
 }
 
