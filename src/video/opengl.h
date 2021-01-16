@@ -14,7 +14,12 @@
 
 #include "../core/alloc_type.hpp"
 
-/** Platform-independent back-end singleton class for OpenGL video drivers. */
+typedef void (*OGLProc)();
+typedef OGLProc (*GetOGLProcAddressProc)(const char *proc);
+
+bool IsOpenGLVersionAtLeast(byte major, byte minor);
+
+/** Platform-independent back-end class for OpenGL video drivers. */
 class OpenGLBackend : public ZeroedMemoryAllocator {
 private:
 	static OpenGLBackend *instance; ///< Singleton instance pointer.
@@ -33,7 +38,7 @@ public:
 	{
 		return OpenGLBackend::instance;
 	}
-	static const char *Create();
+	static const char *Create(GetOGLProcAddressProc get_proc);
 	static void Destroy();
 
 	bool Resize(int w, int h, bool force = false);
