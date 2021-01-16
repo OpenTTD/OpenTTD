@@ -128,9 +128,9 @@ static void UpdatePalette(bool init = false)
 
 static void InitPalette()
 {
+	_cur_palette.first_dirty = 0;
+	_cur_palette.count_dirty = 256;
 	_local_palette = _cur_palette;
-	_local_palette.first_dirty = 0;
-	_local_palette.count_dirty = 256;
 	UpdatePalette(true);
 }
 
