@@ -26,9 +26,11 @@
 #include "../core/geometry_func.hpp"
 #include "../core/mem_func.hpp"
 #include "../core/math_func.hpp"
+#include "../core/mem_func.hpp"
 #include "../gfx_func.h"
 #include "../debug.h"
 #include "../blitter/factory.hpp"
+#include "../zoom_func.h"
 
 #include "../table/opengl_shader.h"
 
@@ -67,6 +69,9 @@ static PFNGLGETSHADERIVPROC _glGetShaderiv;
 static PFNGLGETSHADERINFOLOGPROC _glGetShaderInfoLog;
 static PFNGLGETUNIFORMLOCATIONPROC _glGetUniformLocation;
 static PFNGLUNIFORM1IPROC _glUniform1i;
+static PFNGLUNIFORM1FPROC _glUniform1f;
+static PFNGLUNIFORM2FPROC _glUniform2f;
+static PFNGLUNIFORM4FPROC _glUniform4f;
 
 static PFNGLGETATTRIBLOCATIONPROC _glGetAttribLocation;
 static PFNGLENABLEVERTEXATTRIBARRAYPROC _glEnableVertexAttribArray;
@@ -79,6 +84,9 @@ struct Simple2DVertex {
 	float x, y;
 	float u, v;
 };
+
+/** Maximum number of cursor sprites to cache. */
+static const int MAX_CACHED_CURSORS = 48;
 
 /* static */ OpenGLBackend *OpenGLBackend::instance = nullptr;
 
@@ -231,6 +239,9 @@ static bool BindShaderExtensions()
 		_glGetShaderInfoLog = (PFNGLGETSHADERINFOLOGPROC)GetOGLProcAddress("glGetShaderInfoLog");
 		_glGetUniformLocation = (PFNGLGETUNIFORMLOCATIONPROC)GetOGLProcAddress("glGetUniformLocation");
 		_glUniform1i = (PFNGLUNIFORM1IPROC)GetOGLProcAddress("glUniform1i");
+		_glUniform1f = (PFNGLUNIFORM1FPROC)GetOGLProcAddress("glUniform1f");
+		_glUniform2f = (PFNGLUNIFORM2FPROC)GetOGLProcAddress("glUniform2f");
+		_glUniform4f = (PFNGLUNIFORM4FPROC)GetOGLProcAddress("glUniform4f");
 
 		_glGetAttribLocation = (PFNGLGETATTRIBLOCATIONPROC)GetOGLProcAddress("glGetAttribLocation");
 		_glEnableVertexAttribArray = (PFNGLENABLEVERTEXATTRIBARRAYPROC)GetOGLProcAddress("glEnableVertexAttribArray");
@@ -253,6 +264,9 @@ static bool BindShaderExtensions()
 		_glGetShaderInfoLog = (PFNGLGETSHADERINFOLOGPROC)GetOGLProcAddress("glGetInfoLogARB");
 		_glGetUniformLocation = (PFNGLGETUNIFORMLOCATIONPROC)GetOGLProcAddress("glGetUniformLocationARB");
 		_glUniform1i = (PFNGLUNIFORM1IPROC)GetOGLProcAddress("glUniform1iARB");
+		_glUniform1f = (PFNGLUNIFORM1FPROC)GetOGLProcAddress("glUniform1fARB");
+		_glUniform2f = (PFNGLUNIFORM2FPROC)GetOGLProcAddress("glUniform2fARB");
+		_glUniform4f = (PFNGLUNIFORM4FPROC)GetOGLProcAddress("glUniform4fARB");
 
 		_glGetAttribLocation = (PFNGLGETATTRIBLOCATIONPROC)GetOGLProcAddress("glGetAttribLocationARB");
 		_glEnableVertexAttribArray = (PFNGLENABLEVERTEXATTRIBARRAYPROC)GetOGLProcAddress("glEnableVertexAttribArrayARB");
@@ -271,8 +285,9 @@ static bool BindShaderExtensions()
 
 	return _glCreateProgram != nullptr && _glDeleteProgram != nullptr && _glLinkProgram != nullptr && _glGetProgramiv != nullptr && _glGetProgramInfoLog != nullptr &&
 		_glCreateShader != nullptr && _glDeleteShader != nullptr && _glShaderSource != nullptr && _glCompileShader != nullptr && _glAttachShader != nullptr &&
-		_glGetShaderiv != nullptr && _glGetShaderInfoLog != nullptr && _glGetUniformLocation != nullptr && _glUniform1i != nullptr &&
-		_glGetAttribLocation != nullptr && _glEnableVertexAttribArray != nullptr && _glDisableVertexAttribArray != nullptr && _glVertexAttribPointer != nullptr;
+		_glGetShaderiv != nullptr && _glGetShaderInfoLog != nullptr && _glGetUniformLocation != nullptr && _glUniform1i != nullptr && _glUniform1f != nullptr &&
+		_glUniform2f != nullptr && _glUniform4f != nullptr && _glGetAttribLocation != nullptr && _glEnableVertexAttribArray != nullptr && _glDisableVertexAttribArray != nullptr &&
+		_glVertexAttribPointer != nullptr;
 }
 
 /** Callback to receive OpenGL debug messages. */
@@ -356,7 +371,7 @@ void SetupDebugOutput()
 /**
  * Construct OpenGL back-end class.
  */
-OpenGLBackend::OpenGLBackend()
+OpenGLBackend::OpenGLBackend() : cursor_cache(MAX_CACHED_CURSORS)
 {
 }
 
@@ -365,7 +380,11 @@ OpenGLBackend::OpenGLBackend()
  */
 OpenGLBackend::~OpenGLBackend()
 {
+	ClearCursorCache();
+	OpenGLSprite::Destroy();
+
 	if (_glDeleteProgram != nullptr) {
+		_glDeleteProgram(this->remap_program);
 		_glDeleteProgram(this->vid_program);
 		_glDeleteProgram(this->pal_program);
 	}
@@ -419,7 +438,12 @@ const char *OpenGLBackend::Init()
 	if (!BindShaderExtensions()) return "Failed to bind shader extension functions";
 	if (IsOpenGLVersionAtLeast(3, 2) && _glBindFragDataLocation == nullptr) return "OpenGL claims to support version 3.2 but doesn't have glBindFragDataLocation";
 
-	DEBUG(driver, 2, "OpenGL shading language version: %s", (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
+	/* Check available texture units. */
+	GLint max_tex_units = 0;
+	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_tex_units);
+	if (max_tex_units < 3) return "Not enough simultaneous textures supported";
+
+	DEBUG(driver, 2, "OpenGL shading language version: %s, texture units = %d", (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION), (int)max_tex_units);
 
 	if (!this->InitShaders()) return "Failed to initialize shaders";
 
@@ -446,19 +470,41 @@ const char *OpenGLBackend::Init()
 	glBindTexture(GL_TEXTURE_1D, 0);
 	if (glGetError() != GL_NO_ERROR) return "Can't generate palette lookup texture";
 
-	/* Bind uniforms in RGB rendering shader program. */
+	/* Bind uniforms in rendering shader program. */
 	GLint tex_location = _glGetUniformLocation(this->vid_program, "colour_tex");
 	GLint palette_location = _glGetUniformLocation(this->vid_program, "palette");
+	GLint sprite_location = _glGetUniformLocation(this->vid_program, "sprite");
+	GLint screen_location = _glGetUniformLocation(this->vid_program, "screen");
 	_glUseProgram(this->vid_program);
 	_glUniform1i(tex_location, 0);     // Texture unit 0.
 	_glUniform1i(palette_location, 1); // Texture unit 1.
+	/* Values that result in no transform. */
+	_glUniform4f(sprite_location, 0.0f, 0.0f, 1.0f, 1.0f);
+	_glUniform2f(screen_location, 1.0f, 1.0f);
 
 	/* Bind uniforms in palette rendering shader program. */
 	tex_location = _glGetUniformLocation(this->pal_program, "colour_tex");
 	palette_location = _glGetUniformLocation(this->pal_program, "palette");
+	sprite_location = _glGetUniformLocation(this->pal_program, "sprite");
+	screen_location = _glGetUniformLocation(this->pal_program, "screen");
 	_glUseProgram(this->pal_program);
 	_glUniform1i(tex_location, 0);     // Texture unit 0.
 	_glUniform1i(palette_location, 1); // Texture unit 1.
+	_glUniform4f(sprite_location, 0.0f, 0.0f, 1.0f, 1.0f);
+	_glUniform2f(screen_location, 1.0f, 1.0f);
+
+	/* Bind uniforms in remap shader program. */
+	tex_location = _glGetUniformLocation(this->remap_program, "colour_tex");
+	palette_location = _glGetUniformLocation(this->remap_program, "palette");
+	GLint remap_location = _glGetUniformLocation(this->remap_program, "remap_tex");
+	this->remap_sprite_loc = _glGetUniformLocation(this->remap_program, "sprite");
+	this->remap_screen_loc = _glGetUniformLocation(this->remap_program, "screen");
+	this->remap_zoom_loc = _glGetUniformLocation(this->remap_program, "zoom");
+	this->remap_rgb_loc = _glGetUniformLocation(this->remap_program, "rgb");
+	_glUseProgram(this->remap_program);
+	_glUniform1i(tex_location, 0);     // Texture unit 0.
+	_glUniform1i(palette_location, 1); // Texture unit 1.
+	_glUniform1i(remap_location, 2);   // Texture unit 2.
 
 	/* Create pixel buffer object as video buffer storage. */
 	_glGenBuffers(1, &this->vid_pbo);
@@ -494,8 +540,14 @@ const char *OpenGLBackend::Init()
 	_glVertexAttribPointer(colour_position, 2, GL_FLOAT, GL_FALSE, sizeof(Simple2DVertex), (GLvoid *)offsetof(Simple2DVertex, u));
 	_glBindVertexArray(0);
 
+	/* Create resources for sprite rendering. */
+	if (!OpenGLSprite::Create()) return "Failed to create sprite rendering resources";
+
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glDisable(GL_DEPTH_TEST);
+	/* Enable alpha blending using the src alpha factor. */
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	(void)glGetError(); // Clear errors.
 
 	return nullptr;
@@ -563,7 +615,7 @@ bool OpenGLBackend::InitShaders()
 
 	/* Create vertex shader. */
 	GLuint vert_shader = _glCreateShader(GL_VERTEX_SHADER);
-	_glShaderSource(vert_shader, glsl_150 ? lengthof(_vertex_shader_direct_150) : lengthof(_vertex_shader_direct), glsl_150 ? _vertex_shader_direct_150 : _vertex_shader_direct, nullptr);
+	_glShaderSource(vert_shader, glsl_150 ? lengthof(_vertex_shader_sprite_150) : lengthof(_vertex_shader_sprite), glsl_150 ? _vertex_shader_sprite_150 : _vertex_shader_sprite, nullptr);
 	_glCompileShader(vert_shader);
 	if (!VerifyShader(vert_shader)) return false;
 
@@ -579,6 +631,12 @@ bool OpenGLBackend::InitShaders()
 	_glCompileShader(frag_shader_pal);
 	if (!VerifyShader(frag_shader_pal)) return false;
 
+	/* Sprite remap fragment shader. */
+	GLuint remap_shader = _glCreateShader(GL_FRAGMENT_SHADER);
+	_glShaderSource(remap_shader, glsl_150 ? lengthof(_frag_shader_rgb_mask_blend_150) : lengthof(_frag_shader_rgb_mask_blend), glsl_150 ? _frag_shader_rgb_mask_blend_150 : _frag_shader_rgb_mask_blend, nullptr);
+	_glCompileShader(remap_shader);
+	if (!VerifyShader(remap_shader)) return false;
+
 	/* Link shaders to program. */
 	this->vid_program = _glCreateProgram();
 	_glAttachShader(this->vid_program, vert_shader);
@@ -588,10 +646,15 @@ bool OpenGLBackend::InitShaders()
 	_glAttachShader(this->pal_program, vert_shader);
 	_glAttachShader(this->pal_program, frag_shader_pal);
 
+	this->remap_program = _glCreateProgram();
+	_glAttachShader(this->remap_program, vert_shader);
+	_glAttachShader(this->remap_program, remap_shader);
+
 	if (glsl_150) {
 		/* Bind fragment shader outputs. */
 		_glBindFragDataLocation(this->vid_program, 0, "colour");
 		_glBindFragDataLocation(this->pal_program, 0, "colour");
+		_glBindFragDataLocation(this->remap_program, 0, "colour");
 	}
 
 	_glLinkProgram(this->vid_program);
@@ -600,9 +663,13 @@ bool OpenGLBackend::InitShaders()
 	_glLinkProgram(this->pal_program);
 	if (!VerifyProgram(this->pal_program)) return false;
 
+	_glLinkProgram(this->remap_program);
+	if (!VerifyProgram(this->remap_program)) return false;
+
 	_glDeleteShader(vert_shader);
 	_glDeleteShader(frag_shader_rgb);
 	_glDeleteShader(frag_shader_pal);
+	_glDeleteShader(remap_shader);
 
 	return true;
 }
@@ -656,6 +723,10 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 	_screen.pitch = pitch;
 	_screen.dst_ptr = nullptr;
 
+	/* Update screen size in remap shader program. */
+	_glUseProgram(this->remap_program);
+	_glUniform2f(this->remap_screen_loc, (float)_screen.width, (float)_screen.height);
+
 	return true;
 }
 
@@ -683,6 +754,8 @@ void OpenGLBackend::Paint()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 
+	glDisable(GL_BLEND);
+
 	/* Blit video buffer to screen. */
 	_glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
@@ -691,6 +764,44 @@ void OpenGLBackend::Paint()
 	_glUseProgram(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 8 ? this->pal_program : this->vid_program);
 	_glBindVertexArray(this->vao_quad);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+	glEnable(GL_BLEND);
+}
+
+/**
+ * Draw mouse cursor on screen.
+ */
+void OpenGLBackend::DrawMouseCursor()
+{
+	/* Draw cursor on screen */
+	_cur_dpi = &_screen;
+	for (uint i = 0; i < _cursor.sprite_count; ++i) {
+		SpriteID sprite = _cursor.sprite_seq[i].sprite;
+
+		if (!this->cursor_cache.Contains(sprite)) {
+			Sprite *old = this->cursor_cache.Insert(sprite, (Sprite *)GetRawSprite(sprite, ST_NORMAL, &SimpleSpriteAlloc, this));
+			if (old != nullptr) {
+				OpenGLSprite *sprite = (OpenGLSprite *)old->data;
+				sprite->~OpenGLSprite();
+				free(old);
+			}
+		}
+
+		this->RenderOglSprite((OpenGLSprite *)this->cursor_cache.Get(sprite)->data, _cursor.pos.x + _cursor.sprite_pos[i].x, _cursor.pos.y + _cursor.sprite_pos[i].y, ZOOM_LVL_GUI);
+	}
+}
+
+/**
+ * Clear all cached cursor sprites.
+ */
+void OpenGLBackend::ClearCursorCache()
+{
+	Sprite *sp;
+	while ((sp = this->cursor_cache.Pop()) != nullptr) {
+		OpenGLSprite *sprite = (OpenGLSprite *)sp->data;
+		sprite->~OpenGLSprite();
+		free(sp);
+	}
 }
 
 /**
@@ -729,5 +840,222 @@ void OpenGLBackend::ReleaseVideoBuffer(const Rect &update_rect)
 				break;
 		}
 	}
+}
+
+/* virtual */ Sprite *OpenGLBackend::Encode(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
+{
+	/* Allocate and construct sprite data. */
+	Sprite *dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + sizeof(OpenGLSprite));
+
+	OpenGLSprite *gl_sprite = (OpenGLSprite *)dest_sprite->data;
+	new (gl_sprite) OpenGLSprite(sprite->width, sprite->height, sprite->type == ST_FONT ? 1 : ZOOM_LVL_COUNT, sprite->colours);
+
+	/* Upload texture data. */
+	for (int i = 0; i < (sprite->type == ST_FONT ? 1 : ZOOM_LVL_COUNT); i++) {
+		gl_sprite->Update(sprite[i].width, sprite[i].height, i, sprite[i].data);
+	}
+
+	dest_sprite->height = sprite->height;
+	dest_sprite->width  = sprite->width;
+	dest_sprite->x_offs = sprite->x_offs;
+	dest_sprite->y_offs = sprite->y_offs;
+
+	return dest_sprite;
+}
+
+/**
+ * Render a sprite to the back buffer.
+ * @param gl_sprite Sprite to render.
+ * @param x X position of the sprite.
+ * @param y Y position of the sprite.
+ * @param zoom Zoom level to use.
+ */
+void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, uint x, uint y, ZoomLevel zoom)
+{
+	/* Set textures. */
+	bool rgb = gl_sprite->BindTextures();
+	_glActiveTexture(GL_TEXTURE0 + 1);
+	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
+
+	/* Set up shader program. */
+	Dimension dim = gl_sprite->GetSize(zoom);
+	_glUseProgram(this->remap_program);
+	_glUniform4f(this->remap_sprite_loc, (float)x, (float)y, (float)dim.width, (float)dim.height);
+	_glUniform1f(this->remap_zoom_loc, (float)(zoom - ZOOM_LVL_BEGIN));
+	_glUniform2f(this->remap_screen_loc, (float)_screen.width, (float)_screen.height);
+	_glUniform1i(this->remap_rgb_loc,  rgb ? 1 : 0);
+
+	_glBindVertexArray(this->vao_quad);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+}
+
+
+/* static */ GLuint OpenGLSprite::dummy_tex[] = { 0, 0 };
+
+/**
+ * Create all common resources for sprite rendering.
+ * @return True if no error occurred.
+ */
+/* static */ bool OpenGLSprite::Create()
+{
+	glGenTextures(NUM_TEX, OpenGLSprite::dummy_tex);
+
+	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
+		glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[t]);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	}
+
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+
+	/* Load dummy RGBA texture. */
+	const Colour rgb_pixel(0, 0, 0);
+	glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_RGBA]);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1, 1, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &rgb_pixel);
+
+	/* Load dummy remap texture. */
+	const uint pal = 0;
+	glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_REMAP]);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1, 1, 0, GL_RED, GL_UNSIGNED_BYTE, &pal);
+
+	return glGetError() == GL_NO_ERROR;
+}
+
+/** Free all common resources for sprite rendering. */
+/* static */ void OpenGLSprite::Destroy()
+{
+	glDeleteTextures(NUM_TEX, OpenGLSprite::dummy_tex);
+}
+
+/**
+ * Create an OpenGL sprite with a palette remap part.
+ * @param width Width of the top-level texture.
+ * @param height Height of the top-level texture.
+ * @param levels Number of mip-map levels.
+ * @param components Indicates which sprite components are used.
+ */
+OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteColourComponent components)
+{
+	assert(levels > 0);
+	(void)glGetError();
+
+	this->dim.width = width;
+	this->dim.height = height;
+
+	MemSetT(this->tex, 0, NUM_TEX);
+	_glActiveTexture(GL_TEXTURE0);
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+
+	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
+		/* Sprite component present? */
+		if (t == TEX_RGBA && components == SCC_PAL) continue;
+		if (t == TEX_REMAP && (components & SCC_PAL) != SCC_PAL) continue;
+
+		/* Allocate texture. */
+		glGenTextures(1, &this->tex[t]);
+		glBindTexture(GL_TEXTURE_2D, this->tex[t]);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, levels - 1);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
+		/* Set size. */
+		for (uint i = 0, w = width, h = height; i < levels; i++, w /= 2, h /= 2) {
+			assert(w * h != 0);
+			if (t == TEX_REMAP) {
+				glTexImage2D(GL_TEXTURE_2D, i, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
+			} else {
+				glTexImage2D(GL_TEXTURE_2D, i, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
+			}
+		}
+	}
+
+	assert(glGetError() == GL_NO_ERROR);
+}
+
+OpenGLSprite::~OpenGLSprite()
+{
+	glDeleteTextures(NUM_TEX, this->tex);
+}
+
+/**
+ * Update a single mip-map level with new pixel data.
+ * @param width Width of the level.
+ * @param height Height of the level.
+ * @param level Mip-map level.
+ * @param data New pixel data.
+ */
+void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoader::CommonPixel * data)
+{
+	static ReusableBuffer<Colour> buf_rgba;
+	static ReusableBuffer<uint8> buf_pal;
+
+	_glActiveTexture(GL_TEXTURE0);
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+
+	if (this->tex[TEX_RGBA] != 0) {
+		/* Unpack pixel data */
+		Colour *rgba = buf_rgba.Allocate(width * height);
+		for (size_t i = 0; i < width * height; i++) {
+			rgba[i].r = data[i].r;
+			rgba[i].g = data[i].g;
+			rgba[i].b = data[i].b;
+			rgba[i].a = data[i].a;
+		}
+
+		glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA]);
+		glTexSubImage2D(GL_TEXTURE_2D, level, 0, 0, width, height, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, rgba);
+	}
+
+	if (this->tex[TEX_REMAP] != 0) {
+		/* Unpack and align pixel data. */
+		int pitch = Align(width, 4);
+
+		uint8 *pal = buf_pal.Allocate(pitch * height);
+		const SpriteLoader::CommonPixel *row = data;
+		for (uint y = 0; y < height; y++, pal += pitch, row += width) {
+			for (uint x = 0; x < width; x++) {
+				pal[x] = row[x].m;
+			}
+		}
+
+		glBindTexture(GL_TEXTURE_2D, this->tex[TEX_REMAP]);
+		glTexSubImage2D(GL_TEXTURE_2D, level, 0, 0, width, height, GL_RED, GL_UNSIGNED_BYTE, buf_pal.GetBuffer());
+	}
+
+	assert(glGetError() == GL_NO_ERROR);
+}
+
+/**
+ * Query the sprite size at a certain zoom level.
+ * @param level The zoom level to query.
+ * @return Sprite size at the given zoom level.
+ */
+inline Dimension OpenGLSprite::GetSize(ZoomLevel level) const
+{
+	Dimension sd = { (uint)UnScaleByZoomLower(this->dim.width, level), (uint)UnScaleByZoomLower(this->dim.height, level) };
+	return sd;
+}
+
+/**
+ * Bind textures for rendering this sprite.
+ * @return True if the sprite has RGBA data.
+ */
+bool OpenGLSprite::BindTextures()
+{
+	_glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA] != 0 ? this->tex[TEX_RGBA] : OpenGLSprite::dummy_tex[TEX_RGBA]);
+	_glActiveTexture(GL_TEXTURE0 + 2);
+	glBindTexture(GL_TEXTURE_2D, this->tex[TEX_REMAP] != 0 ? this->tex[TEX_REMAP] : OpenGLSprite::dummy_tex[TEX_REMAP]);
+
+	return this->tex[TEX_RGBA] != 0;
 }
 

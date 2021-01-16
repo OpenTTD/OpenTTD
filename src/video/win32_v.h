@@ -140,6 +140,10 @@ public:
 
 	bool HasEfficient8Bpp() const override { return true; }
 
+	bool UseSystemCursor() override { return true; }
+
+	void ClearSystemSprites() override;
+
 	const char *GetName() const override { return "win32-opengl"; }
 
 protected:
