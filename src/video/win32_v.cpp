@@ -1320,16 +1320,93 @@ void VideoDriver_Win32GDI::PaintThread()
 
 #include <GL/gl.h>
 #include "../3rdparty/opengl/glext.h"
+#include "../3rdparty/opengl/wglext.h"
 #include "opengl.h"
 
 #ifndef PFD_SUPPORT_COMPOSITION
 #	define PFD_SUPPORT_COMPOSITION 0x00008000
 #endif
 
+static PFNWGLCREATECONTEXTATTRIBSARBPROC _wglCreateContextAttribsARB = nullptr;
+static bool _hasWGLARBCreateContextProfile = false; ///< Is WGL_ARB_create_context_profile supported?
+
 /** Platform-specific callback to get an OpenGL funtion pointer. */
 static OGLProc GetOGLProcAddressCallback(const char *proc)
 {
 	return reinterpret_cast<OGLProc>(wglGetProcAddress(proc));
+}
+
+/**
+ * Set the pixel format of a window-
+ * @param dc Device context to set the pixel format of.
+ * @param fullscreen Should the pixel format be used for fullscreen drawing?
+ * @return nullptr on success, error message otherwise.
+ */
+static const char *SelectPixelFormat(HDC dc, bool fullscreen)
+{
+	PIXELFORMATDESCRIPTOR pfd = {
+		sizeof(PIXELFORMATDESCRIPTOR), // Size of this struct.
+		1,                             // Version of this struct.
+		PFD_DRAW_TO_WINDOW |           // Require window support.
+		PFD_SUPPORT_OPENGL |           // Require OpenGL support.
+		PFD_DOUBLEBUFFER   |           // Use double buffering.
+		PFD_DEPTH_DONTCARE,
+		PFD_TYPE_RGBA,                 // Request RGBA format.
+		24,                            // 24 bpp (excluding alpha).
+		0, 0, 0, 0, 0, 0, 0, 0,        // Colour bits and shift ignored.
+		0, 0, 0, 0, 0,                 // No accumulation buffer.
+		0, 0,                          // No depth/stencil buffer.
+		0,                             // No aux buffers.
+		PFD_MAIN_PLANE,                // Main layer.
+		0, 0, 0, 0                     // Ignored/reserved.
+	};
+
+	if (IsWindowsVistaOrGreater()) pfd.dwFlags |= PFD_SUPPORT_COMPOSITION; // Make OpenTTD compatible with Aero.
+
+	/* Choose a suitable pixel format. */
+	int format = ChoosePixelFormat(dc, &pfd);
+	if (format == 0) return "No suitable pixel format found";
+	if (!SetPixelFormat(dc, format, &pfd)) return "Can't set pixel format";
+
+	return nullptr;
+}
+
+/** Bind all WGL extension functions we need. */
+static void LoadWGLExtensions()
+{
+	/* Querying the supported WGL extensions and loading the matching
+	 * functions requires a valid context, even for the extensions
+	 * regarding context creation. To get around this, we create
+	 * a dummy window with a dummy context. The extension functions
+	 * remain valid even after this context is destroyed. */
+	HWND wnd = CreateWindow(_T("STATIC"), _T("dummy"), WS_OVERLAPPEDWINDOW, 0, 0, 0, 0, nullptr, nullptr, GetModuleHandle(nullptr), nullptr);
+	HDC dc = GetDC(wnd);
+
+	/* Set pixel format of the window. */
+	if (SelectPixelFormat(dc, false) == nullptr) {
+		/* Create rendering context. */
+		HGLRC rc = wglCreateContext(dc);
+		if (rc != nullptr) {
+			wglMakeCurrent(dc, rc);
+
+			/* Get list of WGL extensions. */
+			PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB = (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionsStringARB");
+			if (wglGetExtensionsStringARB != nullptr) {
+				const char *wgl_exts = wglGetExtensionsStringARB(dc);
+				/* Bind supported functions. */
+				if (FindStringInExtensionList(wgl_exts, "WGL_ARB_create_context") != nullptr) {
+					_wglCreateContextAttribsARB = (PFNWGLCREATECONTEXTATTRIBSARBPROC)wglGetProcAddress("wglCreateContextAttribsARB");
+				}
+				_hasWGLARBCreateContextProfile = FindStringInExtensionList(wgl_exts, "WGL_ARB_create_context_profile") != nullptr;
+			}
+
+			wglMakeCurrent(nullptr, nullptr);
+			wglDeleteContext(rc);
+		}
+	}
+
+	ReleaseDC(wnd, dc);
+	DestroyWindow(wnd);
 }
 
 static FVideoDriver_Win32OpenGL iFVideoDriver_Win32OpenGL;
@@ -1339,6 +1416,8 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32) return "Only 32bpp blitters supported";
 
 	Dimension old_res = _cur_resolution; // Save current screen resolution in case of errors, as MakeWindow invalidates it.
+
+	LoadWGLExtensions();
 
 	this->Initialize();
 	this->MakeWindow(_fullscreen);
@@ -1382,37 +1461,33 @@ void VideoDriver_Win32OpenGL::DestroyContext()
 
 const char *VideoDriver_Win32OpenGL::AllocateContext()
 {
-	PIXELFORMATDESCRIPTOR pfd = {
-		sizeof(PIXELFORMATDESCRIPTOR), // Size of this struct.
-		1,                             // Version of this struct.
-		PFD_DRAW_TO_WINDOW |           // Require window support.
-		PFD_SUPPORT_OPENGL |           // Require OpenGL support.
-		PFD_DOUBLEBUFFER   |           // Use double buffering.
-		PFD_DEPTH_DONTCARE,
-		PFD_TYPE_RGBA,                 // Request RGBA format.
-		24,                            // 24 bpp (excluding alpha).
-		0, 0, 0, 0, 0, 0, 0, 0,        // Colour bits and shift ignored.
-		0, 0, 0, 0, 0,                 // No accumulation buffer.
-		0, 0,                          // No depth/stencil buffer.
-		0,                             // No aux buffers.
-		PFD_MAIN_PLANE,                // Main layer.
-		0, 0, 0, 0                     // Ignored/reserved.
-	};
-
-	if (IsWindowsVistaOrGreater()) pfd.dwFlags |= PFD_SUPPORT_COMPOSITION; // Make OpenTTD compatible with Aero.
-
 	this->dc = GetDC(this->main_wnd);
 
-	/* Choose a suitable pixel format. */
-	int format = ChoosePixelFormat(this->dc, &pfd);
-	if (format == 0) return "No suitable pixel format found";
-	if (!SetPixelFormat(this->dc, format, &pfd)) return "Can't set pixel format";
+	const char *err = SelectPixelFormat(this->dc, this->fullscreen);
+	if (err != nullptr) return err;
 
-	/* Create OpenGL device context. */
-	this->gl_rc = wglCreateContext(this->dc);
-	if (this->gl_rc == 0) return "Can't create OpenGL context";
-	if (!wglMakeCurrent(this->dc, this->gl_rc)) return "Can't active GL context";
+	HGLRC rc = nullptr;
 
+	/* Create OpenGL device context. Try to get an 3.2+ context if possible. */
+	if (_wglCreateContextAttribsARB != nullptr) {
+		int attribs[] = {
+			WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
+			WGL_CONTEXT_MINOR_VERSION_ARB, 2,
+			WGL_CONTEXT_FLAGS_ARB, _debug_driver_level >= 8 ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
+			_hasWGLARBCreateContextProfile ? WGL_CONTEXT_PROFILE_MASK_ARB : 0, WGL_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB, // Terminate list if WGL_ARB_create_context_profile isn't supported.
+			0
+		};
+		rc = _wglCreateContextAttribsARB(this->dc, nullptr, attribs);
+	}
+
+	if (rc == nullptr) {
+		/* Old OpenGL or old driver, let's hope for the best. */
+		rc = wglCreateContext(this->dc);
+		if (rc == nullptr) return "Can't create OpenGL context";
+	}
+	if (!wglMakeCurrent(this->dc, rc)) return "Can't active GL context";
+
+	this->gl_rc = rc;
 	return OpenGLBackend::Create(&GetOGLProcAddressCallback);
 }
 

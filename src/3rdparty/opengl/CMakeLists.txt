@@ -3,3 +3,8 @@ add_files(
     glext.h
     CONDITION OPENGL_FOUND
 )
+
+add_files(
+    wglext.h
+    CONDITION WIN32 AND OPENGL_FOUND
+)

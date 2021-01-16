@@ -62,7 +62,7 @@ GetOGLProcAddressProc GetOGLProcAddress;
  * @param substring Substring to find.
  * @return Pointer to the start of the match or nullptr if the substring is not present.
  */
-static const char *FindStringInExtensionList(const char *string, const char *substring)
+const char *FindStringInExtensionList(const char *string, const char *substring)
 {
 	while (1) {
 		/* Is the extension string present at all? */
