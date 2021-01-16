@@ -495,6 +495,7 @@ void Win32FontCache::ClearFontCache()
 	SpriteLoader::Sprite sprite;
 	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
 	sprite.type = ST_FONT;
+	sprite.colours = (aa ? SCC_PAL | SCC_ALPHA : SCC_PAL);
 	sprite.width = width;
 	sprite.height = height;
 	sprite.x_offs = gm.gmptGlyphOrigin.x;
