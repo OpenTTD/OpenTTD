@@ -74,6 +74,4 @@ public:
 	bool IsBuiltInFont() override { return false; }
 };
 
-void *AllocateFont(size_t size);
-
 #endif /* FONTCACHE_INTERNAL_H */

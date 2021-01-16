@@ -26,6 +26,7 @@ extern uint _sprite_cache_size;
 
 typedef void *AllocatorProc(size_t size);
 
+void *SimpleSpriteAlloc(size_t size);
 void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator = nullptr, SpriteEncoder *encoder = nullptr);
 bool SpriteExists(SpriteID sprite);
 
