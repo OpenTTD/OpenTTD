@@ -275,8 +275,8 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 		int x = SDL_WINDOWPOS_UNDEFINED, y = SDL_WINDOWPOS_UNDEFINED;
 		SDL_Rect r;
 		if (SDL_GetDisplayBounds(this->startup_display, &r) == 0) {
-			x = r.x + (r.w - w) / 2;
-			y = r.y + (r.h - h) / 4; // decent desktops have taskbars at the bottom
+			x = r.x + std::max(0, r.w - static_cast<int>(w)) / 2;
+			y = r.y + std::max(0, r.h - static_cast<int>(h)) / 4; // decent desktops have taskbars at the bottom
 		}
 		_sdl_window = SDL_CreateWindow(
 			caption,
