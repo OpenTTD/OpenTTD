@@ -333,7 +333,7 @@ const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
 	}
 
 	GlyphEntry new_glyph;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, AllocateFont);
+	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, SimpleSpriteAlloc);
 	new_glyph.width = (byte)std::round(CTFontGetAdvancesForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1));
 	this->SetGlyphPtr(key, &new_glyph);
 

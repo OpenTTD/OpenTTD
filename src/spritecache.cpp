@@ -809,6 +809,14 @@ static void *AllocSprite(size_t mem_req)
 }
 
 /**
+ * Sprite allocator simply using malloc.
+ */
+void *SimpleSpriteAlloc(size_t size)
+{
+	return MallocT<byte>(size);
+}
+
+/**
  * Handles the case when a sprite of different type is requested than is present in the SpriteCache.
  * For ST_FONT sprites, it is normal. In other cases, default sprite is loaded instead.
  * @param sprite ID of loaded sprite

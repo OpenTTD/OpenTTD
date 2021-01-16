@@ -532,7 +532,7 @@ void Win32FontCache::ClearFontCache()
 	}
 
 	GlyphEntry new_glyph;
-	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, AllocateFont);
+	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, SimpleSpriteAlloc);
 	new_glyph.width = gm.gmCellIncX;
 
 	this->SetGlyphPtr(key, &new_glyph);
