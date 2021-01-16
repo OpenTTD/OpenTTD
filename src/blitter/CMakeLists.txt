@@ -32,6 +32,13 @@ add_files(
     CONDITION NOT OPTION_DEDICATED AND SSE_FOUND
 )
 
+add_files(
+    40bpp_anim.cpp
+    40bpp_anim.hpp
+    CONDITION NOT OPTION_DEDICATED AND OPENGL_FOUND
+)
+
+
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
     set_compile_flags(
         32bpp_anim_sse2.cpp

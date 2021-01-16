@@ -275,13 +275,14 @@ static bool SwitchNewGRFBlitter()
 		uint animation; ///< 0: no support, 1: do support, 2: both
 		uint min_base_depth, max_base_depth, min_grf_depth, max_grf_depth;
 	} replacement_blitters[] = {
+		{ "8bpp-optimized",  2,  8,  8,  8,  8 },
+		{ "40bpp-anim",      2,  8, 32,  8, 32 },
 #ifdef WITH_SSE
 		{ "32bpp-sse4",      0, 32, 32,  8, 32 },
 		{ "32bpp-ssse3",     0, 32, 32,  8, 32 },
 		{ "32bpp-sse2",      0, 32, 32,  8, 32 },
 		{ "32bpp-sse4-anim", 1, 32, 32,  8, 32 },
 #endif
-		{ "8bpp-optimized",  2,  8,  8,  8,  8 },
 		{ "32bpp-optimized", 0,  8, 32,  8, 32 },
 #ifdef WITH_SSE
 		{ "32bpp-sse2-anim", 1,  8, 32,  8, 32 },
