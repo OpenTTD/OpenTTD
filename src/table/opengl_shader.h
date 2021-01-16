@@ -37,7 +37,7 @@ static const char *_frag_shader_direct[] = {
 	"uniform sampler2D colour_tex;",
 	"varying vec2 colour_tex_uv;",
 	"void main() {",
-	"  gl_FragColor = texture2D(colour_tex, colour_tex_uv);",
+	"  gl_FragData[0] = texture2D(colour_tex, colour_tex_uv);",
 	"}",
 };
 
