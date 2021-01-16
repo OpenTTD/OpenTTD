@@ -32,6 +32,8 @@
 
 /* static */ OpenGLBackend *OpenGLBackend::instance = nullptr;
 
+GetOGLProcAddressProc GetOGLProcAddress;
+
 /**
  * Find a substring in a string made of space delimited elements. The substring
  * has to match the complete element, partial matches don't count.
@@ -65,7 +67,31 @@ static const char *FindStringInExtensionList(const char *string, const char *sub
  */
 static bool IsOpenGLExtensionSupported(const char *extension)
 {
-	return FindStringInExtensionList((const char *)glGetString(GL_EXTENSIONS), extension) != nullptr;
+	static PFNGLGETSTRINGIPROC glGetStringi = nullptr;
+	static bool glGetStringi_loaded = false;
+
+	/* Starting with OpenGL 3.0 the preferred API to get the extensions
+	 * has changed. Try to load the required function once. */
+	if (!glGetStringi_loaded) {
+		if (IsOpenGLVersionAtLeast(3, 0)) glGetStringi = (PFNGLGETSTRINGIPROC)GetOGLProcAddress("glGetStringi");
+		glGetStringi_loaded = true;
+	}
+
+	if (glGetStringi != nullptr) {
+		/* New style: Each supported extension can be queried and compared independently. */
+		GLint num_exts;
+		glGetIntegerv(GL_NUM_EXTENSIONS, &num_exts);
+
+		for (GLint i = 0; i < num_exts; i++) {
+			const char *entry = (const char *)glGetStringi(GL_EXTENSIONS, i);
+			if (strcmp(entry, extension) == 0) return true;
+		}
+	} else {
+		/* Old style: A single, space-delimited string for all extensions. */
+		return FindStringInExtensionList((const char *)glGetString(GL_EXTENSIONS), extension) != nullptr;
+	}
+
+	return false;
 }
 
 static byte _gl_major_ver = 0; ///< Major OpenGL version.
@@ -78,7 +104,7 @@ static byte _gl_minor_ver = 0; ///< Minor OpenGL version.
  * @pre OpenGL was initialized.
  * @return True if the OpenGL version is equal or higher than the requested one.
  */
-static bool IsOpenGLVersionAtLeast(byte major, byte minor)
+bool IsOpenGLVersionAtLeast(byte major, byte minor)
 {
 	return (_gl_major_ver > major) || (_gl_major_ver == major && _gl_minor_ver >= minor);
 }
@@ -86,10 +112,14 @@ static bool IsOpenGLVersionAtLeast(byte major, byte minor)
 
 /**
  * Create and initialize the singleton back-end class.
+ * @param get_proc Callback to get an OpenGL function from the OS driver.
+ * @return nullptr on success, error message otherwise.
  */
-/* static */ const char *OpenGLBackend::Create()
+/* static */ const char *OpenGLBackend::Create(GetOGLProcAddressProc get_proc)
 {
 	if (OpenGLBackend::instance != nullptr) OpenGLBackend::Destroy();
+
+	GetOGLProcAddress = get_proc;
 
 	OpenGLBackend::instance = new OpenGLBackend();
 	return OpenGLBackend::instance->Init();
