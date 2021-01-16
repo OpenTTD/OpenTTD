@@ -143,6 +143,7 @@ public:
 protected:
 	HDC   dc;          ///< Window device context.
 	HGLRC gl_rc;       ///< OpenGL context.
+	bool  vsync;       ///< Enable VSync?
 
 	uint8 GetFullscreenBpp() override { return 32; } // OpenGL is always 32 bpp.
 

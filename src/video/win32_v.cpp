@@ -1328,6 +1328,7 @@ void VideoDriver_Win32GDI::PaintThread()
 #endif
 
 static PFNWGLCREATECONTEXTATTRIBSARBPROC _wglCreateContextAttribsARB = nullptr;
+static PFNWGLSWAPINTERVALEXTPROC _wglSwapIntervalEXT = nullptr;
 static bool _hasWGLARBCreateContextProfile = false; ///< Is WGL_ARB_create_context_profile supported?
 
 /** Platform-specific callback to get an OpenGL funtion pointer. */
@@ -1398,6 +1399,9 @@ static void LoadWGLExtensions()
 					_wglCreateContextAttribsARB = (PFNWGLCREATECONTEXTATTRIBSARBPROC)wglGetProcAddress("wglCreateContextAttribsARB");
 				}
 				_hasWGLARBCreateContextProfile = FindStringInExtensionList(wgl_exts, "WGL_ARB_create_context_profile") != nullptr;
+				if (FindStringInExtensionList(wgl_exts, "WGL_EXT_swap_control") != nullptr) {
+					_wglSwapIntervalEXT = (PFNWGLSWAPINTERVALEXTPROC)wglGetProcAddress("wglSwapIntervalEXT");
+				}
 			}
 
 			wglMakeCurrent(nullptr, nullptr);
@@ -1416,6 +1420,7 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 32) return "Only 32bpp blitters supported";
 
 	Dimension old_res = _cur_resolution; // Save current screen resolution in case of errors, as MakeWindow invalidates it.
+	this->vsync = GetDriverParamBool(param, "vsync");
 
 	LoadWGLExtensions();
 
@@ -1486,6 +1491,13 @@ const char *VideoDriver_Win32OpenGL::AllocateContext()
 		if (rc == nullptr) return "Can't create OpenGL context";
 	}
 	if (!wglMakeCurrent(this->dc, rc)) return "Can't active GL context";
+
+	/* Enable/disable Vsync if supported. */
+	if (_wglSwapIntervalEXT != nullptr) {
+		_wglSwapIntervalEXT(this->vsync ? 1 : 0);
+	} else if (vsync) {
+		DEBUG(driver, 0, "OpenGL: Vsync requested, but not supported by driver");
+	}
 
 	this->gl_rc = rc;
 	return OpenGLBackend::Create(&GetOGLProcAddressCallback);
