@@ -258,6 +258,27 @@ static void GetAvailableVideoMode(uint *w, uint *h)
 	*h = _resolutions[best].height;
 }
 
+static uint FindStartupDisplay(uint startup_display)
+{
+	int num_displays = SDL_GetNumVideoDisplays();
+
+	/* If the user indicated a valid monitor, use that. */
+	if (IsInsideBS(startup_display, 0, num_displays)) return startup_display;
+
+	/* Mouse position decides which display to use. */
+	int mx, my;
+	SDL_GetGlobalMouseState(&mx, &my);
+	for (int display = 0; display < num_displays; ++display) {
+		SDL_Rect r;
+		if (SDL_GetDisplayBounds(display, &r) == 0 && IsInsideBS(mx, r.x, r.w) && IsInsideBS(my, r.y, r.h)) {
+			DEBUG(driver, 1, "SDL2: Mouse is at (%d, %d), use display %d (%d, %d, %d, %d)", mx, my, display, r.x, r.y, r.w, r.h);
+			return display;
+		}
+	}
+
+	return 0;
+}
+
 bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 {
 	SDL_Surface *newscreen;
@@ -689,26 +710,11 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 	}
 	if (ret_code < 0) return SDL_GetError();
 
-	this->startup_display = GetDriverParamInt(parm, "display", -1);
-	int num_displays = SDL_GetNumVideoDisplays();
-	if (!IsInsideBS(this->startup_display, 0, num_displays)) {
-		/* Mouse position decides which display to use */
-		int mx, my;
-		SDL_GetGlobalMouseState(&mx, &my);
-		this->startup_display = 0; // used when mouse is on no screen...
-		for (int display = 0; display < num_displays; ++display) {
-			SDL_Rect r;
-			if (SDL_GetDisplayBounds(display, &r) == 0 && IsInsideBS(mx, r.x, r.w) && IsInsideBS(my, r.y, r.h)) {
-				DEBUG(driver, 1, "SDL2: Mouse is at (%d, %d), use display %d (%d, %d, %d, %d)", mx, my, display, r.x, r.y, r.w, r.h);
-				this->startup_display = display;
-				break;
-			}
-		}
-	}
-
 	this->UpdateAutoResolution();
 
 	FindResolutions();
+
+	this->startup_display = FindStartupDisplay(GetDriverParamInt(parm, "display", -1));
 
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height, false)) {
 		return SDL_GetError();
