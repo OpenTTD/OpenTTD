@@ -39,5 +39,6 @@ HRESULT OTTDSHGetFolderPath(HWND, int, HANDLE, DWORD, LPTSTR);
 
 void Win32SetCurrentLocaleName(const char *iso_code);
 int OTTDStringCompare(const char *s1, const char *s2);
+bool IsWindowsVistaOrGreater();
 
 #endif /* WIN32_H */
