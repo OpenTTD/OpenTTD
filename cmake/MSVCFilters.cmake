@@ -16,6 +16,7 @@ source_group("Sprite loaders" REGULAR_EXPRESSION "src/spriteloader/")
 source_group("Squirrel" REGULAR_EXPRESSION "src/3rdparty/squirrel/squirrel/")
 source_group("Tables" REGULAR_EXPRESSION "src/table/")
 source_group("Video" REGULAR_EXPRESSION "src/video/")
+source_group("Video/GL" REGULAR_EXPRESSION "src/3rdparty/opengl/")
 source_group("Widgets" REGULAR_EXPRESSION "src/widgets/")
 source_group("Windows files" REGULAR_EXPRESSION "src/os/windows/|\.rc$")
 
