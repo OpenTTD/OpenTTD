@@ -28,6 +28,9 @@
 #include "../gfx_func.h"
 #include "../debug.h"
 
+#include "../table/opengl_shader.h"
+
+
 #include "../safeguards.h"
 
 
@@ -44,6 +47,22 @@ static PFNGLUNMAPBUFFERPROC _glUnmapBuffer;
 static PFNGLGENVERTEXARRAYSPROC _glGenVertexArrays;
 static PFNGLDELETEVERTEXARRAYSPROC _glDeleteVertexArrays;
 static PFNGLBINDVERTEXARRAYPROC _glBindVertexArray;
+
+static PFNGLCREATEPROGRAMPROC _glCreateProgram;
+static PFNGLDELETEPROGRAMPROC _glDeleteProgram;
+static PFNGLLINKPROGRAMPROC _glLinkProgram;
+static PFNGLUSEPROGRAMPROC _glUseProgram;
+static PFNGLGETPROGRAMIVPROC _glGetProgramiv;
+static PFNGLGETPROGRAMINFOLOGPROC _glGetProgramInfoLog;
+static PFNGLCREATESHADERPROC _glCreateShader;
+static PFNGLDELETESHADERPROC _glDeleteShader;
+static PFNGLSHADERSOURCEPROC _glShaderSource;
+static PFNGLCOMPILESHADERPROC _glCompileShader;
+static PFNGLATTACHSHADERPROC _glAttachShader;
+static PFNGLGETSHADERIVPROC _glGetShaderiv;
+static PFNGLGETSHADERINFOLOGPROC _glGetShaderInfoLog;
+static PFNGLGETUNIFORMLOCATIONPROC _glGetUniformLocation;
+static PFNGLUNIFORM1IPROC _glUniform1i;
 
 /** A simple 2D vertex with just position and texture. */
 struct Simple2DVertex {
@@ -171,6 +190,49 @@ static bool BindVBAExtension()
 	return _glGenVertexArrays != nullptr && _glDeleteVertexArrays != nullptr && _glBindVertexArray != nullptr;
 }
 
+/** Bind extension functions for shader support. */
+static bool BindShaderExtensions()
+{
+	if (IsOpenGLVersionAtLeast(2, 0)) {
+		_glCreateProgram = (PFNGLCREATEPROGRAMPROC)GetOGLProcAddress("glCreateProgram");
+		_glDeleteProgram = (PFNGLDELETEPROGRAMPROC)GetOGLProcAddress("glDeleteProgram");
+		_glLinkProgram = (PFNGLLINKPROGRAMPROC)GetOGLProcAddress("glLinkProgram");
+		_glUseProgram = (PFNGLUSEPROGRAMPROC)GetOGLProcAddress("glUseProgram");
+		_glGetProgramiv = (PFNGLGETPROGRAMIVPROC)GetOGLProcAddress("glGetProgramiv");
+		_glGetProgramInfoLog = (PFNGLGETPROGRAMINFOLOGPROC)GetOGLProcAddress("glGetProgramInfoLog");
+		_glCreateShader = (PFNGLCREATESHADERPROC)GetOGLProcAddress("glCreateShader");
+		_glDeleteShader = (PFNGLDELETESHADERPROC)GetOGLProcAddress("glDeleteShader");
+		_glShaderSource = (PFNGLSHADERSOURCEPROC)GetOGLProcAddress("glShaderSource");
+		_glCompileShader = (PFNGLCOMPILESHADERPROC)GetOGLProcAddress("glCompileShader");
+		_glAttachShader = (PFNGLATTACHSHADERPROC)GetOGLProcAddress("glAttachShader");
+		_glGetShaderiv = (PFNGLGETSHADERIVPROC)GetOGLProcAddress("glGetShaderiv");
+		_glGetShaderInfoLog = (PFNGLGETSHADERINFOLOGPROC)GetOGLProcAddress("glGetShaderInfoLog");
+		_glGetUniformLocation = (PFNGLGETUNIFORMLOCATIONPROC)GetOGLProcAddress("glGetUniformLocation");
+		_glUniform1i = (PFNGLUNIFORM1IPROC)GetOGLProcAddress("glUniform1i");
+	} else {
+		/* In the ARB extension programs and shaders are in the same object space. */
+		_glCreateProgram = (PFNGLCREATEPROGRAMPROC)GetOGLProcAddress("glCreateProgramObjectARB");
+		_glDeleteProgram = (PFNGLDELETEPROGRAMPROC)GetOGLProcAddress("glDeleteObjectARB");
+		_glLinkProgram = (PFNGLLINKPROGRAMPROC)GetOGLProcAddress("glLinkProgramARB");
+		_glUseProgram = (PFNGLUSEPROGRAMPROC)GetOGLProcAddress("glUseProgramObjectARB");
+		_glGetProgramiv = (PFNGLGETPROGRAMIVPROC)GetOGLProcAddress("glGetObjectParameterivARB");
+		_glGetProgramInfoLog = (PFNGLGETPROGRAMINFOLOGPROC)GetOGLProcAddress("glGetInfoLogARB");
+		_glCreateShader = (PFNGLCREATESHADERPROC)GetOGLProcAddress("glCreateShaderObjectARB");
+		_glDeleteShader = (PFNGLDELETESHADERPROC)GetOGLProcAddress("glDeleteObjectARB");
+		_glShaderSource = (PFNGLSHADERSOURCEPROC)GetOGLProcAddress("glShaderSourceARB");
+		_glCompileShader = (PFNGLCOMPILESHADERPROC)GetOGLProcAddress("glCompileShaderARB");
+		_glAttachShader = (PFNGLATTACHSHADERPROC)GetOGLProcAddress("glAttachObjectARB");
+		_glGetShaderiv = (PFNGLGETSHADERIVPROC)GetOGLProcAddress("glGetObjectParameterivARB");
+		_glGetShaderInfoLog = (PFNGLGETSHADERINFOLOGPROC)GetOGLProcAddress("glGetInfoLogARB");
+		_glGetUniformLocation = (PFNGLGETUNIFORMLOCATIONPROC)GetOGLProcAddress("glGetUniformLocationARB");
+		_glUniform1i = (PFNGLUNIFORM1IPROC)GetOGLProcAddress("glUniform1iARB");
+	}
+
+	return _glCreateProgram != nullptr && _glDeleteProgram != nullptr && _glLinkProgram != nullptr && _glGetProgramiv != nullptr && _glGetProgramInfoLog != nullptr &&
+		_glCreateShader != nullptr && _glDeleteShader != nullptr && _glShaderSource != nullptr && _glCompileShader != nullptr && _glAttachShader != nullptr &&
+		_glGetShaderiv != nullptr && _glGetShaderInfoLog != nullptr && _glGetUniformLocation != nullptr && _glUniform1i != nullptr;
+}
+
 /** Callback to receive OpenGL debug messages. */
 void APIENTRY DebugOutputCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *userParam)
 {
@@ -261,6 +323,9 @@ OpenGLBackend::OpenGLBackend()
  */
 OpenGLBackend::~OpenGLBackend()
 {
+	if (_glDeleteProgram != nullptr) {
+		_glDeleteProgram(this->vid_program);
+	}
 	if (_glDeleteVertexArrays != nullptr) _glDeleteVertexArrays(1, &this->vao_quad);
 	if (_glDeleteBuffers != nullptr) {
 		_glDeleteBuffers(1, &this->vbo_quad);
@@ -302,6 +367,13 @@ const char *OpenGLBackend::Init()
 	/* Check for vertex array objects. */
 	if (!IsOpenGLVersionAtLeast(3, 0) && (!IsOpenGLExtensionSupported("GL_ARB_vertex_array_object") || !IsOpenGLExtensionSupported("GL_APPLE_vertex_array_object"))) return "Vertex array objects not supported";
 	if (!BindVBAExtension()) return "Failed to bind VBA extension functions";
+	/* Check for shader objects. */
+	if (!IsOpenGLVersionAtLeast(2, 0) && (!IsOpenGLExtensionSupported("GL_ARB_shader_objects") || !IsOpenGLExtensionSupported("GL_ARB_fragment_shader") || !IsOpenGLExtensionSupported("GL_ARB_vertex_shader"))) return "No shader support";
+	if (!BindShaderExtensions()) return "Failed to bind shader extension functions";
+
+	DEBUG(driver, 2, "OpenGL shading language version: %s", (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION));
+
+	if (!this->InitShaders()) return "Failed to initialize shaders";
 
 	/* Setup video buffer texture. */
 	glGenTextures(1, &this->vid_texture);
@@ -313,6 +385,11 @@ const char *OpenGLBackend::Init()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	glBindTexture(GL_TEXTURE_2D, 0);
 	if (glGetError() != GL_NO_ERROR) return "Can't generate video buffer texture";
+
+	/* Bind texture to shader program. */
+	GLint tex_location = _glGetUniformLocation(this->vid_program, "colour_tex");
+	_glUseProgram(this->vid_program);
+	_glUniform1i(tex_location, 0); // Texture unit 0.
 
 	/* Create pixel buffer object as video buffer storage. */
 	_glGenBuffers(1, &this->vid_pbo);
@@ -338,6 +415,7 @@ const char *OpenGLBackend::Init()
 	_glBindBuffer(GL_ARRAY_BUFFER, this->vbo_quad);
 	_glBufferData(GL_ARRAY_BUFFER, sizeof(vert_array), vert_array, GL_STATIC_DRAW);
 	if (glGetError() != GL_NO_ERROR) return "Can't generate VBO for fullscreen quad";
+
 	/* Set vertex state. */
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -347,10 +425,86 @@ const char *OpenGLBackend::Init()
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glDisable(GL_DEPTH_TEST);
-	glEnable(GL_TEXTURE_2D);
 	(void)glGetError(); // Clear errors.
 
 	return nullptr;
+}
+
+/**
+ * Check a shader for compilation errors and log them if necessary.
+ * @param shader Shader to check.
+ * @return True if the shader is valid.
+ */
+static bool VerifyShader(GLuint shader)
+{
+	static ReusableBuffer<char> log_buf;
+
+	GLint result = GL_FALSE;
+	_glGetShaderiv(shader, GL_COMPILE_STATUS, &result);
+
+	/* Output log if there is one. */
+	GLint log_len = 0;
+	_glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_len);
+	if (log_len > 0) {
+		_glGetShaderInfoLog(shader, log_len, nullptr, log_buf.Allocate(log_len));
+		DEBUG(driver, result != GL_TRUE ? 0 : 2, "%s", log_buf.GetBuffer()); // Always print on failure.
+	}
+
+	return result == GL_TRUE;
+}
+
+/**
+ * Check a program for link errors and log them if necessary.
+ * @param program Program to check.
+ * @return True if the program is valid.
+ */
+static bool VerifyProgram(GLuint program)
+{
+	static ReusableBuffer<char> log_buf;
+
+	GLint result = GL_FALSE;
+	_glGetProgramiv(program, GL_LINK_STATUS, &result);
+
+	/* Output log if there is one. */
+	GLint log_len = 0;
+	_glGetProgramiv(program, GL_INFO_LOG_LENGTH, &log_len);
+	if (log_len > 0) {
+		_glGetProgramInfoLog(program, log_len, nullptr, log_buf.Allocate(log_len));
+		DEBUG(driver, result != GL_TRUE ? 0 : 2, "%s", log_buf.GetBuffer()); // Always print on failure.
+	}
+
+	return result == GL_TRUE;
+}
+
+/**
+ * Create all needed shader programs.
+ * @return True if successful, false otherwise.
+ */
+bool OpenGLBackend::InitShaders()
+{
+	/* Create vertex shader. */
+	GLuint vert_shader = _glCreateShader(GL_VERTEX_SHADER);
+	_glShaderSource(vert_shader, lengthof(_vertex_shader_direct), _vertex_shader_direct, nullptr);
+	_glCompileShader(vert_shader);
+	if (!VerifyShader(vert_shader)) return false;
+
+	/* Create fragment shader. */
+	GLuint frag_shader = _glCreateShader(GL_FRAGMENT_SHADER);
+	_glShaderSource(frag_shader, lengthof(_frag_shader_direct), _frag_shader_direct, nullptr);
+	_glCompileShader(frag_shader);
+	if (!VerifyShader(frag_shader)) return false;
+
+	/* Link shaders to program. */
+	this->vid_program = _glCreateProgram();
+	_glAttachShader(this->vid_program, vert_shader);
+	_glAttachShader(this->vid_program, frag_shader);
+	_glLinkProgram(this->vid_program);
+	if (!VerifyProgram(this->vid_program)) return false;
+
+	_glDeleteShader(vert_shader);
+	_glDeleteShader(frag_shader);
+
+	return true;
 }
 
 /**
@@ -393,6 +547,7 @@ void OpenGLBackend::Paint()
 
 	/* Blit video buffer to screen. */
 	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
+	_glUseProgram(this->vid_program);
 	_glBindVertexArray(this->vao_quad);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }

@@ -85,3 +85,8 @@ add_files(
     unicode.h
     water_land.h
 )
+
+add_files(
+    opengl_shader.h
+    CONDITION OPENGL_FOUND
+)

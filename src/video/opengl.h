@@ -28,6 +28,7 @@ private:
 
 	GLuint vid_pbo;     ///< Pixel buffer object storing the memory used for the video driver to draw to.
 	GLuint vid_texture; ///< Texture handle for the video buffer texture.
+	GLuint vid_program; ///< Shader program for rendering the video buffer.
 	GLuint vao_quad;    ///< Vertex array object storing the rendering state for the fullscreen quad.
 	GLuint vbo_quad;    ///< Vertex buffer with a fullscreen quad.
 
@@ -35,6 +36,7 @@ private:
 	~OpenGLBackend();
 
 	const char *Init();
+	bool InitShaders();
 
 public:
 	/** Get singleton instance of this class. */
