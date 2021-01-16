@@ -20,6 +20,17 @@ static const char *_vertex_shader_direct[] = {
 	"}",
 };
 
+/** GLSL 1.50 vertex shader that just passes colour and tex coords through. */
+static const char *_vertex_shader_direct_150[] = {
+	"#version 150\n",
+	"in vec2 position, colour_uv;",
+	"out vec2 colour_tex_uv;",
+	"void main() {",
+	"  colour_tex_uv = colour_uv;",
+	"  gl_Position = vec4(position, 0.0, 1.0);",
+	"}",
+};
+
 /** Fragment shader that reads the fragment colour from a 32bpp texture. */
 static const char *_frag_shader_direct[] = {
 	"#version 110\n",
@@ -27,5 +38,16 @@ static const char *_frag_shader_direct[] = {
 	"varying vec2 colour_tex_uv;",
 	"void main() {",
 	"  gl_FragColor = texture2D(colour_tex, colour_tex_uv);",
+	"}",
+};
+
+/** GLSL 1.50 fragment shader that reads the fragment colour from a 32bpp texture. */
+static const char *_frag_shader_direct_150[] = {
+	"#version 150\n",
+	"uniform sampler2D colour_tex;",
+	"in vec2 colour_tex_uv;",
+	"out vec4 colour;",
+	"void main() {",
+	"  colour = texture(colour_tex, colour_tex_uv);",
 	"}",
 };

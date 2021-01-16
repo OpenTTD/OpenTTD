@@ -500,15 +500,23 @@ static bool VerifyProgram(GLuint program)
  */
 bool OpenGLBackend::InitShaders()
 {
+	const char *ver = (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION);
+	if (ver == nullptr) return false;
+
+	int glsl_major  = ver[0] - '0';
+	int glsl_minor = ver[2] - '0';
+
+	bool glsl_150 = (IsOpenGLVersionAtLeast(3, 2) || glsl_major > 1 || (glsl_major == 1 && glsl_minor >= 5));
+
 	/* Create vertex shader. */
 	GLuint vert_shader = _glCreateShader(GL_VERTEX_SHADER);
-	_glShaderSource(vert_shader, lengthof(_vertex_shader_direct), _vertex_shader_direct, nullptr);
+	_glShaderSource(vert_shader, glsl_150 ? lengthof(_vertex_shader_direct_150) : lengthof(_vertex_shader_direct), glsl_150 ? _vertex_shader_direct_150 : _vertex_shader_direct, nullptr);
 	_glCompileShader(vert_shader);
 	if (!VerifyShader(vert_shader)) return false;
 
 	/* Create fragment shader. */
 	GLuint frag_shader = _glCreateShader(GL_FRAGMENT_SHADER);
-	_glShaderSource(frag_shader, lengthof(_frag_shader_direct), _frag_shader_direct, nullptr);
+	_glShaderSource(frag_shader, glsl_150 ? lengthof(_frag_shader_direct_150) : lengthof(_frag_shader_direct), glsl_150 ? _frag_shader_direct_150 : _frag_shader_direct, nullptr);
 	_glCompileShader(frag_shader);
 	if (!VerifyShader(frag_shader)) return false;
 
