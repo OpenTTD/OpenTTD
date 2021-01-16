@@ -12,9 +12,11 @@
 /** Vertex shader that just passes colour and tex coords through. */
 static const char *_vertex_shader_direct[] = {
 	"#version 110\n",
+	"attribute vec2 position, colour_uv;",
+	"varying vec2 colour_tex_uv;",
 	"void main() {",
-	"  gl_TexCoord[0] = gl_MultiTexCoord0;",
-	"  gl_Position = gl_Vertex;",
+	"  colour_tex_uv = colour_uv;",
+	"  gl_Position = vec4(position, 0.0, 1.0);",
 	"}",
 };
 
@@ -22,7 +24,8 @@ static const char *_vertex_shader_direct[] = {
 static const char *_frag_shader_direct[] = {
 	"#version 110\n",
 	"uniform sampler2D colour_tex;",
+	"varying vec2 colour_tex_uv;",
 	"void main() {",
-	"  gl_FragColor = texture2D(colour_tex, gl_TexCoord[0].st);",
+	"  gl_FragColor = texture2D(colour_tex, colour_tex_uv);",
 	"}",
 };
