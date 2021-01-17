@@ -73,24 +73,24 @@ static Palette _local_palette;
 
 static void MakePalette()
 {
+	_cur_palette.first_dirty = 0;
+	_cur_palette.count_dirty = 256;
+	_local_palette = _cur_palette;
+
 	LOGPALETTE *pal = (LOGPALETTE*)alloca(sizeof(LOGPALETTE) + (256 - 1) * sizeof(PALETTEENTRY));
 
 	pal->palVersion = 0x300;
 	pal->palNumEntries = 256;
 
 	for (uint i = 0; i != 256; i++) {
-		pal->palPalEntry[i].peRed   = _cur_palette.palette[i].r;
-		pal->palPalEntry[i].peGreen = _cur_palette.palette[i].g;
-		pal->palPalEntry[i].peBlue  = _cur_palette.palette[i].b;
+		pal->palPalEntry[i].peRed   = _local_palette.palette[i].r;
+		pal->palPalEntry[i].peGreen = _local_palette.palette[i].g;
+		pal->palPalEntry[i].peBlue  = _local_palette.palette[i].b;
 		pal->palPalEntry[i].peFlags = 0;
 
 	}
 	_wnd.gdi_palette = CreatePalette(pal);
 	if (_wnd.gdi_palette == nullptr) usererror("CreatePalette failed!\n");
-
-	_cur_palette.first_dirty = 0;
-	_cur_palette.count_dirty = 256;
-	_local_palette = _cur_palette;
 }
 
 static void UpdatePalette(HDC dc, uint start, uint count)
