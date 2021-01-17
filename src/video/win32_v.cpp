@@ -1241,7 +1241,7 @@ void VideoDriver_Win32::MainLoop()
 
 			/* Release the thread while sleeping */
 			if (_draw_threaded) draw_lock.unlock();
-			Sleep(1);
+			CSleep(1);
 			if (_draw_threaded) draw_lock.lock();
 
 			NetworkDrawChatMessage();
