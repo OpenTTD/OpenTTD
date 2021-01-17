@@ -186,10 +186,11 @@ struct VehicleSpriteSeq {
  * or calculating the viewport.
  */
 struct MutableSpriteCache {
-	Direction last_direction;         ///< Last direction we obtained sprites for
-	bool is_viewport_candidate;       ///< The vehicle has been in the hash for a shown viewport recently
-	bool sprite_has_viewport_changes; ///< There have been viewport changes since the sprite was last updated
-	VehicleSpriteSeq sprite_seq;      ///< Vehicle appearance.
+	Direction last_direction;     ///< Last direction we obtained sprites for
+	bool revalidate_before_draw;  ///< We need to do a GetImage() and check bounds before drawing this sprite
+	Rect old_coord;               ///< Co-ordinates from the last valid bounding box
+	bool is_viewport_candidate;   ///< This vehicle can potentially be drawn on a viewport
+	VehicleSpriteSeq sprite_seq;  ///< Vehicle appearance.
 };
 
 /** A vehicle pool for a little over 1 million vehicles. */
@@ -251,7 +252,7 @@ public:
 
 	CargoPayment *cargo_payment;        ///< The cargo payment we're currently in
 
-	Rect coord;                         ///< NOSAVE: Graphical bounding box of the vehicle, i.e. what to redraw on moves.
+	mutable Rect coord;                 ///< NOSAVE: Graphical bounding box of the vehicle, i.e. what to redraw on moves.
 
 	Vehicle *hash_viewport_next;        ///< NOSAVE: Next vehicle in the visual location hash.
 	Vehicle **hash_viewport_prev;       ///< NOSAVE: Previous vehicle in the visual location hash.
@@ -768,8 +769,9 @@ public:
 
 	void UpdatePosition();
 	void UpdateViewport(bool dirty);
+	void UpdateBoundingBoxCoordinates(bool update_cache) const;
 	void UpdatePositionAndViewport();
-	void MarkAllViewportsDirty() const;
+	bool MarkAllViewportsDirty() const;
 
 	inline uint16 GetServiceInterval() const { return this->service_interval; }
 
@@ -1206,14 +1208,14 @@ struct SpecializedVehicle : public Vehicle {
 			}
 
 			this->sprite_cache.last_direction = this->direction;
-			this->sprite_cache.is_viewport_candidate = false;
-			this->sprite_cache.sprite_has_viewport_changes = false;
+			this->sprite_cache.revalidate_before_draw = false;
 		} else {
 			/*
-			 * Changes could still be relevant when we render the vehicle even if
-			 * they don't alter the bounding box
+			 * A change that could potentially invalidate the sprite has been
+			 * made, signal that we should still resolve it before drawing on a
+			 * viewport.
 			 */
-			this->sprite_cache.sprite_has_viewport_changes = true;
+			this->sprite_cache.revalidate_before_draw = true;
 		}
 
 		if (force_update || sprite_has_changed) {

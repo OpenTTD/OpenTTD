@@ -179,7 +179,7 @@ struct ViewportDrawer {
 	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixel offset for ground sprites on the foundations.
 };
 
-static void MarkViewportDirty(const Viewport *vp, int left, int top, int right, int bottom);
+static bool MarkViewportDirty(const Viewport *vp, int left, int top, int right, int bottom);
 
 static ViewportDrawer _vd;
 
@@ -1903,27 +1903,28 @@ void UpdateViewportPosition(Window *w)
  * @param top    Top edge of area to repaint
  * @param right  Right edge of area to repaint
  * @param bottom Bottom edge of area to repaint
+ * @return true if the viewport contains a dirty block
  * @ingroup dirty
  */
-static void MarkViewportDirty(const Viewport *vp, int left, int top, int right, int bottom)
+static bool MarkViewportDirty(const Viewport *vp, int left, int top, int right, int bottom)
 {
 	/* Rounding wrt. zoom-out level */
 	right  += (1 << vp->zoom) - 1;
 	bottom += (1 << vp->zoom) - 1;
 
 	right -= vp->virtual_left;
-	if (right <= 0) return;
+	if (right <= 0) return false;
 
 	bottom -= vp->virtual_top;
-	if (bottom <= 0) return;
+	if (bottom <= 0) return false;
 
 	left = std::max(0, left - vp->virtual_left);
 
-	if (left >= vp->virtual_width) return;
+	if (left >= vp->virtual_width) return false;
 
 	top = std::max(0, top - vp->virtual_top);
 
-	if (top >= vp->virtual_height) return;
+	if (top >= vp->virtual_height) return false;
 
 	AddDirtyBlock(
 		UnScaleByZoomLower(left, vp->zoom) + vp->left,
@@ -1931,6 +1932,8 @@ static void MarkViewportDirty(const Viewport *vp, int left, int top, int right, 
 		UnScaleByZoom(right, vp->zoom) + vp->left + 1,
 		UnScaleByZoom(bottom, vp->zoom) + vp->top + 1
 	);
+
+	return true;
 }
 
 /**
@@ -1939,18 +1942,23 @@ static void MarkViewportDirty(const Viewport *vp, int left, int top, int right, 
  * @param top    Top    edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
  * @param right  Right  edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
  * @param bottom Bottom edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
+ * @return true if at least one viewport has a dirty block
  * @ingroup dirty
  */
-void MarkAllViewportsDirty(int left, int top, int right, int bottom)
+bool MarkAllViewportsDirty(int left, int top, int right, int bottom)
 {
+	bool dirty = false;
+
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
 		Viewport *vp = w->viewport;
 		if (vp != nullptr) {
 			assert(vp->width != 0);
-			MarkViewportDirty(vp, left, top, right, bottom);
+			if (MarkViewportDirty(vp, left, top, right, bottom)) dirty = true;
 		}
 	}
+
+	return dirty;
 }
 
 void ConstrainAllViewportsZoom()

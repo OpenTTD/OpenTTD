@@ -470,6 +470,7 @@ void AfterLoadVehicles(bool part_of_load)
 
 		v->UpdateDeltaXY();
 		v->coord.left = INVALID_COORD;
+		v->sprite_cache.old_coord.left = INVALID_COORD;
 		v->UpdatePosition();
 		v->UpdateViewport(false);
 	}
