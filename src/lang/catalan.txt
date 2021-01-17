@@ -748,6 +748,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terreny irregular
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Gespa
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terreny erm
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Selva tropical
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Camps de conreu
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Arbres
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Roques
@@ -2631,6 +2632,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Seleccio
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informació del terreny
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centra la vista principal al lloc on està la casella. Amb Ctrl+clic s'obre una vista nova al lloc de la casella.
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Cost de neteja: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Cost de neteja: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Ingressos en netejar: {LTBLUE}{CURRENCY_LONG}
@@ -3758,6 +3760,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centra la vista principal al lloc on està el tren. Si feu doble clic, se'l seguirà a la vista principal. Amb Ctrl+clic s'obre una vista nova al lloc on està el tren.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centra la vista principal al lloc on està el vehicle. Si feu doble clic, se'l seguirà a la vista principal. Amb Ctrl+clic s'obre una vista nova al lloc on està el vehicle.
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centra la vista principal al lloc on està el vaixell. Si feu doble clic, se'l seguirà a la vista principal. Amb Ctrl+clic s'obre una vista nova al lloc on està el vaixell.
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centra la vista principal al lloc on està l'aeronau. Si feu doble clic, se la seguirà a la vista principal. Amb Ctrl+clic s'obre una vista nova al lloc on està l'aeronau.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Envia el tren a cotxera
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Envia el vehicle a cotxera
@@ -3789,7 +3795,12 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Mostra e
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Mostra els detalls del vaixell
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Mostra els detalls de l'avió
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Acció actual del tren - Feu clic per parar-lo o engegar-lo.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Acció actual del vehicle - Feu clic per parar-lo o engegar-lo.
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Acció actual del vaixell - Feu clic per parar-lo o engegar-lo.
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Acció actual de l'aeronau - Feu clic per parar-la o engegar-la.
 
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centra la vista principal a la destinació de l'ordre. Amb Ctrl+clic s'obre una vista nova al lloc de la destinació de l'ordre.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Carregant / Descarregant
