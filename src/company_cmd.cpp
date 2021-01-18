@@ -863,9 +863,16 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		}
 
 		case CCA_NEW_AI: { // Make a new AI company
+			if (company_id != INVALID_COMPANY && company_id >= MAX_COMPANIES) return CMD_ERROR;
+
+			/* For network games, company deletion is delayed. */
+			if (!_networking && company_id != INVALID_COMPANY && Company::IsValidID(company_id)) return CMD_ERROR;
+
 			if (!(flags & DC_EXEC)) return CommandCost();
 
-			if (company_id != INVALID_COMPANY && (company_id >= MAX_COMPANIES || Company::IsValidID(company_id))) return CMD_ERROR;
+			/* For network game, just assume deletion happened. */
+			assert(company_id == INVALID_COMPANY || !Company::IsValidID(company_id));
+
 			Company *c = DoStartupNewCompany(true, company_id);
 			if (c != nullptr) NetworkServerNewCompany(c, nullptr);
 			break;
@@ -874,6 +881,9 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		case CCA_DELETE: { // Delete a company
 			CompanyRemoveReason reason = (CompanyRemoveReason)GB(p1, 24, 8);
 			if (reason >= CRR_END) return CMD_ERROR;
+
+			/* We can't delete the last existing company in offline mode. */
+			if (!_networking && Company::GetNumItems() == 1) return CMD_ERROR;
 
 			Company *c = Company::GetIfValid(company_id);
 			if (c == nullptr) return CMD_ERROR;
