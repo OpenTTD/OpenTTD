@@ -612,6 +612,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		     SLE_VAR(Vehicle, cur_speed,             SLE_UINT16),
 		     SLE_VAR(Vehicle, subspeed,              SLE_UINT8),
 		     SLE_VAR(Vehicle, acceleration,          SLE_UINT8),
+		 SLE_CONDVAR(Vehicle, motion_counter,        SLE_UINT32,                   SLV_VEH_MOTION_COUNTER, SL_MAX_VERSION),
 		     SLE_VAR(Vehicle, progress,              SLE_UINT8),
 
 		     SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
