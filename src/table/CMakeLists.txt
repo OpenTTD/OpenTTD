@@ -14,7 +14,6 @@ add_files(
     control_codes.h
     elrail_data.h
     engines.h
-    genland.h
     heightmap_colours.h
     industry_land.h
     landscape_sprite.h
