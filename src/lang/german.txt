@@ -748,6 +748,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Unebenes Land
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Wiesen
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Kahles Land
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Regenwald
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Ackerland
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Bäume
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Felsen
@@ -779,6 +780,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Zeige al
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Letzte Nachricht oder letzten Bericht anzeigen
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  ANGEHALTEN  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  PAUSE (warte auf Aktualisierung des Verteilungsgraphen) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Autosicherung
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPEICHERE SPIEL  *  *
 
@@ -840,7 +842,7 @@ STR_NEWS_END_OF_RECESSION                                       :{BLACK}{BIG_FON
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_GENERAL                   :{BIG_FONT}{BLACK}{INDUSTRY} {G 0 erhöht erhöht erhöht erhöhen} die Produktion!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_COAL                      :{BIG_FONT}{BLACK}Neue Kohlevorkommen bei {INDUSTRY} gefunden!{}Förderung verdoppelt!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_OIL                       :{BIG_FONT}{BLACK}Neue Ölfunde bei {INDUSTRY}!{}Förderung wird vermutlich verdoppelt!
-STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Neue Getreideanbaumethoden bei {INDUSTRY} werden Erträge verdoppeln!
+STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_FARM                      :{BIG_FONT}{BLACK}Neue Anbaumethoden bei {INDUSTRY} werden Erträge verdoppeln!
 STR_NEWS_INDUSTRY_PRODUCTION_INCREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}produktion von {INDUSTRY} erhöht sich um {COMMA}%!
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_GENERAL                   :{BIG_FONT}{BLACK}Produktion bei {INDUSTRY} sinkt um 50%
 STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_FARM                      :{BIG_FONT}{BLACK}Insektenplage bei {INDUSTRY} verursacht Schaden!{}Produktion sinkt um 50%
@@ -1066,7 +1068,7 @@ STR_NUM_VERY_LOW                                                :Sehr niedrig
 STR_NUM_LOW                                                     :Niedrig
 STR_NUM_NORMAL                                                  :Normal
 STR_NUM_HIGH                                                    :Hoch
-STR_NUM_CUSTOM                                                  :Eigene
+STR_NUM_CUSTOM                                                  :Individuell
 STR_NUM_CUSTOM_NUMBER                                           :Individuell ({NUM})
 
 STR_VARIETY_NONE                                                :Minimal
@@ -1091,7 +1093,7 @@ STR_SEA_LEVEL_CUSTOM_PERCENTAGE                                 :Individuell ({N
 
 STR_RIVERS_NONE                                                 :Keine
 STR_RIVERS_FEW                                                  :Wenige
-STR_RIVERS_MODERATE                                             :einige
+STR_RIVERS_MODERATE                                             :Einige
 STR_RIVERS_LOT                                                  :Viele
 
 STR_DISASTER_NONE                                               :Keine
@@ -1340,7 +1342,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rauheit des Gel
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(nur TerraGenesis) Wähle die Häufigkeit von Hügeln: Rollende Landschaften haben wenige, weit verteilte Hügel. Zerklüftete Landschaften haben viele Hügel, was wiederum sich wiederholend aussehen kann
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr eben
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Eben
-STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :zerklüftet
+STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Zerklüftet
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr zerklüftet
 STR_CONFIG_SETTING_VARIETY                                      :Größe der Geländeformen: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(nur TerraGenesis) Beinflusst, ob die Karte sowohl bergige als auch ebene Gegenden enthält. Weil dieses die Karte nur ebener macht, sollten andere Einstellungen auf bergig gesetzt werden
@@ -2232,6 +2234,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} is
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} hat eine neue Firma gegründet (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} hat das Spiel verlassen ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hat seinen/ihren Namen in {STRING} geändert
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gab {2:CURRENCY_LONG} an {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Der Server hat das Spiel beendet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Der Server startet neu...{}Bitte warten...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} wurde vom Server hinausgeworfen. Grund: ({STRING})
@@ -2629,6 +2632,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Industri
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Gebietsinformation
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Zentriert die Hauptansicht an der Kachelposition. Strg+Klick öffnet ein neues Ansichtsfenster an der Kachelposition
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Räumungskosten: {LTBLUE}Keine
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Räumungskosten: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Einnahmen beim Abriss: {LTBLUE}{CURRENCY_LONG}
@@ -2790,6 +2794,7 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Grafik-R
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}Kartenansichten:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Videoausgabe:
 STR_FRAMERATE_SOUND                                             :{BLACK}Sound-Abmischung:
+STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/AI-Skripte gesamt:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK}   Script:
 STR_FRAMERATE_AI                                                :{BLACK} KI {NUM} {STRING}
 ############ End of leave-in-this-order
@@ -2806,6 +2811,7 @@ STR_FRAMETIME_CAPTION_DRAWING                                   :Grafik-Renderin
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Karten-Rendering
 STR_FRAMETIME_CAPTION_VIDEO                                     :Videoausgabe
 STR_FRAMETIME_CAPTION_SOUND                                     :Sound-Abmischung
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI-Skripte gesamt
 STR_FRAMETIME_CAPTION_GAMESCRIPT                                :Spielskript
 STR_FRAMETIME_CAPTION_AI                                        :KI {NUM} {STRING}
 ############ End of leave-in-this-order
@@ -3097,6 +3103,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Umschalt
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Schildtext ändern
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Hauptansicht auf Schildposition zentrieren. Strg+Klick öffnet ein neues Ansichtsfenster auf der Position des Schildes
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Zum nächsten Schild wechseln
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Zum vorherigen Schild wechseln
 
@@ -3414,6 +3421,7 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Keine -
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportiert){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} und {NUM} weitere...
@@ -3752,6 +3760,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ursprün
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Zentriert die Hauptansicht auf die Position des Zuges. Durch Doppelklick wird der Zug in der Hauptansicht verfolgt. Strg+Klick öffnet ein neues Ansichtsfenster auf der Position des Zuges
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Zentriert die Hauptansicht auf den Standort des Fahrzeugs. Durch Doppelklick wird das Fahrzeug in der Hauptansicht verfolgt. Strg+Klick öffnet ein neues Ansichtsfenster an der Position des Fahrzeugs
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Zentriert die Hauptansicht auf die Position des Schiffs. Mit Doppelklick wird das Schiff in der Hauptansicht verfolgt. Strg+Klick öffnet ein neues Ansichtsfenster auf der Position des Schiffs
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Zentriert die Hauptansicht auf die Position des Flugzeugs. Durch Doppelklick wird das Flugzeug in der Hauptansicht verfolgt. Strg+Klick öffnet ein neues Ansichtsfenster auf der Position des Flugzeugs
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Zug ins Depot schicken. Strg+Klick, um dort nur Wartung durchzuführen
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Das Fahrzeug ins Depot schicken. Strg+Klick, um dort nur Wartung durchzuführen
@@ -3783,7 +3795,12 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Einzelhe
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zeige Einzelheiten des Schiffes
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zeige Einzelheiten des Flugzeuges
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Momentane Zugaktion - Klicken zum Starten/Anhalten des Zuges
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Momentane Fahrzeugaktion - Klicken zum Starten/Anhalten des Fahrzeugs
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Momentane Schiffsaktion - Klicken zum Starten/Anhalten des Schiffs
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Momentane Flugzeugaktion - Klicken zum Starten/Anhalten des Flugzeugs
 
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Hauptansicht auf Auftragsziel zentrieren. Strg+Klick öffnet ein neues Ansichtsfenster auf dem Standort des Auftragsziels
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Laden / Entladen
@@ -4011,6 +4028,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(auf {STRING} u
 STR_ORDER_STOP_ORDER                                            :(Stopp)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Station unbenutzbar){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Implizit)
 
@@ -4377,7 +4395,7 @@ STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kann
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kann nur unterhalb der Schneegrenze errichtet werden
 
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Es konnten für die Industrie '{STRING}' keine geeigneten Standorte gefunden werden
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Ändere die Karteneinstellungen, um eine bessere Karte zu erzeugen
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Karteneinstellungen ändern, um eine bessere Karte zu erzeugen
 
 # Station construction related errors
 STR_ERROR_CAN_T_BUILD_RAILROAD_STATION                          :{WHITE}Bahnhof kann hier nicht gebaut werden...

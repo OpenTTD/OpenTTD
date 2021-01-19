@@ -383,7 +383,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT                        :{BLACK}Пока
 
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP                   :{BLACK}Если эта кнопка нажата, скрытые модели локомотивов и вагонов также будут показаны
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_ROAD_VEHICLE_TOOLTIP            :{BLACK}Если эта кнопка нажата, скрытые модели автомобилей также будут показаны
-STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Если эта кнопка нажата, скрытые модели кораблей также будут показаны
+STR_SHOW_HIDDEN_ENGINES_VEHICLE_SHIP_TOOLTIP                    :{BLACK}Если эта кнопка нажата, скрытые модели судов также будут показаны
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Если эта кнопка нажата, скрытые модели воздушных судов также будут показаны
 
 # Query window
@@ -467,7 +467,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Пока
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Список существующих предприятий; создание новых
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Список поездов. Ctrl+щелчок переключает отображение по группам.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Список автотранспорта. Ctrl+щелчок переключает отображение по группам.
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Список кораблей. Ctrl+щелчок переключает отображение по группам.
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Список судов. Ctrl+щелчок переключает отображение по группам.
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Список авиатранспорта. Ctrl+щелчок переключает отображение по группам.
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Приблизить
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Отдалить
@@ -486,8 +486,8 @@ STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Пере
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Сохранение/загрузка сценария, выход из редактора, выход
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
 STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Редактор сценариев
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Уменьшить год начала игры на 1
-STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Увеличить год начала игры на 1
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Начать игру на 1 год раньше
+STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Начать игру на 1 год позже
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Нажмите, чтобы изменить год начала игры
 STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Показать карту; список городов
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Создание ландшафта
@@ -940,7 +940,7 @@ STR_NEWS_FIRST_BUS_ARRIVAL                                      :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_TRUCK_ARRIVAL                                    :{BIG_FONT}{BLACK}Жители празднуют!{}Первый грузовик прибыл на терминал {STATION}!
 STR_NEWS_FIRST_PASSENGER_TRAM_ARRIVAL                           :{BIG_FONT}{BLACK}Жители празднуют!{}Первый трамвай прибыл на {STATION}!
 STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}Жители празднуют!{}Первый грузовой трамвай прибыл на {STATION}!
-STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Жители празднуют!{}Первый корабль причалил к {STATION}!
+STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLACK}Жители празднуют!{}Первое судно причалило к {STATION}!
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Жители празднуют!{}Первый самолёт прибыл в {STATION}!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}Столкновение поездов!{}{COMMA} человек{P "" а ""} погиб{P "" ло ло} в результате крушения!
@@ -978,7 +978,7 @@ STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLAC
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING} закрывается из-за проблем с поставками сырья!
 STR_NEWS_INDUSTRY_CLOSURE_LACK_OF_TREES                         :{BIG_FONT}{BLACK}«{STRING}» объявляет о закрытии в связи с полной вырубкой близлежащих лесов!
 
-STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
+STR_NEWS_EURO_INTRODUCTION                                      :{BIG_FONT}{BLACK}Создан европейский валютный союз!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 STR_NEWS_BEGIN_OF_RECESSION                                     :{BIG_FONT}{BLACK}Мировой спад{}{}Финансовые эксперты дают ужасные прогнозы в связи с кризисом экономики!
 STR_NEWS_END_OF_RECESSION                                       :{BIG_FONT}{BLACK}Спад закончился!{}{}Увеличение объёмов торговли внушает уверенность владельцам предприятий. Экономика укрепляет свои позиции.
 
@@ -1627,17 +1627,17 @@ STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Максима�
 STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Максимальное количество автомобилей, которое может иметь транспортная компания
 STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Максимальное количество авиатранспорта на игрока: {STRING}
 STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Максимальное количество воздушных судов, которое может иметь транспортная компания
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Максимальное количество кораблей на игрока: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Максимальное количество кораблей, которое может иметь транспортная компания
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Максимальное количество судов на игрока: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Максимальное количество судов, которое может иметь транспортная компания
 
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Не допускать постройки поездов компьютером: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Запрет строительства поездов для игроков, управляемых компьютером
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Не допускать постройки автомобилей компьютером: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Запрет строительства автомобилей для игроков, управляемых компьютером
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Не допускать постройки авиатранспорта компьютером: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Запрет строительства воздушных судов для игроков, управляемых компьютером
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Не допускать постройки кораблей компьютером: {STRING}
-STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Запрет строительства кораблей для игроков, управляемых компьютером
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Запретить покупку поездов компьютером: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Запрет покупки железнодорожного транспорта для компаний, управляемых компьютером
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES                      :Запретить покупку автомобилей компьютером: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_ROAD_VEHICLES_HELPTEXT             :Запрет покупки автотранспорта для компаний, управляемых компьютером
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT                           :Запретить покупку авиатранспорта компьютером: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_AIRCRAFT_HELPTEXT                  :Запрет покупки воздушного транспорта для компаний, управляемых компьютером
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Запретить покупку судов компьютером: {STRING}
+STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Запрет покупки водного транспорта для компаний, управляемых компьютером
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Исходный профиль настроек: {STRING}
 STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Выберите, какой профиль настроек использовать случайному ИИ или для начальных значений при добавлении нового ИИ или сценария игры
@@ -1663,7 +1663,7 @@ STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Интерва�
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Настройка периодичности тех. обслуживания для новых автомобилей
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Интервал обслуживания по умолчанию для авиатранспорта: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Настройка периодичности тех. обслуживания для новых воздушных судов
-STR_CONFIG_SETTING_SERVINT_SHIPS                                :Интервал обслуживания по умолчанию для кораблей: {STRING}
+STR_CONFIG_SETTING_SERVINT_SHIPS                                :Интервал обслуживания по умолчанию для судов: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Настройка периодичности тех. обслуживания для новых судов
 STR_CONFIG_SETTING_NOSERVICE                                    :Не обслуживать транспорт, если отключены поломки: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Отключение технического обслуживания транспортных средств, если отключены поломки. (Если транспорт не заходит в депо, автозамена не работает).
@@ -1903,8 +1903,8 @@ STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS                        :Алгорит�
 STR_CONFIG_SETTING_PATHFINDER_FOR_TRAINS_HELPTEXT               :Алгоритм поиска пути, используемый поездами
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES                 :Алгоритм поиска пути для автотранспорта: {STRING}
 STR_CONFIG_SETTING_PATHFINDER_FOR_ROAD_VEHICLES_HELPTEXT        :Алгоритм поиска пути, используемый автомобилями
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Алгоритм поиска пути для кораблей: {STRING}
-STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Алгоритм поиска пути, используемый кораблями
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS                         :Алгоритм поиска пути для судов: {STRING}
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :Алгоритм поиска пути, используемый водным транспортом
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS                           :Автоматический разворот у сигналов: {STRING}
 STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Разрешить поездам разворачиваться у светофора, если они долго ждут разрешающего сигнала
 
@@ -2381,6 +2381,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} п
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} основал новую компанию (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} покинул игру ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} изменил имя на {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Компания «{STRING}» передала «{STRING}» {CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сервер закрыл сессию
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сервер перезапускается...{}Пожалуйста, подождите...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} был исключён из игры. Причина: ({STRING})
@@ -2654,7 +2655,7 @@ STR_WATERWAYS_TOOLBAR_CAPTION                                   :{WHITE}Судо
 STR_WATERWAYS_TOOLBAR_CAPTION_SE                                :{WHITE}Водные пути
 STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}Строительство каналов. При нажатом Shift - оценка стоимости строительства.
 STR_WATERWAYS_TOOLBAR_BUILD_LOCKS_TOOLTIP                       :{BLACK}Строительство шлюзов. При нажатом Shift - оценка стоимости строительства.
-STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Строительство доков (для приобретения и обслуживания кораблей). При нажатом Shift - оценка стоимости строительства.
+STR_WATERWAYS_TOOLBAR_BUILD_DEPOT_TOOLTIP                       :{BLACK}Строительство доков (для приобретения и обслуживания судов). При нажатом Shift - оценка стоимости строительства.
 STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Строительство пристаней. Нажатие Ctrl позволяет объединять станции. При нажатом Shift - оценка стоимости строительства.
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Буи помогают в навигации на больших расстояниях; используйте их как маршрутные точки. При нажатом Shift - оценка стоимости строительства.
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Строительство акведуков. При нажатом Shift - оценка стоимости строительства.
@@ -2952,7 +2953,7 @@ STR_FRAMERATE_GAMELOOP                                          :{BLACK}Расч
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Расчёт объёмов груза:
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Движение поездов:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Движение автомобилей:
-STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Движение кораблей:
+STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Движение судов:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Движение воздушных судов:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Изменения на карте:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK} Задержка графа распределения:
@@ -2969,7 +2970,7 @@ STR_FRAMETIME_CAPTION_GAMELOOP                                  :Расчёт и
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Расчёт объёмов груза
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Движение поездов
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Движение автомобилей
-STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Движение кораблей
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Движение судов
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Движение воздушных судов
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Расчёт изменений на карте
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Задержка графа распределения
@@ -3469,7 +3470,7 @@ STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Пере
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Показать список поездов, маршрут которых проходит через эту станцию
 STR_STATION_VIEW_SCHEDULED_ROAD_VEHICLES_TOOLTIP                :{BLACK}Показать список автомобилей, маршрут которых проходит через эту станцию/остановку
 STR_STATION_VIEW_SCHEDULED_AIRCRAFT_TOOLTIP                     :{BLACK}Показать список воздушных судов, маршрут которых проходит через этот аэропорт
-STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Показать список кораблей, маршрут которых проходит через эту пристань
+STR_STATION_VIEW_SCHEDULED_SHIPS_TOOLTIP                        :{BLACK}Показать список судов, маршрут которых проходит через эту пристань
 
 STR_STATION_VIEW_RENAME_STATION_CAPTION                         :Название станции
 
@@ -3494,12 +3495,12 @@ STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Нова�
 STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Обслуж. поездов
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Обслуж. автомобилей
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Обслуж. авиации
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуж. кораблей
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Обслуж. судов
 STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Обслуж. собственности
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Доход от поездов
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Доход от автомобилей
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Доход от авиации
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Доход от кораблей
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Доход от судов
 STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Проценты по займу
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Прочие расходы
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
@@ -3525,7 +3526,7 @@ STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Тран�
 STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} поезд{P "" а ов}
 STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} автомобил{P ь я ей}
 STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} воздушн{P ое ых ых} суд{P но на ов}
-STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} корабл{P ь я ей}
+STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} суд{P но на ов}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}нет
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Стоимость компании: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% владеет {COMPANY})
@@ -3615,12 +3616,12 @@ STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Изме
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} поезд{P "" а ов}
 STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} автомобил{P ь я ей}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} корабл{P ь я ей}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} суд{P но на ов}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} воздушн{P ое ых ых} суд{P но на ов}
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Поезда - щёлкните для получения информации
 STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Автомобили - щёлкните для получения информации
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Корабли - щёлкните для получения информации
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Суда - щёлкните для получения информации
 STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Авиатранспорт - щёлкните для получения информации
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Прибыль в этом году: {CURRENCY_LONG} (в прошлом году: {CURRENCY_LONG})
@@ -3649,7 +3650,7 @@ STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Общи
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Все поезда
 STR_GROUP_ALL_ROAD_VEHICLES                                     :Весь автотранспорт
-STR_GROUP_ALL_SHIPS                                             :Все корабли
+STR_GROUP_ALL_SHIPS                                             :Все суда
 STR_GROUP_ALL_AIRCRAFTS                                         :Все самолёты
 
 STR_GROUP_DEFAULT_TRAINS                                        :Без группы
@@ -3691,7 +3692,7 @@ STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Новые тр
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Новый поезд
 STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Новый дорожный транспорт
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новый корабль
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Новое судно
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Новое воздушное судно
 ############ range for vehicle availability ends
 
@@ -3721,9 +3722,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальность: {GOLD}{COMMA} клет{P ка ки ок}
 STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}Тип возд. судна: {GOLD}{STRING}
 
-STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список локомотивов и вагонов - щёлкните для получения информации. Ctrl+щелчок скроет/покажет ТС.
+STR_BUY_VEHICLE_TRAIN_LIST_TOOLTIP                              :{BLACK}Список железнодорожного транспорта - щёлкните для получения информации. Ctrl+щелчок скроет/покажет ТС.
 STR_BUY_VEHICLE_ROAD_VEHICLE_LIST_TOOLTIP                       :{BLACK}Список автотранспорта - щёлкните для получения информации. Ctrl+щелчок скроет/покажет выбранный автомобиль.
-STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список кораблей - щёлкните для получения информации. Ctrl+щелчок скроет/покажет выбранный корабль.
+STR_BUY_VEHICLE_SHIP_LIST_TOOLTIP                               :{BLACK}Список судов - щёлкните для получения информации. Ctrl+щелчок скроет/покажет выбранное судно.
 STR_BUY_VEHICLE_AIRCRAFT_LIST_TOOLTIP                           :{BLACK}Список воздушных судов - щёлкните для получения информации. Ctrl+щелчок скроет/покажет ТС.
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_BUTTON                        :{BLACK}Купить
@@ -3753,7 +3754,7 @@ STR_BUY_VEHICLE_AIRCRAFT_RENAME_BUTTON                          :{BLACK}Пере
 
 STR_BUY_VEHICLE_TRAIN_RENAME_TOOLTIP                            :{BLACK}Изменить название модели поезда
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK}Изменить название модели автомобиля
-STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Изменить название модели корабля
+STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}Изменить название модели судна
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}Изменить название модели возд. судна
 
 STR_BUY_VEHICLE_TRAIN_HIDE_TOGGLE_BUTTON                        :{BLACK}Скрыть
@@ -3768,12 +3769,12 @@ STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}Пока
 
 STR_BUY_VEHICLE_TRAIN_HIDE_SHOW_TOGGLE_TOOLTIP                  :{BLACK}Переключить скрытие/отображение выбранного локомотива/вагона
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_SHOW_TOGGLE_TOOLTIP           :{BLACK}Переключить скрытие/отображение выбранной модели автомобиля
-STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Переключить скрытие/отображение выбранной модели корабля
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}Переключить скрытие/отображение выбранной модели судна
 STR_BUY_VEHICLE_AIRCRAFT_HIDE_SHOW_TOGGLE_TOOLTIP               :{BLACK}Переключить скрытие/отображение выбранной модели воздушного судна
 
 STR_QUERY_RENAME_TRAIN_TYPE_CAPTION                             :{WHITE}Название модели поезда
 STR_QUERY_RENAME_ROAD_VEHICLE_TYPE_CAPTION                      :{WHITE}Название модели автомобиля
-STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Название модели корабля
+STR_QUERY_RENAME_SHIP_TYPE_CAPTION                              :{WHITE}Название модели судна
 STR_QUERY_RENAME_AIRCRAFT_TYPE_CAPTION                          :{WHITE}Название модели возд. судна
 
 # Depot window
@@ -3787,14 +3788,14 @@ STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} единиц{P а "" ""}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда - используйте перетаскивание для изменения состава; нажмите ПКМ для получения информации. Удерживайте Ctrl для перетаскивания вагона вместе со всеми следующими за ним.
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили - нажмите ПКМ для получения информации
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Корабли - нажмите ПКМ для получения информации
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Авиатранспорт - нажмите ПКМ для получения информации
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Поезда в депо. Изменяйте составы с помощью перетаскивания; нажмите ПКМ для получения информации.{}При нажатой Ctrl обе функции применяются от выбранного вагона до конца состава.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Автомобили в гараже. Нажмите ПКМ для получения информации.
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Суда в доке. Нажмите ПКМ для получения информации.
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Воздушный транспорт в ангаре. Нажмите ПКМ для получения информации.
 
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Перетащите сюда транспорт, чтобы продать его
 STR_DEPOT_ROAD_VEHICLE_SELL_TOOLTIP                             :{BLACK}Перетащите сюда автомобиль, чтобы продать его
-STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перетащите сюда корабль, чтобы продать его
+STR_DEPOT_SHIP_SELL_TOOLTIP                                     :{BLACK}Перетащите сюда судно, чтобы продать его
 STR_DEPOT_AIRCRAFT_SELL_TOOLTIP                                 :{BLACK}Перетащите сюда транспорт, чтобы продать его
 
 STR_DEPOT_DRAG_WHOLE_TRAIN_TO_SELL_TOOLTIP                      :{BLACK}Перетащите сюда локомотив для продажи всего состава
@@ -3816,7 +3817,7 @@ STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Ново
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Купить новый поезд
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Купить новый автомобиль
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купить новый корабль
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Купить новое судно
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Купить новый авиатранспорт
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Копировать
@@ -3826,7 +3827,7 @@ STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Копи
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Создать копию состава. Нажмите на кнопку, а затем на поезд внутри или снаружи депо. Ctrl+щелчок создаст поезд с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Создать копию автомобиля. Нажмите на кнопку, а затем на машину внутри или снаружи гаража. Ctrl+щелчок создаст автомобиль с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Создать копию корабля. Нажмите на кнопку, а затем на корабль внутри или снаружи дока. Ctrl+щелчок создаст корабль с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Создать копию судна. Нажмите на кнопку, а затем на судно внутри или снаружи дока. Ctrl+щелчок создаст судно с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Создать копию воздушного судна. Нажмите на кнопку, а потом на воздушное судно внутри или снаружи ангара. Ctrl+щелчок создаст копию с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Показать депо в основном окне. Ctrl+щелчок - показать в дополнительном окне.
@@ -3841,13 +3842,13 @@ STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Пока
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Нажмите для остановки всех поездов в депо
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Нажмите для остановки всех авто в гараже
-STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Нажмите для остановки всех кораблей в доке
+STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}Нажмите для остановки всех судов в доке
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}Нажмите для остановки всего авиатранспорта в ангаре
 
 STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}Нажмите для запуска всех поездов в депо
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}Нажмите для запуска всех авто в гараже
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}Нажмите для запуска всех судов в доке
-STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Нажмите для запуска всего авиатранспорта в ангаре
+STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}Нажмите для запуска всего воздушного транспорта в ангаре
 
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Весь транспорт в депо будет продан. Вы уверены?
 
@@ -3871,8 +3872,8 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE.gen                             :трамвая
 
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :воздушное судно
 STR_ENGINE_PREVIEW_AIRCRAFT.gen                                 :воздушного судна
-STR_ENGINE_PREVIEW_SHIP                                         :корабль
-STR_ENGINE_PREVIEW_SHIP.gen                                     :корабля
+STR_ENGINE_PREVIEW_SHIP                                         :судно
+STR_ENGINE_PREVIEW_SHIP.gen                                     :судна
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Стоимость обслуж.: {CURRENCY_LONG}/год{}Ёмкость: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Цена: {CURRENCY_LONG} Вес: {WEIGHT_SHORT}{}Скорость: {VELOCITY}  Мощность: {POWER}  Макс. ТУ: {6:FORCE}{}Стоимость обслуж.: {4:CURRENCY_LONG}/год{}Ёмкость: {5:CARGO_LONG}
@@ -3888,8 +3889,8 @@ STR_REPLACE_VEHICLE_TRAIN                                       :Поезд
 STR_REPLACE_VEHICLE_TRAIN.gen                                   :ж/д транспорта
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Автотранспорт
 STR_REPLACE_VEHICLE_ROAD_VEHICLE.gen                            :автотранспорта
-STR_REPLACE_VEHICLE_SHIP                                        :Корабль
-STR_REPLACE_VEHICLE_SHIP.gen                                    :кораблей
+STR_REPLACE_VEHICLE_SHIP                                        :Судно
+STR_REPLACE_VEHICLE_SHIP.gen                                    :судов
 STR_REPLACE_VEHICLE_AIRCRAFT                                    :Авиатранспорт
 STR_REPLACE_VEHICLE_AIRCRAFT.gen                                :воздушного транспорта
 
@@ -3934,22 +3935,26 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Разр
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Показать поезд в основном окне.{}Двойной щелчок - следить за ним в основном окне.{}Ctrl+щелчок - показать в дополнительном окне.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Показать автомобиль в основном окне.{}Двойной щелчок - следить за ним в основном окне.{}Ctrl+щелчок - показать в дополнительном окне.
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Показать судно в основном окне.{}Двойной щелчок - следить за ним в основном окне.{}Ctrl+щелчок - показать в дополнительном окне.
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Показать воздушное судно в основном окне.{}Двойной щелчок - следить за ним в основном окне.{}Ctrl+щелчок - показать в дополнительном окне.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Отправить поезд в депо. Ctrl+щелчок - только для обслуживания.
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Отправить автомобиль в гараж. Ctrl+щелчок - только для обслуживания.
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отправить корабль в док. Ctrl+щелчок - только для обслуживания.
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Отправить судно в док. Ctrl+щелчок - только для обслуживания.
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Отправить воздушное судно в ангар. Ctrl+щелчок - только для обслуживания.
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Создать копию состава. Ctrl+щелчок создаст поезд с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Создать копию автомобиля. Ctrl+щелчок создаст автомобиль с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Создать копию корабля. Ctrl+щелчок создаст корабль с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Создать копию судна. Ctrl+щелчок создаст судно с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Создать копию воздушного судна. Ctrl+щелчок создаст копию с общим маршрутом. Shift+щелчок - оценка стоимости покупки.
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Заставить поезд проехать на красный сигнал светофора
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Переоборудование поезда для перевозки иного типа груза
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Переоборудование автомобиля для перевозки иного типа груза
-STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Переоборудование корабля для перевозки иного типа груза
+STR_VEHICLE_VIEW_SHIP_REFIT_TOOLTIP                             :{BLACK}Переоборудование судна для перевозки иного типа груза
 STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Переоборудование возд. судна для перевозки иного типа груза
 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Развернуть поезд
@@ -3962,7 +3967,7 @@ STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Пока
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Показать информацию о поезде
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Показать информацию об автомобиле
-STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Показать информацию о корабле
+STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Показать информацию о судне
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Показать сведения об авиатранспорте.
 
 
@@ -3996,7 +4001,7 @@ STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Назв
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Переименовать поезд
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Переименовать автомобиль
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Переименовать корабль
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Переименовать судно
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Переименовать воздушное судно
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Возраст: {LTBLUE}{STRING}{BLACK}   Стоимость обслуживания: {LTBLUE}{CURRENCY_LONG}/год
@@ -4033,7 +4038,7 @@ STR_VEHICLE_DETAILS_PERCENT                                     :В процен
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}Название поезда
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}Название автомобиля
-STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Название корабля
+STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}Название судна
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}Название возд. судна
 
 # Extra buttons for train details windows
@@ -4075,12 +4080,12 @@ STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Выбе
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Переоборудовать поезд
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Переоборудовать авто
-STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Переоборудовать корабль
+STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Переоборудовать судно
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Переоборудовать возд. судно
 
 STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Переоборудовать поезд для перевозки выбранного типа груза
 STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Переоборудовать автомобиль для перевозки выбранного типа груза
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Переоборудовать корабль для перевозки выбранного типа груза
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Переоборудовать судно для перевозки выбранного типа груза
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Переоборудовать авиатранспорт для перевозки выбранного типа груза
 
 # Order view
@@ -4737,47 +4742,47 @@ STR_ERROR_GROUP_CAN_T_ADD_SHARED_VEHICLE                        :{WHITE}Нево
 # Generic vehicle errors
 STR_ERROR_TRAIN_IN_THE_WAY                                      :{WHITE}Поезд мешает
 STR_ERROR_ROAD_VEHICLE_IN_THE_WAY                               :{WHITE}Автомобиль мешает
-STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Корабль мешает
+STR_ERROR_SHIP_IN_THE_WAY                                       :{WHITE}Судно мешает
 STR_ERROR_AIRCRAFT_IN_THE_WAY                                   :{WHITE}Воздушное судно мешает
 
 STR_ERROR_CAN_T_REFIT_TRAIN                                     :{WHITE}Невозможно переоборудовать поезд...
 STR_ERROR_CAN_T_REFIT_ROAD_VEHICLE                              :{WHITE}Невозможно переоборудовать автомобиль...
-STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Невозможно переоборудовать корабль...
+STR_ERROR_CAN_T_REFIT_SHIP                                      :{WHITE}Невозможно переоборудовать судно...
 STR_ERROR_CAN_T_REFIT_AIRCRAFT                                  :{WHITE}Невозможно переоборудовать самолёт...
 
 STR_ERROR_CAN_T_RENAME_TRAIN                                    :{WHITE}Невозможно переименовать поезд...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE                             :{WHITE}Невозможно переименовать автомобиль...
-STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Невозможно переименовать корабль...
+STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}Невозможно переименовать судно...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT                                 :{WHITE}Невозможно переименовать воздушное судно...
 
 STR_ERROR_CAN_T_STOP_START_TRAIN                                :{WHITE}Невозможно остановить/запустить поезд...
 STR_ERROR_CAN_T_STOP_START_ROAD_VEHICLE                         :{WHITE}Невозможно остановить/запустить автомобиль...
-STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Невозможно остановить/запустить корабль...
+STR_ERROR_CAN_T_STOP_START_SHIP                                 :{WHITE}Невозможно остановить/запустить судно...
 STR_ERROR_CAN_T_STOP_START_AIRCRAFT                             :{WHITE}Невозможно остановить/запустить авиатранспорт...
 
 STR_ERROR_CAN_T_SEND_TRAIN_TO_DEPOT                             :{WHITE}Невозможно отправить поезд в депо...
 STR_ERROR_CAN_T_SEND_ROAD_VEHICLE_TO_DEPOT                      :{WHITE}Невозможно отправить автомобиль в гараж...
-STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Невозможно отправить корабль в док...
+STR_ERROR_CAN_T_SEND_SHIP_TO_DEPOT                              :{WHITE}Невозможно отправить судно в док...
 STR_ERROR_CAN_T_SEND_AIRCRAFT_TO_HANGAR                         :{WHITE}Невозможно отправить самолёт в ангар...
 
 STR_ERROR_CAN_T_BUY_TRAIN                                       :{WHITE}Невозможно купить ж/д транспорт...
 STR_ERROR_CAN_T_BUY_ROAD_VEHICLE                                :{WHITE}Невозможно купить автомобиль...
-STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Невозможно купить корабль...
+STR_ERROR_CAN_T_BUY_SHIP                                        :{WHITE}Невозможно купить судно...
 STR_ERROR_CAN_T_BUY_AIRCRAFT                                    :{WHITE}Невозможно купить воздушное судно...
 
 STR_ERROR_CAN_T_RENAME_TRAIN_TYPE                               :{WHITE}Невозможно изменить название модели поезда...
 STR_ERROR_CAN_T_RENAME_ROAD_VEHICLE_TYPE                        :{WHITE}Невозможно изменить название модели автомобиля...
-STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Невозможно изменить название модели корабля...
+STR_ERROR_CAN_T_RENAME_SHIP_TYPE                                :{WHITE}Невозможно изменить название модели судна...
 STR_ERROR_CAN_T_RENAME_AIRCRAFT_TYPE                            :{WHITE}Невозможно изменить название модели возд. судна...
 
 STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}Невозможно продать поезд...
 STR_ERROR_CAN_T_SELL_ROAD_VEHICLE                               :{WHITE}Невозможно продать автомобиль...
-STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Невозможно продать корабль...
+STR_ERROR_CAN_T_SELL_SHIP                                       :{WHITE}Невозможно продать судно...
 STR_ERROR_CAN_T_SELL_AIRCRAFT                                   :{WHITE}Невозможно продать самолёт...
 
 STR_ERROR_RAIL_VEHICLE_NOT_AVAILABLE                            :{WHITE}Локомотив и/или вагон недоступен
 STR_ERROR_ROAD_VEHICLE_NOT_AVAILABLE                            :{WHITE}Автотранспорт недоступен
-STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Корабль недоступен
+STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}Судно недоступно
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}Авиатранспорт недоступен
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Слишком много транспорта в игре
