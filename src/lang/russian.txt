@@ -1768,12 +1768,12 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Зависим�
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :квадратичная зависимость (оригинальная)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :линейная зависимость
 
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Размножение деревьев в игре: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Настройка возможности самостоятельного размножения деревьев в игре. Это может влиять на работоспособность некоторых предприятий, например, лесопилок.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Рост деревьев в игре: {STRING}
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Настройка роста и произвольного появления новых деревьев со временем. Это может влиять на работоспособность некоторых предприятий, например, лесопилок.
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Растут, но не распространяются {RED}(ломается лесопилка)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Растут, но распространяются только в тропических лесах
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Растут и распространяются везде
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Не растут, не распространяются {RED} (ломается лесопилка)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :существующие растут, новые - только в тропических лесах
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :растут старые и появляются новые
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :нет {RED}(ломается лесопилка)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Положение главной панели инструментов: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Горизонтальное расположение основной панели инструментов в верхней части экрана
@@ -1985,6 +1985,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Вы у
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Читы
 STR_CHEATS_TOOLTIP                                              :{BLACK}Галочки показывают, использовали ли Вы этот чит раньше
+STR_CHEATS_NOTE                                                 :{BLACK}Внимание! Их использование записывается при сохранении игры!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Добавить {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Игра за компанию: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный динамит (снос ВСЕГО): {ORANGE}{STRING}
@@ -3546,6 +3547,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Пере
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Переместить штаб-квартиру компании в другое место за 1% оценочной стоимости капитала компании. Shift+щелчок - оценка стоимости переноса.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Подробности
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Посмотреть подробный состав инфраструктуры
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Передать деньги
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Передать некоторую сумму денег этой компании
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Внешность
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Изменить внешность директора
@@ -3563,6 +3566,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Прод
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Компания
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Имя директора
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Введите сумму, которую собираетесь передать
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Мы ищем потенциального покупателя для нашей компании.{}{}Не желаете ли Вы приобрести {COMPANY} за {CURRENCY_LONG}?
 
@@ -3970,6 +3974,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Пока
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Показать информацию о судне
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Показать сведения об авиатранспорте.
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Текущее состояние поезда. Нажмите, чтобы остановить/запустить его.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Текущее состояние автомобиля. Нажмите, чтобы остановить/запустить его.
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Текущее состояние судна. Нажмите, чтобы остановить/запустить его.
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Текущее состояние воздушного судна. Нажмите, чтобы остановить/запустить его.
 
 
 # Messages in the start stop button in the vehicle view

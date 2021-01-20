@@ -3128,8 +3128,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} geliefert
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (noch benötigt)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (geliefert)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Die Stadt wächst jeden {ORANGE}{COMMA}{BLACK}-ten{NBSP}Tag
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Die Stadt wächst jeden {ORANGE}{COMMA}{BLACK}-ten{NBSP}Tag (finanziert)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Die Stadt wächst jeden {ORANGE}{COMMA}{BLACK}.{NBSP}Tag
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Die Stadt wächst jeden {ORANGE}{COMMA}{BLACK}.{NBSP}Tag (finanziert)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Die Stadt wächst {RED}nicht{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Lärmbelastung in der Stadt: {ORANGE}{COMMA}{BLACK}  Grenzwert: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hauptansicht zur Stadt scrollen. Strg+Klick öffnet neue Zusatzansicht bei der Stadt
