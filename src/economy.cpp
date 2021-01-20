@@ -609,6 +609,7 @@ static void CompanyCheckBankrupt(Company *c)
 				 * is no THE-END, otherwise mark the client as spectator to make sure
 				 * he/she is no long in control of this company. However... when you
 				 * join another company (cheat) the "unowned" company can bankrupt. */
+				c->months_of_bankruptcy--;
 				c->bankrupt_asked = MAX_UVALUE(CompanyMask);
 				break;
 			}
