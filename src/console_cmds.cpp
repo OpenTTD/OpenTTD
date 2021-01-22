@@ -1407,17 +1407,21 @@ DEF_CONSOLE_CMD(ConAlias)
 DEF_CONSOLE_CMD(ConScreenShot)
 {
 	if (argc == 0) {
-		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big | giant | no_con | minimap] [file name]'");
+		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [big | giant | no_con | minimap | res <x> <y>] [<filename>]'");
 		IConsoleHelp("'big' makes a zoomed-in screenshot of the visible area, 'giant' makes a screenshot of the "
 				"whole map, 'no_con' hides the console to create the screenshot. 'big' or 'giant' "
 				"screenshots are always drawn without console. "
-				"'minimap' makes a top-viewed minimap screenshot of whole world which represents one tile by one pixel.");
+				"'minimap' makes a top-viewed minimap screenshot of whole world which represents one tile by one pixel. "
+				"'res' makes a screenshot at the default zoom level, but with a custom screen resolution. "
+				"if either <x> or <y> is 0, a default zoom screenshot of the visible area is made instead.");
 		return true;
 	}
 
-	if (argc > 3) return false;
+	if ((argc > 3 && strcmp(argv[1], "res") != 0) || argc > 5) return false;
 
 	ScreenshotType type = SC_VIEWPORT;
+	uint32 res_x = 0;
+	uint32 res_y = 0;
 	const char *name = nullptr;
 
 	if (argc > 1) {
@@ -1437,6 +1441,13 @@ DEF_CONSOLE_CMD(ConScreenShot)
 			/* screenshot no_con [filename] */
 			IConsoleClose();
 			if (argc > 2) name = argv[2];
+		} else if (strcmp(argv[1], "res") == 0) {
+			/* screenshot res <x> <y> [filename] */
+			if (argc < 4) return false;
+			type = SC_DEFAULTZOOM;
+			GetArgumentInteger(&res_x, argv[2]);
+			GetArgumentInteger(&res_y, argv[3]);
+			if (argc > 4) name = argv[4];
 		} else if (argc == 2) {
 			/* screenshot filename */
 			name = argv[1];
@@ -1446,7 +1457,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 		}
 	}
 
-	MakeScreenshot(type, name);
+	MakeScreenshot(type, name, res_x, res_y);
 	return true;
 }
 

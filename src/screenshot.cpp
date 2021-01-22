@@ -711,7 +711,7 @@ static bool MakeSmallScreenshot(bool crashlog)
  * @param t Screenshot type
  * @param[out] vp Result viewport
  */
-void SetupScreenshotViewport(ScreenshotType t, Viewport *vp)
+void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32 res_x, uint32 res_y)
 {
 	switch(t) {
 		case SC_VIEWPORT:
@@ -761,14 +761,23 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp)
 			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 			vp->virtual_left   = w->viewport->virtual_left;
 			vp->virtual_top    = w->viewport->virtual_top;
-			vp->virtual_width  = w->viewport->virtual_width;
-			vp->virtual_height = w->viewport->virtual_height;
-
-			/* Compute pixel coordinates */
 			vp->left = 0;
 			vp->top = 0;
-			vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
-			vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
+
+			if (res_x != 0 && res_y != 0) {
+				vp->width = res_x;
+				vp->height = res_y;
+
+				vp->virtual_width = res_x << vp->zoom;
+				vp->virtual_height = res_y << vp->zoom;
+			} else {
+				vp->virtual_width  = w->viewport->virtual_width;
+				vp->virtual_height = w->viewport->virtual_height;
+
+				/* Compute pixel coordinates */
+				vp->width  = UnScaleByZoom(vp->virtual_width,  vp->zoom);
+				vp->height = UnScaleByZoom(vp->virtual_height, vp->zoom);
+			}
 			vp->overlay = nullptr;
 			break;
 		}
@@ -780,10 +789,10 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp)
  * @param t Screenshot type: World or viewport screenshot
  * @return true on success
  */
-static bool MakeLargeWorldScreenshot(ScreenshotType t)
+static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32 res_x = 0, uint32 res_y = 0)
 {
 	Viewport vp;
-	SetupScreenshotViewport(t, &vp);
+	SetupScreenshotViewport(t, &vp, res_x, res_y);
 
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
 	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension), LargeWorldCallback, &vp, vp.width, vp.height,
@@ -879,7 +888,7 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
  * @return true iff the screenshot was made successfully
  * @see MakeScreenshotWithConfirm
  */
-bool MakeScreenshot(ScreenshotType t, const char *name)
+bool MakeScreenshot(ScreenshotType t, const char *name, uint32 res_x, uint32 res_y)
 {
 	if (t == SC_VIEWPORT) {
 		/* First draw the dirty parts of the screen and only then change the name
@@ -906,7 +915,7 @@ bool MakeScreenshot(ScreenshotType t, const char *name)
 		case SC_ZOOMEDIN:
 		case SC_DEFAULTZOOM:
 		case SC_WORLD:
-			ret = MakeLargeWorldScreenshot(t);
+			ret = MakeLargeWorldScreenshot(t, res_x, res_y);
 			break;
 
 		case SC_HEIGHTMAP: {
