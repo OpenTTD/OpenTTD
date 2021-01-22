@@ -298,7 +298,7 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
 	cp->company = (CompanyID)p->Recv_uint8();
 	cp->cmd     = p->Recv_uint32();
 	if (!IsValidCommand(cp->cmd))               return "invalid command";
-	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "offline only command";
+	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "single-player only command";
 	if ((cp->cmd & CMD_FLAGS_MASK) != 0)        return "invalid command flag";
 
 	cp->p1      = p->Recv_uint32();

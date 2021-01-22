@@ -571,7 +571,7 @@ bool AfterLoadGame()
 		ResetSignalHandlers();
 		return false;
 	} else if (!_networking || _network_server) {
-		/* If we are in single player, i.e. not networking, and loading the
+		/* If we are in singleplayer mode, i.e. not networking, and loading the
 		 * savegame or we are loading the savegame as network server we do
 		 * not want to be bothered by being paused because of the automatic
 		 * reason of a network server, e.g. joining clients or too few

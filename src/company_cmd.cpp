@@ -882,7 +882,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			CompanyRemoveReason reason = (CompanyRemoveReason)GB(p1, 24, 8);
 			if (reason >= CRR_END) return CMD_ERROR;
 
-			/* We can't delete the last existing company in offline mode. */
+			/* We can't delete the last existing company in singleplayer mode. */
 			if (!_networking && Company::GetNumItems() == 1) return CMD_ERROR;
 
 			Company *c = Company::GetIfValid(company_id);

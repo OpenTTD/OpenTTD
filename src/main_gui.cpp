@@ -313,7 +313,7 @@ struct MainWindow : Window
 				break;
 
 			case GHK_MONEY: // Gimme money
-				/* You can only cheat for money in single player. */
+				/* You can only cheat for money in singleplayer mode. */
 				if (!_networking) DoCommandP(0, 10000000, 0, CMD_MONEY_CHEAT);
 				break;
 

@@ -289,7 +289,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	if (_networking) NetworkClientsToSpectators(old_owner);
 	if (old_owner == _local_company) {
 		/* Single player cheated to AI company.
-		 * There are no spectators in single player, so we must pick some other company. */
+		 * There are no spectators in singleplayer mode, so we must pick some other company. */
 		assert(!_networking);
 		Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
 		for (const Company *c : Company::Iterate()) {
@@ -605,7 +605,7 @@ static void CompanyCheckBankrupt(Company *c)
 		default:
 		case 10: {
 			if (!_networking && _local_company == c->index) {
-				/* If we are in offline mode, leave the company playing. Eg. there
+				/* If we are in singleplayer mode, leave the company playing. Eg. there
 				 * is no THE-END, otherwise mark the client as spectator to make sure
 				 * he/she is no long in control of this company. However... when you
 				 * join another company (cheat) the "unowned" company can bankrupt. */
@@ -2114,7 +2114,7 @@ CommandCost CmdBuyCompany(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	/* Disable takeovers when not asked */
 	if (!HasBit(c->bankrupt_asked, _current_company)) return CMD_ERROR;
 
-	/* Disable taking over the local company in single player */
+	/* Disable taking over the local company in singleplayer mode */
 	if (!_networking && _local_company == c->index) return CMD_ERROR;
 
 	/* Do not allow companies to take over themselves */
