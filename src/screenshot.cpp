@@ -710,13 +710,17 @@ static bool MakeSmallScreenshot(bool crashlog)
 /**
  * Configure a Viewport for rendering (a part of) the map into a screenshot.
  * @param t Screenshot type
+ * @param width the width of the screenshot, or 0 for current viewport width (needs to be 0 with SC_VIEWPORT, SC_CRASHLOG, and SC_WORLD).
+ * @param height the height of the screenshot, or 0 for current viewport height (needs to be 0 with SC_VIEWPORT, SC_CRASHLOG, and SC_WORLD).
  * @param[out] vp Result viewport
  */
-void SetupScreenshotViewport(ScreenshotType t, Viewport *vp)
+void SetupScreenshotViewport(ScreenshotType t, Viewport *vp, uint32 width, uint32 height)
 {
 	switch(t) {
 		case SC_VIEWPORT:
 		case SC_CRASHLOG: {
+			assert(width == 0 && height == 0);
+
 			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 			vp->virtual_left   = w->viewport->virtual_left;
 			vp->virtual_top    = w->viewport->virtual_top;
@@ -726,12 +730,14 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp)
 			/* Compute pixel coordinates */
 			vp->left = 0;
 			vp->top = 0;
-			vp->width  = _screen.width;
+			vp->width = _screen.width;
 			vp->height = _screen.height;
 			vp->overlay = w->viewport->overlay;
 			break;
 		}
 		case SC_WORLD: {
+			assert(width == 0 && height == 0);
+
 			/* Determine world coordinates of screenshot */
 			vp->zoom = ZOOM_LVL_WORLD_SCREENSHOT;
 
@@ -762,8 +768,14 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp)
 			Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 			vp->virtual_left   = w->viewport->virtual_left;
 			vp->virtual_top    = w->viewport->virtual_top;
-			vp->virtual_width  = w->viewport->virtual_width;
-			vp->virtual_height = w->viewport->virtual_height;
+
+			if (width == 0 || height == 0) {
+				vp->virtual_width  = w->viewport->virtual_width;
+				vp->virtual_height = w->viewport->virtual_height;
+			} else {
+				vp->virtual_width = width << vp->zoom;
+				vp->virtual_height = height << vp->zoom;
+			}
 
 			/* Compute pixel coordinates */
 			vp->left = 0;
@@ -779,12 +791,14 @@ void SetupScreenshotViewport(ScreenshotType t, Viewport *vp)
 /**
  * Make a screenshot of the map.
  * @param t Screenshot type: World or viewport screenshot
+ * @param width the width of the screenshot of, or 0 for current viewport width.
+ * @param height the height of the screenshot of, or 0 for current viewport height.
  * @return true on success
  */
-static bool MakeLargeWorldScreenshot(ScreenshotType t)
+static bool MakeLargeWorldScreenshot(ScreenshotType t, uint32 width = 0, uint32 height = 0)
 {
 	Viewport vp;
-	SetupScreenshotViewport(t, &vp);
+	SetupScreenshotViewport(t, &vp, width, height);
 
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
 	return sf->proc(MakeScreenshotName(SCREENSHOT_NAME, sf->extension), LargeWorldCallback, &vp, vp.width, vp.height,
@@ -877,10 +891,12 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
  * Unconditionally take a screenshot of the requested type.
  * @param t    the type of screenshot to make.
  * @param name the name to give to the screenshot.
+ * @param width the width of the screenshot of, or 0 for current viewport width (only works for SC_ZOOMEDIN and SC_DEFAULTZOOM).
+ * @param height the height of the screenshot of, or 0 for current viewport height (only works for SC_ZOOMEDIN and SC_DEFAULTZOOM).
  * @return true iff the screenshot was made successfully
  * @see MakeScreenshotWithConfirm
  */
-bool MakeScreenshot(ScreenshotType t, const char *name)
+bool MakeScreenshot(ScreenshotType t, const char *name, uint32 width, uint32 height)
 {
 	VideoDriver::VideoBufferLocker lock;
 
@@ -908,6 +924,9 @@ bool MakeScreenshot(ScreenshotType t, const char *name)
 
 		case SC_ZOOMEDIN:
 		case SC_DEFAULTZOOM:
+			ret = MakeLargeWorldScreenshot(t, width, height);
+			break;
+
 		case SC_WORLD:
 			ret = MakeLargeWorldScreenshot(t);
 			break;
