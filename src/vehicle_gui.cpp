@@ -2877,13 +2877,16 @@ public:
 		/* Draw the flag plus orders. */
 		bool rtl = (_current_text_dir == TD_RTL);
 		uint text_offset = std::max(GetSpriteSize(SPR_FLAG_VEH_STOPPED).width, GetSpriteSize(SPR_FLAG_VEH_RUNNING).width) + WD_IMGBTN_LEFT + WD_IMGBTN_RIGHT;
+		int height = r.bottom - r.top;
 		int text_left = r.left + (rtl ? (uint)WD_FRAMERECT_LEFT : text_offset);
 		int text_right = r.right - (rtl ? text_offset : (uint)WD_FRAMERECT_RIGHT);
-		int image_left = (rtl ? text_right + 1 : r.left) + WD_IMGBTN_LEFT;
+		int text_top = r.top + WD_FRAMERECT_TOP + (height - WD_FRAMERECT_TOP - WD_FRAMERECT_BOTTOM - FONT_HEIGHT_NORMAL) / 2;
 		int image = ((v->vehstatus & VS_STOPPED) != 0) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING;
+		int image_left = (rtl ? text_right + 1 : r.left) + WD_IMGBTN_LEFT;
+		int image_top = r.top + WD_IMGBTN_TOP + (height - WD_IMGBTN_TOP + WD_IMGBTN_BOTTOM - GetSpriteSize(image).height) / 2;
 		int lowered = this->IsWidgetLowered(WID_VV_START_STOP) ? 1 : 0;
-		DrawSprite(image, PAL_NONE, image_left + lowered, r.top + WD_IMGBTN_TOP + lowered);
-		DrawString(text_left + lowered, text_right + lowered, r.top + WD_FRAMERECT_TOP + lowered, str, text_colour, SA_HOR_CENTER);
+		DrawSprite(image, PAL_NONE, image_left + lowered, image_top + lowered);
+		DrawString(text_left + lowered, text_right + lowered, text_top + lowered, str, text_colour, SA_HOR_CENTER);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
