@@ -1256,6 +1256,7 @@ static bool GrowTownWithTunnel(const Town* t, const TileIndex tile, const DiagDi
 		/* Only tunnel under a mountain if the slope is continuous for at least 4 tiles. We want tunneling to be a last resort for large hills. */
 		TileIndex slope_tile = tile;
 		for (uint8 tiles = 0; tiles < 4; tiles++) {
+			if (!IsValidTile(slope_tile)) return false;
 			slope = GetTileSlope(slope_tile);
 			if (slope != InclinedSlope(tunnel_dir) && !IsSteepSlope(slope) && !IsSlopeWithOneCornerRaised(slope)) return false;
 			slope_tile += delta;
