@@ -55,7 +55,6 @@
 #endif
 
 bool _cocoa_video_started = false;
-WindowQuartzSubdriver *_cocoa_subdriver = NULL;
 
 
 /** List of common display/window sizes. */
@@ -74,30 +73,27 @@ static const Dimension _default_resolutions[] = {
 	{ 2560, 1440 }
 };
 
-/**
- * Update the video modus.
- */
-void VideoDriver_Cocoa::UpdateVideoModes()
-{
-	_resolutions.clear();
-
-	if (_cocoa_subdriver != nullptr && _cocoa_subdriver->IsFullscreen()) {
-		/* Full screen, there is only one possible resolution. */
-		NSSize screen = [ [ _cocoa_subdriver->window screen ] frame ].size;
-		_resolutions.emplace_back((uint)screen.width, (uint)screen.height);
-	} else {
-		/* Windowed; offer a selection of common window sizes up until the
-		 * maximum usable screen space. This excludes the menu and dock areas. */
-		NSSize maxSize = [ [ NSScreen mainScreen] visibleFrame ].size;
-		for (const auto &d : _default_resolutions) {
-			if (d.width < maxSize.width && d.height < maxSize.height) _resolutions.push_back(d);
-		}
-		_resolutions.emplace_back((uint)maxSize.width, (uint)maxSize.height);
-	}
-}
-
-
 static FVideoDriver_Cocoa iFVideoDriver_Cocoa;
+
+
+VideoDriver_Cocoa::VideoDriver_Cocoa()
+{
+	this->window_width  = 0;
+	this->window_height = 0;
+	this->buffer_depth  = 0;
+	this->window_buffer = nullptr;
+	this->pixel_buffer  = nullptr;
+	this->active        = false;
+	this->setup         = false;
+
+	this->window    = nil;
+	this->cocoaview = nil;
+
+	this->color_space = nullptr;
+	this->cgcontext   = nullptr;
+
+	this->num_dirty_rects = MAX_DIRTY_RECTS;
+}
 
 /**
  * Stop the cocoa video subdriver.
@@ -108,8 +104,14 @@ void VideoDriver_Cocoa::Stop()
 
 	CocoaExitApplication();
 
-	delete _cocoa_subdriver;
-	_cocoa_subdriver = nullptr;
+	/* Release window mode resources */
+	if (this->window != nil) [ this->window close ];
+
+	CGContextRelease(this->cgcontext);
+
+	CGColorSpaceRelease(this->color_space);
+	free(this->window_buffer);
+	free(this->pixel_buffer);
 
 	_cocoa_video_started = false;
 }
@@ -139,18 +141,17 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 		return "The cocoa quartz subdriver only supports 8 and 32 bpp.";
 	}
 
-	_cocoa_subdriver = new WindowQuartzSubdriver();
-	if (!_cocoa_subdriver->ChangeResolution(width, height, bpp)) {
+	if (!this->ChangeResolution(width, height, bpp)) {
 		Stop();
 		return "Could not create subdriver";
 	}
 
-	if (_fullscreen) _cocoa_subdriver->ToggleFullscreen(_fullscreen);
+	if (_fullscreen) this->ToggleFullscreen(_fullscreen);
 
 	this->GameSizeChanged();
 	this->UpdateVideoModes();
 
-	return NULL;
+	return nullptr;
 }
 
 /**
@@ -163,9 +164,13 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
  */
 void VideoDriver_Cocoa::MakeDirty(int left, int top, int width, int height)
 {
-	assert(_cocoa_subdriver != NULL);
-
-	_cocoa_subdriver->MakeDirty(left, top, width, height);
+	if (this->num_dirty_rects < MAX_DIRTY_RECTS) {
+		dirty_rects[this->num_dirty_rects].left = left;
+		dirty_rects[this->num_dirty_rects].top = top;
+		dirty_rects[this->num_dirty_rects].right = left + width;
+		dirty_rects[this->num_dirty_rects].bottom = top + height;
+	}
+	this->num_dirty_rects++;
 }
 
 /**
@@ -190,12 +195,8 @@ void VideoDriver_Cocoa::MainLoop()
  */
 bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 {
-	assert(_cocoa_subdriver != NULL);
-
-	bool ret = _cocoa_subdriver->ChangeResolution(w, h, BlitterFactory::GetCurrentBlitter()->GetScreenDepth());
-
+	bool ret = this->ChangeResolution(w, h, BlitterFactory::GetCurrentBlitter()->GetScreenDepth());
 	this->GameSizeChanged();
-
 	return ret;
 }
 
@@ -207,11 +208,15 @@ bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
  */
 bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 {
-	assert(_cocoa_subdriver != NULL);
+	if (this->IsFullscreen() == full_screen) return true;
 
-	bool res = _cocoa_subdriver->ToggleFullscreen(full_screen);
-	this->UpdateVideoModes();
-	return res;
+	if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
+		[ this->window performSelector:@selector(toggleFullScreen:) withObject:this->window ];
+		this->UpdateVideoModes();
+		return true;
+	}
+
+	return false;
 }
 
 /**
@@ -229,7 +234,7 @@ bool VideoDriver_Cocoa::AfterBlitterChange()
  */
 void VideoDriver_Cocoa::EditBoxLostFocus()
 {
-	if (_cocoa_subdriver != NULL) [ [ _cocoa_subdriver->cocoaview inputContext ] discardMarkedText ];
+	[ [ this->cocoaview inputContext ] discardMarkedText ];
 	/* Clear any marked string from the current edit box. */
 	HandleTextInput(NULL, true);
 }
@@ -248,16 +253,14 @@ Dimension VideoDriver_Cocoa::GetScreenSize() const
  */
 void VideoDriver_Cocoa::GameSizeChanged()
 {
-	if (_cocoa_subdriver == nullptr) return;
-
 	/* Tell the game that the resolution has changed */
-	_screen.width = _cocoa_subdriver->GetWidth();
-	_screen.height = _cocoa_subdriver->GetHeight();
-	_screen.pitch = _cocoa_subdriver->GetWidth();
-	_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
+	_screen.width = this->window_width;
+	_screen.height = this->window_height;
+	_screen.pitch = this->window_width;
+	_screen.dst_ptr = this->GetPixelBuffer();
 
 	/* Store old window size if we entered fullscreen mode. */
-	bool fullscreen = _cocoa_subdriver->IsFullscreen();
+	bool fullscreen = this->IsFullscreen();
 	if (fullscreen && !_fullscreen) this->orig_res = _cur_resolution;
 	_fullscreen = fullscreen;
 
@@ -266,18 +269,16 @@ void VideoDriver_Cocoa::GameSizeChanged()
 	::GameSizeChanged();
 }
 
-class WindowQuartzSubdriver;
-
 /* Subclass of OTTD_CocoaView to fix Quartz rendering */
 @interface OTTD_QuartzView : OTTD_CocoaView
-- (void)setDriver:(WindowQuartzSubdriver *)drv;
+- (void)setDriver:(VideoDriver_Cocoa *)drv;
 - (void)drawRect:(NSRect)invalidRect;
 @end
 
 
 @implementation OTTD_QuartzView
 
-- (void)setDriver:(WindowQuartzSubdriver *)drv
+- (void)setDriver:(VideoDriver_Cocoa *)drv
 {
 	driver = drv;
 }
@@ -360,7 +361,29 @@ class WindowQuartzSubdriver;
 @end
 
 
-void WindowQuartzSubdriver::GetDeviceInfo()
+/**
+ * Update the video modus.
+ */
+void VideoDriver_Cocoa::UpdateVideoModes()
+{
+	_resolutions.clear();
+
+	if (this->IsFullscreen()) {
+		/* Full screen, there is only one possible resolution. */
+		NSSize screen = [ [ this->window screen ] frame ].size;
+		_resolutions.emplace_back((uint)screen.width, (uint)screen.height);
+	} else {
+		/* Windowed; offer a selection of common window sizes up until the
+		 * maximum usable screen space. This excludes the menu and dock areas. */
+		NSSize maxSize = [ [ NSScreen mainScreen] visibleFrame ].size;
+		for (const auto &d : _default_resolutions) {
+			if (d.width < maxSize.width && d.height < maxSize.height) _resolutions.push_back(d);
+		}
+		_resolutions.emplace_back((uint)maxSize.width, (uint)maxSize.height);
+	}
+}
+
+void VideoDriver_Cocoa::GetDeviceInfo()
 {
 	/* Initialize the video settings; this data persists between mode switches
 	 * and gather some information that is useful to know about the display */
@@ -375,27 +398,12 @@ void WindowQuartzSubdriver::GetDeviceInfo()
 	CGDisplayModeRelease(cur_mode);
 }
 
-bool WindowQuartzSubdriver::IsFullscreen()
+bool VideoDriver_Cocoa::IsFullscreen()
 {
 	return this->window != nil && ([ this->window styleMask ] & NSWindowStyleMaskFullScreen) != 0;
 }
 
-/** Switch to full screen mode on OSX 10.7
- * @return Whether we switched to full screen
- */
-bool WindowQuartzSubdriver::ToggleFullscreen(bool fullscreen)
-{
-	if (this->IsFullscreen() == fullscreen) return true;
-
-	if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
-		[ this->window performSelector:@selector(toggleFullScreen:) withObject:this->window ];
-		return true;
-	}
-
-	return false;
-}
-
-bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
+bool VideoDriver_Cocoa::SetVideoMode(int width, int height, int bpp)
 {
 	this->setup = true;
 	this->GetDeviceInfo();
@@ -508,7 +516,7 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height, int bpp)
 	return ret;
 }
 
-void WindowQuartzSubdriver::BlitIndexedToView32(int left, int top, int right, int bottom)
+void VideoDriver_Cocoa::BlitIndexedToView32(int left, int top, int right, int bottom)
 {
 	const uint32 *pal   = this->palette;
 	const uint8  *src   = (uint8*)this->pixel_buffer;
@@ -524,37 +532,7 @@ void WindowQuartzSubdriver::BlitIndexedToView32(int left, int top, int right, in
 }
 
 
-WindowQuartzSubdriver::WindowQuartzSubdriver()
-{
-	this->window_width  = 0;
-	this->window_height = 0;
-	this->buffer_depth  = 0;
-	this->window_buffer  = NULL;
-	this->pixel_buffer  = NULL;
-	this->active        = false;
-	this->setup         = false;
-
-	this->window = nil;
-	this->cocoaview = nil;
-
-	this->cgcontext = NULL;
-
-	this->num_dirty_rects = MAX_DIRTY_RECTS;
-}
-
-WindowQuartzSubdriver::~WindowQuartzSubdriver()
-{
-	/* Release window mode resources */
-	if (this->window != nil) [ this->window close ];
-
-	CGContextRelease(this->cgcontext);
-
-	CGColorSpaceRelease(this->color_space);
-	free(this->window_buffer);
-	free(this->pixel_buffer);
-}
-
-void WindowQuartzSubdriver::Draw(bool force_update)
+void VideoDriver_Cocoa::Draw(bool force_update)
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
@@ -596,18 +574,7 @@ void WindowQuartzSubdriver::Draw(bool force_update)
 	this->num_dirty_rects = 0;
 }
 
-void WindowQuartzSubdriver::MakeDirty(int left, int top, int width, int height)
-{
-	if (this->num_dirty_rects < MAX_DIRTY_RECTS) {
-		dirty_rects[this->num_dirty_rects].left = left;
-		dirty_rects[this->num_dirty_rects].top = top;
-		dirty_rects[this->num_dirty_rects].right = left + width;
-		dirty_rects[this->num_dirty_rects].bottom = top + height;
-	}
-	this->num_dirty_rects++;
-}
-
-void WindowQuartzSubdriver::UpdatePalette(uint first_color, uint num_colors)
+void VideoDriver_Cocoa::UpdatePalette(uint first_color, uint num_colors)
 {
 	if (this->buffer_depth != 8) return;
 
@@ -622,7 +589,7 @@ void WindowQuartzSubdriver::UpdatePalette(uint first_color, uint num_colors)
 	this->num_dirty_rects = MAX_DIRTY_RECTS;
 }
 
-bool WindowQuartzSubdriver::ChangeResolution(int w, int h, int bpp)
+bool VideoDriver_Cocoa::ChangeResolution(int w, int h, int bpp)
 {
 	int old_width  = this->window_width;
 	int old_height = this->window_height;
@@ -635,7 +602,7 @@ bool WindowQuartzSubdriver::ChangeResolution(int w, int h, int bpp)
 }
 
 /* Convert local coordinate to window server (CoreGraphics) coordinate */
-CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint *p)
+CGPoint VideoDriver_Cocoa::PrivateLocalToCG(NSPoint *p)
 {
 
 	p->y = this->window_height - p->y;
@@ -651,7 +618,7 @@ CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint *p)
 	return cgp;
 }
 
-NSPoint WindowQuartzSubdriver::GetMouseLocation(NSEvent *event)
+NSPoint VideoDriver_Cocoa::GetMouseLocation(NSEvent *event)
 {
 	NSPoint pt;
 
@@ -666,7 +633,7 @@ NSPoint WindowQuartzSubdriver::GetMouseLocation(NSEvent *event)
 	return pt;
 }
 
-bool WindowQuartzSubdriver::MouseIsInsideView(NSPoint *pt)
+bool VideoDriver_Cocoa::MouseIsInsideView(NSPoint *pt)
 {
 	return [ cocoaview mouse:*pt inRect:[ this->cocoaview bounds ] ];
 }
@@ -682,7 +649,7 @@ static void ClearWindowBuffer(uint32 *buffer, uint32 pitch, uint32 height)
 	}
 }
 
-bool WindowQuartzSubdriver::WindowResized()
+bool VideoDriver_Cocoa::WindowResized()
 {
 	if (this->window == nil || this->cocoaview == nil) return true;
 
@@ -722,12 +689,36 @@ bool WindowQuartzSubdriver::WindowResized()
 		}
 	}
 
-	static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance())->GameSizeChanged();
+	this->GameSizeChanged();
 
 	/* Redraw screen */
 	this->num_dirty_rects = MAX_DIRTY_RECTS;
 
 	return true;
+}
+
+void VideoDriver_Cocoa::CheckPaletteAnim()
+{
+	if (_cur_palette.count_dirty != 0) {
+		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+
+		switch (blitter->UsePaletteAnimation()) {
+			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+				this->UpdatePalette(_cur_palette.first_dirty, _cur_palette.count_dirty);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_BLITTER:
+				blitter->PaletteAnimate(_cur_palette);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_NONE:
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+		_cur_palette.count_dirty = 0;
+	}
 }
 
 #endif /* WITH_COCOA */
