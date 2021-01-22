@@ -242,6 +242,7 @@ public:
 	 * @param company The company to change the bank balance of.
 	 * @param delta Amount of money to give or take from the bank balance. A positive value adds money to the bank balance.
 	 * @param expenses_type The account in the finances window that will register the cost.
+	 * @param tile The tile to show text effect on or ScriptMap::TILE_INVALID
 	 * @return True, if the bank balance was changed.
 	 * @game @pre No ScriptCompanyMode active in scope.
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
@@ -250,7 +251,7 @@ public:
 	 * @note You need to create your own news message to inform about costs/gifts that you create using this command.
 	 * @api -ai
 	 */
-	static bool ChangeBankBalance(CompanyID company, Money delta, ExpensesType expenses_type);
+	static bool ChangeBankBalance(CompanyID company, Money delta, ExpensesType expenses_type, TileIndex tile);
 
 	/**
 	 * Get the income of the company in the given quarter.
