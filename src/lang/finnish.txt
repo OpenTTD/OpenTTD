@@ -1621,10 +1621,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarinen
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Puiden istutus pelissä: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Määrittää puiden sattumanvaraisen luomisen. Tämä voi vaikuttaa teollisuuslaitoksiin, jotka ovat riippuvaisia puiden kasvamisesta, esimerkiksi sahat.
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Puut kasvavat, mutta eivät leviä {RED}(rikkoo sahan)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Puut kasvavat, mutta eivät leviä {RED}(rikkoo subtrooppisen sahan)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Puut kasvavat, mutta leviävät vain sademetsissä
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Puut kasvavat ja leviävät kaikkialla
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Puut eivät kasva eivätkä leviä {RED}(rikkoo sahan)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Puut eivät kasva eivätkä leviä {RED}(rikkoo subtrooppisen sahan)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Päätyökalupalkin sijainti: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Ruudun yläreunassa olevan työkalupalkin sijainti vaakasuunnassa

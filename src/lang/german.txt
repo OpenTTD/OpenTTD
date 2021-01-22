@@ -243,7 +243,7 @@ STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titellei
 STR_TOOLTIP_SHADE                                               :{BLACK}Fenster einklappen - Nur die Titelleiste zeigen
 STR_TOOLTIP_DEBUG                                               :{BLACK}Zeige Daten für NewGRF-Fehlerbeseitigung
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Standardgröße des Fensters wieder herstellen. Strg+Klick um die aktuelle Größe als Standard zu speichern
-STR_TOOLTIP_STICKY                                              :{BLACK}Fenster wird nicht durch die "Schließe alle Fenster"-Taste geschlossen. Strg+Klick, um den Status als Standard zu speichern
+STR_TOOLTIP_STICKY                                              :{BLACK}Fenster wird nicht durch die „Schließe alle Fenster“-Taste geschlossen. Strg+Klick, um den Status als Standard zu speichern
 STR_TOOLTIP_RESIZE                                              :{BLACK}Klicken und Ziehen zum Ändern der Größe des Fensters
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Zwischen Fenstergrößen umschalten
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Bildlaufleiste: In der Liste auf- und abwärts blättern
@@ -606,7 +606,7 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Graph de
 
 # Company league window
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Firmentabelle
-STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} „{STRING}“
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Ingenieur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Verkehrsmanager
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Fuhrparkleiter
@@ -671,17 +671,17 @@ STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Springe 
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Wiedergabe anhalten
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Wiedergabe starten
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Schieberegler für Musik- / Soundlautstärke
-STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Programm 'Alle Titel' wählen
-STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Programm 'Traditionell' wählen
-STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Programm 'Modern' wählen
-STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Programm 'Ezy Street' wählen
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Programm 'Benutzerdefiniert 1' wählen
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Programm 'Benutzerdefiniert 2' wählen
+STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Programm „Alle Titel“ wählen
+STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Programm „Traditionell“ wählen
+STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Programm „Modern“ wählen
+STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Programm „Ezy Street“ wählen
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Programm „Benutzerdefiniert 1“ wählen
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Programm „Benutzerdefiniert 2“ wählen
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Zufällige Wiedergabe ein/aus
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Zeige Musiktitelauswahl
 
 # Playlist window
-STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Musikprogramm - '{STRING}'
+STR_PLAYLIST_MUSIC_SELECTION_SETNAME                            :{WHITE}Musikprogramm - „{STRING}“
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
 STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLACK}Track Inhalt
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programm - '{STRING}'
@@ -704,9 +704,9 @@ STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnat
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
 STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Tycoon des Jahrhunderts
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
-STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} erreicht '{STRING}' Status!
-STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} von {COMPANY} erreicht '{STRING}' Status!
+STR_HIGHSCORE_STATS                                             :{BIG_FONT}„{STRING}“   ({COMMA})
+STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} erreicht „{STRING}“-Status!
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} von {COMPANY} erreicht „{STRING}“-Status!
 
 # Smallmap window
 STR_SMALLMAP_CAPTION                                            :{WHITE}Weltkarte - {STRING}
@@ -807,10 +807,10 @@ STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLAC
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Flugzeugabsturz!{}Dem Flugzeug ging der Treibstoff aus, {COMMA} {P stirbt sterben} in einem Feuerball
 
 STR_NEWS_DISASTER_ZEPPELIN                                      :{BIG_FONT}{BLACK}Zeppelinabsturz bei {STATION}!
-STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Fahrzeug bei Zusammenstoß mit einem 'UFO' zerstört!
+STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLACK}Fahrzeug bei Zusammenstoß mit einem „UFO“ zerstört!
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Explosion einer Ölraffinerie nahe {TOWN}!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Fabrik nahe {TOWN} unter mysteriösen Umständen zerstört!
-STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' landet bei {TOWN}!
+STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}„UFO“ landet bei {TOWN}!
 STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Stolleneinbruch bei {TOWN} hinterlässt Pfad der Zerstörung!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Hochwasser!{}Mindestens {COMMA} Mensch{P "" en} vermisst oder tot nach schwerer Flut!
 
@@ -1100,10 +1100,10 @@ STR_DISASTER_NONE                                               :Keine
 STR_DISASTER_REDUCED                                            :Verringert
 STR_DISASTER_NORMAL                                             :Normal
 
-STR_SUBSIDY_X1_5                                                :x1,5
-STR_SUBSIDY_X2                                                  :x2
-STR_SUBSIDY_X3                                                  :x3
-STR_SUBSIDY_X4                                                  :x4
+STR_SUBSIDY_X1_5                                                :×1,5
+STR_SUBSIDY_X2                                                  :×2
+STR_SUBSIDY_X3                                                  :×3
+STR_SUBSIDY_X4                                                  :×4
 
 STR_TERRAIN_TYPE_VERY_FLAT                                      :Sehr flach
 STR_TERRAIN_TYPE_FLAT                                           :Flach
@@ -1115,7 +1115,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Hoch
 STR_CITY_APPROVAL_TOLERANT                                      :Mäßig
 STR_CITY_APPROVAL_HOSTILE                                       :Gering
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keine KI gefunden...{}Verschiedene KI sind via 'Erweiterungen herunterladen' verfügbar
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Keine KI gefunden...{}Verschiedene KI sind via „Erweiterungen herunterladen“ verfügbar
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Einstellungen
@@ -1208,9 +1208,9 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} Feld{P 
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Menge an Rauch/Funken von Fahrzeugen: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Lege fest, wieviel Rauch und wieviele Funken von Fahrzeugen erzeugt werden
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Beschleunigungsmodell für Züge: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Wähle das physikalische Modell für die Beschleunigung von Zügen. Im Modell 'Original' hat die Fahrzeugart keinen Einfluss auf das Verhalten bei Steigungen. Im Modell 'Realistisch' wirken sich dagegen bestimmte Fahrzeugwerte (z.B. Länge des Zuges, Zugkraft) auf das Verhalten des Zuges bei Steigungen aus
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :Wähle das physikalische Modell für die Beschleunigung von Zügen. Im Modell „Original“ hat die Fahrzeugart keinen Einfluss auf das Verhalten bei Steigungen. Im Modell „Realistisch“ wirken sich dagegen bestimmte Fahrzeugwerte (z.B. Länge des Zuges, Zugkraft) auf das Verhalten des Zuges bei Steigungen aus
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :Beschleunigungsmodell für Straßenfahrzeuge: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Wähle das physikalische Modell für die Beschleunigung von Straßenfahrzeugen. Im Modell 'Original' hat die Fahrzeugart keinen Einfluss auf das Verhalten bei Steigungen. Im Modell 'Realistisch' wirken sich dagegen bestimmte Leistungswerte (z.B. Zugkraft) auf das Verhalten des Fahrzeuges bei Steigungen aus
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :Wähle das physikalische Modell für die Beschleunigung von Straßenfahrzeugen. Im Modell „Original“ hat die Fahrzeugart keinen Einfluss auf das Verhalten bei Steigungen. Im Modell „Realistisch“ wirken sich dagegen bestimmte Leistungswerte (z.B. Zugkraft) auf das Verhalten des Fahrzeuges bei Steigungen aus
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :Steigung für Züge: {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :Der Steigungsgrad, der für eine bergauf bzw. bergab verlaufende Gleisstrecke simuliert wird. Höhere Werte machen es für Züge schwieriger, die Steigung zu überwinden
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
@@ -1229,7 +1229,7 @@ STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maximale Brück
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maximallänge für Tunnel: {STRING}
 STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maximale Länge für Tunnel
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Manueller Bau von Rohstoffindustrien: {STRING}
-STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Methode, um Primärindustrien zu gründen. 'Nicht erlaubt' meint, dass es gar nicht möglich ist, sie zu finanzieren, 'Durch Prospektieren', dass der Ort der gewünschten Industrie zufällig gewählt wird und auch scheitern kann und 'Wie andere Industrien', dass sie wie produzierende Industrien an jeder gewünschten und für die Industrie zulässigen Stelle gegründet werden können
+STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Methode, um Primärindustrien zu gründen. „Nicht erlaubt“ meint, dass es gar nicht möglich ist, sie zu finanzieren, „Durch Prospektieren“, dass der Ort der gewünschten Industrie zufällig gewählt wird und auch scheitern kann und „Wie andere Industrien“, dass sie wie produzierende Industrien an jeder gewünschten und für die Industrie zulässigen Stelle gegründet werden können
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Nicht erlaubt
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Wie andere Industrien
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Durch Prospektion
@@ -1247,7 +1247,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Blende am Ende 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Aufträge standardmäßig ohne Zwischenhalt anfahren: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalerweise hält ein Fahrzeug an jeder Station, die es passiert. Wird diese Einstellung aktiviert, hält das Fahrzeug nur an den Stationen, die explizit in den Aufträgen angeführt sind. Bedenke, dass dieses nur das Standard-Verhalten für neue Aufträge beschreibt. Einzelne Aufträge können explizit auf jedes gewünschte Verhalten geändert werden
 STR_CONFIG_SETTING_STOP_LOCATION                                :Neue Aufträge: Zug hält standardmäßig {STRING} des Bahnsteigs
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Die Position, an der Züge standardmäßig am Bahnsteig anhalten. Bei 'am Anfang' hält der Zug an, sobald er mit allen Waggons in den Bahnhof eingefahren ist. Bei 'in der Mitte' hält er zentral in der Mitte des Bahnsteigs und bei 'am Ende' durchfährt der Zug den Bahnhof soweit wie möglich. Die hier gewählte Einstellung wird bei allen neu erstellten Aufträgen verwendet. Bei bestehenden Aufträgen kann der Haltepunkt jederzeit im Auftragsfenster verändert werden.
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Die Position, an der Züge standardmäßig am Bahnsteig anhalten. Bei „am Anfang“ hält der Zug an, sobald er mit allen Waggons in den Bahnhof eingefahren ist. Bei „in der Mitte“ hält er zentral in der Mitte des Bahnsteigs und bei „am Ende“ durchfährt der Zug den Bahnhof soweit wie möglich. Die hier gewählte Einstellung wird bei allen neu erstellten Aufträgen verwendet. Bei bestehenden Aufträgen kann der Haltepunkt jederzeit im Auftragsfenster verändert werden.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :am Anfang
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :in der Mitte
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :am Ende
@@ -1349,7 +1349,7 @@ STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(nur TerraGenes
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Anzahl Flüsse: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Wähle die Anzahl zu erzeugender Flüsse
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algorithmus zur Baumplatzierung: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Wähle die Verteilung der Bäume auf der Karte: 'Original' pflanzt die Bäume gleichmäßig verteilt, 'Verbessert' pflanzt sie in Gruppen
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Verteilung der Bäume auf der Karte auswählen: „Original“ pflanzt die Bäume gleichmäßig verteilt, „Verbessert“ pflanzt sie in Gruppen
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Keiner
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Verbessert
@@ -1397,7 +1397,7 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Hauptansicht ve
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Aus
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Mausradgeschwindigkeit auf dem Spielfeld: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Lege die Empfindlichkeit des Mausrads beim Scrollen fest
-STR_CONFIG_SETTING_OSK_ACTIVATION                               :On-screen Tastatur: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Bildschirmtastatur: {STRING}
 STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Wählen der Methode, um die On-Screen-Tastatur für die Texteingabe in Eingabefeldern bei der Verwendung von Zeigegeräten zu aktivieren. Dieses ist für kleine Geräte ohne tatsächliche Tastatur gedacht
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Deaktiviert
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Doppel-Klick
@@ -1439,9 +1439,9 @@ STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Zeige Fahrtzeit
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Zeige Ankunft und Abfahrt im Fahrplan: {STRING}
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Zeige geschätzte Ankunfts- und Abfahrtzeiten in Fahrplänen
 STR_CONFIG_SETTING_QUICKGOTO                                    :Schnelle Erzeugung von Aufträgen für Fahrzeuge: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Setze die Vorauswahl des Mauszeigers auf 'Fahre zu', wenn ein Auftragsfenster mit weniger als zwei Einträgen geöffnet wird.
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Setze die Vorauswahl des Mauszeigers auf „Fahre zu“, wenn ein Auftragsfenster mit weniger als zwei Einträgen geöffnet wird.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Gleistyp bei Spielbeginn/geladenem Spiel: {STRING}
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Vorausgewählter Schienentyp nach Spielstart. 'Erster verfügbarer' wählt den ältesten Schienentyp, 'Letzter verfügbarer' den neuesten Schienentyp und 'Meistbenutzter' denjenigen, der am meisten verbaut ist.
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Vorausgewählter Schienentyp nach Spielstart. „Erster verfügbarer“ wählt den ältesten Schienentyp, „Letzter verfügbarer“ den neuesten Schienentyp und „Meistbenutzter“ denjenigen, der am meisten verbaut ist.
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Erster verfügbarer
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :Letzter verfügbarer
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_MOST_USED                  :Meistbenutzter
@@ -1567,7 +1567,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Jahr in dem das
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nie
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Wirtschaftstyp: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :"Geglättet" sorgt für öftere, kleinere Produktionsänderungen. "Statisch" stoppt Produktionsänderungen und Industrieschließungen. Diese Einstellung hat womöglich keinen Effekt, wenn durch NewGRFs eigene Industrietypen bereitgestellt werden.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :„Geglättet“ sorgt für öftere, kleinere Produktionsänderungen. „Statisch“ stoppt Produktionsänderungen und Industrieschließungen. Diese Einstellung hat womöglich keinen Effekt, wenn durch NewGRFs eigene Industrietypen bereitgestellt werden.
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Geglättet
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Statisch
@@ -1643,12 +1643,12 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximale Hinein
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximale Vergrößerung für Kartenansichten. Bedenke, dass höhere Vergrößerungsstufen mehr Arbeitsspeicher benötigen
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximale Herauszoomstufe: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximale Verkleinerungsstufe für Kartenansichten. Höhere Verkleinerungsstufen können Ruckeln verursachen
-STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
-STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
+STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4×
+STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2×
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
-STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2×
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4×
+STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8×
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Wachstumsgeschwindigkeit von Städten: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Geschwindigkeit des Städtewachstums
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Keine
@@ -1660,32 +1660,32 @@ STR_CONFIG_SETTING_LARGER_TOWNS                                 :Anteil der Stä
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Anzahl Städte, die eine Großstadt werden, d.h. derjenigen Städte, die schon zu Beginn des Spiels größer sind und auch schneller wachsen werden
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 von {COMMA}
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Keine
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Größe von Großstädten bei Spielbeginn: {STRING}x
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Größe von Großstädten bei Spielbeginn: {STRING}×
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Durchschnittliche Größe von Großstädten relativ zu normalen Städten bei Spielbeginn
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Neuberechnung der Warenverteilung alle: {STRING}{NBSP}Tag{P 0:2 "" e}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Zeit zwischen zwei Neuberechnungen des Verteilungsgraphen. Jede Neuberechnung berechnet die Verteilungspläne für eine Komponente des Graphen. Das heißt dass ein Wert X für diese Einstellung nicht zu einer Neuberechnung der gesamten Verteilung alle X Tage führt, sofern es mehrere getrennte Komponenten gibt. Je kleiner der Wert, desto rechenaufwändiger ist die Berechnung. Je größer er ist, desto länger dauert es bis Änderungen an den Fahrplänen sich auf die Verteilung auswirken.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Laufzeit für jede Neuberechnung der Warenverteilung: {STRING}{NBSP}Tag{P 0:2 "" e}
-STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Laufzeit für jede Neuberechnung des Verteilungsgraphen. Für jede Neuberechnung wird ein Thread gestartet, der diese Zeit bekommt, um fertig zu werden. Wenn die Zeit gering ist, ist die Wahrscheinlichkeit hoch, dass er zum gegebenen Zeitpunkt noch nicht fertig ist. Das manifestiert sich darin, dass das Spiel "stehen bleibt", bis der Thread fertig wird. Wenn die Zeit sehr lang ist, dauert es länger bis Änderungen an den Fahrplänen sich auf die Verteilung auswirken.
+STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Laufzeit für jede Neuberechnung des Verteilungsgraphen. Für jede Neuberechnung wird ein Thread gestartet, der diese Zeit bekommt, um fertig zu werden. Wenn die Zeit gering ist, ist die Wahrscheinlichkeit hoch, dass er zum gegebenen Zeitpunkt noch nicht fertig ist. Das manifestiert sich darin, dass das Spiel „stehen bleibt“, bis der Thread fertig wird. Wenn die Zeit sehr lang ist, dauert es länger bis Änderungen an den Fahrplänen sich auf die Verteilung auswirken.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuell
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asymmetrisch
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :symmetrisch
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Verteilungsschema für Passagiere: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :"Symmetrisch" heißt, dass etwa die selbe Zahl von Passagieren von einer Station A zu einer anderen Station B reisen, wie von B nach A. "Asymmetrisch" heißt, dass Passagiere in beliebigen Zahlen hin- und her fahren können. "Manuell" heißt, dass keine automatische Verteilung der Passagiere stattfindet.
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :„Symmetrisch“ heißt, dass etwa die selbe Zahl von Passagieren von einer Station A zu einer anderen Station B reisen, wie von B nach A. „Asymmetrisch“ heißt, dass Passagiere in beliebigen Zahlen hin- und her fahren können. „Manuell“ heißt, dass keine automatische Verteilung der Passagiere stattfindet.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Verteilungsschema für Post: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :"Symmetrisch" heißt, dass etwa die selbe Menge Post von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. "Asymmetrisch" heißt, dass Post in beliebigen Mengen hin- und her geschickt werden kann. "Manuell" heißt, dass keine automatische Verteilung der Post stattfindet.
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :„Symmetrisch“ heißt, dass etwa die selbe Menge Post von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. „Asymmetrisch“ heißt, dass Post in beliebigen Mengen hin- und her geschickt werden kann. „Manuell“ heißt, dass keine automatische Verteilung der Post stattfindet.
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Verteilungsschema für Wertsachen: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :Werttransporte umfassen Wertsachen im gemäßigten, Diamanten im subtropischen und Gold im subarktischen Klima. NewGRFs könnte dies ändern. „Symmetrisch“ bedeutet, dass etwa dieselbe Anzahl von Station A nach Station B transportiert wird wie umgekehrt von B nach A. „Asymmetrisch“ bedeutet, dass eine unteschiedliche Menge in die jeweiligen Richtungen gesendet wird. „Manuell“ bedeudeutet, dass keine automatische Verteilung stattfindet. Es wird die Einstellung „asymmetrisch“ oder „manuell“ im subarktischen Gebiet empfohlen, da Banken kein Gold bzw. Diamanten zu den Minen senden. Für das gemäßigte und subtropische Klima kann die Einstellung „symmetrisch“ genommen werden, da Banken Wertsachen untereinander versenden.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Verteilungsschema für sonstige Frachtarten: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Symmetrisch" heißt, dass etwa die selbe Menge Waren von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. "Asymmetrisch" heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. "Manuell" heißt, dass keine automatische Verteilung der Waren stattfindet. Hier sollte fast immer "asymmetrisch" oder "manuell" gewählt werden.
+STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :„Symmetrisch“ heißt, dass etwa die selbe Menge Waren von einer Station A zu einer anderen Station B geschickt wird, wie von B nach A. „Asymmetrisch“ heißt, dass Waren in beliebigen Mengen hin- und her geschickt werden können. „Manuell“ heißt, dass keine automatische Verteilung der Waren stattfindet. Hier sollte fast immer „asymmetrisch“ oder „manuell“ gewählt werden.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Genauigkeit für die Berechnung der Warenverteilung: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Je höher dieser Wert ist, desto genauer und rechenintensiver ist die Berechnung der Warenverteilung. Wird ein zu hoher Wert gewählt, kann das Spiel bei der Berechnung "hängen". Wird ein zu niedriger Wert gewählt, kann es vorkommen, dass Waren nicht dorthin geschickt werden, wo man erwarten würde dass sie hin sollen.
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Je höher dieser Wert ist, desto genauer und rechenintensiver ist die Berechnung der Warenverteilung. Wird ein zu hoher Wert gewählt, kann das Spiel bei der Berechnung „hängen“. Wird ein zu niedriger Wert gewählt, kann es vorkommen, dass Waren nicht dorthin geschickt werden, wo man erwarten würde dass sie hin sollen.
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Einfluss der Entfernung auf die Transportnachfrage: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Wenn hier ein Wert größer als 0 gewählt wird, so spielt die Entfernung zwischen dem Ursprung und den möglichen Zielen eine Rolle bei der Verteilung von Waren. Je größer die Entfernung und je höher der Wert, desto geringer der Anteil der Waren, die zu der entsprechenden Station geschickt werden.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Einfluss der Beliebtheit der Zielhaltestelle auf die Transportnachfrage bei symmetrischen Verbindungen: {STRING}
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :Wenn hier weniger als 100% gesetzt wird, so verhält sich die symmetrische Verteilung mehr wie die asymmetrische. Das heißt weniger Waren werden für eine gegebene Menge in einer Richtung reisender Waren zurück geschickt. Wenn hier 0 angegeben wird, verhält sich die symmetrische wie die asymmetrische Verteilung.
 STR_CONFIG_SETTING_SHORT_PATH_SATURATION                        :Auslastung der kürzeren Verbindungen bevor längere Verbindungen gewählt werden: {STRING}
-STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Häufig gibt es mehrere Verbindungen um von einer Station zu einer anderen zu kommen. Zuerst wird der Algorithmus die kürzesten Verbindungen auslasten, dann die längeren usw. Wenn alle Verbindungen ausgelastet sind, verteilt er die verbliebene Nachfrage gleichmäßig. Diese Einstellung besagt, ab welcher Auslastung eine Verbinudng als "voll" gilt und der Algorithmus in der ersten Runde die nächst längere wählt. Da die Kapazität der Verbindungen geschätzt wird, ist es sinnvoll, hier weniger als 100% anzugeben, um etwas "Luft" für Fehlschätzungen zu lassen.
+STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :Häufig gibt es mehrere Verbindungen um von einer Station zu einer anderen zu kommen. Zuerst wird der Algorithmus die kürzesten Verbindungen auslasten, dann die längeren usw. Wenn alle Verbindungen ausgelastet sind, verteilt er die verbliebene Nachfrage gleichmäßig. Diese Einstellung besagt, ab welcher Auslastung eine Verbinudng als „voll“ gilt und der Algorithmus in der ersten Runde die nächst längere wählt. Da die Kapazität der Verbindungen geschätzt wird, ist es sinnvoll, hier weniger als 100% anzugeben, um etwas „Luft“ für Fehlschätzungen zu lassen.
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :Geschwindigkeitseinheit: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Immer wenn die Geschwindigkeit angezeigt wird, zeige sie in den gewählten Einheiten
@@ -1764,21 +1764,21 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Wert der
 
 # Config errors
 STR_CONFIG_ERROR                                                :{WHITE}Fehler in der Konfigurations-Datei...
-STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... Fehler im Array '{STRING}'
-STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ungültiger Wert '{STRING}' für '{STRING}'
-STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... angehängte Zeichen an der Einstellung '{STRING}'
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoriere NewGRF '{STRING}': identische GRF ID wie '{STRING}'
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoriere ungültiges NewGRF '{STRING}': {STRING}
+STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... Fehler im Array „{STRING}“
+STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ungültiger Wert „{STRING}“ für „{STRING}“
+STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... angehängte Zeichen an der Einstellung „{STRING}“
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... ignoriere NewGRF „{STRING}“: identische GRF ID wie „{STRING}“
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoriere ungültiges NewGRF „{STRING}“: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nicht gefunden
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ungeignet für statischen Gebrauch
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :System - NewGRF
 STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel zu dieser OpenTTD - Version
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :unbekannt
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Kompressionsgrad '{STRING}' ist ungültig
-STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... '{STRING}' nicht als Format für Spielstände verfügbar. Nutze stattdessen '{STRING}'
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoriere Basisgrafiken '{STRING}': nicht gefunden
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoriere Basissounds '{STRING}': nicht gefunden
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoriere Musikset '{STRING}': nicht gefunden
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Kompressionsgrad „{STRING}“ ist ungültig
+STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... „{STRING}“ nicht als Format für Spielstände verfügbar. Nutze stattdessen „{STRING}“
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoriere Basisgrafiken „{STRING}“: nicht gefunden
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoriere Basissounds „{STRING}“: nicht gefunden
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoriere Musikset „{STRING}“: nicht gefunden
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Zu wenig Arbeitsspeicher
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Reservieren von {BYTES} des Spritecaches fehlgeschlagen. Der Spritecache wurde auf {BYTES} verkleinert. Dies wird die Performance von OpenTTD verschlechtern. Um den Speicherbedarf zu verringern, kann man versuchen, 32bpp - Grafiken auszuschalten und/oder den Zoom-Level zu begrenzen
 
@@ -2253,7 +2253,7 @@ STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Wähle b
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles abwählen
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Keine Erweiterung zum Herunterladen auswählen
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Externe Webseiten durchsuchen
-STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Inhalte, die nicht auf OpenTTD's Server für Online-Erweiterungen vorhanden sind, auf Webseiten suchen, die nicht mit OpenTTD in Verbindung stehen.
+STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Inhalte, die nicht auf OpenTTDs Server für Online-Erweiterungen vorhanden sind, auf Webseiten suchen, die nicht mit OpenTTD in Verbindung stehen.
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}OpenTTD wird hiermit verlassen!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Die Bedingungen für den Download von Erweiterungen von fremden Webseiten variieren.{}Bei Problemen mit der Installation der Erweiterung in OpenTTD bitte auf der externen Webseite nach Anleitungen suchen.{}Fortfahren?
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filter für Stichworte oder Namen:
@@ -2278,7 +2278,7 @@ STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Gesamtg
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Ausgewählt wegen: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Abhängigkeiten: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Stichworte: {WHITE}{STRING}
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD wurde ohne "zlib" erstellt...
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD wurde ohne „zlib“-Unterstüzung gebaut ...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... Herunterladen von Erweiterungen nicht möglich!
 
 # Order of these is important!
@@ -2407,7 +2407,7 @@ STR_STATION_CLASS_WAYP                                          :Wegpunkte
 STR_BUILD_SIGNAL_CAPTION                                        :{WHITE}Signalauswahl
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TOOLTIP                         :{BLACK}Blocksignal (Formsignal){}Dies ist der einfachste Signaltyp. Bei Verwendung dieses Signaltyps darf sich immer nur ein Zug im Signalabschnitt aufhalten
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TOOLTIP                        :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im nächsten Block mindestens ein Ausfahrsignal grün zeigt. Andernfalls zeigt es rot
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um den Einfahr- oder Kombinationssignalen des Blockes "frei" zu melden
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TOOLTIP                         :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein Blocksignal, wird jedoch benötigt, um den Einfahr- oder Kombinationssignalen des Blockes „frei“ zu melden
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TOOLTIP                        :{BLACK}Kombinationssignal (Formsignal){}Das Kombinationssignal ist gleichzeitig Aus- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TOOLTIP                          :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Pfadsignale können von hinten durchfahren werden
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TOOLTIP                     :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalabschnitt zu befahren, sofern sie separate Gleisabschnitte belegen können. Einseitige Pfadsignale können nicht von hinten durchfahren werden
@@ -2538,7 +2538,7 @@ STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objektau
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Objektauswahl - Auf das gewünschte Objekt klicken, um es zu bauen. Shift schaltet zwischen Bauen und Kostenvoranschlag um
 STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Objektklasse auswählen
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Vorschau des Objekts
-STR_OBJECT_BUILD_SIZE                                           :{BLACK}Größe: {GOLD}{NUM} x {NUM} Felder
+STR_OBJECT_BUILD_SIZE                                           :{BLACK}Größe: {GOLD}{NUM} × {NUM} Felder
 
 STR_OBJECT_CLASS_LTHS                                           :Leuchttürme
 STR_OBJECT_CLASS_TRNS                                           :Sendemasten
@@ -2599,8 +2599,8 @@ STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Städti
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Straßenbauplan für diese Stadt auswählen
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Bessere Straßen
-STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 Muster
-STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 Muster
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2×2-Muster
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3×3-Muster
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Zufall
 
 # Fund new industry window
@@ -2883,7 +2883,7 @@ STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Reliefkarte drehen:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Reliefkartenname:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Größe:
-STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
+STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
 STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Maximalhöhe der Karte ändern
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Höhe der Schneegrenze ändern
@@ -3046,7 +3046,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Die angefordert
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wurde von {STRING} deaktiviert
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Ungültiges oder unbekanntes Format für Spritelayout (Sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Zu viele Elemente in Eigenschaftswert-Liste (Sprite {3:NUM}, Eigenschaft {4:HEX})
-STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ungültige Produktions-Rückruffunktion (Sprite {3:NUM}, "{2:STRING}")
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Ungültige Produktions-Rückruffunktion (Sprite {3:NUM}, „{2:STRING}“)
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Achtung!
@@ -3068,17 +3068,17 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}Kompati
 STR_NEWGRF_LIST_MISSING                                         :{RED}Fehlende Dateien
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs '{STRING}' wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ändert die Antriebseigenschaften für '{1:ENGINE}' außerhalb von Depots
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots
-STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ändert die Ladekapazität für '{1:ENGINE}' ohne Umrüst-Auftrag außerhalb von Depots
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VEHICLE}' der Firma '{COMPANY}' hat eine ungültige Länge. Vermutlich ein NewGRF Problem. Spiel kann desynchronisieren oder abstürzen
+STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs „{STRING}“ wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Ändert die Antriebseigenschaften für „{1:ENGINE}“ außerhalb von Depots
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von „{1:ENGINE}“ außerhalb eines Depots
+STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Ändert die Ladekapazität für „{1:ENGINE}“ ohne Umrüst-Auftrag außerhalb von Depots
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug „{VEHICLE}“ der Firma „{COMPANY}“ hat eine ungültige Länge. Vermutlich ein NewGRF-Problem. Spiel kann desynchronisieren oder abstürzen
 
-STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF '{0:STRING}' liefert falsche Informationen
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht / Ersetzungs - Informationen für '{1:ENGINE}' weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
-STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' verursachte eine Endlosschleife in Produktions-Rückruffunktion
+STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF „{0:STRING}“ liefert falsche Informationen
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Fracht / Ersetzungs - Informationen für „{1:ENGINE}“ weichen von der Einkaufsliste nach dem Kauf ab. Das kann dazu führen, dass das Umrüsten beim autmatisches Ersetzen oder Erneuern nicht korrekt funktioniert
+STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}„{1:STRING}“ verursachte eine Endlosschleife in Produktions-Rückruffunktion
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}Rückruffunktion {1:HEX} lieferte des unbekannte/ungülte Resultat {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' lieferte eine ungültige Frachtart in der Produktions-Rückruffunktion {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}„{1:STRING}“ lieferte eine ungültige Frachtart in der Produktions-Rückruffunktion {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
 STR_NEWGRF_INVALID_CARGO                                        :<ungültige Frachtart>
@@ -4004,7 +4004,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Nächstes Depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Nächster Hangar
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
 STR_ORDER_SHARE                                                 :Gemeinsame Aufträge
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen 'Vollladen einer Fracht', für Wegpunkte 'ohne Zwischenhalt' und für Depots 'Wartung' auszuwählen. 'Gemeinsame Aufträge' erlauben es, für mehrere Fahrzeuge nur einen Fahrplan und eine Auftragsliste zu verwenden. Durch Klicken auf ein Fahrzeug werden die Aufträge durch die des ausgewählten Fahrzeugs ersetzt. Wartungs- und Depotaufträge schalten die automatische Wartung aus.
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Einen neuen Auftrag vor dem markierten Auftrag oder am Ende der Liste einfügen. Strg halten, um für Stationen „Vollladen einer Fracht“, für Wegpunkte „ohne Zwischenhalt“ und für Depots „Wartung“ auszuwählen. „Gemeinsame Aufträge“ erlauben es, für mehrere Fahrzeuge nur einen Fahrplan und eine Auftragsliste zu verwenden. Durch Klicken auf ein Fahrzeug werden die Aufträge durch die des ausgewählten Fahrzeugs ersetzt. Wartungs- und Depotaufträge schalten die automatische Wartung aus.
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Alle Fahrzeuge mit demselben Fahrplan anzeigen
 
@@ -4299,9 +4299,9 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Nur ein 
 
 # Screenshot related messages
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Riesiger Screenshot
-STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Der Screenshot wird die Auflösung von {COMMA} x {COMMA} Pixeln haben. Das kann einige Zeit dauern. Soll fortgefahren werden?
+STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Der Screenshot wird die Auflösung von {COMMA} × {COMMA} Pixeln haben. Das kann einige Zeit dauern. Soll fortgefahren werden?
 
-STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespeichert als '{STRING}'
+STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespeichert als „{STRING}“
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot fehlgeschlagen
 
 # Error message titles
@@ -4394,7 +4394,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... Wald
 STR_ERROR_CAN_ONLY_BE_BUILT_ABOVE_SNOW_LINE                     :{WHITE}... kann nur oberhalb der Schneegrenze errichtet werden
 STR_ERROR_CAN_ONLY_BE_BUILT_BELOW_SNOW_LINE                     :{WHITE}... kann nur unterhalb der Schneegrenze errichtet werden
 
-STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Es konnten für die Industrie '{STRING}' keine geeigneten Standorte gefunden werden
+STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES                     :{WHITE}Es konnten für die Industrie „{STRING}“ keine geeigneten Standorte gefunden werden
 STR_ERROR_NO_SUITABLE_PLACES_FOR_INDUSTRIES_EXPLANATION         :{WHITE}Karteneinstellungen ändern, um eine bessere Karte zu erzeugen
 
 # Station construction related errors
@@ -4809,25 +4809,25 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MIGHTYMOVER_CHOO_CHOO        :MightyMover Cho
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_PLODDYPHUT_DIESEL            :Ploddyphut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_POWERNAUT_DIESEL             :Powernaut Diesel
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_WILLS_2_8_0_STEAM            :Wills 2-8-0 (Dampf)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney 'Jubilee' (Dampf)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu 'A4' (Dampf)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH '8P' (Dampf)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CHANEY_JUBILEE_STEAM         :Chaney „Jubilee“ (Dampf)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_GINZU_A4_STEAM               :Ginzu „A4“ (Dampf)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_8P_STEAM                  :SH „8P“ (Dampf)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MANLEY_MOREL_DMU_DIESEL      :Manley-Morel VT (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :'Dash' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry '25' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU '37' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss '47' (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_DASH_DIESEL                  :„Dash“ (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_HENDRY_25_DIESEL          :SH/Hendry „25“ (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_UU_37_DIESEL                 :UU „37“ (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_FLOSS_47_DIESEL              :Floss „47“ (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_4000_DIESEL               :CS 4000 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CS_2400_DIESEL               :CS 2400 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_CENTENNIAL_DIESEL            :Centennial (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_KELLING_3100_DIESEL          :Kelling 3100 (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_TURNER_TURBO_DIESEL          :Turner Turbo (Diesel)
 STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_MJS_1000_DIESEL              :MJS 1000 (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH '125' (Diesel)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH '30' (Elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH '40' (Elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :'T.I.M.' (Elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :'AsiaStar' (Elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_125_DIESEL                :SH „125“ (Diesel)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_30_ELECTRIC               :SH „30“ (Elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_SH_40_ELECTRIC               :SH „40“ (Elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_T_I_M_ELECTRIC               :„T.I.M.“ (Elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_RAIL_ASIASTAR_ELECTRIC            :„AsiaStar“ (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PASSENGER_CAR                 :Passagierwaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_MAIL_VAN                      :Postwaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :Kohlenwaggon
@@ -4855,8 +4855,8 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Spielzeugtransp
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Batterietransporter
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Limonadentransporter
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Plastiktransporter
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :„X2001“ (Elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :„Millennium Z1“ (Elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_WIZZOWOW_Z99             :Wizzowow Z99
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PASSENGER_CAR             :Passagierwaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_MAIL_VAN                  :Postwaggon
@@ -4885,10 +4885,10 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Spielwarentrans
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Batterietransporter
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Limonadetransporter
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Plastikwaggon
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 'Pegasus' (elektrisch)
-STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 'Chimaera' (elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 „Leviathan“ (elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 „Cyclops“ (elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 „Pegasus“ (elektrisch)
+STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 „Chimaera“ (elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Passagierwaggon (Magnetschwebebahn)
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Postwaggon

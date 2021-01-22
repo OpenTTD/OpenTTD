@@ -747,6 +747,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Ruw land
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Grasland
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Braakliggend land
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Regenwoud
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Akkers
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Bomen
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Rotsen
@@ -1835,6 +1836,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Weet je
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Valsspelen
 STR_CHEATS_TOOLTIP                                              :{BLACK}Keuzevakjes geven aan of je deze manier van valsspelen eerder hebt gebruikt
+STR_CHEATS_NOTE                                                 :{BLACK}Opmerking: al deze instellingen worden opgeslagen in het opgeslagen spel
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kapitaal vergroten met {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelen als bedrijf: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
@@ -2351,6 +2353,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Routepun
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Los routepunt bouwen
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Momenteel uitgeschakeld omdat er geen voertuigen zijn voor deze infrastructuur
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Spoorwegen bouwen
@@ -2628,6 +2631,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Bedrijf 
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Landinformatie
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Centreer het hoofdscherm op de locatie van de tegel. Ctrl+klik opent een nieuw venster op de locatie van de tegel.
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Sloopkosten: {LTBLUE}niet mogelijk
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Sloopkosten: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Opbrengst bij verwijdering: {LTBLUE}{CURRENCY_LONG}
@@ -3098,6 +3102,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Schakel 
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Wijzig tekst van bord
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centreer het hoofdscherm op de locatie van het sein. Ctrl+klik opent een nieuw venster op de locatie van het sein.
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Ga naar volgende bord
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Ga naar vorige bord
 
@@ -3126,7 +3131,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Stad gro
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Stad groeit iedere {ORANGE}{COMMA}{BLACK}{NBSP}dag{P "" en} (gefinancierd)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Stad groeit {RED}niet{BLACK}
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Geluidslimiet in stad: {ORANGE}{COMMA}{BLACK} max: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het scherm op de locatie van de stad. Ctrl+klik opent een nieuw kijkvenster op de locatie van de stad
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het hoofdscherm op de locatie van de stad. Ctrl+klik opent een nieuw kijkvenster op de locatie van de stad
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Gemeente
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Geef informatie over de gemeente weer
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Hiermee hernoem je deze plaats
@@ -3292,7 +3297,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Uitstekend
 STR_CARGO_RATING_OUTSTANDING                                    :Voortreffelijk
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centreer het scherm op de locatie van het station. Ctrl+klik opent een nieuw venster op de locatie van het station
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centreer het hoofdscherm op de locatie van het station. Ctrl+klik opent een nieuw venster op de locatie van het station
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Station hernoemen
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Geef alle treinen weer die dit station in hun opdrachtenlijst hebben
@@ -3307,9 +3312,9 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Voorkom 
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Scherm centreren op routepunt. Ctrl+klik opent nieuw venster op locatie van routepunt.
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centreer het hoofdscherm op het routepunt. Ctrl+klik opent nieuw venster op locatie van routepunt.
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Naam routepunt aanpassen
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Hoofdscherm centreren op locatie van boei. Ctrl+klik opent een nieuw venster op de locatie van de boei.
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centreer het hoofdscherm op de locatie van de boei. Ctrl+klik opent een nieuw venster op de locatie van de boei.
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Naam van boei aanpassen
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Naam routepunt aanpassen
@@ -3429,7 +3434,7 @@ STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Geen
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
 STR_INDUSTRY_VIEW_PRODUCTION_LAST_MONTH_TITLE                   :{BLACK}Productie vorige maand:
 STR_INDUSTRY_VIEW_TRANSPORTED                                   :{YELLOW}{CARGO_LONG}{STRING}{BLACK} ({COMMA}% vervoerd)
-STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centreer het scherm op de locatie van de industrie. Ctrl+klik opent een nieuws venster op de locatie van de industrie
+STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}Centreer het hoofdscherm op de locatie van de industrie. Ctrl+klik opent een nieuws venster op de locatie van de industrie
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Productieniveau: {YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}De industrie heeft een dreigende sluiting aangekondigd!
 
@@ -3661,10 +3666,10 @@ STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Hiermee 
 STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Hiermee koop je een kopie van een schip. Klik op deze knop en dan op een schip binnen of buiten het dok. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Hiermee koop je een kopie van een vliegtuig. Klik op deze knop en dan op een vliegtuig binnen of buiten de hangar. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
 
-STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Scherm centreren op remise. Ctrl+klik opent een nieuw scherm op locatie van remise.
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centreer het scherm op de locatie van de garage. Ctrl+klik opent een nieuw scherm op de locatie van de garage
+STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centreer het hoofdscherm op de remise. Ctrl+klik opent een nieuw scherm op locatie van remise.
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centreer het hoofdscherm op de locatie van de garage. Ctrl+klik opent een nieuw scherm op de locatie van de garage
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centreer hoofdscherm op de locatie van het dok. Ctrl+klik opent een nieuw scherm op de locatie van het dok
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Scherm centreren op hangar. Ctrl+klik opent een nieuw venster op de hangarlocatie.
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centreer het hoofdscherm op de hangar. Ctrl+klik opent een nieuw venster op de hangarlocatie.
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Geef een lijst van alle treinen met dit depot in hun orders
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Geef een lijst van alle wegvoertuigen met deze garage in hun orders
@@ -3754,6 +3759,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te ve
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centreer het hoofdscherm op de locatie van de trein. Met dubbelklik volg je de trein op het hoofdscherm. Ctrl+klik opent een nieuw scherm op de locatie van de trein.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centreer het hoofdscherm op de locatie van het voertuig. Met dubbelklik volg je het voertuig op het hoofdscherm. Ctrl+klik opent een nieuw venster op de locatie van het voertuig
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centreer het hoofdscherm op de locatie van het schip. Met dubbelklik volg je het schip op het hoofdscherm. Ctrl+klik opent een nieuw venster op de locatie van het schip
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centreer het hoofdscherm op de locatie van het vliegtuig. Met dubbelklik volg je het vliegtuig op het hoofdscherm. Ctrl+klik opent een nieuw scherm op de locatie van het vliegtuig.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Stuur trein naar depot. Ctrl+klik voor alleen onderhoud
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Stuur wegvoertuig naar garage. Ctrl+klik voor alleen onderhoud
@@ -3762,10 +3771,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Stuur vl
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Hiermee koop je een kopie van deze trein, inclusief wagons. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Hiermee koop je een kopie van dit wegvoertuig. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hiermee koop je een kopie gekocht van dit schip. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Hiermee koop je een kopie van dit schip. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Hiermee koop je een kopie van dit vliegtuig. Ctrl+klik deelt de orders. Shift+klik geeft de verwachte kosten zonder te kopen.
 
-STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forceer trein verder te rijden zonder te wachten op een groen sein
+STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Forceer trein om verder te rijden zonder te wachten op een groen sein
 
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}Trein ombouwen voor een ander vrachttype
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REFIT_TOOLTIP                     :{BLACK}Wegvoertuig ombouwen voor een ander vrachttype
@@ -3785,7 +3794,12 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Details 
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Details van schip weergeven
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Details van vliegtuig weergeven
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Huidige treinactie - klik om de trein te starten of stoppen
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Huidige voertuigactie - klik om het voertuig te starten of stoppen
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Huidige scheepsactie - klik om het schip te starten of stoppen
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Huidige vliegtuigactie - klik om het vliegtuig te starten of stoppen
 
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centreer het hoofdscherm op het doel van de order. Ctrl+klik opent een nieuw venster op het doel van de order.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}In- en uitladen
@@ -4013,6 +4027,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Ombouwen naar 
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Kan station niet gebruiken){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Impliciet)
 
@@ -4465,6 +4480,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Verkeerd depot-
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} is te lang na het vervangen
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Geen automatische regels voor vervangen/vernieuwen toegepast
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(onvoldoende geld)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Nieuw voertuig is niet geschikt voor {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nieuw voertuig kan niet ombouwen in order {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Onmogelijke spoorcombinatie

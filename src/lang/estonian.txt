@@ -430,7 +430,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Välju
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Mängu seadistus
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Seaded
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Tehismõistuse / Mängu skriptide seaded
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/GameScripti seaded
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-i seadistus
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läbipaistvuse seadistus
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Näidatavad linnanimed
@@ -527,7 +527,7 @@ STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Teadete ajalugu
 STR_ABOUT_MENU_LAND_BLOCK_INFO                                  :Maa-ala andmed
 STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Lülita konsool sisse/välja
-STR_ABOUT_MENU_AI_DEBUG                                         :Arvutivea otsing
+STR_ABOUT_MENU_AI_DEBUG                                         :AI/GameScripti debugimine
 STR_ABOUT_MENU_SCREENSHOT                                       :Kuvapaugutus
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Näita kaadrisagedust
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :'OpenTTD' kohta
@@ -1790,7 +1790,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Edetabel
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Seaded
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}NewGRF-i seadistus
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Aineste allalaadimine
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Arvuti seadistus
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}AI/GameScripti seaded
 STR_INTRO_QUIT                                                  :{BLACK}Välju
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Alusta uut mängu. Ctrl+klõps jätab kaardi seadistamise vahele
@@ -1810,7 +1810,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Ava edet
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Ava seaded
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Ava NewGRF-i seadistamine
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi allalaadimiseks uusi ja uuendatud aineseid
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Ava arvuti seadistamine
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Ava AI/GameScripti seaded
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Välju 'OpenTTD'st
 
 STR_INTRO_TRANSLATION                                           :{BLACK}{NUM} tõlge{P "" t} on puudu. Palun aita teha OpenTTD veel paremaks, ning hakka tõlkijaks. Rohkem teavet leiad «readme.txt» failist.
@@ -4031,15 +4031,15 @@ STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jätka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jätka tee ja tee edasi AI-d
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vaata selle AI silumisinfo väljundit
 STR_AI_GAME_SCRIPT                                              :{BLACK}Mängu Skript
-STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Vaata Mängu Skripti logi
+STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kontrolli GameScripti logi
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Laadimiseks sobivat tehismõistust ei leitud.{}See on asendustehismõistus, ning ei tee midagi.{}Tehismõistuseid saab laadida kasutades 'Internetisisu' süsteemi.
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Tõrge ühe töötava tehismõistusega. Palun teavitage sellest tehismõistuse autorit koos kuvapaugutusega tehismõistuse tõrkeotsingu aknast.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}Tehismõistuse / GameScript-i silumise akent saab vaadata ainult server
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/GameScripti debugimise akent saab kasutada ainult serveris
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Arvuti seadistus
-STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}GameScript-id mis laetakse järgmise mänguga
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Game Script seadistus
+STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Järgmises mängus laaditav GameScript
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Tehismõistused mis laetakse järgmise mänguga
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Inimene
 STR_AI_CONFIG_RANDOM_AI                                         :Suvaline tehismõistus
