@@ -113,7 +113,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 			this->window_number = SP_MULTIPLAYER;
 			this->rank = SaveHighScoreValueNetwork();
 		} else {
-			/* in single player _local company is always valid */
+			/* in singleplayer mode _local company is always valid */
 			const Company *c = Company::Get(_local_company);
 			this->window_number = SP_CUSTOM;
 			this->rank = SaveHighScoreValue(c);

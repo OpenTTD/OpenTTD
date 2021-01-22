@@ -147,7 +147,7 @@ DEF_CONSOLE_HOOK(ConHookNeedNetwork)
 }
 
 /**
- * Check whether we are in single player mode.
+ * Check whether we are in singleplayer mode.
  * @return True when no network is active.
  */
 DEF_CONSOLE_HOOK(ConHookNoNetwork)
@@ -1248,7 +1248,7 @@ DEF_CONSOLE_CMD(ConReloadAI)
 		return true;
 	}
 
-	/* In offline mode the player can be in an AI company, after cheating or loading network save with an AI in first slot. */
+	/* In singleplayer mode the player can be in an AI company, after cheating or loading network save with an AI in first slot. */
 	if (Company::IsHumanID(company_id) || company_id == _local_company) {
 		IConsoleWarning("Company is not controlled by an AI.");
 		return true;
@@ -1286,7 +1286,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 		return true;
 	}
 
-	/* In offline mode the player can be in an AI company, after cheating or loading network save with an AI in first slot. */
+	/* In singleplayer mode the player can be in an AI company, after cheating or loading network save with an AI in first slot. */
 	if (Company::IsHumanID(company_id) || company_id == _local_company) {
 		IConsoleWarning("Company is not controlled by an AI.");
 		return true;
