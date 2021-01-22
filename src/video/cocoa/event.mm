@@ -73,47 +73,19 @@ static uint32 GetTick()
 	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
 }
 
-static void QZ_WarpCursor(int x, int y)
+void VideoDriver_Cocoa::WarpCursor(int x, int y)
 {
-	assert(_cocoa_subdriver != NULL);
-
 	/* Only allow warping when in foreground */
 	if (![ NSApp isActive ]) return;
 
 	NSPoint p = NSMakePoint(x, y);
-	CGPoint cgp = _cocoa_subdriver->PrivateLocalToCG(&p);
+	CGPoint cgp = this->PrivateLocalToCG(&p);
 
 	/* Do the actual warp */
 	CGWarpMouseCursorPosition(cgp);
 	/* this is the magic call that fixes cursor "freezing" after warp */
 	CGAssociateMouseAndMouseCursorPosition(true);
 }
-
-
-static void QZ_CheckPaletteAnim()
-{
-	if (_cur_palette.count_dirty != 0) {
-		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
-
-		switch (blitter->UsePaletteAnimation()) {
-			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				_cocoa_subdriver->UpdatePalette(_cur_palette.first_dirty, _cur_palette.count_dirty);
-				break;
-
-			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_cur_palette);
-				break;
-
-			case Blitter::PALETTE_ANIMATION_NONE:
-				break;
-
-			default:
-				NOT_REACHED();
-		}
-		_cur_palette.count_dirty = 0;
-	}
-}
-
 
 
 struct VkMapping {
@@ -343,10 +315,10 @@ static void QZ_DoUnsidedModifiers(unsigned int newMods)
 	_current_mods = newMods;
 }
 
-static void QZ_MouseMovedEvent(int x, int y)
+void  VideoDriver_Cocoa::MouseMovedEvent(int x, int y)
 {
 	if (_cursor.UpdateCursorPosition(x, y, false)) {
-		QZ_WarpCursor(_cursor.pos.x, _cursor.pos.y);
+		this->WarpCursor(_cursor.pos.x, _cursor.pos.y);
 	}
 	HandleMouseEvents();
 }
@@ -380,10 +352,8 @@ static void QZ_MouseButtonEvent(int button, BOOL down)
 
 
 
-static bool QZ_PollEvent()
+bool VideoDriver_Cocoa::PollEvent()
 {
-	assert(_cocoa_subdriver != NULL);
-
 #ifdef _DEBUG
 	uint32 et0 = GetTick();
 #endif
@@ -395,7 +365,7 @@ static bool QZ_PollEvent()
 #endif
 
 	if (event == nil) return false;
-	if (!_cocoa_subdriver->IsActive()) {
+	if (!this->active) {
 		[ NSApp sendEvent:event ];
 		return true;
 	}
@@ -408,18 +378,18 @@ static bool QZ_PollEvent()
 		case NSMouseMoved:
 		case NSOtherMouseDragged:
 		case NSLeftMouseDragged:
-			pt = _cocoa_subdriver->GetMouseLocation(event);
-			if (!_cocoa_subdriver->MouseIsInsideView(&pt) && !_emulating_right_button) {
+			pt = this->GetMouseLocation(event);
+			if (!this->MouseIsInsideView(&pt) && !_emulating_right_button) {
 				[ NSApp sendEvent:event ];
 				break;
 			}
 
-			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
+			this->MouseMovedEvent((int)pt.x, (int)pt.y);
 			break;
 
 		case NSRightMouseDragged:
-			pt = _cocoa_subdriver->GetMouseLocation(event);
-			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
+			pt = this->GetMouseLocation(event);
+			this->MouseMovedEvent((int)pt.x, (int)pt.y);
 			break;
 
 		case NSLeftMouseDown:
@@ -428,13 +398,13 @@ static bool QZ_PollEvent()
 			if (_settings_client.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSCommandKeyMask;
 			if (_settings_client.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSControlKeyMask;
 
-			pt = _cocoa_subdriver->GetMouseLocation(event);
+			pt = this->GetMouseLocation(event);
 
-			if (!([ event modifierFlags ] & keymask) || !_cocoa_subdriver->MouseIsInsideView(&pt)) {
+			if (!([ event modifierFlags ] & keymask) || !this->MouseIsInsideView(&pt)) {
 				[ NSApp sendEvent:event ];
 			}
 
-			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
+			this->MouseMovedEvent((int)pt.x, (int)pt.y);
 
 			/* Right mouse button emulation */
 			if ([ event modifierFlags ] & keymask) {
@@ -448,9 +418,9 @@ static bool QZ_PollEvent()
 		case NSLeftMouseUp:
 			[ NSApp sendEvent:event ];
 
-			pt = _cocoa_subdriver->GetMouseLocation(event);
+			pt = this->GetMouseLocation(event);
 
-			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
+			this->MouseMovedEvent((int)pt.x, (int)pt.y);
 
 			/* Right mouse button emulation */
 			if (_emulating_right_button) {
@@ -462,24 +432,24 @@ static bool QZ_PollEvent()
 			break;
 
 		case NSRightMouseDown:
-			pt = _cocoa_subdriver->GetMouseLocation(event);
-			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
+			pt = this->GetMouseLocation(event);
+			if (!this->MouseIsInsideView(&pt)) {
 				[ NSApp sendEvent:event ];
 				break;
 			}
 
-			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
+			this->MouseMovedEvent((int)pt.x, (int)pt.y);
 			QZ_MouseButtonEvent(1, YES);
 			break;
 
 		case NSRightMouseUp:
-			pt = _cocoa_subdriver->GetMouseLocation(event);
-			if (!_cocoa_subdriver->MouseIsInsideView(&pt)) {
+			pt = this->GetMouseLocation(event);
+			if (!this->MouseIsInsideView(&pt)) {
 				[ NSApp sendEvent:event ];
 				break;
 			}
 
-			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
+			this->MouseMovedEvent((int)pt.x, (int)pt.y);
 			QZ_MouseButtonEvent(1, NO);
 			break;
 
@@ -492,7 +462,7 @@ static bool QZ_PollEvent()
 				break;
 			}
 
-			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
+			this->MouseMovedEvent((int)pt.x, (int)pt.y);
 			QZ_MouseButtonEvent([ event buttonNumber ], YES);
 			break;
 
@@ -503,7 +473,7 @@ static bool QZ_PollEvent()
 				break;
 			}
 
-			QZ_MouseMovedEvent((int)pt.x, (int)pt.y);
+			this->MouseMovedEvent((int)pt.x, (int)pt.y);
 			QZ_MouseButtonEvent([ event buttonNumber ], NO);
 			break;
 #endif
@@ -524,7 +494,7 @@ static bool QZ_PollEvent()
 			unsigned short unicode = [ chars length ] > 0 ? [ chars characterAtIndex:0 ] : 0;
 			if (EditBoxInGlobalFocus()) {
 				if (QZ_KeyEvent([ event keyCode ], unicode, YES)) {
-					[ _cocoa_subdriver->cocoaview interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
+					[ this->cocoaview interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
 				}
 			} else {
 				QZ_KeyEvent([ event keyCode ], unicode, YES);
@@ -629,32 +599,32 @@ void VideoDriver_Cocoa::GameLoop()
 #endif
 
 	DisplaySplashImage();
-	QZ_CheckPaletteAnim();
-	_cocoa_subdriver->Draw(true);
+	this->CheckPaletteAnim();
+	this->Draw(true);
 	CSleep(1);
 
 	for (int i = 0; i < 2; i++) ::GameLoop();
 
 	UpdateWindows();
-	QZ_CheckPaletteAnim();
-	_cocoa_subdriver->Draw();
+	this->CheckPaletteAnim();
+	this->Draw();
 	CSleep(1);
 
 	/* Set the proper OpenTTD palette which got spoilt by the splash
 	 * image when using 8bpp blitter */
 	GfxInitPalettes();
-	QZ_CheckPaletteAnim();
-	_cocoa_subdriver->Draw(true);
+	this->CheckPaletteAnim();
+	this->Draw(true);
 
 	for (;;) {
 		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
 
-		while (QZ_PollEvent()) {}
+		while (this->PollEvent()) {}
 
 		if (_exit_game) {
 			/* Restore saved resolution if in fullscreen mode. */
-			if (_cocoa_subdriver->IsFullscreen()) _cur_resolution = this->orig_res;
+			if (this->IsFullscreen()) _cur_resolution = this->orig_res;
 			break;
 		}
 
@@ -685,8 +655,8 @@ void VideoDriver_Cocoa::GameLoop()
 			::GameLoop();
 
 			UpdateWindows();
-			QZ_CheckPaletteAnim();
-			_cocoa_subdriver->Draw();
+			this->CheckPaletteAnim();
+			this->Draw();
 		} else {
 #ifdef _DEBUG
 			uint32 st0 = GetTick();
@@ -697,7 +667,7 @@ void VideoDriver_Cocoa::GameLoop()
 #endif
 			NetworkDrawChatMessage();
 			DrawMouseCursor();
-			_cocoa_subdriver->Draw();
+			this->Draw();
 		}
 	}
 

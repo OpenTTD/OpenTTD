@@ -18,9 +18,37 @@ extern bool _cocoa_video_started;
 
 class VideoDriver_Cocoa : public VideoDriver {
 private:
-	Dimension orig_res;          ///< Saved window size for non-fullscreen mode.
+	Dimension orig_res;   ///< Saved window size for non-fullscreen mode.
+
+	int device_width;     ///< Width of device in pixel
+	int device_height;    ///< Height of device in pixel
+	int device_depth;     ///< Colour depth of device in bit
+
+	int window_width;     ///< Current window width in pixel
+	int window_height;    ///< Current window height in pixel
+	int window_pitch;
+
+	int buffer_depth;     ///< Colour depth of used frame buffer
+	void *pixel_buffer;   ///< used for direct pixel access
+	void *window_buffer;  ///< Colour translation from palette to screen
+
+#	define MAX_DIRTY_RECTS 100
+	Rect dirty_rects[MAX_DIRTY_RECTS]; ///< dirty rectangles
+	int num_dirty_rects = MAX_DIRTY_RECTS;  ///< Number of dirty rectangles
+	uint32 palette[256];  ///< Colour Palette
 
 public:
+	bool active;          ///< Whether the window is visible
+	bool setup;
+
+	id window;            ///< Pointer to window object
+	id cocoaview;         ///< Pointer to view object
+	CGColorSpaceRef color_space; ///< Window color space
+	CGContextRef cgcontext;      ///< Context reference for Quartz subdriver
+
+public:
+	VideoDriver_Cocoa();
+
 	const char *Start(const StringList &param) override;
 
 	/** Stop the video driver */
@@ -70,26 +98,28 @@ public:
 	/** Main game loop. */
 	void GameLoop(); // In event.mm.
 
+	/** Resize the window.
+	 * @return whether the window was successfully resized
+	 */
+	bool WindowResized();
+
+	/** Convert local coordinate to window server (CoreGraphics) coordinate
+	 * @param p local coordinates
+	 * @return window driver coordinates
+	 */
+	CGPoint PrivateLocalToCG(NSPoint *p);
+
 protected:
 	Dimension GetScreenSize() const override;
 
 private:
-	friend class WindowQuartzSubdriver;
+	bool PollEvent(); // In event.mm.
+	void MouseMovedEvent(int x, int y); // In event.mm.
+	void WarpCursor(int x, int y); // In event.mm.
 
 	void GameSizeChanged();
 	void UpdateVideoModes();
-};
 
-class FVideoDriver_Cocoa : public DriverFactoryBase {
-public:
-	FVideoDriver_Cocoa() : DriverFactoryBase(Driver::DT_VIDEO, 10, "cocoa", "Cocoa Video Driver") {}
-	Driver *CreateInstance() const override { return new VideoDriver_Cocoa(); }
-};
-
-
-
-class WindowQuartzSubdriver {
-private:
 	/**
 	 * This function copies 8bpp pixels from the screen buffer in 32bpp windowed mode.
 	 *
@@ -103,47 +133,10 @@ private:
 	void GetDeviceInfo();
 	bool SetVideoMode(int width, int height, int bpp);
 
-public:
-	int device_width;     ///< Width of device in pixel
-	int device_height;    ///< Height of device in pixel
-	int device_depth;     ///< Colour depth of device in bit
-
-	int window_width;     ///< Current window width in pixel
-	int window_height;    ///< Current window height in pixel
-	int window_pitch;
-
-	int buffer_depth;     ///< Colour depth of used frame buffer
-	void *pixel_buffer;   ///< used for direct pixel access
-	void *window_buffer;  ///< Colour translation from palette to screen
-
-#	define MAX_DIRTY_RECTS 100
-	Rect dirty_rects[MAX_DIRTY_RECTS]; ///< dirty rectangles
-	int num_dirty_rects;  ///< Number of dirty rectangles
-	uint32 palette[256];  ///< Colour Palette
-
-	bool active;          ///< Whether the window is visible
-	bool setup;
-
-	id window;            ///< Pointer to window object
-	id cocoaview;         ///< Pointer to view object
-	CGColorSpaceRef color_space; ///< Window color space
-	CGContextRef cgcontext;      ///< Context reference for Quartz subdriver
-
-	WindowQuartzSubdriver();
-	~WindowQuartzSubdriver();
-
 	/** Draw window
 	 * @param force_update Whether to redraw unconditionally
 	 */
 	void Draw(bool force_update = false);
-
-	/** Mark dirty a screen region
-	 * @param left x-coordinate of left border
-	 * @param top  y-coordinate of top border
-	 * @param width width or dirty rectangle
-	 * @param height height of dirty rectangle
-	 */
-	void MakeDirty(int left, int top, int width, int height);
 
 	/** Update the palette */
 	void UpdatePalette(uint first_color, uint num_colors);
@@ -162,31 +155,10 @@ public:
 	 */
 	bool IsFullscreen();
 
-	/** Toggle between fullscreen and windowed mode
-	 * @return whether switch was successful
-	 */
-	bool ToggleFullscreen(bool fullscreen);
-
-	/** Return the width of the current view
-	 * @return width of the current view
-	 */
-	int GetWidth() { return window_width; }
-
-	/** Return the height of the current view
-	 * @return height of the current view
-	 */
-	int GetHeight() { return window_height; }
-
 	/** Return the current pixel buffer
 	 * @return pixelbuffer
 	 */
 	void *GetPixelBuffer() { return buffer_depth == 8 ? pixel_buffer : window_buffer; }
-
-	/** Convert local coordinate to window server (CoreGraphics) coordinate
-	 * @param p local coordinates
-	 * @return window driver coordinates
-	 */
-	CGPoint PrivateLocalToCG(NSPoint *p);
 
 	/** Return the mouse location
 	 * @param event UI event
@@ -200,15 +172,13 @@ public:
 	 */
 	bool MouseIsInsideView(NSPoint *pt);
 
-	/** Return whether the window is active (visible) */
-	bool IsActive() { return active; }
-
-	/** Resize the window.
-	 * @return whether the window was successfully resized
-	 */
-	bool WindowResized();
+	void CheckPaletteAnim();
 };
 
-extern WindowQuartzSubdriver *_cocoa_subdriver;
+class FVideoDriver_Cocoa : public DriverFactoryBase {
+public:
+	FVideoDriver_Cocoa() : DriverFactoryBase(Driver::DT_VIDEO, 10, "cocoa", "Cocoa Video Driver") {}
+	Driver *CreateInstance() const override { return new VideoDriver_Cocoa(); }
+};
 
 #endif /* VIDEO_COCOA_H */

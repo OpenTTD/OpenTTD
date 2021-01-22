@@ -70,7 +70,7 @@ static OTTDMain *_ottd_main;
 - (void)launchGameEngine: (NSNotification*) note
 {
 	/* Setup cursor for the current _game_mode. */
-	[ _cocoa_subdriver->cocoaview resetCursorRects ];
+	[ static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance())->cocoaview resetCursorRects ];
 
 	/* Hand off to main application code. */
 	static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance())->GameLoop();
@@ -282,7 +282,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 @implementation OTTD_CocoaWindow
 
-- (void)setDriver:(WindowQuartzSubdriver *)drv
+- (void)setDriver:(VideoDriver_Cocoa *)drv
 {
 	driver = drv;
 }
@@ -404,7 +404,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 /**
  * Initialize the driver
  */
-- (void)setDriver:(WindowQuartzSubdriver *)drv
+- (void)setDriver:(VideoDriver_Cocoa *)drv
 {
 	driver = drv;
 }
@@ -491,7 +491,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
  */
 - (void)mouseExited:(NSEvent *)theEvent
 {
-	if (_cocoa_subdriver != NULL) UndrawMouseCursor();
+	if (driver->window != nil) UndrawMouseCursor();
 	_cursor.in_window = false;
 }
 
@@ -810,7 +810,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 
 @implementation OTTD_CocoaWindowDelegate
 /** Initialize the video driver */
-- (void)setDriver:(WindowQuartzSubdriver *)drv
+- (void)setDriver:(VideoDriver_Cocoa *)drv
 {
 	driver = drv;
 }
