@@ -23,9 +23,12 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_OSX_DEPLOYMENT_TARGET 10.9)
 
 # Use GNUInstallDirs to allow customisation
-# but set our own default data dir
+# but set our own default data and bin dir
 if(NOT CMAKE_INSTALL_DATADIR)
     set(CMAKE_INSTALL_DATADIR "share/games")
+endif()
+if(NOT CMAKE_INSTALL_BINDIR)
+    set(CMAKE_INSTALL_BINDIR "games")
 endif()
 include(GNUInstallDirs)
 
