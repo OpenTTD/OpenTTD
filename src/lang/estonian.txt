@@ -299,7 +299,7 @@ STR_TOOLTIP_RESIZE                                              :{BLACK}Klõpsa 
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Lülita aken suureks/väikseks
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kerimisriba - kerib nimistut üles/alla
 STR_TOOLTIP_HSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Kerimisriba - kerib listi üles/alla
-STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Ruudul asuvate hoonete jms. lammutamine. Ctrl valib ala diagonaalselt. Shift valib ehitamise/hinna kuvamise režiimi
+STR_TOOLTIP_DEMOLISH_BUILDINGS_ETC                              :{BLACK}Ruudul asuvate hoonete jms. õhkamine. Ctrl valib ala diagonaalselt. Shift-nupuga vaheldub ehitamine ja maksumuse hindamine
 
 # Show engines button
 STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN                           :{BLACK}Näita peidetud
@@ -1043,6 +1043,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Ruudu suurus
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Kirja suurus
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Vali kasutatav liideseelementide suurus
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Tavaline
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Topeltsuurus
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Ruudu suurus
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Alusgraafika kogu
@@ -1813,7 +1815,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi all
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Ava AI/GameScripti seaded
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Välju 'OpenTTD'st
 
-STR_INTRO_TRANSLATION                                           :{BLACK}{NUM} tõlge{P "" t} on puudu. Palun aita teha OpenTTD veel paremaks, ning hakka tõlkijaks. Rohkem teavet leiad «readme.txt» failist.
+STR_INTRO_TRANSLATION                                           :{BLACK}Puudub {NUM} tõlge{P "" t}. Tule tee OpenTTD paremaks, aita tõlkida. Rohkem teavet leiad «readme.txt» failist.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Mängust väljumine
@@ -2604,9 +2606,9 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Vali tö
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Maa-ala andmed
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Puhastustasu: {LTBLUE}N/A
-STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Puhastustasu: {RED}{CURRENCY_LONG}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Sissetulek puhastamisel: {LTBLUE}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Tühjendamise hind: {LTBLUE}N/A
+STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Tühjendamise hind: {RED}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Tühjendamise tulu: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :puudub
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}Omanik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}Maantee omanik: {LTBLUE}{STRING}
@@ -4064,7 +4066,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Muuda sk
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Kasutatav {STRING}
 STR_AI_LIST_CAPTION_AI                                          :Tehismõistused
-STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScript-id
+STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScriptid
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klõpsa skripti valimiseks
 
 STR_AI_LIST_AUTHOR                                              :{LTBLUE}Autor: {ORANGE}{STRING}
@@ -4184,14 +4186,14 @@ STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Maapind 
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Maa on vales suunas kaldu
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Seda ei saa teha...
 STR_ERROR_BUILDING_MUST_BE_DEMOLISHED                           :{WHITE}Hoone tuleb enne lammutada
-STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Seda ala ei saa puhastada...
+STR_ERROR_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Seda ala ei saa tühjendada...
 STR_ERROR_SITE_UNSUITABLE                                       :{WHITE}... ebasobiv koht
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... juba ehitatud
 STR_ERROR_OWNED_BY                                              :{WHITE}... omanik on {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... ala kuulub teisele ettevõttele
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... maastikukujunduse limiit ületatud
-STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... puhastatavate ruutude piir on ületatud
-STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... puu istutamise limiit ületatud
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... maastikukujunduse limiit täis
+STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... ruudutühjenduse limiit täis
+STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... puu istutamise limiit täis
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Nime ei tohi korduda
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} on ees
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Pole lubatud kui mäng seisab

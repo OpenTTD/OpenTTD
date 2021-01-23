@@ -697,7 +697,7 @@ STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLAC
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Liikemies
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Yrittäjä
-STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Teollisuusmies
+STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Teollisuudenharjoittaja
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalisti
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnaatti
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Moguli
