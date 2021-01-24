@@ -306,7 +306,7 @@ bool VideoDriver_SDL::CreateMainWindow(uint w, uint h)
 		flags);
 
 	if (_sdl_window == nullptr) {
-		DEBUG(driver, 0, "SDL2: Couldn't allocate a window to draw on");
+		DEBUG(driver, 0, "SDL2: Couldn't allocate a window to draw on: %s", SDL_GetError());
 		return false;
 	}
 
