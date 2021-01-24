@@ -73,7 +73,7 @@ void VideoDriver_SDL::MakeDirty(int left, int top, int width, int height)
 	_num_dirty_rects++;
 }
 
-static void UpdatePalette(bool init = false)
+static void UpdatePalette()
 {
 	SDL_Color pal[256];
 
@@ -86,8 +86,19 @@ static void UpdatePalette(bool init = false)
 
 	SDL_SetPaletteColors(_sdl_palette, pal, _local_palette.first_dirty, _local_palette.count_dirty);
 	SDL_SetSurfacePalette(_sdl_surface, _sdl_palette);
+}
 
-	if (_sdl_surface != _sdl_real_surface && init) {
+static void MakePalette()
+{
+	if (_sdl_palette == nullptr) {
+		_sdl_palette = SDL_AllocPalette(256);
+		if (_sdl_palette == nullptr) usererror("SDL2: Couldn't allocate palette: %s", SDL_GetError());
+	}
+
+	_local_palette = _cur_palette;
+	UpdatePalette();
+
+	if (_sdl_surface != _sdl_real_surface) {
 		/* When using a shadow surface, also set our palette on the real screen. This lets SDL
 		 * allocate as many colors (or approximations) as
 		 * possible, instead of using only the default SDL
@@ -110,33 +121,22 @@ static void UpdatePalette(bool init = false)
 		 */
 		SDL_SetSurfacePalette(_sdl_real_surface, _sdl_palette);
 	}
-
-	if (_sdl_surface != _sdl_real_surface && !init) {
-		/* We're not using real hardware palette, but are letting SDL
-		 * approximate the palette during shadow -> screen copy. To
-		 * change the palette, we need to recopy the entire screen.
-		 *
-		 * Note that this operation can slow down the rendering
-		 * considerably, especially since changing the shadow
-		 * palette will need the next blit to re-detect the
-		 * best mapping of shadow palette colors to real palette
-		 * colors from scratch.
-		 */
-		SDL_BlitSurface(_sdl_surface, nullptr, _sdl_real_surface, nullptr);
-		SDL_UpdateWindowSurface(_sdl_window);
-	}
 }
 
-static void InitPalette()
+void VideoDriver_SDL::CheckPaletteAnim()
 {
-	_cur_palette.first_dirty = 0;
-	_cur_palette.count_dirty = 256;
+	if (_cur_palette.count_dirty == 0) return;
+
 	_local_palette = _cur_palette;
-	UpdatePalette(true);
+	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
-static void CheckPaletteAnim()
+static void DrawSurfaceToScreen()
 {
+	PerformanceMeasurer framerate(PFE_VIDEO);
+
+	if (_num_dirty_rects == 0) return;
+
 	if (_cur_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
@@ -157,18 +157,8 @@ static void CheckPaletteAnim()
 		}
 		_cur_palette.count_dirty = 0;
 	}
-}
 
-static void DrawSurfaceToScreen()
-{
-	PerformanceMeasurer framerate(PFE_VIDEO);
-
-	int n = _num_dirty_rects;
-	if (n == 0) return;
-
-	_num_dirty_rects = 0;
-
-	if (n > MAX_DIRTY_RECTS) {
+	if (_num_dirty_rects > MAX_DIRTY_RECTS) {
 		if (_sdl_surface != _sdl_real_surface) {
 			SDL_BlitSurface(_sdl_surface, nullptr, _sdl_real_surface, nullptr);
 		}
@@ -176,13 +166,15 @@ static void DrawSurfaceToScreen()
 		SDL_UpdateWindowSurface(_sdl_window);
 	} else {
 		if (_sdl_surface != _sdl_real_surface) {
-			for (int i = 0; i < n; i++) {
+			for (int i = 0; i < _num_dirty_rects; i++) {
 				SDL_BlitSurface(_sdl_surface, &_dirty_rects[i], _sdl_real_surface, &_dirty_rects[i]);
 			}
 		}
 
-		SDL_UpdateWindowSurfaceRects(_sdl_window, _dirty_rects, n);
+		SDL_UpdateWindowSurfaceRects(_sdl_window, _dirty_rects, _num_dirty_rects);
 	}
+
+	_num_dirty_rects = 0;
 }
 
 static void DrawSurfaceToScreenThread()
@@ -195,7 +187,6 @@ static void DrawSurfaceToScreenThread()
 	_draw_signal->wait(*_draw_mutex);
 
 	while (_draw_continue) {
-		CheckPaletteAnim();
 		/* Then just draw and wait till we stop */
 		DrawSurfaceToScreen();
 		_draw_signal->wait(lock);
@@ -362,14 +353,6 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 		_sdl_surface = _sdl_real_surface;
 	}
 
-	if (_sdl_palette == nullptr) {
-		_sdl_palette = SDL_AllocPalette(256);
-		if (_sdl_palette == nullptr) {
-			DEBUG(driver, 0, "SDL_AllocPalette() failed: %s", SDL_GetError());
-			return false;
-		}
-	}
-
 	/* Delay drawing for this cycle; the next cycle will redraw the whole screen */
 	_num_dirty_rects = 0;
 
@@ -378,6 +361,8 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 	_screen.pitch = _sdl_surface->pitch / (bpp / 8);
 	_screen.dst_ptr = _sdl_surface->pixels;
 
+	MakePalette();
+
 	/* When in full screen, we will always have the mouse cursor
 	 * within the window, even though SDL does not give us the
 	 * appropriate event to know this. */
@@ -385,7 +370,6 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 
 	BlitterFactory::GetCurrentBlitter()->PostResize();
 
-	InitPalette();
 	GameSizeChanged();
 	return true;
 }
@@ -813,7 +797,7 @@ void VideoDriver_SDL::LoopOnce()
 		if (_draw_mutex != nullptr) draw_lock.lock();
 
 		UpdateWindows();
-		_local_palette = _cur_palette;
+		this->CheckPaletteAnim();
 	} else {
 		/* Release the thread while sleeping */
 		if (_draw_mutex != nullptr) {
@@ -837,7 +821,6 @@ void VideoDriver_SDL::LoopOnce()
 		_draw_signal->notify_one();
 	} else {
 		/* Oh, we didn't have threads, then just draw unthreaded */
-		CheckPaletteAnim();
 		DrawSurfaceToScreen();
 	}
 }
@@ -848,7 +831,7 @@ void VideoDriver_SDL::MainLoop()
 	last_cur_ticks = cur_ticks;
 	next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
-	CheckPaletteAnim();
+	this->CheckPaletteAnim();
 
 	if (_draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
