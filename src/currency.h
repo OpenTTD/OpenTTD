@@ -11,6 +11,7 @@
 #define CURRENCY_H
 
 #include "date_type.h"
+#include "string_func.h"
 #include "strings_type.h"
 
 static const int CF_NOEURO = 0; ///< Currency never switches to the Euro (as far as known).
@@ -83,6 +84,15 @@ struct CurrencySpec {
 	 */
 	byte symbol_pos;
 	StringID name;
+
+	CurrencySpec() = default;
+
+	CurrencySpec(uint16 rate, const char *separator, Year to_euro, const char *prefix, const char *suffix, byte symbol_pos, StringID name) : rate(rate), to_euro(to_euro), symbol_pos(symbol_pos), name(name)
+	{
+		strecpy(this->separator, separator, lastof(this->separator));
+		strecpy(this->prefix, prefix, lastof(this->prefix));
+		strecpy(this->suffix, suffix, lastof(this->suffix));
+	}
 };
 
 extern CurrencySpec _currency_specs[CURRENCY_END];
