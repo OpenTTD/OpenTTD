@@ -406,6 +406,10 @@ void VideoDriver_Cocoa::GetDeviceInfo()
 	CGDisplayModeRelease(cur_mode);
 }
 
+/**
+ * Are we in fullscreen mode
+ * @return whether fullscreen mode is currently used
+ */
 bool VideoDriver_Cocoa::IsFullscreen()
 {
 	return this->window != nil && ([ this->window styleMask ] & NSWindowStyleMaskFullScreen) != 0;
@@ -524,6 +528,14 @@ bool VideoDriver_Cocoa::SetVideoMode(int width, int height, int bpp)
 	return ret;
 }
 
+/**
+ * This function copies 8bpp pixels from the screen buffer in 32bpp windowed mode.
+ *
+ * @param left The x coord for the left edge of the box to blit.
+ * @param top The y coord for the top edge of the box to blit.
+ * @param right The x coord for the right edge of the box to blit.
+ * @param bottom The y coord for the bottom edge of the box to blit.
+ */
 void VideoDriver_Cocoa::BlitIndexedToView32(int left, int top, int right, int bottom)
 {
 	const uint32 *pal   = this->palette;
@@ -539,7 +551,9 @@ void VideoDriver_Cocoa::BlitIndexedToView32(int left, int top, int right, int bo
 	}
 }
 
-
+/** Draw window
+ * @param force_update Whether to redraw unconditionally
+ */
 void VideoDriver_Cocoa::Draw(bool force_update)
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
@@ -582,6 +596,7 @@ void VideoDriver_Cocoa::Draw(bool force_update)
 	this->num_dirty_rects = 0;
 }
 
+/** Update the palette */
 void VideoDriver_Cocoa::UpdatePalette(uint first_color, uint num_colors)
 {
 	if (this->buffer_depth != 8) return;
@@ -597,7 +612,11 @@ void VideoDriver_Cocoa::UpdatePalette(uint first_color, uint num_colors)
 	this->num_dirty_rects = lengthof(this->dirty_rects);
 }
 
-/* Convert local coordinate to window server (CoreGraphics) coordinate */
+/**
+ * Convert local coordinate to window server (CoreGraphics) coordinate
+ * @param p local coordinates
+ * @return window driver coordinates
+ */
 CGPoint VideoDriver_Cocoa::PrivateLocalToCG(NSPoint *p)
 {
 
@@ -614,6 +633,11 @@ CGPoint VideoDriver_Cocoa::PrivateLocalToCG(NSPoint *p)
 	return cgp;
 }
 
+/**
+ * Return the mouse location
+ * @param event UI event
+ * @return mouse location as NSPoint
+ */
 NSPoint VideoDriver_Cocoa::GetMouseLocation(NSEvent *event)
 {
 	NSPoint pt;
@@ -629,6 +653,11 @@ NSPoint VideoDriver_Cocoa::GetMouseLocation(NSEvent *event)
 	return pt;
 }
 
+/**
+ * Return whether the mouse is within our view
+ * @param pt Mouse coordinates
+ * @return Whether mouse coordinates are within view
+ */
 bool VideoDriver_Cocoa::MouseIsInsideView(NSPoint *pt)
 {
 	return [ cocoaview mouse:*pt inRect:[ this->cocoaview bounds ] ];
@@ -645,6 +674,10 @@ static void ClearWindowBuffer(uint32 *buffer, uint32 pitch, uint32 height)
 	}
 }
 
+/**
+ * Resize the window.
+ * @return whether the window was successfully resized
+ */
 bool VideoDriver_Cocoa::WindowResized()
 {
 	if (this->window == nil || this->cocoaview == nil) return true;
