@@ -50,47 +50,18 @@ public:
 	VideoDriver_Cocoa();
 
 	const char *Start(const StringList &param) override;
-
-	/** Stop the video driver */
 	void Stop() override;
-
-	/** Mark dirty a screen region
-	 * @param left x-coordinate of left border
-	 * @param top  y-coordinate of top border
-	 * @param width width or dirty rectangle
-	 * @param height height of dirty rectangle
-	 */
-	void MakeDirty(int left, int top, int width, int height) override;
-
-	/** Programme main loop */
 	void MainLoop() override;
 
-	/** Change window resolution
-	 * @param w New window width
-	 * @param h New window height
-	 * @return Whether change was successful
-	 */
-	bool ChangeResolution(int w, int h) override;
-
-	/** Set a new window mode
-	 * @param fullscreen Whether to set fullscreen mode or not
-	 * @return Whether changing the screen mode was successful
-	 */
-	bool ToggleFullscreen(bool fullscreen) override;
-
-	/** Callback invoked after the blitter was changed.
-	 * @return True if no error.
-	 */
+	void MakeDirty(int left, int top, int width, int height) override;
 	bool AfterBlitterChange() override;
 
-	/**
-	 * An edit box lost the input focus. Abort character compositing if necessary.
-	 */
+	bool ChangeResolution(int w, int h) override;
+	bool ToggleFullscreen(bool fullscreen) override;
+
 	void EditBoxLostFocus() override;
 
-	/** Return driver name
-	 * @return driver name
-	 */
+	/** Return driver name */
 	const char *GetName() const override { return "cocoa"; }
 
 	/* --- The following methods should be private, but can't be due to Obj-C limitations. --- */
@@ -98,67 +69,30 @@ public:
 	/** Main game loop. */
 	void GameLoop(); // In event.mm.
 
-	/** Resize the window.
-	 * @return whether the window was successfully resized
-	 */
 	bool WindowResized();
-
-	/** Convert local coordinate to window server (CoreGraphics) coordinate
-	 * @param p local coordinates
-	 * @return window driver coordinates
-	 */
-	CGPoint PrivateLocalToCG(NSPoint *p);
 
 protected:
 	Dimension GetScreenSize() const override;
 
 private:
+	NSPoint GetMouseLocation(NSEvent *event);
+	bool MouseIsInsideView(NSPoint *pt);
+	CGPoint PrivateLocalToCG(NSPoint *p);
 	bool PollEvent(); // In event.mm.
 	void MouseMovedEvent(int x, int y); // In event.mm.
-	void WarpCursor(int x, int y); // In event.mm.
 
+	bool IsFullscreen();
 	void GameSizeChanged();
+
 	void UpdateVideoModes();
-
-	/**
-	 * This function copies 8bpp pixels from the screen buffer in 32bpp windowed mode.
-	 *
-	 * @param left The x coord for the left edge of the box to blit.
-	 * @param top The y coord for the top edge of the box to blit.
-	 * @param right The x coord for the right edge of the box to blit.
-	 * @param bottom The y coord for the bottom edge of the box to blit.
-	 */
-	void BlitIndexedToView32(int left, int top, int right, int bottom);
-
 	void GetDeviceInfo();
 	bool SetVideoMode(int width, int height, int bpp);
 
-	/** Draw window
-	 * @param force_update Whether to redraw unconditionally
-	 */
-	void Draw(bool force_update = false);
-
-	/** Update the palette */
 	void UpdatePalette(uint first_color, uint num_colors);
-
-	/** Are we in fullscreen mode
-	 * @return whether fullscreen mode is currently used
-	 */
-	bool IsFullscreen();
-
-	/** Return the mouse location
-	 * @param event UI event
-	 * @return mouse location as NSPoint
-	 */
-	NSPoint GetMouseLocation(NSEvent *event);
-
-	/** Return whether the mouse is within our view
-	 * @param pt Mouse coordinates
-	 * @return Whether mouse coordinates are within view
-	 */
-	bool MouseIsInsideView(NSPoint *pt);
-
 	void CheckPaletteAnim();
+
+	void Draw(bool force_update = false);
+	void BlitIndexedToView32(int left, int top, int right, int bottom);
 };
 
 class FVideoDriver_Cocoa : public DriverFactoryBase {
