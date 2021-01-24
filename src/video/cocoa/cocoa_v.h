@@ -22,7 +22,6 @@ private:
 
 	int device_width;     ///< Width of device in pixel
 	int device_height;    ///< Height of device in pixel
-	int device_depth;     ///< Colour depth of device in bit
 
 	int window_width;     ///< Current window width in pixel
 	int window_height;    ///< Current window height in pixel
@@ -142,24 +141,10 @@ private:
 	/** Update the palette */
 	void UpdatePalette(uint first_color, uint num_colors);
 
-	uint ListModes(OTTD_Point *modes, uint max_modes);
-
-	/** Change window resolution
-	 * @param w New window width
-	 * @param h New window height
-	 * @return Whether change was successful
-	 */
-	bool ChangeResolution(int w, int h, int bpp);
-
 	/** Are we in fullscreen mode
 	 * @return whether fullscreen mode is currently used
 	 */
 	bool IsFullscreen();
-
-	/** Return the current pixel buffer
-	 * @return pixelbuffer
-	 */
-	void *GetPixelBuffer() { return buffer_depth == 8 ? pixel_buffer : window_buffer; }
 
 	/** Return the mouse location
 	 * @param event UI event

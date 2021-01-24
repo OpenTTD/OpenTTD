@@ -73,21 +73,6 @@ static uint32 GetTick()
 	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
 }
 
-void VideoDriver_Cocoa::WarpCursor(int x, int y)
-{
-	/* Only allow warping when in foreground */
-	if (![ NSApp isActive ]) return;
-
-	NSPoint p = NSMakePoint(x, y);
-	CGPoint cgp = this->PrivateLocalToCG(&p);
-
-	/* Do the actual warp */
-	CGWarpMouseCursorPosition(cgp);
-	/* this is the magic call that fixes cursor "freezing" after warp */
-	CGAssociateMouseAndMouseCursorPosition(true);
-}
-
-
 struct VkMapping {
 	unsigned short vk_from;
 	byte map_to;
@@ -317,8 +302,15 @@ static void QZ_DoUnsidedModifiers(unsigned int newMods)
 
 void  VideoDriver_Cocoa::MouseMovedEvent(int x, int y)
 {
-	if (_cursor.UpdateCursorPosition(x, y, false)) {
-		this->WarpCursor(_cursor.pos.x, _cursor.pos.y);
+	if (_cursor.UpdateCursorPosition(x, y, false) && [ NSApp isActive ]) {
+		/* Warping cursor when in foreground */
+		NSPoint p = NSMakePoint(_cursor.pos.x, _cursor.pos.y);
+		CGPoint cgp = this->PrivateLocalToCG(&p);
+
+		/* Do the actual warp */
+		CGWarpMouseCursorPosition(cgp);
+		/* this is the magic call that fixes cursor "freezing" after warp */
+		CGAssociateMouseAndMouseCursorPosition(true);
 	}
 	HandleMouseEvents();
 }
