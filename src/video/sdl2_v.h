@@ -49,6 +49,7 @@ private:
 	void LoopOnce();
 	void MainLoopCleanup();
 	bool CreateMainSurface(uint w, uint h, bool resize);
+	bool CreateMainWindow(uint w, uint h);
 
 #ifdef __EMSCRIPTEN__
 	/* Convert a constant pointer back to a non-constant pointer to a member function. */
