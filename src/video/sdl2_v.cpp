@@ -35,7 +35,8 @@ static FVideoDriver_SDL iFVideoDriver_SDL;
 
 static SDL_Window *_sdl_window;
 static SDL_Surface *_sdl_surface;
-static SDL_Surface *_sdl_realscreen;
+static SDL_Surface *_sdl_rgb_surface;
+static SDL_Surface *_sdl_real_surface;
 
 /** Whether the drawing is/may be done in a separate thread. */
 static bool _draw_threaded;
@@ -86,7 +87,7 @@ static void UpdatePalette(bool init = false)
 	SDL_SetPaletteColors(_sdl_palette, pal, _local_palette.first_dirty, _local_palette.count_dirty);
 	SDL_SetSurfacePalette(_sdl_surface, _sdl_palette);
 
-	if (_sdl_surface != _sdl_realscreen && init) {
+	if (_sdl_surface != _sdl_real_surface && init) {
 		/* When using a shadow surface, also set our palette on the real screen. This lets SDL
 		 * allocate as many colors (or approximations) as
 		 * possible, instead of using only the default SDL
@@ -107,10 +108,10 @@ static void UpdatePalette(bool init = false)
 		 * palette change and the blitting below, so we only set
 		 * the real palette during initialisation.
 		 */
-		SDL_SetSurfacePalette(_sdl_realscreen, _sdl_palette);
+		SDL_SetSurfacePalette(_sdl_real_surface, _sdl_palette);
 	}
 
-	if (_sdl_surface != _sdl_realscreen && !init) {
+	if (_sdl_surface != _sdl_real_surface && !init) {
 		/* We're not using real hardware palette, but are letting SDL
 		 * approximate the palette during shadow -> screen copy. To
 		 * change the palette, we need to recopy the entire screen.
@@ -121,7 +122,7 @@ static void UpdatePalette(bool init = false)
 		 * best mapping of shadow palette colors to real palette
 		 * colors from scratch.
 		 */
-		SDL_BlitSurface(_sdl_surface, nullptr, _sdl_realscreen, nullptr);
+		SDL_BlitSurface(_sdl_surface, nullptr, _sdl_real_surface, nullptr);
 		SDL_UpdateWindowSurface(_sdl_window);
 	}
 }
@@ -168,15 +169,15 @@ static void DrawSurfaceToScreen()
 	_num_dirty_rects = 0;
 
 	if (n > MAX_DIRTY_RECTS) {
-		if (_sdl_surface != _sdl_realscreen) {
-			SDL_BlitSurface(_sdl_surface, nullptr, _sdl_realscreen, nullptr);
+		if (_sdl_surface != _sdl_real_surface) {
+			SDL_BlitSurface(_sdl_surface, nullptr, _sdl_real_surface, nullptr);
 		}
 
 		SDL_UpdateWindowSurface(_sdl_window);
 	} else {
-		if (_sdl_surface != _sdl_realscreen) {
+		if (_sdl_surface != _sdl_real_surface) {
 			for (int i = 0; i < n; i++) {
-				SDL_BlitSurface(_sdl_surface, &_dirty_rects[i], _sdl_realscreen, &_dirty_rects[i]);
+				SDL_BlitSurface(_sdl_surface, &_dirty_rects[i], _sdl_real_surface, &_dirty_rects[i]);
 			}
 		}
 
@@ -281,15 +282,11 @@ static uint FindStartupDisplay(uint startup_display)
 
 bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 {
-	SDL_Surface *newscreen;
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	GetAvailableVideoMode(&w, &h);
 
 	DEBUG(driver, 1, "SDL2: using mode %ux%ux%d", w, h, bpp);
-
-	/* Free any previously allocated shadow surface */
-	if (_sdl_surface != nullptr && _sdl_surface != _sdl_realscreen) SDL_FreeSurface(_sdl_surface);
 
 	if (_sdl_window == nullptr) {
 		Uint32 flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
@@ -335,40 +332,46 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 
 	if (resize) SDL_SetWindowSize(_sdl_window, w, h);
 
-	newscreen = SDL_GetWindowSurface(_sdl_window);
-	if (newscreen == NULL) {
+	_sdl_real_surface = SDL_GetWindowSurface(_sdl_window);
+	if (_sdl_real_surface == nullptr) {
 		DEBUG(driver, 0, "SDL2: Couldn't get window surface: %s", SDL_GetError());
 		return false;
 	}
 
-	_sdl_realscreen = newscreen;
+	/* Free any previously allocated rgb surface. */
+	if (_sdl_rgb_surface != nullptr) {
+		SDL_FreeSurface(_sdl_rgb_surface);
+		_sdl_rgb_surface = nullptr;
+	}
 
 	if (bpp == 8) {
-		newscreen = SDL_CreateRGBSurface(0, w, h, 8, 0, 0, 0, 0);
+		_sdl_rgb_surface = SDL_CreateRGBSurface(0, w, h, 8, 0, 0, 0, 0);
 
-		if (newscreen == nullptr) {
+		if (_sdl_rgb_surface == nullptr) {
 			DEBUG(driver, 0, "SDL2: Couldn't allocate shadow surface: %s", SDL_GetError());
 			return false;
 		}
+
+		_sdl_surface = _sdl_rgb_surface;
+	} else {
+		_sdl_surface = _sdl_real_surface;
 	}
 
 	if (_sdl_palette == nullptr) {
 		_sdl_palette = SDL_AllocPalette(256);
-	}
-
-	if (_sdl_palette == nullptr) {
-		DEBUG(driver, 0, "SDL_AllocPalette() failed: %s", SDL_GetError());
-		return false;
+		if (_sdl_palette == nullptr) {
+			DEBUG(driver, 0, "SDL_AllocPalette() failed: %s", SDL_GetError());
+			return false;
+		}
 	}
 
 	/* Delay drawing for this cycle; the next cycle will redraw the whole screen */
 	_num_dirty_rects = 0;
 
-	_screen.width = newscreen->w;
-	_screen.height = newscreen->h;
-	_screen.pitch = newscreen->pitch / (bpp / 8);
-	_screen.dst_ptr = newscreen->pixels;
-	_sdl_surface = newscreen;
+	_screen.width = _sdl_surface->w;
+	_screen.height = _sdl_surface->h;
+	_screen.pitch = _sdl_surface->pitch / (bpp / 8);
+	_screen.dst_ptr = _sdl_surface->pixels;
 
 	/* When in full screen, we will always have the mouse cursor
 	 * within the window, even though SDL does not give us the
