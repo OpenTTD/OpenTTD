@@ -375,13 +375,10 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 	 * appropriate event to know this. */
 	if (_fullscreen) _cursor.in_window = true;
 
-	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
-	blitter->PostResize();
+	BlitterFactory::GetCurrentBlitter()->PostResize();
 
 	InitPalette();
-
 	GameSizeChanged();
-
 	return true;
 }
 
