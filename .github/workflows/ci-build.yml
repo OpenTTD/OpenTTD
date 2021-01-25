@@ -210,11 +210,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-        - arch: x86
-        - arch: x64
+        os: [windows-latest, windows-2016]
+        arch: [x86, x64]
 
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
 
     steps:
     - name: Checkout
