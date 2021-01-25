@@ -365,6 +365,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Kandevõime
 STR_SORT_BY_RANGE                                               :Vahekaugus
 STR_SORT_BY_POPULATION                                          :Rahvaarv
 STR_SORT_BY_RATING                                              :Hinnang
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Eelmise aasta keskmine kasum
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Selle aasta keskmine kasum
 
 # Group by options for vehicle list
 
@@ -521,6 +523,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Heli/muusika
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Viimane teade
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Teadete ajalugu
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Kustuta kõik teated
 ############ range ends here
 
 ############ range for about menu starts
@@ -1038,14 +1041,14 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vali kas
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Tavaline
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Topeltsuurus
-STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Ruudu suurus
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Neljakordne suurus
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Kirja suurus
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Vali kasutatav liideseelementide suurus
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Tavaline
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Topeltsuurus
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Ruudu suurus
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Neljakordne suurus
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Alusgraafika kogu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valib kasutatava alusgraafika kogu
@@ -4032,7 +4035,7 @@ STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toggle m
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jätka
 STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jätka tee ja tee edasi AI-d
 STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vaata selle AI silumisinfo väljundit
-STR_AI_GAME_SCRIPT                                              :{BLACK}Mängu Skript
+STR_AI_GAME_SCRIPT                                              :{BLACK}GameScript
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kontrolli GameScripti logi
 
 STR_ERROR_AI_NO_AI_FOUND                                        :Laadimiseks sobivat tehismõistust ei leitud.{}See on asendustehismõistus, ning ei tee midagi.{}Tehismõistuseid saab laadida kasutades 'Internetisisu' süsteemi.
@@ -4128,7 +4131,7 @@ STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YEL
 STR_FEEDER_INCOME                                               :{YELLOW}Ümberlaadimine: {CURRENCY_LONG}{WHITE} / {GREEN}Sissetulek: {CURRENCY_LONG}
 STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Ümberlaadimine: {CURRENCY_LONG}{WHITE} / {RED}Hind: {CURRENCY_LONG}
 STR_FEEDER_COST                                                 :{YELLOW}Ümberlaadimine: {CURRENCY_LONG}{WHITE} / {RED}Hind: {CURRENCY_LONG}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Eeldatav hind: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Eeldatav kulu: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Eeldatavad tulud: {CURRENCY_LONG}
 
 # Saveload messages
