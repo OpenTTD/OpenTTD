@@ -1875,7 +1875,7 @@ STR_LIVERY_DMU                                                  :VT
 STR_LIVERY_EMU                                                  :ET
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagierwaggon (Dampf)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagierwaggon (Diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagierwaggon (elektrisch)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagierwaggon (Elektrisch)
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagierwaggon (Einschienenbahn)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagierwaggon (Magnetschwebebahn)
 STR_LIVERY_FREIGHT_WAGON                                        :Güterwaggon
@@ -4672,15 +4672,15 @@ STR_ERROR_CAN_T_DELETE_SIGN                                     :{WHITE}Kann Sch
 STR_DESKTOP_SHORTCUT_COMMENT                                    :Ein auf der Idee von Transport Tycoon Deluxe basierendes Spiel
 
 # Translatable descriptions in media/baseset/*.ob* files
-STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Original Transport Tycoon Deluxe DOS Basisgrafiken.
-STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Original Transport Tycoon Deluxe DOS (Deutsch) Basisgrafiken.
-STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Original Transport Tycoon Deluxe Windows Basisgrafiken.
-STR_BASESOUNDS_DOS_DESCRIPTION                                  :Original Transport Tycoon Deluxe DOS Basissounds.
-STR_BASESOUNDS_WIN_DESCRIPTION                                  :Original Transport Tycoon Deluxe Windows Basissounds.
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :Basissounds ohne Sound.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Original Transport Tycoon Deluxe Windows Musikset.
-STR_BASEMUSIC_DOS_DESCRIPTION                                   :Original Transport Tycoon Deluxe DOS edition music.
-STR_BASEMUSIC_TTO_DESCRIPTION                                   :Original Transport Tycoon (Original/World Editor) DOS edition music.
+STR_BASEGRAPHICS_DOS_DESCRIPTION                                :Originale „Transport Tycoon Deluxe“-DOS-Basisgrafiken.
+STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Originale „Transport Tycoon Deluxe“-DOS-Basisgrafiken (Deutsch).
+STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originale „Transport Tycoon Deluxe“-Windows-Basisgrafiken.
+STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originale „Transport Tycoon Deluxe“-DOS-Basissounds.
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originale „Transport Tycoon Deluxe“-Windows-Basissounds.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Ein Soundpaket ohne Sounds.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originales „Transport Tycoon Deluxe“-Windows-Musikset.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Originales „Transport Tycoon Deluxe“-DOS-Musikset.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Originales „Transport Tycoon (Original/World Editor)“-DOS-Musikset.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Ein Musikset ohne Musik.
 
 ##id 0x2000
@@ -4890,7 +4890,7 @@ STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 „Cyclops
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV3_PEGASUS_ELECTRIC      :Lev3 „Pegasus“ (elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV4_CHIMAERA_ELECTRIC     :Lev4 „Chimaera“ (elektrisch)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_WIZZOWOW_ROCKETEER         :Wizzowow Rocketeer
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Passagierwaggon (Magnetschwebebahn)
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PASSENGER_CAR               :Passagierwaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_MAIL_VAN                    :Postwaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COAL_CAR                    :Kohlewaggon
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_OIL_TANKER                  :Öltanker
