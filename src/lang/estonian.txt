@@ -348,7 +348,7 @@ STR_SORT_BY_MODEL                                               :Mudel
 STR_SORT_BY_VALUE                                               :Väärtus
 STR_SORT_BY_LENGTH                                              :Pikkus
 STR_SORT_BY_LIFE_TIME                                           :Amortiseerumiseni
-STR_SORT_BY_TIMETABLE_DELAY                                     :Hilinemine sõiduplaanis
+STR_SORT_BY_TIMETABLE_DELAY                                     :Hilinemine graafikus
 STR_SORT_BY_FACILITY                                            :Jaama tüüp
 STR_SORT_BY_WAITING_TOTAL                                       :Kaupa kokku
 STR_SORT_BY_WAITING_AVAILABLE                                   :Kaupa saadaval
@@ -820,7 +820,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Näita k
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Näita viimast teadet
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* *  SEISATUS  *  *
-STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOMAATSALVESTUS
+STR_STATUSBAR_AUTOSAVE                                          :{RED}VÄLPSALVESTUS
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  MÄNGU SALVESTAMINE  *  *
 
 # News message history
@@ -892,10 +892,10 @@ STR_NEWS_SHIP_IS_WAITING                                        :{WHITE}{VEHICLE
 STR_NEWS_AIRCRAFT_IS_WAITING                                    :{WHITE}{VEHICLE} ootab lennukiangaaris
 
 # Order review system / warnings
-STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE} sõiduplaanis on liiga vähe ülesandeid
-STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Sõidukil {VEHICLE} on tühistatud ülesanne
-STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Sõidukil {VEHICLE} on topeltülesandeid
-STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Sõiduki «{VEHICLE}» ülesannetes on kõlbmatu jaam
+STR_NEWS_VEHICLE_HAS_TOO_FEW_ORDERS                             :{WHITE}{VEHICLE}: graafikus pole piisavalt korraldusi
+STR_NEWS_VEHICLE_HAS_VOID_ORDER                                 :{WHITE}Sõidukil {VEHICLE} on tühistatud korraldus
+STR_NEWS_VEHICLE_HAS_DUPLICATE_ENTRY                            :{WHITE}Sõidukil {VEHICLE} on topeltkorraldusi
+STR_NEWS_VEHICLE_HAS_INVALID_ENTRY                              :{WHITE}Sõiduki «{VEHICLE}» korraldustes on kõlbmatu jaam
 STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE} lennugraafikus on lennujaam, mille maandumisrada on liiga lühike
 
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} on vanaks saamas
@@ -1015,15 +1015,15 @@ STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Itaalia
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Katalaani
 ############ end of townname region
 
-STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Isesalvestamine
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vali automaatselt mängu salvestamise vahemik
+STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Salvestusvälp
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Vali salvestamise välp
 
 ############ start of autosave dropdown
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Väljas
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Iga kuu
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Iga 3 kuu tagant
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Iga 6 kuu tagant
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Iga 12 kuu tagant
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :1 kuu
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :3 kuud
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :6 kuud
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12 kuud
 ############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Keel
@@ -1050,19 +1050,19 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Tavaline
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Topeltsuurus
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Neljakordne suurus
 
-STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Alusgraafika kogu
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valib kasutatava alusgraafika kogu
+STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Lähtegraafikakogu
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valib kasutatava lähtegraafikakogu
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} puuduv{P "" ad}/viga{P ne sed} fail{P "" id}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisateave alusgraafika kogu kohta
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Lisateave lähtegraafikakogu kohta
 
-STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Alushelide kogu
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Valib kasutatava põhihelide kogu
-STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Lisateave alushelide kogu kohta
+STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Lähtehelikogu
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Valib kasutatava lähtehelikogu
+STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Lisateave lähtehelikogu kohta
 
-STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Alusmuusika kogu
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valib alusmuusikamuusika kogu
+STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Lähtemuusikakogu
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Valib kasutatava lähtemuusikakogu
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} viga{P "ne" "sed"} fail{P "" "id"}
-STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Rohkem teavet alusmuusika kogu kohta
+STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Rohkem teavet lähtemuusikakogu kohta
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Ei õnnestunud tuvastada toetatud resulutsioone
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Täisekraanrežiim ebaõnnestus
@@ -1149,7 +1149,7 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Soodustav
 STR_CITY_APPROVAL_TOLERANT                                      :Salliv
 STR_CITY_APPROVAL_HOSTILE                                       :Vaenulik
 
-STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv tehismõistus puudub...{}Tehismõistuseid võib laadida Internetisisu laadimise aknast.
+STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Sobiv AI puudub...{}Mitmesuguseid AI-sid saab alla laadida 'aineste allalaadimise' kaudu
 
 # Settings tree window
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Seaded
@@ -1276,9 +1276,9 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :Sõltuvalt suun
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :Paremal
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Aasta lõpul näidatakse rahavoogude aruannet: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Sisse lülitamisel ilmub iga aasta lõpus rahavoogude aruanne, mis annab hea ülevaate ettevõtte rahalisest olukorrast
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Ülesanded on esialgselt «Peatusteta»: {STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Uued korraldused on esialgselt vahepeatusteta: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Tavaliselt peatub sõiduk igas peatuses, mida ta läbib. Selle seadega sõidab sõiduk lõppsihini ilma vahejaamades peatumata. NB! See seade määrab vaid uute korralduste esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
-STR_CONFIG_SETTING_STOP_LOCATION                                :Esialgne platvormi peatumisosa uute rongide ülesannetes: {STRING}
+STR_CONFIG_SETTING_STOP_LOCATION                                :Esialgne platvormi peatumisosa uute rongide korraldustes: {STRING}
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Esialgne peatumiskoht rongiplatvormil. «alguses» tähendab sisenemispunkti lähistel. «keskel» tähendab keset platvormi. «lõpus» tähendab sisenemispunktist kaugeimal. NB! See seade määrab vaid uute korralduste esialgse seadistuse. Korraldusi saab hiljem eraldi ümber seadistada
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :alguses
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskel
@@ -1324,7 +1324,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Selle seade sis
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Hoiata kui sõiduk on eksinud: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Tekita teateid kui sõidukid ei suuda leida teekonda nendele määratud sihtkohani
-STR_CONFIG_SETTING_ORDER_REVIEW                                 :Sõiduki ülesannete ülevaade: {STRING}
+STR_CONFIG_SETTING_ORDER_REVIEW                                 :Sõiduki korralduste ülevaade: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Kui on aktiveeritud, siis kontrollitakse perioodiliselt sõidukitele antud käsklusi ja leitud vead raporteeritakse uudistena
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Ei
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Jah, kuid jäta välja seisatud veovahendid
@@ -1356,7 +1356,7 @@ STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Graafikutes kas
 STR_CONFIG_SETTING_LANDSCAPE                                    :Maastik: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Igal maastikul on oma kaubatüübid ja nõuded linnade kasvamiseks. Täpsemaid muudatusi saab teha NewGRFi ja mänguskriptide abil.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Maatekituse meetod: {STRING}
-STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Originaalne generaator sõltub alusgraafikast ja tekitab kindlaksmääratud maastikuvorme. TerraGenesis on Perlini müral põhinev generaator, mida saab täpsemalt seadistada
+STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :Originaalne generaator sõltub lähtegraafikast ja tekitab kindlaksmääratud maastikuvorme. TerraGenesis on Perlini müral põhinev generaator, mida saab täpsemalt seadistada
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Algupärane
 STR_CONFIG_SETTING_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_SETTING_TERRAIN_TYPE                                 :Maapinna tüüp: {STRING}
@@ -1420,8 +1420,8 @@ STR_CONFIG_SETTING_SCROLLWHEEL_SCROLL                           :Kaardil liikumi
 STR_CONFIG_SETTING_SCROLLWHEEL_OFF                              :Väljas
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER                       :Hiirerulli tundlikkus: {STRING}
 STR_CONFIG_SETTING_SCROLLWHEEL_MULTIPLIER_HELPTEXT              :Muudab hiirerulli tundlikkust
-STR_CONFIG_SETTING_OSK_ACTIVATION                               :Klaviatuuri näitamine ekraanil: {STRING}
-STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Ekraaniklaviatuuri avamise viis. Ekraaniklaviatuur võimaldab teksti sisestamist ainult hiireosutiga. See on mõeldud kasutamiseks väikeste seadmetega, millel ei ole klaviatuuri
+STR_CONFIG_SETTING_OSK_ACTIVATION                               :Virtuaalne klaviatuur: {STRING}
+STR_CONFIG_SETTING_OSK_ACTIVATION_HELPTEXT                      :Vali viis, kuidas avada virtuaalne klaviatuur hiireosuti abil teksti sisestamiseks. See on mõeldud klaviatuurita väikeseadmetele
 STR_CONFIG_SETTING_OSK_ACTIVATION_DISABLED                      :Väljas
 STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Topeltklõpsuga
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Ühe klõpsuga (kui on fookuses)
@@ -1435,8 +1435,8 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_OFF                      :Väljas
 
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :Akna sulgemine paremklõpsuga: {STRING}
 
-STR_CONFIG_SETTING_AUTOSAVE                                     :Automaatne salvestamine: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vali automaatse salvestamise intervall
+STR_CONFIG_SETTING_AUTOSAVE                                     :Välpsalvestus: {STRING}
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :Vali välpsalvestuste vaheline ajavahemik
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Salvestatud mängu nimes kasutatakse {STRING} kuupäevavormingut
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Kuupäeva vorming salvestatud mängu nimes
@@ -1456,12 +1456,12 @@ STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Põhjalikku sõ
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Lubab kasutada põhjalikke sõidukiregistreid, kus saab sõidukeid rühmitada
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Laadimisnäidikute kasutamine: {STRING}
 STR_CONFIG_SETTING_LOADING_INDICATORS_HELPTEXT                  :Vali, kas näidata sõiduki peale- ja mahalaadimise ajal laadimisnäidikut
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Sõiduplaan on sammudes, mitte päevades: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Sõiduplaanis on ajad märgitud mitte päevades, vaid sammudes
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Sõiduplaanis on saabumis- ja väljumisajad: {STRING}
-STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Sõiduki sõiduplaanis esitatakse eeldatavaid saabumis- ja väljumisaegu
-STR_CONFIG_SETTING_QUICKGOTO                                    :Sõidukile määratakse kohe ülesandeid: {STRING}
-STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Sõiduki sihtide avamisel saab kohe «Mine» ülesandeid anda
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS                           :Graafik on sammudes, mitte päevades: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_IN_TICKS_HELPTEXT                  :Graafikus on ajad märgitud mitte päevades, vaid sammudes
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Graafikus on saabumis- ja väljumisajad: {STRING}
+STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Sõiduki graafikus esitatakse eeldatavaid saabumis- ja väljumisaegu
+STR_CONFIG_SETTING_QUICKGOTO                                    :Sõiduki korralduste kiirloomine: {STRING}
+STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Sõiduki sihtide avamisel saab kohe «Mine» korraldusi anda
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Algne rööbastee liik (mängu alustamisel/jätkamisel): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Määrab mängu alguses või selle jätkamisel käibel oleva rööbastee liigi. «Esimesena saadaval» valib kõige vanema rööbastee liigi, «Viimasena saadaval» valib kõige uuema rööbastee liigi, ning «Enim kasutatud» valib kõige rohkem kasutatud rööbastee liigi
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :Esimesena saadaval
@@ -1512,12 +1512,12 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Laevakeeld arvu
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Selle seade sisse lülitamise korral ei ole arvuti juhitud mängijal lubatud laevade ehitamine
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Vaikeseadistus: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Valib suvalise tehismõistuse ja lisatava tehismõistuse ja mänguskripti vaikeseadistuse
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Vali seadistus, mida kasutada suvalistes AI-des või uue AI/GameScripti lisamisel
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Lihtne
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Keskmine
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Keeruline
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :Tehismõistus mitmikmängus: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :AI mitmikmängus: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :Võimaldab arvutil osaleda mitmikmängudes
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :#opcode-d ennem skripte on peatatud: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :Maksimaalne arv arvutamise käike mida skript võib teha ühel sammul
@@ -1774,9 +1774,9 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :Mitteühilduv s
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :tundmatu
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... tihendusaste «{STRING}» ei sobi
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... mängu salvestamise vormingut «{STRING}» ei ole. Taastatakse «{STRING}»
-STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... eiratakse alusgraafika kogu «{STRING}»: ei leitud
-STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... eiratakse alushelide kogu «{STRING}»: ei leitud
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... eiratakse alusmuusika kogu «{STRING}»: ei leitud
+STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... eiratakse lähtegraafikakogu «{STRING}»: ei leitud
+STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... eiratakse lähtehelikogu «{STRING}»: ei leitud
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... eiratakse lähtemuusikakogu «{STRING}»: ei leitud
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Vahemälu on täis
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Pildipuhvri (ingl k «spritecache») suurendamine {BYTES} võrra ebaõnnestus. Pildipuhvri uus suurus on {BYTES}. Seetõttu on OpenTTD nüüd aeglasem. 32 bpp graafika keelamine ja suurendusastme ülempiiri vähendamine piirab vahemälu tarbimist
 
@@ -1818,7 +1818,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi all
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Ava AI/GameScripti seaded
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Välju 'OpenTTD'st
 
-STR_INTRO_TRANSLATION                                           :{BLACK}Puudub {NUM} tõlge{P "" t}. Tule tee OpenTTD paremaks, aita tõlkida. Rohkem teavet leiad «readme.txt» failist.
+STR_INTRO_TRANSLATION                                           :{BLACK}Puudub {NUM} tõlge{P "" t}. Aita teha OpenTTD paremaks, panusta tõlkimisega. Rohkem teavet leiad «readme.txt» failist.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Mängust väljumine
@@ -2270,14 +2270,14 @@ STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... aineste allalaadimine pole võimalik!
 
 # Order of these is important!
-STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Alusgraafika
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Lähtegraafika
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
-STR_CONTENT_TYPE_AI                                             :Tehismõistus
-STR_CONTENT_TYPE_AI_LIBRARY                                     :Tehismõistuse teek
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI teek
 STR_CONTENT_TYPE_SCENARIO                                       :Stsenaarium
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Kõrguskaart
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :Alushelid
-STR_CONTENT_TYPE_BASE_MUSIC                                     :Alusmuusika
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Lähtehelid
+STR_CONTENT_TYPE_BASE_MUSIC                                     :Lähtemuusika
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Mängu skript
 STR_CONTENT_TYPE_GS_LIBRARY                                     :GS teek
 
@@ -2741,6 +2741,7 @@ STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} kaadrit/s
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} kaadrit/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} kaadrit/s
+STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Mängutsükli lõppkokkuvõte:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Õhusõiduki sammud:
@@ -3555,20 +3556,20 @@ STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Kloonimi
 STR_DEPOT_CLONE_SHIP                                            :{BLACK}Klooni laev
 STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Klooni lennuk
 
-STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ostetakse samasugune rong koos kõikide vagunitega. Vajuta sellele nupule, ning seejärel rongile depoo sees või väljas. «Ctrl»+klõps jagab ülesandeid. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ostetakse samasugune mootorsõiduk. Vajuta sellele nupule, ning seejärel mootorsõidukil depoos või sellest väljas. «Ctrl»+klõps jagab ülesandeid. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ostetakse samasugune laev. Vajuta sellele nupule, ning seejärel laevale laevaremonditehase sees või väljas. «Ctrl»+klõps jagab ülesandeid. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ostetakse samasugune õhusõiduk. Vajuta sellele nupule, ning seejärel lennukile angaari sees või väljas. «Ctrl»+klõps jagab ülesandeid. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Ostetakse samasugune rong koos kõikide vagunitega. Vajuta sellele nupule, ning seejärel rongile depoo sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Ostetakse samasugune mootorsõiduk. Vajuta sellele nupule, ning seejärel mootorsõidukil depoos või sellest väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Ostetakse samasugune laev. Vajuta sellele nupule, ning seejärel laevale laevaremonditehase sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Ostetakse samasugune õhusõiduk. Vajuta sellele nupule, ning seejärel lennukile angaari sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Keskenda põhivaade rongidepoo kohale
 STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Vii vaade garaažile. Ctrl+klõps avab garaažil uue vaate.
 STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Vii pea vaade paadikuuri juurde
 STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Vii vaade angaarile
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Koosta nimekiri kõikidest rongidest, mille ülesannete hulgas on see depoo
-STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Koosta nimekiri kõikidest mootorsõidukitest, mille ülesannete hulgas on see depoo
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Koosta nimekiri kõikidest laevadest, mille ülesannete hulgas on see angaar
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Koosta nimekiri kõikidest rongidest, mille ülesannete hulgas on selle lennujaama angaar
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Koosta nimekiri kõikidest rongidest, mille korralduste hulgas on see depoo
+STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Koosta nimekiri kõikidest mootorsõidukitest, mille korralduste hulgas on see depoo
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TOOLTIP                       :{BLACK}Koosta nimekiri kõikidest laevadest, mille korralduste hulgas on see angaar
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TOOLTIP                   :{BLACK}Koosta nimekiri kõikidest rongidest, mille korralduste hulgas on selle lennujaama angaar
 
 STR_DEPOT_MASS_STOP_DEPOT_TRAIN_TOOLTIP                         :{BLACK}Vajuta, kui tahad seisata kõiki ronge jaamas
 STR_DEPOT_MASS_STOP_DEPOT_ROAD_VEHICLE_TOOLTIP                  :{BLACK}Vajuta, kui tahad seisata kõiki masinaid garaažis
@@ -3652,9 +3653,9 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Saada s�
 STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Saada laev angaari. Ctrl+klõps ainult teenindab
 STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Saada lennuk angaari
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ostab samasuguse rongi koos kõikide vagunitega. «Ctrl»+klõps jagab ülesandeid. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ostab samasuguse maanteesõiduki. «Ctrl»+klõps jagab ülesandeid. «Shift»+klõps näitab eeldatavat ostuhinda
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ostab samasuguse laeva. Vajuta sellele nuppule, ning seejärel laevale laevaremonditehase sees või väljas. «Ctrl»+klõps jagab ülesandeid. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Ostab samasuguse rongi koos kõikide vagunitega. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Ostab samasuguse maanteesõiduki. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Ostab samasuguse laeva. Vajuta sellele nuppule, ning seejärel laevale laevaremonditehase sees või väljas. «Ctrl»+klõps jagab korraldusi. «Shift»+klõps näitab eeldatavat ostuhinda
 STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Ostab samasuguse õhusõiduki. Ctrl+klõpsuga jagatakse sihtpunkte. Shift+klõpsuga kuvatakse eeldatav ostuhind
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Sunni rongi signaale eirama
@@ -3667,10 +3668,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Seadista
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Pööra rong ümber
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Sunni veovahendit ümber pöörama
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Näita rongi ülesandeid. «Ctrl»+klõps näitab rongi sõiduplaani
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Näita mootorsõiduki ülesandeid. «Ctrl»+klõps näitab mootorsõiduki sõiduplaani
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Näita laeva ülesanded. «Ctrl»+klõps näitab laeva sõiduplaani
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Näita lennuki ülesandeid. «Ctrl»+klõps näitab õhusõiduki sõiduplaani
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Näita rongi korraldusi. «Ctrl»+klõps näitab rongi graafikut
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Näita mootorsõiduki korraldusi. «Ctrl»+klõps näitab mootorsõiduki graafikut
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Näita laeva korraldusi. «Ctrl»+klõps näitab laeva graafikut
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Näita lennuki korraldusi. «Ctrl»+klõps näitab õhusõiduki graafikut
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Näita rongi täpsustusi
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Näita mootorsõiduki täpsustusi
@@ -3795,38 +3796,38 @@ STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Seadista
 STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Seadista lennuk ümber, et kanda valitud kaubatüüpi
 
 # Order view
-STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (ülesanded)
-STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Sõiduplaan
-STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Näita sõiduplaani
+STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (korraldused)
+STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Graafik
+STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Näita graafikut
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Ülesannete register - ülesanne valitakse klõpsamisega. Ctrl+klõps keskendab vaate ülesande sihile
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Korralduste register - korraldus valitakse klõpsamisega. Ctrl+klõps keskendab vaate korralduse sihtpunktile
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - Ülesannete lõpp - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jagatud käskluste lõpp - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Korraldused läbi - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jagatud korraldused läbi - -
 
 # Order bottom buttons
-STR_ORDER_NON_STOP                                              :{BLACK}Peatusteta
+STR_ORDER_NON_STOP                                              :{BLACK}Vahepeatusteta
 STR_ORDER_GO_TO                                                 :Mine
 STR_ORDER_GO_NON_STOP_TO                                        :Mine peatumata
 STR_ORDER_GO_VIA                                                :Mine läbi
 STR_ORDER_GO_NON_STOP_VIA                                       :Mine peatumata läbi
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Valitud ülesande peatumisprotseduuri muutmine
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Valitud korralduse peatumisprotseduuri muutmine
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Laadi üks täis
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laadi peale
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Laadi kõik kaubad täis
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Laadi üks kaup täis
 STR_ORDER_DROP_NO_LOADING                                       :Mitte laadida
-STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Valitud ülesande pealelaadimisprotseduuri muutmine
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Valitud korralduse pealelaadimisprotseduuri muutmine
 
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Laadi kõik maha
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Laadi tühjaks nõudlusel
 STR_ORDER_DROP_UNLOAD                                           :Laadi tühjaks
 STR_ORDER_DROP_TRANSFER                                         :Laadi ümber
 STR_ORDER_DROP_NO_UNLOADING                                     :Mitte maha laadida
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Valitud ülesande mahalaadimisprotseduuri muutmine
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Valitud korralduse mahalaadimisprotseduuri muutmine
 
 STR_ORDER_REFIT                                                 :{BLACK}Taasseadista
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vali, millist laadungit ümber seadistada selles järjestuses. Ümberseadistuse käsu eemaldamiseks hoia klõpsamise ajal all Control nuppu
@@ -3841,7 +3842,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Vajadusel hoold
 STR_ORDER_DROP_HALT_DEPOT                                       :Peatu
 STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}Jäta see käsk vahele, kui hooldust ei vajata
 
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sõiduki andmed, millel ülesande vahetamine põhineb
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sõiduki andmed, millel korralduse vahelejätmine põhineb
 
 # Conditional order variables, must follow order of OrderConditionVariable enum
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Koorem protsentides
@@ -3866,20 +3867,20 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Väärtu
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Sisesta väärtus, millega võrrelda
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Jäta vahele
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Jäta praegune ülesannete vahele ja alusta järgmisega. Ctrl+klõps valib ülesande ja jätab teised ülesanded vahele
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Jäta praegune korraldus vahele ja alusta järgmisega. Ctrl+klõps valib korralduse ja jätab teised korraldused vahele
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Kustuta
-STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Kustuta valitud ülesanne
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Tühjenda sihiloend
+STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Kustuta valitud korraldus
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}Eemalda kõik korraldused
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}Lõpeta jagamine
-STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Lõpeta sihiloendi jagamine. Sihiloend tühjendatakse Ctrl+klõpsu abil
+STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}Lõpeta korralduste jagamine. Ctrl+klõps eemaldab kõik selle sõiduki korraldused
 
 STR_ORDERS_GO_TO_BUTTON                                         :{BLACK}Mine
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mine lähimasse depoosse
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mine lähimasse angaari
-STR_ORDER_CONDITIONAL                                           :Ülesande vahetamine tingimusel
+STR_ORDER_CONDITIONAL                                           :Korralduste tinglik vahelejätmine
 STR_ORDER_SHARE                                                 :Jaga korraldusi
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisa valitud käsu ette uus ülesanne, või kui ülesannet ei ole valitud, siis nimekirja lõppu. «Ctrl» määrab jaama puhul ülesandeks «peale laadida üks kaup», meldepunkti puhul «peatuseta» ja depoo puhul «hooldus». «Jaga korraldusi» või «Ctrl» klahv lubab sellel sõidukil jagada ülesandeid valitud sõidukiga. Klõpsates teisel sõidukil, dubleeritakse selle ülesanded
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisa valitud käsu ette uus korraldus, või kui korraldust ei ole valitud, siis nimekirja lõppu. «Ctrl» määrab jaama puhul korralduseks «peale laadida üks kaup», meldepunkti puhul «peatuseta» ja depoo puhul «hooldus». «Jaga korraldusi» või «Ctrl» klahv lubab sellel sõidukil jagada korraldusi valitud sõidukiga. Klõpsates teisel sõidukil, dubleeritakse selle korraldused
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näita kõiki sama sõidugraafikuga mootorsõidukeid
 
@@ -3947,18 +3948,18 @@ STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :Mine sihtpunkti
 STR_ORDER_CONDITIONAL_NUM                                       :Mine sihtpunkti {COMMA}, kui {STRING} {STRING} {COMMA}
 STR_ORDER_CONDITIONAL_TRUE_FALSE                                :Mine sihtpunkti{COMMA}, kui {STRING} {STRING}
 
-STR_INVALID_ORDER                                               :{RED} (Kõlbmatu ülesanne)
+STR_INVALID_ORDER                                               :{RED} (Kõlbmatu korraldus)
 
 # Time table window
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Sõiduplaan)
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Graafik)
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Korraldused
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Lülita korralduste vaatesse
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Sõiduplaan - ülesanne märgitakse klõpsuga
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Graafik - korraldus märgitakse klõpsuga
 
 STR_TIMETABLE_NO_TRAVEL                                         :Sõitu pole
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Reisi (automaatne; ajakava järgmise manuaalse käsu järgi)
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Sõitmine (sõiduplaanita)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Sõitmine (graafikuta)
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED_SPEED                       :Reisi kõike suurema {2:VELOCITY} (ei ole ajastatud)
 STR_TIMETABLE_TRAVEL_FOR                                        :Sõida {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reisi selleks {STRING} kõige rohkema {VELOCITY}
@@ -3971,23 +3972,23 @@ STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja sõida {STRI
 STR_TIMETABLE_DAYS                                              :{COMMA} päev{P "" a}
 STR_TIMETABLE_TICKS                                             :{COMMA} samm{P "" u}
 
-STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Selle sõiduplaani täitmine võtab {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Selle sõiduplaani täitmine võtab vähemalt {STRING} (kõik ei ole planeeritud)
+STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Selle graafiku läbimine võtab {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Selle graafiku läbimine võtab vähemalt {STRING} (kõik ei ole planeeritud)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Sõiduk on graafikus
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}See sõiduk on {STRING} hiljaks jäämas
 STR_TIMETABLE_STATUS_EARLY                                      :{BLACK}See sõiduk on {STRING} varajane
-STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Sõiduplaani pole veel alustatud
-STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Sõiduplaani alustatakse {STRING}
+STR_TIMETABLE_STATUS_NOT_STARTED                                :{BLACK}Graafikuga pole veel alustatud
+STR_TIMETABLE_STATUS_START_AT                                   :{BLACK}Graafikuga alustatakse {STRING}
 
 STR_TIMETABLE_STARTING_DATE                                     :{BLACK}Alguskuupäev
-STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vali sõiduplaani alguskuupäev. Ctrl-klõps määrab sõiduplaani alguskuupäeva ja jaotab sõidukid ühtlaselt, kasutades järjestust, kui sihid on planeeritud
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}Vali graafiku alguskuupäev. Ctrl-klõps määrab graafiku alguskuupäeva ja jaotab sõidukid ühtlaselt, kasutades järjestust, kui sihid on planeeritud
 
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Muuda aega
-STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda märgitud ülesandeks vajalikku aega
+STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda märgitud korraldusele määratud aega
 
 STR_TIMETABLE_CLEAR_TIME                                        :{BLACK}Tühista aeg
-STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Eemalda ülesandeks vajalik aeg
+STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Tühista korralduse täitmiseks määratud aeg
 
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Muuda kiiruspiirangut
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuda märgitud korralduse kiiruspiirangut
@@ -4003,7 +4004,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Kasuta l
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Eeldatav
 STR_TIMETABLE_SCHEDULED                                         :{BLACK}Plaanis
-STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaheta eeldatava ja graafikupõhise sõiduplaani vahel
+STR_TIMETABLE_EXPECTED_TOOLTIP                                  :{BLACK}Vaheta eeldatava ja graafiku vahel
 
 STR_TIMETABLE_ARRIVAL_ABBREVIATION                              :S:
 STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :V:
@@ -4012,7 +4013,7 @@ STR_TIMETABLE_DEPARTURE_ABBREVIATION                            :V:
 # Date window (for timetable)
 STR_DATE_CAPTION                                                :{WHITE}Määra kuupäev
 STR_DATE_SET_DATE                                               :{BLACK}Määra kuupäev
-STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Kasuta sõiduplaani alguskuupäevana
+STR_DATE_SET_DATE_TOOLTIP                                       :{BLACK}Kasuta graafiku alguskuupäevana
 STR_DATE_DAY_TOOLTIP                                            :{BLACK}Vali päev
 STR_DATE_MONTH_TOOLTIP                                          :{BLACK}Vali kuu
 STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vali aasta
@@ -4024,8 +4025,8 @@ STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING}
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Skripti nimi
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Seaded
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Skripti seadistamine
-STR_AI_DEBUG_RELOAD                                             :{BLACK}Laadi tehismõistus uuesti
-STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Sulge tehismõistus, laadi skript uuesti ning taaskäivita tehismõistus
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Laadi AI uuesti
+STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Sulge AI, laadi skript uuesti ning taaskäivita AI
 STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Enable/disable breaking when an AI log message matches the break string
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Vahe sees:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Vahe sees
@@ -4038,29 +4039,29 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vaata se
 STR_AI_GAME_SCRIPT                                              :{BLACK}GameScript
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kontrolli GameScripti logi
 
-STR_ERROR_AI_NO_AI_FOUND                                        :Laadimiseks sobivat tehismõistust ei leitud.{}See on asendustehismõistus, ning ei tee midagi.{}Tehismõistuseid saab laadida kasutades 'Internetisisu' süsteemi.
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Tõrge ühe töötava tehismõistusega. Palun teavitage sellest tehismõistuse autorit koos kuvapaugutusega tehismõistuse tõrkeotsingu aknast.
+STR_ERROR_AI_NO_AI_FOUND                                        :Laadimiseks sobivat AI-d ei leitud.{}See AI on makett, ning ei tee midagi.{}AI-sid alla saab laadida kasutades 'aineste allalaadimise' süsteemi.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Üks skriptidest jooksis kokku. Palun teatada sellest skripti autorit koos ekraanipildiga AI/GamesScripti debugimise aknast
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}AI/GameScripti debugimise akent saab kasutada ainult serveris
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI/Game Script seadistus
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Järgmises mängus laaditav GameScript
-STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Tehismõistused mis laetakse järgmise mänguga
+STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}AI-d järgmises mängus
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Inimene
-STR_AI_CONFIG_RANDOM_AI                                         :Suvaline tehismõistus
+STR_AI_CONFIG_RANDOM_AI                                         :Suvaline AI
 STR_AI_CONFIG_NONE                                              :(mitte ühtegi)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Liigutamine ülespoole
-STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Valitud tehismõistuse liigutamine loendis ülespoole
+STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Valitud AI liigutamine loendis ülespoole
 STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Liigutamine allapoole
-STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Valitud tehismõistuse liigutamine loendis allapoole
+STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Valitud AI liigutamine loendis allapoole
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
-STR_AI_CONFIG_AI                                                :{SILVER}Tehismõistused
+STR_AI_CONFIG_AI                                                :{SILVER}AI-d
 
 STR_AI_CONFIG_CHANGE                                            :{BLACK}Vali {STRING}
 STR_AI_CONFIG_CHANGE_NONE                                       :
-STR_AI_CONFIG_CHANGE_AI                                         :Tehismõistus
+STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lae teine skript
 STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Seadista
@@ -4068,7 +4069,7 @@ STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Muuda sk
 
 # Available AIs window
 STR_AI_LIST_CAPTION                                             :{WHITE}Kasutatav {STRING}
-STR_AI_LIST_CAPTION_AI                                          :Tehismõistused
+STR_AI_LIST_CAPTION_AI                                          :AI-d
 STR_AI_LIST_CAPTION_GAMESCRIPT                                  :GameScriptid
 STR_AI_LIST_TOOLTIP                                             :{BLACK}Klõpsa skripti valimiseks
 
@@ -4091,12 +4092,12 @@ STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Väikese
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameetrid
-STR_AI_SETTINGS_CAPTION_AI                                      :Tehismõistus
+STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulge
 STR_AI_SETTINGS_RESET                                           :{BLACK}Nulli
 STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORANGE}{STRING}
-STR_AI_SETTINGS_START_DELAY                                     :Päevade arv eelmise tehismõistuse alustamisest pärast mida antud tehismõistus alustab (umbkaudne): {ORANGE}{STRING}
+STR_AI_SETTINGS_START_DELAY                                     :Päevade arv pärast eelmise AI lõpetamist, millal see AI käivitub (umbkaudselt): {ORANGE}{STRING}
 
 
 # Textfile window
@@ -4136,7 +4137,7 @@ STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Eeldatav
 
 # Saveload messages
 STR_ERROR_SAVE_STILL_IN_PROGRESS                                :{WHITE}Ikka salvestamisel,{}palun oota salvestuse lõpuni!
-STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Automaatsalvestus ebaõnnestus
+STR_ERROR_AUTOSAVE_FAILED                                       :{WHITE}Välpsalvestus ebaõnnestus
 STR_ERROR_UNABLE_TO_READ_DRIVE                                  :{BLACK}Ei suuda kettalt lugeda
 STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Mängu salvestamine nurjus{}{STRING}
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Faili ei saa kustutada
@@ -4502,17 +4503,17 @@ STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Maantees
 STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Lennuk on õhus
 
 # Order related errors
-STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ülesannetele pole rohkem ruumi
-STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Liiga palju ülesandeid
-STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ei saa lisada uut ülesannet...
-STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Seda ülesannet ei saa kustutada...
-STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Seda ülesannet ei saa muuta...
-STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Seda ülesannet ei saa liigutada...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Praegust ülesannet ei ole saa vahele jätta...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Teisi ülesandeid ei saa vahele jätta...
+STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Korraldustele pole rohkem ruumi
+STR_ERROR_TOO_MANY_ORDERS                                       :{WHITE}Liiga palju korraldusi
+STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Ei saa lisada uut korraldust...
+STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Seda korraldust ei saa kustutada...
+STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Seda korraldust ei saa muuta...
+STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Seda korraldust ei saa liigutada...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Praegust korraldust pole võimalik vahele jätta...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Teisi korraldusi ei saa vahele jätta...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}sõiduk ei saa igasse jaama minna
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}sõiduk ei saa antud jaama minna
-STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... seda ülesannet jagav sõiduk ei saa sinna jaama minna
+STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... seda korraldust jagav sõiduk ei saa sinna jaama minna
 
 STR_ERROR_CAN_T_SHARE_ORDER_LIST                                :{WHITE}Sihtpunktide nimekirja ei saa jagada...
 STR_ERROR_CAN_T_STOP_SHARING_ORDER_LIST                         :{WHITE}Korralduste jagamist ei saa peatada...
@@ -4521,7 +4522,7 @@ STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION                     :{WHITE}... liig
 STR_ERROR_AIRCRAFT_NOT_ENOUGH_RANGE                             :{WHITE}... lennukil pole piisavalt pikka tegevusraadiust
 
 # Timetable related errors
-STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Sõidukile ei saa sõiduplaani anda...
+STR_ERROR_CAN_T_TIMETABLE_VEHICLE                               :{WHITE}Sõidukile ei saa graafikut määrata...
 STR_ERROR_TIMETABLE_ONLY_WAIT_AT_STATIONS                       :{WHITE}Sõidukid saavad ainult peatustes oodata
 STR_ERROR_TIMETABLE_NOT_STOPPING_HERE                           :{WHITE}See sõiduk ei peatu selles jaamas
 

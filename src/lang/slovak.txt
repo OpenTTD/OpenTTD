@@ -815,6 +815,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Nerovný terén
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Trávnatý terén
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Holý terén
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Dážďový prales
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Polia
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Stromy
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Skaly
@@ -1517,6 +1518,8 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Zachovať stave
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Zachovaj okno s nástrojmi na stavbu mostov/tunelov otvorené aj po použití
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Zoskupiť výdavky v okne financií spoločnosti: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definujte rozloženie okna s financiami.
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automaticky odstraňovať návestidlá pri výstavbe železnice: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automaticky odstraňovať návestidla pri výstavbe železnice, ak návestidlá blokujú výstavbu. To však môže niekedy smerovať k zrážke vlakov.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Oznamovač správ: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Prehrať zvuk pri zhrnutých správach
@@ -1901,6 +1904,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ste si 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheaty
 STR_CHEATS_TOOLTIP                                              :{BLACK}Zaškrtávacie pole indikuje opakované použite cheatu
+STR_CHEATS_NOTE                                                 :{BLACK}Poznámka: použitie akéhokoľvek z týchto nastavení bude zaznamenané v uloženej hre
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zvýšiť hotovosť o {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrať za spoločnosť: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozér (odstráni priemysel a nehnuteľnosti): {ORANGE}{STRING}
@@ -2297,6 +2301,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} sa
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} založil novú spoločnosť (č. {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} opustil hru ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} zmenil/-a svoje meno na {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} dal {2:CURRENCY_LONG} spoločnosti {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Server ukoncil relaciu
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Server sa reštartuje...{}Čakajte prosím...
 STR_NETWORK_MESSAGE_KICKED                                      :*** Hráč {STRING} bol vyhodený. Dôvod: ({STRING})
@@ -2416,6 +2421,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spojiť 
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Postaviť smerový bod oddelene
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Vypnuté, pretože v súčasnosti nie sú dostuné žiadne vozidlá pre tento typ infraštruktúry
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Výstavba železnice
@@ -2693,6 +2699,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Vyber pr
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Informácie o pozemku
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Vycentrovať pohľad na pozíciu políčka. Ctrl+klik otvorí nové okno s pohľadom na políčko
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Náklady na odstránenie: {LTBLUE}N/A
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Náklady na odstránenie: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Zisk pri odstránení: {LTBLUE}{CURRENCY_LONG}
@@ -3163,8 +3170,9 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Brať/ne
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Upraviť text popisu
-STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Prejst na dalsiu znacku
-STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Prejsť na predchádzajúcu značku
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Vycentrovať pohľad na pozíciu popisu. Ctrl+klik otvorí nové okno s pohľadom na popis
+STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Prejsť na ďalší popis
+STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Prejsť na predchádzajúci popis
 
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Zadajte názov pre popis
 
@@ -3439,7 +3447,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Premiest
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Sídlo spoločnosti je možné premiestniť za 1% hodnoty spoločnosti. Shift+klik zobrazí odhadovanú cenu
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaily
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Zobraziť podrobné políčka infraštruktúry
-STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Presuň peniaze do tejto spoločnosti
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dať peniaze
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Presunúť peniaze do tejto spoločnosti
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nová tvár
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Vybrať novú tvár prezidenta
@@ -3457,6 +3466,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Predať 
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Názov spoločnosti
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Meno prezidenta
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Zadajte množstvo peňazí, ktoré chcete dať spoločnosti
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Hľadáme záujemcu o kúpu našej spoločnosti{}{}Chcete kúpiť našu spoločnosť {COMPANY} za {CURRENCY_LONG}?
 
@@ -3817,6 +3827,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zachovan
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Vycentrovať pohľad na pozíciu vlaku. Dvojité kliknutie bude sledovať vlak v hlavnom pohľade. Ctrl+klik otvorí nové okno s pohľadom na vlak
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Vycentrovať pohľad na pozíciu vozidla. Dvojité kliknutie bude sledovať vozidlo v hlavnom pohľade. Ctrl+klik otvorí nové okno s pohľadom na vozidlo
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Vycentrovať pohľad na pozíciu lode. Dvojité kliknutie bude sledovať loď v hlavnom pohľade. Ctrl+klik otvorí nové okno s pohľadom na loď
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Vycentrovať pohľad na pozíciu lietadla. Dvojité kliknutie bude sledovať lietadlo v hlavnom pohľade. Ctrl+klik otvorí nové okno s pohľadom na lietadlo
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Poslať vlak do depa. Ctrl+klik iba servis
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Poslať vozidlo do garáže. Ctrl+klik iba servis.
@@ -3853,6 +3867,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Činnos�
 STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Činnosť aktuálnej lode - kliknite na zastavenie/spustenie lode
 STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Činnosť aktuálneho lietadla - kliknite na zastavenie/spustenie lietadla
 
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Vycentrovať pohľad na cieľovú pozíciu. Ctrl+klik otvorí nové okno s pohľadom na cieľ
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Nakláda / Vykláda
@@ -4080,6 +4095,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Prestavba na {
 STR_ORDER_STOP_ORDER                                            :(Zastav)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Nemožno použiť stanicu){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Predpokladané)
 
@@ -4404,7 +4420,8 @@ STR_ERROR_CAN_T_BORROW_ANY_MORE_MONEY                           :{WHITE}Nemôže
 STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... úver už bol splatený
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} potrebuješ
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Úver sa nedá splatiť...
-STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nie je mozne poskytnut peniaze, ktore su pozicane z banky ...
+STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nie je možné presunúť peniaze, ktoré sú požičané z banky...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Nie je možné presunúť peniaze tejto spoločnosti...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Spoločnosť nie je možné kúpiť ...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nemôžeš postaviť sídlo spoločnosti...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nemôžeš kúpiť 25% podiel v tejto spoločnosti...
@@ -4531,6 +4548,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Nesprávny typ 
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} je dlho po výmene
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Neboli využité žiadne pravidlá pre obnovu.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(finančný limit)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Nové vozidlo nemôže prevážať {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Nové vozidlo nemôže uskutočniť prestavbu v príkaze {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nemožná kombinácia trate
