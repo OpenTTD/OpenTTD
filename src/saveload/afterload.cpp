@@ -2929,16 +2929,47 @@ bool AfterLoadGame()
 					case 2:
 						cur_skip++;
 						if (u->frame <= (roadside ? 9 : 5)) this_skip = cur_skip;
+						if (u->frame == (roadside ? 5 : 2)) {
+							if (u->direction == DIR_E) {
+								u->direction = DIR_SE;
+								u->y_pos++;
+								u->frame++;
+							}
+						} else if (u->frame >= (roadside ? 6 : 3)) {
+							u->x_pos++;
+						}
 						break;
 
 					case 4:
 						cur_skip++;
 						if (u->frame <= (roadside ? 5 : 9)) this_skip = cur_skip;
+						if (roadside) {
+							if (u->frame == 1) {
+								if (u->direction == DIR_S) {
+									u->direction = DIR_SE;
+									u->y_pos++;
+									u->frame++;
+								}
+							} else if (u->frame >= 2) {
+								u->x_pos--;
+							}
+						}
 						break;
 
 					case 5:
 						cur_skip++;
 						if (u->frame <= (roadside ? 4 : 2)) this_skip = cur_skip;
+						if (roadside) {
+							if (u->frame == 4) {
+								if (u->direction == DIR_S) {
+									u->direction = DIR_SW;
+									u->x_pos++;
+									u->frame++;
+								}
+							} else if (u->frame >= 4) {
+								u->y_pos--;
+							}
+						}
 						break;
 
 					default:
@@ -3181,6 +3212,7 @@ bool AfterLoadGame()
 					case 2: // Going SE -> E -> NE, in the inner curve.
 						cur_skip++;
 						this_skip = cur_skip;
+						if (IsSavegameVersionBefore(SLV_188)) break;
 						switch (u->frame) {
 							case 2:
 								if (u->direction == DIR_E) {
@@ -3285,6 +3317,7 @@ bool AfterLoadGame()
 					case 18: // Going SE -> E -> NE, in the outer curve.
 						cur_skip++;
 						this_skip = cur_skip;
+						if (IsSavegameVersionBefore(SLV_188)) break;
 						switch (u->frame) {
 							case 5:
 								if (u->direction == DIR_E) {
@@ -3313,6 +3346,7 @@ bool AfterLoadGame()
 					case 20: // Going SE -> S -> SW, in the inner curve.
 						cur_skip++;
 						this_skip = cur_skip;
+						if (IsSavegameVersionBefore(SLV_188)) break;
 						switch (u->frame) {
 							case 1:
 								if (u->direction == DIR_S) {
@@ -3338,6 +3372,7 @@ bool AfterLoadGame()
 					case 21: // Going SW -> S -> SE, in the outer curve.
 						cur_skip++;
 						this_skip = cur_skip;
+						if (IsSavegameVersionBefore(SLV_188)) break;
 						switch (u->frame) {
 							case 4:
 								if (u->direction == DIR_S) {
