@@ -1617,6 +1617,7 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Játék végi p
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :A játék ebben az évben ér véget pontozás szempontjából. Ennek az évnek a végén a vállalat teljesítménypontszáma rögzítésre kerül, és adott esetben megjelenik a rekord táblán, de a játékosok ezután folytathatják a játékot.{}Ha ez a kezdő év elé van állítva, akkor a rekord tábla sosem jelenik meg.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Soha
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Eredeti
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Más vállalatokból lehet részvényt vásárolni: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Bekapcsolva engedélyezi más vállalatok részvényeinek megvásárlását. A részvények csak akkor elérhetőek, ha a vállalat elért egy bizonyos kort
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Vállalatok minimális életkora részvénykibocsátáshoz: {STRING}
@@ -2253,6 +2254,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :A játék tová
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :A játék továbbra is szünetel ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :A játék továbbra is szünetel ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :A játék továbbra is szünetel ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :A játék továbbra is szünetel ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :A játék folytatódik ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :játékosok száma
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kapcsolódó kliensek
@@ -2657,6 +2659,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Válaszd
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Terület-információ
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}A főnézetet a csempére állítja. Ctrl+Klikk megnyit egy új főnézetet a csempén.
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}{LTBLUE}Nem lehet lerombolni
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}A megtisztítás költsége: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Bevétel lerombolás esetén: {LTBLUE}{CURRENCY_LONG}
@@ -3403,6 +3406,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}SZH áth
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}A vállalat székházának újraépítése máshol a vállalat értékének 1%-áért. Shift+kattintással megmutatja a becsült költséget a székhely áthelyezése nélkül
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Részletek
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Részletes információk megtekintése az infrastruktúráról
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Adományozz pénzt
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Utalj pénzt ennek a vállalatnak
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Új arc
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Új arc választása az elnöknek
@@ -4039,6 +4044,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(átalakít err
 STR_ORDER_STOP_ORDER                                            :(megáll)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Az állomás nem használható){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Automata)
 
@@ -5114,6 +5120,7 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} {COMMA}.
 STR_FORMAT_BUOY_NAME_SERIAL.ba                                  :{TOWN} {COMMA}. sz. Bóján
 STR_FORMAT_COMPANY_NUM                                          :({COMMA}. vállalat)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} csoport
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}i {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Ellenőrző pont
 STR_FORMAT_WAYPOINT_NAME.ba                                     :{TOWN} Ellenőrző ponton

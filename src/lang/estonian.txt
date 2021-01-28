@@ -4051,20 +4051,21 @@ STR_AI_CONFIG_HUMAN_PLAYER                                      :Inimene
 STR_AI_CONFIG_RANDOM_AI                                         :Suvaline AI
 STR_AI_CONFIG_NONE                                              :(mitte ühtegi)
 
-STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Liigutamine ülespoole
+STR_AI_CONFIG_MOVE_UP                                           :{BLACK}Tõsta
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}Valitud AI liigutamine loendis ülespoole
-STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Liigutamine allapoole
+STR_AI_CONFIG_MOVE_DOWN                                         :{BLACK}Langeta
 STR_AI_CONFIG_MOVE_DOWN_TOOLTIP                                 :{BLACK}Valitud AI liigutamine loendis allapoole
 
 STR_AI_CONFIG_GAMESCRIPT                                        :{SILVER}GameScript
 STR_AI_CONFIG_AI                                                :{SILVER}AI-d
 
-STR_AI_CONFIG_CHANGE                                            :{BLACK}Vali {STRING}
+STR_AI_CONFIG_CHANGE                                            :{BLACK}{STRING.g} valimine
 STR_AI_CONFIG_CHANGE_NONE                                       :
 STR_AI_CONFIG_CHANGE_AI                                         :AI
 STR_AI_CONFIG_CHANGE_GAMESCRIPT                                 :GameScript
+STR_AI_CONFIG_CHANGE_GAMESCRIPT.g                               :GameScripti
 STR_AI_CONFIG_CHANGE_TOOLTIP                                    :{BLACK}Lae teine skript
-STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Seadista
+STR_AI_CONFIG_CONFIGURE                                         :{BLACK}Seadistamine
 STR_AI_CONFIG_CONFIGURE_TOOLTIP                                 :{BLACK}Muuda skripti parameetreid
 
 # Available AIs window
