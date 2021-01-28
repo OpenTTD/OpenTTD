@@ -56,3 +56,13 @@ cat <<EOF > notarize.json
 EOF
 
 gon notarize.json
+
+app_filename=(_CPack_Packages/*/Bundle/openttd-*/OpenTTD.app)
+
+if [ "${app_filename}" = "_CPack_Packages/*/Bundle/openttd-*/OpenTTD.app" ]; then
+    echo "No .app found in the _CPack_Packages directory, skipping stapling."
+    exit 0
+fi;
+
+# Now staple the ticket to the .app
+xcrun stapler staple "${app_filename[0]}"
