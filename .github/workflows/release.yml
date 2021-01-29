@@ -317,7 +317,6 @@ jobs:
           liblzma-dev \
           liblzo2-dev \
           libsdl2-dev \
-          libxdg-basedir-dev \
           lsb-release \
           zlib1g-dev \
           # EOF
