@@ -231,8 +231,8 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}검색�
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}검색할 키워드를 입력하세요
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}그룹화 순서를 선택하세요.
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하십시오. (내림차순/오름차순)
-STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}정렬 기준을 선택하십시오.
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}정렬 방법을 선택하세요 (내림차순/오름차순)
+STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}정렬 기준을 선택하세요
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}검색 기준 선택
 STR_BUTTON_SORT_BY                                              :{BLACK}정렬
 STR_BUTTON_CATCHMENT                                            :{BLACK}역세권
@@ -863,9 +863,9 @@ STR_NEWS_PLANE_USES_TOO_SHORT_RUNWAY                            :{WHITE}{VEHICLE
 STR_NEWS_VEHICLE_IS_GETTING_OLD                                 :{WHITE}{VEHICLE} : 차량이 낡았습니다.
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD                            :{WHITE}{VEHICLE} : 차량이 매우 낡았습니다.
 STR_NEWS_VEHICLE_IS_GETTING_VERY_OLD_AND                        :{WHITE}{VEHICLE} : 차량이 매우 낡아 교체가 시급합니다
-STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} : 다음 목적지로 가는 경로를 찾을 수 없습니다.
-STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} : 아직 다음 목적지에 도착하지 못했습니다.
-STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 이익이 {CURRENCY_LONG} 입니다.
+STR_NEWS_TRAIN_IS_STUCK                                         :{WHITE}{VEHICLE} : 다음 목적지로 가는 경로를 찾을 수 없습니다
+STR_NEWS_VEHICLE_IS_LOST                                        :{WHITE}{VEHICLE} : 아직 다음 목적지에 도착하지 못했습니다
+STR_NEWS_VEHICLE_IS_UNPROFITABLE                                :{WHITE}{VEHICLE}의 작년 이익이 {CURRENCY_LONG} 입니다
 STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리가 너무 멀어서 {VEHICLE}이 다음 목적지에 도착할 수 없습니다
 
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 상에 있던 개조에 실패하여 {VEHICLE}의 운행을 멈췄습니다.
@@ -955,7 +955,7 @@ STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :좌측통행
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :우측통행
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 이름
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}도시 이름 스타일을 선택하십시오.
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}도시 이름 스타일을 선택하세요
 
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :영국 식 (기본)
@@ -993,13 +993,13 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
 ############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}언어
-STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}사용하실 언어를 선택하세요.
+STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}사용할 언어를 선택하세요
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}전체화면
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD를 전체화면으로 플레이하려면 클릭하세요.
 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 해상도
-STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용하실 화면 해상도를 선택하세요.
+STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용할 화면 해상도를 선택하세요
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
@@ -1010,23 +1010,23 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2배 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4배 크기
 
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}글씨 크기
-STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}인터페이스에서 사용할 글씨 크기를 선택합니다.
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}인터페이스에서 사용할 글씨 크기를 선택하세요
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :기본 크기
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :2배 크기
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4배 크기
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
-STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}사용하실 기본 그래픽을 선택하세요.
+STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}게임에 사용할 기본 그래픽 세트를 선택하세요
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM}개 파일 손실
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}기본 그래픽 세트에 대한 추가 정보를 봅니다.
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}기본 효과음 세트
-STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}게임에 사용할 기본 효과음 세트를 선택하십시오.
+STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}게임에 사용할 기본 효과음 세트를 선택하세요
 STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}기본 효과음 세트에 대한 추가 정보를 봅니다.
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}기본 배경 음악 세트
-STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}사용하실 기본 배경 음악 세트를 선택하세요.
+STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}게임에 사용할 기본 배경 음악 세트를 선택하세요
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM}개의 파일이 손상되었습니다.
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}기본 배경 음악 세트에 대한 추가 정보를 봅니다.
 
@@ -1189,7 +1189,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :이 설정을 �
 STR_CONFIG_SETTING_DISASTERS                                    :재앙: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :일정 구역이나 차량, 기반시설을 간혹 파괴할 수도 있는 재앙을 켜거나 끕니다.
 STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시의 태도: {STRING}
-STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서 건설하는 행동에 얼마나 영향을 미칠지 선택하십시오.
+STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서 건설하는 행동에 얼마나 영향을 미칠지 선택하세요
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :최대 지형 높이: {STRING}
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :지도에 생성되는 산이 가질 수 있는 최대 높이를 설정합니다.
@@ -1208,9 +1208,9 @@ STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA}칸
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :차량의 매연 또는 전기 스파크의 양: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :차량에서 연기나 전기 스파크가 얼마나 많이 일어나는지 설정합니다.
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :열차 가속 모델: {STRING}
-STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :열차 가속 물리 모델을 선택하십시오. "오리지널" 모델은 언덕을 오를 때 무조건 속력이 감소합니다. "현실적" 모델은 열차의 길이나 기관차의 견인력 등의 구성 속성에 따라 언덕과 커브에서 속력이 감소합니다.
+STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL_HELPTEXT            :열차 가속에 사용할 물리 모델을 선택합니다. "오리지널" 모델은 언덕을 오를 때 무조건 속력이 감소합니다. "현실적" 모델은 열차의 길이나 기관차의 견인력 등의 구성 속성에 따라 언덕과 커브에서 속력이 감소합니다.
 STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL              :자동차/전차 가속 모델: {STRING}
-STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :자동차/전차의 가속 물리 모델을 선택하십시오. "오리지널" 모델은 언덕을 오를 때 무조건 속력이 감소합니다. "현실적" 모델은 차량의 견인력 등 차량의 다양한 속성에 따라 언덕을 오를 때 속력이 감소합니다.
+STR_CONFIG_SETTING_ROAD_VEHICLE_ACCELERATION_MODEL_HELPTEXT     :자동차/전차의 가속 물리 모델을 선택하세요. "오리지널" 모델은 언덕을 오를 때 무조건 속력이 감소합니다. "현실적" 모델은 차량의 견인력 등 차량의 다양한 속성에 따라 언덕을 오를 때 속력이 감소합니다.
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS                        :경사도 설정 (열차용): {STRING}
 STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :열차에 적용시킬 경사도를 설정합니다. 값이 높을수록 열차가 언덕을 올라가는데 더 힘이 듭니다.
 STR_CONFIG_SETTING_PERCENTAGE                                   :{COMMA}%
@@ -1286,7 +1286,7 @@ STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE                   :기반시설 �
 STR_CONFIG_SETTING_INFRASTRUCTURE_MAINTENANCE_HELPTEXT          :이 설정을 켜면, 기반시설 유지비가 발생합니다. 유지비는 교통망의 규모에 비례하며 대형 회사는 소형 회사보다 많은 유지비가 들어갑니다.
 
 STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR                      :시작시 회사 색상: {STRING}
-STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :새 회사에서 사용할 색상을 선택하세요.
+STR_CONFIG_SETTING_COMPANY_STARTING_COLOUR_HELPTEXT             :새 회사에서 사용할 색상을 선택합니다.
 
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :옛날 공항을 사라지지 않고 계속 만들 수 있게 함: {STRING}
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :이 설정을 켜면, 소형 공항을 포함한 모든 공항 종류를 도입 이후에 계속 사용할 수 있게 됩니다.
@@ -1347,14 +1347,14 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :매우 거칠�
 STR_CONFIG_SETTING_VARIETY                                      :산세 험준도: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(천지창조 전용) 지도가 산지와 평지를 모두 갖도록 만들 것인 지를 결정합니다. 이 설정은 지형을 더 평평하게 만드므로, 다른 설정은 '산'으로 설정하시기 바랍니다.
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :강의 양: {STRING}
-STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :강을 얼마나 만들지 선택하십시오.
+STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :강을 얼마나 만들지 선택하세요
 STR_CONFIG_SETTING_TREE_PLACER                                  :나무 배치 알고리즘: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :지도의 나무 분포 형식을 선택하십시오. '오리지널'을 선택하면 나무가 고르게 분포되고, '향상됨'을 선택하면 나무가 군락을 이루게 됩니다.
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :지도의 나무 분포 형식을 선택하세요. '오리지널'을 선택하면 나무가 고르게 분포되고, '향상됨'을 선택하면 나무가 군락을 이루게 됩니다.
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :없음
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :오리지널
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :향상됨
 STR_CONFIG_SETTING_ROAD_SIDE                                    :자동차 통행 방향: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :통행방향을 선택하세요.
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :통행 방향을 선택합니다
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :높이맵 회전: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
@@ -1414,7 +1414,7 @@ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE                        :오른쪽 클�
 STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_HELPTEXT               :창 내부를 오른쪽 클릭하여 창을 닫습니다. 오른쪽 클릭으로 도움말 표시 설정을 해제해야 합니다!
 
 STR_CONFIG_SETTING_AUTOSAVE                                     :자동 저장: {STRING}
-STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :게임을 자동으로 저장할 간격을 선택하십시오.
+STR_CONFIG_SETTING_AUTOSAVE_HELPTEXT                            :게임을 자동으로 저장할 간격을 선택하세요
 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :저장 파일 이름으로 {STRING} 날짜 형식을 사용
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :게임 저장 파일 이름에 사용할 날짜 형식을 선택합니다.
@@ -2010,7 +2010,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}비밀�
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}서버에 공개적으로 접근하는 것을 막고 싶을 때 비밀번호를 걸어 보호합니다.
 
 STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}공개 여부
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}공개된 게임(인터넷)과 비공개된 게임(LAN) 중에서 선택하십시오.
+STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}공개된 게임(인터넷)과 비공개된 게임(LAN) 중에서 선택하세요
 STR_NETWORK_START_SERVER_UNADVERTISED                           :아니요
 STR_NETWORK_START_SERVER_ADVERTISED                             :예
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}명
@@ -2329,7 +2329,7 @@ STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}반투�
 STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}화물 흐름 범례
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}모두
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}없음
-STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}표시할 회사를 선택하십시오
+STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}표시할 회사를 선택하세요
 STR_LINKGRAPH_LEGEND_COMPANY_TOOLTIP                            :{BLACK}{STRING}{}{COMPANY}
 
 # Linkgraph legend window and linkgraph legend in smallmap
@@ -2424,7 +2424,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}드래�
 
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}철교 선택
-STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}다리 종류를 선택하십시오
+STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}다리 종류를 선택하세요
 STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}다리 건설 - 원하는 다리 종류를 선택하세요
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
@@ -2605,7 +2605,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}임의
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}새 산업시설 건설
-STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}목록에서 적당한 산업시설을 선택하십시오
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}목록에서 적당한 산업시설을 선택하세요
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :무작위 산업시설 건설
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}무작위로 산업시설을 건설합니다
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}가격: {YELLOW}{CURRENCY_LONG}
@@ -2848,7 +2848,7 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}게임�
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}세계 제작
 STR_MAPGEN_MAPSIZE                                              :{BLACK}지도 크기:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}지도의 크기를 칸 수 기준으로 선택하십시오. 사용 가능한 지도의 칸 수는 선택한 값보다 조금 적습니다
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}지도의 크기를 칸 수 기준으로 선택하세요. 사용 가능한 지도의 칸 수는 설정한 값보다 조금 작을 것입니다
 STR_MAPGEN_BY                                                   :{BLACK}x
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}도시의 수:
 STR_MAPGEN_DATE                                                 :{BLACK}날짜:
@@ -2973,7 +2973,7 @@ STR_NEWGRF_SETTINGS_INCOMPATIBLE                                :{RED}이 OpenTT
 
 # NewGRF save preset window
 STR_SAVE_PRESET_CAPTION                                         :{WHITE}프리셋 저장
-STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}사용 가능한 프리셋 목록입니다. 아래에 같은 이름을 복사하려면 선택하십시오
+STR_SAVE_PRESET_LIST_TOOLTIP                                    :{BLACK}사용 가능한 프리셋 목록입니다. 아래에 같은 이름을 복사하려면 선택하세요
 STR_SAVE_PRESET_TITLE                                           :{BLACK}프리셋의 이름을 입력하세요
 STR_SAVE_PRESET_EDITBOX_TOOLTIP                                 :{BLACK}저장할 프리셋에 지정할 이름입니다
 STR_SAVE_PRESET_CANCEL                                          :{BLACK}취소
@@ -3724,8 +3724,8 @@ STR_REPLACE_VEHICLE_VEHICLES_IN_USE_TOOLTIP                     :{BLACK}이 열�
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES                          :{YELLOW}교체할 수 있는 차량
 STR_REPLACE_VEHICLE_AVAILABLE_VEHICLES_TOOLTIP                  :{BLACK}이 열은 교체할 수 있는 차량 목록입니다
 
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}교체할 기관차 종류를 선택하십시오
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}새로 교체될 기관차를 선택하십시오
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}교체할 기관차 종류를 선택하세요
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}새로 교체될 기관차를 선택하세요
 
 STR_REPLACE_VEHICLES_START                                      :{BLACK}차량 교체 시작
 STR_REPLACE_VEHICLES_NOW                                        :모든 차량을 지금 교체
@@ -3901,7 +3901,7 @@ STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}변경 �
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}{}{BLACK}개조시 회수되는 비용: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조 비용: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}변경 수송량: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}개조시 회수되는 비용: {GREEN}{CURRENCY_LONG}
-STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}개조할 차량을 선택하십시오. 마우스로 드래그하면 여러 개의 차량을 선택 가능합니다. 빈 곳을 클릭하면 전체를 선택합니다. CTRL+클릭하면 차량 전체를 선택할 수 있습니다
+STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}개조할 차량을 선택하세요. 마우스로 드래그하면 여러 개의 차량을 선택 가능합니다. 빈 곳을 클릭하면 전체를 선택합니다. CTRL+클릭하면 차량 전체를 선택할 수 있습니다
 
 STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}열차가 수송할 화물의 종류를 선택하세요
 STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}차량이 수송할 화물의 종류를 선택하세요
@@ -3953,7 +3953,7 @@ STR_ORDER_DROP_NO_UNLOADING                                     :화물을 하�
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}선택한 목적지에서 화물을 하차할 방식을 변경합니다
 
 STR_ORDER_REFIT                                                 :{BLACK}개조
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}이 경로에서 열차를 어떤 화물을 받을 수 있게 개조할 것인지 선택하십시오. CTRL+클릭하면 개조 설정을 해제합니다.
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}이 경로에서 열차를 어떤 화물을 받을 수 있게 개조할 것인지 선택하세요. CTRL+클릭하면 개조 설정을 해제합니다
 STR_ORDER_REFIT_AUTO                                            :{BLACK}개조
 STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}이 경로에서 개조할 화물의 종류를 선택하세요. CTRL+클릭하면 개조 설정을 해제합니다. 개조 기능은 개조 가능한 차량에서만 사용할 수 있습니다.
 STR_ORDER_DROP_REFIT_AUTO                                       :특정 화물로
