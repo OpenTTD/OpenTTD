@@ -76,6 +76,12 @@ static const Dimension _default_resolutions[] = {
 static FVideoDriver_Cocoa iFVideoDriver_Cocoa;
 
 
+/* Subclass of OTTD_CocoaView to fix Quartz rendering */
+@interface OTTD_QuartzView : OTTD_CocoaView
+- (void)drawRect:(NSRect)invalidRect;
+@end
+
+
 VideoDriver_Cocoa::VideoDriver_Cocoa()
 {
 	this->window_width  = 0;
@@ -88,6 +94,7 @@ VideoDriver_Cocoa::VideoDriver_Cocoa()
 
 	this->window    = nil;
 	this->cocoaview = nil;
+	this->delegate  = nil;
 
 	this->color_space = nullptr;
 	this->cgcontext   = nullptr;
@@ -106,10 +113,12 @@ void VideoDriver_Cocoa::Stop()
 
 	/* Release window mode resources */
 	if (this->window != nil) [ this->window close ];
+	[ this->cocoaview release ];
+	[ this->delegate release ];
 
 	CGContextRelease(this->cgcontext);
-
 	CGColorSpaceRelease(this->color_space);
+
 	free(this->window_buffer);
 	free(this->pixel_buffer);
 
@@ -130,23 +139,21 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 	if (!CocoaSetupApplication()) return nullptr;
 
 	this->UpdateAutoResolution();
-
 	this->orig_res = _cur_resolution;
-	int width  = _cur_resolution.width;
-	int height = _cur_resolution.height;
-	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
+	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	if (bpp != 8 && bpp != 32) {
 		Stop();
 		return "The cocoa quartz subdriver only supports 8 and 32 bpp.";
 	}
 
-	if (!this->SetVideoMode(width, height, bpp)) {
+	bool fullscreen = _fullscreen;
+	if (!this->MakeWindow(_cur_resolution.width, _cur_resolution.height)) {
 		Stop();
-		return "Could not create subdriver";
+		return "Could not create window";
 	}
 
-	if (_fullscreen) this->ToggleFullscreen(_fullscreen);
+	if (fullscreen) this->ToggleFullscreen(fullscreen);
 
 	this->GameSizeChanged();
 	this->UpdateVideoModes();
@@ -195,17 +202,29 @@ void VideoDriver_Cocoa::MainLoop()
  */
 bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 {
-	int old_width  = this->window_width;
-	int old_height = this->window_height;
-	int old_bpp    = this->buffer_depth;
+	NSSize screen_size = [ [ NSScreen mainScreen ] frame ].size;
+	w = std::min(w, (int)screen_size.width);
+	h = std::min(h, (int)screen_size.height);
 
-	if (this->SetVideoMode(w, h, BlitterFactory::GetCurrentBlitter()->GetScreenDepth())) {
-		this->GameSizeChanged();
-		return true;
+	NSRect contentRect = NSMakeRect(0, 0, w, h);
+	[ this->window setContentSize:contentRect.size ];
+
+	/* Ensure frame height - title bar height >= view height */
+	float content_height = [ this->window contentRectForFrameRect:[ this->window frame ] ].size.height;
+	contentRect.size.height = Clamp(h, 0, (int)content_height);
+
+	if (this->cocoaview != nil) {
+		h = (int)contentRect.size.height;
+		[ this->cocoaview setFrameSize:contentRect.size ];
 	}
 
-	if (old_width != 0 && old_height != 0) this->SetVideoMode(old_width, old_height, old_bpp);
-	return false;
+	this->window_width = w;
+	this->window_height = h;
+
+	[ (OTTD_CocoaWindow *)this->window center ];
+	this->AllocateBackingStore();
+
+	return true;
 }
 
 /**
@@ -234,7 +253,9 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
  */
 bool VideoDriver_Cocoa::AfterBlitterChange()
 {
-	return this->ChangeResolution(_screen.width, _screen.height);
+	this->ChangeResolution(_screen.width, _screen.height);
+	this->UpdatePalette(0, 256);
+	return true;
 }
 
 /**
@@ -254,6 +275,15 @@ Dimension VideoDriver_Cocoa::GetScreenSize() const
 {
 	NSRect frame = [ [ NSScreen mainScreen ] frame ];
 	return { static_cast<uint>(NSWidth(frame)), static_cast<uint>(NSHeight(frame)) };
+}
+
+/**
+ * Are we in fullscreen mode
+ * @return whether fullscreen mode is currently used
+ */
+bool VideoDriver_Cocoa::IsFullscreen()
+{
+	return this->window != nil && ([ this->window styleMask ] & NSWindowStyleMaskFullScreen) != 0;
 }
 
 /**
@@ -277,19 +307,10 @@ void VideoDriver_Cocoa::GameSizeChanged()
 	::GameSizeChanged();
 }
 
-/* Subclass of OTTD_CocoaView to fix Quartz rendering */
-@interface OTTD_QuartzView : OTTD_CocoaView
-- (void)setDriver:(VideoDriver_Cocoa *)drv;
-- (void)drawRect:(NSRect)invalidRect;
-@end
 
 
 @implementation OTTD_QuartzView
 
-- (void)setDriver:(VideoDriver_Cocoa *)drv
-{
-	driver = drv;
-}
 - (void)drawRect:(NSRect)invalidRect
 {
 	if (driver->cgcontext == NULL) return;
@@ -391,141 +412,85 @@ void VideoDriver_Cocoa::UpdateVideoModes()
 	}
 }
 
-void VideoDriver_Cocoa::GetDeviceInfo()
-{
-	/* Initialize the video settings; this data persists between mode switches
-	 * and gather some information that is useful to know about the display */
-
-	/* Use the new API when compiling for OSX 10.6 or later */
-	CGDisplayModeRef cur_mode = CGDisplayCopyDisplayMode(kCGDirectMainDisplay);
-	if (cur_mode == NULL) { return; }
-
-	this->device_width = CGDisplayModeGetWidth(cur_mode);
-	this->device_height = CGDisplayModeGetHeight(cur_mode);
-
-	CGDisplayModeRelease(cur_mode);
-}
-
 /**
- * Are we in fullscreen mode
- * @return whether fullscreen mode is currently used
+ * Build window and view with a given size.
+ * @param width Window width.
+ * @param height Window height.
  */
-bool VideoDriver_Cocoa::IsFullscreen()
-{
-	return this->window != nil && ([ this->window styleMask ] & NSWindowStyleMaskFullScreen) != 0;
-}
-
-bool VideoDriver_Cocoa::SetVideoMode(int width, int height, int bpp)
+bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 {
 	this->setup = true;
-	this->GetDeviceInfo();
 
-	if (width > this->device_width) width = this->device_width;
-	if (height > this->device_height) height = this->device_height;
+	NSSize screen_size = [ [ NSScreen mainScreen ] frame ].size;
+	if (width > screen_size.width) width = screen_size.width;
+	if (height > screen_size.height) height = screen_size.height;
 
 	NSRect contentRect = NSMakeRect(0, 0, width, height);
 
-	/* Check if we should recreate the window */
+	/* Create main window. */
+	unsigned int style = NSTitledWindowMask | NSResizableWindowMask | NSMiniaturizableWindowMask | NSClosableWindowMask;
+	this->window = [ [ OTTD_CocoaWindow alloc ] initWithContentRect:contentRect styleMask:style backing:NSBackingStoreBuffered defer:NO ];
 	if (this->window == nil) {
-		OTTD_CocoaWindowDelegate *delegate;
+		DEBUG(driver, 0, "Could not create the Cocoa window.");
+		this->setup = false;
+		return false;
+	}
+	[ this->window setDriver:this ];
 
-		/* Set the window style */
-		unsigned int style = NSTitledWindowMask;
-		style |= (NSMiniaturizableWindowMask | NSClosableWindowMask);
-		style |= NSResizableWindowMask;
+	/* Add built in full-screen support when available (OS X 10.7 and higher)
+	 * This code actually compiles for 10.5 and later, but only makes sense in conjunction
+	 * with the quartz fullscreen support as found only in 10.7 and later
+	 */
+	if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
+		NSWindowCollectionBehavior behavior = [ this->window collectionBehavior ];
+		behavior |= NSWindowCollectionBehaviorFullScreenPrimary;
+		[ this->window setCollectionBehavior:behavior ];
 
-		/* Manually create a window, avoids having a nib file resource */
-		this->window = [ [ OTTD_CocoaWindow alloc ]
-							initWithContentRect:contentRect
-							styleMask:style
-							backing:NSBackingStoreBuffered
-							defer:NO ];
-
-		if (this->window == nil) {
-			DEBUG(driver, 0, "Could not create the Cocoa window.");
-			this->setup = false;
-			return false;
-		}
-
-		/* Add built in full-screen support when available (OS X 10.7 and higher)
-		 * This code actually compiles for 10.5 and later, but only makes sense in conjunction
-		 * with the quartz fullscreen support as found only in 10.7 and later
-		 */
-		if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
-			NSWindowCollectionBehavior behavior = [ this->window collectionBehavior ];
-			behavior |= NSWindowCollectionBehaviorFullScreenPrimary;
-			[ this->window setCollectionBehavior:behavior ];
-
-			NSButton* fullscreenButton = [ this->window standardWindowButton:NSWindowFullScreenButton ];
-			[ fullscreenButton setAction:@selector(toggleFullScreen:) ];
-			[ fullscreenButton setTarget:this->window ];
-		}
-
-		[ this->window setDriver:this ];
-
-		char caption[50];
-		snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
-		NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption ];
-		[ this->window setTitle:nsscaption ];
-		[ this->window setMiniwindowTitle:nsscaption ];
-		[ nsscaption release ];
-
-		[ this->window setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
-
-		[ this->window setAcceptsMouseMovedEvents:YES ];
-		[ this->window setViewsNeedDisplay:NO ];
-
-		delegate = [ [ OTTD_CocoaWindowDelegate alloc ] init ];
-		[ delegate setDriver:this ];
-		[ this->window setDelegate:[ delegate autorelease ] ];
-	} else {
-		/* We already have a window, just change its size */
-		[ this->window setContentSize:contentRect.size ];
-
-		/* Ensure frame height - title bar height >= view height */
-		float content_height = [ this->window contentRectForFrameRect:[ this->window frame ] ].size.height;
-		contentRect.size.height = Clamp(height, 0, (int)content_height);
-
-		if (this->cocoaview != nil) {
-			height = (int)contentRect.size.height;
-			[ this->cocoaview setFrameSize:contentRect.size ];
-		}
+		NSButton* fullscreenButton = [ this->window standardWindowButton:NSWindowFullScreenButton ];
+		[ fullscreenButton setAction:@selector(toggleFullScreen:) ];
+		[ fullscreenButton setTarget:this->window ];
 	}
 
-	this->window_width = width;
-	this->window_height = height;
-	this->buffer_depth = bpp;
+	char caption[50];
+	snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
+	NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption ];
+	[ this->window setTitle:nsscaption ];
+	[ this->window setMiniwindowTitle:nsscaption ];
+	[ nsscaption release ];
 
+	[ this->window setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
+
+	this->delegate = [ [ OTTD_CocoaWindowDelegate alloc ] initWithDriver:this ];
+	[ this->window setDelegate:this->delegate ];
+
+	[ this->window setAcceptsMouseMovedEvents:YES ];
+	[ this->window setViewsNeedDisplay:NO ];
 	[ (OTTD_CocoaWindow *)this->window center ];
+	[ this->window makeKeyAndOrderFront:nil ];
 
-	/* Only recreate the view if it doesn't already exist */
+	/* Create content view. */
+	this->cocoaview = [ [ OTTD_QuartzView alloc ] initWithFrame:[ this->window contentRectForFrameRect:[ this->window frame ] ] andDriver:this ];
 	if (this->cocoaview == nil) {
-		this->cocoaview = [ [ OTTD_QuartzView alloc ] initWithFrame:contentRect ];
-		if (this->cocoaview == nil) {
-			DEBUG(driver, 0, "Could not create the Quartz view.");
-			this->setup = false;
-			return false;
-		}
-
-		[ this->cocoaview setDriver:this ];
-
-		[ (NSView*)this->cocoaview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
-		[ this->window setContentView:cocoaview ];
-		[ this->cocoaview release ];
-		[ this->window makeKeyAndOrderFront:nil ];
+		DEBUG(driver, 0, "Could not create the Quartz view.");
+		this->setup = false;
+		return false;
 	}
+
+	[ (NSView*)this->cocoaview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
+	[ this->window setContentView:cocoaview ];
 
 	[ this->window setColorSpace:[ NSColorSpace sRGBColorSpace ] ];
+	CGColorSpaceRelease(this->color_space);
 	this->color_space = CGColorSpaceCreateWithName(kCGColorSpaceSRGB);
 	if (this->color_space == nullptr) this->color_space = CGColorSpaceCreateDeviceRGB();
 	if (this->color_space == nullptr) error("Could not get a valid colour space for drawing.");
 
-	bool ret = this->WindowResized();
-	this->UpdatePalette(0, 256);
-
 	this->setup = false;
 
-	return ret;
+	this->UpdatePalette(0, 256);
+	this->AllocateBackingStore();
+
+	return true;
 }
 
 /**
@@ -624,7 +589,7 @@ CGPoint VideoDriver_Cocoa::PrivateLocalToCG(NSPoint *p)
 	*p = [ this->cocoaview convertPoint:*p toView:nil ];
 	*p = [ this->window convertRectToScreen:NSMakeRect(p->x, p->y, 0, 0) ].origin;
 
-	p->y = this->device_height - p->y;
+	p->y = NSScreen.screens[0].frame.size.height - p->y;
 
 	CGPoint cgp;
 	cgp.x = p->x;
@@ -674,18 +639,16 @@ static void ClearWindowBuffer(uint32 *buffer, uint32 pitch, uint32 height)
 	}
 }
 
-/**
- * Resize the window.
- * @return whether the window was successfully resized
- */
-bool VideoDriver_Cocoa::WindowResized()
+/** Resize the window. */
+void VideoDriver_Cocoa::AllocateBackingStore()
 {
-	if (this->window == nil || this->cocoaview == nil) return true;
+	if (this->window == nil || this->cocoaview == nil || this->setup) return;
 
 	NSRect newframe = [ this->cocoaview frame ];
 
 	this->window_width = (int)newframe.size.width;
 	this->window_height = (int)newframe.size.height;
+	this->buffer_depth = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	/* Create Core Graphics Context */
 	free(this->window_buffer);
@@ -712,18 +675,12 @@ bool VideoDriver_Cocoa::WindowResized()
 	if (this->buffer_depth == 8) {
 		free(this->pixel_buffer);
 		this->pixel_buffer = malloc(this->window_width * this->window_height);
-		if (this->pixel_buffer == NULL) {
-			DEBUG(driver, 0, "Failed to allocate pixel buffer");
-			return false;
-		}
+		if (this->pixel_buffer == nullptr) usererror("Out of memory allocating pixel buffer");
 	}
-
-	this->GameSizeChanged();
 
 	/* Redraw screen */
 	this->num_dirty_rects = lengthof(this->dirty_rects);
-
-	return true;
+	this->GameSizeChanged();
 }
 
 void VideoDriver_Cocoa::CheckPaletteAnim()

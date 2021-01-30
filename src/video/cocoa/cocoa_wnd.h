@@ -42,7 +42,7 @@ extern NSString *OTTDMainLaunchGameEngine;
 	VideoDriver_Cocoa *driver;
 	NSTrackingRectTag trackingtag;
 }
-- (void)setDriver:(VideoDriver_Cocoa *)drv;
+- (instancetype)initWithFrame:(NSRect)frameRect andDriver:(VideoDriver_Cocoa *)drv;
 - (void)drawRect:(NSRect)rect;
 - (BOOL)isOpaque;
 - (BOOL)acceptsFirstResponder;
@@ -61,12 +61,11 @@ extern NSString *OTTDMainLaunchGameEngine;
 {
 	VideoDriver_Cocoa *driver;
 }
-
-- (void)setDriver:(VideoDriver_Cocoa *)drv;
+- (instancetype)initWithDriver:(VideoDriver_Cocoa *)drv;
 
 - (BOOL)windowShouldClose:(id)sender;
 - (void)windowDidEnterFullScreen:(NSNotification *)aNotification;
-- (void)windowDidChangeScreenProfile:(NSNotification *)aNotification;
+- (void)windowDidChangeBackingProperties:(NSNotification *)notification;
 - (NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions;
 @end
 

@@ -324,10 +324,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	[ super setFrame:frameRect display:flag ];
 
-	/* Don't do anything if the window is currently being created */
-	if (driver->setup) return;
-
-	if (!driver->WindowResized()) error("Cocoa: Failed to resize window.");
+	driver->AllocateBackingStore();
 }
 /**
  * Handle hiding of the application
@@ -401,12 +398,13 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 }
 
 @implementation OTTD_CocoaView
-/**
- * Initialize the driver
- */
-- (void)setDriver:(VideoDriver_Cocoa *)drv
+
+- (instancetype)initWithFrame:(NSRect)frameRect andDriver:(VideoDriver_Cocoa *)drv
 {
-	driver = drv;
+	if (self = [ super initWithFrame:frameRect ]) {
+		self->driver = drv;
+	}
+	return self;
 }
 /**
  * Define the opaqueness of the window / screen
@@ -810,9 +808,12 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 
 @implementation OTTD_CocoaWindowDelegate
 /** Initialize the video driver */
-- (void)setDriver:(VideoDriver_Cocoa *)drv
+- (instancetype)initWithDriver:(VideoDriver_Cocoa *)drv
 {
-	driver = drv;
+	if (self = [ super init ]) {
+		self->driver = drv;
+	}
+	return self;
 }
 /** Handle closure requests */
 - (BOOL)windowShouldClose:(id)sender
@@ -854,10 +855,11 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 		[ e release ];
 	}
 }
-/** The colour profile of the screen the window is on changed. */
-- (void)windowDidChangeScreenProfile:(NSNotification *)aNotification
+/** Screen the window is on changed. */
+- (void)windowDidChangeBackingProperties:(NSNotification *)notification
 {
-	if (!driver->setup) driver->WindowResized();
+	/* Reallocate screen buffer if necessary. */
+	driver->AllocateBackingStore();
 }
 
 /** Presentation options to use for fullsreen mode. */
@@ -867,4 +869,5 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 }
 
 @end
+
 #endif /* WITH_COCOA */
