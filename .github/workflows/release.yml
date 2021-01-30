@@ -461,6 +461,13 @@ jobs:
       run: |
         tar -xf source.tar.gz --strip-components=1
 
+    - name: Install dependencies
+      env:
+        HOMEBREW_NO_AUTO_UPDATE: 1
+        HOMEBREW_NO_INSTALL_CLEANUP: 1
+      run: |
+        brew install pandoc
+
     # The following step can be removed when the build VM is updated with a revision of
     # vcpkg dating from roughly 01/01/2021 or later. At that point, `doNotUpdateVcpkg`
     # can be set to `true` and the `vcpkgGitCommitId` can be removed.
@@ -637,6 +644,11 @@ jobs:
       shell: bash
       run: |
         tar -xf source.tar.gz --strip-components=1
+
+    - name: Install dependencies
+      shell: bash
+      run: |
+        choco install pandoc
 
     # "restore-cache" which is done by "run-vcpkg" uses Windows tar.
     # A git clone on windows marks a few files as read-only; when Windows tar
