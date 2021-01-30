@@ -337,4 +337,8 @@ endif()
 include(CreateRegression)
 create_regression()
 
+if(APPLE OR WIN32)
+    find_package(Pandoc)
+endif()
+
 include(InstallAndPackage)
