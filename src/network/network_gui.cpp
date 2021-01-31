@@ -330,10 +330,9 @@ protected:
 		if (r == 0) r = b->info.compatible - a->info.compatible;
 		/* Passworded servers should be below unpassworded servers */
 		if (r == 0) r = a->info.use_password - b->info.use_password;
-		/* Finally sort on the number of clients of the server */
-		if (r == 0) return NGameClientSorter(a, b);
 
-		return r < 0;
+		/* Finally sort on the number of clients of the server in reverse order. */
+		return (r != 0) ? r < 0: !NGameClientSorter(a, b);
 	}
 
 	/** Sort the server list */
