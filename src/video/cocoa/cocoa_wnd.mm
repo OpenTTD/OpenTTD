@@ -48,6 +48,46 @@ NSString *OTTDMainLaunchGameEngine = @"ottdmain_launch_game_engine";
 static bool _cocoa_video_dialog = false;
 static OTTDMain *_ottd_main;
 
+
+/**
+ * Count the number of UTF-16 code points in a range of an UTF-8 string.
+ * @param from Start of the range.
+ * @param to End of the range.
+ * @return Number of UTF-16 code points in the range.
+ */
+static NSUInteger CountUtf16Units(const char *from, const char *to)
+{
+	NSUInteger i = 0;
+
+	while (from < to) {
+		WChar c;
+		size_t len = Utf8Decode(&c, from);
+		i += len < 4 ? 1 : 2; // Watch for surrogate pairs.
+		from += len;
+	}
+
+	return i;
+}
+
+/**
+ * Advance an UTF-8 string by a number of equivalent UTF-16 code points.
+ * @param str UTF-8 string.
+ * @param count Number of UTF-16 code points to advance the string by.
+ * @return Advanced string pointer.
+ */
+static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
+{
+	for (NSUInteger i = 0; i < count && *str != '\0'; ) {
+		WChar c;
+		size_t len = Utf8Decode(&c, str);
+		i += len < 4 ? 1 : 2; // Watch for surrogates.
+		str += len;
+	}
+
+	return str;
+}
+
+
 /**
  * The main class of the application, the application's delegate.
  */
@@ -69,11 +109,13 @@ static OTTDMain *_ottd_main;
  */
 - (void)launchGameEngine: (NSNotification*) note
 {
+	auto *drv = static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance());
+
 	/* Setup cursor for the current _game_mode. */
-	[ static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance())->cocoaview resetCursorRects ];
+	[ drv->window invalidateCursorRectsForView:[ drv->window contentView ] ];
 
 	/* Hand off to main application code. */
-	static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance())->GameLoop();
+	drv->GameLoop();
 
 	/* We are done, thank you for playing. */
 	[ self performSelectorOnMainThread:@selector(stopEngine) withObject:nil waitUntilDone:FALSE ];
@@ -283,12 +325,10 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 }
 @end
 
-@implementation OTTD_CocoaWindow
-
-- (void)setDriver:(VideoDriver_Cocoa *)drv
-{
-	driver = drv;
+@implementation OTTD_CocoaWindow {
+	VideoDriver_Cocoa *driver;
 }
+
 /**
  * Minimize the window
  */
@@ -346,61 +386,27 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 /**
  * Initialize event system for the application rectangle
  */
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag
+- (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv
 {
-	/* Make our window subclass receive these application notifications */
-	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-		selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
+	if (self = [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ]) {
+		/* Make our window subclass receive these application notifications */
+		[ [ NSNotificationCenter defaultCenter ] addObserver:self
+			selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
 
-	[ [ NSNotificationCenter defaultCenter ] addObserver:self
-		selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
+		[ [ NSNotificationCenter defaultCenter ] addObserver:self
+			selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
 
-	return [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ];
+		self->driver = drv;
+	}
+
+	return self;
 }
 
 @end
 
-
-
-/**
- * Count the number of UTF-16 code points in a range of an UTF-8 string.
- * @param from Start of the range.
- * @param to End of the range.
- * @return Number of UTF-16 code points in the range.
- */
-static NSUInteger CountUtf16Units(const char *from, const char *to)
-{
-	NSUInteger i = 0;
-
-	while (from < to) {
-		WChar c;
-		size_t len = Utf8Decode(&c, from);
-		i += len < 4 ? 1 : 2; // Watch for surrogate pairs.
-		from += len;
-	}
-
-	return i;
+@implementation OTTD_CocoaView {
+	NSTrackingRectTag trackingtag;
 }
-
-/**
- * Advance an UTF-8 string by a number of equivalent UTF-16 code points.
- * @param str UTF-8 string.
- * @param count Number of UTF-16 code points to advance the string by.
- * @return Advanced string pointer.
- */
-static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
-{
-	for (NSUInteger i = 0; i < count && *str != '\0'; ) {
-		WChar c;
-		size_t len = Utf8Decode(&c, str);
-		i += len < 4 ? 1 : 2; // Watch for surrogates.
-		str += len;
-	}
-
-	return str;
-}
-
-@implementation OTTD_CocoaView
 
 - (instancetype)initWithFrame:(NSRect)frameRect andDriver:(VideoDriver_Cocoa *)drv
 {
@@ -409,22 +415,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	}
 	return self;
 }
-/**
- * Define the opaqueness of the window / screen
- * @return opaqueness of window / screen
- */
-- (BOOL)isOpaque
-{
-	return YES;
-}
-/**
- * Draws a rectangle on the screen.
- * It's overwritten by the individual drivers but must be defined
- */
-- (void)drawRect:(NSRect)invalidRect
-{
-	return;
-}
+
 /**
  * Allow to handle events
  */
@@ -432,13 +423,15 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 {
 	return YES;
 }
-/**
- * Actually handle events
- */
-- (BOOL)becomeFirstResponder
+
+- (void)setNeedsDisplayInRect:(NSRect)invalidRect
 {
-	return YES;
+	/* Drawing is handled by our sub-views. Just pass it along. */
+	for ( NSView *v in [ self subviews ]) {
+		[ v setNeedsDisplayInRect:[ v convertRect:invalidRect fromView:self ] ];
+	}
 }
+
 /**
  * Define the rectangle where we draw our application window
  */
@@ -556,7 +549,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 /** Unmark the current marked text. */
 - (void)unmarkText
 {
-	HandleTextInput(NULL, true);
+	HandleTextInput(nullptr, true);
 }
 
 /** Get the caret position. */
@@ -575,7 +568,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 
 	size_t mark_len;
 	const char *mark = _focused_window->GetMarkedText(&mark_len);
-	if (mark != NULL) {
+	if (mark != nullptr) {
 		NSUInteger start = CountUtf16Units(_focused_window->GetFocusedText(), mark);
 		NSUInteger len = CountUtf16Units(mark, mark + mark_len);
 
@@ -591,7 +584,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	if (!EditBoxInGlobalFocus()) return NO;
 
 	size_t len;
-	return _focused_window->GetMarkedText(&len) != NULL;
+	return _focused_window->GetMarkedText(&len) != nullptr;
 }
 
 /** Get a string corresponding to the given range. */
@@ -602,7 +595,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	NSString *s = [ NSString stringWithUTF8String:_focused_window->GetFocusedText() ];
 	NSRange valid_range = NSIntersectionRange(NSMakeRange(0, [ s length ]), theRange);
 
-	if (actualRange != NULL) *actualRange = valid_range;
+	if (actualRange != nullptr) *actualRange = valid_range;
 	if (valid_range.length == 0) return nil;
 
 	return [ [ [ NSAttributedString alloc ] initWithString:[ s substringWithRange:valid_range ] ] autorelease ];
@@ -611,7 +604,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 /** Get a string corresponding to the given range. */
 - (NSAttributedString *)attributedSubstringFromRange:(NSRange)theRange
 {
-	return [ self attributedSubstringForProposedRange:theRange actualRange:NULL ];
+	return [ self attributedSubstringForProposedRange:theRange actualRange:nil ];
 }
 
 /** Get the current edit box string. */
@@ -632,7 +625,7 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	Point pt = { (int)view_pt.x, (int)[ self frame ].size.height - (int)view_pt.y };
 
 	const char *ch = _focused_window->GetTextCharacterAtPosition(pt);
-	if (ch == NULL) return NSNotFound;
+	if (ch == nullptr) return NSNotFound;
 
 	return CountUtf16Units(_focused_window->GetFocusedText(), ch);
 }
@@ -808,8 +801,10 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 @end
 
 
+@implementation OTTD_CocoaWindowDelegate {
+	VideoDriver_Cocoa *driver;
+}
 
-@implementation OTTD_CocoaWindowDelegate
 /** Initialize the video driver */
 - (instancetype)initWithDriver:(VideoDriver_Cocoa *)drv
 {
