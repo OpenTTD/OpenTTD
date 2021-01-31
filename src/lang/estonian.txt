@@ -645,7 +645,7 @@ STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ettevõt
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaväärtus
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Veotariifid
-STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Päevi teel
+STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Teelolekuaeg päevades
 STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Tasu 10 ühiku (või 10 000 liitri) kauba äraveo eest üle 20 ruudu
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Kõik sisse
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Kõik välja
@@ -857,7 +857,7 @@ STR_NEWS_FIRST_SHIP_ARRIVAL                                     :{BIG_FONT}{BLAC
 STR_NEWS_FIRST_AIRCRAFT_ARRIVAL                                 :{BIG_FONT}{BLACK}Rahvas tervitab. . .{}{STATION} terminali saabus esimene lennuk!
 
 STR_NEWS_TRAIN_CRASH                                            :{BIG_FONT}{BLACK}RONGIKOKKUPÕRGE!{}{COMMA} surid tules peale kokkusõitmist
-STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Rongikokkupõrge!{}Juht suri peale õnnetust tules
+STR_NEWS_ROAD_VEHICLE_CRASH_DRIVER                              :{BIG_FONT}{BLACK}Rongikokkupõrge!{}Juht hukkus kokkupõrgest põhjustatud tulekeras
 STR_NEWS_ROAD_VEHICLE_CRASH                                     :{BIG_FONT}{BLACK}Mootorsõiduki kokkupõrge rongiga!{}{COMMA} inimest suri õnnetuses
 STR_NEWS_AIRCRAFT_CRASH                                         :{BIG_FONT}{BLACK}Lennuõnnetus!{}{COMMA} hukkus tules. {STATION} suletud.
 STR_NEWS_PLANE_CRASH_OUT_OF_FUEL                                :{BIG_FONT}{BLACK}Lennuõnnetus!{}Lennukil lõppes kütus, {COMMA} surid tules!
@@ -2226,7 +2226,7 @@ STR_NETWORK_ERROR_LOSTCONNECTION                                :{WHITE}Mitmikm�
 STR_NETWORK_ERROR_SAVEGAMEERROR                                 :{WHITE}Salvestatud mängu laadimine ebaõnnestus
 STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Ei saa uut serverit alustada
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Ei õnnestu ühendada
-STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}#{NUM}. ühendus aegus
+STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Ühendus nr {NUM} aegus
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Tekkis protokolliviga ja ühendus katkes
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Kliendi osa ei vasta serveri osaga
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Vale salasõna
@@ -2288,7 +2288,7 @@ STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} li
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} liitus mänguga ({2:NUM}. klient)
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} liitus {2:NUM}. ettevõttega
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} liitus vaatlejatega
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} alustas uue ettevõtte (#{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} alustas uue ettevõtte (nr {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} lahkus mängust ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} uus nimi on {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} saatis {2:CURRENCY_LONG} ettevõttele {1:STRING}
@@ -3387,7 +3387,7 @@ STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Rongide k
 STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Mootorsõidukite käituskulud
 STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Õhusõidukite käituskulud
 STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Laevade käituskulud
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Taristu hooldamine
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Omandi korrashoid
 STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Rongide tulud
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Mootorsõidukite tulud
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Õhusõidukite tulud
@@ -3871,7 +3871,7 @@ STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Vaba ra
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Liiga pikk vahemaa järgmise sihtpunktini
 
 STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Siht: {STATION}, {VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sihita, {VELOCITY}
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sihitu, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Suundub {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Suundub {DEPOT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Teenus kohas {DEPOT}, {VELOCITY}
@@ -4007,7 +4007,7 @@ STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Mahalaadi nõud
 STR_ORDER_DROP_UNLOAD                                           :Mahalaadi kõik
 STR_ORDER_DROP_TRANSFER                                         :Ümberlaadi
 STR_ORDER_DROP_NO_UNLOADING                                     :Ei mahalaadi
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Valitud korralduse mahalaadimisprotseduuri muutmine
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Valitud korralduse tühjendusprotseduuri muutmine
 
 STR_ORDER_REFIT                                                 :{BLACK}Ümberseadista
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Vali, mis veoseliigile ümberseadistada. Ctrl+klõps kõrvaldab ümberseadistamise korralduse
@@ -4074,9 +4074,9 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Hooldus ilma pe
 
 STR_ORDER_NEAREST_DEPOT                                         :lähim
 STR_ORDER_NEAREST_HANGAR                                        :lähim angaar
-STR_ORDER_TRAIN_DEPOT                                           :rongidepoos
-STR_ORDER_ROAD_VEHICLE_DEPOT                                    :sõidukidepoos
-STR_ORDER_SHIP_DEPOT                                            :laevaremonditehases
+STR_ORDER_TRAIN_DEPOT                                           :rongidepoo
+STR_ORDER_ROAD_VEHICLE_DEPOT                                    :maanteesõidukidepoo
+STR_ORDER_SHIP_DEPOT                                            :laevaremonditehas
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -4175,7 +4175,7 @@ STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Tühista
 STR_TIMETABLE_CHANGE_SPEED                                      :{BLACK}Muuda kiiruspiirangut
 STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuda märgitud korralduse kiiruspiirangut
 
-STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Tühjenda kiiruselimiit
+STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Kustuta kiiruspiirang
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Eemalda märgitud korralduse kiiruspiirang
 
 STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Tühista hilinemisarvesti
@@ -4202,7 +4202,7 @@ STR_DATE_YEAR_TOOLTIP                                           :{BLACK}Vali aas
 
 
 # AI debug window
-STR_AI_DEBUG                                                    :{WHITE}Arvutivea otsing
+STR_AI_DEBUG                                                    :{WHITE}AI/GameScripti debugimine
 STR_AI_DEBUG_NAME_AND_VERSION                                   :{BLACK}{STRING} (ver{NUM})
 STR_AI_DEBUG_NAME_TOOLTIP                                       :{BLACK}Skripti nimi
 STR_AI_DEBUG_SETTINGS                                           :{BLACK}Seaded
@@ -5127,17 +5127,17 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} Poi
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Poi nr. {COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Ettevõte {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Jagu {COMMA}
-STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} nr {COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} meldepunkt
-STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Meldepunkt {TOWN} #{COMMA}
+STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Meldepunkt {TOWN} nr {COMMA}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Rongi depoo
-STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Rongi depoo #{COMMA}
+STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Rongi depoo nr {COMMA}
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Teesõidukite depoo
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Teesõidukite depoo #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Teesõidukite depoo nr {COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Laeva depoo
-STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Laeva depoo #{COMMA}
+STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Laeva depoo nr {COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangaar
 
 STR_UNKNOWN_STATION                                             :tundmatu jaam
