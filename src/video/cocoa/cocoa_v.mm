@@ -77,7 +77,11 @@ static FVideoDriver_Cocoa iFVideoDriver_Cocoa;
 
 
 /* Subclass of OTTD_CocoaView to fix Quartz rendering */
-@interface OTTD_QuartzView : OTTD_CocoaView
+@interface OTTD_QuartzView : NSView {
+	VideoDriver_Cocoa *driver;
+}
+- (instancetype)initWithFrame:(NSRect)frameRect andDriver:(VideoDriver_Cocoa *)drv;
+
 - (void)drawRect:(NSRect)invalidRect;
 @end
 
@@ -311,6 +315,28 @@ void VideoDriver_Cocoa::GameSizeChanged()
 
 @implementation OTTD_QuartzView
 
+- (instancetype)initWithFrame:(NSRect)frameRect andDriver:(VideoDriver_Cocoa *)drv
+{
+	if (self = [ super initWithFrame:frameRect ]) {
+		self->driver = drv;
+	}
+	return self;
+}
+
+- (BOOL)acceptsFirstResponder
+{
+	return NO;
+}
+
+/**
+ * Define the opaqueness of the window / screen
+ * @return opaqueness of window / screen
+ */
+- (BOOL)isOpaque
+{
+	return YES;
+}
+
 - (void)drawRect:(NSRect)invalidRect
 {
 	if (driver->cgcontext == NULL) return;
@@ -429,13 +455,12 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 
 	/* Create main window. */
 	unsigned int style = NSTitledWindowMask | NSResizableWindowMask | NSMiniaturizableWindowMask | NSClosableWindowMask;
-	this->window = [ [ OTTD_CocoaWindow alloc ] initWithContentRect:contentRect styleMask:style backing:NSBackingStoreBuffered defer:NO ];
+	this->window = [ [ OTTD_CocoaWindow alloc ] initWithContentRect:contentRect styleMask:style backing:NSBackingStoreBuffered defer:NO driver:this ];
 	if (this->window == nil) {
 		DEBUG(driver, 0, "Could not create the Cocoa window.");
 		this->setup = false;
 		return false;
 	}
-	[ this->window setDriver:this ];
 
 	/* Add built in full-screen support when available (OS X 10.7 and higher)
 	 * This code actually compiles for 10.5 and later, but only makes sense in conjunction
@@ -468,16 +493,28 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	[ (OTTD_CocoaWindow *)this->window center ];
 	[ this->window makeKeyAndOrderFront:nil ];
 
-	/* Create content view. */
-	this->cocoaview = [ [ OTTD_QuartzView alloc ] initWithFrame:[ this->window contentRectForFrameRect:[ this->window frame ] ] andDriver:this ];
+	/* Create wrapper view for text input. */
+	NSRect view_frame = [ this->window contentRectForFrameRect:[ this->window frame ] ];
+	this->cocoaview = [ [ OTTD_CocoaView alloc ] initWithFrame:view_frame andDriver:this ];
 	if (this->cocoaview == nil) {
-		DEBUG(driver, 0, "Could not create the Quartz view.");
+		DEBUG(driver, 0, "Could not create the text wrapper view.");
 		this->setup = false;
 		return false;
 	}
+	[ (NSView *)this->cocoaview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
 
-	[ (NSView*)this->cocoaview setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
-	[ this->window setContentView:cocoaview ];
+	/* Create content view. */
+	NSView *draw_view = [ [ OTTD_QuartzView alloc ] initWithFrame:[ this->cocoaview bounds ] andDriver:this ];
+	if (draw_view == nil) {
+		DEBUG(driver, 0, "Could not create the drawing view.");
+		this->setup = false;
+		return false;
+	}
+	[ draw_view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
+
+	[ this->window setContentView:this->cocoaview ];
+	[ this->cocoaview addSubview:draw_view ];
+	[ draw_view release ];
 
 	[ this->window setColorSpace:[ NSColorSpace sRGBColorSpace ] ];
 	CGColorSpaceRelease(this->color_space);

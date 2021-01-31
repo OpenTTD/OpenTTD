@@ -22,31 +22,23 @@ extern NSString *OTTDMainLaunchGameEngine;
 @end
 
 /** Subclass of NSWindow to cater our special needs */
-@interface OTTD_CocoaWindow : NSWindow {
-	VideoDriver_Cocoa *driver;
-}
-
-- (void)setDriver:(VideoDriver_Cocoa *)drv;
+@interface OTTD_CocoaWindow : NSWindow
+- (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv;
 
 - (void)miniaturize:(id)sender;
 - (void)display;
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
 - (void)appDidHide:(NSNotification*)note;
 - (void)appDidUnhide:(NSNotification*)note;
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag;
 @end
 
 /** Subclass of NSView to fix Quartz rendering and mouse awareness */
-@interface OTTD_CocoaView : NSView <NSTextInputClient>
-{
+@interface OTTD_CocoaView : NSView <NSTextInputClient> {
 	VideoDriver_Cocoa *driver;
-	NSTrackingRectTag trackingtag;
 }
 - (instancetype)initWithFrame:(NSRect)frameRect andDriver:(VideoDriver_Cocoa *)drv;
-- (void)drawRect:(NSRect)rect;
-- (BOOL)isOpaque;
+
 - (BOOL)acceptsFirstResponder;
-- (BOOL)becomeFirstResponder;
 - (void)setTrackingRect;
 - (void)clearTrackingRect;
 - (void)resetCursorRects;
@@ -58,9 +50,6 @@ extern NSString *OTTDMainLaunchGameEngine;
 
 /** Delegate for our NSWindow to send ask for quit on close */
 @interface OTTD_CocoaWindowDelegate : NSObject <NSWindowDelegate>
-{
-	VideoDriver_Cocoa *driver;
-}
 - (instancetype)initWithDriver:(VideoDriver_Cocoa *)drv;
 
 - (BOOL)windowShouldClose:(id)sender;
