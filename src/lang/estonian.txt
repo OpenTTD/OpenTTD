@@ -386,7 +386,7 @@ STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Kiirenda
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Seadistus
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Mängu salvestamine/jätkamine, mängust lahkumine, väljumine
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Ava kaart, vaateaken või siltide loend
-STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Ava linnade register
+STR_TOOLBAR_TOOLTIP_DISPLAY_TOWN_DIRECTORY                      :{BLACK}Ava asustuste register
 STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}Ava toetuste loend
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}Avab ettevõtte jaamade registri
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}Ava ettevõtte rahavoogude aruanne
@@ -420,9 +420,9 @@ STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Stsenaa
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Alguse liigutamine 1 aasta võrra tagasi
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Alguse liigutamine 1 aasta võrra edasi
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Alustamise aasta valikuks klõpsi siin
-STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Ava kaart, linnade register
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}Ava kaart, asustuste register
 STR_SCENEDIT_TOOLBAR_LANDSCAPE_GENERATION                       :{BLACK}Maastiku tekitamine
-STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Linnade tekitamine
+STR_SCENEDIT_TOOLBAR_TOWN_GENERATION                            :{BLACK}Asustuste tekitamine
 STR_SCENEDIT_TOOLBAR_INDUSTRY_GENERATION                        :{BLACK}Tööstuste tekitamine
 STR_SCENEDIT_TOOLBAR_ROAD_CONSTRUCTION                          :{BLACK}Maanteede ehitamine
 STR_SCENEDIT_TOOLBAR_TRAM_CONSTRUCTION                          :{BLACK}Trammiteede ehitamine
@@ -446,7 +446,7 @@ STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Seaded
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :AI/GameScripti seaded
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :NewGRF-i seadistus
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Läbipaistvuse seadistus
-STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Näidatavad linnanimed
+STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Näidatavad asustuste nimed
 STR_SETTINGS_MENU_STATION_NAMES_DISPLAYED                       :Näidatavad jaamanimed
 STR_SETTINGS_MENU_WAYPOINTS_DISPLAYED                           :Näidatavad meldepunktid
 STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :Näidatavad sildid
@@ -472,8 +472,8 @@ STR_MAP_MENU_LINGRAPH_LEGEND                                    :Kaubavoo legend
 STR_MAP_MENU_SIGN_LIST                                          :Siltide register
 
 ############ range for town menu starts
-STR_TOWN_MENU_TOWN_DIRECTORY                                    :Linnade register
-STR_TOWN_MENU_FOUND_TOWN                                        :Raja linn
+STR_TOWN_MENU_TOWN_DIRECTORY                                    :Asustuste register
+STR_TOWN_MENU_FOUND_TOWN                                        :Raja asustus
 ############ range ends here
 
 ############ range for subsidies menu starts
@@ -810,12 +810,12 @@ STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Kivid
 STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLACK}Vesi
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Omanikuta
-STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Linnad
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Asustused
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Tööstused
 STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Kõrb
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Lumi
 
-STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Linnanimede sisse- ja välja lülitamine
+STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Asustuste nimede sisse- ja välja lülitamine
 STR_SMALLMAP_CENTER                                             :{BLACK}Näita väikekaardil praegust asukohta
 STR_SMALLMAP_INDUSTRY                                           :{TINY_FONT}{STRING} ({NUM})
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
@@ -867,7 +867,7 @@ STR_NEWS_DISASTER_SMALL_UFO                                     :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_AIRPLANE_OIL_REFINERY                         :{BIG_FONT}{BLACK}Naftatöötlustehase plahvatus {TOWN} lähedal!
 STR_NEWS_DISASTER_HELICOPTER_FACTORY                            :{BIG_FONT}{BLACK}Tehas purunes teadmata põhjustel {TOWN} lähedal!
 STR_NEWS_DISASTER_BIG_UFO                                       :{BIG_FONT}{BLACK}'UFO' maandus {TOWN} lähedal!
-STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Söekaevanduse vajumine jättis endast linna {TOWN} lähedal purustused!
+STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLACK}Söekaevanduse vajumine jättis endast asustuse {TOWN} lähedal purustused!
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Üleujutused!{}Vähemalt {COMMA} kadunut arvatakse surnuks peale olulist üleujutust!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Ettevõttel on probleeme!
@@ -877,15 +877,15 @@ STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Pankrot!
 STR_NEWS_COMPANY_BANKRUPT_DESCRIPTION                           :{BIG_FONT}{BLACK}{STRING} suleti asutajate poolt ja kõik varad müüakse maha!
 STR_NEWS_COMPANY_LAUNCH_TITLE                                   :{BIG_FONT}{BLACK}Loodi uus ettevõte!
-STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}Ettevõte {STRING} alustas linna {TOWN} lähedal ehitustöid!
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}Ettevõte {STRING} alustas asustuse {TOWN} lähedal ehitustöid!
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} võeti üle ettevõtte {STRING} poolt!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(President)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} rahastas uue linna {TOWN} rajamist!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} rahastas uue asustuse {TOWN} rajamist!
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Uus linn nimega {TOWN} on asutatud!
 
-STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Uus {STRING} on linna {TOWN} lähedal ehitamisel!
-STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Uus {STRING} on istutatud linna {TOWN} lähedale!
+STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Uus {STRING} on asustuse {TOWN} lähedal ehitamisel!
+STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}Uus {STRING} on istutatud asustuse {TOWN} lähedale!
 
 STR_NEWS_INDUSTRY_CLOSURE_GENERAL                               :{BIG_FONT}{BLACK}{STRING} juhtkond teatab sulgemisest!
 STR_NEWS_INDUSTRY_CLOSURE_SUPPLY_PROBLEMS                       :{BIG_FONT}{BLACK}{STRING} teatab sulgemisest varustusprobleemide tõttu!
@@ -940,15 +940,15 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Jaam {ST
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Toetuse pakkumine lõppes:{}{}{STRING.g} kohast {STRING} kohta {STRING} veoste eest ei maksta enam toetusi
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Toetuse maksmise aeg sai läbi:{}{}{STRING}kohast {STRING} kohta {STRING} eest ei maksta enam edaspidi toetust
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Veoteenusele pakutakse toetust:{}{}{STRING.g}veo eest linnast {STRING} linna {STRING}. Esimesele teenusepakkujale makstakse aasta läbi toetusi!
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Veoteenusele pakutakse toetust:{}{}{STRING.g}veo eest asustusest {STRING} asustusse {STRING}. Esimesele teenusepakkujale makstakse aasta läbi toetusi!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Teenusetoetust makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STRING} kohta {STRING} teenuse eest makstakse järgmisel aastal 50% rohkem!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Teenusetoetust makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STRING} kohta {STRING} teenuse eest makstakse järgmisel aastal kahekordselt!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Teenusetoetust makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STRING} kohta {STRING} teenuse eest makstakse järgmisel aastal kolmekordselt!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Teenusetoetust makstakse ettevõttele {STRING}!{}{}{STRING} kohast {STRING} kohta {STRING} teenuse eest makstakse järgmisel aastal neljakordselt!
 
-STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Liikluskaos linnas {TOWN}!{}{}Ettevõtte {STRING} poolt rahastatud teedeehitus tekitab 6 kuu jooksul maanteedel liiklushäireid!
+STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Liikluskaos asustuses {TOWN}!{}{}Ettevõtte {STRING} poolt rahastatud teede ümberehitus tekitab 6 kuu jooksul maanteedel liiklushäireid!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transpordimonopol!
-STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Kohalik linnavõim{TOWN} allkirjastab lepingu {STRING} transpordi ainuõiguseks üheks aastaks!
+STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Asustuse {TOWN} omavalitsus allkirjastab lepingu {STRING} veoste ainuõiguseks üheks aastaks!
 
 # Extra view window
 STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vaateaken {COMMA}
@@ -1010,8 +1010,8 @@ STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vali, ku
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasakpoolne liiklus
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Parempoolne liiklus
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Linnanimed
-STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vali linnanimede stiil
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Asulate nimed
+STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vali asulanimede stiil
 
 ############ start of townname region
 STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inglise (originaalne)
@@ -1244,7 +1244,7 @@ STR_CONFIG_SETTING_TRAIN_REVERSING                              :Keela rongide �
 STR_CONFIG_SETTING_TRAIN_REVERSING_HELPTEXT                     :Kui on aktiveeritud, siis ei pööra rongid vahejaamades ringi isegi siis kui ringi pööramisel oleks teekond järgmisse sihtpunkti lühem
 STR_CONFIG_SETTING_DISASTERS                                    :Katastroofid: {STRING}
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Lülita sisse/välja katastroofid, mis aeg-ajalt hävitavad sõidukeid ja taristut
-STR_CONFIG_SETTING_CITY_APPROVAL                                :Linnavalitusese suhtumine pinnase restruktureerimisse: {STRING}
+STR_CONFIG_SETTING_CITY_APPROVAL                                :Astuse omavalitsuse suhtumine pinnase restruktureerimisse: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vali kui suurt mõju tekitavad müra ning keskkonna muudatused ettevõtte mainele ja edasistele ehitustoimingutele antud piirkonnas
 
 STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimaalne mägede kõrgus: {STRING}
@@ -1256,8 +1256,8 @@ STR_CONFIG_SETTING_CATCHMENT                                    :Reaalsemad veek
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Erineva suurusega püüdmisala erinevat tüüpi jaamadele ja lennujaamadele.
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Ettevõtte jaamad teenindavad ka liidetud, erapooletu jaamaga tööstuseid: {STRING}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Kui lubatud, saavad liidetud jaamaga tööstuseid (nagu naftaplatvormid) teenindada ka lähedalolevad ettevõttele kuuluvad jaamad. Muidu võivad neid tööstuseid teenindada vaid nendega liidetud jaamad. Lähedale ehitatud ettevõtte jaamad neid teenindada ei saa, ning liidetud jaamad ei teeninda teisi tööstuseid
-STR_CONFIG_SETTING_EXTRADYNAMITE                                :Linnateede, -sildade, -tunnelite jne lammutamine: {STRING}
-STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Lihtsusta linnale kuuluva taristu ja majade eemaldamist
+STR_CONFIG_SETTING_EXTRADYNAMITE                                :Asulateede, -sildade, -tunnelite jne lammutamine: {STRING}
+STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Lihtsusta asulatele kuuluva taristu ja hoonete eemaldamist
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Rongi pikkuse ülempiir: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Määrab rongide pikkuse ülempiiri
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ruut{P 0 "" u}
@@ -1291,8 +1291,8 @@ STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Nagu kõik tö�
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Uuringutega
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM                            :Tasane ala ümber tehaste: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_PLATFORM_HELPTEXT                   :Summa kui palju tasast maad on ümber tehase. See tagab et ruumi jääb saadavale ehitiste jaoks
-STR_CONFIG_SETTING_MULTIPINDTOWN                                :Samalaadsed tööstused ühes linnas: {STRING}
-STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Tavaliselt, linn ei taha rohkem kui ühte tööstustharu igast tüübist. See seade lubab rohkem kui ühe tööstusharu samasse linna
+STR_CONFIG_SETTING_MULTIPINDTOWN                                :Mitu samalaadset tööstust ühe asula piires: {STRING}
+STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :Tavaliselt asula ei taha rohkem kui ühte tööstustharu igast liigist. Selle seadega lubatakse rohkem kui üks samalaadne tööstus ühe asula piires
 STR_CONFIG_SETTING_SIGNALSIDE                                   :Signaale näidatakse: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :Vali kummale poole rada signaalid paigutatakse
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :Vasakul
@@ -1314,13 +1314,13 @@ STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Põhivaates, ai
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Põhivaates
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Igas vaates
 STR_CONFIG_SETTING_BRIBE                                        :Altkäemaksud kohalikele omavalitsustele: {STRING}
-STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Võimaldab linna omavalitsusele altkäemaksu pakkuda. Vahele jäämise korral võetakse ettevõttelt kuueks kuuks ära õigus tegutseda linnas
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Võimaldab asulate omavalitsustele altkäemaksu pakkuda. Tabamise korral võetakse ettevõttelt kuueks kuuks ära õigus asulas tegutseda
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Ainuveoõiguste ostmine: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kui ettevõte ostab linnalt kaubaveo ainuõiguse, siis teised ettevõtted ei saa üks aasta uusi kaupu ega reisijaid
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Kui ettevõte ostab asulalt kaubaveo ainuõiguse, siis teised ettevõtted ei saa üks aasta uusi kaupu ega reisijaid
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Luba ehitiste rahastamine: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Võimaldab ettevõttel linna kinnisvaraehitust rahastada
+STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Võimaldab ettevõttel asulate kinnisvaraehitust rahastada
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Kohaliku omavalitsuse teede rekonstrueerimise rahastamine: {STRING}
-STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Võimaldab ettevõtetel linna tee-ehitustöid rahastada, šaboteerides sellega autode kaubavedu
+STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Võimaldab ettevõtetel asulate tee-ehitustöid rahastada, šaboteerides sellega autode kaubavedu
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Raha saatmine teistele ettevõtetele: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Luba mitmikmängus kanda raha erinevate ettevõtete vahel
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Raskete rongide simuleerimiseks kasutatav raskustegur: {STRING}
@@ -1333,8 +1333,8 @@ STR_CONFIG_SETTING_PLANE_CRASHES_HELPTEXT                       :Määrab lennu�
 STR_CONFIG_SETTING_PLANE_CRASHES_NONE                           :Ei
 STR_CONFIG_SETTING_PLANE_CRASHES_REDUCED                        :Vähem
 STR_CONFIG_SETTING_PLANE_CRASHES_NORMAL                         :Keskmiselt
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läbisõidupeatused linnateedel: {STRING}
-STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Lubab linnale kuuluvatel teedel ehitada läbisõidupeatuseid
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD                            :Läbisõidupeatused asulate kuuluvatel teedel: {STRING}
+STR_CONFIG_SETTING_STOP_ON_TOWN_ROAD_HELPTEXT                   :Lubab asulatele kuuluvatele teedele ehitada läbisõidupeatuseid
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD                      :Läbisõidupeatused konkurentide teedel: {STRING}
 STR_CONFIG_SETTING_STOP_ON_COMPETITOR_ROAD_HELPTEXT             :Lubab teisele ettevõttele kuulaval teel ehitada läbisõidupeatuseid
 STR_CONFIG_SETTING_DYNAMIC_ENGINES_EXISTING_VEHICLES            :{WHITE}Sõidukite olemasolul ei saa seda seadet muuta
@@ -1373,8 +1373,8 @@ STR_CONFIG_SETTING_HOVER_DELAY                                  :Vihjeid näidat
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Viivitus, kui kaua peab hiirega liidese osale osutama, enne kui selle kohta vihjet näidatakse. On ka võimalik vihjeid parema hiireklõpsuga näidata
 STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :{COMMA} sekundilist osutamist
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Paremklõpsu
-STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Linna rahvaarv nimesildil: {STRING}
-STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näitab linna nimesildil rahvaarvu
+STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Asula rahvaarv nimesildil: {STRING}
+STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Näitab asula nimesildil rahvaarvu
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Graafikujoone laius: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Graafikutes kasutatava joone laius. Peenem joon on täpsem, laiem joon on paremini näha ja värvid on selgemini eristatavad
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Näita sõidukiehitusaknas NewGRF-i nime: {STRING}
@@ -1393,7 +1393,7 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Määrab, kui p
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimaalne kaugus kaardi servast naftatöötlustehase jaoks: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftatöötlemistehased ehitatakse ainult kaardi piirile, see on rannikul saartega mängitaval kaardil.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumepiiri kõrgus: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määra, millisel kõrgusel algab sub-arktiline maastik. Lumi mõjutab ka tööstuste loomist ja linna kasvamise tingimusi
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määra, millisel kõrgusel algab sub-arktiline maastik. Lumi mõjutab ka tööstuste loomist ja asulate kasvamise nõudeid
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maastiku järskus (ainult TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Vali mägede tihedus: Laugetel maastikel on vähem, laiema ulatusega mägesid. Mägistel maastikel on palju mägesid, mis võivad näha välja samasugused
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väga lauge
@@ -1525,7 +1525,7 @@ STR_CONFIG_SETTING_SOUND_DISASTER_HELPTEXT                      :Õnnetustes ja 
 STR_CONFIG_SETTING_SOUND_VEHICLE                                :Sõidukitel: {STRING}
 STR_CONFIG_SETTING_SOUND_VEHICLE_HELPTEXT                       :Kostuvad sõidukite helid
 STR_CONFIG_SETTING_SOUND_AMBIENT                                :Taustahelid: {STRING}
-STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Maastikult, tööstustest ja linnadest kostuvad taustahelid
+STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Maastikult, tööstustest ja asulatest kostuvad taustahelid
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Sobivate sõidukite puudumisel on taristu ehitamine keelatud: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Sisse lülitamisel on taristu ehitamine võimalik ainult juhul, kui sellega seonduvad sõidukid on juba saadaval. Väldib mõttetut raha ja aja kulu, kui ehitatakse taristu, mida ei saa kasutada
@@ -1653,26 +1653,26 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_NORMAL                          :Ainult tavaline
 STR_CONFIG_SETTING_CYCLE_SIGNAL_PBS                             :Ainult täiustatud
 STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Kõik
 
-STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Uute linnade tänavaplaneering: {STRING}
-STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Teedevõrgu paigutus linnades
+STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Uute asulate teeplaneering: {STRING}
+STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Teedevõrgu paigutus asulates
 STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Esialgne
 STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Paremad teed
 STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :2x2 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :3x3 võrgustik
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Suvaline
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Linnapoolne teedeehitus: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Luba linnadel ehitada teid, et soodustada kasvu. Lülita välja, et keelata linnadel rajada teid
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Linnadel on lubatud ehitada ülesõidukohti: {STRING}
-STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Selle seade sisse lülitamine lubab linnadel ehitada ülesõidukohti
-STR_CONFIG_SETTING_NOISE_LEVEL                                  :Lennujaamade mürapiirangud linnades: {STRING}
-STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kui seade ei ole sisse lülitatud, siis igasse linna on lubatud ehitada kuni kaks lennuvälja. Kui see seade on lubatud, siis lennuväljade arvu ülempiiri määrab linna müratundlikkus, mis sõltub rahvaarvust ja lennuvälja suurusest ja kaugusest
-STR_CONFIG_SETTING_TOWN_FOUNDING                                :Linnade rajamine keset mängu: {STRING}
-STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Võimaldab ettevõttel uusi linnu rajada
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Asulatel on lubatud teederajamine: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Luba asulatele teederajamine, et soodustada kasvu. Lülita välja, et keelata asulatele teederajamine
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS                   :Asulatel on lubatud ehitada ülesõidukohti: {STRING}
+STR_CONFIG_SETTING_ALLOW_TOWN_LEVEL_CROSSINGS_HELPTEXT          :Selle seade sisse lülitamine lubab asulatel ehitada ülesõidukohti
+STR_CONFIG_SETTING_NOISE_LEVEL                                  :Lennujaamade mürapiirangud asulates: {STRING}
+STR_CONFIG_SETTING_NOISE_LEVEL_HELPTEXT                         :Kui seade ei ole sisse lülitatud, siis igasse asulasse on lubatud ehitada kuni kaks lennuvälja. Kui see seade on lubatud, siis lennuväljade arvu ülempiiri määrab asustuse müratundlikkus, mis sõltub rahvaarvust ja lennuvälja suurusest ja kaugusest
+STR_CONFIG_SETTING_TOWN_FOUNDING                                :Asulate rajamine keset mängu: {STRING}
+STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Võimaldab ettevõttel uusi asulaid rajada
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Keelatud
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Lubatud
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Lubatud, koos linnaskeemi valimisega
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Kauba tekkimine linnades: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Kui palju kaupa toodavad majad linnades, võrreldes linnaelanike arvuga.{}Ruutfunktsioon: kaks korda suurem linn tekitab neli korda rohkem reisijaid.{}Lineaarne: kaks korda suurem linn tekitab kaks korda rohkem reisijaid.
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Lubatud, koos asulaskeemi valimisega
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Kauba tekkimine asulates: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Kui palju kaupa toodavad majad asulates, võrreldes elanike arvuga.{}Ruutfunktsioon: kaks korda suurem asula tekitab neli korda rohkem reisijaid.{}Lineaarne: kaks korda suurem asula tekitab kaks korda rohkem reisijaid.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Ruutfunktsioon (algupärane)
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarne
 
@@ -1705,18 +1705,18 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Tavaline
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
-STR_CONFIG_SETTING_TOWN_GROWTH                                  :Linna kasvutempo: {STRING}
-STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Linna kasvamise kiirus
+STR_CONFIG_SETTING_TOWN_GROWTH                                  :Asulate kasvutempo: {STRING}
+STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Asulate kasvutempo
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Pole
 STR_CONFIG_SETTING_TOWN_GROWTH_SLOW                             :Aeglane
 STR_CONFIG_SETTING_TOWN_GROWTH_NORMAL                           :Normaalne
 STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :Kiire
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :Väga Kiire
-STR_CONFIG_SETTING_LARGER_TOWNS                                 :Proportsioon asulatest millest kasvavad linnad: {STRING}
+STR_CONFIG_SETTING_LARGER_TOWNS                                 :Linnadeks kasvavate asulate osakaal: {STRING}
 STR_CONFIG_SETTING_LARGER_TOWNS_HELPTEXT                        :Asulate arv mis kasvavad tulevikus linnadeks, elik asulate arv mis on alguses suuremad ja kasvavad kiiremini kui ülejäänud asulad
 STR_CONFIG_SETTING_LARGER_TOWNS_VALUE                           :1 iga {COMMA} kohta
 STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Mitte ühtegi
-STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Algne linnade suurustegur: {STRING}
+STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Algne linnade suuruskordaja: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Keskmine linna suurus võrreldes tavalise asulaga mängu alguses
 
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Jaotusgraafikuid uuendatakse igal {STRING}. päeval
@@ -1797,8 +1797,8 @@ STR_CONFIG_SETTING_LIMITATIONS                                  :{ORANGE}Piirang
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Katastroofid / Õnnetused
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Maailma tekitamine
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Keskkond
-STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Linnavõimud
-STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Linnad
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Omavalitsus
+STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Asulad
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Tööstused
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Kaubajaotus
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Konkurendid
@@ -2629,31 +2629,31 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Nulli ma
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Kas oled kindel, et tahad lammutada kõik mängija omandid?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Linnade tekitamine
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Uus linn
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Ehita uus linn. Shift+klõpsuga kuvatakse eeldatav maksumus
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Suvaline linn
-STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Ehita linn suvalisse kohta
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Palju suvalisi linnu
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Kaardi katmine suvaliselt asetatud linnadega
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Asulate tekitamine
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Uus asula
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Raja uus asula. Shift+klõpsuga kuvatakse eeldatav maksumus
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Suvaline asula
+STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Raja asula suvalisse kohta
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Palju suvalisi asulaid
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Kaardi katmine suvaliselt paigutatud asulatega
 
-STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Linnanimi:
-STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Sisesta linnanimi
-STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klõpsa linnale nime andmiseks
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Asula nimi:
+STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Sisesta asula nimi
+STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Klõpsa asulale nime andmiseks
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Suvaline nimi
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Loo suvaline nimi
 
-STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Linna suurus:
+STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Asula suurus:
 STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Väike
 STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Keskmine
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Suur
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Suvaline
-STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Vali linna suurus
+STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Vali asula suurus
 STR_FOUND_TOWN_CITY                                             :{BLACK}Linn
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Suuremad linnad kasvavad kiiremini kui väikesed{}Sõltuvalt seadetest on need ka alguses suuremad
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Linnad kasvavad kiiremini, kui tavalised asulad{}Sõltuvalt seadetest on need ka alguses suuremad
 
-STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Linna teeplaneering
-STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Vali linnas kasutatav teeplaneering
+STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Asula teeplaneering
+STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Vali selle asula teeplaneering
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Algne
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Paremad teed
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}2x2 ruudustik
@@ -2907,7 +2907,7 @@ STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Maailma 
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaardi mõõtmed:
 STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Määrab maakaardi mõõtmed ruutudes. Ruute, mida saab kasutada, on pisut vähem
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Linnade sagedus:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Asustusi:
 STR_MAPGEN_DATE                                                 :{BLACK}Algus:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstuste sagedus:
 STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimaalne kaardi kõrgus:
@@ -3167,11 +3167,11 @@ STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Mine eel
 STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Sisesta sildile nimi
 
 # Town directory window
-STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Linnad
+STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Asustused
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Puudub -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Linn){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Linnanimed - vajuta linnanimele, et viia vaade linnale. Ctrl+klõps avab uue vaate linna asukohast
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Astuste nimed - vajuta nimele, et viia vaade asustusele. Ctrl+klõps avab uue vaate linna asukohas
 STR_TOWN_POPULATION                                             :{BLACK}Maailma rahvastik: {COMMA}
 
 # Town view window
@@ -3179,25 +3179,25 @@ STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} (Linn)
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}Rahvaarv: {ORANGE}{COMMA}{BLACK}  Ehitisi: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} eelmisel kuul: {ORANGE}{COMMA}{BLACK} Kuni: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Veoseid linna kasvamiseks:
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK}Asula kasvuks nõutud veosed:
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} vajalik
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK} on talvel vajalik
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} äraveetud
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ikka veel vaja)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (äraveetud)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Linn kasvab {ORANGE}{COMMA}{BLACK} päevaga
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Linn kasvab iga {ORANGE}{COMMA}{BLACK} päeva tagant (rahastatud)
-STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Linn {RED}ei{BLACK} kasva
-STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Mürapiirang linnas: {ORANGE}{COMMA}{BLACK}  suurim: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Vaate viimine linnale
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Asustus kasvab iga {ORANGE}{COMMA}{NBSP}päev{P "" a}
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Asustus kasvab iga {ORANGE}{COMMA}{BLACK}{NBSP}päev{P "" a} (rahastatud)
+STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Asustus {RED}ei{BLACK} kasva
+STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Mürapiirang asustuses: {ORANGE}{COMMA}{BLACK}  suurim: {ORANGE}{COMMA}
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda vaade asustusele. Ctrl+klõps avab asustuse kohal uue vaate
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Omavalitsus
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Näita teavet kohaliku omavalitsuse kohta
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Muuda linna nime
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Laienda
-STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Linna suuruse suurendamine
+STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Asustuse suurendamine
 STR_TOWN_VIEW_DELETE_BUTTON                                     :{BLACK}Kustuta
-STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Hävita see linn täielikult
+STR_TOWN_VIEW_DELETE_TOOLTIP                                    :{BLACK}Hävita see asustus täielikult
 
 STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Ümbernimeta linn
 
@@ -3208,7 +3208,7 @@ STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Näita k
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Ettevõtete hinnangud:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Pakutavad toimingud:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Nimekiri asjadest, mida saab siin linnas teha - klõpsa esemel, et saada rohkem andmeid
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Nimekiri asjadest, mida saab selles asulas teha - täpsustused esemele klõpsatel
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Soorita toiming
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Soorita ülalpool valitud toiming
 
@@ -3221,14 +3221,14 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Rahasta uute ho
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Osta monopoolsed veoõigused
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Paku kohalikule omavalitsusele altkäemaksu
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Pisikese kohaliku reklaamikampaania korraldamine meelitab rohkem reisijaid ja kaupu sinu veoteenuseid kasutama.{} Hind: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Keskmise reklaamikampaania korraldamine, et meelitada rohkem reisijaid ja kaupu sinu teenuste juurede.{} Hind: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Suure reklaamikampaania korraldamine, et meelitada rohkem reisijaid ja kaupu sinu teenuste juurede.{} Hind: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Teehoiutööde rahastamine. Põhjustab linnatänavatel tõsiseid liiklusprobleeme kuni 6 kuuks.{} Hind: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Oma ettevõtte auks kuju ehitamine.{} Hind: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Uute ärihoonete ehitamise rahastamine selles linnas.{} Hind: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Üheks aastaks monopoolsete veoõiguste ostmine selles linnas. Linna omavalitsus lubab reisijate ja kauba veoks kasutada ainult sinu jaamasid.{} Hind: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Linna omavalitusele ettevõtte hinnangu tõstmise eesmärgil altkäemaksu pakkumine. Vahele jäädes tuleb trahvi maksta.{} Hind: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW} Pisikese kohaliku reklaamikampaania korraldamine meelitab rohkem reisijaid ja kaupu sinu veoteenuseid kasutama.{} Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW} Keskmise reklaamikampaania korraldamine, et meelitada rohkem reisijaid ja kaupu sinu teenuste juurede.{} Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW} Suure reklaamikampaania korraldamine, et meelitada rohkem reisijaid ja kaupu sinu teenuste juurede.{} Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Linna teedevõrgu ümberehituse rahastamine. Põhjustab liikluses tõsiseid häireid kuni 6 kuuks.{} Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Oma ettevõtte auks kuju ehitamine.{} Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Uute ärihoonete ehitamise rahastamine selles asulas.{} Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Üheks aastaks monopoolsete veoõiguste ostmine selles asulas. Asula omavalitsus lubab reisijate ja kauba veoks kasutada ainult sinu jaamasid.{} Maksumus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Kohalikule omavalitusele ettevõtte hinnangu tõstmise eesmärgil altkäemaksu pakkumine. Vahele jäädes tuleb trahvi maksta.{} Maksumus: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} eesmärgid
@@ -3241,7 +3241,7 @@ STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Kehte
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ettevõtte eesmärgid:
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klõpsa eesmärgil, et liigutada vaateaken tööstuse/linna/ruudu asukohale. Ctrl+klõps avab uue vaateakna tööstuse/linna/ruudu asukohas
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klõpsa eesmärgil, et liigutada vaateaken tööstuse/asula/ruudu asukohale. Ctrl+klõps avab uue vaateakna tööstuse/asula/ruudu asukohas
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Küsimus
@@ -3277,7 +3277,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}Mitte ühtegi
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Juba toetatavad veoteenused:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} kohast {STRING} kohta {STRING}{YELLOW} ({COMPANY}{YELLOW}, kuni {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Vajuta pakkumisele, et näha linna või tööstuse asukohta. Ctrl+klõps avab uue vaate ettevõtte/linna asukohast
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Vajuta pakkumisele, et keskendada vaade tööstusele/asustusele. Ctrl+klõps avab uue vaate ettevõtte/asustuse asukohas
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}«{COMPANY}» juturaamat
@@ -3313,8 +3313,8 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}Võtab v
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}Näita vastuvõetavate veoste nimistut
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Võtab vastu: {WHITE}{CARGO_LIST}
 
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Antud jaamal on eksklusiivsed transpordiõigused selles linnas.
-STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} ostis eksklusiivsed transpordiõigused antud linnas.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_SELF                          :{BLACK}Sellel jaamal on asulas vedude ainuõigus.
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} ostis vedude ainuõiguse selles asustuses.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Hinnangud
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näita jaamahinnangut
@@ -3874,7 +3874,7 @@ STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}Siht: {
 STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}Sihitu, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}Suundub {WAYPOINT}, {VELOCITY}
 STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}Suundub {DEPOT}, {VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Teenus kohas {DEPOT}, {VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}Järelevaatus: {DEPOT}, {VELOCITY}
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED_SMALL                               :{TINY_FONT}{RED}peatatud
@@ -4336,8 +4336,8 @@ STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<mitte saadaval
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Mäng on salvestatud osas, kus trammid ei olnud toetatud. Kõik trammid on eemaldatud
 
 # Map generation messages
-STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaardi tekitamine katkes...{}... linnadele pole sobilike kohti
-STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... kaardil puudub linn
+STR_ERROR_COULD_NOT_CREATE_TOWN                                 :{WHITE}Kaardi tekitamine katkes...{}... pole sobivaid kohti asulatele
+STR_ERROR_NO_TOWN_IN_SCENARIO                                   :{WHITE}... stsenaariumis pole ühtegi asulat
 
 STR_ERROR_PNGMAP                                                :{WHITE}Ei suuda laadida maastiku PNG failist...
 STR_ERROR_PNGMAP_FILE_NOT_FOUND                                 :{WHITE}... faili ei leitud
@@ -4388,7 +4388,7 @@ STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Pole lub
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} kohalik omavalitsus keeldub seda lubamast
-STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Linna {TOWN} kohalik omavalitsus keeldub uut lennujaama lubamast
+STR_ERROR_LOCAL_AUTHORITY_REFUSES_AIRPORT                       :{WHITE}Asula {TOWN} omavalitsus keeldub uut lennujaama lubamast
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_NOISE                         :{WHITE}{TOWN} kohalik omavalitsus keeldub ehitusluba lennujaamale väljastamast kuna on mures müra pärast
 STR_ERROR_BRIBE_FAILED                                          :{WHITE}Teie altkäemaksu andmise katse on avastatud kohaliku uurija poolt
 
@@ -4420,18 +4420,18 @@ STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Selle et
 STR_ERROR_PROTECTED                                             :{WHITE}See ettevõtte pole veel piisavalt vana, et aktsiaid vahetada...
 
 # Town related errors
-STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ei saa ühtegi linna ehitada...
+STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Ei saa ühtegi asulat ehitada...
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}Ei saa linna ümbernimetada...
-STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Siia ei saa linna ehitada...
-STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Linna ei saa laiendada...
+STR_ERROR_CAN_T_FOUND_TOWN_HERE                                 :{WHITE}Siia ei saa asulat rajada...
+STR_ERROR_CAN_T_EXPAND_TOWN                                     :{WHITE}Asulat ei saa laiendada...
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... liiga lähedal kaardi servale
-STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liiga lähedal teisele linnale
-STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liiga palju linnu
+STR_ERROR_TOO_CLOSE_TO_ANOTHER_TOWN                             :{WHITE}... liiga lähedal teisele asulale
+STR_ERROR_TOO_MANY_TOWNS                                        :{WHITE}... liiga palju asulaid
 STR_ERROR_NO_SPACE_FOR_TOWN                                     :{WHITE}... pole enam ruumi kaardil
-STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Linn ei ehita teid. Teedeehituse lubamiseks Põhjalik seadistus->Majandus->Linnad
+STR_ERROR_TOWN_EXPAND_WARN_NO_ROADS                             :{WHITE}Asula ei ehita teid. Teedeehituse lubamiseks Põhjalik seadistus->Majandus->Asulad
 STR_ERROR_ROAD_WORKS_IN_PROGRESS                                :{WHITE}Teede ehitamine
-STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Seda linna ei saa kustutada...{}Jaam või depoo viitab linnale või mõnd linna omanduses olevat tükki ei saa kustutada
-STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... linnakeskuses ei leidu kujule sobivat kohta
+STR_ERROR_TOWN_CAN_T_DELETE                                     :{WHITE}Seda asulat ei saa kõrvaldada...{}Jaam või depoo viitab asulale, või asulale kuuluvat ruutu ei saa kõrvaldada
+STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... asula keskuses ei leidu kujule sobivat kohta
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... liiga palju tööstuseid
@@ -4439,13 +4439,13 @@ STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Tööstu
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING} ei saa siia ehitada...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Seda tüüpi tööstust ei saa siia ehitada...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... liiga lähedal mõnele teisele tööstusele
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... enne pead linna ehitama
-STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... iga linna kohta lubatud ainult üks
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... saab ainult ehitada linna, mille rahvastikuarv ületab 1200
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... enne pead asula rajama
+STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... iga asula kohta lubatud ainult üks
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... saab ainult ehitada asulatesse, mille elanikearv ületab 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... saab ehitada ainult vihmametsadesse
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... saab ehitada ainult kõrbesse
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... saab ainult linnadesse ehitada
-STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... saab ainult linna keskpunkti lähedale ehitada
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... saab ainult asulatesse ehitada (majade asemele)
+STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... saab ainult asulekeskuste lähedale ehitada
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_LOW_AREAS                        :{WHITE}... saab ainult madalatele aladele ehitada
 STR_ERROR_CAN_ONLY_BE_POSITIONED                                :{WHITE}... saab ainult ehitada kaardi serva
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... metsa saab istutada ainult lumepiirist kõrgemale
@@ -4473,7 +4473,7 @@ STR_ERROR_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liiga pa
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_DOCK                             :{WHITE}Liiga lähedal teisele dokile
 STR_ERROR_TOO_CLOSE_TO_ANOTHER_AIRPORT                          :{WHITE}Liiga lähedal teisele lennuväljale
 STR_ERROR_CAN_T_RENAME_STATION                                  :{WHITE}Ei saa jaama ümbernimetada...
-STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... see tee on omatud linna poolt
+STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... see on asulale kuuluv tee
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... tee on vales suunas
 STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... nurgad ei saa läbisõidupeatustes olla
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... ristmikud ei saa olla läbisõidupeatustes
@@ -4748,7 +4748,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Büroohoone
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Väike kortermaja
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Kirik
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Suur büroohoone
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Linna majad
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Asustuse majad
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hotell
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Kuju
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Purskkaev
