@@ -115,9 +115,10 @@
 	EnforcePrecondition(false, question != nullptr);
 	const char *text = question->GetEncodedText();
 	EnforcePreconditionEncodedText(false, text);
-	EnforcePrecondition(false, CountBits(buttons) >= 1 && CountBits(buttons) <= 3);
+	uint min_buttons = (type == QT_QUESTION ? 1 : 0);
+	EnforcePrecondition(false, CountBits(buttons) >= min_buttons && CountBits(buttons) <= 3);
 	EnforcePrecondition(false, buttons < (1 << ::GOAL_QUESTION_BUTTON_COUNT));
-	EnforcePrecondition(false, (int)type < ::GOAL_QUESTION_TYPE_COUNT);
+	EnforcePrecondition(false, (int)type < ::GQT_END);
 
 	return ScriptObject::DoCommand(0, uniqueid | (target << 16), buttons | (type << 29) | (is_client ? (1 << 31) : 0), CMD_GOAL_QUESTION, text);
 }

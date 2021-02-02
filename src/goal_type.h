@@ -13,7 +13,14 @@
 #include "core/enum_type.hpp"
 
 static const uint32 GOAL_QUESTION_BUTTON_COUNT = 18; ///< Amount of buttons available.
-static const byte   GOAL_QUESTION_TYPE_COUNT   =  4; ///< Amount of question types.
+
+enum GoalQuestionType : byte {
+	GQT_QUESTION = 0,
+	GQT_INFORMATION = 1,
+	GQT_WARNING = 2,
+	GQT_ERROR = 3,
+	GQT_END = 4,
+};
 
 /** Types of goal destinations */
 enum GoalType : byte {

@@ -375,10 +375,16 @@ struct GoalQuestionWindow : public Window {
 			if (n == 3) break;
 		}
 		this->buttons = n;
-		assert(this->buttons > 0 && this->buttons < 4);
+		assert(this->buttons < 4);
 
 		this->CreateNestedTree();
-		this->GetWidget<NWidgetStacked>(WID_GQ_BUTTONS)->SetDisplayedPlane(this->buttons - 1);
+		if (this->buttons == 0) {
+			this->GetWidget<NWidgetStacked>(WID_GQ_BUTTONS)->SetDisplayedPlane(SZSP_HORIZONTAL);
+			this->GetWidget<NWidgetStacked>(WID_GQ_BUTTON_SPACER)->SetDisplayedPlane(SZSP_HORIZONTAL);
+		} else {
+			this->GetWidget<NWidgetStacked>(WID_GQ_BUTTONS)->SetDisplayedPlane(this->buttons - 1);
+			this->GetWidget<NWidgetStacked>(WID_GQ_BUTTON_SPACER)->SetDisplayedPlane(0);
+		}
 		this->FinishInitNested(window_number);
 	}
 
@@ -463,7 +469,9 @@ static const NWidgetPart _nested_goal_question_widgets_question[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_3), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTON_SPACER),
+			NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+		EndContainer(),
 	EndContainer(),
 };
 
@@ -488,7 +496,9 @@ static const NWidgetPart _nested_goal_question_widgets_info[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_LIGHT_BLUE, WID_GQ_BUTTON_3), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTON_SPACER),
+			NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+		EndContainer(),
 	EndContainer(),
 };
 
@@ -513,7 +523,9 @@ static const NWidgetPart _nested_goal_question_widgets_warning[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_3), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTON_SPACER),
+			NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+		EndContainer(),
 	EndContainer(),
 };
 
@@ -538,7 +550,9 @@ static const NWidgetPart _nested_goal_question_widgets_error[] = {
 				NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_GQ_BUTTON_3), SetDataTip(STR_BLACK_STRING, STR_NULL), SetFill(1, 0),
 			EndContainer(),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GQ_BUTTON_SPACER),
+			NWidget(NWID_SPACER), SetMinimalSize(0, 8),
+		EndContainer(),
 	EndContainer(),
 };
 
@@ -578,6 +592,6 @@ static WindowDesc _goal_question_list_desc[] = {
  */
 void ShowGoalQuestion(uint16 id, byte type, uint32 button_mask, const char *question)
 {
-	assert(type < GOAL_QUESTION_TYPE_COUNT);
+	assert(type < GQT_END);
 	new GoalQuestionWindow(&_goal_question_list_desc[type], id, type == 3 ? TC_WHITE : TC_BLACK, button_mask, question);
 }
