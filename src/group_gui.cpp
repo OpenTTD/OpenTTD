@@ -741,9 +741,9 @@ public:
 						assert(vehgroup.NumVehicles() > 0);
 						v = vehgroup.vehicles_begin[0];
 						/*
-						No VehicleClicked(v) support for now, because don't want
-						to enable any contextual actions except perhaps clicking/ctrl-clicking to clone orders.
-						*/
+						 * No VehicleClicked(v) support for now, because don't want
+						 * to enable any contextual actions except perhaps clicking/ctrl-clicking to clone orders.
+						 */
 						break;
 					}
 
