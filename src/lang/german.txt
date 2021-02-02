@@ -3321,7 +3321,7 @@ STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Namen de
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Namen des Wegpunkts ändern
 
 # Finances window
-STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} Finanzen {BLACK}{COMPANY_NUM}
+STR_FINANCES_CAPTION                                            :{WHITE}{COMPANY} - Finanzen {BLACK}{COMPANY_NUM}
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Ausgaben / Einnahmen
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Baukosten
@@ -3512,8 +3512,8 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :Liste leeren
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Gruppe umbenennen
 
-STR_GROUP_PROFIT_THIS_YEAR                                      :Gewinn in diesem Jahr:
-STR_GROUP_PROFIT_LAST_YEAR                                      :Gewinn im letzten Jahr:
+STR_GROUP_PROFIT_THIS_YEAR                                      :Gewinn dieses Jahr:
+STR_GROUP_PROFIT_LAST_YEAR                                      :Gewinn letztes Jahr:
 STR_GROUP_OCCUPANCY                                             :Aktuelle Nutzung:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
@@ -4227,7 +4227,7 @@ STR_AI_SETTINGS_START_DELAY                                     :Wartezeit in Ta
 
 # Textfile window
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}-Liesmich von {STRING}
-STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} Änderungen von {STRING}
+STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING}-Änderungen von {STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}-Lizenz von {STRING}
 STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}Text umbrechen
 STR_TEXTFILE_WRAP_TEXT_TOOLTIP                                  :{BLACK}Text des Fensters so umbrechen, dass es ohne Scrollen hineinpasst
