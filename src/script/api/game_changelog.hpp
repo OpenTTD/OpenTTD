@@ -38,6 +38,7 @@
  *
  * Other changes:
  * \li GSCompany::ChangeBankBalance takes one extra parameter to refer to a location to show text effect on
+ * \li GSGoal::Question and GSGoal::QuestionClient no longer require to have any buttons except for the window type GSGoal.QT_QUESTION
  *
  * \b 1.10.0
  *

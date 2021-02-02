@@ -20,12 +20,13 @@ enum GoalListWidgets {
 
 /** Widgets of the #GoalQuestionWindow class. */
 enum GoalQuestionWidgets {
-	WID_GQ_CAPTION,  ///< Caption of the window.
-	WID_GQ_QUESTION, ///< Question text.
-	WID_GQ_BUTTONS,  ///< Buttons selection (between 1, 2 or 3).
-	WID_GQ_BUTTON_1, ///< First button.
-	WID_GQ_BUTTON_2, ///< Second button.
-	WID_GQ_BUTTON_3, ///< Third button.
+	WID_GQ_CAPTION,        ///< Caption of the window.
+	WID_GQ_QUESTION,       ///< Question text.
+	WID_GQ_BUTTONS,        ///< Buttons selection (between 1, 2 or 3).
+	WID_GQ_BUTTON_1,       ///< First button.
+	WID_GQ_BUTTON_2,       ///< Second button.
+	WID_GQ_BUTTON_3,       ///< Third button.
+	WID_GQ_BUTTON_SPACER,  ///< Selection to hide extra padding if there are no buttons
 };
 
 #endif /* WIDGETS_GOAL_WIDGET_H */
