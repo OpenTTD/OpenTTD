@@ -17,6 +17,7 @@
 #include "network/network_content.h"
 #include "screenshot.h"
 #include "string_func.h"
+#include "strings_func.h"
 #include "tar_type.h"
 #include <sys/stat.h>
 #include <functional>
@@ -376,7 +377,8 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
 		strecpy(fios->name, "..", lastof(fios->name));
-		strecpy(fios->title, ".. (Parent directory)", lastof(fios->title));
+		SetDParamStr(0, "..");
+		GetString(fios->title, STR_SAVELOAD_PARENT_DIRECTORY, lastof(fios->title));
 	}
 
 	/* Show subdirectories */
@@ -392,7 +394,9 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
 				strecpy(fios->name, d_name, lastof(fios->name));
-				seprintf(fios->title, lastof(fios->title), "%s" PATHSEP " (Directory)", d_name);
+				std::string dirname = std::string(d_name) + PATHSEP;
+				SetDParamStr(0, dirname.c_str());
+				GetString(fios->title, STR_SAVELOAD_DIRECTORY, lastof(fios->title));
 				str_validate(fios->title, lastof(fios->title));
 			}
 		}
