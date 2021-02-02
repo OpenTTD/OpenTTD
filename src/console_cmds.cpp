@@ -1255,7 +1255,7 @@ DEF_CONSOLE_CMD(ConReloadAI)
 	}
 
 	/* First kill the company of the AI, then start a new one. This should start the current AI again */
-	DoCommandP(0, CCA_DELETE | company_id << 16 | CRR_MANUAL << 24, 0,CMD_COMPANY_CTRL);
+	DoCommandP(0, CCA_DELETE | company_id << 16 | CRR_MANUAL << 24, 0, CMD_COMPANY_CTRL);
 	DoCommandP(0, CCA_NEW_AI | company_id << 16, 0, CMD_COMPANY_CTRL);
 	IConsolePrint(CC_DEFAULT, "AI reloaded.");
 
@@ -2136,7 +2136,7 @@ static void ConDumpRoadTypes()
 			grfs.emplace(grfid, grf);
 		}
 		IConsolePrintF(CC_DEFAULT, "  %02u %s %c%c%c%c, Flags: %c%c%c%c%c, GRF: %08X, %s",
-				(uint) rt,
+				(uint)rt,
 				RoadTypeIsTram(rt) ? "Tram" : "Road",
 				rti->label >> 24, rti->label >> 16, rti->label >> 8, rti->label,
 				HasBit(rti->flags, ROTF_CATENARY)          ? 'c' : '-',
@@ -2174,7 +2174,7 @@ static void ConDumpRailTypes()
 			grfs.emplace(grfid, grf);
 		}
 		IConsolePrintF(CC_DEFAULT, "  %02u %c%c%c%c, Flags: %c%c%c%c%c%c, GRF: %08X, %s",
-				(uint) rt,
+				(uint)rt,
 				rti->label >> 24, rti->label >> 16, rti->label >> 8, rti->label,
 				HasBit(rti->flags, RTF_CATENARY)          ? 'c' : '-',
 				HasBit(rti->flags, RTF_NO_LEVEL_CROSSING) ? 'l' : '-',
@@ -2217,7 +2217,7 @@ static void ConDumpCargoTypes()
 			grfs.emplace(grfid, grf);
 		}
 		IConsolePrintF(CC_DEFAULT, "  %02u Bit: %2u, Label: %c%c%c%c, Callback mask: 0x%02X, Cargo class: %c%c%c%c%c%c%c%c%c%c%c, GRF: %08X, %s",
-				(uint) i,
+				(uint)i,
 				spec->bitnum,
 				spec->label >> 24, spec->label >> 16, spec->label >> 8, spec->label,
 				spec->callback_mask,
