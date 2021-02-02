@@ -2847,6 +2847,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter string:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Overwrite File
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Are you sure you want to overwrite the existing file?
+STR_SAVELOAD_DIRECTORY                                          :{RAW_STRING} (Directory)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{RAW_STRING} (Parent directory)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Enter a name for the savegame
 
