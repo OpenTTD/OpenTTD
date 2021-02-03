@@ -495,7 +495,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 
 	/* Create wrapper view for text input. */
 	NSRect view_frame = [ this->window contentRectForFrameRect:[ this->window frame ] ];
-	this->cocoaview = [ [ OTTD_CocoaView alloc ] initWithFrame:view_frame andDriver:this ];
+	this->cocoaview = [ [ OTTD_CocoaView alloc ] initWithFrame:view_frame ];
 	if (this->cocoaview == nil) {
 		DEBUG(driver, 0, "Could not create the text wrapper view.");
 		this->setup = false;

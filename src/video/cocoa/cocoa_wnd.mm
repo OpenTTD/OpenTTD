@@ -112,7 +112,9 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	auto *drv = static_cast<VideoDriver_Cocoa *>(VideoDriver::GetInstance());
 
 	/* Setup cursor for the current _game_mode. */
-	[ drv->window invalidateCursorRectsForView:[ drv->window contentView ] ];
+	NSEvent *e = [ [ NSEvent alloc ] init ];
+	[ drv->cocoaview cursorUpdate:e ];
+	[ e release ];
 
 	/* Hand off to main application code. */
 	drv->GameLoop();
@@ -330,6 +332,25 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 }
 
 /**
+ * Initialize event system for the application rectangle
+ */
+- (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv
+{
+	if (self = [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ]) {
+		/* Make our window subclass receive these application notifications */
+		[ [ NSNotificationCenter defaultCenter ] addObserver:self
+			selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
+
+		[ [ NSNotificationCenter defaultCenter ] addObserver:self
+			selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
+
+		self->driver = drv;
+	}
+
+	return self;
+}
+
+/**
  * Minimize the window
  */
 - (void)miniaturize:(id)sender
@@ -383,38 +404,10 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	driver->active = true;
 }
-/**
- * Initialize event system for the application rectangle
- */
-- (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv
-{
-	if (self = [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ]) {
-		/* Make our window subclass receive these application notifications */
-		[ [ NSNotificationCenter defaultCenter ] addObserver:self
-			selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
-
-		[ [ NSNotificationCenter defaultCenter ] addObserver:self
-			selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
-
-		self->driver = drv;
-	}
-
-	return self;
-}
 
 @end
 
-@implementation OTTD_CocoaView {
-	NSTrackingRectTag trackingtag;
-}
-
-- (instancetype)initWithFrame:(NSRect)frameRect andDriver:(VideoDriver_Cocoa *)drv
-{
-	if (self = [ super initWithFrame:frameRect ]) {
-		self->driver = drv;
-	}
-	return self;
-}
+@implementation OTTD_CocoaView
 
 /**
  * Allow to handle events
@@ -432,46 +425,26 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	}
 }
 
-/**
- * Define the rectangle where we draw our application window
- */
-- (void)setTrackingRect
+/** Update mouse cursor to use for this view. */
+- (void)cursorUpdate:(NSEvent *)event
 {
-	NSPoint loc = [ self convertPoint:[ [ self window ] mouseLocationOutsideOfEventStream ] fromView:nil ];
-	BOOL inside = ([ self hitTest:loc ]==self);
-	if (inside) [ [ self window ] makeFirstResponder:self ];
-	trackingtag = [ self addTrackingRect:[ self visibleRect ] owner:self userData:nil assumeInside:inside ];
+	[ (_game_mode == GM_BOOTSTRAP ? [ NSCursor arrowCursor ] : [ NSCursor clearCocoaCursor ]) set ];
 }
-/**
- * Return responsibility for the application window to system
- */
-- (void)clearTrackingRect
-{
-	[ self removeTrackingRect:trackingtag ];
-}
-/**
- * Declare responsibility for the cursor within our application rect
- */
-- (void)resetCursorRects
-{
-	[ super resetCursorRects ];
-	[ self clearTrackingRect ];
-	[ self setTrackingRect ];
-	[ self addCursorRect:[ self bounds ] cursor:(_game_mode == GM_BOOTSTRAP ? [ NSCursor arrowCursor ] : [ NSCursor clearCocoaCursor ]) ];
-}
-/**
- * Prepare for moving the application window
- */
+
 - (void)viewWillMoveToWindow:(NSWindow *)win
 {
-	if (!win && [ self window ]) [ self clearTrackingRect ];
+	for (NSTrackingArea *a in [ self trackingAreas ]) {
+		[ self removeTrackingArea:a ];
+	}
 }
-/**
- * Restore our responsibility for our application window after moving
- */
+
 - (void)viewDidMoveToWindow
 {
-	if ([ self window ]) [ self setTrackingRect ];
+	/* Install mouse tracking area. */
+	NSTrackingAreaOptions track_opt = NSTrackingInVisibleRect | NSTrackingActiveInActiveApp | NSTrackingMouseEnteredAndExited | NSTrackingCursorUpdate;
+	NSTrackingArea *track = [ [ NSTrackingArea alloc ] initWithRect:[ self bounds ] options:track_opt owner:self userInfo:nil ];
+	[ self addTrackingArea:track ];
+	[ track release ];
 }
 /**
  * Make OpenTTD aware that it has control over the mouse
@@ -485,7 +458,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
  */
 - (void)mouseExited:(NSEvent *)theEvent
 {
-	if (driver->window != nil) UndrawMouseCursor();
+	if ([ self window ] != nil) UndrawMouseCursor();
 	_cursor.in_window = false;
 }
 

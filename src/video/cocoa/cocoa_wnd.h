@@ -32,20 +32,8 @@ extern NSString *OTTDMainLaunchGameEngine;
 - (void)appDidUnhide:(NSNotification*)note;
 @end
 
-/** Subclass of NSView to fix Quartz rendering and mouse awareness */
-@interface OTTD_CocoaView : NSView <NSTextInputClient> {
-	VideoDriver_Cocoa *driver;
-}
-- (instancetype)initWithFrame:(NSRect)frameRect andDriver:(VideoDriver_Cocoa *)drv;
-
-- (BOOL)acceptsFirstResponder;
-- (void)setTrackingRect;
-- (void)clearTrackingRect;
-- (void)resetCursorRects;
-- (void)viewWillMoveToWindow:(NSWindow *)win;
-- (void)viewDidMoveToWindow;
-- (void)mouseEntered:(NSEvent *)theEvent;
-- (void)mouseExited:(NSEvent *)theEvent;
+/** Subclass of NSView to support mouse awareness and text input. */
+@interface OTTD_CocoaView : NSView <NSTextInputClient>
 @end
 
 /** Delegate for our NSWindow to send ask for quit on close */
