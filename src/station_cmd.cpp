@@ -4083,7 +4083,7 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 
 	/* If there is some cargo left due to rounding issues distribute it among the best rated stations.  */
 	if (amount > moving) {
-		std::sort(used_stations.begin(), used_stations.end(), [type] (const StationInfo &a, const StationInfo &b) {
+		std::sort(used_stations.begin(), used_stations.end(), [type](const StationInfo &a, const StationInfo &b) {
 			return b.first->goods[type].rating < a.first->goods[type].rating;
 		});
 
