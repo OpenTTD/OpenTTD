@@ -123,8 +123,12 @@ elseif(UNIX)
     # With FHS, we can create deb/rpm/... Without it, they would be horribly broken
     # and not work. The other way around is also true; with FHS they are not
     # usable, and only flat formats work.
-    if(NOT OPTION_INSTALL_FHS)
+    if(OPTION_PACKAGE_DEPENDENCIES)
         set(CPACK_GENERATOR "TXZ")
+        set(PLATFORM "generic")
+    elseif(NOT OPTION_INSTALL_FHS)
+        set(CPACK_GENERATOR "TXZ")
+        set(PLATFORM "unknown")
     else()
         find_program(LSB_RELEASE_EXEC lsb_release)
         execute_process(COMMAND ${LSB_RELEASE_EXEC} -is
@@ -149,7 +153,7 @@ elseif(UNIX)
             string(REGEX MATCH "ID=(.*)" _ ${OS_RELEASE_CONTENTS})
             set(DISTRO_ID ${CMAKE_MATCH_1})
             if(DISTRO_ID STREQUAL "arch")
-                set(PLATFORM "generic")
+                set(PLATFORM "arch")
                 set(CPACK_GENERATOR "TXZ")
             else()
                 set(UNSUPPORTED_PLATFORM_NAME "Linux distribution '${DISTRO_ID}' from /etc/os-release")
@@ -163,12 +167,39 @@ elseif(UNIX)
             set(CPACK_GENERATOR "TXZ")
             message(WARNING "Unknown ${UNSUPPORTED_PLATFORM_NAME} found for packaging; can only pack to a txz. Please consider creating a Pull Request to add support for this distribution.")
         endif()
-
-        set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-linux-${PLATFORM}-${CPACK_SYSTEM_NAME}")
     endif()
+
+    set(CPACK_PACKAGE_FILE_NAME "openttd-#CPACK_PACKAGE_VERSION#-linux-${PLATFORM}-${CPACK_SYSTEM_NAME}")
 
 else()
     message(FATAL_ERROR "Unknown OS found for packaging; please consider creating a Pull Request to add support for this OS.")
 endif()
 
 include(CPack)
+
+if(OPTION_PACKAGE_DEPENDENCIES)
+    # Install all dependencies we can resolve, with the exception of ones that
+    # every Linux machine should have. This should make this build as generic
+    # as possible, where it runs on any machine with the same or newer libc
+    # than the one this is compiled with.
+    # We copy these libraries into lib/ folder, so they can be found on game
+    # startup. See comment in root CMakeLists.txt for how this works exactly.
+    install(CODE [[
+        file(GET_RUNTIME_DEPENDENCIES
+                RESOLVED_DEPENDENCIES_VAR DEPENDENCIES
+                UNRESOLVED_DEPENDENCIES_VAR UNRESOLVED_DEPENDENCIES
+                EXECUTABLES openttd
+                POST_EXCLUDE_REGEXES "ld-linux|libc.so|libdl.so|libm.so|libgcc_s.so|libpthread.so|librt.so|libstdc...so")
+        file(INSTALL
+                DESTINATION "${CMAKE_INSTALL_PREFIX}/lib"
+                FILES ${DEPENDENCIES}
+                FOLLOW_SYMLINK_CHAIN)
+
+        # This should not be possible, but error out when a dependency cannot
+        # be resolved.
+        list(LENGTH UNRESOLVED_DEPENDENCIES UNRESOLVED_LENGTH)
+        if(${UNRESOLVED_LENGTH} GREATER 0)
+            message(FATAL_ERROR "Unresolved dependencies: ${UNRESOLVED_DEPENDENCIES}")
+        endif()
+    ]])
+endif()

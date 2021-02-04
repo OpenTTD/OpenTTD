@@ -265,7 +265,93 @@ jobs:
         retention-days: 5
 
   linux:
-    name: Linux
+    name: Linux (Generic)
+    needs: source
+
+    runs-on: ubuntu-20.04
+    container:
+      # manylinux2014 is based on CentOS 7, but already has a lot of things
+      # installed and preconfigured. It makes it easier to build OpenTTD.
+      image: quay.io/pypa/manylinux2014_x86_64
+
+    steps:
+    - name: Download source
+      uses: actions/download-artifact@v2
+      with:
+        name: internal-source
+
+    - name: Unpack source
+      run: |
+        tar -xf source.tar.gz --strip-components=1
+
+    - name: Install dependencies
+      run: |
+        echo "::group::Install dependencies"
+        yum install -y \
+          fontconfig-devel \
+          freetype-devel \
+          libicu-devel \
+          libpng-devel \
+          libpng-devel \
+          lzo-devel \
+          SDL2-devel \
+          wget \
+          xz-devel \
+          zlib-devel \
+          # EOF
+        echo "::endgroup::"
+
+        # The yum variant of fluidsynth depends on all possible audio drivers.
+        # This is not really useful for us, as that would require a user to
+        # have them all before he can start OpenTTD. Instead, compile a
+        # version that can only use SDL2. As OpenTTD does sound via SDL2,
+        # this simply means we either have sound and music, or have none.
+        echo "::group::Install fluidsynth"
+        wget https://github.com/FluidSynth/fluidsynth/archive/v2.1.6.tar.gz
+        tar xf v2.1.6.tar.gz
+        (
+          cd fluidsynth-2.1.6
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/usr
+          make -j$(nproc)
+          make install
+        )
+        echo "::endgroup::"
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      run: |
+        mkdir -p build
+        cd build
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          -DOPTION_PACKAGE_DEPENDENCIES=ON \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        make -j$(nproc) package
+        echo "::endgroup::"
+
+        # Remove the sha256 files CPack generates; we will do this ourself at
+        # the end of this workflow.
+        rm -f bundles/*.sha256
+
+    - name: Store bundles
+      uses: actions/upload-artifact@v2
+      with:
+        name: openttd-linux-generic
+        path: build/bundles
+        retention-days: 5
+
+  linux-distro:
+    name: Linux (Distros)
     needs: source
 
     if: needs.source.outputs.is_tag == 'true'
@@ -633,6 +719,7 @@ jobs:
     - source
     - docs
     - linux
+    - linux-distro
     - macos
     - windows
 
@@ -641,7 +728,7 @@ jobs:
     # "always()" is important here, it is the keyword to use to stop skipping
     # this job if any dependency is skipped. It looks a bit silly, but it is
     # how GitHub Actions work ;)
-    if: always() && needs.source.result == 'success' && needs.docs.result == 'success' && (needs.linux.result == 'success' || needs.linux.result == 'skipped') && needs.macos.result == 'success' && needs.windows.result == 'success'
+    if: always() && needs.source.result == 'success' && needs.docs.result == 'success' && needs.linux.result == 'success' && (needs.linux-distro.result == 'success' || needs.linux-distro.result == 'skipped') && needs.macos.result == 'success' && needs.windows.result == 'success'
 
     runs-on: ubuntu-20.04
 
