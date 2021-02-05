@@ -44,7 +44,9 @@ endfunction()
 # set_options()
 #
 function(set_options)
-    if(UNIX AND NOT APPLE)
+    option(OPTION_PACKAGE_DEPENDENCIES "Copy dependencies into lib/ for easy packaging (Linux only)" OFF)
+
+    if(UNIX AND NOT APPLE AND NOT OPTION_PACKAGE_DEPENDENCIES)
         set(DEFAULT_OPTION_INSTALL_FHS ON)
     else()
         set(DEFAULT_OPTION_INSTALL_FHS OFF)
@@ -76,6 +78,7 @@ endfunction()
 # show_options()
 #
 function(show_options)
+    message(STATUS "Option Package Dependencies - ${OPTION_PACKAGE_DEPENDENCIES}")
     message(STATUS "Option Dedicated - ${OPTION_DEDICATED}")
     message(STATUS "Option Install FHS - ${OPTION_INSTALL_FHS}")
     message(STATUS "Option Use assert - ${OPTION_USE_ASSERTS}")
