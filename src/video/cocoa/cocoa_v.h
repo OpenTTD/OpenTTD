@@ -17,6 +17,8 @@
 extern bool _cocoa_video_started;
 
 @class OTTD_CocoaWindowDelegate;
+@class OTTD_CocoaWindow;
+@class OTTD_CocoaView;
 
 class VideoDriver_Cocoa : public VideoDriver {
 private:
@@ -40,8 +42,8 @@ public:
 	bool active;          ///< Whether the window is visible
 	bool setup;
 
-	id window;            ///< Pointer to window object
-	id cocoaview;         ///< Pointer to view object
+	OTTD_CocoaWindow *window;    ///< Pointer to window object
+	OTTD_CocoaView *cocoaview;   ///< Pointer to view object
 	CGColorSpaceRef color_space; ///< Window color space
 	CGContextRef cgcontext;      ///< Context reference for Quartz subdriver
 
