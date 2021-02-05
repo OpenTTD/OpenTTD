@@ -57,6 +57,9 @@ To install both the x64 (64bit) and x86 (32bit) variants (though only one is nec
 ```
 
 You can open the folder (as a CMake project). CMake will be detected, and you can compile from there.
+If libraries are installed but not found, you need to set VCPKG_TARGET_TRIPLET in CMake parameters.
+For Visual Studio 2017 you also need to set CMAKE_TOOLCHAIN_FILE.
+(Typical values are shown in the MSVC project file command line example)
 
 Alternatively, you can create a MSVC project file via CMake. For this
 either download CMake from https://cmake.org/download/ or use the version
@@ -73,6 +76,7 @@ in the build folder are MSVC project files. MSVC can rebuild the project
 files himself via the `ZERO_CHECK` project.
 
 ## All other platforms
+Minimum required version of CMake is 3.9.
 
 ```bash
 mkdir build
