@@ -1,3 +1,8 @@
+# CMake provides a FindICU module since version 3.7.
+# But it doesn't use pkgconfig, doesn't set expected variables,
+# And it returns incomplete dependencies if only some modules are searched.
+
+
 #[=======================================================================[.rst:
 FindICU
 -------
