@@ -714,7 +714,7 @@ jobs:
         retention-days: 5
 
   upload:
-    name: Upload
+    name: Upload (AWS)
     needs:
     - source
     - docs
@@ -772,3 +772,80 @@ jobs:
         repository: OpenTTD/workflows
         event-type: ${{ needs.source.outputs.trigger_type }}
         client-payload: '{"version": "${{ needs.source.outputs.version }}", "folder": "${{ needs.source.outputs.folder }}"}'
+
+  upload-steam:
+    name: Upload (Steam)
+    needs:
+    - source
+    - linux
+    - macos
+    - windows
+
+    if: needs.source.outputs.trigger_type == 'new-master' || needs.source.outputs.trigger_type == 'new-tag'
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Download all bundles
+      uses: actions/download-artifact@v2
+
+    - name: Setup steamcmd
+      uses: CyberAndrii/setup-steamcmd@v1
+
+    - name: Generate Steam auth code
+      id: steam-totp
+      uses: CyberAndrii/steam-totp@v1
+      with:
+        shared_secret: ${{ secrets.STEAM_SHARED_SECRET }}
+
+    - name: Upload to Steam
+      run: |
+        echo "::group::Extracting source"
+        mkdir source
+        (
+          cd source
+          tar -xf ../internal-source/source.tar.gz --strip-components=1
+        )
+        echo "::endgroup::"
+
+        mkdir steam
+        (
+          cd steam
+
+          echo "::group::Prepare Win32"
+          unzip ../openttd-windows-x86/openttd-*-windows-win32.zip
+          mv openttd-*-windows-win32 steam-win32
+          echo "::endgroup::"
+
+          echo "::group::Prepare Win64"
+          unzip ../openttd-windows-x64/openttd-*-windows-win64.zip
+          mv openttd-*-windows-win64 steam-win64
+          echo "::endgroup::"
+
+          echo "::group::Prepare macOS"
+          mkdir steam-macos
+          (
+            cd steam-macos
+            unzip ../../openttd-macos-universal/openttd-*-macos-universal.zip
+          )
+          echo "::endgroup::"
+
+          echo "::group::Prepare Linux"
+          tar xvf ../openttd-linux-generic/openttd-*-linux-generic-amd64.tar.xz
+          mv openttd-*-linux-generic-amd64 steam-linux
+          echo "::endgroup::"
+
+          echo "::group::Preparing build file"
+          if [ "${{ needs.source.outputs.trigger_type }}" = "new-tag" ]; then
+            BRANCH="testing"
+          else
+            BRANCH="nightly"
+          fi
+          cat ../source/os/steam/release.vdf | sed 's/@@DESCRIPTION@@/openttd-${{ needs.source.outputs.version }}/;s/@@BRANCH@@/'${BRANCH}'/' > release.vdf
+          cat release.vdf
+          echo "::endgroup::"
+
+          echo "::group::Upload to Steam"
+          steamcmd +login ${{ secrets.STEAM_USERNAME }} ${{ secrets.STEAM_PASSWORD }} ${{ steps.steam-totp.outputs.code }} +run_app_build $(pwd)/release.vdf +quit
+          echo "::endgroup::"
+        )
