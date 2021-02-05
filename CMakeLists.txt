@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.9)
 
 if(NOT BINARY_NAME)
     set(BINARY_NAME openttd)
@@ -143,13 +143,8 @@ find_package(Xaudio2)
 
 find_package(Grfcodec)
 
-# IPO is only properly supported from CMake 3.9. Despite the fact we are
-# CMake 3.5, still enable IPO if we detect we are 3.9+.
-if(POLICY CMP0069)
-    cmake_policy(SET CMP0069 NEW)
-    include(CheckIPOSupported)
-    check_ipo_supported(RESULT IPO_FOUND)
-endif()
+include(CheckIPOSupported)
+check_ipo_supported(RESULT IPO_FOUND)
 
 show_options()
 
