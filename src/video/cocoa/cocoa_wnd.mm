@@ -24,6 +24,7 @@
 
 #include "../../openttd.h"
 #include "../../debug.h"
+#include "../../rev.h"
 #include "cocoa_v.h"
 #include "cocoa_wnd.h"
 #include "../../string_func.h"
@@ -345,6 +346,15 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 			selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
 
 		self->driver = drv;
+
+		[ self setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
+		[ self setAcceptsMouseMovedEvents:YES ];
+
+		std::string caption = std::string{"OpenTTD "} + _openttd_revision;
+		NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption.c_str() ];
+		[ self setTitle:nsscaption ];
+		[ self setMiniwindowTitle:nsscaption ];
+		[ nsscaption release ];
 	}
 
 	return self;
