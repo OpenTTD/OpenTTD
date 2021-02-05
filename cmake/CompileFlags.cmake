@@ -27,9 +27,6 @@ macro(compile_flags)
             # Enable multi-threaded compilation.
             add_compile_options(/MP)
         endif()
-
-        # Add DPI manifest to project; other WIN32 targets get this via ottdres.rc
-        list(APPEND GENERATED_SOURCE_FILES "${CMAKE_SOURCE_DIR}/os/windows/openttd.manifest")
     endif()
 
     # Add some -D flags for Debug builds. We cannot use add_definitions(), because
