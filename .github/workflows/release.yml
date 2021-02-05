@@ -301,11 +301,13 @@ jobs:
           # EOF
         echo "::endgroup::"
 
-        # The yum variant of fluidsynth depends on all possible audio drivers.
-        # This is not really useful for us, as that would require a user to
-        # have them all before he can start OpenTTD. Instead, compile a
-        # version that can only use SDL2. As OpenTTD does sound via SDL2,
-        # this simply means we either have sound and music, or have none.
+        # The yum variant of fluidsynth depends on all possible audio drivers,
+        # like jack, ALSA, pulseaudio, etc. This is not really useful for us,
+        # as we route the output of fluidsynth back via our sound driver, and
+        # as such do not use these audio driver outputs at all. So instead,
+        # we compile fluidsynth ourselves, with as little dependencies as
+        # possible. This currently means it picks up SDL2, but this is fine,
+        # as we need SDL2 anyway.
         echo "::group::Install fluidsynth"
         wget https://github.com/FluidSynth/fluidsynth/archive/v2.1.6.tar.gz
         tar xf v2.1.6.tar.gz
