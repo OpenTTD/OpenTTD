@@ -4036,7 +4036,7 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 			first_station = st;
 			continue;
 		}
-		if  (used_stations.empty()) {
+		if (used_stations.empty()) {
 			used_stations.reserve(2);
 			used_stations.emplace_back(std::make_pair(first_station, 0));
 		}
@@ -4081,9 +4081,9 @@ uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, Sourc
 		moving += p.second;
 	}
 
-	/* If there is some cargo left due to rounding issues distribute it among the best rated stations.  */
+	/* If there is some cargo left due to rounding issues distribute it among the best rated stations. */
 	if (amount > moving) {
-		std::sort(used_stations.begin(), used_stations.end(), [type] (const StationInfo &a, const StationInfo &b) {
+		std::sort(used_stations.begin(), used_stations.end(), [type](const StationInfo &a, const StationInfo &b) {
 			return b.first->goods[type].rating < a.first->goods[type].rating;
 		});
 

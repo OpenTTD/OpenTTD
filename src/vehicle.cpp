@@ -1179,7 +1179,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 						t <= v->coord.bottom &&
 						r >= v->coord.left &&
 						b >= v->coord.top) DoDrawVehicle(v);
-					}
+				}
 
 				v = v->hash_viewport_next;
 			}

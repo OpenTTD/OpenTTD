@@ -524,7 +524,7 @@ static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 	}
 
 	/* check scancode for BACKQUOTE key, because we want the key left
-	   of "1", not anything else (on non-US keyboards) */
+	 * of "1", not anything else (on non-US keyboards) */
 	SDL_Scancode sc = SDL_GetScancodeFromKey(kc);
 	if (sc == SDL_SCANCODE_GRAVE) key = WKC_BACKQUOTE;
 
@@ -542,10 +542,10 @@ int VideoDriver_SDL::PollEvent()
 #ifdef __EMSCRIPTEN__
 			if (_cursor_new_in_window) {
 				/* The cursor just moved into the window; this means we don't
-				* know the absolutely position yet to move relative from.
-				* Before this time, SDL didn't know it either, and this is
-				* why we postpone it till now. Update the absolute position
-				* for this once, and work relative after. */
+				 * know the absolutely position yet to move relative from.
+				 * Before this time, SDL didn't know it either, and this is
+				 * why we postpone it till now. Update the absolute position
+				 * for this once, and work relative after. */
 				_cursor.pos.x = ev.motion.x;
 				_cursor.pos.y = ev.motion.y;
 				_cursor.dirty = true;

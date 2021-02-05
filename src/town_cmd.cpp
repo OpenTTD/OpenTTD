@@ -1117,7 +1117,7 @@ static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
  * @param road_dir The direction of the road
  * @return true if the road can be continued, else false
  */
-static bool CanRoadContinueIntoNextTile(const Town* t, const TileIndex tile, const DiagDirection road_dir)
+static bool CanRoadContinueIntoNextTile(const Town *t, const TileIndex tile, const DiagDirection road_dir)
 {
 	const int delta = TileOffsByDiagDir(road_dir); // +1 tile in the direction of the road
 	TileIndex next_tile = tile + delta; // The tile beyond which must be connectable to the target tile
@@ -1236,7 +1236,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
  * @param tunnel_dir The valid direction in which to grow a tunnel
  * @return true if a tunnel has been built, else false
  */
-static bool GrowTownWithTunnel(const Town* t, const TileIndex tile, const DiagDirection tunnel_dir)
+static bool GrowTownWithTunnel(const Town *t, const TileIndex tile, const DiagDirection tunnel_dir)
 {
 	assert(tunnel_dir < DIAGDIR_END);
 

@@ -762,7 +762,7 @@ static void TileLoop_Trees(TileIndex tile)
 			break;
 
 		case 6: // final stage of tree destruction
-			 if (!CanPlantExtraTrees(tile)) {
+			if (!CanPlantExtraTrees(tile)) {
 				/* if trees can't spread just plant a new one to prevent deforestation */
 				SetTreeGrowth(tile, 0);
 			} else if (GetTreeCount(tile) > 1) {
