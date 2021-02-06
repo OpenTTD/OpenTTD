@@ -78,11 +78,7 @@ protected:
 	Dimension GetScreenSize() const override;
 
 private:
-	NSPoint GetMouseLocation(NSEvent *event);
-	bool MouseIsInsideView(NSPoint *pt);
-	CGPoint PrivateLocalToCG(NSPoint *p);
 	bool PollEvent(); // In event.mm.
-	void MouseMovedEvent(int x, int y); // In event.mm.
 
 	bool IsFullscreen();
 	void GameSizeChanged();

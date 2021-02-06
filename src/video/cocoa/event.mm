@@ -27,6 +27,7 @@
 #include "../../settings_type.h"
 #include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
+#include "cocoa_wnd.h"
 #include "cocoa_keys.h"
 #include "../../blitter/factory.hpp"
 #include "../../gfx_func.h"
@@ -48,18 +49,8 @@
  */
 
 
-/* Right Mouse Button Emulation enum */
-enum RightMouseButtonEmulationState {
-	RMBE_COMMAND,
-	RMBE_CONTROL,
-	RMBE_OFF,
-};
-
-
 static unsigned int _current_mods;
 static bool _tab_is_down;
-static bool _emulating_right_button;
-static float _current_magnification;
 #ifdef _DEBUG
 static uint32 _tEvent;
 #endif
@@ -300,47 +291,6 @@ static void QZ_DoUnsidedModifiers(unsigned int newMods)
 	_current_mods = newMods;
 }
 
-void  VideoDriver_Cocoa::MouseMovedEvent(int x, int y)
-{
-	if (_cursor.UpdateCursorPosition(x, y, false) && [ NSApp isActive ]) {
-		/* Warping cursor when in foreground */
-		NSPoint p = NSMakePoint(_cursor.pos.x, _cursor.pos.y);
-		CGPoint cgp = this->PrivateLocalToCG(&p);
-
-		/* Do the actual warp */
-		CGWarpMouseCursorPosition(cgp);
-		/* this is the magic call that fixes cursor "freezing" after warp */
-		CGAssociateMouseAndMouseCursorPosition(true);
-	}
-	HandleMouseEvents();
-}
-
-
-static void QZ_MouseButtonEvent(int button, BOOL down)
-{
-	switch (button) {
-		case 0:
-			if (down) {
-				_left_button_down = true;
-			} else {
-				_left_button_down = false;
-				_left_button_clicked = false;
-			}
-			HandleMouseEvents();
-			break;
-
-		case 1:
-			if (down) {
-				_right_button_down = true;
-				_right_button_clicked = true;
-			} else {
-				_right_button_down = false;
-			}
-			HandleMouseEvents();
-			break;
-	}
-}
-
 
 
 
@@ -365,111 +315,7 @@ bool VideoDriver_Cocoa::PollEvent()
 	QZ_DoUnsidedModifiers( [ event modifierFlags ] );
 
 	NSString *chars;
-	NSPoint  pt;
 	switch ([ event type ]) {
-		case NSMouseMoved:
-		case NSOtherMouseDragged:
-		case NSLeftMouseDragged:
-			pt = this->GetMouseLocation(event);
-			if (!this->MouseIsInsideView(&pt) && !_emulating_right_button) {
-				[ NSApp sendEvent:event ];
-				break;
-			}
-
-			this->MouseMovedEvent((int)pt.x, (int)pt.y);
-			break;
-
-		case NSRightMouseDragged:
-			pt = this->GetMouseLocation(event);
-			this->MouseMovedEvent((int)pt.x, (int)pt.y);
-			break;
-
-		case NSLeftMouseDown:
-		{
-			uint32 keymask = 0;
-			if (_settings_client.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSCommandKeyMask;
-			if (_settings_client.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSControlKeyMask;
-
-			pt = this->GetMouseLocation(event);
-
-			if (!([ event modifierFlags ] & keymask) || !this->MouseIsInsideView(&pt)) {
-				[ NSApp sendEvent:event ];
-			}
-
-			this->MouseMovedEvent((int)pt.x, (int)pt.y);
-
-			/* Right mouse button emulation */
-			if ([ event modifierFlags ] & keymask) {
-				_emulating_right_button = true;
-				QZ_MouseButtonEvent(1, YES);
-			} else {
-				QZ_MouseButtonEvent(0, YES);
-			}
-			break;
-		}
-		case NSLeftMouseUp:
-			[ NSApp sendEvent:event ];
-
-			pt = this->GetMouseLocation(event);
-
-			this->MouseMovedEvent((int)pt.x, (int)pt.y);
-
-			/* Right mouse button emulation */
-			if (_emulating_right_button) {
-				_emulating_right_button = false;
-				QZ_MouseButtonEvent(1, NO);
-			} else {
-				QZ_MouseButtonEvent(0, NO);
-			}
-			break;
-
-		case NSRightMouseDown:
-			pt = this->GetMouseLocation(event);
-			if (!this->MouseIsInsideView(&pt)) {
-				[ NSApp sendEvent:event ];
-				break;
-			}
-
-			this->MouseMovedEvent((int)pt.x, (int)pt.y);
-			QZ_MouseButtonEvent(1, YES);
-			break;
-
-		case NSRightMouseUp:
-			pt = this->GetMouseLocation(event);
-			if (!this->MouseIsInsideView(&pt)) {
-				[ NSApp sendEvent:event ];
-				break;
-			}
-
-			this->MouseMovedEvent((int)pt.x, (int)pt.y);
-			QZ_MouseButtonEvent(1, NO);
-			break;
-
-#if 0
-		/* This is not needed since openttd currently only use two buttons */
-		case NSOtherMouseDown:
-			pt = QZ_GetMouseLocation(event);
-			if (!QZ_MouseIsInsideView(&pt)) {
-				[ NSApp sendEvent:event ];
-				break;
-			}
-
-			this->MouseMovedEvent((int)pt.x, (int)pt.y);
-			QZ_MouseButtonEvent([ event buttonNumber ], YES);
-			break;
-
-		case NSOtherMouseUp:
-			pt = QZ_GetMouseLocation(event);
-			if (!QZ_MouseIsInsideView(&pt)) {
-				[ NSApp sendEvent:event ];
-				break;
-			}
-
-			this->MouseMovedEvent((int)pt.x, (int)pt.y);
-			QZ_MouseButtonEvent([ event buttonNumber ], NO);
-			break;
-#endif
-
 		case NSKeyDown: {
 			/* Quit, hide and minimize */
 			switch ([ event keyCode ]) {
@@ -512,64 +358,6 @@ bool VideoDriver_Cocoa::PollEvent()
 			chars = [ event characters ];
 			QZ_KeyEvent([ event keyCode ], [ chars length ] ? [ chars characterAtIndex:0 ] : 0, NO);
 			break;
-
-		case NSScrollWheel:
-			if ([ event deltaY ] > 0.0) { /* Scroll up */
-				_cursor.wheel--;
-			} else if ([ event deltaY ] < 0.0) { /* Scroll down */
-				_cursor.wheel++;
-			} /* else: deltaY was 0.0 and we don't want to do anything */
-
-			/* Update the scroll count for 2D scrolling */
-			CGFloat deltaX;
-			CGFloat deltaY;
-
-			/* Use precise scrolling-specific deltas if they're supported. */
-			if ([event respondsToSelector:@selector(hasPreciseScrollingDeltas)]) {
-				/* No precise deltas indicates a scroll wheel is being used, so we don't want 2D scrolling. */
-				if (![ event hasPreciseScrollingDeltas ]) break;
-
-				deltaX = [ event scrollingDeltaX ] * 0.5f;
-				deltaY = [ event scrollingDeltaY ] * 0.5f;
-			} else {
-				deltaX = [ event deltaX ] * 5;
-				deltaY = [ event deltaY ] * 5;
-			}
-
-			_cursor.h_wheel -= (int)(deltaX * _settings_client.gui.scrollwheel_multiplier);
-			_cursor.v_wheel -= (int)(deltaY * _settings_client.gui.scrollwheel_multiplier);
-
-			break;
-
-		case NSEventTypeMagnify:
-			/* Pinch open or close gesture. */
-			_current_magnification += [ event magnification ] * 5.0f;
-
-			while (_current_magnification >= 1.0f) {
-				_current_magnification -= 1.0f;
-				_cursor.wheel--;
-				HandleMouseEvents();
-			}
-			while (_current_magnification <= -1.0f) {
-				_current_magnification += 1.0f;
-				_cursor.wheel++;
-				HandleMouseEvents();
-			}
-			break;
-
-		case NSEventTypeEndGesture:
-			/* Gesture ended. */
-			_current_magnification = 0.0f;
-			break;
-
-		case NSCursorUpdate:
-		case NSMouseEntered:
-		case NSMouseExited:
-			/* Catch these events if the cursor is dragging. During dragging, we reset
-			 * the mouse position programmatically, which would trigger OS X to show
-			 * the default arrow cursor if the events are propagated. */
-			if (_cursor.fix_at) break;
-			FALLTHROUGH;
 
 		default:
 			[ NSApp sendEvent:event ];

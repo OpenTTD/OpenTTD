@@ -397,6 +397,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 
 	[ this->window setContentView:this->cocoaview ];
 	[ this->cocoaview addSubview:draw_view ];
+	[ this->window makeFirstResponder:this->cocoaview ];
 	[ draw_view release ];
 
 	[ this->window setColorSpace:[ NSColorSpace sRGBColorSpace ] ];
@@ -495,57 +496,6 @@ void VideoDriver_Cocoa::UpdatePalette(uint first_color, uint num_colors)
 	}
 
 	this->num_dirty_rects = lengthof(this->dirty_rects);
-}
-
-/**
- * Convert local coordinate to window server (CoreGraphics) coordinate
- * @param p local coordinates
- * @return window driver coordinates
- */
-CGPoint VideoDriver_Cocoa::PrivateLocalToCG(NSPoint *p)
-{
-
-	p->y = this->window_height - p->y;
-	*p = [ this->cocoaview convertPoint:*p toView:nil ];
-	*p = [ this->window convertRectToScreen:NSMakeRect(p->x, p->y, 0, 0) ].origin;
-
-	p->y = NSScreen.screens[0].frame.size.height - p->y;
-
-	CGPoint cgp;
-	cgp.x = p->x;
-	cgp.y = p->y;
-
-	return cgp;
-}
-
-/**
- * Return the mouse location
- * @param event UI event
- * @return mouse location as NSPoint
- */
-NSPoint VideoDriver_Cocoa::GetMouseLocation(NSEvent *event)
-{
-	NSPoint pt;
-
-	if ( [ event window ] == nil) {
-		pt = [ this->cocoaview convertPoint:[ [ this->cocoaview window ] convertRectFromScreen:NSMakeRect([ event locationInWindow ].x, [ event locationInWindow ].y, 0, 0) ].origin fromView:nil ];
-	} else {
-		pt = [ event locationInWindow ];
-	}
-
-	pt.y = this->window_height - pt.y;
-
-	return pt;
-}
-
-/**
- * Return whether the mouse is within our view
- * @param pt Mouse coordinates
- * @return Whether mouse coordinates are within view
- */
-bool VideoDriver_Cocoa::MouseIsInsideView(NSPoint *pt)
-{
-	return [ cocoaview mouse:*pt inRect:[ this->cocoaview bounds ] ];
 }
 
 /** Clear buffer to opaque black. */

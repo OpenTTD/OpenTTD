@@ -14,6 +14,13 @@
 
 class VideoDriver_Cocoa;
 
+/* Right Mouse Button Emulation enum */
+enum RightMouseButtonEmulationState {
+	RMBE_COMMAND = 0,
+	RMBE_CONTROL = 1,
+	RMBE_OFF     = 2,
+};
+
 extern NSString *OTTDMainLaunchGameEngine;
 
 /** Category of NSCursor to allow cursor showing/hiding */
@@ -34,6 +41,7 @@ extern NSString *OTTDMainLaunchGameEngine;
 
 /** Subclass of NSView to support mouse awareness and text input. */
 @interface OTTD_CocoaView : NSView <NSTextInputClient>
+- (NSPoint)mousePositionFromEvent:(NSEvent *)e;
 @end
 
 /** Delegate for our NSWindow to send ask for quit on close */
