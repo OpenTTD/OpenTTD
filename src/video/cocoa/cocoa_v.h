@@ -70,7 +70,7 @@ public:
 	/* --- The following methods should be private, but can't be due to Obj-C limitations. --- */
 
 	/** Main game loop. */
-	void GameLoop(); // In event.mm.
+	void GameLoop();
 
 	void AllocateBackingStore();
 

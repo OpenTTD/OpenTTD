@@ -4,6 +4,5 @@ add_files(
     cocoa_v.mm
     cocoa_wnd.h
     cocoa_wnd.mm
-    event.mm
     CONDITION APPLE
 )
