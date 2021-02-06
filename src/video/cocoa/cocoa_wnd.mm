@@ -27,6 +27,7 @@
 #include "../../rev.h"
 #include "cocoa_v.h"
 #include "cocoa_wnd.h"
+#include "../../settings_type.h"
 #include "../../string_func.h"
 #include "../../gfx_func.h"
 #include "../../window_func.h"
@@ -348,7 +349,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		self->driver = drv;
 
 		[ self setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
-		[ self setAcceptsMouseMovedEvents:YES ];
 
 		std::string caption = std::string{"OpenTTD "} + _openttd_revision;
 		NSString *nsscaption = [ [ NSString alloc ] initWithUTF8String:caption.c_str() ];
@@ -417,7 +417,9 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 @end
 
-@implementation OTTD_CocoaView
+@implementation OTTD_CocoaView {
+	float _current_magnification;
+}
 
 /**
  * Allow to handle events
@@ -451,7 +453,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 - (void)viewDidMoveToWindow
 {
 	/* Install mouse tracking area. */
-	NSTrackingAreaOptions track_opt = NSTrackingInVisibleRect | NSTrackingActiveInActiveApp | NSTrackingMouseEnteredAndExited | NSTrackingCursorUpdate;
+	NSTrackingAreaOptions track_opt = NSTrackingInVisibleRect | NSTrackingActiveInActiveApp | NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingCursorUpdate;
 	NSTrackingArea *track = [ [ NSTrackingArea alloc ] initWithRect:[ self bounds ] options:track_opt owner:self userInfo:nil ];
 	[ self addTrackingArea:track ];
 	[ track release ];
@@ -470,6 +472,145 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	if ([ self window ] != nil) UndrawMouseCursor();
 	_cursor.in_window = false;
+}
+
+/**
+ * Return the mouse location
+ * @param event UI event
+ * @return mouse location as NSPoint
+ */
+- (NSPoint)mousePositionFromEvent:(NSEvent *)e
+{
+	NSPoint pt = e.locationInWindow;
+	if ([ e window ] == nil) pt = [ self.window convertRectFromScreen:NSMakeRect(pt.x, pt.y, 0, 0) ].origin;
+	pt = [ self convertPoint:pt fromView:nil ];
+
+	pt.y = self.bounds.size.height - pt.y;
+
+	return pt;
+}
+
+- (void)internalMouseMoveEvent:(NSEvent *)event
+{
+	NSPoint pt = [ self mousePositionFromEvent:event ];
+
+	if (_cursor.UpdateCursorPosition(pt.x, pt.y, false) && [ NSApp isActive ]) {
+		/* Warping cursor when in foreground */
+		NSPoint warp = [ self convertPoint:NSMakePoint(_cursor.pos.x, self.bounds.size.height - _cursor.pos.y) toView:nil ];
+		warp = [ self.window convertRectToScreen:NSMakeRect(warp.x, warp.y, 0, 0) ].origin;
+		warp.y = NSScreen.screens[0].frame.size.height - warp.y;
+
+		/* Do the actual warp */
+		CGWarpMouseCursorPosition(NSPointToCGPoint(warp));
+		/* this is the magic call that fixes cursor "freezing" after warp */
+		CGAssociateMouseAndMouseCursorPosition(true);
+	}
+	HandleMouseEvents();
+}
+
+- (BOOL)emulateRightButton:(NSEvent *)event
+{
+	uint32 keymask = 0;
+	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSCommandKeyMask;
+	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSControlKeyMask;
+
+	return (event.modifierFlags & keymask) != 0;
+}
+
+- (void)mouseMoved:(NSEvent *)event
+{
+	[ self internalMouseMoveEvent:event ];
+}
+
+- (void)mouseDragged:(NSEvent *)event
+{
+	[ self internalMouseMoveEvent:event ];
+}
+- (void)mouseDown:(NSEvent *)event
+{
+	if ([ self emulateRightButton:event ]) {
+		[ self rightMouseDown:event ];
+	} else {
+		_left_button_down = true;
+		[ self internalMouseMoveEvent:event ];
+	}
+}
+- (void)mouseUp:(NSEvent *)event
+{
+	if ([ self emulateRightButton:event ]) {
+		[ self rightMouseUp:event ];
+	} else {
+		_left_button_down = false;
+		_left_button_clicked = false;
+		[ self internalMouseMoveEvent:event ];
+	}
+}
+
+- (void)rightMouseDragged:(NSEvent *)event
+{
+	[ self internalMouseMoveEvent:event ];
+}
+- (void)rightMouseDown:(NSEvent *)event
+{
+	_right_button_down = true;
+	_right_button_clicked = true;
+	[ self internalMouseMoveEvent:event ];
+}
+- (void)rightMouseUp:(NSEvent *)event
+{
+	_right_button_down = false;
+	[ self internalMouseMoveEvent:event ];
+}
+
+- (void)scrollWheel:(NSEvent *)event
+{
+	if ([ event deltaY ] > 0.0) { /* Scroll up */
+		_cursor.wheel--;
+	} else if ([ event deltaY ] < 0.0) { /* Scroll down */
+		_cursor.wheel++;
+	} /* else: deltaY was 0.0 and we don't want to do anything */
+
+	/* Update the scroll count for 2D scrolling */
+	CGFloat deltaX;
+	CGFloat deltaY;
+
+	/* Use precise scrolling-specific deltas if they're supported. */
+	if ([ event respondsToSelector:@selector(hasPreciseScrollingDeltas) ]) {
+		/* No precise deltas indicates a scroll wheel is being used, so we don't want 2D scrolling. */
+		if (![ event hasPreciseScrollingDeltas ]) return;
+
+		deltaX = [ event scrollingDeltaX ] * 0.5f;
+		deltaY = [ event scrollingDeltaY ] * 0.5f;
+	} else {
+		deltaX = [ event deltaX ] * 5;
+		deltaY = [ event deltaY ] * 5;
+	}
+
+	_cursor.h_wheel -= (int)(deltaX * _settings_client.gui.scrollwheel_multiplier);
+	_cursor.v_wheel -= (int)(deltaY * _settings_client.gui.scrollwheel_multiplier);
+}
+
+- (void)magnifyWithEvent:(NSEvent *)event
+{
+	/* Pinch open or close gesture. */
+	self->_current_magnification += [ event magnification ] * 5.0f;
+
+	while (self->_current_magnification >= 1.0f) {
+		self->_current_magnification -= 1.0f;
+		_cursor.wheel--;
+		HandleMouseEvents();
+	}
+	while (self->_current_magnification <= -1.0f) {
+		self->_current_magnification += 1.0f;
+		_cursor.wheel++;
+		HandleMouseEvents();
+	}
+}
+
+- (void)endGestureWithEvent:(NSEvent *)event
+{
+	/* Gesture ended. */
+	self->_current_magnification = 0.0f;
 }
 
 
