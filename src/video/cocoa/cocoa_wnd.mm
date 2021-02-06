@@ -34,6 +34,10 @@
 #include "../../window_gui.h"
 
 
+/* Table data for key mapping. */
+#include "cocoa_keys.h"
+
+
 /**
  * Important notice regarding all modifications!!!!!!!
  * There are certain limitations because the file is objective C++.
@@ -46,6 +50,8 @@
 @end
 
 NSString *OTTDMainLaunchGameEngine = @"ottdmain_launch_game_engine";
+
+bool _tab_is_down;
 
 static bool _cocoa_video_dialog = false;
 static OTTDMain *_ottd_main;
@@ -87,6 +93,31 @@ static const char *Utf8AdvanceByUtf16Units(const char *str, NSUInteger count)
 	}
 
 	return str;
+}
+
+/**
+ * Convert a NSString to an UTF-32 encoded string.
+ * @param s String to convert.
+ * @return Vector of UTF-32 characters.
+ */
+static std::vector<WChar> NSStringToUTF32(NSString *s)
+{
+	std::vector<WChar> unicode_str;
+
+	unichar lead = 0;
+	for (NSUInteger i = 0; i < s.length; i++) {
+		unichar c = [ s characterAtIndex:i ];
+		if (Utf16IsLeadSurrogate(c)) {
+			lead = c;
+			continue;
+		} else if (Utf16IsTrailSurrogate(c)) {
+			if (lead != 0) unicode_str.push_back(Utf16DecodeSurrogate(lead, c));
+		} else {
+			unicode_str.push_back(c);
+		}
+	}
+
+	return unicode_str;
 }
 
 
@@ -419,6 +450,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 @implementation OTTD_CocoaView {
 	float _current_magnification;
+	NSUInteger _current_mods;
 }
 
 /**
@@ -611,6 +643,147 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	/* Gesture ended. */
 	self->_current_magnification = 0.0f;
+}
+
+
+- (BOOL)internalHandleKeycode:(unsigned short)keycode unicode:(WChar)unicode pressed:(BOOL)down modifiers:(NSUInteger)modifiers
+{
+	switch (keycode) {
+		case QZ_UP:    SB(_dirkeys, 1, 1, down); break;
+		case QZ_DOWN:  SB(_dirkeys, 3, 1, down); break;
+		case QZ_LEFT:  SB(_dirkeys, 0, 1, down); break;
+		case QZ_RIGHT: SB(_dirkeys, 2, 1, down); break;
+
+		case QZ_TAB: _tab_is_down = down; break;
+
+		case QZ_RETURN:
+		case QZ_f:
+			if (down && (modifiers & NSCommandKeyMask)) {
+				VideoDriver::GetInstance()->ToggleFullscreen(!_fullscreen);
+			}
+			break;
+
+		case QZ_v:
+			if (down && EditBoxInGlobalFocus() && (modifiers & (NSCommandKeyMask | NSControlKeyMask))) {
+				HandleKeypress(WKC_CTRL | 'V', unicode);
+			}
+			break;
+		case QZ_u:
+			if (down && EditBoxInGlobalFocus() && (modifiers & (NSCommandKeyMask | NSControlKeyMask))) {
+				HandleKeypress(WKC_CTRL | 'U', unicode);
+			}
+			break;
+	}
+
+	BOOL interpret_keys = YES;
+	if (down) {
+		/* Map keycode to OTTD code. */
+		auto vk = std::find_if(std::begin(_vk_mapping), std::end(_vk_mapping), [=](const VkMapping &m) { return m.vk_from == keycode; });
+		uint32 pressed_key = vk != std::end(_vk_mapping) ? vk->map_to : 0;
+
+		if (modifiers & NSShiftKeyMask)     pressed_key |= WKC_SHIFT;
+		if (modifiers & NSControlKeyMask)   pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
+		if (modifiers & NSAlternateKeyMask) pressed_key |= WKC_ALT;
+		if (modifiers & NSCommandKeyMask)   pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_META : WKC_CTRL);
+
+		static bool console = false;
+
+		/* The second backquote may have a character, which we don't want to interpret. */
+		if (pressed_key == WKC_BACKQUOTE && (console || unicode == 0)) {
+			if (!console) {
+				/* Backquote is a dead key, require a double press for hotkey behaviour (i.e. console). */
+				console = true;
+				return YES;
+			} else {
+				/* Second backquote, don't interpret as text input. */
+				interpret_keys = NO;
+			}
+		}
+		console = false;
+
+		/* Don't handle normal characters if an edit box has the focus. */
+		if (!EditBoxInGlobalFocus() || IsInsideMM(pressed_key & ~WKC_SPECIAL_KEYS, WKC_F1, WKC_PAUSE + 1)) {
+			HandleKeypress(pressed_key, unicode);
+		}
+		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);
+	} else {
+		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), up", keycode, unicode);
+	}
+
+	return interpret_keys;
+}
+
+- (void)keyDown:(NSEvent *)event
+{
+	/* Quit, hide and minimize */
+	switch (event.keyCode) {
+		case QZ_q:
+		case QZ_h:
+		case QZ_m:
+			if (event.modifierFlags & NSCommandKeyMask) {
+				[ self interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
+			}
+			break;
+	}
+
+	/* Convert UTF-16 characters to UCS-4 chars. */
+	std::vector<WChar> unicode_str = NSStringToUTF32([ event characters ]);
+	if (unicode_str.empty()) unicode_str.push_back(0);
+
+	if (EditBoxInGlobalFocus()) {
+		if ([ self internalHandleKeycode:event.keyCode unicode:unicode_str[0] pressed:YES modifiers:event.modifierFlags ]) {
+			[ self interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
+		}
+	} else {
+		[ self internalHandleKeycode:event.keyCode unicode:unicode_str[0] pressed:YES modifiers:event.modifierFlags ];
+		for (size_t i = 1; i < unicode_str.size(); i++) {
+			[ self internalHandleKeycode:0 unicode:unicode_str[i] pressed:YES modifiers:event.modifierFlags ];
+		}
+	}
+}
+
+- (void)keyUp:(NSEvent *)event
+{
+	/* Quit, hide and minimize */
+	switch (event.keyCode) {
+		case QZ_q:
+		case QZ_h:
+		case QZ_m:
+			if (event.modifierFlags & NSCommandKeyMask) {
+				[ self interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
+			}
+			break;
+	}
+
+	/* Convert UTF-16 characters to UCS-4 chars. */
+	std::vector<WChar> unicode_str = NSStringToUTF32([ event characters ]);
+	if (unicode_str.empty()) unicode_str.push_back(0);
+
+	[ self internalHandleKeycode:event.keyCode unicode:unicode_str[0] pressed:NO modifiers:event.modifierFlags ];
+}
+
+- (void)flagsChanged:(NSEvent *)event
+{
+	const int mapping[] = { QZ_CAPSLOCK, QZ_LSHIFT, QZ_LCTRL, QZ_LALT, QZ_LMETA };
+
+	NSUInteger newMods = event.modifierFlags;
+	if (self->_current_mods == newMods) return;
+
+	/* Iterate through the bits, testing each against the current modifiers */
+	for (unsigned int i = 0, bit = NSAlphaShiftKeyMask; bit <= NSCommandKeyMask; bit <<= 1, ++i) {
+		unsigned int currentMask, newMask;
+
+		currentMask = self->_current_mods & bit;
+		newMask     = newMods & bit;
+
+		if (currentMask && currentMask != newMask) { // modifier up event
+			[ self internalHandleKeycode:mapping[i] unicode:0 pressed:NO modifiers:newMods ];
+		} else if (newMask && currentMask != newMask) { // modifier down event
+			[ self internalHandleKeycode:mapping[i] unicode:0 pressed:YES modifiers:newMods ];
+		}
+	}
+
+	_current_mods = newMods;
 }
 
 
