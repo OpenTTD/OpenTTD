@@ -23,7 +23,6 @@
 
 #include "../../openttd.h"
 #include "../../debug.h"
-#include "../../os/macosx/splash.h"
 #include "../../settings_type.h"
 #include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
@@ -92,24 +91,6 @@ void VideoDriver_Cocoa::GameLoop()
 	uint32 et0 = GetTick();
 	uint32 st = 0;
 #endif
-
-	DisplaySplashImage();
-	this->CheckPaletteAnim();
-	this->Draw(true);
-	CSleep(1);
-
-	for (int i = 0; i < 2; i++) ::GameLoop();
-
-	UpdateWindows();
-	this->CheckPaletteAnim();
-	this->Draw();
-	CSleep(1);
-
-	/* Set the proper OpenTTD palette which got spoilt by the splash
-	 * image when using 8bpp blitter */
-	GfxInitPalettes();
-	this->CheckPaletteAnim();
-	this->Draw(true);
 
 	for (;;) {
 		@autoreleasepool {
