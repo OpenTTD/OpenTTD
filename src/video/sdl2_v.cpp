@@ -715,6 +715,17 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 	MarkWholeScreenDirty();
 
 	_draw_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
+	/* Wayland SDL video driver uses EGL to render the game. SDL created the
+	 * EGL context from the main-thread, and with EGL you are not allowed to
+	 * draw in another thread than the context was created. The function of
+	 * _draw_threaded is to do exactly this: draw in another thread than the
+	 * window was created, and as such, this fails on Wayland SDL video
+	 * driver. So, we disable threading by default if Wayland SDL video
+	 * driver is detected.
+	 */
+	if (strcmp(dname, "wayland") == 0) {
+		_draw_threaded = false;
+	}
 
 	SDL_StopTextInput();
 	this->edit_box_focused = false;
