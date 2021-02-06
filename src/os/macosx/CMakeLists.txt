@@ -4,8 +4,6 @@ add_files(
     macos.h
     macos.mm
     osx_stdafx.h
-    splash.cpp
-    splash.h
     string_osx.cpp
     string_osx.h
     CONDITION APPLE
