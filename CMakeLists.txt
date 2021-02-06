@@ -131,6 +131,7 @@ if(NOT WIN32)
         find_library(AUDIOTOOLBOX_LIBRARY AudioToolbox)
         find_library(AUDIOUNIT_LIBRARY AudioUnit)
         find_library(COCOA_LIBRARY Cocoa)
+        find_library(QUARTZCORE_LIBRARY QuartzCore)
     endif()
 endif()
 
@@ -162,6 +163,9 @@ if(APPLE)
     endif()
     if(NOT COCOA_LIBRARY)
         message(FATAL_ERROR "Cocoa is required for this platform")
+    endif()
+    if(NOT QUARTZCORE_LIBRARY)
+        message(FATAL_ERROR "QuartzCore is required for this platform")
     endif()
 endif()
 
@@ -250,6 +254,7 @@ if(APPLE)
         ${AUDIOTOOLBOX_LIBRARY}
         ${AUDIOUNIT_LIBRARY}
         ${COCOA_LIBRARY}
+        ${QUARTZCORE_LIBRARY}
     )
 
     add_definitions(
