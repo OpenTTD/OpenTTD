@@ -109,6 +109,7 @@ VideoDriver_Cocoa::VideoDriver_Cocoa()
 {
 	this->window_width  = 0;
 	this->window_height = 0;
+	this->window_pitch  = 0;
 	this->buffer_depth  = 0;
 	this->window_buffer = nullptr;
 	this->pixel_buffer  = nullptr;
@@ -315,9 +316,9 @@ bool VideoDriver_Cocoa::IsFullscreen()
 void VideoDriver_Cocoa::GameSizeChanged()
 {
 	/* Tell the game that the resolution has changed */
-	_screen.width = this->window_width;
-	_screen.height = this->window_height;
-	_screen.pitch = this->window_width;
+	_screen.width   = this->window_width;
+	_screen.height  = this->window_height;
+	_screen.pitch   = this->buffer_depth == 8 ? this->window_width : this->window_pitch;
 	_screen.dst_ptr = this->buffer_depth == 8 ? this->pixel_buffer : this->window_buffer;
 
 	/* Store old window size if we entered fullscreen mode. */
@@ -448,7 +449,7 @@ void VideoDriver_Cocoa::BlitIndexedToView32(int left, int top, int right, int bo
 	const uint8  *src   = (uint8*)this->pixel_buffer;
 	uint32       *dst   = (uint32*)this->window_buffer;
 	uint          width = this->window_width;
-	uint          pitch = this->window_width;
+	uint          pitch = this->window_pitch;
 
 	for (int y = top; y < bottom; y++) {
 		for (int x = left; x < right; x++) {
@@ -538,13 +539,14 @@ void VideoDriver_Cocoa::AllocateBackingStore()
 
 	this->window_width = (int)newframe.size.width;
 	this->window_height = (int)newframe.size.height;
+	this->window_pitch = Align(this->window_width, 16 / sizeof(uint32)); // Quartz likes lines that are multiple of 16-byte.
 	this->buffer_depth = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
 	/* Create Core Graphics Context */
 	free(this->window_buffer);
-	this->window_buffer = malloc(this->window_width * this->window_height * sizeof(uint32));
+	this->window_buffer = malloc(this->window_pitch * this->window_height * sizeof(uint32));
 	/* Initialize with opaque black. */
-	ClearWindowBuffer((uint32 *)this->window_buffer, this->window_width, this->window_height);
+	ClearWindowBuffer((uint32 *)this->window_buffer, this->window_pitch, this->window_height);
 
 	CGContextRelease(this->cgcontext);
 	this->cgcontext = CGBitmapContextCreate(
@@ -552,7 +554,7 @@ void VideoDriver_Cocoa::AllocateBackingStore()
 		this->window_width,        // width
 		this->window_height,       // height
 		8,                         // bits per component
-		this->window_width * 4,    // bytes per row
+		this->window_pitch * 4,    // bytes per row
 		this->color_space,         // color space
 		kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Host
 	);
@@ -566,6 +568,9 @@ void VideoDriver_Cocoa::AllocateBackingStore()
 		free(this->pixel_buffer);
 		this->pixel_buffer = malloc(this->window_width * this->window_height);
 		if (this->pixel_buffer == nullptr) usererror("Out of memory allocating pixel buffer");
+	} else {
+		free(this->pixel_buffer);
+		this->pixel_buffer = nullptr;
 	}
 
 	/* Redraw screen */
