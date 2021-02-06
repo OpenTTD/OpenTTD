@@ -609,57 +609,60 @@ void VideoDriver_Cocoa::GameLoop()
 	this->Draw(true);
 
 	for (;;) {
-		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
-		InteractiveRandom(); // randomness
+		@autoreleasepool {
 
-		while (this->PollEvent()) {}
+			uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
+			InteractiveRandom(); // randomness
 
-		if (_exit_game) {
-			/* Restore saved resolution if in fullscreen mode. */
-			if (this->IsFullscreen()) _cur_resolution = this->orig_res;
-			break;
-		}
+			while (this->PollEvent()) {}
+
+			if (_exit_game) {
+				/* Restore saved resolution if in fullscreen mode. */
+				if (this->IsFullscreen()) _cur_resolution = this->orig_res;
+				break;
+			}
 
 #if defined(_DEBUG)
-		if (_current_mods & NSShiftKeyMask)
+			if (_current_mods & NSShiftKeyMask)
 #else
-		if (_tab_is_down)
+			if (_tab_is_down)
 #endif
-		{
-			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-		} else if (_fast_forward & 2) {
-			_fast_forward = 0;
-		}
+			{
+				if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
+			} else if (_fast_forward & 2) {
+				_fast_forward = 0;
+			}
 
-		cur_ticks = GetTick();
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
-			_realtime_tick += cur_ticks - last_cur_ticks;
-			last_cur_ticks = cur_ticks;
-			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+			cur_ticks = GetTick();
+			if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
+				_realtime_tick += cur_ticks - last_cur_ticks;
+				last_cur_ticks = cur_ticks;
+				next_tick = cur_ticks + MILLISECONDS_PER_TICK;
 
-			bool old_ctrl_pressed = _ctrl_pressed;
+				bool old_ctrl_pressed = _ctrl_pressed;
 
-			_ctrl_pressed = !!(_current_mods & ( _settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSControlKeyMask : NSCommandKeyMask));
-			_shift_pressed = !!(_current_mods & NSShiftKeyMask);
+				_ctrl_pressed = !!(_current_mods & ( _settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSControlKeyMask : NSCommandKeyMask));
+				_shift_pressed = !!(_current_mods & NSShiftKeyMask);
 
-			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+				if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
-			::GameLoop();
+				::GameLoop();
 
-			UpdateWindows();
-			this->CheckPaletteAnim();
-			this->Draw();
-		} else {
+				UpdateWindows();
+				this->CheckPaletteAnim();
+				this->Draw();
+			} else {
 #ifdef _DEBUG
-			uint32 st0 = GetTick();
+				uint32 st0 = GetTick();
 #endif
-			CSleep(1);
+				CSleep(1);
 #ifdef _DEBUG
-			st += GetTick() - st0;
+				st += GetTick() - st0;
 #endif
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
-			this->Draw();
+				NetworkDrawChatMessage();
+				DrawMouseCursor();
+				this->Draw();
+			}
 		}
 	}
 
