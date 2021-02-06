@@ -203,6 +203,7 @@ bool CocoaSetupApplication()
 	}
 
 	/* Become the front process, important when start from the command line. */
+	[ [ NSApplication sharedApplication ] setActivationPolicy:NSApplicationActivationPolicyRegular ];
 	[ [ NSApplication sharedApplication ] activateIgnoringOtherApps:YES ];
 
 	/* Set up the menubar */
@@ -247,15 +248,17 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		return;
 	}
 
-	NSAlert *alert = [ [ NSAlert alloc ] init ];
-	[ alert setAlertStyle: NSCriticalAlertStyle ];
-	[ alert setMessageText:[ NSString stringWithUTF8String:title ] ];
-	[ alert setInformativeText:[ NSString stringWithUTF8String:message ] ];
-	[ alert addButtonWithTitle: [ NSString stringWithUTF8String:buttonLabel ] ];
-	[ alert runModal ];
-	[ alert release ];
+	@autoreleasepool {
+		NSAlert *alert = [ [ NSAlert alloc ] init ];
+		[ alert setAlertStyle: NSCriticalAlertStyle ];
+		[ alert setMessageText:[ NSString stringWithUTF8String:title ] ];
+		[ alert setInformativeText:[ NSString stringWithUTF8String:message ] ];
+		[ alert addButtonWithTitle: [ NSString stringWithUTF8String:buttonLabel ] ];
+		[ alert runModal ];
+		[ alert release ];
+	}
 
-	if (!wasstarted && VideoDriver::GetInstance() != NULL) VideoDriver::GetInstance()->Stop();
+	if (!wasstarted && VideoDriver::GetInstance() != nullptr) VideoDriver::GetInstance()->Stop();
 
 	_cocoa_video_dialog = false;
 }
