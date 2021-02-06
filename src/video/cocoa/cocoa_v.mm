@@ -100,8 +100,6 @@ static uint32 GetTick()
 	VideoDriver_Cocoa *driver;
 }
 - (instancetype)initWithFrame:(NSRect)frameRect andDriver:(VideoDriver_Cocoa *)drv;
-
-- (void)drawRect:(NSRect)invalidRect;
 @end
 
 
@@ -708,6 +706,12 @@ void VideoDriver_Cocoa::GameLoop()
 {
 	if (self = [ super initWithFrame:frameRect ]) {
 		self->driver = drv;
+
+		/* We manage our content updates ourselves. */
+		self.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay;
+		self.wantsLayer = YES;
+
+		self.layer.magnificationFilter = kCAFilterNearest;
 	}
 	return self;
 }
@@ -722,80 +726,18 @@ void VideoDriver_Cocoa::GameLoop()
 	return YES;
 }
 
-- (void)drawRect:(NSRect)invalidRect
+- (BOOL)wantsUpdateLayer
+{
+	return YES;
+}
+
+- (void)updateLayer
 {
 	if (driver->cgcontext == nullptr) return;
 
-	NSGraphicsContext *ctx = [ NSGraphicsContext currentContext ];
-	CGContextRef viewContext = [ ctx respondsToSelector:@selector(CGContext) ] ? [ ctx CGContext ] : (CGContextRef)[ ctx graphicsPort ];
-	CGContextSetShouldAntialias(viewContext, FALSE);
-	CGContextSetInterpolationQuality(viewContext, kCGInterpolationNone);
-
-	/* The obtained 'rect' is actually a union of all dirty rects, let's ask for an explicit list of rects instead */
-	const NSRect *dirtyRects;
-	NSInteger     dirtyRectCount;
-	[ self getRectsBeingDrawn:&dirtyRects count:&dirtyRectCount ];
-
-	/* We need an Image in order to do blitting, but as we don't touch the context between this call and drawing no copying will actually be done here */
+	/* Set layer contents to our backing buffer, which avoids needless copying. */
 	CGImageRef fullImage = CGBitmapContextCreateImage(driver->cgcontext);
-
-	/* Calculate total area we are blitting */
-	uint32 blitArea = 0;
-	for (int n = 0; n < dirtyRectCount; n++) {
-		blitArea += (uint32)(dirtyRects[n].size.width * dirtyRects[n].size.height);
-	}
-
-	/*
-	 * This might be completely stupid, but in my extremely subjective opinion it feels faster
-	 * The point is, if we're blitting less than 50% of the dirty rect union then it's still a good idea to blit each dirty
-	 * rect separately but if we blit more than that, it's just cheaper to blit the entire union in one pass.
-	 * Feel free to remove or find an even better value than 50% ... / blackis
-	 */
-	NSRect frameRect = [ self frame ];
-	if (blitArea / (float)(invalidRect.size.width * invalidRect.size.height) > 0.5f) {
-		NSRect rect = invalidRect;
-		CGRect clipRect;
-		CGRect blitRect;
-
-		blitRect.origin.x = rect.origin.x;
-		blitRect.origin.y = rect.origin.y;
-		blitRect.size.width = rect.size.width;
-		blitRect.size.height = rect.size.height;
-
-		clipRect.origin.x = rect.origin.x;
-		clipRect.origin.y = frameRect.size.height - rect.origin.y - rect.size.height;
-
-		clipRect.size.width = rect.size.width;
-		clipRect.size.height = rect.size.height;
-
-		/* Blit dirty part of image */
-		CGImageRef clippedImage = CGImageCreateWithImageInRect(fullImage, clipRect);
-		CGContextDrawImage(viewContext, blitRect, clippedImage);
-		CGImageRelease(clippedImage);
-	} else {
-		for (int n = 0; n < dirtyRectCount; n++) {
-			NSRect rect = dirtyRects[n];
-			CGRect clipRect;
-			CGRect blitRect;
-
-			blitRect.origin.x = rect.origin.x;
-			blitRect.origin.y = rect.origin.y;
-			blitRect.size.width = rect.size.width;
-			blitRect.size.height = rect.size.height;
-
-			clipRect.origin.x = rect.origin.x;
-			clipRect.origin.y = frameRect.size.height - rect.origin.y - rect.size.height;
-
-			clipRect.size.width = rect.size.width;
-			clipRect.size.height = rect.size.height;
-
-			/* Blit dirty part of image */
-			CGImageRef clippedImage = CGImageCreateWithImageInRect(fullImage, clipRect);
-			CGContextDrawImage(viewContext, blitRect, clippedImage);
-			CGImageRelease(clippedImage);
-		}
-	}
-
+	self.layer.contents = (__bridge id)fullImage;
 	CGImageRelease(fullImage);
 }
 
