@@ -31,7 +31,7 @@ The following cache variables may also be set:
 #]=======================================================================]
 
 find_package(PkgConfig QUIET)
-pkg_check_modules(PC_Allegro QUIET allegro)
+pkg_check_modules(PC_Allegro QUIET allegro<5)
 
 find_path(Allegro_INCLUDE_DIR
     NAMES allegro.h
