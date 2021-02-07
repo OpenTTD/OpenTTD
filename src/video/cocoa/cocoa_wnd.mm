@@ -524,20 +524,23 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 - (void)internalMouseMoveEvent:(NSEvent *)event
 {
-	NSPoint pt = [ self mousePositionFromEvent:event ];
-
-	if (_cursor.UpdateCursorPosition(pt.x, pt.y, false) && [ NSApp isActive ]) {
-		/* Warping cursor when in foreground */
-		NSPoint warp = [ self convertPoint:NSMakePoint(_cursor.pos.x, self.bounds.size.height - _cursor.pos.y) toView:nil ];
-		warp = [ self.window convertRectToScreen:NSMakeRect(warp.x, warp.y, 0, 0) ].origin;
-		warp.y = NSScreen.screens[0].frame.size.height - warp.y;
-
-		/* Do the actual warp */
-		CGWarpMouseCursorPosition(NSPointToCGPoint(warp));
-		/* this is the magic call that fixes cursor "freezing" after warp */
-		CGAssociateMouseAndMouseCursorPosition(true);
+	if (_cursor.fix_at) {
+		_cursor.UpdateCursorPositionRelative(event.deltaX, event.deltaY);
+	} else {
+		NSPoint pt = [ self mousePositionFromEvent:event ];
+		_cursor.UpdateCursorPosition(pt.x, pt.y, false);
 	}
+
 	HandleMouseEvents();
+}
+
+- (void)internalMouseButtonEvent
+{
+	bool cur_fix = _cursor.fix_at;
+	HandleMouseEvents();
+
+	/* Cursor fix mode was changed, synchronize with OS. */
+	if (cur_fix != _cursor.fix_at) CGAssociateMouseAndMouseCursorPosition(!_cursor.fix_at);
 }
 
 - (BOOL)emulateRightButton:(NSEvent *)event
@@ -564,7 +567,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		[ self rightMouseDown:event ];
 	} else {
 		_left_button_down = true;
-		[ self internalMouseMoveEvent:event ];
+		[ self internalMouseButtonEvent ];
 	}
 }
 - (void)mouseUp:(NSEvent *)event
@@ -574,7 +577,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	} else {
 		_left_button_down = false;
 		_left_button_clicked = false;
-		[ self internalMouseMoveEvent:event ];
+		[ self internalMouseButtonEvent ];
 	}
 }
 
@@ -586,12 +589,12 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 {
 	_right_button_down = true;
 	_right_button_clicked = true;
-	[ self internalMouseMoveEvent:event ];
+	[ self internalMouseButtonEvent ];
 }
 - (void)rightMouseUp:(NSEvent *)event
 {
 	_right_button_down = false;
-	[ self internalMouseMoveEvent:event ];
+	[ self internalMouseButtonEvent ];
 }
 
 - (void)scrollWheel:(NSEvent *)event
