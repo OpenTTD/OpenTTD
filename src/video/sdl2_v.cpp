@@ -377,9 +377,6 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 bool VideoDriver_SDL::ClaimMousePointer()
 {
 	SDL_ShowCursor(0);
-#ifdef __EMSCRIPTEN__
-	SDL_SetRelativeMouseMode(SDL_TRUE);
-#endif
 	return true;
 }
 
@@ -551,7 +548,6 @@ int VideoDriver_SDL::PollEvent()
 				_cursor.dirty = true;
 
 				_cursor_new_in_window = false;
-				SDL_SetRelativeMouseMode(SDL_TRUE);
 			} else {
 				_cursor.UpdateCursorPositionRelative(ev.motion.xrel, ev.motion.yrel);
 			}
@@ -572,6 +568,11 @@ int VideoDriver_SDL::PollEvent()
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
+#ifdef __EMSCRIPTEN__
+			/* Get a new set of absolute coords as pointerlock will be enabled */
+			if(ev.button.button == SDL_BUTTON_RIGHT)
+				_cursor_new_in_window = true;
+#endif
 			if (_rightclick_emulate && SDL_GetModState() & KMOD_CTRL) {
 				ev.button.button = SDL_BUTTON_RIGHT;
 			}
@@ -590,7 +591,6 @@ int VideoDriver_SDL::PollEvent()
 			}
 			HandleMouseEvents();
 			break;
-
 		case SDL_MOUSEBUTTONUP:
 			if (_rightclick_emulate) {
 				_right_button_down = false;
@@ -602,6 +602,11 @@ int VideoDriver_SDL::PollEvent()
 			} else if (ev.button.button == SDL_BUTTON_RIGHT) {
 				_right_button_down = false;
 			}
+#ifdef __EMSCRIPTEN__
+			/* Get a new set of absolute coords as pointerlock will be disabled */
+			if(ev.button.button == SDL_BUTTON_RIGHT)
+				_cursor_new_in_window = true;
+#endif
 			HandleMouseEvents();
 			break;
 
@@ -667,7 +672,6 @@ int VideoDriver_SDL::PollEvent()
 				/* Disable relative mouse mode for the first mouse motion,
 				 * so we can pick up the absolutely position again. */
 				_cursor_new_in_window = true;
-				SDL_SetRelativeMouseMode(SDL_FALSE);
 #endif
 			} else if (ev.window.event == SDL_WINDOWEVENT_LEAVE) {
 				// mouse left the window, undraw cursor

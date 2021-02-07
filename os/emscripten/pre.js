@@ -1,4 +1,5 @@
 Module.arguments.push('-mnull', '-snull', '-vsdl:relative_mode');
+Module.elementPointerLock = false;
 Module['websocket'] = { url: function(host, port, proto) {
     /* openttd.org hosts a WebSocket proxy for the content service. */
     if (host == "content.openttd.org" && port == 3978 && proto == "tcp") {
@@ -11,6 +12,15 @@ Module['websocket'] = { url: function(host, port, proto) {
      * are best to add another "if" statement as above for this. */
     return null;
 } };
+Module.canvas = document.querySelector(".emscripten");
+Module.canvas.addEventListener("mousedown", (e) => {
+    if(e.button == 2)
+        Module.canvas.requestPointerLock();
+});
+Module.canvas.addEventListener("mouseup", (e) => {
+    if(e.button == 2)
+        Module.canvas.exitPointerLock();
+});
 
 Module.preRun.push(function() {
     personal_dir = '/home/web_user/.openttd';
