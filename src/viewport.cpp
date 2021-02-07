@@ -1030,7 +1030,7 @@ static void DrawTileHighlightType(const TileInfo *ti, TileHighlightType tht)
 		case THT_NONE: break;
 		case THT_WHITE: DrawTileSelectionRect(ti, PAL_NONE); break;
 		case THT_BLUE:  DrawTileSelectionRect(ti, PALETTE_SEL_TILE_BLUE); break;
-		case THT_RED:   DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING); break;
+		case THT_RED:   DrawTileSelectionRect(ti, PALETTE_SEL_TILE_RED); break;
 	}
 }
 
