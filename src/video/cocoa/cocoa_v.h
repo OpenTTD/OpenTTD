@@ -24,32 +24,18 @@ class VideoDriver_Cocoa : public VideoDriver {
 private:
 	Dimension orig_res;   ///< Saved window size for non-fullscreen mode.
 
-	int window_width;     ///< Current window width in pixel
-	int window_height;    ///< Current window height in pixel
-	int window_pitch;
-
-	int buffer_depth;     ///< Colour depth of used frame buffer
-	void *pixel_buffer;   ///< used for direct pixel access
-	void *window_buffer;  ///< Colour translation from palette to screen
-
-	Rect dirty_rect;      ///< Region of the screen that needs redrawing.
-
-	uint32 palette[256];  ///< Colour Palette
-
 public:
 	bool setup; ///< Window is currently being created.
 
 	OTTD_CocoaWindow *window;    ///< Pointer to window object
 	OTTD_CocoaView *cocoaview;   ///< Pointer to view object
 	CGColorSpaceRef color_space; ///< Window color space
-	CGContextRef cgcontext;      ///< Context reference for Quartz subdriver
 
 	OTTD_CocoaWindowDelegate *delegate; //!< Window delegate object
 
 public:
 	VideoDriver_Cocoa();
 
-	const char *Start(const StringList &param) override;
 	void Stop() override;
 	void MainLoop() override;
 
@@ -61,40 +47,73 @@ public:
 
 	void EditBoxLostFocus() override;
 
-	const char *GetName() const override { return "cocoa"; }
-
 	/* --- The following methods should be private, but can't be due to Obj-C limitations. --- */
 
 	void GameLoop();
 
-	void AllocateBackingStore();
+	virtual void AllocateBackingStore() = 0;
 
 protected:
+	Rect dirty_rect;    ///< Region of the screen that needs redrawing.
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;
 	void InputLoop() override;
-	void Paint() override;
-	void CheckPaletteAnim() override;
 
-private:
-	bool PollEvent();
-
-	bool IsFullscreen();
 	void GameSizeChanged();
+
+	const char *Initialize();
 
 	void UpdateVideoModes();
 
 	bool MakeWindow(int width, int height);
 
-	void UpdatePalette(uint first_color, uint num_colors);
+	virtual NSView* AllocateDrawView() = 0;
 
-	void BlitIndexedToView32(int left, int top, int right, int bottom);
+private:
+	bool PollEvent();
+
+	bool IsFullscreen();
 };
 
-class FVideoDriver_Cocoa : public DriverFactoryBase {
+class VideoDriver_CocoaQuartz : public VideoDriver_Cocoa {
+private:
+	int buffer_depth;     ///< Colour depth of used frame buffer
+	void *pixel_buffer;   ///< used for direct pixel access
+	void *window_buffer;  ///< Colour translation from palette to screen
+
+	int window_width;     ///< Current window width in pixel
+	int window_height;    ///< Current window height in pixel
+	int window_pitch;
+
+	uint32 palette[256];  ///< Colour Palette
+
+	void BlitIndexedToView32(int left, int top, int right, int bottom);
+	void UpdatePalette(uint first_color, uint num_colors);
+
 public:
-	FVideoDriver_Cocoa() : DriverFactoryBase(Driver::DT_VIDEO, 10, "cocoa", "Cocoa Video Driver") {}
-	Driver *CreateInstance() const override { return new VideoDriver_Cocoa(); }
+	CGContextRef cgcontext;      ///< Context reference for Quartz subdriver
+
+	VideoDriver_CocoaQuartz();
+
+	const char *Start(const StringList &param) override;
+	void Stop() override;
+
+	/** Return driver name */
+	const char *GetName() const override { return "cocoa"; }
+
+	void AllocateBackingStore() override;
+
+protected:
+	void Paint() override;
+	void CheckPaletteAnim() override;
+
+	NSView* AllocateDrawView() override;
+};
+
+class FVideoDriver_CocoaQuartz : public DriverFactoryBase {
+public:
+	FVideoDriver_CocoaQuartz() : DriverFactoryBase(Driver::DT_VIDEO, 10, "cocoa", "Cocoa Video Driver") {}
+	Driver *CreateInstance() const override { return new VideoDriver_CocoaQuartz(); }
 };
 
 #endif /* VIDEO_COCOA_H */
