@@ -451,6 +451,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 @implementation OTTD_CocoaView {
 	float _current_magnification;
 	NSUInteger _current_mods;
+	bool _emulated_down;
 }
 
 /**
@@ -564,6 +565,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 - (void)mouseDown:(NSEvent *)event
 {
 	if ([ self emulateRightButton:event ]) {
+		self->_emulated_down = true;
 		[ self rightMouseDown:event ];
 	} else {
 		_left_button_down = true;
@@ -572,7 +574,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 }
 - (void)mouseUp:(NSEvent *)event
 {
-	if ([ self emulateRightButton:event ]) {
+	if (self->_emulated_down) {
 		[ self rightMouseUp:event ];
 	} else {
 		_left_button_down = false;
