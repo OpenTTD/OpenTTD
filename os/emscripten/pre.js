@@ -71,6 +71,34 @@ Module.preRun.push(function() {
          *  add_server("localhost", 3979); */
     }
 
+    var leftButtonDown = false;
+    document.addEventListener("mousedown", e => {
+        if (e.button == 0) {
+            leftButtonDown = true;
+        }
+    });
+    document.addEventListener("mouseup", e => {
+        if (e.button == 0) {
+            leftButtonDown = false;
+        }
+    });
+    window.openttd_open_url = function(url, url_len) {
+        const url_string = UTF8ToString(url, url_len);
+        function openWindow() {
+            document.removeEventListener("mouseup", openWindow);
+            window.open(url_string, '_blank');
+        }
+        /* Trying to open the URL while the mouse is down results in the button getting stuck, so wait for the
+         * mouse to be released before opening it. However, when OpenTTD is lagging, the mouse can get released
+         * before the button click even registers, so check for that, and open the URL immediately if that's the
+         * case. */
+        if (leftButtonDown) {
+            document.addEventListener("mouseup", openWindow);
+        } else {
+            openWindow();
+        }
+    }
+
     /* https://github.com/emscripten-core/emscripten/pull/12995 implements this
     * properly. Till that time, we use a polyfill. */
    SOCKFS.websocket_sock_ops.createPeer_ = SOCKFS.websocket_sock_ops.createPeer;

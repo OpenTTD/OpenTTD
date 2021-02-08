@@ -28,6 +28,10 @@
 #include <SDL.h>
 #endif
 
+#ifdef __EMSCRIPTEN__
+#	include <emscripten.h>
+#endif
+
 #ifdef __APPLE__
 #	include <sys/mount.h>
 #elif (defined(_POSIX_VERSION) && _POSIX_VERSION >= 200112L) || defined(__GLIBC__)
@@ -288,7 +292,13 @@ bool GetClipboardContents(char *buffer, const char *last)
 #endif
 
 
-#ifndef __APPLE__
+#if defined(__EMSCRIPTEN__)
+void OSOpenBrowser(const char *url)
+{
+	/* Implementation in pre.js */
+	EM_ASM({ if(window["openttd_open_url"]) window.openttd_open_url($0, $1) }, url, strlen(url));
+}
+#elif !defined( __APPLE__)
 void OSOpenBrowser(const char *url)
 {
 	pid_t child_pid = fork();
