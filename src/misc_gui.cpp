@@ -510,7 +510,7 @@ struct AboutWindow : public Window {
 
 	void SetStringParameters(int widget) const override
 	{
-		if (widget == WID_A_WEBSITE) SetDParamStr(0, "Website: http://www.openttd.org");
+		if (widget == WID_A_WEBSITE) SetDParamStr(0, "Website: https://www.openttd.org");
 		if (widget == WID_A_COPYRIGHT) SetDParamStr(0, _openttd_revision_year);
 	}
 

@@ -325,7 +325,7 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		char url[1024];
 		const char *last = lastof(url);
 
-		char *pos = strecpy(url, "http://grfsearch.openttd.org/?", last);
+		char *pos = strecpy(url, "https://grfsearch.openttd.org/?", last);
 
 		if (this->auto_select) {
 			pos = strecpy(pos, "do=searchgrfid&q=", last);
