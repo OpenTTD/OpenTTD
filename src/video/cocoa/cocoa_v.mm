@@ -85,6 +85,7 @@ static const Dimension _default_resolutions[] = {
 VideoDriver_Cocoa::VideoDriver_Cocoa()
 {
 	this->setup         = false;
+	this->buffer_locked = false;
 
 	this->window    = nil;
 	this->cocoaview = nil;
@@ -238,6 +239,30 @@ float VideoDriver_Cocoa::GetDPIScale()
 	return this->cocoaview != nil ? [ this->cocoaview getContentsScale ] : 1.0f;
 }
 
+/** Lock video buffer for drawing if it isn't already mapped. */
+bool VideoDriver_Cocoa::LockVideoBuffer()
+{
+	if (this->buffer_locked) return false;
+	this->buffer_locked = true;
+
+	_screen.dst_ptr = this->GetVideoPointer();
+	assert(_screen.dst_ptr != nullptr);
+
+	return true;
+}
+
+/** Unlock video buffer. */
+void VideoDriver_Cocoa::UnlockVideoBuffer()
+{
+	if (_screen.dst_ptr != nullptr) {
+		/* Hand video buffer back to the drawing backend. */
+		this->ReleaseVideoPointer();
+		_screen.dst_ptr = nullptr;
+	}
+
+	this->buffer_locked = false;
+}
+
 /**
  * Are we in fullscreen mode?
  * @return whether fullscreen mode is currently used
@@ -365,8 +390,6 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	if (this->color_space == nullptr) error("Could not get a valid colour space for drawing.");
 
 	this->setup = false;
-
-	this->AllocateBackingStore();
 
 	return true;
 }
@@ -535,6 +558,8 @@ const char *VideoDriver_CocoaQuartz::Start(const StringList &param)
 		return "Could not create window";
 	}
 
+	this->AllocateBackingStore(true);
+
 	if (fullscreen) this->ToggleFullscreen(fullscreen);
 
 	this->GameSizeChanged();
@@ -560,7 +585,7 @@ NSView *VideoDriver_CocoaQuartz::AllocateDrawView()
 }
 
 /** Resize the window. */
-void VideoDriver_CocoaQuartz::AllocateBackingStore()
+void VideoDriver_CocoaQuartz::AllocateBackingStore(bool force)
 {
 	if (this->window == nil || this->cocoaview == nil || this->setup) return;
 
@@ -608,7 +633,7 @@ void VideoDriver_CocoaQuartz::AllocateBackingStore()
 	_screen.width   = this->window_width;
 	_screen.height  = this->window_height;
 	_screen.pitch   = this->buffer_depth == 8 ? this->window_width : this->window_pitch;
-	_screen.dst_ptr = this->buffer_depth == 8 ? this->pixel_buffer : this->window_buffer;
+	_screen.dst_ptr = this->GetVideoPointer();
 
 	/* Redraw screen */
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
