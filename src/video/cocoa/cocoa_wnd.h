@@ -55,6 +55,8 @@ extern NSString *OTTDMainLaunchGameEngine;
 @end
 
 
+extern bool _allow_hidpi_window;
+
 bool CocoaSetupApplication();
 void CocoaExitApplication();
 

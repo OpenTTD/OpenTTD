@@ -6,3 +6,9 @@ add_files(
     cocoa_wnd.mm
     CONDITION APPLE
 )
+
+add_files(
+    cocoa_ogl.h
+    cocoa_ogl.mm
+    CONDITION APPLE AND OPENGL_FOUND
+)
