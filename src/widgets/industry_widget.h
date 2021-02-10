@@ -12,11 +12,14 @@
 
 /** Widgets of the #BuildIndustryWindow class. */
 enum DynamicPlaceIndustriesWidgets {
-	WID_DPI_MATRIX_WIDGET,  ///< Matrix of the industries.
-	WID_DPI_SCROLLBAR,      ///< Scrollbar of the matrix.
-	WID_DPI_INFOPANEL,      ///< Info panel about the industry.
-	WID_DPI_DISPLAY_WIDGET, ///< Display chain button.
-	WID_DPI_FUND_WIDGET,    ///< Fund button.
+	WID_DPI_SCENARIO_EDITOR_PANE,            ///< Pane containing SE-only widgets.
+	WID_DPI_REMOVE_ALL_INDUSTRIES_WIDGET,    ///< Remove all industries button.
+	WID_DPI_CREATE_RANDOM_INDUSTRIES_WIDGET, ///< Create random industries button.
+	WID_DPI_MATRIX_WIDGET,                   ///< Matrix of the industries.
+	WID_DPI_SCROLLBAR,                       ///< Scrollbar of the matrix.
+	WID_DPI_INFOPANEL,                       ///< Info panel about the industry.
+	WID_DPI_DISPLAY_WIDGET,                  ///< Display chain button.
+	WID_DPI_FUND_WIDGET,                     ///< Fund button.
 };
 
 /** Widgets of the #IndustryViewWindow class. */
