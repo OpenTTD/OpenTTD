@@ -51,13 +51,17 @@ public:
 
 	void GameLoop();
 
-	virtual void AllocateBackingStore() = 0;
+	virtual void AllocateBackingStore(bool force = false) = 0;
 
 protected:
 	Rect dirty_rect;    ///< Region of the screen that needs redrawing.
+	bool buffer_locked; ///< Video buffer was locked by the main thread.
+
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;
 	void InputLoop() override;
+	bool LockVideoBuffer() override;
+	void UnlockVideoBuffer() override;
 
 	void GameSizeChanged();
 
@@ -68,6 +72,11 @@ protected:
 	bool MakeWindow(int width, int height);
 
 	virtual NSView* AllocateDrawView() = 0;
+
+	/** Get a pointer to the video buffer. */
+	virtual void *GetVideoPointer() = 0;
+	/** Hand video buffer back to the drawing backend. */
+	virtual void ReleaseVideoPointer() {}
 
 private:
 	bool PollEvent();
@@ -101,13 +110,15 @@ public:
 	/** Return driver name */
 	const char *GetName() const override { return "cocoa"; }
 
-	void AllocateBackingStore() override;
+	void AllocateBackingStore(bool force = false) override;
 
 protected:
 	void Paint() override;
 	void CheckPaletteAnim() override;
 
 	NSView* AllocateDrawView() override;
+
+	void *GetVideoPointer() override { return this->buffer_depth == 8 ? this->pixel_buffer : this->window_buffer; }
 };
 
 class FVideoDriver_CocoaQuartz : public DriverFactoryBase {
