@@ -92,7 +92,7 @@ VideoDriver_Cocoa::VideoDriver_Cocoa()
 	this->color_space = nullptr;
 	this->cgcontext   = nullptr;
 
-	this->num_dirty_rects = MAX_DIRTY_RECTS;
+	this->num_dirty_rects = lengthof(this->dirty_rects);
 }
 
 /**
@@ -164,7 +164,7 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
  */
 void VideoDriver_Cocoa::MakeDirty(int left, int top, int width, int height)
 {
-	if (this->num_dirty_rects < MAX_DIRTY_RECTS) {
+	if (this->num_dirty_rects < lengthof(this->dirty_rects)) {
 		dirty_rects[this->num_dirty_rects].left = left;
 		dirty_rects[this->num_dirty_rects].top = top;
 		dirty_rects[this->num_dirty_rects].right = left + width;
@@ -539,7 +539,7 @@ void VideoDriver_Cocoa::Draw(bool force_update)
 	/* Check if we need to do anything */
 	if (this->num_dirty_rects == 0 || [ this->window isMiniaturized ]) return;
 
-	if (this->num_dirty_rects >= MAX_DIRTY_RECTS) {
+	if (this->num_dirty_rects >= lengthof(this->dirty_rects)) {
 		this->num_dirty_rects = 1;
 		this->dirty_rects[0].left = 0;
 		this->dirty_rects[0].top = 0;
@@ -548,7 +548,7 @@ void VideoDriver_Cocoa::Draw(bool force_update)
 	}
 
 	/* Build the region of dirty rectangles */
-	for (int i = 0; i < this->num_dirty_rects; i++) {
+	for (uint i = 0; i < this->num_dirty_rects; i++) {
 		/* We only need to blit in indexed mode since in 32bpp mode the game draws directly to the image. */
 		if (this->buffer_depth == 8) {
 			BlitIndexedToView32(
@@ -586,7 +586,7 @@ void VideoDriver_Cocoa::UpdatePalette(uint first_color, uint num_colors)
 		this->palette[i] = clr;
 	}
 
-	this->num_dirty_rects = MAX_DIRTY_RECTS;
+	this->num_dirty_rects = lengthof(this->dirty_rects);
 }
 
 bool VideoDriver_Cocoa::ChangeResolution(int w, int h, int bpp)
@@ -692,7 +692,7 @@ bool VideoDriver_Cocoa::WindowResized()
 	this->GameSizeChanged();
 
 	/* Redraw screen */
-	this->num_dirty_rects = MAX_DIRTY_RECTS;
+	this->num_dirty_rects = lengthof(this->dirty_rects);
 
 	return true;
 }
