@@ -133,7 +133,7 @@ void VideoDriver_SDL::CheckPaletteAnim()
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
-static void DrawSurfaceToScreen()
+static void Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
@@ -179,7 +179,7 @@ static void DrawSurfaceToScreen()
 	_num_dirty_rects = 0;
 }
 
-static void DrawSurfaceToScreenThread()
+static void PaintThread()
 {
 	/* First tell the main thread we're started */
 	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
@@ -190,7 +190,7 @@ static void DrawSurfaceToScreenThread()
 
 	while (_draw_continue) {
 		/* Then just draw and wait till we stop */
-		DrawSurfaceToScreen();
+		Paint();
 		_draw_signal->wait(lock);
 	}
 }
@@ -834,7 +834,7 @@ void VideoDriver_SDL::LoopOnce()
 		_draw_signal->notify_one();
 	} else {
 		/* Oh, we didn't have threads, then just draw unthreaded */
-		DrawSurfaceToScreen();
+		Paint();
 	}
 }
 
@@ -857,7 +857,7 @@ void VideoDriver_SDL::MainLoop()
 			_draw_signal = new std::condition_variable_any();
 			_draw_continue = true;
 
-			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-sdl", &DrawSurfaceToScreenThread);
+			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-sdl", &PaintThread);
 
 			/* Free the mutex if we won't be able to use it. */
 			if (!_draw_threaded) {
