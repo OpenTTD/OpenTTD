@@ -95,6 +95,8 @@ static void MakePalette()
 		if (_sdl_palette == nullptr) usererror("SDL2: Couldn't allocate palette: %s", SDL_GetError());
 	}
 
+	_cur_palette.first_dirty = 0;
+	_cur_palette.count_dirty = 256;
 	_local_palette = _cur_palette;
 	UpdatePalette();
 
