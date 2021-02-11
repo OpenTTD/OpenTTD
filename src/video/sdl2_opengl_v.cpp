@@ -50,12 +50,12 @@ static OGLProc GetOGLProcAddressCallback(const char *proc)
 
 bool VideoDriver_SDL_OpenGL::CreateMainWindow(uint w, uint h, uint flags)
 {
-	return this->VideoDriver_SDL::CreateMainWindow(w, h, SDL_WINDOW_OPENGL);
+	return this->VideoDriver_SDL_Base::CreateMainWindow(w, h, SDL_WINDOW_OPENGL);
 }
 
 const char *VideoDriver_SDL_OpenGL::Start(const StringList &param)
 {
-	const char *error = VideoDriver_SDL::Start(param);
+	const char *error = VideoDriver_SDL_Base::Start(param);
 	if (error != nullptr) return error;
 
 	error = this->AllocateContext();
@@ -79,7 +79,7 @@ const char *VideoDriver_SDL_OpenGL::Start(const StringList &param)
 void VideoDriver_SDL_OpenGL::Stop()
 {
 	this->DestroyContext();
-	this->VideoDriver_SDL::Stop();
+	this->VideoDriver_SDL_Base::Stop();
 }
 
 void VideoDriver_SDL_OpenGL::DestroyContext()
