@@ -57,6 +57,7 @@ private:
 	bool CreateMainSurface(uint w, uint h, bool resize);
 	bool CreateMainWindow(uint w, uint h);
 	const char *Initialize();
+	bool AllocateBackingStore(int w, int h, bool force = false);
 
 #ifdef __EMSCRIPTEN__
 	/* Convert a constant pointer back to a non-constant pointer to a member function. */
