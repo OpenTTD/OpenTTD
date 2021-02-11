@@ -10,7 +10,7 @@
 #include "sdl2_v.h"
 
 /** The OpenGL video driver for windows. */
-class VideoDriver_SDL_OpenGL : public VideoDriver_SDL {
+class VideoDriver_SDL_OpenGL : public VideoDriver_SDL_Base {
 public:
 	VideoDriver_SDL_OpenGL() : gl_context(nullptr), anim_buffer(nullptr) {}
 
@@ -35,6 +35,8 @@ protected:
 	void ReleaseVideoPointer() override;
 	void Paint() override;
 	bool CreateMainWindow(uint w, uint h, uint flags) override;
+
+	void PaintThread() override {}
 
 private:
 	void  *gl_context;  ///< OpenGL context.
