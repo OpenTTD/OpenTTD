@@ -58,10 +58,6 @@ static bool _cursor_new_in_window = false;
 static SDL_Rect _dirty_rects[MAX_DIRTY_RECTS];
 static int _num_dirty_rects;
 
-/* Size of window */
-static int _window_size_w;
-static int _window_size_h;
-
 void VideoDriver_SDL::MakeDirty(int left, int top, int width, int height)
 {
 	if (_num_dirty_rects < MAX_DIRTY_RECTS) {
@@ -929,9 +925,11 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 	std::unique_lock<std::recursive_mutex> lock;
 	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
 
+	int w, h;
+
 	/* Remember current window size */
 	if (fullscreen) {
-		SDL_GetWindowSize(_sdl_window, &_window_size_w, &_window_size_h);
+		SDL_GetWindowSize(_sdl_window, &w, &h);
 
 		/* Find fullscreen window size */
 		SDL_DisplayMode dm;
@@ -947,7 +945,7 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 	if (ret == 0) {
 		/* Switching resolution succeeded, set fullscreen value of window. */
 		_fullscreen = fullscreen;
-		if (!fullscreen) SDL_SetWindowSize(_sdl_window, _window_size_w, _window_size_h);
+		if (!fullscreen) SDL_SetWindowSize(_sdl_window, w, h);
 	} else {
 		DEBUG(driver, 0, "SDL_SetWindowFullscreen() failed: %s", SDL_GetError());
 	}
