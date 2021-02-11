@@ -25,7 +25,6 @@
 #include "sdl2_v.h"
 #include <SDL.h>
 #include <mutex>
-#include <condition_variable>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
 #	include <emscripten/html5.h>
@@ -35,20 +34,9 @@
 
 static FVideoDriver_SDL iFVideoDriver_SDL;
 
-static SDL_Window *_sdl_window;
 static SDL_Surface *_sdl_surface;
 static SDL_Surface *_sdl_rgb_surface;
 static SDL_Surface *_sdl_real_surface;
-
-/** Whether the drawing is/may be done in a separate thread. */
-static bool _draw_threaded;
-/** Mutex to keep the access to the shared memory controlled. */
-static std::recursive_mutex *_draw_mutex = nullptr;
-/** Signal to draw the next frame. */
-static std::condition_variable_any *_draw_signal = nullptr;
-/** Should we keep continue drawing? */
-static volatile bool _draw_continue;
-static Palette _local_palette;
 static SDL_Palette *_sdl_palette;
 
 #ifdef __EMSCRIPTEN__
@@ -64,22 +52,22 @@ void VideoDriver_SDL::MakeDirty(int left, int top, int width, int height)
 	_dirty_rect = BoundingRect(_dirty_rect, r);
 }
 
-static void UpdatePalette()
+void VideoDriver_SDL::UpdatePalette()
 {
 	SDL_Color pal[256];
 
-	for (int i = 0; i != _local_palette.count_dirty; i++) {
-		pal[i].r = _local_palette.palette[_local_palette.first_dirty + i].r;
-		pal[i].g = _local_palette.palette[_local_palette.first_dirty + i].g;
-		pal[i].b = _local_palette.palette[_local_palette.first_dirty + i].b;
+	for (int i = 0; i != this->local_palette.count_dirty; i++) {
+		pal[i].r = this->local_palette.palette[this->local_palette.first_dirty + i].r;
+		pal[i].g = this->local_palette.palette[this->local_palette.first_dirty + i].g;
+		pal[i].b = this->local_palette.palette[this->local_palette.first_dirty + i].b;
 		pal[i].a = 0;
 	}
 
-	SDL_SetPaletteColors(_sdl_palette, pal, _local_palette.first_dirty, _local_palette.count_dirty);
+	SDL_SetPaletteColors(_sdl_palette, pal, this->local_palette.first_dirty, this->local_palette.count_dirty);
 	SDL_SetSurfacePalette(_sdl_surface, _sdl_palette);
 }
 
-static void MakePalette()
+void VideoDriver_SDL::MakePalette()
 {
 	if (_sdl_palette == nullptr) {
 		_sdl_palette = SDL_AllocPalette(256);
@@ -88,8 +76,8 @@ static void MakePalette()
 
 	_cur_palette.first_dirty = 0;
 	_cur_palette.count_dirty = 256;
-	_local_palette = _cur_palette;
-	UpdatePalette();
+	this->local_palette = _cur_palette;
+	this->UpdatePalette();
 
 	if (_sdl_surface != _sdl_real_surface) {
 		/* When using a shadow surface, also set our palette on the real screen. This lets SDL
@@ -120,7 +108,7 @@ void VideoDriver_SDL::CheckPaletteAnim()
 {
 	if (_cur_palette.count_dirty == 0) return;
 
-	_local_palette = _cur_palette;
+	this->local_palette = _cur_palette;
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
@@ -135,11 +123,11 @@ void VideoDriver_SDL::Paint()
 
 		switch (blitter->UsePaletteAnimation()) {
 			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				UpdatePalette();
+				this->UpdatePalette();
 				break;
 
 			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_local_palette);
+				blitter->PaletteAnimate(this->local_palette);
 				break;
 
 			case Blitter::PALETTE_ANIMATION_NONE:
@@ -156,7 +144,7 @@ void VideoDriver_SDL::Paint()
 	if (_sdl_surface != _sdl_real_surface) {
 		SDL_BlitSurface(_sdl_surface, &r, _sdl_real_surface, &r);
 	}
-	SDL_UpdateWindowSurfaceRects(_sdl_window, &r, 1);
+	SDL_UpdateWindowSurfaceRects(this->sdl_window, &r, 1);
 
 	_dirty_rect = {};
 }
@@ -164,16 +152,16 @@ void VideoDriver_SDL::Paint()
 void VideoDriver_SDL::PaintThread()
 {
 	/* First tell the main thread we're started */
-	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
-	_draw_signal->notify_one();
+	std::unique_lock<std::recursive_mutex> lock(*this->draw_mutex);
+	this->draw_signal->notify_one();
 
 	/* Now wait for the first thing to draw! */
-	_draw_signal->wait(*_draw_mutex);
+	this->draw_signal->wait(*this->draw_mutex);
 
-	while (_draw_continue) {
+	while (this->draw_continue) {
 		/* Then just draw and wait till we stop */
 		this->Paint();
-		_draw_signal->wait(lock);
+		this->draw_signal->wait(lock);
 	}
 }
 
@@ -262,7 +250,7 @@ static uint FindStartupDisplay(uint startup_display)
 
 bool VideoDriver_SDL::CreateMainWindow(uint w, uint h)
 {
-	if (_sdl_window != nullptr) return true;
+	if (this->sdl_window != nullptr) return true;
 
 	Uint32 flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
 
@@ -279,13 +267,13 @@ bool VideoDriver_SDL::CreateMainWindow(uint w, uint h)
 
 	char caption[50];
 	seprintf(caption, lastof(caption), "OpenTTD %s", _openttd_revision);
-	_sdl_window = SDL_CreateWindow(
+	this->sdl_window = SDL_CreateWindow(
 		caption,
 		x, y,
 		w, h,
 		flags);
 
-	if (_sdl_window == nullptr) {
+	if (this->sdl_window == nullptr) {
 		DEBUG(driver, 0, "SDL2: Couldn't allocate a window to draw on: %s", SDL_GetError());
 		return false;
 	}
@@ -299,7 +287,7 @@ bool VideoDriver_SDL::CreateMainWindow(uint w, uint h)
 			uint32 rgbmap = SDL_MapRGB(icon->format, 255, 0, 255);
 
 			SDL_SetColorKey(icon, SDL_TRUE, rgbmap);
-			SDL_SetWindowIcon(_sdl_window, icon);
+			SDL_SetWindowIcon(this->sdl_window, icon);
 			SDL_FreeSurface(icon);
 		}
 	}
@@ -313,7 +301,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 	DEBUG(driver, 1, "SDL2: using mode %ux%u", w, h);
 
 	if (!this->CreateMainWindow(w, h)) return false;
-	if (resize) SDL_SetWindowSize(_sdl_window, w, h);
+	if (resize) SDL_SetWindowSize(this->sdl_window, w, h);
 
 	if (!this->AllocateBackingStore(w, h, true)) return false;
 
@@ -332,7 +320,7 @@ bool VideoDriver_SDL::AllocateBackingStore(int w, int h, bool force)
 {
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 
-	_sdl_real_surface = SDL_GetWindowSurface(_sdl_window);
+	_sdl_real_surface = SDL_GetWindowSurface(this->sdl_window);
 	if (_sdl_real_surface == nullptr) usererror("SDL2: Couldn't get window surface: %s", SDL_GetError());
 
 	if (!force && w == _sdl_real_surface->w && h == _sdl_real_surface->h) return false;
@@ -364,7 +352,7 @@ bool VideoDriver_SDL::AllocateBackingStore(int w, int h, bool force)
 	_screen.pitch = _sdl_surface->pitch / (bpp / 8);
 	_screen.dst_ptr = _sdl_surface->pixels;
 
-	MakePalette();
+	this->MakePalette();
 
 	return true;
 }
@@ -552,7 +540,7 @@ int VideoDriver_SDL::PollEvent()
 			}
 #else
 			if (_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y, true)) {
-				SDL_WarpMouseInWindow(_sdl_window, _cursor.pos.x, _cursor.pos.y);
+				SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
 			}
 #endif
 			HandleMouseEvents();
@@ -721,17 +709,17 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 
 	MarkWholeScreenDirty();
 
-	_draw_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
+	this->draw_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
 	/* Wayland SDL video driver uses EGL to render the game. SDL created the
 	 * EGL context from the main-thread, and with EGL you are not allowed to
 	 * draw in another thread than the context was created. The function of
-	 * _draw_threaded is to do exactly this: draw in another thread than the
+	 * draw_threaded is to do exactly this: draw in another thread than the
 	 * window was created, and as such, this fails on Wayland SDL video
 	 * driver. So, we disable threading by default if Wayland SDL video
 	 * driver is detected.
 	 */
 	if (strcmp(dname, "wayland") == 0) {
-		_draw_threaded = false;
+		this->draw_threaded = false;
 	}
 
 	SDL_StopTextInput();
@@ -801,8 +789,8 @@ void VideoDriver_SDL::LoopOnce()
 	}
 
 	if (VideoDriver::Tick()) {
-		if (_draw_mutex != nullptr && !HasModalProgress()) {
-			_draw_signal->notify_one();
+		if (this->draw_mutex != nullptr && !HasModalProgress()) {
+			this->draw_signal->notify_one();
 		} else {
 			this->Paint();
 		}
@@ -817,35 +805,35 @@ void VideoDriver_SDL::LoopOnce()
 
 void VideoDriver_SDL::MainLoop()
 {
-	if (_draw_threaded) {
+	if (this->draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
 		 * directly in the newly created thread. */
-		_draw_mutex = new std::recursive_mutex();
-		if (_draw_mutex == nullptr) {
-			_draw_threaded = false;
+		this->draw_mutex = new std::recursive_mutex();
+		if (this->draw_mutex == nullptr) {
+			this->draw_threaded = false;
 		} else {
-			draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
-			_draw_signal = new std::condition_variable_any();
-			_draw_continue = true;
+			draw_lock = std::unique_lock<std::recursive_mutex>(*this->draw_mutex);
+			this->draw_signal = new std::condition_variable_any();
+			this->draw_continue = true;
 
-			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-sdl", &VideoDriver_SDL::PaintThreadThunk, this);
+			this->draw_threaded = StartNewThread(&draw_thread, "ottd:draw-sdl", &VideoDriver_SDL::PaintThreadThunk, this);
 
 			/* Free the mutex if we won't be able to use it. */
-			if (!_draw_threaded) {
+			if (!this->draw_threaded) {
 				draw_lock.unlock();
 				draw_lock.release();
-				delete _draw_mutex;
-				delete _draw_signal;
-				_draw_mutex = nullptr;
-				_draw_signal = nullptr;
+				delete this->draw_mutex;
+				delete this->draw_signal;
+				this->draw_mutex = nullptr;
+				this->draw_signal = nullptr;
 			} else {
 				/* Wait till the draw mutex has started itself. */
-				_draw_signal->wait(*_draw_mutex);
+				this->draw_signal->wait(*this->draw_mutex);
 			}
 		}
 	}
 
-	DEBUG(driver, 1, "SDL2: using %sthreads", _draw_threaded ? "" : "no ");
+	DEBUG(driver, 1, "SDL2: using %sthreads", this->draw_threaded ? "" : "no ");
 
 #ifdef __EMSCRIPTEN__
 	/* Run the main loop event-driven, based on RequestAnimationFrame. */
@@ -861,20 +849,20 @@ void VideoDriver_SDL::MainLoop()
 
 void VideoDriver_SDL::MainLoopCleanup()
 {
-	if (_draw_mutex != nullptr) {
-		_draw_continue = false;
+	if (this->draw_mutex != nullptr) {
+		this->draw_continue = false;
 		/* Sending signal if there is no thread blocked
 		 * is very valid and results in noop */
-		_draw_signal->notify_one();
+		this->draw_signal->notify_one();
 		if (draw_lock.owns_lock()) draw_lock.unlock();
 		draw_lock.release();
 		draw_thread.join();
 
-		delete _draw_mutex;
-		delete _draw_signal;
+		delete this->draw_mutex;
+		delete this->draw_signal;
 
-		_draw_mutex = nullptr;
-		_draw_signal = nullptr;
+		this->draw_mutex = nullptr;
+		this->draw_signal = nullptr;
 	}
 
 #ifdef __EMSCRIPTEN__
@@ -890,7 +878,7 @@ void VideoDriver_SDL::MainLoopCleanup()
 bool VideoDriver_SDL::ChangeResolution(int w, int h)
 {
 	std::unique_lock<std::recursive_mutex> lock;
-	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+	if (this->draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*this->draw_mutex);
 
 	return CreateMainSurface(w, h, true);
 }
@@ -898,29 +886,29 @@ bool VideoDriver_SDL::ChangeResolution(int w, int h)
 bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 {
 	std::unique_lock<std::recursive_mutex> lock;
-	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+	if (this->draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*this->draw_mutex);
 
 	int w, h;
 
 	/* Remember current window size */
 	if (fullscreen) {
-		SDL_GetWindowSize(_sdl_window, &w, &h);
+		SDL_GetWindowSize(this->sdl_window, &w, &h);
 
 		/* Find fullscreen window size */
 		SDL_DisplayMode dm;
 		if (SDL_GetCurrentDisplayMode(0, &dm) < 0) {
 			DEBUG(driver, 0, "SDL_GetCurrentDisplayMode() failed: %s", SDL_GetError());
 		} else {
-			SDL_SetWindowSize(_sdl_window, dm.w, dm.h);
+			SDL_SetWindowSize(this->sdl_window, dm.w, dm.h);
 		}
 	}
 
 	DEBUG(driver, 1, "SDL2: Setting %s", fullscreen ? "fullscreen" : "windowed");
-	int ret = SDL_SetWindowFullscreen(_sdl_window, fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
+	int ret = SDL_SetWindowFullscreen(this->sdl_window, fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
 	if (ret == 0) {
 		/* Switching resolution succeeded, set fullscreen value of window. */
 		_fullscreen = fullscreen;
-		if (!fullscreen) SDL_SetWindowSize(_sdl_window, w, h);
+		if (!fullscreen) SDL_SetWindowSize(this->sdl_window, w, h);
 	} else {
 		DEBUG(driver, 0, "SDL_SetWindowFullscreen() failed: %s", SDL_GetError());
 	}
@@ -932,18 +920,18 @@ bool VideoDriver_SDL::AfterBlitterChange()
 {
 	assert(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 0);
 	int w, h;
-	SDL_GetWindowSize(_sdl_window, &w, &h);
+	SDL_GetWindowSize(this->sdl_window, &w, &h);
 	return CreateMainSurface(w, h, false);
 }
 
 void VideoDriver_SDL::AcquireBlitterLock()
 {
-	if (_draw_mutex != nullptr) _draw_mutex->lock();
+	if (this->draw_mutex != nullptr) this->draw_mutex->lock();
 }
 
 void VideoDriver_SDL::ReleaseBlitterLock()
 {
-	if (_draw_mutex != nullptr) _draw_mutex->unlock();
+	if (this->draw_mutex != nullptr) this->draw_mutex->unlock();
 }
 
 Dimension VideoDriver_SDL::GetScreenSize() const
@@ -956,11 +944,11 @@ Dimension VideoDriver_SDL::GetScreenSize() const
 
 bool VideoDriver_SDL::LockVideoBuffer()
 {
-	if (_draw_threaded) this->draw_lock.lock();
+	if (this->draw_threaded) this->draw_lock.lock();
 	return true;
 }
 
 void VideoDriver_SDL::UnlockVideoBuffer()
 {
-	if (_draw_threaded) this->draw_lock.unlock();
+	if (this->draw_threaded) this->draw_lock.unlock();
 }

@@ -10,11 +10,15 @@
 #ifndef VIDEO_SDL_H
 #define VIDEO_SDL_H
 
+#include <condition_variable>
+
 #include "video_driver.hpp"
 
 /** The SDL video driver. */
 class VideoDriver_SDL : public VideoDriver {
 public:
+	VideoDriver_SDL() : sdl_window(nullptr) {}
+
 	const char *Start(const StringList &param) override;
 
 	void Stop() override;
@@ -42,6 +46,13 @@ public:
 	const char *GetName() const override { return "sdl"; }
 
 protected:
+	struct SDL_Window *sdl_window; ///< Main SDL window.
+	Palette local_palette; ///< Copy of _cur_palette.
+	bool draw_threaded; ///< Whether the drawing is/may be done in a separate thread.
+	std::recursive_mutex *draw_mutex = nullptr; ///< Mutex to keep the access to the shared memory controlled.
+	std::condition_variable_any *draw_signal = nullptr; ///< Signal to draw the next frame.
+	volatile bool draw_continue; ///< Should we keep continue drawing?
+
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;
 	bool LockVideoBuffer() override;
@@ -50,14 +61,18 @@ protected:
 	void PaintThread() override;
 	void CheckPaletteAnim() override;
 
+	/** (Re-)create the backing store. */
+	virtual bool AllocateBackingStore(int w, int h, bool force = false);
+
 private:
 	int PollEvent();
 	void LoopOnce();
 	void MainLoopCleanup();
 	bool CreateMainSurface(uint w, uint h, bool resize);
-	bool CreateMainWindow(uint w, uint h);
 	const char *Initialize();
-	bool AllocateBackingStore(int w, int h, bool force = false);
+	bool CreateMainWindow(uint w, uint h);
+	void UpdatePalette();
+	void MakePalette();
 
 #ifdef __EMSCRIPTEN__
 	/* Convert a constant pointer back to a non-constant pointer to a member function. */
