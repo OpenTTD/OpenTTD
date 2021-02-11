@@ -309,19 +309,33 @@ bool VideoDriver_SDL::CreateMainWindow(uint w, uint h)
 
 bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 {
-	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
-
 	GetAvailableVideoMode(&w, &h);
-	DEBUG(driver, 1, "SDL2: using mode %ux%ux%d", w, h, bpp);
+	DEBUG(driver, 1, "SDL2: using mode %ux%u", w, h);
 
 	if (!this->CreateMainWindow(w, h)) return false;
 	if (resize) SDL_SetWindowSize(_sdl_window, w, h);
 
+	if (!this->AllocateBackingStore(w, h, true)) return false;
+
+	/* When in full screen, we will always have the mouse cursor
+	 * within the window, even though SDL does not give us the
+	 * appropriate event to know this. */
+	if (_fullscreen) _cursor.in_window = true;
+
+	BlitterFactory::GetCurrentBlitter()->PostResize();
+
+	GameSizeChanged();
+	return true;
+}
+
+bool VideoDriver_SDL::AllocateBackingStore(int w, int h, bool force)
+{
+	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
+
 	_sdl_real_surface = SDL_GetWindowSurface(_sdl_window);
-	if (_sdl_real_surface == nullptr) {
-		DEBUG(driver, 0, "SDL2: Couldn't get window surface: %s", SDL_GetError());
-		return false;
-	}
+	if (_sdl_real_surface == nullptr) usererror("SDL2: Couldn't get window surface: %s", SDL_GetError());
+
+	if (!force && w == _sdl_real_surface->w && h == _sdl_real_surface->h) return false;
 
 	/* Free any previously allocated rgb surface. */
 	if (_sdl_rgb_surface != nullptr) {
@@ -331,11 +345,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 
 	if (bpp == 8) {
 		_sdl_rgb_surface = SDL_CreateRGBSurface(0, w, h, 8, 0, 0, 0, 0);
-
-		if (_sdl_rgb_surface == nullptr) {
-			DEBUG(driver, 0, "SDL2: Couldn't allocate shadow surface: %s", SDL_GetError());
-			return false;
-		}
+		if (_sdl_rgb_surface == nullptr) usererror("SDL2: Couldn't allocate shadow surface: %s", SDL_GetError());
 
 		_sdl_surface = _sdl_rgb_surface;
 	} else {
@@ -356,14 +366,6 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 
 	MakePalette();
 
-	/* When in full screen, we will always have the mouse cursor
-	 * within the window, even though SDL does not give us the
-	 * appropriate event to know this. */
-	if (_fullscreen) _cursor.in_window = true;
-
-	BlitterFactory::GetCurrentBlitter()->PostResize();
-
-	GameSizeChanged();
 	return true;
 }
 
