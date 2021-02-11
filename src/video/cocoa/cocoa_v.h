@@ -32,9 +32,10 @@ private:
 	void *pixel_buffer;   ///< used for direct pixel access
 	void *window_buffer;  ///< Colour translation from palette to screen
 
-#	define MAX_DIRTY_RECTS 100
+	static const int MAX_DIRTY_RECTS = 100;
+
 	Rect dirty_rects[MAX_DIRTY_RECTS]; ///< dirty rectangles
-	int num_dirty_rects = MAX_DIRTY_RECTS;  ///< Number of dirty rectangles
+	uint num_dirty_rects;  ///< Number of dirty rectangles
 	uint32 palette[256];  ///< Colour Palette
 
 public:
