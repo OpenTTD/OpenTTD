@@ -351,9 +351,6 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 		_sdl_surface = _sdl_real_surface;
 	}
 
-	/* Delay drawing for this cycle; the next cycle will redraw the whole screen */
-	_num_dirty_rects = 0;
-
 	_screen.width = _sdl_surface->w;
 	_screen.height = _sdl_surface->h;
 	_screen.pitch = _sdl_surface->pitch / (bpp / 8);
