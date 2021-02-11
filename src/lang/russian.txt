@@ -2756,8 +2756,8 @@ STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Новы
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Построить новый город. Shift+щелчок - оценка стоимости основания.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Случайный город
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Создать город в случайном месте
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Много случайных городов
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Случайно разместить на карте города
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Множество различных городов
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Разместить на карте различные города случайным образом
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Название города:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Введите название города
@@ -2784,13 +2784,19 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Случ
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Создать новое предприятие
-STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Выберите тип производства из списка
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Много предприятий
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Случайно разместить предприятия на карте
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Выберите тип предприятия из списка
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Множество различных предприятий
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Разместить на карте различные предприятия случайным образом
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Множество различных предприятий
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Разместить на карте различные предприятия случайным образом?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Цена: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Разведать
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Построить
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Профинансировать
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Убрать все предприятия
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Убрать все предприятия с карты
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Убрать все предприятия
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Убрать все предприятия с карты?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Цепочка грузоперевозок для {STRING.gen}

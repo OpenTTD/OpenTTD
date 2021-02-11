@@ -2605,12 +2605,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Sattuman
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Rakenna uutta teollisuutta
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Valitse tehdas listasta
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Monta satunnaista teollisuusaluetta
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Luo satunnaisia tuotantolaitoksia
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Sijoita teollisuuslaitokset satunnaisesti
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Luo satunnaista teollisuutta
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Oletko varma, että haluat luoda monta satunnaista tuotantolaitosta?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kustannus: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Koekaivaus
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Rakenna
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Perusta
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Poista kaikki tuotantolaitokset
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Poista kaikki kartalla olevat tuotantolaitokset
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Poista kaikki tuotantolaitokset
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Oletko varma, että haluat poistaa kaikki tuotantolaitokset?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Teollisuusketju teollisuudelle {STRING}

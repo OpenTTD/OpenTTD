@@ -2606,12 +2606,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}임의
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}새 산업시설 건설
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}목록에서 적당한 산업시설을 선택하세요
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :무작위 산업시설 건설
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}무작위 산업시설 건설
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}무작위로 산업시설을 건설합니다
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}무작위 산업시설 건설
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}정말 산업시설을 무작위로 건설하시겠습니까?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}가격: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}답사
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}건설
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}투자
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}모든 산업시설 제거
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}현재 지도 상에 있는 모든 산업시설을 제거합니다
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}모든 산업시설 제거
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}정말 모든 산업시설을 제거하시겠습니까?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}{STRING}{G 0 "과" "와"} 관련된 산업시설 연계도
