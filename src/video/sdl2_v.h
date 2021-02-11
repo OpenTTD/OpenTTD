@@ -52,6 +52,7 @@ protected:
 	std::recursive_mutex *draw_mutex = nullptr; ///< Mutex to keep the access to the shared memory controlled.
 	std::condition_variable_any *draw_signal = nullptr; ///< Signal to draw the next frame.
 	volatile bool draw_continue; ///< Should we keep continue drawing?
+	bool buffer_locked; ///< Video buffer was locked by the main thread.
 
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;
@@ -61,8 +62,17 @@ protected:
 	void PaintThread() override;
 	void CheckPaletteAnim() override;
 
+	/** Indicate to the driver the client-side might have changed. */
+	void ClientSizeChanged(int w, int h, bool force);
+
 	/** (Re-)create the backing store. */
 	virtual bool AllocateBackingStore(int w, int h, bool force = false);
+	/** Get a pointer to the video buffer. */
+	virtual void *GetVideoPointer();
+	/** Hand video buffer back to the painting backend. */
+	virtual void ReleaseVideoPointer() {}
+	/** Create the main window. */
+	virtual bool CreateMainWindow(uint w, uint h, uint flags = 0);
 
 private:
 	int PollEvent();
