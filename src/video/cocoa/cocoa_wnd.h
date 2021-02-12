@@ -32,11 +32,8 @@ extern NSString *OTTDMainLaunchGameEngine;
 @interface OTTD_CocoaWindow : NSWindow
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv;
 
-- (void)miniaturize:(id)sender;
 - (void)display;
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
-- (void)appDidHide:(NSNotification*)note;
-- (void)appDidUnhide:(NSNotification*)note;
 @end
 
 /** Subclass of NSView to support mouse awareness and text input. */
