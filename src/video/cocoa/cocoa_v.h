@@ -63,12 +63,10 @@ public:
 
 	void EditBoxLostFocus() override;
 
-	/** Return driver name */
 	const char *GetName() const override { return "cocoa"; }
 
 	/* --- The following methods should be private, but can't be due to Obj-C limitations. --- */
 
-	/** Main game loop. */
 	void GameLoop();
 
 	void AllocateBackingStore();
@@ -77,7 +75,7 @@ protected:
 	Dimension GetScreenSize() const override;
 
 private:
-	bool PollEvent(); // In event.mm.
+	bool PollEvent();
 
 	bool IsFullscreen();
 	void GameSizeChanged();
