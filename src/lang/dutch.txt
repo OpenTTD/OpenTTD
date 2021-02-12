@@ -2605,12 +2605,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Willekeu
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Nieuwe industrie financieren
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Kiest de gewenste industrie in de lijst
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Veel willekeurige industrieën
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Willekeurige industrieën maken
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Bedek de kaart met willekeurig geplaatste industrieën
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Willekeurige industrieën maken
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Weet je zeker dat je veel willekeurige industrieën wilt hebben?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kosten: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Onderzoeken
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bouw
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Betaal
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Alle industrieën verwijderen
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Alle industrieën op de kaart verwijderen
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Alle industrieën verwijderen
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Weet je zeker dat je alle industrieën wilt verwijderen?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrieketen voor {STRING} industrie

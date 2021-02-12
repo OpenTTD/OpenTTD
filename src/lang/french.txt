@@ -2606,12 +2606,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aléatoi
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financer une nouvelle industrie
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Choisir l'industrie appropriée dans cette liste
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Beaucoup d'industries au hasard
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Créer des industries au hasard
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Couvrir la carte d'industries placées au hasard
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Créer des industries au hasard
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Êtes-vous sûr de vouloir créer beaucoup d'industries au hasard{NBSP}?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Prix{NBSP}: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospecter
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construire
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fonder
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Enlever toutes les industries
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Enlève toutes les industries présentes sur la carte
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Enlever toutes les industries
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Êtes-vous sûr de vouloir enlever toutes les industries{NBSP}?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Chaîne industrielle pour l'industrie «{NBSP}{STRING}{NBSP}»
