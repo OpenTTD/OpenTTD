@@ -370,13 +370,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv
 {
 	if (self = [ super initWithContentRect:contentRect styleMask:styleMask backing:backingType defer:flag ]) {
-		/* Make our window subclass receive these application notifications */
-		[ [ NSNotificationCenter defaultCenter ] addObserver:self
-			selector:@selector(appDidHide:) name:NSApplicationDidHideNotification object:NSApp ];
-
-		[ [ NSNotificationCenter defaultCenter ] addObserver:self
-			selector:@selector(appDidUnhide:) name:NSApplicationDidUnhideNotification object:NSApp ];
-
 		self->driver = drv;
 
 		[ self setContentMinSize:NSMakeSize(64.0f, 64.0f) ];
@@ -389,17 +382,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	}
 
 	return self;
-}
-
-/**
- * Minimize the window
- */
-- (void)miniaturize:(id)sender
-{
-	/* window is hidden now */
-	driver->active = false;
-
-	[ super miniaturize:sender ];
 }
 
 /**
@@ -418,9 +400,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	/* restore visible surface */
 	[ self restoreCachedImage ];
-
-	/* window is visible again */
-	driver->active = true;
 }
 /**
  * Define the rectangle we draw our window in
@@ -430,20 +409,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	[ super setFrame:frameRect display:flag ];
 
 	driver->AllocateBackingStore();
-}
-/**
- * Handle hiding of the application
- */
-- (void)appDidHide:(NSNotification*)note
-{
-	driver->active = false;
-}
-/**
- * Unhide and restore display plane and re-activate driver
- */
-- (void)appDidUnhide:(NSNotification*)note
-{
-	driver->active = true;
 }
 
 @end
@@ -1121,26 +1086,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	HandleExitGameRequest();
 
 	return NO;
-}
-/** Handle key acceptance */
-- (void)windowDidBecomeKey:(NSNotification*)aNotification
-{
-	driver->active = true;
-}
-/** Resign key acceptance */
-- (void)windowDidResignKey:(NSNotification*)aNotification
-{
-	driver->active = false;
-}
-/** Handle becoming main window */
-- (void)windowDidBecomeMain:(NSNotification*)aNotification
-{
-	driver->active = true;
-}
-/** Resign being main window */
-- (void)windowDidResignMain:(NSNotification*)aNotification
-{
-	driver->active = false;
 }
 /** Window entered fullscreen mode (10.7). */
 - (void)windowDidEnterFullScreen:(NSNotification *)aNotification

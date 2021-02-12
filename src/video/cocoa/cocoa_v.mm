@@ -111,7 +111,6 @@ VideoDriver_Cocoa::VideoDriver_Cocoa()
 	this->buffer_depth  = 0;
 	this->window_buffer = nullptr;
 	this->pixel_buffer  = nullptr;
-	this->active        = false;
 	this->setup         = false;
 
 	this->window    = nil;

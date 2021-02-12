@@ -39,8 +39,7 @@ private:
 	uint32 palette[256];  ///< Colour Palette
 
 public:
-	bool active;          ///< Whether the window is visible
-	bool setup;
+	bool setup; ///< Window is currently being created.
 
 	OTTD_CocoaWindow *window;    ///< Pointer to window object
 	OTTD_CocoaView *cocoaview;   ///< Pointer to view object
