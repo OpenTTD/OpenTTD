@@ -607,7 +607,7 @@ public:
 	{
 		if (!confirmed) return;
 
-		for (Industry* industry : Industry::Iterate()) delete industry;
+		for (Industry *industry : Industry::Iterate()) delete industry;
 
 		/* Clear farmland. */
 		for (TileIndex tile = 0; tile < MapSize(); tile++) {
@@ -665,8 +665,7 @@ public:
 				break;
 
 			case WID_DPI_FUND_WIDGET: {
-				if (this->selected_type != INVALID_INDUSTRYTYPE)
-				{
+				if (this->selected_type != INVALID_INDUSTRYTYPE) {
 					if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && GetIndustrySpec(this->selected_type)->IsRawIndustry()) {
 						DoCommandP(0, this->selected_type, InteractiveRandom(), CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 						this->HandleButtonClick(WID_DPI_FUND_WIDGET);
