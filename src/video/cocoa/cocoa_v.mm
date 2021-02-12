@@ -86,6 +86,10 @@ static const Dimension _default_resolutions[] = {
 static FVideoDriver_Cocoa iFVideoDriver_Cocoa;
 
 
+/**
+ * Get current realtime.
+ * @return Tick time in milliseconds.
+ */
 static uint32 GetTick()
 {
 	struct timeval tim;
@@ -95,7 +99,7 @@ static uint32 GetTick()
 }
 
 
-/* Subclass of OTTD_CocoaView to fix Quartz rendering */
+/** Subclass of NSView for drawing to screen. */
 @interface OTTD_QuartzView : NSView {
 	VideoDriver_Cocoa *driver;
 }
@@ -123,9 +127,7 @@ VideoDriver_Cocoa::VideoDriver_Cocoa()
 	this->num_dirty_rects = lengthof(this->dirty_rects);
 }
 
-/**
- * Stop the cocoa video subdriver.
- */
+/** Stop Cocoa video driver. */
 void VideoDriver_Cocoa::Stop()
 {
 	if (!_cocoa_video_started) return;
@@ -146,9 +148,7 @@ void VideoDriver_Cocoa::Stop()
 	_cocoa_video_started = false;
 }
 
-/**
- * Initialize a cocoa video subdriver.
- */
+/** Try to start Cocoa video driver. */
 const char *VideoDriver_Cocoa::Start(const StringList &parm)
 {
 	if (!MacOSVersionIsAtLeast(10, 7, 0)) return "The Cocoa video driver requires Mac OS X 10.7 or later.";
@@ -184,7 +184,6 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
 
 /**
  * Set dirty a rectangle managed by a cocoa video subdriver.
- *
  * @param left Left x cooordinate of the dirty rectangle.
  * @param top Uppder y coordinate of the dirty rectangle.
  * @param width Width of the dirty rectangle.
@@ -216,7 +215,6 @@ void VideoDriver_Cocoa::MainLoop()
 
 /**
  * Change the resolution when using a cocoa video driver.
- *
  * @param w New window width.
  * @param h New window height.
  * @return Whether the video driver was successfully updated.
@@ -250,7 +248,6 @@ bool VideoDriver_Cocoa::ChangeResolution(int w, int h)
 
 /**
  * Toggle between windowed and full screen mode for cocoa display driver.
- *
  * @param full_screen Whether to switch to full screen or not.
  * @return Whether the mode switch was successful.
  */
@@ -269,7 +266,6 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 
 /**
  * Callback invoked after the blitter was changed.
- *
  * @return True if no error.
  */
 bool VideoDriver_Cocoa::AfterBlitterChange()
@@ -299,7 +295,7 @@ Dimension VideoDriver_Cocoa::GetScreenSize() const
 }
 
 /**
- * Are we in fullscreen mode
+ * Are we in fullscreen mode?
  * @return whether fullscreen mode is currently used
  */
 bool VideoDriver_Cocoa::IsFullscreen()
@@ -329,7 +325,7 @@ void VideoDriver_Cocoa::GameSizeChanged()
 }
 
 /**
- * Update the video modus.
+ * Update the video mode.
  */
 void VideoDriver_Cocoa::UpdateVideoModes()
 {
@@ -359,6 +355,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 {
 	this->setup = true;
 
+	/* Limit window size to screen frame. */
 	NSSize screen_size = [ [ NSScreen mainScreen ] frame ].size;
 	if (width > screen_size.width) width = screen_size.width;
 	if (height > screen_size.height) height = screen_size.height;
@@ -376,8 +373,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 
 	/* Add built in full-screen support when available (OS X 10.7 and higher)
 	 * This code actually compiles for 10.5 and later, but only makes sense in conjunction
-	 * with the quartz fullscreen support as found only in 10.7 and later
-	 */
+	 * with the quartz fullscreen support as found only in 10.7 and later. */
 	if ([ this->window respondsToSelector:@selector(toggleFullScreen:) ]) {
 		NSWindowCollectionBehavior behavior = [ this->window collectionBehavior ];
 		behavior |= NSWindowCollectionBehaviorFullScreenPrimary;
@@ -394,11 +390,11 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	[ this->window center ];
 	[ this->window makeKeyAndOrderFront:nil ];
 
-	/* Create wrapper view for text input. */
+	/* Create wrapper view for input and event handling. */
 	NSRect view_frame = [ this->window contentRectForFrameRect:[ this->window frame ] ];
 	this->cocoaview = [ [ OTTD_CocoaView alloc ] initWithFrame:view_frame ];
 	if (this->cocoaview == nil) {
-		DEBUG(driver, 0, "Could not create the text wrapper view.");
+		DEBUG(driver, 0, "Could not create the event wrapper view.");
 		this->setup = false;
 		return false;
 	}
@@ -413,6 +409,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	}
 	[ draw_view setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable ];
 
+	/* Create view chain: window -> input wrapper view -> content view. */
 	[ this->window setContentView:this->cocoaview ];
 	[ this->cocoaview addSubview:draw_view ];
 	[ this->window makeFirstResponder:this->cocoaview ];
@@ -433,7 +430,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 }
 
 /**
- * This function copies 8bpp pixels from the screen buffer in 32bpp windowed mode.
+ * This function copies 8bpp pixels to the screen buffer in 32bpp windowed mode.
  *
  * @param left The x coord for the left edge of the box to blit.
  * @param top The y coord for the top edge of the box to blit.
@@ -455,7 +452,8 @@ void VideoDriver_Cocoa::BlitIndexedToView32(int left, int top, int right, int bo
 	}
 }
 
-/** Draw window
+/**
+ * Draw window.
  * @param force_update Whether to redraw unconditionally
  */
 void VideoDriver_Cocoa::Draw(bool force_update)
@@ -500,7 +498,7 @@ void VideoDriver_Cocoa::Draw(bool force_update)
 	this->num_dirty_rects = 0;
 }
 
-/** Update the palette */
+/** Update the palette. */
 void VideoDriver_Cocoa::UpdatePalette(uint first_color, uint num_colors)
 {
 	if (this->buffer_depth != 8) return;
@@ -575,6 +573,7 @@ void VideoDriver_Cocoa::AllocateBackingStore()
 	this->GameSizeChanged();
 }
 
+/**  Check if palette updates need to be performed. */
 void VideoDriver_Cocoa::CheckPaletteAnim()
 {
 	if (_cur_palette.count_dirty != 0) {
@@ -600,6 +599,10 @@ void VideoDriver_Cocoa::CheckPaletteAnim()
 }
 
 
+/**
+ * Poll and handle a single event from the OS.
+ * @return True if there was an event to handle.
+ */
 bool VideoDriver_Cocoa::PollEvent()
 {
 #ifdef _DEBUG
@@ -617,7 +620,7 @@ bool VideoDriver_Cocoa::PollEvent()
 	return true;
 }
 
-
+/** Main game loop. */
 void VideoDriver_Cocoa::GameLoop()
 {
 	uint32 cur_ticks = GetTick();

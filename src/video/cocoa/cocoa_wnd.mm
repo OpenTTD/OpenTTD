@@ -175,7 +175,7 @@ static std::vector<WChar> NSStringToUTF32(NSString *s)
 {
 	HandleExitGameRequest();
 
-	return NSTerminateCancel; // NSTerminateLater ?
+	return NSTerminateCancel;
 }
 
 /**
@@ -296,7 +296,7 @@ bool CocoaSetupApplication()
 }
 
 /**
- *
+ * Deregister app delegate.
  */
 void CocoaExitApplication()
 {
