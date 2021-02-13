@@ -5,34 +5,26 @@
  * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** @file fontdetection.cpp Detection of the right font. */
+/** @file font_unix.cpp Functions related to font handling on Unix/Fontconfig. */
 
-#if defined(WITH_FREETYPE) || defined(_WIN32)
-
-#include "stdafx.h"
-#include "debug.h"
-#include "fontdetection.h"
-#include "string_func.h"
-#include "strings_func.h"
-
-#ifdef WITH_FREETYPE
-extern FT_Library _library;
-#endif /* WITH_FREETYPE */
-
-/**
- * Get the font loaded into a Freetype face by using a font-name.
- * If no appropriate font is found, the function returns an error
- */
-
-#if defined(WITH_FONTCONFIG) /* end ifdef __APPLE__ */
+#include "../../stdafx.h"
+#include "../../debug.h"
+#include "../../fontdetection.h"
+#include "../../string_func.h"
+#include "../../strings_func.h"
 
 #include <fontconfig/fontconfig.h>
 
 #include "safeguards.h"
 
-/* ========================================================================================
- * FontConfig (unix) support
- * ======================================================================================== */
+#ifdef WITH_FREETYPE
+
+#include <ft2build.h>
+#include FT_FREETYPE_H
+
+extern FT_Library _library;
+
+
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 {
 	FT_Error err = FT_Err_Cannot_Open_Resource;
@@ -57,8 +49,8 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		}
 
 		/* Resolve the name and populate the information structure */
-		pat = FcNameParse((FcChar8*)font_family);
-		if (font_style != nullptr) FcPatternAddString(pat, FC_STYLE, (FcChar8*)font_style);
+		pat = FcNameParse((FcChar8 *)font_family);
+		if (font_style != nullptr) FcPatternAddString(pat, FC_STYLE, (FcChar8 *)font_style);
 		FcConfigSubstitute(0, pat, FcMatchPattern);
 		FcDefaultSubstitute(pat);
 		fs = FcFontSetCreate();
@@ -73,17 +65,17 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 
 			for (i = 0; err != FT_Err_Ok && i < fs->nfont; i++) {
 				/* Try the new filename */
-				if (FcPatternGetString(fs->fonts[i], FC_FILE,   0, &file)   == FcResultMatch &&
-						FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
-						FcPatternGetString(fs->fonts[i], FC_STYLE,  0, &style)  == FcResultMatch) {
+				if (FcPatternGetString(fs->fonts[i], FC_FILE, 0, &file) == FcResultMatch &&
+					FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
+					FcPatternGetString(fs->fonts[i], FC_STYLE, 0, &style) == FcResultMatch) {
 
 					/* The correct style? */
-					if (font_style != nullptr && strcasecmp(font_style, (char*)style) != 0) continue;
+					if (font_style != nullptr && strcasecmp(font_style, (char *)style) != 0) continue;
 
 					/* Font config takes the best shot, which, if the family name is spelled
 					 * wrongly a 'random' font, so check whether the family name is the
 					 * same as the supplied name */
-					if (strcasecmp(font_family, (char*)family) == 0) {
+					if (strcasecmp(font_family, (char *)family) == 0) {
 						err = FT_New_Face(_library, (char *)file, 0, face);
 					}
 				}
@@ -98,6 +90,9 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 
 	return err;
 }
+
+#endif /* WITH_FREETYPE */
+
 
 bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback)
 {
@@ -114,7 +109,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	if (split != nullptr) *split = '\0';
 
 	/* First create a pattern to match the wanted language. */
-	FcPattern *pat = FcNameParse((FcChar8*)lang);
+	FcPattern *pat = FcNameParse((FcChar8 *)lang);
 	/* We only want to know the filename. */
 	FcObjectSet *os = FcObjectSetBuild(FC_FILE, FC_SPACING, FC_SLANT, FC_WEIGHT, nullptr);
 	/* Get the list of filenames matching the wanted language. */
@@ -150,14 +145,14 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			FcPatternGetInteger(font, FC_WEIGHT, 0, &value);
 			if (value <= best_weight) continue;
 
-			callback->SetFontNames(settings, (const char*)file);
+			callback->SetFontNames(settings, (const char *)file);
 
 			bool missing = callback->FindMissingGlyphs();
 			DEBUG(freetype, 1, "Font \"%s\" misses%s glyphs", file, missing ? "" : " no");
 
 			if (!missing) {
 				best_weight = value;
-				best_font   = (const char *)file;
+				best_font = (const char *)file;
 			}
 		}
 
@@ -174,15 +169,3 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	FcFini();
 	return ret;
 }
-#endif /* end ifdef WITH_FONTCONFIG */
-
-#if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG)
-
-#ifdef WITH_FREETYPE
-FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) {return FT_Err_Cannot_Open_Resource;}
-#endif /* WITH_FREETYPE */
-
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
-#endif /* !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) */
-
-#endif /* WITH_FREETYPE */

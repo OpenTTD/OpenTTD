@@ -156,7 +156,6 @@ add_files(
     fontcache.cpp
     fontcache.h
     fontcache_internal.h
-    fontdetection.cpp
     fontdetection.h
     framerate_gui.cpp
     framerate_type.h

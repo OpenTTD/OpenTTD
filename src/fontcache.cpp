@@ -205,7 +205,6 @@ bool SpriteFontCache::GetDrawGlyphShadow()
 
 /* static */ FontCache *FontCache::caches[FS_END] = { new SpriteFontCache(FS_NORMAL), new SpriteFontCache(FS_SMALL), new SpriteFontCache(FS_LARGE), new SpriteFontCache(FS_MONO) };
 
-#if defined(WITH_FREETYPE) || defined(_WIN32)
 
 /**
  * Create a new TrueTypeFontCache.
@@ -678,13 +677,8 @@ const void *FreeTypeFontCache::InternalGetFontTable(uint32 tag, size_t &length)
 	return result;
 }
 
-#elif defined(_WIN32)
-
-
-
 #endif /* WITH_FREETYPE */
 
-#endif /* defined(WITH_FREETYPE) || defined(_WIN32) */
 
 /**
  * (Re)initialize the freetype related things, i.e. load the non-sprite fonts.
@@ -722,3 +716,12 @@ void UninitFreeType()
 	_library = nullptr;
 #endif /* WITH_FREETYPE */
 }
+
+#if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG)
+
+#ifdef WITH_FREETYPE
+FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
+#endif /* WITH_FREETYPE */
+
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
+#endif /* !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) */
