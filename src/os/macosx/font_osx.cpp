@@ -101,36 +101,43 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 	CFAutoRelease<CFArrayRef> descs(CTFontDescriptorCreateMatchingFontDescriptors(lang_desc.get(), mandatory_attribs.get()));
 
 	bool result = false;
-	for (CFIndex i = 0; descs.get() != nullptr && i < CFArrayGetCount(descs.get()); i++) {
-		CTFontDescriptorRef font = (CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), i);
+	for (int tries = 0; tries < 2; tries++) {
+		for (CFIndex i = 0; descs.get() != nullptr && i < CFArrayGetCount(descs.get()); i++) {
+			CTFontDescriptorRef font = (CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), i);
 
-		/* Get font traits. */
-		CFAutoRelease<CFDictionaryRef> traits((CFDictionaryRef)CTFontDescriptorCopyAttribute(font, kCTFontTraitsAttribute));
-		CTFontSymbolicTraits symbolic_traits;
-		CFNumberGetValue((CFNumberRef)CFDictionaryGetValue(traits.get(), kCTFontSymbolicTrait), kCFNumberIntType, &symbolic_traits);
+			/* Get font traits. */
+			CFAutoRelease<CFDictionaryRef> traits((CFDictionaryRef)CTFontDescriptorCopyAttribute(font, kCTFontTraitsAttribute));
+			CTFontSymbolicTraits symbolic_traits;
+			CFNumberGetValue((CFNumberRef)CFDictionaryGetValue(traits.get(), kCTFontSymbolicTrait), kCFNumberIntType, &symbolic_traits);
 
-		/* Skip symbol fonts and vertical fonts. */
-		if ((symbolic_traits & kCTFontClassMaskTrait) == (CTFontStylisticClass)kCTFontSymbolicClass || (symbolic_traits & kCTFontVerticalTrait)) continue;
-		/* Skip bold fonts (especially Arial Bold, which looks worse than regular Arial). */
-		if (symbolic_traits & kCTFontBoldTrait) continue;
-		/* Select monospaced fonts if asked for. */
-		if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->Monospace()) continue;
+			/* Skip symbol fonts and vertical fonts. */
+			if ((symbolic_traits & kCTFontClassMaskTrait) == (CTFontStylisticClass)kCTFontSymbolicClass || (symbolic_traits & kCTFontVerticalTrait)) continue;
+			/* Skip bold fonts (especially Arial Bold, which looks worse than regular Arial). */
+			if (symbolic_traits & kCTFontBoldTrait) continue;
+			/* Select monospaced fonts if asked for. */
+			if (((symbolic_traits & kCTFontMonoSpaceTrait) == kCTFontMonoSpaceTrait) != callback->Monospace()) continue;
 
-		/* Get font name. */
-		char name[128];
-		CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontDisplayNameAttribute));
-		CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
+			/* Get font name. */
+			char name[128];
+			CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontDescriptorCopyAttribute(font, kCTFontDisplayNameAttribute));
+			CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
 
-		/* There are some special fonts starting with an '.' and the last
-		 * resort font that aren't usable. Skip them. */
-		if (name[0] == '.' || strncmp(name, "LastResort", 10) == 0) continue;
+			/* Serif fonts usually look worse on-screen with only small
+			 * font sizes. As such, we try for a sans-serif font first.
+			 * If we can't find one in the first try, try all fonts. */
+			if (tries == 0 && (symbolic_traits & kCTFontClassMaskTrait) != (CTFontStylisticClass)kCTFontSansSerifClass) continue;
 
-		/* Save result. */
-		callback->SetFontNames(settings, name);
-		if (!callback->FindMissingGlyphs()) {
-			DEBUG(freetype, 2, "CT-Font for %s: %s", language_isocode, name);
-			result = true;
-			break;
+			/* There are some special fonts starting with an '.' and the last
+			 * resort font that aren't usable. Skip them. */
+			if (name[0] == '.' || strncmp(name, "LastResort", 10) == 0) continue;
+
+			/* Save result. */
+			callback->SetFontNames(settings, name);
+			if (!callback->FindMissingGlyphs()) {
+				DEBUG(freetype, 2, "CT-Font for %s: %s", language_isocode, name);
+				result = true;
+				break;
+			}
 		}
 	}
 
