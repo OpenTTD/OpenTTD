@@ -740,6 +740,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Terreno Irregular
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Gramado
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Terreno Descoberto
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Floresta Tropical
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Campos
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Árvores
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Rochas
@@ -1607,6 +1608,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Posicionamento de árvores: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla o nascimento aleatório de árvores durante o jogo. Isso pode afetar indústrias que dependem do crescimento de árvores, como serrarias
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Crescer sem espalhar {RED}(afeta serrarias)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Não crescer, não espalhar {RED}(afeta serrarias)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posição da barra de ferramentas principal: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Posição horizontal da barra de ferramentas principal no topo da tela
@@ -1673,6 +1675,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Sempre que uma 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Métrico (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unidades de jogo (quadr./dia)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidade de potência veicular: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Sempre que a potência de um veículo for exibida na interface de usuário, será exibida na unidade selecionada
@@ -1805,12 +1808,13 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Faltam {
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Sair
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Tem a certeza que quer sair do OpenTTD?
 STR_QUIT_YES                                                    :{BLACK}Sim
 STR_QUIT_NO                                                     :{BLACK}Não
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Abandonar jogo
-STR_ABANDON_GAME_QUERY                                          :{YELLOW}Você tem certeza que deseja abandonar este jogo?
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Você tem certeza que quer abandonar este jogo?
 STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Você tem certeza que quer abandonar este cenário?
 
 # Cheat window
@@ -1968,6 +1972,7 @@ STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Atualiza
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Atualiza as informações sobre o servidor
 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Procurar na internet
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Buscar na LAN
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Adicionar servidor
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adiciona um servidor à lista que será sempre verificada se existem jogos ocorrendo
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
@@ -2198,6 +2203,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :número de joga
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :clientes conectando-se
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :{G=m}script do jogo
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :aguardando atualização do gráfico de links
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :saindo
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} entrou no jogo
@@ -2326,6 +2332,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Unir pon
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Construir um ponto de controle separado
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Desativado pois não há nenhum veículo disponível para essa infraestrutura
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Construir ferrovias
@@ -2521,6 +2528,10 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Árvores
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Plantar árvores de tipo aleatório, Shift alterna entre construção/preço estimado
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Plantar Aleatoriamente
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta árvores aleatoriamente pelo terreno
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Bosque
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Planta pequenas florestas ao arrastar pelo terreno.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Floresta
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planta florestas grandes ao arrastar pelo terreno.
 
 # Land generation window (SE)
@@ -2532,10 +2543,10 @@ STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Diminui 
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Gera terreno aleatório
 STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Criar novo cenário
 STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Limpar terreno
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Remover todas as propriedades da companhia do mapa
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Remove todas as propriedades da empresa do mapa
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Limpar Terreno
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Tem certeza que deseja remover todas as propriedades da companhia?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Tem certeza que quer remover todas as propriedades da empresa?
 
 # Town generation window (SE)
 STR_FOUND_TOWN_CAPTION                                          :{WHITE}Gerar Cidades
@@ -2574,10 +2585,14 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financia
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Escolha a indústria apropriada
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Várias indústrias aleatórias
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cobrir o mapa com indústrias colocadas aleatoriamente
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Criar indústrias aleatórias
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Você tem certeza que quer criar várias indústrias aleatoriamente?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Custo: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prosperir
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construir
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fundar
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Remover todas as indústrias
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Remover todas as indústrias
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadeia de indústrias para a indústria: {STRING}
@@ -3068,6 +3083,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Ativa/De
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Editar texto da placa
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}Centraliza janela no local da placa. Ctrl+Clique abre uma nova janela no local da placa
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Próxima Placa
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Placa anterior
 
@@ -3279,7 +3295,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Impedir 
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar visão no local do ponto de caminho. Ctrl+Clique abre uma nova janela no local do ponto de caminho
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Renomear ponto de controle
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar visão no local da bóia. Ctrl+Clique abre uma nova janela no local da bóia
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centraliza janela no local da bóia. Ctrl+Clique abre uma nova janela no local da bóia
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Renomear bóia
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de controle
@@ -3344,6 +3360,7 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover se
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa em outro local por 1% do valor da empresa. Shift+Clique mostra o preço estimado sem reconstruir a sede
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalhes
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver informações detalhadas de infraestrutura
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Dá dinheiro a essa empresa
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Novo Rosto
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Selecionar novo rosto para o presidente
@@ -3466,7 +3483,7 @@ STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Alterar 
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clique para excluir esse grupo da substituição automática
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Remover grupo
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Tem certeza que deseja remover esse grupo e seus descendentes?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Tem certeza que quer remover esse grupo e seus descendentes?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adicionar veículos compartilhados
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
@@ -3531,19 +3548,19 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}Comprar 
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}Comprar Aeronave
 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}Comprar e reequipar veículo
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Comprar e Trocar Veículos
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Comprar e Reequipar Veículo
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}Comprar e Repor Navio
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Comprar e reequipar aeronaves
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra o veículo ferroviário selecionado. Shift+Clique mostra preço estimado sem a compra
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra o veículo selecionado. Shift+Clique mostra preço estimado sem a compra
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Compra o veículo ferroviário selecionado. Shift+Clique mostra preço estimado
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Compra o veículo selecionado. Shift+Clique mostra preço estimado
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Compra a embarcação selecionada. Shift+Clique mostra preço estimado sem a compra
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Compra a aeronave selecionada. Shift+Clique mostra o preço estimado sem a compra
 
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Compre e troque o trem destacado. Shift+Click mostra os custos estimados sem comprar
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Compra e troque o trem destacado. Shift+Click mostra o custo estimado
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Compre e troque o veículo terrestre destacado. Shift+Clique mostra o custo estimado sem comprá-lo
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :Compre e reponha o navio em destaque. Shift+Clique mostra o custo estimado sem comprar
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Comprar e repor a aeronave destacada. Shift+Clique mostra o custo estimado sem comprar
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :Compre e reequipa o navio selecionado. Shift+Clique mostra o custo estimado
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Compra e reequipa a aeronave selecionada. Shift+Clique mostra o custo estimado
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Renomear
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}Renomear
@@ -3629,9 +3646,9 @@ STR_DEPOT_CLONE_SHIP_DEPOT_INFO                                 :{BLACK}Isso ir�
 STR_DEPOT_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                     :{BLACK}Isso irá comprar uma cópia de uma aeronave. Clique nesse botão e depois em uma aeronave dentro ou fora do hangar. Ctrl+Clique compartilhará as ordens. Shift+Clique mostra o preço estimado sem a compra
 
 STR_DEPOT_TRAIN_LOCATION_TOOLTIP                                :{BLACK}Centrar visão no local de um depósito ferroviário. Ctrl+Clique abre uma nova janela no local do depósito de trem
-STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centralizar visualização na localização da garagem. Ctrl+Clique abre uma nova janela de visualização
-STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centrar visão no local do depósito naval. Ctrl+Clique abre uma nova janela no local do depósito naval
-STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centrar visão no local do hangar. Ctrl+Clique abre uma nova janela no local do hangar
+STR_DEPOT_ROAD_VEHICLE_LOCATION_TOOLTIP                         :{BLACK}Centraliza a janela na localização da garagem. Ctrl+Clique abre uma nova janela na localização da garagem.
+STR_DEPOT_SHIP_LOCATION_TOOLTIP                                 :{BLACK}Centraliza visão no local do depósito naval. Ctrl+Clique abre uma nova janela no local do depósito naval
+STR_DEPOT_AIRCRAFT_LOCATION_TOOLTIP                             :{BLACK}Centraliza a janela no local do hangar. Ctrl+Clique abre uma nova janela no local do hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TOOLTIP                      :{BLACK}Obtém uma lista de todos os trens com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_ROAD_VEHICLE_TOOLTIP               :{BLACK}Obtém uma lista de todos os automóveis com esta garagem em suas ordens
@@ -3721,6 +3738,9 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faz auto
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centraliza a janela na localização do veículo. Clique duplo para seguir o veículo. Ctrl+Clique abre uma nova janela na localização do veículo.
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centraliza a janela na localização do navio. Clique duplo para seguir o navio. Ctrl+Clique para abrir uma nova janela na localização do navio.
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centraliza a janela na localização da aeronave. Clique duplo para seguir a aeronave. Ctrl+Clique abre uma nova janela na localização da aeronave.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar trem para o depósito
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar veículo para a garagem. CTRL+clique irá apenas reparar
@@ -4333,7 +4353,7 @@ STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... muit
 STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... deve construir uma cidade antes
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... só é permitido uma por cidade
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... só pode ser construído em cidades com pelo menos 1200 habitantes
-STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... só pode ser construído em zonas florestais
+STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... só pode ser construído em florestas tropicais
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_DESERT                           :{WHITE}... só pode ser construído em áreas desérticas
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS                            :{WHITE}... só se pode ser construído em cidades (substituindo casas)
 STR_ERROR_CAN_ONLY_BE_BUILT_NEAR_TOWN_CENTER                    :{WHITE}... só pode ser construído próximo aos centros de cidades
@@ -4430,6 +4450,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Tipo de depósi
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} fica grande demais para ser substituído
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Regras de autosubstituição/renovação não estão ativadas
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(limite de dinheiro)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Novo veículo não pode ser reequipado na ordem {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Impossível combinação de linhas
