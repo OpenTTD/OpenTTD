@@ -697,6 +697,9 @@ void InitFreeType(bool monospace)
 #elif defined(_WIN32)
 		extern void LoadWin32Font(FontSize fs);
 		LoadWin32Font(fs);
+#elif defined(WITH_COCOA)
+		extern void LoadCoreTextFont(FontSize fs);
+		LoadCoreTextFont(fs);
 #endif
 	}
 }
@@ -717,11 +720,11 @@ void UninitFreeType()
 #endif /* WITH_FREETYPE */
 }
 
-#if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG)
+#if !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA)
 
 #ifdef WITH_FREETYPE
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) { return FT_Err_Cannot_Open_Resource; }
 #endif /* WITH_FREETYPE */
 
 bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, MissingGlyphSearcher *callback) { return false; }
-#endif /* !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) */
+#endif /* !defined(_WIN32) && !defined(__APPLE__) && !defined(WITH_FONTCONFIG) && !defined(WITH_COCOA) */

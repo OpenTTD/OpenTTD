@@ -1,6 +1,7 @@
 add_files(
     crashlog_osx.cpp
     font_osx.cpp
+    font_osx.h
     macos.h
     macos.mm
     osx_stdafx.h

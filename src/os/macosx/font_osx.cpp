@@ -9,12 +9,20 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
+#include "font_osx.h"
+#include "../../blitter/factory.hpp"
+#include "../../fileio_func.h"
 #include "../../fontdetection.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
+#include "../../zoom_func.h"
 #include "macos.h"
+#include <cmath>
+
+#include "../../table/control_codes.h"
 
 #include "safeguards.h"
+
 
 #ifdef WITH_FREETYPE
 
@@ -135,4 +143,275 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 	callback->FindMissingGlyphs();
 	return result;
+}
+
+
+CoreTextFontCache::CoreTextFontCache(FontSize fs, CFAutoRelease<CTFontDescriptorRef> &&font, int pixels) : TrueTypeFontCache(fs, pixels), font_desc(std::move(font))
+{
+	this->SetFontSize(pixels);
+}
+
+/**
+ * Reset cached glyphs.
+ */
+void CoreTextFontCache::ClearFontCache()
+{
+	/* GUI scaling might have changed, determine font size anew if it was automatically selected. */
+	if (this->font) this->SetFontSize(this->req_size);
+
+	this->TrueTypeFontCache::ClearFontCache();
+}
+
+void CoreTextFontCache::SetFontSize(int pixels)
+{
+	if (pixels == 0) {
+		/* Try to determine a good height based on the height recommended by the font. */
+		int scaled_height = ScaleFontTrad(this->GetDefaultFontHeight(this->fs));
+		pixels = scaled_height;
+
+		CFAutoRelease<CTFontRef> font(CTFontCreateWithFontDescriptor(this->font_desc.get(), 0.0f, nullptr));
+		if (font) {
+			float min_size = 0.0f;
+
+			/* The 'head' TrueType table contains information about the
+			 * 'smallest readable size in pixels'. Try to read it, if
+			 * that doesn't work, we use the default OS font size instead.
+			 *
+			 * Reference: https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6head.html */
+			CFAutoRelease<CFDataRef> data(CTFontCopyTable(font.get(), kCTFontTableHead, kCTFontTableOptionNoOptions));
+			if (data) {
+				uint16_t lowestRecPPEM; // At offset 46 of the 'head' TrueType table.
+				CFDataGetBytes(data.get(), CFRangeMake(46, sizeof(lowestRecPPEM)), (UInt8 *)&lowestRecPPEM);
+				min_size = CFSwapInt16BigToHost(lowestRecPPEM); // TrueType data is always big-endian.
+			} else {
+				CFAutoRelease<CFNumberRef> size((CFNumberRef)CTFontCopyAttribute(font.get(), kCTFontSizeAttribute));
+				CFNumberGetValue(size.get(), kCFNumberFloatType, &min_size);
+			}
+
+			/* Font height is minimum height plus the difference between the default
+			 * height for this font size and the small size. */
+			int diff = scaled_height - ScaleFontTrad(this->GetDefaultFontHeight(FS_SMALL));
+			pixels = Clamp(std::min<int>(min_size, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height, MAX_FONT_SIZE);
+		}
+	} else {
+		pixels = ScaleFontTrad(pixels);
+	}
+	this->used_size = pixels;
+
+	this->font.reset(CTFontCreateWithFontDescriptor(this->font_desc.get(), pixels, nullptr));
+
+	/* Query the font metrics we needed. We generally round all values up to
+	 * make sure we don't inadvertently cut off a row or column of pixels,
+	 * except when determining glyph to glyph advances. */
+	this->units_per_em = CTFontGetUnitsPerEm(this->font.get());
+	this->ascender = (int)std::ceil(CTFontGetAscent(this->font.get()));
+	this->descender = -(int)std::ceil(CTFontGetDescent(this->font.get()));
+	this->height = this->ascender - this->descender;
+
+	/* Get real font name. */
+	char name[128];
+	CFAutoRelease<CFStringRef> font_name((CFStringRef)CTFontCopyAttribute(this->font.get(), kCTFontDisplayNameAttribute));
+	CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
+	this->font_name = name;
+
+	DEBUG(freetype, 2, "Loaded font '%s' with size %d", this->font_name.c_str(), pixels);
+}
+
+GlyphID CoreTextFontCache::MapCharToGlyph(WChar key)
+{
+	assert(IsPrintable(key));
+
+	if (key >= SCC_SPRITE_START && key <= SCC_SPRITE_END) {
+		return this->parent->MapCharToGlyph(key);
+	}
+
+	/* Convert characters outside of the Basic Multilingual Plane into surrogate pairs. */
+	UniChar chars[2];
+	if (key >= 0x010000U) {
+		chars[0] = (UniChar)(((key - 0x010000U) >> 10) + 0xD800);
+		chars[1] = (UniChar)(((key - 0x010000U) & 0x3FF) + 0xDC00);
+	} else {
+		chars[0] = (UniChar)(key & 0xFFFF);
+	}
+
+	CGGlyph glyph[2] = {0, 0};
+	if (CTFontGetGlyphsForCharacters(this->font.get(), chars, glyph, key >= 0x010000U ? 2 : 1)) {
+		return glyph[0];
+	}
+
+	return 0;
+}
+
+const void *CoreTextFontCache::InternalGetFontTable(uint32 tag, size_t &length)
+{
+	CFAutoRelease<CFDataRef> data(CTFontCopyTable(this->font.get(), (CTFontTableTag)tag, kCTFontTableOptionNoOptions));
+	if (!data) return nullptr;
+
+	length = CFDataGetLength(data.get());
+	auto buf = MallocT<UInt8>(length);
+
+	CFDataGetBytes(data.get(), CFRangeMake(0, (CFIndex)length), buf);
+	return buf;
+}
+
+const Sprite *CoreTextFontCache::InternalGetGlyph(GlyphID key, bool use_aa)
+{
+	/* Get glyph size. */
+	CGGlyph glyph = (CGGlyph)key;
+	CGRect bounds = CGRectNull;
+	if (MacOSVersionIsAtLeast(10, 8, 0)) {
+		bounds = CTFontGetOpticalBoundsForGlyphs(this->font.get(), &glyph, nullptr, 1, 0);
+	} else {
+		bounds = CTFontGetBoundingRectsForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1);
+	}
+	if (CGRectIsNull(bounds)) usererror("Unable to render font glyph");
+
+	uint bb_width = (uint)std::ceil(bounds.size.width) + 1; // Sometimes the glyph bounds are too tight and cut of the last pixel after rounding.
+	uint bb_height = (uint)std::ceil(bounds.size.height);
+
+	/* Add 1 pixel for the shadow on the medium font. Our sprite must be at least 1x1 pixel. */
+	uint width = std::max(1U, bb_width + (this->fs == FS_NORMAL ? 1 : 0));
+	uint height = std::max(1U, bb_height + (this->fs == FS_NORMAL ? 1 : 0));
+
+	/* Limit glyph size to prevent overflows later on. */
+	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) usererror("Font glyph is too large");
+
+	SpriteLoader::Sprite sprite;
+	sprite.AllocateData(ZOOM_LVL_NORMAL, width * height);
+	sprite.type = ST_FONT;
+	sprite.width = width;
+	sprite.height = height;
+	sprite.x_offs = (int16)std::round(CGRectGetMinX(bounds));
+	sprite.y_offs = this->ascender - (int16)std::ceil(CGRectGetMaxY(bounds));
+
+	if (bounds.size.width > 0) {
+		/* Glyph is not a white-space glyph. Render it to a bitmap context. */
+
+		/* We only need the alpha channel, as we apply our own colour constants to the sprite. */
+		int pitch = Align(bb_width, 16);
+		byte *bmp = CallocT<byte>(bb_height * pitch);
+		CFAutoRelease<CGContextRef> context(CGBitmapContextCreate(bmp, bb_width, bb_height, 8, pitch, nullptr, kCGImageAlphaOnly));
+		/* Set antialias according to requirements. */
+		CGContextSetAllowsAntialiasing(context.get(), use_aa);
+		CGContextSetAllowsFontSubpixelPositioning(context.get(), use_aa);
+		CGContextSetAllowsFontSubpixelQuantization(context.get(), !use_aa);
+		CGContextSetShouldSmoothFonts(context.get(), false);
+
+		float offset = 0.5f; // CoreText uses 0.5 as pixel centers. We want pixel alignment.
+		CGPoint pos{offset - bounds.origin.x, offset - bounds.origin.y};
+		CTFontDrawGlyphs(this->font.get(), &glyph, &pos, 1, context.get());
+
+		/* Draw shadow for medium size. */
+		if (this->fs == FS_NORMAL && !use_aa) {
+			for (uint y = 0; y < bb_height; y++) {
+				for (uint x = 0; x < bb_width; x++) {
+					if (bmp[y * pitch + x] > 0) {
+						sprite.data[1 + x + (1 + y) * sprite.width].m = SHADOW_COLOUR;
+						sprite.data[1 + x + (1 + y) * sprite.width].a = use_aa ? bmp[x + y * pitch] : 0xFF;
+					}
+				}
+			}
+		}
+
+		/* Extract pixel data. */
+		for (uint y = 0; y < bb_height; y++) {
+			for (uint x = 0; x < bb_width; x++) {
+				if (bmp[y * pitch + x] > 0) {
+					sprite.data[x + y * sprite.width].m = FACE_COLOUR;
+					sprite.data[x + y * sprite.width].a = use_aa ? bmp[x + y * pitch] : 0xFF;
+				}
+			}
+		}
+	}
+
+	GlyphEntry new_glyph;
+	new_glyph.sprite = BlitterFactory::GetCurrentBlitter()->Encode(&sprite, AllocateFont);
+	new_glyph.width = (byte)std::round(CTFontGetAdvancesForGlyphs(this->font.get(), kCTFontOrientationDefault, &glyph, nullptr, 1));
+	this->SetGlyphPtr(key, &new_glyph);
+
+	return new_glyph.sprite;
+}
+
+/**
+ * Loads the TrueType font.
+ * If a CoreText font description is present, e.g. from the automatic font
+ * fallback search, use it. Otherwise, try to resolve it by font name.
+ * @param fs The font size to load.
+ */
+void LoadCoreTextFont(FontSize fs)
+{
+	static const char *SIZE_TO_NAME[] = { "medium", "small", "large", "mono" };
+
+	FreeTypeSubSetting *settings = nullptr;
+	switch (fs) {
+		default: NOT_REACHED();
+		case FS_SMALL:  settings = &_freetype.small;  break;
+		case FS_NORMAL: settings = &_freetype.medium; break;
+		case FS_LARGE:  settings = &_freetype.large;  break;
+		case FS_MONO:   settings = &_freetype.mono;   break;
+	}
+
+	if (StrEmpty(settings->font)) return;
+
+	CFAutoRelease<CTFontDescriptorRef> font_ref;
+
+	if (settings->os_handle != nullptr) {
+		font_ref.reset(static_cast<CTFontDescriptorRef>(const_cast<void *>(settings->os_handle)));
+		CFRetain(font_ref.get()); // Increase ref count to match a later release.
+	}
+
+	if (!font_ref && MacOSVersionIsAtLeast(10, 6, 0)) {
+		/* Might be a font file name, try load it. Direct font loading is
+		 * only supported starting on OSX 10.6. */
+		CFAutoRelease<CFStringRef> path;
+
+		/* See if this is an absolute path. */
+		if (FileExists(settings->font)) {
+			path.reset(CFStringCreateWithCString(kCFAllocatorDefault, settings->font, kCFStringEncodingUTF8));
+		} else {
+			/* Scan the search-paths to see if it can be found. */
+			std::string full_font = FioFindFullPath(BASE_DIR, settings->font);
+			if (!full_font.empty()) {
+				path.reset(CFStringCreateWithCString(kCFAllocatorDefault, full_font.c_str(), kCFStringEncodingUTF8));
+			}
+		}
+
+		if (path) {
+			/* Try getting a font descriptor to see if the system can use it. */
+			CFAutoRelease<CFURLRef> url(CFURLCreateWithFileSystemPath(kCFAllocatorDefault, path.get(), kCFURLPOSIXPathStyle, false));
+			CFAutoRelease<CFArrayRef> descs(CTFontManagerCreateFontDescriptorsFromURL(url.get()));
+
+			if (descs && CFArrayGetCount(descs.get()) > 0) {
+				font_ref.reset((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), 0));
+				CFRetain(font_ref.get());
+			} else {
+				ShowInfoF("Unable to load file '%s' for %s font, using default OS font selection instead", settings->font, SIZE_TO_NAME[fs]);
+			}
+		}
+	}
+
+	if (!font_ref) {
+		CFAutoRelease<CFStringRef> name(CFStringCreateWithCString(kCFAllocatorDefault, settings->font, kCFStringEncodingUTF8));
+
+		/* Simply creating the font using CTFontCreateWithNameAndSize will *always* return
+		 * something, no matter the name. As such, we can't use it to check for existence.
+		 * We instead query the list of all font descriptors that match the given name which
+		 * does not do this stupid name fallback. */
+		CFAutoRelease<CTFontDescriptorRef> name_desc(CTFontDescriptorCreateWithNameAndSize(name.get(), 0.0));
+		CFAutoRelease<CFSetRef> mandatory_attribs(CFSetCreate(kCFAllocatorDefault, const_cast<const void **>(reinterpret_cast<const void * const *>(&kCTFontNameAttribute)), 1, &kCFTypeSetCallBacks));
+		CFAutoRelease<CFArrayRef> descs(CTFontDescriptorCreateMatchingFontDescriptors(name_desc.get(), mandatory_attribs.get()));
+
+		/* Assume the first result is the one we want. */
+		if (descs && CFArrayGetCount(descs.get()) > 0) {
+			font_ref.reset((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), 0));
+			CFRetain(font_ref.get());
+		}
+	}
+
+	if (!font_ref) {
+		ShowInfoF("Unable to use '%s' for %s font, using sprite font instead", settings->font, SIZE_TO_NAME[fs]);
+		return;
+	}
+
+	new CoreTextFontCache(fs, std::move(font_ref), settings->size);
 }

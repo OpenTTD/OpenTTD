@@ -482,7 +482,7 @@ jobs:
         vcpkgDirectory: '/usr/local/share/vcpkg'
         doNotUpdateVcpkg: false
         vcpkgGitCommitId: 2a42024b53ebb512fb5dd63c523338bf26c8489c
-        vcpkgArguments: 'freetype:x64-osx liblzma:x64-osx lzo:x64-osx freetype:arm64-osx liblzma:arm64-osx lzo:arm64-osx'
+        vcpkgArguments: 'liblzma:x64-osx lzo:x64-osx liblzma:arm64-osx lzo:arm64-osx'
 
     - name: Build tools
       run: |

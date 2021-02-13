@@ -38,7 +38,7 @@
 #include "sound_func.h"
 #include "company_func.h"
 #include "rev.h"
-#if defined(WITH_FREETYPE) || defined(_WIN32)
+#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 #include "fontcache.h"
 #endif
 #include "textbuf_gui.h"
@@ -67,7 +67,7 @@
 #include "void_map.h"
 #include "station_base.h"
 
-#if defined(WITH_FREETYPE) || defined(_WIN32)
+#if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
 #define HAS_TRUETYPE_FONT
 #endif
 
