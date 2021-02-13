@@ -576,27 +576,22 @@ private:
 
 	/**
 	 * Handle the click on the full load button.
-	 * @param load_type the way to load.
+	 * @param load_type Load flag to apply. If matches existing load type, toggles to default of 'load if possible'.
+	 * @param toggle If we toggle or not (used for hotkey behavior)
 	 */
-	void OrderClick_FullLoad(int load_type)
+	void OrderClick_FullLoad(OrderLoadFlags load_type, bool toggle = false)
 	{
 		VehicleOrderID sel_ord = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel_ord);
 
-		if (order == nullptr || order->GetLoadType() == load_type) return;
+		if (order == nullptr) return;
 
-		if (load_type < 0) {
-			load_type = order->GetLoadType() == OLF_LOAD_IF_POSSIBLE ? OLF_FULL_LOAD_ANY : OLF_LOAD_IF_POSSIBLE;
+		if (toggle && order->GetLoadType() == load_type) {
+			load_type = OLF_LOAD_IF_POSSIBLE; // reset to 'default'
 		}
-		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 20), MOF_LOAD | (load_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
-	}
+		if (order->GetLoadType() == load_type) return; // If we still match, do nothing
 
-	/**
-	 * Handle the 'no loading' hotkey
-	 */
-	void OrderHotkey_NoLoad()
-	{
-		this->OrderClick_FullLoad(OLFB_NO_LOAD);
+		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 20), MOF_LOAD | (load_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
@@ -631,17 +626,20 @@ private:
 
 	/**
 	 * Handle the click on the unload button.
+	 * @param unload_type Unload flag to apply. If matches existing unload type, toggles to default of 'unload if possible'.
+	 * @param toggle If we toggle or not (used for hotkey behavior)
 	 */
-	void OrderClick_Unload(int unload_type)
+	void OrderClick_Unload(OrderUnloadFlags unload_type, bool toggle = false)
 	{
 		VehicleOrderID sel_ord = this->OrderGetSel();
 		const Order *order = this->vehicle->GetOrder(sel_ord);
 
-		if (order == nullptr || order->GetUnloadType() == unload_type) return;
+		if (order == nullptr) return;
 
-		if (unload_type < 0) {
-			unload_type = order->GetUnloadType() == OUF_UNLOAD_IF_POSSIBLE ? OUFB_UNLOAD : OUF_UNLOAD_IF_POSSIBLE;
+		if (toggle && order->GetUnloadType() == unload_type) {
+			unload_type = OUF_UNLOAD_IF_POSSIBLE;
 		}
+		if (order->GetUnloadType() == unload_type) return; // If we still match, do nothing
 
 		DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 20), MOF_UNLOAD | (unload_type << 4), CMD_MODIFY_ORDER | CMD_MSG(STR_ERROR_CAN_T_MODIFY_THIS_ORDER));
 
@@ -650,22 +648,6 @@ private:
 			DoCommandP(this->vehicle->tile, this->vehicle->index + (sel_ord << 20), MOF_LOAD | (OLFB_NO_LOAD << 4), CMD_MODIFY_ORDER);
 			this->SetWidgetDirty(WID_O_FULL_LOAD);
 		}
-	}
-
-	/**
-	 * Handle the transfer hotkey
-	 */
-	void OrderHotkey_Transfer()
-	{
-		this->OrderClick_Unload(OUFB_TRANSFER);
-	}
-
-	/**
-	 * Handle the 'no unload' hotkey
-	 */
-	void OrderHotkey_NoUnload()
-	{
-		this->OrderClick_Unload(OUFB_NO_UNLOAD);
 	}
 
 	/**
@@ -1262,7 +1244,7 @@ public:
 
 			case WID_O_FULL_LOAD:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_FullLoad(-1);
+					this->OrderClick_FullLoad(OLF_FULL_LOAD_ANY, true);
 				} else {
 					ShowDropDownMenu(this, _order_full_load_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetLoadType(), WID_O_FULL_LOAD, 0, 2);
 				}
@@ -1270,7 +1252,7 @@ public:
 
 			case WID_O_UNLOAD:
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {
-					this->OrderClick_Unload(-1);
+					this->OrderClick_Unload(OUFB_UNLOAD, true);
 				} else {
 					ShowDropDownMenu(this, _order_unload_drowdown, this->vehicle->GetOrder(this->OrderGetSel())->GetUnloadType(), WID_O_UNLOAD, 0, 8);
 				}
@@ -1361,11 +1343,11 @@ public:
 				break;
 
 			case WID_O_FULL_LOAD:
-				this->OrderClick_FullLoad(index);
+				this->OrderClick_FullLoad((OrderLoadFlags)index);
 				break;
 
 			case WID_O_UNLOAD:
-				this->OrderClick_Unload(index);
+				this->OrderClick_Unload((OrderUnloadFlags)index);
 				break;
 
 			case WID_O_GOTO:
@@ -1434,17 +1416,17 @@ public:
 		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
 		switch (hotkey) {
-			case OHK_SKIP:           this->OrderClick_Skip();          break;
-			case OHK_DELETE:         this->OrderClick_Delete();        break;
+			case OHK_SKIP:           this->OrderClick_Skip(); break;
+			case OHK_DELETE:         this->OrderClick_Delete(); break;
 			case OHK_GOTO:           this->OrderClick_Goto(OPOS_GOTO); break;
-			case OHK_NONSTOP:        this->OrderClick_Nonstop(-1);     break;
-			case OHK_FULLLOAD:       this->OrderClick_FullLoad(-1);    break;
-			case OHK_UNLOAD:         this->OrderClick_Unload(-1);      break;
-			case OHK_NEAREST_DEPOT:  this->OrderClick_NearestDepot();  break;
-			case OHK_ALWAYS_SERVICE: this->OrderClick_Service(-1);     break;
-			case OHK_TRANSFER:       this->OrderHotkey_Transfer();     break;
-			case OHK_NO_UNLOAD:      this->OrderHotkey_NoUnload();     break;
-			case OHK_NO_LOAD:        this->OrderHotkey_NoLoad();       break;
+			case OHK_NONSTOP:        this->OrderClick_Nonstop(-1); break;
+			case OHK_FULLLOAD:       this->OrderClick_FullLoad(OLF_FULL_LOAD_ANY, true); break;
+			case OHK_UNLOAD:         this->OrderClick_Unload(OUFB_UNLOAD, true); break;
+			case OHK_NEAREST_DEPOT:  this->OrderClick_NearestDepot(); break;
+			case OHK_ALWAYS_SERVICE: this->OrderClick_Service(-1); break;
+			case OHK_TRANSFER:       this->OrderClick_Unload(OUFB_TRANSFER, true); break;
+			case OHK_NO_UNLOAD:      this->OrderClick_Unload(OUFB_NO_UNLOAD, true); break;
+			case OHK_NO_LOAD:        this->OrderClick_FullLoad(OLFB_NO_LOAD, true); break;
 			default: return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
