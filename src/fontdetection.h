@@ -27,7 +27,6 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face);
 
 #endif /* WITH_FREETYPE */
 
-#if defined(WITH_FREETYPE) || defined(_WIN32)
 /**
  * We would like to have a fallback font as the current one
  * doesn't contain all characters we need.
@@ -38,8 +37,6 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face);
  * @param callback The function to call to check for missing glyphs.
  * @return true if a font has been set, false otherwise.
  */
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid, class MissingGlyphSearcher *callback);
-
-#endif /* defined(WITH_FREETYPE) || defined(WIN32)*/
+bool SetFallbackFont(struct FreeTypeSettings *settings, const char *language_isocode, int winlangid, class MissingGlyphSearcher *callback);
 
 #endif

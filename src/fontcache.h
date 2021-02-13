@@ -28,6 +28,9 @@ protected:
 	int ascender;                     ///< The ascender value of the font.
 	int descender;                    ///< The descender value of the font.
 	int units_per_em;                 ///< The units per EM value of the font.
+
+	static int GetDefaultFontHeight(FontSize fs);
+
 public:
 	FontCache(FontSize fs);
 	virtual ~FontCache();
@@ -209,8 +212,6 @@ static inline bool GetDrawGlyphShadow(FontSize size)
 	return FontCache::Get(size)->GetDrawGlyphShadow();
 }
 
-#if defined(WITH_FREETYPE) || defined(_WIN32)
-
 /** Settings for a single freetype font. */
 struct FreeTypeSubSetting {
 	char font[MAX_PATH]; ///< The name of the font, or path to the font.
@@ -229,8 +230,6 @@ struct FreeTypeSettings {
 };
 
 extern FreeTypeSettings _freetype;
-
-#endif /* defined(WITH_FREETYPE) || defined(_WIN32) */
 
 void InitFreeType(bool monospace);
 void UninitFreeType();
