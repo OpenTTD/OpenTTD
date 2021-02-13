@@ -440,7 +440,7 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
 			int diff = scaled_height - ScaleFontTrad(_default_font_height[FS_SMALL]);
-			pixels = Clamp(std::min<uint>(head->Lowest_Rec_PPEM, 20u) + diff, scaled_height, MAX_FONT_SIZE);
+			pixels = Clamp(std::min<uint>(head->Lowest_Rec_PPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height, MAX_FONT_SIZE);
 		}
 	} else {
 		pixels = ScaleFontTrad(pixels);
@@ -608,7 +608,7 @@ const Sprite *FreeTypeFontCache::InternalGetGlyph(GlyphID key, bool aa)
 	uint height = std::max(1U, (uint)slot->bitmap.rows  + (this->fs == FS_NORMAL));
 
 	/* Limit glyph size to prevent overflows later on. */
-	if (width > 256 || height > 256) usererror("Font glyph is too large");
+	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) usererror("Font glyph is too large");
 
 	/* FreeType has rendered the glyph, now we allocate a sprite and copy the image into it */
 	SpriteLoader::Sprite sprite;

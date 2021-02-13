@@ -414,7 +414,7 @@ void Win32FontCache::SetFontSize(FontSize fs, int pixels)
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
 			int diff = scaled_height - ScaleFontTrad(this->GetDefaultFontHeight(FS_SMALL));
-			pixels = Clamp(std::min(otm->otmusMinimumPPEM, 20u) + diff, scaled_height, MAX_FONT_SIZE);
+			pixels = Clamp(std::min(otm->otmusMinimumPPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height, MAX_FONT_SIZE);
 
 			SelectObject(dc, old);
 			DeleteObject(temp);
@@ -489,7 +489,7 @@ void Win32FontCache::ClearFontCache()
 	uint height = std::max(1U, (uint)gm.gmBlackBoxY + (this->fs == FS_NORMAL));
 
 	/* Limit glyph size to prevent overflows later on. */
-	if (width > 256 || height > 256) usererror("Font glyph is too large");
+	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) usererror("Font glyph is too large");
 
 	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
 	SpriteLoader::Sprite sprite;
