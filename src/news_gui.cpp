@@ -34,6 +34,7 @@
 #include "settings_internal.h"
 #include "guitimer_func.h"
 #include "group_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/news_widget.h"
 
@@ -1174,8 +1175,8 @@ struct MessageHistoryWindow : Window {
 		bool rtl = _current_text_dir == TD_RTL;
 		uint date_left  = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width : r.left + WD_FRAMERECT_LEFT;
 		uint date_right = rtl ? r.right - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT + this->date_width;
-		uint news_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->date_width + WD_FRAMERECT_RIGHT;
-		uint news_right = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width - WD_FRAMERECT_RIGHT : r.right - WD_FRAMERECT_RIGHT;
+		uint news_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->date_width + WD_FRAMERECT_RIGHT + ScaleFontTrad(5);
+		uint news_right = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width - WD_FRAMERECT_RIGHT - ScaleFontTrad(5) : r.right - WD_FRAMERECT_RIGHT;
 		for (int n = this->vscroll->GetCapacity(); n > 0; n--) {
 			SetDParam(0, ni->date);
 			DrawString(date_left, date_right, y, STR_SHORT_DATE);
