@@ -20,8 +20,8 @@
 #include "../../video/video_driver.hpp"
 
 #include <windows.h>
+#include <mmsystem.h>
 #include <signal.h>
-#include <timeapi.h>
 
 #include "../../safeguards.h"
 

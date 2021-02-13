@@ -14,11 +14,11 @@
 #include "../../fileio_func.h"
 #include <windows.h>
 #include <fcntl.h>
+#include <mmsystem.h>
 #include <regstr.h>
 #define NO_SHOBJIDL_SORTDIRECTION // Avoid multiple definition of SORT_ASCENDING
 #include <shlobj.h> /* SHGetFolderPath */
 #include <shellapi.h>
-#include <timeapi.h>
 #include "win32.h"
 #include "../../fios.h"
 #include "../../core/alloc_func.hpp"
