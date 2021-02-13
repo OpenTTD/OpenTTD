@@ -183,7 +183,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		this->SetupHighScoreEndWindow();
 		Point pt = this->GetTopLeft(ScaleGUITrad(640), ScaleGUITrad(480));
 
-		SetDParam(0, ORIGINAL_END_YEAR);
+		SetDParam(0, _settings_game.game_creation.ending_year);
 		DrawStringMultiLine(pt.x + ScaleGUITrad(70), pt.x + ScaleGUITrad(570), pt.y, pt.y + ScaleGUITrad(140), !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
 
 		/* Draw Highscore peepz */
