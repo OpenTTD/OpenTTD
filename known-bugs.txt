@@ -409,3 +409,12 @@ Involuntary cargo exchange with cargodist via neutral station [#6114]:
         shared station make the order "no unload" and if you're unloading make
         it "no load". Cargodist will then figure out that it should not create
         such a route.
+
+Incorrect ending year displayed in end of game newspaper [#8625]
+        The ending year of the game is configurable, but the date displayed in
+        the newspaper at the end of the game is part of the graphics, not text.
+        So to fix this would involve fixing the graphics in every baseset,
+        including the original. Additionally, basesets are free to put this
+        text in different positions (which they do), making a proper solution
+        to this infinitely more complex for a part of the game that fewer than
+        1% of players ever see.
