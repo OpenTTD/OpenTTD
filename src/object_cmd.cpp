@@ -497,7 +497,10 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			return_cmd_error(STR_ERROR_OWNED_BY);
 		} else if ((spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0 && (spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
-			if (!_cheats.magic_bulldozer.value) return CMD_ERROR;
+			if (!_cheats.magic_bulldozer.value) {
+				if (type == OBJECT_HQ) return_cmd_error(STR_ERROR_COMPANY_HEADQUARTERS_IN);
+				return CMD_ERROR;
+			}
 
 			/* Removing with the cheat costs more in TTDPatch / the specs. */
 			cost.MultiplyCost(25);
