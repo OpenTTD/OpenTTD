@@ -174,12 +174,16 @@ static CTRunDelegateCallbacks _sprite_font_callback = {
 	for (const auto &i : fontMapping) {
 		if (i.first - last == 0) continue;
 
-		if (!_font_cache[i.second->fc->GetSize()]) {
-			/* Cache font information. */
-			CFAutoRelease<CFStringRef> font_name(CFStringCreateWithCString(kCFAllocatorDefault, i.second->fc->GetFontName(), kCFStringEncodingUTF8));
-			_font_cache[i.second->fc->GetSize()].reset(CTFontCreateWithName(font_name.get(), i.second->fc->GetFontSize(), nullptr));
+		CTFontRef font = (CTFontRef)i.second->fc->GetOSHandle();
+		if (font == nullptr) {
+			if (!_font_cache[i.second->fc->GetSize()]) {
+				/* Cache font information. */
+				CFAutoRelease<CFStringRef> font_name(CFStringCreateWithCString(kCFAllocatorDefault, i.second->fc->GetFontName(), kCFStringEncodingUTF8));
+				_font_cache[i.second->fc->GetSize()].reset(CTFontCreateWithName(font_name.get(), i.second->fc->GetFontSize(), nullptr));
+			}
+			font = _font_cache[i.second->fc->GetSize()].get();
 		}
-		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, i.first - last), kCTFontAttributeName, _font_cache[i.second->fc->GetSize()].get());
+		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, i.first - last), kCTFontAttributeName, font);
 
 		CGColorRef color = CGColorCreateGenericGray((uint8)i.second->colour / 255.0f, 1.0f); // We don't care about the real colours, just that they are different.
 		CFAttributedStringSetAttribute(str.get(), CFRangeMake(last, i.first - last), kCTForegroundColorAttributeName, color);
@@ -300,7 +304,7 @@ void MacOSRegisterExternalFont(const char *file_path)
 	CTFontManagerRegisterFontsForURL(url.get(), kCTFontManagerScopeProcess, nullptr);
 }
 
-/** Store current language locale as a CoreFounation locale. */
+/** Store current language locale as a CoreFoundation locale. */
 void MacOSSetCurrentLocaleName(const char *iso_code)
 {
 	if (!MacOSVersionIsAtLeast(10, 5, 0)) return;
