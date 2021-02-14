@@ -564,6 +564,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 - (void)mouseUp:(NSEvent *)event
 {
 	if (self->_emulated_down) {
+		self->_emulated_down = false;
 		[ self rightMouseUp:event ];
 	} else {
 		_left_button_down = false;
