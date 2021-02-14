@@ -673,7 +673,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	BOOL interpret_keys = YES;
 	if (down) {
 		/* Map keycode to OTTD code. */
-		auto vk = std::find_if(std::begin(_vk_mapping), std::end(_vk_mapping), [=](const VkMapping &m) { return m.vk_from == keycode; });
+		auto vk = std::find_if(std::begin(_vk_mapping), std::end(_vk_mapping), [=](const CocoaVkMapping &m) { return m.vk_from == keycode; });
 		uint32 pressed_key = vk != std::end(_vk_mapping) ? vk->map_to : 0;
 
 		if (modifiers & NSShiftKeyMask)     pressed_key |= WKC_SHIFT;
