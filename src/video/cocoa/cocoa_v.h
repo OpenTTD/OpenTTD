@@ -73,6 +73,7 @@ public:
 
 protected:
 	Dimension GetScreenSize() const override;
+	float GetDPIScale() override;
 
 private:
 	bool PollEvent();
