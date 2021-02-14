@@ -294,6 +294,12 @@ Dimension VideoDriver_Cocoa::GetScreenSize() const
 	return { static_cast<uint>(NSWidth(frame)), static_cast<uint>(NSHeight(frame)) };
 }
 
+/** Get DPI scale of our window. */
+float VideoDriver_Cocoa::GetDPIScale()
+{
+	return this->cocoaview != nil ? [ this->cocoaview getContentsScale ] : 1.0f;
+}
+
 /**
  * Are we in fullscreen mode?
  * @return whether fullscreen mode is currently used
