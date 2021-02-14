@@ -132,14 +132,14 @@
 #define QZ_IBOOK_UP     0x3E
 
 
-struct VkMapping {
+struct CocoaVkMapping {
 	unsigned short vk_from;
 	byte map_to;
 };
 
 #define AS(x, z) {x, z}
 
-static const VkMapping _vk_mapping[] = {
+static const CocoaVkMapping _vk_mapping[] = {
 	AS(QZ_BACKQUOTE,  WKC_BACKQUOTE), // key left of '1'
 	AS(QZ_BACKQUOTE2, WKC_BACKQUOTE), // some keyboards have it on another scancode
 

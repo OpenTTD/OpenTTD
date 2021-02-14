@@ -114,7 +114,7 @@ bool VideoDriver_Win32::ClaimMousePointer()
 	return true;
 }
 
-struct VkMapping {
+struct Win32VkMapping {
 	byte vk_from;
 	byte vk_count;
 	byte map_to;
@@ -123,7 +123,7 @@ struct VkMapping {
 #define AS(x, z) {x, 0, z}
 #define AM(x, y, z, w) {x, y - x, z}
 
-static const VkMapping _vk_mapping[] = {
+static const Win32VkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
 	AM(VK_PRIOR, VK_DOWN, WKC_PAGEUP, WKC_DOWN),
 	/* Map letters & digits */
@@ -166,7 +166,7 @@ static const VkMapping _vk_mapping[] = {
 
 static uint MapWindowsKey(uint sym)
 {
-	const VkMapping *map;
+	const Win32VkMapping *map;
 	uint key = 0;
 
 	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {

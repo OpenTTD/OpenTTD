@@ -401,7 +401,7 @@ void VideoDriver_SDL::EditBoxLostFocus()
 }
 
 
-struct VkMapping {
+struct SDLVkMapping {
 	SDL_Keycode vk_from;
 	byte vk_count;
 	byte map_to;
@@ -413,7 +413,7 @@ struct VkMapping {
 #define AS_UP(x, z) {x, 0, z, true}
 #define AM_UP(x, y, z, w) {x, (byte)(y - x), z, true}
 
-static const VkMapping _vk_mapping[] = {
+static const SDLVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
 	AS_UP(SDLK_PAGEUP,   WKC_PAGEUP),
 	AS_UP(SDLK_PAGEDOWN, WKC_PAGEDOWN),
@@ -468,7 +468,7 @@ static const VkMapping _vk_mapping[] = {
 
 static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, WChar *character)
 {
-	const VkMapping *map;
+	const SDLVkMapping *map;
 	uint key = 0;
 	bool unprintable = false;
 
@@ -508,7 +508,7 @@ static uint ConvertSdlKeyIntoMy(SDL_Keysym *sym, WChar *character)
  */
 static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 {
-	const VkMapping *map;
+	const SDLVkMapping *map;
 	uint key = 0;
 
 	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
