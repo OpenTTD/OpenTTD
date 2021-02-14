@@ -4696,7 +4696,7 @@ STR_TOWN_BUILDING_NAME_OFFICE_BLOCK_1                           :Immeuble de bur
 STR_TOWN_BUILDING_NAME_SMALL_BLOCK_OF_FLATS_1                   :Petit immeuble résidentiel
 STR_TOWN_BUILDING_NAME_CHURCH_1                                 :Église
 STR_TOWN_BUILDING_NAME_LARGE_OFFICE_BLOCK_1                     :Gros immeuble de bureaux
-STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Bâtiments municipaux
+STR_TOWN_BUILDING_NAME_TOWN_HOUSES_1                            :Maisons de ville
 STR_TOWN_BUILDING_NAME_HOTEL_1                                  :Hôtel
 STR_TOWN_BUILDING_NAME_STATUE_1                                 :Statue
 STR_TOWN_BUILDING_NAME_FOUNTAIN_1                               :Fontaine

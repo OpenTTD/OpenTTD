@@ -2645,7 +2645,7 @@ STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Založi�
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Nahodné mesto
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Postaviť mesto na náhodnej pozícii
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Veľa náhodných miest
-STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pokryt mapu nahodne umiestnenymi mestami
+STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Pokryť mapu náhodne umiestnenými mestami
 
 STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Meno mesta:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Vložte meno mesta
@@ -2673,12 +2673,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Náhodn�
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financovať nový priemysel
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Vyberte vhodný typ priemyslu zo zoznamu
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Veľa náhodného priemyslu
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Pokryt mapu nahodne umiestnenym priemyslom
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Vytvoriť náhodný priemysel
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Pokryť mapu náhodne umiestneným priemyslom
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Vytvoriť náhodný priemysel
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Ste si istý, že chcete vytvoriť veľké množstvo náhodného priemyslu?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cena: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Vyhladat
-STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Postavit
-STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Založit
+STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Postaviť
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Založiť
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Odstrániť všetok priemysel
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Odstrániť všetok priemysel umiestnený na mape
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Odstrániť všetok priemysel
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ste si istý, že chcete odstrániť všetok priemysel?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Reťazec pre priemysel: {STRING}
@@ -4444,11 +4450,11 @@ STR_ERROR_STATUE_NO_SUITABLE_PLACE                              :{WHITE}... v ce
 
 # Industry related errors
 STR_ERROR_TOO_MANY_INDUSTRIES                                   :{WHITE}... príliš veľa priemyslu
-STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemozno vygenerovat priemysel ...
+STR_ERROR_CAN_T_GENERATE_INDUSTRIES                             :{WHITE}Nemožno vygenerovať priemysel...
 STR_ERROR_CAN_T_BUILD_HERE                                      :{WHITE}{STRING} sa tu nedá postaviť...
 STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY                         :{WHITE}Nemôžeš tu postaviť tento typ priemyslu...
 STR_ERROR_INDUSTRY_TOO_CLOSE                                    :{WHITE}... príliš blízko iného priemyslu
-STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najskor treba postavit mesto...
+STR_ERROR_MUST_FOUND_TOWN_FIRST                                 :{WHITE}... najskôr je potrebné založiť mesto
 STR_ERROR_ONLY_ONE_ALLOWED_PER_TOWN                             :{WHITE}... povolené len jedno pre 1mesto
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_TOWNS_WITH_POPULATION_OF_1200    :{WHITE}... môže byť postavené v mestách z populáciou väčšou ako 1200
 STR_ERROR_CAN_ONLY_BE_BUILT_IN_RAINFOREST                       :{WHITE}... môže byť postavené len v dažďovom pralese

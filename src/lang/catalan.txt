@@ -2606,12 +2606,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatori
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finança una nova indústria
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Escolleix el tipus d'indústria adequada d'aquesta llista
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Moltes indústries aleatòries
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Crea indústries aleatòries
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Omple el mapa amb indústries situades aleatòriament
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Crea indústries aleatòries
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Esteu segur que voleu crear moltes indústries aleatòries?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cost: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospecciona
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construeix
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finança
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Treu totes les indústries
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Treu totes les indústries que hi ha actualment al mapa.
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Treu totes les indústries
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Esteu segur que voleu treure totes les indústries?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial per la indústria {STRING}
