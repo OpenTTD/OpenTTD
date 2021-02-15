@@ -161,7 +161,7 @@ jobs:
         vcpkgDirectory: '/usr/local/share/vcpkg'
         doNotUpdateVcpkg: false
         vcpkgGitCommitId: 2a42024b53ebb512fb5dd63c523338bf26c8489c
-        vcpkgArguments: 'liblzma lzo'
+        vcpkgArguments: 'liblzma libpng lzo'
         vcpkgTriplet: '${{ matrix.arch }}-osx'
 
     - name: Install OpenGFX
