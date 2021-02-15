@@ -1722,8 +1722,10 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 #endif /* _WIN32 */
 	}
 
+	/* Always load settings. */
+	proc(ini, _settings, "patches", &_settings_newgame);
+
 	if (other_settings) {
-		proc(ini, _settings,         "patches",  &_settings_newgame);
 		proc(ini, _currency_settings,"currency", &_custom_currency);
 		proc(ini, _company_settings, "company",  &_settings_client.company);
 
