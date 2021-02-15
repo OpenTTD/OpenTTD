@@ -103,6 +103,7 @@ struct SettingDescBase {
 	OnChange *proc;         ///< callback procedure for when the value is changed
 	OnConvert *proc_cnvt;   ///< callback procedure when loading value mechanism fails
 	SettingCategory cat;    ///< assigned categories of the setting
+	bool startup;           ///< setting has to be loaded directly at startup?
 };
 
 struct SettingDesc {
