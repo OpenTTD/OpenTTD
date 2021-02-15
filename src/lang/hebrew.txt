@@ -936,8 +936,6 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :ריאל איר
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :רובל רוסי (RUB)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}רכבי כביש
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}בחר את צד הכביש בו יסעו כלי הרכב
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :סע בצד שמאל
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :סע בצד ימין
 
@@ -2754,7 +2752,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}גובה
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}הגבה את קו השלג
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}הנמך את קו השלג
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK} :מחולל פני שטח
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}אלגוריתם העצים:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} :סוג הקרקע
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK} :כמות ימים/אגמים
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}נהרות:

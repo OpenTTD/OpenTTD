@@ -939,8 +939,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dolar
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Hindistan Rupisi (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Karayolu taşıtları
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Trafik akış yönünü seçin
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Soldan trafik
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Sağdan trafik
 
@@ -2821,7 +2819,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Kar yük
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Kar yüksekliğini bir arttır
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Kar yüksekliğini bir azalt
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Harita üretici:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Ağaç algoritması:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Deniz seviyesi:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Nehirler:

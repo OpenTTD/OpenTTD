@@ -949,8 +949,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dòlar de Hong 
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúpia índia (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehicles de carretera
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Escull el sentit de circulació dels automòbils
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conducció per l'esquerra
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conducció per la dreta
 
@@ -1005,6 +1003,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Mida de la interfície
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Escull la mida dels elements de la interfície
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(detecta automàticament)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doble
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quàdruple
@@ -1012,6 +1011,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Quàdruple
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Mida de la lletra
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Seleccioneu la mida de les fonts de la interfície.
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(detecta automàticament)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doble
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quàdruple
@@ -2866,7 +2866,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Alçada 
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mou els estatges amb neu un pas amunt
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mou els estatges amb neu un pas avall
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generació de terrenys:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritme d'arbres:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivell de mar:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Quantitat de rius:

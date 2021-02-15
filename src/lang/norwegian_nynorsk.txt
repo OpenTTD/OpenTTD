@@ -919,8 +919,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Veg-køyrety
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vel køyreretning
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekøyring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høgrekøyring
 
@@ -2621,7 +2619,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Høgd p�
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt høgda på snøgrensa eitt hakk opp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høgda på snøgrensa eitt hakk ned
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havflate:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Elver:

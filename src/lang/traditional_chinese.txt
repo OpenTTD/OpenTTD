@@ -919,8 +919,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :喬治亞拉里
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亞爾 (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}車輛
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}選擇車輛在路上的行駛位置
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :靠左行駛
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :靠右行駛
 
@@ -2702,7 +2700,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪線�
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}將雪線高度上移一層
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}將雪線高度下移一層
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形產生器：
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}植樹演算法：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海平面：
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河流:

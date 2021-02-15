@@ -885,8 +885,6 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :راند جنو
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :مخصص ...
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}العربات البرية
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}اختار الجانب الذي تسير فيه المركبات
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :القيادة على اليسار
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :القيادة على اليمين
 
@@ -2362,7 +2360,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK} ارت�
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ارفع خط الثلج مستوى واحد
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}خفض خط الثلج مستوى واحد
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}مولد الخريطة:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK} لوغاريثم الشجر:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK} نوع التضاريس
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}مستوى البحر
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}انهار:

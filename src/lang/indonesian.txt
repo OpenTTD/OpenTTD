@@ -948,8 +948,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar Hong Kon
 STR_GAME_OPTIONS_CURRENCY_INR                                   :India Rupee (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kendaraan jalan raya
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pilih lajur yang dilalui bus/truk
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Berkendara di lajur kiri
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Berkendara di lajur kanan
 
@@ -2859,7 +2857,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Tinggi g
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Naikkan ketinggian garis salju satu angka
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Turunkan ketinggian garis salju satu angka
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Algoritma pulau:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritma pohon:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Area perairan:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Sungai:

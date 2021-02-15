@@ -884,8 +884,6 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :جنوبی اف
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :اپنی مرضی کی ۔۔۔
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}گاڑیاں
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}اختیار کریں کہ گاڑی سڑک کی کس طرف چلے
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :بائیں طرف چلے
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :دائیں طرف چلے
 

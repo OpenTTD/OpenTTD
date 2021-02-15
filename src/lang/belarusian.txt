@@ -1247,8 +1247,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Ганконс�
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Індыйская рупія (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Дарожны рух
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Па якім баку дарогі рухаецца аўтатранспарт
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Езьдзіць леваруч
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Езьдзіць праваруч
 
@@ -3114,7 +3112,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Вышы
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Падняць сьнегавую лінію
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Апусьціць сьнегавую лінію
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ґенэратар ляндшафту:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Альґарытм дрэваў:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тып ляндшафту:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Колькасьць азёраў/мораў:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Колькасьць рэк:

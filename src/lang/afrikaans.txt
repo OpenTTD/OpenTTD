@@ -938,8 +938,6 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminb
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pad voertuie
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Kies kant van pad waarop voertuie ry
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Bestuur aan linkerkant
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Bestuur aan regterkant
 
@@ -2793,7 +2791,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sneeu ly
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweeg die sneeu lyn een op
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweeg die sneeu lyn een af
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land genereerder:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Boom algoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrein tipe:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Seevlak:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Riviere:

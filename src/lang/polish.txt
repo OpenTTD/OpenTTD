@@ -1328,8 +1328,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dolar hongkońs
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indyjska (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Pojazdy drogowe
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wybierz stronę, po której będą jeździć samochody
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazda po lewej
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jazda po prawej
 
@@ -1384,6 +1382,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :inna
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Rozmiar interfejsu
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Wybierz rozmiar elementów interfejsu
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(wykryj automatycznie)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normalny
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Podwójny
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Poczwórny
@@ -1391,6 +1390,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Poczwórny
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Wielkość czcionki
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Wybierz wielkość czcionki interfejsu
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(wykryj automatycznie)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normalna
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Podwójna
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Poczwórna
@@ -2985,12 +2985,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Losowo
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Ufunduj nowe przedsiębiorstwo
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Wybierz przedsiębiorstwo z listy
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Wiele losowych
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Utwórz losowe przedsiębiorstwa
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Pokryj mapę losowo położonymi przedsiębiorstwami
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Utwórz losowe przedsiębiorstwa
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Czy na pewno chcesz ufundować wiele losowych przedsiębiorstw?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Koszt: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Zleć poszukiwanie
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Zbuduj
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Ufunduj
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Usuń wszystkie przedsiębiorstwa
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Usuwa wszystkie przedsiębiorstwa, istniejące obecnie na mapie
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Usuń wszystkie przedsiębiorstwa
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Czy na pewno chcesz usunąć wszystkie istniejące przedsiębiorstwa?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Kolejność przetwarzania dla {STRING}
@@ -3239,7 +3245,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Śnieg o
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Podnieś wysokość śniegu o jeden w górę
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Obniż wysokość śniegu o jeden w dół
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator terenu:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorytm drzew:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terenu:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Poziom wody:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Liczba rzek:

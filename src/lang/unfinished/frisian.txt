@@ -917,8 +917,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgyske Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iraanske Rial (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Weinen
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Selektearje de kant fan de dyk dêr't weinen ride moatte
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lofts ride
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rjochts ride
 
@@ -2491,7 +2489,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hichte s
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sniegrins ien omheech ferpleatsje:
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sniegrins ien nei beneden ferpleatsje:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lângenerator:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Boskalgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Seenivo:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rivieren:

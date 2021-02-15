@@ -1116,8 +1116,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rijal (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Drumska vozila
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Izaberi stranu puta kojom će se kretati drumska vozila
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Levom stranom
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Desnom stranom
 
@@ -2906,7 +2904,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Nivo sne
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sužava snežni pokrivač naviše za jedan
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Proširuje snežni pojas naniže za jedan
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Oblikovanje reljefa:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritam za drveća:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivo mora:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Broj reka:

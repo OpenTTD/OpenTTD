@@ -924,8 +924,6 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iranian (I
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ruble rusești (RUB)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Autovehiculele circulă...
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Alege partea străzii pe care se circulă
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Pe partea stângă
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Pe partea dreaptă
 
@@ -2705,7 +2703,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Înălţ
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mută linia zăpezii cu un punct în sus
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mută linia zăpezii cu un punct în jos
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator de teren:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritm arbore:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip teren:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivelul mării:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Râuri:

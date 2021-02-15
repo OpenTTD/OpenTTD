@@ -889,8 +889,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiskur Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranskur Rial
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Akfør
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Áset hvørja síðu á vegnum akfør skulu koyra á
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vinstrakoyring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høgrakoyring
 
@@ -2438,7 +2436,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hædd á
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt kava linjuna eitt upp
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt kava linjuna eitt niður
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lendis framleiðari:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træ algoritma:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Slag av lendi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Sjóvarmáli:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Løkar:

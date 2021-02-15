@@ -909,8 +909,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari Georgiarra
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniarra (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Errepideko garraioak
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Aukeratu ibilgailuen gidatzeko norabidea
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Ezkerretik gidatu
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Eskuinetik gidatu
 
@@ -2612,7 +2610,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Elur gar
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Igo puntu batean elur garaiera
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Jeitsi puntu batean elur garaiera
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Paisaia sortzailea:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Zuhaitz algoritmoa:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Lur mota:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Itsaso kopurua:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Errekak:

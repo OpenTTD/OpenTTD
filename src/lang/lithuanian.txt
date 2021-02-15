@@ -1127,8 +1127,6 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinų renminbi 
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Honkongo doleris (HKD)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automobilių eismas
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pasirinkite, kuria kelio puse važiuoja automobiliai
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kaire puse
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Dešine puse
 
@@ -2940,7 +2938,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniego l
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaukštinti sniego liniją
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pažeminti sniego liniją
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generavimo algoritmas:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Medžių algoritmas:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūros lygis:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Upių kiekis:

@@ -920,8 +920,6 @@ STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rwbl Rwsaidd Ne
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Tseina (CNY)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cerbydau Ffordd
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Dewiswch ar ba ochr i'r ffordd y dylai cerbydau yrru
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Gyrru ar y chwith
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Gyrru ar y dde
 
@@ -2714,7 +2712,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Uchder L
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Symud y llinell eira un yn uwch
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Symud y llinell eira un yn is
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Cynhyrchydd Tir:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorithm Coed:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Math Tirwedd:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Lefel y Môr:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Afonydd:

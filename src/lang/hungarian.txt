@@ -1002,8 +1002,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongi Doll�
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiai Rúpia (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Közúti járművek
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}A közúti közlekedés oldalának kiválasztása
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Balra hajtás
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jobbra hajtás
 
@@ -2887,7 +2885,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hóhatá
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}A hóhatár megnövelése eggyel
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}A hóhatár csökkentése eggyel
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Térkép generátor:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Fa algoritmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Tengerszint:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Folyók:

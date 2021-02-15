@@ -1025,8 +1025,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongský do
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indická rupie (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Silniční vozidla jezdí
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Výběr strany, na které jezdí silnični vozidla
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vlevo
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Vpravo
 
@@ -2913,7 +2911,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Výška 
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Zvýšit sněžnou čáru o jednu úroveň
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Snížit sněžnou čáru o jednu úroveň
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generátor krajiny:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Sázení stromů:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ krajiny:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Četnost jezer:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Řeky:

@@ -938,8 +938,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongdollar 
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupie (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vägfordon
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Välj sida av vägen som fordonen kör på
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kör på vänster sida
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Kör på höger sida
 
@@ -2820,7 +2818,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snögrä
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Höj snögränsens höjd ett steg
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sänk snögränsens höjd ett steg
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trädalgoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havsnivå
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flod:

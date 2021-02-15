@@ -939,8 +939,6 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chinê
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar de Hong Kong (HKD)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Veículos rodoviários
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Seleccione o lado da estrada por onde os veículos circulam
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Circular pela esquerda
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Circular pela direita
 
@@ -2821,7 +2819,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altura l
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Mover a linha de neve um nível acima
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Mover a linha de neve um nível abaixo
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Criação do terreno:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Alg. de colocação de árvores:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nível do mar:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rios:

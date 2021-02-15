@@ -906,8 +906,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :ஹாங்க
 STR_GAME_OPTIONS_CURRENCY_INR                                   :இந்திய ரூபாய் (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}சாலை வாகனங்கள்
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}வாகனங்கள் சாலையின் எந்தப்பக்கத்தில் செல்ல வேண்டும்
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :இடப்பக்கம் ஒட்டு
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :வலப்பக்கம் ஒட்டு
 
@@ -2515,7 +2513,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}பன�
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}பனி கோடின் உயரத்தை ஒரு அடி உயர்த்து
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}பனி கோடின் உயரத்தை ஒரு அடி இறக்கு
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}பூமி உருவாக்குனர்:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}மரம் நடுதல்:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}நிலவகை:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}கடல் மட்டம்:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}ஆறுகள்:

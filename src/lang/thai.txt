@@ -908,8 +908,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}ยานยนต์
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}เลือกฝั่งถนนในการขับยานพาหนะ
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :ขับชิดซ้าย
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :ขับชิดขวา
 
@@ -2642,7 +2640,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}เส�
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ปรับเปลี่ยนความสูงของหิมะขึ้นไป 1 ระดับ
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}ปรับเปลี่ยนความสูงของหิมะลงมา 1 ระดับ
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}เครื่องมือสร้างสภาพพื้นดิน:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tอัลกอริธึมต้นไม้:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}ประเภทภูมิประเทศ:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}ระดับทะเล:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}แม่น้ำ:

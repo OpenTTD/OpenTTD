@@ -938,8 +938,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Đô-la Hồng 
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupee Ấn Độ (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Xe cộ
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Chọn phía đường lái xe
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lái bên trái
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Lái bên phải
 
@@ -2822,7 +2820,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Độ ca
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuyển độ cao tuyết phủ lên cao
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Cơ chế trồng cây:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mực nước biển:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Số sông/suối:

@@ -240,7 +240,7 @@ STR_TOOLTIP_CATCHMENT                                           :{BLACK}Anzeige 
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fenster schließen
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titelleiste klicken und ziehen, um das Fenster zu verschieben
-STR_TOOLTIP_SHADE                                               :{BLACK}Fenster einklappen - Nur die Titelleiste zeigen
+STR_TOOLTIP_SHADE                                               :{BLACK}Fenster einklappen – Nur die Titelleiste zeigen
 STR_TOOLTIP_DEBUG                                               :{BLACK}Zeige Daten für NewGRF-Fehlerbeseitigung
 STR_TOOLTIP_DEFSIZE                                             :{BLACK}Standardgröße des Fensters wieder herstellen. Strg+Klick um die aktuelle Größe als Standard zu speichern
 STR_TOOLTIP_STICKY                                              :{BLACK}Fenster wird nicht durch die „Schließe alle Fenster“-Taste geschlossen. Strg+Klick, um den Status als Standard zu speichern
@@ -709,7 +709,7 @@ STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLAC
 STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{PRESIDENT_NAME} von {COMPANY} erreicht „{STRING}“-Status!
 
 # Smallmap window
-STR_SMALLMAP_CAPTION                                            :{WHITE}Weltkarte - {STRING}
+STR_SMALLMAP_CAPTION                                            :{WHITE}Weltkarte – {STRING}
 
 STR_SMALLMAP_TYPE_CONTOURS                                      :Höhenrelief
 STR_SMALLMAP_TYPE_VEHICLES                                      :Fahrzeuge
@@ -787,7 +787,7 @@ STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPEI
 # News message history
 STR_MESSAGE_HISTORY                                             :{WHITE}Nachrichtenchronik
 STR_MESSAGE_HISTORY_TOOLTIP                                     :{BLACK}Eine Liste der aktuellen Nachrichten
-STR_MESSAGE_NEWS_FORMAT                                         :{STRING}  -  {STRING}
+STR_MESSAGE_NEWS_FORMAT                                         :{STRING} – {STRING}
 
 STR_NEWS_MESSAGE_CAPTION                                        :{WHITE}Mitteilung
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
@@ -873,7 +873,7 @@ STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}Automati
 
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}Neue{G r "" s ""} {STRING} jetzt erhältlich!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Neue{G r "" s ""} {STRING} jetzt erhältlich!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Neue{G r "" s ""} {STRING} jetzt erhältlich! – {ENGINE}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Das Gruppenfenster mit der bereits ausgewählten Fahrzeuggruppe öffnen
 
@@ -949,8 +949,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkong-Dollar
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indische Rupie (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Fahrzeuge
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wähle, auf welcher Straßenseite der Verkehr fahren soll
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Linksverkehr
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rechtsverkehr
 
@@ -1005,6 +1003,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Andere
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Größe der Bedienelemente
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Wähle die Größe der Bedienelemente
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(automatisch erkennen)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doppelt
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Vierfach
@@ -1012,6 +1011,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Vierfach
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Schriftgröße
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Die Schriftgröße der Spieloberfläche auswählen
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(automatisch erkennen)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Zweifach
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Vierfach
@@ -1763,7 +1763,7 @@ STR_CONFIG_SETTING_REVERSE_AT_SIGNALS_HELPTEXT                  :Erlaube Zügen,
 STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Wert der Einstellung ändern
 
 # Config errors
-STR_CONFIG_ERROR                                                :{WHITE}Fehler in der Konfigurations-Datei...
+STR_CONFIG_ERROR                                                :{WHITE}Fehler in der Konfigurations-Datei ...
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... Fehler im Array „{STRING}“
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... ungültiger Wert „{STRING}“ für „{STRING}“
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... angehängte Zeichen an der Einstellung „{STRING}“
@@ -1771,8 +1771,8 @@ STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... ignoriere ungültiges NewGRF „{STRING}“: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :nicht gefunden
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :ungeignet für statischen Gebrauch
-STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :System - NewGRF
-STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel zu dieser OpenTTD - Version
+STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :System-NewGRF
+STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :inkompatibel zu dieser OpenTTD-Version
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :unbekannt
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Kompressionsgrad „{STRING}“ ist ungültig
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... „{STRING}“ nicht als Format für Spielstände verfügbar. Nutze stattdessen „{STRING}“
@@ -1854,7 +1854,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Ändert 
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Erlaube manuelles Ändern der Produktionsleistungen: {ORANGE}{STRING}
 
 # Livery window
-STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Farbschema
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} – Farbschema
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Allgemeines Farbschema anzeigen
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Zugfarbschema anzeigen
@@ -1954,7 +1954,7 @@ STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dieser N
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Name
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Name des Spiels
-STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} – {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Teilnehmer
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Teilnehmer anwesend/max.{}Firmen anwesend/max.
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
@@ -1971,7 +1971,7 @@ STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Zuletzt 
 STR_NETWORK_SERVER_LIST_CLICK_TO_SELECT_LAST                    :{BLACK}Zuletzt besuchten Server auswählen
 
 STR_NETWORK_SERVER_LIST_GAME_INFO                               :{SILVER}SPIEL-INFO
-STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Teilnehmer: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_SERVER_LIST_CLIENTS                                 :{SILVER}Teilnehmer: {WHITE}{COMMA} / {COMMA} – {COMMA} / {COMMA}
 STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}Sprache: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_LANDSCAPE                               :{SILVER}Landschaft: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_MAP_SIZE                                :{SILVER}Spielfeldgröße: {WHITE}{COMMA}x{COMMA}
@@ -2425,7 +2425,7 @@ STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Signalab
 # Bridge selection window
 STR_SELECT_RAIL_BRIDGE_CAPTION                                  :{WHITE}Eisenbahnbrücke auswählen
 STR_SELECT_ROAD_BRIDGE_CAPTION                                  :{WHITE}Straßenbrücke wählen
-STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brückenauswahl - Auf die gewünschte Brücke klicken, um sie zu bauen
+STR_SELECT_BRIDGE_SELECTION_TOOLTIP                             :{BLACK}Brückenauswahl – Auf die gewünschte Brücke klicken, um sie zu bauen
 STR_SELECT_BRIDGE_INFO                                          :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY_LONG}
 STR_SELECT_BRIDGE_SCENEDIT_INFO                                 :{GOLD}{STRING},{} {VELOCITY}
 STR_BRIDGE_NAME_SUSPENSION_STEEL                                :Stahlhängebrücke
@@ -2606,12 +2606,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Zufall
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Neue Industrie finanzieren
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Gewünschte Industrie aus der Liste auswählen
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Viele zufällige Industrien
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Zufallsindustrien erzeugen
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Das Spielfeld mit zufällig platzierten Industrien füllen
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Zufallsindustrien erzeugen
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Möchten Sie wirklich viele zufällige Industrien erzeugen?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kosten: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospektieren
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bauen
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanzieren
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Alle Industrien entfernen
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Alle Industrien, die sich momentan auf der Karte befinden, entfernen
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Alle Industrien entfernen
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Sind Sie sich sicher, dass Sie alle Industrien entfernen wollen?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Produktionskette für {STRING}
@@ -2755,7 +2761,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Firmeneigenes G
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Ursprüngliches Copyright {COPYRIGHT} 1995 Chris Sawyer, alle Rechte vorbehalten
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-Version {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD-Team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002–{STRING} OpenTTD-Team
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Bildwiederholrate
@@ -2860,7 +2866,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Schneegr
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Schneegrenze um eine Stufe erhöhen
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Schneegrenze um eine Stufe senken
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baumalgorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Landschaftstyp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Gewässermenge:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flüsse:
@@ -2919,9 +2924,9 @@ STR_GENERATION_PREPARING_GAME                                   :{BLACK}Spiel wi
 
 # NewGRF settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
-STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailierte NewGRF - Informationen
-STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivierte NewGRF - Dateien
-STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktive NewGRF - Dateien
+STR_NEWGRF_SETTINGS_INFO_TITLE                                  :{WHITE}Detailierte NewGRF-Informationen
+STR_NEWGRF_SETTINGS_ACTIVE_LIST                                 :{WHITE}Aktivierte NewGRF-Dateien
+STR_NEWGRF_SETTINGS_INACTIVE_LIST                               :{WHITE}Inaktive NewGRF-Dateien
 STR_NEWGRF_SETTINGS_SELECT_PRESET                               :{ORANGE}Wähle Voreinstellung
 STR_NEWGRF_FILTER_TITLE                                         :{ORANGE}Filter:
 STR_NEWGRF_SETTINGS_PRESET_LIST_TOOLTIP                         :{BLACK}Ausgewählte Voreinstellung laden
@@ -2991,7 +2996,7 @@ STR_NEWGRF_PARAMETERS_SETTING                                   :{STRING}: {ORAN
 STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Anzahl Parameter: {ORANGE}{NUM}
 
 # NewGRF inspect window
-STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiziere - {STRING}
+STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Inspiziere – {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}übergeordnetes Objekt
 STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspiziere das Objekt im übergeordneten Geltungsbereich
 
@@ -3037,10 +3042,10 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der NewGRF-Date
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {1:STRING} als statisches NewGRF mit {STRING} könnte Synchronisationsfehler hervorrufen
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite (Sprite {3:NUM})
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unbekannte Action 0 - Eigenschaft {4:HEX} (Sprite {3:NUM})
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unbekannte Action-0-Eigenschaft {4:HEX} (Sprite {3:NUM})
 STR_NEWGRF_ERROR_INVALID_ID                                     :Zugriff auf eine ungültige ID (Sprite {3:NUM})
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält fehlerhafte Grafiken. Diese werden als Fragezeichen (?) dargestellt
-STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere Action 8 - Einträge (Sprite {3:NUM})
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere Action-8-Einträge (Sprite {3:NUM})
 STR_NEWGRF_ERROR_READ_BOUNDS                                    :Lesezugriff über das Ende des Pseudosprites hinaus (Sprite {3:NUM})
 STR_NEWGRF_ERROR_GRM_FAILED                                     :Die angeforderte GRF-Ressource ist nicht verfügbar (Sprite {3:NUM})
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} wurde von {STRING} deaktiviert
@@ -3092,7 +3097,7 @@ STR_INVALID_VEHICLE                                             :<ungültiges Fa
 
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}NewGRFs werden eingelesen
-STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRFs werden eingelesen. Je nach deren Anzahl könnte dies eine Weile dauern...
+STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}NewGRFs werden eingelesen. Je nach deren Anzahl könnte dies eine Weile dauern ...
 STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} NewGRF{P "" s} von geschätzten {NUM} NewGRF{P "" s} eingelesen
 STR_NEWGRF_SCAN_ARCHIVES                                        :Archivdateien werden eingelesen
 
@@ -3114,7 +3119,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Städte
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Keine -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Großstadt){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Städtenamen - Klick auf den Namen zentriert Hauptansicht auf die Stadt. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Stadt
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Städtenamen – Klick auf den Namen zentriert Hauptansicht auf die Stadt. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Stadt
 STR_TOWN_POPULATION                                             :{BLACK}Weltbevölkerung: {COMMA}
 
 # Town view window
@@ -3151,7 +3156,7 @@ STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Zeige Zo
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Bewertung der Transportfirma:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Verfügbare Maßnahmen:
-STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Liste der verfügbaren Maßnahmen in dieser Stadt - Klick zeigt Einzelheiten an
+STR_LOCAL_AUTHORITY_ACTIONS_TOOLTIP                             :{BLACK}Liste der verfügbaren Maßnahmen in dieser Stadt – Klick zeigt Einzelheiten an
 STR_LOCAL_AUTHORITY_DO_IT_BUTTON                                :{BLACK}Ausführen
 STR_LOCAL_AUTHORITY_DO_IT_TOOLTIP                               :{BLACK}Ausgewählte Maßnahme durchführen
 
@@ -3236,9 +3241,9 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Die näc
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Ungültiger Verweis auf ein Spielziel
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen - Klick auf den Namen zentriert Hauptansicht auf die Station. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Station
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Stationsnamen – Klick auf den Namen zentriert Hauptansicht auf die Station. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Station
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Strg gedrückt halten, um mehrere Einträge auszuwählen
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Haltestelle{P "" n}
+STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} – {COMMA} Haltestelle{P "" n}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Keine -
@@ -3425,7 +3430,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} und {NUM} weitere ...
-STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen - Klick auf den Namen zentriert Hauptansicht auf die Industrie. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie
+STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrienamen – Klick auf den Namen zentriert Hauptansicht auf die Industrie. Strg+Klick öffnet neue Zusatzansicht zentriert auf die Industrie
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Angenommene Fracht: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Produzierte Fracht: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Alle Frachtarten
@@ -3451,15 +3456,15 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produkti
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Produktionsrate ändern (prozentual, bis zu 800%)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Z{P ug üge}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Straßenfahrzeug{P "" e}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Schiff{P "" e}
-STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Flugzeug{P "" e}
+STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} – {COMMA} Z{P ug üge}
+STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} – {COMMA} Straßenfahrzeug{P "" e}
+STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} – {COMMA} Schiff{P "" e}
+STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} – {COMMA} Flugzeug{P "" e}
 
-STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Züge - für Einzelheiten auf den Zug klicken
-STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
-STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
-STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
+STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Züge – für Einzelheiten auf den Zug klicken
+STR_VEHICLE_LIST_ROAD_VEHICLE_TOOLTIP                           :{BLACK}Straßenfahrzeuge – für Einzelheiten auf das Fahrzeug klicken
+STR_VEHICLE_LIST_SHIP_TOOLTIP                                   :{BLACK}Schiffe – für Einzelheiten auf das Schiff klicken
+STR_VEHICLE_LIST_AIRCRAFT_TOOLTIP                               :{BLACK}Flugzeuge – für Einzelheiten auf das Flugzeug klicken
 
 STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}Gewinn im laufenden Jahr: {CURRENCY_LONG} (vergangenes Jahr: {CURRENCY_LONG})
 
@@ -3497,7 +3502,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Ungruppierte Fl
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppen - Klick auf eine Gruppe zeigt Liste aller Fahrzeuge der Gruppe an
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Gruppen – Klick auf eine Gruppe zeigt Liste aller Fahrzeuge der Gruppe an
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Neue Gruppe erstellen
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Ausgewählte Gruppe löschen
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ausgewählte Gruppe umbenennen
@@ -3713,7 +3718,7 @@ STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Kosten: 
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_RUNCOST        :{BLACK}Kosten: {CURRENCY_LONG} Max. Geschw.: {VELOCITY}{}Flugzeugtyp: {STRING} Reichweite: {COMMA} tiles{}Kapazität: {CARGO_LONG}{}Laufende Kosten: {CURRENCY_LONG}/Jahr
 
 # Autoreplace window
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen - {STRING}
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen – {STRING}
 STR_REPLACE_VEHICLE_TRAIN                                       :Zug
 STR_REPLACE_VEHICLE_ROAD_VEHICLE                                :Straßenfahrzeug
 STR_REPLACE_VEHICLE_SHIP                                        :Schiff
@@ -3795,10 +3800,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Einzelhe
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Zeige Einzelheiten des Schiffes
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Zeige Einzelheiten des Flugzeuges
 
-STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Momentane Zugaktion - Klicken zum Starten/Anhalten des Zuges
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Momentane Fahrzeugaktion - Klicken zum Starten/Anhalten des Fahrzeugs
-STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Momentane Schiffsaktion - Klicken zum Starten/Anhalten des Schiffs
-STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Momentane Flugzeugaktion - Klicken zum Starten/Anhalten des Flugzeugs
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Momentane Zugaktion – Klicken zum Starten/Anhalten des Zuges
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Momentane Fahrzeugaktion – Klicken zum Starten/Anhalten des Fahrzeugs
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Momentane Schiffsaktion – Klicken zum Starten/Anhalten des Schiffs
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Momentane Flugzeugaktion – Klicken zum Starten/Anhalten des Flugzeugs
 
 STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Hauptansicht auf Auftragsziel zentrieren. Strg+Klick öffnet ein neues Ansichtsfenster auf dem Standort des Auftragsziels
 
@@ -3923,7 +3928,7 @@ STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE
 STR_ORDERS_TIMETABLE_VIEW                                       :{BLACK}Fahrplan
 STR_ORDERS_TIMETABLE_VIEW_TOOLTIP                               :{BLACK}Zur Fahrplanansicht wechseln
 
-STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Auftragsliste - Auftrag anklicken, um ihn zu markieren. Strg+Klick springt zum Auftragsziel
+STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Auftragsliste – Auftrag anklicken, um ihn zu markieren. Strg+Klick springt zum Auftragsziel
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
@@ -4080,7 +4085,7 @@ STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE
 STR_TIMETABLE_ORDER_VIEW                                        :{BLACK}Aufträge
 STR_TIMETABLE_ORDER_VIEW_TOOLTIP                                :{BLACK}Zur Auftragsanzeige wechseln
 
-STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan - Einträge anklicken, um sie zu markieren
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan – Einträge anklicken, um sie zu markieren
 
 STR_TIMETABLE_NO_TRAVEL                                         :Nicht unterwegs
 STR_TIMETABLE_NOT_TIMETABLEABLE                                 :Unterwegs (automatisch; Fahrplan abhängig vom nächsten manuellen Auftrag)
@@ -4268,7 +4273,7 @@ STR_ERROR_GAME_SAVE_FAILED                                      :{WHITE}Spielspe
 STR_ERROR_UNABLE_TO_DELETE_FILE                                 :{WHITE}Datei kann nicht gelöscht werden
 STR_ERROR_GAME_LOAD_FAILED                                      :{WHITE}Laden des Spieles fehlgeschlagen{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interner Fehler: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Spielstandsdatei defekt - {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Spielstandsdatei defekt – {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spielstand wurde mit einer neueren Spielversion erstellt
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei kann nicht gelesen werden
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Datei kann nicht geschrieben werden
@@ -4311,7 +4316,7 @@ STR_ERROR_MESSAGE_CAPTION_OTHER_COMPANY                         :{YELLOW}Nachric
 # Generic construction errors
 STR_ERROR_OFF_EDGE_OF_MAP                                       :{WHITE}Zu weit vom Spielfeldrand entfernt
 STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Zu nahe am Spielfeldrand
-STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nicht genug Geld - Es werden {CURRENCY_LONG} benötigt
+STR_ERROR_NOT_ENOUGH_CASH_REQUIRES_CURRENCY                     :{WHITE}Nicht genug Geld – Es werden {CURRENCY_LONG} benötigt
 STR_ERROR_FLAT_LAND_REQUIRED                                    :{WHITE}Ebenes Land erforderlich
 STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION                        :{WHITE}Das Land neigt sich in die falsche Richtung
 STR_ERROR_CAN_T_DO_THIS                                         :{WHITE}Befehl nicht ausführbar ...
@@ -4678,9 +4683,9 @@ STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Originale „Tr
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originale „Transport Tycoon Deluxe“-DOS-Basissounds.
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originale „Transport Tycoon Deluxe“-Windows-Basissounds.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Ein Soundpaket ohne Sounds.
-STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originales „Transport Tycoon Deluxe“-Windows-Musikset.
-STR_BASEMUSIC_DOS_DESCRIPTION                                   :Originales „Transport Tycoon Deluxe“-DOS-Musikset.
-STR_BASEMUSIC_TTO_DESCRIPTION                                   :Originales „Transport Tycoon (Original/World Editor)“-DOS-Musikset.
+STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originale Musik von Transport Tycoon Deluxe in der Windows-Edition.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Originale Musik von Transport Tycoon Deluxe in der DOS-Edition.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Originale Musik von Transport Tycoon (Original / World Editor) in der DOS-Edition.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Ein Musikpaket ohne Musik.
 
 ##id 0x2000
@@ -5076,8 +5081,8 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Wegpunkt {TOWN}
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Zugdepot
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Zugdepot #{COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Straßenfahrzeug - Depot
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Straßenfahrzeug - Depot #{COMMA}
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Straßenfahrzeug – Depot
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Straßenfahrzeug – Depot #{COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Werft
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Werft #{COMMA}
 STR_FORMAT_DEPOT_NAME_AIRCRAFT                                  :{STATION} Hangar

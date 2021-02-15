@@ -917,8 +917,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :グルジア �
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :イラン リアル(IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}自動車
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}車両の通行方向(右側/左側)を選択します
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :左側通行
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :右側通行
 
@@ -2698,7 +2696,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪線�
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}雪線を上げる
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}雪線を下げる
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形作成:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}植林アルゴリズム:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海水位:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}河川:

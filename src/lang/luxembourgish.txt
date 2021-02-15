@@ -937,8 +937,6 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinesesch Renm
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Stroossegefierer
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Wéi eng Stroossesäit sollen d'Gefierer fueren
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lénks fueren
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Riets fueren
 
@@ -2819,7 +2817,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Weis d'S
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweg Schnéilinnhéicht erop
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweg Schnéilinnhéicht erof
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Baam Algorithmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mieresspigel:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Flëss:

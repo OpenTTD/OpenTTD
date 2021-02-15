@@ -1035,8 +1035,6 @@ STR_GAME_OPTIONS_CURRENCY_RUB                                   :Νεο Ρώσι
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Πεσος Μεξικου (MXN)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Οχήματα δρόμου
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Επιλογή πλευράς δρόμου όπου τα οχήματα οδηγούν
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Οδηγούν από αριστερά
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Οδηγούν από δεξιά
 
@@ -2893,7 +2891,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα πάνω
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα κάτω
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Αλγόριθμος δέντρων:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Επίπεδο θάλασσας:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ποτάμια:

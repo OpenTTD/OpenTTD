@@ -1034,8 +1034,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkonški Dol
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijska Rupija (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cestovna vozila
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Odaberi na kojoj će strani ceste vozila prometovati
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vozi na lijevoj strani
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Vozi na desnoj strani
 
@@ -2916,7 +2914,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Visina l
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Pomakni visinu linije snijega za jedan gore
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pomakni visinu linije snijega za jedan dolje
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Izrađivač zemljišta:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK} Algoritam za drveće:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Razina mora:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Rijeke:

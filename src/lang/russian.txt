@@ -1093,8 +1093,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Гонконг�
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Индийская рупия (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Движение автомобилей
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Сторона дороги, по которой ездит автотранспорт
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Левостороннее
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Правостороннее
 
@@ -3045,7 +3043,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снег
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Поднять снеговую линию
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Опустить снеговую линию
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Генератор ландшафта:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Генератор лесов:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество морей и озёр:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Количество рек:

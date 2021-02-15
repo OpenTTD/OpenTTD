@@ -892,8 +892,6 @@ STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sesuaikan...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (GEL)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kenderaan Jalanraya
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Pilih laluan memandu kenderaan sebelah kiri atau kanan
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Memandu di sebelah kiri
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Memandu di sebelah kanan
 
@@ -2446,7 +2444,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Paras ke
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Tinggikan paras garis salji satu petak
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Rendahkan paras garis salji satu petak
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Janaan tanah:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritma pokok:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis rupa bumi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Paras laut:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Sungai:

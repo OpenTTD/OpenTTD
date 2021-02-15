@@ -888,8 +888,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari (Gel)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Íranskt ríal (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Aksturstefna
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Aksturstefna bifreiða
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vinstristefna
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Hægristefna
 
@@ -2544,7 +2542,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hæð sn
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Hækka snjólínu upp um eitt þrep
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lækka snjólínu niður um eitt þrep
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landmyndun:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Planta trjám:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Gerð lands:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Magn sjávar:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Ár:

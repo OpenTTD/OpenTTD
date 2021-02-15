@@ -1005,8 +1005,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kongi doll
 STR_GAME_OPTIONS_CURRENCY_INR                                   :India ruupia (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Sõidukid
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vali, kummal pool teed mootorsõidukid liiklevad
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasakpoolne liiklus
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Parempoolne liiklus
 
@@ -2917,7 +2915,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Lumepiir
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Lumepiiri liigutamine ühe võrra üles
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lumepiiri liigutamine ühe võrra alla
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maatekituse meetod:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puude algoritm:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merepinna tase:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Jõgesid:

@@ -940,8 +940,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollaro di Hong
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia indiana (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Automezzi
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Seleziona il lato della strada sul quale devono guidare i veicoli
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Guida a sinistra
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Guida a destra
 
@@ -2850,7 +2848,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altezza 
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sposta in su di uno l'altezza delle nevi perenni
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sposta in giù di uno l'altezza delle nevi perenni
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatore:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algoritmo alberi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo di terreno:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Livello del mare:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Fiumi:

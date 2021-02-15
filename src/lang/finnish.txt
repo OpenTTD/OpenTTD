@@ -948,8 +948,6 @@ STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongin doll
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Intian rupia (INR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Kulkuneuvot
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Valitse kummalla puolella tietä ajetaan
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasemmanpuolinen liikenne
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Oikeanpuolinen liikenne
 
@@ -1004,6 +1002,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Käyttöliittymän koko
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Valitse käyttöliittymäelementtien koko
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(tunnista automaattisesti)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Tavallinen
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Kaksinkertainen
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Nelinkertainen
@@ -1011,6 +1010,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Nelinkertainen
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Kirjasinkoko
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Valitse käyttöliittymän kirjasinkoko
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(tunnista automaattisesti)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normaali
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Kaksinkertainen koko
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Nelinkertainen koko
@@ -2865,7 +2865,6 @@ STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Lumiraja
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Siirrä lumirajaa yksi taso ylöspäin
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Siirrä lumirajaa yksi taso alaspäin
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maastogeneraattori:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Puiden algoritmi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merenpinta:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Joet:
