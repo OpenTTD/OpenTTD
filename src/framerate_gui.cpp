@@ -151,6 +151,10 @@ namespace {
 			/* Total duration covered by collected points */
 			TimingMeasurement total = 0;
 
+			/* We have nothing to compare the first point against */
+			point--;
+			if (point < 0) point = NUM_FRAMERATE_POINTS - 1;
+
 			while (point != last_point) {
 				/* Only record valid data points, but pretend the gaps in measurements aren't there */
 				if (this->durations[point] != INVALID_DURATION) {
