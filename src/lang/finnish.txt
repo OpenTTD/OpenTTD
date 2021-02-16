@@ -2847,6 +2847,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Suodatinteksti:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Tiedosto on jo olemassa
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Haluatko varmasti korvata olemassaolevan tiedoston?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (hakemisto)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (ylähakemisto)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Syötä nimi tallennustiedostolle
 
@@ -3511,7 +3513,7 @@ STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Poista r
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Poista ryhmä
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Haluatko varmasti poistaa tämän ryhmän ja sen alaryhmät?
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :Lisää jaettuja kulkuneuvoja
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Lisää jaetut kulkuneuvot
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Poista kaikki kulkuneuvot
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Nimeä ryhmä

@@ -1003,6 +1003,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :autre
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Taille d'interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Choisir la taille d'élément d'interface à utiliser
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(auto-détection)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Taille double
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Taille quadruple
@@ -1010,6 +1011,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Taille quadrupl
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Taille de police
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Choisir la taille de police d'interface à utiliser
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-détection)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Taille double
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Taille quadruple
@@ -2846,6 +2848,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF{
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtre{NBSP}:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Écraser le fichier
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Êtes-vous sûr de vouloir écraser le fichier existant{NBSP}?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Répertoire)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Répertoire parent)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Entrer un nom pour la sauvegarde
 

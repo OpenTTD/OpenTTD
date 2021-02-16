@@ -3025,6 +3025,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Фильтр:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Перезапись файла
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Перезаписать файл?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Каталог)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Родительский каталог)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введите название сохраняемой игры
 

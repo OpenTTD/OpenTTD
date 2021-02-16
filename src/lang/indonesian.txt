@@ -1002,6 +1002,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Ukuran antarmuka
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Pilih ukuran elemen antarmuka yang akan digunakan
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(deteksi-otomatis)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Kali dua
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Kali empat
@@ -1009,6 +1010,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Kali empat
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Ukuran font
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Pilih ukuran font antarmuka yang akan digunakan
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(deteksi-otomatis)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Kali dua
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4 kali
@@ -2603,12 +2605,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Acak
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Danai industri baru
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Pilih jenis industri yang di inginkan dari daftar
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Bangun industri secara acak
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Bangun industri secara acak
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Dukung Peta dengan penempatan industri secara otomatis
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Bangun industri secara acak
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Yakin ingin membuat banyak industri acak?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Biaya: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospek
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bangun
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Danai
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Hapus semua industri
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Hapus semua industri yang ada saat ini di peta
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Hapus semua industri
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Yakin ingin menghapus semua industri?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Hubungan industri untuk industri {STRING}
@@ -2839,6 +2847,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter string:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Timpa Berkas
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Yakin ingin menimpa berkas yang ada?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Direktori)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Direktori induk)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Masukkan nama dari permainan tersimpan
 
