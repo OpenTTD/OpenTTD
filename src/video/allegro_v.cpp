@@ -448,7 +448,7 @@ void VideoDriver_Allegro::Stop()
 void VideoDriver_Allegro::MainLoop()
 {
 	auto cur_ticks = std::chrono::steady_clock::now();
-	auto last_cur_ticks = cur_ticks;
+	auto last_realtime_tick = cur_ticks;
 	auto next_tick = cur_ticks;
 
 	CheckPaletteAnim();
@@ -473,9 +473,15 @@ void VideoDriver_Allegro::MainLoop()
 		}
 
 		cur_ticks = std::chrono::steady_clock::now();
+
+		/* If more than a millisecond has passed, increase the _realtime_tick. */
+		if (cur_ticks - last_realtime_tick > std::chrono::milliseconds(1)) {
+			auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_realtime_tick);
+			_realtime_tick += delta.count();
+			last_realtime_tick += delta;
+		}
+
 		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode)) {
-			_realtime_tick += std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_cur_ticks).count();
-			last_cur_ticks = cur_ticks;
 			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 			bool old_ctrl_pressed = _ctrl_pressed;

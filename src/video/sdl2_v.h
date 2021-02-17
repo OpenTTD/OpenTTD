@@ -63,7 +63,7 @@ private:
 	bool edit_box_focused;
 
 	std::chrono::steady_clock::time_point cur_ticks;
-	std::chrono::steady_clock::time_point last_cur_ticks;
+	std::chrono::steady_clock::time_point last_realtime_tick;
 	std::chrono::steady_clock::time_point next_tick;
 
 	int startup_display;
