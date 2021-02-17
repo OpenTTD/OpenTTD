@@ -126,6 +126,8 @@ public:
 	}
 
 protected:
+	const uint ALLOWED_DRIFT = 5; ///< How many times videodriver can miss deadlines without it being overly compensated.
+
 	/**
 	 * Get the resolution of the main screen.
 	 */

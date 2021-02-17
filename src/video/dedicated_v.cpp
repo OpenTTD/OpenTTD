@@ -238,7 +238,7 @@ void VideoDriver_Dedicated::MainLoop()
 {
 	auto cur_ticks = std::chrono::steady_clock::now();
 	auto last_realtime_tick = cur_ticks;
-	auto next_tick = cur_ticks;
+	auto next_game_tick = cur_ticks;
 
 	/* Signal handlers */
 #if defined(UNIX)
@@ -292,8 +292,14 @@ void VideoDriver_Dedicated::MainLoop()
 			last_realtime_tick += delta;
 		}
 
-		if (cur_ticks >= next_tick || _ddc_fastforward) {
-			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+		if (cur_ticks >= next_game_tick || _ddc_fastforward) {
+			if (_ddc_fastforward) {
+				next_game_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+			} else {
+				next_game_tick += std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+				/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
+				if (next_game_tick < cur_ticks - std::chrono::milliseconds(ALLOWED_DRIFT * MILLISECONDS_PER_TICK)) next_game_tick = cur_ticks;
+			}
 
 			GameLoop();
 			InputLoop();
