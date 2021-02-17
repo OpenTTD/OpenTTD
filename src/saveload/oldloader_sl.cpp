@@ -135,9 +135,9 @@ static uint32 RemapOldTownName(uint32 townnameparts, byte old_town_name_type)
 			DEBUG(misc, 0, "German Townnames are buggy (%d)", townnameparts);
 			return townnameparts;
 
-		case 4: // Latin-American
+		case 4: // Latin-American Spanish
 			/* 0000 0000 0000 0000 0000 0000 1111 1111 */
-			return FIXNUM(townnameparts, lengthof(_name_spanish_real), 0);
+			return FIXNUM(townnameparts, lengthof(_name_spanish_latinamerica_real), 0);
 
 		case 5: // Silly
 			/* NUM_SILLY_1 - lower 16 bits

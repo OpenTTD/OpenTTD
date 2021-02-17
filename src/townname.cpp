@@ -386,14 +386,14 @@ static char *MakeGermanTownName(char *buf, const char *last, uint32 seed)
 
 
 /**
- * Generates Latin-American town name from given seed.
+ * Generates Spanish (Latin-American) town name from given seed.
  * @param buf output buffer
  * @param seed town name seed
  * @param last end of buffer
  */
-static char *MakeSpanishTownName(char *buf, const char *last, uint32 seed)
+static char *MakeSpanishLatinAmericaTownName(char *buf, const char *last, uint32 seed)
 {
-	return strecpy(buf, _name_spanish_real[SeedChance(0, lengthof(_name_spanish_real), seed)], last);
+	return strecpy(buf, _name_spanish_latinamerica_real[SeedChance(0, lengthof(_name_spanish_latinamerica_real), seed)], last);
 }
 
 
@@ -1001,6 +1001,45 @@ static char *MakeCatalanTownName(char *buf, const char *last, uint32 seed)
 
 
 /**
+ * Generates Spanish (Spain) town name from given seed.
+ * @param buf output buffer
+ * @param seed town name seed
+ * @param last end of buffer
+ */
+static char* MakeSpanishSpainTownName(char* buf, const char* last, uint32 seed)
+{
+	if (SeedModChance(0, 3, seed) == 0) { // real city names
+		return strecpy(buf, _name_spanish_spain_real[SeedModChance(4, lengthof(_name_spanish_spain_real), seed)], last);
+	}
+
+	if (SeedModChance(0, 2, seed) == 0) { // prefix
+		buf = strecpy(buf, _name_spanish_spain_pref[SeedModChance(11, lengthof(_name_spanish_spain_pref), seed)], last);
+	}
+
+	uint i = SeedChance(0, 2, seed);
+	if (i == 0) { // masculine form
+		buf = strecpy(buf, _name_spanish_spain_1m[SeedModChance(4, lengthof(_name_spanish_spain_1m), seed)], last);
+		buf = strecpy(buf, _name_spanish_spain_2m[SeedModChance(11, lengthof(_name_spanish_spain_2m), seed)], last);
+	}
+	else { // feminine form
+		buf = strecpy(buf, _name_spanish_spain_1f[SeedModChance(4, lengthof(_name_spanish_spain_1f), seed)], last);
+		buf = strecpy(buf, _name_spanish_spain_2f[SeedModChance(11, lengthof(_name_spanish_spain_2f), seed)], last);
+	}
+
+	if (SeedModChance(15, 5, seed) == 0) {
+		if (SeedModChance(5, 2, seed) == 0) { // generic suffix
+			buf = strecpy(buf, _name_spanish_spain_3[SeedModChance(4, lengthof(_name_spanish_spain_3), seed)], last);
+		}
+		else { // river name suffix
+			buf = strecpy(buf, _name_spanish_spain_river1[SeedModChance(4, lengthof(_name_spanish_spain_river1), seed)], last);
+		}
+	}
+
+	return buf;
+}
+
+
+/**
  * Type for all town name generator functions.
  * @param buf  The buffer to write the name to.
  * @param last The last element of the buffer.
@@ -1021,7 +1060,7 @@ static const TownNameGeneratorParams _town_name_generators[] = {
 	{  0, MakeFrenchTownName},
 	{  0, MakeGermanTownName},
 	{  4, MakeEnglishAdditionalTownName}, // replaces first 4 characters of name
-	{  0, MakeSpanishTownName},
+	{  0, MakeSpanishLatinAmericaTownName},
 	{  0, MakeSillyTownName},
 	{  0, MakeSwedishTownName},
 	{  0, MakeDutchTownName},
@@ -1038,6 +1077,7 @@ static const TownNameGeneratorParams _town_name_generators[] = {
 	{  0, MakeTurkishTownName},
 	{  0, MakeItalianTownName},
 	{  0, MakeCatalanTownName},
+	{  0, MakeSpanishSpainTownName},
 };
 
 

@@ -960,7 +960,7 @@ STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Anglès
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Francès
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Alemany
 STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Anglès (addicional)
-STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Llatinoamericà
+STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Espanyol (Amèrica llatina)
 STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Graciós
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Suec
 STR_GAME_OPTIONS_TOWN_NAME_DUTCH                                :Holandès
@@ -977,6 +977,7 @@ STR_GAME_OPTIONS_TOWN_NAME_DANISH                               :Danès
 STR_GAME_OPTIONS_TOWN_NAME_TURKISH                              :Turc
 STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :Italià
 STR_GAME_OPTIONS_TOWN_NAME_CATALAN                              :Català
+STR_GAME_OPTIONS_TOWN_NAME_SPANISH                              :Espanyol (Espanya)
 ############ end of townname region
 
 STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Desa automàticament
