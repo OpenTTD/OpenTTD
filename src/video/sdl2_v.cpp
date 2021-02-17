@@ -351,6 +351,13 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 		_sdl_surface = _sdl_real_surface;
 	}
 
+	/* X11 doesn't appreciate it if we invalidate areas outside the window
+	 * if shared memory is enabled (read: it crashes). So, as we might have
+	 * gotten smaller, reset our dirty rects. GameSizeChanged() a bit lower
+	 * will mark the whole screen dirty again anyway, but this time with the
+	 * new dimensions. */
+	_num_dirty_rects = 0;
+
 	_screen.width = _sdl_surface->w;
 	_screen.height = _sdl_surface->h;
 	_screen.pitch = _sdl_surface->pitch / (bpp / 8);
