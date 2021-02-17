@@ -1470,9 +1470,8 @@ void DrawDirtyBlocks()
 		_modal_progress_paint_mutex.unlock();
 		_modal_progress_work_mutex.unlock();
 
-		/* Wait a while and update _realtime_tick so we are given the rights */
+		/* Wait a while and hope the modal gives us a bit of time to draw the GUI. */
 		if (!IsFirstModalProgressLoop()) CSleep(MODAL_PROGRESS_REDRAW_TIMEOUT);
-		_realtime_tick += MODAL_PROGRESS_REDRAW_TIMEOUT;
 
 		/* Modal progress thread may need blitter access while we are waiting for it. */
 		VideoDriver::GetInstance()->ReleaseBlitterLock();
