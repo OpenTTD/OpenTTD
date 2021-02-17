@@ -26,3 +26,25 @@ Dimension maxdim(const Dimension &d1, const Dimension &d2)
 	d.height = std::max(d1.height, d2.height);
 	return d;
 }
+
+/**
+ * Compute the bounding rectangle around two rectangles.
+ * @param r1 First rectangle.
+ * @param r2 Second rectangle.
+ * @return The bounding rectangle, the smallest rectangle that contains both arguments.
+ */
+Rect BoundingRect(const Rect &r1, const Rect &r2)
+{
+	/* If either the first or the second is empty, return the other. */
+	if (IsEmptyRect(r1)) return r2;
+	if (IsEmptyRect(r2)) return r1;
+
+	Rect r;
+
+	r.top    = std::min(r1.top,    r2.top);
+	r.bottom = std::max(r1.bottom, r2.bottom);
+	r.left   = std::min(r1.left,   r2.left);
+	r.right  = std::max(r1.right,  r2.right);
+
+	return r;
+}
