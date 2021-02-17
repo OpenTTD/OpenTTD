@@ -824,10 +824,17 @@ void VideoDriver_SDL::LoopOnce()
 /* Emscripten is running an event-based mainloop; there is already some
  * downtime between each iteration, so no need to sleep. */
 #ifndef __EMSCRIPTEN__
+	/* If we are not in fast-forward, create some time between calls to ease up CPU usage. */
 	if (!_fast_forward || _pause_mode) {
-		if (_draw_mutex != nullptr) draw_lock.unlock();
-		CSleep(1);
-		if (_draw_mutex != nullptr) draw_lock.lock();
+		/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
+		auto next_tick = std::min(next_draw_tick, next_game_tick);
+		auto now = std::chrono::steady_clock::now();
+
+		if (next_tick > now) {
+			if (_draw_mutex != nullptr) draw_lock.unlock();
+			std::this_thread::sleep_for(next_tick - now);
+			if (_draw_mutex != nullptr) draw_lock.lock();
+		}
 	}
 #endif
 }

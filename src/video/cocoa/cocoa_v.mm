@@ -704,8 +704,15 @@ void VideoDriver_Cocoa::GameLoop()
 				this->Draw();
 			}
 
+			/* If we are not in fast-forward, create some time between calls to ease up CPU usage. */
 			if (!_fast_forward || _pause_mode) {
-				CSleep(1);
+				/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
+				auto next_tick = std::min(next_draw_tick, next_game_tick);
+				auto now = std::chrono::steady_clock::now();
+
+				if (next_tick > now) {
+					std::this_thread::sleep_for(next_tick - now);
+				}
 			}
 		}
 	}

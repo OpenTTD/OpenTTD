@@ -311,9 +311,14 @@ void VideoDriver_Dedicated::MainLoop()
 			/* Sleep longer on a dedicated server, if the game is paused and no clients connected.
 			 * That can allow the CPU to better use deep sleep states. */
 			if (_pause_mode != 0 && !HasClients()) {
-				CSleep(100);
+				std::this_thread::sleep_for(std::chrono::milliseconds(100));
 			} else {
-				CSleep(1);
+				/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
+				auto now = std::chrono::steady_clock::now();
+
+				if (next_game_tick > now) {
+					std::this_thread::sleep_for(next_game_tick - now);
+				}
 			}
 		}
 	}
