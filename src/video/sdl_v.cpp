@@ -21,6 +21,7 @@
 #include "../core/math_func.hpp"
 #include "../fileio_func.h"
 #include "../framerate_type.h"
+#include "../window_func.h"
 #include "sdl_v.h"
 #include <SDL.h>
 #include <mutex>
@@ -650,7 +651,8 @@ void VideoDriver_SDL::MainLoop()
 {
 	auto cur_ticks = std::chrono::steady_clock::now();
 	auto last_realtime_tick = cur_ticks;
-	auto next_tick = cur_ticks;
+	auto next_game_tick = cur_ticks;
+	auto next_draw_tick = cur_ticks;
 	uint32 mod;
 	int numkeys;
 	Uint8 *keys;
@@ -727,8 +729,18 @@ void VideoDriver_SDL::MainLoop()
 			last_realtime_tick += delta;
 		}
 
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode)) {
-			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+		if (cur_ticks >= next_game_tick || (_fast_forward && !_pause_mode)) {
+			next_game_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+
+			/* The gameloop is the part that can run asynchronously. The rest
+			 * except sleeping can't. */
+			if (_draw_mutex != nullptr) draw_lock.unlock();
+			GameLoop();
+			if (_draw_mutex != nullptr) draw_lock.lock();
+		}
+
+		if (cur_ticks >= next_draw_tick) {
+			next_draw_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 
@@ -750,33 +762,22 @@ void VideoDriver_SDL::MainLoop()
 #endif
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
-			/* The gameloop is the part that can run asynchronously. The rest
-			 * except sleeping can't. */
-			if (_draw_mutex != nullptr) draw_lock.unlock();
-
-			GameLoop();
-
-			if (_draw_mutex != nullptr) draw_lock.lock();
-
+			InputLoop();
 			UpdateWindows();
 			_local_palette = _cur_palette;
-		} else {
-			/* Release the thread while sleeping */
+
+			if (_draw_mutex != nullptr && !HasModalProgress()) {
+				_draw_signal->notify_one();
+			} else {
+				CheckPaletteAnim();
+				DrawSurfaceToScreen();
+			}
+		}
+
+		if (!_fast_forward || _pause_mode) {
 			if (_draw_mutex != nullptr) draw_lock.unlock();
 			CSleep(1);
 			if (_draw_mutex != nullptr) draw_lock.lock();
-
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
-		}
-
-		/* End of the critical part. */
-		if (_draw_mutex != nullptr && !HasModalProgress()) {
-			_draw_signal->notify_one();
-		} else {
-			/* Oh, we didn't have threads, then just draw unthreaded */
-			CheckPaletteAnim();
-			DrawSurfaceToScreen();
 		}
 	}
 

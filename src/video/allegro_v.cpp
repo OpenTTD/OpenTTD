@@ -24,6 +24,7 @@
 #include "../core/math_func.hpp"
 #include "../framerate_type.h"
 #include "../thread.h"
+#include "../window_func.h"
 #include "allegro_v.h"
 #include <allegro.h>
 
@@ -449,7 +450,8 @@ void VideoDriver_Allegro::MainLoop()
 {
 	auto cur_ticks = std::chrono::steady_clock::now();
 	auto last_realtime_tick = cur_ticks;
-	auto next_tick = cur_ticks;
+	auto next_game_tick = cur_ticks;
+	auto next_draw_tick = cur_ticks;
 
 	CheckPaletteAnim();
 
@@ -481,8 +483,14 @@ void VideoDriver_Allegro::MainLoop()
 			last_realtime_tick += delta;
 		}
 
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode)) {
-			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+		if (cur_ticks >= next_game_tick || (_fast_forward && !_pause_mode)) {
+			next_game_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+
+			GameLoop();
+		}
+
+		if (cur_ticks >= next_draw_tick) {
+			next_draw_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 
@@ -498,16 +506,15 @@ void VideoDriver_Allegro::MainLoop()
 
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
-			GameLoop();
-
+			InputLoop();
 			UpdateWindows();
 			CheckPaletteAnim();
+
 			DrawSurfaceToScreen();
-		} else {
+		}
+
+		if (!_fast_forward || _pause_mode) {
 			CSleep(1);
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
-			DrawSurfaceToScreen();
 		}
 	}
 }
