@@ -1002,6 +1002,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Anders
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Menupuntgrootte
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Kiest de grootte van bedieningselementen
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(automatische detectie)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normaal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dubbele grootte
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4x Grootte
@@ -1009,6 +1010,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4x Grootte
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Lettergrootte
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Hiermee kies je hoe groot de letters op het scherm moeten zijn
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-detect)Status: Vermist
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normaal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dubbele grootte
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Viervoudige grootte
@@ -2845,6 +2847,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtertekenreeks:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Bestand overschrijven
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Weet je zeker dat je het bestaande bestand wilt overschrijven?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Map)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Bovenliggende map)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Voer een naam in voor het spel dat moet worden opgeslagen
 

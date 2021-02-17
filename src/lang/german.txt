@@ -2848,6 +2848,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Suchtext:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Datei überschreiben
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Existierende Datei wirklich überschreiben?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Verzeichnis)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Überverzeichnis)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Namen für den Spielstand eingeben
 

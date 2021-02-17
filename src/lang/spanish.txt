@@ -1567,7 +1567,7 @@ STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de econom�
 STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :La economía fluida hace que los cambios de producción sean más frecuentes y en pasos más pequeños. La economía congelada detiene los cambios de producción y los cierres de industrias. Esta configuración puede no tener efecto si los tipos de industria los proporciona un NewGRF.
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
-STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Congelado
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Congelada
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permitir comprar acciones de otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Cuando se activa, permite comprar y vender acciones de empresas. Las acciones de una empresa solamente estarán disponibles cuando la empresa cumpla una edad determinada
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Edad mínima de una empresa para comerciar con sus acciones: {STRING}

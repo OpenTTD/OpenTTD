@@ -1070,6 +1070,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :iné
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veľkosť rozhrania
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Výber veľkosti prvkov rozhrania
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(automaticky zistené)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normálna
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dvojnásobná veľkosť
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Štvornásobná veľkosť
@@ -1077,6 +1078,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Štvornásobná
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Veľkosť písma
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Výber veľkosti písma v rozhraní
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(automaticky zistené)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normálna
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dvojnásobná veľkosť
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Štvornásobná veľkosť
@@ -2895,7 +2897,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Uložiť
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Nahrať scenár
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Nahrať výškovú mapu
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Uložiť Výškovú mapu
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknutim sem sa presuniete do sucasneho vychodzieho adresara pre ukladanie
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknutím sem sa presuniete do súčasného predvoleného priečinku pre ukladanie
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} voľných
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Zoznam diskov, adresárov a súborov s uloženou hrou
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Vybraný názov pre uloženie hry
@@ -2913,6 +2915,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrovací reťazec:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Prepísanie súboru
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Ste si istý, že chcete prepísať existujúci súbor?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Priečinok)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Nadradený priečinok)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Zadajte názov pre uloženie hry
 
