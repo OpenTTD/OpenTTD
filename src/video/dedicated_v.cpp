@@ -294,11 +294,11 @@ void VideoDriver_Dedicated::MainLoop()
 
 		if (cur_ticks >= next_game_tick || _ddc_fastforward) {
 			if (_ddc_fastforward) {
-				next_game_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+				next_game_tick = cur_ticks + this->GetGameInterval();
 			} else {
-				next_game_tick += std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+				next_game_tick += this->GetGameInterval();
 				/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
-				if (next_game_tick < cur_ticks - std::chrono::milliseconds(ALLOWED_DRIFT * MILLISECONDS_PER_TICK)) next_game_tick = cur_ticks;
+				if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
 			}
 
 			GameLoop();

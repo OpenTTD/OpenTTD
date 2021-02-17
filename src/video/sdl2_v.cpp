@@ -793,9 +793,9 @@ void VideoDriver_SDL::LoopOnce()
 	}
 
 	if (cur_ticks >= next_draw_tick) {
-		next_draw_tick += std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+		next_draw_tick += this->GetDrawInterval();
 		/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
-		if (next_draw_tick < cur_ticks - std::chrono::microseconds(ALLOWED_DRIFT * MILLISECONDS_PER_TICK)) next_draw_tick = cur_ticks;
+		if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
 
 		bool old_ctrl_pressed = _ctrl_pressed;
 

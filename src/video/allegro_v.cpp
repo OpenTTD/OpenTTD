@@ -485,20 +485,20 @@ void VideoDriver_Allegro::MainLoop()
 
 		if (cur_ticks >= next_game_tick || (_fast_forward && !_pause_mode)) {
 			if (_fast_forward && !_pause_mode) {
-				next_game_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+				next_game_tick = cur_ticks + this->GetGameInterval();
 			} else {
-				next_game_tick += std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+				next_game_tick += this->GetGameInterval();
 				/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
-				if (next_game_tick < cur_ticks - std::chrono::milliseconds(ALLOWED_DRIFT * MILLISECONDS_PER_TICK)) next_game_tick = cur_ticks;
+				if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
 			}
 
 			GameLoop();
 		}
 
 		if (cur_ticks >= next_draw_tick) {
-			next_draw_tick += std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+			next_draw_tick += this->GetDrawInterval();
 			/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
-			if (next_draw_tick < cur_ticks - std::chrono::microseconds(ALLOWED_DRIFT * MILLISECONDS_PER_TICK)) next_draw_tick = cur_ticks;
+			if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 
