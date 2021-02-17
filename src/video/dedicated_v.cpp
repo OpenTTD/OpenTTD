@@ -21,6 +21,7 @@
 #include "../core/random_func.hpp"
 #include "../saveload/saveload.h"
 #include "../thread.h"
+#include "../window_func.h"
 #include "dedicated_v.h"
 
 #ifdef __OS2__
@@ -295,6 +296,7 @@ void VideoDriver_Dedicated::MainLoop()
 			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 			GameLoop();
+			InputLoop();
 			UpdateWindows();
 		}
 

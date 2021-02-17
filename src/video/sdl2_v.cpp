@@ -776,8 +776,18 @@ void VideoDriver_SDL::LoopOnce()
 		last_realtime_tick += delta;
 	}
 
-	if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode)) {
-		next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+	if (cur_ticks >= next_game_tick || (_fast_forward && !_pause_mode)) {
+		next_game_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+
+		/* The gameloop is the part that can run asynchronously. The rest
+		 * except sleeping can't. */
+		if (_draw_mutex != nullptr) draw_lock.unlock();
+		GameLoop();
+		if (_draw_mutex != nullptr) draw_lock.lock();
+	}
+
+	if (cur_ticks >= next_draw_tick) {
+		next_draw_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 		bool old_ctrl_pressed = _ctrl_pressed;
 
@@ -792,48 +802,33 @@ void VideoDriver_SDL::LoopOnce()
 			(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
 		if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
-		/* The gameloop is the part that can run asynchronously. The rest
-		 * except sleeping can't. */
-		if (_draw_mutex != nullptr) draw_lock.unlock();
-
-		GameLoop();
-
-		if (_draw_mutex != nullptr) draw_lock.lock();
-
+		InputLoop();
 		UpdateWindows();
 		this->CheckPaletteAnim();
-	} else {
-		/* Release the thread while sleeping */
-		if (_draw_mutex != nullptr) {
-			draw_lock.unlock();
-			CSleep(1);
-			draw_lock.lock();
+
+		if (_draw_mutex != nullptr && !HasModalProgress()) {
+			_draw_signal->notify_one();
 		} else {
+			Paint();
+		}
+	}
+
 /* Emscripten is running an event-based mainloop; there is already some
  * downtime between each iteration, so no need to sleep. */
 #ifndef __EMSCRIPTEN__
-			CSleep(1);
+	if (!_fast_forward || _pause_mode) {
+		if (_draw_mutex != nullptr) draw_lock.unlock();
+		CSleep(1);
+		if (_draw_mutex != nullptr) draw_lock.lock();
+	}
 #endif
-		}
-
-		NetworkDrawChatMessage();
-		DrawMouseCursor();
-	}
-
-	/* End of the critical part. */
-	if (_draw_mutex != nullptr && !HasModalProgress()) {
-		_draw_signal->notify_one();
-	} else {
-		/* Oh, we didn't have threads, then just draw unthreaded */
-		Paint();
-	}
 }
 
 void VideoDriver_SDL::MainLoop()
 {
 	cur_ticks = std::chrono::steady_clock::now();
 	last_realtime_tick = cur_ticks;
-	next_tick = cur_ticks;
+	next_game_tick = cur_ticks;
 
 	this->CheckPaletteAnim();
 

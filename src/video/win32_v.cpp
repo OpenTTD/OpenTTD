@@ -1135,7 +1135,8 @@ void VideoDriver_Win32::MainLoop()
 	MSG mesg;
 	auto cur_ticks = std::chrono::steady_clock::now();
 	auto last_realtime_tick = cur_ticks;
-	auto next_tick = cur_ticks;
+	auto next_game_tick = cur_ticks;
+	auto next_draw_tick = cur_ticks;
 
 	std::thread draw_thread;
 	std::unique_lock<std::recursive_mutex> draw_lock;
@@ -1205,8 +1206,21 @@ void VideoDriver_Win32::MainLoop()
 			last_realtime_tick += delta;
 		}
 
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode)) {
-			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+		if (cur_ticks >= next_game_tick || (_fast_forward && !_pause_mode)) {
+			next_game_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+
+			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
+			GdiFlush();
+
+			/* The game loop is the part that can run asynchronously.
+			 * The rest except sleeping can't. */
+			if (_draw_threaded) draw_lock.unlock();
+			GameLoop();
+			if (_draw_threaded) draw_lock.lock();
+		}
+
+		if (cur_ticks >= next_draw_tick) {
+			next_draw_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 
@@ -1226,30 +1240,23 @@ void VideoDriver_Win32::MainLoop()
 
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
-			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
-			GdiFlush();
-
-			/* The game loop is the part that can run asynchronously.
-			 * The rest except sleeping can't. */
-			if (_draw_threaded) draw_lock.unlock();
-			GameLoop();
-			if (_draw_threaded) draw_lock.lock();
-
 			if (_force_full_redraw) MarkWholeScreenDirty();
 
-			UpdateWindows();
-			CheckPaletteAnim();
-		} else {
 			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
 			GdiFlush();
 
-			/* Release the thread while sleeping */
-			if (_draw_threaded) draw_lock.unlock();
-			CSleep(1);
-			if (_draw_threaded) draw_lock.lock();
+			InputLoop();
+			UpdateWindows();
+			CheckPaletteAnim();
+		}
 
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
+		if (!_fast_forward || _pause_mode) {
+			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
+			GdiFlush();
+
+			if (_draw_mutex != nullptr) draw_lock.unlock();
+			CSleep(1);
+			if (_draw_mutex != nullptr) draw_lock.lock();
 		}
 	}
 
