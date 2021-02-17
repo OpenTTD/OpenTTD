@@ -14,4 +14,16 @@
 
 Dimension maxdim(const Dimension &d1, const Dimension &d2);
 
+/**
+ * Check if a rectangle is empty.
+ * @param r Rectangle to check.
+ * @return True if and only if the rectangle doesn't define space.
+ */
+static inline bool IsEmptyRect(const Rect &r)
+{
+	return (r.left | r.top | r.right | r.bottom) == 0;
+}
+
+Rect BoundingRect(const Rect &r1, const Rect &r2);
+
 #endif /* GEOMETRY_FUNC_HPP */
