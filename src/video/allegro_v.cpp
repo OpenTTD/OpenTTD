@@ -445,34 +445,15 @@ void VideoDriver_Allegro::Stop()
 	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
-#if defined(UNIX) || defined(__OS2__)
-# include <sys/time.h> /* gettimeofday */
-
-static uint32 GetTime()
-{
-	struct timeval tim;
-
-	gettimeofday(&tim, nullptr);
-	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
-}
-#else
-static uint32 GetTime()
-{
-	return GetTickCount();
-}
-#endif
-
-
 void VideoDriver_Allegro::MainLoop()
 {
-	uint32 cur_ticks = GetTime();
-	uint32 last_cur_ticks = cur_ticks;
-	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+	auto cur_ticks = std::chrono::steady_clock::now();
+	auto last_cur_ticks = cur_ticks;
+	auto next_tick = cur_ticks;
 
 	CheckPaletteAnim();
 
 	for (;;) {
-		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
 
 		PollEvent();
@@ -491,11 +472,11 @@ void VideoDriver_Allegro::MainLoop()
 			_fast_forward = 0;
 		}
 
-		cur_ticks = GetTime();
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
-			_realtime_tick += cur_ticks - last_cur_ticks;
+		cur_ticks = std::chrono::steady_clock::now();
+		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode)) {
+			_realtime_tick += std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_cur_ticks).count();
 			last_cur_ticks = cur_ticks;
-			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 

@@ -648,9 +648,9 @@ void VideoDriver_SDL::Stop()
 
 void VideoDriver_SDL::MainLoop()
 {
-	uint32 cur_ticks = SDL_GetTicks();
-	uint32 last_cur_ticks = cur_ticks;
-	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+	auto cur_ticks = std::chrono::steady_clock::now();
+	auto last_cur_ticks = cur_ticks;
+	auto next_tick = cur_ticks;
 	uint32 mod;
 	int numkeys;
 	Uint8 *keys;
@@ -690,7 +690,6 @@ void VideoDriver_SDL::MainLoop()
 	DEBUG(driver, 1, "SDL: using %sthreads", _draw_threaded ? "" : "no ");
 
 	for (;;) {
-		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
 
 		while (PollEvent() == -1) {}
@@ -719,11 +718,11 @@ void VideoDriver_SDL::MainLoop()
 			_fast_forward = 0;
 		}
 
-		cur_ticks = SDL_GetTicks();
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
-			_realtime_tick += cur_ticks - last_cur_ticks;
+		cur_ticks = std::chrono::steady_clock::now();
+		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode)) {
+			_realtime_tick += std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_cur_ticks).count();
 			last_cur_ticks = cur_ticks;
-			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 

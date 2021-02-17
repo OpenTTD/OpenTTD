@@ -195,24 +195,11 @@ static bool InputWaiting()
 	return select(STDIN + 1, &readfds, nullptr, nullptr, &tv) > 0;
 }
 
-static uint32 GetTime()
-{
-	struct timeval tim;
-
-	gettimeofday(&tim, nullptr);
-	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
-}
-
 #else
 
 static bool InputWaiting()
 {
 	return WaitForSingleObject(_hInputReady, 1) == WAIT_OBJECT_0;
-}
-
-static uint32 GetTime()
-{
-	return GetTickCount();
 }
 
 #endif
@@ -248,8 +235,9 @@ static void DedicatedHandleKeyInput()
 
 void VideoDriver_Dedicated::MainLoop()
 {
-	uint32 cur_ticks = GetTime();
-	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+	auto cur_ticks = std::chrono::steady_clock::now();
+	auto last_cur_ticks = cur_ticks;
+	auto next_tick = cur_ticks;
 
 	/* Signal handlers */
 #if defined(UNIX)
@@ -290,15 +278,14 @@ void VideoDriver_Dedicated::MainLoop()
 	}
 
 	while (!_exit_game) {
-		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 		InteractiveRandom(); // randomness
 
 		if (!_dedicated_forks) DedicatedHandleKeyInput();
 
-		cur_ticks = GetTime();
-		_realtime_tick += cur_ticks - prev_cur_ticks;
-		if (cur_ticks >= next_tick || cur_ticks < prev_cur_ticks || _ddc_fastforward) {
-			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+		cur_ticks = std::chrono::steady_clock::now();
+		_realtime_tick += std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_cur_ticks).count();
+		if (cur_ticks >= next_tick || _ddc_fastforward) {
+			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 			GameLoop();
 			UpdateWindows();
