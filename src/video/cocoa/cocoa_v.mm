@@ -634,19 +634,13 @@ bool VideoDriver_Cocoa::PollEvent()
 /** Main game loop. */
 void VideoDriver_Cocoa::GameLoop()
 {
-	uint32 cur_ticks = GetTick();
-	uint32 last_cur_ticks = cur_ticks;
-	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-
-#ifdef _DEBUG
-	uint32 et0 = GetTick();
-	uint32 st = 0;
-#endif
+	auto cur_ticks = std::chrono::steady_clock::now();
+	auto last_cur_ticks = cur_ticks;
+	auto next_tick = cur_ticks;
 
 	for (;;) {
 		@autoreleasepool {
 
-			uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
 			InteractiveRandom(); // randomness
 
 			while (this->PollEvent()) {}
@@ -669,11 +663,11 @@ void VideoDriver_Cocoa::GameLoop()
 				_fast_forward = 0;
 			}
 
-			cur_ticks = GetTick();
-			if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
-				_realtime_tick += cur_ticks - last_cur_ticks;
+			cur_ticks = std::chrono::steady_clock::now();
+			if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode)) {
+				_realtime_tick += std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_cur_ticks).count();
 				last_cur_ticks = cur_ticks;
-				next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+				next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 				bool old_ctrl_pressed = _ctrl_pressed;
 
@@ -688,28 +682,13 @@ void VideoDriver_Cocoa::GameLoop()
 				this->CheckPaletteAnim();
 				this->Draw();
 			} else {
-#ifdef _DEBUG
-				uint32 st0 = GetTick();
-#endif
 				CSleep(1);
-#ifdef _DEBUG
-				st += GetTick() - st0;
-#endif
 				NetworkDrawChatMessage();
 				DrawMouseCursor();
 				this->Draw();
 			}
 		}
 	}
-
-#ifdef _DEBUG
-	uint32 et = GetTick();
-
-	DEBUG(driver, 1, "cocoa_v: nextEventMatchingMask took %i ms total", _tEvent);
-	DEBUG(driver, 1, "cocoa_v: game loop took %i ms total (%i ms without sleep)", et - et0, et - et0 - st);
-	DEBUG(driver, 1, "cocoa_v: (nextEventMatchingMask total)/(game loop total) is %f%%", (double)_tEvent / (double)(et - et0) * 100);
-	DEBUG(driver, 1, "cocoa_v: (nextEventMatchingMask total)/(game loop without sleep total) is %f%%", (double)_tEvent / (double)(et - et0 - st) * 100);
-#endif
 }
 
 

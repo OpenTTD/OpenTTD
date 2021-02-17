@@ -1133,9 +1133,9 @@ static void CheckPaletteAnim()
 void VideoDriver_Win32::MainLoop()
 {
 	MSG mesg;
-	uint32 cur_ticks = GetTickCount();
-	uint32 last_cur_ticks = cur_ticks;
-	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+	auto cur_ticks = std::chrono::steady_clock::now();
+	auto last_cur_ticks = cur_ticks;
+	auto next_tick = cur_ticks;
 
 	std::thread draw_thread;
 	std::unique_lock<std::recursive_mutex> draw_lock;
@@ -1176,8 +1176,6 @@ void VideoDriver_Win32::MainLoop()
 
 	CheckPaletteAnim();
 	for (;;) {
-		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
-
 		while (PeekMessage(&mesg, nullptr, 0, 0, PM_REMOVE)) {
 			InteractiveRandom(); // randomness
 			/* Convert key messages to char messages if we want text input. */
@@ -1198,11 +1196,11 @@ void VideoDriver_Win32::MainLoop()
 			_fast_forward = 0;
 		}
 
-		cur_ticks = GetTickCount();
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
-			_realtime_tick += cur_ticks - last_cur_ticks;
+		cur_ticks = std::chrono::steady_clock::now();
+		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode)) {
+			_realtime_tick += std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_cur_ticks).count();
 			last_cur_ticks = cur_ticks;
-			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
+			next_tick = cur_ticks + std::chrono::milliseconds(MILLISECONDS_PER_TICK);
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 
