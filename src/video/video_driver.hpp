@@ -13,6 +13,7 @@
 #include "../driver.h"
 #include "../core/geometry_type.hpp"
 #include "../core/math_func.hpp"
+#include "../gfx_func.h"
 #include "../settings_type.h"
 #include "../zoom_type.h"
 #include <chrono>
@@ -158,7 +159,8 @@ protected:
 
 	std::chrono::steady_clock::duration GetGameInterval()
 	{
-		return std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+		if (_game_speed == 0) return std::chrono::microseconds(0);
+		return std::chrono::microseconds(MILLISECONDS_PER_TICK * 1000 * 100 / _game_speed);
 	}
 
 	std::chrono::steady_clock::duration GetDrawInterval()

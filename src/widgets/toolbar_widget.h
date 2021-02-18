@@ -75,4 +75,16 @@ enum ToolbarEditorWidgets {
 	WID_TE_SWITCH_BAR,    ///< Only available when toolbar has been split to switch between different subsets.
 };
 
+/** Widgets of the #GameSpeedToolbarWindow class. */
+enum GameSpeedWidgets {
+	WID_GS_CAPTION,        ///< Caption of the window.
+	WID_GS_SLOWER_4X,
+	WID_GS_SLOWER_2X,
+	WID_GS_NORMAL,
+	WID_GS_FASTER_2X,
+	WID_GS_FASTER_4X,
+	WID_GS_FASTER_8X,
+	WID_GS_FASTEST,
+};
+
 #endif /* WIDGETS_TOOLBAR_WIDGET_H */

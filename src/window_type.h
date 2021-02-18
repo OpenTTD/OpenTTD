@@ -697,6 +697,12 @@ enum WindowClass {
 	 */
 	WC_SCREENSHOT,
 
+	/**
+	 * Game Speed window; %Window numbers:
+	 *   - 0 = #GameSpeedWidgets
+	 */
+	WC_GAME_SPEED,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 

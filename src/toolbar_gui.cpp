@@ -275,6 +275,95 @@ static CallBackFunction ToolbarPauseClick(Window *w)
 	return CBF_NONE;
 }
 
+
+static const NWidgetPart _game_speed_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
+		NWidget(WWT_CAPTION, COLOUR_DARK_GREEN, WID_GS_CAPTION), SetDataTip(STR_GAME_SPEED_CAPTION, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(WWT_STICKYBOX, COLOUR_DARK_GREEN),
+	EndContainer(),
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_GS_SLOWER_4X),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(STR_GAME_SPEED_SLOWER_4X, STR_GAME_SPEED_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_GS_SLOWER_2X),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(STR_GAME_SPEED_SLOWER_2X, STR_GAME_SPEED_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_GS_NORMAL),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(STR_GAME_SPEED_NORMAL, STR_GAME_SPEED_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_GS_FASTER_2X),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(STR_GAME_SPEED_FASTER_2X, STR_GAME_SPEED_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_GS_FASTER_4X),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(STR_GAME_SPEED_FASTER_4X, STR_GAME_SPEED_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_GS_FASTER_8X),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(STR_GAME_SPEED_FASTER_8X, STR_GAME_SPEED_TOOLTIP),
+		NWidget(WWT_TEXTBTN, COLOUR_DARK_GREEN, WID_GS_FASTEST),
+						SetFill(0, 1), SetMinimalSize(22, 22), SetDataTip(STR_GAME_SPEED_FASTEST, STR_GAME_SPEED_TOOLTIP),
+	EndContainer(),
+};
+
+static WindowDesc _game_speed_desc(
+	WDP_MANUAL, "toolbar_game_speed", 0, 0,
+	WC_GAME_SPEED, WC_NONE,
+	0,
+	_game_speed_widgets, lengthof(_game_speed_widgets)
+);
+
+/** GameSpeed toolbar management class. */
+struct GameSpeedToolbarWindow : Window {
+	Point position;
+	int last_widget;
+
+	GameSpeedToolbarWindow(WindowDesc *desc, Point position) : Window(desc)
+	{
+		this->position = position;
+		this->InitNested(0);
+		this->last_widget = WID_GS_NORMAL;
+		this->SetWidgetLoweredState(WID_GS_NORMAL, true);
+	}
+
+	~GameSpeedToolbarWindow()
+	{
+	}
+
+	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
+	{
+		return this->position;
+	}
+
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	{
+		this->SetWidgetLoweredState(WID_GS_SLOWER_4X, _game_speed == 25);
+		this->SetWidgetLoweredState(WID_GS_SLOWER_2X, _game_speed == 50);
+		this->SetWidgetLoweredState(WID_GS_NORMAL,    _game_speed == 100);
+		this->SetWidgetLoweredState(WID_GS_FASTER_2X, _game_speed == 200);
+		this->SetWidgetLoweredState(WID_GS_FASTER_4X, _game_speed == 400);
+		this->SetWidgetLoweredState(WID_GS_FASTER_8X, _game_speed == 800);
+		this->SetWidgetLoweredState(WID_GS_FASTEST,   _game_speed == 0);
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		if (widget < WID_GS_SLOWER_4X) return;
+
+		switch (widget) {
+			case WID_GS_SLOWER_4X: _game_speed = 25; break;
+			case WID_GS_SLOWER_2X: _game_speed = 50; break;
+			case WID_GS_NORMAL:    _game_speed = 100; break;
+			case WID_GS_FASTER_2X: _game_speed = 200; break;
+			case WID_GS_FASTER_4X: _game_speed = 400; break;
+			case WID_GS_FASTER_8X: _game_speed = 800; break;
+			case WID_GS_FASTEST:   _game_speed = 0; break;
+
+			default: NOT_REACHED();
+		}
+
+		if (_game_speed != 100) {
+			_last_game_speed = _game_speed;
+		}
+
+		this->InvalidateData();
+	}
+};
+
 /**
  * Toggle fast forward mode.
  *
@@ -283,8 +372,23 @@ static CallBackFunction ToolbarPauseClick(Window *w)
  */
 static CallBackFunction ToolbarFastForwardClick(Window *w)
 {
-	_fast_forward ^= true;
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+
+	if (_ctrl_pressed) {
+		if (_game_speed == 100) {
+			_game_speed = _last_game_speed;
+		} else {
+			_game_speed = 100;
+		}
+		InvalidateWindowClassesData(WC_GAME_SPEED);
+		return CBF_NONE;
+	}
+
+	Point position = { w->left, w->top + 1 };
+
+	DeleteWindowByClass(WC_GAME_SPEED);
+	new GameSpeedToolbarWindow(&_game_speed_desc, position);
+
 	return CBF_NONE;
 }
 
@@ -2127,7 +2231,7 @@ struct MainToolbarWindow : Window {
 			this->SetWidgetDirty(WID_TN_PAUSE);
 		}
 
-		if (this->IsWidgetLowered(WID_TN_FAST_FORWARD) != !!_fast_forward) {
+		if (this->IsWidgetLowered(WID_TN_FAST_FORWARD) != (_game_speed != 100)) {
 			this->ToggleWidgetLoweredState(WID_TN_FAST_FORWARD);
 			this->SetWidgetDirty(WID_TN_FAST_FORWARD);
 		}
@@ -2508,7 +2612,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			this->SetDirty();
 		}
 
-		if (this->IsWidgetLowered(WID_TE_FAST_FORWARD) != !!_fast_forward) {
+		if (this->IsWidgetLowered(WID_TE_FAST_FORWARD) != (_game_speed != 100)) {
 			this->ToggleWidgetLoweredState(WID_TE_FAST_FORWARD);
 			this->SetDirty();
 		}

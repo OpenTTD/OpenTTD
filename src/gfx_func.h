@@ -54,7 +54,8 @@ extern byte _support8bpp;
 extern CursorVars _cursor;
 extern bool _ctrl_pressed;   ///< Is Ctrl pressed?
 extern bool _shift_pressed;  ///< Is Shift pressed?
-extern byte _fast_forward;
+extern uint16 _game_speed;  ///< Game speed in %, where 100 means normal speed (< 100 slows down the game > 100 speeds it up; 0 is as-fast-as-you-can).
+extern uint16 _last_game_speed;  ///< Last non-100 speed used; used when switching fast-forward on/off.
 
 extern bool _left_button_down;
 extern bool _left_button_clicked;

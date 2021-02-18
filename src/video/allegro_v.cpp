@@ -453,6 +453,7 @@ void VideoDriver_Allegro::MainLoop()
 	auto last_realtime_tick = cur_ticks;
 	auto next_game_tick = cur_ticks;
 	auto next_draw_tick = cur_ticks;
+	bool fast_forward = false;
 
 	CheckPaletteAnim();
 
@@ -470,9 +471,17 @@ void VideoDriver_Allegro::MainLoop()
 		if (key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0)
 #endif
 		{
-			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-		} else if (_fast_forward & 2) {
-			_fast_forward = 0;
+			if (!_networking && _game_mode != GM_MENU) {
+				_game_speed = _last_game_speed;
+				InvalidateWindowClassesData(WC_GAME_SPEED);
+
+				fast_forward = true;
+			}
+		} else if (fast_forward) {
+			_game_speed = 100;
+			InvalidateWindowClassesData(WC_GAME_SPEED);
+
+			fast_forward = false;
 		}
 
 		cur_ticks = std::chrono::steady_clock::now();
@@ -484,14 +493,10 @@ void VideoDriver_Allegro::MainLoop()
 			last_realtime_tick += delta;
 		}
 
-		if (cur_ticks >= next_game_tick || (_fast_forward && !_pause_mode)) {
-			if (_fast_forward && !_pause_mode) {
-				next_game_tick = cur_ticks + this->GetGameInterval();
-			} else {
-				next_game_tick += this->GetGameInterval();
-				/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
-				if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
-			}
+		if (cur_ticks >= next_game_tick) {
+			next_game_tick += this->GetGameInterval();
+			/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
+			if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
 
 			GameLoop();
 		}
@@ -523,15 +528,12 @@ void VideoDriver_Allegro::MainLoop()
 			DrawSurfaceToScreen();
 		}
 
-		/* If we are not in fast-forward, create some time between calls to ease up CPU usage. */
-		if (!_fast_forward || _pause_mode) {
-			/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
-			auto next_tick = std::min(next_draw_tick, next_game_tick);
-			auto now = std::chrono::steady_clock::now();
+		/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
+		auto next_tick = std::min(next_draw_tick, next_game_tick);
+		auto now = std::chrono::steady_clock::now();
 
-			if (next_tick > now) {
-				std::this_thread::sleep_for(next_tick - now);
-			}
+		if (next_tick > now) {
+			std::this_thread::sleep_for(next_tick - now);
 		}
 	}
 }

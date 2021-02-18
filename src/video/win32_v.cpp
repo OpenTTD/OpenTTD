@@ -1137,6 +1137,7 @@ void VideoDriver_Win32::MainLoop()
 	auto last_realtime_tick = cur_ticks;
 	auto next_game_tick = cur_ticks;
 	auto next_draw_tick = cur_ticks;
+	bool fast_forward = false;
 
 	std::thread draw_thread;
 	std::unique_lock<std::recursive_mutex> draw_lock;
@@ -1186,15 +1187,23 @@ void VideoDriver_Win32::MainLoop()
 		if (_exit_game) break;
 
 #if defined(_DEBUG)
-		if (_wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0 &&
+		if (_wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0)
 #else
 		/* Speed up using TAB, but disable for ALT+TAB of course */
-		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0 &&
+		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0)
 #endif
-			  !_networking && _game_mode != GM_MENU) {
-			_fast_forward |= 2;
-		} else if (_fast_forward & 2) {
-			_fast_forward = 0;
+		{
+			if (!_networking && _game_mode != GM_MENU) {
+				_game_speed = _last_game_speed;
+				InvalidateWindowClassesData(WC_GAME_SPEED);
+
+				fast_forward = true;
+			}
+		} else if (fast_forward) {
+			_game_speed = 100;
+			InvalidateWindowClassesData(WC_GAME_SPEED);
+
+			fast_forward = false;
 		}
 
 		cur_ticks = std::chrono::steady_clock::now();
@@ -1206,14 +1215,10 @@ void VideoDriver_Win32::MainLoop()
 			last_realtime_tick += delta;
 		}
 
-		if (cur_ticks >= next_game_tick || (_fast_forward && !_pause_mode)) {
-			if (_fast_forward && !_pause_mode) {
-				next_game_tick = cur_ticks + this->GetGameInterval();
-			} else {
-				next_game_tick += this->GetGameInterval();
-				/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
-				if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
-			}
+		if (cur_ticks >= next_game_tick) {
+			next_game_tick += this->GetGameInterval();
+			/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
+			if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
 
 			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
 			GdiFlush();
@@ -1259,20 +1264,17 @@ void VideoDriver_Win32::MainLoop()
 			CheckPaletteAnim();
 		}
 
-		/* If we are not in fast-forward, create some time between calls to ease up CPU usage. */
-		if (!_fast_forward || _pause_mode) {
-			/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
-			auto next_tick = std::min(next_draw_tick, next_game_tick);
-			auto now = std::chrono::steady_clock::now();
+		/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
+		auto next_tick = std::min(next_draw_tick, next_game_tick);
+		auto now = std::chrono::steady_clock::now();
 
-			if (next_tick > now) {
-				/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
-				GdiFlush();
+		if (next_tick > now) {
+			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
+			GdiFlush();
 
-				if (_draw_mutex != nullptr) draw_lock.unlock();
-				std::this_thread::sleep_for(next_tick - now);
-				if (_draw_mutex != nullptr) draw_lock.lock();
-			}
+			if (_draw_mutex != nullptr) draw_lock.unlock();
+			std::this_thread::sleep_for(next_tick - now);
+			if (_draw_mutex != nullptr) draw_lock.lock();
 		}
 	}
 
