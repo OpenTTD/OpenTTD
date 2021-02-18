@@ -319,6 +319,8 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	/* Does it need to be refitted */
 	CargoID refit_cargo = GetNewCargoTypeForReplace(old_veh, e, part_of_chain);
 	if (refit_cargo == CT_INVALID) {
+		if (!IsLocalCompany()) return CommandCost();
+
 		SetDParam(0, old_veh->index);
 
 		int order_id = GetIncompatibleRefitOrderIdForAutoreplace(old_veh, e);
