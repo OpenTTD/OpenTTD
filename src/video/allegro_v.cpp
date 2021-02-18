@@ -495,7 +495,8 @@ void VideoDriver_Allegro::MainLoop()
 			GameLoop();
 		}
 
-		if (cur_ticks >= next_draw_tick) {
+		/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */
+		if (cur_ticks >= next_draw_tick && (_switch_mode == SM_NONE || HasModalProgress())) {
 			next_draw_tick += this->GetDrawInterval();
 			/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 			if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
