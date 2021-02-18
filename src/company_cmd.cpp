@@ -35,6 +35,7 @@
 #include "game/game.hpp"
 #include "goal_base.h"
 #include "story_base.h"
+#include "widgets/statusbar_widget.h"
 
 #include "table/strings.h"
 
@@ -182,7 +183,7 @@ void InvalidateCompanyWindows(const Company *company)
 {
 	CompanyID cid = company->index;
 
-	if (cid == _local_company) SetWindowDirty(WC_STATUS_BAR, 0);
+	if (cid == _local_company) SetWindowWidgetDirty(WC_STATUS_BAR, 0, WID_S_RIGHT);
 	SetWindowDirty(WC_FINANCES, cid);
 }
 
