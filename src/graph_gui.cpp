@@ -165,7 +165,8 @@ struct ValuesInterval {
 struct BaseGraphWindow : Window {
 protected:
 	static const int GRAPH_MAX_DATASETS     =  64;
-	static const int GRAPH_AXIS_LINE_COLOUR = PC_BLACK;
+	static const int GRAPH_AXIS_LINE_COLOUR =  GREY_SCALE(1);
+	static const int GRAPH_ZERO_LINE_COLOUR =  GREY_SCALE(8);
 	static const int GRAPH_NUM_MONTHS       =  24; ///< Number of months displayed in the graph.
 
 	static const int MIN_GRAPH_NUM_LINES_Y  =   9; ///< Minimal number of horizontal lines to draw.
@@ -292,7 +293,7 @@ protected:
 		static_assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
 		assert(this->num_vert_lines > 0);
 
-		byte grid_colour = _colour_gradient[COLOUR_GREY][4];
+		byte grid_colour = GREY_SCALE(3);
 
 		/* Rect r will be adjusted to contain just the graph, with labels being
 		 * placed outside the area. */
@@ -352,7 +353,7 @@ protected:
 
 		/* Draw the x axis. */
 		y = x_axis_offset + r.top;
-		GfxFillRect(r.left, y, r.right, y, GRAPH_AXIS_LINE_COLOUR);
+		GfxFillRect(r.left, y, r.right, y, GRAPH_ZERO_LINE_COLOUR);
 
 		/* Find the largest value that will be drawn. */
 		if (this->num_on_x_axis == 0) return;
