@@ -3227,6 +3227,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Fraza filtru:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Zastąp plik
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Czy na pewno chcesz zastąpić istniejący stan gry?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (folder)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (folder nadrzędny)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Wprowadź nazwę pod jaką zapisać grę
 
