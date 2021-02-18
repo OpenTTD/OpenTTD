@@ -666,8 +666,6 @@ static void MoveToNextTickerItem()
 	 * there is no status bar but possible news. */
 	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
 
-	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
-
 	/* if we're not at the last item, then move on */
 	while (_statusbar_news_item != _latest_news) {
 		_statusbar_news_item = (_statusbar_news_item == nullptr) ? _oldest_news : _statusbar_news_item->next;
@@ -766,6 +764,7 @@ static void DeleteNewsItem(NewsItem *ni)
 		_statusbar_news_item = ni->prev;
 
 		/* About to remove the currently displayed item (ticker, or just a reminder) */
+		InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
 		MoveToNextTickerItem();
 	}
 
