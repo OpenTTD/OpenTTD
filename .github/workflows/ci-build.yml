@@ -88,6 +88,7 @@ jobs:
 
         echo "::group::Install dependencies"
         sudo apt-get install -y --no-install-recommends \
+          liballegro4-dev \
           libfontconfig-dev \
           libicu-dev \
           liblzma-dev \
