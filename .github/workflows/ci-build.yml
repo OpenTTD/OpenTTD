@@ -66,10 +66,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - compiler: clang
-            cxxcompiler: clang++
-          - compiler: gcc
-            cxxcompiler: g++
+        - compiler: clang
+          cxxcompiler: clang++
+          libsdl: libsdl2-dev
+        - compiler: gcc
+          cxxcompiler: g++
+          libsdl: libsdl2-dev
+        - compiler: gcc
+          cxxcompiler: g++
+          libsdl: libsdl1.2-dev
 
     runs-on: ubuntu-20.04
     env:
@@ -93,7 +98,7 @@ jobs:
           libicu-dev \
           liblzma-dev \
           liblzo2-dev \
-          libsdl2-dev \
+          ${{ matrix.libsdl }} \
           zlib1g-dev \
           # EOF
         echo "::endgroup::"
