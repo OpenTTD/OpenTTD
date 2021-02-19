@@ -2863,12 +2863,13 @@ NWidgetContainer *MakeWindowNWidgetTree(const NWidgetPart *parts, int count, int
  * @param biggest_index Storage for collecting the biggest index used in the returned tree.
  * @param widget_first The first widget index to use.
  * @param widget_last The last widget index to use.
+ * @param colour The colour in which to draw the button.
  * @param max_length Maximal number of company buttons in one row.
  * @param button_tooltip The tooltip-string of every button.
  * @return Panel with rows of company buttons.
  * @post \c *biggest_index contains the largest used index in the tree.
  */
-NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int widget_last, int max_length, StringID button_tooltip)
+NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int widget_last, Colours button_colour, int max_length, StringID button_tooltip)
 {
 	assert(max_length >= 1);
 	NWidgetVertical *vert = nullptr; // Storage for all rows.
@@ -2892,7 +2893,7 @@ NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int wid
 			hor_length = 0;
 		}
 
-		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, COLOUR_GREY, widnum);
+		NWidgetBackground *panel = new NWidgetBackground(WWT_PANEL, button_colour, widnum);
 		panel->SetMinimalSize(sprite_size.width, sprite_size.height);
 		panel->SetFill(1, 1);
 		panel->SetResize(1, 0);
