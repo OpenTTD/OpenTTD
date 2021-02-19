@@ -1175,13 +1175,13 @@ void VideoDriver_Win32::MainLoop()
 		if (_exit_game) break;
 
 #if defined(_DEBUG)
-		if (_wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0 &&
+		if (_wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0)
 #else
 		/* Speed up using TAB, but disable for ALT+TAB of course */
-		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0 &&
+		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0)
 #endif
-			  !_networking && _game_mode != GM_MENU) {
-			_fast_forward |= 2;
+		{
+			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
 		} else if (_fast_forward & 2) {
 			_fast_forward = 0;
 		}
