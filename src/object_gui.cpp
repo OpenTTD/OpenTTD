@@ -42,7 +42,7 @@ class BuildObjectWindow : public Window {
 
 	int line_height;                       ///< The height of a single line.
 	int info_height;                       ///< The height of the info box.
-	Scrollbar* vscroll;                    ///< The scrollbar.
+	Scrollbar *vscroll;                    ///< The scrollbar.
 
 	static Listing   last_sorting;         ///< Default sorting of #GUIObjectClassList.
 	static Filtering last_filtering;       ///< Default filtering of #GUIObjectClassList.
@@ -114,7 +114,7 @@ public:
 
 		ResetObjectToPlace();
 
-		this->vscroll->SetCount((int) this->object_classes.size());
+		this->vscroll->SetCount((int)this->object_classes.size());
 
 		EnsureSelectedObjectClassIsVisible();
 
@@ -122,7 +122,7 @@ public:
 	}
 
 	/** Sort object classes by class name. */
-	static bool NameSorter(const ObjectClass *const& a, const ObjectClass *const& b)
+	static bool NameSorter(const ObjectClass * const &a, const ObjectClass * const &b)
 	{
 		char buffer_a[DRAW_STRING_BUFFER];
 		GetString(buffer_a, a->name, lastof(buffer_a));
@@ -134,7 +134,7 @@ public:
 	}
 
 	/** Filter object classes by class name. */
-	static bool CDECL TagNameFilter(const ObjectClass *const* oc, StringFilter& filter)
+	static bool CDECL TagNameFilter(const ObjectClass * const *oc, StringFilter &filter)
 	{
 		char buffer[DRAW_STRING_BUFFER];
 		GetString(buffer, (*oc)->name, lastof(buffer));
@@ -180,7 +180,7 @@ public:
 			 * result of starting a new game without the corresponding NewGRF. */
 			bool available = false;
 			for (uint i = 0; ObjectClass::GetClassCount(); ++i) {
-				ObjectClass* objclass = ObjectClass::Get((ObjectClassID)i);
+				ObjectClass *objclass = ObjectClass::Get((ObjectClassID)i);
 				if (objclass == _selected_object_class) {
 					available = true;
 					break;
@@ -588,11 +588,11 @@ public:
 Listing BuildObjectWindow::last_sorting = { false, 0 };
 Filtering BuildObjectWindow::last_filtering = { false, 0 };
 
-BuildObjectWindow::GUIObjectClassList::SortFunction* const BuildObjectWindow::sorter_funcs[] = {
+BuildObjectWindow::GUIObjectClassList::SortFunction * const BuildObjectWindow::sorter_funcs[] = {
 	&NameSorter,
 };
 
-BuildObjectWindow::GUIObjectClassList::FilterFunction* const BuildObjectWindow::filter_funcs[] = {
+BuildObjectWindow::GUIObjectClassList::FilterFunction * const BuildObjectWindow::filter_funcs[] = {
 	&TagNameFilter,
 };
 
