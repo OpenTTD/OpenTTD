@@ -1127,11 +1127,11 @@ STR_GAME_OPTIONS_AUTOSAVE_FRAME                                 :{BLACK}Авто
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP                      :{BLACK}Интервал автосохранения игры
 
 ############ start of autosave dropdown
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :Отключено
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Каждый месяц
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :Каждые 3 месяца
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :Каждые 6 месяцев
-STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Каждый год
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_OFF                          :отключено
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :каждый месяц
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_3_MONTHS               :каждые 3 месяца
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_6_MONTHS               :каждые 6 месяцев
+STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :каждый год
 ############ end of autosave dropdown
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Язык
@@ -1147,6 +1147,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Другое
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Размер элементов интерфейса
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Выберите размер элементов интерфейса
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(Автовыбор)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Обычный
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Удвоенный
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Учетверённый
@@ -1154,6 +1155,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Учетвер�
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Размер шрифта
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Выберите размер шрифта, используемого в игре
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(Автовыбор)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Нормальный
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Двукратный
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Четырёхкратный
@@ -1524,10 +1526,10 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :тёмно-зе
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :фиолетовый
 STR_CONFIG_SETTING_SCROLLMODE                                   :Перемещение обзора: {STRING}
 STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Способ перемещения по игровому полю
-STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :Перемещать с помощью ПКМ, зафиксировав курсор
-STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Перемещать с помощью ПКМ, зафиксировав курсор
-STR_CONFIG_SETTING_SCROLLMODE_RMB                               :Перемещать с помощью ПКМ
-STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Перемещать с помощью ЛКМ
+STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :перемещать обзор с помощью ПКМ, зафиксировав курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :перемещать карту с помощью ПКМ, зафиксировав курсор
+STR_CONFIG_SETTING_SCROLLMODE_RMB                               :перемещать с помощью ПКМ
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :перемещать с помощью ЛКМ
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Плавное перемещение: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Настройка перемещения обзора в основном окне при щелчке по миникарте или по команде обзора какого-нибудь объекта. Если включено, то обзор смещается плавно; если отключено - то мгновенно.
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Показывать замеры при строительстве: {STRING}

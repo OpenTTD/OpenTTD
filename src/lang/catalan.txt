@@ -2848,6 +2848,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Cadena de filtre:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sobreescriu fitxer
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Esteu segur que voleu sobreescriure el fitxer?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (carpeta)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (carpeta superior)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Posa el nom amb què desar la partida actual
 

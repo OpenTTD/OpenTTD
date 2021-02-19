@@ -696,7 +696,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Klicken 
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Beste Firmen, die {NUM} erreichten
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Firmentabelle in {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Geschäftsmann
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Geschäftsperson
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Unternehmer
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrieller
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalist
