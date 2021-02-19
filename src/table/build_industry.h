@@ -1035,10 +1035,10 @@ static const std::vector<IndustryTileLayout> _tile_table_sugar_mine {
 static const uint8 _sawmill_sounds[] = { SND_28_SAWMILL };
 
 /** Array with whistle sound, for factory */
-static const uint8 _factory_sounds[] = { SND_03_FACTORY_WHISTLE };
+static const uint8 _factory_sounds[] = { SND_03_FACTORY };
 
 /** Array with 3 animal sounds, for farms */
-static const uint8 _farm_sounds[] = { SND_24_SHEEP, SND_25_COW, SND_26_HORSE };
+static const uint8 _farm_sounds[] = { SND_24_FARM_1, SND_25_FARM_2, SND_26_FARM_3 };
 
 /** Array with... hem... a sound of toyland */
 static const uint8 _plastic_mine_sounds[] = { SND_33_PLASTIC_MINE };

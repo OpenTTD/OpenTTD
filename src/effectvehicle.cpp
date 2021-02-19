@@ -499,7 +499,7 @@ static bool BubbleTick(EffectVehicle *v)
 	if (b->y == 4 && b->x == 1) {
 		if (v->z_pos > 180 || Chance16I(1, 96, Random())) {
 			v->spritenum = 5;
-			if (_settings_client.sound.ambient) SndPlayVehicleFx(SND_2F_POP, v);
+			if (_settings_client.sound.ambient) SndPlayVehicleFx(SND_2F_BUBBLE_GENERATOR_FAIL, v);
 		}
 		anim_state = 0;
 	}
@@ -508,7 +508,7 @@ static bool BubbleTick(EffectVehicle *v)
 		TileIndex tile;
 
 		anim_state++;
-		if (_settings_client.sound.ambient) SndPlayVehicleFx(SND_31_EXTRACT, v);
+		if (_settings_client.sound.ambient) SndPlayVehicleFx(SND_31_BUBBLE_GENERATOR_SUCCESS, v);
 
 		tile = TileVirtXY(v->x_pos, v->y_pos);
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryGfx(tile) == GFX_BUBBLE_CATCHER) AddAnimatedTile(tile);
