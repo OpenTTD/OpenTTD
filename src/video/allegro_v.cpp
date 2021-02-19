@@ -23,6 +23,7 @@
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
 #include "../framerate_type.h"
+#include "../progress.h"
 #include "../thread.h"
 #include "../window_func.h"
 #include "allegro_v.h"
