@@ -43,8 +43,8 @@ public:
 
 protected:
 	Dimension GetScreenSize() const override;
-
 	float GetDPIScale() override;
+	void InputLoop() override;
 
 private:
 	void CheckPaletteAnim();

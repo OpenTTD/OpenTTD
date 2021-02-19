@@ -632,6 +632,28 @@ bool VideoDriver_Cocoa::PollEvent()
 	return true;
 }
 
+void VideoDriver_Cocoa::InputLoop()
+{
+	NSUInteger cur_mods = [ NSEvent modifierFlags ];
+
+	bool old_ctrl_pressed = _ctrl_pressed;
+
+	_ctrl_pressed = (cur_mods & ( _settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSControlKeyMask : NSCommandKeyMask)) != 0;
+	_shift_pressed = (cur_mods & NSShiftKeyMask) != 0;
+
+#if defined(_DEBUG)
+	if (_shift_pressed) {
+#else
+	if (_tab_is_down) {
+#endif
+		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
+	} else if (_fast_forward & 2) {
+		_fast_forward = 0;
+	}
+
+	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+}
+
 /** Main game loop. */
 void VideoDriver_Cocoa::GameLoop()
 {
@@ -653,17 +675,6 @@ void VideoDriver_Cocoa::GameLoop()
 				break;
 			}
 
-			NSUInteger cur_mods = [ NSEvent modifierFlags ];
-
-#if defined(_DEBUG)
-			if (cur_mods & NSShiftKeyMask) {
-#else
-			if (_tab_is_down) {
-#endif
-				if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-			} else if (_fast_forward & 2) {
-				_fast_forward = 0;
-			}
 
 			cur_ticks = std::chrono::steady_clock::now();
 
@@ -692,14 +703,8 @@ void VideoDriver_Cocoa::GameLoop()
 				/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 				if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
 
-				bool old_ctrl_pressed = _ctrl_pressed;
-
-				_ctrl_pressed = (cur_mods & ( _settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSControlKeyMask : NSCommandKeyMask)) != 0;
-				_shift_pressed = (cur_mods & NSShiftKeyMask) != 0;
-
-				if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
-
-				InputLoop();
+				this->InputLoop();
+				::InputLoop();
 				UpdateWindows();
 				this->CheckPaletteAnim();
 

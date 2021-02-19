@@ -447,6 +447,36 @@ void VideoDriver_Allegro::Stop()
 	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
+void VideoDriver_Allegro::InputLoop()
+{
+	bool old_ctrl_pressed = _ctrl_pressed;
+
+	_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG);
+	_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG);
+
+#if defined(_DEBUG)
+	if (_shift_pressed)
+#else
+	/* Speedup when pressing tab, except when using ALT+TAB
+	 * to switch to another application. */
+	if (key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0)
+#endif
+	{
+		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
+	} else if (_fast_forward & 2) {
+		_fast_forward = 0;
+	}
+
+	/* Determine which directional keys are down. */
+	_dirkeys =
+		(key[KEY_LEFT]  ? 1 : 0) |
+		(key[KEY_UP]    ? 2 : 0) |
+		(key[KEY_RIGHT] ? 4 : 0) |
+		(key[KEY_DOWN]  ? 8 : 0);
+
+	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+}
+
 void VideoDriver_Allegro::MainLoop()
 {
 	auto cur_ticks = std::chrono::steady_clock::now();
@@ -461,19 +491,6 @@ void VideoDriver_Allegro::MainLoop()
 
 		PollEvent();
 		if (_exit_game) return;
-
-#if defined(_DEBUG)
-		if (_shift_pressed)
-#else
-		/* Speedup when pressing tab, except when using ALT+TAB
-		 * to switch to another application */
-		if (key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0)
-#endif
-		{
-			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-		} else if (_fast_forward & 2) {
-			_fast_forward = 0;
-		}
 
 		cur_ticks = std::chrono::steady_clock::now();
 
@@ -502,21 +519,8 @@ void VideoDriver_Allegro::MainLoop()
 			/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 			if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
 
-			bool old_ctrl_pressed = _ctrl_pressed;
-
-			_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG);
-			_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG);
-
-			/* determine which directional keys are down */
-			_dirkeys =
-				(key[KEY_LEFT]  ? 1 : 0) |
-				(key[KEY_UP]    ? 2 : 0) |
-				(key[KEY_RIGHT] ? 4 : 0) |
-				(key[KEY_DOWN]  ? 8 : 0);
-
-			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
-
-			InputLoop();
+			this->InputLoop();
+			::InputLoop();
 			UpdateWindows();
 			CheckPaletteAnim();
 

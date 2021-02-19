@@ -1118,6 +1118,40 @@ void VideoDriver_Win32::CheckPaletteAnim()
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
+void VideoDriver_Win32::InputLoop()
+{
+	bool old_ctrl_pressed = _ctrl_pressed;
+
+	_ctrl_pressed = _wnd.has_focus && GetAsyncKeyState(VK_CONTROL) < 0;
+	_shift_pressed = _wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0;
+
+#if defined(_DEBUG)
+	if (_shift_pressed)
+#else
+	/* Speedup when pressing tab, except when using ALT+TAB
+	 * to switch to another application. */
+	if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0)
+#endif
+	{
+		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
+	} else if (_fast_forward & 2) {
+		_fast_forward = 0;
+	}
+
+	/* Determine which directional keys are down. */
+	if (_wnd.has_focus) {
+		_dirkeys =
+			(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) +
+			(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
+			(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
+			(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
+	} else {
+		_dirkeys = 0;
+	}
+
+	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+}
+
 void VideoDriver_Win32::MainLoop()
 {
 	MSG mesg;
@@ -1174,18 +1208,6 @@ void VideoDriver_Win32::MainLoop()
 		}
 		if (_exit_game) break;
 
-#if defined(_DEBUG)
-		if (_wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0)
-#else
-		/* Speed up using TAB, but disable for ALT+TAB of course */
-		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0)
-#endif
-		{
-			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-		} else if (_fast_forward & 2) {
-			_fast_forward = 0;
-		}
-
 		cur_ticks = std::chrono::steady_clock::now();
 
 		/* If more than a millisecond has passed, increase the _realtime_tick. */
@@ -1220,30 +1242,13 @@ void VideoDriver_Win32::MainLoop()
 			/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 			if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
 
-			bool old_ctrl_pressed = _ctrl_pressed;
-
-			_ctrl_pressed = _wnd.has_focus && GetAsyncKeyState(VK_CONTROL)<0;
-			_shift_pressed = _wnd.has_focus && GetAsyncKeyState(VK_SHIFT)<0;
-
-			/* determine which directional keys are down */
-			if (_wnd.has_focus) {
-				_dirkeys =
-					(GetAsyncKeyState(VK_LEFT) < 0 ? 1 : 0) +
-					(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
-					(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
-					(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
-			} else {
-				_dirkeys = 0;
-			}
-
-			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
-
 			if (_force_full_redraw) MarkWholeScreenDirty();
 
 			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
 			GdiFlush();
 
-			InputLoop();
+			this->InputLoop();
+			::InputLoop();
 			UpdateWindows();
 			CheckPaletteAnim();
 
