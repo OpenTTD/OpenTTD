@@ -729,11 +729,41 @@ void VideoDriver_SDL::Stop()
 	}
 }
 
+void VideoDriver_SDL::InputLoop()
+{
+	uint32 mod = SDL_GetModState();
+	const Uint8 *keys = SDL_GetKeyboardState(NULL);
+
+	bool old_ctrl_pressed = _ctrl_pressed;
+
+	_ctrl_pressed  = !!(mod & KMOD_CTRL);
+	_shift_pressed = !!(mod & KMOD_SHIFT);
+
+#if defined(_DEBUG)
+	if (_shift_pressed)
+#else
+	/* Speedup when pressing tab, except when using ALT+TAB
+	 * to switch to another application. */
+	if (keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0)
+#endif /* defined(_DEBUG) */
+	{
+		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
+	} else if (_fast_forward & 2) {
+		_fast_forward = 0;
+	}
+
+	/* Determine which directional keys are down. */
+	_dirkeys =
+		(keys[SDL_SCANCODE_LEFT]  ? 1 : 0) |
+		(keys[SDL_SCANCODE_UP]    ? 2 : 0) |
+		(keys[SDL_SCANCODE_RIGHT] ? 4 : 0) |
+		(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
+
+	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+}
+
 void VideoDriver_SDL::LoopOnce()
 {
-	uint32 mod;
-	int numkeys;
-	const Uint8 *keys;
 	InteractiveRandom(); // randomness
 
 	while (PollEvent() == -1) {}
@@ -749,22 +779,6 @@ void VideoDriver_SDL::LoopOnce()
 		MainLoopCleanup();
 #endif
 		return;
-	}
-
-	mod = SDL_GetModState();
-	keys = SDL_GetKeyboardState(&numkeys);
-
-#if defined(_DEBUG)
-	if (_shift_pressed)
-#else
-	/* Speedup when pressing tab, except when using ALT+TAB
-	 * to switch to another application */
-	if (keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0)
-#endif /* defined(_DEBUG) */
-	{
-		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-	} else if (_fast_forward & 2) {
-		_fast_forward = 0;
 	}
 
 	cur_ticks = std::chrono::steady_clock::now();
@@ -798,20 +812,8 @@ void VideoDriver_SDL::LoopOnce()
 		/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 		if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
 
-		bool old_ctrl_pressed = _ctrl_pressed;
-
-		_ctrl_pressed  = !!(mod & KMOD_CTRL);
-		_shift_pressed = !!(mod & KMOD_SHIFT);
-
-		/* determine which directional keys are down */
-		_dirkeys =
-			(keys[SDL_SCANCODE_LEFT]  ? 1 : 0) |
-			(keys[SDL_SCANCODE_UP]    ? 2 : 0) |
-			(keys[SDL_SCANCODE_RIGHT] ? 4 : 0) |
-			(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
-		if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
-
-		InputLoop();
+		this->InputLoop();
+		::InputLoop();
 		UpdateWindows();
 		this->CheckPaletteAnim();
 

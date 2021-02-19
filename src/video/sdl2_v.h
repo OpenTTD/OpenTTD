@@ -43,6 +43,7 @@ public:
 
 protected:
 	Dimension GetScreenSize() const override;
+	void InputLoop() override;
 
 private:
 	int PollEvent();

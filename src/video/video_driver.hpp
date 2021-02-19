@@ -156,6 +156,11 @@ protected:
 		}
 	}
 
+	/**
+	 * Handle input logic, is CTRL pressed, should we fast-forward, etc.
+	 */
+	virtual void InputLoop() {}
+
 	std::chrono::steady_clock::duration GetGameInterval()
 	{
 		return std::chrono::milliseconds(MILLISECONDS_PER_TICK);
