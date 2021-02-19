@@ -316,6 +316,78 @@ jobs:
         cd ${GITHUB_WORKSPACE}/build
         ctest --timeout 120
 
+
+  msys2:
+    name: msys2
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - msystem: MINGW64
+            arch: x86_64
+          - msystem: MINGW32
+            arch: i686
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup MSYS2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: ${{ matrix.msystem }}
+        update: true
+        install: >-
+          git
+          make
+          mingw-w64-${{ matrix.arch }}-cmake
+          mingw-w64-${{ matrix.arch }}-gcc
+          mingw-w64-${{ matrix.arch }}-lzo2
+          mingw-w64-${{ matrix.arch }}-libpng
+
+    - name: Install OpenGFX
+      shell: bash
+      run: |
+        mkdir -p "C:/Users/Public/Documents/OpenTTD/baseset"
+        cd "C:/Users/Public/Documents/OpenTTD/baseset"
+
+        echo "::group::Download OpenGFX"
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip opengfx-all.zip
+        echo "::endgroup::"
+
+        rm -f opengfx-all.zip
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      shell: msys2 {0}
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake .. -G"MSYS Makefiles"
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        cmake --build . -j $(nproc)
+        echo "::endgroup::"
+
+    - name: Test
+      shell: msys2 {0}
+      run: |
+        cd build
+        ctest -j $(nproc) --timeout 120
+
   check_annotations:
     name: Check Annotations
     needs:
@@ -323,6 +395,7 @@ jobs:
     - linux
     - macos
     - windows
+    - msys2
 
     if: always() && github.event_name == 'pull_request'
 
