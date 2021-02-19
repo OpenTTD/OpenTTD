@@ -1188,7 +1188,7 @@ struct GenWorldStatus {
 	StringID cls;
 	uint current;
 	uint total;
-	std::chrono::steady_clock::time_point timer;
+	std::chrono::steady_clock::time_point next_update;
 };
 
 static GenWorldStatus _gws;
@@ -1290,11 +1290,11 @@ struct GenerateProgressWindow : public Window {
  */
 void PrepareGenerateWorldProgress()
 {
-	_gws.cls     = STR_GENERATION_WORLD_GENERATION;
+	_gws.cls = STR_GENERATION_WORLD_GENERATION;
 	_gws.current = 0;
-	_gws.total   = 0;
+	_gws.total = 0;
 	_gws.percent = 0;
-	_gws.timer   = std::chrono::steady_clock::now() - std::chrono::milliseconds(MODAL_PROGRESS_REDRAW_TIMEOUT * 2); // Ensure we draw on first update
+	_gws.next_update = std::chrono::steady_clock::now();
 }
 
 /**
@@ -1329,7 +1329,8 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 	}
 
 	/* Don't update the screen too often. So update it once in every once in a while... */
-	if (!_network_dedicated && std::chrono::steady_clock::now() - _gws.timer < std::chrono::milliseconds(MODAL_PROGRESS_REDRAW_TIMEOUT)) return;
+	if (!_network_dedicated && std::chrono::steady_clock::now() < _gws.next_update) return;
+	_gws.next_update = std::chrono::steady_clock::now() + std::chrono::milliseconds(MODAL_PROGRESS_REDRAW_TIMEOUT);
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
 	_gws.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_gws.current == 0 ? 0 : _gws.current - 1) / _gws.total;
@@ -1364,8 +1365,6 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 	_modal_progress_paint_mutex.lock();
 	_modal_progress_work_mutex.lock();
 	_modal_progress_paint_mutex.unlock();
-
-	_gws.timer = std::chrono::steady_clock::now();
 }
 
 /**
