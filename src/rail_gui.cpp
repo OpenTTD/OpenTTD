@@ -32,6 +32,10 @@
 #include "vehicle_func.h"
 #include "zoom_func.h"
 #include "rail_gui.h"
+#include "querystring_gui.h"
+#include "sortlist_type.h"
+#include "stringfilter_type.h"
+#include "string_func.h"
 
 #include "station_map.h"
 #include "tunnelbridge_map.h"
@@ -891,6 +895,36 @@ private:
 	Scrollbar *vscroll;   ///< Vertical scrollbar of the new station list.
 	Scrollbar *vscroll2;  ///< Vertical scrollbar of the matrix with new stations.
 
+	typedef GUIList<StationClassID, StringFilter &> GUIStationClassList; ///< Type definition for the list to hold available station classes.
+
+	static const uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
+
+	static Listing   last_sorting;           ///< Default sorting of #GUIStationClassList.
+	static Filtering last_filtering;         ///< Default filtering of #GUIStationClassList.
+	static GUIStationClassList::SortFunction * const sorter_funcs[];   ///< Sort functions of the #GUIStationClassList.
+	static GUIStationClassList::FilterFunction * const filter_funcs[]; ///< Filter functions of the #GUIStationClassList.
+	GUIStationClassList station_classes;     ///< Available station classes.
+	StringFilter string_filter;              ///< Filter for available station classes.
+	QueryString filter_editbox;              ///< Filter editbox.
+
+	/**
+	 * Scrolls #WID_BRAS_NEWST_SCROLL so that the selected station class is visible.
+	 *
+	 * Note that this method should be called shortly after SelectClassAndStation() which will ensure
+	 * an actual existing station class is selected, or the one at position 0 which will always be
+	 * the default TTD rail station.
+	 */
+	void EnsureSelectedStationClassIsVisible()
+	{
+		uint pos = 0;
+		for (auto station_class : this->station_classes) {
+			if (station_class == _railstation.station_class) break;
+			pos++;
+		}
+		this->vscroll->SetCount((int)this->station_classes.size());
+		this->vscroll->ScrollTowards(pos);
+	}
+
 	/**
 	 * Verify whether the currently selected station size is allowed after selecting a new station class/type.
 	 * If not, change the station size variables ( _settings_client.gui.station_numtracks and _settings_client.gui.station_platlength ).
@@ -925,7 +959,7 @@ private:
 	}
 
 public:
-	BuildRailStationWindow(WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(desc, parent)
+	BuildRailStationWindow(WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(desc, parent), filter_editbox(EDITBOX_MAX_SIZE)
 	{
 		this->coverage_height = 2 * FONT_HEIGHT_NORMAL + 3 * WD_PAR_VSEP_NORMAL;
 		this->vscroll = nullptr;
@@ -940,10 +974,24 @@ public:
 		newst_additions->SetDisplayedPlane(newstation ? 0 : SZSP_NONE);
 		newst_additions = this->GetWidget<NWidgetStacked>(WID_BRAS_SHOW_NEWST_RESIZE);
 		newst_additions->SetDisplayedPlane(newstation ? 0 : SZSP_NONE);
+		/* Hide the station class filter if no stations other than the default one are available. */
+		this->GetWidget<NWidgetStacked>(WID_BRAS_FILTER_CONTAINER)->SetDisplayedPlane(newstation ? 0 : SZSP_NONE);
 		if (newstation) {
 			this->vscroll = this->GetScrollbar(WID_BRAS_NEWST_SCROLL);
 			this->vscroll2 = this->GetScrollbar(WID_BRAS_MATRIX_SCROLL);
+
+			this->querystrings[WID_BRAS_FILTER_EDITBOX] = &this->filter_editbox;
+			this->station_classes.SetListing(this->last_sorting);
+			this->station_classes.SetFiltering(this->last_filtering);
+			this->station_classes.SetSortFuncs(this->sorter_funcs);
+			this->station_classes.SetFilterFuncs(this->filter_funcs);
 		}
+
+		this->station_classes.ForceRebuild();
+
+		BuildStationClassesAvailable();
+		SelectClassAndStation();
+
 		this->FinishInitNested(TRANSPORT_RAIL);
 
 		this->LowerWidget(_railstation.orientation + WID_BRAS_PLATFORM_DIR_X);
@@ -956,35 +1004,123 @@ public:
 		this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_OFF, !_settings_client.gui.station_show_coverage);
 		this->SetWidgetLoweredState(WID_BRAS_HIGHLIGHT_ON, _settings_client.gui.station_show_coverage);
 
-		if (!newstation || _railstation.station_class >= (int)StationClass::GetClassCount()) {
-			/* New stations are not available or changed, so ensure the default station
-			 * type is 'selected'. */
-			_railstation.station_class = STAT_CLASS_DFLT;
+		if (!newstation) {
+			_railstation.station_class = StationClassID::STAT_CLASS_DFLT;
 			_railstation.station_type = 0;
 			this->vscroll2 = nullptr;
-		}
-		if (newstation) {
+		} else {
 			_railstation.station_count = StationClass::Get(_railstation.station_class)->GetSpecCount();
 			_railstation.station_type = std::min<int>(_railstation.station_type, _railstation.station_count - 1);
-
-			int count = 0;
-			for (uint i = 0; i < StationClass::GetClassCount(); i++) {
-				if (i == STAT_CLASS_WAYP) continue;
-				count++;
-			}
-			this->vscroll->SetCount(count);
-			this->vscroll->SetPosition(Clamp(_railstation.station_class - 2, 0, std::max(this->vscroll->GetCount() - this->vscroll->GetCapacity(), 0)));
 
 			NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX);
 			matrix->SetScrollbar(this->vscroll2);
 			matrix->SetCount(_railstation.station_count);
 			matrix->SetClicked(_railstation.station_type);
+
+			EnsureSelectedStationClassIsVisible();
+
+			this->SetFocusedWidget(WID_BRAS_FILTER_EDITBOX);
 		}
+
+		this->InvalidateData();
 	}
 
 	virtual ~BuildRailStationWindow()
 	{
 		DeleteWindowById(WC_SELECT_STATION, 0);
+	}
+
+	/** Sort station classes by StationClassID. */
+	static bool StationClassIDSorter(StationClassID const &a, StationClassID const &b)
+	{
+		return a < b;
+	}
+
+	/** Filter station classes by class name. */
+	static bool CDECL TagNameFilter(StationClassID const * sc, StringFilter &filter)
+	{
+		char buffer[DRAW_STRING_BUFFER];
+		GetString(buffer, StationClass::Get(*sc)->name, lastof(buffer));
+
+		filter.ResetState();
+		filter.AddLine(buffer);
+		return filter.GetState();
+	}
+
+	/** Builds the filter list of available station classes. */
+	void BuildStationClassesAvailable()
+	{
+		if (!this->station_classes.NeedRebuild()) return;
+
+		this->station_classes.clear();
+
+		for (uint i = 0; i < StationClass::GetClassCount(); i++) {
+			StationClassID station_class_id = (StationClassID)i;
+			if (station_class_id == StationClassID::STAT_CLASS_WAYP) {
+				// Skip waypoints.
+				continue;
+			}
+			StationClass *station_class = StationClass::Get(station_class_id);
+			if (station_class->GetUISpecCount() == 0) continue;
+			station_classes.push_back(station_class_id);
+		}
+
+		if (_railstation.newstations) {
+			this->station_classes.Filter(this->string_filter);
+			this->station_classes.shrink_to_fit();
+			this->station_classes.RebuildDone();
+			this->station_classes.Sort();
+
+			this->vscroll->SetCount((uint)this->station_classes.size());
+		}
+	}
+
+	/**
+	 * Checks if the previously selected current station class and station
+	 * can be shown as selected to the user when the dialog is opened.
+	 */
+	void SelectClassAndStation()
+	{
+		if (_railstation.station_class == StationClassID::STAT_CLASS_DFLT) {
+			/* This happens during the first time the window is open during the game life cycle. */
+			this->SelectOtherClass(StationClassID::STAT_CLASS_DFLT);
+		} else {
+			/* Check if the previously selected station class is not available anymore as a
+			 * result of starting a new game without the corresponding NewGRF. */
+			bool available = false;
+			for (uint i = 0; i < StationClass::GetClassCount(); ++i) {
+				if ((StationClassID)i == _railstation.station_class) {
+					available = true;
+					break;
+				}
+			}
+
+			this->SelectOtherClass(available ? _railstation.station_class : StationClassID::STAT_CLASS_DFLT);
+		}
+	}
+
+	/**
+	 * Select the specified station class.
+	 * @param station_class Station class select.
+	 */
+	void SelectOtherClass(StationClassID station_class)
+	{
+		_railstation.station_class = station_class;
+	}
+
+	void OnInvalidateData(int data = 0, bool gui_scope = true) override
+	{
+		if (!gui_scope) return;
+
+		this->BuildStationClassesAvailable();
+	}
+
+	void OnEditboxChanged(int wid) override
+	{
+		string_filter.SetFilterTerm(this->filter_editbox.text.buf);
+		this->station_classes.SetFilterState(!string_filter.IsEmpty());
+		this->station_classes.ForceRebuild();
+		this->InvalidateData();
 	}
 
 	void OnPaint() override
@@ -1043,9 +1179,8 @@ public:
 		switch (widget) {
 			case WID_BRAS_NEWST_LIST: {
 				Dimension d = {0, 0};
-				for (uint i = 0; i < StationClass::GetClassCount(); i++) {
-					if (i == STAT_CLASS_WAYP) continue;
-					d = maxdim(d, GetStringBoundingBox(StationClass::Get((StationClassID)i)->name));
+				for (auto station_class : this->station_classes) {
+					d = maxdim(d, GetStringBoundingBox(StationClass::Get(station_class)->name));
 				}
 				size->width = std::max(size->width, d.width + padding.width);
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
@@ -1064,9 +1199,8 @@ public:
 				/* If newstations exist, compute the non-zero minimal size. */
 				Dimension d = {0, 0};
 				StringID str = this->GetWidget<NWidgetCore>(widget)->widget_data;
-				for (StationClassID statclass = STAT_CLASS_BEGIN; statclass < (StationClassID)StationClass::GetClassCount(); statclass++) {
-					if (statclass == STAT_CLASS_WAYP) continue;
-					StationClass *stclass = StationClass::Get(statclass);
+				for (auto station_class : this->station_classes) {
+					StationClass *stclass = StationClass::Get(station_class);
 					for (uint16 j = 0; j < stclass->GetSpecCount(); j++) {
 						const StationSpec *statspec = stclass->GetSpec(j);
 						SetDParam(0, (statspec != nullptr && statspec->name != 0) ? statspec->name : STR_STATION_CLASS_DFLT);
@@ -1131,12 +1265,11 @@ public:
 			case WID_BRAS_NEWST_LIST: {
 				uint statclass = 0;
 				uint row = 0;
-				for (uint i = 0; i < StationClass::GetClassCount(); i++) {
-					if (i == STAT_CLASS_WAYP) continue;
+				for (auto station_class : this->station_classes) {
 					if (this->vscroll->IsVisible(statclass)) {
 						DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, row * this->line_height + r.top + WD_MATRIX_TOP,
-								StationClass::Get((StationClassID)i)->name,
-								(StationClassID)i == _railstation.station_class ? TC_WHITE : TC_BLACK);
+								StationClass::Get(station_class)->name,
+								station_class == _railstation.station_class ? TC_WHITE : TC_BLACK);
 						row++;
 					}
 					statclass++;
@@ -1314,29 +1447,23 @@ public:
 
 			case WID_BRAS_NEWST_LIST: {
 				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BRAS_NEWST_LIST, 0, this->line_height);
-				if (y >= (int)StationClass::GetClassCount()) return;
-				for (uint i = 0; i < StationClass::GetClassCount(); i++) {
-					if (i == STAT_CLASS_WAYP) continue;
-					if (y == 0) {
-						if (_railstation.station_class != (StationClassID)i) {
-							_railstation.station_class = (StationClassID)i;
-							StationClass *stclass = StationClass::Get(_railstation.station_class);
-							_railstation.station_count = stclass->GetSpecCount();
-							_railstation.station_type  = std::min((int)_railstation.station_type, std::max(0, (int)_railstation.station_count - 1));
+				if (y >= (int)this->station_classes.size()) return;
+				StationClassID station_class_id = this->station_classes[y];
+				if (_railstation.station_class != station_class_id) {
+					StationClass *station_class = StationClass::Get(station_class_id);
+					_railstation.station_class = station_class_id;
+					_railstation.station_count = station_class->GetSpecCount();
+					_railstation.station_type  = 0;
 
-							this->CheckSelectedSize(stclass->GetSpec(_railstation.station_type));
+					this->CheckSelectedSize(station_class->GetSpec(_railstation.station_type));
 
-							NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX);
-							matrix->SetCount(_railstation.station_count);
-							matrix->SetClicked(_railstation.station_type);
-						}
-						if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
-						this->SetDirty();
-						DeleteWindowById(WC_SELECT_STATION, 0);
-						break;
-					}
-					y--;
+					NWidgetMatrix *matrix = this->GetWidget<NWidgetMatrix>(WID_BRAS_MATRIX);
+					matrix->SetCount(_railstation.station_count);
+					matrix->SetClicked(_railstation.station_type);
 				}
+				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
 			}
 
@@ -1367,6 +1494,17 @@ public:
 	}
 };
 
+Listing BuildRailStationWindow::last_sorting = { false, 0 };
+Filtering BuildRailStationWindow::last_filtering = { false, 0 };
+
+BuildRailStationWindow::GUIStationClassList::SortFunction * const BuildRailStationWindow::sorter_funcs[] = {
+	&StationClassIDSorter,
+};
+
+BuildRailStationWindow::GUIStationClassList::FilterFunction * const BuildRailStationWindow::filter_funcs[] = {
+	&TagNameFilter,
+};
+
 static const NWidgetPart _nested_station_builder_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_DARK_GREEN),
@@ -1379,6 +1517,13 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 	NWidget(WWT_PANEL, COLOUR_DARK_GREEN),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(NWID_VERTICAL),
+				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BRAS_FILTER_CONTAINER),
+					NWidget(NWID_HORIZONTAL), SetPadding(2, 2, 0, 5),
+						NWidget(WWT_TEXT, COLOUR_DARK_GREEN), SetFill(0, 1), SetDataTip(STR_LIST_FILTER_TITLE, STR_NULL),
+						NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BRAS_FILTER_EDITBOX), SetFill(1, 0), SetResize(1, 0),
+								SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+					EndContainer(),
+				EndContainer(),
 				NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BRAS_SHOW_NEWST_ADDITIONS),
 					NWidget(NWID_HORIZONTAL), SetPIP(7, 0, 7), SetPadding(2, 0, 1, 0),
 						NWidget(WWT_MATRIX, COLOUR_GREY, WID_BRAS_NEWST_LIST), SetMinimalSize(122, 71), SetFill(1, 0),
@@ -1876,6 +2021,7 @@ static void ShowBuildWaypointPicker(Window *parent)
 void InitializeRailGui()
 {
 	_build_depot_direction = DIAGDIR_NW;
+	_railstation.station_class = StationClassID::STAT_CLASS_DFLT;
 }
 
 /**
