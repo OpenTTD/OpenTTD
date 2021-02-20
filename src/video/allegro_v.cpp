@@ -479,62 +479,16 @@ void VideoDriver_Allegro::InputLoop()
 
 void VideoDriver_Allegro::MainLoop()
 {
-	auto cur_ticks = std::chrono::steady_clock::now();
-	auto last_realtime_tick = cur_ticks;
-	auto next_game_tick = cur_ticks;
-	auto next_draw_tick = cur_ticks;
-
 	for (;;) {
 		InteractiveRandom(); // randomness
 
 		PollEvent();
 		if (_exit_game) return;
 
-		cur_ticks = std::chrono::steady_clock::now();
-
-		/* If more than a millisecond has passed, increase the _realtime_tick. */
-		if (cur_ticks - last_realtime_tick > std::chrono::milliseconds(1)) {
-			auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_realtime_tick);
-			_realtime_tick += delta.count();
-			last_realtime_tick += delta;
-		}
-
-		if (cur_ticks >= next_game_tick || (_fast_forward && !_pause_mode)) {
-			if (_fast_forward && !_pause_mode) {
-				next_game_tick = cur_ticks + this->GetGameInterval();
-			} else {
-				next_game_tick += this->GetGameInterval();
-				/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
-				if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
-			}
-
-			GameLoop();
-		}
-
-		/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */
-		if (cur_ticks >= next_draw_tick && (_switch_mode == SM_NONE || HasModalProgress())) {
-			next_draw_tick += this->GetDrawInterval();
-			/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
-			if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
-
-			this->InputLoop();
-			::InputLoop();
-			UpdateWindows();
-			this->CheckPaletteAnim();
-
+		if (this->Tick()) {
 			this->Paint();
 		}
-
-		/* If we are not in fast-forward, create some time between calls to ease up CPU usage. */
-		if (!_fast_forward || _pause_mode) {
-			/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
-			auto next_tick = std::min(next_draw_tick, next_game_tick);
-			auto now = std::chrono::steady_clock::now();
-
-			if (next_tick > now) {
-				std::this_thread::sleep_for(next_tick - now);
-			}
-		}
+		this->SleepTillNextTick();
 	}
 }
 

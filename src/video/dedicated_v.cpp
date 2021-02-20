@@ -236,10 +236,6 @@ static void DedicatedHandleKeyInput()
 
 void VideoDriver_Dedicated::MainLoop()
 {
-	auto cur_ticks = std::chrono::steady_clock::now();
-	auto last_realtime_tick = cur_ticks;
-	auto next_game_tick = cur_ticks;
-
 	/* Signal handlers */
 #if defined(UNIX)
 	signal(SIGTERM, DedicatedSignalHandler);
@@ -283,43 +279,8 @@ void VideoDriver_Dedicated::MainLoop()
 
 		if (!_dedicated_forks) DedicatedHandleKeyInput();
 
-		cur_ticks = std::chrono::steady_clock::now();
-
-		/* If more than a millisecond has passed, increase the _realtime_tick. */
-		if (cur_ticks - last_realtime_tick > std::chrono::milliseconds(1)) {
-			auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_realtime_tick);
-			_realtime_tick += delta.count();
-			last_realtime_tick += delta;
-		}
-
-		if (cur_ticks >= next_game_tick || _ddc_fastforward) {
-			if (_ddc_fastforward) {
-				next_game_tick = cur_ticks + this->GetGameInterval();
-			} else {
-				next_game_tick += this->GetGameInterval();
-				/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
-				if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
-			}
-
-			GameLoop();
-			InputLoop();
-			UpdateWindows();
-		}
-
-		/* Don't sleep when fast forwarding (for desync debugging) */
-		if (!_ddc_fastforward) {
-			/* Sleep longer on a dedicated server, if the game is paused and no clients connected.
-			 * That can allow the CPU to better use deep sleep states. */
-			if (_pause_mode != 0 && !HasClients()) {
-				std::this_thread::sleep_for(std::chrono::milliseconds(100));
-			} else {
-				/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
-				auto now = std::chrono::steady_clock::now();
-
-				if (next_game_tick > now) {
-					std::this_thread::sleep_for(next_game_tick - now);
-				}
-			}
-		}
+		_fast_forward = _ddc_fastforward;
+		this->Tick();
+		this->SleepTillNextTick();
 	}
 }
