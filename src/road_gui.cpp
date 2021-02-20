@@ -66,9 +66,9 @@ static RoadType _cur_roadtype;
 static DiagDirection _road_depot_orientation;
 static DiagDirection _road_station_picker_orientation;
 
-void CcPlaySound_SPLAT_OTHER(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
+void CcPlaySound_CONSTRUCTION_OTHER(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
-	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
+	if (result.Succeeded() && _settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 }
 
 /**
@@ -99,7 +99,7 @@ static void PlaceRoad_Bridge(TileIndex tile, Window *w)
 void CcBuildRoadTunnel(const CommandCost &result, TileIndex start_tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	if (result.Succeeded()) {
-		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, start_tile);
+		if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, start_tile);
 		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 
 		DiagDirection start_direction = ReverseDiagDir(GetTunnelBridgeDirection(start_tile));
@@ -134,7 +134,7 @@ void CcRoadDepot(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2
 	if (result.Failed()) return;
 
 	DiagDirection dir = (DiagDirection)GB(p1, 0, 2);
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	ConnectRoadToStructure(tile, dir);
 }
@@ -160,7 +160,7 @@ void CcRoadStop(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2,
 	if (result.Failed()) return;
 
 	DiagDirection dir = (DiagDirection)GB(p2, 3, 2);
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	TileArea roadstop_area(tile, GB(p1, 0, 8), GB(p1, 8, 8));
 	TILE_AREA_LOOP(cur_tile, roadstop_area) {
@@ -671,7 +671,7 @@ struct BuildRoadToolbarWindow : Window {
 					DoCommandP(start_tile, end_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 10),
 							_remove_button_clicked ?
 							CMD_REMOVE_LONG_ROAD | CMD_MSG(this->rti->strings.err_remove_road) :
-							CMD_BUILD_LONG_ROAD | CMD_MSG(this->rti->strings.err_build_road), CcPlaySound_SPLAT_OTHER);
+							CMD_BUILD_LONG_ROAD | CMD_MSG(this->rti->strings.err_build_road), CcPlaySound_CONSTRUCTION_OTHER);
 					break;
 
 				case DDSP_BUILD_BUSSTOP:
@@ -679,7 +679,7 @@ struct BuildRoadToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_ROT_BUS_STATION)) {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
-							DoCommandP(ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_BUS, CMD_REMOVE_ROAD_STOP | CMD_MSG(this->rti->strings.err_remove_station[ROADSTOP_BUS]), CcPlaySound_SPLAT_OTHER);
+							DoCommandP(ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_BUS, CMD_REMOVE_ROAD_STOP | CMD_MSG(this->rti->strings.err_remove_station[ROADSTOP_BUS]), CcPlaySound_CONSTRUCTION_OTHER);
 						} else {
 							PlaceRoadStop(start_tile, end_tile, _cur_roadtype << 5 | (_ctrl_pressed << 2) | ROADSTOP_BUS, CMD_BUILD_ROAD_STOP | CMD_MSG(this->rti->strings.err_build_station[ROADSTOP_BUS]));
 						}
@@ -691,7 +691,7 @@ struct BuildRoadToolbarWindow : Window {
 					if (this->IsWidgetLowered(WID_ROT_TRUCK_STATION)) {
 						if (_remove_button_clicked) {
 							TileArea ta(start_tile, end_tile);
-							DoCommandP(ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_TRUCK, CMD_REMOVE_ROAD_STOP | CMD_MSG(this->rti->strings.err_remove_station[ROADSTOP_TRUCK]), CcPlaySound_SPLAT_OTHER);
+							DoCommandP(ta.tile, ta.w | ta.h << 8, (_ctrl_pressed << 1) | ROADSTOP_TRUCK, CMD_REMOVE_ROAD_STOP | CMD_MSG(this->rti->strings.err_remove_station[ROADSTOP_TRUCK]), CcPlaySound_CONSTRUCTION_OTHER);
 						} else {
 							PlaceRoadStop(start_tile, end_tile, _cur_roadtype << 5 | (_ctrl_pressed << 2) | ROADSTOP_TRUCK, CMD_BUILD_ROAD_STOP | CMD_MSG(this->rti->strings.err_build_station[ROADSTOP_TRUCK]));
 						}
@@ -699,7 +699,7 @@ struct BuildRoadToolbarWindow : Window {
 					break;
 
 				case DDSP_CONVERT_ROAD:
-					DoCommandP(end_tile, start_tile, _cur_roadtype, CMD_CONVERT_ROAD | CMD_MSG(rti->strings.err_convert_road), CcPlaySound_SPLAT_OTHER);
+					DoCommandP(end_tile, start_tile, _cur_roadtype, CMD_CONVERT_ROAD | CMD_MSG(rti->strings.err_convert_road), CcPlaySound_CONSTRUCTION_OTHER);
 					break;
 			}
 		}

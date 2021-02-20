@@ -44,7 +44,7 @@ void CcBuildAirport(const CommandCost &result, TileIndex tile, uint32 p1, uint32
 {
 	if (result.Failed()) return;
 
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 

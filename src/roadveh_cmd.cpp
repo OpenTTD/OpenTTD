@@ -595,8 +595,8 @@ static void StartRoadVehSound(const RoadVehicle *v)
 {
 	if (!PlayVehicleSound(v, VSE_START)) {
 		SoundID s = RoadVehInfo(v->engine_type)->sfx;
-		if (s == SND_19_BUS_START_PULL_AWAY && (v->tick_counter & 3) == 0) {
-			s = SND_1A_BUS_START_PULL_AWAY_WITH_HORN;
+		if (s == SND_19_DEPARTURE_OLD_RV_1 && (v->tick_counter & 3) == 0) {
+			s = SND_1A_DEPARTURE_OLD_RV_2;
 		}
 		SndPlayVehicleFx(s, v);
 	}

@@ -909,7 +909,7 @@ static bool AircraftController(Aircraft *v)
 					SoundID sfx = AircraftVehInfo(v->engine_type)->sfx;
 					/* For compatibility with old NewGRF we ignore the sfx property, unless a NewGRF-defined sound is used.
 					 * The baseset has only one helicopter sound, so this only limits using plane or cow sounds. */
-					if (sfx < ORIGINAL_SAMPLE_COUNT) sfx = SND_18_HELICOPTER;
+					if (sfx < ORIGINAL_SAMPLE_COUNT) sfx = SND_18_TAKEOFF_HELICOPTER;
 					SndPlayVehicleFx(sfx, v);
 				}
 			}
