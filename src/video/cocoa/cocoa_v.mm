@@ -21,6 +21,7 @@
 #define Rect  OTTDRect
 #define Point OTTDPoint
 #import <Cocoa/Cocoa.h>
+#import <QuartzCore/QuartzCore.h>
 #undef Rect
 #undef Point
 
@@ -486,9 +487,11 @@ void VideoDriver_Cocoa::Paint()
 	dirtyrect.size.width = this->dirty_rect.right - this->dirty_rect.left;
 	dirtyrect.size.height = this->dirty_rect.bottom - this->dirty_rect.top;
 
-	/* Normally drawRect will be automatically called by Mac OS X during next update cycle,
-	 * and then blitting will occur. */
+	/* Notify OS X that we have new content to show. */
 	[ this->cocoaview setNeedsDisplayInRect:[ this->cocoaview getVirtualRect:dirtyrect ] ];
+
+	/* Tell the OS to get our contents to screen as soon as possible. */
+	[ CATransaction flush ];
 
 	this->dirty_rect = {};
 }
@@ -674,6 +677,7 @@ void VideoDriver_Cocoa::GameLoop()
 		self.wantsLayer = YES;
 
 		self.layer.magnificationFilter = kCAFilterNearest;
+		self.layer.opaque = YES;
 	}
 	return self;
 }
