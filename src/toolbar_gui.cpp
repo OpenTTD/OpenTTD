@@ -677,7 +677,7 @@ static CallBackFunction MenuClickGoal(int index)
 
 static CallBackFunction ToolbarGraphsClick(Window *w)
 {
-	PopupMainToolbMenu(w, WID_TN_GRAPHS, STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 6 : 8);
+	PopupMainToolbMenu(w, WID_TN_GRAPHS, STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 5 : 7);
 	return CBF_NONE;
 }
 
@@ -695,10 +695,9 @@ static CallBackFunction MenuClickGraphs(int index)
 		case 2: ShowDeliveredCargoGraph();     break;
 		case 3: ShowPerformanceHistoryGraph(); break;
 		case 4: ShowCompanyValueGraph();       break;
-		case 5: ShowCargoPaymentRates();       break;
 		/* functions for combined graphs/league button */
-		case 6: ShowCompanyLeagueTable();      break;
-		case 7: ShowPerformanceRatingDetail(); break;
+		case 5: ShowCompanyLeagueTable();      break;
+		case 6: ShowPerformanceRatingDetail(); break;
 	}
 	return CBF_NONE;
 }
@@ -732,7 +731,7 @@ static CallBackFunction MenuClickLeague(int index)
 static CallBackFunction ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, WID_TN_INDUSTRIES, STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, (_local_company == COMPANY_SPECTATOR) ? 2 : 3);
+	PopupMainToolbMenu(w, WID_TN_INDUSTRIES, STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY, (_local_company == COMPANY_SPECTATOR) ? 3 : 4);
 	return CBF_NONE;
 }
 
@@ -747,7 +746,8 @@ static CallBackFunction MenuClickIndustry(int index)
 	switch (index) {
 		case 0: ShowIndustryDirectory();     break;
 		case 1: ShowIndustryCargoesWindow(); break;
-		case 2: ShowBuildIndustryWindow();   break;
+		case 2: ShowCargoPaymentRates();     break;
+		case 3: ShowBuildIndustryWindow();   break;
 	}
 	return CBF_NONE;
 }
