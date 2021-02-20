@@ -1211,6 +1211,9 @@ void VideoDriver_Win32::MainLoop()
 		}
 		if (_exit_game) break;
 
+		/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
+		GdiFlush();
+
 		cur_ticks = std::chrono::steady_clock::now();
 
 		/* If more than a millisecond has passed, increase the _realtime_tick. */
@@ -1229,9 +1232,6 @@ void VideoDriver_Win32::MainLoop()
 				if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
 			}
 
-			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
-			GdiFlush();
-
 			/* The game loop is the part that can run asynchronously.
 			 * The rest except sleeping can't. */
 			this->UnlockVideoBuffer();
@@ -1246,9 +1246,6 @@ void VideoDriver_Win32::MainLoop()
 			if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
 
 			if (_force_full_redraw) MarkWholeScreenDirty();
-
-			/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
-			GdiFlush();
 
 			this->InputLoop();
 			::InputLoop();
@@ -1269,9 +1266,6 @@ void VideoDriver_Win32::MainLoop()
 			auto now = std::chrono::steady_clock::now();
 
 			if (next_tick > now) {
-				/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
-				GdiFlush();
-
 				this->UnlockVideoBuffer();
 				std::this_thread::sleep_for(next_tick - now);
 				this->LockVideoBuffer();
