@@ -45,6 +45,9 @@ protected:
 	Dimension GetScreenSize() const override;
 
 	float GetDPIScale() override;
+
+private:
+	void CheckPaletteAnim();
 };
 
 /** The factory for Windows' video driver. */

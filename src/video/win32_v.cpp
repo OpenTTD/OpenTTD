@@ -14,6 +14,7 @@
 #include "../rev.h"
 #include "../blitter/factory.hpp"
 #include "../network/network.h"
+#include "../core/geometry_func.hpp"
 #include "../core/math_func.hpp"
 #include "../core/random_func.hpp"
 #include "../texteff.hpp"
@@ -44,7 +45,6 @@ static struct {
 	HBITMAP dib_sect;     ///< System bitmap object referencing our rendering buffer.
 	void *buffer_bits;    ///< Internal rendering buffer.
 	HPALETTE gdi_palette; ///< Palette object for 8bpp blitter.
-	RECT update_rect;     ///< Current dirty rect.
 	int width;            ///< Width in pixels of our display surface.
 	int height;           ///< Height in pixels of our display surface.
 	int width_org;        ///< Original monitor resolution width, before we changed it.
@@ -70,6 +70,8 @@ static std::condition_variable_any *_draw_signal = nullptr;
 static volatile bool _draw_continue;
 /** Local copy of the palette for use in the drawing thread. */
 static Palette _local_palette;
+/** Region of the screen that needs redrawing. */
+static Rect _dirty_rect;
 
 static void MakePalette()
 {
@@ -330,9 +332,23 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 }
 
 /** Do palette animation and blit to the window. */
-static void PaintWindow(HDC dc)
+static void PaintWindow()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
+
+	if (IsEmptyRect(_dirty_rect)) return;
+
+	/* Convert update region from logical to device coordinates. */
+	POINT pt = {0, 0};
+	ClientToScreen(_wnd.main_wnd, &pt);
+
+	RECT r = { _dirty_rect.left, _dirty_rect.top, _dirty_rect.right, _dirty_rect.bottom };
+	OffsetRect(&r, pt.x, pt.y);
+
+	/* Create a device context that is clipped to the region we need to draw.
+	 * GetDCEx 'consumes' the update region, so we may not destroy it ourself. */
+	HRGN rgn = CreateRectRgnIndirect(&r);
+	HDC dc = GetDCEx(_wnd.main_wnd, rgn, DCX_CLIPSIBLINGS | DCX_CLIPCHILDREN | DCX_INTERSECTRGN);
 
 	HDC dc2 = CreateCompatibleDC(dc);
 	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
@@ -363,6 +379,10 @@ static void PaintWindow(HDC dc)
 	SelectPalette(dc, old_palette, TRUE);
 	SelectObject(dc2, old_bmp);
 	DeleteDC(dc2);
+
+	ReleaseDC(_wnd.main_wnd, dc);
+
+	MemSetT(&_dirty_rect, 0);
 }
 
 static void PaintWindowThread()
@@ -375,21 +395,7 @@ static void PaintWindowThread()
 	_draw_signal->wait(*_draw_mutex);
 
 	while (_draw_continue) {
-		/* Convert update region from logical to device coordinates. */
-		POINT pt = {0, 0};
-		ClientToScreen(_wnd.main_wnd, &pt);
-		OffsetRect(&_wnd.update_rect, pt.x, pt.y);
-
-		/* Create a device context that is clipped to the region we need to draw.
-		 * GetDCEx 'consumes' the update region, so we may not destroy it ourself. */
-		HRGN rgn = CreateRectRgnIndirect(&_wnd.update_rect);
-		HDC dc = GetDCEx(_wnd.main_wnd, rgn, DCX_CLIPSIBLINGS | DCX_CLIPCHILDREN | DCX_INTERSECTRGN);
-
-		PaintWindow(dc);
-
-		/* Clear update rect. */
-		SetRectEmpty(&_wnd.update_rect);
-		ReleaseDC(_wnd.main_wnd, dc);
+		PaintWindow();
 
 		/* Flush GDI buffer to ensure drawing here doesn't conflict with any GDI usage in the main WndProc. */
 		GdiFlush();
@@ -601,7 +607,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 {
 	static uint32 keycode = 0;
 	static bool console = false;
-	static bool in_sizemove = false;
 
 	switch (msg) {
 		case WM_CREATE:
@@ -610,32 +615,14 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			_imm_props = ImmGetProperty(GetKeyboardLayout(0), IGP_PROPERTY);
 			break;
 
-		case WM_ENTERSIZEMOVE:
-			in_sizemove = true;
-			break;
+		case WM_PAINT: {
+			RECT r;
+			GetUpdateRect(hwnd, &r, FALSE);
+			static_cast<VideoDriver_Win32 *>(VideoDriver::GetInstance())->MakeDirty(r.left, r.top, r.right - r.left, r.bottom - r.top);
 
-		case WM_EXITSIZEMOVE:
-			in_sizemove = false;
-			break;
-
-		case WM_PAINT:
-			if (!in_sizemove && _draw_mutex != nullptr && !HasModalProgress()) {
-				/* Get the union of the old update rect and the new update rect. */
-				RECT r;
-				GetUpdateRect(hwnd, &r, FALSE);
-				UnionRect(&_wnd.update_rect, &_wnd.update_rect, &r);
-
-				/* Mark the window as updated, otherwise Windows would send more WM_PAINT messages. */
-				ValidateRect(hwnd, nullptr);
-				_draw_signal->notify_one();
-			} else {
-				PAINTSTRUCT ps;
-
-				BeginPaint(hwnd, &ps);
-				PaintWindow(ps.hdc);
-				EndPaint(hwnd, &ps);
-			}
+			ValidateRect(hwnd, nullptr);
 			return 0;
+		}
 
 		case WM_PALETTECHANGED:
 			if ((HWND)wParam == hwnd) return 0;
@@ -648,7 +635,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 			SelectPalette(hDC, hOldPalette, TRUE);
 			ReleaseDC(hwnd, hDC);
-			if (nChanged != 0) InvalidateRect(hwnd, nullptr, FALSE);
+			if (nChanged != 0) {
+				static_cast<VideoDriver_Win32 *>(VideoDriver::GetInstance())->MakeDirty(0, 0, _screen.width, _screen.height);
+			}
 			return 0;
 		}
 
@@ -1117,17 +1106,16 @@ void VideoDriver_Win32::Stop()
 
 void VideoDriver_Win32::MakeDirty(int left, int top, int width, int height)
 {
-	RECT r = { left, top, left + width, top + height };
-
-	InvalidateRect(_wnd.main_wnd, &r, FALSE);
+	Rect r = {left, top, left + width, top + height};
+	_dirty_rect = BoundingRect(_dirty_rect, r);
 }
 
-static void CheckPaletteAnim()
+void VideoDriver_Win32::CheckPaletteAnim()
 {
 	if (_cur_palette.count_dirty == 0) return;
 
 	_local_palette = _cur_palette;
-	InvalidateRect(_wnd.main_wnd, nullptr, FALSE);
+	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
 void VideoDriver_Win32::MainLoop()
@@ -1257,6 +1245,12 @@ void VideoDriver_Win32::MainLoop()
 			InputLoop();
 			UpdateWindows();
 			CheckPaletteAnim();
+
+			if (_draw_mutex != nullptr && !HasModalProgress()) {
+				_draw_signal->notify_one();
+			} else {
+				PaintWindow();
+			}
 		}
 
 		/* If we are not in fast-forward, create some time between calls to ease up CPU usage. */
