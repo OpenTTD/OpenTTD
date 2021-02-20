@@ -411,11 +411,7 @@ bool VideoDriver_SDL::ClaimMousePointer()
 }
 
 struct SDLVkMapping {
-#if SDL_VERSION_ATLEAST(1, 3, 0)
-	SDL_Keycode vk_from;
-#else
 	uint16 vk_from;
-#endif
 	byte vk_count;
 	byte map_to;
 };
@@ -656,12 +652,8 @@ void VideoDriver_SDL::Stop()
 void VideoDriver_SDL::InputLoop()
 {
 	uint32 mod = SDL_GetModState();
-#if SDL_VERSION_ATLEAST(1, 3, 0)
-	Uint8 *keys = SDL_GetKeyboardState(&numkeys);
-#else
 	int numkeys;
 	Uint8 *keys = SDL_GetKeyState(&numkeys);
-#endif
 
 	bool old_ctrl_pressed = _ctrl_pressed;
 
@@ -673,11 +665,7 @@ void VideoDriver_SDL::InputLoop()
 #else
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
-#if SDL_VERSION_ATLEAST(1, 3, 0)
-	if (keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0)
-#else
 	if (keys[SDLK_TAB] && (mod & KMOD_ALT) == 0)
-#endif /* SDL_VERSION_ATLEAST(1, 3, 0) */
 #endif /* defined(_DEBUG) */
 	{
 		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
@@ -687,17 +675,10 @@ void VideoDriver_SDL::InputLoop()
 
 	/* Determine which directional keys are down. */
 	_dirkeys =
-#if SDL_VERSION_ATLEAST(1, 3, 0)
-		(keys[SDL_SCANCODE_LEFT]  ? 1 : 0) |
-		(keys[SDL_SCANCODE_UP]    ? 2 : 0) |
-		(keys[SDL_SCANCODE_RIGHT] ? 4 : 0) |
-		(keys[SDL_SCANCODE_DOWN]  ? 8 : 0);
-#else
 		(keys[SDLK_LEFT]  ? 1 : 0) |
 		(keys[SDLK_UP]    ? 2 : 0) |
 		(keys[SDLK_RIGHT] ? 4 : 0) |
 		(keys[SDLK_DOWN]  ? 8 : 0);
-#endif
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }
