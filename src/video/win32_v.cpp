@@ -1165,8 +1165,9 @@ void VideoDriver_Win32::MainLoop()
 
 	CheckPaletteAnim();
 	for (;;) {
+		InteractiveRandom(); // randomness
+
 		while (PeekMessage(&mesg, nullptr, 0, 0, PM_REMOVE)) {
-			InteractiveRandom(); // randomness
 			/* Convert key messages to char messages if we want text input. */
 			if (EditBoxInGlobalFocus()) TranslateMessage(&mesg);
 			DispatchMessage(&mesg);
