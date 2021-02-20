@@ -184,6 +184,11 @@ protected:
 	 */
 	virtual void PaintThread() {}
 
+	/**
+	 * Process any pending palette animation.
+	 */
+	virtual void CheckPaletteAnim() {}
+
 	std::chrono::steady_clock::duration GetGameInterval()
 	{
 		return std::chrono::milliseconds(MILLISECONDS_PER_TICK);

@@ -95,7 +95,7 @@ static void InitPalette()
 	UpdatePalette(0, 256);
 }
 
-static void CheckPaletteAnim()
+void VideoDriver_Allegro::CheckPaletteAnim()
 {
 	if (_cur_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
@@ -484,8 +484,6 @@ void VideoDriver_Allegro::MainLoop()
 	auto next_game_tick = cur_ticks;
 	auto next_draw_tick = cur_ticks;
 
-	CheckPaletteAnim();
-
 	for (;;) {
 		InteractiveRandom(); // randomness
 
@@ -522,7 +520,7 @@ void VideoDriver_Allegro::MainLoop()
 			this->InputLoop();
 			::InputLoop();
 			UpdateWindows();
-			CheckPaletteAnim();
+			this->CheckPaletteAnim();
 
 			this->Paint();
 		}

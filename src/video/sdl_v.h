@@ -43,6 +43,7 @@ protected:
 	void UnlockVideoBuffer() override;
 	void Paint() override;
 	void PaintThread() override;
+	void CheckPaletteAnim();
 
 private:
 	std::unique_lock<std::recursive_mutex> draw_lock;

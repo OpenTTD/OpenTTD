@@ -853,8 +853,6 @@ void VideoDriver_SDL::MainLoop()
 	last_realtime_tick = cur_ticks;
 	next_game_tick = cur_ticks;
 
-	this->CheckPaletteAnim();
-
 	if (_draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
 		 * directly in the newly created thread. */
