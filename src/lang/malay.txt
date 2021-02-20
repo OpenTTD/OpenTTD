@@ -541,8 +541,8 @@ STR_MONTH_DEC                                                   :Disember
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Kunci
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Tunjukkan kunci kepada graf
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
