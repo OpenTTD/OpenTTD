@@ -378,7 +378,7 @@ void VideoDriver_Win32::Paint()
 
 	ReleaseDC(_wnd.main_wnd, dc);
 
-	MemSetT(&_dirty_rect, 0);
+	_dirty_rect = {};
 }
 
 void VideoDriver_Win32::PaintThread()

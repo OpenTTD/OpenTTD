@@ -158,7 +158,7 @@ void VideoDriver_SDL::Paint()
 	}
 	SDL_UpdateWindowSurfaceRects(_sdl_window, &r, 1);
 
-	MemSetT(&_dirty_rect, 0);
+	_dirty_rect = {};
 }
 
 void VideoDriver_SDL::PaintThread()
@@ -347,7 +347,7 @@ bool VideoDriver_SDL::CreateMainSurface(uint w, uint h, bool resize)
 	 * gotten smaller, reset our dirty rects. GameSizeChanged() a bit lower
 	 * will mark the whole screen dirty again anyway, but this time with the
 	 * new dimensions. */
-	MemSetT(&_dirty_rect, 0);
+	_dirty_rect = {};
 
 	_screen.width = _sdl_surface->w;
 	_screen.height = _sdl_surface->h;
