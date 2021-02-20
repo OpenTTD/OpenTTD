@@ -41,6 +41,8 @@ protected:
 	void InputLoop() override;
 	bool LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;
+	void Paint() override;
+	void PaintThread() override;
 
 private:
 	std::unique_lock<std::recursive_mutex> draw_lock;
@@ -48,6 +50,8 @@ private:
 	int PollEvent();
 	bool CreateMainSurface(uint w, uint h);
 	void SetupKeyboard();
+
+	static void PaintThreadThunk(VideoDriver_SDL *drv);
 };
 
 /** Factory for the SDL video driver. */

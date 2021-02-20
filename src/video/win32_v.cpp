@@ -332,7 +332,7 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 }
 
 /** Do palette animation and blit to the window. */
-static void PaintWindow()
+void VideoDriver_Win32::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
@@ -385,7 +385,7 @@ static void PaintWindow()
 	MemSetT(&_dirty_rect, 0);
 }
 
-static void PaintWindowThread()
+void VideoDriver_Win32::PaintThread()
 {
 	/* First tell the main thread we're started */
 	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
@@ -395,13 +395,18 @@ static void PaintWindowThread()
 	_draw_signal->wait(*_draw_mutex);
 
 	while (_draw_continue) {
-		PaintWindow();
+		this->Paint();
 
 		/* Flush GDI buffer to ensure drawing here doesn't conflict with any GDI usage in the main WndProc. */
 		GdiFlush();
 
 		_draw_signal->wait(*_draw_mutex);
 	}
+}
+
+/* static */ void VideoDriver_Win32::PaintThreadThunk(VideoDriver_Win32 *drv)
+{
+	drv->PaintThread();
 }
 
 /** Forward key presses to the window system. */
@@ -1176,7 +1181,7 @@ void VideoDriver_Win32::MainLoop()
 			this->draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
 
 			_draw_continue = true;
-			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-win32", &PaintWindowThread);
+			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-win32", &VideoDriver_Win32::PaintThreadThunk, this);
 
 			/* Free the mutex if we won't be able to use it. */
 			if (!_draw_threaded) {
@@ -1254,7 +1259,7 @@ void VideoDriver_Win32::MainLoop()
 			if (_draw_mutex != nullptr && !HasModalProgress()) {
 				_draw_signal->notify_one();
 			} else {
-				PaintWindow();
+				this->Paint();
 			}
 		}
 

@@ -35,6 +35,7 @@ public:
 
 protected:
 	void InputLoop() override;
+	void Paint() override;
 };
 
 /** Factory for the allegro video driver. */
