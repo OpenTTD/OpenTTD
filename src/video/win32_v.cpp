@@ -54,9 +54,7 @@ static struct {
 	bool running;         ///< Is the main loop running?
 } _wnd;
 
-bool _force_full_redraw;
 bool _window_maximize;
-uint _display_hz;
 static Dimension _bck_resolution;
 DWORD _imm_props;
 
@@ -253,12 +251,10 @@ bool VideoDriver_Win32::MakeWindow(bool full_screen)
 		settings.dmFields =
 			DM_BITSPERPEL |
 			DM_PELSWIDTH |
-			DM_PELSHEIGHT |
-			(_display_hz != 0 ? DM_DISPLAYFREQUENCY : 0);
+			DM_PELSHEIGHT;
 		settings.dmBitsPerPel = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 		settings.dmPelsWidth  = _wnd.width_org;
 		settings.dmPelsHeight = _wnd.height_org;
-		settings.dmDisplayFrequency = _display_hz;
 
 		/* Check for 8 bpp support. */
 		if (settings.dmBitsPerPel == 8 &&
@@ -1244,8 +1240,6 @@ void VideoDriver_Win32::MainLoop()
 			next_draw_tick += this->GetDrawInterval();
 			/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 			if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
-
-			if (_force_full_redraw) MarkWholeScreenDirty();
 
 			this->InputLoop();
 			::InputLoop();
