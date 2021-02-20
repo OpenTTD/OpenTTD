@@ -695,7 +695,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Poista m
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Parhaat yhtiöt, jotka saavuttivat vuoden {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Yhtiökilpailutaulukko vuonna {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Liikemies
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Kaupantekijä
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Yrittäjä
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Teollisuudenharjoittaja
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalisti
@@ -946,6 +946,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Uusi Taiwanin d
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kiinan renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongin dollari (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Intian rupia (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian rupia (IDR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasemmanpuolinen liikenne

@@ -947,6 +947,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :신 타이완 �
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :중국 위안 (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :홍콩 달러 (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :인도 루피 (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :인도네시아 루피아 (IDR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :좌측통행

@@ -381,7 +381,7 @@ STR_GROUP_BY_NONE                                               :Puudub
 STR_GROUP_BY_SHARED_ORDERS                                      :Jagatud korraldused
 
 # Tooltips for the main toolbar
-STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Seiska mäng
+STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Mängu paus
 STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Kiirenda mängu
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Seadistus
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Mängu salvestamine/jätkamine, mängust lahkumine, väljumine
@@ -664,14 +664,14 @@ STR_GRAPH_KEY_COMPANY_SELECTION_TOOLTIP                         :{BLACK}Klõpsa,
 STR_COMPANY_LEAGUE_TABLE_CAPTION                                :{WHITE}Ettevõtete edetabel
 STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ENGINEER                   :Insener
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Liiklusmänedžer
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transpordi koordineerija
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Liiniinspektor
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRAFFIC_MANAGER            :Liikluskorraldaja
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Transpordikorraldaja
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Logistik
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Direktor
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Tegevjuht
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Esimees
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :President
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnaat
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Ärioligarh
 
 # Performance detail window
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Täpsustatud tulemushinnang
@@ -752,13 +752,13 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Vajuta l
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Parimad ettevõtted aastal {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Ettevõtete edetabelis {NUM} kohal
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Ärimees
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Äriinimene
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Ettevõtja
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Tööstur
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Kapitalist
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :Magnaat
 STR_HIGHSCORE_PERFORMANCE_TITLE_MOGUL                           :Mogul
-STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Sajandi suurärimees
+STR_HIGHSCORE_PERFORMANCE_TITLE_TYCOON_OF_THE_CENTURY           :Sajandi ärioligarh
 STR_HIGHSCORE_NAME                                              :{PRESIDENT_NAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIG_FONT}'{STRING}'   ({COMMA})
 STR_HIGHSCORE_COMPANY_ACHIEVES_STATUS                           :{BIG_FONT}{BLACK}{COMPANY} saavutas '{STRING}' staatuse!
@@ -1003,6 +1003,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Uus Taiwani dol
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Hiina renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kongi dollar (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :India ruupia (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indoneesia ruupia (IDR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasakpoolne liiklus
@@ -1059,6 +1060,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Liidese suurus
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vali kasutatav liideseelementide suurus
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(automaattuvastus)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Tavaline
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Topeltsuurus
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Neljakordne suurus
@@ -1066,6 +1068,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Neljakordne suu
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Kirja suurus
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Vali kasutatav liideseelementide suurus
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(automaattuvastus)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Tavaline
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Topeltsuurus
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Neljakordne suurus
@@ -1207,7 +1210,7 @@ STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Kõiki o
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Puudub -
 
 STR_CONFIG_SETTING_OFF                                          :Väljas
-STR_CONFIG_SETTING_ON                                           :Sees
+STR_CONFIG_SETTING_ON                                           :Peal
 STR_CONFIG_SETTING_DISABLED                                     :väljas
 
 STR_CONFIG_SETTING_COMPANIES_OFF                                :Väljas
@@ -1245,8 +1248,8 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Lülita sisse/v
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Astuse omavalitsuse suhtumine pinnase restruktureerimisse: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vali kui suurt mõju tekitavad müra ning keskkonna muudatused ettevõtte mainele ja edasistele ehitustoimingutele antud piirkonnas
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimaalne mägede kõrgus: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Sätesta kaardi maksimaalne lubatud mägede kõrgus
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Kaardi ülemkõrgus: {STRING}
+STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Sea kaardil paiknevatele mägedele ülemine kõrguspiir
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kaardi maksimaalset kõrgust pole sellisele kõrgusele võimalik sätestada. Vähemalt üks mägi on antud kõrgusest suurem.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Maastikukujundus majade, rööbaste jms. all (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Lase maja- ja rööpaalust maad kujundada ilma neid eemaldamata
@@ -1276,12 +1279,12 @@ STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Mitte kõrvuti 
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Lubab lisada uusi jaamade osi ilma puudutamata olemasolevaid osi. Vajalik Ctrl+Vajutus, kui asetada uut osa
 STR_CONFIG_SETTING_INFLATION                                    :Inflatsioon: {STRING}
 STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Tekitab majandusinflatsiooni, kus hinnad tõusevad pisut kiiremini kui maksed
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maksimaalne silla pikkus: {STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maksimaalne pikkus ehitatud sildadele
-STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maksimaalne silla kõrgus: {STRING}
-STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Maksimaalne sildade ehitamise kõrgus
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Maksimaalne tunneli pikkus: {STRING}
-STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Maksimaalne pikkus ehitatud tunnelitele
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Sildade ülempikkus: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Ülempikkus sildade ehitamisele
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Sildade ülemkõrgus: {STRING}
+STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT_HELPTEXT                   :Ülemkõrgus sildade ehitamisele
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH                            :Tunnelite ülempikkus: {STRING}
+STR_CONFIG_SETTING_MAX_TUNNEL_LENGTH_HELPTEXT                   :Ülempikkus tunnelite ehitamisele
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD             :Toorainetööstuse rajamise viis: {STRING}
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_HELPTEXT    :Toorainetööstuse rajamise viis. Valides 'pole' ei saa üldse toorainetööstuseid rajada, 'uuringutega' rajatakse tööstus suvalisse kohta, ning 'nagu kõik tööstused' ehitatakse toorainetööstuseid nagu töötlevat tööstust
 STR_CONFIG_SETTING_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Pole
@@ -1307,7 +1310,7 @@ STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :keskel
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :lõpus
 STR_CONFIG_SETTING_AUTOSCROLL                                   :Vaade liigub, kui hiireosuti on servas: {STRING}
 STR_CONFIG_SETTING_AUTOSCROLL_HELPTEXT                          :Sisse lülitamisel liigub vaade, kui hiireosuti on aknaserva lähedal
-STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Väljas
+STR_CONFIG_SETTING_AUTOSCROLL_DISABLED                          :Ei võimalda
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT_FULLSCREEN          :Põhivaates, ainult täisekraaniga
 STR_CONFIG_SETTING_AUTOSCROLL_MAIN_VIEWPORT                     :Põhivaates
 STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :Igas vaates
@@ -1358,12 +1361,12 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES                        :Sõidukid ei ae
 STR_CONFIG_SETTING_NEVER_EXPIRE_VEHICLES_HELPTEXT               :Kui on aktiveeritud, siis jäävad kõik sõidukite tüübid igavesti avatuks
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Vananenud sõidukite uuendamine: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :Kui on sisse lülitatud, siis uuendatalse kõik kasutusaja lõpu lähedal olevad sõidukid automaatselt, järgides uuendamise tingimusi
-STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Automaatne sõiduki uuendamine kui sõduk on {STRING} maksimaalse vanuse
+STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Sõiduk uuendatakse automaatselt {STRING} sõiduki ülemvanust
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Relatiivne sõiduki iga mille järel on peaks sõiduk saama automaatselt uuendatud
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} kuu{P 0 "" d} enne
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} kuu{P 0 "" d} pärast
-STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Nõutud rahasumma uuendamiseks: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Pangakontol oleva raha alammäär sõidukite uuendamiseks
+STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Saldo alampiir automaatsete uuendamiste jaoks: {STRING}
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Väikseim pangasaldo, mis arvel peab olema, enne kui sõidukeid hakatakse automaatselt uuendama
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Veateadete kestvus: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Punases aknas olevate veateadete näitamise kestvus. On ka mõned (tähtsad) veateated, mis ise ei sulgu, vaid mis tuleb käsitsi sulgeda
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekund{P 0 "" it}
@@ -1476,14 +1479,14 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :pikka (31. dets
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :lühikest (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Mängu alguses mäng seisab: {STRING}
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Sisse lülitamisel mängu alguses aeg seisab, et oleks rohkem aega kaardiga tutvuda
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Lubatud seisaku ajal: {STRING}
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Vali tegevuseg millede teostamine on lubatud mängu pausi ajal
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Mitte ükski toiming
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Kõik mitte-ehituslikud toimingud
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Kõik peale maastikku muutvate toimingute
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Kõik tõimingud
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Uus mäng algab pausiga: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Kui võimaldatud, siis uus mäng algab automaatselt pausiga, et anda kaardiga tutvumiseks aega
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Pausi ajal on lubatud: {STRING}
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Vali, mis tegevusi saab pausi ajal teha
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Mitte ükski tegevus
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Kõik tegevused peale ehitamise
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Kõik tegevused peale maastikukujunduse
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Kõik tegevused
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Põhjalikku sõidukiregistrit näidatakse: {STRING}
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS_HELPTEXT              :Laseb kasutada põhjalikke sõidukiregistreid sõidukite jaotamiseks
 STR_CONFIG_SETTING_LOADING_INDICATORS                           :Kasuta laadimisnäidikuid: {STRING}
@@ -1676,8 +1679,8 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineaarne
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Mängu jooksul kasvavad puud: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Juhib suvalist puude kasvu mängu jooksul. See seade võib mõjutada osade tööstuste tööd, mis sõltuvad puude kasvust (näiteks saekaater)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Kasvab, aga ei laiene {RED}(saeveski kasutamatu)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Kasvab, kuid laieneb vaid vihmametsas
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Kasvavad, aga ei laiene {RED}(saeveski kasutamatu)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Kasvavad, kuid laienevad vaid vihmametsas
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Kasvab ja laieneb kõikjal
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Ei kasva, ei laiene {RED}(saeveski kasutamatu)
 
@@ -1874,7 +1877,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Otsi all
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Ava AI/GameScripti seaded
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Välju 'OpenTTD'st
 
-STR_INTRO_BASESET                                               :{BLACK}Hetkel valitud lähtegraafikakogust puudub {NUM} sprite{P "" 'i}. Kontrolli, kas lähtekogu on uuendatud.
+STR_INTRO_BASESET                                               :{BLACK}Hetkel valitud lähtegraafikakogust puudub {NUM} sprite{P "" 'i}. Kontrolli, kas lähtekogule on uuendusi.
 STR_INTRO_TRANSLATION                                           :{BLACK}Puudub {NUM} tõlge{P "" t}. Aita teha OpenTTD paremaks, panusta tõlkimisega. Rohkem teavet leiad «readme.txt» failist.
 
 # Quit window
@@ -1897,8 +1900,8 @@ STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Mängim
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Võlubuldooser (eemaldab tööstused, paiksed objektid): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnelid võivad üksteist läbida: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktiivlennukid ei kuku (tihti) väikestel lennuväljadel alla: {ORANGE} {STRING}
-STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Muuda maksimaalset kaardi kõrgust {ORANGE}{NUM}
-STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Muuda kaardi maksimaalset mägede kõrgust
+STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Muuda kaardi ülemkõrgust {ORANGE}{NUM}
+STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Muuda kaardil olevate mägede ülemkõrgust
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Parasvöötme maastik
 STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktiline maastik
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Troopiline maastik
@@ -2036,7 +2039,7 @@ STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Aeg het
 STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Kaitstud salasõnaga!
 STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}SERVER ON MAAS
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}SERVER ON TÄIS
-STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}OSAD EI SOBI
+STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}ÜHILDUMATUD VERSIOONID
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}NEWGRF SOBIMATUS
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Liitu mänguga
@@ -2307,11 +2310,11 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Märgi u
 STR_CONTENT_SELECT_UPDATES_CAPTION_TOOLTIP                      :{BLACK}Märgi kõik aineste uuendused allalaadimiseks
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Eemalda märgistus kõigilt
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK}Eemaldatakse allalaadimise märgistus
-STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Otsi kolmandatest lehtedest
+STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Otsi välistest veebilehtedest
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Otsi OpenTTD-st sõltumatutest lehtedest aineseid, mida OpenTTD aineste keskserverist ei saa
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Sa oled lahkumas OpenTTD-st!
-STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Kolmandatest lehtedest allalaadimise tingimused sõltuvad lehest.{}Aineste paigaldamisel kasutada kolmandate lehtede juhiseid.{}Kas jätkata?
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Sildi- ja nimefilter:
+STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Välistest veebilehtedest aineste allalaadimisel võivad kasutustingimused vahelduda.{}Paigaldusjuhiseid otsida samadest välistest veebilehtedest.{}Kas jätkata?
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Siltide/nimede märksõna:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Külasta lehekülge
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Külasta lehekülge selle sisu jaoks.
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Laadi alla
@@ -2325,11 +2328,11 @@ STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sul on 
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}See ei ole ainesena tuvastatav, seega OpenTTD ei saa seda alla laadida
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}See on asendus olemasolevale {STRING}
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nimi: {WHITE}{STRING}
-STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Osa: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versioon: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Seletus: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}Aadress: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Liik: {WHITE}{STRING}
-STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Faili maht: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Allalaadimise suurus: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valitud kuna: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Sõltuvused: {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Sildid: {WHITE}{STRING}
@@ -2661,12 +2664,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Suvaline
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Uue tööstuse rahastamine
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Vali siit nimistust sobiv tööstus
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Palju suvalisi tööstusi
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Tekita suvalised tööstused
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Katab kaardi suvaliselt paigutatud tööstustega
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Tekita suvalised tööstused
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Kas oled kindel, et sa tahad tekitada palju suvalisi tööstuseid?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Hind: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Rahasta
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Ehita
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Rahasta
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Kõrvalda kõik tööstused
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Kõrvalda kõik hetkel kaardil asuvad tööstused
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Kõrvalda kõik tööstused
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Kas oled kindel, et sa tahad kõrvaldada kõik tööstused?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Tööstuse {STRING} tööstusahel
@@ -2809,7 +2818,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ettevõtte maa
 # About OpenTTD window
 STR_ABOUT_OPENTTD                                               :{WHITE}OpenTTD lisainfo
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Algne autorikaitse {COPYRIGHT} 1995 Chris Sawyer, kõik õigused kaitstud
-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD osa {REV}
+STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versioon {REV}
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} OpenTTD meeskond
 
 # Framerate display window
@@ -2897,6 +2906,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Märksõna:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Ülekirjuta fail
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Kas oled kindel, et soovid olemasoleva faili üle kirjutada?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Kataloog)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Ülemkataloog)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Sisesta salvestatavale mängule nimi
 
@@ -2908,7 +2919,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Asustusi:
 STR_MAPGEN_DATE                                                 :{BLACK}Algus:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstuste sagedus:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimaalne kaardi kõrgus:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Kaardi ülemkõrgus:
 STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Tõsta maksimaalset kaardi mägede kõrgust ühe võrra
 STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Langeta maksimaalset kaardi mägede kõrgust ühe võrra
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Lumepiiri kõrgus:
@@ -3010,7 +3021,7 @@ STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP                :{BLACK}Proovi p
 STR_NEWGRF_SETTINGS_FILENAME                                    :{BLACK}Faili nimi: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_GRF_ID                                      :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_VERSION                                     :{BLACK}Versioon: {SILVER}{NUM}
-STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Min. ühilduv versioon: {SILVER}{NUM}
+STR_NEWGRF_SETTINGS_MIN_VERSION                                 :{BLACK}Vanim ühilduv versioon: {SILVER}{NUM}
 STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}Palett: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :Vaikimisi (D)
@@ -3080,13 +3091,13 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Hoiatus: {
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Viga: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Saatuslik viga: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Esines raske NewGRF-i tõrge:{}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :OpenTTD väitel {1:STRING} ei tööta selle TTDPatch osaga.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :OpenTTD väitel {1:STRING} ei tööta selle TTDPatch versiooniga.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} on {STRING} TTD osa jaoks.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} on mõeldud kasutamiseks {STRING}
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :kõlbmatu «{1:STRING}» parameeter: parameeter {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING} peab olema laetud enne {STRING}
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING} peab olema laetud pärast {STRING}
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nõuab OpenTTD osa {STRING} või uuemat
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING} nõuab OpenTTD versiooni {STRING} või uuemat
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju NewGRF-e on laaditud
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {1:STRING} staatilise NewGRF-na koos {STRING} võib põhjustada sünkrooni katkemist.
@@ -4144,8 +4155,8 @@ STR_TIMETABLE_TRAVEL_FOR                                        :Sõida {STRING}
 STR_TIMETABLE_TRAVEL_FOR_SPEED                                  :Reisi selleks {STRING} kõige rohkema {VELOCITY}
 STR_TIMETABLE_TRAVEL_FOR_ESTIMATED                              :Sõit ({STRING}, ei ole ajastatud)
 STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Sõit ({STRING}, ei ole ajastatud) kuni {VELOCITY}
-STR_TIMETABLE_STAY_FOR_ESTIMATED                                :({STRING} oode, ei ole ajastatud)
-STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} sõidukestus, ei ole ajastatud)
+STR_TIMETABLE_STAY_FOR_ESTIMATED                                :(Oode {STRING}, ajastamata)
+STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :({STRING} sõidukestus, ajastamata)
 STR_TIMETABLE_STAY_FOR                                          :ja oota {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja sõida {STRING} jaoks
 STR_TIMETABLE_DAYS                                              :{COMMA} päev{P "" a}
@@ -4175,10 +4186,10 @@ STR_TIMETABLE_CHANGE_SPEED_TOOLTIP                              :{BLACK}Muuda m�
 STR_TIMETABLE_CLEAR_SPEED                                       :{BLACK}Kustuta kiiruspiirang
 STR_TIMETABLE_CLEAR_SPEED_TOOLTIP                               :{BLACK}Eemalda märgitud korralduse kiiruspiirang
 
-STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Tühista hilinemisarvesti
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Tühista hilinemisarvesti, et sõiduk ei jääks hiljaks
+STR_TIMETABLE_RESET_LATENESS                                    :{BLACK}Nulli hilinemisarvesti
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Nulli hilinemisarvesti, nii et sõiduk oleks graafikus
 
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Täida ise
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Isetäituv
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Kasuta liiniplaani täitmiseks järgmise sõidu andmeid (Ctrl+klõps säilitab ooteajad)
 
 STR_TIMETABLE_EXPECTED                                          :{BLACK}Eeldatav
@@ -4206,7 +4217,7 @@ STR_AI_DEBUG_SETTINGS                                           :{BLACK}Seaded
 STR_AI_DEBUG_SETTINGS_TOOLTIP                                   :{BLACK}Skripti seadistamine
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Laadi AI uuesti
 STR_AI_DEBUG_RELOAD_TOOLTIP                                     :{BLACK}Sulge AI, laadi skript uuesti ning taaskäivita AI
-STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Enable/disable breaking when an AI log message matches the break string
+STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Võimalda/ei võimalda peatamist kui AI logisõnum sisaldab peatamiskirjet
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Vahe sees:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Vahe sees
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kui AI logi sõnum vastab selle stringiga, mäng seisatakse.
