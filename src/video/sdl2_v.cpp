@@ -801,9 +801,9 @@ void VideoDriver_SDL::LoopOnce()
 
 		/* The gameloop is the part that can run asynchronously. The rest
 		 * except sleeping can't. */
-		if (_draw_mutex != nullptr) draw_lock.unlock();
+		this->UnlockVideoBuffer();
 		GameLoop();
-		if (_draw_mutex != nullptr) draw_lock.lock();
+		this->LockVideoBuffer();
 	}
 
 	/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */
@@ -834,9 +834,9 @@ void VideoDriver_SDL::LoopOnce()
 		auto now = std::chrono::steady_clock::now();
 
 		if (next_tick > now) {
-			if (_draw_mutex != nullptr) draw_lock.unlock();
+			this->UnlockVideoBuffer();
 			std::this_thread::sleep_for(next_tick - now);
-			if (_draw_mutex != nullptr) draw_lock.lock();
+			this->LockVideoBuffer();
 		}
 	}
 #endif
@@ -985,4 +985,15 @@ Dimension VideoDriver_SDL::GetScreenSize() const
 	if (SDL_GetCurrentDisplayMode(this->startup_display, &mode) != 0) return VideoDriver::GetScreenSize();
 
 	return { static_cast<uint>(mode.w), static_cast<uint>(mode.h) };
+}
+
+bool VideoDriver_SDL::LockVideoBuffer()
+{
+	if (_draw_threaded) this->draw_lock.lock();
+	return true;
+}
+
+void VideoDriver_SDL::UnlockVideoBuffer()
+{
+	if (_draw_threaded) this->draw_lock.unlock();
 }

@@ -44,6 +44,8 @@ public:
 protected:
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;
+	bool LockVideoBuffer() override;
+	void UnlockVideoBuffer() override;
 
 private:
 	int PollEvent();
