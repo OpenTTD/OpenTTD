@@ -46,6 +46,8 @@ struct GoalListWindow : public Window {
 		this->vscroll = this->GetScrollbar(WID_GOAL_SCROLLBAR);
 		this->FinishInitNested(window_number);
 		this->owner = (Owner)this->window_number;
+		NWidgetStacked *wi = this->GetWidget<NWidgetStacked>(WID_GOAL_SELECT_BUTTONS);
+		wi->SetDisplayedPlane(window_number == INVALID_COMPANY ? 1 : 0);
 		this->OnInvalidateData(0);
 	}
 
@@ -63,17 +65,31 @@ struct GoalListWindow : public Window {
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
-		if (widget != WID_GOAL_LIST) return;
+		switch (widget) {
+			case WID_GOAL_GLOBAL_BUTTON:
+				ShowGoalsList(INVALID_COMPANY);
+				break;
 
-		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_LIST, WD_FRAMERECT_TOP);
-		for (const Goal *s : Goal::Iterate()) {
-			if (s->company == this->window_number) {
-				if (y == 0) {
-					this->HandleClick(s);
-					return;
+			case WID_GOAL_COMPANY_BUTTON:
+				ShowGoalsList(_local_company);
+				break;
+
+			case WID_GOAL_LIST: {
+				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_LIST, WD_FRAMERECT_TOP);
+				for (const Goal *s : Goal::Iterate()) {
+					if (s->company == this->window_number) {
+						if (y == 0) {
+							this->HandleClick(s);
+							return;
+						}
+						y--;
+					}
 				}
-				y--;
+				break;
 			}
+
+			default:
+				break;
 		}
 	}
 
@@ -260,6 +276,8 @@ struct GoalListWindow : public Window {
 	{
 		if (!gui_scope) return;
 		this->vscroll->SetCount(this->CountLines());
+		this->SetWidgetDisabledState(WID_GOAL_COMPANY_BUTTON, _local_company == COMPANY_SPECTATOR);
+		this->SetWidgetDirty(WID_GOAL_COMPANY_BUTTON);
 		this->SetWidgetDirty(WID_GOAL_LIST);
 	}
 };
@@ -269,6 +287,10 @@ static const NWidgetPart _nested_goals_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_BROWN),
 		NWidget(WWT_CAPTION, COLOUR_BROWN, WID_GOAL_CAPTION), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
+		NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GOAL_SELECT_BUTTONS),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_GLOBAL_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GOALS_GLOBAL_BUTTON, STR_GOALS_GLOBAL_BUTTON_HELPTEXT),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_BROWN, WID_GOAL_COMPANY_BUTTON), SetMinimalSize(50, 0), SetMinimalTextLines(1, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 2), SetDataTip(STR_GOALS_COMPANY_BUTTON, STR_GOALS_COMPANY_BUTTON_HELPTEXT),
+		EndContainer(),
 		NWidget(WWT_SHADEBOX, COLOUR_BROWN),
 		NWidget(WWT_DEFSIZEBOX, COLOUR_BROWN),
 		NWidget(WWT_STICKYBOX, COLOUR_BROWN),
