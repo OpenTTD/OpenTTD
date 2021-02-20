@@ -64,8 +64,6 @@ static std::condition_variable_any *_draw_signal = nullptr;
 static volatile bool _draw_continue;
 /** Local copy of the palette for use in the drawing thread. */
 static Palette _local_palette;
-/** Region of the screen that needs redrawing. */
-static Rect _dirty_rect;
 
 bool VideoDriver_Win32Base::ClaimMousePointer()
 {
@@ -886,7 +884,7 @@ void VideoDriver_Win32Base::Stop()
 void VideoDriver_Win32Base::MakeDirty(int left, int top, int width, int height)
 {
 	Rect r = {left, top, left + width, top + height};
-	_dirty_rect = BoundingRect(_dirty_rect, r);
+	this->dirty_rect = BoundingRect(this->dirty_rect, r);
 }
 
 void VideoDriver_Win32Base::CheckPaletteAnim()
@@ -1243,7 +1241,7 @@ void VideoDriver_Win32GDI::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
-	if (IsEmptyRect(_dirty_rect)) return;
+	if (IsEmptyRect(this->dirty_rect)) return;
 
 	HDC dc = GetDC(this->main_wnd);
 	HDC dc2 = CreateCompatibleDC(dc);
@@ -1279,7 +1277,7 @@ void VideoDriver_Win32GDI::Paint()
 
 	ReleaseDC(this->main_wnd, dc);
 
-	_dirty_rect = {};
+	this->dirty_rect = {};
 }
 
 void VideoDriver_Win32GDI::PaintThread()
@@ -1446,6 +1444,8 @@ bool VideoDriver_Win32OpenGL::AllocateBackingStore(int w, int h, bool force)
 
 	if (this->gl_rc == nullptr) return false;
 
+	this->dirty_rect = {};
+
 	bool res = OpenGLBackend::Get()->Resize(w, h);
 	_wnd.buffer_bits = OpenGLBackend::Get()->GetVideoBuffer();
 	return res;
@@ -1454,6 +1454,8 @@ bool VideoDriver_Win32OpenGL::AllocateBackingStore(int w, int h, bool force)
 void VideoDriver_Win32OpenGL::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
+
+	if (IsEmptyRect(this->dirty_rect)) return;
 
 	if (_cur_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
@@ -1473,8 +1475,10 @@ void VideoDriver_Win32OpenGL::Paint()
 		_cur_palette.count_dirty = 0;
 	}
 
-	OpenGLBackend::Get()->Paint();
+	OpenGLBackend::Get()->Paint(this->dirty_rect);
 	SwapBuffers(this->dc);
+
+	this->dirty_rect = {};
 }
 
 #endif /* WITH_OPENGL */

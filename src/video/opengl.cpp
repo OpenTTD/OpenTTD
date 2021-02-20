@@ -24,6 +24,7 @@
 
 #include "opengl.h"
 #include "../core/mem_func.hpp"
+#include "../core/geometry_func.hpp"
 #include "../gfx_func.h"
 #include "../debug.h"
 
@@ -292,8 +293,9 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 /**
  * Render video buffer to the screen.
+ * @param update_rect Rectangle encompassing the dirty region of the video buffer.
  */
-void OpenGLBackend::Paint()
+void OpenGLBackend::Paint(Rect update_rect)
 {
 	assert(this->vid_buffer != nullptr);
 
@@ -301,8 +303,10 @@ void OpenGLBackend::Paint()
 
 	/* Update changed rect of the video buffer texture. */
 	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
-	glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
-	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, _screen.width, _screen.height, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, this->vid_buffer);
+	if (!IsEmptyRect(update_rect)) {
+		glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
+		glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (uint32 *)this->vid_buffer + update_rect.top * _screen.pitch + update_rect.left);
+	}
 
 	/* Blit video buffer to screen. */
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);

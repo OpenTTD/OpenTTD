@@ -38,6 +38,7 @@ public:
 protected:
 	HWND    main_wnd;      ///< Handle to system window.
 	bool    fullscreen;    ///< Whether to use (true) fullscreen mode.
+	Rect    dirty_rect;    ///< Region of the screen that needs redrawing.
 
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;
