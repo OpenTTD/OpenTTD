@@ -264,13 +264,28 @@ jobs:
     - name: Install MSVC problem matcher
       uses: ammaraskar/msvc-problem-matcher@master
 
-    - name: Build
-      uses: lukka/run-cmake@v3
+    - name: Configure developer command prompt for ${{ matrix.arch }}
+      uses: ilammy/msvc-dev-cmd@v1
       with:
-        cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
-        useVcpkgToolchainFile: true
-        buildDirectory: '${{ github.workspace }}/build'
-        cmakeAppendedArgs: ' -GNinja'
+        arch: ${{ matrix.arch }}
+
+    - name: Build
+      shell: bash
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake .. \
+          -GNinja \
+          -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
+          -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        cmake --build .
+        echo "::endgroup::"
 
     - name: Test
       shell: bash
