@@ -123,8 +123,10 @@ static void InitPalette()
 	UpdatePalette(true);
 }
 
-static void CheckPaletteAnim()
+void VideoDriver_SDL::CheckPaletteAnim()
 {
+	_local_palette = _cur_palette;
+
 	if (_cur_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
@@ -183,7 +185,6 @@ void VideoDriver_SDL::PaintThread()
 	_draw_signal->wait(*_draw_mutex);
 
 	while (_draw_continue) {
-		CheckPaletteAnim();
 		/* Then just draw and wait till we stop */
 		this->Paint();
 		_draw_signal->wait(lock);
@@ -708,8 +709,6 @@ void VideoDriver_SDL::MainLoop()
 	auto next_game_tick = cur_ticks;
 	auto next_draw_tick = cur_ticks;
 
-	CheckPaletteAnim();
-
 	std::thread draw_thread;
 	if (_draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
@@ -781,12 +780,11 @@ void VideoDriver_SDL::MainLoop()
 			this->InputLoop();
 			::InputLoop();
 			UpdateWindows();
-			_local_palette = _cur_palette;
+			this->CheckPaletteAnim();
 
 			if (_draw_mutex != nullptr && !HasModalProgress()) {
 				_draw_signal->notify_one();
 			} else {
-				CheckPaletteAnim();
 				this->Paint();
 			}
 		}

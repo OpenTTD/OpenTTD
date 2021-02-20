@@ -1201,7 +1201,6 @@ void VideoDriver_Win32::MainLoop()
 
 	_wnd.running = true;
 
-	CheckPaletteAnim();
 	for (;;) {
 		InteractiveRandom(); // randomness
 

@@ -49,11 +49,10 @@ protected:
 	void UnlockVideoBuffer() override;
 	void Paint() override;
 	void PaintThread() override;
+	void CheckPaletteAnim() override;
 
 private:
 	std::unique_lock<std::recursive_mutex> draw_lock;
-
-	void CheckPaletteAnim();
 
 	static void PaintThreadThunk(VideoDriver_Win32 *drv);
 };
