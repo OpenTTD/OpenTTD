@@ -66,33 +66,13 @@ struct GoalListWindow : public Window {
 		if (widget != WID_GOAL_LIST) return;
 
 		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_GOAL_LIST, WD_FRAMERECT_TOP);
-		int num = 0;
 		for (const Goal *s : Goal::Iterate()) {
-			if (s->company == INVALID_COMPANY) {
-				y--;
+			if (s->company == this->window_number) {
 				if (y == 0) {
 					this->HandleClick(s);
 					return;
 				}
-				num++;
-			}
-		}
-
-		if (num == 0) {
-			y--; // "None" line.
-			if (y < 0) return;
-		}
-
-		y -= 2; // "Company specific goals:" line.
-		if (y < 0) return;
-
-		for (const Goal *s : Goal::Iterate()) {
-			if (s->company == this->window_number && s->company != INVALID_COMPANY) {
 				y--;
-				if (y == 0) {
-					this->HandleClick(s);
-					return;
-				}
 			}
 		}
 	}
@@ -161,28 +141,21 @@ struct GoalListWindow : public Window {
 	uint CountLines()
 	{
 		/* Count number of (non) awarded goals. */
-		uint num_global = 0;
-		uint num_company = 0;
+		uint num = 0;
 		for (const Goal *s : Goal::Iterate()) {
-			if (s->company == INVALID_COMPANY) {
-				num_global++;
-			} else if (s->company == this->window_number) {
-				num_company++;
-			}
+			if (s->company == this->window_number) num++;
 		}
 
 		/* Count the 'none' lines. */
-		if (num_global  == 0) num_global = 1;
-		if (num_company == 0) num_company = 1;
+		if (num == 0) num = 1;
 
-		/* Global, company and an empty line before the accepted ones. */
-		return 3 + num_global + num_company;
+		return num;
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget != WID_GOAL_LIST) return;
-		Dimension d = maxdim(GetStringBoundingBox(STR_GOALS_GLOBAL_TITLE), GetStringBoundingBox(STR_GOALS_COMPANY_TITLE));
+		Dimension d = GetStringBoundingBox(STR_GOALS_NONE);
 
 		resize->height = d.height;
 
@@ -193,26 +166,26 @@ struct GoalListWindow : public Window {
 	}
 
 	/**
-	 * Draws either the global goals or the company goal section.
-	 * This is a helper method for #DrawWidget.
-	 * @param[in,out] pos Vertical line number to draw.
-	 * @param cap Number of lines to draw in the window.
-	 * @param x Left edge of the text line to draw.
-	 * @param y Vertical position of the top edge of the window.
-	 * @param right Right edge of the text line to draw.
-	 * @param global_section Whether the global goals are printed.
+	 * Draws a given column of the goal list.
 	 * @param column Which column to draw.
+	 * @param wid Pointer to the goal list widget.
+	 * @param progress_col_width Width of the progress column.
+	 * @return max width of drawn text
 	 */
-	void DrawPartialGoalList(int &pos, const int cap, int x, int y, int right, uint progress_col_width, bool global_section, GoalColumn column) const
+	void DrawListColumn(GoalColumn column, NWidgetBase *wid, uint progress_col_width) const
 	{
-		if (column == GC_GOAL && IsInsideMM(pos, 0, cap)) DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, global_section ? STR_GOALS_GLOBAL_TITLE : STR_GOALS_COMPANY_TITLE);
-		pos++;
-
+		/* Get column draw area. */
+		int y = wid->pos_y + WD_FRAMERECT_TOP;
+		int x = wid->pos_x + WD_FRAMERECT_LEFT;
+		int right = x + wid->current_x - WD_FRAMERECT_RIGHT;
 		bool rtl = _current_text_dir == TD_RTL;
+
+		int pos = -this->vscroll->GetPosition();
+		const int cap = this->vscroll->GetCapacity();
 
 		uint num = 0;
 		for (const Goal *s : Goal::Iterate()) {
-			if (global_section ? s->company == INVALID_COMPANY : (s->company == this->window_number && s->company != INVALID_COMPANY)) {
+			if (s->company == this->window_number) {
 				if (IsInsideMM(pos, 0, cap)) {
 					switch (column) {
 						case GC_GOAL: {
@@ -241,36 +214,10 @@ struct GoalListWindow : public Window {
 
 		if (num == 0) {
 			if (column == GC_GOAL && IsInsideMM(pos, 0, cap)) {
-				StringID str = !global_section && this->window_number == INVALID_COMPANY ? STR_GOALS_SPECTATOR_NONE : STR_GOALS_NONE;
-				DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, str);
+				DrawString(x, right, y + pos * FONT_HEIGHT_NORMAL, STR_GOALS_NONE);
 			}
 			pos++;
 		}
-	}
-
-	/**
-	 * Draws a given column of the goal list.
-	 * @param column Which column to draw.
-	 * @param wid Pointer to the goal list widget.
-	 * @param progress_col_width Width of the progress column.
-	 * @return max width of drawn text
-	 */
-	void DrawListColumn(GoalColumn column, NWidgetBase *wid, uint progress_col_width) const
-	{
-		/* Get column draw area. */
-		int y = wid->pos_y + WD_FRAMERECT_TOP;
-		int x = wid->pos_x + WD_FRAMERECT_LEFT;
-		int right = x + wid->current_x - WD_FRAMERECT_RIGHT;
-
-		int pos = -this->vscroll->GetPosition();
-		const int cap = this->vscroll->GetCapacity();
-
-		/* Draw partial list with global goals. */
-		DrawPartialGoalList(pos, cap, x, y, right, progress_col_width, true, column);
-
-		/* Draw partial list with company goals. */
-		pos++;
-		DrawPartialGoalList(pos, cap, x, y, right, progress_col_width, false, column);
 	}
 
 	void OnPaint() override
