@@ -1156,10 +1156,6 @@ void VideoDriver_Win32::InputLoop()
 void VideoDriver_Win32::MainLoop()
 {
 	MSG mesg;
-	auto cur_ticks = std::chrono::steady_clock::now();
-	auto last_realtime_tick = cur_ticks;
-	auto next_game_tick = cur_ticks;
-	auto next_draw_tick = cur_ticks;
 
 	std::thread draw_thread;
 
@@ -1210,61 +1206,14 @@ void VideoDriver_Win32::MainLoop()
 		/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
 		GdiFlush();
 
-		cur_ticks = std::chrono::steady_clock::now();
-
-		/* If more than a millisecond has passed, increase the _realtime_tick. */
-		if (cur_ticks - last_realtime_tick > std::chrono::milliseconds(1)) {
-			auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - last_realtime_tick);
-			_realtime_tick += delta.count();
-			last_realtime_tick += delta;
-		}
-
-		if (cur_ticks >= next_game_tick || (_fast_forward && !_pause_mode)) {
-			if (_fast_forward && !_pause_mode) {
-				next_game_tick = cur_ticks + this->GetGameInterval();
-			} else {
-				next_game_tick += this->GetGameInterval();
-				/* Avoid next_game_tick getting behind more and more if it cannot keep up. */
-				if (next_game_tick < cur_ticks - ALLOWED_DRIFT * this->GetGameInterval()) next_game_tick = cur_ticks;
-			}
-
-			/* The game loop is the part that can run asynchronously.
-			 * The rest except sleeping can't. */
-			this->UnlockVideoBuffer();
-			GameLoop();
-			this->LockVideoBuffer();
-		}
-
-		/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */
-		if (cur_ticks >= next_draw_tick && (_switch_mode == SM_NONE || HasModalProgress())) {
-			next_draw_tick += this->GetDrawInterval();
-			/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
-			if (next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) next_draw_tick = cur_ticks;
-
-			this->InputLoop();
-			::InputLoop();
-			UpdateWindows();
-			CheckPaletteAnim();
-
+		if (this->Tick()) {
 			if (_draw_mutex != nullptr && !HasModalProgress()) {
 				_draw_signal->notify_one();
 			} else {
 				this->Paint();
 			}
 		}
-
-		/* If we are not in fast-forward, create some time between calls to ease up CPU usage. */
-		if (!_fast_forward || _pause_mode) {
-			/* See how much time there is till we have to process the next event, and try to hit that as close as possible. */
-			auto next_tick = std::min(next_draw_tick, next_game_tick);
-			auto now = std::chrono::steady_clock::now();
-
-			if (next_tick > now) {
-				this->UnlockVideoBuffer();
-				std::this_thread::sleep_for(next_tick - now);
-				this->LockVideoBuffer();
-			}
-		}
+		this->SleepTillNextTick();
 	}
 
 	if (_draw_threaded) {

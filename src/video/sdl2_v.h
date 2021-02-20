@@ -67,11 +67,6 @@ private:
 	 */
 	bool edit_box_focused;
 
-	std::chrono::steady_clock::time_point cur_ticks;
-	std::chrono::steady_clock::time_point last_realtime_tick;
-	std::chrono::steady_clock::time_point next_game_tick;
-	std::chrono::steady_clock::time_point next_draw_tick;
-
 	int startup_display;
 	std::thread draw_thread;
 	std::unique_lock<std::recursive_mutex> draw_lock;
