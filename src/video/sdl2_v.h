@@ -48,7 +48,7 @@ protected:
 	void UnlockVideoBuffer() override;
 	void Paint() override;
 	void PaintThread() override;
-	void CheckPaletteAnim();
+	void CheckPaletteAnim() override;
 
 private:
 	int PollEvent();
