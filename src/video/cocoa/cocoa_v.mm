@@ -26,7 +26,7 @@
 
 #include "../../openttd.h"
 #include "../../debug.h"
-#include "../../core/geometry_type.hpp"
+#include "../../core/geometry_func.hpp"
 #include "../../core/math_func.hpp"
 #include "cocoa_v.h"
 #include "cocoa_wnd.h"
@@ -125,7 +125,7 @@ VideoDriver_Cocoa::VideoDriver_Cocoa()
 	this->color_space = nullptr;
 	this->cgcontext   = nullptr;
 
-	this->num_dirty_rects = lengthof(this->dirty_rects);
+	this->dirty_rect = {};
 }
 
 /** Stop Cocoa video driver. */
@@ -192,13 +192,8 @@ const char *VideoDriver_Cocoa::Start(const StringList &parm)
  */
 void VideoDriver_Cocoa::MakeDirty(int left, int top, int width, int height)
 {
-	if (this->num_dirty_rects < lengthof(this->dirty_rects)) {
-		dirty_rects[this->num_dirty_rects].left = left;
-		dirty_rects[this->num_dirty_rects].top = top;
-		dirty_rects[this->num_dirty_rects].right = left + width;
-		dirty_rects[this->num_dirty_rects].bottom = top + height;
-	}
-	this->num_dirty_rects++;
+	Rect r = {left, top, left + width, top + height};
+	this->dirty_rect = BoundingRect(this->dirty_rect, r);
 }
 
 /**
@@ -473,40 +468,29 @@ void VideoDriver_Cocoa::Paint()
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
 	/* Check if we need to do anything */
-	if (this->num_dirty_rects == 0 || [ this->window isMiniaturized ]) return;
+	if (IsEmptyRect(this->dirty_rect) || [ this->window isMiniaturized ]) return;
 
-	if (this->num_dirty_rects >= lengthof(this->dirty_rects)) {
-		this->num_dirty_rects = 1;
-		this->dirty_rects[0].left = 0;
-		this->dirty_rects[0].top = 0;
-		this->dirty_rects[0].right = this->window_width;
-		this->dirty_rects[0].bottom = this->window_height;
+	/* We only need to blit in indexed mode since in 32bpp mode the game draws directly to the image. */
+	if (this->buffer_depth == 8) {
+		BlitIndexedToView32(
+			this->dirty_rect.left,
+			this->dirty_rect.top,
+			this->dirty_rect.right,
+			this->dirty_rect.bottom
+		);
 	}
 
-	/* Build the region of dirty rectangles */
-	for (uint i = 0; i < this->num_dirty_rects; i++) {
-		/* We only need to blit in indexed mode since in 32bpp mode the game draws directly to the image. */
-		if (this->buffer_depth == 8) {
-			BlitIndexedToView32(
-				this->dirty_rects[i].left,
-				this->dirty_rects[i].top,
-				this->dirty_rects[i].right,
-				this->dirty_rects[i].bottom
-			);
-		}
+	NSRect dirtyrect;
+	dirtyrect.origin.x = this->dirty_rect.left;
+	dirtyrect.origin.y = this->window_height - this->dirty_rect.bottom;
+	dirtyrect.size.width = this->dirty_rect.right - this->dirty_rect.left;
+	dirtyrect.size.height = this->dirty_rect.bottom - this->dirty_rect.top;
 
-		NSRect dirtyrect;
-		dirtyrect.origin.x = this->dirty_rects[i].left;
-		dirtyrect.origin.y = this->window_height - this->dirty_rects[i].bottom;
-		dirtyrect.size.width = this->dirty_rects[i].right - this->dirty_rects[i].left;
-		dirtyrect.size.height = this->dirty_rects[i].bottom - this->dirty_rects[i].top;
+	/* Normally drawRect will be automatically called by Mac OS X during next update cycle,
+	 * and then blitting will occur. */
+	[ this->cocoaview setNeedsDisplayInRect:[ this->cocoaview getVirtualRect:dirtyrect ] ];
 
-		/* Normally drawRect will be automatically called by Mac OS X during next update cycle,
-		 * and then blitting will occur. */
-		[ this->cocoaview setNeedsDisplayInRect:[ this->cocoaview getVirtualRect:dirtyrect ] ];
-	}
-
-	this->num_dirty_rects = 0;
+	this->dirty_rect = {};
 }
 
 /** Update the palette. */
@@ -522,7 +506,7 @@ void VideoDriver_Cocoa::UpdatePalette(uint first_color, uint num_colors)
 		this->palette[i] = clr;
 	}
 
-	this->num_dirty_rects = lengthof(this->dirty_rects);
+	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
 /** Clear buffer to opaque black. */
@@ -580,8 +564,8 @@ void VideoDriver_Cocoa::AllocateBackingStore()
 	}
 
 	/* Redraw screen */
-	this->num_dirty_rects = lengthof(this->dirty_rects);
 	this->GameSizeChanged();
+	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
 /**  Check if palette updates need to be performed. */
