@@ -161,6 +161,19 @@ protected:
 	 */
 	virtual void InputLoop() {}
 
+	/**
+	 * Make sure the video buffer is ready for drawing.
+	 * @returns True if the video buffer has to be unlocked.
+	 */
+	virtual bool LockVideoBuffer() {
+		return false;
+	}
+
+	/**
+	 * Unlock a previously locked video buffer.
+	 */
+	virtual void UnlockVideoBuffer() {}
+
 	std::chrono::steady_clock::duration GetGameInterval()
 	{
 		return std::chrono::milliseconds(MILLISECONDS_PER_TICK);

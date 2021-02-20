@@ -1161,7 +1161,6 @@ void VideoDriver_Win32::MainLoop()
 	auto next_draw_tick = cur_ticks;
 
 	std::thread draw_thread;
-	std::unique_lock<std::recursive_mutex> draw_lock;
 
 	if (_draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
@@ -1174,15 +1173,15 @@ void VideoDriver_Win32::MainLoop()
 		}
 
 		if (_draw_threaded) {
-			draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+			this->draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
 
 			_draw_continue = true;
 			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-win32", &PaintWindowThread);
 
 			/* Free the mutex if we won't be able to use it. */
 			if (!_draw_threaded) {
-				draw_lock.unlock();
-				draw_lock.release();
+				this->draw_lock.unlock();
+				this->draw_lock.release();
 				delete _draw_mutex;
 				delete _draw_signal;
 				_draw_mutex = nullptr;
@@ -1231,9 +1230,9 @@ void VideoDriver_Win32::MainLoop()
 
 			/* The game loop is the part that can run asynchronously.
 			 * The rest except sleeping can't. */
-			if (_draw_threaded) draw_lock.unlock();
+			this->UnlockVideoBuffer();
 			GameLoop();
-			if (_draw_threaded) draw_lock.lock();
+			this->LockVideoBuffer();
 		}
 
 		/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */
@@ -1269,9 +1268,9 @@ void VideoDriver_Win32::MainLoop()
 				/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
 				GdiFlush();
 
-				if (_draw_mutex != nullptr) draw_lock.unlock();
+				this->UnlockVideoBuffer();
 				std::this_thread::sleep_for(next_tick - now);
-				if (_draw_mutex != nullptr) draw_lock.lock();
+				this->LockVideoBuffer();
 			}
 		}
 	}
@@ -1281,8 +1280,8 @@ void VideoDriver_Win32::MainLoop()
 		/* Sending signal if there is no thread blocked
 		 * is very valid and results in noop */
 		_draw_signal->notify_all();
-		if (draw_lock.owns_lock()) draw_lock.unlock();
-		draw_lock.release();
+		if (this->draw_lock.owns_lock()) this->draw_lock.unlock();
+		this->draw_lock.release();
 		draw_thread.join();
 
 		delete _draw_mutex;
@@ -1382,4 +1381,15 @@ float VideoDriver_Win32::GetDPIScale()
 	}
 
 	return cur_dpi > 0 ? cur_dpi / 96.0f : 1.0f; // Default Windows DPI value is 96.
+}
+
+bool VideoDriver_Win32::LockVideoBuffer()
+{
+	if (_draw_threaded) this->draw_lock.lock();
+	return true;
+}
+
+void VideoDriver_Win32::UnlockVideoBuffer()
+{
+	if (_draw_threaded) this->draw_lock.unlock();
 }

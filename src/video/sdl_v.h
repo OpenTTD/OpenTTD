@@ -39,8 +39,12 @@ public:
 
 protected:
 	void InputLoop() override;
+	bool LockVideoBuffer() override;
+	void UnlockVideoBuffer() override;
 
 private:
+	std::unique_lock<std::recursive_mutex> draw_lock;
+
 	int PollEvent();
 	bool CreateMainSurface(uint w, uint h);
 	void SetupKeyboard();

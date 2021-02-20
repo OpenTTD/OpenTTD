@@ -706,7 +706,6 @@ void VideoDriver_SDL::MainLoop()
 	CheckPaletteAnim();
 
 	std::thread draw_thread;
-	std::unique_lock<std::recursive_mutex> draw_lock;
 	if (_draw_threaded) {
 		/* Initialise the mutex first, because that's the thing we *need*
 		 * directly in the newly created thread. */
@@ -714,7 +713,7 @@ void VideoDriver_SDL::MainLoop()
 		if (_draw_mutex == nullptr) {
 			_draw_threaded = false;
 		} else {
-			draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
+			this->draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
 			_draw_signal = new std::condition_variable_any();
 			_draw_continue = true;
 
@@ -722,8 +721,8 @@ void VideoDriver_SDL::MainLoop()
 
 			/* Free the mutex if we won't be able to use it. */
 			if (!_draw_threaded) {
-				draw_lock.unlock();
-				draw_lock.release();
+				this->draw_lock.unlock();
+				this->draw_lock.release();
 				delete _draw_mutex;
 				delete _draw_signal;
 				_draw_mutex = nullptr;
@@ -763,9 +762,9 @@ void VideoDriver_SDL::MainLoop()
 
 			/* The gameloop is the part that can run asynchronously. The rest
 			 * except sleeping can't. */
-			if (_draw_mutex != nullptr) draw_lock.unlock();
+			this->UnlockVideoBuffer();
 			GameLoop();
-			if (_draw_mutex != nullptr) draw_lock.lock();
+			this->LockVideoBuffer();
 		}
 
 		/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */
@@ -794,9 +793,9 @@ void VideoDriver_SDL::MainLoop()
 			auto now = std::chrono::steady_clock::now();
 
 			if (next_tick > now) {
-				if (_draw_mutex != nullptr) draw_lock.unlock();
+				this->UnlockVideoBuffer();
 				std::this_thread::sleep_for(next_tick - now);
-				if (_draw_mutex != nullptr) draw_lock.lock();
+				this->LockVideoBuffer();
 			}
 		}
 	}
@@ -806,8 +805,8 @@ void VideoDriver_SDL::MainLoop()
 		/* Sending signal if there is no thread blocked
 		 * is very valid and results in noop */
 		_draw_signal->notify_one();
-		if (draw_lock.owns_lock()) draw_lock.unlock();
-		draw_lock.release();
+		if (this->draw_lock.owns_lock()) this->draw_lock.unlock();
+		this->draw_lock.release();
 		draw_thread.join();
 
 		delete _draw_mutex;
@@ -856,6 +855,17 @@ void VideoDriver_SDL::AcquireBlitterLock()
 void VideoDriver_SDL::ReleaseBlitterLock()
 {
 	if (_draw_mutex != nullptr) _draw_mutex->unlock();
+}
+
+bool VideoDriver_SDL::LockVideoBuffer()
+{
+	if (_draw_threaded) this->draw_lock.lock();
+	return true;
+}
+
+void VideoDriver_SDL::UnlockVideoBuffer()
+{
+	if (_draw_threaded) this->draw_lock.unlock();
 }
 
 #endif /* WITH_SDL */
