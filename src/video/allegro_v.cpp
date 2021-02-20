@@ -56,7 +56,7 @@ void VideoDriver_Allegro::MakeDirty(int left, int top, int width, int height)
 	_num_dirty_rects++;
 }
 
-static void DrawSurfaceToScreen()
+void VideoDriver_Allegro::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
@@ -524,7 +524,7 @@ void VideoDriver_Allegro::MainLoop()
 			UpdateWindows();
 			CheckPaletteAnim();
 
-			DrawSurfaceToScreen();
+			this->Paint();
 		}
 
 		/* If we are not in fast-forward, create some time between calls to ease up CPU usage. */

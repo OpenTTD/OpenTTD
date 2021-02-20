@@ -174,6 +174,16 @@ protected:
 	 */
 	virtual void UnlockVideoBuffer() {}
 
+	/**
+	 * Paint the window.
+	 */
+	virtual void Paint() {}
+
+	/**
+	 * Thread function for threaded drawing.
+	 */
+	virtual void PaintThread() {}
+
 	std::chrono::steady_clock::duration GetGameInterval()
 	{
 		return std::chrono::milliseconds(MILLISECONDS_PER_TICK);

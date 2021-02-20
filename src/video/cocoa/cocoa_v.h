@@ -75,6 +75,7 @@ protected:
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;
 	void InputLoop() override;
+	void Paint() override;
 
 private:
 	bool PollEvent();
@@ -89,7 +90,6 @@ private:
 	void UpdatePalette(uint first_color, uint num_colors);
 	void CheckPaletteAnim();
 
-	void Draw(bool force_update = false);
 	void BlitIndexedToView32(int left, int top, int right, int bottom);
 };
 

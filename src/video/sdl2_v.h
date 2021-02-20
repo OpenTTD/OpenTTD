@@ -46,6 +46,8 @@ protected:
 	void InputLoop() override;
 	bool LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;
+	void Paint() override;
+	void PaintThread() override;
 
 private:
 	int PollEvent();
@@ -73,6 +75,8 @@ private:
 	int startup_display;
 	std::thread draw_thread;
 	std::unique_lock<std::recursive_mutex> draw_lock;
+
+	static void PaintThreadThunk(VideoDriver_SDL *drv);
 };
 
 /** Factory for the SDL video driver. */

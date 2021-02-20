@@ -465,10 +465,10 @@ void VideoDriver_Cocoa::BlitIndexedToView32(int left, int top, int right, int bo
 }
 
 /**
- * Draw window.
+ * Paint window.
  * @param force_update Whether to redraw unconditionally
  */
-void VideoDriver_Cocoa::Draw(bool force_update)
+void VideoDriver_Cocoa::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
@@ -502,9 +502,8 @@ void VideoDriver_Cocoa::Draw(bool force_update)
 		dirtyrect.size.height = this->dirty_rects[i].bottom - this->dirty_rects[i].top;
 
 		/* Normally drawRect will be automatically called by Mac OS X during next update cycle,
-		 * and then blitting will occur. If force_update is true, it will be done right now. */
+		 * and then blitting will occur. */
 		[ this->cocoaview setNeedsDisplayInRect:[ this->cocoaview getVirtualRect:dirtyrect ] ];
-		if (force_update) [ this->cocoaview displayIfNeeded ];
 	}
 
 	this->num_dirty_rects = 0;
@@ -708,7 +707,7 @@ void VideoDriver_Cocoa::GameLoop()
 				UpdateWindows();
 				this->CheckPaletteAnim();
 
-				this->Draw();
+				this->Paint();
 			}
 
 			/* If we are not in fast-forward, create some time between calls to ease up CPU usage. */
