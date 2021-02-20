@@ -120,6 +120,7 @@ void SetLocalCompany(CompanyID new_company)
 	/* ... and redraw the whole screen. */
 	MarkWholeScreenDirty();
 	InvalidateWindowClassesData(WC_SIGN_LIST, -1);
+	InvalidateWindowClassesData(WC_GOALS_LIST);
 }
 
 /**

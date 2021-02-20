@@ -3197,6 +3197,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bribe t
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Goals
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Goals
 STR_GOALS_SPECTATOR                                             :Global Goals
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Show global goals
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Company
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Show company goals
 STR_GOALS_TEXT                                                  :{ORANGE}{RAW_STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- None -
 STR_GOALS_PROGRESS                                              :{ORANGE}{RAW_STRING}

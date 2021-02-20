@@ -13,9 +13,12 @@
 
 /** Widgets of the #GoalListWindow class. */
 enum GoalListWidgets {
-	WID_GOAL_CAPTION,   ///< Caption of the window.
-	WID_GOAL_LIST,      ///< Goal list.
-	WID_GOAL_SCROLLBAR, ///< Scrollbar of the goal list.
+	WID_GOAL_CAPTION,         ///< Caption of the window.
+	WID_GOAL_SELECT_BUTTONS,  ///< Selection widget for the title bar button.
+	WID_GOAL_GLOBAL_BUTTON,   ///< Button to show global goals.
+	WID_GOAL_COMPANY_BUTTON,  ///< Button to show company goals.
+	WID_GOAL_LIST,            ///< Goal list.
+	WID_GOAL_SCROLLBAR,       ///< Scrollbar of the goal list.
 };
 
 /** Widgets of the #GoalQuestionWindow class. */
