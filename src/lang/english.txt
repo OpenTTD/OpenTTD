@@ -3197,13 +3197,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bribe t
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Goals
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Goals
 STR_GOALS_SPECTATOR                                             :Global Goals
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Global goals:
 STR_GOALS_TEXT                                                  :{ORANGE}{RAW_STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- None -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Not applicable -
 STR_GOALS_PROGRESS                                              :{ORANGE}{RAW_STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{RAW_STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Company goals:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click on goal to centre main view on industry/town/tile. Ctrl+Click opens a new viewport on industry/town/tile location
 
 # Goal question window
