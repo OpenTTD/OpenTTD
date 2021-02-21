@@ -185,7 +185,7 @@ void BaseVehicleListWindow::BuildVehicleList()
 	if (this->grouping == GB_NONE) {
 		uint max_unitnumber = 0;
 		for (auto it = this->vehicles.begin(); it != this->vehicles.end(); ++it) {
-			this->vehgroups.emplace_back(it, it + 1, (*it)->GetDisplayProfitThisYear(), (*it)->GetDisplayProfitLastYear(), (*it)->age);
+			this->vehgroups.emplace_back(it, it + 1);
 
 			max_unitnumber = std::max<uint>(max_unitnumber, (*it)->unitnumber);
 		}
@@ -204,17 +204,7 @@ void BaseVehicleListWindow::BuildVehicleList()
 				return v->FirstShared() == first_shared;
 			});
 
-			Money display_profit_this_year = 0;
-			Money display_profit_last_year = 0;
-			Date age = 0;
-			for (auto it = begin; it != end; ++it) {
-				const Vehicle * const v = (*it);
-				display_profit_this_year += v->GetDisplayProfitThisYear();
-				display_profit_last_year += v->GetDisplayProfitLastYear();
-				age = std::max<Date>(age, v->age);
-			}
-
-			this->vehgroups.emplace_back(begin, end, display_profit_this_year, display_profit_last_year, age);
+			this->vehgroups.emplace_back(begin, end);
 
 			max_num_vehicles = std::max<uint>(max_num_vehicles, static_cast<uint>(end - begin));
 
@@ -1183,25 +1173,25 @@ static bool VehicleGroupLengthSorter(const GUIVehicleGroup &a, const GUIVehicleG
 /** Sort vehicle groups by the total profit this year */
 static bool VehicleGroupTotalProfitThisYearSorter(const GUIVehicleGroup &a, const GUIVehicleGroup &b)
 {
-	return a.display_profit_this_year < b.display_profit_this_year;
+	return a.GetDisplayProfitThisYear() < b.GetDisplayProfitThisYear();
 }
 
 /** Sort vehicle groups by the total profit last year */
 static bool VehicleGroupTotalProfitLastYearSorter(const GUIVehicleGroup &a, const GUIVehicleGroup &b)
 {
-	return a.display_profit_last_year < b.display_profit_last_year;
+	return a.GetDisplayProfitLastYear() < b.GetDisplayProfitLastYear();
 }
 
 /** Sort vehicle groups by the average profit this year */
 static bool VehicleGroupAverageProfitThisYearSorter(const GUIVehicleGroup &a, const GUIVehicleGroup &b)
 {
-	return a.display_profit_this_year * static_cast<uint>(b.NumVehicles()) < b.display_profit_this_year * static_cast<uint>(a.NumVehicles());
+	return a.GetDisplayProfitThisYear() * static_cast<uint>(b.NumVehicles()) < b.GetDisplayProfitThisYear() * static_cast<uint>(a.NumVehicles());
 }
 
 /** Sort vehicle groups by the average profit last year */
 static bool VehicleGroupAverageProfitLastYearSorter(const GUIVehicleGroup &a, const GUIVehicleGroup &b)
 {
-	return a.display_profit_last_year * static_cast<uint>(b.NumVehicles()) < b.display_profit_last_year * static_cast<uint>(a.NumVehicles());
+	return a.GetDisplayProfitLastYear() * static_cast<uint>(b.NumVehicles()) < b.GetDisplayProfitLastYear() * static_cast<uint>(a.NumVehicles());
 }
 
 /** Sort vehicles by their number */
@@ -1538,11 +1528,11 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 
 		const GUIVehicleGroup &vehgroup = this->vehgroups[i];
 
-		SetDParam(0, vehgroup.display_profit_this_year);
-		SetDParam(1, vehgroup.display_profit_last_year);
+		SetDParam(0, vehgroup.GetDisplayProfitThisYear());
+		SetDParam(1, vehgroup.GetDisplayProfitLastYear());
 		DrawString(text_left, text_right, y + line_height - FONT_HEIGHT_SMALL - WD_FRAMERECT_BOTTOM - 1, STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR);
 
-		DrawVehicleProfitButton(vehgroup.age, vehgroup.display_profit_last_year, vehgroup.NumVehicles(), vehicle_button_x, y + FONT_HEIGHT_NORMAL + 3);
+		DrawVehicleProfitButton(vehgroup.GetOldestVehicleAge(), vehgroup.GetDisplayProfitLastYear(), vehgroup.NumVehicles(), vehicle_button_x, y + FONT_HEIGHT_NORMAL + 3);
 
 		switch (this->grouping) {
 			case GB_NONE: {
