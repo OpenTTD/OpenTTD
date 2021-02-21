@@ -44,12 +44,10 @@ static SDL_Palette *_sdl_palette;
 static bool _cursor_new_in_window = false;
 #endif
 
-static Rect _dirty_rect;
-
 void VideoDriver_SDL::MakeDirty(int left, int top, int width, int height)
 {
 	Rect r = {left, top, left + width, top + height};
-	_dirty_rect = BoundingRect(_dirty_rect, r);
+	this->dirty_rect = BoundingRect(this->dirty_rect, r);
 }
 
 void VideoDriver_SDL::UpdatePalette()
@@ -116,7 +114,7 @@ void VideoDriver_SDL::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
-	if (IsEmptyRect(_dirty_rect) && _cur_palette.count_dirty == 0) return;
+	if (IsEmptyRect(this->dirty_rect) && _cur_palette.count_dirty == 0) return;
 
 	if (_cur_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
@@ -146,14 +144,14 @@ void VideoDriver_SDL::Paint()
 		_cur_palette.count_dirty = 0;
 	}
 
-	SDL_Rect r = { _dirty_rect.left, _dirty_rect.top, _dirty_rect.right - _dirty_rect.left, _dirty_rect.bottom - _dirty_rect.top };
+	SDL_Rect r = { this->dirty_rect.left, this->dirty_rect.top, this->dirty_rect.right - this->dirty_rect.left, this->dirty_rect.bottom - this->dirty_rect.top };
 
 	if (_sdl_surface != _sdl_real_surface) {
 		SDL_BlitSurface(_sdl_surface, &r, _sdl_real_surface, &r);
 	}
 	SDL_UpdateWindowSurfaceRects(this->sdl_window, &r, 1);
 
-	_dirty_rect = {};
+	this->dirty_rect = {};
 }
 
 void VideoDriver_SDL::PaintThread()
@@ -363,7 +361,7 @@ bool VideoDriver_SDL::AllocateBackingStore(int w, int h, bool force)
 	 * gotten smaller, reset our dirty rects. GameSizeChanged() a bit lower
 	 * will mark the whole screen dirty again anyway, but this time with the
 	 * new dimensions. */
-	_dirty_rect = {};
+	this->dirty_rect = {};
 
 	_screen.width = _sdl_surface->w;
 	_screen.height = _sdl_surface->h;
