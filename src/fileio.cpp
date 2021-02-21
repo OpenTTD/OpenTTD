@@ -340,7 +340,7 @@ std::string FioFindDirectory(Subdirectory subdir)
 
 static FILE *FioFOpenFileSp(const std::string &filename, const char *mode, Searchpath sp, Subdirectory subdir, size_t *filesize)
 {
-#if defined(_WIN32) && defined(UNICODE)
+#if defined(_WIN32)
 	/* fopen is implemented as a define with ellipses for
 	 * Unicode support (prepend an L). As we are not sending
 	 * a string, but a variable, it 'renames' the variable,
