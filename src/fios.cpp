@@ -309,7 +309,7 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t basepath_lengt
 	FiosItem *fios = file_list.Append();
 #ifdef _WIN32
 	// Retrieve the file modified date using GetFileTime rather than stat to work around an obscure MSVC bug that affects Windows XP
-	HANDLE fh = CreateFile(OTTD2FS(filename.c_str()), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr, OPEN_EXISTING, 0, nullptr);
+	HANDLE fh = CreateFile(OTTD2FS(filename).c_str(), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, nullptr, OPEN_EXISTING, 0, nullptr);
 
 	if (fh != INVALID_HANDLE_VALUE) {
 		FILETIME ft;
@@ -384,7 +384,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 	/* Show subdirectories */
 	if ((dir = ttd_opendir(_fios_path->c_str())) != nullptr) {
 		while ((dirent = readdir(dir)) != nullptr) {
-			strecpy(d_name, FS2OTTD(dirent->d_name), lastof(d_name));
+			strecpy(d_name, FS2OTTD(dirent->d_name).c_str(), lastof(d_name));
 
 			/* found file must be directory, but not '.' or '..' */
 			if (FiosIsValidFile(_fios_path->c_str(), dirent, &sb) && S_ISDIR(sb.st_mode) &&

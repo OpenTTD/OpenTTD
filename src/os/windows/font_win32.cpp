@@ -83,7 +83,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	}
 
 	/* Convert font name to file system encoding. */
-	wchar_t *font_namep = wcsdup(OTTD2FS(font_name));
+	wchar_t *font_namep = wcsdup(OTTD2FS(font_name).c_str());
 
 	for (index = 0;; index++) {
 		wchar_t *s;
@@ -377,6 +377,7 @@ Win32FontCache::Win32FontCache(FontSize fs, const LOGFONT &logfont, int pixels) 
 {
 	this->dc = CreateCompatibleDC(nullptr);
 	this->SetFontSize(fs, pixels);
+	this->fontname = FS2OTTD(this->logfont.lfFaceName);
 }
 
 Win32FontCache::~Win32FontCache()
@@ -438,7 +439,7 @@ void Win32FontCache::SetFontSize(FontSize fs, int pixels)
 	this->glyph_size.cx = otm->otmTextMetrics.tmMaxCharWidth;
 	this->glyph_size.cy = otm->otmTextMetrics.tmHeight;
 
-	DEBUG(freetype, 2, "Loaded font '%s' with size %d", FS2OTTD((LPTSTR)((BYTE *)otm + (ptrdiff_t)otm->otmpFullName)), pixels);
+	DEBUG(freetype, 2, "Loaded font '%s' with size %d", FS2OTTD((LPWSTR)((BYTE *)otm + (ptrdiff_t)otm->otmpFullName)).c_str(), pixels);
 }
 
 /**
@@ -541,10 +542,10 @@ void Win32FontCache::ClearFontCache()
 	/* Convert characters outside of the BMP into surrogate pairs. */
 	WCHAR chars[2];
 	if (key >= 0x010000U) {
-		chars[0] = (WCHAR)(((key - 0x010000U) >> 10) + 0xD800);
-		chars[1] = (WCHAR)(((key - 0x010000U) & 0x3FF) + 0xDC00);
+		chars[0] = (wchar_t)(((key - 0x010000U) >> 10) + 0xD800);
+		chars[1] = (wchar_t)(((key - 0x010000U) & 0x3FF) + 0xDC00);
 	} else {
-		chars[0] = (WCHAR)(key & 0xFFFF);
+		chars[0] = (wchar_t)(key & 0xFFFF);
 	}
 
 	WORD glyphs[2] = { 0, 0 };

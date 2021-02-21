@@ -134,7 +134,7 @@ static void debug_print(const char *dbg, const char *buf)
 #if defined(_WIN32)
 		wchar_t system_buf[512];
 		convert_to_fs(buffer, system_buf, lengthof(system_buf), true);
-		_fputts(system_buf, stderr);
+		fputws(system_buf, stderr);
 #else
 		fputs(buffer, stderr);
 #endif

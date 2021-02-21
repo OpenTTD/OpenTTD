@@ -132,7 +132,7 @@ int closedir(DIR *d);
  */
 static inline DIR *ttd_opendir(const char *path)
 {
-	return opendir(OTTD2FS(path));
+	return opendir(OTTD2FS(path).c_str());
 }
 
 

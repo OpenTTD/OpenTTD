@@ -246,7 +246,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	if (e != 0) {
 		if (func != ResolveLoopProc) {
 			DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s failed: %s",
-				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)));
+				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)).c_str());
 		}
 		return INVALID_SOCKET;
 	}

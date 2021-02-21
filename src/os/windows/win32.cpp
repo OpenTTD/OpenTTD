@@ -57,7 +57,7 @@ bool LoadLibraryList(Function proc[], const char *dll)
 {
 	while (*dll != '\0') {
 		HMODULE lib;
-		lib = LoadLibrary(OTTD2FS(dll));
+		lib = LoadLibrary(OTTD2FS(dll).c_str());
 
 		if (lib == nullptr) return false;
 		for (;;) {
@@ -77,12 +77,12 @@ bool LoadLibraryList(Function proc[], const char *dll)
 void ShowOSErrorBox(const char *buf, bool system)
 {
 	MyShowCursor(true);
-	MessageBox(GetActiveWindow(), OTTD2FS(buf), L"Error!", MB_ICONSTOP | MB_TASKMODAL);
+	MessageBox(GetActiveWindow(), OTTD2FS(buf).c_str(), L"Error!", MB_ICONSTOP | MB_TASKMODAL);
 }
 
 void OSOpenBrowser(const char *url)
 {
-	ShellExecute(GetActiveWindow(), L"open", OTTD2FS(url), nullptr, nullptr, SW_SHOWNORMAL);
+	ShellExecute(GetActiveWindow(), L"open", OTTD2FS(url).c_str(), nullptr, nullptr, SW_SHOWNORMAL);
 }
 
 /* Code below for windows version of opendir/readdir/closedir copied and
@@ -141,14 +141,14 @@ DIR *opendir(const wchar_t *path)
 	if ((fa != INVALID_FILE_ATTRIBUTES) && (fa & FILE_ATTRIBUTE_DIRECTORY)) {
 		d = dir_calloc();
 		if (d != nullptr) {
-			wchar_t search_path[MAX_PATH];
+			std::wstring search_path = path;
 			bool slash = path[wcslen(path) - 1] == '\\';
 
 			/* build search path for FindFirstFile, try not to append additional slashes
 			 * as it throws Win9x off its groove for root directories */
-			_snwprintf(search_path, lengthof(search_path), L"%s%s*", path, slash ? L"" : L"\\");
-			*lastof(search_path) = '\0';
-			d->hFind = FindFirstFile(search_path, &d->fd);
+			if (!slash) search_path += L"\\";
+			search_path += L"*";
+			d->hFind = FindFirstFile(search_path.c_str(), &d->fd);
 
 			if (d->hFind != INVALID_HANDLE_VALUE ||
 					GetLastError() == ERROR_NO_MORE_FILES) { // the directory is empty
@@ -246,7 +246,7 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS);  // disable 'no-disk' message box
 
 	ULARGE_INTEGER bytes_free;
-	bool retval = GetDiskFreeSpaceEx(OTTD2FS(path), &bytes_free, nullptr, nullptr);
+	bool retval = GetDiskFreeSpaceEx(OTTD2FS(path).c_str(), &bytes_free, nullptr, nullptr);
 	if (retval) *tot = bytes_free.QuadPart;
 
 	SetErrorMode(sem); // reset previous setting
@@ -415,7 +415,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	/* Convert the command line to UTF-8. We need a dedicated buffer
 	 * for this because argv[] points into this buffer and this needs to
 	 * be available between subsequent calls to FS2OTTD(). */
-	char *cmdline = stredup(FS2OTTD(GetCommandLine()));
+	char *cmdline = stredup(FS2OTTD(GetCommandLine()).c_str());
 
 #if defined(_DEBUG)
 	CreateConsole();
@@ -553,34 +553,40 @@ bool GetClipboardContents(char *buffer, const char *last)
 
 
 /**
- * Convert to OpenTTD's encoding from wide characters.
+ * Convert to OpenTTD's encoding from a wide string.
  * OpenTTD internal encoding is UTF8.
- * The returned value's contents can only be guaranteed until the next call to
- * this function. So if the value is needed for anything else, use convert_from_fs
- * @param name pointer to a valid string that will be converted (local, or wide)
- * @return pointer to the converted string; if failed string is of zero-length
+ * @param name valid string that will be converted (local, or wide)
+ * @return converted string; if failed string is of zero-length
  * @see the current code-page comes from video\win32_v.cpp, event-notification
  * WM_INPUTLANGCHANGE
  */
-const char *FS2OTTD(const wchar_t *name)
+std::string FS2OTTD(const std::wstring &name)
 {
-	static char utf8_buf[512];
-	return convert_from_fs(name, utf8_buf, lengthof(utf8_buf));
+	int name_len = (name.length() >= INT_MAX) ? INT_MAX : (int)name.length();
+	int len = WideCharToMultiByte(CP_UTF8, 0, name.c_str(), name_len, nullptr, 0, nullptr, nullptr);
+	if (len <= 0) return std::string();
+	char *utf8_buf = AllocaM(char, len + 1);
+	utf8_buf[len] = '\0';
+	WideCharToMultiByte(CP_UTF8, 0, name.c_str(), name_len, utf8_buf, len, nullptr, nullptr);
+	return std::string(utf8_buf, static_cast<size_t>(len));
 }
 
 /**
- * Convert from OpenTTD's encoding to wide characters.
+ * Convert from OpenTTD's encoding to a wide string.
  * OpenTTD internal encoding is UTF8.
- * The returned value's contents can only be guaranteed until the next call to
- * this function. So if the value is needed for anything else, use convert_from_fs
- * @param name pointer to a valid string that will be converted (UTF8)
+ * @param name valid string that will be converted (UTF8)
  * @param console_cp convert to the console encoding instead of the normal system encoding.
- * @return pointer to the converted string; if failed string is of zero-length
+ * @return converted string; if failed string is of zero-length
  */
-const wchar_t *OTTD2FS(const char *name, bool console_cp)
+std::wstring OTTD2FS(const std::string &name, bool console_cp)
 {
-	static wchar_t system_buf[512];
-	return convert_to_fs(name, system_buf, lengthof(system_buf), console_cp);
+	int name_len = (name.length() >= INT_MAX) ? INT_MAX : (int)name.length();
+	int len = MultiByteToWideChar(CP_UTF8, 0, name.c_str(), name_len, nullptr, 0);
+	if (len <= 0) return std::wstring();
+	wchar_t *system_buf = AllocaM(wchar_t, len + 1);
+	system_buf[len] = L'\0';
+	MultiByteToWideChar(CP_UTF8, 0, name.c_str(), name_len, system_buf, len);
+	return std::wstring(system_buf, static_cast<size_t>(len));
 }
 
 
@@ -594,10 +600,8 @@ const wchar_t *OTTD2FS(const char *name, bool console_cp)
  */
 char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
 {
-	const wchar_t *wide_buf = name;
-
 	/* Convert UTF-16 string to UTF-8. */
-	int len = WideCharToMultiByte(CP_UTF8, 0, wide_buf, -1, utf8_buf, (int)buflen, nullptr, nullptr);
+	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, (int)buflen, nullptr, nullptr);
 	if (len == 0) utf8_buf[0] = '\0';
 
 	return utf8_buf;

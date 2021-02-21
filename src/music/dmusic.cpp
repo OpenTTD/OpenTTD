@@ -430,7 +430,7 @@ bool DLSFile::ReadDLSWaveList(FILE *f, DWORD list_length)
 
 bool DLSFile::LoadFile(const wchar_t *file)
 {
-	DEBUG(driver, 2, "DMusic: Try to load DLS file %s", FS2OTTD(file));
+	DEBUG(driver, 2, "DMusic: Try to load DLS file %s", FS2OTTD(file).c_str());
 
 	FILE *f = _wfopen(file, L"rb");
 	if (f == nullptr) return false;
@@ -881,7 +881,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 				if (!dls_file.LoadFile(path)) return "Can't load GM DLS collection";
 			}
 		} else {
-			if (!dls_file.LoadFile(OTTD2FS(user_dls))) return "Can't load GM DLS collection";
+			if (!dls_file.LoadFile(OTTD2FS(user_dls).c_str())) return "Can't load GM DLS collection";
 		}
 
 		/* Get download port and allocate download IDs. */

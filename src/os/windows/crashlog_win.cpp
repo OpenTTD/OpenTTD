@@ -189,7 +189,7 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 	GetModuleFileName(mod, buffer, MAX_PATH);
 	GetFileInfo(&dfi, buffer);
 	output += seprintf(output, last, " %-20s handle: %p size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\n",
-		FS2OTTD(buffer),
+		FS2OTTD(buffer).c_str(),
 		mod,
 		dfi.size,
 		dfi.crc32,
@@ -501,7 +501,7 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 		MiniDumpWriteDump_t funcMiniDumpWriteDump = (MiniDumpWriteDump_t)GetProcAddress(dbghelp, "MiniDumpWriteDump");
 		if (funcMiniDumpWriteDump != nullptr) {
 			seprintf(filename, filename_last, "%scrash.dmp", _personal_dir.c_str());
-			HANDLE file  = CreateFile(OTTD2FS(filename), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
+			HANDLE file  = CreateFile(OTTD2FS(filename).c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
 			HANDLE proc  = GetCurrentProcess();
 			DWORD procid = GetCurrentProcessId();
 			MINIDUMP_EXCEPTION_INFORMATION mdei;
@@ -689,7 +689,8 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 	switch (msg) {
 		case WM_INITDIALOG: {
 			/* We need to put the crash-log in a separate buffer because the default
-			 * buffer in OTTD2FS is not large enough (512 chars) */
+			 * buffer in MB_TO_WIDE is not large enough (512 chars) */
+			wchar_t filenamebuf[MAX_PATH * 2];
 			wchar_t crash_msgW[lengthof(CrashLogWindows::current->crashlog)];
 			/* Convert unix -> dos newlines because the edit box only supports that properly :( */
 			const char *unix_nl = CrashLogWindows::current->crashlog;
@@ -704,19 +705,23 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 
 			/* Add path to crash.log and crash.dmp (if any) to the crash window text */
 			size_t len = wcslen(_crash_desc) + 2;
-			len += wcslen(OTTD2FS(CrashLogWindows::current->crashlog_filename)) + 2;
-			len += wcslen(OTTD2FS(CrashLogWindows::current->crashdump_filename)) + 2;
-			len += wcslen(OTTD2FS(CrashLogWindows::current->screenshot_filename)) + 1;
+			len += wcslen(convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf), false)) + 2;
+			len += wcslen(convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf), false)) + 2;
+			len += wcslen(convert_to_fs(CrashLogWindows::current->screenshot_filename, filenamebuf, lengthof(filenamebuf), false)) + 1;
 
 			wchar_t *text = AllocaM(wchar_t, len);
-			_snwprintf(text, len, _crash_desc, OTTD2FS(CrashLogWindows::current->crashlog_filename));
-			if (OTTD2FS(CrashLogWindows::current->crashdump_filename)[0] != L'\0') {
-				wcscat(text, L"\n");
-				wcscat(text, OTTD2FS(CrashLogWindows::current->crashdump_filename));
+			int printed = _snwprintf(text, len, _crash_desc, convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf), false));
+			if (printed < 0 || (size_t)printed > len) {
+				MessageBox(wnd, L"Catastrophic failure trying to display crash message. Could not perform text formatting.", L"OpenTTD", MB_ICONERROR);
+				return FALSE;
 			}
-			if (OTTD2FS(CrashLogWindows::current->screenshot_filename)[0] != L'\0') {
+			if (convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf), false)[0] != L'\0') {
 				wcscat(text, L"\n");
-				wcscat(text, OTTD2FS(CrashLogWindows::current->screenshot_filename));
+				wcscat(text, filenamebuf);
+			}
+			if (convert_to_fs(CrashLogWindows::current->screenshot_filename, filenamebuf, lengthof(filenamebuf), false)[0] != L'\0') {
+				wcscat(text, L"\n");
+				wcscat(text, filenamebuf);
 			}
 
 			SetDlgItemText(wnd, 10, text);
@@ -730,18 +735,20 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 					CrashLog::AfterCrashLogCleanup();
 					ExitProcess(2);
 				case 13: // Emergency save
+					wchar_t filenamebuf[MAX_PATH * 2];
 					char filename[MAX_PATH];
 					if (CrashLogWindows::current->WriteSavegame(filename, lastof(filename))) {
-						size_t len = wcslen(_save_succeeded) + wcslen(OTTD2FS(filename)) + 1;
+						convert_to_fs(filename, filenamebuf, lengthof(filenamebuf), false);
+						size_t len = lengthof(_save_succeeded) + wcslen(filenamebuf) + 1;
 						wchar_t *text = AllocaM(wchar_t, len);
-						_snwprintf(text, len, _save_succeeded, OTTD2FS(filename));
+						_snwprintf(text, len, _save_succeeded, filenamebuf);
 						MessageBox(wnd, text, L"Save successful", MB_ICONINFORMATION);
 					} else {
 						MessageBox(wnd, L"Save failed", L"Save failed", MB_ICONINFORMATION);
 					}
 					break;
 				case 15: // Expand window to show crash-message
-					_expanded ^= 1;
+					_expanded = !_expanded;
 					SetWndSize(wnd, _expanded);
 					break;
 			}
