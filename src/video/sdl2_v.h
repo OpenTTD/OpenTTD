@@ -53,6 +53,7 @@ protected:
 	std::condition_variable_any *draw_signal = nullptr; ///< Signal to draw the next frame.
 	volatile bool draw_continue; ///< Should we keep continue drawing?
 	bool buffer_locked; ///< Video buffer was locked by the main thread.
+	Rect dirty_rect; ///< Rectangle encompassing the dirty area of the video buffer.
 
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;
