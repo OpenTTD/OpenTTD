@@ -244,15 +244,10 @@ bool FiosIsHiddenFile(const struct dirent *ent)
 bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 {
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS);  // disable 'no-disk' message box
-	bool retval = false;
-	wchar_t root[4];
-	DWORD spc, bps, nfc, tnc;
 
-	_snwprintf(root, lengthof(root), L"%c:" PATHSEP, path[0]);
-	if (tot != nullptr && GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
-		*tot = ((spc * bps) * (uint64)nfc);
-		retval = true;
-	}
+	ULARGE_INTEGER bytes_free;
+	bool retval = GetDiskFreeSpaceEx(OTTD2FS(path), &bytes_free, nullptr, nullptr);
+	if (retval) *tot = bytes_free.QuadPart;
 
 	SetErrorMode(sem); // reset previous setting
 	return retval;
