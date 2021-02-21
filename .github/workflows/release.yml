@@ -484,6 +484,9 @@ jobs:
         vcpkgGitCommitId: 2a42024b53ebb512fb5dd63c523338bf26c8489c
         vcpkgArguments: 'liblzma:x64-osx libpng:x64-osx lzo:x64-osx liblzma:arm64-osx libpng:arm64-osx lzo:arm64-osx'
 
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
     - name: Build tools
       run: |
         mkdir build-host
@@ -500,9 +503,6 @@ jobs:
         echo "Running on $(sysctl -n hw.logicalcpu) cores"
         make -j$(sysctl -n hw.logicalcpu) tools
         echo "::endgroup::"
-
-    - name: Install GCC problem matcher
-      uses: ammaraskar/gcc-problem-matcher@master
 
     - name: Import code signing certificates
       uses: Apple-Actions/import-codesign-certs@v1
@@ -629,8 +629,11 @@ jobs:
       matrix:
         include:
         - arch: x86
+          host: x86
         - arch: x64
+          host: x64
         - arch: arm64
+          host: x64_arm64
 
     runs-on: windows-latest
 
@@ -670,35 +673,79 @@ jobs:
         vcpkgArguments: 'liblzma libpng lzo zlib'
         vcpkgTriplet: '${{ matrix.arch }}-windows-static'
 
-    - name: Build tools
-      uses: lukka/run-cmake@v3
-      with:
-        cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
-        useVcpkgToolchainFile: false
-        buildDirectory: '${{ github.workspace }}/build-host'
-        buildWithCMakeArgs: '--target tools'
-        cmakeAppendedArgs: ' -GNinja -DOPTION_TOOLS_ONLY=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo'
-
     - name: Install MSVC problem matcher
       uses: ammaraskar/msvc-problem-matcher@master
 
+    - name: Configure developer command prompt for tools
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x64
+
+    - name: Build tools
+      shell: bash
+      run: |
+        mkdir build-host
+        cd build-host
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -GNinja \
+          -DOPTION_TOOLS_ONLY=ON \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        cmake --build . --target tools
+        echo "::endgroup::"
+
+    - name: Configure developer command prompt for ${{ matrix.arch }}
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: ${{ matrix.host }}
+
     - name: Build (with installer)
       if: needs.source.outputs.is_tag == 'true'
-      uses: lukka/run-cmake@v3
-      with:
-        cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
-        useVcpkgToolchainFile: true
-        buildDirectory: '${{ github.workspace }}/build'
-        cmakeAppendedArgs: ' -GNinja -DOPTION_USE_NSIS=ON -DHOST_BINARY_DIR=${{ github.workspace }}/build-host -DCMAKE_BUILD_TYPE=RelWithDebInfo'
+      shell: bash
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -GNinja \
+          -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
+          -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          -DOPTION_USE_NSIS=ON \
+          -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        cmake --build .
+        echo "::endgroup::"
 
     - name: Build (without installer)
       if: needs.source.outputs.is_tag != 'true'
-      uses: lukka/run-cmake@v3
-      with:
-        cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
-        useVcpkgToolchainFile: true
-        buildDirectory: '${{ github.workspace }}/build'
-        cmakeAppendedArgs: ' -GNinja -DHOST_BINARY_DIR=${{ github.workspace }}/build-host -DCMAKE_BUILD_TYPE=RelWithDebInfo'
+      shell: bash
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -GNinja \
+          -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
+          -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          -DHOST_BINARY_DIR=${GITHUB_WORKSPACE}/build-host \
+          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        cmake --build .
+        echo "::endgroup::"
 
     - name: Create bundles
       shell: bash
