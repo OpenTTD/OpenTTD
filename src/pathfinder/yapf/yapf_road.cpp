@@ -159,7 +159,7 @@ public:
 
 			/* add min/max speed penalties */
 			int min_speed = 0;
-			int max_veh_speed = v->GetDisplayMaxSpeed();
+			int max_veh_speed = std::min<int>(v->GetDisplayMaxSpeed(), v->current_order.GetMaxSpeed() * 2);
 			int max_speed = F.GetSpeedLimit(&min_speed);
 			if (max_speed < max_veh_speed) segment_cost += YAPF_TILE_LENGTH * (max_veh_speed - max_speed) * (4 + F.m_tiles_skipped) / max_veh_speed;
 			if (min_speed > max_veh_speed) segment_cost += YAPF_TILE_LENGTH * (min_speed - max_veh_speed);
