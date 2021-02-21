@@ -621,14 +621,19 @@ const char *OpenGLBackend::Init()
 	/* Create resources for sprite rendering. */
 	if (!OpenGLSprite::Create()) return "Failed to create sprite rendering resources";
 
+	this->PrepareContext();
+	(void)glGetError(); // Clear errors.
+
+	return nullptr;
+}
+
+void OpenGLBackend::PrepareContext()
+{
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glDisable(GL_DEPTH_TEST);
 	/* Enable alpha blending using the src alpha factor. */
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	(void)glGetError(); // Clear errors.
-
-	return nullptr;
 }
 
 /**
