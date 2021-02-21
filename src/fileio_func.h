@@ -107,14 +107,14 @@ DECLARE_ENUM_AS_BIT_SET(TarScanner::Mode)
 struct DIR;
 
 struct dirent { // XXX - only d_name implemented
-	TCHAR *d_name; // name of found file
+	wchar_t *d_name; // name of found file
 	/* little hack which will point to parent DIR struct which will
 	 * save us a call to GetFileAttributes if we want information
 	 * about the file (for example in function fio_bla) */
 	DIR *dir;
 };
 
-DIR *opendir(const TCHAR *path);
+DIR *opendir(const wchar_t *path);
 struct dirent *readdir(DIR *d);
 int closedir(DIR *d);
 #else

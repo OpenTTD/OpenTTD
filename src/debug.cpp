@@ -134,7 +134,7 @@ static void debug_print(const char *dbg, const char *buf)
 		char buffer[512];
 		seprintf(buffer, lastof(buffer), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
 #if defined(_WIN32)
-		TCHAR system_buf[512];
+		wchar_t system_buf[512];
 		convert_to_fs(buffer, system_buf, lengthof(system_buf), true);
 		_fputts(system_buf, stderr);
 #else

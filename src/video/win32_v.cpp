@@ -214,7 +214,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 			char window_title[64];
 			seprintf(window_title, lastof(window_title), "OpenTTD %s", _openttd_revision);
 
-			this->main_wnd = CreateWindow(_T("OTTD"), MB_TO_WIDE(window_title), style, x, y, w, h, 0, 0, GetModuleHandle(nullptr), this);
+			this->main_wnd = CreateWindow(L"OTTD", OTTD2FS(window_title), style, x, y, w, h, 0, 0, GetModuleHandle(nullptr), this);
 			if (this->main_wnd == nullptr) usererror("CreateWindow failed");
 			ShowWindow(this->main_wnd, showstyle);
 		}
@@ -329,9 +329,9 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		if (lParam & GCS_RESULTSTR) {
 			/* Read result string from the IME. */
 			LONG len = ImmGetCompositionString(hIMC, GCS_RESULTSTR, nullptr, 0); // Length is always in bytes, even in UNICODE build.
-			TCHAR *str = (TCHAR *)_alloca(len + sizeof(TCHAR));
+			wchar_t *str = (wchar_t *)_alloca(len + sizeof(wchar_t));
 			len = ImmGetCompositionString(hIMC, GCS_RESULTSTR, str, len);
-			str[len / sizeof(TCHAR)] = '\0';
+			str[len / sizeof(wchar_t)] = '\0';
 
 			/* Transmit text to windowing system. */
 			if (len > 0) {
@@ -347,9 +347,9 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		if ((lParam & GCS_COMPSTR) && DrawIMECompositionString()) {
 			/* Read composition string from the IME. */
 			LONG len = ImmGetCompositionString(hIMC, GCS_COMPSTR, nullptr, 0); // Length is always in bytes, even in UNICODE build.
-			TCHAR *str = (TCHAR *)_alloca(len + sizeof(TCHAR));
+			wchar_t *str = (wchar_t *)_alloca(len + sizeof(wchar_t));
 			len = ImmGetCompositionString(hIMC, GCS_COMPSTR, str, len);
-			str[len / sizeof(TCHAR)] = '\0';
+			str[len / sizeof(wchar_t)] = '\0';
 
 			if (len > 0) {
 				static char utf8_buf[1024];
@@ -358,7 +358,7 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 				/* Convert caret position from bytes in the input string to a position in the UTF-8 encoded string. */
 				LONG caret_bytes = ImmGetCompositionString(hIMC, GCS_CURSORPOS, nullptr, 0);
 				const char *caret = utf8_buf;
-				for (const TCHAR *c = str; *c != '\0' && *caret != '\0' && caret_bytes > 0; c++, caret_bytes--) {
+				for (const wchar_t *c = str; *c != '\0' && *caret != '\0' && caret_bytes > 0; c++, caret_bytes--) {
 					/* Skip DBCS lead bytes or leading surrogates. */
 					if (Utf16IsLeadSurrogate(*c)) {
 						c++;
@@ -748,7 +748,7 @@ static void RegisterWndClass()
 		LoadCursor(nullptr, IDC_ARROW),
 		0,
 		0,
-		_T("OTTD")
+		L"OTTD"
 	};
 
 	registered = true;
@@ -1009,9 +1009,9 @@ float VideoDriver_Win32Base::GetDPIScale()
 	if (!init_done) {
 		init_done = true;
 
-		_GetDpiForWindow = (PFNGETDPIFORWINDOW)GetProcAddress(GetModuleHandle(_T("User32")), "GetDpiForWindow");
-		_GetDpiForSystem = (PFNGETDPIFORSYSTEM)GetProcAddress(GetModuleHandle(_T("User32")), "GetDpiForSystem");
-		_GetDpiForMonitor = (PFNGETDPIFORMONITOR)GetProcAddress(LoadLibrary(_T("Shcore.dll")), "GetDpiForMonitor");
+		_GetDpiForWindow = (PFNGETDPIFORWINDOW)GetProcAddress(GetModuleHandle(L"User32"), "GetDpiForWindow");
+		_GetDpiForSystem = (PFNGETDPIFORSYSTEM)GetProcAddress(GetModuleHandle(L"User32"), "GetDpiForSystem");
+		_GetDpiForMonitor = (PFNGETDPIFORMONITOR)GetProcAddress(LoadLibrary(L"Shcore.dll"), "GetDpiForMonitor");
 	}
 
 	UINT cur_dpi = 0;

@@ -33,7 +33,7 @@ public:
 	~Win32FontCache();
 	void ClearFontCache() override;
 	GlyphID MapCharToGlyph(WChar key) override;
-	const char *GetFontName() override { return WIDE_TO_MB(this->logfont.lfFaceName); }
+	const char *GetFontName() override { return FS2OTTD(this->logfont.lfFaceName); }
 	const void *GetOSHandle() override { return &this->logfont; }
 };
 

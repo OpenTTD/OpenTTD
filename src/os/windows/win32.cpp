@@ -57,7 +57,7 @@ bool LoadLibraryList(Function proc[], const char *dll)
 {
 	while (*dll != '\0') {
 		HMODULE lib;
-		lib = LoadLibrary(MB_TO_WIDE(dll));
+		lib = LoadLibrary(OTTD2FS(dll));
 
 		if (lib == nullptr) return false;
 		for (;;) {
@@ -77,12 +77,12 @@ bool LoadLibraryList(Function proc[], const char *dll)
 void ShowOSErrorBox(const char *buf, bool system)
 {
 	MyShowCursor(true);
-	MessageBox(GetActiveWindow(), OTTD2FS(buf), _T("Error!"), MB_ICONSTOP | MB_TASKMODAL);
+	MessageBox(GetActiveWindow(), OTTD2FS(buf), L"Error!", MB_ICONSTOP | MB_TASKMODAL);
 }
 
 void OSOpenBrowser(const char *url)
 {
-	ShellExecute(GetActiveWindow(), _T("open"), OTTD2FS(url), nullptr, nullptr, SW_SHOWNORMAL);
+	ShellExecute(GetActiveWindow(), L"open", OTTD2FS(url), nullptr, nullptr, SW_SHOWNORMAL);
 }
 
 /* Code below for windows version of opendir/readdir/closedir copied and
@@ -132,7 +132,7 @@ static inline void dir_free(DIR *d)
 	}
 }
 
-DIR *opendir(const TCHAR *path)
+DIR *opendir(const wchar_t *path)
 {
 	DIR *d;
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
@@ -141,12 +141,12 @@ DIR *opendir(const TCHAR *path)
 	if ((fa != INVALID_FILE_ATTRIBUTES) && (fa & FILE_ATTRIBUTE_DIRECTORY)) {
 		d = dir_calloc();
 		if (d != nullptr) {
-			TCHAR search_path[MAX_PATH];
-			bool slash = path[_tcslen(path) - 1] == '\\';
+			wchar_t search_path[MAX_PATH];
+			bool slash = path[wcslen(path) - 1] == '\\';
 
 			/* build search path for FindFirstFile, try not to append additional slashes
 			 * as it throws Win9x off its groove for root directories */
-			_sntprintf(search_path, lengthof(search_path), _T("%s%s*"), path, slash ? _T("") : _T("\\"));
+			_snwprintf(search_path, lengthof(search_path), L"%s%s*", path, slash ? L"" : L"\\");
 			*lastof(search_path) = '\0';
 			d->hFind = FindFirstFile(search_path, &d->fd);
 
@@ -204,8 +204,8 @@ bool FiosIsRoot(const char *file)
 
 void FiosGetDrives(FileList &file_list)
 {
-	TCHAR drives[256];
-	const TCHAR *s;
+	wchar_t drives[256];
+	const wchar_t *s;
 
 	GetLogicalDriveStrings(lengthof(drives), drives);
 	for (s = drives; *s != '\0';) {
@@ -245,10 +245,10 @@ bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 {
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS);  // disable 'no-disk' message box
 	bool retval = false;
-	TCHAR root[4];
+	wchar_t root[4];
 	DWORD spc, bps, nfc, tnc;
 
-	_sntprintf(root, lengthof(root), _T("%c:") _T(PATHSEP), path[0]);
+	_snwprintf(root, lengthof(root), L"%c:" PATHSEP, path[0]);
 	if (tot != nullptr && GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
 		*tot = ((spc * bps) * (uint64)nfc);
 		retval = true;
@@ -366,7 +366,7 @@ static INT_PTR CALLBACK HelpDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM
 			*q = '\0';
 			/* We need to put the text in a separate buffer because the default
 			 * buffer in OTTD2FS might not be large enough (512 chars). */
-			TCHAR help_msg_buf[8192];
+			wchar_t help_msg_buf[8192];
 			SetDlgItemText(wnd, 11, convert_to_fs(help_msg, help_msg_buf, lengthof(help_msg_buf)));
 			SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 		} return TRUE;
@@ -400,8 +400,8 @@ void ShowInfo(const char *str)
 		} else {
 			/* We need to put the text in a separate buffer because the default
 			 * buffer in OTTD2FS might not be large enough (512 chars). */
-			TCHAR help_msg_buf[8192];
-			MessageBox(GetActiveWindow(), convert_to_fs(str, help_msg_buf, lengthof(help_msg_buf)), _T("OpenTTD"), MB_ICONINFORMATION | MB_OK);
+			wchar_t help_msg_buf[8192];
+			MessageBox(GetActiveWindow(), convert_to_fs(str, help_msg_buf, lengthof(help_msg_buf)), L"OpenTTD", MB_ICONINFORMATION | MB_OK);
 		}
 		MyShowCursor(old);
 	}
@@ -447,7 +447,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 char *getcwd(char *buf, size_t size)
 {
-	TCHAR path[MAX_PATH];
+	wchar_t path[MAX_PATH];
 	GetCurrentDirectory(MAX_PATH - 1, path);
 	convert_from_fs(path, buf, size);
 	return buf;
@@ -459,7 +459,7 @@ void DetermineBasePaths(const char *exe)
 {
 	extern std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
 
-	TCHAR path[MAX_PATH];
+	wchar_t path[MAX_PATH];
 #ifdef WITH_PERSONAL_DIR
 	if (SUCCEEDED(SHGetFolderPath(nullptr, CSIDL_PERSONAL, nullptr, SHGFP_TYPE_CURRENT, path))) {
 		std::string tmp(FS2OTTD(path));
@@ -497,8 +497,8 @@ void DetermineBasePaths(const char *exe)
 		_searchpaths[SP_WORKING_DIR] = cwd_s;
 	} else {
 		/* Use the folder of the config file as working directory. */
-		TCHAR config_dir[MAX_PATH];
-		_tcsncpy(path, convert_to_fs(_config_file.c_str(), path, lengthof(path)), lengthof(path));
+		wchar_t config_dir[MAX_PATH];
+		wcsncpy(path, convert_to_fs(_config_file.c_str(), path, lengthof(path)), lengthof(path));
 		if (!GetFullPathName(path, lengthof(config_dir), config_dir, nullptr)) {
 			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
 			_searchpaths[SP_WORKING_DIR].clear();
@@ -515,8 +515,8 @@ void DetermineBasePaths(const char *exe)
 		DEBUG(misc, 0, "GetModuleFileName failed (%lu)\n", GetLastError());
 		_searchpaths[SP_BINARY_DIR].clear();
 	} else {
-		TCHAR exec_dir[MAX_PATH];
-		_tcsncpy(path, convert_to_fs(exe, path, lengthof(path)), lengthof(path));
+		wchar_t exec_dir[MAX_PATH];
+		wcsncpy(path, convert_to_fs(exe, path, lengthof(path)), lengthof(path));
 		if (!GetFullPathName(path, lengthof(exec_dir), exec_dir, nullptr)) {
 			DEBUG(misc, 0, "GetFullPathName failed (%lu)\n", GetLastError());
 			_searchpaths[SP_BINARY_DIR].clear();
@@ -567,7 +567,7 @@ bool GetClipboardContents(char *buffer, const char *last)
  * @see the current code-page comes from video\win32_v.cpp, event-notification
  * WM_INPUTLANGCHANGE
  */
-const char *FS2OTTD(const TCHAR *name)
+const char *FS2OTTD(const wchar_t *name)
 {
 	static char utf8_buf[512];
 	return convert_from_fs(name, utf8_buf, lengthof(utf8_buf));
@@ -582,9 +582,9 @@ const char *FS2OTTD(const TCHAR *name)
  * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return pointer to the converted string; if failed string is of zero-length
  */
-const TCHAR *OTTD2FS(const char *name, bool console_cp)
+const wchar_t *OTTD2FS(const char *name, bool console_cp)
 {
-	static TCHAR system_buf[512];
+	static wchar_t system_buf[512];
 	return convert_to_fs(name, system_buf, lengthof(system_buf), console_cp);
 }
 
@@ -597,9 +597,9 @@ const TCHAR *OTTD2FS(const char *name, bool console_cp)
  * @param buflen length in characters of the receiving buffer
  * @return pointer to utf8_buf. If conversion fails the string is of zero-length
  */
-char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen)
+char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
 {
-	const WCHAR *wide_buf = name;
+	const wchar_t *wide_buf = name;
 
 	/* Convert UTF-16 string to UTF-8. */
 	int len = WideCharToMultiByte(CP_UTF8, 0, wide_buf, -1, utf8_buf, (int)buflen, nullptr, nullptr);
@@ -619,7 +619,7 @@ char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen)
  * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return pointer to system_buf. If conversion fails the string is of zero-length
  */
-TCHAR *convert_to_fs(const char *name, TCHAR *system_buf, size_t buflen, bool console_cp)
+wchar_t *convert_to_fs(const char *name, wchar_t *system_buf, size_t buflen, bool console_cp)
 {
 	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, system_buf, (int)buflen);
 	if (len == 0) system_buf[0] = '\0';
@@ -677,7 +677,7 @@ int OTTDStringCompare(const char *s1, const char *s2)
 #endif
 
 	if (first_time) {
-		_CompareStringEx = (PFNCOMPARESTRINGEX)GetProcAddress(GetModuleHandle(_T("Kernel32")), "CompareStringEx");
+		_CompareStringEx = (PFNCOMPARESTRINGEX)GetProcAddress(GetModuleHandle(L"Kernel32"), "CompareStringEx");
 		first_time = false;
 	}
 
@@ -698,7 +698,7 @@ int OTTDStringCompare(const char *s1, const char *s2)
 		}
 	}
 
-	TCHAR s1_buf[512], s2_buf[512];
+	wchar_t s1_buf[512], s2_buf[512];
 	convert_to_fs(s1, s1_buf, lengthof(s1_buf));
 	convert_to_fs(s2, s2_buf, lengthof(s2_buf));
 
