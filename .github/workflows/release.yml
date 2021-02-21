@@ -468,21 +468,29 @@ jobs:
       run: |
         brew install pandoc
 
-    # The following step can be removed when the build VM is updated with a revision of
-    # vcpkg dating from roughly 01/01/2021 or later. At that point, `doNotUpdateVcpkg`
-    # can be set to `true` and the `vcpkgGitCommitId` can be removed.
-    - name: Update vcpkg
+    - name: Prepare cache key
+      id: key
       run: |
-        cd /usr/local/share/vcpkg
-        git fetch --unshallow
+        echo "::set-output name=image::$ImageOS-$ImageVersion"
 
-    - name: Prepare vcpkg (with cache)
-      uses: lukka/run-vcpkg@v6
+    - name: Enable vcpkg cache
+      uses: actions/cache@v2
       with:
-        vcpkgDirectory: '/usr/local/share/vcpkg'
-        doNotUpdateVcpkg: false
-        vcpkgGitCommitId: 2a42024b53ebb512fb5dd63c523338bf26c8489c
-        vcpkgArguments: 'liblzma:x64-osx libpng:x64-osx lzo:x64-osx liblzma:arm64-osx libpng:arm64-osx lzo:arm64-osx'
+        path: /usr/local/share/vcpkg/installed
+        key: ${{ steps.key.outputs.image }}-vcpkg-release
+
+    - name: Prepare vcpkg
+      run: |
+        vcpkg install \
+          liblzma:x64-osx \
+          liblzma:arm64-osx \
+          libpng:x64-osx \
+          libpng:arm64-osx \
+          lzo:x64-osx \
+          lzo:arm64-osx \
+          zlib:x64-osx \
+          zlib:arm64-osx \
+          # EOF
 
     - name: Install GCC problem matcher
       uses: ammaraskar/gcc-problem-matcher@master
@@ -653,25 +661,30 @@ jobs:
       run: |
         choco install pandoc
 
-    # "restore-cache" which is done by "run-vcpkg" uses Windows tar.
-    # A git clone on windows marks a few files as read-only; when Windows tar
-    # tries to extract the cache over this folder, it fails, despite the files
-    # being identical. This failure shows up as an warning in the logs. We
-    # avoid this by simply removing the read-only mark from the git folder.
-    # In other words: this is a hack!
-    # See: https://github.com/lukka/run-vcpkg/issues/61
-    - name: Remove read-only flag from vcpkg git folder
+    - name: Prepare cache key
+      id: key
       shell: powershell
       run: |
-        attrib -r "c:\vcpkg\.git\*.*" /s
+        # Work around caching failure with GNU tar
+        New-Item -Type Junction -Path vcpkg -Target c:\vcpkg
 
-    - name: Prepare vcpkg (with cache)
-      uses: lukka/run-vcpkg@v6
+        Write-Output "::set-output name=image::$env:ImageOS-$env:ImageVersion"
+
+    - name: Enable vcpkg cache
+      uses: actions/cache@v2
       with:
-        vcpkgDirectory: 'c:/vcpkg'
-        doNotUpdateVcpkg: true
-        vcpkgArguments: 'liblzma libpng lzo zlib'
-        vcpkgTriplet: '${{ matrix.arch }}-windows-static'
+        path: vcpkg/installed
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
+
+    - name: Prepare vcpkg
+      shell: bash
+      run: |
+        vcpkg install --triplet=${{ matrix.arch }}-windows-static \
+          liblzma \
+          libpng \
+          lzo \
+          zlib \
+          # EOF
 
     - name: Install MSVC problem matcher
       uses: ammaraskar/msvc-problem-matcher@master
