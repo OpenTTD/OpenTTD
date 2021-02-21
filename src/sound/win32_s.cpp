@@ -48,7 +48,7 @@ static DWORD WINAPI SoundThread(LPVOID arg)
 			if ((hdr->dwFlags & WHDR_INQUEUE) != 0) continue;
 			MxMixSamples(hdr->lpData, hdr->dwBufferLength / 4);
 			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) {
-				MessageBox(nullptr, _T("Sounds are disabled until restart."), _T("waveOutWrite failed"), MB_ICONINFORMATION);
+				MessageBox(nullptr, L"Sounds are disabled until restart.", L"waveOutWrite failed", MB_ICONINFORMATION);
 				return 0;
 			}
 		}

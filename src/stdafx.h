@@ -260,12 +260,12 @@
 #		include <tchar.h>
 #		include <io.h>
 
-		namespace std { using ::_tfopen; }
-#		define fopen(file, mode) _tfopen(OTTD2FS(file), _T(mode))
-#		define unlink(file) _tunlink(OTTD2FS(file))
+		namespace std { using ::_wfopen; }
+#		define fopen(file, mode) _wfopen(OTTD2FS(file), _T(mode))
+#		define unlink(file) _wunlink(OTTD2FS(file))
 
-		const char *FS2OTTD(const TCHAR *name);
-		const TCHAR *OTTD2FS(const char *name, bool console_cp = false);
+		const char *FS2OTTD(const wchar_t *name);
+		const wchar_t *OTTD2FS(const char *name, bool console_cp = false);
 #	else
 #		define fopen(file, mode) fopen(OTTD2FS(file), mode)
 		const char *FS2OTTD(const char *name);

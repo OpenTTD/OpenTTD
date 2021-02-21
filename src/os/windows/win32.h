@@ -16,13 +16,8 @@ bool MyShowCursor(bool show, bool toggle = false);
 typedef void (*Function)(int);
 bool LoadLibraryList(Function proc[], const char *dll);
 
-char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen);
-TCHAR *convert_to_fs(const char *name, TCHAR *utf16_buf, size_t buflen, bool console_cp = false);
-
-/* Function shortcuts for UTF-8 <> UNICODE conversion. These functions use an
- * internal buffer of max 512 characters. */
-# define MB_TO_WIDE(str) OTTD2FS(str)
-# define WIDE_TO_MB(str) FS2OTTD(str)
+char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen);
+wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen, bool console_cp = false);
 
 #if defined(__MINGW32__) && !defined(__MINGW64__)
 #define SHGFP_TYPE_CURRENT 0

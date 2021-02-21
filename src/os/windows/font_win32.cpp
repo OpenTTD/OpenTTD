@@ -46,10 +46,10 @@ extern FT_Library _library;
  * @param long_path the path in system encoding.
  * @return the short path in ANSI (ASCII).
  */
-static const char *GetShortPath(const TCHAR *long_path)
+static const char *GetShortPath(const wchar_t *long_path)
 {
 	static char short_path[MAX_PATH];
-	WCHAR short_path_w[MAX_PATH];
+	wchar_t short_path_w[MAX_PATH];
 	GetShortPathName(long_path, short_path_w, lengthof(short_path_w));
 	WideCharToMultiByte(CP_ACP, 0, short_path_w, -1, short_path, lengthof(short_path), nullptr, nullptr);
 	return short_path;
@@ -69,8 +69,8 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	FT_Error err = FT_Err_Cannot_Open_Resource;
 	HKEY hKey;
 	LONG ret;
-	TCHAR vbuffer[MAX_PATH], dbuffer[256];
-	TCHAR *pathbuf;
+	wchar_t vbuffer[MAX_PATH], dbuffer[256];
+	wchar_t *pathbuf;
 	const char *font_path;
 	uint index;
 	size_t path_len;
@@ -83,10 +83,10 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	}
 
 	/* Convert font name to file system encoding. */
-	TCHAR *font_namep = _tcsdup(OTTD2FS(font_name));
+	wchar_t *font_namep = wcsdup(OTTD2FS(font_name));
 
 	for (index = 0;; index++) {
-		TCHAR *s;
+		wchar_t *s;
 		DWORD vbuflen = lengthof(vbuffer);
 		DWORD dbuflen = lengthof(dbuffer);
 
@@ -102,13 +102,13 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		 * TTC files, font files which contain more than one font are separated
 		 * by '&'. Our best bet will be to do substr match for the fontname
 		 * and then let FreeType figure out which index to load */
-		s = _tcschr(vbuffer, _T('('));
+		s = wcschr(vbuffer, L'(');
 		if (s != nullptr) s[-1] = '\0';
 
-		if (_tcschr(vbuffer, _T('&')) == nullptr) {
-			if (_tcsicmp(vbuffer, font_namep) == 0) break;
+		if (wcschr(vbuffer, L'&') == nullptr) {
+			if (wcsicmp(vbuffer, font_namep) == 0) break;
 		} else {
-			if (_tcsstr(vbuffer, font_namep) != nullptr) break;
+			if (wcsstr(vbuffer, font_namep) != nullptr) break;
 		}
 	}
 
@@ -121,9 +121,9 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	 * contain multiple fonts inside this single file. GetFontData however
 	 * returns the whole file, so we need to check each font inside to get the
 	 * proper font. */
-	path_len = _tcslen(vbuffer) + _tcslen(dbuffer) + 2; // '\' and terminating nul.
-	pathbuf = AllocaM(TCHAR, path_len);
-	_sntprintf(pathbuf, path_len, _T("%s\\%s"), vbuffer, dbuffer);
+	path_len = wcslen(vbuffer) + wcslen(dbuffer) + 2; // '\' and terminating nul.
+	pathbuf = AllocaM(wchar_t, path_len);
+	_snwprintf(pathbuf, path_len, L"%s\\%s", vbuffer, dbuffer);
 
 	/* Convert the path into something that FreeType understands. */
 	font_path = GetShortPath(pathbuf);
@@ -228,13 +228,13 @@ err2:
 	ReleaseDC(nullptr, dc);
 	DeleteObject(font);
 err1:
-	return ret_font_name == nullptr ? WIDE_TO_MB((const TCHAR *)logfont->elfFullName) : ret_font_name;
+	return ret_font_name == nullptr ? FS2OTTD((const wchar_t *)logfont->elfFullName) : ret_font_name;
 }
 #endif /* WITH_FREETYPE */
 
 class FontList {
 protected:
-	TCHAR **fonts;
+	wchar_t **fonts;
 	uint items;
 	uint capacity;
 
@@ -251,9 +251,9 @@ public:
 		free(this->fonts);
 	}
 
-	bool Add(const TCHAR *font) {
+	bool Add(const wchar_t *font) {
 		for (uint i = 0; i < this->items; i++) {
-			if (_tcscmp(this->fonts[i], font) == 0) return false;
+			if (wcscmp(this->fonts[i], font) == 0) return false;
 		}
 
 		if (this->items == this->capacity) {
@@ -261,7 +261,7 @@ public:
 			this->fonts = ReallocT(this->fonts, this->capacity);
 		}
 
-		this->fonts[this->items++] = _tcsdup(font);
+		this->fonts[this->items++] = wcsdup(font);
 
 		return true;
 	}
@@ -279,7 +279,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	EFCParam *info = (EFCParam *)lParam;
 
 	/* Skip duplicates */
-	if (!info->fonts.Add((const TCHAR *)logfont->elfFullName)) return 1;
+	if (!info->fonts.Add((const wchar_t *)logfont->elfFullName)) return 1;
 	/* Only use TrueType fonts */
 	if (!(type & TRUETYPE_FONTTYPE)) return 1;
 	/* Don't use SYMBOL fonts */
@@ -305,7 +305,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 	}
 
 	char font_name[MAX_PATH];
-	convert_from_fs((const TCHAR *)logfont->elfFullName, font_name, lengthof(font_name));
+	convert_from_fs((const wchar_t *)logfont->elfFullName, font_name, lengthof(font_name));
 
 #ifdef WITH_FREETYPE
 	/* Add english name after font name */
@@ -342,7 +342,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 {
 	DEBUG(freetype, 1, "Trying fallback fonts");
 	EFCParam langInfo;
-	if (GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, (LPTSTR)&langInfo.locale, sizeof(langInfo.locale) / sizeof(TCHAR)) == 0) {
+	if (GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, (LPTSTR)&langInfo.locale, sizeof(langInfo.locale) / sizeof(wchar_t)) == 0) {
 		/* Invalid langid or some other mysterious error, can't determine fallback font. */
 		DEBUG(freetype, 1, "Can't get locale info for fallback font (langid=0x%x)", winlangid);
 		return false;
@@ -601,7 +601,7 @@ void LoadWin32Font(FontSize fs)
 	} else if (strchr(settings->font, '.') != nullptr) {
 		/* Might be a font file name, try load it. */
 
-		TCHAR fontPath[MAX_PATH] = {};
+		wchar_t fontPath[MAX_PATH] = {};
 
 		/* See if this is an absolute path. */
 		if (FileExists(settings->font)) {
@@ -619,7 +619,7 @@ void LoadWin32Font(FontSize fs)
 				/* Try a nice little undocumented function first for getting the internal font name.
 				 * Some documentation is found at: http://www.undocprint.org/winspool/getfontresourceinfo */
 				typedef BOOL(WINAPI *PFNGETFONTRESOURCEINFO)(LPCTSTR, LPDWORD, LPVOID, DWORD);
-				static PFNGETFONTRESOURCEINFO GetFontResourceInfo = (PFNGETFONTRESOURCEINFO)GetProcAddress(GetModuleHandle(_T("Gdi32")), "GetFontResourceInfoW");
+				static PFNGETFONTRESOURCEINFO GetFontResourceInfo = (PFNGETFONTRESOURCEINFO)GetProcAddress(GetModuleHandle(L"Gdi32"), "GetFontResourceInfoW");
 
 				if (GetFontResourceInfo != nullptr) {
 					/* Try to query an array of LOGFONTs that describe the file. */
@@ -634,10 +634,10 @@ void LoadWin32Font(FontSize fs)
 
 				/* No dice yet. Use the file name as the font face name, hoping it matches. */
 				if (logfont.lfFaceName[0] == 0) {
-					TCHAR fname[_MAX_FNAME];
-					_tsplitpath(fontPath, nullptr, nullptr, fname, nullptr);
+					wchar_t fname[_MAX_FNAME];
+					_wsplitpath(fontPath, nullptr, nullptr, fname, nullptr);
 
-					_tcsncpy_s(logfont.lfFaceName, lengthof(logfont.lfFaceName), fname, _TRUNCATE);
+					wcsncpy_s(logfont.lfFaceName, lengthof(logfont.lfFaceName), fname, _TRUNCATE);
 					logfont.lfWeight = strcasestr(settings->font, " bold") != nullptr || strcasestr(settings->font, "-bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
 				}
 			} else {
