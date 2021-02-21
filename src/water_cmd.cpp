@@ -40,6 +40,9 @@
 #include "water_cmd.h"
 #include "landscape_cmd.h"
 #include "pathfinder/water_regions.h"
+#include "train.h"
+#include "platform_func.h"
+#include "pbs.h"
 
 #include "table/strings.h"
 
@@ -1073,16 +1076,25 @@ static void FloodVehicles(TileIndex tile)
 		return;
 	}
 
-	if (!IsBridgeTile(tile)) {
+	if (IsBridgeTile(tile)) {
+		TileIndex end = GetOtherBridgeEnd(tile);
+		z = GetBridgePixelHeight(tile);
+
 		FindVehicleOnPos(tile, &z, &FloodVehicleProc);
-		return;
+		FindVehicleOnPos(end, &z, &FloodVehicleProc);
+	} else if (IsExtendedRailDepotTile(tile)) {
+		/* Free reserved path. */
+		if (HasDepotReservation(tile)) {
+			Train *v = GetTrainForReservation(tile, GetRailDepotTrack(tile));
+			if (v != nullptr) FreeTrainTrackReservation(v);
+		}
+		/* Crash trains on platform. */
+		for (TileIndex t : GetPlatformTileArea(tile)) {
+			FindVehicleOnPos(t, &z, &FloodVehicleProc);
+		}
+	} else {
+		FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 	}
-
-	TileIndex end = GetOtherBridgeEnd(tile);
-	z = GetBridgePixelHeight(tile);
-
-	FindVehicleOnPos(tile, &z, &FloodVehicleProc);
-	FindVehicleOnPos(end, &z, &FloodVehicleProc);
 }
 
 /**
