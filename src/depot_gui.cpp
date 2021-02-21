@@ -294,6 +294,7 @@ struct DepotWindow : Window {
 	~DepotWindow()
 	{
 		DeleteWindowById(WC_BUILD_VEHICLE, this->window_number);
+		DeleteWindowById(GetWindowClassForVehicleType(this->type), VehicleListIdentifier(VL_DEPOT_LIST, this->type, this->owner, GetDepotIndex(this->window_number)).Pack(), false);
 		OrderBackup::Reset(this->window_number);
 	}
 
