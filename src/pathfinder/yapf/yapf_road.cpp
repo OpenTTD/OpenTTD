@@ -161,8 +161,8 @@ public:
 			int min_speed = 0;
 			int max_veh_speed = v->GetDisplayMaxSpeed();
 			int max_speed = F.GetSpeedLimit(&min_speed);
-			if (max_speed < max_veh_speed) segment_cost += 1 * (max_veh_speed - max_speed);
-			if (min_speed > max_veh_speed) segment_cost += 10 * (min_speed - max_veh_speed);
+			if (max_speed < max_veh_speed) segment_cost += YAPF_TILE_LENGTH * (max_veh_speed - max_speed) * (4 + F.m_tiles_skipped) / max_veh_speed;
+			if (min_speed > max_veh_speed) segment_cost += YAPF_TILE_LENGTH * (min_speed - max_veh_speed);
 
 			/* move to the next tile */
 			tile = F.m_new_tile;
