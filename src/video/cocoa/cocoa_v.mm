@@ -64,10 +64,6 @@ bool _cocoa_video_started = false;
 
 extern bool _tab_is_down;
 
-#ifdef _DEBUG
-static uint32 _tEvent;
-#endif
-
 
 /** List of common display/window sizes. */
 static const Dimension _default_resolutions[] = {
@@ -86,19 +82,6 @@ static const Dimension _default_resolutions[] = {
 };
 
 static FVideoDriver_Cocoa iFVideoDriver_Cocoa;
-
-
-/**
- * Get current realtime.
- * @return Tick time in milliseconds.
- */
-static uint32 GetTick()
-{
-	struct timeval tim;
-
-	gettimeofday(&tim, NULL);
-	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
-}
 
 
 /** Subclass of NSView for drawing to screen. */
@@ -603,13 +586,7 @@ void VideoDriver_Cocoa::CheckPaletteAnim()
  */
 bool VideoDriver_Cocoa::PollEvent()
 {
-#ifdef _DEBUG
-	uint32 et0 = GetTick();
-#endif
 	NSEvent *event = [ NSApp nextEventMatchingMask:NSAnyEventMask untilDate:[ NSDate distantPast ] inMode:NSDefaultRunLoopMode dequeue:YES ];
-#ifdef _DEBUG
-	_tEvent += GetTick() - et0;
-#endif
 
 	if (event == nil) return false;
 
