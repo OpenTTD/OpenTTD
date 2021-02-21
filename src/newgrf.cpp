@@ -4053,6 +4053,7 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 				if (*ospec == nullptr) {
 					*ospec = CallocT<ObjectSpec>(1);
 					(*ospec)->views = 1; // Default for NewGRFs that don't set it.
+					(*ospec)->size = 0x11; // Default for NewGRFs that manage to not set it (1x1)
 				}
 
 				/* Swap classid because we read it in BE. */
@@ -4078,6 +4079,10 @@ static ChangeInfoResult ObjectChangeInfo(uint id, int numinfo, int prop, ByteRea
 
 			case 0x0C: // Size
 				spec->size = buf->ReadByte();
+				if ((spec->size & 0xF0) == 0 || (spec->size & 0x0F) == 0) {
+					grfmsg(1, "ObjectChangeInfo: Invalid object size requested (%u) for object id %u. Ignoring.", spec->size, id + i);
+					spec->size = 0x11; // 1x1
+				}
 				break;
 
 			case 0x0D: // Build cost multipler
