@@ -49,14 +49,9 @@ extern FT_Library _library;
 static const char *GetShortPath(const TCHAR *long_path)
 {
 	static char short_path[MAX_PATH];
-#ifdef UNICODE
 	WCHAR short_path_w[MAX_PATH];
 	GetShortPathName(long_path, short_path_w, lengthof(short_path_w));
 	WideCharToMultiByte(CP_ACP, 0, short_path_w, -1, short_path, lengthof(short_path), nullptr, nullptr);
-#else
-	/* Technically not needed, but do it for consistency. */
-	GetShortPathName(long_path, short_path, lengthof(short_path));
-#endif
 	return short_path;
 }
 
@@ -68,8 +63,7 @@ static const char *GetShortPath(const TCHAR *long_path)
  * kept in memory then until the font is no longer needed. This could mean
  * an additional memory usage of 30MB (just for fonts!) when using an eastern
  * font for all font sizes */
-#define FONT_DIR_NT "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts"
-#define FONT_DIR_9X "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Fonts"
+static const wchar_t *FONT_DIR_NT = L"SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts";
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 {
 	FT_Error err = FT_Err_Cannot_Open_Resource;
@@ -81,14 +75,10 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	uint index;
 	size_t path_len;
 
-	/* On windows NT (2000, NT3.5, XP, etc.) the fonts are stored in the
-	 * "Windows NT" key, on Windows 9x in the Windows key. To save us having
-	 * to retrieve the windows version, we'll just query both */
-	ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T(FONT_DIR_NT), 0, KEY_READ, &hKey);
-	if (ret != ERROR_SUCCESS) ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T(FONT_DIR_9X), 0, KEY_READ, &hKey);
+	ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, FONT_DIR_NT, 0, KEY_READ, &hKey);
 
 	if (ret != ERROR_SUCCESS) {
-		DEBUG(freetype, 0, "Cannot open registry key HKLM\\SOFTWARE\\Microsoft\\Windows (NT)\\CurrentVersion\\Fonts");
+		DEBUG(freetype, 0, "Cannot open registry key HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts");
 		return err;
 	}
 
@@ -122,7 +112,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		}
 	}
 
-	if (!SUCCEEDED(OTTDSHGetFolderPath(nullptr, CSIDL_FONTS, nullptr, SHGFP_TYPE_CURRENT, vbuffer))) {
+	if (!SUCCEEDED(SHGetFolderPath(nullptr, CSIDL_FONTS, nullptr, SHGFP_TYPE_CURRENT, vbuffer))) {
 		DEBUG(freetype, 0, "SHGetFolderPath cannot return fonts directory");
 		goto folder_error;
 	}
@@ -629,11 +619,7 @@ void LoadWin32Font(FontSize fs)
 				/* Try a nice little undocumented function first for getting the internal font name.
 				 * Some documentation is found at: http://www.undocprint.org/winspool/getfontresourceinfo */
 				typedef BOOL(WINAPI *PFNGETFONTRESOURCEINFO)(LPCTSTR, LPDWORD, LPVOID, DWORD);
-#ifdef UNICODE
 				static PFNGETFONTRESOURCEINFO GetFontResourceInfo = (PFNGETFONTRESOURCEINFO)GetProcAddress(GetModuleHandle(_T("Gdi32")), "GetFontResourceInfoW");
-#else
-				static PFNGETFONTRESOURCEINFO GetFontResourceInfo = (PFNGETFONTRESOURCEINFO)GetProcAddress(GetModuleHandle(_T("Gdi32")), "GetFontResourceInfoA");
-#endif
 
 				if (GetFontResourceInfo != nullptr) {
 					/* Try to query an array of LOGFONTs that describe the file. */

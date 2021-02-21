@@ -52,8 +52,6 @@ bool MyShowCursor(bool show, bool toggle)
 
 /**
  * Helper function needed by dynamically loading libraries
- * XXX: Hurray for MS only having an ANSI GetProcAddress function
- * on normal windows and no Wide version except for in Windows Mobile/CE
  */
 bool LoadLibraryList(Function proc[], const char *dll)
 {
@@ -419,11 +417,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	CrashLog::InitialiseCrashLog();
 
-#if defined(UNICODE)
-	/* Check if a win9x user started the win32 version */
-	if (HasBit(GetVersion(), 31)) usererror("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
-#endif
-
 	/* Convert the command line to UTF-8. We need a dedicated buffer
 	 * for this because argv[] points into this buffer and this needs to
 	 * be available between subsequent calls to FS2OTTD(). */
@@ -468,7 +461,7 @@ void DetermineBasePaths(const char *exe)
 
 	TCHAR path[MAX_PATH];
 #ifdef WITH_PERSONAL_DIR
-	if (SUCCEEDED(OTTDSHGetFolderPath(nullptr, CSIDL_PERSONAL, nullptr, SHGFP_TYPE_CURRENT, path))) {
+	if (SUCCEEDED(SHGetFolderPath(nullptr, CSIDL_PERSONAL, nullptr, SHGFP_TYPE_CURRENT, path))) {
 		std::string tmp(FS2OTTD(path));
 		AppendPathSeparator(tmp);
 		tmp += PERSONAL_DIR;
@@ -482,7 +475,7 @@ void DetermineBasePaths(const char *exe)
 		_searchpaths[SP_PERSONAL_DIR].clear();
 	}
 
-	if (SUCCEEDED(OTTDSHGetFolderPath(nullptr, CSIDL_COMMON_DOCUMENTS, nullptr, SHGFP_TYPE_CURRENT, path))) {
+	if (SUCCEEDED(SHGetFolderPath(nullptr, CSIDL_COMMON_DOCUMENTS, nullptr, SHGFP_TYPE_CURRENT, path))) {
 		std::string tmp(FS2OTTD(path));
 		AppendPathSeparator(tmp);
 		tmp += PERSONAL_DIR;
@@ -556,17 +549,6 @@ bool GetClipboardContents(char *buffer, const char *last)
 		CloseClipboard();
 
 		if (out_len == 0) return false;
-#if !defined(UNICODE)
-	} else if (IsClipboardFormatAvailable(CF_TEXT)) {
-		OpenClipboard(nullptr);
-		cbuf = GetClipboardData(CF_TEXT);
-
-		ptr = (const char*)GlobalLock(cbuf);
-		strecpy(buffer, FS2OTTD(ptr), last);
-
-		GlobalUnlock(cbuf);
-		CloseClipboard();
-#endif /* UNICODE */
 	} else {
 		return false;
 	}
@@ -576,10 +558,7 @@ bool GetClipboardContents(char *buffer, const char *last)
 
 
 /**
- * Convert to OpenTTD's encoding from that of the local environment.
- * When the project is built in UNICODE, the system codepage is irrelevant and
- * the input string is wide. In ANSI mode, the string is in the
- * local codepage which we'll convert to wide-char, and then to UTF-8.
+ * Convert to OpenTTD's encoding from wide characters.
  * OpenTTD internal encoding is UTF8.
  * The returned value's contents can only be guaranteed until the next call to
  * this function. So if the value is needed for anything else, use convert_from_fs
@@ -595,10 +574,7 @@ const char *FS2OTTD(const TCHAR *name)
 }
 
 /**
- * Convert from OpenTTD's encoding to that of the local environment.
- * When the project is built in UNICODE the system codepage is irrelevant and
- * the converted string is wide. In ANSI mode, the UTF8 string is converted
- * to multi-byte.
+ * Convert from OpenTTD's encoding to wide characters.
  * OpenTTD internal encoding is UTF8.
  * The returned value's contents can only be guaranteed until the next call to
  * this function. So if the value is needed for anything else, use convert_from_fs
@@ -615,7 +591,7 @@ const TCHAR *OTTD2FS(const char *name, bool console_cp)
 
 /**
  * Convert to OpenTTD's encoding from that of the environment in
- * UNICODE. OpenTTD encoding is UTF8, local is wide
+ * UNICODE. OpenTTD encoding is UTF8, local is wide.
  * @param name pointer to a valid string that will be converted
  * @param utf8_buf pointer to a valid buffer that will receive the converted string
  * @param buflen length in characters of the receiving buffer
@@ -623,19 +599,7 @@ const TCHAR *OTTD2FS(const char *name, bool console_cp)
  */
 char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen)
 {
-#if defined(UNICODE)
 	const WCHAR *wide_buf = name;
-#else
-	/* Convert string from the local codepage to UTF-16. */
-	int wide_len = MultiByteToWideChar(CP_ACP, 0, name, -1, nullptr, 0);
-	if (wide_len == 0) {
-		utf8_buf[0] = '\0';
-		return utf8_buf;
-	}
-
-	WCHAR *wide_buf = AllocaM(WCHAR, wide_len);
-	MultiByteToWideChar(CP_ACP, 0, name, -1, wide_buf, wide_len);
-#endif
 
 	/* Convert UTF-16 string to UTF-8. */
 	int len = WideCharToMultiByte(CP_UTF8, 0, wide_buf, -1, utf8_buf, (int)buflen, nullptr, nullptr);
@@ -647,7 +611,7 @@ char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen)
 
 /**
  * Convert from OpenTTD's encoding to that of the environment in
- * UNICODE. OpenTTD encoding is UTF8, local is wide
+ * UNICODE. OpenTTD encoding is UTF8, local is wide.
  * @param name pointer to a valid string that will be converted
  * @param system_buf pointer to a valid wide-char buffer that will receive the
  * converted string
@@ -657,89 +621,10 @@ char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen)
  */
 TCHAR *convert_to_fs(const char *name, TCHAR *system_buf, size_t buflen, bool console_cp)
 {
-#if defined(UNICODE)
 	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, system_buf, (int)buflen);
 	if (len == 0) system_buf[0] = '\0';
-#else
-	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, nullptr, 0);
-	if (len == 0) {
-		system_buf[0] = '\0';
-		return system_buf;
-	}
-
-	WCHAR *wide_buf = AllocaM(WCHAR, len);
-	MultiByteToWideChar(CP_UTF8, 0, name, -1, wide_buf, len);
-
-	len = WideCharToMultiByte(console_cp ? CP_OEMCP : CP_ACP, 0, wide_buf, len, system_buf, (int)buflen, nullptr, nullptr);
-	if (len == 0) system_buf[0] = '\0';
-#endif
 
 	return system_buf;
-}
-
-/**
- * Our very own SHGetFolderPath function for support of windows operating
- * systems that don't have this function (eg Win9x, etc.). We try using the
- * native function, and if that doesn't exist we will try a more crude approach
- * of environment variables and hope for the best
- */
-HRESULT OTTDSHGetFolderPath(HWND hwnd, int csidl, HANDLE hToken, DWORD dwFlags, LPTSTR pszPath)
-{
-	static HRESULT (WINAPI *SHGetFolderPath)(HWND, int, HANDLE, DWORD, LPTSTR) = nullptr;
-	static bool first_time = true;
-
-	/* We only try to load the library one time; if it fails, it fails */
-	if (first_time) {
-#if defined(UNICODE)
-# define W(x) x "W"
-#else
-# define W(x) x "A"
-#endif
-		/* The function lives in shell32.dll for all current Windows versions, but it first started to appear in SHFolder.dll. */
-		if (!LoadLibraryList((Function*)&SHGetFolderPath, "shell32.dll\0" W("SHGetFolderPath") "\0\0")) {
-			if (!LoadLibraryList((Function*)&SHGetFolderPath, "SHFolder.dll\0" W("SHGetFolderPath") "\0\0")) {
-				DEBUG(misc, 0, "Unable to load " W("SHGetFolderPath") "from either shell32.dll or SHFolder.dll");
-			}
-		}
-#undef W
-		first_time = false;
-	}
-
-	if (SHGetFolderPath != nullptr) return SHGetFolderPath(hwnd, csidl, hToken, dwFlags, pszPath);
-
-	/* SHGetFolderPath doesn't exist, try a more conservative approach,
-	 * eg environment variables. This is only included for legacy modes
-	 * MSDN says: that 'pszPath' is a "Pointer to a null-terminated string of
-	 * length MAX_PATH which will receive the path" so let's assume that
-	 * Windows 95 with Internet Explorer 5.0, Windows 98 with Internet Explorer 5.0,
-	 * Windows 98 Second Edition (SE), Windows NT 4.0 with Internet Explorer 5.0,
-	 * Windows NT 4.0 with Service Pack 4 (SP4) */
-	{
-		DWORD ret;
-		switch (csidl) {
-			case CSIDL_FONTS: // Get the system font path, eg %WINDIR%\Fonts
-				ret = GetEnvironmentVariable(_T("WINDIR"), pszPath, MAX_PATH);
-				if (ret == 0) break;
-				_tcsncat(pszPath, _T("\\Fonts"), MAX_PATH);
-
-				return (HRESULT)0;
-
-			case CSIDL_PERSONAL:
-			case CSIDL_COMMON_DOCUMENTS: {
-				HKEY key;
-				if (RegOpenKeyEx(csidl == CSIDL_PERSONAL ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, REGSTR_PATH_SPECIAL_FOLDERS, 0, KEY_READ, &key) != ERROR_SUCCESS) break;
-				DWORD len = MAX_PATH;
-				ret = RegQueryValueEx(key, csidl == CSIDL_PERSONAL ? _T("Personal") : _T("Common Documents"), nullptr, nullptr, (LPBYTE)pszPath, &len);
-				RegCloseKey(key);
-				if (ret == ERROR_SUCCESS) return (HRESULT)0;
-				break;
-			}
-
-			/* XXX - other types to go here when needed... */
-		}
-	}
-
-	return E_INVALIDARG;
 }
 
 /** Determine the current user's locale. */
