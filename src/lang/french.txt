@@ -613,7 +613,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinateur de
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Superviseur de route
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Directeur
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Directeur Général
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Vice-président
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Secrétaire général(e)
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Président
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Tycoon
 
@@ -696,7 +696,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Cliquer 
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Meilleures compagnies qui ont atteint {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tableau du Championnat des compagnies en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Homme d'affaires
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Personne d'affaires
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Entrepreneur
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industriel
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Capitaliste
@@ -947,6 +947,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nouveau Dollar 
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Chinois (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar de Hong Kong (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Roupie indienne (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Roupie indonésienne (IDR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conduite à gauche

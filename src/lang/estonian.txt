@@ -709,14 +709,14 @@ STR_MUSIC_PLAYLIST_ALL                                          :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_OLD_STYLE                                    :{TINY_FONT}{BLACK}Vana stiil
 STR_MUSIC_PLAYLIST_NEW_STYLE                                    :{TINY_FONT}{BLACK}Uus stiil
 STR_MUSIC_PLAYLIST_EZY_STREET                                   :{TINY_FONT}{BLACK}Ezy Street
-STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Omatehtud 1
-STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Omatehtud 2
+STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLACK}Isiklik 1
+STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Isiklik 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Muusika helitugevus
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Efektide helitugevus
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
-STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Muusikat pole saadaval
+STR_MUSIC_TITLE_NOMUSIC                                         :{TINY_FONT}{DKGREEN}Muusika pole saadaval
 STR_MUSIC_TITLE_NAME                                            :{TINY_FONT}{DKGREEN}"{STRING}"
 STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLACK}Lugu
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Pealkiri
@@ -731,8 +731,8 @@ STR_MUSIC_TOOLTIP_SELECT_ALL_TRACKS_PROGRAM                     :{BLACK}Vali 'k�
 STR_MUSIC_TOOLTIP_SELECT_OLD_STYLE_MUSIC                        :{BLACK}Vali 'vanas stiilis muusika' programm
 STR_MUSIC_TOOLTIP_SELECT_NEW_STYLE_MUSIC                        :{BLACK}Vali 'uues stiilis muusika' programm
 STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}'Ezy Street' stiilis muusikaprogrammi valimine
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vali 'omatehtud 1' programm
-STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vali 'omatehtud 2' programm
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Vali 'isiklik 1' programm
+STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Vali 'isiklik 2' programm
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Lülita lugude segamine sisse ja välja
 STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Näita muusikalugude valimise akent
 
@@ -743,9 +743,9 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLA
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}Programm - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}Puhasta
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}Muuda kogu
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Tühjenda valitud programm (ainult omatehtud 1 ja omatehtud 2)
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}Tühjenda valitud programm (ainult isiklik 1 ja isiklik 2)
 STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}Vaheta muusikavalik teise paigaldatud kogumi vastu
-STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Vajuta loole, et seda programmi lisada (ainult omatehtud 1 ja omatehtud 2)
+STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}Vajuta loole, et seda programmi lisada (ainult isiklik 1 ja isiklik 2)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Vajuta laulule, et see eemaldada praegusest progammist (Custom1 või Custom2 ainult)
 
 # Highscore window
@@ -2355,8 +2355,8 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :GS teek
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Aineste allalaadimine...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Küsin faile...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Hetkel laaditakse alla {STRING} ({NUM}/{NUM})
-STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Allalaadimine valmis
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}/{BYTES} baiti alla laaditud ({NUM} %)
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Allalaadimise lõpp
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}/{BYTES} baiti allalaaditud ({NUM} %)
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Aineste keskserveriga ei õnnestu ühenduda...
@@ -3430,11 +3430,11 @@ STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Mitte ü
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Firmaväärtus: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes)
 STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}Taristu:
-STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} röö{P bas pad}
-STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} sõidutee tük{P k id}
-STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} veekogu ruu{P t dud}
-STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} jaama ruu{P t dud}
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lennuväl{P i jad}
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} rööpajupp{P "" i}
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} teejupp{P "" i}
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} veeruut{P "" u}
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} jaamaruut{P "" u}
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} lennuväl{P i ja}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Puudub
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Ehita peakorter
@@ -4221,11 +4221,11 @@ STR_AI_DEBUG_BREAK_STR_ON_OFF_TOOLTIP                           :{BLACK}Võimald
 STR_AI_DEBUG_BREAK_ON_LABEL                                     :{BLACK}Vahe sees:
 STR_AI_DEBUG_BREAK_STR_OSKTITLE                                 :{BLACK}Vahe sees
 STR_AI_DEBUG_BREAK_STR_TOOLTIP                                  :{BLACK}Kui AI logi sõnum vastab selle stringiga, mäng seisatakse.
-STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Sobita tähemärgisuurus
-STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Toggle matching case when comparing AI log messages against the break string
+STR_AI_DEBUG_MATCH_CASE                                         :{BLACK}Tõstutundlik
+STR_AI_DEBUG_MATCH_CASE_TOOLTIP                                 :{BLACK}Vaheldab tõstutundlikkust, kui AI debug-sõnumeid võrreldakse peatamiskirjega
 STR_AI_DEBUG_CONTINUE                                           :{BLACK}Jätka
-STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Jätka tee ja tee edasi AI-d
-STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vaata selle AI silumisinfo väljundit
+STR_AI_DEBUG_CONTINUE_TOOLTIP                                   :{BLACK}Lõpeta paus ja jätka AI-d
+STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Vaata selle AI debug-väljundit
 STR_AI_GAME_SCRIPT                                              :{BLACK}GameScript
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Kontrolli GameScripti logi
 
@@ -4282,7 +4282,7 @@ STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Kõrgusk
 STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Väikese kaardi kuvapaugutus
 
 # AI Parameters
-STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameetrid
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} parameetrid
 STR_AI_SETTINGS_CAPTION_AI                                      :AI
 STR_AI_SETTINGS_CAPTION_GAMESCRIPT                              :GameScript
 STR_AI_SETTINGS_CLOSE                                           :{BLACK}Sulge
