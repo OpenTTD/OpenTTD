@@ -39,7 +39,7 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(nproc) cores"
-        make -j$(nproc) tools
+        cmake --build . -j $(nproc) --target tools
         echo "::endgroup::"
 
     - name: Install GCC problem matcher
@@ -56,7 +56,7 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(nproc) cores"
-        emmake make -j$(nproc)
+        cmake --build . -j $(nproc)
         echo "::endgroup::"
 
   linux:
@@ -134,13 +134,13 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(nproc) cores"
-        make -j$(nproc)
+        cmake --build . -j $(nproc)
         echo "::endgroup::"
 
     - name: Test
       run: |
         cd build
-        make -j$(nproc) test
+        ctest -j $(nproc)
 
   macos:
     name: Mac OS
@@ -213,13 +213,13 @@ jobs:
 
         echo "::group::Build"
         echo "Running on $(sysctl -n hw.logicalcpu) cores"
-        make -j$(sysctl -n hw.logicalcpu)
+        cmake --build . -j $(sysctl -n hw.logicalcpu)
         echo "::endgroup::"
 
     - name: Test
       run: |
         cd build
-        make -j$(sysctl -n hw.logicalcpu) test
+        ctest -j $(sysctl -n hw.logicalcpu)
 
   windows:
     name: Windows
@@ -307,4 +307,4 @@ jobs:
       shell: bash
       run: |
         cd ${GITHUB_WORKSPACE}/build
-        ctest -C Debug
+        ctest
