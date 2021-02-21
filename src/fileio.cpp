@@ -279,7 +279,7 @@ bool FioCheckFileExists(const std::string &filename, Subdirectory subdir)
  */
 bool FileExists(const std::string &filename)
 {
-	return access(OTTD2FS(filename.c_str()), 0) == 0;
+	return access(OTTD2FS(filename).c_str(), 0) == 0;
 }
 
 /**
@@ -358,7 +358,7 @@ static FILE *FioFOpenFileSp(const std::string &filename, const char *mode, Searc
 	}
 
 #if defined(_WIN32)
-	if (mode[0] == 'r' && GetFileAttributes(OTTD2FS(buf.c_str())) == INVALID_FILE_ATTRIBUTES) return nullptr;
+	if (mode[0] == 'r' && GetFileAttributes(OTTD2FS(buf).c_str()) == INVALID_FILE_ATTRIBUTES) return nullptr;
 #endif
 
 	f = fopen(buf.c_str(), mode);
@@ -506,11 +506,11 @@ void FioCreateDirectory(const std::string &name)
 	/* Ignore directory creation errors; they'll surface later on, and most
 	 * of the time they are 'directory already exists' errors anyhow. */
 #if defined(_WIN32)
-	CreateDirectory(OTTD2FS(name.c_str()), nullptr);
+	CreateDirectory(OTTD2FS(name).c_str(), nullptr);
 #elif defined(OS2) && !defined(__INNOTEK_LIBC__)
-	mkdir(OTTD2FS(name.c_str()));
+	mkdir(OTTD2FS(name).c_str());
 #else
-	mkdir(OTTD2FS(name.c_str()), 0755);
+	mkdir(OTTD2FS(name).c_str(), 0755);
 #endif
 }
 
@@ -1315,7 +1315,7 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 	if (path == nullptr || (dir = ttd_opendir(path)) == nullptr) return 0;
 
 	while ((dirent = readdir(dir)) != nullptr) {
-		const char *d_name = FS2OTTD(dirent->d_name);
+		std::string d_name = FS2OTTD(dirent->d_name);
 
 		if (!FiosIsValidFile(path, dirent, &sb)) continue;
 
@@ -1325,7 +1325,7 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 		if (S_ISDIR(sb.st_mode)) {
 			/* Directory */
 			if (!recursive) continue;
-			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
+			if (d_name == "." || d_name == "..") continue;
 			AppendPathSeparator(filename);
 			num += ScanPath(fs, extension, filename.c_str(), basepath_length, recursive);
 		} else if (S_ISREG(sb.st_mode)) {

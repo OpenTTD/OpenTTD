@@ -93,6 +93,7 @@
 #include <climits>
 #include <cassert>
 #include <memory>
+#include <string>
 
 #ifndef SIZE_MAX
 #	define SIZE_MAX ((size_t)-1)
@@ -252,25 +253,26 @@
 
 #endif /* defined(_MSC_VER) */
 
-/* NOTE: the string returned by these functions is only valid until the next
- * call to the same function and is not thread- or reentrancy-safe */
 #if !defined(STRGEN) && !defined(SETTINGSGEN)
 #	if defined(_WIN32)
 		char *getcwd(char *buf, size_t size);
-#		include <tchar.h>
 #		include <io.h>
+#		include <tchar.h>
 
-		namespace std { using ::_wfopen; }
-#		define fopen(file, mode) _wfopen(OTTD2FS(file), _T(mode))
-#		define unlink(file) _wunlink(OTTD2FS(file))
+#		define fopen(file, mode) _wfopen(OTTD2FS(file).c_str(), _T(mode))
+#		define unlink(file) _wunlink(OTTD2FS(file).c_str())
 
-		const char *FS2OTTD(const wchar_t *name);
-		const wchar_t *OTTD2FS(const char *name, bool console_cp = false);
+		std::string FS2OTTD(const std::wstring &name);
+		std::wstring OTTD2FS(const std::string &name, bool console_cp = false);
+#	elif defined(WITH_ICONV)
+#		define fopen(file, mode) fopen(OTTD2FS(file).c_str(), mode)
+		std::string FS2OTTD(const std::string &name);
+		std::string OTTD2FS(const std::string &name);
 #	else
-#		define fopen(file, mode) fopen(OTTD2FS(file), mode)
-		const char *FS2OTTD(const char *name);
-		const char *OTTD2FS(const char *name);
-#	endif /* _WIN32 */
+		// no override of fopen() since no transformation is required of the filename
+		template <typename T> std::string FS2OTTD(T name) { return name; }
+		template <typename T> std::string OTTD2FS(T name) { return name; }
+#	endif /* _WIN32 or WITH_ICONV */
 #endif /* STRGEN || SETTINGSGEN */
 
 #if defined(_WIN32) || defined(__OS2__) && !defined(__INNOTEK_LIBC__)

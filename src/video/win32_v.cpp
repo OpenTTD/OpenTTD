@@ -214,7 +214,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 			char window_title[64];
 			seprintf(window_title, lastof(window_title), "OpenTTD %s", _openttd_revision);
 
-			this->main_wnd = CreateWindow(L"OTTD", OTTD2FS(window_title), style, x, y, w, h, 0, 0, GetModuleHandle(nullptr), this);
+			this->main_wnd = CreateWindow(L"OTTD", OTTD2FS(window_title).c_str(), style, x, y, w, h, 0, 0, GetModuleHandle(nullptr), this);
 			if (this->main_wnd == nullptr) usererror("CreateWindow failed");
 			ShowWindow(this->main_wnd, showstyle);
 		}
@@ -331,7 +331,7 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 			/* Transmit text to windowing system. */
 			if (len > 0) {
 				HandleTextInput(nullptr, true); // Clear marked string.
-				HandleTextInput(FS2OTTD(str));
+				HandleTextInput(FS2OTTD(str).c_str());
 			}
 			SetCompositionPos(hwnd);
 

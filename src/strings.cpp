@@ -1910,14 +1910,14 @@ static void GetLanguageList(const char *path)
 	if (dir != nullptr) {
 		struct dirent *dirent;
 		while ((dirent = readdir(dir)) != nullptr) {
-			const char *d_name    = FS2OTTD(dirent->d_name);
-			const char *extension = strrchr(d_name, '.');
+			std::string d_name = FS2OTTD(dirent->d_name);
+			const char *extension = strrchr(d_name.c_str(), '.');
 
 			/* Not a language file */
 			if (extension == nullptr || strcmp(extension, ".lng") != 0) continue;
 
 			LanguageMetadata lmd;
-			seprintf(lmd.file, lastof(lmd.file), "%s%s", path, d_name);
+			seprintf(lmd.file, lastof(lmd.file), "%s%s", path, d_name.c_str());
 
 			/* Check whether the file is of the correct version */
 			if (!GetLanguageFileHeader(lmd.file, &lmd)) {

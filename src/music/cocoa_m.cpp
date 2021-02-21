@@ -134,8 +134,8 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 		return;
 	}
 
-	const char *os_file = OTTD2FS(filename.c_str());
-	CFAutoRelease<CFURLRef> url(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8*)os_file, strlen(os_file), false));
+	std::string os_file = OTTD2FS(filename);
+	CFAutoRelease<CFURLRef> url(CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, (const UInt8*)os_file.c_str(), os_file.length(), false));
 
 	if (MusicSequenceFileLoad(_sequence, url.get(), kMusicSequenceFile_AnyType, 0) != noErr) {
 		DEBUG(driver, 0, "cocoa_m: Failed to load MIDI file");

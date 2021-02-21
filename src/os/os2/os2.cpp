@@ -203,9 +203,6 @@ bool GetClipboardContents(char *buffer, const char *last)
 }
 
 
-const char *FS2OTTD(const char *name) {return name;}
-const char *OTTD2FS(const char *name) {return name;}
-
 void OSOpenBrowser(const char *url)
 {
 	// stub only

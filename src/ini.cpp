@@ -53,7 +53,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	std::string file_new{ filename };
 	file_new.append(".new");
 
-	std::ofstream os(OTTD2FS(file_new.c_str()));
+	std::ofstream os(OTTD2FS(file_new));
 	if (os.fail()) return false;
 
 	for (const IniGroup *group = this->group; group != nullptr; group = group->next) {
@@ -94,8 +94,8 @@ bool IniFile::SaveToDisk(const std::string &filename)
 #if defined(_WIN32)
 	/* Allocate space for one more \0 character. */
 	wchar_t tfilename[MAX_PATH + 1], tfile_new[MAX_PATH + 1];
-	wcsncpy(tfilename, OTTD2FS(filename.c_str()), MAX_PATH);
-	wcsncpy(tfile_new, OTTD2FS(file_new.c_str()), MAX_PATH);
+	wcsncpy(tfilename, OTTD2FS(filename).c_str(), MAX_PATH);
+	wcsncpy(tfile_new, OTTD2FS(file_new).c_str(), MAX_PATH);
 	/* SHFileOperation wants a double '\0' terminated string. */
 	tfilename[MAX_PATH - 1] = '\0';
 	tfile_new[MAX_PATH - 1] = '\0';
