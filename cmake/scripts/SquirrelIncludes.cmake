@@ -16,10 +16,17 @@ endif()
 set(ARGC 1)
 set(ARG_READ NO)
 
+# For MSVC CMake runs this script from a batch file using || to detect errors,
+# depending on source path it may quote args, and cause cmd to not understand ||
+# and pass it as argument to ourself.
 # Read all the arguments given to CMake; we are looking for -- and everything
-# that follows. Those are our api files.
+# that follows, until ||. Those are our api files.
 while(ARGC LESS CMAKE_ARGC)
     set(ARG ${CMAKE_ARGV${ARGC}})
+
+    if(ARG STREQUAL "||")
+        set(ARG_READ NO)
+    endif()
 
     if(ARG_READ)
         list(APPEND SCRIPT_API_BINARY_FILES "${ARG}")
