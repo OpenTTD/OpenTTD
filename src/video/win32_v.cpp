@@ -885,7 +885,7 @@ void VideoDriver_Win32Base::InputLoop()
 #else
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
-	if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0)
+	if (this->has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0)
 #endif
 	{
 		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
