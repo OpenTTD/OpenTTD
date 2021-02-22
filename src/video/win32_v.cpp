@@ -334,19 +334,9 @@ void VideoDriver_Win32::Paint()
 
 	if (IsEmptyRect(_dirty_rect)) return;
 
-	/* Convert update region from logical to device coordinates. */
-	POINT pt = {0, 0};
-	ClientToScreen(_wnd.main_wnd, &pt);
-
-	RECT r = { _dirty_rect.left, _dirty_rect.top, _dirty_rect.right, _dirty_rect.bottom };
-	OffsetRect(&r, pt.x, pt.y);
-
-	/* Create a device context that is clipped to the region we need to draw.
-	 * GetDCEx 'consumes' the update region, so we may not destroy it ourself. */
-	HRGN rgn = CreateRectRgnIndirect(&r);
-	HDC dc = GetDCEx(_wnd.main_wnd, rgn, DCX_CLIPSIBLINGS | DCX_CLIPCHILDREN | DCX_INTERSECTRGN);
-
+	HDC dc = GetDC(_wnd.main_wnd);
 	HDC dc2 = CreateCompatibleDC(dc);
+
 	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, _wnd.dib_sect);
 	HPALETTE old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
 
