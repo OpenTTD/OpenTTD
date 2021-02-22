@@ -10,8 +10,8 @@ macro(create_regression)
     # build folder before we can run the regression
     file(GLOB_RECURSE REGRESSION_SOURCE_FILES ${CMAKE_SOURCE_DIR}/regression/*)
     foreach(REGRESSION_SOURCE_FILE IN LISTS REGRESSION_SOURCE_FILES)
-        string(REGEX REPLACE "^${CMAKE_SOURCE_DIR}/regression/" "${CMAKE_BINARY_DIR}/ai/" REGRESSION_BINARY_FILE "${REGRESSION_SOURCE_FILE}")
-        string(REGEX REPLACE "^${CMAKE_SOURCE_DIR}/regression/" "" REGRESSION_SOURCE_FILE_NAME "${REGRESSION_SOURCE_FILE}")
+        string(REPLACE "${CMAKE_SOURCE_DIR}/regression/" "" REGRESSION_SOURCE_FILE_NAME "${REGRESSION_SOURCE_FILE}")
+        string(CONCAT REGRESSION_BINARY_FILE "${CMAKE_BINARY_DIR}/ai/" "${REGRESSION_SOURCE_FILE_NAME}")
 
         if("${REGRESSION_SOURCE_FILE_NAME}" STREQUAL "regression.cfg")
             continue()
