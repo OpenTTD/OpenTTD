@@ -1326,6 +1326,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nowy dolar tajw
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Juan chiński (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dolar hongkoński (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indyjska (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonezyjska (IDR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazda po lewej
