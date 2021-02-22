@@ -294,7 +294,7 @@ struct DepotWindow : Window {
 	~DepotWindow()
 	{
 		DeleteWindowById(WC_BUILD_VEHICLE, this->window_number);
-		DeleteWindowById(GetWindowClassForVehicleType(this->type), VehicleListIdentifier(VL_DEPOT_LIST, this->type, this->owner, GetDepotIndex(this->window_number)).Pack(), false);
+		DeleteWindowById(GetWindowClassForVehicleType(this->type), VehicleListIdentifier(VL_DEPOT_LIST, this->type, this->owner, this->GetDepotIndex()).Pack(), false);
 		OrderBackup::Reset(this->window_number);
 	}
 
@@ -424,10 +424,8 @@ struct DepotWindow : Window {
 	{
 		if (widget != WID_D_CAPTION) return;
 
-		/* locate the depot struct */
-		TileIndex tile = this->window_number;
 		SetDParam(0, this->type);
-		SetDParam(1, (this->type == VEH_AIRCRAFT) ? GetStationIndex(tile) : GetDepotIndex(tile));
+		SetDParam(1, this->GetDepotIndex());
 	}
 
 	struct GetDepotVehiclePtData {
@@ -810,11 +808,8 @@ struct DepotWindow : Window {
 			case WID_D_SELL_ALL:
 				/* Only open the confirmation window if there are anything to sell */
 				if (this->vehicle_list.size() != 0 || this->wagon_list.size() != 0) {
-					TileIndex tile = this->window_number;
-					byte vehtype = this->type;
-
-					SetDParam(0, vehtype);
-					SetDParam(1, (vehtype == VEH_AIRCRAFT) ? GetStationIndex(tile) : GetDepotIndex(tile));
+					SetDParam(0, this->type);
+					SetDParam(1, this->GetDepotIndex());
 					ShowQuery(
 						STR_DEPOT_CAPTION,
 						STR_DEPOT_SELL_CONFIRMATION_TEXT,
@@ -840,7 +835,7 @@ struct DepotWindow : Window {
 		if (str == nullptr) return;
 
 		/* Do depot renaming */
-		DoCommandP(0, GetDepotIndex(this->window_number), 0, CMD_RENAME_DEPOT | CMD_MSG(STR_ERROR_CAN_T_RENAME_DEPOT), nullptr, str);
+		DoCommandP(0, this->GetDepotIndex(), 0, CMD_RENAME_DEPOT | CMD_MSG(STR_ERROR_CAN_T_RENAME_DEPOT), nullptr, str);
 	}
 
 	bool OnRightClick(Point pt, int widget) override
@@ -1076,6 +1071,16 @@ struct DepotWindow : Window {
 		}
 
 		return ES_NOT_HANDLED;
+	}
+
+	/**
+	 * Gets the DepotID of the current window.
+	 * In the case of airports, this is the station ID.
+	 * @return Depot or station ID of this window.
+	 */
+	inline uint16 GetDepotIndex() const
+	{
+		return (this->type == VEH_AIRCRAFT) ? ::GetStationIndex(this->window_number) : ::GetDepotIndex(this->window_number);
 	}
 };
 
