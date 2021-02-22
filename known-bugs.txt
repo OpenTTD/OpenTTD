@@ -364,35 +364,6 @@ Trains might not stop at platforms that are currently being changed [#5553]:
         list multiple times in a row or if there is only one station
         in theorder list (see #5684).
 
-Inconsistent catchment areas [#5661]:
-        Due to performance decisions the catchment area for cargo accepted by a
-        station for delivery to houses or industries differs from the catchment
-        area for cargo that is delivered to stations from houses or industries.
-
-        Conceptually they work the same, but the effect in game differs. They
-        work by finding the closest destination "around" the source which is
-        within a certain distance. This distance depends on the type of station,
-        e.g. road stops have a smaller catchment area than large airports.
-        In both cases the bounding box, the smallest rectangle that contains
-        all tiles of something, is searched for the target of the cargo,
-        and then spiraling outwards finding the closest tile of the target.
-
-        In the case of a station with two tiles spread far apart with a house
-        that is within the station's bounding box, it would be possible that
-        the spiraling search from the house does not reach one of the station
-        tiles before the search ends, i.e. all tiles within that distance
-        are searched. So the house does not deliver cargo to the station.
-        On the other hand, the station will deliver cargo because the house
-        falls within the bounding box, and thus search area.
-
-        It is possible to make these consistent, but then cargo from a house
-        to a station needs to search up to 32 tiles around itself, i.e. 64
-        by 64 tiles, to find all possible stations it could deliver to
-        instead of 10 by 10 tiles (40 times more tiles). Alternatively the
-        search from a station could be changed to use the actual tiles, but
-        that would require considering checking 10 by 10 tiles for each of
-        the tiles of a station, instead of just once.
-
 Some houses and industries are not affected by transparency [#5817]:
         Some of the default houses and industries (f.e. the iron ore mine) are
         not affected by the transparency options. This is because the graphics
