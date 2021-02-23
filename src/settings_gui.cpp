@@ -433,6 +433,7 @@ struct GameOptionsWindow : Window {
 				CheckForMissingGlyphs();
 				ClearAllCachedNames();
 				UpdateAllVirtCoords();
+				CheckBlitter();
 				ReInitAllWindows();
 				break;
 
