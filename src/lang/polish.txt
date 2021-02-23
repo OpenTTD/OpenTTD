@@ -2373,8 +2373,8 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :Przeszukaj inte
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Znajdź w internecie serwery publiczne
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :Przeszukaj LAN
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :Znajdź serwery w sieci lokalnej
-STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Dodaj serwer
-STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Dodaj serwer do listy, która będzie przeszukiwana w poszukiwaniu uruchomionych gier
+STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Zapisz serwer
+STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Zapisz serwer na liście serwerów, które będą zawsze sprawdzane w poszukiwaniu uruchomionych gier
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom serwer
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Uruchom własny serwer
 

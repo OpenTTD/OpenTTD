@@ -3343,7 +3343,7 @@ STR_STATION_VIEW_VIA_ANY                                        :{RED}{CARGO_SHO
 STR_STATION_VIEW_FROM_HERE                                      :{GREEN}{CARGO_SHORT} sellest jaamast
 STR_STATION_VIEW_VIA_HERE                                       :{GREEN}{CARGO_SHORT} peatumas selles jaamas
 STR_STATION_VIEW_TO_HERE                                        :{GREEN}{CARGO_SHORT} siia jaama
-STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} ilma peatumata
+STR_STATION_VIEW_NONSTOP                                        :{YELLOW}{CARGO_SHORT} vahepeatusteta
 
 STR_STATION_VIEW_GROUP_S_V_D                                    :Algus-, vahe- ja sihtpunkt
 STR_STATION_VIEW_GROUP_S_D_V                                    :Algus-, siht- ja vahepunkt
@@ -4069,7 +4069,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Siht lähim dep
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Siht lähim angaar
 STR_ORDER_CONDITIONAL                                           :Korralduste tinglik vahelejätmine
 STR_ORDER_SHARE                                                 :Korralduste jagamine
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisa valitud käsu ette uus korraldus, või kui korraldust ei ole valitud, siis nimekirja lõppu. «Ctrl» määrab jaama puhul korralduseks «peale laadida üks kaup», meldepunkti puhul «peatuseta» ja depoo puhul «hooldus». «Jaga korraldusi» või «Ctrl» klahv lubab sellel sõidukil jagada korraldusi valitud sõidukiga. Klõpsates teisel sõidukil, dubleeritakse selle korraldused
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}Lisa uus korraldus valitud korralduse ette, või nimekirja lõppu. «Ctrl» annab jaamas korralduse «täislaadida üks veos», meldepunktis korralduse «peatuseta», ning depoos korralduse «hooldus». «Korralduste jagamine» või «Ctrl» laseb sellel sõidukil jagada korraldusi valitud sõidukiga. Sõidukil klõpsates dubleeritakse selle korraldused. Depookorralduste olemasolul sõiduk ise hoolduses ei käi
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}Näita kõiki sama sõidugraafikuga mootorsõidukeid
 
@@ -4078,7 +4078,7 @@ STR_ORDER_GO_TO_WAYPOINT                                        :Siht läbida {W
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :Siht peatumata läbida {WAYPOINT}
 
 STR_ORDER_SERVICE_AT                                            :Hooldus
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Hooldus ilma peatumata
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Hooldus vahepeatusteta
 
 STR_ORDER_NEAREST_DEPOT                                         :lähim
 STR_ORDER_NEAREST_HANGAR                                        :lähim angaar
@@ -4830,10 +4830,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :suhkrukaevandus
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Nimetu
-STR_SV_TRAIN_NAME                                               :Rong #{COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Mootorsõiduk #{COMMA}
-STR_SV_SHIP_NAME                                                :Laev #{COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Õhusõiduk #{COMMA}
+STR_SV_TRAIN_NAME                                               :Rong nr {COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Mootorsõiduk nr {COMMA}
+STR_SV_SHIP_NAME                                                :Laev nr {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Õhusõiduk nr {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :Põhja {STRING}
