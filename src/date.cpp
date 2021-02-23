@@ -29,6 +29,17 @@ Date      _date;       ///< Current date in days (day counter)
 DateFract _date_fract; ///< Fractional part of the day.
 uint16 _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick counter for setting off various events
 
+bool _year_is_looping; ///< Is the current year repeating? (and has looped at least once)
+
+/**
+ * Checks if the current year is looping, and has occurred at least once.
+ * @return True if the current year is selected to loop and has done so at least once, else false.
+ */
+bool YearIsLooping() {
+	return (_cur_year == _settings_game.game_creation.loop_year) && _year_is_looping;
+}
+
+
 /**
  * Set the date.
  * @param date  New date
@@ -197,17 +208,11 @@ static void OnNewYear()
 	InvalidateWindowClassesData(WC_BUILD_STATION);
 	if (_network_server) NetworkServerYearlyLoop();
 
-	if (_cur_year == _settings_client.gui.semaphore_build_before) ResetSignalVariant();
-
-	/* check if we reached end of the game (end of ending year); 0 = never */
-	if (_cur_year == _settings_game.game_creation.ending_year + 1 && _settings_game.game_creation.ending_year != 0) {
-		ShowEndGameChart();
-	}
-
-	/* check if we reached the maximum year, decrement dates by a year */
-	if (_cur_year == MAX_YEAR + 1) {
+	/* If we have reached the end of the maximum year or the end of the loop year, decrement dates by a year and skip the checks in else {} */
+	if ((_cur_year > MAX_YEAR) || (_cur_year == _settings_game.game_creation.loop_year + 1)) {
 		int days_this_year;
 
+		_year_is_looping = true;
 		_cur_year--;
 		days_this_year = IsLeapYear(_cur_year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
 		_date -= days_this_year;
@@ -217,9 +222,18 @@ static void OnNewYear()
 		/* Because the _date wraps here, and text-messages expire by game-days, we have to clean out
 		 *  all of them if the date is set back, else those messages will hang for ever */
 		NetworkInitChatMessage();
-	}
+	} else {
+		_year_is_looping = false;
 
-	if (_settings_client.gui.auto_euro) CheckSwitchToEuro();
+		if (_cur_year == _settings_client.gui.semaphore_build_before) ResetSignalVariant();
+
+		/* check if we reached end of the game (end of ending year); 0 = never */
+		if (_cur_year == _settings_game.game_creation.ending_year + 1 && _settings_game.game_creation.ending_year != 0) {
+			ShowEndGameChart();
+		}
+
+		if (_settings_client.gui.auto_euro) CheckSwitchToEuro();
+	}
 }
 
 /**

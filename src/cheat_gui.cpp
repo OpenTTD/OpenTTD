@@ -108,6 +108,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	Date new_date = ConvertYMDToDate(p1, ymd.month, ymd.day);
 	LinkGraphSchedule::instance.ShiftDates(new_date - _date);
 	SetDate(new_date, _date_fract);
+	_year_is_looping = false;
 	EnginesMonthlyLoop();
 	SetWindowDirty(WC_STATUS_BAR, 0);
 	InvalidateWindowClassesData(WC_BUILD_STATION, 0);
