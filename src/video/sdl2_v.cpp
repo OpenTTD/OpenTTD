@@ -628,8 +628,6 @@ void VideoDriver_SDL_Base::InputLoop()
 
 void VideoDriver_SDL_Base::LoopOnce()
 {
-	InteractiveRandom(); // randomness
-
 	if (_exit_game) {
 #ifdef __EMSCRIPTEN__
 		/* Emscripten is event-driven, and as such the main loop is inside

@@ -907,8 +907,6 @@ void VideoDriver_Win32Base::MainLoop()
 	}
 
 	for (;;) {
-		InteractiveRandom(); // randomness
-
 		if (_exit_game) break;
 
 		/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */
