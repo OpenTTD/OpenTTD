@@ -136,22 +136,6 @@ void VideoDriver_SDL_Default::Paint()
 	this->dirty_rect = {};
 }
 
-void VideoDriver_SDL_Default::PaintThread()
-{
-	/* First tell the main thread we're started */
-	std::unique_lock<std::recursive_mutex> lock(*this->draw_mutex);
-	this->draw_signal->notify_one();
-
-	/* Now wait for the first thing to draw! */
-	this->draw_signal->wait(*this->draw_mutex);
-
-	while (this->draw_continue) {
-		/* Then just draw and wait till we stop */
-		this->Paint();
-		this->draw_signal->wait(lock);
-	}
-}
-
 bool VideoDriver_SDL_Default::AllocateBackingStore(int w, int h, bool force)
 {
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();

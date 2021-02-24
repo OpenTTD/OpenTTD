@@ -242,11 +242,6 @@ protected:
 	virtual void Paint() {}
 
 	/**
-	 * Thread function for threaded drawing.
-	 */
-	virtual void PaintThread() {}
-
-	/**
 	 * Process any pending palette animation.
 	 */
 	virtual void CheckPaletteAnim() {}
@@ -258,10 +253,11 @@ protected:
 	virtual bool PollEvent() { return false; };
 
 	/**
-	 * Run the game for a single tick, processing boththe game-tick and draw-tick.
-	 * @returns True if the driver should redraw the screen.
+	 * Give the video-driver a tick.
+	 * It will process any potential game-tick and/or draw-tick, and/or any
+	 * other video-driver related event.
 	 */
-	bool Tick();
+	void Tick();
 
 	/**
 	 * Sleep till the next tick is about to happen.

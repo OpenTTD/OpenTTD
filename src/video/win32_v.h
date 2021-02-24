@@ -17,7 +17,7 @@
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
 public:
-	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false), draw_mutex(nullptr), draw_signal(nullptr) {}
+	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false) {}
 
 	void Stop() override;
 
@@ -28,10 +28,6 @@ public:
 	bool ChangeResolution(int w, int h) override;
 
 	bool ToggleFullscreen(bool fullscreen) override;
-
-	void AcquireBlitterLock() override;
-
-	void ReleaseBlitterLock() override;
 
 	bool ClaimMousePointer() override;
 
@@ -47,12 +43,7 @@ protected:
 	int width_org = 0;      ///< Original monitor resolution width, before we changed it.
 	int height_org = 0;     ///< Original monitor resolution height, before we changed it.
 
-	bool draw_threaded;          ///< Whether the drawing is/may be done in a separate thread.
-	bool buffer_locked;          ///< Video buffer was locked by the main thread.
-	volatile bool draw_continue; ///< Should we keep continue drawing?
-
-	std::recursive_mutex *draw_mutex;         ///< Mutex to keep the access to the shared memory controlled.
-	std::condition_variable_any *draw_signal; ///< Signal to draw the next frame.
+	bool buffer_locked;     ///< Video buffer was locked by the main thread.
 
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;
@@ -78,10 +69,6 @@ protected:
 	virtual void PaletteChanged(HWND hWnd) = 0;
 
 private:
-	std::unique_lock<std::recursive_mutex> draw_lock;
-
-	static void PaintThreadThunk(VideoDriver_Win32Base *drv);
-
 	friend LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 };
 /** The GDI video driver for windows. */
@@ -104,7 +91,6 @@ protected:
 
 	void Paint() override;
 	void *GetVideoPointer() override { return this->buffer_bits; }
-	void PaintThread() override;
 
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
 	void PaletteChanged(HWND hWnd) override;
@@ -159,7 +145,6 @@ protected:
 	uint8 GetFullscreenBpp() override { return 32; } // OpenGL is always 32 bpp.
 
 	void Paint() override;
-	void PaintThread() override {}
 
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
 	void *GetVideoPointer() override;

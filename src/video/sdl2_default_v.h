@@ -21,7 +21,6 @@ protected:
 	bool AllocateBackingStore(int w, int h, bool force = false) override;
 	void *GetVideoPointer() override;
 	void Paint() override;
-	void PaintThread() override;
 
 	void ReleaseVideoPointer() override {}
 

@@ -33,10 +33,6 @@ public:
 
 	bool AfterBlitterChange() override;
 
-	void AcquireBlitterLock() override;
-
-	void ReleaseBlitterLock() override;
-
 	bool ClaimMousePointer() override;
 
 	void EditBoxGainedFocus() override;
@@ -48,10 +44,6 @@ public:
 protected:
 	struct SDL_Window *sdl_window; ///< Main SDL window.
 	Palette local_palette; ///< Copy of _cur_palette.
-	bool draw_threaded; ///< Whether the drawing is/may be done in a separate thread.
-	std::recursive_mutex *draw_mutex = nullptr; ///< Mutex to keep the access to the shared memory controlled.
-	std::condition_variable_any *draw_signal = nullptr; ///< Signal to draw the next frame.
-	volatile bool draw_continue; ///< Should we keep continue drawing?
 	bool buffer_locked; ///< Video buffer was locked by the main thread.
 	Rect dirty_rect; ///< Rectangle encompassing the dirty area of the video buffer.
 
@@ -91,10 +83,6 @@ private:
 	bool edit_box_focused;
 
 	int startup_display;
-	std::thread draw_thread;
-	std::unique_lock<std::recursive_mutex> draw_lock;
-
-	static void PaintThreadThunk(VideoDriver_SDL_Base *drv);
 };
 
 #endif /* VIDEO_SDL_H */

@@ -23,8 +23,6 @@
 #include "../window_func.h"
 #include "sdl_v.h"
 #include <SDL.h>
-#include <mutex>
-#include <condition_variable>
 
 #include "../safeguards.h"
 
@@ -34,14 +32,6 @@ static SDL_Surface *_sdl_surface;
 static SDL_Surface *_sdl_realscreen;
 static bool _all_modes;
 
-/** Whether the drawing is/may be done in a separate thread. */
-static bool _draw_threaded;
-/** Mutex to keep the access to the shared memory controlled. */
-static std::recursive_mutex *_draw_mutex = nullptr;
-/** Signal to draw the next frame. */
-static std::condition_variable_any *_draw_signal = nullptr;
-/** Should we keep continue drawing? */
-static volatile bool _draw_continue;
 static Palette _local_palette;
 
 #define MAX_DIRTY_RECTS 100
@@ -172,27 +162,6 @@ void VideoDriver_SDL::Paint()
 
 		SDL_UpdateRects(_sdl_realscreen, n, _dirty_rects);
 	}
-}
-
-void VideoDriver_SDL::PaintThread()
-{
-	/* First tell the main thread we're started */
-	std::unique_lock<std::recursive_mutex> lock(*_draw_mutex);
-	_draw_signal->notify_one();
-
-	/* Now wait for the first thing to draw! */
-	_draw_signal->wait(*_draw_mutex);
-
-	while (_draw_continue) {
-		/* Then just draw and wait till we stop */
-		this->Paint();
-		_draw_signal->wait(lock);
-	}
-}
-
-/* static */ void VideoDriver_SDL::PaintThreadThunk(VideoDriver_SDL *drv)
-{
-	drv->PaintThread();
 }
 
 static const Dimension _default_resolutions[] = {
@@ -630,8 +599,6 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 	MarkWholeScreenDirty();
 	SetupKeyboard();
 
-	_draw_threaded = !GetDriverParamBool(parm, "no_threads") && !GetDriverParamBool(parm, "no_thread");
-
 	return nullptr;
 }
 
@@ -680,80 +647,21 @@ void VideoDriver_SDL::InputLoop()
 
 void VideoDriver_SDL::MainLoop()
 {
-	std::thread draw_thread;
-	if (_draw_threaded) {
-		/* Initialise the mutex first, because that's the thing we *need*
-		 * directly in the newly created thread. */
-		_draw_mutex = new std::recursive_mutex();
-		if (_draw_mutex == nullptr) {
-			_draw_threaded = false;
-		} else {
-			this->draw_lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
-			_draw_signal = new std::condition_variable_any();
-			_draw_continue = true;
-
-			_draw_threaded = StartNewThread(&draw_thread, "ottd:draw-sdl", &VideoDriver_SDL::PaintThreadThunk, this);
-
-			/* Free the mutex if we won't be able to use it. */
-			if (!_draw_threaded) {
-				this->draw_lock.unlock();
-				this->draw_lock.release();
-				delete _draw_mutex;
-				delete _draw_signal;
-				_draw_mutex = nullptr;
-				_draw_signal = nullptr;
-			} else {
-				/* Wait till the draw mutex has started itself. */
-				_draw_signal->wait(*_draw_mutex);
-			}
-		}
-	}
-
-	DEBUG(driver, 1, "SDL: using %sthreads", _draw_threaded ? "" : "no ");
-
 	for (;;) {
 		if (_exit_game) break;
 
-		if (this->Tick()) {
-			if (_draw_mutex != nullptr && !HasModalProgress()) {
-				_draw_signal->notify_one();
-			} else {
-				this->Paint();
-			}
-		}
+		this->Tick();
 		this->SleepTillNextTick();
-	}
-
-	if (_draw_mutex != nullptr) {
-		_draw_continue = false;
-		/* Sending signal if there is no thread blocked
-		 * is very valid and results in noop */
-		_draw_signal->notify_one();
-		if (this->draw_lock.owns_lock()) this->draw_lock.unlock();
-		this->draw_lock.release();
-		draw_thread.join();
-
-		delete _draw_mutex;
-		delete _draw_signal;
-
-		_draw_mutex = nullptr;
-		_draw_signal = nullptr;
 	}
 }
 
 bool VideoDriver_SDL::ChangeResolution(int w, int h)
 {
-	std::unique_lock<std::recursive_mutex> lock;
-	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
-
 	return CreateMainSurface(w, h);
 }
 
 bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 {
-	std::unique_lock<std::recursive_mutex> lock;
-	if (_draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*_draw_mutex);
-
 	_fullscreen = fullscreen;
 	GetVideoModes(); // get the list of available video modes
 	bool ret = !_resolutions.empty() && CreateMainSurface(_cur_resolution.width, _cur_resolution.height);
@@ -770,27 +678,6 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 bool VideoDriver_SDL::AfterBlitterChange()
 {
 	return CreateMainSurface(_screen.width, _screen.height);
-}
-
-void VideoDriver_SDL::AcquireBlitterLock()
-{
-	if (_draw_mutex != nullptr) _draw_mutex->lock();
-}
-
-void VideoDriver_SDL::ReleaseBlitterLock()
-{
-	if (_draw_mutex != nullptr) _draw_mutex->unlock();
-}
-
-bool VideoDriver_SDL::LockVideoBuffer()
-{
-	if (_draw_threaded) this->draw_lock.lock();
-	return true;
-}
-
-void VideoDriver_SDL::UnlockVideoBuffer()
-{
-	if (_draw_threaded) this->draw_lock.unlock();
 }
 
 #endif /* WITH_SDL */
