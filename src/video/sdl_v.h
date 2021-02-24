@@ -29,30 +29,19 @@ public:
 
 	bool AfterBlitterChange() override;
 
-	void AcquireBlitterLock() override;
-
-	void ReleaseBlitterLock() override;
-
 	bool ClaimMousePointer() override;
 
 	const char *GetName() const override { return "sdl"; }
 
 protected:
 	void InputLoop() override;
-	bool LockVideoBuffer() override;
-	void UnlockVideoBuffer() override;
 	void Paint() override;
-	void PaintThread() override;
 	void CheckPaletteAnim() override;
 	bool PollEvent() override;
 
 private:
-	std::unique_lock<std::recursive_mutex> draw_lock;
-
 	bool CreateMainSurface(uint w, uint h);
 	void SetupKeyboard();
-
-	static void PaintThreadThunk(VideoDriver_SDL *drv);
 };
 
 /** Factory for the SDL video driver. */

@@ -71,7 +71,6 @@ const char *VideoDriver_SDL_OpenGL::Start(const StringList &param)
 	this->ClientSizeChanged(w, h, true);
 
 	SDL_GL_SetSwapInterval(GetDriverParamBool(param, "vsync") ? 1 : 0);
-	this->draw_threaded = false;
 
 	return nullptr;
 }

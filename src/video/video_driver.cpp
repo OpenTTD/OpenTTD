@@ -19,7 +19,7 @@
 
 bool _video_hw_accel; ///< Whether to consider hardware accelerated video drivers.
 
-bool VideoDriver::Tick()
+void VideoDriver::Tick()
 {
 	auto cur_ticks = std::chrono::steady_clock::now();
 
@@ -66,12 +66,10 @@ bool VideoDriver::Tick()
 
 		::InputLoop();
 		UpdateWindows();
+
 		this->CheckPaletteAnim();
-
-		return true;
+		this->Paint();
 	}
-
-	return false;
 }
 
 void VideoDriver::SleepTillNextTick()

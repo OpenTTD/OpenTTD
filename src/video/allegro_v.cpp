@@ -478,9 +478,7 @@ void VideoDriver_Allegro::MainLoop()
 	for (;;) {
 		if (_exit_game) return;
 
-		if (this->Tick()) {
-			this->Paint();
-		}
+		this->Tick();
 		this->SleepTillNextTick();
 	}
 }

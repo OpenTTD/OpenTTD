@@ -36,8 +36,6 @@ protected:
 	void Paint() override;
 	bool CreateMainWindow(uint w, uint h, uint flags) override;
 
-	void PaintThread() override {}
-
 private:
 	void  *gl_context;  ///< OpenGL context.
 	uint8 *anim_buffer; ///< Animation buffer from OpenGL back-end.

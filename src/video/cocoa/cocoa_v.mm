@@ -443,9 +443,7 @@ void VideoDriver_Cocoa::MainLoopReal()
 				break;
 			}
 
-			if (this->Tick()) {
-				this->Paint();
-			}
+			this->Tick();
 			this->SleepTillNextTick();
 		}
 	}
