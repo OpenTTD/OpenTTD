@@ -60,6 +60,7 @@ protected:
 	bool LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;
 	void CheckPaletteAnim() override;
+	bool PollEvent() override;
 
 	void Initialize();
 	bool MakeWindow(bool full_screen);

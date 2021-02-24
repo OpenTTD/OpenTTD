@@ -43,12 +43,12 @@ protected:
 	void UnlockVideoBuffer() override;
 	void Paint() override;
 	void PaintThread() override;
-	void CheckPaletteAnim();
+	void CheckPaletteAnim() override;
+	bool PollEvent() override;
 
 private:
 	std::unique_lock<std::recursive_mutex> draw_lock;
 
-	int PollEvent();
 	bool CreateMainSurface(uint w, uint h);
 	void SetupKeyboard();
 
