@@ -88,6 +88,7 @@ public:
 	void Paint();
 
 	void DrawMouseCursor();
+	void PopulateCursorCache();
 	void ClearCursorCache();
 
 	void *GetVideoBuffer();

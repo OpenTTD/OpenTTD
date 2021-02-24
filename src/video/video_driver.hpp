@@ -16,7 +16,11 @@
 #include "../gfx_func.h"
 #include "../settings_type.h"
 #include "../zoom_type.h"
+#include <atomic>
 #include <chrono>
+#include <condition_variable>
+#include <mutex>
+#include <thread>
 #include <vector>
 
 extern std::string _ini_videodriver;
@@ -31,6 +35,8 @@ class VideoDriver : public Driver {
 	const uint DEFAULT_WINDOW_HEIGHT = 480u; ///< Default window height.
 
 public:
+	VideoDriver() : is_game_threaded(true) {}
+
 	/**
 	 * Mark a particular area dirty.
 	 * @param left   The left most line of the dirty area.
@@ -82,6 +88,11 @@ public:
 	{
 		return false;
 	}
+
+	/**
+	 * Populate all sprites in cache.
+	 */
+	virtual void PopulateSystemSprites() {}
 
 	/**
 	 * Clear all cached sprites.
@@ -240,6 +251,16 @@ protected:
 	virtual bool PollEvent() { return false; };
 
 	/**
+	 * Start the loop for game-tick.
+	 */
+	void StartGameThread();
+
+	/**
+	 * Stop the loop for the game-tick. This can still tick at most one time before truly shutting down.
+	 */
+	void StopGameThread();
+
+	/**
 	 * Give the video-driver a tick.
 	 * It will process any potential game-tick and/or draw-tick, and/or any
 	 * other video-driver related event.
@@ -271,6 +292,17 @@ protected:
 
 	bool fast_forward_key_pressed; ///< The fast-forward key is being pressed.
 	bool fast_forward_via_key; ///< The fast-forward was enabled by key press.
+
+	bool is_game_threaded;
+	std::thread game_thread;
+	std::mutex game_state_mutex;
+	std::mutex game_thread_wait_mutex;
+
+	static void GameThreadThunk(VideoDriver *drv);
+
+private:
+	void GameLoop();
+	void GameThread();
 };
 
 #endif /* VIDEO_VIDEO_DRIVER_HPP */

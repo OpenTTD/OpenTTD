@@ -110,6 +110,11 @@ const char *VideoDriver_SDL_OpenGL::AllocateContext()
 	return OpenGLBackend::Create(&GetOGLProcAddressCallback);
 }
 
+void VideoDriver_SDL_OpenGL::PopulateSystemSprites()
+{
+	OpenGLBackend::Get()->PopulateCursorCache();
+}
+
 void VideoDriver_SDL_OpenGL::ClearSystemSprites()
 {
 	OpenGLBackend::Get()->ClearCursorCache();

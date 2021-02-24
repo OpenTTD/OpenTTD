@@ -214,6 +214,8 @@ const char *VideoDriver_CocoaOpenGL::Start(const StringList &param)
 	this->UpdateVideoModes();
 	MarkWholeScreenDirty();
 
+	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+
 	return nullptr;
 
 }
@@ -225,6 +227,11 @@ void VideoDriver_CocoaOpenGL::Stop()
 	CGLSetCurrentContext(this->gl_context);
 	OpenGLBackend::Destroy();
 	CGLReleaseContext(this->gl_context);
+}
+
+void VideoDriver_CocoaOpenGL::PopulateSystemSprites()
+{
+	OpenGLBackend::Get()->PopulateCursorCache();
 }
 
 void VideoDriver_CocoaOpenGL::ClearSystemSprites()

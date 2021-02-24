@@ -48,9 +48,9 @@ void VideoDriver_Null::MainLoop()
 	uint i;
 
 	for (i = 0; i < this->ticks; i++) {
-		GameLoop();
-		InputLoop();
-		UpdateWindows();
+		::GameLoop();
+		::InputLoop();
+		::UpdateWindows();
 	}
 }
 

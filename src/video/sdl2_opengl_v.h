@@ -24,6 +24,8 @@ public:
 
 	void ClearSystemSprites() override;
 
+	void PopulateSystemSprites() override;
+
 	bool HasAnimBuffer() override { return true; }
 	uint8 *GetAnimBuffer() override { return this->anim_buffer; }
 

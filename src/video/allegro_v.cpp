@@ -412,7 +412,7 @@ bool VideoDriver_Allegro::PollEvent()
  */
 int _allegro_instance_count = 0;
 
-const char *VideoDriver_Allegro::Start(const StringList &parm)
+const char *VideoDriver_Allegro::Start(const StringList &param)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		DEBUG(driver, 0, "allegro: install_allegro failed '%s'", allegro_error);
@@ -439,6 +439,8 @@ const char *VideoDriver_Allegro::Start(const StringList &parm)
 	}
 	MarkWholeScreenDirty();
 	set_close_button_callback(HandleExitGameRequest);
+
+	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
 	return nullptr;
 }
@@ -475,12 +477,16 @@ void VideoDriver_Allegro::InputLoop()
 
 void VideoDriver_Allegro::MainLoop()
 {
+	this->StartGameThread();
+
 	for (;;) {
-		if (_exit_game) return;
+		if (_exit_game) break;
 
 		this->Tick();
 		this->SleepTillNextTick();
 	}
+
+	this->StopGameThread();
 }
 
 bool VideoDriver_Allegro::ChangeResolution(int w, int h)
