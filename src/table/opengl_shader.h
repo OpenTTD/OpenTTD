@@ -146,3 +146,58 @@ static const char *_frag_shader_rgb_mask_blend_150[] = {
 	"  colour.rgb = idx > 0.0 ? adj_brightness(remap_col.rgb, max3(rgb_col.rgb)) : rgb_col.rgb;",
 	"}",
 };
+
+/** Fragment shader that performs a palette lookup to read the colour from a sprite texture. */
+static const char *_frag_shader_sprite_blend[] = {
+	"#version 110\n",
+	"#extension GL_ATI_shader_texture_lod: enable\n",
+	"#extension GL_ARB_shader_texture_lod: enable\n",
+	"uniform sampler2D colour_tex;",
+	"uniform sampler1D palette;",
+	"uniform sampler2D remap_tex;",
+	"uniform sampler1D pal;",
+	"uniform float zoom;",
+	"uniform bool rgb;",
+	"uniform bool crash;",
+	"varying vec2 colour_tex_uv;",
+	"",
+	_frag_shader_remap_func,
+	"",
+	"void main() {",
+	"  float idx = texture2DLod(remap_tex, colour_tex_uv, zoom).r;",
+	"  float r = texture1D(pal, idx).r;",
+	"  vec4 remap_col = texture1D(palette, idx);",
+	"  vec4 rgb_col = texture2DLod(colour_tex, colour_tex_uv, zoom);",
+	"",
+	"  if (crash && idx == 0.0) rgb_col.rgb = vec2(dot(rgb_col.rgb, vec3(0.199325561523, 0.391342163085, 0.076004028320)), 0.0).rrr;"
+	"  gl_FragData[0].a = rgb && (r > 0.0 || idx == 0.0) ? rgb_col.a : remap_col.a;",
+	"  gl_FragData[0].rgb = idx > 0.0 ? adj_brightness(remap_col.rgb, max3(rgb_col.rgb)) : rgb_col.rgb;",
+	"}",
+};
+
+/** GLSL 1.50 fragment shader that performs a palette lookup to read the colour from a sprite texture. */
+static const char *_frag_shader_sprite_blend_150[] = {
+	"#version 150\n",
+	"uniform sampler2D colour_tex;",
+	"uniform sampler1D palette;",
+	"uniform sampler2D remap_tex;",
+	"uniform sampler1D pal;",
+	"uniform float zoom;",
+	"uniform bool rgb;",
+	"uniform bool crash;",
+	"in vec2 colour_tex_uv;",
+	"out vec4 colour;",
+	"",
+	_frag_shader_remap_func,
+	"",
+	"void main() {",
+	"  float idx =  textureLod(remap_tex, colour_tex_uv, zoom).r;"
+	"  float r = texture(pal, idx).r;",
+	"  vec4 remap_col = texture(palette, r);",
+	"  vec4 rgb_col = textureLod(colour_tex, colour_tex_uv, zoom);",
+	"",
+	"  if (crash && idx == 0.0) rgb_col.rgb = vec2(dot(rgb_col.rgb, vec3(0.199325561523, 0.391342163085, 0.076004028320)), 0.0).rrr;"
+	"  colour.a = rgb && (r > 0.0 || idx == 0.0) ? rgb_col.a : remap_col.a;",
+	"  colour.rgb = idx > 0.0 ? adj_brightness(remap_col.rgb, max3(rgb_col.rgb)) : rgb_col.rgb;",
+	"}",
+};

@@ -54,7 +54,15 @@ private:
 	GLint  remap_zoom_loc;   ///< Uniform location for sprite zoom;
 	GLint  remap_rgb_loc;    ///< Uniform location for RGB mode flag;
 
-	LRUCache<SpriteID, Sprite> cursor_cache; ///< Cache of encoded cursor sprites.
+	GLuint sprite_program;    ///< Shader program for blending and rendering a sprite to the video buffer.
+	GLint  sprite_sprite_loc; ///< Uniform location for sprite parameters.
+	GLint  sprite_screen_loc; ///< Uniform location for screen size;
+	GLint  sprite_zoom_loc;   ///< Uniform location for sprite zoom;
+	GLint  sprite_rgb_loc;    ///< Uniform location for RGB mode flag;
+	GLint  sprite_crash_loc;  ///< Uniform location for crash remap mode flag;
+
+	LRUCache<SpriteID, Sprite> cursor_cache;   ///< Cache of encoded cursor sprites.
+	PaletteID last_sprite_pal = (PaletteID)-1; ///< Last uploaded remap palette.
 
 	OpenGLBackend();
 	~OpenGLBackend();
@@ -62,7 +70,7 @@ private:
 	const char *Init();
 	bool InitShaders();
 
-	void RenderOglSprite(OpenGLSprite *gl_sprite, uint x, uint y, ZoomLevel zoom);
+	void RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, uint x, uint y, ZoomLevel zoom);
 
 public:
 	/** Get singleton instance of this class. */
@@ -109,6 +117,10 @@ private:
 	GLuint tex[NUM_TEX]; ///< The texture objects.
 
 	static GLuint dummy_tex[NUM_TEX]; ///< 1x1 dummy textures to substitute for unused sprite components.
+
+	static GLuint pal_identity; ///< Identity texture mapping.
+	static GLuint pal_tex;      ///< Texture for palette remap.
+	static GLuint pal_pbo;      ///< Pixel buffer object for remap upload.
 
 	static bool Create();
 	static void Destroy();

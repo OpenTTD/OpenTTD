@@ -344,6 +344,7 @@ void GfxLoadSprites()
 	DEBUG(sprite, 2, "Loading sprite set %d", _settings_game.game_creation.landscape);
 
 	SwitchNewGRFBlitter();
+	VideoDriver::GetInstance()->ClearSystemSprites();
 	ClearFontCache();
 	GfxInitSpriteMem();
 	LoadSpriteTables();
