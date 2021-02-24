@@ -435,6 +435,8 @@ void VideoDriver_Cocoa::InputLoop()
 /** Main game loop. */
 void VideoDriver_Cocoa::MainLoopReal()
 {
+	this->StartGameThread();
+
 	for (;;) {
 		@autoreleasepool {
 			if (_exit_game) {
@@ -447,6 +449,8 @@ void VideoDriver_Cocoa::MainLoopReal()
 			this->SleepTillNextTick();
 		}
 	}
+
+	this->StopGameThread();
 }
 
 
@@ -557,6 +561,8 @@ const char *VideoDriver_CocoaQuartz::Start(const StringList &param)
 
 	this->GameSizeChanged();
 	this->UpdateVideoModes();
+
+	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
 	return nullptr;
 

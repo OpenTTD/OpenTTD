@@ -267,6 +267,8 @@ void VideoDriver_Dedicated::MainLoop()
 		}
 	}
 
+	this->is_game_threaded = false;
+
 	/* Done loading, start game! */
 
 	if (!_networking) {

@@ -864,12 +864,16 @@ bool VideoDriver_Win32Base::PollEvent()
 
 void VideoDriver_Win32Base::MainLoop()
 {
+	this->StartGameThread();
+
 	for (;;) {
 		if (_exit_game) break;
 
 		this->Tick();
 		this->SleepTillNextTick();
 	}
+
+	this->StopGameThread();
 }
 
 void VideoDriver_Win32Base::ClientSizeChanged(int w, int h, bool force)
@@ -995,6 +999,8 @@ const char *VideoDriver_Win32GDI::Start(const StringList &param)
 
 	MarkWholeScreenDirty();
 
+	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+
 	return nullptr;
 }
 
@@ -1115,13 +1121,7 @@ void VideoDriver_Win32GDI::Paint()
 				break;
 
 			case Blitter::PALETTE_ANIMATION_BLITTER: {
-				bool need_buf = _screen.dst_ptr == nullptr;
-				if (need_buf) _screen.dst_ptr = this->GetVideoPointer();
 				blitter->PaletteAnimate(_local_palette);
-				if (need_buf) {
-					this->ReleaseVideoPointer();
-					_screen.dst_ptr = nullptr;
-				}
 				break;
 			}
 
@@ -1291,6 +1291,8 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 
 	MarkWholeScreenDirty();
 
+	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+
 	return nullptr;
 }
 
@@ -1369,6 +1371,11 @@ bool VideoDriver_Win32OpenGL::AfterBlitterChange()
 	assert(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 0);
 	this->ClientSizeChanged(this->width, this->height, true);
 	return true;
+}
+
+void VideoDriver_Win32OpenGL::PopulateSystemSprites()
+{
+	OpenGLBackend::Get()->PopulateCursorCache();
 }
 
 void VideoDriver_Win32OpenGL::ClearSystemSprites()

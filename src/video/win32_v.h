@@ -129,6 +129,8 @@ public:
 
 	bool UseSystemCursor() override { return true; }
 
+	void PopulateSystemSprites() override;
+
 	void ClearSystemSprites() override;
 
 	bool HasAnimBuffer() override { return true; }

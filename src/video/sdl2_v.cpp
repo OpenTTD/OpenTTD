@@ -541,14 +541,14 @@ const char *VideoDriver_SDL_Base::Initialize()
 	return nullptr;
 }
 
-const char *VideoDriver_SDL_Base::Start(const StringList &parm)
+const char *VideoDriver_SDL_Base::Start(const StringList &param)
 {
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) return "Only real blitters supported";
 
 	const char *error = this->Initialize();
 	if (error != nullptr) return error;
 
-	this->startup_display = FindStartupDisplay(GetDriverParamInt(parm, "display", -1));
+	this->startup_display = FindStartupDisplay(GetDriverParamInt(param, "display", -1));
 
 	if (!CreateMainSurface(_cur_resolution.width, _cur_resolution.height, false)) {
 		return SDL_GetError();
@@ -561,6 +561,12 @@ const char *VideoDriver_SDL_Base::Start(const StringList &parm)
 
 	SDL_StopTextInput();
 	this->edit_box_focused = false;
+
+#ifdef __EMSCRIPTEN__
+	this->is_game_threaded = false;
+#else
+	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+#endif
 
 	return nullptr;
 }
@@ -637,9 +643,13 @@ void VideoDriver_SDL_Base::MainLoop()
 	/* Run the main loop event-driven, based on RequestAnimationFrame. */
 	emscripten_set_main_loop_arg(&this->EmscriptenLoop, this, 0, 1);
 #else
+	this->StartGameThread();
+
 	while (!_exit_game) {
 		LoopOnce();
 	}
+
+	this->StopGameThread();
 #endif
 }
 

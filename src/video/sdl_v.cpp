@@ -570,10 +570,10 @@ bool VideoDriver_SDL::PollEvent()
 	return true;
 }
 
-const char *VideoDriver_SDL::Start(const StringList &parm)
+const char *VideoDriver_SDL::Start(const StringList &param)
 {
 	char buf[30];
-	_use_hwpalette = GetDriverParamInt(parm, "hw_palette", 2);
+	_use_hwpalette = GetDriverParamInt(param, "hw_palette", 2);
 
 	/* Just on the offchance the audio subsystem started before the video system,
 	 * check whether any part of SDL has been initialised before getting here.
@@ -598,6 +598,8 @@ const char *VideoDriver_SDL::Start(const StringList &parm)
 
 	MarkWholeScreenDirty();
 	SetupKeyboard();
+
+	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
 
 	return nullptr;
 }
@@ -647,12 +649,16 @@ void VideoDriver_SDL::InputLoop()
 
 void VideoDriver_SDL::MainLoop()
 {
+	this->StartGameThread();
+
 	for (;;) {
 		if (_exit_game) break;
 
 		this->Tick();
 		this->SleepTillNextTick();
 	}
+
+	this->StopGameThread();
 }
 
 bool VideoDriver_SDL::ChangeResolution(int w, int h)
