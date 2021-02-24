@@ -36,8 +36,11 @@
 #include "../debug.h"
 #include "../blitter/factory.hpp"
 #include "../zoom_func.h"
+#include <array>
+#include <numeric>
 
 #include "../table/opengl_shader.h"
+#include "../table/sprites.h"
 
 
 #include "../safeguards.h"
@@ -52,6 +55,7 @@ static PFNGLGENBUFFERSPROC _glGenBuffers;
 static PFNGLDELETEBUFFERSPROC _glDeleteBuffers;
 static PFNGLBINDBUFFERPROC _glBindBuffer;
 static PFNGLBUFFERDATAPROC _glBufferData;
+static PFNGLBUFFERSUBDATAPROC _glBufferSubData;
 static PFNGLMAPBUFFERPROC _glMapBuffer;
 static PFNGLUNMAPBUFFERPROC _glUnmapBuffer;
 static PFNGLCLEARBUFFERSUBDATAPROC _glClearBufferSubData;
@@ -199,6 +203,7 @@ static bool BindVBOExtension()
 		_glDeleteBuffers = (PFNGLDELETEBUFFERSPROC)GetOGLProcAddress("glDeleteBuffers");
 		_glBindBuffer = (PFNGLBINDBUFFERPROC)GetOGLProcAddress("glBindBuffer");
 		_glBufferData = (PFNGLBUFFERDATAPROC)GetOGLProcAddress("glBufferData");
+		_glBufferSubData = (PFNGLBUFFERSUBDATAPROC)GetOGLProcAddress("glBufferSubData");
 		_glMapBuffer = (PFNGLMAPBUFFERPROC)GetOGLProcAddress("glMapBuffer");
 		_glUnmapBuffer = (PFNGLUNMAPBUFFERPROC)GetOGLProcAddress("glUnmapBuffer");
 	} else {
@@ -206,6 +211,7 @@ static bool BindVBOExtension()
 		_glDeleteBuffers = (PFNGLDELETEBUFFERSPROC)GetOGLProcAddress("glDeleteBuffersARB");
 		_glBindBuffer = (PFNGLBINDBUFFERPROC)GetOGLProcAddress("glBindBufferARB");
 		_glBufferData = (PFNGLBUFFERDATAPROC)GetOGLProcAddress("glBufferDataARB");
+		_glBufferSubData = (PFNGLBUFFERSUBDATAPROC)GetOGLProcAddress("glBufferSubDataARB");
 		_glMapBuffer = (PFNGLMAPBUFFERPROC)GetOGLProcAddress("glMapBufferARB");
 		_glUnmapBuffer = (PFNGLUNMAPBUFFERPROC)GetOGLProcAddress("glUnmapBufferARB");
 	}
@@ -216,7 +222,7 @@ static bool BindVBOExtension()
 		_glClearBufferSubData = nullptr;
 	}
 
-	return _glGenBuffers != nullptr && _glDeleteBuffers != nullptr && _glBindBuffer != nullptr && _glBufferData != nullptr && _glMapBuffer != nullptr && _glUnmapBuffer != nullptr;
+	return _glGenBuffers != nullptr && _glDeleteBuffers != nullptr && _glBindBuffer != nullptr && _glBufferData != nullptr && _glBufferSubData != nullptr &&  _glMapBuffer != nullptr && _glUnmapBuffer != nullptr;
 }
 
 /** Bind vertex array object extension functions. */
@@ -430,6 +436,7 @@ OpenGLBackend::~OpenGLBackend()
 		_glDeleteProgram(this->remap_program);
 		_glDeleteProgram(this->vid_program);
 		_glDeleteProgram(this->pal_program);
+		_glDeleteProgram(this->sprite_program);
 	}
 	if (_glDeleteVertexArrays != nullptr) _glDeleteVertexArrays(1, &this->vao_quad);
 	if (_glDeleteBuffers != nullptr) {
@@ -505,7 +512,7 @@ const char *OpenGLBackend::Init()
 	/* Check available texture units. */
 	GLint max_tex_units = 0;
 	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_tex_units);
-	if (max_tex_units < 3) return "Not enough simultaneous textures supported";
+	if (max_tex_units < 4) return "Not enough simultaneous textures supported";
 
 	DEBUG(driver, 2, "OpenGL shading language version: %s, texture units = %d", (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION), (int)max_tex_units);
 
@@ -580,6 +587,22 @@ const char *OpenGLBackend::Init()
 	_glUniform1i(tex_location, 0);     // Texture unit 0.
 	_glUniform1i(palette_location, 1); // Texture unit 1.
 	_glUniform1i(remap_location, 2);   // Texture unit 2.
+
+	/* Bind uniforms in sprite shader program. */
+	tex_location = _glGetUniformLocation(this->sprite_program, "colour_tex");
+	palette_location = _glGetUniformLocation(this->sprite_program, "palette");
+	remap_location = _glGetUniformLocation(this->sprite_program, "remap_tex");
+	GLint pal_location = _glGetUniformLocation(this->sprite_program, "pal");
+	this->sprite_sprite_loc = _glGetUniformLocation(this->sprite_program, "sprite");
+	this->sprite_screen_loc = _glGetUniformLocation(this->sprite_program, "screen");
+	this->sprite_zoom_loc = _glGetUniformLocation(this->sprite_program, "zoom");
+	this->sprite_rgb_loc = _glGetUniformLocation(this->sprite_program, "rgb");
+	this->sprite_crash_loc = _glGetUniformLocation(this->sprite_program, "crash");
+	_glUseProgram(this->sprite_program);
+	_glUniform1i(tex_location, 0);     // Texture unit 0.
+	_glUniform1i(palette_location, 1); // Texture unit 1.
+	_glUniform1i(remap_location, 2);   // Texture unit 2.
+	_glUniform1i(pal_location, 3);     // Texture unit 3.
 	(void)glGetError(); // Clear errors.
 
 	/* Create pixel buffer object as video buffer storage. */
@@ -720,6 +743,12 @@ bool OpenGLBackend::InitShaders()
 	_glCompileShader(remap_shader);
 	if (!VerifyShader(remap_shader)) return false;
 
+	/* Sprite fragment shader. */
+	GLuint sprite_shader = _glCreateShader(GL_FRAGMENT_SHADER);
+	_glShaderSource(sprite_shader, glsl_150 ? lengthof(_frag_shader_sprite_blend_150) : lengthof(_frag_shader_sprite_blend), glsl_150 ? _frag_shader_sprite_blend_150 : _frag_shader_sprite_blend, nullptr);
+	_glCompileShader(sprite_shader);
+	if (!VerifyShader(sprite_shader)) return false;
+
 	/* Link shaders to program. */
 	this->vid_program = _glCreateProgram();
 	_glAttachShader(this->vid_program, vert_shader);
@@ -733,11 +762,16 @@ bool OpenGLBackend::InitShaders()
 	_glAttachShader(this->remap_program, vert_shader);
 	_glAttachShader(this->remap_program, remap_shader);
 
+	this->sprite_program = _glCreateProgram();
+	_glAttachShader(this->sprite_program, vert_shader);
+	_glAttachShader(this->sprite_program, sprite_shader);
+
 	if (glsl_150) {
 		/* Bind fragment shader outputs. */
 		_glBindFragDataLocation(this->vid_program, 0, "colour");
 		_glBindFragDataLocation(this->pal_program, 0, "colour");
 		_glBindFragDataLocation(this->remap_program, 0, "colour");
+		_glBindFragDataLocation(this->sprite_program, 0, "colour");
 	}
 
 	_glLinkProgram(this->vid_program);
@@ -749,10 +783,14 @@ bool OpenGLBackend::InitShaders()
 	_glLinkProgram(this->remap_program);
 	if (!VerifyProgram(this->remap_program)) return false;
 
+	_glLinkProgram(this->sprite_program);
+	if (!VerifyProgram(this->sprite_program)) return false;
+
 	_glDeleteShader(vert_shader);
 	_glDeleteShader(frag_shader_rgb);
 	_glDeleteShader(frag_shader_pal);
 	_glDeleteShader(remap_shader);
+	_glDeleteShader(sprite_shader);
 
 	return true;
 }
@@ -926,7 +964,7 @@ void OpenGLBackend::DrawMouseCursor()
 			}
 		}
 
-		this->RenderOglSprite((OpenGLSprite *)this->cursor_cache.Get(sprite)->data, _cursor.pos.x + _cursor.sprite_pos[i].x, _cursor.pos.y + _cursor.sprite_pos[i].y, ZOOM_LVL_GUI);
+		this->RenderOglSprite((OpenGLSprite *)this->cursor_cache.Get(sprite)->data, _cursor.sprite_seq[i].pal, _cursor.pos.x + _cursor.sprite_pos[i].x, _cursor.pos.y + _cursor.sprite_pos[i].y, ZOOM_LVL_GUI);
 	}
 }
 
@@ -935,6 +973,8 @@ void OpenGLBackend::DrawMouseCursor()
  */
 void OpenGLBackend::ClearCursorCache()
 {
+	this->last_sprite_pal = (PaletteID)-1;
+
 	Sprite *sp;
 	while ((sp = this->cursor_cache.Pop()) != nullptr) {
 		OpenGLSprite *sprite = (OpenGLSprite *)sp->data;
@@ -1091,20 +1131,41 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
  * @param y Y position of the sprite.
  * @param zoom Zoom level to use.
  */
-void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, uint x, uint y, ZoomLevel zoom)
+void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, uint x, uint y, ZoomLevel zoom)
 {
 	/* Set textures. */
 	bool rgb = gl_sprite->BindTextures();
 	_glActiveTexture(GL_TEXTURE0 + 1);
 	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
 
+	/* Set palette remap. */
+	_glActiveTexture(GL_TEXTURE0 + 3);
+	if (pal != PAL_NONE) {
+		glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_tex);
+		if (pal != this->last_sprite_pal) {
+			/* Different remap palette in use, update texture. */
+			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, OpenGLSprite::pal_pbo);
+			glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+
+			_glBufferSubData(GL_PIXEL_UNPACK_BUFFER, 0, 256, GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1);
+			glTexSubImage1D(GL_TEXTURE_1D, 0, 0, 256, GL_RED, GL_UNSIGNED_BYTE, 0);
+
+			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+
+			this->last_sprite_pal = pal;
+		}
+	} else {
+		glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_identity);
+	}
+
 	/* Set up shader program. */
 	Dimension dim = gl_sprite->GetSize(zoom);
-	_glUseProgram(this->remap_program);
-	_glUniform4f(this->remap_sprite_loc, (float)x, (float)y, (float)dim.width, (float)dim.height);
-	_glUniform1f(this->remap_zoom_loc, (float)(zoom - ZOOM_LVL_BEGIN));
-	_glUniform2f(this->remap_screen_loc, (float)_screen.width, (float)_screen.height);
-	_glUniform1i(this->remap_rgb_loc,  rgb ? 1 : 0);
+	_glUseProgram(this->sprite_program);
+	_glUniform4f(this->sprite_sprite_loc, (float)x, (float)y, (float)dim.width, (float)dim.height);
+	_glUniform1f(this->sprite_zoom_loc, (float)(zoom - ZOOM_LVL_BEGIN));
+	_glUniform2f(this->sprite_screen_loc, (float)_screen.width, (float)_screen.height);
+	_glUniform1i(this->sprite_rgb_loc, rgb ? 1 : 0);
+	_glUniform1i(this->sprite_crash_loc, pal == PALETTE_CRASH ? 1 : 0);
 
 	_glBindVertexArray(this->vao_quad);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -1112,6 +1173,9 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, uint x, uint y, Zoo
 
 
 /* static */ GLuint OpenGLSprite::dummy_tex[] = { 0, 0 };
+/* static */ GLuint OpenGLSprite::pal_identity = 0;
+/* static */ GLuint OpenGLSprite::pal_tex = 0;
+/* static */ GLuint OpenGLSprite::pal_pbo = 0;
 
 /**
  * Create all common resources for sprite rendering.
@@ -1144,6 +1208,36 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, uint x, uint y, Zoo
 	glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_REMAP]);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1, 1, 0, GL_RED, GL_UNSIGNED_BYTE, &pal);
 
+	/* Create palette remap textures. */
+	std::array<uint8, 256> identity_pal;
+	std::iota(std::begin(identity_pal), std::end(identity_pal), 0);
+
+	/* Permanent texture for identity remap. */
+	glGenTextures(1, &OpenGLSprite::pal_identity);
+	glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_identity);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_LEVEL, 0);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexImage1D(GL_TEXTURE_1D, 0, GL_R8, 256, 0, GL_RED, GL_UNSIGNED_BYTE, identity_pal.data());
+
+	/* Dynamically updated texture for remaps. */
+	glGenTextures(1, &OpenGLSprite::pal_tex);
+	glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_tex);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_LEVEL, 0);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexImage1D(GL_TEXTURE_1D, 0, GL_R8, 256, 0, GL_RED, GL_UNSIGNED_BYTE, identity_pal.data());
+
+	/* Pixel buffer for remap updates. */
+	_glGenBuffers(1, &OpenGLSprite::pal_pbo);
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, OpenGLSprite::pal_pbo);
+	_glBufferData(GL_PIXEL_UNPACK_BUFFER, 256, identity_pal.data(), GL_DYNAMIC_DRAW);
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+
 	return glGetError() == GL_NO_ERROR;
 }
 
@@ -1151,6 +1245,9 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, uint x, uint y, Zoo
 /* static */ void OpenGLSprite::Destroy()
 {
 	glDeleteTextures(NUM_TEX, OpenGLSprite::dummy_tex);
+	glDeleteTextures(1, &OpenGLSprite::pal_identity);
+	glDeleteTextures(1, &OpenGLSprite::pal_tex);
+	if (_glDeleteBuffers != nullptr) _glDeleteBuffers(1, &OpenGLSprite::pal_pbo);
 }
 
 /**
