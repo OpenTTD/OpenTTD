@@ -1285,10 +1285,15 @@ static PFNWGLCREATECONTEXTATTRIBSARBPROC _wglCreateContextAttribsARB = nullptr;
 static PFNWGLSWAPINTERVALEXTPROC _wglSwapIntervalEXT = nullptr;
 static bool _hasWGLARBCreateContextProfile = false; ///< Is WGL_ARB_create_context_profile supported?
 
-/** Platform-specific callback to get an OpenGL funtion pointer. */
+/** Platform-specific callback to get an OpenGL function pointer. */
 static OGLProc GetOGLProcAddressCallback(const char *proc)
 {
-	return reinterpret_cast<OGLProc>(wglGetProcAddress(proc));
+	OGLProc ret = reinterpret_cast<OGLProc>(wglGetProcAddress(proc));
+	if (ret == nullptr) {
+		/* Non-extension GL function? Try normal loading. */
+		ret = reinterpret_cast<OGLProc>(GetProcAddress(GetModuleHandle(L"opengl32"), proc));
+	}
+	return ret;
 }
 
 /**

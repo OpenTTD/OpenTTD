@@ -51,8 +51,29 @@
 
 #define GL(function) static decltype(&function) _ ## function
 
+GL(glGetString);
+GL(glGetIntegerv);
+GL(glGetError);
 GL(glDebugMessageControl);
 GL(glDebugMessageCallback);
+
+GL(glDisable);
+GL(glEnable);
+GL(glViewport);
+GL(glClear);
+GL(glClearColor);
+GL(glBlendFunc);
+GL(glDrawArrays);
+
+GL(glTexImage1D);
+GL(glTexImage2D);
+GL(glTexParameteri);
+GL(glTexSubImage1D);
+GL(glTexSubImage2D);
+GL(glBindTexture);
+GL(glDeleteTextures);
+GL(glGenTextures);
+GL(glPixelStorei);
 
 GL(glActiveTexture);
 
@@ -162,7 +183,7 @@ static bool IsOpenGLExtensionSupported(const char *extension)
 	if (glGetStringi != nullptr) {
 		/* New style: Each supported extension can be queried and compared independently. */
 		GLint num_exts;
-		glGetIntegerv(GL_NUM_EXTENSIONS, &num_exts);
+		_glGetIntegerv(GL_NUM_EXTENSIONS, &num_exts);
 
 		for (GLint i = 0; i < num_exts; i++) {
 			const char *entry = (const char *)glGetStringi(GL_EXTENSIONS, i);
@@ -170,7 +191,7 @@ static bool IsOpenGLExtensionSupported(const char *extension)
 		}
 	} else {
 		/* Old style: A single, space-delimited string for all extensions. */
-		return FindStringInExtensionList((const char *)glGetString(GL_EXTENSIONS), extension) != nullptr;
+		return FindStringInExtensionList((const char *)_glGetString(GL_EXTENSIONS), extension) != nullptr;
 	}
 
 	return false;
@@ -203,6 +224,39 @@ static bool BindGLProc(F &f, const char *name)
 {
 	f = reinterpret_cast<F>(GetOGLProcAddress(name));
 	return f != nullptr;
+}
+
+/** Bind basic information functions. */
+static bool BindBasicInfoProcs()
+{
+	if (!BindGLProc(_glGetString, "glGetString")) return false;
+	if (!BindGLProc(_glGetIntegerv, "glGetIntegerv")) return false;
+	if (!BindGLProc(_glGetError, "glGetError")) return false;
+
+	return true;
+}
+
+/** Bind OpenGL 1.0 and 1.1 functions. */
+static bool BindBasicOpenGLProcs()
+{
+	if (!BindGLProc(_glDisable, "glDisable")) return false;
+	if (!BindGLProc(_glEnable, "glEnable")) return false;
+	if (!BindGLProc(_glViewport, "glViewport")) return false;
+	if (!BindGLProc(_glTexImage1D, "glTexImage1D")) return false;
+	if (!BindGLProc(_glTexImage2D, "glTexImage2D")) return false;
+	if (!BindGLProc(_glTexParameteri, "glTexParameteri")) return false;
+	if (!BindGLProc(_glTexSubImage1D, "glTexSubImage1D")) return false;
+	if (!BindGLProc(_glTexSubImage2D, "glTexSubImage2D")) return false;
+	if (!BindGLProc(_glBindTexture, "glBindTexture")) return false;
+	if (!BindGLProc(_glDeleteTextures, "glDeleteTextures")) return false;
+	if (!BindGLProc(_glGenTextures, "glGenTextures")) return false;
+	if (!BindGLProc(_glPixelStorei, "glPixelStorei")) return false;
+	if (!BindGLProc(_glClear, "glClear")) return false;
+	if (!BindGLProc(_glClearColor, "glClearColor")) return false;
+	if (!BindGLProc(_glBlendFunc, "glBlendFunc")) return false;
+	if (!BindGLProc(_glDrawArrays, "glDrawArrays")) return false;
+
+	return true;
 }
 
 /** Bind texture-related extension functions. */
@@ -393,8 +447,8 @@ void SetupDebugOutput()
 
 	if (_glDebugMessageControl != nullptr && _glDebugMessageCallback != nullptr) {
 		/* Enable debug output. As synchronous debug output costs performance, we only enable it with a high debug level. */
-		glEnable(GL_DEBUG_OUTPUT);
-		if (_debug_driver_level >= 8) glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+		_glEnable(GL_DEBUG_OUTPUT);
+		if (_debug_driver_level >= 8) _glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 
 		_glDebugMessageCallback(&DebugOutputCallback, nullptr);
 		/* Enable all messages on highest debug level.*/
@@ -443,9 +497,6 @@ OpenGLBackend::OpenGLBackend() : cursor_cache(MAX_CACHED_CURSORS)
  */
 OpenGLBackend::~OpenGLBackend()
 {
-	ClearCursorCache();
-	OpenGLSprite::Destroy();
-
 	if (_glDeleteProgram != nullptr) {
 		_glDeleteProgram(this->remap_program);
 		_glDeleteProgram(this->vid_program);
@@ -458,9 +509,14 @@ OpenGLBackend::~OpenGLBackend()
 		_glDeleteBuffers(1, &this->vid_pbo);
 		_glDeleteBuffers(1, &this->anim_pbo);
 	}
-	glDeleteTextures(1, &this->vid_texture);
-	glDeleteTextures(1, &this->anim_texture);
-	glDeleteTextures(1, &this->pal_texture);
+	if (_glDeleteTextures != nullptr) {
+		ClearCursorCache();
+		OpenGLSprite::Destroy();
+
+		_glDeleteTextures(1, &this->vid_texture);
+		_glDeleteTextures(1, &this->anim_texture);
+		_glDeleteTextures(1, &this->pal_texture);
+	}
 }
 
 /**
@@ -469,10 +525,12 @@ OpenGLBackend::~OpenGLBackend()
  */
 const char *OpenGLBackend::Init()
 {
+	if (!BindBasicInfoProcs()) return "OpenGL not supported";
+
 	/* Always query the supported OpenGL version as the current context might have changed. */
-	const char *ver = (const char *)glGetString(GL_VERSION);
-	const char *vend = (const char *)glGetString(GL_VENDOR);
-	const char *renderer = (const char *)glGetString(GL_RENDERER);
+	const char *ver = (const char *)_glGetString(GL_VERSION);
+	const char *vend = (const char *)_glGetString(GL_VENDOR);
+	const char *renderer = (const char *)_glGetString(GL_RENDERER);
 
 	if (ver == nullptr || vend == nullptr || renderer == nullptr) return "OpenGL not supported";
 
@@ -481,6 +539,8 @@ const char *OpenGLBackend::Init()
 	const char *minor = strchr(ver, '.');
 	_gl_major_ver = atoi(ver);
 	_gl_minor_ver = minor != nullptr ? atoi(minor + 1) : 0;
+
+	if (!BindBasicOpenGLProcs()) return "Failed to bind basic OpenGL functions.";
 
 	SetupDebugOutput();
 
@@ -525,46 +585,46 @@ const char *OpenGLBackend::Init()
 
 	/* Check available texture units. */
 	GLint max_tex_units = 0;
-	glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_tex_units);
+	_glGetIntegerv(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, &max_tex_units);
 	if (max_tex_units < 4) return "Not enough simultaneous textures supported";
 
-	DEBUG(driver, 2, "OpenGL shading language version: %s, texture units = %d", (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION), (int)max_tex_units);
+	DEBUG(driver, 2, "OpenGL shading language version: %s, texture units = %d", (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION), (int)max_tex_units);
 
 	if (!this->InitShaders()) return "Failed to initialize shaders";
 
 	/* Setup video buffer texture. */
-	glGenTextures(1, &this->vid_texture);
-	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	if (glGetError() != GL_NO_ERROR) return "Can't generate video buffer texture";
+	_glGenTextures(1, &this->vid_texture);
+	_glBindTexture(GL_TEXTURE_2D, this->vid_texture);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	_glBindTexture(GL_TEXTURE_2D, 0);
+	if (_glGetError() != GL_NO_ERROR) return "Can't generate video buffer texture";
 
 	/* Setup video buffer texture. */
-	glGenTextures(1, &this->anim_texture);
-	glBindTexture(GL_TEXTURE_2D, this->anim_texture);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glBindTexture(GL_TEXTURE_2D, 0);
-	if (glGetError() != GL_NO_ERROR) return "Can't generate animation buffer texture";
+	_glGenTextures(1, &this->anim_texture);
+	_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	_glBindTexture(GL_TEXTURE_2D, 0);
+	if (_glGetError() != GL_NO_ERROR) return "Can't generate animation buffer texture";
 
 	/* Setup palette texture. */
-	glGenTextures(1, &this->pal_texture);
-	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_LEVEL, 0);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexImage1D(GL_TEXTURE_1D, 0, GL_RGBA8, 256, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
-	glBindTexture(GL_TEXTURE_1D, 0);
-	if (glGetError() != GL_NO_ERROR) return "Can't generate palette lookup texture";
+	_glGenTextures(1, &this->pal_texture);
+	_glBindTexture(GL_TEXTURE_1D, this->pal_texture);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_LEVEL, 0);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	_glTexImage1D(GL_TEXTURE_1D, 0, GL_RGBA8, 256, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
+	_glBindTexture(GL_TEXTURE_1D, 0);
+	if (_glGetError() != GL_NO_ERROR) return "Can't generate palette lookup texture";
 
 	/* Bind uniforms in rendering shader program. */
 	GLint tex_location = _glGetUniformLocation(this->vid_program, "colour_tex");
@@ -617,14 +677,14 @@ const char *OpenGLBackend::Init()
 	_glUniform1i(palette_location, 1); // Texture unit 1.
 	_glUniform1i(remap_location, 2);   // Texture unit 2.
 	_glUniform1i(pal_location, 3);     // Texture unit 3.
-	(void)glGetError(); // Clear errors.
+	(void)_glGetError(); // Clear errors.
 
 	/* Create pixel buffer object as video buffer storage. */
 	_glGenBuffers(1, &this->vid_pbo);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
 	_glGenBuffers(1, &this->anim_pbo);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
-	if (glGetError() != GL_NO_ERROR) return "Can't allocate pixel buffer for video buffer";
+	if (_glGetError() != GL_NO_ERROR) return "Can't allocate pixel buffer for video buffer";
 
 	/* Prime vertex buffer with a full-screen quad and store
 	 * the corresponding state in a vertex array object. */
@@ -644,7 +704,7 @@ const char *OpenGLBackend::Init()
 	_glGenBuffers(1, &this->vbo_quad);
 	_glBindBuffer(GL_ARRAY_BUFFER, this->vbo_quad);
 	_glBufferData(GL_ARRAY_BUFFER, sizeof(vert_array), vert_array, GL_STATIC_DRAW);
-	if (glGetError() != GL_NO_ERROR) return "Can't generate VBO for fullscreen quad";
+	if (_glGetError() != GL_NO_ERROR) return "Can't generate VBO for fullscreen quad";
 
 	/* Set vertex state. */
 	GLint loc_position = _glGetAttribLocation(this->vid_program, "position");
@@ -659,18 +719,18 @@ const char *OpenGLBackend::Init()
 	if (!OpenGLSprite::Create()) return "Failed to create sprite rendering resources";
 
 	this->PrepareContext();
-	(void)glGetError(); // Clear errors.
+	(void)_glGetError(); // Clear errors.
 
 	return nullptr;
 }
 
 void OpenGLBackend::PrepareContext()
 {
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glDisable(GL_DEPTH_TEST);
+	_glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	_glDisable(GL_DEPTH_TEST);
 	/* Enable alpha blending using the src alpha factor. */
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	_glEnable(GL_BLEND);
+	_glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 /**
@@ -725,7 +785,7 @@ static bool VerifyProgram(GLuint program)
  */
 bool OpenGLBackend::InitShaders()
 {
-	const char *ver = (const char *)glGetString(GL_SHADING_LANGUAGE_VERSION);
+	const char *ver = (const char *)_glGetString(GL_SHADING_LANGUAGE_VERSION);
 	if (ver == nullptr) return false;
 
 	int glsl_major  = ver[0] - '0';
@@ -823,7 +883,7 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	int pitch = Align(w, 4);
 
-	glViewport(0, 0, w, h);
+	_glViewport(0, 0, w, h);
 
 	this->vid_buffer = nullptr;
 	if (this->persistent_mapping_supported) {
@@ -853,14 +913,14 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
 	_glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
+	_glBindTexture(GL_TEXTURE_2D, this->vid_texture);
 	switch (bpp) {
 		case 8:
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
+			_glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
 			break;
 
 		default:
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
+			_glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
 			break;
 	}
 
@@ -878,8 +938,8 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 		}
 		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
-		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
+		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+		_glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
 	} else {
 		if (this->anim_buffer != nullptr) {
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
@@ -890,12 +950,12 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 		/* Allocate dummy texture that always reads as 0 == no remap. */
 		uint dummy = 0;
-		glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
-		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1, 1, 0, GL_RED, GL_UNSIGNED_BYTE, &dummy);
+		_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+		_glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1, 1, 0, GL_RED, GL_UNSIGNED_BYTE, &dummy);
 	}
 
-	glBindTexture(GL_TEXTURE_2D, 0);
+	_glBindTexture(GL_TEXTURE_2D, 0);
 
 	/* Set new viewport. */
 	_screen.height = h;
@@ -920,11 +980,11 @@ void OpenGLBackend::UpdatePalette(const Colour *pal, uint first, uint length)
 {
 	assert(first + length <= 256);
 
-	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+	_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 	_glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
-	glTexSubImage1D(GL_TEXTURE_1D, 0, first, length, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, pal + first);
+	_glBindTexture(GL_TEXTURE_1D, this->pal_texture);
+	_glTexSubImage1D(GL_TEXTURE_1D, 0, first, length, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, pal + first);
 }
 
 /**
@@ -932,19 +992,19 @@ void OpenGLBackend::UpdatePalette(const Colour *pal, uint first, uint length)
  */
 void OpenGLBackend::Paint()
 {
-	glClear(GL_COLOR_BUFFER_BIT);
+	_glClear(GL_COLOR_BUFFER_BIT);
 
-	glDisable(GL_BLEND);
+	_glDisable(GL_BLEND);
 
 	/* Blit video buffer to screen. */
 	_glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, this->vid_texture);
+	_glBindTexture(GL_TEXTURE_2D, this->vid_texture);
 	_glActiveTexture(GL_TEXTURE1);
-	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
+	_glBindTexture(GL_TEXTURE_1D, this->pal_texture);
 	/* Is the blitter relying on a separate animation buffer? */
 	if (BlitterFactory::GetCurrentBlitter()->NeedsAnimationBuffer()) {
 		_glActiveTexture(GL_TEXTURE2);
-		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
 		_glUseProgram(this->remap_program);
 		_glUniform4f(this->remap_sprite_loc, 0.0f, 0.0f, 1.0f, 1.0f);
 		_glUniform2f(this->remap_screen_loc, 1.0f, 1.0f);
@@ -954,9 +1014,9 @@ void OpenGLBackend::Paint()
 		_glUseProgram(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 8 ? this->pal_program : this->vid_program);
 	}
 	_glBindVertexArray(this->vao_quad);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	_glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
-	glEnable(GL_BLEND);
+	_glEnable(GL_BLEND);
 }
 
 /**
@@ -1065,15 +1125,15 @@ void OpenGLBackend::ReleaseVideoBuffer(const Rect &update_rect)
 	/* Update changed rect of the video buffer texture. */
 	if (!IsEmptyRect(update_rect)) {
 		_glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, this->vid_texture);
-		glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
+		_glBindTexture(GL_TEXTURE_2D, this->vid_texture);
+		_glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
 		switch (BlitterFactory::GetCurrentBlitter()->GetScreenDepth()) {
 			case 8:
-				glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
+				_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
 				break;
 
 			default:
-				glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid *)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
+				_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, (GLvoid *)(size_t)(update_rect.top * _screen.pitch * 4 + update_rect.left * 4));
 				break;
 		}
 
@@ -1107,9 +1167,9 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
 	/* Update changed rect of the video buffer texture. */
 	if (update_rect.left != update_rect.right) {
 		_glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, this->anim_texture);
-		glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
-		glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
+		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
+		_glPixelStorei(GL_UNPACK_ROW_LENGTH, _screen.pitch);
+		_glTexSubImage2D(GL_TEXTURE_2D, 0, update_rect.left, update_rect.top, update_rect.right - update_rect.left, update_rect.bottom - update_rect.top, GL_RED, GL_UNSIGNED_BYTE, (GLvoid *)(size_t)(update_rect.top * _screen.pitch + update_rect.left));
 
 #ifndef NO_GL_BUFFER_SYNC
 		if (this->persistent_mapping_supported) this->sync_anim_mapping = _glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
@@ -1150,26 +1210,26 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, uint
 	/* Set textures. */
 	bool rgb = gl_sprite->BindTextures();
 	_glActiveTexture(GL_TEXTURE0 + 1);
-	glBindTexture(GL_TEXTURE_1D, this->pal_texture);
+	_glBindTexture(GL_TEXTURE_1D, this->pal_texture);
 
 	/* Set palette remap. */
 	_glActiveTexture(GL_TEXTURE0 + 3);
 	if (pal != PAL_NONE) {
-		glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_tex);
+		_glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_tex);
 		if (pal != this->last_sprite_pal) {
 			/* Different remap palette in use, update texture. */
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, OpenGLSprite::pal_pbo);
-			glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+			_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 
 			_glBufferSubData(GL_PIXEL_UNPACK_BUFFER, 0, 256, GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1);
-			glTexSubImage1D(GL_TEXTURE_1D, 0, 0, 256, GL_RED, GL_UNSIGNED_BYTE, 0);
+			_glTexSubImage1D(GL_TEXTURE_1D, 0, 0, 256, GL_RED, GL_UNSIGNED_BYTE, 0);
 
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
 			this->last_sprite_pal = pal;
 		}
 	} else {
-		glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_identity);
+		_glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_identity);
 	}
 
 	/* Set up shader program. */
@@ -1182,7 +1242,7 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, uint
 	_glUniform1i(this->sprite_crash_loc, pal == PALETTE_CRASH ? 1 : 0);
 
 	_glBindVertexArray(this->vao_quad);
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	_glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 
@@ -1197,54 +1257,54 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, uint
  */
 /* static */ bool OpenGLSprite::Create()
 {
-	glGenTextures(NUM_TEX, OpenGLSprite::dummy_tex);
+	_glGenTextures(NUM_TEX, OpenGLSprite::dummy_tex);
 
 	for (int t = TEX_RGBA; t < NUM_TEX; t++) {
-		glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[t]);
+		_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[t]);
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 	}
 
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
-	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+	_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 
 	/* Load dummy RGBA texture. */
 	const Colour rgb_pixel(0, 0, 0);
-	glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_RGBA]);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1, 1, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &rgb_pixel);
+	_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_RGBA]);
+	_glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 1, 1, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &rgb_pixel);
 
 	/* Load dummy remap texture. */
 	const uint pal = 0;
-	glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_REMAP]);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1, 1, 0, GL_RED, GL_UNSIGNED_BYTE, &pal);
+	_glBindTexture(GL_TEXTURE_2D, OpenGLSprite::dummy_tex[TEX_REMAP]);
+	_glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 1, 1, 0, GL_RED, GL_UNSIGNED_BYTE, &pal);
 
 	/* Create palette remap textures. */
 	std::array<uint8, 256> identity_pal;
 	std::iota(std::begin(identity_pal), std::end(identity_pal), 0);
 
 	/* Permanent texture for identity remap. */
-	glGenTextures(1, &OpenGLSprite::pal_identity);
-	glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_identity);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_LEVEL, 0);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexImage1D(GL_TEXTURE_1D, 0, GL_R8, 256, 0, GL_RED, GL_UNSIGNED_BYTE, identity_pal.data());
+	_glGenTextures(1, &OpenGLSprite::pal_identity);
+	_glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_identity);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_LEVEL, 0);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	_glTexImage1D(GL_TEXTURE_1D, 0, GL_R8, 256, 0, GL_RED, GL_UNSIGNED_BYTE, identity_pal.data());
 
 	/* Dynamically updated texture for remaps. */
-	glGenTextures(1, &OpenGLSprite::pal_tex);
-	glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_tex);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_LEVEL, 0);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	glTexImage1D(GL_TEXTURE_1D, 0, GL_R8, 256, 0, GL_RED, GL_UNSIGNED_BYTE, identity_pal.data());
+	_glGenTextures(1, &OpenGLSprite::pal_tex);
+	_glBindTexture(GL_TEXTURE_1D, OpenGLSprite::pal_tex);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAX_LEVEL, 0);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	_glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	_glTexImage1D(GL_TEXTURE_1D, 0, GL_R8, 256, 0, GL_RED, GL_UNSIGNED_BYTE, identity_pal.data());
 
 	/* Pixel buffer for remap updates. */
 	_glGenBuffers(1, &OpenGLSprite::pal_pbo);
@@ -1252,15 +1312,15 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, uint
 	_glBufferData(GL_PIXEL_UNPACK_BUFFER, 256, identity_pal.data(), GL_DYNAMIC_DRAW);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
-	return glGetError() == GL_NO_ERROR;
+	return _glGetError() == GL_NO_ERROR;
 }
 
 /** Free all common resources for sprite rendering. */
 /* static */ void OpenGLSprite::Destroy()
 {
-	glDeleteTextures(NUM_TEX, OpenGLSprite::dummy_tex);
-	glDeleteTextures(1, &OpenGLSprite::pal_identity);
-	glDeleteTextures(1, &OpenGLSprite::pal_tex);
+	_glDeleteTextures(NUM_TEX, OpenGLSprite::dummy_tex);
+	_glDeleteTextures(1, &OpenGLSprite::pal_identity);
+	_glDeleteTextures(1, &OpenGLSprite::pal_tex);
 	if (_glDeleteBuffers != nullptr) _glDeleteBuffers(1, &OpenGLSprite::pal_pbo);
 }
 
@@ -1274,7 +1334,7 @@ void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, uint
 OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteColourComponent components)
 {
 	assert(levels > 0);
-	(void)glGetError();
+	(void)_glGetError();
 
 	this->dim.width = width;
 	this->dim.height = height;
@@ -1289,32 +1349,32 @@ OpenGLSprite::OpenGLSprite(uint width, uint height, uint levels, SpriteColourCom
 		if (t == TEX_REMAP && (components & SCC_PAL) != SCC_PAL) continue;
 
 		/* Allocate texture. */
-		glGenTextures(1, &this->tex[t]);
-		glBindTexture(GL_TEXTURE_2D, this->tex[t]);
+		_glGenTextures(1, &this->tex[t]);
+		_glBindTexture(GL_TEXTURE_2D, this->tex[t]);
 
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, levels - 1);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, levels - 1);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		_glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 		/* Set size. */
 		for (uint i = 0, w = width, h = height; i < levels; i++, w /= 2, h /= 2) {
 			assert(w * h != 0);
 			if (t == TEX_REMAP) {
-				glTexImage2D(GL_TEXTURE_2D, i, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
+				_glTexImage2D(GL_TEXTURE_2D, i, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
 			} else {
-				glTexImage2D(GL_TEXTURE_2D, i, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
+				_glTexImage2D(GL_TEXTURE_2D, i, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
 			}
 		}
 	}
 
-	assert(glGetError() == GL_NO_ERROR);
+	assert(_glGetError() == GL_NO_ERROR);
 }
 
 OpenGLSprite::~OpenGLSprite()
 {
-	glDeleteTextures(NUM_TEX, this->tex);
+	_glDeleteTextures(NUM_TEX, this->tex);
 }
 
 /**
@@ -1331,7 +1391,7 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 
 	_glActiveTexture(GL_TEXTURE0);
 	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
-	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+	_glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
 
 	if (this->tex[TEX_RGBA] != 0) {
 		/* Unpack pixel data */
@@ -1343,8 +1403,8 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 			rgba[i].a = data[i].a;
 		}
 
-		glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA]);
-		glTexSubImage2D(GL_TEXTURE_2D, level, 0, 0, width, height, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, rgba);
+		_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA]);
+		_glTexSubImage2D(GL_TEXTURE_2D, level, 0, 0, width, height, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, rgba);
 	}
 
 	if (this->tex[TEX_REMAP] != 0) {
@@ -1359,11 +1419,11 @@ void OpenGLSprite::Update(uint width, uint height, uint level, const SpriteLoade
 			}
 		}
 
-		glBindTexture(GL_TEXTURE_2D, this->tex[TEX_REMAP]);
-		glTexSubImage2D(GL_TEXTURE_2D, level, 0, 0, width, height, GL_RED, GL_UNSIGNED_BYTE, buf_pal.GetBuffer());
+		_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_REMAP]);
+		_glTexSubImage2D(GL_TEXTURE_2D, level, 0, 0, width, height, GL_RED, GL_UNSIGNED_BYTE, buf_pal.GetBuffer());
 	}
 
-	assert(glGetError() == GL_NO_ERROR);
+	assert(_glGetError() == GL_NO_ERROR);
 }
 
 /**
@@ -1384,9 +1444,9 @@ inline Dimension OpenGLSprite::GetSize(ZoomLevel level) const
 bool OpenGLSprite::BindTextures()
 {
 	_glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA] != 0 ? this->tex[TEX_RGBA] : OpenGLSprite::dummy_tex[TEX_RGBA]);
+	_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_RGBA] != 0 ? this->tex[TEX_RGBA] : OpenGLSprite::dummy_tex[TEX_RGBA]);
 	_glActiveTexture(GL_TEXTURE0 + 2);
-	glBindTexture(GL_TEXTURE_2D, this->tex[TEX_REMAP] != 0 ? this->tex[TEX_REMAP] : OpenGLSprite::dummy_tex[TEX_REMAP]);
+	_glBindTexture(GL_TEXTURE_2D, this->tex[TEX_REMAP] != 0 ? this->tex[TEX_REMAP] : OpenGLSprite::dummy_tex[TEX_REMAP]);
 
 	return this->tex[TEX_RGBA] != 0;
 }
