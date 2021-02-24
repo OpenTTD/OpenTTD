@@ -482,8 +482,6 @@ void VideoDriver_Allegro::InputLoop()
 void VideoDriver_Allegro::MainLoop()
 {
 	for (;;) {
-		InteractiveRandom(); // randomness
-
 		if (_exit_game) return;
 
 		if (this->Tick()) {

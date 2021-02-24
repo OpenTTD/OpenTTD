@@ -718,8 +718,6 @@ void VideoDriver_SDL::MainLoop()
 	DEBUG(driver, 1, "SDL: using %sthreads", _draw_threaded ? "" : "no ");
 
 	for (;;) {
-		InteractiveRandom(); // randomness
-
 		if (_exit_game) break;
 
 		if (this->Tick()) {

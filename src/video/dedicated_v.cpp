@@ -275,8 +275,6 @@ void VideoDriver_Dedicated::MainLoop()
 	}
 
 	while (!_exit_game) {
-		InteractiveRandom(); // randomness
-
 		if (!_dedicated_forks) DedicatedHandleKeyInput();
 
 		_fast_forward = _ddc_fastforward;

@@ -9,6 +9,7 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
+#include "../core/random_func.hpp"
 #include "../gfx_func.h"
 #include "../progress.h"
 #include "../thread.h"
@@ -24,6 +25,10 @@ bool VideoDriver::Tick()
 		auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - this->last_realtime_tick);
 		_realtime_tick += delta.count();
 		this->last_realtime_tick += delta;
+
+		/* Keep the interactive randomizer a bit more random by requesting
+		 * new values when-ever we can. */
+		InteractiveRandom();
 	}
 
 	if (cur_ticks >= this->next_game_tick || (_fast_forward && !_pause_mode)) {
