@@ -152,7 +152,7 @@ static std::vector<WChar> NSStringToUTF32(NSString *s)
 	[ e release ];
 
 	/* Hand off to main application code. */
-	drv->GameLoop();
+	drv->MainLoopReal();
 
 	/* We are done, thank you for playing. */
 	[ self performSelectorOnMainThread:@selector(stopEngine) withObject:nil waitUntilDone:FALSE ];
