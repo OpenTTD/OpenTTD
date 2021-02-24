@@ -440,8 +440,6 @@ void VideoDriver_Cocoa::GameLoop()
 
 			InteractiveRandom(); // randomness
 
-			while (this->PollEvent()) {}
-
 			if (_exit_game) {
 				/* Restore saved resolution if in fullscreen mode. */
 				if (this->IsFullscreen()) _cur_resolution = this->orig_res;

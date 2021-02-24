@@ -60,6 +60,7 @@ protected:
 	bool LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;
 	void CheckPaletteAnim() override;
+	bool PollEvent() override;
 
 	/** Indicate to the driver the client-side might have changed. */
 	void ClientSizeChanged(int w, int h, bool force);
@@ -74,7 +75,6 @@ protected:
 	virtual bool CreateMainWindow(uint w, uint h, uint flags = 0);
 
 private:
-	int PollEvent();
 	void LoopOnce();
 	void MainLoopCleanup();
 	bool CreateMainSurface(uint w, uint h, bool resize);

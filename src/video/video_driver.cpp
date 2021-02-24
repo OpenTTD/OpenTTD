@@ -55,6 +55,7 @@ bool VideoDriver::Tick()
 		/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 		if (this->next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) this->next_draw_tick = cur_ticks;
 
+		while (this->PollEvent()) {}
 		this->InputLoop();
 		::InputLoop();
 		UpdateWindows();

@@ -250,6 +250,12 @@ protected:
 	virtual void CheckPaletteAnim() {}
 
 	/**
+	 * Process a single system event.
+	 * @returns False if there are no more events to process.
+	 */
+	virtual bool PollEvent() { return false; };
+
+	/**
 	 * Run the game for a single tick, processing boththe game-tick and draw-tick.
 	 * @returns True if the driver should redraw the screen.
 	 */

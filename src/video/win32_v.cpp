@@ -857,10 +857,21 @@ void VideoDriver_Win32Base::InputLoop()
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }
 
-void VideoDriver_Win32Base::MainLoop()
+bool VideoDriver_Win32Base::PollEvent()
 {
 	MSG mesg;
 
+	if (!PeekMessage(&mesg, nullptr, 0, 0, PM_REMOVE)) return false;
+
+	/* Convert key messages to char messages if we want text input. */
+	if (EditBoxInGlobalFocus()) TranslateMessage(&mesg);
+	DispatchMessage(&mesg);
+
+	return true;
+}
+
+void VideoDriver_Win32Base::MainLoop()
+{
 	std::thread draw_thread;
 
 	if (this->draw_threaded) {
@@ -898,11 +909,6 @@ void VideoDriver_Win32Base::MainLoop()
 	for (;;) {
 		InteractiveRandom(); // randomness
 
-		while (PeekMessage(&mesg, nullptr, 0, 0, PM_REMOVE)) {
-			/* Convert key messages to char messages if we want text input. */
-			if (EditBoxInGlobalFocus()) TranslateMessage(&mesg);
-			DispatchMessage(&mesg);
-		}
 		if (_exit_game) break;
 
 		/* Flush GDI buffer to ensure we don't conflict with the drawing thread. */

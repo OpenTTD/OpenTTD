@@ -62,6 +62,7 @@ protected:
 	void InputLoop() override;
 	bool LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;
+	bool PollEvent() override;
 
 	void GameSizeChanged();
 
@@ -79,8 +80,6 @@ protected:
 	virtual void ReleaseVideoPointer() {}
 
 private:
-	bool PollEvent();
-
 	bool IsFullscreen();
 };
 

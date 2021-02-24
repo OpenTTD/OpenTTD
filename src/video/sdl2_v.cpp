@@ -370,11 +370,11 @@ static uint ConvertSdlKeycodeIntoMy(SDL_Keycode kc)
 	return key;
 }
 
-int VideoDriver_SDL_Base::PollEvent()
+bool VideoDriver_SDL_Base::PollEvent()
 {
 	SDL_Event ev;
 
-	if (!SDL_PollEvent(&ev)) return -2;
+	if (!SDL_PollEvent(&ev)) return false;
 
 	switch (ev.type) {
 		case SDL_MOUSEMOTION:
@@ -516,7 +516,8 @@ int VideoDriver_SDL_Base::PollEvent()
 			break;
 		}
 	}
-	return -1;
+
+	return true;
 }
 
 static const char *InitializeSDL()
@@ -629,7 +630,6 @@ void VideoDriver_SDL_Base::LoopOnce()
 {
 	InteractiveRandom(); // randomness
 
-	while (PollEvent() == -1) {}
 	if (_exit_game) {
 #ifdef __EMSCRIPTEN__
 		/* Emscripten is event-driven, and as such the main loop is inside

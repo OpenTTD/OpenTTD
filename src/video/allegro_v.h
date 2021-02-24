@@ -37,6 +37,7 @@ protected:
 	void InputLoop() override;
 	void Paint() override;
 	void CheckPaletteAnim() override;
+	bool PollEvent() override;
 };
 
 /** Factory for the allegro video driver. */
