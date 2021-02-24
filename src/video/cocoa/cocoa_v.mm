@@ -433,7 +433,7 @@ void VideoDriver_Cocoa::InputLoop()
 }
 
 /** Main game loop. */
-void VideoDriver_Cocoa::GameLoop()
+void VideoDriver_Cocoa::MainLoopReal()
 {
 	for (;;) {
 		@autoreleasepool {

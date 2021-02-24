@@ -49,7 +49,7 @@ public:
 
 	/* --- The following methods should be private, but can't be due to Obj-C limitations. --- */
 
-	void GameLoop();
+	void MainLoopReal();
 
 	virtual void AllocateBackingStore(bool force = false) = 0;
 
