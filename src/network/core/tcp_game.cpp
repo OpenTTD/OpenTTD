@@ -25,9 +25,10 @@
  * @param s The socket to connect with.
  */
 NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s) : info(nullptr), client_id(INVALID_CLIENT_ID),
-		last_frame(_frame_counter), last_frame_server(_frame_counter), last_packet(_realtime_tick)
+		last_frame(_frame_counter), last_frame_server(_frame_counter)
 {
 	this->sock = s;
+	this->last_packet = std::chrono::steady_clock::now();
 }
 
 /**
@@ -63,7 +64,7 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 {
 	PacketGameType type = (PacketGameType)p->Recv_uint8();
 
-	this->last_packet = _realtime_tick;
+	this->last_packet = std::chrono::steady_clock::now();
 
 	switch (this->HasClientQuit() ? PACKET_END : type) {
 		case PACKET_SERVER_FULL:                  return this->Receive_SERVER_FULL(p);

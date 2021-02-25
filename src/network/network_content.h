@@ -74,7 +74,7 @@ protected:
 	FILE *curFile;        ///< Currently downloaded file
 	ContentInfo *curInfo; ///< Information about the currently downloaded file
 	bool isConnecting;    ///< Whether we're connecting
-	uint32 lastActivity;  ///< The last time there was network activity
+	std::chrono::steady_clock::time_point lastActivity;  ///< The last time there was network activity
 
 	friend class NetworkContentConnecter;
 
@@ -100,7 +100,7 @@ protected:
 	void DownloadSelectedContentFallback(const ContentIDList &content);
 public:
 	/** The idle timeout; when to close the connection because it's idle. */
-	static const int IDLE_TIMEOUT = 60 * 1000;
+	static constexpr std::chrono::seconds IDLE_TIMEOUT = std::chrono::seconds(60);
 
 	ClientNetworkContentSocketHandler();
 	~ClientNetworkContentSocketHandler();
