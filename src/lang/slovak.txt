@@ -759,9 +759,9 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Kliknite
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Najlepšie spoločnosti, ktoré dosiahli rok {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabuľka spoločnosti v roku {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :{G=z}Obchodníčka
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Obchodník
 STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN.g                   :Obchodníci
-STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :{G=z}Podnikateľka
+STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :{G=m}Podnikateľ
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :{G=m}Priemyselník
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :{G=m}Kapitalista
 STR_HIGHSCORE_PERFORMANCE_TITLE_MAGNATE                         :{G=m}Magnát
@@ -1014,6 +1014,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Taiwanský dol�
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Čínsky jüan (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongský dolár (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indická rupia (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonézska rupia (IDR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazdia naľavo

@@ -559,8 +559,6 @@ STR_MONTH_DEC                                                   :12
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}凡例
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}この凡例の表示/非表示を切り替えます
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}月{} {STRING}月
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}月{} {STRING}月{}{NUM}年
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 

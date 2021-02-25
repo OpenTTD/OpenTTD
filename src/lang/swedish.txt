@@ -312,8 +312,11 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Lastkapacitet
 STR_SORT_BY_RANGE                                               :Räckvidd
 STR_SORT_BY_POPULATION                                          :Folkmängd
 STR_SORT_BY_RATING                                              :Värdering
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Total vinst detta år
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Genomsnittlig vinst detta år
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Ingen
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausa spelet
@@ -739,6 +742,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Obearbetad mark
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Gräsmark
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Barmark
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Regnskog
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Fält
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Träd
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Stenar
@@ -1438,6 +1442,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Behåll byggnad
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Håll verktygen för byggnation av broar, tunnlar, etc. öppna efter användning
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Gruppera utgifter i företagens finansfönster: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Välj layout för företagens utgiftsfönster
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Ta automatiskt bort signaler vid byggande av järnväg om signalerna är i vägen. Notera att detta kan leda till att tåg krockar.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Summerade nyheter: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spela ljudeffekt för sammanfattade nyhetsmeddelanden
@@ -1551,6 +1556,9 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Slutår för po
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Årtal då spelet slutar räkna poäng. Vid slutet av detta år sparas företagets poäng och listan med de bästa spelresultaten visas, men därefter kan spelarna fortsätta att spela.{}Om årtalet är satt till innan startåret visas aldrig de bästa spelresultaten.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Aldrig
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Typ av ekonomi: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Frusen
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillåt köp av aktier från andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :När det är aktiverat blir det tillåtet att köpa och sälja andelar i företag. För att dess andelar ska bli tillgängliga måste ett företag ha uppnått en viss ålder
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Lägsta företagsålder för aktiehandel: {STRING}
@@ -1811,6 +1819,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Är du 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Fusk
 STR_CHEATS_TOOLTIP                                              :{BLACK}Checkboxar indikerar om du använt det här fusket förut
+STR_CHEATS_NOTE                                                 :{BLACK}Notera: användandet av dessa inställningar kommer att sparas av sparfilen
 STR_CHEAT_MONEY                                                 :{LTBLUE}Öka pengar med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelar som företag:: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (ta bort industrier, oflyttbara objekt etc.): {ORANGE}{STRING}
@@ -1962,6 +1971,9 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Gå med 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Uppdatera server
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Uppdatera server info
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Sök online efter offentliga servrar
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Sök LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Sök i lokalt nätverk för servrar
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Lägg till server
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Lägg till en server till listan som alltid kommer kontrolleras för aktiva spel
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Starta server
@@ -2187,6 +2199,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spelet är fort
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel fortfarande pausad ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel fortfarande pausad ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spelet är fortfarande pausat ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Spelet är fortfarande pausat ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spelet är opausat ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :antal spelare
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :ansluter klienter
@@ -2515,6 +2528,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Träd av
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Placera träd av slumpvald typ. Shift växlar mellan att placera träd/visa beräknad kostnad
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Slumpmässigt träd
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantera träd slumpmässigt över landskapet
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Skog
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Skapa mark
@@ -2571,6 +2585,7 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kostnad:
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospektera
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bygga
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Grunda
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Ta bort alla industrier
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja för {STRING} industrin
@@ -3336,6 +3351,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Flytta h
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Flytta högkvarter till annan plats (kostar 1% av företagets värde). Shift+klick visar kostnad utan att flytta högkvarteret
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detaljer
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Visa detaljerat antal infrastruktur-element
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Ge pengar
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Ge pengar till detta företaget
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nytt ansikte
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Välj nytt ansikte på VD:n
@@ -3353,6 +3370,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Sälj 25
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Företagsnamn
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Namn på VD
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Ange hur mycket pengar du vill ge
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vi letar efter någon som vill köpa och ta över vårt företag{}{}Vill du köpa {COMPANY} för {CURRENCY_LONG}?
 
@@ -4296,6 +4314,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... lån
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} krävs
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kan inte återbetala lånet...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kan inte ge bort pengar som är lånade från banken...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Kan ej ge pengar till detta företaget...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kan inte köpa företag...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kan inte bygga huvudkontor här...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kan inte köpa 25% andelar i detta företag...
