@@ -703,7 +703,7 @@ static void CompaniesGenStatistics()
 /**
  * Add monthly inflation
  * @param check_year Shall the inflation get stopped after 170 years?
- * @return true if inflation is maxed and nothing was changed
+ * @return true if inflation is not changed, else false.
  */
 bool AddInflation(bool check_year)
 {
@@ -725,6 +725,9 @@ bool AddInflation(bool check_year)
 	if (check_year && (_cur_year < ORIGINAL_BASE_YEAR || _cur_year >= ORIGINAL_MAX_YEAR)) return true;
 
 	if (_economy.inflation_prices == MAX_INFLATION || _economy.inflation_payment == MAX_INFLATION) return true;
+
+	/* Don't increase inflation during gameplay if the year is looping. */
+	if (check_year && YearIsLooping()) return true;
 
 	/* Approximation for (100 + infl_amount)% ** (1 / 12) - 100%
 	 * scaled by 65536
