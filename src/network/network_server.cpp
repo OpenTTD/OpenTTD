@@ -1816,7 +1816,7 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_ACTIVE:
 				if (lag > _settings_client.network.max_lag_time) {
 					/* Client did still not report in within the specified limit. */
-					IConsolePrintF(CC_ERROR, cs->last_packet + lag * MILLISECONDS_PER_TICK > _realtime_tick ?
+					IConsolePrintF(CC_ERROR, cs->last_packet + std::chrono::milliseconds(lag * MILLISECONDS_PER_TICK) > std::chrono::steady_clock::now() ?
 							/* A packet was received in the last three game days, so the client is likely lagging behind. */
 								"Client #%d is dropped because the client's game state is more than %d ticks behind" :
 							/* No packet was received in the last three game days; sounds like a lost connection. */
@@ -1827,11 +1827,11 @@ void NetworkServer_Tick(bool send_frame)
 				}
 
 				/* Report once per time we detect the lag, and only when we
-				 * received a packet in the last 2000 milliseconds. If we
+				 * received a packet in the last 2 seconds. If we
 				 * did not receive a packet, then the client is not just
 				 * slow, but the connection is likely severed. Mentioning
 				 * frame_freq is not useful in this case. */
-				if (lag > (uint)DAY_TICKS && cs->lag_test == 0 && cs->last_packet + 2000 > _realtime_tick) {
+				if (lag > (uint)DAY_TICKS && cs->lag_test == 0 && cs->last_packet + std::chrono::seconds(2) > std::chrono::steady_clock::now()) {
 					IConsolePrintF(CC_WARNING, "[%d] Client #%d is slow, try increasing [network.]frame_freq to a higher value!", _frame_counter, cs->client_id);
 					cs->lag_test = 1;
 				}

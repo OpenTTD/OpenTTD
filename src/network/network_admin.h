@@ -37,7 +37,7 @@ protected:
 	NetworkRecvStatus SendPong(uint32 d1);
 public:
 	AdminUpdateFrequency update_frequency[ADMIN_UPDATE_END]; ///< Admin requested update intervals.
-	uint32 realtime_connect;                                 ///< Time of connection.
+	std::chrono::steady_clock::time_point connect_time;      ///< Time of connection.
 	NetworkAddress address;                                  ///< Address of the admin.
 
 	ServerNetworkAdminSocketHandler(SOCKET s);

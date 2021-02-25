@@ -40,7 +40,7 @@ static const uint NETWORK_CHAT_LINE_SPACING = 3;
 struct ChatMessage {
 	char message[DRAW_STRING_BUFFER]; ///< The action message.
 	TextColour colour;  ///< The colour of the message.
-	uint32 remove_time; ///< The time to remove the message.
+	std::chrono::steady_clock::time_point remove_time; ///< The time to remove the message.
 };
 
 /* used for chat window */
@@ -97,7 +97,7 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const char *m
 	ChatMessage *cmsg = &_chatmsg_list[msg_count++];
 	strecpy(cmsg->message, buf, lastof(cmsg->message));
 	cmsg->colour = (colour & TC_IS_PALETTE_COLOUR) ? colour : TC_WHITE;
-	cmsg->remove_time = _realtime_tick + duration * 1000;
+	cmsg->remove_time = std::chrono::steady_clock::now() + std::chrono::seconds(duration);
 
 	_chatmessage_dirty = true;
 }
@@ -180,7 +180,7 @@ void NetworkChatMessageLoop()
 		if (cmsg->message[0] == '\0') continue;
 
 		/* Message has expired, remove from the list */
-		if (cmsg->remove_time < _realtime_tick) {
+		if (std::chrono::steady_clock::now() > cmsg->remove_time) {
 			/* Move the remaining messages over the current message */
 			if (i != MAX_CHAT_MESSAGES - 1) memmove(cmsg, cmsg + 1, sizeof(*cmsg) * (MAX_CHAT_MESSAGES - i - 1));
 

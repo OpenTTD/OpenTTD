@@ -711,9 +711,9 @@ ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 	http_response_index(-2),
 	curFile(nullptr),
 	curInfo(nullptr),
-	isConnecting(false),
-	lastActivity(_realtime_tick)
+	isConnecting(false)
 {
+	this->lastActivity = std::chrono::steady_clock::now();
 }
 
 /** Clear up the mess ;) */
@@ -743,7 +743,7 @@ public:
 	void OnConnect(SOCKET s) override
 	{
 		assert(_network_content_client.sock == INVALID_SOCKET);
-		_network_content_client.lastActivity = _realtime_tick;
+		_network_content_client.lastActivity = std::chrono::steady_clock::now();
 		_network_content_client.isConnecting = false;
 		_network_content_client.sock = s;
 		_network_content_client.Reopen();
@@ -780,7 +780,7 @@ void ClientNetworkContentSocketHandler::SendReceive()
 {
 	if (this->sock == INVALID_SOCKET || this->isConnecting) return;
 
-	if (this->lastActivity + IDLE_TIMEOUT < _realtime_tick) {
+	if (std::chrono::steady_clock::now() > this->lastActivity + IDLE_TIMEOUT) {
 		this->Close();
 		return;
 	}
@@ -788,7 +788,7 @@ void ClientNetworkContentSocketHandler::SendReceive()
 	if (this->CanSendReceive()) {
 		if (this->ReceivePackets()) {
 			/* Only update activity once a packet is received, instead of every time we try it. */
-			this->lastActivity = _realtime_tick;
+			this->lastActivity = std::chrono::steady_clock::now();
 		}
 	}
 

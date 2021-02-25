@@ -37,7 +37,7 @@ NetworkAdminSocketPool _networkadminsocket_pool("NetworkAdminSocket");
 INSTANTIATE_POOL_METHODS(NetworkAdminSocket)
 
 /** The timeout for authorisation of the client. */
-static const int ADMIN_AUTHORISATION_TIMEOUT = 10000;
+static const std::chrono::seconds ADMIN_AUTHORISATION_TIMEOUT(10);
 
 
 /** Frequencies, which may be registered for a certain update type. */
@@ -64,7 +64,7 @@ ServerNetworkAdminSocketHandler::ServerNetworkAdminSocketHandler(SOCKET s) : Net
 {
 	_network_admins_connected++;
 	this->status = ADMIN_STATUS_INACTIVE;
-	this->realtime_connect = _realtime_tick;
+	this->connect_time = std::chrono::steady_clock::now();
 }
 
 /**
@@ -95,8 +95,8 @@ ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 /* static */ void ServerNetworkAdminSocketHandler::Send()
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::Iterate()) {
-		if (as->status == ADMIN_STATUS_INACTIVE && as->realtime_connect + ADMIN_AUTHORISATION_TIMEOUT < _realtime_tick) {
-			DEBUG(net, 1, "[admin] Admin did not send its authorisation within %d seconds", ADMIN_AUTHORISATION_TIMEOUT / 1000);
+		if (as->status == ADMIN_STATUS_INACTIVE && std::chrono::steady_clock::now() > as->connect_time + ADMIN_AUTHORISATION_TIMEOUT) {
+			DEBUG(net, 1, "[admin] Admin did not send its authorisation within %d seconds", (uint32)std::chrono::duration_cast<std::chrono::seconds>(ADMIN_AUTHORISATION_TIMEOUT).count());
 			as->CloseConnection(true);
 			continue;
 		}
