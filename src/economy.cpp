@@ -1757,7 +1757,7 @@ static void LoadUnloadVehicle(Vehicle *front)
 
 		/* if last speed is 0, we treat that as if no vehicle has ever visited the station. */
 		ge->last_speed = std::min(t, 255);
-		ge->last_age = std::min(_cur_year - front->build_year, 255);
+		ge->last_age = std::min(front->age / DAYS_IN_LEAP_YEAR, 255);
 
 		assert(v->cargo_cap >= v->cargo.StoredCount());
 		/* Capacity available for loading more cargo. */
