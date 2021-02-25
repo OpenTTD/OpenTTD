@@ -10,6 +10,7 @@
 #ifndef PATHFINDER_FUNC_H
 #define PATHFINDER_FUNC_H
 
+#include "../tile_cmd.h"
 #include "../waypoint_base.h"
 
 /**
@@ -44,6 +45,42 @@ static inline TileIndex CalcClosestStationTile(StationID station, TileIndex tile
 
 	/* return the tile of our target coordinates */
 	return TileXY(x, y);
+}
+
+/**
+ * Wrapper around GetTileTrackStatus() and TrackStatusToTrackdirBits(), as for
+ * single tram bits GetTileTrackStatus() returns 0. The reason for this is
+ * that there are no half-tile TrackBits in OpenTTD.
+ * This tile, however, is a valid tile for trams, one on which they can
+ * reverse safely. To "fix" this, pretend that if we are on a half-tile, we
+ * are in fact on a straight tram track tile. CFollowTrackT will make sure
+ * the pathfinders cannot exit on the wrong side and allows reversing on such
+ * tiles.
+ */
+static inline TrackdirBits GetTrackdirBitsForRoad(TileIndex tile, RoadTramType rtt)
+{
+	TrackdirBits bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, rtt));
+
+	if (rtt == RTT_TRAM && bits == TRACKDIR_BIT_NONE) {
+		if (IsNormalRoadTile(tile)) {
+			RoadBits rb = GetRoadBits(tile, RTT_TRAM);
+			switch (rb) {
+				case ROAD_NE:
+				case ROAD_SW:
+					bits = TRACKDIR_BIT_X_NE | TRACKDIR_BIT_X_SW;
+					break;
+
+				case ROAD_NW:
+				case ROAD_SE:
+					bits = TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_Y_SE;
+					break;
+
+				default: break;
+			}
+		}
+	}
+
+	return bits;
 }
 
 #endif /* PATHFINDER_FUNC_H */

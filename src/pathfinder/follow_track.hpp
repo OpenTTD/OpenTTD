@@ -17,6 +17,7 @@
 #include "../tunnelbridge.h"
 #include "../tunnelbridge_map.h"
 #include "../depot_map.h"
+#include "pathfinder_func.h"
 #include "pf_performance_timer.hpp"
 
 /**
@@ -239,26 +240,10 @@ protected:
 		CPerfStart perf(*m_pPerf);
 		if (IsRailTT() && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
+		} else if (IsRoadTT()) {
+			m_new_td_bits = GetTrackdirBitsForRoad(m_new_tile, this->IsTram() ? RTT_TRAM : RTT_ROAD);
 		} else {
-			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), IsRoadTT() ? (this->IsTram() ? RTT_TRAM : RTT_ROAD) : 0));
-
-			if (IsTram() && m_new_td_bits == TRACKDIR_BIT_NONE) {
-				/* GetTileTrackStatus() returns 0 for single tram bits.
-				 * As we cannot change it there (easily) without breaking something, change it here */
-				switch (GetSingleTramBit(m_new_tile)) {
-					case DIAGDIR_NE:
-					case DIAGDIR_SW:
-						m_new_td_bits = TRACKDIR_BIT_X_NE | TRACKDIR_BIT_X_SW;
-						break;
-
-					case DIAGDIR_NW:
-					case DIAGDIR_SE:
-						m_new_td_bits = TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_Y_SE;
-						break;
-
-					default: break;
-				}
-			}
+			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), 0));
 		}
 		return (m_new_td_bits != TRACKDIR_BIT_NONE);
 	}
