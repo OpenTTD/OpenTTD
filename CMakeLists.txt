@@ -249,7 +249,16 @@ if(NOT OPTION_DEDICATED)
     link_package(Fontconfig TARGET Fontconfig::Fontconfig)
     link_package(ICU_lx)
     link_package(ICU_i18n)
-    link_package(OpenGL TARGET OpenGL::GL)
+
+    if(SDL2_FOUND AND OPENGL_FOUND AND UNIX)
+        # SDL2 dynamically loads OpenGL if needed, so do not link to OpenGL when
+        # on Linux. For Windows, we need to link to OpenGL as we also have a win32
+        # driver using it.
+        add_definitions(-DWITH_OPENGL)
+        message(STATUS "OpenGL found -- -DWITH_OPENGL -- (via SDL2)")
+    else()
+        link_package(OpenGL TARGET OpenGL::GL)
+    endif()
 endif()
 
 if(APPLE)
