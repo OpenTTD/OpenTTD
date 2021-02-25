@@ -845,6 +845,9 @@ void EnginesDailyLoop()
 
 	if (_cur_year >= _year_engine_aging_stops) return;
 
+	/* Don't age engines if the year is looping */
+	if (YearIsLooping()) return;
+
 	for (Engine *e : Engine::Iterate()) {
 		EngineID i = e->index;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
@@ -1034,7 +1037,7 @@ static void NewVehicleAvailable(Engine *e)
 /** Monthly update of the availability, reliability, and preview offers of the engines. */
 void EnginesMonthlyLoop()
 {
-	if (_cur_year < _year_engine_aging_stops) {
+	if (_cur_year < _year_engine_aging_stops && !YearIsLooping()) {
 		for (Engine *e : Engine::Iterate()) {
 			/* Age the vehicle */
 			if ((e->flags & ENGINE_AVAILABLE) && e->age != MAX_DAY) {
