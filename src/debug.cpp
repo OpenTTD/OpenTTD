@@ -45,8 +45,6 @@ int _debug_console_level;
 int _debug_random_level;
 #endif
 
-uint32 _realtime_tick = 0;
-
 struct DebugLevel {
 	const char *name;
 	int *level;
