@@ -76,7 +76,8 @@ struct CompanyProperties {
 
 	Owner share_owners[4];           ///< Owners of the 4 shares of the company. #INVALID_OWNER if nobody has bought them yet.
 
-	Year inaugurated_year;           ///< Year of starting the company.
+	Year inaugurated_year;           ///< Year of starting the company, n .
+	GameYear inaugurated_game_year;   ///< Game year when the company was started
 
 	byte months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?
@@ -102,7 +103,7 @@ struct CompanyProperties {
 	CompanyProperties()
 		: name_2(0), name_1(0), president_name_1(0), president_name_2(0),
 		  face(0), money(0), money_fraction(0), current_loan(0), colour(0), block_preview(0),
-		  location_of_HQ(0), last_build_coordinate(0), share_owners(), inaugurated_year(0),
+		  location_of_HQ(0), last_build_coordinate(0), share_owners(), inaugurated_year(0), inaugurated_game_year(0),
 		  months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
 		  terraform_limit(0), clear_limit(0), tree_limit(0), is_ai(false) {}
 };
