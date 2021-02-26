@@ -1757,7 +1757,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, IndustryType type, 
 	i->counter = GB(r, 4, 12);
 	i->random = initial_random_bits;
 	i->was_cargo_delivered = false;
-	i->last_prod_year = _cur_year;
+	i->last_prod_year = _game_year;
 	i->founder = founder;
 	i->ctlflags = INDCTL_NONE;
 
@@ -2358,7 +2358,7 @@ static void UpdateIndustryStatistics(Industry *i)
 		if (i->produced_cargo[j] != CT_INVALID) {
 			byte pct = 0;
 			if (i->this_month_production[j] != 0) {
-				i->last_prod_year = _cur_year;
+				i->last_prod_year = _game_year;
 				pct = std::min(i->this_month_transported[j] * 256 / i->this_month_production[j], 255);
 			}
 			i->last_month_pct_transported[j] = pct;
@@ -2793,7 +2793,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	if ((i->ctlflags & INDCTL_NO_PRODUCTION_INCREASE) && (mul > 0 || increment > 0)) return;
 
 	if (!callback_enabled && (indspec->life_type & INDUSTRYLIFE_PROCESSING)) {
-		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && Chance16(1, original_economy ? 2 : 180)) {
+		if ( (byte)(_game_year - i->last_prod_year) >= 5 && Chance16(1, original_economy ? 2 : 180)) {
 			closeit = true;
 		}
 	}
