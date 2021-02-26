@@ -279,6 +279,7 @@ struct NetworkSettings {
 	uint8  max_clients;                                   ///< maximum amount of clients
 	uint8  max_spectators;                                ///< maximum amount of spectators
 	Year   restart_game_year;                             ///< year the server restarts
+	GameYear restart_game_length;                         ///< number of years to play (including loop years) before restarting the server
 	uint8  min_active_clients;                            ///< minimum amount of active clients to unpause the game
 	uint8  server_lang;                                   ///< language of the server
 	bool   reload_cfg;                                    ///< reload the config file before restarting

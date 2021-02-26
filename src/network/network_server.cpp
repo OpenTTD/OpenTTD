@@ -1618,7 +1618,8 @@ void NetworkUpdateClientInfo(ClientID client_id)
 /** Check if we want to restart the map */
 static void NetworkCheckRestartMap()
 {
-	if (_settings_client.network.restart_game_year != 0 && _cur_year >= _settings_client.network.restart_game_year) {
+	if ((_settings_client.network.restart_game_length != 0 && _game_year >= _settings_client.network.restart_game_length) ||
+		(_settings_client.network.restart_game_year != 0 && _cur_year >= _settings_client.network.restart_game_year)) {
 		DEBUG(net, 0, "Auto-restarting map. Year %d reached", _cur_year);
 
 		_settings_newgame.game_creation.generation_seed = GENERATE_NEW_SEED;
