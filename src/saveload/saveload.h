@@ -304,7 +304,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_TRADING_AGE,                        ///< 217  PR#7780 Configurable company trading age.
 	SLV_ENDING_YEAR,                        ///< 218  PR#7747 v1.10  Configurable ending year.
 	SLV_REMOVE_TOWN_CARGO_CACHE,            ///< 219  PR#8258 Remove town cargo acceptance and production caches.
-	SLV_LOOP_YEAR,							///< 220  FIXME: Add PR# Configurable loop year.
+	SLV_LOOP_YEAR,                          ///< 220  PR#8749 Configurable loop year.
 
 	/* Patchpacks for a while considered it a good idea to jump a few versions
 	 * above our version for their savegames. But as time continued, this gap
