@@ -20,17 +20,6 @@ bool VideoDriver::Tick()
 {
 	auto cur_ticks = std::chrono::steady_clock::now();
 
-	/* If more than a millisecond has passed, increase the _realtime_tick. */
-	if (cur_ticks - this->last_realtime_tick > std::chrono::milliseconds(1)) {
-		auto delta = std::chrono::duration_cast<std::chrono::milliseconds>(cur_ticks - this->last_realtime_tick);
-		_realtime_tick += delta.count();
-		this->last_realtime_tick += delta;
-
-		/* Keep the interactive randomizer a bit more random by requesting
-		 * new values when-ever we can. */
-		InteractiveRandom();
-	}
-
 	if (cur_ticks >= this->next_game_tick || (_fast_forward && !_pause_mode)) {
 		if (_fast_forward && !_pause_mode) {
 			this->next_game_tick = cur_ticks + this->GetGameInterval();
@@ -59,6 +48,10 @@ bool VideoDriver::Tick()
 		this->next_draw_tick += this->GetDrawInterval();
 		/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 		if (this->next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) this->next_draw_tick = cur_ticks;
+
+		/* Keep the interactive randomizer a bit more random by requesting
+		 * new values when-ever we can. */
+		InteractiveRandom();
 
 		while (this->PollEvent()) {}
 		this->InputLoop();

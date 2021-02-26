@@ -276,7 +276,6 @@ protected:
 		return std::chrono::microseconds(1000000 / _settings_client.gui.refresh_rate);
 	}
 
-	std::chrono::steady_clock::time_point last_realtime_tick;
 	std::chrono::steady_clock::time_point next_game_tick;
 	std::chrono::steady_clock::time_point next_draw_tick;
 };
