@@ -17,6 +17,7 @@ extern Month     _cur_month;
 extern Date      _date;
 extern DateFract _date_fract;
 extern uint16    _tick_counter;
+extern GameYear  _game_year;
 extern bool      _year_is_looping;
 
 bool YearIsLooping();

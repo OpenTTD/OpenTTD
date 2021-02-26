@@ -27,7 +27,8 @@ Year      _cur_year;   ///< Current year, starting at 0
 Month     _cur_month;  ///< Current month (0..11)
 Date      _date;       ///< Current date in days (day counter)
 DateFract _date_fract; ///< Fractional part of the day.
-uint16 _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick counter for setting off various events
+uint16    _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick counter for setting off various events
+GameYear  _game_year;  ///< Number of years since the game began.
 
 bool _year_is_looping; ///< Is the current year repeating? (and has looped at least once)
 
@@ -207,6 +208,9 @@ static void OnNewYear()
 	TownsYearlyLoop();
 	InvalidateWindowClassesData(WC_BUILD_STATION);
 	if (_network_server) NetworkServerYearlyLoop();
+
+	/* Always increment _game_year, even if the year is looping. */
+	_game_year++;
 
 	/* If we have reached the end of the maximum year or the end of the loop year, decrement dates by a year and skip the checks in else {} */
 	if ((_cur_year > MAX_YEAR) || (_cur_year == _settings_game.game_creation.loop_year + 1)) {
