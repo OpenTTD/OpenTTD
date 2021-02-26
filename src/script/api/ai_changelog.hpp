@@ -21,6 +21,9 @@
  * \li AICargo::GetName
  * \li AIPriorityQueue
  *
+ * Other changes:
+ * \li AIVehicle::CloneVehicle now correctly returns estimate when short on cash
+ *
  * \b 1.10.0
  *
  * API additions:
