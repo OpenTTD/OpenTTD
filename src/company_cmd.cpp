@@ -822,13 +822,6 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			ClientID client_id = (ClientID)p2;
 			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
-#ifndef DEBUG_DUMP_COMMANDS
-			/* When replaying the client ID is not a valid client; there
-			 * are actually no clients at all. However, the company has to
-			 * be created, otherwise we cannot rerun the game properly.
-			 * So only allow a nullptr client info in that case. */
-			if (ci == nullptr) return CommandCost();
-#endif /* NOT DEBUG_DUMP_COMMANDS */
 
 			/* Delete multiplayer progress bar */
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
@@ -837,7 +830,9 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			/* A new company could not be created, revert to being a spectator */
 			if (c == nullptr) {
-				if (_network_server) {
+				/* We check for "ci != nullptr" as a client could have left by
+				 * the time we execute this command. */
+				if (_network_server && ci != nullptr) {
 					ci->client_playas = COMPANY_SPECTATOR;
 					NetworkUpdateClientInfo(ci->client_id);
 				}
