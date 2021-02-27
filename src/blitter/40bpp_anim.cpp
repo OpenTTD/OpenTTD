@@ -14,6 +14,7 @@
 #include "../settings_type.h"
 #include "../video/video_driver.hpp"
 #include "40bpp_anim.hpp"
+#include "common.hpp"
 
 #include "../table/sprites.h"
 
@@ -62,6 +63,23 @@ void Blitter_40bppAnim::DrawRect(void *video, int width, int height, uint8 colou
 		video = (uint32 *)video + _screen.pitch;
 		anim_line += _screen.pitch;
 	} while (--height);
+}
+
+void Blitter_40bppAnim::DrawLine(void *video, int x, int y, int x2, int y2, int screen_width, int screen_height, uint8 colour, int width, int dash)
+{
+	if (_screen_disable_anim) {
+		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawRect() */
+		Blitter_32bppOptimized::DrawLine(video, x, y, x2, y2, screen_width, screen_height, colour, width, dash);
+		return;
+	}
+
+	assert(VideoDriver::GetInstance()->GetAnimBuffer() != nullptr);
+	uint8 *anim = ((uint32 *)video - (uint32 *)_screen.dst_ptr) + VideoDriver::GetInstance()->GetAnimBuffer();
+
+	this->DrawLineGeneric(x, y, x2, y2, screen_width, screen_height, width, dash, [=](int x, int y) {
+		*((Colour *)video + x + y * _screen.pitch) = _black_colour;
+		*(anim + x + y * _screen.pitch) = colour;
+	});
 }
 
 /**
