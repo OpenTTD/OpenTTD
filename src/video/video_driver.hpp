@@ -62,25 +62,12 @@ public:
 
 	/**
 	 * Callback invoked after the blitter was changed.
-	 * This may only be called between AcquireBlitterLock and ReleaseBlitterLock.
 	 * @return True if no error.
 	 */
 	virtual bool AfterBlitterChange()
 	{
 		return true;
 	}
-
-	/**
-	 * Acquire any lock(s) required to be held when changing blitters.
-	 * These lock(s) may not be acquired recursively.
-	 */
-	virtual void AcquireBlitterLock() { }
-
-	/**
-	 * Release any lock(s) required to be held when changing blitters.
-	 * These lock(s) may not be acquired recursively.
-	 */
-	virtual void ReleaseBlitterLock() { }
 
 	virtual bool ClaimMousePointer()
 	{

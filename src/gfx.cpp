@@ -1480,9 +1480,7 @@ void DrawDirtyBlocks()
 		if (!IsFirstModalProgressLoop()) CSleep(MODAL_PROGRESS_REDRAW_TIMEOUT);
 
 		/* Modal progress thread may need blitter access while we are waiting for it. */
-		VideoDriver::GetInstance()->ReleaseBlitterLock();
 		_modal_progress_paint_mutex.lock();
-		VideoDriver::GetInstance()->AcquireBlitterLock();
 		_modal_progress_work_mutex.lock();
 
 		/* When we ended with the modal progress, do not draw the blocks.
