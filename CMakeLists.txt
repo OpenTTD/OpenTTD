@@ -104,6 +104,11 @@ if(OPTION_TOOLS_ONLY)
     return()
 endif()
 
+if(APPLE)
+	# Avoid searching for headers in Frameworks, and libraries in LIBDIR.
+	set(CMAKE_FIND_FRAMEWORK LAST)
+endif()
+
 # Prefer -pthread over -lpthread, which is often the better option of the two.
 set(CMAKE_THREAD_PREFER_PTHREAD YES)
 # Make sure we have Threads available.
