@@ -948,6 +948,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny Taiwan Dolla
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupi (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupi (IDR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekjøring
@@ -1004,6 +1005,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annet
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Grensesnitt-størrelse
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Velg grensesnitt-størrelsen som skal benyttes
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(finn automatisk)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2 ganger størrelse
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4 ganger størrelse
@@ -1011,6 +1013,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4 ganger størr
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Skriftstørrelse
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Velg skriftstørrelse for grensesnitt
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(finn automatisk)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dobbel størrelse
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Firedobbel størrelse
@@ -2607,12 +2610,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Tilfeldi
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansier ny industri
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Velg passende industri fra listen
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Mange tilfeldige industrier
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Mange tilfeldige industrier
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Dekk kartet med tilfeldig plasserte industrier
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Opprett tilfeldig industrier
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Er du sikker på at du vil lage mange tilfeldige industrier?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Koster: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospekt
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bygg
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansier
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Fjern alle industrier
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Fjern alle industrier på kartet
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Fjern alle industrier
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Er du sikker på at du vil fjerne alle industriene?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikjede for {STRING}
@@ -2843,6 +2852,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrer streng:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Overskriv fil
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Er du sikker på at du vil overskrive eksisterende fil?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Liste)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Foreldrekatalog)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Skriv inn et navn på spillet som skal lagres
 

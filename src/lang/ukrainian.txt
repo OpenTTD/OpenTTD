@@ -2702,6 +2702,7 @@ STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Варт
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Огляд
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Будувати
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Фінансувати
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Прибрати усі підприємства
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ланцюг вантажних перевезень для {STRING}
@@ -3467,6 +3468,7 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Пере
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Перенесення Офісу в інше місце. Коштує 1% від вартості компанії. Утримуйте Shift для показу очікуваних витрат на перенесення
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Деталі
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Переглянути детальну інформацію про інфраструктуру
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Дати грошей цій компанії
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Нове обличчя
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Вибрати нове обличчя керівника
@@ -5176,6 +5178,7 @@ STR_FORMAT_BUOY_NAME                                            :Буй {TOWN}
 STR_FORMAT_BUOY_NAME_SERIAL                                     :Буй {TOWN} №{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Компанія {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Група {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Пункт {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Пункт {TOWN} №{COMMA}

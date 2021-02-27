@@ -187,6 +187,7 @@ STR_COLOUR_ORANGE                                               :Portocaliu
 STR_COLOUR_BROWN                                                :Maro
 STR_COLOUR_GREY                                                 :Gri
 STR_COLOUR_WHITE                                                :Alb
+STR_COLOUR_RANDOM                                               :Aleator
 STR_COLOUR_DEFAULT                                              :Prestabilit
 
 # Units used in OpenTTD
@@ -465,6 +466,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :Sunet/muzică
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :Ultimul mesaj/ultima ştire
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :Lista ultimelor mesaje
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :Șterge toate mesajele
 ############ range ends here
 
 ############ range for about menu starts
@@ -1165,6 +1167,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :Permite terra-f
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite terraformarea sub clădiri şi şine fără eliminarea acestora
 STR_CONFIG_SETTING_CATCHMENT                                    :Permite arii de cuprindere mai realiste: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :Permite zone diferite de captare pentru tipuri diferite de staţii şi aeroporturi
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Dacă este activată, industriile cu stații atașate (cum ar fi Platforma petrolieră) pot fi deservite și de stațiile alăturate ale companiilor. Dacă e dezactivată, aceste industrii nu vor putea fi servite decât prin intermediul stațiilor atașate. Nicio stație din preajmă a unei companii nu le va putea deservi, iar stația atașată nu va putea deservi decât industria sa.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite demolarea unui nr. mai mare de construcţii deţinute de oraş: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitează eliminarea de clădiri şi infrastructură deţinute de oraş
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Lungimea maximă a trenurilor: {STRING}
@@ -1403,6 +1406,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pastrează acti
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menține barele de construcție pentru tunele, poduri șamd deschise după folosire
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupează cheltuielile în raportul financiar al companiei: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definește stilul ferestrei care afișează cheltuielile companiei
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimină automat semnalele când construiești căi ferate dacă ele îți vin în cale. Nu uita că asta ar putea conduce la accidente feroviare.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Afișaj știri: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Redă sunet la afișarea sumarului știrilor
@@ -1510,6 +1514,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pe larg
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Ştirile color apar în: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Anul începând cu care anunțurile din ziar sunt tipărite color. Înainte de acest an, anunturile sunt monocrome (alb/negru)
 STR_CONFIG_SETTING_STARTING_YEAR                                :Anul de început al jocului: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite cumpărarea de acţiuni de la alte companii: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Dacă este activată, se permite cumpărarea și vânzarea de acțiuni ale companiilor. Acțiunile devin disponibile doar când compania depășește o anumită vârstă
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentul din profitul pe secţiune care să fie plătit pentru alimentare: {STRING}
@@ -1551,6 +1556,10 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Dacă este acti
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :nepermis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permis
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permis, aspect particularizat al oraşului
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Modalitatea de generare a cargoului dintr-un oraș: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cât cargo este produs de casele dintr-un oraș, relativ la populația totală a orașului.{}Creștere pătratică: Un oraș de 2 ori mai mare generează de 4 ori mai mulți pasageri.{}Creștere liniară: Un oraș de 2 ori mai mare generează de 4 ori mai mulți pasageri.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Pătratică (originală)
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Liniar
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Poziţionarea copacilor în joc: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controlează apariția aleatoare a copacilor în joc. Este posibil ca această opțiune să afecteze industrii care depind de creșterea copacilor, cum ar fi fabricile de cherestea
@@ -2137,6 +2146,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a 
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a început o companie nouă (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a ieşit din joc ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} şi-a schimbat numele în {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a dat {2:CURRENCY_LONG} către {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serverul a închis conexiunea
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serverul este repornit...{}Vă rugăm aşteptaţi...
 
