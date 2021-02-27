@@ -1028,6 +1028,7 @@ void OpenGLBackend::DrawMouseCursor()
 	_cur_dpi = &_screen;
 	for (uint i = 0; i < _cursor.sprite_count; ++i) {
 		SpriteID sprite = _cursor.sprite_seq[i].sprite;
+		const Sprite *spr = GetSprite(sprite, ST_NORMAL);
 
 		if (!this->cursor_cache.Contains(sprite)) {
 			Sprite *old = this->cursor_cache.Insert(sprite, (Sprite *)GetRawSprite(sprite, ST_NORMAL, &SimpleSpriteAlloc, this));
@@ -1038,7 +1039,10 @@ void OpenGLBackend::DrawMouseCursor()
 			}
 		}
 
-		this->RenderOglSprite((OpenGLSprite *)this->cursor_cache.Get(sprite)->data, _cursor.sprite_seq[i].pal, _cursor.pos.x + _cursor.sprite_pos[i].x, _cursor.pos.y + _cursor.sprite_pos[i].y, ZOOM_LVL_GUI);
+		this->RenderOglSprite((OpenGLSprite *)this->cursor_cache.Get(sprite)->data, _cursor.sprite_seq[i].pal,
+				_cursor.pos.x + _cursor.sprite_pos[i].x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
+				_cursor.pos.y + _cursor.sprite_pos[i].y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI),
+				ZOOM_LVL_GUI);
 	}
 }
 
