@@ -281,6 +281,16 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 		}
 	}
 
+	/* If we were transfering a map to this client, stop the savegame creation
+	 * process and queue the next client to receive the map. */
+	if (this->status == STATUS_MAP) {
+		/* Ensure the saving of the game is stopped too. */
+		this->savegame->Destroy();
+		this->savegame = nullptr;
+
+		this->CheckNextClientToSendMap(this);
+	}
+
 	NetworkAdminClientError(this->client_id, NETWORK_ERROR_CONNECTION_LOST);
 	DEBUG(net, 1, "Closed client connection %d", this->client_id);
 
@@ -565,6 +575,33 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+void ServerNetworkGameSocketHandler::CheckNextClientToSendMap(NetworkClientSocket *ignore_cs)
+{
+	/* Find the best candidate for joining, i.e. the first joiner. */
+	NetworkClientSocket *best = nullptr;
+	for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
+		if (ignore_cs == new_cs) continue;
+
+		if (new_cs->status == STATUS_MAP_WAIT) {
+			if (best == nullptr || best->GetInfo()->join_date > new_cs->GetInfo()->join_date || (best->GetInfo()->join_date == new_cs->GetInfo()->join_date && best->client_id > new_cs->client_id)) {
+				best = new_cs;
+			}
+		}
+	}
+
+	/* Is there someone else to join? */
+	if (best != nullptr) {
+		/* Let the first start joining. */
+		best->status = STATUS_AUTHORIZED;
+		best->SendMap();
+
+		/* And update the rest. */
+		for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
+			if (new_cs->status == STATUS_MAP_WAIT) new_cs->SendWait();
+		}
+	}
+}
+
 /** This sends the map to the client */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 {
@@ -620,27 +657,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			 *  to send it is ready (maybe that happens like never ;)) */
 			this->status = STATUS_DONE_MAP;
 
-			/* Find the best candidate for joining, i.e. the first joiner. */
-			NetworkClientSocket *best = nullptr;
-			for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
-				if (new_cs->status == STATUS_MAP_WAIT) {
-					if (best == nullptr || best->GetInfo()->join_date > new_cs->GetInfo()->join_date || (best->GetInfo()->join_date == new_cs->GetInfo()->join_date && best->client_id > new_cs->client_id)) {
-						best = new_cs;
-					}
-				}
-			}
-
-			/* Is there someone else to join? */
-			if (best != nullptr) {
-				/* Let the first start joining. */
-				best->status = STATUS_AUTHORIZED;
-				best->SendMap();
-
-				/* And update the rest. */
-				for (NetworkClientSocket *new_cs : NetworkClientSocket::Iterate()) {
-					if (new_cs->status == STATUS_MAP_WAIT) new_cs->SendWait();
-				}
-			}
+			this->CheckNextClientToSendMap();
 		}
 
 		switch (this->SendPackets()) {

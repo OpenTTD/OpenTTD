@@ -80,6 +80,8 @@ public:
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;
 	void GetClientName(char *client_name, const char *last) const;
 
+	void CheckNextClientToSendMap(NetworkClientSocket *ignore_cs = nullptr);
+
 	NetworkRecvStatus SendMap();
 	NetworkRecvStatus SendErrorQuit(ClientID client_id, NetworkErrorCode errorno);
 	NetworkRecvStatus SendQuit(ClientID client_id);
