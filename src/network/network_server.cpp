@@ -1873,6 +1873,21 @@ void NetworkServer_Tick(bool send_frame)
 				}
 				break;
 
+			case NetworkClientSocket::STATUS_MAP_WAIT:
+				/* Send every two seconds a packet to the client, to make sure
+				 * he knows the server is still there; just someone else is
+				 * still receiving the map. */
+				if (std::chrono::steady_clock::now() > cs->last_packet + std::chrono::seconds(2)) {
+					cs->SendWait();
+					/* We need to reset the timer, as otherwise we will be
+					 * spamming the client. Strictly speaking this variable
+					 * tracks when we last received a packet from the client,
+					 * but as he is waiting, he will not send us any till we
+					 * start sending him data. */
+					cs->last_packet = std::chrono::steady_clock::now();
+				}
+				break;
+
 			case NetworkClientSocket::STATUS_MAP:
 				/* Downloading the map... this is the amount of time since starting the saving. */
 				if (lag > _settings_client.network.max_download_time) {
@@ -1900,11 +1915,6 @@ void NetworkServer_Tick(bool send_frame)
 					cs->SendError(NETWORK_ERROR_TIMEOUT_PASSWORD);
 					continue;
 				}
-				break;
-
-			case NetworkClientSocket::STATUS_MAP_WAIT:
-				/* This is an internal state where we do not wait
-				 * on the client to move to a different state. */
 				break;
 
 			case NetworkClientSocket::STATUS_END:
