@@ -15,6 +15,8 @@
 // #define NO_GL_BUFFER_SYNC
 /* Define to enable persistent buffer mapping on AMD GPUs. */
 // #define GL_MAP_PERSISTENT_AMD
+/* Define to allow software rendering backends. */
+// #define GL_ALLOW_SOFTWARE_RENDERER
 
 #if defined(_WIN32)
 #	include <windows.h>
@@ -535,6 +537,12 @@ const char *OpenGLBackend::Init()
 	if (ver == nullptr || vend == nullptr || renderer == nullptr) return "OpenGL not supported";
 
 	DEBUG(driver, 1, "OpenGL driver: %s - %s (%s)", vend, renderer, ver);
+
+#ifndef GL_ALLOW_SOFTWARE_RENDERER
+	/* Don't use MESA software rendering backends as they are slower than
+	 * just using a non-OpenGL video driver. */
+	if (strncmp(renderer, "llvmpipe", 8) == 0 || strncmp(renderer, "softpipe", 8) == 0) return "Software renderer detected, not using OpenGL";
+#endif
 
 	const char *minor = strchr(ver, '.');
 	_gl_major_ver = atoi(ver);
