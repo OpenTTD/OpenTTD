@@ -550,7 +550,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendWelcome()
 /** Tell the client that its put in a waiting queue. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendWait()
 {
-	int waiting = 0;
+	int waiting = 1; // current player getting the map counts as 1
 	Packet *p;
 
 	/* Count how many clients are waiting in the queue, in front of you! */
