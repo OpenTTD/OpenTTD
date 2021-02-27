@@ -3171,7 +3171,7 @@ void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type)
 		total_width += GetSingleVehicleWidth(v, image_type);
 	}
 
-	int offs = ((int)VEHICLEINFO_FULL_VEHICLE_WIDTH - total_width) / 2;
+	int offs = (ScaleGUITrad(VEHICLEINFO_FULL_VEHICLE_WIDTH) - total_width) / 2;
 	if (rtl) offs = -offs;
 	for (uint i = 0; i < _cursor.sprite_count; ++i) {
 		_cursor.sprite_pos[i].x += offs;
