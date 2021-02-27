@@ -295,8 +295,6 @@ static bool SwitchNewGRFBlitter()
 	const bool animation_wanted = HasBit(_display_opt, DO_FULL_ANIMATION);
 	const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
 
-	VideoDriver::GetInstance()->AcquireBlitterLock();
-
 	for (uint i = 0; i < lengthof(replacement_blitters); i++) {
 		if (animation_wanted && (replacement_blitters[i].animation == 0)) continue;
 		if (!animation_wanted && (replacement_blitters[i].animation == 1)) continue;
@@ -306,7 +304,6 @@ static bool SwitchNewGRFBlitter()
 		const char *repl_blitter = replacement_blitters[i].name;
 
 		if (strcmp(repl_blitter, cur_blitter) == 0) {
-			VideoDriver::GetInstance()->ReleaseBlitterLock();
 			return false;
 		}
 		if (BlitterFactory::GetBlitterFactory(repl_blitter) == nullptr) continue;
@@ -322,8 +319,6 @@ static bool SwitchNewGRFBlitter()
 		/* Failed to switch blitter, let's hope we can return to the old one. */
 		if (BlitterFactory::SelectBlitter(cur_blitter) == nullptr || !VideoDriver::GetInstance()->AfterBlitterChange()) usererror("Failed to reinitialize video driver. Specify a fixed blitter in the config");
 	}
-
-	VideoDriver::GetInstance()->ReleaseBlitterLock();
 
 	return true;
 }
