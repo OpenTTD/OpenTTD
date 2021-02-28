@@ -297,6 +297,7 @@ jobs:
           SDL2-devel \
           wget \
           xz-devel \
+          libzstd-devel \
           zlib-devel \
           # EOF
         echo "::endgroup::"
@@ -412,6 +413,7 @@ jobs:
           libfluidsynth-dev \
           libicu-dev \
           liblzma-dev \
+          libzstd-dev \
           liblzo2-dev \
           libsdl2-dev \
           lsb-release \
@@ -503,6 +505,8 @@ jobs:
         vcpkg install \
           liblzma:x64-osx \
           liblzma:arm64-osx \
+          zstd:x64-osx \
+          zstd:arm64-osx \
           libpng:x64-osx \
           libpng:arm64-osx \
           lzo:x64-osx \
@@ -703,6 +707,7 @@ jobs:
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-windows-static \
           liblzma \
+          zstd \
           libpng \
           lzo \
           zlib \

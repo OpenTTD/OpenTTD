@@ -97,6 +97,7 @@ jobs:
           libfontconfig-dev \
           libicu-dev \
           liblzma-dev \
+          libzstd-dev \
           liblzo2-dev \
           ${{ matrix.libsdl }} \
           zlib1g-dev \
@@ -175,6 +176,7 @@ jobs:
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-osx \
           liblzma \
+          zstd \
           libpng \
           lzo \
           zlib \
@@ -256,6 +258,7 @@ jobs:
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-windows-static \
           liblzma \
+          zstd \
           libpng \
           lzo \
           zlib \
