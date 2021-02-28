@@ -1217,7 +1217,7 @@ void OpenGLBackend::ReleaseAnimBuffer(const Rect &update_rect)
  * @param y Y position of the sprite.
  * @param zoom Zoom level to use.
  */
-void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, uint x, uint y, ZoomLevel zoom)
+void OpenGLBackend::RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom)
 {
 	/* Set textures. */
 	bool rgb = gl_sprite->BindTextures();
