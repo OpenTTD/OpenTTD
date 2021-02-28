@@ -97,6 +97,7 @@ jobs:
           libfontconfig-dev \
           libicu-dev \
           liblzma-dev \
+          libzstd-dev \
           liblzo2-dev \
           ${{ matrix.libsdl }} \
           zlib1g-dev \
@@ -169,7 +170,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /usr/local/share/vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-1 # Increase the number whenever dependencies are modified
         restore-keys: |
           ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
 
@@ -177,6 +178,7 @@ jobs:
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-osx \
           liblzma \
+          zstd \
           libpng \
           lzo \
           zlib \
@@ -251,7 +253,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-1 # Increase the number whenever dependencies are modified
         restore-keys: |
           ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
 
@@ -260,6 +262,7 @@ jobs:
       run: |
         vcpkg install --triplet=${{ matrix.arch }}-windows-static \
           liblzma \
+          zstd \
           libpng \
           lzo \
           zlib \
