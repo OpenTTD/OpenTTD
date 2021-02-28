@@ -12,7 +12,6 @@
 #include "../gfx_func.h"
 #include "../rev.h"
 #include "../blitter/factory.hpp"
-#include "../network/network.h"
 #include "../thread.h"
 #include "../progress.h"
 #include "../core/random_func.hpp"
@@ -604,17 +603,12 @@ void VideoDriver_SDL_Base::InputLoop()
 	_shift_pressed = !!(mod & KMOD_SHIFT);
 
 #if defined(_DEBUG)
-	if (_shift_pressed)
+	this->fast_forward_key_pressed = _shift_pressed;
 #else
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
-	if (keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0)
+	this->fast_forward_key_pressed = keys[SDL_SCANCODE_TAB] && (mod & KMOD_ALT) == 0;
 #endif /* defined(_DEBUG) */
-	{
-		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-	} else if (_fast_forward & 2) {
-		_fast_forward = 0;
-	}
 
 	/* Determine which directional keys are down. */
 	_dirkeys =

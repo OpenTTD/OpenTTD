@@ -1468,6 +1468,7 @@ static SettingsContainer &GetSettingsTree()
 				construction->Add(new SettingEntry("gui.default_rail_type"));
 			}
 
+			interface->Add(new SettingEntry("gui.fast_forward_speed_limit"));
 			interface->Add(new SettingEntry("gui.autosave"));
 			interface->Add(new SettingEntry("gui.toolbar_pos"));
 			interface->Add(new SettingEntry("gui.statusbar_pos"));

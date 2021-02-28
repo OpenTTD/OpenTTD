@@ -33,7 +33,6 @@
 #include "cocoa_wnd.h"
 #include "../../blitter/factory.hpp"
 #include "../../framerate_type.h"
-#include "../../network/network.h"
 #include "../../gfx_func.h"
 #include "../../thread.h"
 #include "../../core/random_func.hpp"
@@ -420,14 +419,10 @@ void VideoDriver_Cocoa::InputLoop()
 	_shift_pressed = (cur_mods & NSShiftKeyMask) != 0;
 
 #if defined(_DEBUG)
-	if (_shift_pressed) {
+	this->fast_forward_key_pressed = _shift_pressed;
 #else
-	if (_tab_is_down) {
+	this->fast_forward_key_pressed = _tab_is_down;
 #endif
-		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-	} else if (_fast_forward & 2) {
-		_fast_forward = 0;
-	}
 
 	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 }

@@ -1453,6 +1453,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Group expenses 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define the layout for the company expenses window
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatically remove signals during rail construction: {STRING2}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatically remove signals during rail construction if the signals are in the way. Note that this can potentially lead to train crashes.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Fast forward speed limit: {STRING2}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limit on how fast the game goes when fast forward is enabled. 0 = no limit (as fast as your computer allows). Values below 100% slow the game down. The upper-limit depends on the specification of your computer and can vary depending on the game.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normal game speed
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :No limit (as fast as your computer allows)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :News ticker: {STRING2}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Play sound for summarised news messages

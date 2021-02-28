@@ -13,6 +13,7 @@
 #include "../driver.h"
 #include "../core/geometry_type.hpp"
 #include "../core/math_func.hpp"
+#include "../gfx_func.h"
 #include "../settings_type.h"
 #include "../zoom_type.h"
 #include <chrono>
@@ -268,7 +269,12 @@ protected:
 
 	std::chrono::steady_clock::duration GetGameInterval()
 	{
-		return std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+		/* If we are paused, run on normal speed. */
+		if (_pause_mode) return std::chrono::milliseconds(MILLISECONDS_PER_TICK);
+		/* Infinite speed, as quickly as you can. */
+		if (_game_speed == 0) return std::chrono::microseconds(0);
+
+		return std::chrono::microseconds(MILLISECONDS_PER_TICK * 1000 * 100 / _game_speed);
 	}
 
 	std::chrono::steady_clock::duration GetDrawInterval()
@@ -278,6 +284,9 @@ protected:
 
 	std::chrono::steady_clock::time_point next_game_tick;
 	std::chrono::steady_clock::time_point next_draw_tick;
+
+	bool fast_forward_key_pressed; ///< The fast-forward key is being pressed.
+	bool fast_forward_via_key; ///< The fast-forward was enabled by key press.
 };
 
 #endif /* VIDEO_VIDEO_DRIVER_HPP */

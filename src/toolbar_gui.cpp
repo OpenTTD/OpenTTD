@@ -283,7 +283,8 @@ static CallBackFunction ToolbarPauseClick(Window *w)
  */
 static CallBackFunction ToolbarFastForwardClick(Window *w)
 {
-	_fast_forward ^= true;
+	ChangeGameSpeed(_game_speed == 100);
+
 	if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 	return CBF_NONE;
 }
@@ -2127,7 +2128,7 @@ struct MainToolbarWindow : Window {
 			this->SetWidgetDirty(WID_TN_PAUSE);
 		}
 
-		if (this->IsWidgetLowered(WID_TN_FAST_FORWARD) != !!_fast_forward) {
+		if (this->IsWidgetLowered(WID_TN_FAST_FORWARD) != (_game_speed != 100)) {
 			this->ToggleWidgetLoweredState(WID_TN_FAST_FORWARD);
 			this->SetWidgetDirty(WID_TN_FAST_FORWARD);
 		}
@@ -2508,7 +2509,7 @@ struct ScenarioEditorToolbarWindow : Window {
 			this->SetDirty();
 		}
 
-		if (this->IsWidgetLowered(WID_TE_FAST_FORWARD) != !!_fast_forward) {
+		if (this->IsWidgetLowered(WID_TE_FAST_FORWARD) != (_game_speed != 100)) {
 			this->ToggleWidgetLoweredState(WID_TE_FAST_FORWARD);
 			this->SetDirty();
 		}

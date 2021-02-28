@@ -13,7 +13,6 @@
 #include "../os/windows/win32.h"
 #include "../rev.h"
 #include "../blitter/factory.hpp"
-#include "../network/network.h"
 #include "../core/geometry_func.hpp"
 #include "../core/math_func.hpp"
 #include "../core/random_func.hpp"
@@ -831,17 +830,12 @@ void VideoDriver_Win32Base::InputLoop()
 	_shift_pressed = this->has_focus && GetAsyncKeyState(VK_SHIFT) < 0;
 
 #if defined(_DEBUG)
-	if (_shift_pressed)
+	this->fast_forward_key_pressed = _shift_pressed;
 #else
 	/* Speedup when pressing tab, except when using ALT+TAB
 	 * to switch to another application. */
-	if (this->has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0)
+	this->fast_forward_key_pressed = this->has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0;
 #endif
-	{
-		if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-	} else if (_fast_forward & 2) {
-		_fast_forward = 0;
-	}
 
 	/* Determine which directional keys are down. */
 	if (this->has_focus) {
