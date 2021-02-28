@@ -3146,6 +3146,7 @@ STR_NEWGRF_ERROR_GRM_FAILED                                     :Požadované zd
 STR_NEWGRF_ERROR_FORCEFULLY_DISABLED                            :{1:STRING} byla vypnuta {STRING}
 STR_NEWGRF_ERROR_INVALID_SPRITE_LAYOUT                          :Neplatný/neznámý sprite layout formát (sprite {3:NUM})
 STR_NEWGRF_ERROR_LIST_PROPERTY_TOO_LONG                         :Příliš mnoho prvků v seznamu hodnot vlastností (sprite {3:NUM}, vlastnost {4:HEX})
+STR_NEWGRF_ERROR_INDPROD_CALLBACK                               :Neplatné zpětné volání průmyslové produkce (sprite {3:NUM}, "{2:STRING}")
 
 # NewGRF related 'general' warnings
 STR_NEWGRF_POPUP_CAUTION_CAPTION                                :{WHITE}Varování!
