@@ -70,7 +70,7 @@ private:
 	const char *Init();
 	bool InitShaders();
 
-	void RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, uint x, uint y, ZoomLevel zoom);
+	void RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom);
 
 public:
 	/** Get singleton instance of this class. */
