@@ -34,7 +34,7 @@ byte _support8bpp;
 CursorVars _cursor;
 bool _ctrl_pressed;   ///< Is Ctrl pressed?
 bool _shift_pressed;  ///< Is Shift pressed?
-byte _fast_forward;
+uint16 _game_speed = 100; ///< Current game-speed; 100 is 1x, 0 is infinite.
 bool _left_button_down;     ///< Is left mouse button pressed?
 bool _left_button_clicked;  ///< Is left mouse button clicked?
 bool _right_button_down;    ///< Is right mouse button pressed?
@@ -1903,5 +1903,14 @@ void UpdateGUIZoom()
 		_font_zoom = static_cast<ZoomLevel>(VideoDriver::GetInstance()->GetSuggestedUIZoom());
 	} else {
 		_font_zoom = static_cast<ZoomLevel>(_font_zoom_cfg);
+	}
+}
+
+void ChangeGameSpeed(bool enable_fast_forward)
+{
+	if (enable_fast_forward) {
+		_game_speed = _settings_client.gui.fast_forward_speed_limit;
+	} else {
+		_game_speed = 100;
 	}
 }

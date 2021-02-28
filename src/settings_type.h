@@ -148,6 +148,7 @@ struct GUISettings {
 	bool   show_newgrf_name;                 ///< Show the name of the NewGRF in the build vehicle window
 	bool   auto_remove_signals;              ///< automatically remove signals when in the way during rail construction
 	uint16 refresh_rate;                     ///< How often we refresh the screen (time between draw-ticks).
+	uint16 fast_forward_speed_limit;         ///< Game speed to use when fast-forward is enabled.
 
 	uint16 console_backlog_timeout;          ///< the minimum amount of time items should be in the console backlog before they will be removed in ~3 seconds granularity.
 	uint16 console_backlog_length;           ///< the minimum amount of items in the console backlog before items will be removed.
