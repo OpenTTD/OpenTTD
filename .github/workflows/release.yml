@@ -496,7 +496,10 @@ jobs:
       uses: actions/cache@v2
       with:
         path: /usr/local/share/vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-release
+        key: ${{ steps.key.outputs.image }}-vcpkg-release-0 # Increase the number whenever dependencies are modified
+        restore-keys: |
+          ${{ steps.key.outputs.image }}-vcpkg-release
+          ${{ steps.key.outputs.image }}-vcpkg-x64
 
     - name: Prepare vcpkg
       run: |
@@ -696,7 +699,9 @@ jobs:
       uses: actions/cache@v2
       with:
         path: vcpkg/installed
-        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        restore-keys: |
+          ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
 
     - name: Prepare vcpkg
       shell: bash
