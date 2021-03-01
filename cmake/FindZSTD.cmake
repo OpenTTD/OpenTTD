@@ -32,16 +32,19 @@ The following cache variables may also be set:
 
 find_package(PkgConfig QUIET)
 pkg_check_modules(PC_ZSTD QUIET libzstd)
-
+message(STATUS ${PC_ZSTD_INCLUDE_DIRS})
+message(STATUS ${PC_ZSTD_LIBRARY_DIRS})
 find_path(ZSTD_INCLUDE_DIR
     NAMES zstd.h
     PATHS ${PC_ZSTD_INCLUDE_DIRS}
 )
+message(STATUS ${ZSTD_INCLUDE_DIR})
 
 find_library(ZSTD_LIBRARY
     NAMES zstd
     PATHS ${PC_ZSTD_LIBRARY_DIRS}
 )
+message(STATUS ${ZSTD_LIBRARY})
 
 # With vcpkg, the library path should contain both 'debug' and 'optimized'
 # entries (see target_link_libraries() documentation for more information)
