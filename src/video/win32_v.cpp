@@ -137,7 +137,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 	_fullscreen = full_screen;
 
 	/* recreate window? */
-	if ((full_screen || this->fullscreen) && this->main_wnd) {
+	if ((full_screen != this->fullscreen) && this->main_wnd) {
 		DestroyWindow(this->main_wnd);
 		this->main_wnd = 0;
 	}
