@@ -21,6 +21,15 @@
 #include "zoom_type.h"
 #include "openttd.h"
 
+/* Used to validate sizes of "max" value in settings. */
+const size_t MAX_SLE_UINT8 = UINT8_MAX;
+const size_t MAX_SLE_UINT16 = UINT16_MAX;
+const size_t MAX_SLE_UINT32 = UINT32_MAX;
+const size_t MAX_SLE_UINT = UINT_MAX;
+const size_t MAX_SLE_INT8 = INT8_MAX;
+const size_t MAX_SLE_INT16 = INT16_MAX;
+const size_t MAX_SLE_INT32 = INT32_MAX;
+const size_t MAX_SLE_INT = INT_MAX;
 
 /** Settings profiles and highscore tables. */
 enum SettingsProfile {
