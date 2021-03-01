@@ -64,6 +64,7 @@ enum Currencies {
 	CURRENCY_HKD,       ///< Hong Kong Dollar
 	CURRENCY_INR,       ///< Indian Rupee
 	CURRENCY_IDR,       ///< Indonesian Rupiah
+	CURRENCY_MYR,		///< Malaysian Ringgit
 	CURRENCY_END,       ///< always the last item
 };
 

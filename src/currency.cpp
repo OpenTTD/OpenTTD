@@ -67,6 +67,7 @@ static const CurrencySpec origin_currency_specs[CURRENCY_END] = {
 	{   10, "", CF_NOEURO, "HKD" NBSP,     "",               0, STR_GAME_OPTIONS_CURRENCY_HKD    }, ///< hong kong dollar
 	{   90, "", CF_NOEURO, u8"\u20b9",     "",               0, STR_GAME_OPTIONS_CURRENCY_INR    }, ///< Indian Rupee
 	{   19, "", CF_NOEURO, "Rp",           "",               0, STR_GAME_OPTIONS_CURRENCY_IDR    }, ///< Indonesian Rupiah
+	{	 5, "", CF_NOEURO, "RM",		   "",				 0, STR_GAME_OPTIONS_CURRENCY_MYR    }, ///< Malaysian Ringgit
 };
 
 /** Array of currencies used by the system */
