@@ -315,7 +315,7 @@ void Blitter_40bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 	if (_screen_disable_anim || VideoDriver::GetInstance()->GetAnimBuffer() == nullptr) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
-		Blitter_32bppOptimized::Draw(bp, mode, zoom);
+		Blitter_32bppOptimized::Draw<true>(bp, mode, zoom);
 		return;
 	}
 

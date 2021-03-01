@@ -24,7 +24,7 @@ static FBlitter_32bppOptimized iFBlitter_32bppOptimized;
  * @param bp further blitting parameters
  * @param zoom zoom level at which we are drawing
  */
-template <BlitterMode mode>
+template <BlitterMode mode, bool Tpal_to_rgb>
 inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom)
 {
 	const SpriteData *src = (const SpriteData *)bp->sprite;
@@ -209,18 +209,29 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 				default:
 					if (src_px->a == 255) {
 						/* faster than memcpy(), n is usually low */
-						src_n += n;
 						do {
-							*dst = src_px->data;
+							if (Tpal_to_rgb && *src_n != 0) {
+								/* Convert the mapping channel to a RGB value */
+								*dst = this->AdjustBrightness(this->LookupColourInPalette(GB(*src_n, 0, 8)), GB(*src_n, 8, 8)).data;
+							} else {
+								*dst = src_px->data;
+							}
 							dst++;
 							src_px++;
+							src_n++;
 						} while (--n != 0);
 					} else {
-						src_n += n;
 						do {
-							*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
+							if (Tpal_to_rgb && *src_n != 0) {
+								/* Convert the mapping channel to a RGB value */
+								Colour colour = this->AdjustBrightness(this->LookupColourInPalette(GB(*src_n, 0, 8)), GB(*src_n, 8, 8));
+								*dst = ComposeColourRGBANoCheck(colour.r, colour.g, colour.b, src_px->a, *dst);
+							} else {
+								*dst = ComposeColourRGBANoCheck(src_px->r, src_px->g, src_px->b, src_px->a, *dst);
+							}
 							dst++;
 							src_px++;
+							src_n++;
 						} while (--n != 0);
 					}
 					break;
@@ -233,6 +244,22 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 	}
 }
 
+template <bool Tpal_to_rgb>
+void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+{
+	switch (mode) {
+		default: NOT_REACHED();
+		case BM_NORMAL:       Draw<BM_NORMAL, Tpal_to_rgb>(bp, zoom); return;
+		case BM_COLOUR_REMAP: Draw<BM_COLOUR_REMAP, Tpal_to_rgb>(bp, zoom); return;
+		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT, Tpal_to_rgb>(bp, zoom); return;
+		case BM_CRASH_REMAP:  Draw<BM_CRASH_REMAP, Tpal_to_rgb>(bp, zoom); return;
+		case BM_BLACK_REMAP:  Draw<BM_BLACK_REMAP, Tpal_to_rgb>(bp, zoom); return;
+	}
+}
+
+template void Blitter_32bppOptimized::Draw<true>(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
+template void Blitter_32bppOptimized::Draw<false>(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
+
 /**
  * Draws a sprite to a (screen) buffer. Calls adequate templated function.
  *
@@ -242,14 +269,7 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
  */
 void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
-	switch (mode) {
-		default: NOT_REACHED();
-		case BM_NORMAL:       Draw<BM_NORMAL>      (bp, zoom); return;
-		case BM_COLOUR_REMAP: Draw<BM_COLOUR_REMAP>(bp, zoom); return;
-		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT> (bp, zoom); return;
-		case BM_CRASH_REMAP:  Draw<BM_CRASH_REMAP> (bp, zoom); return;
-		case BM_BLACK_REMAP:  Draw<BM_BLACK_REMAP> (bp, zoom); return;
-	}
+	this->Draw<false>(bp, mode, zoom);
 }
 
 template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator)
@@ -322,19 +342,21 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 				if (a != 0) {
 					dst_px->a = a;
 					*dst_n = src->m;
-					if (Tpal_to_rgb && src->m != 0) {
+					if (src->m != 0) {
 						/* Get brightest value */
-						uint8 rgb_max = std::max({src->r, src->g, src->b});
+						uint8 rgb_max = std::max({ src->r, src->g, src->b });
 
 						/* Black pixel (8bpp or old 32bpp image), so use default value */
 						if (rgb_max == 0) rgb_max = DEFAULT_BRIGHTNESS;
 						*dst_n |= rgb_max << 8;
 
-						/* Pre-convert the mapping channel to a RGB value */
-						Colour colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), rgb_max);
-						dst_px->r = colour.r;
-						dst_px->g = colour.g;
-						dst_px->b = colour.b;
+						if (Tpal_to_rgb) {
+							/* Pre-convert the mapping channel to a RGB value */
+							Colour colour = this->AdjustBrightness(this->LookupColourInPalette(src->m), rgb_max);
+							dst_px->r = colour.r;
+							dst_px->g = colour.g;
+							dst_px->b = colour.b;
+						}
 					} else {
 						dst_px->r = src->r;
 						dst_px->g = src->g;
