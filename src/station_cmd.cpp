@@ -3144,15 +3144,13 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 		Owner tram_owner = INVALID_OWNER;
 		if (road_rt != INVALID_ROADTYPE) {
 			const RoadTypeInfo *rti = GetRoadTypeInfo(road_rt);
-			td->roadtype = rti->strings.name;
-			td->road_speed = rti->max_speed / 2;
+			td->road_desc = TrackDesc(rti->strings.name, rti->max_speed / 2, rti->grffile[0]);
 			road_owner = GetRoadOwner(tile, RTT_ROAD);
 		}
 
 		if (tram_rt != INVALID_ROADTYPE) {
 			const RoadTypeInfo *rti = GetRoadTypeInfo(tram_rt);
-			td->tramtype = rti->strings.name;
-			td->tram_speed = rti->max_speed / 2;
+			td->tram_desc = TrackDesc(rti->strings.name, rti->max_speed / 2, rti->grffile[0]);
 			tram_owner = GetRoadOwner(tile, RTT_TRAM);
 		}
 
@@ -3185,13 +3183,12 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 
 			if (spec->grf_prop.grffile != nullptr) {
 				const GRFConfig *gc = GetGRFConfig(spec->grf_prop.grffile->grfid);
-				td->grf = gc->GetName();
+				td->station_grf = gc->GetName();
 			}
 		}
 
 		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-		td->rail_speed = rti->max_speed;
-		td->railtype = rti->strings.name;
+		td->rail_desc = TrackDesc(rti->strings.name, rti->max_speed, rti->grffile[0]);
 	}
 
 	if (IsAirport(tile)) {
@@ -3204,10 +3201,10 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 
 		if (as->grf_prop.grffile != nullptr) {
 			const GRFConfig *gc = GetGRFConfig(as->grf_prop.grffile->grfid);
-			td->grf = gc->GetName();
+			td->station_grf = gc->GetName();
 		} else if (ats->grf_prop.grffile != nullptr) {
 			const GRFConfig *gc = GetGRFConfig(ats->grf_prop.grffile->grfid);
-			td->grf = gc->GetName();
+			td->station_grf = gc->GetName();
 		}
 	}
 

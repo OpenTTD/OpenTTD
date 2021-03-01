@@ -2697,6 +2697,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Coordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Built: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Station class: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Station type: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_NEWGRF_NAME                   :{BLACK}Station NewGRF: {LTBLUE}{RAW_STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Airport class: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Airport name: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Airport tile name: {LTBLUE}{STRING}
@@ -2709,6 +2710,9 @@ STR_LANG_AREA_INFORMATION_TRAM_TYPE                             :{BLACK}Tram typ
 STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT                      :{BLACK}Rail speed limit: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT                      :{BLACK}Road speed limit: {LTBLUE}{VELOCITY}
 STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT                      :{BLACK}Tram speed limit: {LTBLUE}{VELOCITY}
+STR_LANG_AREA_INFORMATION_RAIL_NEWGRF_NAME                      :{BLACK}Rail NewGRF: {LTBLUE}{RAW_STRING}
+STR_LANG_AREA_INFORMATION_ROAD_NEWGRF_NAME                      :{BLACK}Road NewGRF: {LTBLUE}{RAW_STRING}
+STR_LANG_AREA_INFORMATION_TRAM_NEWGRF_NAME                      :{BLACK}Tram NewGRF: {LTBLUE}{RAW_STRING}
 
 # Description of land area of different tiles
 STR_LAI_CLEAR_DESCRIPTION_ROCKS                                 :Rocks

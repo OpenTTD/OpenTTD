@@ -2098,14 +2098,12 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 	RoadType tram_rt = GetRoadTypeTram(tile);
 	if (road_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(road_rt);
-		td->roadtype = rti->strings.name;
-		td->road_speed = rti->max_speed / 2;
+		td->road_desc = TrackDesc(rti->strings.name, rti->max_speed / 2, rti->grffile[0]);
 		road_owner = GetRoadOwner(tile, RTT_ROAD);
 	}
 	if (tram_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(tram_rt);
-		td->tramtype = rti->strings.name;
-		td->tram_speed = rti->max_speed / 2;
+		td->tram_desc = TrackDesc(rti->strings.name, rti->max_speed / 2, rti->grffile[0]);
 		tram_owner = GetRoadOwner(tile, RTT_TRAM);
 	}
 
@@ -2115,9 +2113,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 			rail_owner = GetTileOwner(tile);
 
 			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-			td->railtype = rti->strings.name;
-			td->rail_speed = rti->max_speed;
-
+			td->rail_desc = TrackDesc(rti->strings.name, rti->max_speed, rti->grffile[0]);
 			break;
 		}
 

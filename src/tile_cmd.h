@@ -15,6 +15,8 @@
 #include "cargo_type.h"
 #include "track_type.h"
 #include "tile_map.h"
+#include "newgrf.h"
+#include "newgrf_config.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -47,6 +49,19 @@ struct TileInfo {
 	int z;          ///< Height
 };
 
+/** Track extended description for the 'land area information' tool */
+struct TrackDesc {
+	StringID type;   ///< Type of track on the tile
+	uint16 speed;    ///< Speed limit (bridges and track)
+	const char *grf; ///< NewGRF used for the track
+
+	TrackDesc() : TrackDesc(0x0, 0, nullptr) {}
+	TrackDesc(StringID type, uint16 speed_limit, const GRFFile *grffile) :
+		type(type),
+		speed(speed_limit),
+		grf(grffile != nullptr ? GetGRFConfig(grffile->grfid)->GetName() : nullptr) {}
+};
+
 /** Tile description for the 'land area information' tool */
 struct TileDesc {
 	StringID str;               ///< Description of the tile
@@ -55,17 +70,15 @@ struct TileDesc {
 	Date build_date;            ///< Date of construction of tile contents
 	StringID station_class;     ///< Class of station
 	StringID station_name;      ///< Type of station within the class
+	const char *station_grf;    ///< NewGRF used for the station
 	StringID airport_class;     ///< Name of the airport class
 	StringID airport_name;      ///< Name of the airport
 	StringID airport_tile_name; ///< Name of the airport tile
-	const char *grf;            ///< newGRF used for the tile contents
+	const char *grf;            ///< NewGRF used for the tile contents
 	uint64 dparam[2];           ///< Parameters of the \a str string
-	StringID railtype;          ///< Type of rail on the tile.
-	uint16 rail_speed;          ///< Speed limit of rail (bridges and track)
-	StringID roadtype;          ///< Type of road on the tile.
-	uint16 road_speed;          ///< Speed limit of road (bridges and track)
-	StringID tramtype;          ///< Type of tram on the tile.
-	uint16 tram_speed;          ///< Speed limit of tram (bridges and track)
+	TrackDesc rail_desc;        ///< Tile rail description
+	TrackDesc road_desc;        ///< Tile road description
+	TrackDesc tram_desc;        ///< Tile tram description
 };
 
 /**
