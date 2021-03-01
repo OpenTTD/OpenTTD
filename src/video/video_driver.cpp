@@ -41,7 +41,7 @@ bool VideoDriver::Tick()
 	}
 
 	/* Prevent drawing when switching mode, as windows can be removed when they should still appear. */
-	if (this->HasGUI() && cur_ticks >= this->next_draw_tick && (_switch_mode == SM_NONE || HasModalProgress())) {
+	if (this->HasGUI() && cur_ticks >= this->next_draw_tick && (_switch_mode == SM_NONE || _game_mode == GM_BOOTSTRAP || HasModalProgress())) {
 		this->next_draw_tick += this->GetDrawInterval();
 		/* Avoid next_draw_tick getting behind more and more if it cannot keep up. */
 		if (this->next_draw_tick < cur_ticks - ALLOWED_DRIFT * this->GetDrawInterval()) this->next_draw_tick = cur_ticks;
