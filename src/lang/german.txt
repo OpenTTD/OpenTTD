@@ -1454,6 +1454,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Zwischensummen 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Lege das Layout für das Fenster mit den Firmenausgaben fest
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatische Entfernung von Signalen während der Errichtung von Bahntrassen: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatische Entfernung von Signalen während der Errichtung der Bahntrasse, wenn diese sich im Weg befinden. Hinweis: Dies kann zu Unfällen führen!
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Zeitraffer Geschwindigkeitslimit: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limit wie schnell das Spiel läuft, wenn Zeitraffer aktiviert ist. 0= unlimitiert (so schnell, wie ihr Computer es erlaubt). Eingaben unter 100% können das Spiel verlangsamen. Das obere Limit hängt von den technischen Spezifikationen ihres Computer ab und kann großen Einfluss auf das Spiel haben
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normale Spielgeschwindigkeit
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Keine Beschränkung (so schnell wie ihr Computer es erlaubt)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Nachrichtenticker: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Soundeffekte für Kurzfassungen von Nachrichten abspielen (Ticker)

@@ -1453,6 +1453,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Gruppera utgift
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Välj layout för företagens utgiftsfönster
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatiskt ta bort signaler vid byggande av järnväg: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Ta automatiskt bort signaler vid byggande av järnväg om signalerna är i vägen. Notera att detta kan leda till att tåg krockar.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Snabbspolnings begränsning: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Begränsa hur snabbt spelet går när snabbspolning är aktiverad. 0 = ingen begränsning (så snabbt som din dator tillåter). Värden under 100% saktar ner spelet. Den övre begränsningen beror på din dators specifikationer och kan variera beroende på spelet.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normal spel hastighet
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Ingen begränsning (Så snabbt som din dator tillåter)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Summerade nyheter: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spela ljudeffekt för sammanfattade nyhetsmeddelanden

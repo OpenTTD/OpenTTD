@@ -308,6 +308,7 @@ STR_SORT_BY_POPULATION                                          :மக்கள
 STR_SORT_BY_RATING                                              :மதிப்பீடு
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :ஒன்றுமில்லை
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}இடை நிறுத்து
@@ -1355,6 +1356,7 @@ STR_CONFIG_SETTING_AI_PROFILE_EASY                              :எளிதா
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :நடுத்தரமான
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :கடுமையான
 
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :கணினிகளை பல்வீரர் ஆட்டத்தில் அனுமதி: {STRING}
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :பழுதுபார்த்தல்கள் இடையே உள்ள காலத்தினை சதவிகிதத்தில் காட்டவும்: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :இரயிகளின் பழுதுபார்த்தல் இடைவேளி: {STRING}
@@ -1608,6 +1610,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}நீ�
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}ஏமாற்றுகள்
+STR_CHEATS_NOTE                                                 :{BLACK}குறிப்பு: இந்த அமைப்புகளின் எந்தவொரு பயன்பாடும் பதிவு செய்யப்படும்
 STR_CHEAT_MONEY                                                 :{LTBLUE}{CURRENCY_LONG} ஆக பணத்தை உயர்த்து
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}இந்த நிறுவனமாக ஆடுகிறீர்கள்: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}அதிசய நிலச்சமனி (தொழிற்சாலைகள் மற்றும் பொருட்களை நீக்குவதற்கு): {ORANGE}{STRING}
@@ -1979,6 +1982,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} புதிய நிறுவனம் (#{2:NUM})வை துவக்கி உள்ளார்
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ஆட்டத்தை விட்டு வெளியேரினார் ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} அவரது/அவளது பெயரினை {STRING} என்று மாற்றினார்
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} தங்கள் நிறுவனத்திற்கு {1:STRING} {2:CURRENCY_LONG} கொடுத்தார்
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}சர்வர் ஆட்டத்தினை முடித்தது
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}சர்வர் மீண்டும் தொடங்குகிறது...{}சற்று பொறுக்கவும்...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} வெளியேற்றப்பட்டார். காரணம்: ({STRING})
@@ -2296,7 +2300,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}ஏத�
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}புதிய தொழிற்சாலையினை நிறுவு
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}இந்தப் பட்டியலிருந்து பொருத்தமான தொழிற்சாலை ஒன்றினை தேர்ந்தெடு
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :பல மாறுபட்ட தொழிற்சாலைகள்
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}மாறுபட்ட தொழிற்சாலைகளை உருவாக்குக
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}விலை: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}எங்கேயோ நிறுவு
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}கட்டு
@@ -2794,10 +2798,10 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_COMPANY_TITLE                                         :{BLACK}நிறுவனத்தின் குறிக்கோள்கள்:
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :கேள்வி
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :தகவல்
-STR_GOAL_QUESTION_CAPTION_WARNING                               :எச்சரிக்கை
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :பிழை
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}கேள்வி
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}தகவல்
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}எச்சரிக்கை
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}பிழை
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :இரத்து செய்
@@ -2994,6 +2998,7 @@ STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}நி�
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :நிறுவனத்தின் பெயர்
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :மேலாளரின் பெயர்
 
+STR_BUY_COMPANY_MESSAGE                                         :{WHITE}எங்கள் நிறுவனத்தை கையகப்படுத்த ஒரு போக்குவரத்து நிறுவனத்தை நாங்கள் தேடுகிறோம்.{}{}நீங்கள் {COMPANY}யை {CURRENCY_LONG} வாங்க விரும்புகிறீர்களா?
 
 # Company infrastructure window
 STR_COMPANY_INFRASTRUCTURE_VIEW_CAPTION                         :{WHITE}{COMPANY} இன் கட்டுமானங்கள்
@@ -3141,11 +3146,12 @@ STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}வி�
 STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}கப்பலை வாங்கி மாற்றியமை
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}விமானத்தை வாங்கி மாற்றியமை
 
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}காட்டப்படும் இரயில் வாகனத்தை வாங்கவும். Shift+Click செய்தால் வாங்கும்போது ஆகும் மதிப்பிடப்பட்டச் செலவுகளைக் காட்டு
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}காட்டப்படும் இரயில் வாகனத்தை வாங்கவும். Shift+Click செய்தால் வாங்கும்போது ஆகும் மதிப்பிடப்பட்டச் செலவுகளைக் காட்டும்.
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}காட்டப்படும் சாலை வாகனத்தை வாங்கவும். Shift+Click செய்தால் வாங்கும்போது ஆகும் மதிப்பிடப்பட்டச் செலவுகளைக் காட்டும்
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}காட்டப்படும் கப்பலை வாங்கவும். Shift+Click செய்தால் வாங்கும்போது ஆகும் மதிப்பிடப்பட்டச் செலவுகளைக் காட்டும்
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}காட்டப்படும் விமானத்தை வாங்கவும். Shift+Click செய்தால் வாங்கும்போது ஆகும் மதிப்பிடப்பட்டச் செலவுகளைக் காட்டும்
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}காட்டப்படும் சாலை வாகனத்தை வாங்கி புதுப்பிக்கவும். Shift+Click செய்தால் வாங்கும்போது ஆகும் மதிப்பிடப்பட்டச் செலவுகளைக் காட்டும்.
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}பெயரிடு
 STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_BUTTON                      :{BLACK}பெயரிடு
@@ -4250,10 +4256,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :சர்க்
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :பெயரிடாதது
-STR_SV_TRAIN_NAME                                               :இரயில் {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :சாலை வாகனம் {COMMA}
-STR_SV_SHIP_NAME                                                :கப்பல் {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :விமானம் {COMMA}
+STR_SV_TRAIN_NAME                                               :இரயில் #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :சாலை வாகனம் #{COMMA}
+STR_SV_SHIP_NAME                                                :கப்பல் #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :விமானம் #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} வடக்கு

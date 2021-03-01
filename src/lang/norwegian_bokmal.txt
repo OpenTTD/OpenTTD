@@ -1456,6 +1456,9 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupper utgifte
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definer oppsettet for vinduet som viser selskapets utgifter
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatisk fjerne signaler mens jernbane bygges: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatisk fjerne signaler mens jernbane bygges dersom signalene er i veien. Vær oppmerksom på at dette kan potensielt lede til togkrasj.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Grense for hvor fort spillet kjører: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normal hastighet
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Ingen grense (så fort som maskinen din tillater)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Nyhetstavle: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spille av lyd for oppsummerte nyhetsmeldinger

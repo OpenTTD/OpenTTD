@@ -613,7 +613,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :Coordinador de 
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :Supervisor de Rutas
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :Jefe
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :Subdirector
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Director
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :Director(a)
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :Presidente
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :Magnate
 
@@ -696,7 +696,7 @@ STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}Clic en 
 STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED                         :{BIG_FONT}{BLACK}Lista de empresas que han llegado a {NUM}
 STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME                        :{BIG_FONT}{BLACK}Tabla de clasificación de empresas en {NUM}
 STR_HIGHSCORE_POSITION                                          :{BIG_FONT}{BLACK}{COMMA}.
-STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Hombre de negocios
+STR_HIGHSCORE_PERFORMANCE_TITLE_BUSINESSMAN                     :Empresario(a)
 STR_HIGHSCORE_PERFORMANCE_TITLE_ENTREPRENEUR                    :Empresario
 STR_HIGHSCORE_PERFORMANCE_TITLE_INDUSTRIALIST                   :Industrial
 STR_HIGHSCORE_PERFORMANCE_TITLE_CAPITALIST                      :Capitalista
@@ -947,6 +947,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuevo dólar ta
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Yuan chino (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar honkonés (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia (IDR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Manejar por la izquierda
@@ -1003,6 +1004,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otra
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Elegir el tamaño de los elementos de la interfaz
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(detectar)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Doble
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Cuádruple
@@ -1010,6 +1012,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Cuádruple
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Tamaño de letra
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Elegir qué tamaño de letra usar en la interfaz
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(detectar)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doble
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Cuádruple
@@ -1451,6 +1454,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar gastos 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definir el diseño de la ventana de finanzas
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Quitar señales de forma automática al construir vías férreas: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Quitar las señales de forma automática al construir vías férreas si estas obstruyen. Puede provocar choques de trenes.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Límite de velocidad del avance rápido: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Límite de velocidad del avance rápido. 0 significa sin límite o la velocidad que el sistema permita. Valores debajo de 100% retardan el juego. El límite más alto varía en factor de las capacidades del sistema y el juego.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% velocidad normal
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Sin límite (lo que permita el sistema)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Boletín de noticias: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproducir sonido para mensajes resumidos de noticias
@@ -2846,6 +2853,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrar texto:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Sobrescribir archivo
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}¿Estás seguro de sobrescribir el archivo?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Carpeta)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Carpeta superior)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Indicar un nombre para la partida a guardar
 
@@ -2996,7 +3005,7 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}Número
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}Analizar: {STRING}
 STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}Superior
-STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspeccionar objeto del entorno superior
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}Inspeccionar objeto del entorno externo
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING} en {HEX}
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :Objeto

@@ -1453,6 +1453,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Uitgaven in bed
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definieer de lay-out voor het bedrijfsuitgavenvenster
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatisch seinen verwijderen tijdens spooraanleg: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Seinen automatisch verwijderen tijdens spooraanleg als deze in de weg staan. Dit kan botsingen veroorzaken.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limiet verhoogde spelsnelheid: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Beperkt de snelheid van het spel wanneer de spelsnelheid is verhoogt. 0 = geen limiet (alleen beperkt door de computer zelf). Waarden onder 100% vertragen het spel. De hoogste waarde hangt af van de specifcaties van de computer en kan afhankelijk van het spel variëren.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normale spelsnelheid
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Geen limiet (alleen beperkt door de computer zelf)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Nieuwsticker: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Speel geluidseffecten af bij korte nieuwsberichten

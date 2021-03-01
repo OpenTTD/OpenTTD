@@ -704,7 +704,7 @@ STR_GROUP_BY_SHARED_ORDERS                                      :Polecenia wspó
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pauza
-STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Szybkie przemijanie czasu w grze
+STR_TOOLBAR_TOOLTIP_FORWARD                                     :{BLACK}Przyspieszenie czasu w grze
 STR_TOOLBAR_TOOLTIP_OPTIONS                                     :{BLACK}Opcje
 STR_TOOLBAR_TOOLTIP_SAVE_GAME_ABANDON_GAME                      :{BLACK}Zapis gry, opuszczenie gry, wyjście
 STR_TOOLBAR_TOOLTIP_DISPLAY_MAP                                 :{BLACK}Wyświetl mapę, dodatkowy podgląd lub listę napisów
@@ -1833,6 +1833,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Pogrupuj wydatk
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Określa układ okienka wydatków firmy
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automatycznie usuwaj sygnały podczas budowy torów: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatycznie usuwaj sygnały, które przeszkadzają w budowie toru. Pamiętaj, że może to doprowadzić do zderzenia pociągów, w przypadku usunięcia ważnych sygnałów.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Ograniczenie prędkości przyspieszonego czasu w grze: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Ograniczenie prędkości gry, kiedy przyspieszenie czasu jest włączone. 0 = bez ograniczenia (tak szybko, jak pozwoli na to komputer). Wartości poniżej 100% spowolnią grę. Górny limit jest zależny od specyfikacji komputera i może się różnić w zależności od rozgrywki.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normalnej prędkości gry
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Brak ograniczenia (tak szybko, jak pozwoli na to komputer)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Pasek informacji: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Odtwarzaj dźwięk dla podsumowania wiadomości
