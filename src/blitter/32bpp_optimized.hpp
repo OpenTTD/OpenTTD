@@ -26,9 +26,10 @@ public:
 
 	const char *GetName() override { return "32bpp-optimized"; }
 
-	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
+	template <BlitterMode mode, bool Tpal_to_rgb = false> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 
 protected:
+	template <bool Tpal_to_rgb> void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 	template <bool Tpal_to_rgb> Sprite *EncodeInternal(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
 };
 
