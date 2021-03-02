@@ -2741,16 +2741,16 @@ STR_LAI_TUNNEL_DESCRIPTION_ROAD                                 :Straßentunnel
 
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :Stahlhängebrücke
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_GIRDER_STEEL                    :Stahlträgerbrücke
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Auslegerbrücke (Stahl)
-STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Stahlbetonbrücke
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_CANTILEVER_STEEL                :Stahlauslegerbrücke
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_CONCRETE             :Betonhängebrücke
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_WOODEN                          :Holzbrücke
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_CONCRETE                        :Betonbrücke
 STR_LAI_BRIDGE_DESCRIPTION_RAIL_TUBULAR_STEEL                   :Stahlrundbrücke
 
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_STEEL                :Stahlhängebrücke
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_GIRDER_STEEL                    :Stahlträgerbrücke
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Auslegerbrücke (Stahl)
-STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Stahlbetonbrücke
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_CANTILEVER_STEEL                :Stahlauslegerbrücke
+STR_LAI_BRIDGE_DESCRIPTION_ROAD_SUSPENSION_CONCRETE             :Betonhängebrücke
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_WOODEN                          :Holzbrücke
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_CONCRETE                        :Betonbrücke
 STR_LAI_BRIDGE_DESCRIPTION_ROAD_TUBULAR_STEEL                   :Stahlrundbrücke
@@ -3843,8 +3843,8 @@ STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Name
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Name des Zuges
 STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}Name des Fahrzeuges
-STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Schiffsname
-STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Flugzeugname
+STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}Name des Schiffs
+STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Name des Flugzeugs
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}   Betriebskosten: {LTBLUE}{CURRENCY_LONG}/Jahr
 # The next two need to stay in this order
@@ -4224,8 +4224,8 @@ STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normaler
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Screenshot auf der größten Zoomstufe
 STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Screenshot auf der Standard-Zoomstufe
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Screenshot des ganzen Spielfeldes
-STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Reliefkarten-Screenshot
-STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minimap Screenshot
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Reliefkartenscreenshot
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Übersichtskartenscreenshot
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter

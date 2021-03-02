@@ -1123,6 +1123,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Pietų Afrikos 
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Kita...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijos Laris (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irano Rialas (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Naujieji Rusijos rubliai (RUB)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinų renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Honkongo doleris (HKD)
 ############ end of currency region
@@ -1719,6 +1720,9 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Pilnas
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Spalvotos naujienos atsiranda: {STRING} metais
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Metai, kai laikraščių antraštės tampa spalvotos. Iki tol jos būna monochominės
 STR_CONFIG_SETTING_STARTING_YEAR                                :Žaidimo pradžia: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Niekada
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Originali
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Fiksuota
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Leisti pirkti kitų kompanijų akcijas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Leisti pirkti bei parduoti kitų kompanijų akcijas. Akcijos yra platinamos tik įmonei sulaukus tam tikro amžiaus
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Grynojo pelno dalis, mokama tiekėjų sistemoms: {STRING}
@@ -2359,6 +2363,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Žaidimas vis d
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Žaidimas vis dar sustabdytas ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Žaidimas vis dar sustabdytas ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Žaidimas vis dar pristabdytas ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Žaidimas vis dar pristabdytas ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Žaidimas paleistas ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :žaidėjų skaičius
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :jungiasi žaidėjai
@@ -2884,15 +2889,20 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK} Per sekundę pateiktų vaizdo kadrų skaičius.
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Atmintis
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK} Duomenys pagrįsti {COMMA} matavimais
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} ms
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} k/s
 STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Nuorodos grafiko vėlavimas:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Vaizdo išvestis
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Žaidimo skriptas:
+STR_FRAMERATE_AI                                                :{BLACK} DI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Nuorodos grafiko vėlavimas
+STR_FRAMETIME_CAPTION_DRAWING                                   :Grafinis vaizdavimas
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI Iš viso skriptų
+STR_FRAMETIME_CAPTION_AI                                        :DI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -3773,6 +3783,7 @@ STR_ENGINE_PREVIEW_SHIP.kur                                     :laive
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksploatavimo išlaidos: {CURRENCY_LONG} per metus{}Talpa: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Kaina: {CURRENCY_LONG} Svoris: {WEIGHT_SHORT}{}Greitis: {VELOCITY}  Galia: {POWER}  Maks. T.E.: {6:FORCE}{}Einamosios išlaidos: {4:CURRENCY_LONG}/yr{}Talpa: {5:CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Kaina: {CURRENCY_LONG} Didž. Greitis: {VELOCITY}{}Talpa: {CARGO_LONG}{}Eksploatacijos išlaidos: {CURRENCY_LONG}/metams
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY}{}Lėktuvo tipas: {STRING}{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Eksploatacijos išlaidos: {CURRENCY_LONG}/metams
 STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Kaina: {CURRENCY_LONG} Didž. greitis: {VELOCITY}{}Lėktuvo tipas: {STRING} Nuotolis: {COMMA} tiles{}Talpa: {CARGO_LONG}, {CARGO_LONG}{}Eksploatacijos išlaidos: {CURRENCY_LONG}/metams
 
 # Autoreplace window
@@ -4571,6 +4582,7 @@ STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}... nėr
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}... nėra kelio tramvajui
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Čia negalima konvertuoti tramvajaus tipo...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE} Nėra tinkamo kelio
+STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Netinkama tramvajaus vėžė
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Neimanoma cia iskasti kanalu...
@@ -4733,6 +4745,8 @@ STR_BASESOUNDS_DOS_DESCRIPTION                                  :Originalūs Tra
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Originalūs Transport Tycoon Deluxe Windows leidimo garsai.
 STR_BASESOUNDS_NONE_DESCRIPTION                                 :Garsų pakas be jokių garsų.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Originali Transport Tycoon Deluxe Windows leidimo muzika.
+STR_BASEMUSIC_DOS_DESCRIPTION                                   :Originali Transport Tycoon Deluxe DOS leidimo muzika.
+STR_BASEMUSIC_TTO_DESCRIPTION                                   :Originali Transport Tycoon DOS leidimo muzika.
 STR_BASEMUSIC_NONE_DESCRIPTION                                  :Muzikos pakas be muzikos.
 
 ##id 0x2000
@@ -5380,6 +5394,7 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN} plūdura
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} plūduras #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Kompanija {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupė {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Kontrolės punktas {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :{TOWN} kontrolės punktas#{COMMA}

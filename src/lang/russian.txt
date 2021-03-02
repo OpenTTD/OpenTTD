@@ -510,8 +510,8 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Выход
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
-STR_SETTINGS_MENU_GAME_OPTIONS                                  :Настройки игры
-STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Настройки
+STR_SETTINGS_MENU_GAME_OPTIONS                                  :Основные настройки
+STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Расширенные настройки
 STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Настройки ИИ / скрипта
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Настройки NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Настройки прозрачности
@@ -1046,7 +1046,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}В ос�
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Показать в основном окне
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Настройки игры
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Основные настройки
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Валюта
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Смена используемой в игре валюты
 
@@ -1605,6 +1605,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Группир�
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Разделять доходы и расходы в окне финансовой информации компании
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Убирать мешающие ж/д сигналы при строительстве: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Автоматически убирать сигналы, мешающие постройке новых рельсовых путей. Это может привести к столкновению поездов.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Предел ускорения игры: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Настройка предела ускорения игры.{}0 - предела нет; игра будет идти с максимально возможной скоростью.{}При значениях ниже 100% игра будет замедляться.{}Реальное значение ускорения зависит от конфигурации компьютера и количества объектов в игре.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% обычной скорости
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :нет (настолько быстро, насколько позволяет компьютер)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Бегущая строка: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Воспроизводить звук при появлении бегущей строки с новостями
@@ -1944,9 +1948,9 @@ STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Загр
 STR_INTRO_SCENARIO_EDITOR                                       :{BLACK}Редактор сценариев
 STR_INTRO_MULTIPLAYER                                           :{BLACK}Сетевая игра
 
-STR_INTRO_GAME_OPTIONS                                          :{BLACK}Настройки игры
+STR_INTRO_GAME_OPTIONS                                          :{BLACK}Основные настройки
 STR_INTRO_HIGHSCORE                                             :{BLACK}Таблица рекордов
-STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Настройки
+STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Расширенные настройки
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Настройки NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Проверить онлайн-контент
 STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Настройки ИИ / скрипта
@@ -1964,9 +1968,9 @@ STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Выбр
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Выбрать субтропический климат
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Выбрать игрушечный мир
 
-STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Открыть настройки игры
+STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}Изменить основные настройки игры
 STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Показать таблицу рекордов
-STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Окно настроек
+STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Изменить расширенные настройки игры
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Показать настройки NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Найти новый и обновлённый контент для загрузки
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Изменить настройки ИИ / игрового скрипта

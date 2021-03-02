@@ -1454,6 +1454,8 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar costes 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define el diseño de la ventana de finanzas
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Elimina automáticamente las señales durante la construcción del ferrocarril: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimine automáticamente las señales durante la construcción del carril si las señales están en el camino. Tenga en cuenta que esto puede provocar accidentes de tren.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% Velocidad de juego normal
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Sin límite (tan rápido como pueda su ordenador)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Noticias resumidas: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Reproducir sonido para mensajes de noticias resumidos

@@ -1477,6 +1477,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Raggruppa voci 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Determina l'orginalizzazione della finestra delle finanze della compagnia
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Rimuove automaticamente i segnali durante la costruzione di binari: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Rimuove automaticamente i segnali d'intralcio durante la costruzione di binari. Notare che questo può potenzialmente causare incidenti ferroviari.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limite velocità avanzamento veloce: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limite della velocità di gioco quanto l'avanzamento veloce è abilitato. 0 = nessun limite (per quanto consenta il tuo computer). Valori al di sotto di 100% rallentano il gioco. Il limite superiore dipende dalle specifiche del tuo computer e può variare a seconda del gioco in corso.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% della velocità di gioco normale
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Nessun limite (per quanto consenta il tuo computer)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Notiziari: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Emette un suono per i messaggi di riepilogo delle notizie

@@ -437,6 +437,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :за містк
 STR_SORT_BY_RANGE                                               :за дальністю
 STR_SORT_BY_POPULATION                                          :за населенням
 STR_SORT_BY_RATING                                              :за рейтингом
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Середній прибуток мигулого року
 
 # Group by options for vehicle list
 
@@ -2646,6 +2647,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дере
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Садити дерева випадкового типу. Утримуйте Shift для показу витрат на висаджування
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Випадкові дерева
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Випадкове насадження дерев по всьому ландшафту
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Саджати великі ліси протягуванням по ландшафту
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Створити ландшафт
