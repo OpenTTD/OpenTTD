@@ -65,6 +65,7 @@ enum Currencies {
 	CURRENCY_INR,       ///< Indian Rupee
 	CURRENCY_IDR,       ///< Indonesian Rupiah
 	CURRENCY_MYR,       ///< Malaysian Ringgit
+	CURRENCY_SGD,       ///< Singapore Dollar
 	CURRENCY_END,       ///< always the last item
 };
 
