@@ -53,6 +53,9 @@ string(REPLACE "0x(nil)" "0x00000000" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "0x0000000000000000" "0x00000000" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "0x0x0" "0x00000000" REGRESSION_RESULT "${REGRESSION_RESULT}")
 
+# Remove timestamps if any
+string(REGEX REPLACE "\[[0-9-]+ [0-9:]+\] " "" REGRESSION_RESULT "${REGRESSION_RESULT}")
+
 # Convert the output to a format that is expected (and more readable) by result.txt
 string(REPLACE "\ndbg: [script]" "\n" REGRESSION_RESULT "${REGRESSION_RESULT}")
 string(REPLACE "\n " "\nERROR: " REGRESSION_RESULT "${REGRESSION_RESULT}")
