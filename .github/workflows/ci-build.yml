@@ -75,6 +75,9 @@ jobs:
         - compiler: gcc
           cxxcompiler: g++
           libsdl: libsdl1.2-dev
+        - compiler: gcc
+          cxxcompiler: g++
+          extra-cmake-parameters: -DOPTION_DEDICATED=ON
 
     runs-on: ubuntu-20.04
     env:
@@ -129,7 +132,7 @@ jobs:
         cd build
 
         echo "::group::CMake"
-        cmake ..
+        cmake .. ${{ matrix.extra-cmake-parameters }}
         echo "::endgroup::"
 
         echo "::group::Build"
