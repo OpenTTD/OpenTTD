@@ -1868,7 +1868,7 @@ DEF_CONSOLE_CMD(ConContent)
 			 * to download every available package on BaNaNaS. This is not in
 			 * the spirit of this service. Additionally, these few people were
 			 * good for 70% of the consumed bandwidth of BaNaNaS. */
-			IConsolePrintF(CC_ERROR, "'select all' is no longer supported since 1.11");
+			IConsoleError("'select all' is no longer supported since 1.11");
 		} else {
 			_network_content_client.Select((ContentID)atoi(argv[2]));
 		}
