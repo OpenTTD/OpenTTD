@@ -948,6 +948,7 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Chinoi
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar de Hong Kong (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Roupie indienne (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Roupie indonésienne (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conduite à gauche
@@ -1454,6 +1455,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Regrouper les d
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Définit la mise en forme de la fenêtre des dépenses de la compagnie
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Retire automatiquement les signaux durant la construction de la voie ferrée: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Retire automatiquement les signaux durant la construction de la voie ferrée si les signaux sont sur le chemin. A noter que ça peut potentiellement mener à des accidents de trains.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Seuil de vitesse d'avancement rapide: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limite de la vitesse du jeu lorsque l'avance rapide est activée. 0 = pas de limite (aussi rapidement que votre ordinateur le permet). Les valeurs inférieures à 100% ralentissent le jeu. Le limites supérieure dépend des spécifications de votre ordinateur et peut varier en fonction du jeu
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% de la vitesse normal
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Aucune limite (aussi rapidement que votre ordinateur le permet)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Bulletin{NBSP}: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Jouer un son pour les bulletins

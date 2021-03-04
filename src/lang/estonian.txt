@@ -1004,6 +1004,7 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Hiina renminbi 
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kongi dollar (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :India ruupia (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indoneesia ruupia (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaisia ringit (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasakpoolne liiklus
@@ -1225,7 +1226,7 @@ STR_CONFIG_SETTING_HORIZONTAL_POS_LEFT                          :Vasakul
 STR_CONFIG_SETTING_HORIZONTAL_POS_CENTER                        :Keskel
 STR_CONFIG_SETTING_HORIZONTAL_POS_RIGHT                         :Paremal
 
-STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Stardilaenu ülempiir: {STRING}
+STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN                         :Stardilaenu ülempiirang: {STRING}
 STR_CONFIG_SETTING_MAXIMUM_INITIAL_LOAN_HELPTEXT                :Suurim summa, mida ettevõte saab laenata (arvestamata inflatsiooni)
 STR_CONFIG_SETTING_INTEREST_RATE                                :Intressimäär: {STRING}
 STR_CONFIG_SETTING_INTEREST_RATE_HELPTEXT                       :Laenu intressimäär; ühtlasi juhib inflatsiooni, kui inflatsioon on aktiveeritud
@@ -1259,8 +1260,8 @@ STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :Ettevõtte jaam
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :Kui lubatud, saavad liidetud jaamaga tööstuseid (nagu naftaplatvormid) teenindada ka lähedalolevad ettevõttele kuuluvad jaamad. Muidu võivad neid tööstuseid teenindada vaid nendega liidetud jaamad. Lähedale ehitatud ettevõtte jaamad neid teenindada ei saa, ning liidetud jaamad ei teeninda teisi tööstuseid
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :Asulateede, -sildade, -tunnelite jne lammutamine: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Lihtsusta asulatele kuuluva taristu ja hoonete eemaldamist
-STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Rongi pikkuse ülempiir: {STRING}
-STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Määrab rongide pikkuse ülempiiri
+STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Rongipikkuse ülempiirang: {STRING}
+STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Määrab rongide pikkusele ülempiirangu
 STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} ruut{P 0 "" u}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Vedurisuitsu ja -sädemete hulk: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Määra kui palju suitsu või sädemeid eraldub sõidukist
@@ -1419,8 +1420,8 @@ STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Kõrguse level 
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Üks või enam ruutu põhjaäärel pole tühjad
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Üks või enam ääreruutu pole vesi
 
-STR_CONFIG_SETTING_STATION_SPREAD                               :Jaama küljepikkuse ülempiir: {STRING}
-STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Jaama ühe külje pikkuse ülempiir. Suur väärtus teeb mängu aeglaseks
+STR_CONFIG_SETTING_STATION_SPREAD                               :Jaama küljepikkuse ülempiirang: {STRING}
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :Jaama ühe külje pikkuse ülempiirang. Suur väärtus teeb mängu aeglaseks
 STR_CONFIG_SETTING_SERVICEATHELIPAD                             :Automaatne helikopterihooldus maandumisplatsidel: {STRING}
 STR_CONFIG_SETTING_SERVICEATHELIPAD_HELPTEXT                    :Hoolda helikoptereid peale igat maandumist, isegi kui lennujaamas pole depood
 STR_CONFIG_SETTING_LINK_TERRAFORM_TOOLBAR                       :Maastikuriba sidumine rööbas-, maa-, vee- ja lennuväljaribadega: {STRING}
@@ -1510,6 +1511,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kulutuste jaota
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Määrab rahavoogude aruande ülesehituse
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Rööbastee ehitamisel on signaalid isekõrvalduvad: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Rööbastee ehitamisel kõrvaldatakse ette jäävad signaalid automaatselt. Silmas pidada, et see võib põhjustada rongide kokkupõrkeid.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Kiirendatud mängu kiiruspiirang: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Piira mängukiirust, kui mäng on kiirendatud. 0 = piiramatu (nii kiire, kui arvuti võimaldab). Väärtused alla 100% aeglustavad mängu. Kõrgeim kiirus sõltub arvutiomadustest, ning võib mänguti erineda.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% harilikust mängukiirusest
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Piiramatu (nii kiire, kui arvuti võimaldab)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Lühiteadetes: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Lühiteate ilmumisel kostub helisignaal
@@ -1530,14 +1535,14 @@ STR_CONFIG_SETTING_SOUND_AMBIENT_HELPTEXT                       :Maastikult, tö
 
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING                  :Sobivate sõidukite puudumisel on taristu ehitamine keelatud: {STRING}
 STR_CONFIG_SETTING_DISABLE_UNSUITABLE_BUILDING_HELPTEXT         :Sisse lülitamisel on taristu ehitamine võimalik ainult juhul, kui sellega seonduvad sõidukid on juba saadaval. Väldib mõttetut raha ja aja kulu, kui ehitatakse taristu, mida ei saa kasutada
-STR_CONFIG_SETTING_MAX_TRAINS                                   :Ettevõtte rongide ülempiir: {STRING}
-STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Ettevõttele kuuluvate rongide arvu ülempiir
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Ettevõtte mootorsõidukite ülempiir: {STRING}
-STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Ettevõttele kuuluvate mootorsõidukite arvu ülempiir
-STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Ettevõtte õhusõidukite ülempiir: {STRING}
-STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Ettevõttele kuuluvate lennukite arvu ülempiir
-STR_CONFIG_SETTING_MAX_SHIPS                                    :Ettevõtte laevade ülempiir: {STRING}
-STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Ettevõttele kuuluvate laevade arvu ülempiir
+STR_CONFIG_SETTING_MAX_TRAINS                                   :Ettevõtte rongide ülempiirang: {STRING}
+STR_CONFIG_SETTING_MAX_TRAINS_HELPTEXT                          :Ettevõttele kuuluvate rongide arvu ülempiirang
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES                            :Ettevõtte mootorsõidukite ülempiirang: {STRING}
+STR_CONFIG_SETTING_MAX_ROAD_VEHICLES_HELPTEXT                   :Ettevõttele kuuluvate mootorsõidukite arvu ülempiirang
+STR_CONFIG_SETTING_MAX_AIRCRAFT                                 :Ettevõtte õhusõidukite ülempiirang: {STRING}
+STR_CONFIG_SETTING_MAX_AIRCRAFT_HELPTEXT                        :Ettevõttele kuuluvate lennukite arvu ülempiirang
+STR_CONFIG_SETTING_MAX_SHIPS                                    :Ettevõtte laevade ülempiirang: {STRING}
+STR_CONFIG_SETTING_MAX_SHIPS_HELPTEXT                           :Ettevõttele kuuluvate laevade arvu ülempiirang
 
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS                             :Rongikeeld arvutile: {STRING}
 STR_CONFIG_SETTING_AI_BUILDS_TRAINS_HELPTEXT                    :Selle seade sisse lülitamise korral ei ole arvuti juhitud mängijal lubatud rongide ehitamine
@@ -1692,12 +1697,12 @@ STR_CONFIG_SETTING_SNAP_RADIUS                                  :Akende haardumi
 STR_CONFIG_SETTING_SNAP_RADIUS_HELPTEXT                         :Akendevaheline kaugus, enne, kui liigutatav aken joondatakse kõrvalakendega
 STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} piks{P 0 el lit}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Väljas
-STR_CONFIG_SETTING_SOFT_LIMIT                                   :Suletavate akende arvu ülempiir: {STRING}
+STR_CONFIG_SETTING_SOFT_LIMIT                                   :Suletavate akende arvu ülempiirang: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_HELPTEXT                          :Suletavate akende arv, enne, kui vanad aknad suletakse, et uutele akendele ruumi teha
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
 STR_CONFIG_SETTING_SOFT_LIMIT_DISABLED                          :väljas
 STR_CONFIG_SETTING_ZOOM_MIN                                     :Suurim suurendusaste: {STRING}
-STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Vaateakna suurendusastme ülempiir. Kõrgete suurendusastmete lubamisega kaasneb suurem vahemälu kasutamine
+STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Vaateakna suurendusastme ülempiirang. Kõrgete suurendusastmete lubamisega kaasneb suurem vahemälu kasutamine
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Väikseim suurendusaste: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Vaateakna suurendusastme alampiir. Madalate suurendusastmete kasutamine võib põhjustata viivitusi
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
@@ -1837,7 +1842,7 @@ STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... eira
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... eiratakse lähtehelikogu «{STRING}»: ei leitud
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... eiratakse lähtemuusikakogu «{STRING}»: ei leitud
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Vahemälu on täis
-STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Pildipuhvri (ingl k «spritecache») suurendamine {BYTES} võrra ebaõnnestus. Pildipuhvri uus suurus on {BYTES}. Seetõttu on OpenTTD nüüd aeglasem. 32 bpp graafika keelamine ja suurendusastme ülempiiri vähendamine piirab vahemälu tarbimist
+STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Pildipuhvri (ingl k «spritecache») suurendamine {BYTES} võrra ebaõnnestus. Pildipuhvri uus suurus on {BYTES}. Seetõttu on OpenTTD nüüd aeglasem. 32 bpp graafika keelamine ja suurendusastme ülempiirangu vähendamine piirab vahemälu tarbimist
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2073,7 +2078,7 @@ STR_NETWORK_START_SERVER_ADVERTISED                             :Jah
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" i}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Kliente kuni:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS.in                   :sees
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Määrab klientide arvule ülempiiri. Kõiki vabu kohti ei pea täitma
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Määrab klientide arvule ülempiirangu. Kõiki vabu kohti ei pea täitma
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} ettevõte{P "" t}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Ettevõtteid kuni:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Piirab serveris olevate ettevõtete arvu

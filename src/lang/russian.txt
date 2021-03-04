@@ -361,7 +361,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Смен
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Выберите фильтр
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортировка
 STR_BUTTON_CATCHMENT                                            :{BLACK}Охват
-STR_TOOLTIP_CATCHMENT                                           :{BLACK}Переключить подсветку участков, находящихся в зонах обслуживания станциями игрока, а также не попадающих в эти зоны.
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Показать область, обслуживаемую станцией.
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Закрыть окно
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Окна можно перетаскивать, схватив за заголовок
@@ -1092,6 +1092,7 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Китайск�
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Гонконгский доллар (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Индийская рупия (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Индонезийская рупия (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзийский ринггит (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Левостороннее
@@ -1268,7 +1269,7 @@ STR_CITY_APPROVAL_HOSTILE                                       :отрицат�
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}Модули ИИ отсутствуют.{}Их можно скачать через систему проверки онлайн-контента.
 
 # Settings tree window
-STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Настройки
+STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Расширенные настройки
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Фильтр:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Развернуть всё
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Свернуть всё
@@ -4880,11 +4881,11 @@ STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Графика 
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Графика из Transport Tycoon Deluxe для Windows.
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :Набор звукового оформления из игры Transport Tycoon Deluxe для DOS.
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Набор звукового оформления из игры Transport Tycoon Deluxe для Windows.
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :"Пустой" набор звукового оформления, не содержащий никаких звуков.
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :Пустой набор звукового оформления, не содержащий никаких звуков.
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Набор музыкального оформления из игры Transport Tycoon Deluxe для Windows.
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :Набор музыкального оформления из игры Transport Tycoon Deluxe для DOS.
 STR_BASEMUSIC_TTO_DESCRIPTION                                   :Набор музыкального оформления из игры Transport Tycoon Deluxe для DOS.
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :"Пустой" набор музыкального оформления, не содержащий никакой музыки.
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :Пустой набор музыкального оформления, не содержащий никакой музыки.
 
 ##id 0x2000
 # Town building names

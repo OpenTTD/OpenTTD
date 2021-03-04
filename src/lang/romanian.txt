@@ -234,6 +234,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Alegeți
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Alegeți criteriul de filtrare
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordonează
 STR_BUTTON_CATCHMENT                                            :Arie de acoperire
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}Comută afișajul ariei de acoperire
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Închide fereastra
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
@@ -985,6 +986,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Mărime dublă
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Mărime împătrită
 
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Mărime dublă
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectează setul grafic de bază utilizat în joc
@@ -1665,6 +1667,7 @@ STR_CONFIG_SETTING_VEHICLES_ROUTING                             :{ORANGE}Direcţ
 STR_CONFIG_SETTING_ACCIDENTS                                    :{ORANGE}Dezastre / Accidente
 STR_CONFIG_SETTING_GENWORLD                                     :{ORANGE}Generare lume
 STR_CONFIG_SETTING_ENVIRONMENT                                  :{ORANGE}Mediu
+STR_CONFIG_SETTING_ENVIRONMENT_AUTHORITIES                      :{ORANGE}Autorități
 STR_CONFIG_SETTING_ENVIRONMENT_TOWNS                            :{ORANGE}Oraşe
 STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industrii
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Distribuţie cargo
@@ -1747,6 +1750,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Acestei 
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Ieşire din joc
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Eşti sigur că vrei să abandonezi jocul curent?
 STR_QUIT_YES                                                    :{BLACK}Da
 STR_QUIT_NO                                                     :{BLACK}Nu
 
@@ -2505,7 +2509,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleator
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Construieşte un nou obiectiv industrial
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Alege industria potrivită din acestă listă
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Multe industrii aleatoare
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Creează multe industrii aleatoare
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Umple harta cu industrii generate aleator
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Cost: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospectează
@@ -2661,6 +2665,7 @@ STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memorie
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Date bazate pe măsurători {COMMA}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} cadre/s
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 ############ Leave those lines in this order!!
 STR_FRAMERATE_VIDEO                                             :{BLACK}Ieșire video:
@@ -3021,10 +3026,10 @@ STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ţintele
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Click pe ţintă pentru a centra ecranul principal pe industrie/oraş/zonă. Ctrl+Click deschide o fereastră nouă de vizualizare a industriei/oraşului/zonei
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Întrebare
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informație
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Atenționare
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Eroare
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Întrebare
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informație
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Atenționare
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Eroare
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Anulează
@@ -4528,10 +4533,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Mină de zahăr
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :NoName
-STR_SV_TRAIN_NAME                                               :Trenul {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Autovehiculul {COMMA}
-STR_SV_SHIP_NAME                                                :Nava {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Aeronava {COMMA}
+STR_SV_TRAIN_NAME                                               :Trenul #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Autovehiculul #{COMMA}
+STR_SV_SHIP_NAME                                                :Nava #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Aeronava #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Nord

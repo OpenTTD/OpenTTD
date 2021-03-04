@@ -947,6 +947,7 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kiinan renminbi
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongin dollari (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Intian rupia (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian rupia (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malesian ringgit (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vasemmanpuolinen liikenne
@@ -1453,6 +1454,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ryhmitä kulut 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Määritä asettelu yhtiön rahoitusikkunalle
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Poista automaattisesti opastimia rautateitä rakennettaessa: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Poista automaattisesti opastimia, jos ne ovat rautatien rakentamisen tiellä. Huomaa, että tämä saattaa johtaa junien yhteentörmäyksiin.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Nopeutetun pelin enimmäisnopeus: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Yläraja pelin nopeudelle, kun pelin nopeutus on käytössä. 0 = ei rajoitusta (niin nopeasti kuin tietokoneesi sallii). Alle 100 %:n arvot hidastavat peliä. Yläraja riippuu tietokoneesi ominaisuuksista ja voi vaihdella pelistä riippuen.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM} % pelin normaalinopeudesta
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Ei rajoitusta (niin nopeasti kuin koneesi sallii)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Uutiset: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Toista ääni tiivistetyille uutisviesteille

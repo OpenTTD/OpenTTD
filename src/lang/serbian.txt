@@ -974,6 +974,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Prikazuj
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Prikaži poslednju poruku ili izveštaj
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}* * PAUZA * *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  PAUZIRANO (čeka se dopuna grafa) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTO-ČUVANJE
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  ČUVAM PARTIJU  *  *
 
@@ -1100,47 +1101,48 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valuta
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Izbor valute
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Funta (GBP)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Britanska funta (GBP)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Dolar (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
-STR_GAME_OPTIONS_CURRENCY_JPY                                   :Jen (JPY)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijski Šiling (ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijski Franak (BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švajcarski Franak (CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :Češka Kruna (CZK)
+STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japanski jen (JPY)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :Austrijski šiling (ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :Belgijski franak (BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :Švajcarski franak (CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :Češka kruna (CZK)
 STR_GAME_OPTIONS_CURRENCY_DEM                                   :Nemačka Marka (DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska Kruna (DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :Španska Pezeta (ESP)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska Marka (FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :Francuski Franak (FRF)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grčka Drahma (GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :Mađarska Forinta (HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandska Kruna (ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italijanska Lira (ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :Holandski Gulden (NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norveška Kruna (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poljski Zlot (PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumunski Lej (RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruska Rublja (RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenački Tolar (SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :Švedska Kruna (SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turska Lira (TRY)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovačka Kruna (SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilski Real (BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonska Kruna (EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvanski Litas (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :Južnokorejski Von (KRW)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :Danska kruna (DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :Španska pezeta (ESP)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :Finska marka (FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :Francuski franak (FRF)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :Grčka drahma (GRD)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :Mađarska forinta (HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :Islandska kruna (ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :Italijanska lira (ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :Holandski gulden (NLG)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :Norveška kruna (NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Poljski zlot (PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :Rumunski lej (RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :Ruska rublja (RUR)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :Slovenački tolar (SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :Švedska kruna (SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :Turska lira (TRY)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :Slovačka kruna (SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :Brazilski real (BRL)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :Estonska kruna (EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litvanski litas (LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :Južnokorejski von (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Južnoafrički Rand (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Sopstvena...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski Lari (GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski Rijal (IRR)
-STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ruska rublja (RUB)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Gruzijski lari (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranski rijal (IRR)
+STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nova ruska rublja (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Meksički pezos (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novi tajvanski dolar (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kineski renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkonški dolar (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indijska rupija (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonezijska rupija (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezijski ringit (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Levom stranom
@@ -1516,6 +1518,7 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Prikazuje broj 
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :Debljina linija u grafikonima: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Širina linije na grafiku. Tanka linija je preciznija a debelu je lakše videti i lakše je razlikovati boje
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Prikaži naziv NewGRF-a u prozoru vozila: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Ispiši naziv NewGRF-a iz kojeg je odabrano vozilo došlo u prozoru za kupovinu vozila
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Reljef:{STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :Tereni definišu osnovne scenarije za igru sa različitim teretima i zahtevima za rast gradova. NewGRF-ovi i skripte igre omogućavaju detaljnije kontrole i postavke.
@@ -2421,6 +2424,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nema dovoljno i
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :priključivanje igrača
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :ručno
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :skripta partije
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :čeka se dopuna grafa
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :napušta
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} se priključio partiji
@@ -2984,13 +2988,16 @@ STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COMMA} ms
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
+STR_FRAMERATE_GAMELOOP                                          :{BLACK}Ukupna petlja igre:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Upravljanje teretom:
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Otkucaji voza:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Otkucaji drumskih vozila:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Otkucaji broda:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Otkucaji letelica:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Otkucaji sveta:
+STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Kašnjenje grafa distribucije:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Iscrtavanje grafike:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Dodatni prozori:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Video izlaz:
 STR_FRAMERATE_SOUND                                             :{BLACK}Obrada zvuka:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  Skripta/VI ukupno:
@@ -3005,7 +3012,9 @@ STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Otkucaji drumsk
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Otkucaji broda
 STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :Otkucaji letelica
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :Otkucaji sveta
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Kašnjenje grafa distribucije
 STR_FRAMETIME_CAPTION_DRAWING                                   :Iscrtavanje grafike
+STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Prikaz slike u dodatnim prozorima
 STR_FRAMETIME_CAPTION_VIDEO                                     :Video izlaz
 STR_FRAMETIME_CAPTION_SOUND                                     :Obrada zvuka
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Skripte/VI ukupno
@@ -3421,8 +3430,9 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Klikom na uslugu prebacuje glavni pogled na lokaciju fabrike/naselja. Ctrl+Klik otvara novi pogled na to mesto
 
 # Story book window
-STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}Priča
+STR_STORY_BOOK_CAPTION                                          :{WHITE}Priča {COMPANY}
 STR_STORY_BOOK_SPECTATOR_CAPTION                                :{WHITE}Globalna priča
+STR_STORY_BOOK_SPECTATOR                                        :Svetska priča
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
 STR_STORY_BOOK_GENERIC_PAGE_ITEM                                :Stranica {NUM}
 STR_STORY_BOOK_SEL_PAGE_TOOLTIP                                 :{BLACK}Idi do željene stranice uz izbor te stranice u ovoj listi.

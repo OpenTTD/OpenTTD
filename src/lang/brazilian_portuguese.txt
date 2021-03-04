@@ -938,6 +938,8 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novo dólar de 
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chinês (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar de Hong Kong (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúpia Indiana (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonésia
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaio (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Dirigem na esquerda
@@ -1440,6 +1442,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Manter a barra 
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Mantém as ferramentas de construção para pontes, túneis, etc abertas após o uso
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar despesas na janela de financas da companhia: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define o layout para os gastos da companhia
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automaticamente remove sinais durante a construção de ferrovias: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automaticamente remove sinais durante a construção de ferrovias se os sinais estiverem no caminho. Note que isso pode levar a acidentes ferroviários.
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Notícias: {STRING}
@@ -1554,6 +1557,7 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Pontuação no 
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No final deste ano, a pontuação da empresa é registrada e a tela de pontuação máxima é exibida, mas os jogadores podem continuar jogando depois disso.{} Se isso for antes do ano inicial, a tela de pontuação máxima nunca será exibida.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar ações de outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Se ativado, permite a compra e venda de ações de companhias. Ações de outras empresas poderão serem compradas após um período de tempo após a fundação da empresa
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Idade mínima da companhia para trocar ações: {STRING}
@@ -2581,7 +2585,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Randômi
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Financiar nova indústria
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Escolha a indústria apropriada
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Várias indústrias aleatórias
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Criar indústrias aleatórias
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Cobrir o mapa com indústrias colocadas aleatoriamente
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Criar indústrias aleatórias
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Você tem certeza que quer criar várias indústrias aleatoriamente?
@@ -2591,6 +2595,7 @@ STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construi
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Fundar
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Remover todas as indústrias
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Remover todas as indústrias
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Você tem certeza que quer remover todas as indústrias?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadeia de indústrias para a indústria: {STRING}
@@ -3164,10 +3169,10 @@ STR_GOALS_COMPANY_TITLE                                         :{G=m}{BLACK}Obj
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clique num objetivo para centralizar a visualização principal numa indústria/cidade.Ctrl+Clique abre uma nova janela na localização da indústria/cidade
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Pergunta
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informação
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Alerta
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Erro
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Pergunta
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informação
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Alerta
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Erro
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Cancelar
@@ -3357,6 +3362,7 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Mover se
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruir sede da empresa em outro local por 1% do valor da empresa. Shift+Clique mostra o preço estimado sem reconstruir a sede
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detalhes
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Ver informações detalhadas de infraestrutura
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Dar dinheiro
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Dá dinheiro a essa empresa
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Novo Rosto
@@ -4241,6 +4247,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Jogo salvo é f
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Arquivo não legível
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Arquivo não gravável
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Verificação de integridade de dados falhou
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Jogo salvo é feito com uma versão modificada
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<não disponível>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos
 
@@ -4321,6 +4328,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... não
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... precisa de {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Impossível pagar empréstimo...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Impossível dar o dinheiro emprestado do banco
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Impossível dar dinheiro a esta empresa
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Impossível comprar empresa...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Impossível construir sede da empresa...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Impossível comprar 25% das ações desta empresa...

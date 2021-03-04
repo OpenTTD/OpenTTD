@@ -948,6 +948,7 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chino 
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar hongkonés (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conducir por la izquierda
@@ -1454,6 +1455,8 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Agrupar costes 
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Define el diseño de la ventana de finanzas
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Elimina automáticamente las señales durante la construcción del ferrocarril: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimine automáticamente las señales durante la construcción del carril si las señales están en el camino. Tenga en cuenta que esto puede provocar accidentes de tren.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Límite de velocidad para el avance rápido: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Límite de la velocidad de juego cuando se activa el avance rápido. 0 = sin límite (tan rápido como lo permita el ordenador). Los valores inferiores a 100% ralentizan el juego. El límite superior depende de las características del ordenador y pueden variar dependiendo de la partida.
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% Velocidad de juego normal
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Sin límite (tan rápido como pueda su ordenador)
 

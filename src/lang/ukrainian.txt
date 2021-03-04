@@ -437,6 +437,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :за містк
 STR_SORT_BY_RANGE                                               :за дальністю
 STR_SORT_BY_POPULATION                                          :за населенням
 STR_SORT_BY_RATING                                              :за рейтингом
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Загальний прибуток минулого року
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Середній прибуток мигулого року
 
 # Group by options for vehicle list
@@ -1731,6 +1732,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :лінійна 
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Поява дерев під час гри: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Налаштування випадкової появи дерев на карті в процесі гри. Ця настройка також впливає на відповідні підприємства, такі як лісопилки.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Не зростати, не поширюватися {RED}(лісопилка не працює)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиція головного меню: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Горизонтальна позиція основної панелі інструментів.
