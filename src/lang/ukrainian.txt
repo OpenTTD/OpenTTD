@@ -2093,6 +2093,7 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Приє
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Оновити сервер
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Оновити інформацію про сервер
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Пошук публічних серверів у мережі
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Додати сервер
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Додає сервер до списку, який завжди буде перевірятись на поточні ігри
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Створити сервер

@@ -313,8 +313,12 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacidade de C
 STR_SORT_BY_RANGE                                               :Alcance
 STR_SORT_BY_POPULATION                                          :População
 STR_SORT_BY_RATING                                              :Classificação
+STR_SORT_BY_NUM_VEHICLES                                        :Número de veículos
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Lucro total do ano passado
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Nenhum
+STR_GROUP_BY_SHARED_ORDERS                                      :Ordens compartilhadas
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pausar jogo
@@ -1557,7 +1561,10 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Pontuação no 
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Ano em que o jogo termina para fins de pontuação. No final deste ano, a pontuação da empresa é registrada e a tela de pontuação máxima é exibida, mas os jogadores podem continuar jogando depois disso.{} Se isso for antes do ano inicial, a tela de pontuação máxima nunca será exibida.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nunca
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Tipo de economia: {STRING}
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Suave
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Congelada
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite comprar ações de outras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Se ativado, permite a compra e venda de ações de companhias. Ações de outras empresas poderão serem compradas após um período de tempo após a fundação da empresa
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Idade mínima da companhia para trocar ações: {STRING}
@@ -1610,6 +1617,8 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Posicionamento de árvores: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Controla o nascimento aleatório de árvores durante o jogo. Isso pode afetar indústrias que dependem do crescimento de árvores, como serrarias
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Crescer sem espalhar {RED}(afeta serrarias)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Crescer, mas apenas espalhar em florestas tropicais
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Crescer e espalhar em todos os lugares
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Não crescer, não espalhar {RED}(afeta serrarias)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Posição da barra de ferramentas principal: {STRING}
@@ -1822,6 +1831,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Você t
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Trapaças
 STR_CHEATS_TOOLTIP                                              :{BLACK}As caixas de verificação indicam se você usou esta trapaça antes
+STR_CHEATS_NOTE                                                 :{BLACK}Nota: qualquer uso dessas configurações será gravado pelo jogo salvo
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando pela Co.: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadeira mágica (destrói indústrias, objetos estáticos): {ORANGE}{STRING}
@@ -2215,6 +2225,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} es
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} abriu uma nova companhia (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} saiu do jogo ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} mudou seu nome para {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor fechou a sessão
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor está reiniciando...{}Aguarde...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} foi kickado. Motivo: ({STRING})
@@ -4737,10 +4748,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :{G=f}Mina de A�
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Sem nome
-STR_SV_TRAIN_NAME                                               :Trem {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Automóvel {COMMA}
-STR_SV_SHIP_NAME                                                :Embarcação {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
+STR_SV_TRAIN_NAME                                               :Trem #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Veículo #{COMMA}
+STR_SV_SHIP_NAME                                                :Navio #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Aeronave #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :Norte de {STRING}

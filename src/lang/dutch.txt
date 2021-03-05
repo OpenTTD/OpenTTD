@@ -947,6 +947,7 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminb
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiase rupee (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesische roepia (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleisische Ringgit (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Links rijden

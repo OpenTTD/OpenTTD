@@ -926,7 +926,7 @@ STR_GAME_OPTIONS_CURRENCY_ISK                                   :Corona islandes
 STR_GAME_OPTIONS_CURRENCY_ITL                                   :Lira italiana (ITL)
 STR_GAME_OPTIONS_CURRENCY_NLG                                   :Florín holandés (NLG)
 STR_GAME_OPTIONS_CURRENCY_NOK                                   :Corona noruega (NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :Esloti polaco (PLN)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :Zloty polaco (PLN)
 STR_GAME_OPTIONS_CURRENCY_RON                                   :Leu rumano (RON)
 STR_GAME_OPTIONS_CURRENCY_RUR                                   :Rublo ruso (RUR)
 STR_GAME_OPTIONS_CURRENCY_SIT                                   :Tólar esloveno (SIT)
@@ -945,9 +945,10 @@ STR_GAME_OPTIONS_CURRENCY_RUB                                   :Nuevo rublo rus
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso mexicano (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nuevo dólar taiwanés (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Yuan chino (CNY)
-STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar honkonés (HKD)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar hongkonés (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia india (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia indonesia (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Manejar por la izquierda
@@ -1031,7 +1032,7 @@ STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Elegir m
 STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} archivo{P "" s} con errores
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Información adicional sobre música base
 
-STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}No se pudo obtener una lista de resoluciones soportadas
+STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}No se pudo obtener una lista de resoluciones compatibles
 STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}El modo de pantalla completa falló
 
 # Custom currency window

@@ -883,6 +883,9 @@ STR_GAME_OPTIONS_CURRENCY_EEK                                   :كرونا اس
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :وون كوريا الجنوبية (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :راند جنوب أفريقيا (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :مخصص ...
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :(GEL) لاري جورجي
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :(CNY) الرنمينبي الصيني
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :(HKD) دولار هونج كونج
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :القيادة على اليسار
@@ -1426,10 +1429,10 @@ STR_INTRO_TOOLTIP_PLAY_SCENARIO                                 :{BLACK}بدأ �
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}انشاء خريطة عالم خاصة
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK} ابدأ لعبة جماعية
 
-STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}اختيار المناطق الثلجية
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}اختيار المناطق الصحراوية
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK} اختيار المناطق المعتدلة
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK} اختيار المناطق الثلجية
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}اختيار المناطق الصحراوية
-STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}اختيار نمط الألعاب
+STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK} اختيار مناطق عالم الألعب
 
 STR_INTRO_TOOLTIP_GAME_OPTIONS                                  :{BLACK}عرض خيارات اللعبة
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}إعدادات العرض
@@ -1841,6 +1844,7 @@ STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} مسح 
 STR_CONTENT_UNSELECT_ALL_CAPTION_TOOLTIP                        :{BLACK} ضع علامة على المحتوى التي لن يتم تحميلها
 STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}بحث المواقع الخارجية
 STR_CONTENT_FILTER_TITLE                                        :{BLACK}مُرَشِح:
+STR_CONTENT_OPEN_URL                                            :{BLACK} زيارة الموقع
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK} تحميل
 STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK} ابدأ تحميل المحتويات المختارة
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER} حجم البيانات التي سيتم تحميلها: {WHITE}{BYTES}
@@ -2030,6 +2034,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}بناء
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}بدل بناء/إزالة الطرق
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}بدل بناء / ازالة طرق الترام
 
+STR_ROAD_NAME_TRAM                                              :خط الترام
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}اتجاه ورشة الصيانة
@@ -2352,10 +2357,14 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}ادخل
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}مولد الخريطة
 STR_MAPGEN_MAPSIZE                                              :{BLACK}حجم الخريطة
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK} حدد حجم الخريطة بالمربعات. سيكون عدد المربعات المتاحة أصغر قليلاً
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}عدد المدن:
 STR_MAPGEN_DATE                                                 :{BLACK}التاريخ:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}عدد المصانع:
+STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK} :أقصى ارتفاع للخريطة
+STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK} زيادة الارتفاع الأقصى للجبال على الخريطة بواحد
+STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK} خفض الحد الأقصى للارتفاع الجبال على الخريطة بواحد
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK} ارتفاع خط الثلج
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ارفع خط الثلج مستوى واحد
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}خفض خط الثلج مستوى واحد
@@ -3506,6 +3515,7 @@ STR_AI_SETTINGS_SETTING                                         :{STRING}: {ORAN
 STR_TEXTFILE_README_CAPTION                                     :{WHITE}{STRING}اقراني {STRING}
 STR_TEXTFILE_CHANGELOG_CAPTION                                  :{WHITE}{STRING} سجل التغيير ل{STRING}
 STR_TEXTFILE_LICENCE_CAPTION                                    :{WHITE}{STRING}رخصة {STRING}
+STR_TEXTFILE_WRAP_TEXT                                          :{WHITE}التفاف النص
 STR_TEXTFILE_VIEW_README                                        :{BLACK}اعرض ملف التعليمات ريدمي
 STR_TEXTFILE_VIEW_CHANGELOG                                     :{BLACK}اعرض سجل التغييرات
 STR_TEXTFILE_VIEW_LICENCE                                       :{BLACK}الرخصة
