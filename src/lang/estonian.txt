@@ -2585,7 +2585,7 @@ STR_AIRPORT_HELISTATION                                         :Kopterijaam
 STR_AIRPORT_CLASS_SMALL                                         :Väikelennujaamad
 STR_AIRPORT_CLASS_LARGE                                         :Suurlennujaamad
 STR_AIRPORT_CLASS_HUB                                           :Sõlmlennujaamad
-STR_AIRPORT_CLASS_HELIPORTS                                     :Helikopteri lennuväljad
+STR_AIRPORT_CLASS_HELIPORTS                                     :Kopterilennuväljad
 
 STR_STATION_BUILD_NOISE                                         :{BLACK}Tekitatud müra: {GOLD}{COMMA}
 
