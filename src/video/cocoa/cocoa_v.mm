@@ -43,6 +43,7 @@
 
 #import <sys/param.h> /* for MAXPATHLEN */
 #import <sys/time.h> /* gettimeofday */
+#include <array>
 
 /**
  * Important notice regarding all modifications!!!!!!!
@@ -226,6 +227,30 @@ void VideoDriver_Cocoa::EditBoxLostFocus()
 	[ [ this->cocoaview inputContext ] discardMarkedText ];
 	/* Clear any marked string from the current edit box. */
 	HandleTextInput(nullptr, true);
+}
+
+/**
+ * Get refresh rates of all connected monitors.
+ */
+std::vector<int> VideoDriver_Cocoa::GetListOfMonitorRefreshRates()
+{
+	std::vector<int> rates{};
+
+	if (MacOSVersionIsAtLeast(10, 6, 0)) {
+		std::array<CGDirectDisplayID, 16> displays;
+
+		uint32_t count = 0;
+		CGGetActiveDisplayList(displays.size(), displays.data(), &count);
+
+		for (uint32_t i = 0; i < count; i++) {
+			CGDisplayModeRef mode = CGDisplayCopyDisplayMode(displays[i]);
+			int rate = (int)CGDisplayModeGetRefreshRate(mode);
+			if (rate > 0) rates.push_back(rate);
+			CGDisplayModeRelease(mode);
+		}
+	}
+
+	return rates;
 }
 
 /**

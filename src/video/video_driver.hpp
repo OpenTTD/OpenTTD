@@ -150,6 +150,15 @@ public:
 	virtual void EditBoxGainedFocus() {}
 
 	/**
+	 * Get a list of refresh rates of each available monitor.
+	 * @return A vector of the refresh rates of all available monitors.
+	 */
+	virtual std::vector<int> GetListOfMonitorRefreshRates()
+	{
+		return {};
+	}
+
+	/**
 	 * Get a suggested default GUI zoom taking screen DPI into account.
 	 */
 	virtual ZoomLevel GetSuggestedUIZoom()

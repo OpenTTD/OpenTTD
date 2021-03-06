@@ -31,6 +31,8 @@ public:
 
 	bool ClaimMousePointer() override;
 
+	std::vector<int> GetListOfMonitorRefreshRates() override;
+
 	const char *GetName() const override { return "allegro"; }
 
 protected:

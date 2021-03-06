@@ -39,6 +39,8 @@ public:
 
 	void EditBoxLostFocus() override;
 
+	std::vector<int> GetListOfMonitorRefreshRates() override;
+
 	const char *GetName() const override { return "sdl"; }
 
 protected:

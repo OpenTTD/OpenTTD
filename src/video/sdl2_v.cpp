@@ -237,6 +237,17 @@ void VideoDriver_SDL_Base::EditBoxLostFocus()
 	}
 }
 
+std::vector<int> VideoDriver_SDL_Base::GetListOfMonitorRefreshRates()
+{
+	std::vector<int> rates = {};
+	for (int i = 0; i < SDL_GetNumVideoDisplays(); i++) {
+		SDL_DisplayMode mode = {};
+		if (SDL_GetDisplayMode(i, 0, &mode) != 0) continue;
+		if (mode.refresh_rate != 0) rates.push_back(mode.refresh_rate);
+	}
+	return rates;
+}
+
 
 struct SDLVkMapping {
 	SDL_Keycode vk_from;

@@ -33,6 +33,8 @@ public:
 
 	void EditBoxLostFocus() override;
 
+	std::vector<int> GetListOfMonitorRefreshRates() override;
+
 protected:
 	HWND main_wnd;          ///< Handle to system window.
 	bool fullscreen;        ///< Whether to use (true) fullscreen mode.
