@@ -107,6 +107,15 @@ protected:
 
 	virtual ~DriverFactoryBase();
 
+	/**
+	 * Is the driver usable?
+	 * @return True if the driver can be instantiated.
+	 */
+	virtual bool IsUsable() const
+	{
+		return true;
+	}
+
 public:
 	/**
 	 * Shuts down all active drivers

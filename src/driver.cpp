@@ -111,6 +111,8 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 				if (d->type != type) continue;
 				if (d->priority != priority) continue;
 
+				if (!d->IsUsable()) continue;
+
 				Driver *oldd = *GetActiveDriver(type);
 				Driver *newd = d->CreateInstance();
 				*GetActiveDriver(type) = newd;
