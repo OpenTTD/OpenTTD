@@ -1001,6 +1001,10 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Screen r
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Select the screen resolution to use
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :other
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware acceleration
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Check this box to allow OpenTTD to try to use hardware acceleration. A changed setting will only be applied upon game restart
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}The setting will only take effect after a game restart
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interface size
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Select the interface element size to use
 
@@ -1786,6 +1790,10 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoring Base Music set '{RAW_STRING}': not found
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Out of memory
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allocating {BYTES} of spritecache failed. The spritecache was reduced to {BYTES}. This will reduce the performance of OpenTTD. To reduce memory requirements you can try to disable 32bpp graphics and/or zoom-in levels
+
+# Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Error with video settings...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no compatible GPU found. Hardware acceleration disabled
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}

@@ -107,6 +107,15 @@ protected:
 
 	virtual ~DriverFactoryBase();
 
+	/**
+	 * Does the driver use hardware acceleration (video-drivers only).
+	 * @return True if the driver uses hardware acceleration.
+	 */
+	virtual bool UsesHardwareAcceleration() const
+	{
+		return false;
+	}
+
 public:
 	/**
 	 * Shuts down all active drivers
