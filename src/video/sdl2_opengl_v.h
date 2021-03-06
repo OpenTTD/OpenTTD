@@ -51,4 +51,7 @@ class FVideoDriver_SDL_OpenGL : public DriverFactoryBase {
 public:
 	FVideoDriver_SDL_OpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 8, "sdl-opengl", "SDL OpenGL Video Driver") {}
 	/* virtual */ Driver *CreateInstance() const override { return new VideoDriver_SDL_OpenGL(); }
+
+protected:
+	bool IsUsable() const override { return _video_hw_accel; }
 };

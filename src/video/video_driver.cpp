@@ -17,6 +17,8 @@
 #include "../window_func.h"
 #include "video_driver.hpp"
 
+bool _video_hw_accel; ///< Whether to consider hardware accelerated video drivers.
+
 bool VideoDriver::Tick()
 {
 	auto cur_ticks = std::chrono::steady_clock::now();
