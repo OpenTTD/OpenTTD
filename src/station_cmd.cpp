@@ -2393,6 +2393,12 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
+		for (uint i = 0; i < st->airport.GetNumHangars(); ++i) {
+			DeleteWindowById(
+				WC_VEHICLE_DEPOT, st->airport.GetHangarTile(i)
+			);
+		}
+
 		const AirportSpec *as = st->airport.GetSpec();
 		/* The noise level is the noise from the airport and reduce it to account for the distance to the town center.
 		 * And as for construction, always remove it, even if the setting is not set, in order to avoid the
@@ -2422,12 +2428,6 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	if (flags & DC_EXEC) {
 		/* Clear the persistent storage. */
 		delete st->airport.psa;
-
-		for (uint i = 0; i < st->airport.GetNumHangars(); ++i) {
-			DeleteWindowById(
-				WC_VEHICLE_DEPOT, st->airport.GetHangarTile(i)
-			);
-		}
 
 		st->rect.AfterRemoveRect(st, st->airport);
 
