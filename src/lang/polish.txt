@@ -1327,6 +1327,7 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Juan chiński (
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dolar hongkoński (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indyjska (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonezyjska (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malezyjski (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazda po lewej

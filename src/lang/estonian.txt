@@ -485,7 +485,7 @@ STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Opereerimiskasu
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Tulugraafik
 STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Äraveetud kauba graafik
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Tegevustulemuste graafik
-STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Firmaväärtuse graafik
+STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Firmaväärtuste graafik
 STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Veotasude määrad
 ############ range ends here
 
@@ -642,7 +642,7 @@ STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Opereeri
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Tulugraafik
 STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Äraveetud kaubaühikute arv
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Ettevõtte tegevushinnang (suurim hinnang saab olla 1000)
-STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaväärtus
+STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Firmaväärtused
 
 STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Veotariifid
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Teelolekuaeg päevades
@@ -2340,7 +2340,7 @@ STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Liik: {
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Allalaadimise suurus: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valitud kuna: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Sõltuvused: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Sildid: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tähised: {WHITE}{STRING}
 STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD on kompileeritud ilma «zlib» toeta...
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... aineste allalaadimine pole võimalik!
 
@@ -2716,7 +2716,7 @@ STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordina
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Ehitatud: {LTBLUE}{DATE_LONG}
 STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Jaama liik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Jaama liik: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Lennujaama liik: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Lennuvälja liik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Lennujaama nimi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Lennujaama osa nimi: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
@@ -3616,7 +3616,7 @@ STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kujundat
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Parim tehnoseisund: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Hind: {GOLD}{CURRENCY_LONG}
 STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}Maksumus: {GOLD}{CURRENCY_LONG}{BLACK} (Ümberseadistamise maksumus: {GOLD}{CURRENCY_LONG}{BLACK})
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Mass: {GOLD}{WEIGHT_SHORT} {WEIGHT_SHORT})
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Mass: {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Hind: {GOLD}{CURRENCY_LONG}{BLACK} Tippkiirus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}Hind: {GOLD}{CURRENCY_LONG}{BLACK} (Ümberseadistamise maksumus: {GOLD}{CURRENCY_LONG}{BLACK}) Kiirus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kandevõime: {GOLD}{CARGO_LONG}, {CARGO_LONG}
@@ -5147,7 +5147,7 @@ STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Meldepunkt {TOW
 
 STR_FORMAT_DEPOT_NAME_TRAIN                                     :{TOWN} Rongi depoo
 STR_FORMAT_DEPOT_NAME_TRAIN_SERIAL                              :{TOWN} Rongi depoo nr {COMMA}
-STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Teesõidukite depoo
+STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE                              :{TOWN} Maanteesõidukite depoo
 STR_FORMAT_DEPOT_NAME_ROAD_VEHICLE_SERIAL                       :{TOWN} Teesõidukite depoo nr {COMMA}
 STR_FORMAT_DEPOT_NAME_SHIP                                      :{TOWN} Laeva depoo
 STR_FORMAT_DEPOT_NAME_SHIP_SERIAL                               :{TOWN} Laeva depoo nr {COMMA}
