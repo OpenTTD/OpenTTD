@@ -103,10 +103,9 @@ bool TryReserveRailTrack(TileIndex tile, Track t, bool trigger_stations)
 			break;
 
 		case MP_ROAD:
-			if (IsLevelCrossing(tile) && !HasCrossingReservation(tile)) {
-				SetCrossingReservation(tile, true);
-				BarCrossing(tile);
-				MarkTileDirtyByTile(tile); // crossing barred, make tile dirty
+			if (IsLevelCrossing(tile) && !HasCrossingReservationTrack(tile, t)) {
+				SetCrossingReservation(tile, TrackToTrackBits(t), true);
+				UpdateLevelCrossing(tile);
 				return true;
 			}
 			break;
@@ -162,7 +161,7 @@ void UnreserveRailTrack(TileIndex tile, Track t)
 
 		case MP_ROAD:
 			if (IsLevelCrossing(tile)) {
-				SetCrossingReservation(tile, false);
+				SetCrossingReservation(tile, TrackToTrackBits(t), false);
 				UpdateLevelCrossing(tile);
 			}
 			break;

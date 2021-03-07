@@ -147,13 +147,31 @@ static inline bool HasRoadCatenaryDrawn(RoadType roadtype)
 	return HasRoadCatenary(roadtype) && !IsInvisibilitySet(TO_CATENARY);
 }
 
+/**
+ * Create the Axis which belongs to the given  road-part
+ *
+ * This function returns an Axis value which belongs to
+ * the given RoadBits.
+ *
+ * @param rb The RoadBits
+ * @return The result Axis which the selected road-part set
+ */
+static inline Axis RoadBitsToAxis(RoadBits rb)
+{
+	switch (rb) {
+		case ROAD_X : return AXIS_X;
+		case ROAD_Y : return AXIS_Y;
+		default : return INVALID_AXIS;
+	}
+}
+
 bool HasRoadTypeAvail(CompanyID company, RoadType roadtype);
 bool ValParamRoadType(RoadType roadtype);
 RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces = true);
 RoadTypes GetRoadTypes(bool introduces);
 RoadTypes AddDateIntroducedRoadTypes(RoadTypes current, Date date);
 
-void UpdateLevelCrossing(TileIndex tile, bool sound = true);
+void UpdateLevelCrossing(TileIndex tile);
 void UpdateCompanyRoadInfrastructure(RoadType rt, Owner o, int count);
 
 struct TileInfo;

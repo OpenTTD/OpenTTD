@@ -211,7 +211,10 @@ static const uint16 AUTORAIL_SPRITE_COUNT = 55;
 static const SpriteID SPR_ELRAIL_BASE   = SPR_AUTORAIL_BASE + AUTORAIL_SPRITE_COUNT;
 static const uint16 ELRAIL_SPRITE_COUNT = 48;
 
-static const SpriteID SPR_2CCMAP_BASE   = SPR_ELRAIL_BASE + ELRAIL_SPRITE_COUNT;
+static const SpriteID SPR_CROSSING_BASE = SPR_ELRAIL_BASE + ELRAIL_SPRITE_COUNT;
+static const uint16 CROSSING_SPRITE_COUNT = 52;
+
+static const SpriteID SPR_2CCMAP_BASE   = SPR_CROSSING_BASE + CROSSING_SPRITE_COUNT;
 static const uint16 TWOCCMAP_SPRITE_COUNT = 256;
 
 /** shore tiles - action 05-0D */
@@ -662,6 +665,23 @@ static const SpriteID SPR_TUNNEL_ENTRY_REAR_ROAD   = 2389;
 static const SpriteID SPR_CROSSING_OFF_X_RAIL   = 1370;
 static const SpriteID SPR_CROSSING_OFF_X_MONO   = 1382;
 static const SpriteID SPR_CROSSING_OFF_X_MAGLEV = 1394;
+
+/* Toyland sprites occupy image + 8, and roads in the Y direction are
+ * image + 1 */
+static const SpriteID SPR_CROSSING_RAIL_LEFT = SPR_CROSSING_BASE;
+static const SpriteID SPR_CROSSING_RAIL_RIGHT = SPR_CROSSING_BASE + 2;
+static const SpriteID SPR_CROSSING_RAIL_UPPER = SPR_CROSSING_BASE + 4;
+static const SpriteID SPR_CROSSING_RAIL_LOWER = SPR_CROSSING_BASE + 6;
+static const SpriteID SPR_CROSSING_MONO_LEFT = SPR_CROSSING_BASE + 16;
+static const SpriteID SPR_CROSSING_MONO_RIGHT = SPR_CROSSING_BASE + 18;
+static const SpriteID SPR_CROSSING_MONO_UPPER = SPR_CROSSING_BASE + 20;
+static const SpriteID SPR_CROSSING_MONO_LOWER = SPR_CROSSING_BASE + 22;
+static const SpriteID SPR_CROSSING_MAGLEV_LEFT = SPR_CROSSING_BASE + 32;
+static const SpriteID SPR_CROSSING_MAGLEV_RIGHT = SPR_CROSSING_BASE + 34;
+static const SpriteID SPR_CROSSING_MAGLEV_UPPER = SPR_CROSSING_BASE + 36;
+static const SpriteID SPR_CROSSING_MAGLEV_LOWER = SPR_CROSSING_BASE + 38;
+static const SpriteID SPR_CROSSING_LIGHT_SE = SPR_CROSSING_BASE + 48;
+static const SpriteID SPR_CROSSING_LIGHT_SW = SPR_CROSSING_BASE + 50;
 
 /* bridge type sprites */
 static const SpriteID SPR_PILLARS_BASE = SPR_OPENTTD_BASE + 14;

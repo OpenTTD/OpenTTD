@@ -529,7 +529,9 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 				RoadBits road = GetRoadBits(tile, RTT_ROAD);
 				RoadBits tram = GetRoadBits(tile, RTT_TRAM);
 				if ((track == TRACK_X && ((road | tram) & ROAD_X) == 0) ||
-						(track == TRACK_Y && ((road | tram) & ROAD_Y) == 0)) {
+						(track == TRACK_Y && ((road | tram) & ROAD_Y) == 0) ||
+						((((road | tram) & ROAD_X) == 0 || ((road | tram) & ROAD_Y) == 0) &&
+							(track == TRACK_UPPER || track == TRACK_LOWER || track == TRACK_LEFT || track == TRACK_RIGHT))) {
 					Owner road_owner = GetRoadOwner(tile, RTT_ROAD);
 					Owner tram_owner = GetRoadOwner(tile, RTT_TRAM);
 					/* Disallow breaking end-of-line of someone else
@@ -550,8 +552,8 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 					}
 
 					if (flags & DC_EXEC) {
-						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtype_road, roadtype_tram, GetTownIndex(tile));
-						UpdateLevelCrossing(tile, false);
+						MakeRoadCrossing(tile, road_owner, tram_owner, _current_company, ((road | tram) & ROAD_X) != 0 ? AXIS_X : AXIS_Y, track, false, railtype, roadtype_road, roadtype_tram, GetTownIndex(tile));
+						UpdateLevelCrossing(tile);
 						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
 						DirtyCompanyInfrastructureWindows(_current_company);
 						if (num_new_road_pieces > 0 && Company::IsValidID(road_owner)) {
@@ -565,10 +567,29 @@ CommandCost CmdBuildSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 					}
 					break;
 				}
-			}
+			} else if (IsLevelCrossing(tile)) {
+				TrackBits trackbits = GetCrossingRailBits(tile);
 
-			if (IsLevelCrossing(tile) && GetCrossingRailBits(tile) == trackbit) {
-				return_cmd_error(STR_ERROR_ALREADY_BUILT);
+				if (!IsTileOwner(tile, _current_company)) return_cmd_error(STR_ERROR_AREA_IS_OWNED_BY_ANOTHER);
+
+				if (GetRailType(tile) != railtype) return_cmd_error(STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION); // TODO: try conversion
+
+				if ((trackbits & trackbit) != 0) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+
+				if ((track == TRACK_UPPER && trackbits == TRACK_BIT_LOWER) ||
+						(track == TRACK_LOWER && trackbits == TRACK_BIT_UPPER) ||
+						(track == TRACK_LEFT && trackbits == TRACK_BIT_RIGHT) ||
+						(track == TRACK_RIGHT && trackbits == TRACK_BIT_LEFT)) {
+					if (flags & DC_EXEC) {
+						TrackBits reserved = GetCrossingReservationTrackBits(tile);
+						MakeRoadCrossing(tile, GetRoadOwner(tile, RTT_ROAD), GetRoadOwner(tile, RTT_TRAM), _current_company, GetCrossingRoadAxis(tile), track, true, railtype, GetRoadTypeRoad(tile), GetRoadTypeTram(tile), GetTownIndex(tile));
+						SetCrossingReservation(tile, reserved, true);
+						UpdateLevelCrossing(tile);
+						Company::Get(_current_company)->infrastructure.rail[railtype] += LEVELCROSSING_TRACKBIT_FACTOR;
+						DirtyCompanyInfrastructureWindows(_current_company);
+					}
+					break;
+				}
 			}
 			FALLTHROUGH;
 		}
@@ -641,7 +662,12 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, DoCommandFlag flags, uint32 p1, 
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD: {
-			if (!IsLevelCrossing(tile) || GetCrossingRailBits(tile) != trackbit) return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
+			TrackBits present;
+
+			if (!IsLevelCrossing(tile)) return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
+
+			present = GetCrossingRailBits(tile);
+			if ((present & trackbit) == 0) return_cmd_error(STR_ERROR_THERE_IS_NO_RAILROAD_TRACK);
 
 			if (_current_company != OWNER_WATER) {
 				CommandCost ret = CheckTileOwnership(tile);
@@ -1761,15 +1787,29 @@ CommandCost CmdConvertRail(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 				break;
 			}
 
-			default: // MP_STATION, MP_ROAD
+			case MP_ROAD:
 				if (flags & DC_EXEC) {
-					Track track = ((tt == MP_STATION) ? GetRailStationTrack(tile) : GetCrossingRailTrack(tile));
+					/* notify YAPF about the track layout change */
+					TrackBits tracks = GetCrossingRailBits(tile);
+					while (tracks != TRACK_BIT_NONE) {
+						YapfNotifyTrackLayoutChange(tile, RemoveFirstTrack(&tracks));
+					}
+				}
+				found_convertible_track = true;
+				cost.AddCost(RailConvertCost(type, totype) * CountBits(GetCrossingRailBits(tile)));
+				break;
+
+			case MP_STATION:
+				if (flags & DC_EXEC) {
+					Track track = GetRailStationTrack(tile);
 					YapfNotifyTrackLayoutChange(tile, track);
 				}
 
 				found_convertible_track = true;
 				cost.AddCost(RailConvertCost(type, totype));
 				break;
+
+			default: break;
 		}
 
 		for (uint i = 0; i < vehicles_affected.size(); ++i) {

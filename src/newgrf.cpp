@@ -6127,6 +6127,7 @@ static const Action5Type _action5_types[] = {
 	/* 0x16 */ { A5BLOCK_ALLOW_OFFSET, SPR_AIRPORT_PREVIEW_BASE,     1, SPR_AIRPORT_PREVIEW_COUNT,                   "Airport preview graphics" },
 	/* 0x17 */ { A5BLOCK_ALLOW_OFFSET, SPR_RAILTYPE_TUNNEL_BASE,     1, RAILTYPE_TUNNEL_BASE_COUNT,                  "Railtype tunnel base"     },
 	/* 0x18 */ { A5BLOCK_ALLOW_OFFSET, SPR_PALETTE_BASE,             1, PALETTE_SPRITE_COUNT,                        "Palette"                  },
+	/* 0x19 */ { A5BLOCK_ALLOW_OFFSET, SPR_CROSSING_BASE,           52, CROSSING_SPRITE_COUNT,                       "Diagonal crossing graphics"},
 };
 
 /* Action 0x05 */
