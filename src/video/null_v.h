@@ -38,6 +38,9 @@ class FVideoDriver_Null : public DriverFactoryBase {
 public:
 	FVideoDriver_Null() : DriverFactoryBase(Driver::DT_VIDEO, 0, "null", "Null Video Driver") {}
 	Driver *CreateInstance() const override { return new VideoDriver_Null(); }
+
+protected:
+	bool IsUserVisible() const override { return false; }
 };
 
 #endif /* VIDEO_NULL_H */

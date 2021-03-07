@@ -197,6 +197,30 @@ char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 }
 
 /**
+ * Get a list of available drivers for a driver type.
+ * @param type Driver types to return.
+ * @param user_only Only return drivers that are marked as user visible.
+ * @return List of matching drivers.
+ */
+std::vector<DriverFactoryBase *> DriverFactoryBase::GetAvailableDrivers(Driver::Type type, bool user_only)
+{
+	std::vector<DriverFactoryBase *> drivers;
+
+	/* Collect drivers for the requested type. */
+	for (auto &it : GetDrivers()) {
+		if (it.second->type != type) continue;
+		if (user_only && !it.second->IsUserVisible()) continue;
+
+		drivers.push_back(it.second);
+	}
+
+	/* Sort by name. */
+	std::sort(drivers.begin(), drivers.end(), [](DriverFactoryBase *a, DriverFactoryBase *b) { return a->GetGUIDescription() < b->GetGUIDescription(); });
+
+	return drivers;
+}
+
+/**
  * Construct a new DriverFactory.
  * @param type        The type of driver.
  * @param priority    The priority within the driver class.

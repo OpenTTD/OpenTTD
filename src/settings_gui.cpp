@@ -35,6 +35,7 @@
 #include "querystring_gui.h"
 #include "fontcache.h"
 #include "zoom_func.h"
+#include "video/video_driver.hpp"
 
 #include <vector>
 
@@ -214,6 +215,18 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
+			case WID_GO_VIDEO_DRIVER_DROPDOWN: { // Setup video driver dropdown
+				list.emplace_back(new DropDownListStringItem(STR_GAME_OPTIONS_VIDEO_DRIVER_DROPDOWN_AUTO, 0, false));
+				if (_ini_videodriver.empty()) *selected_index = 0;
+
+				auto vid_drivers = DriverFactoryBase::GetAvailableDrivers(Driver::DT_VIDEO, true);
+				for (uint i = 0; i < vid_drivers.size(); i++) {
+					list.emplace_back(new DropDownListCharStringItem(vid_drivers[i]->GetGUIDescription(), i + 1, false));
+					if (_ini_videodriver == vid_drivers[i]->GetShortName()) *selected_index = i + 1;
+				}
+				break;
+			}
+
 			case WID_GO_GUI_ZOOM_DROPDOWN: {
 				*selected_index = _gui_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _gui_zoom + 1 : 0;
 				const StringID *items = _gui_zoom_dropdown;
@@ -262,6 +275,18 @@ struct GameOptionsWindow : Window {
 			case WID_GO_BASE_SFX_DROPDOWN:   SetDParamStr(0, BaseSounds::GetUsedSet()->name.c_str()); break;
 			case WID_GO_BASE_MUSIC_DROPDOWN: SetDParamStr(0, BaseMusic::GetUsedSet()->name.c_str()); break;
 			case WID_GO_BASE_MUSIC_STATUS:   SetDParam(0, BaseMusic::GetUsedSet()->GetNumInvalid()); break;
+			case WID_GO_VIDEO_DRIVER_DROPDOWN:
+				if (_ini_videodriver.empty()) {
+					SetDParam(0, STR_JUST_STRING);
+					SetDParam(1, STR_GAME_OPTIONS_VIDEO_DRIVER_DROPDOWN_AUTO);
+				} else {
+					SetDParam(0, STR_JUST_RAW_STRING);
+					SetDParamStr(1, _ini_videodriver.c_str()); // Display full string by default in case it contains parameters.
+					for (auto it : DriverFactoryBase::GetAvailableDrivers(Driver::DT_VIDEO, false)) {
+						if (_ini_videodriver == it->GetShortName()) SetDParamStr(1, it->GetGUIDescription().c_str());
+					}
+				}
+				break;
 		}
 	}
 
@@ -443,6 +468,21 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
+			case WID_GO_VIDEO_DRIVER_DROPDOWN: { // Change video driver
+				std::string old = _ini_videodriver;
+				if (index == 0) {
+					_ini_videodriver.clear();
+				} else {
+					auto vid_drivers = DriverFactoryBase::GetAvailableDrivers(Driver::DT_VIDEO, true);
+					_ini_videodriver = vid_drivers[index - 1]->GetShortName();
+				}
+				if (_ini_videodriver != old) {
+					this->SetDirty();
+					ShowErrorMessage(STR_GAME_OPTIONS_VIDEO_DRIVER_RESTART, INVALID_STRING_ID, WL_INFO);
+				}
+				break;
+			}
+
 			case WID_GO_GUI_ZOOM_DROPDOWN: {
 				int8 new_zoom = index > 0 ? ZOOM_LVL_OUT_4X - index + 1 : ZOOM_LVL_CFG_AUTO;
 				if (new_zoom != _gui_zoom_cfg) {
@@ -526,9 +566,10 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP),
 					EndContainer(),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_GUI_ZOOM_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_GUI_ZOOM_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP), SetFill(1, 0),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_VIDEO_DRIVER, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_VIDEO_DRIVER_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING1, STR_GAME_OPTIONS_VIDEO_DRIVER_DROPDOWN_TOOLTIP), SetFill(1, 0), SetPadding(0, 0, 3, 0),
 				EndContainer(),
+				NWidget(NWID_SPACER), SetMinimalSize(0, 0), SetFill(0, 1),
 			EndContainer(),
 
 			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
@@ -538,7 +579,9 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 0), SetFill(0, 1),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_GUI_ZOOM_FRAME, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_GUI_ZOOM_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP), SetFill(1, 0),
+				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_FONT_ZOOM, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_FONT_ZOOM_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),

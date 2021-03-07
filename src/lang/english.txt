@@ -1017,6 +1017,12 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Double size
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quad size
 
+STR_GAME_OPTIONS_VIDEO_DRIVER                                   :{BLACK}Video driver
+STR_GAME_OPTIONS_VIDEO_DRIVER_DROPDOWN_TOOLTIP                  :{BLACK}Select the video driver to use
+STR_GAME_OPTIONS_VIDEO_DRIVER_RESTART                           :{WHITE}The setting will only take effect after a game restart
+
+STR_GAME_OPTIONS_VIDEO_DRIVER_DROPDOWN_AUTO                     :(auto-select)
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} missing/corrupted file{P "" s}
@@ -5166,6 +5172,7 @@ STR_ORANGE_INT                                                  :{ORANGE}{NUM}
 STR_WHITE_SIGN                                                  :{WHITE}{SIGN}
 STR_TINY_BLACK_STATION                                          :{TINY_FONT}{BLACK}{STATION}
 STR_BLACK_STRING                                                :{BLACK}{STRING}
+STR_BLACK_STRING1                                               :{BLACK}{STRING1}
 STR_BLACK_RAW_STRING                                            :{BLACK}{RAW_STRING}
 STR_ORANGE_STRING                                               :{ORANGE}{STRING}
 STR_LTBLUE_STRING                                               :{LTBLUE}{STRING}

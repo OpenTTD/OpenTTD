@@ -42,6 +42,9 @@ public:
 #endif
 	FVideoDriver_Dedicated() : DriverFactoryBase(Driver::DT_VIDEO, PRIORITY, "dedicated", "Dedicated Video Driver") {}
 	Driver *CreateInstance() const override { return new VideoDriver_Dedicated(); }
+
+protected:
+	bool IsUserVisible() const override { return false; }
 };
 
 #endif /* VIDEO_DEDICATED_H */

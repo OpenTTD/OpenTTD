@@ -108,6 +108,9 @@ protected:
 
 	virtual ~DriverFactoryBase();
 
+	/** Indicates that this driver should be offered in user GUI contexts. */
+	virtual bool IsUserVisible() const { return true; }
+
 public:
 	/**
 	 * Shuts down all active drivers
@@ -122,6 +125,8 @@ public:
 
 	static void SelectDriver(const std::string &name, Driver::Type type);
 	static char *GetDriversInfo(char *p, const char *last);
+
+	static std::vector<DriverFactoryBase *> GetAvailableDrivers(Driver::Type type, bool user_only);
 
 	/**
 	 * Get the short name of the driver-class.
