@@ -33,7 +33,7 @@ private:
 /** Factory for the SDL video driver. */
 class FVideoDriver_SDL_Default : public DriverFactoryBase {
 public:
-	FVideoDriver_SDL_Default() : DriverFactoryBase(Driver::DT_VIDEO, 5, "sdl", "SDL Video Driver") {}
+	FVideoDriver_SDL_Default() : DriverFactoryBase(Driver::DT_VIDEO, 5, "sdl", "SDL Video Driver", "SDL") {}
 	Driver *CreateInstance() const override { return new VideoDriver_SDL_Default(); }
 };
 

@@ -120,7 +120,7 @@ public:
 /** The factory for Windows' video driver. */
 class FVideoDriver_Win32GDI : public DriverFactoryBase {
 public:
-	FVideoDriver_Win32GDI() : DriverFactoryBase(Driver::DT_VIDEO, 9, "win32", "Win32 GDI Video Driver") {}
+	FVideoDriver_Win32GDI() : DriverFactoryBase(Driver::DT_VIDEO, 9, "win32", "Win32 GDI Video Driver", "GDI") {}
 	Driver *CreateInstance() const override { return new VideoDriver_Win32GDI(); }
 };
 
@@ -173,7 +173,7 @@ protected:
 /** The factory for Windows' OpenGL video driver. */
 class FVideoDriver_Win32OpenGL : public DriverFactoryBase {
 public:
-	FVideoDriver_Win32OpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 10, "win32-opengl", "Win32 OpenGL Video Driver") {}
+	FVideoDriver_Win32OpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 10, "win32-opengl", "Win32 OpenGL Video Driver", "OpenGL (Win32)") {}
 	/* virtual */ Driver *CreateInstance() const override { return new VideoDriver_Win32OpenGL(); }
 };
 

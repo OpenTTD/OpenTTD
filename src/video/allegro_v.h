@@ -43,7 +43,7 @@ protected:
 /** Factory for the allegro video driver. */
 class FVideoDriver_Allegro : public DriverFactoryBase {
 public:
-	FVideoDriver_Allegro() : DriverFactoryBase(Driver::DT_VIDEO, 4, "allegro", "Allegro Video Driver") {}
+	FVideoDriver_Allegro() : DriverFactoryBase(Driver::DT_VIDEO, 4, "allegro", "Allegro Video Driver", "Allegro") {}
 	Driver *CreateInstance() const override { return new VideoDriver_Allegro(); }
 };
 

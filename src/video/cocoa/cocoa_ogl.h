@@ -52,7 +52,7 @@ protected:
 
 class FVideoDriver_CocoaOpenGL : public DriverFactoryBase {
 public:
-	FVideoDriver_CocoaOpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 9, "cocoa-opengl", "Cocoa OpenGL Video Driver") {}
+	FVideoDriver_CocoaOpenGL() : DriverFactoryBase(Driver::DT_VIDEO, 9, "cocoa-opengl", "Cocoa OpenGL Video Driver", "OpenGL") {}
 	Driver *CreateInstance() const override { return new VideoDriver_CocoaOpenGL(); }
 };
 

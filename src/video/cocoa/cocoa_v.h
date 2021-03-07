@@ -122,7 +122,7 @@ protected:
 
 class FVideoDriver_CocoaQuartz : public DriverFactoryBase {
 public:
-	FVideoDriver_CocoaQuartz() : DriverFactoryBase(Driver::DT_VIDEO, 10, "cocoa", "Cocoa Video Driver") {}
+	FVideoDriver_CocoaQuartz() : DriverFactoryBase(Driver::DT_VIDEO, 10, "cocoa", "Cocoa Video Driver", "Quartz") {}
 	Driver *CreateInstance() const override { return new VideoDriver_CocoaQuartz(); }
 };
 

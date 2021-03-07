@@ -117,13 +117,13 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 
 				const char *err = newd->Start({});
 				if (err == nullptr) {
-					DEBUG(driver, 1, "Successfully probed %s driver '%s'", GetDriverTypeName(type), d->name);
+					DEBUG(driver, 1, "Successfully probed %s driver '%s'", GetDriverTypeName(type), d->name.c_str());
 					delete oldd;
 					return true;
 				}
 
 				*GetActiveDriver(type) = oldd;
-				DEBUG(driver, 1, "Probing %s driver '%s' failed with error: %s", GetDriverTypeName(type), d->name, err);
+				DEBUG(driver, 1, "Probing %s driver '%s' failed with error: %s", GetDriverTypeName(type), d->name.c_str(), err);
 				delete newd;
 			}
 		}
@@ -149,7 +149,7 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 			if (d->type != type) continue;
 
 			/* Check driver name */
-			if (strcasecmp(dname.c_str(), d->name) != 0) continue;
+			if (strcasecmp(dname.c_str(), d->name.c_str()) != 0) continue;
 
 			/* Found our driver, let's try it */
 			Driver *newd = d->CreateInstance();
@@ -157,10 +157,10 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 			const char *err = newd->Start(parms);
 			if (err != nullptr) {
 				delete newd;
-				usererror("Unable to load driver '%s'. The error was: %s", d->name, err);
+				usererror("Unable to load driver '%s'. The error was: %s", d->name.c_str(), err);
 			}
 
-			DEBUG(driver, 1, "Successfully loaded %s driver '%s'", GetDriverTypeName(type), d->name);
+			DEBUG(driver, 1, "Successfully loaded %s driver '%s'", GetDriverTypeName(type), d->name.c_str());
 			delete *GetActiveDriver(type);
 			*GetActiveDriver(type) = newd;
 			return true;
@@ -186,7 +186,7 @@ char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 				DriverFactoryBase *d = (*it).second;
 				if (d->type != type) continue;
 				if (d->priority != priority) continue;
-				p += seprintf(p, last, "%18s: %s\n", d->name, d->GetDescription());
+				p += seprintf(p, last, "%18s: %s\n", d->name.c_str(), d->GetDescription().c_str());
 			}
 		}
 
@@ -202,14 +202,14 @@ char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
  * @param priority    The priority within the driver class.
  * @param name        The name of the driver.
  * @param description A long-ish description of the driver.
+ * @param short_desc  GUI description of the driver.
  */
-DriverFactoryBase::DriverFactoryBase(Driver::Type type, int priority, const char *name, const char *description) :
-	type(type), priority(priority), name(name), description(description)
+DriverFactoryBase::DriverFactoryBase(Driver::Type type, int priority, const char *name, const char *description, const char *short_desc) :
+	type(type), priority(priority), name(name), description(description), short_desc(short_desc != nullptr ? short_desc : description)
 {
 	/* Prefix the name with driver type to make it unique */
-	char buf[32];
-	strecpy(buf, GetDriverTypeName(type), lastof(buf));
-	strecpy(buf + 5, name, lastof(buf));
+	std::string buf{ GetDriverTypeName(type) };
+	buf += name;
 
 	std::pair<Drivers::iterator, bool> P = GetDrivers().insert(Drivers::value_type(buf, this));
 	assert(P.second);
@@ -221,9 +221,8 @@ DriverFactoryBase::DriverFactoryBase(Driver::Type type, int priority, const char
 DriverFactoryBase::~DriverFactoryBase()
 {
 	/* Prefix the name with driver type to make it unique */
-	char buf[32];
-	strecpy(buf, GetDriverTypeName(type), lastof(buf));
-	strecpy(buf + 5, this->name, lastof(buf));
+	std::string buf{ GetDriverTypeName(type) };
+	buf += this->name;
 
 	Drivers::iterator it = GetDrivers().find(buf);
 	assert(it != GetDrivers().end());

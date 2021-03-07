@@ -64,8 +64,9 @@ private:
 
 	Driver::Type type;       ///< The type of driver.
 	int priority;            ///< The priority of this factory.
-	const char *name;        ///< The name of the drivers of this factory.
-	const char *description; ///< The description of this driver.
+	std::string name;        ///< The name of the drivers of this factory.
+	std::string description; ///< The description of this driver.
+	std::string short_desc;  ///< Short GUI description of this driver.
 
 	typedef std::map<std::string, DriverFactoryBase *> Drivers; ///< Type for a map of drivers.
 
@@ -103,7 +104,7 @@ private:
 	static bool SelectDriverImpl(const std::string &name, Driver::Type type);
 
 protected:
-	DriverFactoryBase(Driver::Type type, int priority, const char *name, const char *description);
+	DriverFactoryBase(Driver::Type type, int priority, const char *name, const char *description, const char *short_desc = nullptr);
 
 	virtual ~DriverFactoryBase();
 
@@ -123,12 +124,30 @@ public:
 	static char *GetDriversInfo(char *p, const char *last);
 
 	/**
+	 * Get the short name of the driver-class.
+	 * @return The short name.
+	 */
+	const std::string &GetShortName() const
+	{
+		return this->name;
+	}
+
+	/**
 	 * Get a nice description of the driver-class.
 	 * @return The description.
 	 */
-	const char *GetDescription() const
+	const std::string &GetDescription() const
 	{
 		return this->description;
+	}
+
+	/**
+	 * Get a short GUI description of the driver.
+	 * @return The description.
+	 */
+	const std::string &GetGUIDescription() const
+	{
+		return this->short_desc;
 	}
 
 	/**
