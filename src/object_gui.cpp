@@ -29,13 +29,13 @@
 
 #include "safeguards.h"
 
-static const ObjectClass *_selected_object_class;  ///< Currently selected available object class.
-static int _selected_object_index;                 ///< Index of the currently selected object if existing, else \c -1.
-static uint8 _selected_object_view;                ///< the view of the selected object
+static ObjectClassID _selected_object_class; ///< Currently selected available object class.
+static int _selected_object_index;           ///< Index of the currently selected object if existing, else \c -1.
+static uint8 _selected_object_view;          ///< the view of the selected object
 
 /** The window used for building objects. */
 class BuildObjectWindow : public Window {
-	typedef GUIList<const ObjectClass *, StringFilter &> GUIObjectClassList; ///< Type definition for the list to hold available object classes.
+	typedef GUIList<ObjectClassID, StringFilter &> GUIObjectClassList; ///< Type definition for the list to hold available object classes.
 
 	static const uint EDITBOX_MAX_SIZE = 16; ///< The maximum number of characters for the filter edit box.
 	static const int OBJECT_MARGIN = 4;    ///< The margin (in pixels) around an object.
@@ -56,8 +56,8 @@ class BuildObjectWindow : public Window {
 	void EnsureSelectedObjectClassIsVisible()
 	{
 		uint pos = 0;
-		for (auto objclass : this->object_classes) {
-			if (objclass == _selected_object_class) break;
+		for (auto object_class_id : this->object_classes) {
+			if (object_class_id == _selected_object_class) break;
 			pos++;
 		}
 		this->vscroll->ScrollTowards(pos);
@@ -71,9 +71,10 @@ class BuildObjectWindow : public Window {
 	{
 		if (_selected_object_index == -1) return false;
 
-		if ((int)_selected_object_class->GetSpecCount() <= _selected_object_index) return false;
+		ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+		if ((int)objclass->GetSpecCount() <= _selected_object_index) return false;
 
-		return _selected_object_class->GetSpec(_selected_object_index)->IsAvailable();
+		return objclass->GetSpec(_selected_object_index)->IsAvailable();
 	}
 
 	/**
@@ -121,23 +122,18 @@ public:
 		this->InvalidateData();
 	}
 
-	/** Sort object classes by class name. */
-	static bool NameSorter(const ObjectClass * const &a, const ObjectClass * const &b)
+	/** Sort object classes by ObjectClassID. */
+	static bool ObjectClassIDSorter(ObjectClassID const &a, ObjectClassID const &b)
 	{
-		char buffer_a[DRAW_STRING_BUFFER];
-		GetString(buffer_a, a->name, lastof(buffer_a));
-
-		char buffer_b[DRAW_STRING_BUFFER];
-		GetString(buffer_b, b->name, lastof(buffer_b));
-
-		return strnatcmp(buffer_a, buffer_b, true) < 0; // Sort by name (natural sorting).
+		return a < b;
 	}
 
 	/** Filter object classes by class name. */
-	static bool CDECL TagNameFilter(const ObjectClass * const *oc, StringFilter &filter)
+	static bool CDECL TagNameFilter(ObjectClassID const *oc, StringFilter &filter)
 	{
+		ObjectClass *objclass = ObjectClass::Get(*oc);
 		char buffer[DRAW_STRING_BUFFER];
-		GetString(buffer, (*oc)->name, lastof(buffer));
+		GetString(buffer, objclass->name, lastof(buffer));
 
 		filter.ResetState();
 		filter.AddLine(buffer);
@@ -154,7 +150,7 @@ public:
 		for (uint i = 0; i < ObjectClass::GetClassCount(); i++) {
 			ObjectClass *objclass = ObjectClass::Get((ObjectClassID)i);
 			if (objclass->GetUISpecCount() == 0) continue; // Is this needed here?
-			object_classes.push_back(objclass);
+			object_classes.push_back((ObjectClassID)i);
 		}
 
 		this->object_classes.Filter(this->string_filter);
@@ -172,7 +168,7 @@ public:
 	void SelectClassAndObject()
 	{
 		assert(!this->object_classes.empty()); // object GUI should be disabled elsewise
-		if (_selected_object_class == nullptr) {
+		if (_selected_object_class == ObjectClassID::OBJECT_CLASS_BEGIN) {
 			/* This happens during the first time the window is open during the game life cycle. */
 			this->SelectOtherClass(this->object_classes[0]);
 		} else {
@@ -180,8 +176,7 @@ public:
 			 * result of starting a new game without the corresponding NewGRF. */
 			bool available = false;
 			for (uint i = 0; ObjectClass::GetClassCount(); ++i) {
-				ObjectClass *objclass = ObjectClass::Get((ObjectClassID)i);
-				if (objclass == _selected_object_class) {
+				if ((ObjectClassID)i == _selected_object_class) {
 					available = true;
 					break;
 				}
@@ -199,20 +194,23 @@ public:
 		} else {
 			this->SelectFirstAvailableObject(true);
 		}
-		assert(_selected_object_class->GetUISpecCount() > 0); // object GUI should be disabled elsewise
+		ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+		assert(objclass->GetUISpecCount() > 0); // object GUI should be disabled elsewise
 	}
 
 	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
 			case WID_BO_OBJECT_NAME: {
-				const ObjectSpec *spec = _selected_object_class->GetSpec(_selected_object_index);
+				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				SetDParam(0, spec != nullptr ? spec->name : STR_EMPTY);
 				break;
 			}
 
 			case WID_BO_OBJECT_SIZE: {
-				const ObjectSpec *spec = _selected_object_class->GetSpec(_selected_object_index);
+				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				int size = spec == nullptr ? 0 : spec->size;
 				SetDParam(0, GB(size, HasBit(_selected_object_view, 0) ? 4 : 0, 4));
 				SetDParam(1, GB(size, HasBit(_selected_object_view, 0) ? 0 : 4, 4));
@@ -227,7 +225,8 @@ public:
 	{
 		switch (widget) {
 			case WID_BO_CLASS_LIST: {
-				for (auto objclass : this->object_classes) {
+				for (auto object_class_id : this->object_classes) {
+					ObjectClass *objclass = ObjectClass::Get(object_class_id);
 					if (objclass->GetUISpecCount() == 0) continue;
 					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width);
 				}
@@ -246,7 +245,8 @@ public:
 
 			case WID_BO_OBJECT_MATRIX: {
 				/* Get the right amount of buttons based on the current spec. */
-				const ObjectSpec *spec = _selected_object_class->GetSpec(_selected_object_index);
+				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				if (spec != nullptr) {
 					if (spec->views >= 2) size->width  += resize->width;
 					if (spec->views >= 4) size->height += resize->height;
@@ -286,7 +286,8 @@ public:
 				}
 
 				/* Get the right size for the single widget based on the current spec. */
-				const ObjectSpec *spec = _selected_object_class->GetSpec(_selected_object_index);
+				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				if (spec != nullptr) {
 					if (spec->views >= 2) size->width  = size->width  / 2 - 1;
 					if (spec->views >= 4) size->height = size->height / 2 - 1;
@@ -318,11 +319,12 @@ public:
 			case WID_BO_CLASS_LIST: {
 				int y = r.top;
 				uint pos = 0;
-				for (auto objclass : this->object_classes) {
+				for (auto object_class_id : this->object_classes) {
+					ObjectClass *objclass = ObjectClass::Get(object_class_id);
 					if (objclass->GetUISpecCount() == 0) continue;
 					if (!this->vscroll->IsVisible(pos++)) continue;
 					DrawString(r.left + WD_MATRIX_LEFT, r.right - WD_MATRIX_RIGHT, y + WD_MATRIX_TOP, objclass->name,
-							(objclass == _selected_object_class) ? TC_WHITE : TC_BLACK);
+							(object_class_id == _selected_object_class) ? TC_WHITE : TC_BLACK);
 					y += this->line_height;
 				}
 				break;
@@ -331,7 +333,8 @@ public:
 			case WID_BO_OBJECT_SPRITE: {
 				if (_selected_object_index == -1) break;
 
-				const ObjectSpec *spec = _selected_object_class->GetSpec(_selected_object_index);
+				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				if (spec == nullptr) break;
 
 				/* Height of the selection matrix.
@@ -359,9 +362,10 @@ public:
 			}
 
 			case WID_BO_SELECT_IMAGE: {
-				int obj_index = _selected_object_class->GetIndexFromUI(GB(widget, 16, 16));
+				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+				int obj_index = objclass->GetIndexFromUI(GB(widget, 16, 16));
 				if (obj_index < 0) break;
-				const ObjectSpec *spec = _selected_object_class->GetSpec(obj_index);
+				const ObjectSpec *spec = objclass->GetSpec(obj_index);
 				if (spec == nullptr) break;
 
 				if (!spec->IsAvailable()) {
@@ -386,7 +390,8 @@ public:
 			}
 
 			case WID_BO_INFO: {
-				const ObjectSpec *spec = _selected_object_class->GetSpec(_selected_object_index);
+				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+				const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 				if (spec == nullptr) break;
 
 				/* Get the extra message for the GUI */
@@ -421,10 +426,11 @@ public:
 	 * Select the specified object class.
 	 * @param object_class Object class select.
 	 */
-	void SelectOtherClass(const ObjectClass *object_class)
+	void SelectOtherClass(ObjectClassID object_class)
 	{
 		_selected_object_class = object_class;
-		this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(_selected_object_class->GetUISpecCount());
+		ObjectClass *objclass = ObjectClass::Get(object_class);
+		this->GetWidget<NWidgetMatrix>(WID_BO_SELECT_MATRIX)->SetCount(objclass->GetUISpecCount());
 	}
 
 	/**
@@ -435,7 +441,8 @@ public:
 	{
 		_selected_object_index = object_index;
 		if (_selected_object_index != -1) {
-			const ObjectSpec *spec = _selected_object_class->GetSpec(_selected_object_index);
+			ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+			const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 			_selected_object_view = std::min<int>(_selected_object_view, spec->views - 1);
 			this->ReInit();
 		} else {
@@ -454,7 +461,8 @@ public:
 		if (_selected_object_index == -1) {
 			SetTileSelectSize(1, 1);
 		} else {
-			const ObjectSpec *spec = _selected_object_class->GetSpec(_selected_object_index);
+			ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+			const ObjectSpec *spec = objclass->GetSpec(_selected_object_index);
 			int w = GB(spec->size, HasBit(_selected_object_view, 0) ? 4 : 0, 4);
 			int h = GB(spec->size, HasBit(_selected_object_view, 0) ? 0 : 4, 4);
 			SetTileSelectSize(w, h);
@@ -467,7 +475,7 @@ public:
 	 * @param sel_index Index of the object to select, or \c -1 .
 	 * @param sel_view View of the object to select.
 	 */
-	void UpdateButtons(const ObjectClass *object_class, int sel_index, uint sel_view)
+	void UpdateButtons(ObjectClassID object_class, int sel_index, uint sel_view)
 	{
 		int view_number, object_number;
 		if (sel_index == -1) {
@@ -475,7 +483,8 @@ public:
 			object_number = -1;
 		} else {
 			view_number = sel_view;
-			object_number = object_class->GetUIFromIndex(sel_index);
+			ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+			object_number = objclass->GetUIFromIndex(sel_index);
 		}
 
 		this->GetWidget<NWidgetMatrix>(WID_BO_OBJECT_MATRIX)->SetClicked(view_number);
@@ -509,8 +518,9 @@ public:
 			}
 
 			case WID_BO_SELECT_IMAGE: {
-				int num_clicked = _selected_object_class->GetIndexFromUI(GB(widget, 16, 16));
-				if (num_clicked >= 0 && _selected_object_class->GetSpec(num_clicked)->IsAvailable()) this->SelectOtherObject(num_clicked);
+				ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+				int num_clicked = objclass->GetIndexFromUI(GB(widget, 16, 16));
+				if (num_clicked >= 0 && objclass->GetSpec(num_clicked)->IsAvailable()) this->SelectOtherObject(num_clicked);
 				break;
 			}
 
@@ -525,7 +535,8 @@ public:
 
 	void OnPlaceObject(Point pt, TileIndex tile) override
 	{
-		DoCommandP(tile, _selected_object_class->GetSpec(_selected_object_index)->Index(),
+		ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+		DoCommandP(tile, objclass->GetSpec(_selected_object_index)->Index(),
 				_selected_object_view, CMD_BUILD_OBJECT | CMD_MSG(STR_ERROR_CAN_T_BUILD_OBJECT), CcTerraform);
 	}
 
@@ -549,9 +560,11 @@ public:
 	 */
 	void SelectFirstAvailableObject(bool change_class)
 	{
+		ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
+
 		/* First try to select an object in the selected class. */
-		for (uint i = 0; i < _selected_object_class->GetSpecCount(); i++) {
-			const ObjectSpec *spec = _selected_object_class->GetSpec(i);
+		for (uint i = 0; i < objclass->GetSpecCount(); i++) {
+			const ObjectSpec *spec = objclass->GetSpec(i);
 			if (spec->IsAvailable()) {
 				this->SelectOtherObject(i);
 				return;
@@ -560,11 +573,12 @@ public:
 		if (change_class) {
 			/* If that fails, select the first available object
 			 * from a random class. */
-			for (auto objclass : this->object_classes) {
+			for (auto object_class_id : this->object_classes) {
+				ObjectClass *objclass = ObjectClass::Get(object_class_id);
 				for (uint i = 0; i < objclass->GetSpecCount(); i++) {
 					const ObjectSpec *spec = objclass->GetSpec(i);
 					if (spec->IsAvailable()) {
-						this->SelectOtherClass(objclass);
+						this->SelectOtherClass(object_class_id);
 						this->SelectOtherObject(i);
 						return;
 					}
@@ -572,11 +586,12 @@ public:
 			}
 		}
 		/* If all objects are unavailable, select nothing... */
-		if (_selected_object_class->GetUISpecCount() == 0) {
+		if (objclass->GetUISpecCount() == 0) {
 			/* ... but make sure that the class is not empty. */
-			for (auto objclass : this->object_classes) {
+			for (auto object_class_id : this->object_classes) {
+				ObjectClass *objclass = ObjectClass::Get(object_class_id);
 				if (objclass->GetUISpecCount() > 0) {
-					this->SelectOtherClass(objclass);
+					this->SelectOtherClass(object_class_id);
 					break;
 				}
 			}
@@ -589,7 +604,7 @@ Listing BuildObjectWindow::last_sorting = { false, 0 };
 Filtering BuildObjectWindow::last_filtering = { false, 0 };
 
 BuildObjectWindow::GUIObjectClassList::SortFunction * const BuildObjectWindow::sorter_funcs[] = {
-	&NameSorter,
+	&ObjectClassIDSorter,
 };
 
 BuildObjectWindow::GUIObjectClassList::FilterFunction * const BuildObjectWindow::filter_funcs[] = {
@@ -662,5 +677,5 @@ void ShowBuildObjectPicker()
 /** Reset all data of the object GUI. */
 void InitializeObjectGui()
 {
-	_selected_object_class = nullptr;
+	_selected_object_class = ObjectClassID::OBJECT_CLASS_BEGIN;
 }
