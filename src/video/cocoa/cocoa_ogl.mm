@@ -265,7 +265,7 @@ void VideoDriver_CocoaOpenGL::AllocateBackingStore(bool force)
 	CGLSetCurrentContext(this->gl_context);
 	NSRect frame = [ this->cocoaview getRealRect:[ this->cocoaview frame ] ];
 	OpenGLBackend::Get()->Resize(frame.size.width, frame.size.height, force);
-	_screen.dst_ptr = this->GetVideoPointer();
+	if (this->buffer_locked) _screen.dst_ptr = this->GetVideoPointer();
 	this->dirty_rect = {};
 
 	/* Redraw screen */

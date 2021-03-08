@@ -700,9 +700,9 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		if (!EditBoxInGlobalFocus() || IsInsideMM(pressed_key & ~WKC_SPECIAL_KEYS, WKC_F1, WKC_PAUSE + 1)) {
 			HandleKeypress(pressed_key, unicode);
 		}
-		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);
+		DEBUG(driver, 3, "cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);
 	} else {
-		DEBUG(driver, 2, "cocoa_v: QZ_KeyEvent: %x (%x), up", keycode, unicode);
+		DEBUG(driver, 3, "cocoa_v: QZ_KeyEvent: %x (%x), up", keycode, unicode);
 	}
 
 	return interpret_keys;
