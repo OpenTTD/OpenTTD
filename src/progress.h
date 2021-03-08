@@ -36,6 +36,7 @@ static inline bool UseThreadedModelProgress()
 
 bool IsFirstModalProgressLoop();
 void SetModalProgress(bool state);
+void SleepWhileModalProgress(int milliseconds);
 
 extern std::mutex _modal_progress_work_mutex;
 extern std::mutex _modal_progress_paint_mutex;

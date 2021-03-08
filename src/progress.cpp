@@ -10,6 +10,7 @@
 #include "stdafx.h"
 #include "progress.h"
 
+#include <chrono>
 #include <mutex>
 #include <condition_variable>
 
@@ -52,4 +53,15 @@ bool IsFirstModalProgressLoop()
 	bool ret = _first_in_modal_loop;
 	_first_in_modal_loop = false;
 	return ret;
+}
+
+/**
+ * Sleep until the first of: the specified time duration in milliseconds elapses, the modal progress state is false.
+ * The modal progress paint and work mutexes MUST NOT be held by the caller.
+ * @param milliseconds Time duration in milliseconds
+ */
+void SleepWhileModalProgress(int milliseconds)
+{
+	std::unique_lock<std::mutex> lk(_modal_progress_cv_mutex);
+	_modal_progress_cv.wait_for(lk, std::chrono::milliseconds(milliseconds), []{ return !_in_modal_progress; });
 }

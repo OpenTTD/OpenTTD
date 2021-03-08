@@ -1478,7 +1478,7 @@ void DrawDirtyBlocks()
 		_modal_progress_work_mutex.unlock();
 
 		/* Wait a while and hope the modal gives us a bit of time to draw the GUI. */
-		if (!is_first_modal_progress_loop) CSleep(MODAL_PROGRESS_REDRAW_TIMEOUT);
+		if (!is_first_modal_progress_loop) SleepWhileModalProgress(MODAL_PROGRESS_REDRAW_TIMEOUT);
 
 		/* Modal progress thread may need blitter access while we are waiting for it. */
 		_modal_progress_paint_mutex.lock();
