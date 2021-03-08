@@ -1051,6 +1051,19 @@ void OpenGLBackend::DrawMouseCursor()
 
 void OpenGLBackend::PopulateCursorCache()
 {
+	if (this->clear_cursor_cache) {
+		/* We have a pending cursor cache clear to do first. */
+		this->clear_cursor_cache = false;
+		this->last_sprite_pal = (PaletteID)-1;
+
+		Sprite *sp;
+		while ((sp = this->cursor_cache.Pop()) != nullptr) {
+			OpenGLSprite *sprite = (OpenGLSprite *)sp->data;
+			sprite->~OpenGLSprite();
+			free(sp);
+		}
+	}
+
 	for (uint i = 0; i < _cursor.sprite_count; ++i) {
 		SpriteID sprite = _cursor.sprite_seq[i].sprite;
 
@@ -1070,14 +1083,11 @@ void OpenGLBackend::PopulateCursorCache()
  */
 void OpenGLBackend::ClearCursorCache()
 {
-	this->last_sprite_pal = (PaletteID)-1;
-
-	Sprite *sp;
-	while ((sp = this->cursor_cache.Pop()) != nullptr) {
-		OpenGLSprite *sprite = (OpenGLSprite *)sp->data;
-		sprite->~OpenGLSprite();
-		free(sp);
-	}
+	/* If the game loop is threaded, this function might be called
+	 * from the game thread. As we can call OpenGL functions only
+	 * on the main thread, just set a flag that is handled the next
+	 * time we prepare the cursor cache for drawing. */
+	this->clear_cursor_cache = true;
 }
 
 /**

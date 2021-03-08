@@ -63,6 +63,7 @@ private:
 
 	LRUCache<SpriteID, Sprite> cursor_cache;   ///< Cache of encoded cursor sprites.
 	PaletteID last_sprite_pal = (PaletteID)-1; ///< Last uploaded remap palette.
+	bool clear_cursor_cache = false;           ///< A clear of the cursor cache is pending.
 
 	OpenGLBackend();
 	~OpenGLBackend();
