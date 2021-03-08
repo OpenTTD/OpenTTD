@@ -959,6 +959,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}คว�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}เลือกความละเอียดของหน้าจอที่จะใช้
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}ขนาดของแผงควบคุม
 
 
@@ -1654,6 +1655,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ไ�
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ไม่สนใจ Base Music set '{STRING}': หาไม่พบ
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}หน่วยความจำไม่เพียงพอ
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}การกำหนดพื้นที่ {BYTES} ของ Spritecache ล้มเหลว Spritecache ได้ลดลง {BYTES}. นี่คือการทำให้ประสิทธิภาพของเกม OpenTTD ลดลง. เพื่อลดความต้องการของหน่วยความจำ ให้ทำการปิดการใช้งานระบบ 32bpp graphics
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2929,13 +2932,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}จ่�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} เป้าหมาย
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}เป้าหมายรวม
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}เป้าหมายโดยรวม:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- ไม่มี -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- ไม่มี -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}เป้าหมายบริษัท:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}คลิ๊กเลือกที่เป้าหมายเพื่อพาไปยังจุดเริ่มต้นที่จะทำตามเป้าหมาย
 
 # Goal question window

@@ -1068,6 +1068,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozlíš
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Výber rozlíšenia obrazovky
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :iné
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veľkosť rozhrania
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Výber veľkosti prvkov rozhrania
 
@@ -1849,6 +1850,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorujem základnú sadu hudby '{STRING}': nenájdené
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Nedostatok pamäte
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Pridelenie {BYTES} z medzipamäte zlyhalo. Medzipamäť bola zredukovaná na {BYTES}. Tým sa zníži výkon OpenTTD. Ak chcete znížiť nároky na pamäť, skúste vypnúť 32bpp grafiku a/alebo približovacie úrovne.
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3252,13 +3255,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplat
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ciele
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globálne ciele
 STR_GOALS_SPECTATOR                                             :Globálne ciele
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globálne ciele:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nič -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nepoužiteľné -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ciele spoločnosti:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni pre vycentrovanie pohľadu na priemysel/mesto/políčko. Ctrl+klik otvorí nové okno s pohľadom na priemysel/mesto/políčko
 
 # Goal question window

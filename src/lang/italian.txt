@@ -1003,6 +1003,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Risoluzi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Seleziona la risoluzione dello schermo da utilizzare
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Altra
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Dimensione interfaccia
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleziona la dimensione deglie elementi dell'interfaccia grafica
 
@@ -1810,6 +1811,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignorato pachetto musicale di base '{STRING}': non trovato
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memoria esaurita
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Impossibile allocare {BYTES} della cache degli sprite. La cache degli sprite è stata limitata a {BYTES}; questo comporterà una riduzione delle prestazioni di OpenTTD. Per ridurre la quantità di memoria richiesta è possibile disabilitare la grafica a 32 bit e/o i livelli di zoom
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3219,13 +3222,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corromp
 STR_GOALS_CAPTION                                               :{WHITE}Obiettivi della {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Obiettivi globali
 STR_GOALS_SPECTATOR                                             :Obiettivi globali
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Obiettivi globali:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nessuno -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Non applicabile -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Obiettivi della compagnia:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Fare clic su un obiettivo per centrare la visuale principale sull'industria, città o riquadro. CTRL+clic mostra l'industria/città/riquadro in una mini visuale
 
 # Goal question window

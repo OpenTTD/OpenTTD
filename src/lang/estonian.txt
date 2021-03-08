@@ -1058,6 +1058,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekraanil
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekraanilahutuse valimine
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Liidese suurus
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vali kasutatav liideseelementide suurus
 
@@ -1843,6 +1844,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... eira
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... eiratakse lähtemuusikakogu «{STRING}»: ei leitud
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Vahemälu on täis
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Pildipuhvri (ingl k «spritecache») suurendamine {BYTES} võrra ebaõnnestus. Pildipuhvri uus suurus on {BYTES}. Seetõttu on OpenTTD nüüd aeglasem. 32 bpp graafika keelamine ja suurendusastme ülempiirangu vähendamine piirab vahemälu tarbimist
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3247,13 +3250,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Kohali
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} eesmärgid
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Üldeesmärgid
 STR_GOALS_SPECTATOR                                             :Üleilmsed eesmärgid
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Üldised eesmärgid:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Mitte ühtegi -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Kehtetu -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Ettevõtte eesmärgid:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klõpsa eesmärgil, et liigutada vaateaken tööstuse/asula/ruudu asukohale. Ctrl+klõps avab uue vaateakna tööstuse/asula/ruudu asukohas
 
 # Goal question window

@@ -1122,6 +1122,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ločljiv
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Izberi ločljivost zaslona
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Velikost vmesnika
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Izberi velikost elementa vmesnika
 
@@ -1858,6 +1859,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoriran osnovni glasbeni set '{STRING}': ni najden
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Premalo pomnilnika
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Priprava {BYTES} za predpomnilnik sličic ni uspela. Pomnilnik je bil zmanjšan na {BYTES}. To bo zmanjšalo zmogljivost OpenTTD. Za zmanjšanje potrebe po spominu onemogoči podporo za 32 bitne sličice
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3153,13 +3156,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podkupi
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Cilji
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globalni cilji
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globalni cilji:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Brez -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Ni izvedljivo -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Cilji podjetja:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikni na cilj za pogled na industrijo/mesto/polje. Ctrl+Klik odpre novo okno na industrijo/mesto/polje
 
 # Goal question window

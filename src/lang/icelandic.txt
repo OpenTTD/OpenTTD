@@ -943,6 +943,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
 
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grunngrafík
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Nota grunngrafíkina
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} týnd{P "" ar} eða ónýt{P "" ar} skrá{P "" r}
@@ -1570,6 +1571,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... slep
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... sleppi grunn tónlistarsafni, '{STRING}' finnst ekki
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Minnið í tölvunni nægir ekki
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Úthlutuðum {BYTES} af skyndiminni fyrir hreyfimyndir mistókst. Skyndiminnið vegna hreyfimynda var minnkað í {BYTES}. Þetta mun minnka reiknigetu OpenTTD. Til minnka minniskröfur getur þú reynt að óvikrja 32bpp grafíkina og/eða minnkað leyfilegt súm
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2825,10 +2828,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Kaupa 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{} Kostnaður: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Markmið allra:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Engin -
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Fyrirtækja markmið:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Smelltu á markmiðið til að miðja aðal sjónarhornið á iðnað/bæ/reit. Ctrl+smella opnar nýtt sjónarhorn á iðnað/bæ/reit
 
 # Goal question window

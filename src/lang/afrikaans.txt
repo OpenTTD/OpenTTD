@@ -989,6 +989,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm re
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kies die skerm resolusie om te gebruik
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK} Koppelvlak groote
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK} Kies die koppelvlak element groote om te gebruik
 
@@ -1748,6 +1749,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... igno
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoreer Basis Musiek stel '{STRING}': nie gevind
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Program is uit geheue uit
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allokering van {BYTES} kasgeheue vir grafika het gefaal. Die kasgeheue is verminder na {BYTES}. Dit sal OpenTDD stadiger maak. Om geheue-aanvraag te verminder, kan u 32bpp grafika en/of zoom-vlakke afskakel.
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3101,13 +3104,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Koop di
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Doelwitte
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globale Doelwitte
 STR_GOALS_SPECTATOR                                             :Globale doelwitte
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale doelwitte:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Geen -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nie van toepassing -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Maatskappy doelwitte:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klik op doel om skerm oor die industrie/stad/teël te sentreer. Ctrl+klik maak 'n nuwe venster vir die industrie/stad/teël oop
 
 # Goal question window

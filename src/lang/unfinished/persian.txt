@@ -961,6 +961,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}وضوح
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :دو برابر
 
 
@@ -1428,6 +1429,8 @@ STR_CONFIG_ERROR_INVALID_GRF_INCOMPATIBLE                       :با این و�
 STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ناشناخته
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... سطح فشردگی'{STRING}' معتبر نیست
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... قالب ذخیره بازی '{STRING}' در دسترس نیست.برگردان به '{STRING}'
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2690,13 +2693,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}رشو�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} اهداف
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}اهداف جهانی
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}اهداف جهانی:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- هیچکدام -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- غیرقابل اعمال -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}اهداف شرکت:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}روی هدف کلیک کنید تا نمای اصلی را به مرکز صنایع/شهر/قطعه ببرد. Ctrl+Click یک نمای جدید از محل صنایع/شهر قطعه باز می کند
 
 # Goal question window

@@ -1002,6 +1002,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 �
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용할 화면 해상도를 선택하세요
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택합니다.
 
@@ -1787,6 +1788,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... 기�
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... 기본 배경음 세트({STRING})가 무시되었습니다: 파일을 찾을 수 없습니다.
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}메모리 초과
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES}의 스프라이트 캐시 할당에 실패하였습니다. 스프라이트 캐시 용량이 {BYTES}로 감소합니다. 이는 OpenTTD의 성능을 저하시킬 것입니다. 메모리 요구사항을 낮추려면 32bpp를 비활성화하거나 화면 확대 설정을 기본값에 가깝게 조절하십시오.
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3190,13 +3193,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}성취�
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 목표
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}전체 목표
 STR_GOALS_SPECTATOR                                             :전체 목표
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}전체 목표:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 없음 -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- 적용 불가 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}회사 목표:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}산업시설/마을/칸의 위치로 화면을 이동하려면 클릭하십시오. CTRL+클릭하면 산업시설/마을/칸의 위치를 기준으로 새로운 외부 화면을 엽니다
 
 # Goal question window

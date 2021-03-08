@@ -1002,6 +1002,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluci
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Elegir la resolución de pantalla
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otra
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Elegir el tamaño de los elementos de la interfaz
 
@@ -1787,6 +1788,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... soni
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... música base '{STRING}' ignorada: no encontrada
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}No hay memoria suficiente
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}La asignación de {BYTES} de caché de sprites ha fallado. La caché de sprites ha sido reducida a {BYTES}, lo que reducirá el desempeño de OpenTTD. Para reducir los requisitos de memoria es posible deshabilitar los gráficos de 32bpp o reducir los grados de acercamiento
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3190,13 +3193,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Soborna
 STR_GOALS_CAPTION                                               :{WHITE}Metas de {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Metas globales
 STR_GOALS_SPECTATOR                                             :Metas globales
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Metas globales:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- No aplica -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Metas de la empresa
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Clic en una meta para centrar la vista en la industria, pueblo o casilla. Ctrl+Clic abre una vista aparte
 
 # Goal question window

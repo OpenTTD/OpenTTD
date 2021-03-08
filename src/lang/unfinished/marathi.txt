@@ -754,6 +754,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :अन्य
 
 
 
+
 # Custom currency window
 
 
@@ -828,6 +829,8 @@ STR_CONFIG_SETTING_STATUSBAR_POS                                :स्टेट
 
 
 # Config errors
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}ओपेन टीटीडी {REV}

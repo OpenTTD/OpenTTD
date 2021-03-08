@@ -801,6 +801,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :Секој ме
 
 
 
+
 # Custom currency window
 
 
@@ -919,6 +920,8 @@ STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :непозна�
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... ниво на компресија '{STRING}' не е валидна
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... спаси играта формат '{STRING}' не е достапен. се врати на '{STRING}'
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Нема доволно меморија
+
+# Video initalization errors
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1313,10 +1316,8 @@ STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPAN
 
 
 # Goal window
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Глобал цели:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никој -
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Фирма цели:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Кликнете на цел центар главниот приказ на индустријата / град / плочка. Ctrl + Кликнете отвора нов прозорец на индустријата / град / плочка Локација
 
 # Goal question window
