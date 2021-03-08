@@ -356,6 +356,10 @@ template <bool Tpal_to_rgb> Sprite *Blitter_32bppOptimized::EncodeInternal(const
 							dst_px->r = colour.r;
 							dst_px->g = colour.g;
 							dst_px->b = colour.b;
+						} else {
+							dst_px->r = src->r;
+							dst_px->g = src->g;
+							dst_px->b = src->b;
 						}
 					} else {
 						dst_px->r = src->r;
