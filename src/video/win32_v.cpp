@@ -128,9 +128,10 @@ uint8 VideoDriver_Win32Base::GetFullscreenBpp()
 /**
  * Instantiate a new window.
  * @param full_screen Whether to make a full screen window or not.
+ * @param resize Whether to change window size.
  * @return True if the window could be created.
  */
-bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
+bool VideoDriver_Win32Base::MakeWindow(bool full_screen, bool resize)
 {
 	/* full_screen is whether the new window should be fullscreen,
 	 * _wnd.fullscreen is whether the current window is. */
@@ -172,7 +173,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 		}
 
 		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
-			this->MakeWindow(false);  // don't care about the result
+			this->MakeWindow(false, resize);  // don't care about the result
 			return false;  // the request failed
 		}
 	} else if (this->fullscreen) {
@@ -205,7 +206,7 @@ bool VideoDriver_Win32Base::MakeWindow(bool full_screen)
 		h = r.bottom - r.top;
 
 		if (this->main_wnd != nullptr) {
-			if (!_window_maximize) SetWindowPos(this->main_wnd, 0, 0, 0, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER | SWP_NOMOVE);
+			if (!_window_maximize && resize) SetWindowPos(this->main_wnd, 0, 0, 0, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER | SWP_NOMOVE);
 		} else {
 			int x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
 			int y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
@@ -1043,7 +1044,7 @@ bool VideoDriver_Win32GDI::AllocateBackingStore(int w, int h, bool force)
 bool VideoDriver_Win32GDI::AfterBlitterChange()
 {
 	assert(BlitterFactory::GetCurrentBlitter()->GetScreenDepth() != 0);
-	return this->AllocateBackingStore(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen);
+	return this->AllocateBackingStore(_screen.width, _screen.height, true) && this->MakeWindow(_fullscreen, false);
 }
 
 void VideoDriver_Win32GDI::MakePalette()

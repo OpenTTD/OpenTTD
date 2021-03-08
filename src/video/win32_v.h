@@ -54,7 +54,7 @@ protected:
 	bool PollEvent() override;
 
 	void Initialize();
-	bool MakeWindow(bool full_screen);
+	bool MakeWindow(bool full_screen, bool resize = true);
 	void ClientSizeChanged(int w, int h, bool force = false);
 
 	/** Get screen depth to use for fullscreen mode. */
