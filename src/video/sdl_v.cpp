@@ -763,6 +763,7 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 		_fullscreen ^= true;
 	}
 
+	InvalidateWindowClassesData(WC_GAME_OPTIONS, 3);
 	return ret;
 }
 

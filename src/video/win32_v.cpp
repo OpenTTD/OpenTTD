@@ -967,7 +967,10 @@ bool VideoDriver_Win32Base::ToggleFullscreen(bool full_screen)
 	std::unique_lock<std::recursive_mutex> lock;
 	if (this->draw_mutex != nullptr) lock = std::unique_lock<std::recursive_mutex>(*this->draw_mutex);
 
-	return this->MakeWindow(full_screen);
+	bool res = this->MakeWindow(full_screen);
+
+	InvalidateWindowClassesData(WC_GAME_OPTIONS, 3);
+	return res;
 }
 
 void VideoDriver_Win32Base::AcquireBlitterLock()

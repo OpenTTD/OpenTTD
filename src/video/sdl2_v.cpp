@@ -761,6 +761,7 @@ bool VideoDriver_SDL_Base::ToggleFullscreen(bool fullscreen)
 		DEBUG(driver, 0, "SDL_SetWindowFullscreen() failed: %s", SDL_GetError());
 	}
 
+	InvalidateWindowClassesData(WC_GAME_OPTIONS, 3);
 	return ret == 0;
 }
 
