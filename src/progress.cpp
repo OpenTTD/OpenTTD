@@ -10,6 +10,9 @@
 #include "stdafx.h"
 #include "progress.h"
 
+#include <mutex>
+#include <condition_variable>
+
 #include "safeguards.h"
 
 /** Are we in a modal progress or not? */
@@ -22,6 +25,9 @@ std::mutex _modal_progress_work_mutex;
 /** Rights for the painting. */
 std::mutex _modal_progress_paint_mutex;
 
+static std::mutex _modal_progress_cv_mutex;
+static std::condition_variable _modal_progress_cv;
+
 /**
  * Set the modal progress state.
  * @note Makes IsFirstModalProgressLoop return true for the next call.
@@ -29,8 +35,11 @@ std::mutex _modal_progress_paint_mutex;
  */
 void SetModalProgress(bool state)
 {
+	_modal_progress_cv_mutex.lock();
 	_in_modal_progress = state;
 	_first_in_modal_loop = true;
+	_modal_progress_cv_mutex.unlock();
+	if (!state) _modal_progress_cv.notify_all();
 }
 
 /**
