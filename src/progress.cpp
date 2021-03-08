@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "progress.h"
+#include "video/video_driver.hpp"
 
 #include <chrono>
 #include <mutex>
@@ -64,4 +65,24 @@ void SleepWhileModalProgress(int milliseconds)
 {
 	std::unique_lock<std::mutex> lk(_modal_progress_cv_mutex);
 	_modal_progress_cv.wait_for(lk, std::chrono::milliseconds(milliseconds), []{ return !_in_modal_progress; });
+}
+
+/**
+ * Sleep until the modal progress state is false.
+ * The modal progress paint and work mutexes MUST be held by the caller.
+ */
+void WaitUntilModalProgressCompleted()
+{
+	if (HasModalProgress()) {
+		_modal_progress_paint_mutex.unlock();
+		_modal_progress_work_mutex.unlock();
+
+		{
+			std::unique_lock<std::mutex> lk(_modal_progress_cv_mutex);
+			_modal_progress_cv.wait(lk, []{ return !_in_modal_progress; });
+		}
+
+		_modal_progress_paint_mutex.lock();
+		_modal_progress_work_mutex.lock();
+	}
 }

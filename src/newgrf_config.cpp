@@ -321,6 +321,8 @@ size_t GRFGetSizeOfDataSection(FILE *f)
 	return SIZE_MAX;
 }
 
+static std::atomic<bool> _abort_grf_scan;
+
 /**
  * Calculate the MD5 sum for a GRF, and store it in the config.
  * @param config GRF to compute.
@@ -603,6 +605,8 @@ public:
 
 bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
 {
+	if (_abort_grf_scan.load(std::memory_order_relaxed)) return false;
+
 	GRFConfig *c = new GRFConfig(filename.c_str() + basepath_length);
 
 	bool added = true;
@@ -742,6 +746,11 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
 	} else {
 		UpdateNewGRFScanStatus(0, nullptr);
 	}
+}
+
+void AbortScanNewGRFFiles()
+{
+	_abort_grf_scan.store(true, std::memory_order_relaxed);
 }
 
 /**
