@@ -3566,6 +3566,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refittable to: {GOLD}{STRING2}
 STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
 STR_PURCHASE_INFO_NONE                                          :None
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Engines only
 STR_PURCHASE_INFO_ALL_BUT                                       :All but {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {GOLD}{COMMA} tiles
