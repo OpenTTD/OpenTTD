@@ -10,8 +10,11 @@
 #include "../stdafx.h"
 #include "../core/random_func.hpp"
 #include "../network/network.h"
+#include "../blitter/factory.hpp"
 #include "../debug.h"
+#include "../fontcache.h"
 #include "../gfx_func.h"
+#include "../gfxinit.h"
 #include "../progress.h"
 #include "../thread.h"
 #include "../window_func.h"
@@ -74,6 +77,27 @@ void VideoDriver::StopGameThread()
 	this->game_thread.join();
 }
 
+void VideoDriver::RealChangeBlitter(const char *repl_blitter)
+{
+	const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
+
+	DEBUG(driver, 1, "Switching blitter from '%s' to '%s'... ", cur_blitter, repl_blitter);
+	Blitter *new_blitter = BlitterFactory::SelectBlitter(repl_blitter);
+	if (new_blitter == nullptr) NOT_REACHED();
+	DEBUG(driver, 1, "Successfully switched to %s.", repl_blitter);
+
+	if (!this->AfterBlitterChange()) {
+		/* Failed to switch blitter, let's hope we can return to the old one. */
+		if (BlitterFactory::SelectBlitter(cur_blitter) == nullptr || !this->AfterBlitterChange()) usererror("Failed to reinitialize video driver. Specify a fixed blitter in the config");
+	}
+
+	/* Clear caches that might have sprites for another blitter. */
+	this->ClearSystemSprites();
+	ClearFontCache();
+	GfxClearSpriteCache();
+	ReInitAllWindows();
+}
+
 void VideoDriver::Tick()
 {
 	if (!this->is_game_threaded && std::chrono::steady_clock::now() >= this->next_game_tick) {
@@ -114,6 +138,11 @@ void VideoDriver::Tick()
 			std::lock_guard<std::mutex> lock_state(this->game_state_mutex);
 
 			this->LockVideoBuffer();
+
+			if (this->change_blitter != nullptr) {
+				this->RealChangeBlitter(this->change_blitter);
+				this->change_blitter = nullptr;
+			}
 
 			while (this->PollEvent()) {}
 			::InputLoop();

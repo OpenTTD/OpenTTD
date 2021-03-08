@@ -308,16 +308,9 @@ static bool SwitchNewGRFBlitter()
 		}
 		if (BlitterFactory::GetBlitterFactory(repl_blitter) == nullptr) continue;
 
-		DEBUG(misc, 1, "Switching blitter from '%s' to '%s'... ", cur_blitter, repl_blitter);
-		Blitter *new_blitter = BlitterFactory::SelectBlitter(repl_blitter);
-		if (new_blitter == nullptr) NOT_REACHED();
-		DEBUG(misc, 1, "Successfully switched to %s.", repl_blitter);
+		/* Inform the video driver we want to switch blitter as soon as possible. */
+		VideoDriver::GetInstance()->ChangeBlitter(repl_blitter);
 		break;
-	}
-
-	if (!VideoDriver::GetInstance()->AfterBlitterChange()) {
-		/* Failed to switch blitter, let's hope we can return to the old one. */
-		if (BlitterFactory::SelectBlitter(cur_blitter) == nullptr || !VideoDriver::GetInstance()->AfterBlitterChange()) usererror("Failed to reinitialize video driver. Specify a fixed blitter in the config");
 	}
 
 	return true;

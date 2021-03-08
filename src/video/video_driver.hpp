@@ -35,7 +35,7 @@ class VideoDriver : public Driver {
 	const uint DEFAULT_WINDOW_HEIGHT = 480u; ///< Default window height.
 
 public:
-	VideoDriver() : is_game_threaded(true) {}
+	VideoDriver() : is_game_threaded(true), change_blitter(nullptr) {}
 
 	/**
 	 * Mark a particular area dirty.
@@ -159,6 +159,15 @@ public:
 		if (dpi_scale >= 3.0f) return ZOOM_LVL_NORMAL;
 		if (dpi_scale >= 1.5f) return ZOOM_LVL_OUT_2X;
 		return ZOOM_LVL_OUT_4X;
+	}
+
+	/**
+	 * Queue a request to change the blitter. This is not executed immediately,
+	 * but instead on the next draw-tick.
+	 */
+	void ChangeBlitter(const char *new_blitter)
+	{
+		this->change_blitter = new_blitter;
 	}
 
 	/**
@@ -303,6 +312,9 @@ protected:
 private:
 	void GameLoop();
 	void GameThread();
+	void RealChangeBlitter(const char *repl_blitter);
+
+	const char *change_blitter; ///< Request to change the blitter. nullptr if no pending request.
 };
 
 #endif /* VIDEO_VIDEO_DRIVER_HPP */
