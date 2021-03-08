@@ -9,10 +9,12 @@
 
 #include "stdafx.h"
 #include "debug.h"
+#include "error.h"
 #include "sound/sound_driver.hpp"
 #include "music/music_driver.hpp"
 #include "video/video_driver.hpp"
 #include "string_func.h"
+#include "table/strings.h"
 #include <string>
 #include <sstream>
 
@@ -111,6 +113,8 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 				if (d->type != type) continue;
 				if (d->priority != priority) continue;
 
+				if (type == Driver::DT_VIDEO && !_video_hw_accel && d->UsesHardwareAcceleration()) continue;
+
 				Driver *oldd = *GetActiveDriver(type);
 				Driver *newd = d->CreateInstance();
 				*GetActiveDriver(type) = newd;
@@ -125,6 +129,12 @@ bool DriverFactoryBase::SelectDriverImpl(const std::string &name, Driver::Type t
 				*GetActiveDriver(type) = oldd;
 				DEBUG(driver, 1, "Probing %s driver '%s' failed with error: %s", GetDriverTypeName(type), d->name, err);
 				delete newd;
+
+				if (type == Driver::DT_VIDEO && _video_hw_accel && d->UsesHardwareAcceleration()) {
+					_video_hw_accel = false;
+					ErrorMessageData msg(STR_VIDEO_DRIVER_ERROR, STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION);
+					ScheduleErrorMessage(msg);
+				}
 			}
 		}
 		usererror("Couldn't find any suitable %s driver", GetDriverTypeName(type));

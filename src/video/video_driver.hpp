@@ -23,6 +23,7 @@ extern std::string _ini_videodriver;
 extern std::vector<Dimension> _resolutions;
 extern Dimension _cur_resolution;
 extern bool _rightclick_emulate;
+extern bool _video_hw_accel;
 
 /** The base of all video drivers. */
 class VideoDriver : public Driver {
