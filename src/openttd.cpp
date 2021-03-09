@@ -1469,6 +1469,8 @@ void GameLoop()
 		ScanNewGRFFiles(_request_newgrf_scan_callback);
 		_request_newgrf_scan = false;
 		_request_newgrf_scan_callback = nullptr;
+		/* In case someone closed the game during our scan, don't do anything else. */
+		if (_exit_game) return;
 	}
 
 	ProcessAsyncSaveFinish();

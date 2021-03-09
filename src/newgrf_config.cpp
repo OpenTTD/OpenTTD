@@ -603,6 +603,9 @@ public:
 
 bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length, const std::string &tar_filename)
 {
+	/* Abort if the user stopped the game during a scan. */
+	if (_exit_game) return false;
+
 	GRFConfig *c = new GRFConfig(filename.c_str() + basepath_length);
 
 	bool added = true;
@@ -702,7 +705,7 @@ void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 	/* Yes... these are the NewGRF windows */
 	InvalidateWindowClassesData(WC_SAVELOAD, 0, true);
 	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE, GOID_NEWGRF_RESCANNED, true);
-	if (callback != nullptr) callback->OnNewGRFsScanned();
+	if (!_exit_game && callback != nullptr) callback->OnNewGRFsScanned();
 
 	DeleteWindowByClass(WC_MODAL_PROGRESS);
 	SetModalProgress(false);
