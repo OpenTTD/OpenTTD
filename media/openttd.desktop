@@ -2,10 +2,10 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=!!MENU_NAME!!
-Icon=!!TTD!!
-Exec=!!TTD!!
+Name=OpenTTD
+Icon=${BINARY_NAME}
+Exec=${BINARY_NAME}
 Terminal=false
-Categories=!!MENU_GROUP!!
-Comment=A clone of Transport Tycoon Deluxe
+Categories=Game;
 Keywords=game;simulation;transport;tycoon;deluxe;economics;multiplayer;money;train;ship;bus;truck;aircraft;cargo;
+@Comment_STR_DESKTOP_SHORTCUT_COMMENT@

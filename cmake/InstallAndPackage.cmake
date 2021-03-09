@@ -58,8 +58,18 @@ if(OPTION_INSTALL_FHS)
             COMPONENT manual)
 endif()
 
-# TODO -- Media files
-# TODO -- Menu files
+if(UNIX AND NOT APPLE)
+    install(DIRECTORY
+                    ${CMAKE_BINARY_DIR}/media/icons
+                    ${CMAKE_BINARY_DIR}/media/pixmaps
+            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}
+            COMPONENT media)
+
+    install(FILES
+                    ${CMAKE_BINARY_DIR}/media/${BINARY_NAME}.desktop
+            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
+            COMPONENT menu)
+endif()
 
 if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
     set(ARCHITECTURE "amd64")
