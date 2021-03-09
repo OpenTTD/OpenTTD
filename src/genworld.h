@@ -52,15 +52,12 @@ typedef void GWAbortProc(); ///< Called when genworld is aborted
 /** Properties of current genworld process */
 struct GenWorldInfo {
 	bool abort;            ///< Whether to abort the thread ASAP
-	bool quit_thread;      ///< Do we want to quit the active thread
-	bool threaded;         ///< Whether we run _GenerateWorld threaded
 	GenWorldMode mode;     ///< What mode are we making a world in
 	CompanyID lc;          ///< The local_company before generating
 	uint size_x;           ///< X-size of the map
 	uint size_y;           ///< Y-size of the map
 	GWDoneProc *proc;      ///< Proc that is called when done (can be nullptr)
 	GWAbortProc *abortp;   ///< Proc that is called when aborting (can be nullptr)
-	std::thread thread;    ///< The thread we are in (joinable if a thread was created)
 };
 
 /** Current stage of world generation process */
@@ -81,10 +78,8 @@ enum GenWorldProgress {
 };
 
 /* genworld.cpp */
-bool IsGenerateWorldThreaded();
 void GenerateWorldSetCallback(GWDoneProc *proc);
 void GenerateWorldSetAbortCallback(GWAbortProc *proc);
-void WaitTillGeneratedWorld();
 void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_settings = true);
 void AbortGeneratingWorld();
 bool IsGeneratingWorldAborted();

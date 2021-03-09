@@ -29,6 +29,7 @@
 #include "error.h"
 #include "newgrf_townname.h"
 #include "townname_type.h"
+#include "video/video_driver.hpp"
 
 #include "widgets/genworld_widget.h"
 
@@ -1312,10 +1313,10 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 	static_assert(lengthof(percent_table) == GWP_CLASS_COUNT + 1);
 	assert(cls < GWP_CLASS_COUNT);
 
-	/* Do not run this function if we aren't in a thread */
-	if (!IsGenerateWorldThreaded() && !_network_dedicated) return;
-
-	if (IsGeneratingWorldAborted()) HandleGeneratingWorldAbortion();
+	if (IsGeneratingWorldAborted()) {
+		HandleGeneratingWorldAbortion();
+		return;
+	}
 
 	if (total == 0) {
 		assert(_gws.cls == _generation_class_table[cls]);
@@ -1327,10 +1328,6 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 		_gws.total   = total;
 		_gws.percent = percent_table[cls];
 	}
-
-	/* Don't update the screen too often. So update it once in every once in a while... */
-	if (!_network_dedicated && std::chrono::steady_clock::now() < _gws.next_update) return;
-	_gws.next_update = std::chrono::steady_clock::now() + std::chrono::milliseconds(MODAL_PROGRESS_REDRAW_TIMEOUT);
 
 	/* Percentage is about the number of completed tasks, so 'current - 1' */
 	_gws.percent = percent_table[cls] + (percent_table[cls + 1] - percent_table[cls]) * (_gws.current == 0 ? 0 : _gws.current - 1) / _gws.total;
@@ -1350,21 +1347,12 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 		DEBUG(net, 1, "Map generation percentage complete: %d", _gws.percent);
 		last_percent = _gws.percent;
 
-		/* Don't continue as dedicated never has a thread running */
 		return;
 	}
 
 	SetWindowDirty(WC_MODAL_PROGRESS, 0);
-	MarkWholeScreenDirty();
 
-	/* Release the rights to the map generator, and acquire the rights to the
-	 * paint thread. The 'other' thread already has the paint thread rights so
-	 * this ensures us that we are waiting until the paint thread is done
-	 * before we reacquire the mapgen rights */
-	_modal_progress_work_mutex.unlock();
-	_modal_progress_paint_mutex.lock();
-	_modal_progress_work_mutex.lock();
-	_modal_progress_paint_mutex.unlock();
+	VideoDriver::GetInstance()->GameLoopPause();
 }
 
 /**

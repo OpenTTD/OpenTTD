@@ -1470,26 +1470,6 @@ void DrawDirtyBlocks()
 	int x;
 	int y;
 
-	if (HasModalProgress()) {
-		/* We are generating the world, so release our rights to the map and
-		 * painting while we are waiting a bit. */
-		_modal_progress_paint_mutex.unlock();
-		_modal_progress_work_mutex.unlock();
-
-		/* Wait a while and hope the modal gives us a bit of time to draw the GUI. */
-		if (!IsFirstModalProgressLoop()) CSleep(MODAL_PROGRESS_REDRAW_TIMEOUT);
-
-		/* Modal progress thread may need blitter access while we are waiting for it. */
-		_modal_progress_paint_mutex.lock();
-		_modal_progress_work_mutex.lock();
-
-		/* When we ended with the modal progress, do not draw the blocks.
-		 * Simply let the next run do so, otherwise we would be loading
-		 * the new state (and possibly change the blitter) when we hold
-		 * the drawing lock, which we must not do. */
-		if (_switch_mode != SM_NONE && !HasModalProgress()) return;
-	}
-
 	y = 0;
 	do {
 		x = 0;

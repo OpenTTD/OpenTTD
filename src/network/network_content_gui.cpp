@@ -15,6 +15,7 @@
 #include "../ai/ai.hpp"
 #include "../game/game.hpp"
 #include "../base_media_base.h"
+#include "../openttd.h"
 #include "../sortlist_type.h"
 #include "../stringfilter_type.h"
 #include "../querystring_gui.h"
@@ -236,7 +237,7 @@ public:
 					break;
 
 				case CONTENT_TYPE_NEWGRF:
-					ScanNewGRFFiles(nullptr);
+					RequestNewGRFScan();
 					break;
 
 				case CONTENT_TYPE_SCENARIO:

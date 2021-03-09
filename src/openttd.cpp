@@ -91,6 +91,8 @@ extern void ShowOSErrorBox(const char *buf, bool system);
 extern std::string _config_file;
 
 bool _save_config = false;
+bool _request_newgrf_scan = false;
+NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
 
 /**
  * Error handling for fatal user errors.
@@ -345,7 +347,6 @@ static void LoadIntroGame(bool load_newgrfs = true)
 	/* Load the default opening screen savegame */
 	if (SaveOrLoad("opntitle.dat", SLO_LOAD, DFT_GAME_FILE, BASESET_DIR) != SL_OK) {
 		GenerateWorld(GWM_EMPTY, 64, 64); // if failed loading, make empty world.
-		WaitTillGeneratedWorld();
 		SetLocalCompany(COMPANY_SPECTATOR);
 	} else {
 		SetLocalCompany(COMPANY_FIRST);
@@ -558,9 +559,6 @@ int openttd_main(int argc, char *argv[])
 
 	extern bool _dedicated_forks;
 	_dedicated_forks = false;
-
-	std::unique_lock<std::mutex> modal_work_lock(_modal_progress_work_mutex, std::defer_lock);
-	std::unique_lock<std::mutex> modal_paint_lock(_modal_progress_paint_mutex, std::defer_lock);
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
@@ -828,30 +826,17 @@ int openttd_main(int argc, char *argv[])
 	if (musicdriver.empty() && !_ini_musicdriver.empty()) musicdriver = _ini_musicdriver;
 	DriverFactoryBase::SelectDriver(musicdriver, Driver::DT_MUSIC);
 
-	/* Take our initial lock on whatever we might want to do! */
-	try {
-		modal_work_lock.lock();
-		modal_paint_lock.lock();
-	} catch (const std::system_error&) {
-		/* If there is some error we assume that threads aren't usable on the system we run. */
-		extern bool _use_threaded_modal_progress; // From progress.cpp
-		_use_threaded_modal_progress = false;
-	}
-
 	GenerateWorld(GWM_EMPTY, 64, 64); // Make the viewport initialization happy
-	WaitTillGeneratedWorld();
-
 	LoadIntroGame(false);
 
 	CheckForMissingGlyphs();
 
 	/* ScanNewGRFFiles now has control over the scanner. */
-	ScanNewGRFFiles(scanner.release());
+	RequestNewGRFScan(scanner.release());
 
 	VideoDriver::GetInstance()->MainLoop();
 
 	WaitTillSaved();
-	WaitTillGeneratedWorld(); // Make sure any generate world threads have been joined.
 
 	/* only save config if we have to */
 	if (_save_config) {
@@ -1460,12 +1445,31 @@ static void DoAutosave()
 	}
 }
 
+/**
+ * Request a new NewGRF scan. This will be executed on the next game-tick.
+ * This is mostly needed to ensure NewGRF scans (which are blocking) are
+ * done in the game-thread, and not in the draw-thread (which most often
+ * triggers this request).
+ * @param callback Optional callback to call when NewGRF scan is completed.
+ */
+void RequestNewGRFScan(NewGRFScanCallback *callback)
+{
+	_request_newgrf_scan = true;
+	_request_newgrf_scan_callback = callback;
+}
+
 void GameLoop()
 {
 	if (_game_mode == GM_BOOTSTRAP) {
 		/* Check for UDP stuff */
 		if (_network_available) NetworkBackgroundLoop();
 		return;
+	}
+
+	if (_request_newgrf_scan) {
+		ScanNewGRFFiles(_request_newgrf_scan_callback);
+		_request_newgrf_scan = false;
+		_request_newgrf_scan_callback = nullptr;
 	}
 
 	ProcessAsyncSaveFinish();

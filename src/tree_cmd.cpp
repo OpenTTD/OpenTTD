@@ -164,6 +164,7 @@ static void PlaceTree(TileIndex tile, uint32 r)
 
 	if (tree != TREE_INVALID) {
 		PlantTreesOnTile(tile, tree, GB(r, 22, 2), std::min<byte>(GB(r, 16, 3), 6));
+		MarkTileDirtyByTile(tile);
 
 		/* Rerandomize ground, if neither snow nor shore */
 		TreeGround ground = GetTreeGround(tile);

@@ -56,6 +56,25 @@ void VideoDriver::GameThread()
 	}
 }
 
+/**
+ * Pause the game-loop for a bit, releasing the game-state lock. This allows,
+ * if the draw-tick requested this, the drawing to happen.
+ */
+void VideoDriver::GameLoopPause()
+{
+	/* If we are not called from the game-thread, ignore this request. */
+	if (std::this_thread::get_id() != this->game_thread.get_id()) return;
+
+	this->game_state_mutex.unlock();
+
+	{
+		/* See GameThread() for more details on this lock. */
+		std::lock_guard<std::mutex> lock(this->game_thread_wait_mutex);
+	}
+
+	this->game_state_mutex.lock();
+}
+
 /* static */ void VideoDriver::GameThreadThunk(VideoDriver *drv)
 {
 	drv->GameThread();

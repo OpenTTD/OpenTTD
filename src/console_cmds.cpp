@@ -1340,7 +1340,7 @@ DEF_CONSOLE_CMD(ConRescanNewGRF)
 		return true;
 	}
 
-	ScanNewGRFFiles(nullptr);
+	RequestNewGRFScan();
 
 	return true;
 }
