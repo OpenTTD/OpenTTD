@@ -59,18 +59,10 @@ GenWorldInfo _gw;
 /** Whether we are generating the map or not. */
 bool _generating_world;
 
-/**
- * Tells if the world generation is done in a thread or not.
- * @return the 'threaded' status
- */
-bool IsGenerateWorldThreaded()
-{
-	return _gw.threaded && !_gw.quit_thread;
-}
+class AbortGenerateWorldSignal { };
 
 /**
- * Clean up the 'mess' of generation. That is, show windows again, reset
- * thread variables, and delete the progress window.
+ * Generation is done; show windows again and delete the progress window.
  */
 static void CleanupGeneration()
 {
@@ -78,11 +70,10 @@ static void CleanupGeneration()
 
 	SetMouseCursorBusy(false);
 	/* Show all vital windows again, because we have hidden them */
-	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
+	if (_game_mode != GM_MENU) ShowVitalWindows();
 	SetModalProgress(false);
 	_gw.proc     = nullptr;
 	_gw.abortp   = nullptr;
-	_gw.threaded = false;
 
 	DeleteWindowByClass(WC_MODAL_PROGRESS);
 	ShowFirstError();
@@ -97,10 +88,8 @@ static void _GenerateWorld()
 	/* Make sure everything is done via OWNER_NONE. */
 	Backup<CompanyID> _cur_company(_current_company, OWNER_NONE, FILE_LINE);
 
-	std::unique_lock<std::mutex> lock(_modal_progress_work_mutex, std::defer_lock);
 	try {
 		_generating_world = true;
-		lock.lock();
 		if (_network_dedicated) DEBUG(net, 1, "Generating map, please wait...");
 		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
 		if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = _settings_newgame.game_creation.generation_seed = InteractiveRandom();
@@ -136,14 +125,7 @@ static void _GenerateWorld()
 			/* Only generate towns, tree and industries in newgame mode. */
 			if (_game_mode != GM_EDITOR) {
 				if (!GenerateTowns(_settings_game.economy.town_layout)) {
-					_cur_company.Restore();
 					HandleGeneratingWorldAbortion();
-					BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP);
-					if (_network_dedicated) {
-						/* Exit the game to prevent a return to main menu.  */
-						DEBUG(net, 0, "Generating map failed, aborting");
-						_exit_game = true;
-					}
 					return;
 				}
 				GenerateIndustries();
@@ -200,7 +182,6 @@ static void _GenerateWorld()
 		IncreaseGeneratingWorldProgress(GWP_GAME_START);
 
 		CleanupGeneration();
-		lock.unlock();
 
 		ShowNewGRFError();
 
@@ -212,11 +193,19 @@ static void _GenerateWorld()
 			seprintf(name, lastof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
 			SaveOrLoad(name, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
 		}
-	} catch (...) {
+	} catch (AbortGenerateWorldSignal&) {
+		CleanupGeneration();
+
 		BasePersistentStorageArray::SwitchMode(PSM_LEAVE_GAMELOOP, true);
 		if (_cur_company.IsValid()) _cur_company.Restore();
-		_generating_world = false;
-		throw;
+
+		if (_network_dedicated) {
+			/* Exit the game to prevent a return to main menu.  */
+			DEBUG(net, 0, "Generating map failed, aborting");
+			_exit_game = true;
+		} else {
+			SwitchToMode(_switch_mode);
+		}
 	}
 }
 
@@ -238,23 +227,6 @@ void GenerateWorldSetCallback(GWDoneProc *proc)
 void GenerateWorldSetAbortCallback(GWAbortProc *proc)
 {
 	_gw.abortp = proc;
-}
-
-/**
- * This will wait for the thread to finish up his work. It will not continue
- * till the work is done.
- */
-void WaitTillGeneratedWorld()
-{
-	if (!_gw.thread.joinable()) return;
-
-	_modal_progress_work_mutex.unlock();
-	_modal_progress_paint_mutex.unlock();
-	_gw.quit_thread = true;
-	_gw.thread.join();
-	_gw.threaded = false;
-	_modal_progress_work_mutex.lock();
-	_modal_progress_paint_mutex.lock();
 }
 
 /**
@@ -284,11 +256,7 @@ void HandleGeneratingWorldAbortion()
 
 	if (_gw.abortp != nullptr) _gw.abortp();
 
-	CleanupGeneration();
-
-	if (_gw.thread.joinable() && _gw.thread.get_id() == std::this_thread::get_id()) throw OTTDThreadExitSignal();
-
-	SwitchToMode(_switch_mode);
+	throw AbortGenerateWorldSignal();
 }
 
 /**
@@ -308,8 +276,6 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	_gw.abort  = false;
 	_gw.abortp = nullptr;
 	_gw.lc     = _local_company;
-	_gw.quit_thread   = false;
-	_gw.threaded      = true;
 
 	/* This disables some commands and stuff */
 	SetLocalCompany(COMPANY_SPECTATOR);
@@ -328,28 +294,16 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	SetupColoursAndInitialWindow();
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
-	if (_gw.thread.joinable()) _gw.thread.join();
-
-	if (!UseThreadedModelProgress() || !VideoDriver::GetInstance()->HasGUI() || !StartNewThread(&_gw.thread, "ottd:genworld", &_GenerateWorld)) {
-		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
-		_gw.threaded = false;
-		_modal_progress_work_mutex.unlock();
-		_GenerateWorld();
-		_modal_progress_work_mutex.lock();
-		return;
-	}
-
 	UnshowCriticalError();
-	/* Remove any open window */
 	DeleteAllNonVitalWindows();
-	/* Hide vital windows, because we don't allow to use them */
 	HideVitalWindows();
 
-	/* Don't show the dialog if we don't have a thread */
 	ShowGenerateWorldProgress();
 
 	/* Centre the view on the map */
 	if (FindWindowById(WC_MAIN_WINDOW, 0) != nullptr) {
 		ScrollMainWindowToTile(TileXY(MapSizeX() / 2, MapSizeY() / 2), true);
 	}
+
+	_GenerateWorld();
 }

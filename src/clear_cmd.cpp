@@ -338,6 +338,7 @@ void GenerateClearTile()
 				TileIndex tile_new;
 
 				SetClearGroundDensity(tile, CLEAR_ROCKS, 3);
+				MarkTileDirtyByTile(tile);
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDiagDir((DiagDirection)GB(Random(), 0, 2));

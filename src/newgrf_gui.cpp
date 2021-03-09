@@ -1127,7 +1127,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_RESCAN_FILES:
 			case WID_NS_RESCAN_FILES2:
-				ScanNewGRFFiles(this);
+				RequestNewGRFScan(this);
 				break;
 		}
 	}

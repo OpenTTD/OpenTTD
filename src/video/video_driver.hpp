@@ -179,6 +179,8 @@ public:
 		this->change_blitter = new_blitter;
 	}
 
+	void GameLoopPause();
+
 	/**
 	 * Get the currently active instance of the video driver.
 	 */

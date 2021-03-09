@@ -635,20 +635,12 @@ bool GRFFileScanner::AddFile(const std::string &filename, size_t basepath_length
 	}
 
 	this->num_scanned++;
-	if (std::chrono::steady_clock::now() >= this->next_update) {
-		this->next_update = std::chrono::steady_clock::now() + std::chrono::milliseconds(MODAL_PROGRESS_REDRAW_TIMEOUT);
 
-		_modal_progress_work_mutex.unlock();
-		_modal_progress_paint_mutex.lock();
-
-		const char *name = nullptr;
-		if (c->name != nullptr) name = GetGRFStringFromGRFText(c->name);
-		if (name == nullptr) name = c->filename;
-		UpdateNewGRFScanStatus(this->num_scanned, name);
-
-		_modal_progress_work_mutex.lock();
-		_modal_progress_paint_mutex.unlock();
-	}
+	const char *name = nullptr;
+	if (c->name != nullptr) name = GetGRFStringFromGRFText(c->name);
+	if (name == nullptr) name = c->filename;
+	UpdateNewGRFScanStatus(this->num_scanned, name);
+	VideoDriver::GetInstance()->GameLoopPause();
 
 	if (!added) {
 		/* File couldn't be opened, or is either not a NewGRF or is a
@@ -676,8 +668,6 @@ static bool GRFSorter(GRFConfig * const &c1, GRFConfig * const &c2)
  */
 void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 {
-	std::unique_lock<std::mutex> lock_work(_modal_progress_work_mutex);
-
 	ClearGRFConfigList(&_all_grfs);
 	TarScanner::DoScan(TarScanner::NEWGRF);
 
@@ -709,9 +699,6 @@ void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 		NetworkAfterNewGRFScan();
 	}
 
-	lock_work.unlock();
-	std::lock_guard<std::mutex> lock_paint(_modal_progress_paint_mutex);
-
 	/* Yes... these are the NewGRF windows */
 	InvalidateWindowClassesData(WC_SAVELOAD, 0, true);
 	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE, GOID_NEWGRF_RESCANNED, true);
@@ -733,15 +720,7 @@ void ScanNewGRFFiles(NewGRFScanCallback *callback)
 	/* Only then can we really start, especially by marking the whole screen dirty. Get those other windows hidden!. */
 	MarkWholeScreenDirty();
 
-	if (!UseThreadedModelProgress() || !VideoDriver::GetInstance()->HasGUI() || !StartNewThread(nullptr, "ottd:newgrf-scan", &DoScanNewGRFFiles, (NewGRFScanCallback *)callback)) { // Without the seemingly superfluous cast, strange compiler errors ensue.
-		_modal_progress_work_mutex.unlock();
-		_modal_progress_paint_mutex.unlock();
-		DoScanNewGRFFiles(callback);
-		_modal_progress_paint_mutex.lock();
-		_modal_progress_work_mutex.lock();
-	} else {
-		UpdateNewGRFScanStatus(0, nullptr);
-	}
+	DoScanNewGRFFiles(callback);
 }
 
 /**

@@ -1062,6 +1062,7 @@ static bool MakeLake(TileIndex tile, void *user_data)
 		TileIndex t2 = tile + TileOffsByDiagDir(d);
 		if (IsWaterTile(t2)) {
 			MakeRiver(tile, Random());
+			MarkTileDirtyByTile(tile);
 			/* Remove desert directly around the river tile. */
 			TileIndex t = tile;
 			CircularTileSearch(&t, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
@@ -1135,6 +1136,7 @@ static void River_FoundEndNode(AyStar *aystar, OpenListNode *current)
 		TileIndex tile = path->node.tile;
 		if (!IsWaterTile(tile)) {
 			MakeRiver(tile, Random());
+			MarkTileDirtyByTile(tile);
 			/* Remove desert directly around the river tile. */
 			CircularTileSearch(&tile, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
 		}
@@ -1247,6 +1249,7 @@ static bool FlowRiver(TileIndex spring, TileIndex begin)
 				DistanceManhattan(spring, lakeCenter) > _settings_game.game_creation.min_river_length) {
 			end = lakeCenter;
 			MakeRiver(lakeCenter, Random());
+			MarkTileDirtyByTile(lakeCenter);
 			/* Remove desert directly around the river tile. */
 			CircularTileSearch(&lakeCenter, RIVER_OFFSET_DESERT_DISTANCE, RiverModifyDesertZone, nullptr);
 			lakeCenter = end;
@@ -1368,8 +1371,11 @@ void GenerateLandscape(byte mode)
 	/* Do not call IncreaseGeneratingWorldProgress() before FixSlopes(),
 	 * it allows screen redraw. Drawing of broken slopes crashes the game */
 	FixSlopes();
+	MarkWholeScreenDirty();
 	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+
 	ConvertGroundTilesIntoWaterTiles();
+	MarkWholeScreenDirty();
 	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 	if (_settings_game.game_creation.landscape == LT_TROPIC) CreateDesertOrRainForest();

@@ -251,30 +251,22 @@ void VideoDriver_Dedicated::MainLoop()
 	/* If SwitchMode is SM_LOAD_GAME, it means that the user used the '-g' options */
 	if (_switch_mode != SM_LOAD_GAME) {
 		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
-		SwitchToMode(_switch_mode);
-		_switch_mode = SM_NONE;
 	} else {
-		_switch_mode = SM_NONE;
 		/* First we need to test if the savegame can be loaded, else we will end up playing the
 		 *  intro game... */
-		if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_NORMAL, BASE_DIR)) {
+		if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, BASE_DIR) == SL_ERROR) {
 			/* Loading failed, pop out.. */
 			DEBUG(net, 0, "Loading requested map failed, aborting");
-			_networking = false;
+			return;
 		} else {
 			/* We can load this game, so go ahead */
-			SwitchToMode(SM_LOAD_GAME);
+			_switch_mode = SM_LOAD_GAME;
 		}
 	}
 
 	this->is_game_threaded = false;
 
 	/* Done loading, start game! */
-
-	if (!_networking) {
-		DEBUG(net, 0, "Dedicated server could not be started, aborting");
-		return;
-	}
 
 	while (!_exit_game) {
 		if (!_dedicated_forks) DedicatedHandleKeyInput();
