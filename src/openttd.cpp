@@ -1484,7 +1484,6 @@ void GameLoop()
 	}
 
 	IncreaseSpriteLRU();
-	InteractiveRandom();
 
 	/* Check for UDP stuff */
 	if (_network_available) NetworkBackgroundLoop();
