@@ -221,7 +221,7 @@ if(MSVC)
 endif()
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/src)
-add_subdirectory(${CMAKE_SOURCE_DIR}/media/baseset)
+add_subdirectory(${CMAKE_SOURCE_DIR}/media)
 
 add_dependencies(openttd
     find_version)
@@ -229,6 +229,7 @@ add_dependencies(openttd
 target_link_libraries(openttd
     openttd::languages
     openttd::settings
+    openttd::media
     openttd::basesets
     openttd::script_api
     Threads::Threads
