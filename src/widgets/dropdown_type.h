@@ -61,6 +61,7 @@ public:
 
 	StringID String() const override;
 	void SetParam(uint index, uint64 value) { decode_params[index] = value; }
+	void SetParamStr(uint index, const char *str) { this->SetParam(index, (uint64)(size_t)str); }
 };
 
 /**
