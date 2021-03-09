@@ -997,6 +997,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :גודל מרו
 
 
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}ערכת גרפיקה בסיסית
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}בחר בערכת גרפיקה בסיסית לשימוש
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{P 0 "קובץ " ""}{NUM}{P "" " קבצים"} חסר{P 0 "" ים}/הושחט{P 0 "" ו}

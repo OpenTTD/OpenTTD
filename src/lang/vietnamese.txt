@@ -1004,6 +1004,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Bình thường
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Phóng to gấp đôi
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Phóng nhân bốn
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gói đồ họa
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Chọn gói đồ họa để sử dụng
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} thiếu/hỏng file

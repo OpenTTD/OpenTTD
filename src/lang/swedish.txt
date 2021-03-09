@@ -1018,6 +1018,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dubbel storlek
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Kvadrupel storlek
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} saknad{P "" e}/trasig{P "" a} fil{P "" er}

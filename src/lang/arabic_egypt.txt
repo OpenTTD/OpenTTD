@@ -949,6 +949,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :تقريب ×4
 
 
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK} الواجهة الرسومية الاساسية
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK} اختر مجموعة الواجهة الرسومية
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ملف مفقود او غير صالح

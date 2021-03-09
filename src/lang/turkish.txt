@@ -1005,6 +1005,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Yazı iki kat büyük
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Dört kat büyük
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Temel grafik kümesi
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kullanılacak temel grafik kümesini seçin
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} kayıp/bozuk dosya

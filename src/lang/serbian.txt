@@ -1213,6 +1213,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Uobičajen
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dvostruka veličina
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Četvorostruka veličina
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni skup grafika
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Odaberite željeni skup osnovnih grafika
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} datotek{P a e a} nedostaj{P e u e}/neispravn{P a o o}

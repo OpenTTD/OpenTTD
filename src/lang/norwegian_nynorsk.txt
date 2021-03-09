@@ -980,6 +980,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Firedobbel stø
 
 
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel grafikksett som skal nyttast
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglande/øydelagd{P "" e} fil{P "" er}

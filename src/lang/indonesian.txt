@@ -1016,6 +1016,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Kali dua
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4 kali
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set Grafik Dasar
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih grafik dasar yang digunakan
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} berkas hilang atau rusak

@@ -945,6 +945,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base grafikk sett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Vel ta base grafikk setti tú vil brúka
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} vantandi/oyðiløgd fíl{P a ir}

@@ -1019,6 +1019,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doble
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Cuádruple
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Elegir los gráficos base
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} archivo{P "" s} perdido{P "" s} o con errores

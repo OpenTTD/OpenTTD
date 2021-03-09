@@ -1019,6 +1019,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dobbel størrelse
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Firedobbel størrelse
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikksett
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Velg grafikksett som skal brukes
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manglende/ødelagt{P "" e} fil{P "" er}

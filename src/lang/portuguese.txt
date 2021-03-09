@@ -1005,6 +1005,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dobro do tamanho
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quádruplo do tamanho
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Seleccione o conjunto de gráficos base a usar
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ficheiro{P "" s} que falta{P "" m} / corrupto{P "" s}

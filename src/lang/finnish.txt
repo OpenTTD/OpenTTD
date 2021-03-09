@@ -1001,6 +1001,9 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Näytön
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Valitse käytettävä näytön tarkkuus
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Laitteistokiihdytys
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Valitse tämä, jos haluat, että OpenTTD yrittää käyttää laitteistokiihdytystä. Muutettu asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Asetus tulee voimaan vasta pelin uudelleenkäynnistyksen jälkeen
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Käyttöliittymän koko
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Valitse käyttöliittymäelementtien koko
@@ -1017,6 +1020,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(tunnista autom
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normaali
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Kaksinkertainen koko
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Nelinkertainen koko
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Perusgrafiikat
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valitse käytettävät perusgrafiikat
@@ -1789,6 +1794,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Muisti l
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} sprite-välimuistin varaaminen epäonnistui. Sprite-välimuistin kooksi valittiin {BYTES}. Tämä heikentää OpenTTD:n suorituskykyä. Vähentääksesi muistivaatimuksia voit kokeilla poistaa käytöstä 32bpp-grafiikat ja/tai lähennystasoja
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Virhe näyttöasetuksissa…
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}… yhteensopivaa grafiikkasuoritinta ei löytynyt. Laitteistokiihdytystä ei käytetä.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3179,19 +3186,23 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Rahoita uusia r
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Osta yksinoikeudet kuljetuksiin
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Lahjo viranomaisia
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Käynnistä pieni mainoskampanja hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Käynnistä keskikokoinen mainoskampanja houkutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Käynnistä suuri mainoskampanja hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Rahoita tieverkon uudelleenrakentamista. Aiheuttaa huomattavaa häiriötä tieliikenteessä jopa kuuden kuukauden ajan.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Rakenna patsas yhtiösi kunniaksi.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Rahoita uusien liikerakennusten rakentamista kunnassa.{}Kustannus: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Osta vuoden yksinoikeudet kunnan liikennöintiin. Paikallisviranomaiset eivät salli muiden yhtiöiden kuljettaa matkustajia ja rahtia.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Käynnistä pieni mainoskampanja hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Tämä kasvattaa tilapäisesti asemien arvioita pienellä säteellä kunnan keskustan ympärillä.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Käynnistä keskikokoinen mainoskampanja houkutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Tämä kasvattaa tilapäisesti asemien arvioita keskikokoisella säteellä kunnan keskustan ympärillä.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Käynnistä suuri mainoskampanja hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}Tämä kasvattaa tilapäisesti asemien arvioita suurella säteellä kunnan keskustan ympärillä.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Rahoita tieverkon uudelleenrakentamista.{}Aiheuttaa huomattavaa häiriötä tieliikenteessä jopa kuuden kuukauden ajan.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Rakenna patsas yhtiösi kunniaksi.{}Parantaa asemien arvioita pysyvästi tässä kunnassa.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Rahoita uusien liikerakennusten rakentamista kunnassa.{}Tämä kiihdyttää tämän kunnan kasvua tilapäisesti.{}Kustannus: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Osta vuoden yksinoikeudet kunnan liikennöintiin.{}Tällöin paikallisviranomaiset eivät salli matkustajien ja rahdin käyttää kilpailijoittesi asemia.{}Kustannus: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi olla kuitenkin suuri, jos jäät kiinni.{}Kustannus: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Tavoitteet
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Maailmanlaajuiset tavoitteet
 STR_GOALS_SPECTATOR                                             :Maailmanlaajuiset tavoitteet
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Maailmanlaajuiset
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Näytä maailmanlaajuiset tavoitteet
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Yhtiö
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Näytä yhtiön tavoitteet
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ei mitään -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3566,6 +3577,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoro
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit
 STR_PURCHASE_INFO_NONE                                          :Ei mitään
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Vain veturit
 STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vetovoima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Toimintasäde: {GOLD}{COMMA} ruutua

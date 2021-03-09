@@ -944,6 +944,8 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
 
 
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grunngrafík
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Nota grunngrafíkina
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} týnd{P "" ar} eða ónýt{P "" ar} skrá{P "" r}

@@ -947,6 +947,7 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinese Renminb
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indian Rupee (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesian Rupiah (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringgit (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Drive on left
@@ -1000,6 +1001,9 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Screen r
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Select the screen resolution to use
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :other
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware acceleration
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Check this box to allow OpenTTD to try to use hardware acceleration. A changed setting will only be applied upon game restart
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}The setting will only take effect after a game restart
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interface size
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Select the interface element size to use
@@ -1016,6 +1020,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-detect)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Double size
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quad size
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use
@@ -1788,6 +1794,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Out of m
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Allocating {BYTES} of spritecache failed. The spritecache was reduced to {BYTES}. This will reduce the performance of OpenTTD. To reduce memory requirements you can try to disable 32bpp graphics and/or zoom-in levels
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Error with video settings...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no compatible GPU found. Hardware acceleration disabled
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3178,19 +3186,23 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Fund new buildi
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Buy exclusive transport rights
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Bribe the local authority
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Fund the reconstruction of the urban road network. Causes considerable disruption to road traffic for up to 6 months.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Build a statue in honor of your company.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Fund the construction of new commercial buildings in the town.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Initiate a small local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a small radius around the town center.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Initiate a medium local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a medium radius around the town center.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Initiate a large local advertising campaign, to attract more passengers and cargo to your transport services.{}Provides a temporary boost to station rating in a large radius around the town center.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Fund the reconstruction of the urban road network.{}Causes considerable disruption to road traffic for up to 6 months.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Build a statue in honor of your company.{}Provides a permanent boost to station rating in this town.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Fund the construction of new buildings in the town.{}Provides a temporary boost to town growth in this town.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Buy 1 year's exclusive transport rights in town.{}Town authority will not allow passengers and cargo to use your competitors' stations.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}Cost: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Goals
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Goals
 STR_GOALS_SPECTATOR                                             :Global Goals
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Show global goals
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Company
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Show company goals
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- None -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3565,6 +3577,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refittable to: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
 STR_PURCHASE_INFO_NONE                                          :None
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Engines only
 STR_PURCHASE_INFO_ALL_BUT                                       :All but {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Range: {GOLD}{COMMA} tiles

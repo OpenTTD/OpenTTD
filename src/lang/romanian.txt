@@ -989,6 +989,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Mărime împăt
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Mărime dublă
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectează setul grafic de bază utilizat în joc
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fişier{P "" "e"} lipsă/corupt{P "" e}

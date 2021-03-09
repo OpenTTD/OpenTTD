@@ -524,7 +524,7 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}Rodyti s
 STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Rodyti tikslų sąrašą
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Rodyti diagramas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Rodyti kompanijų įvertinimus
-STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Rodyti pramonės įmonių sąrašą arba finansuoti naują įmonę
+STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Rodyti pramonės įmonių sąrašą, gamybos grandines arba įsteigti naują pramonės įmonę
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Rodyti kompanijos traukinių, suskirstytų grupėmis, sąrašą. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvertas langas su paprastu sąrašu
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Rodyti kompanijos automobilių, suskirstytų grupėmis, sąrašą. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvertas langas su paprastu sąrašu
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Rodyti kompanijos laivų, suskirstytų grupėmis, sąrašą. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atvertas langas su paprastu sąrašu
@@ -627,7 +627,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :Nugalėtojų le
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :Pramonės katalogas
 STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :Gamybos grandinės
-STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Finansuoti naują pramonės įmonę
+STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :Įsteigti naują pramonės įmonę
 ############ range ends here
 
 ############ range for railway construction menu starts
@@ -1207,6 +1207,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(aptikti automa
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normalus
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dvigubas dydis
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Keturgubas dydis
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Bazinis grafikos rinkinys
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pasirinkti naudojimui bazinę grafikos rinkinį
@@ -2001,6 +2003,7 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Šiam ve
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Baigti
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ar jūs tikrai norite baigti žaidimą ir užverti programą?
 STR_QUIT_YES                                                    :{BLACK}Taip
 STR_QUIT_NO                                                     :{BLACK}Ne
 
@@ -2402,6 +2405,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} pr
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} pradėjo naują kompaniją (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} paliko žaidimą ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} pasikeitė vardą į {STRING}
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} persiuntė {2:CURRENCY_LONG} žaidėjui {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveris užsidarė
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveris persikrauna...{}Prašau palaukti...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} buvo išmestas. Priežastis: ({STRING})
@@ -2766,14 +2770,20 @@ STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}3x3 tink
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Atsitiktinai
 
 # Fund new industry window
-STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finansuoti naują pramonės įmonę
-STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Pasirink norimą industriją iš sąrašo
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Daug atsitiktinių pramonės įmonių
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Sukuria pramonės įmones atsitiktinėse žemėlapio vietose
+STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Pramonės įmonių steigimas
+STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Pasirinkite norimą įmonę iš sąrašo
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Įsteigti daug atsitiktinių įmonių
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Įsteigia pramonės įmones atsitiktinėse žemėlapio vietose
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Atsitiktinės įmonės
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Ar tikrai norite įsteigti daug atsitiktinių pramonės įmonių, išbarstytų po visą žemėlapį?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Kaina: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Perspektyva
-STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Statyti
-STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finansuoti
+STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Steigti
+STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Steigti
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Panaikinti visas įmones
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Panaikinti visas žemėlapyje esančias pramonės įmones
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Panaikinti įmones
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Ar tikrai norite panaikinti visas žemėlapyje esančias pramonės įmones?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Gamybos grandinė {STRING.kam}
@@ -3294,7 +3304,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Pervardinti mie
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} vietinė valdžia
-STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Rodyti zoną vietos valdžios ribose
+STR_LOCAL_AUTHORITY_ZONE                                        :Įtakos teritorija
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Rodyti šio miesto įtakos teritoriją
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transporto kompanijų reitingai:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Galimi veiksmai:
@@ -3311,13 +3322,13 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finansuoti nauj
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Išsipirkti isškirtines pervežimo teises
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Papirkti vietinę valdžią
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Pradėti nedidelę reklaminę kampaniją, kuri gali pritraukti keleivius ir įmones naudotis Jūsų paslaugomis.{} Kaina: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Pradėti vidutinę reklaminę kampaniją, kuri gali pritraukti keleivius ir įmones naudotis Jūsų paslaugomis.{}Kaina: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Pradėti stambią reklaminę kampaniją, kuri gali pritraukti keleivius ir įmones naudotis Jūsų paslaugomis.{}Kaina: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansuoti miesto kelių rekonstrukciją. Susisiekimas keliais laikinai (iki 6 men.) sutriks.{}Kaina: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Pastatyti statulą kompanijos garbei.{}Kaina: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansuoti naujų komercinių pastatų statybą mieste.{}Kaina: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Pirkti isškirtines pervežimo teises mieste 1 metams. Miesto valdžia keleivius ir krovinius leis pervežti tik tavo įmonei.{}Kaina: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Pradėti nedidelę reklaminę kampaniją, kuri gali pritraukti daugiau keleivių ar krovinių į jūsų transporto maršrutus.{}Laikinai pakelia stotelių reitingus nedidelėje teritorijoje aplink miesto centrą.{}Kaina: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Pradėti vidutinio dydžio reklaminę kampaniją, kuri gali pritraukti daugiau keleivių ar krovinių į jūsų transporto maršrutus.{}Laikinai pakelia stotelių reitingus vidutinio dydžio teritorijoje aplink miesto centrą.{}Kaina: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Pradėti stambią reklaminę kampaniją, kuri gali pritraukti daugiau keleivių ar krovinių į jūsų transporto maršrutus.{}Laikinai pakelia stotelių reitingus didelėje teritorijoje aplink miesto centrą.{}Kaina: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finansuoti miesto kelių rekonstrukciją.{}Susisiekimas keliais laikinai (iki 6 mėn.) sutriks.{}Kaina: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Pastatyti statulą kompanijos garbei.{}Visam laikui pakelia jūsų įmonės stotelių reitingus.{}Kaina: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finansuoti naujų komercinių pastatų statybą mieste.{}Laikinai paskatina miesto augimą.{}Kaina: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Pirkti isškirtines pervežimo teises mieste vieneriems metams. Miesto valdžia neleis vežti keleivių ar krovinių jūsų konkurentams.{}Kaina: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Paperkant vietinę valdžią pakelti Jūsų reitingą, rizikuojant būti sunkiai nubaustam.{}Kaina: {CURRENCY_LONG}
 
 # Goal window
@@ -3331,10 +3342,10 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Paspaudus ant nurodymo bus rodoma gamykla/miestas/vieta. Paspaudus laikant VALD (CTRL) klavišą bus atidarytas naujas langas su gamykla/miestu/vieta
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Klausimas
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Informacija
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Perspėjimas
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Klaida
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Klausimas
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Informacija
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Perspėjimas
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Klaida
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Atšaukti
@@ -5179,10 +5190,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE.kreip                              :cukraus kasykla
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Bevardis
-STR_SV_TRAIN_NAME                                               :Traukinys {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Automobilis {COMMA}
-STR_SV_SHIP_NAME                                                :Laivas {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Lėktuvas {COMMA}
+STR_SV_TRAIN_NAME                                               :Traukinys #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Automobilis #{COMMA}
+STR_SV_SHIP_NAME                                                :Laivas #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Lėktuvas #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} šiaurinė

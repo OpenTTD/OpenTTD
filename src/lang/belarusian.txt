@@ -1311,6 +1311,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Абяр
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Звычайны
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Набор базавай ґрафікі
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбар базавага набору ґрафічных аб'ектаў
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} адсутнічаюч{P ы ых ых}/пашкоджан{P ы ых ых} файл{P "" ы аў}

@@ -1019,6 +1019,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Taille double
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Taille quadruple
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Graphiques de base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Sélectionner les graphiques de base à utiliser
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fichier{P "" s} manquant{P "" s}/corrompu{P "" s}

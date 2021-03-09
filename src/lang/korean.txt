@@ -1002,6 +1002,9 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 �
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용할 화면 해상도를 선택하세요
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}하드웨어 가속
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}OpenTTD가 하드웨어 가속을 사용하게 하려면 체크하세요. 변경된 설정은 게임을 재시작한 뒤에 적용됩니다.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}이 설정은 게임을 재시작한 뒤에 적용될 것입니다
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택합니다.
@@ -1018,6 +1021,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(자동 탐지)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :기본 크기
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :2배 크기
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4배 크기
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}게임에 사용할 기본 그래픽 세트를 선택하세요
@@ -1790,6 +1795,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}메모�
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES}의 스프라이트 캐시 할당에 실패하였습니다. 스프라이트 캐시 용량이 {BYTES}로 감소합니다. 이는 OpenTTD의 성능을 저하시킬 것입니다. 메모리 요구사항을 낮추려면 32bpp를 비활성화하거나 화면 확대 설정을 기본값에 가깝게 조절하십시오.
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}비디오 설정 오류 발생...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... 호환되는 GPU를 찾지 못했습니다. 하드웨어 가속이 비활성화됩니다
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3180,19 +3187,23 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :새 건물에 �
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :수송 권한 독점권 구입
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :지역 당국에게 뇌물 주기
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}도시 도로망 보수공사를 시행합니다. 앞으로 6개월간 극심한 도로 혼잡을 일으킵니다.{}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}당신의 회사를 대표하는 '명예의 동상'을 건설합니다.{}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}도시 상업 건물의 건설에 투자합니다.{}가격: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}도시 중심 주위의 좁은 반경 안에 있는 역 등급을 일시적으로 올려줍니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}도시 중심 주위의 적당한 반경 안에 있는 역 등급을 일시적으로 올려줍니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}도시 중심 주위의 넓은 반경 안에 있는 역 등급을 일시적으로 올려줍니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}도시 도로망 보수공사를 시행합니다.{}앞으로 6개월간 극심한 도로 혼잡을 일으킵니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}당신의 회사를 대표하는 '명예의 동상'을 건설합니다.{}이 도시에 있는 역 등급을 영구적으로 올려줍니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}도시 상업 건물의 건설에 투자합니다.{}도시의 성장을 일시적으로 빠르게 만들어줍니다.{}가격: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}1년 간 수송 권한 독점권을 구입합니다.{}도시 당국은 오직 당신 회사의 역에만 승객과 화물을 실을 것입니다.{}가격: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}가격: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} 목표
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}전체 목표
 STR_GOALS_SPECTATOR                                             :전체 목표
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}전체
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}전체 목표를 보여줍니다
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}회사
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}회사 목표 보기
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- 없음 -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3567,6 +3578,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}전원 �
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}개조가능 화물: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :모든 화물
 STR_PURCHASE_INFO_NONE                                          :없음
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :기관차만
 STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST} 이외의 모든 화물
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인력: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}항속거리: {GOLD}{COMMA}칸

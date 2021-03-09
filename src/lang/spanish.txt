@@ -1002,6 +1002,9 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluci
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona la resolución de pantalla a usar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Otras
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aceleración por hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marca esta casilla para permitir que OpenTTD intente usar aceleración por hardware. El cambio de configuración sólo tendrá efecto después de reiniciar el juego
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}El ajuste sólo tendrá efecto después de reiniciar el juego
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Elige el tamaño de los elementos de la interfaz a usar
@@ -1018,6 +1021,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(detecta autom�
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Tamaño doble
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Tamaño cuádruple
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunto de gráficos base a usar
@@ -1790,6 +1795,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}No hay m
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Hubo un fallo al reservar {BYTES} de caché de sprites. La caché de sprites ha sido reducida a {BYTES}. Esto reducirá el rendimiento de OpenTTD. Para reducir los requisitos de memoria es posible deshabilitar los gráficos 32bpp o los niveles de zoom adicionales
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Error en los ajustes de vídeo...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no se ha encontrado ninguna GPU compatible. La aceleración por hardware se ha desactivado
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3180,19 +3187,23 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Pagar la constr
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar la exclusiva de los servicios de transporte
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Sobornar a la autoridad local
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar una pequeña campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar una campaña publicitaria local mediana para atraer más pasajeros y carga a sus servicios de transporte.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar una gran campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagar la reconstrucción de las carreteras locales. Provoca considerables complicaciones del tráfico durante 6 meses.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construye una estatua en honor a su empresa.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en el municipio.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar en exclusiva los derechos de transporte en este municipio durante un año. Las autoridades solo permitirán el uso de las estaciones de su empresa.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar una pequeña campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Proporciona un incremento temporal en la calificación de las estaciones en un radio pequeño alrededor del centro del municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar una campaña publicitaria local mediana para atraer más pasajeros y carga a sus servicios de transporte.{}Proporciona un incremento temporal en la calificación de las estaciones en un radio mediano alrededor del centro del municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar una gran campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Proporciona un incremento temporal en la calificación de las estaciones en un radio grande alrededor del centro del municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagar la reconstrucción de las carreteras locales.{}Provoca considerables complicaciones de tráfico durante 6 meses.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construye una estatua en honor a su empresa.{}Proporciona un incremento permanente en la calificación de las estaciones de este municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en el municipio.{}Proporciona un incremento temporal en el crecimiento del municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar en exclusiva los derechos de transporte en este municipio durante un año.{}Las autoridades solo permitirán el uso de las estaciones de su empresa.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Sobornar a las autoridades locales para aumentar su calificación, con el riesgo de una severa penalización si es descubierto.{}Coste: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Metas de {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Metas Globales
 STR_GOALS_SPECTATOR                                             :Metas Globales
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Muestra objetivos globales
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Empresa
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Muestra los objetivos de empresa
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ninguna -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3567,6 +3578,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reformable a: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
 STR_PURCHASE_INFO_NONE                                          :Sin carga
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Sólo locomotoras
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}F.T máxima: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} casillas

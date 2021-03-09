@@ -1132,6 +1132,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Velikost kvadra
 
 
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Osnovni komplet grafik
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Izberi osnovni komplet grafik za uporabo
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} manjkajoč{P a i e ih}/okvarjen{P a i e ih} datotek{P a i e ""}

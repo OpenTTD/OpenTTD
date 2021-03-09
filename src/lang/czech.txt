@@ -1104,6 +1104,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Běžné
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dvojnásobná velikost
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Čtyřnásobná velikost
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základní sada grafiky
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zvol základní sadu grafiky
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} chybějící{P "" "" ch}/poškozen{P ý é ých} soubor{P "" y ů}

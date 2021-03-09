@@ -1134,6 +1134,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Нормаль�
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Подвійний розмір
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Почетверний розмір
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} відсутн{P ій іх іх}/пошкоджен{P ий их их} файл{P "" а ів}

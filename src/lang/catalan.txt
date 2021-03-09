@@ -1002,6 +1002,9 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluci
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecciona la resolució de pantalla
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :altres
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Acceleració per maquinari
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Seleccioneu aquesta opció per permetre que l'OpenTTD provi d'usar acceleració per maquinari. Si es canvia l'opció, s'aplicarà quan es reiniciï el programa.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}La configuració tindrà efecte quan es reiniciï el programa.
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Mida de la interfície
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Escull la mida dels elements de la interfície
@@ -1018,6 +1021,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(detecta autom�
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Doble
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quàdruple
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunt de gràfics base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecciona el conjunt de gràfics base a utilitzar
@@ -1790,6 +1795,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memòria
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}L'assignació de {BYTES} de memòria cau de sprites ha fallat. S'ha reduït aquest tipus de memòria a {BYTES}. Això reduirà el rendiment de l'OpenTTD. Per reduir els requeriments de memòria, proveu de desactivar els gràfics de 32bpp i/o els nivells extra de zoom.
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}S'ha produït un error en la configuració de vídeo...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no s'ha trobat cap GPU compatible. Es desactiva l'acceleració per programari.
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3180,19 +3187,23 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finança nous e
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Compra els drets de transport en exclusiva
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Suborna les autoritats locals
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Inicia una petita campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Inicia una mitjana campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Inicia una gran campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finança la reconstrucció de la xarxa local de carrers. Dificulta notablement el trànsit durant 6 mesos.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construeix una estàtua en honor a la teva companyia.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finança la construcció de nous edificis comercials a la població.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra per 1 any els drets exclusius de transport en la població. L'autoritat local només permetrà utilitzar les instal·lacions de la teva companyia de transports als passatgers i les mercaderies.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Inicia una petita campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Proporciona una millora temporal dels ratis de les estacions dins d'un radi petit al voltant del centre de la població.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Inicia una mitjana campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Proporciona una millora temporal dels ratis de les estacions dins un radi mitjà al voltant del centre de la població.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Inicia una gran campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}Proporciona una millora temporal dels ratis de les estacions dins d'un radi gran al voltant del centre de la població.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finança la reconstrucció de la xarxa local de carrers. Dificulta notablement el trànsit durant 6 mesos.{}Causa molèsties considerables al trànsit de vehicles de carretera durant 6 mesos.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construeix una estàtua en honor a la teva companyia.{}Proporciona una millora permanent dels ratis d'estació de la població.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finança la construcció de nous edificis comercials a la població.{}Proporciona una millora temporal del creixement d'aquesta població.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra per 1 any els drets exclusius de transport en la població. L'autoritat local només permetrà utilitzar les instal·lacions de la teva companyia de transports als passatgers i les mercaderies.{}L'autoritat local no permetrà que els passatgers i càrregues locals usin les estacions dels oponents.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Suborna les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen.{}Cost: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objectius
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objectius globals
 STR_GOALS_SPECTATOR                                             :Objectius globals
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Mostra els objectius globals
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Companyia
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Mostra els objectius de la companyia
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Cap -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3567,6 +3578,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagons A
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Remodelable a: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Totes les càrregues
 STR_PURCHASE_INFO_NONE                                          :Cap
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Només locomotores
 STR_PURCHASE_INFO_ALL_BUT                                       :Qualsevol excepte {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Esforç de tracció màxim: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Abast: {GOLD}{COMMA} cel·les

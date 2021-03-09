@@ -1163,6 +1163,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Нормаль�
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Двукратный
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Четырёхкратный
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовый набор графики
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Выбрать базовый набор графики
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} отсутствующи{P й х х}/повреждённы{P й х х} файл{P "" а ов}

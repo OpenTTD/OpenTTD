@@ -939,15 +939,15 @@ STR_GAME_OPTIONS_CURRENCY_LTL                                   :Litas Lituano (
 STR_GAME_OPTIONS_CURRENCY_KRW                                   :Won Sul-Coreano (KRW)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :Rand Sul-Africano (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :Personalizado...
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :Lari da Georgia (GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :Rial Iraniano (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novo Rublo Russo (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexicano (MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Novo dólar de Taiwan (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi chinês (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dólar de Hong Kong (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rúpia Indiana (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonésia
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupia Indonésia (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaio (MYR)
 ############ end of currency region
 
@@ -1002,6 +1002,9 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluç
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecionar a resolução da tela para usar
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :outra
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aceleração de hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marque esta caixa para permitir que o OpenTTD tente usar a aceleração de hardware. Qualquer mudança nesta configuração só será aplicada após reiniciar o jogo.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A configuração só terá efeito após reiniciar o jogo
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamanho da interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Selecione o tamanho de elemento de interface a ser usado
@@ -1018,6 +1021,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(detecção aut
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Tamanho duplo
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Tamanho quádruplo
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Conjunto de gráficos base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selecionar o conjunto de gráficos base para usar
@@ -1790,6 +1795,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Sem mem�
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}A alocação {BYTES} de spritecache falhou. O spritecache foi reduzido a {BYTES}. A performance do jogo será reduzida. Para reduzir a necessidade de memória tente disabilitar 32bpp gráficos e/ou reduzir o zoom.
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Erro nas configurações de vídeo...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nenhuma GPU compatível encontrada. Aceleração de hardware desativada
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3180,19 +3187,23 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar novos
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar exclusividade da rede de transportes
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Subornar a prefeitura
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar uma pequena campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Preço: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar uma campanha publicitária média, para atrair mais passageiros e carga para seus serviços de transporte.{}Preço: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar uma grande campanha publicitária, para atrair mais passageiros e cargas para seus serviços de transporte.{}Preço: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW} Financiar a reconstrução da malha rodoviária urbana. Causa engarrafamentos consideráveis ao tráfego por até 6 meses.{}Preço: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW} Construir uma estátua em honra para sua empresa.{} Preço: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW} Financiar a construção de edifícios comerciais novos na cidade.{}Preço: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW} Comprar a exclusividade dos serviços durante 1 ano na cidade. A prefeitura da cidade permitirá que os passageiros e cargas usem somente estações de sua empresa.{} Preço: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar uma pequena campanha publicitária local, para atrair mais passageiros e cargas para seus serviços de transporte.{}Fornece um aumento temporário na avaliação da estação em um pequeno raio ao redor do centro da cidade.{}Preço: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar uma campanha publicitária média, para atrair mais passageiros e cargas para seus serviços de transporte.{}Fornece um aumento temporário na avaliação da estação em um raio médio ao redor do centro da cidade.{}Preço: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar uma grande campanha publicitária, para atrair mais passageiros e cargas para seus serviços de transporte.{}Fornece um aumento temporário na avaliação da estação em um grande raio ao redor do centro da cidade.{}Preço: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financiar a reconstrução da malha rodoviária urbana.{}Causa engarrafamentos consideráveis ao tráfego por até 6 meses.{}Preço: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construir uma estátua em homenagem à sua empresa.{}Fornece um aumento permanente na avaliação da estação nesta cidade.{}Preço: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financiar a construção de edifícios comerciais novos na cidade.{}Fornece um aumento temporário do crescimento da cidade nesta cidade.{}Preço: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Comprar a exclusividade dos serviços durante 1 ano na cidade.{}A prefeitura da cidade não permitirá que passageiros e cargas usem as estações de seus concorrentes.{}Preço: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Subornar a prefeitura para aumentar a sua avaliação, correndo o risco de uma penalidade severa se apanhado.{}Preço: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Objetivos
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objetivos globais
 STR_GOALS_SPECTATOR                                             :Objetivos Globais
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globais
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Mostra objetivos globais
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Empresa
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Mostra objetivos da empresa
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{G=m}{ORANGE}- Nenhum -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3567,6 +3578,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Adaptável para: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos as cargas
 STR_PURCHASE_INFO_NONE                                          :Nenhum
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Apenas motores
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Tração máx : {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Alcance: {GOLD}{COMMA} quadrados

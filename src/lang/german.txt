@@ -1002,6 +1002,9 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bildschi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Bildschirmauflösung auswählen
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Andere
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware-Beschleunigung
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Dieses Kästchen ankreuzen, um OpenTTD zu erlauben, die Hardwarebeschleunigung zu verwenden. Eine geänderte Einstellung wird nur beim Spielneustart wirksam
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Die Einstellung tritt nur nach einem Neustart des Spiels in Kraft
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Größe der Bedienelemente
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Wähle die Größe der Bedienelemente
@@ -1018,6 +1021,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(automatisch er
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Zweifach
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Vierfach
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisgrafiken
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zu benutzendes Set an Basisgrafiken auswählen
@@ -1790,6 +1795,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Zu wenig
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Reservieren von {BYTES} des Spritecaches fehlgeschlagen. Der Spritecache wurde auf {BYTES} verkleinert. Dies wird die Performance von OpenTTD verschlechtern. Um den Speicherbedarf zu verringern, kann man versuchen, 32bpp-Grafiken auszuschalten und/oder den Zoom-Level zu begrenzen
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fehler mit den Grafikeinstellungen ...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... keine kompatible GPU gefunden. Hardwarebeschleunigung deaktiviert
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3180,19 +3187,23 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Neue Gebäude f
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exklusive Transportrechte kaufen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Die Stadtverwaltung bestechen
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Im Ort eine kleine Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Im Ort eine mittlere Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Im Ort eine große Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Die örtlichen Straßenreparaturen finanzieren. Der Straßenverkehr wird bis zu 6 Monate beeinträchtigt.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Eine Statue zu Ehren der eigenen Firma errichten.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Bau von Geschäftsgebäuden im Ort finanzieren.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Für ein Jahr die exklusiven Transportrechte in der Stadt kaufen. Die Stadtverwaltung erlaubt dann nur Passagier- und Frachttransporte der eigenen Firma.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Im Ort eine kleine Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Bewirkt eine temporäre Steigerung der Stationsbewertung in einem kleinen Radius um das Ortszentrum.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Im Ort eine mittlere Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Bewirkt eine temporäre Steigerung der Stationsbewertung in einem mittleren Radius um das Ortszentrum.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Im Ort eine große Werbekampagne starten, um mehr Passagier- und Frachtaufträge für die eigene Firma zu gewinnen.{}Bewirkt eine temporäre Steigerung der Stationsbewertung in einem großen Radius um das Ortszentrum.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Die örtlichen Straßenreparaturen finanzieren.{}Der Straßenverkehr wird bis zu 6 Monate beeinträchtigt.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Eine Statue zu Ehren der eigenen Firma errichten.{}Bewirkt eine permanente Steigerung der Stationsbewertung in diesem Ort.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Bau von neuen Gebäuden im Ort finanzieren.{}Bewirkt eine temporäre Steigerung des Ortswachstums in diesem Ort.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Für ein Jahr die exklusiven Transportrechte in der Stadt kaufen.{}Die Stadtverwaltung erlaubt dann nur Passagier- und Frachttransporte der eigenen Firma.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Die Stadtverwaltung bestechen, um die eigene Bewertung zu verbessern. Dabei riskiert man allerdings eine harte Strafe, falls man ertappt wird.{}Kosten: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ziele
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Allgemeine Spielziele
 STR_GOALS_SPECTATOR                                             :Allgemeine Spielziele
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Allgemein
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Allgemeine Spielziele anzeigen
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Firma
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Firmenziele anzeigen
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Keine -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3567,6 +3578,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetrie
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Umrüstbar auf: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle Frachtarten
 STR_PURCHASE_INFO_NONE                                          :Keine
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Nur Schienenfahrzeuge
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles außer {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Zugkraft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Reichweite: {GOLD}{COMMA} Felder

@@ -977,6 +977,8 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Fjouwerdûbele 
 
 
 
+
+
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset for ôfbyldings
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selektearje de basis ôfbyldingsset om te brûken
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} ûntbrekke{P "" nde}/korrupt{P "" e} bestân
