@@ -1347,8 +1347,8 @@ void StateGameLoop()
 		StateGameLoop_LinkGraphPauseControl();
 	}
 
-	/* don't execute the state loop during pause */
-	if (_pause_mode != PM_UNPAUSED) {
+	/* Don't execute the state loop during pause or when modal windows are open. */
+	if (_pause_mode != PM_UNPAUSED || HasModalProgress()) {
 		PerformanceMeasurer::Paused(PFE_GAMELOOP);
 		PerformanceMeasurer::Paused(PFE_GL_ECONOMY);
 		PerformanceMeasurer::Paused(PFE_GL_TRAINS);
@@ -1357,7 +1357,7 @@ void StateGameLoop()
 		PerformanceMeasurer::Paused(PFE_GL_AIRCRAFT);
 		PerformanceMeasurer::Paused(PFE_GL_LANDSCAPE);
 
-		UpdateLandscapingLimits();
+		if (!HasModalProgress()) UpdateLandscapingLimits();
 #ifndef DEBUG_DUMP_COMMANDS
 		Game::GameLoop();
 #endif
@@ -1366,7 +1366,6 @@ void StateGameLoop()
 
 	PerformanceMeasurer framerate(PFE_GAMELOOP);
 	PerformanceAccumulator::Reset(PFE_GL_LANDSCAPE);
-	if (HasModalProgress()) return;
 
 	Layouter::ReduceLineCache();
 
