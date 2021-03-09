@@ -2676,10 +2676,10 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 
 			case WPT_PIPSPACE: {
 				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(*dest);
-				if (nwc != nullptr) nwc->SetPIP(parts->u.pip.pre,  parts->u.pip.inter, parts->u.pip.post);
+				if (nwc != nullptr) nwc->SetPIP(ScaleGUITrad(parts->u.pip.pre), ScaleGUITrad(parts->u.pip.inter), ScaleGUITrad(parts->u.pip.post));
 
 				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(*dest);
-				if (nwb != nullptr) nwb->SetPIP(parts->u.pip.pre,  parts->u.pip.inter, parts->u.pip.post);
+				if (nwb != nullptr) nwb->SetPIP(ScaleGUITrad(parts->u.pip.pre), ScaleGUITrad(parts->u.pip.inter), ScaleGUITrad(parts->u.pip.post));
 				break;
 			}
 
