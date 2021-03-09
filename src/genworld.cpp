@@ -243,7 +243,7 @@ void AbortGeneratingWorld()
  */
 bool IsGeneratingWorldAborted()
 {
-	return _gw.abort;
+	return _gw.abort || _exit_game;
 }
 
 /**
