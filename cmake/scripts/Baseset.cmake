@@ -4,6 +4,16 @@ cmake_minimum_required(VERSION 3.5)
 # Create a single baseset meta file with the correct translations.
 #
 
+if(NOT BASESET_SOURCE_FILE)
+    message(FATAL_ERROR "Script needs BASESET_SOURCE_FILE defined")
+endif()
+if(NOT BASESET_BINARY_FILE)
+    message(FATAL_ERROR "Script needs BASESET_BINARY_FILE defined")
+endif()
+if(NOT BASESET_EXTRAGRF_FILE)
+    message(FATAL_ERROR "Script needs BASESET_EXTRAGRF_FILE defined")
+endif()
+
 set(ARGC 1)
 set(ARG_READ NO)
 
