@@ -236,6 +236,16 @@ bool VideoDriver_Allegro::ClaimMousePointer()
 	return true;
 }
 
+std::vector<int> VideoDriver_Allegro::GetListOfMonitorRefreshRates()
+{
+	std::vector<int> rates = {};
+
+	int refresh_rate = get_refresh_rate();
+	if (refresh_rate != 0) rates.push_back(refresh_rate);
+
+	return rates;
+}
+
 struct AllegroVkMapping {
 	uint16 vk_from;
 	byte vk_count;

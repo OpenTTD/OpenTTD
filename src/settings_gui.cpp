@@ -38,8 +38,10 @@
 #include "video/video_driver.hpp"
 
 #include <vector>
+#include <iterator>
 
 #include "safeguards.h"
+#include "video/video_driver.hpp"
 
 
 static const StringID _autosave_dropdown[] = {
@@ -140,6 +142,22 @@ void ShowBaseSetTextfileWindow(TextfileType file_type, const TBaseSet* baseset, 
 	new BaseSetTextfileWindow<TBaseSet>(file_type, baseset, content_type);
 }
 
+std::set<int> _refresh_rates = { 30, 60, 75, 90, 100, 120, 144, 240 };
+
+/**
+ * Add the refresh rate from the config and the refresh rates from all the monitors to
+ * our list of refresh rates shown in the GUI.
+ */
+static void AddRefreshRatesAndSelect()
+{
+	/* Add the refresh rate as selected in the config. */
+	_refresh_rates.insert(_settings_client.gui.refresh_rate);
+
+	/* Add all the refresh rates of all monitors connected to the machine.  */
+	std::vector<int> monitorRates = VideoDriver::GetInstance()->GetListOfMonitorRefreshRates();
+	std::copy(monitorRates.begin(), monitorRates.end(), std::inserter(_refresh_rates, _refresh_rates.end()));
+}
+
 struct GameOptionsWindow : Window {
 	GameSettings *opt;
 	bool reload;
@@ -148,6 +166,8 @@ struct GameOptionsWindow : Window {
 	{
 		this->opt = &GetGameSettings();
 		this->reload = false;
+
+		AddRefreshRatesAndSelect();
 
 		this->InitNested(WN_GAME_OPTIONS_GAME_OPTIONS);
 		this->OnInvalidateData(0);
@@ -215,6 +235,16 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
+			case WID_GO_REFRESH_RATE_DROPDOWN: // Setup refresh rate dropdown
+				for (auto it = _refresh_rates.begin(); it != _refresh_rates.end(); it++) {
+					auto i = std::distance(_refresh_rates.begin(), it);
+					if (*it == _settings_client.gui.refresh_rate) *selected_index = i;
+					auto item = new DropDownListParamStringItem(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, i, false);
+					item->SetParam(0, *it);
+					list.emplace_back(item);
+				}
+				break;
+
 			case WID_GO_GUI_ZOOM_DROPDOWN: {
 				*selected_index = _gui_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _gui_zoom + 1 : 0;
 				const StringID *items = _gui_zoom_dropdown;
@@ -252,17 +282,18 @@ struct GameOptionsWindow : Window {
 	void SetStringParameters(int widget) const override
 	{
 		switch (widget) {
-			case WID_GO_CURRENCY_DROPDOWN:   SetDParam(0, _currency_specs[this->opt->locale.currency].name); break;
-			case WID_GO_AUTOSAVE_DROPDOWN:   SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
-			case WID_GO_LANG_DROPDOWN:       SetDParamStr(0, _current_language->own_name); break;
-			case WID_GO_RESOLUTION_DROPDOWN: SetDParam(0, GetCurRes() == _resolutions.size() ? STR_GAME_OPTIONS_RESOLUTION_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
-			case WID_GO_GUI_ZOOM_DROPDOWN:   SetDParam(0, _gui_zoom_dropdown[_gui_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _gui_zoom_cfg + 1 : 0]); break;
-			case WID_GO_FONT_ZOOM_DROPDOWN:  SetDParam(0, _font_zoom_dropdown[_font_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _font_zoom_cfg + 1 : 0]); break;
-			case WID_GO_BASE_GRF_DROPDOWN:   SetDParamStr(0, BaseGraphics::GetUsedSet()->name.c_str()); break;
-			case WID_GO_BASE_GRF_STATUS:     SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
-			case WID_GO_BASE_SFX_DROPDOWN:   SetDParamStr(0, BaseSounds::GetUsedSet()->name.c_str()); break;
-			case WID_GO_BASE_MUSIC_DROPDOWN: SetDParamStr(0, BaseMusic::GetUsedSet()->name.c_str()); break;
-			case WID_GO_BASE_MUSIC_STATUS:   SetDParam(0, BaseMusic::GetUsedSet()->GetNumInvalid()); break;
+			case WID_GO_CURRENCY_DROPDOWN:     SetDParam(0, _currency_specs[this->opt->locale.currency].name); break;
+			case WID_GO_AUTOSAVE_DROPDOWN:     SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
+			case WID_GO_LANG_DROPDOWN:         SetDParamStr(0, _current_language->own_name); break;
+			case WID_GO_RESOLUTION_DROPDOWN:   SetDParam(0, GetCurRes() == _resolutions.size() ? STR_GAME_OPTIONS_RESOLUTION_OTHER : SPECSTR_RESOLUTION_START + GetCurRes()); break;
+			case WID_GO_GUI_ZOOM_DROPDOWN:     SetDParam(0, _gui_zoom_dropdown[_gui_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _gui_zoom_cfg + 1 : 0]); break;
+			case WID_GO_FONT_ZOOM_DROPDOWN:    SetDParam(0, _font_zoom_dropdown[_font_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _font_zoom_cfg + 1 : 0]); break;
+			case WID_GO_BASE_GRF_DROPDOWN:     SetDParamStr(0, BaseGraphics::GetUsedSet()->name.c_str()); break;
+			case WID_GO_BASE_GRF_STATUS:       SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
+			case WID_GO_BASE_SFX_DROPDOWN:     SetDParamStr(0, BaseSounds::GetUsedSet()->name.c_str()); break;
+			case WID_GO_BASE_MUSIC_DROPDOWN:   SetDParamStr(0, BaseMusic::GetUsedSet()->name.c_str()); break;
+			case WID_GO_BASE_MUSIC_STATUS:     SetDParam(0, BaseMusic::GetUsedSet()->GetNumInvalid()); break;
+			case WID_GO_REFRESH_RATE_DROPDOWN: SetDParam(0, _settings_client.gui.refresh_rate); break;
 		}
 	}
 
@@ -451,6 +482,16 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
+			case WID_GO_REFRESH_RATE_DROPDOWN: {
+				_settings_client.gui.refresh_rate = *std::next(_refresh_rates.begin(), index);
+				if (_settings_client.gui.refresh_rate > 60) {
+					/* Show warning to the user that this refresh rate might not be suitable on
+					 * larger maps with many NewGRFs and vehicles. */
+					ShowErrorMessage(STR_GAME_OPTIONS_REFRESH_RATE_WARNING, INVALID_STRING_ID, WL_INFO);
+				}
+				break;
+			}
+
 			case WID_GO_GUI_ZOOM_DROPDOWN: {
 				int8 new_zoom = index > 0 ? ZOOM_LVL_OUT_4X - index + 1 : ZOOM_LVL_CFG_AUTO;
 				if (new_zoom != _gui_zoom_cfg) {
@@ -528,32 +569,43 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_AUTOSAVE_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_AUTOSAVE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_RESOLUTION, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_RESOLUTION_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_RESOLUTION_TOOLTIP), SetFill(1, 0), SetPadding(0, 0, 3, 0),
-					NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0), SetPadding(0, 0, 3, 0),
-						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_FULLSCREEN, STR_NULL),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP),
-					EndContainer(),
-					NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
-						NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_VIDEO_ACCELERATION, STR_NULL),
-						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_VIDEO_ACCEL_BUTTON),  SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP),
-					EndContainer(),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_GUI_ZOOM_FRAME, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_GUI_ZOOM_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(NWID_SPACER), SetMinimalSize(0, 0), SetFill(0, 1),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
+				EndContainer(),
 			EndContainer(),
 
 			NWidget(NWID_VERTICAL), SetPIP(0, 6, 0),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_LANGUAGE, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
-				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_GUI_ZOOM_FRAME, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_GUI_ZOOM_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP), SetFill(1, 0),
-				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_FONT_ZOOM, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_FONT_ZOOM_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP), SetFill(1, 0),
+				EndContainer(),
+			EndContainer(),
+		EndContainer(),
+
+		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_GRAPHICS, STR_NULL), SetPadding(0, 10, 0, 10),
+			NWidget(NWID_HORIZONTAL),
+				NWidget(NWID_VERTICAL),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_RESOLUTION, STR_NULL), SetPadding(0, 0, 2, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_REFRESH_RATE, STR_NULL), SetPadding(0, 0, 2, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_FULLSCREEN, STR_NULL), SetPadding(0, 0, 2, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetFill(1, 0), SetDataTip(STR_GAME_OPTIONS_VIDEO_ACCELERATION, STR_NULL),
+				EndContainer(),
+				NWidget(NWID_VERTICAL),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_RESOLUTION_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_RESOLUTION_TOOLTIP), SetFill(1, 0), SetPadding(0, 0, 2, 0),
+					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_REFRESH_RATE_DROPDOWN), SetMinimalSize(100, 12), SetDataTip(STR_GAME_OPTIONS_REFRESH_RATE_ITEM, STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP), SetFill(1, 0), SetPadding(0, 0, 2, 0),
+					NWidget(NWID_HORIZONTAL), SetPadding(0, 0, 2, 0),
+						NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_FULLSCREEN_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP),
+					EndContainer(),
+					NWidget(NWID_HORIZONTAL),
+						NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
+						NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_VIDEO_ACCEL_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP),
+					EndContainer(),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),

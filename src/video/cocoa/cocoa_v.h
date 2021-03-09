@@ -47,6 +47,8 @@ public:
 
 	void EditBoxLostFocus() override;
 
+	std::vector<int> GetListOfMonitorRefreshRates() override;
+
 	/* --- The following methods should be private, but can't be due to Obj-C limitations. --- */
 
 	void MainLoopReal();
