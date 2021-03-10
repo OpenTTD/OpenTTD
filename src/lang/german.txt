@@ -1001,6 +1001,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bildschirmauflösung
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Bildschirmauflösung auswählen
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Andere
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware-Beschleunigung
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Dieses Kästchen ankreuzen, um OpenTTD zu erlauben, die Hardwarebeschleunigung zu verwenden. Eine geänderte Einstellung wird nur beim Spielneustart wirksam
@@ -1022,7 +1023,13 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Zweifach
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Vierfach
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Bildwiederholrate
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Zu verwendende Bildwiederholrate auswählen
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :andere
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Wiederholraten größer als 60Hz beeinträchtigen möglicherweise die Performance.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisgrafiken
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Zu benutzendes Set an Basisgrafiken auswählen

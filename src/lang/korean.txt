@@ -1001,6 +1001,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD�
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}화면 해상도
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}사용할 화면 해상도를 선택하세요
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}하드웨어 가속
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}OpenTTD가 하드웨어 가속을 사용하게 하려면 체크하세요. 변경된 설정은 게임을 재시작한 뒤에 적용됩니다.
@@ -1022,7 +1023,13 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :기본 크기
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :2배 크기
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4배 크기
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}그래픽
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}화면 주사율
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}사용할 화면 주사율을 선택하세요
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :기타
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}60Hz를 넘는 화면 주사율을 사용하면 성능에 영향이 갈 수도 있습니다.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}기본 그래픽 세트
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}게임에 사용할 기본 그래픽 세트를 선택하세요

@@ -1571,6 +1571,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Залишат�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Залишати інструменти будівництва активними після використання.
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Групувати витрати у вікні фінансів: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Налаштування відображення інформації про вітрати у вікні фінансів
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% нормальної швидкості гри
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Новинний рухомий рядок: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Відтворення звуку для узагальнених новинних повідомлень
@@ -1735,6 +1736,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :лінійна 
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Поява дерев під час гри: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Налаштування випадкової появи дерев на карті в процесі гри. Ця настройка також впливає на відповідні підприємства, такі як лісопилки.
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Зростання, але поширення тільки вологих лісів
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Не зростати, не поширюватися {RED}(лісопилка не працює)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиція головного меню: {STRING}
@@ -3277,6 +3279,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Під�
 STR_GOALS_CAPTION                                               :{WHITE}Цілі {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобальні цілі:
 STR_GOALS_SPECTATOR                                             :Загальні задачі
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Компанія
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- нема -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -4116,6 +4119,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Переобл
 STR_ORDER_STOP_ORDER                                            :(зупинити)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Неможливо використати станцію){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Автоматично)
 
@@ -4566,6 +4570,7 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Неправи�
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} дуже довгий після оновлення
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Правила автозаміни/оновлення не застосовувалися
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(бракує коштів)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Нове авто не може змінити наказ {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Неможливе з'єднання колії
