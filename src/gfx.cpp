@@ -1893,7 +1893,9 @@ void UpdateGUIZoom()
 	if (_gui_zoom_cfg == ZOOM_LVL_CFG_AUTO) {
 		_gui_zoom = static_cast<ZoomLevel>(Clamp(VideoDriver::GetInstance()->GetSuggestedUIZoom(), _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
 	} else {
-		_gui_zoom = static_cast<ZoomLevel>(_gui_zoom_cfg);
+		_gui_zoom = static_cast<ZoomLevel>(Clamp(_gui_zoom_cfg, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
+		/* Write the value back in case it was not between min/max. */
+		_gui_zoom_cfg = _gui_zoom;
 	}
 
 	/* Determine real font zoom to use. */
