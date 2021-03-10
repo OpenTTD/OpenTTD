@@ -1873,9 +1873,11 @@ void UpdateGUIZoom()
 	if (_gui_zoom_cfg == ZOOM_LVL_CFG_AUTO) {
 		_gui_zoom = static_cast<ZoomLevel>(Clamp(VideoDriver::GetInstance()->GetSuggestedUIZoom(), _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
 	} else {
-		_gui_zoom = static_cast<ZoomLevel>(Clamp(_gui_zoom_cfg, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
-		/* Write the value back in case it was not between min/max. */
-		_gui_zoom_cfg = _gui_zoom;
+		/* Ensure the gui_zoom is clamped between min/max. Change the
+		 * _gui_zoom_cfg if it isn't, as this is used to visually show the
+		 * selection in the Game Options. */
+		_gui_zoom_cfg = Clamp(_gui_zoom_cfg, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
+		_gui_zoom = static_cast<ZoomLevel>(_gui_zoom_cfg);
 	}
 
 	/* Determine real font zoom to use. */
