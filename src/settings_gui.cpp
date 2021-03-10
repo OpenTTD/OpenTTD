@@ -144,7 +144,7 @@ std::set<int> _refresh_rates = { 30, 60, 75, 90, 100, 120, 144, 240 };
  * Add the refresh rate from the config and the refresh rates from all the monitors to
  * our list of refresh rates shown in the GUI.
  */
-static void AddRefreshRatesAndSelect()
+static void AddCustomRefreshRates()
 {
 	/* Add the refresh rate as selected in the config. */
 	_refresh_rates.insert(_settings_client.gui.refresh_rate);
@@ -163,7 +163,7 @@ struct GameOptionsWindow : Window {
 		this->opt = &GetGameSettings();
 		this->reload = false;
 
-		AddRefreshRatesAndSelect();
+		AddCustomRefreshRates();
 
 		this->InitNested(WN_GAME_OPTIONS_GAME_OPTIONS);
 		this->OnInvalidateData(0);
