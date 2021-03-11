@@ -1685,6 +1685,7 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Рік закі
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Рік закінчення гри для підрахунку очок. У кінці року додають очки компанії і показують загальний результат, але гравці можуть грати далі.{}Якщо встановлено рік раніший початкового, загальний результат не зʼявиться.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ніколи
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Плавно
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дозволити придбання акції інших компаній: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :При включенні дозволяє придбання та продаж акцій команій. Акції компанії стають доступними після досягнення деякого віку.
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Мінімальний вік компанії для торгівлі акціями: {STRING}
@@ -1737,6 +1738,7 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :лінійна 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Поява дерев під час гри: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Налаштування випадкової появи дерев на карті в процесі гри. Ця настройка також впливає на відповідні підприємства, такі як лісопилки.
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Зростання, але поширення тільки вологих лісів
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Зростатати і поширюватися усюди
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Не зростати, не поширюватися {RED}(лісопилка не працює)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиція головного меню: {STRING}
@@ -2659,6 +2661,7 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Сади
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Випадкові дерева
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Випадкове насадження дерев по всьому ландшафту
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Саджати окремі дерева протягуванням по ландшафту
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Ліс
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Саджати великі ліси протягуванням по ландшафту
 
 # Land generation window (SE)
@@ -3859,6 +3862,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозв
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Показати транспорт у центрі екрану. Подвійний клац для руху за транспортом. Ctrl+клац мишою вікдриє нове вікно з транспортом
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Направити поїзд у депо
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Направити авто в депо

@@ -1328,14 +1328,14 @@ STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :kompanijos (įr
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorija:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipas:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Rodyti tik tam tikros rūšies nuostatas
-STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pagrindines nuostatas
-STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Sudėtingesnes nuostatas
-STR_CONFIG_SETTING_RESTRICT_ALL                                 :visas nuostatas
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :nuostatas, kurių reikšmės skiriasi nuo numatytųjų
-STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :nuostatas, kurių reikšmės skiriasi nuo naujai pradedamo žaidimo nuostatų
+STR_CONFIG_SETTING_RESTRICT_BASIC                               :Pagrindinės nuostatos
+STR_CONFIG_SETTING_RESTRICT_ADVANCED                            :Sudėtingesnės nuostatos
+STR_CONFIG_SETTING_RESTRICT_ALL                                 :Visos nuostatos
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_DEFAULT             :Nuostatos, kurių reikšmės skiriasi nuo numatytųjų
+STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Nuostatos, kurių reikšmės skiriasi nuo naujai pradedamo žaidimo nuostatų
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Rodyti tik tam tikro tipo nuostatas
-STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Visas nuostatas
+STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Visos nuostatos
 STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Programos (galioja visiems žaidimams)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Žaidimo (įrašoma pradedant naują žaidimą)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Žaidimo (įrašoma kiekvieną kartą išsaugant žaidimą. Galioja tik aktyviam žaidimui)
@@ -1752,7 +1752,7 @@ STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Velkant kopijuo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Atstumas tarp signalų, statomų vilkimo būdu
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} langel{P 0 į ius ių}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Velkant išlaikyti vienodą atstumą tarp signalų: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Nustato signalų statymo velkant ir laikant nuspaustą Ctrl klavišą, ypatybes. Išjungus šia nuostatą, signalai bus statomi abipus tunelio ar tilto (kad nesusidarytų ilgos atkarpos be signalų). Įjungus šią nuostatą, signalai bus pastatyti tiksliai vienodais atstumais (nebūtinai prie pat tunelio ar tilto)
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Nustato signalų statymo velkant ir laikant nuspaustą Ctrl klavišą, ypatybes. Išjungus šią nuostatą, signalai bus statomi abipus tunelio ar tilto (kad nesusidarytų ilgos atkarpos be signalų). Įjungus šią nuostatą, signalai bus pastatyti tiksliai vienodais atstumais (nebūtinai prie pat tunelio ar tilto)
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Automatiškai statyti semaforus iki: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Metai, kuriais elektriniai signalai pakeičia semaforus (abiejų rūšių signalai veikia visiškai vienodai, tik skirtingai atrodo)
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Įgalinti signalų pasirinkimo langą: {STRING}
