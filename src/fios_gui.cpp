@@ -667,7 +667,7 @@ public:
 
 						if (GetDetailedFileType(file->type) == DFT_GAME_FILE) {
 							/* Other detailed file types cannot be checked before. */
-							SaveOrLoad(name, SLO_CHECK, DFT_GAME_FILE, NO_DIRECTORY, false);
+							SaveOrLoad(name, SLO_CHECK, DFT_GAME_FILE, NO_DIRECTORY, SGF_PERSISTENT | SGF_NO_THREAD);
 						}
 
 						this->InvalidateData(SLIWD_SELECTION_CHANGES);

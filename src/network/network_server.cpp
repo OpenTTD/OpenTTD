@@ -629,7 +629,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		sent_packets = 4; // We start with trying 4 packets
 
 		/* Make a dump of the current game */
-		if (SaveWithFilter(this->savegame, true) != SL_OK) usererror("network savedump failed");
+		if (SaveWithFilter(this->savegame, SGF_TEMPORARY | SGF_THREADED) != SL_OK) usererror("network savedump failed");
 	}
 
 	if (this->status == STATUS_MAP) {

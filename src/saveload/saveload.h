@@ -360,17 +360,25 @@ enum SavegameType {
 	SGT_INVALID = 0xFF, ///< broken savegame (used internally)
 };
 
+enum SavegameFlags : uint8 {
+	SGF_NO_THREAD  = 0,       ///< Do not use threads.
+	SGF_THREADED   = 1 << 0,  ///< Save threaded.
+	SGF_PERSISTENT = 0,       ///< Savegame should persistent through time and different clients.
+	SGF_TEMPORARY  = 1 << 1,  ///< Savegame will only be used temporary or locally.
+};
+DECLARE_ENUM_AS_BIT_SET(SavegameFlags);
+
 extern FileToSaveLoad _file_to_saveload;
 
 void GenerateDefaultSaveName(char *buf, const char *last);
 void SetSaveLoadError(StringID str);
 const char *GetSaveLoadErrorString();
-SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
+SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, SavegameFlags flags = SGF_PERSISTENT | SGF_THREADED);
 void WaitTillSaved();
 void ProcessAsyncSaveFinish();
 void DoExitSave();
 
-SaveOrLoadResult SaveWithFilter(struct SaveFilter *writer, bool threaded);
+SaveOrLoadResult SaveWithFilter(struct SaveFilter *writer, SavegameFlags flags);
 SaveOrLoadResult LoadWithFilter(struct LoadFilter *reader);
 
 typedef void ChunkSaveLoadProc();
