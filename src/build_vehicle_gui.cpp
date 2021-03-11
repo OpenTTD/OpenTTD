@@ -1472,7 +1472,7 @@ struct BuildVehicleWindow : Window {
 				if (sel_eng != INVALID_ENGINE) {
 					CommandCallback *callback = (this->vehicle_type == VEH_TRAIN && RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildPrimaryVehicle;
 					CargoID cargo = this->cargo_filter[this->cargo_filter_criteria];
-					if (cargo == CF_ANY) cargo = CF_NONE;
+					if (cargo == CF_ANY || cargo == CF_ENGINES) cargo = CF_NONE;
 					DoCommandP(this->window_number, sel_eng | (cargo << 24), 0, GetCmdBuildVeh(this->vehicle_type), callback);
 				}
 				break;
