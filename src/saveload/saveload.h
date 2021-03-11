@@ -331,9 +331,10 @@ enum SaveLoadVersion : uint16 {
 
 /** Save or load result codes. */
 enum SaveOrLoadResult {
-	SL_OK     = 0, ///< completed successfully
-	SL_ERROR  = 1, ///< error that was caught before internal structures were modified
-	SL_REINIT = 2, ///< error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
+	SL_OK        = 0, ///< completed successfully
+	SL_ERROR     = 1, ///< error that was caught before internal structures were modified
+	SL_REINIT    = 2, ///< error that was caught in the middle of updating game state, need to clear it. (can only happen during load)
+	SL_NO_FORMAT = 3, ///< given the constraints, no suitable saveload formatter could be found.
 };
 
 /** Deals with the type of the savegame, independent of extension */
@@ -378,7 +379,9 @@ void WaitTillSaved();
 void ProcessAsyncSaveFinish();
 void DoExitSave();
 
-SaveOrLoadResult SaveWithFilter(struct SaveFilter *writer, SavegameFlags flags);
+uint8 SavegameFormatBitmask();
+
+SaveOrLoadResult SaveWithFilter(struct SaveFilter *writer, SavegameFlags flags, uint8 bitmask = 0xFF);
 SaveOrLoadResult LoadWithFilter(struct LoadFilter *reader);
 
 typedef void ChunkSaveLoadProc();

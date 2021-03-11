@@ -2220,6 +2220,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}You took
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Your computer is too slow to keep up with the server
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Your computer took too long to download the map
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Your computer took too long to join the server
+STR_NETWORK_ERROR_NO_COMPATIBLE_SAVEGAME_FORMAT                 :{WHITE}Server cannot send map in a format your client can load
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :general error
@@ -2242,6 +2243,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :received no pas
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :general timeout
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :downloading map took too long
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :processing map took too long
+STR_NETWORK_ERROR_CLIENT_NO_COMPATIBLE_SAVEGAME_FORMAT          :cannot send map in format client can load
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possible connection loss

@@ -211,6 +211,8 @@ struct SaveLoadParams {
 
 	bool threaded;                       ///< If the savegame can be created threaded.
 	bool is_temporary_save;              ///< True if the savegame being made is meant for temporary usage (like network savegames on client join).
+
+	uint8 bitmask;                       ///< Bitmask for format selection; 0xFF allows all.
 	uint16 game_speed;                   ///< The game speed when saving started.
 	bool saveinprogress;                 ///< Whether there is currently a save in progress.
 };
@@ -2422,6 +2424,7 @@ struct ZSTDSaveFilter : SaveFilter {
 
 /** The format for a reader/writer type of a savegame */
 struct SaveLoadFormat {
+	uint8 index;                          ///< Index of this entry. This has to be an unique number as it is used for bitmasks.
 	uint8 priority_persistent;            ///< The best (in balance of speed vs size) to use for persistent savegames, those that should survive for a long time and work on other devices. (higher = better)
 	uint8 priority_temporary;             ///< The best (in balance of speed vs size) to use for temporary savegames, like network games. (higher = better)
 
@@ -2440,19 +2443,19 @@ struct SaveLoadFormat {
 static const std::array _saveload_formats {
 #if defined(WITH_LZO)
 	/* Roughly 75% larger than zlib level 6 at only ~7% of the CPU usage. */
-	SaveLoadFormat {1, 1, "lzo",    TO_BE32X('OTTD'), CreateLoadFilter<LZOLoadFilter>,    CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
+	SaveLoadFormat {0, 1, 1, "lzo",    TO_BE32X('OTTD'), CreateLoadFilter<LZOLoadFilter>,    CreateSaveFilter<LZOSaveFilter>,    0, 0, 0},
 #else
-	SaveLoadFormat {0, 0, "lzo",    TO_BE32X('OTTD'), nullptr,                            nullptr,                            0, 0, 0},
+	SaveLoadFormat {0, 0, 0, "lzo",    TO_BE32X('OTTD'), nullptr,                            nullptr,                            0, 0, 0},
 #endif
 	/* Roughly 5 times larger at only 1% of the CPU usage over zlib level 6. */
-	SaveLoadFormat {2, 2, "none",   TO_BE32X('OTTN'), CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
+	SaveLoadFormat {1, 2, 2, "none",   TO_BE32X('OTTN'), CreateLoadFilter<NoCompLoadFilter>, CreateSaveFilter<NoCompSaveFilter>, 0, 0, 0},
 #if defined(WITH_ZLIB)
 	/* After level 6 the speed reduction is significant (1.5x to 2.5x slower per level), but the reduction in filesize is
 	 * fairly insignificant (~1% for each step). Lower levels become ~5-10% bigger by each level than level 6 while level
 	 * 1 is "only" 3 times as fast. Level 0 results in uncompressed savegames at about 8 times the cost of "none". */
-	SaveLoadFormat {3, 3, "zlib",   TO_BE32X('OTTZ'), CreateLoadFilter<ZlibLoadFilter>,   CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
+	SaveLoadFormat {2, 3, 3, "zlib",   TO_BE32X('OTTZ'), CreateLoadFilter<ZlibLoadFilter>,   CreateSaveFilter<ZlibSaveFilter>,   0, 6, 9},
 #else
-	SaveLoadFormat {0, 0, "zlib",   TO_BE32X('OTTZ'), nullptr,                            nullptr,                            0, 0, 0},
+	SaveLoadFormat {2, 0, 0, "zlib",   TO_BE32X('OTTZ'), nullptr,                            nullptr,                            0, 0, 0},
 #endif
 #if defined(WITH_LIBLZMA)
 	/* Level 2 compression is speed wise as fast as zlib level 6 compression (old default), but results in ~10% smaller saves.
@@ -2460,9 +2463,9 @@ static const std::array _saveload_formats {
 	 * The next significant reduction in file size is at level 4, but that is already 4 times slower. Level 3 is primarily 50%
 	 * slower while not improving the filesize, while level 0 and 1 are faster, but don't reduce savegame size much.
 	 * It's OTTX and not e.g. OTTL because liblzma is part of xz-utils and .tar.xz is preferred over .tar.lzma. */
-	SaveLoadFormat {4, 4, "lzma",   TO_BE32X('OTTX'), CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
+	SaveLoadFormat {3, 4, 4, "lzma",   TO_BE32X('OTTX'), CreateLoadFilter<LZMALoadFilter>,   CreateSaveFilter<LZMASaveFilter>,   0, 2, 9},
 #else
-	SaveLoadFormat {0, 0, "lzma",   TO_BE32X('OTTX'), nullptr,                            nullptr,                            0, 0, 0},
+	SaveLoadFormat {3, 0, 0, "lzma",   TO_BE32X('OTTX'), nullptr,                            nullptr,                            0, 0, 0},
 #endif
 #if defined(WITH_ZSTD)
 	/* Zstd provides a decent compression rate at a very high compression/decompression speed. Compared to lzma level 2
@@ -2471,11 +2474,26 @@ static const std::array _saveload_formats {
 	 * (compress + 10 MB/s download + decompress time), about 3x faster than lzma:2 and 1.5x than zlib:2 and lzo.
 	 * Although negative compression can be very large for zstd, we limit it to -100; lower values are not very useful
 	 * anymore for OpenTTD. */
-	SaveLoadFormat {0, 5, "zstd",   TO_BE32X('OTTS'), CreateLoadFilter<ZSTDLoadFilter>,   CreateSaveFilter<ZSTDSaveFilter>,   -100, 1, 22},
+	SaveLoadFormat {4, 0, 5, "zstd",   TO_BE32X('OTTS'), CreateLoadFilter<ZSTDLoadFilter>,   CreateSaveFilter<ZSTDSaveFilter>,   -100, 1, 22},
 #else
-	SaveLoadFormat {0, 0, "zstd",   TO_BE32X('OTTS'), nullptr,                            nullptr,                            0, 0, 0},
+	SaveLoadFormat {4, 0, 0, "zstd",   TO_BE32X('OTTS'), nullptr,                            nullptr,                            0, 0, 0},
 #endif
 };
+
+/**
+ * Get a bitmask for all the savegame formats supported by this client.
+ */
+uint8 SavegameFormatBitmask()
+{
+	uint8 bitmask = 0;
+	for (auto &saveload_format : _saveload_formats) {
+		if (saveload_format.init_write == nullptr) continue;
+
+		bitmask |= 1 << saveload_format.index;
+	}
+
+	return bitmask;
+}
 
 /**
  * Return the savegameformat of the game. Whether it was created with ZLIB compression
@@ -2483,15 +2501,17 @@ static const std::array _saveload_formats {
  * @param is_temporary_save If true, find a compressor that is meant for temporary storage (like network transfers); otherwise find one for persistent storage.
  * @param s Name of the savegame format. If nullptr it picks the first available one. Ignores bitmask if set.
  * @param compression_level Output for telling what compression level we want. Can be nullptr if not interested.
+ * @param bitmask Bitmask of allowed compressors (defaults to allow-all).
  * @return Pointer to SaveLoadFormat struct giving all characteristics of this type of savegame or nullptr if none are found given the constraints.
  */
-static const SaveLoadFormat *GetSavegameFormat(bool is_temporary_save, char *s, int8 *compression_level)
+static const SaveLoadFormat *GetSavegameFormat(bool is_temporary_save, char *s, int8 *compression_level, uint8 bitmask = 0xFF)
 {
 	const SaveLoadFormat *best_format = nullptr;
 
 	/* Find the best savegame format to use. */
 	for (auto &saveload_format : _saveload_formats) {
 		if (saveload_format.init_write == nullptr) continue;
+		if ((bitmask & (1 << saveload_format.index)) == 0) continue;
 
 		if (best_format == nullptr ||
 				(is_temporary_save && saveload_format.priority_temporary != 0 && saveload_format.priority_temporary > best_format->priority_temporary) ||
@@ -2509,7 +2529,7 @@ static const SaveLoadFormat *GetSavegameFormat(bool is_temporary_save, char *s, 
 			if (saveload_format.init_write == nullptr) continue;
 			if (strcmp(s, saveload_format.name) != 0) continue;
 
-			*compression_level = saveload_format.default_compression;
+			if (compression_level != nullptr) *compression_level = saveload_format.default_compression;
 
 			if (complevel != nullptr) {
 				/* There is a compression level in the string.
@@ -2526,12 +2546,15 @@ static const SaveLoadFormat *GetSavegameFormat(bool is_temporary_save, char *s, 
 					ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL, WL_CRITICAL);
 					/* Use default compression instead. */
 				} else {
-					*compression_level = level;
+					if (compression_level != nullptr) *compression_level = level;
 				}
 			}
 
 			return &saveload_format;
 		}
+
+		/* In case we also couldn't select the best format, just return a nullptr. */
+		if (best_format == nullptr) return nullptr;
 
 		SetDParamStr(0, s);
 		SetDParamStr(1, best_format->name);
@@ -2541,7 +2564,7 @@ static const SaveLoadFormat *GetSavegameFormat(bool is_temporary_save, char *s, 
 		if (complevel != nullptr) *complevel = ':';
 	}
 
-	*compression_level = best_format->default_compression;
+	if (compression_level != nullptr) *compression_level = best_format->default_compression;
 	return best_format;
 }
 
@@ -2640,7 +2663,7 @@ static SaveOrLoadResult SaveFileToDisk()
 {
 	try {
 		int8 compression;
-		const SaveLoadFormat *fmt = GetSavegameFormat(_sl.is_temporary_save, _savegame_format, &compression);
+		const SaveLoadFormat *fmt = GetSavegameFormat(_sl.is_temporary_save, _savegame_format, &compression, _sl.bitmask);
 
 		/* We have written our stuff to memory, now write it to file! */
 		uint32 hdr[2] = { fmt->tag, TO_BE32(SAVEGAME_VERSION << 16) };
@@ -2707,6 +2730,11 @@ static SaveOrLoadResult DoSave(SaveFilter *writer)
 
 	SaveFileStart();
 
+	/* Validate that we have a formatter available. */
+	if (GetSavegameFormat(_sl.is_temporary_save, _savegame_format, nullptr, _sl.bitmask) == nullptr) {
+		return SL_NO_FORMAT;
+	}
+
 	if (!_sl.threaded || !StartNewThread(&_save_thread, "ottd:savegame", &SaveFileToDisk)) {
 		if (_sl.threaded) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
@@ -2724,14 +2752,16 @@ static SaveOrLoadResult DoSave(SaveFilter *writer)
  * Save the game using a (writer) filter.
  * @param writer The filter to write the savegame to.
  * @param flags Flags for how to save the game.
+ * @param bitmask Bitmask of allowed compressors (defaults to allow-all).
  * @return Return the result of the action. #SL_OK or #SL_ERROR
  */
-SaveOrLoadResult SaveWithFilter(SaveFilter *writer, SavegameFlags flags)
+SaveOrLoadResult SaveWithFilter(SaveFilter *writer, SavegameFlags flags, uint8 bitmask)
 {
 	try {
 		_sl.action = SLA_SAVE;
 		_sl.threaded = flags & SGF_THREADED;
 		_sl.is_temporary_save = flags & SGF_TEMPORARY;
+		_sl.bitmask = bitmask;
 		return DoSave(writer);
 	} catch (...) {
 		ClearSaveLoadState();
@@ -2976,6 +3006,7 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename.c_str());
 			if (_network_server || !_settings_client.gui.threaded_saves) _sl.threaded = false;
 
+			_sl.bitmask = 0xFF;
 			return DoSave(new FileWriter(fh));
 		}
 

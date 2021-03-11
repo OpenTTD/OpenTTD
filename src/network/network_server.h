@@ -69,6 +69,7 @@ public:
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
 	int receive_limit;           ///< Amount of bytes that we can receive at this moment
 
+	uint8 savegame_format_bitmask; ///< Bitmask of the savegame formats supported by the client.
 	struct PacketWriter *savegame; ///< Writer used to write the savegame.
 	NetworkAddress client_address; ///< IP-address of the client (so he can be banned)
 
