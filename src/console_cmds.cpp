@@ -45,7 +45,7 @@
 #include "safeguards.h"
 
 /* scriptfile handling */
-static bool _script_running; ///< Script is running (used to abort execution when #ConReturn is encountered).
+static uint _script_current_depth; ///< Depth of scripts running (used to abort execution when #ConReturn is encountered).
 
 /** File list storage for the console, for caching the last 'ls' command. */
 class ConsoleFileList : public FileList {
@@ -960,10 +960,11 @@ DEF_CONSOLE_CMD(ConExec)
 		return true;
 	}
 
-	_script_running = true;
+	_script_current_depth++;
+	uint script_depth = _script_current_depth;
 
 	char cmdline[ICON_CMDLN_SIZE];
-	while (_script_running && fgets(cmdline, sizeof(cmdline), script_file) != nullptr) {
+	while (fgets(cmdline, sizeof(cmdline), script_file) != nullptr) {
 		/* Remove newline characters from the executing script */
 		for (char *cmdptr = cmdline; *cmdptr != '\0'; cmdptr++) {
 			if (*cmdptr == '\n' || *cmdptr == '\r') {
@@ -972,13 +973,18 @@ DEF_CONSOLE_CMD(ConExec)
 			}
 		}
 		IConsoleCmdExec(cmdline);
+		/* Ensure that we are still on the same depth or that we returned via 'return'. */
+		assert(_script_current_depth == script_depth || _script_current_depth == script_depth - 1);
+
+		/* The 'return' command was executed. */
+		if (_script_current_depth == script_depth - 1) break;
 	}
 
 	if (ferror(script_file)) {
 		IConsoleError("Encountered error while trying to read from script file");
 	}
 
-	_script_running = false;
+	if (_script_current_depth == script_depth) _script_current_depth--;
 	FioFCloseFile(script_file);
 	return true;
 }
@@ -990,7 +996,7 @@ DEF_CONSOLE_CMD(ConReturn)
 		return true;
 	}
 
-	_script_running = false;
+	_script_current_depth--;
 	return true;
 }
 
