@@ -960,6 +960,11 @@ DEF_CONSOLE_CMD(ConExec)
 		return true;
 	}
 
+	if (_script_current_depth == 11) {
+		IConsoleError("Maximum 'exec' depth reached; script A is calling script B is calling script C ... more than 10 times.");
+		return true;
+	}
+
 	_script_current_depth++;
 	uint script_depth = _script_current_depth;
 
