@@ -120,7 +120,7 @@ public:
 };
 
 /** Nested widgets for the download window. */
-static const NWidgetPart _nested_boostrap_download_status_window_widgets[] = {
+static const NWidgetPart _nested_bootstrap_download_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCDS_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(350, 0), SetMinimalTextLines(3, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 30),
@@ -132,7 +132,7 @@ static WindowDesc _bootstrap_download_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL,
-	_nested_boostrap_download_status_window_widgets, lengthof(_nested_boostrap_download_status_window_widgets)
+	_nested_bootstrap_download_status_window_widgets, lengthof(_nested_bootstrap_download_status_window_widgets)
 );
 
 
