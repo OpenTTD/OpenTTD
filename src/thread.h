@@ -11,6 +11,7 @@
 #define THREAD_H
 
 #include "debug.h"
+#include "crashlog.h"
 #include <system_error>
 #include <thread>
 
@@ -47,6 +48,7 @@ inline bool StartNewThread(std::thread *thr, const char *name, TFn&& _Fx, TArgs&
 	try {
 		std::thread t([] (const char *name, TFn&& F, TArgs&&... A) {
 				SetCurrentThreadName(name);
+				CrashLog::InitThread();
 				try {
 					/* Call user function with the given arguments. */
 					F(A...);
