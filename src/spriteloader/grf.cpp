@@ -11,6 +11,7 @@
 #include "../gfx_func.h"
 #include "../fileio_func.h"
 #include "../debug.h"
+#include "../settings_type.h"
 #include "../strings_func.h"
 #include "table/strings.h"
 #include "../error.h"
@@ -265,7 +266,16 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_po
 		byte colour = type & SCC_MASK;
 		byte zoom = FioReadByte();
 
-		if (colour != 0 && (load_32bpp ? colour != SCC_PAL : colour == SCC_PAL) && (sprite_type != ST_MAPGEN ? zoom < lengthof(zoom_lvl_map) : zoom == 0)) {
+		bool is_wanted_colour_depth = (colour != 0 && (load_32bpp ? colour != SCC_PAL : colour == SCC_PAL));
+		bool is_wanted_zoom_lvl;
+
+		if (sprite_type != ST_MAPGEN) {
+			is_wanted_zoom_lvl = (zoom < lengthof(zoom_lvl_map) && zoom_lvl_map[zoom] >= _settings_client.gui.sprite_zoom_min);
+		} else {
+			is_wanted_zoom_lvl = (zoom == 0);
+		}
+
+		if (is_wanted_colour_depth && is_wanted_zoom_lvl) {
 			ZoomLevel zoom_lvl = (sprite_type != ST_MAPGEN) ? zoom_lvl_map[zoom] : ZOOM_LVL_NORMAL;
 
 			if (HasBit(loaded_sprites, zoom_lvl)) {
