@@ -14,6 +14,7 @@
 #if defined(WITH_FREETYPE) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
 
 #include "core/geometry_func.hpp"
+#include "error.h"
 #include "fontcache.h"
 #include "gfx_func.h"
 #include "network/network.h"
@@ -61,6 +62,63 @@ public:
 	}
 };
 
+/** Nested widgets for the error window. */
+static const NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BEM_CAPTION), SetDataTip(STR_MISSING_GRAPHICS_ERROR_TITLE, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_BEM_MESSAGE), EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BEM_QUIT), SetDataTip(STR_MISSING_GRAPHICS_ERROR_QUIT, STR_NULL), SetFill(1, 0),
+		EndContainer(),
+	EndContainer(),
+};
+
+/** Window description for the error window. */
+static WindowDesc _bootstrap_errmsg_desc(
+	WDP_CENTER, nullptr, 0, 0,
+	WC_BOOTSTRAP, WC_NONE,
+	WDF_MODAL,
+	_nested_bootstrap_errmsg_widgets, lengthof(_nested_bootstrap_errmsg_widgets)
+);
+
+/** The window for a failed bootstrap. */
+class BootstrapErrorWindow : public Window {
+public:
+	BootstrapErrorWindow() : Window(&_bootstrap_errmsg_desc)
+	{
+		this->InitNested(1);
+	}
+
+	~BootstrapErrorWindow()
+	{
+		_exit_game = true;
+	}
+
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	{
+		if (widget == WID_BEM_MESSAGE) {
+			*size = GetStringBoundingBox(STR_MISSING_GRAPHICS_ERROR);
+			size->height = GetStringHeight(STR_MISSING_GRAPHICS_ERROR, size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT) + WD_FRAMETEXT_BOTTOM + WD_FRAMETEXT_TOP;
+		}
+	}
+
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		if (widget == WID_BEM_MESSAGE) {
+			DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMETEXT_TOP, r.bottom - WD_FRAMETEXT_BOTTOM, STR_MISSING_GRAPHICS_ERROR, TC_FROMSTRING, SA_CENTER);
+		}
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		if (widget == WID_BEM_QUIT) {
+			_exit_game = true;
+		}
+	}
+};
+
 /** Nested widgets for the download window. */
 static const NWidgetPart _nested_boostrap_download_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
@@ -84,6 +142,14 @@ public:
 	/** Simple call the constructor of the superclass. */
 	BootstrapContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(&_bootstrap_download_status_window_desc)
 	{
+	}
+
+	~BootstrapContentDownloadStatusWindow()
+	{
+		/* If we are not set to exit the game, it means the bootstrap failed. */
+		if (!_exit_game) {
+			new BootstrapErrorWindow();
+		}
 	}
 
 	void OnDownloadComplete(ContentID cid) override
