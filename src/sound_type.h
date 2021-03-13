@@ -39,7 +39,7 @@ enum SoundFx {
 	SND_02_CONSTRUCTION_WATER = 0,         ///<  0 == 0x00  Construction: water infrastructure
 	SND_03_FACTORY,                        ///<  1 == 0x01  Industry producing: factory: whistle
 	SND_04_DEPARTURE_STEAM,                ///<  2 == 0x02  Station departure: steam engine
-	SND_05_TRAIN_THROUGH_TUNNEL,           ///<  3 == 0x03  Train enters tunnel
+	SND_05_TRAIN_THROUGH_TUNNEL,           ///<  3 == 0x03  Train enters tunnel: steam engine
 	SND_06_DEPARTURE_CARGO_SHIP,           ///<  4 == 0x04  Station departure: cargo ships
 	SND_07_DEPARTURE_FERRY,                ///<  5 == 0x05  Station departure: passenger ships
 	SND_08_TAKEOFF_PROPELLER,              ///<  6 == 0x06  Takeoff: propeller plane (non-toyland)
