@@ -396,6 +396,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 
 	bool no_timeout = wl == WL_CRITICAL;
 
+	if (_game_mode == GM_BOOTSTRAP) return;
 	if (_settings_client.gui.errmsg_duration == 0 && !no_timeout) return;
 
 	ErrorMessageData data(summary_msg, detailed_msg, no_timeout ? 0 : _settings_client.gui.errmsg_duration, x, y, textref_stack_grffile, textref_stack_size, textref_stack);
