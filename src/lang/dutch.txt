@@ -1000,7 +1000,11 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Vink dit
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Schermresolutie
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Selecteer de schermresolutie
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Anders
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardwareversnelling
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Selecteer dit vakje om OpenTTD hardwareversnelling te laten gebruiken. De gewijzigde instelling wordt pas van kracht nadat het spel opnieuw is gestart.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}De instelling wordt pas van kracht als het spel opnieuw is gestart
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Menupuntgrootte
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Kiest de grootte van bedieningselementen
@@ -1018,7 +1022,13 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normaal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dubbele grootte
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Viervoudige grootte
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafische elementen
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Verversingssnelheid weergeven
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Selecteer de gewenste schermverversingssnelheid
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :overige
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Verversingssnelheden boven 60 Hz kunnen de prestaties beïnvloeden.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basisset voor graphics
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Kiest de te gebruiken basisset voor grafische elementen
@@ -1791,6 +1801,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Geen geh
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Toewijzen van {BYTES} van spritecache mislukt. De spritecache werd teruggebracht tot {BYTES}. Dit verlaagt de prestaties van OpenTTD. Om het benodigde geheugen te verminderen, kun je proberen om 32bpp-beeldelementen en/of inzoomniveaus uit te schakelen
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Fout met video-instellingen...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... geen compatibele GPU gevonden. Hardwareversnelling is uitgeschakeld
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3181,19 +3193,23 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Nieuwe gebouwen
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Exclusieve transportrechten kopen
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Gemeentebestuur omkopen
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begin een kleine reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin een middelgrote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begin een grote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financier een reconstructie van het wegennetwerk. Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Een standbeeld bouwen ter ere van jouw bedrijf.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}De bouw van nieuwe commerciële gebouwen in de stad financieren.{}Kosten: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}1 jaar exclusieve transportrechten kopen in deze plaats. Het gemeentebestuur staat alleen passagiers en vracht toe bij jouw stations.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Begin een kleine reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Zorgt voor een tijdelijk hogere stationswaardering in een klein gebied rondom het centrum.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Begin een middelgrote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Zorgt voor een tijdelijk hogere stationswaardering in een middelgroot gebied rondom het centrum.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Begin een grote reclamecampagne om meer passagiers en vracht naar jouw transportdiensten te trekken.{}Zorgt voor een tijdelijk hogere stationswaardering in een groot gebied rondom het centrum.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financier een reconstructie van het wegennetwerk.{}Veroorzaakt tot 6 maanden lang een aanzienlijke verstoring van het wegverkeer.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Een standbeeld bouwen ter ere van jouw bedrijf.{}Zorgt voor een blijvend hogere stationswaardering in deze stad.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}De bouw van nieuwe gebouwen in de stad financieren.{}Zorgt voor een tijdelijk hogere groei van deze stad.{}Kosten: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}1 jaar exclusieve transportrechten kopen in deze plaats.{}Het gemeentebestuur staat alleen passagiers en vracht toe bij jouw stations.{}Kosten: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Koop het plaatselijk gezag om om je reputatie te verhogen met het risico op een strenge sanctie wanneer je gepakt wordt.{}Kosten: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Doelen
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Algemene doelen
 STR_GOALS_SPECTATOR                                             :Algemene doelen
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Algemeen
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Algemene doelen weergeven
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Bedrijf
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Bedrijfsdoelen weergeven
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Geen -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3568,6 +3584,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedre
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Om te bouwen naar: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vrachttypen
 STR_PURCHASE_INFO_NONE                                          :Geen
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Alleen voertuigen
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. trekkracht: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Bereik: {GOLD}{COMMA} tegels

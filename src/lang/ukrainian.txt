@@ -438,6 +438,7 @@ STR_SORT_BY_RANGE                                               :за дальн
 STR_SORT_BY_POPULATION                                          :за населенням
 STR_SORT_BY_RATING                                              :за рейтингом
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Загальний прибуток минулого року
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Загальний прибуток цього року
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Середній прибуток мигулого року
 
 # Group by options for vehicle list
@@ -1135,6 +1136,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Подвійн�
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Почетверний розмір
 
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Показати швидкість оновлення
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
@@ -1571,6 +1573,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Залишат�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Залишати інструменти будівництва активними після використання.
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Групувати витрати у вікні фінансів: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Налаштування відображення інформації про вітрати у вікні фінансів
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Автоматично прибирати сигнали на шляху при будівництві колії. Увага: це може спричинити зіткнення потягів!
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% нормальної швидкості гри
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Новинний рухомий рядок: {STRING}
@@ -1685,6 +1688,7 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Рік закі
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Рік закінчення гри для підрахунку очок. У кінці року додають очки компанії і показують загальний результат, але гравці можуть грати далі.{}Якщо встановлено рік раніший початкового, загальний результат не зʼявиться.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ніколи
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Оригінальна
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Плавно
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дозволити придбання акції інших компаній: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :При включенні дозволяє придбання та продаж акцій команій. Акції компанії стають доступними після досягнення деякого віку.
@@ -2720,6 +2724,7 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Огля
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Будувати
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Фінансувати
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Прибрати усі підприємства
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Прибрати усі підприємства, наявні на мапі
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ланцюг вантажних перевезень для {STRING}
@@ -2740,6 +2745,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Обер
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Інформація про ділянку
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Показати місце у центрі екрану. Ctrl+клац мишою відкриє нове вікно з видом на місце
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Вартість очистки: {LTBLUE}неможливо
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Вартість очистки: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Дохід при очистці: {LTBLUE}{CURRENCY_LONG}
@@ -3283,6 +3289,7 @@ STR_GOALS_CAPTION                                               :{WHITE}Цілі
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобальні цілі:
 STR_GOALS_SPECTATOR                                             :Загальні задачі
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Компанія
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Показати цілі компанії
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- нема -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -4448,6 +4455,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... по
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... потрібно {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Неможливо повернути позику...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Неможливо передати гроші, позичені у банку...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Неможливо передати гроші цій компанії...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Неможливо купити компанію...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Неможливо збудувати Офіс...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Неможливо купити 25% акцій цієї компанії...

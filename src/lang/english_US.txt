@@ -1000,6 +1000,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Check th
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Screen resolution
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Select the screen resolution to use
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :other
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware acceleration
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Check this box to allow OpenTTD to try to use hardware acceleration. A changed setting will only be applied upon game restart
@@ -1021,7 +1022,13 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Double size
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quad size
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graphics
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Display refresh rate
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Select the screen refresh rate to use
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :other
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Refresh rates higher than 60Hz might impact performance.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Base graphics set
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Select the base graphics set to use

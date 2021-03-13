@@ -2296,7 +2296,7 @@ STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nome: {
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versão: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrição: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
-STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipp: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipo: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Tamanho: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Selecionado pois: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependentes: {WHITE}{STRING}

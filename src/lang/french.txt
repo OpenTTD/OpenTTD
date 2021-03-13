@@ -161,7 +161,7 @@ STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}GZ
 STR_ABBREV_NONE                                                 :{TINY_FONT}NO
-STR_ABBREV_ALL                                                  :{TINY_FONT}ALL
+STR_ABBREV_ALL                                                  :{TINY_FONT}TOUT
 
 # 'Mode' of transport for cargoes
 STR_PASSENGERS                                                  :{COMMA}{NBSP}passager{P "" s}
@@ -902,7 +902,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Modifier
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Copier l'emplacement de cette vue vers la vue principale
 
 # Game options window
-STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Options
+STR_GAME_OPTIONS_CAPTION                                        :{WHITE}Options du jeu
 STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Devise
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Sélectionner l'unité monétaire
 
@@ -1001,7 +1001,11 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Cocher c
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Résolution
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Sélectionner la résolution d'écran à utiliser
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :autre
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK} Accélération matérielle
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Cochez cette case permet à OpenTTD d'utiliser l'accélération matérielle, si possible. Un paramètre modifié ne sera pris en compte qu'au redémarrage du jeu
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Les paramètres ne prendront effet qu'après le redémarrage du jeu
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Taille d'interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Choisir la taille d'élément d'interface à utiliser
@@ -1019,7 +1023,13 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Taille double
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Taille quadruple
 
+STR_GAME_OPTIONS_GRAPHICS                                       :Graphiques {BLACK}
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK} Taux de rafraîchissement de l'affichage
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK} Sélectionnez la fréquence de rafraîchissement à utiliser
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :autres
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE} Les taux de rafraîchissement supérieurs à 60Hz peuvent avoir un impact sur les performances.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Graphiques de base
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Sélectionner les graphiques de base à utiliser
@@ -1792,6 +1802,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Plus de 
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}L'allocation de {BYTES} pour le cache des sprites a échoué. Le cache des sprites a été réduit à {BYTES}. Cela va réduire les performances d'OpenTTD. Pour diminuer les besoins en mémoire vous pouvez essayer de désactiver les graphismes 32bpp et/ou les niveaux de zoom avant
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE} Erreur avec les paramètres vidéo...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE} ... aucun GPU compatible trouvé. l'accélération matérielle est désactivée
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1808,7 +1820,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Meilleur
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Paramètres
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Paramètres NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Vérifier le contenu en ligne
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Configuration des scripts
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Paramètres des IA/script jeu
 STR_INTRO_QUIT                                                  :{BLACK}Quitter
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Démarrer une nouvelle partie. Ctrl-clic pour passer outre la configuration du terrain.
@@ -2006,7 +2018,7 @@ STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Recherch
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Rechercher des serveurs sur le réseau local
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Ajouter un serveur
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Ajouter un serveur à la liste de ceux parmi lesquels des parties en cours seront toujours cherchées
-STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Démarrer le serveur
+STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Héberger/créer un serveur de jeu
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Démarrer son propre serveur, sur cet ordinateur-ci
 
 STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Entrer votre nom
@@ -2098,7 +2110,7 @@ STR_NETWORK_GAME_LOBBY_PLAYERS                                  :{SILVER}Joueurs
 
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY                              :{BLACK}Nouvelle compagnie
 STR_NETWORK_GAME_LOBBY_NEW_COMPANY_TOOLTIP                      :{BLACK}Créer une nouvelle compagnie
-STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Observer une partie
+STR_NETWORK_GAME_LOBBY_SPECTATE_GAME                            :{BLACK}Observer la partie
 STR_NETWORK_GAME_LOBBY_SPECTATE_GAME_TOOLTIP                    :{BLACK}Observer une partie en tant que spectateur
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY                             :{BLACK}Rejoindre la compagnie
 STR_NETWORK_GAME_LOBBY_JOIN_COMPANY_TOOLTIP                     :{BLACK}Aider à gérer cette compagnie
@@ -3182,19 +3194,23 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financer de nou
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Acheter les droits de transports exclusifs
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Corrompre la municipalité
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Lancer une petite campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Coût{NBSP}: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Lancer une campagne de publicité moyenne, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Coût{NBSP}: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Lancer une grande campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Coût{NBSP}: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financer la reconstruction du réseau routier local. Provoque de nombreux problèmes de trafic routier pendant 6 mois.{}Coût{NBSP}: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construire une statue en l'honneur de votre compagnie.{}Coût{NBSP}: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financer la construction de nouveaux immeubles commerciaux.{}Coût{NBSP}: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Acheter les droits de transport exclusifs dans cette ville pour 1 an. Seules vos lignes seront autorisées dans la ville.{}Coût{NBSP}: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Lancez une petite campagne de publicité locale pour attirer plus de passagers et de marchandises vers vos services de transport.{} Augmente temporairement le classement des gares dans un petit rayon autour du centre-ville.{}Coût: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Lancer une campagne de publicité moyenne, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Augmente temporairement le classement de vos gares dans un rayon moyen autour du centre-ville.{}Coût:{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Lancer une grande campagne de publicité, pour attirer plus de voyageurs et de marchandises sur vos lignes.{}Augmente temporairement le classement des gares dans un rayon important autour du centre-ville.{}Coût: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financer la reconstruction du réseau routier local. Provoque de nombreux problèmes de trafic routier pendant 6 mois.{}Coût: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construire une statue en l'honneur de votre compagnie.{}Augmente en permanence le classement de vos stations dans cette ville.{}Coût:{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financer la construction de nouveaux immeubles commerciaux.{}Stimule temporairement la croissance dans cette ville.{}Coût:{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Achetez les droits de transport exclusifs d'un an pour la ville.{} La municipalité n'autorisera pas les passagers et les marchandises à utiliser les gares de vos concurrents.{} Coût: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Corrompre la municipalité pour améliorer votre réputation. Risque de pénalisation si le pot-de-vin est dévoilé.{}Coût{NBSP}: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Objectifs de {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Objectifs globaux
 STR_GOALS_SPECTATOR                                             :Objectifs globaux
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK} Globaux
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK} Afficher les objectifs généraux
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK} compagnie
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK} Afficher les objectifs de votre compagnie
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}− Aucun −
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3569,6 +3585,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons m
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Réaménageable pour{NBSP}: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tous les types de cargaison
 STR_PURCHASE_INFO_NONE                                          :Aucune cargaison
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Moteurs uniquement
 STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort de traction max.{NBSP}: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Rayon d'action{NBSP}: {GOLD}{COMMA}{NBSP}cases

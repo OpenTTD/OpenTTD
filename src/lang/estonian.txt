@@ -1057,7 +1057,11 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Märgi s
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekraanilahutus
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekraanilahutuse valimine
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Riistvarakiirendus
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Märgides selle ruudu, lubad OpenTTD-l üritada kasutada riistvarakiirendust. Muudetud seade omab mõju pärast mängu taaskäivitust
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Seade omab mõju alles pärast mängu taaskäivitust
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Liidese suurus
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vali kasutatav liideseelementide suurus
@@ -1075,7 +1079,13 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Tavaline
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Topeltsuurus
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Neljakordne suurus
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graafika
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Näita värskendussagedust
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Vali, mis värskendussagedust kasutada
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :muu
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Värskendussagedused üle 60Hz võivad jõudlusele löögi anda.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Lähtegraafikakogu
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Valib kasutatava lähtegraafikakogu
@@ -1848,6 +1858,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Vahemäl
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Pildipuhvri (ingl k «spritecache») suurendamine {BYTES} võrra ebaõnnestus. Pildipuhvri uus suurus on {BYTES}. Seetõttu on OpenTTD nüüd aeglasem. 32 bpp graafika keelamine ja suurendusastme ülempiirangu vähendamine piirab vahemälu tarbimist
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Videoseadete viga...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... ei leitud ühilduvat GPU-d. Riistvarakiirendus väljalülitatud
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3252,6 +3264,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Kohali
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} eesmärgid
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Üldeesmärgid
 STR_GOALS_SPECTATOR                                             :Üleilmsed eesmärgid
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Üleilmne
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Näita üleilmseid eesmärke
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Ettevõte
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Näita ettevõtte eesmärke
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Mitte ühtegi -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3626,6 +3642,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirenda
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ümberseadistatav: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kõik kaubatüübid
 STR_PURCHASE_INFO_NONE                                          :Puudub
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Vaid vedurid
 STR_PURCHASE_INFO_ALL_BUT                                       :Kõik, välja arvatud {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurim veojõud: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Tegevusradius: {GOLD}{COMMA} ruutu
