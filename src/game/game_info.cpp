@@ -23,7 +23,7 @@
  */
 static bool CheckAPIVersion(const char *api_version)
 {
-	static const std::set<std::string> versions = {"1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11"};
+	static const std::set<std::string> versions = { "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "1.10", "1.11", "1.12" };
 	return versions.find(api_version) != versions.end();
 }
 
