@@ -2232,6 +2232,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Da, descarcă pachetele grafice
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nu, ieși din OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Optiuni transparenţă
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comută transparenţa pentru nume/semne. Ctrl+Click pentru blocare

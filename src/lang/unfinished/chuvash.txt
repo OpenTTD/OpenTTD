@@ -819,6 +819,7 @@ STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Вер�
 # Content downloading error messages
 
 
+
 # Transparency settings window
 
 # Linkgraph legend window

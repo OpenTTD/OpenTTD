@@ -1828,6 +1828,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}ہاں، گرافکس ڈاون لوڈ کریں
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}نہیں، OpenTTD سے باہر نکلو
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparency کے اختیارات
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}اشاروں کی شفافیت کی تدویم کریں۔ محدوظ کرنے کے لئے Ctrl+Click دبائیں

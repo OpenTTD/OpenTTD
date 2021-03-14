@@ -2497,6 +2497,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Для �
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Да, скачать
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Нет, выйти
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки прозрачности
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Переключение прозрачности надписей. Ctrl+щелчок - заблокировать.

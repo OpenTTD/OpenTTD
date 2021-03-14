@@ -1662,12 +1662,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Zoom màxim d'a
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Nivell de zoom d'apropament màxim a les vistes. Un major nivell de zoom d'apropament incrementa les necessitats de memòria
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Zoom màxim d'allunyament: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Nivell de zoom d'allunyament màxim a les vistes. Un nivell elevat de zoom d'allunyament pot causar alentiments
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolució de sprites màxima que es pot usar: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita la resolució màxima dels sprites que s'empraran. Aquest límit pot evitar que s'usin els sprites amb resolució elevada quan estiguin disponibles. Això pot ajudar a millorar l'aparença general quan s'empren diferents fitxers GRF amb gràfics de diferents resolucions màximes.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :x4
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :x2
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :x1
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocitat de creixement de les poblacions: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocitat de creixement de les poblacions
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Cap
@@ -2334,6 +2339,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gràfics
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}L'OpenTTD necessita gràfics per funcionar, però no se n'han trobat. Voleu permetre a l'OpenTTD descarregar i instal·lar aquests gràfics?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sí, descarregar els gràfics
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, surt de l'OpenTTD.
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcions de transparència

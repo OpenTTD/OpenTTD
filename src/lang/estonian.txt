@@ -1081,7 +1081,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Neljakordne suu
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graafika
 
-STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Näita värskendussagedust
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Ekraani värskendussagedus
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Vali, mis värskendussagedust kasutada
 STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :muu
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
@@ -1196,7 +1196,7 @@ STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulge k�
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(seletus puudub)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vaikeväärtus: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Seade rühm: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kliendi seade (ei salvestu koos mänguga; mõjutab kõiki mänge)
+STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kliendiseade (ei salvestu koos mänguga; mõjutab kõiki mänge)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Mängu seade (salvestub koos mänguga; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Mängu seaded (hoitakse salvestuses; mõjutab ainult praegust mängu)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
@@ -1213,7 +1213,7 @@ STR_CONFIG_SETTING_RESTRICT_CHANGED_AGAINST_NEW                 :Uue mängu sead
 
 STR_CONFIG_SETTING_TYPE_DROPDOWN_HELPTEXT                       :{BLACK}Piirab allolevat nimekirja valitud sätte tüübi järgi
 STR_CONFIG_SETTING_TYPE_DROPDOWN_ALL                            :Kõik seadistused
-STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliendi seade (ei salvestu koos mänguga; mõjutab kõiki mänge)
+STR_CONFIG_SETTING_TYPE_DROPDOWN_CLIENT                         :Kliendiseade (ei salvestu koos mänguga; mõjutab kõiki mänge)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Mängu seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Mängu seaded (hoitakse salvestuses; mõjutab ainult praegust mängu)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Firma seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
@@ -1718,12 +1718,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Suurim suurendu
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Vaateakna suurendusastme ülempiirang. Kõrgete suurendusastmete lubamisega kaasneb suurem vahemälu kasutamine
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Väikseim suurendusaste: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Vaateakna suurendusastme alampiir. Madalate suurendusastmete kasutamine võib põhjustata viivitusi
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Sprite'ide ekraanilahutus kuni: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Piirab ekraanilahutust, mida sprite'ide jaoks kasutatakse. Sprite'ide ekraanilahutust piirates ei kasutata kõrge ekraanilahutusega graafikat ka siis, kui see on saadaval. Võib aidata ühtsustada mängu väljanägemist, kui osad GRF failid on kõrge ekraanilahutusega ja teised mitte.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Tavaline
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Asulate kasvutempo: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Asulate kasvutempo
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Pole
@@ -2336,7 +2341,7 @@ STR_CONTENT_SEARCH_EXTERNAL                                     :{BLACK}Otsi vä
 STR_CONTENT_SEARCH_EXTERNAL_TOOLTIP                             :{BLACK}Otsi OpenTTD-st sõltumatutest lehtedest aineseid, mida OpenTTD aineste keskserverist ei saa
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER_CAPTION                  :{WHITE}Sa oled lahkumas OpenTTD-st!
 STR_CONTENT_SEARCH_EXTERNAL_DISCLAIMER                          :{WHITE}Välistest veebilehtedest aineste allalaadimisel võivad kasutustingimused vahelduda.{}Paigaldusjuhiseid otsida samadest välistest veebilehtedest.{}Kas jätkata?
-STR_CONTENT_FILTER_TITLE                                        :{BLACK}Siltide/nimede märksõna:
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tähiste/nimede märksõna:
 STR_CONTENT_OPEN_URL                                            :{BLACK}Külasta lehekülge
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Külasta lehekülge selle sisu jaoks.
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Laadi alla
@@ -2391,6 +2396,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Graafika
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD töötamiseks on vaja eraldi graafikafaile, mida ei leitud. Kas OpenTTD võib need graafikafailid alla laadida ja need paigaldada?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jah, laadi graafika alla
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ei, välju OpenTTD-st
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läbipaistvuse seadistus
@@ -2940,7 +2946,7 @@ STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Määrab
 STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Asustusi:
 STR_MAPGEN_DATE                                                 :{BLACK}Algus:
-STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstuste sagedus:
+STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstustihedus:
 STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Kaardi ülemkõrgus:
 STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Tõsta maksimaalset kaardi mägede kõrgust ühe võrra
 STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Langeta maksimaalset kaardi mägede kõrgust ühe võrra
@@ -3215,8 +3221,8 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} äraveetud
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (ikka veel vaja)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (äraveetud)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Asustus kasvab iga {ORANGE}{COMMA}{NBSP}päev{P "" a}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Asustus kasvab iga {ORANGE}{COMMA}{BLACK}{NBSP}päev{P "" a} (rahastatud)
+STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Asustus kasvab igal {ORANGE}{COMMA}{BLACK}.{NBSP}päeval
+STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Asustus kasvab igal {ORANGE}{COMMA}{BLACK}.{NBSP}päeval (rahastatud)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Asustus {RED}ei{BLACK} kasva
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Mürapiirang asustuses: {ORANGE}{COMMA}{BLACK}  suurim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Keskenda vaade asustusele. Ctrl+klõps avab asustuse kohal uue vaate
@@ -3423,7 +3429,7 @@ STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Rongide t
 STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Mootorsõidukite tulud
 STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Õhusõidukite tulud
 STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Laevade tulud
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Laenuintress
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Laenuintressid
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Muud
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}

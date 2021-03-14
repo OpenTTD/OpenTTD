@@ -1662,12 +1662,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :최대 확대 �
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :게임 화면의 최대 확대 수준을 설정합니다. 화면을 더 크게 확대할 수록 더 많은 메모리가 필요합니다.
 STR_CONFIG_SETTING_ZOOM_MAX                                     :최대 축소 수준: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :게임 화면의 최대 축소 수준을 설정합니다. 화면을 더 작게 축소할 수록 게임이 더 버벅거리게 될 수도 있습니다.
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :사용할 최고 해상도 그래픽 스프라이트: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :그래픽 스프라이트에 사용할 최고 해상도를 제한합니다. 그래픽 스프라이트 해상도를 제한하면 고 해상도 그래픽을 사용할 수 있어도 이를 사용하지 않을 수 있습니다. 이 설정을 사용하면 고해상도 그래픽을 지원하지 않는 GRF 파일을 섞어서 사용할 때 게임 모습을 일관성있게 만들 수 있습다.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :기본값
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :도시 성장 속도: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :도시의 성장 속도를 설정합니다.
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :없음
@@ -2334,6 +2339,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}그래�
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD를 실행시키기 위해서는 그래픽 파일이 필요하지만 컴퓨터에서 그래픽 파일을 찾을 수 없습니다. OpenTTD를 실행시키기 위해 그래픽을 다운로드 받아서 설치하시겠습니까?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}예, 그래픽을 다운로드 받습니다
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}아니요, OpenTTD를 종료합니다
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}투명 설정

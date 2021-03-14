@@ -2048,6 +2048,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, heinta niður grafikkin
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nei, gevst at spæla OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Gjøgnumskygnis møguleikar
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Sløkk/tendra gjøgnumskygni fyri skelti. Ctrl+trýst fyri at læsa

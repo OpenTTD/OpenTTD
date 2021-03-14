@@ -2437,6 +2437,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Tha graf
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Bheir, luchdaich a' ghrafaigeachd a-nuas
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Cha toir, fàg OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Roghainnean trìd-shoilleireachd
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglaich trìd-shoilleireachd nan sanasan. Ctrl+Briogadh airson glasadh

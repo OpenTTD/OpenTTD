@@ -2398,6 +2398,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Az OpenT
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Igen, a grafikai alapcsomag letöltése
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nem, kilépés az OpenTTD-ből
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Átlátszósági beállítások
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Átlátszó feliratok bekapcsolása. Ctrl+kattintással zárolható

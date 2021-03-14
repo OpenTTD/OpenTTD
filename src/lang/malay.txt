@@ -1981,6 +1981,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ya, muat turun grafik
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Tidak, keluar dari OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Pilihan transparansi
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Gulir kejernihan nama untuk isyarat stesen. Ctrl+Klik untuk mengunci.

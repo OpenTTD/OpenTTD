@@ -2282,6 +2282,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}O OpenTT
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sim, obter os gráficos pela rede
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Não, sair do OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opções de transparência
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Comutar transparência para sinais. Ctrl+Clique para bloquear.

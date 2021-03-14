@@ -2233,6 +2233,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Mae Open
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ia, llawrlwytho'r graffigau
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Na, gadael OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Dewisiadau Tryloywder
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer arwyddion. Mae Ctrl+Clic yn cloi

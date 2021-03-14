@@ -1662,12 +1662,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximale Hinein
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximale Vergrößerung für Kartenansichten. Bedenke, dass höhere Vergrößerungsstufen mehr Arbeitsspeicher benötigen
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximale Herauszoomstufe: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximale Verkleinerungsstufe für Kartenansichten. Höhere Verkleinerungsstufen können Ruckeln verursachen
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Höchste Auflösung der Sprites: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limitiert die maximale Auflösung, die von Sprites verwendet wird. Das Limitieren der Sprite-Auflösung verhindert das Verwenden von hochauflösenden Grafiken selbst dann, wenn diese verfügbar sind. Dies kann dabei helfen eine einheitliche Spieldarstellung zu erhalten, wenn GRF-Dateien mit und ohne hochauflösenden Grafiken verwendet werden.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4×
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2×
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2×
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4×
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8×
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Wachstumsgeschwindigkeit von Städten: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Geschwindigkeit des Städtewachstums
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Keine
@@ -2334,6 +2339,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Fehlende
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD benötigt Basisgrafiken, um zu funktionieren. Es konnten aber keine gefunden werden. Darf OpenTTD diese herunterladen und installieren?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, Grafiken herunterladen
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nein, OpenTTD beenden
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparenzeinstellungen

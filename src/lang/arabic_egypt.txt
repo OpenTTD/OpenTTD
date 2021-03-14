@@ -1901,6 +1901,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}تحتا
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}نعم, حمل الرسومات
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}لا, اغلق اللعبة
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}خيارات الشفافية
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}بدل شفافية اسماء المحطات. مفتاح كنترول للاغلاق.

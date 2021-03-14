@@ -2400,6 +2400,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Το Ope
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ναι, κατέβασε τα γραφικά
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Όχι, έξοδος από το OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ρυθμίσεις Διαφάνειας
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Εναλλαγή διαφάνειας για τις πινακίδες. Ctrl+Κλικ για να την κλειδώσετε

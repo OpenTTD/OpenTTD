@@ -2225,6 +2225,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Tá graf
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Tugann, íoslódáil na grafaicí
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ní thugann, scoir de OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Roghanna Trédhearcachta
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Scoránaigh trédhearcacht do chomharthaí stáisiún. Ctrl+Cliceáil le glasáil.

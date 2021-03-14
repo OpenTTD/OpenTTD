@@ -1034,6 +1034,7 @@ STR_CONTENT_TYPE_GS_LIBRARY                                     :ГШ библи
 # Content downloading error messages
 
 
+
 # Transparency settings window
 
 # Linkgraph legend window

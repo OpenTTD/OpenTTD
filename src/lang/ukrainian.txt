@@ -437,11 +437,14 @@ STR_SORT_BY_CARGO_CAPACITY                                      :за містк
 STR_SORT_BY_RANGE                                               :за дальністю
 STR_SORT_BY_POPULATION                                          :за населенням
 STR_SORT_BY_RATING                                              :за рейтингом
+STR_SORT_BY_NUM_VEHICLES                                        :Кількість авто
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Загальний прибуток минулого року
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Загальний прибуток цього року
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Середній прибуток мигулого року
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Нема
+STR_GROUP_BY_SHARED_ORDERS                                      :Спільні накази
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
@@ -870,6 +873,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Нерівна земля
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Трава
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Пустир
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Джунглі
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Поля
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Дерева
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Каміння
@@ -1119,11 +1123,13 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Нати
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Роздільна здатність
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Виберіть роздільну здатність екрану
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Розмір інтерфейсу
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Оберіть розмір елементів інтерфейсу
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(автоматичо)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Нормальний розмір
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Подвійний розмір
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Почетверний розмір
@@ -1131,12 +1137,14 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Почетве�
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Розмір шрифту
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Виберть розмір шрифту інтерфейсу
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(автоматичо)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Нормальний
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Подвійний розмір
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Почетверний розмір
 
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Показати швидкість оновлення
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :інша
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
@@ -1573,6 +1581,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Залишат�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Залишати інструменти будівництва активними після використання.
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Групувати витрати у вікні фінансів: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Налаштування відображення інформації про вітрати у вікні фінансів
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Автоматично прибирати сигнали при будівництві колії.: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Автоматично прибирати сигнали на шляху при будівництві колії. Увага: це може спричинити зіткнення потягів!
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% нормальної швидкості гри
 
@@ -1688,6 +1697,7 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :Рік закі
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Рік закінчення гри для підрахунку очок. У кінці року додають очки компанії і показують загальний результат, але гравці можуть грати далі.{}Якщо встановлено рік раніший початкового, загальний результат не зʼявиться.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ніколи
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Тип економіки: {STRING}
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Оригінальна
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Плавно
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дозволити придбання акції інших компаній: {STRING}
@@ -2333,6 +2343,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Гра ще п�
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Гра ще призупинена ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Гра ще призупинена ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Гра ще на паузі ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Гра ще призупинена ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Гра знята з паузи ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :кількість гравців
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :приєднання клієнтів
@@ -2423,6 +2434,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Відс
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD потребує пакет графіки для гри. Завантажити його?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Так, завантажити графіку
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ні, вийти з OpenTTD
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Опції прозорості
@@ -2955,6 +2967,7 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Фільтр:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Перезаписати файл
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW} Ви справді хочете перезаписати існуючий файл?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Directory)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Введіть назву файла збереженої гри
 
@@ -3288,6 +3301,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Під�
 STR_GOALS_CAPTION                                               :{WHITE}Цілі {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобальні цілі:
 STR_GOALS_SPECTATOR                                             :Загальні задачі
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Показати глобальні цілі
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Компанія
 STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Показати цілі компанії
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
@@ -3509,6 +3523,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Прод
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Назва компанії
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Ім'я керівника
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Введіть суму грошей, яку бажаєте передати
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ми шукаємо нового власника нашої компанії.{}{}Чи бажаєте Ви купити {COMPANY} за {CURRENCY_LONG}?
 
@@ -3663,6 +3678,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Поту
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Може бути переобладненим на: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
 STR_PURCHASE_INFO_NONE                                          :Нема
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Тільки локомотиви
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі, крім {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тягова сила: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Дальність: {GOLD}{COMMA} клітинок

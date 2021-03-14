@@ -2071,6 +2071,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}ஆம், அசையூட்டங்களை பதிவிறக்கம் செய்
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}இல்லை, OpenTTD-ஐ விட்டு வெளியேறு
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}ஒளி அமைப்புகள்
 STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}வீடுகளுக்கான வெளிப்படைத்தன்மையை நிலைமாற்று. Ctrl + கிளிக் பூட்ட செய்க

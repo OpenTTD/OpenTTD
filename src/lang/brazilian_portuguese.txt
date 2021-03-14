@@ -1662,12 +1662,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Nível máximo 
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Zoom adentro máximo para janelas de visualização. Note que ativar zoom maiores aumenta o uso de memória
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Nível máximo de zoom afora: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Zoom afora máximo para janelas de visualização. Note que ativar zoom maiores causa lag durante o jogo
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Resolução máxima de sprites a serem usados: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limita a resolução máxima a ser usada para sprites. Limitar a resolução de sprites evitará o uso de gráficos de alta resolução, mesmo quando estiverem disponíveis. Isso pode ajudar a manter a aparência do jogo uniforme quando estiver usando uma mistura de arquivos GRF com e sem gráficos de alta resolução.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidade de crescimento de cidade: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocidade com a qual as cidades expandem
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nenhum
@@ -2334,6 +2339,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Gráfico
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD requer gráficos para funcionar, mas nenhum foi encontrado. Deseja que OpenTTD conecte-se à internet e baixe esses arquivos?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sim, baixar os gráficos
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Não, sair do OpenTTD
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opções de Transparência

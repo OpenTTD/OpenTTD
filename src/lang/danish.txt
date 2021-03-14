@@ -2283,6 +2283,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Grafikfi
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, download grafikfilerne
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nej, afslut OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Gennemsigtighedsvalg
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Skift gennemsigtighed for skilte. CTRL+Klik for at låse værdi.

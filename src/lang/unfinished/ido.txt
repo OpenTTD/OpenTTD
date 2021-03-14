@@ -668,6 +668,7 @@ STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 # Content downloading error messages
 
 
+
 # Transparency settings window
 
 # Linkgraph legend window

@@ -1681,6 +1681,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normale
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocità di crescita delle città: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Velocità di crescita delle città
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nessuna
@@ -2345,6 +2346,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Pacchett
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD richiede un pacchetto grafico per funzionare, ma non è stato possibile trovarne alcuno. Consentire a OpenTTD di scaricare e installare un pacchetto grafico?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sì, scarica il pacchetto
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, esci da OpenTTD
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opzioni trasparenza

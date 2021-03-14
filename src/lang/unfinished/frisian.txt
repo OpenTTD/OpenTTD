@@ -2071,6 +2071,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Missende
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, ôfbyldings delheljen
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, OpenTTD ôfslute
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Trochsichtigenopsjes
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Skeakelje trochsichtigens fan seinen. Brûk Ctrl+Klik om fêste te setten

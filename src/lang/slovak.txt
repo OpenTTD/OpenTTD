@@ -2385,6 +2385,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Áno, stiahnite si grafiku
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nie, ukončiť OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Nastavenia priehľadnosti
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Prepnúť priehľadnosť nápisov. Ctrl+klik uzamkne nastavenie

@@ -1939,6 +1939,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}گراف
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}بله, فایلهای گرافیک را بارگیری کن
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}خیر, خروج OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}گزینه های شفافیت
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}فعال/غیر فعال کردن شفافیت برای نشانه های ایستگاه. کنترل+کلیک برای قفل کردن

@@ -1661,12 +1661,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximaal inzoom
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Het maximale inzoomniveau voor kijkvensters. Merk op dat hogere inzoomniveaus hogere eisen stellen aan het geheugen.
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximaal uitzoomniveau: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :De maximale zoom-uit niveau voor kijkvensters. Hogere zoom-uit niveaus kunnen leiden tot vertraging bij gebruik
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Hoogste resolutie die sprites mogen gebruiken: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Beperk de maximale resolutie die voor sprites wordt gebruikt. Door deze beperking worden geen grafische elementen in hoge resolutie gebruikt, ook niet als ze beschikbaar zijn. Zo kan de weergave van het spel consistent blijven wanneer je verschillende GRF-bestanden gebruikt met en zonder grafische elementen in hoge resolutie.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normaal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Groeisnelheid steden: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Groeisnelheid van steden.
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Niet
@@ -2333,6 +2338,7 @@ STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Ontbreke
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD heeft grafische elementen nodig om te kunnen werken, maar deze zijn niet gevonden. Wil je dat OpenTTD deze downloadt en installeert?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, grafische elementen downloaden
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, OpenTTD afsluiten
+
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Doorzichtigheidsopties
