@@ -85,4 +85,4 @@ const byte _openttd_revision_tagged = ${REV_ISTAG};
  * final release will always have a lower version number than the released
  * version, thus making comparisons on specific revisions easy.
  */
-const uint32 _openttd_newgrf_version = 1 << 28 | 11 << 24 | 0 << 20 | ${REV_ISSTABLETAG} << 19 | 28004;
+const uint32 _openttd_newgrf_version = 1 << 28 | 12 << 24 | 0 << 20 | ${REV_ISSTABLETAG} << 19 | 28004;
