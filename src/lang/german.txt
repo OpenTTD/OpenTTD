@@ -1802,7 +1802,7 @@ STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL             :{WHITE}... Komp
 STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM         :{WHITE}... „{STRING}“ nicht als Format für Spielstände verfügbar. Nutze stattdessen „{STRING}“
 STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND                :{WHITE}... ignoriere Basisgrafiken „{STRING}“: nicht gefunden
 STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... ignoriere Basissounds „{STRING}“: nicht gefunden
-STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoriere Musikset „{STRING}“: nicht gefunden
+STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ignoriere Basismusikset „{STRING}“: nicht gefunden
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Zu wenig Arbeitsspeicher
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Reservieren von {BYTES} des Spritecaches fehlgeschlagen. Der Spritecache wurde auf {BYTES} verkleinert. Dies wird die Performance von OpenTTD verschlechtern. Um den Speicherbedarf zu verringern, kann man versuchen, 32bpp-Grafiken auszuschalten und/oder den Zoom-Level zu begrenzen
 
@@ -2316,7 +2316,7 @@ STR_CONTENT_TYPE_AI                                             :{G=w}KI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=w}KI-Bibliothek
 STR_CONTENT_TYPE_SCENARIO                                       :{G=n}Szenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=w}Reliefkarte
-STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basissound
+STR_CONTENT_TYPE_BASE_SOUNDS                                    :Basissounds
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Basismusik
 STR_CONTENT_TYPE_GAME_SCRIPT                                    :Skript
 STR_CONTENT_TYPE_GS_LIBRARY                                     :Skript-Bibliothek
@@ -2340,6 +2340,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, Grafiken herunterladen
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nein, OpenTTD beenden
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Download fehlgeschlagen
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Download der Grafiken fehlgeschlagen.{}Bitte Grafiken manuell herunterladen.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}OpenTTD verlassen
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparenzeinstellungen
