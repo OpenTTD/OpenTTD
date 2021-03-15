@@ -15,6 +15,7 @@
 #include "gfx_func.h"
 #include "querystring_gui.h"
 #include "video/video_driver.hpp"
+#include "zoom_func.h"
 
 #include "widgets/osk_widget.h"
 
@@ -103,8 +104,8 @@ struct OskWindow : public Window {
 
 		widget -= WID_OSK_LETTERS;
 		DrawCharCentered(_keyboard[this->shift][widget],
-			r.left + 8,
-			r.top + 3,
+			r.left + (r.right - r.left) / 2,
+			r.top + (r.bottom - r.top - FONT_HEIGHT_NORMAL) / 2,
 			TC_BLACK);
 	}
 
@@ -231,15 +232,15 @@ static void AddKey(NWidgetHorizontal *hor, int height, int num_half, WidgetType 
 
 	if (widtype == NWID_SPACER) {
 		if (!hor->IsEmpty()) key_width += INTER_KEY_SPACE;
-		NWidgetSpacer *spc = new NWidgetSpacer(key_width, height);
+		NWidgetSpacer *spc = new NWidgetSpacer(ScaleGUITrad(key_width), height);
 		hor->Add(spc);
 	} else {
 		if (!hor->IsEmpty()) {
-			NWidgetSpacer *spc = new NWidgetSpacer(INTER_KEY_SPACE, height);
+			NWidgetSpacer *spc = new NWidgetSpacer(ScaleGUITrad(INTER_KEY_SPACE), height);
 			hor->Add(spc);
 		}
 		NWidgetLeaf *leaf = new NWidgetLeaf(widtype, COLOUR_GREY, widnum, widdata, STR_NULL);
-		leaf->SetMinimalSize(key_width, height);
+		leaf->SetMinimalSize(ScaleGUITrad(key_width), height);
 		hor->Add(leaf);
 	}
 
