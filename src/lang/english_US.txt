@@ -37,7 +37,7 @@ STR_CARGO_PLURAL_IRON_ORE                                       :Iron Ore
 STR_CARGO_PLURAL_STEEL                                          :Steel
 STR_CARGO_PLURAL_VALUABLES                                      :Valuables
 STR_CARGO_PLURAL_COPPER_ORE                                     :Copper Ore
-STR_CARGO_PLURAL_MAIZE                                          :Maize
+STR_CARGO_PLURAL_MAIZE                                          :Corn
 STR_CARGO_PLURAL_FRUIT                                          :Fruit
 STR_CARGO_PLURAL_DIAMONDS                                       :Diamonds
 STR_CARGO_PLURAL_FOOD                                           :Food
@@ -71,7 +71,7 @@ STR_CARGO_SINGULAR_IRON_ORE                                     :Iron Ore
 STR_CARGO_SINGULAR_STEEL                                        :Steel
 STR_CARGO_SINGULAR_VALUABLES                                    :Valuables
 STR_CARGO_SINGULAR_COPPER_ORE                                   :Copper Ore
-STR_CARGO_SINGULAR_MAIZE                                        :Maize
+STR_CARGO_SINGULAR_MAIZE                                        :Corn
 STR_CARGO_SINGULAR_FRUIT                                        :Fruit
 STR_CARGO_SINGULAR_DIAMOND                                      :Diamond
 STR_CARGO_SINGULAR_FOOD                                         :Food
@@ -105,7 +105,7 @@ STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} o
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} of steel
 STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}bag{P "" s} of valuables
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} of copper ore
-STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} of maize
+STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} of corn
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} of fruit
 STR_QUANTITY_DIAMONDS                                           :{COMMA}{NBSP}bag{P "" s} of diamonds
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} of food
@@ -140,7 +140,7 @@ STR_ABBREV_IRON_ORE                                             :{TINY_FONT}OR
 STR_ABBREV_STEEL                                                :{TINY_FONT}ST
 STR_ABBREV_VALUABLES                                            :{TINY_FONT}VL
 STR_ABBREV_COPPER_ORE                                           :{TINY_FONT}CO
-STR_ABBREV_MAIZE                                                :{TINY_FONT}MZ
+STR_ABBREV_MAIZE                                                :{TINY_FONT}CR
 STR_ABBREV_FRUIT                                                :{TINY_FONT}FT
 STR_ABBREV_DIAMONDS                                             :{TINY_FONT}DM
 STR_ABBREV_FOOD                                                 :{TINY_FONT}FD
@@ -213,7 +213,7 @@ STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon{P "" s}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litre{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}liter{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
