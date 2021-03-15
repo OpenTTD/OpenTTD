@@ -173,7 +173,7 @@ STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} n
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} kummi
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} suhkrut
 STR_QUANTITY_TOYS                                               :{COMMA} mänguas{P i ja}
-STR_QUANTITY_SWEETS                                             :{COMMA} kontitäi{P s t} maiustusi
+STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}kotitäi{P s t} maiustusi
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} koolat
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} suhkruvatti
 STR_QUANTITY_BUBBLES                                            :{COMMA} mull{P "" i}
@@ -871,7 +871,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Üleujutused!{}Vähemalt {COMMA} kadunut arvatakse surnuks peale olulist üleujutust!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Ettevõttel on probleeme!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}Ettevõte {STRING} müüakse maha ja kuulutatakse pankrot, kui tulemused peatselt ei parane!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}Ettevõte {STRING} müüakse maha või kuulutatakse pankrotistunuks, kui tulemused peatselt ei parane!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Ettevõtete ühinemine!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} müüdi ettevõttele {STRING} {CURRENCY_LONG} eest!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Pankrot!
@@ -1195,14 +1195,14 @@ STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Ava kõi
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulge kõik
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(seletus puudub)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Vaikeväärtus: {ORANGE}{STRING}
-STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Seade rühm: {ORANGE}{STRING}
+STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Seade liik: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE_CLIENT                                  :Kliendiseade (ei salvestu koos mänguga; mõjutab kõiki mänge)
 STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Mängu seade (salvestub koos mänguga; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Mängu seaded (hoitakse salvestuses; mõjutab ainult praegust mängu)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult uusi mänge)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Ettevõtte seaded (hoitakse salvestuses; mõjutab ainult praegust ettevõtet)
 
-STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Rühm:
+STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Jagu:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Liik:
 STR_CONFIG_SETTING_RESTRICT_DROPDOWN_HELPTEXT                   :{BLACK}Piirab varem tehtud filtridega alljärgnevat loendit
 STR_CONFIG_SETTING_RESTRICT_BASIC                               :Põhilised (kuva vaid tähtsad seaded)
@@ -2397,6 +2397,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jah, laadi graafika alla
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ei, välju OpenTTD-st
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Allalaadimine ebaõnnestus
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Graafika allalaadimine ebaõnnestus.{}Palun laadida graafika alla käsitsi.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Välju OpenTTD-st
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läbipaistvuse seadistus
@@ -2474,7 +2477,7 @@ STR_WAYPOINT_GRAPHICS_TOOLTIP                                   :{BLACK}Vali mel
 
 # Rail station construction window
 STR_STATION_BUILD_RAIL_CAPTION                                  :{WHITE}Raudteejaama valik
-STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Orientatsioon
+STR_STATION_BUILD_ORIENTATION                                   :{BLACK}Suund
 STR_STATION_BUILD_RAILROAD_ORIENTATION_TOOLTIP                  :{BLACK}Raudteejaamale suuna valimine
 STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Radade arv
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Vali raudteejaama perroonide arv
@@ -2483,8 +2486,8 @@ STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Vali rau
 STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Lohistamine
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Ehita jaam kasutades hiirega lohistamist
 
-STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vali jaama klass mida tahad näidata
-STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vali ehitatava jaama tüüp
+STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Vali näidatav jaamarühm
+STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Vali näidatav jaamaliik
 
 STR_STATION_CLASS_DFLT                                          :Esialgne jaam
 STR_STATION_CLASS_WAYP                                          :Meldepunktid
@@ -2561,7 +2564,7 @@ STR_STATION_BUILD_BUS_ORIENTATION                               :{WHITE}Bussijaa
 STR_STATION_BUILD_BUS_ORIENTATION_TOOLTIP                       :{BLACK}Vali bussijaamale suund
 STR_STATION_BUILD_TRUCK_ORIENTATION                             :{WHITE}Laadimisplatsi suund
 STR_STATION_BUILD_TRUCK_ORIENTATION_TOOLTIP                     :{BLACK}Vali laadimisplatsile suund
-STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Reisitrammi Jaama Suund
+STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION                    :{WHITE}Reisitrammijaama suund
 STR_STATION_BUILD_PASSENGER_TRAM_ORIENTATION_TOOLTIP            :{BLACK}Vali reisitrammijaama suund
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION                        :{WHITE}Kaubatrammi Jaama Suund
 STR_STATION_BUILD_CARGO_TRAM_ORIENTATION_TOOLTIP                :{BLACK}Vali kaubatrammijaama suund
@@ -2622,7 +2625,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Maa ostm
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekti valik
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vali ehitatav objekt. Shift valib ehitamise/hinna kuvamise režiimi
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vali ehitatava objekti klass
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vali ehitatava objekti rühm
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekti eelvaade
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Suurus: {GOLD}{NUM} x {NUM} ruutu
 
@@ -3360,7 +3363,7 @@ STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Jaotusalus
 STR_STATION_VIEW_WAITING_STATION                                :Jaam: ootel
-STR_STATION_VIEW_WAITING_AMOUNT                                 :Summa: ootel
+STR_STATION_VIEW_WAITING_AMOUNT                                 :Kogus: ootel
 STR_STATION_VIEW_PLANNED_STATION                                :Jaam: eeldatav
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :Summa: eeldatav
 STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} jaamast {STATION}
@@ -3598,7 +3601,7 @@ STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ümberni
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Muuda valitud jao värvistikku
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klõpsa, et kaitsta seda jagu globaalse automaatasenduse eest
 
-STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Kustuta Grupp
+STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Kõrvalda jagu
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Kas oled kindel, et tahad kustutada selle grupi ja kõik järglased?
 
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Kõik jagatud sõidukid
@@ -4022,8 +4025,8 @@ STR_ORDERS_LIST_TOOLTIP                                         :{BLACK}Korraldu
 STR_ORDER_INDEX                                                 :{COMMA}:{NBSP}
 STR_ORDER_TEXT                                                  :{STRING} {STRING} {STRING}
 
-STR_ORDERS_END_OF_ORDERS                                        :- - Korraldused läbi - -
-STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jagatud korraldused läbi - -
+STR_ORDERS_END_OF_ORDERS                                        :- - Korralduste lõpp - -
+STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - Jagatud korralduste lõpp - -
 
 # Order bottom buttons
 STR_ORDER_NON_STOP                                              :{BLACK}Vahepeatusteta

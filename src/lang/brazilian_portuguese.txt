@@ -2340,6 +2340,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sim, baixar os gráficos
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Não, sair do OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}O download falhou
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}O download de gráficos falhou.{}Por favor, baixe os gráficos manualmente.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Sair do OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opções de Transparência

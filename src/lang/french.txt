@@ -1662,12 +1662,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Zoom avant maxi
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Le zoom avant maximum pour les vues. Noter qu'activer un plus grand zoom avant augment les besoins en mémoire
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Zoom arrière maximum{NBSP}: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Le zoom arrière maximum pour les vues. Noter que l'usage d'un plus grand zoom arrière peut causer un retard
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Résolution maximale des sprites{NBSP}: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limite la résolution des graphismes. Même si des sprites de plus haute résolution sont disponibles, ils ne seront pas utilisés. Cela peut aider à garder un aspect cohérent quand plusieurs fichiers GRF avec des résolutions différentes sont utilisés.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Vitesse de croissance des villes{NBSP}: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Vitesse de croissance des villes
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Aucune
@@ -2335,6 +2340,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Oui, télécharger les graphiques
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Non, quitter OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Téléchargement échoué
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Le téléchargement des graphismes a échoué.{}Il faudrait les télécharger manuellement.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Quitter OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Options de transparence
