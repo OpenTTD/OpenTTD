@@ -1661,12 +1661,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximal inzoomn
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Den maximala inzoomningsnivån för vyer. Tänk på att högre möjliga inzoomningsnivåer kräver högre minneskapacitet
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximal utzoomning: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Den maximala utzoomningsnivån för vyer. Tänk på att användning av högre utzoomningsnivåer kan få spelet att lagga
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Högsta upplösning som sprites ska använda: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Begränsa den maximala upplösningen för sprites. Begränsning av spritens upplösning hindrar användandet av högre upplösningar även om det finns tillgängligt. Detta kan hjälpa att hålla spelets utseende mer enhetlig vid användandet av flera olika GRF filer med högre och lägre upplösning.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Stadens tillväxthastighet: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Hastigheten städer växer med
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ingen
@@ -2334,6 +2339,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, ladda ner grafiken
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nej, avsluta OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Nedladdning misslyckades
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Nedladdning av grafik misslyckades.{}Vänligen ladda ner grafiken manuellt.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Avsluta OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Genomskinlighetsinställningar
@@ -3195,8 +3203,8 @@ STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Köp exklusiva 
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Muta de lokala myndigheterna
 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Starta en liten lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}Tillhandahåller en temporär boost till stationens betyg i en liten radie runt stadens centrum.{}Kostnad: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Starta en mellanstor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}Kostnad: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Starta en stor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Starta en mellanstor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina tranporttjänster.{}Tillhandahåller en temporär boost till stationens betyg i en mellan radie runt stadens centrum.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Starta en stor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina transporttjänster.{}Tillhandahåller en temporär boost till stationens betyg i en stor radie runt stadens centrum.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Bekosta ombyggnad av stadens vägnätverk.{}Orsakar ansenliga störningar för vägtrafik i upp till 6 månader.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg en staty i ditt företags ära.{}Tillhandahåller en permanent boost till stations betyg i staden.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Bekosta uppbyggnad av nya byggnader i staden.{}Tillhandahåller en temporär boost till stadens tillväxt.{}Kostnad: {CURRENCY_LONG}
