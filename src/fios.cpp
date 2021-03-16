@@ -490,7 +490,7 @@ void FiosGetSavegameList(SaveLoadOperation fop, FileList &file_list)
  * @see FiosGetFileList
  * @see FiosGetScenarioList
  */
-static std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext)
+std::tuple<FiosType, std::string> FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const std::string_view ext)
 {
 	/* Show scenario files
 	 * .SCN OpenTTD style scenario file
@@ -530,7 +530,7 @@ void FiosGetScenarioList(SaveLoadOperation fop, FileList &file_list)
 	FiosGetFileList(fop, &FiosGetScenarioListCallback, subdir, file_list);
 }
 
-static std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation, const std::string &file, const std::string_view ext)
+std::tuple<FiosType, std::string> FiosGetHeightmapListCallback(SaveLoadOperation, const std::string &file, const std::string_view ext)
 {
 	/* Show heightmap files
 	 * .PNG PNG Based heightmap files
