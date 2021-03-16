@@ -2595,7 +2595,7 @@ STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP                      :{BLACK}Ehita le
 # Airport construction window
 STR_STATION_BUILD_AIRPORT_CAPTION                               :{WHITE}Lennuvälja valik
 STR_STATION_BUILD_AIRPORT_TOOLTIP                               :{BLACK}Vali lennuvälja suurus ja tüüp
-STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Lennujaama liik
+STR_STATION_BUILD_AIRPORT_CLASS_LABEL                           :{BLACK}Lennuvälja järk
 STR_STATION_BUILD_AIRPORT_LAYOUT_NAME                           :{BLACK}Paigutus {NUM}
 
 STR_AIRPORT_SMALL                                               :Väike
@@ -2740,7 +2740,7 @@ STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY                       :{BLACK}Kohalik 
 STR_LAND_AREA_INFORMATION_LOCAL_AUTHORITY_NONE                  :puudub
 STR_LAND_AREA_INFORMATION_LANDINFO_COORDS                       :{BLACK}Koordinaadid: {LTBLUE}{NUM} x {NUM} x {NUM} ({STRING})
 STR_LAND_AREA_INFORMATION_BUILD_DATE                            :{BLACK}Ehitatud: {LTBLUE}{DATE_LONG}
-STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Jaama liik: {LTBLUE}{STRING}
+STR_LAND_AREA_INFORMATION_STATION_CLASS                         :{BLACK}Jaama järk: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_STATION_TYPE                          :{BLACK}Jaama liik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Lennuvälja liik: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Lennujaama nimi: {LTBLUE}{STRING}
