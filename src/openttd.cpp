@@ -185,7 +185,7 @@ static void ShowHelp()
 		"  -t year             = Set starting year\n"
 		"  -d [[fac=]lvl[,...]]= Debug mode\n"
 		"  -e                  = Start Editor\n"
-		"  -g [savegame]       = Start new/save game immediately\n"
+		"  -g [file/name/title] = Load savegame/scenario/heightmap immediately\n"
 		"  -G seed             = Set random seed\n"
 		"  -n [ip:port#company]= Join network game\n"
 		"  -p password         = Password to join server\n"
@@ -595,19 +595,84 @@ int openttd_main(int argc, char *argv[])
 				if (mgo.opt != nullptr) SetDebugString(mgo.opt, ShowInfo);
 				break;
 			}
-		case 'e': _switch_mode = (_switch_mode == SM_LOAD_GAME || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : SM_EDITOR); break;
+		case 'e':
+			_switch_mode = (_switch_mode == SM_LOAD_GAME || _switch_mode == SM_LOAD_SCENARIO ? SM_LOAD_SCENARIO : ((_switch_mode == SM_LOAD_HEIGHTMAP || _switch_mode == SM_START_HEIGHTMAP) ? SM_LOAD_HEIGHTMAP : SM_EDITOR));
+			break;
 		case 'g':
 			if (mgo.opt != nullptr) {
 				_file_to_saveload.SetName(mgo.opt);
-				bool is_scenario = _switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO;
-				_switch_mode = is_scenario ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
-				_file_to_saveload.SetMode(SLO_LOAD, is_scenario ? FT_SCENARIO : FT_SAVEGAME, DFT_GAME_FILE);
+				bool is_editor = _switch_mode == SM_EDITOR || _switch_mode == SM_LOAD_SCENARIO || _switch_mode == SM_LOAD_HEIGHTMAP;
+				_switch_mode = is_editor ? (_switch_mode == SM_LOAD_HEIGHTMAP ? SM_LOAD_HEIGHTMAP : SM_LOAD_SCENARIO) : SM_LOAD_GAME;
 
-				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
+				/* Unfortunately, initializing file type to being invalid breaks the SafeLoad function which expects SLO_LOAD operation: initializing to dummy value */
+				/*_file_to_saveload.SetMode(FIOS_TYPE_INVALID);
+				_file_to_saveload.SetMode(SLO_INVALID, FT_INVALID, DFT_INVALID);*/
+				_file_to_saveload.SetMode(SLO_LOAD, FT_SAVEGAME, DFT_GAME_FILE);
+
+				/* If supplied file does not exist or is not a valid savegame/scenario/heightmap, let the saveload code show an error */
 				auto t = _file_to_saveload.name.find_last_of('.');
 				if (t != std::string::npos) {
-					FiosType ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, _file_to_saveload.name.substr(t).c_str(), nullptr, nullptr);
-					if (ft != FIOS_TYPE_INVALID) _file_to_saveload.SetMode(ft);
+					FiosType ft;
+					ft = FiosGetSavegameListCallback(SLO_LOAD, _file_to_saveload.name, _file_to_saveload.name.substr(t).c_str(), nullptr, nullptr);
+					if (ft != FIOS_TYPE_INVALID) {
+						_file_to_saveload.SetMode(ft);
+						_switch_mode = is_editor ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+						break;
+					}
+					ft = FiosGetScenarioListCallback(SLO_LOAD, _file_to_saveload.name, _file_to_saveload.name.substr(t).c_str(), nullptr, nullptr);
+					if (ft != FIOS_TYPE_INVALID) {
+						_file_to_saveload.SetMode(ft);
+						_switch_mode = is_editor ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+						break;
+					}
+					ft = FiosGetHeightmapListCallback(SLO_LOAD, _file_to_saveload.name, _file_to_saveload.name.substr(t).c_str(), nullptr, nullptr);
+					if (ft != FIOS_TYPE_INVALID) {
+						_file_to_saveload.SetMode(ft);
+						_switch_mode = is_editor ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP;
+						break;
+					}
+				}
+
+				/* If supplied value was not recognized as a valid resource, attempt to find a matching title */
+				DeterminePaths(argv[0], only_local_path);
+				TarScanner::DoScan(TarScanner::SCENARIO);
+				FileList _my_file_list;
+				const FiosItem *item;
+
+				_my_file_list.BuildFileList(FT_SAVEGAME, SLO_LOAD);
+				item = _my_file_list.FindItem(mgo.opt);
+				if (item != nullptr) {
+					if (GetAbstractFileType(item->type) == FT_SAVEGAME) {
+						_file_to_saveload.SetMode(item->type);
+						_file_to_saveload.SetName(FiosBrowseTo(item));
+						_file_to_saveload.SetTitle(item->title);
+					}
+					_switch_mode = is_editor ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+					break;
+				}
+
+				_my_file_list.BuildFileList(FT_SCENARIO, SLO_LOAD);
+				item = _my_file_list.FindItem(mgo.opt);
+				if (item != nullptr) {
+					if (GetAbstractFileType(item->type) == FT_SCENARIO) {
+						_file_to_saveload.SetMode(item->type);
+						_file_to_saveload.SetName(FiosBrowseTo(item));
+						_file_to_saveload.SetTitle(item->title);
+					}
+					_switch_mode = is_editor ? SM_LOAD_SCENARIO : SM_LOAD_GAME;
+					break;
+				}
+
+				_my_file_list.BuildFileList(FT_HEIGHTMAP, SLO_LOAD);
+				item = _my_file_list.FindItem(mgo.opt);
+				if (item != nullptr) {
+					if (GetAbstractFileType(item->type) == FT_HEIGHTMAP) {
+						_file_to_saveload.SetMode(item->type);
+						_file_to_saveload.SetName(FiosBrowseTo(item));
+						_file_to_saveload.SetTitle(item->title);
+					}
+					_switch_mode = is_editor ? SM_LOAD_HEIGHTMAP : SM_START_HEIGHTMAP;
+					break;
 				}
 
 				break;
@@ -970,6 +1035,17 @@ bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileTy
 	SaveOrLoadResult result = (lf == nullptr) ? SaveOrLoad(filename, fop, dft, subdir) : LoadWithFilter(lf);
 	if (result == SL_OK) return true;
 
+	if (_network_dedicated && _switch_mode == SM_START_HEIGHTMAP) {
+		auto t = _file_to_saveload.name.find_last_of('.');
+		if (t != std::string::npos) {
+			FiosType ft = FiosGetHeightmapListCallback(SLO_LOAD, filename, filename.substr(t).c_str(), nullptr, nullptr);
+			if (ft != FIOS_TYPE_INVALID) {
+				_file_to_saveload.SetMode(ft);
+				return true;
+			}
+		}
+	}
+
 	if (_network_dedicated && ogm == GM_MENU) {
 		/*
 		 * If we are a dedicated server *and* we just were in the menu, then we
@@ -1020,7 +1096,7 @@ void SwitchToMode(SwitchMode new_mode)
 	if (new_mode != SM_SAVE_GAME) {
 		/* If the network is active, make it not-active */
 		if (_networking) {
-			if (_network_server && (new_mode == SM_LOAD_GAME || new_mode == SM_NEWGAME || new_mode == SM_RESTARTGAME)) {
+			if (_network_server && (new_mode == SM_LOAD_GAME || new_mode == SM_START_HEIGHTMAP || new_mode == SM_NEWGAME || new_mode == SM_RESTARTGAME)) {
 				NetworkReboot();
 			} else {
 				NetworkDisconnect();

@@ -124,6 +124,8 @@ std::string FiosMakeHeightmapName(const char *name);
 std::string FiosMakeSavegameName(const char *name);
 
 FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last);
+FiosType FiosGetScenarioListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last);
+FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last);
 
 /**
  * A savegame name automatically numbered.
