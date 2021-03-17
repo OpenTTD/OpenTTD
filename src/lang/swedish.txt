@@ -624,7 +624,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 STR_PERFORMANCE_DETAIL_SELECT_COMPANY_TOOLTIP                   :{BLACK}Visa detaljer om detta företag
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vägfordon:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Fordon:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationer:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. vinst:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inkomst:
