@@ -1125,6 +1125,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Вибе
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Налаштування запрацює тільки після перезапуску гри
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Розмір інтерфейсу
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Оберіть розмір елементів інтерфейсу
@@ -1144,6 +1145,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Почетве�
 
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Показати швидкість оновлення
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Обрати швидкість оновлення екрану
 STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :інша
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
@@ -1698,6 +1700,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Рік закі
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Ніколи
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Тип економіки: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Плавна економіка здійснює часті зміни обсягів виробництва малими порціями. Заморожена економіка не допускає зміни обсягів виробництва і закриття підприємств. Це налаштування може не працювати, якщо використовується підприємства з NewGRF.
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Оригінальна
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Плавно
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Дозволити придбання акції інших компаній: {STRING}
@@ -2678,6 +2681,7 @@ STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Сади
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Випадкові дерева
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Випадкове насадження дерев по всьому ландшафту
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Саджати окремі дерева протягуванням по ландшафту
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Саджати гаї протягуванням по ландшафту
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Ліс
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Саджати великі ліси протягуванням по ландшафту
 
@@ -2732,12 +2736,14 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Нове
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Виберіть необхідне підприємство
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Багато різної промисловості
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Випадково розташувати підприємства по карті
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Створитипідприємства випадково
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Вартість: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Огляд
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Будувати
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Фінансувати
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Прибрати усі підприємства
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Прибрати усі підприємства, наявні на мапі
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Прибрати усі підприємства
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ланцюг вантажних перевезень для {STRING}
@@ -4394,6 +4400,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Файл збе
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Неможливо прочитати файл
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Неможливо записати файл
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Перевірка на цілісність зазнала невдачі
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Файл збереженої гри зроблений модифікованою версією
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<недоступно>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені
 
