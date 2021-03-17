@@ -383,7 +383,7 @@ STR_COLOUR_BROWN                                                :Ruda
 STR_COLOUR_GREY                                                 :Pilka
 STR_COLOUR_WHITE                                                :Balta
 STR_COLOUR_RANDOM                                               :Atsitiktinė
-STR_COLOUR_DEFAULT                                              :Numatytas
+STR_COLOUR_DEFAULT                                              :Numatytoji
 
 # Units used in OpenTTD
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
@@ -1155,8 +1155,8 @@ STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonezijos rup
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaizijos ringitai (MYR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kaire puse
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Dešine puse
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kairiąja puse
+STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Dešiniąja puse
 
 STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Miestų pavadinimai
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Pasirink miestų pavadinimų tipą
@@ -2104,12 +2104,12 @@ STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}Rodyti pagrindines spalvų parinktis
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}Rodyti traukinių spalvas
-STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Rodyti mašinų spalvas
+STR_LIVERY_ROAD_VEHICLE_TOOLTIP                                 :{BLACK}Rodyti automobilių spalvas
 STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Rodyti laivų spalvas
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Rodyti lėktuvų spalvas
-STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Pasirinkite pirminę spalvą pasirinktai schemai. Ctrl+Click nustatys šitą spalvą kiekvienai schemai
-STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Pasirinkite antrinę spalvą pasirinktai schemai. Ctrl+Click nustatys šitą spalvą kiekvienai schemai
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Pasirinkite spalvą pažymėjimui arba multi-spalvas CTRL+click. Paspauskite spalvos naudojimui
+STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Pasirinkite pirminę spalvą pasirinktai schemai. Spustelėjus laikant nuspaustą Ctrl klavišą, pasirinkta spava bus nustatyta visoms schemoms.
+STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Pasirinkite antrinę spalvą pasirinktai schemai. Spustelėjus laikant nuspaustą Ctrl klavišą, pasirinkta spava bus nustatyta visoms schemoms.
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Pasirinkite objektą, kurio spalvas norite pakeisti. Spragsint laikant nuspaustą Ctrl klavišą, galėsite pasirinkti iškart kelis objektus.
 
 STR_LIVERY_DEFAULT                                              :Numatytosios spalvos
 STR_LIVERY_STEAM                                                :Garinis lokomotyvas
@@ -2130,8 +2130,8 @@ STR_LIVERY_TRUCK                                                :Sunkvežimis
 STR_LIVERY_PASSENGER_SHIP                                       :Keleivinis laivas
 STR_LIVERY_FREIGHT_SHIP                                         :Krovininis laivas
 STR_LIVERY_HELICOPTER                                           :Sraigtasparnis
-STR_LIVERY_SMALL_PLANE                                          :Mažas orlaivis
-STR_LIVERY_LARGE_PLANE                                          :Didelis orlaivis
+STR_LIVERY_SMALL_PLANE                                          :Mažas lėktuvas
+STR_LIVERY_LARGE_PLANE                                          :Didelis lėktuvas
 STR_LIVERY_PASSENGER_TRAM                                       :Keleivinis tramvajus
 STR_LIVERY_FREIGHT_TRAM                                         :Krovininis tramvajus
 
@@ -3389,10 +3389,10 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Miestas 
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Miestas auga kas {ORANGE}{COMMA}{BLACK}{NBSP}dien{P ą as ų} (paremtas)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Miestas {RED}ne{BLACK}didėja
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Triukšmo limitas mieste: {ORANGE}{COMMA}{BLACK}  daugiausia: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Rodyti miestą ekrano centre. Ctrl+Paspaudimas atidaro naują langą su miesto vaizdu
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centruoti šį miestą pagrindiniame lange. Spragtelėjus laikant nuspaustą Ctrl klavišą, bus atidarytas naujas peržiūros langas su vaizdu į šį miestą
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Vietinė valdžia
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Rodyti informaciją apie valdžią
-STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Keisti miesto vardą
+STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Keisti miesto pavadinimą
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}Išplėsti
 STR_TOWN_VIEW_EXPAND_TOOLTIP                                    :{BLACK}Padidinti miesto dydį
@@ -3403,7 +3403,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Pervardinti mie
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}{TOWN} vietinė valdžia
-STR_LOCAL_AUTHORITY_ZONE                                        :Įtakos teritorija
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Aprėptis
 STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}Rodyti šio miesto įtakos teritoriją
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Transporto kompanijų reitingai:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
@@ -3628,32 +3628,32 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} vandens langeli{P s ai ų}
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} stoties langeli{P s ai ų}
 STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} oro uost{P as ai ų}
-STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nieko
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Nėra
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Pastatyti įmonės būstinę
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}Statyti įmonės būstinę
 STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}Apžiūrėti būstinę
-STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Žiūrėti įmonės būstinę
+STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}Apžiūrėti įmonės būstinę
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Perkelti būstinę
-STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Perstatyti įmonės būstinę kitur už 1% įmonė vertės. Shift+Click parodys kainą neperstatant būstinės
+STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Perstatyti įmonės būstinę kitur už 1% įmonės vertės. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos nieko realiai neperkeliant
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Išsamiau
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Peržiūrėti detalesnę infrastruktūros informaciją
 STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Pervesti pinigų
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Pervesti šiai kompanijai pinigų
 
-STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Naujas veidas
-STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Pasirink naują veidą
-STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Spalva
-STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Keičia kompanijos transporto priemonių spalvą
-STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Kompanijos pavadinimas
+STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Veidas
+STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Keičia direktoriaus veidą
+STR_COMPANY_VIEW_COLOUR_SCHEME_BUTTON                           :{BLACK}Spalvos
+STR_COMPANY_VIEW_COLOUR_SCHEME_TOOLTIP                          :{BLACK}Keičia kompanijos transporto priemonių spalvas
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}Pavadinimas
 STR_COMPANY_VIEW_COMPANY_NAME_TOOLTIP                           :{BLACK}Keičia kompanijos pavadinimą
 STR_COMPANY_VIEW_PRESIDENT_NAME_BUTTON                          :{BLACK}Direktoriaus vardas
 STR_COMPANY_VIEW_PRESIDENT_NAME_TOOLTIP                         :{BLACK}Keičia kompanijos direktoriaus vardą
 
 STR_COMPANY_VIEW_BUY_SHARE_BUTTON                               :{BLACK}Pirkti 25% kompanijos akcijų
 STR_COMPANY_VIEW_SELL_SHARE_BUTTON                              :{BLACK}Parduoti 25% kompanijos akcijų
-STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Pirkti 25% šios kompanijos akcijų. Shift+Click parodys kainą neperkant jokių akcijų
-STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Parduoti 25% šios kompanijos akcijų. Shift+Click parodys pardavimo kainą neparduodant akcijų
+STR_COMPANY_VIEW_BUY_SHARE_TOOLTIP                              :{BLACK}Pirkti 25% šios kompanijos akcijų. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos išlaidos nieko realiai neperkant
+STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}Parduoti 25% šios kompanijos akcijų. Spragtelėjus laikant nuspaustą Shift klavišą, bus parodytos numatomos pajamos nieko realiai neperkant
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :Kompanijos pavadinimas
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Direktoriaus vardas
@@ -4562,17 +4562,17 @@ STR_PERCENT_NONE_SMALL                                          :{TINY_FONT}{WHI
 STR_PERCENT_NONE                                                :{WHITE}{NUM}%
 
 # Income 'floats'
-STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Kaina: {CURRENCY_LONG}
-STR_INCOME_FLOAT_COST                                           :{RED}Kaina: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST_SMALL                                     :{TINY_FONT}{RED}Išlaidos: {CURRENCY_LONG}
+STR_INCOME_FLOAT_COST                                           :{RED}Išlaidos: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME_SMALL                                   :{TINY_FONT}{GREEN}Pajamos: {CURRENCY_LONG}
 STR_INCOME_FLOAT_INCOME                                         :{GREEN}Pajamos: {CURRENCY_LONG}
-STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Pervesti: {CURRENCY_LONG}
-STR_FEEDER                                                      :{YELLOW}Pervesti: {CURRENCY_LONG}
-STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Perkelti: {CURRENCY_LONG}{WHITE} / {GREEN}Pajamos: {CURRENCY_LONG}
-STR_FEEDER_INCOME                                               :{YELLOW}Perkelti: {CURRENCY_LONG}{WHITE} / {GREEN}Pajamos: {CURRENCY_LONG}
-STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Perkelti: {CURRENCY_LONG}{WHITE} / {RED}Kaštai: {CURRENCY_LONG}
-STR_FEEDER_COST                                                 :{YELLOW}Perkelti: {CURRENCY_LONG}{WHITE} / {RED}Kaštai: {CURRENCY_LONG}
-STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Numatoma kaina: {CURRENCY_LONG}
+STR_FEEDER_TINY                                                 :{TINY_FONT}{YELLOW}Pervesta: {CURRENCY_LONG}
+STR_FEEDER                                                      :{YELLOW}Pervesta: {CURRENCY_LONG}
+STR_FEEDER_INCOME_TINY                                          :{TINY_FONT}{YELLOW}Perkelta: {CURRENCY_LONG}{WHITE} / {GREEN}Pajamos: {CURRENCY_LONG}
+STR_FEEDER_INCOME                                               :{YELLOW}Perkelta: {CURRENCY_LONG}{WHITE} / {GREEN}Pajamos: {CURRENCY_LONG}
+STR_FEEDER_COST_TINY                                            :{TINY_FONT}{YELLOW}Perkelta: {CURRENCY_LONG}{WHITE} / {RED}Išlaidos: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}Perkelta: {CURRENCY_LONG}{WHITE} / {RED}Išlaidos: {CURRENCY_LONG}
+STR_MESSAGE_ESTIMATED_COST                                      :{WHITE}Numatomos išlaidos: {CURRENCY_LONG}
 STR_MESSAGE_ESTIMATED_INCOME                                    :{WHITE}Numatomos pajamos: {CURRENCY_LONG}
 
 # Saveload messages

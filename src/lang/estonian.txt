@@ -2625,7 +2625,7 @@ STR_LANDSCAPING_TOOLTIP_PURCHASE_LAND                           :{BLACK}Maa ostm
 # Object construction window
 STR_OBJECT_BUILD_CAPTION                                        :{WHITE}Objekti valik
 STR_OBJECT_BUILD_TOOLTIP                                        :{BLACK}Vali ehitatav objekt. Shift valib ehitamise/hinna kuvamise režiimi
-STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vali ehitatava objekti rühm
+STR_OBJECT_BUILD_CLASS_TOOLTIP                                  :{BLACK}Vali ehitatava objekti järk
 STR_OBJECT_BUILD_PREVIEW_TOOLTIP                                :{BLACK}Objekti eelvaade
 STR_OBJECT_BUILD_SIZE                                           :{BLACK}Suurus: {GOLD}{NUM} x {NUM} ruutu
 
