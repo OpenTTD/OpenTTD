@@ -131,6 +131,7 @@ bool VideoDriver_SDL_OpenGL::AllocateBackingStore(int w, int h, bool force)
 	MemSetT(&this->dirty_rect, 0);
 
 	bool res = OpenGLBackend::Get()->Resize(w, h, force);
+	SDL_GL_SwapWindow(this->sdl_window);
 	_screen.dst_ptr = this->GetVideoPointer();
 
 	_cur_palette.first_dirty = 0;
