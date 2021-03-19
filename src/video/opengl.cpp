@@ -13,8 +13,6 @@
 
 /* Define to disable buffer syncing. Will increase max fast forward FPS but produces artifacts. Mainly useful for performance testing. */
 // #define NO_GL_BUFFER_SYNC
-/* Define to enable persistent buffer mapping on AMD GPUs. */
-// #define GL_MAP_PERSISTENT_AMD
 /* Define to allow software rendering backends. */
 // #define GL_ALLOW_SOFTWARE_RENDERER
 
@@ -575,14 +573,6 @@ const char *OpenGLBackend::Init()
 	this->persistent_mapping_supported = IsOpenGLVersionAtLeast(3, 0) && (IsOpenGLVersionAtLeast(4, 4) || IsOpenGLExtensionSupported("GL_ARB_buffer_storage"));
 #ifndef NO_GL_BUFFER_SYNC
 	this->persistent_mapping_supported = this->persistent_mapping_supported && (IsOpenGLVersionAtLeast(3, 2) || IsOpenGLExtensionSupported("GL_ARB_sync"));
-#endif
-
-#ifndef GL_MAP_PERSISTENT_AMD
-	if (this->persistent_mapping_supported && (strstr(vend, "AMD") != nullptr || strstr(renderer, "Radeon") != nullptr)) {
-		/* AMD GPUs seem to perform badly with persistent buffer mapping, disable it for them. */
-		DEBUG(driver, 3, "OpenGL: Detected AMD GPU, not using persistent buffer mapping due to performance problems");
-		this->persistent_mapping_supported = false;
-	}
 #endif
 
 	if (this->persistent_mapping_supported && !BindPersistentBufferExtensions()) {
