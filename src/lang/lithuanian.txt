@@ -3442,7 +3442,7 @@ STR_GOALS_TEXT                                                  :{ORANGE}{STRING
 STR_GOALS_NONE                                                  :{ORANGE}- Nieko -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Paspaudus ant nurodymo bus rodoma gamykla/miestas/vieta. Paspaudus laikant VALD (CTRL) klavišą bus atidarytas naujas langas su gamykla/miestu/vieta
+STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Centruoti tikslo objektą pagrindiniame lange. Spragtelėjus laikant nuspaustą „Ctrl“ klavišą, bus atidarytas papildomas peržiūros langas su vaizdu į tą objektą
 
 # Goal question window
 STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Klausimas

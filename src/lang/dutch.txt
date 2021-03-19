@@ -2339,6 +2339,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, grafische elementen downloaden
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, OpenTTD afsluiten
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Downloaden mislukt
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Grafische elementen downloaden mislukt.{}Download de grafische elementen handmatig.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}OpenTTD afsluiten
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Doorzichtigheidsopties
