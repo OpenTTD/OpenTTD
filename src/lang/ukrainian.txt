@@ -319,6 +319,7 @@ STR_COLOUR_DEFAULT                                              :Звичайн�
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}миль/год
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}км/год
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}м/с
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}клітинок/день
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}к.с.
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}к.с.
@@ -440,7 +441,8 @@ STR_SORT_BY_RATING                                              :за рейти
 STR_SORT_BY_NUM_VEHICLES                                        :Кількість авто
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Загальний прибуток минулого року
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Загальний прибуток цього року
-STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Середній прибуток мигулого року
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Середній прибуток минулого року
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Середній прибуток цього року
 
 # Group by options for vehicle list
 STR_GROUP_BY_NONE                                               :Нема
@@ -1071,6 +1073,8 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Новий та
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Китайські ренміні (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Гонконгський долар (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Індійська рупія (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Індонезійська рупія (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзійський рингіт (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :лівосторонній рух
@@ -1125,6 +1129,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Вибе
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :інша
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Прискорення апаратного забезпечення
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Налаштування запрацює тільки після перезапуску гри
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Розмір інтерфейсу
@@ -1783,6 +1788,7 @@ STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :нормаль�
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Швидкість росту міста: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Налаштування швидкості росту міст
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :немає
@@ -2491,6 +2497,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}З'єд�
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Створити окрему точку маршруту
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Відключено через поточну відсутність транспорту для цієї інфраструктури
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Будівництво залізниці
@@ -2686,7 +2693,9 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Дере
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Садити дерева випадкового типу. Утримуйте Shift для показу витрат на висаджування
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Випадкові дерева
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Випадкове насадження дерев по всьому ландшафту
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Нормальна
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Саджати окремі дерева протягуванням по ландшафту
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Зріст
 STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Саджати гаї протягуванням по ландшафту
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Ліс
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Саджати великі ліси протягуванням по ландшафту
@@ -3316,6 +3325,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Під�
 STR_GOALS_CAPTION                                               :{WHITE}Цілі {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобальні цілі:
 STR_GOALS_SPECTATOR                                             :Загальні задачі
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Глобальні
 STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Показати глобальні цілі
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Компанія
 STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Показати цілі компанії
@@ -3900,7 +3910,9 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозв
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Показати місце розташування потяга в центрі екрану. Подвійний клац для показу потяга в центрі екрану.Ctrl+клац мишою відкриє нове вікно у місці розташування потяга
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Показати транспорт у вікні. Подвійний клац для показу транспорту в центрі екрану. Ctrl+клац мишою для руху за транспортом.
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Показати місце розташування корабля в центрі екрану. Подвійний клац для показу корабля в центрі екрану.Ctrl+клац мишою відкриє нове вікно у місці розташування корабля
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Показати авіатранспорт у вікні. Подвійний клац для показу авіатранспорту в центрі екрану. Ctrl+клац мишою для руху за авіатранспортом.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Направити поїзд у депо

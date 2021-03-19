@@ -1662,12 +1662,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Máximo acercam
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Máximo nivel de acercamiento para las ventanas de vista y la vista principal. Aumentar el nivel de acercamiento aumenta el consumo de memoria del juego
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Máximo alejamiento: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Máximo nivel de alejamiento para las ventanas de vista y la vista principal. Los niveles altos podrían provocar que el juego sea más lento
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Máxima resolución de sprites: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limitar la resolución máxima para sprites, lo cual impedirá que se usen gráficos de alta resolución aun cuando estén disponibles. Con esto se mantiene uniformidad en la apariencia del juego al haber archivos GRF múltiples con gráficos de resolución diversos.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Velocidad de crecimiento de pueblos: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :A qué velocidad se expanden los pueblos
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ninguna
@@ -2335,6 +2340,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sí, descargar los gráficos
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, salir de OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}La descarga falló
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}La descarga de gráficos falló.{}Se deben descargar manualmente.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Salir de OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opciones de transparencia
