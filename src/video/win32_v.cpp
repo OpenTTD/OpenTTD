@@ -1417,6 +1417,7 @@ bool VideoDriver_Win32OpenGL::AllocateBackingStore(int w, int h, bool force)
 
 	this->dirty_rect = {};
 	bool res = OpenGLBackend::Get()->Resize(w, h, force);
+	SwapBuffers(this->dc);
 	_screen.dst_ptr = this->GetVideoPointer();
 
 	return res;
