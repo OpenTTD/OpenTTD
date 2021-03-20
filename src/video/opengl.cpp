@@ -878,6 +878,22 @@ bool OpenGLBackend::InitShaders()
 }
 
 /**
+ * Clear the bound pixel buffer to a specific value.
+ * @param len Length of the buffer.
+ * @param data Value to set.
+ * @tparam T Pixel type.
+ */
+template <class T>
+static void ClearPixelBuffer(size_t len, T data)
+{
+	T *buf = reinterpret_cast<T *>(_glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE));
+	for (int i = 0; i < len; i++) {
+		*buf++ = data;
+	}
+	_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+}
+
+/**
  * Change the size of the drawing window and allocate matching resources.
  * @param w New width of the window.
  * @param h New height of the window.
@@ -911,14 +927,16 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 		if (_glClearBufferSubData != nullptr) {
 			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_RGBA8, 0, pitch * h * bpp / 8, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, &black.data);
 		} else {
-			uint32 *buf = (uint32 *)_glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
-			for (int i = 0; i < pitch * h; i++) {
-				*buf++ = black.data;
-			}
-			_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
+			ClearPixelBuffer<uint32>(pitch * h, black.data);
+		}
+	} else if (bpp == 8) {
+		if (_glClearBufferSubData != nullptr) {
+			byte b = 0;
+			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, pitch * h, GL_RED, GL_UNSIGNED_BYTE, &b);
+		} else {
+			ClearPixelBuffer<byte>(pitch * h, 0);
 		}
 	}
-	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
 	_glActiveTexture(GL_TEXTURE0);
 	_glBindTexture(GL_TEXTURE_2D, this->vid_texture);
@@ -931,6 +949,7 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 			_glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, nullptr);
 			break;
 	}
+	_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 
 	/* Does this blitter need a separate animation buffer? */
 	if (BlitterFactory::GetCurrentBlitter()->NeedsAnimationBuffer()) {
@@ -944,10 +963,18 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
 			_glBufferData(GL_PIXEL_UNPACK_BUFFER, pitch * h, nullptr, GL_DYNAMIC_DRAW);
 		}
-		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
+
+		/* Initialize buffer as 0 == no remap. */
+		if (_glClearBufferSubData != nullptr) {
+			byte b = 0;
+			_glClearBufferSubData(GL_PIXEL_UNPACK_BUFFER, GL_R8, 0, pitch * h, GL_RED, GL_UNSIGNED_BYTE, &b);
+		} else {
+			ClearPixelBuffer<byte>(pitch * h, 0);
+		}
 
 		_glBindTexture(GL_TEXTURE_2D, this->anim_texture);
 		_glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, w, h, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
+		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0);
 	} else {
 		if (this->anim_buffer != nullptr) {
 			_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->anim_pbo);
@@ -974,6 +1001,8 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 	/* Update screen size in remap shader program. */
 	_glUseProgram(this->remap_program);
 	_glUniform2f(this->remap_screen_loc, (float)_screen.width, (float)_screen.height);
+
+	_glClear(GL_COLOR_BUFFER_BIT);
 
 	return true;
 }
