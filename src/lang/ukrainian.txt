@@ -1152,6 +1152,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Почетве�
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Показати швидкість оновлення
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Обрати швидкість оновлення екрану
 STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :інша
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Оновлення з частотою понад 60ГГц може зашкодити роботі гри.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Базовий набір графіки
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Оберіть, яку основну графіку використовувати
