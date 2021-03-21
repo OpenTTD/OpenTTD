@@ -887,7 +887,7 @@ template <class T>
 static void ClearPixelBuffer(size_t len, T data)
 {
 	T *buf = reinterpret_cast<T *>(_glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE));
-	for (int i = 0; i < len; i++) {
+	for (size_t i = 0; i < len; i++) {
 		*buf++ = data;
 	}
 	_glUnmapBuffer(GL_PIXEL_UNPACK_BUFFER);
