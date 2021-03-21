@@ -1015,6 +1015,7 @@ STR_GAME_OPTIONS_CURRENCY_CNY                                   :Čínsky jüan 
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongský dolár (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indická rupia (INR)
 STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonézska rupia (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malajzijský ringgit (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Jazdia naľavo
@@ -1068,6 +1069,9 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rozlíš
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Výber rozlíšenia obrazovky
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :iné
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardvérové zrýchlenie
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Zaškrtnutím políčka dovolíte, aby sa OpenTTD pokúsilo použiť hardvérové zrýchlenie. Zmena nastavenia sa uplatní až po reštartovaní hry
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Nastavenie sa uplatní až po reštartovaní hry
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veľkosť rozhrania
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Výber veľkosti prvkov rozhrania
@@ -1085,6 +1089,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normálna
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dvojnásobná veľkosť
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Štvornásobná veľkosť
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základná sada grafiky
@@ -1854,6 +1859,8 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Nedostat
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Pridelenie {BYTES} z medzipamäte zlyhalo. Medzipamäť bola zredukovaná na {BYTES}. Tým sa zníži výkon OpenTTD. Ak chcete znížiť nároky na pamäť, skúste vypnúť 32bpp grafiku a/alebo približovacie úrovne.
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Chyba v nastavení videa...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nenašlo sa kompatibilné GPU. Hardvérové zrýchlenie vypnuté
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -3248,8 +3255,8 @@ STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podplatiť mies
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Spustiť malú reklamnú kampaň, ktorá privedie viac cestujúcich a nákladu k vašej spoločnosti.{} Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Spustiť strednú reklamnú kampaň, ktorá privedie viac cestujúcich a nákladu k vašej spoločnosti.{} Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Spustiť veľkú reklamnú kampaň, ktorá privedie viac cestujúcich a nákladu k vašej spoločnosti.{} Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financovať rekonštrukciu mestskej cestnej siete. Spôsobí dopravný chaos a zápchy trvajúce ďalších 6 mesiacov.{} Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Postaviť sochu na oslavu vašej spoločnosti.{} Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financovať rekonštrukciu mestskej cestnej siete.{}Spôsobí dopravný chaos a zápchy trvajúce ďalších 6 mesiacov.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Postaviť sochu na počesť vašej spoločnosti.{}Zabezpečí trvalé zvýšenie hodnotenia staníc v tomto meste.{}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financovať výstavbu nových administratívnych a obchodných budov v meste.{}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Zakúpiť exkluzívne dopravné práva na 1 rok pre vašu spoločnosť. Miestna správa dovolí cestujúcim a nákladu používať len vaše stanice.{} Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplatiť miestnu správu pre zvýšenie hodnotenia tvojej spoločnosti, s rizikom ťažkého postihu pri odhalení!{}Cena: {CURRENCY_LONG}
@@ -3258,6 +3265,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplat
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ciele
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globálne ciele
 STR_GOALS_SPECTATOR                                             :Globálne ciele
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globálne
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Zobraziť globálne ciele
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Spoločnosť
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Zobraziť ciele spoločnosti
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nič -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
