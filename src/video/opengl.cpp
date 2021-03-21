@@ -909,6 +909,8 @@ bool OpenGLBackend::Resize(int w, int h, bool force)
 
 	_glViewport(0, 0, w, h);
 
+	_glPixelStorei(GL_UNPACK_ROW_LENGTH, pitch);
+
 	this->vid_buffer = nullptr;
 	if (this->persistent_mapping_supported) {
 		_glDeleteBuffers(1, &this->vid_pbo);
