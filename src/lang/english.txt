@@ -1352,6 +1352,8 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximum distanc
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limit for how far from the map border oil refineries and oil rigs can be constructed. On island maps this ensures they are near the coast. On maps larger than 256 tiles, this value is scaled up.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snow line height: {STRING2}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Control at what height snow starts in sub-arctic landscape. Snow also affects industry generation and town growth requirements
+STR_CONFIG_SETTING_RAINFORESTLINE_HEIGHT                        :Rainforest line height: {STRING}
+STR_CONFIG_SETTING_RAINFORESTLINE_HEIGHT_HELPTEXT               :Control at what height rainforest starts in sub-tropic landscape. Rainforests also affect industry generation and town growth requirements
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Roughness of terrain: {STRING2}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Choose the frequency of hills: Smooth landscapes have fewer, more wide-spread hills. Rough landscapes have many hills, which may look repetitive
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
@@ -2898,6 +2900,9 @@ STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Decrease
 STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snow line height:
 STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Move the snow line height one up
 STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Move the snow line height one down
+STR_MAPGEN_RAINFOREST_LINE_HEIGHT                               :{BLACK}Rainforest line height:
+STR_MAPGEN_RAINFOREST_LINE_UP                                   :{BLACK}Move the rainforest line height one up
+STR_MAPGEN_RAINFOREST_LINE_DOWN                                 :{BLACK}Move the rainforest line height one down
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land generator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain type:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Sea level:
@@ -2925,6 +2930,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x
 
 STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Change maximum map height
 STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Change snow line height
+STR_MAPGEN_RAINFOREST_LINE_QUERY_CAPT                           :{WHITE}Change rainforest line height
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change starting year
 
 # SE Map generation

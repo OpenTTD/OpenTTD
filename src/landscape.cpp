@@ -971,7 +971,7 @@ static void CreateDesertOrRainForest()
 {
 	TileIndex update_freq = MapSize() / 4;
 	const TileIndexDiffC *data;
-	uint max_desert_height = CeilDiv(_settings_game.construction.max_heightlevel, 4);
+	uint max_desert_height = _settings_game.game_creation.rainforest_line_height;
 
 	for (TileIndex tile = 0; tile != MapSize(); ++tile) {
 		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);

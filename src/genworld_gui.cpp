@@ -111,7 +111,10 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 				NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
 					NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_MAX_HEIGHTLEVEL, STR_NULL), SetFill(1, 1),
-						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SNOW_LINE_HEIGHT, STR_NULL), SetFill(1, 1),
+						NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GL_LEVEL_SEL_1),
+							NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SNOW_LINE_HEIGHT, STR_NULL), SetFill(1, 1),
+							NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_RAINFOREST_LINE_HEIGHT, STR_NULL), SetFill(1, 1),
+						EndContainer(),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_DATE, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SMOOTHNESS, STR_NULL), SetFill(1, 1),
 						NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_QUANTITY_OF_RIVERS, STR_NULL), SetFill(1, 1),
@@ -124,11 +127,19 @@ static const NWidgetPart _nested_generate_landscape_widgets[] = {
 							NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_MAX_HEIGHTLEVEL_TEXT), SetDataTip(STR_BLACK_INT, STR_NULL), SetFill(1, 0),
 							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_MAX_HEIGHTLEVEL_UP), SetDataTip(SPR_ARROW_UP, STR_MAPGEN_MAX_HEIGHTLEVEL_UP), SetFill(0, 1),
 						EndContainer(),
+						NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GL_LEVEL_SEL_2),
 						/* Snow line. */
 						NWidget(NWID_HORIZONTAL),
 							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_SNOW_LEVEL_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_MAPGEN_SNOW_LINE_DOWN), SetFill(0, 1),
 							NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_SNOW_LEVEL_TEXT), SetDataTip(STR_BLACK_INT, STR_NULL), SetFill(1, 0),
 							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_SNOW_LEVEL_UP), SetDataTip(SPR_ARROW_UP, STR_MAPGEN_SNOW_LINE_UP), SetFill(0, 1),
+						EndContainer(),
+						/* Rainforest line. */
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_RAINFOREST_LEVEL_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_MAPGEN_RAINFOREST_LINE_DOWN), SetFill(0, 1),
+							NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_RAINFOREST_LEVEL_TEXT), SetDataTip(STR_BLACK_INT, STR_NULL), SetFill(1, 0),
+							NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_RAINFOREST_LEVEL_UP), SetDataTip(SPR_ARROW_UP, STR_MAPGEN_RAINFOREST_LINE_UP), SetFill(0, 1),
+						EndContainer(),
 						EndContainer(),
 						/* Starting date. */
 						NWidget(NWID_HORIZONTAL),
@@ -228,7 +239,10 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 						NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
 							NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_MAX_HEIGHTLEVEL, STR_NULL), SetFill(1, 1),
-								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SNOW_LINE_HEIGHT, STR_NULL), SetFill(1, 1),
+								NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GL_LEVEL_SEL_1),
+									NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SNOW_LINE_HEIGHT, STR_NULL), SetFill(1, 1),
+									NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_RAINFOREST_LINE_HEIGHT, STR_NULL), SetFill(1, 1),
+								EndContainer(),
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_DATE, STR_NULL), SetFill(1, 1),
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_FRAME, STR_NULL), SetFill(1, 1),
 							EndContainer(),
@@ -238,10 +252,19 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 									NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_MAX_HEIGHTLEVEL_TEXT), SetDataTip(STR_BLACK_INT, STR_NULL), SetFill(1, 0),
 									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_MAX_HEIGHTLEVEL_UP), SetDataTip(SPR_ARROW_UP, STR_MAPGEN_MAX_HEIGHTLEVEL_UP), SetFill(0, 1),
 								EndContainer(),
+								NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GL_LEVEL_SEL_2),
+								/* Snow line. */
 								NWidget(NWID_HORIZONTAL),
 									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_SNOW_LEVEL_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_MAPGEN_SNOW_LINE_DOWN), SetFill(0, 1),
 									NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_SNOW_LEVEL_TEXT), SetDataTip(STR_BLACK_INT, STR_NULL), SetFill(1, 0),
 									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_SNOW_LEVEL_UP), SetDataTip(SPR_ARROW_UP, STR_MAPGEN_SNOW_LINE_UP), SetFill(0, 1),
+								EndContainer(),
+								/* Rainforest line. */
+								NWidget(NWID_HORIZONTAL),
+									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_RAINFOREST_LEVEL_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_MAPGEN_RAINFOREST_LINE_DOWN), SetFill(0, 1),
+									NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_RAINFOREST_LEVEL_TEXT), SetDataTip(STR_BLACK_INT, STR_NULL), SetFill(1, 0),
+									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_RAINFOREST_LEVEL_UP), SetDataTip(SPR_ARROW_UP, STR_MAPGEN_RAINFOREST_LINE_UP), SetFill(0, 1),
+								EndContainer(),
 								EndContainer(),
 								NWidget(NWID_HORIZONTAL),
 									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_START_DATE_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD), SetFill(0, 1),
@@ -367,6 +390,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_MAPSIZE_Y_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_y); break;
 			case WID_GL_MAX_HEIGHTLEVEL_TEXT: SetDParam(0, _settings_newgame.construction.max_heightlevel); break;
 			case WID_GL_SNOW_LEVEL_TEXT:      SetDParam(0, _settings_newgame.game_creation.snow_line_height); break;
+			case WID_GL_RAINFOREST_LEVEL_TEXT:SetDParam(0, _settings_newgame.game_creation.rainforest_line_height); break;
 
 			case WID_GL_TOWN_PULLDOWN:
 				if (_game_mode == GM_EDITOR) {
@@ -458,6 +482,13 @@ struct GenerateLandscapeWindow : public Window {
 
 		/* Disable snowline if not arctic */
 		this->SetWidgetDisabledState(WID_GL_SNOW_LEVEL_TEXT, _settings_newgame.game_creation.landscape != LT_ARCTIC);
+		/* Disable rainforest line if not tropic */
+		this->SetWidgetDisabledState(WID_GL_RAINFOREST_LEVEL_TEXT, _settings_newgame.game_creation.landscape != LT_TROPIC);
+
+		/* Set snow/rainforest selections */
+		int snow_rainforest_plane = _settings_newgame.game_creation.landscape == LT_TROPIC ? 1 : 0;
+		this->GetWidget<NWidgetStacked>(WID_GL_LEVEL_SEL_1)->SetDisplayedPlane(snow_rainforest_plane);
+		this->GetWidget<NWidgetStacked>(WID_GL_LEVEL_SEL_2)->SetDisplayedPlane(snow_rainforest_plane);
 
 		/* Update availability of decreasing / increasing start date and snow level */
 		this->SetWidgetDisabledState(WID_GL_MAX_HEIGHTLEVEL_DOWN, _settings_newgame.construction.max_heightlevel <= MIN_MAX_HEIGHTLEVEL);
@@ -466,6 +497,8 @@ struct GenerateLandscapeWindow : public Window {
 		this->SetWidgetDisabledState(WID_GL_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= MAX_YEAR);
 		this->SetWidgetDisabledState(WID_GL_SNOW_LEVEL_DOWN, _settings_newgame.game_creation.snow_line_height <= MIN_SNOWLINE_HEIGHT || _settings_newgame.game_creation.landscape != LT_ARCTIC);
 		this->SetWidgetDisabledState(WID_GL_SNOW_LEVEL_UP,   _settings_newgame.game_creation.snow_line_height >= MAX_SNOWLINE_HEIGHT || _settings_newgame.game_creation.landscape != LT_ARCTIC);
+		this->SetWidgetDisabledState(WID_GL_RAINFOREST_LEVEL_DOWN, _settings_newgame.game_creation.rainforest_line_height <= MIN_RAINFOREST_HEIGHT || _settings_newgame.game_creation.landscape != LT_TROPIC);
+		this->SetWidgetDisabledState(WID_GL_RAINFOREST_LEVEL_UP, _settings_newgame.game_creation.rainforest_line_height >= MAX_RAINFOREST_HEIGHT || _settings_newgame.game_creation.landscape != LT_TROPIC);
 
 		/* Do not allow a custom sea level with the original land generator. */
 		if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL &&
@@ -497,6 +530,11 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_SNOW_LEVEL_TEXT:
 				SetDParamMaxValue(0, MAX_TILE_HEIGHT);
+				*size = maxdim(*size, GetStringBoundingBox(STR_JUST_INT));
+				break;
+
+			case WID_GL_RAINFOREST_LEVEL_TEXT:
+				SetDParamMaxValue(0, MAX_RAINFOREST_HEIGHT);
 				*size = maxdim(*size, GetStringBoundingBox(STR_JUST_INT));
 				break;
 
@@ -674,6 +712,24 @@ struct GenerateLandscapeWindow : public Window {
 				ShowQueryString(STR_JUST_INT, STR_MAPGEN_SNOW_LINE_QUERY_CAPT, 4, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
+				case WID_GL_RAINFOREST_LEVEL_DOWN:
+			case WID_GL_RAINFOREST_LEVEL_UP: // Rainforest line buttons
+				/* Don't allow too fast scrolling */
+				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
+					this->HandleButtonClick(widget);
+
+					_settings_newgame.game_creation.rainforest_line_height = Clamp(_settings_newgame.game_creation.rainforest_line_height + widget - WID_GL_RAINFOREST_LEVEL_TEXT, MIN_RAINFOREST_HEIGHT, MAX_RAINFOREST_HEIGHT);
+					this->InvalidateData();
+				}
+				_left_button_clicked = false;
+				break;
+
+			case WID_GL_RAINFOREST_LEVEL_TEXT: // Rainforest line text
+				this->widget_id = WID_GL_RAINFOREST_LEVEL_TEXT;
+				SetDParam(0, _settings_newgame.game_creation.rainforest_line_height);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_RAINFOREST_LINE_QUERY_CAPT, 4, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
+				break;
+
 			case WID_GL_LANDSCAPE_PULLDOWN: // Landscape generator
 				ShowDropDownMenu(this, _landscape, _settings_newgame.game_creation.land_generator, WID_GL_LANDSCAPE_PULLDOWN, 0, 0);
 				break;
@@ -739,7 +795,7 @@ struct GenerateLandscapeWindow : public Window {
 
 	void OnTimeout() override
 	{
-		static const int raise_widgets[] = {WID_GL_MAX_HEIGHTLEVEL_DOWN, WID_GL_MAX_HEIGHTLEVEL_UP, WID_GL_START_DATE_DOWN, WID_GL_START_DATE_UP, WID_GL_SNOW_LEVEL_UP, WID_GL_SNOW_LEVEL_DOWN, WIDGET_LIST_END};
+		static const int raise_widgets[] = {WID_GL_MAX_HEIGHTLEVEL_DOWN, WID_GL_MAX_HEIGHTLEVEL_UP, WID_GL_START_DATE_DOWN, WID_GL_START_DATE_UP, WID_GL_SNOW_LEVEL_UP, WID_GL_SNOW_LEVEL_DOWN, WID_GL_RAINFOREST_LEVEL_UP, WID_GL_RAINFOREST_LEVEL_DOWN, WIDGET_LIST_END };
 		for (const int *widget = raise_widgets; *widget != WIDGET_LIST_END; widget++) {
 			if (this->IsWidgetLowered(*widget)) {
 				this->RaiseWidget(*widget);
@@ -812,6 +868,7 @@ struct GenerateLandscapeWindow : public Window {
 				case WID_GL_MAX_HEIGHTLEVEL_TEXT: value = DEF_MAX_HEIGHTLEVEL; break;
 				case WID_GL_START_DATE_TEXT: value = DEF_START_YEAR; break;
 				case WID_GL_SNOW_LEVEL_TEXT: value = DEF_SNOWLINE_HEIGHT; break;
+				case WID_GL_RAINFOREST_LEVEL_TEXT: value = DEF_RAINFOREST_HEIGHT; break;
 				case WID_GL_TOWN_PULLDOWN:   value = 1; break;
 				case WID_GL_WATER_PULLDOWN:  value = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE; break;
 				default: NOT_REACHED();
@@ -832,6 +889,11 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_SNOW_LEVEL_TEXT:
 				this->SetWidgetDirty(WID_GL_SNOW_LEVEL_TEXT);
 				_settings_newgame.game_creation.snow_line_height = Clamp(value, MIN_SNOWLINE_HEIGHT, MAX_SNOWLINE_HEIGHT);
+				break;
+
+			case WID_GL_RAINFOREST_LEVEL_TEXT:
+				this->SetWidgetDirty(WID_GL_RAINFOREST_LEVEL_TEXT);
+				_settings_newgame.game_creation.rainforest_line_height = Clamp(value, MIN_RAINFOREST_HEIGHT, MAX_RAINFOREST_HEIGHT);
 				break;
 
 			case WID_GL_TOWN_PULLDOWN:

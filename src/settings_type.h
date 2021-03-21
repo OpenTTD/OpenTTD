@@ -297,6 +297,7 @@ struct GameCreationSettings {
 	byte   land_generator;                   ///< the landscape generator
 	byte   oil_refinery_limit;               ///< distance oil refineries allowed from map edge
 	byte   snow_line_height;                 ///< the configured snow line height
+	byte   rainforest_line_height;           ///< the configured rainforest line height
 	byte   tgen_smoothness;                  ///< how rough is the terrain from 0-3
 	byte   tree_placer;                      ///< the tree placer algorithm
 	byte   heightmap_rotation;               ///< rotation director for the heightmap
