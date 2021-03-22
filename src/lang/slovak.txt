@@ -1091,6 +1091,11 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Štvornásobná
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Obnovovacia frekvencia obrazovky
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Výber používanej obnovovacej frekvencie obrazu
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :iná
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Obnovovacia frekvencia vyššia ako 60Hz môže znížiť výkon.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Základná sada grafiky
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Výber sady grafiky, ktorá má byť použitá
@@ -1723,12 +1728,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximálna úro
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximálna úroveň priblíženia pohľadu. Vyššie úrovne priblíženia zvyšujú požiadavky na pamäť
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximálna úroveň oddialenia: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximálna úroveň oddialenia pohľadu. Vyššie úrovne oddialenia môžu pri používaní spôsobovať oneskorenie
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Najvyššie rozlíšenie grafických prvkov: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limit maximálneho rozlíšenia grafických prvkov. Limitovanie rozlíšenia prvkov znemožní používanie vysokého rozlíšenia aj keď je dostupné. To pomáha zachovať zjednotený vzhľad hry, ak sa používa mix GRF súborov s a bez vysokého rozlíšenia.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4-krát
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2-krát
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normálna
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2-krát
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4-krát
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8-krát
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Rozvoj miest: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Rýchlosť rastu miest
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :žiadny
