@@ -871,9 +871,9 @@ STR_NEWS_AIRCRAFT_DEST_TOO_FAR                                  :{WHITE}거리�
 STR_NEWS_ORDER_REFIT_FAILED                                     :{WHITE}경로 상에 있던 개조에 실패하여 {VEHICLE}의 운행을 멈췄습니다.
 STR_NEWS_VEHICLE_AUTORENEW_FAILED                               :{WHITE}{VEHICLE}의 자동 교체에 실패하였습니다{}{STRING}
 
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}신형 {STRING}{G 0 "을" "를"} 사용할 수 있습니다!
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLACK}새로운 {STRING}{G 0 "을" "를"} 사용할 수 있습니다!
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
-STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}신형 {STRING}{G 0 "을" "를"} 사용할 수 있습니다!  -  {ENGINE}
+STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}새로운 {STRING}{G 0 "을" "를"} 사용할 수 있습니다!  -  {ENGINE}
 
 STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}이 차량이 속한 차량 그룹 목록 열기
 
