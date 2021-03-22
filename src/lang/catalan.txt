@@ -2330,7 +2330,7 @@ STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}{
 
 # Content downloading error messages
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No s'ha pogut connectar amb el servidor de continguts...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descàrrega fallida...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}La descàrrega ha fallat...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connexió perduda
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... no es pot escriure al fitxer
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han pogut descomprimir els arxius descarregats
@@ -2340,6 +2340,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}L'OpenTT
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Sí, descarregar els gràfics
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}No, surt de l'OpenTTD.
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Ha fallat la descàrrega.
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}La descàrrega de gràfics ha fallat.{}Si us plau, baixeu els gràfics manualment.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Surt de l'OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opcions de transparència
