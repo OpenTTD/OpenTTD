@@ -1529,6 +1529,10 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Zoskupiť výda
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definujte rozloženie okna s financiami.
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Automaticky odstraňovať návestidlá pri výstavbe železnice: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automaticky odstraňovať návestidla pri výstavbe železnice, ak návestidlá blokujú výstavbu. To však môže niekedy smerovať k zrážke vlakov.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limit zrýchlenia priebehu hry: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limit rýchlosti hry pri zapnutí zrýchlenia priebehu hry. 0 = bez limitu (tak rýchlo, ako to umožní počítač). Hodnoty pod 100% spomalia hru. Horný limit závisí od špecifikácií počítača a môže sa meniť s hrou.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% normálnej hernej rýchlosti
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Bez limitu (tak rýchlo, ako to umožní počítač)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Oznamovač správ: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Prehrať zvuk pri zhrnutých správach
@@ -3252,13 +3256,13 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financovať vý
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Zakúpiť exkluzívne dopravné práva
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Podplatiť miestnu správu
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Spustiť malú reklamnú kampaň, ktorá privedie viac cestujúcich a nákladu k vašej spoločnosti.{} Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Spustiť strednú reklamnú kampaň, ktorá privedie viac cestujúcich a nákladu k vašej spoločnosti.{} Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Spustiť veľkú reklamnú kampaň, ktorá privedie viac cestujúcich a nákladu k vašej spoločnosti.{} Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Spustiť malú reklamnú kampaň, ktorá priláka viac cestujúcich a nákladu k vašej spoločnosti.{}Zabezpečí dočasné zvýšenie hodnotenia staníc v malom okruhu okolo centra mesta.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Spustiť strednú reklamnú kampaň, ktorá priláka viac cestujúcich a nákladu k vašej spoločnosti.{}Zabezpečí dočasné zvýšenie hodnotenia staníc v stredne veľkom okruhu okolo centra mesta.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Spustiť veľkú reklamnú kampaň, ktorá priláka viac cestujúcich a nákladu k vašej spoločnosti.{}Zabezpečí dočasné zvýšenie hodnotenia staníc vo veľkom okruhu okolo centra mesta.{}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Financovať rekonštrukciu mestskej cestnej siete.{}Spôsobí dopravný chaos a zápchy trvajúce ďalších 6 mesiacov.{}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Postaviť sochu na počesť vašej spoločnosti.{}Zabezpečí trvalé zvýšenie hodnotenia staníc v tomto meste.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financovať výstavbu nových administratívnych a obchodných budov v meste.{}Cena: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Zakúpiť exkluzívne dopravné práva na 1 rok pre vašu spoločnosť. Miestna správa dovolí cestujúcim a nákladu používať len vaše stanice.{} Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Financovať výstavbu nových budov v meste.{}Zabezpečí dočasné zrýchlenie rastu tohto mesta.{}Cena: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Zakúpiť exkluzívne dopravné práva v meste na 1 rok.{}Miestna správa nedovolí cestujúcim a nákladu používať stanice konkurentov.{}Cena: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Podplatiť miestnu správu pre zvýšenie hodnotenia tvojej spoločnosti, s rizikom ťažkého postihu pri odhalení!{}Cena: {CURRENCY_LONG}
 
 # Goal window
