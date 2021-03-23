@@ -9,9 +9,11 @@
 
 #include "stdafx.h"
 #include "command_func.h"
+#include "hotkeys.h"
 #include "newgrf.h"
 #include "newgrf_object.h"
 #include "newgrf_text.h"
+#include "object.h"
 #include "querystring_gui.h"
 #include "sortlist_type.h"
 #include "stringfilter_type.h"
@@ -32,6 +34,11 @@
 static ObjectClassID _selected_object_class; ///< Currently selected available object class.
 static int _selected_object_index;           ///< Index of the currently selected object if existing, else \c -1.
 static uint8 _selected_object_view;          ///< the view of the selected object
+
+/** Enum referring to the Hotkeys in the build object window */
+enum BuildObjectHotkeys {
+	BOHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
+};
 
 /** The window used for building objects. */
 class BuildObjectWindow : public Window {
@@ -88,7 +95,7 @@ class BuildObjectWindow : public Window {
 	}
 
 public:
-	BuildObjectWindow(WindowDesc *desc, WindowNumber number) : Window(desc), info_height(1), filter_editbox(EDITBOX_MAX_SIZE)
+	BuildObjectWindow(WindowDesc *desc, WindowNumber number) : Window(desc), info_height(1), filter_editbox(EDITBOX_MAX_SIZE * MAX_CHAR_LENGTH, EDITBOX_MAX_SIZE)
 	{
 		this->CreateNestedTree();
 
@@ -545,6 +552,21 @@ public:
 		this->UpdateButtons(_selected_object_class, -1, _selected_object_view);
 	}
 
+	EventState OnHotkey(int hotkey) override
+	{
+		switch (hotkey) {
+			case BOHK_FOCUS_FILTER_BOX:
+				this->SetFocusedWidget(WID_BO_FILTER);
+				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
+				break;
+
+			default:
+				return ES_NOT_HANDLED;
+		}
+
+		return ES_HANDLED;
+	}
+
 	void OnEditboxChanged(int wid) override
 	{
 		string_filter.SetFilterTerm(this->filter_editbox.text.buf);
@@ -598,7 +620,28 @@ public:
 		}
 		this->SelectOtherObject(-1);
 	}
+
+	static HotkeyList hotkeys;
 };
+
+/**
+ * Handler for global hotkeys of the BuildObjectWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState BuildObjectGlobalHotkeys(int hotkey)
+{
+	if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
+	Window *w = ShowBuildObjectPicker();
+	if (w == nullptr) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
+static Hotkey buildobject_hotkeys[] = {
+	Hotkey('F', "focus_filter_box", BOHK_FOCUS_FILTER_BOX),
+	HOTKEY_LIST_END
+};
+HotkeyList BuildObjectWindow::hotkeys("buildobject", buildobject_hotkeys, BuildObjectGlobalHotkeys);
 
 Listing BuildObjectWindow::last_sorting = { false, 0 };
 Filtering BuildObjectWindow::last_filtering = { false, 0 };
@@ -662,16 +705,18 @@ static WindowDesc _build_object_desc(
 	WDP_AUTO, "build_object", 0, 0,
 	WC_BUILD_OBJECT, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	_nested_build_object_widgets, lengthof(_nested_build_object_widgets)
+	_nested_build_object_widgets, lengthof(_nested_build_object_widgets),
+	&BuildObjectWindow::hotkeys
 );
 
 /** Show our object picker.  */
-void ShowBuildObjectPicker()
+Window *ShowBuildObjectPicker()
 {
 	/* Don't show the place object button when there are no objects to place. */
 	if (ObjectClass::GetUIClassCount() > 0) {
-		AllocateWindowDescFront<BuildObjectWindow>(&_build_object_desc, 0);
+		return AllocateWindowDescFront<BuildObjectWindow>(&_build_object_desc, 0);
 	}
+	return nullptr;
 }
 
 /** Reset all data of the object GUI. */
