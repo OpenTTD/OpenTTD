@@ -71,7 +71,7 @@ static RailStationGUISettings _railstation; ///< Settings of the station builder
 static void HandleStationPlacement(TileIndex start, TileIndex end);
 static void ShowBuildTrainDepotPicker(Window *parent);
 static void ShowBuildWaypointPicker(Window *parent);
-static void ShowStationBuilder(Window *parent);
+static Window *ShowStationBuilder(Window *parent);
 static void ShowSignalBuilder(Window *parent);
 
 /**
@@ -888,6 +888,11 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	ShowSelectStationIfNeeded(cmdcont, ta);
 }
 
+/** Enum referring to the Hotkeys in the build rail station window */
+enum BuildRalStationHotkeys {
+	BRASHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
+};
+
 struct BuildRailStationWindow : public PickerWindowBase {
 private:
 	uint line_height;     ///< Height of a single line in the newstation selection matrix (#WID_BRAS_NEWST_LIST widget).
@@ -959,7 +964,7 @@ private:
 	}
 
 public:
-	BuildRailStationWindow(WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(desc, parent), filter_editbox(EDITBOX_MAX_SIZE)
+	BuildRailStationWindow(WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(desc, parent), filter_editbox(EDITBOX_MAX_SIZE * MAX_CHAR_LENGTH, EDITBOX_MAX_SIZE)
 	{
 		this->coverage_height = 2 * FONT_HEIGHT_NORMAL + 3 * WD_PAR_VSEP_NORMAL;
 		this->vscroll = nullptr;
@@ -1113,6 +1118,21 @@ public:
 		if (!gui_scope) return;
 
 		this->BuildStationClassesAvailable();
+	}
+
+	EventState OnHotkey(int hotkey) override
+	{
+		switch (hotkey) {
+			case BRASHK_FOCUS_FILTER_BOX:
+				this->SetFocusedWidget(WID_BRAS_FILTER_EDITBOX);
+				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
+				break;
+
+			default:
+				return ES_NOT_HANDLED;
+		}
+
+		return ES_HANDLED;
 	}
 
 	void OnEditboxChanged(int wid) override
@@ -1492,7 +1512,28 @@ public:
 	{
 		CheckRedrawStationCoverage(this);
 	}
+
+	static HotkeyList hotkeys;
 };
+
+/**
+ * Handler for global hotkeys of the BuildRailStationWindow.
+ * @param hotkey Hotkey
+ * @return ES_HANDLED if hotkey was accepted.
+ */
+static EventState BuildRailStationGlobalHotkeys(int hotkey)
+{
+	if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
+	Window *w = ShowStationBuilder(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL));
+	if (w == nullptr) return ES_NOT_HANDLED;
+	return w->OnHotkey(hotkey);
+}
+
+static Hotkey buildrailstation_hotkeys[] = {
+	Hotkey('F', "focus_filter_box", BRASHK_FOCUS_FILTER_BOX),
+	HOTKEY_LIST_END
+};
+HotkeyList BuildRailStationWindow::hotkeys("buildrailstation", buildrailstation_hotkeys, BuildRailStationGlobalHotkeys);
 
 Listing BuildRailStationWindow::last_sorting = { false, 0 };
 Filtering BuildRailStationWindow::last_filtering = { false, 0 };
@@ -1611,14 +1652,15 @@ static WindowDesc _station_builder_desc(
 	WDP_AUTO, "build_station_rail", 350, 0,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_CONSTRUCTION,
-	_nested_station_builder_widgets, lengthof(_nested_station_builder_widgets)
+	_nested_station_builder_widgets, lengthof(_nested_station_builder_widgets),
+	&BuildRailStationWindow::hotkeys
 );
 
 /** Open station build window */
-static void ShowStationBuilder(Window *parent)
+static Window *ShowStationBuilder(Window *parent)
 {
 	bool newstations = StationClass::GetClassCount() > 2 || StationClass::Get(STAT_CLASS_DFLT)->GetSpecCount() != 1;
-	new BuildRailStationWindow(&_station_builder_desc, parent, newstations);
+	return new BuildRailStationWindow(&_station_builder_desc, parent, newstations);
 }
 
 struct BuildSignalWindow : public PickerWindowBase {
