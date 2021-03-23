@@ -962,7 +962,7 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}معلو
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}قاعده الموسيقى الاساسيه
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}اختر الموسيقى الاساسية التي تود استخدامها
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ملف غير صالح{P ""}
+STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} ملف غير صالح
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}معلومات اضافية عن الموسيقى الاساسية
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}فشل في استرداد قائمة الدقة المدعومة
@@ -1056,6 +1056,7 @@ STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}لايو
 STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}الإعدادات
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}مدد الكل
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}إسحب الكل
+STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(لا يوجد تفسير متوفر)
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK} فئة:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}نوع:
@@ -1302,6 +1303,7 @@ STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :الاخبار 
 STR_CONFIG_SETTING_STARTING_YEAR                                :سنة البدايه: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :لا تنتهي
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :السماح بشراء حصص من الشركات الاخرى: {STRING}
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :عند السحب ، ضع الإشارات كل: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :اتاحة استخدام الأشارات بالأعلام قبل :{STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :السماح باستخدام اشارات واجهة المستخدم الرسومية: {STRING}
 STR_CONFIG_SETTING_DEFAULT_SIGNAL_TYPE                          :نوع الاشارة الذي يبنى قياسيا: {STRING}
@@ -2705,11 +2707,13 @@ STR_STATION_VIEW_ACCEPTS_BUTTON                                 :{BLACK}يستق
 STR_STATION_VIEW_ACCEPTS_TOOLTIP                                :{BLACK}عرض لائحة بالبضائع المقبولة
 STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}يقبل: {WHITE}{CARGO_LIST}
 
+STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPANY}{BLACK} اشترى حقوق النقل الحصرية في هذه المدينة.
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}معدل النقل
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}اظهار معدل النقل للمحطة
 
 STR_STATION_VIEW_WAITING_AMOUNT                                 :الكمية: في الانتظار
+STR_STATION_VIEW_FROM                                           :{YELLOW}{CARGO_SHORT} من {STATION}
 
 
 ############ range for rating starts
@@ -2786,6 +2790,13 @@ STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}بدون
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}قيمة الشركة: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}( {COMMA}% مملوكة بواسطة {COMPANY})
+STR_COMPANY_VIEW_INFRASTRUCTURE                                 :{GOLD}البنية تحتية:
+STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} قطعة السكك الحديدية
+STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} قطعة الطريق
+STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} مربعات الماء
+STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} مربعات من المحطات
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} مطار
+STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}لا شيء
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}بناء مقر الشركة الرئيسي
 STR_COMPANY_VIEW_BUILD_HQ_TOOLTIP                               :{BLACK}ابني مقر الشركة
@@ -2793,6 +2804,10 @@ STR_COMPANY_VIEW_VIEW_HQ_BUTTON                                 :{BLACK}عرض �
 STR_COMPANY_VIEW_VIEW_HQ_TOOLTIP                                :{BLACK}اعرض مقر الشركة
 STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}اعادة بناء مقر الشركة
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}اعادة بناء مقر الشركة بمكان آخر و بتكلفة 1% من قيمة الشركة.
+STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}التفاصيل
+STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}عرض تفاصيل حسابات البنية التحتية
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}أعطاء المال
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}إعطاء المال لهذه الشركة
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}وجة جديد
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}اختر وجة جديد للمدير
@@ -2810,10 +2825,13 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}بيع 2
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :اسم الشركة
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :اسم صاحب الشركة
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :أدخل مبلغ المال الذي تريد تقديمه
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}نحن نبحث عن شركة لتشتري شركتنا.{}{} عل ترغب في شراء {COMPANY} بـ {CURRENCY_LONG}؟
 
 # Company infrastructure window
+STR_COMPANY_INFRASTRUCTURE_VIEW_CANALS                          :{WHITE}القنوات
+STR_COMPANY_INFRASTRUCTURE_VIEW_AIRPORTS                        :{WHITE}المطارات
 
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}صناعات
@@ -2960,6 +2978,7 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_RENAME_TOOLTIP                     :{BLACK} اعا�
 STR_BUY_VEHICLE_SHIP_RENAME_TOOLTIP                             :{BLACK}اعادة تسمية نوع السفينة
 STR_BUY_VEHICLE_AIRCRAFT_RENAME_TOOLTIP                         :{BLACK}اعادة تسمية نوع الطائرة
 
+STR_BUY_VEHICLE_AIRCRAFT_HIDE_TOGGLE_BUTTON                     :{BLACK}إخفاء
 
 STR_BUY_VEHICLE_AIRCRAFT_SHOW_TOGGLE_BUTTON                     :{BLACK}عرض
 
@@ -3188,6 +3207,7 @@ STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}فترا
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}زيادة فترات الصيانة بقدر 10. ومع مفتاح كنترول بمقدار 5.
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK} انقاص فترات الصيانة بمعدل 10. Ctrl+ الضغط الانقاص بمعدل 5.
 
+STR_VEHICLE_DETAILS_DAYS                                        :الأيام
 
 STR_QUERY_RENAME_TRAIN_CAPTION                                  :{WHITE}اسم القطار
 STR_QUERY_RENAME_ROAD_VEHICLE_CAPTION                           :{WHITE}تسمية العربة
@@ -3486,6 +3506,7 @@ STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW} شاش
 STR_AI_CONFIG_CAPTION                                           :{WHITE}إعدادات الذكاء الصناعي
 STR_AI_CONFIG_HUMAN_PLAYER                                      :لاعب انساني
 STR_AI_CONFIG_RANDOM_AI                                         :ذكاء صناعي عشوائي
+STR_AI_CONFIG_NONE                                              :(لا شيء)
 
 STR_AI_CONFIG_MOVE_UP                                           :{BLACK}انقل للاعلى
 STR_AI_CONFIG_MOVE_UP_TOOLTIP                                   :{BLACK}انقل الذكاء الاصطناعي المختار للاعلى
