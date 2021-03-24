@@ -291,6 +291,8 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 
 		if (_gw.mode == GWM_EMPTY && _game_mode != GM_MENU) {
 			estimated_height = _settings_game.game_creation.se_flat_world_height;
+		} else if (_gw.mode == GWM_HEIGHTMAP) {
+			estimated_height = _settings_game.game_creation.heightmap_height;
 		} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
 			estimated_height = GetEstimationTGPMapHeight();
 		} else {
