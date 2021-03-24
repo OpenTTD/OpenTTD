@@ -42,6 +42,8 @@ enum TgenSmoothness {
 	TGEN_SMOOTHNESS_END,        ///< Used to iterate.
 };
 
+static const uint CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY = 5; ///< Value for custom terrain type in difficulty settings.
+
 static const uint CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY = 4; ///< Value for custom sea level in difficulty settings.
 static const uint CUSTOM_SEA_LEVEL_MIN_PERCENTAGE = 1;    ///< Minimum percentage a user can specify for custom sea level.
 static const uint CUSTOM_SEA_LEVEL_MAX_PERCENTAGE = 90;   ///< Maximum percentage a user can specify for custom sea level.
