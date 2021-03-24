@@ -298,12 +298,12 @@ void BuildLandLegend()
 	/* Table for delta; if max_height is less than the first column, use the second column as value. */
 	uint deltas[][2] = { { 24, 2 }, { 48, 4 }, { 72, 6 }, { 120, 10 }, { 180, 15 }, { 240, 20 }, { MAX_TILE_HEIGHT + 1, 25 }};
 	uint i = 0;
-	for (; _settings_game.construction.max_heightlevel >= deltas[i][0]; i++) {
+	for (; _settings_game.construction.map_height_limit >= deltas[i][0]; i++) {
 		/* Nothing to do here. */
 	}
 	uint delta = deltas[i][1];
 
-	int total_entries = (_settings_game.construction.max_heightlevel / delta) + 1;
+	int total_entries = (_settings_game.construction.map_height_limit / delta) + 1;
 	int rows = CeilDiv(total_entries, 2);
 	int j = 0;
 
@@ -1103,11 +1103,11 @@ SmallMapWindow::~SmallMapWindow()
 void SmallMapWindow::RebuildColourIndexIfNecessary()
 {
 	/* Rebuild colour indices if necessary. */
-	if (SmallMapWindow::max_heightlevel == _settings_game.construction.max_heightlevel) return;
+	if (SmallMapWindow::map_height_limit == _settings_game.construction.map_height_limit) return;
 
 	for (uint n = 0; n < lengthof(_heightmap_schemes); n++) {
 		/* The heights go from 0 up to and including maximum. */
-		int heights = _settings_game.construction.max_heightlevel + 1;
+		int heights = _settings_game.construction.map_height_limit + 1;
 		_heightmap_schemes[n].height_colours = ReallocT<uint32>(_heightmap_schemes[n].height_colours, heights);
 
 		for (int z = 0; z < heights; z++) {
@@ -1118,7 +1118,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 		}
 	}
 
-	SmallMapWindow::max_heightlevel = _settings_game.construction.max_heightlevel;
+	SmallMapWindow::map_height_limit = _settings_game.construction.map_height_limit;
 	BuildLandLegend();
 }
 
@@ -1682,7 +1682,7 @@ Point SmallMapWindow::GetStationMiddle(const Station *st) const
 
 SmallMapWindow::SmallMapType SmallMapWindow::map_type = SMT_CONTOUR;
 bool SmallMapWindow::show_towns = true;
-int SmallMapWindow::max_heightlevel = -1;
+int SmallMapWindow::map_height_limit = -1;
 
 /**
  * Custom container class for displaying smallmap with a vertically resizing legend panel.
