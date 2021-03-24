@@ -1689,6 +1689,7 @@ static SettingsContainer &GetSettingsTree()
 			genworld->Add(new SettingEntry("difficulty.terrain_type"));
 			genworld->Add(new SettingEntry("game_creation.tgen_smoothness"));
 			genworld->Add(new SettingEntry("game_creation.variety"));
+			genworld->Add(new SettingEntry("game_creation.snow_coverage"));
 			genworld->Add(new SettingEntry("game_creation.snow_line_height"));
 			genworld->Add(new SettingEntry("game_creation.amount_of_rivers"));
 			genworld->Add(new SettingEntry("game_creation.tree_placer"));
