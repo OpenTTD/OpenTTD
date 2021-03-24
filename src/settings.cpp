@@ -826,6 +826,7 @@ bool SettingDesc::IsEditable(bool do_command) const
 	if ((this->desc.flags & SGF_NEWGAME_ONLY) &&
 			(_game_mode == GM_NORMAL ||
 			(_game_mode == GM_EDITOR && !(this->desc.flags & SGF_SCENEDIT_TOO)))) return false;
+	if ((this->desc.flags & SGF_SCENEDIT_ONLY) && _game_mode != GM_EDITOR) return false;
 	return true;
 }
 

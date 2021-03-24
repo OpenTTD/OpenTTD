@@ -29,6 +29,8 @@ static const uint MIN_SNOWLINE_HEIGHT = 2;                     ///< Minimum snow
 static const uint DEF_SNOWLINE_HEIGHT = 10;                    ///< Default snowline height
 static const uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum allowed snowline height
 
+static const uint DEF_SNOW_COVERAGE = 40;                      ///< Default snow coverage.
+
 
 /**
  * The different types of tiles.
