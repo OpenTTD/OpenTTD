@@ -240,6 +240,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 					NWidget(NWID_VERTICAL), SetPIP(0, 4, 0),
 						NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
 							NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
+								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_HEIGHTMAP_HEIGHT, STR_NULL), SetFill(1, 1),
 								NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GL_CLIMATE_SEL_LABEL),
 									NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_SNOW_COVERAGE, STR_NULL), SetFill(1, 1),
 									NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_MAPGEN_DESERT_COVERAGE, STR_NULL), SetFill(1, 1),
@@ -248,6 +249,11 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 								NWidget(WWT_TEXT, COLOUR_ORANGE), SetDataTip(STR_GAME_OPTIONS_TOWN_NAMES_FRAME, STR_NULL), SetFill(1, 1),
 							EndContainer(),
 							NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(0, 4, 0),
+								NWidget(NWID_HORIZONTAL),
+									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_HEIGHTMAP_HEIGHT_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN), SetFill(0, 1),
+									NWidget(WWT_TEXTBTN, COLOUR_ORANGE, WID_GL_HEIGHTMAP_HEIGHT_TEXT), SetDataTip(STR_BLACK_INT, STR_NULL), SetFill(1, 0),
+									NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_HEIGHTMAP_HEIGHT_UP), SetDataTip(SPR_ARROW_UP, STR_MAPGEN_HEIGHTMAP_HEIGHT_UP), SetFill(0, 1),
+								EndContainer(),
 								NWidget(NWID_SELECTION, INVALID_COLOUR, WID_GL_CLIMATE_SEL_SELECTOR),
 									NWidget(NWID_HORIZONTAL),
 										NWidget(WWT_IMGBTN, COLOUR_ORANGE, WID_GL_SNOW_COVERAGE_DOWN), SetDataTip(SPR_ARROW_DOWN, STR_MAPGEN_SNOW_COVERAGE_DOWN), SetFill(0, 1),
@@ -372,6 +378,9 @@ struct GenerateLandscapeWindow : public Window {
 		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
 		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
 
+		/* In case the map_height_limit is changed, clamp heightmap_height. */
+		_settings_newgame.game_creation.heightmap_height = Clamp(_settings_newgame.game_creation.heightmap_height, MIN_HEIGHTMAP_HEIGHT, GetMapHeightLimit());
+
 		this->OnInvalidateData();
 	}
 
@@ -382,6 +391,7 @@ struct GenerateLandscapeWindow : public Window {
 			case WID_GL_START_DATE_TEXT:      SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1)); break;
 			case WID_GL_MAPSIZE_X_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_x); break;
 			case WID_GL_MAPSIZE_Y_PULLDOWN:   SetDParam(0, 1LL << _settings_newgame.game_creation.map_y); break;
+			case WID_GL_HEIGHTMAP_HEIGHT_TEXT: SetDParam(0, _settings_newgame.game_creation.heightmap_height); break;
 			case WID_GL_SNOW_COVERAGE_TEXT:   SetDParam(0, _settings_newgame.game_creation.snow_coverage); break;
 			case WID_GL_DESERT_COVERAGE_TEXT: SetDParam(0, _settings_newgame.game_creation.desert_coverage); break;
 
@@ -490,6 +500,10 @@ struct GenerateLandscapeWindow : public Window {
 		this->GetWidget<NWidgetStacked>(WID_GL_CLIMATE_SEL_SELECTOR)->SetDisplayedPlane(climate_plane);
 
 		/* Update availability of decreasing / increasing start date and snow level */
+		if (mode == GLWM_HEIGHTMAP) {
+			this->SetWidgetDisabledState(WID_GL_HEIGHTMAP_HEIGHT_DOWN, _settings_newgame.game_creation.heightmap_height <= MIN_HEIGHTMAP_HEIGHT);
+			this->SetWidgetDisabledState(WID_GL_HEIGHTMAP_HEIGHT_UP, _settings_newgame.game_creation.heightmap_height >= GetMapHeightLimit());
+		}
 		this->SetWidgetDisabledState(WID_GL_START_DATE_DOWN, _settings_newgame.game_creation.starting_year <= MIN_YEAR);
 		this->SetWidgetDisabledState(WID_GL_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= MAX_YEAR);
 		this->SetWidgetDisabledState(WID_GL_SNOW_COVERAGE_DOWN, _settings_newgame.game_creation.snow_coverage <= 0 || _settings_newgame.game_creation.landscape != LT_ARCTIC);
@@ -509,6 +523,11 @@ struct GenerateLandscapeWindow : public Window {
 	{
 		const StringID *strs = nullptr;
 		switch (widget) {
+			case WID_GL_HEIGHTMAP_HEIGHT_TEXT:
+				SetDParam(0, MAX_TILE_HEIGHT);
+				*size = GetStringBoundingBox(STR_JUST_INT);
+				break;
+
 			case WID_GL_START_DATE_TEXT:
 				SetDParam(0, ConvertYMDToDate(MAX_YEAR, 0, 1));
 				*size = maxdim(*size, GetStringBoundingBox(STR_BLACK_DATE_LONG));
@@ -649,6 +668,25 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 			}
 
+			case WID_GL_HEIGHTMAP_HEIGHT_DOWN:
+			case WID_GL_HEIGHTMAP_HEIGHT_UP: // Height level buttons
+				/* Don't allow too fast scrolling */
+				if (!(this->flags & WF_TIMEOUT) || this->timeout_timer <= 1) {
+					this->HandleButtonClick(widget);
+
+					_settings_newgame.game_creation.heightmap_height = Clamp(_settings_newgame.game_creation.heightmap_height + widget - WID_GL_HEIGHTMAP_HEIGHT_TEXT, MIN_HEIGHTMAP_HEIGHT, GetMapHeightLimit());
+					this->InvalidateData();
+				}
+				_left_button_clicked = false;
+				break;
+
+			case WID_GL_HEIGHTMAP_HEIGHT_TEXT: // Height level text
+				this->widget_id = WID_GL_HEIGHTMAP_HEIGHT_TEXT;
+				SetDParam(0, _settings_newgame.game_creation.heightmap_height);
+				ShowQueryString(STR_JUST_INT, STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT, 4, this, CS_NUMERAL, QSF_ENABLE_DEFAULT);
+				break;
+
+
 			case WID_GL_START_DATE_DOWN:
 			case WID_GL_START_DATE_UP: // Year buttons
 				/* Don't allow too fast scrolling */
@@ -768,8 +806,12 @@ struct GenerateLandscapeWindow : public Window {
 
 	void OnTimeout() override
 	{
-		static const int raise_widgets[] = {WID_GL_START_DATE_DOWN, WID_GL_START_DATE_UP, WID_GL_SNOW_COVERAGE_UP, WID_GL_SNOW_COVERAGE_DOWN, WID_GL_DESERT_COVERAGE_UP, WID_GL_DESERT_COVERAGE_DOWN, WIDGET_LIST_END};
-		for (const int *widget = raise_widgets; *widget != WIDGET_LIST_END; widget++) {
+		static const int newgame_raise_widgets[] = {WID_GL_START_DATE_DOWN, WID_GL_START_DATE_UP, WID_GL_SNOW_COVERAGE_UP, WID_GL_SNOW_COVERAGE_DOWN, WID_GL_DESERT_COVERAGE_UP, WID_GL_DESERT_COVERAGE_DOWN, WIDGET_LIST_END};
+		static const int heightmap_raise_widgets[] = {WID_GL_HEIGHTMAP_HEIGHT_DOWN, WID_GL_HEIGHTMAP_HEIGHT_UP, WID_GL_START_DATE_DOWN, WID_GL_START_DATE_UP, WID_GL_SNOW_COVERAGE_UP, WID_GL_SNOW_COVERAGE_DOWN, WID_GL_DESERT_COVERAGE_UP, WID_GL_DESERT_COVERAGE_DOWN, WIDGET_LIST_END};
+
+		const int *widget = (mode == GLWM_HEIGHTMAP) ? heightmap_raise_widgets : newgame_raise_widgets;
+
+		for (; *widget != WIDGET_LIST_END; widget++) {
 			if (this->IsWidgetLowered(*widget)) {
 				this->RaiseWidget(*widget);
 				this->SetWidgetDirty(*widget);
@@ -838,6 +880,7 @@ struct GenerateLandscapeWindow : public Window {
 		} else {
 			/* An empty string means revert to the default */
 			switch (this->widget_id) {
+				case WID_GL_HEIGHTMAP_HEIGHT_TEXT: value = MAP_HEIGHT_LIMIT_AUTO_MINIMUM; break;
 				case WID_GL_START_DATE_TEXT: value = DEF_START_YEAR; break;
 				case WID_GL_SNOW_COVERAGE_TEXT: value = DEF_SNOW_COVERAGE; break;
 				case WID_GL_DESERT_COVERAGE_TEXT: value = DEF_DESERT_COVERAGE; break;
@@ -848,6 +891,11 @@ struct GenerateLandscapeWindow : public Window {
 		}
 
 		switch (this->widget_id) {
+			case WID_GL_HEIGHTMAP_HEIGHT_TEXT:
+				this->SetWidgetDirty(WID_GL_HEIGHTMAP_HEIGHT_TEXT);
+				_settings_newgame.game_creation.heightmap_height = Clamp(value, MIN_HEIGHTMAP_HEIGHT, GetMapHeightLimit());
+				break;
+
 			case WID_GL_START_DATE_TEXT:
 				this->SetWidgetDirty(WID_GL_START_DATE_TEXT);
 				_settings_newgame.game_creation.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);

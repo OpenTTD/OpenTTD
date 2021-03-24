@@ -299,6 +299,7 @@ struct GameCreationSettings {
 	byte   snow_line_height;                 ///< the configured snow line height (deduced from "snow_coverage")
 	byte   snow_coverage;                    ///< the amount of snow coverage on the map
 	byte   desert_coverage;                  ///< the amount of desert coverage on the map
+	byte   heightmap_height;                 ///< highest mountain for heightmap (towards what it scales)
 	byte   tgen_smoothness;                  ///< how rough is the terrain from 0-3
 	byte   tree_placer;                      ///< the tree placer algorithm
 	byte   heightmap_rotation;               ///< rotation director for the heightmap
