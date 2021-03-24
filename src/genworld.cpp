@@ -33,6 +33,7 @@
 #include "game/game_instance.hpp"
 #include "string_func.h"
 #include "thread.h"
+#include "tgp.h"
 
 #include "safeguards.h"
 
@@ -284,6 +285,20 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 
 	InitializeGame(_gw.size_x, _gw.size_y, true, reset_settings);
 	PrepareGenerateWorldProgress();
+
+	if (_settings_game.construction.map_height_limit == 0) {
+		uint estimated_height = 0;
+
+		if (_gw.mode == GWM_EMPTY && _game_mode != GM_MENU) {
+			estimated_height = _settings_game.game_creation.se_flat_world_height;
+		} else if (_settings_game.game_creation.land_generator == LG_TERRAGENESIS) {
+			estimated_height = GetEstimationTGPMapHeight();
+		} else {
+			estimated_height = 0;
+		}
+
+		_settings_game.construction.map_height_limit = std::max(MAP_HEIGHT_LIMIT_AUTO_MINIMUM, std::min(MAX_MAP_HEIGHT_LIMIT, estimated_height + MAP_HEIGHT_LIMIT_AUTO_CEILING_ROOM));
+	}
 
 	/* Load the right landscape stuff, and the NewGRFs! */
 	GfxLoadSprites();
