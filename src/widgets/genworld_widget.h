@@ -26,6 +26,10 @@ enum GenerateLandscapeWidgets {
 
 	WID_GL_GENERATE_BUTTON,             ///< 'Generate' button.
 
+	WID_GL_HEIGHTMAP_HEIGHT_DOWN,       ///< Decrease heightmap highest mountain
+	WID_GL_HEIGHTMAP_HEIGHT_TEXT,       ///< Max. heightmap highest mountain
+	WID_GL_HEIGHTMAP_HEIGHT_UP,         ///< Increase max. heightmap highest mountain
+
 	WID_GL_START_DATE_DOWN,             ///< Decrease start year.
 	WID_GL_START_DATE_TEXT,             ///< Start year.
 	WID_GL_START_DATE_UP,               ///< Increase start year.
