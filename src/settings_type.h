@@ -316,7 +316,7 @@ struct GameCreationSettings {
 
 /** Settings related to construction in-game */
 struct ConstructionSettings {
-	uint8  max_heightlevel;                  ///< maximum allowed heightlevel
+	uint8  map_height_limit;                 ///< the maximum allowed heightlevel
 	bool   build_on_slopes;                  ///< allow building on slopes
 	bool   autoslope;                        ///< allow terraforming under things
 	uint16 max_bridge_length;                ///< maximum length of bridges

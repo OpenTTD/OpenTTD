@@ -117,7 +117,7 @@ Point InverseRemapCoords2(int x, int y, bool clamp_to_map, bool *clamped)
 		/* Bring the coordinates near to a valid range. At the top we allow a number
 		 * of extra tiles. This is mostly due to the tiles on the north side of
 		 * the map possibly being drawn higher due to the extra height levels. */
-		int extra_tiles = CeilDiv(_settings_game.construction.max_heightlevel * TILE_HEIGHT, TILE_PIXELS);
+		int extra_tiles = CeilDiv(_settings_game.construction.map_height_limit * TILE_HEIGHT, TILE_PIXELS);
 		Point old_pt = pt;
 		pt.x = Clamp(pt.x, -extra_tiles * TILE_SIZE, max_x);
 		pt.y = Clamp(pt.y, -extra_tiles * TILE_SIZE, max_y);
