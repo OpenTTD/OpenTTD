@@ -2900,6 +2900,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. of towns:
 STR_MAPGEN_DATE                                                 :{BLACK}Date:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. of industries:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Highest peak:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Increase the maximum height of highest peak on the map by one
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Decrease the maximum height of highest peak on the map by one
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Snow coverage:
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Increase snow coverage by ten percent
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Decrease snow coverage by ten percent
@@ -2933,7 +2936,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Heightma
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Size:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Change maximum map height
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Highest peak
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Snow coverage (in %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Desert coverage (in %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Change starting year
