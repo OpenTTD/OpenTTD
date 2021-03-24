@@ -26,10 +26,6 @@ enum GenerateLandscapeWidgets {
 
 	WID_GL_GENERATE_BUTTON,             ///< 'Generate' button.
 
-	WID_GL_MAX_HEIGHTLEVEL_DOWN,        ///< Decrease max. heightlevel
-	WID_GL_MAX_HEIGHTLEVEL_TEXT,        ///< Max. heightlevel
-	WID_GL_MAX_HEIGHTLEVEL_UP,          ///< Increase max. heightlevel
-
 	WID_GL_START_DATE_DOWN,             ///< Decrease start year.
 	WID_GL_START_DATE_TEXT,             ///< Start year.
 	WID_GL_START_DATE_UP,               ///< Increase start year.
