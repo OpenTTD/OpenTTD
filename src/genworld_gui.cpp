@@ -347,7 +347,7 @@ static DropDownList BuildTownNameDropDown()
 }
 
 
-static const StringID _elevations[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_TYPE_FLAT, STR_TERRAIN_TYPE_HILLY, STR_TERRAIN_TYPE_MOUNTAINOUS, STR_TERRAIN_TYPE_ALPINIST, INVALID_STRING_ID};
+static const StringID _elevations[]  = {STR_TERRAIN_TYPE_VERY_FLAT, STR_TERRAIN_TYPE_FLAT, STR_TERRAIN_TYPE_HILLY, STR_TERRAIN_TYPE_MOUNTAINOUS, STR_TERRAIN_TYPE_ALPINIST, STR_TERRAIN_TYPE_CUSTOM, INVALID_STRING_ID};
 static const StringID _sea_lakes[]   = {STR_SEA_LEVEL_VERY_LOW, STR_SEA_LEVEL_LOW, STR_SEA_LEVEL_MEDIUM, STR_SEA_LEVEL_HIGH, STR_SEA_LEVEL_CUSTOM, INVALID_STRING_ID};
 static const StringID _rivers[]      = {STR_RIVERS_NONE, STR_RIVERS_FEW, STR_RIVERS_MODERATE, STR_RIVERS_LOT, INVALID_STRING_ID};
 static const StringID _smoothness[]  = {STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
@@ -378,8 +378,9 @@ struct GenerateLandscapeWindow : public Window {
 		this->SetWidgetDisabledState(WID_GL_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
 		this->SetWidgetDisabledState(WID_GL_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
 
-		/* In case the map_height_limit is changed, clamp heightmap_height. */
+		/* In case the map_height_limit is changed, clamp heightmap_height and custom_terrain_type. */
 		_settings_newgame.game_creation.heightmap_height = Clamp(_settings_newgame.game_creation.heightmap_height, MIN_HEIGHTMAP_HEIGHT, GetMapHeightLimit());
+		_settings_newgame.game_creation.custom_terrain_type = Clamp(_settings_newgame.game_creation.custom_terrain_type, MIN_CUSTOM_TERRAIN_TYPE, GetMapHeightLimit());
 
 		this->OnInvalidateData();
 	}
@@ -417,7 +418,14 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_INDUSTRY_PULLDOWN:   SetDParam(0, _game_mode == GM_EDITOR ? STR_CONFIG_SETTING_OFF : _num_inds[_settings_newgame.difficulty.industry_density]); break;
 			case WID_GL_LANDSCAPE_PULLDOWN:  SetDParam(0, _landscape[_settings_newgame.game_creation.land_generator]); break;
-			case WID_GL_TERRAIN_PULLDOWN:    SetDParam(0, _elevations[_settings_newgame.difficulty.terrain_type]); break;
+			case WID_GL_TERRAIN_PULLDOWN:
+				if (_settings_newgame.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
+					SetDParam(0, STR_TERRAIN_TYPE_CUSTOM_VALUE);
+					SetDParam(1, _settings_newgame.game_creation.custom_terrain_type);
+				} else {
+					SetDParam(0, _elevations[_settings_newgame.difficulty.terrain_type]); break;
+				}
+				break;
 
 			case WID_GL_WATER_PULLDOWN:
 				if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
@@ -511,10 +519,14 @@ struct GenerateLandscapeWindow : public Window {
 		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_DOWN, _settings_newgame.game_creation.desert_coverage <= 0 || _settings_newgame.game_creation.landscape != LT_TROPIC);
 		this->SetWidgetDisabledState(WID_GL_DESERT_COVERAGE_UP,   _settings_newgame.game_creation.desert_coverage >= 100 || _settings_newgame.game_creation.landscape != LT_TROPIC);
 
-		/* Do not allow a custom sea level with the original land generator. */
-		if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL &&
-				_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
-			_settings_newgame.difficulty.quantity_sea_lakes = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE;
+		/* Do not allow a custom sea level or terrain type with the original land generator. */
+		if (_settings_newgame.game_creation.land_generator == LG_ORIGINAL) {
+			if (_settings_newgame.difficulty.quantity_sea_lakes == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
+				_settings_newgame.difficulty.quantity_sea_lakes = 1;
+			}
+			if (_settings_newgame.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
+				_settings_newgame.difficulty.terrain_type = 1;
+			}
 		}
 
 	}
@@ -563,7 +575,13 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_INDUSTRY_PULLDOWN:   strs = _num_inds; break;
 			case WID_GL_LANDSCAPE_PULLDOWN:  strs = _landscape; break;
-			case WID_GL_TERRAIN_PULLDOWN:    strs = _elevations; break;
+
+			case WID_GL_TERRAIN_PULLDOWN:
+				strs = _elevations;
+				SetDParamMaxValue(0, MAX_MAP_HEIGHT_LIMIT);
+				*size = maxdim(*size, GetStringBoundingBox(STR_TERRAIN_TYPE_CUSTOM_VALUE));
+				break;
+
 			case WID_GL_WATER_PULLDOWN:
 				strs = _sea_lakes;
 				SetDParamMaxValue(0, CUSTOM_SEA_LEVEL_MAX_PERCENTAGE);
@@ -854,7 +872,15 @@ struct GenerateLandscapeWindow : public Window {
 				break;
 
 			case WID_GL_INDUSTRY_PULLDOWN: _settings_newgame.difficulty.industry_density = index; break;
-			case WID_GL_TERRAIN_PULLDOWN:  _settings_newgame.difficulty.terrain_type     = index; break;
+			case WID_GL_TERRAIN_PULLDOWN: {
+				if ((uint)index == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
+					this->widget_id = widget;
+					SetDParam(0, _settings_newgame.game_creation.custom_terrain_type);
+					ShowQueryString(STR_JUST_INT, STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT, 4, this, CS_NUMERAL, QSF_NONE);
+				}
+				_settings_newgame.difficulty.terrain_type = index;
+				break;
+			}
 
 			case WID_GL_WATER_PULLDOWN: {
 				if ((uint)index == CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY) {
@@ -885,6 +911,7 @@ struct GenerateLandscapeWindow : public Window {
 				case WID_GL_SNOW_COVERAGE_TEXT: value = DEF_SNOW_COVERAGE; break;
 				case WID_GL_DESERT_COVERAGE_TEXT: value = DEF_DESERT_COVERAGE; break;
 				case WID_GL_TOWN_PULLDOWN: value = 1; break;
+				case WID_GL_TERRAIN_PULLDOWN: value = MIN_MAP_HEIGHT_LIMIT; break;
 				case WID_GL_WATER_PULLDOWN: value = CUSTOM_SEA_LEVEL_MIN_PERCENTAGE; break;
 				default: NOT_REACHED();
 			}
@@ -913,6 +940,10 @@ struct GenerateLandscapeWindow : public Window {
 
 			case WID_GL_TOWN_PULLDOWN:
 				_settings_newgame.game_creation.custom_town_number = Clamp(value, 1, CUSTOM_TOWN_MAX_NUMBER);
+				break;
+
+			case WID_GL_TERRAIN_PULLDOWN:
+				_settings_newgame.game_creation.custom_terrain_type = Clamp(value, MIN_CUSTOM_TERRAIN_TYPE, GetMapHeightLimit());
 				break;
 
 			case WID_GL_WATER_PULLDOWN:

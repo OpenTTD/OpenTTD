@@ -215,6 +215,13 @@ static const amplitude_t _water_percent[4] = {70, 170, 270, 420};
  */
 static height_t TGPGetMaxHeight()
 {
+	if (_settings_game.difficulty.terrain_type == CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY) {
+		/* TGP never reaches this height; this means that if a user inputs "2",
+		 * it would create a flat map without the "+ 1". But that would
+		 * overflow on "255". So we reduce it by 1 to get back in range. */
+		return I2H(_settings_game.game_creation.custom_terrain_type + 1) - 1;
+	}
+
 	/**
 	 * Desired maximum height - indexed by:
 	 *  - _settings_game.difficulty.terrain_type
