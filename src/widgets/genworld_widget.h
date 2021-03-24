@@ -38,6 +38,10 @@ enum GenerateLandscapeWidgets {
 	WID_GL_SNOW_COVERAGE_TEXT,          ///< Snow coverage.
 	WID_GL_SNOW_COVERAGE_UP,            ///< Increase snow coverage.
 
+	WID_GL_DESERT_COVERAGE_DOWN,        ///< Decrease desert coverage.
+	WID_GL_DESERT_COVERAGE_TEXT,        ///< Desert coverage.
+	WID_GL_DESERT_COVERAGE_UP,          ///< Increase desert coverage.
+
 	WID_GL_LANDSCAPE_PULLDOWN,          ///< Dropdown 'Land generator'.
 
 	WID_GL_HEIGHTMAP_NAME_TEXT,         ///< Heightmap name.
@@ -55,6 +59,9 @@ enum GenerateLandscapeWidgets {
 	WID_GL_WATER_NE,                    ///< NE 'Water'/'Freeform'.
 	WID_GL_WATER_SE,                    ///< SE 'Water'/'Freeform'.
 	WID_GL_WATER_SW,                    ///< SW 'Water'/'Freeform'.
+
+	WID_GL_CLIMATE_SEL_LABEL,           ///< NWID_SELECTION for snow or desert coverage label
+	WID_GL_CLIMATE_SEL_SELECTOR,        ///< NWID_SELECTION for snow or desert coverage selector
 };
 
 /** Widgets of the #CreateScenarioWindow class. */
