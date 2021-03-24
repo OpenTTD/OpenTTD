@@ -11,5 +11,6 @@
 #define TGP_H
 
 void GenerateTerrainPerlin();
+uint GetEstimationTGPMapHeight();
 
 #endif /* TGP_H */

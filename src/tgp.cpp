@@ -237,7 +237,20 @@ static height_t TGPGetMaxHeight()
 	int map_size_bucket = std::min(MapLogX(), MapLogY()) - MIN_MAP_SIZE_BITS;
 	int max_height_from_table = max_height[_settings_game.difficulty.terrain_type][map_size_bucket];
 
-	return I2H(std::min<uint>(max_height_from_table, _settings_game.construction.map_height_limit));
+	/* If there is a manual map height limit, clamp to it. */
+	if (_settings_game.construction.map_height_limit != 0) {
+		max_height_from_table = std::min<uint>(max_height_from_table, _settings_game.construction.map_height_limit);
+	}
+
+	return I2H(max_height_from_table);
+}
+
+/**
+ * Get an overestimation of the highest peak TGP wants to generate.
+ */
+uint GetEstimationTGPMapHeight()
+{
+	return H2I(TGPGetMaxHeight());
 }
 
 /**
