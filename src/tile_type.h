@@ -22,6 +22,7 @@ static const int MAX_VEHICLE_PIXEL_Y  = 96;                    ///< Maximum heig
 static const uint MAX_TILE_HEIGHT     = 255;                   ///< Maximum allowed tile height
 
 static const uint MIN_HEIGHTMAP_HEIGHT = 1;                    ///< Lowest possible peak value for heightmap creation
+static const uint MIN_CUSTOM_TERRAIN_TYPE = 1;                 ///< Lowest possible peak value for world generation
 
 static const uint MIN_MAP_HEIGHT_LIMIT = 15;                   ///< Lower bound of maximum allowed heightlevel (in the construction settings)
 static const uint MAX_MAP_HEIGHT_LIMIT = MAX_TILE_HEIGHT;      ///< Upper bound of maximum allowed heightlevel (in the construction settings)
