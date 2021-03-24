@@ -31,6 +31,7 @@
 #include "pathfinder/npf/aystar.h"
 #include "saveload/saveload.h"
 #include "framerate_type.h"
+#include <array>
 #include <list>
 #include <set>
 
@@ -1294,6 +1295,43 @@ static void CreateRivers()
 	}
 }
 
+/**
+ * Calculate the line from which snow begins.
+ */
+static void CalculateSnowLine()
+{
+	/* Build a histogram of the map height. */
+	std::array<int, MAX_TILE_HEIGHT + 1> histogram = {};
+	for (TileIndex tile = 0; tile < MapSize(); tile++) {
+		uint h = TileHeight(tile);
+		histogram[h]++;
+	}
+
+	/* The amount of land we have is the map size minus the first (sea) layer. */
+	uint land_tiles = MapSizeX() * MapSizeY() - histogram[0];
+	int best_score = land_tiles;
+
+	/* Our goal is the coverage amount of the land-mass. */
+	int goal_tiles = land_tiles * _settings_game.game_creation.snow_coverage / 100;
+
+	/* We scan from top to bottom. */
+	uint h = MAX_TILE_HEIGHT;
+	uint best_h = h;
+
+	int current_tiles = 0;
+	for (; h > 0; h--) {
+		current_tiles += histogram[h];
+		int current_score = goal_tiles - current_tiles;
+
+		if (std::abs(current_score) < std::abs(best_score)) {
+			best_score = current_score;
+			best_h = h;
+		}
+	}
+
+	_settings_game.game_creation.snow_line_height = std::max(best_h, 2u);
+}
+
 void GenerateLandscape(byte mode)
 {
 	/** Number of steps of landscape generation */
@@ -1378,7 +1416,18 @@ void GenerateLandscape(byte mode)
 	MarkWholeScreenDirty();
 	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
-	if (_settings_game.game_creation.landscape == LT_TROPIC) CreateDesertOrRainForest();
+	switch (_settings_game.game_creation.landscape) {
+		case LT_ARCTIC:
+			CalculateSnowLine();
+			break;
+
+		case LT_TROPIC:
+			CreateDesertOrRainForest();
+			break;
+
+		default:
+			break;
+	}
 
 	CreateRivers();
 }

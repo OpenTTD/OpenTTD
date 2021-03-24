@@ -118,6 +118,8 @@ static void _GenerateWorld()
 
 			ConvertGroundTilesIntoWaterTiles();
 			IncreaseGeneratingWorldProgress(GWP_OBJECT);
+
+			_settings_game.game_creation.snow_line_height = DEF_SNOWLINE_HEIGHT;
 		} else {
 			GenerateLandscape(_gw.mode);
 			GenerateClearTile();

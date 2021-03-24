@@ -34,9 +34,9 @@ enum GenerateLandscapeWidgets {
 	WID_GL_START_DATE_TEXT,             ///< Start year.
 	WID_GL_START_DATE_UP,               ///< Increase start year.
 
-	WID_GL_SNOW_LEVEL_DOWN,             ///< Decrease snow level.
-	WID_GL_SNOW_LEVEL_TEXT,             ///< Snow level.
-	WID_GL_SNOW_LEVEL_UP,               ///< Increase snow level.
+	WID_GL_SNOW_COVERAGE_DOWN,          ///< Decrease snow coverage.
+	WID_GL_SNOW_COVERAGE_TEXT,          ///< Snow coverage.
+	WID_GL_SNOW_COVERAGE_UP,            ///< Increase snow coverage.
 
 	WID_GL_LANDSCAPE_PULLDOWN,          ///< Dropdown 'Land generator'.
 

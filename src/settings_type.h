@@ -296,7 +296,8 @@ struct GameCreationSettings {
 	uint8  map_y;                            ///< Y size of map
 	byte   land_generator;                   ///< the landscape generator
 	byte   oil_refinery_limit;               ///< distance oil refineries allowed from map edge
-	byte   snow_line_height;                 ///< the configured snow line height
+	byte   snow_line_height;                 ///< the configured snow line height (deduced from "snow_coverage")
+	byte   snow_coverage;                    ///< the amount of snow coverage on the map
 	byte   tgen_smoothness;                  ///< how rough is the terrain from 0-3
 	byte   tree_placer;                      ///< the tree placer algorithm
 	byte   heightmap_rotation;               ///< rotation director for the heightmap
