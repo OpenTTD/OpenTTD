@@ -46,6 +46,15 @@ enum GenerateLandscapeWindowMode {
 };
 
 /**
+ * Get the map height limit, or if set to "auto", the absolute limit.
+ */
+static uint GetMapHeightLimit()
+{
+	if (_settings_newgame.construction.map_height_limit == 0) return MAX_MAP_HEIGHT_LIMIT;
+	return _settings_newgame.construction.map_height_limit;
+}
+
+/**
  * Changes landscape type and sets genworld window dirty
  * @param landscape new landscape type
  */
@@ -974,7 +983,7 @@ struct CreateScenarioWindow : public Window
 		this->SetWidgetDisabledState(WID_CS_START_DATE_DOWN,       _settings_newgame.game_creation.starting_year <= MIN_YEAR);
 		this->SetWidgetDisabledState(WID_CS_START_DATE_UP,         _settings_newgame.game_creation.starting_year >= MAX_YEAR);
 		this->SetWidgetDisabledState(WID_CS_FLAT_LAND_HEIGHT_DOWN, _settings_newgame.game_creation.se_flat_world_height <= 0);
-		this->SetWidgetDisabledState(WID_CS_FLAT_LAND_HEIGHT_UP,   _settings_newgame.game_creation.se_flat_world_height >= MAX_TILE_HEIGHT);
+		this->SetWidgetDisabledState(WID_CS_FLAT_LAND_HEIGHT_UP,   _settings_newgame.game_creation.se_flat_world_height >= GetMapHeightLimit());
 
 		this->SetWidgetLoweredState(WID_CS_TEMPERATE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
 		this->SetWidgetLoweredState(WID_CS_ARCTIC,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
@@ -1062,7 +1071,7 @@ struct CreateScenarioWindow : public Window
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 
-					_settings_newgame.game_creation.se_flat_world_height = Clamp(_settings_newgame.game_creation.se_flat_world_height + widget - WID_CS_FLAT_LAND_HEIGHT_TEXT, 0, _settings_game.construction.map_height_limit);
+					_settings_newgame.game_creation.se_flat_world_height = Clamp(_settings_newgame.game_creation.se_flat_world_height + widget - WID_CS_FLAT_LAND_HEIGHT_TEXT, 0, GetMapHeightLimit());
 				}
 				_left_button_clicked = false;
 				break;
@@ -1108,7 +1117,7 @@ struct CreateScenarioWindow : public Window
 
 				case WID_CS_FLAT_LAND_HEIGHT_TEXT:
 					this->SetWidgetDirty(WID_CS_FLAT_LAND_HEIGHT_TEXT);
-					_settings_newgame.game_creation.se_flat_world_height = Clamp(value, 0, _settings_game.construction.map_height_limit);
+					_settings_newgame.game_creation.se_flat_world_height = Clamp(value, 0, GetMapHeightLimit());
 					break;
 			}
 

@@ -1206,7 +1206,9 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Town council's 
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Choose how much noise and environmental damage by companies affect their town rating and further construction actions in their area
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Map height limit: {STRING2}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Set the maximum allowed height of the map; neither the terrain generator nor you can build higher than this limit
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Set the maximum allowed height of the map; neither the terrain generator nor you can build higher than this limit. On (auto) it will pick a good value after terrain generation
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}You can't set the map height limit to this value. At least one mountain on the map is higher
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow landscaping under buildings, tracks, etc.: {STRING2}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Allow landscaping under buildings and tracks without removing them
