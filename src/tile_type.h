@@ -30,6 +30,7 @@ static const uint DEF_SNOWLINE_HEIGHT = 10;                    ///< Default snow
 static const uint MAX_SNOWLINE_HEIGHT = (MAX_TILE_HEIGHT - 2); ///< Maximum allowed snowline height
 
 static const uint DEF_SNOW_COVERAGE = 40;                      ///< Default snow coverage.
+static const uint DEF_DESERT_COVERAGE = 50;                    ///< Default desert coverage.
 
 
 /**
