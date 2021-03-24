@@ -21,9 +21,9 @@ static const int MAX_VEHICLE_PIXEL_Y  = 96;                    ///< Maximum heig
 
 static const uint MAX_TILE_HEIGHT     = 255;                   ///< Maximum allowed tile height
 
-static const uint MIN_MAX_HEIGHTLEVEL = 15;                    ///< Lower bound of maximum allowed heightlevel (in the construction settings)
-static const uint DEF_MAX_HEIGHTLEVEL = 30;                    ///< Default maximum allowed heightlevel (in the construction settings)
-static const uint MAX_MAX_HEIGHTLEVEL = MAX_TILE_HEIGHT;       ///< Upper bound of maximum allowed heightlevel (in the construction settings)
+static const uint MIN_MAP_HEIGHT_LIMIT = 15;                   ///< Lower bound of maximum allowed heightlevel (in the construction settings)
+static const uint DEF_MAP_HEIGHT_LIMIT = 30;                   ///< Default maximum allowed heightlevel (in the construction settings)
+static const uint MAX_MAP_HEIGHT_LIMIT = MAX_TILE_HEIGHT;      ///< Upper bound of maximum allowed heightlevel (in the construction settings)
 
 static const uint MIN_SNOWLINE_HEIGHT = 2;                     ///< Minimum snowline height
 static const uint DEF_SNOWLINE_HEIGHT = 10;                    ///< Default snowline height

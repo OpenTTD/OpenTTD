@@ -1205,9 +1205,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disaster
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Town council's attitude towards area restructuring: {STRING2}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Choose how much noise and environmental damage by companies affect their town rating and further construction actions in their area
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximum map height: {STRING2}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Set the maximum allowed height for mountains on the map
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}You can't set the maximum map height to this value. At least one mountain on the map is higher
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Map height limit: {STRING2}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Set the maximum allowed height of the map; neither the terrain generator nor you can build higher than this limit
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}You can't set the map height limit to this value. At least one mountain on the map is higher
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Allow landscaping under buildings, tracks, etc.: {STRING2}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Allow landscaping under buildings and tracks without removing them
 STR_CONFIG_SETTING_CATCHMENT                                    :Allow more realistically sized catchment areas: {STRING2}

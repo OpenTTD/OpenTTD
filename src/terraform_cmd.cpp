@@ -104,7 +104,7 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 
 	/* Check range of destination height */
 	if (height < 0) return_cmd_error(STR_ERROR_ALREADY_AT_SEA_LEVEL);
-	if (height > _settings_game.construction.max_heightlevel) return_cmd_error(STR_ERROR_TOO_HIGH);
+	if (height > _settings_game.construction.map_height_limit) return_cmd_error(STR_ERROR_TOO_HIGH);
 
 	/*
 	 * Check if the terraforming has any effect.
@@ -361,7 +361,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	}
 
 	/* Check range of destination height */
-	if (h > _settings_game.construction.max_heightlevel) return_cmd_error((oldh == 0) ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH);
+	if (h > _settings_game.construction.map_height_limit) return_cmd_error((oldh == 0) ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH);
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);
