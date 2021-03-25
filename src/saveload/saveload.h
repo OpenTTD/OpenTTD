@@ -302,7 +302,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_SCRIPT_MEMLIMIT,                    ///< 215  PR#7516 Limit on AI/GS memory consumption.
 	SLV_MULTITILE_DOCKS,                    ///< 216  PR#7380 Multiple docks per station.
 	SLV_TRADING_AGE,                        ///< 217  PR#7780 Configurable company trading age.
-	SLV_ENDING_YEAR,                        ///< 218  PR#7747 v1.10 Configurable ending year.
+	SLV_ENDING_YEAR,                        ///< 218  PR#7747 v1.10  Configurable ending year.
 	SLV_REMOVE_TOWN_CARGO_CACHE,            ///< 219  PR#8258 Remove town cargo acceptance and production caches.
 
 	/* Patchpacks for a while considered it a good idea to jump a few versions
@@ -323,7 +323,8 @@ enum SaveLoadVersion : uint16 {
 
 	SLV_GS_INDUSTRY_CONTROL,                ///< 287  PR#7912 and PR#8115 GS industry control.
 	SLV_VEH_MOTION_COUNTER,                 ///< 288  PR#8591 Desync safe motion counter
-	SLV_INDUSTRY_TEXT,                      ///< 289  PR#8576 Additional GS text for industries.
+	SLV_INDUSTRY_TEXT,                      ///< 289  PR#8576 v1.11.0-RC1  Additional GS text for industries.
+	SLV_MAPGEN_SETTINGS_REVAMP,             ///< 290  PR#8891 v1.11  Revamp of some mapgen settings (snow coverage, desert coverage, heightmap height, custom terrain type).
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
