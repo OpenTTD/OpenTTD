@@ -429,6 +429,9 @@ FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory s
 			if (token == "..") {
 				if (tokens.size() < 2) return nullptr;
 				tokens.pop_back();
+			} else if (token == ".") {
+				/* Do nothing. "." means current folder, but you can create tar files with "." in the path.
+				 * This confuses our file resolver. So, act like this folder doesn't exist. */
 			} else {
 				tokens.push_back(token);
 			}
