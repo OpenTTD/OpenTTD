@@ -39,6 +39,7 @@ uint _num_screenshot_formats;         ///< Number of available screenshot format
 uint _cur_screenshot_format;          ///< Index of the currently selected screenshot format in #_screenshot_formats.
 static char _screenshot_name[128];    ///< Filename of the screenshot file.
 char _full_screenshot_name[MAX_PATH]; ///< Pathname of the screenshot file.
+uint _heightmap_highest_peak;         ///< When saving a heightmap, this contains the highest peak on the map.
 
 /**
  * Callback function signature for generating lines of pixel data to be written to the screenshot file.
@@ -820,7 +821,7 @@ static void HeightmapCallback(void *userdata, void *buffer, uint y, uint pitch, 
 	while (n > 0) {
 		TileIndex ti = TileXY(MapMaxX(), y);
 		for (uint x = MapMaxX(); true; x--) {
-			*buf = 256 * TileHeight(ti) / (1 + _settings_game.construction.map_height_limit);
+			*buf = 256 * TileHeight(ti) / (1 + _heightmap_highest_peak);
 			buf++;
 			if (x == 0) break;
 			ti = TILE_ADDXY(ti, -1, 0);
@@ -843,6 +844,13 @@ bool MakeHeightmapScreenshot(const char *filename)
 		palette[i].g = i;
 		palette[i].b = i;
 	}
+
+	_heightmap_highest_peak = 0;
+	for (TileIndex tile = 0; tile < MapSize(); tile++) {
+		uint h = TileHeight(tile);
+		_heightmap_highest_peak = std::max(h, _heightmap_highest_peak);
+	}
+
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
 	return sf->proc(filename, HeightmapCallback, nullptr, MapSizeX(), MapSizeY(), 8, palette);
 }
@@ -946,8 +954,14 @@ bool MakeScreenshot(ScreenshotType t, const char *name, uint32 width, uint32 hei
 	}
 
 	if (ret) {
-		SetDParamStr(0, _screenshot_name);
-		ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, WL_WARNING);
+		if (t == SC_HEIGHTMAP) {
+			SetDParamStr(0, _screenshot_name);
+			SetDParam(1, _heightmap_highest_peak);
+			ShowErrorMessage(STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY, INVALID_STRING_ID, WL_CRITICAL);
+		} else {
+			SetDParamStr(0, _screenshot_name);
+			ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, WL_WARNING);
+		}
 	} else {
 		ShowErrorMessage(STR_ERROR_SCREENSHOT_FAILED, INVALID_STRING_ID, WL_ERROR);
 	}

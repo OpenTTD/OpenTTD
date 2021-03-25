@@ -4358,6 +4358,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Only a f
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Huge screenshot
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}The screenshot will have a resolution of {COMMA} x {COMMA} pixels. Taking the screenshot may take a while. Do you want to continue?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Heightmap successfully saved as '{RAW_STRING}'. Highest peak is {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot successfully saved as '{RAW_STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot failed!
 
