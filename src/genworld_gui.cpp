@@ -1313,6 +1313,12 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 	static_assert(lengthof(percent_table) == GWP_CLASS_COUNT + 1);
 	assert(cls < GWP_CLASS_COUNT);
 
+	/* Check if we really are generating the world.
+	 * For example, placing trees via the SE also calls this function, but
+	 * shouldn't try to update the progress.
+	 */
+	if (!HasModalProgress()) return;
+
 	if (IsGeneratingWorldAborted()) {
 		HandleGeneratingWorldAbortion();
 		return;
