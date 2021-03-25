@@ -307,6 +307,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :貨物容量
 STR_SORT_BY_RANGE                                               :範圍
 STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_RATING                                              :評價
+STR_SORT_BY_NUM_VEHICLES                                        :車輛數量
 
 # Group by options for vehicle list
 
@@ -462,6 +463,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :音效／背景
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :上次訊息／新聞報告
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :訊息記錄
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :刪除所有訊息
 ############ range ends here
 
 ############ range for about menu starts
@@ -982,6 +984,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :四倍大小
 
 
 
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :其他
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基本圖形集
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}選擇要使用的基本圖形集
@@ -1334,6 +1337,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :設定在小地
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :綠
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :暗綠
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :紫
+STR_CONFIG_SETTING_SCROLLMODE_LMB                               :使用左鍵移動地圖
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :視野平滑移動：{STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :設定在小地圖中點選一個位置時，主視野的顯示反應。如啟用此選項，影像會移動直至到達點選的位置；否則影像會直接跳到點選的位置
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :使用某些建設工具時顯示度量提示：{STRING}
@@ -1510,6 +1514,8 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :詳細
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :彩色報紙登場年份：{STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :設定報紙轉用彩色印刷的年份。在此之前，所有在報紙上的圖像皆為黑白
 STR_CONFIG_SETTING_STARTING_YEAR                                :開始年份：{STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :永不
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :允許購買其它公司的股票：{STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :啟用此選項以容許公司買賣股票。一所公司必須達到一定的年齡方能買賣股票
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :轉運服務所得的收入百分比： {STRING}
@@ -1916,6 +1922,8 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}加入�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}更新伺服器
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}更新伺服器資訊
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}在網路上搜尋
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}在網路上尋找公開伺服器
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}新增伺服器
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}在清單新增會檢查遊戲進行的伺服器
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}起動伺服器
@@ -2155,6 +2163,7 @@ STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} �
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 已修改其名稱為 {STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}伺服器關閉連線
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}伺服器重新啟動中...{}請稍候...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} 已被踢出。原因：({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}內容下載中
@@ -2229,6 +2238,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}是，下載圖形
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}否，離開 OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}下載失敗
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透明度選項
@@ -2374,7 +2384,10 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}挖掘�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}挖掘電車隧道。按 Shift 可切換建造／顯示預估的建造費用
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}切換鋪設／移除公路
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}切換鋪設電車軌
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}轉換或升級路面類型。按 Shift 鍵可切換鋪設和顯示預估成本。
 
+STR_ROAD_NAME_ROAD                                              :路面
+STR_ROAD_NAME_TRAM                                              :電車軌
 
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}車廠方向
@@ -2462,6 +2475,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}隨機�
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}種植隨機種類樹木。按 Shift 可切換種植／顯示預估的種植費用
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}隨機樹種
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}在場景中隨機植樹
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}森林
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}產生地形
@@ -2659,11 +2673,17 @@ STR_ABOUT_VERSION                                               :{BLACK}OpenTTD 
 STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD 開發小組
 
 # Framerate display window
+STR_FRAMERATE_CAPTION                                           :{WHITE}幀率
+STR_FRAMERATE_MEMORYUSE                                         :{WHITE}記憶體
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}數據基於 {COMMA} 個採樣
+STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 毫秒
+STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :世界刻
 STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :GS/AI 腳本總計
+STR_FRAMETIME_CAPTION_AI                                        :AI {NUM} {STRING}
 ############ End of leave-in-this-order
 
 
@@ -2690,6 +2710,7 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}沒有�
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF：{WHITE}{STRING}
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}覆蓋檔案
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (路徑)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}為存檔輸入一個名稱
 
@@ -3247,7 +3268,10 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}每年{C
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}工業
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- 無 -
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}工業名稱 - 點選名稱可將工業置於畫面中央。 按住 Ctrl 點選可於工業位置開啟新視窗視野
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :所有貨物種類
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :無
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3257,6 +3281,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}將工�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}產出等級：{YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}該工業已宣佈關閉！
 
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :，{STRING}{STRING}
 
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量 (以 8 為倍數增減，最大為 2040)
