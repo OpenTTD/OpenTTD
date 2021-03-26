@@ -1995,7 +1995,7 @@ void NetworkServerShowStatusToConsole()
 		const char *status;
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
-		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s",
+		IConsoleInfoF("Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s",
 			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
 			cs->GetClientIP());
@@ -2174,13 +2174,13 @@ void NetworkPrintClients()
 {
 	for (NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 		if (_network_server) {
-			IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
+			IConsoleInfoF("Client #%1d  name: '%s'  company: %1d  IP: %s",
 					ci->client_id,
 					ci->client_name,
 					ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
 					ci->client_id == CLIENT_ID_SERVER ? "server" : NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP());
 		} else {
-			IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d",
+			IConsoleInfoF("Client #%1d  name: '%s'  company: %1d",
 					ci->client_id,
 					ci->client_name,
 					ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0));

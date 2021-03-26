@@ -1659,7 +1659,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 
 		char colour[512];
 		GetString(colour, STR_COLOUR_DARK_BLUE + _company_colours[c->index], lastof(colour));
-		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: " OTTD_PRINTF64 "  Loan: " OTTD_PRINTF64 "  Value: " OTTD_PRINTF64 "  (T:%d, R:%d, P:%d, S:%d) %s",
+		IConsoleInfoF("#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: " OTTD_PRINTF64 "  Loan: " OTTD_PRINTF64 "  Value: " OTTD_PRINTF64 "  (T:%d, R:%d, P:%d, S:%d) %s",
 			c->index + 1, colour, company_name,
 			c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
 			c->group_all[VEH_TRAIN].num_vehicle,
