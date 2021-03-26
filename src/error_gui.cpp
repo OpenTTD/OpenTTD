@@ -389,7 +389,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 		if (textref_stack_size > 0) StopTextRefStackUsage();
 
 		switch (wl) {
-			case WL_WARNING: IConsolePrint(CC_WARNING, buf); break;
+			case WL_WARNING: IConsoleWarning(buf); break;
 			default:         IConsoleError(buf); break;
 		}
 	}

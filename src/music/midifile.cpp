@@ -1109,31 +1109,31 @@ std::string MidiFile::GetSMFFile(const MusicSongInfo &song)
 static bool CmdDumpSMF(byte argc, char *argv[])
 {
 	if (argc == 0) {
-		IConsolePrint(CC_WARNING, "Write the current song to a Standard MIDI File. Usage: 'dumpsmf <filename>'");
+		IConsoleWarning("Write the current song to a Standard MIDI File. Usage: 'dumpsmf <filename>'");
 		return true;
 	}
 	if (argc != 2) {
-		IConsolePrint(CC_WARNING, "You must specify a filename to write MIDI data to.");
+		IConsoleWarning("You must specify a filename to write MIDI data to.");
 		return false;
 	}
 
 	if (_midifile_instance == nullptr) {
-		IConsolePrint(CC_ERROR, "There is no MIDI file loaded currently, make sure music is playing, and you're using a driver that works with raw MIDI.");
+		IConsoleError("There is no MIDI file loaded currently, make sure music is playing, and you're using a driver that works with raw MIDI.");
 		return false;
 	}
 
 	char fnbuf[MAX_PATH] = { 0 };
 	if (seprintf(fnbuf, lastof(fnbuf), "%s%s", FiosGetScreenshotDir(), argv[1]) >= (int)lengthof(fnbuf)) {
-		IConsolePrint(CC_ERROR, "Filename too long.");
+		IConsoleError("Filename too long.");
 		return false;
 	}
 	IConsoleInfoF("Dumping MIDI to: %s", fnbuf);
 
 	if (_midifile_instance->WriteSMF(fnbuf)) {
-		IConsolePrint(CC_INFO, "File written successfully.");
+		IConsoleInfo("File written successfully.");
 		return true;
 	} else {
-		IConsolePrint(CC_ERROR, "An error occurred writing MIDI file.");
+		IConsoleError("An error occurred writing MIDI file.");
 		return false;
 	}
 }

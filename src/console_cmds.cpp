@@ -268,7 +268,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 			uint32 result;
 			if (GetArgumentInteger(&result, argv[1])) {
 				if (result >= MapSize()) {
-					IConsolePrint(CC_ERROR, "Tile does not exist");
+					IConsoleError("Tile does not exist");
 					return true;
 				}
 				ScrollMainWindowToTile((TileIndex)result);
@@ -281,7 +281,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 			uint32 x, y;
 			if (GetArgumentInteger(&x, argv[1]) && GetArgumentInteger(&y, argv[2])) {
 				if (x >= MapSizeX() || y >= MapSizeY()) {
-					IConsolePrint(CC_ERROR, "Tile does not exist");
+					IConsoleError("Tile does not exist");
 					return true;
 				}
 				ScrollMainWindowToTile(TileXY(x, y));
@@ -311,7 +311,7 @@ DEF_CONSOLE_CMD(ConSave)
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
 		if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
-			IConsolePrint(CC_ERROR, "Saving map failed");
+			IConsoleError("Saving map failed");
 		} else {
 			IConsolePrintF(CC_DEFAULT, "Map successfully saved to %s", filename);
 		}
