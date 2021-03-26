@@ -2154,7 +2154,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 		extern bool GetArgumentInteger(uint32 *value, const char *arg);
 		success = GetArgumentInteger(&val, value);
 		if (!success) {
-			IConsolePrintF(CC_ERROR, "'%s' is not an integer.", value);
+			IConsoleErrorF("'%s' is not an integer.", value);
 			return;
 		}
 

@@ -358,10 +358,10 @@ DEF_CONSOLE_CMD(ConLoad)
 			_file_to_saveload.SetName(FiosBrowseTo(item));
 			_file_to_saveload.SetTitle(item->title);
 		} else {
-			IConsolePrintF(CC_ERROR, "%s: Not a savegame.", file);
+			IConsoleErrorF("%s: Not a savegame.", file);
 		}
 	} else {
-		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
+		IConsoleErrorF("%s: No such file or directory.", file);
 	}
 
 	return true;
@@ -382,10 +382,10 @@ DEF_CONSOLE_CMD(ConRemove)
 	const FiosItem *item = _console_file_list.FindItem(file);
 	if (item != nullptr) {
 		if (!FiosDelete(item->name)) {
-			IConsolePrintF(CC_ERROR, "%s: Failed to delete file", file);
+			IConsoleErrorF("%s: Failed to delete file", file);
 		}
 	} else {
-		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
+		IConsoleErrorF("%s: No such file or directory.", file);
 	}
 
 	_console_file_list.InvalidateFileList();
@@ -427,10 +427,10 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 			case FIOS_TYPE_DIR: case FIOS_TYPE_DRIVE: case FIOS_TYPE_PARENT:
 				FiosBrowseTo(item);
 				break;
-			default: IConsolePrintF(CC_ERROR, "%s: Not a directory.", file);
+			default: IConsoleErrorF("%s: Not a directory.", file);
 		}
 	} else {
-		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
+		IConsoleErrorF("%s: No such file or directory.", file);
 	}
 
 	_console_file_list.InvalidateFileList();
@@ -484,7 +484,7 @@ static bool ConKickOrBan(const char *argv, bool ban, const char *reason)
 		 * would be reading from and writing to after returning. So we would read or write data
 		 * from freed memory up till the segfault triggers. */
 		if (client_id == CLIENT_ID_SERVER || client_id == _redirect_console_to_client) {
-			IConsolePrintF(CC_ERROR, "ERROR: Silly boy, you can not %s yourself!", ban ? "ban" : "kick");
+			IConsoleErrorF("ERROR: Silly boy, you can not %s yourself!", ban ? "ban" : "kick");
 			return true;
 		}
 
@@ -531,7 +531,7 @@ DEF_CONSOLE_CMD(ConKick)
 	/* Reason for kicking supplied */
 	size_t kick_message_length = strlen(argv[2]);
 	if (kick_message_length >= 255) {
-		IConsolePrintF(CC_ERROR, "ERROR: Maximum kick message length is 254 characters. You entered " PRINTF_SIZE " characters.", kick_message_length);
+		IConsoleErrorF("ERROR: Maximum kick message length is 254 characters. You entered " PRINTF_SIZE " characters.", kick_message_length);
 		return false;
 	} else {
 		return ConKickOrBan(argv[1], false, argv[2]);
@@ -555,7 +555,7 @@ DEF_CONSOLE_CMD(ConBan)
 	/* Reason for kicking supplied */
 	size_t kick_message_length = strlen(argv[2]);
 	if (kick_message_length >= 255) {
-		IConsolePrintF(CC_ERROR, "ERROR: Maximum kick message length is 254 characters. You entered " PRINTF_SIZE " characters.", kick_message_length);
+		IConsoleErrorF("ERROR: Maximum kick message length is 254 characters. You entered " PRINTF_SIZE " characters.", kick_message_length);
 		return false;
 	} else {
 		return ConKickOrBan(argv[1], true, argv[2]);
@@ -735,7 +735,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 
 	/* Check we have a valid company id! */
 	if (!Company::IsValidID(company_id) && company_id != COMPANY_SPECTATOR) {
-		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
+		IConsoleErrorF("Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
 
@@ -756,7 +756,7 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 
 	/* Check if the company requires a password */
 	if (NetworkCompanyIsPassworded(company_id) && argc < 3) {
-		IConsolePrintF(CC_ERROR, "Company %d requires a password to join.", company_id + 1);
+		IConsoleErrorF("Company %d requires a password to join.", company_id + 1);
 		return true;
 	}
 
@@ -788,7 +788,7 @@ DEF_CONSOLE_CMD(ConMoveClient)
 	}
 
 	if (!Company::IsValidID(company_id) && company_id != COMPANY_SPECTATOR) {
-		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
+		IConsoleErrorF("Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
 
@@ -827,7 +827,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	/* Check valid range */
 	if (!Company::IsValidID(index)) {
-		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
+		IConsoleErrorF("Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
 
@@ -1585,7 +1585,7 @@ DEF_CONSOLE_CMD(ConHelp)
 				cmd->proc(0, nullptr);
 				return true;
 			}
-			IConsolePrintF(CC_ERROR, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline);
+			IConsoleErrorF("ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline);
 			return true;
 		}
 

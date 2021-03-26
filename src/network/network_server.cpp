@@ -1111,18 +1111,18 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	NetworkClientInfo *ci = this->GetInfo();
 
 	if (err != nullptr) {
-		IConsolePrintF(CC_ERROR, "WARNING: %s from client %d (IP: %s).", err, ci->client_id, this->GetClientIP());
+		IConsoleErrorF("WARNING: %s from client %d (IP: %s).", err, ci->client_id, this->GetClientIP());
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SERVER) && ci->client_id != CLIENT_ID_SERVER) {
-		IConsolePrintF(CC_ERROR, "WARNING: server only command %u from client %u (IP: %s), kicking...", cp.cmd & CMD_ID_MASK, ci->client_id, this->GetClientIP());
+		IConsoleErrorF("WARNING: server only command %u from client %u (IP: %s), kicking...", cp.cmd & CMD_ID_MASK, ci->client_id, this->GetClientIP());
 		return this->SendError(NETWORK_ERROR_KICKED);
 	}
 
 	if ((GetCommandFlags(cp.cmd) & CMD_SPECTATOR) == 0 && !Company::IsValidID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
-		IConsolePrintF(CC_ERROR, "WARNING: spectator (client: %u, IP: %s) issued non-spectator command %u, kicking...", ci->client_id, this->GetClientIP(), cp.cmd & CMD_ID_MASK);
+		IConsoleErrorF("WARNING: spectator (client: %u, IP: %s) issued non-spectator command %u, kicking...", ci->client_id, this->GetClientIP(), cp.cmd & CMD_ID_MASK);
 		return this->SendError(NETWORK_ERROR_KICKED);
 	}
 
@@ -1132,7 +1132,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
 	if (!(cp.cmd == CMD_COMPANY_CTRL && cp.p1 == 0 && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
-		IConsolePrintF(CC_ERROR, "WARNING: client %d (IP: %s) tried to execute a command as company %d, kicking...",
+		IConsoleErrorF("WARNING: client %d (IP: %s) tried to execute a command as company %d, kicking...",
 		               ci->client_playas + 1, this->GetClientIP(), cp.company + 1);
 		return this->SendError(NETWORK_ERROR_COMPANY_MISMATCH);
 	}
@@ -1405,7 +1405,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet *p)
 			NetworkServerSendChat(action, desttype, dest, msg, this->client_id, data);
 			break;
 		default:
-			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, this->GetClientIP());
+			IConsoleErrorF("WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, this->GetClientIP());
 			return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 	return NETWORK_RECV_STATUS_OKAY;
@@ -1833,7 +1833,7 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_ACTIVE:
 				if (lag > _settings_client.network.max_lag_time) {
 					/* Client did still not report in within the specified limit. */
-					IConsolePrintF(CC_ERROR, cs->last_packet + std::chrono::milliseconds(lag * MILLISECONDS_PER_TICK) > std::chrono::steady_clock::now() ?
+					IConsoleErrorF(cs->last_packet + std::chrono::milliseconds(lag * MILLISECONDS_PER_TICK) > std::chrono::steady_clock::now() ?
 							/* A packet was received in the last three game days, so the client is likely lagging behind. */
 								"Client #%d is dropped because the client's game state is more than %d ticks behind" :
 							/* No packet was received in the last three game days; sounds like a lost connection. */
@@ -1855,7 +1855,7 @@ void NetworkServer_Tick(bool send_frame)
 
 				if (cs->last_frame_server - cs->last_token_frame >= _settings_client.network.max_lag_time) {
 					/* This is a bad client! It didn't send the right token back within time. */
-					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it fails to send valid acks", cs->client_id);
+					IConsoleErrorF("Client #%d is dropped because it fails to send valid acks", cs->client_id);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
 					continue;
 				}
@@ -1867,7 +1867,7 @@ void NetworkServer_Tick(bool send_frame)
 				/* NewGRF check and authorized states should be handled almost instantly.
 				 * So give them some lee-way, likewise for the query with inactive. */
 				if (lag > _settings_client.network.max_init_time) {
-					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, _settings_client.network.max_init_time);
+					IConsoleErrorF("Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, _settings_client.network.max_init_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_COMPUTER);
 					continue;
 				}
@@ -1891,7 +1891,7 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_MAP:
 				/* Downloading the map... this is the amount of time since starting the saving. */
 				if (lag > _settings_client.network.max_download_time) {
-					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to download the map", cs->client_id, _settings_client.network.max_download_time);
+					IConsoleErrorF("Client #%d is dropped because it took longer than %d ticks to download the map", cs->client_id, _settings_client.network.max_download_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_MAP);
 					continue;
 				}
@@ -1901,7 +1901,7 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_PRE_ACTIVE:
 				/* The map has been sent, so this is for loading the map and syncing up. */
 				if (lag > _settings_client.network.max_join_time) {
-					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to join", cs->client_id, _settings_client.network.max_join_time);
+					IConsoleErrorF("Client #%d is dropped because it took longer than %d ticks to join", cs->client_id, _settings_client.network.max_join_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_JOIN);
 					continue;
 				}
@@ -1911,7 +1911,7 @@ void NetworkServer_Tick(bool send_frame)
 			case NetworkClientSocket::STATUS_AUTH_COMPANY:
 				/* These don't block? */
 				if (lag > _settings_client.network.max_password_time) {
-					IConsolePrintF(CC_ERROR, "Client #%d is dropped because it took longer than %d ticks to enter the password", cs->client_id, _settings_client.network.max_password_time);
+					IConsoleErrorF("Client #%d is dropped because it took longer than %d ticks to enter the password", cs->client_id, _settings_client.network.max_password_time);
 					cs->SendError(NETWORK_ERROR_TIMEOUT_PASSWORD);
 					continue;
 				}

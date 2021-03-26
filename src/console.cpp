@@ -497,7 +497,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 	for (cmdptr = cmdstr; *cmdptr != '\0'; cmdptr++) {
 		if (!IsValidChar(*cmdptr, CS_ALPHANUMERAL)) {
 			IConsoleError("command contains malformed characters, aborting");
-			IConsolePrintF(CC_ERROR, "ERROR: command was: '%s'", cmdstr);
+			IConsoleErrorF("ERROR: command was: '%s'", cmdstr);
 			return;
 		}
 	}
