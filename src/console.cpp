@@ -117,6 +117,16 @@ void IConsolePrint(TextColour colour_code, const char *string)
 	IConsoleGUIPrint(colour_code, str);
 }
 
+void CDECL WARN_FORMAT(2, 0) IConsolePrintV(TextColour colour_code, const char *format, va_list args)
+{
+	assert(IsValidConsoleColour(colour_code));
+
+	char buf[ICON_MAX_STREAMSIZE];
+	vseprintf(buf, lastof(buf), format, args);
+
+	IConsolePrint(colour_code, buf);
+}
+
 /**
  * Handle the printing of text entered into the console or redirected there
  * by any other means. Uses printf() style format, for more information look
@@ -124,16 +134,11 @@ void IConsolePrint(TextColour colour_code, const char *string)
  */
 void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...)
 {
-	assert(IsValidConsoleColour(colour_code));
-
 	va_list va;
-	char buf[ICON_MAX_STREAMSIZE];
 
 	va_start(va, format);
-	vseprintf(buf, lastof(buf), format, va);
+	IConsolePrintV(colour_code, format, va);
 	va_end(va);
-
-	IConsolePrint(colour_code, buf);
 }
 
 /**
@@ -142,34 +147,28 @@ void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...)
  * level 2 (developer) for debugging messages to show up.
  * Uses printf() style format, for more information look at IConsolePrint()
  */
-void CDECL IConsoleDebugF(const char* format, ...)
+void CDECL IConsoleDebugF(const char *format, ...)
 {
 	if (_settings_client.gui.developer <= 1) return;
 
 	va_list va;
-	char buf[ICON_MAX_STREAMSIZE];
 
 	va_start(va, format);
-	vseprintf(buf, lastof(buf), format, va);
+	IConsolePrintV(CC_DEBUG, format, va);
 	va_end(va);
-
-	IConsolePrint(CC_DEBUG, buf);
 }
 
 /**
  * It is possible to print informational messages to the console.
  * Uses printf() style format, for more information look at IConsolePrint()
  */
-void CDECL IConsoleInfoF(const char* format, ...)
+void CDECL IConsoleInfoF(const char *format, ...)
 {
 	va_list va;
-	char buf[ICON_MAX_STREAMSIZE];
 
 	va_start(va, format);
-	vseprintf(buf, lastof(buf), format, va);
+	IConsolePrintV(CC_INFO, format, va);
 	va_end(va);
-
-	IConsolePrint(CC_INFO, buf);
 }
 
 /**
@@ -178,18 +177,15 @@ void CDECL IConsoleInfoF(const char* format, ...)
  * debugging messages to show up.
  * Uses printf() style format, for more information look at IConsolePrint()
  */
-void CDECL IConsoleWarningF(const char* format, ...)
+void CDECL IConsoleWarningF(const char *format, ...)
 {
 	if (_settings_client.gui.developer == 0) return;
 
 	va_list va;
-	char buf[ICON_MAX_STREAMSIZE];
 
 	va_start(va, format);
-	vseprintf(buf, lastof(buf), format, va);
+	IConsolePrintV(CC_WARNING, format, va);
 	va_end(va);
-
-	IConsolePrint(CC_WARNING, buf);
 }
 
 /**
@@ -197,56 +193,13 @@ void CDECL IConsoleWarningF(const char* format, ...)
  * game errors, or errors in general you would want the user to notice.
  * Uses printf() style format, for more information look at IConsolePrint()
  */
-void CDECL IConsoleErrorF(const char* format, ...)
+void CDECL IConsoleErrorF(const char *format, ...)
 {
 	va_list va;
-	char buf[ICON_MAX_STREAMSIZE];
 
 	va_start(va, format);
-	vseprintf(buf, lastof(buf), format, va);
+	IConsolePrintV(CC_ERROR, format, va);
 	va_end(va);
-
-	IConsolePrint(CC_ERROR, buf);
-}
-
-/**
- * It is possible to print debugging information to the console,
- * which is achieved by using this function. Can only be used by
- * debug() in debug.cpp. You need at least a level 2 (developer) for debugging
- * messages to show up
- * @param dbg debugging category
- * @param string debugging message
- */
-void IConsoleDebug(const char *dbg, const char *string)
-{
-	IConsoleDebugF("dbg: [%s] %s", dbg, string);
-}
-
-/**
- * It is possible to print informational messages to the console
- */
-void IConsoleInfo(const char* string)
-{
-	IConsoleInfoF("INFO: %s", string);
-}
-
-/**
- * It is possible to print warnings to the console. These are mostly
- * errors or mishaps, but non-fatal. You need at least a level 1 (developer) for
- * debugging messages to show up
- */
-void IConsoleWarning(const char *string)
-{
-	IConsoleWarningF("WARNING: %s", string);
-}
-
-/**
- * It is possible to print error information to the console. This can include
- * game errors, or errors in general you would want the user to notice
- */
-void IConsoleError(const char *string)
-{
-	IConsoleErrorF("ERROR: %s", string);
 }
 
 /**
