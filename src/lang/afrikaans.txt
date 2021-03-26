@@ -1180,8 +1180,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skakel rampe aa
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsraad se gesindheid teenoor omgewings-konstruksie: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoeveel invloed klank en skade aan die omgewing deur maatskappye aan die stadswaardering het en verderde bouwerk in die stad.
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimum kaarthoogte: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Stel die maksimum toegelate berghoogte
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kan nie die berghoogte verander nie - daar is hoër berge as hierdie op die kaart
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Laat landargitektuur toe onder geboue, spore, ens.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Laat Landargitektuur onder geboue en spore sonder om dit te verwyder
@@ -2790,12 +2788,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Hoev. dorpe:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Hoev. nywerhede:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimum kaarthoogte
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Verhoog berge met een teël
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Verminder berghoogte met een teël
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sneeu lyn hoogte:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweeg die sneeu lyn een op
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweeg die sneeu lyn een af
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Land genereerder:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrein tipe:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Seevlak:
@@ -2821,8 +2813,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Reliëfk
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grootte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Verander maksimum kaarthoogte
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Verander sneeu lyn hoogte
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander begin jaar
 
 # SE Map generation

@@ -2641,10 +2641,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}จำนวนเมือง
 STR_MAPGEN_DATE                                                 :{BLACK}วันที่:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}จำนวนอุตสาหกรรม:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}ขนาดความสูงของแผนที่สูงสุด:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}เส้นความสูงเขตหิมะ:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ปรับเปลี่ยนความสูงของหิมะขึ้นไป 1 ระดับ
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}ปรับเปลี่ยนความสูงของหิมะลงมา 1 ระดับ
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}เครื่องมือสร้างสภาพพื้นดิน:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}ประเภทภูมิประเทศ:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}ระดับทะเล:
@@ -2670,7 +2666,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}ชื�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}ขนาด:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}ปรับเปลี่ยนความสูงของระดับหิมะ
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}เปลี่ยนปีที่เริ่มต้นเกม
 
 # SE Map generation

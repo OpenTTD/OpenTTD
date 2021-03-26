@@ -1277,8 +1277,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Uključivanje n
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stav gradske uprave prema restrukturiranju područja: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Odaberi koliko buka i ekološka šteta utječu na gradsku ocjenu pojedine tvrtke i na daljnja građevinska djelovanja u njihovim područjima
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Najveća visina karte: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Postavi najveću dopuštenu visinu planina na karti
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nije moguće postaviti najveću visinu karte na ovu vrijednost. Barem jedna planina na karti je viša.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dopusti uređivanje krajolika ispod građevina, tračnica, itd.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Dopusti uređivanje krajolika ispod građevina i pruga bez njihovog uklanjanja
@@ -2913,12 +2911,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Broj gradova:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Broj industrija:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Najveća visina karte:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Povećaj za jedan najveću visinu planina na karti
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Smanji za jedan najveću visinu planina na karti
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Visina linije snijega
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Pomakni visinu linije snijega za jedan gore
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pomakni visinu linije snijega za jedan dolje
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Izrađivač zemljišta:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vrsta terena:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Razina mora:
@@ -2944,8 +2936,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ime visi
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Veličina:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Promijeni najveću visinu karte
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Promijeni visinu linije snijega
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Promijeni početnu godinu
 
 # SE Map generation

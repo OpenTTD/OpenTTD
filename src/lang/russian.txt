@@ -1356,8 +1356,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Включен�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Отношение городского совета к реструктуризации окрестностей: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Выберите уровень влияния шума и загрязнения окружающей среды компаниями на их рейтинг в городах и возможность дальнейшего строительства около городов
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Максимальная высота: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Установка максимально допустимой высоты гор на карте
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Невозможно изменить максимальную высоту. На карте есть горы выше этого значения.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Разрешить изм. ландшафта под зданиями, дорогами и т. д. (автоспуски): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Разрешить изменение ландшафта под домами и дорогами, не требуя их сноса
@@ -3067,12 +3065,6 @@ STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Количество городов:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Кол-во предпр.:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Макс. высота карты:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Увеличить максимальную высоту гор на карте на 1
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Уменьшить максимальную высоту гор на карте на 1
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снеговая линия:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Поднять снеговую линию
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Опустить снеговую линию
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Генератор ландшафта:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип ландшафта:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Количество морей и озёр:
@@ -3098,8 +3090,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назв
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Размер:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Максимальная высота карты
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Изменить высоту снеговой линии
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Изменить год начала игры
 
 # SE Map generation

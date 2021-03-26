@@ -1410,8 +1410,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Įgalinti atsit
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Miestų gyventojų požiūris į triukšmą ir aplinkos darkymą: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Nustatyti miestų požiūrį į statybas, triukšmą ir kraštovaizdžio keitimą. Nuo to priklauso kompanijos reitingas bei leidimasstatyti įvairius objektus
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Didžiausias žemėlapio aukštis: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Didžiausias galimas kalnų žemėlapyje aukštis
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Negalima nustatyti tokio kalnų aukščio, nes žemėlapyje jau yra bent vienas aukštesnis kalnas
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leisti keisti reljefą po pastatais ir bėgiais, jų nepašalinant
@@ -3111,12 +3109,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Miestų kiekis:
 STR_MAPGEN_DATE                                                 :{BLACK}Pradžios data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Pramonės įmonių kiekis:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Didžiausias leistinas aukštis:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Padidinti didžiausią leistiną aukštį vienetu
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Sumažinti didžiausią leistiną aukštį vienetu
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniego linijos aukštis:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaukštinti sniego liniją
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pažeminti sniego liniją
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generavimo algoritmas:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūros lygis:
@@ -3142,8 +3134,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Žemėla
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dydis:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Keisti didžiausią leistiną aukštį
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Pakeisti sniego linijos aukštį
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Keisti pradžios metus
 
 # SE Map generation

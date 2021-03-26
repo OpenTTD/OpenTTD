@@ -1180,8 +1180,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Stell Katastrop
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Dem Stadrot seng Astellung géigeniwwer dem Embau vun der Landschaft: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wielt aus, wéivill vun der Firma verursachten Kaméidi an Emweltschiedegung sech op d'Stadbewäertung an op weider Bauaktiounen auswierkt
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximal Kaartenhéicht: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Setzt déi maximal erlabten Héicht fir Bierger op dëser Kaart
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kanns d'maximal Kaartenhéicht net op dëse Wäert setzen. Op manst ee Bierg op der Kaart ass méi héich
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Erlaabt Landformung ënnert Gebaier, Stroossen, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Erlaabt Terraintransformatioun ënnert Gebaier an Schinnen ouni dës ewechzehuelen
@@ -2816,12 +2814,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Unz. Dierfer:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Unz. Industrien:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maximal Kaartenhéicht:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Setzt d'Maximalhéicht vu Bierger op der Kaart em 1 erop
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Setzt d'Maximalhéicht vu Bierger op der Kaart em 1 erof
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Weis d'Schnéilinnhéicht
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Beweg Schnéilinnhéicht erop
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Beweg Schnéilinnhéicht erof
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mieresspigel:
@@ -2847,8 +2839,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Héichte
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Gréisst:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Maximal Kaartenhéicht änneren
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ännert d'Schnéilinnhéicht
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Änner d'Startjoer
 
 # SE Map generation

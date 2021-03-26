@@ -1159,8 +1159,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Включва�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Отношението на градския съвет към реструктурирането на района: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Изберете какво количество шум и поражения по околната среда причинени от компаниите афектират техния рейтинг в града и бъдещи конструкции в района.
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Максимална височина на картата: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Определете максималната допустима височина за планини на картата
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Не можете да зададете максималната височина на картата на тази стойност. Поне една планина на карта е по-висока
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Тераформиране под постройки (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Разреши промяна на наклона на терена под постройки и пътища без необходимост от премахване
@@ -2671,12 +2669,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Брой градове:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Брой индустрии:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Максимална височина на картата:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Увеличаване на максималната височина на планините на карта с едно
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Намаляне максималната височина на планините на карта с едно
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снежна линия:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Преместване снежната линия нагоре
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Преместване снежната линия надолу
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Земегенератор:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип на терен:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Морско ниво:
@@ -2702,8 +2694,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Име �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Размер:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Промяна на максималната височина на картата
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Височина на снежната линия
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Промяна началната година
 
 # SE Map generation

@@ -1206,8 +1206,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :일정 구역�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시의 태도: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서 건설하는 행동에 얼마나 영향을 미칠지 선택하세요
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :최대 지형 높이: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :지도에 생성되는 산이 가질 수 있는 최대 높이를 설정합니다.
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}이 값을 최대 지형 높이로 설정할 수 없습니다. 이 값보다 고도가 높은 산이 최소 한 개 이상 존재합니다.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :건물이나 도로/선로 등을 제거하지 않고도 하부의 지형을 편집할 수 있게 허용합니다.
@@ -2893,12 +2891,6 @@ STR_MAPGEN_BY                                                   :{BLACK}x
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}도시의 수:
 STR_MAPGEN_DATE                                                 :{BLACK}날짜:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}산업시설 수:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}최대 지형 높이:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}최대 지형 높이를 1칸 높입니다
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}최대 지형 높이를 1칸 낮춥니다
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}설선 고도:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}설선 고도를 1칸 높입니다
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}설선 고도를 1칸 낮춥니다
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}지형 만들기:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}해수면:
@@ -2924,8 +2916,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}높이�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}크기:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}최대 지형 고도값 변경
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}설선 고도 변경
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}시작 연도 변경
 
 # SE Map generation

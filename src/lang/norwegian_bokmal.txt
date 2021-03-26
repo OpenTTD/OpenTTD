@@ -1207,8 +1207,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Aktiver/inaktiv
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Bystyrets holdning til restrukturering av området: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Velg hvor mye støy og miljøskader forårsaket av selskaper påvirker deres anseelse i byen og muligheter for ytterligere utbygging i nærområdet
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimal karthøyde: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Still inn maksimal tillatt høyde for fjellene på kartet
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan ikke sette den maksimale karthøyden til denne verdien. Minst ett fjell på kartet er høyere
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillat endring av landskap under bygninger, spor, osv.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillat endring av landskapet under bygninger og spor uten å fjerne dem
@@ -2896,12 +2894,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antall byer:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antall industrier:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimal karthøyde:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Øk den maksimale fjellhøyden på kartet med én
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Redusér den maksimale fjellhøyden på kartet med én
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Høyde på snøgrensen:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt høyden på snøgrensen ett hakk opp
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høyden på snøgrensen ett hakk ned
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havnivå:
@@ -2927,8 +2919,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høydeka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Endre maksimal karthøyde
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Endre høyden på snøgrensen
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Endre startår
 
 # SE Map generation

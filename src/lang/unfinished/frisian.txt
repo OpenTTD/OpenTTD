@@ -1154,8 +1154,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skeakel rampen 
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Hâlding gemeenten tsjinoer werstrukturearring: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Kies hoe grut ympact fan lûdsoerlêst en omwrâldskea toch bedriuwen is op har reputaasje by de lokale bestjoeren en takomstige konstruksje yn harren mêd
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimale kaarthichte: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Maksimale tastiene hichte fan bergen op 'e kaart ynstelle
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omkriten oanpasse under gebouen, spoaren, ensafuorthinne tastean: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Stean lânskipsbewurkings ûnder gebouwen en spoarbanen ta sûnder dat dizze ferwidere wurde
 STR_CONFIG_SETTING_CATCHMENT                                    :Gebrûk meer realistyske hannelsgebieten: {STRING}
@@ -2488,12 +2486,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Oantal stêden:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Oantal yndustrien:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimale kaarthichte:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Ferheegje de maksimale hichte fan bergen op de kaart mei 1
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Ferleegje de maksimale hichte fan bergen op de kaart mei 1
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hichte sniegrins:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Sniegrins ien omheech ferpleatsje:
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Sniegrins ien nei beneden ferpleatsje:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lângenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Seenivo:
@@ -2519,8 +2511,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Namme hi
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grutte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Maksimale kaarthichte oanpasse
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{BLACK}Sniehichte oanpasse
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{BLACK}Startjier oanpasse
 
 # SE Map generation
