@@ -2142,7 +2142,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 	const SettingDesc *sd = GetSettingFromName(name, &index);
 
 	if (sd == nullptr) {
-		IConsolePrintF(CC_WARNING, "'%s' is an unknown setting.", name);
+		IConsoleWarningF("'%s' is an unknown setting.", name);
 		return;
 	}
 
@@ -2192,14 +2192,14 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 	const void *ptr;
 
 	if (sd == nullptr) {
-		IConsolePrintF(CC_WARNING, "'%s' is an unknown setting.", name);
+		IConsoleWarningF("'%s' is an unknown setting.", name);
 		return;
 	}
 
 	ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
 
 	if (sd->desc.cmd == SDT_STRING) {
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
+		IConsoleWarningF("Current value for '%s' is: '%s'", name, (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
 	} else {
 		if (sd->desc.cmd == SDT_BOOLX) {
 			seprintf(value, lastof(value), (*(const bool*)ptr != 0) ? "on" : "off");
@@ -2207,7 +2207,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 			seprintf(value, lastof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
 
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %u)",
+		IConsoleWarningF("Current value for '%s' is: '%s' (min: %s%d, max: %u)",
 			name, value, (sd->desc.flags & SGF_0ISDISABLED) ? "(0) " : "", sd->desc.min, sd->desc.max);
 	}
 }
@@ -2219,7 +2219,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
  */
 void IConsoleListSettings(const char *prefilter)
 {
-	IConsolePrintF(CC_WARNING, "All settings with their current value:");
+	IConsoleWarningF("All settings with their current value:");
 
 	for (const SettingDesc *sd = _settings; sd->save.cmd != SL_END; sd++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
@@ -2237,7 +2237,7 @@ void IConsoleListSettings(const char *prefilter)
 		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->desc.name, value);
 	}
 
-	IConsolePrintF(CC_WARNING, "Use 'setting' command to change a value");
+	IConsoleWarningF("Use 'setting' command to change a value");
 }
 
 /**

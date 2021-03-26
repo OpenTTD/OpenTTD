@@ -1849,7 +1849,7 @@ void NetworkServer_Tick(bool send_frame)
 				 * slow, but the connection is likely severed. Mentioning
 				 * frame_freq is not useful in this case. */
 				if (lag > (uint)DAY_TICKS && cs->lag_test == 0 && cs->last_packet + std::chrono::seconds(2) > std::chrono::steady_clock::now()) {
-					IConsolePrintF(CC_WARNING, "[%d] Client #%d is slow, try increasing [network.]frame_freq to a higher value!", _frame_counter, cs->client_id);
+					IConsoleWarningF("[%d] Client #%d is slow, try increasing [network.]frame_freq to a higher value!", _frame_counter, cs->client_id);
 					cs->lag_test = 1;
 				}
 

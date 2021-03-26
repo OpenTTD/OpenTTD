@@ -177,7 +177,7 @@ DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
  */
 static void IConsoleHelp(const char *str)
 {
-	IConsolePrintF(CC_WARNING, "- %s", str);
+	IConsoleWarningF("- %s", str);
 }
 
 /**
@@ -1779,9 +1779,9 @@ DEF_CONSOLE_CMD(ConCompanyPassword)
 	password = NetworkChangeCompanyPassword(company_id, password);
 
 	if (StrEmpty(password)) {
-		IConsolePrintF(CC_WARNING, "Company password cleared");
+		IConsoleWarningF("Company password cleared");
 	} else {
-		IConsolePrintF(CC_WARNING, "Company password changed to: %s", password);
+		IConsoleWarningF("Company password changed to: %s", password);
 	}
 
 	return true;
@@ -2031,12 +2031,12 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > (int)files.size()) { // safe cast, files.size() should not be larger than a few hundred in the most extreme cases
-				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not added.", grfnum);
+				IConsoleWarningF("GRF number %d out of range, not added.", grfnum);
 				continue;
 			}
 			GRFFile *grf = files[grfnum - 1];
 			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; })) {
-				IConsolePrintF(CC_WARNING, "GRF number %d [%08X] is already selected for profiling.", grfnum, BSWAP32(grf->grfid));
+				IConsoleWarningF("GRF number %d [%08X] is already selected for profiling.", grfnum, BSWAP32(grf->grfid));
 				continue;
 			}
 			_newgrf_profilers.emplace_back(grf);
@@ -2053,7 +2053,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > (int)files.size()) {
-				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not removing.", grfnum);
+				IConsoleWarningF("GRF number %d out of range, not removing.", grfnum);
 				continue;
 			}
 			GRFFile *grf = files[grfnum - 1];
@@ -2092,9 +2092,9 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				_newgrf_profile_end_date = MAX_DAY;
 			}
 		} else if (_newgrf_profilers.empty()) {
-			IConsolePrintF(CC_WARNING, "No GRFs selected for profiling, did not start.");
+			IConsoleWarningF("No GRFs selected for profiling, did not start.");
 		} else {
-			IConsolePrintF(CC_WARNING, "Did not start profiling for any GRFs, all selected GRFs are already profiling.");
+			IConsoleWarningF("Did not start profiling for any GRFs, all selected GRFs are already profiling.");
 		}
 		return true;
 	}
