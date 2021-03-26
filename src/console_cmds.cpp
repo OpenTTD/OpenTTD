@@ -2079,7 +2079,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 		}
 		if (started > 0) {
-			IConsolePrintF(CC_DEBUG, "Started profiling for GRFID%s %s", (started > 1) ? "s" : "", grfids.c_str());
+			IConsoleDebugF("Started profiling for GRFID%s %s", (started > 1) ? "s" : "", grfids.c_str());
 			if (argc >= 3) {
 				int days = std::max(atoi(argv[2]), 1);
 				_newgrf_profile_end_date = _date + days;
@@ -2087,7 +2087,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				char datestrbuf[32]{ 0 };
 				SetDParam(0, _newgrf_profile_end_date);
 				GetString(datestrbuf, STR_JUST_DATE_ISO, lastof(datestrbuf));
-				IConsolePrintF(CC_DEBUG, "Profiling will automatically stop on game date %s", datestrbuf);
+				IConsoleDebugF("Profiling will automatically stop on game date %s", datestrbuf);
 			} else {
 				_newgrf_profile_end_date = MAX_DAY;
 			}
