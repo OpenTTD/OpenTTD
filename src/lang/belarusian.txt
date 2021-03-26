@@ -1488,8 +1488,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Пераклю�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Стаўленьне гарадзкой рады да рэструктурызацыі навакольляў: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Выберыце ўзровень шуму й забруджваньня навакольнага асяроддзя кампаніямі, які ўплывае на іх рэйтынґ у гарадах і магчымасьць далейшага будаўніцтва каля гарадоў
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Максімальная вышыня: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Усталёўка максімальна дапушчальнай вышыні гор на мапе
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Немагчыма зьмяніць максімальную вышыню. На мапе ёсць горы вышэй гэтага значэньня.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Дазволіць зьмену ляндшафту пад будынкамі, дарогамі й г. д. (аўтаспускі): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Дазволіць зьмену ляндшафту пад будынкамі й рэйкамi, не выдаляючы іx
@@ -3111,12 +3109,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Колькасьць гарадоў:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Колькасьць прадпрыемстваў:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Макс. вышыня мапы:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Павялічыць максімальную вышыню мапы на 1
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Паменшыць максімальную вышыню мапы на 1
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Вышыня сьнегавой лініі:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Падняць сьнегавую лінію
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Апусьціць сьнегавую лінію
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ґенэратар ляндшафту:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тып ляндшафту:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Колькасьць азёраў/мораў:
@@ -3142,8 +3134,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Назв
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Памер:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Максімальная вышыня мапы
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Зьмяніць вышыню сьнегавой лініі
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Зьмяніць год пачатку гульні
 
 # SE Map generation

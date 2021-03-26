@@ -2544,9 +2544,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Fjöldi bæja:
 STR_MAPGEN_DATE                                                 :{BLACK}Dags.:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fjöldi iðnaða:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hæð snjólínu:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Hækka snjólínu upp um eitt þrep
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lækka snjólínu niður um eitt þrep
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landmyndun:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Gerð lands:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Magn sjávar:
@@ -2572,7 +2569,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nafn hæ
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Stærð:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Breyta hæð snjólínu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Breyta upphafsári
 
 # SE Map generation

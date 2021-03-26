@@ -1206,8 +1206,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activer/Désact
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Attitude du conseil municipal envers la restructuration de la zone{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Définit comment le bruit et les dommages environnementaux des compagnies affectent leur réputation et leurs prochaines actions de constructions dans la zone
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altitude maximum de la carte{NBSP}: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Définir l'altitude maximum autorisée pour les montagnes sur la carte
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Vous ne pouvez pas régler l'altitude maximum de la carte sur cette valeur. Au moins une montagne sur la carte est plus haute
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Terrassement sous les bâtiments, voies, etc.{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Autoriser le terrassement sous les bâtiments et les voies sans les retirer
@@ -2893,12 +2891,6 @@ STR_MAPGEN_BY                                                   :{BLACK}{NBSP}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nb. de villes{NBSP}:
 STR_MAPGEN_DATE                                                 :{BLACK}Date{NBSP}:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nb. d'industries{NBSP}:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Altitude maximum de la carte
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Augmenter l'altitude maximum des montagnes sur la carte de 1
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Réduire l'altitude maximum des montagne sur la carte de 1
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Alt. d'enneigement{NBSP}:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Augmenter l'altitude d'enneigement
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Baisser l'altitude d'enneigement
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Générateur{NBSP}:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Type de terrain{NBSP}:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Niveau de la mer{NBSP}:
@@ -2924,8 +2916,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom de l
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Taille{NBSP}:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}{NBSP}×{NBSP}{NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Modifier l'altitude maximum de la carte
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Modifier l'altitude d'enneigement
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifier l'année de départ
 
 # SE Map generation

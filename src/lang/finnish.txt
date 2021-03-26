@@ -1205,8 +1205,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ottaa käyttö�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Valtuuston asenne alueiden uudelleenjärjestelyyn: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Valitse, kuinka paljon yhtiöiden aiheuttama melu ja ympäristövahingot vaikuttavat niiden arvioihin sekä tuleviin rakennustoimiin alueella
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Kartan suurin sallittu korkeus: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Määritä suurin sallittu korkeus vuorille
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Tämä arvo ei kelpaa kartan suurimmaksi sallituksi korkeudeksi, sillä kartalla on ainakin yksi sitä korkeampi vuori
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Sallii maaston muokkaamisen rakennusten ja ratojen alta tuhoamatta niitä
@@ -2884,12 +2882,6 @@ STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kuntien määrä:
 STR_MAPGEN_DATE                                                 :{BLACK}Päivämäärä:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Teollisuuden määrä:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Suurin sallittu kartan korkeus:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Kasvata suurinta sallittua vuorten korkeutta yhdellä
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Vähennä suurinta sallittua vuorten korkeutta yhdellä
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Lumirajan korkeus:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Siirrä lumirajaa yksi taso ylöspäin
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Siirrä lumirajaa yksi taso alaspäin
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maastogeneraattori:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merenpinta:
@@ -2915,8 +2907,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Korkeusk
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Koko:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}×{NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Muuta suurinta sallittua kartan korkeutta
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Vaihda lumirajan korkeutta
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Vaihda aloitusvuosi
 
 # SE Map generation

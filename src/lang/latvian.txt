@@ -1197,8 +1197,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Pārslēgt kata
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Pilsētu domju attieksme pret platības pārstrukturēšanu: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Izvēlieties, cik lielā mērā trokšņi un vides bojājumi ietekmē uzņēmuma reitingu un turpmākās būvniecības darbības viņu teritorijā
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimālais kartes augstums: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Uzstādīt maksimālo atļauto kalnu augstumu kartē
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Jūs nevarat izmantot šo maksimālo kartes augstumu. Vismaz viens kalns uz kartes ir augstāks.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Atļaut ainavas veidošanu zem ekām, ceļiem, utt. (automāt. nogāzes): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Atļauj ainavas veidošanu zem ekām un ceļiem bez to nojaukšanas
@@ -2877,12 +2875,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Pilsētu daudzums:
 STR_MAPGEN_DATE                                                 :{BLACK}Datums:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Ražotņu daudzums:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimālais kartes augstums
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Palielināt kalnu maksimālo augstumu kartē par vienu vienību
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Samazināt kalnu maksimālu augstumu kartē par vienu vienību
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Sniega līnijas augstums
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Paaugstināt sniega līnijas augstumu
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Pazemināt sniega līnijas augstumu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Zemes radītājs:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Apvidus reljefs:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūras līmenis:
@@ -2908,8 +2900,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Augstumu
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Lielums:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Mainīt kartes maksimālo augstumu
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mainīt sniega līnijas augstumu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mainīt sākuma gadu
 
 # SE Map generation

@@ -1155,8 +1155,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Cuir tubaistí,
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Dearcadh chomhairle an bhaile i leith athstruchtúrú limistéir: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Roghnaigh a mhéid a mbeidh tionchar ag torann agus damáiste don chomhshaol a dhéanann cuideachtaí ar a rátáil sa bhaile agus ar imeachtaí tógála eile sa cheantar
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Airde uasta na léarscáile: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Socraigh an airde uasta atá ceadaithe do shléibhte ar an léarscáil
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Ní féidir leat airde uasta na léarscáile a shocrú ag an luach seo. Tá sliabh amháin ar a laghad ar an léarscáil níos airde
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaigh athrú talún faoi fhoirgnimh, ráillí iarnróid srl.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ceadaigh tírdhreachú faoi fhoirgneamh agus ráillí gan iad a bhaint
@@ -2694,12 +2692,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Líon na mbailte:
 STR_MAPGEN_DATE                                                 :{BLACK}Dáta:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Líon na dtionscal:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Airde uasta na léarscáile
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Méadaigh airde uasta na sléibhte ar an léarscáil de leibhéal amháin
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Laghdaigh airde uasta na sléibhte ar an léarscáil de leibhéal amháin
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Airde na líne sneachta:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Bog airde na líne sneachta suas ceann amháin
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Bog airde na líne sneachta síos ceann amháin
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Talamh a chruthú:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Cineál tír-raoin:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Leibhéal na farraige:
@@ -2725,8 +2717,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ainm an 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méid:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Athraigh airde uasta na léarscáile
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Athraigh airde na líne sneachta
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Athraigh an bhliain tosaigh
 
 # SE Map generation

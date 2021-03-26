@@ -1206,8 +1206,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Alterna desastr
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitude da prefeitura em relação à restruturação local: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Escolhe como a poluição sonoroa e ambiental afeta a classificação na cidade e as ações futuras naquela área
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altura máx. do mapa: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Define a altitude máxima para montanhas no mapa
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Impossível definir a altitude máx. do mapa para esse valor. Há ao menos uma montanha mais alta que isso
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir paisagismo sob edifícios, trilhos, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite paisagismo sob edifícios e vias sem precisar removê-las
@@ -2893,12 +2891,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}No. de cidades:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}No. de indústrias:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Altitude máx. do mapa:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Aumenta a altitude máxima das montanhas no mapa em uma unidade
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Diminui a altitude máxima das montanhas no mapa em uma unidade
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Linha da neve
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Aumentar a linha da neve em um ponto
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Diminuir a linha da neve em um ponto
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gerador de terra
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nível do mar:
@@ -2924,8 +2916,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nome do 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamanho:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Alterar a altitude máxima do mapa
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mudar linha da neve
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mudar data de início
 
 # SE Map generation

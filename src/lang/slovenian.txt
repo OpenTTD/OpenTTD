@@ -1309,8 +1309,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Preklop med poj
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Odnos mestnega sveta do prestrukturiranja površine: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Nastavitev nivoja hrupa in posameznih posegov podjetja na oceno v mestu in nadaljnjo gradnjo
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Najvišji nivo zemljevida: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Nastavi najvišjo dovoljeno višino za gore na ozemlju
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Ne moreš nastaviti najvišjega nivoja zemljevida na to vrednost. Vsaj ena gora na zemljevidu je višja.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Dovoli oblikovanje terena pod objekti, tiri, ipd. (samonaklon): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Dovoli spremembo terena pod zgradbami in tiri brez odstranitve
@@ -2850,12 +2848,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Število mest:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Število industrij:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimalna višina mape:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Zvišanje največje višine gora na ozemlju za 1
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Znižanje največje višine gora na ozemlju za 1
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Višina snežne meje:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Premik snežne meje eno enoto višje
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Premik snežne meje eno enoto nižje
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Ustvarjalec terena:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip terena:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Morska gladina:
@@ -2881,8 +2873,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ime viš
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Velikost:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Spremeni maksimalno višino mape
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Spremeni višino snežne meje
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Spremeni začetno leto
 
 # SE Map generation

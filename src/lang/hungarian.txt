@@ -1269,8 +1269,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ha engedélyezv
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Városi tanács hozzáállása a területének az átépítéséhez: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Válaszd ki, hogy mennyi zaj és környezeti kár okozása befolyásolja a cég megítélését egy városban, mely hatással van a cég további építési lehetőségeire a város területén belül
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximális térképmagasság: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :A térképen található hegyek maximális magasságának beállítása
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nem állíthatod erre az értékre a maximális térképmagasságot. Legalább egy hegy magasabb ennél
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok stb. alatti tereprendezés engedélyezése: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tájrendezés engedélyezése épületek és utak alatt azok eltávolítása nélkül
@@ -2948,12 +2946,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Várossűrűség:
 STR_MAPGEN_DATE                                                 :{BLACK}Dátum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gazd. épületek száma:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maximum térképmagasság:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}A hegyek maximális magasságának növelése a térképen eggyel
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}A hegyek maximális magasságának csökkentése a térképen eggyel
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hóhatár:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}A hóhatár megnövelése eggyel
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}A hóhatár csökkentése eggyel
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Térkép generátor:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Tengerszint:
@@ -2979,8 +2971,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Magassá
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méret:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Térkép maximális magasságának megváltozatása
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Hóhatár megváltoztatása
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Kezdő év megváltoztatása
 
 # SE Map generation

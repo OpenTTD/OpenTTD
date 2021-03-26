@@ -1293,8 +1293,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Εναλλαγ�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Στάση δημοτικού συμβουλίου ως προς τον μετασχηματισμό της περιοχής: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Επιλογή πόσο ο θόρυβος και η περιβαλλοντικη καταστροφή άπο εταιρίες επηρεάζουν τα ποσοστά αποδοχής και περαιτέρω έργα στη περιοχή
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Μέγιστο ύψος χάρτη: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Ορισμός του μέγιστου επιτρεπτού ύψους βουνών στο χάρτη
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE} Δεν μπορείτε να θέσετε το μέγιστο ύψος χάρτη σε αυτή τη τιμή. Τουλάχιστον ένα βουνό στο χάρτη είναι πιο ψηλό.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Να επιτρέπεται η διαμόρφωση εδάφους κάτω από κτίρια, γραμμές, κλπ.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Επιτρέπεται η διαμόρφωση του εδάφους κάτω από κτίρια και σιδηροτροχιές χωρίς αυτά να αφαιρούνται
@@ -2935,12 +2933,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Αριθμός πόλεων:
 STR_MAPGEN_DATE                                                 :{BLACK}Ημερομηνία:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Αριθμός βιομηχανιών:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Μέγιστο ύψος χάρτη
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Αύξηση του μέγιστου ύψους βουνών του χάρτη κατά ένα
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Μείωση του μέγιστου ύψους βουνών του χάρτη κατά ένα
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Ύψος γραμμής χιονιού:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα πάνω
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Μετακίνηση του ύψους της γραμμής χιονιού ένα κάτω
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Δημιουργός εδάφους:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Τύπος εδάφους:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Επίπεδο θάλασσας:
@@ -2966,8 +2958,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Όνομ
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Μέγεθος:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Αλλαγή μέγιστου ύψους χάρτη
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Άλλαγη του ύψους της γράμμης χιονιού
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Αλλαγή έτους έναρξης
 
 # SE Map generation

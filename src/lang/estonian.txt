@@ -1262,8 +1262,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Lülita sisse/v
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Astuse omavalitsuse suhtumine pinnase restruktureerimisse: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vali kui suurt mõju tekitavad müra ning keskkonna muudatused ettevõtte mainele ja edasistele ehitustoimingutele antud piirkonnas
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Kaardi ülemkõrgus: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Sea kaardil paiknevatele mägedele ülemine kõrguspiir
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kaardi maksimaalset kõrgust pole sellisele kõrgusele võimalik sätestada. Vähemalt üks mägi on antud kõrgusest suurem.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Maastikukujundus majade, rööbaste jms. all (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Lase maja- ja rööpaalust maad kujundada ilma neid eemaldamata
@@ -2950,12 +2948,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Asustusi:
 STR_MAPGEN_DATE                                                 :{BLACK}Algus:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstustihedus:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Kaardi ülemkõrgus:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Tõsta maksimaalset kaardi mägede kõrgust ühe võrra
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Langeta maksimaalset kaardi mägede kõrgust ühe võrra
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Lumepiiri kõrgus:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Lumepiiri liigutamine ühe võrra üles
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Lumepiiri liigutamine ühe võrra alla
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maatekituse meetod:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merepinna tase:
@@ -2981,8 +2973,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Kõrguse
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Suurus:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Muuda maksimaalset kaardi kõrgust
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Muuda lumepiiri kõrgust
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Muuda algusaastat
 
 # SE Map generation

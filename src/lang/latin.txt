@@ -1357,8 +1357,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Sinere calamita
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Quamdiu auctoritas vicinalis patitur malas actiones a societatibus: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Eligere patientiam auctoritatis vicinalis - quomodo venia eius afficitur a sonito et detrimento vicinitatis. Nimis malis actionibus, auctoritates vetant stationes struere, aedificia viasque removere
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altitudo tabulae maxima: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Eligere altitudinem montium maximam in tabula
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Non licet hanc altitudinem eligere. Unus pluresve mons in tabula altior est
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Sinere terram plasmare sub aedificia, vias, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Sinere terram plasmare sub aedificia et vias; tum necesse non est aedificia viasve removere
@@ -2941,12 +2939,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numerus oppidorum:
 STR_MAPGEN_DATE                                                 :{BLACK}Dies:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numerus industriarum:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Altitudo tabulae maxima:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Augere maximam altitudinem montium in tabula unum gradum
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Minuere maximam altitudinem montium in tabula unum gradum
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altitudo nivis lineae:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Tollere altitudinem lineae nivis
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Inclinere altitudinem lineae nivis
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatrum terrae:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typus terrae:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Magnitudo maris:
@@ -2972,8 +2964,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nomen ta
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Magnitudo:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Mutare altitudinem tabulae maximam
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mutare altitudinem lineae nivis
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mutare annum initii
 
 # SE Map generation

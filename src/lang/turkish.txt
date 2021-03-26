@@ -1182,8 +1182,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Araçları ya d
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Arazi şekillendirmeye karşı belediye meclisinin tavrı: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Şirketlerin sebep olduğu gürültü ve çevreye zararın kasaba beğenilerini ve ilerideki inşaatlarını nasıl etkileyeceğini seçin
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Azami harita yüksekliği: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Haritadaki dağlar için izin verilen azami yüksekliği ayarla
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Azami harita yüksekliğini bu değere ayarlayamazsınız. Haritadaki en az bir dağ bu değerden yüksek
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Binaların, yolların vb. altındaki araziyi değiştirmeye izin ver: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Binaları ve yolları kaldırmaksızın altlarında yeryüzü şekillendirmesi yapılmasına izin ver
@@ -2818,12 +2816,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Şehir sayısı:
 STR_MAPGEN_DATE                                                 :{BLACK}Tarih:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Fabrika sayısı:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Azami harita yüksekliği:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Haritadaki azami dağ yüksekliğini bir arttır
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Haritadaki azami dağ yüksekliğini bir azalt
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Kar yüksekliği:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Kar yüksekliğini bir arttır
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Kar yüksekliğini bir azalt
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Harita üretici:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Arazi türü:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Deniz seviyesi:
@@ -2849,8 +2841,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Yüksekl
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Boyut:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Azami harita yüksekliğini değiştir
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Kar yüksekliğini değiştir
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Başlangıç yılını değiştir
 
 # SE Map generation
