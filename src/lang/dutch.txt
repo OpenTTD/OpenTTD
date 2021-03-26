@@ -1205,8 +1205,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Rampen in-uitsc
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Houding van gemeentebestuur ten opzichte van herstructurering omgeving: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Bepaalt in hoeverre lawaai en schade aan het milieu door bedrijven de stadswaardering en verdere bouwacties beïnvloeden in hun omgeving
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximale kaarthoogte: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Maximaal toegestane hoogte voor bergen op de kaart instellen
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Je kunt de maximale kaarthoogte niet in deze waarde wijzigen. Minstens één berg op de kaart is hoger.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omgeving aanpassen onder gebouwen, spoorwegen enz. toestaan: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Staat het aanpassen van funderingen onder gebouwen en sporen toe zonder deze te verwijderen
@@ -2892,12 +2890,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Aantal steden:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal industrieën:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maximale kaarthoogte
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Verhoog de maximale hoogte van bergen op de kaart met één
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Verklein de maximale hoogte van bergen op de kaart met één
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hoogte van sneeuwgrens:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Verhoog de sneeuwgrens met één
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Verlaag de sneeuwgrens met één
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Zeeniveau:
@@ -2923,8 +2915,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naam van
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grootte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Maximale kaarthoogte wijzigen
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Hoogte van sneeuwgrens wijzigen
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander startjaar
 
 # SE Map generation

@@ -1360,8 +1360,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglaich dunaid
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Beachdan comhairle a' bhaile air leasachadh raointean: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Tagh am meud dhe dh'fhuaim is milleadh na h-àrainneachd le companaidhean a tha a dhìth mus bi buaidh air luachadh a' bhaile is barrachd togail san sgìre
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Àirde as motha a’ mhapa: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Suidhich an àirde as motha aig beanntan a bhios ceadaichte air a’ mhapa
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Chan urrainn dhut àirde as motha a’ mhapa a shuidheachadh air an luach seo. Tha beinn air a’ mhapa a tha nas àirde.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ceadaich atharrachadh crutha-tìre fo thogalaichean, slighean agus msaa.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ceadaich atharrachadh crutha-tìre fo thogalaichean is slighean gun a bhith gan toirt air falbh
@@ -2967,12 +2965,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Bailtean:
 STR_MAPGEN_DATE                                                 :{BLACK}Ceann-latha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gnìomhachasan:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Àirde as motha a’ mhapa
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Meudaich an àirde as motha dhe bheanntan air a’ mhapa le a h-aon
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Lùghdaich an àirde as motha dhe bheanntan air a’ mhapa le a h-aon
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Àirde na loidhne-shneachda:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Gluais an loidhne-shneachda suas aon cheum
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Gluais an loidhne-shneachda sìos aon cheum
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Gineadair crutha-thìre:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Seòrsa a' chrutha-thìre:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Àirde na mara:
@@ -2998,8 +2990,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Ainm a' 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Meud:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Atharraich an àirde as motha air mapa
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Atharraich àirde na loidhne-shneachda
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Atharraich am bliadhna-tòiseachaidh
 
 # SE Map generation

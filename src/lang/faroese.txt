@@ -2438,9 +2438,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. av bygdum:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. av ídnaðum:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hædd á kava linju:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt kava linjuna eitt upp
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt kava linjuna eitt niður
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lendis framleiðari:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Slag av lendi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Sjóvarmáli:
@@ -2466,7 +2463,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Navn á 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Stødd:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Broyt hædd á kava linju
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Broyt byrjunar ár
 
 # SE Map generation

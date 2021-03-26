@@ -1273,8 +1273,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Vypne alebo zap
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj mestskej správy k reštrukturalizácii v oblasti: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Zvoľte ako veľmi ovplyvňuje hluk a poškodzovanie prostredia spoločnosťami ich hodnotenie v meste a ich budúce možnosti výstavby v oblasti vlastnenej mestom
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximálna výška mapy: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Nastav maximálnu povolenú výšku pohorí na mape
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nemôžete nastaviť takúto maximálnu výšku mapy. Najmenej jeden vrch na mape je vyšší.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Povoliť úpravy terénu pod budovami, koľajami, atď.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Umožňuje úpravy terénu pod budovami a traťami bez potreby ich odstránenia
@@ -2960,12 +2958,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Počet miest:
 STR_MAPGEN_DATE                                                 :{BLACK}Rok:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Počet priemyslu:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maximálna výška mapy:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Zvýšiť maximálnu výšku hôr na mape o jedno
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Znížiť maximálnu výšku hôr na mape o jedno
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Výška hranice snehu:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Zvýšiť výšku hranice snehu o jedno
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Znížiť výšku hranice snehu o jedno
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generátor krajiny:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terénu:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Rozloha mora:
@@ -2991,8 +2983,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Názov v
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Veľkosť:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Zmeniť maximálnu výšku mapy
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Zmeniť výšku hranice snehu
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Zmeniť rok začiatku hry
 
 # SE Map generation

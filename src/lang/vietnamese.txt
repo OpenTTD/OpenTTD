@@ -1205,8 +1205,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Thay đổi tù
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Thái độ của hội đồng thành phố với việc xây dựng lại địa phương: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Lựa chọn mức độ ảnh hưởng môi trường và tiếng ồn gây ra bởi các công ty sẽ ảnh hưởng uy tín của công ty đối với chính quyền địa phương và các hoạt động xây dựng của họ trong địa bàn
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Chiều cao tối đa của bản đồ: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Thay đổi chiều cao tối đa cho phép cho các núi đồi trên bản đồ
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Bạn không thể đặt giá trị chiều cao tối đa này cho bản đổ. Phải có ít nhất 1 ngọn núi cao hơn bản đồ
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Cho phép thay đổi nền đất dưới công trình, đường.. (tự làm dốc): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Cho phép thay đổi nền đất dưới công trình và đường mà không cần phá hủy chúng
@@ -2892,12 +2890,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Số lượng đô thị:
 STR_MAPGEN_DATE                                                 :{BLACK}Thời điểm:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lượng nhà máy:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Chiều cao tối đa của bản đồ
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Tăng chiều cao tối đa của núi đồi trên bản đồ 1 đơn vị
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Giảm chiều cao tối đa của núi đồi trên bản đồ 1 đơn vị
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Độ cao tuyết phủ:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Di chuyển độ cao tuyết phủ lên cao
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Di chuyển độ cao tuyết phủ xuống thấp
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mực nước biển:
@@ -2923,8 +2915,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên b�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Cỡ:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Thay đổi chiều cao tối đa của bản đồ
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Thay đổi độ cao tuyết phủ
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Thay đổi thời điểm bắt đầu
 
 # SE Map generation

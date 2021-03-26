@@ -1161,8 +1161,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :切換那些有
 STR_CONFIG_SETTING_CITY_APPROVAL                                :地方政府對地區結構重組的態度： {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :選擇公司所製造的噪音和環境傷害對其在市鎮的評比及未來的建設行動會造成多大影響
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :最大地圖高度： {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :設定該地圖上山丘最多能有多高
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}您不能把地圖的最高高度設成此值。至少有一座山比這個高度更高。
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允許在建築物或軌道底下改變地形斜度 (autoslope)：{STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :可以在建築物或軌道底下改變地形而不需移除它們
@@ -2722,12 +2720,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}市鎮數量：
 STR_MAPGEN_DATE                                                 :{BLACK}日期：
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業數量：
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}地圖最高高度
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}將地圖上山丘的最高高度加 1
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}將地圖上山丘的最高高度減去 1
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}雪線高度：
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}將雪線高度上移一層
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}將雪線高度下移一層
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形產生器：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海平面：
@@ -2753,8 +2745,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}高度�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}大小：
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}改變地圖最高高度
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}修改雪線高度
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}修改開始年份
 
 # SE Map generation

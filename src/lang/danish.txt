@@ -1182,8 +1182,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slå katastrofe
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Byrådets holdning til omstrukturering: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vælg hvor meget selskaber støj og miljømæssige skader påvirker byvurdering og fremtidige byggeretigheder i området
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimal map højde: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Indstil den maksimale tilladte højde for bjerge på kortet
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan ikke sætte den maksimale kortet højde for denne værdi. Mindst et bjerg på kortet er højere
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillad landskabsformning under bygninger, spor, etc. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillad landskabsformning under bygninger og spor uden at fjerne dem
@@ -2822,12 +2820,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal byer:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industrier:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimal map højde:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Øge den maksimale højde af bjerge på kortet med en
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Formindsk den maksimale højde af bjerge på kortet med en
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Snegrænse
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt snegrænsen een op
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt snegrænsen een ned
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Terrængenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terræntype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havniveau
@@ -2853,8 +2845,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Højdeko
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Skift maksimal kort højde
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ændre snegrænsen
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ændre startår
 
 # SE Map generation

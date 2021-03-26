@@ -1119,8 +1119,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Jika kereta api
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sikap majlis bandaraya terhadap penyusunan semula kawasan: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih tahap kebisingan dan kerosakan persekitaran
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Ketinggian maksimum peta: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Tetapkan ketinggian maksimum yang dibenarkan bagi gunung pada peta
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kamu tidak boleh ubah ketinggian maxima kepada nilai ini. Sekurang-kurangnya satu gunung di dalam peta lebih tinggi.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Benarkan pengubahsuaian tanah di bawah bangunan, landasan, dan sebagainya (autocerun): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Benarkan landskap di arah bangunan dan trek tanpa memusnahkannya
@@ -2443,12 +2441,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Jumlah bandar:
 STR_MAPGEN_DATE                                                 :{BLACK}Tarikh:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah industri:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Ketinggian maxima peta:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Mengurangkan ketinggian maksimum gunung di peta oleh satu
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Mengurangkan ketinggian maksimum gunung di peta oleh satu
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Paras ketinggian garis salji:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Tinggikan paras garis salji satu petak
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Rendahkan paras garis salji satu petak
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Janaan tanah:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis rupa bumi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Paras laut:
@@ -2474,8 +2466,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama hei
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Saiz:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Mengubah saiz maksimum ketinggian peta
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Tukarkan paras garis salji
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Tukar tahun permulaan
 
 # SE Map generation

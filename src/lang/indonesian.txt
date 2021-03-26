@@ -1193,8 +1193,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Mengaktifkan be
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sikap pemerintah kota terhadap restrukturasi area: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih seberapa banyak dampak kebisingan dan lingkungan oleh perusahaan terhadap peringkat kota karena pembangunan di daerah
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Tinggi peta maksimum: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Atur ketinggian pegunungan maksimum yang diijinkan untuk peta ini
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kamu tidak bisa mengubah ketinggian peta maksimum di angka itu. Setidaknya ada satu gunung di peta yang lebih tinggi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ijinkan pembentukan slop dibawah bangunan, rel, dsb.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ijinkan pembentukan tanah dibawah bangunan dan trek tanpa merusaknya
@@ -2866,12 +2864,6 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Jumlah Kota:
 STR_MAPGEN_DATE                                                 :{BLACK}Tgl:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah industri:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Ketinggian peta maksimum:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Naikkan satu ketinggian maksimum gunung di peta
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Turunkan satu ketinggian maksimum gunung di peta
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Tinggi garis salju:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Naikkan ketinggian garis salju satu angka
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Turunkan ketinggian garis salju satu angka
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Algoritma pulau:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Area perairan:
@@ -2897,8 +2889,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama Pet
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Luas:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Ubah ketinggian peta maksimal
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ubah ketinggian garis salju
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ganti Tahun Permulaan
 
 # SE Map generation
