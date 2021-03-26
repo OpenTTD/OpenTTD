@@ -138,6 +138,79 @@ void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...)
 
 /**
  * It is possible to print debugging information to the console,
+ * which is achieved by using this function. You need at least a
+ * level 2 (developer) for debugging messages to show up.
+ * Uses printf() style format, for more information look at IConsolePrint()
+ */
+void CDECL IConsoleDebugF(const char* format, ...)
+{
+	if (_settings_client.gui.developer <= 1) return;
+
+	va_list va;
+	char buf[ICON_MAX_STREAMSIZE];
+
+	va_start(va, format);
+	vseprintf(buf, lastof(buf), format, va);
+	va_end(va);
+
+	IConsolePrint(CC_DEBUG, buf);
+}
+
+/**
+ * It is possible to print informational messages to the console.
+ * Uses printf() style format, for more information look at IConsolePrint()
+ */
+void CDECL IConsoleInfoF(const char* format, ...)
+{
+	va_list va;
+	char buf[ICON_MAX_STREAMSIZE];
+
+	va_start(va, format);
+	vseprintf(buf, lastof(buf), format, va);
+	va_end(va);
+
+	IConsolePrint(CC_INFO, buf);
+}
+
+/**
+ * It is possible to print warnings to the console. These are mostly
+ * errors or mishaps, but non-fatal. You need at least a level 1 (developer) for
+ * debugging messages to show up.
+ * Uses printf() style format, for more information look at IConsolePrint()
+ */
+void CDECL IConsoleWarningF(const char* format, ...)
+{
+	if (_settings_client.gui.developer == 0) return;
+
+	va_list va;
+	char buf[ICON_MAX_STREAMSIZE];
+
+	va_start(va, format);
+	vseprintf(buf, lastof(buf), format, va);
+	va_end(va);
+
+	IConsolePrint(CC_WARNING, buf);
+}
+
+/**
+ * It is possible to print error information to the console. This can include
+ * game errors, or errors in general you would want the user to notice.
+ * Uses printf() style format, for more information look at IConsolePrint()
+ */
+void CDECL IConsoleErrorF(const char* format, ...)
+{
+	va_list va;
+	char buf[ICON_MAX_STREAMSIZE];
+
+	va_start(va, format);
+	vseprintf(buf, lastof(buf), format, va);
+	va_end(va);
+
+	IConsolePrint(CC_ERROR, buf);
+}
+
+/**
+ * It is possible to print debugging information to the console,
  * which is achieved by using this function. Can only be used by
  * debug() in debug.cpp. You need at least a level 2 (developer) for debugging
  * messages to show up
@@ -146,8 +219,15 @@ void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...)
  */
 void IConsoleDebug(const char *dbg, const char *string)
 {
-	if (_settings_client.gui.developer <= 1) return;
-	IConsolePrintF(CC_DEBUG, "dbg: [%s] %s", dbg, string);
+	IConsoleDebugF("dbg: [%s] %s", dbg, string);
+}
+
+/**
+ * It is possible to print informational messages to the console
+ */
+void IConsoleInfo(const char* string)
+{
+	IConsoleInfoF("INFO: %s", string);
 }
 
 /**
@@ -157,8 +237,7 @@ void IConsoleDebug(const char *dbg, const char *string)
  */
 void IConsoleWarning(const char *string)
 {
-	if (_settings_client.gui.developer == 0) return;
-	IConsolePrintF(CC_WARNING, "WARNING: %s", string);
+	IConsoleWarningF("WARNING: %s", string);
 }
 
 /**
@@ -167,7 +246,7 @@ void IConsoleWarning(const char *string)
  */
 void IConsoleError(const char *string)
 {
-	IConsolePrintF(CC_ERROR, "ERROR: %s", string);
+	IConsoleErrorF("ERROR: %s", string);
 }
 
 /**

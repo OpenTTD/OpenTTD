@@ -23,7 +23,12 @@ void IConsoleClose();
 /* console output */
 void IConsolePrint(TextColour colour_code, const char *string);
 void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...) WARN_FORMAT(2, 3);
+void CDECL IConsoleDebugF(const char* format, ...) WARN_FORMAT(1, 2);
+void CDECL IConsoleInfoF(const char* format, ...) WARN_FORMAT(1, 2);
+void CDECL IConsoleWarningF(const char* format, ...) WARN_FORMAT(1, 2);
+void CDECL IConsoleErrorF(const char* format, ...) WARN_FORMAT(1, 2);
 void IConsoleDebug(const char *dbg, const char *string);
+void IConsoleInfo(const char* string);
 void IConsoleWarning(const char *string);
 void IConsoleError(const char *string);
 
