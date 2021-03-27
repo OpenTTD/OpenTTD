@@ -1126,6 +1126,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Flatt
 STR_TERRAIN_TYPE_HILLY                                          :Åslendt
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Berglendt
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpint
+STR_TERRAIN_TYPE_CUSTOM                                         :Egendefinert høyde
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Egendefinert høyde ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Ettergivende
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
@@ -1207,6 +1209,10 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Aktiver/inaktiv
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Bystyrets holdning til restrukturering av området: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Velg hvor mye støy og miljøskader forårsaket av selskaper påvirker deres anseelse i byen og muligheter for ytterligere utbygging i nærområdet
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Karthøydegrense: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Still inn maksimal høyde på kartterrenget. Med "(auto)" vil en god verdi bli valgt etter terrenggenerering
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan ikke sette den maksimale karthøyden til denne verdien. Minst ett fjell på kartet er høyere
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillat endring av landskap under bygninger, spor, osv.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillat endring av landskapet under bygninger og spor uten å fjerne dem
@@ -1353,6 +1359,12 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maks avstand fr
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olje rafinerier er bare bygd nær kartets kanter, det er ved kysten på øy kart
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snøgrense: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontroller på hvilken høyde snøen begynner i sub-arktiske landskap. Snø påvirker også industrigenerering og byers vekstkrav
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Snødekning: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kontrollerer den omtrentlige mengden snø i det subarktiske landskapet. Snø påvirker også industriproduksjon og byvekstkrav. Brukes bare under kartgenerering. Land rett over havet er alltid uten snø
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Ørkendekning: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kontroller den omtrentlige mengden ørken i det tropiske landskapet. Ørkener påvirker også industrigenerering. Brukes bare ved kartgenerering
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Grad av ujevnhet i terreng: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis bare) Velg frekvensen av åser: Glatte landskap har færre og mer utbredte åser. Røffe landskap har mange åser, som kan fremstå repeterende
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veldig jevnt
@@ -2894,6 +2906,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antall byer:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antall industrier:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Høyeste fjelltopp:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Øk den maksimale høyden på den høyeste fjelltoppen på kartet med en
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Reduser den maksimale høyden på den høyeste fjelltoppen med en
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Snødekning
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Øk snødekningen med ti prosent
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Øk snødekningen med ti prosent
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Ørkendekning:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Øk ørkendekningen med ti prosent
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Reduser ørkendekning med 10 prosent
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havnivå:
@@ -2919,6 +2942,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høydeka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Størrelse:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Valgt fjelltopphøyde
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Høyeste fjelltopp
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Snødekning (i %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Ørkendekning (i %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Endre startår
 
 # SE Map generation
@@ -4336,6 +4363,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Kun et r
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Stort skjermbilde
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Skjermbildet kommer til å ha en oppløsning på {COMMA} x {COMMA} pixler. Å ta et skjermbildet kan ta sin tid. Vil du fortsette?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Høydekartet ble lagret som '{STRING}'. Høyeste fjelltopp er {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skjermbildet ble lagret som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skjermbilde mislyktes!
 

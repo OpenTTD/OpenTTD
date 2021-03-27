@@ -1329,6 +1329,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Lygumos
 STR_TERRAIN_TYPE_HILLY                                          :Kalvos
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Kalnai
 STR_TERRAIN_TYPE_ALPINIST                                       :Statūs kalnai
+STR_TERRAIN_TYPE_CUSTOM                                         :Pasirinktinis
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Pasirinktinis ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Atlaidus
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantiškas
@@ -1410,7 +1412,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Įgalinti atsit
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Miestų gyventojų požiūris į triukšmą ir aplinkos darkymą: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Nustatyti miestų požiūrį į statybas, triukšmą ir kraštovaizdžio keitimą. Nuo to priklauso kompanijos reitingas bei leidimasstatyti įvairius objektus
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Negalima nustatyti tokio kalnų aukščio, nes žemėlapyje jau yra bent vienas aukštesnis kalnas
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Didžiausias žemėlapio aukštis: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Nustato didžiausią leistiną žemėlapio aukštį. „Automatinis“ pasirinkimas reikš, kad kad vertė bus parinkta jau sugeneravus reljefą
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatinis)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Negalima nustatyti tokios aukščio ribos, nes žemėlapyje jau yra bent vienas aukštesnis kalnas
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Leisti keisti reljefą po pastatais, bėgiais, ir t.t.. (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Leisti keisti reljefą po pastatais ir bėgiais, jų nepašalinant
 STR_CONFIG_SETTING_CATCHMENT                                    :Aptarnaujamos teritorijos dydis priklauso nuo stotelė tipo: {STRING}
@@ -1554,7 +1560,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Pramonės įmon
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Didžiausias naftos perdirbimo įmonės atstumas nuo žemėlapio kraštų: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftos perdirbimo gamyklos statomos tik žemėlapio pakraščiuose, netoli kranto
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sniego linijos aukštis: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Aukštis, virš kurio žemės paviršius padengiamas sniegu. Tai taip pat turi įtakos pramonės įmonių kūrimui ir mietų augimui.
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Aukštis, virš kurio žemės paviršius padengiamas sniegu. Tai taip pat turi įtakos pramonės įmonių kūrimui ir miestų augimui. Pakeisti galima tik scenarijų redaktoriumi. Generuojant naują pasaulį, bus automatiškai apskaičiuotas pagal sniegynų aprėpties parametrą
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Sniegynų aprėptis: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Apytikslė sniegynų aprėptis naujo žemėlapio generavimo metu. Nuo sniegynų plotų priklauso pramonės įmonių atsiradimas (kai kurios įmonės gali atsirasti tik sniegynuose ir atvirkščiai) ir miestų augimo galimybės. Žemė ties jūros lygmeniu visuomet yra be sniego
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Dykumų aprėptis: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Apytikslė dykumų aprėptis naujo žemėlapio generavimo metu. Nuo dykumų plotų priklauso pramonės įmonių atsiradimas (kai kurios įmonės gali atsirasti tik dykumose ir atvirkščiai).
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Paviršiaus lygumas (tik TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(tik TerraGenesis) Kuo lygesnis kraštovaizdis, tuo generuojamos kalvos bus žemesnės ir tuo jų bus mažiau.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Labai lygus
@@ -3109,6 +3121,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Miestų kiekis:
 STR_MAPGEN_DATE                                                 :{BLACK}Pradžios data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Pramonės įmonių kiekis:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Didžiausias aukštis
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Padidinti didžiausią galimą reljefo aukštį vienetu
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Sumažinti didžiausią galimą reljefo aukštį vienetu
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Sniegynų aprėptis
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Padidintį sniegynų aprėptį 10%
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Sumažinti sniegynų aprėptį 10%
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Dykumų aprėptis:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Padidinti dykumų aprėptį 10%
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Sumažinti dykumų aprėptį 10%
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generavimo algoritmas:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Vietovės tipas:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Jūros lygis:
@@ -3134,6 +3157,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Žemėla
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dydis:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Didžiausias aukštis
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Didžiausias reljefo aukštis
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Sniegynų aprėptis (%)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Dykumų aprėptis (%)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Keisti pradžios metus
 
 # SE Map generation
@@ -4606,6 +4633,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Rasta ti
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Didelės apimties ekrano nuotrauka
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Ekrano nuotraukos raiška bus {COMMA} x {COMMA} pikselių. Įrašymas gali užtrukti. Ar norite tęsti?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Žemėlapis sėkmingai įrašytas kaip '{STRING}'. Didžiausias aukštis yra {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekrano vaizdas išsaugotas kaip „{STRING}“
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekrano vaizdas neišsaugotas!
 

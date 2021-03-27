@@ -755,7 +755,7 @@ STR_SMALLMAP_LEGENDA_WATER                                      :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_NO_OWNER                                   :{TINY_FONT}{BLACK}Ei omistajaa
 STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}Taajamia
 STR_SMALLMAP_LEGENDA_INDUSTRIES                                 :{TINY_FONT}{BLACK}Teollisuutta
-STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Autiomaata
+STR_SMALLMAP_LEGENDA_DESERT                                     :{TINY_FONT}{BLACK}Aavikko
 STR_SMALLMAP_LEGENDA_SNOW                                       :{TINY_FONT}{BLACK}Lunta
 
 STR_SMALLMAP_TOOLTIP_TOGGLE_TOWN_NAMES_ON_OFF                   :{BLACK}Näytä kuntien nimet kartalla
@@ -1124,6 +1124,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Tasainen
 STR_TERRAIN_TYPE_HILLY                                          :Kukkulainen
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Vuoristoinen
 STR_TERRAIN_TYPE_ALPINIST                                       :Vuorikiipeilijä
+STR_TERRAIN_TYPE_CUSTOM                                         :Oma korkeus
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Oma korkeus ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Salliva
 STR_CITY_APPROVAL_TOLERANT                                      :Suvaitseva
@@ -1205,7 +1207,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ottaa käyttö�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Valtuuston asenne alueiden uudelleenjärjestelyyn: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Valitse, kuinka paljon yhtiöiden aiheuttama melu ja ympäristövahingot vaikuttavat niiden arvioihin sekä tuleviin rakennustoimiin alueella
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Tämä arvo ei kelpaa kartan suurimmaksi sallituksi korkeudeksi, sillä kartalla on ainakin yksi sitä korkeampi vuori
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Kartan korkeusraja: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Aseta kartan maaston maksimikorkeus. Kun valittuna on ”(auto)”, sopiva arvo valitaan maaston luomisen jälkeen
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Tämä arvo ei kelpaa kartan korkeusrajaksi, sillä kartalla on ainakin yksi sitä korkeampi vuori
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Salli maaston muokkaaminen rakennusten, raiteiden jne. juurella: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Sallii maaston muokkaamisen rakennusten ja ratojen alta tuhoamatta niitä
 STR_CONFIG_SETTING_CATCHMENT                                    :Realistisemman kokoiset vaikutusalueet: {STRING}
@@ -1349,7 +1355,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Määritä, kui
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Suurin sallittu etäisyys kartan reunoilta öljyteollisuudelle: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Öljynjalostamojen ja öljylauttojen suurin etäisyys kartan reunasta. Saarikartoilla tämä takaa sen, että ne ovat lähellä rannikkoa. Yli 256 ruudun kartoilla tätä arvoa suurennetaan suhteessa kartan kokoon.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumirajan korkeus: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määritä, millä korkeudella lumiraja on pohjoisessa maastotyypissä. Lumi vaikuttaa teollisuuslaitosten luontiin sekä kuntien kasvuedellytyksiin
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määritä, millä korkeudella lumiraja on pohjoisessa maastotyypissä. Lumi vaikuttaa teollisuuslaitosten luontiin sekä kuntien kasvuedellytyksiin. Voidaan muuttaa vain Skenaariomuokkaimessa, muuten lasketaan ”lumen peiton” perusteella
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Lumen peitto: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Säätele lumen määrän suuruusluokkaa pohjoisessa maastossa. Lumi vaikuttaa myös teollisuuden luontiin ja kuntien kasvuedellytyksiin. Käytetään vain karttaa luodessa. Juuri merenpinnan yläpuolella oleva maa on aina lumetonta
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}{NBSP}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Aavikon peitto: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Säätele aavikon määrän suuruusluokkaa subtrooppisessa maastossa. Aavikko vaikuttaa myös teollisuuden luontiin. Käytetään vain karttaa luodessa
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}{NBSP}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maaston epätasaisuus: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Vain TerraGenesis) Määritä mäkien tiheys: Tasaisessa maastossa mäet ovat laajempia ja niitä on vähemmän. Epätasaisessa maastossa on enemmän mäkiä, mikä voi saada maaston näyttämään itseään toistavalta
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erittäin tasainen
@@ -1659,12 +1671,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Suurin sallittu
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Suurin mahdollinen lähennystaso näkymille. Huomioi, että suuret lähennystasot vaativat enemmän muistia
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Suurin sallittu pienennystaso: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Pienin mahdollinen lähennystaso näkymille. Pienet lähennystasot voivat aiheuttaa suorituskykyongelmia
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Korkein käytettävä sprite-resoluutio: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Rajoita suurinta spriteille käytettävää resoluutiota. Resoluution rajoittaminen estää korkean tarkkuuden grafiikoiden käyttämisen vaikka niitä olisi saatavilla. Tämä voi auttaa pitämään pelin ulkoasun yhtenäisenä käytettäessä sekaisin GRF-tiedostoja, joista osalla on ja osalla ei ole korkean tarkkuuden grafiikoita.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Tavallinen
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Kuntien kasvunopeus: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Kunnan kasvunopeus
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Ei kasvua
@@ -2330,8 +2347,11 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ei voitu
 STR_MISSING_GRAPHICS_SET_CAPTION                                :{WHITE}Puuttuvat grafiikat
 STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD vaatii toimiakseen grafiikat, mutta niitä ei löydetty. Sallitaanko grafiikoiden lataus ja asennus?
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Kyllä, lataa grafiiikat
-STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ei, sulje OpenTTD
+STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ei, lopeta OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Lataus epäonnistui
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}Grafiikoiden lataus epäonnistui.{}Lataa grafiikat manuaalisesti.
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Lopeta OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Läpinäkyvyysasetukset
@@ -2882,6 +2902,17 @@ STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kuntien määrä:
 STR_MAPGEN_DATE                                                 :{BLACK}Päivämäärä:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Teollisuuden määrä:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Korkein huippu:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Korota kartan korkeimman huipun maksimikorkeutta yhdellä
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Madalla kartan korkeimman huipun maksimikorkeutta yhdellä
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Lumen peitto:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Kasvata lumen peittoa 10 prosentilla
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Vähennä lumen peittoa 10 prosentilla
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}{NBSP}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Aavikon peitto:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Kasvata aavikon peittoa 10 prosentilla
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Vähennä aavikon peittoa 10 prosentilla
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}{NBSP}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maastogeneraattori:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maaston tyyppi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merenpinta:
@@ -2907,6 +2938,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Korkeusk
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Koko:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}×{NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Huipun tavoitekorkeus
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Korkein huippu
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Lumen peitto (%)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Aavikon peitto (%)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Vaihda aloitusvuosi
 
 # SE Map generation
@@ -4323,6 +4358,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Vain til
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Suuri kuvankaappaus
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Kuvankaappauksen tarkkuus tulee olemaan {COMMA} x {COMMA} pikseliä. Kuvankaappauksen ottaminen voi kestää jonkin aikaa. Haluatko jatkaa?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Korkeuskartta tallennettu nimellä ”{STRING}”. Korkein huippu on {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Kuvakaappaus tallennettu nimellä ”{STRING}”.
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Kuvakaappaus epäonnistui!
 

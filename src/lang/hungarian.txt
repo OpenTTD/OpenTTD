@@ -1188,6 +1188,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Sík
 STR_TERRAIN_TYPE_HILLY                                          :Dombos
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Hegyvidéki
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpesi
+STR_TERRAIN_TYPE_CUSTOM                                         :Egyéni magasság
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Egyéni magasság ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Engedékeny
 STR_CITY_APPROVAL_TOLERANT                                      :Toleráns
@@ -1269,6 +1271,10 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ha engedélyezv
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Városi tanács hozzáállása a területének az átépítéséhez: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Válaszd ki, hogy mennyi zaj és környezeti kár okozása befolyásolja a cég megítélését egy városban, mely hatással van a cég további építési lehetőségeire a város területén belül
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Térkép magasságkorlátja: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Beállíthatod a térkép legmagasabb pontjának tengerszint feletti magasságát. "(automatikus)" esetén az értéket a térképgenerátor határozza meg.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatikus)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nem állíthatod erre az értékre a maximális térképmagasságot. Legalább egy hegy magasabb ennél
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok stb. alatti tereprendezés engedélyezése: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tájrendezés engedélyezése épületek és utak alatt azok eltávolítása nélkül
@@ -1413,7 +1419,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Mennyi gazdasá
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Olajfinomítók és olajfúró tornyok maximális távolsága a térkép szélétől: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Megadhatod, hogy a térkép szélétől milyen messze épülhetnek olajfinomítók és olajfúró tornyok. Sziget jellegű térképek esetén így a part közelében fognak épülni. 256 mezőnél szélesebb, ill. hosszabb térképek esetén ez az érték felszorzódik.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Hóhatár magassága: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Ezzel a beállítással szabályozhatod a szub-arktikus táj hóhatárát. A hó befolyással lehet a gazdasági épületek generálására és a települések növekedésére.
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Ezzel a beállítással szabályozhatod a szub-arktikus táj hóhatárát. A hó befolyással lehet a gazdasági épületek generálására és a települések növekedésére. Csak a pályaszerkesztőben lehet állítani, más esetben a havas terület százalékos kiterjedéséből kerül kiszámításra.
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Havas terület kiterjedése: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Beállíthatod, hogy a szub-arktikus tájon a térkép mekkora részét fedje hó. A hó befolyással van a gazdasági épületek elhelyezésére és a települések növekedésére. A beállítás csak a térképgenerátort érinti. A tengerszint feletti legelső szintet sosem fedheti hó.
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Sivatag kiterjedése: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Beállíthatod, hogy a szubtrópusi tájon a térkép mekkora részét fedje sivatag. A sivatag hatással van a gazdasági épületek elhelyezésére és a települések növekedésére. A beállítás csak a térképgenerátort érinti.
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :A terep durvasága: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(csak TerraGenesis esetén) Kiválaszthatod a hegyek mennyiségét: a sima térképeken kevesebb, de kiterjedtebb hegy van, míg a durva térképeken sok hegy van, amik kissé ismétlődőnek tűnhetnek.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Nagyon sima
@@ -1723,12 +1735,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :A nagyítás ma
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximális nagyítás mértéke. A nagyobb nagyítási mérték több memóriát igényel
 STR_CONFIG_SETTING_ZOOM_MAX                                     :A kicsinyítés maximális mértéke: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximális kicsinyítés mértéke. A nagyobb kicsinyítési mérték szaggatást okozhat
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Sprite-ok maximális felbontása: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Meghatározhatod a sprite-ok maximális felbontását. Ha korlátozod a maximális felbontást, akkor abban az esetben is kisebb felbontású sprite-ok fognak megjelenni, ha egyébként lenne nagyobb felbontású is. Ez akkor lehet hasznos, ha olyan NewGRF-ek keverékét használod, amelyek különböző felbontással rendelkeznek, konzisztensebb megjelenést biztosítva a játéknak.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normál
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Települések növekedési sebessége: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :A települések növekedési sebessége
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nincs
@@ -2396,6 +2413,9 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Az OpenT
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Igen, a grafikai alapcsomag letöltése
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nem, kilépés az OpenTTD-ből
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Letöltés sikertelen
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}A grafikus alapcsomag letöltése sikertelen.{}Tölts le manuálisan egy grafikus alapcsomagot!
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Kilépés az OpenTTD-ből
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Átlátszósági beállítások
@@ -2946,6 +2966,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Várossűrűség:
 STR_MAPGEN_DATE                                                 :{BLACK}Dátum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gazd. épületek száma:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Legmagasabb pont:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}A térkép legmagasabb pontjának tengerszint feletti magasságának növelése eggyel
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}A térkép legmagasabb pontjának tengerszint feletti magasságának csökkentése eggyel
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Havas terület kiterjedése:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}A havas terület kiterjedésének növelése 10%-kal
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}A havas terület kiterjedésének csökkentése 10%-kal
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Sivatag kiterjedése:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}A sivatag kiterjedésének növelése 10%-kal
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}A sivatag kiterjedésének csökkentése 10%-kal
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Térkép generátor:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Tengerszint:
@@ -2971,6 +3002,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Magassá
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méret:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}A legmagasabb pont tengerszint feletti magassága
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Legmagasabb pont
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}A havas terület kiterjedése (százalékban)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}A sivatag kiterjedése (százalékban)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Kezdő év megváltoztatása
 
 # SE Map generation
@@ -4387,6 +4422,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Csak egy
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Hatalmas képernyőkép
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A képernyőkép felbontása {COMMA} x {COMMA} pixel lesz. A méret miatt ez eltarthat egy ideig. Szeretnéd folytatni?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Magasságtérkép sikeresen elmentve '{STRING}' néven. A térkép legmagasabb pontja: {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}A képernyő elmentve '{STRING}' néven
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}A képmentés nem sikerült!
 
