@@ -1181,6 +1181,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Tasane
 STR_TERRAIN_TYPE_HILLY                                          :Künklik
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Mägine
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
+STR_TERRAIN_TYPE_CUSTOM                                         :Määratud kõrgus
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Määratud kõrgus ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Soodustav
 STR_CITY_APPROVAL_TOLERANT                                      :Salliv
@@ -1262,7 +1264,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Lülita sisse/v
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Astuse omavalitsuse suhtumine pinnase restruktureerimisse: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vali kui suurt mõju tekitavad müra ning keskkonna muudatused ettevõtte mainele ja edasistele ehitustoimingutele antud piirkonnas
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kaardi maksimaalset kõrgust pole sellisele kõrgusele võimalik sätestada. Vähemalt üks mägi on antud kõrgusest suurem.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Kaardi kõrguspiir: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Määra ülempiir kaardil oleva maastiku kõrgusele. "(Auto)" leiab sobiva väärtuse pärast, kui maastik on tekitatud
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Sellist väärtust ei saa kaardi kõrguspiirile anda. Vähemalt üks mägi kaardil on kõrgem
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Maastikukujundus majade, rööbaste jms. all (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Lase maja- ja rööpaalust maad kujundada ilma neid eemaldamata
 STR_CONFIG_SETTING_CATCHMENT                                    :Reaalsemad veekogud: {STRING}
@@ -1407,6 +1413,12 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimaalne kau
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Naftatöötlemistehased ehitatakse ainult kaardi piirile, see on rannikul saartega mängitaval kaardil.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Lumepiiri kõrgus: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Määra, millisel kõrgusel algab sub-arktiline maastik. Lumi mõjutab ka tööstuste loomist ja asulate kasvamise nõudeid
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Lumekatvus: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Mõjutab umbkaudset lume osakaalu lähisartikilisel maastikul. Lumi mõjutab ka tööstuste tekitamist ja asulate kasvuvajadusi. Kasutatakse vaid kaardi tekitamisel. Vahetult merepiiri kohal on maa alati lumevaba
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Kõrbekatvus: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Mõjuta umbkaudset kõrbe osakaalu troopilisel maastikul. Kõrb mõjutab ka tööstuste tekitamist. Kasutatakse vaid kaardi tekitamisel
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Maastiku järskus (ainult TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Vali mägede tihedus: Laugetel maastikel on vähem, laiema ulatusega mägesid. Mägistel maastikel on palju mägesid, mis võivad näha välja samasugused
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väga lauge
@@ -1890,7 +1902,7 @@ STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}Loo oma 
 STR_INTRO_TOOLTIP_MULTIPLAYER                                   :{BLACK}Alusta mitmikmängu
 
 STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}Vali 'parasvöötme' maastik
-STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Vali 'lähispolaarne' maastik
+STR_INTRO_TOOLTIP_SUB_ARCTIC_LANDSCAPE                          :{BLACK}Vali 'lähisarktiline' maastik
 STR_INTRO_TOOLTIP_SUB_TROPICAL_LANDSCAPE                        :{BLACK}Vali 'lähistroopiline' maastik
 STR_INTRO_TOOLTIP_TOYLAND_LANDSCAPE                             :{BLACK}Vali 'mänguasjamaa' maastik
 
@@ -1928,7 +1940,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktii
 STR_CHEAT_EDIT_MAX_HL                                           :{LTBLUE}Muuda kaardi ülemkõrgust {ORANGE}{NUM}
 STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Muuda kaardil olevate mägede ülemkõrgust
 STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE                    :Parasvöötme maastik
-STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Arktiline maastik
+STR_CHEAT_SWITCH_CLIMATE_SUB_ARCTIC_LANDSCAPE                   :Lähisarktiline maastik
 STR_CHEAT_SWITCH_CLIMATE_SUB_TROPICAL_LANDSCAPE                 :Troopiline maastik
 STR_CHEAT_SWITCH_CLIMATE_TOYLAND_LANDSCAPE                      :Mänguasjamaa
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuda kuupäeva: {ORANGE} {DATE_SHORT}
@@ -2948,6 +2960,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Asustusi:
 STR_MAPGEN_DATE                                                 :{BLACK}Algus:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstustihedus:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Kõrgpunkt:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Suurenda kaardi teoreetilist kõrgpunkti ühe võrra
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Vähenda kaardi teoreetilist kõrgpunkti ühe võrra
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Lumekatvus:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Suurenda lumekatvust kümne protsendi võrra
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Vähenda lumekatvust kümne protsendi võrra
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Kõrbekatvus:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Suurenda kõrbekatvust kümne protsendi võrra
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Vähenda kõrbekatvust kümne protsendi võrra
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Maatekituse meetod:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Maapinna tüüp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Merepinna tase:
@@ -2973,6 +2996,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Kõrguse
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Suurus:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Soovitud kõrgpunkt
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Kõrgpunkt
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Lumekatvus (%)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Kõrbekatvus (%)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Muuda algusaastat
 
 # SE Map generation
@@ -4390,6 +4417,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Mäng ei
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Hiiglaslik kuvapaugutus
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Kuvapaugutuse mõõtmed saavad olema {COMMA} x {COMMA} pikslit. Kuvapaugutuse tegemine võib võtta tükk aega. Kas sa oled kindel, et sa soovid jätkata?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Kõrguskaart edukalt salvestatud, kui '{STRING}'. Kõrgpunkt on {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Ekraanipilt on edukalt salvestatud nimega '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Ekraanipildi tegemine nurjus!
 

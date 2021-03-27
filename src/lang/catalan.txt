@@ -387,7 +387,7 @@ STR_SCENEDIT_FILE_MENU_QUIT                                     :Surt
 ############ range for settings menu starts
 STR_SETTINGS_MENU_GAME_OPTIONS                                  :Opcions de la partida
 STR_SETTINGS_MENU_CONFIG_SETTINGS_TREE                          :Configuració
-STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Paràmetres de les IA i de l'script de la partida
+STR_SETTINGS_MENU_SCRIPT_SETTINGS                               :Paràmetres dels scripts d'IA/partida
 STR_SETTINGS_MENU_NEWGRF_SETTINGS                               :Extensions NewGRF
 STR_SETTINGS_MENU_TRANSPARENCY_OPTIONS                          :Opcions de transparència
 STR_SETTINGS_MENU_TOWN_NAMES_DISPLAYED                          :Mostra els noms de les poblacions
@@ -1125,6 +1125,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Pla
 STR_TERRAIN_TYPE_HILLY                                          :Accidentat
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Muntanyós
 STR_TERRAIN_TYPE_ALPINIST                                       :Escarpat
+STR_TERRAIN_TYPE_CUSTOM                                         :Alçada personalitzada
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Alçada personalitzada ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permissiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
@@ -1206,7 +1208,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Permet o no que
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'alcaldia de la població enfront les reestructuracions a la zona: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Establiu com afecta al prestigi de les companyies el soroll i els danys ambientals que provoquen. Aquest prestigi influirà en la futura acceptació o denegació d'accions de construcció a la zona.
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No es pot escollir aquesta alçada màxima del mapa: hi ha alguna zona del mapa actual que és més alta.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Alçada màxima del mapa: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Estableix l'alçada màxima del terreny del mapa. Amb «(automàtic)», s'escollirà un valor adequat després que es generi el terreny.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automàtic)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No es pot escollir aquest límit d'alçada del mapa. Hi ha almenys una muntanya al mapa que és més alta.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet la modificació del terreny sota edificis, rails, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permet modelar el terreny sota les vies, els edificis i altres elements sense eliminar-los.
 STR_CONFIG_SETTING_CATCHMENT                                    :Estableix una mida més real de l'àrea d'influència: {STRING}
@@ -1338,7 +1344,7 @@ STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :Mostra el nom d
 STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :Afegeix una línia a la finestra de construcció de vehicles que mostri de quin NewGRF és el vehicle seleccionat.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Paisatge: {STRING}
-STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :El tipus de paisatge defineix escenaris amb diferents tipus de càrrega i requisits per al creixement de les poblacions. Els NewGRF i l'script de la partida poden modificar-ne l'aparença i el comportament
+STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :El tipus de paisatge defineix escenaris amb diferents tipus de càrrega i requisits per al creixement de les poblacions. Els NewGRF i l'script de partida poden modificar-ne l'aparença i el comportament.
 STR_CONFIG_SETTING_LAND_GENERATOR                               :Generador de terrenys: {STRING}
 STR_CONFIG_SETTING_LAND_GENERATOR_HELPTEXT                      :L'algorisme generador original depèn del tipus de gràfics base i crea formes de terreny predefinides. TerraGenesis és un generador basat en el soroll Perlin que permet una configuració més precisa
 STR_CONFIG_SETTING_LAND_GENERATOR_ORIGINAL                      :Original
@@ -1350,7 +1356,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Fixa el nombre 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distància màxima des de la vora a les indústries de petroli: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limita a quina distància del mapa es poden construir refineries de petroli i plataformes petrolíferes. En mapes amb illes, serveix per assegurar que estan prop de la costa. En mapes de més de 256 caselles, aquest valor s'escala automàticament.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Alçada dels estatges amb neu: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a quina alçada la neu comença en el paisatge subàrtic. La neu també afecta la generació d'indústries i els requisits per al creixement de les poblacions
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controla a quina alçada la neu comença en el paisatge subàrtic. La neu també afecta la generació d'indústries i els requisits per al creixement de les poblacions. Només es pot modificar a l'editor d'escenaris; altrament, es calcula fent servir la proporció de terreny nevat.
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Terreny nevat: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controla la quantitat aproximada de terreny nevat que hi ha en els paisatges subàrtics. La neu afecta a la generació d'indústries i el creixement de les poblacions. Només s'usa durant la generació de mapes. El terreny d'alçada propera al nivell del mar mai està nevat.
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}{NBSP}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Terreny desèrtic: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controla la quantitat aproximada de terreny desèrtic que hi ha en els paisatges tropicals. Els deserts afecten a la generació d'indústries. Només s'usa durant la generació de mapes.
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}{NBSP}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Geografia del terreny: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Només TerraGenesis) Escollir la suavitat del paisatge: els terrenys suaus tenen menys turons i són regulars; els terrenys més rugosos són irregulars i tenen molts turons
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molt suau
@@ -1435,7 +1447,7 @@ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31 Des 
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-2008)
 STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Posa en pausa automàticament quan comenci una nova partida: {STRING}
+STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME                            :Posa en pausa automàticament quan comenci una partida nova: {STRING}
 STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Quan està activat, el joc es posa en pausa automàticament quan es comenci una partida nova, permetent a l'usuari estudiar el mapa més detalladament
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Accions permeses mentre s'està fent una pausa a la partida: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Seleccioneu quines accions es poden realitzar mentre s'està fent una pausa a la partida.
@@ -1453,7 +1465,7 @@ STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE             :Mostra l'arriba
 STR_CONFIG_SETTING_TIMETABLE_SHOW_ARRIVAL_DEPARTURE_HELPTEXT    :Mostra als horaris l'arribada anticipadament i les hores de sortida
 STR_CONFIG_SETTING_QUICKGOTO                                    :Creació ràpida d'ordres per a vehicles: {STRING}
 STR_CONFIG_SETTING_QUICKGOTO_HELPTEXT                           :Preselecciona el botó 'Vés a' quan s'obri la finestra d'ordres
-STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipus predeterminat de via (en nova partida/càrrega de partida): {STRING}
+STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE                            :Tipus predeterminat de via (després de carregar una partida o crear-ne una nova): {STRING}
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_HELPTEXT                   :Tipus de via a seleccionar després de començar o carregar una partida. 'El més antic disponible' selecciona el tipus de vies més antic disponible, 'El més modern disponible' selecciona el tipus de vies més modern, i 'El més utilitzat disponible' selecciona el tipus de vies que s'utilitzi més actualment
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_FIRST                      :El més antic disponible
 STR_CONFIG_SETTING_DEFAULT_RAIL_TYPE_LAST                       :El més modern disponible
@@ -1509,7 +1521,7 @@ STR_CONFIG_SETTING_AI_BUILDS_SHIPS                              :Desactiva els v
 STR_CONFIG_SETTING_AI_BUILDS_SHIPS_HELPTEXT                     :Activant aquesta opció fa que sigui impossible construir vaixells als jugadors IA.
 
 STR_CONFIG_SETTING_AI_PROFILE                                   :Perfil de paràmetres predeterminat: {STRING}
-STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolliu quin perfil de paràmetres utilitzar per les IA aleatòries o com a valors inicials quan s'afegeix una nova IA o script de la partida.
+STR_CONFIG_SETTING_AI_PROFILE_HELPTEXT                          :Escolliu el perfil de paràmetres de les IA aleatòries o els valors inicials quan s'afegeix una nova IA o script de partida.
 STR_CONFIG_SETTING_AI_PROFILE_EASY                              :Fàcil
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :Mitjà
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :Difícil
@@ -1811,7 +1823,7 @@ STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... no s
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
-STR_INTRO_NEW_GAME                                              :{BLACK}Nova partida
+STR_INTRO_NEW_GAME                                              :{BLACK}Partida nova
 STR_INTRO_LOAD_GAME                                             :{BLACK}Carrega una partida
 STR_INTRO_PLAY_SCENARIO                                         :{BLACK}Juga un escenari
 STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}Juga un mapa d'alçades
@@ -1823,7 +1835,7 @@ STR_INTRO_HIGHSCORE                                             :{BLACK}Taula de
 STR_INTRO_CONFIG_SETTINGS_TREE                                  :{BLACK}Configuració
 STR_INTRO_NEWGRF_SETTINGS                                       :{BLACK}Extensions NewGRF
 STR_INTRO_ONLINE_CONTENT                                        :{BLACK}Contingut en línia
-STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Paràmetres de les IA/script de la partida
+STR_INTRO_SCRIPT_SETTINGS                                       :{BLACK}Paràmetres dels scripts d'IA/partida
 STR_INTRO_QUIT                                                  :{BLACK}Surt
 
 STR_INTRO_TOOLTIP_NEW_GAME                                      :{BLACK}Comença una partida nova. Ctrl+Clic salta la configuració del mapa
@@ -1843,7 +1855,7 @@ STR_INTRO_TOOLTIP_HIGHSCORE                                     :{BLACK}Mostra l
 STR_INTRO_TOOLTIP_CONFIG_SETTINGS_TREE                          :{BLACK}Mostra la finestra de configuració
 STR_INTRO_TOOLTIP_NEWGRF_SETTINGS                               :{BLACK}Mostra la configuració de les extensions NewGRF
 STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
-STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra els paràmetres de les IA/Script de la partida
+STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Mostra els paràmetres dels scripts d'IA/partida
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Surt de l'OpenTTD.
 
 STR_INTRO_BASESET                                               :{WHITE}Al joc de gràfics base seleccionat li falten {NUM} sprite{P "" s}.{}Si us plau, comproveu si hi ha actualitzacions disponibles.
@@ -2249,7 +2261,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Partida represa
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :nombre de jugadors
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :connectant clients
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manual
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script de la partida
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :script de partida
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :s'està esperant que s'actualitzi el graf de distribució
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :deixant
@@ -2316,7 +2328,7 @@ STR_CONTENT_TYPE_SCENARIO                                       :Escenari
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa d'alçades
 STR_CONTENT_TYPE_BASE_SOUNDS                                    :Sons base
 STR_CONTENT_TYPE_BASE_MUSIC                                     :Música base
-STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script de la partida
+STR_CONTENT_TYPE_GAME_SCRIPT                                    :Script de partida
 STR_CONTENT_TYPE_GS_LIBRARY                                     :Llibreria GS
 
 # Content downloading progress window
@@ -2588,15 +2600,15 @@ STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Bosc
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planta grans boscos arrossegant el ratolí pel paisatge.
 
 # Land generation window (SE)
-STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generador de Terreny
+STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Generador de terreny
 STR_TERRAFORM_TOOLTIP_PLACE_ROCKY_AREAS_ON_LANDSCAPE            :{BLACK}Situa àrees de roques al paisatge
 STR_TERRAFORM_TOOLTIP_DEFINE_DESERT_AREA                        :{BLACK}Defineix àrea de desert.{}Mantingues apretat Ctrl per treure'l
 STR_TERRAFORM_TOOLTIP_INCREASE_SIZE_OF_LAND_AREA                :{BLACK}Augmenta la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_DECREASE_SIZE_OF_LAND_AREA                :{BLACK}Disminueix la mida de l'àrea de terreny a rebaixar/elevar
 STR_TERRAFORM_TOOLTIP_GENERATE_RANDOM_LAND                      :{BLACK}Genera un terreny aleatori
-STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crear nou escenari
-STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Restableix paisatge
-STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Treure totes les propietats pertanyents a companyies del mapa
+STR_TERRAFORM_SE_NEW_WORLD                                      :{BLACK}Crea un escenari nou
+STR_TERRAFORM_RESET_LANDSCAPE                                   :{BLACK}Restableix el paisatge
+STR_TERRAFORM_RESET_LANDSCAPE_TOOLTIP                           :{BLACK}Treu del mapa totes les propietats de les companyies.
 
 STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Restableix Paisatge
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs segur que vols treure totes les propietats pertanyents a companyies?
@@ -2891,6 +2903,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nombre de poblacions:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nombre d'indústries:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Alçada del cim més alt:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Augmenta l'alçada màxima o l'alçada màxima dels cims en una unitat
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Redueix l'alçada màxima o l'alçada màxima dels cims en una unitat
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Proporció de terreny nevat:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Augmenta un 10 % la proporció de terreny nevat
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Redueix un 10 % la proporció de terreny nevat
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}{NBSP}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Proporció de terreny desèrtic:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Augmenta un 10 % la proporció de terreny desèrtic
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Redueix un 10 % la proporció de terreny desèrtic
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}{NBSP}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generació de terrenys:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipus de terreny:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivell de mar:
@@ -2916,6 +2939,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom del 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Mida:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Alçada desitjada dels cims
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Alçada màxima dels cims
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Percentatge de terreny amb neu
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Percentatge de terreny desèrtic
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Canviar l'any inicial
 
 # SE Map generation
@@ -4196,8 +4223,8 @@ STR_AI_GAME_SCRIPT                                              :{BLACK}Script d
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Mostra el registre de l'script de partida.
 
 STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IA via el sistema de "Contingut en línia"
-STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts executant-se s'ha penjat. Si us plau, informeu-ne a l'autor de l'script amb una captura de pantalla de la finestra de depuració IA/script de la partida.
-STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració de les IA i l'script de la partida només està disponible al servidor.
+STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts que s'estava executant ha fallat. Si us plau, informeu l'autor de l'script amb una captura de pantalla de la finestra de depuració de l'script d'IA/partida.
+STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració de les IA i l'script de partida només està disponible al servidor.
 
 # AI configuration window
 STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuració de la IA/script de partida
@@ -4332,6 +4359,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Només s
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de pantalla enorme
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La captura de pantalla tindrà una resolució de {COMMA} x {COMMA} píxels. Es tardarà una estona a fer la captura. Vols continuar?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa d'alçades desat correctament amb el nom «{STRING}». El cim més alt té alçada {NUM}.
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla desada correctament com a '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Error en la captura de pantalla!
 
@@ -4658,7 +4686,7 @@ STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... vehi
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL                          :{WHITE}No hi haurà cap vehicle disponible
 STR_ERROR_NO_VEHICLES_AVAILABLE_AT_ALL_EXPLANATION              :{WHITE}Canvia la teva configuració dels NewGRF
 STR_ERROR_NO_VEHICLES_AVAILABLE_YET                             :{WHITE}Encara no hi ha vehicles disponibles
-STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Iniciar una nova partida després de {DATE_SHORT} o usar un NewGRF que proporcioni vehicles primerencs
+STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}Inicieu una partida nova després de {DATE_SHORT} o useu un NewGRF que proporcioni vehicles primerencs.
 
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}No pots fer que un tren passi d'una senyal amb perill...

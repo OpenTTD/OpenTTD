@@ -1125,6 +1125,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Plat
 STR_TERRAIN_TYPE_HILLY                                          :Collinaire
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montagneux
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpin
+STR_TERRAIN_TYPE_CUSTOM                                         :Hauteur personnalisée
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Hauteur personnalisée ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Laxiste
 STR_CITY_APPROVAL_TOLERANT                                      :Tolérante
@@ -1206,7 +1208,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Activer/Désact
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Attitude du conseil municipal envers la restructuration de la zone{NBSP}: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Définit comment le bruit et les dommages environnementaux des compagnies affectent leur réputation et leurs prochaines actions de constructions dans la zone
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Vous ne pouvez pas régler l'altitude maximum de la carte sur cette valeur. Au moins une montagne sur la carte est plus haute
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Hauteur limite de la carte: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Définissez la hauteur maximale du terrain de la carte. Avec "(auto)", une bonne valeur sera choisie après la création du terrain
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Vous ne pouvez pas définir la hauteur limite de la carte sur cette valeur. Il y a uu moins une montagne sur la carte qui est plus haute
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Terrassement sous les bâtiments, voies, etc.{NBSP}: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Autoriser le terrassement sous les bâtiments et les voies sans les retirer
 STR_CONFIG_SETTING_CATCHMENT                                    :Autoriser des zones de desserte plus réalistes{NBSP}: {STRING}
@@ -1350,7 +1356,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Définit combie
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distance maximum depuis les bords pour les industries pétrolières{NBSP}: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limite de distance par rapport au bord de la carte où les raffineries et les plateformes pétrolières peuvent être construites. Sur les cartes d'îles cela assure qu'elles sont près de la côte. Sur les cartes plus large que 256 tuiles, cette valeur est mise à l'échelle.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Altitude d'enneigement{NBSP}: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Contrôle à quelle altitude la neige commence dans le climat sub-arctique.La neige affecte aussi la génération des industries et les exigences pour la croissance des villes
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Contrôle à quelle altitude la neige commence dans le climat sub-arctique. La neige affecte aussi la génération des industries et les exigences pour la croissance des villes. Ne peut être modifié que via l'éditeur de scénario autrement il est calculé via "couverture de neige"
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Couverture de neige: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Contrôle la quantité approximative de neige sur le paysage sub-arctique. La neige affecte également la production des industrielles et les besoins de croissance des villes. Seulement utilisé lors de la création de la carte. La terre juste au-dessus du niveau de la mer est toujours sans neige
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Couverture du désert: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Contrôlez la quantité approximative de zone du désert sur le paysage tropical. Le désert affecte également la création du nombre d'industries. Uniquement utilisé lors de la création de la carte
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rugosité du terrain{NBSP}: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis only) Choisir la fréquence des collines{NBSP}: Les paysages doux ont des collines moins nombreuses et plus éloignées. Les paysages rudes ont beaucoup de collines, ce qui peut sembler répétitif
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Très lisse
@@ -2891,6 +2903,17 @@ STR_MAPGEN_BY                                                   :{BLACK}{NBSP}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nb. de villes{NBSP}:
 STR_MAPGEN_DATE                                                 :{BLACK}Date{NBSP}:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nb. d'industries{NBSP}:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Sommet le plus élevé:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Augmenter la hauteur maximale du plus haut sommet de la carte de un
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Diminuer la hauteur maximale du plus haut sommet de la carte de un
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Couverture de la neige:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Augmenter la couverture de neige de dix pour cent
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Diminuer la couverture de neige de dix pour cent
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}ouverture du désert:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Augmenter la couverture du désert de dix pour cent
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuer la couverture du désert de dix pour cent
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Générateur{NBSP}:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Type de terrain{NBSP}:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Niveau de la mer{NBSP}:
@@ -2916,6 +2939,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nom de l
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Taille{NBSP}:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}{NBSP}×{NBSP}{NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Hauteur du pic
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Le point le plus haut
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Couverture de neige (en %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Couverture du désert (en %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifier l'année de départ
 
 # SE Map generation
@@ -4332,6 +4359,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Seuls le
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Très grande capture d'écran
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La capture d'écran aura une résolution de {COMMA} x {COMMA} pixels. Faire cette capture peut prendre un moment . Êtes-vous sûr de vouloir continuer{NBSP}?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}La carte de hauteur a bien été enregistrée sous '{STRING}'. Le pic le plus élevé est {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Copie d'écran enregistrée avec succès sous "{STRING}"
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Échec de la copie d'écran{NBSP}!
 

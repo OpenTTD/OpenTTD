@@ -1504,6 +1504,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Płaski
 STR_TERRAIN_TYPE_HILLY                                          :Pagórkowaty
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Górzysty
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpejski
+STR_TERRAIN_TYPE_CUSTOM                                         :Niestandardowa wysokość
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Niestandardowa wysokość ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Przyjazne
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerancyjne
@@ -1585,7 +1587,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ustaw katastrof
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Nastawienie władz miasta do przekształcania terenu: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wybierz jak bardzo hałas i niszczenie środowiska przez firmy wpływa na ich ocenę przez miasto i dalsze konstrukcje na ich obszarze
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nie możesz ustawić maksymalnej wysokości mapy na tę wartość. Conajmniej jedna góra na mapie jest wyższa
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limit wysokości mapy: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Ustawia limit wysokości mapy. Z ustawieniem "(automatyczna)" odpowiednia wartość zostanie dobrana po wygenerowaniu terenu
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatyczna)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nie możesz ustawić limitu wysokości mapy na tę wartość. Co najmniej jedna góra na mapie jest wyższa
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Pozwól na zmiany terenu pod budynkami, torami itp.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Pozwalaj na modyfikowanie terenu pod budynkami i torami bez usuwania ich
 STR_CONFIG_SETTING_CATCHMENT                                    :Pozwól na bardziej realistyczny zasięg obejmowania: {STRING}
@@ -1729,7 +1735,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Określa liczb�
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksymalna odległość od krawędzi dla rafinerii: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinerie są budowane tylko w pobliżu krawędzi map, to znaczy na wybrzeżach dla map wyspiarskich. To ustawienie pozwala ograniczyć jak daleko od krawędzi mapy mogą być budowane rafinerie i platformy wiertnicze. Na mapach większych niż 256 pól, wartość ta jest skalowana w górę.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Wysokość granicy wiecznych śniegów: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wysokość linii śniegu w klimacie arktycznym. Poziom pokrywy śnieżnej wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wysokość linii śniegu w klimacie arktycznym. Poziom pokrywy śnieżnej wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Może być zmodyfikowana wyłącznie poprzez Edytor scenariusza, normalnie jest obliczana za pomocą ustawienia "pokrycia śniegiem"
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Pokrycie śniegiem: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Ustawia przybliżoną ilość śniegu w krajobrazie arktycznym. Śnieg wpływa również wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Używane tylko podczas generowania mapy. Teren tuż ponad poziomem morza jest zawsze bez śniegu
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Pokrycie pustynią: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Ustawia przybliżoną ilość pustyni w krajobrazie tropikalnym. Pustynia wpływa również wpływa na rozmieszczenie przedsiębiorstw i na warunki rozwoju miast. Używane tylko podczas generowania mapy.
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Gładkość terenu: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Tylko dla TerraGenesis) Określa liczbę wzgórz na mapie. Łagodne krajobrazy posiadają nieliczne, bardzo rozległe wzgórza, natomiast na terenach pofałdowanych jest ich znacznie więcej i mogą wyglądać podobnie
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo łagodny
@@ -3206,7 +3218,7 @@ STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK} Tyknię
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK} Tyknięcia świata:
 STR_FRAMERATE_GL_LINKGRAPH                                      :{BLACK}  Opóźnienie wykresu połączeń:
 STR_FRAMERATE_DRAWING                                           :{BLACK}Renderowanie grafiki:
-STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Okna podgląu świata:
+STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Okna ze światem:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Wyjście video:
 STR_FRAMERATE_SOUND                                             :{BLACK}Miksowanie dźwięku:
 STR_FRAMERATE_ALLSCRIPTS                                        :{BLACK}  GS/SI łącznie:
@@ -3270,6 +3282,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Liczba miast:
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Liczba przedsiębiorstw:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najwyższy szczyt:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Zwiększ wysokość najwyższego szczytu na mapie o jeden poziom
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Zmniejsz wysokość najwyższego szczytu na mapie o jeden poziom
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Pokrycie śniegiem:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Zwiększ pokrycie śniegiem o 10%
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Zmniejsz pokrycie śniegiem o 10%
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Pokrycie pustynią:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Zwiększ pokrycie pustynią o 10%
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Zmniejsz pokrycie pustynią o 10%
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator terenu:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terenu:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Poziom wody:
@@ -3295,6 +3318,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nazwa ma
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Rozmiar:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Żądana wysokość najwyższego szczytu
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Najwyższy szczyt
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Pokrycie śniegiem (w %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Pokrycie pustynią (w %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Zmień datę rozpoczęcia
 
 # SE Map generation
@@ -4717,6 +4744,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Znalezio
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ogromny zrzut ekranu
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Zrzut ekranu będzie miał rozdzielczość {COMMA} x {COMMA} pikseli. Zrzut ekranu może zająć chwilę. Kontynuować?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa wysokości pomyślnie zapisana jako '{STRING}'. Najwyższy szczyt wynosi {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Zrzut ekranu zapisany na dysk z powodzeniem '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Błąd zrzutu ekranu!
 
