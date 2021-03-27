@@ -1049,7 +1049,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Thất b
 
 # Custom currency window
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Tự chỉnh tiền tệ
+STR_CURRENCY_WINDOW                                             :{WHITE}Tùy chọn tiền tệ
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tỉ giá hối đoái: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Giảm tỉ giá tiền của bạn đối với 1 Pound (£)
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Tăng tỉ giá tiền của bạn đối với 1 Pound (£)
@@ -1124,6 +1124,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Phẳng
 STR_TERRAIN_TYPE_HILLY                                          :Núi
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Núi Cao
 STR_TERRAIN_TYPE_ALPINIST                                       :Đồi núi
+STR_TERRAIN_TYPE_CUSTOM                                         :Độ cao tùy chọn
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Độ cao tùy chỉnh ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Dễ dãi
 STR_CITY_APPROVAL_TOLERANT                                      :Vừa phải
@@ -1205,7 +1207,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Thay đổi tù
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Thái độ của hội đồng thành phố với việc xây dựng lại địa phương: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Lựa chọn mức độ ảnh hưởng môi trường và tiếng ồn gây ra bởi các công ty sẽ ảnh hưởng uy tín của công ty đối với chính quyền địa phương và các hoạt động xây dựng của họ trong địa bàn
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Bạn không thể đặt giá trị chiều cao tối đa này cho bản đổ. Phải có ít nhất 1 ngọn núi cao hơn bản đồ
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Giới hạn độ cao bản đồ: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Tùy chỉnh độ cao tối đa của địa hình. Giá trị "(tự động)" là giá trị sẽ được tự tạo sau khi sinh ra địa hình
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(tự động)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Bạn không thể đặt giới hạn độ cao này cho bản đồ địa hình. Đang có ít nhất một ngọn núi trên bản đồ địa hình cao hơn giá trị được chọn
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Cho phép thay đổi nền đất dưới công trình, đường.. (tự làm dốc): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Cho phép thay đổi nền đất dưới công trình và đường mà không cần phá hủy chúng
 STR_CONFIG_SETTING_CATCHMENT                                    :Mô phỏng thực tế diện tích khu vực đón hàng: {STRING}
@@ -1350,6 +1356,12 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Khoảng cách 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Giới hạn bao xa tính từ rìa bản đò tới nhà máy hóa dầu và dàn khoan dầu có thể xây. Trên các bản đồ đảo thì tương ứng là ven biển. Với bản đồ lớn 256 ô, thì giá trị này được nhân tỉ lệ lên
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Độ cao tuyết phủ: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Điều chỉnh độ cao của tuyết phủ đối với địa hình xứ lạnh. Tuyết phủ có thể ảnh hưởng tới việc tạo ra nhà máy và các yêu cầu cho sự tăng trưởng đô thị
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Độ phủ địa hình tuyết: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Điều chỉnh độ phủ của tuyết đối với địa hình xứ lạnh. Tuyết phủ có thể ảnh hưởng tới việc tạo ra nhà máy và các yêu cầu cho sự tăng trưởng đô thị. Chỉ được sử dụng trong việc sinh bản đồ. Địa hình cao hơn mặt nước biển sẽ không có tuyết
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Độ phủ sa mạc: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Điều chỉnh độ phủ xấp xỉ của hoang mạc đối với địa hình nhiệt đới. Hoang mạc sẽ ảnh hưởng tới việc phát triển nhà máy. Chỉ được sử dụng trong việc sinh bản đồ
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Độ gồ ghề của địa chất: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Chỉ cho TerraGenesis) Chọn mức độ trùng điệp của núi: địa hình bằng phẳng thì ít hơn, địa hình đồi núi thì nhiều hơn. Địa hình gồ ghề có nhiều núi và trông có vẻ lặp lại
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Rất Phẳng
@@ -2890,6 +2902,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Số lượng đô thị:
 STR_MAPGEN_DATE                                                 :{BLACK}Thời điểm:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Số lượng nhà máy:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Độ cao đỉnh cao nhất:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Tăng chiều cao tối đa của đỉnh cao nhất lên một đơn vị
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Giảm độ cao tối đa của đỉnh cao nhất trên bản đồ một đơn vị
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Độ phủ địa hình tuyết:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Tăng độ phủ địa hình tuyết lên mười phần trăm
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Giảm độ phủ của tuyết đi mười phần trăm
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Độ phủ sa mạc:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Tăng độ phủ sa mạc lên mười phần trăm
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Giảm độ phủ sa mạc đi mười phần trăm
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Tạo nền đất:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Kiểu nền đất:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mực nước biển:
@@ -2915,6 +2938,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Tên b�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Cỡ:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Độ cao tối đa của đỉnh
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Độ cao đỉnh cao nhất
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Độ phủ địa hình tuyết (giá trị %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Độ phủ sa mạc (giá trị %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Thay đổi thời điểm bắt đầu
 
 # SE Map generation
@@ -4331,6 +4358,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Chỉ c�
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Ảnh chụp cực lớn
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Ảnh chụp màn hình có độ phân giải {COMMA} x {COMMA} điểm. Chụp ảnh màn hình sẽ ngưng trò chơi chút ít, bạn có muốn vậy không??
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Bản đồ địa hình được lưu tại '{STRING}'. Đỉnh cao nhất cao {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Chụp màn hình lưu thành file là '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Chụp màn hình bị lỗi!
 

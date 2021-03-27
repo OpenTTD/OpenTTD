@@ -1125,6 +1125,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Flach
 STR_TERRAIN_TYPE_HILLY                                          :Hügelig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergig
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpin
+STR_TERRAIN_TYPE_CUSTOM                                         :Benutzerdefinierte Höhe
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Benutzerdefinierte Höhe ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Hoch
 STR_CITY_APPROVAL_TOLERANT                                      :Mäßig
@@ -1206,7 +1208,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ein- oder Aussc
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Toleranz der Stadtverwaltung gegenüber Landschaftsumgestaltungen: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Auswählen, wie stark Lärm und Umweltschäden die Stadtbewertung einer Firma sinken lassen. Bei einer zu schlechten Bewertung werden dann in dieser Stadt keine Bauvorhaben mehr genehmigt
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Die maximale Höhe der Karte kann nicht auf diesen Wert gesetzt werden. Mindestens ein Berg auf der Karte ist höher.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Höhenlimit der Karte: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Bestimme die maximale Höhe der Karte. Mit "(auto)" wird ein passender Wert nach der Weltgenerierung bestimmt.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Das Höhenlimit der Karte kann nicht auf diesen Wert gesetzt werden. Mindestens ein Berg auf der Karte ist höher.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Landschaftsbau unter Gebäuden, Gleisen, usw. erlauben: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Erlaube Erdbauarbeiten unter Gebäuden oder Infrastruktur, ohne sie zu entfernen
 STR_CONFIG_SETTING_CATCHMENT                                    :Verschiedene Stationstypen haben unterschiedlich große Einzugsgebiete: {STRING}
@@ -1350,7 +1356,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Wähle wieviele
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalabstand vom Kartenrand für Ölraffinerien: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Ölraffinerien werden nur in der Nähe des Kartenrands gebaut, bei inselreichen Karten nahe der Küste
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schneegrenze auf: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wähle die Höhe der Schneefallgrenze im subarktischen Klima. Schnee beeinflusst auch die Platzierung von Industrien und Voraussetzungen für Städtewachstum
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Wähle die Höhe der Schneefallgrenze im subarktischen Klima. Schnee beeinflusst auch die Platzierung von Industrien und Voraussetzungen für Städtewachstum. Dies kann nur im Scenario-Editor geändert werden oder wird ansonsten anhand der Einstellung "Schneebedeckung" berechnet.
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Schneebedeckung: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Steuert die ungefähre Menge von Schneeflächen im subarktischen Klima. Schnee beeinflusst die Platzierung von Industrien und Vorausstzungen für Städtewachstum. Dies kann nur während der Kartenerzeugung benutzt werden. Land knapp über dem Meeresspiegel ist stets schneefrei.
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Wüstenbedeckung: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Steuert die ungefähre Menge von Wüsten im tropischen Klima. Wüsten beeinflussen das Erzeugen von Industriebtrieben. Dies kann nur während der Kartenerzeugung benutzt werden.
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Rauheit des Geländes: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(nur TerraGenesis) Wähle die Häufigkeit von Hügeln: Rollende Landschaften haben wenige, weit verteilte Hügel. Zerklüftete Landschaften haben viele Hügel, was wiederum sich wiederholend aussehen kann
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr eben
@@ -2891,6 +2903,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Städteanzahl:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Industriedichte:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Höchster Gipfel:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Die maximale Höhe des höchsten Gipfels auf der Karte um eins erhöhen
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Die maximale Höhe des höchsten Gipfels auf der Karte um eins verringern
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Schneebedeckung:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Schneebedeckung um zehn Prozent erhöhen
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Schneebedeckung um zehn Prozent verringern
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Wüstenbedeckung:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Wüstenabdeckung um zehn Prozent erhöhen
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Wüstenbedeckung um zehn Prozent verringern
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Landschaftstyp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Gewässermenge:
@@ -2916,6 +2939,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Reliefka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Größe:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Zielspitzenhöhe
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Höchster Gipfel
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Schneebedeckung (in %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Wüstenbedeckung (in %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Startjahr ändern
 
 # SE Map generation
@@ -4332,6 +4359,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Nur ein 
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Riesiger Screenshot
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Der Screenshot wird die Auflösung von {COMMA} × {COMMA} Pixeln haben. Das kann einige Zeit dauern. Soll fortgefahren werden?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Reliefkarte erfolgreich als '{STRING}' gespeichert. Der höchste Gipfel ist {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespeichert als „{STRING}“
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot fehlgeschlagen
 

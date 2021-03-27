@@ -1125,6 +1125,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Plano
 STR_TERRAIN_TYPE_HILLY                                          :Accidentado
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Montañoso
 STR_TERRAIN_TYPE_ALPINIST                                       :Escarpado
+STR_TERRAIN_TYPE_CUSTOM                                         :Definir altura
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Altura person. ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisiva
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerante
@@ -1206,7 +1208,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Desastres que o
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de los ayuntamientos ante restructuraciones hechas en sus zonas: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Medida en que el ruido y el daño ambiental causado por las empresas afectan su evaluación y futuras acciones de construcción en las mismas zonas
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No se puede establecer la elevación máxima del mapa en el valor indicado. Al menos una montaña ya es más alta
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Límite de altura del mapa: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Ajustar la altura máxima de terreno en un mapa. "(automático)" tomará un buen valor tras finalizar la generación del terreno
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automático)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No se puede establecer el límite de elevación del mapa en el valor indicado. Al menos una montaña ya es más alta
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permitir modificar terreno debajo edificios, vías férreas, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Modificar el terreno debajo de edificios y vías de tren sin quitarlos
 STR_CONFIG_SETTING_CATCHMENT                                    :Permitir cambiar el tamaño del área de recolección a una forma más real: {STRING}
@@ -1350,7 +1356,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Número de indu
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Distancia máxima de industrias petrolíferas al borde del mapa: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Distancia límite desde el borde del mapa a partir del cual se pueden construir refinerías y plataformas de petróleo. En mapas con forma de isla esto garantiza que se ubiquen cerca de la costa. En mapas de más de 256 casillas el valor se amplía.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Nivel de inicio de nieve: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :En los mapas de clima Subártico, la elevación a la cual la nieve comienza. La nieve también afecta la generación de industrias y los requisitos de crecimiento de los pueblos
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Controlar la altura donde la nieve empieza en mapas de clima Subártico, lo cual afectará la generación de industrias y los requisitos de crecimiento de pueblos. Este valor se puede cambiar en el Editor de mapas o se calculará según la "Extensión de nieve"
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Extensión de nieve: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Controlar la cantidad aproximada de nieve al generar un mapa de clima Subártico, lo cual afectará la generación de industrias y los requisitos de crecimiento de pueblos. La superficie casi al ras del nivel del mar nunca tiene nieve.
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Extensión de desierto: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Controlar la cantidad aproximada de desierto al generar un mapa de clima tropical, lo cual afectará la generación de industrias también.
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Irregularidad del terreno: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Solo TerraGenesis) Cantidad de colinas: los terrenos más planos tienen menos colinas, aunque suelen ser más extensas. Los terrenos más accidentados tienen múltiples colinas, lo cual puede resultar repetitivo
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy suave
@@ -2891,6 +2903,17 @@ STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Núm. de pueblos:
 STR_MAPGEN_DATE                                                 :{BLACK}Fecha:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Núm. de industrias:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cima más alta:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Incrementar altura de cima más alta en 1
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Disminuir altura de cima más alta en 1
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Extensión de nieve:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Incrementar extensión de nieve un 10%
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Disminuir extensión de nieve un 10%
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Extensión de desierto:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Incrementar extensión de desierto un 10%
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Disminuir extensión de desierto un 10%
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generador de terreno:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tipo de terreno
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivel del mar:
@@ -2916,6 +2939,9 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nombre d
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaño:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}×{NUM}
 
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Cima más alta
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Extensión de nieve (en %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Extensión de desierto (en %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Cambiar año de inicio
 
 # SE Map generation
@@ -4332,6 +4358,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Solament
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Captura de pantalla gigante
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}La captura de pantalla tendrá una resolución {COMMA}×{COMMA} pixeles, y puede tardar un poco en realizarse. ¿Continuar?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Mapa de alturas "{STRING}" guardado con éxito. La cima más alta mide {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Captura de pantalla guardada exitosamente en '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}¡La captura de pantalla falló!
 
