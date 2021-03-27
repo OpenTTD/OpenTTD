@@ -66,13 +66,22 @@ static inline TileIndex CalcClosestDepotTile(DepotID depot_id, TileIndex tile)
 	}
 
 	TileIndex best_tile = INVALID_TILE;
+	DepotReservation best_found_type = dep->veh_type == VEH_SHIP ? DEPOT_RESERVATION_END : DEPOT_RESERVATION_EMPTY;
 	uint best_distance = UINT_MAX;
 
 	for (auto const &depot_tile : dep->depot_tiles) {
 		uint new_distance = DistanceManhattan(depot_tile, tile);
-		if (new_distance < best_distance) {
+		bool check_south_direction = dep->veh_type == VEH_ROAD;
+again:
+		DepotReservation depot_reservation = GetDepotReservation(depot_tile, check_south_direction);
+		if (((best_found_type == depot_reservation) && new_distance < best_distance) || (depot_reservation < best_found_type)) {
 			best_tile = depot_tile;
 			best_distance = new_distance;
+			best_found_type = depot_reservation;
+		}
+		if (check_south_direction) {
+			check_south_direction = false;
+			goto again;
 		}
 	}
 
