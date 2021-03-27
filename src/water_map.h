@@ -79,6 +79,16 @@ enum LockPart {
 bool IsPossibleDockingTile(Tile t);
 
 /**
+ * Get the type of water tile: clear, lock or depot.
+ * @param t Water tile to query.
+ * @return WBL_TYPE_NORMAL, WBL_TYPE_LOCK or WBL_TYPE_DEPOT.
+ */
+static inline WaterTileTypeBitLayout GetWaterTileClass(Tile t) {
+	assert(IsTileType(t, MP_WATER));
+	return (WaterTileTypeBitLayout)GB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT);
+}
+
+/**
  * Get the water tile type at a tile.
  * @param t Water tile to query.
  * @return Water tile type at the tile.
@@ -87,7 +97,7 @@ inline WaterTileType GetWaterTileType(Tile t)
 {
 	assert(IsTileType(t, MP_WATER));
 
-	switch (GB(t.m5(), WBL_TYPE_BEGIN, WBL_TYPE_COUNT)) {
+	switch (GetWaterTileClass(t)) {
 		case WBL_TYPE_NORMAL: return HasBit(t.m5(), WBL_COAST_FLAG) ? WATER_TILE_COAST : WATER_TILE_CLEAR;
 		case WBL_TYPE_LOCK:   return WATER_TILE_LOCK;
 		case WBL_TYPE_DEPOT:  return WATER_TILE_DEPOT;
@@ -224,7 +234,8 @@ inline bool IsCoastTile(Tile t)
  */
 inline bool IsShipDepot(Tile t)
 {
-	return GetWaterTileType(t) == WATER_TILE_DEPOT;
+	assert(IsTileType(t, MP_WATER));
+	return GetWaterTileClass(t) == WBL_TYPE_DEPOT;
 }
 
 /**
@@ -305,7 +316,8 @@ inline TileIndex GetShipDepotNorthTile(Tile t)
  */
 inline bool IsLock(Tile t)
 {
-	return GetWaterTileType(t) == WATER_TILE_LOCK;
+	assert(IsTileType(t, MP_WATER));
+	return GetWaterTileClass(t) == WBL_TYPE_LOCK;
 }
 
 /**
