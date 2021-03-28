@@ -2939,6 +2939,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nombre d
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Tamaño:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM}×{NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Altura de cima
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Cima más alta
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Extensión de nieve (en %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Extensión de desierto (en %)

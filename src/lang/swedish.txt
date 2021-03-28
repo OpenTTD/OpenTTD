@@ -1124,6 +1124,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Platt
 STR_TERRAIN_TYPE_HILLY                                          :Kullig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergig
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpin
+STR_TERRAIN_TYPE_CUSTOM                                         :Anpassad höjd
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Anpassad höjd ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Eftergiven
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
@@ -1205,7 +1207,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Slår av/på ka
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Stadsfullmäktiges attityd mot ombyggnation av områden: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Välj hur mycket ett företags oväsen och miljöpåverkan ska påverka dess anseende och möjlighet till vidare byggnationer i området
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan inte ändra maximal karthöjd till detta värde. Åtminstone ett berg på kartan är högre
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Karthöjdsgräns: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Sätt maximal höjd på kartterräng. Med "(Automatiskt)" ett bra värde kommer att väljas efter terräng generation
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatiskt)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan inte ändra karthöjd begränsning till detta värde. Åtminstone ett berg på kartan är högre
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillåt landskapsarkitektur under byggnader, spår, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillåt landskapsarkitektur under byggnader och spår utan att ta bort dem
 STR_CONFIG_SETTING_CATCHMENT                                    :Tillåt mer realistiska uppsamlingsområden för stationer: {STRING}
@@ -1349,7 +1355,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Ange hur många
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximalt avstånd mellan oljeindustrier och kartans kant: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Begränsar hur långt från kartans kant oljeraffinaderier och oljeplattformar kan byggas. På ö-kartor säkerställer detta att de är nära kusten. På kartor större än 256 rutor skalas detta värde upp.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snögränsens höjd: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrollerar på vilken höjd snön börjar i det subarktiska landskapet. Snö påverkar även industrigeneration och städers tillväxtkrav
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrollerar på vilken höjd snön börjar i det subarktiska landskapet. Snö påverkar även industrigeneration och städers tillväxtkrav. Kan endast modifieras via Scenarioredigeraren eller beräknas via "snötäckning"
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Snötäckning: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kontrollerar ungefärlig mängd snö på den subarktiska landskapet. Snö påverkar även industri generation och städernas tillväxtkrav. Används endast under kartgeneration. Land precis över havsnivån är alltid utan snö
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Öken täckning: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kontrollera ungefärligt mängd öken i tropiskt landskap. Öken påverkar även industri generation. Används bara under kartgeneration
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis endast) Välj frekvensen av kullar: Smooth landskap har färre, mer utbredda kullar. Rough landskap har många kullar, som kan se repetitiva
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
@@ -2890,6 +2902,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal städer:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industrier:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Högsta höjdpunkt:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Öka högsta höjd punkten på kartan med en
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Minska maximal höjd på högsta topp med en
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Snötäckning:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Öka snötäckning med tio procent
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Minska snötäckning med tio procent
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Öken täckning:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Öka ökentäckning med tio procent
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Minska öken täckning med tio procent
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havsnivå
@@ -2915,6 +2938,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Namn på
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storlek:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Måltopp höjd
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Högsta höjdpunkt
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Snötäckning (i %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Öken täckning (i %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ändra Startår
 
 # SE Map generation
@@ -4331,6 +4358,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Endast e
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Gigantisk skärmdump
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Skärmdumpen kommer ha en upplösning av {COMMA} x {COMMA} pixlar. Tagandet av skärmdumpen kan ta en stund. Vill du fortsätta?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Höjdkarta sparad som '{STRING}'. Högsta punkten är {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Skärmdump sparades som '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Skärmdump misslyckades!
 

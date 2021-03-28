@@ -219,6 +219,7 @@ STR_UNITS_HEIGHT_IMPERIAL                                       :{COMMA}{NBSP} �
 STR_UNITS_HEIGHT_SI                                             :{COMMA}{NBSP} متر
 
 # Common window strings
+STR_LIST_FILTER_TITLE                                           :{BLACK}تصفية القائمة
 STR_LIST_FILTER_OSKTITLE                                        :{BLACK} ادخل فلتر
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK} اختر كلمة اساسية لفلترة القائمة
 
@@ -228,6 +229,7 @@ STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK} اخت�
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}حدد معايير المُرَشِح
 STR_BUTTON_SORT_BY                                              :{BLACK} رتب بـ
 STR_BUTTON_CATCHMENT                                            :{BLACK}مدى التغطية
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}عرض منطقة التغطية
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}اغلاق الاطار
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}عنوان الاطار- اسحب لتحريك الاطار
@@ -317,6 +319,8 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_SUBSIDIES                           :{BLACK}اظها
 STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_STATIONS            :{BLACK}عرض قائمة محطات الشركة.
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_FINANCES                    :{BLACK}عرض السجل المالي للشركة
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_GENERAL                     :{BLACK}عرض معلومات الشركة
+STR_TOOLBAR_TOOLTIP_DISPLAY_STORY_BOOK                          :{BLACK}عرض كتاب القصص
+STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}عرض قائمة الأهداف
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}عرض المخططات
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}عرض جدول ترتيب الشركات
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}موّل انشاء مصنع / عرض كل المصانع
@@ -420,6 +424,7 @@ STR_GRAPH_MENU_HIGHSCORE                                        :قائمه ال
 
 ############ range for industry menu starts
 STR_INDUSTRY_MENU_INDUSTRY_DIRECTORY                            :دليل المصانع
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :سلاسل الصناعة
 STR_INDUSTRY_MENU_FUND_NEW_INDUSTRY                             :مول بناء مصنع
 ############ range ends here
 
@@ -456,6 +461,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :الموسيق�
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :الرسالة الأخيرة/التقرير الجديد
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :الرسائل السابقة
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :احذف كل الرسائل
 ############ range ends here
 
 ############ range for about menu starts
@@ -1382,6 +1388,7 @@ STR_CONFIG_SETTING_TOWN_GROWTH_FAST                             :سريع
 STR_CONFIG_SETTING_TOWN_GROWTH_VERY_FAST                        :سريع جدا
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :مضاعف المدن المبدئي: {STRING}
 
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :الوقت بين عمليات إعادة الحساب المتتابعة للرسم البياني الرابط. تحسب كل عملية إعادة حساب الخطط لمكون واحد من الرسم البياني. هذا يعني أن القيمة X لهذا الإعداد لا تعني أنه سيتم تحديث الرسم البياني كل X أيام. إلا بعض المكونات. كلما قمت بتعيينه أقل، كلما زاد وقت الCPU لحسابها. كلما قمت بضبطها لفترة أطول ، كلما اسغرق الوقت حتى يتم بدأ توزيع البضائع على طرق جديدة.
 STR_CONFIG_SETTING_DEMAND_SIZE_HELPTEXT                         :ضبط هذا إلى أقل من 100٪ يؤدي إلى جعل التوزيع المتماثل يتصرف مثل التوزيع غير المتماثل. سيتم إعادة شحنات أقل غصبا إذا تم إرسال مبلغ معين إلى المحطة. إذا قمت بتعيينه على 0٪ ، فإن التوزيع المتماثل يتصرف تمامًا مثل التوزيع غير المتماثل
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :(متري (كم / ساعة
@@ -1392,6 +1399,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :(متري (طن
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     ::وحدات جهد الجر {STRING}
 
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :إمبراطوري (قدم)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :م) متري)
 
 STR_CONFIG_SETTING_GRAPHICS                                     :رسوميات {ORANGE}
@@ -2247,9 +2255,11 @@ STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}اعرض
 STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}اختر البضائع
 STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}حدد البضائع التي تريد عرضها
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}اختر الصناعة
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}حدد الصناعة التي تريد عرضها
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}معلومات ارض
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}قم بتوسيط الشاشة على موقع المربع. يؤدي الضغط على Ctrl + النقر بالماوس إلى فتح منفذ عرض جديد على موقع المربع
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK} تكلفة الازالة : {LTBLUE} غير متاح
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}تكلفة الازالة : {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK} الدخل عند للتجديد: {LTBLUE}{CURRENCY_LONG}
@@ -2651,6 +2661,7 @@ STR_TOWN_POPULATION                                             :{BLACK}سكان
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
 STR_TOWN_VIEW_CITY_CAPTION                                      :{WHITE}{TOWN} - مدينة -
 STR_TOWN_VIEW_POPULATION_HOUSES                                 :{BLACK}السكان:  {ORANGE}{COMMA}{BLACK}   المنازل:     {ORANGE}{COMMA}
+STR_TOWN_VIEW_CARGO_LAST_MONTH_MAX                              :{BLACK}{CARGO_LIST} الشهر الماضي: {ORANGE}{COMMA}{BLACK}  الأقصى: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH                              :{BLACK} نمو المدينة يتطلب بضائع
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_GENERAL             :{ORANGE}{STRING}{RED} مطلوب
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING}{BLACK}مطلوب في الشتاء
@@ -2675,6 +2686,8 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :اعادة تس
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}بلدية {TOWN}
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}المنطقة
+STR_LOCAL_AUTHORITY_ZONE_TOOLTIP                                :{BLACK}عرض منطقة حدود السلطة المحلية
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}تقييم اداء الشركات
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}الخيارات المتاحة
@@ -2726,7 +2739,7 @@ STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}اضغط على الخدمة لتوسيط الخريطة على المصنع/المدينة. اضغط + كنترول لفتح شاشة عرض جديدة للمدينة.
 
 # Story book window
-STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}كتاب القصة
+STR_STORY_BOOK_CAPTION                                          :{WHITE}{COMPANY}كتاب القصص
 
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}اسم المحطة - اضغط على اسم المحطة لتوسيطها في الشاشة. اضغط + كنترول لفتح شاشة عرض جديدة بمنطقة المحطة.
@@ -2785,7 +2798,7 @@ STR_STATION_VIEW_RENAME_STATION_CAPTION                         :اعادة تس
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK} ركز شاشة العرض على نقطة العبور
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}غير اسم نقطة العبور
-STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK} ضع العوامة في مركز شاشة العرض
+STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK} ضع العوامة في مركز الشاشة
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK} غير اسم العومة
 
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}عدل اسم نقطة العبور
@@ -3595,6 +3608,7 @@ STR_AI_LIST_CANCEL                                              :{BLACK} الغ�
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK} لا تغير الذكاء الصناعي
 
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}التقط لقطة شاشة كاملة
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}صور الخاريطة الكاملة
 
 # AI Parameters
 STR_AI_SETTINGS_CLOSE                                           :{BLACK} اغلاق
