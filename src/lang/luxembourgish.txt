@@ -987,6 +987,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Klick d�
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Bildopléisung
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Wielt d'Bildopléisung
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Aaner
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfacegréisst
@@ -1325,6 +1326,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximal Distanz
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limitéiert wéi wäit vum Bord Uelegraffinerien an Buerinsele dierfe gebaut ginn. Op Inselkaarten garantéiert dest dass se um Rand gebaut ginn. Op Kaarten mat méi wéi 256 Felder, gett dese Wert skaléiert
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schnéigrenz Héicht: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrolléiert ab welcher Héicht de Schnéi ufenkt an der subarktëscher Landschaft. Schnéi affektéiert och Industriegeneratioun an de Wuesstum vu Stied.
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Stellt den ongeféieren Deel vun Wüst op der tropescher Kaart an. Wüst affektéiert och d'Industrië-Generatioun. Gëtt nëmmen während der Kaartegeneratioun gebraucht.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Knubbelegkeet vum Terrain (nëmmen TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Nëmmen TerraGenesis) Wiel d'Heefegkeet vun Hiwwelen: Mëll Landschafter hunn manner, breed verdeelten Hiwwelen. Rau Landschaften hunn méi Bierger déi repetitiv ausgesinn kënnen.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ganz Flaach
@@ -2814,6 +2816,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Unz. Dierfer:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Unz. Industrien:
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mieresspigel:
@@ -4208,6 +4211,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spillstand ass 
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei net liesbar
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Datei net beschreiwbar
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Datenintegritéitfehler
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Spillstand ass mat enger modifizéierter Versioun erstallt ginn
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<keen do>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Spill gouf an enger Versioun ouni Tram support gesaved. All Tram gouf wechgeholl
 

@@ -357,9 +357,9 @@ STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Landinfo
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Knoppenbalken wisselen
 
 # Extra tooltips for the scenario editor toolbar
-STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Scenario opslaan of laden, scenario-editor verlaten, afsluiten
+STR_SCENEDIT_TOOLBAR_TOOLTIP_SAVE_SCENARIO_LOAD_SCENARIO        :{BLACK}Scenario opslaan of laden, scenariobewerker verlaten, afsluiten
 STR_SCENEDIT_TOOLBAR_OPENTTD                                    :{YELLOW}OpenTTD
-STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenario-editor
+STR_SCENEDIT_TOOLBAR_SCENARIO_EDITOR                            :{YELLOW}Scenariobewerker
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_BACKWARD    :{BLACK}Startdatum 1 jaar terugzetten
 STR_SCENEDIT_TOOLBAR_TOOLTIP_MOVE_THE_STARTING_DATE_FORWARD     :{BLACK}Startdatum 1 jaar vooruitzetten
 STR_SCENEDIT_TOOLBAR_TOOLTIP_SET_DATE                           :{BLACK}Klik om het startjaar op te geven
@@ -378,7 +378,7 @@ STR_SCENEDIT_FILE_MENU_SAVE_SCENARIO                            :Scenario opslaa
 STR_SCENEDIT_FILE_MENU_LOAD_SCENARIO                            :Scenario laden
 STR_SCENEDIT_FILE_MENU_SAVE_HEIGHTMAP                           :Hoogtekaart opslaan
 STR_SCENEDIT_FILE_MENU_LOAD_HEIGHTMAP                           :Hoogtekaart laden
-STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Scenario-editor sluiten
+STR_SCENEDIT_FILE_MENU_QUIT_EDITOR                              :Scenariobewerker sluiten
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
 STR_SCENEDIT_FILE_MENU_QUIT                                     :Afsluiten
 ############ range for SE file menu starts
@@ -1124,6 +1124,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Vlak
 STR_TERRAIN_TYPE_HILLY                                          :Heuvelachtig
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bergachtig
 STR_TERRAIN_TYPE_ALPINIST                                       :Berglandschap
+STR_TERRAIN_TYPE_CUSTOM                                         :Aangepaste hoogte
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Aangepaste hoogte ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Toegeeflijk
 STR_CITY_APPROVAL_TOLERANT                                      :Neutraal
@@ -1205,6 +1207,10 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Rampen in-uitsc
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Houding van gemeentebestuur ten opzichte van herstructurering omgeving: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Bepaalt in hoeverre lawaai en schade aan het milieu door bedrijven de stadswaardering en verdere bouwacties beïnvloeden in hun omgeving
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limiet voor kaarthoogte: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Stelt de maximale hoogte voor het terrein op de kaart in. Met '(auto)' wordt een goede waarde genomen nadat het terrein is gegenereerd
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Je kunt de maximale kaarthoogte niet in deze waarde wijzigen. Minstens één berg op de kaart is hoger.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Omgeving aanpassen onder gebouwen, spoorwegen enz. toestaan: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Staat het aanpassen van funderingen onder gebouwen en sporen toe zonder deze te verwijderen
@@ -1349,7 +1355,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Stelt in hoevee
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximumafstand van de rand voor olieraffinaderijen: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Olieraffinaderijen worden alleen gebouwd nabij de kaartgrens, dat is aan de kust van eilandkaarten
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Sneeuwhoogte: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Stelt in op welke hoogte de sneeuw begint in subarctisch landschap. Sneeuw heeft ook invloed op het ontstaan van industrieën en op de vereisten voor stadsgroei.
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Stelt in op welke hoogte de sneeuw begint in subarctisch landschap. Sneeuw heeft ook invloed op het ontstaan van industrieën en op de vereisten voor stadsgroei. Kan alleen worden aangepast in de scenariobewerker of wordt berekend met behulp van 'sneeuwoppervlak'
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Sneeuwoppervlak: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Bepaalt de hoeveelheid sneeuw in het subarctische landschap. Sneeuw is ook van invloed op de industrieën en de groei van steden. Wordt alleen gebruikt tijdens het maken van de kaart. Land net boven zeeniveau krijgt nooit sneeuw
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Woestijnoppervlak: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Bepaalt de hoeveelheid woestijn in het tropische landschap. Woestijn is ook van invloed op industrieën. Wordt alleen gebruikt tijdens het maken van de kaart
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Ruwheid van het terrein: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Alleen TerraGenesis) Kiest de frequentie van heuvels: gladde landschappen hebben minder, meer wijdverspreide heuvels. Ruwe landschappen hebben veel heuvels, die repetitief kunnen lijken.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg glad
@@ -2890,6 +2902,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Aantal steden:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Aantal industrieën:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Hoogste berg:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Verhoogt de maximale hoogte van de hoogste berg op de kaart met één
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Verlaagt de maximale hoogte van de hoogste berg op de kaart met één
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Sneeuwoppervlak:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Vergroot het sneeuwoppervlak met tien procent
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Verkleint het sneeuwoppervlak met tien procent
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Woestijnoppervlak:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Vergroot het woestijnoppervlak met tien procent
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Verkleint het woestijnoppervlak met tien procent
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terreintype:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Zeeniveau:
@@ -2915,6 +2938,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Naam van
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grootte:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Gewenste hoogte van bergen
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Hoogste berg
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Sneeuwoppervlak (in %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Woestijnoppervlak (in %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Verander startjaar
 
 # SE Map generation
@@ -4331,6 +4358,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Alleen b
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Grote schermfoto
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}De schermfoto heeft een resolutie van {COMMA} x {COMMA} pixels. Het maken van de schermfoto kan even duren. Verder gaan?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Hoogtekaart opgeslagen als '{STRING}'. Hoogste berg is {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Schermafbeelding opgeslagen als '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Schermfoto mislukt!
 

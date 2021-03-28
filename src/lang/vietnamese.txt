@@ -814,7 +814,7 @@ STR_NEWS_DISASTER_COAL_MINE_SUBSIDENCE                          :{BIG_FONT}{BLAC
 STR_NEWS_DISASTER_FLOOD_VEHICLE                                 :{BIG_FONT}{BLACK}Lụt!{}Ít nhất {COMMA} người mất tích, hoặc đã chết chìm sau trận lụt!
 
 STR_NEWS_COMPANY_IN_TROUBLE_TITLE                               :{BIG_FONT}{BLACK}Công ty vận tải đang gặp khó khăn!
-STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} sẽ bị chuyển nhượng hoặc phá sản trừ khi năng suất làm việc tăng lên!
+STR_NEWS_COMPANY_IN_TROUBLE_DESCRIPTION                         :{BIG_FONT}{BLACK}{STRING} sẽ bị chuyển nhượng hoặc phá sản nếu không cải thiện hiệu quả hoạt động!
 STR_NEWS_COMPANY_MERGER_TITLE                                   :{BIG_FONT}{BLACK}Sáp nhập công ty vận tải!
 STR_NEWS_COMPANY_MERGER_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} đã được bán cho {STRING} với giá {CURRENCY_LONG}!
 STR_NEWS_COMPANY_BANKRUPT_TITLE                                 :{BIG_FONT}{BLACK}Phá sản!

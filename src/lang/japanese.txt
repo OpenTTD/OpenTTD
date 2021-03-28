@@ -231,7 +231,8 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ�
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}並べ替えの基準を選択します
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}フィルタリングの基準を選択します
 STR_BUTTON_SORT_BY                                              :{BLACK}並べ替え
-STR_TOOLTIP_CATCHMENT                                           :{BLACK}カバレッジエリアの表示を切り替えます
+STR_BUTTON_CATCHMENT                                            :{BLACK}範囲
+STR_TOOLTIP_CATCHMENT                                           :{BLACK}範囲の表示を切り替えます
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ウィンドウを閉じます
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ウィンドウのタイトルです。ドラッグでウィンドウが移動できます
@@ -308,6 +309,7 @@ STR_SORT_BY_CARGO_CAPACITY                                      :積載容量
 STR_SORT_BY_RANGE                                               :航続距離
 STR_SORT_BY_POPULATION                                          :人口
 STR_SORT_BY_RATING                                              :レーティング
+STR_SORT_BY_NUM_VEHICLES                                        :車両数
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :昨年の総利益
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :今年の総利益
 
@@ -466,6 +468,7 @@ STR_TOOLBAR_SOUND_MUSIC                                         :効果音/音�
 ############ range for message menu starts
 STR_NEWS_MENU_LAST_MESSAGE_NEWS_REPORT                          :最新メッセージ/ニュース
 STR_NEWS_MENU_MESSAGE_HISTORY_MENU                              :メッセージ履歴
+STR_NEWS_MENU_DELETE_ALL_MESSAGES                               :メッセージをすべて削除
 ############ range ends here
 
 ############ range for about menu starts
@@ -474,6 +477,7 @@ STR_ABOUT_MENU_SEPARATOR                                        :―――――
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :コンソールの表示切替
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/ゲームスクリプトのデバッグ
 STR_ABOUT_MENU_SCREENSHOT                                       :スクリーンショット撮影(現在のズーム)
+STR_ABOUT_MENU_SHOW_FRAMERATE                                   :フレームレートを表示
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :OpenTTDについて
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :スプライトを整列
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :バウンディングボックスの表示切替
@@ -986,12 +990,14 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :通常
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :2倍
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :4倍
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}フォントサイズ
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :（自動検出）
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :ノーマル
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}グラフィクス
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}画面リフレッシュレート
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}使用する画面のリフレッシュレートを選択します
 STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :その他
 
@@ -1810,6 +1816,7 @@ STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}現在�
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}生産量変更: {ORANGE}{STRING}
 
 # Livery window
+STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - 配色
 
 STR_LIVERY_GENERAL_TOOLTIP                                      :{BLACK}通常のコーポレートカラー(車両塗装色)を表示します
 STR_LIVERY_TRAIN_TOOLTIP                                        :{BLACK}列車の塗装色を表示します
@@ -2261,6 +2268,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD�
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}はい、グラフィックをダウンロードします
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}いいえ、OpenTTDを終了します
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}ダウンロードに失敗しました
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透過表示設定
@@ -2412,7 +2420,7 @@ STR_ROAD_NAME_TRAM                                              :トラムウェ
 # Road depot construction window
 STR_BUILD_DEPOT_ROAD_ORIENTATION_CAPTION                        :{WHITE}車庫建設
 STR_BUILD_DEPOT_ROAD_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}車庫の向きを選択します
-STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}路面電車庫建設
+STR_BUILD_DEPOT_TRAM_ORIENTATION_CAPTION                        :{WHITE}トラム車庫建設
 STR_BUILD_DEPOT_TRAM_ORIENTATION_SELECT_TOOLTIP                 :{BLACK}路面電車庫の向きを選択します
 
 # Road vehicle station construction window
@@ -2755,6 +2763,7 @@ STR_MAPGEN_BY                                                   :{BLACK}×
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}街数:
 STR_MAPGEN_DATE                                                 :{BLACK}日付:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}産業数:
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形作成:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海水位:
@@ -3381,6 +3390,7 @@ STR_GROUP_REMOVE_ALL_VEHICLES                                   :全輸送機器
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}グループ名を変更
 
+STR_GROUP_PROFIT_THIS_YEAR                                      :今年の利益：
 STR_GROUP_PROFIT_LAST_YEAR                                      :昨年の利益：
 
 # Build vehicle window
@@ -4339,6 +4349,7 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}ここ�
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}ここから軌道を撤去できません
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}道路がありません
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}軌道がありません
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}この道路のタイプは変更できません
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}ここには運河を建設できません

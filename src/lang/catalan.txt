@@ -1541,11 +1541,11 @@ STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Estableix l'int
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}di{P 0 a es}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Desactivat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Interval per defecte de servei per als vehicles: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Estableix l'interval de revisió predeterminat pels nous vehicles de caretera, si no hi ha un interval de revisió explícit pel vehicle
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Estableix l'interval de revisió predeterminat pels vehicles de carretera que es comprin, si no hi ha un interval de revisió explícit pel vehicle.
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :Interval per defecte de servei per a les aeronaus: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :Estableix l'interval de revisió predeterminat pels nous avions, si no hi ha un interval de revisió explícit pel vehicle
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :Interval per defecte de servei per als vaixells: {STRING}
-STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Estableix l'interval de revisió predeterminat pels nous vaixells, si no hi ha un interval de revisió explícit pel vehicle
+STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :Estableix l'interval de revisió predeterminat pels vaixells que es comprin, si no hi ha un interval de revisió explícit pel vehicle.
 STR_CONFIG_SETTING_NOSERVICE                                    :Desactiva les revisions quan les avaries s'estableixen a cap: {STRING}
 STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :Quan està activat, els vehicles no són revisats si no es poden espatllar
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :Activa límits de velocitat per als vagons: {STRING}
@@ -1575,7 +1575,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Altres canvis d
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Mostra les notícies de canvis als nivells de producció de les indústries que no estan proveïdes ni per la companyia ni pels competidors
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Alertes / informació sobre els vehicles de la companyia: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostra missatges sobre vehicles que necessitin atenció
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nous vehicles: {STRING}
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Vehicles nous: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostra les notícies d'aparicions de nous tipus de vehicles
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Canvis en l'admissió de càrrega: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostra missatges sobre les estacions que canviïn l'acceptació d'alguna càrrega
@@ -2614,10 +2614,10 @@ STR_QUERY_RESET_LANDSCAPE_CAPTION                               :{WHITE}Restable
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Estàs segur que vols treure totes les propietats pertanyents a companyies?
 
 # Town generation window (SE)
-STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generació de Poblacions
-STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Nova Població
-STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda una nova població. Shift+Clic mostra el cost estimat
-STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Localitat Aleatòria
+STR_FOUND_TOWN_CAPTION                                          :{WHITE}Generació de poblacions
+STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Població nova
+STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda una població. Shift+Clic en mostra el cost estimat.
+STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Crea una població aleatòria
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Funda una població en un lloc aleatori
 STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Moltes poblacions aleatòries
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Omple el mapa amb poblacions situades aleatòriament
@@ -2641,8 +2641,8 @@ STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposi
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selecciona la disposició de les carreteres utilitzades per a aquesta població
 STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
 STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Millors carreteres
-STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}graella 2x2
-STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}graella 3x3
+STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Graella 2x2
+STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Graella 3x3
 STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatori
 
 # Fund new industry window
@@ -3382,24 +3382,24 @@ STR_FINANCES_CAPTION                                            :{WHITE}Finances
 STR_FINANCES_EXPENDITURE_INCOME_TITLE                           :{WHITE}Despeses/Ingressos
 STR_FINANCES_YEAR                                               :{WHITE}{NUM}
 STR_FINANCES_SECTION_CONSTRUCTION                               :{GOLD}Construcció
-STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Nous Vehicles
-STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Desp. de Circ. de Trens
-STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Desp. de Circ. de Vehicles
-STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Desp. de Circ. d'Avions
-STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Desp. de Circ. de Vaixells
-STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Manteniment de Propietats
-STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingressos de Trens
-STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ingressos de Vehicles
-STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingressos d'Avions
-STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ingressos de Vaixells
-STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interessos del Préstec
+STR_FINANCES_SECTION_NEW_VEHICLES                               :{GOLD}Compra de vehicles
+STR_FINANCES_SECTION_TRAIN_RUNNING_COSTS                        :{GOLD}Desp. de circ. de trens
+STR_FINANCES_SECTION_ROAD_VEHICLE_RUNNING_COSTS                 :{GOLD}Desp. de circ. de vehicles
+STR_FINANCES_SECTION_AIRCRAFT_RUNNING_COSTS                     :{GOLD}Desp. de circ. d'aeronaus
+STR_FINANCES_SECTION_SHIP_RUNNING_COSTS                         :{GOLD}Desp. de circ. de vaixells
+STR_FINANCES_SECTION_PROPERTY_MAINTENANCE                       :{GOLD}Manteniment de propietats
+STR_FINANCES_SECTION_TRAIN_INCOME                               :{GOLD}Ingressos de trens
+STR_FINANCES_SECTION_ROAD_VEHICLE_INCOME                        :{GOLD}Ingressos de vehicles
+STR_FINANCES_SECTION_AIRCRAFT_INCOME                            :{GOLD}Ingressos d'avions
+STR_FINANCES_SECTION_SHIP_INCOME                                :{GOLD}Ingressos de vaixells
+STR_FINANCES_SECTION_LOAN_INTEREST                              :{GOLD}Interessos del préstec
 STR_FINANCES_SECTION_OTHER                                      :{GOLD}Altres
 STR_FINANCES_NEGATIVE_INCOME                                    :{BLACK}-{CURRENCY_LONG}
 STR_FINANCES_POSITIVE_INCOME                                    :{BLACK}+{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CAPTION                                      :{WHITE}Total:
-STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanç del Banc
+STR_FINANCES_BANK_BALANCE_TITLE                                 :{WHITE}Balanç bancari
 STR_FINANCES_LOAN_TITLE                                         :{WHITE}Préstec
-STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstec Màxim: {BLACK}{CURRENCY_LONG}
+STR_FINANCES_MAX_LOAN                                           :{WHITE}Préstec màxim: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Demana {CURRENCY_LONG}
 STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Augmenta l'import del préstec Ctrl+Clic per demanar tants diners com sigui possible
@@ -3575,18 +3575,18 @@ STR_GROUP_OCCUPANCY                                             :Ocupació actua
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
-STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Compra de nous vehicles ferroviaris
-STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Compra de nous vehicles ferroviaris per vies electrificades
-STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Compra de nous vehicles monorail
-STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Compra de nous vehicles Maglev
+STR_BUY_VEHICLE_TRAIN_RAIL_CAPTION                              :Compra de vehicles ferroviaris
+STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Compra de vehicles ferroviaris per vies electrificades
+STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Compra de vehicles monorail
+STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Compra de vehicles Maglev
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Compra de nous vehicles de carretera
-STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nous vehicles de tramvia
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Compra de vehicles de tramvia
 
 ############ range for vehicle availability starts
-STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Compra de nous vehicles sobre vies
+STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Compra de vehicles sobre vies
 STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Automòbils nous
-STR_BUY_VEHICLE_SHIP_CAPTION                                    :Compra de nous vaixells
+STR_BUY_VEHICLE_SHIP_CAPTION                                    :Compra de vaixells
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Compra de noves aeronaus
 ############ range for vehicle availability ends
 
@@ -3705,14 +3705,14 @@ STR_DEPOT_AUTOREPLACE_ROAD_VEHICLE_TOOLTIP                      :{BLACK}Autosubs
 STR_DEPOT_AUTOREPLACE_SHIP_TOOLTIP                              :{BLACK}Autosubstitueix tots els vaixells de la drassana
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autosubstitueix tots els avions de l'hangar
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Nous Vehicles
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Nous Vehicles
-STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Nous Vaixells
+STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Compra vehicles
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Compra vehicles
+STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Compra vaixells
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nou Avió
 
-STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Compra un nou vehicle ferroviari
+STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Compra vehicles ferroviaris.
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Compra un nou automòbil
-STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Compra un nou vaixell
+STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Compra vaixells nous.
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Compra un nou avió
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clona Tren
@@ -4227,7 +4227,7 @@ STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels 
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració de les IA i l'script de partida només està disponible al servidor.
 
 # AI configuration window
-STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuració de la IA/script de partida
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuració dels scripts de les IA/partida
 STR_AI_CONFIG_GAMELIST_TOOLTIP                                  :{BLACK}Aquest és l'script que s'usarà a la propera partida.
 STR_AI_CONFIG_AILIST_TOOLTIP                                    :{BLACK}Aquesta llista conté les IA que es carregaran a la propera partida.
 STR_AI_CONFIG_HUMAN_PLAYER                                      :Jugador humà

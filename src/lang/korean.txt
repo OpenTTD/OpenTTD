@@ -1125,6 +1125,8 @@ STR_TERRAIN_TYPE_FLAT                                           :평탄함
 STR_TERRAIN_TYPE_HILLY                                          :언덕
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :산
 STR_TERRAIN_TYPE_ALPINIST                                       :매우 험한 산지
+STR_TERRAIN_TYPE_CUSTOM                                         :사용자 지정 높이
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :사용자 지정 높이 ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :신경 안씀
 STR_CITY_APPROVAL_TOLERANT                                      :신경 씀
@@ -1206,12 +1208,16 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :일정 구역�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :지역 개발에 대한 도시의 태도: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :회사가 유발하는 소음과 환경 파괴가 회사에 대한 도시의 평가치와 향후 해당 지역에서 건설하는 행동에 얼마나 영향을 미칠지 선택하세요
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}이 값을 최대 지형 높이로 설정할 수 없습니다. 이 값보다 고도가 높은 산이 최소 한 개 이상 존재합니다.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :지도 높이 최댓값: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :지도 지형의 최대 높이를 설정합니다. "(자동)"으로 설정하면 지형이 생성된 뒤에 적절한 값을 골라줍니다.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(자동)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}이 값을 지도 높이 최댓값으로 설정할 수 없습니다. 이 값보다 고도가 높은 산이 최소 한 개 이상 존재합니다.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :건물, 트랙 등의 하부 지형 편집 허용: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :건물이나 도로/선로 등을 제거하지 않고도 하부의 지형을 편집할 수 있게 허용합니다.
 STR_CONFIG_SETTING_CATCHMENT                                    :더 현실적인 역세권 지정: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :역과 공항의 종류에 따라 다른 크기의 역세권을 가지도록 만듭니다.
-STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :역이 붙어 있는 산업 시설의 화물을 회사의 역이 취급 가능: {STRING}
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :역이 붙어 있는 산업시설의 화물을 회사의 역이 취급 가능: {STRING}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :이 설정을 켜면, (유전과 같이) 역이 붙어 있는 산업시설이 근처에 지은 회사 소유의 역에서도 화물을 취급할 수 있습니다. 이 설정을 끄면, 반드시 산업시설에 붙어 있는 역에서만 화물을 취급할 수 있습니다. 인근에 있는 모든 회사 소유의 역은 화물을 취급할 수 없게 되며, 산업시설에 붙어 있는 역도 그 산업시설 이외의 화물을 취급할 수 없게 됩니다.
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :도시 소유의 도로, 다리 등의 제거 허용: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :도시 소유의 기반시설이나 건물을 제거할 수 있게 합니다.
@@ -1347,10 +1353,16 @@ STR_CONFIG_SETTING_TERRAIN_TYPE                                 :지형 종류: 
 STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :(천지창조 전용) 지형의 언덕 모양을 결정합니다.
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :산업시설 수: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :게임을 플레이하는 동안 얼마나 많은 산업시설이 생성되고 유지되어야 할 지를 설정합니다.
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :석유 관련 산업 시설의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
-STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장과 유전이 맵 가장자리에서 얼마나 멀리 떨어진 곳까지 건설될 수 있는지를 나타냅니다. 섬 맵에서는 이 설정을 이용해서 해당 산업 시설이 해안에 가까이 있도록 조정할 수 있습니다. 256칸보다 큰 맵의 경우에는 이 값은 더 크게 조정됩니다.
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :석유 관련 산업시설의 최대 건설 범위: 지도 맨 끝에서부터 {STRING} 이내
+STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :정유 공장과 유전이 맵 가장자리에서 얼마나 멀리 떨어진 곳까지 건설될 수 있는지를 나타냅니다. 섬 맵에서는 이 설정을 이용해서 해당 산업시설이 해안에 가까이 있도록 조정할 수 있습니다. 256칸보다 큰 맵의 경우에는 이 값은 더 크게 조정됩니다.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :설선 고도: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :아한대 기후의 설선 고도를 조절합니다. 눈은 산업시설의 생성과 도시 성장에 영향을 미칩니다.
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :아한대 기후의 설선 고도를 조절합니다. 눈은 산업시설의 생성과 도시 성장에 영향을 미칩니다. 시나리오 에디터에서 수정할 수 있고 설정하지 않은 경우 "눈 비율" 설정을 따릅니다.
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :눈 비율: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :아한대 기후에서 눈 지역의 양을 대략적으로 조절할 수 있습니다. 눈은 산업시설 생성과 도시 성장 요구사항에도 영향을 미칩니다. 지도를 생성할 때에만 사용하는 설정입니다. 해수면 바로 위에 있는 땅은 무조건 눈이 없을 것입니다.
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :사막 비율: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :아열대 기후에서 사막 지역의 양을 대략적으로 조절할 수 있습니다. 사막은 산업시설 생성에도 영향을 미칩니다. 지도를 생성할 때에만 사용하는 설정입니다.
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :지형의 거친 정도: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(천지창조 전용) 언덕의 빈도수를 선택합니다. 평탄한 지형은 개수가 적고 넓게 퍼진 언덕을 만듭니다. 거친 지형은 똑같아 보일 수 있는 많은 언덕이 생기게 됩니다.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :매우 부드럽게
@@ -1584,7 +1596,7 @@ STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :점수를 기�
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :안 함
 STR_CONFIG_SETTING_ECONOMY_TYPE                                 :경제 변화: {STRING}
-STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :부드러운 경제에서는 생산량이 소량으로 자주 변하게 됩니다. 멈춘 경제에서는 생산량이 변하지 않고 산업 시설의 폐쇄를 막습니다. 이 설정은 NewGRF로 추가한 산업 시설에는 적용되지 않을 수 있습니다.
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :부드러운 경제에서는 생산량이 소량으로 자주 변하게 됩니다. 멈춘 경제에서는 생산량이 변하지 않고 산업시설의 폐쇄를 막습니다. 이 설정은 NewGRF로 추가한 산업시설에는 적용되지 않을 수 있습니다.
 STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :기본
 STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :부드러움
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :멈춤
@@ -2891,6 +2903,17 @@ STR_MAPGEN_BY                                                   :{BLACK}x
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}도시의 수:
 STR_MAPGEN_DATE                                                 :{BLACK}날짜:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}산업시설 수:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}가장 높은 지점의 높이:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}지도에서 가장 높은 지점의 최대 높이를 1만큼 높입니다
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}지도에서 가장 높은 지점의 최대 높이를 1만큼 낮춥니다
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}눈 비율:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}눈 지역의 비율을 10%p 늘립니다.
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}눈 지역의 비율을 10%p 줄입니다.
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}사막 비율:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}눈이 내린 곳의 비율을 10%p 줄입니다.
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}사막 지역의 비율을 10%p 줄입니다.
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}지형 만들기:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}지형 종류:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}해수면:
@@ -2916,6 +2939,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}높이�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}크기:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}목표 정상 높이
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}가장 높은 지점의 높이
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}눈 비율 (% 단위)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}사막 비율 (% 단위)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}시작 연도 변경
 
 # SE Map generation
@@ -4332,6 +4359,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}게임�
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}대형 스크린 샷
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}스크린 샷의 이미지 크기는 {COMMA} x {COMMA} 픽셀이 될 것입니다. 스크린 샷을 찍는 데에는 시간이 다소 걸릴 수 있습니다. 계속하시겠습니까?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}높이맵이 '{STRING}' 파일로 성공적으로 저장되었습니다. 가장 높은 지점은 {NUM}입니다.
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}스크린 샷이 '{STRING}'로 저장되었습니다
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}스크린 샷을 찍지 못했습니다!
 
