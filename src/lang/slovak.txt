@@ -1192,6 +1192,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Rovný
 STR_TERRAIN_TYPE_HILLY                                          :Kopcovitý
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Horský
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinista
+STR_TERRAIN_TYPE_CUSTOM                                         :Vlastná výška
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Vlastná výška ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Pozitivny
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantny
@@ -1273,7 +1275,11 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Vypne alebo zap
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Postoj mestskej správy k reštrukturalizácii v oblasti: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Zvoľte ako veľmi ovplyvňuje hluk a poškodzovanie prostredia spoločnosťami ich hodnotenie v meste a ich budúce možnosti výstavby v oblasti vlastnenej mestom
 
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nemôžete nastaviť takúto maximálnu výšku mapy. Najmenej jeden vrch na mape je vyšší.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Limit výšky mapy: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Zvoľte maximálnu výšku terénu na mape. S "(automatický)" bude vybraná správna hodnota podľa generátora krajiny
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatický)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nemôžete nastaviť výškový limit mapy na túto hodnotu. Najmenej jeden vrch na mape je vyšší
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Povoliť úpravy terénu pod budovami, koľajami, atď.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Umožňuje úpravy terénu pod budovami a traťami bez potreby ich odstránenia
 STR_CONFIG_SETTING_CATCHMENT                                    :Povoliť realistickejšiu veľkosť oblasti pokrytia: {STRING}
@@ -1417,7 +1423,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Nastavte, koľk
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximálna vzdialenosť od okrajov mapy pre rafinérie: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Rafinérie ropy sú vybudované len na okrajoch mapy, tzn na pobreží pri ostrovných mapách
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Úroveň hranice snehu: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Určuje v akej výške začína sneh v subarktickej krajine. Sneh tiež ovplyvňuje generáciu priemyslu a požiadaviek rastu mesta
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Určuje v akej výške začína sneh v subarktickej krajine. Sneh tiež ovplyvňuje generáciu priemyslu a požiadavky rastu mesta. Môže byť upravené iba cez Editor scenára, alebo je vypočítane cez "pokrytie snehom"
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Pokrytie snehom: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Ovláda približnú zasneženú rozlohu v subpolárnej krajine. Sneh taktiež ovlyvňuje generáciu priemyslu a požiadavky rastu mesta. Používa sa iba pri vytváraní krajiny. Pevnina tesne nad výškou mora je vždy bez snehu
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Pokrytie púšťou: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Ovláda približnú rozlohu púšte v subtropickej krajine. Púšť taktiež ovlyvňuje generáciu priemyslu. Používa sa iba pri vytváraní krajiny
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Členitosť terénu : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Len TerraGenesis) Vyberte hustotu kopcov: Rovinaté krajiny majú menej, viac pozdĺžných kopcov. Hornaté krajiny majú veľa kopcov, ktoré sa môžu opakovať
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veľmi rovný
@@ -2958,6 +2970,17 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Počet miest:
 STR_MAPGEN_DATE                                                 :{BLACK}Rok:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Počet priemyslu:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Najvyšší vrchol:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Zvýšiť maximálnu výšku najvyššieho vrchola na mape o jeden
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Znížiť maximálnu výšku najvyššieho vrchola na mape o jeden
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Pokrytie snehom:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Zvýšiť pokrytie snehom o desať percent
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Znížiť pokrytie snehom o desať percent
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Pokrytie púšťou:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Zvýšiť pokrytie púšťou o desať percent
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Znížiť pokrytie púšťou o desať percent
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generátor krajiny:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typ terénu:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Rozloha mora:
@@ -2983,6 +3006,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Názov v
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Veľkosť:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Cieľová výška vrcholu
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Najvyšší vrchol
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Pokrytie snehom (v %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Pokrytie púšťou (v %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Zmeniť rok začiatku hry
 
 # SE Map generation
@@ -4399,6 +4426,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Bola ná
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Obrovská snímka
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Snímka bude mať rozlíšenie {COMMA} x {COMMA} pixelov. Jej vytvorenie ale môže chvíľu trvať. Naozaj chcete pokračovať?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Výšková mapa úspešne uložená ako '{STRING}'. Najvyšší vrchol je {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Snímka bola uložená na disk ako '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Uloženie snímky zlyhalo!
 

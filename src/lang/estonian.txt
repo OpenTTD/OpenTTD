@@ -1014,10 +1014,10 @@ STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Asulate 
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Vali asulanimede stiil
 
 ############ start of townname region
-STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inglise (originaalne)
+STR_GAME_OPTIONS_TOWN_NAME_ORIGINAL_ENGLISH                     :Inglise (algne)
 STR_GAME_OPTIONS_TOWN_NAME_FRENCH                               :Prantsusmaa
 STR_GAME_OPTIONS_TOWN_NAME_GERMAN                               :Saksamaa
-STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inglise (Lisa)
+STR_GAME_OPTIONS_TOWN_NAME_ADDITIONAL_ENGLISH                   :Inglise (täiendatud)
 STR_GAME_OPTIONS_TOWN_NAME_LATIN_AMERICAN                       :Ladina-Ameerika
 STR_GAME_OPTIONS_TOWN_NAME_SILLY                                :Tobedad
 STR_GAME_OPTIONS_TOWN_NAME_SWEDISH                              :Rootsi
@@ -1060,7 +1060,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :muu
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Riistvarakiirendus
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Märgides selle ruudu, lubad OpenTTD-l üritada kasutada riistvarakiirendust. Muudetud seade omab mõju pärast mängu taaskäivitust
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Märkides selle ruudu, lubad OpenTTD-l üritada kasutada riistvarakiirendust. Muudetud seade omab mõju pärast mängu taaskäivitust
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Seade omab mõju alles pärast mängu taaskäivitust
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Liidese suurus
@@ -1436,9 +1436,9 @@ STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Algupärane
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Täiustatud
 STR_CONFIG_SETTING_ROAD_SIDE                                    :Sõidukid: {STRING}
 STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Vali liikluse suund
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Kõrgustekaardi pööramine: {STRING}
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastu-päevapidi
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Päevapidi
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Kõrguskaardi pööre: {STRING}
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastupäeva
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Päripäeva
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Kõrguse level kui kõrgele lapik kaart läheb: {STRING}
 STR_CONFIG_SETTING_EDGES_NOT_EMPTY                              :{WHITE}Üks või enam ruutu põhjaäärel pole tühjad
 STR_CONFIG_SETTING_EDGES_NOT_WATER                              :{WHITE}Üks või enam ääreruutu pole vesi
@@ -2955,14 +2955,14 @@ STR_SAVELOAD_OSKTITLE                                           :{BLACK}Sisesta 
 # World generation
 STR_MAPGEN_WORLD_GENERATION_CAPTION                             :{WHITE}Maailma tekitamine
 STR_MAPGEN_MAPSIZE                                              :{BLACK}Kaardi mõõtmed:
-STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Määrab maakaardi mõõtmed ruutudes. Ruute, mida saab kasutada, on pisut vähem
+STR_MAPGEN_MAPSIZE_TOOLTIP                                      :{BLACK}Määrab kaardi mõõtmed ruutudes. Ruute, mida saab kasutada, on pisut vähem
 STR_MAPGEN_BY                                                   :{BLACK}*
-STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Asustusi:
+STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Asustuste arv:
 STR_MAPGEN_DATE                                                 :{BLACK}Algus:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Tööstustihedus:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Kõrgpunkt:
-STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Suurenda kaardi teoreetilist kõrgpunkti ühe võrra
-STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Vähenda kaardi teoreetilist kõrgpunkti ühe võrra
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Suurenda kaardi kõrgpunkti ühe võrra
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Vähenda kaardi kõrgpunkti ühe võrra
 STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Lumekatvus:
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Suurenda lumekatvust kümne protsendi võrra
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Vähenda lumekatvust kümne protsendi võrra
@@ -2991,8 +2991,8 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}Suvaline
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}Suvaline
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Määratud
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Kõrgustekaardi pööre:
-STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Kõrgusekaardi nimi:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Kõrguskaardi pööre:
+STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Kõrguskaardi nimi:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Suurus:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 

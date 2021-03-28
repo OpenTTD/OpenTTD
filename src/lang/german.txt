@@ -2939,7 +2939,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Reliefka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Größe:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
-STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Zielspitzenhöhe
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Angestrebte Gipfelhöhe
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Höchster Gipfel
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Schneebedeckung (in %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Wüstenbedeckung (in %)
@@ -4359,7 +4359,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Nur ein 
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Riesiger Screenshot
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Der Screenshot wird die Auflösung von {COMMA} × {COMMA} Pixeln haben. Das kann einige Zeit dauern. Soll fortgefahren werden?
 
-STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Reliefkarte erfolgreich als '{STRING}' gespeichert. Der höchste Gipfel ist {NUM}
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Reliefkarte erfolgreich als „{STRING}“ gespeichert. Der höchste Gipfel ist {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespeichert als „{STRING}“
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshot fehlgeschlagen
 
