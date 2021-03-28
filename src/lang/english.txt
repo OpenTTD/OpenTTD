@@ -2312,6 +2312,7 @@ STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrip
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{RAW_STRING}
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Download size: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_UPLOAD_DATE                                  :{SILVER}Upload date: {WHITE}{RAW_STRING}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Selected because of: {WHITE}{RAW_STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencies: {WHITE}{RAW_STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{RAW_STRING}

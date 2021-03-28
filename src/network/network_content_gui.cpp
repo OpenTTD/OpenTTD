@@ -724,6 +724,14 @@ public:
 		SetDParam(0, this->selected->filesize);
 		y = DrawStringMultiLine(r.left + DETAIL_LEFT, r.right - DETAIL_RIGHT, y, max_y, STR_CONTENT_DETAIL_FILESIZE);
 
+		if (this->selected->upload_date != 0) {
+			char buffer[64];
+			time_t epoch_time = this->selected->upload_date;
+			strftime(buffer, sizeof(buffer), "%Y-%m-%d", localtime(&epoch_time));
+			SetDParamStr(0, buffer);
+			y = DrawStringMultiLine(r.left + DETAIL_LEFT, r.right - DETAIL_RIGHT, y, max_y, STR_CONTENT_DETAIL_UPLOAD_DATE);
+		}
+
 		if (this->selected->dependency_count != 0) {
 			/* List dependencies */
 			char buf[DRAW_STRING_BUFFER] = "";
