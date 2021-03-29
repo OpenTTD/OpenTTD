@@ -2910,7 +2910,7 @@ STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Couvertu
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Augmenter la couverture de neige de dix pour cent
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Diminuer la couverture de neige de dix pour cent
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
-STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}ouverture du désert:
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Couverture du désert:
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Augmenter la couverture du désert de dix pour cent
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Diminuer la couverture du désert de dix pour cent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
