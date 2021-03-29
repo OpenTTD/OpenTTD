@@ -194,6 +194,7 @@ STR_COLOUR_DEFAULT                                              :Standard
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}Felder/Dag
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}bhp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}ps
@@ -312,8 +313,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Luedungskapazit
 STR_SORT_BY_RANGE                                               :Längt
 STR_SORT_BY_POPULATION                                          :Bevölkerung
 STR_SORT_BY_RATING                                              :Rating
+STR_SORT_BY_NUM_VEHICLES                                        :Unzuel Gefierer
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Totale Profit lescht Joer
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Totale Profit dëst Joer
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Durchschnëttsprofit lescht Joer
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Durchschnëttsprofit dëst Joer
 
 # Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Keng
+STR_GROUP_BY_SHARED_ORDERS                                      :Gedeelten Opträg
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Spill pausen
@@ -739,6 +747,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Knubbelegt Land
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Grasland
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Onerschlossend Land
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Reebësch
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Felder
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Beem
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Fielsen
@@ -770,6 +779,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Weis all
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Lescht Meldung oder News
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUSEIERT  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  PAUSEIERT (warden op d'Aktualiséirung vun der Linkgrafik) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSPÄICHEREN
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPÄICHERT D'SPILL  *  *
 
@@ -935,6 +945,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikanesche Pe
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :New Taiwan Dollar (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Chinesesch Renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Dollar (HKD)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesesch Rupiah (IDR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Lénks fueren
@@ -989,6 +1000,8 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Wielt d'
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Aaner
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardwarebeschleunegung
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}D'Astellung huet réicht en Afloss no engem Neistart vum Spill
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfacegréisst
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Wiel d'Gréisst déi fir den Interface soll benotzt ginn
@@ -1004,7 +1017,10 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Duebel Gréisst
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Véierfach
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Graphik
 
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :aner
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Refresh rates déi méi grouss wéi 60Hz sinn, kënnen d'Performance beaflossen
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Basis Grafikset
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Wielt de Basis Grafikset dee soll benotzt ginn
@@ -1025,7 +1041,7 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fehler b
 
 # Custom currency window
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Eegen Währung
+STR_CURRENCY_WINDOW                                             :{WHITE}Eege Währung
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wiesselkuer: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
 STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz de Betrag Suen dee fir 1 Pond (£) gebraucht gëtt erof
 STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Setz de Betrag Suen dee fir 1 Pond (£) gebraucht gëtt erop
@@ -1100,6 +1116,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Flaach
 STR_TERRAIN_TYPE_HILLY                                          :Hiwwelech
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Bierger
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpin
+STR_TERRAIN_TYPE_CUSTOM                                         :Eegen Héicht
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Fräizügeg
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
@@ -1181,6 +1198,9 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Stell Katastrop
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Dem Stadrot seng Astellung géigeniwwer dem Embau vun der Landschaft: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Wielt aus, wéivill vun der Firma verursachten Kaméidi an Emweltschiedegung sech op d'Stadbewäertung an op weider Bauaktiounen auswierkt
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Maximal Kaartenhéicht: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kanns d'maximal Kaartenhéicht net op dëse Wäert setzen. Op manst ee Bierg op der Kaart ass méi héich
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Erlaabt Landformung ënnert Gebaier, Stroossen, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Erlaabt Terraintransformatioun ënnert Gebaier an Schinnen ouni dës ewechzehuelen
@@ -1209,7 +1229,7 @@ STR_CONFIG_SETTING_FORBID_90_DEG_HELPTEXT                       :90°-Kéieren e
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS                        :Erlaabt Statiounen zesummen ze setzen och wann se net direkt uneneen leien: {STRING}
 STR_CONFIG_SETTING_DISTANT_JOIN_STATIONS_HELPTEXT               :Erlaabt Statiounsdeeler un eng Statioun unzehenken ouni déi existéiernd Statioun ze beréiren. Ctr+Klick fir déi nei Deeler unzehenken
 STR_CONFIG_SETTING_INFLATION                                    :Inflatioun: {STRING}
-STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Erlab Inflatioun an der Economie, wou d'Käschten méi séier klammen wéi d'Bezuelungen
+STR_CONFIG_SETTING_INFLATION_HELPTEXT                           :Erlab Inflatioun an der Wiertschaft, wou d'Käschten méi séier klammen wéi d'Bezuelungen
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH                            :Maximal Bréckelängt: {STRING}
 STR_CONFIG_SETTING_MAX_BRIDGE_LENGTH_HELPTEXT                   :Maximal Längt déi eng Bréck dierf hunn
 STR_CONFIG_SETTING_MAX_BRIDGE_HEIGHT                            :Maximal Bréckenhéicht: {STRING}
@@ -1326,7 +1346,11 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maximal Distanz
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Limitéiert wéi wäit vum Bord Uelegraffinerien an Buerinsele dierfe gebaut ginn. Op Inselkaarten garantéiert dest dass se um Rand gebaut ginn. Op Kaarten mat méi wéi 256 Felder, gett dese Wert skaléiert
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Schnéigrenz Héicht: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrolléiert ab welcher Héicht de Schnéi ufenkt an der subarktëscher Landschaft. Schnéi affektéiert och Industriegeneratioun an de Wuesstum vu Stied.
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Schnéibedeckung: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Setzt déi ongeféier Unzuel u Schnéi an enger subarktëscher Landschaft fest. Schnéi beaflosst och d'Industriegeneratioun an Duerfwuësstumsbedürfnisser. Gëtt nëmmen während der Kaartegeneratioun gebraucht. Land just iwwert der Miereshéicht ass ëmmer ouni Schnéi
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Stellt den ongeféieren Deel vun Wüst op der tropescher Kaart an. Wüst affektéiert och d'Industrië-Generatioun. Gëtt nëmmen während der Kaartegeneratioun gebraucht.
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Knubbelegkeet vum Terrain (nëmmen TerraGenesis) : {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Nëmmen TerraGenesis) Wiel d'Heefegkeet vun Hiwwelen: Mëll Landschafter hunn manner, breed verdeelten Hiwwelen. Rau Landschaften hunn méi Bierger déi repetitiv ausgesinn kënnen.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Ganz Flaach
@@ -1368,7 +1392,7 @@ STR_CONFIG_SETTING_SCROLLMODE_DEFAULT                           :D'Usiicht mat d
 STR_CONFIG_SETTING_SCROLLMODE_RMB_LOCKED                        :Beweg d'Kaart mat der rietser Maustast, Maus-Positioun gespaart
 STR_CONFIG_SETTING_SCROLLMODE_RMB                               :D'Kaart mat der rietser Maustast bewegen
 STR_CONFIG_SETTING_SCROLLMODE_LMB                               :Kaart mat der lénker Maustast bewegen
-STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Feine Scrolling: {STRING}
+STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Glaate Scrolling: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Kontrolléiert wéi d'Haptusiicht op eng bestëmmten Positioun scrollt, wann een op déi kléng Kaart klickt oder en Befehl fir ob en spezifescht Objet ze scrollen gëtt. Wann ugeschalt, gëtt bis dohin gescrollt, wann ausgeschalt, spréngt d'Vue op den Zielobjet
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Weis en Mooss-Tooltip wann verschidde Bau-Tools benotzt ginn: {STRING}
 STR_CONFIG_SETTING_MEASURE_TOOLTIP_HELPTEXT                     :Weis Felderdistanzen an Héichtenënnerscheed beim Zéien während dem Bauen un
@@ -1440,6 +1464,11 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Bau-Tools nom G
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Looss d'Bauoptiounen fir Brécken, Tunnelen etc. nom Gebrauch op
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Ausgaben vun der Firma an der Finanzfënster gruppéiren: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definéiert de Layout fir d'Firmenausgabefënster
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Hëllt automatesch Signaler ewech wann dës am Wee sinn. Dëst kinnt zu Zuchaccidenter féieren.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Geschw.-Limit beim schnell lafe loossen: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Limitléiert d'Geschwindegkeet wann een et schnell lafe léisst. 0 = keng Limit (sou séier wéi de Computer kann). Werter ënnert 100% loossen d'Spill méi lues lafen. Déi ierwegt Limit henkt vun de Spezifikatiounen vum Computer of an kann per Spill variéieren.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% un normaler Spillgeschw.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Keng Limit (sou séier wéi de Computer et erlabt)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Newsticker: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Spill Sound of fir resuméiert Neiegkeeten
@@ -1553,6 +1582,11 @@ STR_CONFIG_SETTING_ENDING_YEAR                                  :End-Joer vum Sc
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Joer wou d'Spill opgrond vum Scoring ophält. Um Enn vun desem Joer gëtt der Firma hiere Score  gespäichert an an der Highscore-Lëscht ugewisen, mee de Spiller kann dono weider spillen.{}Wann dese Wert virum Startjoer ass, gëtt d'Highscorelëscht nie ugewisen.
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Nie
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Wiertschaftstyp: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :"Glaat" suergt fir méi oft a kleng Produktiounsännerungen. "Agefruer" stoppt jeglech Ännerungen an der Wiertschaft an Industrieschléissungen. Dës Astellunge kinnten keen Afloss hunn, wann en NewGRF benotzt gëtt.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Original
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Glaat
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Agefruer
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Undeeler vun aaneren Firmen kafen: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Wann ugeschalt, dierfen Aktien vu Firmen kaf an verkaf ginn. Aktien si just fir Firme verfügbar, déi en gewëssen Alter erreecht hunn
 STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Minimalt Firmenalter fir Aktien ze handelen: {STRING}
@@ -1596,7 +1630,7 @@ STR_CONFIG_SETTING_TOWN_FOUNDING                                :Stiedgrënnung 
 STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Wann dës Astellung ugeschalt ass, kënnen Spiller nei Stied am Spill grënnen
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Verbueden
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Erlaabt
-STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaabt, custom Stad-Layout
+STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Erlaabt, eegene Stad-Layout
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Duerfwuerengeneratioun: {STRING}
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Wéivill Wuere produzéiert ginn, relativ zur Bevölkerung vum Duerf.{}Quadratesche Wuesstum: En duebel sou grousst Duerf, generéiert véier mol souvill Passagéier.{}Lineare Wuesstum: En duebel sou grousst Duerf, generéiert duebel souvill Passagéier.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Quadratesch (original)
@@ -1604,6 +1638,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linear
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Bamplazéirung: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Kontrolléiert zoufälleg Optauche vu Beem während dem Spill. Dëst kann Industrie beaflossen, déi op d'Wuessen vu Beem ugewisen sinn
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Wuessen, net ausbreeden {RED}(Mécht Seemille futti)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Wuess mee breed sech just am Reebësch aus
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Beem wuessen an verspreeën sech iwwerall
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Net wuessen, net ausbreeden {RED}(Mécht Seemille futti)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Positioun vun der Haapt-Toolbar: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Horizontal Positioun vun der Haapt-Toolbar uewen um Schierm
@@ -1621,12 +1659,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Maximalen Ranzo
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximal Razoomstuf fir Usiichtsfënsteren. Et gëtt méi Späicher gebraucht wann d'Stufen ze grouss ginn
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Maximalen Rauszoom Level: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximal Rauszoom-Stuf fir Usiichtsfënsteren. Méi grouss Rauszoom-Stufen kënnen Ruckeler verursaachen
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Héchsten Opléisung vu Sprites: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Limitéiert d'Maximalopléisung fir Sprites. Dës Limitéirung verhënnert d'Luede vun héich opgeléiste Grafiken, och wann déi verfügbar sinn. Dës kann hëllefen, dass d'Spill méi gläichméisseg ausgesäit wann e Mix vun GRF Dateie benotzt gëtt déi net all héich opgeléist sinn.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Geschw. vum Stad-Wuesstem: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Geschwindegkeet mat däer Stied wuessen
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Keen
@@ -1670,6 +1713,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Emmer wann eng 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Britesch (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metresch (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Spilleenheeten (Felder/Dag)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Kraafteenheeten: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Emmer wann d'Kraaft vun engem Gefier am Userinterface ugewisen gëtt, weis se an den ausgewielten Eenheeten un
@@ -1760,6 +1804,7 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Net genu
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Reservéirung vun {BYTES} Spritecache versot. De Spritecache gouf reduzéiert op {BYTES}. Dëst reduzéiert d'Performance vun OpenTTD. Fir Späicher ze spueren kann een probéiren 32bpp Grafiken auszeschalten an/oder Zoom-Eran Stufen
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... keng kompatibel GPU fonnt. Hardwarebeschleunegung deaktivéiert
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -1966,6 +2011,9 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Spill b�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Server erneieren
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Serverinfo erneieren
 
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Am Internet sichen
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Am Internet no ëffentleche Server sichen
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Am LAN sichen
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Server bäisetzen
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Setzt en Server op d'Lëscht wou ëmmer no enger Partie gesicht gëtt
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Server starten
@@ -2191,11 +2239,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spill nach ëmm
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spill nach ëmmer pauséiert ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spill nach ëmmer pauséiert ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spill nach pauséiert ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Spill na ëmmer pauséiert ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spill geet weider ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :Unzuel Spiller
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :Spiller verbannen
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :Spill-Script
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :warden op d'Aktualiséirung vun der Linkgrafik
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :verloossen
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} ass dem Spill bäigetrueden
@@ -2282,6 +2332,8 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jo, download d'Grafiken
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nee, verlooss OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Download mësslong...
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}OpenTTD verloossen
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Transparenzoptiounen
@@ -2325,6 +2377,7 @@ STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Weepunkt
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Separate Weepunkt bauen
 
 # Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Ausgeschalt, well et grad keng Gefierer fir dës Infrastruktur gëtt
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Schinnebau
@@ -2520,6 +2573,9 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Zoufäll
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Zoufälleg Beem planzen. Shift wiesselt tëscht bauen an ongeféier Käschten uweisen
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Zoufälleg Beem
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Beem zoufälleg iwwert d'Landschaft setzen
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Planz kleng Bëscher andems mat der Maus iwwer d'Landschaft gezu gëtt.
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planz grouss Bëscher andems mat der Maus iwwer d'Landschaft gezu gëtt.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Landerstellung
@@ -2572,10 +2628,15 @@ STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Nei Indu
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Wielt déi gewënschten Industrie op der Lëscht aus
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Vill zoufälleg Industrien
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}D'Kaart mat villen zoufällegen Industrien fëllen
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Erstell zoufälleg Industrien
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Bass du sécher, dass du vill zoufälleg Industrië baue wëlls?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Käschten: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Förderen
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Bauen
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Grënnen
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}All industrien ewechhuelen
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}All industrien ewechhuelen
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Bass du sécher, dass du all d'Industrien ewechhuele wëlls?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrieketten fir {STRING} Industrie
@@ -2596,6 +2657,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Wiel d'I
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Land Informatiounen
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}Zentréiert d'Haaptusiicht op d'Feld. Ctrl+Klick mëcht eng nei Fënster op der aktueller Positioun op
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}Käschte fir ze raumen: {LTBLUE}Keng
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}Käschte fir ze raumen: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Akommes wann ofgerappt: {LTBLUE}{CURRENCY_LONG}
@@ -2805,6 +2867,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filter-String:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Datei iwwerschreiwen
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Bass du sécher, dass du d'existéirend Datei iwwerschreiwe wëlls?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Verzeechnëss)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Een dossier zréck)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Gëff dem Spillstand en Numm
 
@@ -2816,7 +2880,15 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Unz. Dierfer:
 STR_MAPGEN_DATE                                                 :{BLACK}Datum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Unz. Industrien:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Héchste Punkt:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}Setzt d'Maximalhéicht vum héchste Punkt op der Kaart em een erop
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Schnéiundeel em zéng Prozent eropsetzen
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Schnéiundeel em zéng Prozent erofsetzen
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Wüstenundeel:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Wüstenundeel em zéng Prozent eropsetzen
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Wüstenundeel em zéng Prozent erofsetzen
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrain Typ:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Mieresspigel:
@@ -2842,6 +2914,9 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Héichte
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Gréisst:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Zil Gipfelhéicht
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Schnéibedeckung (a %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Wüstenundeel (a %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Änner d'Startjoer
 
 # SE Map generation
@@ -3131,6 +3206,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}D'Gemen
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Ziler
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Global Ziler
 STR_GOALS_SPECTATOR                                             :Global Ziler
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Weis d'global Ziler un
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Firma
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Firmenziler uweisen
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Keng -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3331,6 +3410,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Firmenha
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Bau d'Firmenhaaptgebai op eng aaner Plaz.Käschten: 1% vun dem Firmewäert. Shift+Klick weist ongeféier Käschten ouni ze réckelen
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Detailer
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Detailléiert Infrastrukturen uweisen
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Gëff d'Geld
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Gëff dëser Firma Geld
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Neit Gesiicht
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Wielt en neit Gesiicht fir de Manager
@@ -3502,6 +3583,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Ugedriww
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Embaubar zu: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :All Wuerentyp
 STR_PURCHASE_INFO_NONE                                          :Keng
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Nëmme Lokomotiven
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles ausser {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Zéikraaft: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Distanz: {GOLD}{COMMA} Felder
@@ -3708,6 +3790,9 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mécht d
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Haptusiicht op den Zuch zentréiren. Duebelklick verfollegt den Zuch an der Haptusiicht. Ctrl+Klick erstellt eng nei Usiicht vum Zuch
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Zentréiert d'Usiicht op d'Gefier. Duebelklick verfollegt d'Gefier an der Haptusiicht. Ctrl+Klick erstellt eng nei Usiicht um Gefier
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Haptusiicht op d'Schëff zentréiren. Duebelklick verfollegt d'Schëff an der Haptusiicht. Ctrl+Klick erstellt eng nei Usiicht um Schëff
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Schéckt den Zuch an de Schapp. Ctrl+Klick fir nëmmen Revisioun
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Schéckt d'Gefier an den Depot. Ctrl+Klick fir nëmmen Revisioun
@@ -3739,7 +3824,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Weist St
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Weis Schëffsdetailer
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Weist d'Fligerdetailer
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Aktuell Zuchs-Aktioun - klick fir den Zuch ze stoppen/starten
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Aktuell Schëffs-Aktioun - klick fir d'Schëff ze stoppen/starten
 
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Zentréiert d'Usiicht op d'Optragsdestinatioun.. Ctrl+Klick erstellt eng nei Usiicht op dem Optragszil
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lueden / Entlueden
@@ -3967,6 +4055,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(Ëmbau op {STR
 STR_ORDER_STOP_ORDER                                            :(Stop)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Statioun kann net benotzt ginn){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Implizit)
 
@@ -4239,6 +4328,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Et gouf 
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Riesenscreenshot
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}De Screenshot wäert eng Opléisung vun {COMMA} x {COMMA} Pixel hunn. Et kann e bëssen dauere bis en gemet ass. Wëllsde weiderman?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Héichtekaart ofgespäichert als '{STRING}'. Héchste Punkt ass {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Screenshot gespäichert als '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Screenshotfehler!
 
@@ -4292,6 +4382,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... keen
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... et ginn {CURRENCY_LONG} gebraucht
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Kann de Kredit net zeréckbezuelen...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Kann keng Suen ginn déi vun der Bank geléint sinn...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Kann dëser Firma kee Geld ginn...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Kann d'Firma net kafen...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Kann d'Firmenhaaptgebai net bauen...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Kann keng 25% Undeeler vun dëser Firma kafen...
@@ -4418,6 +4509,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Falschen Schapp
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} ass ze laang nom Auswiesselen
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Keng Autoerneierungsregel festgeluet.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(Geldlimit)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Neit Gefier kann {STRING} net alueden
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Neit Gefier kann net wéi geplangt ëmgebaut ginn {NUM}
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Onméiglech Streckenkombinatioun
@@ -4681,7 +4774,7 @@ STR_INDUSTRY_NAME_WATER_SUPPLY                                  :Waasserwierk
 STR_INDUSTRY_NAME_WATER_TOWER                                   :Waassertuerm
 STR_INDUSTRY_NAME_FACTORY_2                                     :Fabrik
 STR_INDUSTRY_NAME_FARM_2                                        :Bauerenhaff
-STR_INDUSTRY_NAME_LUMBER_MILL                                   :Seewierk
+STR_INDUSTRY_NAME_LUMBER_MILL                                   :Seemillen
 STR_INDUSTRY_NAME_COTTON_CANDY_FOREST                           :Zockerwattbësch
 STR_INDUSTRY_NAME_CANDY_FACTORY                                 :Séissegkeetenfabrik
 STR_INDUSTRY_NAME_BATTERY_FARM                                  :Batteriefarm
@@ -5004,6 +5097,7 @@ STR_FORMAT_BUOY_NAME                                            :{TOWN}-Boje
 STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} Boje #{COMMA}
 STR_FORMAT_COMPANY_NUM                                          :(Firma {COMMA})
 STR_FORMAT_GROUP_NAME                                           :Grupp {COMMA}
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :Weepunkt {TOWN}
 STR_FORMAT_WAYPOINT_NAME_SERIAL                                 :Weepunkt {TOWN} #{COMMA}
