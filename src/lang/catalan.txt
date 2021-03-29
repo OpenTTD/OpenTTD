@@ -1209,9 +1209,9 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Actitud de l'al
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Establiu com afecta al prestigi de les companyies el soroll i els danys ambientals que provoquen. Aquest prestigi influirà en la futura acceptació o denegació d'accions de construcció a la zona.
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Alçada màxima del mapa: {STRING}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Estableix l'alçada màxima del terreny del mapa. Amb «(automàtic)», s'escollirà un valor adequat després que es generi el terreny.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Estableix l'alçada màxima del terreny del mapa. Amb «Automàtica», s'escollirà un valor adequat després que es generi el terreny.
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
-STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automàtic)
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :Automàtica
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}No es pot escollir aquest límit d'alçada del mapa. Hi ha almenys una muntanya al mapa que és més alta.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permet la modificació del terreny sota edificis, rails, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permet modelar el terreny sota les vies, els edificis i altres elements sense eliminar-los.
@@ -1628,10 +1628,10 @@ STR_CONFIG_SETTING_CYCLE_SIGNAL_ALL                             :Totes
 
 STR_CONFIG_SETTING_TOWN_LAYOUT                                  :Disposició de carreteres per les noves poblacions: {STRING}
 STR_CONFIG_SETTING_TOWN_LAYOUT_HELPTEXT                         :Disposició per la xarxa de carreteres de les poblacions
-STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Original
-STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Millors carreteres
-STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :graella 2x2
-STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :graella 3x3
+STR_CONFIG_SETTING_TOWN_LAYOUT_DEFAULT                          :Distribució millorada
+STR_CONFIG_SETTING_TOWN_LAYOUT_BETTER_ROADS                     :Distribució millorada
+STR_CONFIG_SETTING_TOWN_LAYOUT_2X2_GRID                         :Graella 2x2
+STR_CONFIG_SETTING_TOWN_LAYOUT_3X3_GRID                         :Graella 3x3
 STR_CONFIG_SETTING_TOWN_LAYOUT_RANDOM                           :Aleatori
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS                             :Les poblacions poden construir carreteres: {STRING}
 STR_CONFIG_SETTING_ALLOW_TOWN_ROADS_HELPTEXT                    :Permet a les poblacions construir carreteres per créixer. Desactiveu aquesta opció per evitar que les poblacions construeixin carreteres.
@@ -2590,11 +2590,11 @@ STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbres
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Selecciona el tipus d'arbre a plantar. Si la casella ja conté un arbre, s'afegiran més arbres d'altres espècies independentment de quin estigui seleccionat
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbres de tipus aleatori
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Situar arbres de tipus aleatori. Shift commuta construeix/mostra el cost estimat
-STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Arbres Aleatoris
+STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Planta arbres
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Planta arbres aleatòriament al paisatge
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Planta un arbre a cada casella arrossegant el ratolí pel paisatge.
-STR_TREES_MODE_FOREST_SM_BUTTON                                 :Arbreda
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Arbreda
 STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}Planta petits boscos arrossegant el ratolí pel paisatge.
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Bosc
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Planta grans boscos arrossegant el ratolí pel paisatge.
@@ -2619,31 +2619,31 @@ STR_FOUND_TOWN_NEW_TOWN_BUTTON                                  :{BLACK}Poblaci�
 STR_FOUND_TOWN_NEW_TOWN_TOOLTIP                                 :{BLACK}Funda una població. Shift+Clic en mostra el cost estimat.
 STR_FOUND_TOWN_RANDOM_TOWN_BUTTON                               :{BLACK}Crea una població aleatòria
 STR_FOUND_TOWN_RANDOM_TOWN_TOOLTIP                              :{BLACK}Funda una població en un lloc aleatori
-STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Moltes poblacions aleatòries
+STR_FOUND_TOWN_MANY_RANDOM_TOWNS                                :{BLACK}Crea moltes poblacions aleatòries
 STR_FOUND_TOWN_RANDOM_TOWNS_TOOLTIP                             :{BLACK}Omple el mapa amb poblacions situades aleatòriament
 
-STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nom de la població:
+STR_FOUND_TOWN_NAME_TITLE                                       :{YELLOW}Nom de la població nova:
 STR_FOUND_TOWN_NAME_EDITOR_TITLE                                :{BLACK}Introdueix el nom de la població
 STR_FOUND_TOWN_NAME_EDITOR_HELP                                 :{BLACK}Clica per introduir el nom de la població
 STR_FOUND_TOWN_NAME_RANDOM_BUTTON                               :{BLACK}Nom aleatori
 STR_FOUND_TOWN_NAME_RANDOM_TOOLTIP                              :{BLACK}Genera un nom aleatori nou
 
 STR_FOUND_TOWN_INITIAL_SIZE_TITLE                               :{YELLOW}Mida de població:
-STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Petit
-STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Mitjà
+STR_FOUND_TOWN_INITIAL_SIZE_SMALL_BUTTON                        :{BLACK}Petita
+STR_FOUND_TOWN_INITIAL_SIZE_MEDIUM_BUTTON                       :{BLACK}Mitjana
 STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Gran
-STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Aleatori
+STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Aleatòria
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Selecciona la mida de la població
 STR_FOUND_TOWN_CITY                                             :{BLACK}Ciutat
 STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Les ciutats creixen més ràpid que els pobles{}Depenent de la configuració, són més grans quan es funden
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Disposició de les carreteres de la població:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Selecciona la disposició de les carreteres utilitzades per a aquesta població
-STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Original
-STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Millors carreteres
+STR_FOUND_TOWN_SELECT_LAYOUT_ORIGINAL                           :{BLACK}Distribució original
+STR_FOUND_TOWN_SELECT_LAYOUT_BETTER_ROADS                       :{BLACK}Distribució millorada
 STR_FOUND_TOWN_SELECT_LAYOUT_2X2_GRID                           :{BLACK}Graella 2x2
 STR_FOUND_TOWN_SELECT_LAYOUT_3X3_GRID                           :{BLACK}Graella 3x3
-STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatori
+STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Aleatòria
 
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Finança una nova indústria
@@ -3715,10 +3715,10 @@ STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Compra u
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Compra vaixells nous.
 STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Compra un nou avió
 
-STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clona Tren
-STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clona Vehicle
-STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clona Vaixell
-STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clona Avió
+STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clona un tren
+STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clona un vehicle
+STR_DEPOT_CLONE_SHIP                                            :{BLACK}Clona un vaixell
+STR_DEPOT_CLONE_AIRCRAFT                                        :{BLACK}Clona aeronau
 
 STR_DEPOT_CLONE_TRAIN_DEPOT_INFO                                :{BLACK}Això comprarà una còpia del tren inclosos tots els vagons. Clica aquest botó i després en un tren dins o fora de les cotxeres. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
 STR_DEPOT_CLONE_ROAD_VEHICLE_DEPOT_INFO                         :{BLACK}Això comprarà una còpia del vehicle. Clica aquest botó i després en un vehicle dins o fora de les cotxeres. Control+Clic compartirà les ordres. Shift+Clic mostra el cost estimat sense comprar-lo
