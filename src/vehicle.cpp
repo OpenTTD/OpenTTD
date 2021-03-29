@@ -1198,7 +1198,11 @@ void CallVehicleTicks()
 		/* Start vehicle if we stopped them in VehicleEnteredDepotThisTick()
 		 * We need to stop them between VehicleEnteredDepotThisTick() and here or we risk that
 		 * they are already leaving the depot again before being replaced. */
-		if (it.second) v->vehstatus &= ~VS_STOPPED;
+		if (it.second) {
+			v->vehstatus &= ~VS_STOPPED;
+		} else if (IsExtendedDepotTile(v->tile)){
+			UpdateExtendedDepotReservation(v, true);
+		}
 
 		/* Store the position of the effect as the vehicle pointer will become invalid later */
 		int x = v->x_pos;
