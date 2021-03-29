@@ -504,6 +504,8 @@ add_files(
     train.h
     train_cmd.cpp
     train_cmd.h
+    train_placement.cpp
+    train_placement.h
     train_gui.cpp
     transparency.h
     transparency_gui.cpp
