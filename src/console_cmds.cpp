@@ -11,6 +11,7 @@
 #include "console_internal.h"
 #include "debug.h"
 #include "engine_func.h"
+#include "ini_type.h"
 #include "landscape.h"
 #include "saveload/saveload.h"
 #include "network/network.h"
@@ -484,7 +485,7 @@ static bool ConKickOrBan(const char *argv, bool ban, const char *reason)
 		 * would be reading from and writing to after returning. So we would read or write data
 		 * from freed memory up till the segfault triggers. */
 		if (client_id == CLIENT_ID_SERVER || client_id == _redirect_console_to_client) {
-			IConsolePrintF(CC_ERROR, "ERROR: Silly boy, you can not %s yourself!", ban ? "ban" : "kick");
+			IConsolePrintF(CC_ERROR, "ERROR: You cannot %s yourself.", ban ? "ban" : "kick");
 			return true;
 		}
 
@@ -612,6 +613,115 @@ DEF_CONSOLE_CMD(ConBanList)
 	}
 
 	return true;
+}
+
+/**
+* Loads the ban list from the specified path.
+* @param path The path to load the ban list from.
+* @return The number of entries loaded from the file or -1 if an error occurred while loading entries.
+*/
+static int LoadBanList(const std::string& path)
+{
+	const char* const group_names[] = {
+		"bans",
+		nullptr
+	};
+
+	IniFile ini { group_names };
+	ini.LoadFromDisk(path, NO_DIRECTORY);
+	const IniGroup *ban_group = ini.GetGroup("bans", false);
+
+	if (ban_group == nullptr) return -1;
+
+	int loaded_count = 0;
+	for (const IniItem *item = ban_group->item; item != nullptr; item = item->next) {
+		// banned clients are added to global ban list when kicked or banned
+		NetworkServerKickOrBanIP(item->name.c_str(), true, nullptr);
+		loaded_count++;
+	}
+	return loaded_count;
+}
+
+/**
+* Loads a ban list from a user-specified file. The entries in the list are added to the current collection of banned entries.
+* @see ConBanList
+*/
+DEF_CONSOLE_CMD(ConBanListLoad)
+{
+	if (argc == 0) {
+		IConsoleHelp("Loads the IP's of banned clients from a file: Usage 'banlist_load <path_to_file>'");
+		return true;
+	}
+
+	if (argc != 2) {
+		return false;
+	}
+
+	const char * const path = argv[1];
+	IConsolePrintF(CC_INFO, "Loading banlist from '%s'...", path);
+	int loaded_entries_count = LoadBanList(path);
+	if (loaded_entries_count == -1) {
+		IConsolePrint(CC_WARNING, "File does not exist or [bans] section is unspecified.");
+		return false;
+	}
+
+	IConsolePrintF(CC_INFO, "Loaded %d entries.", loaded_entries_count);
+	return true;
+}
+
+/**
+* Saves the specified ban list to the specified path.
+* @param path The path to save the ban list to.
+* @param ban_list The ban list to save.
+* @return The number of entries saved to the file or -1 if an error occurred while saving entries.
+*/
+static int SaveBanList(const std::string &path, const StringList &ban_list)
+{
+	const char * const group_names[] = {
+		"bans",
+		nullptr
+	};
+
+	IniFile ini { group_names };
+	IniGroup *ban_group = ini.GetGroup("bans", true);
+
+	int item_count = 0;
+	for (const std::string &name : ban_list) {
+		ban_group->GetItem(name, true);
+		item_count++;
+	}
+
+	if (ini.SaveToDisk(path)) {
+		return item_count;
+	} else {
+		return -1;
+	}
+}
+
+/**
+* Saves the current ban list to a user-specified file.
+* @see ConBanList
+*/
+DEF_CONSOLE_CMD(ConBanListSave)
+{
+	if (argc == 0) {
+		IConsoleHelp("Saves the banned list of clients to a file: Usage 'banlist_save <path_to_file>'");
+		return true;
+	}
+	if (argc != 2) {
+		return false;
+	}
+
+	const char *path = argv[1];
+	IConsolePrintF(CC_INFO, "Saving banlist to '%s'...", path);
+	const int saved_entries_count = SaveBanList(path, _network_ban_list);
+	if (saved_entries_count >= 0) {
+		IConsolePrintF(CC_INFO, "Saved %d entries.", saved_entries_count);
+		return true;
+	} else {
+		IConsolePrint(CC_WARNING, "Cound not save banlist.");
+		return false;
+	}
 }
 
 DEF_CONSOLE_CMD(ConPauseGame)
@@ -2412,6 +2522,8 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("ban",             ConBan, ConHookServerOnly);
 	IConsoleCmdRegister("unban",           ConUnBan, ConHookServerOnly);
 	IConsoleCmdRegister("banlist",         ConBanList, ConHookServerOnly);
+	IConsoleCmdRegister("banlist_load",    ConBanListLoad, ConHookServerOnly);
+	IConsoleCmdRegister("banlist_save",    ConBanListSave, ConHookServerOnly);
 
 	IConsoleCmdRegister("pause",           ConPauseGame, ConHookServerOnly);
 	IConsoleCmdRegister("unpause",         ConUnpauseGame, ConHookServerOnly);
