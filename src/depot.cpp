@@ -200,6 +200,7 @@ void Depot::AfterAddRemove(TileArea ta, bool adding)
 		this->RescanDepotTiles();
 		assert(!this->depot_tiles.empty());
 		this->xy = this->depot_tiles[0];
+		InvalidateWindowData(WC_VEHICLE_DEPOT, this->index);
 	} else {
 		assert(this->IsInUse());
 		this->Disuse();
