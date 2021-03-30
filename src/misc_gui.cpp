@@ -477,6 +477,7 @@ static const char * const _credits[] = {
 	u8"  Mike Ragsdale - OpenTTD installer",
 	u8"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
 	u8"  Richard Kempton (richK) - additional airports, initial TGP implementation",
+	u8"  Chrnan6710 - title game",
 	u8"",
 	u8"  Alberto Demichelis - Squirrel scripting language \u00a9 2003-2008",
 	u8"  L. Peter Deutsch - MD5 implementation \u00a9 1999, 2000, 2002",
