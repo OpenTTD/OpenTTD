@@ -3585,9 +3585,9 @@ STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Compra de vehic
 
 ############ range for vehicle availability starts
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :Compra de vehicles sobre vies
-STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Automòbils nous
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :Compra automòbils
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :Compra de vaixells
-STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Compra de noves aeronaus
+STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :Compra d'aeronaus
 ############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} Pes: {GOLD}{WEIGHT_SHORT}
@@ -3708,12 +3708,12 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TOOLTIP                          :{BLACK}Autosubs
 STR_DEPOT_TRAIN_NEW_VEHICLES_BUTTON                             :{BLACK}Compra vehicles
 STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_BUTTON                      :{BLACK}Compra vehicles
 STR_DEPOT_SHIP_NEW_VEHICLES_BUTTON                              :{BLACK}Compra vaixells
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Nou Avió
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_BUTTON                          :{BLACK}Compra avions
 
 STR_DEPOT_TRAIN_NEW_VEHICLES_TOOLTIP                            :{BLACK}Compra vehicles ferroviaris.
-STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Compra un nou automòbil
+STR_DEPOT_ROAD_VEHICLE_NEW_VEHICLES_TOOLTIP                     :{BLACK}Compra automòbils nous.
 STR_DEPOT_SHIP_NEW_VEHICLES_TOOLTIP                             :{BLACK}Compra vaixells nous.
-STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Compra un nou avió
+STR_DEPOT_AIRCRAFT_NEW_VEHICLES_TOOLTIP                         :{BLACK}Compra avions nous.
 
 STR_DEPOT_CLONE_TRAIN                                           :{BLACK}Clona un tren
 STR_DEPOT_CLONE_ROAD_VEHICLE                                    :{BLACK}Clona un vehicle

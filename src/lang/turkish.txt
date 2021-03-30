@@ -937,6 +937,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Yeni Tayvan Dol
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Çin Yuanı (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hong Kong Doları (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Hindistan Rupisi (INR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malezya Ringgiti (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Soldan trafik
@@ -989,6 +990,7 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Tam ekra
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekran Çözünürlüğü
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kullanılacak ekran çözünürlüğünü seçin
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Arayüz boyutu
@@ -1440,6 +1442,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Yapı araçlar�
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Köprü, tünel vb. için kullanılan inşa araçlarını kullanımdan sonra da açık tut
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Şirket mali tablosunda grup harcamaları: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Şirket harcamaları penceresinin nasıl düzenleneceğini belirle
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Limit yok (bilgisayarın izin verdiği maksimum hızda )
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Kayan haber bandı: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Özet haber mesajları için ses çal
@@ -3130,6 +3133,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Yakalan
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Hedefler
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Evrensel Amaçlar
 STR_GOALS_SPECTATOR                                             :Evrensel Amaçlar
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Evrensel amaçları göster
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Hiçbiri -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -4210,6 +4214,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Oyun yeni bir s
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Dosya okunabilir değil
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Dosya yazılabilir değil
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Veri sağlamlık kontrolü başarısız
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :Oyunun kaydı değiştirilmiş bir versiyonda yapılmış
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<uygun değil>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır
 
