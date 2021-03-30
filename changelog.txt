@@ -1,3 +1,22 @@
+1.11.0 (2021-04-01)
+------------------------------------------------------------------------
+Feature: Allow setting a custom terrain type to define highest peak (#8891)
+Feature: Auto-detect map height limit based on generated map (#8891)
+Feature: Setting to indicate desert coverage for tropic climate and snow coverage for arctic climate (replaces snow line height) (#8891)
+Add: Allow setting the highest mountain for heightmaps (#8891)
+Change: Scale exported heightmaps to highest peak and inform the user of this value (#8891)
+Change: Remove "maximum map height" from the New Game GUI (#8891)
+Fix #8803: Only auto-remove signals when rail can be built (#8904)
+Fix #8565: Stopped road vehicle displays a speed different than 0 (#8901)
+Fix #8886: Don't try to resolve folders within tars named '.' (#8893)
+Fix: Placing random trees in SE crashes the game (#8892)
+Fix #8875: Filter string in station window breaks flow in user interface (#8885)
+Fix #8871: [OpenGL] Initialize all buffers after resize and clear back buffer (#8877)
+Fix: OpenGL performance with some AMD GPUs (#8876)
+Fix: Recompute road/railtype availability after disabling the engine (#8872)
+Fix: OSK layout not scaled for 2x or 4x GUI scale (#8868)
+
+
 1.11.0-RC1 (2021-03-14)
 ------------------------------------------------------------------------
 Feature: Option to (dis-)allow hardware accelerated video drivers (#8819)
