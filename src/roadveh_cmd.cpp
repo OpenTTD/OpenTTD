@@ -1571,7 +1571,10 @@ static bool RoadVehController(RoadVehicle *v)
 
 	/* road vehicle has broken down? */
 	if (v->HandleBreakdown()) return true;
-	if (v->vehstatus & VS_STOPPED) return true;
+	if (v->vehstatus & VS_STOPPED) {
+		v->SetLastSpeed();
+		return true;
+	}
 
 	ProcessOrders(v);
 	v->HandleLoading();
