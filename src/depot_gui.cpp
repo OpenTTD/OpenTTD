@@ -34,6 +34,7 @@
 #include "vehicle_cmd.h"
 #include "core/geometry_func.hpp"
 #include "depot_func.h"
+#include "train_placement.h"
 
 #include "widgets/depot_widget.h"
 
@@ -262,6 +263,7 @@ struct DepotWindow : Window {
 	VehicleType type;
 	bool generate_list;
 	WidgetID hovered_widget; ///< Index of the widget being hovered during drag/drop. -1 if no drag is in progress.
+	std::vector<bool> problematic_vehicles;  ///< Vector associated to vehicle_list, with a value of true for vehicles that cannot leave the depot.
 	VehicleList vehicle_list;
 	VehicleList wagon_list;
 	uint unitnumber_digits;
@@ -411,6 +413,11 @@ struct DepotWindow : Window {
 		for (; num < maxval; ir = ir.Translate(0, this->resize.step_height)) { // Draw the rows
 			Rect cell = ir; /* Keep track of horizontal cells */
 			for (uint i = 0; i < this->num_columns && num < maxval; i++, num++) {
+				/* Draw a dark red background if train cannot be placed. */
+				if (this->type == VEH_TRAIN && this->problematic_vehicles[num] == 1) {
+					GfxFillRect(cell.left, cell.top, cell.right, cell.bottom, PC_DARK_GREY);
+				}
+
 				/* Draw all vehicles in the current row */
 				const Vehicle *v = this->vehicle_list[num];
 				this->DrawVehicleInDepot(v, cell);
@@ -723,6 +730,14 @@ struct DepotWindow : Window {
 			BuildDepotVehicleList(this->type, this->window_number, &this->vehicle_list, &this->wagon_list);
 			this->generate_list = false;
 			DepotSortList(&this->vehicle_list);
+			if (this->type == VEH_TRAIN) {
+				this->problematic_vehicles.clear();
+				TrainPlacement tp;
+				for (uint num = 0; num < this->vehicle_list.size(); ++num) {
+					const Vehicle *v = this->vehicle_list[num];
+					this->problematic_vehicles.push_back(!tp.CanFindAppropriatePlatform(Train::From(v), false));
+				}
+			}
 
 			uint new_unitnumber_digits = GetUnitNumberDigits(this->vehicle_list);
 			/* Only increase the size; do not decrease to prevent constant changes */
