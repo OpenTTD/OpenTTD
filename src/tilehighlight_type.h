@@ -55,11 +55,12 @@ struct TileHighlightData {
 	Point new_pos;       ///< New value for \a pos; used to determine whether to redraw the selection.
 	Point new_size;      ///< New value for \a size; used to determine whether to redraw the selection.
 	Point new_outersize; ///< New value for \a outersize; used to determine whether to redraw the selection.
-	uint8_t dirty;          ///< Whether the build station window needs to redraw due to the changed selection.
+	uint8_t dirty;       ///< Whether the build station window needs to redraw due to the changed selection.
 
 	Point selstart;      ///< The location where the dragging started.
 	Point selend;        ///< The location where the drag currently ends.
-	uint8_t sizelimit;      ///< Whether the selection is limited in length, and what the maximum length is.
+	uint8_t sizelimit;   ///< Whether the selection is limited in length, and what the maximum length is.
+	uint8_t fixed_size;  ///< The fixed length for one of the sides.
 
 	HighLightStyle drawstyle;      ///< Lower bits 0-3 are reserved for detailed highlight information.
 	HighLightStyle next_drawstyle; ///< Queued, but not yet drawn style.
