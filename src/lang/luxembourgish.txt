@@ -1857,7 +1857,7 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Check op
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Weis KI an Spill-Script-Astellungen
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Aus 'OpenTTD' eraus goen
 
-STR_INTRO_BASESET                                               :{BLACK}Dem grad ausgewielte Basis Grafikset fehlen {NUM} Srite{P "" s}. W.e.g. no Updates fir dëse Set sichen.
+STR_INTRO_BASESET                                               :{BLACK}Dem grad ausgewielte Basis Grafikset fehlen {NUM} Sprite{P "" s}. W.e.g. no Updates fir dëse Set sichen.
 STR_INTRO_TRANSLATION                                           :{BLACK}Dës Iwwersetzung huet {NUM} String{P "" s}. Hëllef OpenTTD besser ze man andems du dech als Iwwersetzer mells! Lies readme.txt fir d'Detailer.
 
 # Quit window
