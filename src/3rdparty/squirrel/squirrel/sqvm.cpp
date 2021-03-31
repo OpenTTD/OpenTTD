@@ -1471,8 +1471,8 @@ bool SQVM::DeleteSlot(const SQObjectPtr &self,const SQObjectPtr &key,SQObjectPtr
 
 bool SQVM::Call(SQObjectPtr &closure,SQInteger nparams,SQInteger stackbase,SQObjectPtr &outres,SQBool raiseerror,SQBool can_suspend)
 {
-#ifdef _DEBUG
-SQInteger prevstackbase = _stackbase;
+#ifndef NDEBUG
+	SQInteger prevstackbase = _stackbase;
 #endif
 	switch(type(closure)) {
 	case OT_CLOSURE: {
@@ -1504,7 +1504,7 @@ SQInteger prevstackbase = _stackbase;
 	default:
 		return false;
 	}
-#ifdef _DEBUG
+#ifndef NDEBUG
 	if(!_suspended) {
 		assert(_stackbase == prevstackbase);
 	}

@@ -252,7 +252,9 @@ SQInteger SQSharedState::CollectGarbage(SQVM *vm)
 	SQVM *vms = _thread(_root_vm);
 
 	vms->Mark(&tchain);
+#ifndef NDEBUG
 	SQInteger x = _table(_thread(_root_vm)->_roottable)->CountUsed();
+#endif
 	_refs_table.Mark(&tchain);
 	MarkObject(_registry,&tchain);
 	MarkObject(_consts,&tchain);
@@ -289,8 +291,10 @@ SQInteger SQSharedState::CollectGarbage(SQVM *vm)
 		t = t->_next;
 	}
 	_gc_chain = tchain;
+#ifndef NDEBUG
 	SQInteger z = _table(_thread(_root_vm)->_roottable)->CountUsed();
 	assert(z == x);
+#endif
 	return n;
 }
 #endif
