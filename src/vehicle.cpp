@@ -953,7 +953,10 @@ void CallVehicleTicks()
 	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
 
 	for (Vehicle *v : Vehicle::Iterate()) {
+#ifndef NDEBUG
 		size_t vehicle_index = v->index;
+#endif
+
 		/* Vehicle could be deleted in this tick */
 		if (!v->Tick()) {
 			assert(Vehicle::Get(vehicle_index) == nullptr);

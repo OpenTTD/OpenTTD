@@ -221,8 +221,9 @@ DriverFactoryBase::DriverFactoryBase(Driver::Type type, int priority, const char
 	strecpy(buf, GetDriverTypeName(type), lastof(buf));
 	strecpy(buf + 5, name, lastof(buf));
 
-	std::pair<Drivers::iterator, bool> P = GetDrivers().insert(Drivers::value_type(buf, this));
-	assert(P.second);
+	Drivers &drivers = GetDrivers();
+	assert(drivers.find(buf) == drivers.end());
+	drivers.insert(Drivers::value_type(buf, this));
 }
 
 /**

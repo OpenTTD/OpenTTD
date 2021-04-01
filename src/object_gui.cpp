@@ -194,8 +194,7 @@ public:
 		} else {
 			this->SelectFirstAvailableObject(true);
 		}
-		ObjectClass *objclass = ObjectClass::Get(_selected_object_class);
-		assert(objclass->GetUISpecCount() > 0); // object GUI should be disabled elsewise
+		assert(ObjectClass::Get(_selected_object_class)->GetUISpecCount() > 0); // object GUI should be disabled elsewise
 	}
 
 	void SetStringParameters(int widget) const override
