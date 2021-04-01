@@ -379,6 +379,8 @@ jobs:
           bundle_name: "groovy"
         - container_image: "debian:buster"
           bundle_name: "buster"
+        - container_image: "debian:bullseye"
+          bundle_name: "bullseye"
 
     runs-on: ubuntu-20.04
     container:
