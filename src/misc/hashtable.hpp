@@ -240,6 +240,7 @@ public:
 	void Pop(Titem_ &item)
 	{
 		bool ret = TryPop(item);
+		(void)ret; // assert only
 		assert(ret);
 	}
 

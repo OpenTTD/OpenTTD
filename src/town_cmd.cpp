@@ -107,10 +107,12 @@ Town::~Town()
 	DeleteWindowById(WC_TOWN_VIEW, this->index);
 
 	/* Check no industry is related to us. */
+#ifndef NDEBUG
 	for (const Industry *i : Industry::Iterate()) assert(i->town != this);
 
 	/* ... and no object is related to us. */
 	for (const Object *o : Object::Iterate()) assert(o->town != this);
+#endif
 
 	/* Check no tile is related to us. */
 	for (TileIndex tile = 0; tile < MapSize(); ++tile) {
@@ -2176,6 +2178,7 @@ static Town *CreateRandomTown(uint attempts, uint32 townnameparts, TownSize size
 
 		Backup<CompanyID> cur_company(_current_company, OWNER_TOWN, FILE_LINE);
 		CommandCost rc = DoCommand(t->xy, t->index, 0, DC_EXEC, CMD_DELETE_TOWN);
+		(void)rc; // assert only
 		cur_company.Restore();
 		assert(rc.Succeeded());
 
@@ -2277,7 +2280,7 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
 static inline void ClearMakeHouseTile(TileIndex tile, Town *t, byte counter, byte stage, HouseID type, byte random_bits)
 {
 	CommandCost cc = DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
-
+	(void)cc; // assert only
 	assert(cc.Succeeded());
 
 	IncreaseBuildingCount(t, type);
