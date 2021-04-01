@@ -600,7 +600,7 @@ static char *MakeCzechTownName(char *buf, const char *last, uint32 seed)
 		return strecpy(buf, _name_czech_real[SeedModChance(4, lengthof(_name_czech_real), seed)], last);
 	}
 
-#ifndef NDEBUG
+#ifdef WITH_ASSERT
 	const char *orig = buf;
 #endif
 

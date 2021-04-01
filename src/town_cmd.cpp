@@ -107,7 +107,7 @@ Town::~Town()
 	DeleteWindowById(WC_TOWN_VIEW, this->index);
 
 	/* Check no industry is related to us. */
-#ifndef NDEBUG
+#ifdef WITH_ASSERT
 	for (const Industry *i : Industry::Iterate()) assert(i->town != this);
 
 	/* ... and no object is related to us. */

@@ -658,7 +658,7 @@ static void HeightMapCurves(uint level)
 			for (uint t = 0; t < lengthof(curve_maps); t++) {
 				if (!HasBit(corner_bits, t)) continue;
 
-#ifndef NDEBUG
+#ifdef WITH_ASSERT
 				bool found = false;
 #endif
 				const control_point_t *cm = curve_maps[t].list;
@@ -668,7 +668,7 @@ static void HeightMapCurves(uint level)
 
 					if (*h >= p1.x && *h < p2.x) {
 						ht[t] = p1.y + (*h - p1.x) * (p2.y - p1.y) / (p2.x - p1.x);
-#ifndef NDEBUG
+#ifdef WITH_ASSERT
 						found = true;
 #endif
 						break;
