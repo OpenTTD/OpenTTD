@@ -96,7 +96,7 @@ jobs:
         TZ='UTC' date +"%Y-%m-%d %H:%M UTC" > .release_date
         cat .ottdrev | cut -f 1 -d$'\t' > .version
 
-        if [ $(cat .ottdrev | cut -f 6 -d$'\t') = '1' ]; then
+        if [ $(cat .ottdrev | cut -f 5 -d$'\t') = '1' ]; then
           # Assume that all tags are always releases. Why else make a tag?
           IS_TAG="true"
 
