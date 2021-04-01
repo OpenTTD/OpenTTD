@@ -953,7 +953,7 @@ void CallVehicleTicks()
 	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
 
 	for (Vehicle *v : Vehicle::Iterate()) {
-#ifndef NDEBUG
+#ifdef WITH_ASSERT
 		size_t vehicle_index = v->index;
 #endif
 
