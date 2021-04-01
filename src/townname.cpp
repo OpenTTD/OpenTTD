@@ -600,7 +600,9 @@ static char *MakeCzechTownName(char *buf, const char *last, uint32 seed)
 		return strecpy(buf, _name_czech_real[SeedModChance(4, lengthof(_name_czech_real), seed)], last);
 	}
 
+#ifndef NDEBUG
 	const char *orig = buf;
+#endif
 
 	/* Probability of prefixes/suffixes
 	 * 0..11 prefix, 12..13 prefix+suffix, 14..17 suffix, 18..31 nothing */

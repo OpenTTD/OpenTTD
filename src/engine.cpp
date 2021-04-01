@@ -549,6 +549,7 @@ void SetupEngines()
 		 * in any case, and we just cleaned the pool. */
 		assert(Engine::CanAllocateItem());
 		const Engine *e = new Engine(eid.type, eid.internal_id);
+		(void)e; // assert only
 		assert(e->index == index);
 		index++;
 	}
@@ -1003,8 +1004,7 @@ static void NewVehicleAvailable(Engine *e)
 
 	if (e->type == VEH_TRAIN) {
 		/* maybe make another rail type available */
-		RailType railtype = e->u.rail.railtype;
-		assert(railtype < RAILTYPE_END);
+		assert(e->u.rail.railtype < RAILTYPE_END);
 		for (Company *c : Company::Iterate()) c->avail_railtypes = AddDateIntroducedRailTypes(c->avail_railtypes | GetRailTypeInfo(e->u.rail.railtype)->introduces_railtypes, _date);
 	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
