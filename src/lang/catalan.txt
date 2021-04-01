@@ -2436,7 +2436,7 @@ STR_STATION_BUILD_NUMBER_OF_TRACKS                              :{BLACK}Nombre d
 STR_STATION_BUILD_NUMBER_OF_TRACKS_TOOLTIP                      :{BLACK}Selecciona el nombre d'andanes de l'estació de tren
 STR_STATION_BUILD_PLATFORM_LENGTH                               :{BLACK}Mida de les andanes
 STR_STATION_BUILD_PLATFORM_LENGTH_TOOLTIP                       :{BLACK}Selecciona la mida de les andanes de l'estació de tren
-STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrossega i Deixa
+STR_STATION_BUILD_DRAG_DROP                                     :{BLACK}Arrossega i deixa
 STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construeix una estació arrossegant i deixant
 
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Selecciona un tipus de estació a mostrar
@@ -3554,7 +3554,7 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :Avions desagrup
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grups - Clica en un grup per llistar tots els vehicles d'aquest grup. Arrossega i solta per a canviar-ne la jerarquia.
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}Grups - Clica en un grup per llistar tots els vehicles d'aquest grup. Arrossega i deixa per a canviar-ne la jerarquia.
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clica per crear un grup
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Elimina el grup seleccionat
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Canvia el nom del grup seleccionat
