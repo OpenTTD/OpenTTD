@@ -82,7 +82,7 @@ struct Pool : PoolBase {
 	/* Ensure Tmax_size is within the bounds of Tindex. */
 	static_assert((uint64)(Tmax_size - 1) >> 8 * sizeof(Tindex) == 0);
 
-	static const size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
+	static constexpr size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
 
 	const char * const name; ///< Name of this pool
 
