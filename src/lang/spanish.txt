@@ -1087,11 +1087,11 @@ STR_NUM_CUSTOM                                                  :Personalizado
 STR_NUM_CUSTOM_NUMBER                                           :Personalizado ({NUM})
 
 STR_VARIETY_NONE                                                :Ninguna
-STR_VARIETY_VERY_LOW                                            :Muy baja
+STR_VARIETY_VERY_LOW                                            :Muy Baja
 STR_VARIETY_LOW                                                 :Baja
 STR_VARIETY_MEDIUM                                              :Media
 STR_VARIETY_HIGH                                                :Alta
-STR_VARIETY_VERY_HIGH                                           :Muy alta
+STR_VARIETY_VERY_HIGH                                           :Muy Alta
 
 STR_AI_SPEED_VERY_SLOW                                          :Muy lenta
 STR_AI_SPEED_SLOW                                               :Lenta
@@ -1099,7 +1099,7 @@ STR_AI_SPEED_MEDIUM                                             :Media
 STR_AI_SPEED_FAST                                               :Rápida
 STR_AI_SPEED_VERY_FAST                                          :Muy rápida
 
-STR_SEA_LEVEL_VERY_LOW                                          :Muy bajo
+STR_SEA_LEVEL_VERY_LOW                                          :Muy Bajo
 STR_SEA_LEVEL_LOW                                               :Bajo
 STR_SEA_LEVEL_MEDIUM                                            :Medio
 STR_SEA_LEVEL_HIGH                                              :Alto
