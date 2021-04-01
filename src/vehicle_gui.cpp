@@ -1762,9 +1762,6 @@ public:
 
 	void OnPaint() override
 	{
-		this->BuildVehicleList();
-		this->SortVehicleList();
-
 		if (this->vehicles.size() == 0 && this->IsWidgetLowered(WID_VL_MANAGE_VEHICLES_DROPDOWN)) {
 			HideDropDownMenu(this);
 		}
@@ -1913,6 +1910,14 @@ public:
 	 */
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
+		this->BuildVehicleList();
+		this->SortVehicleList();
+
+		if (this->vli.type == VL_SHARED_ORDERS && this->vehicles.size() == 0) {
+			delete this;
+			return;
+		}
+
 		if (!gui_scope && HasBit(data, 31) && this->vli.type == VL_SHARED_ORDERS) {
 			/* Needs to be done in command-scope, so everything stays valid */
 			this->vli.index = GB(data, 0, 20);
