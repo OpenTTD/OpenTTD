@@ -229,7 +229,9 @@ static void ResizeSpriteOut(SpriteLoader::Sprite *sprite, ZoomLevel zoom)
 
 	SpriteLoader::CommonPixel *dst = sprite[zoom].data;
 	const SpriteLoader::CommonPixel *src = sprite[zoom - 1].data;
+#ifndef NDEBUG
 	const SpriteLoader::CommonPixel *src_end = src + sprite[zoom - 1].height * sprite[zoom - 1].width;
+#endif
 
 	for (uint y = 0; y < sprite[zoom].height; y++) {
 		const SpriteLoader::CommonPixel *src_ln = src + sprite[zoom - 1].width;

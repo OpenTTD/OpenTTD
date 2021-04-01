@@ -597,6 +597,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 					/* Sell wagon */
 					CommandCost ret = DoCommand(0, wagon->index, 0, DC_EXEC, GetCmdSellVeh(wagon));
+					(void)ret; // assert only
 					assert(ret.Succeeded());
 					new_vehs[i] = nullptr;
 
@@ -652,6 +653,7 @@ static CommandCost ReplaceChain(Vehicle **chain, DoCommandFlag flags, bool wagon
 
 				for (int i = num_units - 1; i > 0; i--) {
 					CommandCost ret = CmdMoveVehicle(old_vehs[i], old_head, DC_EXEC | DC_AUTOREPLACE, false);
+					(void)ret; // assert only
 					assert(ret.Succeeded());
 				}
 			}
