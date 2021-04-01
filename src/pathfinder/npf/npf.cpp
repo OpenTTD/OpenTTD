@@ -1000,9 +1000,6 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
  */
 static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start_tile1, AyStarNode *start2, bool ignore_start_tile2, NPFFindStationOrTileData *target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, AyStarUserData *user, uint reverse_penalty, bool ignore_reserved = false, int max_penalty = 0)
 {
-	int r;
-	NPFFoundTargetData result;
-
 	/* Initialize procs */
 	_npf_aystar.max_path_cost = max_penalty;
 	_npf_aystar.CalculateH = heuristic_proc;
@@ -1032,6 +1029,7 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	}
 
 	/* Initialize result */
+	NPFFoundTargetData result;
 	result.best_bird_dist = UINT_MAX;
 	result.best_path_dist = UINT_MAX;
 	result.best_trackdir  = INVALID_TRACKDIR;
@@ -1046,7 +1044,8 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	_npf_aystar.user_data = user;
 
 	/* GO! */
-	r = _npf_aystar.Main();
+	int r = _npf_aystar.Main();
+	(void)r; // assert only
 	assert(r != AYSTAR_STILL_BUSY);
 
 	if (result.best_bird_dist != 0) {
