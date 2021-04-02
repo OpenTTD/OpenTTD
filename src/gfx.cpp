@@ -899,7 +899,7 @@ ptrdiff_t GetCharAtPosition(std::string_view str, int x, FontSize start_fontsize
 	if (x < 0) return -1;
 
 	Layouter layout(str, INT32_MAX, TC_FROMSTRING, start_fontsize);
-	return layout.GetCharAtPosition(x);
+	return layout.GetCharAtPosition(x, 0);
 }
 
 /**

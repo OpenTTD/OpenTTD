@@ -270,11 +270,14 @@ Point Layouter::GetCharPosition(std::string_view::const_iterator ch) const
 /**
  * Get the character that is at a pixel position in the first line of the layouted text.
  * @param x Position in the string.
+ * @param line_index Which line of the layout to search
  * @return String offset of the position (bytes) or -1 if no character is at the position.
  */
-ptrdiff_t Layouter::GetCharAtPosition(int x) const
+ptrdiff_t Layouter::GetCharAtPosition(int x, size_t line_index) const
 {
-	const auto &line = this->front();
+	if (line_index >= this->size()) return -1;
+
+	const auto &line = this->at(line_index);
 
 	for (int run_index = 0; run_index < line->CountRuns(); run_index++) {
 		const ParagraphLayouter::VisualRun &run = line->GetVisualRun(run_index);

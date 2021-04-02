@@ -177,7 +177,7 @@ public:
 	Layouter(std::string_view str, int maxw = INT32_MAX, TextColour colour = TC_FROMSTRING, FontSize fontsize = FS_NORMAL);
 	Dimension GetBounds();
 	Point GetCharPosition(std::string_view::const_iterator ch) const;
-	ptrdiff_t GetCharAtPosition(int x) const;
+	ptrdiff_t GetCharAtPosition(int x, size_t line_index) const;
 
 	static void ResetFontCache(FontSize size);
 	static void ResetLineCache();
