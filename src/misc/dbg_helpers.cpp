@@ -10,7 +10,6 @@
 #include "../stdafx.h"
 #include "../rail_map.h"
 #include "dbg_helpers.h"
-#include "blob.hpp"
 
 #include <sstream>
 #include <iomanip>
@@ -169,6 +168,3 @@ void DumpTarget::EndStruct()
 	/* remove current struct name from the stack */
 	m_cur_struct.pop();
 }
-
-/** Just to silence an unsilencable GCC 4.4+ warning */
-/* static */ ByteBlob::BlobHeader ByteBlob::hdrEmpty[] = {{0, 0}, {0, 0}};
