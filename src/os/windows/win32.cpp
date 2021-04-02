@@ -578,7 +578,7 @@ std::string FS2OTTD(const std::wstring &name)
  * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return converted string; if failed string is of zero-length
  */
-std::wstring OTTD2FS(const std::string &name, bool console_cp)
+std::wstring OTTD2FS(const std::string &name)
 {
 	int name_len = (name.length() >= INT_MAX) ? INT_MAX : (int)name.length();
 	int len = MultiByteToWideChar(CP_UTF8, 0, name.c_str(), name_len, nullptr, 0);
@@ -618,7 +618,7 @@ char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
  * @param console_cp convert to the console encoding instead of the normal system encoding.
  * @return pointer to system_buf. If conversion fails the string is of zero-length
  */
-wchar_t *convert_to_fs(const char *name, wchar_t *system_buf, size_t buflen, bool console_cp)
+wchar_t *convert_to_fs(const char *name, wchar_t *system_buf, size_t buflen)
 {
 	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, system_buf, (int)buflen);
 	if (len == 0) system_buf[0] = '\0';

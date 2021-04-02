@@ -606,12 +606,12 @@ void LoadWin32Font(FontSize fs)
 
 		/* See if this is an absolute path. */
 		if (FileExists(settings->font)) {
-			convert_to_fs(settings->font, fontPath, lengthof(fontPath), false);
+			convert_to_fs(settings->font, fontPath, lengthof(fontPath));
 		} else {
 			/* Scan the search-paths to see if it can be found. */
 			std::string full_font = FioFindFullPath(BASE_DIR, settings->font);
 			if (!full_font.empty()) {
-				convert_to_fs(full_font.c_str(), fontPath, lengthof(fontPath), false);
+				convert_to_fs(full_font.c_str(), fontPath, lengthof(fontPath));
 			}
 		}
 
@@ -649,7 +649,7 @@ void LoadWin32Font(FontSize fs)
 
 	if (logfont.lfFaceName[0] == 0) {
 		logfont.lfWeight = strcasestr(settings->font, " bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
-		convert_to_fs(settings->font, logfont.lfFaceName, lengthof(logfont.lfFaceName), false);
+		convert_to_fs(settings->font, logfont.lfFaceName, lengthof(logfont.lfFaceName));
 	}
 
 	HFONT font = CreateFontIndirect(&logfont);

@@ -263,7 +263,7 @@
 #		define unlink(file) _wunlink(OTTD2FS(file).c_str())
 
 		std::string FS2OTTD(const std::wstring &name);
-		std::wstring OTTD2FS(const std::string &name, bool console_cp = false);
+		std::wstring OTTD2FS(const std::string &name);
 #	elif defined(WITH_ICONV)
 #		define fopen(file, mode) fopen(OTTD2FS(file).c_str(), mode)
 		std::string FS2OTTD(const std::string &name);
