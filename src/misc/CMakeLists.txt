@@ -1,7 +1,6 @@
 add_files(
     array.hpp
     binaryheap.hpp
-    blob.hpp
     countedobj.cpp
     countedptr.hpp
     dbg_helpers.cpp
