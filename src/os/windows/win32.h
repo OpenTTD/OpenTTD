@@ -17,7 +17,7 @@ typedef void (*Function)(int);
 bool LoadLibraryList(Function proc[], const char *dll);
 
 char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen);
-wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen, bool console_cp = false);
+wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen);
 
 #if defined(__MINGW32__) && !defined(__MINGW64__)
 #define SHGFP_TYPE_CURRENT 0
