@@ -10,6 +10,10 @@
 #include "../stdafx.h"
 #include "../rail_map.h"
 #include "dbg_helpers.h"
+#include "blob.hpp"
+
+#include <sstream>
+#include <iomanip>
 
 #include "../safeguards.h"
 
@@ -20,19 +24,15 @@ static const char * const trackdir_names[] = {
 };
 
 /** Return name of given Trackdir. */
-CStrA ValueStr(Trackdir td)
+std::string ValueStr(Trackdir td)
 {
-	CStrA out;
-	out.Format("%d (%s)", td, ItemAtT(td, trackdir_names, "UNK", INVALID_TRACKDIR, "INV"));
-	return out.Transfer();
+	return std::to_string(td) + " (" + ItemAtT(td, trackdir_names, "UNK", INVALID_TRACKDIR, "INV") + ")";
 }
 
 /** Return composed name of given TrackdirBits. */
-CStrA ValueStr(TrackdirBits td_bits)
+std::string ValueStr(TrackdirBits td_bits)
 {
-	CStrA out;
-	out.Format("%d (%s)", td_bits, ComposeNameT(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV").Data());
-	return out.Transfer();
+	return std::to_string(td_bits) + " (" + ComposeNameT(td_bits, trackdir_names, "UNK", INVALID_TRACKDIR_BIT, "INV") + ")";
 }
 
 
@@ -42,11 +42,9 @@ static const char * const diagdir_names[] = {
 };
 
 /** Return name of given DiagDirection. */
-CStrA ValueStr(DiagDirection dd)
+std::string ValueStr(DiagDirection dd)
 {
-	CStrA out;
-	out.Format("%d (%s)", dd, ItemAtT(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV"));
-	return out.Transfer();
+	return std::to_string(dd) + " (" + ItemAtT(dd, diagdir_names, "UNK", INVALID_DIAGDIR, "INV") + ")";
 }
 
 
@@ -56,20 +54,19 @@ static const char * const signal_type_names[] = {
 };
 
 /** Return name of given SignalType. */
-CStrA ValueStr(SignalType t)
+std::string ValueStr(SignalType t)
 {
-	CStrA out;
-	out.Format("%d (%s)", t, ItemAtT(t, signal_type_names, "UNK"));
-	return out.Transfer();
+	return std::to_string(t) + " (" + ItemAtT(t, signal_type_names, "UNK") + ")";
 }
 
 
 /** Translate TileIndex into string. */
-CStrA TileStr(TileIndex tile)
+std::string TileStr(TileIndex tile)
 {
-	CStrA out;
-	out.Format("0x%04X (%d, %d)", tile, TileX(tile), TileY(tile));
-	return out.Transfer();
+	std::stringstream ss;
+	ss << "0x" << std::setfill('0') << std::setw(4) << std::hex << tile; // 0x%04X
+	ss << " (" << TileX(tile) << ", " << TileY(tile) << ")";
+	return ss.str();
 }
 
 /**
@@ -81,21 +78,21 @@ CStrA TileStr(TileIndex tile)
 }
 
 /** Return structured name of the current class/structure. */
-CStrA DumpTarget::GetCurrentStructName()
+std::string DumpTarget::GetCurrentStructName()
 {
-	CStrA out;
+	std::string out;
 	if (!m_cur_struct.empty()) {
 		/* we are inside some named struct, return its name */
 		out = m_cur_struct.top();
 	}
-	return out.Transfer();
+	return out;
 }
 
 /**
  * Find the given instance in our anti-recursion repository.
  * Return true and set name when object was found.
  */
-bool DumpTarget::FindKnownName(size_t type_id, const void *ptr, CStrA &name)
+bool DumpTarget::FindKnownName(size_t type_id, const void *ptr, std::string &name)
 {
 	KNOWN_NAMES::const_iterator it = m_known_names.find(KnownStructKey(type_id, ptr));
 	if (it != m_known_names.end()) {
@@ -111,33 +108,29 @@ void DumpTarget::WriteIndent()
 {
 	int num_spaces = 2 * m_indent;
 	if (num_spaces > 0) {
-		memset(m_out.GrowSizeNC(num_spaces), ' ', num_spaces);
+		m_out += std::string(num_spaces, ' ');
 	}
 }
 
-/** Write a line with indent at the beginning and \<LF\> at the end. */
-void DumpTarget::WriteLine(const char *format, ...)
+/** Write 'name = value' with indent and new-line. */
+void DumpTarget::WriteValue(const char *name, int value)
 {
 	WriteIndent();
-	va_list args;
-	va_start(args, format);
-	m_out.AddFormatL(format, args);
-	va_end(args);
-	m_out.AppendStr("\n");
+	m_out += std::string(name) + " = " + std::to_string(value) + "\n";
 }
 
 /** Write 'name = value' with indent and new-line. */
 void DumpTarget::WriteValue(const char *name, const char *value_str)
 {
 	WriteIndent();
-	m_out.AddFormat("%s = %s\n", name, value_str);
+	m_out += std::string(name) + " = " + value_str + "\n";
 }
 
 /** Write name & TileIndex to the output. */
 void DumpTarget::WriteTile(const char *name, TileIndex tile)
 {
 	WriteIndent();
-	m_out.AddFormat("%s = %s\n", name, TileStr(tile).Data());
+	m_out += std::string(name) + " = " + TileStr(tile) + "\n";
 }
 
 /**
@@ -146,12 +139,12 @@ void DumpTarget::WriteTile(const char *name, TileIndex tile)
 void DumpTarget::BeginStruct(size_t type_id, const char *name, const void *ptr)
 {
 	/* make composite name */
-	CStrA cur_name = GetCurrentStructName().Transfer();
-	if (cur_name.Size() > 0) {
+	std::string cur_name = GetCurrentStructName();
+	if (cur_name.size() > 0) {
 		/* add name delimiter (we use structured names) */
-		cur_name.AppendStr(".");
+		cur_name += ".";
 	}
-	cur_name.AppendStr(name);
+	cur_name += name;
 
 	/* put the name onto stack (as current struct name) */
 	m_cur_struct.push(cur_name);
@@ -160,7 +153,7 @@ void DumpTarget::BeginStruct(size_t type_id, const char *name, const void *ptr)
 	m_known_names.insert(KNOWN_NAMES::value_type(KnownStructKey(type_id, ptr), cur_name));
 
 	WriteIndent();
-	m_out.AddFormat("%s = {\n", name);
+	m_out += std::string(name) + " = {\n";
 	m_indent++;
 }
 
@@ -171,7 +164,7 @@ void DumpTarget::EndStruct()
 {
 	m_indent--;
 	WriteIndent();
-	m_out.AddFormat("}\n");
+	m_out += "}\n";
 
 	/* remove current struct name from the stack */
 	m_cur_struct.pop();

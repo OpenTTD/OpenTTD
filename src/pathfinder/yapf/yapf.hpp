@@ -19,7 +19,6 @@
 //#define inline inline
 
 #include "../../misc/blob.hpp"
-#include "../../misc/str.hpp"
 #include "../../misc/fixedsizearray.hpp"
 #include "../../misc/array.hpp"
 #include "../../misc/hashtable.hpp"

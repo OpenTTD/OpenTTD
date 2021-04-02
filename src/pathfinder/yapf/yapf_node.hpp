@@ -126,8 +126,8 @@ struct CYapfNodeT {
 	{
 		dmp.WriteStructT("m_key", &m_key);
 		dmp.WriteStructT("m_parent", m_parent);
-		dmp.WriteLine("m_cost = %d", m_cost);
-		dmp.WriteLine("m_estimate = %d", m_estimate);
+		dmp.WriteValue("m_cost", m_cost);
+		dmp.WriteValue("m_estimate", m_estimate);
 	}
 };
 
