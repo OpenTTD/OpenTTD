@@ -11,5 +11,4 @@ add_files(
     getoptdata.h
     hashtable.hpp
     lrucache.hpp
-    str.hpp
 )
