@@ -2406,10 +2406,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Przyłą
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Odśwież serwer
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Odśwież informacje o serwerze
 
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :Przeszukaj internet
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Przeszukaj internet
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Znajdź w internecie serwery publiczne
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :Przeszukaj LAN
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :Znajdź serwery w sieci lokalnej
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Przeszukaj LAN
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Znajdź serwery w sieci lokalnej
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Zapisz serwer
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Zapisz serwer na liście serwerów, które będą zawsze sprawdzane w poszukiwaniu uruchomionych gier
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Uruchom serwer
