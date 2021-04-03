@@ -703,9 +703,11 @@ enum WindowClass {
 /** Data value for #Window::OnInvalidateData() of windows with class #WC_GAME_OPTIONS. */
 enum GameOptionsInvalidationData {
 	GOID_DEFAULT = 0,
-	GOID_NEWGRF_RESCANNED,     ///< NewGRFs were just rescanned.
-	GOID_NEWGRF_LIST_EDITED,   ///< List of active NewGRFs is being edited.
-	GOID_NEWGRF_PRESET_LOADED, ///< A NewGRF preset was picked.
+	GOID_NEWGRF_RESCANNED,       ///< NewGRFs were just rescanned.
+	GOID_NEWGRF_CURRENT_LOADED,  ///< The current list of active NewGRF has been loaded.
+	GOID_NEWGRF_LIST_EDITED,     ///< List of active NewGRFs is being edited.
+	GOID_NEWGRF_CHANGES_MADE,    ///< Changes have been made to a given NewGRF either through the palette or its parameters.
+	GOID_NEWGRF_CHANGES_APPLIED, ///< The active NewGRF list changes have been applied.
 };
 
 struct Window;
