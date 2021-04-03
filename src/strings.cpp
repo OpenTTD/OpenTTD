@@ -628,6 +628,12 @@ static int DeterminePluralForm(int64 count, int plural_form)
 		 *  Scottish Gaelic */
 		case 13:
 			return ((n == 1 || n == 11) ? 0 : (n == 2 || n == 12) ? 1 : ((n > 2 && n < 11) || (n > 12 && n < 20)) ? 2 : 3);
+
+		/* Three forms: special case for numbers ending in 00 or [2-9][0-9].
+		 * Used in:
+		 *   Romanian */
+		case 14:
+			return n == 1 ? 0 : (n == 0 || (n % 100 > 0 && n % 100 < 20)) ? 1 : 2;
 	}
 }
 
