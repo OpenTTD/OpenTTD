@@ -46,7 +46,7 @@ public:
 		int glyph_count;  ///< The number of glyphs.
 
 	public:
-		FallbackVisualRun(Font *font, const WChar *chars, int glyph_count, int x);
+		FallbackVisualRun(Font *font, const WChar *chars, int glyph_count, int char_offset, int x);
 		FallbackVisualRun(FallbackVisualRun &&other) noexcept;
 		~FallbackVisualRun() override;
 		const Font *GetFont() const override;
@@ -104,12 +104,13 @@ public:
 
 /**
  * Create the visual run.
- * @param font       The font to use for this run.
- * @param chars      The characters to use for this run.
- * @param char_count The number of characters in this run.
- * @param x          The initial x position for this run.
+ * @param font        The font to use for this run.
+ * @param chars       The characters to use for this run.
+ * @param char_count  The number of characters in this run.
+ * @param char_offset This run's offset from the start of the layout input string.
+ * @param x           The initial x position for this run.
  */
-FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const WChar *chars, int char_count, int x) :
+FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const WChar *chars, int char_count, int char_offset, int x) :
 		font(font), glyph_count(char_count)
 {
 	const bool isbuiltin = font->fc->IsBuiltInFont();
@@ -131,7 +132,7 @@ FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const 
 			this->positions[2 * i + 1] = 0;                       // No ascender adjustment.
 		}
 		this->positions[2 * i + 2] = this->positions[2 * i] + font->fc->GetGlyphWidth(this->glyphs[i]);
-		this->glyph_to_char[i] = i;
+		this->glyph_to_char[i] = char_offset + i;
 	}
 }
 
@@ -295,7 +296,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 	if (*this->buffer == '\0') {
 		/* Only a newline. */
 		this->buffer = nullptr;
-		l->emplace_back(this->runs.begin()->second, this->buffer, 0, 0);
+		l->emplace_back(this->runs.begin()->second, this->buffer, 0, 0, 0);
 		return l;
 	}
 
@@ -324,7 +325,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 
 		if (this->buffer == next_run) {
 			int w = l->GetWidth();
-			l->emplace_back(iter->second, begin, this->buffer - begin, w);
+			l->emplace_back(iter->second, begin, this->buffer - begin, begin - this->buffer_begin, w);
 			++iter;
 			assert(iter != this->runs.end());
 
@@ -369,7 +370,7 @@ std::unique_ptr<const ParagraphLayouter::Line> FallbackParagraphLayout::NextLine
 
 	if (l->size() == 0 || last_char - begin > 0) {
 		int w = l->GetWidth();
-		l->emplace_back(iter->second, begin, last_char - begin, w);
+		l->emplace_back(iter->second, begin, last_char - begin, begin - this->buffer_begin, w);
 	}
 	return l;
 }
