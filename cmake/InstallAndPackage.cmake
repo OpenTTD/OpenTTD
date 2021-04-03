@@ -37,10 +37,27 @@ install(DIRECTORY
 install(FILES
                 ${CMAKE_SOURCE_DIR}/COPYING.md
                 ${CMAKE_SOURCE_DIR}/README.md
+                ${CMAKE_SOURCE_DIR}/CREDITS.md
+                ${CMAKE_SOURCE_DIR}/CONTRIBUTING.md
                 ${CMAKE_SOURCE_DIR}/changelog.txt
-                ${CMAKE_SOURCE_DIR}/docs/multiplayer.md
                 ${CMAKE_SOURCE_DIR}/known-bugs.txt
         DESTINATION ${DOCS_DESTINATION_DIR}
+        COMPONENT docs)
+
+install(FILES
+                ${CMAKE_SOURCE_DIR}/docs/admin_network.md
+                ${CMAKE_SOURCE_DIR}/docs/debugging_desyncs.md
+                ${CMAKE_SOURCE_DIR}/docs/desync.md
+                ${CMAKE_SOURCE_DIR}/docs/directory_structure.md
+                ${CMAKE_SOURCE_DIR}/docs/game_coordinator.md
+                ${CMAKE_SOURCE_DIR}/docs/linkgraph.md
+                ${CMAKE_SOURCE_DIR}/docs/logging_and_performance_metrics.md
+                ${CMAKE_SOURCE_DIR}/docs/multiplayer.md
+                ${CMAKE_SOURCE_DIR}/docs/savegame_format.md
+                ${CMAKE_SOURCE_DIR}/docs/obg_format.txt
+                ${CMAKE_SOURCE_DIR}/docs/obm_format.txt
+                ${CMAKE_SOURCE_DIR}/docs/obs_format.txt
+        DESTINATION ${DOCS_DESTINATION_DIR}/docs
         COMPONENT docs)
 
 # A Linux manual only makes sense when using FHS. Otherwise it is a very odd
