@@ -155,7 +155,13 @@ void MxMixSamples(void *buffer, uint samples)
 	/* Fetch music if a sampled stream is available */
 	if (_music_stream) _music_stream((int16*)buffer, samples);
 
-	uint8 effect_vol = _settings_client.music.effect_vol;
+	/* Apply simple x^3 scaling to master effect volume. This increases the
+	 * perceived difference in loudness to better match expectations. effect_vol
+	 * is expected to be in the range 0-127 hence the division by 127 * 127 to
+	 * get back into range. */
+	uint8 effect_vol = (_settings_client.music.effect_vol *
+	                    _settings_client.music.effect_vol *
+	                    _settings_client.music.effect_vol) / (127 * 127);
 
 	/* Mix each channel */
 	for (mc = _channels; mc != endof(_channels); mc++) {
