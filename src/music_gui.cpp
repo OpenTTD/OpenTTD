@@ -26,6 +26,7 @@
 #include "settings_gui.h"
 #include "widgets/dropdown_func.h"
 #include "widgets/dropdown_type.h"
+#include "widgets/slider_func.h"
 
 #include "widgets/music_widget.h"
 
@@ -643,8 +644,6 @@ static void ShowMusicTrackSelection()
 }
 
 struct MusicWindow : public Window {
-	static const int slider_width = 3;
-
 	MusicWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
 		this->InitNested(number);
@@ -740,27 +739,13 @@ struct MusicWindow : public Window {
 				break;
 			}
 
-			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: {
-				/* Draw a wedge indicating low to high volume level. */
-				const int ha = (r.bottom - r.top) / 5;
-				int wx1 = r.left, wx2 = r.right;
-				if (_current_text_dir == TD_RTL) std::swap(wx1, wx2);
-				const uint shadow = _colour_gradient[COLOUR_GREY][3];
-				const uint fill   = _colour_gradient[COLOUR_GREY][6];
-				const uint light  = _colour_gradient[COLOUR_GREY][7];
-				const std::vector<Point> wedge{ Point{wx1, r.bottom - ha}, Point{wx2, r.top + ha}, Point{wx2, r.bottom - ha} };
-				GfxFillPolygon(wedge, fill);
-				GfxDrawLine(wedge[0].x, wedge[0].y, wedge[2].x, wedge[2].y, light);
-				GfxDrawLine(wedge[1].x, wedge[1].y, wedge[2].x, wedge[2].y, _current_text_dir == TD_RTL ? shadow : light);
-				GfxDrawLine(wedge[0].x, wedge[0].y, wedge[1].x, wedge[1].y, shadow);
-				/* Draw a slider handle indicating current volume level. */
-				const int sw = ScaleGUITrad(slider_width);
-				byte volume = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
-				if (_current_text_dir == TD_RTL) volume = 127 - volume;
-				const int x = r.left + (volume * (r.right - r.left - sw) / 127);
-				DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, FR_NONE);
+			case WID_M_MUSIC_VOL:
+				DrawVolumeSliderWidget(r, _settings_client.music.music_vol);
 				break;
-			}
+
+			case WID_M_EFFECT_VOL:
+				DrawVolumeSliderWidget(r, _settings_client.music.effect_vol);
+				break;
 		}
 	}
 
@@ -801,18 +786,9 @@ struct MusicWindow : public Window {
 				break;
 
 			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: { // volume sliders
-				int x = pt.x - this->GetWidget<NWidgetBase>(widget)->pos_x;
-
-				byte *vol = (widget == WID_M_MUSIC_VOL) ? &_settings_client.music.music_vol : &_settings_client.music.effect_vol;
-
-				byte new_vol = Clamp(x * 127 / (int)this->GetWidget<NWidgetBase>(widget)->current_x, 0, 127);
-				if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
-				/* Clamp to make sure min and max are properly settable */
-				if (new_vol > 124) new_vol = 127;
-				if (new_vol < 3) new_vol = 0;
-				if (new_vol != *vol) {
-					*vol = new_vol;
-					if (widget == WID_M_MUSIC_VOL) MusicDriver::GetInstance()->SetVolume(new_vol);
+				byte &vol = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
+				if (ClickVolumeSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, vol)) {
+					if (widget == WID_M_MUSIC_VOL) MusicDriver::GetInstance()->SetVolume(vol);
 					this->SetDirty();
 				}
 
