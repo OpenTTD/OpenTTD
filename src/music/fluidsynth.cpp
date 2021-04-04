@@ -29,7 +29,15 @@ static FMusicDriver_FluidSynth iFMusicDriver_FluidSynth;
 
 /** List of sound fonts to try by default. */
 static const char *default_sf[] = {
-	/* Debian/Ubuntu/OpenSUSE preferred */
+	/* FluidSynth preferred */
+	/* See: https://www.fluidsynth.org/api/settings_synth.html#settings_synth_default-soundfont */
+	"/usr/share/soundfonts/default.sf2",
+
+	/* Debian/Ubuntu preferred */
+	/* See: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=929185 */
+	"/usr/share/sounds/sf3/default-GM.sf3",
+
+	/* OpenSUSE preferred */
 	"/usr/share/sounds/sf2/FluidR3_GM.sf2",
 
 	/* RedHat/Fedora/Arch preferred */
