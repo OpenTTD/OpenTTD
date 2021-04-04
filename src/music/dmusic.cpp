@@ -1071,7 +1071,7 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 const char *MusicDriver_DMusic::Start(const StringList &parm)
 {
 	/* Initialize COM */
-	if (FAILED(CoInitializeEx(nullptr, COINITBASE_MULTITHREADED))) return "COM initialization failed";
+	if (FAILED(CoInitializeEx(nullptr, COINIT_MULTITHREADED))) return "COM initialization failed";
 
 	/* Create the DirectMusic object */
 	if (FAILED(CoCreateInstance(
