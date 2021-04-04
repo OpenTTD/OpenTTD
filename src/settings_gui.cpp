@@ -37,6 +37,7 @@
 #include "fontcache.h"
 #include "zoom_func.h"
 #include "video/video_driver.hpp"
+#include "music/music_driver.hpp"
 
 #include <vector>
 #include <iterator>
@@ -336,6 +337,14 @@ struct GameOptionsWindow : Window {
 				SetDParamStr(0, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
 				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
 				break;
+
+			case WID_GO_BASE_SFX_VOLUME:
+				DrawVolumeSliderWidget(r, _settings_client.music.effect_vol);
+				break;
+
+			case WID_GO_BASE_MUSIC_VOLUME:
+				DrawVolumeSliderWidget(r, _settings_client.music.music_vol);
+				break;
 		}
 	}
 
@@ -386,6 +395,16 @@ struct GameOptionsWindow : Window {
 					SetDParam(0, invalid_files);
 					*size = maxdim(*size, GetStringBoundingBox(STR_GAME_OPTIONS_BASE_MUSIC_STATUS));
 				}
+				break;
+
+			case WID_GO_BASE_SFX_VOLUME:
+			case WID_GO_BASE_MUSIC_VOLUME:
+				size->width = ScaleGUITrad(67);
+				size->height = ScaleGUITrad(12);
+				resize->width = 0;
+				resize->height = 0;
+				fill->width = 0;
+				fill->height = 0;
 				break;
 
 			default: {
@@ -441,6 +460,19 @@ struct GameOptionsWindow : Window {
 				this->SetWidgetLoweredState(WID_GO_VIDEO_ACCEL_BUTTON, _video_hw_accel);
 				this->SetDirty();
 				break;
+
+			case WID_GO_BASE_SFX_VOLUME:
+			case WID_GO_BASE_MUSIC_VOLUME: {
+				byte &vol = (widget == WID_GO_BASE_MUSIC_VOLUME) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
+				if (ClickVolumeSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, vol)) {
+					if (widget == WID_GO_BASE_MUSIC_VOLUME) MusicDriver::GetInstance()->SetVolume(vol);
+					this->SetDirty();
+					SetWindowClassesDirty(WC_MUSIC_WINDOW);
+				}
+
+				if (click_count > 0) this->mouse_capture_widget = widget;
+				break;
+			}
 
 			default: {
 				int selected;
@@ -646,9 +678,10 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 		EndContainer(),
 
 		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_SFX, STR_NULL), SetPadding(0, 10, 0, 10),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 0),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 7),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_SFX_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_SFX_TOOLTIP),
-				NWidget(NWID_SPACER), SetFill(1, 0),
+				NWidget(NWID_SPACER), SetMinimalSize(150, 12), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_BASE_SFX_VOLUME), SetMinimalSize(67, 12), SetMinimalTextLines(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 			EndContainer(),
 			NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_SFX_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 6, 0),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
@@ -659,9 +692,10 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 		EndContainer(),
 
 		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_BASE_MUSIC, STR_NULL), SetPadding(0, 10, 0, 10),
-			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 0),
+			NWidget(NWID_HORIZONTAL), SetPIP(0, 30, 7),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_BASE_MUSIC_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_MUSIC_STATUS), SetMinimalSize(150, 12), SetDataTip(STR_EMPTY, STR_NULL), SetFill(1, 0),
+				NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_BASE_MUSIC_VOLUME), SetMinimalSize(67, 12), SetMinimalTextLines(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 			EndContainer(),
 			NWidget(WWT_TEXT, COLOUR_GREY, WID_GO_BASE_MUSIC_DESCRIPTION), SetMinimalSize(330, 0), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP), SetFill(1, 0), SetPadding(6, 0, 6, 0),
 			NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(7, 0, 7),
