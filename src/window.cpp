@@ -1165,8 +1165,7 @@ Window *FindWindowByClass(WindowClass cls)
 void DeleteWindowById(WindowClass cls, WindowNumber number, bool force)
 {
 	Window *w = FindWindowById(cls, number);
-	if (force || w == nullptr ||
-			(w->flags & WF_STICKY) == 0) {
+	if (w != nullptr && (force || (w->flags & WF_STICKY) == 0)) {
 		delete w;
 	}
 }
