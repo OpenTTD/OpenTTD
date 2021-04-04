@@ -790,6 +790,7 @@ struct MusicWindow : public Window {
 				if (ClickVolumeSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, vol)) {
 					if (widget == WID_M_MUSIC_VOL) MusicDriver::GetInstance()->SetVolume(vol);
 					this->SetDirty();
+					SetWindowClassesDirty(WC_GAME_OPTIONS);
 				}
 
 				if (click_count > 0) this->mouse_capture_widget = widget;
