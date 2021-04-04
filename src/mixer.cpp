@@ -46,7 +46,7 @@ static MxStreamCallback _music_stream = nullptr;
  * stops overflowing when too many sounds are played at the same time, which
  * causes an even worse sound quality.
  */
-static const int MAX_VOLUME = 128 * 128;
+static const int MAX_VOLUME = 32767;
 
 /**
  * Perform the rate conversion between the input and output.
