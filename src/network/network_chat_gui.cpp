@@ -598,7 +598,7 @@ struct SocialJoinRequestWindow : public Window {
 		switch (widget) {
 			case WID_SJR_MESSAGE:
 			{
-				int text_width = max(0, (int)size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
+				int text_width = std::max(0, (int)size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT);
 				SetDParamStr(0, this->friend_name.c_str());
 				size->height = WD_FRAMERECT_TOP + GetStringHeight(STR_SOCIAL_JOIN_REQUEST_TEXT, text_width) + WD_FRAMERECT_BOTTOM;
 				break;
