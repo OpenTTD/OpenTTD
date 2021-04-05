@@ -268,6 +268,7 @@ enum TooltipCloseCondition {
 	TCC_RIGHT_CLICK,
 	TCC_HOVER,
 	TCC_NONE,
+	TCC_EXIT_VIEWPORT,
 };
 
 /**
