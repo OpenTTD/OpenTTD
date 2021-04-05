@@ -783,7 +783,7 @@ void GuiShowTooltips(Window *parent, StringID str, uint paramcount, const uint64
 {
 	DeleteWindowById(WC_TOOLTIPS, 0);
 
-	if (str == STR_NULL) return;
+	if (str == STR_NULL || !_cursor.in_window) return;
 
 	new TooltipsWindow(parent, str, paramcount, params, close_tooltip);
 }
