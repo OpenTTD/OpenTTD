@@ -43,7 +43,11 @@ void DeleteConstructionWindows();
 void HideVitalWindows();
 void ShowVitalWindows();
 
-void ReInitAllWindows();
+/**
+ * Re-initialize all windows.
+ * @param zoom_changed Set if windows are being re-initialized due to a zoom level changed.
+ */
+void ReInitAllWindows(bool zoom_changed);
 
 void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, byte widget_index);
 void SetWindowDirty(WindowClass cls, WindowNumber number);

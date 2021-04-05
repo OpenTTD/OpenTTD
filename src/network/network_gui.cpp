@@ -98,7 +98,9 @@ public:
 		this->Add(new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_YEARS, STR_NETWORK_SERVER_LIST_YEARS_CAPTION, STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP));
 
 		leaf = new NWidgetLeaf(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_INFO, STR_EMPTY, STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP);
-		leaf->SetMinimalSize(14 + GetSpriteSize(SPR_LOCK).width + GetSpriteSize(SPR_BLOT).width + GetSpriteSize(SPR_FLAGS_BASE).width, 12);
+		leaf->SetMinimalSize(14 + GetSpriteSize(SPR_LOCK, nullptr, ZOOM_LVL_OUT_4X).width
+		                        + GetSpriteSize(SPR_BLOT, nullptr, ZOOM_LVL_OUT_4X).width
+		                        + GetSpriteSize(SPR_FLAGS_BASE, nullptr, ZOOM_LVL_OUT_4X).width, 12);
 		leaf->SetFill(0, 1);
 		this->Add(leaf);
 

@@ -1972,7 +1972,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 
 		w->InvalidateData();
 
-		ReInitAllWindows();
+		ReInitAllWindows(false);
 		DeleteWindowByClass(WC_BUILD_OBJECT);
 	}
 }

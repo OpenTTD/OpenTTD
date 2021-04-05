@@ -237,7 +237,7 @@ static void AddKey(NWidgetHorizontal *hor, int height, int num_half, WidgetType 
 			hor->Add(spc);
 		}
 		NWidgetLeaf *leaf = new NWidgetLeaf(widtype, COLOUR_GREY, widnum, widdata, STR_NULL);
-		leaf->SetMinimalSize(ScaleGUITrad(key_width), height);
+		leaf->SetMinimalSizeAbsolute(ScaleGUITrad(key_width), height);
 		hor->Add(leaf);
 	}
 

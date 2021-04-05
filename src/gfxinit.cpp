@@ -323,7 +323,7 @@ void CheckBlitter()
 
 	ClearFontCache();
 	GfxClearSpriteCache();
-	ReInitAllWindows();
+	ReInitAllWindows(false);
 }
 
 /** Initialise and load all the sprites. */
