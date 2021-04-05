@@ -1454,7 +1454,7 @@ void VideoDriver_Win32OpenGL::Paint()
 	}
 
 	OpenGLBackend::Get()->Paint();
-	if (_cursor.in_window) OpenGLBackend::Get()->DrawMouseCursor();
+	OpenGLBackend::Get()->DrawMouseCursor();
 
 	SwapBuffers(this->dc);
 }
