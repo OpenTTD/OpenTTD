@@ -127,6 +127,7 @@ class NWidgetBase : public ZeroedMemoryAllocator {
 public:
 	NWidgetBase(WidgetType tp);
 
+	virtual void AdjustPaddingForZoom();
 	virtual void SetupSmallestSize(Window *w, bool init_array) = 0;
 	virtual void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) = 0;
 
@@ -148,10 +149,11 @@ public:
 	 */
 	inline void SetPadding(uint8 top, uint8 right, uint8 bottom, uint8 left)
 	{
-		this->padding_top = top;
-		this->padding_right = right;
-		this->padding_bottom = bottom;
-		this->padding_left = left;
+		this->uz_padding_top = top;
+		this->uz_padding_right = right;
+		this->uz_padding_bottom = bottom;
+		this->uz_padding_left = left;
+		this->AdjustPaddingForZoom();
 	}
 
 	inline uint GetHorizontalStepSize(SizingType sizing) const;
@@ -194,6 +196,11 @@ public:
 	uint8 padding_right;  ///< Paddings added to the right of the widget. Managed by parent container widget. (parent container may swap this with padding_left for RTL)
 	uint8 padding_bottom; ///< Paddings added to the bottom of the widget. Managed by parent container widget.
 	uint8 padding_left;   ///< Paddings added to the left of the widget. Managed by parent container widget. (parent container may swap this with padding_right for RTL)
+
+	uint8 uz_padding_top;    ///< Unscaled top padding, for resize calculation.
+	uint8 uz_padding_right;  ///< Unscaled right padding, for resize calculation.
+	uint8 uz_padding_bottom; ///< Unscaled bottom padding, for resize calculation.
+	uint8 uz_padding_left;   ///< Unscaled left padding, for resize calculation.
 
 protected:
 	inline void StoreSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height);
@@ -246,7 +253,9 @@ class NWidgetResizeBase : public NWidgetBase {
 public:
 	NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y);
 
+	void AdjustPaddingForZoom() override;
 	void SetMinimalSize(uint min_x, uint min_y);
+	void SetMinimalSizeAbsolute(uint min_x, uint min_y);
 	void SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size);
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
@@ -255,6 +264,14 @@ public:
 
 	uint min_x; ///< Minimal horizontal size of only this widget.
 	uint min_y; ///< Minimal vertical size of only this widget.
+
+	bool absolute; ///< Set if minimum size is fixed and should not be resized.
+	uint uz_min_x; ///< Unscaled Minimal horizontal size of only this widget.
+	uint uz_min_y; ///< Unscaled Minimal vertical size of only this widget.
+
+	uint8 uz_text_lines;   ///< 'Unscaled' text lines, stored for resize calculation.
+	uint8 uz_text_spacing; ///< 'Unscaled' text padding, stored for resize calculation.
+	FontSize uz_text_size; ///< 'Unscaled' font size, stored for resize calculation.
 };
 
 /** Nested widget flags that affect display and interaction with 'real' widgets. */
@@ -385,6 +402,7 @@ public:
 	NWidgetContainer(WidgetType tp);
 	~NWidgetContainer();
 
+	void AdjustPaddingForZoom() override;
 	void Add(NWidgetBase *wid);
 	void FillNestedArray(NWidgetBase **array, uint length) override;
 
@@ -423,6 +441,7 @@ public:
 
 	void SetIndex(int index);
 
+	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w, bool init_array) override;
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
 	void FillNestedArray(NWidgetBase **array, uint length) override;
@@ -450,6 +469,7 @@ class NWidgetPIPContainer : public NWidgetContainer {
 public:
 	NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags = NC_NONE);
 
+	void AdjustPaddingForZoom() override;
 	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
 
 	void Draw(const Window *w) override;
@@ -460,6 +480,10 @@ protected:
 	uint8 pip_pre;            ///< Amount of space before first widget.
 	uint8 pip_inter;          ///< Amount of space between widgets.
 	uint8 pip_post;           ///< Amount of space after last widget.
+
+	uint8 uz_pip_pre;         ///< Unscaled space before first widget.
+	uint8 uz_pip_inter;       ///< Unscaled space between widgets.
+	uint8 uz_pip_post;        ///< Unscaled space after last widget.
 };
 
 /**
@@ -565,6 +589,7 @@ public:
 	void Add(NWidgetBase *nwid);
 	void SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post);
 
+	void AdjustPaddingForZoom() override;
 	void SetupSmallestSize(Window *w, bool init_array) override;
 	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
 

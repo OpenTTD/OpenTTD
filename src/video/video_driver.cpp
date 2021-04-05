@@ -115,7 +115,7 @@ void VideoDriver::RealChangeBlitter(const char *repl_blitter)
 	this->ClearSystemSprites();
 	ClearFontCache();
 	GfxClearSpriteCache();
-	ReInitAllWindows();
+	ReInitAllWindows(false);
 }
 
 void VideoDriver::Tick()

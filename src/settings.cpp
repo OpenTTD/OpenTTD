@@ -1172,7 +1172,7 @@ static bool InvalidateNewGRFChangeWindows(int32 p1)
 {
 	InvalidateWindowClassesData(WC_SAVELOAD);
 	DeleteWindowByClass(WC_GAME_OPTIONS);
-	ReInitAllWindows();
+	ReInitAllWindows(_gui_zoom_cfg);
 	return true;
 }
 

@@ -153,7 +153,7 @@ struct DropdownWindow : Window {
 
 		uint items_width = size.width - (scroll ? NWidgetScrollbar::GetVerticalDimension().width : 0);
 		NWidgetCore *nwi = this->GetWidget<NWidgetCore>(WID_DM_ITEMS);
-		nwi->SetMinimalSize(items_width, size.height + 4);
+		nwi->SetMinimalSizeAbsolute(items_width, size.height + 4);
 		nwi->colour = wi_colour;
 
 		nwi = this->GetWidget<NWidgetCore>(WID_DM_SCROLL);

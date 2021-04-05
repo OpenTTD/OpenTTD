@@ -822,6 +822,14 @@ NWidgetBase *NWidgetBase::GetWidgetOfType(WidgetType tp)
 	return (this->type == tp) ? this : nullptr;
 }
 
+void NWidgetBase::AdjustPaddingForZoom()
+{
+	this->padding_top    = ScaleGUITrad(this->uz_padding_top);
+	this->padding_right  = ScaleGUITrad(this->uz_padding_right);
+	this->padding_bottom = ScaleGUITrad(this->uz_padding_bottom);
+	this->padding_left   = ScaleGUITrad(this->uz_padding_left);
+}
+
 /**
  * Constructor for resizable nested widgets.
  * @param tp     Nested widget type.
@@ -834,6 +842,15 @@ NWidgetResizeBase::NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y) : 
 	this->fill_y = fill_y;
 }
 
+void NWidgetResizeBase::AdjustPaddingForZoom()
+{
+	if (!this->absolute) {
+		this->min_x = ScaleGUITrad(this->uz_min_x);
+		this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
+	}
+	NWidgetBase::AdjustPaddingForZoom();
+}
+
 /**
  * Set minimal size of the widget.
  * @param min_x Horizontal minimal size of the widget.
@@ -841,6 +858,20 @@ NWidgetResizeBase::NWidgetResizeBase(WidgetType tp, uint fill_x, uint fill_y) : 
  */
 void NWidgetResizeBase::SetMinimalSize(uint min_x, uint min_y)
 {
+	this->uz_min_x = std::max(this->uz_min_x, min_x);
+	this->uz_min_y = std::max(this->uz_min_y, min_y);
+	this->min_x = ScaleGUITrad(this->uz_min_x);
+	this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
+}
+
+/**
+ * Set absolute (post-scaling) minimal size of the widget.
+ * @param min_x Horizontal minimal size of the widget.
+ * @param min_y Vertical minimal size of the widget.
+ */
+void NWidgetResizeBase::SetMinimalSizeAbsolute(uint min_x, uint min_y)
+{
+	this->absolute = true;
 	this->min_x = std::max(this->min_x, min_x);
 	this->min_y = std::max(this->min_y, min_y);
 }
@@ -853,7 +884,10 @@ void NWidgetResizeBase::SetMinimalSize(uint min_x, uint min_y)
  */
 void NWidgetResizeBase::SetMinimalTextLines(uint8 min_lines, uint8 spacing, FontSize size)
 {
-	this->min_y = min_lines * GetCharacterHeight(size) + spacing;
+	this->uz_text_lines = min_lines;
+	this->uz_text_spacing = spacing;
+	this->uz_text_size = size;
+	this->min_y = std::max(ScaleGUITrad(this->uz_min_y), this->uz_text_lines * GetCharacterHeight(this->uz_text_size) + ScaleGUITrad(this->uz_text_spacing));
 }
 
 /**
@@ -991,6 +1025,14 @@ NWidgetBase *NWidgetContainer::GetWidgetOfType(WidgetType tp)
 	return nullptr;
 }
 
+void NWidgetContainer::AdjustPaddingForZoom()
+{
+	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		child_wid->AdjustPaddingForZoom();
+	}
+	NWidgetBase::AdjustPaddingForZoom();
+}
+
 /**
  * Append widget \a wid to container.
  * @param wid Widget to append.
@@ -1030,6 +1072,14 @@ NWidgetStacked::NWidgetStacked() : NWidgetContainer(NWID_SELECTION)
 void NWidgetStacked::SetIndex(int index)
 {
 	this->index = index;
+}
+
+void NWidgetStacked::AdjustPaddingForZoom()
+{
+	for (NWidgetBase *child_wid = this->head; child_wid != nullptr; child_wid = child_wid->next) {
+		child_wid->AdjustPaddingForZoom();
+	}
+	NWidgetContainer::AdjustPaddingForZoom();
 }
 
 void NWidgetStacked::SetupSmallestSize(Window *w, bool init_array)
@@ -1145,6 +1195,14 @@ NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags
 	this->flags = flags;
 }
 
+void NWidgetPIPContainer::AdjustPaddingForZoom()
+{
+	this->pip_pre = ScaleGUITrad(this->uz_pip_pre);
+	this->pip_inter = ScaleGUITrad(this->uz_pip_inter);
+	this->pip_post = ScaleGUITrad(this->uz_pip_post);
+	NWidgetContainer::AdjustPaddingForZoom();
+}
+
 /**
  * Set additional pre/inter/post space for the container.
  *
@@ -1156,9 +1214,13 @@ NWidgetPIPContainer::NWidgetPIPContainer(WidgetType tp, NWidContainerFlags flags
  */
 void NWidgetPIPContainer::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 {
-	this->pip_pre = pip_pre;
-	this->pip_inter = pip_inter;
-	this->pip_post = pip_post;
+	this->uz_pip_pre = pip_pre;
+	this->uz_pip_inter = pip_inter;
+	this->uz_pip_post = pip_post;
+
+	this->pip_pre = ScaleGUITrad(this->uz_pip_pre);
+	this->pip_inter = ScaleGUITrad(this->uz_pip_inter);
+	this->pip_post = ScaleGUITrad(this->uz_pip_post);
 }
 
 void NWidgetPIPContainer::Draw(const Window *w)
@@ -1813,6 +1875,12 @@ void NWidgetBackground::SetPIP(uint8 pip_pre, uint8 pip_inter, uint8 pip_post)
 	this->child->SetPIP(pip_pre, pip_inter, pip_post);
 }
 
+void NWidgetBackground::AdjustPaddingForZoom()
+{
+	if (child != nullptr) child->AdjustPaddingForZoom();
+	NWidgetCore::AdjustPaddingForZoom();
+}
+
 void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 {
 	if (init_array && this->index >= 0) {
@@ -2137,11 +2205,11 @@ void NWidgetScrollbar::SetupSmallestSize(Window *w, bool init_array)
 
 	switch (this->type) {
 		case NWID_HSCROLLBAR:
-			this->SetMinimalSize(NWidgetScrollbar::GetHorizontalDimension().width * 3, NWidgetScrollbar::GetHorizontalDimension().height);
+			this->SetMinimalSizeAbsolute(NWidgetScrollbar::GetHorizontalDimension().width * 3, NWidgetScrollbar::GetHorizontalDimension().height);
 			break;
 
 		case NWID_VSCROLLBAR:
-			this->SetMinimalSize(NWidgetScrollbar::GetVerticalDimension().width, NWidgetScrollbar::GetVerticalDimension().height * 3);
+			this->SetMinimalSizeAbsolute(NWidgetScrollbar::GetVerticalDimension().width, NWidgetScrollbar::GetVerticalDimension().height * 3);
 			break;
 
 		default: NOT_REACHED();
@@ -2768,7 +2836,7 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				NWidgetResizeBase *nwrb = dynamic_cast<NWidgetResizeBase *>(*dest);
 				if (nwrb != nullptr) {
 					assert(parts->u.xy.x >= 0 && parts->u.xy.y >= 0);
-					nwrb->SetMinimalSize(ScaleGUITrad(parts->u.xy.x), ScaleGUITrad(parts->u.xy.y));
+					nwrb->SetMinimalSize(parts->u.xy.x, parts->u.xy.y);
 				}
 				break;
 			}
@@ -2814,15 +2882,15 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 			}
 
 			case WPT_PADDING:
-				if (*dest != nullptr) (*dest)->SetPadding(ScaleGUITrad(parts->u.padding.top), ScaleGUITrad(parts->u.padding.right), ScaleGUITrad(parts->u.padding.bottom), ScaleGUITrad(parts->u.padding.left));
+				if (*dest != nullptr) (*dest)->SetPadding(parts->u.padding.top, parts->u.padding.right, parts->u.padding.bottom, parts->u.padding.left);
 				break;
 
 			case WPT_PIPSPACE: {
 				NWidgetPIPContainer *nwc = dynamic_cast<NWidgetPIPContainer *>(*dest);
-				if (nwc != nullptr) nwc->SetPIP(ScaleGUITrad(parts->u.pip.pre), ScaleGUITrad(parts->u.pip.inter), ScaleGUITrad(parts->u.pip.post));
+				if (nwc != nullptr) nwc->SetPIP(parts->u.pip.pre, parts->u.pip.inter, parts->u.pip.post);
 
 				NWidgetBackground *nwb = dynamic_cast<NWidgetBackground *>(*dest);
-				if (nwb != nullptr) nwb->SetPIP(ScaleGUITrad(parts->u.pip.pre), ScaleGUITrad(parts->u.pip.inter), ScaleGUITrad(parts->u.pip.post));
+				if (nwb != nullptr) nwb->SetPIP(parts->u.pip.pre, parts->u.pip.inter, parts->u.pip.post);
 				break;
 			}
 
@@ -3019,7 +3087,7 @@ NWidgetBase *MakeCompanyButtonRows(int *biggest_index, int widget_first, int wid
 	NWidgetHorizontal *hor = nullptr; // Storage for buttons in one row.
 	int hor_length = 0;
 
-	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON);
+	Dimension sprite_size = GetSpriteSize(SPR_COMPANY_ICON, nullptr, ZOOM_LVL_OUT_4X);
 	sprite_size.width  += WD_MATRIX_LEFT + WD_MATRIX_RIGHT;
 	sprite_size.height += WD_MATRIX_TOP + WD_MATRIX_BOTTOM + 1; // 1 for the 'offset' of being pressed
 
