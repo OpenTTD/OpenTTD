@@ -2280,19 +2280,19 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 
 		case WWT_SHADEBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_SHADEBOX_TOP, WD_CAPTION_HEIGHT);
+			this->SetMinimalSize(WD_SHADEBOX_WIDTH, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_SHADE);
 			break;
 
 		case WWT_DEBUGBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_DEBUGBOX_TOP, WD_CAPTION_HEIGHT);
+			this->SetMinimalSize(WD_DEBUGBOX_WIDTH, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEBUG);
 			break;
 
 		case WWT_DEFSIZEBOX:
 			this->SetFill(0, 0);
-			this->SetMinimalSize(WD_DEFSIZEBOX_TOP, WD_CAPTION_HEIGHT);
+			this->SetMinimalSize(WD_DEFSIZEBOX_WIDTH, WD_CAPTION_HEIGHT);
 			this->SetDataTip(STR_NULL, STR_TOOLTIP_DEFSIZE);
 			break;
 
