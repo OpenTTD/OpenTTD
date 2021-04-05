@@ -1060,9 +1060,9 @@ void OpenGLBackend::DrawMouseCursor()
 
 		/* Sprites are cached by PopulateCursorCache(). */
 		if (this->cursor_cache.Contains(sprite)) {
-			const Sprite *spr = GetSprite(sprite, ST_NORMAL);
+			Sprite *spr = this->cursor_cache.Get(sprite);
 
-			this->RenderOglSprite((OpenGLSprite *)this->cursor_cache.Get(sprite)->data, _cursor.sprite_seq[i].pal,
+			this->RenderOglSprite((OpenGLSprite *)spr->data, _cursor.sprite_seq[i].pal,
 					_cursor.pos.x + _cursor.sprite_pos[i].x + UnScaleByZoom(spr->x_offs, ZOOM_LVL_GUI),
 					_cursor.pos.y + _cursor.sprite_pos[i].y + UnScaleByZoom(spr->y_offs, ZOOM_LVL_GUI),
 					ZOOM_LVL_GUI);
