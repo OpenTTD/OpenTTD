@@ -44,6 +44,7 @@ enum GameSettingsWidgets {
 	WID_GS_HELP_TEXT,          ///< Information area to display help text of the selected option.
 	WID_GS_EXPAND_ALL,         ///< Expand all button.
 	WID_GS_COLLAPSE_ALL,       ///< Collapse all button.
+	WID_GS_RESET_ALL,          ///< Reset all button.
 	WID_GS_RESTRICT_CATEGORY,  ///< Label upfront to the category drop-down box to restrict the list of settings to show
 	WID_GS_RESTRICT_TYPE,      ///< Label upfront to the type drop-down box to restrict the list of settings to show
 	WID_GS_RESTRICT_DROPDOWN,  ///< The drop down box to restrict the list of settings
