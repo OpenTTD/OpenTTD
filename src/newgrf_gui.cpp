@@ -612,6 +612,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	bool execute;               ///< On pressing 'apply changes' are grf changes applied immediately, or only list is updated.
 	int preset;                 ///< Selected preset or \c -1 if none selected.
 	int active_over;            ///< Active GRF item over which another one is dragged, \c -1 if none.
+	bool modified;              ///< The list of active NewGRFs has been modified since the last time they got saved.
 
 	Scrollbar *vscroll;
 	Scrollbar *vscroll2;
@@ -654,7 +655,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->avails.SetFilterFuncs(this->filter_funcs);
 		this->avails.ForceRebuild();
 
-		this->OnInvalidateData(GOID_NEWGRF_LIST_EDITED);
+		this->OnInvalidateData(GOID_NEWGRF_CURRENT_LOADED);
 	}
 
 	~NewGRFWindow()
@@ -663,7 +664,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		DeleteWindowByClass(WC_TEXTFILE);
 		DeleteWindowByClass(WC_SAVE_PRESET);
 
-		if (this->editable && !this->execute && !_exit_game) {
+		if (this->editable && this->modified && !this->execute && !_exit_game) {
 			CopyGRFConfigList(this->orig_list, this->actives, true);
 			ResetGRFConfig(false);
 			ReloadNewGRFData();
@@ -970,7 +971,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				}
 				this->vscroll->ScrollTowards(pos);
 				this->preset = -1;
-				this->InvalidateData();
+				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 				break;
 			}
 
@@ -989,7 +990,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				}
 				this->vscroll->ScrollTowards(pos);
 				this->preset = -1;
-				this->InvalidateData();
+				this->InvalidateData(GOID_NEWGRF_LIST_EDITED);
 				break;
 			}
 
@@ -1095,6 +1096,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					CopyGRFConfigList(this->orig_list, this->actives, true);
 					ResetGRFConfig(false);
 					ReloadNewGRFData();
+					this->InvalidateData(GOID_NEWGRF_CHANGES_APPLIED);
 				}
 				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
@@ -1104,6 +1106,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				if (this->active_sel == nullptr || !this->show_params || this->active_sel->num_valid_params == 0) break;
 
 				OpenGRFParameterWindow(this->active_sel, this->editable);
+				this->InvalidateData(GOID_NEWGRF_CHANGES_MADE);
 				break;
 			}
 
@@ -1111,6 +1114,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				if (this->active_sel != nullptr && this->editable) {
 					this->active_sel->palette ^= GRFP_USE_MASK;
 					this->SetDirty();
+					this->InvalidateData(GOID_NEWGRF_CHANGES_MADE);
 				}
 				break;
 
@@ -1157,7 +1161,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		DeleteWindowByClass(WC_GRF_PARAMETERS);
 		DeleteWindowByClass(WC_TEXTFILE);
 		this->active_sel = nullptr;
-		this->InvalidateData(GOID_NEWGRF_PRESET_LOADED);
+		this->InvalidateData(GOID_NEWGRF_CHANGES_MADE);
 	}
 
 	void OnQueryTextFinished(char *str) override
@@ -1176,6 +1180,20 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 
 		this->InvalidateData();
+	}
+
+	/**
+	 * Updates the scroll bars for the active and inactive NewGRF lists.
+	 */
+	void UpdateScrollBars()
+	{
+		/* Update scrollbars */
+		int i = 0;
+		for (const GRFConfig *c = this->actives; c != nullptr; c = c->next, i++) {}
+
+		this->vscroll->SetCount(i + 1); // Reserve empty space for drag and drop handling.
+
+		if (this->avail_pos >= 0) this->vscroll2->ScrollTowards(this->avail_pos);
 	}
 
 	/**
@@ -1212,27 +1230,34 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				this->avails.ForceRebuild();
 				FALLTHROUGH;
 
+			case GOID_NEWGRF_CURRENT_LOADED:
+				this->modified = false;
+				UpdateScrollBars();
+				break;
+
 			case GOID_NEWGRF_LIST_EDITED:
 				this->preset = -1;
 				FALLTHROUGH;
 
-			case GOID_NEWGRF_PRESET_LOADED: {
-				/* Update scrollbars */
-				int i = 0;
-				for (const GRFConfig *c = this->actives; c != nullptr; c = c->next, i++) {}
+			case GOID_NEWGRF_CHANGES_MADE:
+				UpdateScrollBars();
 
-				this->vscroll->SetCount(i + 1); // Reserve empty space for drag and drop handling.
+				/* Changes have been made to the list of active NewGRFs */
+				this->modified = true;
 
-				if (this->avail_pos >= 0) this->vscroll2->ScrollTowards(this->avail_pos);
 				break;
-			}
+
+			case GOID_NEWGRF_CHANGES_APPLIED:
+				/* No changes have been made to the list of active NewGRFs since the last time the changes got applied */
+				this->modified = false;
+				break;
 		}
 
 		this->BuildAvailables();
 
+		this->SetWidgetDisabledState(WID_NS_APPLY_CHANGES, !this->editable || !this->modified);
 		this->SetWidgetsDisabledState(!this->editable,
 			WID_NS_PRESET_LIST,
-			WID_NS_APPLY_CHANGES,
 			WID_NS_TOGGLE_PALETTE,
 			WIDGET_LIST_END
 		);
@@ -1973,6 +1998,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		for (c = nw->actives; c != nullptr && i > 0; c = c->next, i--) {}
 		nw->active_sel = c;
 		nw->avails.ForceRebuild();
+		nw->modified = false;
 
 		w->InvalidateData();
 
