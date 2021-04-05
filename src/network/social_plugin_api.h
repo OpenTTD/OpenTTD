@@ -39,7 +39,7 @@ extern "C" {
 /* Various constants for the API */
 enum {
 	/** Version number of the API defined in this header, must be passed to the init functions */
-	OTTD_SOCIAL_PLUGIN_API_VERSION = 2,
+	OTTD_SOCIAL_PLUGIN_API_VERSION = 3,
 };
 
 /** Response values for join requests */
@@ -70,6 +70,10 @@ struct OpenTTD_SocialPluginApi {
 	void (*exit_gameplay)();
 	/** OpenTTD calls this function when the player responds to a received join request */
 	void (*respond_join_request)(void *join_request_cookie, OpenTTD_SocialPluginApi_JoinRequestResponse response);
+	/** OpenTTD calls this function to display a web browser via integration */
+	void (*show_web_browser)(const char *uri);
+	/** OpenTTD calls this function to get the user's preferred player name */
+	void (*get_preferred_player_name)(char *name_buffer, unsigned int name_buffer_size);
 };
 
 /** Function pointers supplied by OpenTTD, for the plug-in to call */

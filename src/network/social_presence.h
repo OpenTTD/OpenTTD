@@ -44,6 +44,8 @@ void SocialEnterSpectate();
 void SocialExitGameplay();
 /** Game calls this when player accepts a remote join request */
 void SocialRespondJoinRequest(void *join_request_cookie, SocialJoinRequestResponse response);
+/** Game calls this to open the social integration's preferred web browser */
+void SocialOpenBrowser(const char *url);
 
 
 /* Functions called from social plug-in on certain events */

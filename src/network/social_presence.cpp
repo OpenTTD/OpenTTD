@@ -15,6 +15,7 @@
 #include "social_plugin_api.h"
 #include "../debug.h"
 #include "../video/video_driver.hpp"
+#include "core/config.h"
 
 
 static bool _social_loaded = false;
@@ -125,3 +126,26 @@ void SocialRespondJoinRequest(void *join_request_cookie, SocialJoinRequestRespon
 
 	if (_social_loaded) _social_api.respond_join_request(join_request_cookie, api_rsp);
 }
+
+void SocialOpenBrowser(const char *url)
+{
+	if (_social_loaded && _social_api.show_web_browser != nullptr) {
+		_social_api.show_web_browser(url);
+	} else {
+		extern void OSOpenBrowser(const char *url);
+		OSOpenBrowser(url);
+	}
+}
+
+std::string SocialGetPreferredPlayerName()
+{
+	if (!_social_loaded) return std::string();
+	if (_social_api.get_preferred_player_name == nullptr) return std::string();
+
+	char name_buffer[NETWORK_CLIENT_NAME_LENGTH + 1] = {};
+	_social_api.get_preferred_player_name(name_buffer, sizeof(name_buffer) - 1);
+	*(lastof(name_buffer)) = '\0';
+	return std::string(name_buffer);
+}
+
+

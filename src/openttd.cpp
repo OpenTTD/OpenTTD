@@ -400,8 +400,7 @@ void OpenBrowser(const char *url)
 	/* Make sure we only accept urls that are sure to open a browser. */
 	if (strstr(url, "http://") != url && strstr(url, "https://") != url) return;
 
-	extern void OSOpenBrowser(const char *url);
-	OSOpenBrowser(url);
+	SocialOpenBrowser(url);
 }
 
 /** Callback structure of statements to be executed after the NewGRF scan. */
