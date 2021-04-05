@@ -134,7 +134,7 @@ static bool _allowSoftware;
 	CGLSetCurrentContext(ctx);
 
 	OpenGLBackend::Get()->Paint();
-	if (_cursor.in_window) OpenGLBackend::Get()->DrawMouseCursor();
+	OpenGLBackend::Get()->DrawMouseCursor();
 
 	[ super drawInCGLContext:ctx pixelFormat:pf forLayerTime:t displayTime:ts ];
 }
