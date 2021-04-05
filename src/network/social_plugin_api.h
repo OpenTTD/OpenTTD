@@ -3,7 +3,7 @@
  * Unlike the rest of OpenTTD, this file is covered by the MIT license,
  * to allow non-free implementations of the described API.
  *
- * Copyright 2019 OpenTTD project
+ * Copyright 2021 OpenTTD project
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files
