@@ -224,7 +224,7 @@ bool VideoDriver_Cocoa::AfterBlitterChange()
  */
 void VideoDriver_Cocoa::EditBoxLostFocus()
 {
-	[ [ this->cocoaview inputContext ] discardMarkedText ];
+	[ [ this->cocoaview inputContext ] performSelectorOnMainThread:@selector(discardMarkedText) withObject:nil waitUntilDone:[ NSThread isMainThread ] ];
 	/* Clear any marked string from the current edit box. */
 	HandleTextInput(nullptr, true);
 }
