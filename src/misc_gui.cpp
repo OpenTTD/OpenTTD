@@ -767,6 +767,12 @@ struct TooltipsWindow : public Window
 			case TCC_RIGHT_CLICK: if (!_right_button_down) delete this; break;
 			case TCC_HOVER: if (!_mouse_hovering) delete this; break;
 			case TCC_NONE: break;
+
+			case TCC_EXIT_VIEWPORT: {
+				Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+				if (w == nullptr || IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y) == nullptr) delete this;
+				break;
+			}
 		}
 	}
 };
