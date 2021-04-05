@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * Unlike the rest of OpenTTD, this file is covered by the MIT license,
