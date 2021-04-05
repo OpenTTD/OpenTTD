@@ -174,7 +174,7 @@ void VideoDriver_SDL_OpenGL::Paint()
 	}
 
 	OpenGLBackend::Get()->Paint();
-	if (_cursor.in_window) OpenGLBackend::Get()->DrawMouseCursor();
+	OpenGLBackend::Get()->DrawMouseCursor();
 
 	SDL_GL_SwapWindow(this->sdl_window);
 }
