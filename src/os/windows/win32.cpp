@@ -813,6 +813,8 @@ OpenTTD_SocialPluginInit SocialLoadPlugin()
 					if (init_addr != nullptr) return init_addr;
 					DEBUG(misc, 1, "Social: Not a valid plugin library, init function not found");
 					FreeLibrary(plugin_library);
+				} else {
+					DEBUG(misc, 0, "Social: Failed to load DLL, error code = %u", GetLastError());
 				}
 			} else {
 				RegCloseKey(reg);
