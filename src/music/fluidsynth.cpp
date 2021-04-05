@@ -77,12 +77,22 @@ const char *MusicDriver_FluidSynth::Start(const StringList &param)
 	/* Load a SoundFont and reset presets (so that new instruments
 	 * get used from the SoundFont) */
 	if (!sfont_name) {
-		int i;
 		sfont_id = FLUID_FAILED;
-		for (i = 0; default_sf[i]; i++) {
-			if (!fluid_is_soundfont(default_sf[i])) continue;
-			sfont_id = fluid_synth_sfload(_midi.synth, default_sf[i], 1);
-			if (sfont_id != FLUID_FAILED) break;
+
+		/* Try loading the default soundfont registered with FluidSynth. */
+		char *default_soundfont;
+		fluid_settings_dupstr(_midi.settings, "synth.default-soundfont", &default_soundfont);
+		if (fluid_is_soundfont(default_soundfont)) {
+			sfont_id = fluid_synth_sfload(_midi.synth, default_soundfont, 1);
+		}
+
+		/* If no default soundfont found, try our own list. */
+		if (sfont_id == FLUID_FAILED) {
+			for (int i = 0; default_sf[i]; i++) {
+				if (!fluid_is_soundfont(default_sf[i])) continue;
+				sfont_id = fluid_synth_sfload(_midi.synth, default_sf[i], 1);
+				if (sfont_id != FLUID_FAILED) break;
+			}
 		}
 		if (sfont_id == FLUID_FAILED) return "Could not open any sound font";
 	} else {
