@@ -7,7 +7,7 @@ endif()
 project(${BINARY_NAME})
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
-    message(FATAL_ERROR "In-source builds not allowed. Please run \"cmake ..\" from the bin directory")
+    message(FATAL_ERROR "In-source builds not allowed. Please run \"cmake ..\" from the build directory. You may need to delete \"${CMAKE_SOURCE_DIR}/CMakeCache.txt\" first.")
 endif()
 
 # Debug mode by default.
