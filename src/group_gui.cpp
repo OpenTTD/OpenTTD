@@ -892,7 +892,11 @@ public:
 						/* We do not support VehicleClicked() here since the contextual action may only make sense for individual vehicles */
 
 						if (vindex == v->index) {
-							ShowVehicleListWindow(v);
+							if (vehgroup.NumVehicles() == 1) {
+								ShowVehicleViewWindow(v);
+							} else {
+								ShowVehicleListWindow(v);
+							}
 						}
 						break;
 					}
