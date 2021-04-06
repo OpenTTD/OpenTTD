@@ -2532,7 +2532,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}항구�
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}경유지로 사용할 수 있는 부표를 만듭니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}수도교를 만듭니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}벽으로 물을 막고 있는 운하를 만듭니다.{}해수면 높이에서 CTRL 키를 누른 채로 사용하면 벽 없이 물을 만들어 바다나 호수를 만들 수 있습니다
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}강을 만듭니다
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}강을 만듭니다. CTRL 키를 누르면 대각선 방향의 영역을 선택할 수 있습니다.
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}정박소 방향 선택
