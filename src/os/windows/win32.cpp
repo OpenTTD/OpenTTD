@@ -778,48 +778,31 @@ std::string _social_launch_command;
 
 OpenTTD_SocialPluginInit SocialLoadPlugin()
 {
-	const HKEY root_keys[] = { HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE };
-
 	{
 		TCHAR filename[MAX_PATH];
 		DWORD filename_len = GetModuleFileName(nullptr, filename, lengthof(filename));
 		if (filename_len == lengthof(filename)) return nullptr; // buffer too small
-		_social_launch_command = "\"" + std::string(FS2OTTD(filename), filename_len) + "\"";
+		_social_launch_command = "\"" + std::string(FS2OTTD(filename)) + "\"";
 	}
 
-	for (HKEY root : root_keys) {
-		HKEY reg;
-		if (RegOpenKey(HKEY_CURRENT_USER, _T("SOFTWARE\\OpenTTD"), &reg) == ERROR_SUCCESS) {
-			DWORD value_type = REG_NONE;
-			TCHAR value[MAX_PATH]{};
-			DWORD value_len = sizeof(value); // yes size in bytes, not length
-			if (RegQueryValueEx(reg, _T("SocialPresencePlugin"), nullptr, &value_type, reinterpret_cast<LPBYTE>(value), &value_len) == ERROR_SUCCESS) {
-				RegCloseKey(reg);
+	std::string search_dir = FioGetDirectory(SP_BINARY_DIR, BASE_DIR);
 
-				TCHAR plugin_name[MAX_PATH]{};
-				value[lengthof(value) - 1] = _T('\0');
-				if (value_type == REG_EXPAND_SZ) {
-					ExpandEnvironmentStrings(value, plugin_name, lengthof(plugin_name));
-				} else if (value_type == REG_SZ) {
-					MemCpyT(plugin_name, value, lengthof(plugin_name));
-				} else {
-					continue;
+	WIN32_FIND_DATAW find_data = {};
+	HANDLE find_handle = FindFirstFileW(OTTD2FS(search_dir + "*.social.dll").c_str(), &find_data);
+	if (find_handle != INVALID_HANDLE_VALUE) {
+		do {
+			std::string library_path = search_dir + FS2OTTD(find_data.cFileName);
+			HMODULE library = LoadLibraryW(OTTD2FS(library_path).c_str());
+			if (library != nullptr) {
+				void *func = GetProcAddress(library, "SocialInit");
+				if (func != nullptr) {
+					FindClose(find_handle);
+					return (OpenTTD_SocialPluginInit)func;
 				}
-
-				HMODULE plugin_library = LoadLibrary(plugin_name);
-				if (plugin_library != nullptr) {
-					DEBUG(misc, 1, "Social: Loaded plugin '%s'", plugin_name);
-					OpenTTD_SocialPluginInit init_addr = (OpenTTD_SocialPluginInit)GetProcAddress(plugin_library, "SocialInit");
-					if (init_addr != nullptr) return init_addr;
-					DEBUG(misc, 1, "Social: Not a valid plugin library, init function not found");
-					FreeLibrary(plugin_library);
-				} else {
-					DEBUG(misc, 0, "Social: Failed to load DLL, error code = %u", GetLastError());
-				}
-			} else {
-				RegCloseKey(reg);
+				FreeLibrary(library);
 			}
-		}
+		} while (FindNextFileW(find_handle, &find_data));
+		FindClose(find_handle);
 	}
 
 	return nullptr;
