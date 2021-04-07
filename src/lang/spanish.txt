@@ -1139,6 +1139,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configur
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Patrón de filtrado:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todos
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsar todos
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restablecer valores
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(no hay explicación disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por defecto: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de opción: {ORANGE}{STRING}
@@ -1147,6 +1148,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Opción de part
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Opción de partida (almacenada en la partida guardada, afecta solamente a la partida actual)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Opción de empresa (se almacena en las partidas guardadas, afecta solamente a las nuevas partidas)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empresa (almacenada en la partida guardada, afecta solamente a la empresa actual)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :¡Advertencia!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Esta acción restablecerá todos los ajustes del juego a sus valores por defecto.{}¿Deseas proceder?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoría:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:

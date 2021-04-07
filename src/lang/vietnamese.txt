@@ -1138,6 +1138,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Thiết 
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Lọc chuỗi:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Mở xuống tất cả
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Đóng lại tất cả
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Thiết lập lại tất cả
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(hiện không có giải thích nào)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Giá trị mặc định: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Kiểu thiết lập: {ORANGE}{STRING}
@@ -1146,6 +1147,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Thiết lập t
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Thiết lập trò chơi (chứa trong save; chỉ tác động tới ván chơi hiện tại)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Thiết lập công ty (chứa trong save; chỉ tác động tới các ván chơi mới)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Thiết lập công ty (chứa trong save; chỉ tác động tới công ty hiện tại)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Chú Ý!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Hành động này sẽ thiết lập lại tất cả các thông số về ban đầu.{}Bạn có muốn tiến hành?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Phân loại:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Kiểu:

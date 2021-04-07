@@ -1138,6 +1138,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Asetukse
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Suodatinteksti:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Avaa kaikki
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Sulje kaikki
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Palauta oletukset
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(selitystä ei saatavilla)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Oletusarvo: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Asetuksen tyyppi: {ORANGE}{STRING}
@@ -1146,6 +1147,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Pelin asetus (t
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Pelin asetus (tallennetaan tallenteeseen; vaikuttaa vain nykyiseen peliin)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Yhtiön asetus (tallennetaan tallenteisiin; vaikuttaa vain uusiin peleihin)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Yhtiön asetus (tallennetaan tallennukseen; vaikuttaa vain nykyiseen yhtiöön)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Varoitus!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Tämä toiminto palauttaa pelin kaikki asetukset oletusarvoihinsa.{}Haluatko varmasti jatkaa?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tyyppi:

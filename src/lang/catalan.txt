@@ -1139,6 +1139,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Configur
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{G=Femenin}{BLACK}Cadena de filtrat:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Desplega-ho tot
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Plega-ho tot
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Restableix tots els valors
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(cap explicació disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor per defecte: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipus de paràmetre: {ORANGE}{STRING}
@@ -1147,6 +1148,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Paràmetre de l
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paràmetre de la partida (emmagatzemat a la partida actual; només afecta la partida actual)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paràmetre de la companyia (emmagatzemat a les partides; només afectarà les partides noves)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paràmetre de la companyia (emmagatzemat a la partida actual; només afecta la companyia actual)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Avís!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Aquesta acció restablirà la configuració de la partida als seus valors per defecte.{}Esteu segur que voleu fer-ho?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipus:

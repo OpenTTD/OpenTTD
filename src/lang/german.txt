@@ -1139,6 +1139,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Einstell
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Suchtext:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles ausklappen
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles einklappen
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Alle Werte zurücksetzen
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(keine Erklärung verfügbar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standardwert: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Art der Einstellung: {ORANGE}{STRING}
@@ -1147,6 +1148,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Karten-Einstell
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Karten-Einstellung (im Spielstand gespeichert; beeinflusst nur aktuelles Spiel)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Firmen-Einstellung (in Spielständen gespeichert; beeinflusst nur neue Spiele)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Firmen-Einstellung (im Spielstand gespeichert; beeinflusst nur aktuelle Firma)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Achtung!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Diese Aktion setzt alle Spieleinstellungen auf ihre Standardwerte zurück.{}Sind Sie sicher, dass Sie fortfahren möchten?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Art:

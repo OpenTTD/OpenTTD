@@ -1140,6 +1140,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Innstill
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrer streng:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Vis alle
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Skjul alle
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Tilbakestill alle verdier
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(ingen forklaring tilgjengelig)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standard verdi: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Instillings type: {ORANGE}{STRING}
@@ -1148,6 +1149,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Selskapet innst
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Selskapet innstilling (lagret i lagringsfilen, påvirker bare gjeldende spill)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Selskapet innstilling (lagret i lagringsfilen, påvirker bare nye spill)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Selskapet innstilling (lagret i lagringsfilen, påvirker bare gjeldende selskap)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Advarsel!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Denne handlingen vil tilbakestille alle spillinnstillingene til standard verdier.{}Er du sikker på at du vil fortsette?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategori:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
