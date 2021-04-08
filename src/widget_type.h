@@ -251,7 +251,7 @@ public:
 	void SetFill(uint fill_x, uint fill_y);
 	void SetResize(uint resize_x, uint resize_y);
 
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
 
 	uint min_x; ///< Minimal horizontal size of only this widget.
 	uint min_y; ///< Minimal vertical size of only this widget.
@@ -470,8 +470,8 @@ class NWidgetHorizontal : public NWidgetPIPContainer {
 public:
 	NWidgetHorizontal(NWidContainerFlags flags = NC_NONE);
 
-	void SetupSmallestSize(Window *w, bool init_array);
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
+	void SetupSmallestSize(Window *w, bool init_array) override;
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
 };
 
 /**
@@ -482,7 +482,7 @@ class NWidgetHorizontalLTR : public NWidgetHorizontal {
 public:
 	NWidgetHorizontalLTR(NWidContainerFlags flags = NC_NONE);
 
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
 };
 
 /**
@@ -493,8 +493,8 @@ class NWidgetVertical : public NWidgetPIPContainer {
 public:
 	NWidgetVertical(NWidContainerFlags flags = NC_NONE);
 
-	void SetupSmallestSize(Window *w, bool init_array);
-	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl);
+	void SetupSmallestSize(Window *w, bool init_array) override;
+	void AssignSizePosition(SizingType sizing, uint x, uint y, uint given_width, uint given_height, bool rtl) override;
 };
 
 /**
