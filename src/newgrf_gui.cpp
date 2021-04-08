@@ -1255,7 +1255,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		this->BuildAvailables();
 
-		this->SetWidgetDisabledState(WID_NS_APPLY_CHANGES, !this->editable || !this->modified);
+		this->SetWidgetDisabledState(WID_NS_APPLY_CHANGES, !((this->editable && this->modified) || _settings_client.gui.newgrf_developer_tools));
 		this->SetWidgetsDisabledState(!this->editable,
 			WID_NS_PRESET_LIST,
 			WID_NS_TOGGLE_PALETTE,
