@@ -1139,6 +1139,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Paramèt
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtre{NBSP}:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Tout développer
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Tout réduire
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Réinitialiser tous les réglages
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(pas d'explication disponible)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valeur par défaut{NBSP}: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Type de paramètre{NBSP}: {ORANGE}{STRING}
@@ -1147,6 +1148,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Paramètre de j
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Paramètre de jeu (enregistré dans la sauvegarde{NBSP}; affecte uniquement la partie actuelle)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Paramètre de compagnie (enregistré dans les sauvegardes{NBSP}; affecte uniquement les nouvelles parties)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Paramètre de compagnie (enregistré dans la sauvegarde{NBSP}; affecte uniquement la compagnie actuelle)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Attention{NBSP}!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Par cette action, toues les réglages seront réinitialisés aux valeurs par défaut.{}Êtes-vous sûr de vouloir continuer{NBSP}?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Catégorie{NBSP}:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type{NBSP}:
@@ -2532,7 +2535,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construi
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Placer une bouée pouvant servir de guide aux navires.{}Shift pour afficher seulement le coût estimé.
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construire un aqueduc.{}Shift pour afficher seulement le coût estimé.
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Définir une zone d'eau.{}Construire un canal, sauf si Ctrl est enfoncé au niveau de la mer{NBSP}: dans ce cas, le voisinage sera inondé.
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Placer des rivières
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Placer des rivières. Presser Ctrl pour sélectionner en diagonale
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientation du dépôt

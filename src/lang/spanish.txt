@@ -1148,7 +1148,7 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Opción de part
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Opción de partida (almacenada en la partida guardada, afecta solamente a la partida actual)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Opción de empresa (se almacena en las partidas guardadas, afecta solamente a las nuevas partidas)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Opción de empresa (almacenada en la partida guardada, afecta solamente a la empresa actual)
-STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :¡Advertencia!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}¡Advertencia!
 STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Esta acción restablecerá todos los ajustes del juego a sus valores por defecto.{}¿Deseas proceder?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoría:

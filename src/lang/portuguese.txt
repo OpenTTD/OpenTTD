@@ -1139,6 +1139,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Definiç
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtrar frase:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Expandir todas
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Colapsar todas
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Repor todos os valores
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(sem explicação disponível)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Valor por omissão: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipo de configuração: {ORANGE}{STRING}
@@ -1147,6 +1148,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Configuração 
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Configuração de jogo (guardado; afeta apenas o jogo atual)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Configurações de empresa (guardado; afeta apenas novos jogos)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Configurações de empresa (guardado; afeta apenas a empresa atual)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Cuidado!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Esta ação vai repor todas as configurações do jogo para os seus valores padrão.{}Tem a certeza que deseja continuar?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categoria:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Tipo:
@@ -1904,11 +1907,11 @@ STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Seleccio
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Seleccione o esquema de cores a alterar, ou esquemas múltiplos utilizando a tecla Ctrl com o botão esquerdo do rato. Marque a caixa para comutar a utilização do esquema de cores
 
 STR_LIVERY_DEFAULT                                              :Estampagem Padrão
-STR_LIVERY_STEAM                                                :Motor a Vapor
-STR_LIVERY_DIESEL                                               :Motor Diesel
-STR_LIVERY_ELECTRIC                                             :Motor Eléctrico
-STR_LIVERY_MONORAIL                                             :Motor Monocarril
-STR_LIVERY_MAGLEV                                               :Motor Maglev (Levitação Magnética)
+STR_LIVERY_STEAM                                                :Locomotivas a Vapor
+STR_LIVERY_DIESEL                                               :Locomotivas Diesel
+STR_LIVERY_ELECTRIC                                             :Locomotivas Eléctricas
+STR_LIVERY_MONORAIL                                             :Motoras Monocarril
+STR_LIVERY_MAGLEV                                               :Motoras Maglev (Levitação Magnética)
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carruagem de Passageiros (Vapor)
@@ -1917,8 +1920,8 @@ STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Carruagem de Pa
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Carruagem de Passageiros (Monocarril)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Carruagem de Passageiros (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagão de Carga
-STR_LIVERY_BUS                                                  :Autocarro
-STR_LIVERY_TRUCK                                                :Veículo de Mercadorias
+STR_LIVERY_BUS                                                  :Autocarros
+STR_LIVERY_TRUCK                                                :Camiões
 STR_LIVERY_PASSENGER_SHIP                                       :Navio de passageiros
 STR_LIVERY_FREIGHT_SHIP                                         :Navio cargueiro
 STR_LIVERY_HELICOPTER                                           :Helicóptero

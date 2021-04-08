@@ -1139,6 +1139,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}설정
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}검색할 문자열:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}모두 펼치기
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}모두 접기
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}모든 설정 초기화
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(설명이 존재하지 않습니다)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}기본값: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}설정 종류: {ORANGE}{STRING}
@@ -1147,6 +1148,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :게임 설정 (
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :게임 설정 (게임 저장 파일에 저장됨; 현재 게임에만 적용됨)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :회사 설정 (게임 저장 파일에 저장됨; 새 게임에만 적용됨)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :회사 설정 (게임 저장 파일에 저장됨; 현재 회사에만 적용됨)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}경고!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}게임의 모든 설정을 기본값으로 되돌립니다.{}정말 모든 설정을 초기화하시겠습니까?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}분류:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}종류:
