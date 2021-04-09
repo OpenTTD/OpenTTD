@@ -40,6 +40,8 @@
 #include "clear_map.h"
 #include "zoom_func.h"
 #include "industry_cmd.h"
+#include "querystring_gui.h"
+#include "stringfilter_type.h"
 
 #include "table/strings.h"
 
@@ -1225,12 +1227,17 @@ static const NWidgetPart _nested_industry_directory_widgets[] = {
 	EndContainer(),
 	NWidget(NWID_HORIZONTAL),
 		NWidget(NWID_VERTICAL),
-			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_ID_DROPDOWN_ORDER), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
-				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_DROPDOWN_CRITERIA), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
-				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_FILTER_BY_ACC_CARGO), SetMinimalSize(225, 12), SetFill(0, 1), SetDataTip(STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER, STR_TOOLTIP_FILTER_CRITERIA),
-				NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_FILTER_BY_PROD_CARGO), SetMinimalSize(225, 12), SetFill(0, 1), SetDataTip(STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER, STR_TOOLTIP_FILTER_CRITERIA),
-				NWidget(WWT_PANEL, COLOUR_BROWN), SetResize(1, 0), EndContainer(),
+			NWidget(NWID_VERTICAL),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_TEXTBTN, COLOUR_BROWN, WID_ID_DROPDOWN_ORDER), SetDataTip(STR_BUTTON_SORT_BY, STR_TOOLTIP_SORT_ORDER),
+					NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_DROPDOWN_CRITERIA), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_SORT_CRITERIA),
+					NWidget(WWT_EDITBOX, COLOUR_BROWN, WID_ID_FILTER), SetFill(1, 0), SetResize(1, 0), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL),
+					NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_FILTER_BY_ACC_CARGO), SetMinimalSize(225, 12), SetFill(0, 1), SetDataTip(STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER, STR_TOOLTIP_FILTER_CRITERIA),
+					NWidget(WWT_DROPDOWN, COLOUR_BROWN, WID_ID_FILTER_BY_PROD_CARGO), SetMinimalSize(225, 12), SetFill(0, 1), SetDataTip(STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER, STR_TOOLTIP_FILTER_CRITERIA),
+					NWidget(WWT_PANEL, COLOUR_BROWN), SetResize(1, 0), EndContainer(),
+				EndContainer(),
 			EndContainer(),
 			NWidget(WWT_PANEL, COLOUR_BROWN, WID_ID_INDUSTRY_LIST), SetDataTip(0x0, STR_INDUSTRY_DIRECTORY_LIST_CAPTION), SetResize(1, 1), SetScrollbar(WID_ID_SCROLLBAR), EndContainer(),
 		EndContainer(),
@@ -1326,6 +1333,10 @@ protected:
 	byte accepted_cargo_filter_criteria;        ///< Selected accepted cargo filter index
 	static CargoID produced_cargo_filter;
 
+	const int MAX_FILTER_LENGTH = 16;           ///< The max length of the filter, in chars
+	StringFilter string_filter;                 ///< Filter for industries
+	QueryString industry_editbox;               ///< Filter editbox
+
 	enum class SorterType : uint8 {
 		ByName,        ///< Sorter type to sort by name
 		ByType,        ///< Sorter type to sort by type
@@ -1410,7 +1421,13 @@ protected:
 			this->industries.clear();
 
 			for (const Industry *i : Industry::Iterate()) {
-				this->industries.push_back(i);
+				if (this->string_filter.IsEmpty()) {
+					this->industries.push_back(i);
+					continue;
+				}
+				this->string_filter.ResetState();
+				this->string_filter.AddLine(i->GetCachedName());
+				if (this->string_filter.GetState()) this->industries.push_back(i);
 			}
 
 			this->industries.shrink_to_fit();
@@ -1610,7 +1627,7 @@ protected:
 	}
 
 public:
-	IndustryDirectoryWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
+	IndustryDirectoryWindow(WindowDesc *desc, WindowNumber number) : Window(desc), industry_editbox(MAX_FILTER_LENGTH * MAX_CHAR_LENGTH, MAX_FILTER_LENGTH)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_ID_SCROLLBAR);
@@ -1621,6 +1638,9 @@ public:
 		this->BuildSortIndustriesList();
 
 		this->FinishInitNested(0);
+
+		this->querystrings[WID_ID_FILTER] = &this->industry_editbox;
+		this->industry_editbox.cancel_button = QueryString::ACTION_CLEAR;
 	}
 
 	~IndustryDirectoryWindow()
@@ -1784,6 +1804,14 @@ public:
 	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_ID_INDUSTRY_LIST);
+	}
+
+	void OnEditboxChanged(int wid) override
+	{
+		if (wid == WID_ID_FILTER) {
+			this->string_filter.SetFilterTerm(this->industry_editbox.text.buf);
+			this->InvalidateData(IDIWD_FORCE_REBUILD);
+		}
 	}
 
 	void OnPaint() override
