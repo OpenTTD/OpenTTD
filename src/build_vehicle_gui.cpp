@@ -30,6 +30,8 @@
 #include "cargotype.h"
 #include "core/geometry_func.hpp"
 #include "autoreplace_func.h"
+#include "querystring_gui.h"
+#include "stringfilter_type.h"
 
 #include "widgets/build_vehicle_widget.h"
 
@@ -64,6 +66,7 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 			NWidget(NWID_HORIZONTAL),
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_SHOW_HIDDEN_ENGINES),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_BV_CARGO_FILTER_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_FILTER_CRITERIA),
+				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BV_FILTER), SetMinimalSize(128, 0), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 			EndContainer(),
 		EndContainer(),
 	EndContainer(),
@@ -1059,6 +1062,9 @@ struct BuildVehicleWindow : Window {
 	Scrollbar *vscroll;
 	TestedEngineDetails te;                     ///< Tested cost and capacity after refit.
 
+	StringFilter string_filter;                 ///< Filter for vehicle name
+	QueryString vehicle_editbox;                ///< Filter editbox
+
 	void SetBuyVehicleText()
 	{
 		NWidgetCore *widget = this->GetWidget<NWidgetCore>(WID_BV_BUILD);
@@ -1075,7 +1081,7 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	BuildVehicleWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc)
+	BuildVehicleWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	{
 		this->vehicle_type = type;
 		this->listview_mode = tile == INVALID_TILE;
@@ -1118,6 +1124,9 @@ struct BuildVehicleWindow : Window {
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 
 		this->FinishInitNested(tile == INVALID_TILE ? (int)type : tile);
+
+		this->querystrings[WID_BV_FILTER] = &this->vehicle_editbox;
+		this->vehicle_editbox.cancel_button = QueryString::ACTION_CLEAR;
 
 		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
 
@@ -1269,6 +1278,21 @@ struct BuildVehicleWindow : Window {
 		return CargoAndEngineFilter(&eid, filter_type);
 	}
 
+	/** Filter by name */
+	bool FilterByName(const Engine *e)
+	{
+		/* Do not filter if the filter text box is empty */
+		if (this->string_filter.IsEmpty()) {
+			return true;
+		}
+
+		char buffer[MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH];
+		GetString(buffer, e->info.string_id, lastof(buffer));
+		this->string_filter.ResetState();
+		this->string_filter.AddLine(buffer);
+		return this->string_filter.GetState();
+	}
+
 	/* Figure out what train EngineIDs to put in the list */
 	void GenerateBuildTrainList()
 	{
@@ -1292,6 +1316,9 @@ struct BuildVehicleWindow : Window {
 
 			/* Filter now! So num_engines and num_wagons is valid */
 			if (!FilterSingleEngine(eid)) continue;
+
+			/* Filter by name now */
+			if (!FilterByName(e)) continue;
 
 			this->eng_list.push_back(eid);
 
@@ -1334,6 +1361,9 @@ struct BuildVehicleWindow : Window {
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
 
+			/* Filter by name now */
+			if (!FilterByName(e)) continue;
+
 			this->eng_list.push_back(eid);
 
 			if (eid == this->sel_engine) sel_id = eid;
@@ -1351,6 +1381,10 @@ struct BuildVehicleWindow : Window {
 			if (!this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
+
+			/* Filter by name now */
+			if (!FilterByName(e)) continue;
+
 			this->eng_list.push_back(eid);
 
 			if (eid == this->sel_engine) sel_id = eid;
@@ -1378,7 +1412,11 @@ struct BuildVehicleWindow : Window {
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 
+			/* Filter by name now */
+			if (!FilterByName(e)) continue;
+
 			this->eng_list.push_back(eid);
+
 			if (eid == this->sel_engine) sel_id = eid;
 		}
 
@@ -1666,6 +1704,14 @@ struct BuildVehicleWindow : Window {
 	void OnResize() override
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_BV_LIST);
+	}
+
+	void OnEditboxChanged(int wid) override
+	{
+		if (wid == WID_BV_FILTER) {
+			this->string_filter.SetFilterTerm(this->vehicle_editbox.text.buf);
+			this->InvalidateData();
+		}
 	}
 };
 
