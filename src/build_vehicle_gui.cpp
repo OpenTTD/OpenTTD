@@ -34,6 +34,9 @@
 #include "train_cmd.h"
 #include "vehicle_cmd.h"
 #include "zoom_func.h"
+#include "querystring_gui.h"
+#include "stringfilter_type.h"
+#include "hotkeys.h"
 
 #include "widgets/build_vehicle_widget.h"
 
@@ -69,6 +72,7 @@ static const NWidgetPart _nested_build_vehicle_widgets[] = {
 				NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BV_SHOW_HIDDEN_ENGINES),
 				NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_BV_CARGO_FILTER_DROPDOWN), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_JUST_STRING, STR_TOOLTIP_FILTER_CRITERIA),
 			EndContainer(),
+			NWidget(WWT_EDITBOX, COLOUR_GREY, WID_BV_FILTER), SetMinimalSize(128, 0), SetResize(1, 0), SetFill(1, 0), SetDataTip(STR_LIST_FILTER_OSKTITLE, STR_LIST_FILTER_TOOLTIP),
 		EndContainer(),
 	EndContainer(),
 	/* Vehicle list. */
@@ -854,6 +858,29 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
 	return y;
 }
 
+
+/**
+ * Try to get the NewGRF engine additional text callback as an optional std::string.
+ * @param engine The engine whose additional text to get.
+ * @return The std::string if present, otherwise std::nullopt.
+ */
+static std::optional<std::string> GetNewGRFAdditionalText(EngineID engine)
+{
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, nullptr);
+	if (callback == CALLBACK_FAILED || callback == 0x400) return std::nullopt;
+	const GRFFile *grffile = Engine::Get(engine)->GetGRF();
+	assert(grffile != nullptr);
+	if (callback > 0x400) {
+		ErrorUnknownCallbackResult(grffile->grfid, CBID_VEHICLE_ADDITIONAL_TEXT, callback);
+		return std::nullopt;
+	}
+
+	StartTextRefStackUsage(grffile, 6);
+	std::string result = GetString(GetGRFStringID(grffile->grfid, 0xD000 + callback));
+	StopTextRefStackUsage();
+	return result;
+}
+
 /**
  * Display additional text from NewGRF in the purchase information window
  * @param left   Left border of text bounding box
@@ -864,19 +891,9 @@ static int DrawAircraftPurchaseInfo(int left, int right, int y, EngineID engine_
  */
 static uint ShowAdditionalText(int left, int right, int y, EngineID engine)
 {
-	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, nullptr);
-	if (callback == CALLBACK_FAILED || callback == 0x400) return y;
-	const GRFFile *grffile = Engine::Get(engine)->GetGRF();
-	assert(grffile != nullptr);
-	if (callback > 0x400) {
-		ErrorUnknownCallbackResult(grffile->grfid, CBID_VEHICLE_ADDITIONAL_TEXT, callback);
-		return y;
-	}
-
-	StartTextRefStackUsage(grffile, 6);
-	uint result = DrawStringMultiLine(left, right, y, INT32_MAX, GetGRFStringID(grffile->grfid, 0xD000 + callback), TC_BLACK);
-	StopTextRefStackUsage();
-	return result;
+	auto text = GetNewGRFAdditionalText(engine);
+	if (!text) return y;
+	return DrawStringMultiLine(left, right, y, INT32_MAX, *text, TC_BLACK);
 }
 
 void TestedEngineDetails::FillDefaultCapacities(const Engine *e)
@@ -1091,6 +1108,11 @@ void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selecte
 	ShowDropDownMenu(w, _engine_sort_listing[vehicle_type], selected, button, 0, hidden_mask);
 }
 
+/** Enum referring to the Hotkeys in the build vehicle window */
+enum BuildVehicleHotkeys {
+	BVHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
+};
+
 /** GUI for building vehicles. */
 struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
@@ -1111,6 +1133,9 @@ struct BuildVehicleWindow : Window {
 	int details_height;                         ///< Minimal needed height of the details panels, in text lines (found so far).
 	Scrollbar *vscroll;
 	TestedEngineDetails te;                     ///< Tested cost and capacity after refit.
+
+	StringFilter string_filter;                 ///< Filter for vehicle name
+	QueryString vehicle_editbox;                ///< Filter editbox
 
 	void SetBuyVehicleText()
 	{
@@ -1149,7 +1174,7 @@ struct BuildVehicleWindow : Window {
 		}
 	}
 
-	BuildVehicleWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc)
+	BuildVehicleWindow(WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc), vehicle_editbox(MAX_LENGTH_VEHICLE_NAME_CHARS * MAX_CHAR_LENGTH, MAX_LENGTH_VEHICLE_NAME_CHARS)
 	{
 		this->vehicle_type = type;
 		this->listview_mode = tile == INVALID_TILE;
@@ -1189,6 +1214,9 @@ struct BuildVehicleWindow : Window {
 		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9);
 
 		this->FinishInitNested(tile == INVALID_TILE ? (int)type : (int)tile);
+
+		this->querystrings[WID_BV_FILTER] = &this->vehicle_editbox;
+		this->vehicle_editbox.cancel_button = QueryString::ACTION_CLEAR;
 
 		this->owner = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
 
@@ -1335,6 +1363,23 @@ struct BuildVehicleWindow : Window {
 		return CargoAndEngineFilter(&item, filter_type);
 	}
 
+	/** Filter by name and NewGRF extra text */
+	bool FilterByText(const Engine *e)
+	{
+		/* Do not filter if the filter text box is empty */
+		if (this->string_filter.IsEmpty()) return true;
+
+		/* Filter engine name */
+		this->string_filter.ResetState();
+		this->string_filter.AddLine(GetString(e->info.string_id));
+
+		/* Filter NewGRF extra text */
+		auto text = GetNewGRFAdditionalText(e->index);
+		if (text) this->string_filter.AddLine(*text);
+
+		return this->string_filter.GetState();
+	}
+
 	/* Figure out what train EngineIDs to put in the list */
 	void GenerateBuildTrainList(GUIEngineList &list)
 	{
@@ -1358,6 +1403,9 @@ struct BuildVehicleWindow : Window {
 
 			/* Filter now! So num_engines and num_wagons is valid */
 			if (!FilterSingleEngine(eid)) continue;
+
+			/* Filter by name or NewGRF extra text */
+			if (!FilterByText(e)) continue;
 
 			list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
@@ -1405,6 +1453,9 @@ struct BuildVehicleWindow : Window {
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (this->filter.roadtype != INVALID_ROADTYPE && !HasPowerOnRoad(e->u.road.roadtype, this->filter.roadtype)) continue;
 
+			/* Filter by name or NewGRF extra text */
+			if (!FilterByText(e)) continue;
+
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
 			if (eid == this->sel_engine) sel_id = eid;
@@ -1422,6 +1473,10 @@ struct BuildVehicleWindow : Window {
 			if (!this->show_hidden_engines && e->IsVariantHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
+
+			/* Filter by name or NewGRF extra text */
+			if (!FilterByText(e)) continue;
+
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
 
 			if (eid == this->sel_engine) sel_id = eid;
@@ -1449,7 +1504,11 @@ struct BuildVehicleWindow : Window {
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 
+			/* Filter by name or NewGRF extra text */
+			if (!FilterByText(e)) continue;
+
 			this->eng_list.emplace_back(eid, e->info.variant_id, e->display_flags, 0);
+
 			if (eid == this->sel_engine) sel_id = eid;
 		}
 
@@ -1790,13 +1849,45 @@ struct BuildVehicleWindow : Window {
 	{
 		this->vscroll->SetCapacityFromWidget(this, WID_BV_LIST);
 	}
+
+	void OnEditboxChanged(int wid) override
+	{
+		if (wid == WID_BV_FILTER) {
+			this->string_filter.SetFilterTerm(this->vehicle_editbox.text.buf);
+			this->InvalidateData();
+		}
+	}
+
+	EventState OnHotkey(int hotkey) override
+	{
+		switch (hotkey) {
+			case BVHK_FOCUS_FILTER_BOX:
+				this->SetFocusedWidget(WID_BV_FILTER);
+				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
+				return ES_HANDLED;
+
+			default:
+				return ES_NOT_HANDLED;
+		}
+
+		return ES_HANDLED;
+	}
+
+	static HotkeyList hotkeys;
 };
+
+static Hotkey buildvehicle_hotkeys[] = {
+	Hotkey('F', "focus_filter_box", BVHK_FOCUS_FILTER_BOX),
+	HOTKEY_LIST_END
+};
+HotkeyList BuildVehicleWindow::hotkeys("buildvehicle", buildvehicle_hotkeys);
 
 static WindowDesc _build_vehicle_desc(
 	WDP_AUTO, "build_vehicle", 240, 268,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_vehicle_widgets, lengthof(_nested_build_vehicle_widgets)
+	_nested_build_vehicle_widgets, lengthof(_nested_build_vehicle_widgets),
+	&BuildVehicleWindow::hotkeys
 );
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
