@@ -125,9 +125,20 @@ void StringFilter::AddLine(const char *str)
  *
  * @param str Another line from the item.
  */
+void StringFilter::AddLine(const std::string &str)
+{
+	AddLine(str.c_str());
+}
+
+/**
+ * Pass another text line from the current item to the filter.
+ *
+ * You can call this multiple times for a single item, if the filter shall apply to multiple things.
+ * Before processing the next item you have to call ResetState().
+ *
+ * @param str Another line from the item.
+ */
 void StringFilter::AddLine(StringID str)
 {
-	char buffer[DRAW_STRING_BUFFER];
-	GetString(buffer, str, lastof(buffer));
-	AddLine(buffer);
+	AddLine(GetString(str));
 }

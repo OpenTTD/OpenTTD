@@ -379,7 +379,7 @@ protected:
 		assert((*item) != nullptr);
 
 		sf.ResetState();
-		sf.AddLine((*item)->info.server_name.c_str());
+		sf.AddLine((*item)->info.server_name);
 		return sf.GetState();
 	}
 

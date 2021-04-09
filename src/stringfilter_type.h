@@ -60,6 +60,7 @@ public:
 
 	void ResetState();
 	void AddLine(const char *str);
+	void AddLine(const std::string &str);
 	void AddLine(StringID str);
 
 	/**
