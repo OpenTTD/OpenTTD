@@ -630,10 +630,11 @@ wchar_t *convert_to_fs(const char *name, wchar_t *system_buf, size_t buflen)
 const char *GetCurrentLocale(const char *)
 {
 	const LANGID userUiLang = GetUserDefaultUILanguage();
+	const LCID userUiLocale = MAKELCID(userUiLang, SORT_DEFAULT);
 
 	char lang[9], country[9];
-	if (GetLocaleInfoA(userUiLang, LOCALE_SISO639LANGNAME, lang, lengthof(lang)) == 0 ||
-	    GetLocaleInfoA(userUiLang, LOCALE_SISO3166CTRYNAME, country, lengthof(country)) == 0) {
+	if (GetLocaleInfoA(userUiLocale, LOCALE_SISO639LANGNAME, lang, lengthof(lang)) == 0 ||
+	    GetLocaleInfoA(userUiLocale, LOCALE_SISO3166CTRYNAME, country, lengthof(country)) == 0) {
 		/* Unable to retrieve the locale. */
 		return nullptr;
 	}
