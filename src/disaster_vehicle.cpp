@@ -456,7 +456,7 @@ static bool DisasterTick_Aircraft(DisasterVehicle *v, uint16 image_override, boo
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddTileNewsItem(news_message, NT_ACCIDENT, v->dest_tile);
+			AddIndustryNewsItem(news_message, NT_ACCIDENT, i->index);
 			if (_settings_client.sound.disaster) SndPlayTileFx(SND_12_EXPLOSION, i->location.tile);
 		}
 	} else if (v->current_order.GetDestination() == 0) {
