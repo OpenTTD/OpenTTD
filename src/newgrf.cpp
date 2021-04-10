@@ -3035,6 +3035,14 @@ static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, ByteRea
 				cs->cargo_station_age_period = buf->ReadWord();
 				break;
 
+			case 0x1F: // Max time factor for payment calculation
+				cs->age_time_factor[0] = buf->ReadWord();
+				break;
+
+			case 0x20: // Min time factor for payment calculation
+				cs->age_time_factor[1] = buf->ReadWord();
+				break;
+
 			default:
 				ret = CIR_UNKNOWN;
 				break;

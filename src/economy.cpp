@@ -988,16 +988,16 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, uint16 transit_days,
 		}
 	}
 
-	static const int MIN_TIME_FACTOR = 31;
-	static const int MAX_TIME_FACTOR = 255;
 	static const int TIME_FACTOR_FRAC_BITS = 4;
 	static const int TIME_FACTOR_FRAC = 1 << TIME_FACTOR_FRAC_BITS;
 
+	const int max_time_factor = cs->age_time_factor[0];
+	const int min_time_factor = cs->age_time_factor[1];
 	const int days1 = cs->transit_days[0];
 	const int days2 = cs->transit_days[1];
 	const int days_over_days1 = std::max(   transit_days - days1, 0);
 	const int days_over_days2 = std::max(days_over_days1 - days2, 0);
-	const int days_over_max   = transit_days - (MAX_TIME_FACTOR - MIN_TIME_FACTOR + 2 * days1 + days2) / 2;
+	const int days_over_max   = transit_days - (max_time_factor - min_time_factor + 2 * days1 + days2) / 2;
 
 	/*
 	 * The time factor is calculated based on the time it took
@@ -1011,10 +1011,10 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, uint16 transit_days,
 	 *
 	 */
 	if (days_over_max > 0) {
-		const int time_factor = std::max(MIN_TIME_FACTOR * TIME_FACTOR_FRAC * TIME_FACTOR_FRAC / (days_over_max + TIME_FACTOR_FRAC), 1); // MIN_TIME_FACTOR / (x/TIME_FACTOR_FRAC + 1) + 1, expressed as fixed point with TIME_FACTOR_FRAC_BITS.
+		const int time_factor = std::max(min_time_factor * TIME_FACTOR_FRAC * TIME_FACTOR_FRAC / (days_over_max + TIME_FACTOR_FRAC), 1); // min_time_factor / (x/TIME_FACTOR_FRAC + 1), expressed as fixed point with TIME_FACTOR_FRAC_BITS.
 		return BigMulS(dist * time_factor * num_pieces, cs->current_payment, 21 + TIME_FACTOR_FRAC_BITS);
 	} else {
-		const int time_factor = std::max(MAX_TIME_FACTOR - days_over_days1 - days_over_days2, MIN_TIME_FACTOR);
+		const int time_factor = std::max(max_time_factor - days_over_days1 - days_over_days2, min_time_factor);
 		return BigMulS(dist * time_factor * num_pieces, cs->current_payment, 21);
 	}
 }
