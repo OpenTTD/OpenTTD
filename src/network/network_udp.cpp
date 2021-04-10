@@ -646,7 +646,10 @@ void NetworkUDPClose()
 /** Receive the UDP packets. */
 void NetworkBackgroundUDPLoop()
 {
-	std::lock_guard<std::mutex> lock(_network_udp_mutex);
+	/* Try to take the lock, but do nothing if the mutex is locked by another thread.
+	 * Avoid blocking the entire main network loop over handling incoming UDP in a timely manner. */
+	if (!_network_udp_mutex.try_lock()) return;
+	std::lock_guard<std::mutex> lock(_network_udp_mutex, std::adopt_lock);
 
 	if (_network_udp_server) {
 		_udp_server_socket->ReceivePackets();
