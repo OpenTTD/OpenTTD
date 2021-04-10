@@ -93,37 +93,25 @@ STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Suc acidulat
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
-STR_QUANTITY_PASSENGERS                                         :{COMMA} călător{P "" i}
 STR_QUANTITY_COAL                                               :{WEIGHT_LONG} de cărbune
-STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" i} cu colete poștale
 STR_QUANTITY_OIL                                                :{VOLUME_LONG} de petrol
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} animal{P "" e}
-STR_QUANTITY_GOODS                                              :{COMMA} pachet{P "" e} de bunuri
 STR_QUANTITY_GRAIN                                              :{WEIGHT_LONG} de cereale
 STR_QUANTITY_WOOD                                               :{WEIGHT_LONG} de lemne
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT_LONG} de minereu de fier
 STR_QUANTITY_STEEL                                              :{WEIGHT_LONG} de oțel
-STR_QUANTITY_VALUABLES                                          :{COMMA} cuti{P e i} de valori
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT_LONG} de minereu de cupru
 STR_QUANTITY_MAIZE                                              :{WEIGHT_LONG} de porumb
 STR_QUANTITY_FRUIT                                              :{WEIGHT_LONG} de fructe
-STR_QUANTITY_DIAMONDS                                           :{COMMA} sac{P "" i} cu diamante
 STR_QUANTITY_FOOD                                               :{WEIGHT_LONG} de alimente
 STR_QUANTITY_PAPER                                              :{WEIGHT_LONG} de hârtie
-STR_QUANTITY_GOLD                                               :{COMMA} sac{P "" i} cu aur
 STR_QUANTITY_WATER                                              :{VOLUME_LONG} de apă
 STR_QUANTITY_WHEAT                                              :{WEIGHT_LONG} de grâu
 STR_QUANTITY_RUBBER                                             :{VOLUME_LONG} de cauciuc
 STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} de zahăr
-STR_QUANTITY_TOYS                                               :{COMMA} sac{P "" i} cu jucării
-STR_QUANTITY_SWEETS                                             :{COMMA} sac{P "" i} cu bomboane
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de vată de zahăr
-STR_QUANTITY_BUBBLES                                            :{COMMA} balonaș{P "" e}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de caramel
-STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{P e i}
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} de plastic
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} bido{P n ane} cu suc
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -163,12 +151,9 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NU
 STR_ABBREV_ALL                                                  :{TINY_FONT}TOT
 
 # 'Mode' of transport for cargoes
-STR_PASSENGERS                                                  :{COMMA} călător{P "" i}
-STR_BAGS                                                        :{COMMA}{NBSP}sac{P "" i}
 STR_TONS                                                        :{COMMA} tone
 STR_LITERS                                                      :{COMMA} litri
 STR_ITEMS                                                       :{COMMA} bucăți
-STR_CRATES                                                      :{COMMA} pachet{P "" e}
 
 # Colours, do not shuffle
 STR_COLOUR_DARK_BLUE                                            :Albastru închis
@@ -203,16 +188,12 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P ă e}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P ă e}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galo{P n ane}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P u i}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA} lbf
@@ -1009,7 +990,6 @@ STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Alegeți
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectează setul grafic de bază utilizat în joc
-STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} fişier{P "" "e"} lipsă/corupt{P "" e}
 STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Informaţii adiţionale despre setul grafic de bază
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Set sunete de bază
@@ -1018,7 +998,6 @@ STR_GAME_OPTIONS_BASE_SFX_DESCRIPTION_TOOLTIP                   :{BLACK}Informa�
 
 STR_GAME_OPTIONS_BASE_MUSIC                                     :{BLACK}Setul de muzică de bază
 STR_GAME_OPTIONS_BASE_MUSIC_TOOLTIP                             :{BLACK}Selectaţi setul de muzică de bază
-STR_GAME_OPTIONS_BASE_MUSIC_STATUS                              :{RED}{NUM} fişier{P "" e} corupt{P "" e}
 STR_GAME_OPTIONS_BASE_MUSIC_DESCRIPTION_TOOLTIP                 :{BLACK}Informaţii adiţionale despre setul de muzică de bază
 
 STR_ERROR_RESOLUTION_LIST_FAILED                                :{WHITE}Nu s-a putut obține lista de rezoluții suportate
@@ -1191,7 +1170,6 @@ STR_CONFIG_SETTING_EXTRADYNAMITE                                :Permite demolar
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :Facilitează eliminarea de clădiri şi infrastructură deţinute de oraş
 STR_CONFIG_SETTING_TRAIN_LENGTH                                 :Lungimea maximă a trenurilor: {STRING}
 STR_CONFIG_SETTING_TRAIN_LENGTH_HELPTEXT                        :Configurează lungimea maximă a trenurilor
-STR_CONFIG_SETTING_TILE_LENGTH                                  :{COMMA} pătrăţel{P 0 "" e}
 STR_CONFIG_SETTING_SMOKE_AMOUNT                                 :Cantitatea de fum/ scântei ale vehiculului: {STRING}
 STR_CONFIG_SETTING_SMOKE_AMOUNT_HELPTEXT                        :Configurează cât de mult fum sau cât de multe scântei sunt emise de vehicule
 STR_CONFIG_SETTING_TRAIN_ACCELERATION_MODEL                     :Modelul de acceleraţie al trenurilor: {STRING}
@@ -1292,16 +1270,12 @@ STR_CONFIG_SETTING_AUTORENEW_VEHICLE                            :Înnoire automa
 STR_CONFIG_SETTING_AUTORENEW_VEHICLE_HELPTEXT                   :După activare, orice vehicul care este învechit va fi reînnoit automat când condițiile de înlocuire automată sunt îndeplinite
 STR_CONFIG_SETTING_AUTORENEW_MONTHS                             :Autoreînnoire când vehiculul {STRING} vârsta maximă
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Vârsta aproximativă când un vehicul ar trebui autoreînnoit
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :mai are {COMMA} lun{P 0 ă i} până la
-STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :a depășit cu {COMMA} lun{P 0 ă i}
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Fonduri minime pentru înnoire automată: {STRING}
 STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Suma minimă care trebuie să rămână disponibilă atunci când se face autoreînnoirea
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Durata de afișare a mesajelor de eroare: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Durata afișării mesajelor de eroare în fereastra roșie. Unele mesaje de eroare (cele critice) nu sunt închise automat după trecerea acestei perioade, și trebuie închise manual.
-STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} secund{P 0 ă e}
 STR_CONFIG_SETTING_HOVER_DELAY                                  :Afișează texte informative: {STRING}
 STR_CONFIG_SETTING_HOVER_DELAY_HELPTEXT                         :Durata dinaintea afișării sfaturilor când se ține mausul pe un element al interfeței. Alternativ, afișarea sfaturilor poate fi setată pentru clic-dreapta
-STR_CONFIG_SETTING_HOVER_DELAY_VALUE                            :Plutește {COMMA} milisecund{P 0 ă e}
 STR_CONFIG_SETTING_HOVER_DELAY_DISABLED                         :Click dreapta
 STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Afişează populaţia unui oras lângă nume: {STRING}
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Afișează populația orașelor în numele afișate pe hartă
@@ -1494,7 +1468,6 @@ STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :Intervaluri de 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :Alege dacă întreținerea vehiculelor este activată de trecerea unei anumite perioade de timp, sau scăzând un anumit procent din gradul de rezistență al vehiculului
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :Intervalul de întreținere implicit al trenurilor: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :Alege perioada de întreținere implicită pentru noi vehicule feroviare, dacă nu există un interval de întreținere stabilit pentru vehicul
-STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA} zi{P 0 "" le}/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :Dezactivat
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :Intervalul de întreținere implicit al vehiculelor rutiere: {STRING}
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :Alege perioada de întreținere implicită pentru noi vehicule rutiere, dacă nu există un interval de întreținere stabilit pentru vehicul
@@ -1559,7 +1532,6 @@ STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentul din p
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentul din câştig care este oferit legăturilor intermediare pentru alimentare, oferind mai mult control asupra încasărilor
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Când se trage cu mouse-ul, plasează semnale la fiecare: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Configurează distanţa la care se vor construi semnale pe şină până la următorul obstacol (semnal, intersecţie), dacâ se trage cu mouse-ul
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} pătrăţel{P 0 "" e}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :La plasarea mai multor semale, păstrează distanţa fixă între acestea: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construieşte automat semafoare înainte de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Alege anul din care se vor folosi semnale electrice pe calea feroviară. Înainte de acest an, se vor folosi semnale non-electrice care au aceeasi funcționalitate dar arată diferit
@@ -1609,7 +1581,6 @@ STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Poziţia orizon
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Poziţia barei de stare: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS_HELPTEXT                       :Poziţia orizontală a barei principale în partea de jos a ecranului
 STR_CONFIG_SETTING_SNAP_RADIUS                                  :Raza "magnetică" a ferestrelor: {STRING}
-STR_CONFIG_SETTING_SNAP_RADIUS_VALUE                            :{COMMA} pixel{P 0 "" i}
 STR_CONFIG_SETTING_SNAP_RADIUS_DISABLED                         :Dezactivat
 STR_CONFIG_SETTING_SOFT_LIMIT                                   :Numărul maxim de ferestre nefixate: {STRING}
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -1638,9 +1609,7 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :deloc
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Multiplicator iniţial dimensiune oraş: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Dimensiunea medie a oraşelor mari relativ la oraşele normale, la începutul jocului
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Actualizează graficul de distribuţie la fiecare {STRING} zi{P 0:2 "" le}
 STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Interval de timp între recalculările graficului de conexiuni. Fiecare recalculare calculează planurile unei componente ale graficului. Asta înseamnă că o valoare X pentru această setare nu va duce la actualizarea întregului grafic la fiecare X zile, ci doar o componentă va fi actualizată. Cu cât e mai mică valoarea, cu atât mai timp CPU va fi necesar pentru calcule. Cu cât e mai mare valoarea, cu atât va dura mai mult până va începe distribuția mărfii pe rute noi.
-STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Acordă {STRING} zi{P 0:2 "" le} pentru recalcularea graficului de distribuţie
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :asimetric
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :simetric
@@ -1792,8 +1761,6 @@ STR_INTRO_TOOLTIP_ONLINE_CONTENT                                :{BLACK}Verific�
 STR_INTRO_TOOLTIP_SCRIPT_SETTINGS                               :{BLACK}Afişează setările pentru Inteligența Artificială şi pentru Scripturi Joc
 STR_INTRO_TOOLTIP_QUIT                                          :{BLACK}Ieşi din 'OpenTTD'
 
-STR_INTRO_BASESET                                               :{BLACK}Setul grafic actual are lipsă {NUM} sprite{P "" s}. Verificați actualizările pentru setul de bază.
-STR_INTRO_TRANSLATION                                           :{BLACK}Acestei traduceri îi lipse{P 0 "şte" "sc"} {NUM} text{P "" e}. Te rugăm să ajuti la îmbunătățirea OpenTTD înrolându-te ca traducător. Citește fișierul readme.txt pentru detalii.
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Ieşire din joc
@@ -1982,13 +1949,10 @@ STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publicat
 STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Alege între un joc publicat (prin Internet) și unul privat (reț) game
 STR_NETWORK_START_SERVER_UNADVERTISED                           :Nu
 STR_NETWORK_START_SERVER_ADVERTISED                             :Da
-STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} clien{P t ţi}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Număr maxim de clienţi:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Alege un număr maxim de clienţi. Nu trebuie ocupate toate locurile.
-STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} compan{P ie ii}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Companii maxim:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Limitează serverul la un anumit număr de companii
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} spectator{P "" i}
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Spectatori maxim:
 STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Limitează serverul la un anumit număr de spectatori
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Limba vorbită:
@@ -2075,7 +2039,6 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Î
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Preluare informaţii joc...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Preluare informaţii companie...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} clien{P t ţi} înaintea noastră
 STR_NETWORK_CONNECTING_DOWNLOADING_1                            :{BLACK}{BYTES} descărcat până acum
 STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} / {BYTES} descărcaţi până acum
 
@@ -3014,7 +2977,6 @@ STR_INVALID_VEHICLE                                             :<vehicul invali
 # NewGRF scanning window
 STR_NEWGRF_SCAN_CAPTION                                         :{WHITE}Scanez resursele NewGRF
 STR_NEWGRF_SCAN_MESSAGE                                         :{BLACK}Se scanează resursele NewGRF. În funcție de numărul acestora, această operație poate dura un timp...
-STR_NEWGRF_SCAN_STATUS                                          :{BLACK}{NUM} resurs{P 0 "ă" "e"} NewGRF scanat{P "ă" "e"} din aproximativ {NUM} resurs{P "ă" "e"} NewGRF disponibil{P "ă" "e"}
 STR_NEWGRF_SCAN_ARCHIVES                                        :Scanez pentru arhive
 
 # Sign list window
@@ -3048,8 +3010,6 @@ STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED_WINTER              :{ORANGE}{STRING
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED_GENERAL            :{ORANGE}{STRING}{GREEN} livrate
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_REQUIRED                     :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{RED} (mai sunt necesare)
 STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (livrate)
-STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}Orașul crește la fiecare {ORANGE}{COMMA}{BLACK} zi{P "" le}
-STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}Orașul crește la fiecare {ORANGE}{COMMA}{BLACK} zi{P "" le} (cu fonduri)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}Orașul {RED}nu{BLACK} crește
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Limita zgomotului în oraş: {ORANGE}{COMMA}{BLACK}  maxim: {ORANGE}{COMMA}
 STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrează imaginea pe locaţia oraşului. Ctrl+Click deshide o fereastra cu locaţia oraşului
@@ -3154,7 +3114,6 @@ STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referinţ�
 # Station list window
 STR_STATION_LIST_TOOLTIP                                        :{BLACK}Numele staţiilor - clic pe un nume pentru a centra imaginea pe staţia respectivă. Ctrl+Click deshide o fereastra cu locaţia staţiei
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Ţine apăsat Ctrl pentru a alege mai multe obiecte
-STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Staţi{P e i}
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 STR_STATION_LIST_NONE                                           :{YELLOW}- Nici una -
@@ -3272,10 +3231,6 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Anul înfiinţării: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Schemă culori:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehicule:
-STR_COMPANY_VIEW_TRAINS                                         :{WHITE}{COMMA} tren{P "" uri}
-STR_COMPANY_VIEW_ROAD_VEHICLES                                  :{WHITE}{COMMA} autovehicul{P "" e}
-STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} aeronav{P ă e}
-STR_COMPANY_VIEW_SHIPS                                          :{WHITE}{COMMA} nav{P ã e}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Niciunul
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valoarea companiei: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% deţinute de {COMPANY})
@@ -3284,7 +3239,6 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} pătrățele cu drumuri
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} pătrățele de apă
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} pătrățele stații
-STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} aeroport{P "" uri}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Niciuna
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Constr. sediu
@@ -3358,9 +3312,6 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba 
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Modifică nivelul producţiei (procent, până la 800%)
 
 # Vehicle lists
-STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} - {COMMA} Tren{P "" uri}
-STR_VEHICLE_LIST_ROAD_VEHICLE_CAPTION                           :{WHITE}{STRING} - {COMMA} Autovehicule{P "" s}
-STR_VEHICLE_LIST_SHIP_CAPTION                                   :{WHITE}{STRING} - {COMMA} Nav{P ă e}
 STR_VEHICLE_LIST_AIRCRAFT_CAPTION                               :{WHITE}{STRING} - {COMMA} Aeronave
 
 STR_VEHICLE_LIST_TRAIN_LIST_TOOLTIP                             :{BLACK}Trenuri - click pe un trn pentru detalii
@@ -3389,7 +3340,6 @@ STR_VEHICLE_LIST_SEND_AIRCRAFT_TO_HANGAR                        :Trimite la hang
 STR_VEHICLE_LIST_MASS_STOP_LIST_TOOLTIP                         :{BLACK}Click pt oprirea tuturor vehiculelor din listă
 STR_VEHICLE_LIST_MASS_START_LIST_TOOLTIP                        :{BLACK}Apasa pentru pornirea tuturor vehiclulelor din lista
 
-STR_VEHICLE_LIST_SHARED_ORDERS_LIST_CAPTION                     :{WHITE}Comenzi sincronizate pentru {COMMA} vehicul{P "" e}
 
 # Group window
 STR_GROUP_ALL_TRAINS                                            :Toate trenurile
@@ -3519,7 +3469,6 @@ STR_DEPOT_RENAME_DEPOT_CAPTION                                  :Redenumire depo
 
 STR_DEPOT_NO_ENGINE                                             :{BLACK}-
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
-STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicul{P "" e}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Trenuri - trage vehiculele cu click stânga pentru a adauga/elimina din tren, click dreapta pe vehicul pentru informaţii. Tasta Ctrl aplică funcţiile pentru întreaga garnitură
@@ -3722,8 +3671,6 @@ STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}Denumeş
 
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vechime: {LTBLUE}{STRING}{BLACK}   Mentenanţă: {LTBLUE}{CURRENCY_LONG}/an
 # The next two need to stay in this order
-STR_VEHICLE_INFO_AGE                                            :{COMMA} an{P "" i} ({COMMA})
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} an{P "" i} ({COMMA})
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY}
@@ -3977,8 +3924,6 @@ STR_TIMETABLE_TRAVEL_FOR_SPEED_ESTIMATED                        :Călătoriți (
 STR_TIMETABLE_AND_TRAVEL_FOR_ESTIMATED                          :(călătorie pentru {STRING}, neprogramată)
 STR_TIMETABLE_STAY_FOR                                          :şi opreşte pentru {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :şi călătoreşte pentru {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} zi{P "" le}
-STR_TIMETABLE_TICKS                                             :{COMMA} tic{P "" uri}
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Acest orar va lua {STRING} pentru finalizare
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
