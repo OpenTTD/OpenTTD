@@ -53,7 +53,7 @@ bool IniFile::SaveToDisk(const std::string &filename)
 	std::string file_new{ filename };
 	file_new.append(".new");
 
-	std::ofstream os(OTTD2FS(file_new));
+	std::ofstream os(OTTD2FS(file_new).c_str());
 	if (os.fail()) return false;
 
 	for (const IniGroup *group = this->group; group != nullptr; group = group->next) {
