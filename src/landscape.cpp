@@ -1400,7 +1400,7 @@ static void CalculateSnowLine()
 static uint8 CalculateDesertLine()
 {
 	/* CalculateCoverageLine() runs from top to bottom, so we need to invert the coverage. */
-	return _settings_game.game_creation.snow_line_height = CalculateCoverageLine(100 - _settings_game.game_creation.desert_coverage, 4);
+	return CalculateCoverageLine(100 - _settings_game.game_creation.desert_coverage, 4);
 }
 
 void GenerateLandscape(byte mode)
