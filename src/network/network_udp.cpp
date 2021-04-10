@@ -643,13 +643,22 @@ void NetworkUDPClose()
 	DEBUG(net, 1, "[udp] closed listeners");
 }
 
+static std::atomic<int> _background_udp_loops_failed = 0;
+
 /** Receive the UDP packets. */
 void NetworkBackgroundUDPLoop()
 {
 	/* Try to take the lock, but do nothing if the mutex is locked by another thread.
 	 * Avoid blocking the entire main network loop over handling incoming UDP in a timely manner. */
-	if (!_network_udp_mutex.try_lock()) return;
-	std::lock_guard<std::mutex> lock(_network_udp_mutex, std::adopt_lock);
+	std::unique_lock<std::mutex> lock(_network_udp_mutex, std::defer_lock);
+	if (!lock.try_lock()) {
+		if (_background_udp_loops_failed++ % 32 == 0) {
+			DEBUG(net, 0, "[udp] Background UDP loop processing appears to be blocked. Your OS may be low on UDP send buffers.");
+		}
+		return;
+	}
+
+	_background_udp_loops_failed.store(0);
 
 	if (_network_udp_server) {
 		_udp_server_socket->ReceivePackets();
