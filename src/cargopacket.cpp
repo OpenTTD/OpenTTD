@@ -862,6 +862,21 @@ uint StationCargoList::Reroute(uint max_move, StationCargoList *dest, StationID 
 	return this->ShiftCargo(StationCargoReroute(this, dest, max_move, avoid, avoid2, ge), avoid, false);
 }
 
+/**
+ * Ages all in-flight cargo in this list.
+ */
+void StationCargoList::AgeCargo()
+{
+	for (ConstIterator it(this->packets.begin()); it != this->packets.end(); it++) {
+		CargoPacket *cp = *it;
+		/* Only age cargo that is already in transit. Also, make sure to now overflow. */
+		if (cp->days_in_transit == 0 || cp->days_in_transit == UINT16_MAX) continue;
+
+		cp->days_in_transit++;
+		this->cargo_days_in_transit += cp->count;
+	}
+}
+
 /*
  * We have to instantiate everything we want to be usable.
  */

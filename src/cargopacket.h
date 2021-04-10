@@ -528,6 +528,8 @@ public:
 		return this->count + this->reserved_count;
 	}
 
+	void AgeCargo();
+
 	/* Methods for moving cargo around. First parameter is always maximum
 	 * amount of cargo to be moved. Second parameter is destination (if
 	 * applicable), return value is amount of cargo actually moved. */
