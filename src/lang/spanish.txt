@@ -119,7 +119,7 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} d
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}juguete{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}bolsa{P "" s} de caramelos
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodón dulce
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodón de azúcar
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuja{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de tofe{P "" s}
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P "" s}

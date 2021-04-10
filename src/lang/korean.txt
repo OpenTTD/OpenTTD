@@ -954,7 +954,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :좌측통행
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :우측통행
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 이름
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 이름:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}도시 이름 스타일을 선택하세요
 
 ############ start of townname region
