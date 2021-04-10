@@ -1,7 +1,7 @@
 ##name Romanian
 ##ownname Românӑ
 ##isocode ro_RO
-##plural 0
+##plural 14
 ##textdir ltr
 ##digitsep .
 ##digitsepcur .

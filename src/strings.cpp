@@ -629,7 +629,7 @@ static int DeterminePluralForm(int64 count, int plural_form)
 		case 13:
 			return ((n == 1 || n == 11) ? 0 : (n == 2 || n == 12) ? 1 : ((n > 2 && n < 11) || (n > 12 && n < 20)) ? 2 : 3);
 
-		/* Three forms: special cases for 0 or numbers ending in 20 to 99.
+		/* Three forms: special cases for 1, 0 and numbers ending in 01 to 19.
 		 * Used in:
 		 *   Romanian */
 		case 14:
