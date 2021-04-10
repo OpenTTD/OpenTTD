@@ -29,6 +29,8 @@ public:
 	bool HasAnimBuffer() override { return true; }
 	uint8 *GetAnimBuffer() override { return this->anim_buffer; }
 
+	void ToggleVsync(bool vsync) override;
+
 	const char *GetName() const override { return "sdl-opengl"; }
 
 protected:
