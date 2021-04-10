@@ -488,6 +488,10 @@ public:
 		this->servers.SetSortFuncs(this->sorter_funcs);
 		this->servers.SetFilterFuncs(this->filter_funcs);
 		this->servers.ForceRebuild();
+
+		/* To not confuse any players on why no servers are showing,
+		 * we query for servers on launch. */
+		NetworkUDPQueryMasterServer();
 	}
 
 	~NetworkGameWindow()
