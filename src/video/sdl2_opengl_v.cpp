@@ -70,8 +70,6 @@ const char *VideoDriver_SDL_OpenGL::Start(const StringList &param)
 	SDL_GetWindowSize(this->sdl_window, &w, &h);
 	this->ClientSizeChanged(w, h, true);
 
-	SDL_GL_SetSwapInterval(GetDriverParamBool(param, "vsync") ? 1 : 0);
-
 	return nullptr;
 }
 
@@ -91,6 +89,11 @@ void VideoDriver_SDL_OpenGL::DestroyContext()
 	}
 }
 
+void VideoDriver_SDL_OpenGL::ToggleVsync(bool vsync)
+{
+	SDL_GL_SetSwapInterval(vsync);
+}
+
 const char *VideoDriver_SDL_OpenGL::AllocateContext()
 {
 	SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
@@ -106,6 +109,8 @@ const char *VideoDriver_SDL_OpenGL::AllocateContext()
 
 	this->gl_context = SDL_GL_CreateContext(this->sdl_window);
 	if (this->gl_context == nullptr) return "SDL2: Can't active GL context";
+
+	ToggleVsync(_video_vsync);
 
 	return OpenGLBackend::Create(&GetOGLProcAddressCallback);
 }
