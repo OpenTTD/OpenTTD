@@ -383,7 +383,7 @@ void VehicleCargoList::AgeCargo()
 	for (ConstIterator it(this->packets.begin()); it != this->packets.end(); it++) {
 		CargoPacket *cp = *it;
 		/* If we're at the maximum, then we can't increase no more. */
-		if (cp->days_in_transit == 0xFF) continue;
+		if (cp->days_in_transit == UINT16_MAX) continue;
 
 		cp->days_in_transit++;
 		this->cargo_days_in_transit += cp->count;
