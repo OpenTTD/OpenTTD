@@ -78,6 +78,10 @@
 #	include <emscripten/html5.h>
 #endif
 
+#ifdef UNIX
+# include <signal.h>
+#endif
+
 void CallLandscapeTick();
 void IncreaseDate();
 void DoPaletteAnimations();
@@ -92,7 +96,20 @@ extern std::string _config_file;
 
 bool _save_config = false;
 bool _request_newgrf_scan = false;
+std::atomic<bool> _request_newgrf_reload = false;
 NewGRFScanCallback *_request_newgrf_scan_callback = nullptr;
+
+#ifdef UNIX
+/**
+ * Reloads GRFs when receiving SIGUSR1.
+ * Used by NewGRF development tools to simplify testing process.
+ */
+static void ReloadNewGRFSignalHandler(int sig)
+{
+	RequestNewGRFReload();
+	signal(sig, ReloadNewGRFSignalHandler);
+}
+#endif
 
 /**
  * Error handling for fatal user errors.
@@ -497,6 +514,12 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 			_switch_mode = SM_NONE;
 			NetworkClientConnectGame(NetworkAddress(network_conn, rport), join_as, join_server_password, join_company_password);
 		}
+
+#if defined(UNIX)
+		if (_settings_client.gui.newgrf_developer_tools) {
+			signal(SIGUSR1, ReloadNewGRFSignalHandler);
+		}
+#endif
 
 		/* After the scan we're not used anymore. */
 		delete this;
@@ -1457,6 +1480,16 @@ void RequestNewGRFScan(NewGRFScanCallback *callback)
 	_request_newgrf_scan_callback = callback;
 }
 
+/**
+ * Request a reload of NewGRFs. This will be executed on the next game-tick.
+ * This is mostly needed to ensure NewGRF loads (which are blocking) are
+ * not done in the middle of a loop where state might be dependent on it.
+ */
+void RequestNewGRFReload()
+{
+	_request_newgrf_reload = true;
+}
+
 void GameLoop()
 {
 	if (_game_mode == GM_BOOTSTRAP) {
@@ -1470,6 +1503,13 @@ void GameLoop()
 		_request_newgrf_scan = false;
 		_request_newgrf_scan_callback = nullptr;
 		/* In case someone closed the game during our scan, don't do anything else. */
+		if (_exit_game) return;
+	}
+
+	if (_request_newgrf_reload) {
+		ReloadNewGRFData();
+		_request_newgrf_reload = false;
+		/* In case someone closed the game during our reload, don't do anything else. */
 		if (_exit_game) return;
 	}
 
