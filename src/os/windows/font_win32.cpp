@@ -497,7 +497,7 @@ void Win32FontCache::ClearFontCache()
 		 * For anti-aliased rendering, GDI uses the strange value range of 0 to 64,
 		 * inclusively. To map this to 0 to 255, we shift left by two and then
 		 * subtract one. */
-		uint pitch = Align(aa ? gm.gmBlackBoxX : std::max(gm.gmBlackBoxX / 8u, 1u), 4);
+		uint pitch = Align(aa ? gm.gmBlackBoxX : std::max((gm.gmBlackBoxX + 7u) / 8u, 1u), 4);
 
 		/* Draw shadow for medium size. */
 		if (this->fs == FS_NORMAL && !aa) {
