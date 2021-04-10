@@ -138,12 +138,13 @@ public:
 	bool HasAnimBuffer() override { return true; }
 	uint8 *GetAnimBuffer() override { return this->anim_buffer; }
 
+	void ToggleVsync(bool vsync) override;
+
 	const char *GetName() const override { return "win32-opengl"; }
 
 protected:
 	HDC    dc;          ///< Window device context.
 	HGLRC  gl_rc;       ///< OpenGL context.
-	bool   vsync;       ///< Enable VSync?
 	uint8 *anim_buffer; ///< Animation buffer from OpenGL back-end.
 
 	uint8 GetFullscreenBpp() override { return 32; } // OpenGL is always 32 bpp.
