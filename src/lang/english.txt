@@ -953,7 +953,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysian Ringg
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Drive on left
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Drive on right
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Town names
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Town names:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Select style of town names
 
 ############ start of townname region
