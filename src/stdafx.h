@@ -113,7 +113,7 @@
 #endif
 
 /* Stuff for GCC */
-#if defined(__GNUC__) || defined(__clang__)
+#if defined(__GNUC__) || (defined(__clang__) && !defined(_MSC_VER))
 #	define NORETURN __attribute__ ((noreturn))
 #	define CDECL
 #	define __int64 long long
@@ -196,14 +196,10 @@
 
 #	define CDECL _cdecl
 #	define WARN_FORMAT(string, args)
-#	ifndef __clang__
-#		define FINAL sealed
-#	else
-#		define FINAL
-#	endif
+#	define FINAL final
 
 	/* fallthrough attribute, VS 2017 */
-#	if (_MSC_VER >= 1910)
+#	if (_MSC_VER >= 1910) || defined(__clang__)
 #		define FALLTHROUGH [[fallthrough]]
 #	else
 #		define FALLTHROUGH
