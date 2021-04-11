@@ -126,11 +126,6 @@ extern uint32 _network_join_bytes_total;
 
 extern uint8 _network_reconnect;
 
-extern bool _network_udp_server;
-extern uint16 _network_udp_broadcast;
-
-extern uint8 _network_advertise_retries;
-
 extern CompanyMask _network_company_passworded;
 
 void NetworkTCPQueryServer(NetworkAddress address);
