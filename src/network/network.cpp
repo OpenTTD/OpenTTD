@@ -74,18 +74,11 @@ uint32 _sync_seed_2;                  ///< Second part of the seed.
 #endif
 uint32 _sync_frame;                   ///< The frame to perform the sync check.
 bool _network_first_time;             ///< Whether we have finished joining or not.
-bool _network_udp_server;             ///< Is the UDP server started?
-uint16 _network_udp_broadcast;        ///< Timeout for the UDP broadcasts.
-uint8 _network_advertise_retries;     ///< The number of advertisement retries we did.
 CompanyMask _network_company_passworded; ///< Bitmask of the password status of all companies.
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 static_assert((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
 static_assert((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH);
-
-extern NetworkUDPSocketHandler *_udp_client_socket; ///< udp client socket
-extern NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket
-extern NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
 
 /** The amount of clients connected */
 byte _network_clients_connected = 0;
@@ -724,7 +717,7 @@ bool NetworkServerStart()
 
 	/* Try to start UDP-server */
 	DEBUG(net, 1, "starting listeners for incoming server queries");
-	_network_udp_server = _udp_server_socket->Listen();
+	NetworkUDPServerListen();
 
 	_network_company_states = CallocT<NetworkCompanyState>(MAX_COMPANIES);
 	_network_server = true;
@@ -1060,7 +1053,6 @@ void NetworkStartUp()
 	_network_available = NetworkCoreInitialize();
 	_network_dedicated = false;
 	_network_need_advertise = true;
-	_network_advertise_retries = 0;
 
 	/* Generate an server id when there is none yet */
 	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateServerId();

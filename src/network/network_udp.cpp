@@ -47,6 +47,10 @@ NetworkUDPSocketHandler *_udp_client_socket = nullptr; ///< udp client socket
 NetworkUDPSocketHandler *_udp_server_socket = nullptr; ///< udp server socket
 NetworkUDPSocketHandler *_udp_master_socket = nullptr; ///< udp master socket
 
+static bool _network_udp_server;         ///< Is the UDP server started?
+static uint16 _network_udp_broadcast;    ///< Timeout for the UDP broadcasts.
+static uint8 _network_advertise_retries; ///< The number of advertisement retries we did.
+
 /**
  * Helper function doing the actual work for querying the server.
  * @param address The address of the server.
@@ -622,6 +626,13 @@ void NetworkUDPInitialize()
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;
+	_network_advertise_retries = 0;
+}
+
+/** Start the listening of the UDP server component. */
+void NetworkUDPServerListen()
+{
+	_network_udp_server = _udp_server_socket->Listen();
 }
 
 /** Close all UDP related stuff. */
