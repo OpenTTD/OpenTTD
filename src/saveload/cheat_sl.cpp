@@ -33,6 +33,8 @@ static const SaveLoad _cheats_desc[] = {
 	SLE_VAR(Cheats, setup_prod.value, SLE_BOOL),
 	SLE_VAR(Cheats, edit_max_hl.been_used, SLE_BOOL),
 	SLE_VAR(Cheats, edit_max_hl.value, SLE_BOOL),
+	SLE_CONDVAR(Cheats, station_rating.been_used, SLE_BOOL, SLV_STATION_RATING_CHEAT, SL_MAX_VERSION),
+	SLE_CONDVAR(Cheats, station_rating.value, SLE_BOOL, SLV_STATION_RATING_CHEAT, SL_MAX_VERSION),
 };
 
 

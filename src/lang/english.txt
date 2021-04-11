@@ -2196,6 +2196,7 @@ STR_CHEAT_EDIT_MAX_HL_QUERY_CAPT                                :{WHITE}Edit the
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Change date: {ORANGE}{DATE_SHORT}
 STR_CHEAT_CHANGE_DATE_QUERY_CAPT                                :{WHITE}Change current year
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING1}
+STR_CHEAT_STATION_RATING                                        :{LTBLUE}Fix station ratings at 100%: {ORANGE}{STRING1}
 
 # Livery window
 STR_LIVERY_CAPTION                                              :{WHITE}{COMPANY} - Colour Scheme
