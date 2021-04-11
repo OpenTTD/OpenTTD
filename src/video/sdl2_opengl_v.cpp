@@ -69,6 +69,11 @@ const char *VideoDriver_SDL_OpenGL::Start(const StringList &param)
 	int w, h;
 	SDL_GetWindowSize(this->sdl_window, &w, &h);
 	this->ClientSizeChanged(w, h, true);
+	/* We should have a valid screen buffer now. If not, something went wrong and we should abort. */
+	if (_screen.dst_ptr == nullptr) {
+		this->Stop();
+		return "Can't get pointer to screen buffer";
+	}
 
 	return nullptr;
 }
