@@ -239,7 +239,18 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		strecpy(this->hostname, fam == AF_INET ? "0.0.0.0" : "::", lastof(this->hostname));
 	}
 
+	static bool _resolve_timeout_error_message_shown = false;
+	auto start = std::chrono::steady_clock::now();
 	int e = getaddrinfo(StrEmpty(this->hostname) ? nullptr : this->hostname, port_name, &hints, &ai);
+	auto end = std::chrono::steady_clock::now();
+	std::chrono::seconds duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+	if (!_resolve_timeout_error_message_shown && duration >= std::chrono::seconds(5)) {
+		DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s took %i seconds",
+				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), (int)duration.count());
+		DEBUG(net, 0, "  this is likely an issue in the DNS name resolver's configuration causing it to time out");
+		_resolve_timeout_error_message_shown = true;
+	}
+
 
 	if (reset_hostname) strecpy(this->hostname, "", lastof(this->hostname));
 
