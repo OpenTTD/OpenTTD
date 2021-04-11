@@ -1007,6 +1007,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Acelerac
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marca esta casilla para permitir que OpenTTD intente usar aceleración por hardware. El cambio de configuración sólo tendrá efecto después de reiniciar el juego
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}El ajuste sólo tendrá efecto después de reiniciar el juego
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona el tamaño de los elementos de la interfaz a usar
 

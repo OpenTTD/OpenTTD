@@ -151,6 +151,7 @@ STR_ABBREV_NONE                                                 :{TINY_FONT}NU
 STR_ABBREV_ALL                                                  :{TINY_FONT}TOT
 
 # 'Mode' of transport for cargoes
+STR_BAGS                                                        :{COMMA}{NBSP}sac{P "" "" "de "}sac{P "" i i}
 STR_TONS                                                        :{COMMA} tone
 STR_LITERS                                                      :{COMMA} litri
 STR_ITEMS                                                       :{COMMA} bucăți
@@ -970,6 +971,7 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Rezoluţ
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Alege rezoluţia dorită pentru joc
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecificată)
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
+
 
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Mărime interfată

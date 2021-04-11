@@ -964,6 +964,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}தி�
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :மற்றவை
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}இடைமுக அளவு
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :சராசரி

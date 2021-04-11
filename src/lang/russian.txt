@@ -1151,6 +1151,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Аппа
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Поставьте отметку, чтобы включить аппаратное ускорение в OpenTTD. Но для этого игру придётся перезапустить.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Эта настройка будет применена только после перезапуска игры
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Размер элементов интерфейса
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Выберите размер элементов интерфейса
 
@@ -1514,7 +1515,7 @@ STR_CONFIG_SETTING_SNOW_COVERAGE                                :Снежное 
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Это значение определяет примерную относительную площадь суши, покрытой снегом в субарктическом климате.Наличие снега влияет на расстановку предприятий и на условия роста городов.{}Используется только при создании карты. Земля чуть выше уровня моря никогда не покрывается снегом.
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Песчаное покрытие: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Укажите приблизительное количество пустыни на тропическом ландшафте. Пустыня также влияет на промышленное производство. Используется только во время создания карты
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Это значение определяет примерную относительную площадь суши, покрытой песком в тропическом климате. Пустыни влияют на расположение предприятий.{}Используется только при создании карты.
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Грубость ландшафта: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(Только для TerraGenesis){}Выберите количество гор и холмов на карте. На гладком ландшафте холмов немного и они более пологие. На грубом - много гор, и ландшафт может показаться слишком однообразным.
