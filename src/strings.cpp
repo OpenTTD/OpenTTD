@@ -1719,6 +1719,15 @@ bool LanguagePackHeader::IsValid() const
 }
 
 /**
+ * Check whether a translation is sufficiently finished to offer it to the public.
+ */
+bool LanguagePackHeader::IsReasonablyFinished() const
+{
+	/* "Less than 25% missing" is "sufficiently finished". */
+	return 4 * this->missing < LANGUAGE_TOTAL_STRINGS;
+}
+
+/**
  * Read a particular language.
  * @param lang The metadata about the language.
  * @return Whether the loading went okay or not.
@@ -1972,6 +1981,10 @@ void InitializeLanguagePacks()
 		}
 
 		if (strcmp (lng.isocode, "en_GB") == 0) en_GB_fallback    = &lng;
+
+		/* Only auto-pick finished translations */
+		if (!lng.IsReasonablyFinished()) continue;
+
 		if (strncmp(lng.isocode, lang, 5) == 0) chosen_language   = &lng;
 		if (strncmp(lng.isocode, lang, 2) == 0) language_fallback = &lng;
 	}
