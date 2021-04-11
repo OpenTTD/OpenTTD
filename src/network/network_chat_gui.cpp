@@ -52,11 +52,34 @@ static bool _chat_tab_completion_active;  ///< Whether tab completion is active.
 static uint MAX_CHAT_MESSAGES = 0;        ///< The limit of chat messages to show.
 
 /**
+ * Time the chat history was marked dirty. This is used to determine if expired
+ * messages have recently expired and should cause a redraw to hide them.
+ */
+static std::chrono::steady_clock::time_point _chatmessage_dirty_time;
+
+/**
  * The chatbox grows from the bottom so the coordinates are pixels from
  * the left and pixels from the bottom. The height is the maximum height.
  */
 static PointDimension _chatmsg_box;
 static uint8 *_chatmessage_backup = nullptr; ///< Backup in case text is moved.
+
+/**
+ * Test if there are any chat messages to display.
+ * @param show_all Set if all messages should be included, instead of unexpired only.
+ * @return True iff there are chat messages to display.
+ */
+static inline bool HaveChatMessages(bool show_all)
+{
+	if (show_all) return _chatmsg_list.size() != 0;
+
+	auto now = std::chrono::steady_clock::now();
+	for (auto &cmsg : _chatmsg_list) {
+		if (cmsg.remove_time >= now) return true;
+	}
+
+	return false;
+}
 
 /**
  * Add a text message to the 'chat window' to be shown
@@ -84,6 +107,7 @@ void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const char *m
 	cmsg->colour = (colour & TC_IS_PALETTE_COLOUR) ? colour : TC_WHITE;
 	cmsg->remove_time = std::chrono::steady_clock::now() + std::chrono::seconds(duration);
 
+	_chatmessage_dirty_time = std::chrono::steady_clock::now();
 	_chatmessage_dirty = true;
 }
 
@@ -149,6 +173,7 @@ void NetworkUndrawChatMessage()
 		/* And make sure it is updated next time */
 		VideoDriver::GetInstance()->MakeDirty(x, y, width, height);
 
+		_chatmessage_dirty_time = std::chrono::steady_clock::now();
 		_chatmessage_dirty = true;
 	}
 }
@@ -156,13 +181,13 @@ void NetworkUndrawChatMessage()
 /** Check if a message is expired. */
 void NetworkChatMessageLoop()
 {
-	for (auto it = _chatmsg_list.begin(); it != _chatmsg_list.end();) {
+	auto now = std::chrono::steady_clock::now();
+	for (auto &cmsg : _chatmsg_list) {
 		/* Message has expired, remove from the list */
-		if (std::chrono::steady_clock::now() > it->remove_time) {
-			it = _chatmsg_list.erase(it);
+		if (now > cmsg.remove_time && _chatmessage_dirty_time < cmsg.remove_time) {
+			_chatmessage_dirty_time = now;
 			_chatmessage_dirty = true;
-		} else {
-			it++;
+			break;
 		}
 	}
 }
@@ -173,13 +198,16 @@ void NetworkDrawChatMessage()
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	if (!_chatmessage_dirty) return;
 
+	const Window *w = FindWindowByClass(WC_SEND_NETWORK_MSG);
+	bool show_all = (w != nullptr);
+
 	/* First undraw if needed */
 	NetworkUndrawChatMessage();
 
 	if (_iconsole_mode == ICONSOLE_FULL) return;
 
 	/* Check if we have anything to draw at all */
-	if (_chatmsg_list.size() == 0) return;
+	if (!HaveChatMessages(show_all)) return;
 
 	int x      = _chatmsg_box.x;
 	int y      = _screen.height - _chatmsg_box.y - _chatmsg_box.height;
@@ -201,8 +229,10 @@ void NetworkDrawChatMessage()
 
 	_cur_dpi = &_screen; // switch to _screen painting
 
+	auto now = std::chrono::steady_clock::now();
 	int string_height = 0;
 	for (auto &cmsg : _chatmsg_list) {
+		if (!show_all && cmsg.remove_time < now) continue;
 		SetDParamStr(0, cmsg.message);
 		string_height += GetStringLineCount(STR_JUST_RAW_STRING, width - 1) * FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING;
 	}
@@ -220,6 +250,7 @@ void NetworkDrawChatMessage()
 	int ypos = bottom - 2;
 
 	for (auto &cmsg : _chatmsg_list) {
+		if (!show_all && cmsg.remove_time < now) continue;
 		ypos = DrawStringMultiLine(_chatmsg_box.x + 3, _chatmsg_box.x + _chatmsg_box.width - 1, top, ypos, cmsg.message, cmsg.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - NETWORK_CHAT_LINE_SPACING;
 		if (ypos < top) break;
 	}
