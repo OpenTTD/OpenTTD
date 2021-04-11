@@ -1305,6 +1305,12 @@ const char *VideoDriver_Win32OpenGL::Start(const StringList &param)
 	}
 
 	this->ClientSizeChanged(this->width, this->height, true);
+	/* We should have a valid screen buffer now. If not, something went wrong and we should abort. */
+	if (_screen.dst_ptr == nullptr) {
+		this->Stop();
+		_cur_resolution = old_res;
+		return "Can't get pointer to screen buffer";
+	}
 
 	MarkWholeScreenDirty();
 
