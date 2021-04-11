@@ -58,6 +58,7 @@ struct LanguagePackHeader {
 	char cases[MAX_NUM_CASES][CASE_GENDER_LEN];     ///< the cases used by this translation
 
 	bool IsValid() const;
+	bool IsReasonablyFinished() const;
 
 	/**
 	 * Get the index for the given gender.
