@@ -36,6 +36,7 @@
 #include "querystring_gui.h"
 #include "fontcache.h"
 #include "zoom_func.h"
+#include "rev.h"
 #include "video/video_driver.hpp"
 #include "music/music_driver.hpp"
 
@@ -217,7 +218,8 @@ struct GameOptionsWindow : Window {
 
 			case WID_GO_LANG_DROPDOWN: { // Setup interface language dropdown
 				for (uint i = 0; i < _languages.size(); i++) {
-					auto item = new DropDownListParamStringItem(STR_JUST_RAW_STRING, i, false);
+					bool hide_percentage = IsReleasedVersion() || _languages[i].missing < _settings_client.gui.missing_strings_threshold;
+					auto item = new DropDownListParamStringItem(hide_percentage ? STR_JUST_RAW_STRING : STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE, i, false);
 					if (&_languages[i] == _current_language) {
 						*selected_index = i;
 						item->SetParamStr(0, _languages[i].own_name);
@@ -229,6 +231,7 @@ struct GameOptionsWindow : Window {
 						 * entries in the dropdown list. */
 						item->SetParamStr(0, _languages[i].name);
 					}
+					item->SetParam(1, (LANGUAGE_TOTAL_STRINGS - _languages[i].missing) * 100 / LANGUAGE_TOTAL_STRINGS);
 					list.emplace_back(item);
 				}
 				std::sort(list.begin(), list.end(), DropDownListStringItem::NatSortFunc);
