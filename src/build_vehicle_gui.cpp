@@ -32,6 +32,7 @@
 #include "autoreplace_func.h"
 #include "querystring_gui.h"
 #include "stringfilter_type.h"
+#include "hotkeys.h"
 
 #include "widgets/build_vehicle_widget.h"
 
@@ -1041,6 +1042,11 @@ void DisplayVehicleSortDropDown(Window *w, VehicleType vehicle_type, int selecte
 	ShowDropDownMenu(w, _engine_sort_listing[vehicle_type], selected, button, 0, hidden_mask);
 }
 
+/** Enum referring to the Hotkeys in the build vehicle window */
+enum BuildVehicleHotkeys {
+	BVHK_FOCUS_FILTER_BOX, ///< Focus the edit box for editing the filter string
+};
+
 /** GUI for building vehicles. */
 struct BuildVehicleWindow : Window {
 	VehicleType vehicle_type;                   ///< Type of vehicles shown in the window.
@@ -1713,13 +1719,37 @@ struct BuildVehicleWindow : Window {
 			this->InvalidateData();
 		}
 	}
+
+	EventState OnHotkey(int hotkey) override
+	{
+		switch (hotkey) {
+			case BVHK_FOCUS_FILTER_BOX:
+				this->SetFocusedWidget(WID_BV_FILTER);
+				SetFocusedWindow(this); // The user has asked to give focus to the text box, so make sure this window is focused.
+				break;
+
+			default:
+				return ES_NOT_HANDLED;
+		}
+
+		return ES_HANDLED;
+	}
+
+	static HotkeyList hotkeys;
 };
+
+static Hotkey buildvehicle_hotkeys[] = {
+	Hotkey('F', "focus_filter_box", BVHK_FOCUS_FILTER_BOX),
+	HOTKEY_LIST_END
+};
+HotkeyList BuildVehicleWindow::hotkeys("buildvehicle", buildvehicle_hotkeys);
 
 static WindowDesc _build_vehicle_desc(
 	WDP_AUTO, "build_vehicle", 240, 268,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_CONSTRUCTION,
-	_nested_build_vehicle_widgets, lengthof(_nested_build_vehicle_widgets)
+	_nested_build_vehicle_widgets, lengthof(_nested_build_vehicle_widgets),
+	&BuildVehicleWindow::hotkeys
 );
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
