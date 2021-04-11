@@ -330,21 +330,18 @@ static void ShutdownGame()
 	UninitFreeType();
 }
 
-/**
-* Get the introduction game landscape specific save file.
-*/
+/** Get the introduction game landscape specific save file. */
 static std::string GetIntroGameSaveFile(LandscapeID landscape)
 {
-	switch (landscape)
-	{
-	case LT_ARCTIC:
-		return "opntitle_arctic.sav";
-	case LT_TOYLAND:
-		return "opntitle_toyland.sav";
-	case LT_TROPIC:
-		return "opntitle_tropic.sav";
-	default:
-		return "opntitle.dat";
+	switch (landscape) {
+		case LT_ARCTIC:
+			return "opntitle_arctic.sav";
+		case LT_TOYLAND:
+			return "opntitle_toyland.sav";
+		case LT_TROPIC:
+			return "opntitle_tropic.sav";
+		default:
+			return "opntitle.dat";
 	}
 }
 
