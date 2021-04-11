@@ -534,7 +534,7 @@ static int DeterminePluralForm(int64 count, int plural_form)
 
 		/* Only one form.
 		 * Used in:
-		 *   Hungarian, Japanese, Korean, Turkish */
+		 *   Hungarian, Japanese, Turkish */
 		case 1:
 			return 0;
 
