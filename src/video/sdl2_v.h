@@ -17,7 +17,7 @@
 /** The SDL video driver. */
 class VideoDriver_SDL_Base : public VideoDriver {
 public:
-	VideoDriver_SDL_Base() : sdl_window(nullptr) {}
+	VideoDriver_SDL_Base() : sdl_window(nullptr), buffer_locked(false) {}
 
 	const char *Start(const StringList &param) override;
 
