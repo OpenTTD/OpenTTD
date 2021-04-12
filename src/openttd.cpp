@@ -1450,11 +1450,15 @@ static void DoAutosave()
  * done in the game-thread, and not in the draw-thread (which most often
  * triggers this request).
  * @param callback Optional callback to call when NewGRF scan is completed.
+ * @return True when the NewGRF scan was actually requested, false when the scan was already running.
  */
-void RequestNewGRFScan(NewGRFScanCallback *callback)
+bool RequestNewGRFScan(NewGRFScanCallback *callback)
 {
+	if (_request_newgrf_scan) return false;
+
 	_request_newgrf_scan = true;
 	_request_newgrf_scan_callback = callback;
+	return true;
 }
 
 void GameLoop()
