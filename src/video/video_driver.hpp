@@ -36,7 +36,7 @@ class VideoDriver : public Driver {
 	const uint DEFAULT_WINDOW_HEIGHT = 480u; ///< Default window height.
 
 public:
-	VideoDriver() : is_game_threaded(true), change_blitter(nullptr) {}
+	VideoDriver() : fast_forward_key_pressed(false), fast_forward_via_key(false), is_game_threaded(true), change_blitter(nullptr) {}
 
 	/**
 	 * Mark a particular area dirty.
