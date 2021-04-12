@@ -1007,6 +1007,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Acelera�
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marque esta caixa para permitir que o OpenTTD tente usar a aceleração por hardware. Uma configuração alterada só será aplicada após reiniciar o jogo
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A definição só terá efeito após reiniciar o jogo
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar "V-Sync" no ecrã. Uma configuração alterada só terá efeito quando reiniciar o jogo. Só funciona com a aceleração por hardware ativada
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamanho interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleccionar tamanho do elemento de interface a usar
@@ -1270,7 +1272,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, os 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por predefinição: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo para em cada estação por onde passa. Ao ativar esta configuração, um veículo irá passar por todas as estações no seu percurso, parando apenas no destino final. Esta opção só tem efeito para novas rotas, mas as rotas existentes podem ser alteradas para funcionarem de forma igual.
 STR_CONFIG_SETTING_STOP_LOCATION                                :Ordens novas do comboio param {STRING} da plataforma
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local onde um combóio parará na plataforma por omissão. A opção 'extremo mais próximo' significa perto do ponto de entrada, 'meio' significa no meio da plataforma e 'extremo mais distante' significa o mais distante possível do ponto de entrada. Esta opção apenas afecta o valor por omissão para novas encomendas. Encomendas individuais podem utilizar qualquer uma das opções independentemente desta
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local de paragem do comboio nas plataformas por omissão. A opção 'extremo mais próximo' significa perto do ponto de entrada, 'meio' significa no meio da plataforma e 'extremo mais distante' significa o mais distante possível do ponto de entrada. Esta opção apenas afeta o valor por omissão para novas ordens. Ordens individuais podem utilizar qualquer uma das opções independentemente desta
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no extremo perto
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :no meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :no extremo longe
@@ -1317,7 +1319,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activar esta pr
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar se o veículo está perdido: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostrar mensagens sobre veículos que não conseguem encontrar o caminho para o seu próximo destino.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Analisar ordens dos veículos: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quando activo, as encomendas dos veículos são periodicamente revistas e algumas falhas óbvias são anunciadas através de notícias, quando detectadas
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quando ativo, as ordens dos veículos são periodicamente revistas e algumas falhas óbvias são anunciadas através de notícias, quando detetadas
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De todos os veículos

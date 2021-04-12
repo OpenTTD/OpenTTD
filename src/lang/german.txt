@@ -1007,6 +1007,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Dieses Kästchen ankreuzen, um OpenTTD zu erlauben, die Hardwarebeschleunigung zu verwenden. Eine geänderte Einstellung wird nur beim Spielneustart wirksam
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Die Einstellung tritt nur nach einem Neustart des Spiels in Kraft
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Dieses Kästchen ankreuzen, um VSync zu aktivieren. Eine geänderte Einstellung wird nur beim Spielneustart wirksam. Funktioniert nur mit aktivierter Hardwarebeschleunigung
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Größe der Bedienelemente
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Wähle die Größe der Bedienelemente
