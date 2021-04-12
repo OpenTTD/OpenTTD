@@ -77,6 +77,8 @@ private:
 	const char *Init();
 	bool InitShaders();
 
+	void InternalClearCursorCache();
+
 	void RenderOglSprite(OpenGLSprite *gl_sprite, PaletteID pal, int x, int y, ZoomLevel zoom);
 
 public:

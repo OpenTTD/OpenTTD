@@ -510,7 +510,7 @@ OpenGLBackend::~OpenGLBackend()
 		_glDeleteBuffers(1, &this->anim_pbo);
 	}
 	if (_glDeleteTextures != nullptr) {
-		ClearCursorCache();
+		this->InternalClearCursorCache();
 		OpenGLSprite::Destroy();
 
 		_glDeleteTextures(1, &this->vid_texture);
@@ -1082,12 +1082,7 @@ void OpenGLBackend::PopulateCursorCache()
 		this->clear_cursor_cache = false;
 		this->last_sprite_pal = (PaletteID)-1;
 
-		Sprite *sp;
-		while ((sp = this->cursor_cache.Pop()) != nullptr) {
-			OpenGLSprite *sprite = (OpenGLSprite *)sp->data;
-			sprite->~OpenGLSprite();
-			free(sp);
-		}
+		this->InternalClearCursorCache();
 	}
 
 	this->cursor_pos = _cursor.pos;
@@ -1112,6 +1107,19 @@ void OpenGLBackend::PopulateCursorCache()
 
 /**
  * Clear all cached cursor sprites.
+ */
+void OpenGLBackend::InternalClearCursorCache()
+{
+	Sprite *sp;
+	while ((sp = this->cursor_cache.Pop()) != nullptr) {
+		OpenGLSprite *sprite = (OpenGLSprite *)sp->data;
+		sprite->~OpenGLSprite();
+		free(sp);
+	}
+}
+
+/**
+ * Queue a request for cursor cache clear.
  */
 void OpenGLBackend::ClearCursorCache()
 {
