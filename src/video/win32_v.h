@@ -17,7 +17,7 @@
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
 public:
-	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false) {}
+	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false), buffer_locked(false) {}
 
 	void Stop() override;
 
