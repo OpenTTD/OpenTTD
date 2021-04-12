@@ -336,7 +336,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 
 	RoadType existing_rt = MayHaveRoad(tile) ? GetRoadType(tile, rtt) : INVALID_ROADTYPE;
 	/* The tile doesn't have the given road type */
-	if (existing_rt == INVALID_ROADTYPE) return_cmd_error((rtt == RTT_TRAM) ? STR_ERROR_THERE_IS_NO_TRAMWAY : STR_ERROR_THERE_IS_NO_ROAD);
+	if (existing_rt == INVALID_ROADTYPE) return CommandCost();
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD: {
@@ -374,7 +374,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 		CommandCost cost(EXPENSES_CONSTRUCTION);
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			/* Removing any roadbit in the bridge axis removes the roadtype (that's the behaviour remove-long-roads needs) */
-			if ((AxisToRoadBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) & pieces) == ROAD_NONE) return_cmd_error((rtt == RTT_TRAM) ? STR_ERROR_THERE_IS_NO_TRAMWAY : STR_ERROR_THERE_IS_NO_ROAD);
+			if ((AxisToRoadBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) & pieces) == ROAD_NONE) return CommandCost();
 
 			TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
 			/* Pay for *every* tile of the bridge or tunnel */
@@ -441,7 +441,7 @@ static CommandCost RemoveRoad(TileIndex tile, DoCommandFlag flags, RoadBits piec
 
 			/* limit the bits to delete to the existing bits. */
 			pieces &= present;
-			if (pieces == ROAD_NONE) return_cmd_error((rtt == RTT_TRAM) ? STR_ERROR_THERE_IS_NO_TRAMWAY : STR_ERROR_THERE_IS_NO_ROAD);
+			if (pieces == ROAD_NONE) return CommandCost();
 
 			/* Now set present what it will be after the remove */
 			present ^= pieces;
@@ -692,7 +692,7 @@ CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, R
 							}
 							return CommandCost();
 						}
-						return_cmd_error(STR_ERROR_ALREADY_BUILT);
+						return CommandCost();
 					}
 					/* Disallow breaking end-of-line of someone else
 					 * so trams can still reverse on this tile. */
@@ -715,11 +715,11 @@ CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, R
 					if (pieces & ComplementRoadBits(other_bits)) goto do_clear;
 					pieces = other_bits; // we need to pay for both roadbits
 
-					if (HasTileRoadType(tile, rtt)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+					if (HasTileRoadType(tile, rtt)) return CommandCost();
 					break;
 
 				case ROAD_TILE_DEPOT:
-					if ((GetAnyRoadBits(tile, rtt) & pieces) == pieces) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+					if ((GetAnyRoadBits(tile, rtt) & pieces) == pieces) return CommandCost();
 					goto do_clear;
 
 				default: NOT_REACHED();
@@ -790,14 +790,14 @@ CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, R
 		}
 
 		case MP_STATION: {
-			if ((GetAnyRoadBits(tile, rtt) & pieces) == pieces) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+			if ((GetAnyRoadBits(tile, rtt) & pieces) == pieces) return CommandCost();
 			if (!IsDriveThroughStopTile(tile)) goto do_clear;
 
 			RoadBits curbits = AxisToRoadBits(DiagDirToAxis(GetRoadStopDir(tile)));
 			if (pieces & ~curbits) goto do_clear;
 			pieces = curbits; // we need to pay for both roadbits
 
-			if (HasTileRoadType(tile, rtt)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+			if (HasTileRoadType(tile, rtt)) return CommandCost();
 			break;
 		}
 
@@ -805,7 +805,7 @@ CommandCost CmdBuildRoad(DoCommandFlag flags, TileIndex tile, RoadBits pieces, R
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) goto do_clear;
 			/* Only allow building the outern roadbit, so building long roads stops at existing bridges */
 			if (MirrorRoadBits(DiagDirToRoadBits(GetTunnelBridgeDirection(tile))) != pieces) goto do_clear;
-			if (HasTileRoadType(tile, rtt)) return_cmd_error(STR_ERROR_ALREADY_BUILT);
+			if (HasTileRoadType(tile, rtt)) return CommandCost();
 			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
 			CommandCost ret = TunnelBridgeIsFree(tile, GetOtherTunnelBridgeEnd(tile));
 			if (ret.Failed()) return ret;
