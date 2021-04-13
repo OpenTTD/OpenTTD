@@ -9,6 +9,7 @@
 
 #include "stdafx.h"
 #include "fileio_func.h"
+#include "random_access_file_type.h"
 #include "debug.h"
 #include "fios.h"
 #include "string_func.h"
@@ -29,22 +30,8 @@
 
 #include "safeguards.h"
 
-/** Size of the #Fio data buffer. */
-#define FIO_BUFFER_SIZE 512
-
-/** Structure for keeping several open files with just one data buffer. */
-struct Fio {
-	byte *buffer, *buffer_end;             ///< position pointer in local buffer and last valid byte of buffer
-	byte buffer_start[FIO_BUFFER_SIZE];    ///< local buffer when read from file
-	size_t pos;                            ///< current (system) position in file
-	FILE *cur_fh;                          ///< current file handle
-	std::string filename;                  ///< current filename
-	std::array<FILE *, MAX_FILE_SLOTS> handles;        ///< array of file handles we can have open
-	std::array<std::string, MAX_FILE_SLOTS> filenames; ///< array of filenames we (should) have open
-	std::array<std::string, MAX_FILE_SLOTS> shortnames;///< array of short names for spriteloader's use
-};
-
-static Fio _fio; ///< #Fio instance.
+static RandomAccessFile *_fio_current_file;                       ///< current file handle for the Fio functions
+static std::array<RandomAccessFile *, MAX_FILE_SLOTS> _fio_files; ///< array of random access files we can have open
 
 /** Whether the working directory should be scanned. */
 static bool _do_scan_working_directory = true;
@@ -58,7 +45,7 @@ extern std::string _highscore_file;
  */
 size_t FioGetPos()
 {
-	return _fio.pos + (_fio.buffer - _fio.buffer_end);
+	return _fio_current_file->GetPos();
 }
 
 /**
@@ -68,7 +55,7 @@ size_t FioGetPos()
  */
 const char *FioGetFilename(uint8 slot)
 {
-	return _fio.shortnames[slot].c_str();
+	return _fio_current_file->GetSimplifiedFilename().c_str();
 }
 
 /**
@@ -78,12 +65,7 @@ const char *FioGetFilename(uint8 slot)
  */
 void FioSeekTo(size_t pos, int mode)
 {
-	if (mode == SEEK_CUR) pos += FioGetPos();
-	_fio.buffer = _fio.buffer_end = _fio.buffer_start + FIO_BUFFER_SIZE;
-	_fio.pos = pos;
-	if (fseek(_fio.cur_fh, _fio.pos, SEEK_SET) < 0) {
-		DEBUG(misc, 0, "Seeking in %s failed", _fio.filename.c_str());
-	}
+	_fio_current_file->SeekTo(pos, mode);
 }
 
 /**
@@ -93,11 +75,10 @@ void FioSeekTo(size_t pos, int mode)
  */
 void FioSeekToFile(uint8 slot, size_t pos)
 {
-	FILE *f = _fio.handles[slot];
-	assert(f != nullptr);
-	_fio.cur_fh = f;
-	_fio.filename = _fio.filenames[slot];
-	FioSeekTo(pos, SEEK_SET);
+	RandomAccessFile *raf = _fio_files[slot];
+	assert(raf != nullptr);
+	_fio_current_file = raf;
+	_fio_current_file->SeekTo(pos, SEEK_SET);
 }
 
 /**
@@ -106,15 +87,7 @@ void FioSeekToFile(uint8 slot, size_t pos)
  */
 byte FioReadByte()
 {
-	if (_fio.buffer == _fio.buffer_end) {
-		_fio.buffer = _fio.buffer_start;
-		size_t size = fread(_fio.buffer, 1, FIO_BUFFER_SIZE, _fio.cur_fh);
-		_fio.pos += size;
-		_fio.buffer_end = _fio.buffer_start + size;
-
-		if (size == 0) return 0;
-	}
-	return *_fio.buffer++;
+	return _fio_current_file->ReadByte();
 }
 
 /**
@@ -123,14 +96,7 @@ byte FioReadByte()
  */
 void FioSkipBytes(int n)
 {
-	for (;;) {
-		int m = std::min<int>(_fio.buffer_end - _fio.buffer, n);
-		_fio.buffer += m;
-		n -= m;
-		if (n == 0) break;
-		FioReadByte();
-		n--;
-	}
+	return _fio_current_file->SkipBytes(n);
 }
 
 /**
@@ -139,8 +105,7 @@ void FioSkipBytes(int n)
  */
 uint16 FioReadWord()
 {
-	byte b = FioReadByte();
-	return (FioReadByte() << 8) | b;
+	return _fio_current_file->ReadWord();
 }
 
 /**
@@ -149,8 +114,7 @@ uint16 FioReadWord()
  */
 uint32 FioReadDword()
 {
-	uint b = FioReadWord();
-	return (FioReadWord() << 16) | b;
+	return _fio_current_file->ReadDword();
 }
 
 /**
@@ -160,30 +124,15 @@ uint32 FioReadDword()
  */
 void FioReadBlock(void *ptr, size_t size)
 {
-	FioSeekTo(FioGetPos(), SEEK_SET);
-	_fio.pos += fread(ptr, 1, size, _fio.cur_fh);
-}
-
-/**
- * Close the file at the given slot number.
- * @param slot File index to close.
- */
-static inline void FioCloseFile(int slot)
-{
-	if (_fio.handles[slot] != nullptr) {
-		fclose(_fio.handles[slot]);
-
-		_fio.shortnames[slot].clear();
-
-		_fio.handles[slot] = nullptr;
-	}
+	_fio_current_file->ReadBlock(ptr, size);
 }
 
 /** Close all slotted open files. */
 void FioCloseAll()
 {
-	for (int i = 0; i != lengthof(_fio.handles); i++) {
-		FioCloseFile(i);
+	for (int i = 0; i != lengthof(_fio_files); i++) {
+		delete _fio_files[i];
+		_fio_files[i] = nullptr;
 	}
 }
 
@@ -195,24 +144,10 @@ void FioCloseAll()
  */
 void FioOpenFile(int slot, const std::string &filename, Subdirectory subdir)
 {
-	FILE *f;
-
-	f = FioFOpenFile(filename, "rb", subdir);
-	if (f == nullptr) usererror("Cannot open file '%s'", filename.c_str());
-	long pos = ftell(f);
-	if (pos < 0) usererror("Cannot read file '%s'", filename.c_str());
-
-	FioCloseFile(slot); // if file was opened before, close it
-	_fio.handles[slot] = f;
-	_fio.filenames[slot] = filename;
-
-	/* Store the filename without path and extension */
-	auto t = filename.rfind(PATHSEPCHAR);
-	std::string sn = filename.substr(t != std::string::npos ? t + 1 : 0);
-	_fio.shortnames[slot] = sn.substr(0, sn.rfind('.'));
-	strtolower(_fio.shortnames[slot]);
-
-	FioSeekToFile(slot, (size_t)pos);
+	RandomAccessFile *raf = new RandomAccessFile(filename, subdir);
+	delete _fio_files[slot];
+	_fio_files[slot] = raf;
+	_fio_current_file = raf;
 }
 
 static const char * const _subdirs[] = {

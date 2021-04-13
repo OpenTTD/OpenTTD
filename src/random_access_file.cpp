@@ -51,7 +51,7 @@ RandomAccessFile::~RandomAccessFile()
  * Get the filename of the opened file with the path from the SubDirectory and the extension.
  * @return Name of the file.
  */
-const std::string& RandomAccessFile::GetFilename() const
+const std::string &RandomAccessFile::GetFilename() const
 {
 	return this->filename;
 }
@@ -61,7 +61,7 @@ const std::string& RandomAccessFile::GetFilename() const
  * file without the SubDirectory or extension in lower case.
  * @return Name of the file.
  */
-const std::string& RandomAccessFile::GetSimplifiedFilename() const
+const std::string &RandomAccessFile::GetSimplifiedFilename() const
 {
 	return this->simplified_filename;
 }
