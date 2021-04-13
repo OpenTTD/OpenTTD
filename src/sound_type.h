@@ -11,7 +11,7 @@
 #define SOUND_TYPE_H
 
 struct SoundEntry {
-	uint8 file_slot;
+	class RandomAccessFile *file;
 	size_t file_offset;
 	size_t file_size;
 	uint16 rate;

@@ -40,6 +40,14 @@ extern std::string _config_file;
 extern std::string _highscore_file;
 
 /**
+ * Transition helper to get the RandomAccessFile associated with a given slot.
+ */
+RandomAccessFile *FioGetRandomAccessFile(int slot)
+{
+	return _fio_files[slot];
+}
+
+/**
  * Get position in the current file.
  * @return Position in the file.
  */

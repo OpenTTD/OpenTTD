@@ -91,8 +91,6 @@ enum FileSlots {
 	 * and thus cannot be used for files, which are continuously accessed during a game.
 	 */
 	CONFIG_SLOT    =  0,
-	/** Slot for the sound. */
-	SOUND_SLOT     =  1,
 	/** First slot usable for (New)GRFs used during the game. */
 	FIRST_GRF_SLOT =  2,
 	/** Maximum number of slots. */
