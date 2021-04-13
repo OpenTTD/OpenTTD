@@ -7553,7 +7553,7 @@ static void LoadGRFSound(size_t offs, SoundEntry *sound)
 
 	if (offs != SIZE_MAX) {
 		/* Sound is present in the NewGRF. */
-		sound->file_slot = _cur.file_index;
+		sound->file = FioGetRandomAccessFile(_cur.file_index);
 		sound->file_offset = offs;
 		sound->grf_container_ver = _cur.grf_container_ver;
 	}

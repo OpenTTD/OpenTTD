@@ -26,6 +26,7 @@ void FioCloseAll();
 void FioOpenFile(int slot, const std::string &filename, Subdirectory subdir);
 void FioReadBlock(void *ptr, size_t size);
 void FioSkipBytes(int n);
+class RandomAccessFile *FioGetRandomAccessFile(int slot);
 
 void FioFCloseFile(FILE *f);
 FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize = nullptr);
