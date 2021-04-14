@@ -91,13 +91,13 @@ TEST_CASE("Packet")
 		packet.Send_string("openttd");
 
 		CHECK(packet.size == 11);
-		CHECK(*++newData == 'o');
-		CHECK(*++newData == 'p');
-		CHECK(*++newData == 'e');
-		CHECK(*++newData == 'n');
-		CHECK(*++newData == 't');
-		CHECK(*++newData == 't');
-		CHECK(*++newData == 'd');
+		CHECK(*++newData == 0x6F);
+		CHECK(*++newData == 0x70);
+		CHECK(*++newData == 0x65);
+		CHECK(*++newData == 0x6E);
+		CHECK(*++newData == 0x74);
+		CHECK(*++newData == 0x74);
+		CHECK(*++newData == 0x64);
 		CHECK(*++newData == '\0');
 	}
 
@@ -106,10 +106,34 @@ TEST_CASE("Packet")
 		packet.Send_string("open\0ttd");
 
 		CHECK(packet.size == 8);
-		CHECK(*++newData == 'o');
-		CHECK(*++newData == 'p');
-		CHECK(*++newData == 'e');
-		CHECK(*++newData == 'n');
+		CHECK(*++newData == 0x6F);
+		CHECK(*++newData == 0x70);
+		CHECK(*++newData == 0x65);
+		CHECK(*++newData == 0x6E);
+		CHECK(*++newData == '\0');
+	}
+
+	SECTION("Send_string - emoji")
+	{
+		packet.Send_string("🚂🚌🚆🚗");
+
+		CHECK(packet.size == 20);
+		CHECK(*++newData == 0xF0); // locomotive
+		CHECK(*++newData == 0x9F);
+		CHECK(*++newData == 0x9A);
+		CHECK(*++newData == 0x82);
+		CHECK(*++newData == 0xF0); // bus
+		CHECK(*++newData == 0x9F);
+		CHECK(*++newData == 0x9A);
+		CHECK(*++newData == 0x8C);
+		CHECK(*++newData == 0xF0); // train
+		CHECK(*++newData == 0x9F);
+		CHECK(*++newData == 0x9A);
+		CHECK(*++newData == 0x86);
+		CHECK(*++newData == 0xF0); // automobile
+		CHECK(*++newData == 0x9F);
+		CHECK(*++newData == 0x9A);
+		CHECK(*++newData == 0x97);
 		CHECK(*++newData == '\0');
 	}
 }
