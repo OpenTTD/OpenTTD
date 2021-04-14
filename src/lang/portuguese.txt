@@ -242,7 +242,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar j
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - apenas mostra a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Reajusta janela para tamanho por defeito. Ctrl+Clique para manter o tamanho actual como o por defeito
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para guardar o tamanho atual como padrão
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique para tambem salvar o estado como por omissão
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para reajustar janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
@@ -2448,7 +2448,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construi
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Escolher a classe da estação a mostrar
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Escolher o tipo de estação a construir
 
-STR_STATION_CLASS_DFLT                                          :Estação por defeito
+STR_STATION_CLASS_DFLT                                          :Estação padrão
 STR_STATION_CLASS_WAYP                                          :Pontos de passagem
 
 # Signal window
@@ -2878,7 +2878,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Cenário
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carregar mapa de alturas
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar mapa de alturas
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Carregue aqui para saltar para a directoria de gravação/carregamento por defeito
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clique aqui para saltar para o diretório atual de gravação/carregamento padrão
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, directorias e ficheiros de jogos guardados
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome escolhido para guardar o jogo
@@ -3903,11 +3903,11 @@ STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
 
-STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Máx. velocidade: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. máxima: {LTBLUE}{VELOCITY} {BLACK}Tipo de Aeronave: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de Aeronave: {LTBLUE}{STRING} {BLACK}Alcance: {LTBLUE}{COMMA} quadrados
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Max. velocidade: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Máx. velocidade: {LTBLUE}{VELOCITY} {BLACK}Máx. E.T.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tração Máx.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde o último serviço: {LTBLUE}{COMMA}
@@ -3926,7 +3926,7 @@ STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumentar
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuir intervalo de serviço por 10. Ctrl+Clique diminui o intervalo de serviço por 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Alterar tipo de intervalo de manutenção
-STR_VEHICLE_DETAILS_DEFAULT                                     :Por Defeito
+STR_VEHICLE_DETAILS_DEFAULT                                     :Padrão
 STR_VEHICLE_DETAILS_DAYS                                        :Dias
 STR_VEHICLE_DETAILS_PERCENT                                     :Percentagem
 

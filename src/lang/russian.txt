@@ -1148,9 +1148,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Другое
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Аппаратное ускорение
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Поставьте отметку, чтобы включить аппаратное ускорение в OpenTTD. Но для этого игру придётся перезапустить.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Нажмите здесь, чтобы включить/выключить аппаратное ускорение в OpenTTD. После этого игру потребуется перезапустить.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Эта настройка будет применена только после перезапуска игры
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Вертикальная синхронизация
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Нажмите здесь, чтобы включить/выключить вертикальную синхронизацию. После этого игру потребуется перезапустить. Работает только при включённом аппаратном ускорении.
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Размер элементов интерфейса
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Выберите размер элементов интерфейса

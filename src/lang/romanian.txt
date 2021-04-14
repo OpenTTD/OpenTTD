@@ -180,6 +180,7 @@ STR_COLOUR_DEFAULT                                              :Prestabilit
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}dale/zi
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cp
 STR_UNITS_POWER_METRIC                                          :{COMMA}cp
@@ -297,6 +298,7 @@ STR_SORT_BY_RATING                                              :Cotaţie
 STR_SORT_BY_NUM_VEHICLES                                        :Număr de vehicule
 STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Profit total în anul trecut
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Profit mediu în anul trecut
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Profit mediu în acest an
 
 # Group by options for vehicle list
 STR_GROUP_BY_SHARED_ORDERS                                      :Comenzi comune
@@ -643,8 +645,8 @@ STR_MUSIC_TRACK                                                 :{TINY_FONT}{BLA
 STR_MUSIC_XTITLE                                                :{TINY_FONT}{BLACK}Titlul
 STR_MUSIC_SHUFFLE                                               :{TINY_FONT}{BLACK}Aleator
 STR_MUSIC_PROGRAM                                               :{TINY_FONT}{BLACK}Program
-STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sari la piesa precedentă din selecţie
-STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sari la piesa următoare din selecţie
+STR_MUSIC_TOOLTIP_SKIP_TO_PREVIOUS_TRACK                        :{BLACK}Sari la piesa precedentă din selecție
+STR_MUSIC_TOOLTIP_SKIP_TO_NEXT_TRACK_IN_SELECTION               :{BLACK}Sari la următoarea piesă din selecție
 STR_MUSIC_TOOLTIP_STOP_PLAYING_MUSIC                            :{BLACK}Opreşte muzica
 STR_MUSIC_TOOLTIP_START_PLAYING_MUSIC                           :{BLACK}Porneşte muzica
 STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC                     :{BLACK}Foloseşte aceste indicatoare pentru a regla volumul muzicii şi al efectelor sonore
@@ -655,7 +657,7 @@ STR_MUSIC_TOOLTIP_SELECT_EZY_STREET_STYLE                       :{BLACK}Selectea
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_1_USER_DEFINED                  :{BLACK}Selectează programul personal 1
 STR_MUSIC_TOOLTIP_SELECT_CUSTOM_2_USER_DEFINED                  :{BLACK}Selectează programul personal 2
 STR_MUSIC_TOOLTIP_TOGGLE_PROGRAM_SHUFFLE                        :{BLACK}Comutator pentru amestecarea melodiilor (pornit/oprit)
-STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afişeaza fereastra pentru selecţia melodiilor
+STR_MUSIC_TOOLTIP_SHOW_MUSIC_TRACK_SELECTION                    :{BLACK}Afișează fereastra pentru selecția melodiilor
 
 # Playlist window
 STR_PLAYLIST_TRACK_NAME                                         :{TINY_FONT}{LTBLUE}{ZEROFILL_NUM} "{STRING}"
@@ -801,6 +803,7 @@ STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLAC
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(Preşedinte)
 
 STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} a sponsorizat construcţia unui nou oras {TOWN}!
+STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}Un nou oraș, numit {TOWN}, a fost construit!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Un nou obiectiv industrial ({STRING}) se construieşte lângă {TOWN}!
 STR_NEWS_INDUSTRY_PLANTED                                       :{BIG_FONT}{BLACK}O nouă {STRING} se plantează lângă {TOWN}!
@@ -919,6 +922,7 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Peso Mexican (M
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Noul Dolar Taiwanez (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Chinezesc (CNY)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Rupia Indiană (INR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysian (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Pe partea stângă
@@ -974,11 +978,14 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :(alta/nespecifi
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Accelerare hardware
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Setarea va avea efect doar după repornirea jocului
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Mărime interfată
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Alege mărimea elementelor de interfaţa
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(auto-detecție)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normală
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Mărime dublă
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Mărime împătrită
@@ -989,9 +996,11 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-detecție
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Mărime dublă
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafică
 
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Alegeți rata de reîmprospătare dorită
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratele de împrospătare de peste 60Hz ar putea afecta performanța.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set grafic de bază
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Selectează setul grafic de bază utilizat în joc
@@ -1085,6 +1094,7 @@ STR_TERRAIN_TYPE_FLAT                                           :Plat
 STR_TERRAIN_TYPE_HILLY                                          :Deluros
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Muntos
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpinist
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Înălțime personalizată ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Permisivă
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerantă
@@ -1166,6 +1176,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :Atitudinea cons
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Alege în ce măsură poluarea fonică si deranjamentul local provocat de o companie va afecta impresia orașului despre aceasta, si viitoarele planuri de construcție in zonă
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Înălțimea limită a hărții: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nu poți seta înălțimea maximă a hărții la această valoare. Cel puțin un munte de pe hartă este mai înalt de-atât.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite terraformarea sub clădiri şi şine fără eliminarea acestora
@@ -1231,7 +1242,7 @@ STR_CONFIG_SETTING_AUTOSCROLL_EVERY_VIEWPORT                    :fiecare ecran
 STR_CONFIG_SETTING_BRIBE                                        :Permite mituirea autorităţilor locale: {STRING}
 STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :Permite companiilor să încerce să mituiască autoritatea locală. Daca încercarea este descoperită de către un inspector, compania nu va mai putea executa nici o acțiune în oraș timp de șase luni
 STR_CONFIG_SETTING_ALLOW_EXCLUSIVE                              :Permite cumpărarea de drepturi exclusive de transport: {STRING}
-STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Dacă o companie cumpără drepturi exclusive de transport într-un oras, staţiilor oponenţilor (de pasageri şi mărfuri) nu vor primi niciun fel de cargo pentru un an întreg
+STR_CONFIG_SETTING_ALLOW_EXCLUSIVE_HELPTEXT                     :Dacă o companie cumpără drepturi exclusive de transport într-un oraș, stațiile concurenței (de pasageri și mărfuri) nu vor primi niciun fel de marfă timp de un an
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Permite finaţarea clădirilor noi: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Permite companiilor să doneze bani orașelor pentru construcția de noi locuințe
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Permite finanțarea reconstrucției străzilor locale: {STRING}
@@ -1316,6 +1327,7 @@ STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_ROUGH                   :Dur
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Foarte dur
 STR_CONFIG_SETTING_VARIETY                                      :Distribuția varietății: {STRING}
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis only) Specifică dacă harta conține și zone muntoase și teren plat. Deoarece aceasta face harta mai plată, alte setări ar trebui să adauge zone muntoase
+STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Numărul de râuri: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Alege câte râuri să fie generate
 STR_CONFIG_SETTING_TREE_PLACER                                  :Algoritm amplasare arbori: {STRING}
 STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Alegeți distribuția copacilor pe hartă: 'Original' plantează copacii dispersați uniform, 'Îmbunătățit' îi plantează grupat
@@ -1421,6 +1433,7 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definește stil
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimină automat semnalele când construiești căi ferate dacă ele îți vin în cale. Nu uita că asta ar putea conduce la accidente feroviare.
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limita de viteză pentru trecerea timpului: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% din viteza normală a jocului
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Fără limită (atât de rapid pe cât permite calculatorul tău)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Afișaj știri: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Redă sunet la afișarea sumarului știrilor
@@ -1540,7 +1553,7 @@ STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Dacă este acti
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentul din profitul pe secţiune care să fie plătit pentru alimentare: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentul din câştig care este oferit legăturilor intermediare pentru alimentare, oferind mai mult control asupra încasărilor
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Când se trage cu mouse-ul, plasează semnale la fiecare: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Configurează distanţa la care se vor construi semnale pe şină până la următorul obstacol (semnal, intersecţie), dacâ se trage cu mouse-ul
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Configurează distanța la care se vor construi semnale pe șină până la următorul obstacol (semnal, intersecție), dacă se trage cu mausul
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :La plasarea mai multor semale, păstrează distanţa fixă între acestea: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Construieşte automat semafoare înainte de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Alege anul din care se vor folosi semnale electrice pe calea feroviară. Înainte de acest an, se vor folosi semnale non-electrice care au aceeasi funcționalitate dar arată diferit
@@ -1642,6 +1655,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :Afişează vite
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Imperial (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metric (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unități de joc (dale/zi)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unitate putere vehicule: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Afişează puterea vehiculelor în interfaţă folosind unităţile selectate
@@ -2202,7 +2216,7 @@ STR_CONTENT_FILTER_TITLE                                        :{BLACK}Filtru n
 STR_CONTENT_OPEN_URL                                            :{BLACK}Vizitează site-ul web
 STR_CONTENT_OPEN_URL_TOOLTIP                                    :{BLACK}Vizitează site-ul web al acestei resurse
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarcă
-STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Porneşte descărcarea resurselor selectate
+STR_CONTENT_DOWNLOAD_CAPTION_TOOLTIP                            :{BLACK}Pornește descărcarea resurselor selectate
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total de descărcat: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO RESURSĂ
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Această resursă nu a fost selectată pentru descărcare
@@ -2433,7 +2447,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Construi
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Amplasează o baliză ce poate fi utilizată pentru direcţionare. Shift comută între amplasare/afişare cost estimat
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Construieşte apeduct. Shift comută între construire/afişare cost estimat
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Defineşte zona apei.{}Creează un canal, excepţie când Ctrl este apăsat la nivelul mării, ce va determina inundarea împrejurimilor
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Amplasează râuri
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Amplasează râuri. Ctrl selectează aria pe diagonală
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Orientarea şantierului naval
@@ -2495,6 +2509,8 @@ STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Arbori a
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Plantează aleator arbori pe uscat
 STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normal
 STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}Plantează copaci trăgându-i peste peisaj.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Dumbravă
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Pădure
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}Plantează păduri întinse prin tragerea peste peisaj.
 
 # Land generation window (SE)
@@ -2553,6 +2569,7 @@ STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Prospect
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Construieşte
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Finanţează
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Elimină toate industriile
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Sigur vrei să elimini toate industriile?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Lanţ industrial pentru industria {STRING}
@@ -2700,13 +2717,16 @@ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}FPS
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
+STR_FRAMERATE_RATE_GAMELOOP                                     :{BLACK}Viteza simulării: {STRING}
 STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Număr de evenimente de joc simulate per secundă.
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Numărul de cadre video randate per secundă.
+STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}Factorul actual de viteză a jocului: {DECIMAL}x
 STR_FRAMERATE_AVERAGE                                           :{WHITE}Medie
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}Memorie
 STR_FRAMERATE_DATA_POINTS                                       :{BLACK}Date bazate pe măsurători {COMMA}
 STR_FRAMERATE_MS_GOOD                                           :{LTBLUE}{DECIMAL} ms
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} cadre/s
+STR_FRAMERATE_FPS_WARN                                          :{YELLOW}{DECIMAL} cadre/s
 STR_FRAMERATE_FPS_BAD                                           :{RED}{DECIMAL} cadre/s
 STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
 STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
@@ -2718,10 +2738,12 @@ STR_FRAMERATE_DRAWING                                           :{BLACK}Randare 
 STR_FRAMERATE_DRAWING_VIEWPORTS                                 :{BLACK}  Vizoare globale:
 STR_FRAMERATE_VIDEO                                             :{BLACK}Ieșire video:
 STR_FRAMERATE_GAMESCRIPT                                        :{BLACK} Script joc:
+STR_FRAMERATE_AI                                                :{BLACK}   IA {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Buclă de joc
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipularea încărcăturilor
+STR_FRAMETIME_CAPTION_DRAWING                                   :Randare grafică
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Randarea vizorului global
 STR_FRAMETIME_CAPTION_SOUND                                     :Mixaj de sunet
 STR_FRAMETIME_CAPTION_AI                                        :IA {NUM} {STRING}
@@ -2751,6 +2773,8 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}Nicio in
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF: {WHITE}{STRING}
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Filtrare după:
+STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Suprascrie fișierul
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (listă)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Introduceţi un nume pentru salvare
 
@@ -2763,8 +2787,10 @@ STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. de o
 STR_MAPGEN_DATE                                                 :{BLACK}Data:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. de industrii:
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Cel mai înalt vârf:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Mărește acoperirea cu zăpadă cu zece procente
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Mărește întinderea deșertului cu zece procente
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Reduce întinderea deșertului cu zece procente
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generator de teren:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tip teren:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Nivelul mării:
@@ -2790,6 +2816,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nume har
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Dimensiune:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Cel mai înalt vârf
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Acoperire cu zăpadă (în %)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Acoperire cu deșert (în %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Modifică anul de început
@@ -3011,6 +3038,7 @@ STR_EDIT_SIGN_SIGN_OSKTITLE                                     :{BLACK}Introdu 
 STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Oraşe
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Nimic -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (oraș){BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Numele oraşelor - clic pe un nume pentru a centra imaginea pe oraşul respectiv. Ctrl+Click deshide o fereastra cu locaţia oraşului
 STR_TOWN_POPULATION                                             :{BLACK}Populaţia totală: {COMMA}
 
@@ -3041,6 +3069,7 @@ STR_TOWN_VIEW_RENAME_TOWN_BUTTON                                :Redenumire ora�
 
 # Town local authority window
 STR_LOCAL_AUTHORITY_CAPTION                                     :{WHITE}Autoritatea locală din {TOWN}
+STR_LOCAL_AUTHORITY_ZONE                                        :{BLACK}Zonă
 STR_LOCAL_AUTHORITY_COMPANY_RATINGS                             :{BLACK}Evaluarea companiilor de transport:
 STR_LOCAL_AUTHORITY_COMPANY_RATING                              :{YELLOW}{COMPANY} {COMPANY_NUM}: {ORANGE}{STRING}
 STR_LOCAL_AUTHORITY_ACTIONS_TITLE                               :{BLACK}Acţiuni disponibile:
@@ -3057,18 +3086,19 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Finanţează co
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Cumpără drepturi exclusive de transport
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Mituieşte autoritatea locală
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniţiază o campanie publicitară mică pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniţiază o campanie publicitară medie pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniţiază o mare campanie publicitară pentru a atrage mai mulţi călători şi mai multe mărfuri spre compania ta.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Inițiază o campanie publicitară mică pentru a atrage mai mulți călători și mai multe mărfuri spre compania ta.{}Oferă temporar un spor la cotația stației tale pe o rază mică în jurul centrului orașului.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Inițiază o campanie publicitară medie pentru a atrage mai mulți călători și mai multe mărfuri spre compania ta.{}Oferă temporar un spor la cotația stației tale pe o rază medie în jurul centrului orașului.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Inițiază o mare campanie publicitară pentru a atrage mai mulți călători și mai multe mărfuri spre compania ta.{}Oferă temporar un spor la cotația stației tale pe o rază mare în jurul centrului orașului.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Finanțează reconstrucția rețelei locale de drumuri.{}Aceasta cauzează perturbări majore ale traficului rutier timp de până la 6 luni.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construieşte o statuie în cinstea companiei tale.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finanţează construcţia de noi clădiri comerciale în oraş.{} Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Cumpără drepturi exclusive de transport în acest oraş pe o perioadă de un an. Autorităţile locale vor permite doar companiei tale să transporte călători şi mărfuri.{} Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construiește o statuie în cinstea companiei tale.{}Oferă un spor permanent la cotația stației tale în acest oraș.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Finanțează construcția de noi clădiri comerciale în oraș.{}Oferă un spor temporar dezvoltării în acest oraș.{}Cost: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Cumpără drepturi exclusive de transport în acest oraș, timp de un an.{}Autoritățile locale nu vor permite călătorilor și mărfurilor să folosească stațiile competitorilor.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Mituieşte autorităţile locale pentru a-ţi îmbunătăţi ratingul, dar cu riscul de a fi prins şi de a plăti amenzi serioase.{} Cost: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Scopuri
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Obiective globale
+STR_GOALS_SPECTATOR                                             :Obiective globale
 STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Afișează obiectivele globale
 STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Companie
 STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Afișează obiectivele companiei
@@ -3246,6 +3276,7 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_COMPANY_VIEW_INAUGURATED_TITLE                              :{GOLD}Anul înfiinţării: {WHITE}{NUM}
 STR_COMPANY_VIEW_COLOUR_SCHEME_TITLE                            :{GOLD}Schemă culori:
 STR_COMPANY_VIEW_VEHICLES_TITLE                                 :{GOLD}Vehicule:
+STR_COMPANY_VIEW_AIRCRAFT                                       :{WHITE}{COMMA} {P "" "" "de "}aeronav{P ă e e}
 STR_COMPANY_VIEW_VEHICLES_NONE                                  :{WHITE}Niciunul
 STR_COMPANY_VIEW_COMPANY_VALUE                                  :{GOLD}Valoarea companiei: {WHITE}{CURRENCY_LONG}
 STR_COMPANY_VIEW_SHARES_OWNED_BY                                :{WHITE}({COMMA}% deţinute de {COMPANY})
@@ -3254,6 +3285,7 @@ STR_COMPANY_VIEW_INFRASTRUCTURE_RAIL                            :{WHITE}{COMMA} 
 STR_COMPANY_VIEW_INFRASTRUCTURE_ROAD                            :{WHITE}{COMMA} pătrățele cu drumuri
 STR_COMPANY_VIEW_INFRASTRUCTURE_WATER                           :{WHITE}{COMMA} pătrățele de apă
 STR_COMPANY_VIEW_INFRASTRUCTURE_STATION                         :{WHITE}{COMMA} pătrățele stații
+STR_COMPANY_VIEW_INFRASTRUCTURE_AIRPORT                         :{WHITE}{COMMA} {P "" "" "de "}aeroport{P "" uri uri}
 STR_COMPANY_VIEW_INFRASTRUCTURE_NONE                            :{WHITE}Niciuna
 
 STR_COMPANY_VIEW_BUILD_HQ_BUTTON                                :{BLACK}Constr. sediu
@@ -3303,6 +3335,7 @@ STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industri
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nimic-
 STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% transportat){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} și încă {NUM}...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Numele industriilor - clic pe nume pentru focalizarea pe industrie. Ctrl+Click deschide o fereastră cu locaţia industriei
@@ -3320,6 +3353,7 @@ STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}Nivelul 
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}Industria a anunţat închiderea iminentă!
 
 STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}Necesită: {YELLOW}{STRING}{STRING}
+STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRING}
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesită:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
@@ -3692,6 +3726,7 @@ STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Vechime:
 # The next two need to stay in this order
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Viteză max.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Tip de aeronavă: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Greutate: {LTBLUE}{WEIGHT_SHORT} {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Viteză max.: {LTBLUE}{VELOCITY} {BLACK}Efort tractiv: {LTBLUE}{FORCE}
 
@@ -3841,7 +3876,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Valoarea
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introduceţi valoarea de comparat
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Treci la următoarea
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Renunţă la comanda actuală si preia-o pe urmatoarea. CTRL + click face salt la comanda selectată
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Sari peste comanda actuală și preia-o pe următoarea. Ctrl+clic sare la comanda selectată
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Şterge
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Şterge comanda selectată
@@ -4147,6 +4182,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Doar un 
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Imagine de dimensiune foarte mare
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Imaginea capturată va avea o dimensiune de {COMMA} x {COMMA} pixeli. Realizarea unei capturi va dura ceva timp. Dorești să continui?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Harta înălțimilor s-a salvat cu succes ca '{STRING}'. Cel mai înalt vârf este {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Imagine salvată cu succes pe disc în fişierul '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Imaginea nu a putut fi capturată!
 
@@ -4200,6 +4236,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... nu a
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... ai nevoie de {CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nu poţi plăti creditul...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nu poţi dona din banii împrumutaţi de la bancă...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Nu se pot da bani acestei companii...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nu se poate cumpăra compania...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nu se poate construi sediul companiei...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nu se pot cumpăra 25% din acţiunile acestei companii...
@@ -4312,7 +4349,7 @@ STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Trenuril
 STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Tren prea lung
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Nu se poate inversa direcţia vehiculului...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... este alcătuit din mai multe unități
-STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipuri de sine incompatibile
+STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Tipurile de șine sunt incompatibile
 
 STR_ERROR_CAN_T_MOVE_VEHICLE                                    :{WHITE}Nu se poate muta vehiculul...
 STR_ERROR_REAR_ENGINE_FOLLOW_FRONT                              :{WHITE}Al doilea vagon+motor va avea mereu aceeasi destinatie ca si primul
@@ -4353,7 +4390,10 @@ STR_ERROR_CAN_T_REMOVE_ROAD_FROM                                :{WHITE}Nu se po
 STR_ERROR_CAN_T_REMOVE_TRAMWAY_FROM                             :{WHITE}Nu pot înlătura şina de tramvai de aici...
 STR_ERROR_THERE_IS_NO_ROAD                                      :{WHITE}...nu există drum aici
 STR_ERROR_THERE_IS_NO_TRAMWAY                                   :{WHITE}...nu există şină de tramvai aici
+STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Tipul de drum nu poate fi convertit aici...
+STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Niciun drum adecvat
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Niciun tramvai adecvat
+STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... tramvai incompatibil
 
 # Waterway construction errors
 STR_ERROR_CAN_T_BUILD_CANALS                                    :{WHITE}Nu pot construi un canal aici...
@@ -4482,8 +4522,8 @@ STR_ERROR_CAN_T_INSERT_NEW_ORDER                                :{WHITE}Nu se po
 STR_ERROR_CAN_T_DELETE_THIS_ORDER                               :{WHITE}Nu se poate şterge această comandă...
 STR_ERROR_CAN_T_MODIFY_THIS_ORDER                               :{WHITE}Nu se poate modifica această comandă...
 STR_ERROR_CAN_T_MOVE_THIS_ORDER                                 :{WHITE}Nu pot muta acest ordin...
-STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nu pot renunta la comanda actuala...
-STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nu pot sări la ordinul selectat...
+STR_ERROR_CAN_T_SKIP_ORDER                                      :{WHITE}Nu se poate sări peste comanda actuală...
+STR_ERROR_CAN_T_SKIP_TO_ORDER                                   :{WHITE}Nu pot sări la comanda selectată...
 STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... vehiculul nu poate ajunge la toate staţiile
 STR_ERROR_CAN_T_ADD_ORDER                                       :{WHITE}... vehiculul nu poate ajunge la acea staţie
 STR_ERROR_CAN_T_ADD_ORDER_SHARED                                :{WHITE}... un vehicul care are acest ordin nu poate ajunge la acea staţie
