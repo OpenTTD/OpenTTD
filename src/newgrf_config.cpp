@@ -375,7 +375,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir)
 	}
 
 	/* Find and load the Action 8 information */
-	LoadNewGRFFile(config, CONFIG_SLOT, GLS_FILESCAN, subdir);
+	LoadNewGRFFile(config, GLS_FILESCAN, subdir, true);
 	config->SetSuitablePalette();
 	config->FinalizeParameterInfo();
 
@@ -384,7 +384,7 @@ bool FillGRFDetails(GRFConfig *config, bool is_static, Subdirectory subdir)
 
 	if (is_static) {
 		/* Perform a 'safety scan' for static GRFs */
-		LoadNewGRFFile(config, CONFIG_SLOT, GLS_SAFETYSCAN, subdir);
+		LoadNewGRFFile(config, GLS_SAFETYSCAN, subdir, true);
 
 		/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
 		if (HasBit(config->flags, GCF_UNSAFE)) return false;

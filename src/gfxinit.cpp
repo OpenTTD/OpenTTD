@@ -39,16 +39,15 @@ static const SpriteID * const _landscape_spriteindexes[] = {
  * Load an old fashioned GRF file.
  * @param filename   The name of the file to open.
  * @param load_index The offset of the first sprite.
- * @param file_index The Fio offset to load the file in.
  * @param needs_palette_remap Whether the colours in the GRF file need a palette remap.
  * @return The number of loaded sprites.
  */
-static uint LoadGrfFile(const char *filename, uint load_index, int file_index, bool needs_palette_remap)
+static uint LoadGrfFile(const char *filename, uint load_index, bool needs_palette_remap)
 {
 	uint load_index_org = load_index;
 	uint sprite_id = 0;
 
-	SpriteFile &file = FioOpenFile(file_index, filename, BASESET_DIR, needs_palette_remap);
+	SpriteFile &file = OpenCachedSpriteFile(filename, BASESET_DIR, needs_palette_remap);
 
 	DEBUG(sprite, 2, "Reading grf-file '%s'", filename);
 
@@ -77,16 +76,15 @@ static uint LoadGrfFile(const char *filename, uint load_index, int file_index, b
  * Load an old fashioned GRF file to replace already loaded sprites.
  * @param filename   The name of the file to open.
  * @param index_tbl  The offsets of each of the sprites.
- * @param file_index The Fio offset to load the file in.
  * @param needs_palette_remap Whether the colours in the GRF file need a palette remap.
  * @return The number of loaded sprites.
  */
-static void LoadGrfFileIndexed(const char *filename, const SpriteID *index_tbl, int file_index, bool needs_palette_remap)
+static void LoadGrfFileIndexed(const char *filename, const SpriteID *index_tbl, bool needs_palette_remap)
 {
 	uint start;
 	uint sprite_id = 0;
 
-	SpriteFile &file = FioOpenFile(file_index, filename, BASESET_DIR, needs_palette_remap);
+	SpriteFile &file = OpenCachedSpriteFile(filename, BASESET_DIR, needs_palette_remap);
 
 	DEBUG(sprite, 2, "Reading indexed grf-file '%s'", filename);
 
@@ -161,10 +159,9 @@ void CheckExternalFiles()
 /** Actually load the sprite tables. */
 static void LoadSpriteTables()
 {
-	uint i = FIRST_GRF_SLOT;
 	const GraphicsSet *used_set = BaseGraphics::GetUsedSet();
 
-	LoadGrfFile(used_set->files[GFT_BASE].filename, 0, i++, (PAL_DOS != used_set->palette));
+	LoadGrfFile(used_set->files[GFT_BASE].filename, 0, PAL_DOS != used_set->palette);
 
 	/*
 	 * The second basic file always starts at the given location and does
@@ -172,7 +169,7 @@ static void LoadSpriteTables()
 	 * has a few sprites less. However, we do not care about those missing
 	 * sprites as they are not shown anyway (logos in intro game).
 	 */
-	LoadGrfFile(used_set->files[GFT_LOGOS].filename, 4793, i++, (PAL_DOS != used_set->palette));
+	LoadGrfFile(used_set->files[GFT_LOGOS].filename, 4793, PAL_DOS != used_set->palette);
 
 	/*
 	 * Load additional sprites for climates other than temperate.
@@ -183,8 +180,7 @@ static void LoadSpriteTables()
 		LoadGrfFileIndexed(
 			used_set->files[GFT_ARCTIC + _settings_game.game_creation.landscape - 1].filename,
 			_landscape_spriteindexes[_settings_game.game_creation.landscape - 1],
-			i++,
-			(PAL_DOS != used_set->palette)
+			PAL_DOS != used_set->palette
 		);
 	}
 
@@ -223,7 +219,7 @@ static void LoadSpriteTables()
 	master->next = extra;
 	_grfconfig = master;
 
-	LoadNewGRF(SPR_NEWGRFS_BASE, i, 2);
+	LoadNewGRF(SPR_NEWGRFS_BASE, 2);
 
 	uint total_extra_graphics = SPR_NEWGRFS_BASE - SPR_OPENTTD_BASE;
 	_missing_extra_graphics = GetSpriteCountForFile(used_set->files[GFT_EXTRA].filename, SPR_OPENTTD_BASE, SPR_NEWGRFS_BASE);
