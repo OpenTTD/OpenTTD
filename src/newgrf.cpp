@@ -80,6 +80,7 @@ static uint32 _ttdpatch_flags[8];
 GRFLoadedFeatures _loaded_newgrf_features;
 
 static const uint MAX_SPRITEGROUP = UINT8_MAX; ///< Maximum GRF-local ID for a spritegroup.
+static const uint MAX_GRF_COUNT = 128; ///< Maximum number of NewGRF files that could be loaded.
 
 /** Temporary data during loading of GRFs */
 struct GrfProcessingState {
@@ -6395,19 +6396,20 @@ static void CfgApply(ByteReader *buf)
 	 *                 to place where parameter is to be stored. */
 
 	/* Preload the next sprite */
-	size_t pos = FioGetPos();
-	uint32 num = _cur.file->GetContainerVersion() >= 2 ? FioReadDword() : FioReadWord();
-	uint8 type = FioReadByte();
+	SpriteFile &file = *_cur.file;
+	size_t pos = file.GetPos();
+	uint32 num = file.GetContainerVersion() >= 2 ? file.ReadDword() : file.ReadWord();
+	uint8 type = file.ReadByte();
 	byte *preload_sprite = nullptr;
 
 	/* Check if the sprite is a pseudo sprite. We can't operate on real sprites. */
 	if (type == 0xFF) {
 		preload_sprite = MallocT<byte>(num);
-		FioReadBlock(preload_sprite, num);
+		file.ReadBlock(preload_sprite, num);
 	}
 
 	/* Reset the file position to the start of the next sprite */
-	FioSeekTo(pos, SEEK_SET);
+	file.SeekTo(pos, SEEK_SET);
 
 	if (type != 0xFF) {
 		grfmsg(2, "CfgApply: Ignoring (next sprite is real, unsupported)");
@@ -6653,7 +6655,7 @@ static void SkipIf(ByteReader *buf)
 
 	if (choice != nullptr) {
 		grfmsg(2, "SkipIf: Jumping to label 0x%0X at line %d, test was true", choice->label, choice->nfo_line);
-		FioSeekTo(choice->pos, SEEK_SET);
+		_cur.file->SeekTo(choice->pos, SEEK_SET);
 		_cur.nfo_line = choice->nfo_line;
 		return;
 	}
@@ -7493,7 +7495,7 @@ static void DefineGotoLabel(ByteReader *buf)
 	GRFLabel *label = MallocT<GRFLabel>(1);
 	label->label    = nfo_label;
 	label->nfo_line = _cur.nfo_line;
-	label->pos      = FioGetPos();
+	label->pos      = _cur.file->GetPos();
 	label->next     = nullptr;
 
 	/* Set up a linked list of goto targets which we will search in an Action 0x7/0x9 */
@@ -7516,8 +7518,8 @@ static void DefineGotoLabel(ByteReader *buf)
 static void ImportGRFSound(SoundEntry *sound)
 {
 	const GRFFile *file;
-	uint32 grfid = FioReadDword();
-	SoundID sound_id = FioReadWord();
+	uint32 grfid = _cur.file->ReadDword();
+	SoundID sound_id = _cur.file->ReadWord();
 
 	file = GetFileByGRFID(grfid);
 	if (file == nullptr || file->sound_offset == 0) {
@@ -7577,6 +7579,8 @@ static void GRFSound(ByteReader *buf)
 		sound = GetSound(_cur.grffile->sound_offset);
 	}
 
+	SpriteFile &file = *_cur.file;
+	byte grf_container_version = file.GetContainerVersion();
 	for (int i = 0; i < num; i++) {
 		_cur.nfo_line++;
 
@@ -7584,22 +7588,21 @@ static void GRFSound(ByteReader *buf)
 		 * While this is invalid, we do not check for this. But we should prevent it from causing bigger trouble */
 		bool invalid = i >= _cur.grffile->num_sounds;
 
-		size_t offs = FioGetPos();
+		size_t offs = file.GetPos();
 
-		byte grf_container_version = _cur.file->GetContainerVersion();
-		uint32 len = grf_container_version >= 2 ? FioReadDword() : FioReadWord();
-		byte type = FioReadByte();
+		uint32 len = grf_container_version >= 2 ? file.ReadDword() : file.ReadWord();
+		byte type = file.ReadByte();
 
 		if (grf_container_version >= 2 && type == 0xFD) {
 			/* Reference to sprite section. */
 			if (invalid) {
 				grfmsg(1, "GRFSound: Sound index out of range (multiple Action 11?)");
-				FioSkipBytes(len);
+				file.SkipBytes(len);
 			} else if (len != 4) {
 				grfmsg(1, "GRFSound: Invalid sprite section import");
-				FioSkipBytes(len);
+				file.SkipBytes(len);
 			} else {
-				uint32 id = FioReadDword();
+				uint32 id = file.ReadDword();
 				if (_cur.stage == GLS_INIT) LoadGRFSound(GetGRFSpriteOffset(id), sound + i);
 			}
 			continue;
@@ -7607,17 +7610,17 @@ static void GRFSound(ByteReader *buf)
 
 		if (type != 0xFF) {
 			grfmsg(1, "GRFSound: Unexpected RealSprite found, skipping");
-			FioSkipBytes(7);
+			file.SkipBytes(7);
 			SkipSpriteData(*_cur.file, type, len - 8);
 			continue;
 		}
 
 		if (invalid) {
 			grfmsg(1, "GRFSound: Sound index out of range (multiple Action 11?)");
-			FioSkipBytes(len);
+			file.SkipBytes(len);
 		}
 
-		byte action = FioReadByte();
+		byte action = file.ReadByte();
 		switch (action) {
 			case 0xFF:
 				/* Allocate sound only in init stage. */
@@ -7628,23 +7631,23 @@ static void GRFSound(ByteReader *buf)
 						LoadGRFSound(offs, sound + i);
 					}
 				}
-				FioSkipBytes(len - 1); // already read <action>
+				file.SkipBytes(len - 1); // already read <action>
 				break;
 
 			case 0xFE:
 				if (_cur.stage == GLS_ACTIVATION) {
 					/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
 					 * importing sounds, so this is probably all wrong... */
-					if (FioReadByte() != 0) grfmsg(1, "GRFSound: Import type mismatch");
+					if (file.ReadByte() != 0) grfmsg(1, "GRFSound: Import type mismatch");
 					ImportGRFSound(sound + i);
 				} else {
-					FioSkipBytes(len - 1); // already read <action>
+					file.SkipBytes(len - 1); // already read <action>
 				}
 				break;
 
 			default:
 				grfmsg(1, "GRFSound: Unexpected Action %x found, skipping", action);
-				FioSkipBytes(len - 1); // already read <action>
+				file.SkipBytes(len - 1); // already read <action>
 				break;
 		}
 	}
@@ -9234,14 +9237,14 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 	if (it == _grf_line_to_action6_sprite_override.end()) {
 		/* No preloaded sprite to work with; read the
 		 * pseudo sprite content. */
-		FioReadBlock(buf, num);
+		_cur.file->ReadBlock(buf, num);
 	} else {
 		/* Use the preloaded sprite data. */
 		buf = _grf_line_to_action6_sprite_override[location];
 		grfmsg(7, "DecodeSpecialSprite: Using preloaded pseudo sprite data");
 
 		/* Skip the real (original) content of this action. */
-		FioSeekTo(num, SEEK_CUR);
+		_cur.file->SeekTo(num, SEEK_CUR);
 	}
 
 	ByteReader br(buf, buf + num);
@@ -9268,15 +9271,102 @@ static void DecodeSpecialSprite(byte *buf, uint num, GrfLoadingStage stage)
 	}
 }
 
+/**
+ * Load a particular NewGRF from a SpriteFile.
+ * @param config The configuration of the to be loaded NewGRF.
+ * @param stage  The loading stage of the NewGRF.
+ * @param file   The file to load the GRF data from.
+ */
+static void LoadNewGRFFileFromFile(GRFConfig *config, GrfLoadingStage stage, SpriteFile &file)
+{
+	_cur.file = &file;
+	_cur.grfconfig = config;
+
+	DEBUG(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '%s'", config->filename);
+
+	byte grf_container_version = file.GetContainerVersion();
+	if (grf_container_version == 0) {
+		DEBUG(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
+		return;
+	}
+
+	if (stage == GLS_INIT || stage == GLS_ACTIVATION) {
+		/* We need the sprite offsets in the init stage for NewGRF sounds
+		 * and in the activation stage for real sprites. */
+		ReadGRFSpriteOffsets(file);
+	} else {
+		/* Skip sprite section offset if present. */
+		if (grf_container_version >= 2) file.ReadDword();
+	}
+
+	if (grf_container_version >= 2) {
+		/* Read compression value. */
+		byte compression = file.ReadByte();
+		if (compression != 0) {
+			DEBUG(grf, 7, "LoadNewGRFFile: Unsupported compression format");
+			return;
+		}
+	}
+
+	/* Skip the first sprite; we don't care about how many sprites this
+	 * does contain; newest TTDPatches and George's longvehicles don't
+	 * neither, apparently. */
+	uint32 num = grf_container_version >= 2 ? file.ReadDword() : file.ReadWord();
+	if (num == 4 && file.ReadByte() == 0xFF) {
+		file.ReadDword();
+	} else {
+		DEBUG(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
+		return;
+	}
+
+	_cur.ClearDataForNextFile();
+
+	ReusableBuffer<byte> buf;
+
+	while ((num = (grf_container_version >= 2 ? file.ReadDword() : file.ReadWord())) != 0) {
+		byte type = file.ReadByte();
+		_cur.nfo_line++;
+
+		if (type == 0xFF) {
+			if (_cur.skip_sprites == 0) {
+				DecodeSpecialSprite(buf.Allocate(num), num, stage);
+
+				/* Stop all processing if we are to skip the remaining sprites */
+				if (_cur.skip_sprites == -1) break;
+
+				continue;
+			} else {
+				file.SkipBytes(num);
+			}
+		} else {
+			if (_cur.skip_sprites == 0) {
+				grfmsg(0, "LoadNewGRFFile: Unexpected sprite, disabling");
+				DisableGrf(STR_NEWGRF_ERROR_UNEXPECTED_SPRITE);
+				break;
+			}
+
+			if (grf_container_version >= 2 && type == 0xFD) {
+				/* Reference to data section. Container version >= 2 only. */
+				file.SkipBytes(num);
+			} else {
+				file.SkipBytes(7);
+				SkipSpriteData(file, type, num - 8);
+			}
+		}
+
+		if (_cur.skip_sprites > 0) _cur.skip_sprites--;
+	}
+}
 
 /**
  * Load a particular NewGRF.
  * @param config     The configuration of the to be loaded NewGRF.
- * @param file_index The Fio index of the first NewGRF to load.
  * @param stage      The loading stage of the NewGRF.
  * @param subdir     The sub directory to find the NewGRF in.
+ * @param temporary  The NewGRF/sprite file is to be loaded temporarily and should be closed immediately,
+ *                   contrary to loading the SpriteFile and having it cached by the SpriteCache.
  */
-void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, Subdirectory subdir)
+void LoadNewGRFFile(GRFConfig *config, GrfLoadingStage stage, Subdirectory subdir, bool temporary)
 {
 	const char *filename = config->filename;
 
@@ -9296,89 +9386,12 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage, S
 		if (stage == GLS_ACTIVATION && !HasBit(config->flags, GCF_RESERVED)) return;
 	}
 
-	if (file_index >= MAX_FILE_SLOTS) {
-		DEBUG(grf, 0, "'%s' is not loaded as the maximum number of file slots has been reached", filename);
-		config->status = GCS_DISABLED;
-		config->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
-		return;
-	}
-
-	_cur.file = &FioOpenFile(file_index, filename, subdir, config->palette & GRFP_USE_MASK);
-	_cur.grfconfig = config;
-
-	DEBUG(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '%s'", filename);
-
-	byte grf_container_version = _cur.file->GetContainerVersion();
-	if (grf_container_version == 0) {
-		DEBUG(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
-		return;
-	}
-
-	if (stage == GLS_INIT || stage == GLS_ACTIVATION) {
-		/* We need the sprite offsets in the init stage for NewGRF sounds
-		 * and in the activation stage for real sprites. */
-		ReadGRFSpriteOffsets(*_cur.file);
+	bool needs_palette_remap = config->palette & GRFP_USE_MASK;
+	if (temporary) {
+		SpriteFile temporarySpriteFile(filename, subdir, needs_palette_remap);
+		LoadNewGRFFileFromFile(config, stage, temporarySpriteFile);
 	} else {
-		/* Skip sprite section offset if present. */
-		if (grf_container_version >= 2) FioReadDword();
-	}
-
-	if (grf_container_version >= 2) {
-		/* Read compression value. */
-		byte compression = FioReadByte();
-		if (compression != 0) {
-			DEBUG(grf, 7, "LoadNewGRFFile: Unsupported compression format");
-			return;
-		}
-	}
-
-	/* Skip the first sprite; we don't care about how many sprites this
-	 * does contain; newest TTDPatches and George's longvehicles don't
-	 * neither, apparently. */
-	uint32 num = grf_container_version >= 2 ? FioReadDword() : FioReadWord();
-	if (num == 4 && FioReadByte() == 0xFF) {
-		FioReadDword();
-	} else {
-		DEBUG(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
-		return;
-	}
-
-	_cur.ClearDataForNextFile();
-
-	ReusableBuffer<byte> buf;
-
-	while ((num = (grf_container_version >= 2 ? FioReadDword() : FioReadWord())) != 0) {
-		byte type = FioReadByte();
-		_cur.nfo_line++;
-
-		if (type == 0xFF) {
-			if (_cur.skip_sprites == 0) {
-				DecodeSpecialSprite(buf.Allocate(num), num, stage);
-
-				/* Stop all processing if we are to skip the remaining sprites */
-				if (_cur.skip_sprites == -1) break;
-
-				continue;
-			} else {
-				FioSkipBytes(num);
-			}
-		} else {
-			if (_cur.skip_sprites == 0) {
-				grfmsg(0, "LoadNewGRFFile: Unexpected sprite, disabling");
-				DisableGrf(STR_NEWGRF_ERROR_UNEXPECTED_SPRITE);
-				break;
-			}
-
-			if (grf_container_version >= 2 && type == 0xFD) {
-				/* Reference to data section. Container version >= 2 only. */
-				FioSkipBytes(num);
-			} else {
-				FioSkipBytes(7);
-				SkipSpriteData(*_cur.file, type, num - 8);
-			}
-		}
-
-		if (_cur.skip_sprites > 0) _cur.skip_sprites--;
+		LoadNewGRFFileFromFile(config, stage, OpenCachedSpriteFile(filename, subdir, needs_palette_remap));
 	}
 }
 
@@ -9677,10 +9690,9 @@ static void AfterLoadGRFs()
 /**
  * Load all the NewGRFs.
  * @param load_index The offset for the first sprite to add.
- * @param file_index The Fio index of the first NewGRF to load.
  * @param num_baseset Number of NewGRFs at the front of the list to look up in the baseset dir instead of the newgrf dir.
  */
-void LoadNewGRF(uint load_index, uint file_index, uint num_baseset)
+void LoadNewGRF(uint load_index, uint num_baseset)
 {
 	/* In case of networking we need to "sync" the start values
 	 * so all NewGRFs are loaded equally. For this we use the
@@ -9738,7 +9750,7 @@ void LoadNewGRF(uint load_index, uint file_index, uint num_baseset)
 			}
 		}
 
-		uint slot = file_index;
+		uint num_grfs = 0;
 		uint num_non_static = 0;
 
 		_cur.stage = stage;
@@ -9746,7 +9758,7 @@ void LoadNewGRF(uint load_index, uint file_index, uint num_baseset)
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
 
-			Subdirectory subdir = slot < file_index + num_baseset ? BASESET_DIR : NEWGRF_DIR;
+			Subdirectory subdir = num_grfs < num_baseset ? BASESET_DIR : NEWGRF_DIR;
 			if (!FioCheckFileExists(c->filename, subdir)) {
 				DEBUG(grf, 0, "NewGRF file is missing '%s'; disabling", c->filename);
 				c->status = GCS_NOT_FOUND;
@@ -9764,7 +9776,16 @@ void LoadNewGRF(uint load_index, uint file_index, uint num_baseset)
 				}
 				num_non_static++;
 			}
-			LoadNewGRFFile(c, slot++, stage, subdir);
+
+			if (num_grfs >= MAX_GRF_COUNT) {
+				DEBUG(grf, 0, "'%s' is not loaded as the maximum number of file slots has been reached", c->filename);
+				c->status = GCS_DISABLED;
+				c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
+				continue;
+			}
+			num_grfs++;
+
+			LoadNewGRFFile(c, stage, subdir, false);
 			if (stage == GLS_RESERVE) {
 				SetBit(c->flags, GCF_RESERVED);
 			} else if (stage == GLS_ACTIVATION) {
