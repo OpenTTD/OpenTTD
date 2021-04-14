@@ -15,7 +15,7 @@
 #include "base_media_func.h"
 
 #include "safeguards.h"
-#include "fios.h"
+#include "random_access_file_type.h"
 
 
 /**
@@ -29,15 +29,15 @@ char *GetMusicCatEntryName(const char *filename, size_t entrynum)
 {
 	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
 
-	FioOpenFile(CONFIG_SLOT, filename, BASESET_DIR);
-	uint32 ofs = FioReadDword();
+	RandomAccessFile file(filename, BASESET_DIR);
+	uint32 ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
 	if (entrynum < entry_count) {
-		FioSeekTo(entrynum * 8, SEEK_SET);
-		FioSeekTo(FioReadDword(), SEEK_SET);
-		byte namelen = FioReadByte();
+		file.SeekTo(entrynum * 8, SEEK_SET);
+		file.SeekTo(file.ReadDword(), SEEK_SET);
+		byte namelen = file.ReadByte();
 		char *name = MallocT<char>(namelen + 1);
-		FioReadBlock(name, namelen);
+		file.ReadBlock(name, namelen);
 		name[namelen] = '\0';
 		return name;
 	}
@@ -57,17 +57,17 @@ byte *GetMusicCatEntryData(const char *filename, size_t entrynum, size_t &entryl
 	entrylen = 0;
 	if (!FioCheckFileExists(filename, BASESET_DIR)) return nullptr;
 
-	FioOpenFile(CONFIG_SLOT, filename, BASESET_DIR);
-	uint32 ofs = FioReadDword();
+	RandomAccessFile file(filename, BASESET_DIR);
+	uint32 ofs = file.ReadDword();
 	size_t entry_count = ofs / 8;
 	if (entrynum < entry_count) {
-		FioSeekTo(entrynum * 8, SEEK_SET);
-		size_t entrypos = FioReadDword();
-		entrylen = FioReadDword();
-		FioSeekTo(entrypos, SEEK_SET);
-		FioSkipBytes(FioReadByte());
+		file.SeekTo(entrynum * 8, SEEK_SET);
+		size_t entrypos = file.ReadDword();
+		entrylen = file.ReadDword();
+		file.SeekTo(entrypos, SEEK_SET);
+		file.SkipBytes(file.ReadByte());
 		byte *data = MallocT<byte>(entrylen);
-		FioReadBlock(data, entrylen);
+		file.ReadBlock(data, entrylen);
 		return data;
 	}
 	return nullptr;
