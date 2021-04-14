@@ -31,9 +31,9 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator = 
 bool SpriteExists(SpriteID sprite);
 
 SpriteType GetSpriteType(SpriteID sprite);
-uint GetOriginFileSlot(SpriteID sprite);
+SpriteFile *GetOriginFile(SpriteID sprite);
 uint32 GetSpriteLocalID(SpriteID sprite);
-uint GetSpriteCountForSlot(uint file_slot, SpriteID begin, SpriteID end);
+uint GetSpriteCountForFile(const std::string &filename, SpriteID begin, SpriteID end);
 uint GetMaxSpriteID();
 
 
@@ -53,10 +53,12 @@ void GfxInitSpriteMem();
 void GfxClearSpriteCache();
 void IncreaseSpriteLRU();
 
-void ReadGRFSpriteOffsets(byte container_version);
+SpriteFile &OpenCachedSpriteFile(const std::string &filename, Subdirectory subdir, bool palette_remap);
+
+void ReadGRFSpriteOffsets(SpriteFile &file);
 size_t GetGRFSpriteOffset(uint32 id);
-bool LoadNextSprite(int load_index, byte file_index, uint file_sprite_id, byte container_version);
-bool SkipSpriteData(byte type, uint16 num);
+bool LoadNextSprite(int load_index, SpriteFile &file, uint file_sprite_id);
+bool SkipSpriteData(SpriteFile &file, byte type, uint16 num);
 void DupSprite(SpriteID old_spr, SpriteID new_spr);
 
 #endif /* SPRITECACHE_H */

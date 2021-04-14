@@ -176,8 +176,6 @@ TextColour GetContrastColour(uint8 background, uint8 threshold = 128);
  */
 extern byte _colour_gradient[COLOUR_END][8];
 
-extern bool _palette_remap_grf[];
-
 /**
  * Return the colour for a particular greyscale level.
  * @param level Intensity, 0 = black, 15 = white

@@ -9,7 +9,7 @@
 
 #include "stdafx.h"
 #include "fileio_func.h"
-#include "random_access_file_type.h"
+#include "spriteloader/spriteloader.hpp"
 #include "debug.h"
 #include "fios.h"
 #include "string_func.h"
@@ -30,8 +30,8 @@
 
 #include "safeguards.h"
 
-static RandomAccessFile *_fio_current_file;                       ///< current file handle for the Fio functions
-static std::array<RandomAccessFile *, MAX_FILE_SLOTS> _fio_files; ///< array of random access files we can have open
+static SpriteFile *_fio_current_file;                       ///< current file handle for the Fio functions
+static std::array<SpriteFile *, MAX_FILE_SLOTS> _fio_files; ///< array of random access files we can have open
 
 /** Whether the working directory should be scanned. */
 static bool _do_scan_working_directory = true;
@@ -40,9 +40,9 @@ extern std::string _config_file;
 extern std::string _highscore_file;
 
 /**
- * Transition helper to get the RandomAccessFile associated with a given slot.
+ * Transition helper to get the SpriteFile associated with a given slot.
  */
-RandomAccessFile *FioGetRandomAccessFile(int slot)
+SpriteFile *FioGetSpriteFile(int slot)
 {
 	return _fio_files[slot];
 }
@@ -83,9 +83,9 @@ void FioSeekTo(size_t pos, int mode)
  */
 void FioSeekToFile(uint8 slot, size_t pos)
 {
-	RandomAccessFile *raf = _fio_files[slot];
-	assert(raf != nullptr);
-	_fio_current_file = raf;
+	SpriteFile *file = _fio_files[slot];
+	assert(file != nullptr);
+	_fio_current_file = file;
 	_fio_current_file->SeekTo(pos, SEEK_SET);
 }
 
@@ -149,13 +149,15 @@ void FioCloseAll()
  * @param slot Index to assign.
  * @param filename Name of the file at the disk.
  * @param subdir The sub directory to search this file in.
+ * @param palette_remap Whether palette remapping needs to take place.
  */
-void FioOpenFile(int slot, const std::string &filename, Subdirectory subdir)
+SpriteFile &FioOpenFile(int slot, const std::string &filename, Subdirectory subdir, bool palette_remap)
 {
-	RandomAccessFile *raf = new RandomAccessFile(filename, subdir);
+	SpriteFile *file = new SpriteFile(filename, subdir, palette_remap);
 	delete _fio_files[slot];
-	_fio_files[slot] = raf;
-	_fio_current_file = raf;
+	_fio_files[slot] = file;
+	_fio_current_file = file;
+	return *file;
 }
 
 static const char * const _subdirs[] = {
