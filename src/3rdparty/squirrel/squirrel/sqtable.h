@@ -50,7 +50,7 @@ public:
 		newtable->_delegate = NULL;
 		return newtable;
 	}
-	void Finalize();
+	void Finalize() override;
 	SQTable *Clone();
 	~SQTable()
 	{
@@ -60,7 +60,7 @@ public:
 		SQ_FREE(_nodes, _numofnodes * sizeof(_HashNode));
 	}
 #ifndef NO_GARBAGE_COLLECTOR
-	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue) override;
 #endif
 	inline _HashNode *_Get(const SQObjectPtr &key,SQHash hash)
 	{
@@ -81,7 +81,11 @@ public:
 
 	SQInteger CountUsed(){ return _usednodes;}
 	void Clear();
-	void Release()
+	void Release() override
+	{
+		this->_sharedstate->DelayFinalFree(this);
+	}
+	void FinalFree() override
 	{
 		sq_delete(this, SQTable);
 	}

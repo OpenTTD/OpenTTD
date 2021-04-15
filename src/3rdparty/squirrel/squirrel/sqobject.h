@@ -2,7 +2,7 @@
 #ifndef _SQOBJECT_H_
 #define _SQOBJECT_H_
 
-#include <forward_list>
+#include <vector>
 #include "squtils.h"
 
 #define SQ_CLOSURESTREAM_HEAD (('S'<<24)|('Q'<<16)|('I'<<8)|('R'))
@@ -350,6 +350,14 @@ struct SQCollectable : public SQRefCounted {
 	virtual void Finalize()=0;
 	static void AddToChain(SQCollectable **chain,SQCollectable *c);
 	static void RemoveFromChain(SQCollectable **chain,SQCollectable *c);
+
+	/**
+	 * Helper to perform the final memory freeing of this instance. Since the destructor might
+	 * release more objects, this can cause a very deep recursion. As such, the calls to this
+	 * are to be done via _sharedstate->DelayFinalFree which ensures the calls to this method
+	 * are done in an iterative instead of recursive approach.
+	 */
+	virtual void FinalFree() {}
 };
 
 /**
@@ -357,19 +365,19 @@ struct SQCollectable : public SQRefCounted {
  * The iterative approach provides effectively a depth first search approach.
  */
 class SQGCMarkerQueue {
-	std::forward_list<SQCollectable*> queue; ///< The queue of elements to still process.
+	std::vector<SQCollectable*> stack; ///< The elements to still process, with the most recent elements at the back.
 public:
 	/** Whether there are any elements left to process. */
-	bool IsEmpty() { return this->queue.empty(); }
+	bool IsEmpty() { return this->stack.empty(); }
 
 	/**
-	 * Remove the first element from the queue.
+	 * Remove the most recently added element from the queue.
 	 * Removal when the queue is empty results in undefined behaviour.
 	 */
 	SQCollectable *Pop()
 	{
-		SQCollectable *collectable = this->queue.front();
-		this->queue.pop_front();
+		SQCollectable *collectable = this->stack.back();
+		this->stack.pop_back();
 		return collectable;
 	}
 
@@ -382,7 +390,7 @@ public:
 	{
 		if ((collectable->_uiRef & MARK_FLAG) == 0) {
 			collectable->_uiRef |= MARK_FLAG;
-			this->queue.push_front(collectable);
+			this->stack.push_back(collectable);
 		}
 	}
 };

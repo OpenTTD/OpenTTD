@@ -17,9 +17,9 @@ public:
 		return newarray;
 	}
 #ifndef NO_GARBAGE_COLLECTOR
-	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue) override;
 #endif
-	void Finalize(){
+	void Finalize() override {
 		_values.resize(0);
 	}
 	bool Get(const SQInteger nidx,SQObjectPtr &val)
@@ -78,9 +78,13 @@ public:
 		ShrinkIfNeeded();
 		return true;
 	}
-	void Release()
+	void Release() override
 	{
-		sq_delete(this,SQArray);
+		this->_sharedstate->DelayFinalFree(this);
+	}
+	void FinalFree() override
+	{
+		sq_delete(this, SQArray);
 	}
 	SQObjectPtrVec _values;
 };
