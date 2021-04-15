@@ -99,6 +99,7 @@ SQSharedState::SQSharedState()
 	_notifyallexceptions = false;
 	_scratchpad=NULL;
 	_scratchpadsize=0;
+	_collectable_free_processing = false;
 #ifndef NO_GARBAGE_COLLECTOR
 	_gc_chain=NULL;
 #endif
@@ -225,6 +226,34 @@ SQInteger SQSharedState::GetMetaMethodIdxByName(const SQObjectPtr &name)
 	}
 	return -1;
 }
+
+/**
+ * Helper function that is to be used instead of calling FinalFree directly on the instance,
+ * so the frees can happen iteratively. This as in the FinalFree the references to any other
+ * objects are released, which can cause those object to be freed yielding a potentially
+ * very deep stack in case of for example a link list.
+ *
+ * This is done internally by a vector onto which the to be freed instances are pushed. When
+ * this is called when not already processing, this method will actually call the FinalFree
+ * function which might cause more elements to end up in the queue which this method then
+ * picks up continueing until it has processed all instances in that queue.
+ * @param collectable The collectable to (eventually) free.
+ */
+void SQSharedState::DelayFinalFree(SQCollectable *collectable)
+{
+	this->_collectable_free_queue.push_back(collectable);
+
+	if (!this->_collectable_free_processing) {
+		this->_collectable_free_processing = true;
+		while (!this->_collectable_free_queue.empty()) {
+			SQCollectable *collectable = this->_collectable_free_queue.back();
+			this->_collectable_free_queue.pop_back();
+			collectable->FinalFree();
+		}
+		this->_collectable_free_processing = false;
+	}
+}
+
 
 #ifndef NO_GARBAGE_COLLECTOR
 
