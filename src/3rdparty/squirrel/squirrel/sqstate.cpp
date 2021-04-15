@@ -228,18 +228,18 @@ SQInteger SQSharedState::GetMetaMethodIdxByName(const SQObjectPtr &name)
 
 #ifndef NO_GARBAGE_COLLECTOR
 
-void SQSharedState::MarkObject(SQObjectPtr &o,SQCollectable **chain)
+void SQSharedState::EnqueueMarkObject(SQObjectPtr &o,SQGCMarkerQueue &queue)
 {
 	switch(type(o)){
-	case OT_TABLE:_table(o)->Mark(chain);break;
-	case OT_ARRAY:_array(o)->Mark(chain);break;
-	case OT_USERDATA:_userdata(o)->Mark(chain);break;
-	case OT_CLOSURE:_closure(o)->Mark(chain);break;
-	case OT_NATIVECLOSURE:_nativeclosure(o)->Mark(chain);break;
-	case OT_GENERATOR:_generator(o)->Mark(chain);break;
-	case OT_THREAD:_thread(o)->Mark(chain);break;
-	case OT_CLASS:_class(o)->Mark(chain);break;
-	case OT_INSTANCE:_instance(o)->Mark(chain);break;
+	case OT_TABLE:queue.Enqueue(_table(o));break;
+	case OT_ARRAY:queue.Enqueue(_array(o));break;
+	case OT_USERDATA:queue.Enqueue(_userdata(o));break;
+	case OT_CLOSURE:queue.Enqueue(_closure(o));break;
+	case OT_NATIVECLOSURE:queue.Enqueue(_nativeclosure(o));break;
+	case OT_GENERATOR:queue.Enqueue(_generator(o));break;
+	case OT_THREAD:queue.Enqueue(_thread(o));break;
+	case OT_CLASS:queue.Enqueue(_class(o));break;
+	case OT_INSTANCE:queue.Enqueue(_instance(o));break;
 	default: break; //shutup compiler
 	}
 }
@@ -248,27 +248,36 @@ void SQSharedState::MarkObject(SQObjectPtr &o,SQCollectable **chain)
 SQInteger SQSharedState::CollectGarbage(SQVM *vm)
 {
 	SQInteger n=0;
-	SQCollectable *tchain=NULL;
 	SQVM *vms = _thread(_root_vm);
 
-	vms->Mark(&tchain);
+	SQGCMarkerQueue queue;
+	queue.Enqueue(vms);
 #ifdef WITH_ASSERT
 	SQInteger x = _table(_thread(_root_vm)->_roottable)->CountUsed();
 #endif
-	_refs_table.Mark(&tchain);
-	MarkObject(_registry,&tchain);
-	MarkObject(_consts,&tchain);
-	MarkObject(_metamethodsmap,&tchain);
-	MarkObject(_table_default_delegate,&tchain);
-	MarkObject(_array_default_delegate,&tchain);
-	MarkObject(_string_default_delegate,&tchain);
-	MarkObject(_number_default_delegate,&tchain);
-	MarkObject(_generator_default_delegate,&tchain);
-	MarkObject(_thread_default_delegate,&tchain);
-	MarkObject(_closure_default_delegate,&tchain);
-	MarkObject(_class_default_delegate,&tchain);
-	MarkObject(_instance_default_delegate,&tchain);
-	MarkObject(_weakref_default_delegate,&tchain);
+	_refs_table.EnqueueMarkObject(queue);
+	EnqueueMarkObject(_registry,queue);
+	EnqueueMarkObject(_consts,queue);
+	EnqueueMarkObject(_metamethodsmap,queue);
+	EnqueueMarkObject(_table_default_delegate,queue);
+	EnqueueMarkObject(_array_default_delegate,queue);
+	EnqueueMarkObject(_string_default_delegate,queue);
+	EnqueueMarkObject(_number_default_delegate,queue);
+	EnqueueMarkObject(_generator_default_delegate,queue);
+	EnqueueMarkObject(_thread_default_delegate,queue);
+	EnqueueMarkObject(_closure_default_delegate,queue);
+	EnqueueMarkObject(_class_default_delegate,queue);
+	EnqueueMarkObject(_instance_default_delegate,queue);
+	EnqueueMarkObject(_weakref_default_delegate,queue);
+
+	SQCollectable *tchain=NULL;
+
+	while (!queue.IsEmpty()) {
+		SQCollectable *q = queue.Pop();
+		q->EnqueueMarkObjectForChildren(queue);
+		SQCollectable::RemoveFromChain(&_gc_chain, q);
+		SQCollectable::AddToChain(&tchain, q);
+	}
 
 	SQCollectable *t = _gc_chain;
 	SQCollectable *nx = NULL;
@@ -357,12 +366,12 @@ RefTable::~RefTable()
 }
 
 #ifndef NO_GARBAGE_COLLECTOR
-void RefTable::Mark(SQCollectable **chain)
+void RefTable::EnqueueMarkObject(SQGCMarkerQueue &queue)
 {
 	RefNode *nodes = (RefNode *)_nodes;
 	for(SQUnsignedInteger n = 0; n < _numofslots; n++) {
 		if(type(nodes->obj) != OT_NULL) {
-			SQSharedState::MarkObject(nodes->obj,chain);
+			SQSharedState::EnqueueMarkObject(nodes->obj,queue);
 		}
 		nodes++;
 	}

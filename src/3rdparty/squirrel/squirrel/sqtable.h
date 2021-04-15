@@ -60,7 +60,7 @@ public:
 		SQ_FREE(_nodes, _numofnodes * sizeof(_HashNode));
 	}
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 #endif
 	inline _HashNode *_Get(const SQObjectPtr &key,SQHash hash)
 	{

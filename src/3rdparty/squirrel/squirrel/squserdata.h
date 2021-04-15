@@ -18,7 +18,7 @@ struct SQUserData : SQDelegable
 		return ud;
 	}
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 	void Finalize(){SetDelegate(NULL);}
 #endif
 	void Release() {
