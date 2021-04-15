@@ -59,7 +59,7 @@ public:
 	}
 	void Finalize();
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable ** );
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 #endif
 	SQInteger Next(const SQObjectPtr &refpos, SQObjectPtr &outkey, SQObjectPtr &outval);
 	SQInstance *CreateInstance();
@@ -147,7 +147,7 @@ public:
 	}
 	void Finalize();
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable ** );
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 #endif
 	bool InstanceOf(SQClass *trg);
 	bool GetMetaMethod(SQVM *v,SQMetaMethod mm,SQObjectPtr &res);
