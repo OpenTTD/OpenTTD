@@ -17,7 +17,7 @@ public:
 		return newarray;
 	}
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 #endif
 	void Finalize(){
 		_values.resize(0);

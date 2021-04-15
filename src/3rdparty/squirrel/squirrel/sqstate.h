@@ -34,7 +34,7 @@ struct RefTable {
 	void AddRef(SQObject &obj);
 	SQBool Release(SQObject &obj);
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObject(SQGCMarkerQueue &queue);
 #endif
 	void Finalize();
 private:
@@ -63,7 +63,7 @@ public:
 	SQInteger GetMetaMethodIdxByName(const SQObjectPtr &name);
 #ifndef NO_GARBAGE_COLLECTOR
 	SQInteger CollectGarbage(SQVM *vm);
-	static void MarkObject(SQObjectPtr &o,SQCollectable **chain);
+	static void EnqueueMarkObject(SQObjectPtr &o,SQGCMarkerQueue &queue);
 #endif
 	SQObjectPtrVec *_metamethods;
 	SQObjectPtr _metamethodsmap;
