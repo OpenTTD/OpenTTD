@@ -1070,6 +1070,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardvere
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Bekapcsolásával az OpenTTD hardveres gyorsítást próbál alkalmazni. A beállítás csak a játék újraindítása után lép érvénybe.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ez a beállítás csak a játék újraindítása után lép érvénybe
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync (Vertikális Szinkronizáció)
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Jelöld be ezt a négyzetet hogy engedélyezd a v-sync-et. A változtatás csak a játék újraindítása után fog érvényesülni. Kizárólag hardware gyorsítással működik!
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Felület mérete
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Használni kívánt felületméret kiválasztása
@@ -1203,6 +1205,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Beállí
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Szűrő kifejezés:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Összes szétnyitása
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Összes összecsukása
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Visszaállítja az összes értéket
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(leírás nem elérhető)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Alapértelmezett érték: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Beállítás típusa: {ORANGE}{STRING}
@@ -1211,6 +1214,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Játék beáll�
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Játék beállítás (mentésben tárolva; csak a jelenlegi játékot befolyásolja)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Vállalat beállítás (mentésben tárolva; csak az új játékokat befolyásolja)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Vállalat beállítás (mentésben tárolva; csak a jelenlegi vállalatot befolyásolja)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Figyelem!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Ez a művelet minden játékbeállítást visszaállít.{}Biztos, hogy folytatni akarja a műveletet?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategória:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Típus:
