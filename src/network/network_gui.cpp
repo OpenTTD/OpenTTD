@@ -954,7 +954,7 @@ static const NWidgetPart _nested_network_game_widgets[] = {
 					EndContainer(),
 					NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_NG_DETAILS),
 						NWidget(NWID_VERTICAL, NC_EQUALSIZE), SetPIP(5, 5, 5),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NG_DETAILS_SPACER), SetMinimalSize(140, 155), SetResize(0, 1), SetFill(1, 1), // Make sure it's at least this wide
+							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_NG_DETAILS_SPACER), SetMinimalSize(140, 0), SetMinimalTextLines(15, 24 + WD_PAR_VSEP_NORMAL), SetResize(0, 1), SetFill(1, 1), // Make sure it's at least this wide
 							NWidget(NWID_HORIZONTAL, NC_NONE), SetPIP(5, 5, 5),
 								NWidget(NWID_SELECTION, INVALID_COLOUR, WID_NG_NEWGRF_MISSING_SEL),
 									NWidget(WWT_PUSHTXTBTN, COLOUR_WHITE, WID_NG_NEWGRF_MISSING), SetFill(1, 0), SetDataTip(STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_BUTTON, STR_NEWGRF_SETTINGS_FIND_MISSING_CONTENT_TOOLTIP),
