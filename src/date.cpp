@@ -30,7 +30,7 @@ DateFract _date_fract; ///< Fractional part of the day.
 uint16    _tick_counter;  ///< Ever incrementing (and sometimes wrapping) tick counter for setting off various events
 GameYear  _game_year;  ///< Number of years since the game began.
 
-bool _year_is_looping; ///< Is the current year repeating? (and has looped at least once)
+bool _year_is_looping; ///< True if the current year is selected to loop and has done so at least once.
 
 /**
  * Checks if the current year is looping, and has occurred at least once.

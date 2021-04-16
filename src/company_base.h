@@ -76,8 +76,8 @@ struct CompanyProperties {
 
 	Owner share_owners[4];           ///< Owners of the 4 shares of the company. #INVALID_OWNER if nobody has bought them yet.
 
-	Year inaugurated_year;           ///< Year of starting the company, n .
-	GameYear inaugurated_game_year;   ///< Game year when the company was started
+	Year inaugurated_year;           ///< Actual year the company was started.
+	GameYear inaugurated_game_year;  ///< Game year when the company was started.
 
 	byte months_of_bankruptcy;       ///< Number of months that the company is unable to pay its debts
 	CompanyMask bankrupt_asked;      ///< which companies were asked about buying it?
