@@ -253,8 +253,8 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 			if (pass == 0) {
 				/* Check if bridge would take damage */
-				if (IsBridgeAbove(t)) {
-					int bridge_height = GetBridgeHeight(GetSouthernBridgeEnd(t));
+				if (IsBridgeAbove(tile)) {
+					int bridge_height = GetLowestBridgeHeight(tile);
 
 					/* Check if bridge would take damage. */
 					if (direction == 1 && bridge_height <= z_max) {

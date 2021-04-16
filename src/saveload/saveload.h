@@ -337,6 +337,7 @@ enum SaveLoadVersion : uint16 {
 
 	SLV_TABLE_CHUNKS,                       ///< 295  PR#9322 Introduction of CH_TABLE and CH_SPARSE_TABLE.
 	SLV_SCRIPT_INT64,                       ///< 296  PR#9415 SQInteger is 64bit but was saved as 32bit.
+	SLV_BRIDGES_OVER_BRIDGES,               ///< 297  PR#9043 Bridges over bridges.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
