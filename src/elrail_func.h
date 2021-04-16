@@ -34,7 +34,7 @@ static inline bool HasRailCatenaryDrawn(RailType rt)
 
 void DrawRailCatenary(const TileInfo *ti);
 void DrawRailCatenaryOnTunnel(const TileInfo *ti);
-void DrawRailCatenaryOnBridge(const TileInfo *ti);
+void DrawRailCatenaryOnBridge(const TileInfo *ti, Axis axis, int bridge_height_diff);
 
 void SettingsDisableElrail(int32 new_value); ///< _settings_game.disable_elrail callback
 
