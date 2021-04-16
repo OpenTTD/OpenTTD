@@ -77,6 +77,8 @@ struct DifficultySettings {
 	bool   line_reverse_mode;                ///< reversing at stations or not
 	bool   disasters;                        ///< are disasters enabled
 	byte   town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
+	byte   water_clearing_cost_exponent;     ///< how the cost of clearing water tiles grows depending on depth
+	byte   water_depth_erosion_speed;        ///< how fast water depth smoothing happens
 };
 
 /** Settings relating to viewport/smallmap scrolling. */

@@ -37,6 +37,7 @@
  * \li GSStoryPage::MakeTileButtonReference
  * \li GSStoryPage::MakeVehicleButtonReference
  * \li GSPriorityQueue
+ * \li GSTile::GetWaterDepth
  *
  * Other changes:
  * \li GSCompany::ChangeBankBalance takes one extra parameter to refer to a location to show text effect on

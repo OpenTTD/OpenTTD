@@ -100,6 +100,9 @@ struct CanalResolverObject : public ResolverObject {
 
 		/* Random data for river or canal tiles, otherwise zero */
 		case 0x83: return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
+
+		/* Water depth range 0 to 15 */
+		case 0x84: return IsTileType(this->tile, MP_WATER) ? GetWaterDepth(this->tile) : 0;
 	}
 
 	DEBUG(grf, 1, "Unhandled canal variable 0x%02X", variable);

@@ -395,6 +395,8 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 		case 0xAA: return this->industry->counter;
 		case 0xAB: return GB(this->industry->counter, 8, 8);
 		case 0xAC: return this->industry->was_cargo_delivered;
+		case 0xAD: return this->industry->water_depth_min;
+		case 0xAE: return this->industry->water_depth_max;
 
 		case 0xB0: return Clamp(this->industry->construction_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Date when built since 1920 (in days)
 		case 0xB3: return this->industry->construction_type; // Construction type
@@ -545,6 +547,7 @@ CommandCost CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, siz
 	ind.random = initial_random_bits;
 	ind.founder = founder;
 	ind.psa = nullptr;
+	GetIndustryLayoutWaterDepthMinMax(indspec->layouts[layout], tile, ind.water_depth_min, ind.water_depth_max);
 
 	IndustriesResolverObject object(tile, &ind, type, seed, CBID_INDUSTRY_LOCATION, 0, creation_type);
 	uint16 result = object.ResolveCallback();

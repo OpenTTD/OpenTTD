@@ -1134,6 +1134,15 @@ STR_CITY_APPROVAL_PERMISSIVE                                    :Permissive
 STR_CITY_APPROVAL_TOLERANT                                      :Tolerant
 STR_CITY_APPROVAL_HOSTILE                                       :Hostile
 
+STR_WATER_CLEARING_COST_ORIGINAL                                :None
+STR_WATER_CLEARING_COST_LINEAR                                  :Linear
+STR_WATER_CLEARING_COST_QUADRATIC                               :Quadratic
+
+STR_WATER_DEPTH_EROSION_SPEED_NONE                              :No erosion
+STR_WATER_DEPTH_EROSION_SPEED_SLOW                              :Slow
+STR_WATER_DEPTH_EROSION_SPEED_MEDIUM                            :Medium
+STR_WATER_DEPTH_EROSION_SPEED_FAST                              :Fast
+
 STR_WARNING_NO_SUITABLE_AI                                      :{WHITE}No suitable AIs available...{}You can download several AIs via the 'Online Content' system
 
 # Settings tree window
@@ -1212,6 +1221,10 @@ STR_CONFIG_SETTING_DISASTERS                                    :Disasters: {STR
 STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toggle disasters which may occasionally block or destroy vehicles or infrastructure
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Town council's attitude towards area restructuring: {STRING2}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Choose how much noise and environmental damage by companies affect their town rating and further construction actions in their area
+STR_CONFIG_SETTING_WATER_CLEARING_COST                          :Influence of water depths on modification cost: {STRING2}
+STR_CONFIG_SETTING_WATER_CLEARING_COST_HELPTEXT                 :Choose how expensive modifying/clearing deep water tiles is.{}None means all water tiles cost the same to clear regardless of depth. Linear means the regular cost must be paid for every depth level, makes modifying ocean expensive. Quadratic means the depth level is squared and multiplied by cost, makes modifying ocean extremely expensive.
+STR_CONFIG_SETTING_WATER_DEPTH_EROSION_SPEED                    :Sea floor erosion speed: {STRING2}
+STR_CONFIG_SETTING_WATER_DEPTH_EROSION_SPEED_HELPTEXT           :Control how fast the depth of water tiles normalises toward a smooth gradient from the coast.{}Slow erosion takes place over centuries. Medium over decades. Fast erosion over a few years.
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Map height limit: {STRING2}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Set the maximum height of the map terrain. With "(auto)" a good value will be picked after terrain generation
@@ -2769,10 +2782,10 @@ STR_LAI_STATION_DESCRIPTION_SHIP_DOCK                           :Ship dock
 STR_LAI_STATION_DESCRIPTION_BUOY                                :Buoy
 STR_LAI_STATION_DESCRIPTION_WAYPOINT                            :Waypoint
 
-STR_LAI_WATER_DESCRIPTION_WATER                                 :Water
-STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal
+STR_LAI_WATER_DESCRIPTION_WATER                                 :Water (depth {HEIGHT})
+STR_LAI_WATER_DESCRIPTION_CANAL                                 :Canal (depth {HEIGHT})
 STR_LAI_WATER_DESCRIPTION_LOCK                                  :Lock
-STR_LAI_WATER_DESCRIPTION_RIVER                                 :River
+STR_LAI_WATER_DESCRIPTION_RIVER                                 :River (depth {HEIGHT})
 STR_LAI_WATER_DESCRIPTION_COAST_OR_RIVERBANK                    :Coast or riverbank
 STR_LAI_WATER_DESCRIPTION_SHIP_DEPOT                            :Ship depot
 
@@ -3599,8 +3612,8 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {G
 STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}Cost: {GOLD}{CURRENCY_LONG}{BLACK} (Refit Cost: {GOLD}{CURRENCY_LONG}{BLACK}) Weight: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Speed: {GOLD}{VELOCITY}{BLACK} Power: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Speed: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Speed on ocean: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Speed on canal/river: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}Deep water speed: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}Shallow water speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Running Cost: {GOLD}{CURRENCY_LONG}/yr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacity: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(refittable)
@@ -4391,6 +4404,8 @@ STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... tree
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Name must be unique
 STR_ERROR_GENERIC_OBJECT_IN_THE_WAY                             :{WHITE}{1:STRING} in the way
 STR_ERROR_NOT_ALLOWED_WHILE_PAUSED                              :{WHITE}Not allowed while paused
+STR_ERROR_WATER_TOO_DEEP                                        :{WHITE}... water too deep
+STR_ERROR_WATER_TOO_SHALLOW                                     :{WHITE}... water too shallow
 
 # Local authority errors
 STR_ERROR_LOCAL_AUTHORITY_REFUSES_TO_ALLOW_THIS                 :{WHITE}{TOWN} local authority refuses to allow this

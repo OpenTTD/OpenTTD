@@ -3081,6 +3081,28 @@ bool AfterLoadGame()
 		for (Industry *ind : Industry::Iterate()) if (ind->neutral_station != nullptr) ind->neutral_station->industry = ind;
 	}
 
+	if (IsSavegameVersionBefore(SLV_WATER_DEPTH)) {
+		/* Set difficulty to "original" */
+		_settings_game.difficulty.water_clearing_cost_exponent = 0;
+		/* Make sure water tiles have an appropriate depth */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_WATER)) SetWaterDepth(t, 0);
+		}
+		extern void ErodeAllWaterTiles(); // landscape.cpp
+		ErodeAllWaterTiles();
+		/* Synthesize water depth min/max on all industries */
+		for (Industry *ind : Industry::Iterate()) {
+			const IndustrySpec *spec = GetIndustrySpec(ind->type);
+			ind->water_depth_min = ind->water_depth_max = 0;
+			if (spec == nullptr || !(spec->behaviour & INDUSTRYBEH_BUILT_ONWATER)) continue;
+			/* This industry type builds on water, try to find nearby water tiles for synthetic depth */
+			TileIndex tile = INVALID_TILE;
+			if (CircularTileSearch(&tile, 5, [](TileIndex t, void *) { return IsWaterTile(t); }, nullptr)) {
+				ind->water_depth_min = ind->water_depth_max = GetWaterDepth(tile);
+			}
+		}
+	}
+
 	if (IsSavegameVersionBefore(SLV_TREES_WATER_CLASS)) {
 		/* Update water class for trees. */
 		for (TileIndex t = 0; t < map_size; t++) {

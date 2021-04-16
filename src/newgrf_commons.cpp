@@ -497,6 +497,8 @@ CommandCost GetErrorMessageFromLocationCallbackResult(uint16 cb_res, const GRFFi
 			case 0x406: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_SEA); break;
 			case 0x407: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_CANAL); break;
 			case 0x408: res = CommandCost(STR_ERROR_CAN_T_BUILD_ON_RIVER); break;
+			case 0x409: res = CommandCost(STR_ERROR_WATER_TOO_DEEP); break;
+			case 0x40A: res = CommandCost(STR_ERROR_WATER_TOO_SHALLOW); break;
 		}
 	}
 

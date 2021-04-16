@@ -22,6 +22,7 @@
  * API additions:
  * \li AICargo::GetName
  * \li AIPriorityQueue
+ * \li AITile::GetWaterDepth
  *
  * Other changes:
  * \li AIVehicle::CloneVehicle now correctly returns estimate when short on cash
