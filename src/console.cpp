@@ -204,38 +204,6 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
 }
 
 /**
- * Add an item to an alphabetically sorted list.
- * @param base first item of the list
- * @param item_new the item to add
- */
-template<class T>
-void IConsoleAddSorted(T **base, T *item_new)
-{
-	if (*base == nullptr) {
-		*base = item_new;
-		return;
-	}
-
-	T *item_before = nullptr;
-	T *item = *base;
-	/* The list is alphabetically sorted, insert the new item at the correct location */
-	while (item != nullptr) {
-		if (item->name > item_new->name) break; // insert here
-
-		item_before = item;
-		item = item->next;
-	}
-
-	if (item_before == nullptr) {
-		*base = item_new;
-	} else {
-		item_before->next = item_new;
-	}
-
-	item_new->next = item;
-}
-
-/**
  * Creates a copy of a string with underscores removed from it
  * @param name String to remove the underscores from.
  * @return A copy of \a name, without underscores.
