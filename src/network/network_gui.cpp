@@ -500,6 +500,7 @@ public:
 		switch (widget) {
 			case WID_NG_MATRIX:
 				resize->height = WD_MATRIX_TOP + std::max(GetSpriteSize(SPR_BLOT).height, (uint)FONT_HEIGHT_NORMAL) + WD_MATRIX_BOTTOM;
+				fill->height = resize->height;
 				size->height = 12 * resize->height;
 				break;
 
