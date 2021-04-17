@@ -1005,6 +1005,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}硬件�
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}点击该复选框，让 OpenTTD 尝试使用硬件加速。修改后的设置将在游戏重启后生效
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}修改后的设置将在游戏重启后生效
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}界面大小
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}选择使用的界面元素大小
 
@@ -1021,6 +1022,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :正常
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :两倍大小
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :四倍大小
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}图像
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}显示刷新率
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}选择需要的屏幕刷新率
@@ -1204,6 +1206,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :地区政府对
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :设置相关参数以决定各公司造成的噪音及环境破坏时，各城镇对该公司的评价及未来区域建设的影响。
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :地图高度限制：{STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}您不能把最高地面高度设为这个值，因为地图上至少有一座山丘的高度比这个值还大
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允许在建筑、轨道等下方改变地形（自动斜坡）： {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :允许在建筑和轨道下方改变地形而不需要拆除他们
@@ -1468,6 +1471,9 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :“打开”时
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :企业财政窗口中的组群支出：{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :“打开”时公司财务报表将分组显示
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :建造铁路时自动移除信号灯：{STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :快进速度上限：{STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% 正常游戏速度
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :无限制（在您的计算机能允许的范围内）
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :产业新闻: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :每月初产业新闻音效
@@ -2572,6 +2578,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}随机�
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}种植随机类型的树木，按住 Shift 键可以显示所需资金
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}随机树木
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}随机地种植一些树木
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}树丛
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}森林
 
 # Land generation window (SE)
@@ -3787,6 +3794,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车�
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}将主视角中心移动到列车所在的位置。双击将会在主视角中跟踪列车。单击的同时按住Ctrl会在新视点中显示列车位置
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK} 将主视角中心移动到车辆所在的位置。双击将会在主视角中跟踪车辆。单击的同时按住 Ctrl 会在新视点中显示车辆位置
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}将主视角中心移动到船只所在的位置。双击将会在主视角中跟踪船只。单击的同时按住Ctrl会在新视点中显示船只位置
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}将主视角中心移动到飞机所在的位置。双击将会在主视角中跟踪飞机。单击的同时按住Ctrl会在新视点中显示飞机位置
 
@@ -3957,8 +3965,8 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共享调�
 STR_ORDER_NON_STOP                                              :{BLACK}不停车
 STR_ORDER_GO_TO                                                 :前往
 STR_ORDER_GO_NON_STOP_TO                                        :不停车前往
-STR_ORDER_GO_VIA                                                :通过
-STR_ORDER_GO_NON_STOP_VIA                                       :前往不停车
+STR_ORDER_GO_VIA                                                :经由
+STR_ORDER_GO_NON_STOP_VIA                                       :经由（不停车）
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}改变当前选中车站停车时的执行动作
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}装满任意货物
@@ -4375,6 +4383,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}没有�
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}需要{CURRENCY_LONG}
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}不能偿还贷款……
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}不能将银行的贷款送给别人……
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}不能给予该公司资金……
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}不能收购公司……
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}不能设置公司总部
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}不能购买此公司的股份……
@@ -4650,7 +4659,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}在{DATE
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}不能让列车冒险通过信号...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}不能命令列车调头...
-STR_ERROR_TRAIN_START_NO_POWER                                  :木有接触网！
+STR_ERROR_TRAIN_START_NO_POWER                                  :没有接触网！
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}车辆无法调头...
 

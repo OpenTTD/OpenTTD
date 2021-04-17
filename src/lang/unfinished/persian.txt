@@ -962,6 +962,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :دیگر
 
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :دو برابر
 
 

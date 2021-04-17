@@ -974,6 +974,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}選擇�
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :其它
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}介面大小
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}選擇使用的介面元素大小
 

@@ -1074,6 +1074,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardvér
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Zaškrtnutím políčka dovolíte, aby sa OpenTTD pokúsilo použiť hardvérové zrýchlenie. Zmena nastavenia sa uplatní až po reštartovaní hry
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Nastavenie sa uplatní až po reštartovaní hry
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veľkosť rozhrania
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Výber veľkosti prvkov rozhrania
 

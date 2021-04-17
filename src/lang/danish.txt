@@ -991,6 +991,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :andet
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware-acceleration
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}grænseflade størrelse
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vælg den grænseflade størrelse du ønsker at benytte
 

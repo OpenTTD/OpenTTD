@@ -1006,6 +1006,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hårdvar
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Markera denna rutan för att tillåta OpenTTD att försöka använda hårdvaruacceleration. Ändrad inställning kommer bara att gälla efter omstart.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Inställningen kommer bara att gälla efter omstart av spelet
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Gränssnittstorlek
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Välj vilken gränssnittsstorlek som ska användas
 

@@ -1004,6 +1004,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Ekrāna 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Cita
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Lietotāja saskarnes lielums
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Lietotāja saskarnes elementu lieluma izvēle
 

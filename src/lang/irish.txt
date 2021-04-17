@@ -969,6 +969,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Roghnaig
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :eile
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Méid an chomhéadain
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Roghnaigh méid na heiliminte comhéadain a úsáidfear
 

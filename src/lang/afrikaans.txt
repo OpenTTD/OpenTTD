@@ -990,6 +990,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Kies die
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :ander
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK} Koppelvlak groote
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK} Kies die koppelvlak element groote om te gebruik
 

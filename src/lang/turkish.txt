@@ -993,6 +993,7 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :diğer
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Arayüz boyutu
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Kullanmak üzere arayüz bileşen boyutunu seçin
 

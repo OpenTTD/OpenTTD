@@ -988,6 +988,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}בחר �
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :אחר
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}גודל ממשק
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}בחר את ממשק גודל העצם לשימוש
 

@@ -1007,6 +1007,9 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK} Accél�
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Cochez cette case permet à OpenTTD d'utiliser l'accélération matérielle, si possible. Un paramètre modifié ne sera pris en compte qu'au redémarrage du jeu
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Les paramètres ne prendront effet qu'après le redémarrage du jeu
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Cochez cette case pour activer la synchronisation verticale de l'écran. La modification de ce paramètres ne sera effective qu'après le redémarrage du jeu. Fonctionne uniquement si l’accélération matérielle est active
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Taille d'interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Choisir la taille d'élément d'interface à utiliser
 
@@ -1023,7 +1026,7 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Taille double
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Taille quadruple
 
-STR_GAME_OPTIONS_GRAPHICS                                       :Graphiques {BLACK}
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK} Graphiques
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK} Taux de rafraîchissement de l'affichage
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK} Sélectionnez la fréquence de rafraîchissement à utiliser
@@ -3437,7 +3440,7 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}Déména
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}Reconstruire ailleurs le siège de la compagnie pour le prix de 1{NBSP}% de sa valeur.{}Shift-clic pour afficher seulement le coût estimé.
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Détails
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Afficher le détail des calculs d'infrastructure
-STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :Donner de l’argent
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Donner de l’argent
 STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Donner de l’argent à cette compagnie
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Nouveau visage

@@ -1123,6 +1123,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Izberi l
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :drugo
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Velikost vmesnika
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Izberi velikost elementa vmesnika
 

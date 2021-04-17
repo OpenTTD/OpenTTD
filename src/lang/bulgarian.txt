@@ -969,6 +969,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Избо
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Интерфейс размер
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Изберете размера на интерфейс елемент за използване
 

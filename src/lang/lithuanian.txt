@@ -1211,6 +1211,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Aparatin
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Pažymėkite šį langelį, jei norite, kad OpenTTD taikytų aparatinį spartinimą. Kad nuostata įsigaliotų, reiks perkrauti OpenTTD
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Kad pakeitimai įsigaliotų, reikia paleisti OpenTTD iš naujo
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Sąsajos elementų dydis
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Pasirinkite vartotojo sąsajos elementų santykinį dydį
 

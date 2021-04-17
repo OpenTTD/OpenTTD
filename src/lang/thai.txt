@@ -960,6 +960,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}เล�
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}ขนาดของแผงควบคุม
 
 

@@ -1166,6 +1166,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Eligere 
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Magnitudo interfaciei
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Eligere magnitudinem interfaciei adhibendam
 
