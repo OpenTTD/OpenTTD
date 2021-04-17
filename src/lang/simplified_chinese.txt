@@ -3966,7 +3966,7 @@ STR_ORDER_NON_STOP                                              :{BLACK}不停�
 STR_ORDER_GO_TO                                                 :前往
 STR_ORDER_GO_NON_STOP_TO                                        :不停车前往
 STR_ORDER_GO_VIA                                                :通过
-STR_ORDER_GO_NON_STOP_VIA                                       :前往不停车
+STR_ORDER_GO_NON_STOP_VIA                                       :通过不停车
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}改变当前选中车站停车时的执行动作
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}装满任意货物
