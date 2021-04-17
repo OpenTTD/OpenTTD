@@ -11,6 +11,7 @@
 #define CONSOLE_INTERNAL_H
 
 #include "gfx_type.h"
+#include <map>
 
 static const uint ICON_CMDLN_SIZE     = 1024; ///< maximum length of a typed in command
 static const uint ICON_MAX_STREAMSIZE = 2048; ///< maximum length of a totally expanded command
@@ -33,9 +34,9 @@ enum ConsoleHookResult {
 typedef bool IConsoleCmdProc(byte argc, char *argv[]);
 typedef ConsoleHookResult IConsoleHook(bool echo);
 struct IConsoleCmd {
-	std::string name;         ///< name of command
-	IConsoleCmd *next;        ///< next command in list
+	IConsoleCmd(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook) : name(name), proc(proc), hook(hook) {}
 
+	std::string name;         ///< name of command
 	IConsoleCmdProc *proc;    ///< process executed when command is typed
 	IConsoleHook *hook;       ///< any special trigger action that needs executing
 };
@@ -59,17 +60,26 @@ struct IConsoleAlias {
 	std::string cmdline;        ///< command(s) that is/are being aliased
 };
 
+struct IConsole
+{
+	typedef std::map<std::string, IConsoleCmd> CommandList;
+
+	/* console parser */
+	static CommandList &Commands();
+
+	/* Commands */
+	static void CmdRegister(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook = nullptr);
+	static IConsoleCmd *CmdGet(const std::string &name);
+};
+
 /* console parser */
-extern IConsoleCmd   *_iconsole_cmds;    ///< List of registered commands.
 extern IConsoleAlias *_iconsole_aliases; ///< List of registered aliases.
 
 /* console functions */
 void IConsoleClearBuffer();
 
 /* Commands */
-void IConsoleCmdRegister(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook = nullptr);
 void IConsoleAliasRegister(const std::string &name, const std::string &cmd);
-IConsoleCmd *IConsoleCmdGet(const std::string &name);
 IConsoleAlias *IConsoleAliasGet(const std::string &name);
 
 /* console std lib (register ingame commands/aliases) */

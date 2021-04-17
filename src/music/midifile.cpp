@@ -1142,7 +1142,7 @@ static void RegisterConsoleMidiCommands()
 {
 	static bool registered = false;
 	if (!registered) {
-		IConsoleCmdRegister("dumpsmf", CmdDumpSMF);
+		IConsole::CmdRegister("dumpsmf", CmdDumpSMF);
 		registered = true;
 	}
 }
