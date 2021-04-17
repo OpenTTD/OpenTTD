@@ -119,7 +119,7 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT_LONG} d
 STR_QUANTITY_TOYS                                               :{COMMA}{NBSP}juguete{P "" s}
 STR_QUANTITY_SWEETS                                             :{COMMA}{NBSP}bolsa{P "" s} de caramelos
 STR_QUANTITY_COLA                                               :{VOLUME_LONG} de cola
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodón dulce
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT_LONG} de algodón de azúcar
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuja{P "" s}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} de tofe{P "" s}
 STR_QUANTITY_BATTERIES                                          :{COMMA} pila{P "" s}
@@ -195,7 +195,7 @@ STR_COLOUR_DEFAULT                                              :Por Defecto
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
-STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL} {NBSP}casillas/día
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}casillas/día
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}cv
@@ -315,7 +315,7 @@ STR_SORT_BY_RANGE                                               :Alcance
 STR_SORT_BY_POPULATION                                          :Población
 STR_SORT_BY_RATING                                              :Calificación
 STR_SORT_BY_NUM_VEHICLES                                        :Número de vehículos
-STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Beneficios total del último año
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Beneficio total del último año
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Beneficio total este año
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Beneficio medio el año pasado
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Beneficio medio este año
@@ -1007,6 +1007,9 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Acelerac
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marca esta casilla para permitir que OpenTTD intente usar aceleración por hardware. El cambio de configuración sólo tendrá efecto después de reiniciar el juego
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}El ajuste sólo tendrá efecto después de reiniciar el juego
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Sincronización vertical
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marca esta casilla para activar la sincronización vertical en la pantalla. El cambio sólo se aplicará después de reiniciar el juego. Sólo funciona si la aceleración por hardware está activada.
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamaño de la interfaz
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Selecciona el tamaño de los elementos de la interfaz a usar
 
@@ -1087,11 +1090,11 @@ STR_NUM_CUSTOM                                                  :Personalizado
 STR_NUM_CUSTOM_NUMBER                                           :Personalizado ({NUM})
 
 STR_VARIETY_NONE                                                :Ninguna
-STR_VARIETY_VERY_LOW                                            :Muy baja
+STR_VARIETY_VERY_LOW                                            :Muy Baja
 STR_VARIETY_LOW                                                 :Baja
 STR_VARIETY_MEDIUM                                              :Media
 STR_VARIETY_HIGH                                                :Alta
-STR_VARIETY_VERY_HIGH                                           :Muy alta
+STR_VARIETY_VERY_HIGH                                           :Muy Alta
 
 STR_AI_SPEED_VERY_SLOW                                          :Muy lenta
 STR_AI_SPEED_SLOW                                               :Lenta
@@ -1099,7 +1102,7 @@ STR_AI_SPEED_MEDIUM                                             :Media
 STR_AI_SPEED_FAST                                               :Rápida
 STR_AI_SPEED_VERY_FAST                                          :Muy rápida
 
-STR_SEA_LEVEL_VERY_LOW                                          :Muy bajo
+STR_SEA_LEVEL_VERY_LOW                                          :Muy Bajo
 STR_SEA_LEVEL_LOW                                               :Bajo
 STR_SEA_LEVEL_MEDIUM                                            :Medio
 STR_SEA_LEVEL_HIGH                                              :Alto
@@ -1730,7 +1733,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Unidad del jueg
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Unidad de potencia de vehículos: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :Cada vez que se muestre la potencia de un vehículo en la interfaz de usuario, se empleará la unidad seleccionada
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (cv)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :Imperial (hp)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :Métrico (cv)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :SI (kW)
 
@@ -3220,12 +3223,12 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Financiar la co
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Comprar derechos de transporte exclusivos
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Sobornar a la autoridad local
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar una pequeña campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Proporciona un incremento temporal en la calificación de las estaciones en un radio pequeño alrededor del centro del municipio.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Iniciar una campaña publicitaria local mediana para atraer más pasajeros y carga a sus servicios de transporte.{}Proporciona un incremento temporal en la calificación de las estaciones en un radio mediano alrededor del centro del municipio.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar una gran campaña publicitaria local para atraer más pasajeros y carga a sus servicios de transporte.{}Proporciona un incremento temporal en la calificación de las estaciones en un radio grande alrededor del centro del municipio.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Pagar la reconstrucción de las carreteras locales.{}Provoca considerables complicaciones de tráfico durante 6 meses.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Iniciar una campaña publicitaria local pequeña para atraer más pasajeros y carga a sus servicios de transporte.{}Proporciona un incremento temporal en la calificación de las estaciones en un radio pequeño alrededor del centro del municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Inicia una campaña publicitaria local mediana para atraer más pasajeros y carga a sus servicios de transporte.{}Proporciona un incremento temporal en la calificación de las estaciones en un radio mediano alrededor del centro del municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Iniciar una campaña publicitaria local grande para atraer más pasajeros y carga a sus servicios de transporte.{}Proporciona un incremento temporal en la calificación de las estaciones en un radio grande alrededor del centro del municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Paga la reconstrucción de las carreteras locales.{}Provoca considerables complicaciones de tráfico durante 6 meses.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Construye una estatua en honor a su empresa.{}Proporciona un incremento permanente en la calificación de las estaciones de este municipio.{}Coste: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Pagar la construcción de nuevos edificios comerciales en el municipio.{}Proporciona un incremento temporal en el crecimiento del municipio.{}Coste: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Paga la construcción de nuevos edificios comerciales en el municipio.{}Proporciona un incremento temporal en el crecimiento del municipio.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Compra derechos de transporte exclusivos en este municipio durante un año.{}Las autoridades no permitirán el uso de las estaciones de la competencia.{}Coste: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Soborna a las autoridades locales para aumentar su calificación, con el riesgo de sufrir una penalización severa si es descubierto.{}Coste: {CURRENCY_LONG}
 

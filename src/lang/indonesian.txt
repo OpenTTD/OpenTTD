@@ -946,6 +946,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Dollar Taiwan B
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Cina (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar Hong Kong (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :India Rupee (INR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysia (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Berkendara di lajur kiri
@@ -999,6 +1000,9 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi layar yang diinginkan
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
 
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Akselerasi perangkat keras
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Pengaturan hanya akan berlaku setelah game dimulai ulang
+
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Ukuran antarmuka
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Pilih ukuran elemen antarmuka yang akan digunakan
@@ -1016,7 +1020,10 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normal
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Kali dua
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4 kali
 
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Menampilkan kecepatan refresh
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Kecepatan refresh yang lebih tinggi dari 60Hz dapat memengaruhi kinerja.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set Grafik Dasar
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Pilih grafik dasar yang digunakan
@@ -1112,6 +1119,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Datar
 STR_TERRAIN_TYPE_HILLY                                          :Berbukit
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Pegunungan
 STR_TERRAIN_TYPE_ALPINIST                                       :Pemanjat Gunung
+STR_TERRAIN_TYPE_CUSTOM                                         :Ketinggian Kustom
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Ketinggian Kustom ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Selalu boleh
 STR_CITY_APPROVAL_TOLERANT                                      :Toleran
@@ -1193,6 +1202,8 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Mengaktifkan be
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Sikap pemerintah kota terhadap restrukturasi area: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Pilih seberapa banyak dampak kebisingan dan lingkungan oleh perusahaan terhadap peringkat kota karena pembangunan di daerah
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Ketinggian peta maksimum: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Tetapkan ketinggian maksimum medan peta. Dengan "(otomatis)" nilai yang baik akan diambil setelah pembuatan medan
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Kamu tidak bisa mengubah ketinggian peta maksimum di angka itu. Setidaknya ada satu gunung di peta yang lebih tinggi
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Ijinkan pembentukan slop dibawah bangunan, rel, dsb.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Ijinkan pembentukan tanah dibawah bangunan dan trek tanpa merusaknya
@@ -1338,6 +1349,9 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Jarak maksimal 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Kilang minyak hanya dibangun pada tepi peta atau pantai
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Tinggi garis salju: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Mengatur ketinggian di mana salju akan muncul. Salju juga akan mempengaruhi pengembangan industri dan persyaratan untuk pertumbuhan kota
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Cakupan gurun: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kontrol perkiraan jumlah gurun di lanskap tropis. Gurun juga mempengaruhi generasi industri. Hanya digunakan selama pembuatan peta
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Kekasaran daratan: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(hanya TerraGenesis) Memilih frekuensi bukit: Bentang darat rata punya bukit yang lebih sedikit dan lebih lebar. Bentang darat bergunung punya lebih banyak bukit, dan ini mungkin akan terlihat lebih membosankan
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sangat halus
@@ -1643,12 +1657,15 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :Tingkat Perbesa
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Perbesaran viewport maksimal. Semakin besar semakin banyak memori yang dibutuhkan
 STR_CONFIG_SETTING_ZOOM_MAX                                     :Tingkat zoom out Maksimal: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Pengecilan maksimum untuk viewport. Semakin kecil semakin tidak jelas
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Sprite resolusi tertinggi untuk digunakan: {STRING}
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normal
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Kecepatan pertumbuhan kota: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :Kecepatan pertumbuhan kota
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Tidak tumbuh
@@ -1783,6 +1800,7 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Kehabisa
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Mengalokasikan {BYTES} 'spritecache' gagal. 'Spritecache' dikurangi ke {BYTES}. Ini akan kurangi kinerja OpenTTD. Untuk kurangi kebutuhan memori anda bisa coba matikan grafik 32bpp dan/atau tingkat pembesaran
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... tidak ditemukan GPU yang kompatibel. Akselerasi perangkat keras dinonaktifkan
 
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
@@ -2314,6 +2332,8 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ya, download file gambar
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Tidak, tutup OpenTTD
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Gagal Mendownload
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Keluar OpenTTD
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Pengaturan Transparasi
@@ -2864,6 +2884,9 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Jumlah Kota:
 STR_MAPGEN_DATE                                                 :{BLACK}Tgl:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah industri:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Kurangi satu ketinggian maksimum puncak tertinggi di peta
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Kurangi cakupan salju hingga sepuluh persen
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Cakupan gurun:
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Algoritma pulau:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Area perairan:
@@ -2889,6 +2912,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama Pet
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Luas:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Cakupan salju (dalam %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ganti Tahun Permulaan
 
 # SE Map generation
@@ -3179,6 +3203,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Kolusi 
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Target
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Target Global
 STR_GOALS_SPECTATOR                                             :Target Global
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Tidak ada -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -3553,6 +3578,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Daya Ger
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kargo dapat di ganti untuk: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kargo
 STR_PURCHASE_INFO_NONE                                          :Tidak Ada
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Hanya Lokomotif
 STR_PURCHASE_INFO_ALL_BUT                                       :Semua tapi tidak untuk {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Traksi Maks.: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Jangkauan: {GOLD}{COMMA} kotak

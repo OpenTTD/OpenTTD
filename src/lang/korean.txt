@@ -954,7 +954,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :말레이시아
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :좌측통행
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :우측통행
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 이름
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}도시 이름:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}도시 이름 스타일을 선택하세요
 
 ############ start of townname region
@@ -1004,8 +1004,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :기타
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}하드웨어 가속
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}OpenTTD가 하드웨어 가속을 사용하게 하려면 체크하세요. 변경된 설정은 게임을 재시작한 뒤에 적용됩니다.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}OpenTTD가 하드웨어 가속을 사용하게 하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}이 설정은 게임을 재시작한 뒤에 적용될 것입니다
+
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}수직 동기화
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}화면과 수직 동기화하려면 체크하세요. 변경한 설정은 게임을 재시작한 뒤에 적용될 것입니다. 하드웨어 가속을 켠 경우에만 작동합니다.
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}인터페이스 크기
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}인터페이스의 크기를 선택합니다.
@@ -1534,20 +1537,20 @@ STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :스크립트당
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_HELPTEXT                   :스크립트 하나가 강제 종료되기 전까지 사용할 수 있는 메모리의 양입니다. 크기가 큰 맵에서는 값을 크게 설정해야할 수도 있습니다.
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
-STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :신뢰도에 따른 정비 설정: {STRING}
+STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :신뢰도에 따른 점검 설정: {STRING}
 STR_CONFIG_SETTING_SERVINT_ISPERCENT_HELPTEXT                   :차량 점검 방식을 "마지막 점검 이후 지난 시간 (또는) 최대 신뢰도에 대한 차량 신뢰도의 일정 퍼센트 하락 여부" 중에 하나로 선택합니다.
 STR_CONFIG_SETTING_SERVINT_TRAINS                               :열차에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_TRAINS_HELPTEXT                      :열차에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_SERVINT_VALUE                                :{COMMA}{NBSP}일/%
 STR_CONFIG_SETTING_SERVINT_DISABLED                             :사용 안 함
 STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES                        :차량에 대한 기본 점검 기준: {STRING}
-STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :차량 정비 설정을 하지 않은 경우, 기본값으로 사용할 정비 주기를 설정합니다.
+STR_CONFIG_SETTING_SERVINT_ROAD_VEHICLES_HELPTEXT               :차량 점검 설정을 하지 않은 경우, 기본값으로 사용할 점검 주기를 설정합니다
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT                             :항공기에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_AIRCRAFT_HELPTEXT                    :항공기에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
 STR_CONFIG_SETTING_SERVINT_SHIPS                                :선박에 대한 기본 점검 기준: {STRING}
 STR_CONFIG_SETTING_SERVINT_SHIPS_HELPTEXT                       :선박에 따로 점검 기간이 설정되어있지 않은 경우에 사용할 기본 점검 기간을 설정합니다.
-STR_CONFIG_SETTING_NOSERVICE                                    :차량 고장 설정이 비활성화된 경우 정비하지 않음: {STRING}
-STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :이 설정을 켜면, 차량이 고장나지 않도록 설정되어 있는 경우 차량이 정비를 하러 가지 않습니다.
+STR_CONFIG_SETTING_NOSERVICE                                    :차량 고장 설정을 껐으면 점검을 하지 않음: {STRING}
+STR_CONFIG_SETTING_NOSERVICE_HELPTEXT                           :이 설정을 켜면, 차량이 고장나지 않도록 설정되어 있는 경우 차량이 자동으로 점검을 하러 가지 않습니다
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS                             :화물차 속력 제한 적용: {STRING}
 STR_CONFIG_SETTING_WAGONSPEEDLIMITS_HELPTEXT                    :이 설정을 켜면, 화물차의 속력 제한값에 따라 열차의 최대 속력을 제한합니다.
 STR_CONFIG_SETTING_DISABLE_ELRAILS                              :전기 철도를 사용하지 않음: {STRING}
@@ -1723,38 +1726,38 @@ STR_CONFIG_SETTING_SHORT_PATH_SATURATION_HELPTEXT               :종종 두 역 
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY                  :속력 단위: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :속력를 표시할 때 선택한 단위를 사용하여 나타냅니다.
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :임페리얼법 (mph)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :야드파운드법 (mph)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :미터법 (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :국제표준규격 (m/s)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :게임 단위 (칸/일)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :차량의 힘 단위: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :출력할 차량의 힘 단위를 선택합니다.
-STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :임페리얼법 (마력)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_IMPERIAL            :야드파운드법 (마력)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_METRIC              :미터법 (마력)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_SI                  :국제표준규격 (kW)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT                    :무게 단위: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_HELPTEXT           :무게를 표시할 때 선택한 단위를 사용하여 나타냅니다.
-STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :임페리얼법 (미국 톤)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_IMPERIAL           :야드파운드법 (미국 톤)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_METRIC             :미터법 (톤)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_WEIGHT_SI                 :국제표준규격 (kg)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME                    :부피 단위: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_HELPTEXT           :부피를 표시할 때 선택한 단위를 사용하여 나타냅니다.
-STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :임페리얼법 (갤런)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_IMPERIAL           :야드파운드법 (갤런)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_METRIC             :미터법 (리터)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VOLUME_SI                 :국제표준규격 (m³)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE                     :견인 효과 단위: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_HELPTEXT            :견인 효과(견인력)를 표시할 때 선택한 단위를 사용하여 나타냅니다.
-STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :임페리얼법 (파운드중)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_IMPERIAL            :야드파운드법 (파운드중)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_METRIC              :미터법 (kgf)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_FORCE_SI                  :국제표준규격 (kN)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT                    :높이 단위: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_HELPTEXT           :높이를 표시할 때 선택한 단위를 사용하여 나타냅니다.
-STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :임페리얼법 (ft)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_IMPERIAL           :야드파운드법 (ft)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_METRIC             :미터법 (m)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_HEIGHT_SI                 :국제표준규격 (m)
 
@@ -2406,7 +2409,7 @@ STR_RAIL_TOOLBAR_MAGLEV_CONSTRUCTION_CAPTION                    :자기부상열
 
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                   :{BLACK}선로를 건설합니다. CTRL 키를 누르면 건설모드/철거모드로 전환합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_AUTORAIL                         :{BLACK}자동건설 모드로 선로를 건설합니다. CTRL 키를 누르면 건설/철거모드를 바꿀 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다. 차량을 구입하거나 정비를 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_RAIL_TOOLBAR_TOOLTIP_BUILD_TRAIN_DEPOT_FOR_BUILDING         :{BLACK}차량기지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL_TO_WAYPOINT               :{BLACK}선로에 경유지를 설치합니다. CTRL 키를 사용하면 같은 이름의 경유지를 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_STATION                 :{BLACK}철도역을 짓습니다. CTRL 키를 사용하면 같은 이름의 역을 서로 떨어진 곳에 지을 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_RAIL_TOOLBAR_TOOLTIP_BUILD_RAILROAD_SIGNALS                 :{BLACK}신호기를 설치합니다. CTRL 키를 누르면 구식/전자식으로 전환합니다.{}선로를 따라 드래그해서 설치할 수 있습니다. CTRL 키를 누른 채로 드래그하면 다음 분기점이나 다음 신호기까지 신호기를 설치합니다.{}CTRL 키를 누른 채 클릭하면 신호기 선택 창을 전환합니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
@@ -2487,8 +2490,8 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_SECTION                     :{BLACK}도로�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_SECTION                  :{BLACK}전차 선로를 짓습니다. CTRL 키를 누르고 있으면 건설/제거 모드를 바꿀 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOROAD                         :{BLACK}자동건설 모드로 도로를 짓습니다. CTRL 키를 누르고 있으면 건설/제거 모드를 바꿀 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_AUTOTRAM                         :{BLACK}자동건설 모드로 전차 선로를 짓습니다. CTRL 키를 누르고 있으면 건설/제거 모드를 바꿀 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}차고지를 건설합니다. 차량을 구입하거나 정비를 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
-STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}전차 차고지를 건설합니다. 차량을 구입하거나 정비를 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_VEHICLE_DEPOT               :{BLACK}차고지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
+STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAM_VEHICLE_DEPOT               :{BLACK}전차 차고지를 건설합니다. 차량을 구입하거나 점검을 할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_BUS_STATION                      :{BLACK}버스 정류장을 짓습니다. CTRL 키를 사용하면 근처 정류장과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_PASSENGER_TRAM_STATION           :{BLACK}여객 전차역을 짓습니다. CTRL 키를 사용하면 근처 역과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRUCK_LOADING_BAY                :{BLACK}트럭 적하장을 짓습니다. CTRL 키를 사용하면 근처 적하장과 연결할 수 있습니다. SHIFT 키를 누른 채로 사용하면 예상 비용을 볼 수 있습니다
@@ -3090,7 +3093,7 @@ STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}{G 1 
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{1:STRING}{G 1 "은" "는"} 반드시 {STRING} 뒤에 불러와야 합니다
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{1:STRING}{G 1 "은" "는"} OpenTTD {STRING} 버전이나 그 이상이 필요합니다
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일이 번역을 위해 만들어졌습니다
-STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF이 너무 많습니다
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF가 너무 많습니다
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{2:STRING}{G 2 "을" "를"} 포함한 정적 NewGRF {1:STRING}{G 1 "을" "를"} 불러오는 것은 비동기화를 일으킬 수 있습니다
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :예기치 않은 스프라이트 (스프라이트 {3:NUM})
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :알려지지 않은 액션 0 속성 {4:HEX} (스프라이트 {3:NUM})
@@ -3124,7 +3127,7 @@ STR_NEWGRF_LIST_COMPATIBLE                                      :{YELLOW}호환�
 STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없음
 
 # NewGRF 'it's broken' warnings
-STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' NewGRF이 적용되는 과정에서 비동기화나 충돌이 일어날 수 있습니다
+STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' NewGRF가 적용되는 과정에서 비동기화나 충돌이 일어날 수 있습니다
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}차고지 안에 있지 않은 '{1:ENGINE}'에 대한 동력 차량 상태가 바뀌었습니다
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고지 안에 있지 않으면 차량 길이가 바뀝니다
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}차량이 기지 안에 있지 않거나 개조가 불가능한 상태에서 '{1:ENGINE}'의 수송량이 변경되었습니다
@@ -3529,7 +3532,7 @@ STR_VEHICLE_LIST_AVAILABLE_ENGINES_TOOLTIP                      :{BLACK}이 차�
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}관리
 STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}이 목록에 있는 모든 열차에 지시를 내려 관리합니다
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :차량 교체
-STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :정비하러 보내기
+STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :점검하러 보내기
 
 STR_VEHICLE_LIST_SEND_TRAIN_TO_DEPOT                            :차량기지로 보내기
 STR_VEHICLE_LIST_SEND_ROAD_VEHICLE_TO_DEPOT                     :차고지로 보내기
@@ -3748,7 +3751,7 @@ STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}이 격�
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안에 있는 모든 차량을 판매하려고 합니다. 계속하시겠습니까?
 
 # Engine preview window
-STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}차량 개발자로부터의 메시지
+STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}차량 개발자가 보낸 메시지
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}저희는 이제 막 새로운 {STRING}{G 0 "을" "를"} 개발했습니다. 1년 먼저 이 차량을 사용하셔서 모두에게 공개되기 전에 잘 작동하는지 확인해주시겠습니까?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :{G=f}철도 기관차
@@ -3823,10 +3826,10 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}이 차�
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}이 선박의 위치로 화면을 이동합니다. 더블 클릭하면 이 선박을 따라 화면이 움직입니다. CTRL+클릭하면 이 선박 위치를 기준으로 외부 화면을 엽니다
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}이 항공기의 위치로 화면을 이동합니다. 더블 클릭하면 이 항공기를 따라 화면이 움직입니다. CTRL+클릭하면 이 항공기 위치를 기준으로 외부 화면을 엽니다
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}열차를 차량기지로 보냅니다. CTRL+클릭하면 정비를 하러 차량기지에 들르기만 합니다
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고지로 보냅니다. CTRL+클릭하면 정비를 하러 차고지에 들르기만 합니다
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}선박을 정박소로 보냅니다. CTRL+클릭하면 정비를 하러 정박소에 들르기만 합니다
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}항공기를 격납고로 보냅니다. CTRL+클릭하면 정비를 하러 격납고에 들르기만 합니다
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}열차를 차량기지로 보냅니다. CTRL+클릭하면 점검을 하러 차량기지에 들르기만 합니다
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}차량을 차고지로 보냅니다. CTRL+클릭하면 점검을 하러 차고지에 들르기만 합니다
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}선박을 정박소로 보냅니다. CTRL+클릭하면 점검을 하러 정박소에 들르기만 합니다
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}항공기를 격납고로 보냅니다. CTRL+클릭하면 점검을 하러 격납고에 들르기만 합니다
 
 STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}객차/화차를 포함한 열차 전체를 복제합니다. CTRL+클릭하면 경로도 함께 공유됩니다. SHIFT+클릭하면 예상 비용을 볼 수 있습니다
 STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}차량을 복제합니다. CTRL+클릭하면 경로도 함께 공유됩니다. SHIFT+클릭하면 예상 비용을 볼 수 있습니다
@@ -3914,12 +3917,12 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}수송�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}환승 수익: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}정비 간격: {LTBLUE}{COMMA}일{BLACK}마다   마지막 정비 날짜: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}정비 기준: {LTBLUE}{COMMA}%{BLACK} 떨어지면   마지막 정비 날짜: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}점검 간격: {LTBLUE}{COMMA}일{BLACK}마다{NBSP}  마지막 점검 날짜: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}점검 기준: {LTBLUE}{COMMA}%{BLACK} 떨어지면   마지막 점검 날짜: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 올립니다. CTRL+클릭하면 점검 기준값을 5만큼 올립니다
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}점검 기준값을 10만큼 내립니다. CTRL+클릭하면 점검 기준값을 5만큼 내립니다
 
-STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}정비 기준 설정을 변경합니다
+STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}점검 기준 설정을 변경합니다
 STR_VEHICLE_DETAILS_DEFAULT                                     :기본
 STR_VEHICLE_DETAILS_DAYS                                        :날짜
 STR_VEHICLE_DETAILS_PERCENT                                     :신뢰도
@@ -4017,11 +4020,11 @@ STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}이 경�
 STR_ORDER_DROP_REFIT_AUTO                                       :특정 화물로
 STR_ORDER_DROP_REFIT_AUTO_ANY                                   :이용 가능한 화물로
 
-STR_ORDER_SERVICE                                               :{BLACK}정비
+STR_ORDER_SERVICE                                               :{BLACK}점검
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :항상 감
-STR_ORDER_DROP_SERVICE_DEPOT                                    :필요하면 정비
+STR_ORDER_DROP_SERVICE_DEPOT                                    :필요하면 점검
 STR_ORDER_DROP_HALT_DEPOT                                       :멈춤
-STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}정비가 필요하지 않으면 이 경로를 건너뜁니다
+STR_ORDER_SERVICE_TOOLTIP                                       :{BLACK}점검이 필요하지 않으면 이 경로를 건너뜁니다
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}경로를 건너뛰기 위한 비교 조건을 선택합니다
 
@@ -4030,7 +4033,7 @@ STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :적재율
 STR_ORDER_CONDITIONAL_RELIABILITY                               :신뢰도
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :최고 속력
 STR_ORDER_CONDITIONAL_AGE                                       :연령 (년)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :정비 필요성
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :점검 필요성
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :항상
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :남은 수명 (년)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :최대 신뢰도
@@ -4062,7 +4065,7 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :가까운 차�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :가까운 격납고로
 STR_ORDER_CONDITIONAL                                           :조건부 경로 건너뛰기
 STR_ORDER_SHARE                                                 :경로 공유하기
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새 경로를 삽입합니다. CTRL 키와 함께 누르면, 역에서는 '아무 화물이나 가득 싣기'로, 경유지에서는 '직행'으로, 차량기지에서는 '점검'으로 지정됩니다. '공유된 경로'를 클릭하거나 CTRL 키를 누르면 선택했던 차량과 이 차량의 경로를 공유하게 됩니다. 단순히 클릭하면 그 차량의 경로를 복사하기만 합니다. 차량기지를 경로에 포함시키면 이 차량은 자동 정비를 할 수 없게 됩니다
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새 경로를 삽입합니다. CTRL 키와 함께 누르면, 역에서는 '아무 화물이나 가득 싣기'로, 경유지에서는 '직행'으로, 차량기지에서는 '점검'으로 지정됩니다. '공유된 경로'를 클릭하거나 CTRL 키를 누르면 선택했던 차량과 이 차량의 경로를 공유하게 됩니다. 단순히 클릭하면 그 차량의 경로를 복사하기만 합니다. 차량기지를 경로에 포함시키면 이 차량은 자동 점검를 할 수 없게 됩니다
 
 STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}이 경로를 공유하고 있는 모든 차량을 표시합니다.
 
@@ -4070,8 +4073,8 @@ STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}이 경�
 STR_ORDER_GO_TO_WAYPOINT                                        :완행 경유 {WAYPOINT}
 STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :직행 경유 {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :완행 정비
-STR_ORDER_SERVICE_NON_STOP_AT                                   :직행 정비
+STR_ORDER_SERVICE_AT                                            :완행 점검
+STR_ORDER_SERVICE_NON_STOP_AT                                   :직행 점검
 
 STR_ORDER_NEAREST_DEPOT                                         :가까운
 STR_ORDER_NEAREST_HANGAR                                        :가까운 격납고
@@ -4679,7 +4682,7 @@ STR_ERROR_SHIP_NOT_AVAILABLE                                    :{WHITE}이 선�
 STR_ERROR_AIRCRAFT_NOT_AVAILABLE                                :{WHITE}이 항공기는 사용할 수 없는 상태입니다
 
 STR_ERROR_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}게임에 차량이 너무 많습니다!
-STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}정비 간격 설정을 바꿀 수 없습니다...
+STR_ERROR_CAN_T_CHANGE_SERVICING                                :{WHITE}점검 간격 설정을 바꿀 수 없습니다...
 
 STR_ERROR_VEHICLE_IS_DESTROYED                                  :{WHITE}... 차량이 파괴되었습니다
 

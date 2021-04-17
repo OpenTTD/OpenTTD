@@ -1201,6 +1201,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardvers
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Označavanje ove opcije čini da OpenTTD pokuša da koristi hardversko ubrzanje. Promena ovog podešavanja će imati efekta tek nakon ponvnog pokretanja igre
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Podešavanje će imati efekta tek nakon ponovnog pokretanja igre
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Veličina interfejsa
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Izaberite većinu elementa koja će se koristiti
 

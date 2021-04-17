@@ -1134,6 +1134,7 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Прис
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Увімкнутий прапорець дозволить використання грою прискорення апаратного забезпечення. Налаштування запрацює тільки після перезапуску гри
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Налаштування запрацює тільки після перезапуску гри
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Розмір інтерфейсу
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Оберіть розмір елементів інтерфейсу
 

@@ -972,6 +972,7 @@ STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Dewiswch
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 
 
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Maint rhyngwyneb
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Dewis maint yr elfennau rhyngwyneb i'w defnyddio
 

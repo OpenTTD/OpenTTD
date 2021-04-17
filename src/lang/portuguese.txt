@@ -242,7 +242,7 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fechar j
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título da janela - arraste isto para mover a janela
 STR_TOOLTIP_SHADE                                               :{BLACK}Encolher janela - apenas mostra a barra de título
 STR_TOOLTIP_DEBUG                                               :{BLACK}Mostrar informação de depuração de NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Reajusta janela para tamanho por defeito. Ctrl+Clique para manter o tamanho actual como o por defeito
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar a janela para o tamanho padrão. Ctrl+Clique para guardar o tamanho atual como padrão
 STR_TOOLTIP_STICKY                                              :{BLACK}Marcar esta janela como não-encerrável pela tecla 'Fechar Todas as Janelas'. Ctrl+Clique para tambem salvar o estado como por omissão
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clique e arraste para reajustar janela
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alternar entre janela grande/pequena
@@ -1007,6 +1007,9 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Acelera�
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Marque esta caixa para permitir que o OpenTTD tente usar a aceleração por hardware. Uma configuração alterada só será aplicada após reiniciar o jogo
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}A definição só terá efeito após reiniciar o jogo
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Marque esta caixa para ativar "V-Sync" no ecrã. Uma configuração alterada só terá efeito quando reiniciar o jogo. Só funciona com a aceleração por hardware ativada
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Tamanho interface
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Seleccionar tamanho do elemento de interface a usar
 
@@ -1266,7 +1269,7 @@ STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Se ativado, os 
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Novas ordens são 'sem parar' por predefinição: {STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :Normalmente, um veículo para em cada estação por onde passa. Ao ativar esta configuração, um veículo irá passar por todas as estações no seu percurso, parando apenas no destino final. Esta opção só tem efeito para novas rotas, mas as rotas existentes podem ser alteradas para funcionarem de forma igual.
 STR_CONFIG_SETTING_STOP_LOCATION                                :Ordens novas do comboio param {STRING} da plataforma
-STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local onde um combóio parará na plataforma por omissão. A opção 'extremo mais próximo' significa perto do ponto de entrada, 'meio' significa no meio da plataforma e 'extremo mais distante' significa o mais distante possível do ponto de entrada. Esta opção apenas afecta o valor por omissão para novas encomendas. Encomendas individuais podem utilizar qualquer uma das opções independentemente desta
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Local de paragem do comboio nas plataformas por omissão. A opção 'extremo mais próximo' significa perto do ponto de entrada, 'meio' significa no meio da plataforma e 'extremo mais distante' significa o mais distante possível do ponto de entrada. Esta opção apenas afeta o valor por omissão para novas ordens. Ordens individuais podem utilizar qualquer uma das opções independentemente desta
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :no extremo perto
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :no meio
 STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :no extremo longe
@@ -1313,7 +1316,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Activar esta pr
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Avisar se o veículo está perdido: {STRING}
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Mostrar mensagens sobre veículos que não conseguem encontrar o caminho para o seu próximo destino.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Analisar ordens dos veículos: {STRING}
-STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quando activo, as encomendas dos veículos são periodicamente revistas e algumas falhas óbvias são anunciadas através de notícias, quando detectadas
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Quando ativo, as ordens dos veículos são periodicamente revistas e algumas falhas óbvias são anunciadas através de notícias, quando detetadas
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_SETTING_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
 STR_CONFIG_SETTING_ORDER_REVIEW_ON                              :De todos os veículos
@@ -1904,11 +1907,11 @@ STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Seleccio
 STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Seleccione o esquema de cores a alterar, ou esquemas múltiplos utilizando a tecla Ctrl com o botão esquerdo do rato. Marque a caixa para comutar a utilização do esquema de cores
 
 STR_LIVERY_DEFAULT                                              :Estampagem Padrão
-STR_LIVERY_STEAM                                                :Motor a Vapor
-STR_LIVERY_DIESEL                                               :Motor Diesel
-STR_LIVERY_ELECTRIC                                             :Motor Eléctrico
-STR_LIVERY_MONORAIL                                             :Motor Monocarril
-STR_LIVERY_MAGLEV                                               :Motor Maglev (Levitação Magnética)
+STR_LIVERY_STEAM                                                :Locomotivas a Vapor
+STR_LIVERY_DIESEL                                               :Locomotivas Diesel
+STR_LIVERY_ELECTRIC                                             :Locomotivas Eléctricas
+STR_LIVERY_MONORAIL                                             :Motoras Monocarril
+STR_LIVERY_MAGLEV                                               :Motoras Maglev (Levitação Magnética)
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carruagem de Passageiros (Vapor)
@@ -1917,8 +1920,8 @@ STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Carruagem de Pa
 STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Carruagem de Passageiros (Monocarril)
 STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Carruagem de Passageiros (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagão de Carga
-STR_LIVERY_BUS                                                  :Autocarro
-STR_LIVERY_TRUCK                                                :Veículo de Mercadorias
+STR_LIVERY_BUS                                                  :Autocarros
+STR_LIVERY_TRUCK                                                :Camiões
 STR_LIVERY_PASSENGER_SHIP                                       :Navio de passageiros
 STR_LIVERY_FREIGHT_SHIP                                         :Navio cargueiro
 STR_LIVERY_HELICOPTER                                           :Helicóptero
@@ -2442,7 +2445,7 @@ STR_STATION_BUILD_DRAG_DROP_TOOLTIP                             :{BLACK}Construi
 STR_STATION_BUILD_STATION_CLASS_TOOLTIP                         :{BLACK}Escolher a classe da estação a mostrar
 STR_STATION_BUILD_STATION_TYPE_TOOLTIP                          :{BLACK}Escolher o tipo de estação a construir
 
-STR_STATION_CLASS_DFLT                                          :Estação por defeito
+STR_STATION_CLASS_DFLT                                          :Estação padrão
 STR_STATION_CLASS_WAYP                                          :Pontos de passagem
 
 # Signal window
@@ -2872,7 +2875,7 @@ STR_SAVELOAD_SAVE_SCENARIO                                      :{WHITE}Guardar 
 STR_SAVELOAD_LOAD_SCENARIO                                      :{WHITE}Abrir Cenário
 STR_SAVELOAD_LOAD_HEIGHTMAP                                     :{WHITE}Carregar mapa de alturas
 STR_SAVELOAD_SAVE_HEIGHTMAP                                     :{WHITE}Guardar mapa de alturas
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Carregue aqui para saltar para a directoria de gravação/carregamento por defeito
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clique aqui para saltar para o diretório atual de gravação/carregamento padrão
 STR_SAVELOAD_BYTES_FREE                                         :{BLACK}{BYTES} livres
 STR_SAVELOAD_LIST_TOOLTIP                                       :{BLACK}Lista de unidades, directorias e ficheiros de jogos guardados
 STR_SAVELOAD_EDITBOX_TOOLTIP                                    :{BLACK}Nome escolhido para guardar o jogo
@@ -3897,11 +3900,11 @@ STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}Idade: {
 STR_VEHICLE_INFO_AGE                                            :{COMMA} ano{P "" s} ({COMMA})
 STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA} ano{P "" s} ({COMMA})
 
-STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Máx. velocidade: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}Velocidade máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}Vel. máxima: {LTBLUE}{VELOCITY} {BLACK}Tipo de Aeronave: {LTBLUE}{STRING}
 STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY} {BLACK}Tipo de Aeronave: {LTBLUE}{STRING} {BLACK}Alcance: {LTBLUE}{COMMA} quadrados
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Max. velocidade: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Máx. velocidade: {LTBLUE}{VELOCITY} {BLACK}Máx. E.T.: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_SHORT} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade máx.: {LTBLUE}{VELOCITY} {BLACK}Tração Máx.: {LTBLUE}{FORCE}
 
 STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}Lucro neste ano: {LTBLUE}{CURRENCY_LONG} (último ano: {CURRENCY_LONG})
 STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde o último serviço: {LTBLUE}{COMMA}
@@ -3920,7 +3923,7 @@ STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Aumentar
 STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Diminuir intervalo de serviço por 10. Ctrl+Clique diminui o intervalo de serviço por 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Alterar tipo de intervalo de manutenção
-STR_VEHICLE_DETAILS_DEFAULT                                     :Por Defeito
+STR_VEHICLE_DETAILS_DEFAULT                                     :Padrão
 STR_VEHICLE_DETAILS_DAYS                                        :Dias
 STR_VEHICLE_DETAILS_PERCENT                                     :Percentagem
 
