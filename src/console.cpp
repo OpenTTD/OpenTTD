@@ -30,7 +30,11 @@ static const uint ICON_MAX_RECURSE = 10;     ///< Maximum number of recursion
 	return cmds;
 }
 
-IConsoleAlias *_iconsole_aliases; ///< list of registered aliases
+/* static */ IConsole::AliasList &IConsole::Aliases()
+{
+	static IConsole::AliasList aliases;
+	return aliases;
+}
 
 FILE *_iconsole_output_file;
 
@@ -269,19 +273,10 @@ static std::string RemoveUnderscores(std::string name)
  * @param name name of the alias that will be used
  * @param cmd name of the command that 'name' will be alias of
  */
-void IConsoleAliasRegister(const std::string &name, const std::string &cmd)
+/* static */ void IConsole::AliasRegister(const std::string &name, const std::string &cmd)
 {
-	if (IConsoleAliasGet(name) != nullptr) {
-		IConsoleError("an alias with this name already exists; insertion aborted");
-		return;
-	}
-
-	IConsoleAlias *item_new = new IConsoleAlias();
-	item_new->name = RemoveUnderscores(name);
-	item_new->next = nullptr;
-	item_new->cmdline = cmd;
-
-	IConsoleAddSorted(&_iconsole_aliases, item_new);
+	auto result = IConsole::Aliases().try_emplace(RemoveUnderscores(name), name, cmd);
+	if (!result.second) IConsoleError("an alias with this name already exists; insertion aborted");
 }
 
 /**
@@ -289,17 +284,13 @@ void IConsoleAliasRegister(const std::string &name, const std::string &cmd)
  * @param name alias to be found
  * @return return Aliasstruct of the found alias, or nullptr on failure
  */
-IConsoleAlias *IConsoleAliasGet(const std::string &name)
+/* static */ IConsoleAlias *IConsole::AliasGet(const std::string &name)
 {
-	std::string key = RemoveUnderscores(name);
-	IConsoleAlias *item;
-
-	for (item = _iconsole_aliases; item != nullptr; item = item->next) {
-		if (item->name == key) return item;
-	}
-
+	auto item = IConsole::Aliases().find(RemoveUnderscores(name));
+	if (item != IConsole::Aliases().end()) return &item->second;
 	return nullptr;
 }
+
 /**
  * An alias is just another name for a command, or for more commands
  * Execute it as well.
@@ -497,7 +488,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 	}
 
 	t_index--;
-	IConsoleAlias *alias = IConsoleAliasGet(tokens[0]);
+	IConsoleAlias *alias = IConsole::AliasGet(tokens[0]);
 	if (alias != nullptr) {
 		IConsoleAliasExec(alias, t_index, &tokens[1], recurse_count + 1);
 		return;

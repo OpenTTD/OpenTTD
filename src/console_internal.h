@@ -54,33 +54,30 @@ struct IConsoleCmd {
  * - ";" allows for combining commands (see example 'ng')
  */
 struct IConsoleAlias {
-	std::string name;           ///< name of the alias
-	IConsoleAlias *next;        ///< next alias in list
+	IConsoleAlias(const std::string &name, const std::string &cmdline) : name(name), cmdline(cmdline) {}
 
+	std::string name;           ///< name of the alias
 	std::string cmdline;        ///< command(s) that is/are being aliased
 };
 
 struct IConsole
 {
 	typedef std::map<std::string, IConsoleCmd> CommandList;
+	typedef std::map<std::string, IConsoleAlias> AliasList;
 
 	/* console parser */
 	static CommandList &Commands();
+	static AliasList &Aliases();
 
 	/* Commands */
 	static void CmdRegister(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook = nullptr);
 	static IConsoleCmd *CmdGet(const std::string &name);
+	static void AliasRegister(const std::string &name, const std::string &cmd);
+	static IConsoleAlias *AliasGet(const std::string &name);
 };
-
-/* console parser */
-extern IConsoleAlias *_iconsole_aliases; ///< List of registered aliases.
 
 /* console functions */
 void IConsoleClearBuffer();
-
-/* Commands */
-void IConsoleAliasRegister(const std::string &name, const std::string &cmd);
-IConsoleAlias *IConsoleAliasGet(const std::string &name);
 
 /* console std lib (register ingame commands/aliases) */
 void IConsoleStdLibRegister();

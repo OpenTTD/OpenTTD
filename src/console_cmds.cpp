@@ -1409,9 +1409,9 @@ DEF_CONSOLE_CMD(ConAlias)
 
 	if (argc < 3) return false;
 
-	alias = IConsoleAliasGet(argv[1]);
+	alias = IConsole::AliasGet(argv[1]);
 	if (alias == nullptr) {
-		IConsoleAliasRegister(argv[1], argv[2]);
+		IConsole::AliasRegister(argv[1], argv[2]);
 	} else {
 		alias->cmdline = argv[2];
 	}
@@ -1578,7 +1578,7 @@ DEF_CONSOLE_CMD(ConHelp)
 			return true;
 		}
 
-		alias = IConsoleAliasGet(argv[1]);
+		alias = IConsole::AliasGet(argv[1]);
 		if (alias != nullptr) {
 			cmd = IConsole::CmdGet(alias->cmdline);
 			if (cmd != nullptr) {
@@ -1629,7 +1629,8 @@ DEF_CONSOLE_CMD(ConListAliases)
 		return true;
 	}
 
-	for (const IConsoleAlias *alias = _iconsole_aliases; alias != nullptr; alias = alias->next) {
+	for (auto &it : IConsole::Aliases()) {
+		const IConsoleAlias *alias = &it.second;
 		if (argv[1] == nullptr || alias->name.find(argv[1]) != std::string::npos) {
 			IConsolePrintF(CC_DEFAULT, "%s => %s", alias->name.c_str(), alias->cmdline.c_str());
 		}
@@ -2126,8 +2127,8 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 static void IConsoleDebugLibRegister()
 {
 	IConsole::CmdRegister("resettile",        ConResetTile);
-	IConsoleAliasRegister("dbg_echo",       "echo %A; echo %B");
-	IConsoleAliasRegister("dbg_echo2",      "echo %!");
+	IConsole::AliasRegister("dbg_echo",       "echo %A; echo %B");
+	IConsole::AliasRegister("dbg_echo2",      "echo %!");
 }
 #endif
 
@@ -2359,14 +2360,14 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("gamelog",                 ConGamelogPrint);
 	IConsole::CmdRegister("rescan_newgrf",           ConRescanNewGRF);
 
-	IConsoleAliasRegister("dir",          "ls");
-	IConsoleAliasRegister("del",          "rm %+");
-	IConsoleAliasRegister("newmap",       "newgame");
-	IConsoleAliasRegister("patch",        "setting %+");
-	IConsoleAliasRegister("set",          "setting %+");
-	IConsoleAliasRegister("set_newgame",  "setting_newgame %+");
-	IConsoleAliasRegister("list_patches", "list_settings %+");
-	IConsoleAliasRegister("developer",    "setting developer %+");
+	IConsole::AliasRegister("dir",                   "ls");
+	IConsole::AliasRegister("del",                   "rm %+");
+	IConsole::AliasRegister("newmap",                "newgame");
+	IConsole::AliasRegister("patch",                 "setting %+");
+	IConsole::AliasRegister("set",                   "setting %+");
+	IConsole::AliasRegister("set_newgame",           "setting_newgame %+");
+	IConsole::AliasRegister("list_patches",          "list_settings %+");
+	IConsole::AliasRegister("developer",             "setting developer %+");
 
 	IConsole::CmdRegister("list_ai_libs",            ConListAILibs);
 	IConsole::CmdRegister("list_ai",                 ConListAI);
@@ -2380,7 +2381,7 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("rescan_game",             ConRescanGame);
 
 	IConsole::CmdRegister("companies",               ConCompanies);
-	IConsoleAliasRegister("players",       "companies");
+	IConsole::AliasRegister("players",               "companies");
 
 	/* networking functions */
 
@@ -2392,22 +2393,22 @@ void IConsoleStdLibRegister()
 	/*** Networking commands ***/
 	IConsole::CmdRegister("say",                     ConSay,              ConHookNeedNetwork);
 	IConsole::CmdRegister("say_company",             ConSayCompany,       ConHookNeedNetwork);
-	IConsoleAliasRegister("say_player",    "say_company %+");
+	IConsole::AliasRegister("say_player",            "say_company %+");
 	IConsole::CmdRegister("say_client",              ConSayClient,        ConHookNeedNetwork);
 
 	IConsole::CmdRegister("connect",                 ConNetworkConnect,   ConHookClientOnly);
 	IConsole::CmdRegister("clients",                 ConNetworkClients,   ConHookNeedNetwork);
 	IConsole::CmdRegister("status",                  ConStatus,           ConHookServerOnly);
 	IConsole::CmdRegister("server_info",             ConServerInfo,       ConHookServerOnly);
-	IConsoleAliasRegister("info",          "server_info");
+	IConsole::AliasRegister("info",                  "server_info");
 	IConsole::CmdRegister("reconnect",               ConNetworkReconnect, ConHookClientOnly);
 	IConsole::CmdRegister("rcon",                    ConRcon,             ConHookNeedNetwork);
 
 	IConsole::CmdRegister("join",                    ConJoinCompany,      ConHookNeedNetwork);
-	IConsoleAliasRegister("spectate",      "join 255");
+	IConsole::AliasRegister("spectate",              "join 255");
 	IConsole::CmdRegister("move",                    ConMoveClient,       ConHookServerOnly);
 	IConsole::CmdRegister("reset_company",           ConResetCompany,     ConHookServerOnly);
-	IConsoleAliasRegister("clean_company", "reset_company %A");
+	IConsole::AliasRegister("clean_company",         "reset_company %A");
 	IConsole::CmdRegister("client_name",             ConClientNickChange, ConHookServerOnly);
 	IConsole::CmdRegister("kick",                    ConKick,             ConHookServerOnly);
 	IConsole::CmdRegister("ban",                     ConBan,              ConHookServerOnly);
@@ -2418,29 +2419,29 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("unpause",                 ConUnpauseGame,      ConHookServerOnly);
 
 	IConsole::CmdRegister("company_pw",              ConCompanyPassword,  ConHookNeedNetwork);
-	IConsoleAliasRegister("company_password",      "company_pw %+");
+	IConsole::AliasRegister("company_password",      "company_pw %+");
 
-	IConsoleAliasRegister("net_frame_freq",        "setting frame_freq %+");
-	IConsoleAliasRegister("net_sync_freq",         "setting sync_freq %+");
-	IConsoleAliasRegister("server_pw",             "setting server_password %+");
-	IConsoleAliasRegister("server_password",       "setting server_password %+");
-	IConsoleAliasRegister("rcon_pw",               "setting rcon_password %+");
-	IConsoleAliasRegister("rcon_password",         "setting rcon_password %+");
-	IConsoleAliasRegister("name",                  "setting client_name %+");
-	IConsoleAliasRegister("server_name",           "setting server_name %+");
-	IConsoleAliasRegister("server_port",           "setting server_port %+");
-	IConsoleAliasRegister("server_advertise",      "setting server_advertise %+");
-	IConsoleAliasRegister("max_clients",           "setting max_clients %+");
-	IConsoleAliasRegister("max_companies",         "setting max_companies %+");
-	IConsoleAliasRegister("max_spectators",        "setting max_spectators %+");
-	IConsoleAliasRegister("max_join_time",         "setting max_join_time %+");
-	IConsoleAliasRegister("pause_on_join",         "setting pause_on_join %+");
-	IConsoleAliasRegister("autoclean_companies",   "setting autoclean_companies %+");
-	IConsoleAliasRegister("autoclean_protected",   "setting autoclean_protected %+");
-	IConsoleAliasRegister("autoclean_unprotected", "setting autoclean_unprotected %+");
-	IConsoleAliasRegister("restart_game_year",     "setting restart_game_year %+");
-	IConsoleAliasRegister("min_players",           "setting min_active_clients %+");
-	IConsoleAliasRegister("reload_cfg",            "setting reload_cfg %+");
+	IConsole::AliasRegister("net_frame_freq",        "setting frame_freq %+");
+	IConsole::AliasRegister("net_sync_freq",         "setting sync_freq %+");
+	IConsole::AliasRegister("server_pw",             "setting server_password %+");
+	IConsole::AliasRegister("server_password",       "setting server_password %+");
+	IConsole::AliasRegister("rcon_pw",               "setting rcon_password %+");
+	IConsole::AliasRegister("rcon_password",         "setting rcon_password %+");
+	IConsole::AliasRegister("name",                  "setting client_name %+");
+	IConsole::AliasRegister("server_name",           "setting server_name %+");
+	IConsole::AliasRegister("server_port",           "setting server_port %+");
+	IConsole::AliasRegister("server_advertise",      "setting server_advertise %+");
+	IConsole::AliasRegister("max_clients",           "setting max_clients %+");
+	IConsole::AliasRegister("max_companies",         "setting max_companies %+");
+	IConsole::AliasRegister("max_spectators",        "setting max_spectators %+");
+	IConsole::AliasRegister("max_join_time",         "setting max_join_time %+");
+	IConsole::AliasRegister("pause_on_join",         "setting pause_on_join %+");
+	IConsole::AliasRegister("autoclean_companies",   "setting autoclean_companies %+");
+	IConsole::AliasRegister("autoclean_protected",   "setting autoclean_protected %+");
+	IConsole::AliasRegister("autoclean_unprotected", "setting autoclean_unprotected %+");
+	IConsole::AliasRegister("restart_game_year",     "setting restart_game_year %+");
+	IConsole::AliasRegister("min_players",           "setting min_active_clients %+");
+	IConsole::AliasRegister("reload_cfg",            "setting reload_cfg %+");
 
 	/* debugging stuff */
 #ifdef _DEBUG
