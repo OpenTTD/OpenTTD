@@ -1413,8 +1413,7 @@ DEF_CONSOLE_CMD(ConAlias)
 	if (alias == nullptr) {
 		IConsoleAliasRegister(argv[1], argv[2]);
 	} else {
-		free(alias->cmdline);
-		alias->cmdline = stredup(argv[2]);
+		alias->cmdline = argv[2];
 	}
 	return true;
 }
@@ -1514,7 +1513,7 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 		return true;
 	}
 
-	IConsolePrintF(CC_DEFAULT, "command name: %s", cmd->name);
+	IConsolePrintF(CC_DEFAULT, "command name: %s", cmd->name.c_str());
 	IConsolePrintF(CC_DEFAULT, "command proc: %p", cmd->proc);
 
 	if (cmd->hook != nullptr) IConsoleWarning("command is hooked");
@@ -1573,7 +1572,6 @@ DEF_CONSOLE_CMD(ConHelp)
 		const IConsoleCmd *cmd;
 		const IConsoleAlias *alias;
 
-		RemoveUnderscores(argv[1]);
 		cmd = IConsoleCmdGet(argv[1]);
 		if (cmd != nullptr) {
 			cmd->proc(0, nullptr);
@@ -1587,7 +1585,7 @@ DEF_CONSOLE_CMD(ConHelp)
 				cmd->proc(0, nullptr);
 				return true;
 			}
-			IConsolePrintF(CC_ERROR, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline);
+			IConsolePrintF(CC_ERROR, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline.c_str());
 			return true;
 		}
 
@@ -1615,8 +1613,8 @@ DEF_CONSOLE_CMD(ConListCommands)
 	}
 
 	for (const IConsoleCmd *cmd = _iconsole_cmds; cmd != nullptr; cmd = cmd->next) {
-		if (argv[1] == nullptr || strstr(cmd->name, argv[1]) != nullptr) {
-			if (cmd->hook == nullptr || cmd->hook(false) != CHR_HIDE) IConsolePrintF(CC_DEFAULT, "%s", cmd->name);
+		if (argv[1] == nullptr || cmd->name.find(argv[1]) != std::string::npos) {
+			if (cmd->hook == nullptr || cmd->hook(false) != CHR_HIDE) IConsolePrintF(CC_DEFAULT, "%s", cmd->name.c_str());
 		}
 	}
 
@@ -1631,8 +1629,8 @@ DEF_CONSOLE_CMD(ConListAliases)
 	}
 
 	for (const IConsoleAlias *alias = _iconsole_aliases; alias != nullptr; alias = alias->next) {
-		if (argv[1] == nullptr || strstr(alias->name, argv[1]) != nullptr) {
-			IConsolePrintF(CC_DEFAULT, "%s => %s", alias->name, alias->cmdline);
+		if (argv[1] == nullptr || alias->name.find(argv[1]) != std::string::npos) {
+			IConsolePrintF(CC_DEFAULT, "%s => %s", alias->name.c_str(), alias->cmdline.c_str());
 		}
 	}
 
