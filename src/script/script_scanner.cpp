@@ -38,7 +38,7 @@ bool ScriptScanner::AddFile(const std::string &filename, size_t basepath_length,
 	try {
 		this->engine->LoadScript(filename.c_str());
 	} catch (Script_FatalError &e) {
-		DEBUG(script, 0, "Fatal error '%s' when trying to load the script '%s'.", e.GetErrorMessage(), filename.c_str());
+		DEBUG(script, 0, "Fatal error '%s' when trying to load the script '%s'.", e.GetErrorMessage().c_str(), filename.c_str());
 		return false;
 	}
 	return true;
