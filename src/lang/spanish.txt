@@ -315,7 +315,7 @@ STR_SORT_BY_RANGE                                               :Alcance
 STR_SORT_BY_POPULATION                                          :Población
 STR_SORT_BY_RATING                                              :Calificación
 STR_SORT_BY_NUM_VEHICLES                                        :Número de vehículos
-STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Beneficios total del último año
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Beneficio total del último año
 STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Beneficio total este año
 STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Beneficio medio el año pasado
 STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Beneficio medio este año

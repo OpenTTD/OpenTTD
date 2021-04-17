@@ -3965,8 +3965,8 @@ STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共享调�
 STR_ORDER_NON_STOP                                              :{BLACK}不停车
 STR_ORDER_GO_TO                                                 :前往
 STR_ORDER_GO_NON_STOP_TO                                        :不停车前往
-STR_ORDER_GO_VIA                                                :通过
-STR_ORDER_GO_NON_STOP_VIA                                       :前往不停车
+STR_ORDER_GO_VIA                                                :经由
+STR_ORDER_GO_NON_STOP_VIA                                       :经由（不停车）
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}改变当前选中车站停车时的执行动作
 
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}装满任意货物
@@ -4659,7 +4659,7 @@ STR_ERROR_NO_VEHICLES_AVAILABLE_YET_EXPLANATION                 :{WHITE}在{DATE
 # Specific vehicle errors
 STR_ERROR_CAN_T_MAKE_TRAIN_PASS_SIGNAL                          :{WHITE}不能让列车冒险通过信号...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_TRAIN                         :{WHITE}不能命令列车调头...
-STR_ERROR_TRAIN_START_NO_POWER                                  :木有接触网！
+STR_ERROR_TRAIN_START_NO_POWER                                  :没有接触网！
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}车辆无法调头...
 
