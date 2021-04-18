@@ -155,8 +155,8 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 	Packet *p = this->packet_recv;
 
 	/* Read packet size */
-	if (p->pos < sizeof(PacketSize)) {
-		while (p->pos < sizeof(PacketSize)) {
+	if (!p->HasPacketSizeData()) {
+		while (!p->HasPacketSizeData()) {
 		/* Read the size of the packet */
 			res = recv(this->sock, (char*)p->buffer + p->pos, sizeof(PacketSize) - p->pos, 0);
 			if (res == -1) {
@@ -178,10 +178,8 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 			p->pos += res;
 		}
 
-		/* Read the packet size from the received packet */
-		p->ReadRawPacketSize();
-
-		if (p->size > SEND_MTU) {
+		/* Parse the size in the received packet and if not valid, close the connection. */
+		if (!p->ParsePacketSize()) {
 			this->CloseConnection();
 			return nullptr;
 		}
