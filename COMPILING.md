@@ -3,12 +3,13 @@
 ## Required/optional libraries
 
 The following libraries are used by OpenTTD for:
-
 - zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads,
    heightmaps
 - liblzo2: (de)compressing of old (pre 0.3.0) savegames
 - liblzma: (de)compressing of savegames (1.1.0 and later)
 - libpng: making screenshots and loading heightmaps
+
+If _not_ compiling for [dedicated server](#dedicated-server):
 - libfreetype: loading generic fonts and rendering them
 - libfontconfig: searching for fonts, resolving font names to actual fonts
 - libicu: handling of right-to-left scripts (e.g. Arabic and Persian) and
@@ -110,11 +111,14 @@ the base sets which are not yet included in the base set information files.
 To avoid this behaviour, disable GRFCodec (and NFORenum) in CMake cache
 (`GRFCODEC_EXECUTABLE` and `NFORENUM_EXECUTABLE`).
 
-## Developers settings
-
+## Compilation settings
 You can control some flags directly via `CXXFLAGS` (any combination
 of these flags will work fine too):
 
+### Dedicated server
+- `-DOPTION_DEDICATED=ON`: compiles the dedicated server version, without libraries unneeded in a headless environment
+
+### Developers
 - `-DRANDOM_DEBUG`: this helps with debugging desyncs.
 - `-fno-inline`: this avoids creating inline functions; this can make
   debugging a lot easier.
