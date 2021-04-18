@@ -863,55 +863,31 @@ public:
 
 	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
-		switch (keycode) {
-			case WKC_UP:
-				/* scroll up by one */
-				if (this->list_pos > 0) this->list_pos--;
-				break;
-			case WKC_DOWN:
-				/* scroll down by one */
-				if (this->list_pos < (int)this->content.size() - 1) this->list_pos++;
-				break;
-			case WKC_PAGEUP:
-				/* scroll up a page */
-				this->list_pos = (this->list_pos < this->vscroll->GetCapacity()) ? 0 : this->list_pos - this->vscroll->GetCapacity();
-				break;
-			case WKC_PAGEDOWN:
-				/* scroll down a page */
-				this->list_pos = std::min(this->list_pos + this->vscroll->GetCapacity(), (int)this->content.size() - 1);
-				break;
-			case WKC_HOME:
-				/* jump to beginning */
-				this->list_pos = 0;
-				break;
-			case WKC_END:
-				/* jump to end */
-				this->list_pos = (int)this->content.size() - 1;
-				break;
-
-			case WKC_SPACE:
-			case WKC_RETURN:
-				if (keycode == WKC_RETURN || !IsWidgetFocused(WID_NCL_FILTER)) {
-					if (this->selected != nullptr) {
-						_network_content_client.ToggleSelectedState(this->selected);
-						this->content.ForceResort();
-						this->InvalidateData();
+		if (this->vscroll->UpdateListPositionOnKeyPress(this->list_pos, keycode) == ES_NOT_HANDLED) {
+			switch (keycode) {
+				case WKC_SPACE:
+				case WKC_RETURN:
+					if (keycode == WKC_RETURN || !IsWidgetFocused(WID_NCL_FILTER)) {
+						if (this->selected != nullptr) {
+							_network_content_client.ToggleSelectedState(this->selected);
+							this->content.ForceResort();
+							this->InvalidateData();
+						}
+						if (this->filter_data.types.any()) {
+							this->content.ForceRebuild();
+							this->InvalidateData();
+						}
+						return ES_HANDLED;
 					}
-					if (this->filter_data.types.any()) {
-						this->content.ForceRebuild();
-						this->InvalidateData();
-					}
-					return ES_HANDLED;
-				}
-				/* space is pressed and filter is focused. */
-				FALLTHROUGH;
+					/* space is pressed and filter is focused. */
+					FALLTHROUGH;
 
-			default:
-				return ES_NOT_HANDLED;
+				default:
+					return ES_NOT_HANDLED;
+			}
 		}
 
 		if (this->content.size() == 0) {
-			this->list_pos = 0; // above stuff may result in "-1".
 			if (this->UpdateFilterState()) {
 				this->content.ForceRebuild();
 				this->InvalidateData();

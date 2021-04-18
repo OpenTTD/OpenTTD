@@ -1975,6 +1975,66 @@ int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, in
 }
 
 /**
+ * Update the given list position as if it were on this scroll bar when the given keycode was pressed.
+ * This does not update the actual position of this scroll bar, that is left to the caller. It does,
+ * however use the capacity and count of the scroll bar for the bounds and amount to scroll.
+ *
+ * When the count is 0 or the return is ES_NOT_HANDLED, then the position is not updated.
+ * With WKC_UP and WKC_DOWN the position goes one up or down respectively.
+ * With WKC_PAGEUP and WKC_PAGEDOWN the position goes one capacity up or down respectively.
+ * With WKC_HOME the first position is selected and with WKC_END the last position is selected.
+ * This function ensures that pos is in the range [0..count).
+ * @param list_position The current position in the list.
+ * @param key_code      The pressed key code.
+ * @return ES_NOT_HANDLED when another key than the 6 specific keys was pressed, otherwise ES_HANDLED.
+ */
+EventState Scrollbar::UpdateListPositionOnKeyPress(int &list_position, uint16 keycode) const
+{
+	int new_pos = list_position;
+	switch (keycode) {
+		case WKC_UP:
+			/* scroll up by one */
+			new_pos--;
+			break;
+
+		case WKC_DOWN:
+			/* scroll down by one */
+			new_pos++;
+			break;
+
+		case WKC_PAGEUP:
+			/* scroll up a page */
+			new_pos -= this->GetCapacity();
+			break;
+
+		case WKC_PAGEDOWN:
+			/* scroll down a page */
+			new_pos += this->GetCapacity();
+			break;
+
+		case WKC_HOME:
+			/* jump to beginning */
+			new_pos = 0;
+			break;
+
+		case WKC_END:
+			/* jump to end */
+			new_pos = this->GetCount() - 1;
+			break;
+
+		default:
+			return ES_NOT_HANDLED;
+	}
+
+	/* If there are no elements, there is nothing to scroll/update. */
+	if (this->GetCount() != 0) {
+		list_position = Clamp(new_pos, 0, this->GetCount() - 1);
+	}
+	return ES_HANDLED;
+}
+
+
+/**
  * Set capacity of visible elements from the size and resize properties of a widget.
  * @param w       Window.
  * @param widget  Widget with size and resize properties.

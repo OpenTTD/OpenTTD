@@ -749,6 +749,7 @@ public:
 	}
 
 	int GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding = 0, int line_height = -1) const;
+	EventState UpdateListPositionOnKeyPress(int &list_position, uint16 keycode) const;
 };
 
 /**
