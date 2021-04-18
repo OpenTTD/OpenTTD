@@ -119,12 +119,12 @@ void NetworkUDPSocketHandler::ReceivePackets()
 			struct sockaddr_storage client_addr;
 			memset(&client_addr, 0, sizeof(client_addr));
 
-			Packet p(this);
+			Packet p(this, SEND_MTU);
 			socklen_t client_len = sizeof(client_addr);
 
 			/* Try to receive anything */
 			SetNonBlocking(s.second); // Some OSes seem to lose the non-blocking status of the socket
-			int nbytes = recvfrom(s.second, (char*)p.buffer, SEND_MTU, 0, (struct sockaddr *)&client_addr, &client_len);
+			ssize_t nbytes = p.TransferIn<int>(recvfrom, s.second, 0, (struct sockaddr *)&client_addr, &client_len);
 
 			/* Did we get the bytes for the base header of the packet? */
 			if (nbytes <= 0) break;    // No data, i.e. no packet

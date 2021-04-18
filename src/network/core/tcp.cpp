@@ -156,9 +156,8 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 
 	/* Read packet size */
 	if (!p->HasPacketSizeData()) {
-		while (!p->HasPacketSizeData()) {
-		/* Read the size of the packet */
-			res = recv(this->sock, (char*)p->buffer + p->pos, sizeof(PacketSize) - p->pos, 0);
+		while (p->RemainingBytesToTransfer() != 0) {
+			res = p->TransferIn<int>(recv, this->sock, 0);
 			if (res == -1) {
 				int err = GET_LAST_ERROR();
 				if (err != EWOULDBLOCK) {
@@ -175,7 +174,6 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 				this->CloseConnection();
 				return nullptr;
 			}
-			p->pos += res;
 		}
 
 		/* Parse the size in the received packet and if not valid, close the connection. */
@@ -186,8 +184,8 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 	}
 
 	/* Read rest of packet */
-	while (p->pos < p->size) {
-		res = recv(this->sock, (char*)p->buffer + p->pos, p->size - p->pos, 0);
+	while (p->RemainingBytesToTransfer() != 0) {
+		res = p->TransferIn<int>(recv, this->sock, 0);
 		if (res == -1) {
 			int err = GET_LAST_ERROR();
 			if (err != EWOULDBLOCK) {
@@ -204,8 +202,6 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 			this->CloseConnection();
 			return nullptr;
 		}
-
-		p->pos += res;
 	}
 
 	/* Prepare for receiving a new packet */
