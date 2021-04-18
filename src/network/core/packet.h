@@ -65,13 +65,14 @@ public:
 	/* Sending/writing of packets */
 	void PrepareToSend();
 
-	bool CanWriteToPacket(size_t bytes_to_write);
-	void Send_bool  (bool   data);
-	void Send_uint8 (uint8  data);
-	void Send_uint16(uint16 data);
-	void Send_uint32(uint32 data);
-	void Send_uint64(uint64 data);
-	void Send_string(const char *data);
+	bool   CanWriteToPacket(size_t bytes_to_write);
+	void   Send_bool  (bool   data);
+	void   Send_uint8 (uint8  data);
+	void   Send_uint16(uint16 data);
+	void   Send_uint32(uint32 data);
+	void   Send_uint64(uint64 data);
+	void   Send_string(const char *data);
+	size_t Send_bytes (const byte *begin, const byte *end);
 
 	/* Reading/receiving of packets */
 	bool HasPacketSizeData() const;

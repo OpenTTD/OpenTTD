@@ -174,12 +174,10 @@ struct PacketWriter : SaveFilter {
 
 		byte *bufe = buf + size;
 		while (buf != bufe) {
-			size_t to_write = std::min<size_t>(SEND_MTU - this->current->size, bufe - buf);
-			memcpy(this->current->buffer + this->current->size, buf, to_write);
-			this->current->size += (PacketSize)to_write;
-			buf += to_write;
+			size_t written = this->current->Send_bytes(buf, bufe);
+			buf += written;
 
-			if (this->current->size == SEND_MTU) {
+			if (!this->current->CanWriteToPacket(1)) {
 				this->AppendQueue();
 				if (buf != bufe) this->current = new Packet(PACKET_SERVER_MAP_DATA);
 			}
