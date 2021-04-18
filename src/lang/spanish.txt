@@ -149,14 +149,14 @@ STR_ABBREV_PAPER                                                :{TINY_FONT}PP
 STR_ABBREV_GOLD                                                 :{TINY_FONT}OR
 STR_ABBREV_WATER                                                :{TINY_FONT}AG
 STR_ABBREV_WHEAT                                                :{TINY_FONT}TG
-STR_ABBREV_RUBBER                                               :{TINY_FONT}GM
+STR_ABBREV_RUBBER                                               :{TINY_FONT}CA
 STR_ABBREV_SUGAR                                                :{TINY_FONT}AZ
 STR_ABBREV_TOYS                                                 :{TINY_FONT}JG
 STR_ABBREV_SWEETS                                               :{TINY_FONT}DC
 STR_ABBREV_COLA                                                 :{TINY_FONT}CL
 STR_ABBREV_CANDYFLOSS                                           :{TINY_FONT}AA
 STR_ABBREV_BUBBLES                                              :{TINY_FONT}BU
-STR_ABBREV_TOFFEE                                               :{TINY_FONT}CM
+STR_ABBREV_TOFFEE                                               :{TINY_FONT}TF
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}PI
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}RF
@@ -242,8 +242,8 @@ STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cierra l
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Título de la ventana - arrastra para moverla
 STR_TOOLTIP_SHADE                                               :{BLACK}Oculta la ventana - muestra sólo el título de la ventana
 STR_TOOLTIP_DEBUG                                               :{BLACK}Muestra la información de depuración NewGRF
-STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar ventana al tamaño por defecto. Ctrl+Clic permite almacenar el tamaño actual como tamaño por defecto
-STR_TOOLTIP_STICKY                                              :{BLACK}Esta ventana no se cerrará tras usar el comando 'Cerrar Todas las Ventanas'. Ctrl+Clic permite guardar el estado como estado por defecto
+STR_TOOLTIP_DEFSIZE                                             :{BLACK}Redimensionar ventana al tamaño por defecto. Ctrl+clic permite almacenar el tamaño actual como tamaño por defecto
+STR_TOOLTIP_STICKY                                              :{BLACK}Esta ventana no se cerrará tras usar el comando 'Cerrar Todas las Ventanas'. Ctrl+clic permite guardar el estado como estado por defecto
 STR_TOOLTIP_RESIZE                                              :{BLACK}Clica y arrastra para redimensionar la ventana
 STR_TOOLTIP_TOGGLE_LARGE_SMALL_WINDOW                           :{BLACK}Alterna el tamaño de ventana entre grande/pequeño
 STR_TOOLTIP_VSCROLL_BAR_SCROLLS_LIST                            :{BLACK}Barra de desplazamiento - mueve la lista hacia arriba/abajo
@@ -340,10 +340,10 @@ STR_TOOLBAR_TOOLTIP_DISPLAY_GOALS_LIST                          :{BLACK}Muestra 
 STR_TOOLBAR_TOOLTIP_DISPLAY_GRAPHS                              :{BLACK}Mostrar gráficas
 STR_TOOLBAR_TOOLTIP_DISPLAY_COMPANY_LEAGUE                      :{BLACK}Mostrar tabla de clasificación de empresas
 STR_TOOLBAR_TOOLTIP_FUND_CONSTRUCTION_OF_NEW                    :{BLACK}Financiar la construcción de una industria nueva o mostrar lista de industrias
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostrar lista de trenes de la empresa. Ctrl+Clic hace que no aparezca la lista de grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de vehículos de carretera de la empresa. Ctrl+Clic hace que no aparezca la lista de grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostrar lista de barcos de la empresa. Ctrl+Clic hace que no aparezca la lista de grupos
-STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostrar lista de aeronaves de la empresa. Ctrl+Clic hace que no aparezca la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_TRAINS              :{BLACK}Mostrar lista de trenes de la empresa. Ctrl+clic hace que no aparezca la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_ROAD_VEHICLES       :{BLACK}Mostrar lista de vehículos de carretera de la empresa. Ctrl+clic hace que no aparezca la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_SHIPS               :{BLACK}Mostrar lista de barcos de la empresa. Ctrl+clic hace que no aparezca la lista de grupos
+STR_TOOLBAR_TOOLTIP_DISPLAY_LIST_OF_COMPANY_AIRCRAFT            :{BLACK}Mostrar lista de aeronaves de la empresa. Ctrl+clic hace que no aparezca la lista de grupos
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_IN                            :{BLACK}Acercar vista
 STR_TOOLBAR_TOOLTIP_ZOOM_THE_VIEW_OUT                           :{BLACK}Alejar vista
 STR_TOOLBAR_TOOLTIP_BUILD_RAILROAD_TRACK                        :{BLACK}Construir ferrocarril
@@ -1907,7 +1907,7 @@ STR_LIVERY_SHIP_TOOLTIP                                         :{BLACK}Muestra 
 STR_LIVERY_AIRCRAFT_TOOLTIP                                     :{BLACK}Muestra el esquema de color de las aeronaves
 STR_LIVERY_PRIMARY_TOOLTIP                                      :{BLACK}Selecciona el color primario para el esquema seleccionado. Ctrl+clic fijará este color para todo el esquema
 STR_LIVERY_SECONDARY_TOOLTIP                                    :{BLACK}Selecciona el color secundario para el esquema seleccionado. Ctrl+clic fijará este color para todo el esquema
-STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecciona un esquema de color a modificar, o selecciona varios pulsando Ctrl+Clic. Pulsa en la caja para cambiar el uso del esquema
+STR_LIVERY_PANEL_TOOLTIP                                        :{BLACK}Selecciona un esquema de color a modificar, o selecciona varios pulsando Ctrl+clic. Pulsa en la caja para cambiar el uso del esquema
 
 STR_LIVERY_DEFAULT                                              :Estación Normal
 STR_LIVERY_STEAM                                                :Locomotora a Vapor
@@ -2362,15 +2362,15 @@ STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Salir de
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Opciones de Transparencia
-STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Ajustar transparencia para carteles. Ctrl+Clic para bloquear
-STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Ajustar transparencia para árboles. Ctrl+Clic para bloquear
-STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Ajustar transparencia para casas. Ctrl+Clic para bloquear
-STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Ajustar transparencia para industrias. Ctrl+Clic para bloquear
-STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Ajustar transparencia para construcciones como estaciones, depósitos o puntos de ruta. Ctrl+Clic para bloquear
-STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Ajustar transparencia para puentes. Ctrl+Clic para bloquear
-STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Ajustar transparencia para estructuras como faros o antenas. Ctrl+Clic para bloquear
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Ajustar transparencia para catenaria. Ctrl+Clic para bloquear
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Ajustar transparencia para los indicadores de carga. Ctrl+Clic para bloquear
+STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Ajustar transparencia para carteles. Ctrl+clic para bloquear
+STR_TRANSPARENT_TREES_TOOLTIP                                   :{BLACK}Ajustar transparencia para árboles. Ctrl+clic para bloquear
+STR_TRANSPARENT_HOUSES_TOOLTIP                                  :{BLACK}Ajustar transparencia para casas. Ctrl+clic para bloquear
+STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Ajustar transparencia para industrias. Ctrl+clic para bloquear
+STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Ajustar transparencia para construcciones como estaciones, depósitos o puntos de ruta. Ctrl+clic para bloquear
+STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Ajustar transparencia para puentes. Ctrl+clic para bloquear
+STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Ajustar transparencia para estructuras como faros o antenas. Ctrl+clic para bloquear
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Ajustar transparencia para catenaria. Ctrl+clic para bloquear
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Ajustar transparencia para los indicadores de carga. Ctrl+clic para bloquear
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Establece los objetos como invisibles en vez de transparentes
 
 # Linkgraph legend window
@@ -3072,7 +3072,7 @@ STR_SPRITE_ALIGNER_GOTO_TOOLTIP                                 :{BLACK}Va al sp
 STR_SPRITE_ALIGNER_PREVIOUS_BUTTON                              :{BLACK}Sprite anterior
 STR_SPRITE_ALIGNER_PREVIOUS_TOOLTIP                             :{BLACK}Salta al sprite anterior (ignorando pseudosprites, sprites recoloreados y sprites de fuente) y pasa del primer al último sprite
 STR_SPRITE_ALIGNER_SPRITE_TOOLTIP                               :{BLACK}Representa el sprite seleccionado. Su alineamiento es ignorado al dibujarlo
-STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover el sprite, cambiando los ajustes X e Y. Ctrl+Clic mueve el sprite ocho unidades de una sola vez
+STR_SPRITE_ALIGNER_MOVE_TOOLTIP                                 :{BLACK}Mover el sprite, cambiando los ajustes X e Y. Ctrl+clic mueve el sprite ocho unidades de una sola vez
 STR_SPRITE_ALIGNER_RESET_BUTTON                                 :{BLACK}Reiniciar coordenadas relativas
 STR_SPRITE_ALIGNER_RESET_TOOLTIP                                :{BLACK}Reinicia las coordenadas relativas actuales
 STR_SPRITE_ALIGNER_OFFSETS_ABS                                  :{BLACK}Coordenada X: {NUM}, Coordenada Y: {NUM} (Absoluta)
@@ -3176,7 +3176,7 @@ STR_TOWN_DIRECTORY_CAPTION                                      :{WHITE}Municipi
 STR_TOWN_DIRECTORY_NONE                                         :{ORANGE}- Ninguna -
 STR_TOWN_DIRECTORY_TOWN                                         :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_TOWN_DIRECTORY_CITY                                         :{ORANGE}{TOWN}{YELLOW} (Ciudad){BLACK} ({COMMA})
-STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de los municipios - Clic sobre un nombre para centrar la vista principal en él. Ctrl+Clic abre una ventana de visualización en dicha posición
+STR_TOWN_DIRECTORY_LIST_TOOLTIP                                 :{BLACK}Nombres de los municipios - Clic sobre un nombre para centrar la vista principal en él. Ctrl+clic abre una ventana de visualización en dicha posición
 STR_TOWN_POPULATION                                             :{BLACK}Población mundial: {COMMA}
 
 # Town view window
@@ -3194,7 +3194,7 @@ STR_TOWN_VIEW_TOWN_GROWS_EVERY                                  :{BLACK}El munic
 STR_TOWN_VIEW_TOWN_GROWS_EVERY_FUNDED                           :{BLACK}El municipio crece cada {ORANGE}{COMMA}{BLACK}{NBSP}día{P "" s} (edificios financiados)
 STR_TOWN_VIEW_TOWN_GROW_STOPPED                                 :{BLACK}El municipio {RED}no{BLACK} está creciendo
 STR_TOWN_VIEW_NOISE_IN_TOWN                                     :{BLACK}Nivel de ruido en el municipio: {ORANGE}{COMMA}{BLACK}  Máx.: {ORANGE}{COMMA}
-STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista sobre el municipio. Ctrl+Clic abre un punto de vista en dicha posición
+STR_TOWN_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centrar vista sobre el municipio. Ctrl+clic abre un punto de vista en dicha posición
 STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}Autoridad local
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}Muestra la información sobre las autoridades locales
 STR_TOWN_VIEW_RENAME_TOOLTIP                                    :{BLACK}Cambia el nombre del municipio
@@ -3283,7 +3283,7 @@ STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{STRING
 STR_SUBSIDIES_NONE                                              :{ORANGE}- Ninguno -
 STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}Líneas ya subvencionadas:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{STRING} desde {STRING} a {STRING}{YELLOW} ({COMPANY}{YELLOW}, hasta {DATE_SHORT})
-STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clic sobre el servicio para centrar la vista principal en esta industria/municipio. Ctrl+Clic abre un punto de vista en dicha posición
+STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}Clic sobre el servicio para centrar la vista principal en esta industria/municipio. Ctrl+clic abre un punto de vista en dicha posición
 
 # Story book window
 STR_STORY_BOOK_CAPTION                                          :{WHITE}Historia de {COMPANY}
@@ -3299,7 +3299,7 @@ STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}Ir a la 
 STR_STORY_BOOK_INVALID_GOAL_REF                                 :{RED}Referencia de objetivo inválida
 
 # Station list window
-STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estación - Clic sobre un nombre para centrar la vista principal en la estación. Ctrl+Clic abre un punto de vista en dicha posición
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}Nombres de estación - Clic sobre un nombre para centrar la vista principal en la estación. Ctrl+clic abre un punto de vista en dicha posición
 STR_STATION_LIST_USE_CTRL_TO_SELECT_MORE                        :{BLACK}Mantén pulsado Ctrl para seleccionar más de un elemento
 STR_STATION_LIST_CAPTION                                        :{WHITE}{COMPANY} - {COMMA} Estaciones
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
@@ -3361,7 +3361,7 @@ STR_CARGO_RATING_EXCELLENT                                      :Excelente
 STR_CARGO_RATING_OUTSTANDING                                    :Excepcional
 ############ range for rating ends
 
-STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar vista en la posición de la estación. Ctrl+Clic abre un punto de vista en dicha posición
+STR_STATION_VIEW_CENTER_TOOLTIP                                 :{BLACK}Centrar vista en la posición de la estación. Ctrl+clic abre un punto de vista en dicha posición
 STR_STATION_VIEW_RENAME_TOOLTIP                                 :{BLACK}Cambia el nombre de la estación
 
 STR_STATION_VIEW_SCHEDULED_TRAINS_TOOLTIP                       :{BLACK}Muestra todos los trenes que tienen esta estación en su horario
@@ -3376,7 +3376,7 @@ STR_STATION_VIEW_CLOSE_AIRPORT_TOOLTIP                          :{BLACK}Evita qu
 
 # Waypoint/buoy view window
 STR_WAYPOINT_VIEW_CAPTION                                       :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar vista en posición del punto de ruta. Ctrl+Clic abre un punto de vista en dicha posición
+STR_WAYPOINT_VIEW_CENTER_TOOLTIP                                :{BLACK}Centrar vista en posición del punto de ruta. Ctrl+clic abre un punto de vista en dicha posición
 STR_WAYPOINT_VIEW_CHANGE_WAYPOINT_NAME                          :{BLACK}Cambiar nombre del punto de ruta
 STR_BUOY_VIEW_CENTER_TOOLTIP                                    :{BLACK}Centra la vista en posición de la boya. Ctrl+clic abre un punto de vista en dicha posición
 STR_BUOY_VIEW_CHANGE_BUOY_NAME                                  :{BLACK}Cambiar nombre de boya
@@ -3829,15 +3829,15 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centra l
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centra la vista principal en la posición del barco. Doble clic seguirá al barco en la vista principal. Ctrl+clic abre un nuevo punto de vista en dicha posición.
 STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centra la vista principal en la posición de la aeronave. Doble clic seguirá la aeronave en la vista principal. Ctrl+clic abre un nuevo punto de vista en dicha posición.
 
-STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren al depósito. Ctrl+Clic para realizar solamente mantenimiento
-STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar vehículo al depósito. Ctrl+Clic para realizar solamente mantenimiento
-STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar barco al astillero. Ctrl+Clic para realizar solamente mantenimiento
-STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar aeronave al hangar. Ctrl+Clic para realizar solamente mantenimiento
+STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Enviar tren al depósito. Ctrl+clic para realizar solamente mantenimiento
+STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Enviar vehículo al depósito. Ctrl+clic para realizar solamente mantenimiento
+STR_VEHICLE_VIEW_SHIP_SEND_TO_DEPOT_TOOLTIP                     :{BLACK}Enviar barco al astillero. Ctrl+clic para realizar solamente mantenimiento
+STR_VEHICLE_VIEW_AIRCRAFT_SEND_TO_DEPOT_TOOLTIP                 :{BLACK}Enviar aeronave al hangar. Ctrl+clic para realizar solamente mantenimiento
 
-STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Esto comprará una copia del tren incluyendo sus vagones. Ctrl+Clic compartirá las órdenes. Mayús+Clic muestra una estimación del precio sin realizar la compra
-STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Esto comprará una copia del vehículo. Ctrl+Clic compartirá las órdenes. Mayús+Clic muestra una estimación del precio sin realizar la compra
-STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Esto comprará una copia del barco. Ctrl+Clic compartirá las órdenes. Mayús+Clic muestra una estimación del precio sin realizar la compra
-STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto comprará una copia de la aeronave. Ctrl+Clic compartirá las órdenes. Mayús+Clic muestra una estimación del precio sin realizar la compra
+STR_VEHICLE_VIEW_CLONE_TRAIN_INFO                               :{BLACK}Esto comprará una copia del tren incluyendo sus vagones. Ctrl+clic compartirá las órdenes. Mayús+clic muestra una estimación del precio sin realizar la compra
+STR_VEHICLE_VIEW_CLONE_ROAD_VEHICLE_INFO                        :{BLACK}Esto comprará una copia del vehículo. Ctrl+clic compartirá las órdenes. Mayús+clic muestra una estimación del precio sin realizar la compra
+STR_VEHICLE_VIEW_CLONE_SHIP_INFO                                :{BLACK}Esto comprará una copia del barco. Ctrl+clic compartirá las órdenes. Mayús+clic muestra una estimación del precio sin realizar la compra
+STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}Esto comprará una copia de la aeronave. Ctrl+clic compartirá las órdenes. Mayús+clic muestra una estimación del precio sin realizar la compra
 
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}Fuerza al tren a proceder sin esperar a la apertura de señal
 
@@ -3849,10 +3849,10 @@ STR_VEHICLE_VIEW_AIRCRAFT_REFIT_TOOLTIP                         :{BLACK}Reforma 
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}Cambia la dirección del tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}Fuerza al vehículo a dar la vuelta
 
-STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Ver órdenes del tren. Ctrl+Clic muestra su horario
-STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Ver órdenes del vehículo Ctrl+Clic muestra su horario
-STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ver órdenes del barco. Ctrl+Clic muestra su horario
-STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ver órdenes de la aeronave. Ctrl+Clic muestra su horario
+STR_VEHICLE_VIEW_TRAIN_ORDERS_TOOLTIP                           :{BLACK}Ver órdenes del tren. Ctrl+clic muestra su horario
+STR_VEHICLE_VIEW_ROAD_VEHICLE_ORDERS_TOOLTIP                    :{BLACK}Ver órdenes del vehículo Ctrl+clic muestra su horario
+STR_VEHICLE_VIEW_SHIP_ORDERS_TOOLTIP                            :{BLACK}Ver órdenes del barco. Ctrl+clic muestra su horario
+STR_VEHICLE_VIEW_AIRCRAFT_ORDERS_TOOLTIP                        :{BLACK}Ver órdenes de la aeronave. Ctrl+clic muestra su horario
 
 STR_VEHICLE_VIEW_TRAIN_SHOW_DETAILS_TOOLTIP                     :{BLACK}Muestra los detalles del tren
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Muestra los detalles del vehículo
@@ -3922,8 +3922,8 @@ STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}Crédito
 
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}{NBSP}días{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
 STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}Intervalo de mantenimiento: {LTBLUE}{COMMA}%{BLACK}   Último mantenimiento: {LTBLUE}{DATE_LONG}
-STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incrementar intervalo de mantenimiento en 10. Ctrl+Clic incrementa el intervalo de mantenimiento en 5
-STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reducir intervalo de mantenimiento en 10. Ctrl+Clic reduce el intervalo de mantenimiento en 5
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Incrementar intervalo de mantenimiento en 10. Ctrl+clic incrementa el intervalo de mantenimiento en 5
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP         :{BLACK}Reducir intervalo de mantenimiento en 10. Ctrl+clic reduce el intervalo de mantenimiento en 5
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}Cambia el tipo de intervalo de mantenimiento
 STR_VEHICLE_DETAILS_DEFAULT                                     :Por defecto

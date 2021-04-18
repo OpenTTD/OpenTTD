@@ -1006,6 +1006,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hårdvar
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Markera denna rutan för att tillåta OpenTTD att försöka använda hårdvaruacceleration. Ändrad inställning kommer bara att gälla efter omstart.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Inställningen kommer bara att gälla efter omstart av spelet
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Markera den här rutan för att v-synka skärmen. Ändringar i den här inställningen kommer bara att tillämpas vid omstart av spelet. Fungerar bara med hårdvaruacceleration aktiverad.
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Gränssnittstorlek
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Välj vilken gränssnittsstorlek som ska användas
@@ -3887,7 +3889,7 @@ STR_VEHICLE_COMMAND_STARTED_SMALL                               :{TINY_FONT}{GRE
 STR_VEHICLE_COMMAND_STARTED                                     :{GREEN}Startad
 
 # Vehicle details
-STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Details)
+STR_VEHICLE_DETAILS_CAPTION                                     :{WHITE}{VEHICLE} (Detaljer)
 STR_VEHICLE_NAME_BUTTON                                         :{BLACK}Namn
 
 STR_VEHICLE_DETAILS_TRAIN_RENAME                                :{BLACK}Byt namn på tåg
