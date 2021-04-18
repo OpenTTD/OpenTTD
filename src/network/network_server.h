@@ -67,7 +67,7 @@ public:
 	uint32 last_token_frame;     ///< The last frame we received the right token
 	ClientStatus status;         ///< Status of this client
 	CommandQueue outgoing_queue; ///< The command-queue awaiting delivery
-	int receive_limit;           ///< Amount of bytes that we can receive at this moment
+	size_t receive_limit;        ///< Amount of bytes that we can receive at this moment
 
 	struct PacketWriter *savegame; ///< Writer used to write the savegame.
 	NetworkAddress client_address; ///< IP-address of the client (so he can be banned)

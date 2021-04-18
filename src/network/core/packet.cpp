@@ -231,6 +231,18 @@ bool Packet::HasPacketSizeData() const
 }
 
 /**
+ * Get the number of bytes in the packet.
+ * When sending a packet this is the size of the data up to that moment.
+ * When receiving a packet (before PrepareToRead) this is the allocated size for the data to be read.
+ * When reading a packet (after PrepareToRead) this is the full size of the packet.
+ * @return The packet's size.
+ */
+size_t Packet::Size() const
+{
+	return this->size;
+}
+
+/**
  * Reads the packet size from the raw packet and stores it in the packet->size
  * @return True iff the packet size seems plausible.
  */
