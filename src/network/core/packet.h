@@ -89,6 +89,58 @@ public:
 	size_t RemainingBytesToTransfer() const;
 
 	/**
+	 * Transfer data from the packet to the given function. It starts reading at the
+	 * position the last transfer stopped.
+	 * See Packet::TransferIn for more information about transferring data to functions.
+	 * @param transfer_function The function to pass the buffer as second parameter and the
+	 *                          amount to write as third parameter. It returns the amount that
+	 *                          was written or -1 upon errors.
+	 * @param limit             The maximum amount of bytes to transfer.
+	 * @param destination       The first parameter of the transfer function.
+	 * @param args              The fourth and further parameters to the transfer function, if any.
+	 * @return The return value of the transfer_function.
+	 */
+	template <
+		typename A = size_t, ///< The type for the amount to be passed, so it can be cast to the right type.
+		typename F,          ///< The type of the function.
+		typename D,          ///< The type of the destination.
+		typename ... Args>   ///< The types of the remaining arguments to the function.
+	ssize_t TransferOutWithLimit(F transfer_function, size_t limit, D destination, Args&& ... args)
+	{
+		size_t amount = std::min(this->RemainingBytesToTransfer(), limit);
+		if (amount == 0) return 0;
+
+		assert(this->pos < this->buffer.size());
+		assert(this->pos + amount <= this->buffer.size());
+		/* Making buffer a char means casting a lot in the Recv/Send functions. */
+		const char *output_buffer = reinterpret_cast<const char*>(this->buffer + this->pos);
+		ssize_t bytes = transfer_function(destination, output_buffer, static_cast<A>(amount), std::forward<Args>(args)...);
+		if (bytes > 0) this->pos += bytes;
+		return bytes;
+	}
+
+	/**
+	 * Transfer data from the packet to the given function. It starts reading at the
+	 * position the last transfer stopped.
+	 * See Packet::TransferIn for more information about transferring data to functions.
+	 * @param transfer_function The function to pass the buffer as second parameter and the
+	 *                          amount to write as third parameter. It returns the amount that
+	 *                          was written or -1 upon errors.
+	 * @param destination       The first parameter of the transfer function.
+	 * @param args              The fourth and further parameters to the transfer function, if any.
+	 * @tparam A    The type for the amount to be passed, so it can be cast to the right type.
+	 * @tparam F    The type of the transfer_function.
+	 * @tparam D    The type of the destination.
+	 * @tparam Args The types of the remaining arguments to the function.
+	 * @return The return value of the transfer_function.
+	 */
+	template <typename A = size_t, typename F, typename D, typename ... Args>
+	ssize_t TransferOut(F transfer_function, D destination, Args&& ... args)
+	{
+		return TransferOutWithLimit<A>(transfer_function, std::numeric_limits<size_t>::max(), destination, std::forward<Args>(args)...);
+	}
+
+	/**
 	 * Transfer data from the given function into the packet. It starts writing at the
 	 * position the last transfer stopped.
 	 *

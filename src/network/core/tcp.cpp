@@ -103,7 +103,7 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 
 	p = this->packet_queue;
 	while (p != nullptr) {
-		res = send(this->sock, (const char*)p->buffer + p->pos, p->size - p->pos, 0);
+		res = p->TransferOut<int>(send, this->sock, 0);
 		if (res == -1) {
 			int err = GET_LAST_ERROR();
 			if (err != EWOULDBLOCK) {
@@ -122,10 +122,8 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 			return SPS_CLOSED;
 		}
 
-		p->pos += res;
-
 		/* Is this packet sent? */
-		if (p->pos == p->size) {
+		if (p->RemainingBytesToTransfer() == 0) {
 			/* Go to the next packet */
 			this->packet_queue = p->next;
 			delete p;
