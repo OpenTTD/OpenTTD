@@ -134,14 +134,14 @@ void NetworkUDPSocketHandler::ReceivePackets()
 #endif
 
 			NetworkAddress address(client_addr, client_len);
-			p.PrepareToRead();
 
 			/* If the size does not match the packet must be corrupted.
 			 * Otherwise it will be marked as corrupted later on. */
-			if (nbytes != p.size) {
+			if (!p.ParsePacketSize() || nbytes != p.size) {
 				DEBUG(net, 1, "received a packet with mismatching size from %s", address.GetAddressAsString().c_str());
 				continue;
 			}
+			p.PrepareToRead();
 
 			/* Handle the packet */
 			this->HandleUDPPacket(&p, &address);

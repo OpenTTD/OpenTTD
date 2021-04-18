@@ -71,7 +71,8 @@ public:
 	void Send_string(const char *data);
 
 	/* Reading/receiving of packets */
-	void ReadRawPacketSize();
+	bool HasPacketSizeData() const;
+	bool ParsePacketSize();
 	void PrepareToRead();
 
 	bool   CanReadFromPacket (uint bytes_to_read);

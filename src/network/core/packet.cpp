@@ -181,13 +181,32 @@ bool Packet::CanReadFromPacket(uint bytes_to_read)
 }
 
 /**
- * Reads the packet size from the raw packet and stores it in the packet->size
+ * Check whether the packet, given the position of the "write" pointer, has read
+ * enough of the packet to contain its size.
+ * @return True iff there is enough data in the packet to contain the packet's size.
  */
-void Packet::ReadRawPacketSize()
+bool Packet::HasPacketSizeData() const
+{
+	return this->pos >= sizeof(PacketSize);
+}
+
+/**
+ * Reads the packet size from the raw packet and stores it in the packet->size
+ * @return True iff the packet size seems plausible.
+ */
+bool Packet::ParsePacketSize()
 {
 	assert(this->cs != nullptr && this->next == nullptr);
 	this->size  = (PacketSize)this->buffer[0];
 	this->size += (PacketSize)this->buffer[1] << 8;
+
+	/* If the size of the packet is less than the bytes required for the size and type of
+	 * the packet, or more than the allowed limit, then something is wrong with the packet.
+	 * In those cases the packet can generally be regarded as containing garbage data. */
+	if (this->size < sizeof(PacketSize) + sizeof(PacketType) || this->size > SEND_MTU) return false;
+
+	this->pos = sizeof(PacketSize);
+	return true;
 }
 
 /**
@@ -195,8 +214,6 @@ void Packet::ReadRawPacketSize()
  */
 void Packet::PrepareToRead()
 {
-	this->ReadRawPacketSize();
-
 	/* Put the position on the right place */
 	this->pos = sizeof(PacketSize);
 }
