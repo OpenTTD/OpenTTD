@@ -571,8 +571,8 @@ Company *DoStartupNewCompany(bool is_ai, CompanyID company = INVALID_COMPANY)
 	GeneratePresidentName(c);
 
 	SetWindowDirty(WC_GRAPH_LEGEND, 0);
-	SetWindowClassesDirty(WC_CLIENT_LIST_POPUP);
-	SetWindowDirty(WC_CLIENT_LIST, 0);
+	InvalidateWindowClassesData(WC_CLIENT_LIST_POPUP);
+	InvalidateWindowData(WC_CLIENT_LIST, 0);
 	InvalidateWindowData(WC_LINKGRAPH_LEGEND, 0);
 	BuildOwnerLegend();
 	InvalidateWindowData(WC_SMALLMAP, 0, 1);

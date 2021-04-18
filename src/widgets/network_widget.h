@@ -96,7 +96,16 @@ enum NetworkLobbyWidgets {
 
 /** Widgets of the #NetworkClientListWindow class. */
 enum ClientListWidgets {
-	WID_CL_PANEL, ///< Panel of the window.
+	WID_CL_PANEL,                      ///< Panel of the window.
+	WID_CL_SERVER_SELECTOR,            ///< Selector to hide the server frame.
+	WID_CL_SERVER_NAME,                ///< Server name.
+	WID_CL_SERVER_NAME_EDIT,           ///< Edit button for server name.
+	WID_CL_SERVER_VISIBILITY,          ///< Server visibility.
+	WID_CL_CLIENT_NAME,                ///< Client name.
+	WID_CL_CLIENT_NAME_EDIT,           ///< Edit button for client name.
+	WID_CL_MATRIX,                     ///< Company/client list.
+	WID_CL_SCROLLBAR,                  ///< Scrollbar for company/client list.
+	WID_CL_COMPANY_JOIN,               ///< Used for QueryWindow when a company has a password.
 };
 
 /** Widgets of the #NetworkClientListPopupWindow class. */

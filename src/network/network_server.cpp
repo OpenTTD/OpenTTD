@@ -288,12 +288,13 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	_network_clients_connected--;
 
 	DeleteWindowById(WC_CLIENT_LIST_POPUP, this->client_id);
-	SetWindowDirty(WC_CLIENT_LIST, 0);
 
 	this->SendPackets(true);
 
 	delete this->GetInfo();
 	delete this;
+
+	InvalidateWindowData(WC_CLIENT_LIST, 0);
 
 	return status;
 }
@@ -1043,6 +1044,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet *
 		this->GetClientName(client_name, lastof(client_name));
 
 		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, client_name, nullptr, this->client_id);
+		InvalidateWindowData(WC_CLIENT_LIST, 0);
 
 		/* Mark the client as pre-active, and wait for an ACK
 		 *  so we know he is done loading and in sync with us */
@@ -2061,6 +2063,9 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 
 	NetworkAction action = (company_id == COMPANY_SPECTATOR) ? NETWORK_ACTION_COMPANY_SPECTATOR : NETWORK_ACTION_COMPANY_JOIN;
 	NetworkServerSendChat(action, DESTTYPE_BROADCAST, 0, "", client_id, company_id + 1);
+
+	InvalidateWindowClassesData(WC_CLIENT_LIST_POPUP);
+	InvalidateWindowData(WC_CLIENT_LIST, 0);
 }
 
 /**
