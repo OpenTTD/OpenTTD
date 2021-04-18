@@ -17,17 +17,24 @@
 #include "../../safeguards.h"
 
 /**
- * Create a packet that is used to read from a network socket
- * @param cs the socket handler associated with the socket we are reading from
+ * Create a packet that is used to read from a network socket.
+ * @param cs                The socket handler associated with the socket we are reading from.
+ * @param initial_read_size The initial amount of data to transfer from the socket into the
+ *                          packet. This defaults to just the required bytes to determine the
+ *                          packet's size. That default is the wanted for streams such as TCP
+ *                          as you do not want to read data of the next packet yet. For UDP
+ *                          you need to read the whole packet at once otherwise you might
+ *                          loose some the data of the packet, so there you pass the maximum
+ *                          size for the packet you expect from the network.
  */
-Packet::Packet(NetworkSocketHandler *cs)
+Packet::Packet(NetworkSocketHandler *cs, size_t initial_read_size)
 {
 	assert(cs != nullptr);
 
 	this->cs     = cs;
 	this->next   = nullptr;
 	this->pos    = 0; // We start reading from here
-	this->size   = 0;
+	this->size   = static_cast<int>(initial_read_size);
 	this->buffer = MallocT<byte>(SEND_MTU);
 }
 
@@ -335,4 +342,13 @@ void Packet::Recv_string(char *buffer, size_t size, StringValidationSettings set
 	this->pos = pos;
 
 	str_validate(bufp, last, settings);
+}
+
+/**
+ * Get the amount of bytes that are still available for the Transfer functions.
+ * @return The number of bytes that still have to be transfered.
+ */
+size_t Packet::RemainingBytesToTransfer() const
+{
+	return this->size - this->pos;
 }
