@@ -459,6 +459,18 @@ static bool GunzipFile(const ContentInfo *ci)
 #endif /* defined(WITH_ZLIB) */
 }
 
+/**
+ * Simple wrapper around fwrite to be able to pass it to Packet's TransferOut.
+ * @param file   The file to write data to.
+ * @param buffer The buffer to write to the file.
+ * @param amount The number of bytes to write.
+ * @return The number of bytes that were written.
+ */
+static inline ssize_t TransferOutFWrite(FILE *file, const char *buffer, size_t amount)
+{
+	return fwrite(buffer, 1, amount, file);
+}
+
 bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 {
 	if (this->curFile == nullptr) {
@@ -476,8 +488,8 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 		}
 	} else {
 		/* We have a file opened, thus are downloading internal content */
-		size_t toRead = (size_t)(p->size - p->pos);
-		if (fwrite(p->buffer + p->pos, 1, toRead, this->curFile) != toRead) {
+		size_t toRead = p->RemainingBytesToTransfer();
+		if (toRead != 0 && (size_t)p->TransferOut(TransferOutFWrite, this->curFile) != toRead) {
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			this->Close();

@@ -35,7 +35,6 @@
 
 /* This file handles all the client-commands */
 
-
 /** Read some packets, and when do use that data as initial load filter. */
 struct PacketReader : LoadFilter {
 	static const size_t CHUNK = 32 * 1024;  ///< 32 KiB chunks of memory.
@@ -60,34 +59,37 @@ struct PacketReader : LoadFilter {
 	}
 
 	/**
+	 * Simple wrapper around fwrite to be able to pass it to Packet's TransferOut.
+	 * @param destination The reader to add the data to.
+	 * @param source      The buffer to read data from.
+	 * @param amount      The number of bytes to copy.
+	 * @return The number of bytes that were copied.
+	 */
+	static inline ssize_t TransferOutMemCopy(PacketReader *destination, const char *source, size_t amount)
+	{
+		memcpy(destination->buf, source, amount);
+		destination->buf += amount;
+		destination->written_bytes += amount;
+		return amount;
+	}
+
+	/**
 	 * Add a packet to this buffer.
 	 * @param p The packet to add.
 	 */
-	void AddPacket(const Packet *p)
+	void AddPacket(Packet *p)
 	{
 		assert(this->read_bytes == 0);
-
-		size_t in_packet = p->size - p->pos;
-		size_t to_write  = std::min<size_t>(this->bufe - this->buf, in_packet);
-		const byte *pbuf = p->buffer + p->pos;
-
-		this->written_bytes += in_packet;
-		if (to_write != 0) {
-			memcpy(this->buf, pbuf, to_write);
-			this->buf += to_write;
-		}
+		p->TransferOutWithLimit(TransferOutMemCopy, this->bufe - this->buf, this);
 
 		/* Did everything fit in the current chunk, then we're done. */
-		if (to_write == in_packet) return;
+		if (p->RemainingBytesToTransfer() == 0) return;
 
 		/* Allocate a new chunk and add the remaining data. */
-		pbuf += to_write;
-		to_write   = in_packet - to_write;
 		this->blocks.push_back(this->buf = CallocT<byte>(CHUNK));
 		this->bufe = this->buf + CHUNK;
 
-		memcpy(this->buf, pbuf, to_write);
-		this->buf += to_write;
+		p->TransferOutWithLimit(TransferOutMemCopy, this->bufe - this->buf, this);
 	}
 
 	size_t Read(byte *rbuf, size_t size) override
