@@ -31,7 +31,21 @@ static const uint16 NETWORK_ADMIN_PORT            = 3977;         ///< The defau
 static const uint16 NETWORK_DEFAULT_DEBUGLOG_PORT = 3982;         ///< The default port debug-log is sent to (TCP)
 
 static const uint16 UDP_MTU                       = 1460;         ///< Number of bytes we can pack in a single UDP packet
-static const uint16 TCP_MTU                       = 1460;         ///< Number of bytes we can pack in a single TCP packet
+/*
+ * Technically a TCP packet could become 64kiB, however the high bit is kept so it becomes possible in the future
+ * to go to (significantly) larger packets if needed. This would entail a strategy such as employed for UTF-8.
+ *
+ * Packets up to 32 KiB have the high bit not set:
+ * 00000000 00000000 0bbbbbbb aaaaaaaa -> aaaaaaaa 0bbbbbbb
+ * Send_uint16(GB(size, 0, 15)
+ *
+ * Packets up to 1 GiB, first uint16 has high bit set so it knows to read a
+ * next uint16 for the remaining bits of the size.
+ * 00dddddd cccccccc bbbbbbbb aaaaaaaa -> cccccccc 10dddddd aaaaaaaa bbbbbbbb
+ * Send_uint16(GB(size, 16, 14) | 0b10 << 14)
+ * Send_uint16(GB(size,  0, 16))
+ */
+static const uint16 TCP_MTU                       = 32767;        ///< Number of bytes we can pack in a single TCP packet
 static const uint16 COMPAT_MTU                    = 1460;         ///< Number of bytes we can pack in a single packet for backward compatibility
 
 static const byte NETWORK_GAME_ADMIN_VERSION      =    1;         ///< What version of the admin network do we use?
