@@ -73,6 +73,11 @@ void Packet::PrepareToSend()
 	this->buffer[1] = GB(this->size, 8, 8);
 
 	this->pos  = 0; // We start reading from here
+
+	/* Reallocate the packet as in 99+% of the times we send at most 25 bytes and
+	 * keeping the other 1400+ bytes wastes memory, especially when someone tries
+	 * to do a denial of service attack! */
+	this->buffer = ReallocT(this->buffer, this->size);
 }
 
 /**
