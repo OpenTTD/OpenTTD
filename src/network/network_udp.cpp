@@ -256,10 +256,10 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_DETAIL_INFO(Packet *p, Networ
 /**
  * A client has requested the names of some NewGRFs.
  *
- * Replying this can be tricky as we have a limit of SEND_MTU bytes
+ * Replying this can be tricky as we have a limit of UDP_MTU bytes
  * in the reply packet and we can send up to 100 bytes per NewGRF
  * (GRF ID, MD5sum and NETWORK_GRF_NAME_LENGTH bytes for the name).
- * As SEND_MTU is _much_ less than 100 * NETWORK_MAX_GRF_COUNT, it
+ * As UDP_MTU is _much_ less than 100 * NETWORK_MAX_GRF_COUNT, it
  * could be that a packet overflows. To stop this we only reply
  * with the first N NewGRFs so that if the first N + 1 NewGRFs
  * would be sent, the packet overflows.
@@ -295,7 +295,7 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_GET_NEWGRFS(Packet *p, Networ
 		 * The name could be an empty string, if so take the filename. */
 		packet_len += sizeof(c.grfid) + sizeof(c.md5sum) +
 				std::min(strlen(f->GetName()) + 1, (size_t)NETWORK_GRF_NAME_LENGTH);
-		if (packet_len > SEND_MTU - 4) { // 4 is 3 byte header + grf count in reply
+		if (packet_len > UDP_MTU - 4) { // 4 is 3 byte header + grf count in reply
 			break;
 		}
 		in_reply[in_reply_count] = f;

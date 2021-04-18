@@ -119,8 +119,8 @@ void NetworkUDPSocketHandler::ReceivePackets()
 			struct sockaddr_storage client_addr;
 			memset(&client_addr, 0, sizeof(client_addr));
 
-			/* The limit is SEND_MTU, but also allocate that much as we need to read the whole packet in one go. */
-			Packet p(this, SEND_MTU, SEND_MTU);
+			/* The limit is UDP_MTU, but also allocate that much as we need to read the whole packet in one go. */
+			Packet p(this, UDP_MTU, UDP_MTU);
 			socklen_t client_len = sizeof(client_addr);
 
 			/* Try to receive anything */
