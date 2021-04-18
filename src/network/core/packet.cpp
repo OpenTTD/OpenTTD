@@ -27,39 +27,23 @@
  *                          loose some the data of the packet, so there you pass the maximum
  *                          size for the packet you expect from the network.
  */
-Packet::Packet(NetworkSocketHandler *cs, size_t initial_read_size)
+Packet::Packet(NetworkSocketHandler *cs, size_t initial_read_size) : next(nullptr), pos(0)
 {
 	assert(cs != nullptr);
 
-	this->cs     = cs;
-	this->next   = nullptr;
-	this->pos    = 0; // We start reading from here
-	this->size   = static_cast<int>(initial_read_size);
-	this->buffer = MallocT<byte>(SEND_MTU);
+	this->cs = cs;
+	this->buffer.resize(initial_read_size);
 }
 
 /**
  * Creates a packet to send
  * @param type of the packet to send
  */
-Packet::Packet(PacketType type)
+Packet::Packet(PacketType type) : next(nullptr), pos(0), cs(nullptr)
 {
-	this->cs                   = nullptr;
-	this->next                 = nullptr;
-
-	/* Skip the size so we can write that in before sending the packet */
-	this->pos                  = 0;
-	this->size                 = sizeof(PacketSize);
-	this->buffer               = MallocT<byte>(SEND_MTU);
-	this->buffer[this->size++] = type;
-}
-
-/**
- * Free the buffer of this packet.
- */
-Packet::~Packet()
-{
-	free(this->buffer);
+	/* Allocate space for the the size so we can write that in just before sending the packet. */
+	this->Send_uint16(0);
+	this->Send_uint8(type);
 }
 
 /**
@@ -95,15 +79,11 @@ void Packet::PrepareToSend()
 {
 	assert(this->cs == nullptr && this->next == nullptr);
 
-	this->buffer[0] = GB(this->size, 0, 8);
-	this->buffer[1] = GB(this->size, 8, 8);
+	this->buffer[0] = GB(this->Size(), 0, 8);
+	this->buffer[1] = GB(this->Size(), 8, 8);
 
 	this->pos  = 0; // We start reading from here
-
-	/* Reallocate the packet as in 99+% of the times we send at most 25 bytes and
-	 * keeping the other 1400+ bytes wastes memory, especially when someone tries
-	 * to do a denial of service attack! */
-	this->buffer = ReallocT(this->buffer, this->size);
+	this->buffer.shrink_to_fit();
 }
 
 /**
@@ -113,7 +93,7 @@ void Packet::PrepareToSend()
  */
 bool Packet::CanWriteToPacket(size_t bytes_to_write)
 {
-	return this->size + bytes_to_write < SEND_MTU;
+	return this->Size() + bytes_to_write < SEND_MTU;
 }
 
 /*
@@ -144,7 +124,7 @@ void Packet::Send_bool(bool data)
 void Packet::Send_uint8(uint8 data)
 {
 	assert(this->CanWriteToPacket(sizeof(data)));
-	this->buffer[this->size++] = data;
+	this->buffer.emplace_back(data);
 }
 
 /**
@@ -154,8 +134,8 @@ void Packet::Send_uint8(uint8 data)
 void Packet::Send_uint16(uint16 data)
 {
 	assert(this->CanWriteToPacket(sizeof(data)));
-	this->buffer[this->size++] = GB(data, 0, 8);
-	this->buffer[this->size++] = GB(data, 8, 8);
+	this->buffer.emplace_back(GB(data, 0, 8));
+	this->buffer.emplace_back(GB(data, 8, 8));
 }
 
 /**
@@ -165,10 +145,10 @@ void Packet::Send_uint16(uint16 data)
 void Packet::Send_uint32(uint32 data)
 {
 	assert(this->CanWriteToPacket(sizeof(data)));
-	this->buffer[this->size++] = GB(data,  0, 8);
-	this->buffer[this->size++] = GB(data,  8, 8);
-	this->buffer[this->size++] = GB(data, 16, 8);
-	this->buffer[this->size++] = GB(data, 24, 8);
+	this->buffer.emplace_back(GB(data,  0, 8));
+	this->buffer.emplace_back(GB(data,  8, 8));
+	this->buffer.emplace_back(GB(data, 16, 8));
+	this->buffer.emplace_back(GB(data, 24, 8));
 }
 
 /**
@@ -178,14 +158,14 @@ void Packet::Send_uint32(uint32 data)
 void Packet::Send_uint64(uint64 data)
 {
 	assert(this->CanWriteToPacket(sizeof(data)));
-	this->buffer[this->size++] = GB(data,  0, 8);
-	this->buffer[this->size++] = GB(data,  8, 8);
-	this->buffer[this->size++] = GB(data, 16, 8);
-	this->buffer[this->size++] = GB(data, 24, 8);
-	this->buffer[this->size++] = GB(data, 32, 8);
-	this->buffer[this->size++] = GB(data, 40, 8);
-	this->buffer[this->size++] = GB(data, 48, 8);
-	this->buffer[this->size++] = GB(data, 56, 8);
+	this->buffer.emplace_back(GB(data,  0, 8));
+	this->buffer.emplace_back(GB(data,  8, 8));
+	this->buffer.emplace_back(GB(data, 16, 8));
+	this->buffer.emplace_back(GB(data, 24, 8));
+	this->buffer.emplace_back(GB(data, 32, 8));
+	this->buffer.emplace_back(GB(data, 40, 8));
+	this->buffer.emplace_back(GB(data, 48, 8));
+	this->buffer.emplace_back(GB(data, 56, 8));
 }
 
 /**
@@ -198,7 +178,7 @@ void Packet::Send_string(const char *data)
 	assert(data != nullptr);
 	/* Length of the string + 1 for the '\0' termination. */
 	assert(this->CanWriteToPacket(strlen(data) + 1));
-	while ((this->buffer[this->size++] = *data++) != '\0') {}
+	while (this->buffer.emplace_back(*data++) != '\0') {}
 }
 
 /**
@@ -211,9 +191,8 @@ void Packet::Send_string(const char *data)
  */
 size_t Packet::Send_bytes(const byte *begin, const byte *end)
 {
-	size_t amount = std::min<size_t>(end - begin, SEND_MTU - this->size);
-	memcpy(this->buffer + this->size, begin, amount);
-	this->size += static_cast<PacketSize>(amount);
+	size_t amount = std::min<size_t>(end - begin, SEND_MTU - this->Size());
+	this->buffer.insert(this->buffer.end(), begin, begin + amount);
 	return amount;
 }
 
@@ -238,7 +217,7 @@ bool Packet::CanReadFromPacket(size_t bytes_to_read, bool close_connection)
 	if (this->cs->HasClientQuit()) return false;
 
 	/* Check if variable is within packet-size */
-	if (this->pos + bytes_to_read > this->size) {
+	if (this->pos + bytes_to_read > this->Size()) {
 		if (close_connection) this->cs->NetworkSocketHandler::CloseConnection();
 		return false;
 	}
@@ -265,7 +244,7 @@ bool Packet::HasPacketSizeData() const
  */
 size_t Packet::Size() const
 {
-	return this->size;
+	return this->buffer.size();
 }
 
 /**
@@ -275,14 +254,15 @@ size_t Packet::Size() const
 bool Packet::ParsePacketSize()
 {
 	assert(this->cs != nullptr && this->next == nullptr);
-	this->size  = (PacketSize)this->buffer[0];
-	this->size += (PacketSize)this->buffer[1] << 8;
+	size_t size = (size_t)this->buffer[0];
+	size       += (size_t)this->buffer[1] << 8;
 
 	/* If the size of the packet is less than the bytes required for the size and type of
 	 * the packet, or more than the allowed limit, then something is wrong with the packet.
 	 * In those cases the packet can generally be regarded as containing garbage data. */
-	if (this->size < sizeof(PacketSize) + sizeof(PacketType) || this->size > SEND_MTU) return false;
+	if (size < sizeof(PacketSize) + sizeof(PacketType) || size > SEND_MTU) return false;
 
+	this->buffer.resize(size);
 	this->pos = sizeof(PacketSize);
 	return true;
 }
@@ -398,13 +378,13 @@ void Packet::Recv_string(char *buffer, size_t size, StringValidationSettings set
 	if (cs->HasClientQuit()) return;
 
 	pos = this->pos;
-	while (--size > 0 && pos < this->size && (*buffer++ = this->buffer[pos++]) != '\0') {}
+	while (--size > 0 && pos < this->Size() && (*buffer++ = this->buffer[pos++]) != '\0') {}
 
-	if (size == 0 || pos == this->size) {
+	if (size == 0 || pos == this->Size()) {
 		*buffer = '\0';
 		/* If size was sooner to zero then the string in the stream
 		 *  skip till the \0, so than packet can be read out correctly for the rest */
-		while (pos < this->size && this->buffer[pos] != '\0') pos++;
+		while (pos < this->Size() && this->buffer[pos] != '\0') pos++;
 		pos++;
 	}
 	this->pos = pos;
@@ -418,5 +398,5 @@ void Packet::Recv_string(char *buffer, size_t size, StringValidationSettings set
  */
 size_t Packet::RemainingBytesToTransfer() const
 {
-	return this->size - this->pos;
+	return this->Size() - this->pos;
 }

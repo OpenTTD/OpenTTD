@@ -43,23 +43,17 @@ struct Packet {
 private:
 	/** The next packet. Used for queueing packets before sending. */
 	Packet *next;
-	/**
-	 * The size of the whole packet for received packets. For packets
-	 * that will be sent, the value is filled in just before the
-	 * actual transmission.
-	 */
-	PacketSize size;
 	/** The current read/write position in the packet */
 	PacketSize pos;
-	/** The buffer of this packet, of basically variable length up to SEND_MTU. */
-	byte *buffer;
+	/** The buffer of this packet. */
+	std::vector<byte> buffer;
+
 	/** Socket we're associated with. */
 	NetworkSocketHandler *cs;
 
 public:
 	Packet(NetworkSocketHandler *cs, size_t initial_read_size = sizeof(PacketSize));
 	Packet(PacketType type);
-	~Packet();
 
 	static void AddToQueue(Packet **queue, Packet *packet);
 	static Packet *PopFromQueue(Packet **queue);
@@ -118,7 +112,7 @@ public:
 		assert(this->pos < this->buffer.size());
 		assert(this->pos + amount <= this->buffer.size());
 		/* Making buffer a char means casting a lot in the Recv/Send functions. */
-		const char *output_buffer = reinterpret_cast<const char*>(this->buffer + this->pos);
+		const char *output_buffer = reinterpret_cast<const char*>(this->buffer.data() + this->pos);
 		ssize_t bytes = transfer_function(destination, output_buffer, static_cast<A>(amount), std::forward<Args>(args)...);
 		if (bytes > 0) this->pos += bytes;
 		return bytes;
@@ -183,7 +177,7 @@ public:
 		assert(this->pos < this->buffer.size());
 		assert(this->pos + amount <= this->buffer.size());
 		/* Making buffer a char means casting a lot in the Recv/Send functions. */
-		char *input_buffer = reinterpret_cast<char*>(this->buffer + this->pos);
+		char *input_buffer = reinterpret_cast<char*>(this->buffer.data() + this->pos);
 		ssize_t bytes = transfer_function(source, input_buffer, static_cast<A>(amount), std::forward<Args>(args)...);
 		if (bytes > 0) this->pos += bytes;
 		return bytes;
