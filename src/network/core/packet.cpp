@@ -175,6 +175,21 @@ void Packet::Send_string(const char *data)
 	while ((this->buffer[this->size++] = *data++) != '\0') {}
 }
 
+/**
+ * Send as many of the bytes as possible in the packet. This can mean
+ * that it is possible that not all bytes are sent. To cope with this
+ * the function returns the amount of bytes that were actually sent.
+ * @param begin The begin of the buffer to send.
+ * @param end   The end of the buffer to send.
+ * @return The number of bytes that were added to this packet.
+ */
+size_t Packet::Send_bytes(const byte *begin, const byte *end)
+{
+	size_t amount = std::min<size_t>(end - begin, SEND_MTU - this->size);
+	memcpy(this->buffer + this->size, begin, amount);
+	this->size += static_cast<PacketSize>(amount);
+	return amount;
+}
 
 /*
  * Receiving commands
