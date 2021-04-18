@@ -220,23 +220,23 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_DETAIL_INFO(Packet *p, Networ
 	static const uint MIN_CI_SIZE = 54;
 	uint max_cname_length = NETWORK_COMPANY_NAME_LENGTH;
 
-	if (Company::GetNumItems() * (MIN_CI_SIZE + NETWORK_COMPANY_NAME_LENGTH) >= (uint)SEND_MTU - packet.size) {
+	if (!packet.CanWriteToPacket(Company::GetNumItems() * (MIN_CI_SIZE + NETWORK_COMPANY_NAME_LENGTH))) {
 		/* Assume we can at least put the company information in the packets. */
-		assert(Company::GetNumItems() * MIN_CI_SIZE < (uint)SEND_MTU - packet.size);
+		assert(packet.CanWriteToPacket(Company::GetNumItems() * MIN_CI_SIZE));
 
 		/* At this moment the company names might not fit in the
 		 * packet. Check whether that is really the case. */
 
 		for (;;) {
-			int free = SEND_MTU - packet.size;
+			size_t required = 0;
 			for (const Company *company : Company::Iterate()) {
 				char company_name[NETWORK_COMPANY_NAME_LENGTH];
 				SetDParam(0, company->index);
 				GetString(company_name, STR_COMPANY_NAME, company_name + max_cname_length - 1);
-				free -= MIN_CI_SIZE;
-				free -= (int)strlen(company_name);
+				required += MIN_CI_SIZE;
+				required += strlen(company_name);
 			}
-			if (free >= 0) break;
+			if (packet.CanWriteToPacket(required)) break;
 
 			/* Try again, with slightly shorter strings. */
 			assert(max_cname_length > 0);

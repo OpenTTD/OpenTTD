@@ -928,7 +928,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FRAME(Packet *p
 	}
 #endif
 	/* Receive the token. */
-	if (p->pos != p->size) this->token = p->Recv_uint8();
+	if (p->CanReadFromPacket(sizeof(uint8))) this->token = p->Recv_uint8();
 
 	DEBUG(net, 5, "Received FRAME %d", _frame_counter_server);
 
