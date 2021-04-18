@@ -66,8 +66,8 @@ void UpdateNetworkGameWindow()
 }
 
 typedef GUIList<NetworkGameList*, StringFilter&> GUIGameServerList;
-typedef uint16 ServerListPosition;
-static const ServerListPosition SLP_INVALID = 0xFFFF;
+typedef int ServerListPosition;
+static const ServerListPosition SLP_INVALID = -1;
 
 /** Full blown container to make it behave exactly as we want :) */
 class NWidgetServerListHeader : public NWidgetContainer {
@@ -771,39 +771,8 @@ public:
 		EventState state = ES_NOT_HANDLED;
 
 		/* handle up, down, pageup, pagedown, home and end */
-		if (keycode == WKC_UP || keycode == WKC_DOWN || keycode == WKC_PAGEUP || keycode == WKC_PAGEDOWN || keycode == WKC_HOME || keycode == WKC_END) {
-			if (this->servers.size() == 0) return ES_HANDLED;
-			switch (keycode) {
-				case WKC_UP:
-					/* scroll up by one */
-					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
-					if (this->list_pos > 0) this->list_pos--;
-					break;
-				case WKC_DOWN:
-					/* scroll down by one */
-					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
-					if (this->list_pos < this->servers.size() - 1) this->list_pos++;
-					break;
-				case WKC_PAGEUP:
-					/* scroll up a page */
-					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
-					this->list_pos = (this->list_pos < this->vscroll->GetCapacity()) ? 0 : this->list_pos - this->vscroll->GetCapacity();
-					break;
-				case WKC_PAGEDOWN:
-					/* scroll down a page */
-					if (this->list_pos == SLP_INVALID) return ES_HANDLED;
-					this->list_pos = std::min(this->list_pos + this->vscroll->GetCapacity(), (int)this->servers.size() - 1);
-					break;
-				case WKC_HOME:
-					/* jump to beginning */
-					this->list_pos = 0;
-					break;
-				case WKC_END:
-					/* jump to end */
-					this->list_pos = (ServerListPosition)this->servers.size() - 1;
-					break;
-				default: NOT_REACHED();
-			}
+		if (this->vscroll->UpdateListPositionOnKeyPress(this->list_pos, keycode) == ES_HANDLED) {
+			if (this->list_pos == SLP_INVALID) return ES_HANDLED;
 
 			this->server = this->servers[this->list_pos];
 

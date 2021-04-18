@@ -1318,42 +1318,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 	{
 		if (!this->editable) return ES_NOT_HANDLED;
 
-		switch (keycode) {
-			case WKC_UP:
-				/* scroll up by one */
-				if (this->avail_pos > 0) this->avail_pos--;
-				break;
+		if (this->vscroll2->UpdateListPositionOnKeyPress(this->avail_pos, keycode) == ES_NOT_HANDLED) return ES_NOT_HANDLED;
 
-			case WKC_DOWN:
-				/* scroll down by one */
-				if (this->avail_pos < (int)this->avails.size() - 1) this->avail_pos++;
-				break;
-
-			case WKC_PAGEUP:
-				/* scroll up a page */
-				this->avail_pos = (this->avail_pos < this->vscroll2->GetCapacity()) ? 0 : this->avail_pos - this->vscroll2->GetCapacity();
-				break;
-
-			case WKC_PAGEDOWN:
-				/* scroll down a page */
-				this->avail_pos = std::min(this->avail_pos + this->vscroll2->GetCapacity(), (int)this->avails.size() - 1);
-				break;
-
-			case WKC_HOME:
-				/* jump to beginning */
-				this->avail_pos = 0;
-				break;
-
-			case WKC_END:
-				/* jump to end */
-				this->avail_pos = (uint)this->avails.size() - 1;
-				break;
-
-			default:
-				return ES_NOT_HANDLED;
-		}
-
-		if (this->avails.size() == 0) this->avail_pos = -1;
 		if (this->avail_pos >= 0) {
 			this->active_sel = nullptr;
 			DeleteWindowByClass(WC_GRF_PARAMETERS);
