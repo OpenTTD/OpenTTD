@@ -25,10 +25,11 @@ typedef uint8  PacketType; ///< Identifier for the packet
  * Internal entity of a packet. As everything is sent as a packet,
  * all network communication will need to call the functions that
  * populate the packet.
- * Every packet can be at most SEND_MTU bytes. Overflowing this
- * limit will give an assertion when sending (i.e. writing) the
- * packet. Reading past the size of the packet when receiving
- * will return all 0 values and "" in case of the string.
+ * Every packet can be at most a limited number bytes set in the
+ * constructor. Overflowing this limit will give an assertion when
+ * sending (i.e. writing) the packet. Reading past the size of the
+ * packet when receiving will return all 0 values and "" in case of
+ * the string.
  *
  * --- Points of attention ---
  *  - all > 1 byte integral values are written in little endian,
@@ -47,13 +48,15 @@ private:
 	PacketSize pos;
 	/** The buffer of this packet. */
 	std::vector<byte> buffer;
+	/** The limit for the packet size. */
+	size_t limit;
 
 	/** Socket we're associated with. */
 	NetworkSocketHandler *cs;
 
 public:
-	Packet(NetworkSocketHandler *cs, size_t initial_read_size = sizeof(PacketSize));
-	Packet(PacketType type);
+	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = sizeof(PacketSize));
+	Packet(PacketType type, size_t limit = SEND_MTU);
 
 	static void AddToQueue(Packet **queue, Packet *packet);
 	static Packet *PopFromQueue(Packet **queue);
