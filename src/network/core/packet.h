@@ -56,7 +56,7 @@ private:
 
 public:
 	Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size = sizeof(PacketSize));
-	Packet(PacketType type, size_t limit = SEND_MTU);
+	Packet(PacketType type, size_t limit = COMPAT_MTU);
 
 	static void AddToQueue(Packet **queue, Packet *packet);
 	static Packet *PopFromQueue(Packet **queue);

@@ -39,7 +39,7 @@ Packet::Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size)
 /**
  * Creates a packet to send
  * @param type  The type of the packet to send
- * @param limit The maximum number of bytes the packet may have. Default is SEND_MTU.
+ * @param limit The maximum number of bytes the packet may have. Default is COMPAT_MTU.
  *              Be careful of compatibility with older clients/servers when changing
  *              the limit as it might break things if the other side is not expecting
  *              much larger packets than what they support.

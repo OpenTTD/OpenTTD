@@ -126,7 +126,7 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 	if (!this->IsConnected()) return nullptr;
 
 	if (this->packet_recv == nullptr) {
-		this->packet_recv = new Packet(this, SEND_MTU);
+		this->packet_recv = new Packet(this, TCP_MTU);
 	}
 
 	Packet *p = this->packet_recv;
