@@ -30,7 +30,9 @@ install(DIRECTORY
                 ${CMAKE_BINARY_DIR}/game
                 ${CMAKE_SOURCE_DIR}/bin/scripts
         DESTINATION ${DATA_DESTINATION_DIR}
-        COMPONENT language_files)
+        COMPONENT language_files
+        REGEX "ai/[^\.]+$" EXCLUDE # Ignore subdirs in ai dir
+)
 
 install(FILES
                 ${CMAKE_SOURCE_DIR}/COPYING.md
