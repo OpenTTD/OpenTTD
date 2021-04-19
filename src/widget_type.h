@@ -89,6 +89,7 @@ enum WidgetType {
 	WPT_DATATIP,      ///< Widget part for specifying data and tooltip.
 	WPT_PADDING,      ///< Widget part for specifying a padding.
 	WPT_PIPSPACE,     ///< Widget part for specifying pre/inter/post space for containers.
+	WPT_TEXTCOLOUR,   ///< Widget part for specifying text colour.
 	WPT_ALIGNMENT,    ///< Widget part for specifying text/image alignment.
 	WPT_ENDCONTAINER, ///< Widget part to denote end of a container.
 	WPT_FUNCTION,     ///< Widget part for calling a user function.
@@ -297,6 +298,7 @@ public:
 	void SetIndex(int index);
 	void SetDataTip(uint32 widget_data, StringID tool_tip);
 	void SetToolTip(StringID tool_tip);
+	void SetTextColour(TextColour colour);
 	void SetAlignment(StringAlignment align);
 
 	inline void SetLowered(bool lowered);
@@ -317,6 +319,7 @@ public:
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
 	int scrollbar_index;       ///< Index of an attached scrollbar.
 	TextColour highlight_colour; ///< Colour of highlight.
+	TextColour text_colour;    ///< Colour of text within widget.
 	StringAlignment align;     ///< Alignment of text/image within widget.
 };
 
@@ -909,6 +912,14 @@ struct NWidgetPartTextLines {
 };
 
 /**
+ * Widget part for storing text colour.
+ * @ingroup NestedWidgetParts
+ */
+struct NWidgetPartTextColour {
+	TextColour colour; ///< TextColour for DrawString.
+};
+
+/**
  * Widget part for setting text/image alignment within a widget.
  * @ingroup NestedWidgetParts
  */
@@ -937,6 +948,7 @@ struct NWidgetPart {
 		NWidgetPartPaddings padding;     ///< Part with paddings.
 		NWidgetPartPIP pip;              ///< Part with pre/inter/post spaces.
 		NWidgetPartTextLines text_lines; ///< Part with text line data.
+		NWidgetPartTextColour colour;    ///< Part with text colour data.
 		NWidgetPartAlignment align;      ///< Part with internal alignment.
 		NWidgetFunctionType *func_ptr;   ///< Part with a function call.
 		NWidContainerFlags cont_flags;   ///< Part with container flags.
@@ -992,6 +1004,21 @@ static inline NWidgetPart SetMinimalTextLines(uint8 lines, uint8 spacing, FontSi
 	part.u.text_lines.lines = lines;
 	part.u.text_lines.spacing = spacing;
 	part.u.text_lines.size = size;
+
+	return part;
+}
+
+/**
+ * Widget part function for setting the text colour.
+ * @param colour Colour to draw string within widget.
+ * @ingroup NestedWidgetParts
+ */
+static inline NWidgetPart SetTextColour(TextColour colour)
+{
+	NWidgetPart part;
+
+	part.type = WPT_TEXTCOLOUR;
+	part.u.colour.colour = colour;
 
 	return part;
 }
