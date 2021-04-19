@@ -257,16 +257,17 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
  * @param r       Rectangle of the label background.
  * @param type    Widget type (#WWT_TEXTBTN, #WWT_TEXTBTN_2, or #WWT_LABEL).
  * @param clicked Label is rendered lowered.
+ * @param colour  Colour of the text.
  * @param str     Text to draw.
  * @param align   Alignment of the text.
  */
-static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, StringID str, StringAlignment align)
+static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextColour colour, StringID str, StringAlignment align)
 {
 	if (str == STR_NULL) return;
 	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
 	Dimension d = GetStringBoundingBox(str);
 	Point p = GetAlignedPosition(r, d, align);
-	DrawString(r.left + clicked, r.right + clicked, p.y + clicked, str, TC_FROMSTRING, align);
+	DrawString(r.left + clicked, r.right + clicked, p.y + clicked, str, colour, align);
 }
 
 /**
@@ -285,15 +286,16 @@ static inline void DrawText(const Rect &r, TextColour colour, StringID str, Stri
 
 /**
  * Draw an inset widget.
- * @param r      Rectangle of the background.
- * @param colour Colour of the inset.
- * @param str    Text to draw.
- * @param align  Alignment of the text.
+ * @param r           Rectangle of the background.
+ * @param colour      Colour of the inset.
+ * @param text_colour Colour of the text.
+ * @param str         Text to draw.
+ * @param align       Alignment of the text.
  */
-static inline void DrawInset(const Rect &r, Colours colour, StringID str, StringAlignment align)
+static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_LOWERED | FR_DARKENED);
-	if (str != STR_NULL) DrawString(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + WD_INSET_TOP, str, TC_FROMSTRING, align);
+	if (str != STR_NULL) DrawString(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + WD_INSET_TOP, str, text_colour, align);
 }
 
 /**
@@ -434,16 +436,17 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 
 /**
  * Draw a frame widget.
- * @param r      Rectangle of the frame.
- * @param colour Colour of the frame.
- * @param str    Text of the frame.
- * @param align  Alignment of the text in the frame.
+ * @param r           Rectangle of the frame.
+ * @param colour      Colour of the frame.
+ * @param text_colour Colour of the text.
+ * @param str         Text of the frame.
+ * @param align       Alignment of the text in the frame.
  */
-static inline void DrawFrame(const Rect &r, Colours colour, StringID str, StringAlignment align)
+static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
 {
 	int x2 = r.left; // by default the left side is the left side of the widget
 
-	if (str != STR_NULL) x2 = DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top, str, TC_FROMSTRING, align);
+	if (str != STR_NULL) x2 = DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top, str, text_colour, align);
 
 	int c1 = _colour_gradient[colour][3];
 	int c2 = _colour_gradient[colour][7];
@@ -563,13 +566,14 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
 
 /**
  * Draw a caption bar.
- * @param r      Rectangle of the bar.
- * @param colour Colour of the window.
- * @param owner  'Owner' of the window.
- * @param str    Text to draw in the bar.
- * @param align  Alignment of the text.
+ * @param r           Rectangle of the bar.
+ * @param colour      Colour of the window.
+ * @param owner       'Owner' of the window.
+ * @param text_colour Colour of the text.
+ * @param str         Text to draw in the bar.
+ * @param align       Alignment of the text.
  */
-void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str, StringAlignment align)
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align)
 {
 	bool company_owned = owner < MAX_COMPANIES;
 
@@ -583,7 +587,7 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str, Strin
 	if (str != STR_NULL) {
 		Dimension d = GetStringBoundingBox(str);
 		Point p = GetAlignedPosition(r, d, align);
-		DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, p.y, str, TC_FROMSTRING, align);
+		DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, p.y, str, text_colour, align);
 	}
 }
 
@@ -908,6 +912,7 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
 	this->scrollbar_index = -1;
+	this->text_colour = TC_FROMSTRING;
 	this->align = SA_CENTER;
 }
 
@@ -930,6 +935,15 @@ void NWidgetCore::SetDataTip(uint32 widget_data, StringID tool_tip)
 {
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
+}
+
+/**
+ * Set the text colour of the nested widget.
+ * @param colour TextColour to use.
+ */
+void NWidgetCore::SetTextColour(TextColour colour)
+{
+	this->text_colour = colour;
 }
 
 /**
@@ -1905,12 +1919,12 @@ void NWidgetBackground::Draw(const Window *w)
 
 		case WWT_FRAME:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawFrame(r, this->colour, this->widget_data, this->align);
+			DrawFrame(r, this->colour, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_INSET:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawInset(r, this->colour, this->widget_data, this->align);
+			DrawInset(r, this->colour, this->text_colour, this->widget_data, this->align);
 			break;
 
 		default:
@@ -2553,7 +2567,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_TEXTBTN_2:
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawLabel(r, this->type, clicked, this->widget_data, this->align);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_ARROWBTN:
@@ -2572,12 +2586,12 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_LABEL:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawLabel(r, this->type, clicked, this->widget_data, this->align);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_TEXT:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawText(r, (TextColour)this->colour, this->widget_data, this->align);
+			DrawText(r, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_MATRIX:
@@ -2592,7 +2606,7 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_CAPTION:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawCaption(r, this->colour, w->owner, this->widget_data, this->align);
+			DrawCaption(r, this->colour, w->owner, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_SHADEBOX:
@@ -2766,6 +2780,14 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				if (nwrb != nullptr) {
 					assert(parts->u.text_lines.size >= FS_BEGIN && parts->u.text_lines.size < FS_END);
 					nwrb->SetMinimalTextLines(parts->u.text_lines.lines, parts->u.text_lines.spacing, parts->u.text_lines.size);
+				}
+				break;
+			}
+
+			case WPT_TEXTCOLOUR: {
+				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
+				if (nwc != nullptr) {
+					nwc->SetTextColour(parts->u.colour.colour);
 				}
 				break;
 			}

@@ -140,7 +140,7 @@ enum WidgetDrawDistances {
 
 /* widget.cpp */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags);
-void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str, StringAlignment align);
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align);
 
 /* window.cpp */
 extern Window *_z_front_window;
