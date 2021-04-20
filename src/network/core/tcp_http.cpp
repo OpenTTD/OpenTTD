@@ -203,10 +203,8 @@ int NetworkHTTPSocketHandler::HandleHeader()
 	*url = '\0';
 
 	/* Fetch the hostname, and possible port number. */
-	const char *company = nullptr;
 	const char *port = nullptr;
-	ParseConnectionString(&company, &port, hname);
-	if (company != nullptr) return_error("[tcp/http] invalid hostname");
+	ParseConnectionString(&port, hname);
 
 	NetworkAddress address(hname, port == nullptr ? 80 : atoi(port));
 

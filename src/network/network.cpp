@@ -447,6 +447,36 @@ static void CheckPauseOnJoin()
 }
 
 /**
+ * Converts a string to ip/port
+ *  Format: IP:port
+ *
+ * connection_string will be re-terminated to separate out the hostname, port will
+ * be set to the port strings given by the user, inside the memory area originally
+ * occupied by connection_string.
+ */
+void ParseConnectionString(const char **port, char *connection_string)
+{
+	bool ipv6 = (strchr(connection_string, ':') != strrchr(connection_string, ':'));
+	for (char *p = connection_string; *p != '\0'; p++) {
+		switch (*p) {
+			case '[':
+				ipv6 = true;
+				break;
+
+			case ']':
+				ipv6 = false;
+				break;
+
+			case ':':
+				if (ipv6) break;
+				*port = p + 1;
+				*p = '\0';
+				break;
+		}
+	}
+}
+
+/**
  * Converts a string to ip/port/company
  *  Format: IP:port#company
  *
@@ -454,11 +484,10 @@ static void CheckPauseOnJoin()
  * be set to the company and port strings given by the user, inside the memory area originally
  * occupied by connection_string.
  */
-void ParseConnectionString(const char **company, const char **port, char *connection_string)
+void ParseGameConnectionString(const char **company, const char **port, char *connection_string)
 {
 	bool ipv6 = (strchr(connection_string, ':') != strrchr(connection_string, ':'));
-	char *p;
-	for (p = connection_string; *p != '\0'; p++) {
+	for (char *p = connection_string; *p != '\0'; p++) {
 		switch (*p) {
 			case '[':
 				ipv6 = true;
@@ -592,7 +621,6 @@ void NetworkAddServer(const char *b)
 {
 	if (*b != '\0') {
 		const char *port = nullptr;
-		const char *company = nullptr;
 		char host[NETWORK_HOSTNAME_LENGTH];
 		uint16 rport;
 
@@ -601,7 +629,7 @@ void NetworkAddServer(const char *b)
 		strecpy(_settings_client.network.connect_to_ip, b, lastof(_settings_client.network.connect_to_ip));
 		rport = NETWORK_DEFAULT_PORT;
 
-		ParseConnectionString(&company, &port, host);
+		ParseConnectionString(&port, host);
 		if (port != nullptr) rport = atoi(port);
 
 		NetworkUDPQueryServer(NetworkAddress(host, rport), true);
