@@ -170,7 +170,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendWelcome()
 	p->Send_string(GetNetworkRevisionString());
 	p->Send_bool  (_network_dedicated);
 
-	p->Send_string(_network_game_info.map_name);
+	p->Send_string(""); // Used to be map-name.
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
 	p->Send_uint8 (_settings_game.game_creation.landscape);
 	p->Send_uint32(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));

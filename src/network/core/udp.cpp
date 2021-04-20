@@ -205,7 +205,7 @@ void NetworkUDPSocketHandler::SendNetworkGameInfo(Packet *p, const NetworkGameIn
 	p->Send_uint8 (info->clients_max);
 	p->Send_uint8 (info->clients_on);
 	p->Send_uint8 (info->spectators_on);
-	p->Send_string(info->map_name);
+	p->Send_string(""); // Used to be map-name.
 	p->Send_uint16(info->map_width);
 	p->Send_uint16(info->map_height);
 	p->Send_uint8 (info->map_set);
@@ -275,7 +275,7 @@ void NetworkUDPSocketHandler::ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo 
 				info->game_date    = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
 				info->start_date   = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
 			}
-			p->Recv_string(info->map_name, sizeof(info->map_name));
+			while (p->Recv_uint8() != 0) {} // Used to contain the map-name.
 			info->map_width      = p->Recv_uint16();
 			info->map_height     = p->Recv_uint16();
 			info->map_set        = p->Recv_uint8 ();

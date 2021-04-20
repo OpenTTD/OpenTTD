@@ -22,7 +22,6 @@
  * be sent to the clients.
  */
 struct NetworkServerGameInfo {
-	char map_name[NETWORK_NAME_LENGTH];             ///< Map which is played ["random" for a randomized map]
 	byte clients_on;                                ///< Current count of clients on server
 };
 
