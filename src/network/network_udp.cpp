@@ -190,7 +190,6 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, Networ
 	ngi.dedicated      = _network_dedicated;
 	ngi.grfconfig      = _grfconfig;
 
-	strecpy(ngi.map_name, _network_game_info.map_name, lastof(ngi.map_name));
 	strecpy(ngi.server_name, _settings_client.network.server_name, lastof(ngi.server_name));
 	strecpy(ngi.server_revision, GetNetworkRevisionString(), lastof(ngi.server_revision));
 
