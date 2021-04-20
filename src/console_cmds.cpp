@@ -916,7 +916,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	uint16 rport = NETWORK_DEFAULT_PORT;
 	CompanyID join_as = COMPANY_NEW_COMPANY;
 
-	ParseConnectionString(&company, &port, ip);
+	ParseGameConnectionString(&company, &port, ip);
 
 	IConsolePrintF(CC_DEFAULT, "Connecting to %s...", ip);
 	if (company != nullptr) {

@@ -478,7 +478,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 			uint16 rport = NETWORK_DEFAULT_PORT;
 			CompanyID join_as = COMPANY_NEW_COMPANY;
 
-			ParseConnectionString(&company, &port, network_conn);
+			ParseGameConnectionString(&company, &port, network_conn);
 
 			if (company != nullptr) {
 				join_as = (CompanyID)atoi(company);
@@ -584,11 +584,8 @@ int openttd_main(int argc, char *argv[])
 			dedicated = true;
 			SetDebugString("net=6");
 			if (mgo.opt != nullptr) {
-				/* Use the existing method for parsing (openttd -n).
-				 * However, we do ignore the #company part. */
-				const char *temp = nullptr;
 				const char *port = nullptr;
-				ParseConnectionString(&temp, &port, mgo.opt);
+				ParseConnectionString(&port, mgo.opt);
 				if (!StrEmpty(mgo.opt)) scanner->dedicated_host = mgo.opt;
 				if (port != nullptr) scanner->dedicated_port = atoi(port);
 			}
@@ -774,13 +771,12 @@ int openttd_main(int argc, char *argv[])
 	NetworkStartUp(); // initialize network-core
 
 	if (debuglog_conn != nullptr && _network_available) {
-		const char *not_used = nullptr;
 		const char *port = nullptr;
 		uint16 rport;
 
 		rport = NETWORK_DEFAULT_DEBUGLOG_PORT;
 
-		ParseConnectionString(&not_used, &port, debuglog_conn);
+		ParseConnectionString(&port, debuglog_conn);
 		if (port != nullptr) rport = atoi(port);
 
 		NetworkStartDebugLog(NetworkAddress(debuglog_conn, rport));
