@@ -2234,7 +2234,9 @@ static NWidgetBase *MakeMainToolbar(int *biggest_index)
 				hor->Add(new NWidgetSpacer(0, 0));
 				break;
 		}
-		hor->Add(new NWidgetLeaf(i == WID_TN_SAVE ? WWT_IMGBTN_2 : WWT_IMGBTN, COLOUR_GREY, i, toolbar_button_sprites[i], STR_TOOLBAR_TOOLTIP_PAUSE_GAME + i));
+		NWidgetLeaf *leaf = new NWidgetLeaf(i == WID_TN_SAVE ? WWT_IMGBTN_2 : WWT_IMGBTN, COLOUR_GREY, i, toolbar_button_sprites[i], STR_TOOLBAR_TOOLTIP_PAUSE_GAME + i);
+		leaf->SetMinimalSize(20, 20);
+		hor->Add(leaf);
 	}
 
 	*biggest_index = std::max<int>(*biggest_index, WID_TN_SWITCH_BAR);
