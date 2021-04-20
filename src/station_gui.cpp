@@ -163,7 +163,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 	const CargoSpec *cs = CargoSpec::Get(type);
 	if (!cs->IsValid()) return;
 
-	int padding = ScaleFontTrad(1);
+	int padding = ScaleGUITrad(1);
 	int width = right - left;
 	int colour = cs->rating_colour;
 	TextColour tc = GetContrastColour(colour);
@@ -177,7 +177,7 @@ static void StationsWndShowStationRating(int left, int right, int y, CargoID typ
 	} else {
 		/* Draw a (scaled) one pixel-wide bar of additional cargo meter, useful
 		 * for stations with only a small amount (<=30) */
-		uint rest = ScaleFontTrad(amount) / 5;
+		uint rest = ScaleGUITrad(amount) / 5;
 		if (rest != 0) {
 			GfxFillRect(left, y + height - rest, left + padding - 1, y + height, colour);
 		}
@@ -391,7 +391,7 @@ public:
 			}
 
 			case WID_STL_LIST:
-				resize->height = std::max(FONT_HEIGHT_NORMAL, FONT_HEIGHT_SMALL + ScaleFontTrad(3));
+				resize->height = std::max(FONT_HEIGHT_NORMAL, FONT_HEIGHT_SMALL + ScaleGUITrad(3));
 				size->height = padding.height + 5 * resize->height;
 
 				/* Determine appropriate width for mini station rating graph */

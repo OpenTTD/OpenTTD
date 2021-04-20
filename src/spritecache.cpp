@@ -517,14 +517,14 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL, allocator, encoder);
 	}
 
-	if (sprite->type == ST_FONT && ZOOM_LVL_FONT != ZOOM_LVL_NORMAL) {
-		/* Make ZOOM_LVL_NORMAL be ZOOM_LVL_FONT */
-		sprite[ZOOM_LVL_NORMAL].width  = sprite[ZOOM_LVL_FONT].width;
-		sprite[ZOOM_LVL_NORMAL].height = sprite[ZOOM_LVL_FONT].height;
-		sprite[ZOOM_LVL_NORMAL].x_offs = sprite[ZOOM_LVL_FONT].x_offs;
-		sprite[ZOOM_LVL_NORMAL].y_offs = sprite[ZOOM_LVL_FONT].y_offs;
-		sprite[ZOOM_LVL_NORMAL].data   = sprite[ZOOM_LVL_FONT].data;
-		sprite[ZOOM_LVL_NORMAL].colours = sprite[ZOOM_LVL_FONT].colours;
+	if (sprite->type == ST_FONT && ZOOM_LVL_GUI != ZOOM_LVL_NORMAL) {
+		/* Make ZOOM_LVL_NORMAL be ZOOM_LVL_GUI */
+		sprite[ZOOM_LVL_NORMAL].width  = sprite[ZOOM_LVL_GUI].width;
+		sprite[ZOOM_LVL_NORMAL].height = sprite[ZOOM_LVL_GUI].height;
+		sprite[ZOOM_LVL_NORMAL].x_offs = sprite[ZOOM_LVL_GUI].x_offs;
+		sprite[ZOOM_LVL_NORMAL].y_offs = sprite[ZOOM_LVL_GUI].y_offs;
+		sprite[ZOOM_LVL_NORMAL].data   = sprite[ZOOM_LVL_GUI].data;
+		sprite[ZOOM_LVL_NORMAL].colours = sprite[ZOOM_LVL_GUI].colours;
 	}
 
 	return encoder->Encode(sprite, allocator);

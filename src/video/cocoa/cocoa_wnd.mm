@@ -1269,7 +1269,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 /** Screen the window is on changed. */
 - (void)windowDidChangeBackingProperties:(NSNotification *)notification
 {
-	bool did_adjust = AdjustGUIZoom();
+	bool did_adjust = AdjustGUIZoom(true);
 
 	/* Reallocate screen buffer if necessary. */
 	driver->AllocateBackingStore();

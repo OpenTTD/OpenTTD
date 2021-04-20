@@ -79,8 +79,7 @@ void ChangeGameSpeed(bool enable_fast_forward);
 void DrawMouseCursor();
 void ScreenSizeChanged();
 void GameSizeChanged();
-void UpdateGUIZoom();
-bool AdjustGUIZoom();
+bool AdjustGUIZoom(bool automatic);
 void UndrawMouseCursor();
 
 /** Size of the buffer used for drawing strings. */

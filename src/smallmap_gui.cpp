@@ -1188,7 +1188,7 @@ void SmallMapWindow::RebuildColourIndexIfNecessary()
 	}
 
 	/* Width of the legend blob. */
-	this->legend_width = (FONT_HEIGHT_SMALL - ScaleFontTrad(1)) * 8 / 5;
+	this->legend_width = (FONT_HEIGHT_SMALL - ScaleGUITrad(1)) * 8 / 5;
 
 	/* The width of a column is the minimum width of all texts + the size of the blob + some spacing */
 	this->column_width = min_width + this->legend_width + WidgetDimensions::scaled.framerect.Horizontal();

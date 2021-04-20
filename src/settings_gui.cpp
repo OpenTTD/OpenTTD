@@ -57,22 +57,6 @@ static const StringID _autosave_dropdown[] = {
 	INVALID_STRING_ID,
 };
 
-static const StringID _gui_zoom_dropdown[] = {
-	STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO,
-	STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL,
-	STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM,
-	STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM,
-	INVALID_STRING_ID,
-};
-
-static const StringID _font_zoom_dropdown[] = {
-	STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO,
-	STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL,
-	STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM,
-	STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM,
-	INVALID_STRING_ID,
-};
-
 static Dimension _circle_size; ///< Dimension of the circle +/- icon. This is here as not all users are within the class of the settings window.
 
 static const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd);
@@ -158,14 +142,36 @@ static void AddCustomRefreshRates()
 	std::copy(monitorRates.begin(), monitorRates.end(), std::inserter(_refresh_rates, _refresh_rates.end()));
 }
 
+static const std::map<int, StringID> _scale_labels = {
+	{  100, STR_GAME_OPTIONS_GUI_SCALE_1X },
+	{  125, STR_NULL },
+	{  150, STR_NULL },
+	{  175, STR_NULL },
+	{  200, STR_GAME_OPTIONS_GUI_SCALE_2X },
+	{  225, STR_NULL },
+	{  250, STR_NULL },
+	{  275, STR_NULL },
+	{  300, STR_GAME_OPTIONS_GUI_SCALE_3X },
+	{  325, STR_NULL },
+	{  350, STR_NULL },
+	{  375, STR_NULL },
+	{  400, STR_GAME_OPTIONS_GUI_SCALE_4X },
+	{  425, STR_NULL },
+	{  450, STR_NULL },
+	{  475, STR_NULL },
+	{  500, STR_GAME_OPTIONS_GUI_SCALE_5X },
+};
+
 struct GameOptionsWindow : Window {
 	GameSettings *opt;
 	bool reload;
+	int gui_scale;
 
 	GameOptionsWindow(WindowDesc *desc) : Window(desc)
 	{
 		this->opt = &GetGameSettings();
 		this->reload = false;
+		this->gui_scale = _gui_scale;
 
 		AddCustomRefreshRates();
 
@@ -264,24 +270,6 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 
-			case WID_GO_GUI_ZOOM_DROPDOWN: {
-				*selected_index = _gui_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _gui_zoom + 1 : 0;
-				const StringID *items = _gui_zoom_dropdown;
-				for (int i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list.emplace_back(new DropDownListStringItem(*items, i, i != 0 && _settings_client.gui.zoom_min > ZOOM_LVL_OUT_4X - i + 1));
-				}
-				break;
-			}
-
-			case WID_GO_FONT_ZOOM_DROPDOWN: {
-				*selected_index = _font_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _font_zoom + 1 : 0;
-				const StringID *items = _font_zoom_dropdown;
-				for (int i = 0; *items != INVALID_STRING_ID; items++, i++) {
-					list.emplace_back(new DropDownListStringItem(*items, i, false));
-				}
-				break;
-			}
-
 			case WID_GO_BASE_GRF_DROPDOWN:
 				list = BuildSetDropDownList<BaseGraphics>(selected_index, (_game_mode == GM_MENU));
 				break;
@@ -304,8 +292,6 @@ struct GameOptionsWindow : Window {
 			case WID_GO_CURRENCY_DROPDOWN:     SetDParam(0, _currency_specs[this->opt->locale.currency].name); break;
 			case WID_GO_AUTOSAVE_DROPDOWN:     SetDParam(0, _autosave_dropdown[_settings_client.gui.autosave]); break;
 			case WID_GO_LANG_DROPDOWN:         SetDParamStr(0, _current_language->own_name); break;
-			case WID_GO_GUI_ZOOM_DROPDOWN:     SetDParam(0, _gui_zoom_dropdown[_gui_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _gui_zoom_cfg + 1 : 0]); break;
-			case WID_GO_FONT_ZOOM_DROPDOWN:    SetDParam(0, _font_zoom_dropdown[_font_zoom_cfg != ZOOM_LVL_CFG_AUTO ? ZOOM_LVL_OUT_4X - _font_zoom_cfg + 1 : 0]); break;
 			case WID_GO_BASE_GRF_DROPDOWN:     SetDParamStr(0, BaseGraphics::GetUsedSet()->name); break;
 			case WID_GO_BASE_GRF_STATUS:       SetDParam(0, BaseGraphics::GetUsedSet()->GetNumInvalid()); break;
 			case WID_GO_BASE_SFX_DROPDOWN:     SetDParamStr(0, BaseSounds::GetUsedSet()->name); break;
@@ -344,6 +330,10 @@ struct GameOptionsWindow : Window {
 			case WID_GO_BASE_MUSIC_DESCRIPTION:
 				SetDParamStr(0, BaseMusic::GetUsedSet()->GetDescription(GetCurrentLanguageIsoCode()));
 				DrawStringMultiLine(r.left, r.right, r.top, UINT16_MAX, STR_BLACK_RAW_STRING);
+				break;
+
+			case WID_GO_GUI_SCALE:
+				DrawSliderWidget(r, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, this->gui_scale, _scale_labels);
 				break;
 
 			case WID_GO_BASE_SFX_VOLUME:
@@ -486,6 +476,30 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
+			case WID_GO_GUI_SCALE:
+				if (ClickSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE, this->gui_scale)) {
+					if (!_ctrl_pressed) this->gui_scale = ((this->gui_scale + 12) / 25) * 25;
+					this->SetWidgetDirty(widget);
+				}
+
+				if (click_count > 0) this->mouse_capture_widget = widget;
+				break;
+
+			case WID_GO_GUI_SCALE_AUTO:
+			{
+				if (_gui_scale_cfg == -1) {
+					_gui_scale_cfg = _gui_scale;
+					this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, false);
+				} else {
+					_gui_scale_cfg = -1;
+					this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, true);
+					if (AdjustGUIZoom(false)) ReInitAllWindows(true);
+					this->gui_scale = _gui_scale;
+				}
+				this->SetWidgetDirty(widget);
+				break;
+			}
+
 			case WID_GO_BASE_SFX_VOLUME:
 			case WID_GO_BASE_MUSIC_VOLUME: {
 				byte &vol = (widget == WID_GO_BASE_MUSIC_VOLUME) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
@@ -514,6 +528,19 @@ struct GameOptionsWindow : Window {
 				}
 				break;
 			}
+		}
+	}
+
+	void OnMouseLoop() override
+	{
+		if (_left_button_down || this->gui_scale == _gui_scale) return;
+
+		_gui_scale_cfg = this->gui_scale;
+
+		if (AdjustGUIZoom(false)) {
+			ReInitAllWindows(true);
+			this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, false);
+			this->SetDirty();
 		}
 	}
 
@@ -576,36 +603,6 @@ struct GameOptionsWindow : Window {
 				break;
 			}
 
-			case WID_GO_GUI_ZOOM_DROPDOWN: {
-				int8 new_zoom = index > 0 ? ZOOM_LVL_OUT_4X - index + 1 : ZOOM_LVL_CFG_AUTO;
-				if (new_zoom != _gui_zoom_cfg) {
-					GfxClearSpriteCache();
-					_gui_zoom_cfg = new_zoom;
-					UpdateGUIZoom();
-					UpdateCursorSize();
-					SetupWidgetDimensions();
-					UpdateAllVirtCoords();
-					FixTitleGameZoom();
-					ReInitAllWindows(true);
-				}
-				break;
-			}
-
-			case WID_GO_FONT_ZOOM_DROPDOWN: {
-				int8 new_zoom = index > 0 ? ZOOM_LVL_OUT_4X - index + 1 : ZOOM_LVL_CFG_AUTO;
-				if (new_zoom != _font_zoom_cfg) {
-					GfxClearSpriteCache();
-					_font_zoom_cfg = new_zoom;
-					UpdateGUIZoom();
-					ClearFontCache();
-					LoadStringWidthTable();
-					SetupWidgetDimensions();
-					UpdateAllVirtCoords();
-					ReInitAllWindows(true);
-				}
-				break;
-			}
-
 			case WID_GO_BASE_GRF_DROPDOWN:
 				this->SetMediaSet<BaseGraphics>(index);
 				break;
@@ -637,6 +634,7 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetDisabledState(WID_GO_VIDEO_VSYNC_BUTTON, !_video_hw_accel);
 #endif
 
+		this->SetWidgetLoweredState(WID_GO_GUI_SCALE_AUTO, _gui_scale_cfg == -1);
 		this->SetWidgetLoweredState(WID_GO_GUI_SCALE_BEVEL_BUTTON, _settings_client.gui.scale_bevels);
 
 		bool missing_files = BaseGraphics::GetUsedSet()->GetNumMissing() == 0;
@@ -664,16 +662,6 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_AUTOSAVE_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_AUTOSAVE_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_GUI_ZOOM_FRAME, STR_NULL),
-					NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
-						NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_GUI_ZOOM_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP), SetFill(1, 0),
-						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_GUI_SCALE_BEVELS, STR_NULL),
-							NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
-							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_GUI_SCALE_BEVEL_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP),
-						EndContainer(),
-					EndContainer(),
-				EndContainer(),
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_CURRENCY_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
@@ -683,8 +671,20 @@ static const NWidgetPart _nested_game_options_widgets[] = {
 				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_LANGUAGE, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_LANG_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_RAW_STRING, STR_GAME_OPTIONS_LANGUAGE_TOOLTIP), SetFill(1, 0),
 				EndContainer(),
-				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_FONT_ZOOM, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_GO_FONT_ZOOM_DROPDOWN), SetMinimalSize(150, 12), SetDataTip(STR_BLACK_STRING, STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP), SetFill(1, 0),
+				NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_GAME_OPTIONS_GUI_SCALE_FRAME, STR_NULL),
+					NWidget(NWID_VERTICAL), SetPIP(0, WidgetDimensions::unscaled.vsep_normal, 0),
+						NWidget(WWT_EMPTY, COLOUR_GREY, WID_GO_GUI_SCALE), SetMinimalSize(67, 0), SetMinimalTextLines(1, 12 + WidgetDimensions::unscaled.vsep_normal, FS_SMALL), SetFill(0, 0), SetDataTip(0x0, STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_GUI_SCALE_AUTO, STR_NULL),
+							NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_GUI_SCALE_AUTO), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP),
+						EndContainer(),
+						NWidget(NWID_HORIZONTAL),
+							NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalSize(0, 12), SetDataTip(STR_GAME_OPTIONS_GUI_SCALE_BEVELS, STR_NULL),
+							NWidget(NWID_SPACER), SetMinimalSize(1, 0), SetFill(1, 0),
+							NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_GO_GUI_SCALE_BEVEL_BUTTON), SetMinimalSize(21, 9), SetDataTip(STR_EMPTY, STR_GAME_OPTIONS_GUI_SCALE_BEVELS_TOOLTIP),
+						EndContainer(),
+					EndContainer(),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
