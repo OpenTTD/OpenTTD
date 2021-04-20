@@ -79,9 +79,7 @@ struct PacketWriter : SaveFilter {
 		/* This must all wait until the Destroy function is called. */
 
 		while (this->packets != nullptr) {
-			Packet *p = this->packets->next;
-			delete this->packets;
-			this->packets = p;
+			delete Packet::PopFromQueue(&this->packets);
 		}
 
 		delete this->current;
@@ -132,11 +130,7 @@ struct PacketWriter : SaveFilter {
 	{
 		std::lock_guard<std::mutex> lock(this->mutex);
 
-		Packet *p = this->packets;
-		this->packets = p->next;
-		p->next = nullptr;
-
-		return p;
+		return Packet::PopFromQueue(&this->packets);
 	}
 
 	/** Append the current packet to the queue. */
@@ -144,12 +138,7 @@ struct PacketWriter : SaveFilter {
 	{
 		if (this->current == nullptr) return;
 
-		Packet **p = &this->packets;
-		while (*p != nullptr) {
-			p = &(*p)->next;
-		}
-		*p = this->current;
-
+		Packet::AddToQueue(&this->packets, this->current);
 		this->current = nullptr;
 	}
 
@@ -158,7 +147,8 @@ struct PacketWriter : SaveFilter {
 	{
 		if (this->current == nullptr) return;
 
-		this->current->next = this->packets;
+		/* Reversed from AppendQueue so the queue gets added to the current one. */
+		Packet::AddToQueue(&this->current, this->packets);
 		this->packets = this->current;
 		this->current = nullptr;
 	}

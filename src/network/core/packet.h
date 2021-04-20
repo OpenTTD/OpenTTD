@@ -62,6 +62,9 @@ public:
 	Packet(PacketType type);
 	~Packet();
 
+	static void AddToQueue(Packet **queue, Packet *packet);
+	static Packet *PopFromQueue(Packet **queue);
+
 	/* Sending/writing of packets */
 	void PrepareToSend();
 
