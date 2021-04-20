@@ -1896,46 +1896,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}ผู�
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}พิมพ์ชื่อสำหรับเล่นในเครือข่าย
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :อะไรก็ได้
-STR_NETWORK_LANG_ENGLISH                                        :ภาษาอังกฤษ
-STR_NETWORK_LANG_GERMAN                                         :ภาษาเยอรมัน
-STR_NETWORK_LANG_FRENCH                                         :ภาษาฝรั่งเศส
-STR_NETWORK_LANG_BRAZILIAN                                      :ภาษาบราซิล
-STR_NETWORK_LANG_BULGARIAN                                      :ภาษาบัลกาเรีย
-STR_NETWORK_LANG_CHINESE                                        :จีน
-STR_NETWORK_LANG_CZECH                                          :เช็ก
-STR_NETWORK_LANG_DANISH                                         :เดนมาร์ก
-STR_NETWORK_LANG_DUTCH                                          :เนเธอร์แลนด์
-STR_NETWORK_LANG_ESPERANTO                                      :ภาษาโลก(Esperanto)
-STR_NETWORK_LANG_FINNISH                                        :ฟินแลนด์
-STR_NETWORK_LANG_HUNGARIAN                                      :ฮังการี
-STR_NETWORK_LANG_ICELANDIC                                      :ไอร์แลนด์
-STR_NETWORK_LANG_ITALIAN                                        :อิตาลี
-STR_NETWORK_LANG_JAPANESE                                       :ญี่ปุ่น
-STR_NETWORK_LANG_KOREAN                                         :เกาหลี
-STR_NETWORK_LANG_LITHUANIAN                                     :ลิทัวเนีย
-STR_NETWORK_LANG_NORWEGIAN                                      :นอร์เวย์
-STR_NETWORK_LANG_POLISH                                         :โปแลนด์
-STR_NETWORK_LANG_PORTUGUESE                                     :โปรตุเกส
-STR_NETWORK_LANG_ROMANIAN                                       :โรมาเนีย
-STR_NETWORK_LANG_RUSSIAN                                        :รัสเซีย
-STR_NETWORK_LANG_SLOVAK                                         :สโลวัก
-STR_NETWORK_LANG_SLOVENIAN                                      :สโลวาเนีย
-STR_NETWORK_LANG_SPANISH                                        :สเปน
-STR_NETWORK_LANG_SWEDISH                                        :สวีเดน
-STR_NETWORK_LANG_TURKISH                                        :ตุรกี
-STR_NETWORK_LANG_UKRAINIAN                                      :ยูเครน
-STR_NETWORK_LANG_AFRIKAANS                                      :อัฟกานิสถาน
-STR_NETWORK_LANG_CROATIAN                                       :โครเอเชีย
-STR_NETWORK_LANG_CATALAN                                        :คาตาลัน
-STR_NETWORK_LANG_ESTONIAN                                       :เอสโตเนีย
-STR_NETWORK_LANG_GALICIAN                                       :กาลีเซีย
-STR_NETWORK_LANG_GREEK                                          :กรีก
-STR_NETWORK_LANG_LATVIAN                                        :ลัทเวีย
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}ห้องรับรองโหมดผู้เล่นหลายคน
 

@@ -1805,46 +1805,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}பே�
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}இணைய ஆட்டத்திற்கு ஒரு பெயரினை இடு
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :எதுவும்
-STR_NETWORK_LANG_ENGLISH                                        :ஆங்கிலம்
-STR_NETWORK_LANG_GERMAN                                         :ஜெர்மன்
-STR_NETWORK_LANG_FRENCH                                         :பிரெஞ்சு
-STR_NETWORK_LANG_BRAZILIAN                                      :பிரசில்லியன்
-STR_NETWORK_LANG_BULGARIAN                                      :பல்கேரியன்
-STR_NETWORK_LANG_CHINESE                                        :சீன மொழி
-STR_NETWORK_LANG_CZECH                                          :செக்
-STR_NETWORK_LANG_DANISH                                         :டேனிஷ்
-STR_NETWORK_LANG_DUTCH                                          :டச்
-STR_NETWORK_LANG_ESPERANTO                                      :உலகப் பொதுச் செயற்கைமொழி
-STR_NETWORK_LANG_FINNISH                                        :பின்னிஷ்
-STR_NETWORK_LANG_HUNGARIAN                                      :ஹங்கேரியன்
-STR_NETWORK_LANG_ICELANDIC                                      :இஸ்லாந்திய மொழி
-STR_NETWORK_LANG_ITALIAN                                        :இத்தாலியன்
-STR_NETWORK_LANG_JAPANESE                                       :ஜப்பானிய மொழி
-STR_NETWORK_LANG_KOREAN                                         :கோரிய மொழி
-STR_NETWORK_LANG_LITHUANIAN                                     :லிதுவேனியன்
-STR_NETWORK_LANG_NORWEGIAN                                      :நார்வேஜியன்
-STR_NETWORK_LANG_POLISH                                         :போலிஷ்
-STR_NETWORK_LANG_PORTUGUESE                                     :போர்த்துகீசியம்
-STR_NETWORK_LANG_ROMANIAN                                       :ரோமானிய மொழி
-STR_NETWORK_LANG_RUSSIAN                                        :ரஷ்ய மொழி
-STR_NETWORK_LANG_SLOVAK                                         :ஸ்லவோனிய மொழி
-STR_NETWORK_LANG_SLOVENIAN                                      :ஸ்லவோனிய மொழி
-STR_NETWORK_LANG_SPANISH                                        :ஸ்பானிஷ்
-STR_NETWORK_LANG_SWEDISH                                        :சவீடிஷ்
-STR_NETWORK_LANG_TURKISH                                        :டர்கிஷ்
-STR_NETWORK_LANG_UKRAINIAN                                      :உக்ரேனியம்
-STR_NETWORK_LANG_AFRIKAANS                                      :ஆப்ரிகான்ஸ்
-STR_NETWORK_LANG_CROATIAN                                       :குரோஏசியன்
-STR_NETWORK_LANG_CATALAN                                        :கடலான்
-STR_NETWORK_LANG_ESTONIAN                                       :எஸ்தோனியம்
-STR_NETWORK_LANG_GALICIAN                                       :கலிசியம்
-STR_NETWORK_LANG_GREEK                                          :கிரேக்க மொழி
-STR_NETWORK_LANG_LATVIAN                                        :லாத்வியன்
-############ End of leave-in-this-order
-
 # Network game lobby
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}சேர தொடங்கப்படுகிறது: {ORANGE}{STRING}

@@ -2065,46 +2065,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andere s
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Geef de naam van het netwerkspel
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Elke
-STR_NETWORK_LANG_ENGLISH                                        :Engels
-STR_NETWORK_LANG_GERMAN                                         :Duits
-STR_NETWORK_LANG_FRENCH                                         :Frans
-STR_NETWORK_LANG_BRAZILIAN                                      :Braziliaans
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgaars
-STR_NETWORK_LANG_CHINESE                                        :Chinees
-STR_NETWORK_LANG_CZECH                                          :Tsjechisch
-STR_NETWORK_LANG_DANISH                                         :Deens
-STR_NETWORK_LANG_DUTCH                                          :Nederlands
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Fins
-STR_NETWORK_LANG_HUNGARIAN                                      :Hongaars
-STR_NETWORK_LANG_ICELANDIC                                      :IJslands
-STR_NETWORK_LANG_ITALIAN                                        :Italiaans
-STR_NETWORK_LANG_JAPANESE                                       :Japans
-STR_NETWORK_LANG_KOREAN                                         :Koreaans
-STR_NETWORK_LANG_LITHUANIAN                                     :Litouws
-STR_NETWORK_LANG_NORWEGIAN                                      :Noors
-STR_NETWORK_LANG_POLISH                                         :Pools
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugees
-STR_NETWORK_LANG_ROMANIAN                                       :Roemeens
-STR_NETWORK_LANG_RUSSIAN                                        :Russisch
-STR_NETWORK_LANG_SLOVAK                                         :Slowaaks
-STR_NETWORK_LANG_SLOVENIAN                                      :Sloveens
-STR_NETWORK_LANG_SPANISH                                        :Spaans
-STR_NETWORK_LANG_SWEDISH                                        :Zweeds
-STR_NETWORK_LANG_TURKISH                                        :Turks
-STR_NETWORK_LANG_UKRAINIAN                                      :Oekraïens
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
-STR_NETWORK_LANG_CROATIAN                                       :Kroatisch
-STR_NETWORK_LANG_CATALAN                                        :Catalaans
-STR_NETWORK_LANG_ESTONIAN                                       :Estisch
-STR_NETWORK_LANG_GALICIAN                                       :Galiciaans
-STR_NETWORK_LANG_GREEK                                          :Grieks
-STR_NETWORK_LANG_LATVIAN                                        :Lets
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Verzamelkamer voor netwerkspellen
 

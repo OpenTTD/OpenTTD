@@ -2114,46 +2114,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Οι υ�
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Εισάγετε το όνομα του δικτυακού παιχνιδιού
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Οποιαδήποτε
-STR_NETWORK_LANG_ENGLISH                                        :Αγγλικά
-STR_NETWORK_LANG_GERMAN                                         :Γερμανικά
-STR_NETWORK_LANG_FRENCH                                         :Γαλλικά
-STR_NETWORK_LANG_BRAZILIAN                                      :Βραζιλιάνικα
-STR_NETWORK_LANG_BULGARIAN                                      :Βουλγαρικά
-STR_NETWORK_LANG_CHINESE                                        :Κινέζικα
-STR_NETWORK_LANG_CZECH                                          :Τσεχικά
-STR_NETWORK_LANG_DANISH                                         :Δανικά
-STR_NETWORK_LANG_DUTCH                                          :Ολλανδικά
-STR_NETWORK_LANG_ESPERANTO                                      :Εσπεράντο
-STR_NETWORK_LANG_FINNISH                                        :Φιλανδικά
-STR_NETWORK_LANG_HUNGARIAN                                      :Ουγγρικά
-STR_NETWORK_LANG_ICELANDIC                                      :Ισλανδικά
-STR_NETWORK_LANG_ITALIAN                                        :Ιταλικά
-STR_NETWORK_LANG_JAPANESE                                       :Ιαπωνικά
-STR_NETWORK_LANG_KOREAN                                         :Κορεατικά
-STR_NETWORK_LANG_LITHUANIAN                                     :Λιθουανικά
-STR_NETWORK_LANG_NORWEGIAN                                      :Νορβηγικά
-STR_NETWORK_LANG_POLISH                                         :Πολωνικά
-STR_NETWORK_LANG_PORTUGUESE                                     :Πορτογαλικά
-STR_NETWORK_LANG_ROMANIAN                                       :Ρουμανικά
-STR_NETWORK_LANG_RUSSIAN                                        :Ρωσικά
-STR_NETWORK_LANG_SLOVAK                                         :Σλοβακικά
-STR_NETWORK_LANG_SLOVENIAN                                      :Σλοβενικά
-STR_NETWORK_LANG_SPANISH                                        :Ισπανικά
-STR_NETWORK_LANG_SWEDISH                                        :Σουηδικά
-STR_NETWORK_LANG_TURKISH                                        :Τουρκικά
-STR_NETWORK_LANG_UKRAINIAN                                      :Ουκρανικά
-STR_NETWORK_LANG_AFRIKAANS                                      :Αφρικάνς
-STR_NETWORK_LANG_CROATIAN                                       :Κροατικά
-STR_NETWORK_LANG_CATALAN                                        :Καταλανικά
-STR_NETWORK_LANG_ESTONIAN                                       :Εσθονικά
-STR_NETWORK_LANG_GALICIAN                                       :Γαλικιανά
-STR_NETWORK_LANG_GREEK                                          :Ελληνικά
-STR_NETWORK_LANG_LATVIAN                                        :Λετονικά
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Αίθουσα παιχνιδιού για πολλούς παίκτες
 

@@ -2193,46 +2193,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Інші
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введіть назву мережевої гри
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Будь-яка
-STR_NETWORK_LANG_ENGLISH                                        :Англійська
-STR_NETWORK_LANG_GERMAN                                         :Німецька
-STR_NETWORK_LANG_FRENCH                                         :Французька
-STR_NETWORK_LANG_BRAZILIAN                                      :Бразильська
-STR_NETWORK_LANG_BULGARIAN                                      :Болгарська
-STR_NETWORK_LANG_CHINESE                                        :Китайська
-STR_NETWORK_LANG_CZECH                                          :Чеська
-STR_NETWORK_LANG_DANISH                                         :Данська
-STR_NETWORK_LANG_DUTCH                                          :Нідерландська
-STR_NETWORK_LANG_ESPERANTO                                      :Есперанто
-STR_NETWORK_LANG_FINNISH                                        :Фінська
-STR_NETWORK_LANG_HUNGARIAN                                      :Угорська
-STR_NETWORK_LANG_ICELANDIC                                      :Ісландська
-STR_NETWORK_LANG_ITALIAN                                        :Італійська
-STR_NETWORK_LANG_JAPANESE                                       :Японська
-STR_NETWORK_LANG_KOREAN                                         :Корейська
-STR_NETWORK_LANG_LITHUANIAN                                     :Литовська
-STR_NETWORK_LANG_NORWEGIAN                                      :Норвезька
-STR_NETWORK_LANG_POLISH                                         :Польська
-STR_NETWORK_LANG_PORTUGUESE                                     :Португальська
-STR_NETWORK_LANG_ROMANIAN                                       :Румунська
-STR_NETWORK_LANG_RUSSIAN                                        :Російська
-STR_NETWORK_LANG_SLOVAK                                         :Словацька
-STR_NETWORK_LANG_SLOVENIAN                                      :Словенська
-STR_NETWORK_LANG_SPANISH                                        :Іспанська
-STR_NETWORK_LANG_SWEDISH                                        :Шведська
-STR_NETWORK_LANG_TURKISH                                        :Турецька
-STR_NETWORK_LANG_UKRAINIAN                                      :Українська
-STR_NETWORK_LANG_AFRIKAANS                                      :Афрікаанс
-STR_NETWORK_LANG_CROATIAN                                       :Хорватська
-STR_NETWORK_LANG_CATALAN                                        :Каталонська
-STR_NETWORK_LANG_ESTONIAN                                       :Естонська
-STR_NETWORK_LANG_GALICIAN                                       :Галісійська
-STR_NETWORK_LANG_GREEK                                          :Грецька
-STR_NETWORK_LANG_LATVIAN                                        :Латвійська
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Мережева гра - кімната
 

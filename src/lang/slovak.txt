@@ -2133,46 +2133,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aby osta
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Zadajte názov sieťovej hry
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Lubovolny
-STR_NETWORK_LANG_ENGLISH                                        :Anglicky
-STR_NETWORK_LANG_GERMAN                                         :Nemecky
-STR_NETWORK_LANG_FRENCH                                         :Francuzsky
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazílsky
-STR_NETWORK_LANG_BULGARIAN                                      :Bulharsky
-STR_NETWORK_LANG_CHINESE                                        :Cinsky
-STR_NETWORK_LANG_CZECH                                          :Cesky
-STR_NETWORK_LANG_DANISH                                         :Dánsky
-STR_NETWORK_LANG_DUTCH                                          :Holadnsky
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Fínsky
-STR_NETWORK_LANG_HUNGARIAN                                      :Madarsky
-STR_NETWORK_LANG_ICELANDIC                                      :Islandsky
-STR_NETWORK_LANG_ITALIAN                                        :Taliansky
-STR_NETWORK_LANG_JAPANESE                                       :Japonsky
-STR_NETWORK_LANG_KOREAN                                         :Kórejsky
-STR_NETWORK_LANG_LITHUANIAN                                     :Litovksy
-STR_NETWORK_LANG_NORWEGIAN                                      :Nórsky
-STR_NETWORK_LANG_POLISH                                         :Polsky
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugalsky
-STR_NETWORK_LANG_ROMANIAN                                       :Rumunsky
-STR_NETWORK_LANG_RUSSIAN                                        :Rusky
-STR_NETWORK_LANG_SLOVAK                                         :Slovenský
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovinsky
-STR_NETWORK_LANG_SPANISH                                        :Spanielsky
-STR_NETWORK_LANG_SWEDISH                                        :Svédsky
-STR_NETWORK_LANG_TURKISH                                        :Turecky
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinsky
-STR_NETWORK_LANG_AFRIKAANS                                      :Africky
-STR_NETWORK_LANG_CROATIAN                                       :Chorvátsky
-STR_NETWORK_LANG_CATALAN                                        :Katalánsky
-STR_NETWORK_LANG_ESTONIAN                                       :Estónsky
-STR_NETWORK_LANG_GALICIAN                                       :Gálsky
-STR_NETWORK_LANG_GREEK                                          :Grécky
-STR_NETWORK_LANG_LATVIAN                                        :Litovsky
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Sieťová hra - čakáreň
 

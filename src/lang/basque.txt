@@ -1864,46 +1864,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beste jo
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sare joko batentzako izena sartu
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Edozein
-STR_NETWORK_LANG_ENGLISH                                        :Ingelera
-STR_NETWORK_LANG_GERMAN                                         :Alemaniera
-STR_NETWORK_LANG_FRENCH                                         :Frantsesa
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasilera
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgariera
-STR_NETWORK_LANG_CHINESE                                        :Txinera
-STR_NETWORK_LANG_CZECH                                          :Txekiera
-STR_NETWORK_LANG_DANISH                                         :Danimarkiera
-STR_NETWORK_LANG_DUTCH                                          :Holandera
-STR_NETWORK_LANG_ESPERANTO                                      :Esperantoa
-STR_NETWORK_LANG_FINNISH                                        :Finlandera
-STR_NETWORK_LANG_HUNGARIAN                                      :Hungariera
-STR_NETWORK_LANG_ICELANDIC                                      :Islandiera
-STR_NETWORK_LANG_ITALIAN                                        :Italiera
-STR_NETWORK_LANG_JAPANESE                                       :Japoniera
-STR_NETWORK_LANG_KOREAN                                         :Koreera
-STR_NETWORK_LANG_LITHUANIAN                                     :Lituaniera
-STR_NETWORK_LANG_NORWEGIAN                                      :Norbegiera
-STR_NETWORK_LANG_POLISH                                         :Poloniera
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugesa
-STR_NETWORK_LANG_ROMANIAN                                       :Errumaniera
-STR_NETWORK_LANG_RUSSIAN                                        :Errusiera
-STR_NETWORK_LANG_SLOVAK                                         :Eslabiera
-STR_NETWORK_LANG_SLOVENIAN                                      :Eslobeniera
-STR_NETWORK_LANG_SPANISH                                        :Gaztelera
-STR_NETWORK_LANG_SWEDISH                                        :Suediera
-STR_NETWORK_LANG_TURKISH                                        :Turkiera
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainera
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaanera
-STR_NETWORK_LANG_CROATIAN                                       :Kroatiera
-STR_NETWORK_LANG_CATALAN                                        :Katalana
-STR_NETWORK_LANG_ESTONIAN                                       :Estoniera
-STR_NETWORK_LANG_GALICIAN                                       :Galiziera
-STR_NETWORK_LANG_GREEK                                          :Greziera
-STR_NETWORK_LANG_LATVIAN                                        :Letoniera
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Multijokalari joko itxia
 

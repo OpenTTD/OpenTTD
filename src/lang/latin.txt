@@ -2164,46 +2164,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Lingua i
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Inscribe nomen ludi retis
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Quaevis
-STR_NETWORK_LANG_ENGLISH                                        :Anglica
-STR_NETWORK_LANG_GERMAN                                         :Theodisca
-STR_NETWORK_LANG_FRENCH                                         :Francogallica
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasilica
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgarica
-STR_NETWORK_LANG_CHINESE                                        :Sinica
-STR_NETWORK_LANG_CZECH                                          :Cecha
-STR_NETWORK_LANG_DANISH                                         :Danica
-STR_NETWORK_LANG_DUTCH                                          :Batavica
-STR_NETWORK_LANG_ESPERANTO                                      :Esperantica
-STR_NETWORK_LANG_FINNISH                                        :Finnica
-STR_NETWORK_LANG_HUNGARIAN                                      :Hungarica
-STR_NETWORK_LANG_ICELANDIC                                      :Islandica
-STR_NETWORK_LANG_ITALIAN                                        :Italiana
-STR_NETWORK_LANG_JAPANESE                                       :Iaponica
-STR_NETWORK_LANG_KOREAN                                         :Coreana
-STR_NETWORK_LANG_LITHUANIAN                                     :Lithuanica
-STR_NETWORK_LANG_NORWEGIAN                                      :Norvegica
-STR_NETWORK_LANG_POLISH                                         :Polonica
-STR_NETWORK_LANG_PORTUGUESE                                     :Lusitana
-STR_NETWORK_LANG_ROMANIAN                                       :Romanica
-STR_NETWORK_LANG_RUSSIAN                                        :Russica
-STR_NETWORK_LANG_SLOVAK                                         :Slovaca
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovena
-STR_NETWORK_LANG_SPANISH                                        :Hispanica
-STR_NETWORK_LANG_SWEDISH                                        :Suecica
-STR_NETWORK_LANG_TURKISH                                        :Turcica
-STR_NETWORK_LANG_UKRAINIAN                                      :Ucrainica
-STR_NETWORK_LANG_AFRIKAANS                                      :Africana
-STR_NETWORK_LANG_CROATIAN                                       :Croatica
-STR_NETWORK_LANG_CATALAN                                        :Catalana
-STR_NETWORK_LANG_ESTONIAN                                       :Estonica
-STR_NETWORK_LANG_GALICIAN                                       :Gallaica
-STR_NETWORK_LANG_GREEK                                          :Graeca
-STR_NETWORK_LANG_LATVIAN                                        :Lettonica
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Atrium Plurium Lusorum
 

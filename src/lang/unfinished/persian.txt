@@ -1666,46 +1666,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دیگر
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}برای بازی شبکه‌ای یک نام وارد نمایید
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :هر زبانی
-STR_NETWORK_LANG_ENGLISH                                        :انگلیسی
-STR_NETWORK_LANG_GERMAN                                         :آلمانی
-STR_NETWORK_LANG_FRENCH                                         :فرانسوی
-STR_NETWORK_LANG_BRAZILIAN                                      :برزیلی
-STR_NETWORK_LANG_BULGARIAN                                      :بلغاری
-STR_NETWORK_LANG_CHINESE                                        :چینی
-STR_NETWORK_LANG_CZECH                                          :چکی
-STR_NETWORK_LANG_DANISH                                         :دانمارکی
-STR_NETWORK_LANG_DUTCH                                          :هلندی
-STR_NETWORK_LANG_ESPERANTO                                      :اسپرانتو
-STR_NETWORK_LANG_FINNISH                                        :فنلاندی
-STR_NETWORK_LANG_HUNGARIAN                                      :مجارستانی
-STR_NETWORK_LANG_ICELANDIC                                      :ایسلندی
-STR_NETWORK_LANG_ITALIAN                                        :ایتالیایی
-STR_NETWORK_LANG_JAPANESE                                       :زاپنی
-STR_NETWORK_LANG_KOREAN                                         :کُره‌ای
-STR_NETWORK_LANG_LITHUANIAN                                     :لیتوانیایی
-STR_NETWORK_LANG_NORWEGIAN                                      :نروژی
-STR_NETWORK_LANG_POLISH                                         :لهستانی
-STR_NETWORK_LANG_PORTUGUESE                                     :پرتغالی
-STR_NETWORK_LANG_ROMANIAN                                       :رومانیایی
-STR_NETWORK_LANG_RUSSIAN                                        :روسی
-STR_NETWORK_LANG_SLOVAK                                         :اسلوواکیایی
-STR_NETWORK_LANG_SLOVENIAN                                      :اسلوونیایی
-STR_NETWORK_LANG_SPANISH                                        :اسپانیایی
-STR_NETWORK_LANG_SWEDISH                                        :سوئدی
-STR_NETWORK_LANG_TURKISH                                        :ترکی
-STR_NETWORK_LANG_UKRAINIAN                                      :اوکراینی
-STR_NETWORK_LANG_AFRIKAANS                                      :آفریقایی
-STR_NETWORK_LANG_CROATIAN                                       :کرواسی
-STR_NETWORK_LANG_CATALAN                                        :کاتالانی
-STR_NETWORK_LANG_ESTONIAN                                       :استوونی
-STR_NETWORK_LANG_GALICIAN                                       :گالیسیایی
-STR_NETWORK_LANG_GREEK                                          :یونانی
-STR_NETWORK_LANG_LATVIAN                                        :لاتویانی
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}سالن انتظار بازی چندنفره
 

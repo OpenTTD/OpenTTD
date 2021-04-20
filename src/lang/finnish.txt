@@ -2070,46 +2070,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Toiset p
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Syötä nimi verkkopelille
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :mikä tahansa
-STR_NETWORK_LANG_ENGLISH                                        :englanti
-STR_NETWORK_LANG_GERMAN                                         :saksa
-STR_NETWORK_LANG_FRENCH                                         :ranska
-STR_NETWORK_LANG_BRAZILIAN                                      :brasilianportugali
-STR_NETWORK_LANG_BULGARIAN                                      :bulgaria
-STR_NETWORK_LANG_CHINESE                                        :kiina
-STR_NETWORK_LANG_CZECH                                          :tšekki
-STR_NETWORK_LANG_DANISH                                         :tanska
-STR_NETWORK_LANG_DUTCH                                          :hollanti
-STR_NETWORK_LANG_ESPERANTO                                      :esperanto
-STR_NETWORK_LANG_FINNISH                                        :suomi
-STR_NETWORK_LANG_HUNGARIAN                                      :unkari
-STR_NETWORK_LANG_ICELANDIC                                      :islanti
-STR_NETWORK_LANG_ITALIAN                                        :italia
-STR_NETWORK_LANG_JAPANESE                                       :japani
-STR_NETWORK_LANG_KOREAN                                         :korea
-STR_NETWORK_LANG_LITHUANIAN                                     :liettua
-STR_NETWORK_LANG_NORWEGIAN                                      :norja
-STR_NETWORK_LANG_POLISH                                         :puola
-STR_NETWORK_LANG_PORTUGUESE                                     :portugali
-STR_NETWORK_LANG_ROMANIAN                                       :romania
-STR_NETWORK_LANG_RUSSIAN                                        :venäjä
-STR_NETWORK_LANG_SLOVAK                                         :slovakia
-STR_NETWORK_LANG_SLOVENIAN                                      :sloveeni
-STR_NETWORK_LANG_SPANISH                                        :espanja
-STR_NETWORK_LANG_SWEDISH                                        :ruotsi
-STR_NETWORK_LANG_TURKISH                                        :turkki
-STR_NETWORK_LANG_UKRAINIAN                                      :ukraina
-STR_NETWORK_LANG_AFRIKAANS                                      :afrikaans
-STR_NETWORK_LANG_CROATIAN                                       :kroatia
-STR_NETWORK_LANG_CATALAN                                        :katalaani
-STR_NETWORK_LANG_ESTONIAN                                       :viro
-STR_NETWORK_LANG_GALICIAN                                       :galego
-STR_NETWORK_LANG_GREEK                                          :kreikka
-STR_NETWORK_LANG_LATVIAN                                        :latvia
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Moninpeliaula
 

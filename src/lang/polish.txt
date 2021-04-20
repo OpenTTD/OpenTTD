@@ -2450,46 +2450,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Inni gra
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Wpisz nazwę dla gry sieciowej
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Dowolny
-STR_NETWORK_LANG_ENGLISH                                        :Angielski
-STR_NETWORK_LANG_GERMAN                                         :Niemiecki
-STR_NETWORK_LANG_FRENCH                                         :Francuski
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazylijski
-STR_NETWORK_LANG_BULGARIAN                                      :Bułgarski
-STR_NETWORK_LANG_CHINESE                                        :Chiński
-STR_NETWORK_LANG_CZECH                                          :Czeski
-STR_NETWORK_LANG_DANISH                                         :Duński
-STR_NETWORK_LANG_DUTCH                                          :Holenderski
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Fiński
-STR_NETWORK_LANG_HUNGARIAN                                      :Węgierski
-STR_NETWORK_LANG_ICELANDIC                                      :Islandzki
-STR_NETWORK_LANG_ITALIAN                                        :Włoski
-STR_NETWORK_LANG_JAPANESE                                       :Japoński
-STR_NETWORK_LANG_KOREAN                                         :Koreański
-STR_NETWORK_LANG_LITHUANIAN                                     :Litewski
-STR_NETWORK_LANG_NORWEGIAN                                      :Norweski
-STR_NETWORK_LANG_POLISH                                         :Polski
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugalski
-STR_NETWORK_LANG_ROMANIAN                                       :Rumuński
-STR_NETWORK_LANG_RUSSIAN                                        :Rosyjski
-STR_NETWORK_LANG_SLOVAK                                         :Słowacki
-STR_NETWORK_LANG_SLOVENIAN                                      :Słoweński
-STR_NETWORK_LANG_SPANISH                                        :Hiszpański
-STR_NETWORK_LANG_SWEDISH                                        :Szwedzki
-STR_NETWORK_LANG_TURKISH                                        :Turecki
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukraiński
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrykanerski
-STR_NETWORK_LANG_CROATIAN                                       :Chorwacki
-STR_NETWORK_LANG_CATALAN                                        :Kataloński
-STR_NETWORK_LANG_ESTONIAN                                       :Estoński
-STR_NETWORK_LANG_GALICIAN                                       :Galicyjski
-STR_NETWORK_LANG_GREEK                                          :Grecki
-STR_NETWORK_LANG_LATVIAN                                        :Łotewski
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Rozpoczęcie gry wieloosobowej
 

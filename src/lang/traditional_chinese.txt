@@ -1957,46 +1957,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}讓其�
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}為連線遊戲輸入一個名稱
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :不限
-STR_NETWORK_LANG_ENGLISH                                        :英語
-STR_NETWORK_LANG_GERMAN                                         :德語
-STR_NETWORK_LANG_FRENCH                                         :法語
-STR_NETWORK_LANG_BRAZILIAN                                      :巴西葡萄牙語
-STR_NETWORK_LANG_BULGARIAN                                      :保加利亞語
-STR_NETWORK_LANG_CHINESE                                        :中文
-STR_NETWORK_LANG_CZECH                                          :捷克語
-STR_NETWORK_LANG_DANISH                                         :丹麥語
-STR_NETWORK_LANG_DUTCH                                          :荷蘭語
-STR_NETWORK_LANG_ESPERANTO                                      :世界語
-STR_NETWORK_LANG_FINNISH                                        :芬蘭語
-STR_NETWORK_LANG_HUNGARIAN                                      :匈牙利語
-STR_NETWORK_LANG_ICELANDIC                                      :冰島語
-STR_NETWORK_LANG_ITALIAN                                        :義大利語
-STR_NETWORK_LANG_JAPANESE                                       :日文
-STR_NETWORK_LANG_KOREAN                                         :韓文
-STR_NETWORK_LANG_LITHUANIAN                                     :立陶宛語
-STR_NETWORK_LANG_NORWEGIAN                                      :挪威語
-STR_NETWORK_LANG_POLISH                                         :波蘭語
-STR_NETWORK_LANG_PORTUGUESE                                     :葡萄牙語
-STR_NETWORK_LANG_ROMANIAN                                       :羅馬尼亞語
-STR_NETWORK_LANG_RUSSIAN                                        :俄語
-STR_NETWORK_LANG_SLOVAK                                         :斯洛伐克語
-STR_NETWORK_LANG_SLOVENIAN                                      :斯洛維尼亞語
-STR_NETWORK_LANG_SPANISH                                        :西班牙語
-STR_NETWORK_LANG_SWEDISH                                        :瑞典語
-STR_NETWORK_LANG_TURKISH                                        :土耳其語
-STR_NETWORK_LANG_UKRAINIAN                                      :烏克蘭語
-STR_NETWORK_LANG_AFRIKAANS                                      :南非荷蘭語
-STR_NETWORK_LANG_CROATIAN                                       :克羅埃西亞語
-STR_NETWORK_LANG_CATALAN                                        :加泰隆語 (西班牙)
-STR_NETWORK_LANG_ESTONIAN                                       :愛沙尼亞語
-STR_NETWORK_LANG_GALICIAN                                       :加里西亞語 (西班牙)
-STR_NETWORK_LANG_GREEK                                          :現代希臘語
-STR_NETWORK_LANG_LATVIAN                                        :拉脫維亞語
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}多人遊戲大廳
 

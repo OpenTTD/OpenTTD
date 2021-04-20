@@ -769,10 +769,6 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 
 
 
-# Network game languages
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
-
 # Network game lobby
 
 

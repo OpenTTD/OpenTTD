@@ -1770,46 +1770,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir s
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gev netverks spælinum eitt navn
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Hvat sum helst
-STR_NETWORK_LANG_ENGLISH                                        :Enskt
-STR_NETWORK_LANG_GERMAN                                         :Týskt
-STR_NETWORK_LANG_FRENCH                                         :Franskt
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasilienskt
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgariskt
-STR_NETWORK_LANG_CHINESE                                        :Kinverskt
-STR_NETWORK_LANG_CZECH                                          :Tjekkiskt
-STR_NETWORK_LANG_DANISH                                         :Danskt
-STR_NETWORK_LANG_DUTCH                                          :Niðurlendskt
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finskt
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungarskt
-STR_NETWORK_LANG_ICELANDIC                                      :Íslenskt
-STR_NETWORK_LANG_ITALIAN                                        :Italienskt
-STR_NETWORK_LANG_JAPANESE                                       :Japanskt
-STR_NETWORK_LANG_KOREAN                                         :Koreanskt
-STR_NETWORK_LANG_LITHUANIAN                                     :Litauiskt
-STR_NETWORK_LANG_NORWEGIAN                                      :Norskt
-STR_NETWORK_LANG_POLISH                                         :Polskt
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugisiskt
-STR_NETWORK_LANG_ROMANIAN                                       :Rumenskt
-STR_NETWORK_LANG_RUSSIAN                                        :Russiskt
-STR_NETWORK_LANG_SLOVAK                                         :Slovakiskt
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovenskt
-STR_NETWORK_LANG_SPANISH                                        :Spanskt
-STR_NETWORK_LANG_SWEDISH                                        :Svenskt
-STR_NETWORK_LANG_TURKISH                                        :Turkiskt
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainskt
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
-STR_NETWORK_LANG_CROATIAN                                       :Kroatiskt
-STR_NETWORK_LANG_CATALAN                                        :Catalan
-STR_NETWORK_LANG_ESTONIAN                                       :Estoniskt
-STR_NETWORK_LANG_GALICIAN                                       :Galisiskt
-STR_NETWORK_LANG_GREEK                                          :Grikskt
-STR_NETWORK_LANG_LATVIAN                                        :Latviskt
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Hópspæls forhøll
 

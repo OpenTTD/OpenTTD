@@ -2221,46 +2221,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Друг
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Введите название сетевой игры
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Любой
-STR_NETWORK_LANG_ENGLISH                                        :Английский
-STR_NETWORK_LANG_GERMAN                                         :Немецкий
-STR_NETWORK_LANG_FRENCH                                         :Французский
-STR_NETWORK_LANG_BRAZILIAN                                      :Бразильский
-STR_NETWORK_LANG_BULGARIAN                                      :Болгарский
-STR_NETWORK_LANG_CHINESE                                        :Китайский
-STR_NETWORK_LANG_CZECH                                          :Чешский
-STR_NETWORK_LANG_DANISH                                         :Датский
-STR_NETWORK_LANG_DUTCH                                          :Нидерландский
-STR_NETWORK_LANG_ESPERANTO                                      :Эсперанто
-STR_NETWORK_LANG_FINNISH                                        :Финский
-STR_NETWORK_LANG_HUNGARIAN                                      :Венгерский
-STR_NETWORK_LANG_ICELANDIC                                      :Исландский
-STR_NETWORK_LANG_ITALIAN                                        :Итальянский
-STR_NETWORK_LANG_JAPANESE                                       :Японский
-STR_NETWORK_LANG_KOREAN                                         :Корейский
-STR_NETWORK_LANG_LITHUANIAN                                     :Литовский
-STR_NETWORK_LANG_NORWEGIAN                                      :Норвежский
-STR_NETWORK_LANG_POLISH                                         :Польский
-STR_NETWORK_LANG_PORTUGUESE                                     :Португальский
-STR_NETWORK_LANG_ROMANIAN                                       :Румынский
-STR_NETWORK_LANG_RUSSIAN                                        :Русский
-STR_NETWORK_LANG_SLOVAK                                         :Словацкий
-STR_NETWORK_LANG_SLOVENIAN                                      :Словенский
-STR_NETWORK_LANG_SPANISH                                        :Испанский
-STR_NETWORK_LANG_SWEDISH                                        :Шведский
-STR_NETWORK_LANG_TURKISH                                        :Турецкий
-STR_NETWORK_LANG_UKRAINIAN                                      :Украинский
-STR_NETWORK_LANG_AFRIKAANS                                      :Африкаанс
-STR_NETWORK_LANG_CROATIAN                                       :Хорватский
-STR_NETWORK_LANG_CATALAN                                        :Каталанский
-STR_NETWORK_LANG_ESTONIAN                                       :Эстонский
-STR_NETWORK_LANG_GALICIAN                                       :Галисийский
-STR_NETWORK_LANG_GREEK                                          :Греческий
-STR_NETWORK_LANG_LATVIAN                                        :Латвийский
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Состояние сетевой игры
 

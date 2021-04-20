@@ -2065,46 +2065,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aner Lei
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gëff en Numm fir d'Spill un
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Egal
-STR_NETWORK_LANG_ENGLISH                                        :Englesch
-STR_NETWORK_LANG_GERMAN                                         :Däitsch
-STR_NETWORK_LANG_FRENCH                                         :Franséisch
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasilianesch
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgaresch
-STR_NETWORK_LANG_CHINESE                                        :Chinesesch
-STR_NETWORK_LANG_CZECH                                          :Tschechesch
-STR_NETWORK_LANG_DANISH                                         :Dänesch
-STR_NETWORK_LANG_DUTCH                                          :Holländesch
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finnesch
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungaresch
-STR_NETWORK_LANG_ICELANDIC                                      :Isländesch
-STR_NETWORK_LANG_ITALIAN                                        :Italienesch
-STR_NETWORK_LANG_JAPANESE                                       :Japanesch
-STR_NETWORK_LANG_KOREAN                                         :Koreanesch
-STR_NETWORK_LANG_LITHUANIAN                                     :Litauesch
-STR_NETWORK_LANG_NORWEGIAN                                      :Norwegesch
-STR_NETWORK_LANG_POLISH                                         :Polnesch
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugiesesch
-STR_NETWORK_LANG_ROMANIAN                                       :Rumänesch
-STR_NETWORK_LANG_RUSSIAN                                        :Russesch
-STR_NETWORK_LANG_SLOVAK                                         :Slovakesch
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovenesch
-STR_NETWORK_LANG_SPANISH                                        :Spuenesch
-STR_NETWORK_LANG_SWEDISH                                        :Schwedesch
-STR_NETWORK_LANG_TURKISH                                        :Türkesch
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainesch
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
-STR_NETWORK_LANG_CROATIAN                                       :Kroatesch
-STR_NETWORK_LANG_CATALAN                                        :Katalanesch
-STR_NETWORK_LANG_ESTONIAN                                       :Estnesch
-STR_NETWORK_LANG_GALICIAN                                       :Gälesch
-STR_NETWORK_LANG_GREEK                                          :Griechesch
-STR_NETWORK_LANG_LATVIAN                                        :Lettesch
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Multiplayer-Spill Lobby
 

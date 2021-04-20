@@ -911,37 +911,6 @@ STR_NETWORK_SERVER_LIST_LANGUAGE                                :{SILVER}भा�
 
 
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ENGLISH                                        :इंग्रजी
-STR_NETWORK_LANG_GERMAN                                         :जर्मन
-STR_NETWORK_LANG_FRENCH                                         :फ्रेंच
-STR_NETWORK_LANG_BRAZILIAN                                      :ब्रज़िलिअन
-STR_NETWORK_LANG_BULGARIAN                                      :बल्जेरिअन
-STR_NETWORK_LANG_CHINESE                                        :चिनी
-STR_NETWORK_LANG_CZECH                                          :झेख
-STR_NETWORK_LANG_DANISH                                         :डेनिश
-STR_NETWORK_LANG_DUTCH                                          :डच
-STR_NETWORK_LANG_ESPERANTO                                      :एस्परांतो
-STR_NETWORK_LANG_FINNISH                                        :फिन्निश
-STR_NETWORK_LANG_HUNGARIAN                                      :हंगेरियन
-STR_NETWORK_LANG_ICELANDIC                                      :आईसलेंडीक
-STR_NETWORK_LANG_JAPANESE                                       :जपानी
-STR_NETWORK_LANG_POLISH                                         :पोलिश
-STR_NETWORK_LANG_PORTUGUESE                                     :पोर्चुगीस
-STR_NETWORK_LANG_ROMANIAN                                       :रोमेनिअन
-STR_NETWORK_LANG_RUSSIAN                                        :रशिअन
-STR_NETWORK_LANG_SLOVAK                                         :स्लोवेक
-STR_NETWORK_LANG_SLOVENIAN                                      :स्लोवेनिअन
-STR_NETWORK_LANG_SPANISH                                        :स्पेनिश
-STR_NETWORK_LANG_SWEDISH                                        :स्वीडिश
-STR_NETWORK_LANG_TURKISH                                        :तुर्की
-STR_NETWORK_LANG_UKRAINIAN                                      :युक्रेनिअन
-STR_NETWORK_LANG_AFRIKAANS                                      :आफ्रिकान्स
-STR_NETWORK_LANG_CROATIAN                                       :क्रोएशिअन
-STR_NETWORK_LANG_GREEK                                          :ग्रीक
-############ End of leave-in-this-order
-
 # Network game lobby
 
 

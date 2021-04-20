@@ -2004,46 +2004,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Diğer o
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Ağ oyunu için bir isim girin
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Farketmez
-STR_NETWORK_LANG_ENGLISH                                        :İngilizce
-STR_NETWORK_LANG_GERMAN                                         :Almanca
-STR_NETWORK_LANG_FRENCH                                         :Fransızca
-STR_NETWORK_LANG_BRAZILIAN                                      :Brezilyaca
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgarca
-STR_NETWORK_LANG_CHINESE                                        :Çince
-STR_NETWORK_LANG_CZECH                                          :Çekce
-STR_NETWORK_LANG_DANISH                                         :Danimarkaca
-STR_NETWORK_LANG_DUTCH                                          :Hollandaca
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Fince
-STR_NETWORK_LANG_HUNGARIAN                                      :Bulgarca
-STR_NETWORK_LANG_ICELANDIC                                      :İzlandaca
-STR_NETWORK_LANG_ITALIAN                                        :İtalyanca
-STR_NETWORK_LANG_JAPANESE                                       :Japonca
-STR_NETWORK_LANG_KOREAN                                         :Korece
-STR_NETWORK_LANG_LITHUANIAN                                     :Litvanyaca
-STR_NETWORK_LANG_NORWEGIAN                                      :Norveççe
-STR_NETWORK_LANG_POLISH                                         :Lehçe
-STR_NETWORK_LANG_PORTUGUESE                                     :Portekizce
-STR_NETWORK_LANG_ROMANIAN                                       :Romanca
-STR_NETWORK_LANG_RUSSIAN                                        :Rusça
-STR_NETWORK_LANG_SLOVAK                                         :Slovakça
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovence
-STR_NETWORK_LANG_SPANISH                                        :İspanyolca
-STR_NETWORK_LANG_SWEDISH                                        :İsveççe
-STR_NETWORK_LANG_TURKISH                                        :Türkçe
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukraynaca
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaanca
-STR_NETWORK_LANG_CROATIAN                                       :Hırvatça
-STR_NETWORK_LANG_CATALAN                                        :Katalanca
-STR_NETWORK_LANG_ESTONIAN                                       :Estonyaca
-STR_NETWORK_LANG_GALICIAN                                       :Galiçyaca
-STR_NETWORK_LANG_GREEK                                          :Yunanca
-STR_NETWORK_LANG_LATVIAN                                        :Letonca
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Çok oyunculu oyun lobisi
 

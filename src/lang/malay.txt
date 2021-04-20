@@ -1704,46 +1704,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Pemain l
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Masukkan nama untuk permainan rangkaian
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Mana-mana
-STR_NETWORK_LANG_ENGLISH                                        :Inggeris
-STR_NETWORK_LANG_GERMAN                                         :Jerman
-STR_NETWORK_LANG_FRENCH                                         :Perancis
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazil
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgaria
-STR_NETWORK_LANG_CHINESE                                        :Cina
-STR_NETWORK_LANG_CZECH                                          :Czech
-STR_NETWORK_LANG_DANISH                                         :Denmark
-STR_NETWORK_LANG_DUTCH                                          :Belanda
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finland
-STR_NETWORK_LANG_HUNGARIAN                                      :Hungary
-STR_NETWORK_LANG_ICELANDIC                                      :Iceland
-STR_NETWORK_LANG_ITALIAN                                        :Itali
-STR_NETWORK_LANG_JAPANESE                                       :Jepun
-STR_NETWORK_LANG_KOREAN                                         :Korea
-STR_NETWORK_LANG_LITHUANIAN                                     :Lituania
-STR_NETWORK_LANG_NORWEGIAN                                      :Norway
-STR_NETWORK_LANG_POLISH                                         :Poland
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugis
-STR_NETWORK_LANG_ROMANIAN                                       :Romania
-STR_NETWORK_LANG_RUSSIAN                                        :Rusia
-STR_NETWORK_LANG_SLOVAK                                         :Slovak
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovenia
-STR_NETWORK_LANG_SPANISH                                        :Sepanyol
-STR_NETWORK_LANG_SWEDISH                                        :Sweden
-STR_NETWORK_LANG_TURKISH                                        :Turki
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukraine
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
-STR_NETWORK_LANG_CROATIAN                                       :Croatia
-STR_NETWORK_LANG_CATALAN                                        :Catalan
-STR_NETWORK_LANG_ESTONIAN                                       :Estonia
-STR_NETWORK_LANG_GALICIAN                                       :Galician
-STR_NETWORK_LANG_GREEK                                          :Yunani
-STR_NETWORK_LANG_LATVIAN                                        :Latvia
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Ruang tunggu berbilang pemain
 

@@ -2040,46 +2040,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Citi lie
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Ievadīt tīkla spēles nosaukumu
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Jebkura
-STR_NETWORK_LANG_ENGLISH                                        :Angļu
-STR_NETWORK_LANG_GERMAN                                         :Vācu
-STR_NETWORK_LANG_FRENCH                                         :Franču
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazīļu
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgāru
-STR_NETWORK_LANG_CHINESE                                        :Ķīniešu
-STR_NETWORK_LANG_CZECH                                          :Čehu
-STR_NETWORK_LANG_DANISH                                         :Dāņu
-STR_NETWORK_LANG_DUTCH                                          :Holandiešu
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Somu
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungāru
-STR_NETWORK_LANG_ICELANDIC                                      :Īslandiešu
-STR_NETWORK_LANG_ITALIAN                                        :Itāliešu
-STR_NETWORK_LANG_JAPANESE                                       :Japāņu
-STR_NETWORK_LANG_KOREAN                                         :Korejiešu
-STR_NETWORK_LANG_LITHUANIAN                                     :Lietuviešu
-STR_NETWORK_LANG_NORWEGIAN                                      :Norvēģu
-STR_NETWORK_LANG_POLISH                                         :Poļu
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugāļu
-STR_NETWORK_LANG_ROMANIAN                                       :Rumāņu
-STR_NETWORK_LANG_RUSSIAN                                        :Krievu
-STR_NETWORK_LANG_SLOVAK                                         :Slovāku
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovēņu
-STR_NETWORK_LANG_SPANISH                                        :Spāņu
-STR_NETWORK_LANG_SWEDISH                                        :Zviedru
-STR_NETWORK_LANG_TURKISH                                        :Turku
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukraiņu
-STR_NETWORK_LANG_AFRIKAANS                                      :Āfrikāņu
-STR_NETWORK_LANG_CROATIAN                                       :Horvātu
-STR_NETWORK_LANG_CATALAN                                        :Kataloņu
-STR_NETWORK_LANG_ESTONIAN                                       :Igauņu
-STR_NETWORK_LANG_GALICIAN                                       :Galisiešu
-STR_NETWORK_LANG_GREEK                                          :Grieķu
-STR_NETWORK_LANG_LATVIAN                                        :Latviešu
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Vairākspēlētāju spēles vestibils
 

@@ -1945,46 +1945,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Beidh a 
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Iontráil ainm don chluiche líonra
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Teanga ar bith
-STR_NETWORK_LANG_ENGLISH                                        :Béarla
-STR_NETWORK_LANG_GERMAN                                         :Gearmáinis
-STR_NETWORK_LANG_FRENCH                                         :Fraincis
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasaílis
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgáiris
-STR_NETWORK_LANG_CHINESE                                        :Sínis
-STR_NETWORK_LANG_CZECH                                          :Seicis
-STR_NETWORK_LANG_DANISH                                         :Danmhairgis
-STR_NETWORK_LANG_DUTCH                                          :Ollainnis
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Fionlainnis
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungáiris
-STR_NETWORK_LANG_ICELANDIC                                      :Íoslainnis
-STR_NETWORK_LANG_ITALIAN                                        :Iodáilis
-STR_NETWORK_LANG_JAPANESE                                       :Seapáinis
-STR_NETWORK_LANG_KOREAN                                         :Cóiréis
-STR_NETWORK_LANG_LITHUANIAN                                     :Liotuáinis
-STR_NETWORK_LANG_NORWEGIAN                                      :Ioruais
-STR_NETWORK_LANG_POLISH                                         :Polainnis
-STR_NETWORK_LANG_PORTUGUESE                                     :Portaingéilis
-STR_NETWORK_LANG_ROMANIAN                                       :Rómáinis
-STR_NETWORK_LANG_RUSSIAN                                        :Rúisis
-STR_NETWORK_LANG_SLOVAK                                         :Slóvaicis
-STR_NETWORK_LANG_SLOVENIAN                                      :Slóivéinis
-STR_NETWORK_LANG_SPANISH                                        :Spáinnis
-STR_NETWORK_LANG_SWEDISH                                        :Sualainnis
-STR_NETWORK_LANG_TURKISH                                        :Tuircis
-STR_NETWORK_LANG_UKRAINIAN                                      :Úcráinis
-STR_NETWORK_LANG_AFRIKAANS                                      :Afracáinis
-STR_NETWORK_LANG_CROATIAN                                       :Cróitis
-STR_NETWORK_LANG_CATALAN                                        :Catalóinis
-STR_NETWORK_LANG_ESTONIAN                                       :Eastóinis
-STR_NETWORK_LANG_GALICIAN                                       :Gailísis
-STR_NETWORK_LANG_GREEK                                          :Gréigis
-STR_NETWORK_LANG_LATVIAN                                        :Laitvis
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Forsheomra cluichí ilimreoirí
 

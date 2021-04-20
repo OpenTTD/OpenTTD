@@ -1683,46 +1683,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}اللا
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}أدخل أسم اللعبة للشبكة
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :أي
-STR_NETWORK_LANG_ENGLISH                                        :إنجليزي
-STR_NETWORK_LANG_GERMAN                                         :ألماني
-STR_NETWORK_LANG_FRENCH                                         :فرنسي
-STR_NETWORK_LANG_BRAZILIAN                                      :برازيلي
-STR_NETWORK_LANG_BULGARIAN                                      :بلغاري
-STR_NETWORK_LANG_CHINESE                                        :صيني
-STR_NETWORK_LANG_CZECH                                          :شيكي
-STR_NETWORK_LANG_DANISH                                         :دانماركي
-STR_NETWORK_LANG_DUTCH                                          :هولندي
-STR_NETWORK_LANG_ESPERANTO                                      :اسبرانتو
-STR_NETWORK_LANG_FINNISH                                        :الفنلندية
-STR_NETWORK_LANG_HUNGARIAN                                      :هنغاري
-STR_NETWORK_LANG_ICELANDIC                                      :الأيسلاندية
-STR_NETWORK_LANG_ITALIAN                                        :إيطالي
-STR_NETWORK_LANG_JAPANESE                                       :يابانية
-STR_NETWORK_LANG_KOREAN                                         :كورية
-STR_NETWORK_LANG_LITHUANIAN                                     :اللتوانية
-STR_NETWORK_LANG_NORWEGIAN                                      :نرويجية
-STR_NETWORK_LANG_POLISH                                         :البولندية
-STR_NETWORK_LANG_PORTUGUESE                                     :برتغالية
-STR_NETWORK_LANG_ROMANIAN                                       :رومانية
-STR_NETWORK_LANG_RUSSIAN                                        :روسية
-STR_NETWORK_LANG_SLOVAK                                         :السلوفاكية
-STR_NETWORK_LANG_SLOVENIAN                                      :السلوفانية
-STR_NETWORK_LANG_SPANISH                                        :أسبانية
-STR_NETWORK_LANG_SWEDISH                                        :سويدية
-STR_NETWORK_LANG_TURKISH                                        :تركية
-STR_NETWORK_LANG_UKRAINIAN                                      :الأوكرانية
-STR_NETWORK_LANG_AFRIKAANS                                      :الأفريقية
-STR_NETWORK_LANG_CROATIAN                                       :كرواتية
-STR_NETWORK_LANG_CATALAN                                        :الكاتالوينية
-STR_NETWORK_LANG_ESTONIAN                                       :الأستونية
-STR_NETWORK_LANG_GALICIAN                                       :الجاليكية
-STR_NETWORK_LANG_GREEK                                          :اليونانية
-STR_NETWORK_LANG_LATVIAN                                        :اللاتفية
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}ردهة تعدد اللاعبين
 

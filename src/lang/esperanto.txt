@@ -1602,46 +1602,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aliaj lu
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tajpu nomon por la retludo
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Ajna
-STR_NETWORK_LANG_ENGLISH                                        :Angla
-STR_NETWORK_LANG_GERMAN                                         :Germana
-STR_NETWORK_LANG_FRENCH                                         :Franca
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazila
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgara
-STR_NETWORK_LANG_CHINESE                                        :Ĉina
-STR_NETWORK_LANG_CZECH                                          :Ĉeĥa
-STR_NETWORK_LANG_DANISH                                         :Dana
-STR_NETWORK_LANG_DUTCH                                          :Nederlanda
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finna
-STR_NETWORK_LANG_HUNGARIAN                                      :Hungara
-STR_NETWORK_LANG_ICELANDIC                                      :Islanda
-STR_NETWORK_LANG_ITALIAN                                        :Itala
-STR_NETWORK_LANG_JAPANESE                                       :Japana
-STR_NETWORK_LANG_KOREAN                                         :Korea
-STR_NETWORK_LANG_LITHUANIAN                                     :Litova
-STR_NETWORK_LANG_NORWEGIAN                                      :Norveĝa
-STR_NETWORK_LANG_POLISH                                         :Pola
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugala
-STR_NETWORK_LANG_ROMANIAN                                       :Romana
-STR_NETWORK_LANG_RUSSIAN                                        :Rusa
-STR_NETWORK_LANG_SLOVAK                                         :Slovaka
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovena
-STR_NETWORK_LANG_SPANISH                                        :Hispana
-STR_NETWORK_LANG_SWEDISH                                        :Sveda
-STR_NETWORK_LANG_TURKISH                                        :Turka
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukraina
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikansa
-STR_NETWORK_LANG_CROATIAN                                       :Kroata
-STR_NETWORK_LANG_CATALAN                                        :Kataluna
-STR_NETWORK_LANG_ESTONIAN                                       :Estona
-STR_NETWORK_LANG_GALICIAN                                       :Galica
-STR_NETWORK_LANG_GREEK                                          :Greka
-STR_NETWORK_LANG_LATVIAN                                        :Latva
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Atendejo por plurludantaj ludoj
 

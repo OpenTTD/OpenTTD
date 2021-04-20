@@ -2157,46 +2157,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Bidh fio
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Cuir a-steach ainm airson a' gheama lìonraidh
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Cànan sam bith
-STR_NETWORK_LANG_ENGLISH                                        :Beurla
-STR_NETWORK_LANG_GERMAN                                         :Gearmailtis
-STR_NETWORK_LANG_FRENCH                                         :Fraingis
-STR_NETWORK_LANG_BRAZILIAN                                      :Portagailis Bhraisileach
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgarais
-STR_NETWORK_LANG_CHINESE                                        :Sìnis
-STR_NETWORK_LANG_CZECH                                          :Seacais
-STR_NETWORK_LANG_DANISH                                         :Danmhairgis
-STR_NETWORK_LANG_DUTCH                                          :Duitsis
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Fionnlannais
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungairis
-STR_NETWORK_LANG_ICELANDIC                                      :Tìlis
-STR_NETWORK_LANG_ITALIAN                                        :Eadailtis
-STR_NETWORK_LANG_JAPANESE                                       :Seapanais
-STR_NETWORK_LANG_KOREAN                                         :Coirèanais
-STR_NETWORK_LANG_LITHUANIAN                                     :Liotuainis
-STR_NETWORK_LANG_NORWEGIAN                                      :Nirribhis
-STR_NETWORK_LANG_POLISH                                         :Pòlainnis
-STR_NETWORK_LANG_PORTUGUESE                                     :Portagailis
-STR_NETWORK_LANG_ROMANIAN                                       :Romàinis
-STR_NETWORK_LANG_RUSSIAN                                        :Ruisis
-STR_NETWORK_LANG_SLOVAK                                         :Slòbhacais
-STR_NETWORK_LANG_SLOVENIAN                                      :Slòbhainis
-STR_NETWORK_LANG_SPANISH                                        :Spàinntis
-STR_NETWORK_LANG_SWEDISH                                        :Suainis
-STR_NETWORK_LANG_TURKISH                                        :Turcais
-STR_NETWORK_LANG_UKRAINIAN                                      :Ucràinis
-STR_NETWORK_LANG_AFRIKAANS                                      :Afraganais
-STR_NETWORK_LANG_CROATIAN                                       :Cròthaisis
-STR_NETWORK_LANG_CATALAN                                        :Catalanais
-STR_NETWORK_LANG_ESTONIAN                                       :Eastoinis
-STR_NETWORK_LANG_GALICIAN                                       :Gailìsis
-STR_NETWORK_LANG_GREEK                                          :Greugais
-STR_NETWORK_LANG_LATVIAN                                        :Laitbheis
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Lobaidh nan geamannan ioma-chluicheadair
 

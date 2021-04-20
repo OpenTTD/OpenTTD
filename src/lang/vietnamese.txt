@@ -2068,46 +2068,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Những 
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Nhập tên của ván chơi mạng
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :bất kỳ
-STR_NETWORK_LANG_ENGLISH                                        :Tiếng Anh
-STR_NETWORK_LANG_GERMAN                                         :Tiếng Đức
-STR_NETWORK_LANG_FRENCH                                         :Tiếng Pháp
-STR_NETWORK_LANG_BRAZILIAN                                      :Tiếng Brazil
-STR_NETWORK_LANG_BULGARIAN                                      :Tiếng Bun-ga-ri
-STR_NETWORK_LANG_CHINESE                                        :Tiếng Trung Quốc
-STR_NETWORK_LANG_CZECH                                          :Tiếng Séc
-STR_NETWORK_LANG_DANISH                                         :Tiếng Đan Mạch
-STR_NETWORK_LANG_DUTCH                                          :Tiếng Hà Lan
-STR_NETWORK_LANG_ESPERANTO                                      :Tiếng Quốc tế ngữ Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Tiếng Phần Lan
-STR_NETWORK_LANG_HUNGARIAN                                      :Tiếng Hung-ga-ri
-STR_NETWORK_LANG_ICELANDIC                                      :Tiếng Ai-len
-STR_NETWORK_LANG_ITALIAN                                        :Tiếng Ý
-STR_NETWORK_LANG_JAPANESE                                       :Tiếng Nhật Bản
-STR_NETWORK_LANG_KOREAN                                         :Tiếng Hàn Quốc
-STR_NETWORK_LANG_LITHUANIAN                                     :Tiếng Lát-vi
-STR_NETWORK_LANG_NORWEGIAN                                      :Tiếng Na-uy
-STR_NETWORK_LANG_POLISH                                         :Tiếng Ba Lan
-STR_NETWORK_LANG_PORTUGUESE                                     :Tiếng Bồ Đào Nha
-STR_NETWORK_LANG_ROMANIAN                                       :Tiếng Ru-ma-ni
-STR_NETWORK_LANG_RUSSIAN                                        :Tiếng Nga
-STR_NETWORK_LANG_SLOVAK                                         :Tiếng Slo-va-kia
-STR_NETWORK_LANG_SLOVENIAN                                      :Tiếng Slo-ven-nhi-a
-STR_NETWORK_LANG_SPANISH                                        :Tiếng Tây Ban Nha
-STR_NETWORK_LANG_SWEDISH                                        :Tiếng Thuỵ Điển
-STR_NETWORK_LANG_TURKISH                                        :Tiếng Thổ Nhĩ Kỳ
-STR_NETWORK_LANG_UKRAINIAN                                      :Tiếng U-crai-na
-STR_NETWORK_LANG_AFRIKAANS                                      :Tiếng Nam Phi
-STR_NETWORK_LANG_CROATIAN                                       :Tiếng Croa-ti-a
-STR_NETWORK_LANG_CATALAN                                        :Tiếng Catalan
-STR_NETWORK_LANG_ESTONIAN                                       :Tiếng Esto-nhi-a
-STR_NETWORK_LANG_GALICIAN                                       :Tiếng Galician
-STR_NETWORK_LANG_GREEK                                          :Tiếng Hy Lạp
-STR_NETWORK_LANG_LATVIAN                                        :Tiếng Lat-via
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Sảnh chơi game nhiều người
 

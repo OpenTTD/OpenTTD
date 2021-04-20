@@ -2284,46 +2284,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Kiti ža
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Įveskite tinklo žaidimo pavadinimą
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Bet kokia
-STR_NETWORK_LANG_ENGLISH                                        :Anglų
-STR_NETWORK_LANG_GERMAN                                         :Vokiečių
-STR_NETWORK_LANG_FRENCH                                         :Prancūzų
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazilų
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgarų
-STR_NETWORK_LANG_CHINESE                                        :Kinų
-STR_NETWORK_LANG_CZECH                                          :Čekų
-STR_NETWORK_LANG_DANISH                                         :Danų
-STR_NETWORK_LANG_DUTCH                                          :Olandų
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Suomių
-STR_NETWORK_LANG_HUNGARIAN                                      :Vengrų
-STR_NETWORK_LANG_ICELANDIC                                      :Islandų
-STR_NETWORK_LANG_ITALIAN                                        :Italų
-STR_NETWORK_LANG_JAPANESE                                       :Japonų
-STR_NETWORK_LANG_KOREAN                                         :Korėjiečių
-STR_NETWORK_LANG_LITHUANIAN                                     :Lietuvių
-STR_NETWORK_LANG_NORWEGIAN                                      :Norvegų
-STR_NETWORK_LANG_POLISH                                         :Lenkų
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugalų
-STR_NETWORK_LANG_ROMANIAN                                       :Rumunų
-STR_NETWORK_LANG_RUSSIAN                                        :Rusų
-STR_NETWORK_LANG_SLOVAK                                         :Slovakų
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovėnų
-STR_NETWORK_LANG_SPANISH                                        :Ispanų
-STR_NETWORK_LANG_SWEDISH                                        :Švedų
-STR_NETWORK_LANG_TURKISH                                        :Turkų
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainiečių
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikiečių
-STR_NETWORK_LANG_CROATIAN                                       :Kroatų
-STR_NETWORK_LANG_CATALAN                                        :Katalonų
-STR_NETWORK_LANG_ESTONIAN                                       :Estų
-STR_NETWORK_LANG_GALICIAN                                       :Galicijos
-STR_NETWORK_LANG_GREEK                                          :Graikų
-STR_NETWORK_LANG_LATVIAN                                        :Latvių
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Kelių žaidėjų meniu
 

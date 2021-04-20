@@ -2134,46 +2134,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}A többi
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Add meg a hálózati játékhoz a neved
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Bármilyen
-STR_NETWORK_LANG_ENGLISH                                        :Angol
-STR_NETWORK_LANG_GERMAN                                         :Német
-STR_NETWORK_LANG_FRENCH                                         :Francia
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazil
-STR_NETWORK_LANG_BULGARIAN                                      :Bolgár
-STR_NETWORK_LANG_CHINESE                                        :Kínai
-STR_NETWORK_LANG_CZECH                                          :Cseh
-STR_NETWORK_LANG_DANISH                                         :Dán
-STR_NETWORK_LANG_DUTCH                                          :Holland
-STR_NETWORK_LANG_ESPERANTO                                      :Eszperantó
-STR_NETWORK_LANG_FINNISH                                        :Finn
-STR_NETWORK_LANG_HUNGARIAN                                      :Magyar
-STR_NETWORK_LANG_ICELANDIC                                      :Izlandi
-STR_NETWORK_LANG_ITALIAN                                        :Olasz
-STR_NETWORK_LANG_JAPANESE                                       :Japán
-STR_NETWORK_LANG_KOREAN                                         :Koreai
-STR_NETWORK_LANG_LITHUANIAN                                     :Litván
-STR_NETWORK_LANG_NORWEGIAN                                      :Norvég
-STR_NETWORK_LANG_POLISH                                         :Lengyel
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugál
-STR_NETWORK_LANG_ROMANIAN                                       :Román
-STR_NETWORK_LANG_RUSSIAN                                        :Orosz
-STR_NETWORK_LANG_SLOVAK                                         :Szlovák
-STR_NETWORK_LANG_SLOVENIAN                                      :Szlovén
-STR_NETWORK_LANG_SPANISH                                        :Spanyol
-STR_NETWORK_LANG_SWEDISH                                        :Svéd
-STR_NETWORK_LANG_TURKISH                                        :Török
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrán
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikai
-STR_NETWORK_LANG_CROATIAN                                       :Horvát
-STR_NETWORK_LANG_CATALAN                                        :Katalán
-STR_NETWORK_LANG_ESTONIAN                                       :Észt
-STR_NETWORK_LANG_GALICIAN                                       :Gall
-STR_NETWORK_LANG_GREEK                                          :Görög
-STR_NETWORK_LANG_LATVIAN                                        :Lett
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Hálózati játék előszoba
 

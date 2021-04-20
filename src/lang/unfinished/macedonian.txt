@@ -975,10 +975,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 
 
-# Network game languages
-############ Leave those lines in this order!!
-############ End of leave-in-this-order
-
 # Network game lobby
 
 

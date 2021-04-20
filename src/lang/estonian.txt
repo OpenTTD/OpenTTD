@@ -2123,46 +2123,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Teavitab
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Sisesta mitmikmängu nimi
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Suvaline
-STR_NETWORK_LANG_ENGLISH                                        :Inglise keel
-STR_NETWORK_LANG_GERMAN                                         :Saksa keel
-STR_NETWORK_LANG_FRENCH                                         :Prantsuse keel
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasiilia
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgaaria
-STR_NETWORK_LANG_CHINESE                                        :Hiina
-STR_NETWORK_LANG_CZECH                                          :Tšehhi
-STR_NETWORK_LANG_DANISH                                         :Taani
-STR_NETWORK_LANG_DUTCH                                          :Hollandi
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Soome
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungari
-STR_NETWORK_LANG_ICELANDIC                                      :Islandi
-STR_NETWORK_LANG_ITALIAN                                        :Itaalia
-STR_NETWORK_LANG_JAPANESE                                       :Jaapani
-STR_NETWORK_LANG_KOREAN                                         :Korea
-STR_NETWORK_LANG_LITHUANIAN                                     :Leedu
-STR_NETWORK_LANG_NORWEGIAN                                      :Norra
-STR_NETWORK_LANG_POLISH                                         :Poola
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugali
-STR_NETWORK_LANG_ROMANIAN                                       :Rumeenia
-STR_NETWORK_LANG_RUSSIAN                                        :Vene
-STR_NETWORK_LANG_SLOVAK                                         :Slovakkia
-STR_NETWORK_LANG_SLOVENIAN                                      :Sloveenia
-STR_NETWORK_LANG_SPANISH                                        :Hispaania
-STR_NETWORK_LANG_SWEDISH                                        :Rootsi
-STR_NETWORK_LANG_TURKISH                                        :Türgi
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukraina
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaani
-STR_NETWORK_LANG_CROATIAN                                       :Horvaadi
-STR_NETWORK_LANG_CATALAN                                        :Katalaani
-STR_NETWORK_LANG_ESTONIAN                                       :Eesti
-STR_NETWORK_LANG_GALICIAN                                       :Galeegi
-STR_NETWORK_LANG_GREEK                                          :Kreeka
-STR_NETWORK_LANG_LATVIAN                                        :Läti
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Mitmikmängu jututuba
 

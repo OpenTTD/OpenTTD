@@ -1554,46 +1554,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}دوسر
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}نیٹ ورک والے کھیل کا نام لکھیں
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :کوئی بھی
-STR_NETWORK_LANG_ENGLISH                                        :انگریزی
-STR_NETWORK_LANG_GERMAN                                         :جرمن
-STR_NETWORK_LANG_FRENCH                                         :فرانسیسی
-STR_NETWORK_LANG_BRAZILIAN                                      :برازیلین
-STR_NETWORK_LANG_BULGARIAN                                      :بلغارین
-STR_NETWORK_LANG_CHINESE                                        :چائینیز
-STR_NETWORK_LANG_CZECH                                          :چیک
-STR_NETWORK_LANG_DANISH                                         :ڈینیش
-STR_NETWORK_LANG_DUTCH                                          :ڈچ
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :فِنش
-STR_NETWORK_LANG_HUNGARIAN                                      :ہنگرین
-STR_NETWORK_LANG_ICELANDIC                                      :Icelandic
-STR_NETWORK_LANG_ITALIAN                                        :اٹالین
-STR_NETWORK_LANG_JAPANESE                                       :جاپانی
-STR_NETWORK_LANG_KOREAN                                         :کورین
-STR_NETWORK_LANG_LITHUANIAN                                     :Lithuanian
-STR_NETWORK_LANG_NORWEGIAN                                      :ناورویجین
-STR_NETWORK_LANG_POLISH                                         :پولش
-STR_NETWORK_LANG_PORTUGUESE                                     :پُرتگیزی
-STR_NETWORK_LANG_ROMANIAN                                       :رومانین
-STR_NETWORK_LANG_RUSSIAN                                        :رشین
-STR_NETWORK_LANG_SLOVAK                                         :Slovak
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovenian
-STR_NETWORK_LANG_SPANISH                                        :اسپینش
-STR_NETWORK_LANG_SWEDISH                                        :سویڈیش
-STR_NETWORK_LANG_TURKISH                                        :ترکش
-STR_NETWORK_LANG_UKRAINIAN                                      :یوکرانین
-STR_NETWORK_LANG_AFRIKAANS                                      :افریقین
-STR_NETWORK_LANG_CROATIAN                                       :کروشین
-STR_NETWORK_LANG_CATALAN                                        :Catalan
-STR_NETWORK_LANG_ESTONIAN                                       :Estonian
-STR_NETWORK_LANG_GALICIAN                                       :Galician
-STR_NETWORK_LANG_GREEK                                          :گریک
-STR_NETWORK_LANG_LATVIAN                                        :Latvian
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}زیادہ کھلاڑیوں والے کھیل کی لابی
 

@@ -1987,46 +1987,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Ceilalţ
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Introduceţi un nume pentru joc
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Oricare
-STR_NETWORK_LANG_ENGLISH                                        :Engleză
-STR_NETWORK_LANG_GERMAN                                         :Germană
-STR_NETWORK_LANG_FRENCH                                         :Franceză
-STR_NETWORK_LANG_BRAZILIAN                                      :Braziliană
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgară
-STR_NETWORK_LANG_CHINESE                                        :Chineză
-STR_NETWORK_LANG_CZECH                                          :Cehă
-STR_NETWORK_LANG_DANISH                                         :Daneză
-STR_NETWORK_LANG_DUTCH                                          :Olandeză
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finlandeză
-STR_NETWORK_LANG_HUNGARIAN                                      :Maghiară
-STR_NETWORK_LANG_ICELANDIC                                      :Islandeză
-STR_NETWORK_LANG_ITALIAN                                        :Italiană
-STR_NETWORK_LANG_JAPANESE                                       :Japoneză
-STR_NETWORK_LANG_KOREAN                                         :Coreană
-STR_NETWORK_LANG_LITHUANIAN                                     :Lituaniană
-STR_NETWORK_LANG_NORWEGIAN                                      :Norvegiană
-STR_NETWORK_LANG_POLISH                                         :Poloneză
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugheză
-STR_NETWORK_LANG_ROMANIAN                                       :Română
-STR_NETWORK_LANG_RUSSIAN                                        :Rusă
-STR_NETWORK_LANG_SLOVAK                                         :Slovacă
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovenă
-STR_NETWORK_LANG_SPANISH                                        :Spaniolă
-STR_NETWORK_LANG_SWEDISH                                        :Suedeză
-STR_NETWORK_LANG_TURKISH                                        :Turcă
-STR_NETWORK_LANG_UKRAINIAN                                      :Ucrainiană
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
-STR_NETWORK_LANG_CROATIAN                                       :Croată
-STR_NETWORK_LANG_CATALAN                                        :Catalană
-STR_NETWORK_LANG_ESTONIAN                                       :Estonă
-STR_NETWORK_LANG_GALICIAN                                       :Galiciană
-STR_NETWORK_LANG_GREEK                                          :Greacă
-STR_NETWORK_LANG_LATVIAN                                        :Letonă
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Chatul jocului multiplayer
 

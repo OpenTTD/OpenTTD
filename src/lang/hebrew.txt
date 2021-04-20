@@ -1971,46 +1971,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}שחקנ
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}הזן שם למשחק רשת
 
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :כלשהו
-STR_NETWORK_LANG_ENGLISH                                        :אנגלית
-STR_NETWORK_LANG_GERMAN                                         :גרמנית
-STR_NETWORK_LANG_FRENCH                                         :צרפתית
-STR_NETWORK_LANG_BRAZILIAN                                      :ברזילאית
-STR_NETWORK_LANG_BULGARIAN                                      :בולגרית
-STR_NETWORK_LANG_CHINESE                                        :סינית
-STR_NETWORK_LANG_CZECH                                          :צ'כית
-STR_NETWORK_LANG_DANISH                                         :דנית
-STR_NETWORK_LANG_DUTCH                                          :הולנדית
-STR_NETWORK_LANG_ESPERANTO                                      :אספרנטו
-STR_NETWORK_LANG_FINNISH                                        :פינית
-STR_NETWORK_LANG_HUNGARIAN                                      :הונגרית
-STR_NETWORK_LANG_ICELANDIC                                      :איסלנדית
-STR_NETWORK_LANG_ITALIAN                                        :איטלקית
-STR_NETWORK_LANG_JAPANESE                                       :יפנית
-STR_NETWORK_LANG_KOREAN                                         :קוריאנית
-STR_NETWORK_LANG_LITHUANIAN                                     :לטבית
-STR_NETWORK_LANG_NORWEGIAN                                      :נורבגית
-STR_NETWORK_LANG_POLISH                                         :פולנית
-STR_NETWORK_LANG_PORTUGUESE                                     :פורטוגזית
-STR_NETWORK_LANG_ROMANIAN                                       :רומנית
-STR_NETWORK_LANG_RUSSIAN                                        :רוסית
-STR_NETWORK_LANG_SLOVAK                                         :סלובקית
-STR_NETWORK_LANG_SLOVENIAN                                      :סלובנית
-STR_NETWORK_LANG_SPANISH                                        :ספרדית
-STR_NETWORK_LANG_SWEDISH                                        :שבדית
-STR_NETWORK_LANG_TURKISH                                        :טורקית
-STR_NETWORK_LANG_UKRAINIAN                                      :אוקראינית
-STR_NETWORK_LANG_AFRIKAANS                                      :אפריקנית
-STR_NETWORK_LANG_CROATIAN                                       :קרואטית
-STR_NETWORK_LANG_CATALAN                                        :קטלונית
-STR_NETWORK_LANG_ESTONIAN                                       :אסטונית
-STR_NETWORK_LANG_GALICIAN                                       :גליציאנית
-STR_NETWORK_LANG_GREEK                                          :יוונית
-STR_NETWORK_LANG_LATVIAN                                        :לטבית
-############ End of leave-in-this-order
-
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}לובי של משחק רשת
 
