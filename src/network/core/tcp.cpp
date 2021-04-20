@@ -42,9 +42,7 @@ NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection(bool error)
 
 	/* Free all pending and partially received packets */
 	while (this->packet_queue != nullptr) {
-		Packet *p = this->packet_queue->next;
-		delete this->packet_queue;
-		this->packet_queue = p;
+		delete Packet::PopFromQueue(&this->packet_queue);
 	}
 	delete this->packet_recv;
 	this->packet_recv = nullptr;
@@ -60,21 +58,10 @@ NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection(bool error)
  */
 void NetworkTCPSocketHandler::SendPacket(Packet *packet)
 {
-	Packet *p;
 	assert(packet != nullptr);
 
 	packet->PrepareToSend();
-
-	/* Locate last packet buffered for the client */
-	p = this->packet_queue;
-	if (p == nullptr) {
-		/* No packets yet */
-		this->packet_queue = packet;
-	} else {
-		/* Skip to the last packet */
-		while (p->next != nullptr) p = p->next;
-		p->next = packet;
-	}
+	Packet::AddToQueue(&this->packet_queue, packet);
 }
 
 /**
@@ -96,8 +83,7 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 	if (!this->writable) return SPS_NONE_SENT;
 	if (!this->IsConnected()) return SPS_CLOSED;
 
-	p = this->packet_queue;
-	while (p != nullptr) {
+	while ((p = this->packet_queue) != nullptr) {
 		res = p->TransferOut<int>(send, this->sock, 0);
 		if (res == -1) {
 			int err = GET_LAST_ERROR();
@@ -120,9 +106,7 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 		/* Is this packet sent? */
 		if (p->RemainingBytesToTransfer() == 0) {
 			/* Go to the next packet */
-			this->packet_queue = p->next;
-			delete p;
-			p = this->packet_queue;
+			delete Packet::PopFromQueue(&this->packet_queue);
 		} else {
 			return SPS_PARTLY_SENT;
 		}

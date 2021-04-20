@@ -63,6 +63,32 @@ Packet::~Packet()
 }
 
 /**
+ * Add the given Packet to the end of the queue of packets.
+ * @param queue  The pointer to the begin of the queue.
+ * @param packet The packet to append to the queue.
+ */
+/* static */ void Packet::AddToQueue(Packet **queue, Packet *packet)
+{
+	while (*queue != nullptr) queue = &(*queue)->next;
+	*queue = packet;
+}
+
+/**
+ * Pop the packet from the begin of the queue and set the
+ * begin of the queue to the second element in the queue.
+ * @param queue  The pointer to the begin of the queue.
+ * @return The Packet that used to be a the begin of the queue.
+ */
+/* static */ Packet *Packet::PopFromQueue(Packet **queue)
+{
+	Packet *p = *queue;
+	*queue = p->next;
+	p->next = nullptr;
+	return p;
+}
+
+
+/**
  * Writes the packet size from the raw packet from packet->size
  */
 void Packet::PrepareToSend()
