@@ -200,7 +200,7 @@ void NetworkUDPSocketHandler::SendNetworkGameInfo(Packet *p, const NetworkGameIn
 	/* NETWORK_GAME_INFO_VERSION = 1 */
 	p->Send_string(info->server_name);
 	p->Send_string(info->server_revision);
-	p->Send_uint8 (info->server_lang);
+	p->Send_uint8 (0); // Used to be server-lang.
 	p->Send_bool  (info->use_password);
 	p->Send_uint8 (info->clients_max);
 	p->Send_uint8 (info->clients_on);
@@ -266,7 +266,7 @@ void NetworkUDPSocketHandler::ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo 
 		case 1:
 			p->Recv_string(info->server_name,     sizeof(info->server_name));
 			p->Recv_string(info->server_revision, sizeof(info->server_revision));
-			info->server_lang    = p->Recv_uint8 ();
+			p->Recv_uint8 (); // Used to contain server-lang.
 			info->use_password   = p->Recv_bool  ();
 			info->clients_max    = p->Recv_uint8 ();
 			info->clients_on     = p->Recv_uint8 ();
@@ -281,8 +281,7 @@ void NetworkUDPSocketHandler::ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo 
 			info->map_set        = p->Recv_uint8 ();
 			info->dedicated      = p->Recv_bool  ();
 
-			if (info->server_lang >= NETWORK_NUM_LANGUAGES)  info->server_lang = 0;
-			if (info->map_set     >= NETWORK_NUM_LANDSCAPES) info->map_set     = 0;
+			if (info->map_set     >= NETWORK_NUM_LANDSCAPES) info->map_set = 0;
 	}
 }
 

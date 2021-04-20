@@ -42,7 +42,6 @@ struct NetworkGameInfo : NetworkServerGameInfo {
 	bool compatible;                                ///< Can we connect to this server or not? (based on server_revision _and_ grf_match
 	bool use_password;                              ///< Is this server passworded?
 	byte game_info_version;                         ///< Version of the game info
-	byte server_lang;                               ///< Language of the server (we should make a nice table for this)
 	byte clients_max;                               ///< Max clients allowed on server
 	byte companies_on;                              ///< How many started companies do we have
 	byte companies_max;                             ///< Max companies allowed on server

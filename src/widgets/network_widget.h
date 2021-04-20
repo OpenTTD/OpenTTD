@@ -71,9 +71,6 @@ enum NetworkStartServerWidgets {
 	WID_NSS_SPECTATORS_TXT,    ///< 'Max spectators' text.
 	WID_NSS_SPECTATORS_BTNU,   ///< 'Max spectators' uparrow.
 
-	WID_NSS_LANGUAGE_LABEL,    ///< Label for 'language spoken'.
-	WID_NSS_LANGUAGE_BTN,      ///< 'Language spoken' droplist button.
-
 	WID_NSS_GENERATE_GAME,     ///< New game button.
 	WID_NSS_LOAD_GAME,         ///< Load game button.
 	WID_NSS_PLAY_SCENARIO,     ///< Play scenario button.
