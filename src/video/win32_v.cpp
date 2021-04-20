@@ -675,7 +675,7 @@ LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		}
 
 		case WM_DPICHANGED: {
-			auto did_adjust = AdjustGUIZoom();
+			auto did_adjust = AdjustGUIZoom(true);
 
 			/* Resize the window to match the new DPI setting. */
 			RECT *prcNewWindow = (RECT *)lParam;

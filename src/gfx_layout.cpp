@@ -339,12 +339,12 @@ FallbackParagraphLayout::FallbackVisualRun::FallbackVisualRun(Font *font, const 
 	/* Positions contains the location of the begin of each of the glyphs, and the end of the last one. */
 	this->positions = MallocT<float>(this->glyph_count * 2 + 2);
 	this->positions[0] = x;
-	this->positions[1] = 0;
+	this->positions[1] = font->fc->GetAscender();
 
 	for (int i = 0; i < this->glyph_count; i++) {
 		this->glyphs[i] = font->fc->MapCharToGlyph(chars[i]);
 		this->positions[2 * i + 2] = this->positions[2 * i] + font->fc->GetGlyphWidth(this->glyphs[i]);
-		this->positions[2 * i + 3] = 0;
+		this->positions[2 * i + 3] = font->fc->GetAscender();
 		this->glyph_to_char[i] = i;
 	}
 }

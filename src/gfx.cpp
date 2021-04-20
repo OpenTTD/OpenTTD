@@ -61,12 +61,9 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode,
 
 static ReusableBuffer<uint8> _cursor_backup;
 
-ZoomLevel _gui_zoom; ///< GUI Zoom level
-ZoomLevel _font_zoom; ///< Font Zoom level
-
-int8 _gui_zoom_cfg;  ///< GUI zoom level in config.
-int8 _font_zoom_cfg; ///< Font zoom level in config.
-
+ZoomLevel _gui_zoom = ZOOM_LVL_OUT_4X;     ///< GUI Zoom level
+int _gui_scale      = MIN_INTERFACE_SCALE; ///< GUI scale, 100 is 100%.
+int _gui_scale_cfg;                        ///< GUI scale in config.
 
 /**
  * The rect for repaint.
@@ -2028,48 +2025,52 @@ void SortResolutions()
 void UpdateGUIZoom()
 {
 	/* Determine real GUI zoom to use. */
-	if (_gui_zoom_cfg == ZOOM_LVL_CFG_AUTO) {
-		_gui_zoom = static_cast<ZoomLevel>(Clamp(VideoDriver::GetInstance()->GetSuggestedUIZoom(), _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
+	if (_gui_scale_cfg == -1) {
+		_gui_scale = VideoDriver::GetInstance()->GetSuggestedUIScale();
 	} else {
-		/* Ensure the gui_zoom is clamped between min/max. Change the
-		 * _gui_zoom_cfg if it isn't, as this is used to visually show the
-		 * selection in the Game Options. */
-		_gui_zoom_cfg = Clamp(_gui_zoom_cfg, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
-		_gui_zoom = static_cast<ZoomLevel>(_gui_zoom_cfg);
+		_gui_scale = Clamp(_gui_scale_cfg, MIN_INTERFACE_SCALE, MAX_INTERFACE_SCALE);
 	}
 
-	/* Determine real font zoom to use. */
-	if (_font_zoom_cfg == ZOOM_LVL_CFG_AUTO) {
-		_font_zoom = static_cast<ZoomLevel>(VideoDriver::GetInstance()->GetSuggestedUIZoom());
-	} else {
-		_font_zoom = static_cast<ZoomLevel>(_font_zoom_cfg);
-	}
+	int8 new_zoom = ScaleGUITrad(1) <= 1 ? ZOOM_LVL_OUT_4X : ScaleGUITrad(1) >= 4 ? ZOOM_LVL_MIN : ZOOM_LVL_OUT_2X;
+	/* Ensure the gui_zoom is clamped between min/max. */
+	new_zoom = Clamp(new_zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
+	_gui_zoom = static_cast<ZoomLevel>(new_zoom);
 }
 
 /**
  * Resolve GUI zoom level and adjust GUI to new zoom, if auto-suggestion is requested.
+ * @param automatic Set if the change is occuring due to OS DPI scaling being changed.
  * @returns true when the zoom level has changed, caller must call ReInitAllWindows(true)
  * after resizing the application's window/buffer.
  */
-bool AdjustGUIZoom()
+bool AdjustGUIZoom(bool automatic)
 {
-	auto old_zoom = _gui_zoom;
+	ZoomLevel old_zoom = _gui_zoom;
+	int old_scale = _gui_scale;
 	UpdateGUIZoom();
-	if (old_zoom == _gui_zoom) return false;
-	GfxClearSpriteCache();
-	VideoDriver::GetInstance()->ClearSystemSprites();
+	if (old_scale == _gui_scale) return false;
+
+	/* Reload sprites if sprite zoom level has changed. */
+	if (old_zoom != _gui_zoom) {
+		GfxClearSpriteCache();
+		VideoDriver::GetInstance()->ClearSystemSprites();
+		UpdateCursorSize();
+	}
+
 	ClearFontCache();
-	GfxClearSpriteCache();
+	LoadStringWidthTable();
 	UpdateAllVirtCoords();
 
 	/* Adjust all window sizes to match the new zoom level, so that they don't appear
 	   to move around when the application is moved to a screen with different DPI. */
 	auto zoom_shift = old_zoom - _gui_zoom;
 	for (Window *w : Window::Iterate()) {
-		w->left = AdjustByZoom(w->left, zoom_shift);
-		w->top = AdjustByZoom(w->top, zoom_shift);
-		w->width = AdjustByZoom(w->width, zoom_shift);
-		w->height = AdjustByZoom(w->height, zoom_shift);
+		if (automatic) {
+			w->left   = (w->left   * _gui_scale) / old_scale;
+			w->top    = (w->top    * _gui_scale) / old_scale;
+			w->width  = (w->width  * _gui_scale) / old_scale;
+			w->height = (w->height * _gui_scale) / old_scale;
+		}
 		if (w->viewport != nullptr) {
 			w->viewport->zoom = Clamp(ZoomLevel(w->viewport->zoom - zoom_shift), _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
 		}
