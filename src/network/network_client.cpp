@@ -362,7 +362,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendJoin()
 	p->Send_uint32(_openttd_newgrf_version);
 	p->Send_string(_settings_client.network.client_name); // Client name
 	p->Send_uint8 (_network_join_as);     // PlayAs
-	p->Send_uint8 (NETLANG_ANY);          // Language
+	p->Send_uint8 (0); // Used to be language
 	my_client->SendPacket(p);
 	return NETWORK_RECV_STATUS_OKAY;
 }

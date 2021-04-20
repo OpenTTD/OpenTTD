@@ -910,7 +910,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 
 	char name[NETWORK_CLIENT_NAME_LENGTH];
 	CompanyID playas;
-	NetworkLanguage client_lang;
 	char client_revision[NETWORK_REVISION_LENGTH];
 
 	p->Recv_string(client_revision, sizeof(client_revision));
@@ -924,7 +923,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 
 	p->Recv_string(name, sizeof(name));
 	playas = (Owner)p->Recv_uint8();
-	client_lang = (NetworkLanguage)p->Recv_uint8();
 
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
@@ -961,7 +959,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	ci->join_date = _date;
 	strecpy(ci->client_name, name, lastof(ci->client_name));
 	ci->client_playas = playas;
-	ci->client_lang = client_lang;
 	DEBUG(desync, 1, "client: %08x; %02x; %02x; %02x", _date, _date_fract, (int)ci->client_playas, (int)ci->index);
 
 	/* Make sure companies to which people try to join are not autocleaned */

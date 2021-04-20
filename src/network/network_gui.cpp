@@ -56,20 +56,6 @@ static const StringID _connection_types_dropdown[] = {
 	INVALID_STRING_ID
 };
 
-static std::vector<StringID> _language_dropdown;
-
-void SortNetworkLanguages()
-{
-	/* Init the strings */
-	if (_language_dropdown.empty()) {
-		for (int i = 0; i < NETLANG_COUNT; i++) _language_dropdown.emplace_back(STR_NETWORK_LANG_ANY + i);
-		_language_dropdown.emplace_back(INVALID_STRING_ID);
-	}
-
-	/* Sort the strings (we don't move 'any' and the 'invalid' one) */
-	std::sort(_language_dropdown.begin() + 1, _language_dropdown.end() - 1, StringIDSorter);
-}
-
 /**
  * Update the network new window because a new server is
  * found on the network.
@@ -430,9 +416,6 @@ protected:
 
 			/* draw red or green icon, depending on compatibility with server */
 			DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), nwi_info->pos_x + this->blot_offset, y + icon_y_offset + 1);
-
-			/* draw flag according to server language */
-			DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, PAL_NONE, nwi_info->pos_x + this->flag_offset, y + (this->resize.step_height - GetSpriteSize(SPR_FLAGS_BASE + cur_item->info.server_lang).height) / 2);
 		}
 	}
 
@@ -636,10 +619,6 @@ public:
 			SetDParam(2, sel->info.companies_on);
 			SetDParam(3, sel->info.companies_max);
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_CLIENTS);
-			y += FONT_HEIGHT_NORMAL;
-
-			SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
-			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_LANGUAGE); // server language
 			y += FONT_HEIGHT_NORMAL;
 
 			SetDParam(0, STR_CHEAT_SWITCH_CLIMATE_TEMPERATE_LANDSCAPE + sel->info.map_set);
@@ -1054,10 +1033,6 @@ struct NetworkStartServerWindow : public Window {
 			case WID_NSS_SPECTATORS_TXT:
 				SetDParam(0, _settings_client.network.max_spectators);
 				break;
-
-			case WID_NSS_LANGUAGE_BTN:
-				SetDParam(0, STR_NETWORK_LANG_ANY + _settings_client.network.server_lang);
-				break;
 		}
 	}
 
@@ -1139,18 +1114,6 @@ struct NetworkStartServerWindow : public Window {
 				ShowQueryString(STR_JUST_INT, STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS, 4, this, CS_NUMERAL, QSF_NONE);
 				break;
 
-			case WID_NSS_LANGUAGE_BTN: { // Language
-				uint sel = 0;
-				for (uint i = 0; i < _language_dropdown.size() - 1; i++) {
-					if (_language_dropdown[i] == STR_NETWORK_LANG_ANY + _settings_client.network.server_lang) {
-						sel = i;
-						break;
-					}
-				}
-				ShowDropDownMenu(this, _language_dropdown.data(), sel, WID_NSS_LANGUAGE_BTN, 0, 0);
-				break;
-			}
-
 			case WID_NSS_GENERATE_GAME: // Start game
 				_is_network_server = true;
 				if (_ctrl_pressed) {
@@ -1182,9 +1145,6 @@ struct NetworkStartServerWindow : public Window {
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
 				_settings_client.network.server_advertise = (index != 0);
-				break;
-			case WID_NSS_LANGUAGE_BTN:
-				_settings_client.network.server_lang = _language_dropdown[index] - STR_NETWORK_LANG_ANY;
 				break;
 			default:
 				NOT_REACHED();
@@ -1251,10 +1211,6 @@ static const NWidgetPart _nested_network_start_server_window_widgets[] = {
 				NWidget(NWID_VERTICAL), SetPIP(0, 1, 0),
 					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NSS_CONNTYPE_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_ADVERTISED_LABEL, STR_NULL),
 					NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, WID_NSS_CONNTYPE_BTN), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP),
-				EndContainer(),
-				NWidget(NWID_VERTICAL), SetPIP(0, 1, 0),
-					NWidget(WWT_TEXT, COLOUR_LIGHT_BLUE, WID_NSS_LANGUAGE_LABEL), SetFill(1, 0), SetDataTip(STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN, STR_NULL),
-					NWidget(WWT_DROPDOWN, COLOUR_LIGHT_BLUE, WID_NSS_LANGUAGE_BTN), SetFill(1, 0), SetDataTip(STR_BLACK_STRING, STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_VERTICAL), SetPIP(0, 1, 0),
 					NWidget(NWID_SPACER), SetFill(1, 1),

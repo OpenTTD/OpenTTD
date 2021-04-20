@@ -280,7 +280,6 @@ struct NetworkSettings {
 	uint8  max_spectators;                                ///< maximum amount of spectators
 	Year   restart_game_year;                             ///< year the server restarts
 	uint8  min_active_clients;                            ///< minimum amount of active clients to unpause the game
-	uint8  server_lang;                                   ///< language of the server
 	bool   reload_cfg;                                    ///< reload the config file before restarting
 	char   last_host[NETWORK_HOSTNAME_LENGTH];            ///< IP address of the last joined server
 	uint16 last_port;                                     ///< port of the last joined server

@@ -238,7 +238,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendClientInfo(const NetworkC
 	p->Send_uint32(ci->client_id);
 	p->Send_string(cs == nullptr ? "" : const_cast<NetworkAddress &>(cs->client_address).GetHostname());
 	p->Send_string(ci->client_name);
-	p->Send_uint8 (ci->client_lang);
+	p->Send_uint8 (0); // Used to be language
 	p->Send_uint32(ci->join_date);
 	p->Send_uint8 (ci->client_playas);
 
