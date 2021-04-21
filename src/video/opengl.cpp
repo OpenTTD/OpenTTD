@@ -548,6 +548,12 @@ const char *OpenGLBackend::Init(const Dimension &screen_res)
 	_gl_major_ver = atoi(ver);
 	_gl_minor_ver = minor != nullptr ? atoi(minor + 1) : 0;
 
+#ifdef _WIN32
+	/* Old drivers on Windows (especially if made by Intel) seem to be
+	 * unstable, so cull the oldest stuff here.  */
+	if (!IsOpenGLVersionAtLeast(3, 2)) return "Need at least OpenGL version 3.2 on Windows";
+#endif
+
 	if (!BindBasicOpenGLProcs()) return "Failed to bind basic OpenGL functions.";
 
 	SetupDebugOutput();
