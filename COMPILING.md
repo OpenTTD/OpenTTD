@@ -78,6 +78,8 @@ files himself via the `ZERO_CHECK` project.
 
 ## All other platforms
 Minimum required version of CMake is 3.9.
+By default this produces a Debug build with assertations enabled.
+This is a far slower build than release builds.
 
 ```bash
 mkdir build
@@ -88,6 +90,25 @@ make
 
 For more information on how to use CMake (including how to make Release builds),
 we urge you to read [their excellent manual](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html).
+
+## CMake Options
+
+Via CMake, several options can be influenced to get different types of
+builds.
+
+- `-DCMAKE_BUILD_TYPE=RelWithDebInfo`: build a release build. This is
+   significant faster than a debug build, but has far less useful information
+   in case of a crash.
+- `-DOPTION_DEDICATED=ON`: build OpenTTD without a GUI. Useful if you are
+   running a headless server, as it requires less libraries to operate.
+- `-DOPTION_USE_ASSERTS=OFF`: disable asserts. Use with care, as assert
+   statements capture early signs of trouble. Release builds have them
+   disabled by default.
+- `-DOPTION_USE_THREADS=OFF`: disable the use of threads. This will block
+   the interface in many places, and in general gives a worse experience of
+   the game. Use with care.
+- `-DOPTION_TOOLS_ONLY=ON`: only build tools like `strgen`. Does not build
+   the game itself. Useful for cross-compiling.
 
 ## Supported compilers
 
