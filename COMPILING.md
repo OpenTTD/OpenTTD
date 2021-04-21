@@ -2,26 +2,27 @@
 
 ## Required/optional libraries
 
-The following libraries are used by OpenTTD for:
+OpenTTD makes use of the following external libraries:
 
-- zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads,
+- (encouraged) zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads,
    heightmaps
-- liblzo2: (de)compressing of old (pre 0.3.0) savegames
-- liblzma: (de)compressing of savegames (1.1.0 and later)
-- libpng: making screenshots and loading heightmaps
+- (encouraged) liblzma: (de)compressing of savegames (1.1.0 and later)
+- (encouraged) libpng: making screenshots and loading heightmaps
+- (optional) liblzo2: (de)compressing of old (pre 0.3.0) savegames
+
+For Linux, the following additional libraries are used (for non-dedicated only):
+
+- libSDL2: hardware access (video, sound, mouse)
 - libfreetype: loading generic fonts and rendering them
 - libfontconfig: searching for fonts, resolving font names to actual fonts
 - libicu: handling of right-to-left scripts (e.g. Arabic and Persian) and
-   natural sorting of strings (Linux only)
-- libSDL2: hardware access (video, sound, mouse) (not required for Windows or macOS)
+   natural sorting of strings
 
 OpenTTD does not require any of the libraries to be present, but without
 liblzma you cannot open most recent savegames and without zlib you cannot
 open most older savegames or use the content downloading system.
-Without libSDL/liballegro on non-Windows and non-macOS machines you have
-no graphical user interface; you would be building a dedicated server.
 
-## Windows:
+## Windows
 
 You need Microsoft Visual Studio 2017 or more recent.
 
