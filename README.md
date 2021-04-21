@@ -77,9 +77,9 @@ For some platforms, you will need to refer to [the installation guide](https://w
 The free data files, split into OpenGFX for graphics, OpenSFX for sounds and
 OpenMSX for music can be found at:
 
-- https://www.openttd.org/download-opengfx for OpenGFX
-- https://www.openttd.org/download-opensfx for OpenSFX
-- https://www.openttd.org/download-openmsx for OpenMSX
+- https://www.openttd.org/downloads/opengfx-releases/ for OpenGFX
+- https://www.openttd.org/downloads/opensfx-releases/ for OpenSFX
+- https://www.openttd.org/downloads/openmsx-releases/ for OpenMSX
 
 Please follow the readme of these packages about the installation procedure.
 The Windows installer can optionally download and install these packages.
