@@ -46,15 +46,13 @@ OpenTTD has a [community-maintained wiki](https://wiki.openttd.org/), including 
 
 OpenTTD has been ported to several platforms and operating systems.
 
-The currently working platforms are:
+The currently supported platforms are:
 
-- FreeBSD (SDL)
-- Haiku (SDL)
-- Linux (SDL)
-- macOS (universal) (Cocoa video and sound drivers)
-- OpenBSD (SDL)
-- OS/2 (SDL)
-- Windows (Win32 GDI (faster) or SDL)
+- Linux (SDL (OpenGL and non-OpenGL))
+- macOS (universal) (Cocoa)
+- Windows (Win32 GDI / OpenGL)
+
+Other platforms may also work (in particular various BSD systems), but we don't actively test or maintain these.
 
 ### 1.3.1) Legacy support
 Platforms, languages and compilers change.
