@@ -1464,7 +1464,7 @@ public:
 				break;
 
 			case WID_BRAS_NEWST_LIST: {
-				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BRAS_NEWST_LIST, 0, this->line_height);
+				int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_BRAS_NEWST_LIST);
 				if (y >= (int)this->station_classes.size()) return;
 				StationClassID station_class_id = this->station_classes[y];
 				if (_railstation.station_class != station_class_id) {
