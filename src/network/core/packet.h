@@ -40,6 +40,7 @@ typedef uint8  PacketType; ///< Identifier for the packet
  *     (year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))
  */
 struct Packet {
+private:
 	/** The next packet. Used for queueing packets before sending. */
 	Packet *next;
 	/**
@@ -52,8 +53,6 @@ struct Packet {
 	PacketSize pos;
 	/** The buffer of this packet, of basically variable length up to SEND_MTU. */
 	byte *buffer;
-
-private:
 	/** Socket we're associated with. */
 	NetworkSocketHandler *cs;
 
@@ -82,6 +81,7 @@ public:
 	bool ParsePacketSize();
 	size_t Size() const;
 	void PrepareToRead();
+	PacketType GetPacketType() const;
 
 	bool   CanReadFromPacket(size_t bytes_to_read, bool close_connection = false);
 	bool   Recv_bool  ();
