@@ -626,7 +626,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 
 		for (uint i = 0; (has_packets = this->savegame->HasPackets()) && i < sent_packets; i++) {
 			Packet *p = this->savegame->PopPacket();
-			last_packet = p->buffer[2] == PACKET_SERVER_MAP_DONE;
+			last_packet = p->GetPacketType() == PACKET_SERVER_MAP_DONE;
 
 			this->SendPacket(p);
 

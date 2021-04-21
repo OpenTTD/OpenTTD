@@ -297,6 +297,16 @@ void Packet::PrepareToRead()
 }
 
 /**
+ * Get the \c PacketType from this packet.
+ * @return The packet type.
+ */
+PacketType Packet::GetPacketType() const
+{
+	assert(this->Size() >= sizeof(PacketSize) + sizeof(PacketType));
+	return static_cast<PacketType>(buffer[sizeof(PacketSize)]);
+}
+
+/**
  * Read a boolean from the packet.
  * @return The read data.
  */
