@@ -62,10 +62,4 @@ struct PointDimension {
 	int height;
 };
 
-/** A pair of two integers */
-struct Pair {
-	int a;
-	int b;
-};
-
 #endif /* GEOMETRY_TYPE_HPP */
