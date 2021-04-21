@@ -83,20 +83,6 @@ struct LoadCheckData {
 
 extern LoadCheckData _load_check_data;
 
-
-enum FileSlots {
-	/**
-	 * Slot used for the GRF scanning and such.
-	 * This slot is used for all temporary accesses to files when scanning/testing files,
-	 * and thus cannot be used for files, which are continuously accessed during a game.
-	 */
-	CONFIG_SLOT    =  0,
-	/** First slot usable for (New)GRFs used during the game. */
-	FIRST_GRF_SLOT =  2,
-	/** Maximum number of slots. */
-	MAX_FILE_SLOTS = 128,
-};
-
 /** Deals with finding savegames */
 struct FiosItem {
 	FiosType type;
