@@ -324,9 +324,6 @@ static void ShutdownGame()
 	/* No NewGRFs were loaded when it was still bootstrapping. */
 	if (_game_mode != GM_BOOTSTRAP) ResetNewGRFData();
 
-	/* Close all and any open filehandles */
-	FioCloseAll();
-
 	UninitFreeType();
 }
 
