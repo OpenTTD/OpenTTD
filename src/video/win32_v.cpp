@@ -1380,7 +1380,7 @@ const char *VideoDriver_Win32OpenGL::AllocateContext()
 	this->ToggleVsync(_video_vsync);
 
 	this->gl_rc = rc;
-	return OpenGLBackend::Create(&GetOGLProcAddressCallback);
+	return OpenGLBackend::Create(&GetOGLProcAddressCallback, this->GetScreenSize());
 }
 
 bool VideoDriver_Win32OpenGL::ToggleFullscreen(bool full_screen)

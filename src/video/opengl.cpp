@@ -464,16 +464,17 @@ void SetupDebugOutput()
 /**
  * Create and initialize the singleton back-end class.
  * @param get_proc Callback to get an OpenGL function from the OS driver.
+ * @param screen_res Current display resolution.
  * @return nullptr on success, error message otherwise.
  */
-/* static */ const char *OpenGLBackend::Create(GetOGLProcAddressProc get_proc)
+/* static */ const char *OpenGLBackend::Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res)
 {
 	if (OpenGLBackend::instance != nullptr) OpenGLBackend::Destroy();
 
 	GetOGLProcAddress = get_proc;
 
 	OpenGLBackend::instance = new OpenGLBackend();
-	return OpenGLBackend::instance->Init();
+	return OpenGLBackend::instance->Init(screen_res);
 }
 
 /**
@@ -521,9 +522,10 @@ OpenGLBackend::~OpenGLBackend()
 
 /**
  * Check for the needed OpenGL functionality and allocate all resources.
+ * @param screen_res Current display resolution.
  * @return Error string or nullptr if successful.
  */
-const char *OpenGLBackend::Init()
+const char *OpenGLBackend::Init(const Dimension &screen_res)
 {
 	if (!BindBasicInfoProcs()) return "OpenGL not supported";
 
@@ -580,6 +582,11 @@ const char *OpenGLBackend::Init()
 		this->persistent_mapping_supported = false;
 	}
 	if (this->persistent_mapping_supported) DEBUG(driver, 3, "OpenGL: Using persistent buffer mapping");
+
+	/* Check maximum texture size against screen resolution. */
+	GLint max_tex_size = 0;
+	_glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_tex_size);
+	if (std::max(screen_res.width, screen_res.height) > (uint)max_tex_size) return "Max supported texture size is too small";
 
 	/* Check available texture units. */
 	GLint max_tex_units = 0;

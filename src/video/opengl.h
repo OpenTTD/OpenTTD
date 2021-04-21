@@ -74,7 +74,7 @@ private:
 	OpenGLBackend();
 	~OpenGLBackend();
 
-	const char *Init();
+	const char *Init(const Dimension &screen_res);
 	bool InitShaders();
 
 	void InternalClearCursorCache();
@@ -87,7 +87,7 @@ public:
 	{
 		return OpenGLBackend::instance;
 	}
-	static const char *Create(GetOGLProcAddressProc get_proc);
+	static const char *Create(GetOGLProcAddressProc get_proc, const Dimension &screen_res);
 	static void Destroy();
 
 	void PrepareContext();
