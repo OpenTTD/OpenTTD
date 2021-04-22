@@ -38,6 +38,7 @@
 #include "widgets/dropdown_type.h"
 #include "widgets/industry_widget.h"
 #include "clear_map.h"
+#include "zoom_func.h"
 
 #include "table/strings.h"
 
@@ -283,9 +284,8 @@ class BuildIndustryWindow : public Window {
 	IndustryType index[NUM_INDUSTRYTYPES + 1];  ///< Type of industry, in the order it was loaded
 	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_PROBABILITY (if ever)
 	Scrollbar *vscroll;
+	Dimension legend;                           ///< Dimension of the legend 'blob'.
 
-	/** The offset for the text in the matrix. */
-	static const int MATRIX_TEXT_OFFSET = 17;
 	/** The largest allowed minimum-width of the window, given in line heights */
 	static const int MAX_MINWIDTH_LINEHEIGHTS = 20;
 
@@ -407,6 +407,10 @@ public:
 
 	void OnInit() override
 	{
+		/* Width of the legend blob -- slightly larger than the smallmap legend blob. */
+		this->legend.height = FONT_HEIGHT_SMALL;
+		this->legend.width = this->legend.height * 8 / 5;
+
 		this->SetupArrays();
 	}
 
@@ -419,8 +423,8 @@ public:
 					if (this->index[i] == INVALID_INDUSTRYTYPE) continue;
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(this->index[i])->name));
 				}
-				resize->height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
-				d.width += MATRIX_TEXT_OFFSET + padding.width;
+				resize->height = std::max<uint>(this->legend.height, FONT_HEIGHT_NORMAL) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				d.width += this->legend.width + ScaleFontTrad(7) + padding.width;
 				d.height = 5 * resize->height;
 				*size = maxdim(*size, d);
 				break;
@@ -509,30 +513,37 @@ public:
 				uint text_left, text_right, icon_left, icon_right;
 				if (_current_text_dir == TD_RTL) {
 					icon_right = r.right    - WD_MATRIX_RIGHT;
-					icon_left  = icon_right - 10;
-					text_right = icon_right - BuildIndustryWindow::MATRIX_TEXT_OFFSET;
+					icon_left  = icon_right - this->legend.width;
+					text_right = icon_left  - ScaleFontTrad(7);
 					text_left  = r.left     + WD_MATRIX_LEFT;
 				} else {
 					icon_left  = r.left     + WD_MATRIX_LEFT;
-					icon_right = icon_left  + 10;
-					text_left  = icon_left  + BuildIndustryWindow::MATRIX_TEXT_OFFSET;
+					icon_right = icon_left  + this->legend.width;
+					text_left  = icon_right + ScaleFontTrad(7);
 					text_right = r.right    - WD_MATRIX_RIGHT;
 				}
 
+				/* Vertical offset for legend icon. */
+				int icon_top    = (this->resize.step_height - this->legend.height + 1) / 2;
+				int icon_bottom = icon_top + this->legend.height;
+
+				int y = r.top;
 				for (byte i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->count; i++) {
-					int y = r.top + WD_MATRIX_TOP + i * this->resize.step_height;
 					bool selected = this->selected_index == i + this->vscroll->GetPosition();
 
 					if (this->index[i + this->vscroll->GetPosition()] == INVALID_INDUSTRYTYPE) {
-						DrawString(text_left, text_right, y, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
+						DrawString(text_left, text_right, y + WD_MATRIX_TOP, STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE);
+						y += this->resize.step_height;
 						continue;
 					}
 					const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll->GetPosition()]);
 
 					/* Draw the name of the industry in white is selected, otherwise, in orange */
-					DrawString(text_left, text_right, y, indsp->name, selected ? TC_WHITE : TC_ORANGE);
-					GfxFillRect(icon_left,     y + 1, icon_right,     y + 7, selected ? PC_WHITE : PC_BLACK);
-					GfxFillRect(icon_left + 1, y + 2, icon_right - 1, y + 6, indsp->map_colour);
+					DrawString(text_left, text_right, y + WD_MATRIX_TOP, indsp->name, selected ? TC_WHITE : TC_ORANGE);
+					GfxFillRect(icon_left,     y + icon_top,     icon_right,     y + icon_bottom,     selected ? PC_WHITE : PC_BLACK);
+					GfxFillRect(icon_left + 1, y + icon_top + 1, icon_right - 1, y + icon_bottom - 1, indsp->map_colour);
+
+					y += this->resize.step_height;
 				}
 				break;
 			}
