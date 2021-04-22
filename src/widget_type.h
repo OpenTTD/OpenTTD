@@ -543,7 +543,7 @@ private:
  */
 class NWidgetSpacer : public NWidgetResizeBase {
 public:
-	NWidgetSpacer(int length, int height);
+	NWidgetSpacer(int width, int height);
 
 	void SetupSmallestSize(Window *w, bool init_array) override;
 	void FillNestedArray(NWidgetBase **array, uint length) override;

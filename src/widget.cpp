@@ -1503,12 +1503,12 @@ void NWidgetVertical::AssignSizePosition(SizingType sizing, uint x, uint y, uint
 
 /**
  * Generic spacer widget.
- * @param length Horizontal size of the spacer widget.
+ * @param width  Horizontal size of the spacer widget.
  * @param height Vertical size of the spacer widget.
  */
-NWidgetSpacer::NWidgetSpacer(int length, int height) : NWidgetResizeBase(NWID_SPACER, 0, 0)
+NWidgetSpacer::NWidgetSpacer(int width, int height) : NWidgetResizeBase(NWID_SPACER, 0, 0)
 {
-	this->SetMinimalSize(length, height);
+	this->SetMinimalSize(width, height);
 	this->SetResize(0, 0);
 }
 
