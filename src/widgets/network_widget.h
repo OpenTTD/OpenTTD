@@ -108,11 +108,6 @@ enum ClientListWidgets {
 	WID_CL_COMPANY_JOIN,               ///< Used for QueryWindow when a company has a password.
 };
 
-/** Widgets of the #NetworkClientListPopupWindow class. */
-enum ClientListPopupWidgets {
-	WID_CLP_PANEL, ///< Panel of the window.
-};
-
 /** Widgets of the #NetworkJoinStatusWindow class. */
 enum NetworkJoinStatusWidgets {
 	WID_NJS_BACKGROUND, ///< Background of the window.
