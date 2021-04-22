@@ -891,15 +891,17 @@ const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize)
 /**
  * Draw single character horizontally centered around (x,y)
  * @param c           Character (glyph) to draw
- * @param x           X position to draw character
- * @param y           Y position to draw character
+ * @param r           Rectangle to draw character within
  * @param colour      Colour to use, for details see _string_colourmap in
  *                    table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  */
-void DrawCharCentered(WChar c, int x, int y, TextColour colour)
+void DrawCharCentered(WChar c, const Rect &r, TextColour colour)
 {
 	SetColourRemap(colour);
-	GfxMainBlitter(GetGlyph(FS_NORMAL, c), x - GetCharacterWidth(FS_NORMAL, c) / 2, y, BM_COLOUR_REMAP);
+	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
+		CenterBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
+		CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL),
+		BM_COLOUR_REMAP);
 }
 
 /**
