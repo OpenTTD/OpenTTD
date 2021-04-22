@@ -212,10 +212,13 @@ struct OskWindow : public Window {
 static const int HALF_KEY_WIDTH = 7;  // Width of 1/2 key in pixels.
 static const int INTER_KEY_SPACE = 2; // Number of pixels between two keys.
 
+static const int TOP_KEY_PADDING = 2; // Vertical padding for the top row of keys.
+static const int KEY_PADDING = 6;     // Vertical padding for remaining key rows.
+
 /**
  * Add a key widget to a row of the keyboard.
  * @param hor     Row container to add key widget to.
- * @param height  Height of the key (all keys in a row should have equal height).
+ * @param pad_y   Vertical padding of the key (all keys in a row should have equal padding).
  * @param num_half Number of 1/2 key widths that this key has.
  * @param widtype Widget type of the key. Must be either \c NWID_SPACER for an invisible key, or a \c WWT_* widget.
  * @param widnum  Widget number of the key.
@@ -223,21 +226,24 @@ static const int INTER_KEY_SPACE = 2; // Number of pixels between two keys.
  * @param biggest_index Collected biggest widget index so far.
  * @note Key width is measured in 1/2 keys to allow for 1/2 key shifting between rows.
  */
-static void AddKey(NWidgetHorizontal *hor, int height, int num_half, WidgetType widtype, int widnum, uint16 widdata, int *biggest_index)
+static void AddKey(NWidgetHorizontal *hor, int pad_y, int num_half, WidgetType widtype, int widnum, uint16 widdata, int *biggest_index)
 {
 	int key_width = HALF_KEY_WIDTH + (INTER_KEY_SPACE + HALF_KEY_WIDTH) * (num_half - 1);
 
 	if (widtype == NWID_SPACER) {
 		if (!hor->IsEmpty()) key_width += INTER_KEY_SPACE;
-		NWidgetSpacer *spc = new NWidgetSpacer(ScaleGUITrad(key_width), height);
+		NWidgetSpacer *spc = new NWidgetSpacer(key_width, 0);
+		spc->SetMinimalTextLines(1, pad_y, FS_NORMAL);
 		hor->Add(spc);
 	} else {
 		if (!hor->IsEmpty()) {
-			NWidgetSpacer *spc = new NWidgetSpacer(ScaleGUITrad(INTER_KEY_SPACE), height);
+			NWidgetSpacer *spc = new NWidgetSpacer(INTER_KEY_SPACE, 0);
+			spc->SetMinimalTextLines(1, pad_y, FS_NORMAL);
 			hor->Add(spc);
 		}
 		NWidgetLeaf *leaf = new NWidgetLeaf(widtype, COLOUR_GREY, widnum, widdata, STR_NULL);
-		leaf->SetMinimalSizeAbsolute(ScaleGUITrad(key_width), height);
+		leaf->SetMinimalSize(key_width, 0);
+		leaf->SetMinimalTextLines(1, pad_y, FS_NORMAL);
 		hor->Add(leaf);
 	}
 
@@ -248,11 +254,10 @@ static void AddKey(NWidgetHorizontal *hor, int height, int num_half, WidgetType 
 static NWidgetBase *MakeTopKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontal();
-	int key_height = FONT_HEIGHT_NORMAL + 2;
 
-	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    STR_BUTTON_CANCEL,  biggest_index);
-	AddKey(hor, key_height, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        STR_BUTTON_OK,      biggest_index);
-	AddKey(hor, key_height, 2 * 2, WWT_PUSHIMGBTN, WID_OSK_BACKSPACE, SPR_OSK_BACKSPACE, biggest_index);
+	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_CANCEL,    STR_BUTTON_CANCEL, biggest_index);
+	AddKey(hor, TOP_KEY_PADDING, 6 * 2, WWT_TEXTBTN,    WID_OSK_OK,        STR_BUTTON_OK,     biggest_index);
+	AddKey(hor, TOP_KEY_PADDING, 2 * 2, WWT_PUSHIMGBTN, WID_OSK_BACKSPACE, SPR_OSK_BACKSPACE, biggest_index);
 	return hor;
 }
 
@@ -260,10 +265,9 @@ static NWidgetBase *MakeTopKeys(int *biggest_index)
 static NWidgetBase *MakeNumberKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
-	int key_height = FONT_HEIGHT_NORMAL + 6;
 
 	for (int widnum = WID_OSK_NUMBERS_FIRST; widnum <= WID_OSK_NUMBERS_LAST; widnum++) {
-		AddKey(hor, key_height, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
 	}
 	return hor;
 }
@@ -272,13 +276,12 @@ static NWidgetBase *MakeNumberKeys(int *biggest_index)
 static NWidgetBase *MakeQwertyKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
-	int key_height = FONT_HEIGHT_NORMAL + 6;
 
-	AddKey(hor, key_height, 3, WWT_PUSHIMGBTN, WID_OSK_SPECIAL, SPR_OSK_SPECIAL, biggest_index);
+	AddKey(hor, KEY_PADDING, 3, WWT_PUSHIMGBTN, WID_OSK_SPECIAL, SPR_OSK_SPECIAL, biggest_index);
 	for (int widnum = WID_OSK_QWERTY_FIRST; widnum <= WID_OSK_QWERTY_LAST; widnum++) {
-		AddKey(hor, key_height, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
 	}
-	AddKey(hor, key_height, 1, NWID_SPACER, 0, 0, biggest_index);
+	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, 0, biggest_index);
 	return hor;
 }
 
@@ -286,11 +289,10 @@ static NWidgetBase *MakeQwertyKeys(int *biggest_index)
 static NWidgetBase *MakeAsdfgKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
-	int key_height = FONT_HEIGHT_NORMAL + 6;
 
-	AddKey(hor, key_height, 4, WWT_IMGBTN, WID_OSK_CAPS, SPR_OSK_CAPS, biggest_index);
+	AddKey(hor, KEY_PADDING, 4, WWT_IMGBTN, WID_OSK_CAPS, SPR_OSK_CAPS, biggest_index);
 	for (int widnum = WID_OSK_ASDFG_FIRST; widnum <= WID_OSK_ASDFG_LAST; widnum++) {
-		AddKey(hor, key_height, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
 	}
 	return hor;
 }
@@ -299,13 +301,12 @@ static NWidgetBase *MakeAsdfgKeys(int *biggest_index)
 static NWidgetBase *MakeZxcvbKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontalLTR();
-	int key_height = FONT_HEIGHT_NORMAL + 6;
 
-	AddKey(hor, key_height, 3, WWT_IMGBTN, WID_OSK_SHIFT, SPR_OSK_SHIFT, biggest_index);
+	AddKey(hor, KEY_PADDING, 3, WWT_IMGBTN, WID_OSK_SHIFT, SPR_OSK_SHIFT, biggest_index);
 	for (int widnum = WID_OSK_ZXCVB_FIRST; widnum <= WID_OSK_ZXCVB_LAST; widnum++) {
-		AddKey(hor, key_height, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
+		AddKey(hor, KEY_PADDING, 2, WWT_PUSHBTN, widnum, 0x0, biggest_index);
 	}
-	AddKey(hor, key_height, 1, NWID_SPACER, 0, 0, biggest_index);
+	AddKey(hor, KEY_PADDING, 1, NWID_SPACER, 0, 0, biggest_index);
 	return hor;
 }
 
@@ -313,13 +314,12 @@ static NWidgetBase *MakeZxcvbKeys(int *biggest_index)
 static NWidgetBase *MakeSpacebarKeys(int *biggest_index)
 {
 	NWidgetHorizontal *hor = new NWidgetHorizontal();
-	int key_height = FONT_HEIGHT_NORMAL + 6;
 
-	AddKey(hor, key_height,  8, NWID_SPACER, 0, 0, biggest_index);
-	AddKey(hor, key_height, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, STR_EMPTY, biggest_index);
-	AddKey(hor, key_height,  3, NWID_SPACER, 0, 0, biggest_index);
-	AddKey(hor, key_height,  2, WWT_PUSHIMGBTN, WID_OSK_LEFT,  SPR_OSK_LEFT, biggest_index);
-	AddKey(hor, key_height,  2, WWT_PUSHIMGBTN, WID_OSK_RIGHT, SPR_OSK_RIGHT, biggest_index);
+	AddKey(hor, KEY_PADDING,  8, NWID_SPACER, 0, 0, biggest_index);
+	AddKey(hor, KEY_PADDING, 13, WWT_PUSHTXTBTN, WID_OSK_SPACE, STR_EMPTY, biggest_index);
+	AddKey(hor, KEY_PADDING,  3, NWID_SPACER, 0, 0, biggest_index);
+	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_LEFT,  SPR_OSK_LEFT, biggest_index);
+	AddKey(hor, KEY_PADDING,  2, WWT_PUSHIMGBTN, WID_OSK_RIGHT, SPR_OSK_RIGHT, biggest_index);
 	return hor;
 }
 
