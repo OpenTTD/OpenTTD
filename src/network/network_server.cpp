@@ -299,8 +299,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	extern byte _network_clients_connected;
 	_network_clients_connected--;
 
-	DeleteWindowById(WC_CLIENT_LIST_POPUP, this->client_id);
-
 	this->SendPackets(true);
 
 	delete this->GetInfo();
@@ -2076,7 +2074,6 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
 	NetworkAction action = (company_id == COMPANY_SPECTATOR) ? NETWORK_ACTION_COMPANY_SPECTATOR : NETWORK_ACTION_COMPANY_JOIN;
 	NetworkServerSendChat(action, DESTTYPE_BROADCAST, 0, "", client_id, company_id + 1);
 
-	InvalidateWindowClassesData(WC_CLIENT_LIST_POPUP);
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
 }
 

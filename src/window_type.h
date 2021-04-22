@@ -472,12 +472,6 @@ enum WindowClass {
 	WC_CLIENT_LIST,
 
 	/**
-	 * Popup for the client list; %Window numbers:
-	 *   - #ClientID = #ClientListPopupWidgets
-	 */
-	WC_CLIENT_LIST_POPUP,
-
-	/**
 	 * Network status window; %Window numbers:
 	 *   - #WN_NETWORK_STATUS_WINDOW_JOIN = #NetworkJoinStatusWidgets
 	 *   - #WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD = #NetworkContentDownloadStatusWidgets

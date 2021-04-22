@@ -17,6 +17,7 @@
 #include "network.h"
 #include "network_base.h"
 #include "network_content.h"
+#include "network_server.h"
 #include "../gui.h"
 #include "network_udp.h"
 #include "../window_func.h"
@@ -26,6 +27,7 @@
 #include "../querystring_gui.h"
 #include "../sortlist_type.h"
 #include "../company_func.h"
+#include "../command_func.h"
 #include "../core/geometry_func.hpp"
 #include "../genworld.h"
 #include "../map_type.h"
@@ -1570,146 +1572,6 @@ NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company)
 
 extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 
-/**
- * Prototype for ClientList actions.
- * @param ci The information about the current client.
- */
-typedef void ClientList_Action_Proc(const NetworkClientInfo *ci);
-
-static const NWidgetPart _nested_client_list_popup_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_GREY, WID_CLP_PANEL), EndContainer(),
-};
-
-static WindowDesc _client_list_popup_desc(
-	WDP_AUTO, nullptr, 0, 0,
-	WC_CLIENT_LIST_POPUP, WC_CLIENT_LIST,
-	0,
-	_nested_client_list_popup_widgets, lengthof(_nested_client_list_popup_widgets)
-);
-
-/* Here we start to define the options out of the menu */
-static void ClientList_Kick(const NetworkClientInfo *ci)
-{
-	NetworkServerKickClient(ci->client_id, nullptr);
-}
-
-static void ClientList_Ban(const NetworkClientInfo *ci)
-{
-	NetworkServerKickOrBanIP(ci->client_id, true, nullptr);
-}
-
-/** Popup selection window to chose an action to perform */
-struct NetworkClientListPopupWindow : Window {
-	/** Container for actions that can be executed. */
-	struct ClientListAction {
-		StringID name;                ///< Name of the action to execute
-		ClientList_Action_Proc *proc; ///< Action to execute
-	};
-
-	uint sel_index;
-	ClientID client_id;
-	Point desired_location;
-	std::vector<ClientListAction> actions; ///< Actions to execute
-
-	/**
-	 * Add an action to the list of actions to execute.
-	 * @param name the name of the action
-	 * @param proc the procedure to execute for the action
-	 */
-	inline void AddAction(StringID name, ClientList_Action_Proc *proc)
-	{
-		this->actions.push_back({name, proc});
-	}
-
-	NetworkClientListPopupWindow(WindowDesc *desc, int x, int y, ClientID client_id) :
-			Window(desc),
-			sel_index(0), client_id(client_id)
-	{
-		this->desired_location.x = x;
-		this->desired_location.y = y;
-
-		const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
-
-		/* A server can kick clients (but not himself). */
-		if (_network_server && _network_own_client_id != ci->client_id) {
-			this->AddAction(STR_NETWORK_CLIENTLIST_KICK, &ClientList_Kick);
-			this->AddAction(STR_NETWORK_CLIENTLIST_BAN, &ClientList_Ban);
-		}
-
-		this->InitNested(client_id);
-		CLRBITS(this->flags, WF_WHITE_BORDER);
-	}
-
-	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
-	{
-		return this->desired_location;
-	}
-
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
-	{
-		Dimension d = *size;
-		for (const ClientListAction &action : this->actions) {
-			d = maxdim(GetStringBoundingBox(action.name), d);
-		}
-
-		d.height *= (uint)this->actions.size();
-		d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT + 4 + 4; // Give the list a bit of padding on both sides.
-		d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-		*size = d;
-	}
-
-	void DrawWidget(const Rect &r, int widget) const override
-	{
-		/* Draw the actions */
-		int sel = this->sel_index;
-		int y = r.top + WD_FRAMERECT_TOP;
-		for (const ClientListAction &action : this->actions) {
-			TextColour colour;
-			if (sel-- == 0) { // Selected item, highlight it
-				GfxFillRect(r.left + 1, y, r.right - 1, y + FONT_HEIGHT_NORMAL - 1, PC_BLACK);
-				colour = TC_WHITE;
-			} else {
-				colour = TC_BLACK;
-			}
-
-			DrawString(r.left + WD_FRAMERECT_LEFT + 4, r.right - WD_FRAMERECT_RIGHT - 4, y, action.name, colour);
-			y += FONT_HEIGHT_NORMAL;
-		}
-	}
-
-	void OnMouseLoop() override
-	{
-		/* We selected an action */
-		uint index = (_cursor.pos.y - this->top - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL;
-
-		if (_left_button_down) {
-			if (index == this->sel_index || index >= this->actions.size()) return;
-
-			this->sel_index = index;
-			this->SetDirty();
-		} else {
-			if (index < this->actions.size() && _cursor.pos.y >= this->top) {
-				const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(this->client_id);
-				if (ci != nullptr) this->actions[index].proc(ci);
-			}
-
-			DeleteWindowByClass(WC_CLIENT_LIST_POPUP);
-		}
-	}
-};
-
-/**
- * Show the popup (action list)
- */
-static void PopupClientList(ClientID client_id, int x, int y)
-{
-	DeleteWindowByClass(WC_CLIENT_LIST_POPUP);
-
-	if (NetworkClientInfo::GetByClientID(client_id) == nullptr) return;
-
-	new NetworkClientListPopupWindow(&_client_list_popup_desc, x, y, client_id);
-}
-
 static const NWidgetPart _nested_client_list_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY),
@@ -1759,6 +1621,17 @@ static WindowDesc _client_list_desc(
 );
 
 /**
+ * The possibly entries in a DropDown for an admin.
+ * Client and companies are mixed; they just have to be unique.
+ */
+enum DropDownAdmin {
+	DD_CLIENT_ADMIN_KICK,
+	DD_CLIENT_ADMIN_BAN,
+	DD_COMPANY_ADMIN_RESET,
+	DD_COMPANY_ADMIN_UNLOCK,
+};
+
+/**
  * Button shown for either a company or client in the client-list.
  *
  * These buttons are dynamic and strongly depends on which company/client
@@ -1774,11 +1647,11 @@ public:
 	uint height;       ///< Calculated height of the button.
 	uint width;        ///< Calculated width of the button.
 
-	ButtonCommon(SpriteID sprite, StringID tooltip, Colours colour) :
+	ButtonCommon(SpriteID sprite, StringID tooltip, Colours colour, bool disabled = false) :
 		sprite(sprite),
 		tooltip(tooltip),
 		colour(colour),
-		disabled(false)
+		disabled(disabled)
 	{
 		Dimension d = GetSpriteSize(sprite);
 		this->height = d.height + ScaleGUITrad(WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM);
@@ -1803,8 +1676,8 @@ private:
 	ButtonCallback proc;  ///< Callback proc to call when button is pressed.
 
 public:
-	Button(SpriteID sprite, StringID tooltip, Colours colour, T id, ButtonCallback proc) :
-		ButtonCommon(sprite, tooltip, colour),
+	Button(SpriteID sprite, StringID tooltip, Colours colour, T id, ButtonCallback proc, bool disabled = false) :
+		ButtonCommon(sprite, tooltip, colour, disabled),
 		id(id),
 		proc(proc)
 	{
@@ -1829,6 +1702,9 @@ struct NetworkClientListWindow : Window {
 private:
 	ClientListWidgets query_widget; ///< During a query this tracks what widget caused the query.
 	CompanyID join_company; ///< During query for company password, this stores what company we wanted to join.
+
+	ClientID dd_client_id; ///< During admin dropdown, track which client this was for.
+	CompanyID dd_company_id; ///< During admin dropdown, track which company this was for.
 
 	Scrollbar *vscroll; ///< Vertical scrollbar of this window.
 	uint line_height; ///< Current lineheight of each entry in the matrix.
@@ -1877,9 +1753,41 @@ private:
 	 */
 	static void OnClickClientAdmin(NetworkClientListWindow *w, Point pt, ClientID client_id)
 	{
-		PopupClientList(client_id, pt.x + w->left, pt.y + w->top);
+		DropDownList list;
+		list.emplace_back(new DropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK, DD_CLIENT_ADMIN_KICK, false));
+		list.emplace_back(new DropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN, DD_CLIENT_ADMIN_BAN, false));
+
+		Rect wi_rect;
+		wi_rect.left   = pt.x;
+		wi_rect.right  = pt.x;
+		wi_rect.top    = pt.y;
+		wi_rect.bottom = pt.y;
+
+		w->dd_client_id = client_id;
+		ShowDropDownListAt(w, std::move(list), -1, WID_CL_MATRIX, wi_rect, COLOUR_GREY, true, true);
 	}
 
+	/**
+	 * Admin button on a Company is clicked.
+	 * @param w The instance of this window.
+	 * @param pt The point where this button was clicked.
+	 * @param company_id The company this button was assigned to.
+	 */
+	static void OnClickCompanyAdmin(NetworkClientListWindow *w, Point pt, CompanyID company_id)
+	{
+		DropDownList list;
+		list.emplace_back(new DropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET, DD_COMPANY_ADMIN_RESET, NetworkCompanyHasClients(company_id)));
+		list.emplace_back(new DropDownListStringItem(STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK, DD_COMPANY_ADMIN_UNLOCK, !NetworkCompanyIsPassworded(company_id)));
+
+		Rect wi_rect;
+		wi_rect.left   = pt.x;
+		wi_rect.right  = pt.x;
+		wi_rect.top    = pt.y;
+		wi_rect.bottom = pt.y;
+
+		w->dd_company_id = company_id;
+		ShowDropDownListAt(w, std::move(list), -1, WID_CL_MATRIX, wi_rect, COLOUR_GREY, true, true);
+	}
 	/**
 	 * Chat button on a Client is clicked.
 	 * @param w The instance of this window.
@@ -1900,6 +1808,7 @@ private:
 	{
 		ButtonCommon *chat_button = new CompanyButton(SPR_CHAT, company_id == COMPANY_SPECTATOR ? STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP : STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyChat);
 
+		if (_network_server) this->buttons[line_count].emplace_back(new CompanyButton(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP, COLOUR_RED, company_id, &NetworkClientListWindow::OnClickCompanyAdmin));
 		this->buttons[line_count].emplace_back(chat_button);
 		if (own_ci->client_playas != company_id) this->buttons[line_count].emplace_back(new CompanyButton(SPR_JOIN, STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyJoin));
 
@@ -1910,12 +1819,13 @@ private:
 			if (ci->client_playas != company_id) continue;
 			has_players = true;
 
+			if (_network_server) this->buttons[line_count].emplace_back(new ClientButton(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP, COLOUR_RED, ci->client_id, &NetworkClientListWindow::OnClickClientAdmin, _network_own_client_id == ci->client_id));
 			if (_network_own_client_id != ci->client_id) this->buttons[line_count].emplace_back(new ClientButton(SPR_CHAT, STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP, COLOUR_ORANGE, ci->client_id, &NetworkClientListWindow::OnClickClientChat));
-			if (_network_server && _network_own_client_id != ci->client_id) this->buttons[line_count].emplace_back(new ClientButton(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_TOOLTIP, COLOUR_RED, ci->client_id, &NetworkClientListWindow::OnClickClientAdmin));
 
 			this->line_count += 1;
 		}
 
+		/* Disable the chat button when there are players in this company. */
 		chat_button->disabled = !has_players;
 	}
 
@@ -2084,6 +1994,14 @@ public:
 		return false;
 	}
 
+	void OnDropdownClose(Point pt, int widget, int index, bool instant_close) override
+	{
+		/* If you close the dropdown outside the list, don't take any action. */
+		if (widget == WID_CL_MATRIX) return;
+
+		Window::OnDropdownClose(pt, widget, index, instant_close);
+	}
+
 	void OnDropdownSelect(int widget, int index) override
 	{
 		switch (widget) {
@@ -2091,6 +2009,30 @@ public:
 				if (!_network_server) break;
 
 				_settings_client.network.server_advertise = (index != 0);
+				break;
+
+			case WID_CL_MATRIX:
+				switch (index) {
+					case DD_CLIENT_ADMIN_KICK:
+						NetworkServerKickClient(this->dd_client_id, nullptr);
+						break;
+
+					case DD_CLIENT_ADMIN_BAN:
+						NetworkServerKickOrBanIP(this->dd_client_id, true, nullptr);
+						break;
+
+					case DD_COMPANY_ADMIN_RESET:
+						if (NetworkCompanyHasClients(this->dd_company_id)) break;
+						DoCommandP(0, CCA_DELETE | this->dd_company_id << 16 | CRR_MANUAL << 24, 0, CMD_COMPANY_CTRL);
+						break;
+
+					case DD_COMPANY_ADMIN_UNLOCK:
+						NetworkServerSetCompanyPassword(this->dd_company_id, "", false);
+						break;
+
+					default:
+						NOT_REACHED();
+				}
 				break;
 
 			default:

@@ -2124,10 +2124,6 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company 
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online players
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :New company
 
-# Network client list popup for clients
-STR_NETWORK_CLIENTLIST_KICK                                     :Kick
-STR_NETWORK_CLIENTLIST_BAN                                      :Ban
-
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multiplayer
 STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
@@ -2144,12 +2140,18 @@ STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Edit you
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Your player name
 STR_NETWORK_CLIENT_LIST_PLAYER_HOST                             :{WHITE}(host) {BLACK}{RAW_STRING}
 STR_NETWORK_CLIENT_LIST_PLAYER_SELF                             :{WHITE}(you) {BLACK}{RAW_STRING}
-STR_NETWORK_CLIENT_LIST_ADMIN_TOOLTIP                           :{BLACK}Administrative actions to perform for this client
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrative actions to perform for this client
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrative actions to perform for this company
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Join this company
 STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Send a message to this player
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Send a message to all players of this company
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Send a message to all spectators
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Spectators
+
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kick
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Ban
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Delete
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Password unlock
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
