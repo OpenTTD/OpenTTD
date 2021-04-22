@@ -946,7 +946,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	}
 
 	/* We need a valid name.. make it Player */
-	if (StrEmpty(name)) strecpy(name, "Player", lastof(name));
+	if (!NetworkIsValidClientName(name)) strecpy(name, "Player", lastof(name));
 
 	if (!NetworkFindName(name, lastof(name))) { // Change name if duplicate
 		/* We could not create a name for this client */

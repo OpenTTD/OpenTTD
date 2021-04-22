@@ -808,8 +808,7 @@ public:
 			}
 
 			case WID_NG_CLIENT:
-				/* Make sure the name does not start with a space, so TAB completion works */
-				if (!StrEmpty(this->name_editbox.text.buf) && this->name_editbox.text.buf[0] != ' ') {
+				if (NetworkIsValidClientName(this->name_editbox.text.buf)) {
 					strecpy(_settings_client.network.client_name, this->name_editbox.text.buf, lastof(_settings_client.network.client_name));
 				} else {
 					strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));

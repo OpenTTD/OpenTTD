@@ -1251,6 +1251,20 @@ void NetworkClientsToSpectators(CompanyID cid)
 }
 
 /**
+ * Check whether the given client name is deemed valid for use in network games.
+ * An empty name (null or '') is not valid as that is essentially no name at all.
+ * A name starting with white space is not valid for tab completion purposes.
+ * @param client_name The client name to check for validity.
+ * @return True iff the name is valid.
+ */
+bool NetworkIsValidClientName(const char *client_name)
+{
+	if (StrEmpty(client_name)) return false;
+	if (*client_name == ' ') return false;
+	return true;
+}
+
+/**
  * Send the server our name.
  */
 void NetworkUpdateClientName()
