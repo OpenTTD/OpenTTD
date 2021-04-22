@@ -716,7 +716,14 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 		return true;
 	}
 
-	if (!NetworkServerChangeClientName(client_id, argv[2])) {
+	char *client_name = argv[2];
+	StrTrimInPlace(client_name);
+	if (!NetworkIsValidClientName(client_name)) {
+		IConsoleError("Cannot give a client an empty name");
+		return true;
+	}
+
+	if (!NetworkServerChangeClientName(client_id, client_name)) {
 		IConsoleError("Cannot give a client a duplicate name");
 	}
 

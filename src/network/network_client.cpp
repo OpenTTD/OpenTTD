@@ -1308,6 +1308,11 @@ void NetworkUpdateClientName()
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 
 	if (ci == nullptr) return;
+	/* There is no validation on string settings, it is actually a post change callback.
+	 * This method is called from that post change callback. So, when the client name is
+	 * changed via the console there is no easy way to prevent an invalid name. Though,
+	 * we can prevent it getting sent here. */
+	if (!NetworkValidateClientName()) return;
 
 	/* Don't change the name if it is the same as the old name */
 	if (strcmp(ci->client_name, _settings_client.network.client_name) != 0) {
