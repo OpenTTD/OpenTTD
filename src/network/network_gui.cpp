@@ -1755,6 +1755,7 @@ private:
 	Scrollbar *vscroll; ///< Vertical scrollbar of this window.
 	uint line_height; ///< Current lineheight of each entry in the matrix.
 	uint line_count; ///< Amount of lines in the matrix.
+	int hover_index; ///< Index of the current line we are hovering over, or -1 if none.
 
 	std::map<uint, std::vector<std::unique_ptr<ButtonCommon>>> buttons; ///< Per line which buttons are available.
 
@@ -2261,6 +2262,11 @@ public:
 			case WID_CL_MATRIX: {
 				uint line = 0;
 
+				if (this->hover_index >= 0) {
+					uint offset = this->hover_index * this->line_height;
+					GfxFillRect(r.left + 2, r.top + offset, r.right - 1, r.top + offset + this->line_height - 1, GREY_SCALE(9));
+				}
+
 				for (const Company *c : Company::Iterate()) {
 					this->DrawCompany(c, r.left, r.right, r.top, line);
 				}
@@ -2269,6 +2275,24 @@ public:
 
 				break;
 			}
+		}
+	}
+
+	virtual void OnMouseLoop() override
+	{
+		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) != WID_CL_MATRIX) {
+			this->hover_index = -1;
+			this->SetDirty();
+			return;
+		}
+
+		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_CL_MATRIX);
+		int y = _cursor.pos.y - this->top - nwi->pos_y - 2;
+		int index = y / this->line_height;
+
+		if (index != this->hover_index) {
+			this->hover_index = index;
+			this->SetDirty();
 		}
 	}
 };
