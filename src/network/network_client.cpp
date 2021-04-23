@@ -623,6 +623,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	/* The server validates the name when receiving it from clients, so when it is wrong
+	 * here something went really wrong. In the best case the packet got malformed on its
+	 * way too us, in the worst case the server is broken or compromised. */
+	if (!NetworkIsValidClientName(name)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
