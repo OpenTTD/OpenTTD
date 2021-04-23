@@ -2,26 +2,27 @@
 
 ## Required/optional libraries
 
-The following libraries are used by OpenTTD for:
+OpenTTD makes use of the following external libraries:
 
-- zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads,
+- (encouraged) zlib: (de)compressing of old (0.3.0-1.0.5) savegames, content downloads,
    heightmaps
-- liblzo2: (de)compressing of old (pre 0.3.0) savegames
-- liblzma: (de)compressing of savegames (1.1.0 and later)
-- libpng: making screenshots and loading heightmaps
+- (encouraged) liblzma: (de)compressing of savegames (1.1.0 and later)
+- (encouraged) libpng: making screenshots and loading heightmaps
+- (optional) liblzo2: (de)compressing of old (pre 0.3.0) savegames
+
+For Linux, the following additional libraries are used (for non-dedicated only):
+
+- libSDL2: hardware access (video, sound, mouse)
 - libfreetype: loading generic fonts and rendering them
 - libfontconfig: searching for fonts, resolving font names to actual fonts
 - libicu: handling of right-to-left scripts (e.g. Arabic and Persian) and
-   natural sorting of strings (Linux only)
-- libSDL2: hardware access (video, sound, mouse) (not required for Windows or macOS)
+   natural sorting of strings
 
 OpenTTD does not require any of the libraries to be present, but without
 liblzma you cannot open most recent savegames and without zlib you cannot
 open most older savegames or use the content downloading system.
-Without libSDL/liballegro on non-Windows and non-macOS machines you have
-no graphical user interface; you would be building a dedicated server.
 
-## Windows:
+## Windows
 
 You need Microsoft Visual Studio 2017 or more recent.
 
@@ -77,6 +78,8 @@ files himself via the `ZERO_CHECK` project.
 
 ## All other platforms
 Minimum required version of CMake is 3.9.
+By default this produces a Debug build with assertations enabled.
+This is a far slower build than release builds.
 
 ```bash
 mkdir build
@@ -87,6 +90,25 @@ make
 
 For more information on how to use CMake (including how to make Release builds),
 we urge you to read [their excellent manual](https://cmake.org/cmake/help/latest/guide/user-interaction/index.html).
+
+## CMake Options
+
+Via CMake, several options can be influenced to get different types of
+builds.
+
+- `-DCMAKE_BUILD_TYPE=RelWithDebInfo`: build a release build. This is
+   significant faster than a debug build, but has far less useful information
+   in case of a crash.
+- `-DOPTION_DEDICATED=ON`: build OpenTTD without a GUI. Useful if you are
+   running a headless server, as it requires less libraries to operate.
+- `-DOPTION_USE_ASSERTS=OFF`: disable asserts. Use with care, as assert
+   statements capture early signs of trouble. Release builds have them
+   disabled by default.
+- `-DOPTION_USE_THREADS=OFF`: disable the use of threads. This will block
+   the interface in many places, and in general gives a worse experience of
+   the game. Use with care.
+- `-DOPTION_TOOLS_ONLY=ON`: only build tools like `strgen`. Does not build
+   the game itself. Useful for cross-compiling.
 
 ## Supported compilers
 

@@ -254,7 +254,7 @@ const char *VideoDriver_CocoaOpenGL::AllocateContext(bool allow_software)
 
 	CGLSetCurrentContext(this->gl_context);
 
-	return OpenGLBackend::Create(&GetOGLProcAddressCallback);
+	return OpenGLBackend::Create(&GetOGLProcAddressCallback, this->GetScreenSize());
 }
 
 NSView *VideoDriver_CocoaOpenGL::AllocateDrawView()

@@ -323,4 +323,22 @@ enum Support8bpp {
 	S8BPP_HARDWARE, ///< Full 8bpp support by OS and hardware.
 };
 
+	/** How to align the to-be drawn text. */
+enum StringAlignment {
+	SA_LEFT        = 0 << 0, ///< Left align the text.
+	SA_HOR_CENTER  = 1 << 0, ///< Horizontally center the text.
+	SA_RIGHT       = 2 << 0, ///< Right align the text (must be a single bit).
+	SA_HOR_MASK    = 3 << 0, ///< Mask for horizontal alignment.
+
+	SA_TOP         = 0 << 2, ///< Top align the text.
+	SA_VERT_CENTER = 1 << 2, ///< Vertically center the text.
+	SA_BOTTOM      = 2 << 2, ///< Bottom align the text.
+	SA_VERT_MASK   = 3 << 2, ///< Mask for vertical alignment.
+
+	SA_CENTER      = SA_HOR_CENTER | SA_VERT_CENTER, ///< Center both horizontally and vertically.
+
+	SA_FORCE       = 1 << 4, ///< Force the alignment, i.e. don't swap for RTL languages.
+};
+DECLARE_ENUM_AS_BIT_SET(StringAlignment)
+
 #endif /* GFX_TYPE_H */

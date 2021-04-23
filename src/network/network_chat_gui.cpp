@@ -281,7 +281,6 @@ static void SendChat(const char *buf, DestType type, int dest)
 /** Window to enter the chat message in. */
 struct NetworkChatWindow : public Window {
 	DestType dtype;       ///< The type of destination.
-	StringID dest_string; ///< String representation of the destination.
 	int dest;             ///< The identifier of the destination.
 	QueryString message_editbox; ///< Message editbox.
 
@@ -305,9 +304,10 @@ struct NetworkChatWindow : public Window {
 			STR_NETWORK_CHAT_CLIENT_CAPTION
 		};
 		assert((uint)this->dtype < lengthof(chat_captions));
-		this->dest_string = chat_captions[this->dtype];
 
-		this->InitNested(type);
+		this->CreateNestedTree();
+		this->GetWidget<NWidgetCore>(WID_NC_DESTINATION)->widget_data = chat_captions[this->dtype];
+		this->FinishInitNested(type);
 
 		this->SetFocusedWidget(WID_NC_TEXTBOX);
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
@@ -462,27 +462,13 @@ struct NetworkChatWindow : public Window {
 		return pt;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void SetStringParameters(int widget) const override
 	{
 		if (widget != WID_NC_DESTINATION) return;
 
 		if (this->dtype == DESTTYPE_CLIENT) {
 			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
 		}
-		Dimension d = GetStringBoundingBox(this->dest_string);
-		d.width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-		d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-		*size = maxdim(*size, d);
-	}
-
-	void DrawWidget(const Rect &r, int widget) const override
-	{
-		if (widget != WID_NC_DESTINATION) return;
-
-		if (this->dtype == DESTTYPE_CLIENT) {
-			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
-		}
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->dest_string, TC_BLACK, SA_RIGHT);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -530,7 +516,7 @@ static const NWidgetPart _nested_chat_window_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WID_NC_CLOSE),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_NC_BACKGROUND),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_NC_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_NC_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetTextColour(TC_BLACK), SetAlignment(SA_TOP | SA_RIGHT), SetDataTip(STR_NULL, STR_NULL),
 				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NC_TEXTBOX), SetMinimalSize(100, 12), SetPadding(1, 0, 1, 0), SetResize(1, 0),
 																	SetDataTip(STR_NETWORK_CHAT_OSKTITLE, STR_NULL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NC_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NETWORK_CHAT_SEND, STR_NULL),

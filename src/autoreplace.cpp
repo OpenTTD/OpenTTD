@@ -11,6 +11,7 @@
 #include "command_func.h"
 #include "group.h"
 #include "autoreplace_base.h"
+#include "core/bitmath_func.hpp"
 #include "core/pool_func.hpp"
 
 #include "safeguards.h"
@@ -64,7 +65,7 @@ void RemoveAllEngineReplacement(EngineRenewList *erl)
 EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group, bool *replace_when_old)
 {
 	const EngineRenew *er = GetEngineReplacement(erl, engine, group);
-	if (er == nullptr && (group == DEFAULT_GROUP || (Group::IsValidID(group) && !Group::Get(group)->replace_protection))) {
+	if (er == nullptr && (group == DEFAULT_GROUP || (Group::IsValidID(group) && !HasBit(Group::Get(group)->flags, GroupFlags::GF_REPLACE_PROTECTION)))) {
 		/* We didn't find anything useful in the vehicle's own group so we will try ALL_GROUP */
 		er = GetEngineReplacement(erl, engine, ALL_GROUP);
 	}

@@ -242,10 +242,10 @@ static const NWidgetPart _nested_company_finances_widgets[] = {
 			EndContainer(),
 			NWidget(NWID_SPACER), SetFill(0, 0), SetMinimalSize(30, 0),
 			NWidget(NWID_VERTICAL), // Vertical column with bank balance amount, loan amount, and total.
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_BALANCE_VALUE), SetDataTip(STR_NULL, STR_NULL),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_LOAN_VALUE), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_BALANCE_VALUE), SetDataTip(STR_FINANCES_TOTAL_CURRENCY, STR_NULL), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_LOAN_VALUE), SetDataTip(STR_FINANCES_TOTAL_CURRENCY, STR_NULL), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 				NWidget(WWT_EMPTY, COLOUR_GREY, WID_CF_LOAN_LINE), SetMinimalSize(0, 2), SetFill(1, 0),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_TOTAL_VALUE), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_CF_TOTAL_VALUE), SetDataTip(STR_FINANCES_TOTAL_CURRENCY, STR_NULL), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 			EndContainer(),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_CF_SEL_MAXLOAN),
 				NWidget(NWID_HORIZONTAL),
@@ -291,6 +291,24 @@ struct CompanyFinancesWindow : Window {
 				SetDParam(0, (CompanyID)this->window_number);
 				SetDParam(1, (CompanyID)this->window_number);
 				break;
+
+			case WID_CF_BALANCE_VALUE: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				SetDParam(0, c->money);
+				break;
+			}
+
+			case WID_CF_LOAN_VALUE: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				SetDParam(0, c->current_loan);
+				break;
+			}
+
+			case WID_CF_TOTAL_VALUE: {
+				const Company *c = Company::Get((CompanyID)this->window_number);
+				SetDParam(0, c->money - c->current_loan);
+				break;
+			}
 
 			case WID_CF_MAXLOAN_VALUE:
 				SetDParam(0, _economy.max_loan);
@@ -347,27 +365,6 @@ struct CompanyFinancesWindow : Window {
 				if (wid_offset <= age) {
 					DrawYearColumn(r, _cur_year - (age - wid_offset), c->yearly_expenses + (age - wid_offset));
 				}
-				break;
-			}
-
-			case WID_CF_BALANCE_VALUE: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
-				SetDParam(0, c->money);
-				DrawString(r.left, r.right, r.top, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
-				break;
-			}
-
-			case WID_CF_LOAN_VALUE: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
-				SetDParam(0, c->current_loan);
-				DrawString(r.left, r.right, r.top, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
-				break;
-			}
-
-			case WID_CF_TOTAL_VALUE: {
-				const Company *c = Company::Get((CompanyID)this->window_number);
-				SetDParam(0, c->money - c->current_loan);
-				DrawString(r.left, r.right, r.top, STR_FINANCES_TOTAL_CURRENCY, TC_FROMSTRING, SA_RIGHT);
 				break;
 			}
 
@@ -956,7 +953,7 @@ public:
 				break;
 
 			case WID_SCL_MATRIX: {
-				uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SCL_MATRIX, 0, this->line_height);
+				uint row = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SCL_MATRIX);
 				if (row >= this->rows) return;
 
 				if (this->livery_class < LC_GROUP_RAIL) {
@@ -1200,70 +1197,82 @@ static const NWidgetPart _nested_select_company_manager_face_widgets[] = {
 						EndContainer(),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 4),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_EYECOLOUR, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_HAS_MOUSTACHE_EARRING), SetDataTip(STR_EMPTY, STR_FACE_MOUSTACHE_EARRING_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_HAS_GLASSES_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAS_GLASSES_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_GLASSES, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_HAS_GLASSES), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_SPACER), SetMinimalSize(0, 2), SetFill(1, 0),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_HAIR_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_HAIR_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_HAIR, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_HAIR_L), SetDataTip(AWV_DECREASE, STR_FACE_HAIR_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_HAIR), SetDataTip(STR_EMPTY, STR_FACE_HAIR_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_HAIR_R), SetDataTip(AWV_INCREASE, STR_FACE_HAIR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_EYEBROWS_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_EYEBROWS_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_EYEBROWS, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYEBROWS_L), SetDataTip(AWV_DECREASE, STR_FACE_EYEBROWS_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_EYEBROWS), SetDataTip(STR_EMPTY, STR_FACE_EYEBROWS_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYEBROWS_R), SetDataTip(AWV_INCREASE, STR_FACE_EYEBROWS_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_EYECOLOUR_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_EYECOLOUR_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_EYECOLOUR, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYECOLOUR_L), SetDataTip(AWV_DECREASE, STR_FACE_EYECOLOUR_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_EYECOLOUR), SetDataTip(STR_EMPTY, STR_FACE_EYECOLOUR_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_EYECOLOUR_R), SetDataTip(AWV_INCREASE, STR_FACE_EYECOLOUR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_GLASSES_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_GLASSES_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_GLASSES, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_GLASSES_L), SetDataTip(AWV_DECREASE, STR_FACE_GLASSES_TOOLTIP_2),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_GLASSES), SetDataTip(STR_EMPTY, STR_FACE_GLASSES_TOOLTIP_2),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_GLASSES_R), SetDataTip(AWV_INCREASE, STR_FACE_GLASSES_TOOLTIP_2),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_NOSE_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_NOSE_TEXT), SetFill(1, 0),  SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_NOSE, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_NOSE_L), SetDataTip(AWV_DECREASE, STR_FACE_NOSE_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_NOSE), SetDataTip(STR_EMPTY, STR_FACE_NOSE_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_NOSE_R), SetDataTip(AWV_INCREASE, STR_FACE_NOSE_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_LIPS_MOUSTACHE_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_LIPS_MOUSTACHE_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_MOUSTACHE, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_LIPS_MOUSTACHE_L), SetDataTip(AWV_DECREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_LIPS_MOUSTACHE), SetDataTip(STR_EMPTY, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_LIPS_MOUSTACHE_R), SetDataTip(AWV_INCREASE, STR_FACE_LIPS_MOUSTACHE_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_CHIN_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_CHIN_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_CHIN, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_CHIN_L), SetDataTip(AWV_DECREASE, STR_FACE_CHIN_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_CHIN), SetDataTip(STR_EMPTY, STR_FACE_CHIN_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_CHIN_R), SetDataTip(AWV_INCREASE, STR_FACE_CHIN_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_JACKET_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_JACKET_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_JACKET, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_JACKET_L), SetDataTip(AWV_DECREASE, STR_FACE_JACKET_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_JACKET), SetDataTip(STR_EMPTY, STR_FACE_JACKET_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_JACKET_R), SetDataTip(AWV_INCREASE, STR_FACE_JACKET_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_COLLAR_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_COLLAR_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_COLLAR, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_COLLAR_L), SetDataTip(AWV_DECREASE, STR_FACE_COLLAR_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_COLLAR), SetDataTip(STR_EMPTY, STR_FACE_COLLAR_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_COLLAR_R), SetDataTip(AWV_INCREASE, STR_FACE_COLLAR_TOOLTIP),
 						EndContainer(),
 						NWidget(NWID_HORIZONTAL),
-							NWidget(WWT_EMPTY, INVALID_COLOUR, WID_SCMF_TIE_EARRING_TEXT), SetFill(1, 0),
+							NWidget(WWT_TEXT, INVALID_COLOUR, WID_SCMF_TIE_EARRING_TEXT), SetFill(1, 0), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT),
+								SetDataTip(STR_FACE_EARRING, STR_NULL), SetTextColour(TC_GOLD), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_TIE_EARRING_L), SetDataTip(AWV_DECREASE, STR_FACE_TIE_EARRING_TOOLTIP),
 							NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_SCMF_TIE_EARRING), SetDataTip(STR_EMPTY, STR_FACE_TIE_EARRING_TOOLTIP),
 							NWidget(WWT_PUSHARROWBTN, COLOUR_GREY, WID_SCMF_TIE_EARRING_R), SetDataTip(AWV_INCREASE, STR_FACE_TIE_EARRING_TOOLTIP),
@@ -1293,9 +1302,6 @@ class SelectCompanyManagerFaceWindow : public Window
 
 	Dimension yesno_dim;  ///< Dimension of a yes/no button of a part in the advanced face window.
 	Dimension number_dim; ///< Dimension of a number widget of a part in the advanced face window.
-
-	static const StringID PART_TEXTS_IS_FEMALE[]; ///< Strings depending on #is_female, used to describe parts (2 entries for a part).
-	static const StringID PART_TEXTS[];           ///< Fixed strings to describe parts of the face.
 
 	/**
 	 * Draw dynamic a label to the left of the button and a value in the button
@@ -1329,6 +1335,10 @@ class SelectCompanyManagerFaceWindow : public Window
 		this->ge = (GenderEthnicity)GB(this->face, _cmf_info[CMFV_GEN_ETHN].offset, _cmf_info[CMFV_GEN_ETHN].length); // get the gender and ethnicity
 		this->is_female = HasBit(this->ge, GENDER_FEMALE); // get the gender: 0 == male and 1 == female
 		this->is_moust_male = !is_female && GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE, this->ge) != 0; // is a male face with moustache
+
+		this->GetWidget<NWidgetCore>(WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT)->widget_data = this->is_female ? STR_FACE_EARRING : STR_FACE_MOUSTACHE;
+		this->GetWidget<NWidgetCore>(WID_SCMF_TIE_EARRING_TEXT)->widget_data           = this->is_female ? STR_FACE_EARRING : STR_FACE_TIE;
+		this->GetWidget<NWidgetCore>(WID_SCMF_LIPS_MOUSTACHE_TEXT)->widget_data        = this->is_moust_male ? STR_FACE_MOUSTACHE : STR_FACE_LIPS;
 	}
 
 public:
@@ -1390,41 +1400,27 @@ public:
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
+			case WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT:
+				*size = maxdim(*size, GetStringBoundingBox(STR_FACE_EARRING));
+				*size = maxdim(*size, GetStringBoundingBox(STR_FACE_MOUSTACHE));
+				break;
+
+			case WID_SCMF_TIE_EARRING_TEXT:
+				*size = maxdim(*size, GetStringBoundingBox(STR_FACE_EARRING));
+				*size = maxdim(*size, GetStringBoundingBox(STR_FACE_TIE));
+				break;
+
+			case WID_SCMF_LIPS_MOUSTACHE_TEXT:
+				*size = maxdim(*size, GetStringBoundingBox(STR_FACE_LIPS));
+				*size = maxdim(*size, GetStringBoundingBox(STR_FACE_MOUSTACHE));
+				break;
+
 			case WID_SCMF_FACE: {
 				Dimension face_size = GetSpriteSize(SPR_GRADIENT);
 				size->width  = std::max(size->width,  face_size.width);
 				size->height = std::max(size->height, face_size.height);
 				break;
 			}
-
-			case WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT:
-			case WID_SCMF_TIE_EARRING_TEXT: {
-				int offset = (widget - WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT) * 2;
-				*size = maxdim(GetStringBoundingBox(PART_TEXTS_IS_FEMALE[offset]), GetStringBoundingBox(PART_TEXTS_IS_FEMALE[offset + 1]));
-				size->width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-				break;
-			}
-
-			case WID_SCMF_LIPS_MOUSTACHE_TEXT:
-				*size = maxdim(GetStringBoundingBox(STR_FACE_LIPS), GetStringBoundingBox(STR_FACE_MOUSTACHE));
-				size->width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-				break;
-
-			case WID_SCMF_HAS_GLASSES_TEXT:
-			case WID_SCMF_HAIR_TEXT:
-			case WID_SCMF_EYEBROWS_TEXT:
-			case WID_SCMF_EYECOLOUR_TEXT:
-			case WID_SCMF_GLASSES_TEXT:
-			case WID_SCMF_NOSE_TEXT:
-			case WID_SCMF_CHIN_TEXT:
-			case WID_SCMF_JACKET_TEXT:
-			case WID_SCMF_COLLAR_TEXT:
-				*size = GetStringBoundingBox(PART_TEXTS[widget - WID_SCMF_HAS_GLASSES_TEXT]);
-				size->width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-				size->height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-				break;
 
 			case WID_SCMF_HAS_MOUSTACHE_EARRING:
 			case WID_SCMF_HAS_GLASSES:
@@ -1510,30 +1506,6 @@ public:
 	void DrawWidget(const Rect &r, int widget) const override
 	{
 		switch (widget) {
-			case WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT:
-			case WID_SCMF_TIE_EARRING_TEXT: {
-				StringID str = PART_TEXTS_IS_FEMALE[(widget - WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT) * 2 + this->is_female];
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_GOLD, SA_RIGHT);
-				break;
-			}
-
-			case WID_SCMF_LIPS_MOUSTACHE_TEXT:
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, (this->is_moust_male) ? STR_FACE_MOUSTACHE : STR_FACE_LIPS, TC_GOLD, SA_RIGHT);
-				break;
-
-			case WID_SCMF_HAS_GLASSES_TEXT:
-			case WID_SCMF_HAIR_TEXT:
-			case WID_SCMF_EYEBROWS_TEXT:
-			case WID_SCMF_EYECOLOUR_TEXT:
-			case WID_SCMF_GLASSES_TEXT:
-			case WID_SCMF_NOSE_TEXT:
-			case WID_SCMF_CHIN_TEXT:
-			case WID_SCMF_JACKET_TEXT:
-			case WID_SCMF_COLLAR_TEXT:
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, PART_TEXTS[widget - WID_SCMF_HAS_GLASSES_TEXT], TC_GOLD, SA_RIGHT);
-				break;
-
-
 			case WID_SCMF_HAS_MOUSTACHE_EARRING:
 				if (this->is_female) { // Only for female faces
 					this->DrawFaceStringLabel(WID_SCMF_HAS_MOUSTACHE_EARRING, GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge), true);
@@ -1719,25 +1691,6 @@ public:
 			ShowErrorMessage(STR_FACE_FACECODE_ERR, INVALID_STRING_ID, WL_INFO);
 		}
 	}
-};
-
-/** Both text values of parts of the face that depend on the #is_female boolean value. */
-const StringID SelectCompanyManagerFaceWindow::PART_TEXTS_IS_FEMALE[] = {
-	STR_FACE_MOUSTACHE, STR_FACE_EARRING, // WID_SCMF_HAS_MOUSTACHE_EARRING_TEXT
-	STR_FACE_TIE,       STR_FACE_EARRING, // WID_SCMF_TIE_EARRING_TEXT
-};
-
-/** Textual names for parts of the face. */
-const StringID SelectCompanyManagerFaceWindow::PART_TEXTS[] = {
-	STR_FACE_GLASSES,   // WID_SCMF_HAS_GLASSES_TEXT
-	STR_FACE_HAIR,      // WID_SCMF_HAIR_TEXT
-	STR_FACE_EYEBROWS,  // WID_SCMF_EYEBROWS_TEXT
-	STR_FACE_EYECOLOUR, // WID_SCMF_EYECOLOUR_TEXT
-	STR_FACE_GLASSES,   // WID_SCMF_GLASSES_TEXT
-	STR_FACE_NOSE,      // WID_SCMF_NOSE_TEXT
-	STR_FACE_CHIN,      // WID_SCMF_CHIN_TEXT
-	STR_FACE_JACKET,    // WID_SCMF_JACKET_TEXT
-	STR_FACE_COLLAR,    // WID_SCMF_COLLAR_TEXT
 };
 
 /** Company manager face selection window description */

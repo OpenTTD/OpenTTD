@@ -89,6 +89,8 @@ enum WidgetType {
 	WPT_DATATIP,      ///< Widget part for specifying data and tooltip.
 	WPT_PADDING,      ///< Widget part for specifying a padding.
 	WPT_PIPSPACE,     ///< Widget part for specifying pre/inter/post space for containers.
+	WPT_TEXTCOLOUR,   ///< Widget part for specifying text colour.
+	WPT_ALIGNMENT,    ///< Widget part for specifying text/image alignment.
 	WPT_ENDCONTAINER, ///< Widget part to denote end of a container.
 	WPT_FUNCTION,     ///< Widget part for calling a user function.
 	WPT_SCROLLBAR,    ///< Widget part for attaching a scrollbar.
@@ -296,6 +298,8 @@ public:
 	void SetIndex(int index);
 	void SetDataTip(uint32 widget_data, StringID tool_tip);
 	void SetToolTip(StringID tool_tip);
+	void SetTextColour(TextColour colour);
+	void SetAlignment(StringAlignment align);
 
 	inline void SetLowered(bool lowered);
 	inline bool IsLowered() const;
@@ -315,6 +319,8 @@ public:
 	StringID tool_tip;         ///< Tooltip of the widget. @see Widget::tootips
 	int scrollbar_index;       ///< Index of an attached scrollbar.
 	TextColour highlight_colour; ///< Colour of highlight.
+	TextColour text_colour;    ///< Colour of text within widget.
+	StringAlignment align;     ///< Alignment of text/image within widget.
 };
 
 /**
@@ -748,7 +754,7 @@ public:
 		}
 	}
 
-	int GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding = 0, int line_height = -1) const;
+	int GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding = 0) const;
 	EventState UpdateListPositionOnKeyPress(int &list_position, uint16 keycode) const;
 };
 
@@ -906,6 +912,22 @@ struct NWidgetPartTextLines {
 };
 
 /**
+ * Widget part for storing text colour.
+ * @ingroup NestedWidgetParts
+ */
+struct NWidgetPartTextColour {
+	TextColour colour; ///< TextColour for DrawString.
+};
+
+/**
+ * Widget part for setting text/image alignment within a widget.
+ * @ingroup NestedWidgetParts
+ */
+struct NWidgetPartAlignment {
+	StringAlignment align; ///< Alignment of text/image.
+};
+
+/**
  * Pointer to function returning a nested widget.
  * @param biggest_index Pointer to storage for collecting the biggest index used in the nested widget.
  * @return Nested widget (tree).
@@ -926,6 +948,8 @@ struct NWidgetPart {
 		NWidgetPartPaddings padding;     ///< Part with paddings.
 		NWidgetPartPIP pip;              ///< Part with pre/inter/post spaces.
 		NWidgetPartTextLines text_lines; ///< Part with text line data.
+		NWidgetPartTextColour colour;    ///< Part with text colour data.
+		NWidgetPartAlignment align;      ///< Part with internal alignment.
 		NWidgetFunctionType *func_ptr;   ///< Part with a function call.
 		NWidContainerFlags cont_flags;   ///< Part with container flags.
 	} u;
@@ -980,6 +1004,36 @@ static inline NWidgetPart SetMinimalTextLines(uint8 lines, uint8 spacing, FontSi
 	part.u.text_lines.lines = lines;
 	part.u.text_lines.spacing = spacing;
 	part.u.text_lines.size = size;
+
+	return part;
+}
+
+/**
+ * Widget part function for setting the text colour.
+ * @param colour Colour to draw string within widget.
+ * @ingroup NestedWidgetParts
+ */
+static inline NWidgetPart SetTextColour(TextColour colour)
+{
+	NWidgetPart part;
+
+	part.type = WPT_TEXTCOLOUR;
+	part.u.colour.colour = colour;
+
+	return part;
+}
+
+/**
+ * Widget part function for setting the alignment of text/images.
+ * @param align  Alignment of text/image within widget.
+ * @ingroup NestedWidgetParts
+ */
+static inline NWidgetPart SetAlignment(StringAlignment align)
+{
+	NWidgetPart part;
+
+	part.type = WPT_ALIGNMENT;
+	part.u.align.align = align;
 
 	return part;
 }

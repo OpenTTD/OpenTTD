@@ -1360,14 +1360,22 @@ const char *VideoDriver_Win32OpenGL::AllocateContext()
 
 	/* Create OpenGL device context. Try to get an 3.2+ context if possible. */
 	if (_wglCreateContextAttribsARB != nullptr) {
+		/* Try for OpenGL 4.5 first. */
 		int attribs[] = {
-			WGL_CONTEXT_MAJOR_VERSION_ARB, 3,
-			WGL_CONTEXT_MINOR_VERSION_ARB, 2,
+			WGL_CONTEXT_MAJOR_VERSION_ARB, 4,
+			WGL_CONTEXT_MINOR_VERSION_ARB, 5,
 			WGL_CONTEXT_FLAGS_ARB, _debug_driver_level >= 8 ? WGL_CONTEXT_DEBUG_BIT_ARB : 0,
 			_hasWGLARBCreateContextProfile ? WGL_CONTEXT_PROFILE_MASK_ARB : 0, WGL_CONTEXT_CORE_PROFILE_BIT_ARB, // Terminate list if WGL_ARB_create_context_profile isn't supported.
 			0
 		};
 		rc = _wglCreateContextAttribsARB(this->dc, nullptr, attribs);
+
+		if (rc == nullptr) {
+			/* Try again for a 3.2 context. */
+			attribs[1] = 3;
+			attribs[3] = 2;
+			rc = _wglCreateContextAttribsARB(this->dc, nullptr, attribs);
+		}
 	}
 
 	if (rc == nullptr) {
@@ -1380,7 +1388,7 @@ const char *VideoDriver_Win32OpenGL::AllocateContext()
 	this->ToggleVsync(_video_vsync);
 
 	this->gl_rc = rc;
-	return OpenGLBackend::Create(&GetOGLProcAddressCallback);
+	return OpenGLBackend::Create(&GetOGLProcAddressCallback, this->GetScreenSize());
 }
 
 bool VideoDriver_Win32OpenGL::ToggleFullscreen(bool full_screen)

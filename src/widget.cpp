@@ -25,6 +25,33 @@
 #include "safeguards.h"
 
 /**
+ * Calculate x and y coordinates for an aligned object within a window.
+ * @param r     Rectangle of the widget to be drawn in.
+ * @param d     Dimension of the object to be drawn.
+ * @param align Alignment of the object.
+ * @return A point containing the position at which to draw.
+ */
+static inline Point GetAlignedPosition(const Rect &r, const Dimension &d, StringAlignment align)
+{
+	Point p;
+	/* In case we have a RTL language we swap the alignment. */
+	if (!(align & SA_FORCE) && _current_text_dir == TD_RTL && (align & SA_HOR_MASK) != SA_HOR_CENTER) align ^= SA_RIGHT;
+	switch (align & SA_HOR_MASK) {
+		case SA_LEFT:       p.x = r.left; break;
+		case SA_HOR_CENTER: p.x = CenterBounds(r.left, r.right, d.width); break;
+		case SA_RIGHT:      p.x = r.right - d.width; break;
+		default: NOT_REACHED();
+	}
+	switch (align & SA_VERT_MASK) {
+		case SA_TOP:         p.y = r.top; break;
+		case SA_VERT_CENTER: p.y = CenterBounds(r.top, r.bottom, d.height); break;
+		case SA_BOTTOM:      p.y = r.bottom - d.height; break;
+		default: NOT_REACHED();
+	}
+	return p;
+}
+
+/**
  * Compute the vertical position of the draggable part of scrollbar
  * @param sb     Scrollbar list data
  * @param top    Top position of the scrollbar (top position of the up-button)
@@ -212,15 +239,17 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
  * @param colour  Colour of the button.
  * @param clicked Button is lowered.
  * @param img     Sprite to draw.
+ * @param align   Alignment of the sprite.
  */
-static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colour, bool clicked, SpriteID img)
+static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colour, bool clicked, SpriteID img, StringAlignment align)
 {
 	assert(img != 0);
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, (clicked) ? FR_LOWERED : FR_NONE);
 
 	if ((type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++; // Show different image when clicked for #WWT_IMGBTN_2.
 	Dimension d = GetSpriteSize(img);
-	DrawSprite(img, PAL_NONE, CenterBounds(r.left, r.right, d.width) + clicked, CenterBounds(r.top, r.bottom, d.height) + clicked);
+	Point p = GetAlignedPosition(r, d, align);
+	DrawSprite(img, PAL_NONE, p.x + clicked, p.y + clicked);
 }
 
 /**
@@ -228,15 +257,17 @@ static inline void DrawImageButtons(const Rect &r, WidgetType type, Colours colo
  * @param r       Rectangle of the label background.
  * @param type    Widget type (#WWT_TEXTBTN, #WWT_TEXTBTN_2, or #WWT_LABEL).
  * @param clicked Label is rendered lowered.
+ * @param colour  Colour of the text.
  * @param str     Text to draw.
+ * @param align   Alignment of the text.
  */
-static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, StringID str)
+static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, TextColour colour, StringID str, StringAlignment align)
 {
 	if (str == STR_NULL) return;
 	if ((type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
 	Dimension d = GetStringBoundingBox(str);
-	int offset = std::max(0, ((int)(r.bottom - r.top + 1) - (int)d.height) / 2); // Offset for rendering the text vertically centered
-	DrawString(r.left + clicked, r.right + clicked, r.top + offset + clicked, str, TC_FROMSTRING, SA_HOR_CENTER);
+	Point p = GetAlignedPosition(r, d, align);
+	DrawString(r.left + clicked, r.right + clicked, p.y + clicked, str, colour, align);
 }
 
 /**
@@ -244,24 +275,27 @@ static inline void DrawLabel(const Rect &r, WidgetType type, bool clicked, Strin
  * @param r      Rectangle of the background.
  * @param colour Colour of the text.
  * @param str    Text to draw.
+ * @param align  Alignment of the text.
  */
-static inline void DrawText(const Rect &r, TextColour colour, StringID str)
+static inline void DrawText(const Rect &r, TextColour colour, StringID str, StringAlignment align)
 {
 	Dimension d = GetStringBoundingBox(str);
-	int offset = std::max(0, ((int)(r.bottom - r.top + 1) - (int)d.height) / 2); // Offset for rendering the text vertically centered
-	if (str != STR_NULL) DrawString(r.left, r.right, r.top + offset, str, colour);
+	Point p = GetAlignedPosition(r, d, align);
+	if (str != STR_NULL) DrawString(r.left, r.right, p.y, str, colour, align);
 }
 
 /**
  * Draw an inset widget.
- * @param r      Rectangle of the background.
- * @param colour Colour of the inset.
- * @param str    Text to draw.
+ * @param r           Rectangle of the background.
+ * @param colour      Colour of the inset.
+ * @param text_colour Colour of the text.
+ * @param str         Text to draw.
+ * @param align       Alignment of the text.
  */
-static inline void DrawInset(const Rect &r, Colours colour, StringID str)
+static inline void DrawInset(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
 {
 	DrawFrameRect(r.left, r.top, r.right, r.bottom, colour, FR_LOWERED | FR_DARKENED);
-	if (str != STR_NULL) DrawString(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + WD_INSET_TOP, str);
+	if (str != STR_NULL) DrawString(r.left + WD_INSET_LEFT, r.right - WD_INSET_RIGHT, r.top + WD_INSET_TOP, str, text_colour, align);
 }
 
 /**
@@ -402,15 +436,17 @@ static inline void DrawHorizontalScrollbar(const Rect &r, Colours colour, bool l
 
 /**
  * Draw a frame widget.
- * @param r      Rectangle of the frame.
- * @param colour Colour of the frame.
- * @param str    Text of the frame.
+ * @param r           Rectangle of the frame.
+ * @param colour      Colour of the frame.
+ * @param text_colour Colour of the text.
+ * @param str         Text of the frame.
+ * @param align       Alignment of the text in the frame.
  */
-static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
+static inline void DrawFrame(const Rect &r, Colours colour, TextColour text_colour, StringID str, StringAlignment align)
 {
 	int x2 = r.left; // by default the left side is the left side of the widget
 
-	if (str != STR_NULL) x2 = DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top, str);
+	if (str != STR_NULL) x2 = DrawString(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top, str, text_colour, align);
 
 	int c1 = _colour_gradient[colour][3];
 	int c2 = _colour_gradient[colour][7];
@@ -458,7 +494,7 @@ static inline void DrawFrame(const Rect &r, Colours colour, StringID str)
  */
 static inline void DrawShadeBox(const Rect &r, Colours colour, bool clicked)
 {
-	DrawImageButtons(r, WWT_SHADEBOX, colour, clicked, clicked ? SPR_WINDOW_SHADE: SPR_WINDOW_UNSHADE);
+	DrawImageButtons(r, WWT_SHADEBOX, colour, clicked, clicked ? SPR_WINDOW_SHADE: SPR_WINDOW_UNSHADE, SA_CENTER);
 }
 
 /**
@@ -469,7 +505,7 @@ static inline void DrawShadeBox(const Rect &r, Colours colour, bool clicked)
  */
 static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
 {
-	DrawImageButtons(r, WWT_STICKYBOX, colour, clicked, clicked ? SPR_PIN_UP : SPR_PIN_DOWN);
+	DrawImageButtons(r, WWT_STICKYBOX, colour, clicked, clicked ? SPR_PIN_UP : SPR_PIN_DOWN, SA_CENTER);
 }
 
 /**
@@ -480,7 +516,7 @@ static inline void DrawStickyBox(const Rect &r, Colours colour, bool clicked)
  */
 static inline void DrawDefSizeBox(const Rect &r, Colours colour, bool clicked)
 {
-	DrawImageButtons(r, WWT_DEFSIZEBOX, colour, clicked, SPR_WINDOW_DEFSIZE);
+	DrawImageButtons(r, WWT_DEFSIZEBOX, colour, clicked, SPR_WINDOW_DEFSIZE, SA_CENTER);
 }
 
 /**
@@ -491,7 +527,7 @@ static inline void DrawDefSizeBox(const Rect &r, Colours colour, bool clicked)
  */
 static inline void DrawDebugBox(const Rect &r, Colours colour, bool clicked)
 {
-	DrawImageButtons(r, WWT_DEBUGBOX, colour, clicked, SPR_WINDOW_DEBUG);
+	DrawImageButtons(r, WWT_DEBUGBOX, colour, clicked, SPR_WINDOW_DEBUG, SA_CENTER);
 }
 
 /**
@@ -530,12 +566,14 @@ static inline void DrawCloseBox(const Rect &r, Colours colour)
 
 /**
  * Draw a caption bar.
- * @param r      Rectangle of the bar.
- * @param colour Colour of the window.
- * @param owner  'Owner' of the window.
- * @param str    Text to draw in the bar.
+ * @param r           Rectangle of the bar.
+ * @param colour      Colour of the window.
+ * @param owner       'Owner' of the window.
+ * @param text_colour Colour of the text.
+ * @param str         Text to draw in the bar.
+ * @param align       Alignment of the text.
  */
-void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align)
 {
 	bool company_owned = owner < MAX_COMPANIES;
 
@@ -548,8 +586,8 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
 
 	if (str != STR_NULL) {
 		Dimension d = GetStringBoundingBox(str);
-		int offset = std::max(0, ((int)(r.bottom - r.top + 1) - (int)d.height) / 2); // Offset for rendering the text vertically centered
-		DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, r.top + offset, str, TC_FROMSTRING, SA_HOR_CENTER);
+		Point p = GetAlignedPosition(r, d, align);
+		DrawString(r.left + WD_CAPTIONTEXT_LEFT, r.right - WD_CAPTIONTEXT_RIGHT, p.y, str, text_colour, align);
 	}
 }
 
@@ -560,10 +598,11 @@ void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str)
  * @param clicked_button   The button-part is lowered.
  * @param clicked_dropdown The drop-down part is lowered.
  * @param str              Text of the button.
+ * @param align            Alignment of the text within the dropdown.
  *
  * @note Magic constants are also used in #NWidgetLeaf::ButtonHit.
  */
-static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, StringID str)
+static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicked_button, bool clicked_dropdown, StringID str, StringAlignment align)
 {
 	int text_offset = std::max(0, ((int)(r.bottom - r.top + 1) - FONT_HEIGHT_NORMAL) / 2); // Offset for rendering the text vertically centered
 
@@ -575,12 +614,12 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
 		DrawFrameRect(r.left, r.top, r.right - dd_width, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
 		DrawFrameRect(r.right + 1 - dd_width, r.top, r.right, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
 		DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.right - (dd_width - 2) + clicked_dropdown, r.top + image_offset + clicked_dropdown);
-		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - dd_width - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK);
+		if (str != STR_NULL) DrawString(r.left + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - dd_width - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK, align);
 	} else {
 		DrawFrameRect(r.left + dd_width, r.top, r.right, r.bottom, colour, clicked_button ? FR_LOWERED : FR_NONE);
 		DrawFrameRect(r.left, r.top, r.left + dd_width - 1, r.bottom, colour, clicked_dropdown ? FR_LOWERED : FR_NONE);
 		DrawSprite(SPR_ARROW_DOWN, PAL_NONE, r.left + 1 + clicked_dropdown, r.top + image_offset + clicked_dropdown);
-		if (str != STR_NULL) DrawString(r.left + dd_width + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK);
+		if (str != STR_NULL) DrawString(r.left + dd_width + WD_DROPDOWNTEXT_LEFT + clicked_button, r.right - WD_DROPDOWNTEXT_RIGHT + clicked_button, r.top + text_offset + clicked_button, str, TC_BLACK, align);
 	}
 }
 
@@ -590,10 +629,11 @@ static inline void DrawButtonDropdown(const Rect &r, Colours colour, bool clicke
  * @param colour  Background colour of the widget.
  * @param clicked The widget is lowered.
  * @param str     Text of the button.
+ * @param align   Alignment of the text.
  */
-static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, StringID str)
+static inline void DrawDropdown(const Rect &r, Colours colour, bool clicked, StringID str, StringAlignment align)
 {
-	DrawButtonDropdown(r, colour, false, clicked, str);
+	DrawButtonDropdown(r, colour, false, clicked, str, align);
 }
 
 /**
@@ -872,6 +912,8 @@ NWidgetCore::NWidgetCore(WidgetType tp, Colours colour, uint fill_x, uint fill_y
 	this->widget_data = widget_data;
 	this->tool_tip = tool_tip;
 	this->scrollbar_index = -1;
+	this->text_colour = TC_FROMSTRING;
+	this->align = SA_CENTER;
 }
 
 /**
@@ -896,12 +938,30 @@ void NWidgetCore::SetDataTip(uint32 widget_data, StringID tool_tip)
 }
 
 /**
+ * Set the text colour of the nested widget.
+ * @param colour TextColour to use.
+ */
+void NWidgetCore::SetTextColour(TextColour colour)
+{
+	this->text_colour = colour;
+}
+
+/**
  * Set the tool tip of the nested widget.
  * @param tool_tip Tool tip string to use.
  */
 void NWidgetCore::SetToolTip(StringID tool_tip)
 {
 	this->tool_tip = tool_tip;
+}
+
+/**
+ * Set the text/image alignment of the nested widget.
+ * @param align Alignment to use.
+ */
+void NWidgetCore::SetAlignment(StringAlignment align)
+{
+	this->align = align;
 }
 
 void NWidgetCore::FillNestedArray(NWidgetBase **array, uint length)
@@ -1725,6 +1785,7 @@ NWidgetBackground::NWidgetBackground(WidgetType tp, Colours colour, int index, N
 	assert(tp == WWT_PANEL || tp == WWT_INSET || tp == WWT_FRAME);
 	if (index >= 0) this->SetIndex(index);
 	this->child = child;
+	this->SetAlignment(SA_TOP | SA_LEFT);
 }
 
 NWidgetBackground::~NWidgetBackground()
@@ -1858,12 +1919,12 @@ void NWidgetBackground::Draw(const Window *w)
 
 		case WWT_FRAME:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawFrame(r, this->colour, this->widget_data);
+			DrawFrame(r, this->colour, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_INSET:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawInset(r, this->colour, this->widget_data);
+			DrawInset(r, this->colour, this->text_colour, this->widget_data, this->align);
 			break;
 
 		default:
@@ -1964,12 +2025,11 @@ void NWidgetViewport::UpdateViewportCoordinates(Window *w)
  * @param w           The window the click was in.
  * @param widget      Widget number of the widget clicked in.
  * @param padding     Amount of empty space between the widget edge and the top of the first row. Default value is \c 0.
- * @param line_height Height of a single row. A negative value means using the vertical resize step of the widget.
  * @return Row number clicked at. If clicked at a wrong position, #INT_MAX is returned.
  */
-int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding, int line_height) const
+int Scrollbar::GetScrolledRowFromWidget(int clickpos, const Window * const w, int widget, int padding) const
 {
-	uint pos = w->GetRowFromWidget(clickpos, widget, padding, line_height);
+	uint pos = w->GetRowFromWidget(clickpos, widget, padding, -1);
 	if (pos != INT_MAX) pos += this->GetPosition();
 	return (pos >= this->GetCount()) ? INT_MAX : pos;
 }
@@ -2193,6 +2253,11 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 		case WWT_EMPTY:
 			break;
 
+		case WWT_TEXT:
+			this->SetFill(0, 0);
+			this->SetAlignment(SA_LEFT | SA_VERT_CENTER);
+			break;
+
 		case WWT_PUSHBTN:
 		case WWT_IMGBTN:
 		case WWT_PUSHIMGBTN:
@@ -2201,7 +2266,6 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 		case WWT_PUSHTXTBTN:
 		case WWT_TEXTBTN_2:
 		case WWT_LABEL:
-		case WWT_TEXT:
 		case WWT_MATRIX:
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:
@@ -2260,6 +2324,7 @@ NWidgetLeaf::NWidgetLeaf(WidgetType tp, Colours colour, int index, uint32 data, 
 		case WWT_DROPDOWN:
 			this->SetFill(0, 0);
 			this->min_y = WD_DROPDOWN_HEIGHT;
+			this->SetAlignment(SA_TOP | SA_LEFT);
 			break;
 
 		default:
@@ -2494,7 +2559,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_IMGBTN:
 		case WWT_PUSHIMGBTN:
 		case WWT_IMGBTN_2:
-			DrawImageButtons(r, this->type, this->colour, clicked, this->widget_data);
+			DrawImageButtons(r, this->type, this->colour, clicked, this->widget_data, this->align);
 			break;
 
 		case WWT_TEXTBTN:
@@ -2502,7 +2567,7 @@ void NWidgetLeaf::Draw(const Window *w)
 		case WWT_TEXTBTN_2:
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, this->colour, (clicked) ? FR_LOWERED : FR_NONE);
-			DrawLabel(r, this->type, clicked, this->widget_data);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_ARROWBTN:
@@ -2515,18 +2580,18 @@ void NWidgetLeaf::Draw(const Window *w)
 				case AWV_RIGHT:    sprite = SPR_ARROW_RIGHT; break;
 				default: NOT_REACHED();
 			}
-			DrawImageButtons(r, WWT_PUSHIMGBTN, this->colour, clicked, sprite);
+			DrawImageButtons(r, WWT_PUSHIMGBTN, this->colour, clicked, sprite, this->align);
 			break;
 		}
 
 		case WWT_LABEL:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawLabel(r, this->type, clicked, this->widget_data);
+			DrawLabel(r, this->type, clicked, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_TEXT:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawText(r, (TextColour)this->colour, this->widget_data);
+			DrawText(r, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_MATRIX:
@@ -2541,7 +2606,7 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_CAPTION:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawCaption(r, this->colour, w->owner, this->widget_data);
+			DrawCaption(r, this->colour, w->owner, this->text_colour, this->widget_data, this->align);
 			break;
 
 		case WWT_SHADEBOX:
@@ -2574,13 +2639,13 @@ void NWidgetLeaf::Draw(const Window *w)
 
 		case WWT_DROPDOWN:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawDropdown(r, this->colour, clicked, this->widget_data);
+			DrawDropdown(r, this->colour, clicked, this->widget_data, this->align);
 			break;
 
 		case NWID_BUTTON_DROPDOWN:
 		case NWID_PUSHBUTTON_DROPDOWN:
 			if (this->index >= 0) w->SetStringParameters(this->index);
-			DrawButtonDropdown(r, this->colour, clicked, (this->disp_flags & ND_DROPDOWN_ACTIVE) != 0, this->widget_data);
+			DrawButtonDropdown(r, this->colour, clicked, (this->disp_flags & ND_DROPDOWN_ACTIVE) != 0, this->widget_data, this->align);
 			break;
 
 		default:
@@ -2715,6 +2780,22 @@ static int MakeNWidget(const NWidgetPart *parts, int count, NWidgetBase **dest, 
 				if (nwrb != nullptr) {
 					assert(parts->u.text_lines.size >= FS_BEGIN && parts->u.text_lines.size < FS_END);
 					nwrb->SetMinimalTextLines(parts->u.text_lines.lines, parts->u.text_lines.spacing, parts->u.text_lines.size);
+				}
+				break;
+			}
+
+			case WPT_TEXTCOLOUR: {
+				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
+				if (nwc != nullptr) {
+					nwc->SetTextColour(parts->u.colour.colour);
+				}
+				break;
+			}
+
+			case WPT_ALIGNMENT: {
+				NWidgetCore *nwc = dynamic_cast<NWidgetCore *>(*dest);
+				if (nwc != nullptr) {
+					nwc->SetAlignment(parts->u.align.align);
 				}
 				break;
 			}
