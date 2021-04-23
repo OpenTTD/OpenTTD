@@ -54,6 +54,9 @@
 static void ShowNetworkStartServerWindow();
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
 
+static ClientID _admin_client_id = INVALID_CLIENT_ID; ///< For what client a confirmation window is open.
+static CompanyID _admin_company_id = INVALID_COMPANY; ///< For what company a confirmation window is open.
+
 /**
  * Visibility of the server. Public servers advertise, where private servers
  * do not.
@@ -1632,6 +1635,49 @@ enum DropDownAdmin {
 };
 
 /**
+ * Callback function for admin command to kick client.
+ * @param w The window which initiated the confirmation dialog.
+ * @param confirmed Iff the user pressed Yes.
+ */
+static void AdminClientKickCallback(Window *w, bool confirmed)
+{
+	if (confirmed) NetworkServerKickClient(_admin_client_id, nullptr);
+}
+
+/**
+ * Callback function for admin command to ban client.
+ * @param w The window which initiated the confirmation dialog.
+ * @param confirmed Iff the user pressed Yes.
+ */
+static void AdminClientBanCallback(Window *w, bool confirmed)
+{
+	if (confirmed) NetworkServerKickOrBanIP(_admin_client_id, true, nullptr);
+}
+
+/**
+ * Callback function for admin command to reset company.
+ * @param w The window which initiated the confirmation dialog.
+ * @param confirmed Iff the user pressed Yes.
+ */
+static void AdminCompanyResetCallback(Window *w, bool confirmed)
+{
+	if (confirmed) {
+		if (NetworkCompanyHasClients(_admin_company_id)) return;
+		DoCommandP(0, CCA_DELETE | _admin_company_id << 16 | CRR_MANUAL << 24, 0, CMD_COMPANY_CTRL);
+	}
+}
+
+/**
+ * Callback function for admin command to unlock company.
+ * @param w The window which initiated the confirmation dialog.
+ * @param confirmed Iff the user pressed Yes.
+ */
+static void AdminCompanyUnlockCallback(Window *w, bool confirmed)
+{
+	if (confirmed) NetworkServerSetCompanyPassword(_admin_company_id, "", false);
+}
+
+/**
  * Button shown for either a company or client in the client-list.
  *
  * These buttons are dynamic and strongly depends on which company/client
@@ -2011,29 +2057,51 @@ public:
 				_settings_client.network.server_advertise = (index != 0);
 				break;
 
-			case WID_CL_MATRIX:
+			case WID_CL_MATRIX: {
+				StringID text = STR_NULL;
+				QueryCallbackProc *callback = nullptr;
+
 				switch (index) {
 					case DD_CLIENT_ADMIN_KICK:
-						NetworkServerKickClient(this->dd_client_id, nullptr);
+						_admin_client_id = this->dd_client_id;
+						text = STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK;
+						callback = AdminClientKickCallback;
+						SetDParamStr(0, NetworkClientInfo::GetByClientID(_admin_client_id)->client_name);
 						break;
 
 					case DD_CLIENT_ADMIN_BAN:
-						NetworkServerKickOrBanIP(this->dd_client_id, true, nullptr);
+						_admin_client_id = this->dd_client_id;
+						text = STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN;
+						callback = AdminClientBanCallback;
+						SetDParamStr(0, NetworkClientInfo::GetByClientID(_admin_client_id)->client_name);
 						break;
 
 					case DD_COMPANY_ADMIN_RESET:
-						if (NetworkCompanyHasClients(this->dd_company_id)) break;
-						DoCommandP(0, CCA_DELETE | this->dd_company_id << 16 | CRR_MANUAL << 24, 0, CMD_COMPANY_CTRL);
+						_admin_company_id = this->dd_company_id;
+						text = STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET;
+						callback = AdminCompanyResetCallback;
+						SetDParam(0, _admin_company_id);
 						break;
 
 					case DD_COMPANY_ADMIN_UNLOCK:
-						NetworkServerSetCompanyPassword(this->dd_company_id, "", false);
+						_admin_company_id = this->dd_company_id;
+						text = STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK;
+						callback = AdminCompanyUnlockCallback;
+						SetDParam(0, _admin_company_id);
 						break;
 
 					default:
 						NOT_REACHED();
 				}
+
+				assert(text != STR_NULL);
+				assert(callback != nullptr);
+
+				/* Always ask confirmation for all admin actions. */
+				ShowQuery(STR_NETWORK_CLIENT_LIST_ASK_CAPTION, text, this, callback);
+
 				break;
+			}
 
 			default:
 				NOT_REACHED();
