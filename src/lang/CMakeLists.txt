@@ -29,6 +29,7 @@ set(LANG_SOURCE_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/german.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/greek.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/hebrew.txt
+        ${CMAKE_CURRENT_SOURCE_DIR}/hindi.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/hungarian.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/icelandic.txt
         ${CMAKE_CURRENT_SOURCE_DIR}/ido.txt
