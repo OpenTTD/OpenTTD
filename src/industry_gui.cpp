@@ -1852,13 +1852,13 @@ static const uint MAX_CARGOES = 16; ///< Maximum number of cargoes carried in a 
 /** Data about a single field in the #IndustryCargoesWindow panel. */
 struct CargoesField {
 	static const int VERT_INTER_INDUSTRY_SPACE;
-	static const int HOR_CARGO_BORDER_SPACE;
-	static const int CARGO_STUB_WIDTH;
-	static const int HOR_CARGO_WIDTH, HOR_CARGO_SPACE;
-	static const int VERT_CARGO_SPACE, VERT_CARGO_EDGE;
 	static const int BLOB_DISTANCE;
 
 	static Dimension legend;
+	static Dimension cargo_border;
+	static Dimension cargo_line;
+	static Dimension cargo_space;
+	static Dimension cargo_stub;
 
 	static const int INDUSTRY_LINE_COLOUR;
 	static const int CARGO_LINE_COLOUR;
@@ -2022,9 +2022,9 @@ struct CargoesField {
 		int n = this->u.cargo.num_cargoes;
 
 		if (n % 2 == 0) {
-			return xpos + cargo_field_width / 2 - (HOR_CARGO_WIDTH + HOR_CARGO_SPACE / 2) * (n / 2);
+			return xpos + cargo_field_width / 2 - (CargoesField::cargo_line.width + CargoesField::cargo_space.width / 2) * (n / 2);
 		} else {
-			return xpos + cargo_field_width / 2 - HOR_CARGO_WIDTH / 2 - (HOR_CARGO_WIDTH + HOR_CARGO_SPACE) * (n / 2);
+			return xpos + cargo_field_width / 2 - CargoesField::cargo_line.width / 2 - (CargoesField::cargo_line.width + CargoesField::cargo_space.width) * (n / 2);
 		}
 	}
 
@@ -2082,21 +2082,21 @@ struct CargoesField {
 					other_right = this->u.industry.other_produced;
 					other_left  = this->u.industry.other_accepted;
 				}
-				ypos1 += VERT_CARGO_EDGE;
+				ypos1 += CargoesField::cargo_border.height + (FONT_HEIGHT_NORMAL - CargoesField::cargo_line.height) / 2;
 				for (uint i = 0; i < CargoesField::max_cargoes; i++) {
 					if (other_right[i] != INVALID_CARGO) {
 						const CargoSpec *csp = CargoSpec::Get(other_right[i]);
-						int xp = xpos + industry_width + CARGO_STUB_WIDTH;
+						int xp = xpos + industry_width + CargoesField::cargo_stub.width;
 						DrawHorConnection(xpos + industry_width, xp - 1, ypos1, csp);
-						GfxDrawLine(xp, ypos1, xp, ypos1 + FONT_HEIGHT_NORMAL - 1, CARGO_LINE_COLOUR);
+						GfxDrawLine(xp, ypos1, xp, ypos1 + CargoesField::cargo_line.height - 1, CARGO_LINE_COLOUR);
 					}
 					if (other_left[i] != INVALID_CARGO) {
 						const CargoSpec *csp = CargoSpec::Get(other_left[i]);
-						int xp = xpos - CARGO_STUB_WIDTH;
+						int xp = xpos - CargoesField::cargo_stub.width;
 						DrawHorConnection(xp + 1, xpos - 1, ypos1, csp);
-						GfxDrawLine(xp, ypos1, xp, ypos1 + FONT_HEIGHT_NORMAL - 1, CARGO_LINE_COLOUR);
+						GfxDrawLine(xp, ypos1, xp, ypos1 + CargoesField::cargo_line.height - 1, CARGO_LINE_COLOUR);
 					}
-					ypos1 += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+					ypos1 += FONT_HEIGHT_NORMAL + CargoesField::cargo_space.height;
 				}
 				break;
 			}
@@ -2107,15 +2107,15 @@ struct CargoesField {
 				int bot = ypos - (this->u.cargo.bottom_end ? VERT_INTER_INDUSTRY_SPACE / 2 + 1 : 0) + normal_height - 1;
 				int colpos = cargo_base;
 				for (int i = 0; i < this->u.cargo.num_cargoes; i++) {
-					if (this->u.cargo.top_end) GfxDrawLine(colpos, top - 1, colpos + HOR_CARGO_WIDTH - 1, top - 1, CARGO_LINE_COLOUR);
-					if (this->u.cargo.bottom_end) GfxDrawLine(colpos, bot + 1, colpos + HOR_CARGO_WIDTH - 1, bot + 1, CARGO_LINE_COLOUR);
+					if (this->u.cargo.top_end) GfxDrawLine(colpos, top - 1, colpos + CargoesField::cargo_line.width - 1, top - 1, CARGO_LINE_COLOUR);
+					if (this->u.cargo.bottom_end) GfxDrawLine(colpos, bot + 1, colpos + CargoesField::cargo_line.width - 1, bot + 1, CARGO_LINE_COLOUR);
 					GfxDrawLine(colpos, top, colpos, bot, CARGO_LINE_COLOUR);
 					colpos++;
 					const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[i]);
-					GfxFillRect(colpos, top, colpos + HOR_CARGO_WIDTH - 2, bot, csp->legend_colour, FILLRECT_OPAQUE);
-					colpos += HOR_CARGO_WIDTH - 2;
+					GfxFillRect(colpos, top, colpos + CargoesField::cargo_line.width - 2, bot, csp->legend_colour, FILLRECT_OPAQUE);
+					colpos += CargoesField::cargo_line.width - 2;
 					GfxDrawLine(colpos, top, colpos, bot, CARGO_LINE_COLOUR);
-					colpos += 1 + HOR_CARGO_SPACE;
+					colpos += 1 + CargoesField::cargo_space.width;
 				}
 
 				const CargoID *hor_left, *hor_right;
@@ -2126,15 +2126,15 @@ struct CargoesField {
 					hor_left  = this->u.cargo.supp_cargoes;
 					hor_right = this->u.cargo.cust_cargoes;
 				}
-				ypos += VERT_CARGO_EDGE + VERT_INTER_INDUSTRY_SPACE / 2;
+				ypos += CargoesField::cargo_border.height + VERT_INTER_INDUSTRY_SPACE / 2 + (FONT_HEIGHT_NORMAL - CargoesField::cargo_line.height) / 2;
 				for (uint i = 0; i < MAX_CARGOES; i++) {
 					if (hor_left[i] != INVALID_CARGO) {
 						int col = hor_left[i];
 						int dx = 0;
 						const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[col]);
 						for (; col > 0; col--) {
-							int lf = cargo_base + col * HOR_CARGO_WIDTH + (col - 1) * HOR_CARGO_SPACE;
-							DrawHorConnection(lf, lf + HOR_CARGO_SPACE - dx, ypos, csp);
+							int lf = cargo_base + col * CargoesField::cargo_line.width + (col - 1) * CargoesField::cargo_space.width;
+							DrawHorConnection(lf, lf + CargoesField::cargo_space.width - dx, ypos, csp);
 							dx = 1;
 						}
 						DrawHorConnection(xpos, cargo_base - dx, ypos, csp);
@@ -2144,26 +2144,26 @@ struct CargoesField {
 						int dx = 0;
 						const CargoSpec *csp = CargoSpec::Get(this->u.cargo.vertical_cargoes[col]);
 						for (; col < this->u.cargo.num_cargoes - 1; col++) {
-							int lf = cargo_base + (col + 1) * HOR_CARGO_WIDTH + col * HOR_CARGO_SPACE;
-							DrawHorConnection(lf + dx - 1, lf + HOR_CARGO_SPACE - 1, ypos, csp);
+							int lf = cargo_base + (col + 1) * CargoesField::cargo_line.width + col * CargoesField::cargo_space.width;
+							DrawHorConnection(lf + dx - 1, lf + CargoesField::cargo_space.width - 1, ypos, csp);
 							dx = 1;
 						}
-						DrawHorConnection(cargo_base + col * HOR_CARGO_SPACE + (col + 1) * HOR_CARGO_WIDTH - 1 + dx, xpos + CargoesField::cargo_field_width - 1, ypos, csp);
+						DrawHorConnection(cargo_base + col * CargoesField::cargo_space.width + (col + 1) * CargoesField::cargo_line.width - 1 + dx, xpos + CargoesField::cargo_field_width - 1, ypos, csp);
 					}
-					ypos += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+					ypos += FONT_HEIGHT_NORMAL + CargoesField::cargo_space.height;
 				}
 				break;
 			}
 
 			case CFT_CARGO_LABEL:
-				ypos += VERT_CARGO_EDGE + VERT_INTER_INDUSTRY_SPACE / 2;
+				ypos += CargoesField::cargo_border.height + VERT_INTER_INDUSTRY_SPACE / 2;
 				for (uint i = 0; i < MAX_CARGOES; i++) {
 					if (this->u.cargo_label.cargoes[i] != INVALID_CARGO) {
 						const CargoSpec *csp = CargoSpec::Get(this->u.cargo_label.cargoes[i]);
 						DrawString(xpos + WD_FRAMERECT_LEFT, xpos + industry_width - 1 - WD_FRAMERECT_RIGHT, ypos, csp->name, TC_WHITE,
 								(this->u.cargo_label.left_align) ? SA_LEFT : SA_RIGHT);
 					}
-					ypos += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+					ypos += FONT_HEIGHT_NORMAL + CargoesField::cargo_space.height;
 				}
 				break;
 
@@ -2188,17 +2188,17 @@ struct CargoesField {
 		uint col;
 		for (col = 0; col < this->u.cargo.num_cargoes; col++) {
 			if (pt.x < cpos) break;
-			if (pt.x < cpos + CargoesField::HOR_CARGO_WIDTH) return this->u.cargo.vertical_cargoes[col];
-			cpos += CargoesField::HOR_CARGO_WIDTH + CargoesField::HOR_CARGO_SPACE;
+			if (pt.x < cpos + (int)CargoesField::cargo_line.width) return this->u.cargo.vertical_cargoes[col];
+			cpos += CargoesField::cargo_line.width + CargoesField::cargo_space.width;
 		}
 		/* col = 0 -> left of first col, 1 -> left of 2nd col, ... this->u.cargo.num_cargoes right of last-col. */
 
-		int vpos = VERT_INTER_INDUSTRY_SPACE / 2 + VERT_CARGO_EDGE;
+		int vpos = VERT_INTER_INDUSTRY_SPACE / 2 + CargoesField::cargo_border.width;
 		uint row;
 		for (row = 0; row < MAX_CARGOES; row++) {
 			if (pt.y < vpos) return INVALID_CARGO;
 			if (pt.y < vpos + FONT_HEIGHT_NORMAL) break;
-			vpos += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+			vpos += FONT_HEIGHT_NORMAL + CargoesField::cargo_space.width;
 		}
 		if (row == MAX_CARGOES) return INVALID_CARGO;
 
@@ -2240,12 +2240,12 @@ struct CargoesField {
 	{
 		assert(this->type == CFT_CARGO_LABEL);
 
-		int vpos = VERT_INTER_INDUSTRY_SPACE / 2 + VERT_CARGO_EDGE;
+		int vpos = VERT_INTER_INDUSTRY_SPACE / 2 + CargoesField::cargo_border.height;
 		uint row;
 		for (row = 0; row < MAX_CARGOES; row++) {
 			if (pt.y < vpos) return INVALID_CARGO;
 			if (pt.y < vpos + FONT_HEIGHT_NORMAL) break;
-			vpos += FONT_HEIGHT_NORMAL + VERT_CARGO_SPACE;
+			vpos += FONT_HEIGHT_NORMAL + CargoesField::cargo_space.height;
 		}
 		if (row == MAX_CARGOES) return INVALID_CARGO;
 		return this->u.cargo_label.cargoes[row];
@@ -2262,15 +2262,19 @@ private:
 	static void DrawHorConnection(int left, int right, int top, const CargoSpec *csp)
 	{
 		GfxDrawLine(left, top, right, top, CARGO_LINE_COLOUR);
-		GfxFillRect(left, top + 1, right, top + FONT_HEIGHT_NORMAL - 2, csp->legend_colour, FILLRECT_OPAQUE);
-		GfxDrawLine(left, top + FONT_HEIGHT_NORMAL - 1, right, top + FONT_HEIGHT_NORMAL - 1, CARGO_LINE_COLOUR);
+		GfxFillRect(left, top + 1, right, top + CargoesField::cargo_line.height - 2, csp->legend_colour, FILLRECT_OPAQUE);
+		GfxDrawLine(left, top + CargoesField::cargo_line.height - 1, right, top + CargoesField::cargo_line.height - 1, CARGO_LINE_COLOUR);
 	}
 };
 
 static_assert(MAX_CARGOES >= cpp_lengthof(IndustrySpec, produced_cargo));
 static_assert(MAX_CARGOES >= cpp_lengthof(IndustrySpec, accepts_cargo));
 
-Dimension CargoesField::legend;      ///< Dimension of the legend blob.
+Dimension CargoesField::legend;       ///< Dimension of the legend blob.
+Dimension CargoesField::cargo_border; ///< Dimensions of border between cargo lines and industry boxes.
+Dimension CargoesField::cargo_line;   ///< Dimensions of cargo lines.
+Dimension CargoesField::cargo_space;  ///< Dimensions of space between cargo lines.
+Dimension CargoesField::cargo_stub;   ///< Dimensions of cargo stub (unconnected cargo line.)
 
 int CargoesField::small_height;      ///< Height of the header row.
 int CargoesField::normal_height;     ///< Height of the non-header rows.
@@ -2278,13 +2282,6 @@ int CargoesField::industry_width;    ///< Width of an industry field.
 int CargoesField::cargo_field_width; ///< Width of a cargo field.
 uint CargoesField::max_cargoes;      ///< Largest number of cargoes actually on any industry.
 const int CargoesField::VERT_INTER_INDUSTRY_SPACE = 6; ///< Amount of space between two industries in a column.
-
-const int CargoesField::HOR_CARGO_BORDER_SPACE = 15; ///< Amount of space between the left/right edge of a #CFT_CARGO field, and the left/right most vertical cargo.
-const int CargoesField::CARGO_STUB_WIDTH       = 10; ///< Width of a cargo not carried in the column (should be less than #HOR_CARGO_BORDER_SPACE).
-const int CargoesField::HOR_CARGO_WIDTH        = 15; ///< Width of a vertical cargo column (inclusive the border line).
-const int CargoesField::HOR_CARGO_SPACE        =  5; ///< Amount of horizontal space between two vertical cargoes.
-const int CargoesField::VERT_CARGO_EDGE        =  4; ///< Amount of vertical space between top/bottom and the top/bottom connected cargo at an industry.
-const int CargoesField::VERT_CARGO_SPACE       =  4; ///< Amount of vertical space between two connected cargoes at an industry.
 
 const int CargoesField::BLOB_DISTANCE =  5; ///< Distance of the industry legend colour from the edge of the industry box.
 
@@ -2457,9 +2454,25 @@ struct IndustryCargoesWindow : public Window {
 		d.height += WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
 		CargoesField::small_height = d.height;
 
-		/* Width of the legend blob -- slightly larger than the smallmap legend blob. */
+		/* Size of the legend blob -- slightly larger than the smallmap legend blob. */
 		CargoesField::legend.height = FONT_HEIGHT_SMALL;
 		CargoesField::legend.width = CargoesField::legend.height * 8 / 5;
+
+		/* Size of cargo lines. */
+		CargoesField::cargo_line.width = FONT_HEIGHT_NORMAL;
+		CargoesField::cargo_line.height = CargoesField::cargo_line.width;
+
+		/* Size of border between cargo lines and industry boxes. */
+		CargoesField::cargo_border.width = CargoesField::cargo_line.width * 3 / 2;
+		CargoesField::cargo_border.height = CargoesField::cargo_line.width / 2;
+
+		/* Size of space between cargo lines. */
+		CargoesField::cargo_space.width = CargoesField::cargo_line.width / 2;
+		CargoesField::cargo_space.height = CargoesField::cargo_line.height / 2;
+
+		/* Size of cargo stub (unconnected cargo line.) */
+		CargoesField::cargo_stub.width = CargoesField::cargo_line.width / 2;
+		CargoesField::cargo_stub.height = CargoesField::cargo_line.height; /* Unused */
 
 		/* Decide about the size of the box holding the text of an industry type. */
 		this->ind_textsize.width = 0;
@@ -2489,21 +2502,23 @@ struct IndustryCargoesWindow : public Window {
 
 		d.width  += 2 * HOR_TEXT_PADDING;
 		/* Ensure the height is enough for the industry type text, for the horizontal connections, and for the cargo labels. */
-		uint min_ind_height = CargoesField::VERT_CARGO_EDGE * 2 + CargoesField::max_cargoes * FONT_HEIGHT_NORMAL + (CargoesField::max_cargoes - 1) *  CargoesField::VERT_CARGO_SPACE;
+		uint min_ind_height = CargoesField::cargo_border.height * 2 + CargoesField::max_cargoes * FONT_HEIGHT_NORMAL + (CargoesField::max_cargoes - 1) * CargoesField::cargo_space.height;
 		d.height = std::max(d.height + 2 * VERT_TEXT_PADDING, min_ind_height);
 
 		CargoesField::industry_width = d.width;
 		CargoesField::normal_height = d.height + CargoesField::VERT_INTER_INDUSTRY_SPACE;
 
 		/* Width of a #CFT_CARGO field. */
-		CargoesField::cargo_field_width = CargoesField::HOR_CARGO_BORDER_SPACE * 2 + CargoesField::HOR_CARGO_WIDTH * CargoesField::max_cargoes + CargoesField::HOR_CARGO_SPACE * (CargoesField::max_cargoes - 1);
+		CargoesField::cargo_field_width = CargoesField::cargo_border.width * 2 + CargoesField::cargo_line.width * CargoesField::max_cargoes + CargoesField::cargo_space.width * (CargoesField::max_cargoes - 1);
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
 			case WID_IC_PANEL:
+				resize->height = CargoesField::normal_height;
 				size->width = WD_FRAMETEXT_LEFT + CargoesField::industry_width * 3 + CargoesField::cargo_field_width * 2 + WD_FRAMETEXT_RIGHT;
+				size->height = WD_FRAMETEXT_TOP + CargoesField::small_height + 2 * resize->height + WD_FRAMETEXT_BOTTOM;
 				break;
 
 			case WID_IC_IND_DROPDOWN:
@@ -2756,8 +2771,7 @@ struct IndustryCargoesWindow : public Window {
 
 		this->ShortenCargoColumn(1, 1, num_indrows);
 		this->ShortenCargoColumn(3, 1, num_indrows);
-		const NWidgetBase *nwp = this->GetWidget<NWidgetBase>(WID_IC_PANEL);
-		this->vscroll->SetCount(CeilDiv(WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM + CargoesField::small_height + num_indrows * CargoesField::normal_height, nwp->resize_y));
+		this->vscroll->SetCount(num_indrows);
 		this->SetDirty();
 		this->NotifySmallmap();
 	}
@@ -2824,8 +2838,7 @@ struct IndustryCargoesWindow : public Window {
 		}
 
 		this->ShortenCargoColumn(1, 1, num_indrows);
-		const NWidgetBase *nwp = this->GetWidget<NWidgetBase>(WID_IC_PANEL);
-		this->vscroll->SetCount(CeilDiv(WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM + CargoesField::small_height + num_indrows * CargoesField::normal_height, nwp->resize_y));
+		this->vscroll->SetCount(num_indrows);
 		this->SetDirty();
 		this->NotifySmallmap();
 	}
@@ -3072,7 +3085,7 @@ struct IndustryCargoesWindow : public Window {
 
 	void OnResize() override
 	{
-		this->vscroll->SetCapacityFromWidget(this, WID_IC_PANEL);
+		this->vscroll->SetCapacityFromWidget(this, WID_IC_PANEL, WD_FRAMERECT_TOP + CargoesField::small_height);
 	}
 };
 
