@@ -1793,6 +1793,21 @@ private:
 	}
 
 	/**
+	 * Crete new company button is clicked.
+	 * @param w The instance of this window.
+	 * @param pt The point where this button was clicked.
+	 * @param company_id The company this button was assigned to.
+	 */
+	static void OnClickCompanyNew(NetworkClientListWindow *w, Point pt, CompanyID company_id)
+	{
+		if (_network_server) {
+			DoCommandP(0, CCA_NEW, _network_own_client_id, CMD_COMPANY_CTRL);
+		} else {
+			NetworkSendCommand(0, CCA_NEW, 0, CMD_COMPANY_CTRL, nullptr, nullptr, _local_company);
+		}
+	}
+
+	/**
 	 * Admin button on a Client is clicked.
 	 * @param w The instance of this window.
 	 * @param pt The point where this button was clicked.
@@ -1886,8 +1901,20 @@ private:
 		this->buttons.clear();
 		this->line_count = 0;
 
+		/* As spectator, show a line to create a new company. */
+		if (own_ci->client_playas == COMPANY_SPECTATOR && !NetworkMaxCompaniesReached()) {
+			this->buttons[line_count].emplace_back(new CompanyButton(SPR_JOIN, STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP, COLOUR_ORANGE, COMPANY_SPECTATOR, &NetworkClientListWindow::OnClickCompanyNew));
+			this->line_count += 1;
+		}
+
+		if (own_ci->client_playas != COMPANY_SPECTATOR) {
+			this->RebuildListCompany(own_ci->client_playas, own_ci);
+		}
+
 		/* Companies */
 		for (const Company *c : Company::Iterate()) {
+			if (c->index == own_ci->client_playas) continue;
+
 			this->RebuildListCompany(c->index, own_ci);
 		}
 
@@ -2177,13 +2204,13 @@ public:
 
 	/**
 	 * Draw a company and its clients on the matrix.
-	 * @param c The company to draw.
+	 * @param company_id The company to draw.
 	 * @param left The most left pixel of the line.
 	 * @param right The most right pixel of the line.
 	 * @param top The top of the first line.
 	 * @param line The Nth line we are drawing. Updated during this function.
 	 */
-	void DrawCompany(const Company *c, uint left, uint right, uint top, uint &line) const
+	void DrawCompany(CompanyID company_id, uint left, uint right, uint top, uint &line) const
 	{
 		bool rtl = _current_text_dir == TD_RTL;
 		int text_y_offset = std::max(0, ((int)(this->line_height + 1) - (int)FONT_HEIGHT_NORMAL) / 2) + WD_MATRIX_BOTTOM;
@@ -2209,14 +2236,17 @@ public:
 				this->DrawButtons(x, y, button_find->second);
 			}
 
-			if (c == nullptr) {
+			if (company_id == COMPANY_SPECTATOR) {
 				DrawSprite(SPR_COMPANY_ICON, PALETTE_TO_GREY, rtl ? right - d.width - 4 : left + 4, y + offset);
 				DrawString(rtl ? x : text_left, rtl ? text_right : x, y + text_y_offset, STR_NETWORK_CLIENT_LIST_SPECTATORS, TC_SILVER);
+			} else if (company_id == COMPANY_NEW_COMPANY) {
+				DrawSprite(SPR_COMPANY_ICON, PALETTE_TO_GREY, rtl ? right - d.width - 4 : left + 4, y + offset);
+				DrawString(rtl ? x : text_left, rtl ? text_right : x, y + text_y_offset, STR_NETWORK_CLIENT_LIST_NEW_COMPANY, TC_WHITE);
 			} else {
-				DrawCompanyIcon(c->index, rtl ? right - d.width - 4 : left + 4, y + offset);
+				DrawCompanyIcon(company_id, rtl ? right - d.width - 4 : left + 4, y + offset);
 
-				SetDParam(0, c->index);
-				SetDParam(1, c->index);
+				SetDParam(0, company_id);
+				SetDParam(1, company_id);
 				DrawString(rtl ? x : text_left, rtl ? text_right : x, y + text_y_offset, STR_COMPANY_NAME, TC_SILVER);
 			}
 		}
@@ -2225,8 +2255,7 @@ public:
 		line++;
 
 		for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-			if (c != nullptr && ci->client_playas != c->index) continue;
-			if (c == nullptr && ci->client_playas != COMPANY_SPECTATOR) continue;
+			if (ci->client_playas != company_id) continue;
 
 			/* Draw the player line (if in range of scrollbar). */
 			if (IsInsideMM(line, line_start, line_end)) {
@@ -2267,11 +2296,22 @@ public:
 					GfxFillRect(r.left + 2, r.top + offset, r.right - 1, r.top + offset + this->line_height - 1, GREY_SCALE(9));
 				}
 
-				for (const Company *c : Company::Iterate()) {
-					this->DrawCompany(c, r.left, r.right, r.top, line);
+				NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
+				if (own_ci->client_playas == COMPANY_SPECTATOR && !NetworkMaxCompaniesReached()) {
+					this->DrawCompany(COMPANY_NEW_COMPANY, r.left, r.right, r.top, line);
 				}
+
+				if (own_ci->client_playas != COMPANY_SPECTATOR) {
+					this->DrawCompany(own_ci->client_playas, r.left, r.right, r.top, line);
+				}
+
+				for (const Company *c : Company::Iterate()) {
+					if (own_ci->client_playas == c->index) continue;
+					this->DrawCompany(c->index, r.left, r.right, r.top, line);
+				}
+
 				/* Specators */
-				this->DrawCompany(nullptr, r.left, r.right, r.top, line);
+				this->DrawCompany(COMPANY_SPECTATOR, r.left, r.right, r.top, line);
 
 				break;
 			}
