@@ -302,6 +302,66 @@ bool StrValid(const char *str, const char *last)
 	return *str == '\0';
 }
 
+/**
+ * Trim the spaces from the begin of given string in place, i.e. the string buffer
+ * that is passed will be modified whenever spaces exist in the given string.
+ * When there are spaces at the begin, the whole string is moved forward.
+ * @param str The string to perform the in place left trimming on.
+ */
+static void StrLeftTrimInPlace(char *str)
+{
+	if (StrEmpty(str)) return;
+
+	char *first_non_space = str;
+	while (*first_non_space == ' ') first_non_space++;
+
+	if (first_non_space == str) return;
+
+	/* The source will reach '\0' first, but set the '\0' on the destination afterwards. */
+	char *dst = str;
+	for (char *src = first_non_space; *src != '\0'; dst++, src++) *dst = *src;
+	*dst = '\0';
+}
+
+/**
+ * Trim the spaces from the end of given string in place, i.e. the string buffer
+ * that is passed will be modified whenever spaces exist in the given string.
+ * When there are spaces at the end, the '\0' will be moved forward.
+ * @param str The string to perform the in place left trimming on.
+ */
+static void StrRightTrimInPlace(char *str)
+{
+	if (StrEmpty(str)) return;
+
+	char *end = str;
+	while (*end != '\0') end++;
+
+	char *last_non_space = end - 1;
+	while (last_non_space >= str && *last_non_space == ' ') last_non_space--;
+
+	/* The last non space points to the last character of the string that is not
+	 * a space. For a string with only spaces or an empty string this would be
+	 * the position before the begin of the string. The previous search ensures
+	 * that this location before the string is not read.
+	 * In any case, the character after the last non space character will be
+	 * either a space or the existing termination, so it can be set to '\0'.
+	 */
+	last_non_space[1] = '\0';
+}
+
+/**
+ * Trim the spaces from given string in place, i.e. the string buffer that
+ * is passed will be modified whenever spaces exist in the given string.
+ * When there are spaces at the begin, the whole string is moved forward
+ * and when there are spaces at the back the '\0' termination is moved.
+ * @param str The string to perform the in place trimming on.
+ */
+void StrTrimInPlace(char *str)
+{
+	StrLeftTrimInPlace(str);
+	StrRightTrimInPlace(str);
+}
+
 /** Scans the string for colour codes and strips them */
 void str_strip_colours(char *str)
 {
