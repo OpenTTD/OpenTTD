@@ -1856,7 +1856,9 @@ struct CargoesField {
 	static const int CARGO_STUB_WIDTH;
 	static const int HOR_CARGO_WIDTH, HOR_CARGO_SPACE;
 	static const int VERT_CARGO_SPACE, VERT_CARGO_EDGE;
-	static const int BLOB_DISTANCE, BLOB_WIDTH, BLOB_HEIGHT;
+	static const int BLOB_DISTANCE;
+
+	static Dimension legend;
 
 	static const int INDUSTRY_LINE_COLOUR;
 	static const int CARGO_LINE_COLOUR;
@@ -2060,13 +2062,13 @@ struct CargoesField {
 					int blob_left, blob_right;
 					if (_current_text_dir == TD_RTL) {
 						blob_right = xpos2 - BLOB_DISTANCE;
-						blob_left  = blob_right - BLOB_WIDTH;
+						blob_left  = blob_right - CargoesField::legend.width;
 					} else {
 						blob_left  = xpos + BLOB_DISTANCE;
-						blob_right = blob_left + BLOB_WIDTH;
+						blob_right = blob_left + CargoesField::legend.width;
 					}
-					GfxFillRect(blob_left,     ypos2 - BLOB_DISTANCE - BLOB_HEIGHT,     blob_right,     ypos2 - BLOB_DISTANCE,     PC_BLACK); // Border
-					GfxFillRect(blob_left + 1, ypos2 - BLOB_DISTANCE - BLOB_HEIGHT + 1, blob_right - 1, ypos2 - BLOB_DISTANCE - 1, indsp->map_colour);
+					GfxFillRect(blob_left,     ypos2 - BLOB_DISTANCE - CargoesField::legend.height,     blob_right,     ypos2 - BLOB_DISTANCE,     PC_BLACK); // Border
+					GfxFillRect(blob_left + 1, ypos2 - BLOB_DISTANCE - CargoesField::legend.height + 1, blob_right - 1, ypos2 - BLOB_DISTANCE - 1, indsp->map_colour);
 				} else {
 					DrawString(xpos, xpos2, ypos, STR_INDUSTRY_CARGOES_HOUSES, TC_FROMSTRING, SA_HOR_CENTER);
 				}
@@ -2268,6 +2270,8 @@ private:
 static_assert(MAX_CARGOES >= cpp_lengthof(IndustrySpec, produced_cargo));
 static_assert(MAX_CARGOES >= cpp_lengthof(IndustrySpec, accepts_cargo));
 
+Dimension CargoesField::legend;      ///< Dimension of the legend blob.
+
 int CargoesField::small_height;      ///< Height of the header row.
 int CargoesField::normal_height;     ///< Height of the non-header rows.
 int CargoesField::industry_width;    ///< Width of an industry field.
@@ -2283,8 +2287,6 @@ const int CargoesField::VERT_CARGO_EDGE        =  4; ///< Amount of vertical spa
 const int CargoesField::VERT_CARGO_SPACE       =  4; ///< Amount of vertical space between two connected cargoes at an industry.
 
 const int CargoesField::BLOB_DISTANCE =  5; ///< Distance of the industry legend colour from the edge of the industry box.
-const int CargoesField::BLOB_WIDTH    = 12; ///< Width of the industry legend colour, including border.
-const int CargoesField::BLOB_HEIGHT   =  9; ///< Height of the industry legend colour, including border
 
 const int CargoesField::INDUSTRY_LINE_COLOUR = PC_YELLOW; ///< Line colour of the industry type box.
 const int CargoesField::CARGO_LINE_COLOUR    = PC_YELLOW; ///< Line colour around the cargo.
@@ -2454,6 +2456,10 @@ struct IndustryCargoesWindow : public Window {
 		d.width  += WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT;
 		d.height += WD_FRAMETEXT_TOP + WD_FRAMETEXT_BOTTOM;
 		CargoesField::small_height = d.height;
+
+		/* Width of the legend blob -- slightly larger than the smallmap legend blob. */
+		CargoesField::legend.height = FONT_HEIGHT_SMALL;
+		CargoesField::legend.width = CargoesField::legend.height * 8 / 5;
 
 		/* Decide about the size of the box holding the text of an industry type. */
 		this->ind_textsize.width = 0;
