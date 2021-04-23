@@ -2122,7 +2122,6 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company 
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online players
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :New company
 
 # Network client list
 STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multiplayer
@@ -2147,6 +2146,8 @@ STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Send a m
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Send a message to all players of this company
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Send a message to all spectators
 STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Spectators
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(New company)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Create a new company and join it
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kick
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Ban
