@@ -1416,12 +1416,11 @@ DEF_CONSOLE_CMD(ConAlias)
 
 	if (argc < 3) return false;
 
-	alias = IConsoleAliasGet(argv[1]);
+	alias = IConsole::AliasGet(argv[1]);
 	if (alias == nullptr) {
-		IConsoleAliasRegister(argv[1], argv[2]);
+		IConsole::AliasRegister(argv[1], argv[2]);
 	} else {
-		free(alias->cmdline);
-		alias->cmdline = stredup(argv[2]);
+		alias->cmdline = argv[2];
 	}
 	return true;
 }
@@ -1515,13 +1514,13 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 
 	if (argc < 2) return false;
 
-	const IConsoleCmd *cmd = IConsoleCmdGet(argv[1]);
+	const IConsoleCmd *cmd = IConsole::CmdGet(argv[1]);
 	if (cmd == nullptr) {
 		IConsoleError("the given command was not found");
 		return true;
 	}
 
-	IConsolePrintF(CC_DEFAULT, "command name: %s", cmd->name);
+	IConsolePrintF(CC_DEFAULT, "command name: %s", cmd->name.c_str());
 	IConsolePrintF(CC_DEFAULT, "command proc: %p", cmd->proc);
 
 	if (cmd->hook != nullptr) IConsoleWarning("command is hooked");
@@ -1580,21 +1579,20 @@ DEF_CONSOLE_CMD(ConHelp)
 		const IConsoleCmd *cmd;
 		const IConsoleAlias *alias;
 
-		RemoveUnderscores(argv[1]);
-		cmd = IConsoleCmdGet(argv[1]);
+		cmd = IConsole::CmdGet(argv[1]);
 		if (cmd != nullptr) {
 			cmd->proc(0, nullptr);
 			return true;
 		}
 
-		alias = IConsoleAliasGet(argv[1]);
+		alias = IConsole::AliasGet(argv[1]);
 		if (alias != nullptr) {
-			cmd = IConsoleCmdGet(alias->cmdline);
+			cmd = IConsole::CmdGet(alias->cmdline);
 			if (cmd != nullptr) {
 				cmd->proc(0, nullptr);
 				return true;
 			}
-			IConsolePrintF(CC_ERROR, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline);
+			IConsolePrintF(CC_ERROR, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline.c_str());
 			return true;
 		}
 
@@ -1621,9 +1619,10 @@ DEF_CONSOLE_CMD(ConListCommands)
 		return true;
 	}
 
-	for (const IConsoleCmd *cmd = _iconsole_cmds; cmd != nullptr; cmd = cmd->next) {
-		if (argv[1] == nullptr || strstr(cmd->name, argv[1]) != nullptr) {
-			if (cmd->hook == nullptr || cmd->hook(false) != CHR_HIDE) IConsolePrintF(CC_DEFAULT, "%s", cmd->name);
+	for (auto &it : IConsole::Commands()) {
+		const IConsoleCmd *cmd = &it.second;
+		if (argv[1] == nullptr || cmd->name.find(argv[1]) != std::string::npos) {
+			if (cmd->hook == nullptr || cmd->hook(false) != CHR_HIDE) IConsolePrintF(CC_DEFAULT, "%s", cmd->name.c_str());
 		}
 	}
 
@@ -1637,9 +1636,10 @@ DEF_CONSOLE_CMD(ConListAliases)
 		return true;
 	}
 
-	for (const IConsoleAlias *alias = _iconsole_aliases; alias != nullptr; alias = alias->next) {
-		if (argv[1] == nullptr || strstr(alias->name, argv[1]) != nullptr) {
-			IConsolePrintF(CC_DEFAULT, "%s => %s", alias->name, alias->cmdline);
+	for (auto &it : IConsole::Aliases()) {
+		const IConsoleAlias *alias = &it.second;
+		if (argv[1] == nullptr || alias->name.find(argv[1]) != std::string::npos) {
+			IConsolePrintF(CC_DEFAULT, "%s => %s", alias->name.c_str(), alias->cmdline.c_str());
 		}
 	}
 
@@ -2133,9 +2133,9 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 
 static void IConsoleDebugLibRegister()
 {
-	IConsoleCmdRegister("resettile",        ConResetTile);
-	IConsoleAliasRegister("dbg_echo",       "echo %A; echo %B");
-	IConsoleAliasRegister("dbg_echo2",      "echo %!");
+	IConsole::CmdRegister("resettile",        ConResetTile);
+	IConsole::AliasRegister("dbg_echo",       "echo %A; echo %B");
+	IConsole::AliasRegister("dbg_echo2",      "echo %!");
 }
 #endif
 
@@ -2329,137 +2329,137 @@ DEF_CONSOLE_CMD(ConDumpInfo)
 
 void IConsoleStdLibRegister()
 {
-	IConsoleCmdRegister("debug_level",  ConDebugLevel);
-	IConsoleCmdRegister("echo",         ConEcho);
-	IConsoleCmdRegister("echoc",        ConEchoC);
-	IConsoleCmdRegister("exec",         ConExec);
-	IConsoleCmdRegister("exit",         ConExit);
-	IConsoleCmdRegister("part",         ConPart);
-	IConsoleCmdRegister("help",         ConHelp);
-	IConsoleCmdRegister("info_cmd",     ConInfoCmd);
-	IConsoleCmdRegister("list_cmds",    ConListCommands);
-	IConsoleCmdRegister("list_aliases", ConListAliases);
-	IConsoleCmdRegister("newgame",      ConNewGame);
-	IConsoleCmdRegister("restart",      ConRestart);
-	IConsoleCmdRegister("reload",       ConReload);
-	IConsoleCmdRegister("getseed",      ConGetSeed);
-	IConsoleCmdRegister("getdate",      ConGetDate);
-	IConsoleCmdRegister("getsysdate",   ConGetSysDate);
-	IConsoleCmdRegister("quit",         ConExit);
-	IConsoleCmdRegister("resetengines", ConResetEngines, ConHookNoNetwork);
-	IConsoleCmdRegister("reset_enginepool", ConResetEnginePool, ConHookNoNetwork);
-	IConsoleCmdRegister("return",       ConReturn);
-	IConsoleCmdRegister("screenshot",   ConScreenShot);
-	IConsoleCmdRegister("script",       ConScript);
-	IConsoleCmdRegister("scrollto",     ConScrollToTile);
-	IConsoleCmdRegister("alias",        ConAlias);
-	IConsoleCmdRegister("load",         ConLoad);
-	IConsoleCmdRegister("rm",           ConRemove);
-	IConsoleCmdRegister("save",         ConSave);
-	IConsoleCmdRegister("saveconfig",   ConSaveConfig);
-	IConsoleCmdRegister("ls",           ConListFiles);
-	IConsoleCmdRegister("cd",           ConChangeDirectory);
-	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
-	IConsoleCmdRegister("clear",        ConClearBuffer);
-	IConsoleCmdRegister("setting",      ConSetting);
-	IConsoleCmdRegister("setting_newgame", ConSettingNewgame);
-	IConsoleCmdRegister("list_settings",ConListSettings);
-	IConsoleCmdRegister("gamelog",      ConGamelogPrint);
-	IConsoleCmdRegister("rescan_newgrf", ConRescanNewGRF);
+	IConsole::CmdRegister("debug_level",             ConDebugLevel);
+	IConsole::CmdRegister("echo",                    ConEcho);
+	IConsole::CmdRegister("echoc",                   ConEchoC);
+	IConsole::CmdRegister("exec",                    ConExec);
+	IConsole::CmdRegister("exit",                    ConExit);
+	IConsole::CmdRegister("part",                    ConPart);
+	IConsole::CmdRegister("help",                    ConHelp);
+	IConsole::CmdRegister("info_cmd",                ConInfoCmd);
+	IConsole::CmdRegister("list_cmds",               ConListCommands);
+	IConsole::CmdRegister("list_aliases",            ConListAliases);
+	IConsole::CmdRegister("newgame",                 ConNewGame);
+	IConsole::CmdRegister("restart",                 ConRestart);
+	IConsole::CmdRegister("reload",                  ConReload);
+	IConsole::CmdRegister("getseed",                 ConGetSeed);
+	IConsole::CmdRegister("getdate",                 ConGetDate);
+	IConsole::CmdRegister("getsysdate",              ConGetSysDate);
+	IConsole::CmdRegister("quit",                    ConExit);
+	IConsole::CmdRegister("resetengines",            ConResetEngines,     ConHookNoNetwork);
+	IConsole::CmdRegister("reset_enginepool",        ConResetEnginePool,  ConHookNoNetwork);
+	IConsole::CmdRegister("return",                  ConReturn);
+	IConsole::CmdRegister("screenshot",              ConScreenShot);
+	IConsole::CmdRegister("script",                  ConScript);
+	IConsole::CmdRegister("scrollto",                ConScrollToTile);
+	IConsole::CmdRegister("alias",                   ConAlias);
+	IConsole::CmdRegister("load",                    ConLoad);
+	IConsole::CmdRegister("rm",                      ConRemove);
+	IConsole::CmdRegister("save",                    ConSave);
+	IConsole::CmdRegister("saveconfig",              ConSaveConfig);
+	IConsole::CmdRegister("ls",                      ConListFiles);
+	IConsole::CmdRegister("cd",                      ConChangeDirectory);
+	IConsole::CmdRegister("pwd",                     ConPrintWorkingDirectory);
+	IConsole::CmdRegister("clear",                   ConClearBuffer);
+	IConsole::CmdRegister("setting",                 ConSetting);
+	IConsole::CmdRegister("setting_newgame",         ConSettingNewgame);
+	IConsole::CmdRegister("list_settings",           ConListSettings);
+	IConsole::CmdRegister("gamelog",                 ConGamelogPrint);
+	IConsole::CmdRegister("rescan_newgrf",           ConRescanNewGRF);
 
-	IConsoleAliasRegister("dir",          "ls");
-	IConsoleAliasRegister("del",          "rm %+");
-	IConsoleAliasRegister("newmap",       "newgame");
-	IConsoleAliasRegister("patch",        "setting %+");
-	IConsoleAliasRegister("set",          "setting %+");
-	IConsoleAliasRegister("set_newgame",  "setting_newgame %+");
-	IConsoleAliasRegister("list_patches", "list_settings %+");
-	IConsoleAliasRegister("developer",    "setting developer %+");
+	IConsole::AliasRegister("dir",                   "ls");
+	IConsole::AliasRegister("del",                   "rm %+");
+	IConsole::AliasRegister("newmap",                "newgame");
+	IConsole::AliasRegister("patch",                 "setting %+");
+	IConsole::AliasRegister("set",                   "setting %+");
+	IConsole::AliasRegister("set_newgame",           "setting_newgame %+");
+	IConsole::AliasRegister("list_patches",          "list_settings %+");
+	IConsole::AliasRegister("developer",             "setting developer %+");
 
-	IConsoleCmdRegister("list_ai_libs", ConListAILibs);
-	IConsoleCmdRegister("list_ai",      ConListAI);
-	IConsoleCmdRegister("reload_ai",    ConReloadAI);
-	IConsoleCmdRegister("rescan_ai",    ConRescanAI);
-	IConsoleCmdRegister("start_ai",     ConStartAI);
-	IConsoleCmdRegister("stop_ai",      ConStopAI);
+	IConsole::CmdRegister("list_ai_libs",            ConListAILibs);
+	IConsole::CmdRegister("list_ai",                 ConListAI);
+	IConsole::CmdRegister("reload_ai",               ConReloadAI);
+	IConsole::CmdRegister("rescan_ai",               ConRescanAI);
+	IConsole::CmdRegister("start_ai",                ConStartAI);
+	IConsole::CmdRegister("stop_ai",                 ConStopAI);
 
-	IConsoleCmdRegister("list_game",    ConListGame);
-	IConsoleCmdRegister("list_game_libs", ConListGameLibs);
-	IConsoleCmdRegister("rescan_game",    ConRescanGame);
+	IConsole::CmdRegister("list_game",               ConListGame);
+	IConsole::CmdRegister("list_game_libs",          ConListGameLibs);
+	IConsole::CmdRegister("rescan_game",             ConRescanGame);
 
-	IConsoleCmdRegister("companies",       ConCompanies);
-	IConsoleAliasRegister("players",       "companies");
+	IConsole::CmdRegister("companies",               ConCompanies);
+	IConsole::AliasRegister("players",               "companies");
 
 	/* networking functions */
 
 /* Content downloading is only available with ZLIB */
 #if defined(WITH_ZLIB)
-	IConsoleCmdRegister("content",         ConContent);
+	IConsole::CmdRegister("content",                 ConContent);
 #endif /* defined(WITH_ZLIB) */
 
 	/*** Networking commands ***/
-	IConsoleCmdRegister("say",             ConSay, ConHookNeedNetwork);
-	IConsoleCmdRegister("say_company",     ConSayCompany, ConHookNeedNetwork);
-	IConsoleAliasRegister("say_player",    "say_company %+");
-	IConsoleCmdRegister("say_client",      ConSayClient, ConHookNeedNetwork);
+	IConsole::CmdRegister("say",                     ConSay,              ConHookNeedNetwork);
+	IConsole::CmdRegister("say_company",             ConSayCompany,       ConHookNeedNetwork);
+	IConsole::AliasRegister("say_player",            "say_company %+");
+	IConsole::CmdRegister("say_client",              ConSayClient,        ConHookNeedNetwork);
 
-	IConsoleCmdRegister("connect",         ConNetworkConnect, ConHookClientOnly);
-	IConsoleCmdRegister("clients",         ConNetworkClients, ConHookNeedNetwork);
-	IConsoleCmdRegister("status",          ConStatus, ConHookServerOnly);
-	IConsoleCmdRegister("server_info",     ConServerInfo, ConHookServerOnly);
-	IConsoleAliasRegister("info",          "server_info");
-	IConsoleCmdRegister("reconnect",       ConNetworkReconnect, ConHookClientOnly);
-	IConsoleCmdRegister("rcon",            ConRcon, ConHookNeedNetwork);
+	IConsole::CmdRegister("connect",                 ConNetworkConnect,   ConHookClientOnly);
+	IConsole::CmdRegister("clients",                 ConNetworkClients,   ConHookNeedNetwork);
+	IConsole::CmdRegister("status",                  ConStatus,           ConHookServerOnly);
+	IConsole::CmdRegister("server_info",             ConServerInfo,       ConHookServerOnly);
+	IConsole::AliasRegister("info",                  "server_info");
+	IConsole::CmdRegister("reconnect",               ConNetworkReconnect, ConHookClientOnly);
+	IConsole::CmdRegister("rcon",                    ConRcon,             ConHookNeedNetwork);
 
-	IConsoleCmdRegister("join",            ConJoinCompany, ConHookNeedNetwork);
-	IConsoleAliasRegister("spectate",      "join 255");
-	IConsoleCmdRegister("move",            ConMoveClient, ConHookServerOnly);
-	IConsoleCmdRegister("reset_company",   ConResetCompany, ConHookServerOnly);
-	IConsoleAliasRegister("clean_company", "reset_company %A");
-	IConsoleCmdRegister("client_name",     ConClientNickChange, ConHookServerOnly);
-	IConsoleCmdRegister("kick",            ConKick, ConHookServerOnly);
-	IConsoleCmdRegister("ban",             ConBan, ConHookServerOnly);
-	IConsoleCmdRegister("unban",           ConUnBan, ConHookServerOnly);
-	IConsoleCmdRegister("banlist",         ConBanList, ConHookServerOnly);
+	IConsole::CmdRegister("join",                    ConJoinCompany,      ConHookNeedNetwork);
+	IConsole::AliasRegister("spectate",              "join 255");
+	IConsole::CmdRegister("move",                    ConMoveClient,       ConHookServerOnly);
+	IConsole::CmdRegister("reset_company",           ConResetCompany,     ConHookServerOnly);
+	IConsole::AliasRegister("clean_company",         "reset_company %A");
+	IConsole::CmdRegister("client_name",             ConClientNickChange, ConHookServerOnly);
+	IConsole::CmdRegister("kick",                    ConKick,             ConHookServerOnly);
+	IConsole::CmdRegister("ban",                     ConBan,              ConHookServerOnly);
+	IConsole::CmdRegister("unban",                   ConUnBan,            ConHookServerOnly);
+	IConsole::CmdRegister("banlist",                 ConBanList,          ConHookServerOnly);
 
-	IConsoleCmdRegister("pause",           ConPauseGame, ConHookServerOnly);
-	IConsoleCmdRegister("unpause",         ConUnpauseGame, ConHookServerOnly);
+	IConsole::CmdRegister("pause",                   ConPauseGame,        ConHookServerOnly);
+	IConsole::CmdRegister("unpause",                 ConUnpauseGame,      ConHookServerOnly);
 
-	IConsoleCmdRegister("company_pw",      ConCompanyPassword, ConHookNeedNetwork);
-	IConsoleAliasRegister("company_password",      "company_pw %+");
+	IConsole::CmdRegister("company_pw",              ConCompanyPassword,  ConHookNeedNetwork);
+	IConsole::AliasRegister("company_password",      "company_pw %+");
 
-	IConsoleAliasRegister("net_frame_freq",        "setting frame_freq %+");
-	IConsoleAliasRegister("net_sync_freq",         "setting sync_freq %+");
-	IConsoleAliasRegister("server_pw",             "setting server_password %+");
-	IConsoleAliasRegister("server_password",       "setting server_password %+");
-	IConsoleAliasRegister("rcon_pw",               "setting rcon_password %+");
-	IConsoleAliasRegister("rcon_password",         "setting rcon_password %+");
-	IConsoleAliasRegister("name",                  "setting client_name %+");
-	IConsoleAliasRegister("server_name",           "setting server_name %+");
-	IConsoleAliasRegister("server_port",           "setting server_port %+");
-	IConsoleAliasRegister("server_advertise",      "setting server_advertise %+");
-	IConsoleAliasRegister("max_clients",           "setting max_clients %+");
-	IConsoleAliasRegister("max_companies",         "setting max_companies %+");
-	IConsoleAliasRegister("max_spectators",        "setting max_spectators %+");
-	IConsoleAliasRegister("max_join_time",         "setting max_join_time %+");
-	IConsoleAliasRegister("pause_on_join",         "setting pause_on_join %+");
-	IConsoleAliasRegister("autoclean_companies",   "setting autoclean_companies %+");
-	IConsoleAliasRegister("autoclean_protected",   "setting autoclean_protected %+");
-	IConsoleAliasRegister("autoclean_unprotected", "setting autoclean_unprotected %+");
-	IConsoleAliasRegister("restart_game_year",     "setting restart_game_year %+");
-	IConsoleAliasRegister("min_players",           "setting min_active_clients %+");
-	IConsoleAliasRegister("reload_cfg",            "setting reload_cfg %+");
+	IConsole::AliasRegister("net_frame_freq",        "setting frame_freq %+");
+	IConsole::AliasRegister("net_sync_freq",         "setting sync_freq %+");
+	IConsole::AliasRegister("server_pw",             "setting server_password %+");
+	IConsole::AliasRegister("server_password",       "setting server_password %+");
+	IConsole::AliasRegister("rcon_pw",               "setting rcon_password %+");
+	IConsole::AliasRegister("rcon_password",         "setting rcon_password %+");
+	IConsole::AliasRegister("name",                  "setting client_name %+");
+	IConsole::AliasRegister("server_name",           "setting server_name %+");
+	IConsole::AliasRegister("server_port",           "setting server_port %+");
+	IConsole::AliasRegister("server_advertise",      "setting server_advertise %+");
+	IConsole::AliasRegister("max_clients",           "setting max_clients %+");
+	IConsole::AliasRegister("max_companies",         "setting max_companies %+");
+	IConsole::AliasRegister("max_spectators",        "setting max_spectators %+");
+	IConsole::AliasRegister("max_join_time",         "setting max_join_time %+");
+	IConsole::AliasRegister("pause_on_join",         "setting pause_on_join %+");
+	IConsole::AliasRegister("autoclean_companies",   "setting autoclean_companies %+");
+	IConsole::AliasRegister("autoclean_protected",   "setting autoclean_protected %+");
+	IConsole::AliasRegister("autoclean_unprotected", "setting autoclean_unprotected %+");
+	IConsole::AliasRegister("restart_game_year",     "setting restart_game_year %+");
+	IConsole::AliasRegister("min_players",           "setting min_active_clients %+");
+	IConsole::AliasRegister("reload_cfg",            "setting reload_cfg %+");
 
 	/* debugging stuff */
 #ifdef _DEBUG
 	IConsoleDebugLibRegister();
 #endif
-	IConsoleCmdRegister("fps",     ConFramerate);
-	IConsoleCmdRegister("fps_wnd", ConFramerateWindow);
+	IConsole::CmdRegister("fps",                     ConFramerate);
+	IConsole::CmdRegister("fps_wnd",                 ConFramerateWindow);
 
 	/* NewGRF development stuff */
-	IConsoleCmdRegister("reload_newgrfs",  ConNewGRFReload, ConHookNewGRFDeveloperTool);
-	IConsoleCmdRegister("newgrf_profile",  ConNewGRFProfile, ConHookNewGRFDeveloperTool);
+	IConsole::CmdRegister("reload_newgrfs",          ConNewGRFReload,     ConHookNewGRFDeveloperTool);
+	IConsole::CmdRegister("newgrf_profile",          ConNewGRFProfile,    ConHookNewGRFDeveloperTool);
 
-	IConsoleCmdRegister("dump_info", ConDumpInfo);
+	IConsole::CmdRegister("dump_info",               ConDumpInfo);
 }

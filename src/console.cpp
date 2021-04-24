@@ -24,8 +24,17 @@ static const uint ICON_TOKEN_COUNT = 20;     ///< Maximum number of tokens in on
 static const uint ICON_MAX_RECURSE = 10;     ///< Maximum number of recursion
 
 /* console parser */
-IConsoleCmd   *_iconsole_cmds;    ///< list of registered commands
-IConsoleAlias *_iconsole_aliases; ///< list of registered aliases
+/* static */ IConsole::CommandList &IConsole::Commands()
+{
+	static IConsole::CommandList cmds;
+	return cmds;
+}
+
+/* static */ IConsole::AliasList &IConsole::Aliases()
+{
+	static IConsole::AliasList aliases;
+	return aliases;
+}
 
 FILE *_iconsole_output_file;
 
@@ -195,49 +204,13 @@ bool GetArgumentInteger(uint32 *value, const char *arg)
 }
 
 /**
- * Add an item to an alphabetically sorted list.
- * @param base first item of the list
- * @param item_new the item to add
+ * Creates a copy of a string with underscores removed from it
+ * @param name String to remove the underscores from.
+ * @return A copy of \a name, without underscores.
  */
-template<class T>
-void IConsoleAddSorted(T **base, T *item_new)
+static std::string RemoveUnderscores(std::string name)
 {
-	if (*base == nullptr) {
-		*base = item_new;
-		return;
-	}
-
-	T *item_before = nullptr;
-	T *item = *base;
-	/* The list is alphabetically sorted, insert the new item at the correct location */
-	while (item != nullptr) {
-		if (strcmp(item->name, item_new->name) > 0) break; // insert here
-
-		item_before = item;
-		item = item->next;
-	}
-
-	if (item_before == nullptr) {
-		*base = item_new;
-	} else {
-		item_before->next = item_new;
-	}
-
-	item_new->next = item;
-}
-
-/**
- * Remove underscores from a string; the string will be modified!
- * @param[in,out] name String to remove the underscores from.
- * @return \a name, with its contents modified.
- */
-char *RemoveUnderscores(char *name)
-{
-	char *q = name;
-	for (const char *p = name; *p != '\0'; p++) {
-		if (*p != '_') *q++ = *p;
-	}
-	*q = '\0';
+	name.erase(std::remove(name.begin(), name.end(), '_'), name.end());
 	return name;
 }
 
@@ -246,15 +219,9 @@ char *RemoveUnderscores(char *name)
  * @param name name of the command that will be used
  * @param proc function that will be called upon execution of command
  */
-void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *hook)
+/* static */ void IConsole::CmdRegister(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook)
 {
-	IConsoleCmd *item_new = MallocT<IConsoleCmd>(1);
-	item_new->name = RemoveUnderscores(stredup(name));
-	item_new->next = nullptr;
-	item_new->proc = proc;
-	item_new->hook = hook;
-
-	IConsoleAddSorted(&_iconsole_cmds, item_new);
+	IConsole::Commands().try_emplace(RemoveUnderscores(name), name, proc, hook);
 }
 
 /**
@@ -262,13 +229,10 @@ void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *
  * @param name command to be found
  * @return return Cmdstruct of the found command, or nullptr on failure
  */
-IConsoleCmd *IConsoleCmdGet(const char *name)
+/* static */ IConsoleCmd *IConsole::CmdGet(const std::string &name)
 {
-	IConsoleCmd *item;
-
-	for (item = _iconsole_cmds; item != nullptr; item = item->next) {
-		if (strcmp(item->name, name) == 0) return item;
-	}
+	auto item = IConsole::Commands().find(RemoveUnderscores(name));
+	if (item != IConsole::Commands().end()) return &item->second;
 	return nullptr;
 }
 
@@ -277,22 +241,10 @@ IConsoleCmd *IConsoleCmdGet(const char *name)
  * @param name name of the alias that will be used
  * @param cmd name of the command that 'name' will be alias of
  */
-void IConsoleAliasRegister(const char *name, const char *cmd)
+/* static */ void IConsole::AliasRegister(const std::string &name, const std::string &cmd)
 {
-	if (IConsoleAliasGet(name) != nullptr) {
-		IConsoleError("an alias with this name already exists; insertion aborted");
-		return;
-	}
-
-	char *new_alias = RemoveUnderscores(stredup(name));
-	char *cmd_aliased = stredup(cmd);
-	IConsoleAlias *item_new = MallocT<IConsoleAlias>(1);
-
-	item_new->next = nullptr;
-	item_new->cmdline = cmd_aliased;
-	item_new->name = new_alias;
-
-	IConsoleAddSorted(&_iconsole_aliases, item_new);
+	auto result = IConsole::Aliases().try_emplace(RemoveUnderscores(name), name, cmd);
+	if (!result.second) IConsoleError("an alias with this name already exists; insertion aborted");
 }
 
 /**
@@ -300,16 +252,13 @@ void IConsoleAliasRegister(const char *name, const char *cmd)
  * @param name alias to be found
  * @return return Aliasstruct of the found alias, or nullptr on failure
  */
-IConsoleAlias *IConsoleAliasGet(const char *name)
+/* static */ IConsoleAlias *IConsole::AliasGet(const std::string &name)
 {
-	IConsoleAlias *item;
-
-	for (item = _iconsole_aliases; item != nullptr; item = item->next) {
-		if (strcmp(item->name, name) == 0) return item;
-	}
-
+	auto item = IConsole::Aliases().find(RemoveUnderscores(name));
+	if (item != IConsole::Aliases().end()) return &item->second;
 	return nullptr;
 }
+
 /**
  * An alias is just another name for a command, or for more commands
  * Execute it as well.
@@ -329,7 +278,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 		return;
 	}
 
-	for (const char *cmdptr = alias->cmdline; *cmdptr != '\0'; cmdptr++) {
+	for (const char *cmdptr = alias->cmdline.c_str(); *cmdptr != '\0'; cmdptr++) {
 		switch (*cmdptr) {
 			case '\'': // ' will double for ""
 				alias_stream = strecpy(alias_stream, "\"", lastof(alias_buffer));
@@ -372,7 +321,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 
 						if (param < 0 || param >= tokencount) {
 							IConsoleError("too many or wrong amount of parameters passed to alias, aborting");
-							IConsolePrintF(CC_WARNING, "Usage of alias '%s': %s", alias->name, alias->cmdline);
+							IConsolePrintF(CC_WARNING, "Usage of alias '%s': %s", alias->name.c_str(), alias->cmdline.c_str());
 							return;
 						}
 
@@ -491,8 +440,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 	 * First try commands, then aliases. Execute
 	 * the found action taking into account its hooking code
 	 */
-	RemoveUnderscores(tokens[0]);
-	IConsoleCmd *cmd = IConsoleCmdGet(tokens[0]);
+	IConsoleCmd *cmd = IConsole::CmdGet(tokens[0]);
 	if (cmd != nullptr) {
 		ConsoleHookResult chr = (cmd->hook == nullptr ? CHR_ALLOW : cmd->hook(true));
 		switch (chr) {
@@ -508,7 +456,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 	}
 
 	t_index--;
-	IConsoleAlias *alias = IConsoleAliasGet(tokens[0]);
+	IConsoleAlias *alias = IConsole::AliasGet(tokens[0]);
 	if (alias != nullptr) {
 		IConsoleAliasExec(alias, t_index, &tokens[1], recurse_count + 1);
 		return;

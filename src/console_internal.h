@@ -11,6 +11,7 @@
 #define CONSOLE_INTERNAL_H
 
 #include "gfx_type.h"
+#include <map>
 
 static const uint ICON_CMDLN_SIZE     = 1024; ///< maximum length of a typed in command
 static const uint ICON_MAX_STREAMSIZE = 2048; ///< maximum length of a totally expanded command
@@ -33,9 +34,9 @@ enum ConsoleHookResult {
 typedef bool IConsoleCmdProc(byte argc, char *argv[]);
 typedef ConsoleHookResult IConsoleHook(bool echo);
 struct IConsoleCmd {
-	char *name;               ///< name of command
-	IConsoleCmd *next;        ///< next command in list
+	IConsoleCmd(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook) : name(name), proc(proc), hook(hook) {}
 
+	std::string name;         ///< name of command
 	IConsoleCmdProc *proc;    ///< process executed when command is typed
 	IConsoleHook *hook;       ///< any special trigger action that needs executing
 };
@@ -53,24 +54,30 @@ struct IConsoleCmd {
  * - ";" allows for combining commands (see example 'ng')
  */
 struct IConsoleAlias {
-	char *name;                 ///< name of the alias
-	IConsoleAlias *next;        ///< next alias in list
+	IConsoleAlias(const std::string &name, const std::string &cmdline) : name(name), cmdline(cmdline) {}
 
-	char *cmdline;              ///< command(s) that is/are being aliased
+	std::string name;           ///< name of the alias
+	std::string cmdline;        ///< command(s) that is/are being aliased
 };
 
-/* console parser */
-extern IConsoleCmd   *_iconsole_cmds;    ///< List of registered commands.
-extern IConsoleAlias *_iconsole_aliases; ///< List of registered aliases.
+struct IConsole
+{
+	typedef std::map<std::string, IConsoleCmd> CommandList;
+	typedef std::map<std::string, IConsoleAlias> AliasList;
+
+	/* console parser */
+	static CommandList &Commands();
+	static AliasList &Aliases();
+
+	/* Commands */
+	static void CmdRegister(const std::string &name, IConsoleCmdProc *proc, IConsoleHook *hook = nullptr);
+	static IConsoleCmd *CmdGet(const std::string &name);
+	static void AliasRegister(const std::string &name, const std::string &cmd);
+	static IConsoleAlias *AliasGet(const std::string &name);
+};
 
 /* console functions */
 void IConsoleClearBuffer();
-
-/* Commands */
-void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc, IConsoleHook *hook = nullptr);
-void IConsoleAliasRegister(const char *name, const char *cmd);
-IConsoleCmd *IConsoleCmdGet(const char *name);
-IConsoleAlias *IConsoleAliasGet(const char *name);
 
 /* console std lib (register ingame commands/aliases) */
 void IConsoleStdLibRegister();
@@ -81,6 +88,5 @@ bool GetArgumentInteger(uint32 *value, const char *arg);
 void IConsoleGUIInit();
 void IConsoleGUIFree();
 void IConsoleGUIPrint(TextColour colour_code, char *string);
-char *RemoveUnderscores(char *name);
 
 #endif /* CONSOLE_INTERNAL_H */
