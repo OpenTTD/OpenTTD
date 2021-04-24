@@ -14,7 +14,6 @@
 - Ingo von Borstel (planetmaker) - General coding, Support (since 1.1)
 - Remko Bijker (Rubidium) - Lead coder and way more (since 0.4.5)
 - José Soler (Terkhen) - General coding (since 1.0)
-- Leif Linse (Zuu) - AI/Game Script (since 1.2)
 
 ### Inactive Developers:
 
@@ -28,6 +27,7 @@
 - Christoph Mallon (Tron) - Programmer, code correctness police (0.3 - 0.5)
 - Patric Stout (TrueBrain) - NoProgrammer (0.3 - 1.2), sys op (active)
 - Thijs Marinussen (Yexo) - AI Framework, General (0.6 - 1.3)
+- Leif Linse (Zuu) - AI/Game Script (1.2 - 1.6)
 
 ### Retired Developers:
 
