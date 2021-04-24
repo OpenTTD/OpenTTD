@@ -117,6 +117,8 @@ Last updated:    2011-02-16
  - You can protect your server with a password via the console: 'set server_pw',
    or via the Start Server menu.
 
+- You can ban or kick problemantic players via the console: 'ban client_ip_address' or 'kick client_ip_address'
+
  - When you have many clients connected to your server via Internet, watch your
    bandwidth (if you have any limit on it, set by your ISP). One client uses
    about 1.5 kilobytes per second up and down. To decrease this amount, setting
@@ -200,7 +202,7 @@ Last updated:    2011-02-16
 
  - You can chat with other players via ENTER or via SHIFT+T or via the ClientList
 
- - Servers can now kick players, so don't make them use it!
+ - Servers can kick or ban players, so don't make them use it!
 
 
 ## 6.0) Troubleshooting
