@@ -27,7 +27,7 @@
 - Christoph Mallon (Tron) - Programmer, code correctness police (0.3 - 0.5)
 - Patric Stout (TrueBrain) - NoProgrammer (0.3 - 1.2), sys op (active)
 - Thijs Marinussen (Yexo) - AI Framework, General (0.6 - 1.3)
-- Leif Linse (Zuu) - AI/Game Script (since 1.2 - 1.6)
+- Leif Linse (Zuu) - AI/Game Script (1.2 - 1.6)
 
 ### Retired Developers:
 
