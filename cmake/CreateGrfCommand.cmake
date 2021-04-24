@@ -35,9 +35,9 @@ function(create_grf_command)
                     -DNFORENUM_EXECUTABLE=${NFORENUM_EXECUTABLE}
                     -DGRFCODEC_EXECUTABLE=${GRFCODEC_EXECUTABLE}
                     -P ${CMAKE_SOURCE_DIR}/cmake/scripts/CreateGRF.cmake
-            MAIN_DEPENDENCY ${GRF_NFO_SOURCE_FILES}
+            MAIN_DEPENDENCY ${CMAKE_SOURCE_DIR}/cmake/scripts/CreateGRF.cmake
             DEPENDS ${GRF_PNG_BINARY_FILES}
-                    ${CMAKE_SOURCE_DIR}/cmake/scripts/CreateGRF.cmake
+                    ${GRF_NFO_SOURCE_FILES}
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating ${GRF_SOURCE_FOLDER_NAME}.grf"
     )
