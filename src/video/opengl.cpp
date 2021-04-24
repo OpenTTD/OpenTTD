@@ -1154,6 +1154,7 @@ void *OpenGLBackend::GetVideoBuffer()
 #endif
 
 	if (!this->persistent_mapping_supported) {
+		assert(this->vid_buffer == nullptr);
 		_glBindBuffer(GL_PIXEL_UNPACK_BUFFER, this->vid_pbo);
 		this->vid_buffer = _glMapBuffer(GL_PIXEL_UNPACK_BUFFER, GL_READ_WRITE);
 	} else if (this->vid_buffer == nullptr) {
