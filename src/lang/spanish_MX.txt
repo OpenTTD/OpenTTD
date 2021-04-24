@@ -994,6 +994,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 meses
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Elegir el idioma de la interfaz
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% completado)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantalla completa
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Jugar OpenTTD en pantalla completa

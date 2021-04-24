@@ -945,8 +945,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 			break;
 	}
 
-	/* We need a valid name.. make it Player */
-	if (StrEmpty(name)) strecpy(name, "Player", lastof(name));
+	if (!NetworkIsValidClientName(name)) {
+		/* An invalid client name was given. However, the client ensures the name
+		 * is valid before it is sent over the network, so something went horribly
+		 * wrong. This is probably someone trying to troll us. */
+		return this->SendError(NETWORK_ERROR_INVALID_CLIENT_NAME);
+	}
 
 	if (!NetworkFindName(name, lastof(name))) { // Change name if duplicate
 		/* We could not create a name for this client */
@@ -1441,6 +1445,13 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
 
 	if (ci != nullptr) {
+		if (!NetworkIsValidClientName(client_name)) {
+			/* An invalid client name was given. However, the client ensures the name
+			 * is valid before it is sent over the network, so something went horribly
+			 * wrong. This is probably someone trying to troll us. */
+			return this->SendError(NETWORK_ERROR_INVALID_CLIENT_NAME);
+		}
+
 		/* Display change */
 		if (NetworkFindName(client_name, lastof(client_name))) {
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, client_name);

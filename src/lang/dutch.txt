@@ -1006,6 +1006,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Selecteer dit vakje om OpenTTD hardwareversnelling te laten gebruiken. De gewijzigde instelling wordt pas van kracht nadat het spel opnieuw is gestart.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}De instelling wordt pas van kracht als het spel opnieuw is gestart
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Selecteer dit vakje om het scherm verticaal te synchroniseren. De wijziging gaat pas in nadat je het spel opnieuw hebt opgestart. Werkt alleen als hardwareversnelling is ingeschakeld
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Menupuntgrootte
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Kiest de grootte van bedieningselementen
@@ -1139,6 +1141,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Instelli
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Filtertekst:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Alles uitvouwen
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Alles inklappen
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Alle waarden terugstellen
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(geen uitleg beschikbaar)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Standaardwaarde: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Instellingstype: {ORANGE}{STRING}
@@ -1147,6 +1150,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Spelinstellinge
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Spelinstellingen (opgeslagen in bestand; alleen van invloed op huidig spel)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Bedrijfsinstellingen (opgeslagen in bestand; alleen van invloed op nieuwe spellen)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Bedrijfsinstellingen (opgeslagen in bestand; alleen van invloed op huidig bedrijf)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Voorzichtig!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Met deze actie herstel je alle spelinstellingen naar hun standaardwaarden.{}Weet je zeker dat je wilt doorgaan?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Categorie:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Type:
@@ -2492,7 +2497,7 @@ STR_WATERWAYS_TOOLBAR_BUILD_DOCK_TOOLTIP                        :{BLACK}Haven bo
 STR_WATERWAYS_TOOLBAR_BUOY_TOOLTIP                              :{BLACK}Boei plaatsen, deze kan gebruikt worden voor extra tussenstops. Shift schakelt tussen bouwen/inschatting van de kosten
 STR_WATERWAYS_TOOLBAR_BUILD_AQUEDUCT_TOOLTIP                    :{BLACK}Aquaduct bouwen. Shift schakelt tussen bouwen/inschatting van de kosten.
 STR_WATERWAYS_TOOLBAR_CREATE_LAKE_TOOLTIP                       :{BLACK}Hiermee plaats je watermassa's.{}Maakt een kanaal, tenzij je Ctrl vasthoudt op zeeniveau, dan overstroomt de omgeving.
-STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Hiermee maak je rivieren
+STR_WATERWAYS_TOOLBAR_CREATE_RIVER_TOOLTIP                      :{BLACK}Hiermee maak je rivieren. Ctrl selecteert het gebied diagonaal
 
 # Ship depot construction window
 STR_DEPOT_BUILD_SHIP_CAPTION                                    :{WHITE}Richting van dok

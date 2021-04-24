@@ -314,6 +314,7 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 		STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER,
 		STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP,
 		STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN,
+		STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME,
 	};
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
@@ -691,6 +692,8 @@ void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const c
 	if (!_network_available) return;
 
 	if (address.GetPort() == 0) return;
+
+	if (!NetworkValidateClientName()) return;
 
 	strecpy(_settings_client.network.last_host, address.GetHostname(), lastof(_settings_client.network.last_host));
 	_settings_client.network.last_port = address.GetPort();

@@ -623,6 +623,10 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	/* The server validates the name when receiving it from clients, so when it is wrong
+	 * here something went really wrong. In the best case the packet got malformed on its
+	 * way too us, in the worst case the server is broken or compromised. */
+	if (!NetworkIsValidClientName(name)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
@@ -668,26 +672,27 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p)
 {
 	static const StringID network_error_strings[] = {
-		STR_NETWORK_ERROR_LOSTCONNECTION,    // NETWORK_ERROR_GENERAL
-		STR_NETWORK_ERROR_LOSTCONNECTION,    // NETWORK_ERROR_DESYNC
-		STR_NETWORK_ERROR_LOSTCONNECTION,    // NETWORK_ERROR_SAVEGAME_FAILED
-		STR_NETWORK_ERROR_LOSTCONNECTION,    // NETWORK_ERROR_CONNECTION_LOST
-		STR_NETWORK_ERROR_LOSTCONNECTION,    // NETWORK_ERROR_ILLEGAL_PACKET
-		STR_NETWORK_ERROR_LOSTCONNECTION,    // NETWORK_ERROR_NEWGRF_MISMATCH
-		STR_NETWORK_ERROR_SERVER_ERROR,      // NETWORK_ERROR_NOT_AUTHORIZED
-		STR_NETWORK_ERROR_SERVER_ERROR,      // NETWORK_ERROR_NOT_EXPECTED
-		STR_NETWORK_ERROR_WRONG_REVISION,    // NETWORK_ERROR_WRONG_REVISION
-		STR_NETWORK_ERROR_LOSTCONNECTION,    // NETWORK_ERROR_NAME_IN_USE
-		STR_NETWORK_ERROR_WRONG_PASSWORD,    // NETWORK_ERROR_WRONG_PASSWORD
-		STR_NETWORK_ERROR_SERVER_ERROR,      // NETWORK_ERROR_COMPANY_MISMATCH
-		STR_NETWORK_ERROR_KICKED,            // NETWORK_ERROR_KICKED
-		STR_NETWORK_ERROR_CHEATER,           // NETWORK_ERROR_CHEATER
-		STR_NETWORK_ERROR_SERVER_FULL,       // NETWORK_ERROR_FULL
-		STR_NETWORK_ERROR_TOO_MANY_COMMANDS, // NETWORK_ERROR_TOO_MANY_COMMANDS
-		STR_NETWORK_ERROR_TIMEOUT_PASSWORD,  // NETWORK_ERROR_TIMEOUT_PASSWORD
-		STR_NETWORK_ERROR_TIMEOUT_COMPUTER,  // NETWORK_ERROR_TIMEOUT_COMPUTER
-		STR_NETWORK_ERROR_TIMEOUT_MAP,       // NETWORK_ERROR_TIMEOUT_MAP
-		STR_NETWORK_ERROR_TIMEOUT_JOIN,      // NETWORK_ERROR_TIMEOUT_JOIN
+		STR_NETWORK_ERROR_LOSTCONNECTION,      // NETWORK_ERROR_GENERAL
+		STR_NETWORK_ERROR_LOSTCONNECTION,      // NETWORK_ERROR_DESYNC
+		STR_NETWORK_ERROR_LOSTCONNECTION,      // NETWORK_ERROR_SAVEGAME_FAILED
+		STR_NETWORK_ERROR_LOSTCONNECTION,      // NETWORK_ERROR_CONNECTION_LOST
+		STR_NETWORK_ERROR_LOSTCONNECTION,      // NETWORK_ERROR_ILLEGAL_PACKET
+		STR_NETWORK_ERROR_LOSTCONNECTION,      // NETWORK_ERROR_NEWGRF_MISMATCH
+		STR_NETWORK_ERROR_SERVER_ERROR,        // NETWORK_ERROR_NOT_AUTHORIZED
+		STR_NETWORK_ERROR_SERVER_ERROR,        // NETWORK_ERROR_NOT_EXPECTED
+		STR_NETWORK_ERROR_WRONG_REVISION,      // NETWORK_ERROR_WRONG_REVISION
+		STR_NETWORK_ERROR_LOSTCONNECTION,      // NETWORK_ERROR_NAME_IN_USE
+		STR_NETWORK_ERROR_WRONG_PASSWORD,      // NETWORK_ERROR_WRONG_PASSWORD
+		STR_NETWORK_ERROR_SERVER_ERROR,        // NETWORK_ERROR_COMPANY_MISMATCH
+		STR_NETWORK_ERROR_KICKED,              // NETWORK_ERROR_KICKED
+		STR_NETWORK_ERROR_CHEATER,             // NETWORK_ERROR_CHEATER
+		STR_NETWORK_ERROR_SERVER_FULL,         // NETWORK_ERROR_FULL
+		STR_NETWORK_ERROR_TOO_MANY_COMMANDS,   // NETWORK_ERROR_TOO_MANY_COMMANDS
+		STR_NETWORK_ERROR_TIMEOUT_PASSWORD,    // NETWORK_ERROR_TIMEOUT_PASSWORD
+		STR_NETWORK_ERROR_TIMEOUT_COMPUTER,    // NETWORK_ERROR_TIMEOUT_COMPUTER
+		STR_NETWORK_ERROR_TIMEOUT_MAP,         // NETWORK_ERROR_TIMEOUT_MAP
+		STR_NETWORK_ERROR_TIMEOUT_JOIN,        // NETWORK_ERROR_TIMEOUT_JOIN
+		STR_NETWORK_ERROR_INVALID_CLIENT_NAME, // NETWORK_ERROR_INVALID_CLIENT_NAME
 	};
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
@@ -1251,6 +1256,56 @@ void NetworkClientsToSpectators(CompanyID cid)
 }
 
 /**
+ * Check whether the given client name is deemed valid for use in network games.
+ * An empty name (null or '') is not valid as that is essentially no name at all.
+ * A name starting with white space is not valid for tab completion purposes.
+ * @param client_name The client name to check for validity.
+ * @return True iff the name is valid.
+ */
+bool NetworkIsValidClientName(const char *client_name)
+{
+	if (StrEmpty(client_name)) return false;
+	if (*client_name == ' ') return false;
+	return true;
+}
+
+/**
+ * Trim the given client name in place, i.e. remove leading and trailing spaces.
+ * After the trim check whether the client name is valid. A client name is valid
+ * whenever the name is not empty and does not start with spaces. This check is
+ * done via \c NetworkIsValidClientName.
+ * When the client name is valid, this function returns true.
+ * When the client name is not valid a GUI error message is shown telling the
+ * user to set the client name and this function returns false.
+ *
+ * This function is not suitable for ensuring a valid client name at the server
+ * as the error message will then be shown to the host instead of the client.
+ * @param client_name The client name to validate. It will be trimmed of leading
+ *                    and trailing spaces.
+ * @return True iff the client name is valid.
+ */
+bool NetworkValidateClientName(char *client_name)
+{
+	StrTrimInPlace(client_name);
+	if (NetworkIsValidClientName(client_name)) return true;
+
+	ShowErrorMessage(STR_NETWORK_ERROR_BAD_PLAYER_NAME, INVALID_STRING_ID, WL_ERROR);
+	return false;
+}
+
+/**
+ * Convenience method for NetworkValidateClientName on _settings_client.network.client_name.
+ * It trims the client name and checks whether it is empty. When it is empty
+ * an error message is shown to the GUI user.
+ * See \c NetworkValidateClientName(char*) for details about the functionality.
+ * @return True iff the client name is valid.
+ */
+bool NetworkValidateClientName()
+{
+	return NetworkValidateClientName(_settings_client.network.client_name);
+}
+
+/**
  * Send the server our name.
  */
 void NetworkUpdateClientName()
@@ -1258,6 +1313,11 @@ void NetworkUpdateClientName()
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 
 	if (ci == nullptr) return;
+	/* There is no validation on string settings, it is actually a post change callback.
+	 * This method is called from that post change callback. So, when the client name is
+	 * changed via the console there is no easy way to prevent an invalid name. Though,
+	 * we can prevent it getting sent here. */
+	if (!NetworkValidateClientName()) return;
 
 	/* Don't change the name if it is the same as the old name */
 	if (strcmp(ci->client_name, _settings_client.network.client_name) != 0) {

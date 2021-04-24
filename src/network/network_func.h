@@ -36,6 +36,9 @@ extern StringList _network_host_list;
 extern StringList _network_ban_list;
 
 byte NetworkSpectatorCount();
+bool NetworkIsValidClientName(const char *client_name);
+bool NetworkValidateClientName();
+bool NetworkValidateClientName(char *client_name);
 void NetworkUpdateClientName();
 bool NetworkCompanyHasClients(CompanyID company);
 const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *password);

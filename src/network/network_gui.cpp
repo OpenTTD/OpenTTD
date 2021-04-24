@@ -808,12 +808,9 @@ public:
 			}
 
 			case WID_NG_CLIENT:
-				/* Make sure the name does not start with a space, so TAB completion works */
-				if (!StrEmpty(this->name_editbox.text.buf) && this->name_editbox.text.buf[0] != ' ') {
-					strecpy(_settings_client.network.client_name, this->name_editbox.text.buf, lastof(_settings_client.network.client_name));
-				} else {
-					strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
-				}
+				/* Validation of the name will happen once the user tries to join or start a game, as getting
+				 * error messages while typing (e.g. when you clear the name) defeats the purpose of the check. */
+				strecpy(_settings_client.network.client_name, this->name_editbox.text.buf, lastof(_settings_client.network.client_name));
 				break;
 		}
 	}
@@ -1246,6 +1243,8 @@ static WindowDesc _network_start_server_window_desc(
 
 static void ShowNetworkStartServerWindow()
 {
+	if (!NetworkValidateClientName()) return;
+
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
 
@@ -1538,6 +1537,8 @@ static WindowDesc _network_lobby_window_desc(
  */
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 {
+	if (!NetworkValidateClientName()) return;
+
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 
