@@ -993,6 +993,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Kerran vuodessa
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Kieli
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Valitse käyttöliittymän kieli
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% valmiina)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Koko näyttö
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Valitse tämä pelataksesi kokoruututilassa

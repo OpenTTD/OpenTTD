@@ -994,6 +994,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12개월마다
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}언어
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}사용할 언어를 선택하세요
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% 번역됨)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}전체화면
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD를 전체화면으로 플레이하려면 클릭하세요.
@@ -1265,7 +1266,7 @@ STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :일반적으로
 STR_CONFIG_SETTING_SIGNALSIDE                                   :신호기 보이기: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :선로의 어느 쪽에 신호기를 설치할 지 선택합니다.
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :왼쪽에
-STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :진행 방향에
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :자동차 통행 방향에
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :오른쪽에
 STR_CONFIG_SETTING_SHOWFINANCES                                 :연말에 자동으로 재정 창을 띄우기: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :이 설정을 켜면. 회사의 재정 상태를 확인하기 쉽도록 매년 말에 재정 창이 자동으로 뜹니다.
