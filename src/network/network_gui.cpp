@@ -1756,6 +1756,8 @@ private:
 	uint line_height; ///< Current lineheight of each entry in the matrix.
 	uint line_count; ///< Amount of lines in the matrix.
 	int hover_index; ///< Index of the current line we are hovering over, or -1 if none.
+	int player_self_index; ///< The line the current player is on.
+	int player_host_index; ///< The line the host is on.
 
 	std::map<uint, std::vector<std::unique_ptr<ButtonCommon>>> buttons; ///< Per line which buttons are available.
 
@@ -1870,7 +1872,7 @@ private:
 	{
 		ButtonCommon *chat_button = new CompanyButton(SPR_CHAT, company_id == COMPANY_SPECTATOR ? STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP : STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyChat);
 
-		if (_network_server) this->buttons[line_count].emplace_back(new CompanyButton(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP, COLOUR_RED, company_id, &NetworkClientListWindow::OnClickCompanyAdmin));
+		if (_network_server) this->buttons[line_count].emplace_back(new CompanyButton(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP, COLOUR_RED, company_id, &NetworkClientListWindow::OnClickCompanyAdmin, company_id == COMPANY_SPECTATOR));
 		this->buttons[line_count].emplace_back(chat_button);
 		if (own_ci->client_playas != company_id) this->buttons[line_count].emplace_back(new CompanyButton(SPR_JOIN, STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP, COLOUR_ORANGE, company_id, &NetworkClientListWindow::OnClickCompanyJoin));
 
@@ -1883,6 +1885,12 @@ private:
 
 			if (_network_server) this->buttons[line_count].emplace_back(new ClientButton(SPR_ADMIN, STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP, COLOUR_RED, ci->client_id, &NetworkClientListWindow::OnClickClientAdmin, _network_own_client_id == ci->client_id));
 			if (_network_own_client_id != ci->client_id) this->buttons[line_count].emplace_back(new ClientButton(SPR_CHAT, STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP, COLOUR_ORANGE, ci->client_id, &NetworkClientListWindow::OnClickClientChat));
+
+			if (ci->client_id == _network_own_client_id) {
+				this->player_self_index = this->line_count;
+			} else if (ci->client_id == CLIENT_ID_SERVER) {
+				this->player_host_index = this->line_count;
+			}
 
 			this->line_count += 1;
 		}
@@ -1900,6 +1908,8 @@ private:
 
 		this->buttons.clear();
 		this->line_count = 0;
+		this->player_host_index = -1;
+		this->player_self_index = -1;
 
 		/* As spectator, show a line to create a new company. */
 		if (own_ci->client_playas == COMPANY_SPECTATOR && !NetworkMaxCompaniesReached()) {
@@ -1959,7 +1969,10 @@ private:
 
 public:
 	NetworkClientListWindow(WindowDesc *desc, WindowNumber window_number) :
-			Window(desc)
+			Window(desc),
+			hover_index(-1),
+			player_self_index(-1),
+			player_host_index(-1)
 	{
 		this->CreateNestedTree();
 		this->vscroll = this->GetScrollbar(WID_CL_SCROLLBAR);
@@ -2057,6 +2070,30 @@ public:
 	{
 		switch (widget) {
 			case WID_CL_MATRIX: {
+				int index = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_CL_MATRIX);
+
+				bool rtl = _current_text_dir == TD_RTL;
+				NWidgetBase *widget_matrix = this->GetWidget<NWidgetBase>(WID_CL_MATRIX);
+
+				Dimension d = GetSpriteSize(SPR_COMPANY_ICON);
+				uint text_left = widget_matrix->pos_x + (rtl ? (uint)WD_FRAMERECT_LEFT : d.width + 8);
+				uint text_right = widget_matrix->pos_x + widget_matrix->current_x - (rtl ? d.width + 8 : (uint)WD_FRAMERECT_RIGHT);
+
+				Dimension d2 = GetSpriteSize(SPR_PLAYER_SELF);
+				uint offset_x = CLIENT_OFFSET_LEFT - d2.width - 3;
+
+				uint player_icon_x = rtl ? text_right - offset_x - d2.width : text_left + offset_x;
+
+				if (IsInsideMM(pt.x, player_icon_x, player_icon_x + d2.width)) {
+					if (index == this->player_self_index) {
+						GuiShowTooltips(this, STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP, 0, nullptr, close_cond);
+						return true;
+					} else if (index == this->player_host_index) {
+						GuiShowTooltips(this, STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP, 0, nullptr, close_cond);
+						return true;
+					}
+				}
+
 				ButtonCommon *button = this->GetButtonAtPoint(pt);
 				if (button == nullptr) return false;
 
@@ -2267,17 +2304,22 @@ public:
 					this->DrawButtons(x, y, button_find->second);
 				}
 
-				StringID client_string = STR_JUST_RAW_STRING;
-
-				if (ci->client_id == CLIENT_ID_SERVER) {
-					client_string = STR_NETWORK_CLIENT_LIST_PLAYER_HOST;
-				}
+				SpriteID player_icon = 0;
 				if (ci->client_id == _network_own_client_id) {
-					client_string = STR_NETWORK_CLIENT_LIST_PLAYER_SELF;
+					player_icon = SPR_PLAYER_SELF;
+				} else if (ci->client_id == CLIENT_ID_SERVER) {
+					player_icon = SPR_PLAYER_HOST;
+				}
+
+				if (player_icon != 0) {
+					Dimension d2 = GetSpriteSize(player_icon);
+					uint offset_x = CLIENT_OFFSET_LEFT - 3;
+					int offset_y = std::max(0, ((int)(this->line_height + 1) - (int)d2.height) / 2);
+					DrawSprite(player_icon, PALETTE_TO_GREY, rtl ? text_right - offset_x : text_left + offset_x - d2.width, y + offset_y);
 				}
 
 				SetDParamStr(0, ci->client_name);
-				DrawString(rtl ? x : text_left + CLIENT_OFFSET_LEFT, rtl ? text_right - CLIENT_OFFSET_LEFT : x, y + text_y_offset, client_string, TC_BLACK);
+				DrawString(rtl ? x : text_left + CLIENT_OFFSET_LEFT, rtl ? text_right - CLIENT_OFFSET_LEFT : x, y + text_y_offset, STR_JUST_RAW_STRING, TC_BLACK);
 			}
 
 			y += this->line_height;
