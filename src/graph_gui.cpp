@@ -879,6 +879,7 @@ void ShowCompanyValueGraph()
 struct PaymentRatesGraphWindow : BaseGraphWindow {
 	uint line_height;   ///< Pixel height of each cargo type row.
 	Scrollbar *vscroll; ///< Cargo list scrollbar.
+	uint legend_width;  ///< Width of legend 'blob'.
 
 	PaymentRatesGraphWindow(WindowDesc *desc, WindowNumber window_number) :
 			BaseGraphWindow(desc, WID_CPR_GRAPH, STR_JUST_CURRENCY_SHORT)
@@ -897,6 +898,12 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		this->OnHundredthTick();
 
 		this->FinishInitNested(window_number);
+	}
+
+	void OnInit() override
+	{
+		/* Width of the legend blob. */
+		this->legend_width = (FONT_HEIGHT_SMALL - ScaleFontTrad(1)) * 8 / 5;
 	}
 
 	void UpdateExcludedData()
@@ -922,7 +929,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
 			SetDParam(0, cs->name);
 			Dimension d = GetStringBoundingBox(STR_GRAPH_CARGO_PAYMENT_CARGO);
-			d.width += 14; // colour field
+			d.width += this->legend_width + 4; // colour field
 			d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
 			d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
 			*size = maxdim(d, *size);
@@ -945,6 +952,8 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		int x = r.left + WD_FRAMERECT_LEFT;
 		int y = r.top;
+		uint row_height = FONT_HEIGHT_SMALL;
+		int padding = ScaleFontTrad(1);
 
 		int pos = this->vscroll->GetPosition();
 		int max = pos + this->vscroll->GetCapacity();
@@ -960,12 +969,12 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			if (lowered) DrawFrameRect(r.left, y, r.right, y + this->line_height - 1, COLOUR_BROWN, lowered ? FR_LOWERED : FR_NONE);
 
 			byte clk_dif = lowered ? 1 : 0;
-			int rect_x = clk_dif + (rtl ? r.right - 12 : r.left + WD_FRAMERECT_LEFT);
+			int rect_x = clk_dif + (rtl ? r.right - this->legend_width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT);
 
-			GfxFillRect(rect_x, y + clk_dif, rect_x + 8, y + 5 + clk_dif, PC_BLACK);
-			GfxFillRect(rect_x + 1, y + 1 + clk_dif, rect_x + 7, y + 4 + clk_dif, cs->legend_colour);
+			GfxFillRect(rect_x, y + padding + clk_dif, rect_x + this->legend_width, y + row_height - 1 + clk_dif, PC_BLACK);
+			GfxFillRect(rect_x + 1, y + padding + 1 + clk_dif, rect_x + this->legend_width - 1, y + row_height - 2 + clk_dif, cs->legend_colour);
 			SetDParam(0, cs->name);
-			DrawString(rtl ? r.left : x + 14 + clk_dif, (rtl ? r.right - 14 + clk_dif : r.right), y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
+			DrawString(rtl ? r.left : x + this->legend_width + 4 + clk_dif, (rtl ? r.right - this->legend_width - 4 + clk_dif : r.right), y + clk_dif, STR_GRAPH_CARGO_PAYMENT_CARGO);
 
 			y += this->line_height;
 		}
