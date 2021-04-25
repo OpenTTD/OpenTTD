@@ -81,7 +81,7 @@ class ReplaceVehicleWindow : public Window {
 	bool replace_engines;         ///< If \c true, engines are replaced, if \c false, wagons are replaced (only for trains).
 	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
-	int details_height;           ///< Minimal needed height of the details panels (found so far).
+	int details_height;           ///< Minimal needed height of the details panels, in text lines (found so far).
 	byte sort_criteria;           ///< Criteria of sorting vehicles.
 	bool descending_sort_order;   ///< Order of sorting vehicles.
 	bool show_hidden_engines;     ///< Whether to show the hidden engines.
@@ -229,7 +229,7 @@ public:
 		this->engines[0].ForceRebuild();
 		this->engines[1].ForceRebuild();
 		this->reset_sel_engine = true;
-		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9);
 		this->sel_engine[0] = INVALID_ENGINE;
 		this->sel_engine[1] = INVALID_ENGINE;
 		this->show_hidden_engines = _engine_sort_show_hidden_engines[vehicletype];
@@ -274,7 +274,7 @@ public:
 
 			case WID_RV_LEFT_DETAILS:
 			case WID_RV_RIGHT_DETAILS:
-				size->height = this->details_height;
+				size->height = FONT_HEIGHT_NORMAL * this->details_height + padding.height;
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
@@ -482,7 +482,7 @@ public:
 					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(side == 0 ? WID_RV_LEFT_DETAILS : WID_RV_RIGHT_DETAILS);
 					int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
 							nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine[side], ted);
-					needed_height = std::max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
+					needed_height = std::max(needed_height, (text_end - (int)nwi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL);
 				}
 			}
 			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
