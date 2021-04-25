@@ -1960,6 +1960,7 @@ STR_FACE_TIE                                                    :Kaklasaite:
 STR_FACE_EARRING                                                :Auskars:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mainīt kaklasaiti vai auskarus
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Vairākspēlētāju spēle
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spēlētāja vārds:
@@ -2022,10 +2023,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spēles 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Uzstādīt paroli
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Aizsargā jūsu spēli ar paroli, ja nevēlaties lai tā būtu publiski pieejama
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Izsludināt
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Izvēlieties starp reklamēto (interneta) un nereklamēto (lokālā tīkla, LAN) spēli
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Nē
-STR_NETWORK_START_SERVER_ADVERTISED                             :Jā
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} spēlētāj{P s i u}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimālais spēlētāju skaits:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izvēlēties maksimālo spēlētāju skaitu. Ne visiem slotiem ir jābūt aizpildītiem
@@ -2087,19 +2084,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Atvienot
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris ir aizsargāts. Ievadiet paroli
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmums ir aizsargāts. Ievadiet paroli
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Klientu saraksts
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spēlētāju saraksts
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Skatīt
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Jauns uzņēmums
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Izmest
-STR_NETWORK_CLIENTLIST_BAN                                      :Aizliegt
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Runāt ar visiem
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Runāt ar uzņēmumu
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privāts ziņojums
+
+
 
 STR_NETWORK_SERVER                                              :Serveris
 STR_NETWORK_CLIENT                                              :Spēlētājs

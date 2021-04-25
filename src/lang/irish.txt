@@ -1869,6 +1869,7 @@ STR_FACE_TIE                                                    :Carbhat:
 STR_FACE_EARRING                                                :Fáinne cluaise:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Athraigh carbhat nó fáinne cluaise
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ilimreoirí
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ainm imreora:
@@ -1927,10 +1928,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Taispeá
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Socraigh pasfhocal
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Cosain do chluiche le pasfhocal más mian leat nach mbeidh rochtain phoiblí air
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Fógartha
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Roghnaigh idir cluiche fógartha (idirlín) agus cluiche neamhfhógartha (Líonra Achair Logánta, LAN)
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Níl
-STR_NETWORK_START_SERVER_ADVERTISED                             :Tá
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} {P ch ch ch gc c}lia{P "" "" "" "" i}nt
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Cliaint uasta:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Roghnaigh uaslíon na gcliant. Ní gá gach áit a líonadh
@@ -1995,15 +1992,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tá an c
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liosta na gcliant
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Féach air
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Cuideachta nua
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Ciceáil
-STR_NETWORK_CLIENTLIST_BAN                                      :Toirmisc
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Labhair le cách
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Labhair le cuideachta
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Teacht. phríobháideach
+
+
 
 STR_NETWORK_SERVER                                              :Freastalaí
 STR_NETWORK_CLIENT                                              :Cliant

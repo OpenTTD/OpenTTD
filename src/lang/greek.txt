@@ -2037,6 +2037,7 @@ STR_FACE_TIE                                                    :Γραβάτα:
 STR_FACE_EARRING                                                :Σκουλαρίκι:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Αλλαγή γραβάτας ή σκουλαρικιού
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Παιχνίδι πολλών παικτών
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Όνομα παίκτη:
@@ -2096,10 +2097,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Το ό�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Θέση κωδικού
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Προστατέψτε το παιχνίδι με έναν κωδικό εάν δε θέλετε να είναι δημοσίως προσβάσιμο
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Διαφημιζόμενο
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Επιλογή ανάμεσα σε ένα διαφημιζόμενο (διαδίκτυο) ή μη διαφημιζόμενο (Τοπικό Δίκτυο/LAN) παιχνίδι
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Όχι
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ναι
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} συμπαίκτ{P ης ες}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Μέγιστος αριθμός συμμετεχόντων:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Επιλέξτε τον μέγιστο αριθμό συμμετεχόντων. Δεν είναι ανάγκη να γεμίσουν όλες οι θέσεις
@@ -2161,19 +2158,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Αποσ
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Η πρόσβαση στον διακομιστή προστατεύεται. Εισάγετε τον κωδικό
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Η εταιρεία προστατεύεται από κωδικό. Εισάγετε κωδικό
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Λίστα συμμετεχόντων
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Λίστα συμμετεχόντων
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Παρακολούθηση
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Νέα εταιρεία
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Εκδίωξη
-STR_NETWORK_CLIENTLIST_BAN                                      :Απαγόρευση
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Μιλήστε σε όλους
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Μιλήστε στην εταιρεία
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Προσωπικό μήνυμα
+
+
 
 STR_NETWORK_SERVER                                              :Διακομιστής
 STR_NETWORK_CLIENT                                              :Πελάτης

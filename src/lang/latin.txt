@@ -2088,6 +2088,7 @@ STR_FACE_TIE                                                    :Focale:
 STR_FACE_EARRING                                                :Inauris:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mutare focale vel inaurem
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Modus Plurium Lusorum
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nomen lusoris:
@@ -2146,10 +2147,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Hoc ludi
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Elige tesseram
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Custodire tessera ludum tuum, si non vis publicos iungere
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Ostensum
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Eligere servatrum ostensum (interretis) aut non ostensum (LAN)
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Non
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ita
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} clien{P s tes}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Clientes maximi:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Eligere numerum maximum clientorum. Necesse non est omnes loci pleni esse
@@ -2211,19 +2208,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disiunge
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servatrum tutum est. Tesseram inscribe
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Societas tuta est. Tesseram inscribe
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Index clientum
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spectare
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Societas Nova
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Dimittere
-STR_NETWORK_CLIENTLIST_BAN                                      :Expellere
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Ad omnes loqui
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Ad societatem loqui
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Ad clientem loqui
+
+
 
 STR_NETWORK_SERVER                                              :Servatrum
 STR_NETWORK_CLIENT                                              :Cliens

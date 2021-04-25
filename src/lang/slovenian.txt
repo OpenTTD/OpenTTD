@@ -2025,6 +2025,7 @@ STR_FACE_TIE                                                    :Kravata:
 STR_FACE_EARRING                                                :Uhani:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Spremeni kravato ali uhane
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Več igralcev
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ime igralca:
@@ -2083,10 +2084,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Ime bo p
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Nastavi geslo
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zaščiti igro z geslom, če želiš preprečiti dostop nepovabljenim
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Oglaševano
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Izberi med oglaševano (internet) in neoglaševano (Local Area Network, LAN) igro
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Ne
-STR_NETWORK_START_SERVER_ADVERTISED                             :Da
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} gost{P "" a i ov}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dovoljeno število gostov:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Izberite največje število gostov. Ni potrebno, da so vsi prisotni
@@ -2151,15 +2148,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Podjetje
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Seznam gostov
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Opazuj
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Novo podjetje
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Brcni
-STR_NETWORK_CLIENTLIST_BAN                                      :Blokiraj
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Pogovor vsem
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Pogovor podjetju
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Zasebno sporočilo
+
+
 
 STR_NETWORK_SERVER                                              :Strežnik
 STR_NETWORK_CLIENT                                              :Gost

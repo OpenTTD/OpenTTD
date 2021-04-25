@@ -1967,6 +1967,7 @@ STR_FACE_TIE                                                    :Dasi:
 STR_FACE_EARRING                                                :Anting-anting:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ubah dasi atau anting-anting
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Bermain bersama
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nama pemain:
@@ -2029,10 +2030,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nama per
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Atur kata sandi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Lindungi permainan ini dengan kata kunci jika anda tidak ingin membiarkannya terbuka untuk umum
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Diiklankan
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Pilih antara permainan diiklankan (internet) dan tidak diiklankan (Jaringan wilayah lokal, LAN)
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Tidak
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ya
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klien
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimum jumlah klien:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pilih jumlah klien maksimal. Tidak semua slot harus diisi
@@ -2094,19 +2091,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Putuskan
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server terkunci, masukkan kata kunci
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Perusahaan terkunci, masukkan kata kunci
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Daftar klien
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Daftar klien
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Menonton
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Buat Perusahaan
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Usir
-STR_NETWORK_CLIENTLIST_BAN                                      :Larangan
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Bicara ke semua
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Bicara ke perusahaan
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Pesan pribadi
+
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klien

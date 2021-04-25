@@ -1530,6 +1530,7 @@ STR_FACE_TIE                                                    :Kravato:
 STR_FACE_EARRING                                                :Orelringo:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ŝanĝi kravaton aŭ orelringon.
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Pluraj ludantoj
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ludantnomo:
@@ -1652,15 +1653,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanio
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlisto
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spekti
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova kompanio
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Forbatu
-STR_NETWORK_CLIENTLIST_BAN                                      :Bari
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parolu al ĉiuj
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Parolu al kompanio
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privata mesaĝo
+
+
 
 STR_NETWORK_SERVER                                              :Servilo
 STR_NETWORK_CLIENT                                              :Kliento

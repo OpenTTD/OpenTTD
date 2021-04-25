@@ -1988,6 +1988,7 @@ STR_FACE_TIE                                                    :Cà vạt:
 STR_FACE_EARRING                                                :Bông tai:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Thay đổi cà vạt hoặc bông tai
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Ván Chơi Mạng
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Tên người chơi:
@@ -2050,10 +2051,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Tên c�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Đặt mật khẩu
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Bảo vệ game của bạn bằng mật khẩu nếu bạn không muốn người khác vào tùy tiện
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Đã quảng bá
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Lựa chọn ván chơi quảng bá (ra ngoài internet) và không quảng bá (Local Area Network, LAN)
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Không
-STR_NETWORK_START_SERVER_ADVERTISED                             :Có
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} máy trạm
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Số máy trạm tối đa:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Chọn số lượng máy trạm tối đa. Không nhất thiết phải chọn đầy các dòng
@@ -2115,19 +2112,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Ngắt k
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server yêu cầu xác thực. Nhập mật khẩu
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Công ty yêu cầu xác thực. Nhập mật khẩu
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Danh sách máy trạm
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Danh sách máy trạm
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Xem
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Công ty mới
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Đá
-STR_NETWORK_CLIENTLIST_BAN                                      :Cấm
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Nói với tất cả
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Nói cho công ty
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Thông điệp riêng
+
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Máy trạm

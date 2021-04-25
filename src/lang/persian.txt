@@ -1591,6 +1591,7 @@ STR_FACE_TIE                                                    :کراوات:
 STR_FACE_EARRING                                                :گوشواره:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}تغییر کراوات یا گوشواره
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}چندنفره
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}نام بازیگر:
@@ -1649,9 +1650,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}بازی
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}ثبت رمز
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}اگر بازی برای استفاده همگان نیست، بازی خود را با رمز محافظت کنید
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}تبلیغ دار
-STR_NETWORK_START_SERVER_UNADVERTISED                           :خیر
-STR_NETWORK_START_SERVER_ADVERTISED                             :بله
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} سرویس گیرنده
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}بیشترین تعداد سرویس گیرنده:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}بیشترین تعداد سرویس گیرنده را مشخص کنید.لازم نیست دقیقا به تعداد نفرات باشد
@@ -1716,15 +1714,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}شرکت
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}لیست سرویس گیرنده ها
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}تماشا
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}شرکت جدید
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :اخراج
-STR_NETWORK_CLIENTLIST_BAN                                      :قدغن کردن
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :گفتگو با همه
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :گفتگو با شرکت
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :پیام خصوصی
+
+
 
 STR_NETWORK_SERVER                                              :سرویس دهنده
 STR_NETWORK_CLIENT                                              :سرویس گیرنده

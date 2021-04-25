@@ -1879,6 +1879,7 @@ STR_FACE_TIE                                                    :領帶：
 STR_FACE_EARRING                                                :耳飾：
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}改變領帶或耳飾
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}多人遊戲
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名稱：
@@ -1939,10 +1940,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}遊戲�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}設定密碼
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果您不想讓大眾連線的話，可以用密碼保護遊戲
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}已啟用宣傳
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}選擇是否在互聯網上宣傳此遊戲
-STR_NETWORK_START_SERVER_UNADVERTISED                           :否
-STR_NETWORK_START_SERVER_ADVERTISED                             :是
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 玩家
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}用戶端上限：
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}選擇連線人數上限，但不是每個名額都要有人連線
@@ -2007,15 +2004,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司�
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :用戶端清單
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :旁觀者
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新公司
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :踢除
-STR_NETWORK_CLIENTLIST_BAN                                      :封鎖
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :對全員說話
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :對公司說話
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :私人訊息
+
+
 
 STR_NETWORK_SERVER                                              :伺服器
 STR_NETWORK_CLIENT                                              :用戶端

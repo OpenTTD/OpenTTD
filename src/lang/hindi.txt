@@ -336,6 +336,7 @@ STR_QUIT_YES                                                    :{BLACK}हा�
 # Face selection window
 
 
+
 # Network server list
 
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
@@ -348,7 +349,6 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 # Start new multiplayer server
 
 
-STR_NETWORK_START_SERVER_ADVERTISED                             :हाँ
 
 
 # Network game lobby
@@ -369,6 +369,8 @@ STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}उद�
 # Network company list added strings
 
 # Network client list
+
+
 
 
 # Network set password

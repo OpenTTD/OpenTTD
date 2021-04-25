@@ -1992,6 +1992,7 @@ STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Pendientes:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambiar corbata o pendientes
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijugador
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nombre del jugador:
@@ -2054,10 +2055,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}La parti
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Establecer contraseña
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protege tu partida con una contraseña si no quieres que sea universalmente accesible
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Público
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Permite escoger entre una partida pública (internet) y una partida privada (LAN)
-STR_NETWORK_START_SERVER_UNADVERTISED                           :No
-STR_NETWORK_START_SERVER_ADVERTISED                             :Sí
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Número máximo de clientes:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Selecciona el número máximo de clientes. No es necesario ocupar todos los espacios
@@ -2119,19 +2116,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Desconec
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegido. Introduce la contraseña
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduce la contraseña
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Lista de Clientes
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Observar
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nueva empresa
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Expulsar (Kick)
-STR_NETWORK_CLIENTLIST_BAN                                      :Prohibir (Ban)
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Hablar a todos
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Hablar a empresa
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Mensaje privado
+
+
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente

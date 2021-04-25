@@ -1482,6 +1482,7 @@ STR_FACE_TIE                                                    :ٹائی:
 STR_FACE_EARRING                                                :بالیاں:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}ٹائی یا بالیاں بدلیں
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}زیادہ کھلاڑی
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}کھلاڑی کا نام:
@@ -1604,15 +1605,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}کمپن
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :{WHITE}کلائینٹس کی فہرست
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}نظارہ کریں
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}نئی کمپنی
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :ٹھڈا
-STR_NETWORK_CLIENTLIST_BAN                                      :پابندی
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :سب سے بات کریں
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :کمپنی سے بات کریں
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :پرائیویٹ پیغام
+
+
 
 STR_NETWORK_SERVER                                              :سرور
 STR_NETWORK_CLIENT                                              :کلائینٹ

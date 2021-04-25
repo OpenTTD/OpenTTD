@@ -1990,6 +1990,7 @@ STR_FACE_TIE                                                    :Stropdas:
 STR_FACE_EARRING                                                :Oorbel:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander das of oorbel
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Netwerkspel
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelersnaam:
@@ -2052,10 +2053,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De speln
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Wachtwoord instellen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beveilig je spel met een wachtwoord als je niet wilt dat dit algemeen toegankelijk is
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Openbaar
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Kies tussen een openbaar (internet) en een niet-openbaar (Local Area Network, LAN) spel
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Nee
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} speler{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximumaantal spelers:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies het maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden.
@@ -2117,19 +2114,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Verbindi
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is beveiligd. Voer wachtwoord in
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Spelerslijst
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelerslijst
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Toekijken
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nieuw bedrijf
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Uit het spel schoppen
-STR_NETWORK_CLIENTLIST_BAN                                      :Verbannen
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Met iedereen praten
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Met bedrijf praten
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privébericht
+
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Speler

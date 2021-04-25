@@ -1696,6 +1696,7 @@ STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Oyraringur:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Broyt slips ella oyraring
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hópspæl
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spælara navn:
@@ -1754,8 +1755,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Aðrir s
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Áset loyniorð
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Verj títt spæl við einum loyniorðið um tú ikki vil at ta skal verða opi fyri almenninginum
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Nei
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ar}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Mest loyvdir klientar:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vel mest loyvda tali av klientum. Ta er ikki neyðugt at fylla øll plássini
@@ -1820,15 +1819,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Fyritøk
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klientar
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Eygleið
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nýggja fyritøku
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Sparka
-STR_NETWORK_CLIENTLIST_BAN                                      :Bannað
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Tosa við øll
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Tosa við fyritøku
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Persónligt boð
+
+
 
 STR_NETWORK_SERVER                                              :Servari
 STR_NETWORK_CLIENT                                              :Klient

@@ -726,6 +726,7 @@ STR_FACE_COLLAR                                                 :Ҫуха:
 STR_FACE_TIE                                                    :Галстук:
 STR_FACE_EARRING                                                :Алка:
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Вӑйӑҫӑ ят:
 
@@ -786,6 +787,8 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Вырн
 # Network company list added strings
 
 # Network client list
+
+
 
 
 # Network set password

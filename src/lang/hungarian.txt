@@ -2054,6 +2054,7 @@ STR_FACE_TIE                                                    :Nyakkendő:
 STR_FACE_EARRING                                                :Fülbevaló:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Nyakkendő vagy fülbevaló cseréje
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hálózati játék
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Játékos neve:
@@ -2116,10 +2117,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}A játé
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Jelszó beállítása
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Védd le a játékodat jelszóval, ha nem akarod hogy illetéktelenek csatlakozzanak
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Hírdetett
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Válassz hírdetett (internet) és nem hírdetett (helyi hálózat, LAN) játék közül.
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Nem
-STR_NETWORK_START_SERVER_ADVERTISED                             :Igen
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kliens
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Játékosok max. száma:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}A maximálisan felcsatlakozható kliensek számának kiválasztása. Nem szükséges pont ennyi embernek éppen kapcsolódva lennie
@@ -2181,19 +2178,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Megszak�
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerver jelszóval van védve. Írd be
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A vállalat jelszóval van védve. Írd be
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Kliens lista
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Kliens lista
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Megfigyelés
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Új vállalat
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Kirúgás
-STR_NETWORK_CLIENTLIST_BAN                                      :Kitiltás
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Üzenet mindenkinek
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Üzenet a vállalatnak
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privát üzenet
+
+
 
 STR_NETWORK_SERVER                                              :Szerver
 STR_NETWORK_CLIENT                                              :Kliens

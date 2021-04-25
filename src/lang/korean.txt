@@ -1992,6 +1992,7 @@ STR_FACE_TIE                                                    :넥타이:
 STR_FACE_EARRING                                                :귀걸이:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}넥타이/귀걸이 변경
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}멀티 플레이
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}플레이어 이름:
@@ -2054,10 +2055,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}멀티�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}비밀번호 설정
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}서버에 공개적으로 접근하는 것을 막고 싶을 때 비밀번호를 걸어 보호합니다.
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}공개 여부
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}공개된 게임(인터넷)과 비공개된 게임(LAN) 중에서 선택하세요
-STR_NETWORK_START_SERVER_UNADVERTISED                           :아니요
-STR_NETWORK_START_SERVER_ADVERTISED                             :예
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM}명
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}최대 접속자 수:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}최대 접속자 수를 선택합니다. 모든 자리가 다 차 있을 필요는 없습니다
@@ -2119,19 +2116,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}접속 �
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}서버 암호가 걸려있습니다. 암호를 입력하세요
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}회사 암호가 걸려있습니다. 암호를 입력하세요
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}접속자 목록
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :접속자 목록
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :관전
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :새 회사
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :추방
-STR_NETWORK_CLIENTLIST_BAN                                      :차단
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :모두에게 말하기
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :이 회사에게 말하기
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :귓속말하기
+
+
 
 STR_NETWORK_SERVER                                              :서버
 STR_NETWORK_CLIENT                                              :접속자
@@ -2176,6 +2167,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}서버�
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}접속할 수 없습니다
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}접속자 #{NUM}의 입력 시간이 초과되었습니다
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}프로토콜 오류가 발생되어 연결이 끊어졌습니다
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}플레이에 사용할 이름을 설정하지 않았습니다. 이름은 멀티플레이 창의 상단에서 설정할 수 있습니다.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}이 접속자의 게임 버전이 서버의 버전과 일치하지 않습니다
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}잘못된 비밀번호입니다
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}서버에 인원이 가득 찼습니다
@@ -2188,6 +2180,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}비밀�
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}사용자의 컴퓨터가 서버와 연결을 유지할 수 있을 만큼 빠르지 않습니다
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}지도 다운로드 시간을 초과하였습니다
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}서버 접속 시간을 초과하였습니다
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}사용할 수 없는 이름입니다
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :일반 오류
@@ -2210,6 +2203,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :제 시간에 �
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :반응 시간 초과
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :지도 다운로드 시간 초과
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :지도 생성 / 입장 시간 초과
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :유효하지 않은 클라이언트 이름
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}가능한 연결 손실

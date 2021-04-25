@@ -2142,6 +2142,7 @@ STR_FACE_TIE                                                    :Галстук:
 STR_FACE_EARRING                                                :Серьга:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Изменить галстук или серьгу
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сетевая игра
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Имя игрока:
@@ -2204,10 +2205,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Установить пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитите вашу игру паролем, если не хотите, чтобы к ней могли подключиться посторонние.
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Интернет
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Выберите между игрой через Интернет, либо в локальной сети
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Нет
-STR_NETWORK_START_SERVER_ADVERTISED                             :Да
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" а ов}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. количество клиентов:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбор максимального числа клиентов. Не все места должны быть заняты
@@ -2269,19 +2266,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Откл
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер защищён. Введите пароль.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компания защищена. Введите пароль.
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Список клиентов
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список клиентов
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Наблюдать
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Новая компания
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Отключить
-STR_NETWORK_CLIENTLIST_BAN                                      :Бан
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Сказать всем
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Говорить с компанией
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Личное сообщение
+
+
 
 STR_NETWORK_SERVER                                              :Сервер
 STR_NETWORK_CLIENT                                              :Клиент
@@ -2326,6 +2317,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Не у�
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Не удалось соединиться
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Истекло время ожидания соединения #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Произошла ошибка протокола, и соединение было закрыто
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Не указано имя игрока. Его можно ввести в верхней части окна «Сетевая игра».
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Версия этого клиента не совместима с версией сервера
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Неверный пароль
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Сервер переполнен
@@ -2338,6 +2330,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Вы н�
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Ваш компьютер работает слишком медленно и не поспевает за сервером
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Ваш компьютер тратит много времени на загрузку карты
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Ваш компьютер тратит много времени на подключение к серверу
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Неверно указано имя игрока
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :общая ошибка
@@ -2360,6 +2353,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :пароль н
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :время вышло
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :загрузка карты заняла слишком много времени
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :обработка карты заняла слишком много времени
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :имя клиента некорректно
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Подключение утеряно
@@ -3269,7 +3263,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Файл
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Меняется состояние локомотива «{1:ENGINE}», находящегося вне депо
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта «{1:ENGINE}», находящегося вне депо
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Он изменил ёмкость ТС «{1:ENGINE}» за пределами депо или без задания на переоборудование
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд «{VEHICLE}», принадлежащий «{COMPANY}», имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики (NewGRF). Игра может рассинхронизироваться или вылететь.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд «{VEHICLE}», принадлежащий «{COMPANY}», имеет неправильную длину. Вероятно, это вызвано ошибками в одном из модулей NewGRF. Игра может рассинхронизироваться или вылететь.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{0:STRING}» предоставляет неверную информацию.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Информация о вместимости/переоборудовании для локомотива «{1:ENGINE}» после постройки отличается от сведений в списке покупки, что может помешать функции автообновления/автозамены корректно произвести переоборудование.

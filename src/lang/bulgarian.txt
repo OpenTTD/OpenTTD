@@ -1836,6 +1836,7 @@ STR_FACE_TIE                                                    :Вратовр�
 STR_FACE_EARRING                                                :Oбица:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cмени вратовръзкатa или oбицатa
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Онлайн играчи
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Име на играч:
@@ -1894,10 +1895,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Имет
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Поставяне на парола
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитаване на вашата игра с парола за да не е публично достъпна
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Рекламирана
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Избери игра измежду рекламирана през интернет или нерекламирана през Локален интернет хост или ЛАН
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Не
-STR_NETWORK_START_SERVER_ADVERTISED                             :Да
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. брой играчи:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Избор на максималния брой клиенти. Не всички слотове трябва да се попълнят
@@ -1962,15 +1959,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Комп
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Списък с играчите
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Наблюдавай
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Нова фирма
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Изгони
-STR_NETWORK_CLIENTLIST_BAN                                      :Бан
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Кажи на всички
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Кажи на компания
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Лично съобщение
+
+
 
 STR_NETWORK_SERVER                                              :Сървър
 STR_NETWORK_CLIENT                                              :Клиент

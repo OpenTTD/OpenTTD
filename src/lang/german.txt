@@ -1991,6 +1991,7 @@ STR_FACE_TIE                                                    :Krawatte:
 STR_FACE_EARRING                                                :Ohrring:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatte oder Ohrring ändern
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mehrspieler
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spielername:
@@ -2053,10 +2054,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Der Name
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Passwort setzen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ein Passwort verhindert, dass unbefugte Leute beitreten
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Angekündigt
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Zwischen öffentlich angekündigtem (Internet) und nicht angekündigtem (Local Area Network, LAN) Spiel wählen
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Nein
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Teilnehmer
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximale Teilnehmeranzahl:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Auswahl der maximal erlaubten Anzahl von Teilnehmern. Nicht alle Slots müssen belegt werden
@@ -2118,19 +2115,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Trennen
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server ist geschützt. Passwort eingeben:
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ist geschützt. Passwort eingeben:
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Teilnehmerliste
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Teilnehmerliste
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Zuschauen
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Neue Firma
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Hinauswerfen
-STR_NETWORK_CLIENTLIST_BAN                                      :Sperren
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mit allen sprechen
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mit Firma sprechen
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Private Nachricht
+
+
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Teilnehmer

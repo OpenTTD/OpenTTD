@@ -1990,6 +1990,7 @@ STR_FACE_TIE                                                    :领带
 STR_FACE_EARRING                                                :耳环
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}选择领带或是耳环
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}联机游戏
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}玩家名称：
@@ -2052,10 +2053,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}游戏�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}设置密码：
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}如果不希望你的游戏被外人加入，请设置一个密码
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}发布到互联网
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}选择是否将游戏发布到官方服务器列表。发布的话，可以让互联网上的玩家找到你的服务器并加入游戏，否则进行局域网内的游戏。
-STR_NETWORK_START_SERVER_UNADVERTISED                           :否
-STR_NETWORK_START_SERVER_ADVERTISED                             :是
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} 客户端
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}玩家数目：
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}选择可以参加的玩家上限（达不到此数量仍然可以开始游戏）
@@ -2117,19 +2114,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}断开
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}服务器需要密码：
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司需要密码：
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}客户端列表
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :客户端列表
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :旁观
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :新公司
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :踢出
-STR_NETWORK_CLIENTLIST_BAN                                      :禁止
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :向全体人广播
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :向本公司广播
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :私聊
+
+
 
 STR_NETWORK_SERVER                                              :服务器
 STR_NETWORK_CLIENT                                              :客户端

@@ -1991,6 +1991,7 @@ STR_FACE_TIE                                                    :Solmio:
 STR_FACE_EARRING                                                :Korvakoru:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Vaihda solmio tai korvakoru
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Moninpeli
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Pelaajan nimi
@@ -2053,10 +2054,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nimi nä
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Aseta salasana
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Jos peliin ei halua ulkopuolisia, voi sen suojata salasanalla
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Mainostettu
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Valitse mainostettu (internet) tai ei-mainostettu (paikallisverkko, LAN) peli
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Ei
-STR_NETWORK_START_SERVER_ADVERTISED                             :Kyllä
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} asiakas{P "" ta}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Pelaajien enimmäismäärä:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pelaajien enimmäismäärä. Pelissä voi olla myös vähemmän pelaajia
@@ -2118,19 +2115,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Pura yht
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Palvelin on suojattu. Anna salasana
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Yhtiö on suojattu. Anna salasana
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Asiakaslista
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Asiakaslista
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Katsele
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Uusi yhtiö
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Potkaise
-STR_NETWORK_CLIENTLIST_BAN                                      :Kiellä
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Puhu kaikille
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Puhu yhtiölle
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Yksityinen viesti
+
+
 
 STR_NETWORK_SERVER                                              :Palvelin
 STR_NETWORK_CLIENT                                              :Pelaaja
@@ -2175,6 +2166,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Palvelin
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Yhdistäminen ei onnistunut
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Yhteys nro {NUM} aikakatkaistiin
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokollavirhe tapahtui ja yhteys suljettiin
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Et ole asettanut pelaajanimeäsi. Nimen voi asettaa moninpeli-ikkunan ylälaidassa.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Tämän asiakkaan versio ei vastaa palvelimen versiota
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Väärä salasana
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Palvelin on täynnä
@@ -2187,6 +2179,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Käytit 
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tietokoneesi on liian hidas pysyäkseen palvelimen tahdissa
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Kartan lataus kesti liian kauan
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Palvelimelle liittyminen kesti liian kauan
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Pelaajanimesi ei kelpaa
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :yleinen virhe
@@ -2209,6 +2202,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :salasanaa ei va
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :yleinen aikakatkaisu
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :kartan lataaminen kesti liian kauan
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :kartan käsittely kesti liian kauan
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Epäkelpo asiakasnimi
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mahdollinen yhteyden menetys

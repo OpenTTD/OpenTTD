@@ -2371,6 +2371,7 @@ STR_FACE_TIE                                                    :Krawat:
 STR_FACE_EARRING                                                :Kolczyk:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Zmień krawat lub kolczyk
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Gra wieloosobowa
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nazwa gracza:
@@ -2433,10 +2434,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nazwa gr
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Ustaw hasło
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Zabezpiecz grę hasłem jeśli nie chcesz, by była publicznie dostępna
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Publiczny
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Wybierz między rozgrywkami reklamowanymi (internetowymi) a niereklamowanymi (w sieci lokalnej LAN)
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Nie
-STR_NETWORK_START_SERVER_ADVERTISED                             :Tak
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ów ów}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Dopuszczalna liczba klientów:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Ustaw maksymalną liczbę klientów. Nie wszystkie pola muszą być wypełnione.
@@ -2498,19 +2495,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Rozłąc
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer jest chroniony. Wprowadź hasło
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma jest chroniona. Wprowadź hasło
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Lista klientów
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista klientów
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Obserwuj
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nowa firma
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Wyrzuć
-STR_NETWORK_CLIENTLIST_BAN                                      :Banuj
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Mów do wszystkich
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Mów do firmy
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Prywatna wiadomość
+
+
 
 STR_NETWORK_SERVER                                              :Serwer
 STR_NETWORK_CLIENT                                              :Klient

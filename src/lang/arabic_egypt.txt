@@ -1611,6 +1611,7 @@ STR_FACE_TIE                                                    :الربطة:
 STR_FACE_EARRING                                                :أقراط الأذان:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}غير الربطة أو أقراط الأذن
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}تعدد اللاعبين
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}أسم اللاعب
@@ -1733,15 +1734,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشر
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :قائمة العملاء
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :شاهد
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :شركة جديدة
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :اطرد
-STR_NETWORK_CLIENTLIST_BAN                                      :بان
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :تحدث مع الكل
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :تحدث لشركة
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :رسالة خاصة
+
+
 
 STR_NETWORK_SERVER                                              :خادم
 STR_NETWORK_CLIENT                                              :عميل

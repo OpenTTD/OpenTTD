@@ -2225,6 +2225,7 @@ STR_FACE_TIE                                                    :Гальшту�
 STR_FACE_EARRING                                                :Завушніца:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Зьмяніць гальштук або завушніцу
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сеткавая гульня
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Імя гульца:
@@ -2283,10 +2284,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Усталяваць пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Абараніце вашу гульню паролем, калі ня хочаце рабіць яе публічна даступнай
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Інтэрнэт
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Выберыце паміж гульнёй праз Інтэрнэт або ў лакальнай сетцы
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Не
-STR_NETWORK_START_SERVER_ADVERTISED                             :Так
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клiент{P "" ы аў}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. колькасьць клiентаў:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбар максымальнай колькасьці кліентаў. Ня ўсе месцы павінны быць занятыя
@@ -2348,19 +2345,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Адлу
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сэрвэр абаронены. Увядзіце пароль
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Кампанія абароненая. Увядзіце пароль
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Сьпіс кліентаў
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Сьпіс кліентаў
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Назіраць
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Новая кампанія
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Выкінуць гульца
-STR_NETWORK_CLIENTLIST_BAN                                      :Бан
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Пагутарыць з усімі
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Пагутарыць з кампаніяй
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Прыватнае паведамленьне
+
+
 
 STR_NETWORK_SERVER                                              :Сэрвэр
 STR_NETWORK_CLIENT                                              :Кліент

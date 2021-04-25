@@ -1820,6 +1820,7 @@ STR_FACE_TIE                                                    :เนคไท
 STR_FACE_EARRING                                                :ต่างหู:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}เปลี่ยนเนคไทหรือต่างหู
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}เล่นหลายคน
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}ชื่อผู้เล่น:
@@ -1878,10 +1879,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}ชื�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}กำหนดรหัสผ่าน
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ป้องกันเกมด้วยรหัสผ่านหากไม่ต้องการให้มีการเข้าร่วมจากบุคคลทั่วไป
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}การประกาศ
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}เลือกระหว่างการโฆษณา (internet) หรือไม่โฆษณา (Local Area Network, LAN) เกม
-STR_NETWORK_START_SERVER_UNADVERTISED                           :ไม่ใช่
-STR_NETWORK_START_SERVER_ADVERTISED                             :ใช่
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} ลูกข่าย
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}ลูกข่ายสูงสุด:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}เลือกจำนวนมากสุดของลูกข่าย (ไม่จำเป็นต้องครบตามจำนวนนี้)
@@ -1946,15 +1943,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}บร�
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :รายการลูกข่าย
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :ผู้ชม
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :บริษัทใหม่
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :เตะ
-STR_NETWORK_CLIENTLIST_BAN                                      :แบน
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :พูดกับผู้เล่นทั้งหมด
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :พูดกับผู้เล่นในบริษัทเดียวกัน
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :ข้อความส่วนตัว
+
+
 
 STR_NETWORK_SERVER                                              :เซิฟเวอร์
 STR_NETWORK_CLIENT                                              :ลูกข่าย

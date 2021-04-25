@@ -1928,6 +1928,7 @@ STR_FACE_TIE                                                    :Kravat:
 STR_FACE_EARRING                                                :Küpe:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Kravatı veya küpeyi değiştir
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Çok Oyunculu
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Oyuncu adı:
@@ -1986,10 +1987,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Bu oyun 
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Parola koy
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Erişimi kısıtlamak için oyuna parola koy
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}Duyurulan
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}Duyurulan (internet) ve duyurulmayan (yerel ağ, LAN) oyun türlerinden birini seçin
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Hayır
-STR_NETWORK_START_SERVER_ADVERTISED                             :Evet
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} istemci
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Azami istemci sayısı:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}İzin verilen en fazla oyuncu sayısını seç. Her yerin dolması gerekmez
@@ -2051,19 +2048,13 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Bağlant
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Sunucu korumalı. Parola girin
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Şirket korumalı. Parola girin
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}İstemci listesi
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Oyuncu listesi
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Gözlemle
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Yeni şirket
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :At
-STR_NETWORK_CLIENTLIST_BAN                                      :Yasakla
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Herkesle konuş
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Şirketle konuş
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Özel mesaj
+
+
 
 STR_NETWORK_SERVER                                              :Sunucu
 STR_NETWORK_CLIENT                                              :İstemci

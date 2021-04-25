@@ -1895,6 +1895,7 @@ STR_FACE_TIE                                                    ::עניבה
 STR_FACE_EARRING                                                ::עגילים
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK} שנה עניבה/עגילים
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}משחק רשת
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK} :שם השחקן
@@ -1953,10 +1954,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}השם �
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}קבע סיסמה
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}הגן על המשחק שלך עם סיסמה אם אתה לא רוצה שהוא יהיה זמין לכולם
 
-STR_NETWORK_START_SERVER_ADVERTISED_LABEL                       :{BLACK}מפורסם
-STR_NETWORK_START_SERVER_ADVERTISED_TOOLTIP                     :{BLACK}בחר בין משחק מפורסם (אינטרנטי) ומשחק לא מפורסם (רשת מקומית, LAN)
-STR_NETWORK_START_SERVER_UNADVERTISED                           :לא
-STR_NETWORK_START_SERVER_ADVERTISED                             :כן
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} לקוח{P "" "ות"}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}מספר מקסימלי של לקוחות:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK} :מספר משתתפים מירבי
@@ -2021,15 +2018,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}חברה
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :רשימת משתתפים
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :צפה
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :חברה חדשה
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :בעט
-STR_NETWORK_CLIENTLIST_BAN                                      :חסימה
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :דבר לכולם
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :דבר לחברה
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :הודעה פרטית
+
+
 
 STR_NETWORK_SERVER                                              :שרת
 STR_NETWORK_CLIENT                                              :לקוח

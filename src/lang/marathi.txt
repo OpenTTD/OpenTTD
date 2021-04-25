@@ -892,6 +892,7 @@ STR_FACE_LIPS_MOUSTACHE_TOOLTIP                                 :{BLACK}ओठ �
 STR_FACE_CHIN                                                   :हनुवटी:
 STR_FACE_CHIN_TOOLTIP                                           :{BLACK}हनुवटी बदला
 
+
 # Network server list
 
 STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}नाव
@@ -932,6 +933,8 @@ STR_NETWORK_CONNECTING_DOWNLOADING_2                            :{BLACK}{BYTES} 
 # Network company list added strings
 
 # Network client list
+
+
 
 
 # Network set password
