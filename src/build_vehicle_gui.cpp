@@ -1055,7 +1055,7 @@ struct BuildVehicleWindow : Window {
 	CargoID cargo_filter[NUM_CARGO + 3];        ///< Available cargo filters; CargoID or CF_ANY or CF_NONE or CF_ENGINES
 	StringID cargo_filter_texts[NUM_CARGO + 4]; ///< Texts for filter_cargo, terminated by INVALID_STRING_ID
 	byte cargo_filter_criteria;                 ///< Selected cargo filter
-	int details_height;                         ///< Minimal needed height of the details panels (found so far).
+	int details_height;                         ///< Minimal needed height of the details panels, in text lines (found so far).
 	Scrollbar *vscroll;
 	TestedEngineDetails te;                     ///< Tested cost and capacity after refit.
 
@@ -1115,7 +1115,7 @@ struct BuildVehicleWindow : Window {
 		widget->tool_tip    = STR_SHOW_HIDDEN_ENGINES_VEHICLE_TRAIN_TOOLTIP + type;
 		widget->SetLowered(this->show_hidden_engines);
 
-		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		this->details_height = ((this->vehicle_type == VEH_TRAIN) ? 10 : 9);
 
 		this->FinishInitNested(tile == INVALID_TILE ? (int)type : tile);
 
@@ -1553,7 +1553,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case WID_BV_PANEL:
-				size->height = this->details_height;
+				size->height = FONT_HEIGHT_NORMAL * this->details_height + padding.height;
 				break;
 
 			case WID_BV_SORT_ASCENDING_DESCENDING: {
@@ -1620,12 +1620,12 @@ struct BuildVehicleWindow : Window {
 				NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_BV_PANEL);
 				int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
 						nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine, this->te);
-				needed_height = std::max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
+				needed_height = std::max(needed_height, (text_end - (int)nwi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL);
 			}
 			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
 				int resize = needed_height - this->details_height;
 				this->details_height = needed_height;
-				this->ReInit(0, resize);
+				this->ReInit(0, resize * FONT_HEIGHT_NORMAL);
 				return;
 			}
 		}
