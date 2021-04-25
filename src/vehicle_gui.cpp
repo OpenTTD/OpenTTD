@@ -240,6 +240,11 @@ Dimension BaseVehicleListWindow::GetActionDropdownSize(bool show_autoreplace, bo
 	return d;
 }
 
+void BaseVehicleListWindow::OnInit()
+{
+	this->order_arrow_width = GetStringBoundingBox(STR_TINY_RIGHT_ARROW).width;
+}
+
 /**
  * Display the Action dropdown window.
  * @param show_autoreplace If true include the autoreplace item.
@@ -1406,14 +1411,14 @@ static const NWidgetPart _nested_vehicle_list[] = {
 	EndContainer(),
 };
 
-static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, VehicleOrderID start = 0)
+static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, uint order_arrow_width, VehicleOrderID start)
 {
 	const Order *order = v->GetOrder(start);
 	if (order == nullptr) return;
 
 	bool rtl = _current_text_dir == TD_RTL;
-	int l_offset = rtl ? 0 : ScaleGUITrad(6);
-	int r_offset = rtl ? ScaleGUITrad(6) : 0;
+	int l_offset = rtl ? 0 : order_arrow_width;
+	int r_offset = rtl ? order_arrow_width : 0;
 	int i = 0;
 	VehicleOrderID oid = start;
 
@@ -1438,11 +1443,11 @@ static void DrawSmallOrderList(const Vehicle *v, int left, int right, int y, Veh
 }
 
 /** Draw small order list in the vehicle GUI, but without the little black arrow.  This is used for shared order groups. */
-static void DrawSmallOrderList(const Order *order, int left, int right, int y)
+static void DrawSmallOrderList(const Order *order, int left, int right, int y, uint order_arrow_width)
 {
 	bool rtl = _current_text_dir == TD_RTL;
-	int l_offset = rtl ? 0 : ScaleGUITrad(6);
-	int r_offset = rtl ? ScaleGUITrad(6) : 0;
+	int l_offset = rtl ? 0 : order_arrow_width;
+	int r_offset = rtl ? order_arrow_width : 0;
 	int i = 0;
 	while (order != nullptr) {
 		if (order->IsType(OT_GOTO_STATION)) {
@@ -1550,7 +1555,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 					DrawString(text_left, text_right, y, STR_TINY_GROUP, TC_BLACK);
 				}
 
-				if (show_orderlist) DrawSmallOrderList(v, orderlist_left, orderlist_right, y, v->cur_real_order_index);
+				if (show_orderlist) DrawSmallOrderList(v, orderlist_left, orderlist_right, y, this->order_arrow_width, v->cur_real_order_index);
 
 				StringID str;
 				if (v->IsChainInDepot()) {
@@ -1572,7 +1577,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(VehicleID selected_vehicle, int
 					DrawVehicleImage(vehgroup.vehicles_begin[i], image_left + 8 * i, image_right, y + FONT_HEIGHT_SMALL - 1, selected_vehicle, EIT_IN_LIST, 0);
 				}
 
-				if (show_orderlist) DrawSmallOrderList((vehgroup.vehicles_begin[0])->GetFirstOrder(), orderlist_left, orderlist_right, y);
+				if (show_orderlist) DrawSmallOrderList((vehgroup.vehicles_begin[0])->GetFirstOrder(), orderlist_left, orderlist_right, y, this->order_arrow_width);
 
 				SetDParam(0, vehgroup.NumVehicles());
 				DrawString(left, right, y + 2, STR_BLACK_COMMA);
