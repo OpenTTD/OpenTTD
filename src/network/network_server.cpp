@@ -605,7 +605,7 @@ void ServerNetworkGameSocketHandler::CheckNextClientToSendMap(NetworkClientSocke
 /** This sends the map to the client */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 {
-	static uint sent_packets; // How many packets we did send successfully last time
+	static uint16 sent_packets; // How many packets we did send successfully last time
 
 	if (this->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
@@ -665,8 +665,10 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 				return NETWORK_RECV_STATUS_CONN_LOST;
 
 			case SPS_ALL_SENT:
-				/* All are sent, increase the sent_packets */
-				if (has_packets) sent_packets *= 2;
+				/* All are sent, increase the sent_packets but do not overflow! */
+				if (has_packets && sent_packets < std::numeric_limits<decltype(sent_packets)>::max() / 2) {
+					sent_packets *= 2;
+				}
 				break;
 
 			case SPS_PARTLY_SENT:
