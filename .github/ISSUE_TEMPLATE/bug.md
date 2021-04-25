@@ -5,13 +5,13 @@ title: "Bug Report"
 ---
 
 ## Version of OpenTTD
-<!-- Indicate what version of OpenTTD you are using, including your OS. -->
+<!-- Fill in below what version of OpenTTD you are using, including your OS. -->
 
 ## Expected result
 <!-- Describe in a few words what you expected to happen. -->
 
 ## Actual result
-<!-- Descibe in a few words what actually happens. -->
+<!-- Describe in a few words what actually happens. -->
 
 ## Steps to reproduce
 <!-- As detailed as possible, please tell us how we can reproduce this. Feel free to attach a savegame (zip it first) to make it more clear. -->

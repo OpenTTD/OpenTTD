@@ -6,7 +6,7 @@ title: "Crash Report"
 <!-- Please zip the crash.log, crash.dmp and crash.sav and attach it to this crash report. -->
 
 ## Version of OpenTTD
-<!-- Indicate what version of OpenTTD you are using, including your OS. -->
+<!-- Fill in below what version of OpenTTD you are using, including your OS. -->
 
 ## Steps to reproduce
 <!-- Please spend a few words if you can reproduce this problem. -->
