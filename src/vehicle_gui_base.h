@@ -83,6 +83,7 @@ struct BaseVehicleListWindow : public Window {
 	byte unitnumber_digits;                   ///< The number of digits of the highest unit number.
 	Scrollbar *vscroll;
 	VehicleListIdentifier vli;                ///< Identifier of the vehicle list we want to currently show.
+	uint order_arrow_width;                   ///< Width of the arrow in the small order list.
 
 	typedef GUIVehicleGroupList::SortFunction VehicleGroupSortFunction;
 	typedef GUIVehicleList::SortFunction VehicleIndividualSortFunction;
@@ -103,6 +104,8 @@ struct BaseVehicleListWindow : public Window {
 	static VehicleGroupSortFunction * const vehicle_group_shared_orders_sorter_funcs[];
 
 	BaseVehicleListWindow(WindowDesc *desc, WindowNumber wno);
+
+	void OnInit() override;
 
 	void UpdateSortingFromGrouping();
 
