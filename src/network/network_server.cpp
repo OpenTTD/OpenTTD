@@ -112,25 +112,27 @@ struct PacketWriter : SaveFilter {
 	}
 
 	/**
-	 * Checks whether there are packets.
-	 * It's not 100% threading safe, but this is only asked for when checking
-	 * whether there still is something to send. Then another call will be made
-	 * to actually get the Packet, which will be the only one popping packets
-	 * and thus eventually setting this on false.
+	 * Transfer all packets from here to the network's queue while holding
+	 * the lock on our mutex.
+	 * @param socket The network socket to write to.
+	 * @return True iff the last packet of the map has been sent.
 	 */
-	bool HasPackets()
+	bool TransferToNetworkQueue(ServerNetworkGameSocketHandler *socket)
 	{
-		return this->packets != nullptr;
-	}
+		/* Unsafe check for the queue being empty or not. */
+		if (this->packets == nullptr) return false;
 
-	/**
-	 * Pop a single created packet from the queue with packets.
-	 */
-	Packet *PopPacket()
-	{
 		std::lock_guard<std::mutex> lock(this->mutex);
 
-		return Packet::PopFromQueue(&this->packets);
+		while (this->packets != nullptr) {
+			Packet *p = Packet::PopFromQueue(&this->packets);
+			bool last_packet = p->GetPacketType() == PACKET_SERVER_MAP_DONE;
+			socket->SendPacket(p);
+
+			if (last_packet) return true;
+		}
+
+		return false;
 	}
 
 	/** Append the current packet to the queue. */
@@ -592,8 +594,6 @@ void ServerNetworkGameSocketHandler::CheckNextClientToSendMap(NetworkClientSocke
 /** This sends the map to the client */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 {
-	static uint16 sent_packets; // How many packets we did send successfully last time
-
 	if (this->status < STATUS_AUTHORIZED) {
 		/* Illegal call, return error and ignore the packet */
 		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
@@ -613,28 +613,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 		this->last_frame = _frame_counter;
 		this->last_frame_server = _frame_counter;
 
-		sent_packets = 4; // We start with trying 4 packets
-
 		/* Make a dump of the current game */
 		if (SaveWithFilter(this->savegame, true) != SL_OK) usererror("network savedump failed");
 	}
 
 	if (this->status == STATUS_MAP) {
-		bool last_packet = false;
-		bool has_packets = false;
-
-		for (uint i = 0; (has_packets = this->savegame->HasPackets()) && i < sent_packets; i++) {
-			Packet *p = this->savegame->PopPacket();
-			last_packet = p->GetPacketType() == PACKET_SERVER_MAP_DONE;
-
-			this->SendPacket(p);
-
-			if (last_packet) {
-				/* There is no more data, so break the for */
-				break;
-			}
-		}
-
+		bool last_packet = this->savegame->TransferToNetworkQueue(this);
 		if (last_packet) {
 			/* Done reading, make sure saving is done as well */
 			this->savegame->Destroy();
@@ -645,27 +629,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendMap()
 			this->status = STATUS_DONE_MAP;
 
 			this->CheckNextClientToSendMap();
-		}
-
-		switch (this->SendPackets()) {
-			case SPS_CLOSED:
-				return NETWORK_RECV_STATUS_CONN_LOST;
-
-			case SPS_ALL_SENT:
-				/* All are sent, increase the sent_packets but do not overflow! */
-				if (has_packets && sent_packets < std::numeric_limits<decltype(sent_packets)>::max() / 2) {
-					sent_packets *= 2;
-				}
-				break;
-
-			case SPS_PARTLY_SENT:
-				/* Only a part is sent; leave the transmission state. */
-				break;
-
-			case SPS_NONE_SENT:
-				/* Not everything is sent, decrease the sent_packets */
-				if (sent_packets > 1) sent_packets /= 2;
-				break;
 		}
 	}
 	return NETWORK_RECV_STATUS_OKAY;
