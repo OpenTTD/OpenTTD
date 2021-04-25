@@ -44,7 +44,7 @@ Packet::Packet(NetworkSocketHandler *cs, size_t limit, size_t initial_read_size)
  *              the limit as it might break things if the other side is not expecting
  *              much larger packets than what they support.
  */
-Packet::Packet(PacketType type, size_t limit) : next(nullptr), pos(0), cs(nullptr)
+Packet::Packet(PacketType type, size_t limit) : next(nullptr), pos(0), limit(limit), cs(nullptr)
 {
 	/* Allocate space for the the size so we can write that in just before sending the packet. */
 	this->Send_uint16(0);
