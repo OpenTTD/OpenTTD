@@ -26,7 +26,7 @@ static std::vector<std::unique_ptr<NetworkGameSocketHandler>> _deferred_deletion
  * Create a new socket for the game connection.
  * @param s The socket to connect with.
  */
-NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s) : info(nullptr), client_id(INVALID_CLIENT_ID),
+NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s, ClientID client_id) : info(nullptr), client_id(client_id),
 		last_frame(_frame_counter), last_frame_server(_frame_counter)
 {
 	this->sock = s;

@@ -556,8 +556,7 @@ NetworkAddress ParseConnectionString(const std::string &connection_string, uint1
 	/* Register the login */
 	_network_clients_connected++;
 
-	ServerNetworkGameSocketHandler *cs = new ServerNetworkGameSocketHandler(s);
-	cs->client_address = address; // Save the IP of the client
+	new ServerNetworkGameSocketHandler(s, address);
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
 }
