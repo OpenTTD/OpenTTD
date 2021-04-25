@@ -2402,7 +2402,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_ROAD_TUNNEL                      :{BLACK}道路�
 STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}軌道用トンネルを建設します。Shiftを押しながら決定すると費用の見積が出ます
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}道路の建設/撤去を切り替えます
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}軌道の建設/撤去を切り替えます
-STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}道路の種類を変更/アップグレードします.Shiftは、コスト見積もりの​​作成/表示を切り替えます
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}道路の種類を変更/アップグレードします.Shiftは、コスト見積もりの作成/表示を切り替えます
 
 STR_ROAD_NAME_TRAM                                              :トラムウェイ
 
