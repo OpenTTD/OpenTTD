@@ -33,6 +33,8 @@
 #define EWOULDBLOCK WSAEWOULDBLOCK
 #undef ECONNRESET
 #define ECONNRESET WSAECONNRESET
+#undef EINPROGRESS
+#define EINPROGRESS WSAEWOULDBLOCK
 
 const char *NetworkGetErrorString(int error);
 
@@ -228,6 +230,20 @@ static inline bool SetNoDelay(SOCKET d)
 	/* The (const char*) cast is needed for windows */
 	return setsockopt(d, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b)) == 0;
 #endif
+}
+
+/**
+ * Get the error from a socket, if any.
+ * @param d The socket to get the error from.
+ * @return The errno on the socket.
+ */
+static inline int GetSocketError(SOCKET d)
+{
+	int err;
+	socklen_t len = sizeof(err);
+	getsockopt(d, SOL_SOCKET, SO_ERROR, (char *)&err, &len);
+
+	return err;
 }
 
 /* Make sure these structures have the size we expect them to be */
