@@ -6,16 +6,55 @@
  */
 
 /**
- * @file game.h Information about a game that is sent between a
- *              game server, game client and masterserver.
+ * @file game_info.h Convert NetworkGameInfo to Packet and back.
  */
 
-#ifndef NETWORK_CORE_GAME_H
-#define NETWORK_CORE_GAME_H
+#ifndef NETWORK_CORE_GAME_INFO_H
+#define NETWORK_CORE_GAME_INFO_H
 
 #include "config.h"
+#include "core.h"
 #include "../../newgrf_config.h"
 #include "../../date_type.h"
+
+/*
+ * NetworkGameInfo has several revisions which we still need to support on the
+ * wire. The table below shows the version and size for each field of the
+ * serialized NetworkGameInfo.
+ *
+ * Version: Bytes:  Description:
+ *   all      1       the version of this packet's structure
+ *
+ *   4+       1       number of GRFs attached (n)
+ *   4+       n * 20  unique identifier for GRF files. Consists of:
+ *                     - one 4 byte variable with the GRF ID
+ *                     - 16 bytes (sent sequentially) for the MD5 checksum
+ *                       of the GRF
+ *
+ *   3+       4       current game date in days since 1-1-0 (DMY)
+ *   3+       4       game introduction date in days since 1-1-0 (DMY)
+ *
+ *   2+       1       maximum number of companies allowed on the server
+ *   2+       1       number of companies on the server
+ *   2+       1       maximum number of spectators allowed on the server
+ *
+ *   1+       var     string with the name of the server
+ *   1+       var     string with the revision of the server
+ *   1+       1       the language run on the server
+ *                    (0 = any, 1 = English, 2 = German, 3 = French)
+ *   1+       1       whether the server uses a password (0 = no, 1 = yes)
+ *   1+       1       maximum number of clients allowed on the server
+ *   1+       1       number of clients on the server
+ *   1+       1       number of spectators on the server
+ *   1 & 2    2       current game date in days since 1-1-1920 (DMY)
+ *   1 & 2    2       game introduction date in days since 1-1-1920 (DMY)
+ *   1+       var     string with the name of the map
+ *   1+       2       width of the map in tiles
+ *   1+       2       height of the map in tiles
+ *   1+       1       type of map:
+ *                    (0 = temperate, 1 = arctic, 2 = desert, 3 = toyland)
+ *   1+       1       whether the server is dedicated (0 = no, 1 = yes)
+ */
 
 /**
  * The game information that is not generated on-the-fly and has to
@@ -52,6 +91,17 @@ struct NetworkGameInfo : NetworkServerGameInfo {
 	byte map_set;                                   ///< Graphical set
 };
 
-const char * GetNetworkRevisionString();
+extern NetworkServerGameInfo _network_game_info;
 
-#endif /* NETWORK_CORE_GAME_H */
+const char *GetNetworkRevisionString();
+bool IsNetworkCompatibleVersion(const char *other);
+
+void FillNetworkGameInfo(NetworkGameInfo &ngi);
+
+void DeserializeGRFIdentifier(Packet *p, GRFIdentifier *grf);
+void SerializeGRFIdentifier(Packet *p, const GRFIdentifier *grf);
+
+void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info);
+void SerializeNetworkGameInfo(Packet *p, const NetworkGameInfo *info);
+
+#endif /* NETWORK_CORE_GAME_INFO_H */

@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../strings_func.h"
 #include "../date_func.h"
+#include "core/game_info.h"
 #include "network_admin.h"
 #include "network_base.h"
 #include "network_server.h"

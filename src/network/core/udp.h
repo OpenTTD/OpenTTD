@@ -13,7 +13,6 @@
 #define NETWORK_CORE_UDP_H
 
 #include "address.h"
-#include "game.h"
 #include "packet.h"
 
 /** Enum with all types of UDP packets. The order MUST not be changed **/
@@ -63,40 +62,7 @@ protected:
 
 	/**
 	 * Return of server information to the client.
-	 * This packet has several legacy versions, so we list the version and size of each "field":
-	 *
-	 * Version: Bytes:  Description:
-	 *   all      1       the version of this packet's structure
-	 *
-	 *   4+       1       number of GRFs attached (n)
-	 *   4+       n * 20  unique identifier for GRF files. Consists of:
-	 *                     - one 4 byte variable with the GRF ID
-	 *                     - 16 bytes (sent sequentially) for the MD5 checksum
-	 *                       of the GRF
-	 *
-	 *   3+       4       current game date in days since 1-1-0 (DMY)
-	 *   3+       4       game introduction date in days since 1-1-0 (DMY)
-	 *
-	 *   2+       1       maximum number of companies allowed on the server
-	 *   2+       1       number of companies on the server
-	 *   2+       1       maximum number of spectators allowed on the server
-	 *
-	 *   1+       var     string with the name of the server
-	 *   1+       var     string with the revision of the server
-	 *   1+       1       the language run on the server
-	 *                    (0 = any, 1 = English, 2 = German, 3 = French)
-	 *   1+       1       whether the server uses a password (0 = no, 1 = yes)
-	 *   1+       1       maximum number of clients allowed on the server
-	 *   1+       1       number of clients on the server
-	 *   1+       1       number of spectators on the server
-	 *   1 & 2    2       current game date in days since 1-1-1920 (DMY)
-	 *   1 & 2    2       game introduction date in days since 1-1-1920 (DMY)
-	 *   1+       var     string with the name of the map
-	 *   1+       2       width of the map in tiles
-	 *   1+       2       height of the map in tiles
-	 *   1+       1       type of map:
-	 *                    (0 = temperate, 1 = arctic, 2 = desert, 3 = toyland)
-	 *   1+       1       whether the server is dedicated (0 = no, 1 = yes)
+	 * Serialized NetworkGameInfo. See game_info.h for details.
 	 * @param p           The received packet.
 	 * @param client_addr The origin of the packet.
 	 */
@@ -217,15 +183,6 @@ protected:
 	virtual void Receive_MASTER_SESSION_KEY(Packet *p, NetworkAddress *client_addr);
 
 	void HandleUDPPacket(Packet *p, NetworkAddress *client_addr);
-
-	/**
-	 * Function that is called for every GRFConfig that is read when receiving
-	 * a NetworkGameInfo. Only grfid and md5sum are set, the rest is zero. This
-	 * function must set all appropriate fields. This GRF is later appended to
-	 * the grfconfig list of the NetworkGameInfo.
-	 * @param config the GRF to handle
-	 */
-	virtual void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config) { NOT_REACHED(); }
 public:
 	NetworkUDPSocketHandler(NetworkAddressList *bind = nullptr);
 
@@ -237,9 +194,6 @@ public:
 
 	void SendPacket(Packet *p, NetworkAddress *recv, bool all = false, bool broadcast = false);
 	void ReceivePackets();
-
-	void SendNetworkGameInfo(Packet *p, const NetworkGameInfo *info);
-	void ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo *info);
 };
 
 #endif /* NETWORK_CORE_UDP_H */
