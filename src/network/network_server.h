@@ -24,6 +24,7 @@ extern NetworkClientSocketPool _networkclientsocket_pool;
 class ServerNetworkGameSocketHandler : public NetworkClientSocketPool::PoolItem<&_networkclientsocket_pool>, public NetworkGameSocketHandler, public TCPListenHandler<ServerNetworkGameSocketHandler, PACKET_SERVER_FULL, PACKET_SERVER_BANNED> {
 protected:
 	NetworkRecvStatus Receive_CLIENT_JOIN(Packet *p) override;
+	NetworkRecvStatus Receive_CLIENT_GAME_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_COMPANY_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_GAME_PASSWORD(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet *p) override;
@@ -40,6 +41,7 @@ protected:
 	NetworkRecvStatus Receive_CLIENT_NEWGRFS_CHECKED(Packet *p) override;
 	NetworkRecvStatus Receive_CLIENT_MOVE(Packet *p) override;
 
+	NetworkRecvStatus SendGameInfo();
 	NetworkRecvStatus SendCompanyInfo();
 	NetworkRecvStatus SendNewGRFCheck();
 	NetworkRecvStatus SendWelcome();
