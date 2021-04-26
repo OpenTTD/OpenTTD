@@ -107,6 +107,21 @@ bool IsNetworkCompatibleVersion(const char *other)
 }
 
 /**
+ * Check if an game entry is compatible with our client.
+ */
+void CheckGameCompatibility(NetworkGameInfo &ngi)
+{
+	/* Check if we are allowed on this server based on the revision-check. */
+	ngi.version_compatible = IsNetworkCompatibleVersion(ngi.server_revision);
+	ngi.compatible = ngi.version_compatible;
+
+	/* Check if we have all the GRFs on the client-system too. */
+	for (const GRFConfig *c = ngi.grfconfig; c != nullptr; c = c->next) {
+		if (c->status == GCS_NOT_FOUND) ngi.compatible = false;
+	}
+}
+
+/**
  * Fill a NetworkGameInfo structure with the latest information of the server.
  * @param ngi the NetworkGameInfo struct to fill with data.
  */

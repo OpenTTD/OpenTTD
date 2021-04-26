@@ -324,10 +324,15 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 	/* Find next item */
 	item = NetworkGameListAddItem(*client_addr);
 
+	/* Clear any existing GRFConfig chain. */
 	ClearGRFConfigList(&item->info.grfconfig);
+	/* Retrieve the NetworkGameInfo from the packet. */
 	DeserializeNetworkGameInfo(p, &item->info);
+	/* Check for compatability with the client. */
+	CheckGameCompatibility(item->info);
+	/* Ensure we consider the server online. */
+	item->online = true;
 
-	item->info.compatible = true;
 	{
 		/* Checks whether there needs to be a request for names of GRFs and makes
 		 * the request if necessary. GRFs that need to be requested are the GRFs
@@ -341,7 +346,6 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 		uint in_request_count = 0;
 
 		for (c = item->info.grfconfig; c != nullptr; c = c->next) {
-			if (c->status == GCS_NOT_FOUND) item->info.compatible = false;
 			if (c->status != GCS_NOT_FOUND || strcmp(c->GetName(), UNKNOWN_GRF_NAME_PLACEHOLDER) != 0) continue;
 			in_request[in_request_count] = c;
 			in_request_count++;
@@ -368,12 +372,6 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 	if (client_addr->GetAddress()->ss_family == AF_INET6) {
 		strecat(item->info.server_name, " (IPv6)", lastof(item->info.server_name));
 	}
-
-	/* Check if we are allowed on this server based on the revision-match */
-	item->info.version_compatible = IsNetworkCompatibleVersion(item->info.server_revision);
-	item->info.compatible &= item->info.version_compatible; // Already contains match for GRFs
-
-	item->online = true;
 
 	UpdateNetworkGameWindow();
 }
