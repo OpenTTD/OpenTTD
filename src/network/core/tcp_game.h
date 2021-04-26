@@ -24,7 +24,7 @@
  */
 enum PacketGameType {
 	/*
-	 * These first three pair of packets (thus six in
+	 * These first four pair of packets (thus eight in
 	 * total) must remain in this order for backward
 	 * and forward compatibility between clients that
 	 * are trying to join directly.
@@ -41,6 +41,10 @@ enum PacketGameType {
 	/* Packets used for the pre-game lobby. */
 	PACKET_CLIENT_COMPANY_INFO,          ///< Request information about all companies.
 	PACKET_SERVER_COMPANY_INFO,          ///< Information about a single company.
+
+	/* Packets used to get the game info. */
+	PACKET_CLIENT_GAME_INFO,             ///< Request information about the server.
+	PACKET_SERVER_GAME_INFO,             ///< Information about the server.
 
 	/*
 	 * Packets after here assume that the client
@@ -182,6 +186,19 @@ protected:
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_ERROR(Packet *p);
+
+	/**
+	 * Request game information.
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_CLIENT_GAME_INFO(Packet *p);
+
+	/**
+	 * Sends information about the game.
+	 * Serialized NetworkGameInfo. See game_info.h for details.
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_SERVER_GAME_INFO(Packet *p);
 
 	/**
 	 * Request company information (in detail).
