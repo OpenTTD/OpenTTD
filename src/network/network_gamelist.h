@@ -11,6 +11,7 @@
 #define NETWORK_GAMELIST_H
 
 #include "core/address.h"
+#include "core/game_info.h"
 #include "network_type.h"
 
 /** Structure with information shown in the game list (GUI) */

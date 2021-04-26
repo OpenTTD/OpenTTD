@@ -23,6 +23,7 @@
 #include "../gfx_func.h"
 #include "../error.h"
 #include "../rev.h"
+#include "core/game_info.h"
 #include "network.h"
 #include "network_base.h"
 #include "network_client.h"
@@ -730,7 +731,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHECK_NEWGRFS(P
 	/* Check all GRFs */
 	for (; grf_count > 0; grf_count--) {
 		GRFIdentifier c;
-		this->ReceiveGRFIdentifier(p, &c);
+		DeserializeGRFIdentifier(p, &c);
 
 		/* Check whether we know this GRF */
 		const GRFConfig *f = FindGRFConfig(c.grfid, FGCM_EXACT, c.md5sum);

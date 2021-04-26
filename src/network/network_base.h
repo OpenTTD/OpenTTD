@@ -14,6 +14,7 @@
 #include "core/address.h"
 #include "../core/pool_type.hpp"
 #include "../company_type.h"
+#include "../date_type.h"
 
 /** Type for the pool with client information. */
 typedef Pool<NetworkClientInfo, ClientIndex, 8, MAX_CLIENT_SLOTS, PT_NCLIENT> NetworkClientInfoPool;

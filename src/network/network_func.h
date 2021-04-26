@@ -22,8 +22,8 @@
 #include "../gfx_type.h"
 #include "../openttd.h"
 #include "../company_type.h"
+#include "../string_type.h"
 
-extern NetworkServerGameInfo _network_game_info;
 extern NetworkCompanyState *_network_company_states;
 
 extern ClientID _network_own_client_id;
