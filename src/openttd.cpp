@@ -32,6 +32,7 @@
 #include "screenshot.h"
 #include "network/network.h"
 #include "network/network_func.h"
+#include "network/core/game_info.h"
 #include "ai/ai.hpp"
 #include "ai/ai_config.hpp"
 #include "settings_func.h"

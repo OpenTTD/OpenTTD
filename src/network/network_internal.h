@@ -135,8 +135,6 @@ void NetworkAddServer(const char *b);
 void NetworkRebuildHostList();
 void UpdateNetworkGameWindow();
 
-bool IsNetworkCompatibleVersion(const char *version);
-
 /* From network_command.cpp */
 /**
  * Everything we need to know about a command to be able to execute it.
