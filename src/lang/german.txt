@@ -954,7 +954,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysische Rin
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Linksverkehr
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rechtsverkehr
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Städtenamen
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Städtenamen:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Wähle die Sprache für die Städtenamen aus
 
 ############ start of townname region
@@ -994,6 +994,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Alle 12 Monate
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Sprache
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Sprache für die Spieloberfläche auswählen
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% abgeschlossen)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Vollbild
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}OpenTTD im Vollbildmodus spielen
@@ -1991,6 +1992,8 @@ STR_FACE_TIE                                                    :Krawatte:
 STR_FACE_EARRING                                                :Ohrring:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Krawatte oder Ohrring ändern
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privat
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Öffentlich
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Mehrspieler
@@ -2054,6 +2057,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Der Name
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Passwort setzen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Ein Passwort verhindert, dass unbefugte Leute beitreten
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Sichtbarkeit
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Ob andere Personen Ihren Server in der öffentlichen Liste sehen können
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} Teilnehmer
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximale Teilnehmeranzahl:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Auswahl der maximal erlaubten Anzahl von Teilnehmern. Nicht alle Slots müssen belegt werden
@@ -2117,11 +2122,44 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server i
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ist geschützt. Passwort eingeben:
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Teilnehmerliste
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online-Spieler
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Mehrspieler
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Name
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Name des Servers auf dem Sie spielen
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Ihren Servernamen bearbeiten
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Name des Servers
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Sichtbarkeit
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Ob andere Personen Ihren Server in der öffentlichen Liste sehen können
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Spieler
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Name
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Ihr Spielername
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Ihren Spielernamen bearbeiten
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ihr Spielername
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Auszuübende administrative Aktionen für diesen Teilnehmer
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Auszuübende administrative Aktionen für diese Firma
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Dieser Firma beitreten
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Eine Nachricht an diesen Spieler schicken
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Eine Nachricht an alle Spieler dieser Firma schicken
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Eine Nachricht an alle Zuschauer schicken
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Zuschauer
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Neue Firma)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Eine neue Firma gründen und beitreten
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Das sind Sie
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dies ist der Host des Spiels
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Hinauswerfen
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannen
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Löschen
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Passwort entsperren
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Admin-Aktion
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sind Sie sicher, dass Sie Spieler '{STRING}' hinauswerfen möchten?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sind Sie sicher, dass Sie Spieler '{STRING}' bannen möchten?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Sind Sie sicher, dass Sie die Firma '{COMPANY}' löschen möchten?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Sind Sie sicher, dass Sie das Passwort der Firma '{COMPANY}' zurücksetzen möchten?
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Teilnehmer
@@ -2166,6 +2204,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Server k
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Verbindung konnte nicht hergestellt werden
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Verbindung #{NUM} hat das Zeitlimit überschritten
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokollfehler: Die Verbindung musste getrennt werden
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Ihr Spielername wurde nicht gesetzt. Der Name kann im Mehrspielerfenster oben gesetzt werden
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Diese Version des Spiels entspricht nicht der des Servers
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Falsches Passwort
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Der Server ist voll
@@ -2178,6 +2217,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Zeit fü
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Dieser Computer ist sehr langsam, sodass er nicht mit dem Server mithalten kann
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Das Herunterladen der Karte dauerte zu lange
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Der Beitritt zum Server dauerte zu lange
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Ihr Spielername ist ungültig
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :Allgemeiner Fehler
@@ -2200,6 +2240,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :Zeitüberschrei
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :Allgemeine Zeitüberschreitung
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :das Herunterladen der Karte dauerte zu lange
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :Verarbeitung der Karte dauerte zu lange
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Ungültiger Teilnehmername
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Möglicher Verbindungsabbruch

@@ -1098,7 +1098,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Малайзи�
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Левостороннее
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Правостороннее
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Названия городов
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Названия городов:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Язык, который будет использоваться для выбора названий населённых пунктов
 
 ############ start of townname region
@@ -2271,8 +2271,14 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Комп
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список клиентов
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Действия администратора, применимые к этому клиенту
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Отключить
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Заблокировать
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Подтверждение действия
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Отключить игрока «{STRING}»?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Заблокировать игрока «{STRING}»?
 
 STR_NETWORK_SERVER                                              :Сервер
 STR_NETWORK_CLIENT                                              :Клиент
