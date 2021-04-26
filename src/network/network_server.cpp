@@ -10,6 +10,7 @@
 #include "../stdafx.h"
 #include "../strings_func.h"
 #include "../date_func.h"
+#include "core/game_info.h"
 #include "network_admin.h"
 #include "network_server.h"
 #include "network_udp.h"
@@ -477,7 +478,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGRFCheck()
 
 	p->Send_uint8 (grf_count);
 	for (c = _grfconfig; c != nullptr; c = c->next) {
-		if (!HasBit(c->flags, GCF_STATIC)) this->SendGRFIdentifier(p, &c->ident);
+		if (!HasBit(c->flags, GCF_STATIC)) SerializeGRFIdentifier(p, &c->ident);
 	}
 
 	this->SendPacket(p);
