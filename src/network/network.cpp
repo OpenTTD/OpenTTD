@@ -598,7 +598,7 @@ public:
 	{
 		_networking = true;
 		new ClientNetworkGameSocketHandler(s);
-		MyClient::SendCompanyInformationQuery();
+		MyClient::SendInformationQuery();
 	}
 };
 

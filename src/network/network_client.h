@@ -43,6 +43,7 @@ protected:
 	NetworkRecvStatus Receive_SERVER_FULL(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_BANNED(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_ERROR(Packet *p) override;
+	NetworkRecvStatus Receive_SERVER_GAME_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_COMPANY_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_CLIENT_INFO(Packet *p) override;
 	NetworkRecvStatus Receive_SERVER_NEED_GAME_PASSWORD(Packet *p) override;
@@ -79,7 +80,7 @@ public:
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;
 	void ClientError(NetworkRecvStatus res);
 
-	static NetworkRecvStatus SendCompanyInformationQuery();
+	static NetworkRecvStatus SendInformationQuery();
 
 	static NetworkRecvStatus SendJoin();
 	static NetworkRecvStatus SendCommand(const CommandPacket *cp);

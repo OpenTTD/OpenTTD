@@ -1482,10 +1482,10 @@ struct NetworkLobbyWindow : public Window {
 				break;
 
 			case WID_NL_REFRESH:  // Refresh
-				NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // company info
-				NetworkUDPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // general data
 				/* Clear the information so removed companies don't remain */
 				for (auto &company : this->company_info) company = {};
+
+				NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 				break;
 		}
 	}
@@ -1553,8 +1553,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 
-	NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // company info
-	NetworkUDPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // general data
+	NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 
 	new NetworkLobbyWindow(&_network_lobby_window_desc, ngl);
 }
@@ -1568,6 +1567,16 @@ NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company)
 {
 	NetworkLobbyWindow *lobby = dynamic_cast<NetworkLobbyWindow*>(FindWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY));
 	return (lobby != nullptr && company < MAX_COMPANIES) ? &lobby->company_info[company] : nullptr;
+}
+
+/**
+ * Get the game information for the lobby.
+ * @return the game info struct to write the (downloaded) data to.
+ */
+NetworkGameList *GetLobbyGameInfo()
+{
+	NetworkLobbyWindow *lobby = dynamic_cast<NetworkLobbyWindow *>(FindWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY));
+	return lobby != nullptr ? lobby->server : nullptr;
 }
 
 /* The window below gives information about the connected clients
