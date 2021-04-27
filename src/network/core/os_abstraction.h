@@ -23,9 +23,17 @@
 #include <ws2tcpip.h>
 #include <windows.h>
 
-#define GET_LAST_ERROR() WSAGetLastError()
+/**
+ * Get the last error code from any of the OS's network functions.
+ * What it returns and when it is reset, is implementation defined.
+ * @return The last error code.
+ */
+#define NetworkGetLastError() WSAGetLastError()
 #undef EWOULDBLOCK
 #define EWOULDBLOCK WSAEWOULDBLOCK
+
+const char *NetworkGetErrorString(int error);
+
 /* Windows has some different names for some types */
 typedef unsigned long in_addr_t;
 
@@ -51,7 +59,8 @@ typedef unsigned long in_addr_t;
 #	define INVALID_SOCKET -1
 #	define ioctlsocket ioctl
 #	define closesocket close
-#	define GET_LAST_ERROR() (errno)
+#	define NetworkGetLastError() (errno)
+#	define NetworkGetErrorString(error) (strerror(error))
 /* Need this for FIONREAD on solaris */
 #	define BSD_COMP
 
@@ -101,7 +110,8 @@ typedef unsigned long in_addr_t;
 #	define INVALID_SOCKET -1
 #	define ioctlsocket ioctl
 #	define closesocket close
-#	define GET_LAST_ERROR() (sock_errno())
+#	define NetworkGetLastError() (sock_errno())
+#	define NetworkGetErrorString(error) (strerror(error))
 
 /* Includes needed for OS/2 systems */
 #	include <types.h>
@@ -172,6 +182,15 @@ static inline socklen_t FixAddrLenForEmscripten(struct sockaddr_storage &address
 	}
 }
 #endif
+
+/**
+ * Return the string representation of the last error from the OS's network functions.
+ * @return The error message, potentially an empty string but never \c nullptr.
+ */
+static inline const char *NetworkGetLastErrorString()
+{
+	return NetworkGetErrorString(NetworkGetLastError());
+}
 
 /**
  * Try to set the socket into non-blocking mode.
