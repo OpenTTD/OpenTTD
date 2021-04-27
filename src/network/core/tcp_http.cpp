@@ -232,8 +232,8 @@ int NetworkHTTPSocketHandler::Receive()
 		if (res == -1) {
 			int err = NetworkGetLastError();
 			if (err != EWOULDBLOCK) {
-				/* Something went wrong... (104 is connection reset by peer) */
-				if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
+				/* Something went wrong... (ECONNRESET is connection reset by peer) */
+				if (err != ECONNRESET) DEBUG(net, 0, "recv failed with error %s", NetworkGetErrorString(err));
 				return -1;
 			}
 			/* Connection would block, so stop for now */

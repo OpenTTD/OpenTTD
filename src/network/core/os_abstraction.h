@@ -31,6 +31,8 @@
 #define NetworkGetLastError() WSAGetLastError()
 #undef EWOULDBLOCK
 #define EWOULDBLOCK WSAEWOULDBLOCK
+#undef ECONNRESET
+#define ECONNRESET WSAECONNRESET
 
 const char *NetworkGetErrorString(int error);
 
