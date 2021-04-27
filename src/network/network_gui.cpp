@@ -648,7 +648,7 @@ public:
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
 			y += FONT_HEIGHT_NORMAL;
 
-			SetDParamStr(0, sel->connection_string.c_str());
+			SetDParamStr(0, sel->connection_string);
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_ADDRESS); // server address
 			y += FONT_HEIGHT_NORMAL;
 
