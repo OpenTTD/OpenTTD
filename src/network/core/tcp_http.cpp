@@ -230,7 +230,7 @@ int NetworkHTTPSocketHandler::Receive()
 	for (;;) {
 		ssize_t res = recv(this->sock, (char *)this->recv_buffer + this->recv_pos, lengthof(this->recv_buffer) - this->recv_pos, 0);
 		if (res == -1) {
-			int err = GET_LAST_ERROR();
+			int err = NetworkGetLastError();
 			if (err != EWOULDBLOCK) {
 				/* Something went wrong... (104 is connection reset by peer) */
 				if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
