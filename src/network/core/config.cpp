@@ -39,9 +39,19 @@ const char *NetworkCoordinatorConnectionString()
 }
 
 /**
+ * Get the connection string for the STUN server from the environment variable OTTD_STUN_CS,
+ * or when it has not been set a hard coded default DNS hostname of the production server.
+ * @return The STUN server's connection string.
+ */
+const char *NetworkStunConnectionString()
+{
+	return GetEnv("OTTD_STUN_CS", "stun.openttd.org");
+}
+
+/**
  * Get the connection string for the content server from the environment variable OTTD_CONTENT_SERVER_CS,
  * or when it has not been set a hard coded default DNS hostname of the production server.
- * @return The game coordinator's connection string.
+ * @return The content server's connection string.
  */
 const char *NetworkContentServerConnectionString()
 {
@@ -51,7 +61,7 @@ const char *NetworkContentServerConnectionString()
 /**
  * Get the connection string for the content mirror from the environment variable OTTD_CONTENT_MIRROR_CS,
  * or when it has not been set a hard coded default DNS hostname of the production server.
- * @return The game coordinator's connection string.
+ * @return The content mirror's connection string.
  */
 const char *NetworkContentMirrorConnectionString()
 {

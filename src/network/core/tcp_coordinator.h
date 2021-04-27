@@ -38,6 +38,9 @@ enum PacketCoordinatorType {
 	PACKET_COORDINATOR_GC_CONNECT_FAILED,     ///< Game Coordinator informs client/server it has given up on the connection attempt.
 	PACKET_COORDINATOR_CLIENT_CONNECTED,      ///< Client informs the Game Coordinator the connection with the server is established.
 	PACKET_COORDINATOR_GC_DIRECT_CONNECT,     ///< Game Coordinator tells client to directly connect to the hostname:port of the server.
+	PACKET_COORDINATOR_GC_STUN_REQUEST,       ///< Game Coordinator tells client/server to initiate a STUN request.
+	PACKET_COORDINATOR_SERCLI_STUN_RESULT,    ///< Client/server informs the Game Coordinator of the result of the STUN request.
+	PACKET_COORDINATOR_GC_STUN_CONNECT,       ///< Game Coordinator tells client/server to connect() reusing the STUN local address.
 	PACKET_COORDINATOR_END,                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -48,6 +51,7 @@ enum ConnectionType {
 	CONNECTION_TYPE_UNKNOWN,  ///< The Game Coordinator hasn't informed us yet what type of connection we have.
 	CONNECTION_TYPE_ISOLATED, ///< The Game Coordinator failed to find a way to connect to your server. Nobody will be able to join.
 	CONNECTION_TYPE_DIRECT,   ///< The Game Coordinator can directly connect to your server.
+	CONNECTION_TYPE_STUN,     ///< The Game Coordinator can connect to your server via a STUN request.
 };
 
 /**
@@ -214,6 +218,50 @@ protected:
 	 * @return True upon success, otherwise false.
 	 */
 	virtual bool Receive_GC_DIRECT_CONNECT(Packet *p);
+
+	/**
+	 * Game Coordinator requests the client/server to do a STUN request to the
+	 * STUN server. Important is to remember the local port these STUN requests
+	 * are sent from, as this will be needed for later conenctions too.
+	 * The client/server should do multiple STUN requests for every available
+	 * interface that connects to the Internet (e.g., once for IPv4 and once
+	 * for IPv6).
+	 *
+	 *  string  Token to track the current connect request.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_GC_STUN_REQUEST(Packet *p);
+
+	/**
+	 * Client/server informs the Game Coordinator the result of a STUN request.
+	 *
+	 *  uint8   Game Coordinator protocol version.
+	 *  string  Token to track the current connect request.
+	 *  uint8   Interface number, as given during STUN request.
+	 *  bool    Whether the STUN connection was successful.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_SERCLI_STUN_RESULT(Packet *p);
+
+	/**
+	 * Game Coordinator informs the client/server of its STUN peer (the host:ip
+	 * of the other side). It should start a connect() to this peer ASAP with
+	 * the local address as used with the STUN request.
+	 *
+	 *  string  Token to track the current connect request.
+	 *  uint8   Tracking number to track current connect request.
+	 *  uint8   Interface number, as given during STUN request.
+	 *  string  Host of the peer.
+	 *  uint16  Port of the peer.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_GC_STUN_CONNECT(Packet *p);
 
 	bool HandlePacket(Packet *p);
 public:
