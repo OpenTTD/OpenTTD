@@ -462,7 +462,7 @@ struct MusicTrackSelectionWindow : public Window {
 				SetDParam(0, STR_MUSIC_PLAYLIST_ALL + _settings_client.music.playlist);
 				break;
 			case WID_MTS_CAPTION:
-				SetDParamStr(0, BaseMusic::GetUsedSet()->name.c_str());
+				SetDParamStr(0, BaseMusic::GetUsedSet()->name);
 				break;
 		}
 	}

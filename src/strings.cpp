@@ -297,6 +297,17 @@ void SetDParamStr(uint n, const char *str)
 }
 
 /**
+ * This function is used to "bind" the C string of a std::string to a OpenTTD dparam slot.
+ * The caller has to ensure that the std::string reference remains valid while the string is shown.
+ * @param n slot of the string
+ * @param str string to bind
+ */
+void SetDParamStr(uint n, const std::string &str)
+{
+	SetDParamStr(n, str.c_str());
+}
+
+/**
  * Shift the string parameters in the global string parameter array by \a amount positions, making room at the beginning.
  * @param amount Number of positions to shift.
  */
