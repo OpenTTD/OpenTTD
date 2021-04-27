@@ -64,7 +64,7 @@ public:
 					DEBUG(net, 1, "[%s] Banned ip tried to join (%s), refused", Tsocket::GetName(), entry.c_str());
 
 					if (p.TransferOut<int>(send, s, 0) < 0) {
-						DEBUG(net, 0, "send failed with error %d", GET_LAST_ERROR());
+						DEBUG(net, 0, "send failed with error %d", NetworkGetLastError());
 					}
 					closesocket(s);
 					break;
@@ -81,7 +81,7 @@ public:
 				p.PrepareToSend();
 
 				if (p.TransferOut<int>(send, s, 0) < 0) {
-					DEBUG(net, 0, "send failed with error %d", GET_LAST_ERROR());
+					DEBUG(net, 0, "send failed with error %d", NetworkGetLastError());
 				}
 				closesocket(s);
 
