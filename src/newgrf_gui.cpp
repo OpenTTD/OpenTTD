@@ -47,8 +47,8 @@ void ShowNewGRFError()
 	if (_game_mode == GM_MENU) return;
 
 	for (const GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
-		/* We only want to show fatal errors */
-		if (c->error == nullptr || c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL) continue;
+		/* Only show Fatal and Error level messages */
+		if (c->error == nullptr || (c->error->severity != STR_NEWGRF_ERROR_MSG_FATAL && c->error->severity != STR_NEWGRF_ERROR_MSG_ERROR)) continue;
 
 		SetDParam   (0, c->error->message != STR_NULL ? c->error->message : STR_JUST_RAW_STRING);
 		SetDParamStr(1, c->error->custom_message.c_str());
@@ -57,7 +57,11 @@ void ShowNewGRFError()
 		for (uint i = 0; i < lengthof(c->error->param_value); i++) {
 			SetDParam(4 + i, c->error->param_value[i]);
 		}
-		ShowErrorMessage(STR_NEWGRF_ERROR_FATAL_POPUP, INVALID_STRING_ID, WL_CRITICAL);
+		if (c->error->severity == STR_NEWGRF_ERROR_MSG_FATAL) {
+			ShowErrorMessage(STR_NEWGRF_ERROR_FATAL_POPUP, INVALID_STRING_ID, WL_CRITICAL);
+		} else {
+			ShowErrorMessage(STR_NEWGRF_ERROR_POPUP, INVALID_STRING_ID, WL_ERROR);
+		}
 		break;
 	}
 }
