@@ -103,7 +103,7 @@ bool IsNetworkCompatibleVersion(const char *other)
 
 	const char *hash1 = ExtractNetworkRevisionHash(GetNetworkRevisionString());
 	const char *hash2 = ExtractNetworkRevisionHash(other);
-	return hash1 && hash2 && (strncmp(hash1, hash2, GITHASH_SUFFIX_LEN) == 0);
+	return hash1 != nullptr && hash2 != nullptr && strncmp(hash1, hash2, GITHASH_SUFFIX_LEN) == 0;
 }
 
 /**
