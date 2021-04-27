@@ -10,14 +10,12 @@
  */
 
 #include "../../stdafx.h"
-#ifndef OPENTTD_MSU
 #include "../../textfile_gui.h"
 #include "../../newgrf_config.h"
 #include "../../base_media_base.h"
 #include "../../ai/ai.hpp"
 #include "../../game/game.hpp"
 #include "../../fios.h"
-#endif /* OPENTTD_MSU */
 #include "tcp_content.h"
 
 #include "../../safeguards.h"
@@ -92,7 +90,6 @@ bool ContentInfo::IsValid() const
 	return this->state < ContentInfo::INVALID && this->type >= CONTENT_TYPE_BEGIN && this->type < CONTENT_TYPE_END;
 }
 
-#ifndef OPENTTD_MSU
 /**
  * Search a textfile file next to this file in the content list.
  * @param type The type of the textfile to search for.
@@ -139,7 +136,6 @@ const char *ContentInfo::GetTextfile(TextfileType type) const
 	if (tmp == nullptr) return nullptr;
 	return ::GetTextfile(type, GetContentInfoSubDir(this->type), tmp);
 }
-#endif /* OPENTTD_MSU */
 
 void NetworkContentSocketHandler::Close()
 {
@@ -236,7 +232,6 @@ bool NetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p) { return this->
 bool NetworkContentSocketHandler::Receive_CLIENT_CONTENT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_CLIENT_CONTENT); }
 bool NetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CONTENT_SERVER_CONTENT); }
 
-#ifndef OPENTTD_MSU
 /**
  * Helper to get the subdirectory a #ContentInfo is located in.
  * @param type The type of content.
@@ -261,4 +256,3 @@ Subdirectory GetContentInfoSubDir(ContentType type)
 		case CONTENT_TYPE_HEIGHTMAP:    return HEIGHTMAP_DIR;
 	}
 }
-#endif /* OPENTTD_MSU */

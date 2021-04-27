@@ -129,8 +129,6 @@ public:
 	bool ReceivePackets();
 };
 
-#ifndef OPENTTD_MSU
 Subdirectory GetContentInfoSubDir(ContentType type);
-#endif /* OPENTTD_MSU */
 
 #endif /* NETWORK_CORE_TCP_CONTENT_H */
