@@ -1762,7 +1762,7 @@ void NetworkServerSetCompanyPassword(CompanyID company_id, const char *password,
 	if (!Company::IsValidHumanID(company_id)) return;
 
 	if (!already_hashed) {
-		password = GenerateCompanyPasswordHash(password, _settings_client.network.network_id, _settings_game.game_creation.generation_seed);
+		password = GenerateCompanyPasswordHash(password, _settings_client.network.network_id.c_str(), _settings_game.game_creation.generation_seed);
 	}
 
 	strecpy(_network_company_states[company_id].password, password, lastof(_network_company_states[company_id].password));

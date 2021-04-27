@@ -990,7 +990,7 @@ struct NetworkStartServerWindow : public Window {
 		this->InitNested(WN_NETWORK_WINDOW_START);
 
 		this->querystrings[WID_NSS_GAMENAME] = &this->name_editbox;
-		this->name_editbox.text.Assign(_settings_client.network.server_name);
+		this->name_editbox.text.Assign(_settings_client.network.server_name.c_str());
 
 		this->SetFocusedWidget(WID_NSS_GAMENAME);
 	}
@@ -1136,7 +1136,7 @@ struct NetworkStartServerWindow : public Window {
 	void OnEditboxChanged(int wid) override
 	{
 		if (wid == WID_NSS_GAMENAME) {
-			strecpy(_settings_client.network.server_name, this->name_editbox.text.buf, lastof(_settings_client.network.server_name));
+			_settings_client.network.server_name = this->name_editbox.text.buf;
 		}
 	}
 
