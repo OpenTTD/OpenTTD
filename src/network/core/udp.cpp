@@ -94,7 +94,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 			/* Enable broadcast */
 			unsigned long val = 1;
 			if (setsockopt(s.second, SOL_SOCKET, SO_BROADCAST, (char *) &val, sizeof(val)) < 0) {
-				DEBUG(net, 1, "[udp] setting broadcast failed with: %i", NetworkGetLastError());
+				DEBUG(net, 1, "[udp] setting broadcast failed with: %s", NetworkGetLastErrorString());
 			}
 		}
 
@@ -103,7 +103,7 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 		DEBUG(net, 7, "[udp] sendto(%s)", send.GetAddressAsString().c_str());
 
 		/* Check for any errors, but ignore it otherwise */
-		if (res == -1) DEBUG(net, 1, "[udp] sendto(%s) failed with: %i", send.GetAddressAsString().c_str(), NetworkGetLastError());
+		if (res == -1) DEBUG(net, 1, "[udp] sendto(%s) failed with: %s", send.GetAddressAsString().c_str(), NetworkGetLastErrorString());
 
 		if (!all) break;
 	}
