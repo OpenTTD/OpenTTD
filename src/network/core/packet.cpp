@@ -178,12 +178,11 @@ void Packet::Send_uint64(uint64 data)
  * the string + '\0'. No size-byte or something.
  * @param data The string to send
  */
-void Packet::Send_string(const char *data)
+void Packet::Send_string(const std::string_view data)
 {
-	assert(data != nullptr);
-	/* Length of the string + 1 for the '\0' termination. */
-	assert(this->CanWriteToPacket(strlen(data) + 1));
-	while (this->buffer.emplace_back(*data++) != '\0') {}
+	assert(this->CanWriteToPacket(data.size() + 1));
+	this->buffer.insert(this->buffer.end(), data.begin(), data.end());
+	this->buffer.emplace_back('\0');
 }
 
 /**

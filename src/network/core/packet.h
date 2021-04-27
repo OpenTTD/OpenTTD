@@ -71,7 +71,7 @@ public:
 	void   Send_uint16(uint16 data);
 	void   Send_uint32(uint32 data);
 	void   Send_uint64(uint64 data);
-	void   Send_string(const char *data);
+	void   Send_string(const std::string_view data);
 	size_t Send_bytes (const byte *begin, const byte *end);
 
 	/* Reading/receiving of packets */
