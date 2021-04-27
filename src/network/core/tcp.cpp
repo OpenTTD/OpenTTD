@@ -90,7 +90,7 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 			if (err != EWOULDBLOCK) {
 				/* Something went wrong.. close client! */
 				if (!closing_down) {
-					DEBUG(net, 0, "send failed with error %d", err);
+					DEBUG(net, 0, "send failed with error %s", NetworkGetErrorString(err));
 					this->CloseConnection();
 				}
 				return SPS_CLOSED;
@@ -138,8 +138,8 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 			if (res == -1) {
 				int err = NetworkGetLastError();
 				if (err != EWOULDBLOCK) {
-					/* Something went wrong... (104 is connection reset by peer) */
-					if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
+					/* Something went wrong... (ECONNRESET is connection reset by peer) */
+					if (err != ECONNRESET) DEBUG(net, 0, "recv failed with error %s", NetworkGetErrorString(err));
 					this->CloseConnection();
 					return nullptr;
 				}
@@ -166,8 +166,8 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 		if (res == -1) {
 			int err = NetworkGetLastError();
 			if (err != EWOULDBLOCK) {
-				/* Something went wrong... (104 is connection reset by peer) */
-				if (err != 104) DEBUG(net, 0, "recv failed with error %d", err);
+				/* Something went wrong... (ECONNRESET is connection reset by peer) */
+				if (err != ECONNRESET) DEBUG(net, 0, "recv failed with error %s", NetworkGetErrorString(err));
 				this->CloseConnection();
 				return nullptr;
 			}
