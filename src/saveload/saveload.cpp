@@ -215,7 +215,7 @@ struct SaveLoadParams {
 
 static SaveLoadParams _sl; ///< Parameters used for/at saveload.
 
-static const std::vector<ChunkHandlerRef> &ChunkHandlers()
+static const std::vector<ChunkHandlerRef>& ChunkHandlers()
 {
 	/* These define the chunks */
 	extern const ChunkHandlerTable _gamelog_chunk_handlers;
@@ -252,6 +252,7 @@ static const std::vector<ChunkHandlerRef> &ChunkHandlers()
 	extern const ChunkHandlerTable _airport_chunk_handlers;
 	extern const ChunkHandlerTable _object_chunk_handlers;
 	extern const ChunkHandlerTable _persistent_storage_chunk_handlers;
+	extern const ChunkHandlerTable _bridge_chunk_handlers;
 
 	/** List of all chunks in a savegame. */
 	static const ChunkHandlerTable _chunk_handler_tables[] = {
@@ -289,13 +290,14 @@ static const std::vector<ChunkHandlerRef> &ChunkHandlers()
 		_airport_chunk_handlers,
 		_object_chunk_handlers,
 		_persistent_storage_chunk_handlers,
+		_bridge_chunk_handlers,
 	};
 
 	static std::vector<ChunkHandlerRef> _chunk_handlers;
 
 	if (_chunk_handlers.empty()) {
-		for (auto &chunk_handler_table : _chunk_handler_tables) {
-			for (auto &chunk_handler : chunk_handler_table) {
+		for (auto& chunk_handler_table : _chunk_handler_tables) {
+			for (auto& chunk_handler : chunk_handler_table) {
 				_chunk_handlers.push_back(chunk_handler);
 			}
 		}

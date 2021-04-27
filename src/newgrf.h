@@ -120,6 +120,7 @@ struct GRFFile : ZeroedMemoryAllocator {
 	std::vector<std::unique_ptr<struct AirportSpec>> airportspec;
 	std::vector<std::unique_ptr<struct AirportTileSpec>> airtspec;
 	std::vector<std::unique_ptr<struct RoadStopSpec>> roadstops;
+	std::vector<std::unique_ptr<struct BridgeSpec>> bridgespec;
 
 	uint32 param[0x80];
 	uint param_end;  ///< one more than the highest set parameter

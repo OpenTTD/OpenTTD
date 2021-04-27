@@ -12,6 +12,7 @@
 #include "core/alloc_func.hpp"
 #include "water_map.h"
 #include "error_func.h"
+#include "bridge_map.h"
 #include "string_func.h"
 
 #include "safeguards.h"
@@ -59,6 +60,9 @@ extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 
 	free(Tile::base_tiles);
 	free(Tile::extended_tiles);
+
+	_bridge_index[0].clear();
+	_bridge_index[1].clear();
 
 	Tile::base_tiles = CallocT<Tile::TileBase>(Map::size);
 	Tile::extended_tiles = CallocT<Tile::TileExtended>(Map::size);
