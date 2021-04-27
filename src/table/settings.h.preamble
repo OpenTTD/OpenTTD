@@ -129,6 +129,9 @@ static size_t ConvertLandscape(const char *value);
 #define SDTC_STR(var, type, flags, guiflags, def, str, strhelp, strval, proc, from, to, cat, extra, startup)\
 	SDTG_GENERAL(#var, SDT_STRING, SL_STR, type, flags, guiflags, _settings_client.var, sizeof(_settings_client.var), def, 0, 0, 0, nullptr, str, strhelp, strval, proc, from, to, cat, extra, startup)
 
+#define SDTC_SSTR(var, type, flags, guiflags, def, max_length, str, strhelp, strval, proc, from, to, cat, extra, startup)\
+	SDTG_GENERAL(#var, SDT_STDSTRING, SL_STDSTR, type, flags, guiflags, _settings_client.var, sizeof(_settings_client.var), def, 0, max_length, 0, nullptr, str, strhelp, strval, proc, from, to, cat, extra, startup)
+
 #define SDTC_OMANY(var, type, flags, guiflags, def, max, full, str, strhelp, strval, proc, from, to, cat, extra, startup)\
 	SDTG_GENERAL(#var, SDT_ONEOFMANY, SL_VAR, type, flags, guiflags, _settings_client.var, 1, def, 0, max, 0, full, str, strhelp, strval, proc, from, to, cat, extra, startup)
 

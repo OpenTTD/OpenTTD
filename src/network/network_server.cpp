@@ -859,7 +859,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED
 	NetworkClientInfo *ci = this->GetInfo();
 
 	/* We now want a password from the client else we do not allow him in! */
-	if (!StrEmpty(_settings_client.network.server_password)) {
+	if (!_settings_client.network.server_password.empty()) {
 		return this->SendNeedGamePassword();
 	}
 
@@ -957,8 +957,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_PASSWORD(P
 	p->Recv_string(password, sizeof(password));
 
 	/* Check game password. Allow joining if we cleared the password meanwhile */
-	if (!StrEmpty(_settings_client.network.server_password) &&
-			strcmp(password, _settings_client.network.server_password) != 0) {
+	if (!_settings_client.network.server_password.empty() &&
+			_settings_client.network.server_password.compare(password) != 0) {
 		/* Password is invalid */
 		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
 	}
@@ -1439,12 +1439,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet *p)
 	char pass[NETWORK_PASSWORD_LENGTH];
 	char command[NETWORK_RCONCOMMAND_LENGTH];
 
-	if (StrEmpty(_settings_client.network.rcon_password)) return NETWORK_RECV_STATUS_OKAY;
+	if (_settings_client.network.rcon_password.empty()) return NETWORK_RECV_STATUS_OKAY;
 
 	p->Recv_string(pass, sizeof(pass));
 	p->Recv_string(command, sizeof(command));
 
-	if (strcmp(pass, _settings_client.network.rcon_password) != 0) {
+	if (_settings_client.network.rcon_password.compare(pass) != 0) {
 		DEBUG(net, 1, "[rcon] Wrong password from client-id %d", this->client_id);
 		return NETWORK_RECV_STATUS_OKAY;
 	}

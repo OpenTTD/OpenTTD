@@ -127,7 +127,7 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
  */
 void FillStaticNetworkServerGameInfo()
 {
-	_network_game_info.use_password   = !StrEmpty(_settings_client.network.server_password);
+	_network_game_info.use_password   = !_settings_client.network.server_password.empty();
 	_network_game_info.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 	_network_game_info.clients_max    = _settings_client.network.max_clients;
 	_network_game_info.companies_max  = _settings_client.network.max_companies;
