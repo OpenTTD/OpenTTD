@@ -506,7 +506,12 @@ static void Write_ValidateString(void *ptr, const SaveLoad *sld, const char *p)
 	switch (GetVarMemType(sld->conv)) {
 		case SLE_VAR_STRB:
 		case SLE_VAR_STRBQ:
-			if (p != nullptr) strecpy((char*)ptr, (const char*)p, (char*)ptr + sld->length - 1);
+			if (p != nullptr) {
+				char *begin = (char*)ptr;
+				char *end = begin + sld->length - 1;
+				strecpy(begin, p, end);
+				str_validate(begin, end, SVS_NONE);
+			}
 			break;
 
 		case SLE_VAR_STR:
