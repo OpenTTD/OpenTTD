@@ -274,7 +274,7 @@ template <class Tbase_set>
 	return p;
 }
 
-#include "network/network_content.h"
+#include "network/core/tcp_content_type.h"
 
 template <class Tbase_set> const char *TryGetBaseSetFile(const ContentInfo *ci, bool md5sum, const Tbase_set *s)
 {
