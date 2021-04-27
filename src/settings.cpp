@@ -563,8 +563,6 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 						*(char**)ptr = p == nullptr ? nullptr : stredup((const char*)p);
 						break;
 
-					case SLE_VAR_CHAR: if (p != nullptr) *(char *)ptr = *(const char *)p; break;
-
 					default: NOT_REACHED();
 				}
 				break;
@@ -716,7 +714,6 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 						}
 						break;
 
-					case SLE_VAR_CHAR: buf[0] = *(char*)ptr; buf[1] = '\0'; break;
 					default: NOT_REACHED();
 				}
 				break;
