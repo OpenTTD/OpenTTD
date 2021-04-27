@@ -833,8 +833,8 @@ void NetworkClientJoinGame()
 
 static void NetworkInitGameInfo()
 {
-	if (StrEmpty(_settings_client.network.server_name)) {
-		strecpy(_settings_client.network.server_name, "Unnamed Server", lastof(_settings_client.network.server_name));
+	if (_settings_client.network.server_name.empty()) {
+		_settings_client.network.server_name = "Unnamed Server";
 	}
 
 	FillStaticNetworkServerGameInfo();
@@ -863,10 +863,10 @@ static void CheckClientAndServerName()
 		strecpy(_settings_client.network.client_name, fallback_client_name, lastof(_settings_client.network.client_name));
 	}
 
-	static const char *fallback_server_name = "Unnamed Server";
-	if (StrEmpty(_settings_client.network.server_name) || strcmp(_settings_client.network.server_name, fallback_server_name) == 0) {
-		DEBUG(net, 1, "No \"server_name\" has been set, using \"%s\" instead. Please set this now using the \"server_name <new name>\" command", fallback_server_name);
-		strecpy(_settings_client.network.server_name, fallback_server_name, lastof(_settings_client.network.server_name));
+	static const std::string fallback_server_name = "Unnamed Server";
+	if (_settings_client.network.server_name.empty() || _settings_client.network.server_name.compare(fallback_server_name) == 0) {
+		DEBUG(net, 1, "No \"server_name\" has been set, using \"%s\" instead. Please set this now using the \"server_name <new name>\" command", fallback_server_name.c_str());
+		_settings_client.network.server_name = fallback_server_name;
 	}
 }
 
@@ -1201,7 +1201,7 @@ static void NetworkGenerateServerId()
 	}
 
 	/* _settings_client.network.network_id is our id */
-	seprintf(_settings_client.network.network_id, lastof(_settings_client.network.network_id), "%s", hex_output);
+	_settings_client.network.network_id = hex_output;
 }
 
 class TCPNetworkDebugConnecter : TCPConnecter {
@@ -1241,7 +1241,7 @@ void NetworkStartUp()
 	_network_need_advertise = true;
 
 	/* Generate an server id when there is none yet */
-	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateServerId();
+	if (_settings_client.network.network_id.empty()) NetworkGenerateServerId();
 
 	_network_game_info = {};
 
