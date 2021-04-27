@@ -2676,7 +2676,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_SEPARATOR:
 				SetDParamStr(0, _custom_currency.separator);
 				str = STR_JUST_RAW_STRING;
-				len = 1;
+				len = sizeof(_custom_currency.separator) - 1; // Number of characters excluding '\0' termination
 				line = WID_CC_SEPARATOR;
 				break;
 
@@ -2684,7 +2684,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_PREFIX:
 				SetDParamStr(0, _custom_currency.prefix);
 				str = STR_JUST_RAW_STRING;
-				len = 12;
+				len = sizeof(_custom_currency.prefix) - 1; // Number of characters excluding '\0' termination
 				line = WID_CC_PREFIX;
 				break;
 
@@ -2692,7 +2692,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_SUFFIX:
 				SetDParamStr(0, _custom_currency.suffix);
 				str = STR_JUST_RAW_STRING;
-				len = 12;
+				len = sizeof(_custom_currency.suffix) - 1; // Number of characters excluding '\0' termination
 				line = WID_CC_SUFFIX;
 				break;
 
