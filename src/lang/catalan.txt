@@ -954,7 +954,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit (MYR)
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conducció per l'esquerra
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conducció per la dreta
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Estil dels noms de poblacions
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Estil dels noms de les poblacions:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selecciona l'estil dels noms de poblacions
 
 ############ start of townname region
@@ -994,6 +994,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Cada 12 mesos
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Idioma
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Selecciona l'idioma de la interfície
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}{NBSP}% completed)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Pantalla completa
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marqueu la casella per mostrar l'OpenTTD a pantalla completa.
@@ -1991,6 +1992,8 @@ STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Arracades:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Canvia la corbata o les arracades
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privada
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Pública
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijugador
@@ -2054,6 +2057,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}El nom d
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Posa una contrasenya
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protegeix la teva partida amb una contrasenya si no vols que sigui accessible a desconeguts
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilitat
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Permet establir si altres persones poden veure el vostre servidor a la llista pública.
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} client{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Màxim nombre de clients:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Tria el nombre màxim de clients. No és necessari omplir tots els llocs.
@@ -2117,11 +2122,44 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companyia protegida: escriviu-ne la contrasenya
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Llista de clients
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jugadors en línia
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multijugador
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nom
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nom del servidor on esteu jugant
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Editeu el nom del vostre servidor.
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nom del servidor
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilitat
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Permet establir si altres persones poden veure el vostre servidor a la llista pública.
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Jugador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nom
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}El vostre nom de jugador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Editeu el vostre nom de jugador.
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :El vostre nom de jugador
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Accions d'administració que s'han de realitzar per a aquest client.
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Accions d'administració que s'han de realitzar per a aquesta companyia.
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Uniu-vos a aquesta companyia.
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Envia un missatge a aquest jugador.
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Envia un missatge a tots els jugadors de la companyia.
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Envieu un missatge a tots els espectadors.
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Espectadors
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Companyia nova)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una companyia nova i uniu-vos.
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Aquest ets tu.
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Aquest és l'hoste de la partida.
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Treu
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Expulsa
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Esborra
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Desbloca la contrasenya
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Acció de l'administrador
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Esteu segur que voleu treure el jugador «{STRING}»?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Esteu segur que voleu expulsar el jugador «{STRING}»?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Esteu segur que voleu esborrar la companyia «{COMPANY}»?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Esteu segur que voleu restablir la contrasenya de la companyia «{COMPANY}»?
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Client
@@ -2166,6 +2204,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}No s'ha 
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}No s'ha pogut connectar
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}La connexió #{NUM} ha esgotat el temps d'espera
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}S'ha obtingut un error de protocol i s'ha tancat la connexió
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}No s'ha escollit un nom per al vostre jugador. El nom es pot establir a la part superior de la finestra de mode multijugador.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La revisió d'aquest client no concorda amb la revisió del servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contrasenya incorrecta
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}El servidor està ple
@@ -2178,6 +2217,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Has tard
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}El teu ordinador és massa lent per mantenir-se connectat al servidor
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}El teu ordinador ha tardat massa a descarregar el mapa
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}El teu ordinador ha tardat massa a unir-se al servidor
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}El vostre nom de jugador no és vàlid.
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error general
@@ -2200,6 +2240,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :no s'ha rebut l
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :temps d'espera general esgotat
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :la descàrrega del mapa ha tardat massa
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :el processat del mapa ha tardat massa
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nom de client no vàlid
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Possible pèrdua de connexió

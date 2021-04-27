@@ -1114,6 +1114,7 @@ STR_TERRAIN_TYPE_HILLY                                          :丘陵地
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :山岳地
 STR_TERRAIN_TYPE_ALPINIST                                       :山脈地帯
 STR_TERRAIN_TYPE_CUSTOM                                         :カスタム高度
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :カスタム高度 ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :寛大
 STR_CITY_APPROVAL_TOLERANT                                      :寛容
@@ -1197,6 +1198,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :地域の再編
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :会社が街域で引き起こした騒音(主に空港)や環境破壊がどの程度、街での評価や同じ地域での更なる建設行為に影響するかを設定します
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :マップ高さ限界: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :（自動）
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}マップの最高高さをこの値には設定出来ません。少なくとも1箇所以上この値より高い山があります。
 STR_CONFIG_SETTING_AUTOSLOPE                                    :建物/路線の自動地形追従: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :撤去を行わないで建物や路線がある土地の地形を変更することを可能にします。建物/路線は変更された地形に自動で追従します。
@@ -1340,6 +1342,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油精製所
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :石油精製所はマップの外周付近にのみ建設されます。つまり、外周が海のマップでは海岸沿いに建設されるということです
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪線の位置: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :亜寒帯気候での雪線の高さを設定します。雪は産業と街の成長に影響があります
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :亜寒帯の風景のおおよその雪の量を制御します。雪はまた、産業の生成と町の成長要件にも影響を及ぼします。マップの生成中にのみ使用されます。海抜のすぐ上の土地は常に雪がありません
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :地形の起伏: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesisのみ) 地形の起伏度を設定します。なだらかな地形では丘陵の数は減り、裾野が長くなります。起伏が多い地形では丘陵が多くなりますが、似たり寄ったりな地形の繰り返しに見えることがあります
@@ -1450,6 +1453,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :建設ツール
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :橋やトンネルなどを建設した後もツールバーを開いたままにします
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :財政ウィンドウのグループ分け: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :財政ウィンドウのレイアウトを収入部門・支出部門でグループ分けするかどうかを設定します
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :早送りが有効になっている場合のゲームの進行速度を制限します。0 =制限なし（コンピューターが許す限り高速）。100％未満の値は、ゲームの速度を低下させます。上限はコンピュータの仕様によって異なり、ゲームによって異なる場合があります。
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}％通常のゲーム速度
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :制限なし（コンピューターが許す限り高速）
 
@@ -1500,6 +1504,7 @@ STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :マルチプレ
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :マルチプレイヤーゲームでもAIのライバル企業が登場するかを設定します
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :命令コード処理上限: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :AIやゲームスクリプトが一つの「詰め込み指令」を処理する際に、一度に演算できる命令コード数を設定します。一般に値を小さくした場合、ゲームへの負荷が軽減されます
+STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY                            :スクリプトあたりの最大メモリ使用量：{STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_MEMORY_VALUE                      :{COMMA} MiB
 
 STR_CONFIG_SETTING_SERVINT_ISPERCENT                            :最大信頼度を点検要件化: {STRING}
@@ -1631,6 +1636,7 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :最大ズーム
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :ズームインの最大倍率を設定します。倍率を高くすればするほどメモリー使用量が増えます
 STR_CONFIG_SETTING_ZOOM_MAX                                     :最大ズームアウトレベル:{STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :ズームアウトの最大倍率を設定します。ズームアウトの倍率が大きいと、処理遅延が発生する可能性があります
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :使用する最高解像度のスプライト：{STRING}
 STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :スプライトに使用する最大解像度を制限します。 スプライトの解像度を制限すると、使用可能な場合でも高解像度のグラフィックを使用できなくなります。 これにより、高解像度のグラフィックを使用する場合と使用しない場合のGRFファイルを組み合わせて使用する場合に、ゲームの外観を統一することができます。
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4倍
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2倍
@@ -2002,6 +2008,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}ゲー�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}パスワードを設定
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ゲームをパスワードで保護することができます。一般から公然とアクセスされたくない場合等に設定します
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}可視性
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}接続者数: {NUM}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}最大接続数:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}接続できるクライアントの最大数を指定します。必ずしも全スロットを埋める必要はありません
@@ -2068,8 +2075,13 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}この�
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :クライアントリスト
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}他の人があなたのサーバーを公開リストで見ることができるかどうか
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}すべての観客にメッセージを送る
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}ゲームのホストです
 
 
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}プレーヤー「{STRING}」を追放してもよろしいですか？
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}会社 '{COMPANY}'のパスワードをリセットしてもよろしいですか？
 
 STR_NETWORK_SERVER                                              :サーバー
 STR_NETWORK_CLIENT                                              :クライアント
@@ -2119,6 +2131,7 @@ STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}不正�
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}サーバが満員です
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}サーバー側であなたの参加が禁止されています
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}ゲームから追放されました
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}理由：{STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}このサーバーではチート行為は許可されていません
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}サーバーに送ったコマンド数が過剰です
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}パスワード入力時間切れです
@@ -2256,6 +2269,7 @@ STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}いい�
 
 STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}ダウンロードに失敗しました
 STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}グラフィックのダウンロードに失敗しました。{}手動でダウンロードしてください。
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}OpenTTDをやめる
 
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}透過表示設定
@@ -2404,6 +2418,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}道路�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}軌道の建設/撤去を切り替えます
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}道路の種類を変更/アップグレードします.Shiftは、コスト見積もりの作成/表示を切り替えます
 
+STR_ROAD_NAME_ROAD                                              :道路
 STR_ROAD_NAME_TRAM                                              :トラムウェイ
 
 # Road depot construction window
@@ -2492,6 +2507,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}ラン�
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}ランダムな樹類で植林します。Shift+クリックで費用を見積もります
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}ランダムに広域植林
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}地表全体にランダムに植林します
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}風景の上をドラッグして、単一の木を植えます。
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}グローブ
 STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}風景をドラッグして小さな森を植えます
 STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}風景の上をドラッグして、大きな森を植えます。
@@ -2710,6 +2726,7 @@ STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMA
 STR_FRAMERATE_FPS_WARN                                          :{YELLOW} {DECIMAL}フレーム/秒
 STR_FRAMERATE_FPS_BAD                                           :{RED} {DECIMAL}FPS
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
+STR_FRAMERATE_BYTES_WARN                                        :{YELLOW} {BYTES}
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}ゲームループの合計：
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}貨物の取り扱い：
@@ -2724,6 +2741,8 @@ STR_FRAMERATE_SOUND                                             :{BLACK}サウ�
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :ゲームループ
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :貨物の取り扱い
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :切符
+STR_FRAMETIME_CAPTION_GL_SHIPS                                  :船のティック
+STR_FRAMETIME_CAPTION_GL_AIRCRAFT                               :航空機ティック
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :ワールドティック
 STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :リンクグラフの遅延
 STR_FRAMETIME_CAPTION_DRAWING                                   :グラフィックレンダリング
@@ -2804,6 +2823,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}ハイ�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}サイズ:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}ターゲットの最高の高さ
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}積雪量(%)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}砂漠領域(%)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}開始年の変更
@@ -2880,6 +2900,7 @@ STR_NEWGRF_SETTINGS_MD5SUM                                      :{BLACK}MD5sum: 
 STR_NEWGRF_SETTINGS_PALETTE                                     :{BLACK}パレット: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :デフォルト（D）
 STR_NEWGRF_SETTINGS_PALETTE_DEFAULT_32BPP                       :デフォルト（D）/ 32 bpp
+STR_NEWGRF_SETTINGS_PALETTE_LEGACY                              :レガシー（W）
 STR_NEWGRF_SETTINGS_PALETTE_LEGACY_32BPP                        :レガシー（W）/ 32 bpp
 STR_NEWGRF_SETTINGS_PARAMETER                                   :{BLACK}設定: {SILVER}{STRING}
 STR_NEWGRF_SETTINGS_PARAMETER_NONE                              :なし
@@ -3334,6 +3355,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_L
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}産業の名前です - 名前をクリックするとこの産業拠点の場所にメイン画面を移動します。Ctrl+クリックでこの産業拠点の場所を新たなビューポートに表示します
 STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}受け取った貨物: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}生産された貨物：{SILVER} {STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :すべての貨物タイプ
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :なし
 
@@ -3653,6 +3675,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}機関�
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}メイン画面を列車に中心します。ダブルクリックで列車をメイン画面で追従します。Ctrl+クリックで列車の場所で新しいビューポートでを開きます。
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}航空機の位置に関する中央のメインビュー。ダブルクリックすると、メインビューで航空機が表示されます。Ctrl +クリックすると、航空機の位置に新しいビューポートが開きます
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}列車を列車庫へ回送します。Ctrl+クリックすると点検後、再出庫します
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}車両を車庫へ回送します。Ctrl+クリックすると点検後、再出庫します
@@ -4094,9 +4117,11 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}選択�
 STR_AI_LIST_CANCEL                                              :{BLACK}キャンセル
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}スクリプトを変更しません
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}スクリーンショットを撮る
 STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}スクリーンショットを完全に拡大
 STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}地図全体のスクリーンショット
 STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}ハイトマップスクリーンショット
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}ミニマップのスクリーンショット
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} パラメータ
@@ -4237,6 +4262,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}全額�
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}{CURRENCY_LONG}が必要です
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}借入金を返済できません
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}借入金を送金することはできません
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}この会社にお金を渡すことはできません...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}会社を買収できません
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}会社の本社ビルを建設できません
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}この会社の株を25%購入できません
