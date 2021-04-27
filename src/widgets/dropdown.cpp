@@ -65,7 +65,7 @@ StringID DropDownListParamStringItem::String() const
 
 StringID DropDownListCharStringItem::String() const
 {
-	SetDParamStr(0, this->raw_string.c_str());
+	SetDParamStr(0, this->raw_string);
 	return this->string;
 }
 

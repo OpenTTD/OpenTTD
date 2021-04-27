@@ -537,7 +537,7 @@ public:
 							const CompanyProperties &c = *pair.second;
 							if (!c.name.empty()) {
 								SetDParam(1, STR_JUST_RAW_STRING);
-								SetDParamStr(2, c.name.c_str());
+								SetDParamStr(2, c.name);
 							} else {
 								SetDParam(1, c.name_1);
 								SetDParam(2, c.name_2);

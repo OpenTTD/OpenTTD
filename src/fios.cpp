@@ -392,7 +392,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 				fios->mtime = 0;
 				strecpy(fios->name, d_name, lastof(fios->name));
 				std::string dirname = std::string(d_name) + PATHSEP;
-				SetDParamStr(0, dirname.c_str());
+				SetDParamStr(0, dirname);
 				GetString(fios->title, STR_SAVELOAD_DIRECTORY, lastof(fios->title));
 				str_validate(fios->title, lastof(fios->title));
 			}

@@ -972,7 +972,7 @@ public:
 		}
 
 		if (!i->text.empty()) {
-			SetDParamStr(0, i->text.c_str());
+			SetDParamStr(0, i->text);
 			y += WD_PAR_VSEP_WIDE;
 			y = DrawStringMultiLine(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, y, UINT16_MAX, STR_JUST_RAW_STRING, TC_BLACK);
 		}
