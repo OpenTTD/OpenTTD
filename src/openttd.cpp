@@ -874,8 +874,8 @@ static void MakeNewGameDone()
 
 	/* We are the server, we start a new company (not dedicated),
 	 * so set the default password *if* needed. */
-	if (_network_server && !StrEmpty(_settings_client.network.default_company_pass)) {
-		NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass);
+	if (_network_server && !_settings_client.network.default_company_pass.empty()) {
+		NetworkChangeCompanyPassword(_local_company, _settings_client.network.default_company_pass.c_str());
 	}
 
 	if (_settings_client.gui.pause_on_newgame) DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);

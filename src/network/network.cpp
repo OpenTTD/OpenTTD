@@ -887,7 +887,7 @@ bool NetworkServerStart()
 	if (!ServerNetworkGameSocketHandler::Listen(_settings_client.network.server_port)) return false;
 
 	/* Only listen for admins when the password isn't empty. */
-	if (!StrEmpty(_settings_client.network.admin_password)) {
+	if (!_settings_client.network.admin_password.empty()) {
 		DEBUG(net, 5, "Starting listeners for admins");
 		if (!ServerNetworkAdminSocketHandler::Listen(_settings_client.network.server_admin_port)) return false;
 	}

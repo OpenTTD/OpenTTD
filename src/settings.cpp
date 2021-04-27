@@ -1420,8 +1420,8 @@ static bool UpdateClientName(int32 p1)
 
 static bool UpdateServerPassword(int32 p1)
 {
-	if (strcmp(_settings_client.network.server_password, "*") == 0) {
-		_settings_client.network.server_password[0] = '\0';
+	if (_settings_client.network.server_password.compare("*") == 0) {
+		_settings_client.network.server_password.clear();
 	}
 
 	NetworkServerUpdateGameInfo();
@@ -1430,8 +1430,8 @@ static bool UpdateServerPassword(int32 p1)
 
 static bool UpdateRconPassword(int32 p1)
 {
-	if (strcmp(_settings_client.network.rcon_password, "*") == 0) {
-		_settings_client.network.rcon_password[0] = '\0';
+	if (_settings_client.network.rcon_password.compare("*") == 0) {
+		_settings_client.network.rcon_password.clear();
 	}
 
 	return true;

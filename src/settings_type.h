@@ -263,12 +263,12 @@ struct NetworkSettings {
 	uint16 server_admin_port;                             ///< port the server listens on for the admin network
 	bool   server_admin_chat;                             ///< allow private chat for the server to be distributed to the admin network
 	char   server_name[NETWORK_NAME_LENGTH];              ///< name of the server
-	char   server_password[NETWORK_PASSWORD_LENGTH];      ///< password for joining this server
-	char   rcon_password[NETWORK_PASSWORD_LENGTH];        ///< password for rconsole (server side)
-	char   admin_password[NETWORK_PASSWORD_LENGTH];       ///< password for the admin network
+	std::string server_password;                          ///< password for joining this server
+	std::string rcon_password;                            ///< password for rconsole (server side)
+	std::string admin_password;                           ///< password for the admin network
 	bool   server_advertise;                              ///< advertise the server to the masterserver
 	char   client_name[NETWORK_CLIENT_NAME_LENGTH];       ///< name of the player (as client)
-	char   default_company_pass[NETWORK_PASSWORD_LENGTH]; ///< default password for new companies in encrypted form
+	std::string default_company_pass;                     ///< default password for new companies in encrypted form
 	char   connect_to_ip[NETWORK_HOSTNAME_PORT_LENGTH];   ///< default for the "Add server" query
 	char   network_id[NETWORK_SERVER_ID_LENGTH];          ///< network ID for servers
 	bool   autoclean_companies;                           ///< automatically remove companies that are not in use

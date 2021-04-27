@@ -1032,7 +1032,7 @@ struct NetworkStartServerWindow : public Window {
 		switch (widget) {
 			case WID_NSS_SETPWD:
 				/* If password is set, draw red '*' next to 'Set password' button. */
-				if (!StrEmpty(_settings_client.network.server_password)) DrawString(r.right + WD_FRAMERECT_LEFT, this->width - WD_FRAMERECT_RIGHT, r.top, "*", TC_RED);
+				if (!_settings_client.network.server_password.empty()) DrawString(r.right + WD_FRAMERECT_LEFT, this->width - WD_FRAMERECT_RIGHT, r.top, "*", TC_RED);
 		}
 	}
 
@@ -1156,7 +1156,7 @@ struct NetworkStartServerWindow : public Window {
 		if (str == nullptr) return;
 
 		if (this->widget_id == WID_NSS_SETPWD) {
-			strecpy(_settings_client.network.server_password, str, lastof(_settings_client.network.server_password));
+			_settings_client.network.server_password = str;
 		} else {
 			int32 value = atoi(str);
 			this->SetWidgetDirty(this->widget_id);
@@ -2583,7 +2583,7 @@ struct NetworkCompanyPasswordWindow : public Window {
 	void OnOk()
 	{
 		if (this->IsWidgetLowered(WID_NCP_SAVE_AS_DEFAULT_PASSWORD)) {
-			strecpy(_settings_client.network.default_company_pass, this->password_editbox.text.buf, lastof(_settings_client.network.default_company_pass));
+			_settings_client.network.default_company_pass = this->password_editbox.text.buf;
 		}
 
 		NetworkChangeCompanyPassword(_local_company, this->password_editbox.text.buf);
