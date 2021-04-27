@@ -17,6 +17,7 @@ add_files(
     tcp_connect.cpp
     tcp_content.cpp
     tcp_content.h
+    tcp_content_type.h
     tcp_game.cpp
     tcp_game.h
     tcp_http.cpp
