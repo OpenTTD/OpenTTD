@@ -17,7 +17,6 @@
 // #define DEBUG_DUMP_COMMANDS
 // #define DEBUG_FAILED_DUMP_COMMANDS
 
-#include "core/address.h"
 #include "network_type.h"
 #include "../console_type.h"
 #include "../gfx_type.h"
@@ -44,12 +43,12 @@ void NetworkDisconnect(bool blocking = false, bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
 void ParseConnectionString(const char **company, const char **port, char *connection_string);
-void NetworkStartDebugLog(NetworkAddress address);
+void NetworkStartDebugLog(const char *hostname, uint16 port);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
 void NetworkClientsToSpectators(CompanyID cid);
-void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const char *join_server_password = nullptr, const char *join_company_password = nullptr);
+void NetworkClientConnectGame(const char *hostname, uint16 port, CompanyID join_as, const char *join_server_password = nullptr, const char *join_company_password = nullptr);
 void NetworkClientRequestMove(CompanyID company, const char *pass = "");
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data = 0);

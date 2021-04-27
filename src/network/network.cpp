@@ -658,14 +658,14 @@ public:
 
 
 /* Used by clients, to connect to a server */
-void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const char *join_server_password, const char *join_company_password)
+void NetworkClientConnectGame(const char *hostname, uint16 port, CompanyID join_as, const char *join_server_password, const char *join_company_password)
 {
 	if (!_network_available) return;
 
-	if (address.GetPort() == 0) return;
+	if (port == 0) return;
 
-	strecpy(_settings_client.network.last_host, address.GetHostname(), lastof(_settings_client.network.last_host));
-	_settings_client.network.last_port = address.GetPort();
+	strecpy(_settings_client.network.last_host, hostname, lastof(_settings_client.network.last_host));
+	_settings_client.network.last_port = port;
 	_network_join_as = join_as;
 	_network_join_server_password = join_server_password;
 	_network_join_company_password = join_company_password;
@@ -676,7 +676,7 @@ void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const c
 	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
 	ShowJoinStatusWindow();
 
-	new TCPClientConnecter(address);
+	new TCPClientConnecter(NetworkAddress(hostname, port));
 }
 
 static void NetworkInitGameInfo()
@@ -1027,12 +1027,13 @@ static void NetworkGenerateServerId()
 	seprintf(_settings_client.network.network_id, lastof(_settings_client.network.network_id), "%s", hex_output);
 }
 
-void NetworkStartDebugLog(NetworkAddress address)
+void NetworkStartDebugLog(const char *hostname, uint16 port)
 {
 	extern SOCKET _debug_socket;  // Comes from debug.c
 
-	DEBUG(net, 0, "Redirecting DEBUG() to %s:%d", address.GetHostname(), address.GetPort());
+	DEBUG(net, 0, "Redirecting DEBUG() to %s:%d", hostname, port);
 
+	NetworkAddress address(hostname, port);
 	SOCKET s = address.Connect();
 	if (s == INVALID_SOCKET) {
 		DEBUG(net, 0, "Failed to open socket for redirection DEBUG()");
