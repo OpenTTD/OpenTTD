@@ -495,7 +495,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
-			NetworkClientConnectGame(NetworkAddress(network_conn, rport), join_as, join_server_password, join_company_password);
+			NetworkClientConnectGame(network_conn, rport, join_as, join_server_password, join_company_password);
 		}
 
 		/* After the scan we're not used anymore. */
@@ -779,7 +779,7 @@ int openttd_main(int argc, char *argv[])
 		ParseConnectionString(&port, debuglog_conn);
 		if (port != nullptr) rport = atoi(port);
 
-		NetworkStartDebugLog(NetworkAddress(debuglog_conn, rport));
+		NetworkStartDebugLog(debuglog_conn, rport);
 	}
 
 	if (!HandleBootstrap()) {
@@ -1491,7 +1491,7 @@ void GameLoop()
 		if (_network_reconnect > 0 && --_network_reconnect == 0) {
 			/* This means that we want to reconnect to the last host
 			 * We do this here, because it means that the network is really closed */
-			NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port), COMPANY_SPECTATOR);
+			NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port, COMPANY_SPECTATOR);
 		}
 		/* Singleplayer */
 		StateGameLoop();
