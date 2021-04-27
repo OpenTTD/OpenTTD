@@ -326,19 +326,10 @@ bool StrValid(const char *str, const char *last)
  * When there are spaces at the begin, the whole string is moved forward.
  * @param str The string to perform the in place left trimming on.
  */
-static void StrLeftTrimInPlace(char *str)
+static void StrLeftTrimInPlace(std::string &str)
 {
-	if (StrEmpty(str)) return;
-
-	char *first_non_space = str;
-	while (*first_non_space == ' ') first_non_space++;
-
-	if (first_non_space == str) return;
-
-	/* The source will reach '\0' first, but set the '\0' on the destination afterwards. */
-	char *dst = str;
-	for (char *src = first_non_space; *src != '\0'; dst++, src++) *dst = *src;
-	*dst = '\0';
+	size_t pos = str.find_first_not_of(' ');
+	str.erase(0, pos);
 }
 
 /**
@@ -347,24 +338,10 @@ static void StrLeftTrimInPlace(char *str)
  * When there are spaces at the end, the '\0' will be moved forward.
  * @param str The string to perform the in place left trimming on.
  */
-static void StrRightTrimInPlace(char *str)
+static void StrRightTrimInPlace(std::string &str)
 {
-	if (StrEmpty(str)) return;
-
-	char *end = str;
-	while (*end != '\0') end++;
-
-	char *last_non_space = end - 1;
-	while (last_non_space >= str && *last_non_space == ' ') last_non_space--;
-
-	/* The last non space points to the last character of the string that is not
-	 * a space. For a string with only spaces or an empty string this would be
-	 * the position before the begin of the string. The previous search ensures
-	 * that this location before the string is not read.
-	 * In any case, the character after the last non space character will be
-	 * either a space or the existing termination, so it can be set to '\0'.
-	 */
-	last_non_space[1] = '\0';
+	size_t pos = str.find_last_not_of(' ');
+	if (pos != std::string::npos) str.erase(pos + 1);
 }
 
 /**
@@ -374,7 +351,7 @@ static void StrRightTrimInPlace(char *str)
  * and when there are spaces at the back the '\0' termination is moved.
  * @param str The string to perform the in place trimming on.
  */
-void StrTrimInPlace(char *str)
+void StrTrimInPlace(std::string &str)
 {
 	StrLeftTrimInPlace(str);
 	StrRightTrimInPlace(str);

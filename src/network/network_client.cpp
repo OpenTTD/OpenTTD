@@ -1305,10 +1305,10 @@ void NetworkClientsToSpectators(CompanyID cid)
  * @param client_name The client name to check for validity.
  * @return True iff the name is valid.
  */
-bool NetworkIsValidClientName(const char *client_name)
+bool NetworkIsValidClientName(const std::string_view client_name)
 {
-	if (StrEmpty(client_name)) return false;
-	if (*client_name == ' ') return false;
+	if (client_name.empty()) return false;
+	if (client_name[0] == ' ') return false;
 	return true;
 }
 
@@ -1327,7 +1327,7 @@ bool NetworkIsValidClientName(const char *client_name)
  *                    and trailing spaces.
  * @return True iff the client name is valid.
  */
-bool NetworkValidateClientName(char *client_name)
+bool NetworkValidateClientName(std::string &client_name)
 {
 	StrTrimInPlace(client_name);
 	if (NetworkIsValidClientName(client_name)) return true;
@@ -1363,13 +1363,16 @@ void NetworkUpdateClientName()
 	if (!NetworkValidateClientName()) return;
 
 	/* Don't change the name if it is the same as the old name */
-	if (strcmp(ci->client_name, _settings_client.network.client_name) != 0) {
+	if (_settings_client.network.client_name.compare(ci->client_name) != 0) {
 		if (!_network_server) {
-			MyClient::SendSetName(_settings_client.network.client_name);
+			MyClient::SendSetName(_settings_client.network.client_name.c_str());
 		} else {
-			if (NetworkFindName(_settings_client.network.client_name, lastof(_settings_client.network.client_name))) {
-				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, _settings_client.network.client_name);
-				strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
+			/* Copy to a temporary buffer so no #n gets added after our name in the settings when there are duplicate names. */
+			char temporary_name[NETWORK_CLIENT_NAME_LENGTH];
+			strecpy(temporary_name, _settings_client.network.client_name.c_str(), lastof(temporary_name));
+			if (NetworkFindName(temporary_name, lastof(temporary_name))) {
+				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, temporary_name);
+				strecpy(ci->client_name, temporary_name, lastof(ci->client_name));
 				NetworkUpdateClientInfo(CLIENT_ID_SERVER);
 			}
 		}

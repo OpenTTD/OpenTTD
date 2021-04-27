@@ -462,7 +462,7 @@ public:
 		this->FinishInitNested(WN_NETWORK_WINDOW_GAME);
 
 		this->querystrings[WID_NG_CLIENT] = &this->name_editbox;
-		this->name_editbox.text.Assign(_settings_client.network.client_name);
+		this->name_editbox.text.Assign(_settings_client.network.client_name.c_str());
 
 		this->querystrings[WID_NG_FILTER] = &this->filter_editbox;
 		this->filter_editbox.cancel_button = QueryString::ACTION_CLEAR;
@@ -820,7 +820,7 @@ public:
 			case WID_NG_CLIENT:
 				/* Validation of the name will happen once the user tries to join or start a game, as getting
 				 * error messages while typing (e.g. when you clear the name) defeats the purpose of the check. */
-				strecpy(_settings_client.network.client_name, this->name_editbox.text.buf, lastof(_settings_client.network.client_name));
+				_settings_client.network.client_name = this->name_editbox.text.buf;
 				break;
 		}
 	}
@@ -2207,11 +2207,12 @@ public:
 			}
 
 			case WID_CL_CLIENT_NAME_EDIT: {
-				if (!NetworkValidateClientName(str)) break;
+				std::string client_name(str);
+				if (!NetworkValidateClientName(client_name)) break;
 
 				uint index;
 				GetSettingFromName("network.client_name", &index);
-				SetSettingValue(index, str);
+				SetSettingValue(index, client_name.c_str());
 				this->InvalidateData();
 				break;
 			}

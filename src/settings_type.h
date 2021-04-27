@@ -267,7 +267,7 @@ struct NetworkSettings {
 	std::string rcon_password;                            ///< password for rconsole (server side)
 	std::string admin_password;                           ///< password for the admin network
 	bool   server_advertise;                              ///< advertise the server to the masterserver
-	char   client_name[NETWORK_CLIENT_NAME_LENGTH];       ///< name of the player (as client)
+	std::string client_name;                              ///< name of the player (as client)
 	std::string default_company_pass;                     ///< default password for new companies in encrypted form
 	std::string connect_to_ip;                            ///< default for the "Add server" query
 	std::string network_id;                               ///< network ID for servers
