@@ -527,18 +527,26 @@ static void Write_ValidateString(void *ptr, const SaveLoad *sld, const char *p)
 /**
  * Set the string value of a setting.
  * @param ptr Pointer to the std::string.
- * @param sld Pointer to the information for the conversions and limitations to apply.
+ * @param sd  Pointer to the information for the conversions and limitations to apply.
  * @param p   The string to save.
  */
-static void Write_ValidateStdString(void *ptr, const SaveLoad *sld, const char *p)
+static void Write_ValidateStdString(void *ptr, const SettingDesc *sd, const char *p)
 {
 	std::string *dst = reinterpret_cast<std::string *>(ptr);
 
-	switch (GetVarMemType(sld->conv)) {
+	switch (GetVarMemType(sd->save.conv)) {
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
 			if (p != nullptr) {
-				dst->assign(p);
+				if (sd->desc.max != 0 && strlen(p) >= sd->desc.max) {
+					/* In case a maximum length is imposed by the setting, the length
+					 * includes the '\0' termination for network transfer purposes.
+					 * Also ensure the string is valid after chopping of some bytes. */
+					std::string str(p, sd->desc.max - 1);
+					dst->assign(str_validate(str, SVS_NONE));
+				} else {
+					dst->assign(p);
+				}
 			} else {
 				dst->clear();
 			}
@@ -608,7 +616,7 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 				break;
 
 			case SDT_STDSTRING:
-				Write_ValidateStdString(ptr, sld, (const char *)p);
+				Write_ValidateStdString(ptr, sd, (const char *)p);
 				break;
 
 			case SDT_INTLIST: {
@@ -2119,6 +2127,8 @@ bool SetSettingValue(uint index, const char *value, bool force_newgame)
 	void *ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
 	if (sd->desc.cmd == SDT_STRING) {
 		Write_ValidateString(ptr, &sd->save, value);
+	} else {
+		Write_ValidateStdString(ptr, sd, value);
 	}
 	if (sd->desc.proc != nullptr) sd->desc.proc(0);
 
@@ -2176,7 +2186,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 	}
 
 	bool success;
-	if (sd->desc.cmd == SDT_STRING) {
+	if (sd->desc.cmd == SDT_STRING || sd->desc.cmd == SDT_STDSTRING) {
 		success = SetSettingValue(index, value, force_newgame);
 	} else {
 		uint32 val;
@@ -2229,6 +2239,8 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 
 	if (sd->desc.cmd == SDT_STRING) {
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
+	} else if (sd->desc.cmd == SDT_STDSTRING) {
+		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, reinterpret_cast<const std::string *>(ptr)->c_str());
 	} else {
 		if (sd->desc.cmd == SDT_BOOLX) {
 			seprintf(value, lastof(value), (*(const bool*)ptr != 0) ? "on" : "off");
@@ -2260,6 +2272,8 @@ void IConsoleListSettings(const char *prefilter)
 			seprintf(value, lastof(value), (*(const bool *)ptr != 0) ? "on" : "off");
 		} else if (sd->desc.cmd == SDT_STRING) {
 			seprintf(value, lastof(value), "%s", (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
+		} else if (sd->desc.cmd == SDT_STDSTRING) {
+			seprintf(value, lastof(value), "%s", reinterpret_cast<const std::string *>(ptr)->c_str());
 		} else {
 			seprintf(value, lastof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
