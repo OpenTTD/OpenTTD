@@ -17,6 +17,7 @@
 #include "window_func.h"
 #include "progress.h"
 #include "video/video_driver.hpp"
+#include "string_func.h"
 #include "strings_func.h"
 #include "textfile_gui.h"
 #include "thread.h"
