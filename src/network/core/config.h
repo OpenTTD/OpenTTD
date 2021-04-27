@@ -13,6 +13,7 @@
 #define NETWORK_CORE_CONFIG_H
 
 const char *NetworkCoordinatorConnectionString();
+const char *NetworkStunConnectionString();
 const char *NetworkContentServerConnectionString();
 const char *NetworkContentMirrorConnectionString();
 
@@ -20,6 +21,7 @@ const char *NetworkContentMirrorConnectionString();
 static const char * const NETWORK_CONTENT_MIRROR_URL            = "/bananas";
 
 static const uint16 NETWORK_COORDINATOR_SERVER_PORT = 3976;           ///< The default port of the Game Coordinator server (TCP)
+static const uint16 NETWORK_STUN_SERVER_PORT        = 3975;           ///< The default port of the STUN server (TCP)
 static const uint16 NETWORK_CONTENT_SERVER_PORT     = 3978;           ///< The default port of the content server (TCP)
 static const uint16 NETWORK_CONTENT_MIRROR_PORT     =   80;           ///< The default port of the content mirror (TCP)
 static const uint16 NETWORK_DEFAULT_PORT            = 3979;           ///< The default port of the game server (TCP & UDP)
@@ -47,7 +49,7 @@ static const uint16 COMPAT_MTU                      = 1460;           ///< Numbe
 static const byte NETWORK_GAME_ADMIN_VERSION        =    1;           ///< What version of the admin network do we use?
 static const byte NETWORK_GAME_INFO_VERSION         =    4;           ///< What version of game-info do we use?
 static const byte NETWORK_COMPANY_INFO_VERSION      =    6;           ///< What version of company info is this?
-static const byte NETWORK_COORDINATOR_VERSION       =    2;           ///< What version of game-coordinator-protocol do we use?
+static const byte NETWORK_COORDINATOR_VERSION       =    3;           ///< What version of game-coordinator-protocol do we use?
 
 static const uint NETWORK_NAME_LENGTH               =   80;           ///< The maximum length of the server name and map name, in bytes including '\0'
 static const uint NETWORK_COMPANY_NAME_LENGTH       =  128;           ///< The maximum length of the company name, in bytes including '\0'

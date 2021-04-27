@@ -11,6 +11,7 @@
 #define NETWORK_COORDINATOR_H
 
 #include "core/tcp_coordinator.h"
+#include "network_stun.h"
 #include <map>
 
 /**
@@ -33,6 +34,12 @@
  *        - Send the client a GC_CONNECT with the peer address.
  *        - a) Client connects, client sends CLIENT_CONNECTED to Game Coordinator.
  *        - b) Client connect fails, client sends CLIENT_CONNECT_FAILED to Game Coordinator.
+ *    2) STUN? (see https://en.wikipedia.org/wiki/STUN)
+ *        - Game Coordinator sends GC_STUN_REQUEST to server/client (asking for both IPv4 and IPv6 STUN requests).
+ *        - Game Coordinator collects what combination works and sends GC_STUN_CONNECT to server/client.
+ *        - a) Server/client connect, client sends CLIENT_CONNECTED to Game Coordinator.
+ *        - b) Server/client connect fails, both send SERCLI_CONNECT_FAILED to Game Coordinator.
+ *        - Game Coordinator tries other combination if available.
  *  - If all fails, Game Coordinator sends GC_CONNECT_FAILED to indicate no connection is possible.
  */
 
@@ -42,6 +49,7 @@ private:
 	std::chrono::steady_clock::time_point next_update; ///< When to send the next update (if server and public).
 	std::map<std::string, TCPServerConnecter *> connecter; ///< Based on tokens, the current connecters that are pending.
 	std::map<std::string, TCPServerConnecter *> connecter_pre; ///< Based on invite codes, the current connecters that are pending.
+	std::map<std::string, std::map<int, std::unique_ptr<ClientNetworkStunSocketHandler>>> stun_handlers; ///< All pending STUN handlers, stored by token:family.
 	TCPConnecter *game_connecter = nullptr; ///< Pending connecter to the game server.
 
 protected:
@@ -51,6 +59,8 @@ protected:
 	bool Receive_GC_CONNECTING(Packet *p) override;
 	bool Receive_GC_CONNECT_FAILED(Packet *p) override;
 	bool Receive_GC_DIRECT_CONNECT(Packet *p) override;
+	bool Receive_GC_STUN_REQUEST(Packet *p) override;
+	bool Receive_GC_STUN_CONNECT(Packet *p) override;
 
 public:
 	/** The idle timeout; when to close the connection because it's idle. */
@@ -65,11 +75,13 @@ public:
 	void SendReceive();
 
 	void ConnectFailure(const std::string &token, uint8 tracking_number);
-	void ConnectSuccess(const std::string &token, SOCKET sock);
+	void ConnectSuccess(const std::string &token, SOCKET sock, NetworkAddress &address);
+	void StunResult(const std::string &token, uint8 family, bool result);
 
 	void Connect();
 	void CloseToken(const std::string &token);
 	void CloseAllTokens();
+	void CloseStunHandler(const std::string &token, uint8 family = AF_UNSPEC);
 
 	void Register();
 	void SendServerUpdate();

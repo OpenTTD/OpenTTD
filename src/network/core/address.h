@@ -175,6 +175,8 @@ public:
 
 	static const char *SocketTypeAsString(int socktype);
 	static const char *AddressFamilyAsString(int family);
+	static NetworkAddress GetPeerAddress(SOCKET sock);
+	static NetworkAddress GetSockAddress(SOCKET sock);
 	static const std::string GetPeerName(SOCKET sock);
 };
 

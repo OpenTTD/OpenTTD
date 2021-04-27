@@ -19,6 +19,8 @@
 #include "network_coordinator.h"
 #include "network_gamelist.h"
 #include "network_internal.h"
+#include "network_server.h"
+#include "network_stun.h"
 #include "table/strings.h"
 
 #include "../safeguards.h"
@@ -51,7 +53,48 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
-		_network_coordinator_client.ConnectSuccess(this->token, s);
+		NetworkAddress address = NetworkAddress::GetPeerAddress(s);
+		_network_coordinator_client.ConnectSuccess(this->token, s, address);
+	}
+};
+
+/** Connecter used after STUN exchange to connect from both sides to each other. */
+class NetworkReuseStunConnecter : public TCPConnecter {
+private:
+	std::string token;     ///< Token of this connection.
+	uint8 tracking_number; ///< Tracking number of this connection.
+	uint8 family;          ///< Family of this connection.
+
+public:
+	/**
+	 * Try to establish a STUN-based connection.
+	 * @param hostname The hostname of the peer.
+	 * @param port The port of the peer.
+	 * @param bind_address The local bind address used for this connection.
+	 * @param token The connection token.
+	 * @param tracking_number The tracking number of the connection.
+	 * @param family The family this connection is using.
+	 */
+	NetworkReuseStunConnecter(const std::string &hostname, uint16 port, const NetworkAddress &bind_address, std::string token, uint8 tracking_number, uint8 family) :
+		TCPConnecter(hostname, port, bind_address),
+		token(token),
+		tracking_number(tracking_number),
+		family(family)
+	{
+	}
+
+	void OnFailure() override
+	{
+		/* Close the STUN connection too, as it is no longer of use. */
+		_network_coordinator_client.CloseStunHandler(this->token, this->family);
+
+		_network_coordinator_client.ConnectFailure(this->token, this->tracking_number);
+	}
+
+	void OnConnect(SOCKET s) override
+	{
+		NetworkAddress address = NetworkAddress::GetPeerAddress(s);
+		_network_coordinator_client.ConnectSuccess(this->token, s, address);
 	}
 };
 
@@ -101,10 +144,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *p)
 			return false;
 
 		case NETWORK_COORDINATOR_ERROR_INVALID_INVITE_CODE: {
-			/* Find the connecter based on the invite code. */
-			auto connecter_it = this->connecter_pre.find(detail);
-			if (connecter_it == this->connecter_pre.end()) return true;
-			this->connecter_pre.erase(connecter_it);
+			this->CloseToken(detail);
 
 			/* Mark the server as offline. */
 			NetworkGameList *item = NetworkGameListAddItem(detail);
@@ -148,6 +188,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p)
 		switch (_network_server_connection_type) {
 			case CONNECTION_TYPE_ISOLATED: connection_type = "Remote players can't connect"; break;
 			case CONNECTION_TYPE_DIRECT:   connection_type = "Public"; break;
+			case CONNECTION_TYPE_STUN:     connection_type = "Behind NAT"; break;
 
 			case CONNECTION_TYPE_UNKNOWN: // Never returned from Game Coordinator.
 			default: connection_type = "Unknown"; break; // Should never happen, but don't fail if it does.
@@ -260,6 +301,49 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet *p)
 	}
 
 	this->game_connecter = new NetworkDirectConnecter(hostname, port, token, tracking_number);
+	return true;
+}
+
+bool ClientNetworkCoordinatorSocketHandler::Receive_GC_STUN_REQUEST(Packet *p)
+{
+	std::string token = p->Recv_string(NETWORK_TOKEN_LENGTH);
+
+	this->stun_handlers[token][AF_INET6] = ClientNetworkStunSocketHandler::Stun(token, AF_INET6);
+	this->stun_handlers[token][AF_INET] = ClientNetworkStunSocketHandler::Stun(token, AF_INET);
+	return true;
+}
+
+bool ClientNetworkCoordinatorSocketHandler::Receive_GC_STUN_CONNECT(Packet *p)
+{
+	std::string token = p->Recv_string(NETWORK_TOKEN_LENGTH);
+	uint8 tracking_number = p->Recv_uint8();
+	uint8 family = p->Recv_uint8();
+	std::string host = p->Recv_string(NETWORK_HOSTNAME_PORT_LENGTH);
+	uint16 port = p->Recv_uint16();
+
+	/* Check if we know this token. */
+	auto stun_it = this->stun_handlers.find(token);
+	if (stun_it == this->stun_handlers.end()) return true;
+	auto family_it = stun_it->second.find(family);
+	if (family_it == stun_it->second.end()) return true;
+
+	/* Ensure all other pending connection attempts are killed. */
+	if (this->game_connecter != nullptr) {
+		this->game_connecter->Kill();
+		this->game_connecter = nullptr;
+	}
+
+	/* We now mark the connection as closed, but we do not really close the
+	 * socket yet. We do this when the NetworkReuseStunConnecter is connected.
+	 * This prevents any NAT to already remove the route while we create the
+	 * second connection on top of the first. */
+	family_it->second->CloseConnection(false);
+
+	/* Connect to our peer from the same local address as we use for the
+	 * STUN server. This means that if there is any NAT in the local network,
+	 * the public ip:port is still pointing to the local address, and as such
+	 * a connection can be established. */
+	this->game_connecter = new NetworkReuseStunConnecter(host, port, family_it->second->local_addr, token, tracking_number, family);
 	return true;
 }
 
@@ -399,11 +483,8 @@ void ClientNetworkCoordinatorSocketHandler::ConnectFailure(const std::string &to
 
 	this->SendPacket(p);
 
-	auto connecter_it = this->connecter.find(token);
-	assert(connecter_it != this->connecter.end());
-
-	connecter_it->second->SetFailure();
-	this->connecter.erase(connecter_it);
+	/* We do not close the associated connecter here yet, as the
+	 * Game Coordinator might have other methods of connecting available. */
 }
 
 /**
@@ -412,26 +493,72 @@ void ClientNetworkCoordinatorSocketHandler::ConnectFailure(const std::string &to
  * @param token Token of the connecter that succeeded.
  * @param sock The socket that the connecter can now use.
  */
-void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &token, SOCKET sock)
+void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &token, SOCKET sock, NetworkAddress &address)
 {
 	/* Connecter will destroy itself. */
 	this->game_connecter = nullptr;
 
-	assert(!_network_server);
+	if (_network_server) {
+		if (!ServerNetworkGameSocketHandler::ValidateClient(sock, address)) return;
+		Debug(net, 3, "[{}] Client connected from {} on frame {}", ServerNetworkGameSocketHandler::GetName(), address.GetHostname(), _frame_counter);
+		ServerNetworkGameSocketHandler::AcceptConnection(sock, address);
+	} else {
+		/* The client informs the Game Coordinator about the success. The server
+		 * doesn't have to, as it is implied by the client telling. */
+		Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_CONNECTED);
+		p->Send_uint8(NETWORK_COORDINATOR_VERSION);
+		p->Send_string(token);
+		this->SendPacket(p);
 
-	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_CONNECTED);
-	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
-	p->Send_string(token);
-	this->SendPacket(p);
+		auto connecter_it = this->connecter.find(token);
+		assert(connecter_it != this->connecter.end());
 
-	auto connecter_it = this->connecter.find(token);
-	assert(connecter_it != this->connecter.end());
-
-	connecter_it->second->SetConnected(sock);
-	this->connecter.erase(connecter_it);
+		connecter_it->second->SetConnected(sock);
+		this->connecter.erase(connecter_it);
+	}
 
 	/* Close all remaining connections. */
 	this->CloseToken(token);
+}
+
+/**
+ * Callback from the STUN connecter to inform the Game Coordinator about the
+ * result of the STUN.
+ *
+ * This helps the Game Coordinator not to wait for a timeout on its end, but
+ * rather react as soon as the client/server knows the result.
+ */
+void ClientNetworkCoordinatorSocketHandler::StunResult(const std::string &token, uint8 family, bool result)
+{
+	Packet *p = new Packet(PACKET_COORDINATOR_SERCLI_STUN_RESULT);
+	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
+	p->Send_string(token);
+	p->Send_uint8(family);
+	p->Send_bool(result);
+	this->SendPacket(p);
+}
+
+void ClientNetworkCoordinatorSocketHandler::CloseStunHandler(const std::string &token, uint8 family)
+{
+	auto stun_it = this->stun_handlers.find(token);
+	if (stun_it == this->stun_handlers.end()) return;
+
+	if (family == AF_UNSPEC) {
+		for (auto &[family, stun_handler] : stun_it->second) {
+			stun_handler->CloseConnection();
+			stun_handler->CloseSocket();
+		}
+
+		this->stun_handlers.erase(stun_it);
+	} else {
+		auto family_it = stun_it->second.find(family);
+		if (family_it == stun_it->second.end()) return;
+
+		family_it->second->CloseConnection();
+		family_it->second->CloseSocket();
+
+		stun_it->second.erase(family_it);
+	}
 }
 
 /**
@@ -444,6 +571,21 @@ void ClientNetworkCoordinatorSocketHandler::CloseToken(const std::string &token)
 	if (this->game_connecter != nullptr) {
 		this->game_connecter->Kill();
 		this->game_connecter = nullptr;
+	}
+
+	/* Close all remaining STUN connections. */
+	this->CloseStunHandler(token);
+
+	/* Close the caller of the connection attempt. */
+	auto connecter_it = this->connecter.find(token);
+	if (connecter_it != this->connecter.end()) {
+		connecter_it->second->SetFailure();
+		this->connecter.erase(connecter_it);
+	}
+	auto connecter_pre_it = this->connecter_pre.find(token);
+	if (connecter_pre_it != this->connecter_pre.end()) {
+		connecter_pre_it->second->SetFailure();
+		this->connecter_pre.erase(connecter_pre_it);
 	}
 }
 
@@ -460,6 +602,7 @@ void ClientNetworkCoordinatorSocketHandler::CloseAllTokens()
 
 	/* Mark any pending connecters as failed. */
 	for (auto &[token, it] : this->connecter) {
+		this->CloseStunHandler(token);
 		it->SetFailure();
 	}
 	for (auto &[invite_code, it] : this->connecter_pre) {
@@ -535,4 +678,10 @@ void ClientNetworkCoordinatorSocketHandler::SendReceive()
 	}
 
 	this->SendPackets();
+
+	for (const auto &[token, families] : this->stun_handlers) {
+		for (const auto &[family, stun_handler] : families) {
+			stun_handler->SendReceive();
+		}
+	}
 }

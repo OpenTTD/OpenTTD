@@ -39,6 +39,9 @@ bool NetworkCoordinatorSocketHandler::HandlePacket(Packet *p)
 		case PACKET_COORDINATOR_GC_CONNECT_FAILED:     return this->Receive_GC_CONNECT_FAILED(p);
 		case PACKET_COORDINATOR_CLIENT_CONNECTED:      return this->Receive_CLIENT_CONNECTED(p);
 		case PACKET_COORDINATOR_GC_DIRECT_CONNECT:     return this->Receive_GC_DIRECT_CONNECT(p);
+		case PACKET_COORDINATOR_GC_STUN_REQUEST:       return this->Receive_GC_STUN_REQUEST(p);
+		case PACKET_COORDINATOR_SERCLI_STUN_RESULT:    return this->Receive_SERCLI_STUN_RESULT(p);
+		case PACKET_COORDINATOR_GC_STUN_CONNECT:       return this->Receive_GC_STUN_CONNECT(p);
 
 		default:
 			Debug(net, 0, "[tcp/coordinator] Received invalid packet type {}", type);
@@ -94,3 +97,6 @@ bool NetworkCoordinatorSocketHandler::Receive_SERCLI_CONNECT_FAILED(Packet *p) {
 bool NetworkCoordinatorSocketHandler::Receive_GC_CONNECT_FAILED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_CONNECT_FAILED); }
 bool NetworkCoordinatorSocketHandler::Receive_CLIENT_CONNECTED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_CONNECTED); }
 bool NetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_DIRECT_CONNECT); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_REQUEST(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_REQUEST); }
+bool NetworkCoordinatorSocketHandler::Receive_SERCLI_STUN_RESULT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERCLI_STUN_RESULT); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_STUN_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_STUN_CONNECT); }
