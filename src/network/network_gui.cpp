@@ -828,7 +828,7 @@ public:
 	void OnQueryTextFinished(char *str) override
 	{
 		if (!StrEmpty(str)) {
-			strecpy(_settings_client.network.connect_to_ip, str, lastof(_settings_client.network.connect_to_ip));
+			_settings_client.network.connect_to_ip = str;
 			NetworkAddServer(str);
 			NetworkRebuildHostList();
 		}
@@ -1556,7 +1556,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 
-	strecpy(_settings_client.network.last_joined, ngl->connection_string.c_str(), lastof(_settings_client.network.last_joined));
+	_settings_client.network.last_joined = ngl->connection_string;
 
 	NetworkQueryLobbyServer(ngl->connection_string);
 

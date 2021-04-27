@@ -269,7 +269,7 @@ struct NetworkSettings {
 	bool   server_advertise;                              ///< advertise the server to the masterserver
 	char   client_name[NETWORK_CLIENT_NAME_LENGTH];       ///< name of the player (as client)
 	std::string default_company_pass;                     ///< default password for new companies in encrypted form
-	char   connect_to_ip[NETWORK_HOSTNAME_PORT_LENGTH];   ///< default for the "Add server" query
+	std::string connect_to_ip;                            ///< default for the "Add server" query
 	char   network_id[NETWORK_SERVER_ID_LENGTH];          ///< network ID for servers
 	bool   autoclean_companies;                           ///< automatically remove companies that are not in use
 	uint8  autoclean_unprotected;                         ///< remove passwordless companies after this many months
@@ -281,7 +281,7 @@ struct NetworkSettings {
 	Year   restart_game_year;                             ///< year the server restarts
 	uint8  min_active_clients;                            ///< minimum amount of active clients to unpause the game
 	bool   reload_cfg;                                    ///< reload the config file before restarting
-	char   last_joined[NETWORK_HOSTNAME_PORT_LENGTH];     ///< Last joined server
+	std::string last_joined;                              ///< Last joined server
 	bool   no_http_content_downloads;                     ///< do not do content downloads over HTTP
 };
 

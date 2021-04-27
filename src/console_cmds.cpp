@@ -893,13 +893,13 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 			break;
 	}
 
-	if (StrEmpty(_settings_client.network.last_joined)) {
+	if (_settings_client.network.last_joined.empty()) {
 		IConsolePrint(CC_DEFAULT, "No server for reconnecting.");
 		return true;
 	}
 
 	/* Don't resolve the address first, just print it directly as it comes from the config file. */
-	IConsolePrintF(CC_DEFAULT, "Reconnecting to %s ...", _settings_client.network.last_joined);
+	IConsolePrintF(CC_DEFAULT, "Reconnecting to %s ...", _settings_client.network.last_joined.c_str());
 
 	return NetworkClientConnectGame(_settings_client.network.last_joined, playas);
 }
