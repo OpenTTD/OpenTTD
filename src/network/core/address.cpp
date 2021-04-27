@@ -14,6 +14,8 @@
 
 #include "../../safeguards.h"
 
+static const int DEFAULT_CONNECT_TIMEOUT_SECONDS = 3; ///< Allow connect() three seconds to connect.
+
 /**
  * Get the hostname; in case it wasn't given the
  * IPv4 dotted representation is given.
@@ -322,23 +324,47 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 
 	if (!SetNoDelay(sock)) DEBUG(net, 1, "[%s] setting TCP_NODELAY failed", type);
 
+	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed", type);
+
 	int err = connect(sock, runp->ai_addr, (int)runp->ai_addrlen);
-#ifdef __EMSCRIPTEN__
-	/* Emscripten is asynchronous, and as such a connect() is still in
-	 * progress by the time the call returns. */
-	if (err != 0 && errno != EINPROGRESS)
-#else
-	if (err != 0)
-#endif
-	{
-		DEBUG(net, 1, "[%s] could not connect %s socket: %s", type, family, NetworkGetLastErrorString());
+	if (err != 0 && NetworkGetLastError() != EINPROGRESS) {
+		DEBUG(net, 1, "[%s] could not connect to %s over %s: %s", type, address, family, NetworkGetLastErrorString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
-	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed", type);
+	fd_set write_fd;
+	struct timeval tv;
 
+	FD_ZERO(&write_fd);
+	FD_SET(sock, &write_fd);
+
+	/* Wait for connect() to either connect, timeout or fail. */
+	tv.tv_usec = 0;
+	tv.tv_sec = DEFAULT_CONNECT_TIMEOUT_SECONDS;
+	int n = select(FD_SETSIZE, NULL, &write_fd, NULL, &tv);
+	if (n < 0) {
+		DEBUG(net, 1, "[%s] could not connect to %s: %s", type, address, NetworkGetLastErrorString());
+		closesocket(sock);
+		return INVALID_SOCKET;
+	}
+
+	/* If no fd is selected, the timeout has been reached. */
+	if (n == 0) {
+		DEBUG(net, 1, "[%s] timed out while connecting to %s", type, address);
+		closesocket(sock);
+		return INVALID_SOCKET;
+	}
+
+	/* Retrieve last error, if any, on the socket. */
+	err = GetSocketError(sock);
+	if (err != 0) {
+		DEBUG(net, 1, "[%s] could not connect to %s: %s", type, address, NetworkGetErrorString(err));
+		closesocket(sock);
+		return INVALID_SOCKET;
+	}
+
+	/* Connection succeeded. */
 	DEBUG(net, 1, "[%s] connected to %s", type, address);
 
 	return sock;
