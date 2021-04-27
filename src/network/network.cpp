@@ -824,7 +824,7 @@ void NetworkClientJoinGame()
 	NetworkDisconnect();
 	NetworkInitialize();
 
-	strecpy(_settings_client.network.last_joined, _network_join.connection_string.c_str(), lastof(_settings_client.network.last_joined));
+	_settings_client.network.last_joined = _network_join.connection_string;
 	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
 	ShowJoinStatusWindow();
 
