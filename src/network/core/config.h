@@ -16,6 +16,8 @@
 static const char * const NETWORK_MASTER_SERVER_HOST            = "master.openttd.org";
 /** DNS hostname of the Game Coordinator server */
 static const char * const NETWORK_COORDINATOR_SERVER_HOST       = "coordinator.openttd.org";
+/** DNS hostname of the STUN server */
+static const char * const NETWORK_STUN_SERVER_HOST              = "stun.openttd.org";
 /** DNS hostname of the content server */
 static const char * const NETWORK_CONTENT_SERVER_HOST           = "content.openttd.org";
 /** DNS hostname of the HTTP-content mirror server */
@@ -27,6 +29,7 @@ static const char * const NETWORK_MASTER_SERVER_WELCOME_MESSAGE = "OpenTTDRegist
 
 static const uint16 NETWORK_MASTER_SERVER_PORT      = 3978;       ///< The default port of the master server (UDP)
 static const uint16 NETWORK_COORDINATOR_SERVER_PORT = 3976;       ///< The default port of the Game Coordinator server (TCP)
+static const uint16 NETWORK_STUN_SERVER_PORT        = 3975;       ///< The default port of the STUN server (TCP)
 static const uint16 NETWORK_CONTENT_SERVER_PORT     = 3978;       ///< The default port of the content server (TCP)
 static const uint16 NETWORK_CONTENT_MIRROR_PORT     =   80;       ///< The default port of the content mirror (TCP)
 static const uint16 NETWORK_DEFAULT_PORT            = 3979;       ///< The default port of the game server (TCP & UDP)

@@ -29,8 +29,9 @@ static std::vector<TCPConnecter *> _tcp_connecters;
  * @param default_port If not indicated in connection_string, what port to use.
  * @param bind_address The local bind address to use. Defaults to letting the OS find one.
  */
-TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address) :
-	bind_address(bind_address)
+TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address, int family) :
+	bind_address(bind_address),
+	family(family)
 {
 	this->connection_string = NormalizeConnectionString(connection_string, default_port);
 
@@ -96,6 +97,10 @@ void TCPConnecter::Connect(addrinfo *address)
 	if (sock == INVALID_SOCKET) {
 		Debug(net, 0, "Could not create {} {} socket: {}", NetworkAddress::SocketTypeAsString(address->ai_socktype), NetworkAddress::AddressFamilyAsString(address->ai_family), NetworkError::GetLast().AsString());
 		return;
+	}
+
+	if (!SetReusePort(sock)) {
+		Debug(net, 0, "Setting reuse-port mode failed: {}", NetworkError::GetLast().AsString());
 	}
 
 	if (this->bind_address.GetPort() > 0) {
@@ -169,6 +174,9 @@ void TCPConnecter::OnResolved(addrinfo *ai)
 
 	/* Convert the addrinfo into NetworkAddresses. */
 	for (addrinfo *runp = ai; runp != nullptr; runp = runp->ai_next) {
+		/* Skip entries if the family is set and it is not matching. */
+		if (this->family != AF_UNSPEC && this->family != runp->ai_family) continue;
+
 		if (resort) {
 			if (runp->ai_family == AF_INET6) {
 				addresses_ipv6.emplace_back(runp);

@@ -99,6 +99,7 @@ private:
 
 	std::string connection_string;                      ///< Current address we are connecting to (before resolving).
 	NetworkAddress bind_address;                        ///< Address we're binding to, if any.
+	int family = AF_UNSPEC;                             ///< Family we are using to connect with.
 
 	void Resolve();
 	void OnResolved(addrinfo *ai);
@@ -114,7 +115,7 @@ private:
 
 public:
 	TCPConnecter() {};
-	TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address = {});
+	TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address = {}, int family = AF_UNSPEC);
 	virtual ~TCPConnecter();
 
 	/**

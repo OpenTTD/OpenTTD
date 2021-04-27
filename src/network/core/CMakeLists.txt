@@ -27,6 +27,8 @@ add_files(
     tcp_http.cpp
     tcp_http.h
     tcp_listen.h
+    tcp_stun.cpp
+    tcp_stun.h
     udp.cpp
     udp.h
 )

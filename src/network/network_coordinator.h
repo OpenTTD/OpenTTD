@@ -11,6 +11,7 @@
 #define NETWORK_COORDINATOR_H
 
 #include "core/tcp_coordinator.h"
+#include "network_stun.h"
 #include <map>
 
 /**
@@ -33,6 +34,12 @@
  *        - Send the client a SERVER_CONNECT with the peer address.
  *        - a) Client connects, closes GC connection.
  *        - b) Client connect fails, client sends CLIENT_CONNECT_FAILED to GC.
+ *    2) STUN?
+ *        - GC sends SERVER_STUN_REQUEST to server/client (asking for both IPv4 and IPv6).
+ *        - GC collects what combination works and sends SERVER_STUN_CONNECT to server/client.
+ *        - a) Server/client connect, client closes GC connection.
+ *        - b) Server/client connect fails, connecting side sends CLIENT_CONNECT_FAILED to GC.
+ *        - GC tries other combination if available.
  *  - If all fails, GC sends SERVER_CONNECT_FAILED to indicate no connection was possible.
  */
 
@@ -42,6 +49,7 @@ private:
 	std::chrono::steady_clock::time_point next_update; ///< When to send the next update (if server and public).
 	std::map<std::string, TCPServerConnecter *> connecter; ///< Based on tokens, the current connecters that are pending.
 	std::map<std::string, TCPServerConnecter *> connecter_pre; ///< Based on join-keys, the current connecters that are pending.
+	std::map<std::string, std::map<int, std::unique_ptr<ClientNetworkStunSocketHandler>>> stun_handlers; ///< All pending STUN handlers.
 	TCPConnecter *game_connecter = nullptr; ///< Pending connecter to the game server.
 
 protected:
@@ -51,6 +59,8 @@ protected:
 	bool Receive_SERVER_CONNECTING(Packet *p) override;
 	bool Receive_SERVER_CONNECT_FAILED(Packet *p) override;
 	bool Receive_SERVER_DIRECT_CONNECT(Packet *p) override;
+	bool Receive_SERVER_STUN_REQUEST(Packet *p) override;
+	bool Receive_SERVER_STUN_CONNECT(Packet *p) override;
 
 public:
 	/** The idle timeout; when to close the connection because it's idle. */
@@ -65,11 +75,13 @@ public:
 	void SendReceive();
 
 	void ConnectFailure(const std::string &token, uint8 tracking_number);
-	void ConnectSuccess(const std::string &token, SOCKET sock);
+	void ConnectSuccess(const std::string &token, SOCKET sock, NetworkAddress &address);
+	void StunResult(const std::string &token, uint8 family, bool result);
 
 	void Connect();
 	void CloseToken(const std::string &token);
 	void CloseAllTokens();
+	void CloseStunHandler(const std::string &token, uint8 family = AF_UNSPEC);
 
 	void Register();
 	void SendServerUpdate();
