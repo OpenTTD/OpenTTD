@@ -1536,15 +1536,15 @@ struct NetworkLobbyWindow : public Window {
 
 			case WID_NL_JOIN:     // Join company
 				/* Button can be clicked only when it is enabled. */
-				NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port), this->company);
+				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port, this->company);
 				break;
 
 			case WID_NL_NEW:      // New company
-				NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port), COMPANY_NEW_COMPANY);
+				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port, COMPANY_NEW_COMPANY);
 				break;
 
 			case WID_NL_SPECTATE: // Spectate game
-				NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port), COMPANY_SPECTATOR);
+				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port, COMPANY_SPECTATOR);
 				break;
 
 			case WID_NL_REFRESH:  // Refresh
