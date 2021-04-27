@@ -21,7 +21,7 @@ enum PersistentStorageMode {
 	PSM_LEAVE_GAMELOOP,   ///< Leave the gameloop, changes will be temporary.
 	PSM_ENTER_COMMAND,    ///< Enter command scope, changes will be permanent.
 	PSM_LEAVE_COMMAND,    ///< Leave command scope, revert to previous mode.
-	PSM_ENTER_TESTMODE,   ///< Enter command test mode, changes will be tempoary.
+	PSM_ENTER_TESTMODE,   ///< Enter command test mode, changes will be temporary.
 	PSM_LEAVE_TESTMODE,   ///< Leave command test mode, revert to previous mode.
 };
 

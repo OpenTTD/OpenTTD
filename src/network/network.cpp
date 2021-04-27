@@ -846,7 +846,7 @@ static void NetworkInitGameInfo()
 	NetworkClientInfo *ci = new NetworkClientInfo(CLIENT_ID_SERVER);
 	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST;
 
-	strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
+	strecpy(ci->client_name, _settings_client.network.client_name.c_str(), lastof(ci->client_name));
 }
 
 /**
@@ -857,10 +857,10 @@ static void NetworkInitGameInfo()
  */
 static void CheckClientAndServerName()
 {
-	static const char *fallback_client_name = "Unnamed Client";
-	if (StrEmpty(_settings_client.network.client_name) || strcmp(_settings_client.network.client_name, fallback_client_name) == 0) {
-		DEBUG(net, 1, "No \"client_name\" has been set, using \"%s\" instead. Please set this now using the \"name <new name>\" command", fallback_client_name);
-		strecpy(_settings_client.network.client_name, fallback_client_name, lastof(_settings_client.network.client_name));
+	static const std::string fallback_client_name = "Unnamed Client";
+	if (_settings_client.network.client_name.empty() || _settings_client.network.client_name.compare(fallback_client_name) == 0) {
+		DEBUG(net, 1, "No \"client_name\" has been set, using \"%s\" instead. Please set this now using the \"name <new name>\" command", fallback_client_name.c_str());
+		_settings_client.network.client_name = fallback_client_name;
 	}
 
 	static const std::string fallback_server_name = "Unnamed Server";

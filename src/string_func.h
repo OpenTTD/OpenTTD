@@ -49,7 +49,7 @@ bool strtolower(char *str);
 bool strtolower(std::string &str, std::string::size_type offs = 0);
 
 bool StrValid(const char *str, const char *last) NOACCESS(2);
-void StrTrimInPlace(char *str);
+void StrTrimInPlace(std::string &str);
 
 /**
  * Check if a string buffer is empty.
