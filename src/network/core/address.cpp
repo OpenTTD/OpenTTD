@@ -316,7 +316,7 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 1, "[%s] could not create %s socket: %s", type, family, strerror(errno));
+		DEBUG(net, 1, "[%s] could not create %s socket: %s", type, family, NetworkGetLastErrorString());
 		return INVALID_SOCKET;
 	}
 
@@ -331,7 +331,7 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 	if (err != 0)
 #endif
 	{
-		DEBUG(net, 1, "[%s] could not connect %s socket: %s", type, family, strerror(errno));
+		DEBUG(net, 1, "[%s] could not connect %s socket: %s", type, family, NetworkGetLastErrorString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
@@ -369,7 +369,7 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 0, "[%s] could not create %s socket on port %s: %s", type, family, address, strerror(errno));
+		DEBUG(net, 0, "[%s] could not create %s socket on port %s: %s", type, family, address, NetworkGetLastErrorString());
 		return INVALID_SOCKET;
 	}
 
@@ -380,24 +380,24 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 	int on = 1;
 	/* The (const char*) cast is needed for windows!! */
 	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not set reusable %s sockets for port %s: %s", type, family, address, strerror(errno));
+		DEBUG(net, 3, "[%s] could not set reusable %s sockets for port %s: %s", type, family, address, NetworkGetLastErrorString());
 	}
 
 #ifndef __OS2__
 	if (runp->ai_family == AF_INET6 &&
 			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not disable IPv4 over IPv6 on port %s: %s", type, address, strerror(errno));
+		DEBUG(net, 3, "[%s] could not disable IPv4 over IPv6 on port %s: %s", type, address, NetworkGetLastErrorString());
 	}
 #endif
 
 	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
-		DEBUG(net, 1, "[%s] could not bind on %s port %s: %s", type, family, address, strerror(errno));
+		DEBUG(net, 1, "[%s] could not bind on %s port %s: %s", type, family, address, NetworkGetLastErrorString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-		DEBUG(net, 1, "[%s] could not listen at %s port %s: %s", type, family, address, strerror(errno));
+		DEBUG(net, 1, "[%s] could not listen at %s port %s: %s", type, family, address, NetworkGetLastErrorString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
