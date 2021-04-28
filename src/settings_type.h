@@ -214,16 +214,16 @@ struct MusicSettings {
 
 /** Settings related to currency/unit systems. */
 struct LocaleSettings {
-	byte   currency;                         ///< currency we currently use
-	byte   units_velocity;                   ///< unit system for velocity
-	byte   units_power;                      ///< unit system for power
-	byte   units_weight;                     ///< unit system for weight
-	byte   units_volume;                     ///< unit system for volume
-	byte   units_force;                      ///< unit system for force
-	byte   units_height;                     ///< unit system for height
-	char  *digit_group_separator;            ///< thousand separator for non-currencies
-	char  *digit_group_separator_currency;   ///< thousand separator for currencies
-	char  *digit_decimal_separator;          ///< decimal separator
+	byte        currency;                         ///< currency we currently use
+	byte        units_velocity;                   ///< unit system for velocity
+	byte        units_power;                      ///< unit system for power
+	byte        units_weight;                     ///< unit system for weight
+	byte        units_volume;                     ///< unit system for volume
+	byte        units_force;                      ///< unit system for force
+	byte        units_height;                     ///< unit system for height
+	std::string digit_group_separator;            ///< thousand separator for non-currencies
+	std::string digit_group_separator_currency;   ///< thousand separator for currencies
+	std::string digit_decimal_separator;          ///< decimal separator
 };
 
 /** Settings related to news */
@@ -247,42 +247,42 @@ struct NewsSettings {
 
 /** All settings related to the network. */
 struct NetworkSettings {
-	uint16 sync_freq;                                     ///< how often do we check whether we are still in-sync
-	uint8  frame_freq;                                    ///< how often do we send commands to the clients
-	uint16 commands_per_frame;                            ///< how many commands may be sent each frame_freq frames?
-	uint16 max_commands_in_queue;                         ///< how many commands may there be in the incoming queue before dropping the connection?
-	uint16 bytes_per_frame;                               ///< how many bytes may, over a long period, be received per frame?
-	uint16 bytes_per_frame_burst;                         ///< how many bytes may, over a short period, be received?
-	uint16 max_init_time;                                 ///< maximum amount of time, in game ticks, a client may take to initiate joining
-	uint16 max_join_time;                                 ///< maximum amount of time, in game ticks, a client may take to sync up during joining
-	uint16 max_download_time;                             ///< maximum amount of time, in game ticks, a client may take to download the map
-	uint16 max_password_time;                             ///< maximum amount of time, in game ticks, a client may take to enter the password
-	uint16 max_lag_time;                                  ///< maximum amount of time, in game ticks, a client may be lagging behind the server
-	bool   pause_on_join;                                 ///< pause the game when people join
-	uint16 server_port;                                   ///< port the server listens on
-	uint16 server_admin_port;                             ///< port the server listens on for the admin network
-	bool   server_admin_chat;                             ///< allow private chat for the server to be distributed to the admin network
+	uint16      sync_freq;                                ///< how often do we check whether we are still in-sync
+	uint8       frame_freq;                               ///< how often do we send commands to the clients
+	uint16      commands_per_frame;                       ///< how many commands may be sent each frame_freq frames?
+	uint16      max_commands_in_queue;                    ///< how many commands may there be in the incoming queue before dropping the connection?
+	uint16      bytes_per_frame;                          ///< how many bytes may, over a long period, be received per frame?
+	uint16      bytes_per_frame_burst;                    ///< how many bytes may, over a short period, be received?
+	uint16      max_init_time;                            ///< maximum amount of time, in game ticks, a client may take to initiate joining
+	uint16      max_join_time;                            ///< maximum amount of time, in game ticks, a client may take to sync up during joining
+	uint16      max_download_time;                        ///< maximum amount of time, in game ticks, a client may take to download the map
+	uint16      max_password_time;                        ///< maximum amount of time, in game ticks, a client may take to enter the password
+	uint16      max_lag_time;                             ///< maximum amount of time, in game ticks, a client may be lagging behind the server
+	bool        pause_on_join;                            ///< pause the game when people join
+	uint16      server_port;                              ///< port the server listens on
+	uint16      server_admin_port;                        ///< port the server listens on for the admin network
+	bool        server_admin_chat;                        ///< allow private chat for the server to be distributed to the admin network
 	std::string server_name;                              ///< name of the server
 	std::string server_password;                          ///< password for joining this server
 	std::string rcon_password;                            ///< password for rconsole (server side)
 	std::string admin_password;                           ///< password for the admin network
-	bool   server_advertise;                              ///< advertise the server to the masterserver
+	bool        server_advertise;                         ///< advertise the server to the masterserver
 	std::string client_name;                              ///< name of the player (as client)
 	std::string default_company_pass;                     ///< default password for new companies in encrypted form
 	std::string connect_to_ip;                            ///< default for the "Add server" query
 	std::string network_id;                               ///< network ID for servers
-	bool   autoclean_companies;                           ///< automatically remove companies that are not in use
-	uint8  autoclean_unprotected;                         ///< remove passwordless companies after this many months
-	uint8  autoclean_protected;                           ///< remove the password from passworded companies after this many months
-	uint8  autoclean_novehicles;                          ///< remove companies with no vehicles after this many months
-	uint8  max_companies;                                 ///< maximum amount of companies
-	uint8  max_clients;                                   ///< maximum amount of clients
-	uint8  max_spectators;                                ///< maximum amount of spectators
-	Year   restart_game_year;                             ///< year the server restarts
-	uint8  min_active_clients;                            ///< minimum amount of active clients to unpause the game
-	bool   reload_cfg;                                    ///< reload the config file before restarting
+	bool        autoclean_companies;                      ///< automatically remove companies that are not in use
+	uint8       autoclean_unprotected;                    ///< remove passwordless companies after this many months
+	uint8       autoclean_protected;                      ///< remove the password from passworded companies after this many months
+	uint8       autoclean_novehicles;                     ///< remove companies with no vehicles after this many months
+	uint8       max_companies;                            ///< maximum amount of companies
+	uint8       max_clients;                              ///< maximum amount of clients
+	uint8       max_spectators;                           ///< maximum amount of spectators
+	Year        restart_game_year;                        ///< year the server restarts
+	uint8       min_active_clients;                       ///< minimum amount of active clients to unpause the game
+	bool        reload_cfg;                               ///< reload the config file before restarting
 	std::string last_joined;                              ///< Last joined server
-	bool   no_http_content_downloads;                     ///< do not do content downloads over HTTP
+	bool        no_http_content_downloads;                ///< do not do content downloads over HTTP
 };
 
 /** Settings related to the creation of games. */
