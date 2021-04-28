@@ -7,9 +7,6 @@
 
 /** @file network_chat_gui.cpp GUI for handling chat messages. */
 
-#include <stdarg.h> /* va_list */
-#include <deque>
-
 #include "../stdafx.h"
 #include "../strings_func.h"
 #include "../blitter/factory.hpp"
@@ -27,6 +24,9 @@
 #include "../widgets/network_chat_widget.h"
 
 #include "table/strings.h"
+
+#include <stdarg.h> /* va_list */
+#include <deque>
 
 #include "../safeguards.h"
 

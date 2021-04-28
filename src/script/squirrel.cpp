@@ -7,8 +7,6 @@
 
 /** @file squirrel.cpp the implementation of the Squirrel class. It handles all Squirrel-stuff and gives a nice API back to work with. */
 
-#include <stdarg.h>
-#include <map>
 #include "../stdafx.h"
 #include "../debug.h"
 #include "squirrel_std.hpp"
@@ -20,6 +18,9 @@
 #include <../squirrel/sqpcheader.h>
 #include <../squirrel/sqvm.h>
 #include "../core/alloc_func.hpp"
+
+#include <stdarg.h>
+#include <map>
 
 /**
  * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS
