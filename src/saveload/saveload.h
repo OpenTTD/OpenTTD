@@ -934,7 +934,7 @@ static inline void SlSkipBytes(size_t length)
 	for (; length != 0; length--) SlReadByte();
 }
 
-extern char _savegame_format[8];
+extern std::string _savegame_format;
 extern bool _do_autosave;
 
 #endif /* SAVELOAD_H */

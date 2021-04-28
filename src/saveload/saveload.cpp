@@ -61,11 +61,11 @@ extern const SaveLoadVersion SAVEGAME_VERSION = (SaveLoadVersion)(SL_MAX_VERSION
 SavegameType _savegame_type; ///< type of savegame we are loading
 FileToSaveLoad _file_to_saveload; ///< File to save or load in the openttd loop.
 
-uint32 _ttdp_version;        ///< version of TTDP savegame (if applicable)
-SaveLoadVersion _sl_version; ///< the major savegame version identifier
-byte   _sl_minor_version;    ///< the minor savegame version, DO NOT USE!
-char _savegame_format[8];    ///< how to compress savegames
-bool _do_autosave;           ///< are we doing an autosave at the moment?
+uint32 _ttdp_version;         ///< version of TTDP savegame (if applicable)
+SaveLoadVersion _sl_version;  ///< the major savegame version identifier
+byte   _sl_minor_version;     ///< the minor savegame version, DO NOT USE!
+std::string _savegame_format; ///< how to compress savegames
+bool _do_autosave;            ///< are we doing an autosave at the moment?
 
 /** What are we currently doing? */
 enum SaveLoadAction {
@@ -2351,36 +2351,33 @@ static const SaveLoadFormat _saveload_formats[] = {
 /**
  * Return the savegameformat of the game. Whether it was created with ZLIB compression
  * uncompressed, or another type
- * @param s Name of the savegame format. If nullptr it picks the first available one
+ * @param full_name Name of the savegame format. If empty it picks the first available one
  * @param compression_level Output for telling what compression level we want.
  * @return Pointer to SaveLoadFormat struct giving all characteristics of this type of savegame
  */
-static const SaveLoadFormat *GetSavegameFormat(char *s, byte *compression_level)
+static const SaveLoadFormat *GetSavegameFormat(const std::string &full_name, byte *compression_level)
 {
 	const SaveLoadFormat *def = lastof(_saveload_formats);
 
 	/* find default savegame format, the highest one with which files can be written */
 	while (!def->init_write) def--;
 
-	if (!StrEmpty(s)) {
+	if (!full_name.empty()) {
 		/* Get the ":..." of the compression level out of the way */
-		char *complevel = strrchr(s, ':');
-		if (complevel != nullptr) *complevel = '\0';
+		size_t separator = full_name.find(':');
+		bool has_comp_level = separator != std::string::npos;
+		const std::string name(full_name, 0, has_comp_level ? separator : full_name.size());
 
 		for (const SaveLoadFormat *slf = &_saveload_formats[0]; slf != endof(_saveload_formats); slf++) {
-			if (slf->init_write != nullptr && strcmp(s, slf->name) == 0) {
+			if (slf->init_write != nullptr && name.compare(slf->name) == 0) {
 				*compression_level = slf->default_compression;
-				if (complevel != nullptr) {
-					/* There is a compression level in the string.
-					 * First restore the : we removed to do proper name matching,
-					 * then move the the begin of the actual version. */
-					*complevel = ':';
-					complevel++;
+				if (has_comp_level) {
+					const std::string complevel(full_name, separator + 1);
 
-					/* Get the version and determine whether all went fine. */
-					char *end;
-					long level = strtol(complevel, &end, 10);
-					if (end == complevel || level != Clamp(level, slf->min_compression, slf->max_compression)) {
+					/* Get the level and determine whether all went fine. */
+					size_t processed;
+					long level = std::stol(complevel, &processed, 10);
+					if (processed == 0 || level != Clamp(level, slf->min_compression, slf->max_compression)) {
 						SetDParamStr(0, complevel);
 						ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_LEVEL, WL_CRITICAL);
 					} else {
@@ -2391,12 +2388,9 @@ static const SaveLoadFormat *GetSavegameFormat(char *s, byte *compression_level)
 			}
 		}
 
-		SetDParamStr(0, s);
+		SetDParamStr(0, name);
 		SetDParamStr(1, def->name);
 		ShowErrorMessage(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_SAVEGAME_COMPRESSION_ALGORITHM, WL_CRITICAL);
-
-		/* Restore the string by adding the : back */
-		if (complevel != nullptr) *complevel = ':';
 	}
 	*compression_level = def->default_compression;
 	return def;
