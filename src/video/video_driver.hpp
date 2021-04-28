@@ -148,6 +148,15 @@ public:
 	}
 
 	/**
+	 * Get the pitch of the animation buffer.
+	 * @return The pitch of the animation buffer.
+	 */
+	virtual int GetAnimBufferPitch()
+	{
+		return _screen.pitch;
+	}
+
+	/**
 	 * An edit box lost the input focus. Abort character compositing if necessary.
 	 */
 	virtual void EditBoxLostFocus() {}
