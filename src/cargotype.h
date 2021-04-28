@@ -157,13 +157,6 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 #define FOR_EACH_SET_CARGO_ID(var, cargo_bits) FOR_EACH_SET_BIT_EX(CargoID, var, CargoTypes, cargo_bits)
 
 /**
- * Loop header for iterating over cargoes, sorted by name. This includes phony cargoes like regearing cargoes.
- * @param var Reference getting the cargospec.
- * @see CargoSpec
- */
-#define FOR_ALL_SORTED_CARGOSPECS(var) for (uint8 index = 0; index < _sorted_cargo_specs.size() && (var = _sorted_cargo_specs[index], true) ; index++)
-
-/**
  * Loop header for iterating over 'real' cargoes, sorted by name. Phony cargoes like regearing cargoes are skipped.
  * @param var Reference getting the cargospec.
  * @see CargoSpec

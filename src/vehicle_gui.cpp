@@ -513,8 +513,7 @@ struct RefitWindow : public Window {
 
 			/* Loop through all cargoes in the refit mask */
 			int current_index = 0;
-			const CargoSpec *cs;
-			FOR_ALL_SORTED_CARGOSPECS(cs) {
+			for (const auto &cs : _sorted_cargo_specs) {
 				CargoID cid = cs->Index();
 				/* Skip cargo type if it's not listed */
 				if (!HasBit(cmask, cid)) {

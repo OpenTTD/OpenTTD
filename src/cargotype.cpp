@@ -181,7 +181,7 @@ void InitializeSortedCargoSpecs()
 	_standard_cargo_mask = 0;
 
 	_sorted_standard_cargo_specs_size = 0;
-	FOR_ALL_SORTED_CARGOSPECS(cargo) {
+	for (const auto &cargo : _sorted_cargo_specs) {
 		if (cargo->classes & CC_SPECIAL) break;
 		_sorted_standard_cargo_specs_size++;
 		SetBit(_standard_cargo_mask, cargo->Index());
