@@ -954,7 +954,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Manejar por la izquierda
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Manejar por la derecha
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de pueblos
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de pueblos:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Elegir el estilo de nombres para pueblos
 
 ############ start of townname region
@@ -1992,6 +1992,8 @@ STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Aretes:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambiar corbata o aretes
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privado
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Público
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijugador
@@ -2055,6 +2057,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}La parti
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Establecer contraseña
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Proteger la partida con una contraseña para prevenir el acceso a otras personas
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilidad
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Quién puede ver tu servidor en la lista pública
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Número máximo de clientes:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Elegir el número máximo de clientes. No es necesario que se conecten todos
@@ -2118,11 +2122,44 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introducir contraseña
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jugadores conectados
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multijugador
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nombre
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nombre del servidor en el que estás jugando
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Modificar nombre del servidor
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nombre del servidor
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilidad
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Quién puede ver tu servidor en la lista pública
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Jugador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nombre
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Tu nombre de jugador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Modificar nombre de jugador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Tu nombre de jugador
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Acciones administrativas para este cliente
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Acciones administrativas para esta empresa
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Unirse a esta empresa
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Enviar mensaje a este jugador
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Enviar mensaje a todos los jugadores de la empresa
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Enviar mensaje a los espectadores
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Espectadores
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nueva empresa)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crear nueva empresa y unirse a ella
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Este eres tú
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Este es el host del juego
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bloquear acceso
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Eliminar
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Restablecer contraseña
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Acción de aministrador
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}¿Sacar al jugador "{STRING}"?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}¿Bloquear acceso al jugador "{STRING}"?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}¿Eliminar la empresa "{COMPANY}"?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}¿Restablecer contraseña de la empresa "{COMPANY}"?
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente
@@ -3043,6 +3080,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atención:
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Error fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ocurrió un error fatal de NewGRF:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Ocurrió un error de NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} no funcionará con la con la versión de TTDPatch reportada por OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} es la para la versión {STRING} de TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} está diseñado para usarse con {STRING}

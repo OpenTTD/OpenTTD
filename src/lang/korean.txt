@@ -1808,8 +1808,8 @@ STR_CONFIG_ERROR                                                :{WHITE}설정 �
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 배열 '{STRING}'에서 오류 발생
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... '{1:STRING}'에 잘못된 값('{0:STRING}')이 지정되었습니다.
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... '{STRING}' 설정의 끝에 후행 문자가 있습니다.
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' 무시중: '{STRING}'{G 1 "과" "와"} GRF ID가 겹침
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 유효하지 않은 NewGRF '{STRING}' 무시중: {STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... '{STRING}' NewGRF를 무시합니다: '{STRING}'{G 1 "과" "와"} GRF ID가 겹침
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 유효하지 않은 '{STRING}' NewGRF를 무시합니다: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :찾을 수 없음
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :사용하기에 불안함
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF 시스템
@@ -3080,6 +3080,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}경고: {S
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}오류: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}치명적 오류: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}치명적인 NewGRF 오류가 발생했습니다:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF 관련 오류가 발생했습니다:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING}{G 1 "은" "는"} OpenTTD에서 보고된 TTDPatch 버전에서 작동하지 않을 것입니다
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING}{G 1 "은" "는"} {STRING} 버전의 TTD를 위한 것입니다
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING}{G 1 "은" "는"} {STRING}{G 1 "와" "과"} 같이 사용해야 합니다
