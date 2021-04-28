@@ -486,7 +486,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	/* Add prefix part, following symbol_pos specification.
 	 * Here, it can can be either 0 (prefix) or 2 (both prefix and suffix).
 	 * The only remaining value is 1 (suffix), so everything that is not 1 */
-	if (spec->symbol_pos != 1) buff = strecpy(buff, spec->prefix, last);
+	if (spec->symbol_pos != 1) buff = strecpy(buff, spec->prefix.c_str(), last);
 
 	/* for huge numbers, compact the number into k or M */
 	if (compact) {
@@ -502,7 +502,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	}
 
 	const char *separator = _settings_game.locale.digit_group_separator_currency.c_str();
-	if (StrEmpty(separator)) separator = _currency->separator;
+	if (StrEmpty(separator)) separator = _currency->separator.c_str();
 	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator_currency;
 	buff = FormatNumber(buff, number, last, separator);
 	buff = strecpy(buff, multiplier, last);
@@ -510,7 +510,7 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 	/* Add suffix part, following symbol_pos specification.
 	 * Here, it can can be either 1 (suffix) or 2 (both prefix and suffix).
 	 * The only remaining value is 1 (prefix), so everything that is not 0 */
-	if (spec->symbol_pos != 0) buff = strecpy(buff, spec->suffix, last);
+	if (spec->symbol_pos != 0) buff = strecpy(buff, spec->suffix.c_str(), last);
 
 	if (negative) {
 		if (buff + Utf8CharLen(SCC_POP_COLOUR) > last) return buff;

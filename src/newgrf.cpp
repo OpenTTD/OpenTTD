@@ -2588,6 +2588,22 @@ static ChangeInfoResult LoadTranslationTable(uint gvid, int numinfo, ByteReader 
 }
 
 /**
+ * Helper to read a DWord worth of bytes from the reader
+ * and to return it as a valid string.
+ * @param reader The source of the DWord.
+ * @return The read DWord as string.
+ */
+static std::string ReadDWordAsString(ByteReader *reader)
+{
+	char output[5];
+	for (int i = 0; i < 4; i++) output[i] = reader->ReadByte();
+	output[4] = '\0';
+	str_validate(output, lastof(output));
+
+	return std::string(output);
+}
+
+/**
  * Define properties for global variables
  * @param gvid ID of the global variable.
  * @param numinfo Number of subsequent IDs to change the property for.
@@ -2674,11 +2690,10 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0D: { // Currency prefix symbol
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				uint32 tempfix = buf->ReadDWord();
+				std::string prefix = ReadDWordAsString(buf);
 
 				if (curidx < CURRENCY_END) {
-					memcpy(_currency_specs[curidx].prefix, &tempfix, 4);
-					_currency_specs[curidx].prefix[4] = 0;
+					_currency_specs[curidx].prefix = prefix;
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Currency symbol %d out of range, ignoring", curidx);
 				}
@@ -2687,11 +2702,10 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, By
 
 			case 0x0E: { // Currency suffix symbol
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
-				uint32 tempfix = buf->ReadDWord();
+				std::string suffix = ReadDWordAsString(buf);
 
 				if (curidx < CURRENCY_END) {
-					memcpy(&_currency_specs[curidx].suffix, &tempfix, 4);
-					_currency_specs[curidx].suffix[4] = 0;
+					_currency_specs[curidx].suffix = suffix;
 				} else {
 					grfmsg(1, "GlobalVarChangeInfo: Currency symbol %d out of range, ignoring", curidx);
 				}
