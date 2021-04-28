@@ -305,10 +305,4 @@ bool HasAnyRoadTypesAvail(CompanyID company, RoadTramType rtt);
 extern std::vector<RoadType> _sorted_roadtypes;
 extern RoadTypes _roadtypes_hidden_mask;
 
-/**
- * Loop header for iterating over roadtypes, sorted by sortorder.
- * @param var Roadtype.
- */
-#define FOR_ALL_SORTED_ROADTYPES(var) for (uint8 index = 0; index < _sorted_roadtypes.size() && (var = _sorted_roadtypes[index], true) ; index++)
-
 #endif /* ROAD_H */
