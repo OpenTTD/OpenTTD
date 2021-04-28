@@ -214,9 +214,9 @@ static inline bool GetDrawGlyphShadow(FontSize size)
 
 /** Settings for a single freetype font. */
 struct FreeTypeSubSetting {
-	char font[MAX_PATH]; ///< The name of the font, or path to the font.
-	uint size;           ///< The (requested) size of the font.
-	bool aa;             ///< Whether to do anti aliasing or not.
+	std::string font; ///< The name of the font, or path to the font.
+	uint size;        ///< The (requested) size of the font.
+	bool aa;          ///< Whether to do anti aliasing or not.
 
 	const void *os_handle = nullptr; ///< Optional native OS font info. Only valid during font search.
 };

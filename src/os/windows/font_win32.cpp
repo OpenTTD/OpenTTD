@@ -588,8 +588,9 @@ void LoadWin32Font(FontSize fs)
 		default: NOT_REACHED();
 	}
 
-	if (StrEmpty(settings->font)) return;
+	if (settings->font.empty()) return;
 
+	const char *font_name = settings->font.c_str();
 	LOGFONT logfont;
 	MemSetT(&logfont, 0);
 	logfont.lfPitchAndFamily = fs == FS_MONO ? FIXED_PITCH : VARIABLE_PITCH;
@@ -599,19 +600,19 @@ void LoadWin32Font(FontSize fs)
 
 	if (settings->os_handle != nullptr) {
 		logfont = *(const LOGFONT *)settings->os_handle;
-	} else if (strchr(settings->font, '.') != nullptr) {
+	} else if (strchr(font_name, '.') != nullptr) {
 		/* Might be a font file name, try load it. */
 
 		wchar_t fontPath[MAX_PATH] = {};
 
 		/* See if this is an absolute path. */
 		if (FileExists(settings->font)) {
-			convert_to_fs(settings->font, fontPath, lengthof(fontPath));
+			convert_to_fs(font_name, fontPath, lengthof(fontPath));
 		} else {
 			/* Scan the search-paths to see if it can be found. */
-			std::string full_font = FioFindFullPath(BASE_DIR, settings->font);
+			std::string full_font = FioFindFullPath(BASE_DIR, font_name);
 			if (!full_font.empty()) {
-				convert_to_fs(full_font.c_str(), fontPath, lengthof(fontPath));
+				convert_to_fs(font_name, fontPath, lengthof(fontPath));
 			}
 		}
 
@@ -639,22 +640,22 @@ void LoadWin32Font(FontSize fs)
 					_wsplitpath(fontPath, nullptr, nullptr, fname, nullptr);
 
 					wcsncpy_s(logfont.lfFaceName, lengthof(logfont.lfFaceName), fname, _TRUNCATE);
-					logfont.lfWeight = strcasestr(settings->font, " bold") != nullptr || strcasestr(settings->font, "-bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
+					logfont.lfWeight = strcasestr(font_name, " bold") != nullptr || strcasestr(font_name, "-bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
 				}
 			} else {
-				ShowInfoF("Unable to load file '%s' for %s font, using default windows font selection instead", settings->font, SIZE_TO_NAME[fs]);
+				ShowInfoF("Unable to load file '%s' for %s font, using default windows font selection instead", font_name, SIZE_TO_NAME[fs]);
 			}
 		}
 	}
 
 	if (logfont.lfFaceName[0] == 0) {
-		logfont.lfWeight = strcasestr(settings->font, " bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
-		convert_to_fs(settings->font, logfont.lfFaceName, lengthof(logfont.lfFaceName));
+		logfont.lfWeight = strcasestr(font_name, " bold") != nullptr ? FW_BOLD : FW_NORMAL; // Poor man's way to allow selecting bold fonts.
+		convert_to_fs(font_name, logfont.lfFaceName, lengthof(logfont.lfFaceName));
 	}
 
 	HFONT font = CreateFontIndirect(&logfont);
 	if (font == nullptr) {
-		ShowInfoF("Unable to use '%s' for %s font, Win32 reported error 0x%lX, using sprite font instead", settings->font, SIZE_TO_NAME[fs], GetLastError());
+		ShowInfoF("Unable to use '%s' for %s font, Win32 reported error 0x%lX, using sprite font instead", font_name, SIZE_TO_NAME[fs], GetLastError());
 		return;
 	}
 	DeleteObject(font);
