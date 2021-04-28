@@ -43,8 +43,8 @@ enum PacketGameType {
 	PACKET_SERVER_COMPANY_INFO,          ///< Information about a single company.
 
 	/* Packets used to get the game info. */
-	PACKET_CLIENT_GAME_INFO,             ///< Request information about the server.
 	PACKET_SERVER_GAME_INFO,             ///< Information about the server.
+	PACKET_CLIENT_GAME_INFO,             ///< Request information about the server.
 
 	/*
 	 * Packets after here assume that the client
