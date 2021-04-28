@@ -1313,17 +1313,16 @@ DropDownList GetRoadTypeDropDownList(RoadTramTypes rtts, bool for_replacement, b
 	}
 
 	Dimension d = { 0, 0 };
-	RoadType rt;
 	/* Get largest icon size, to ensure text is aligned on each menu item. */
 	if (!for_replacement) {
-		FOR_ALL_SORTED_ROADTYPES(rt) {
+		for (const auto &rt : _sorted_roadtypes) {
 			if (!HasBit(used_roadtypes, rt)) continue;
 			const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 			d = maxdim(d, GetSpriteSize(rti->gui_sprites.build_x_road));
 		}
 	}
 
-	FOR_ALL_SORTED_ROADTYPES(rt) {
+	for (const auto &rt : _sorted_roadtypes) {
 		/* If it's not used ever, don't show it to the user. */
 		if (!HasBit(used_roadtypes, rt)) continue;
 
@@ -1365,13 +1364,12 @@ DropDownList GetScenRoadTypeDropDownList(RoadTramTypes rtts)
 
 	/* If it's not used ever, don't show it to the user. */
 	Dimension d = { 0, 0 };
-	RoadType rt;
-	FOR_ALL_SORTED_ROADTYPES(rt) {
+	for (const auto &rt : _sorted_roadtypes) {
 		if (!HasBit(used_roadtypes, rt)) continue;
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);
 		d = maxdim(d, GetSpriteSize(rti->gui_sprites.build_x_road));
 	}
-	FOR_ALL_SORTED_ROADTYPES(rt) {
+	for (const auto &rt : _sorted_roadtypes) {
 		if (!HasBit(used_roadtypes, rt)) continue;
 
 		const RoadTypeInfo *rti = GetRoadTypeInfo(rt);

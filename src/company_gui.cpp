@@ -1862,8 +1862,7 @@ struct CompanyInfrastructureWindow : Window
 
 				size->width = std::max(size->width, GetStringBoundingBox(widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT).width);
 
-				RoadType rt;
-				FOR_ALL_SORTED_ROADTYPES(rt) {
+				for (const auto &rt : _sorted_roadtypes) {
 					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
 						lines++;
 						SetDParam(0, GetRoadTypeInfo(rt)->strings.name);
@@ -2005,8 +2004,7 @@ struct CompanyInfrastructureWindow : Window
 				DrawString(r.left, r.right, y, widget == WID_CI_ROAD_DESC ? STR_COMPANY_INFRASTRUCTURE_VIEW_ROAD_SECT : STR_COMPANY_INFRASTRUCTURE_VIEW_TRAM_SECT);
 
 				/* Draw name of each valid roadtype. */
-				RoadType rt;
-				FOR_ALL_SORTED_ROADTYPES(rt) {
+				for (const auto &rt : _sorted_roadtypes) {
 					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_DESC)) {
 						SetDParam(0, GetRoadTypeInfo(rt)->strings.name);
 						DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_WHITE_STRING);
@@ -2019,8 +2017,7 @@ struct CompanyInfrastructureWindow : Window
 			case WID_CI_ROAD_COUNT:
 			case WID_CI_TRAM_COUNT: {
 				uint32 road_tram_total = widget == WID_CI_ROAD_COUNT ? c->infrastructure.GetRoadTotal() : c->infrastructure.GetTramTotal();
-				RoadType rt;
-				FOR_ALL_SORTED_ROADTYPES(rt) {
+				for (const auto &rt : _sorted_roadtypes) {
 					if (HasBit(this->roadtypes, rt) && RoadTypeIsRoad(rt) == (widget == WID_CI_ROAD_COUNT)) {
 						this->DrawCountLine(r, y, c->infrastructure.road[rt], RoadMaintenanceCost(rt, c->infrastructure.road[rt], road_tram_total));
 					}
