@@ -10,6 +10,7 @@
 #include "../../stdafx.h"
 
 #include "address.h"
+#include "../network_internal.h"
 #include "../../debug.h"
 
 #include "../../safeguards.h"
@@ -410,4 +411,21 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 	socklen_t addr_len = sizeof(addr);
 	getpeername(sock, (sockaddr *)&addr, &addr_len);
 	return NetworkAddress(addr, addr_len).GetAddressAsString();
+}
+
+/**
+ * Convert a string containing either "hostname" or "hostname:ip" to a
+ * ServerAddress, where the string can be postfixed with "#company" to
+ * indicate the requested company.
+ *
+ * @param connection_string The string to parse.
+ * @param default_port The default port to set port to if not in connection_string.
+ * @param company Pointer to the company variable to set iff indicted.
+ * @return A valid ServerAddress of the parsed information.
+ */
+/* static */ ServerAddress ServerAddress::Parse(const std::string &connection_string, uint16 default_port, CompanyID *company_id)
+{
+	uint16 port = default_port;
+	std::string_view ip = ParseFullConnectionString(connection_string, port, company_id);
+	return ServerAddress(SERVER_ADDRESS_DIRECT, std::string(ip) + ":" + std::to_string(port));
 }
