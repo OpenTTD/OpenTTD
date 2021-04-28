@@ -26,7 +26,6 @@ enum SettingDescType : byte {
 	SDT_ONEOFMANY   = 2, ///< bitmasked number where only ONE bit may be set
 	SDT_MANYOFMANY  = 3, ///< bitmasked number where MULTIPLE bits may be set
 	SDT_INTLIST     = 4, ///< list of integers separated by a comma ','
-	SDT_STRING      = 5, ///< string with a pre-allocated buffer
 	SDT_STDSTRING   = 6, ///< \c std::string
 	SDT_END,
 	/* 9 more possible primitives */

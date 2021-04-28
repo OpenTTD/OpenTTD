@@ -585,7 +585,6 @@ static inline uint SlCalcConvMemLen(VarType conv)
 
 	switch (length << 4) {
 		case SLE_VAR_STRB:
-		case SLE_VAR_STRBQ:
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
 			return SlReadArrayLength();
@@ -881,7 +880,6 @@ static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType con
 			len = SIZE_MAX;
 			break;
 		case SLE_VAR_STRB:
-		case SLE_VAR_STRBQ:
 			str = (const char *)ptr;
 			len = length;
 			break;
@@ -920,7 +918,6 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			switch (GetVarMemType(conv)) {
 				default: NOT_REACHED();
 				case SLE_VAR_STRB:
-				case SLE_VAR_STRBQ:
 					len = SlCalcNetStringLen((char *)ptr, length);
 					break;
 				case SLE_VAR_STR:
@@ -941,7 +938,6 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			switch (GetVarMemType(conv)) {
 				default: NOT_REACHED();
 				case SLE_VAR_STRB:
-				case SLE_VAR_STRBQ:
 					if (len >= length) {
 						DEBUG(sl, 1, "String length in savegame is bigger than buffer, truncating");
 						SlCopyBytes(ptr, length);

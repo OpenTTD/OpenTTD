@@ -415,8 +415,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
 			return desc->def;
 		}
 
-		case SDT_STDSTRING:
-		case SDT_STRING: return orig_str;
+		case SDT_STDSTRING: return orig_str;
 		case SDT_INTLIST: return str;
 		default: break;
 	}
@@ -493,35 +492,6 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 	}
 
 	WriteValue(ptr, sd->save.conv, (int64)val);
-}
-
-/**
- * Set the string value of a setting.
- * @param ptr Pointer to the storage location (might be a pointer to a pointer).
- * @param sld Pointer to the information for the conversions and limitations to apply.
- * @param p   The string to save.
- */
-static void Write_ValidateString(void *ptr, const SaveLoad *sld, const char *p)
-{
-	switch (GetVarMemType(sld->conv)) {
-		case SLE_VAR_STRB:
-		case SLE_VAR_STRBQ:
-			if (p != nullptr) {
-				char *begin = (char*)ptr;
-				char *end = begin + sld->length - 1;
-				strecpy(begin, p, end);
-				str_validate(begin, end, SVS_NONE);
-			}
-			break;
-
-		case SLE_VAR_STR:
-		case SLE_VAR_STRQ:
-			free(*(char**)ptr);
-			*(char**)ptr = p == nullptr ? nullptr : stredup(p);
-			break;
-
-		default: NOT_REACHED();
-	}
 }
 
 /**
@@ -609,10 +579,6 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 			case SDT_ONEOFMANY:
 			case SDT_MANYOFMANY:
 				Write_ValidateSetting(ptr, sd, (int32)(size_t)p);
-				break;
-
-			case SDT_STRING:
-				Write_ValidateString(ptr, sld, (const char *)p);
 				break;
 
 			case SDT_STDSTRING:
@@ -735,24 +701,6 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 				}
 				break;
 			}
-
-			case SDT_STRING:
-				switch (GetVarMemType(sld->conv)) {
-					case SLE_VAR_STRB: strecpy(buf, (char*)ptr, lastof(buf)); break;
-					case SLE_VAR_STRBQ:seprintf(buf, lastof(buf), "\"%s\"", (char*)ptr); break;
-					case SLE_VAR_STR:  strecpy(buf, *(char**)ptr, lastof(buf)); break;
-
-					case SLE_VAR_STRQ:
-						if (*(char**)ptr == nullptr) {
-							buf[0] = '\0';
-						} else {
-							seprintf(buf, lastof(buf), "\"%s\"", *(char**)ptr);
-						}
-						break;
-
-					default: NOT_REACHED();
-				}
-				break;
 
 			case SDT_STDSTRING:
 				switch (GetVarMemType(sld->conv)) {
@@ -2123,11 +2071,7 @@ bool SetSettingValue(uint index, const char *value, bool force_newgame)
 	}
 
 	void *ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
-	if (sd->desc.cmd == SDT_STRING) {
-		Write_ValidateString(ptr, &sd->save, value);
-	} else {
-		Write_ValidateStdString(ptr, sd, value);
-	}
+	Write_ValidateStdString(ptr, sd, value);
 	if (sd->desc.proc != nullptr) sd->desc.proc(0);
 
 	if (_save_config) SaveToConfig();
@@ -2184,7 +2128,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 	}
 
 	bool success;
-	if (sd->desc.cmd == SDT_STRING || sd->desc.cmd == SDT_STDSTRING) {
+	if (sd->desc.cmd == SDT_STDSTRING) {
 		success = SetSettingValue(index, value, force_newgame);
 	} else {
 		uint32 val;
@@ -2235,9 +2179,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 
 	ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
 
-	if (sd->desc.cmd == SDT_STRING) {
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
-	} else if (sd->desc.cmd == SDT_STDSTRING) {
+	if (sd->desc.cmd == SDT_STDSTRING) {
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, reinterpret_cast<const std::string *>(ptr)->c_str());
 	} else {
 		if (sd->desc.cmd == SDT_BOOLX) {
@@ -2268,8 +2210,6 @@ void IConsoleListSettings(const char *prefilter)
 
 		if (sd->desc.cmd == SDT_BOOLX) {
 			seprintf(value, lastof(value), (*(const bool *)ptr != 0) ? "on" : "off");
-		} else if (sd->desc.cmd == SDT_STRING) {
-			seprintf(value, lastof(value), "%s", (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ) ? *(const char * const *)ptr : (const char *)ptr);
 		} else if (sd->desc.cmd == SDT_STDSTRING) {
 			seprintf(value, lastof(value), "%s", reinterpret_cast<const std::string *>(ptr)->c_str());
 		} else {
