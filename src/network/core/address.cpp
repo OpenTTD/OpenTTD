@@ -130,7 +130,7 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 		 * bothered to implement the specifications and allow '0' as value
 		 * that means "don't care whether it is SOCK_STREAM or SOCK_DGRAM".
 		 */
-		this->Resolve(this->address.ss_family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc);
+		this->Resolve(this->address.ss_family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc, true);
 		this->resolved = true;
 	}
 	return &this->address;
@@ -144,7 +144,7 @@ const sockaddr_storage *NetworkAddress::GetAddress()
 bool NetworkAddress::IsFamily(int family)
 {
 	if (!this->IsResolved()) {
-		this->Resolve(family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc);
+		this->Resolve(family, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ResolveLoopProc, true);
 	}
 	return this->address.ss_family == family;
 }
@@ -215,9 +215,11 @@ bool NetworkAddress::IsInNetmask(const char *netmask)
  * @param flags the flags to send to getaddrinfo
  * @param sockets the list of sockets to add the sockets to
  * @param func the inner working while looping over the address info
+ * @param resolve_only whether we are only resolving, and not really creating a socket
  * @return the resolved socket or INVALID_SOCKET.
  */
-SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *sockets, LoopProc func)
+template<typename T>
+SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *sockets, T func, bool resolve_only)
 {
 	struct addrinfo *ai;
 	struct addrinfo hints;
@@ -253,11 +255,10 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 		_resolve_timeout_error_message_shown = true;
 	}
 
-
 	if (reset_hostname) strecpy(this->hostname, "", lastof(this->hostname));
 
 	if (e != 0) {
-		if (func != ResolveLoopProc) {
+		if (!resolve_only) {
 			DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s failed: %s",
 				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)).c_str());
 		}
@@ -307,9 +308,11 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 /**
  * Helper function to resolve a connected socket.
  * @param runp information about the socket to try not
+ * @param bind_address The local address to bind to, or nullptr.
+ * @param bind_address_length The length of bind_address, or 0.
  * @return the opened socket or INVALID_SOCKET
  */
-static SOCKET ConnectLoopProc(addrinfo *runp)
+static SOCKET ConnectLoopProc(addrinfo *runp, const sockaddr *bind_address, int bind_address_length)
 {
 	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
 	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
@@ -320,6 +323,14 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 	if (sock == INVALID_SOCKET) {
 		DEBUG(net, 1, "[%s] could not create %s socket: %s", type, family, NetworkGetLastErrorString());
 		return INVALID_SOCKET;
+	}
+
+	if (bind_address != nullptr && bind_address_length > 0) {
+		if (bind(sock, bind_address, bind_address_length) != 0) {
+			DEBUG(net, 1, "[%s] could not bind socket: %s", type, NetworkGetLastErrorString());
+			closesocket(sock);
+			return INVALID_SOCKET;
+		}
 	}
 
 	if (!SetNoDelay(sock)) DEBUG(net, 1, "[%s] setting TCP_NODELAY failed", type);
@@ -372,13 +383,28 @@ static SOCKET ConnectLoopProc(addrinfo *runp)
 
 /**
  * Connect to the given address.
- * @return the connected socket or INVALID_SOCKET.
+ * @return The connected socket or INVALID_SOCKET.
  */
 SOCKET NetworkAddress::Connect()
 {
 	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString().c_str());
 
-	return this->Resolve(AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ConnectLoopProc);
+	return this->Resolve(AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG, nullptr, [](addrinfo *runp) { return ConnectLoopProc(runp, nullptr, 0); });
+}
+
+/**
+ * Connect to the given address.
+ * @param bind_address Local address to bind the socket on.
+ * @return The connected socket or INVALID_SOCKET.
+ */
+SOCKET NetworkAddress::Connect(NetworkAddress &bind_address)
+{
+	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString().c_str());
+
+	const sockaddr *bind_sockaddr = (const sockaddr *)bind_address.GetAddress();
+	int bind_sockaddr_len = bind_address.GetAddressLength();
+
+	return this->Resolve(AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG, nullptr, [bind_sockaddr, bind_sockaddr_len](addrinfo *runp) { return ConnectLoopProc(runp, bind_sockaddr, bind_sockaddr_len); });
 }
 
 /**

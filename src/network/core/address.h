@@ -40,7 +40,8 @@ private:
 	 */
 	typedef SOCKET (*LoopProc)(addrinfo *runp);
 
-	SOCKET Resolve(int family, int socktype, int flags, SocketList *sockets, LoopProc func);
+	template<typename T>
+	SOCKET Resolve(int family, int socktype, int flags, SocketList *sockets, T func, bool resolve_only = false);
 public:
 	/**
 	 * Create a network address based on a resolved IP and port.
@@ -175,6 +176,7 @@ public:
 	}
 
 	SOCKET Connect();
+	SOCKET Connect(NetworkAddress &bind_address);
 	void Listen(int socktype, SocketList *sockets);
 
 	static const char *SocketTypeAsString(int socktype);
