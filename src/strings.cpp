@@ -2090,9 +2090,9 @@ class LanguagePackGlyphSearcher : public MissingGlyphSearcher {
 	void SetFontNames(FreeTypeSettings *settings, const char *font_name, const void *os_data) override
 	{
 #if defined(WITH_FREETYPE) || defined(_WIN32) || defined(WITH_COCOA)
-		strecpy(settings->small.font,  font_name, lastof(settings->small.font));
-		strecpy(settings->medium.font, font_name, lastof(settings->medium.font));
-		strecpy(settings->large.font,  font_name, lastof(settings->large.font));
+		settings->small.font = font_name;
+		settings->medium.font = font_name;
+		settings->large.font = font_name;
 
 		settings->small.os_handle = os_data;
 		settings->medium.os_handle = os_data;
@@ -2123,15 +2123,14 @@ void CheckForMissingGlyphs(bool base_font, MissingGlyphSearcher *searcher)
 	if (bad_font) {
 		/* We found an unprintable character... lets try whether we can find
 		 * a fallback font that can print the characters in the current language. */
-		FreeTypeSettings backup;
-		memcpy(&backup, &_freetype, sizeof(backup));
+		FreeTypeSettings backup = _freetype;
 
 		_freetype.mono.os_handle = nullptr;
 		_freetype.medium.os_handle = nullptr;
 
 		bad_font = !SetFallbackFont(&_freetype, _langpack.langpack->isocode, _langpack.langpack->winlangid, searcher);
 
-		memcpy(&_freetype, &backup, sizeof(backup));
+		_freetype = backup;
 
 		if (!bad_font) {
 			/* Show that we loaded fallback font. To do this properly we have

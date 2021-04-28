@@ -359,7 +359,7 @@ void LoadCoreTextFont(FontSize fs)
 		case FS_MONO:   settings = &_freetype.mono;   break;
 	}
 
-	if (StrEmpty(settings->font)) return;
+	if (settings->font.empty()) return;
 
 	CFAutoRelease<CTFontDescriptorRef> font_ref;
 
@@ -375,10 +375,10 @@ void LoadCoreTextFont(FontSize fs)
 
 		/* See if this is an absolute path. */
 		if (FileExists(settings->font)) {
-			path.reset(CFStringCreateWithCString(kCFAllocatorDefault, settings->font, kCFStringEncodingUTF8));
+			path.reset(CFStringCreateWithCString(kCFAllocatorDefault, settings->font.c_str(), kCFStringEncodingUTF8));
 		} else {
 			/* Scan the search-paths to see if it can be found. */
-			std::string full_font = FioFindFullPath(BASE_DIR, settings->font);
+			std::string full_font = FioFindFullPath(BASE_DIR, settings->font.c_str());
 			if (!full_font.empty()) {
 				path.reset(CFStringCreateWithCString(kCFAllocatorDefault, full_font.c_str(), kCFStringEncodingUTF8));
 			}
@@ -393,13 +393,13 @@ void LoadCoreTextFont(FontSize fs)
 				font_ref.reset((CTFontDescriptorRef)CFArrayGetValueAtIndex(descs.get(), 0));
 				CFRetain(font_ref.get());
 			} else {
-				ShowInfoF("Unable to load file '%s' for %s font, using default OS font selection instead", settings->font, SIZE_TO_NAME[fs]);
+				ShowInfoF("Unable to load file '%s' for %s font, using default OS font selection instead", settings->font.c_str(), SIZE_TO_NAME[fs]);
 			}
 		}
 	}
 
 	if (!font_ref) {
-		CFAutoRelease<CFStringRef> name(CFStringCreateWithCString(kCFAllocatorDefault, settings->font, kCFStringEncodingUTF8));
+		CFAutoRelease<CFStringRef> name(CFStringCreateWithCString(kCFAllocatorDefault, settings->font.c_str(), kCFStringEncodingUTF8));
 
 		/* Simply creating the font using CTFontCreateWithNameAndSize will *always* return
 		 * something, no matter the name. As such, we can't use it to check for existence.
@@ -417,7 +417,7 @@ void LoadCoreTextFont(FontSize fs)
 	}
 
 	if (!font_ref) {
-		ShowInfoF("Unable to use '%s' for %s font, using sprite font instead", settings->font, SIZE_TO_NAME[fs]);
+		ShowInfoF("Unable to use '%s' for %s font, using sprite font instead", settings->font.c_str(), SIZE_TO_NAME[fs]);
 		return;
 	}
 
