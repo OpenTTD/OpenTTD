@@ -137,6 +137,12 @@
 #	endif
 #endif /* __GNUC__ || __clang__ */
 
+#if __GNUC__ > 11 || (__GNUC__ == 11 && __GNUC_MINOR__ >= 1)
+#      define NOACCESS(args) __attribute__ ((access (none, args)))
+#else
+#      define NOACCESS(args)
+#endif
+
 #if defined(__WATCOMC__)
 #	define NORETURN
 #	define CDECL
