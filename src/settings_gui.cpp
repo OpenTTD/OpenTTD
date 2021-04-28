@@ -2668,7 +2668,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_SEPARATOR:
 				SetDParamStr(0, _custom_currency.separator);
 				str = STR_JUST_RAW_STRING;
-				len = sizeof(_custom_currency.separator) - 1; // Number of characters excluding '\0' termination
+				len = 7;
 				line = WID_CC_SEPARATOR;
 				break;
 
@@ -2676,7 +2676,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_PREFIX:
 				SetDParamStr(0, _custom_currency.prefix);
 				str = STR_JUST_RAW_STRING;
-				len = sizeof(_custom_currency.prefix) - 1; // Number of characters excluding '\0' termination
+				len = 15;
 				line = WID_CC_PREFIX;
 				break;
 
@@ -2684,7 +2684,7 @@ struct CustomCurrencyWindow : Window {
 			case WID_CC_SUFFIX:
 				SetDParamStr(0, _custom_currency.suffix);
 				str = STR_JUST_RAW_STRING;
-				len = sizeof(_custom_currency.suffix) - 1; // Number of characters excluding '\0' termination
+				len = 15;
 				line = WID_CC_SUFFIX;
 				break;
 
@@ -2728,15 +2728,15 @@ struct CustomCurrencyWindow : Window {
 				break;
 
 			case WID_CC_SEPARATOR: // Thousands separator
-				strecpy(_custom_currency.separator, str, lastof(_custom_currency.separator));
+				_custom_currency.separator = str;
 				break;
 
 			case WID_CC_PREFIX:
-				strecpy(_custom_currency.prefix, str, lastof(_custom_currency.prefix));
+				_custom_currency.prefix = str;
 				break;
 
 			case WID_CC_SUFFIX:
-				strecpy(_custom_currency.suffix, str, lastof(_custom_currency.suffix));
+				_custom_currency.suffix = str;
 				break;
 
 			case WID_CC_YEAR: { // Year to switch to euro
