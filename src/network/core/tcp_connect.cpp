@@ -23,10 +23,13 @@
 static std::vector<TCPConnecter *> _tcp_connecters;
 
 /**
- * Create a new connecter for the given address
- * @param connection_string the address to connect to
+ * Create a new connecter for the given address.
+ * @param connection_string the address to connect to.
+ * @param default_port If not indicated in connection_string, what port to use.
+ * @param bind_address The local bind address to use. Defaults to letting the OS find one.
  */
-TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_port)
+TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address) :
+	bind_address(bind_address)
 {
 	this->connection_string = NormalizeConnectionString(connection_string, default_port);
 
@@ -58,6 +61,14 @@ void TCPConnecter::Connect(addrinfo *address)
 	if (sock == INVALID_SOCKET) {
 		Debug(net, 0, "Could not create {} {} socket: {}", NetworkAddress::SocketTypeAsString(address->ai_socktype), NetworkAddress::AddressFamilyAsString(address->ai_family), NetworkError::GetLast().AsString());
 		return;
+	}
+
+	if (this->bind_address.GetPort() > 0) {
+		if (bind(sock, (const sockaddr *)this->bind_address.GetAddress(), this->bind_address.GetAddressLength()) != 0) {
+			Debug(net, 1, "Could not bind socket on {}: {}", this->bind_address.GetAddressAsString(), NetworkError::GetLast().AsString());
+			closesocket(sock);
+			return;
+		}
 	}
 
 	if (!SetNoDelay(sock)) {
