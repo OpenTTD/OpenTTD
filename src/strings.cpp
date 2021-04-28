@@ -343,8 +343,8 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 	uint64 tot = 0;
 	for (int i = 0; i < max_digits; i++) {
 		if (i == max_digits - fractional_digits) {
-			const char *decimal_separator = _settings_game.locale.digit_decimal_separator;
-			if (decimal_separator == nullptr) decimal_separator = _langpack.langpack->digit_decimal_separator;
+			const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
+			if (StrEmpty(decimal_separator)) decimal_separator = _langpack.langpack->digit_decimal_separator;
 			buff += seprintf(buff, last, "%s", decimal_separator);
 		}
 
@@ -368,8 +368,8 @@ static char *FormatNumber(char *buff, int64 number, const char *last, const char
 
 static char *FormatCommaNumber(char *buff, int64 number, const char *last, int fractional_digits = 0)
 {
-	const char *separator = _settings_game.locale.digit_group_separator;
-	if (separator == nullptr) separator = _langpack.langpack->digit_group_separator;
+	const char *separator = _settings_game.locale.digit_group_separator.c_str();
+	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator;
 	return FormatNumber(buff, number, last, separator, 1, fractional_digits);
 }
 
@@ -407,8 +407,8 @@ static char *FormatBytes(char *buff, int64 number, const char *last)
 		id++;
 	}
 
-	const char *decimal_separator = _settings_game.locale.digit_decimal_separator;
-	if (decimal_separator == nullptr) decimal_separator = _langpack.langpack->digit_decimal_separator;
+	const char *decimal_separator = _settings_game.locale.digit_decimal_separator.c_str();
+	if (StrEmpty(decimal_separator)) decimal_separator = _langpack.langpack->digit_decimal_separator;
 
 	if (number < 1024) {
 		id = 0;
@@ -501,9 +501,9 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money n
 		}
 	}
 
-	const char *separator = _settings_game.locale.digit_group_separator_currency;
-	if (separator == nullptr && !StrEmpty(_currency->separator)) separator = _currency->separator;
-	if (separator == nullptr) separator = _langpack.langpack->digit_group_separator_currency;
+	const char *separator = _settings_game.locale.digit_group_separator_currency.c_str();
+	if (StrEmpty(separator)) separator = _currency->separator;
+	if (StrEmpty(separator)) separator = _langpack.langpack->digit_group_separator_currency;
 	buff = FormatNumber(buff, number, last, separator);
 	buff = strecpy(buff, multiplier, last);
 
