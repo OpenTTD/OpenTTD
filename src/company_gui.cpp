@@ -1840,8 +1840,7 @@ struct CompanyInfrastructureWindow : Window
 
 				size->width = std::max(size->width, GetStringBoundingBox(STR_COMPANY_INFRASTRUCTURE_VIEW_RAIL_SECT).width);
 
-				RailType rt;
-				FOR_ALL_SORTED_RAILTYPES(rt) {
+				for (const auto &rt : _sorted_railtypes) {
 					if (HasBit(this->railtypes, rt)) {
 						lines++;
 						SetDParam(0, GetRailTypeInfo(rt)->strings.name);
@@ -1973,8 +1972,7 @@ struct CompanyInfrastructureWindow : Window
 
 				if (this->railtypes != RAILTYPES_NONE) {
 					/* Draw name of each valid railtype. */
-					RailType rt;
-					FOR_ALL_SORTED_RAILTYPES(rt) {
+					for (const auto &rt : _sorted_railtypes) {
 						if (HasBit(this->railtypes, rt)) {
 							SetDParam(0, GetRailTypeInfo(rt)->strings.name);
 							DrawString(r.left + offs_left, r.right - offs_right, y += FONT_HEIGHT_NORMAL, STR_WHITE_STRING);
@@ -1991,8 +1989,7 @@ struct CompanyInfrastructureWindow : Window
 			case WID_CI_RAIL_COUNT: {
 				/* Draw infrastructure count for each valid railtype. */
 				uint32 rail_total = c->infrastructure.GetRailTotal();
-				RailType rt;
-				FOR_ALL_SORTED_RAILTYPES(rt) {
+				for (const auto &rt : _sorted_railtypes) {
 					if (HasBit(this->railtypes, rt)) {
 						this->DrawCountLine(r, y, c->infrastructure.rail[rt], RailMaintenanceCost(rt, c->infrastructure.rail[rt], rail_total));
 					}
