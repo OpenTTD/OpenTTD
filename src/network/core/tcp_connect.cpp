@@ -36,6 +36,26 @@ TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_
 	_tcp_connecters.push_back(this);
 }
 
+/**
+ * Create a new connecter for the server.
+ * @param connection_string The address to connect to.
+ * @param default_port If not indicated in connection_string, what port to use.
+ */
+TCPServerConnecter::TCPServerConnecter(const std::string &connection_string, uint16 default_port) :
+	server_address(ServerAddress::Parse(connection_string, default_port))
+{
+	switch (this->server_address.type) {
+		case SERVER_ADDRESS_DIRECT:
+			this->connection_string = this->server_address.connection_string;
+			break;
+
+		default:
+			NOT_REACHED();
+	}
+
+	_tcp_connecters.push_back(this);
+}
+
 TCPConnecter::~TCPConnecter()
 {
 	if (this->resolve_thread.joinable()) {

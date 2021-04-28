@@ -64,7 +64,7 @@ static void NetworkGameListHandleDelayedInsert()
 /**
  * Add a new item to the linked gamelist. If the IP and Port match
  * return the existing item instead of adding it again
- * @param address the address of the to-be added item
+ * @param connection_string the address of the to-be added item
  * @return a point to the newly added or already existing item
  */
 NetworkGameList *NetworkGameListAddItem(const std::string &connection_string)
@@ -72,7 +72,7 @@ NetworkGameList *NetworkGameListAddItem(const std::string &connection_string)
 	NetworkGameList *item, *prev_item;
 
 	/* Parse the connection string to ensure the default port is there. */
-	const std::string resolved_connection_string = ParseConnectionString(connection_string, NETWORK_DEFAULT_PORT).GetAddressAsString(false);
+	const std::string resolved_connection_string = ServerAddress::Parse(connection_string, NETWORK_DEFAULT_PORT).connection_string;
 
 	prev_item = nullptr;
 	for (item = _network_game_list; item != nullptr; item = item->next) {

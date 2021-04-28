@@ -104,9 +104,14 @@ private:
 	void Connect(addrinfo *address);
 	bool CheckActivity();
 
+	/* We do not want any other derived classes from this class being able to
+	 * access these private members, but it is okay for TCPServerConnecter. */
+	friend class TCPServerConnecter;
+
 	static void ResolveThunk(TCPConnecter *connecter);
 
 public:
+	TCPConnecter() {};
 	TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address = {});
 	virtual ~TCPConnecter();
 
@@ -123,6 +128,13 @@ public:
 
 	static void CheckCallbacks();
 	static void KillAll();
+};
+
+class TCPServerConnecter : public TCPConnecter {
+public:
+	ServerAddress server_address; ///< Address we are connecting to.
+
+	TCPServerConnecter(const std::string &connection_string, uint16 default_port);
 };
 
 #endif /* NETWORK_CORE_TCP_H */

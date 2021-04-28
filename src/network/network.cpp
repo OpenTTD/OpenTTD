@@ -532,23 +532,6 @@ NetworkAddress ParseConnectionString(const std::string &connection_string, uint1
 }
 
 /**
- * Convert a string containing either "hostname" or "hostname:ip" to a
- * NetworkAddress, where the string can be postfixed with "#company" to
- * indicate the requested company.
- *
- * @param connection_string The string to parse.
- * @param default_port The default port to set port to if not in connection_string.
- * @param company Pointer to the company variable to set iff indicted.
- * @return A valid NetworkAddress of the parsed information.
- */
-static NetworkAddress ParseGameConnectionString(const std::string &connection_string, uint16 default_port, CompanyID *company)
-{
-	uint16 port = default_port;
-	std::string_view ip = ParseFullConnectionString(connection_string, port, company);
-	return NetworkAddress(ip, port);
-}
-
-/**
  * Handle the accepting of a connection to the server.
  * @param s The socket of the new connection.
  * @param address The address of the peer.
@@ -622,12 +605,12 @@ static void NetworkInitialize(bool close_admins = true)
 }
 
 /** Non blocking connection to query servers for their game info. */
-class TCPQueryConnecter : TCPConnecter {
+class TCPQueryConnecter : TCPServerConnecter {
 private:
 	std::string connection_string;
 
 public:
-	TCPQueryConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
+	TCPQueryConnecter(const std::string &connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{
@@ -659,12 +642,12 @@ void NetworkQueryServer(const std::string &connection_string)
 }
 
 /** Non blocking connection to query servers for their game and company info. */
-class TCPLobbyQueryConnecter : TCPConnecter {
+class TCPLobbyQueryConnecter : TCPServerConnecter {
 private:
 	std::string connection_string;
 
 public:
-	TCPLobbyQueryConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
+	TCPLobbyQueryConnecter(const std::string &connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{
@@ -751,12 +734,12 @@ void NetworkRebuildHostList()
 }
 
 /** Non blocking connection create to actually connect to servers */
-class TCPClientConnecter : TCPConnecter {
+class TCPClientConnecter : TCPServerConnecter {
 private:
 	std::string connection_string;
 
 public:
-	TCPClientConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
+	TCPClientConnecter(const std::string &connection_string) : TCPServerConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{
@@ -792,7 +775,7 @@ public:
 bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password, const std::string &join_company_password)
 {
 	CompanyID join_as = default_company;
-	std::string resolved_connection_string = ParseGameConnectionString(connection_string, NETWORK_DEFAULT_PORT, &join_as).GetAddressAsString(false);
+	std::string resolved_connection_string = ServerAddress::Parse(connection_string, NETWORK_DEFAULT_PORT, &join_as).connection_string;
 
 	if (!_network_available) return false;
 	if (!NetworkValidateOurClientName()) return false;
