@@ -238,8 +238,7 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 {
 	if (_settings_client.music.effect_vol == 0) return;
 
-	const Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
+	for (const Window *w : Window::IterateFromBack()) {
 		const Viewport *vp = w->viewport;
 
 		if (vp != nullptr &&
