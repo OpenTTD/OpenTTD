@@ -472,9 +472,8 @@ public:
 		EM_ASM(if (window["openttd_server_list"]) openttd_server_list());
 #endif
 
-		this->last_joined = NetworkGameListAddItem(ParseConnectionString(_settings_client.network.last_joined, NETWORK_DEFAULT_PORT));
+		this->last_joined = NetworkAddServer(_settings_client.network.last_joined);
 		this->server = this->last_joined;
-		if (this->last_joined != nullptr) NetworkUDPQueryServer(this->last_joined->address);
 
 		this->requery_timer.SetInterval(MILLISECONDS_PER_TICK);
 
@@ -750,7 +749,7 @@ public:
 				break;
 
 			case WID_NG_REFRESH: // Refresh
-				if (this->server != nullptr) NetworkUDPQueryServer(this->server->address);
+				if (this->server != nullptr) NetworkTCPQueryServer(this->server->address);
 				break;
 
 			case WID_NG_NEWGRF: // NewGRF Settings
@@ -971,7 +970,7 @@ void ShowNetworkGameWindow()
 		first = false;
 		/* Add all servers from the config file to our list. */
 		for (const auto &iter : _network_host_list) {
-			NetworkAddServer(iter.c_str());
+			NetworkAddServer(iter);
 		}
 	}
 
@@ -1485,7 +1484,7 @@ struct NetworkLobbyWindow : public Window {
 				/* Clear the information so removed companies don't remain */
 				for (auto &company : this->company_info) company = {};
 
-				NetworkTCPQueryServer(this->server->address);
+				NetworkTCPQueryServer(this->server->address, true);
 				break;
 		}
 	}
@@ -1555,7 +1554,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 
 	strecpy(_settings_client.network.last_joined, ngl->address.GetAddressAsString(false).c_str(), lastof(_settings_client.network.last_joined));
 
-	NetworkTCPQueryServer(ngl->address);
+	NetworkTCPQueryServer(ngl->address, true);
 
 	new NetworkLobbyWindow(&_network_lobby_window_desc, ngl);
 }
