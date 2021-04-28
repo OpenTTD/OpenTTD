@@ -137,6 +137,7 @@ public:
 
 	bool HasAnimBuffer() override { return true; }
 	uint8 *GetAnimBuffer() override { return this->anim_buffer; }
+	int GetAnimBufferPitch() override { return _screen.pitch; }
 
 	void ToggleVsync(bool vsync) override;
 
