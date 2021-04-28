@@ -98,6 +98,7 @@ private:
 	std::chrono::steady_clock::time_point last_attempt; ///< Time we last tried to connect.
 
 	std::string connection_string;                      ///< Current address we are connecting to (before resolving).
+	NetworkAddress bind_address;                        ///< Address we're binding to, if any.
 
 	void Resolve();
 	void OnResolved(addrinfo *ai);
@@ -113,7 +114,7 @@ private:
 
 public:
 	TCPConnecter() {};
-	TCPConnecter(const std::string &connection_string, uint16 default_port);
+	TCPConnecter(const std::string &connection_string, uint16 default_port, NetworkAddress bind_address = {});
 	virtual ~TCPConnecter();
 
 	/**
