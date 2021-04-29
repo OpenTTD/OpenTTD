@@ -12,7 +12,7 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "../../rev.h"
-#include "../network_func.h"
+#include "../network_internal.h"
 #include "game_info.h"
 
 #include "tcp_http.h"

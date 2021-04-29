@@ -473,21 +473,10 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		if (_switch_mode != SM_NONE) MakeNewgameSettingsLive();
 
 		if (_network_available && network_conn != nullptr) {
-			CompanyID join_as = COMPANY_NEW_COMPANY;
-			NetworkAddress address = ParseGameConnectionString(&join_as, network_conn, NETWORK_DEFAULT_PORT);
-
-			if (join_as != COMPANY_NEW_COMPANY && join_as != COMPANY_SPECTATOR) {
-				join_as--;
-				if (join_as >= MAX_COMPANIES) {
-					delete this;
-					return;
-				}
-			}
-
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
 
-			NetworkClientConnectGame(address, join_as, join_server_password, join_company_password);
+			NetworkClientConnectGame(network_conn, COMPANY_NEW_COMPANY, join_server_password, join_company_password);
 		}
 
 		/* After the scan we're not used anymore. */
@@ -763,8 +752,7 @@ int openttd_main(int argc, char *argv[])
 	NetworkStartUp(); // initialize network-core
 
 	if (debuglog_conn != nullptr && _network_available) {
-		NetworkAddress address = ParseConnectionString(debuglog_conn, NETWORK_DEFAULT_DEBUGLOG_PORT);
-		NetworkStartDebugLog(address);
+		NetworkStartDebugLog(debuglog_conn);
 	}
 
 	if (!HandleBootstrap()) {
@@ -1476,8 +1464,7 @@ void GameLoop()
 		if (_network_reconnect > 0 && --_network_reconnect == 0) {
 			/* This means that we want to reconnect to the last host
 			 * We do this here, because it means that the network is really closed */
-			NetworkAddress address = ParseConnectionString(_settings_client.network.last_joined, NETWORK_DEFAULT_PORT);
-			NetworkClientConnectGame(address, COMPANY_SPECTATOR);
+			NetworkClientConnectGame(_settings_client.network.last_joined, COMPANY_SPECTATOR);
 		}
 		/* Singleplayer */
 		StateGameLoop();

@@ -490,10 +490,10 @@ void ParseFullConnectionString(const char **company, const char **port, char *co
  * @param default_port The default port to set port to if not in connection_string.
  * @return A valid NetworkAddress of the parsed information.
  */
-NetworkAddress ParseConnectionString(const char *connection_string, int default_port)
+NetworkAddress ParseConnectionString(const std::string &connection_string, int default_port)
 {
 	char internal_connection_string[NETWORK_HOSTNAME_PORT_LENGTH];
-	strecpy(internal_connection_string, connection_string, lastof(internal_connection_string));
+	strecpy(internal_connection_string, connection_string.c_str(), lastof(internal_connection_string));
 
 	const char *port = nullptr;
 	ParseFullConnectionString(nullptr, &port, internal_connection_string);
@@ -512,10 +512,10 @@ NetworkAddress ParseConnectionString(const char *connection_string, int default_
  * @param default_port The default port to set port to if not in connection_string.
  * @return A valid NetworkAddress of the parsed information.
  */
-NetworkAddress ParseGameConnectionString(CompanyID *company, const char *connection_string, int default_port)
+NetworkAddress ParseGameConnectionString(CompanyID *company, const std::string &connection_string, int default_port)
 {
 	char internal_connection_string[NETWORK_HOSTNAME_PORT_LENGTH + 4]; // 4 extra for the "#" and company
-	strecpy(internal_connection_string, connection_string, lastof(internal_connection_string));
+	strecpy(internal_connection_string, connection_string.c_str(), lastof(internal_connection_string));
 
 	const char *port_s = nullptr;
 	const char *company_s = nullptr;
@@ -693,6 +693,20 @@ public:
 	}
 };
 
+void NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const char *join_server_password, const char *join_company_password)
+{
+	CompanyID join_as = default_company;
+	NetworkAddress address = ParseGameConnectionString(&join_as, connection_string, NETWORK_DEFAULT_PORT);
+
+	if (join_as != COMPANY_NEW_COMPANY && join_as != COMPANY_SPECTATOR) {
+		join_as--;
+		if (join_as >= MAX_COMPANIES) {
+			return;
+		}
+	}
+
+	NetworkClientConnectGame(address, join_as, join_server_password, join_company_password);
+}
 
 /* Used by clients, to connect to a server */
 void NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const char *join_server_password, const char *join_company_password)
@@ -1063,9 +1077,11 @@ static void NetworkGenerateServerId()
 	seprintf(_settings_client.network.network_id, lastof(_settings_client.network.network_id), "%s", hex_output);
 }
 
-void NetworkStartDebugLog(NetworkAddress &address)
+void NetworkStartDebugLog(const std::string &connection_string)
 {
 	extern SOCKET _debug_socket;  // Comes from debug.c
+
+	NetworkAddress address = ParseConnectionString(connection_string, NETWORK_DEFAULT_DEBUGLOG_PORT);
 
 	DEBUG(net, 0, "Redirecting DEBUG() to %s", address.GetAddressAsString().c_str());
 

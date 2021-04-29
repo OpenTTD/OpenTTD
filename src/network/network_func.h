@@ -18,7 +18,6 @@
 // #define DEBUG_FAILED_DUMP_COMMANDS
 
 #include "network_type.h"
-#include "core/address.h"
 #include "../console_type.h"
 #include "../gfx_type.h"
 #include "../openttd.h"
@@ -47,14 +46,12 @@ void NetworkDisconnect(bool blocking = false, bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
 void ParseFullConnectionString(const char **company, const char **port, char *connection_string);
-NetworkAddress ParseConnectionString(const char *connection_string, int default_port);
-NetworkAddress ParseGameConnectionString(CompanyID *company, const char *connection_string, int default_port);
-void NetworkStartDebugLog(NetworkAddress &address);
+void NetworkStartDebugLog(const std::string &connection_string);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
 void NetworkClientsToSpectators(CompanyID cid);
-void NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const char *join_server_password = nullptr, const char *join_company_password = nullptr);
+void NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const char *join_server_password = nullptr, const char *join_company_password = nullptr);
 void NetworkClientRequestMove(CompanyID company, const char *pass = "");
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data = 0);

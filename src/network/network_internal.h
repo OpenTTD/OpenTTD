@@ -119,4 +119,8 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkFindName(char *new_name, const char *last);
 const char *GenerateCompanyPasswordHash(const char *password, const char *password_server_id, uint32 password_game_seed);
 
+void NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const char *join_server_password = nullptr, const char *join_company_password = nullptr);
+NetworkAddress ParseConnectionString(const std::string &connection_string, int default_port);
+NetworkAddress ParseGameConnectionString(CompanyID *company, const std::string &connection_string, int default_port);
+
 #endif /* NETWORK_INTERNAL_H */
