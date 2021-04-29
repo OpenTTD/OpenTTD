@@ -1345,12 +1345,12 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
  * @param extension the extension of files to search for.
  * @param tar       the tar to search in.
  */
-static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterator tar)
+static uint ScanTar(FileScanner *fs, const char *extension, const TarFileList::value_type &tar)
 {
 	uint num = 0;
-	const auto &filename = (*tar).first;
+	const auto &filename = tar.first;
 
-	if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename, 0, (*tar).second.tar_filename)) num++;
+	if (MatchesExtension(extension, filename.c_str()) && fs->AddFile(filename, 0, tar.second.tar_filename)) num++;
 
 	return num;
 }
@@ -1369,7 +1369,6 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 	this->subdir = sd;
 
 	Searchpath sp;
-	TarFileList::iterator tar;
 	uint num = 0;
 
 	FOR_ALL_SEARCHPATHS(sp) {
@@ -1381,7 +1380,7 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 	}
 
 	if (tars && sd != NO_DIRECTORY) {
-		FOR_ALL_TARS(tar, sd) {
+		for (const auto &tar : _tar_filelist[sd]) {
 			num += ScanTar(this, extension, tar);
 		}
 	}
