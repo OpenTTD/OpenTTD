@@ -645,9 +645,8 @@ public:
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_VERSION); // server version
 			y += FONT_HEIGHT_NORMAL;
 
-			char network_addr_buffer[NETWORK_HOSTNAME_LENGTH + 6 + 7];
-			sel->address.GetAddressAsString(network_addr_buffer, lastof(network_addr_buffer));
-			SetDParamStr(0, network_addr_buffer);
+			std::string address = sel->address.GetAddressAsString();
+			SetDParamStr(0, address.c_str());
 			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, STR_NETWORK_SERVER_LIST_SERVER_ADDRESS); // server address
 			y += FONT_HEIGHT_NORMAL;
 
