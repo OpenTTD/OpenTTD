@@ -14,8 +14,6 @@
 
 void NetworkUDPInitialize();
 void NetworkUDPSearchGame();
-void NetworkUDPQueryMasterServer();
-void NetworkUDPQueryServer(const std::string &connection_string, bool manually = false);
 void NetworkUDPClose();
 void NetworkUDPServerListen();
 void NetworkBackgroundUDPLoop();
