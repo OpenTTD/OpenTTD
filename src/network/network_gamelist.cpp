@@ -20,7 +20,8 @@
 
 #include "../safeguards.h"
 
-NetworkGameList *_network_game_list = nullptr;
+NetworkGameList *_network_game_list = nullptr; ///< Game list of this client.
+int _network_game_list_version = 0; ///< Current version of all items in the list.
 
 /** The games to insert when the GUI thread has time for us. */
 static std::atomic<NetworkGameList *> _network_game_delayed_insertion_list(nullptr);
@@ -81,6 +82,7 @@ NetworkGameList *NetworkGameListAddItem(const std::string &connection_string)
 	}
 
 	item = new NetworkGameList(resolved_connection_string);
+	item->version = _network_game_list_version;
 
 	if (prev_item == nullptr) {
 		_network_game_list = item;
@@ -118,6 +120,33 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 		}
 		prev_item = item;
 	}
+}
+
+/**
+ * Remove all servers that have not recently been updated.
+ * Call this after you received all the servers from the Game Coordinator, so
+ * the ones that are no longer listed are removed.
+ */
+void NetworkGameListRemoveExpired()
+{
+	NetworkGameList **prev_item = &_network_game_list;
+
+	for (NetworkGameList *item = _network_game_list; item != nullptr;) {
+		if (!item->manually && item->version < _network_game_list_version) {
+			NetworkGameList *remove = item;
+			item = item->next;
+			*prev_item = item;
+
+			/* Remove GRFConfig information */
+			ClearGRFConfigList(&remove->info.grfconfig);
+			delete remove;
+		} else {
+			prev_item = &item->next;
+			item = item->next;
+		}
+	}
+
+	UpdateNetworkGameWindow();
 }
 
 static const uint MAX_GAME_LIST_REQUERY_COUNT  = 10; ///< How often do we requery in number of times per server?
