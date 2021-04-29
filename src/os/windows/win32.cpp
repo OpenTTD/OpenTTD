@@ -209,7 +209,7 @@ void FiosGetDrives(FileList &file_list)
 
 	GetLogicalDriveStrings(lengthof(drives), drives);
 	for (s = drives; *s != '\0';) {
-		FiosItem *fios = file_list.Append();
+		FiosItem *fios = &file_list.emplace_back();
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
 		seprintf(fios->name, lastof(fios->name),  "%c:", s[0] & 0xFF);
