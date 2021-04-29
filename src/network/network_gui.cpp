@@ -751,7 +751,7 @@ public:
 				SetDParamStr(0, _settings_client.network.connect_to_ip);
 				ShowQueryString(
 					STR_JUST_RAW_STRING,
-					STR_NETWORK_SERVER_LIST_ENTER_IP,
+					STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS,
 					NETWORK_HOSTNAME_PORT_LENGTH,  // maximum number of characters including '\0'
 					this, CS_ALPHANUMERAL, QSF_ACCEPT_UNCHANGED);
 				break;
@@ -1633,6 +1633,11 @@ static const NWidgetPart _nested_client_list_widgets[] = {
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_CL_SERVER_VISIBILITY), SetDataTip(STR_BLACK_STRING, STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalTextLines(1, 0), SetDataTip(STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE, STR_NULL),
+					NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY, WID_CL_SERVER_INVITE_CODE), SetFill(1, 0), SetMinimalTextLines(1, 0), SetResize(1, 0), SetDataTip(STR_BLACK_RAW_STRING, STR_NETWORK_CLIENT_LIST_SERVER_INVITE_CODE_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
 					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalTextLines(1, 0), SetDataTip(STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE, STR_NULL),
 					NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 					NWidget(WWT_TEXT, COLOUR_GREY, WID_CL_SERVER_CONNECTION_TYPE), SetFill(1, 0), SetMinimalTextLines(1, 0), SetResize(1, 0), SetDataTip(STR_BLACK_STRING, STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
@@ -2070,6 +2075,12 @@ public:
 			case WID_CL_SERVER_VISIBILITY:
 				SetDParam(0, _server_visibility_dropdown[_settings_client.network.server_advertise]);
 				break;
+
+			case WID_CL_SERVER_INVITE_CODE: {
+				static std::string empty = {};
+				SetDParamStr(0, _network_server_connection_type == CONNECTION_TYPE_UNKNOWN ? empty : _network_server_invite_code);
+				break;
+			}
 
 			case WID_CL_SERVER_CONNECTION_TYPE:
 				SetDParam(0, STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN + _network_server_connection_type);

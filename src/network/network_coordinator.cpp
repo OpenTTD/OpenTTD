@@ -1,4 +1,3 @@
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -27,13 +26,41 @@
 static const auto NETWORK_COORDINATOR_DELAY_BETWEEN_UPDATES = std::chrono::seconds(30); ///< How many time between updates the server sends to the Game Coordinator.
 ClientNetworkCoordinatorSocketHandler _network_coordinator_client; ///< The connection to the Game Coordinator.
 ConnectionType _network_server_connection_type = CONNECTION_TYPE_UNKNOWN; ///< What type of connection the Game Coordinator detected we are on.
+std::string _network_server_invite_code = ""; ///< Our invite code as indicated by the Game Coordinator.
+
+/** Connect to a game server by IP:port. */
+class NetworkDirectConnecter : public TCPConnecter {
+private:
+	std::string token;     ///< Token of this connection.
+	uint8 tracking_number; ///< Tracking number of this connection.
+
+public:
+	/**
+	 * Try to establish a direct (hostname:port based) connection.
+	 * @param hostname The hostname of the server.
+	 * @param port The port of the server.
+	 * @param token The token as given by the Game Coordinator to track this connection attempt.
+	 * @param tracking_number The tracking number as given by the Game Coordinator to track this connection attempt.
+	 */
+	NetworkDirectConnecter(const std::string &hostname, uint16 port, const std::string &token, uint8 tracking_number) : TCPConnecter(hostname, port), token(token), tracking_number(tracking_number) {}
+
+	void OnFailure() override
+	{
+		_network_coordinator_client.ConnectFailure(this->token, this->tracking_number);
+	}
+
+	void OnConnect(SOCKET s) override
+	{
+		_network_coordinator_client.ConnectSuccess(this->token, s);
+	}
+};
 
 /** Connect to the Game Coordinator server. */
 class NetworkCoordinatorConnecter : TCPConnecter {
 public:
 	/**
 	 * Initiate the connecting.
-	 * @param address The address of the Game Coordinator server.
+	 * @param connection_string The address of the Game Coordinator server.
 	 */
 	NetworkCoordinatorConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_COORDINATOR_SERVER_PORT) {}
 
@@ -73,6 +100,20 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_ERROR(Packet *p)
 			this->CloseConnection();
 			return false;
 
+		case NETWORK_COORDINATOR_ERROR_INVALID_INVITE_CODE: {
+			/* Find the connecter based on the invite code. */
+			auto connecter_it = this->connecter_pre.find(detail);
+			if (connecter_it == this->connecter_pre.end()) return true;
+			this->connecter_pre.erase(connecter_it);
+
+			/* Mark the server as offline. */
+			NetworkGameList *item = NetworkGameListAddItem(detail);
+			item->online = false;
+
+			UpdateNetworkGameWindow();
+			return true;
+		}
+
 		default:
 			Debug(net, 0, "Invalid error type {} received from Game Coordinator", error);
 			this->CloseConnection();
@@ -85,11 +126,20 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p)
 	/* Schedule sending an update. */
 	this->next_update = std::chrono::steady_clock::now();
 
+	_settings_client.network.server_invite_code = p->Recv_string(NETWORK_INVITE_CODE_LENGTH);
+	_settings_client.network.server_invite_code_secret = p->Recv_string(NETWORK_INVITE_CODE_SECRET_LENGTH);
 	_network_server_connection_type = (ConnectionType)p->Recv_uint8();
 
 	if (_network_server_connection_type == CONNECTION_TYPE_ISOLATED) {
 		ShowErrorMessage(STR_NETWORK_ERROR_COORDINATOR_ISOLATED, STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL, WL_ERROR);
 	}
+
+	/* Users can change the invite code in the settings, but this has no effect
+	 * on the invite code as assigned by the server. So
+	 * _network_server_invite_code contains the current invite code,
+	 * and _settings_client.network.server_invite_code contains the one we will
+	 * attempt to re-use when registering again. */
+	_network_server_invite_code = _settings_client.network.server_invite_code;
 
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 
@@ -107,7 +157,10 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p)
 		Debug(net, 3, "Your server is now registered with the Game Coordinator:");
 		Debug(net, 3, "  Game type:       Public");
 		Debug(net, 3, "  Connection type: {}", connection_type);
+		Debug(net, 3, "  Invite code:     {}", _network_server_invite_code);
 		Debug(net, 3, "----------------------------------------");
+	} else {
+		Debug(net, 3, "Game Coordinator registered our server with invite code '{}'", _network_server_invite_code);
 	}
 
 	return true;
@@ -130,7 +183,7 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet *p)
 		NetworkGameInfo ngi = {};
 		DeserializeNetworkGameInfo(p, &ngi);
 
-		/* Now we know the join-key, we can add it to our list. */
+		/* Now we know the connection string, we can add it to our list. */
 		NetworkGameList *item = NetworkGameListAddItem(connection_string);
 
 		/* Clear any existing GRFConfig chain. */
@@ -146,6 +199,58 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet *p)
 	}
 
 	UpdateNetworkGameWindow();
+	return true;
+}
+
+bool ClientNetworkCoordinatorSocketHandler::Receive_GC_CONNECTING(Packet *p)
+{
+	std::string token = p->Recv_string(NETWORK_TOKEN_LENGTH);
+	std::string invite_code = p->Recv_string(NETWORK_INVITE_CODE_LENGTH);
+
+	/* Find the connecter based on the invite code. */
+	auto connecter_it = this->connecter_pre.find(invite_code);
+	if (connecter_it == this->connecter_pre.end()) {
+		this->CloseConnection();
+		return false;
+	}
+
+	/* Now store it based on the token. */
+	this->connecter[token] = connecter_it->second;
+	this->connecter_pre.erase(connecter_it);
+
+	return true;
+}
+
+bool ClientNetworkCoordinatorSocketHandler::Receive_GC_CONNECT_FAILED(Packet *p)
+{
+	std::string token = p->Recv_string(NETWORK_TOKEN_LENGTH);
+
+	auto connecter_it = this->connecter.find(token);
+	if (connecter_it != this->connecter.end()) {
+		connecter_it->second->SetFailure();
+		this->connecter.erase(connecter_it);
+	}
+
+	/* Close all remaining connections. */
+	this->CloseToken(token);
+
+	return true;
+}
+
+bool ClientNetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet *p)
+{
+	std::string token = p->Recv_string(NETWORK_TOKEN_LENGTH);
+	uint8 tracking_number = p->Recv_uint8();
+	std::string hostname = p->Recv_string(NETWORK_HOSTNAME_LENGTH);
+	uint16 port = p->Recv_uint16();
+
+	/* Ensure all other pending connection attempts are killed. */
+	if (this->game_connecter != nullptr) {
+		this->game_connecter->Kill();
+		this->game_connecter = nullptr;
+	}
+
+	this->game_connecter = new NetworkDirectConnecter(hostname, port, token, tracking_number);
 	return true;
 }
 
@@ -172,13 +277,15 @@ NetworkRecvStatus ClientNetworkCoordinatorSocketHandler::CloseConnection(bool er
 	_network_server_connection_type = CONNECTION_TYPE_UNKNOWN;
 	this->next_update = {};
 
+	this->CloseAllTokens();
+
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /**
- * Register our server to receive our join-key.
+ * Register our server to receive our invite code.
  */
 void ClientNetworkCoordinatorSocketHandler::Register()
 {
@@ -193,6 +300,13 @@ void ClientNetworkCoordinatorSocketHandler::Register()
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	p->Send_uint8(SERVER_GAME_TYPE_PUBLIC);
 	p->Send_uint16(_settings_client.network.server_port);
+	if (_settings_client.network.server_invite_code.empty() || _settings_client.network.server_invite_code_secret.empty()) {
+		p->Send_string("");
+		p->Send_string("");
+	} else {
+		p->Send_string(_settings_client.network.server_invite_code);
+		p->Send_string(_settings_client.network.server_invite_code_secret);
+	}
 
 	this->SendPacket(p);
 }
@@ -227,6 +341,123 @@ void ClientNetworkCoordinatorSocketHandler::GetListing()
 	p->Send_string(_openttd_revision);
 
 	this->SendPacket(p);
+}
+
+/**
+ * Join a server based on an invite code.
+ * @param invite_code The invite code of the server to connect to.
+ * @param connecter The connecter of the request.
+ */
+void ClientNetworkCoordinatorSocketHandler::ConnectToServer(const std::string &invite_code, TCPServerConnecter *connecter)
+{
+	assert(StrStartsWith(invite_code, "+"));
+
+	if (this->connecter_pre.find(invite_code) != this->connecter_pre.end()) {
+		/* If someone is hammering the refresh key, one can sent out two
+		 * requests for the same invite code. There isn't really a great way
+		 * of handling this, so just ignore this request. */
+		connecter->SetFailure();
+		return;
+	}
+
+	/* Initially we store based on invite code; on first reply we know the
+	 * token, and will start using that key instead. */
+	this->connecter_pre[invite_code] = connecter;
+
+	this->Connect();
+
+	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_CONNECT);
+	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
+	p->Send_string(invite_code);
+
+	this->SendPacket(p);
+}
+
+/**
+ * Callback from a Connecter to let the Game Coordinator know the connection failed.
+ * @param token Token of the connecter that failed.
+ * @param tracking_number Tracking number of the connecter that failed.
+ */
+void ClientNetworkCoordinatorSocketHandler::ConnectFailure(const std::string &token, uint8 tracking_number)
+{
+	/* Connecter will destroy itself. */
+	this->game_connecter = nullptr;
+
+	Packet *p = new Packet(PACKET_COORDINATOR_SERCLI_CONNECT_FAILED);
+	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
+	p->Send_string(token);
+	p->Send_uint8(tracking_number);
+
+	this->SendPacket(p);
+
+	auto connecter_it = this->connecter.find(token);
+	assert(connecter_it != this->connecter.end());
+
+	connecter_it->second->SetFailure();
+	this->connecter.erase(connecter_it);
+}
+
+/**
+ * Callback from a Connecter to let the Game Coordinator know the connection
+ * to the game server is established.
+ * @param token Token of the connecter that succeeded.
+ * @param sock The socket that the connecter can now use.
+ */
+void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &token, SOCKET sock)
+{
+	/* Connecter will destroy itself. */
+	this->game_connecter = nullptr;
+
+	assert(!_network_server);
+
+	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_CONNECTED);
+	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
+	p->Send_string(token);
+	this->SendPacket(p);
+
+	auto connecter_it = this->connecter.find(token);
+	assert(connecter_it != this->connecter.end());
+
+	connecter_it->second->SetConnected(sock);
+	this->connecter.erase(connecter_it);
+
+	/* Close all remaining connections. */
+	this->CloseToken(token);
+}
+
+/**
+ * Close everything related to this connection token.
+ * @param token The connection token to close.
+ */
+void ClientNetworkCoordinatorSocketHandler::CloseToken(const std::string &token)
+{
+	/* Ensure all other pending connection attempts are also killed. */
+	if (this->game_connecter != nullptr) {
+		this->game_connecter->Kill();
+		this->game_connecter = nullptr;
+	}
+}
+
+/**
+ * Close all pending connection tokens.
+ */
+void ClientNetworkCoordinatorSocketHandler::CloseAllTokens()
+{
+	/* Ensure all other pending connection attempts are also killed. */
+	if (this->game_connecter != nullptr) {
+		this->game_connecter->Kill();
+		this->game_connecter = nullptr;
+	}
+
+	/* Mark any pending connecters as failed. */
+	for (auto &[token, it] : this->connecter) {
+		it->SetFailure();
+	}
+	for (auto &[invite_code, it] : this->connecter_pre) {
+		it->SetFailure();
+	}
+	this->connecter.clear();
+	this->connecter_pre.clear();
 }
 
 /**

@@ -589,9 +589,13 @@ void NetworkClose(bool close_admins)
 		ServerNetworkAdminSocketHandler::CloseListeners();
 
 		_network_coordinator_client.CloseConnection();
-	} else if (MyClient::my_client != nullptr) {
-		MyClient::SendQuit();
-		MyClient::my_client->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
+	} else {
+		if (MyClient::my_client != nullptr) {
+			MyClient::SendQuit();
+			MyClient::my_client->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
+		}
+
+		_network_coordinator_client.CloseAllTokens();
 	}
 
 	TCPConnecter::KillAll();
