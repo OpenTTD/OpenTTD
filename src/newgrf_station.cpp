@@ -572,8 +572,7 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	} else if (Station::IsExpected(this->station_scope.st)) {
 		const Station *st = Station::From(this->station_scope.st);
 		/* Pick the first cargo that we have waiting */
-		const CargoSpec *cs;
-		FOR_ALL_CARGOSPECS(cs) {
+		for (const CargoSpec *cs : CargoSpec::Iterate()) {
 			if (this->station_scope.statspec->grf_prop.spritegroup[cs->Index()] != nullptr &&
 					st->goods[cs->Index()].cargo.TotalCount() > 0) {
 				ctype = cs->Index();

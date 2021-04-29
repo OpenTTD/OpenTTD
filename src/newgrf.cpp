@@ -5332,8 +5332,7 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 			return CT_INVALID;
 		}
 
-		const CargoSpec *cs;
-		FOR_ALL_CARGOSPECS(cs) {
+		for (const CargoSpec *cs : CargoSpec::Iterate()) {
 			if (cs->bitnum == ctype) {
 				grfmsg(6, "TranslateCargo: Cargo bitnum %d mapped to cargo type %d.", ctype, cs->Index());
 				return cs->Index();
@@ -8811,8 +8810,7 @@ static void CalculateRefitMasks()
 
 			if (_gted[engine].cargo_allowed != 0) {
 				/* Build up the list of cargo types from the set cargo classes. */
-				const CargoSpec *cs;
-				FOR_ALL_CARGOSPECS(cs) {
+				for (const CargoSpec *cs : CargoSpec::Iterate()) {
 					if (_gted[engine].cargo_allowed    & cs->classes) SetBit(mask,     cs->Index());
 					if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, cs->Index());
 				}
