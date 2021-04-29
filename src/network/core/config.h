@@ -56,6 +56,7 @@ static const byte NETWORK_MASTER_SERVER_VERSION   =    2;         ///< What vers
 static const uint NETWORK_NAME_LENGTH             =   80;         ///< The maximum length of the server name and map name, in bytes including '\0'
 static const uint NETWORK_COMPANY_NAME_LENGTH     =  128;         ///< The maximum length of the company name, in bytes including '\0'
 static const uint NETWORK_HOSTNAME_LENGTH         =   80;         ///< The maximum length of the host name, in bytes including '\0'
+static const uint NETWORK_HOSTNAME_PORT_LENGTH    =   80 + 6;     ///< The maximum length of the host name + port, in bytes including '\0'. The extra six is ":" + port number (with a max of 65536)
 static const uint NETWORK_SERVER_ID_LENGTH        =   33;         ///< The maximum length of the network id of the servers, in bytes including '\0'
 static const uint NETWORK_REVISION_LENGTH         =   33;         ///< The maximum length of the revision, in bytes including '\0'
 static const uint NETWORK_PASSWORD_LENGTH         =   33;         ///< The maximum length of the password, in bytes including '\0' (must be >= NETWORK_SERVER_ID_LENGTH)

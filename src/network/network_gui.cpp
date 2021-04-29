@@ -472,7 +472,7 @@ public:
 		EM_ASM(if (window["openttd_server_list"]) openttd_server_list());
 #endif
 
-		this->last_joined = NetworkGameListAddItem(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
+		this->last_joined = NetworkGameListAddItem(ParseConnectionString(_settings_client.network.last_joined, NETWORK_DEFAULT_PORT));
 		this->server = this->last_joined;
 		if (this->last_joined != nullptr) NetworkUDPQueryServer(this->last_joined->address);
 
@@ -735,7 +735,7 @@ public:
 				ShowQueryString(
 					STR_JUST_RAW_STRING,
 					STR_NETWORK_SERVER_LIST_ENTER_IP,
-					NETWORK_HOSTNAME_LENGTH,  // maximum number of characters including '\0'
+					NETWORK_HOSTNAME_PORT_LENGTH,  // maximum number of characters including '\0'
 					this, CS_ALPHANUMERAL, QSF_ACCEPT_UNCHANGED);
 				break;
 
@@ -745,8 +745,6 @@ public:
 
 			case WID_NG_JOIN: // Join Game
 				if (this->server != nullptr) {
-					seprintf(_settings_client.network.last_host, lastof(_settings_client.network.last_host), "%s", this->server->address.GetHostname());
-					_settings_client.network.last_port = this->server->address.GetPort();
 					ShowNetworkLobbyWindow(this->server);
 				}
 				break;
@@ -827,7 +825,10 @@ public:
 
 	void OnQueryTextFinished(char *str) override
 	{
-		if (!StrEmpty(str)) NetworkAddServer(str);
+		if (!StrEmpty(str)) {
+			strecpy(_settings_client.network.connect_to_ip, str, lastof(_settings_client.network.connect_to_ip));
+			NetworkAddServer(str);
+		}
 	}
 
 	void OnResize() override
@@ -1469,22 +1470,22 @@ struct NetworkLobbyWindow : public Window {
 
 			case WID_NL_JOIN:     // Join company
 				/* Button can be clicked only when it is enabled. */
-				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port, this->company);
+				NetworkClientConnectGame(this->server->address, this->company);
 				break;
 
 			case WID_NL_NEW:      // New company
-				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port, COMPANY_NEW_COMPANY);
+				NetworkClientConnectGame(this->server->address, COMPANY_NEW_COMPANY);
 				break;
 
 			case WID_NL_SPECTATE: // Spectate game
-				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port, COMPANY_SPECTATOR);
+				NetworkClientConnectGame(this->server->address, COMPANY_SPECTATOR);
 				break;
 
 			case WID_NL_REFRESH:  // Refresh
 				/* Clear the information so removed companies don't remain */
 				for (auto &company : this->company_info) company = {};
 
-				NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
+				NetworkTCPQueryServer(this->server->address);
 				break;
 		}
 	}
@@ -1552,7 +1553,9 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
 	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 
-	NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
+	strecpy(_settings_client.network.last_joined, ngl->address.GetAddressAsString(false).c_str(), lastof(_settings_client.network.last_joined));
+
+	NetworkTCPQueryServer(ngl->address);
 
 	new NetworkLobbyWindow(&_network_lobby_window_desc, ngl);
 }

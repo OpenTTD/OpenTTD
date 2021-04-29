@@ -151,7 +151,7 @@ void NetworkGameListRequery()
 
 		/* item gets mostly zeroed by NetworkUDPQueryServer */
 		uint8 retries = item->retries;
-		NetworkUDPQueryServer(NetworkAddress(item->address));
+		NetworkUDPQueryServer(item->address);
 		item->retries = (retries >= REFRESH_GAMEINFO_X_REQUERIES) ? 0 : retries;
 	}
 }
