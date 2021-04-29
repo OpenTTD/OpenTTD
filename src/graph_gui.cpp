@@ -902,7 +902,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		int i = 0;
 		const CargoSpec *cs;
-		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+		FOR_ALL_COST_SORTED_STANDARD_CARGOSPECS(cs) {
 			if (HasBit(_legend_excluded_cargo, cs->Index())) SetBit(this->excluded_data, i);
 			i++;
 		}
@@ -916,7 +916,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		}
 
 		const CargoSpec *cs;
-		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+		FOR_ALL_COST_SORTED_STANDARD_CARGOSPECS(cs) {
 			SetDParam(0, cs->name);
 			Dimension d = GetStringBoundingBox(STR_GRAPH_CARGO_PAYMENT_CARGO);
 			d.width += 14; // colour field
@@ -947,7 +947,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 		int max = pos + this->vscroll->GetCapacity();
 
 		const CargoSpec *cs;
-		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+		FOR_ALL_COST_SORTED_STANDARD_CARGOSPECS(cs) {
 			if (pos-- > 0) continue;
 			if (--max < 0) break;
 
@@ -982,7 +982,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				/* Add all cargoes to the excluded lists. */
 				int i = 0;
 				const CargoSpec *cs;
-				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+				FOR_ALL_COST_SORTED_STANDARD_CARGOSPECS(cs) {
 					SetBit(_legend_excluded_cargo, cs->Index());
 					SetBit(this->excluded_data, i);
 					i++;
@@ -996,7 +996,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 				if (row >= this->vscroll->GetCount()) return;
 
 				const CargoSpec *cs;
-				FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+				FOR_ALL_COST_SORTED_STANDARD_CARGOSPECS(cs) {
 					if (row-- > 0) continue;
 
 					ToggleBit(_legend_excluded_cargo, cs->Index());
@@ -1036,7 +1036,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 		int i = 0;
 		const CargoSpec *cs;
-		FOR_ALL_SORTED_STANDARD_CARGOSPECS(cs) {
+		FOR_ALL_COST_SORTED_STANDARD_CARGOSPECS(cs) {
 			this->colours[i] = cs->legend_colour;
 			for (uint j = 0; j != 20; j++) {
 				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, cs->Index());
