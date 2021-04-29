@@ -19,7 +19,6 @@
  * <li>repeat this until everything is done, and flush any remaining output to file
  * </ol>
  */
-#include <deque>
 
 #include "../stdafx.h"
 #include "../debug.h"
@@ -44,6 +43,7 @@
 #include "../fios.h"
 #include "../error.h"
 #include <atomic>
+#include <deque>
 #include <string>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
