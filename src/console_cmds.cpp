@@ -901,8 +901,7 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 	/* Don't resolve the address first, just print it directly as it comes from the config file. */
 	IConsolePrintF(CC_DEFAULT, "Reconnecting to %s ...", _settings_client.network.last_joined);
 
-	NetworkAddress address = ParseConnectionString(_settings_client.network.last_joined, NETWORK_DEFAULT_PORT);
-	NetworkClientConnectGame(address, playas);
+	NetworkClientConnectGame(_settings_client.network.last_joined, playas);
 	return true;
 }
 
@@ -918,23 +917,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	if (argc < 2) return false;
 	if (_networking) NetworkDisconnect(); // we are in network-mode, first close it!
 
-	CompanyID join_as = COMPANY_NEW_COMPANY;
-	NetworkAddress address = ParseGameConnectionString(&join_as, argv[1], NETWORK_DEFAULT_PORT);
-
-	IConsolePrintF(CC_DEFAULT, "Connecting to %s...", address.GetAddressAsString().c_str());
-	if (join_as != COMPANY_NEW_COMPANY) {
-		IConsolePrintF(CC_DEFAULT, "    company-no: %d", join_as);
-
-		/* From a user pov 0 is a new company, internally it's different and all
-		 * companies are offset by one to ease up on users (eg companies 1-8 not 0-7) */
-		if (join_as != COMPANY_SPECTATOR) {
-			if (join_as > MAX_COMPANIES) return false;
-			join_as--;
-		}
-	}
-
-	NetworkClientConnectGame(address, join_as);
-
+	NetworkClientConnectGame(argv[1], COMPANY_NEW_COMPANY);
 	return true;
 }
 
