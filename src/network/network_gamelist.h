@@ -33,10 +33,8 @@ struct NetworkGameList {
 extern NetworkGameList *_network_game_list;
 extern int _network_game_list_version;
 
-void NetworkGameListAddItemDelayed(NetworkGameList *item);
 NetworkGameList *NetworkGameListAddItem(const std::string &connection_string);
 void NetworkGameListRemoveItem(NetworkGameList *remove);
 void NetworkGameListRemoveExpired();
-void NetworkGameListRequery();
 
 #endif /* NETWORK_GAMELIST_H */
