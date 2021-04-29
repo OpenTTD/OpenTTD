@@ -224,16 +224,15 @@ static bool IsSameScript(const ContentInfo *ci, bool md5sum, ScriptInfo *info, S
 	if (!tar_filename.empty() && (iter = _tar_list[dir].find(tar_filename)) != _tar_list[dir].end()) {
 		/* The main script is in a tar file, so find all files that
 		 * are in the same tar and add them to the MD5 checksumming. */
-		TarFileList::iterator tar;
-		FOR_ALL_TARS(tar, dir) {
+		for (const auto &tar : _tar_filelist[dir]) {
 			/* Not in the same tar. */
-			if (tar->second.tar_filename != iter->first) continue;
+			if (tar.second.tar_filename != iter->first) continue;
 
 			/* Check the extension. */
-			const char *ext = strrchr(tar->first.c_str(), '.');
+			const char *ext = strrchr(tar.first.c_str(), '.');
 			if (ext == nullptr || strcasecmp(ext, ".nut") != 0) continue;
 
-			checksum.AddFile(tar->first, 0, tar_filename);
+			checksum.AddFile(tar.first, 0, tar_filename);
 		}
 	} else {
 		char path[MAX_PATH];
