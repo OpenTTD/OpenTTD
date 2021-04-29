@@ -185,6 +185,7 @@ public:
  */
 enum ServerAddressType {
 	SERVER_ADDRESS_DIRECT,   ///< Server-address is based on an IP:port.
+	SERVER_ADDRESS_JOIN_KEY, ///< Server-address is based on a join-key given by the Game Coordinator.
 };
 
 /**

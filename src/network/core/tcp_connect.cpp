@@ -49,6 +49,10 @@ TCPServerConnecter::TCPServerConnecter(const std::string &connection_string, uin
 			this->connection_string = this->server_address.connection_string;
 			break;
 
+		case SERVER_ADDRESS_JOIN_KEY:
+			// TODO - Will be introduced in next commit
+			break;
+
 		default:
 			NOT_REACHED();
 	}

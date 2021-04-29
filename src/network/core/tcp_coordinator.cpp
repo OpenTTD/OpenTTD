@@ -31,6 +31,8 @@ bool NetworkCoordinatorSocketHandler::HandlePacket(Packet *p)
 		case PACKET_COORDINATOR_CLIENT_REGISTER:       return this->Receive_CLIENT_REGISTER(p);
 		case PACKET_COORDINATOR_SERVER_REGISTER_ACK:   return this->Receive_SERVER_REGISTER_ACK(p);
 		case PACKET_COORDINATOR_CLIENT_UPDATE:         return this->Receive_CLIENT_UPDATE(p);
+		case PACKET_COORDINATOR_CLIENT_LISTING:        return this->Receive_CLIENT_LISTING(p);
+		case PACKET_COORDINATOR_SERVER_LISTING:        return this->Receive_SERVER_LISTING(p);
 
 		default:
 			Debug(net, 0, "[tcp/coordinator] Received invalid packet type {}", type);
@@ -71,3 +73,5 @@ bool NetworkCoordinatorSocketHandler::Receive_SERVER_ERROR(Packet *p) { return t
 bool NetworkCoordinatorSocketHandler::Receive_CLIENT_REGISTER(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_REGISTER); }
 bool NetworkCoordinatorSocketHandler::Receive_SERVER_REGISTER_ACK(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERVER_REGISTER_ACK); }
 bool NetworkCoordinatorSocketHandler::Receive_CLIENT_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_UPDATE); }
+bool NetworkCoordinatorSocketHandler::Receive_CLIENT_LISTING(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_LISTING); }
+bool NetworkCoordinatorSocketHandler::Receive_SERVER_LISTING(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERVER_LISTING); }

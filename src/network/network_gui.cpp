@@ -18,6 +18,7 @@
 #include "network_base.h"
 #include "network_content.h"
 #include "network_server.h"
+#include "network_coordinator.h"
 #include "../gui.h"
 #include "network_udp.h"
 #include "../window_func.h"
@@ -53,6 +54,8 @@
 
 static void ShowNetworkStartServerWindow();
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
+
+static const int NETWORK_LIST_REFRESH_DELAY = 30; ///< Time, in seconds, between updates of the network list.
 
 static ClientID _admin_client_id = INVALID_CLIENT_ID; ///< For what client a confirmation window is open.
 static CompanyID _admin_company_id = INVALID_COMPANY; ///< For what company a confirmation window is open.
@@ -227,6 +230,7 @@ protected:
 	QueryString name_editbox;     ///< Client name editbox.
 	QueryString filter_editbox;   ///< Editbox for filter on servers
 	GUITimer requery_timer;       ///< Timer for network requery
+	bool searched_internet;       ///< Did we ever press "Search Internet" button?
 
 	int lock_offset; ///< Left offset for lock icon.
 	int blot_offset; ///< Left offset for green/yellow/red compatibility icon.
@@ -244,8 +248,18 @@ protected:
 		/* Create temporary array of games to use for listing */
 		this->servers.clear();
 
+		bool found_current_server = false;
 		for (NetworkGameList *ngl = _network_game_list; ngl != nullptr; ngl = ngl->next) {
 			this->servers.push_back(ngl);
+			if (ngl == this->server) {
+				found_current_server = true;
+			}
+		}
+		/* A refresh can cause the current server to be delete; so unselect. */
+		if (!found_current_server) {
+			if (this->server == this->last_joined) this->last_joined = nullptr;
+			this->server = nullptr;
+			this->list_pos = SLP_INVALID;
 		}
 
 		/* Apply the filter condition immediately, if a search string has been provided. */
@@ -448,7 +462,7 @@ protected:
 	}
 
 public:
-	NetworkGameWindow(WindowDesc *desc) : Window(desc), name_editbox(NETWORK_CLIENT_NAME_LENGTH), filter_editbox(120)
+	NetworkGameWindow(WindowDesc *desc) : Window(desc), name_editbox(NETWORK_CLIENT_NAME_LENGTH), filter_editbox(120), searched_internet(false)
 	{
 		this->list_pos = SLP_INVALID;
 		this->server = nullptr;
@@ -479,7 +493,7 @@ public:
 		this->last_joined = NetworkAddServer(_settings_client.network.last_joined, false);
 		this->server = this->last_joined;
 
-		this->requery_timer.SetInterval(MILLISECONDS_PER_TICK);
+		this->requery_timer.SetInterval(NETWORK_LIST_REFRESH_DELAY * 1000);
 
 		this->servers.SetListing(this->last_sorting);
 		this->servers.SetSortFuncs(this->sorter_funcs);
@@ -725,7 +739,8 @@ public:
 			}
 
 			case WID_NG_SEARCH_INTERNET:
-				NetworkUDPQueryMasterServer();
+				_network_coordinator_client.GetListing();
+				this->searched_internet = true;
 				break;
 
 			case WID_NG_SEARCH_LAN:
@@ -841,10 +856,11 @@ public:
 
 	void OnRealtimeTick(uint delta_ms) override
 	{
+		if (!this->searched_internet) return;
 		if (!this->requery_timer.Elapsed(delta_ms)) return;
-		this->requery_timer.SetInterval(MILLISECONDS_PER_TICK);
+		this->requery_timer.SetInterval(NETWORK_LIST_REFRESH_DELAY * 1000);
 
-		NetworkGameListRequery();
+		_network_coordinator_client.GetListing();
 	}
 };
 

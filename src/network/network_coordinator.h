@@ -20,6 +20,10 @@
  *  - GC probes server to check if it can directly connect, needs STUN, etc.
  *  - GC sends SERVER_REGISTER_ACK with type of connection.
  *  - Server sends every 30 seconds CLIENT_UPDATE.
+ *
+ * For clients (listing):
+ *  - Client sends CLIENT_LISTING.
+ *  - GC returns the full list of public servers via SERVER_LISTING (multiple packets).
  */
 
 /** Class for handling the client side of the Game Coordinator connection. */
@@ -30,8 +34,13 @@ private:
 protected:
 	bool Receive_SERVER_ERROR(Packet *p) override;
 	bool Receive_SERVER_REGISTER_ACK(Packet *p) override;
+	bool Receive_SERVER_LISTING(Packet *p) override;
 
 public:
+	/** The idle timeout; when to close the connection because it's idle. */
+	static constexpr std::chrono::seconds IDLE_TIMEOUT = std::chrono::seconds(60);
+
+	std::chrono::steady_clock::time_point last_activity;  ///< The last time there was network activity.
 	bool connecting; ///< Are we connecting to the Game Coordinator?
 
 	ClientNetworkCoordinatorSocketHandler() : connecting(false) {}
@@ -43,6 +52,7 @@ public:
 
 	void Register();
 	void SendServerUpdate();
+	void GetListing();
 };
 
 extern ClientNetworkCoordinatorSocketHandler _network_coordinator_client;
