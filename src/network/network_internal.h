@@ -84,6 +84,7 @@ extern uint8 _network_join_waiting;
 extern uint32 _network_join_bytes;
 extern uint32 _network_join_bytes_total;
 extern ConnectionType _network_server_connection_type;
+extern std::string _network_server_invite_code;
 
 extern uint8 _network_reconnect;
 

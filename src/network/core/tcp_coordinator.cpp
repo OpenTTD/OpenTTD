@@ -27,12 +27,18 @@ bool NetworkCoordinatorSocketHandler::HandlePacket(Packet *p)
 	PacketCoordinatorType type = (PacketCoordinatorType)p->Recv_uint8();
 
 	switch (type) {
-		case PACKET_COORDINATOR_GC_ERROR:        return this->Receive_GC_ERROR(p);
-		case PACKET_COORDINATOR_SERVER_REGISTER: return this->Receive_SERVER_REGISTER(p);
-		case PACKET_COORDINATOR_GC_REGISTER_ACK: return this->Receive_GC_REGISTER_ACK(p);
-		case PACKET_COORDINATOR_SERVER_UPDATE:   return this->Receive_SERVER_UPDATE(p);
-		case PACKET_COORDINATOR_CLIENT_LISTING:  return this->Receive_CLIENT_LISTING(p);
-		case PACKET_COORDINATOR_GC_LISTING:      return this->Receive_GC_LISTING(p);
+		case PACKET_COORDINATOR_GC_ERROR:              return this->Receive_GC_ERROR(p);
+		case PACKET_COORDINATOR_SERVER_REGISTER:       return this->Receive_SERVER_REGISTER(p);
+		case PACKET_COORDINATOR_GC_REGISTER_ACK:       return this->Receive_GC_REGISTER_ACK(p);
+		case PACKET_COORDINATOR_SERVER_UPDATE:         return this->Receive_SERVER_UPDATE(p);
+		case PACKET_COORDINATOR_CLIENT_LISTING:        return this->Receive_CLIENT_LISTING(p);
+		case PACKET_COORDINATOR_GC_LISTING:            return this->Receive_GC_LISTING(p);
+		case PACKET_COORDINATOR_CLIENT_CONNECT:        return this->Receive_CLIENT_CONNECT(p);
+		case PACKET_COORDINATOR_GC_CONNECTING:         return this->Receive_GC_CONNECTING(p);
+		case PACKET_COORDINATOR_SERCLI_CONNECT_FAILED: return this->Receive_SERCLI_CONNECT_FAILED(p);
+		case PACKET_COORDINATOR_GC_CONNECT_FAILED:     return this->Receive_GC_CONNECT_FAILED(p);
+		case PACKET_COORDINATOR_CLIENT_CONNECTED:      return this->Receive_CLIENT_CONNECTED(p);
+		case PACKET_COORDINATOR_GC_DIRECT_CONNECT:     return this->Receive_GC_DIRECT_CONNECT(p);
 
 		default:
 			Debug(net, 0, "[tcp/coordinator] Received invalid packet type {}", type);
@@ -82,3 +88,9 @@ bool NetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p) { retur
 bool NetworkCoordinatorSocketHandler::Receive_SERVER_UPDATE(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERVER_UPDATE); }
 bool NetworkCoordinatorSocketHandler::Receive_CLIENT_LISTING(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_LISTING); }
 bool NetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_LISTING); }
+bool NetworkCoordinatorSocketHandler::Receive_CLIENT_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_CONNECT); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_CONNECTING(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_CONNECTING); }
+bool NetworkCoordinatorSocketHandler::Receive_SERCLI_CONNECT_FAILED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_SERCLI_CONNECT_FAILED); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_CONNECT_FAILED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_CONNECT_FAILED); }
+bool NetworkCoordinatorSocketHandler::Receive_CLIENT_CONNECTED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_CLIENT_CONNECTED); }
+bool NetworkCoordinatorSocketHandler::Receive_GC_DIRECT_CONNECT(Packet *p) { return this->ReceiveInvalidPacket(PACKET_COORDINATOR_GC_DIRECT_CONNECT); }

@@ -47,7 +47,7 @@ static const uint16 COMPAT_MTU                      = 1460;           ///< Numbe
 static const byte NETWORK_GAME_ADMIN_VERSION        =    1;           ///< What version of the admin network do we use?
 static const byte NETWORK_GAME_INFO_VERSION         =    4;           ///< What version of game-info do we use?
 static const byte NETWORK_COMPANY_INFO_VERSION      =    6;           ///< What version of company info is this?
-static const byte NETWORK_COORDINATOR_VERSION       =    1;           ///< What version of game-coordinator-protocol do we use?
+static const byte NETWORK_COORDINATOR_VERSION       =    2;           ///< What version of game-coordinator-protocol do we use?
 
 static const uint NETWORK_NAME_LENGTH               =   80;           ///< The maximum length of the server name and map name, in bytes including '\0'
 static const uint NETWORK_COMPANY_NAME_LENGTH       =  128;           ///< The maximum length of the company name, in bytes including '\0'
@@ -67,7 +67,10 @@ static const uint NETWORK_CONTENT_VERSION_LENGTH    =   16;           ///< The m
 static const uint NETWORK_CONTENT_URL_LENGTH        =   96;           ///< The maximum length of a content's url, in bytes including '\0'.
 static const uint NETWORK_CONTENT_DESC_LENGTH       =  512;           ///< The maximum length of a content's description, in bytes including '\0'.
 static const uint NETWORK_CONTENT_TAG_LENGTH        =   32;           ///< The maximum length of a content's tag, in bytes including '\0'.
-static const uint NETWORK_ERROR_DETAIL_LENGTH        = 100;           ///< The maximum length of the error detail, in bytes including '\0'
+static const uint NETWORK_ERROR_DETAIL_LENGTH       =  100;           ///< The maximum length of the error detail, in bytes including '\0'.
+static const uint NETWORK_INVITE_CODE_LENGTH        =   64;           ///< The maximum length of the invite code, in bytes including '\0'.
+static const uint NETWORK_INVITE_CODE_SECRET_LENGTH =   80;           ///< The maximum length of the invite code secret, in bytes including '\0'.
+static const uint NETWORK_TOKEN_LENGTH              =   64;           ///< The maximum length of a token, in bytes including '\0'.
 
 static const uint NETWORK_GRF_NAME_LENGTH           =   80;           ///< Maximum length of the name of a GRF
 

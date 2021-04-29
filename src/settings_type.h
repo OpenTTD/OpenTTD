@@ -266,6 +266,8 @@ struct NetworkSettings {
 	uint16      server_port;                              ///< port the server listens on
 	uint16      server_admin_port;                        ///< port the server listens on for the admin network
 	bool        server_admin_chat;                        ///< allow private chat for the server to be distributed to the admin network
+	std::string server_invite_code;                       ///< Invite code to use when registering as server.
+	std::string server_invite_code_secret;                ///< Secret to proof we got this invite code from the Game Coordinator.
 	std::string server_name;                              ///< name of the server
 	std::string server_password;                          ///< password for joining this server
 	std::string rcon_password;                            ///< password for rconsole (server side)

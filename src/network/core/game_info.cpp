@@ -141,7 +141,11 @@ void FillStaticNetworkServerGameInfo()
  */
 const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
 {
-	/* Client_on is used as global variable to keep track on the number of clients. */
+	/* These variables are updated inside _network_game_info as if they are global variables:
+	 *  - clients_on
+	 *  - invite_code
+	 * These don't need to be updated manually here.
+	 */
 	_network_game_info.companies_on  = (byte)Company::GetNumItems();
 	_network_game_info.spectators_on = NetworkSpectatorCount();
 	_network_game_info.game_date     = _date;

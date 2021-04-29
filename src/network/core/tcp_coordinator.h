@@ -23,15 +23,22 @@
  * GC     -> packets from Game Coordinator to either Client or Server.
  * SERVER -> packets from Server to Game Coordinator.
  * CLIENT -> packets from Client to Game Coordinator.
+ * SERCLI -> packets from either the Server or Client to Game Coordinator.
  **/
 enum PacketCoordinatorType {
-	PACKET_COORDINATOR_GC_ERROR,        ///< Game Coordinator indicates there was an error.
-	PACKET_COORDINATOR_SERVER_REGISTER, ///< Server registration.
-	PACKET_COORDINATOR_GC_REGISTER_ACK, ///< Game Coordinator accepts the registration.
-	PACKET_COORDINATOR_SERVER_UPDATE,   ///< Server sends an set intervals an update of the server.
-	PACKET_COORDINATOR_CLIENT_LISTING,  ///< Client is requesting a listing of all public servers.
-	PACKET_COORDINATOR_GC_LISTING,      ///< Game Coordinator returns a listing of all public servers.
-	PACKET_COORDINATOR_END,             ///< Must ALWAYS be on the end of this list!! (period).
+	PACKET_COORDINATOR_GC_ERROR,              ///< Game Coordinator indicates there was an error.
+	PACKET_COORDINATOR_SERVER_REGISTER,       ///< Server registration.
+	PACKET_COORDINATOR_GC_REGISTER_ACK,       ///< Game Coordinator accepts the registration.
+	PACKET_COORDINATOR_SERVER_UPDATE,         ///< Server sends an set intervals an update of the server.
+	PACKET_COORDINATOR_CLIENT_LISTING,        ///< Client is requesting a listing of all public servers.
+	PACKET_COORDINATOR_GC_LISTING,            ///< Game Coordinator returns a listing of all public servers.
+	PACKET_COORDINATOR_CLIENT_CONNECT,        ///< Client wants to connect to a server based on an invite code.
+	PACKET_COORDINATOR_GC_CONNECTING,         ///< Game Coordinator informs the client of the token assigned to the connection attempt.
+	PACKET_COORDINATOR_SERCLI_CONNECT_FAILED, ///< Client/server tells the Game Coordinator the current connection attempt failed.
+	PACKET_COORDINATOR_GC_CONNECT_FAILED,     ///< Game Coordinator informs client/server it has given up on the connection attempt.
+	PACKET_COORDINATOR_CLIENT_CONNECTED,      ///< Client informs the Game Coordinator the connection with the server is established.
+	PACKET_COORDINATOR_GC_DIRECT_CONNECT,     ///< Game Coordinator tells client to directly connect to the hostname:port of the server.
+	PACKET_COORDINATOR_END,                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
 /**
@@ -49,6 +56,7 @@ enum ConnectionType {
 enum NetworkCoordinatorErrorType {
 	NETWORK_COORDINATOR_ERROR_UNKNOWN,             ///< There was an unknown error.
 	NETWORK_COORDINATOR_ERROR_REGISTRATION_FAILED, ///< Your request for registration failed.
+	NETWORK_COORDINATOR_ERROR_INVALID_INVITE_CODE, ///< The invite code given is invalid.
 };
 
 /** Base socket handler for all Game Coordinator TCP sockets. */
@@ -76,6 +84,8 @@ protected:
 	 *  uint8   Game Coordinator protocol version.
 	 *  uint8   Type of game (see ServerGameType).
 	 *  uint16  Local port of the server.
+	 *  string  Invite code the server wants to use (can be empty; coordinator will assign a new invite code).
+	 *  string  Secret that belongs to the invite code (empty if invite code is empty).
 	 *
 	 * @param p The packet that was just received.
 	 * @return True upon success, otherwise false.
@@ -85,6 +95,8 @@ protected:
 	/**
 	 * Game Coordinator acknowledges the registration.
 	 *
+	 *  string  Invite code that can be used to join this server.
+	 *  string  Secret that belongs to the invite code (only needed if reusing the invite code on next SERVER_REGISTER).
 	 *  uint8   Type of connection was detected (see ConnectionType).
 	 *
 	 * @param p The packet that was just received.
@@ -129,6 +141,79 @@ protected:
 	 * @return True upon success, otherwise false.
 	 */
 	virtual bool Receive_GC_LISTING(Packet *p);
+
+	/**
+	 * Client wants to connect to a Server.
+	 *
+	 *  uint8   Game Coordinator protocol version.
+	 *  string  Invite code of the Server to join.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_CLIENT_CONNECT(Packet *p);
+
+	/**
+	 * Game Coordinator informs the Client under what token it will start the
+	 * attempt to connect the Server and Client together.
+	 *
+	 *  string  Token to track the current connect request.
+	 *  string  Invite code of the Server to join.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_GC_CONNECTING(Packet *p);
+
+	/**
+	 * Client or Server failed to connect to the remote side.
+	 *
+	 *  uint8   Game Coordinator protocol version.
+	 *  string  Token to track the current connect request.
+	 *  uint8   Tracking number to track current connect request.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_SERCLI_CONNECT_FAILED(Packet *p);
+
+	/**
+	 * Game Coordinator informs the Client that it failed to find a way to
+	 * connect the Client to the Server. Any open connections for this token
+	 * should be closed now.
+	 *
+	 *  string  Token to track the current connect request.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_GC_CONNECT_FAILED(Packet *p);
+
+	/**
+	 * Client informs the Game Coordinator the connection with the Server is
+	 * established. The Client will disconnect from the Game Coordinator next.
+	 *
+	 *  uint8   Game Coordinator protocol version.
+	 *  string  Token to track the current connect request.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_CLIENT_CONNECTED(Packet *p);
+
+	/**
+	 * Game Coordinator requests that the Client makes a direct connection to
+	 * the indicated peer, which is a Server.
+	 *
+	 *  string  Token to track the current connect request.
+	 *  uint8   Tracking number to track current connect request.
+	 *  string  Hostname of the peer.
+	 *  uint16  Port of the peer.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_GC_DIRECT_CONNECT(Packet *p);
 
 	bool HandlePacket(Packet *p);
 public:
