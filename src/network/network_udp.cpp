@@ -92,7 +92,6 @@ static void DoNetworkUDPQueryServer(NetworkAddress &address, bool needs_mutex, b
 	/* Clear item in gamelist */
 	NetworkGameList *item = CallocT<NetworkGameList>(1);
 	address.GetAddressAsString(item->info.server_name, lastof(item->info.server_name));
-	strecpy(item->info.hostname, address.GetHostname(), lastof(item->info.hostname));
 	item->address = address;
 	item->manually = manually;
 	NetworkGameListAddItemDelayed(item);
@@ -363,10 +362,6 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 
 			this->SendPacket(&packet, &item->address);
 		}
-	}
-
-	if (item->info.hostname[0] == '\0') {
-		seprintf(item->info.hostname, lastof(item->info.hostname), "%s", client_addr->GetHostname());
 	}
 
 	if (client_addr->GetAddress()->ss_family == AF_INET6) {

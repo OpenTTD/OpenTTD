@@ -74,7 +74,6 @@ struct NetworkGameInfo : NetworkServerGameInfo {
 	uint16 map_width;                               ///< Map width
 	uint16 map_height;                              ///< Map height
 	char server_name[NETWORK_NAME_LENGTH];          ///< Server name
-	char hostname[NETWORK_HOSTNAME_LENGTH];         ///< Hostname of the server (if any)
 	char server_revision[NETWORK_REVISION_LENGTH];  ///< The version number the server is using (e.g.: 'r304' or 0.5.0)
 	bool dedicated;                                 ///< Is this a dedicated server?
 	bool version_compatible;                        ///< Can we connect to this server or not? (based on server_revision)

@@ -51,7 +51,6 @@ static void NetworkGameListHandleDelayedInsert()
 				ClearGRFConfigList(&item->info.grfconfig);
 				memset(&item->info, 0, sizeof(item->info));
 				strecpy(item->info.server_name, ins_item->info.server_name, lastof(item->info.server_name));
-				strecpy(item->info.hostname, ins_item->info.hostname, lastof(item->info.hostname));
 				item->online = false;
 			}
 			item->manually |= ins_item->manually;
