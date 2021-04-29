@@ -179,9 +179,9 @@ int ScriptConfig::GetVersion() const
 	return this->version;
 }
 
-void ScriptConfig::StringToSettings(const char *value)
+void ScriptConfig::StringToSettings(const std::string &value)
 {
-	char *value_copy = stredup(value);
+	char *value_copy = stredup(value.c_str());
 	char *s = value_copy;
 
 	while (s != nullptr) {
@@ -205,8 +205,10 @@ void ScriptConfig::StringToSettings(const char *value)
 	free(value_copy);
 }
 
-void ScriptConfig::SettingsToString(char *string, const char *last) const
+std::string ScriptConfig::SettingsToString() const
 {
+	char string[1024];
+	char *last = lastof(string);
 	char *s = string;
 	*s = '\0';
 	for (const auto &item : this->settings) {
@@ -216,7 +218,7 @@ void ScriptConfig::SettingsToString(char *string, const char *last) const
 		/* Check if the string would fit in the destination */
 		size_t needed_size = strlen(item.first) + 1 + strlen(no);
 		/* If it doesn't fit, skip the next settings */
-		if (string + needed_size > last) break;
+		if (s + needed_size > last) break;
 
 		s = strecat(s, item.first, last);
 		s = strecat(s, "=", last);
@@ -226,6 +228,8 @@ void ScriptConfig::SettingsToString(char *string, const char *last) const
 
 	/* Remove the last ',', but only if at least one setting was saved. */
 	if (s != string) s[-1] = '\0';
+
+	return string;
 }
 
 const char *ScriptConfig::GetTextfile(TextfileType type, CompanyID slot) const

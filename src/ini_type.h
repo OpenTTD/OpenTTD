@@ -31,7 +31,7 @@ struct IniItem {
 	IniItem(struct IniGroup *parent, const std::string &name);
 	~IniItem();
 
-	void SetValue(const char *value);
+	void SetValue(const std::string_view value);
 };
 
 /** A group within an ini file. */

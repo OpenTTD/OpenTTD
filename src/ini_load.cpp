@@ -38,13 +38,9 @@ IniItem::~IniItem()
  * Replace the current value with another value.
  * @param value the value to replace with.
  */
-void IniItem::SetValue(const char *value)
+void IniItem::SetValue(const std::string_view value)
 {
-	if (value == nullptr) {
-		this->value.reset();
-	} else {
-		this->value.emplace(value);
-	}
+	this->value.emplace(value);
 }
 
 /**
