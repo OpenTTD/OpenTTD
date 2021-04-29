@@ -515,7 +515,7 @@ public:
 	{
 		switch (GB(widget, 0, 16)) {
 			case WID_BO_CLASS_LIST: {
-				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->nested_array[widget]->pos_y) / this->line_height;
+				int num_clicked = this->vscroll->GetPosition() + (pt.y - this->GetWidget<NWidgetBase>(widget)->pos_y) / this->line_height;
 				if (num_clicked >= (int)this->object_classes.size()) break;
 
 				this->SelectOtherClass(this->object_classes[num_clicked]);
