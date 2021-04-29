@@ -67,7 +67,6 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
 	this->GetWidget<NWidgetCore>(WID_TF_CAPTION)->SetDataTip(STR_TEXTFILE_README_CAPTION + file_type, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS);
 
 	this->hscroll->SetStepSize(10); // Speed up horizontal scrollbar
-	this->vscroll->SetStepSize(FONT_HEIGHT_MONO);
 }
 
 /* virtual */ TextfileWindow::~TextfileWindow()
@@ -79,23 +78,38 @@ TextfileWindow::TextfileWindow(TextfileType file_type) : Window(&_textfile_desc)
  * Get the total height of the content displayed in this window, if wrapping is disabled.
  * @return the height in pixels
  */
-uint TextfileWindow::GetContentHeight()
+uint TextfileWindow::ReflowContent()
 {
-	int max_width = this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMERECT_RIGHT;
-
 	uint height = 0;
-	for (uint i = 0; i < this->lines.size(); i++) {
-		height += GetStringHeight(this->lines[i], max_width, FS_MONO);
+	if (!IsWidgetLowered(WID_TF_WRAPTEXT)) {
+		for (auto &line : this->lines) {
+			line.top = height;
+			height++;
+			line.bottom = height;
+		}
+	} else {
+		int max_width = this->GetWidget<NWidgetCore>(WID_TF_BACKGROUND)->current_x - WD_FRAMETEXT_LEFT - WD_FRAMERECT_RIGHT;
+		for (auto &line : this->lines) {
+			line.top = height;
+			height += GetStringHeight(line.text, max_width, FS_MONO) / FONT_HEIGHT_MONO;
+			line.bottom = height;
+		}
 	}
 
 	return height;
+}
+
+uint TextfileWindow::GetContentHeight()
+{
+	if (this->lines.size() == 0) return 0;
+	return this->lines.back().bottom;
 }
 
 /* virtual */ void TextfileWindow::UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize)
 {
 	switch (widget) {
 		case WID_TF_BACKGROUND:
-			resize->height = 1;
+			resize->height = FONT_HEIGHT_MONO;
 
 			size->height = 4 * resize->height + TOP_SPACING + BOTTOM_SPACING; // At least 4 lines are visible.
 			size->width = std::max(200u, size->width); // At least 200 pixels wide.
@@ -104,18 +118,17 @@ uint TextfileWindow::GetContentHeight()
 }
 
 /** Set scrollbars to the right lengths. */
-void TextfileWindow::SetupScrollbars()
+void TextfileWindow::SetupScrollbars(bool force_reflow)
 {
 	if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-		this->vscroll->SetCount(this->GetContentHeight());
+		/* Reflow is mandatory if text wrapping is on */
+		uint height = this->ReflowContent();
+		this->vscroll->SetCount(std::min<uint>(UINT16_MAX, height));
 		this->hscroll->SetCount(0);
 	} else {
-		uint max_length = 0;
-		for (uint i = 0; i < this->lines.size(); i++) {
-			max_length = std::max(max_length, GetStringBoundingBox(this->lines[i], FS_MONO).width);
-		}
-		this->vscroll->SetCount((uint)this->lines.size() * FONT_HEIGHT_MONO);
-		this->hscroll->SetCount(max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+		uint height = force_reflow ? this->ReflowContent() : this->GetContentHeight();
+		this->vscroll->SetCount(std::min<uint>(UINT16_MAX, height));
+		this->hscroll->SetCount(this->max_length + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
 	}
 
 	this->SetWidgetDisabledState(WID_TF_HSCROLLBAR, IsWidgetLowered(WID_TF_WRAPTEXT));
@@ -126,7 +139,6 @@ void TextfileWindow::SetupScrollbars()
 	switch (widget) {
 		case WID_TF_WRAPTEXT:
 			this->ToggleWidgetLoweredState(WID_TF_WRAPTEXT);
-			this->SetupScrollbars();
 			this->InvalidateData();
 			break;
 	}
@@ -148,14 +160,18 @@ void TextfileWindow::SetupScrollbars()
 
 	/* Draw content (now coordinates given to DrawString* are local to the new clipping region). */
 	int line_height = FONT_HEIGHT_MONO;
-	int y_offset = -this->vscroll->GetPosition();
+	int pos = this->vscroll->GetPosition();
+	int cap = this->vscroll->GetCapacity();
 
-	for (uint i = 0; i < this->lines.size(); i++) {
+	for (auto &line : this->lines) {
+		if (line.bottom < pos) continue;
+		if (line.top > pos + cap) break;
+
+		int y_offset = (line.top - pos) * line_height;
 		if (IsWidgetLowered(WID_TF_WRAPTEXT)) {
-			y_offset = DrawStringMultiLine(0, right - x, y_offset, bottom - y, this->lines[i], TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
+			DrawStringMultiLine(0, right - x, y_offset, bottom - y, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
 		} else {
-			DrawString(-this->hscroll->GetPosition(), right - x, y_offset, this->lines[i], TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
-			y_offset += line_height; // margin to previous element
+			DrawString(-this->hscroll->GetPosition(), right - x, y_offset, line.text, TC_WHITE, SA_TOP | SA_LEFT, false, FS_MONO);
 		}
 	}
 
@@ -167,7 +183,14 @@ void TextfileWindow::SetupScrollbars()
 	this->vscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND, TOP_SPACING + BOTTOM_SPACING);
 	this->hscroll->SetCapacityFromWidget(this, WID_TF_BACKGROUND);
 
-	this->SetupScrollbars();
+	this->SetupScrollbars(false);
+}
+
+/* virtual */ void TextfileWindow::OnInvalidateData(int data, bool gui_scope)
+{
+	if (!gui_scope) return;
+
+	this->SetupScrollbars(true);
 }
 
 /* virtual */ void TextfileWindow::Reset()
@@ -184,7 +207,7 @@ void TextfileWindow::SetupScrollbars()
 {
 	if (this->search_iterator >= this->lines.size()) return nullptr;
 
-	return this->lines[this->search_iterator++];
+	return this->lines[this->search_iterator++].text;
 }
 
 /* virtual */ bool TextfileWindow::Monospace()
@@ -364,13 +387,21 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	str_validate(p, this->text + filesize, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	/* Split the string on newlines. */
-	this->lines.push_back(p);
+	int row = 0;
+	this->lines.emplace_back(row, p);
 	for (; *p != '\0'; p++) {
 		if (*p == '\n') {
 			*p = '\0';
-			this->lines.push_back(p + 1);
+			this->lines.emplace_back(++row, p + 1);
 		}
 	}
+
+	/* Calculate maximum text line length. */
+	uint max_length = 0;
+	for (auto &line : this->lines) {
+		max_length = std::max(max_length, GetStringBoundingBox(line.text, FS_MONO).width);
+	}
+	this->max_length = max_length;
 
 	CheckForMissingGlyphs(true, this);
 }
