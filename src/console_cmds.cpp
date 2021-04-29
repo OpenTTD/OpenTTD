@@ -59,7 +59,7 @@ public:
 	/** Declare the file storage cache as being invalid, also clears all stored files. */
 	void InvalidateFileList()
 	{
-		this->Clear();
+		this->clear();
 		this->file_list_valid = false;
 	}
 
@@ -403,7 +403,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 	}
 
 	_console_file_list.ValidateFileList(true);
-	for (uint i = 0; i < _console_file_list.Length(); i++) {
+	for (uint i = 0; i < _console_file_list.size(); i++) {
 		IConsolePrintF(CC_DEFAULT, "%d) %s", i, _console_file_list[i].title);
 	}
 

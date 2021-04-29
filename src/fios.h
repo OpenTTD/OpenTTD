@@ -109,94 +109,10 @@ struct FiosItem {
 };
 
 /** List of file information. */
-class FileList {
+class FileList : public std::vector<FiosItem> {
 public:
-	~FileList();
-
-	/**
-	 * Construct a new entry in the file list.
-	 * @return Pointer to the new items to be initialized.
-	 */
-	inline FiosItem *Append()
-	{
-		return &this->files.emplace_back();
-	}
-
-	/**
-	 * Get the number of files in the list.
-	 * @return The number of files stored in the list.
-	 */
-	inline size_t Length() const
-	{
-		return this->files.size();
-	}
-
-	/**
-	 * Get a pointer to the first file information.
-	 * @return Address of the first file information.
-	 */
-	inline const FiosItem *Begin() const
-	{
-		return this->files.data();
-	}
-
-	/**
-	 * Get a pointer behind the last file information.
-	 * @return Address behind the last file information.
-	 */
-	inline const FiosItem *End() const
-	{
-		return this->Begin() + this->Length();
-	}
-
-	/**
-	 * Get a pointer to the indicated file information. File information must exist.
-	 * @return Address of the indicated existing file information.
-	 */
-	inline const FiosItem *Get(size_t index) const
-	{
-		return this->files.data() + index;
-	}
-
-	/**
-	 * Get a pointer to the indicated file information. File information must exist.
-	 * @return Address of the indicated existing file information.
-	 */
-	inline FiosItem *Get(size_t index)
-	{
-		return this->files.data() + index;
-	}
-
-	inline const FiosItem &operator[](size_t index) const
-	{
-		return this->files[index];
-	}
-
-	/**
-	 * Get a reference to the indicated file information. File information must exist.
-	 * @return The requested file information.
-	 */
-	inline FiosItem &operator[](size_t index)
-	{
-		return this->files[index];
-	}
-
-	/** Remove all items from the list. */
-	inline void Clear()
-	{
-		this->files.clear();
-	}
-
-	/** Compact the list down to the smallest block size boundary. */
-	inline void Compact()
-	{
-		this->files.shrink_to_fit();
-	}
-
 	void BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop);
 	const FiosItem *FindItem(const char *file);
-
-	std::vector<FiosItem> files; ///< The list of files.
 };
 
 enum SortingBits {
