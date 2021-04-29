@@ -169,13 +169,13 @@ public:
 	 * Convert a string which is stored in the config file or savegames to
 	 *  custom settings of this Script.
 	 */
-	void StringToSettings(const char *value);
+	void StringToSettings(const std::string &value);
 
 	/**
 	 * Convert the custom settings to a string that can be stored in the config
 	 *  file or savegames.
 	 */
-	void SettingsToString(char *string, const char *last) const;
+	std::string SettingsToString() const;
 
 	/**
 	 * Search a textfile file next to this script.
