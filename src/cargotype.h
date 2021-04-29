@@ -122,6 +122,49 @@ struct CargoSpec {
 
 	SpriteID GetCargoIcon() const;
 
+	/**
+	 * Iterator to iterate all valid CargoSpec
+	 */
+	struct Iterator {
+		typedef CargoSpec value_type;
+		typedef CargoSpec *pointer;
+		typedef CargoSpec &reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
+
+		explicit Iterator(size_t index) : index(index)
+		{
+			this->ValidateIndex();
+		};
+
+		bool operator==(const Iterator &other) const { return this->index == other.index; }
+		bool operator!=(const Iterator &other) const { return !(*this == other); }
+		CargoSpec * operator*() const { return CargoSpec::Get(this->index); }
+		Iterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
+
+	private:
+		size_t index;
+		void ValidateIndex() { while (this->index < CargoSpec::GetArraySize() && !(CargoSpec::Get(this->index)->IsValid())) this->index++; }
+	};
+
+	/*
+	 * Iterable ensemble of all valid CargoSpec
+	 */
+	struct IterateWrapper {
+		size_t from;
+		IterateWrapper(size_t from = 0) : from(from) {}
+		Iterator begin() { return Iterator(this->from); }
+		Iterator end() { return Iterator(CargoSpec::GetArraySize()); }
+		bool empty() { return this->begin() == this->end(); }
+	};
+
+	/**
+	 * Returns an iterable ensemble of all valid CargoSpec
+	 * @param from index of the first CargoSpec to consider
+	 * @return an iterable ensemble of all valid CargoSpec
+	 */
+	static IterateWrapper Iterate(size_t from = 0) { return IterateWrapper(from); }
+
 private:
 	static CargoSpec array[NUM_CARGO]; ///< Array holding all CargoSpecs
 
@@ -149,10 +192,6 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 {
 	return (CargoSpec::Get(c)->classes & cc) != 0;
 }
-
-#define FOR_ALL_CARGOSPECS_FROM(var, start) for (size_t cargospec_index = start; var = nullptr, cargospec_index < CargoSpec::GetArraySize(); cargospec_index++) \
-		if ((var = CargoSpec::Get(cargospec_index))->IsValid())
-#define FOR_ALL_CARGOSPECS(var) FOR_ALL_CARGOSPECS_FROM(var, 0)
 
 #define FOR_EACH_SET_CARGO_ID(var, cargo_bits) FOR_EACH_SET_BIT_EX(CargoID, var, CargoTypes, cargo_bits)
 

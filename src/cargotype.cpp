@@ -84,8 +84,7 @@ void SetupCargoForClimate(LandscapeID l)
  */
 CargoID GetCargoIDByLabel(CargoLabel cl)
 {
-	const CargoSpec *cs;
-	FOR_ALL_CARGOSPECS(cs) {
+	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		if (cs->label == cl) return cs->Index();
 	}
 
@@ -103,8 +102,7 @@ CargoID GetCargoIDByBitnum(uint8 bitnum)
 {
 	if (bitnum == INVALID_CARGO) return CT_INVALID;
 
-	const CargoSpec *cs;
-	FOR_ALL_CARGOSPECS(cs) {
+	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		if (cs->bitnum == bitnum) return cs->Index();
 	}
 
@@ -131,7 +129,6 @@ SpriteID CargoSpec::GetCargoIcon() const
 
 std::vector<const CargoSpec *> _sorted_cargo_specs; ///< Cargo specifications sorted alphabetically by name.
 uint8 _sorted_standard_cargo_specs_size;            ///< Number of standard cargo specifications stored in the _sorted_cargo_specs array.
-
 
 /** Sort cargo specifications by their name. */
 static bool CargoSpecNameSorter(const CargoSpec * const &a, const CargoSpec * const &b)
@@ -169,9 +166,8 @@ static bool CargoSpecClassSorter(const CargoSpec * const &a, const CargoSpec * c
 void InitializeSortedCargoSpecs()
 {
 	_sorted_cargo_specs.clear();
-	const CargoSpec *cargo;
 	/* Add each cargo spec to the list. */
-	FOR_ALL_CARGOSPECS(cargo) {
+	for (const CargoSpec *cargo : CargoSpec::Iterate()) {
 		_sorted_cargo_specs.push_back(cargo);
 	}
 
