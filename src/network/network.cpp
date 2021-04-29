@@ -682,9 +682,11 @@ void NetworkQueryLobbyServer(const std::string &connection_string)
  * the list. If you use this function, the games will be marked
  * as manually added.
  * @param connection_string The IP:port of the server to add.
+ * @param manually Whether the enter should be marked as manual added.
+ * @param never_expire Whether the entry can expire (removed when no longer found in the public listing).
  * @return The entry on the game list.
  */
-NetworkGameList *NetworkAddServer(const std::string &connection_string, bool manually)
+NetworkGameList *NetworkAddServer(const std::string &connection_string, bool manually, bool never_expire)
 {
 	if (connection_string.empty()) return nullptr;
 
@@ -700,6 +702,7 @@ NetworkGameList *NetworkAddServer(const std::string &connection_string, bool man
 	}
 
 	if (manually) item->manually = true;
+	if (never_expire) item->version = INT32_MAX;
 
 	return item;
 }
@@ -1271,7 +1274,7 @@ extern "C" {
 
 void CDECL em_openttd_add_server(const char *connection_string)
 {
-	NetworkAddServer(connection_string, false);
+	NetworkAddServer(connection_string, false, true);
 }
 
 }
