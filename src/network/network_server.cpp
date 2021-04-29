@@ -1879,9 +1879,6 @@ void NetworkServer_Tick(bool send_frame)
 #endif
 		}
 	}
-
-	/* See if we need to advertise */
-	NetworkUDPAdvertise();
 }
 
 /** Yearly "callback". Called whenever the year changes. */
