@@ -61,7 +61,6 @@ bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkCompanyState *_network_company_states = nullptr; ///< Statistics about some companies.
 ClientID _network_own_client_id;      ///< Our client identifier.
 ClientID _redirect_console_to_client; ///< If not invalid, redirect the console output to a client.
-bool _network_need_advertise;         ///< Whether we need to advertise.
 uint8 _network_reconnect;             ///< Reconnect timeout
 StringList _network_bind_list;        ///< The addresses to bind on.
 StringList _network_host_list;        ///< The servers we know.
@@ -944,10 +943,6 @@ bool NetworkServerStart()
 	/* if the server is dedicated ... add some other script */
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
 
-	/* Try to register us to the master server */
-	_network_need_advertise = true;
-	NetworkUDPAdvertise();
-
 	/* welcome possibly still connected admins - this can only happen on a dedicated server. */
 	if (_network_dedicated) ServerNetworkAdminSocketHandler::WelcomeAll();
 
@@ -995,8 +990,6 @@ void NetworkDisconnect(bool blocking, bool close_admins)
 			}
 		}
 	}
-
-	if (_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise(blocking);
 
 	CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
@@ -1269,7 +1262,6 @@ void NetworkStartUp()
 	/* Network is available */
 	_network_available = NetworkCoreInitialize();
 	_network_dedicated = false;
-	_network_need_advertise = true;
 
 	/* Generate an server id when there is none yet */
 	if (_settings_client.network.network_id.empty()) NetworkGenerateServerId();
