@@ -751,7 +751,7 @@ public:
 				SetDParamStr(0, _settings_client.network.connect_to_ip);
 				ShowQueryString(
 					STR_JUST_RAW_STRING,
-					STR_NETWORK_SERVER_LIST_ENTER_IP,
+					STR_NETWORK_SERVER_LIST_ENTER_SERVER_ADDRESS,
 					NETWORK_HOSTNAME_PORT_LENGTH,  // maximum number of characters including '\0'
 					this, CS_ALPHANUMERAL, QSF_ACCEPT_UNCHANGED);
 				break;

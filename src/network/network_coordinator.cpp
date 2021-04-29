@@ -27,12 +27,39 @@ static const auto NETWORK_COORDINATOR_DELAY_BETWEEN_UPDATES = std::chrono::secon
 ClientNetworkCoordinatorSocketHandler _network_coordinator_client; ///< The connection to the Game Coordinator.
 ConnectionType _network_server_connection_type = CONNECTION_TYPE_UNKNOWN; ///< What type of connection the Game Coordinator detected we are on.
 
+/** Connect to a game server by IP:port. */
+class NetworkDirectConnecter : public TCPConnecter {
+private:
+	std::string token;     ///< Token of this connection.
+	uint8 tracking_number; ///< Tracking number of this connection.
+
+public:
+	/**
+	 * Initiate the connecting.
+	 * @param hostname The hostname of the server.
+	 * @param port The port of the server.
+	 * @param token The connection token.
+	 * @param tracking_number The tracking number of the connection.
+	 */
+	NetworkDirectConnecter(const std::string &hostname, uint16 port, const std::string &token, uint8 tracking_number) : TCPConnecter(hostname, port), token(token), tracking_number(tracking_number) {}
+
+	void OnFailure() override
+	{
+		_network_coordinator_client.ConnectFailure(this->token, this->tracking_number);
+	}
+
+	void OnConnect(SOCKET s) override
+	{
+		_network_coordinator_client.ConnectSuccess(this->token, s);
+	}
+};
+
 /** Connect to the Game Coordinator server. */
 class NetworkCoordinatorConnecter : TCPConnecter {
 public:
 	/**
 	 * Initiate the connecting.
-	 * @param address The address of the Game Coordinator server.
+	 * @param connection_string The address of the Game Coordinator server.
 	 */
 	NetworkCoordinatorConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_COORDINATOR_SERVER_PORT) {}
 
@@ -71,6 +98,22 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_SERVER_ERROR(Packet *p)
 
 			this->CloseConnection();
 			return false;
+
+		case NETWORK_COORDINATOR_ERROR_INVALID_JOIN_KEY: {
+			std::string join_key = "+" + detail;
+
+			/* Find the connecter based on the join-key. */
+			auto connecter_it = this->connecter_pre.find(join_key);
+			if (connecter_it == this->connecter_pre.end()) return true;
+			this->connecter_pre.erase(connecter_it);
+
+			/* Mark the server as offline. */
+			NetworkGameList *item = NetworkGameListAddItem(join_key);
+			item->online = false;
+
+			UpdateNetworkGameWindow();
+			return true;
+		}
 
 		default:
 			Debug(net, 0, "Invalid error type {} received from Game Coordinator", error);
@@ -159,6 +202,58 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_SERVER_LISTING(Packet *p)
 	return true;
 }
 
+bool ClientNetworkCoordinatorSocketHandler::Receive_SERVER_CONNECTING(Packet *p)
+{
+	std::string token = p->Recv_string(NETWORK_TOKEN_LENGTH);
+	std::string join_key = "+" + p->Recv_string(NETWORK_JOIN_KEY_LENGTH);
+
+	/* Find the connecter based on the join-key. */
+	auto connecter_it = this->connecter_pre.find(join_key);
+	if (connecter_it == this->connecter_pre.end()) {
+		this->CloseConnection();
+		return false;
+	}
+
+	/* Now store it based on the token. */
+	this->connecter[token] = connecter_it->second;
+	this->connecter_pre.erase(connecter_it);
+
+	return true;
+}
+
+bool ClientNetworkCoordinatorSocketHandler::Receive_SERVER_CONNECT_FAILED(Packet *p)
+{
+	std::string token = p->Recv_string(NETWORK_TOKEN_LENGTH);
+
+	auto connecter_it = this->connecter.find(token);
+	if (connecter_it != this->connecter.end()) {
+		connecter_it->second->SetResult(INVALID_SOCKET);
+		this->connecter.erase(connecter_it);
+	}
+
+	/* Close all remaining connections. */
+	this->CloseToken(token);
+
+	return true;
+}
+
+bool ClientNetworkCoordinatorSocketHandler::Receive_SERVER_DIRECT_CONNECT(Packet *p)
+{
+	std::string token = p->Recv_string(NETWORK_TOKEN_LENGTH);
+	uint8 tracking_number = p->Recv_uint8();
+	std::string host = p->Recv_string(NETWORK_HOSTNAME_PORT_LENGTH);
+	uint16 port = p->Recv_uint16();
+
+	/* Ensure all other pending connection attempts are killed. */
+	if (this->game_connecter != nullptr) {
+		this->game_connecter->Kill();
+		this->game_connecter = nullptr;
+	}
+
+	this->game_connecter = new NetworkDirectConnecter(host, port, token, tracking_number);
+	return true;
+}
+
 void ClientNetworkCoordinatorSocketHandler::Connect()
 {
 	/* We are either already connected or are trying to connect. */
@@ -181,6 +276,8 @@ NetworkRecvStatus ClientNetworkCoordinatorSocketHandler::CloseConnection(bool er
 
 	_network_server_connection_type = CONNECTION_TYPE_UNKNOWN;
 	this->next_update = {};
+
+	this->CloseAllTokens();
 
 	SetWindowDirty(WC_CLIENT_LIST, 0);
 
@@ -245,6 +342,118 @@ void ClientNetworkCoordinatorSocketHandler::GetListing()
 	p->Send_string(_openttd_revision);
 
 	this->SendPacket(p);
+}
+
+/**
+ * Join a server based on a join-key.
+ * @param join_key The join-key of the server to connect to.
+ * @param connecter The connecter of the request.
+ */
+void ClientNetworkCoordinatorSocketHandler::ConnectToServer(const std::string &join_key, TCPServerConnecter *connecter)
+{
+	assert(join_key[0] == '+');
+
+	if (this->connecter_pre.find(join_key) != this->connecter_pre.end()) {
+		/* If someone is hammering the refresh key, he can set out two
+		 * requests for the same join-key. There isn't really a great way of
+		 * handling this, so just ignore this request. */
+		connecter->SetResult(INVALID_SOCKET);
+		return;
+	}
+
+	/* Initially we store based on join-key; on first reply we know the token,
+	 * and will start using that key instead. */
+	this->connecter_pre[join_key] = connecter;
+
+	this->Connect();
+
+	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_CONNECT);
+	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
+	p->Send_string(join_key.substr(1));
+
+	this->SendPacket(p);
+}
+
+/**
+ * Callback from a Connecter to let the Game Coordinator know the connection failed.
+ * @param token Token of the connecter that failed.
+ * @param tracking_number Tracking number of the connecter that failed.
+ */
+void ClientNetworkCoordinatorSocketHandler::ConnectFailure(const std::string &token, uint8 tracking_number)
+{
+	/* Connecter will destroy itself. */
+	this->game_connecter = nullptr;
+
+	assert(!_network_server);
+
+	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_CONNECT_FAILED);
+	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
+	p->Send_string(token);
+	p->Send_uint8(tracking_number);
+
+	this->SendPacket(p);
+
+	auto connecter_it = this->connecter.find(token);
+	assert(connecter_it != this->connecter.end());
+
+	connecter_it->second->SetResult(INVALID_SOCKET);
+	this->connecter.erase(connecter_it);
+}
+
+/**
+ * Callback from a Connecter to let the Game Coordinator know the connection
+ * to the game server is established.
+ * @param token Token of the connecter that succeeded.
+ * @param sock The socket that the connecter can now use.
+ */
+void ClientNetworkCoordinatorSocketHandler::ConnectSuccess(const std::string &token, SOCKET sock)
+{
+	/* Connecter will destroy itself. */
+	this->game_connecter = nullptr;
+
+	assert(!_network_server);
+
+	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_CONNECTED);
+	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
+	p->Send_string(token);
+	this->SendPacket(p);
+
+	auto connecter_it = this->connecter.find(token);
+	assert(connecter_it != this->connecter.end());
+
+	connecter_it->second->SetResult(sock);
+	this->connecter.erase(connecter_it);
+
+	/* Close all remaining connections. */
+	this->CloseToken(token);
+}
+
+void ClientNetworkCoordinatorSocketHandler::CloseToken(const std::string &token)
+{
+	/* Ensure all other pending connection attempts are also killed. */
+	if (this->game_connecter != nullptr) {
+		this->game_connecter->Kill();
+		this->game_connecter = nullptr;
+	}
+}
+
+void ClientNetworkCoordinatorSocketHandler::CloseAllTokens()
+{
+	/* Ensure all other pending connection attempts are also killed. */
+	if (this->game_connecter != nullptr) {
+		this->game_connecter->Kill();
+		this->game_connecter = nullptr;
+	}
+
+	/* Mark any pending connecters as failed. */
+	for (auto &[token, it] : this->connecter) {
+		it->SetResult(INVALID_SOCKET);
+	}
+	for (auto &[join_key, it] : this->connecter_pre) {
+		it->SetResult(INVALID_SOCKET);
+	}
+	this->connecter.clear();
+	this->connecter_pre.clear();
 }
 
 /**

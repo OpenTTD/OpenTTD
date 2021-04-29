@@ -425,6 +425,11 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
  */
 /* static */ ServerAddress ServerAddress::Parse(const std::string &connection_string, uint16 default_port, CompanyID *company_id)
 {
+	if (!connection_string.empty() && connection_string[0] == '+') {
+		std::string_view ip = ParseCompanyFromConnectionString(connection_string, company_id);
+		return ServerAddress(SERVER_ADDRESS_JOIN_KEY, std::string(ip));
+	}
+
 	uint16 port = default_port;
 	std::string_view ip = ParseFullConnectionString(connection_string, port, company_id);
 	return ServerAddress(SERVER_ADDRESS_DIRECT, std::string(ip) + ":" + std::to_string(port));

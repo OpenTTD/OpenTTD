@@ -78,6 +78,7 @@ static const uint NETWORK_CONTENT_TAG_LENGTH      =   32;         ///< The maxim
 static const uint NETWORK_JOIN_KEY_LENGTH         =   64;         ///< The maximum length of the join key, in bytes including '\0'
 static const uint NETWORK_JOIN_KEY_SECRET_LENGTH  =   80;         ///< The maximum length of the join key secret, in bytes including '\0'
 static const uint NETWORK_ERROR_DETAIL_LENGTH     =  100;         ///< The maximum length of the error detail, in bytes including '\0'
+static const uint NETWORK_TOKEN_LENGTH            =   64;         ///< The maximum length of a token, in bytes including '\0'
 
 static const uint NETWORK_GRF_NAME_LENGTH         =   80;         ///< Maximum length of the name of a GRF
 

@@ -11,6 +11,7 @@
 #define NETWORK_COORDINATOR_H
 
 #include "core/tcp_coordinator.h"
+#include <map>
 
 /**
  * Game Coordinator communication.
@@ -24,17 +25,32 @@
  * For clients (listing):
  *  - Client sends CLIENT_LISTING.
  *  - GC returns the full list of public servers via SERVER_LISTING (multiple packets).
+ *
+ * For clients (connecting):
+ *  - Client sends CLIENT_CONNECT.
+ *  - GC checks what type of connections the servers supports:
+ *    1) Direct connect?
+ *        - Send the client a SERVER_CONNECT with the peer address.
+ *        - a) Client connects, closes GC connection.
+ *        - b) Client connect fails, client sends CLIENT_CONNECT_FAILED to GC.
+ *  - If all fails, GC sends SERVER_CONNECT_FAILED to indicate no connection was possible.
  */
 
 /** Class for handling the client side of the Game Coordinator connection. */
 class ClientNetworkCoordinatorSocketHandler : public NetworkCoordinatorSocketHandler {
 private:
 	std::chrono::steady_clock::time_point next_update; ///< When to send the next update (if server and public).
+	std::map<std::string, TCPServerConnecter *> connecter; ///< Based on tokens, the current connecters that are pending.
+	std::map<std::string, TCPServerConnecter *> connecter_pre; ///< Based on join-keys, the current connecters that are pending.
+	TCPConnecter *game_connecter = nullptr; ///< Pending connecter to the game server.
 
 protected:
 	bool Receive_SERVER_ERROR(Packet *p) override;
 	bool Receive_SERVER_REGISTER_ACK(Packet *p) override;
 	bool Receive_SERVER_LISTING(Packet *p) override;
+	bool Receive_SERVER_CONNECTING(Packet *p) override;
+	bool Receive_SERVER_CONNECT_FAILED(Packet *p) override;
+	bool Receive_SERVER_DIRECT_CONNECT(Packet *p) override;
 
 public:
 	/** The idle timeout; when to close the connection because it's idle. */
@@ -48,11 +64,18 @@ public:
 	NetworkRecvStatus CloseConnection(bool error = true) override;
 	void SendReceive();
 
+	void ConnectFailure(const std::string &token, uint8 tracking_number);
+	void ConnectSuccess(const std::string &token, SOCKET sock);
+
 	void Connect();
+	void CloseToken(const std::string &token);
+	void CloseAllTokens();
 
 	void Register();
 	void SendServerUpdate();
 	void GetListing();
+
+	void ConnectToServer(const std::string &join_key, TCPServerConnecter *connecter);
 };
 
 extern ClientNetworkCoordinatorSocketHandler _network_coordinator_client;
