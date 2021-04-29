@@ -62,7 +62,7 @@ static CompanyID _admin_company_id = INVALID_COMPANY; ///< For what company a co
  * do not.
  */
 static const StringID _server_visibility_dropdown[] = {
-	STR_NETWORK_SERVER_VISIBILITY_PRIVATE,
+	STR_NETWORK_SERVER_VISIBILITY_LOCAL,
 	STR_NETWORK_SERVER_VISIBILITY_PUBLIC,
 	INVALID_STRING_ID
 };
@@ -1607,21 +1607,31 @@ static const NWidgetPart _nested_client_list_widgets[] = {
 			NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_NETWORK_CLIENT_LIST_SERVER, STR_NULL), SetPadding(4, 4, 0, 4), SetPIP(0, 2, 0),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
 					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalTextLines(1, 0), SetDataTip(STR_NETWORK_CLIENT_LIST_SERVER_NAME, STR_NULL),
-					NWidget(NWID_SPACER), SetMinimalSize(20, 0),
+					NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 					NWidget(WWT_TEXT, COLOUR_GREY, WID_CL_SERVER_NAME), SetFill(1, 0), SetMinimalTextLines(1, 0), SetResize(1, 0), SetDataTip(STR_BLACK_RAW_STRING, STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 					NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_CL_SERVER_NAME_EDIT), SetMinimalSize(12, 14), SetDataTip(SPR_RENAME, STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP),
 				EndContainer(),
 				NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
 					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalTextLines(1, 0), SetDataTip(STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY, STR_NULL),
-					NWidget(NWID_SPACER), SetMinimalSize(20, 0), SetFill(1, 0), SetResize(1, 0),
+					NWidget(NWID_SPACER), SetMinimalSize(10, 0), SetFill(1, 0), SetResize(1, 0),
 					NWidget(WWT_DROPDOWN, COLOUR_GREY, WID_CL_SERVER_VISIBILITY), SetDataTip(STR_BLACK_STRING, STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalTextLines(1, 0), SetDataTip(STR_NETWORK_CLIENT_LIST_SERVER_JOIN_KEY, STR_NULL),
+					NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY, WID_CL_SERVER_JOIN_KEY), SetFill(1, 0), SetMinimalTextLines(1, 0), SetResize(1, 0), SetDataTip(STR_BLACK_RAW_STRING, STR_NETWORK_CLIENT_LIST_SERVER_JOIN_KEY_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
+				EndContainer(),
+				NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalTextLines(1, 0), SetDataTip(STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE, STR_NULL),
+					NWidget(NWID_SPACER), SetMinimalSize(10, 0),
+					NWidget(WWT_TEXT, COLOUR_GREY, WID_CL_SERVER_CONNECTION_TYPE), SetFill(1, 0), SetMinimalTextLines(1, 0), SetResize(1, 0), SetDataTip(STR_BLACK_STRING, STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),
 		NWidget(WWT_FRAME, COLOUR_GREY), SetDataTip(STR_NETWORK_CLIENT_LIST_PLAYER, STR_NULL), SetPadding(4, 4, 4, 4), SetPIP(0, 2, 0),
 			NWidget(NWID_HORIZONTAL), SetPIP(0, 3, 0),
 				NWidget(WWT_TEXT, COLOUR_GREY), SetMinimalTextLines(1, 0), SetDataTip(STR_NETWORK_CLIENT_LIST_PLAYER_NAME, STR_NULL),
-				NWidget(NWID_SPACER), SetMinimalSize(20, 0),
+				NWidget(NWID_SPACER), SetMinimalSize(10, 0),
 				NWidget(WWT_TEXT, COLOUR_GREY, WID_CL_CLIENT_NAME), SetFill(1, 0), SetMinimalTextLines(1, 0), SetResize(1, 0), SetDataTip(STR_BLACK_RAW_STRING, STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP), SetAlignment(SA_VERT_CENTER | SA_RIGHT),
 				NWidget(WWT_PUSHIMGBTN, COLOUR_GREY, WID_CL_CLIENT_NAME_EDIT), SetMinimalSize(12, 14), SetDataTip(SPR_RENAME, STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP),
 			EndContainer(),
@@ -2048,6 +2058,16 @@ public:
 
 			case WID_CL_SERVER_VISIBILITY:
 				SetDParam(0, _server_visibility_dropdown[_settings_client.network.server_advertise]);
+				break;
+
+			case WID_CL_SERVER_JOIN_KEY: {
+				static std::string empty = {};
+				SetDParamStr(0, _network_server_connection_type == CONNECTION_TYPE_UNKNOWN ? empty : _network_game_info.join_key);
+				break;
+			}
+
+			case WID_CL_SERVER_CONNECTION_TYPE:
+				SetDParam(0, STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN + _network_server_connection_type);
 				break;
 
 			case WID_CL_CLIENT_NAME:

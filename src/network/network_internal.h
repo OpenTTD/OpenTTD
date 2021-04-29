@@ -11,6 +11,7 @@
 #define NETWORK_INTERNAL_H
 
 #include "network_func.h"
+#include "core/tcp_coordinator.h"
 #include "core/tcp_game.h"
 
 #include "../command_type.h"
@@ -82,6 +83,7 @@ extern NetworkJoinStatus _network_join_status;
 extern uint8 _network_join_waiting;
 extern uint32 _network_join_bytes;
 extern uint32 _network_join_bytes_total;
+extern ConnectionType _network_server_connection_type;
 
 extern uint8 _network_reconnect;
 

@@ -25,6 +25,7 @@
  * Version: Bytes:  Description:
  *   all      1       the version of this packet's structure
  *
+ *   5+       var     join key of the server
  *   4+       1       number of GRFs attached (n)
  *   4+       n * 20  unique identifier for GRF files. Consists of:
  *                     - one 4 byte variable with the GRF ID
@@ -40,15 +41,15 @@
  *
  *   1+       var     string with the name of the server
  *   1+       var     string with the revision of the server
- *   1+       1       the language run on the server
+ *   1..4     1       the language run on the server
  *                    (0 = any, 1 = English, 2 = German, 3 = French)
  *   1+       1       whether the server uses a password (0 = no, 1 = yes)
  *   1+       1       maximum number of clients allowed on the server
  *   1+       1       number of clients on the server
  *   1+       1       number of spectators on the server
- *   1 & 2    2       current game date in days since 1-1-1920 (DMY)
- *   1 & 2    2       game introduction date in days since 1-1-1920 (DMY)
- *   1+       var     string with the name of the map
+ *   1..2     2       current game date in days since 1-1-1920 (DMY)
+ *   1..2     2       game introduction date in days since 1-1-1920 (DMY)
+ *   1..4     var     string with the name of the map
  *   1+       2       width of the map in tiles
  *   1+       2       height of the map in tiles
  *   1+       1       type of map:
@@ -67,6 +68,7 @@ struct NetworkServerGameInfo {
 	uint16 map_height;           ///< Map height
 	std::string server_name;     ///< Server name
 	std::string server_revision; ///< The version number the server is using (e.g.: 'r304' or 0.5.0)
+	std::string join_key;        ///< Join-key of the server
 	bool dedicated;              ///< Is this a dedicated server?
 	bool use_password;           ///< Is this server passworded?
 	byte clients_on;             ///< Current count of clients on server

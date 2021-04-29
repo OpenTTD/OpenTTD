@@ -141,10 +141,15 @@ void FillStaticNetworkServerGameInfo()
  */
 const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
 {
-	/* Client_on is used as global variable to keep track on the number of clients. */
+	/* These variables are updated inside _network_game_info as if they are global variables:
+	 *  - clients_on
+	 *  - join_key
+	 * These don't need to be updated manually here.
+	 */
 	_network_game_info.companies_on  = (byte)Company::GetNumItems();
 	_network_game_info.spectators_on = NetworkSpectatorCount();
 	_network_game_info.game_date     = _date;
+
 	return &_network_game_info;
 }
 
@@ -183,13 +188,12 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info)
 {
 	p->Send_uint8 (NETWORK_GAME_INFO_VERSION);
 
-	/*
-	 *              Please observe the order.
-	 * The parts must be read in the same order as they are sent!
-	 */
-
 	/* Update the documentation in game_info.h on changes
 	 * to the NetworkGameInfo wire-protocol! */
+
+	/* NETWORK_GAME_INFO_VERSION = 5 */
+	assert(info->join_key.empty() || info->join_key[0] == '+');
+	p->Send_string(info->join_key.empty() ? "" : info->join_key.substr(1));
 
 	/* NETWORK_GAME_INFO_VERSION = 4 */
 	{
@@ -224,12 +228,10 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info)
 	/* NETWORK_GAME_INFO_VERSION = 1 */
 	p->Send_string(info->server_name);
 	p->Send_string(info->server_revision);
-	p->Send_uint8 (0); // Used to be server-lang.
 	p->Send_bool  (info->use_password);
 	p->Send_uint8 (info->clients_max);
 	p->Send_uint8 (info->clients_on);
 	p->Send_uint8 (info->spectators_on);
-	p->Send_string(""); // Used to be map-name.
 	p->Send_uint16(info->map_width);
 	p->Send_uint16(info->map_height);
 	p->Send_uint8 (info->landscape);
@@ -256,6 +258,12 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 	 * to the NetworkGameInfo wire-protocol! */
 
 	switch (game_info_version) {
+		case 5: {
+			std::string join_key = p->Recv_string(NETWORK_JOIN_KEY_LENGTH);
+			info->join_key = join_key.empty() ? "" : "+" + join_key;
+			FALLTHROUGH;
+		}
+
 		case 4: {
 			GRFConfig **dst = &info->grfconfig;
 			uint i;
@@ -290,7 +298,7 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 		case 1:
 			info->server_name = p->Recv_string(NETWORK_NAME_LENGTH);
 			info->server_revision = p->Recv_string(NETWORK_REVISION_LENGTH);
-			p->Recv_uint8 (); // Used to contain server-lang.
+			if (game_info_version < 5) p->Recv_uint8 (); // Used to contain server-lang.
 			info->use_password   = p->Recv_bool  ();
 			info->clients_max    = p->Recv_uint8 ();
 			info->clients_on     = p->Recv_uint8 ();
@@ -299,7 +307,7 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 				info->game_date    = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
 				info->start_date   = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
 			}
-			while (p->Recv_uint8() != 0) {} // Used to contain the map-name.
+			if (game_info_version < 5) while (p->Recv_uint8() != 0) {} // Used to contain the map-name.
 			info->map_width      = p->Recv_uint16();
 			info->map_height     = p->Recv_uint16();
 			info->landscape      = p->Recv_uint8 ();
