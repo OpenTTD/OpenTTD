@@ -1046,7 +1046,7 @@ struct DepotWindow : Window {
 			this->RaiseWidget(WID_D_SELL);
 			this->SetWidgetDirty(WID_D_SELL);
 		}
-		if (this->nested_array[WID_D_SELL] != nullptr && !this->IsWidgetDisabled(WID_D_SELL_CHAIN)) {
+		if (this->GetWidget<NWidgetBase>(WID_D_SELL) != nullptr && !this->IsWidgetDisabled(WID_D_SELL_CHAIN)) {
 			this->RaiseWidget(WID_D_SELL_CHAIN);
 			this->SetWidgetDirty(WID_D_SELL_CHAIN);
 		}
