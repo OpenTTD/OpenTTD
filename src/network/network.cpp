@@ -447,44 +447,14 @@ static void CheckPauseOnJoin()
 }
 
 /**
- * Converts a string to ip/port
- *  Format: IP:port
- *
- * connection_string will be re-terminated to separate out the hostname, port will
- * be set to the port strings given by the user, inside the memory area originally
- * occupied by connection_string.
- */
-void ParseConnectionString(const char **port, char *connection_string)
-{
-	bool ipv6 = (strchr(connection_string, ':') != strrchr(connection_string, ':'));
-	for (char *p = connection_string; *p != '\0'; p++) {
-		switch (*p) {
-			case '[':
-				ipv6 = true;
-				break;
-
-			case ']':
-				ipv6 = false;
-				break;
-
-			case ':':
-				if (ipv6) break;
-				*port = p + 1;
-				*p = '\0';
-				break;
-		}
-	}
-}
-
-/**
  * Converts a string to ip/port/company
  *  Format: IP:port#company
  *
- * connection_string will be re-terminated to separate out the hostname, and company and port will
- * be set to the company and port strings given by the user, inside the memory area originally
- * occupied by connection_string.
+ * connection_string will be re-terminated to separate out the hostname, port will
+ * be set to the port strings given by the user, inside the memory area originally
+ * occupied by connection_string. Similar for company, if set.
  */
-void ParseGameConnectionString(const char **company, const char **port, char *connection_string)
+void ParseFullConnectionString(const char **company, const char **port, char *connection_string)
 {
 	bool ipv6 = (strchr(connection_string, ':') != strrchr(connection_string, ':'));
 	for (char *p = connection_string; *p != '\0'; p++) {
@@ -498,6 +468,7 @@ void ParseGameConnectionString(const char **company, const char **port, char *co
 				break;
 
 			case '#':
+				if (company == nullptr) continue;
 				*company = p + 1;
 				*p = '\0';
 				break;
@@ -509,6 +480,51 @@ void ParseGameConnectionString(const char **company, const char **port, char *co
 				break;
 		}
 	}
+}
+
+/**
+ * Convert a string containing either "hostname" or "hostname:ip" to a
+ * NetworkAddress.
+ *
+ * @param connection_string The string to parse.
+ * @param default_port The default port to set port to if not in connection_string.
+ * @return A valid NetworkAddress of the parsed information.
+ */
+NetworkAddress ParseConnectionString(const char *connection_string, int default_port)
+{
+	char internal_connection_string[NETWORK_HOSTNAME_PORT_LENGTH];
+	strecpy(internal_connection_string, connection_string, lastof(internal_connection_string));
+
+	const char *port = nullptr;
+	ParseFullConnectionString(nullptr, &port, internal_connection_string);
+
+	int rport = port != nullptr ? atoi(port) : default_port;
+	return NetworkAddress(internal_connection_string, rport);
+}
+
+/**
+ * Convert a string containing either "hostname" or "hostname:ip" to a
+ * NetworkAddress, where the string can be postfixed with "#company" to
+ * indicate the requested company.
+ *
+ * @param company Pointer to the company variable to set iff indicted.
+ * @param connection_string The string to parse.
+ * @param default_port The default port to set port to if not in connection_string.
+ * @return A valid NetworkAddress of the parsed information.
+ */
+NetworkAddress ParseGameConnectionString(CompanyID *company, const char *connection_string, int default_port)
+{
+	char internal_connection_string[NETWORK_HOSTNAME_PORT_LENGTH + 4]; // 4 extra for the "#" and company
+	strecpy(internal_connection_string, connection_string, lastof(internal_connection_string));
+
+	const char *port_s = nullptr;
+	const char *company_s = nullptr;
+	ParseFullConnectionString(&company_s, &port_s, internal_connection_string);
+
+	if (company_s != nullptr) *company = (CompanyID)atoi(company_s);
+
+	int port = port_s != nullptr ? atoi(port_s) : default_port;
+	return NetworkAddress(internal_connection_string, port);
 }
 
 /**
@@ -616,26 +632,17 @@ void NetworkTCPQueryServer(NetworkAddress address)
 	new TCPQueryConnecter(address);
 }
 
-/* Validates an address entered as a string and adds the server to
+/**
+ * Validates an address entered as a string and adds the server to
  * the list. If you use this function, the games will be marked
- * as manually added. */
-void NetworkAddServer(const char *b)
+ * as manually added.
+ * @param connection_string The IP:port to add to the list.
+ */
+void NetworkAddServer(const char *connection_string)
 {
-	if (*b != '\0') {
-		const char *port = nullptr;
-		char host[NETWORK_HOSTNAME_LENGTH];
-		uint16 rport;
+	if (StrEmpty(connection_string)) return;
 
-		strecpy(host, b, lastof(host));
-
-		strecpy(_settings_client.network.connect_to_ip, b, lastof(_settings_client.network.connect_to_ip));
-		rport = NETWORK_DEFAULT_PORT;
-
-		ParseConnectionString(&port, host);
-		if (port != nullptr) rport = atoi(port);
-
-		NetworkUDPQueryServer(NetworkAddress(host, rport), true);
-	}
+	NetworkUDPQueryServer(ParseConnectionString(connection_string, NETWORK_DEFAULT_PORT), true);
 }
 
 /**
@@ -688,16 +695,13 @@ public:
 
 
 /* Used by clients, to connect to a server */
-void NetworkClientConnectGame(const char *hostname, uint16 port, CompanyID join_as, const char *join_server_password, const char *join_company_password)
+void NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const char *join_server_password, const char *join_company_password)
 {
 	if (!_network_available) return;
-
-	if (port == 0) return;
-
 	if (!NetworkValidateClientName()) return;
 
-	strecpy(_settings_client.network.last_host, hostname, lastof(_settings_client.network.last_host));
-	_settings_client.network.last_port = port;
+	strecpy(_settings_client.network.last_joined, address.GetAddressAsString(false).c_str(), lastof(_settings_client.network.last_joined));
+
 	_network_join_as = join_as;
 	_network_join_server_password = join_server_password;
 	_network_join_company_password = join_company_password;
@@ -708,7 +712,7 @@ void NetworkClientConnectGame(const char *hostname, uint16 port, CompanyID join_
 	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
 	ShowJoinStatusWindow();
 
-	new TCPClientConnecter(NetworkAddress(hostname, port));
+	new TCPClientConnecter(address);
 }
 
 static void NetworkInitGameInfo()
@@ -1059,13 +1063,12 @@ static void NetworkGenerateServerId()
 	seprintf(_settings_client.network.network_id, lastof(_settings_client.network.network_id), "%s", hex_output);
 }
 
-void NetworkStartDebugLog(const char *hostname, uint16 port)
+void NetworkStartDebugLog(NetworkAddress &address)
 {
 	extern SOCKET _debug_socket;  // Comes from debug.c
 
-	DEBUG(net, 0, "Redirecting DEBUG() to %s:%d", hostname, port);
+	DEBUG(net, 0, "Redirecting DEBUG() to %s", address.GetAddressAsString().c_str());
 
-	NetworkAddress address(hostname, port);
 	SOCKET s = address.Connect();
 	if (s == INVALID_SOCKET) {
 		DEBUG(net, 0, "Failed to open socket for redirection DEBUG()");

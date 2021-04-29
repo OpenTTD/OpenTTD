@@ -893,15 +893,16 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 			break;
 	}
 
-	if (StrEmpty(_settings_client.network.last_host)) {
+	if (StrEmpty(_settings_client.network.last_joined)) {
 		IConsolePrint(CC_DEFAULT, "No server for reconnecting.");
 		return true;
 	}
 
 	/* Don't resolve the address first, just print it directly as it comes from the config file. */
-	IConsolePrintF(CC_DEFAULT, "Reconnecting to %s:%d...", _settings_client.network.last_host, _settings_client.network.last_port);
+	IConsolePrintF(CC_DEFAULT, "Reconnecting to %s ...", _settings_client.network.last_joined);
 
-	NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port, playas);
+	NetworkAddress address = ParseConnectionString(_settings_client.network.last_joined, NETWORK_DEFAULT_PORT);
+	NetworkClientConnectGame(address, playas);
 	return true;
 }
 
@@ -917,18 +918,11 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	if (argc < 2) return false;
 	if (_networking) NetworkDisconnect(); // we are in network-mode, first close it!
 
-	const char *port = nullptr;
-	const char *company = nullptr;
-	char *ip = argv[1];
-	/* Default settings: default port and new company */
-	uint16 rport = NETWORK_DEFAULT_PORT;
 	CompanyID join_as = COMPANY_NEW_COMPANY;
+	NetworkAddress address = ParseGameConnectionString(&join_as, argv[1], NETWORK_DEFAULT_PORT);
 
-	ParseGameConnectionString(&company, &port, ip);
-
-	IConsolePrintF(CC_DEFAULT, "Connecting to %s...", ip);
-	if (company != nullptr) {
-		join_as = (CompanyID)atoi(company);
+	IConsolePrintF(CC_DEFAULT, "Connecting to %s...", address.GetAddressAsString().c_str());
+	if (join_as != COMPANY_NEW_COMPANY) {
 		IConsolePrintF(CC_DEFAULT, "    company-no: %d", join_as);
 
 		/* From a user pov 0 is a new company, internally it's different and all
@@ -938,12 +932,8 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 			join_as--;
 		}
 	}
-	if (port != nullptr) {
-		rport = atoi(port);
-		IConsolePrintF(CC_DEFAULT, "    port: %s", port);
-	}
 
-	NetworkClientConnectGame(ip, rport, join_as);
+	NetworkClientConnectGame(address, join_as);
 
 	return true;
 }

@@ -203,11 +203,7 @@ int NetworkHTTPSocketHandler::HandleHeader()
 
 	*url = '\0';
 
-	/* Fetch the hostname, and possible port number. */
-	const char *port = nullptr;
-	ParseConnectionString(&port, hname);
-
-	NetworkAddress address(hname, port == nullptr ? 80 : atoi(port));
+	NetworkAddress address = ParseConnectionString(hname, 80);
 
 	/* Restore the URL. */
 	*url = '/';
