@@ -327,6 +327,8 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 	CheckGameCompatibility(item->info);
 	/* Ensure we consider the server online. */
 	item->online = true;
+	/* Make sure this entry never expires. */
+	item->version = INT32_MAX;
 
 	{
 		/* Checks whether there needs to be a request for names of GRFs and makes
