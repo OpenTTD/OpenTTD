@@ -2029,7 +2029,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		}
 
 		/* Update company infrastructure counts. */
-		FOR_ALL_ROADTRAMTYPES(rtt) {
+		for (RoadTramType rtt : _roadtramtypes) {
 			RoadType rt = GetRoadType(tile, rtt);
 			UpdateCompanyRoadInfrastructure(rt, GetRoadOwner(tile, rtt), -static_cast<int>(ROAD_STOP_TRACKBIT_FACTOR));
 		}
@@ -2110,7 +2110,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		RoadType road_type[] = { INVALID_ROADTYPE, INVALID_ROADTYPE };
 		Owner road_owner[] = { OWNER_NONE, OWNER_NONE };
 		if (IsDriveThroughStopTile(cur_tile)) {
-			FOR_ALL_ROADTRAMTYPES(rtt) {
+			for (RoadTramType rtt : _roadtramtypes) {
 				road_type[rtt] = GetRoadType(cur_tile, rtt);
 				if (road_type[rtt] == INVALID_ROADTYPE) continue;
 				road_owner[rtt] = GetRoadOwner(cur_tile, rtt);
@@ -4179,7 +4179,7 @@ void DeleteOilRig(TileIndex tile)
 static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	if (IsRoadStopTile(tile)) {
-		FOR_ALL_ROADTRAMTYPES(rtt) {
+		for (RoadTramType rtt : _roadtramtypes) {
 			/* Update all roadtypes, no matter if they are present */
 			if (GetRoadOwner(tile, rtt) == old_owner) {
 				RoadType rt = GetRoadType(tile, rtt);
