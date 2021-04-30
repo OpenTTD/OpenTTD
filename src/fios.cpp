@@ -582,8 +582,7 @@ static FiosType FiosGetHeightmapListCallback(SaveLoadOperation fop, const std::s
 		 * collections of NewGRFs or 32 bpp graphics replacement PNGs.
 		 */
 		bool match = false;
-		Searchpath sp;
-		FOR_ALL_SEARCHPATHS(sp) {
+		for (Searchpath sp : _valid_searchpaths) {
 			std::string buf = FioGetDirectory(sp, HEIGHTMAP_DIR);
 
 			if (buf.compare(0, buf.size(), it->second.tar_filename, 0, buf.size()) == 0) {
