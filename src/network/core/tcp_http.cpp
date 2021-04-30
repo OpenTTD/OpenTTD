@@ -226,7 +226,7 @@ int NetworkHTTPSocketHandler::Receive()
 		ssize_t res = recv(this->sock, (char *)this->recv_buffer + this->recv_pos, lengthof(this->recv_buffer) - this->recv_pos, 0);
 		if (res == -1) {
 			int err = NetworkGetLastError();
-			if (err != EWOULDBLOCK) {
+			if (err != EWOULDBLOCK && err != EAGAIN) {
 				/* Something went wrong... (ECONNRESET is connection reset by peer) */
 				if (err != ECONNRESET) DEBUG(net, 0, "recv failed with error %s", NetworkGetErrorString(err));
 				return -1;
