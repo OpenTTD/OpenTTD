@@ -70,15 +70,15 @@
 #endif
 
 #if defined(NETWORK_CORE_OS_ABSTRACTION_H) && defined(_WIN32)
-/* Use NetworkGetLastError() instead of errno, or do not (indirectly) include network/core/os_abstraction.h.
- * Winsock does not set errno, but one should rather call WSAGetLastError. NetworkGetLastError abstracts that away. */
+/* Use NetworkError::GetLast() instead of errno, or do not (indirectly) include network/core/os_abstraction.h.
+ * Winsock does not set errno, but one should rather call WSAGetLastError. NetworkError::GetLast abstracts that away. */
 #ifdef errno
 #undef errno
 #endif
 #define errno    SAFEGUARD_DO_NOT_USE_THIS_METHOD
 
-/* Use NetworkGetLastErrorString() instead of strerror, or do not (indirectly) include network/core/os_abstraction.h.
- * Winsock errors are not handled by strerror, but one should rather call FormatMessage. NetworkGetLastErrorString abstracts that away. */
+/* Use NetworkError::AsString() instead of strerror, or do not (indirectly) include network/core/os_abstraction.h.
+ * Winsock errors are not handled by strerror, but one should rather call FormatMessage. NetworkError::AsString abstracts that away. */
 #define strerror SAFEGUARD_DO_NOT_USE_THIS_METHOD
 #endif /* defined(NETWORK_CORE_OS_ABSTRACTION_H) && defined(_WIN32) */
 

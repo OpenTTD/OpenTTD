@@ -13,7 +13,6 @@
 #include "../../debug.h"
 #include "os_abstraction.h"
 #include "packet.h"
-#include "../../string_func.h"
 
 #include "../../safeguards.h"
 
@@ -48,20 +47,3 @@ void NetworkCoreShutdown()
 	WSACleanup();
 #endif
 }
-
-#if defined(_WIN32)
-/**
- * Return the string representation of the given error from the OS's network functions.
- * @param error The error number (from \c NetworkGetLastError()).
- * @return The error message, potentially an empty string but never \c nullptr.
- */
-const char *NetworkGetErrorString(int error)
-{
-	static char buffer[512];
-	if (FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, NULL, error,
-			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), buffer, sizeof(buffer), NULL) == 0) {
-		seprintf(buffer, lastof(buffer), "Unknown error %d", error);
-	}
-	return buffer;
-}
-#endif /* defined(_WIN32) */
