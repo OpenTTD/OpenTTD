@@ -83,7 +83,6 @@ protected:
 public:
 	inline int SlopeCost(TileIndex tile, Trackdir td)
 	{
-		CPerfStart perf_cost(Yapf().m_perf_slope_cost);
 		if (!stSlopeCost(tile, td)) return 0;
 		return Yapf().PfGetSettings().rail_slope_penalty;
 	}
@@ -169,7 +168,6 @@ public:
 	{
 		int cost = 0;
 		/* if there is one-way signal in the opposite direction, then it is not our way */
-		CPerfStart perf_cost(Yapf().m_perf_other_cost);
 		if (IsTileType(tile, MP_RAILWAY)) {
 			bool has_signal_against = HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir));
 			bool has_signal_along = HasSignalOnTrackdir(tile, trackdir);
@@ -272,8 +270,6 @@ public:
 		assert(tf->m_new_tile == n.m_key.m_tile);
 		assert((HasTrackdir(tf->m_new_td_bits, n.m_key.m_td)));
 
-		CPerfStart perf_cost(Yapf().m_perf_cost);
-
 		/* Does the node have some parent node? */
 		bool has_parent = (n.m_parent != nullptr);
 
@@ -323,7 +319,7 @@ public:
 
 		EndSegmentReasonBits end_segment_reason = ESRB_NONE;
 
-		TrackFollower tf_local(v, Yapf().GetCompatibleRailTypes(), &Yapf().m_perf_ts_cost);
+		TrackFollower tf_local(v, Yapf().GetCompatibleRailTypes());
 
 		if (!has_parent) {
 			/* We will jump to the middle of the cost calculator assuming that segment cache is not used. */
@@ -481,7 +477,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 			/* Move to the next tile/trackdir. */
 			tf = &tf_local;
-			tf_local.Init(v, Yapf().GetCompatibleRailTypes(), &Yapf().m_perf_ts_cost);
+			tf_local.Init(v, Yapf().GetCompatibleRailTypes());
 
 			if (!tf_local.Follow(cur.tile, cur.td)) {
 				assert(tf_local.m_err != TrackFollower::EC_NONE);

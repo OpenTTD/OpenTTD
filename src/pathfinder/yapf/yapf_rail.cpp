@@ -34,8 +34,6 @@ template <typename Tpf> void DumpState(Tpf &pf1, Tpf &pf2)
 	fclose(f2);
 }
 
-int _total_pf_time_us = 0;
-
 template <class Types>
 class CYapfReserveTrack
 {
