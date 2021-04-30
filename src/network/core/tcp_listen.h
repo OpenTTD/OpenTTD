@@ -151,7 +151,7 @@ public:
 
 		if (sockets.size() == 0) {
 			DEBUG(net, 0, "[server] could not start network: could not create listening socket");
-			NetworkError(STR_NETWORK_ERROR_SERVER_START);
+			ShowNetworkError(STR_NETWORK_ERROR_SERVER_START);
 			return false;
 		}
 
