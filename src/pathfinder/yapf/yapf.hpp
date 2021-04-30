@@ -15,9 +15,6 @@
 #include "../pf_performance_timer.hpp"
 #include "yapf.h"
 
-//#undef FORCEINLINE
-//#define inline inline
-
 #include "../../misc/blob.hpp"
 #include "../../misc/str.hpp"
 #include "../../misc/fixedsizearray.hpp"
