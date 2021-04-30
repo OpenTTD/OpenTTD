@@ -231,10 +231,10 @@ int NetworkHTTPSocketHandler::Receive()
 	for (;;) {
 		ssize_t res = recv(this->sock, (char *)this->recv_buffer + this->recv_pos, lengthof(this->recv_buffer) - this->recv_pos, 0);
 		if (res == -1) {
-			int err = NetworkGetLastError();
-			if (err != EWOULDBLOCK) {
-				/* Something went wrong... (ECONNRESET is connection reset by peer) */
-				if (err != ECONNRESET) DEBUG(net, 0, "recv failed with error %s", NetworkGetErrorString(err));
+			NetworkError err = NetworkError::GetLast();
+			if (!err.WouldBlock()) {
+				/* Something went wrong... */
+				if (!err.IsConnectionReset()) DEBUG(net, 0, "recv failed with error %s", err.AsString());
 				return -1;
 			}
 			/* Connection would block, so stop for now */

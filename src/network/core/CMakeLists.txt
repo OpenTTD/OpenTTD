@@ -8,6 +8,7 @@ add_files(
     game_info.h
     host.cpp
     host.h
+    os_abstraction.cpp
     os_abstraction.h
     packet.cpp
     packet.h
