@@ -32,7 +32,7 @@ enum RoadTramTypes : uint8 {
 };
 DECLARE_ENUM_AS_BIT_SET(RoadTramTypes)
 
-#define FOR_ALL_ROADTRAMTYPES(x) for (RoadTramType x : { RTT_ROAD, RTT_TRAM })
+static const RoadTramType _roadtramtypes[] = { RTT_ROAD, RTT_TRAM };
 
 /** Roadtype flags. Starts with RO instead of R because R is used for rails */
 enum RoadTypeFlags {

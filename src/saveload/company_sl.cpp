@@ -128,7 +128,7 @@ void AfterLoadCompanyStats()
 				}
 
 				/* Iterate all present road types as each can have a different owner. */
-				FOR_ALL_ROADTRAMTYPES(rtt) {
+				for (RoadTramType rtt : _roadtramtypes) {
 					RoadType rt = GetRoadType(tile, rtt);
 					if (rt == INVALID_ROADTYPE) continue;
 					c = Company::GetIfValid(IsRoadDepot(tile) ? GetTileOwner(tile) : GetRoadOwner(tile, rtt));
@@ -151,7 +151,7 @@ void AfterLoadCompanyStats()
 					case STATION_BUS:
 					case STATION_TRUCK: {
 						/* Iterate all present road types as each can have a different owner. */
-						FOR_ALL_ROADTRAMTYPES(rtt) {
+						for (RoadTramType rtt : _roadtramtypes) {
 							RoadType rt = GetRoadType(tile, rtt);
 							if (rt == INVALID_ROADTYPE) continue;
 							c = Company::GetIfValid(GetRoadOwner(tile, rtt));
@@ -209,7 +209,7 @@ void AfterLoadCompanyStats()
 
 						case TRANSPORT_ROAD: {
 							/* Iterate all present road types as each can have a different owner. */
-							FOR_ALL_ROADTRAMTYPES(rtt) {
+							for (RoadTramType rtt : _roadtramtypes) {
 								RoadType rt = GetRoadType(tile, rtt);
 								if (rt == INVALID_ROADTYPE) continue;
 								c = Company::GetIfValid(GetRoadOwner(tile, rtt));
