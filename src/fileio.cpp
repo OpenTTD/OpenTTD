@@ -241,6 +241,7 @@ static_assert(lengthof(_subdirs) == NUM_SUBDIRS);
  * current operating system.
  */
 std::array<std::string, NUM_SEARCHPATHS> _searchpaths;
+std::vector<Searchpath> _valid_searchpaths;
 std::array<TarList, NUM_SUBDIRS> _tar_list;
 TarFileList _tar_filelist[NUM_SUBDIRS];
 
@@ -252,9 +253,17 @@ static TarLinkList _tar_linklist[NUM_SUBDIRS]; ///< List of directory links
  * @param sp the search path to check
  * @return true if the search path is valid
  */
-bool IsValidSearchPath(Searchpath sp)
+static bool IsValidSearchPath(Searchpath sp)
 {
 	return sp < _searchpaths.size() && !_searchpaths[sp].empty();
+}
+
+static void FillValidSearchPaths()
+{
+	_valid_searchpaths.clear();
+	for (Searchpath sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) {
+		if (IsValidSearchPath(sp)) _valid_searchpaths.emplace_back(sp);
+	}
 }
 
 /**
@@ -298,10 +307,9 @@ void FioFCloseFile(FILE *f)
  */
 std::string FioFindFullPath(Subdirectory subdir, const char *filename)
 {
-	Searchpath sp;
 	assert(subdir < NUM_SUBDIRS);
 
-	FOR_ALL_SEARCHPATHS(sp) {
+	for (Searchpath sp : _valid_searchpaths) {
 		std::string buf = FioGetDirectory(sp, subdir);
 		buf += filename;
 		if (FileExists(buf)) return buf;
@@ -326,10 +334,8 @@ std::string FioGetDirectory(Searchpath sp, Subdirectory subdir)
 
 std::string FioFindDirectory(Subdirectory subdir)
 {
-	Searchpath sp;
-
 	/* Find and return the first valid directory */
-	FOR_ALL_SEARCHPATHS(sp) {
+	for (Searchpath sp : _valid_searchpaths) {
 		std::string ret = FioGetDirectory(sp, subdir);
 		if (FileExists(ret)) return ret;
 	}
@@ -406,11 +412,10 @@ FILE *FioFOpenFileTar(const TarFileListEntry &entry, size_t *filesize)
 FILE *FioFOpenFile(const std::string &filename, const char *mode, Subdirectory subdir, size_t *filesize)
 {
 	FILE *f = nullptr;
-	Searchpath sp;
 
 	assert(subdir < NUM_SUBDIRS || subdir == NO_DIRECTORY);
 
-	FOR_ALL_SEARCHPATHS(sp) {
+	for (Searchpath sp : _valid_searchpaths) {
 		f = FioFOpenFileSp(filename, mode, sp, subdir, filesize);
 		if (f != nullptr || subdir == NO_DIRECTORY) break;
 	}
@@ -1130,6 +1135,7 @@ std::string _personal_dir;
 void DeterminePaths(const char *exe)
 {
 	DetermineBasePaths(exe);
+	FillValidSearchPaths();
 
 #ifdef USE_XDG
 	std::string config_home;
@@ -1148,8 +1154,7 @@ void DeterminePaths(const char *exe)
 	AppendPathSeparator(config_home);
 #endif
 
-	Searchpath sp;
-	FOR_ALL_SEARCHPATHS(sp) {
+	for (Searchpath sp : _valid_searchpaths) {
 		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
 		DEBUG(misc, 4, "%s added as search path", _searchpaths[sp].c_str());
 	}
@@ -1222,6 +1227,7 @@ void DeterminePaths(const char *exe)
 	/* If we have network we make a directory for the autodownloading of content */
 	_searchpaths[SP_AUTODOWNLOAD_DIR] = _personal_dir + "content_download" PATHSEP;
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
+	FillValidSearchPaths();
 
 	/* Create the directory for each of the types of content */
 	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR };
@@ -1368,10 +1374,9 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars, bool r
 {
 	this->subdir = sd;
 
-	Searchpath sp;
 	uint num = 0;
 
-	FOR_ALL_SEARCHPATHS(sp) {
+	for (Searchpath sp : _valid_searchpaths) {
 		/* Don't search in the working directory */
 		if (sp == SP_WORKING_DIR && !_do_scan_working_directory) continue;
 

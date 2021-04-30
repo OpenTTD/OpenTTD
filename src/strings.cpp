@@ -1949,9 +1949,7 @@ static void GetLanguageList(const char *path)
  */
 void InitializeLanguagePacks()
 {
-	Searchpath sp;
-
-	FOR_ALL_SEARCHPATHS(sp) {
+	for (Searchpath sp : _valid_searchpaths) {
 		std::string path = FioGetDirectory(sp, LANG_DIR);
 		GetLanguageList(path.c_str());
 	}
