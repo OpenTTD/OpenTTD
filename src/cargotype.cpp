@@ -78,6 +78,28 @@ void SetupCargoForClimate(LandscapeID l)
 }
 
 /**
+ * Get the cargo ID of a default cargo, if present.
+ * @param l Landscape
+ * @param ct Default cargo type.
+ * @return ID number if the cargo exists, else #CT_INVALID
+ */
+CargoID GetDefaultCargoID(LandscapeID l, CargoType ct)
+{
+	assert(l < lengthof(_default_climate_cargo));
+
+	if (ct == CT_INVALID) return CT_INVALID;
+
+	assert(ct < lengthof(_default_climate_cargo[0]));
+	CargoLabel cl = _default_climate_cargo[l][ct];
+	/* Bzzt: check if cl is just an index into the cargo table */
+	if (cl < lengthof(_default_cargo)) {
+		cl = _default_cargo[cl].label;
+	}
+
+	return GetCargoIDByLabel(cl);
+}
+
+/**
  * Get the cargo ID by cargo label.
  * @param cl Cargo type to get.
  * @return ID number if the cargo exists, else #CT_INVALID
