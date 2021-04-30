@@ -716,24 +716,21 @@ Dimension VideoDriver_SDL_Base::GetScreenSize() const
 	return { static_cast<uint>(mode.w), static_cast<uint>(mode.h) };
 }
 
-bool VideoDriver_SDL_Base::LockVideoBuffer()
+void VideoDriver_SDL_Base::LockVideoBuffer()
 {
-	if (this->buffer_locked) return false;
-	this->buffer_locked = true;
+	if (this->buffer_lock++ > 0) return;
 
 	_screen.dst_ptr = this->GetVideoPointer();
 	assert(_screen.dst_ptr != nullptr);
-
-	return true;
 }
 
 void VideoDriver_SDL_Base::UnlockVideoBuffer()
 {
+	if (--this->buffer_lock > 0) return;
+
 	if (_screen.dst_ptr != nullptr) {
 		/* Hand video buffer back to the drawing backend. */
 		this->ReleaseVideoPointer();
 		_screen.dst_ptr = nullptr;
 	}
-
-	this->buffer_locked = false;
 }

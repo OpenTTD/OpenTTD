@@ -85,7 +85,7 @@ static const Dimension _default_resolutions[] = {
 VideoDriver_Cocoa::VideoDriver_Cocoa()
 {
 	this->setup         = false;
-	this->buffer_locked = false;
+	this->buffer_lock   = 0;
 
 	this->window    = nil;
 	this->cocoaview = nil;
@@ -269,27 +269,24 @@ float VideoDriver_Cocoa::GetDPIScale()
 }
 
 /** Lock video buffer for drawing if it isn't already mapped. */
-bool VideoDriver_Cocoa::LockVideoBuffer()
+void VideoDriver_Cocoa::LockVideoBuffer()
 {
-	if (this->buffer_locked) return false;
-	this->buffer_locked = true;
+	if (this->buffer_lock++ > 0) return;
 
 	_screen.dst_ptr = this->GetVideoPointer();
 	assert(_screen.dst_ptr != nullptr);
-
-	return true;
 }
 
 /** Unlock video buffer. */
 void VideoDriver_Cocoa::UnlockVideoBuffer()
 {
+	if (--this->buffer_lock > 0) return;
+
 	if (_screen.dst_ptr != nullptr) {
 		/* Hand video buffer back to the drawing backend. */
 		this->ReleaseVideoPointer();
 		_screen.dst_ptr = nullptr;
 	}
-
-	this->buffer_locked = false;
 }
 
 /**

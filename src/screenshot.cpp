@@ -906,7 +906,7 @@ void MakeScreenshotWithConfirm(ScreenshotType t)
  */
 bool MakeScreenshot(ScreenshotType t, const char *name, uint32 width, uint32 height)
 {
-	VideoDriver::VideoBufferLocker lock;
+	VideoDriver::VideoBufferPauseLockGuard video_lock;
 
 	if (t == SC_VIEWPORT) {
 		/* First draw the dirty parts of the screen and only then change the name

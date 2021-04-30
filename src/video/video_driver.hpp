@@ -196,22 +196,35 @@ public:
 	}
 
 	/**
-	 * Helper struct to ensure the video buffer is locked and ready for drawing. The destructor
-	 * will make sure the buffer is unlocked no matter how the scope is exited.
+	 * Helper struct to ensure the video buffer is locked.
+	 * When called from the game thread it assumes the game state lock to be already held,
+	 * releases it but it is ensured that game state stays safe to access by holding
+	 * video buffer lock and forces draw loop to yield.
 	 */
-	struct VideoBufferLocker {
-		VideoBufferLocker()
+	struct VideoBufferPauseLockGuard {
+		VideoBufferPauseLockGuard()
 		{
-			this->unlock = VideoDriver::GetInstance()->LockVideoBuffer();
+			VideoDriver& driver = *VideoDriver::GetInstance();
+
+			if (std::this_thread::get_id() == driver.game_thread.get_id()) {
+				driver.draw_yield_mutex.lock();
+				driver.game_state_mutex.unlock();
+			}
+			driver.video_buffer_mutex.lock();
+			driver.LockVideoBuffer();
 		}
 
-		~VideoBufferLocker()
+		~VideoBufferPauseLockGuard()
 		{
-			if (this->unlock) VideoDriver::GetInstance()->UnlockVideoBuffer();
-		}
+			VideoDriver& driver = *VideoDriver::GetInstance();
 
-	private:
-		bool unlock; ///< Stores if the lock did anything that has to be undone.
+			if (std::this_thread::get_id() == driver.game_thread.get_id()) {
+				driver.game_state_mutex.lock();
+				driver.draw_yield_mutex.unlock();
+			}
+			driver.UnlockVideoBuffer();
+			driver.video_buffer_mutex.unlock();
+		}
 	};
 
 protected:
@@ -250,11 +263,8 @@ protected:
 
 	/**
 	 * Make sure the video buffer is ready for drawing.
-	 * @returns True if the video buffer has to be unlocked.
 	 */
-	virtual bool LockVideoBuffer() {
-		return false;
-	}
+	virtual void LockVideoBuffer() {}
 
 	/**
 	 * Unlock a previously locked video buffer.
@@ -321,9 +331,6 @@ protected:
 	bool fast_forward_via_key; ///< The fast-forward was enabled by key press.
 
 	bool is_game_threaded;
-	std::thread game_thread;
-	std::mutex game_state_mutex;
-	std::mutex game_thread_wait_mutex;
 
 	static void GameThreadThunk(VideoDriver *drv);
 
@@ -333,6 +340,12 @@ private:
 	void RealChangeBlitter(const char *repl_blitter);
 
 	const char *change_blitter; ///< Request to change the blitter. nullptr if no pending request.
+
+	std::thread game_thread;
+	std::mutex game_state_mutex;
+	std::mutex game_thread_wait_mutex;
+	std::recursive_mutex video_buffer_mutex; ///< Recursive because MakeScreenshot can be called while video buffer is already locked.
+	std::mutex draw_yield_mutex;
 };
 
 #endif /* VIDEO_VIDEO_DRIVER_HPP */

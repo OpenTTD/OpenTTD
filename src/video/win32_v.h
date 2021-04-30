@@ -17,7 +17,7 @@
 /** Base class for Windows video drivers. */
 class VideoDriver_Win32Base : public VideoDriver {
 public:
-	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false), buffer_locked(false) {}
+	VideoDriver_Win32Base() : main_wnd(nullptr), fullscreen(false) {}
 
 	void Stop() override;
 
@@ -45,12 +45,12 @@ protected:
 	int width_org = 0;      ///< Original monitor resolution width, before we changed it.
 	int height_org = 0;     ///< Original monitor resolution height, before we changed it.
 
-	bool buffer_locked;     ///< Video buffer was locked by the main thread.
+	int buffer_lock = 0;    ///< How many times the video buffer was locked by the current thread.
 
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;
 	void InputLoop() override;
-	bool LockVideoBuffer() override;
+	void LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;
 	void CheckPaletteAnim() override;
 	bool PollEvent() override;

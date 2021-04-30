@@ -17,7 +17,7 @@
 /** The SDL video driver. */
 class VideoDriver_SDL_Base : public VideoDriver {
 public:
-	VideoDriver_SDL_Base() : sdl_window(nullptr), buffer_locked(false) {}
+	VideoDriver_SDL_Base() : sdl_window(nullptr), buffer_lock(0) {}
 
 	const char *Start(const StringList &param) override;
 
@@ -46,12 +46,12 @@ public:
 protected:
 	struct SDL_Window *sdl_window; ///< Main SDL window.
 	Palette local_palette; ///< Copy of _cur_palette.
-	bool buffer_locked; ///< Video buffer was locked by the main thread.
+	int buffer_lock; ///< How many times the video buffer was locked by the current thread.
 	Rect dirty_rect; ///< Rectangle encompassing the dirty area of the video buffer.
 
 	Dimension GetScreenSize() const override;
 	void InputLoop() override;
-	bool LockVideoBuffer() override;
+	void LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;
 	void CheckPaletteAnim() override;
 	bool PollEvent() override;

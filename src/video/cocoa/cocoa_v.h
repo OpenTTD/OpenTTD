@@ -57,12 +57,12 @@ public:
 
 protected:
 	Rect dirty_rect;    ///< Region of the screen that needs redrawing.
-	bool buffer_locked; ///< Video buffer was locked by the main thread.
+	int buffer_lock;    ///< How many times the video buffer was locked by the current thread.
 
 	Dimension GetScreenSize() const override;
 	float GetDPIScale() override;
 	void InputLoop() override;
-	bool LockVideoBuffer() override;
+	void LockVideoBuffer() override;
 	void UnlockVideoBuffer() override;
 	bool PollEvent() override;
 

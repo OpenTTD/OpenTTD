@@ -979,27 +979,24 @@ float VideoDriver_Win32Base::GetDPIScale()
 	return cur_dpi > 0 ? cur_dpi / 96.0f : 1.0f; // Default Windows DPI value is 96.
 }
 
-bool VideoDriver_Win32Base::LockVideoBuffer()
+void VideoDriver_Win32Base::LockVideoBuffer()
 {
-	if (this->buffer_locked) return false;
-	this->buffer_locked = true;
+	if (this->buffer_lock++ > 0) return;
 
 	_screen.dst_ptr = this->GetVideoPointer();
 	assert(_screen.dst_ptr != nullptr);
-
-	return true;
 }
 
 void VideoDriver_Win32Base::UnlockVideoBuffer()
 {
+	if (--this->buffer_lock > 0) return;
+
 	assert(_screen.dst_ptr != nullptr);
 	if (_screen.dst_ptr != nullptr) {
 		/* Hand video buffer back to the drawing backend. */
 		this->ReleaseVideoPointer();
 		_screen.dst_ptr = nullptr;
 	}
-
-	this->buffer_locked = false;
 }
 
 
