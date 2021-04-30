@@ -182,15 +182,7 @@ protected:
 	inline static Cache& stGetGlobalCache()
 	{
 		static int last_rail_change_counter = 0;
-		static Date last_date = 0;
 		static Cache C;
-
-		/* some statistics */
-		if (last_date != _date) {
-			last_date = _date;
-			DEBUG(yapf, 2, "Pf time today: %5d ms", _total_pf_time_us / 1000);
-			_total_pf_time_us = 0;
-		}
 
 		/* delete the cache sometimes... */
 		if (last_rail_change_counter != Cache::s_rail_change_counter) {

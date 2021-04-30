@@ -18,7 +18,6 @@
 #include "../tunnelbridge_map.h"
 #include "../depot_map.h"
 #include "pathfinder_func.h"
-#include "pf_performance_timer.hpp"
 
 /**
  * Track follower helper template class (can serve pathfinders and vehicle
@@ -49,34 +48,32 @@ struct CFollowTrackT
 	bool                m_is_station;    ///< last turn passed station
 	int                 m_tiles_skipped; ///< number of skipped tunnel or station tiles
 	ErrorCode           m_err;
-	CPerformanceTimer  *m_pPerf;
 	RailTypes           m_railtypes;
 
-	inline CFollowTrackT(const VehicleType *v = nullptr, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = nullptr)
+	inline CFollowTrackT(const VehicleType *v = nullptr, RailTypes railtype_override = INVALID_RAILTYPES)
 	{
-		Init(v, railtype_override, pPerf);
+		Init(v, railtype_override);
 	}
 
-	inline CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = nullptr)
+	inline CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES)
 	{
 		assert(IsRailTT());
 		m_veh = nullptr;
-		Init(o, railtype_override, pPerf);
+		Init(o, railtype_override);
 	}
 
-	inline void Init(const VehicleType *v, RailTypes railtype_override, CPerformanceTimer *pPerf)
+	inline void Init(const VehicleType *v, RailTypes railtype_override)
 	{
 		assert(!IsRailTT() || (v != nullptr && v->type == VEH_TRAIN));
 		m_veh = v;
-		Init(v != nullptr ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? Train::From(v)->compatible_railtypes : railtype_override, pPerf);
+		Init(v != nullptr ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? Train::From(v)->compatible_railtypes : railtype_override);
 	}
 
-	inline void Init(Owner o, RailTypes railtype_override, CPerformanceTimer *pPerf)
+	inline void Init(Owner o, RailTypes railtype_override)
 	{
 		assert(!IsRoadTT() || m_veh != nullptr);
 		assert(!IsRailTT() || railtype_override != INVALID_RAILTYPES);
 		m_veh_owner = o;
-		m_pPerf = pPerf;
 		/* don't worry, all is inlined so compiler should remove unnecessary initializations */
 		m_old_tile = INVALID_TILE;
 		m_old_td = INVALID_TRACKDIR;
@@ -237,7 +234,6 @@ protected:
 	/** stores track status (available trackdirs) for the new tile into m_new_td_bits */
 	inline bool QueryNewTileTrackStatus()
 	{
-		CPerfStart perf(*m_pPerf);
 		if (IsRailTT() && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
 		} else if (IsRoadTT()) {
