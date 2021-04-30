@@ -277,7 +277,7 @@ uint NetworkCalculateLag(const NetworkClientSocket *cs)
 
 /* There was a non-recoverable error, drop back to the main menu with a nice
  *  error */
-void NetworkError(StringID error_string)
+void ShowNetworkError(StringID error_string)
 {
 	_switch_mode = SM_MENU;
 	ShowErrorMessage(error_string, INVALID_STRING_ID, WL_CRITICAL);
@@ -701,7 +701,7 @@ public:
 
 	void OnFailure() override
 	{
-		NetworkError(STR_NETWORK_ERROR_NOCONNECTION);
+		ShowNetworkError(STR_NETWORK_ERROR_NOCONNECTION);
 	}
 
 	void OnConnect(SOCKET s) override
