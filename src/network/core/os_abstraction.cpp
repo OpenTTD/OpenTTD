@@ -123,3 +123,52 @@ bool NetworkError::HasError() const
 	return NetworkError(errno);
 #endif
 }
+
+
+/**
+ * Try to set the socket into non-blocking mode.
+ * @param d The socket to set the non-blocking more for.
+ * @return True if setting the non-blocking mode succeeded, otherwise false.
+ */
+bool SetNonBlocking(SOCKET d)
+{
+#if defined(_WIN32)
+	u_long nonblocking = 1;
+	return ioctlsocket(d, FIONBIO, &nonblocking) == 0;
+#elif defined __EMSCRIPTEN__
+	return true;
+#else
+	int nonblocking = 1;
+	return ioctl(d, FIONBIO, &nonblocking) == 0;
+#endif
+}
+
+/**
+ * Try to set the socket to not delay sending.
+ * @param d The socket to disable the delaying for.
+ * @return True if disabling the delaying succeeded, otherwise false.
+ */
+bool SetNoDelay(SOCKET d)
+{
+#ifdef __EMSCRIPTEN__
+	return true;
+#else
+	int flags = 1;
+	/* The (const char*) cast is needed for windows */
+	return setsockopt(d, IPPROTO_TCP, TCP_NODELAY, (const char *)&flags, sizeof(flags)) == 0;
+#endif
+}
+
+/**
+ * Get the error from a socket, if any.
+ * @param d The socket to get the error from.
+ * @return The errno on the socket.
+ */
+NetworkError GetSocketError(SOCKET d)
+{
+	int err;
+	socklen_t len = sizeof(err);
+	getsockopt(d, SOL_SOCKET, SO_ERROR, (char *)&err, &len);
+
+	return NetworkError(err);
+}
