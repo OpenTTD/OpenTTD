@@ -145,7 +145,7 @@ void ClientNetworkEmergencySave()
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
  */
-ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s) : NetworkGameSocketHandler(s), savegame(nullptr), status(STATUS_INACTIVE)
+ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s, NetworkAddress address) : NetworkGameSocketHandler(s), address(address), savegame(nullptr), status(STATUS_INACTIVE)
 {
 	assert(ClientNetworkGameSocketHandler::my_client == nullptr);
 	ClientNetworkGameSocketHandler::my_client = this;
@@ -345,14 +345,18 @@ static_assert(NETWORK_SERVER_ID_LENGTH == 16 * 2 + 1);
 /**
  * Query the server for server information.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendInformationQuery()
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendInformationQuery(bool request_company_info)
 {
-	my_client->status = STATUS_COMPANY_INFO;
-	_network_join_status = NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO;
-	SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
-
+	my_client->status = STATUS_GAME_INFO;
 	my_client->SendPacket(new Packet(PACKET_CLIENT_GAME_INFO));
-	my_client->SendPacket(new Packet(PACKET_CLIENT_COMPANY_INFO));
+
+	if (request_company_info) {
+		my_client->status = STATUS_COMPANY_INFO;
+		_network_join_status = NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO;
+		SetWindowDirty(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+
+		my_client->SendPacket(new Packet(PACKET_CLIENT_COMPANY_INFO));
+	}
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -577,9 +581,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet *p)
 {
-	if (this->status != STATUS_COMPANY_INFO && this->status != STATUS_INACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	if (this->status != STATUS_COMPANY_INFO && this->status != STATUS_GAME_INFO) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 	NetworkGameList *item = GetLobbyGameInfo();
+	if (item == nullptr) {
+		/* This is not the lobby, so add it to the game list. */
+		item = NetworkGameListAddItem(this->address);
+	}
 
 	/* Clear any existing GRFConfig chain. */
 	ClearGRFConfigList(&item->info.grfconfig);
@@ -590,6 +598,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packe
 	/* Ensure we consider the server online. */
 	item->online = true;
 
+	/* It could be either window, but only one is open, so redraw both. */
+	SetWindowDirty(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 	SetWindowDirty(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
 
 	/* We will receive company info next, so keep connection open. */
@@ -726,6 +736,15 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 	static_assert(lengthof(network_error_strings) == NETWORK_ERROR_END);
 
 	NetworkErrorCode error = (NetworkErrorCode)p->Recv_uint8();
+
+	/* If we query a server that is 1.11.1 or older, we get an
+	 * NETWORK_ERROR_NOT_EXPECTED on requesting the game info. Show a special
+	 * error popup in that case.
+	 */
+	if (error == NETWORK_ERROR_NOT_EXPECTED && (this->status == STATUS_GAME_INFO || this->status == STATUS_COMPANY_INFO)) {
+		ShowErrorMessage(STR_NETWORK_ERROR_SERVER_TOO_OLD, INVALID_STRING_ID, WL_CRITICAL);
+		return NETWORK_RECV_STATUS_CLOSE_QUERY;
+	}
 
 	StringID err = STR_NETWORK_ERROR_LOSTCONNECTION;
 	if (error < (ptrdiff_t)lengthof(network_error_strings)) err = network_error_strings[error];

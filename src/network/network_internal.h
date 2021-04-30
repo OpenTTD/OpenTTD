@@ -87,10 +87,10 @@ extern uint8 _network_reconnect;
 
 extern CompanyMask _network_company_passworded;
 
-void NetworkTCPQueryServer(NetworkAddress address);
+void NetworkTCPQueryServer(NetworkAddress address, bool request_company_info = false);
 
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port);
-void NetworkAddServer(const char *b);
+struct NetworkGameList *NetworkAddServer(const std::string &connection_string);
 void NetworkRebuildHostList();
 void UpdateNetworkGameWindow();
 

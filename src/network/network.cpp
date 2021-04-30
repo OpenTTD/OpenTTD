@@ -602,8 +602,11 @@ static void NetworkInitialize(bool close_admins = true)
 
 /** Non blocking connection create to query servers */
 class TCPQueryConnecter : TCPConnecter {
+private:
+	bool request_company_info;
+
 public:
-	TCPQueryConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
+	TCPQueryConnecter(const NetworkAddress &address, bool request_company_info) : TCPConnecter(address), request_company_info(request_company_info) {}
 
 	void OnFailure() override
 	{
@@ -613,36 +616,53 @@ public:
 	void OnConnect(SOCKET s) override
 	{
 		_networking = true;
-		new ClientNetworkGameSocketHandler(s);
-		MyClient::SendInformationQuery();
+		new ClientNetworkGameSocketHandler(s, address);
+		MyClient::SendInformationQuery(request_company_info);
 	}
 };
 
 /**
  * Query a server to fetch his game-info.
  * @param address the address to query.
+ * @param request_company_info Whether to request company info too.
  */
-void NetworkTCPQueryServer(NetworkAddress address)
+void NetworkTCPQueryServer(NetworkAddress address, bool request_company_info)
 {
 	if (!_network_available) return;
 
 	NetworkDisconnect();
 	NetworkInitialize();
 
-	new TCPQueryConnecter(address);
+	new TCPQueryConnecter(address, request_company_info);
 }
 
 /**
  * Validates an address entered as a string and adds the server to
  * the list. If you use this function, the games will be marked
  * as manually added.
- * @param connection_string The IP:port to add to the list.
+ * @param connection_string The IP:port of the server to add.
+ * @return The entry on the game list.
  */
-void NetworkAddServer(const char *connection_string)
+NetworkGameList *NetworkAddServer(const std::string &connection_string)
 {
-	if (StrEmpty(connection_string)) return;
+	if (connection_string.empty()) return nullptr;
 
-	NetworkUDPQueryServer(ParseConnectionString(connection_string, NETWORK_DEFAULT_PORT), true);
+	NetworkAddress address = ParseConnectionString(connection_string, NETWORK_DEFAULT_PORT);
+
+	/* Ensure the item already exists in the list */
+	NetworkGameList *item = NetworkGameListAddItem(address);
+	if (StrEmpty(item->info.server_name)) {
+		ClearGRFConfigList(&item->info.grfconfig);
+		address.GetAddressAsString(item->info.server_name, lastof(item->info.server_name));
+		item->manually = true;
+
+		NetworkRebuildHostList();
+		UpdateNetworkGameWindow();
+	}
+
+	NetworkTCPQueryServer(address);
+
+	return item;
 }
 
 /**
@@ -687,7 +707,7 @@ public:
 	void OnConnect(SOCKET s) override
 	{
 		_networking = true;
-		new ClientNetworkGameSocketHandler(s);
+		new ClientNetworkGameSocketHandler(s, this->address);
 		IConsoleCmdExec("exec scripts/on_client.scr 0");
 		NetworkClient_Connected();
 	}
@@ -1132,9 +1152,9 @@ void NetworkShutDown()
 #ifdef __EMSCRIPTEN__
 extern "C" {
 
-void CDECL em_openttd_add_server(const char *host, int port)
+void CDECL em_openttd_add_server(const char *connection_string)
 {
-	NetworkUDPQueryServer(NetworkAddress(host, port), true);
+	NetworkAddServer(connection_string);
 }
 
 }

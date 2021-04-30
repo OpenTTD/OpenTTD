@@ -69,15 +69,6 @@ static void NetworkGameListHandleDelayedInsert()
  */
 NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
 {
-	const char *hostname = address.GetHostname();
-
-	/* Do not query the 'any' address. */
-	if (StrEmpty(hostname) ||
-			strcmp(hostname, "0.0.0.0") == 0 ||
-			strcmp(hostname, "::") == 0) {
-		return nullptr;
-	}
-
 	NetworkGameList *item, *prev_item;
 
 	prev_item = nullptr;
@@ -95,7 +86,6 @@ NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
 	} else {
 		prev_item->next = item;
 	}
-	DEBUG(net, 4, "[gamelist] added server to list");
 
 	UpdateNetworkGameWindow();
 
