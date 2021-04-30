@@ -8798,6 +8798,12 @@ static void CalculateRefitMasks()
 		EngineInfo *ei = &e->info;
 		bool only_defaultcargo; ///< Set if the vehicle shall carry only the default cargo
 
+		/* If the NewGRF did not set any cargo properties, we apply default cargo translation. */
+		if (_gted[engine].defaultcargo_grf == nullptr) {
+			/* Translate cargo_type using the original climate-specific cargo table. */
+			ei->cargo_type = GetDefaultCargoID(_settings_game.game_creation.landscape, static_cast<CargoType>(ei->cargo_type));
+		}
+
 		/* Did the newgrf specify any refitting? If not, use defaults. */
 		if (_gted[engine].refittability != GRFTempEngineData::UNSET) {
 			CargoTypes mask = 0;
@@ -8844,7 +8850,7 @@ static void CalculateRefitMasks()
 		}
 
 		/* Clear invalid cargoslots (from default vehicles or pre-NewCargo GRFs) */
-		if (!HasBit(_cargo_mask, ei->cargo_type)) ei->cargo_type = CT_INVALID;
+		if (ei->cargo_type != CT_INVALID && !HasBit(_cargo_mask, ei->cargo_type)) ei->cargo_type = CT_INVALID;
 
 		/* Ensure that the vehicle is either not refittable, or that the default cargo is one of the refittable cargoes.
 		 * Note: Vehicles refittable to no cargo are handle differently to vehicle refittable to a single cargo. The latter might have subtypes. */
