@@ -66,7 +66,6 @@ typedef unsigned long in_addr_t;
 #	endif
 #	define SOCKET int
 #	define INVALID_SOCKET -1
-#	define ioctlsocket ioctl
 #	define closesocket close
 /* Need this for FIONREAD on solaris */
 #	define BSD_COMP
@@ -115,7 +114,6 @@ typedef unsigned long in_addr_t;
 #if defined(__OS2__)
 #	define SOCKET int
 #	define INVALID_SOCKET -1
-#	define ioctlsocket ioctl
 #	define closesocket close
 
 /* Includes needed for OS/2 systems */
@@ -188,55 +186,10 @@ static inline socklen_t FixAddrLenForEmscripten(struct sockaddr_storage &address
 }
 #endif
 
-/**
- * Try to set the socket into non-blocking mode.
- * @param d The socket to set the non-blocking more for.
- * @return True if setting the non-blocking mode succeeded, otherwise false.
- */
-static inline bool SetNonBlocking(SOCKET d)
-{
-#ifdef __EMSCRIPTEN__
-	return true;
-#else
-#	ifdef _WIN32
-	u_long nonblocking = 1;
-#	else
-	int nonblocking = 1;
-#	endif
-	return ioctlsocket(d, FIONBIO, &nonblocking) == 0;
-#endif
-}
 
-/**
- * Try to set the socket to not delay sending.
- * @param d The socket to disable the delaying for.
- * @return True if disabling the delaying succeeded, otherwise false.
- */
-static inline bool SetNoDelay(SOCKET d)
-{
-#ifdef __EMSCRIPTEN__
-	return true;
-#else
-	/* XXX should this be done at all? */
-	int b = 1;
-	/* The (const char*) cast is needed for windows */
-	return setsockopt(d, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b)) == 0;
-#endif
-}
-
-/**
- * Get the error from a socket, if any.
- * @param d The socket to get the error from.
- * @return The errno on the socket.
- */
-static inline NetworkError GetSocketError(SOCKET d)
-{
-	int err;
-	socklen_t len = sizeof(err);
-	getsockopt(d, SOL_SOCKET, SO_ERROR, (char *)&err, &len);
-
-	return NetworkError(err);
-}
+bool SetNonBlocking(SOCKET d);
+bool SetNoDelay(SOCKET d);
+NetworkError GetSocketError(SOCKET d);
 
 /* Make sure these structures have the size we expect them to be */
 static_assert(sizeof(in_addr)  ==  4); ///< IPv4 addresses should be 4 bytes.
