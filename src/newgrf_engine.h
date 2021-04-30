@@ -116,8 +116,6 @@ enum VehicleTrigger {
 };
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
-void UnloadWagonOverrides(Engine *e);
-
 void AlterVehicleListOrder(EngineID engine, uint target);
 void CommitVehicleListOrderChanges();
 
