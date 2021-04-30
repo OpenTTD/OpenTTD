@@ -12,7 +12,6 @@
 
 #include "../../landscape.h"
 #include "../pathfinder_func.h"
-#include "../pf_performance_timer.hpp"
 #include "yapf.h"
 
 #include "../../misc/fixedsizearray.hpp"
