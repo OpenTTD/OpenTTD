@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.12)
 
 if(NOT BINARY_NAME)
     set(BINARY_NAME openttd)
