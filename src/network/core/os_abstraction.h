@@ -14,6 +14,26 @@
 #ifndef NETWORK_CORE_OS_ABSTRACTION_H
 #define NETWORK_CORE_OS_ABSTRACTION_H
 
+/**
+ * Abstraction of a network error where all implementation details of the
+ * error codes are encapsulated in this class and the abstraction layer.
+ */
+class NetworkError {
+private:
+	int error;                   ///< The underlying error number from errno or WSAGetLastError.
+	mutable std::string message; ///< The string representation of the error (set on first call to #AsString).
+public:
+	NetworkError(int error);
+
+	bool HasError() const;
+	bool WouldBlock() const;
+	bool IsConnectionReset() const;
+	bool IsConnectInProgress() const;
+	const char *AsString() const;
+
+	static NetworkError GetLast();
+};
+
 /* Include standard stuff per OS */
 
 /* Windows stuff */
@@ -22,21 +42,6 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <windows.h>
-
-/**
- * Get the last error code from any of the OS's network functions.
- * What it returns and when it is reset, is implementation defined.
- * @return The last error code.
- */
-#define NetworkGetLastError() WSAGetLastError()
-#undef EWOULDBLOCK
-#define EWOULDBLOCK WSAEWOULDBLOCK
-#undef ECONNRESET
-#define ECONNRESET WSAECONNRESET
-#undef EINPROGRESS
-#define EINPROGRESS WSAEWOULDBLOCK
-
-const char *NetworkGetErrorString(int error);
 
 /* Windows has some different names for some types */
 typedef unsigned long in_addr_t;
@@ -63,8 +68,6 @@ typedef unsigned long in_addr_t;
 #	define INVALID_SOCKET -1
 #	define ioctlsocket ioctl
 #	define closesocket close
-#	define NetworkGetLastError() (errno)
-#	define NetworkGetErrorString(error) (strerror(error))
 /* Need this for FIONREAD on solaris */
 #	define BSD_COMP
 
@@ -114,8 +117,6 @@ typedef unsigned long in_addr_t;
 #	define INVALID_SOCKET -1
 #	define ioctlsocket ioctl
 #	define closesocket close
-#	define NetworkGetLastError() (sock_errno())
-#	define NetworkGetErrorString(error) (strerror(error))
 
 /* Includes needed for OS/2 systems */
 #	include <types.h>
@@ -188,15 +189,6 @@ static inline socklen_t FixAddrLenForEmscripten(struct sockaddr_storage &address
 #endif
 
 /**
- * Return the string representation of the last error from the OS's network functions.
- * @return The error message, potentially an empty string but never \c nullptr.
- */
-static inline const char *NetworkGetLastErrorString()
-{
-	return NetworkGetErrorString(NetworkGetLastError());
-}
-
-/**
  * Try to set the socket into non-blocking mode.
  * @param d The socket to set the non-blocking more for.
  * @return True if setting the non-blocking mode succeeded, otherwise false.
@@ -237,13 +229,13 @@ static inline bool SetNoDelay(SOCKET d)
  * @param d The socket to get the error from.
  * @return The errno on the socket.
  */
-static inline int GetSocketError(SOCKET d)
+static inline NetworkError GetSocketError(SOCKET d)
 {
 	int err;
 	socklen_t len = sizeof(err);
 	getsockopt(d, SOL_SOCKET, SO_ERROR, (char *)&err, &len);
 
-	return err;
+	return NetworkError(err);
 }
 
 /* Make sure these structures have the size we expect them to be */
