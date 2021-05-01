@@ -1639,13 +1639,19 @@ void Vehicle::UpdateBoundingBoxCoordinates(bool update_cache) const
  */
 void Vehicle::UpdateViewport(bool dirty)
 {
-	Rect old_coord = this->sprite_cache.old_coord;
+	/* If the existing cache is invalid we should ignore it, as it will be set to the current coords by UpdateBoundingBoxCoordinates */
+	bool ignore_cached_coords = this->sprite_cache.old_coord.left == INVALID_COORD;
 
 	this->UpdateBoundingBoxCoordinates(true);
-	UpdateVehicleViewportHash(this, this->coord.left, this->coord.top, old_coord.left, old_coord.top);
+
+	if (ignore_cached_coords) {
+		UpdateVehicleViewportHash(this, this->coord.left, this->coord.top, INVALID_COORD, INVALID_COORD);
+	} else {
+		UpdateVehicleViewportHash(this, this->coord.left, this->coord.top, this->sprite_cache.old_coord.left, this->sprite_cache.old_coord.top);
+	}
 
 	if (dirty) {
-		if (old_coord.left == INVALID_COORD) {
+		if (ignore_cached_coords) {
 			this->sprite_cache.is_viewport_candidate = this->MarkAllViewportsDirty();
 		} else {
 			this->sprite_cache.is_viewport_candidate = ::MarkAllViewportsDirty(
