@@ -111,7 +111,7 @@ struct CanalResolverObject : public ResolverObject {
 
 /* virtual */ const SpriteGroup *CanalResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	if (group->num_loaded == 0) return nullptr;
+	if (group->loaded.empty()) return nullptr;
 
 	return group->loaded[0];
 }

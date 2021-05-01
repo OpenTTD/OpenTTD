@@ -5181,23 +5181,18 @@ static void NewSpriteGroup(ByteReader *buf)
 					group->nfo_line = _cur.nfo_line;
 					act_group = group;
 
-					group->num_loaded  = num_loaded;
-					group->num_loading = num_loading;
-					if (num_loaded  > 0) group->loaded = CallocT<const SpriteGroup*>(num_loaded);
-					if (num_loading > 0) group->loading = CallocT<const SpriteGroup*>(num_loading);
-
 					grfmsg(6, "NewSpriteGroup: New SpriteGroup 0x%02X, %u loaded, %u loading",
 							setid, num_loaded, num_loading);
 
 					for (uint i = 0; i < num_loaded; i++) {
 						uint16 spriteid = buf->ReadWord();
-						group->loaded[i] = CreateGroupFromGroupID(feature, setid, type, spriteid);
+						group->loaded.push_back(CreateGroupFromGroupID(feature, setid, type, spriteid));
 						grfmsg(8, "NewSpriteGroup: + rg->loaded[%i]  = subset %u", i, spriteid);
 					}
 
 					for (uint i = 0; i < num_loading; i++) {
 						uint16 spriteid = buf->ReadWord();
-						group->loading[i] = CreateGroupFromGroupID(feature, setid, type, spriteid);
+						group->loading.push_back(CreateGroupFromGroupID(feature, setid, type, spriteid));
 						grfmsg(8, "NewSpriteGroup: + rg->loading[%i] = subset %u", i, spriteid);
 					}
 

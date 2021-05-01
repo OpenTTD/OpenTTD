@@ -992,14 +992,14 @@ static uint32 VehicleGetVariable(Vehicle *v, const VehicleScopeResolver *object,
 	const Vehicle *v = this->self_scope.v;
 
 	if (v == nullptr) {
-		if (group->num_loading > 0) return group->loading[0];
-		if (group->num_loaded  > 0) return group->loaded[0];
+		if (!group->loading.empty()) return group->loading[0];
+		if (!group->loaded.empty())  return group->loaded[0];
 		return nullptr;
 	}
 
 	bool in_motion = !v->First()->current_order.IsType(OT_LOADING);
 
-	uint totalsets = in_motion ? group->num_loaded : group->num_loading;
+	uint totalsets = in_motion ? (uint)group->loaded.size() : (uint)group->loading.size();
 
 	if (totalsets == 0) return nullptr;
 

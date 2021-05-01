@@ -60,8 +60,8 @@
 
 /* virtual */ const SpriteGroup *RoadTypeResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	if (group->num_loading > 0) return group->loading[0];
-	if (group->num_loaded  > 0) return group->loaded[0];
+	if (!group->loading.empty()) return group->loading[0];
+	if (!group->loaded.empty())  return group->loaded[0];
 	return nullptr;
 }
 
