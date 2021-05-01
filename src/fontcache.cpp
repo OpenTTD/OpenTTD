@@ -428,14 +428,14 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
 {
 	if (pixels == 0) {
 		/* Try to determine a good height based on the minimal height recommended by the font. */
-		int scaled_height = ScaleFontTrad(_default_font_height[this->fs]);
+		int scaled_height = ScaleFontTrad(this->GetDefaultFontHeight(this->fs));
 		pixels = scaled_height;
 
 		TT_Header *head = (TT_Header *)FT_Get_Sfnt_Table(this->face, ft_sfnt_head);
 		if (head != nullptr) {
 			/* Font height is minimum height plus the difference between the default
 			 * height for this font size and the small size. */
-			int diff = scaled_height - ScaleFontTrad(_default_font_height[FS_SMALL]);
+			int diff = scaled_height - ScaleFontTrad(this->GetDefaultFontHeight(FS_SMALL));
 			pixels = Clamp(std::min<uint>(head->Lowest_Rec_PPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height, MAX_FONT_SIZE);
 		}
 	} else {
