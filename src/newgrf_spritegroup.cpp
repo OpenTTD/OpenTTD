@@ -53,11 +53,6 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 	}
 }
 
-RandomizedSpriteGroup::~RandomizedSpriteGroup()
-{
-	free(this->groups);
-}
-
 static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *scope, byte variable, uint32 parameter, bool *available)
 {
 	uint32 value;
@@ -272,11 +267,11 @@ const SpriteGroup *RandomizedSpriteGroup::Resolve(ResolverObject &object) const
 
 		if (res) {
 			object.used_triggers |= match;
-			object.reseed[this->var_scope] |= (this->num_groups - 1) << this->lowest_randbit;
+			object.reseed[this->var_scope] |= (this->groups.size() - 1) << this->lowest_randbit;
 		}
 	}
 
-	uint32 mask  = (this->num_groups - 1) << this->lowest_randbit;
+	uint32 mask = ((uint)this->groups.size() - 1) << this->lowest_randbit;
 	byte index = (scope->GetRandomBits() & mask) >> this->lowest_randbit;
 
 	return SpriteGroup::Resolve(this->groups[index], object, false);

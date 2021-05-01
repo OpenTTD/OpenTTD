@@ -189,7 +189,6 @@ enum RandomizedSpriteGroupCompareMode {
 
 struct RandomizedSpriteGroup : SpriteGroup {
 	RandomizedSpriteGroup() : SpriteGroup(SGT_RANDOMIZED) {}
-	~RandomizedSpriteGroup();
 
 	VarSpriteGroupScope var_scope;  ///< Take this object:
 
@@ -198,9 +197,8 @@ struct RandomizedSpriteGroup : SpriteGroup {
 	byte count;
 
 	byte lowest_randbit; ///< Look for this in the per-object randomized bitmask:
-	byte num_groups; ///< must be power of 2
 
-	const SpriteGroup **groups; ///< Take the group with appropriate index:
+	std::vector<const SpriteGroup *> groups; ///< Take the group with appropriate index:
 
 protected:
 	const SpriteGroup *Resolve(ResolverObject &object) const;

@@ -5128,11 +5128,10 @@ static void NewSpriteGroup(ByteReader *buf)
 			group->triggers       = GB(triggers, 0, 7);
 			group->cmp_mode       = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
 			group->lowest_randbit = buf->ReadByte();
-			group->num_groups     = buf->ReadByte();
-			group->groups = CallocT<const SpriteGroup*>(group->num_groups);
 
-			for (uint i = 0; i < group->num_groups; i++) {
-				group->groups[i] = GetGroupFromGroupID(setid, type, buf->ReadWord());
+			byte num_groups = buf->ReadByte();
+			for (uint i = 0; i < num_groups; i++) {
+				group->groups.push_back(GetGroupFromGroupID(setid, type, buf->ReadWord()));
 			}
 
 			break;
