@@ -760,20 +760,40 @@ bool NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const 
 	if (!_network_available) return false;
 	if (!NetworkValidateClientName()) return false;
 
-	strecpy(_settings_client.network.last_joined, address.GetAddressAsString(false).c_str(), lastof(_settings_client.network.last_joined));
-
+	_network_join.address = address;
 	_network_join.company = join_as;
 	_network_join.server_password = join_server_password;
 	_network_join.company_password = join_company_password;
 
+	if (_game_mode == GM_MENU) {
+		/* From the menu we can immediately continue with the actual join. */
+		NetworkClientJoinGame();
+	} else {
+		/* When already playing a game, first go back to the main menu. This
+		 * disconnects the user from the current game, meaning we can safely
+		 * load in the new. After all, there is little point in continueing to
+		 * play on a server if we are connecting to another one.
+		 */
+		_switch_mode = SM_JOIN_GAME;
+	}
+	return true;
+}
+
+/**
+ * Actually perform the joining to the server. Use #NetworkClientConnectGame
+ * when you want to connect to a specific server/company. This function
+ * assumes _network_join is already fully set up.
+ */
+void NetworkClientJoinGame()
+{
 	NetworkDisconnect();
 	NetworkInitialize();
 
+	strecpy(_settings_client.network.last_joined, _network_join.address.GetAddressAsString(false).c_str(), lastof(_settings_client.network.last_joined));
 	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
 	ShowJoinStatusWindow();
 
-	new TCPClientConnecter(address);
-	return true;
+	new TCPClientConnecter(_network_join.address);
 }
 
 static void NetworkInitGameInfo()
