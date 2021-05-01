@@ -7,6 +7,7 @@ class Regression extends AIInfo {
 	function GetAPIVersion()  { return "1.11"; }
 	function GetDate()        { return "2007-03-18"; }
 	function CreateInstance() { return "Regression"; }
+	function UseAsRandomAI()  { return false; }
 }
 
 RegisterAI(Regression());
