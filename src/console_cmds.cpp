@@ -1439,7 +1439,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 	ScreenshotType type = SC_VIEWPORT;
 	uint32 width = 0;
 	uint32 height = 0;
-	const char *name = nullptr;
+	std::string name{};
 	uint32 arg_index = 1;
 
 	if (argc > arg_index) {
