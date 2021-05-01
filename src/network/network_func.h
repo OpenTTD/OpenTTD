@@ -49,6 +49,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 void NetworkUpdateClientInfo(ClientID client_id);
 void NetworkClientsToSpectators(CompanyID cid);
 void NetworkClientConnectGame(const char *hostname, uint16 port, CompanyID join_as, const char *join_server_password = nullptr, const char *join_company_password = nullptr);
+void NetworkClientJoinGame();
 void NetworkClientRequestMove(CompanyID company, const char *pass = "");
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data = 0);
