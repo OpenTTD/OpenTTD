@@ -244,6 +244,28 @@ static void LoadSpriteTables()
 }
 
 
+static void RealChangeBlitter(const char *repl_blitter)
+{
+	const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
+	if (strcmp(cur_blitter, repl_blitter) == 0) return;
+
+	DEBUG(driver, 1, "Switching blitter from '%s' to '%s'... ", cur_blitter, repl_blitter);
+	Blitter *new_blitter = BlitterFactory::SelectBlitter(repl_blitter);
+	if (new_blitter == nullptr) NOT_REACHED();
+	DEBUG(driver, 1, "Successfully switched to %s.", repl_blitter);
+
+	if (!VideoDriver::GetInstance()->AfterBlitterChange()) {
+		/* Failed to switch blitter, let's hope we can return to the old one. */
+		if (BlitterFactory::SelectBlitter(cur_blitter) == nullptr || !VideoDriver::GetInstance()->AfterBlitterChange()) usererror("Failed to reinitialize video driver. Specify a fixed blitter in the config");
+	}
+
+	/* Clear caches that might have sprites for another blitter. */
+	VideoDriver::GetInstance()->ClearSystemSprites();
+	ClearFontCache();
+	GfxClearSpriteCache();
+	ReInitAllWindows();
+}
+
 /**
  * Check blitter needed by NewGRF config and switch if needed.
  * @return False when nothing changed, true otherwise.
@@ -309,7 +331,7 @@ static bool SwitchNewGRFBlitter()
 		if (BlitterFactory::GetBlitterFactory(repl_blitter) == nullptr) continue;
 
 		/* Inform the video driver we want to switch blitter as soon as possible. */
-		VideoDriver::GetInstance()->ChangeBlitter(repl_blitter);
+		VideoDriver::GetInstance()->QueueOnMainThread(std::bind(&RealChangeBlitter, repl_blitter));
 		break;
 	}
 
