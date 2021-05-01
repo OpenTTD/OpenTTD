@@ -45,7 +45,7 @@ public:
 	 * Get the height of the font.
 	 * @return The height of the font.
 	 */
-	virtual int GetHeight() const { return this->height; }
+	inline int GetHeight() const { return this->height; }
 
 	/**
 	 * Get the ascender value of the font.
