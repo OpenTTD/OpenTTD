@@ -281,13 +281,17 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			if (this->tile == INVALID_TILE) break;
 			return GetClosestIndustry(this->tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), this->industry);
 		/* Get town zone and Manhattan distance of closest town */
-		case 0x65:
+		case 0x65: {
 			if (this->tile == INVALID_TILE) break;
-			return GetTownRadiusGroup(this->industry->town, this->tile) << 16 | std::min(DistanceManhattan(this->tile, this->industry->town->xy), 0xFFFFu);
+			TileIndex tile = GetNearbyTile(parameter, this->tile, true);
+			return GetTownRadiusGroup(this->industry->town, tile) << 16 | std::min(DistanceManhattan(tile, this->industry->town->xy), 0xFFFFu);
+		}
 		/* Get square of Euclidian distance of closes town */
-		case 0x66:
+		case 0x66: {
 			if (this->tile == INVALID_TILE) break;
-			return GetTownRadiusGroup(this->industry->town, this->tile) << 16 | std::min(DistanceSquare(this->tile, this->industry->town->xy), 0xFFFFu);
+			TileIndex tile = GetNearbyTile(parameter, this->tile, true);
+			return GetTownRadiusGroup(this->industry->town, tile) << 16 | std::min(DistanceSquare(tile, this->industry->town->xy), 0xFFFFu);
+		}
 
 		/* Count of industry, distance of closest instance
 		 * 68 is the same as 67, but with a filtering on selected layout */
