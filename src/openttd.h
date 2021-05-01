@@ -36,6 +36,7 @@ enum SwitchMode {
 	SM_START_HEIGHTMAP,   ///< Load a heightmap and start a new game from it.
 	SM_LOAD_HEIGHTMAP,    ///< Load heightmap from scenario editor.
 	SM_RESTART_HEIGHTMAP, ///< Load a heightmap and start a new game from it with current settings.
+	SM_JOIN_GAME,         ///< Join a network game.
 };
 
 /** Display Options */
