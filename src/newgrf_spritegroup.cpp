@@ -53,12 +53,6 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 	}
 }
 
-RealSpriteGroup::~RealSpriteGroup()
-{
-	free(this->loaded);
-	free(this->loading);
-}
-
 DeterministicSpriteGroup::~DeterministicSpriteGroup()
 {
 	free(this->adjusts);
