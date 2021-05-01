@@ -218,6 +218,19 @@ protected:
 public:
 	ByteReader(byte *data, byte *end) : data(data), end(end) { }
 
+	inline byte *ReadBytes(size_t size)
+	{
+		if (data + size >= end) {
+			/* Put data at the end, as would happen if every byte had been individually read. */
+			data = end;
+			throw OTTDByteReaderSignal();
+		}
+
+		byte *ret = data;
+		data += size;
+		return ret;
+	}
+
 	inline byte ReadByte()
 	{
 		if (data < end) return *(data)++;
@@ -1883,7 +1896,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				StationSpec **spec = &_cur.grffile->stations[stid + i];
 
 				/* Property 0x08 is special; it is where the station is allocated */
-				if (*spec == nullptr) *spec = CallocT<StationSpec>(1);
+				if (*spec == nullptr) *spec = new StationSpec();
 
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
 				uint32 classid = buf->ReadDWord();
@@ -1966,54 +1979,17 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 				break;
 
 			case 0x0E: // Define custom layout
-				statspec->copied_layouts = false;
-
 				while (buf->HasData()) {
 					byte length = buf->ReadByte();
 					byte number = buf->ReadByte();
-					StationLayout layout;
-					uint l, p;
 
 					if (length == 0 || number == 0) break;
 
-					if (length > statspec->lengths) {
-						byte diff_length = length - statspec->lengths;
-						statspec->platforms = ReallocT(statspec->platforms, length);
-						memset(statspec->platforms + statspec->lengths, 0, diff_length);
+					if (statspec->layouts.size() < length) statspec->layouts.resize(length);
+					if (statspec->layouts[length - 1].size() < number) statspec->layouts[length - 1].resize(number);
 
-						statspec->layouts = ReallocT(statspec->layouts, length);
-						memset(statspec->layouts + statspec->lengths, 0, diff_length * sizeof(*statspec->layouts));
-
-						statspec->lengths = length;
-					}
-					l = length - 1; // index is zero-based
-
-					if (number > statspec->platforms[l]) {
-						statspec->layouts[l] = ReallocT(statspec->layouts[l], number);
-						/* We expect nullptr being 0 here, but C99 guarantees that. */
-						memset(statspec->layouts[l] + statspec->platforms[l], 0,
-						       (number - statspec->platforms[l]) * sizeof(**statspec->layouts));
-
-						statspec->platforms[l] = number;
-					}
-
-					p = 0;
-					layout = MallocT<byte>(length * number);
-					try {
-						for (l = 0; l < length; l++) {
-							for (p = 0; p < number; p++) {
-								layout[l * number + p] = buf->ReadByte();
-							}
-						}
-					} catch (...) {
-						free(layout);
-						throw;
-					}
-
-					l--;
-					p--;
-					free(statspec->layouts[l][p]);
-					statspec->layouts[l][p] = layout;
+					const byte *layout = buf->ReadBytes(length * number);
+					statspec->layouts[length - 1][number - 1].assign(layout, layout + length * number);
 				}
 				break;
 
@@ -2026,10 +2002,7 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 					continue;
 				}
 
-				statspec->lengths   = srcstatspec->lengths;
-				statspec->platforms = srcstatspec->platforms;
-				statspec->layouts   = srcstatspec->layouts;
-				statspec->copied_layouts = true;
+				statspec->layouts = srcstatspec->layouts;
 				break;
 			}
 
@@ -8399,20 +8372,8 @@ static void ResetCustomStations()
 
 			delete[] statspec->renderdata;
 
-			/* Release platforms and layouts */
-			if (!statspec->copied_layouts) {
-				for (uint l = 0; l < statspec->lengths; l++) {
-					for (uint p = 0; p < statspec->platforms[l]; p++) {
-						free(statspec->layouts[l][p]);
-					}
-					free(statspec->layouts[l]);
-				}
-				free(statspec->layouts);
-				free(statspec->platforms);
-			}
-
 			/* Release this station */
-			free(statspec);
+			delete statspec;
 		}
 
 		/* Free and reset the station data */
