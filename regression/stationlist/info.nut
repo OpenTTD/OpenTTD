@@ -7,6 +7,7 @@ class StationList extends AIInfo {
 	function GetAPIVersion()  { return "1.12"; }
 	function GetDate()        { return "2007-03-18"; }
 	function CreateInstance() { return "StationList"; }
+	function UseAsRandomAI()  { return false; }
 }
 
 RegisterAI(StationList());
