@@ -957,7 +957,7 @@ bool MakeScreenshot(ScreenshotType t, const char *name, uint32 width, uint32 hei
 		if (t == SC_HEIGHTMAP) {
 			SetDParamStr(0, _screenshot_name);
 			SetDParam(1, _heightmap_highest_peak);
-			ShowErrorMessage(STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY, INVALID_STRING_ID, WL_CRITICAL);
+			ShowErrorMessage(STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY, INVALID_STRING_ID, WL_WARNING);
 		} else {
 			SetDParamStr(0, _screenshot_name);
 			ShowErrorMessage(STR_MESSAGE_SCREENSHOT_SUCCESSFULLY, INVALID_STRING_ID, WL_WARNING);
