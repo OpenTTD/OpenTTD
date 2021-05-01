@@ -141,18 +141,18 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
 /* Evaluate an adjustment for a variable of the given size.
  * U is the unsigned type and S is the signed type to use. */
 template <typename U, typename S>
-static U EvalAdjustT(const DeterministicSpriteGroupAdjust *adjust, ScopeResolver *scope, U last_value, uint32 value)
+static U EvalAdjustT(const DeterministicSpriteGroupAdjust &adjust, ScopeResolver *scope, U last_value, uint32 value)
 {
-	value >>= adjust->shift_num;
-	value  &= adjust->and_mask;
+	value >>= adjust.shift_num;
+	value  &= adjust.and_mask;
 
-	switch (adjust->type) {
-		case DSGA_TYPE_DIV:  value = ((S)value + (S)adjust->add_val) / (S)adjust->divmod_val; break;
-		case DSGA_TYPE_MOD:  value = ((S)value + (S)adjust->add_val) % (S)adjust->divmod_val; break;
+	switch (adjust.type) {
+		case DSGA_TYPE_DIV:  value = ((S)value + (S)adjust.add_val) / (S)adjust.divmod_val; break;
+		case DSGA_TYPE_MOD:  value = ((S)value + (S)adjust.add_val) % (S)adjust.divmod_val; break;
 		case DSGA_TYPE_NONE: break;
 	}
 
-	switch (adjust->operation) {
+	switch (adjust.operation) {
 		case DSGA_OP_ADD:  return last_value + value;
 		case DSGA_OP_SUB:  return last_value - value;
 		case DSGA_OP_SMIN: return std::min<S>(last_value, value);
@@ -190,17 +190,14 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 {
 	uint32 last_value = 0;
 	uint32 value = 0;
-	uint i;
 
 	ScopeResolver *scope = object.GetScope(this->var_scope);
 
-	for (i = 0; i < this->adjusts.size(); i++) {
-		const DeterministicSpriteGroupAdjust *adjust = &this->adjusts[i];
-
+	for (const auto &adjust : this->adjusts) {
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
-		if (adjust->variable == 0x7E) {
-			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust->subroutine, object, false);
+		if (adjust.variable == 0x7E) {
+			const SpriteGroup *subgroup = SpriteGroup::Resolve(adjust.subroutine, object, false);
 			if (subgroup == nullptr) {
 				value = CALLBACK_FAILED;
 			} else {
@@ -208,10 +205,10 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 			}
 
 			/* Note: 'last_value' and 'reseed' are shared between the main chain and the procedure */
-		} else if (adjust->variable == 0x7B) {
-			value = GetVariable(object, scope, adjust->parameter, last_value, &available);
+		} else if (adjust.variable == 0x7B) {
+			value = GetVariable(object, scope, adjust.parameter, last_value, &available);
 		} else {
-			value = GetVariable(object, scope, adjust->variable, adjust->parameter, &available);
+			value = GetVariable(object, scope, adjust.variable, adjust.parameter, &available);
 		}
 
 		if (!available) {
