@@ -112,9 +112,14 @@ typedef ClientNetworkGameSocketHandler MyClient;
 void NetworkClient_Connected();
 void NetworkClientSetCompanyPassword(const char *password);
 
-extern CompanyID _network_join_as;
+/** Information required to join a server. */
+struct NetworkJoinInfo {
+	NetworkJoinInfo() : company(COMPANY_SPECTATOR), server_password(nullptr), company_password(nullptr) {}
+	CompanyID company;            ///< The company to join.
+	const char *server_password;  ///< The password of the server to join.
+	const char *company_password; ///< The password of the company to join.
+};
 
-extern const char *_network_join_server_password;
-extern const char *_network_join_company_password;
+extern NetworkJoinInfo _network_join;
 
 #endif /* NETWORK_CLIENT_H */

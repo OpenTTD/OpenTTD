@@ -762,9 +762,9 @@ bool NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const 
 
 	strecpy(_settings_client.network.last_joined, address.GetAddressAsString(false).c_str(), lastof(_settings_client.network.last_joined));
 
-	_network_join_as = join_as;
-	_network_join_server_password = join_server_password;
-	_network_join_company_password = join_company_password;
+	_network_join.company = join_as;
+	_network_join.server_password = join_server_password;
+	_network_join.company_password = join_company_password;
 
 	NetworkDisconnect();
 	NetworkInitialize();
