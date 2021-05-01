@@ -286,11 +286,11 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 			TileIndex tile = GetNearbyTile(parameter, this->tile, true);
 			return GetTownRadiusGroup(this->industry->town, tile) << 16 | std::min(DistanceManhattan(tile, this->industry->town->xy), 0xFFFFu);
 		}
-		/* Get square of Euclidian distance of closes town */
+		/* Get square of Euclidian distance of closest town */
 		case 0x66: {
 			if (this->tile == INVALID_TILE) break;
 			TileIndex tile = GetNearbyTile(parameter, this->tile, true);
-			return GetTownRadiusGroup(this->industry->town, tile) << 16 | std::min(DistanceSquare(tile, this->industry->town->xy), 0xFFFFu);
+			return DistanceSquare(tile, this->industry->town->xy);
 		}
 
 		/* Count of industry, distance of closest instance
