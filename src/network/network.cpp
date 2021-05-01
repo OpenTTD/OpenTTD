@@ -713,7 +713,24 @@ public:
 	}
 };
 
-void NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const char *join_server_password, const char *join_company_password)
+/**
+ * Join a client to the server at with the given connection string.
+ * The default for the passwords is \c nullptr. When the server or company needs a
+ * password and none is given, the user is asked to enter the password in the GUI.
+ * This function will return false whenever some information required to join is not
+ * correct such as the company number or the client's name, or when there is not
+ * networking avalabile at all. If the function returns false the connection with
+ * the existing server is not disconnected.
+ * It will return true when it starts the actual join process, i.e. when it
+ * actually shows the join status window.
+ *
+ * @param connection_string     The IP address, port and company number to join as.
+ * @param default_company       The company number to join as when none is given.
+ * @param join_server_password  The password for the server.
+ * @param join_company_password The password for the company.
+ * @return Whether the join has started.
+ */
+bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const char *join_server_password, const char *join_company_password)
 {
 	CompanyID join_as = default_company;
 	NetworkAddress address = ParseGameConnectionString(&join_as, connection_string, NETWORK_DEFAULT_PORT);
@@ -721,18 +738,27 @@ void NetworkClientConnectGame(const std::string &connection_string, CompanyID de
 	if (join_as != COMPANY_NEW_COMPANY && join_as != COMPANY_SPECTATOR) {
 		join_as--;
 		if (join_as >= MAX_COMPANIES) {
-			return;
+			return false;
 		}
 	}
 
-	NetworkClientConnectGame(address, join_as, join_server_password, join_company_password);
+	return NetworkClientConnectGame(address, join_as, join_server_password, join_company_password);
 }
 
-/* Used by clients, to connect to a server */
-void NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const char *join_server_password, const char *join_company_password)
+/**
+ * Join a client to the server at the given address.
+ * See the overloaded NetworkClientConnectGame for more details.
+ *
+ * @param address               The network address of the server to join to.
+ * @param join_as               The company number to join as.
+ * @param join_server_password  The password for the server.
+ * @param join_company_password The password for the company.
+ * @return Whether the join has started.
+ */
+bool NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const char *join_server_password, const char *join_company_password)
 {
-	if (!_network_available) return;
-	if (!NetworkValidateClientName()) return;
+	if (!_network_available) return false;
+	if (!NetworkValidateClientName()) return false;
 
 	strecpy(_settings_client.network.last_joined, address.GetAddressAsString(false).c_str(), lastof(_settings_client.network.last_joined));
 
@@ -747,6 +773,7 @@ void NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const 
 	ShowJoinStatusWindow();
 
 	new TCPClientConnecter(address);
+	return true;
 }
 
 static void NetworkInitGameInfo()
