@@ -124,22 +124,20 @@ struct DebugFileInfo {
 	SYSTEMTIME file_time;
 };
 
-static uint32 *_crc_table;
+static uint32 _crc_table[256];
 
-static void MakeCRCTable(uint32 *table)
+static void MakeCRCTable()
 {
 	uint32 crc, poly = 0xEDB88320L;
 	int i;
 	int j;
-
-	_crc_table = table;
 
 	for (i = 0; i != 256; i++) {
 		crc = i;
 		for (j = 8; j != 0; j--) {
 			crc = (crc & 1 ? (crc >> 1) ^ poly : crc >> 1);
 		}
-		table[i] = crc;
+		_crc_table[i] = crc;
 	}
 }
 
@@ -206,7 +204,8 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 
 /* virtual */ char *CrashLogWindows::LogModules(char *output, const char *last) const
 {
-	MakeCRCTable(AllocaM(uint32, 256));
+	MakeCRCTable();
+
 	output += seprintf(output, last, "Module information:\n");
 
 	HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
@@ -426,7 +425,8 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 		memcpy(&ctx, ep->ContextRecord, sizeof(ctx));
 
 		/* Allocate space for symbol info. */
-		IMAGEHLP_SYMBOL64 *sym_info = (IMAGEHLP_SYMBOL64*)alloca(sizeof(IMAGEHLP_SYMBOL64) + MAX_SYMBOL_LEN - 1);
+		char sym_info_raw[sizeof(IMAGEHLP_SYMBOL64) + MAX_SYMBOL_LEN - 1];
+		IMAGEHLP_SYMBOL64 *sym_info = (IMAGEHLP_SYMBOL64*)sym_info_raw;
 		sym_info->SizeOfStruct = sizeof(IMAGEHLP_SYMBOL64);
 		sym_info->MaxNameLength = MAX_SYMBOL_LEN;
 
@@ -698,7 +698,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			len += wcslen(convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf))) + 2;
 			len += wcslen(convert_to_fs(CrashLogWindows::current->screenshot_filename, filenamebuf, lengthof(filenamebuf))) + 1;
 
-			wchar_t *text = AllocaM(wchar_t, len);
+			static wchar_t text[lengthof(_crash_desc) + 3 * MAX_PATH * 2 + 7];
 			int printed = _snwprintf(text, len, _crash_desc, convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf)));
 			if (printed < 0 || (size_t)printed > len) {
 				MessageBox(wnd, L"Catastrophic failure trying to display crash message. Could not perform text formatting.", L"OpenTTD", MB_ICONERROR);
@@ -729,7 +729,7 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 					if (CrashLogWindows::current->WriteSavegame(filename, lastof(filename))) {
 						convert_to_fs(filename, filenamebuf, lengthof(filenamebuf));
 						size_t len = lengthof(_save_succeeded) + wcslen(filenamebuf) + 1;
-						wchar_t *text = AllocaM(wchar_t, len);
+						static wchar_t text[lengthof(_save_succeeded) + MAX_PATH * 2 + 1];
 						_snwprintf(text, len, _save_succeeded, filenamebuf);
 						MessageBox(wnd, text, L"Save successful", MB_ICONINFORMATION);
 					} else {

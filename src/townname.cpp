@@ -1063,8 +1063,8 @@ char *GenerateTownNameString(char *buf, const char *last, size_t lang, uint32 se
 	const TownNameGeneratorParams *par = &_town_name_generators[lang];
 	if (last >= buf + par->min) return par->proc(buf, last, seed);
 
-	char *buffer = AllocaM(char, par->min + 1);
-	par->proc(buffer, buffer + par->min, seed);
+	std::string buffer(par->min + 1, '\0');
+	par->proc(buffer.data(), buffer.data() + par->min, seed);
 
-	return strecpy(buf, buffer, last);
+	return strecpy(buf, buffer.c_str(), last);
 }

@@ -426,7 +426,7 @@ static void *ReadRecolourSprite(SpriteFile &file, uint num)
 	byte *dest = (byte *)AllocSprite(std::max(RECOLOUR_SPRITE_SIZE, num));
 
 	if (file.NeedsPaletteRemap()) {
-		byte *dest_tmp = AllocaM(byte, std::max(RECOLOUR_SPRITE_SIZE, num));
+		byte *dest_tmp = new byte[std::max(RECOLOUR_SPRITE_SIZE, num)];
 
 		/* Only a few recolour sprites are less than 257 bytes */
 		if (num < RECOLOUR_SPRITE_SIZE) memset(dest_tmp, 0, RECOLOUR_SPRITE_SIZE);
@@ -436,6 +436,7 @@ static void *ReadRecolourSprite(SpriteFile &file, uint num)
 		for (uint i = 1; i < RECOLOUR_SPRITE_SIZE; i++) {
 			dest[i] = _palmap_w2d[dest_tmp[_palmap_d2w[i - 1] + 1]];
 		}
+		delete[] dest_tmp;
 	} else {
 		file.ReadBlock(dest, num);
 	}

@@ -81,8 +81,8 @@ bool LoadNewGRFSound(SoundEntry *sound)
 	if (file.ReadByte() != 0xFF) return false;
 
 	uint8 name_len = file.ReadByte();
-	char *name = AllocaM(char, name_len + 1);
-	file.ReadBlock(name, name_len + 1);
+	std::string name(name_len + 1, '\0');
+	file.ReadBlock(name.data(), name_len + 1);
 
 	/* Test string termination */
 	if (name[name_len] != 0) {

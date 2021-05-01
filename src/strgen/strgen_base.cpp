@@ -362,7 +362,7 @@ char *ParseWord(char **buf)
 /* Forward declaration */
 static int TranslateArgumentIdx(int arg, int offset = 0);
 
-static void EmitWordList(Buffer *buffer, const char * const *words, uint nw)
+static void EmitWordList(Buffer *buffer, const std::vector<const char *> &words, uint nw)
 {
 	buffer->AppendByte(nw);
 	for (uint i = 0; i < nw; i++) buffer->AppendByte((byte)strlen(words[i]) + 1);
@@ -377,7 +377,7 @@ void EmitPlural(Buffer *buffer, char *buf, int value)
 	int argidx = _cur_argidx;
 	int offset = -1;
 	int expected = _plural_forms[_lang.plural_form].plural_count;
-	const char **words = AllocaM(const char *, std::max(expected, MAX_PLURALS));
+	std::vector<const char *> words(std::max(expected, MAX_PLURALS), nullptr);
 	int nw = 0;
 
 	/* Parse out the number, if one exists. Otherwise default to prev arg. */
@@ -442,7 +442,7 @@ void EmitGender(Buffer *buffer, char *buf, int value)
 		buffer->AppendUtf8(SCC_GENDER_INDEX);
 		buffer->AppendByte(nw);
 	} else {
-		const char *words[MAX_NUM_GENDERS];
+		std::vector<const char *> words(MAX_NUM_GENDERS, nullptr);
 
 		/* This is a {G 0 foo bar two} command.
 		 * If no relative number exists, default to +0 */
@@ -947,11 +947,11 @@ void LanguageWriter::WriteLength(uint length)
  */
 void LanguageWriter::WriteLang(const StringData &data)
 {
-	uint *in_use = AllocaM(uint, data.tabs);
+	std::vector<uint> in_use;
 	for (size_t tab = 0; tab < data.tabs; tab++) {
 		uint n = data.CountInUse((uint)tab);
 
-		in_use[tab] = n;
+		in_use.push_back(n);
 		_lang.offsets[tab] = TO_LE16(n);
 
 		for (uint j = 0; j != in_use[tab]; j++) {

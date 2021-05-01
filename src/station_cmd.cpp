@@ -1385,7 +1385,6 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 
 	if (flags & DC_EXEC) {
 		TileIndexDiff tile_delta;
-		byte *layout_ptr;
 		byte numtracks_orig;
 		Track track;
 
@@ -1403,18 +1402,19 @@ CommandCost CmdBuildRailStation(DoCommandFlag flags, TileIndex tile_org, RailTyp
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		track = AxisToTrack(axis);
 
-		layout_ptr = AllocaM(byte, numtracks * plat_len);
-		GetStationLayout(layout_ptr, numtracks, plat_len, statspec);
+		std::vector<byte> layouts(numtracks * plat_len);
+		GetStationLayout(layouts.data(), numtracks, plat_len, statspec);
 
 		numtracks_orig = numtracks;
 
 		Company *c = Company::Get(st->owner);
+		size_t layout_idx = 0;
 		TileIndex tile_track = tile_org;
 		do {
 			TileIndex tile = tile_track;
 			int w = plat_len;
 			do {
-				byte layout = *layout_ptr++;
+				byte layout = layouts[layout_idx++];
 				if (IsRailStationTile(tile) && HasStationReservation(tile)) {
 					/* Check for trains having a reservation for this tile. */
 					Train *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));

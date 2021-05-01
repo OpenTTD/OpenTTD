@@ -865,13 +865,11 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool us
 	if (!allow_var10) valid_flags &= ~TLF_VAR10_FLAGS;
 	dts->Allocate(num_building_sprites); // allocate before reading groundsprite flags
 
-	uint16 *max_sprite_offset = AllocaM(uint16, num_building_sprites + 1);
-	uint16 *max_palette_offset = AllocaM(uint16, num_building_sprites + 1);
-	MemSetT(max_sprite_offset, 0, num_building_sprites + 1);
-	MemSetT(max_palette_offset, 0, num_building_sprites + 1);
+	std::vector<uint16> max_sprite_offset(num_building_sprites + 1, 0);
+	std::vector<uint16> max_palette_offset(num_building_sprites + 1, 0);
 
 	/* Groundsprite */
-	TileLayoutFlags flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &dts->ground, max_sprite_offset, max_palette_offset);
+	TileLayoutFlags flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &dts->ground, max_sprite_offset.data(), max_palette_offset.data());
 	if (_cur.skip_sprites < 0) return true;
 
 	if (flags & ~(valid_flags & ~TLF_NON_GROUND_FLAGS)) {
@@ -886,7 +884,7 @@ static bool ReadSpriteLayout(ByteReader *buf, uint num_building_sprites, bool us
 	for (uint i = 0; i < num_building_sprites; i++) {
 		DrawTileSeqStruct *seq = const_cast<DrawTileSeqStruct*>(&dts->seq[i]);
 
-		flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &seq->image, max_sprite_offset + i + 1, max_palette_offset + i + 1);
+		flags = ReadSpriteLayoutSprite(buf, has_flags, false, use_cur_spritesets, feature, &seq->image, max_sprite_offset.data() + i + 1, max_palette_offset.data() + i + 1);
 		if (_cur.skip_sprites < 0) return true;
 
 		if (flags & ~valid_flags) {
@@ -5620,7 +5618,7 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 		}
 	}
 
-	EngineID *engines = AllocaM(EngineID, idcount);
+	std::vector<EngineID> engines;
 	for (uint i = 0; i < idcount; i++) {
 		Engine *e = GetNewEngine(_cur.grffile, (VehicleType)feature, buf->ReadExtendedByte());
 		if (e == nullptr) {
@@ -5631,7 +5629,7 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 			return;
 		}
 
-		engines[i] = e->index;
+		engines.push_back(e->index);
 		if (!wagover) last_engines[i] = engines[i];
 	}
 
@@ -5679,9 +5677,10 @@ static void VehicleMapSpriteGroup(ByteReader *buf, byte feature, uint8 idcount)
 
 static void CanalMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	CanalFeature *cfs = AllocaM(CanalFeature, idcount);
+	std::vector<CanalFeature> cfs;
+	cfs.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		cfs[i] = (CanalFeature)buf->ReadByte();
+		cfs.push_back((CanalFeature)buf->ReadByte());
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -5711,9 +5710,10 @@ static void StationMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	uint8 *stations = AllocaM(uint8, idcount);
+	std::vector<uint8> stations;
+	stations.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		stations[i] = buf->ReadByte();
+		stations.push_back(buf->ReadByte());
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -5768,9 +5768,10 @@ static void TownHouseMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	uint8 *houses = AllocaM(uint8, idcount);
+	std::vector<uint8> houses;
+	houses.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		houses[i] = buf->ReadByte();
+		houses.push_back(buf->ReadByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -5799,9 +5800,10 @@ static void IndustryMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	uint8 *industries = AllocaM(uint8, idcount);
+	std::vector<uint8> industries;
+	industries.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		industries[i] = buf->ReadByte();
+		industries.push_back(buf->ReadByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -5830,9 +5832,10 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	uint8 *indtiles = AllocaM(uint8, idcount);
+	std::vector<uint8> indtiles;
+	indtiles.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		indtiles[i] = buf->ReadByte();
+		indtiles.push_back(buf->ReadByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -5856,9 +5859,10 @@ static void IndustrytileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void CargoMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	CargoID *cargoes = AllocaM(CargoID, idcount);
+	std::vector<CargoID> cargoes;
+	cargoes.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		cargoes[i] = buf->ReadByte();
+		cargoes.push_back((CargoID)buf->ReadByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -5889,9 +5893,10 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	uint8 *objects = AllocaM(uint8, idcount);
+	std::vector<uint8> objects;
+	objects.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		objects[i] = buf->ReadByte();
+		objects.push_back(buf->ReadByte());
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -5939,10 +5944,11 @@ static void ObjectMapSpriteGroup(ByteReader *buf, uint8 idcount)
 
 static void RailTypeMapSpriteGroup(ByteReader *buf, uint8 idcount)
 {
-	uint8 *railtypes = AllocaM(uint8, idcount);
+	std::vector<uint8> railtypes;
+	railtypes.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
 		uint8 id = buf->ReadByte();
-		railtypes[i] = id < RAILTYPE_END ? _cur.grffile->railtype_map[id] : INVALID_RAILTYPE;
+		railtypes.push_back(id < RAILTYPE_END ? _cur.grffile->railtype_map[id] : INVALID_RAILTYPE);
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -5972,10 +5978,11 @@ static void RoadTypeMapSpriteGroup(ByteReader *buf, uint8 idcount, RoadTramType 
 {
 	RoadType *type_map = (rtt == RTT_TRAM) ? _cur.grffile->tramtype_map : _cur.grffile->roadtype_map;
 
-	uint8 *roadtypes = AllocaM(uint8, idcount);
+	std::vector<uint8> roadtypes;
+	roadtypes.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
 		uint8 id = buf->ReadByte();
-		roadtypes[i] = id < ROADTYPE_END ? type_map[id] : INVALID_ROADTYPE;
+		roadtypes.push_back(id < ROADTYPE_END ? type_map[id] : INVALID_ROADTYPE);
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -6008,9 +6015,10 @@ static void AirportMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	uint8 *airports = AllocaM(uint8, idcount);
+	std::vector<uint8> airports;
+	airports.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		airports[i] = buf->ReadByte();
+		airports.push_back(buf->ReadByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -6039,9 +6047,10 @@ static void AirportTileMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	uint8 *airptiles = AllocaM(uint8, idcount);
+	std::vector<uint8> airptiles;
+	airptiles.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		airptiles[i] = buf->ReadByte();
+		airptiles.push_back(buf->ReadByte());
 	}
 
 	/* Skip the cargo type section, we only care about the default group */
@@ -6070,9 +6079,10 @@ static void RoadStopMapSpriteGroup(ByteReader *buf, uint8 idcount)
 		return;
 	}
 
-	uint8 *roadstops = AllocaM(uint8, idcount);
+	std::vector<uint8> roadstops;
+	roadstops.reserve(idcount);
 	for (uint i = 0; i < idcount; i++) {
-		roadstops[i] = buf->ReadByte();
+		roadstops.push_back(buf->ReadByte());
 	}
 
 	uint8 cidcount = buf->ReadByte();
@@ -9830,10 +9840,8 @@ static void FinalisePriceBaseMultipliers()
 
 	/* Evaluate grf overrides */
 	int num_grfs = (uint)_grf_files.size();
-	int *grf_overrides = AllocaM(int, num_grfs);
+	std::vector<int> grf_overrides(num_grfs, -1);
 	for (int i = 0; i < num_grfs; i++) {
-		grf_overrides[i] = -1;
-
 		GRFFile *source = _grf_files[i];
 		uint32 override = _grf_id_overrides[source->grfid];
 		if (override == 0) continue;
