@@ -115,6 +115,7 @@ void NetworkClientSetCompanyPassword(const char *password);
 /** Information required to join a server. */
 struct NetworkJoinInfo {
 	NetworkJoinInfo() : company(COMPANY_SPECTATOR), server_password(nullptr), company_password(nullptr) {}
+	NetworkAddress address;       ///< The address of the server to join.
 	CompanyID company;            ///< The company to join.
 	const char *server_password;  ///< The password of the server to join.
 	const char *company_password; ///< The password of the company to join.
