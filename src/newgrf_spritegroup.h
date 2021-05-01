@@ -166,15 +166,12 @@ struct DeterministicSpriteGroupRange {
 
 struct DeterministicSpriteGroup : SpriteGroup {
 	DeterministicSpriteGroup() : SpriteGroup(SGT_DETERMINISTIC) {}
-	~DeterministicSpriteGroup();
 
 	VarSpriteGroupScope var_scope;
 	DeterministicSpriteGroupSize size;
-	uint num_adjusts;
-	uint num_ranges;
 	bool calculated_result;
-	DeterministicSpriteGroupAdjust *adjusts;
-	DeterministicSpriteGroupRange *ranges; // Dynamically allocated
+	std::vector<DeterministicSpriteGroupAdjust> adjusts;
+	std::vector<DeterministicSpriteGroupRange> ranges; // Dynamically allocated
 
 	/* Dynamically allocated, this is the sole owner */
 	const SpriteGroup *default_group;

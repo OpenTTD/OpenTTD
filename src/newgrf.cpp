@@ -5024,16 +5024,13 @@ static void NewSpriteGroup(ByteReader *buf)
 				case 2: group->size = DSG_SIZE_DWORD; varsize = 4; break;
 			}
 
-			static std::vector<DeterministicSpriteGroupAdjust> adjusts;
-			adjusts.clear();
-
 			/* Loop through the var adjusts. Unfortunately we don't know how many we have
 			 * from the outset, so we shall have to keep reallocing. */
 			do {
-				DeterministicSpriteGroupAdjust &adjust = adjusts.emplace_back();
+				DeterministicSpriteGroupAdjust &adjust = group->adjusts.emplace_back();
 
 				/* The first var adjust doesn't have an operation specified, so we set it to add. */
-				adjust.operation = adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();
+				adjust.operation = group->adjusts.size() == 1 ? DSGA_OP_ADD : (DeterministicSpriteGroupAdjustOperation)buf->ReadByte();
 				adjust.variable  = buf->ReadByte();
 				if (adjust.variable == 0x7E) {
 					/* Link subroutine group */
@@ -5057,10 +5054,6 @@ static void NewSpriteGroup(ByteReader *buf)
 
 				/* Continue reading var adjusts while bit 5 is set. */
 			} while (HasBit(varadjust, 5));
-
-			group->num_adjusts = (uint)adjusts.size();
-			group->adjusts = MallocT<DeterministicSpriteGroupAdjust>(group->num_adjusts);
-			MemCpyT(group->adjusts, adjusts.data(), group->num_adjusts);
 
 			std::vector<DeterministicSpriteGroupRange> ranges;
 			ranges.resize(buf->ReadByte());
@@ -5098,27 +5091,20 @@ static void NewSpriteGroup(ByteReader *buf)
 			}
 			assert(target.size() == bounds.size());
 
-			std::vector<DeterministicSpriteGroupRange> optimised;
 			for (uint j = 0; j < bounds.size(); ) {
 				if (target[j] != group->default_group) {
-					DeterministicSpriteGroupRange r;
+					DeterministicSpriteGroupRange &r = group->ranges.emplace_back();
 					r.group = target[j];
 					r.low = bounds[j];
 					while (j < bounds.size() && target[j] == r.group) {
 						j++;
 					}
 					r.high = j < bounds.size() ? bounds[j] - 1 : UINT32_MAX;
-					optimised.push_back(r);
 				} else {
 					j++;
 				}
 			}
 
-			group->num_ranges = (uint)optimised.size(); // cast is safe, there should never be 2**31 elements here
-			if (group->num_ranges > 0) {
-				group->ranges = MallocT<DeterministicSpriteGroupRange>(group->num_ranges);
-				MemCpyT(group->ranges, &optimised.front(), group->num_ranges);
-			}
 			break;
 		}
 

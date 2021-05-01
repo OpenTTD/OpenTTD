@@ -53,12 +53,6 @@ TemporaryStorageArray<int32, 0x110> _temp_store;
 	}
 }
 
-DeterministicSpriteGroup::~DeterministicSpriteGroup()
-{
-	free(this->adjusts);
-	free(this->ranges);
-}
-
 RandomizedSpriteGroup::~RandomizedSpriteGroup()
 {
 	free(this->groups);
@@ -205,8 +199,8 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 
 	ScopeResolver *scope = object.GetScope(this->var_scope);
 
-	for (i = 0; i < this->num_adjusts; i++) {
-		DeterministicSpriteGroupAdjust *adjust = &this->adjusts[i];
+	for (i = 0; i < this->adjusts.size(); i++) {
+		const DeterministicSpriteGroupAdjust *adjust = &this->adjusts[i];
 
 		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
 		bool available = true;
@@ -250,16 +244,16 @@ const SpriteGroup *DeterministicSpriteGroup::Resolve(ResolverObject &object) con
 		return &nvarzero;
 	}
 
-	if (this->num_ranges > 4) {
-		DeterministicSpriteGroupRange *lower = std::lower_bound(this->ranges + 0, this->ranges + this->num_ranges, value, RangeHighComparator);
-		if (lower != this->ranges + this->num_ranges && lower->low <= value) {
+	if (this->ranges.size() > 4) {
+		const auto &lower = std::lower_bound(this->ranges.begin(), this->ranges.end(), value, RangeHighComparator);
+		if (lower != this->ranges.end() && lower->low <= value) {
 			assert(lower->low <= value && value <= lower->high);
 			return SpriteGroup::Resolve(lower->group, object, false);
 		}
 	} else {
-		for (i = 0; i < this->num_ranges; i++) {
-			if (this->ranges[i].low <= value && value <= this->ranges[i].high) {
-				return SpriteGroup::Resolve(this->ranges[i].group, object, false);
+		for (const auto &range : this->ranges) {
+			if (range.low <= value && value <= range.high) {
+				return SpriteGroup::Resolve(range.group, object, false);
 			}
 		}
 	}
