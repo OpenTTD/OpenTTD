@@ -87,7 +87,6 @@ public:
 	virtual void ClearFontCache();
 	virtual const Sprite *GetGlyph(GlyphID key);
 	virtual uint GetGlyphWidth(GlyphID key);
-	virtual int GetHeight() const;
 	virtual bool GetDrawGlyphShadow();
 	virtual GlyphID MapCharToGlyph(WChar key) { assert(IsPrintable(key)); return SPRITE_GLYPH | key; }
 	virtual const void *GetFontTable(uint32 tag, size_t &length) { length = 0; return nullptr; }
@@ -102,6 +101,7 @@ public:
 SpriteFontCache::SpriteFontCache(FontSize fs) : FontCache(fs), glyph_to_spriteid_map(nullptr)
 {
 	this->InitializeUnicodeGlyphMap();
+	this->height = ScaleFontTrad(this->GetDefaultFontHeight(this->fs));
 }
 
 /**
@@ -177,6 +177,7 @@ void SpriteFontCache::ClearGlyphToSpriteMap()
 void SpriteFontCache::ClearFontCache()
 {
 	Layouter::ResetFontCache(this->fs);
+	this->height = ScaleFontTrad(this->GetDefaultFontHeight(this->fs));
 }
 
 const Sprite *SpriteFontCache::GetGlyph(GlyphID key)
@@ -191,11 +192,6 @@ uint SpriteFontCache::GetGlyphWidth(GlyphID key)
 	SpriteID sprite = this->GetUnicodeGlyph(key);
 	if (sprite == 0) sprite = this->GetUnicodeGlyph('?');
 	return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + ScaleFontTrad(this->fs != FS_NORMAL ? 1 : 0) : 0;
-}
-
-int SpriteFontCache::GetHeight() const
-{
-	return ScaleFontTrad(this->height);
 }
 
 bool SpriteFontCache::GetDrawGlyphShadow()
