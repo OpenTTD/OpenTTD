@@ -112,8 +112,8 @@ enum StationRandomTrigger {
 /** Station specification. */
 struct StationSpec {
 	StationSpec() : cls_id(STAT_CLASS_DFLT), name(0),
-		disallowed_platforms(0), disallowed_lengths(0), tiles(0),
-		renderdata(nullptr), cargo_threshold(0), cargo_triggers(0),
+		disallowed_platforms(0), disallowed_lengths(0),
+		cargo_threshold(0), cargo_triggers(0),
 		callback_mask(0), flags(0), pylons(0), wires(0), blocked(0),
 		animation({0, 0, 0, 0}) {}
 	/**
@@ -145,8 +145,7 @@ struct StationSpec {
 	 * 4-5 = platform with roof, left side
 	 * 6-7 = platform with roof, right side
 	 */
-	uint tiles;
-	NewGRFSpriteLayout *renderdata; ///< Array of tile layouts.
+	std::vector<NewGRFSpriteLayout> renderdata; ///< Array of tile layouts.
 
 	/**
 	 * Cargo threshold for choosing between little and lots of cargo

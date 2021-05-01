@@ -2844,8 +2844,8 @@ static void DrawTile_Station(TileInfo *ti)
 				}
 
 				/* Ensure the chosen tile layout is valid for this custom station */
-				if (statspec->renderdata != nullptr) {
-					layout = &statspec->renderdata[tile_layout < statspec->tiles ? tile_layout : (uint)GetRailStationAxis(ti->tile)];
+				if (!statspec->renderdata.empty()) {
+					layout = &statspec->renderdata[tile_layout < statspec->renderdata.size() ? tile_layout : (uint)GetRailStationAxis(ti->tile)];
 					if (!layout->NeedsPreprocessing()) {
 						t = layout;
 						layout = nullptr;
