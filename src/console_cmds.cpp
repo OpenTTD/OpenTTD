@@ -901,8 +901,7 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 	/* Don't resolve the address first, just print it directly as it comes from the config file. */
 	IConsolePrintF(CC_DEFAULT, "Reconnecting to %s ...", _settings_client.network.last_joined);
 
-	NetworkClientConnectGame(_settings_client.network.last_joined, playas);
-	return true;
+	return NetworkClientConnectGame(_settings_client.network.last_joined, playas);
 }
 
 DEF_CONSOLE_CMD(ConNetworkConnect)
@@ -917,8 +916,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	if (argc < 2) return false;
 	if (_networking) NetworkDisconnect(); // we are in network-mode, first close it!
 
-	NetworkClientConnectGame(argv[1], COMPANY_NEW_COMPANY);
-	return true;
+	return NetworkClientConnectGame(argv[1], COMPANY_NEW_COMPANY);
 }
 
 /*********************************
