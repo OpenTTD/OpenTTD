@@ -5130,6 +5130,10 @@ static void NewSpriteGroup(ByteReader *buf)
 			group->lowest_randbit = buf->ReadByte();
 
 			byte num_groups = buf->ReadByte();
+			if (!HasExactlyOneBit(num_groups)) {
+				grfmsg(1, "NewSpriteGroup: Random Action 2 nrand should be power of 2");
+			}
+
 			for (uint i = 0; i < num_groups; i++) {
 				group->groups.push_back(GetGroupFromGroupID(setid, type, buf->ReadWord()));
 			}
