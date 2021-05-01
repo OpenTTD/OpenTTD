@@ -908,7 +908,6 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	}
 
 	if (argc < 2) return false;
-	if (_networking) NetworkDisconnect(); // we are in network-mode, first close it!
 
 	const char *port = nullptr;
 	const char *company = nullptr;
