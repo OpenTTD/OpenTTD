@@ -1048,24 +1048,21 @@ static void SlStdString(void *ptr, VarType conv)
 				return;
 			}
 
-			char *buf = AllocaM(char, len + 1);
-			SlCopyBytes(buf, len);
-			buf[len] = '\0'; // properly terminate the string
+			str->resize(len + 1);
+			SlCopyBytes(str->data(), len);
+			(*str)[len] = '\0'; // properly terminate the string
 
 			StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK;
 			if ((conv & SLF_ALLOW_CONTROL) != 0) {
 				settings = settings | SVS_ALLOW_CONTROL_CODE;
 				if (IsSavegameVersionBefore(SLV_169)) {
-					str_fix_scc_encoded(buf, buf + len);
+					str_fix_scc_encoded(str->data(), str->data() + len);
 				}
 			}
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings = settings | SVS_ALLOW_NEWLINE;
 			}
-			StrMakeValidInPlace(buf, buf + len, settings);
-
-			// Store sanitized string.
-			str->assign(buf);
+			*str = StrMakeValid(*str, settings);
 		}
 
 		case SLA_PTRS: break;

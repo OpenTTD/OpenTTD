@@ -71,7 +71,6 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	HKEY hKey;
 	LONG ret;
 	wchar_t vbuffer[MAX_PATH], dbuffer[256];
-	wchar_t *pathbuf;
 	const char *font_path;
 	uint index;
 	size_t path_len;
@@ -122,12 +121,12 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	 * contain multiple fonts inside this single file. GetFontData however
 	 * returns the whole file, so we need to check each font inside to get the
 	 * proper font. */
-	path_len = wcslen(vbuffer) + wcslen(dbuffer) + 2; // '\' and terminating nul.
-	pathbuf = AllocaM(wchar_t, path_len);
-	_snwprintf(pathbuf, path_len, L"%s\\%s", vbuffer, dbuffer);
+	std::wstring pathbuf(vbuffer);
+	pathbuf += L"\\";
+	pathbuf += dbuffer;
 
 	/* Convert the path into something that FreeType understands. */
-	font_path = GetShortPath(pathbuf);
+	font_path = GetShortPath(pathbuf.c_str());
 
 	index = 0;
 	do {
@@ -374,7 +373,7 @@ void Win32FontCache::SetFontSize(FontSize fs, int pixels)
 			HGDIOBJ old = SelectObject(this->dc, temp);
 
 			UINT size = GetOutlineTextMetrics(this->dc, 0, nullptr);
-			LPOUTLINETEXTMETRIC otm = (LPOUTLINETEXTMETRIC)AllocaM(BYTE, size);
+			LPOUTLINETEXTMETRIC otm = (LPOUTLINETEXTMETRIC)new BYTE[size];
 			GetOutlineTextMetrics(this->dc, size, otm);
 
 			/* Font height is minimum height plus the difference between the default
@@ -383,6 +382,7 @@ void Win32FontCache::SetFontSize(FontSize fs, int pixels)
 			/* Clamp() is not used as scaled_height could be greater than MAX_FONT_SIZE, which is not permitted in Clamp(). */
 			pixels = std::min(std::max(std::min<int>(otm->otmusMinimumPPEM, MAX_FONT_MIN_REC_SIZE) + diff, scaled_height), MAX_FONT_SIZE);
 
+			delete[] (BYTE*)otm;
 			SelectObject(dc, old);
 			DeleteObject(temp);
 		}
@@ -405,7 +405,7 @@ void Win32FontCache::SetFontSize(FontSize fs, int pixels)
 
 	/* Query the font metrics we needed. */
 	UINT otmSize = GetOutlineTextMetrics(this->dc, 0, nullptr);
-	POUTLINETEXTMETRIC otm = (POUTLINETEXTMETRIC)AllocaM(BYTE, otmSize);
+	POUTLINETEXTMETRIC otm = (POUTLINETEXTMETRIC)new BYTE[otmSize];
 	GetOutlineTextMetrics(this->dc, otmSize, otm);
 
 	this->units_per_em = otm->otmEMSquare;
@@ -418,6 +418,7 @@ void Win32FontCache::SetFontSize(FontSize fs, int pixels)
 	this->fontname = FS2OTTD((LPWSTR)((BYTE *)otm + (ptrdiff_t)otm->otmpFaceName));
 
 	Debug(fontcache, 2, "Loaded font '{}' with size {}", this->fontname, pixels);
+	delete[] (BYTE*)otm;
 }
 
 /**
@@ -449,7 +450,7 @@ void Win32FontCache::ClearFontCache()
 	if (width > MAX_GLYPH_DIM || height > MAX_GLYPH_DIM) usererror("Font glyph is too large");
 
 	/* Call GetGlyphOutline again with size to actually render the glyph. */
-	byte *bmp = AllocaM(byte, size);
+	byte *bmp = new byte[size];
 	GetGlyphOutline(this->dc, key, GGO_GLYPH_INDEX | (aa ? GGO_GRAY8_BITMAP : GGO_BITMAP), &gm, size, bmp, &mat);
 
 	/* GDI has rendered the glyph, now we allocate a sprite and copy the image into it. */
@@ -497,6 +498,8 @@ void Win32FontCache::ClearFontCache()
 	new_glyph.width = gm.gmCellIncX;
 
 	this->SetGlyphPtr(key, &new_glyph);
+
+	delete[] bmp;
 
 	return new_glyph.sprite;
 }
@@ -589,10 +592,11 @@ void LoadWin32Font(FontSize fs)
 					/* Try to query an array of LOGFONTs that describe the file. */
 					DWORD len = 0;
 					if (GetFontResourceInfo(fontPath, &len, nullptr, 2) && len >= sizeof(LOGFONT)) {
-						LOGFONT *buf = (LOGFONT *)AllocaM(byte, len);
+						LOGFONT *buf = (LOGFONT *)new byte[len];
 						if (GetFontResourceInfo(fontPath, &len, buf, 2)) {
 							logfont = *buf; // Just use first entry.
 						}
+						delete[] (byte *)buf;
 					}
 				}
 

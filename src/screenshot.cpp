@@ -182,8 +182,7 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 	uint maxlines = Clamp(65536 / (w * pixelformat / 8), 16, 128); // number of lines per iteration
 
 	uint8 *buff = MallocT<uint8>(maxlines * w * pixelformat / 8); // buffer which is rendered to
-	uint8 *line = AllocaM(uint8, bytewidth); // one line, stored to file
-	memset(line, 0, bytewidth);
+	uint8 *line = CallocT<uint8>(bytewidth); // one line, stored to file
 
 	/* Start at the bottom, since bitmaps are stored bottom up */
 	do {
@@ -211,6 +210,7 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 			}
 			/* Write to file */
 			if (fwrite(line, bytewidth, 1, f) != 1) {
+				free(line);
 				free(buff);
 				fclose(f);
 				return false;
@@ -218,6 +218,7 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 		}
 	} while (h != 0);
 
+	free(line);
 	free(buff);
 	fclose(f);
 

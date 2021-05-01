@@ -328,9 +328,9 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		if (lParam & GCS_RESULTSTR) {
 			/* Read result string from the IME. */
 			LONG len = ImmGetCompositionString(hIMC, GCS_RESULTSTR, nullptr, 0); // Length is always in bytes, even in UNICODE build.
-			wchar_t *str = (wchar_t *)_alloca(len + sizeof(wchar_t));
-			len = ImmGetCompositionString(hIMC, GCS_RESULTSTR, str, len);
-			str[len / sizeof(wchar_t)] = '\0';
+			std::wstring str(len + 1, L'\0');
+			len = ImmGetCompositionString(hIMC, GCS_RESULTSTR, str.data(), len);
+			str[len / sizeof(wchar_t)] = L'\0';
 
 			/* Transmit text to windowing system. */
 			if (len > 0) {
@@ -346,18 +346,18 @@ static LRESULT HandleIMEComposition(HWND hwnd, WPARAM wParam, LPARAM lParam)
 		if ((lParam & GCS_COMPSTR) && DrawIMECompositionString()) {
 			/* Read composition string from the IME. */
 			LONG len = ImmGetCompositionString(hIMC, GCS_COMPSTR, nullptr, 0); // Length is always in bytes, even in UNICODE build.
-			wchar_t *str = (wchar_t *)_alloca(len + sizeof(wchar_t));
-			len = ImmGetCompositionString(hIMC, GCS_COMPSTR, str, len);
-			str[len / sizeof(wchar_t)] = '\0';
+			std::wstring str(len + 1, L'\0');
+			len = ImmGetCompositionString(hIMC, GCS_COMPSTR, str.data(), len);
+			str[len / sizeof(wchar_t)] = L'\0';
 
 			if (len > 0) {
 				static char utf8_buf[1024];
-				convert_from_fs(str, utf8_buf, lengthof(utf8_buf));
+				convert_from_fs(str.c_str(), utf8_buf, lengthof(utf8_buf));
 
 				/* Convert caret position from bytes in the input string to a position in the UTF-8 encoded string. */
 				LONG caret_bytes = ImmGetCompositionString(hIMC, GCS_CURSORPOS, nullptr, 0);
 				const char *caret = utf8_buf;
-				for (const wchar_t *c = str; *c != '\0' && *caret != '\0' && caret_bytes > 0; c++, caret_bytes--) {
+				for (const wchar_t *c = str.c_str(); *c != '\0' && *caret != '\0' && caret_bytes > 0; c++, caret_bytes--) {
 					/* Skip DBCS lead bytes or leading surrogates. */
 					if (Utf16IsLeadSurrogate(*c)) {
 						c++;
@@ -1056,8 +1056,7 @@ bool VideoDriver_Win32GDI::AllocateBackingStore(int w, int h, bool force)
 
 	if (!force && w == _screen.width && h == _screen.height) return false;
 
-	BITMAPINFO *bi = (BITMAPINFO *)alloca(sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
-	memset(bi, 0, sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256);
+	BITMAPINFO *bi = (BITMAPINFO *)new char[sizeof(BITMAPINFOHEADER) + sizeof(RGBQUAD) * 256]();
 	bi->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 
 	bi->bmiHeader.biWidth = this->width = w;
@@ -1071,7 +1070,10 @@ bool VideoDriver_Win32GDI::AllocateBackingStore(int w, int h, bool force)
 
 	HDC dc = GetDC(0);
 	this->dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID **)&this->buffer_bits, nullptr, 0);
-	if (this->dib_sect == nullptr) usererror("CreateDIBSection failed");
+	if (this->dib_sect == nullptr) {
+		delete[] bi;
+		usererror("CreateDIBSection failed");
+	}
 	ReleaseDC(0, dc);
 
 	_screen.width = w;
@@ -1079,6 +1081,7 @@ bool VideoDriver_Win32GDI::AllocateBackingStore(int w, int h, bool force)
 	_screen.height = h;
 	_screen.dst_ptr = this->GetVideoPointer();
 
+	delete[] bi;
 	return true;
 }
 
@@ -1092,7 +1095,7 @@ void VideoDriver_Win32GDI::MakePalette()
 {
 	CopyPalette(_local_palette, true);
 
-	LOGPALETTE *pal = (LOGPALETTE*)alloca(sizeof(LOGPALETTE) + (256 - 1) * sizeof(PALETTEENTRY));
+	LOGPALETTE *pal = (LOGPALETTE *)new char[sizeof(LOGPALETTE) + (256 - 1) * sizeof(PALETTEENTRY)]();
 
 	pal->palVersion = 0x300;
 	pal->palNumEntries = 256;
@@ -1105,6 +1108,7 @@ void VideoDriver_Win32GDI::MakePalette()
 
 	}
 	this->gdi_palette = CreatePalette(pal);
+	delete[] pal;
 	if (this->gdi_palette == nullptr) usererror("CreatePalette failed!\n");
 }
 

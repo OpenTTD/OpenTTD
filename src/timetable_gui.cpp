@@ -85,9 +85,9 @@ static bool CanDetermineTimeTaken(const Order *order, bool travelling)
  * @param table Fill in arrival and departures including intermediate orders
  * @param offset Add this value to result and all arrivals and departures
  */
-static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID start, bool travelling, TimetableArrivalDeparture *table, Ticks offset)
+static void FillTimetableArrivalDepartureTable(const Vehicle *v, VehicleOrderID start, bool travelling, std::vector<TimetableArrivalDeparture> &table, Ticks offset)
 {
-	assert(table != nullptr);
+	assert(!table.empty());
 	assert(v->GetNumOrders() >= 2);
 	assert(start < v->GetNumOrders());
 
@@ -179,7 +179,7 @@ struct TimetableWindow : Window {
 	 * @param table the table to fill
 	 * @return if next arrival will be early
 	 */
-	static bool BuildArrivalDepartureList(const Vehicle *v, TimetableArrivalDeparture *table)
+	static bool BuildArrivalDepartureList(const Vehicle *v, std::vector<TimetableArrivalDeparture> &table)
 	{
 		assert(HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED));
 
@@ -429,7 +429,7 @@ struct TimetableWindow : Window {
 				Ticks total_time = v->orders != nullptr ? v->orders->GetTimetableDurationIncomplete() : 0;
 				if (total_time <= 0 || v->GetNumOrders() <= 1 || !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) break;
 
-				TimetableArrivalDeparture *arr_dep = AllocaM(TimetableArrivalDeparture, v->GetNumOrders());
+				std::vector<TimetableArrivalDeparture> arr_dep(v->GetNumOrders());
 				const VehicleOrderID cur_order = v->cur_real_order_index % v->GetNumOrders();
 
 				VehicleOrderID earlyID = BuildArrivalDepartureList(v, arr_dep) ? cur_order : (VehicleOrderID)INVALID_VEH_ORDER_ID;

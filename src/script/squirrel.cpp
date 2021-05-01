@@ -491,10 +491,11 @@ bool Squirrel::CallBoolMethod(HSQOBJECT instance, const char *method_name, bool 
 
 	if (prepend_API_name) {
 		size_t len = strlen(class_name) + strlen(engine->GetAPIName()) + 1;
-		char *class_name2 = (char *)alloca(len);
+		char *class_name2 = MallocT<char>(len);
 		seprintf(class_name2, class_name2 + len - 1, "%s%s", engine->GetAPIName(), class_name);
 
 		sq_pushstring(vm, class_name2, -1);
+		free(class_name2);
 	} else {
 		sq_pushstring(vm, class_name, -1);
 	}
