@@ -1,3 +1,26 @@
+1.11.2 (2021-05-03)
+------------------------------------------------------------------------
+Change: [Win32] Limit hardware accelerated video driver to OpenGL 3.2 or higher (#9077)
+Change: More improvements to the GUI at different scales (#9075, #9102, #9107, #9133, #9174, #9183)
+Fix: Query windows could be partially drawn (#9184)
+Fix #9113: Crash when removing an airport that exists in an aircraft's orders (#9182)
+Fix #9117: [Fluidsynth] Hang when changing song (#9181)
+Fix: String validation could leave invalid UTF-8 encoded strings (#9096)
+Fix: [Network] Out-of-bounds memory access with modified servers sending too short password salts (#9176)
+Fix: Crash when extra viewport with zero height has sign in view (#9175)
+Fix #9147: Crash when taking screenshots (#9169)
+Fix #6598: [Network] Prevent crashes when (re)joining network game by falling back to main menu first (#9163)
+Fix #9152: Screenshot success popup window was treated as an error (#9159)
+Fix: Fast-forward stuttering when vsync is enabled (#9140)
+Fix: [Network, Win32] Network errors were handled badly (#9116)
+Fix: [Network] Savegame transfer could stall in rare cases (#9106)
+Fix #9097: [NewGRF] Cargo initial payment variable was being truncated (#9098)
+Fix: [NewGRF] Industry variable 66 and object variable 46 erroneously truncated the distance (#9088)
+Fix: [NewGRF] Industry variables 65 and 66 ignored the parameter, and always used the north tile (#9088)
+Fix: Do not include regression test AI in bundle (#9068, #9164)
+Fix #9062: [Win32] Version in executable was not set to current release version (#9066, #9154)
+
+
 1.11.1 (2021-04-18)
 ------------------------------------------------------------------------
 Feature: Toggle to enable/disable vsync (#8997)
