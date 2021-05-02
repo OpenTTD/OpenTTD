@@ -172,13 +172,13 @@ const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *passw
  * @param password_game_seed Game seed.
  * @return The hashed password.
  */
-const char *GenerateCompanyPasswordHash(const char *password, const char *password_server_id, uint32 password_game_seed)
+std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32 password_game_seed)
 {
-	if (StrEmpty(password)) return password;
+	if (password.empty()) return password;
 
 	char salted_password[NETWORK_SERVER_ID_LENGTH];
-	size_t password_length = strlen(password);
-	size_t password_server_id_length = strlen(password_server_id);
+	size_t password_length = password.size();
+	size_t password_server_id_length = password_server_id.size();
 
 	/* Add the game seed and the server's ID as the salt. */
 	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) {

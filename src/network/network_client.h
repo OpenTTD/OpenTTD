@@ -91,13 +91,13 @@ public:
 	static NetworkRecvStatus SendAck();
 
 	static NetworkRecvStatus SendGamePassword(const char *password);
-	static NetworkRecvStatus SendCompanyPassword(const char *password);
+	static NetworkRecvStatus SendCompanyPassword(const std::string &password);
 
 	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data);
-	static NetworkRecvStatus SendSetPassword(const char *password);
+	static NetworkRecvStatus SendSetPassword(const std::string &password);
 	static NetworkRecvStatus SendSetName(const char *name);
 	static NetworkRecvStatus SendRCon(const char *password, const char *command);
-	static NetworkRecvStatus SendMove(CompanyID company, const char *password);
+	static NetworkRecvStatus SendMove(CompanyID company, const std::string &password);
 
 	static bool IsConnected();
 
@@ -110,15 +110,15 @@ public:
 typedef ClientNetworkGameSocketHandler MyClient;
 
 void NetworkClient_Connected();
-void NetworkClientSetCompanyPassword(const char *password);
+void NetworkClientSetCompanyPassword(const std::string &password);
 
 /** Information required to join a server. */
 struct NetworkJoinInfo {
-	NetworkJoinInfo() : company(COMPANY_SPECTATOR), server_password(nullptr), company_password(nullptr) {}
+	NetworkJoinInfo() : company(COMPANY_SPECTATOR), server_password(nullptr) {}
 	std::string connection_string; ///< The address of the server to join.
 	CompanyID company;             ///< The company to join.
 	const char *server_password;   ///< The password of the server to join.
-	const char *company_password;  ///< The password of the company to join.
+	std::string company_password;  ///< The password of the company to join.
 };
 
 extern NetworkJoinInfo _network_join;
