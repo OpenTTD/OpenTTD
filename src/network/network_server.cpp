@@ -863,7 +863,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED
 		return this->SendNeedGamePassword();
 	}
 
-	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
+	if (Company::IsValidID(ci->client_playas) && !_network_company_states[ci->client_playas].password.empty()) {
 		return this->SendNeedCompanyPassword();
 	}
 
@@ -964,7 +964,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_PASSWORD(P
 	}
 
 	const NetworkClientInfo *ci = this->GetInfo();
-	if (Company::IsValidID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
+	if (Company::IsValidID(ci->client_playas) && !_network_company_states[ci->client_playas].password.empty()) {
 		return this->SendNeedCompanyPassword();
 	}
 
@@ -985,8 +985,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWOR
 	 * Also, check the company is still valid - client could be moved to spectators
 	 * in the middle of the authorization process */
 	CompanyID playas = this->GetInfo()->client_playas;
-	if (Company::IsValidID(playas) && !StrEmpty(_network_company_states[playas].password) &&
-			strcmp(password, _network_company_states[playas].password) != 0) {
+	if (Company::IsValidID(playas) && !_network_company_states[playas].password.empty() &&
+			_network_company_states[playas].password.compare(password) != 0) {
 		/* Password is invalid */
 		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
 	}
@@ -1467,13 +1467,13 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet *p)
 	if (company_id != COMPANY_SPECTATOR && !Company::IsValidHumanID(company_id)) return NETWORK_RECV_STATUS_OKAY;
 
 	/* Check if we require a password for this company */
-	if (company_id != COMPANY_SPECTATOR && !StrEmpty(_network_company_states[company_id].password)) {
+	if (company_id != COMPANY_SPECTATOR && !_network_company_states[company_id].password.empty()) {
 		/* we need a password from the client - should be in this packet */
 		char password[NETWORK_PASSWORD_LENGTH];
 		p->Recv_string(password, sizeof(password));
 
 		/* Incorrect password sent, return! */
-		if (strcmp(password, _network_company_states[company_id].password) != 0) {
+		if (_network_company_states[company_id].password.compare(password) != 0) {
 			DEBUG(net, 2, "Wrong password from client-id #%d for company #%d", this->client_id, company_id + 1);
 			return NETWORK_RECV_STATUS_OKAY;
 		}
@@ -1523,7 +1523,7 @@ void NetworkSocketHandler::SendCompanyInformation(Packet *p, const Company *c, c
 	p->Send_uint16(c->old_economy[0].performance_history);
 
 	/* Send 1 if there is a password for the company else send 0 */
-	p->Send_bool  (!StrEmpty(_network_company_states[c->index].password));
+	p->Send_bool  (!_network_company_states[c->index].password.empty());
 
 	for (uint i = 0; i < NETWORK_VEH_END; i++) {
 		p->Send_uint16(stats->num_vehicle[i]);
@@ -1660,15 +1660,15 @@ static void NetworkAutoCleanCompanies()
 			_network_company_states[c->index].months_empty++;
 
 			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
-			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_unprotected && StrEmpty(_network_company_states[c->index].password)) {
+			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_unprotected && _network_company_states[c->index].password.empty()) {
 				/* Shut the company down */
 				DoCommandP(0, CCA_DELETE | c->index << 16 | CRR_AUTOCLEAN << 24, 0, CMD_COMPANY_CTRL);
 				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d with no password", c->index + 1);
 			}
 			/* Is the company empty for autoclean_protected-months, and there is a protection? */
-			if (_settings_client.network.autoclean_protected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_protected && !StrEmpty(_network_company_states[c->index].password)) {
+			if (_settings_client.network.autoclean_protected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_protected && !_network_company_states[c->index].password.empty()) {
 				/* Unprotect the company */
-				_network_company_states[c->index].password[0] = '\0';
+				_network_company_states[c->index].password.clear();
 				IConsolePrintF(CC_DEFAULT, "Auto-removed protection from company #%d", c->index + 1);
 				_network_company_states[c->index].months_empty = 0;
 				NetworkServerUpdateCompanyPassworded(c->index, false);
@@ -1765,8 +1765,8 @@ void NetworkServerSetCompanyPassword(CompanyID company_id, const char *password,
 		password = GenerateCompanyPasswordHash(password, _settings_client.network.network_id.c_str(), _settings_game.game_creation.generation_seed);
 	}
 
-	strecpy(_network_company_states[company_id].password, password, lastof(_network_company_states[company_id].password));
-	NetworkServerUpdateCompanyPassworded(company_id, !StrEmpty(_network_company_states[company_id].password));
+	_network_company_states[company_id].password = password;
+	NetworkServerUpdateCompanyPassworded(company_id, !_network_company_states[company_id].password.empty());
 }
 
 /**
@@ -2188,7 +2188,7 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 	if (!_network_server) return;
 
 	_network_company_states[c->index].months_empty = 0;
-	_network_company_states[c->index].password[0] = '\0';
+	_network_company_states[c->index].password.clear();
 	NetworkServerUpdateCompanyPassworded(c->index, false);
 
 	if (ci != nullptr) {

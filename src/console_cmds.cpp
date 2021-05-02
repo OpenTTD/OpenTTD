@@ -1635,7 +1635,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 		if (c->is_ai) {
 			password_state = "AI";
 		} else if (_network_server) {
-				password_state = StrEmpty(_network_company_states[c->index].password) ? "unprotected" : "protected";
+			password_state = _network_company_states[c->index].password.empty() ? "unprotected" : "protected";
 		}
 
 		char colour[512];

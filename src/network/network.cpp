@@ -601,7 +601,7 @@ void NetworkClose(bool close_admins)
 
 	NetworkFreeLocalCommandQueue();
 
-	free(_network_company_states);
+	delete[] _network_company_states;
 	_network_company_states = nullptr;
 
 	InitializeNetworkPools(close_admins);
@@ -896,7 +896,7 @@ bool NetworkServerStart()
 	DEBUG(net, 5, "Starting listeners for incoming server queries");
 	NetworkUDPServerListen();
 
-	_network_company_states = CallocT<NetworkCompanyState>(MAX_COMPANIES);
+	_network_company_states = new NetworkCompanyState[MAX_COMPANIES];
 	_network_server = true;
 	_networking = true;
 	_frame_counter = 0;
