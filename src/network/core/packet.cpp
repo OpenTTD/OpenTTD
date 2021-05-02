@@ -397,6 +397,35 @@ void Packet::Recv_string(char *buffer, size_t size, StringValidationSettings set
 }
 
 /**
+ * Reads characters (bytes) from the packet until it finds a '\0', or reaches a
+ * maximum of \c length characters.
+ * When the '\0' has not been reached in the first \c length read characters,
+ * more characters are read from the packet until '\0' has been reached. However,
+ * these characters will not end up in the returned string.
+ * The length of the returned string will be at most \c length - 1 characters.
+ * @param length   The maximum length of the string including '\0'.
+ * @param settings The string validation settings.
+ * @return The validated string.
+ */
+std::string Packet::Recv_string(size_t length, StringValidationSettings settings)
+{
+	assert(length > 1);
+
+	/* Both loops with Recv_uint8 terminate when reading past the end of the
+	 * packet as Recv_uint8 then closes the connection and returns 0. */
+	std::string str;
+	char character;
+	while (--length > 0 && (character = this->Recv_uint8()) != '\0') str.push_back(character);
+
+	if (length == 0) {
+		/* The string in the packet was longer. Read until the termination. */
+		while (this->Recv_uint8() != '\0') {}
+	}
+
+	return str_validate(str, settings);
+}
+
+/**
  * Get the amount of bytes that are still available for the Transfer functions.
  * @return The number of bytes that still have to be transfered.
  */
