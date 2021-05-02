@@ -96,7 +96,7 @@ public:
 	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data);
 	static NetworkRecvStatus SendSetPassword(const std::string &password);
 	static NetworkRecvStatus SendSetName(const char *name);
-	static NetworkRecvStatus SendRCon(const char *password, const char *command);
+	static NetworkRecvStatus SendRCon(const std::string &password, const char *command);
 	static NetworkRecvStatus SendMove(CompanyID company, const std::string &password);
 
 	static bool IsConnected();

@@ -516,7 +516,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
  * @param pass The password for the remote command.
  * @param command The actual command.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const char *pass, const char *command)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const std::string &pass, const char *command)
 {
 	Packet *p = new Packet(PACKET_CLIENT_RCON);
 	p->Send_string(pass);
