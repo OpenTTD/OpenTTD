@@ -1991,6 +1991,14 @@ static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, Byte
 
 					const byte *layout = buf->ReadBytes(length * number);
 					statspec->layouts[length - 1][number - 1].assign(layout, layout + length * number);
+
+					/* Validate tile values are only the permitted 00, 02, 04 and 06. */
+					for (auto &tile : statspec->layouts[length - 1][number - 1]) {
+						if ((tile & 6) != tile) {
+							grfmsg(1, "StationChangeInfo: Invalid tile %u in layout %ux%u", tile, length, number);
+							tile &= 6;
+						}
+					}
 				}
 				break;
 
