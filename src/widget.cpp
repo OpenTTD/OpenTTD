@@ -1913,6 +1913,8 @@ void NWidgetViewport::SetupSmallestSize(Window *w, bool init_array)
 
 void NWidgetViewport::Draw(const Window *w)
 {
+	if (this->current_x == 0 || this->current_y == 0) return;
+
 	if (this->disp_flags & ND_NO_TRANSPARENCY) {
 		TransparencyOptionBits to_backup = _transparency_opt;
 		_transparency_opt &= (1 << TO_SIGNS) | (1 << TO_LOADING); // Disable all transparency, except textual stuff
