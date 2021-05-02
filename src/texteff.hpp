@@ -32,6 +32,7 @@ void InitTextEffects();
 void DrawTextEffects(DrawPixelInfo *dpi);
 void UpdateTextEffect(TextEffectID effect_id, StringID msg);
 void RemoveTextEffect(TextEffectID effect_id);
+void UpdateAllTextEffectVirtCoords();
 
 /* misc_gui.cpp */
 TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID colour);
