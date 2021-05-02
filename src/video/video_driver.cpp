@@ -131,12 +131,13 @@ void VideoDriver::Tick()
 			this->fast_forward_via_key = false;
 		}
 
+		/* Locking video buffer can block (especially with vsync enabled), do it before taking game state lock. */
+		this->LockVideoBuffer();
+
 		{
 			/* Tell the game-thread to stop so we can have a go. */
 			std::lock_guard<std::mutex> lock_wait(this->game_thread_wait_mutex);
 			std::lock_guard<std::mutex> lock_state(this->game_state_mutex);
-
-			this->LockVideoBuffer();
 
 			this->DrainCommandQueue();
 
