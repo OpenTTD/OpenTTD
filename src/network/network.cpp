@@ -152,9 +152,9 @@ byte NetworkSpectatorCount()
  * @param password The unhashed password we like to set ('*' or '' resets the password)
  * @return The password.
  */
-const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *password)
+std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string password)
 {
-	if (strcmp(password, "*") == 0) password = "";
+	if (password.compare("*") == 0) password = "";
 
 	if (_network_server) {
 		NetworkServerSetCompanyPassword(company_id, password, false);
@@ -787,7 +787,7 @@ public:
  * @param join_company_password The password for the company.
  * @return Whether the join has started.
  */
-bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const char *join_server_password, const char *join_company_password)
+bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password, const std::string &join_company_password)
 {
 	CompanyID join_as = default_company;
 	std::string resolved_connection_string = ParseGameConnectionString(connection_string, NETWORK_DEFAULT_PORT, &join_as).GetAddressAsString(false);
