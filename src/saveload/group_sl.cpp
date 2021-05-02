@@ -55,6 +55,8 @@ static void Load_GRPS()
 	}
 }
 
-extern const ChunkHandler _group_chunk_handlers[] = {
-	{ 'GRPS', Save_GRPS, Load_GRPS, nullptr, nullptr, CH_ARRAY | CH_LAST},
+static const ChunkHandler group_chunk_handlers[] = {
+	{ 'GRPS', Save_GRPS, Load_GRPS, nullptr, nullptr, CH_ARRAY },
 };
+
+extern const ChunkHandlerTable _group_chunk_handlers(group_chunk_handlers);

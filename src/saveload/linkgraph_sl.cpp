@@ -280,8 +280,10 @@ static void Ptrs_LGRS()
 	SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
 }
 
-extern const ChunkHandler _linkgraph_chunk_handlers[] = {
+static const ChunkHandler linkgraph_chunk_handlers[] = {
 	{ 'LGRP', Save_LGRP, Load_LGRP, nullptr,   nullptr, CH_ARRAY },
 	{ 'LGRJ', Save_LGRJ, Load_LGRJ, nullptr,   nullptr, CH_ARRAY },
-	{ 'LGRS', Save_LGRS, Load_LGRS, Ptrs_LGRS, nullptr, CH_LAST  }
+	{ 'LGRS', Save_LGRS, Load_LGRS, Ptrs_LGRS, nullptr, CH_RIFF  }
 };
+
+extern const ChunkHandlerTable _linkgraph_chunk_handlers(linkgraph_chunk_handlers);

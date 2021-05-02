@@ -2085,10 +2085,12 @@ static void Save_PATS()
 	SaveSettings(_settings, &_settings_game);
 }
 
-extern const ChunkHandler _setting_chunk_handlers[] = {
-	{ 'OPTS', nullptr,      Load_OPTS, nullptr, nullptr,       CH_RIFF},
-	{ 'PATS', Save_PATS, Load_PATS, nullptr, Check_PATS, CH_RIFF | CH_LAST},
+static const ChunkHandler setting_chunk_handlers[] = {
+	{ 'OPTS', nullptr,   Load_OPTS, nullptr, nullptr,    CH_RIFF },
+	{ 'PATS', Save_PATS, Load_PATS, nullptr, Check_PATS, CH_RIFF },
 };
+
+extern const ChunkHandlerTable _setting_chunk_handlers(setting_chunk_handlers);
 
 static bool IsSignedVarMemType(VarType vt)
 {

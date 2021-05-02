@@ -94,9 +94,11 @@ static void Ptrs_CAPY()
 }
 
 
-extern const ChunkHandler _economy_chunk_handlers[] = {
-	{ 'CAPY', Save_CAPY,     Load_CAPY,     Ptrs_CAPY, nullptr, CH_ARRAY},
-	{ 'PRIC', nullptr,       Load_PRIC,     nullptr,   nullptr, CH_RIFF },
-	{ 'CAPR', nullptr,       Load_CAPR,     nullptr,   nullptr, CH_RIFF },
-	{ 'ECMY', Save_ECMY,     Load_ECMY,     nullptr,   nullptr, CH_RIFF | CH_LAST},
+static const ChunkHandler economy_chunk_handlers[] = {
+	{ 'CAPY', Save_CAPY, Load_CAPY, Ptrs_CAPY, nullptr, CH_ARRAY },
+	{ 'PRIC', nullptr,   Load_PRIC, nullptr,   nullptr, CH_RIFF  },
+	{ 'CAPR', nullptr,   Load_CAPR, nullptr,   nullptr, CH_RIFF  },
+	{ 'ECMY', Save_ECMY, Load_ECMY, nullptr,   nullptr, CH_RIFF  },
 };
+
+extern const ChunkHandlerTable _economy_chunk_handlers(economy_chunk_handlers);

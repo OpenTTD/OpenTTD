@@ -44,6 +44,8 @@ static void Save_PSAC()
 }
 
 /** Chunk handler for persistent storages. */
-extern const ChunkHandler _persistent_storage_chunk_handlers[] = {
-	{ 'PSAC', Save_PSAC, Load_PSAC, nullptr, nullptr, CH_ARRAY | CH_LAST},
+static const ChunkHandler persistent_storage_chunk_handlers[] = {
+	{ 'PSAC', Save_PSAC, Load_PSAC, nullptr, nullptr, CH_ARRAY },
 };
+
+extern const ChunkHandlerTable _persistent_storage_chunk_handlers(persistent_storage_chunk_handlers);

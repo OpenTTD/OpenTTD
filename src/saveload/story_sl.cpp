@@ -95,7 +95,9 @@ static void Load_STORY_PAGE()
 	_story_page_next_sort_value = max_sort_value + 1;
 }
 
-extern const ChunkHandler _story_page_chunk_handlers[] = {
-	{ 'STPE', Save_STORY_PAGE_ELEMENT, Load_STORY_PAGE_ELEMENT, nullptr, nullptr, CH_ARRAY},
-	{ 'STPA', Save_STORY_PAGE,         Load_STORY_PAGE,         nullptr, nullptr, CH_ARRAY | CH_LAST},
+static const ChunkHandler story_page_chunk_handlers[] = {
+	{ 'STPE', Save_STORY_PAGE_ELEMENT, Load_STORY_PAGE_ELEMENT, nullptr, nullptr, CH_ARRAY },
+	{ 'STPA', Save_STORY_PAGE,         Load_STORY_PAGE,         nullptr, nullptr, CH_ARRAY },
 };
+
+extern const ChunkHandlerTable _story_page_chunk_handlers(story_page_chunk_handlers);
