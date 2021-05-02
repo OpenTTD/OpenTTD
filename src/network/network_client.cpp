@@ -1261,7 +1261,7 @@ void NetworkClient_Connected()
  * @param password The password.
  * @param command The command to execute.
  */
-void NetworkClientSendRcon(const char *password, const char *command)
+void NetworkClientSendRcon(const std::string &password, const char *command)
 {
 	MyClient::SendRCon(password, command);
 }

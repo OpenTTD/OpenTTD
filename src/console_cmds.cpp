@@ -1737,7 +1737,7 @@ DEF_CONSOLE_CMD(ConCompanyPassword)
 	}
 
 	CompanyID company_id;
-	const char *password;
+	std::string password;
 	const char *errormsg;
 
 	if (argc == 2) {
@@ -1759,10 +1759,10 @@ DEF_CONSOLE_CMD(ConCompanyPassword)
 
 	password = NetworkChangeCompanyPassword(company_id, password);
 
-	if (StrEmpty(password)) {
+	if (password.empty()) {
 		IConsolePrintF(CC_WARNING, "Company password cleared");
 	} else {
-		IConsolePrintF(CC_WARNING, "Company password changed to: %s", password);
+		IConsolePrintF(CC_WARNING, "Company password changed to: %s", password.c_str());
 	}
 
 	return true;
