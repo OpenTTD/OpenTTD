@@ -953,7 +953,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maleisische Rin
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Links rijden
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Rechts rijden
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Plaatsnamen
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Plaatsnamen:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Stijl voor plaatsnamen kiezen
 
 ############ start of townname region
@@ -993,6 +993,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Iedere 12 maand
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Taal
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Taal selecteren voor gebruikersscherm
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% voltooid)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Volledig scherm
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Vink dit vakje aan om OpenTTD in het volledige scherm te spelen
@@ -1990,6 +1991,8 @@ STR_FACE_TIE                                                    :Stropdas:
 STR_FACE_EARRING                                                :Oorbel:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Verander das of oorbel
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privé
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Openbaar
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Netwerkspel
@@ -2046,13 +2049,15 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Vul je n
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Voer het IP-adres van de server in
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start nieuw multiplayerspel
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Nieuw spel met meerdere spelers starten
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spelnaam:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De spelnaam wordt weergegeven aan andere spelers in het multiplayerspelselectiemenu
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De spelnaam wordt weergegeven aan andere spelers in het spelselectiemenu voor meerdere spelers
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Wachtwoord instellen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beveilig je spel met een wachtwoord als je niet wilt dat dit algemeen toegankelijk is
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Zichtbaarheid
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Bepaalt of andere mensen je server kunnen zien in de openbare lijst
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} speler{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maximumaantal spelers:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Kies het maximaal aantal toegestane spelers. Niet alle posities hoeven gebruikt te worden.
@@ -2116,11 +2121,44 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server i
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelerslijst
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Spelers online
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Meerdere spelers
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Naam
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}De naam van de server waar je speelt
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}De naam van je server bewerken
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Servernaam
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Zichtbaarheid
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Bepaalt of andere mensen je server kunnen zien in de openbare lijst
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Speler
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Naam
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Je spelernaam
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Je spelernaam bewerken
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Je spelernaam
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Beheeracties die nodig zijn voor deze client
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Beheeracties die nodig zijn voor dit bedrijf
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Meedoen met dit bedrijf
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Een bericht sturen naar deze speler
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Een bericht versturen naar alle spelers van dit bedrijf
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Een bericht sturen naar alle toeschouwers
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Toeschouwers
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nieuw bedrijf)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Een nieuw bedrijf maken en meedoen
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dit ben jij
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dit is de host van het spel
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Eruit schoppen
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannen
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Verwijderen
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Wachtwoord ontgrendelen
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Beheeractie
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Weet je zeker dat je de speler '{STRING}' eruit wilt schoppen?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Weet je zeker dat je de speler '{STRING}' wilt bannen?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Weet je zeker dat je het bedrijf '{COMPANY}' wilt verwijderen?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Weet je zeker dat je het wachtwoord voor bedrijf '{COMPANY}' wilt terugstellen?
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Speler
@@ -2165,6 +2203,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Kan serv
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Kan geen verbinding maken
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Verbinding nr. {NUM} kostte te veel tijd
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Er is een protocolfout gedetecteerd en de verbinding werd gesloten
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Je spelernaam is nog niet ingesteld. Je stelt de naam in bovenin het venster Meerdere spelers
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}De revisie van deze client komt niet overeen met de revisie van de server
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Ongeldig wachtwoord
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De server is vol
@@ -2177,6 +2216,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Het invo
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Uw computer is te traag om de server bij te houden
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Uw computer deed er te lang over om de kaart te downloaden
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Uw computer deed er te lang over om met de server te verbinden
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Je spelernaam is niet geldig
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemene fout
@@ -2199,6 +2239,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :wachtwoord niet
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :algemene time-out
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :downloaden van de kaart duurde te lang
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :verwerken van de kaart duurde te lang
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :ongeldige clientnaam
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Mogelijk verbinding verbroken
@@ -3038,6 +3079,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarschuwi
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatale fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Een fatale NewGRF-fout is ontstaan:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Er is een NewGRF-fout opgetreden:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} werkt niet met de TTDPatch-versie die is opgegeven door OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} is voor versie {STRING} van TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} is ontwikkeld voor {STRING}

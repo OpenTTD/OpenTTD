@@ -954,7 +954,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit malasio
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Conducir por la izquierda
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Conducir por la derecha
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de municipios
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Nombres de municipios:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Selección del estilo del nombre de los municipios
 
 ############ start of townname region
@@ -1992,6 +1992,8 @@ STR_FACE_TIE                                                    :Corbata:
 STR_FACE_EARRING                                                :Pendientes:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cambiar corbata o pendientes
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privado
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Público
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multijugador
@@ -2055,6 +2057,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}La parti
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Establecer contraseña
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protege tu partida con una contraseña si no quieres que sea universalmente accesible
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Visibilidad
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Establece si otras personas pueden ver el servidor en la lista de servidores públicos
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} cliente{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Número máximo de clientes:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Selecciona el número máximo de clientes. No es necesario ocupar todos los espacios
@@ -2118,11 +2122,44 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Introduce la contraseña
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clientes
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jugadores en línea
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Multijugador
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Servidor
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Nombre
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Nombre del servidor en el que estás jugando
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Modifica el nombre de tu servidor
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nombre del servidor
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Visibilidad
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Establece si otras personas pueden ver el servidor en la lista de servidores públicos
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Jugador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Nombre
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Tu nombre de jugador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Modifica tu nombre de jugador
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Tu nombre de jugador
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Acciones de administrador a realizar para este cliente
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Acciones de administrador a realizar para esta compañía
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Unirse a esta compañía
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Manda un mensaje a este jugador
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Manda un mensaje a todos los jugadores de esta compañía
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Manda un mensaje a todos los observadores
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Observadores
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nueva compañía)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crea una nueva companía y te une a ella
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Éste eres tú
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Éste es el servidor de la partida
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Prohibir el acceso
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Eliminar
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Eliminar contraseña
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Acción de administrador
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}¿Estás seguro de que deseas expulsar al jugador '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}¿Estás seguro de que deseas prohibir el acceso al jugador '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}¿Estás seguro de que quieres eliminar la compañía '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}¿Estás seguro de que quieres eliminar la contraseña de la compañía '{COMPANY}'?
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente
@@ -2167,6 +2204,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}No se ha
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}No se pudo conectar
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tiempo de espera agotado en conexión #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Se ha producido un error de protocolo y la conexión ha sido cerrada
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}No se ha establecido tu nombre de jugador. El nombre se puede establecer en la parte superior de la ventana de Multijugador
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La versión de este cliente no corresponde con la versión del servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contraseña incorrecta
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}El servidor está completo
@@ -2179,6 +2217,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Has tard
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Su ordenador es demasiado lento para seguir la velocidad del servidor
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Su ordenador necesitó demasiado tiempo para descargar el mapa
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Su ordenador necesitó demasiado tiempo para conectar al servidor
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Tu nombre de jugador no es válido
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :error general
@@ -2201,6 +2240,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :no se ha recibi
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :tiempo agotado en general
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :la descarga del mapa ha necesitado demasiado tiempo
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :el procesado del mapa ha necesitado demasiado tiempo
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nombre de cliente inválido
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Posible pérdida de conexión
@@ -3040,6 +3080,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atención:
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Error Fatal: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Ha ocurrido un error fatal de NewGRF:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}Ha ocurrido un error de NewGRF:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} no funcionará con la con la versión de TTDPatch informada por OpenTTD
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} es para la versión {STRING} de TTD
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} está diseñado para ser usado con {STRING}

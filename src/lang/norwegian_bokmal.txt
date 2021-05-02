@@ -955,7 +955,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringg
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekjøring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høyrekjøring
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bynavn
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Bynavn:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Velg nasjonalitet på bynavn
 
 ############ start of townname region
@@ -1994,6 +1994,7 @@ STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Ørering:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Endre slips eller ørering
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privat
 STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Offentlig
 
 # Network server list
@@ -2059,6 +2060,7 @@ STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Sett pas
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskytt ditt spill med et passord hvis du ikke vil at hvem som helst skal bli med på det
 
 STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Synlighet
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Om andre mennesker kan se serveren din i den offentlige oppføringen
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks antall klienter:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS.small                :dra og slipp
@@ -2123,24 +2125,44 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tjeneren
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskyttet. Skriv inn passord
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klienter
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Påloggede spillere
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Flerspiller
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
 STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Navn
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}Navnet på serveren du spiller på
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Rediger navnet på serveren
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Servernavn
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Synlighet
 STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Om andre mennesker kan se serveren din i den offentlige oppføringen
 STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Spiller
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Navn
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Ditt spillernavn
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Rediger ditt spillernavn
 STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ditt spillernavn
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Administrative handlinger å utføre for denne klienten
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Administrative tiltak å utføre for dette firmaet
 STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Bli med i dette firmaet
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Send en melding til denne spilleren
 STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Send en melding til alle spillerne i dette firmaet
 STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Send en melding til alle tilskuerne
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Tilskuere
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nytt firma)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Opprett et nytt firma og bli med i det
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Dette er deg
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Dette er verten for spillet
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Spark
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Utesteng
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Slett
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Låse opp passord
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratorhandling
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Er du sikker på at du vil utestenge spiller '{STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Er du sikker på at du vil utestenge spiller '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Er du sikker på at du vil slette firmaet '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Er du sikker på at du vil tilbakestille passordet til firma '{COMPANY}'?
 
 STR_NETWORK_SERVER                                              :Tjener
 STR_NETWORK_CLIENT                                              :Klient

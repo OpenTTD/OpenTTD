@@ -2142,6 +2142,8 @@ STR_FACE_TIE                                                    :Галстук:
 STR_FACE_EARRING                                                :Серьга:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Изменить галстук или серьгу
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Публичный
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Частный
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Сетевая игра
@@ -2205,6 +2207,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Назв
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Установить пароль
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитите вашу игру паролем, если не хотите, чтобы к ней могли подключиться посторонние.
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Видимость
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Видимость вашего сервера в публичном списке
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" а ов}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. количество клиентов:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбор максимального числа клиентов. Не все места должны быть заняты
@@ -2271,6 +2275,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Комп
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Список клиентов
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Сетевая игра
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Имя
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}Ваше игровое имя
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Ваше игровое имя
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Действия администратора, применимые к этому клиенту
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Отключить
