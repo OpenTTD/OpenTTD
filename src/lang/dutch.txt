@@ -1006,6 +1006,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardware
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Selecteer dit vakje om OpenTTD hardwareversnelling te laten gebruiken. De gewijzigde instelling wordt pas van kracht nadat het spel opnieuw is gestart.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}De instelling wordt pas van kracht als het spel opnieuw is gestart
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Selecteer dit vakje om het scherm verticaal te synchroniseren. De wijziging gaat pas in nadat je het spel opnieuw hebt opgestart. Werkt alleen als hardwareversnelling is ingeschakeld
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Menupuntgrootte
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Kiest de grootte van bedieningselementen
@@ -2040,10 +2042,10 @@ STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Vul je n
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Voer het IP-adres van de server in
 
 # Start new multiplayer server
-STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Start nieuw multiplayerspel
+STR_NETWORK_START_SERVER_CAPTION                                :{WHITE}Nieuw spel met meerdere spelers starten
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME                          :{BLACK}Spelnaam:
-STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De spelnaam wordt weergegeven aan andere spelers in het multiplayerspelselectiemenu
+STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}De spelnaam wordt weergegeven aan andere spelers in het spelselectiemenu voor meerdere spelers
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Wachtwoord instellen
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beveilig je spel met een wachtwoord als je niet wilt dat dit algemeen toegankelijk is
 

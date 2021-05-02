@@ -1262,7 +1262,7 @@ STR_CONFIG_SETTING_MULTIPINDTOWN_HELPTEXT                       :일반적으로
 STR_CONFIG_SETTING_SIGNALSIDE                                   :신호기 보이기: {STRING}
 STR_CONFIG_SETTING_SIGNALSIDE_HELPTEXT                          :선로의 어느 쪽에 신호기를 설치할 지 선택합니다.
 STR_CONFIG_SETTING_SIGNALSIDE_LEFT                              :왼쪽에
-STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :진행 방향에
+STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :자동차 통행 방향에
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :오른쪽에
 STR_CONFIG_SETTING_SHOWFINANCES                                 :연말에 자동으로 재정 창을 띄우기: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :이 설정을 켜면. 회사의 재정 상태를 확인하기 쉽도록 매년 말에 재정 창이 자동으로 뜹니다.
@@ -1529,7 +1529,7 @@ STR_CONFIG_SETTING_AI_PROFILE_EASY                              :쉬움
 STR_CONFIG_SETTING_AI_PROFILE_MEDIUM                            :중간
 STR_CONFIG_SETTING_AI_PROFILE_HARD                              :어려움
 
-STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :멀티플레이에서 컴퓨터 플레이어의 참여 허용: {STRING}
+STR_CONFIG_SETTING_AI_IN_MULTIPLAYER                            :멀티 플레이에서 컴퓨터 플레이어의 참여 허용: {STRING}
 STR_CONFIG_SETTING_AI_IN_MULTIPLAYER_HELPTEXT                   :멀티 플레이 게임에서 인공지능 컴퓨터 플레이어가 참여하는 것을 허용합니다.
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES                           :게임 스크립트가 중지되기 직전에 계산할 수 있는 최대 횟수: {STRING}
 STR_CONFIG_SETTING_SCRIPT_MAX_OPCODES_HELPTEXT                  :게임 스크립트가 한 단계에서 계산할 수 있는 최대 계산 횟수를 설정합니다.
@@ -1804,8 +1804,8 @@ STR_CONFIG_ERROR                                                :{WHITE}설정 �
 STR_CONFIG_ERROR_ARRAY                                          :{WHITE}... 배열 '{STRING}'에서 오류 발생
 STR_CONFIG_ERROR_INVALID_VALUE                                  :{WHITE}... '{1:STRING}'에 잘못된 값('{0:STRING}')이 지정되었습니다.
 STR_CONFIG_ERROR_TRAILING_CHARACTERS                            :{WHITE}... '{STRING}' 설정의 끝에 후행 문자가 있습니다.
-STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... NewGRF '{STRING}' 무시중: '{STRING}'{G 1 "과" "와"} GRF ID가 겹침
-STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 유효하지 않은 NewGRF '{STRING}' 무시중: {STRING}
+STR_CONFIG_ERROR_DUPLICATE_GRFID                                :{WHITE}... '{STRING}' NewGRF를 무시합니다: '{STRING}'{G 1 "과" "와"} GRF ID가 겹침
+STR_CONFIG_ERROR_INVALID_GRF                                    :{WHITE}... 유효하지 않은 '{STRING}' NewGRF를 무시합니다: {STRING}
 STR_CONFIG_ERROR_INVALID_GRF_NOT_FOUND                          :찾을 수 없음
 STR_CONFIG_ERROR_INVALID_GRF_UNSAFE                             :사용하기에 불안함
 STR_CONFIG_ERROR_INVALID_GRF_SYSTEM                             :NewGRF 시스템
@@ -2112,7 +2112,7 @@ STR_NETWORK_LANG_LATVIAN                                        :라트비아어
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}멀티플레이 게임 대기실
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}참가 준비중: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}이 게임에 있는 회사의 목록입니다. 다른 회사에 같이 참가하거나, 빈 자리가 있을 경우 새로운 회사로 시작할 수 있습니다
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}이 게임에 있는 회사의 목록입니다. 다른 회사에 같이 참여하거나, 빈 자리가 있을 경우 새로운 회사를 세워서 시작할 수 있습니다
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}회사 정보
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}회사 이름: {WHITE}{STRING}
@@ -2178,11 +2178,11 @@ STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}입력�
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}이 회사에 새 비밀번호 부여
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}회사 비밀번호
 STR_COMPANY_PASSWORD_MAKE_DEFAULT                               :{BLACK}회사 비밀번호 기본값으로 설정
-STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}이 회사 비밀번호를 새 회사의 비밀번호 기본값으로 사용
+STR_COMPANY_PASSWORD_MAKE_DEFAULT_TOOLTIP                       :{BLACK}이 비밀번호를 새 회사의 비밀번호 기본값으로 사용합니다
 
 # Network company info join/password
 STR_COMPANY_VIEW_JOIN                                           :{BLACK}참여
-STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}이 회사로 참가해서 플레이합니다
+STR_COMPANY_VIEW_JOIN_TOOLTIP                                   :{BLACK}이 회사에 참여해서 플레이합니다
 STR_COMPANY_VIEW_PASSWORD                                       :{BLACK}비밀번호
 STR_COMPANY_VIEW_PASSWORD_TOOLTIP                               :{BLACK}다른 참가자가 이 회사에 참여하여 플레이하지 못 하도록 암호로 보호합니다
 STR_COMPANY_VIEW_SET_PASSWORD                                   :{BLACK}회사 비밀번호 설정
@@ -2274,7 +2274,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} 님이 관전을 시작하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} 님이 새로운 회사({2:NUM}번)를 창설하셨습니다
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} 님이 퇴장하셨습니다 (사유: {2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 님의 이름이 {STRING}(으)로 바뀌었습니다
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} 님이 이름을 {STRING}(으)로 바꾸었습니다
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} 님이 {1:STRING}에게 {2:CURRENCY_LONG}만큼의 돈을 보내셨습니다
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}서버가 게임을 종료하였습니다
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}서버가 재시작되고 있습니다...{}기다려주세요...
@@ -3128,7 +3128,7 @@ STR_NEWGRF_LIST_MISSING                                         :{RED}파일 없
 
 # NewGRF 'it's broken' warnings
 STR_NEWGRF_BROKEN                                               :{WHITE}'{0:STRING}' NewGRF가 적용되는 과정에서 비동기화나 충돌이 일어날 수 있습니다
-STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}차고지 안에 있지 않은 '{1:ENGINE}'에 대한 동력 차량 상태가 바뀌었습니다
+STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}차고지 안에 있지 않은 '{1:ENGINE}' 동력 차량의 상태가 바뀌었습니다
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'{G 1 "이" "가"} 차고지 안에 있지 않으면 차량 길이가 바뀝니다
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}차량이 기지 안에 있지 않거나 개조가 불가능한 상태에서 '{1:ENGINE}'의 수송량이 변경되었습니다
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'에 속한 열차 '{0:VEHICLE}'의 길이가 잘못된 값을 가지고 있습니다. NewGRF에 의한 문제로 보입니다. 게임이 비동기화 또는 충돌을 일으킬 수 있습니다.
