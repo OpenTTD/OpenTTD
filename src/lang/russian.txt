@@ -390,7 +390,7 @@ STR_SHOW_HIDDEN_ENGINES_VEHICLE_AIRCRAFT_TOOLTIP                :{BLACK}Если
 STR_BUTTON_DEFAULT                                              :{BLACK}По умолчанию
 STR_BUTTON_CANCEL                                               :{BLACK}Отмена
 STR_BUTTON_OK                                                   :{BLACK}OK
-STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Внимание: администраторы сервера могут увидеть ваш пароль.
+STR_WARNING_PASSWORD_SECURITY                                   :{YELLOW}Внимание: администраторы сервера могут увидеть текст, введённый в это поле.
 
 # On screen keyboard window
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
@@ -924,7 +924,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Отоб
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Показать последнее сообщение или новость
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  ПАУЗА  *  *
-STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  ПАУЗА (ожидает обновления графы ссылок) *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * ПАУЗА (ожидает обновления графа распределения) * *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}АВТОСОХРАНЕНИЕ
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  СОХРАНЕНИЕ ИГРЫ  *  *
 
@@ -1148,11 +1148,11 @@ STR_GAME_OPTIONS_RESOLUTION_OTHER                               :Другое
 STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Аппаратное ускорение
-STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Нажмите здесь, чтобы включить/выключить аппаратное ускорение в OpenTTD. После этого игру потребуется перезапустить.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Включить/выключить аппаратное ускорение. После этого игру потребуется перезапустить.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Эта настройка будет применена только после перезапуска игры
 
 STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}Вертикальная синхронизация
-STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Нажмите здесь, чтобы включить/выключить вертикальную синхронизацию. После этого игру потребуется перезапустить. Работает только при включённом аппаратном ускорении.
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Включить/выключить вертикальную синхронизацию. После этого игру потребуется перезапустить. Работает только при включённом аппаратном ускорении.
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Размер элементов интерфейса
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Выберите размер элементов интерфейса
@@ -2155,7 +2155,7 @@ STR_NETWORK_SERVER_LIST_DATE_CAPTION                            :{BLACK}Дата
 STR_NETWORK_SERVER_LIST_DATE_CAPTION_TOOLTIP                    :{BLACK}Текущая дата
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION                           :{BLACK}Года
 STR_NETWORK_SERVER_LIST_YEARS_CAPTION_TOOLTIP                   :{BLACK}Количество лет{}в игре
-STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Язык, версия сервера и т.п.
+STR_NETWORK_SERVER_LIST_INFO_ICONS_TOOLTIP                      :{BLACK}Язык, версия сервера и{NBSP}т.{NBSP}п.
 
 STR_NETWORK_SERVER_LIST_CLICK_GAME_TO_SELECT                    :{BLACK}Выберите игру из списка
 STR_NETWORK_SERVER_LIST_LAST_JOINED_SERVER                      :{BLACK}Последний сервер, к которому вы подключались:
@@ -2170,20 +2170,20 @@ STR_NETWORK_SERVER_LIST_SERVER_VERSION                          :{SILVER}Вер�
 STR_NETWORK_SERVER_LIST_SERVER_ADDRESS                          :{SILVER}Адрес сервера: {WHITE}{STRING}
 STR_NETWORK_SERVER_LIST_START_DATE                              :{SILVER}Дата начала: {WHITE}{DATE_SHORT}
 STR_NETWORK_SERVER_LIST_CURRENT_DATE                            :{SILVER}Текущая дата: {WHITE}{DATE_SHORT}
-STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Защищено паролем!
-STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}СЕРВЕР ОТКЛЮЧЕН
+STR_NETWORK_SERVER_LIST_PASSWORD                                :{SILVER}Защищён паролем!
+STR_NETWORK_SERVER_LIST_SERVER_OFFLINE                          :{SILVER}СЕРВЕР ОТКЛЮЧЁН
 STR_NETWORK_SERVER_LIST_SERVER_FULL                             :{SILVER}СЕРВЕР ЗАПОЛНЕН
 STR_NETWORK_SERVER_LIST_VERSION_MISMATCH                        :{SILVER}ВЕРСИЯ НЕ ПОДХОДИТ
 STR_NETWORK_SERVER_LIST_GRF_MISMATCH                            :{SILVER}НЕ СОВПАДАЕТ НАБОР NEWGRF
 
 STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Присоединиться
-STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Обновить сервер
+STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Обновить информацию
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Обновить информацию о сервере
 
 STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Искать в интернете
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK} Искать в Интернете общедоступные серверы
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Искать LAN
-STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK} Поиск серверов в локальной сети
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Поиск общедоступных серверов в интернете
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Искать в ЛВС
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Поиск серверов в локальной сети
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Добавить сервер
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Добавить сервер в список, который будет автоматически проверяться на идущие игры
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Запуск сервера
@@ -2206,13 +2206,13 @@ STR_NETWORK_START_SERVER_UNADVERTISED                           :Нет
 STR_NETWORK_START_SERVER_ADVERTISED                             :Да
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" а ов}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. количество клиентов:
-STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбор максимального числа клиентов. Не все места должны быть заняты
+STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Выбор максимального числа клиентов. Не все места обязательно должны быть заняты.
 STR_NETWORK_START_SERVER_COMPANIES_SELECT                       :{BLACK}{NUM} компани{P я и й}
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Макс. количество компаний:
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES_TOOLTIP            :{BLACK}Ограничить максимальное количество компаний на сервере
-STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} наблюдател{P ь я ей}
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс. количество наблюдателей:
-STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ограничить максимальное количество наблюдателей на сервере
+STR_NETWORK_START_SERVER_SPECTATORS_SELECT                      :{BLACK}{NUM} зрител{P ь я ей}
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS                   :{BLACK}Макс. количество зрителей:
+STR_NETWORK_START_SERVER_NUMBER_OF_SPECTATORS_TOOLTIP           :{BLACK}Ограничить максимальное количество зрителей на сервере
 STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Язык общения:
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другие игроки будут знать, на каком языке общаются на сервере
 
@@ -2262,7 +2262,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Латвийс�
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Состояние сетевой игры
 
 STR_NETWORK_GAME_LOBBY_PREPARE_TO_JOIN                          :{BLACK}Подготовка соединения: {ORANGE}{STRING}
-STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Список компаний в игре. Вы можете присоединиться к существующей или основать новую, если есть свободный слот
+STR_NETWORK_GAME_LOBBY_COMPANY_LIST_TOOLTIP                     :{BLACK}Список компаний в игре. Вы можете присоединиться к одной из существующих или основать новую, если есть свободная позиция.
 
 STR_NETWORK_GAME_LOBBY_COMPANY_INFO                             :{SILVER}ИНФОРМАЦИЯ О КОМПАНИИ
 STR_NETWORK_GAME_LOBBY_COMPANY_NAME                             :{SILVER}Название компании: {WHITE}{STRING}
@@ -2321,7 +2321,7 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Личное с
 
 STR_NETWORK_SERVER                                              :Сервер
 STR_NETWORK_CLIENT                                              :Клиент
-STR_NETWORK_SPECTATORS                                          :Наблюдатели
+STR_NETWORK_SPECTATORS                                          :Зрители
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Не сохранять пароль
@@ -2365,8 +2365,8 @@ STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Прои
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Версия этого клиента не совместима с версией сервера
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Неверный пароль
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Сервер переполнен
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Вас забанили на этом сервере
-STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас выкинули из игры
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Вас заблокировали на этом сервере
+STR_NETWORK_ERROR_KICKED                                        :{WHITE}Вас отключили от игры
 STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Причина: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Чит-коды не разрешены на этом сервере
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Вы посылали на сервер слишком много команд
@@ -2415,13 +2415,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :количес�
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :подключение клиентов
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :вручную
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :игровой скрипт
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :ожидает обновления графы ссылок
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :ожидает обновления графа распределения
 ############ End of leave-in-this-order
-STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :покинул
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :отключение
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} подключился к игре
 STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} подключился к игре (клиент #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} подключился к компании #{2:NUM}
-STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} подключился наблюдателем
+STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} подключился в качестве зрителя
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} основал новую компанию (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} покинул игру ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} изменил имя на {STRING}
@@ -3305,7 +3305,7 @@ STR_NEWGRF_BROKEN                                               :{WHITE}Файл
 STR_NEWGRF_BROKEN_POWERED_WAGON                                 :{WHITE}Меняется состояние локомотива «{1:ENGINE}», находящегося вне депо
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта «{1:ENGINE}», находящегося вне депо
 STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Он изменил ёмкость ТС «{1:ENGINE}» за пределами депо или без задания на переоборудование
-STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд «{VEHICLE}», принадлежащий «{COMPANY}», имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики (NewGRF). Игра может рассинхронизироваться или вылететь.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд «{VEHICLE}», принадлежащий «{COMPANY}», имеет неправильную длину. Вероятно, это вызвано ошибками в одном из модулей NewGRF. Игра может рассинхронизироваться или вылететь.
 
 STR_NEWGRF_BUGGY                                                :{WHITE}NewGRF «{0:STRING}» предоставляет неверную информацию.
 STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}Информация о вместимости/переоборудовании для локомотива «{1:ENGINE}» после постройки отличается от сведений в списке покупки, что может помешать функции автообновления/автозамены корректно произвести переоборудование.
@@ -5372,7 +5372,7 @@ STR_DEFAULT_SIGN_NAME                                           :Табличк�
 STR_COMPANY_SOMEONE                                             :кто-то
 
 STR_SAVEGAME_NAME_DEFAULT                                       :{COMPANY}, {STRING}
-STR_SAVEGAME_NAME_SPECTATOR                                     :Наблюдатель, {1:STRING}
+STR_SAVEGAME_NAME_SPECTATOR                                     :Зритель, {1:STRING}
 
 # Viewport strings
 STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})

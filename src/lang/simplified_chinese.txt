@@ -946,6 +946,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :新台币 (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :中国人民币 (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :港币 (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :印度卢布（INR）
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :印尼盾 (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :马来西亚林吉特 (MYR)
 ############ end of currency region
 
@@ -1005,6 +1006,8 @@ STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}硬件�
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}点击该复选框，让 OpenTTD 尝试使用硬件加速。修改后的设置将在游戏重启后生效
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}修改后的设置将在游戏重启后生效
 
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}垂直同步
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}点击该复选框开启垂直同步(V-sync)。修改后的设置将在游戏重启后生效。仅开启硬件加速时有效
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}界面大小
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}选择使用的界面元素大小
@@ -1026,6 +1029,8 @@ STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}图像
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}显示刷新率
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}选择需要的屏幕刷新率
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :其他
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}高于 60Hz 的刷新率可能会影响性能。
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}基础图形组
@@ -1206,8 +1211,10 @@ STR_CONFIG_SETTING_CITY_APPROVAL                                :地区政府对
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :设置相关参数以决定各公司造成的噪音及环境破坏时，各城镇对该公司的评价及未来区域建设的影响。
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :地图高度限制：{STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :设置高原的最大高度。选择 "(自动)" 则在地形生成后自动选取合适的值
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
-STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}您不能把最高地面高度设为这个值，因为地图上至少有一座山丘的高度比这个值还大
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(自动)
+STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}您不能把最高地面高度限制设为这个值，因为地图上至少有一座山的高度大于该值
 STR_CONFIG_SETTING_AUTOSLOPE                                    :允许在建筑、轨道等下方改变地形（自动斜坡）： {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :允许在建筑和轨道下方改变地形而不需要拆除他们
 STR_CONFIG_SETTING_CATCHMENT                                    :允许更真实的客源范围：{STRING}
@@ -1352,6 +1359,7 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :石油工业距
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :限制炼油厂和油井到地图边缘或海岛海岸的最大距离。对于大于 256 格的地图，该值将按比例放大。
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :雪线高度：{STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :控制在寒带气候中雪线高度。大雪会影响工业和城镇发展需求。只能在场景编辑器中更改或由“积雪覆盖率”计算得到。
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :积雪覆盖率：{STRING}
 STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :控制寒带气候中大致的雪量。雪会影响工业和城镇发展需求。只在地图生成时使用。海平面以上一格的土地永远没有积雪
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :沙漠覆盖率：{STRING}
@@ -1471,9 +1479,11 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :“打开”时
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :企业财政窗口中的组群支出：{STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :“打开”时公司财务报表将分组显示
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :建造铁路时自动移除信号灯：{STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :建造铁路时自动移除路过的信号灯。注意，这可能导致火车事故。
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :快进速度上限：{STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :限制快进时的最大速度。0 = 无限制（在您计算机允许的范围内）。低于 100% 的值将使游戏变慢。上限取决于您计算机的配置，并随着游戏情况浮动。
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% 正常游戏速度
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :无限制（在您的计算机能允许的范围内）
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :无限制（在您计算机允许的范围内）
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :产业新闻: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :每月初产业新闻音效
@@ -1643,7 +1653,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :线性
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :树木自动生长： {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :控制游戏中数目的随机生长，这将影响依赖树木的工业，比如木材厂
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :生长但不扩散 {RED}(损坏伐木场)
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :只生长在雨林
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :生长并四处扩散
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :不生长，不扩散 {RED}(损坏伐木场)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :主工具栏位置：{STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :主工具栏在屏幕上方的位置
@@ -1661,6 +1674,8 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :最大放大倍
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :画面的最大放大倍数，注意：提高放大倍数增加内存需求
 STR_CONFIG_SETTING_ZOOM_MAX                                     :最大视角缩小倍数: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :画面的最大缩小倍数，过大的缩放级别在使用时会引起延迟
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :贴图的最高分辨率：{STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :限制贴图的最高分辨率。限制贴图分辨率将避免使用高分辨率贴图，即使它们可用。有助于在混用有/无高分辨率图形的 GRF 文件时保持游戏外观的统一。
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4倍
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2倍
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :普通
@@ -1713,6 +1728,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :在界面上以
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :英制（英里/小时）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :公制（千米/小时）
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :国际单位制（米/秒）
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :游戏单位 (格/日)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :运输工具功率单位：{STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :在界面上以所选择的单位表示运输工具的功率
@@ -2578,8 +2594,12 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}随机�
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}种植随机类型的树木，按住 Shift 键可以显示所需资金
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}随机树木
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}随机地种植一些树木
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}正常
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}在地面上拖动以种植单个树木
 STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}树丛
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}在地面上拖动以种植一些树木
 STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}森林
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}在地面上拖动以种植大量树木
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}生成土地
@@ -2630,7 +2650,7 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}随机
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}建设新的工业设施
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}请选择工业设施
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :大量随机工业
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}生成随机工业
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}在地图上创建大量随机的工业设施
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}生成随机工业
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}你确定要生成大量随机工业吗？
@@ -2662,6 +2682,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}选择�
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}将屏幕中心移动到地块所在的位置。单击的同时按住Ctrl会在新视点中显示地块位置
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}清除费用：{LTBLUE}N/A 不能清除
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}清除费用：{RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}清除收入： {LTBLUE}{CURRENCY_LONG}
@@ -2886,8 +2907,11 @@ STR_MAPGEN_DATE                                                 :{BLACK}日期:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工业数量：
 STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}最高峰：
 STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}提高最高峰的最大高度一格
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}降低最高峰的最大高度一格
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}积雪覆盖率:
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}增加 10% 积雪覆盖率
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}减少 10% 积雪覆盖率
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}沙漠覆盖率：
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}增加 10% 沙漠覆盖率
 STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}减少 10% 沙漠覆盖率
@@ -2918,6 +2942,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}地图�
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} × {NUM}
 
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}最高峰目标高度
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}最高峰
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}积雪覆盖率 (百分比)
 STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}沙漠覆盖率 (百分比)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}改变游戏开始的日期
@@ -3136,6 +3161,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}显示�
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}标记标志文字
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}将屏幕中心移动到标志的位置. 单击的同时按住Ctrl会在新视点中显示标志位置
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}前往下个标记
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}前往上个标记
 
@@ -3196,13 +3222,13 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :资助新房屋
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :购买运输专营权
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :贿赂地方政府
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}进行小型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}进行中型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}进行大型的广告宣传,以吸引更多的旅客和货物选择贵公司的服务.{}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}资助市政道路进行重建，将造成市内交通阻断 6 个月。{}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}以公司的名义设立一尊塑像。{}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}资助市内建设新的商业设施。{}费用：{CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}购买该市一年的运输专营权, 其间该市的乘客及货物只允许选用贵公司的运输服务。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}进行小型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心较近距离内的车站提供暂时的评分增益。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}进行中型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心中等距离内的车站提供暂时的评分增益。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}进行大型的广告宣传，以吸引更多的旅客和货物选择贵公司的服务。{}为位于该城镇中心较远距离内的车站提供暂时的评分增益。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}资助市政道路进行重建。{}将造成市内交通阻断 6 个月。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}以公司的名义设立一尊塑像。{}为位于该城镇的车站提供永久的评分增益。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}资助市内建设新的商业设施。{}为城镇提供暂时的成长速度增益。{}费用：{CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}购买该市一年的运输专营权。{}其间该市的乘客及货物只允许选用贵公司的运输服务。{}费用：{CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}贿赂地方政府以提高评价，但有被发现后严厉惩罚的风险。{}费用：{CURRENCY_LONG}
 
 # Goal window
@@ -3220,10 +3246,10 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}点击使得视图移动到该工业/城镇/地块. Ctrl+左键 在该处创建一个视点.
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :帮助索引
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :信息
-STR_GOAL_QUESTION_CAPTION_WARNING                               :警告
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :错误
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}帮助索引
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}信息
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}警告
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}错误
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :取消
@@ -3432,6 +3458,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}出售�
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :公司名称
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :总裁姓名
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :输入你要给予的金额
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}我们正在寻找一家愿意收购我们的公司。{}{}您愿意收购 {COMPANY} ({CURRENCY_LONG}) 吗？
 
@@ -3831,7 +3858,9 @@ STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}显示�
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}当前列车动作 - 点击以 停止/启动 列车
 STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}当前车辆动作 - 点击以 停止/启动 车辆
 STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}当前船只动作 - 点击以 停止/启动 船只
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}当前飞机动作 - 点击以 停止/启动 飞机
 
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}将屏幕中心移动到当前指令的目的地。单击的同时按住Ctrl会在新视点中显示指令目的地的位置
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}装载/卸货
@@ -4059,6 +4088,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(改装为{STRI
 STR_ORDER_STOP_ORDER                                            :(停留)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(不能使用车站){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(自动)
 
@@ -4303,6 +4333,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :该存档是新
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :文件无法读取
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :文件无法写入
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :数据完整性检查失败
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :该存档是来自修改版的游戏
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<不可用>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}游戏已保存为无电车版。所有电车已被去除。
 
@@ -4330,6 +4361,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}只找�
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}超大截图
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}屏幕截图需要 {COMMA} x {COMMA} 像素。 截图将需要一段时间。确认继续截图？
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}高度图已经被成功保存为 '{STRING}'。最高峰高度是 {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}屏幕截图已经被成功保存为{} '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}屏幕截图失败！
 
@@ -4510,6 +4542,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :车库类型错
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE}在更新后总长会过长
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}当前没有进行中的车辆更新计划.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(现金不够)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}新车辆不能装载 {STRING}
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}新车辆无法在调度计划 {NUM} 时改装
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}不可能的轨道组合

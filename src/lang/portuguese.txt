@@ -2039,7 +2039,7 @@ STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Adiciona
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Iniciar servidor
 STR_NETWORK_SERVER_LIST_START_SERVER_TOOLTIP                    :{BLACK}Iniciar um servidor próprio
 
-STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Digite teu nome
+STR_NETWORK_SERVER_LIST_PLAYER_NAME_OSKTITLE                    :{BLACK}Introduza o seu nome
 STR_NETWORK_SERVER_LIST_ENTER_IP                                :{BLACK}Introduza o endereço IP do servidor
 
 # Start new multiplayer server
