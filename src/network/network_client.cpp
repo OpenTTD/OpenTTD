@@ -385,7 +385,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendNewGRFsOk()
  * Set the game password as requested.
  * @param password The game password.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const char *password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const std::string &password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_GAME_PASSWORD);
 	p->Send_string(password);
@@ -799,9 +799,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_GAME_PASSW
 	if (this->status < STATUS_JOIN || this->status >= STATUS_AUTH_GAME) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	this->status = STATUS_AUTH_GAME;
 
-	const char *password = _network_join.server_password;
-	if (!StrEmpty(password)) {
-		return SendGamePassword(password);
+	if (!_network_join.server_password.empty()) {
+		return SendGamePassword(_network_join.server_password);
 	}
 
 	ShowNetworkNeedPassword(NETWORK_GAME_PASSWORD);

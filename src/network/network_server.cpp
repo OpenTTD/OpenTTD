@@ -953,8 +953,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GAME_PASSWORD(P
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	char password[NETWORK_PASSWORD_LENGTH];
-	p->Recv_string(password, sizeof(password));
+	std::string password = p->Recv_string(NETWORK_PASSWORD_LENGTH);
 
 	/* Check game password. Allow joining if we cleared the password meanwhile */
 	if (!_settings_client.network.server_password.empty() &&
