@@ -664,8 +664,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet *p)
 {
 	if (this->status != ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	char password[NETWORK_PASSWORD_LENGTH];
-	p->Recv_string(password, sizeof(password));
+	std::string password = p->Recv_string(NETWORK_PASSWORD_LENGTH);
 
 	if (_settings_client.network.admin_password.empty() ||
 			_settings_client.network.admin_password.compare(password) != 0) {

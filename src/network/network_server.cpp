@@ -1431,15 +1431,14 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	char pass[NETWORK_PASSWORD_LENGTH];
 	char command[NETWORK_RCONCOMMAND_LENGTH];
 
 	if (_settings_client.network.rcon_password.empty()) return NETWORK_RECV_STATUS_OKAY;
 
-	p->Recv_string(pass, sizeof(pass));
+	std::string password = p->Recv_string(NETWORK_PASSWORD_LENGTH);
 	p->Recv_string(command, sizeof(command));
 
-	if (_settings_client.network.rcon_password.compare(pass) != 0) {
+	if (_settings_client.network.rcon_password.compare(password) != 0) {
 		DEBUG(net, 1, "[rcon] Wrong password from client-id %d", this->client_id);
 		return NETWORK_RECV_STATUS_OKAY;
 	}
