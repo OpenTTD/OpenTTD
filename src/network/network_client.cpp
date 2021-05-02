@@ -319,7 +319,7 @@ static uint32 last_ack_frame;
 /** One bit of 'entropy' used to generate a salt for the company passwords. */
 static uint32 _password_game_seed;
 /** The other bit of 'entropy' used to generate a salt for the company passwords. */
-static char _password_server_id[NETWORK_SERVER_ID_LENGTH];
+static std::string _password_server_id;
 
 /** Maximum number of companies of the currently joined server. */
 static uint8 _network_server_max_companies;
@@ -397,7 +397,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendGamePassword(const char *p
  * Set the company password as requested.
  * @param password The company password.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const char *password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendCompanyPassword(const std::string &password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_COMPANY_PASSWORD);
 	p->Send_string(GenerateCompanyPasswordHash(password, _password_server_id, _password_game_seed));
@@ -478,7 +478,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendError(NetworkErrorCode err
  * Tell the server that we like to change the password of the company.
  * @param password The new password.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const char *password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const std::string &password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_SET_PASSWORD);
 
@@ -530,7 +530,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const char *pass, con
  * @param company The company to move to.
  * @param password The password of the company to move to.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company, const char *password)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendMove(CompanyID company, const std::string &password)
 {
 	Packet *p = new Packet(PACKET_CLIENT_MOVE);
 	p->Send_uint8(company);
@@ -815,12 +815,11 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_NEED_COMPANY_PA
 	this->status = STATUS_AUTH_COMPANY;
 
 	_password_game_seed = p->Recv_uint32();
-	p->Recv_string(_password_server_id, sizeof(_password_server_id));
+	_password_server_id = p->Recv_string(NETWORK_SERVER_ID_LENGTH);
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	const char *password = _network_join.company_password;
-	if (!StrEmpty(password)) {
-		return SendCompanyPassword(password);
+	if (!_network_join.company_password.empty()) {
+		return SendCompanyPassword(_network_join.company_password);
 	}
 
 	ShowNetworkNeedPassword(NETWORK_COMPANY_PASSWORD);
@@ -837,7 +836,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_WELCOME(Packet 
 
 	/* Initialize the password hash salting variables, even if they were previously. */
 	_password_game_seed = p->Recv_uint32();
-	p->Recv_string(_password_server_id, sizeof(_password_server_id));
+	_password_server_id = p->Recv_string(NETWORK_SERVER_ID_LENGTH);
 
 	/* Start receiving the map */
 	return SendGetMap();
@@ -1274,7 +1273,7 @@ void NetworkClientSendRcon(const char *password, const char *command)
  * @param pass the password, is only checked on the server end if a password is needed.
  * @return void
  */
-void NetworkClientRequestMove(CompanyID company_id, const char *pass)
+void NetworkClientRequestMove(CompanyID company_id, const std::string &pass)
 {
 	MyClient::SendMove(company_id, pass);
 }
@@ -1396,7 +1395,7 @@ void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const 
  * Set/Reset company password on the client side.
  * @param password Password to be set.
  */
-void NetworkClientSetCompanyPassword(const char *password)
+void NetworkClientSetCompanyPassword(const std::string &password)
 {
 	MyClient::SendSetPassword(password);
 }

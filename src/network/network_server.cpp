@@ -978,8 +978,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWOR
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	char password[NETWORK_PASSWORD_LENGTH];
-	p->Recv_string(password, sizeof(password));
+	std::string password = p->Recv_string(NETWORK_PASSWORD_LENGTH);
 
 	/* Check company password. Allow joining if we cleared the password meanwhile.
 	 * Also, check the company is still valid - client could be moved to spectators
@@ -1389,11 +1388,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_PASSWORD(Pa
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	char password[NETWORK_PASSWORD_LENGTH];
-	const NetworkClientInfo *ci;
-
-	p->Recv_string(password, sizeof(password));
-	ci = this->GetInfo();
+	std::string password = p->Recv_string(NETWORK_PASSWORD_LENGTH);
+	const NetworkClientInfo *ci = this->GetInfo();
 
 	NetworkServerSetCompanyPassword(ci->client_playas, password);
 	return NETWORK_RECV_STATUS_OKAY;
@@ -1469,8 +1465,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet *p)
 	/* Check if we require a password for this company */
 	if (company_id != COMPANY_SPECTATOR && !_network_company_states[company_id].password.empty()) {
 		/* we need a password from the client - should be in this packet */
-		char password[NETWORK_PASSWORD_LENGTH];
-		p->Recv_string(password, sizeof(password));
+		std::string password = p->Recv_string(NETWORK_PASSWORD_LENGTH);
 
 		/* Incorrect password sent, return! */
 		if (_network_company_states[company_id].password.compare(password) != 0) {
@@ -1757,15 +1752,16 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
  * @param password The new password.
  * @param already_hashed Is the given password already hashed?
  */
-void NetworkServerSetCompanyPassword(CompanyID company_id, const char *password, bool already_hashed)
+void NetworkServerSetCompanyPassword(CompanyID company_id, const std::string &password, bool already_hashed)
 {
 	if (!Company::IsValidHumanID(company_id)) return;
 
-	if (!already_hashed) {
-		password = GenerateCompanyPasswordHash(password, _settings_client.network.network_id.c_str(), _settings_game.game_creation.generation_seed);
+	if (already_hashed) {
+		_network_company_states[company_id].password = password;
+	} else {
+		_network_company_states[company_id].password = GenerateCompanyPasswordHash(password, _settings_client.network.network_id, _settings_game.game_creation.generation_seed);
 	}
 
-	_network_company_states[company_id].password = password;
 	NetworkServerUpdateCompanyPassworded(company_id, !_network_company_states[company_id].password.empty());
 }
 

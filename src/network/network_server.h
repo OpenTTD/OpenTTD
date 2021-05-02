@@ -121,7 +121,7 @@ public:
 };
 
 void NetworkServer_Tick(bool send_frame);
-void NetworkServerSetCompanyPassword(CompanyID company_id, const char *password, bool already_hashed = true);
+void NetworkServerSetCompanyPassword(CompanyID company_id, const std::string &password, bool already_hashed = true);
 void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded);
 
 #endif /* NETWORK_SERVER_H */

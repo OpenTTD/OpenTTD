@@ -118,7 +118,7 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
 StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkFindName(char *new_name, const char *last);
-const char *GenerateCompanyPasswordHash(const char *password, const char *password_server_id, uint32 password_game_seed);
+std::string GenerateCompanyPasswordHash(const std::string &password, const std::string &password_server_id, uint32 password_game_seed);
 
 NetworkAddress ParseConnectionString(const std::string &connection_string, uint16 default_port);
 std::string NormalizeConnectionString(const std::string &connection_string, uint16 default_port);
