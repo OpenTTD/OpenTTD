@@ -286,8 +286,10 @@ static void Ptrs_BKOR()
 	}
 }
 
-extern const ChunkHandler _order_chunk_handlers[] = {
-	{ 'BKOR', Save_BKOR, Load_BKOR, Ptrs_BKOR, nullptr, CH_ARRAY},
-	{ 'ORDR', Save_ORDR, Load_ORDR, Ptrs_ORDR, nullptr, CH_ARRAY},
-	{ 'ORDL', Save_ORDL, Load_ORDL, Ptrs_ORDL, nullptr, CH_ARRAY | CH_LAST},
+static const ChunkHandler order_chunk_handlers[] = {
+	{ 'BKOR', Save_BKOR, Load_BKOR, Ptrs_BKOR, nullptr, CH_ARRAY },
+	{ 'ORDR', Save_ORDR, Load_ORDR, Ptrs_ORDR, nullptr, CH_ARRAY },
+	{ 'ORDL', Save_ORDL, Load_ORDL, Ptrs_ORDL, nullptr, CH_ARRAY },
 };
+
+extern const ChunkHandlerTable _order_chunk_handlers(order_chunk_handlers);

@@ -14,6 +14,7 @@
 #include "../strings_type.h"
 #include "../core/span_type.hpp"
 #include <string>
+#include <vector>
 
 /** SaveLoad versions
  * Previous savegame versions, the trunk revision where they were
@@ -378,6 +379,13 @@ SaveOrLoadResult LoadWithFilter(struct LoadFilter *reader);
 typedef void ChunkSaveLoadProc();
 typedef void AutolengthProc(void *arg);
 
+/** Type of a chunk. */
+enum ChunkType {
+	CH_RIFF = 0,
+	CH_ARRAY = 1,
+	CH_SPARSE_ARRAY = 2,
+};
+
 /** Handlers and description of chunk. */
 struct ChunkHandler {
 	uint32 id;                          ///< Unique ID (4 letters).
@@ -385,8 +393,11 @@ struct ChunkHandler {
 	ChunkSaveLoadProc *load_proc;       ///< Load procedure of the chunk.
 	ChunkSaveLoadProc *ptrs_proc;       ///< Manipulate pointers in the chunk.
 	ChunkSaveLoadProc *load_check_proc; ///< Load procedure for game preview.
-	uint32 flags;                       ///< Flags of the chunk. @see ChunkType
+	ChunkType type;                     ///< Type of the chunk. @see ChunkType
 };
+
+/** A table of ChunkHandler entries. */
+using ChunkHandlerTable = span<const ChunkHandler>;
 
 /** Type of reference (#SLE_REF, #SLE_CONDREF). */
 enum SLRefType {
@@ -402,15 +413,6 @@ enum SLRefType {
 	REF_STORAGE        =  9, ///< Load/save a reference to a persistent storage.
 	REF_LINK_GRAPH     = 10, ///< Load/save a reference to a link graph.
 	REF_LINK_GRAPH_JOB = 11, ///< Load/save a reference to a link graph job.
-};
-
-/** Flags of a chunk. */
-enum ChunkType {
-	CH_RIFF         =  0,
-	CH_ARRAY        =  1,
-	CH_SPARSE_ARRAY =  2,
-	CH_TYPE_MASK    =  3,
-	CH_LAST         =  8, ///< Last chunk in this array.
 };
 
 /**
