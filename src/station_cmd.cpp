@@ -2394,9 +2394,9 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 	if (flags & DC_EXEC) {
 		for (uint i = 0; i < st->airport.GetNumHangars(); ++i) {
-			DeleteWindowById(
-				WC_VEHICLE_DEPOT, st->airport.GetHangarTile(i)
-			);
+			TileIndex tile_cur = st->airport.GetHangarTile(i);
+			OrderBackup::Reset(tile_cur, false);
+			DeleteWindowById(WC_VEHICLE_DEPOT, tile_cur);
 		}
 
 		const AirportSpec *as = st->airport.GetSpec();
@@ -2418,7 +2418,6 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		cost.AddCost(_price[PR_CLEAR_STATION_AIRPORT]);
 
 		if (flags & DC_EXEC) {
-			if (IsHangarTile(tile_cur)) OrderBackup::Reset(tile_cur, false);
 			DeleteAnimatedTile(tile_cur);
 			DoClearSquare(tile_cur);
 			DeleteNewGRFInspectWindow(GSF_AIRPORTTILES, tile_cur);
