@@ -304,8 +304,8 @@ public:
 			case WID_RV_INFO_TAB: {
 				Dimension d = GetStringBoundingBox(STR_REPLACE_NOT_REPLACING);
 				d = maxdim(d, GetStringBoundingBox(STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED));
-				d.width += WD_FRAMETEXT_LEFT +  WD_FRAMETEXT_RIGHT;
-				d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				d.width += padding.width;
+				d.height += padding.height;
 				*size = maxdim(*size, d);
 				break;
 			}

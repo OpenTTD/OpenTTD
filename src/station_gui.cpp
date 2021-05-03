@@ -392,7 +392,7 @@ public:
 
 			case WID_STL_LIST:
 				resize->height = std::max(FONT_HEIGHT_NORMAL, FONT_HEIGHT_SMALL + ScaleFontTrad(3));
-				size->height = WD_FRAMERECT_TOP + 5 * resize->height + WD_FRAMERECT_BOTTOM;
+				size->height = padding.height + 5 * resize->height;
 
 				/* Determine appropriate width for mini station rating graph */
 				this->rating_width = 0;

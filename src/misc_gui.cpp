@@ -721,8 +721,8 @@ struct TooltipsWindow : public Window
 		size->height = GetStringHeight(this->string_id, size->width);
 
 		/* Increase slightly to have some space around the box. */
-		size->width  += 2 + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-		size->height += 2 + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		size->width  += 2 + padding.width;
+		size->height += 2 + padding.height;
 	}
 
 	void DrawWidget(const Rect &r, int widget) const override

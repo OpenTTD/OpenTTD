@@ -112,7 +112,7 @@ struct AIListWindow : public Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_AIL_LIST) {
-			this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+			this->line_height = FONT_HEIGHT_NORMAL + padding.height;
 
 			resize->width = 1;
 			resize->height = this->line_height;
@@ -342,7 +342,7 @@ struct AISettingsWindow : public Window {
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		if (widget == WID_AIS_BACKGROUND) {
-			this->line_height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+			this->line_height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + padding.height;
 
 			resize->width = 1;
 			resize->height = this->line_height;
@@ -761,7 +761,7 @@ struct AIConfigWindow : public Window {
 				break;
 
 			case WID_AIC_LIST:
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
 				resize->height = this->line_height;
 				size->height = 8 * this->line_height;
 				break;

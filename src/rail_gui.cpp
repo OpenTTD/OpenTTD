@@ -1201,7 +1201,7 @@ public:
 					d = maxdim(d, GetStringBoundingBox(StationClass::Get(station_class)->name));
 				}
 				size->width = std::max(size->width, d.width + padding.width);
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
 				size->height = 5 * this->line_height;
 				resize->height = this->line_height;
 				break;
