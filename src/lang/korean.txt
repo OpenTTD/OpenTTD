@@ -2218,6 +2218,7 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}사용�
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}지도 다운로드 시간을 초과하였습니다
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}서버 접속 시간을 초과하였습니다
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}사용할 수 없는 이름입니다
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}검색한 서버는 현재 버전에 비해 너무 오래된 서버입니다
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :일반 오류

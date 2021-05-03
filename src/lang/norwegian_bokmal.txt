@@ -2221,6 +2221,7 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Din data
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Din datamaskin brukte for lang tid på å laste ned kartet
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Din datamaskin brukte for lang tid på å koble til tjeneren
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Spillernavnet ditt er ugyldig
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Den forespurte serveren er for gammel for denne klienten
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :generell feil
