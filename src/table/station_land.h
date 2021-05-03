@@ -71,13 +71,13 @@ static const DrawTileSeqStruct _station_display_datas_1[] = {
 };
 
 static const DrawTileSeqStruct _station_display_datas_2[] = {
-	TILE_SEQ_LINE( 0,  0,  0, 16,  5,  2, SPR_RAIL_PLATFORM_BUILDING_X | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0,  0,  0, 16,  5, 15, SPR_RAIL_PLATFORM_BUILDING_X | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE( 0, 11,  0, 16,  5,  2, SPR_RAIL_PLATFORM_X_FRONT    | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_datas_3[] = {
-	TILE_SEQ_LINE( 0,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_BUILDING_Y | (1U << PALETTE_MODIFIER_COLOUR))
+	TILE_SEQ_LINE( 0,  0,  0,  5, 16, 15, SPR_RAIL_PLATFORM_BUILDING_Y | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_LINE(11,  0,  0,  5, 16,  2, SPR_RAIL_PLATFORM_Y_FRONT    | (1U << PALETTE_MODIFIER_COLOUR))
 	TILE_SEQ_END()
 };
