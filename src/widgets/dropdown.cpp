@@ -448,12 +448,8 @@ void ShowDropDownList(Window *w, DropDownList &&list, int selected, int button, 
 {
 	/* Our parent's button widget is used to determine where to place the drop
 	 * down list window. */
-	Rect wi_rect;
 	NWidgetCore *nwi = w->GetWidget<NWidgetCore>(button);
-	wi_rect.left   = nwi->pos_x;
-	wi_rect.right  = nwi->pos_x + nwi->current_x - 1;
-	wi_rect.top    = nwi->pos_y;
-	wi_rect.bottom = nwi->pos_y + nwi->current_y - 1;
+	Rect wi_rect      = nwi->GetCurrentRect();
 	Colours wi_colour = nwi->colour;
 
 	if ((nwi->type & WWT_MASK) == NWID_BUTTON_DROPDOWN) {
