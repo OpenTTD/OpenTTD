@@ -793,7 +793,7 @@ public:
 		switch (widget) {
 			case WID_O_ORDER_LIST:
 				resize->height = FONT_HEIGHT_NORMAL;
-				size->height = 6 * resize->height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				size->height = 6 * resize->height + padding.height;
 				break;
 
 			case WID_O_COND_VARIABLE: {

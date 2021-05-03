@@ -152,14 +152,14 @@ struct GSConfigWindow : public Window {
 	{
 		switch (widget) {
 			case WID_GSC_SETTINGS:
-				this->line_height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				this->line_height = std::max(SETTING_BUTTON_HEIGHT, FONT_HEIGHT_NORMAL) + padding.height;
 				resize->width = 1;
 				resize->height = this->line_height;
 				size->height = 5 * this->line_height;
 				break;
 
 			case WID_GSC_GSLIST:
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
 				size->height = 1 * this->line_height;
 				break;
 		}

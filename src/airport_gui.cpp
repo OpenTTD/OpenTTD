@@ -343,7 +343,7 @@ public:
 					size->width = std::max(size->width, GetStringBoundingBox(as->name).width);
 				}
 
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
 				size->height = 5 * this->line_height;
 				break;
 			}
@@ -356,8 +356,8 @@ public:
 						SpriteID sprite = GetCustomAirportSprite(as, layout);
 						if (sprite != 0) {
 							Dimension d = GetSpriteSize(sprite);
-							d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-							d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+							d.width += padding.width;
+							d.height += padding.height;
 							*size = maxdim(d, *size);
 						}
 					}
@@ -375,6 +375,8 @@ public:
 						/* STR_BLACK_STRING is used to start the string with {BLACK} */
 						SetDParam(0, string);
 						Dimension d = GetStringMultiLineBoundingBox(STR_BLACK_STRING, *size);
+						d.width += padding.width;
+						d.height += padding.height;
 						*size = maxdim(d, *size);
 					}
 				}

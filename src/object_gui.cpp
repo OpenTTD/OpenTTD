@@ -239,7 +239,7 @@ public:
 					size->width = std::max(size->width, GetStringBoundingBox(objclass->name).width);
 				}
 				size->width += padding.width;
-				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				this->line_height = FONT_HEIGHT_NORMAL + padding.height;
 				resize->height = this->line_height;
 				size->height = 5 * this->line_height;
 				break;

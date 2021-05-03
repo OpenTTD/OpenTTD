@@ -662,7 +662,7 @@ struct GenerateLandscapeWindow : public Window {
 			}
 		}
 		size->width += padding.width;
-		size->height = std::max(size->height, (uint)(FONT_HEIGHT_NORMAL + WD_DROPDOWNTEXT_TOP + WD_DROPDOWNTEXT_BOTTOM));
+		size->height = std::max(size->height, (uint)(FONT_HEIGHT_NORMAL + padding.height));
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override

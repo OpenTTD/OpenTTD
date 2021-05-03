@@ -133,8 +133,8 @@ struct SubsidyListWindow : Window {
 		resize->height = d.height;
 
 		d.height *= 5;
-		d.width += padding.width + WD_FRAMERECT_RIGHT + WD_FRAMERECT_LEFT;
-		d.height += padding.height + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		d.width += padding.width;
+		d.height += padding.height;
 		*size = maxdim(*size, d);
 	}
 

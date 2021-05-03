@@ -682,8 +682,8 @@ struct MusicWindow : public Window {
 
 			case WID_M_TRACK_NR: {
 				Dimension d = GetStringBoundingBox(STR_MUSIC_TRACK_NONE);
-				d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-				d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				d.width += padding.width;
+				d.height += padding.height;
 				*size = maxdim(*size, d);
 				break;
 			}
@@ -694,8 +694,8 @@ struct MusicWindow : public Window {
 					SetDParamStr(0, song->songname);
 					d = maxdim(d, GetStringBoundingBox(STR_MUSIC_TITLE_NAME));
 				}
-				d.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-				d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				d.width += padding.width;
+				d.height += padding.height;
 				*size = maxdim(*size, d);
 				break;
 			}

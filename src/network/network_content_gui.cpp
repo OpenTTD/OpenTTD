@@ -573,7 +573,7 @@ public:
 			}
 
 			case WID_NCL_MATRIX:
-				resize->height = std::max(this->checkbox_size.height, (uint)FONT_HEIGHT_NORMAL) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				resize->height = std::max(this->checkbox_size.height, (uint)FONT_HEIGHT_NORMAL) + padding.height;
 				size->height = 10 * resize->height;
 				break;
 		}

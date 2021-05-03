@@ -859,7 +859,7 @@ struct SpriteAlignerWindow : Window {
 				size->height = ScaleGUITrad(200);
 				break;
 			case WID_SA_LIST:
-				resize->height = FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+				resize->height = FONT_HEIGHT_NORMAL + padding.height;
 				resize->width  = 1;
 				fill->height = resize->height;
 				break;

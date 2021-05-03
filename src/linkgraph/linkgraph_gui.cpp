@@ -592,8 +592,8 @@ void LinkGraphLegendWindow::UpdateWidgetSize(int widget, Dimension *size, const 
 		}
 		if (str != STR_NULL) {
 			Dimension dim = GetStringBoundingBox(str);
-			dim.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-			dim.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+			dim.width += padding.width;
+			dim.height += padding.height;
 			*size = maxdim(*size, dim);
 		}
 	}
@@ -601,8 +601,8 @@ void LinkGraphLegendWindow::UpdateWidgetSize(int widget, Dimension *size, const 
 		CargoSpec *cargo = CargoSpec::Get(widget - WID_LGL_CARGO_FIRST);
 		if (cargo->IsValid()) {
 			Dimension dim = GetStringBoundingBox(cargo->abbrev);
-			dim.width += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-			dim.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+			dim.width += padding.width;
+			dim.height += padding.height;
 			*size = maxdim(*size, dim);
 		}
 	}

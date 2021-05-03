@@ -422,7 +422,7 @@ public:
 					if (this->index[i] == INVALID_INDUSTRYTYPE) continue;
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(this->index[i])->name));
 				}
-				resize->height = std::max<uint>(this->legend.height, FONT_HEIGHT_NORMAL) + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
+				resize->height = std::max<uint>(this->legend.height, FONT_HEIGHT_NORMAL) + padding.height;
 				d.width += this->legend.width + ScaleFontTrad(7) + padding.width;
 				d.height = 5 * resize->height;
 				*size = maxdim(*size, d);
@@ -471,8 +471,8 @@ public:
 
 				/* Set it to something more sane :) */
 				height += extra_lines_prd + extra_lines_req + extra_lines_newgrf;
-				size->height = height * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-				size->width  = d.width + WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
+				size->height = height * FONT_HEIGHT_NORMAL + padding.height;
+				size->width = d.width + padding.width;
 				break;
 			}
 
