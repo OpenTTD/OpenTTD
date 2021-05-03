@@ -1163,17 +1163,22 @@ struct QueryWindow : public Window {
 		this->caption = caption;
 		this->message = message;
 		this->proc    = callback;
+		this->parent  = parent;
 
 		this->InitNested(WN_CONFIRM_POPUP_QUERY);
-
-		this->parent = parent;
-		this->left = parent->left + (parent->width / 2) - (this->width / 2);
-		this->top = parent->top + (parent->height / 2) - (this->height / 2);
 	}
 
 	~QueryWindow()
 	{
 		if (this->proc != nullptr) this->proc(this->parent, false);
+	}
+
+	void FindWindowPlacementAndResize(int def_width, int def_height) override
+	{
+		/* Position query window over the calling window, ensuring it's within screen bounds. */
+		this->left = Clamp(parent->left + (parent->width / 2) - (this->width / 2), 0, _screen.width - this->width);
+		this->top = Clamp(parent->top + (parent->height / 2) - (this->height / 2), 0, _screen.height - this->height);
+		this->SetDirty();
 	}
 
 	void SetStringParameters(int widget) const override
