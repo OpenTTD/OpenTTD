@@ -167,8 +167,8 @@ public:
 		Rect r;
 		r.left = this->pos_x;
 		r.top = this->pos_y;
-		r.right = this->pos_x + this->current_x;
-		r.bottom = this->pos_y + this->current_y;
+		r.right = this->pos_x + this->current_x - 1;
+		r.bottom = this->pos_y + this->current_y - 1;
 		return r;
 	}
 

@@ -1957,11 +1957,7 @@ void NWidgetBackground::Draw(const Window *w)
 {
 	if (this->current_x == 0 || this->current_y == 0) return;
 
-	Rect r;
-	r.left = this->pos_x;
-	r.right = this->pos_x + this->current_x - 1;
-	r.top = this->pos_y;
-	r.bottom = this->pos_y + this->current_y - 1;
+	Rect r = this->GetCurrentRect();
 
 	const DrawPixelInfo *dpi = _cur_dpi;
 	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
@@ -2225,11 +2221,7 @@ void NWidgetScrollbar::Draw(const Window *w)
 {
 	if (this->current_x == 0 || this->current_y == 0) return;
 
-	Rect r;
-	r.left = this->pos_x;
-	r.right = this->pos_x + this->current_x - 1;
-	r.top = this->pos_y;
-	r.bottom = this->pos_y + this->current_y - 1;
+	Rect r = this->GetCurrentRect();
 
 	const DrawPixelInfo *dpi = _cur_dpi;
 	if (dpi->left > r.right || dpi->left + dpi->width <= r.left || dpi->top > r.bottom || dpi->top + dpi->height <= r.top) return;
@@ -2608,11 +2600,7 @@ void NWidgetLeaf::Draw(const Window *w)
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &new_dpi;
 
-	Rect r;
-	r.left = this->pos_x;
-	r.right = this->pos_x + this->current_x - 1;
-	r.top = this->pos_y;
-	r.bottom = this->pos_y + this->current_y - 1;
+	Rect r = this->GetCurrentRect();
 
 	bool clicked = this->IsLowered();
 	switch (this->type) {
