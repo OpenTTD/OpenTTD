@@ -90,7 +90,7 @@ extern CompanyMask _network_company_passworded;
 void NetworkTCPQueryServer(const std::string &connection_string, bool request_company_info = false);
 
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port);
-struct NetworkGameList *NetworkAddServer(const std::string &connection_string);
+struct NetworkGameList *NetworkAddServer(const std::string &connection_string, bool manually = true);
 void NetworkRebuildHostList();
 void UpdateNetworkGameWindow();
 
