@@ -33,6 +33,7 @@
 #include "../core/pool_func.hpp"
 #include "../gfx_func.h"
 #include "../error.h"
+#include <charconv>
 
 #include "../safeguards.h"
 
@@ -453,36 +454,51 @@ static void CheckPauseOnJoin()
  * Converts a string to ip/port/company
  *  Format: IP:port#company
  *
- * connection_string will be re-terminated to separate out the hostname, port will
- * be set to the port strings given by the user, inside the memory area originally
- * occupied by connection_string. Similar for company, if set.
+ * Returns the IP part as a string view into the passed string. This view is
+ * valid as long the passed connection string is valid. If there is no port
+ * present in the connection string, the port reference will not be touched.
+ * When there is no company ID present in the connection string or company_id
+ * is nullptr, then company ID will not be touched.
+ *
+ * @param connection_string The string with the connection data.
+ * @param port              The port reference to set.
+ * @param company_id        The company ID to set, if available.
+ * @return A std::string_view into the connection string with the (IP) address part.
  */
-void ParseFullConnectionString(const char **company, const char **port, char *connection_string)
+std::string_view ParseFullConnectionString(const std::string &connection_string, uint16 &port, CompanyID *company_id)
 {
-	bool ipv6 = (strchr(connection_string, ':') != strrchr(connection_string, ':'));
-	for (char *p = connection_string; *p != '\0'; p++) {
-		switch (*p) {
-			case '[':
-				ipv6 = true;
-				break;
+	std::string_view ip = connection_string;
+	if (company_id != nullptr) {
+		size_t offset = ip.find_last_of('#');
+		if (offset != std::string::npos) {
+			std::string_view company_string = ip.substr(offset + 1);
+			ip = ip.substr(0, offset);
 
-			case ']':
-				ipv6 = false;
-				break;
-
-			case '#':
-				if (company == nullptr) continue;
-				*company = p + 1;
-				*p = '\0';
-				break;
-
-			case ':':
-				if (ipv6) break;
-				*port = p + 1;
-				*p = '\0';
-				break;
+			uint8 company_value;
+			auto [_, err] = std::from_chars(company_string.data(), company_string.data() + company_string.size(), company_value);
+			if (err == std::errc()) {
+				if (company_value != COMPANY_NEW_COMPANY && company_value != COMPANY_SPECTATOR) {
+					if (company_value > MAX_COMPANIES || company_value == 0) {
+						*company_id = COMPANY_SPECTATOR;
+					} else {
+						/* "#1" means the first company, which has index 0. */
+						*company_id = (CompanyID)(company_value - 1);
+					}
+				} else {
+					*company_id = (CompanyID)company_value;
+				}
+			}
 		}
 	}
+
+	size_t port_offset = ip.find_last_of(':');
+	size_t ipv6_close = ip.find_last_of(']');
+	if (port_offset != std::string::npos && (ipv6_close == std::string::npos || ipv6_close < port_offset)) {
+		std::string_view port_string = ip.substr(port_offset + 1);
+		ip = ip.substr(0, port_offset);
+		std::from_chars(port_string.data(), port_string.data() + port_string.size(), port);
+	}
+	return ip;
 }
 
 /**
@@ -493,16 +509,11 @@ void ParseFullConnectionString(const char **company, const char **port, char *co
  * @param default_port The default port to set port to if not in connection_string.
  * @return A valid NetworkAddress of the parsed information.
  */
-NetworkAddress ParseConnectionString(const std::string &connection_string, int default_port)
+NetworkAddress ParseConnectionString(const std::string &connection_string, uint16 default_port)
 {
-	char internal_connection_string[NETWORK_HOSTNAME_PORT_LENGTH];
-	strecpy(internal_connection_string, connection_string.c_str(), lastof(internal_connection_string));
-
-	const char *port = nullptr;
-	ParseFullConnectionString(nullptr, &port, internal_connection_string);
-
-	int rport = port != nullptr ? atoi(port) : default_port;
-	return NetworkAddress(internal_connection_string, rport);
+	uint16 port = default_port;
+	std::string_view ip = ParseFullConnectionString(connection_string, port);
+	return NetworkAddress(ip, port);
 }
 
 /**
@@ -510,37 +521,16 @@ NetworkAddress ParseConnectionString(const std::string &connection_string, int d
  * NetworkAddress, where the string can be postfixed with "#company" to
  * indicate the requested company.
  *
- * @param company Pointer to the company variable to set iff indicted.
  * @param connection_string The string to parse.
  * @param default_port The default port to set port to if not in connection_string.
+ * @param company Pointer to the company variable to set iff indicted.
  * @return A valid NetworkAddress of the parsed information.
  */
-static NetworkAddress ParseGameConnectionString(CompanyID *company, const std::string &connection_string, int default_port)
+static NetworkAddress ParseGameConnectionString(const std::string &connection_string, uint16 default_port, CompanyID *company)
 {
-	char internal_connection_string[NETWORK_HOSTNAME_PORT_LENGTH + 4]; // 4 extra for the "#" and company
-	strecpy(internal_connection_string, connection_string.c_str(), lastof(internal_connection_string));
-
-	const char *port_s = nullptr;
-	const char *company_s = nullptr;
-	ParseFullConnectionString(&company_s, &port_s, internal_connection_string);
-
-	if (company_s != nullptr) {
-		uint company_value = atoi(company_s);
-
-		if (company_value != COMPANY_NEW_COMPANY && company_value != COMPANY_SPECTATOR) {
-			if (company_value > MAX_COMPANIES || company_value == 0) {
-				*company = COMPANY_SPECTATOR;
-			} else {
-				/* "#1" means the first company, which has index 0. */
-				*company = (CompanyID)(company_value - 1);
-			}
-		} else {
-			*company = (CompanyID)company_value;
-		}
-	}
-
-	int port = port_s != nullptr ? atoi(port_s) : default_port;
-	return NetworkAddress(internal_connection_string, port);
+	uint16 port = default_port;
+	std::string_view ip = ParseFullConnectionString(connection_string, port, company);
+	return NetworkAddress(ip, port);
 }
 
 /**
@@ -751,7 +741,7 @@ public:
 bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const char *join_server_password, const char *join_company_password)
 {
 	CompanyID join_as = default_company;
-	std::string resolved_connection_string = ParseGameConnectionString(&join_as, connection_string, NETWORK_DEFAULT_PORT).GetAddressAsString(false);
+	std::string resolved_connection_string = ParseGameConnectionString(connection_string, NETWORK_DEFAULT_PORT, &join_as).GetAddressAsString(false);
 
 	if (!_network_available) return false;
 	if (!NetworkValidateClientName()) return false;

@@ -405,7 +405,7 @@ void OpenBrowser(const char *url)
 struct AfterNewGRFScan : NewGRFScanCallback {
 	Year startyear;                    ///< The start year.
 	uint32 generation_seed;            ///< Seed for the new game.
-	char *dedicated_host;              ///< Hostname for the dedicated server.
+	std::string dedicated_host;        ///< Hostname for the dedicated server.
 	uint16 dedicated_port;             ///< Port for the dedicated server.
 	char *network_conn;                ///< Information about the server to connect to, or nullptr.
 	const char *join_server_password;  ///< The password to join the server with.
@@ -417,7 +417,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 	 */
 	AfterNewGRFScan() :
 			startyear(INVALID_YEAR), generation_seed(GENERATE_NEW_SEED),
-			dedicated_host(nullptr), dedicated_port(0), network_conn(nullptr),
+			dedicated_port(0), network_conn(nullptr),
 			join_server_password(nullptr), join_company_password(nullptr),
 			save_config(true)
 	{
@@ -458,7 +458,7 @@ struct AfterNewGRFScan : NewGRFScanCallback {
 		if (startyear != INVALID_YEAR) IConsoleSetSetting("game_creation.starting_year", startyear);
 		if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
 
-		if (dedicated_host != nullptr) {
+		if (!dedicated_host.empty()) {
 			_network_bind_list.clear();
 			_network_bind_list.emplace_back(dedicated_host);
 		}
@@ -565,10 +565,7 @@ int openttd_main(int argc, char *argv[])
 			dedicated = true;
 			SetDebugString("net=6");
 			if (mgo.opt != nullptr) {
-				const char *port = nullptr;
-				ParseFullConnectionString(nullptr, &port, mgo.opt);
-				if (!StrEmpty(mgo.opt)) scanner->dedicated_host = mgo.opt;
-				if (port != nullptr) scanner->dedicated_port = atoi(port);
+				scanner->dedicated_host = ParseFullConnectionString(mgo.opt, scanner->dedicated_port);
 			}
 			break;
 		case 'f': _dedicated_forks = true; break;
