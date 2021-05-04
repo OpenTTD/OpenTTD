@@ -674,7 +674,9 @@ static void HeightMapCurves(uint level)
 						break;
 					}
 				}
+#ifdef WITH_ASSERT
 				assert(found);
+#endif
 			}
 
 			/* Apply interpolation of curve map results. */

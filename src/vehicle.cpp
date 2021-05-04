@@ -959,12 +959,14 @@ void CallVehicleTicks()
 
 		/* Vehicle could be deleted in this tick */
 		if (!v->Tick()) {
+#ifdef WITH_ASSERT	
 			assert(Vehicle::Get(vehicle_index) == nullptr);
+#endif
 			continue;
 		}
-
+#ifdef WITH_ASSERT
 		assert(Vehicle::Get(vehicle_index) == v);
-
+#endif
 		switch (v->type) {
 			default: break;
 

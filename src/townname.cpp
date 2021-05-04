@@ -717,13 +717,17 @@ static char *MakeCzechTownName(char *buf, const char *last, uint32 seed)
 		while (GB(*endpos, 6, 2) == 2) endpos--;
 
 		if (gender == CZG_SMASC && pattern == CZP_PRIVL) {
+#ifdef WITH_ASSERT
 			assert(endpos >= orig + 2);
+#endif
 			/* -ovX -> -uv */
 			*(endpos - 2) = 'u';
 			assert(*(endpos - 1) == 'v');
 			*endpos = '\0';
 		} else {
+#ifdef WITH_ASSERT
 			assert(endpos >= orig);
+#endif
 			endpos = strecpy(endpos, _name_czech_patmod[gender][pattern], last);
 		}
 
