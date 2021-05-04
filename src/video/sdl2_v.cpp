@@ -30,11 +30,6 @@
 
 #include "../safeguards.h"
 
-#ifdef __EMSCRIPTEN__
-/** Whether we just had a window-enter event. */
-static bool _cursor_new_in_window = false;
-#endif
-
 void VideoDriver_SDL_Base::MakeDirty(int left, int top, int width, int height)
 {
 	Rect r = {left, top, left + width, top + height};
@@ -203,9 +198,9 @@ bool VideoDriver_SDL_Base::CreateMainSurface(uint w, uint h, bool resize)
 
 bool VideoDriver_SDL_Base::ClaimMousePointer()
 {
+	/* Emscripten never claims the pointer, so we do not need to change the cursor visibility. */
+#ifndef __EMSCRIPTEN__
 	SDL_ShowCursor(0);
-#ifdef __EMSCRIPTEN__
-	SDL_SetRelativeMouseMode(SDL_TRUE);
 #endif
 	return true;
 }
@@ -377,27 +372,9 @@ bool VideoDriver_SDL_Base::PollEvent()
 
 	switch (ev.type) {
 		case SDL_MOUSEMOTION:
-#ifdef __EMSCRIPTEN__
-			if (_cursor_new_in_window) {
-				/* The cursor just moved into the window; this means we don't
-				 * know the absolutely position yet to move relative from.
-				 * Before this time, SDL didn't know it either, and this is
-				 * why we postpone it till now. Update the absolute position
-				 * for this once, and work relative after. */
-				_cursor.pos.x = ev.motion.x;
-				_cursor.pos.y = ev.motion.y;
-				_cursor.dirty = true;
-
-				_cursor_new_in_window = false;
-				SDL_SetRelativeMouseMode(SDL_TRUE);
-			} else {
-				_cursor.UpdateCursorPositionRelative(ev.motion.xrel, ev.motion.yrel);
-			}
-#else
 			if (_cursor.UpdateCursorPosition(ev.motion.x, ev.motion.y, true)) {
 				SDL_WarpMouseInWindow(this->sdl_window, _cursor.pos.x, _cursor.pos.y);
 			}
-#endif
 			HandleMouseEvents();
 			break;
 
@@ -502,9 +479,7 @@ bool VideoDriver_SDL_Base::PollEvent()
 				// mouse entered the window, enable cursor
 				_cursor.in_window = true;
 #ifdef __EMSCRIPTEN__
-				/* Disable relative mouse mode for the first mouse motion,
-				 * so we can pick up the absolutely position again. */
-				_cursor_new_in_window = true;
+				/* Ensure pointer lock will not occur. */
 				SDL_SetRelativeMouseMode(SDL_FALSE);
 #endif
 			} else if (ev.window.event == SDL_WINDOWEVENT_LEAVE) {
@@ -525,7 +500,9 @@ static const char *InitializeSDL()
 	 * UpdateWindowSurface() to update the window's texture instead of
 	 * its surface. */
 	SDL_SetHint(SDL_HINT_FRAMEBUFFER_ACCELERATION, "0");
+#ifndef __EMSCRIPTEN__
 	SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1");
+#endif
 
 	/* Check if the video-driver is already initialized. */
 	if (SDL_WasInit(SDL_INIT_VIDEO) != 0) return nullptr;
