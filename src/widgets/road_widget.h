@@ -51,7 +51,8 @@ enum BuildRoadStationWidgets {
 	WID_BROS_STATION_Y,     ///< Drive-through station in y-direction.
 	WID_BROS_LT_OFF,        ///< Turn off area highlight.
 	WID_BROS_LT_ON,         ///< Turn on area highlight.
-	WID_BROS_INFO,          ///< Station acceptance info.
+	WID_BROS_INFO,          ///< Station acceptance toggle.
+	WID_BROS_ACCEPTANCE,    ///< Station acceptance.
 };
 
 #endif /* WIDGETS_ROAD_WIDGET_H */

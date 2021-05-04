@@ -1090,17 +1090,15 @@ struct BuildRoadStationWindow : public PickerWindowBase {
 
 		/* 'Accepts' and 'Supplies' texts. */
 		StationCoverageType sct = (this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY;
-		int top = this->GetWidget<NWidgetBase>(WID_BROS_LT_ON)->pos_y + this->GetWidget<NWidgetBase>(WID_BROS_LT_ON)->current_y + WD_PAR_VSEP_NORMAL;
-		NWidgetBase *back_nwi = this->GetWidget<NWidgetBase>(WID_BROS_BACKGROUND);
-		int right = back_nwi->pos_x +  back_nwi->current_x;
-		int bottom = back_nwi->pos_y +  back_nwi->current_y;
-		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, sct, rad, false) + WD_PAR_VSEP_NORMAL;
-		top = DrawStationCoverageAreaText(back_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, sct, rad, true) + WD_PAR_VSEP_NORMAL;
+		Rect r = this->GetWidget<NWidgetBase>(WID_BROS_ACCEPTANCE)->GetCurrentRect();
+		int top = r.top + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
+		top = DrawStationCoverageAreaText(r.left, r.right, top, sct, rad, false) + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
+		top = DrawStationCoverageAreaText(r.left, r.right, top, sct, rad, true) + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
 		/* Resize background if the window is too small.
 		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
 		 * (This is the case, if making the window bigger moves the mouse into the window.) */
-		if (top > bottom) {
-			ResizeWindow(this, 0, top - bottom, false);
+		if (top > r.bottom) {
+			ResizeWindow(this, 0, top - r.bottom, false);
 		}
 	}
 
@@ -1194,7 +1192,7 @@ static const NWidgetPart _nested_road_station_picker_widgets[] = {
 											SetDataTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 10), SetResize(0, 1),
+		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, WID_BROS_ACCEPTANCE), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT), SetResize(0, 1),
 	EndContainer(),
 };
 
@@ -1219,11 +1217,7 @@ static const NWidgetPart _nested_tram_station_picker_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_GREY, WID_BROS_STATION_Y),  SetMinimalSize(66, 50), SetFill(0, 0), EndContainer(),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 1),
-		NWidget(NWID_HORIZONTAL), SetPIP(2, 0, 2),
-			NWidget(WWT_LABEL, COLOUR_DARK_GREEN, WID_BROS_INFO), SetMinimalSize(140, 14), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL),
-			NWidget(NWID_SPACER), SetFill(1, 0),
-		EndContainer(),
+		NWidget(WWT_LABEL, COLOUR_DARK_GREEN, WID_BROS_INFO), SetPadding(WD_FRAMERECT_TOP, WD_FRAMERECT_RIGHT, WD_FRAMERECT_BOTTOM, WD_FRAMERECT_LEFT), SetMinimalSize(140, 14), SetDataTip(STR_STATION_BUILD_COVERAGE_AREA_TITLE, STR_NULL), SetFill(1, 0),
 		NWidget(NWID_HORIZONTAL), SetPIP(2, 0, 2),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_BROS_LT_OFF), SetMinimalSize(60, 12),
@@ -1232,7 +1226,7 @@ static const NWidgetPart _nested_tram_station_picker_widgets[] = {
 											SetDataTip(STR_STATION_BUILD_COVERAGE_ON, STR_STATION_BUILD_COVERAGE_AREA_ON_TOOLTIP),
 			NWidget(NWID_SPACER), SetFill(1, 0),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 10), SetResize(0, 1),
+		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, WID_BROS_ACCEPTANCE), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT), SetResize(0, 1),
 	EndContainer(),
 };
 
