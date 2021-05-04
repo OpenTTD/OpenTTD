@@ -1170,9 +1170,9 @@ STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_MENU                      :Pelin asetukset
 STR_CONFIG_SETTING_TYPE_DROPDOWN_GAME_INGAME                    :Pelin asetukset (tallennetaan pelitallenteeseen; vaikuttavat vain nykyiseen peliin)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_MENU                   :Yhtiön asetukset (tallennetaan pelitallenteisiin; vaikuttavat vain uusiin peleihin)
 STR_CONFIG_SETTING_TYPE_DROPDOWN_COMPANY_INGAME                 :Yhtiön asetukset (tallennetaan pelitallenteeseen; vaikuttavat ainoastaan nykyiseen yhtiöön)
-STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}Kategoriaksi {WHITE}{STRING}
+STR_CONFIG_SETTING_CATEGORY_HIDES                               :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}kategoriaksi {WHITE}{STRING}
 STR_CONFIG_SETTING_TYPE_HIDES                                   :{BLACK}Näytä kaikki hakutulokset muuttamalla{}{SILVER}Tyypiksi {WHITE}Kaikki asetustyypit
-STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}Kategoriaksi {WHITE}{STRING} {BLACK}ja {SILVER}Tyypiksi {WHITE}Kaikki asetustyypit
+STR_CONFIG_SETTING_CATEGORY_AND_TYPE_HIDES                      :{BLACK}Näytä kaikki tulokset muuttamalla{}{SILVER}kategoriaksi {WHITE}{STRING} {BLACK}ja {SILVER}tyypiksi {WHITE}kaikki asetustyypit
 STR_CONFIG_SETTINGS_NONE                                        :{WHITE}- Ei mitään -
 
 STR_CONFIG_SETTING_OFF                                          :pois
@@ -1334,7 +1334,7 @@ STR_CONFIG_SETTING_AUTORENEW_MONTHS_HELPTEXT                    :Suhteellinen ik
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_BEFORE                :{COMMA} kuukau{P 0 si tta} ennen kulkuneuvon käyttöiän loppua
 STR_CONFIG_SETTING_AUTORENEW_MONTHS_VALUE_AFTER                 :{COMMA} kuukau{P 0 si tta} jälkeen kulkuneuvon käyttöiän lopun
 STR_CONFIG_SETTING_AUTORENEW_MONEY                              :Vähimmäisrahamäärä kulkuneuvon automaattiseen uudistukseen: {STRING}
-STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Pienin rahamäärä, joka on oltava pankissa ennen kulkuneuvojen automaattista uudistamista
+STR_CONFIG_SETTING_AUTORENEW_MONEY_HELPTEXT                     :Vähimmäisrahamäärä, jonka on jäätävä pankkiin kulkuneuvoja automaattisesti uudistettaessa
 STR_CONFIG_SETTING_ERRMSG_DURATION                              :Virheilmoitusten näyttöaika: {STRING}
 STR_CONFIG_SETTING_ERRMSG_DURATION_HELPTEXT                     :Aika virheilmoitusten näyttämiseen punaisessa ikkunassa. Huomaa, että jotkut (kriittiset) virheilmoitukset eivät sulkeudu automaattisesti tämän ajan jälkeen, vaan ne on suljettava käsin
 STR_CONFIG_SETTING_ERRMSG_DURATION_VALUE                        :{COMMA} sekunti{P 0 "" a}
@@ -1458,7 +1458,7 @@ STR_CONFIG_SETTING_PAUSE_ON_NEW_GAME_HELPTEXT                   :Mikäli käytö
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL                          :Salli pelin ollessa pysäytettynä: {STRING}
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_HELPTEXT                 :Valitse käytössä olevat toiminnot pelin ollessa pysäytettynä
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_NO_ACTIONS               :Ei mitään toimintoja
-STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Kaikki ei-rakennustoiminnot
+STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_CONSTRUCTION     :Kaikki paitsi rakennustoiminnot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_NON_LANDSCAPING      :Kaikki paitsi maastonmuokkaustoiminnot
 STR_CONFIG_SETTING_COMMAND_PAUSE_LEVEL_ALL_ACTIONS              :Kaikki toiminnot
 STR_CONFIG_SETTING_ADVANCED_VEHICLE_LISTS                       :Käytä ryhmiä kulkuneuvolistassa: {STRING}
@@ -1595,7 +1595,7 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_SUMMARY                        :Tiivistelmä
 STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Täysi
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Värilliset uutiset ilmestyvät: {STRING}
-STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Vuosi, jonka jälkeen sanomalehdet ovat värillisiä. Ennen tätä vuotta sanomalehdet käyttävät mustavalkoisia kuvia
+STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Vuosi, josta alkaen sanomalehdet painetaan värillisinä. Ennen tätä vuotta lehdet ovat mustavalkoiset.
 STR_CONFIG_SETTING_STARTING_YEAR                                :Aloitusvuosi: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR                                  :Pistelaskun päättymisvuosi: {STRING}
 STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :Pelin päättymisvuosi pisteiden laskemista varten. Tämän vuoden lopussa talletetaan yhtiön pistemäärä ja näytetään ennätysluettelo; pelaajat voivat jatkaa pelaamista tämän jälkeenkin.{}Jos päättymisvuosi on ennen alkamisvuotta, ennätyksiä ei näytetä koskaan.
@@ -1771,7 +1771,7 @@ STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Käytt�
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Yleinen
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Näkymät
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Rakentaminen
-STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Uutiset / Neuvonantajat
+STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE}Uutiset ja neuvonantajat
 STR_CONFIG_SETTING_COMPANY                                      :{ORANGE}Yhtiö
 STR_CONFIG_SETTING_ACCOUNTING                                   :{ORANGE}Talous
 STR_CONFIG_SETTING_VEHICLES                                     :{ORANGE}Kulkuneuvot
@@ -1876,7 +1876,7 @@ STR_QUIT_NO                                                     :{BLACK}Ei
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Pelin lopetus
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Lopetetaanko peli?
-STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Lopetetaanko skenaario?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Haluatko varmasti hylätä tämän skenaarion?
 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Huijaukset
@@ -2207,7 +2207,7 @@ STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Et ole a
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Tämän asiakkaan versio ei vastaa palvelimen versiota
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Väärä salasana
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Palvelin on täynnä
-STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinut on kielletty palvelimelta
+STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Sinut on estetty palvelimelta
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Sinut potkittiin pihalle palvelimelta
 STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Syy: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Huijaaminen ei ole sallittua tällä palvelimella
@@ -2217,6 +2217,7 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Tietokon
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Kartan lataus kesti liian kauan
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Palvelimelle liittyminen kesti liian kauan
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Pelaajanimesi ei kelpaa
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Kysytty palvelin on liian vanha tälle asiakkaalle
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :yleinen virhe
@@ -2800,7 +2801,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Yhtiön omistam
 STR_ABOUT_OPENTTD                                               :{WHITE}Tietoja OpenTTD:stä
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Alkuperäiset oikeudet {COPYRIGHT} 1995 Chris Sawyer, kaikki oikeudet pidätetään
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-versio {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002–{STRING} The OpenTTD team
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Kuvataajuus
@@ -3502,8 +3503,8 @@ STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Tarvitse
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
 STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} odottamassa{STRING}
 
-STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Muokkaa tuotantoa (8:n kerroin, 2040 asti)
-STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuta tuotantotasoa (prosentteina, 800{NBSP}% asti)
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Muokkaa tuotantoa (8:n kerroin, 2040:een asti)
+STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Muuta tuotantotasoa (prosentteina, 800{NBSP}%:iin asti)
 
 # Vehicle lists
 STR_VEHICLE_LIST_TRAIN_CAPTION                                  :{WHITE}{STRING} – {COMMA} juna{P "" a}

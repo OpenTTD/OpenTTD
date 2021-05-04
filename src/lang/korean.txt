@@ -397,7 +397,7 @@ STR_SETTINGS_MENU_SIGNS_DISPLAYED                               :팻말을 표�
 STR_SETTINGS_MENU_SHOW_COMPETITOR_SIGNS                         :경쟁사의 팻말과 역 이름을 표시
 STR_SETTINGS_MENU_FULL_ANIMATION                                :완전한 애니메이션
 STR_SETTINGS_MENU_FULL_DETAIL                                   :그래픽을 아주 상세하게
-STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :건물 숨기기
+STR_SETTINGS_MENU_TRANSPARENT_BUILDINGS                         :건물 감추기
 STR_SETTINGS_MENU_TRANSPARENT_SIGNS                             :역명판 감추기
 ############ range ends here
 

@@ -1017,7 +1017,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maláj ringgit 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Balra hajtás
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jobbra hajtás
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Városnevek
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Városnevek:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}A városnevek stílusának kiválasztása
 
 ############ start of townname region
@@ -1057,6 +1057,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12 havonta
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Nyelv
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Válassz nyelvet
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% teljesítve)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Teljes képernyő
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Jelöld be ezt, ha teljes képernyős módban szeretnél játszani az OpenTTD-vel
@@ -2054,6 +2055,8 @@ STR_FACE_TIE                                                    :Nyakkendő:
 STR_FACE_EARRING                                                :Fülbevaló:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Nyakkendő vagy fülbevaló cseréje
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privát
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Nyilvános
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hálózati játék
@@ -2117,6 +2120,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}A játé
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Jelszó beállítása
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Védd le a játékodat jelszóval, ha nem akarod hogy illetéktelenek csatlakozzanak
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Láthatóság
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Mások láthassák-e a szerveredet a publikus listában
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kliens
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Játékosok max. száma:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}A maximálisan felcsatlakozható kliensek számának kiválasztása. Nem szükséges pont ennyi embernek éppen kapcsolódva lennie
@@ -2180,11 +2185,44 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerve
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A vállalat jelszóval van védve. Írd be
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Kliens lista
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online játékosok
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Többjátékos
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Szerver
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Név
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}A szerver neve amin játszol
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}A szervered nevének szerkesztése
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Szerver neve
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Láthatóság
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Mások láthassák-e a szerveredet a publikus listában
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Játékos
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Név
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}A játékos neved
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}A játékos neved szerkesztése
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Játékos neve
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Adminisztrátori műveletek ehhez a vállalathoz
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Adminisztrátori műveletek ehhez a vállalathoz
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :Csatlakozz ehhez a vállalathoz
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Üzenet küldése ennek a játékosnak
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Üzenet küldése az összes játékosnak ebben a vállalatban
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Üzenet küldése az összes megfigyelőnek
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Megfigyelők
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Új vállalat)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Hozz létre egy új vállalatot és csatlakozz
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Ez vagy te
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Ez a játék elindítója
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kirúgás
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Tiltás
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Törlés
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Jelszó feloldása
 
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Adminisztrátori művelet
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Biztos ki akarod rúgni ezt a játékost: '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Biztos ki akarod tiltani ezt a játékost: '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Biztos ki akarod törölni a '{COMPANY}' vállalatot?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Biztos vissza akarod állítani a '{COMPANY}' vállalat jelszavát?
 
 STR_NETWORK_SERVER                                              :Szerver
 STR_NETWORK_CLIENT                                              :Kliens
@@ -2229,6 +2267,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nem tudt
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nem tudtam kapcsolódni
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}A(z) {NUM}. játékos kapcsolata elveszett
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokoll-hiba keletkezett és megszakadt a kapcsolat
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}A játékos neved nem lett megadva. A nevet a többjátékos ablak tetején tudod beállítani.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A gépeden és a szerveren lévő programnak nem egyezik meg a verziója
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Rossz jelszó
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}A szerver tele van
@@ -2241,6 +2280,8 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Túl sok
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}A számítógéped túl lassú, hogy tartsa a szerver sebességét
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Túl sokáig tartott a térkép letöltése a számítógépednek
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Túl sokáig tartott a szerverhez való csatlakozása a számítógépednek
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}A játékos neved nem megfelelő
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}A lekérdezett szerver túl régi ehhez a klienshez
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :általános hiba
@@ -2263,6 +2304,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :nem érkezett j
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :általános időtúllépés
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :térkép letöltés túl sokáig tartott
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :térkép feldolgozás túl sokáig tartott
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Érvénytelen kliens név
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Lehetséges, hogy elveszett a kapcsolat
@@ -3102,6 +3144,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Figyelmezt
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Végzetes hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Egy végzetes NewGRF hiba történt:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF hiba történt:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} a TTD {STRING} verziójához van
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} úgy lett tervezve, hogy együtt lesz használva ezzel: {STRING}
