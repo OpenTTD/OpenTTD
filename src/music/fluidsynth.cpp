@@ -18,9 +18,9 @@
 #include <mutex>
 
 static struct {
-	fluid_settings_t* settings;    ///< FluidSynth settings handle
-	fluid_synth_t* synth;          ///< FluidSynth synthesizer handle
-	fluid_player_t* player;        ///< FluidSynth MIDI player handle
+	fluid_settings_t *settings;    ///< FluidSynth settings handle
+	fluid_synth_t *synth;          ///< FluidSynth synthesizer handle
+	fluid_player_t *player;        ///< FluidSynth MIDI player handle
 	std::mutex synth_mutex;        ///< Guard mutex for synth access
 } _midi; ///< Metadata about the midi we're playing.
 
@@ -54,7 +54,7 @@ static void RenderMusicStream(int16 *buffer, size_t samples)
 {
 	std::unique_lock<std::mutex> lock{ _midi.synth_mutex, std::try_to_lock };
 
-	if (!lock.owns_lock() || !_midi.synth || !_midi.player) return;
+	if (!lock.owns_lock() || _midi.synth == nullptr || _midi.player == nullptr) return;
 	fluid_synth_write_s16(_midi.synth, samples, buffer, 0, 2, buffer, 1, 2);
 }
 
@@ -69,7 +69,7 @@ const char *MusicDriver_FluidSynth::Start(const StringList &param)
 
 	/* Create the settings. */
 	_midi.settings = new_fluid_settings();
-	if (!_midi.settings) return "Could not create midi settings";
+	if (_midi.settings == nullptr) return "Could not create midi settings";
 	/* Don't try to lock sample data in memory, OTTD usually does not run with privileges allowing that */
 	fluid_settings_setint(_midi.settings, "synth.lock-memory", 0);
 
@@ -80,11 +80,11 @@ const char *MusicDriver_FluidSynth::Start(const StringList &param)
 
 	/* Create the synthesizer. */
 	_midi.synth = new_fluid_synth(_midi.settings);
-	if (!_midi.synth) return "Could not open synth";
+	if (_midi.synth == nullptr) return "Could not open synth";
 
 	/* Load a SoundFont and reset presets (so that new instruments
 	 * get used from the SoundFont) */
-	if (!sfont_name) {
+	if (sfont_name == nullptr) {
 		sfont_id = FLUID_FAILED;
 
 		/* Try loading the default soundfont registered with FluidSynth. */
@@ -142,7 +142,7 @@ void MusicDriver_FluidSynth::PlaySong(const MusicSongInfo &song)
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
 
 	_midi.player = new_fluid_player(_midi.synth);
-	if (!_midi.player) {
+	if (_midi.player == nullptr) {
 		DEBUG(driver, 0, "Could not create midi player");
 		return;
 	}
@@ -166,7 +166,7 @@ void MusicDriver_FluidSynth::StopSong()
 	{
 		std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
 
-		if (!_midi.player) return;
+		if (_midi.player == nullptr) return;
 
 		fluid_player_stop(_midi.player);
 	}
@@ -187,7 +187,7 @@ void MusicDriver_FluidSynth::StopSong()
 bool MusicDriver_FluidSynth::IsSongPlaying()
 {
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
-	if (!_midi.player) return false;
+	if (_midi.player == nullptr) return false;
 
 	return fluid_player_get_status(_midi.player) == FLUID_PLAYER_PLAYING;
 }
