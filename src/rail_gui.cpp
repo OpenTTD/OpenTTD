@@ -1179,18 +1179,15 @@ public:
 
 		if (this->IsShaded()) return;
 		/* 'Accepts' and 'Supplies' texts. */
-		NWidgetBase *cov = this->GetWidget<NWidgetBase>(WID_BRAS_COVERAGE_TEXTS);
-		int top = cov->pos_y + WD_PAR_VSEP_NORMAL;
-		int left = cov->pos_x + WD_FRAMERECT_LEFT;
-		int right = cov->pos_x + cov->current_x - WD_FRAMERECT_RIGHT;
-		int bottom = cov->pos_y + cov->current_y;
-		top = DrawStationCoverageAreaText(left, right, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
-		top = DrawStationCoverageAreaText(left, right, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+		Rect r = this->GetWidget<NWidgetBase>(WID_BRAS_COVERAGE_TEXTS)->GetCurrentRect();
+		int top = r.top + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
+		top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, false) + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
+		top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, true) + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
 		/* Resize background if the window is too small.
 		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
 		 * (This is the case, if making the window bigger moves the mouse into the window.) */
-		if (top > bottom) {
-			this->coverage_height += top - bottom;
+		if (top > r.bottom) {
+			this->coverage_height += top - r.bottom;
 			this->ReInit();
 		}
 	}
@@ -1637,7 +1634,7 @@ static const NWidgetPart _nested_station_builder_widgets[] = {
 			EndContainer(),
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
-			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BRAS_COVERAGE_TEXTS), SetPadding(2, 5, 0, 1), SetFill(1, 1), SetResize(1, 0),
+			NWidget(WWT_EMPTY, INVALID_COLOUR, WID_BRAS_COVERAGE_TEXTS), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT), SetFill(1, 1), SetResize(1, 0),
 			NWidget(NWID_SELECTION, INVALID_COLOUR, WID_BRAS_SHOW_NEWST_RESIZE),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_PANEL, COLOUR_DARK_GREEN), SetFill(0, 1), EndContainer(),

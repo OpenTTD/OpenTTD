@@ -29,6 +29,7 @@
 #include "command_func.h"
 #include "airport_cmd.h"
 #include "station_cmd.h"
+#include "zoom_func.h"
 
 #include "widgets/airport_widget.h"
 
@@ -423,11 +424,8 @@ public:
 	{
 		this->DrawWidgets();
 
-		uint16 top = this->GetWidget<NWidgetBase>(WID_AP_BTN_DOHILIGHT)->pos_y + this->GetWidget<NWidgetBase>(WID_AP_BTN_DOHILIGHT)->current_y + WD_PAR_VSEP_NORMAL;
-		NWidgetBase *panel_nwi = this->GetWidget<NWidgetBase>(WID_AP_BOTTOMPANEL);
-
-		int right = panel_nwi->pos_x +  panel_nwi->current_x;
-		int bottom = panel_nwi->pos_y +  panel_nwi->current_y;
+		Rect r = this->GetWidget<NWidgetBase>(WID_AP_ACCEPTANCE)->GetCurrentRect();
+		int top = r.top + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
 
 		if (_selected_airport_index != -1) {
 			const AirportSpec *as = AirportClass::Get(_selected_airport_class)->GetSpec(_selected_airport_index);
@@ -437,20 +435,20 @@ public:
 			if (_settings_game.economy.station_noise_level) {
 				/* show the noise of the selected airport */
 				SetDParam(0, as->noise_level);
-				DrawString(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, STR_STATION_BUILD_NOISE);
-				top += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
+				DrawString(r.left, r.right, top, STR_STATION_BUILD_NOISE);
+				top += FONT_HEIGHT_NORMAL + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
 			}
 
 			/* strings such as 'Size' and 'Coverage Area' */
-			top = DrawStationCoverageAreaText(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, false) + WD_PAR_VSEP_NORMAL;
-			top = DrawStationCoverageAreaText(panel_nwi->pos_x + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, SCT_ALL, rad, true) + WD_PAR_VSEP_NORMAL;
+			top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, false) + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
+			top = DrawStationCoverageAreaText(r.left, r.right, top, SCT_ALL, rad, true) + ScaleGUITrad(WD_PAR_VSEP_NORMAL);
 		}
 
 		/* Resize background if the window is too small.
 		 * Never make the window smaller to avoid oscillating if the size change affects the acceptance.
 		 * (This is the case, if making the window bigger moves the mouse into the window.) */
-		if (top > bottom) {
-			ResizeWindow(this, 0, top - bottom, false);
+		if (top > r.bottom) {
+			ResizeWindow(this, 0, top - r.bottom, false);
 		}
 	}
 
@@ -608,7 +606,7 @@ static const NWidgetPart _nested_build_airport_widgets[] = {
 			EndContainer(),
 			NWidget(NWID_SPACER), SetMinimalSize(14, 0), SetFill(1, 0),
 		EndContainer(),
-		NWidget(NWID_SPACER), SetMinimalSize(0, 10), SetResize(0, 1), SetFill(1, 0),
+		NWidget(WWT_EMPTY, COLOUR_DARK_GREEN, WID_AP_ACCEPTANCE), SetPadding(0, WD_FRAMERECT_RIGHT, 0, WD_FRAMERECT_LEFT), SetResize(0, 1), SetFill(1, 0),
 	EndContainer(),
 };
 

@@ -30,6 +30,7 @@ enum AirportPickerWidgets {
 	WID_AP_COVERAGE_LABEL,  ///< Label if you want to see the coverage.
 	WID_AP_BTN_DONTHILIGHT, ///< Don't show the coverage button.
 	WID_AP_BTN_DOHILIGHT,   ///< Show the coverage button.
+	WID_AP_ACCEPTANCE,      ///< Acceptance info.
 };
 
 #endif /* WIDGETS_AIRPORT_WIDGET_H */
