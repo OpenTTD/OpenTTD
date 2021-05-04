@@ -16,12 +16,17 @@
 
 /** Structure with information shown in the game list (GUI) */
 struct NetworkGameList {
-	NetworkGameInfo info;          ///< The game information of this server
-	std::string connection_string; ///< Address of the server
-	bool online;                   ///< False if the server did not respond (default status)
-	bool manually;                 ///< True if the server was added manually
-	uint8 retries;                 ///< Number of retries (to stop requerying)
-	NetworkGameList *next;         ///< Next pointer to make a linked game list
+	NetworkGameList(const std::string &connection_string, bool manually = false) :
+		connection_string(connection_string), manually(manually)
+	{
+	}
+
+	NetworkGameInfo info = {};       ///< The game information of this server
+	std::string connection_string;   ///< Address of the server
+	bool online = false;             ///< False if the server did not respond (default status)
+	bool manually = false;           ///< True if the server was added manually
+	uint8 retries = 0;               ///< Number of retries (to stop requerying)
+	NetworkGameList *next = nullptr; ///< Next pointer to make a linked game list
 };
 
 /** Game list of this client */

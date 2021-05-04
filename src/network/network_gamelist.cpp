@@ -57,7 +57,7 @@ static void NetworkGameListHandleDelayedInsert()
 			if (item->manually) NetworkRebuildHostList();
 			UpdateNetworkGameWindow();
 		}
-		free(ins_item);
+		delete ins_item;
 	}
 }
 
@@ -80,9 +80,7 @@ NetworkGameList *NetworkGameListAddItem(const std::string &connection_string)
 		prev_item = item;
 	}
 
-	item = CallocT<NetworkGameList>(1);
-	item->next = nullptr;
-	item->connection_string = resolved_connection_string;
+	item = new NetworkGameList(resolved_connection_string);
 
 	if (prev_item == nullptr) {
 		_network_game_list = item;
@@ -112,8 +110,7 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 
 			/* Remove GRFConfig information */
 			ClearGRFConfigList(&remove->info.grfconfig);
-			free(remove);
-			remove = nullptr;
+			delete remove;
 
 			DEBUG(net, 4, "[gamelist] removed server from list");
 			NetworkRebuildHostList();
