@@ -28,11 +28,11 @@ NetworkUDPSocketHandler::NetworkUDPSocketHandler(NetworkAddressList *bind)
 			this->bind.push_back(addr);
 		}
 	} else {
-		/* As hostname nullptr and port 0/nullptr don't go well when
+		/* As an empty hostname and port 0 don't go well when
 		 * resolving it we need to add an address for each of
 		 * the address families we support. */
-		this->bind.emplace_back(nullptr, 0, AF_INET);
-		this->bind.emplace_back(nullptr, 0, AF_INET6);
+		this->bind.emplace_back("", 0, AF_INET);
+		this->bind.emplace_back("", 0, AF_INET6);
 	}
 }
 
