@@ -90,10 +90,8 @@ static UDPSocket _udp_master("Master"); ///< udp master socket
 static void DoNetworkUDPQueryServer(const std::string &connection_string, bool needs_mutex, bool manually)
 {
 	/* Clear item in gamelist */
-	NetworkGameList *item = CallocT<NetworkGameList>(1);
+	NetworkGameList *item = new NetworkGameList(connection_string, manually);
 	strecpy(item->info.server_name, connection_string.c_str(), lastof(item->info.server_name));
-	item->connection_string = connection_string;
-	item->manually = manually;
 	NetworkGameListAddItemDelayed(item);
 
 	std::unique_lock<std::mutex> lock(_udp_client.mutex, std::defer_lock);
