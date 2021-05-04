@@ -45,7 +45,7 @@ void NetworkReboot();
 void NetworkDisconnect(bool blocking = false, bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
-void ParseFullConnectionString(const char **company, const char **port, char *connection_string);
+std::string_view ParseFullConnectionString(const std::string &connection_string, uint16 &port, CompanyID *company_id = nullptr);
 void NetworkStartDebugLog(const std::string &connection_string);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
