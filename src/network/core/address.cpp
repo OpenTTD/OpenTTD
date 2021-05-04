@@ -23,11 +23,13 @@ static const int DEFAULT_CONNECT_TIMEOUT_SECONDS = 3; ///< Allow connect() three
  */
 const char *NetworkAddress::GetHostname()
 {
-	if (StrEmpty(this->hostname) && this->address.ss_family != AF_UNSPEC) {
+	if (this->hostname.empty() && this->address.ss_family != AF_UNSPEC) {
 		assert(this->address_length != 0);
-		getnameinfo((struct sockaddr *)&this->address, this->address_length, this->hostname, sizeof(this->hostname), nullptr, 0, NI_NUMERICHOST);
+		char buffer[NETWORK_HOSTNAME_LENGTH];
+		getnameinfo((struct sockaddr *)&this->address, this->address_length, buffer, sizeof(buffer), nullptr, 0, NI_NUMERICHOST);
+		this->hostname = buffer;
 	}
-	return this->hostname;
+	return this->hostname.c_str();
 }
 
 /**
@@ -234,32 +236,32 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	/* Setting both hostname to nullptr and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
-	if (StrEmpty(this->hostname) && this->address_length == 0 && this->GetPort() == 0) {
+	if (this->hostname.empty() && this->address_length == 0 && this->GetPort() == 0) {
 		reset_hostname = true;
 		int fam = this->address.ss_family;
 		if (fam == AF_UNSPEC) fam = family;
-		strecpy(this->hostname, fam == AF_INET ? "0.0.0.0" : "::", lastof(this->hostname));
+		this->hostname = fam == AF_INET ? "0.0.0.0" : "::";
 	}
 
 	static bool _resolve_timeout_error_message_shown = false;
 	auto start = std::chrono::steady_clock::now();
-	int e = getaddrinfo(StrEmpty(this->hostname) ? nullptr : this->hostname, port_name, &hints, &ai);
+	int e = getaddrinfo(this->hostname.empty() ? nullptr : this->hostname.c_str(), port_name, &hints, &ai);
 	auto end = std::chrono::steady_clock::now();
 	std::chrono::seconds duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 	if (!_resolve_timeout_error_message_shown && duration >= std::chrono::seconds(5)) {
 		DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s took %i seconds",
-				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), (int)duration.count());
+				this->hostname.c_str(), port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), (int)duration.count());
 		DEBUG(net, 0, "  this is likely an issue in the DNS name resolver's configuration causing it to time out");
 		_resolve_timeout_error_message_shown = true;
 	}
 
 
-	if (reset_hostname) strecpy(this->hostname, "", lastof(this->hostname));
+	if (reset_hostname) this->hostname.clear();
 
 	if (e != 0) {
 		if (func != ResolveLoopProc) {
 			DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s failed: %s",
-				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)).c_str());
+				this->hostname.c_str(), port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)).c_str());
 		}
 		return INVALID_SOCKET;
 	}
@@ -442,11 +444,11 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
 	assert(sockets != nullptr);
 
-	/* Setting both hostname to nullptr and port to 0 is not allowed.
+	/* Setting both hostname to "" and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
 	if (this->address_length == 0 && this->address.ss_family == AF_UNSPEC &&
-			StrEmpty(this->hostname) && this->GetPort() == 0) {
+			this->hostname.empty() && this->GetPort() == 0) {
 		this->Resolve(AF_INET,  socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 		this->Resolve(AF_INET6, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 	} else {
