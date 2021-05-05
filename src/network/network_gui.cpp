@@ -2699,3 +2699,105 @@ void ShowNetworkCompanyPasswordWindow(Window *parent)
 
 	new NetworkCompanyPasswordWindow(&_network_company_password_window_desc, parent);
 }
+
+/**
+ * Window used for asking the user if he is okay using a TURN server.
+ */
+struct NetworkAskRelayWindow : public Window {
+	std::string connection_string; ///< The TURN server we want to connect to.
+	std::string token;             ///< The token for this connection.
+
+	NetworkAskRelayWindow(WindowDesc *desc, Window *parent, const std::string &connection_string, const std::string &token) : Window(desc), connection_string(connection_string), token(token)
+	{
+		this->parent = parent;
+		this->InitNested(0);
+	}
+
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	{
+		if (widget == WID_NAR_TEXT) {
+			*size = GetStringBoundingBox(STR_NETWORK_ASK_RELAY_TEXT);
+			size->height = GetStringHeight(STR_NETWORK_ASK_RELAY_TEXT, size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT) + WD_FRAMETEXT_BOTTOM + WD_FRAMETEXT_TOP;
+		}
+	}
+
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		if (widget == WID_NAR_TEXT) {
+			DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMETEXT_TOP, r.bottom - WD_FRAMETEXT_BOTTOM, STR_NETWORK_ASK_RELAY_TEXT, TC_FROMSTRING, SA_CENTER);
+		}
+	}
+
+	void FindWindowPlacementAndResize(int def_width, int def_height) override
+	{
+		/* Position query window over the calling window, ensuring it's within screen bounds. */
+		this->left = Clamp(parent->left + (parent->width / 2) - (this->width / 2), 0, _screen.width - this->width);
+		this->top = Clamp(parent->top + (parent->height / 2) - (this->height / 2), 0, _screen.height - this->height);
+		this->SetDirty();
+	}
+
+	void SetStringParameters(int widget) const override
+	{
+		switch (widget) {
+			case WID_NAR_TEXT:
+				SetDParamStr(0, this->connection_string);
+				break;
+		}
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		switch (widget) {
+			case WID_NAR_NO:
+				_network_coordinator_client.ConnectFailure(this->token, 0);
+				this->Close();
+				break;
+
+			case WID_NAR_YES_ONCE:
+				_network_coordinator_client.StartTurnConnection(this->token);
+				this->Close();
+				break;
+
+			case WID_NAR_YES_ALWAYS:
+				_settings_client.network.use_relay_service = URS_ALLOW;
+				_network_coordinator_client.StartTurnConnection(this->token);
+				this->Close();
+				break;
+		}
+	}
+};
+
+static const NWidgetPart _nested_network_ask_relay_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CLOSEBOX, COLOUR_RED),
+		NWidget(WWT_CAPTION, COLOUR_RED, WID_NAR_CAPTION), SetDataTip(STR_NETWORK_ASK_RELAY_CAPTION, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_RED), SetPIP(0, 0, 8),
+		NWidget(WWT_TEXT, COLOUR_RED, WID_NAR_TEXT), SetAlignment(SA_HOR_CENTER), SetFill(1, 1),
+		NWidget(NWID_HORIZONTAL, NC_EQUALSIZE), SetPIP(10, 15, 10),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NAR_NO), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_NETWORK_ASK_RELAY_NO, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NAR_YES_ONCE), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_NETWORK_ASK_RELAY_YES_ONCE, STR_NULL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_YELLOW, WID_NAR_YES_ALWAYS), SetMinimalSize(71, 12), SetFill(1, 1), SetDataTip(STR_NETWORK_ASK_RELAY_YES_ALWAYS, STR_NULL),
+		EndContainer(),
+	EndContainer(),
+};
+
+static WindowDesc _network_ask_relay_desc(
+	WDP_CENTER, nullptr, 0, 0,
+	WC_NETWORK_ASK_RELAY, WC_NONE,
+	WDF_MODAL,
+	_nested_network_ask_relay_widgets, lengthof(_nested_network_ask_relay_widgets)
+);
+
+/**
+ * Show a modal confirmation window with "no" / "yes, once" / "yes, always" buttons.
+ * @param connection_string The relay server we want to connect to.
+ * @param token The token for this connection.
+ */
+void ShowNetworkAskRelay(const std::string &connection_string, const std::string &token)
+{
+	CloseWindowByClass(WC_NETWORK_ASK_RELAY);
+
+	Window *parent = FindWindowById(WC_MAIN_WINDOW, 0);
+	new NetworkAskRelayWindow(&_network_ask_relay_desc, parent, connection_string, token);
+}

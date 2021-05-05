@@ -128,4 +128,13 @@ enum NetworkCompanyPasswordWidgets {
 	WID_NCP_OK,                       ///< Safe the password etc.
 };
 
+/** Widgets of the #NetworkAskRelayWindow class. */
+enum NetworkAskRelayWidgets {
+	WID_NAR_CAPTION,    ///< Caption of the window.
+	WID_NAR_TEXT,       ///< Text in the window.
+	WID_NAR_NO,         ///< "No" button.
+	WID_NAR_YES_ONCE,   ///< "Yes, once" button.
+	WID_NAR_YES_ALWAYS, ///< "Yes, always" button.
+};
+
 #endif /* WIDGETS_NETWORK_WIDGET_H */
