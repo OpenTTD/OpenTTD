@@ -252,7 +252,7 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 {
 	static const Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
 
-	info->game_info_version = p->Recv_uint8();
+	byte game_info_version = p->Recv_uint8();
 
 	/*
 	 *              Please observe the order.
@@ -262,7 +262,7 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 	/* Update the documentation in game_info.h on changes
 	 * to the NetworkGameInfo wire-protocol! */
 
-	switch (info->game_info_version) {
+	switch (game_info_version) {
 		case 4: {
 			GRFConfig **dst = &info->grfconfig;
 			uint i;
@@ -302,7 +302,7 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 			info->clients_max    = p->Recv_uint8 ();
 			info->clients_on     = p->Recv_uint8 ();
 			info->spectators_on  = p->Recv_uint8 ();
-			if (info->game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
+			if (game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
 				info->game_date    = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
 				info->start_date   = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
 			}
