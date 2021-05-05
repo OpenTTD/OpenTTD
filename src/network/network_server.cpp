@@ -1992,6 +1992,12 @@ void NetworkServerSendConfigUpdate()
 	}
 }
 
+/** Update the server's NetworkServerGameInfo due to changes in settings. */
+void NetworkServerUpdateGameInfo()
+{
+	if (_network_server) FillStaticNetworkServerGameInfo();
+}
+
 /**
  * Tell that a particular company is (not) passworded.
  * @param company_id The company that got/removed the password.

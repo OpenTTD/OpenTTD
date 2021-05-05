@@ -68,6 +68,7 @@ void NetworkServerDailyLoop();
 void NetworkServerMonthlyLoop();
 void NetworkServerYearlyLoop();
 void NetworkServerSendConfigUpdate();
+void NetworkServerUpdateGameInfo();
 void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();
 void NetworkServerNewCompany(const Company *company, NetworkClientInfo *ci);
