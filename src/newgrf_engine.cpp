@@ -1197,15 +1197,32 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	/* We can't trigger a non-existent vehicle... */
 	assert(v != nullptr);
 
-	VehicleResolverObject object(v->engine_type, v, VehicleResolverObject::WO_CACHED, false, CBID_RANDOM_TRIGGER);
-	object.waiting_triggers = v->waiting_triggers | trigger;
-	v->waiting_triggers = object.waiting_triggers; // store now for var 5F
+	uint32 waiting_triggers = v->waiting_triggers | trigger;
+	bool got_result = false;
 
-	const SpriteGroup *group = object.Resolve();
-	if (group == nullptr) return;
+	VehicleResolverObject object(v->engine_type, v, VehicleResolverObject::WO_CACHED, false, CBID_RANDOM_TRIGGER);
+	bool sprite_stack = HasBit(EngInfo(v->engine_type)->misc_flags, EF_SPRITE_STACK);
+	uint max_stack = sprite_stack ? lengthof(VehicleSpriteSeq::seq) : 1;
+	for (uint stack = 0; stack < max_stack; ++stack) {
+		object.ResetState();
+		object.waiting_triggers = v->waiting_triggers | trigger;
+		object.callback_param1 = EIT_ON_MAP | (stack << 8);
+		v->waiting_triggers = object.waiting_triggers; // store now for var 5F
+
+		const SpriteGroup *group = object.Resolve();
+		uint32 reg100 = sprite_stack ? GetRegister(0x100) : 0;
+		if (group != nullptr) {
+			/* Combine waiting triggers. */
+			waiting_triggers &= object.GetRemainingTriggers();
+			got_result = true;
+		}
+		if (!HasBit(reg100, 31)) break;
+	}
+
+	if (!got_result) return;
 
 	/* Store remaining triggers. */
-	v->waiting_triggers = object.GetRemainingTriggers();
+	v->waiting_triggers = waiting_triggers;
 
 	/* Rerandomise bits. Scopes other than SELF are invalid for rerandomisation. For bug-to-bug-compatibility with TTDP we ignore the scope. */
 	byte new_random_bits = Random();
