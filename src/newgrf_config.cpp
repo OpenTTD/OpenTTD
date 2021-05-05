@@ -835,9 +835,6 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last)
 	return dst;
 }
 
-/** Base GRF ID for OpenTTD's base graphics GRFs. */
-static const uint32 OPENTTD_GRAPHICS_BASE_GRF_ID = BSWAP32(0xFF4F5400);
-
 /**
  * Search a textfile file next to this NewGRF.
  * @param type The type of the textfile to search for.
