@@ -85,7 +85,6 @@ struct NetworkServerGameInfo {
 struct NetworkGameInfo : NetworkServerGameInfo {
 	bool version_compatible;                        ///< Can we connect to this server or not? (based on server_revision)
 	bool compatible;                                ///< Can we connect to this server or not? (based on server_revision _and_ grf_match
-	byte game_info_version;                         ///< Version of the game info
 };
 
 extern NetworkServerGameInfo _network_game_info;
