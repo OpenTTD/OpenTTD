@@ -34,6 +34,7 @@ enum PacketCoordinatorType {
 	PACKET_COORDINATOR_SERVER_STUN_REQUEST,   ///< Game Coordinator tells client/server to initiate a STUN request.
 	PACKET_COORDINATOR_SERVER_STUN_CONNECT,   ///< Game Coordinator tells client/server to connect() reusing the STUN local address.
 	PACKET_COORDINATOR_CLIENT_STUN_RESULT,    ///< Client informs the Game Coordinator of the result of the STUN request.
+	PACKET_COORDINATOR_SERVER_TURN_CONNECT,   ///< Game Coordinator tells client/server to connect to TURN server.
 	PACKET_COORDINATOR_END,                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -45,6 +46,7 @@ enum ConnectionType {
 	CONNECTION_TYPE_ISOLATED, ///< The Game Coordinator failed to find a way to connect to your server. Nobody will be able to join.
 	CONNECTION_TYPE_DIRECT,   ///< The Game Coordinator can directly connect to your server.
 	CONNECTION_TYPE_STUN,     ///< The Game Coordinator can connect to your server via a STUN request.
+	CONNECTION_TYPE_TURN,     ///< The Game Coordinator needs you to connect to a relay.
 };
 
 /**
@@ -256,6 +258,20 @@ protected:
 	 * @return True upon success, otherwise false.
 	 */
 	virtual bool Receive_CLIENT_STUN_RESULT(Packet *p);
+
+	/**
+	 * Game Coordinator requests that we make a direct connection to the
+	 * indicated peer, which is a TURN server.
+	 *
+	 *  string  Token to track the current connect request.
+	 *  uint8   Tracking number to track current connect request.
+	 *  string  Host of the peer.
+	 *  uint16  Port of the peer.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_SERVER_TURN_CONNECT(Packet *p);
 
 	bool HandlePacket(Packet *p);
 public:

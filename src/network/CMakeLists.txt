@@ -26,6 +26,8 @@ add_files(
     network_server.h
     network_stun.cpp
     network_stun.h
+    network_turn.cpp
+    network_turn.h
     network_type.h
     network_udp.cpp
     network_udp.h

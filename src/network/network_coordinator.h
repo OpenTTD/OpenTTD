@@ -12,6 +12,7 @@
 
 #include "core/tcp_coordinator.h"
 #include "network_stun.h"
+#include "network_turn.h"
 #include <map>
 
 /**
@@ -40,6 +41,10 @@
  *        - a) Server/client connect, client closes GC connection.
  *        - b) Server/client connect fails, connecting side sends CLIENT_CONNECT_FAILED to GC.
  *        - GC tries other combination if available.
+ *    3) TURN?
+ *        - GC sends SERVER_TURN_CONNECT to server/client.
+ *        - a) Server/client connect, client closes GC connection.
+ *        - b) Server/client connect fails, both send CLIENT_CONNECT_FAILED to GC.
  *  - If all fails, GC sends SERVER_CONNECT_FAILED to indicate no connection was possible.
  */
 
@@ -50,6 +55,7 @@ private:
 	std::map<std::string, TCPServerConnecter *> connecter; ///< Based on tokens, the current connecters that are pending.
 	std::map<std::string, TCPServerConnecter *> connecter_pre; ///< Based on join-keys, the current connecters that are pending.
 	std::map<std::string, std::map<int, std::unique_ptr<ClientNetworkStunSocketHandler>>> stun_handlers; ///< All pending STUN handlers.
+	std::unique_ptr<ClientNetworkTurnSocketHandler> turn_handler; ///< Pending TURN handler (if any).
 	TCPConnecter *game_connecter = nullptr; ///< Pending connecter to the game server.
 
 protected:
@@ -61,6 +67,7 @@ protected:
 	bool Receive_SERVER_DIRECT_CONNECT(Packet *p) override;
 	bool Receive_SERVER_STUN_REQUEST(Packet *p) override;
 	bool Receive_SERVER_STUN_CONNECT(Packet *p) override;
+	bool Receive_SERVER_TURN_CONNECT(Packet *p) override;
 
 public:
 	/** The idle timeout; when to close the connection because it's idle. */
@@ -82,6 +89,7 @@ public:
 	void CloseToken(const std::string &token);
 	void CloseAllTokens();
 	void CloseStunHandler(const std::string &token, uint8 family = AF_UNSPEC);
+	void CloseTurnHandler(const std::string &token);
 
 	void Register();
 	void SendServerUpdate();
