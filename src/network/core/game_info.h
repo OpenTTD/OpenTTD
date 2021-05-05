@@ -94,6 +94,7 @@ const char *GetNetworkRevisionString();
 bool IsNetworkCompatibleVersion(const char *other);
 void CheckGameCompatibility(NetworkGameInfo &ngi);
 
+void FillStaticNetworkServerGameInfo();
 const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo();
 
 void DeserializeGRFIdentifier(Packet *p, GRFIdentifier *grf);

@@ -1416,6 +1416,7 @@ static bool UpdateServerPassword(int32 p1)
 		_settings_client.network.server_password[0] = '\0';
 	}
 
+	NetworkServerUpdateGameInfo();
 	return true;
 }
 
@@ -1430,6 +1431,7 @@ static bool UpdateRconPassword(int32 p1)
 
 static bool UpdateClientConfigValues(int32 p1)
 {
+	NetworkServerUpdateGameInfo();
 	if (_network_server) NetworkServerSendConfigUpdate();
 
 	return true;

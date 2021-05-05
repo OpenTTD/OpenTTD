@@ -805,6 +805,7 @@ static void NetworkInitGameInfo()
 		strecpy(_settings_client.network.server_name, "Unnamed Server", lastof(_settings_client.network.server_name));
 	}
 
+	FillStaticNetworkServerGameInfo();
 	/* The server is a client too */
 	_network_game_info.clients_on = _network_dedicated ? 0 : 1;
 

@@ -122,10 +122,10 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
 }
 
 /**
- * Get the NetworkServerGameInfo structure with the latest information of the server.
- * @return The current NetworkServerGameInfo.
+ * Fill a NetworkServerGameInfo structure with the static content, or things
+ * that are so static they can be updated on request from a settings change.
  */
-const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
+void FillStaticNetworkServerGameInfo()
 {
 	_network_game_info.use_password   = !StrEmpty(_settings_client.network.server_password);
 	_network_game_info.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
@@ -140,7 +140,14 @@ const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
 
 	strecpy(_network_game_info.server_name, _settings_client.network.server_name, lastof(_network_game_info.server_name));
 	strecpy(_network_game_info.server_revision, GetNetworkRevisionString(), lastof(_network_game_info.server_revision));
+}
 
+/**
+ * Get the NetworkServerGameInfo structure with the latest information of the server.
+ * @return The current NetworkServerGameInfo.
+ */
+const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
+{
 	/* Client_on is used as global variable to keep track on the number of clients. */
 	_network_game_info.companies_on  = (byte)Company::GetNumItems();
 	_network_game_info.spectators_on = NetworkSpectatorCount();
