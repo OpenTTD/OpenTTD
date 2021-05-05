@@ -356,11 +356,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendClientInfo(NetworkClientIn
 /** Send the client information about the server. */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendGameInfo()
 {
-	NetworkGameInfo ngi;
-	FillNetworkGameInfo(ngi);
-
 	Packet *p = new Packet(PACKET_SERVER_GAME_INFO);
-	SerializeNetworkGameInfo(p, &ngi);
+	SerializeNetworkGameInfo(p, GetCurrentNetworkServerGameInfo());
 
 	this->SendPacket(p);
 

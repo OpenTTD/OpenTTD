@@ -122,30 +122,30 @@ void CheckGameCompatibility(NetworkGameInfo &ngi)
 }
 
 /**
- * Fill a NetworkGameInfo structure with the latest information of the server.
- * @param ngi the NetworkGameInfo struct to fill with data.
+ * Get the NetworkServerGameInfo structure with the latest information of the server.
+ * @return The current NetworkServerGameInfo.
  */
-void FillNetworkGameInfo(NetworkGameInfo &ngi)
+const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo()
 {
-	/* Update some game_info */
-	ngi.clients_on     = _network_game_info.clients_on;
-	ngi.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+	_network_game_info.use_password   = !StrEmpty(_settings_client.network.server_password);
+	_network_game_info.start_date     = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
+	_network_game_info.clients_max    = _settings_client.network.max_clients;
+	_network_game_info.companies_max  = _settings_client.network.max_companies;
+	_network_game_info.spectators_max = _settings_client.network.max_spectators;
+	_network_game_info.map_width      = MapSizeX();
+	_network_game_info.map_height     = MapSizeY();
+	_network_game_info.landscape      = _settings_game.game_creation.landscape;
+	_network_game_info.dedicated      = _network_dedicated;
+	_network_game_info.grfconfig      = _grfconfig;
 
-	ngi.use_password   = !StrEmpty(_settings_client.network.server_password);
-	ngi.clients_max    = _settings_client.network.max_clients;
-	ngi.companies_on   = (byte)Company::GetNumItems();
-	ngi.companies_max  = _settings_client.network.max_companies;
-	ngi.spectators_on  = NetworkSpectatorCount();
-	ngi.spectators_max = _settings_client.network.max_spectators;
-	ngi.game_date      = _date;
-	ngi.map_width      = MapSizeX();
-	ngi.map_height     = MapSizeY();
-	ngi.map_set        = _settings_game.game_creation.landscape;
-	ngi.dedicated      = _network_dedicated;
-	ngi.grfconfig      = _grfconfig;
+	strecpy(_network_game_info.server_name, _settings_client.network.server_name, lastof(_network_game_info.server_name));
+	strecpy(_network_game_info.server_revision, GetNetworkRevisionString(), lastof(_network_game_info.server_revision));
 
-	strecpy(ngi.server_name, _settings_client.network.server_name, lastof(ngi.server_name));
-	strecpy(ngi.server_revision, GetNetworkRevisionString(), lastof(ngi.server_revision));
+	/* Client_on is used as global variable to keep track on the number of clients. */
+	_network_game_info.companies_on  = (byte)Company::GetNumItems();
+	_network_game_info.spectators_on = NetworkSpectatorCount();
+	_network_game_info.game_date     = _date;
+	return &_network_game_info;
 }
 
 /**
@@ -179,7 +179,7 @@ static void HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config)
  * @param p    the packet to write the data to.
  * @param info the NetworkGameInfo struct to serialize from.
  */
-void SerializeNetworkGameInfo(Packet *p, const NetworkGameInfo *info)
+void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info)
 {
 	p->Send_uint8 (NETWORK_GAME_INFO_VERSION);
 
@@ -232,7 +232,7 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkGameInfo *info)
 	p->Send_string(""); // Used to be map-name.
 	p->Send_uint16(info->map_width);
 	p->Send_uint16(info->map_height);
-	p->Send_uint8 (info->map_set);
+	p->Send_uint8 (info->landscape);
 	p->Send_bool  (info->dedicated);
 }
 
@@ -302,10 +302,10 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 			while (p->Recv_uint8() != 0) {} // Used to contain the map-name.
 			info->map_width      = p->Recv_uint16();
 			info->map_height     = p->Recv_uint16();
-			info->map_set        = p->Recv_uint8 ();
+			info->landscape      = p->Recv_uint8 ();
 			info->dedicated      = p->Recv_bool  ();
 
-			if (info->map_set     >= NETWORK_NUM_LANDSCAPES) info->map_set = 0;
+			if (info->landscape >= NETWORK_NUM_LANDSCAPES) info->landscape = 0;
 	}
 }
 

@@ -170,11 +170,8 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, Networ
 		return;
 	}
 
-	NetworkGameInfo ngi;
-	FillNetworkGameInfo(ngi);
-
 	Packet packet(PACKET_UDP_SERVER_RESPONSE);
-	SerializeNetworkGameInfo(&packet, &ngi);
+	SerializeNetworkGameInfo(&packet, GetCurrentNetworkServerGameInfo());
 
 	/* Let the client know that we are here */
 	this->SendPacket(&packet, client_addr);

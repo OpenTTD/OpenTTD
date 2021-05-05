@@ -57,17 +57,9 @@
  */
 
 /**
- * The game information that is not generated on-the-fly and has to
- * be sent to the clients.
+ * The game information that is sent from the server to the client.
  */
 struct NetworkServerGameInfo {
-	byte clients_on;                                ///< Current count of clients on server
-};
-
-/**
- * The game information that is sent from the server to the clients.
- */
-struct NetworkGameInfo : NetworkServerGameInfo {
 	GRFConfig *grfconfig;                           ///< List of NewGRF files used
 	Date start_date;                                ///< When the game started
 	Date game_date;                                 ///< Current date
@@ -76,16 +68,24 @@ struct NetworkGameInfo : NetworkServerGameInfo {
 	char server_name[NETWORK_NAME_LENGTH];          ///< Server name
 	char server_revision[NETWORK_REVISION_LENGTH];  ///< The version number the server is using (e.g.: 'r304' or 0.5.0)
 	bool dedicated;                                 ///< Is this a dedicated server?
-	bool version_compatible;                        ///< Can we connect to this server or not? (based on server_revision)
-	bool compatible;                                ///< Can we connect to this server or not? (based on server_revision _and_ grf_match
 	bool use_password;                              ///< Is this server passworded?
-	byte game_info_version;                         ///< Version of the game info
+	byte clients_on;                                ///< Current count of clients on server
 	byte clients_max;                               ///< Max clients allowed on server
 	byte companies_on;                              ///< How many started companies do we have
 	byte companies_max;                             ///< Max companies allowed on server
 	byte spectators_on;                             ///< How many spectators do we have?
 	byte spectators_max;                            ///< Max spectators allowed on server
-	byte map_set;                                   ///< Graphical set
+	byte landscape;                                 ///< The used landscape
+};
+
+/**
+ * The game information that is sent from the server to the clients
+ * with extra information only required at the client side.
+ */
+struct NetworkGameInfo : NetworkServerGameInfo {
+	bool version_compatible;                        ///< Can we connect to this server or not? (based on server_revision)
+	bool compatible;                                ///< Can we connect to this server or not? (based on server_revision _and_ grf_match
+	byte game_info_version;                         ///< Version of the game info
 };
 
 extern NetworkServerGameInfo _network_game_info;
@@ -94,12 +94,12 @@ const char *GetNetworkRevisionString();
 bool IsNetworkCompatibleVersion(const char *other);
 void CheckGameCompatibility(NetworkGameInfo &ngi);
 
-void FillNetworkGameInfo(NetworkGameInfo &ngi);
+const NetworkServerGameInfo *GetCurrentNetworkServerGameInfo();
 
 void DeserializeGRFIdentifier(Packet *p, GRFIdentifier *grf);
 void SerializeGRFIdentifier(Packet *p, const GRFIdentifier *grf);
 
 void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info);
-void SerializeNetworkGameInfo(Packet *p, const NetworkGameInfo *info);
+void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info);
 
 #endif /* NETWORK_CORE_GAME_INFO_H */
