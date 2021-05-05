@@ -81,16 +81,14 @@ class NetworkHTTPContentConnecter : TCPConnecter {
 public:
 	/**
 	 * Start the connecting.
-	 * @param address  the address to connect to
-	 * @param callback the callback for HTTP retrieval
-	 * @param url      the url at the server
-	 * @param data     the data to send
-	 * @param depth    the depth (redirect recursion) of the queries
+	 * @param connection_string The address to connect to.
+	 * @param callback The callback for HTTP retrieval.
+	 * @param url The url at the server.
+	 * @param data The data to send.
+	 * @param depth The depth (redirect recursion) of the queries.
 	 */
-	NetworkHTTPContentConnecter(const NetworkAddress &address,
-			HTTPCallback *callback, const char *url,
-			const char *data = nullptr, int depth = 0) :
-		TCPConnecter(address),
+	NetworkHTTPContentConnecter(const std::string &connection_string, HTTPCallback *callback, const char *url, const char *data = nullptr, int depth = 0) :
+		TCPConnecter(connection_string, 80),
 		callback(callback),
 		url(stredup(url)),
 		data(data),

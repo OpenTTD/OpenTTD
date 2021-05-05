@@ -15,7 +15,7 @@
 /** Class for handling the client side of the game connection. */
 class ClientNetworkGameSocketHandler : public ZeroedMemoryAllocator, public NetworkGameSocketHandler {
 private:
-	NetworkAddress address;        ///< Address we are connected to.
+	std::string connection_string; ///< Address we are connected to.
 	struct PacketReader *savegame; ///< Packet reader for reading the savegame.
 	byte token;                    ///< The token we need to send back to the server to prove we're the right client.
 
@@ -76,7 +76,7 @@ protected:
 	static NetworkRecvStatus SendMapOk();
 	void CheckConnection();
 public:
-	ClientNetworkGameSocketHandler(SOCKET s, NetworkAddress address);
+	ClientNetworkGameSocketHandler(SOCKET s, const std::string &connection_string);
 	~ClientNetworkGameSocketHandler();
 
 	NetworkRecvStatus CloseConnection(NetworkRecvStatus status) override;
@@ -115,10 +115,10 @@ void NetworkClientSetCompanyPassword(const char *password);
 /** Information required to join a server. */
 struct NetworkJoinInfo {
 	NetworkJoinInfo() : company(COMPANY_SPECTATOR), server_password(nullptr), company_password(nullptr) {}
-	NetworkAddress address;       ///< The address of the server to join.
-	CompanyID company;            ///< The company to join.
-	const char *server_password;  ///< The password of the server to join.
-	const char *company_password; ///< The password of the company to join.
+	std::string connection_string; ///< The address of the server to join.
+	CompanyID company;             ///< The company to join.
+	const char *server_password;   ///< The password of the server to join.
+	const char *company_password;  ///< The password of the company to join.
 };
 
 extern NetworkJoinInfo _network_join;

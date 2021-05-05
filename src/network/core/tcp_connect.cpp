@@ -13,6 +13,7 @@
 #include "../../thread.h"
 
 #include "tcp.h"
+#include "../network_internal.h"
 
 #include "../../safeguards.h"
 
@@ -21,15 +22,16 @@ static std::vector<TCPConnecter *> _tcp_connecters;
 
 /**
  * Create a new connecter for the given address
- * @param address the (un)resolved address to connect to
+ * @param connection_string the address to connect to
  */
-TCPConnecter::TCPConnecter(const NetworkAddress &address) :
+TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_port) :
 	connected(false),
 	aborted(false),
 	killed(false),
-	sock(INVALID_SOCKET),
-	address(address)
+	sock(INVALID_SOCKET)
 {
+	this->address = ParseConnectionString(connection_string, default_port);
+
 	_tcp_connecters.push_back(this);
 	if (!StartNewThread(nullptr, "ottd:tcp", &TCPConnecter::ThreadEntry, this)) {
 		this->Connect();

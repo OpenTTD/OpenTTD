@@ -203,11 +203,9 @@ int NetworkHTTPSocketHandler::HandleHeader()
 
 	*url = '\0';
 
-	NetworkAddress address = ParseConnectionString(hname, 80);
-
 	/* Restore the URL. */
 	*url = '/';
-	new NetworkHTTPContentConnecter(address, callback, url, data, depth);
+	new NetworkHTTPContentConnecter(hname, callback, url, data, depth);
 	return 0;
 }
 

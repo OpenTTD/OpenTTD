@@ -515,7 +515,7 @@ NetworkAddress ParseConnectionString(const std::string &connection_string, int d
  * @param default_port The default port to set port to if not in connection_string.
  * @return A valid NetworkAddress of the parsed information.
  */
-NetworkAddress ParseGameConnectionString(CompanyID *company, const std::string &connection_string, int default_port)
+static NetworkAddress ParseGameConnectionString(CompanyID *company, const std::string &connection_string, int default_port)
 {
 	char internal_connection_string[NETWORK_HOSTNAME_PORT_LENGTH + 4]; // 4 extra for the "#" and company
 	strecpy(internal_connection_string, connection_string.c_str(), lastof(internal_connection_string));
@@ -524,7 +524,20 @@ NetworkAddress ParseGameConnectionString(CompanyID *company, const std::string &
 	const char *company_s = nullptr;
 	ParseFullConnectionString(&company_s, &port_s, internal_connection_string);
 
-	if (company_s != nullptr) *company = (CompanyID)atoi(company_s);
+	if (company_s != nullptr) {
+		uint company_value = atoi(company_s);
+
+		if (company_value != COMPANY_NEW_COMPANY && company_value != COMPANY_SPECTATOR) {
+			if (company_value > MAX_COMPANIES || company_value == 0) {
+				*company = COMPANY_SPECTATOR;
+			} else {
+				/* "#1" means the first company, which has index 0. */
+				*company = (CompanyID)(company_value - 1);
+			}
+		} else {
+			*company = (CompanyID)company_value;
+		}
+	}
 
 	int port = port_s != nullptr ? atoi(port_s) : default_port;
 	return NetworkAddress(internal_connection_string, port);
@@ -607,9 +620,10 @@ static void NetworkInitialize(bool close_admins = true)
 class TCPQueryConnecter : TCPConnecter {
 private:
 	bool request_company_info;
+	std::string connection_string;
 
 public:
-	TCPQueryConnecter(const NetworkAddress &address, bool request_company_info) : TCPConnecter(address), request_company_info(request_company_info) {}
+	TCPQueryConnecter(const std::string &connection_string, bool request_company_info) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), request_company_info(request_company_info), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{
@@ -619,24 +633,24 @@ public:
 	void OnConnect(SOCKET s) override
 	{
 		_networking = true;
-		new ClientNetworkGameSocketHandler(s, address);
+		new ClientNetworkGameSocketHandler(s, this->connection_string);
 		MyClient::SendInformationQuery(request_company_info);
 	}
 };
 
 /**
  * Query a server to fetch his game-info.
- * @param address the address to query.
+ * @param connection_string the address to query.
  * @param request_company_info Whether to request company info too.
  */
-void NetworkTCPQueryServer(NetworkAddress address, bool request_company_info)
+void NetworkTCPQueryServer(const std::string &connection_string, bool request_company_info)
 {
 	if (!_network_available) return;
 
 	NetworkDisconnect();
 	NetworkInitialize();
 
-	new TCPQueryConnecter(address, request_company_info);
+	new TCPQueryConnecter(connection_string, request_company_info);
 }
 
 /**
@@ -650,20 +664,18 @@ NetworkGameList *NetworkAddServer(const std::string &connection_string)
 {
 	if (connection_string.empty()) return nullptr;
 
-	NetworkAddress address = ParseConnectionString(connection_string, NETWORK_DEFAULT_PORT);
-
 	/* Ensure the item already exists in the list */
-	NetworkGameList *item = NetworkGameListAddItem(address);
+	NetworkGameList *item = NetworkGameListAddItem(connection_string);
 	if (StrEmpty(item->info.server_name)) {
 		ClearGRFConfigList(&item->info.grfconfig);
-		address.GetAddressAsString(item->info.server_name, lastof(item->info.server_name));
+		strecpy(item->info.server_name, connection_string.c_str(), lastof(item->info.server_name));
 		item->manually = true;
 
 		NetworkRebuildHostList();
 		UpdateNetworkGameWindow();
 	}
 
-	NetworkTCPQueryServer(address);
+	NetworkTCPQueryServer(connection_string);
 
 	return item;
 }
@@ -693,14 +705,17 @@ void NetworkRebuildHostList()
 	_network_host_list.clear();
 
 	for (NetworkGameList *item = _network_game_list; item != nullptr; item = item->next) {
-		if (item->manually) _network_host_list.emplace_back(item->address.GetAddressAsString(false));
+		if (item->manually) _network_host_list.emplace_back(item->connection_string);
 	}
 }
 
 /** Non blocking connection create to actually connect to servers */
 class TCPClientConnecter : TCPConnecter {
+private:
+	std::string connection_string;
+
 public:
-	TCPClientConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
+	TCPClientConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{
@@ -710,7 +725,7 @@ public:
 	void OnConnect(SOCKET s) override
 	{
 		_networking = true;
-		new ClientNetworkGameSocketHandler(s, this->address);
+		new ClientNetworkGameSocketHandler(s, this->connection_string);
 		IConsoleCmdExec("exec scripts/on_client.scr 0");
 		NetworkClient_Connected();
 	}
@@ -736,34 +751,12 @@ public:
 bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const char *join_server_password, const char *join_company_password)
 {
 	CompanyID join_as = default_company;
-	NetworkAddress address = ParseGameConnectionString(&join_as, connection_string, NETWORK_DEFAULT_PORT);
+	std::string resolved_connection_string = ParseGameConnectionString(&join_as, connection_string, NETWORK_DEFAULT_PORT).GetAddressAsString(false);
 
-	if (join_as != COMPANY_NEW_COMPANY && join_as != COMPANY_SPECTATOR) {
-		join_as--;
-		if (join_as >= MAX_COMPANIES) {
-			return false;
-		}
-	}
-
-	return NetworkClientConnectGame(address, join_as, join_server_password, join_company_password);
-}
-
-/**
- * Join a client to the server at the given address.
- * See the overloaded NetworkClientConnectGame for more details.
- *
- * @param address               The network address of the server to join to.
- * @param join_as               The company number to join as.
- * @param join_server_password  The password for the server.
- * @param join_company_password The password for the company.
- * @return Whether the join has started.
- */
-bool NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const char *join_server_password, const char *join_company_password)
-{
 	if (!_network_available) return false;
 	if (!NetworkValidateClientName()) return false;
 
-	_network_join.address = address;
+	_network_join.connection_string = resolved_connection_string;
 	_network_join.company = join_as;
 	_network_join.server_password = join_server_password;
 	_network_join.company_password = join_company_password;
@@ -792,11 +785,11 @@ void NetworkClientJoinGame()
 	NetworkDisconnect();
 	NetworkInitialize();
 
-	strecpy(_settings_client.network.last_joined, _network_join.address.GetAddressAsString(false).c_str(), lastof(_settings_client.network.last_joined));
+	strecpy(_settings_client.network.last_joined, _network_join.connection_string.c_str(), lastof(_settings_client.network.last_joined));
 	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
 	ShowJoinStatusWindow();
 
-	new TCPClientConnecter(_network_join.address);
+	new TCPClientConnecter(_network_join.connection_string);
 }
 
 static void NetworkInitGameInfo()

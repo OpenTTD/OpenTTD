@@ -77,7 +77,7 @@ protected:
 	NetworkAddress address;
 
 public:
-	TCPConnecter(const NetworkAddress &address);
+	TCPConnecter(const std::string &connection_string, uint16 default_port);
 	/** Silence the warnings */
 	virtual ~TCPConnecter() {}
 
