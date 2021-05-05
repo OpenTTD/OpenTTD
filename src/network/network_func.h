@@ -39,6 +39,7 @@ bool NetworkValidateOurClientName();
 bool NetworkValidateClientName(std::string &client_name);
 bool NetworkValidateServerName(std::string &server_name);
 void NetworkUpdateClientName(const std::string &client_name);
+void NetworkUpdateServerGameType();
 bool NetworkCompanyHasClients(CompanyID company);
 std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string password);
 void NetworkReboot();

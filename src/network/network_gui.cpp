@@ -61,22 +61,23 @@ static ClientID _admin_client_id = INVALID_CLIENT_ID; ///< For what client a con
 static CompanyID _admin_company_id = INVALID_COMPANY; ///< For what company a confirmation window is open.
 
 /**
- * Visibility of the server. Public servers advertise, where private servers
- * do not.
- */
-static const StringID _server_visibility_dropdown[] = {
-	STR_NETWORK_SERVER_VISIBILITY_LOCAL,
-	STR_NETWORK_SERVER_VISIBILITY_PUBLIC,
-	INVALID_STRING_ID
-};
-
-/**
  * Update the network new window because a new server is
  * found on the network.
  */
 void UpdateNetworkGameWindow()
 {
 	InvalidateWindowData(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME, 0);
+}
+
+static DropDownList BuildVisibilityDropDownList()
+{
+	DropDownList list;
+
+	list.emplace_back(new DropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_LOCAL, SERVER_GAME_TYPE_LOCAL, false));
+	list.emplace_back(new DropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY, SERVER_GAME_TYPE_INVITE_ONLY, false));
+	list.emplace_back(new DropDownListStringItem(STR_NETWORK_SERVER_VISIBILITY_PUBLIC, SERVER_GAME_TYPE_PUBLIC, false));
+
+	return list;
 }
 
 typedef GUIList<NetworkGameList*, StringFilter&> GUIGameServerList;
@@ -1015,7 +1016,7 @@ struct NetworkStartServerWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
-				SetDParam(0, _server_visibility_dropdown[_settings_client.network.server_advertise]);
+				SetDParam(0, STR_NETWORK_SERVER_VISIBILITY_LOCAL + _settings_client.network.server_game_type);
 				break;
 
 			case WID_NSS_CLIENTS_TXT:
@@ -1036,7 +1037,7 @@ struct NetworkStartServerWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
-				*size = maxdim(GetStringBoundingBox(_server_visibility_dropdown[0]), GetStringBoundingBox(_server_visibility_dropdown[1]));
+				*size = maxdim(maxdim(GetStringBoundingBox(STR_NETWORK_SERVER_VISIBILITY_LOCAL), GetStringBoundingBox(STR_NETWORK_SERVER_VISIBILITY_PUBLIC)), GetStringBoundingBox(STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY));
 				size->width += padding.width;
 				size->height += padding.height;
 				break;
@@ -1066,7 +1067,7 @@ struct NetworkStartServerWindow : public Window {
 				break;
 
 			case WID_NSS_CONNTYPE_BTN: // Connection type
-				ShowDropDownMenu(this, _server_visibility_dropdown, _settings_client.network.server_advertise, WID_NSS_CONNTYPE_BTN, 0, 0); // do it for widget WID_NSS_CONNTYPE_BTN
+				ShowDropDownList(this, BuildVisibilityDropDownList(), _settings_client.network.server_game_type, WID_NSS_CONNTYPE_BTN);
 				break;
 
 			case WID_NSS_CLIENTS_BTND:    case WID_NSS_CLIENTS_BTNU:    // Click on up/down button for number of clients
@@ -1144,7 +1145,7 @@ struct NetworkStartServerWindow : public Window {
 	{
 		switch (widget) {
 			case WID_NSS_CONNTYPE_BTN:
-				_settings_client.network.server_advertise = (index != 0);
+				_settings_client.network.server_game_type = (ServerGameType)index;
 				break;
 			default:
 				NOT_REACHED();
@@ -2041,7 +2042,7 @@ public:
 	{
 		switch (widget) {
 			case WID_CL_SERVER_VISIBILITY:
-				*size = maxdim(GetStringBoundingBox(_server_visibility_dropdown[0]), GetStringBoundingBox(_server_visibility_dropdown[1]));
+				*size = maxdim(maxdim(GetStringBoundingBox(STR_NETWORK_SERVER_VISIBILITY_LOCAL), GetStringBoundingBox(STR_NETWORK_SERVER_VISIBILITY_PUBLIC)), GetStringBoundingBox(STR_NETWORK_SERVER_VISIBILITY_INVITE_ONLY));
 				size->width += padding.width;
 				size->height += padding.height;
 				break;
@@ -2073,7 +2074,7 @@ public:
 				break;
 
 			case WID_CL_SERVER_VISIBILITY:
-				SetDParam(0, _server_visibility_dropdown[_settings_client.network.server_advertise]);
+				SetDParam(0, STR_NETWORK_SERVER_VISIBILITY_LOCAL + _settings_client.network.server_game_type);
 				break;
 
 			case WID_CL_SERVER_JOIN_KEY: {
@@ -2117,7 +2118,7 @@ public:
 			case WID_CL_SERVER_VISIBILITY:
 				if (!_network_server) break;
 
-				ShowDropDownMenu(this, _server_visibility_dropdown, _settings_client.network.server_advertise, WID_CL_SERVER_VISIBILITY, 0, 0);
+				ShowDropDownList(this, BuildVisibilityDropDownList(), _settings_client.network.server_game_type, WID_CL_SERVER_VISIBILITY);
 				break;
 
 			case WID_CL_MATRIX: {
@@ -2183,7 +2184,8 @@ public:
 			case WID_CL_SERVER_VISIBILITY:
 				if (!_network_server) break;
 
-				_settings_client.network.server_advertise = (index != 0);
+				_settings_client.network.server_game_type = (ServerGameType)index;
+				NetworkUpdateServerGameType();
 				break;
 
 			case WID_CL_MATRIX: {
