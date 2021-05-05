@@ -343,8 +343,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const Conten
 
 	this->http_response_index = -1;
 
-	NetworkAddress address(NETWORK_CONTENT_MIRROR_HOST, NETWORK_CONTENT_MIRROR_PORT);
-	new NetworkHTTPContentConnecter(address, this, NETWORK_CONTENT_MIRROR_URL, content_request);
+	new NetworkHTTPContentConnecter(NETWORK_CONTENT_MIRROR_HOST, this, NETWORK_CONTENT_MIRROR_URL, content_request);
 	/* NetworkHTTPContentConnecter takes over freeing of content_request! */
 }
 
@@ -744,7 +743,7 @@ public:
 	 * Initiate the connecting.
 	 * @param address The address of the server.
 	 */
-	NetworkContentConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
+	NetworkContentConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_CONTENT_SERVER_PORT) {}
 
 	void OnFailure() override
 	{
@@ -770,7 +769,7 @@ void ClientNetworkContentSocketHandler::Connect()
 {
 	if (this->sock != INVALID_SOCKET || this->isConnecting) return;
 	this->isConnecting = true;
-	new NetworkContentConnecter(NetworkAddress(NETWORK_CONTENT_SERVER_HOST, NETWORK_CONTENT_SERVER_PORT, AF_UNSPEC));
+	new NetworkContentConnecter(NETWORK_CONTENT_SERVER_HOST);
 }
 
 /**

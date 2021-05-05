@@ -87,7 +87,7 @@ extern uint8 _network_reconnect;
 
 extern CompanyMask _network_company_passworded;
 
-void NetworkTCPQueryServer(NetworkAddress address, bool request_company_info = false);
+void NetworkTCPQueryServer(const std::string &connection_string, bool request_company_info = false);
 
 void GetBindAddresses(NetworkAddressList *addresses, uint16 port);
 struct NetworkGameList *NetworkAddServer(const std::string &connection_string);
@@ -119,8 +119,6 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkFindName(char *new_name, const char *last);
 const char *GenerateCompanyPasswordHash(const char *password, const char *password_server_id, uint32 password_game_seed);
 
-bool NetworkClientConnectGame(NetworkAddress &address, CompanyID join_as, const char *join_server_password = nullptr, const char *join_company_password = nullptr);
 NetworkAddress ParseConnectionString(const std::string &connection_string, int default_port);
-NetworkAddress ParseGameConnectionString(CompanyID *company, const std::string &connection_string, int default_port);
 
 #endif /* NETWORK_INTERNAL_H */

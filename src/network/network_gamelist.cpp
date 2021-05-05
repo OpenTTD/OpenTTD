@@ -44,7 +44,7 @@ static void NetworkGameListHandleDelayedInsert()
 		while (ins_item != nullptr && !_network_game_delayed_insertion_list.compare_exchange_weak(ins_item, ins_item->next, std::memory_order_acq_rel)) {}
 		if (ins_item == nullptr) break; // No item left.
 
-		NetworkGameList *item = NetworkGameListAddItem(ins_item->address);
+		NetworkGameList *item = NetworkGameListAddItem(ins_item->connection_string);
 
 		if (item != nullptr) {
 			if (StrEmpty(item->info.server_name)) {
@@ -67,19 +67,22 @@ static void NetworkGameListHandleDelayedInsert()
  * @param address the address of the to-be added item
  * @return a point to the newly added or already existing item
  */
-NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
+NetworkGameList *NetworkGameListAddItem(const std::string &connection_string)
 {
 	NetworkGameList *item, *prev_item;
 
+	/* Parse the connection string to ensure the default port is there. */
+	const std::string resolved_connection_string = ParseConnectionString(connection_string, NETWORK_DEFAULT_PORT).GetAddressAsString(false);
+
 	prev_item = nullptr;
 	for (item = _network_game_list; item != nullptr; item = item->next) {
-		if (item->address == address) return item;
+		if (item->connection_string == resolved_connection_string) return item;
 		prev_item = item;
 	}
 
 	item = CallocT<NetworkGameList>(1);
 	item->next = nullptr;
-	item->address = address;
+	item->connection_string = resolved_connection_string;
 
 	if (prev_item == nullptr) {
 		_network_game_list = item;
@@ -141,7 +144,7 @@ void NetworkGameListRequery()
 
 		/* item gets mostly zeroed by NetworkUDPQueryServer */
 		uint8 retries = item->retries;
-		NetworkUDPQueryServer(item->address);
+		NetworkUDPQueryServer(item->connection_string);
 		item->retries = (retries >= REFRESH_GAMEINFO_X_REQUERIES) ? 0 : retries;
 	}
 }

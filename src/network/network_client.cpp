@@ -145,7 +145,7 @@ void ClientNetworkEmergencySave()
  * Create a new socket for the client side of the game connection.
  * @param s The socket to connect with.
  */
-ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s, NetworkAddress address) : NetworkGameSocketHandler(s), address(address), savegame(nullptr), status(STATUS_INACTIVE)
+ClientNetworkGameSocketHandler::ClientNetworkGameSocketHandler(SOCKET s, const std::string &connection_string) : NetworkGameSocketHandler(s), connection_string(connection_string), savegame(nullptr), status(STATUS_INACTIVE)
 {
 	assert(ClientNetworkGameSocketHandler::my_client == nullptr);
 	ClientNetworkGameSocketHandler::my_client = this;
@@ -581,7 +581,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packe
 	NetworkGameList *item = GetLobbyGameInfo();
 	if (item == nullptr) {
 		/* This is not the lobby, so add it to the game list. */
-		item = NetworkGameListAddItem(this->address);
+		item = NetworkGameListAddItem(this->connection_string);
 	}
 
 	/* Clear any existing GRFConfig chain. */
