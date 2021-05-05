@@ -62,3 +62,22 @@ server can continue to talk to each other.
 Some NAT gateways do not allow this method; for those this attempt will fail,
 and this also means that it is not possible to create a connection between
 the client and server.
+
+## 3) Via TURN
+
+As a last resort, the Game Coordinator can decide to connect the client and
+server together via TURN. TURN is a relay service, relaying the messages
+between client and server.
+
+As the client and server can already connect to the Game Coordinator, it is
+very likely this is successful.
+
+It is important to note that a relay service has full view of the traffic
+send between client and server, and as such it is important that you trust
+the relay service used.
+For official binaries, this relay service is hosted by openttd.org. The relay
+service as hosted by openttd.org only validates it is relaying valid OpenTTD
+packets and does no further inspection of the payload itself.
+Although in our experience most patch-packs also use the services as offered
+by openttd.org, it is possible they use different services. Please be mindful
+about this.

@@ -42,6 +42,7 @@ enum PacketCoordinatorType {
 	PACKET_COORDINATOR_SERCLI_STUN_RESULT,    ///< Client/server informs the Game Coordinator of the result of the STUN request.
 	PACKET_COORDINATOR_GC_STUN_CONNECT,       ///< Game Coordinator tells client/server to connect() reusing the STUN local address.
 	PACKET_COORDINATOR_GC_NEWGRF_LOOKUP,      ///< Game Coordinator informs client about NewGRF lookup table updates needed for GC_LISTING.
+	PACKET_COORDINATOR_GC_TURN_CONNECT,       ///< Game Coordinator tells client/server to connect to a specific TURN server.
 	PACKET_COORDINATOR_END,                   ///< Must ALWAYS be on the end of this list!! (period)
 };
 
@@ -53,6 +54,7 @@ enum ConnectionType {
 	CONNECTION_TYPE_ISOLATED, ///< The Game Coordinator failed to find a way to connect to your server. Nobody will be able to join.
 	CONNECTION_TYPE_DIRECT,   ///< The Game Coordinator can directly connect to your server.
 	CONNECTION_TYPE_STUN,     ///< The Game Coordinator can connect to your server via a STUN request.
+	CONNECTION_TYPE_TURN,     ///< The Game Coordinator needs you to connect to a relay.
 };
 
 /**
@@ -287,6 +289,20 @@ protected:
 	 * @return True upon success, otherwise false.
 	 */
 	virtual bool Receive_GC_NEWGRF_LOOKUP(Packet *p);
+
+	/**
+	 * Game Coordinator requests that we make a connection to the indicated
+	 * peer, which is a TURN server.
+	 *
+	 *  string  Token to track the current connect request.
+	 *  uint8   Tracking number to track current connect request.
+	 *  string  Ticket to hand over to the TURN server.
+	 *  string  Connection string of the TURN server.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_GC_TURN_CONNECT(Packet *p);
 
 	bool HandlePacket(Packet *p);
 public:

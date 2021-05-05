@@ -479,6 +479,12 @@ enum WindowClass {
 	WC_NETWORK_STATUS_WINDOW,
 
 	/**
+	 * Network ask relay window; %Window numbers:
+	 *   - 0 - #NetworkAskRelayWidgets
+	 */
+	WC_NETWORK_ASK_RELAY,
+
+	/**
 	 * Chatbox; %Window numbers:
 	 *   - #DestType = #NetWorkChatWidgets
 	 */

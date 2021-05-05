@@ -1439,6 +1439,12 @@ STR_CONFIG_SETTING_OSK_ACTIVATION_DOUBLE_CLICK                  :Double click
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK_FOCUS            :Single click (when focussed)
 STR_CONFIG_SETTING_OSK_ACTIVATION_SINGLE_CLICK                  :Single click (immediately)
 
+STR_CONFIG_SETTING_USE_RELAY_SERVICE                            :Use relay service: {STRING2}
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_HELPTEXT                   :If creating a connection to the server fails, one can use a relay service to create a connection. "Never" disallows this, "ask" will ask first, "allow" will allow it without asking
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_NEVER                      :Never
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ASK                        :Ask
+STR_CONFIG_SETTING_USE_RELAY_SERVICE_ALLOW                      :Allow
+
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU                          :Right-click emulation: {STRING2}
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_HELPTEXT                 :Select the method to emulate right mouse-button clicks
 STR_CONFIG_SETTING_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command+Click
@@ -1791,6 +1797,7 @@ STR_CONFIG_SETTING_ENVIRONMENT_INDUSTRIES                       :{ORANGE}Industr
 STR_CONFIG_SETTING_ENVIRONMENT_CARGODIST                        :{ORANGE}Cargo distribution
 STR_CONFIG_SETTING_AI                                           :{ORANGE}Competitors
 STR_CONFIG_SETTING_AI_NPC                                       :{ORANGE}Computer players
+STR_CONFIG_SETTING_NETWORK                                      :{ORANGE}Network
 
 STR_CONFIG_SETTING_PATHFINDER_NPF                               :NPF
 STR_CONFIG_SETTING_PATHFINDER_YAPF_RECOMMENDED                  :YAPF {BLUE}(Recommended)
@@ -2167,6 +2174,7 @@ STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_UNKNOWN          :{BLACK}Local
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_ISOLATED         :{RED}Remote players can't connect
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_DIRECT           :{BLACK}Public
 STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_STUN             :{BLACK}Behind NAT
+STR_NETWORK_CLIENT_LIST_SERVER_CONNECTION_TYPE_TURN             :{BLACK}Via relay
 ############ End of ConnectionType
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kick
@@ -2179,6 +2187,12 @@ STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Are you
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Are you sure you want to ban player '{RAW_STRING}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Are you sure you want to delete company '{COMPANY}'?
 STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Are you sure you want to reset the password of company '{COMPANY}'?
+
+STR_NETWORK_ASK_RELAY_CAPTION                                   :{WHITE}Use relay?
+STR_NETWORK_ASK_RELAY_TEXT                                      :{YELLOW}Failed to establish a connection between you and the server.{}Would you like to relay this session via '{RAW_STRING}'?
+STR_NETWORK_ASK_RELAY_NO                                        :{BLACK}No
+STR_NETWORK_ASK_RELAY_YES_ONCE                                  :{BLACK}Yes, this once
+STR_NETWORK_ASK_RELAY_YES_ALWAYS                                :{BLACK}Yes, don't ask again
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client

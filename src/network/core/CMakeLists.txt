@@ -30,6 +30,8 @@ add_files(
     tcp_listen.h
     tcp_stun.cpp
     tcp_stun.h
+    tcp_turn.cpp
+    tcp_turn.h
     udp.cpp
     udp.h
 )
