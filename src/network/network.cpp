@@ -502,6 +502,19 @@ std::string_view ParseFullConnectionString(const std::string &connection_string,
 }
 
 /**
+ * Normalize a connection string. That is, ensure there is a port in the string.
+ * @param connection_string The connection string to normalize.
+ * @param default_port The port to use if none is given.
+ * @return The normalized connection string.
+ */
+std::string NormalizeConnectionString(const std::string &connection_string, uint16 default_port)
+{
+	uint16 port = default_port;
+	std::string_view ip = ParseFullConnectionString(connection_string, port);
+	return std::string(ip) + ":" + std::to_string(port);
+}
+
+/**
  * Convert a string containing either "hostname" or "hostname:ip" to a
  * NetworkAddress.
  *
@@ -1131,23 +1144,27 @@ static void NetworkGenerateServerId()
 	seprintf(_settings_client.network.network_id, lastof(_settings_client.network.network_id), "%s", hex_output);
 }
 
-void NetworkStartDebugLog(const std::string &connection_string)
-{
-	extern SOCKET _debug_socket;  // Comes from debug.c
+class TCPNetworkDebugConnecter : TCPConnecter {
+public:
+	TCPNetworkDebugConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_DEBUGLOG_PORT) {}
 
-	NetworkAddress address = ParseConnectionString(connection_string, NETWORK_DEFAULT_DEBUGLOG_PORT);
-
-	DEBUG(net, 0, "Redirecting DEBUG() to %s", address.GetAddressAsString().c_str());
-
-	SOCKET s = address.Connect();
-	if (s == INVALID_SOCKET) {
-		DEBUG(net, 0, "Failed to open socket for redirection DEBUG()");
-		return;
+	void OnFailure() override
+	{
+		DEBUG(net, 0, "Failed to open connection to %s for redirecting DEBUG()", this->connection_string.c_str());
 	}
 
-	_debug_socket = s;
+	void OnConnect(SOCKET s) override
+	{
+		DEBUG(net, 0, "Redirecting DEBUG() to %s", this->connection_string.c_str());
 
-	DEBUG(net, 0, "DEBUG() is now redirected");
+		extern SOCKET _debug_socket;
+		_debug_socket = s;
+	}
+};
+
+void NetworkStartDebugLog(const std::string &connection_string)
+{
+	new TCPNetworkDebugConnecter(connection_string);
 }
 
 /** This tries to launch the network for a given OS */

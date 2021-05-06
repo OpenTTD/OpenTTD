@@ -15,6 +15,7 @@
 #include "address.h"
 #include "packet.h"
 
+#include <chrono>
 #include <atomic>
 
 /** The states of sending the packets. */
@@ -63,23 +64,28 @@ public:
  */
 class TCPConnecter {
 private:
-	std::atomic<bool> connected;///< Whether we succeeded in making the connection
-	std::atomic<bool> aborted;  ///< Whether we bailed out (i.e. connection making failed)
-	bool killed;                ///< Whether we got killed
-	SOCKET sock;                ///< The socket we're connecting with
+	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
+	std::vector<addrinfo *> addresses;                  ///< Addresses we can connect to.
+	size_t current_address = 0;                         ///< Current index in addresses we are trying.
 
-	void Connect();
+	std::vector<SOCKET> sockets;                        ///< Pending connect() attempts.
+	std::chrono::steady_clock::time_point last_attempt; ///< Time we last tried to connect.
 
-	static void ThreadEntry(TCPConnecter *param);
+	std::atomic<bool> is_resolved = false;              ///< Whether resolving is done.
 
-protected:
-	/** Address we're connecting to */
-	NetworkAddress address;
+	void Resolve();
+	void OnResolved(addrinfo *ai);
+	bool TryNextAddress();
+	void Connect(addrinfo *address);
+	bool CheckActivity();
+
+	static void ResolveThunk(TCPConnecter *connecter);
 
 public:
+	std::string connection_string;                      ///< Current address we are connecting to (before resolving).
+
 	TCPConnecter(const std::string &connection_string, uint16 default_port);
-	/** Silence the warnings */
-	virtual ~TCPConnecter() {}
+	virtual ~TCPConnecter();
 
 	/**
 	 * Callback when the connection succeeded.

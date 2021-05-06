@@ -171,11 +171,11 @@ public:
 		return this->CompareTo(address) < 0;
 	}
 
-	SOCKET Connect();
 	void Listen(int socktype, SocketList *sockets);
 
 	static const char *SocketTypeAsString(int socktype);
 	static const char *AddressFamilyAsString(int family);
+	static const std::string GetPeerName(SOCKET sock);
 };
 
 #endif /* NETWORK_CORE_ADDRESS_H */
