@@ -203,9 +203,11 @@ int NetworkHTTPSocketHandler::HandleHeader()
 
 	*url = '\0';
 
+	std::string hostname = std::string(hname);
+
 	/* Restore the URL. */
 	*url = '/';
-	new NetworkHTTPContentConnecter(hname, callback, url, data, depth);
+	new NetworkHTTPContentConnecter(hostname, callback, url, data, depth);
 	return 0;
 }
 
