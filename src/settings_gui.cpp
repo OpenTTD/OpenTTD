@@ -446,17 +446,18 @@ struct GameOptionsWindow : Window {
 					ShowErrorMessage(STR_ERROR_FULLSCREEN_FAILED, INVALID_STRING_ID, WL_ERROR);
 				}
 				this->SetWidgetLoweredState(WID_GO_FULLSCREEN_BUTTON, _fullscreen);
-				this->SetDirty();
+				this->SetWidgetDirty(WID_GO_FULLSCREEN_BUTTON);
 				break;
 
 			case WID_GO_VIDEO_ACCEL_BUTTON:
 				_video_hw_accel = !_video_hw_accel;
 				ShowErrorMessage(STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART, INVALID_STRING_ID, WL_INFO);
 				this->SetWidgetLoweredState(WID_GO_VIDEO_ACCEL_BUTTON, _video_hw_accel);
+				this->SetWidgetDirty(WID_GO_VIDEO_ACCEL_BUTTON);
 #ifndef __APPLE__
 				this->SetWidgetDisabledState(WID_GO_VIDEO_VSYNC_BUTTON, !_video_hw_accel);
+				this->SetWidgetDirty(WID_GO_VIDEO_VSYNC_BUTTON);
 #endif
-				this->SetDirty();
 				break;
 
 			case WID_GO_VIDEO_VSYNC_BUTTON:
@@ -466,7 +467,7 @@ struct GameOptionsWindow : Window {
 				VideoDriver::GetInstance()->ToggleVsync(_video_vsync);
 
 				this->SetWidgetLoweredState(WID_GO_VIDEO_VSYNC_BUTTON, _video_vsync);
-				this->SetDirty();
+				this->SetWidgetDirty(WID_GO_VIDEO_VSYNC_BUTTON);
 				break;
 
 			case WID_GO_BASE_SFX_VOLUME:
@@ -474,7 +475,7 @@ struct GameOptionsWindow : Window {
 				byte &vol = (widget == WID_GO_BASE_MUSIC_VOLUME) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
 				if (ClickVolumeSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, vol)) {
 					if (widget == WID_GO_BASE_MUSIC_VOLUME) MusicDriver::GetInstance()->SetVolume(vol);
-					this->SetDirty();
+					this->SetWidgetDirty(widget);
 					SetWindowClassesDirty(WC_MUSIC_WINDOW);
 				}
 
