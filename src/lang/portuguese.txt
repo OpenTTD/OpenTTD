@@ -2270,7 +2270,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} en
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} entrou como espectador
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} iniciou uma nova empresa (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} deixou o jogo ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} mudou o seu nome para {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} mudou o nome para {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} deu {2:CURRENCY_LONG} a {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}O servidor fechou a sessão
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}O servidor está a reiniciar...{}Por favor espere...
