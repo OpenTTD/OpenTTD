@@ -271,7 +271,7 @@ protected:
 	/** Sort servers by name. */
 	static bool NGameNameSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
-		int r = strnatcmp(a->info.server_name, b->info.server_name, true); // Sort by name (natural sorting).
+		int r = strnatcmp(a->info.server_name.c_str(), b->info.server_name.c_str(), true); // Sort by name (natural sorting).
 		if (r == 0) r = a->connection_string.compare(b->connection_string);
 
 		return r < 0;
@@ -324,7 +324,7 @@ protected:
 	static bool NGameAllowedSorter(NetworkGameList * const &a, NetworkGameList * const &b)
 	{
 		/* The servers we do not know anything about (the ones that did not reply) should be at the bottom) */
-		int r = StrEmpty(a->info.server_revision) - StrEmpty(b->info.server_revision);
+		int r = a->info.server_revision.empty() - b->info.server_revision.empty();
 
 		/* Reverse default as we are interested in version-compatible clients first */
 		if (r == 0) r = b->info.version_compatible - a->info.version_compatible;
@@ -361,7 +361,7 @@ protected:
 		assert((*item) != nullptr);
 
 		sf.ResetState();
-		sf.AddLine((*item)->info.server_name);
+		sf.AddLine((*item)->info.server_name.c_str());
 		return sf.GetState();
 	}
 

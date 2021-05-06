@@ -656,9 +656,9 @@ NetworkGameList *NetworkAddServer(const std::string &connection_string)
 
 	/* Ensure the item already exists in the list */
 	NetworkGameList *item = NetworkGameListAddItem(connection_string);
-	if (StrEmpty(item->info.server_name)) {
+	if (item->info.server_name.empty()) {
 		ClearGRFConfigList(&item->info.grfconfig);
-		strecpy(item->info.server_name, connection_string.c_str(), lastof(item->info.server_name));
+		item->info.server_name = connection_string;
 		item->manually = true;
 
 		NetworkRebuildHostList();
@@ -1163,7 +1163,7 @@ void NetworkStartUp()
 	/* Generate an server id when there is none yet */
 	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateServerId();
 
-	memset(&_network_game_info, 0, sizeof(_network_game_info));
+	_network_game_info = {};
 
 	NetworkInitialize();
 	DEBUG(net, 3, "[core] network online, multiplayer available");

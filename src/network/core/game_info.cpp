@@ -112,7 +112,7 @@ bool IsNetworkCompatibleVersion(const char *other)
 void CheckGameCompatibility(NetworkGameInfo &ngi)
 {
 	/* Check if we are allowed on this server based on the revision-check. */
-	ngi.version_compatible = IsNetworkCompatibleVersion(ngi.server_revision);
+	ngi.version_compatible = IsNetworkCompatibleVersion(ngi.server_revision.c_str());
 	ngi.compatible = ngi.version_compatible;
 
 	/* Check if we have all the GRFs on the client-system too. */
@@ -138,8 +138,8 @@ void FillStaticNetworkServerGameInfo()
 	_network_game_info.dedicated      = _network_dedicated;
 	_network_game_info.grfconfig      = _grfconfig;
 
-	strecpy(_network_game_info.server_name, _settings_client.network.server_name, lastof(_network_game_info.server_name));
-	strecpy(_network_game_info.server_revision, GetNetworkRevisionString(), lastof(_network_game_info.server_revision));
+	_network_game_info.server_name = _settings_client.network.server_name;
+	_network_game_info.server_revision = GetNetworkRevisionString();
 }
 
 /**
@@ -295,8 +295,8 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 			FALLTHROUGH;
 
 		case 1:
-			p->Recv_string(info->server_name,     sizeof(info->server_name));
-			p->Recv_string(info->server_revision, sizeof(info->server_revision));
+			info->server_name = p->Recv_string(NETWORK_NAME_LENGTH);
+			info->server_revision = p->Recv_string(NETWORK_REVISION_LENGTH);
 			p->Recv_uint8 (); // Used to contain server-lang.
 			info->use_password   = p->Recv_bool  ();
 			info->clients_max    = p->Recv_uint8 ();

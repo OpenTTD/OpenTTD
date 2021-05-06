@@ -60,22 +60,22 @@
  * The game information that is sent from the server to the client.
  */
 struct NetworkServerGameInfo {
-	GRFConfig *grfconfig;                           ///< List of NewGRF files used
-	Date start_date;                                ///< When the game started
-	Date game_date;                                 ///< Current date
-	uint16 map_width;                               ///< Map width
-	uint16 map_height;                              ///< Map height
-	char server_name[NETWORK_NAME_LENGTH];          ///< Server name
-	char server_revision[NETWORK_REVISION_LENGTH];  ///< The version number the server is using (e.g.: 'r304' or 0.5.0)
-	bool dedicated;                                 ///< Is this a dedicated server?
-	bool use_password;                              ///< Is this server passworded?
-	byte clients_on;                                ///< Current count of clients on server
-	byte clients_max;                               ///< Max clients allowed on server
-	byte companies_on;                              ///< How many started companies do we have
-	byte companies_max;                             ///< Max companies allowed on server
-	byte spectators_on;                             ///< How many spectators do we have?
-	byte spectators_max;                            ///< Max spectators allowed on server
-	byte landscape;                                 ///< The used landscape
+	GRFConfig *grfconfig;        ///< List of NewGRF files used
+	Date start_date;             ///< When the game started
+	Date game_date;              ///< Current date
+	uint16 map_width;            ///< Map width
+	uint16 map_height;           ///< Map height
+	std::string server_name;     ///< Server name
+	std::string server_revision; ///< The version number the server is using (e.g.: 'r304' or 0.5.0)
+	bool dedicated;              ///< Is this a dedicated server?
+	bool use_password;           ///< Is this server passworded?
+	byte clients_on;             ///< Current count of clients on server
+	byte clients_max;            ///< Max clients allowed on server
+	byte companies_on;           ///< How many started companies do we have
+	byte companies_max;          ///< Max companies allowed on server
+	byte spectators_on;          ///< How many spectators do we have?
+	byte spectators_max;         ///< Max spectators allowed on server
+	byte landscape;              ///< The used landscape
 };
 
 /**
