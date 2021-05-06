@@ -91,7 +91,7 @@ static void DoNetworkUDPQueryServer(const std::string &connection_string, bool n
 {
 	/* Clear item in gamelist */
 	NetworkGameList *item = new NetworkGameList(connection_string, manually);
-	strecpy(item->info.server_name, connection_string.c_str(), lastof(item->info.server_name));
+	item->info.server_name = connection_string;
 	NetworkGameListAddItemDelayed(item);
 
 	std::unique_lock<std::mutex> lock(_udp_client.mutex, std::defer_lock);
@@ -362,7 +362,7 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 	}
 
 	if (client_addr->GetAddress()->ss_family == AF_INET6) {
-		strecat(item->info.server_name, " (IPv6)", lastof(item->info.server_name));
+		item->info.server_name.append(" (IPv6)");
 	}
 
 	UpdateNetworkGameWindow();

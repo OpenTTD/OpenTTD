@@ -47,10 +47,10 @@ static void NetworkGameListHandleDelayedInsert()
 		NetworkGameList *item = NetworkGameListAddItem(ins_item->connection_string);
 
 		if (item != nullptr) {
-			if (StrEmpty(item->info.server_name)) {
+			if (item->info.server_name.empty()) {
 				ClearGRFConfigList(&item->info.grfconfig);
-				memset(&item->info, 0, sizeof(item->info));
-				strecpy(item->info.server_name, ins_item->info.server_name, lastof(item->info.server_name));
+				item->info = {};
+				item->info.server_name = ins_item->info.server_name;
 				item->online = false;
 			}
 			item->manually |= ins_item->manually;
