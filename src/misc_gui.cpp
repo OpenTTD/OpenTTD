@@ -557,7 +557,7 @@ struct AboutWindow : public Window {
 			if (this->text_position < (int)(this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y - lengthof(_credits) * this->line_height)) {
 				this->text_position = this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->pos_y + this->GetWidget<NWidgetBase>(WID_A_SCROLLING_TEXT)->current_y;
 			}
-			this->SetDirty();
+			this->SetWidgetDirty(WID_A_SCROLLING_TEXT);
 		}
 	}
 };
