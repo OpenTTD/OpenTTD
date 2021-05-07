@@ -2217,6 +2217,7 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Uw compu
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Uw computer deed er te lang over om de kaart te downloaden
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Uw computer deed er te lang over om met de server te verbinden
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Je spelernaam is niet geldig
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}De opgevraagde server is te oud voor deze client
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :algemene fout
@@ -2268,7 +2269,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} he
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} kijkt nu toe
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} heeft een nieuw bedrijf opgericht (nr. {2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} heeft het spel verlaten ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heeft zijn/haar naam gewijzigd naar {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} heeft diens naam gewijzigd in {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gaf {2:CURRENCY_LONG} aan {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}De server heeft de sessie gesloten
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}De server wordt opnieuw gestart...{}Wacht alstublieft...
