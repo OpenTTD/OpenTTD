@@ -2579,7 +2579,7 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 /**
  * Compute who can service the industry.
  *
- * Here, 'can service' means that he/she has trains and stations close enough
+ * Here, 'can service' means that they have trains and stations close enough
  * to the industry with the right cargo type and the right orders (ie has the
  * technical means).
  *
