@@ -195,7 +195,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 {
 	/* First, send a CLIENT_ERROR to the server, so it knows we are
-	 *  disconnection (and why!) */
+	 *  disconnected (and why!) */
 	NetworkErrorCode errorno;
 
 	/* We just want to close the connection.. */
