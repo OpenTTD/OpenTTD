@@ -16,6 +16,7 @@
 
 #include "../safeguards.h"
 
+static const int SLIDER_WIDTH = 3;
 
 /**
  * Draw a volume slider widget with know at given value
@@ -24,8 +25,6 @@
  */
 void DrawVolumeSliderWidget(Rect r, byte value)
 {
-	static const int slider_width = 3;
-
 	/* Draw a wedge indicating low to high volume level. */
 	const int ha = (r.bottom - r.top) / 5;
 	int wx1 = r.left, wx2 = r.right;
@@ -40,7 +39,7 @@ void DrawVolumeSliderWidget(Rect r, byte value)
 	GfxDrawLine(wedge[0].x, wedge[0].y, wedge[1].x, wedge[1].y, shadow);
 
 	/* Draw a slider handle indicating current volume level. */
-	const int sw = ScaleGUITrad(slider_width);
+	const int sw = ScaleGUITrad(SLIDER_WIDTH);
 	if (_current_text_dir == TD_RTL) value = 127 - value;
 	const int x = r.left + (value * (r.right - r.left - sw) / 127);
 	DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, FR_NONE);
@@ -55,12 +54,10 @@ void DrawVolumeSliderWidget(Rect r, byte value)
  */
 bool ClickVolumeSliderWidget(Rect r, Point pt, byte &value)
 {
-	byte new_vol = Clamp((pt.x - r.left) * 127 / (r.right - r.left), 0, 127);
+	const int sw = ScaleGUITrad(SLIDER_WIDTH);
+	byte new_vol = Clamp((pt.x - r.left - sw / 2) * 127 / (r.right - r.left - sw), 0, 127);
 	if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
 
-	/* Clamp to make sure min and max are properly settable */
-	if (new_vol > 124) new_vol = 127;
-	if (new_vol < 3) new_vol = 0;
 	if (new_vol != value) {
 		value = new_vol;
 		return true;
