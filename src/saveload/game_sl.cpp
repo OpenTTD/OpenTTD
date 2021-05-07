@@ -90,7 +90,7 @@ static void Load_GSDT()
 				DEBUG(script, 0, "The savegame has an GameScript by the name '%s', version %d which is no longer available.", _game_saveload_name, _game_saveload_version);
 				DEBUG(script, 0, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 			}
-			/* Make sure the GameScript doesn't get the saveload data, as he was not the
+			/* Make sure the GameScript doesn't get the saveload data, as it was not the
 			 *  writer of the saveload data in the first place */
 			_game_saveload_version = -1;
 		}
