@@ -1027,7 +1027,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet *
 		InvalidateWindowData(WC_CLIENT_LIST, 0);
 
 		/* Mark the client as pre-active, and wait for an ACK
-		 *  so we know he is done loading and in sync with us */
+		 *  so we know it is done loading and in sync with us */
 		this->status = STATUS_PRE_ACTIVE;
 		NetworkHandleCommandQueue(this);
 		this->SendFrame();
@@ -1199,7 +1199,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
 		/* The client is not yet caught up? */
 		if (frame + DAY_TICKS < _frame_counter) return NETWORK_RECV_STATUS_OKAY;
 
-		/* Now he is! Unpause the game */
+		/* Now it is! Unpause the game */
 		this->status = STATUS_ACTIVE;
 		this->last_token_frame = _frame_counter;
 
@@ -1855,14 +1855,14 @@ void NetworkServer_Tick(bool send_frame)
 
 			case NetworkClientSocket::STATUS_MAP_WAIT:
 				/* Send every two seconds a packet to the client, to make sure
-				 * he knows the server is still there; just someone else is
+				 * It knows the server is still there; just someone else is
 				 * still receiving the map. */
 				if (std::chrono::steady_clock::now() > cs->last_packet + std::chrono::seconds(2)) {
 					cs->SendWait();
 					/* We need to reset the timer, as otherwise we will be
 					 * spamming the client. Strictly speaking this variable
 					 * tracks when we last received a packet from the client,
-					 * but as he is waiting, he will not send us any till we
+					 * but as it is waiting, it will not send us any till we
 					 * start sending him data. */
 					cs->last_packet = std::chrono::steady_clock::now();
 				}
