@@ -1257,7 +1257,7 @@ again:
 					tile = v->tile;
 					start_frame = RVC_TURN_AROUND_START_FRAME_SHORT_TRAM;
 				} else {
-					/* The company can build on the next tile, so wait till (s)he does. */
+					/* The company can build on the next tile, so wait till they do. */
 					v->cur_speed = 0;
 					return false;
 				}
