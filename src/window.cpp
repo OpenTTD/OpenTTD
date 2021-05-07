@@ -849,8 +849,7 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 	if (nwid->type == NWID_VSCROLLBAR) {
 		NWidgetScrollbar *sb = static_cast<NWidgetScrollbar *>(nwid);
 		if (sb->GetCount() > sb->GetCapacity()) {
-			sb->UpdatePosition(wheel);
-			w->SetDirty();
+			if (sb->UpdatePosition(wheel)) w->SetDirty();
 		}
 		return;
 	}
@@ -858,8 +857,7 @@ static void DispatchMouseWheelEvent(Window *w, NWidgetCore *nwid, int wheel)
 	/* Scroll the widget attached to the scrollbar. */
 	Scrollbar *sb = (nwid->scrollbar_index >= 0 ? w->GetScrollbar(nwid->scrollbar_index) : nullptr);
 	if (sb != nullptr && sb->GetCount() > sb->GetCapacity()) {
-		sb->UpdatePosition(wheel);
-		w->SetDirty();
+		if (sb->UpdatePosition(wheel)) w->SetDirty();
 	}
 }
 
@@ -2413,8 +2411,7 @@ static void HandleScrollbarScrolling(Window *w)
 	if (sb->disp_flags & ND_SCROLLBAR_BTN) {
 		if (_scroller_click_timeout == 1) {
 			_scroller_click_timeout = 3;
-			sb->UpdatePosition(rtl == HasBit(sb->disp_flags, NDB_SCROLLBAR_UP) ? 1 : -1);
-			w->SetDirty();
+			if (sb->UpdatePosition(rtl == HasBit(sb->disp_flags, NDB_SCROLLBAR_UP) ? 1 : -1)) w->SetDirty();
 		}
 		return;
 	}
