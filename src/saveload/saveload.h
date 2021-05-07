@@ -313,7 +313,7 @@ enum SaveLoadVersion : uint16 {
 	 * cannot digest. But, this gives for ugly errors. As we have plenty of
 	 * versions anyway, we simply skip the versions we know belong to
 	 * patchpacks. This way we can present the user with a clean error
-	 * indicate he is loading a savegame from a patchpack.
+	 * indicate they are loading a savegame from a patchpack.
 	 * For future patchpack creators: please follow a system like JGRPP, where
 	 * the version is masked with 0x8000, and the true version is stored in
 	 * its own chunk with feature toggles.
