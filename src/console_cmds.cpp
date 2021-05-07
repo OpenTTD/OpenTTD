@@ -544,7 +544,7 @@ DEF_CONSOLE_CMD(ConBan)
 	if (argc == 0) {
 		IConsoleHelp("Ban a client from a network game. Usage: 'ban <ip | client-id> [<ban-reason>]'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
-		IConsoleHelp("If the client is no longer online, you can still ban his/her IP");
+		IConsoleHelp("If the client is no longer online, you can still ban their IP");
 		return true;
 	}
 
