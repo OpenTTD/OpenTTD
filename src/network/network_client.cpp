@@ -1399,7 +1399,7 @@ void NetworkClientSetCompanyPassword(const char *password)
 }
 
 /**
- * Tell whether the client has team members where they can chat to.
+ * Tell whether the client has team members who they can chat to.
  * @param cio client to check members of.
  * @return true if there is at least one team member.
  */
