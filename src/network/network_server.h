@@ -72,7 +72,7 @@ public:
 	size_t receive_limit;        ///< Amount of bytes that we can receive at this moment
 
 	struct PacketWriter *savegame; ///< Writer used to write the savegame.
-	NetworkAddress client_address; ///< IP-address of the client (so he can be banned)
+	NetworkAddress client_address; ///< IP-address of the client (so they can be banned)
 
 	ServerNetworkGameSocketHandler(SOCKET s);
 	~ServerNetworkGameSocketHandler();
