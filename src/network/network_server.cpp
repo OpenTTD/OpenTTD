@@ -1855,7 +1855,7 @@ void NetworkServer_Tick(bool send_frame)
 
 			case NetworkClientSocket::STATUS_MAP_WAIT:
 				/* Send every two seconds a packet to the client, to make sure
-				 * It knows the server is still there; just someone else is
+				 * it knows the server is still there; just someone else is
 				 * still receiving the map. */
 				if (std::chrono::steady_clock::now() > cs->last_packet + std::chrono::seconds(2)) {
 					cs->SendWait();
