@@ -811,7 +811,7 @@ DEF_CONSOLE_CMD(ConMoveClient)
 	}
 
 	if (ci->client_playas == company_id) {
-		IConsoleError("You cannot move someone to where he/she already is!");
+		IConsoleError("You cannot move someone to where they already are!");
 		return true;
 	}
 
