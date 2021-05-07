@@ -806,7 +806,7 @@ DEF_CONSOLE_CMD(ConMoveClient)
 	}
 
 	if (ci->client_id == CLIENT_ID_SERVER && _network_dedicated) {
-		IConsoleError("Silly boy, you cannot move the server!");
+		IConsoleError("You cannot move the server!");
 		return true;
 	}
 
