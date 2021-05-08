@@ -603,18 +603,17 @@ public:
 		return true;
 	}
 
-	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const override
+	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = _current_text_dir == TD_RTL;
-		int height = bottom - top;
-		int icon_y_offset = height / 2;
-		int text_y_offset = (height - FONT_HEIGHT_NORMAL) / 2 + 1;
+		int icon_y = CenterBounds(r.top, r.bottom, 0);
+		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
 		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOUR_START + (this->result % COLOUR_END),
-				rtl ? right - 2 - ScaleGUITrad(14) : left + ScaleGUITrad(14) + 2,
-				top + icon_y_offset);
-		DrawString(rtl ? left + 2 : left + ScaleGUITrad(28) + 4,
-				rtl ? right - ScaleGUITrad(28) - 4 : right - 2,
-				top + text_y_offset, this->String(), sel ? TC_WHITE : TC_BLACK);
+				rtl ? r.right - 2 - ScaleGUITrad(14) : r.left + ScaleGUITrad(14) + 2,
+				icon_y);
+		DrawString(rtl ? r.left + 2 : r.left + ScaleGUITrad(28) + 4,
+				rtl ? r.right - ScaleGUITrad(28) - 4 : r.right - 2,
+				text_y, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 

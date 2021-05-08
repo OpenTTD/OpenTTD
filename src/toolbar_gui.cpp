@@ -98,18 +98,18 @@ public:
 		this->checkmark_width = GetStringBoundingBox(STR_JUST_CHECKMARK).width + 3;
 	}
 
-	uint Width() const
+	uint Width() const override
 	{
 		return DropDownListStringItem::Width() + this->checkmark_width;
 	}
 
-	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const
+	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		bool rtl = _current_text_dir == TD_RTL;
 		if (this->checked) {
-			DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
+			DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top, STR_JUST_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
 		}
-		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : this->checkmark_width), right - WD_FRAMERECT_RIGHT - (rtl ? this->checkmark_width : 0), top, this->String(), sel ? TC_WHITE : TC_BLACK);
+		DrawString(r.left + WD_FRAMERECT_LEFT + (rtl ? 0 : this->checkmark_width), r.right - WD_FRAMERECT_RIGHT - (rtl ? this->checkmark_width : 0), r.top, this->String(), sel ? TC_WHITE : TC_BLACK);
 	}
 };
 
@@ -146,7 +146,7 @@ public:
 		return std::max(std::max(this->icon_size.height, this->lock_size.height) + 2U, (uint)FONT_HEIGHT_NORMAL);
 	}
 
-	void Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const override
+	void Draw(const Rect &r, bool sel, Colours bg_colour) const override
 	{
 		CompanyID company = (CompanyID)this->result;
 		bool rtl = _current_text_dir == TD_RTL;
@@ -154,13 +154,13 @@ public:
 		/* It's possible the company is deleted while the dropdown is open */
 		if (!Company::IsValidID(company)) return;
 
-		int icon_offset = (bottom - top - icon_size.height) / 2;
-		int text_offset = (bottom - top - FONT_HEIGHT_NORMAL) / 2;
-		int lock_offset = (bottom - top - lock_size.height) / 2;
+		int icon_y = CenterBounds(r.top, r.bottom, icon_size.height);
+		int text_y = CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL);
+		int lock_y = CenterBounds(r.top, r.bottom, lock_size.height);
 
-		DrawCompanyIcon(company, rtl ? right - this->icon_size.width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, top + icon_offset);
+		DrawCompanyIcon(company, rtl ? r.right - this->icon_size.width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT, icon_y);
 		if (NetworkCompanyIsPassworded(company)) {
-			DrawSprite(SPR_LOCK, PAL_NONE, rtl ? left + WD_FRAMERECT_LEFT : right - this->lock_size.width - WD_FRAMERECT_RIGHT, top + lock_offset);
+			DrawSprite(SPR_LOCK, PAL_NONE, rtl ? r.left + WD_FRAMERECT_LEFT : r.right - this->lock_size.width - WD_FRAMERECT_RIGHT, lock_y);
 		}
 
 		SetDParam(0, company);
@@ -171,7 +171,7 @@ public:
 		} else {
 			col = sel ? TC_WHITE : TC_BLACK;
 		}
-		DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 3 + this->lock_size.width : 3 + this->icon_size.width), right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_size.width : 3 + this->lock_size.width), top + text_offset, STR_COMPANY_NAME_COMPANY_NUM, col);
+		DrawString(r.left + WD_FRAMERECT_LEFT + (rtl ? 3 + this->lock_size.width : 3 + this->icon_size.width), r.right - WD_FRAMERECT_RIGHT - (rtl ? 3 + this->icon_size.width : 3 + this->lock_size.width), text_y, STR_COMPANY_NAME_COMPANY_NUM, col);
 	}
 };
 
