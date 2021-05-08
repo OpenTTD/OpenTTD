@@ -1145,8 +1145,11 @@ static void NetworkGenerateServerId()
 }
 
 class TCPNetworkDebugConnecter : TCPConnecter {
+private:
+	std::string connection_string;
+
 public:
-	TCPNetworkDebugConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_DEBUGLOG_PORT) {}
+	TCPNetworkDebugConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_DEBUGLOG_PORT), connection_string(connection_string) {}
 
 	void OnFailure() override
 	{

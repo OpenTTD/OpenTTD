@@ -74,6 +74,7 @@ private:
 	std::chrono::steady_clock::time_point last_attempt; ///< Time we last tried to connect.
 
 	std::atomic<bool> is_resolved = false;              ///< Whether resolving is done.
+	std::string connection_string;                      ///< Current address we are connecting to (before resolving).
 
 	void Resolve();
 	void OnResolved(addrinfo *ai);
@@ -84,8 +85,6 @@ private:
 	static void ResolveThunk(TCPConnecter *connecter);
 
 public:
-	std::string connection_string;                      ///< Current address we are connecting to (before resolving).
-
 	TCPConnecter(const std::string &connection_string, uint16 default_port);
 	virtual ~TCPConnecter();
 
