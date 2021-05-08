@@ -16,10 +16,7 @@
 
 /** Structure with information shown in the game list (GUI) */
 struct NetworkGameList {
-	NetworkGameList(const std::string &connection_string, bool manually = false) :
-		connection_string(connection_string), manually(manually)
-	{
-	}
+	NetworkGameList(const std::string &connection_string) : connection_string(connection_string) {}
 
 	NetworkGameInfo info = {};       ///< The game information of this server
 	std::string connection_string;   ///< Address of the server
