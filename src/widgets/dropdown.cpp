@@ -20,14 +20,14 @@
 #include "../safeguards.h"
 
 
-void DropDownListItem::Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const
+void DropDownListItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
 {
 	int c1 = _colour_gradient[bg_colour][3];
 	int c2 = _colour_gradient[bg_colour][7];
 
-	int mid = top + this->Height(0) / 2;
-	GfxFillRect(left + 1, mid - 2, right - 1, mid - 2, c1);
-	GfxFillRect(left + 1, mid - 1, right - 1, mid - 1, c2);
+	int mid = (r.top + r.bottom) / 2;
+	GfxFillRect(r.left + 1, mid - 2, r.right - 1, mid - 2, c1);
+	GfxFillRect(r.left + 1, mid - 1, r.right - 1, mid - 1, c2);
 }
 
 uint DropDownListStringItem::Width() const
@@ -37,9 +37,9 @@ uint DropDownListStringItem::Width() const
 	return GetStringBoundingBox(buffer).width;
 }
 
-void DropDownListStringItem::Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const
+void DropDownListStringItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
 {
-	DrawString(left + WD_FRAMERECT_LEFT, right - WD_FRAMERECT_RIGHT, top, this->String(), sel ? TC_WHITE : TC_BLACK);
+	DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top, this->String(), sel ? TC_WHITE : TC_BLACK);
 }
 
 /**
@@ -85,11 +85,11 @@ uint DropDownListIconItem::Width() const
 	return DropDownListStringItem::Width() + this->dim.width + WD_FRAMERECT_LEFT;
 }
 
-void DropDownListIconItem::Draw(int left, int right, int top, int bottom, bool sel, Colours bg_colour) const
+void DropDownListIconItem::Draw(const Rect &r, bool sel, Colours bg_colour) const
 {
 	bool rtl = _current_text_dir == TD_RTL;
-	DrawSprite(this->sprite, this->pal, rtl ? right - this->dim.width - WD_FRAMERECT_RIGHT : left + WD_FRAMERECT_LEFT, CenterBounds(top, bottom, this->sprite_y));
-	DrawString(left + WD_FRAMERECT_LEFT + (rtl ? 0 : (this->dim.width + WD_FRAMERECT_LEFT)), right - WD_FRAMERECT_RIGHT - (rtl ? (this->dim.width + WD_FRAMERECT_RIGHT) : 0), CenterBounds(top, bottom, FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
+	DrawSprite(this->sprite, this->pal, rtl ? r.right - this->dim.width - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT, CenterBounds(r.top, r.bottom, this->sprite_y));
+	DrawString(r.left + WD_FRAMERECT_LEFT + (rtl ? 0 : (this->dim.width + WD_FRAMERECT_LEFT)), r.right - WD_FRAMERECT_RIGHT - (rtl ? (this->dim.width + WD_FRAMERECT_RIGHT) : 0), CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL), this->String(), sel ? TC_WHITE : TC_BLACK);
 }
 
 void DropDownListIconItem::SetDimension(Dimension d)
@@ -213,9 +213,9 @@ struct DropdownWindow : Window {
 	{
 		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return false;
 
-		NWidgetBase *nwi = this->GetWidget<NWidgetBase>(WID_DM_ITEMS);
-		int y     = _cursor.pos.y - this->top - nwi->pos_y - 2;
-		int width = nwi->current_x - 4;
+		const Rect &r = this->GetWidget<NWidgetBase>(WID_DM_ITEMS)->GetCurrentRect();
+		int y     = _cursor.pos.y - this->top - r.top - 2;
+		int width = r.Width();
 		int pos   = this->vscroll->GetPosition();
 
 		for (const auto &item : this->list) {
@@ -245,7 +245,7 @@ struct DropdownWindow : Window {
 		int y = r.top + 2;
 		int pos = this->vscroll->GetPosition();
 		for (const auto &item : this->list) {
-			int item_height = item->Height(r.right - r.left + 1);
+			int item_height = item->Height(r.Width());
 
 			/* Skip items that are scrolled up */
 			if (--pos >= 0) continue;
@@ -254,7 +254,7 @@ struct DropdownWindow : Window {
 				bool selected = (this->selected_index == item->result);
 				if (selected) GfxFillRect(r.left + 2, y, r.right - 1, y + item_height - 1, PC_BLACK);
 
-				item->Draw(r.left, r.right, y, y + item_height, selected, colour);
+				item->Draw({r.left, y, r.right, y + item_height - 1}, selected, colour);
 
 				if (item->masked) {
 					GfxFillRect(r.left + 1, y, r.right - 1, y + item_height - 1, _colour_gradient[colour][5], FILLRECT_CHECKER);
@@ -361,7 +361,7 @@ void ShowDropDownListAt(Window *w, DropDownList &&list, int selected, int button
 	int top = w->top + wi_rect.bottom + 1;
 
 	/* The preferred width equals the calling widget */
-	uint width = wi_rect.right - wi_rect.left + 1;
+	uint width = wi_rect.Width();
 
 	/* Longest item in the list, if auto_width is enabled */
 	uint max_item_width = 0;
