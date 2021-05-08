@@ -347,7 +347,7 @@ typedef unsigned char byte;
 #endif
 
 /* Define the the platforms that use XDG */
-#if defined(WITH_PERSONAL_DIR) && defined(UNIX) && !defined(__APPLE__)
+#if defined(WITH_PERSONAL_DIR) && defined(UNIX) && !defined(__APPLE__) && !defined(__EMSCRIPTEN__)
 #	define USE_XDG
 #endif
 
