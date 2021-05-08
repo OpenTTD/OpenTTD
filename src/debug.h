@@ -32,7 +32,7 @@
  * @param name Category
  * @param level Debugging level, higher levels means more detailed information.
  */
-#define DEBUG(name, level, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) debug(#name, __VA_ARGS__)
+#define DEBUG(name, level, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) Debug(#name, __VA_ARGS__)
 
 extern int _debug_driver_level;
 extern int _debug_grf_level;
@@ -53,7 +53,45 @@ extern int _debug_console_level;
 extern int _debug_random_level;
 #endif
 
-void CDECL debug(const char *dbg, const char *format, ...) WARN_FORMAT(2, 3);
+/**
+ * Base of a set of template functions to convert printf parameters to
+ * something that printf can accept, e.g. convert std::string to a C-string.
+ * @param value The value to convert.
+ * @tparam T The type of the value to convert.
+ * @return The printf-compatible value.
+ */
+template <typename T>
+static inline T ToPrintfArgument(T value) noexcept
+{
+	return value;
+}
+
+/**
+ * Specialisation of the set of template functions to convert printf parameters
+ * to something that printf can accept. In this case it converts std::string to
+ * a C-string.
+ * @param value The string to convert.
+ * @return The C-string of the std::string.
+ */
+static inline const char *ToPrintfArgument(std::string const &value) noexcept
+{
+	return value.c_str();
+}
+
+/**
+ * Output a debug line.
+ * @note Do not call directly, use the #DEBUG macro instead.
+ * @param dbg Debug category.
+ * @param format Text string a la printf, with optional arguments.
+ * @param args The arguments for the format.
+ * @tparam Args The types of the arguments.
+ */
+template <typename ... Args>
+WARN_FORMAT(2, 0) static inline void Debug(const char *dbg, const char *format, Args const & ... args)
+{
+	extern void CDECL debug(const char *dbg, const char *format, ...);
+	debug(dbg, format, ToPrintfArgument(args) ...);
+}
 
 char *DumpDebugFacilityNames(char *buf, char *last);
 void SetDebugString(const char *s);
