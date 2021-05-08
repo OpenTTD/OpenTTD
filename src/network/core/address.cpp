@@ -248,7 +248,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	std::chrono::seconds duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 	if (!_resolve_timeout_error_message_shown && duration >= std::chrono::seconds(5)) {
 		DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s took %i seconds",
-				this->hostname.c_str(), port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), (int)duration.count());
+				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), (int)duration.count());
 		DEBUG(net, 0, "  this is likely an issue in the DNS name resolver's configuration causing it to time out");
 		_resolve_timeout_error_message_shown = true;
 	}
@@ -259,7 +259,7 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	if (e != 0) {
 		if (func != ResolveLoopProc) {
 			DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s failed: %s",
-				this->hostname.c_str(), port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)).c_str());
+				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)));
 		}
 		return INVALID_SOCKET;
 	}
@@ -317,43 +317,43 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 0, "[%s] could not create %s socket on port %s: %s", type, family, address.c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 0, "[%s] could not create %s socket on port %s: %s", type, family, address, NetworkError::GetLast().AsString());
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype == SOCK_STREAM && !SetNoDelay(sock)) {
-		DEBUG(net, 3, "[%s] setting TCP_NODELAY failed for port %s", type, address.c_str());
+		DEBUG(net, 3, "[%s] setting TCP_NODELAY failed for port %s", type, address);
 	}
 
 	int on = 1;
 	/* The (const char*) cast is needed for windows!! */
 	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not set reusable %s sockets for port %s: %s", type, family, address.c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 3, "[%s] could not set reusable %s sockets for port %s: %s", type, family, address, NetworkError::GetLast().AsString());
 	}
 
 #ifndef __OS2__
 	if (runp->ai_family == AF_INET6 &&
 			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not disable IPv4 over IPv6 on port %s: %s", type, address.c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 3, "[%s] could not disable IPv4 over IPv6 on port %s: %s", type, address, NetworkError::GetLast().AsString());
 	}
 #endif
 
 	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
-		DEBUG(net, 1, "[%s] could not bind on %s port %s: %s", type, family, address.c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 1, "[%s] could not bind on %s port %s: %s", type, family, address, NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-		DEBUG(net, 1, "[%s] could not listen at %s port %s: %s", type, family, address.c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 1, "[%s] could not listen at %s port %s: %s", type, family, address, NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed for %s port %s", type, family, address.c_str());
+	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed for %s port %s", type, family, address);
 
-	DEBUG(net, 1, "[%s] listening on %s port %s", type, family, address.c_str());
+	DEBUG(net, 1, "[%s] listening on %s port %s", type, family, address);
 	return sock;
 }
 

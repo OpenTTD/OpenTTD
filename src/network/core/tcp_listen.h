@@ -61,7 +61,7 @@ public:
 					Packet p(Tban_packet);
 					p.PrepareToSend();
 
-					DEBUG(net, 1, "[%s] Banned ip tried to join (%s), refused", Tsocket::GetName(), entry.c_str());
+					DEBUG(net, 1, "[%s] Banned ip tried to join (%s), refused", Tsocket::GetName(), entry);
 
 					if (p.TransferOut<int>(send, s, 0) < 0) {
 						DEBUG(net, 0, "send failed with error %s", NetworkError::GetLast().AsString());

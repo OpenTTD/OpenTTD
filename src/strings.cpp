@@ -2043,7 +2043,7 @@ bool MissingGlyphSearcher::FindMissingGlyphs()
 					default: NOT_REACHED();
 				}
 
-				DEBUG(freetype, 0, "Font is missing glyphs to display char 0x%X in %s font size", c, size_name.c_str());
+				DEBUG(freetype, 0, "Font is missing glyphs to display char 0x%X in %s font size", c, size_name);
 				return true;
 			}
 		}

@@ -281,7 +281,7 @@ bool LoadOldSaveGame(const std::string &file)
 	ls.file = FioFOpenFile(file, "rb", NO_DIRECTORY);
 
 	if (ls.file == nullptr) {
-		DEBUG(oldloader, 0, "Cannot open file '%s'", file.c_str());
+		DEBUG(oldloader, 0, "Cannot open file '%s'", file);
 		return false;
 	}
 

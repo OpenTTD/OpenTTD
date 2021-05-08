@@ -119,7 +119,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 {
 	std::string filename = MidiFile::GetSMFFile(song);
 
-	DEBUG(driver, 2, "cocoa_m: trying to play '%s'", filename.c_str());
+	DEBUG(driver, 2, "cocoa_m: trying to play '%s'", filename);
 
 	this->StopSong();
 	if (_sequence != nullptr) {
@@ -173,7 +173,7 @@ void MusicDriver_Cocoa::PlaySong(const MusicSongInfo &song)
 	if (MusicPlayerStart(_player) != noErr) return;
 	_playing = true;
 
-	DEBUG(driver, 3, "cocoa_m: playing '%s'", filename.c_str());
+	DEBUG(driver, 3, "cocoa_m: playing '%s'", filename);
 }
 
 

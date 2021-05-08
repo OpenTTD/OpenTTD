@@ -67,7 +67,7 @@ struct UDPSocket {
 		std::unique_lock<std::mutex> lock(mutex, std::defer_lock);
 		if (!lock.try_lock()) {
 			if (++receive_iterations_locked % 32 == 0) {
-				DEBUG(net, 0, "[udp] %s background UDP loop processing appears to be blocked. Your OS may be low on UDP send buffers.", name.c_str());
+				DEBUG(net, 0, "[udp] %s background UDP loop processing appears to be blocked. Your OS may be low on UDP send buffers.", name);
 			}
 			return;
 		}
@@ -252,7 +252,7 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_GET_NEWGRFS(Packet *p, Networ
 	uint8 in_reply_count = 0;
 	size_t packet_len = 0;
 
-	DEBUG(net, 6, "[udp] newgrf data request from %s", client_addr->GetAddressAsString().c_str());
+	DEBUG(net, 6, "[udp] newgrf data request from %s", client_addr->GetAddressAsString());
 
 	num_grfs = p->Recv_uint8 ();
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
@@ -314,7 +314,7 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 	/* Just a fail-safe.. should never happen */
 	if (_network_udp_server) return;
 
-	DEBUG(net, 4, "[udp] server response from %s", client_addr->GetAddressAsString().c_str());
+	DEBUG(net, 4, "[udp] server response from %s", client_addr->GetAddressAsString());
 
 	/* Find next item */
 	item = NetworkGameListAddItem(client_addr->GetAddressAsString(false));
@@ -409,7 +409,7 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_NEWGRFS(Packet *p, NetworkAdd
 	uint8 num_grfs;
 	uint i;
 
-	DEBUG(net, 6, "[udp] newgrf data reply from %s", client_addr->GetAddressAsString().c_str());
+	DEBUG(net, 6, "[udp] newgrf data reply from %s", client_addr->GetAddressAsString());
 
 	num_grfs = p->Recv_uint8 ();
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
@@ -461,7 +461,7 @@ void NetworkUDPQueryMasterServer()
 	std::lock_guard<std::mutex> lock(_udp_client.mutex);
 	_udp_client.socket->SendPacket(&p, &out_addr, true);
 
-	DEBUG(net, 2, "[udp] master server queried at %s", out_addr.GetAddressAsString().c_str());
+	DEBUG(net, 2, "[udp] master server queried at %s", out_addr.GetAddressAsString());
 }
 
 /** Find all servers */
@@ -525,8 +525,8 @@ static void NetworkUDPAdvertiseThread()
 	if (_session_key == 0 && session_key_retries++ == 2) {
 		DEBUG(net, 0, "[udp] advertising to the master server is failing");
 		DEBUG(net, 0, "[udp]   we are not receiving the session key from the server");
-		DEBUG(net, 0, "[udp]   please allow udp packets from %s to you to be delivered", out_addr.GetAddressAsString(false).c_str());
-		DEBUG(net, 0, "[udp]   please allow udp packets from you to %s to be delivered", out_addr.GetAddressAsString(false).c_str());
+		DEBUG(net, 0, "[udp]   please allow udp packets from %s to you to be delivered", out_addr.GetAddressAsString(false));
+		DEBUG(net, 0, "[udp]   please allow udp packets from you to %s to be delivered", out_addr.GetAddressAsString(false));
 	}
 	if (_session_key != 0 && _network_advertise_retries == 0) {
 		DEBUG(net, 0, "[udp] advertising to the master server is failing");

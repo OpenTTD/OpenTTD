@@ -62,13 +62,13 @@ void TCPConnecter::Connect(addrinfo *address)
 	if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
 
 	NetworkAddress network_address = NetworkAddress(address->ai_addr, (int)address->ai_addrlen);
-	DEBUG(net, 4, "Attempting to connect to %s", network_address.GetAddressAsString().c_str());
+	DEBUG(net, 4, "Attempting to connect to %s", network_address.GetAddressAsString());
 
 	int err = connect(sock, address->ai_addr, (int)address->ai_addrlen);
 	if (err != 0 && !NetworkError::GetLast().IsConnectInProgress()) {
 		closesocket(sock);
 
-		DEBUG(net, 1, "Could not connect to %s: %s", network_address.GetAddressAsString().c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 1, "Could not connect to %s: %s", network_address.GetAddressAsString(), NetworkError::GetLast().AsString());
 		return;
 	}
 
@@ -139,9 +139,9 @@ void TCPConnecter::OnResolved(addrinfo *ai)
 	}
 
 	if (_debug_net_level >= 5) {
-		DEBUG(net, 5, "%s resolved in:", this->connection_string.c_str());
+		DEBUG(net, 5, "%s resolved in:", this->connection_string);
 		for (const auto &address : this->addresses) {
-			DEBUG(net, 5, "- %s", NetworkAddress(address->ai_addr, (int)address->ai_addrlen).GetAddressAsString().c_str());
+			DEBUG(net, 5, "- %s", NetworkAddress(address->ai_addr, (int)address->ai_addrlen).GetAddressAsString());
 		}
 	}
 
@@ -171,13 +171,13 @@ void TCPConnecter::Resolve()
 	auto end = std::chrono::steady_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
 	if (!getaddrinfo_timeout_error_shown && duration >= std::chrono::seconds(5)) {
-		DEBUG(net, 0, "getaddrinfo() for address \"%s\" took %i seconds", this->connection_string.c_str(), (int)duration.count());
+		DEBUG(net, 0, "getaddrinfo() for address \"%s\" took %i seconds", this->connection_string, (int)duration.count());
 		DEBUG(net, 0, "  This is likely an issue in the DNS name resolver's configuration causing it to time out");
 		getaddrinfo_timeout_error_shown = true;
 	}
 
 	if (e != 0) {
-		DEBUG(misc, 0, "Failed to resolve DNS for %s", this->connection_string.c_str());
+		DEBUG(misc, 0, "Failed to resolve DNS for %s", this->connection_string);
 		this->OnFailure();
 		return;
 	}
@@ -240,7 +240,7 @@ bool TCPConnecter::CheckActivity()
 
 		/* More than 3 seconds no socket reported activity, and there are no
 		 * more address to try. Timeout the attempt. */
-		DEBUG(net, 0, "Timeout while connecting to %s", this->connection_string.c_str());
+		DEBUG(net, 0, "Timeout while connecting to %s", this->connection_string);
 
 		for (const auto &socket : this->sockets) {
 			closesocket(socket);
@@ -253,7 +253,7 @@ bool TCPConnecter::CheckActivity()
 	for (auto it = this->sockets.begin(); it != this->sockets.end(); /* nothing */) {
 		NetworkError socket_error = GetSocketError(*it);
 		if (socket_error.HasError()) {
-			DEBUG(net, 1, "Could not connect to %s: %s", NetworkAddress::GetPeerName(*it).c_str(), socket_error.AsString());
+			DEBUG(net, 1, "Could not connect to %s: %s", NetworkAddress::GetPeerName(*it), socket_error.AsString());
 			closesocket(*it);
 			it = this->sockets.erase(it);
 		} else {
@@ -284,9 +284,9 @@ bool TCPConnecter::CheckActivity()
 	}
 	assert(connected_socket != INVALID_SOCKET);
 
-	DEBUG(net, 1, "Connected to %s", this->connection_string.c_str());
+	DEBUG(net, 1, "Connected to %s", this->connection_string);
 	if (_debug_net_level >= 5) {
-		DEBUG(net, 5, "- using %s", NetworkAddress::GetPeerName(connected_socket).c_str());
+		DEBUG(net, 5, "- using %s", NetworkAddress::GetPeerName(connected_socket));
 	}
 
 	this->OnConnect(connected_socket);

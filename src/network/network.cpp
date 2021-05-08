@@ -1150,12 +1150,12 @@ public:
 
 	void OnFailure() override
 	{
-		DEBUG(net, 0, "Failed to open connection to %s for redirecting DEBUG()", this->connection_string.c_str());
+		DEBUG(net, 0, "Failed to open connection to %s for redirecting DEBUG()", this->connection_string);
 	}
 
 	void OnConnect(SOCKET s) override
 	{
-		DEBUG(net, 0, "Redirecting DEBUG() to %s", this->connection_string.c_str());
+		DEBUG(net, 0, "Redirecting DEBUG() to %s", this->connection_string);
 
 		extern SOCKET _debug_socket;
 		_debug_socket = s;

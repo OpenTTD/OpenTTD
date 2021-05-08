@@ -1496,7 +1496,7 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 		config->Change(item->name.c_str());
 		if (!config->HasScript()) {
 			if (item->name != "none") {
-				DEBUG(script, 0, "The AI by the name '%s' was no longer found, and removed from the list.", item->name.c_str());
+				DEBUG(script, 0, "The AI by the name '%s' was no longer found, and removed from the list.", item->name);
 				continue;
 			}
 		}
@@ -1523,7 +1523,7 @@ static void GameLoadConfig(IniFile *ini, const char *grpname)
 	config->Change(item->name.c_str());
 	if (!config->HasScript()) {
 		if (item->name != "none") {
-			DEBUG(script, 0, "The GameScript by the name '%s' was no longer found, and removed from the list.", item->name.c_str());
+			DEBUG(script, 0, "The GameScript by the name '%s' was no longer found, and removed from the list.", item->name);
 			return;
 		}
 	}

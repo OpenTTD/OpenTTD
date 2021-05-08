@@ -221,7 +221,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
 	this->font_name = name;
 
-	DEBUG(freetype, 2, "Loaded font '%s' with size %d", this->font_name.c_str(), pixels);
+	DEBUG(freetype, 2, "Loaded font '%s' with size %d", this->font_name, pixels);
 }
 
 GlyphID CoreTextFontCache::MapCharToGlyph(WChar key)

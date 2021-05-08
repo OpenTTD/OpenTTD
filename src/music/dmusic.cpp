@@ -430,7 +430,7 @@ bool DLSFile::ReadDLSWaveList(FILE *f, DWORD list_length)
 
 bool DLSFile::LoadFile(const wchar_t *file)
 {
-	DEBUG(driver, 2, "DMusic: Try to load DLS file %s", FS2OTTD(file).c_str());
+	DEBUG(driver, 2, "DMusic: Try to load DLS file %s", FS2OTTD(file));
 
 	FILE *f = _wfopen(file, L"rb");
 	if (f == nullptr) return false;
