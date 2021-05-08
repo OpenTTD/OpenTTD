@@ -163,21 +163,12 @@ void MusicDriver_FluidSynth::PlaySong(const MusicSongInfo &song)
 
 void MusicDriver_FluidSynth::StopSong()
 {
-	{
-		std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
-
-		if (_midi.player == nullptr) return;
-
-		fluid_player_stop(_midi.player);
-	}
-
-	/* The join must be run without lock as the Music rendering needs to be
-	 * running so FluidSynth's internals can actually stop the playing. */
-	if (fluid_player_join(_midi.player) != FLUID_OK) {
-		DEBUG(driver, 0, "Could not join player");
-	}
-
 	std::lock_guard<std::mutex> lock{ _midi.synth_mutex };
+
+	if (_midi.player == nullptr) return;
+
+	fluid_player_stop(_midi.player);
+	/* No fluid_player_join needed */
 	delete_fluid_player(_midi.player);
 	fluid_synth_system_reset(_midi.synth);
 	fluid_synth_all_sounds_off(_midi.synth, -1);
