@@ -39,7 +39,7 @@ static const uint NETWORK_CHAT_LINE_SPACING = 3;
 
 /** Container for a message. */
 struct ChatMessage {
-	char message[DRAW_STRING_BUFFER]; ///< The action message.
+	std::string message; ///< The action message.
 	TextColour colour;  ///< The colour of the message.
 	std::chrono::steady_clock::time_point remove_time; ///< The time to remove the message.
 };
@@ -87,23 +87,14 @@ static inline bool HaveChatMessages(bool show_all)
  * @param duration The duration of the chat message in seconds
  * @param message message itself in printf() style
  */
-void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const char *message, ...)
+void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message)
 {
-	char buf[DRAW_STRING_BUFFER];
-	va_list va;
-
-	va_start(va, message);
-	vseprintf(buf, lastof(buf), message, va);
-	va_end(va);
-
-	Utf8TrimString(buf, DRAW_STRING_BUFFER);
-
 	if (_chatmsg_list.size() == MAX_CHAT_MESSAGES) {
 		_chatmsg_list.pop_back();
 	}
 
 	ChatMessage *cmsg = &_chatmsg_list.emplace_front();
-	strecpy(cmsg->message, buf, lastof(cmsg->message));
+	cmsg->message = message;
 	cmsg->colour = (colour & TC_IS_PALETTE_COLOUR) ? colour : TC_WHITE;
 	cmsg->remove_time = std::chrono::steady_clock::now() + std::chrono::seconds(duration);
 
