@@ -628,11 +628,6 @@ private:
 public:
 	TCPQueryConnecter(const std::string &connection_string, bool request_company_info) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), request_company_info(request_company_info), connection_string(connection_string) {}
 
-	void OnFailure() override
-	{
-		NetworkDisconnect();
-	}
-
 	void OnConnect(SOCKET s) override
 	{
 		_networking = true;
@@ -650,7 +645,6 @@ void NetworkTCPQueryServer(const std::string &connection_string, bool request_co
 {
 	if (!_network_available) return;
 
-	NetworkDisconnect();
 	NetworkInitialize();
 
 	new TCPQueryConnecter(connection_string, request_company_info);
