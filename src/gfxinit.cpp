@@ -195,7 +195,8 @@ static void LoadSpriteTables()
 	GRFConfig *top = _grfconfig;
 
 	/* Default extra graphics */
-	GRFConfig *master = new GRFConfig("OPENTTD.GRF");
+	static const char *master_filename = "OPENTTD.GRF";
+	GRFConfig *master = new GRFConfig(master_filename);
 	master->palette |= GRFP_GRF_DOS;
 	FillGRFDetails(master, false, BASESET_DIR);
 	ClrBit(master->flags, GCF_INIT_ONLY);
@@ -222,7 +223,7 @@ static void LoadSpriteTables()
 	LoadNewGRF(SPR_NEWGRFS_BASE, 2);
 
 	uint total_extra_graphics = SPR_NEWGRFS_BASE - SPR_OPENTTD_BASE;
-	_missing_extra_graphics = GetSpriteCountForFile(used_set->files[GFT_EXTRA].filename, SPR_OPENTTD_BASE, SPR_NEWGRFS_BASE);
+	_missing_extra_graphics = GetSpriteCountForFile(master_filename, SPR_OPENTTD_BASE, SPR_NEWGRFS_BASE);
 	DEBUG(sprite, 1, "%u extra sprites, %u from baseset, %u from fallback", total_extra_graphics, total_extra_graphics - _missing_extra_graphics, _missing_extra_graphics);
 
 	/* The original baseset extra graphics intentionally make use of the fallback graphics.
