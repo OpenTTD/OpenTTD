@@ -1904,8 +1904,11 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 		this->resize_x = this->child->resize_x;
 		this->resize_y = this->child->resize_y;
 
-		/* Account for the size of the frame's text if that exists */
-		if (w != nullptr && this->type == WWT_FRAME) {
+		/* Don't apply automatic padding if there is no child widget. */
+		if (w == nullptr) return;
+
+		if (this->type == WWT_FRAME) {
+			/* Account for the size of the frame's text if that exists */
 			this->child->padding_left   = WD_FRAMETEXT_LEFT;
 			this->child->padding_right  = WD_FRAMETEXT_RIGHT;
 			this->child->padding_top    = std::max((int)WD_FRAMETEXT_TOP, this->widget_data != STR_NULL ? FONT_HEIGHT_NORMAL + WD_FRAMETEXT_TOP / 2 : 0);
@@ -1916,6 +1919,15 @@ void NWidgetBackground::SetupSmallestSize(Window *w, bool init_array)
 
 			if (this->index >= 0) w->SetStringParameters(this->index);
 			this->smallest_x = std::max(this->smallest_x, GetStringBoundingBox(this->widget_data).width + WD_FRAMETEXT_LEFT + WD_FRAMETEXT_RIGHT);
+		} else if (this->type == WWT_INSET) {
+			/* Apply automatic padding for bevel thickness. */
+			this->child->padding_left   = WD_BEVEL_LEFT;
+			this->child->padding_right  = WD_BEVEL_RIGHT;
+			this->child->padding_top    = WD_BEVEL_TOP;
+			this->child->padding_bottom = WD_BEVEL_BOTTOM;
+
+			this->smallest_x += this->child->padding_left + this->child->padding_right;
+			this->smallest_y += this->child->padding_top + this->child->padding_bottom;
 		}
 	} else {
 		Dimension d = {this->min_x, this->min_y};
