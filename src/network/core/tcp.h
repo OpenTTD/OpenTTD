@@ -18,6 +18,7 @@
 #include <atomic>
 #include <chrono>
 #include <map>
+#include <thread>
 
 /** The states of sending the packets. */
 enum SendPacketsState {
@@ -65,6 +66,9 @@ public:
  */
 class TCPConnecter {
 private:
+	std::thread resolve_thread;                         ///< Thread used during resolving.
+	std::atomic<bool> is_resolved = false;              ///< Whether resolving is done.
+
 	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
 	std::vector<addrinfo *> addresses;                  ///< Addresses we can connect to.
 	std::map<SOCKET, NetworkAddress> sock_to_address;   ///< Mapping of a socket to the real address it is connecting to. USed for DEBUG statements.
@@ -73,7 +77,6 @@ private:
 	std::vector<SOCKET> sockets;                        ///< Pending connect() attempts.
 	std::chrono::steady_clock::time_point last_attempt; ///< Time we last tried to connect.
 
-	std::atomic<bool> is_resolved = false;              ///< Whether resolving is done.
 	std::string connection_string;                      ///< Current address we are connecting to (before resolving).
 
 	void Resolve();

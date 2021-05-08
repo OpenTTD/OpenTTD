@@ -32,13 +32,17 @@ TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_
 
 	_tcp_connecters.push_back(this);
 
-	if (!StartNewThread(nullptr, "ottd:resolve", &TCPConnecter::ResolveThunk, this)) {
+	if (!StartNewThread(&this->resolve_thread, "ottd:resolve", &TCPConnecter::ResolveThunk, this)) {
 		this->Resolve();
 	}
 }
 
 TCPConnecter::~TCPConnecter()
 {
+	if (this->resolve_thread.joinable()) {
+		this->resolve_thread.join();
+	}
+
 	for (const auto &socket : this->sockets) {
 		closesocket(socket);
 	}
@@ -187,6 +191,7 @@ void TCPConnecter::Resolve()
 
 	this->ai = ai;
 	this->OnResolved(ai);
+
 	this->is_resolved = true;
 }
 
