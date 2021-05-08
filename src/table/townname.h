@@ -1480,7 +1480,7 @@ static const char * const _name_polish_2_n[] = {
 	"Pilzno",
 	"Przodkowo",
 	"Strzelno",
-	"Susz",
+	"Leszno",
 	"Jaworzno",
 	"Choszczno",
 	"Mogilno",
