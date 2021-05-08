@@ -262,7 +262,7 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 
 	DEBUG(desync, 1, "msg: %08x; %02x; %s", _date, _date_fract, message);
 	IConsolePrintF(colour, "%s", message);
-	NetworkAddChatMessage((TextColour)colour, _settings_client.gui.network_chat_timeout, "%s", message);
+	NetworkAddChatMessage((TextColour)colour, _settings_client.gui.network_chat_timeout, message);
 }
 
 /* Calculate the frame-lag of a client */
