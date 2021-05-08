@@ -40,8 +40,10 @@ TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_
 TCPConnecter::~TCPConnecter()
 {
 	for (const auto &socket : this->sockets) {
-		close(socket);
+		closesocket(socket);
 	}
+	this->sockets.clear();
+	this->sock_to_address.clear();
 
 	freeaddrinfo(this->ai);
 }
@@ -72,6 +74,7 @@ void TCPConnecter::Connect(addrinfo *address)
 		return;
 	}
 
+	this->sock_to_address[sock] = network_address;
 	this->sockets.push_back(sock);
 }
 
@@ -245,6 +248,9 @@ bool TCPConnecter::CheckActivity()
 		for (const auto &socket : this->sockets) {
 			closesocket(socket);
 		}
+		this->sockets.clear();
+		this->sock_to_address.clear();
+
 		this->OnFailure();
 		return true;
 	}
@@ -253,8 +259,9 @@ bool TCPConnecter::CheckActivity()
 	for (auto it = this->sockets.begin(); it != this->sockets.end(); /* nothing */) {
 		NetworkError socket_error = GetSocketError(*it);
 		if (socket_error.HasError()) {
-			DEBUG(net, 1, "Could not connect to %s: %s", NetworkAddress::GetPeerName(*it).c_str(), socket_error.AsString());
+			DEBUG(net, 1, "Could not connect to %s: %s", this->sock_to_address[*it].GetAddressAsString().c_str(), socket_error.AsString());
 			closesocket(*it);
+			this->sock_to_address.erase(*it);
 			it = this->sockets.erase(it);
 		} else {
 			it++;
@@ -280,6 +287,7 @@ bool TCPConnecter::CheckActivity()
 		} else {
 			closesocket(*it);
 		}
+		this->sock_to_address.erase(*it);
 		it = this->sockets.erase(it);
 	}
 	assert(connected_socket != INVALID_SOCKET);

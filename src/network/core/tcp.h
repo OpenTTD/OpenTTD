@@ -15,8 +15,9 @@
 #include "address.h"
 #include "packet.h"
 
-#include <chrono>
 #include <atomic>
+#include <chrono>
+#include <map>
 
 /** The states of sending the packets. */
 enum SendPacketsState {
@@ -66,6 +67,7 @@ class TCPConnecter {
 private:
 	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
 	std::vector<addrinfo *> addresses;                  ///< Addresses we can connect to.
+	std::map<SOCKET, NetworkAddress> sock_to_address;   ///< Mapping of a socket to the real address it is connecting to. USed for DEBUG statements.
 	size_t current_address = 0;                         ///< Current index in addresses we are trying.
 
 	std::vector<SOCKET> sockets;                        ///< Pending connect() attempts.
