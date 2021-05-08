@@ -607,7 +607,7 @@ static void CompanyCheckBankrupt(Company *c)
 			if (!_networking && _local_company == c->index) {
 				/* If we are in singleplayer mode, leave the company playing. Eg. there
 				 * is no THE-END, otherwise mark the client as spectator to make sure
-				 * They are no long in control of this company. However... when you
+				 * they are no longer in control of this company. However... when you
 				 * join another company (cheat) the "unowned" company can bankrupt. */
 				c->bankrupt_asked = MAX_UVALUE(CompanyMask);
 				break;
