@@ -652,7 +652,7 @@ int openttd_main(int argc, char *argv[])
 	}
 
 	if (i == -2 || mgo.numleft > 0) {
-		/* Either the user typed '-h', he made an error, or he added unrecognized command line arguments.
+		/* Either the user typed '-h', they made an error, or they added unrecognized command line arguments.
 		 * In all cases, print the help, and exit.
 		 *
 		 * The next two functions are needed to list the graphics sets. We can't do them earlier

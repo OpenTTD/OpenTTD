@@ -660,7 +660,7 @@ static inline bool OrderGoesToStation(const Vehicle *v, const Order *o)
  * Delete all news items regarding defective orders about a vehicle
  * This could kill still valid warnings (for example about void order when just
  * another order gets added), but assume the company will notice the problems,
- * when (s)he's changing the orders.
+ * when they're changing the orders.
  */
 static void DeleteOrderWarnings(const Vehicle *v)
 {

@@ -968,7 +968,7 @@ public:
 private:
 	uint16 uniqueid;                   ///< The uniqueid of the question.
 	ScriptCompany::CompanyID company;  ///< The company given the answer.
-	ScriptGoal::QuestionButton button; ///< The button he pressed.
+	ScriptGoal::QuestionButton button; ///< The button that was pressed.
 };
 
 /**

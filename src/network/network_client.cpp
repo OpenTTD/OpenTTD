@@ -194,8 +194,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
  */
 void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 {
-	/* First, send a CLIENT_ERROR to the server, so he knows we are
-	 *  disconnection (and why!) */
+	/* First, send a CLIENT_ERROR to the server, so it knows we are
+	 *  disconnected (and why!) */
 	NetworkErrorCode errorno;
 
 	/* We just want to close the connection.. */
@@ -293,7 +293,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 
 			/* If this is the first time we have a sync-frame, we
 			 *   need to let the server know that we are ready and at the same
-			 *   frame as he is.. so we can start playing! */
+			 *   frame as it is.. so we can start playing! */
 			if (_network_first_time) {
 				_network_first_time = false;
 				SendAck();
@@ -1399,7 +1399,7 @@ void NetworkClientSetCompanyPassword(const char *password)
 }
 
 /**
- * Tell whether the client has team members where he/she can chat to.
+ * Tell whether the client has team members who they can chat to.
  * @param cio client to check members of.
  * @return true if there is at least one team member.
  */

@@ -485,7 +485,7 @@ static bool ConKickOrBan(const char *argv, bool ban, const char *reason)
 		 * would be reading from and writing to after returning. So we would read or write data
 		 * from freed memory up till the segfault triggers. */
 		if (client_id == CLIENT_ID_SERVER || client_id == _redirect_console_to_client) {
-			IConsolePrintF(CC_ERROR, "ERROR: Silly boy, you can not %s yourself!", ban ? "ban" : "kick");
+			IConsolePrintF(CC_ERROR, "ERROR: You can not %s yourself!", ban ? "ban" : "kick");
 			return true;
 		}
 
@@ -544,7 +544,7 @@ DEF_CONSOLE_CMD(ConBan)
 	if (argc == 0) {
 		IConsoleHelp("Ban a client from a network game. Usage: 'ban <ip | client-id> [<ban-reason>]'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
-		IConsoleHelp("If the client is no longer online, you can still ban his/her IP");
+		IConsoleHelp("If the client is no longer online, you can still ban their IP");
 		return true;
 	}
 
@@ -806,12 +806,12 @@ DEF_CONSOLE_CMD(ConMoveClient)
 	}
 
 	if (ci->client_id == CLIENT_ID_SERVER && _network_dedicated) {
-		IConsoleError("Silly boy, you cannot move the server!");
+		IConsoleError("You cannot move the server!");
 		return true;
 	}
 
 	if (ci->client_playas == company_id) {
-		IConsoleError("You cannot move someone to where he/she already is!");
+		IConsoleError("You cannot move someone to where they already are!");
 		return true;
 	}
 

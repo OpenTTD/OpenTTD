@@ -48,7 +48,7 @@ public:
 
 	/**
 	 * This defines a method inside a class for Squirrel with defined params.
-	 * @note If you define nparam, make sure that he first param is always 'x',
+	 * @note If you define nparam, make sure that the first param is always 'x',
 	 *  which is the 'this' inside the function. This is hidden from the rest
 	 *  of the code, but without it calling your function will fail!
 	 */
@@ -81,7 +81,7 @@ public:
 
 	/**
 	 * This defines a static method inside a class for Squirrel with defined params.
-	 * @note If you define nparam, make sure that he first param is always 'x',
+	 * @note If you define nparam, make sure that the first param is always 'x',
 	 *  which is the 'this' inside the function. This is hidden from the rest
 	 *  of the code, but without it calling your function will fail!
 	 */

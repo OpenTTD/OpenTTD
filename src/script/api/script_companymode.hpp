@@ -37,7 +37,7 @@ public:
 	 * Creating instance of this class switches the company used for queries
 	 *  and commands.
 	 * @param company The new company to switch to.
-	 * @note When the instance is destroyed, he restores the company that was
+	 * @note When the instance is destroyed, it restores the company that was
 	 *   current when the instance was created!
 	 */
 	ScriptCompanyMode(int company);
