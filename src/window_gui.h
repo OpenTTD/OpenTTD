@@ -853,6 +853,7 @@ public:
 		WindowIterator<Tfront> begin() { return WindowIterator<Tfront>(Tfront ? _z_front_window : _z_back_window); }
 		WindowIterator<Tfront> end() { return WindowIterator<Tfront>(nullptr); }
 	};
+	using Iterate = AllWindows<false>; //!< Iterate all windows in whatever order is easiest.
 	using IterateFromBack = AllWindows<false>; //!< Iterate all windows in Z order from back to front.
 	using IterateFromFront = AllWindows<true>; //!< Iterate all windows in Z order from front to back.
 };

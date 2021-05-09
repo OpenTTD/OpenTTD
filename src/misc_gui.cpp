@@ -1289,7 +1289,7 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 {
 	if (parent == nullptr) parent = FindWindowById(WC_MAIN_WINDOW, 0);
 
-	for (const Window *w : Window::IterateFromBack()) {
+	for (const Window *w : Window::Iterate()) {
 		if (w->window_class != WC_CONFIRM_POPUP_QUERY) continue;
 
 		const QueryWindow *qw = (const QueryWindow *)w;

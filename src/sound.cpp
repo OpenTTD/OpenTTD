@@ -245,6 +245,7 @@ static void SndPlayScreenCoordFx(SoundID sound, int left, int right, int top, in
 {
 	if (_settings_client.music.effect_vol == 0) return;
 
+	/* Iterate from back, so that main viewport is checked first */
 	for (const Window *w : Window::IterateFromBack()) {
 		const Viewport *vp = w->viewport;
 
