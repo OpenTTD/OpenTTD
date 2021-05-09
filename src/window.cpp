@@ -896,7 +896,10 @@ static bool MayBeShown(const Window *w)
  */
 static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 {
-	for (const Window *v : Window::IterateFromBack(w->z_front)) {
+	Window::IteratorToFront it(w);
+	++it;
+	for (; !it.IsEnd(); ++it) {
+		const Window *v = *it;
 		if (MayBeShown(v) &&
 				right > v->left &&
 				bottom > v->top &&
@@ -2530,7 +2533,10 @@ static bool MaybeBringWindowToFront(Window *w)
 		w_height = w->unshaded_size.height;
 	}
 
-	for (Window *u : Window::IterateFromBack(w->z_front)) {
+	Window::IteratorToFront it(w);
+	++it;
+	for (; !it.IsEnd(); ++it) {
+		Window *u = *it;
 		/* A modal child will prevent the activation of the parent window */
 		if (u->parent == w && (u->window_desc->flags & WDF_MODAL)) {
 			u->SetWhiteBorder();
