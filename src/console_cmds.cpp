@@ -939,6 +939,7 @@ DEF_CONSOLE_CMD(ConExec)
 	}
 
 	if (_script_current_depth == 11) {
+		FioFCloseFile(script_file);
 		IConsoleError("Maximum 'exec' depth reached; script A is calling script B is calling script C ... more than 10 times.");
 		return true;
 	}

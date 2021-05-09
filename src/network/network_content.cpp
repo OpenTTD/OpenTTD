@@ -410,7 +410,8 @@ static bool GunzipFile(const ContentInfo *ci)
 	FILE *ftmp = fopen(GetFullFilename(ci, true).c_str(), "rb");
 	if (ftmp == nullptr) return false;
 	/* Duplicate the handle, and close the FILE*, to avoid double-closing the handle later. */
-	gzFile fin = gzdopen(dup(fileno(ftmp)), "rb");
+	int fdup = dup(fileno(ftmp));
+	gzFile fin = gzdopen(fdup, "rb");
 	fclose(ftmp);
 
 	FILE *fout = fopen(GetFullFilename(ci, false).c_str(), "wb");
@@ -449,7 +450,12 @@ static bool GunzipFile(const ContentInfo *ci)
 		}
 	}
 
-	if (fin != nullptr) gzclose(fin);
+	if (fin != nullptr) {
+		gzclose(fin);
+	} else if (fdup != -1) {
+		/* Failing gzdopen does not close the passed file descriptor. */
+		close(fdup);
+	}
 	if (fout != nullptr) fclose(fout);
 
 	return ret;
