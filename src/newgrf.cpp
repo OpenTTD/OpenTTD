@@ -7394,7 +7394,7 @@ static void GRFInhibit(ByteReader *buf)
 		if (file != nullptr && file != _cur.grfconfig) {
 			grfmsg(2, "GRFInhibit: Deactivating file '%s'", file->filename);
 			GRFError *error = DisableGrf(STR_NEWGRF_ERROR_FORCEFULLY_DISABLED, file);
-			error->data = stredup(_cur.grfconfig->GetName());
+			error->data = _cur.grfconfig->GetName();
 		}
 	}
 }
