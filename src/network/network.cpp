@@ -619,35 +619,69 @@ static void NetworkInitialize(bool close_admins = true)
 	_network_reconnect = 0;
 }
 
-/** Non blocking connection create to query servers */
+/** Non blocking connection to query servers for their game info. */
 class TCPQueryConnecter : TCPConnecter {
 private:
-	bool request_company_info;
 	std::string connection_string;
 
 public:
-	TCPQueryConnecter(const std::string &connection_string, bool request_company_info) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), request_company_info(request_company_info), connection_string(connection_string) {}
+	TCPQueryConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
 	void OnConnect(SOCKET s) override
 	{
 		_networking = true;
 		new ClientNetworkGameSocketHandler(s, this->connection_string);
-		MyClient::SendInformationQuery(request_company_info);
+		MyClient::SendInformationQuery(false);
 	}
 };
 
 /**
- * Query a server to fetch his game-info.
+ * Query a server to fetch the game-info.
  * @param connection_string the address to query.
- * @param request_company_info Whether to request company info too.
  */
-void NetworkTCPQueryServer(const std::string &connection_string, bool request_company_info)
+void NetworkQueryServer(const std::string &connection_string)
 {
 	if (!_network_available) return;
 
 	NetworkInitialize();
 
-	new TCPQueryConnecter(connection_string, request_company_info);
+	new TCPQueryConnecter(connection_string);
+}
+
+/** Non blocking connection to query servers for their game and company info. */
+class TCPLobbyQueryConnecter : TCPConnecter {
+private:
+	std::string connection_string;
+
+public:
+	TCPLobbyQueryConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
+
+	void OnFailure() override
+	{
+		DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
+
+		ShowErrorMessage(STR_NETWORK_ERROR_NOCONNECTION, INVALID_STRING_ID, WL_ERROR);
+	}
+
+	void OnConnect(SOCKET s) override
+	{
+		_networking = true;
+		new ClientNetworkGameSocketHandler(s, this->connection_string);
+		MyClient::SendInformationQuery(true);
+	}
+};
+
+/**
+ * Query a server to fetch his game-info for the lobby.
+ * @param connection_string the address to query.
+ */
+void NetworkQueryLobbyServer(const std::string &connection_string)
+{
+	if (!_network_available) return;
+
+	NetworkInitialize();
+
+	new TCPLobbyQueryConnecter(connection_string);
 }
 
 /**
@@ -670,7 +704,7 @@ NetworkGameList *NetworkAddServer(const std::string &connection_string, bool man
 		NetworkRebuildHostList();
 		UpdateNetworkGameWindow();
 
-		NetworkTCPQueryServer(connection_string);
+		NetworkQueryServer(connection_string);
 	}
 
 	if (manually) item->manually = true;
