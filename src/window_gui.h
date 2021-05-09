@@ -833,39 +833,28 @@ public:
 		Window * operator*() const { return this->w; }
 		WindowIterator & operator++() { this->Next(); this->Validate(); return *this; }
 
+		bool IsEnd() const { return this->w == nullptr; }
+
 	private:
 		Window *w;
 		void Validate() { while (this->w != nullptr && this->w->window_class == WC_INVALID) this->Next(); }
 		void Next() { if (this->w != nullptr) this->w = Tfront ? this->w->z_back : this->w->z_front; }
 	};
+	using IteratorToFront = WindowIterator<false>; //!< Iterate in Z order towards front.
+	using IteratorToBack = WindowIterator<true>; //!< Iterate in Z order towards back.
 
 	/**
 	 * Iterable ensemble of all valid Windows
 	 * @tparam Tfront Wether we iterate from front
 	 */
 	template <bool Tfront>
-	struct Iterate {
-		Iterate(const Window *from) : from(from) {}
-		WindowIterator<Tfront> begin() { return WindowIterator<Tfront>(this->from); }
+	struct AllWindows {
+		AllWindows() {}
+		WindowIterator<Tfront> begin() { return WindowIterator<Tfront>(Tfront ? _z_front_window : _z_back_window); }
 		WindowIterator<Tfront> end() { return WindowIterator<Tfront>(nullptr); }
-		bool empty() { return this->begin() == this->end(); }
-	private:
-		const Window *from;
 	};
-
-	/**
-	 * Returns an iterable ensemble of all valid Window from back to front
-	 * @param from index of the first Window to consider
-	 * @return an iterable ensemble of all valid Window
-	 */
-	static Iterate<false> IterateFromBack(const Window *from = _z_back_window) { return Iterate<false>(from); }
-
-	/**
-	 * Returns an iterable ensemble of all valid Window from front to back
-	 * @param from index of the first Window to consider
-	 * @return an iterable ensemble of all valid Window
-	 */
-	static Iterate<true> IterateFromFront(const Window *from = _z_front_window) { return Iterate<true>(from); }
+	using IterateFromBack = AllWindows<false>; //!< Iterate all windows in Z order from back to front.
+	using IterateFromFront = AllWindows<true>; //!< Iterate all windows in Z order from front to back.
 };
 
 /**
