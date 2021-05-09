@@ -501,7 +501,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
  */
 int HideDropDownMenu(Window *pw)
 {
-	for (Window *w : Window::IterateFromBack()) {
+	for (Window *w : Window::Iterate()) {
 		if (w->window_class != WC_DROPDOWN_MENU) continue;
 
 		DropdownWindow *dw = dynamic_cast<DropdownWindow*>(w);
