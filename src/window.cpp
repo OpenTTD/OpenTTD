@@ -53,10 +53,8 @@ static Point _drag_delta; ///< delta between mouse cursor and upper left corner 
 static Window *_mouseover_last_w = nullptr; ///< Window of the last OnMouseOver event.
 static Window *_last_scroll_window = nullptr; ///< Window of the last scroll event.
 
-/** List of windows opened at the screen sorted from the front. */
-Window *_z_front_window = nullptr;
-/** List of windows opened at the screen sorted from the back. */
-Window *_z_back_window  = nullptr;
+/** List of windows opened at the screen sorted from the front to back. */
+WindowList _z_windows;
 
 /** If false, highlight is white, otherwise the by the widget defined colour. */
 bool _window_highlight_colour = false;
@@ -1109,16 +1107,7 @@ Window::~Window()
 	free(this->nested_array); // Contents is released through deletion of #nested_root.
 	delete this->nested_root;
 
-	/*
-	 * Make fairly sure that this is written, and not "optimized" away.
-	 * The delete operator is overwritten to not delete it; the deletion
-	 * happens at a later moment in time after the window has been
-	 * removed from the list of windows to prevent issues with items
-	 * being removed during the iteration as not one but more windows
-	 * may be removed by a single call to ~Window by means of the
-	 * DeleteChildWindows function.
-	 */
-	const_cast<volatile WindowClass &>(this->window_class) = WC_INVALID;
+	*this->z_position = nullptr;
 }
 
 /**
@@ -1231,7 +1220,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 	}
 }
 
-static void BringWindowToFront(Window *w);
+static void BringWindowToFront(Window *w, bool dirty = true);
 
 /**
  * Find a window and make it the relative top-window on the screen.
@@ -1352,89 +1341,22 @@ static uint GetWindowZPriority(WindowClass wc)
 }
 
 /**
- * Adds a window to the z-ordering, according to its z-priority.
- * @param w Window to add
- */
-static void AddWindowToZOrdering(Window *w)
-{
-	assert(w->z_front == nullptr && w->z_back == nullptr);
-
-	if (_z_front_window == nullptr) {
-		/* It's the only window. */
-		_z_front_window = _z_back_window = w;
-		w->z_front = w->z_back = nullptr;
-	} else {
-		/* Search down the z-ordering for its location. */
-		Window *v = _z_front_window;
-		uint last_z_priority = UINT_MAX;
-		(void)last_z_priority; // Unused without asserts
-		while (v != nullptr && (v->window_class == WC_INVALID || GetWindowZPriority(v->window_class) > GetWindowZPriority(w->window_class))) {
-			if (v->window_class != WC_INVALID) {
-				/* Sanity check z-ordering, while we're at it. */
-				assert(last_z_priority >= GetWindowZPriority(v->window_class));
-				last_z_priority = GetWindowZPriority(v->window_class);
-			}
-
-			v = v->z_back;
-		}
-
-		if (v == nullptr) {
-			/* It's the new back window. */
-			w->z_front = _z_back_window;
-			w->z_back = nullptr;
-			_z_back_window->z_back = w;
-			_z_back_window = w;
-		} else if (v == _z_front_window) {
-			/* It's the new front window. */
-			w->z_front = nullptr;
-			w->z_back = _z_front_window;
-			_z_front_window->z_front = w;
-			_z_front_window = w;
-		} else {
-			/* It's somewhere else in the z-ordering. */
-			w->z_front = v->z_front;
-			w->z_back = v;
-			v->z_front->z_back = w;
-			v->z_front = w;
-		}
-	}
-}
-
-
-/**
- * Removes a window from the z-ordering.
- * @param w Window to remove
- */
-static void RemoveWindowFromZOrdering(Window *w)
-{
-	if (w->z_front == nullptr) {
-		assert(_z_front_window == w);
-		_z_front_window = w->z_back;
-	} else {
-		w->z_front->z_back = w->z_back;
-	}
-
-	if (w->z_back == nullptr) {
-		assert(_z_back_window == w);
-		_z_back_window = w->z_front;
-	} else {
-		w->z_back->z_front = w->z_front;
-	}
-
-	w->z_front = w->z_back = nullptr;
-}
-
-/**
  * On clicking on a window, make it the frontmost window of all windows with an equal
  * or lower z-priority. The window is marked dirty for a repaint
  * @param w window that is put into the relative foreground
+ * @param dirty whether to mark the window dirty
  */
-static void BringWindowToFront(Window *w)
+static void BringWindowToFront(Window *w, bool dirty)
 {
-	RemoveWindowFromZOrdering(w);
-	AddWindowToZOrdering(w);
+	auto priority = GetWindowZPriority(w->window_class);
+	WindowList::iterator dest = _z_windows.begin();
+	while (dest != _z_windows.end() && (*dest == nullptr || GetWindowZPriority((*dest)->window_class) <= priority)) ++dest;
 
-	w->SetDirty();
+	if (dest != w->z_position) {
+		_z_windows.splice(dest, _z_windows, w->z_position);
+	}
+
+	if (dirty) w->SetDirty();
 }
 
 /**
@@ -1476,7 +1398,7 @@ void Window::InitializeData(WindowNumber window_number)
 	if (!EditBoxInGlobalFocus() || this->nested_root->GetWidgetOfType(WWT_EDITBOX) != nullptr) SetFocusedWindow(this);
 
 	/* Insert the window into the correct location in the z-ordering. */
-	AddWindowToZOrdering(this);
+	BringWindowToFront(this, false);
 }
 
 /**
@@ -1848,6 +1770,7 @@ void Window::InitNested(WindowNumber window_number)
  */
 Window::Window(WindowDesc *desc) : window_desc(desc), mouse_capture_widget(-1)
 {
+	this->z_position = _z_windows.insert(_z_windows.end(), this);
 }
 
 /**
@@ -1875,8 +1798,6 @@ void InitWindowSystem()
 {
 	IConsoleClose();
 
-	_z_back_window = nullptr;
-	_z_front_window = nullptr;
 	_focused_window = nullptr;
 	_mouseover_last_w = nullptr;
 	_last_scroll_window = nullptr;
@@ -1898,14 +1819,7 @@ void UnInitWindowSystem()
 
 	for (Window *w : Window::Iterate()) delete w;
 
-	for (Window *w = _z_front_window; w != nullptr; /* nothing */) {
-		Window *to_del = w;
-		w = w->z_back;
-		free(to_del);
-	}
-
-	_z_front_window = nullptr;
-	_z_back_window = nullptr;
+	_z_windows.clear();
 }
 
 /**
@@ -3068,15 +2982,13 @@ void InputLoop()
 
 	CheckSoftLimit();
 
-	/* Do the actual free of the deleted windows. */
-	for (Window *v = _z_front_window; v != nullptr; /* nothing */) {
-		Window *w = v;
-		v = v->z_back;
-
-		if (w->window_class != WC_INVALID) continue;
-
-		RemoveWindowFromZOrdering(w);
-		free(w);
+	/* Remove dead entries from the window list */
+	for (auto it = _z_windows.begin(); it != _z_windows.end(); ) {
+		if (*it == nullptr) {
+			it = _z_windows.erase(it);
+		} else {
+			++it;
+		}
 	}
 
 	if (_input_events_this_tick != 0) {
