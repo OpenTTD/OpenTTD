@@ -772,7 +772,10 @@ public:
 				break;
 
 			case WID_NG_NEWGRF: // NewGRF Settings
-				if (this->server != nullptr) ShowNewGRFSettings(false, false, false, &this->server->info.grfconfig);
+				if (this->server != nullptr) {
+					NetworkQueryServer(this->server->connection_string);
+					ShowNewGRFSettings(false, false, false, &this->server->info.grfconfig);
+				}
 				break;
 
 			case WID_NG_NEWGRF_MISSING: // Find missing content online

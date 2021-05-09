@@ -167,9 +167,6 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_SERVER_ERROR(Packet *p)
 
 bool ClientNetworkCoordinatorSocketHandler::Receive_SERVER_REGISTER_ACK(Packet *p)
 {
-	/* Schedule sending an update. */
-	this->next_update = std::chrono::steady_clock::now();
-
 	_settings_client.network.server_join_key = "+" + p->Recv_string(NETWORK_JOIN_KEY_LENGTH);
 	_settings_client.network.server_join_key_secret = p->Recv_string(NETWORK_JOIN_KEY_SECRET_LENGTH);
 	_network_server_connection_type = (ConnectionType)p->Recv_uint8();
@@ -218,6 +215,11 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_SERVER_REGISTER_ACK(Packet *
 	} else {
 		Debug(net, 3, "Game Coordinator registered our server with invite code '{}'", _network_game_info.join_key);
 	}
+
+	/* Sendt a full update, including NewGRF data. */
+	this->SendServerUpdate(GAME_INFO_NEWGRF_MODE_SHORT);
+	/* Schedule sending next update. */
+	this->next_update = std::chrono::steady_clock::now() + NETWORK_COORDINATOR_DELAY_BETWEEN_UPDATES;
 
 	return true;
 }
@@ -428,15 +430,16 @@ void ClientNetworkCoordinatorSocketHandler::Register()
 
 /**
  * Send an update of our server status to the Game Coordinator.
+ * @param include_newgrf_data Whether the server update should include NewGRF data.
  */
-void ClientNetworkCoordinatorSocketHandler::SendServerUpdate()
+void ClientNetworkCoordinatorSocketHandler::SendServerUpdate(GameInfoNewGRFMode newgrf_mode)
 {
 	Debug(net, 6, "Sending server update to Game Coordinator");
 	this->next_update = std::chrono::steady_clock::now() + NETWORK_COORDINATOR_DELAY_BETWEEN_UPDATES;
 
 	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_UPDATE);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
-	SerializeNetworkGameInfo(p, GetCurrentNetworkServerGameInfo());
+	SerializeNetworkGameInfo(p, GetCurrentNetworkServerGameInfo(), newgrf_mode);
 
 	this->SendPacket(p);
 }
@@ -665,7 +668,7 @@ void ClientNetworkCoordinatorSocketHandler::SendReceive()
 	}
 
 	if (_network_server && _network_server_connection_type != CONNECTION_TYPE_UNKNOWN && std::chrono::steady_clock::now() > this->next_update) {
-		this->SendServerUpdate();
+		this->SendServerUpdate(GAME_INFO_NEWGRF_MODE_NONE);
 	}
 
 	if (!_network_server && std::chrono::steady_clock::now() > this->last_activity + IDLE_TIMEOUT) {

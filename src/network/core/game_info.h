@@ -26,11 +26,13 @@
  *   all      1       the version of this packet's structure
  *
  *   5+       var     join key of the server
- *   4+       1       number of GRFs attached (n)
- *   4+       n * 20  unique identifier for GRF files. Consists of:
- *                     - one 4 byte variable with the GRF ID
- *                     - 16 bytes (sent sequentially) for the MD5 checksum
+ *   5+       1       NewGRF mode (0 = none: skip next two fields, 1 = short: skip name, 2 = full)
+ *   4+       1       number of NewGRFs attached
+ *   4+       n * M   unique identifier for NewGRF files. Consists of:
+ *   4+                - one 4 byte variable with the NewGRF ID
+ *   4+                - 16 bytes (sent sequentially) for the MD5 checksum
  *                       of the GRF
+ *   5+                - name of the NewGRF
  *
  *   3+       4       current game date in days since 1-1-0 (DMY)
  *   3+       4       game introduction date in days since 1-1-0 (DMY)
@@ -89,6 +91,12 @@ struct NetworkGameInfo : NetworkServerGameInfo {
 	bool compatible;                                ///< Can we connect to this server or not? (based on server_revision _and_ grf_match
 };
 
+enum GameInfoNewGRFMode : uint8 {
+	GAME_INFO_NEWGRF_MODE_NONE = 0, ///< Send/receive NetworkGameInfo without any NewGRF data.
+	GAME_INFO_NEWGRF_MODE_SHORT,    ///< Send/receive NetworkGameInfo with only the ID + MD5 of NewGRFs.
+	GAME_INFO_NEWGRF_MODE_FULL,     ///< Send/receive NetworkGameInfo with ID + MD5 + Name of NewGRFs.
+};
+
 extern NetworkServerGameInfo _network_game_info;
 
 std::string_view GetNetworkRevisionString();
@@ -102,6 +110,6 @@ void DeserializeGRFIdentifier(Packet *p, GRFIdentifier *grf);
 void SerializeGRFIdentifier(Packet *p, const GRFIdentifier *grf);
 
 void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info);
-void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info);
+void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info, GameInfoNewGRFMode newgrf_mode);
 
 #endif /* NETWORK_CORE_GAME_INFO_H */

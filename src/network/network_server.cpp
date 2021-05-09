@@ -355,7 +355,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendClientInfo(NetworkClientIn
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendGameInfo()
 {
 	Packet *p = new Packet(PACKET_SERVER_GAME_INFO);
-	SerializeNetworkGameInfo(p, GetCurrentNetworkServerGameInfo());
+	SerializeNetworkGameInfo(p, GetCurrentNetworkServerGameInfo(), GAME_INFO_NEWGRF_MODE_FULL);
 
 	this->SendPacket(p);
 

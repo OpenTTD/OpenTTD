@@ -92,7 +92,7 @@ public:
 	void CloseTurnHandler(const std::string &token);
 
 	void Register();
-	void SendServerUpdate();
+	void SendServerUpdate(GameInfoNewGRFMode newgrf_mode);
 	void GetListing();
 
 	void ConnectToServer(const std::string &join_key, TCPServerConnecter *connecter);
