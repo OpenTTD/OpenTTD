@@ -54,7 +54,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		si->y = y;
 		si->z = GetSlopePixelZ(x, y);
 		if (!StrEmpty(text)) {
-			si->name = stredup(text);
+			si->name = text;
 		}
 		si->UpdateVirtCoord();
 		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
