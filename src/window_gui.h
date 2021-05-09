@@ -813,65 +813,59 @@ public:
 
 	/**
 	 * Iterator to iterate all valid Windows
-	 * @tparam T Type of the class/struct that is going to be iterated
 	 * @tparam Tfront Wether we iterate from front
 	 */
-	template <class T, bool Tfront>
+	template <bool Tfront>
 	struct WindowIterator {
-		typedef T value_type;
-		typedef T *pointer;
-		typedef T &reference;
+		typedef Window *value_type;
+		typedef value_type *pointer;
+		typedef value_type &reference;
 		typedef size_t difference_type;
 		typedef std::forward_iterator_tag iterator_category;
 
-		explicit WindowIterator(T *start) : w(start)
+		explicit WindowIterator(const Window *start) : w(const_cast<Window *>(start))
 		{
 			this->Validate();
 		}
 
 		bool operator==(const WindowIterator &other) const { return this->w == other.w; }
 		bool operator!=(const WindowIterator &other) const { return !(*this == other); }
-		T * operator*() const { return this->w; }
+		Window * operator*() const { return this->w; }
 		WindowIterator & operator++() { this->Next(); this->Validate(); return *this; }
 
 	private:
-		T *w;
+		Window *w;
 		void Validate() { while (this->w != nullptr && this->w->window_class == WC_INVALID) this->Next(); }
 		void Next() { if (this->w != nullptr) this->w = Tfront ? this->w->z_back : this->w->z_front; }
 	};
 
 	/**
 	 * Iterable ensemble of all valid Windows
-	 * @tparam T Type of the class/struct that is going to be iterated
 	 * @tparam Tfront Wether we iterate from front
 	 */
-	template <class T, bool Tfront>
+	template <bool Tfront>
 	struct Iterate {
-		Iterate(T *from) : from(from) {}
-		WindowIterator<T, Tfront> begin() { return WindowIterator<T, Tfront>(this->from); }
-		WindowIterator<T, Tfront> end() { return WindowIterator<T, Tfront>(nullptr); }
+		Iterate(const Window *from) : from(from) {}
+		WindowIterator<Tfront> begin() { return WindowIterator<Tfront>(this->from); }
+		WindowIterator<Tfront> end() { return WindowIterator<Tfront>(nullptr); }
 		bool empty() { return this->begin() == this->end(); }
 	private:
-		T *from;
+		const Window *from;
 	};
 
 	/**
 	 * Returns an iterable ensemble of all valid Window from back to front
-	 * @tparam T Type of the class/struct that is going to be iterated
 	 * @param from index of the first Window to consider
 	 * @return an iterable ensemble of all valid Window
 	 */
-	template <class T = Window>
-	static Iterate<T, false> IterateFromBack(T *from = _z_back_window) { return Iterate<T, false>(from); }
+	static Iterate<false> IterateFromBack(const Window *from = _z_back_window) { return Iterate<false>(from); }
 
 	/**
 	 * Returns an iterable ensemble of all valid Window from front to back
-	 * @tparam T Type of the class/struct that is going to be iterated
 	 * @param from index of the first Window to consider
 	 * @return an iterable ensemble of all valid Window
 	 */
-	template <class T = Window>
-	static Iterate<T, true> IterateFromFront(T *from = _z_front_window) { return Iterate<T, true>(from); }
+	static Iterate<true> IterateFromFront(const Window *from = _z_front_window) { return Iterate<true>(from); }
 };
 
 /**
