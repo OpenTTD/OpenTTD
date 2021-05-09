@@ -10,6 +10,8 @@
 #ifndef WINDOW_GUI_H
 #define WINDOW_GUI_H
 
+#include <list>
+
 #include "vehicle_type.h"
 #include "viewport_type.h"
 #include "company_type.h"
@@ -143,8 +145,8 @@ void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, Fra
 void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align);
 
 /* window.cpp */
-extern Window *_z_front_window;
-extern Window *_z_back_window;
+using WindowList = std::list<Window *>;
+extern WindowList _z_windows;
 extern Window *_focused_window;
 
 
@@ -293,19 +295,7 @@ public:
 	 * to destruct them all at the same time too, which is kinda hard.
 	 * @param size the amount of space not to allocate
 	 */
-	inline void *operator new[](size_t size)
-	{
-		NOT_REACHED();
-	}
-
-	/**
-	 * Helper allocation function to disallow something.
-	 * Don't free the window directly; it corrupts the linked list when iterating
-	 * @param ptr the pointer not to free
-	 */
-	inline void operator delete(void *ptr)
-	{
-	}
+	inline void *operator new[](size_t size) = delete;
 
 	WindowDesc *window_desc;    ///< Window description
 	WindowFlags flags;          ///< Window flags
@@ -336,8 +326,7 @@ public:
 	int mouse_capture_widget;        ///< Widgetindex of current mouse capture widget (e.g. dragged scrollbar). -1 if no widget has mouse capture.
 
 	Window *parent;                  ///< Parent window.
-	Window *z_front;                 ///< The window in front of us in z-order.
-	Window *z_back;                  ///< The window behind us in z-order.
+	WindowList::iterator z_position;
 
 	template <class NWID>
 	inline const NWID *GetWidget(uint widnum) const;
@@ -813,9 +802,9 @@ public:
 
 	/**
 	 * Iterator to iterate all valid Windows
-	 * @tparam Tfront Wether we iterate from front
+	 * @tparam TtoBack whether we iterate towards the back.
 	 */
-	template <bool Tfront>
+	template <bool TtoBack>
 	struct WindowIterator {
 		typedef Window *value_type;
 		typedef value_type *pointer;
@@ -823,22 +812,35 @@ public:
 		typedef size_t difference_type;
 		typedef std::forward_iterator_tag iterator_category;
 
-		explicit WindowIterator(const Window *start) : w(const_cast<Window *>(start))
+		explicit WindowIterator(WindowList::iterator start) : it(start)
 		{
 			this->Validate();
 		}
+		explicit WindowIterator(const Window *w) : it(w->z_position) {}
 
-		bool operator==(const WindowIterator &other) const { return this->w == other.w; }
+		bool operator==(const WindowIterator &other) const { return this->it == other.it; }
 		bool operator!=(const WindowIterator &other) const { return !(*this == other); }
-		Window * operator*() const { return this->w; }
+		Window * operator*() const { return *this->it; }
 		WindowIterator & operator++() { this->Next(); this->Validate(); return *this; }
 
-		bool IsEnd() const { return this->w == nullptr; }
+		bool IsEnd() const { return this->it == _z_windows.end(); }
 
 	private:
-		Window *w;
-		void Validate() { while (this->w != nullptr && this->w->window_class == WC_INVALID) this->Next(); }
-		void Next() { if (this->w != nullptr) this->w = Tfront ? this->w->z_back : this->w->z_front; }
+		WindowList::iterator it;
+		void Validate()
+		{
+			while (!this->IsEnd() && *this->it == nullptr) this->Next();
+		}
+		void Next()
+		{
+			if constexpr (!TtoBack) {
+				++this->it;
+			} else if (this->it == _z_windows.begin()) {
+				this->it = _z_windows.end();
+			} else {
+				--this->it;
+			}
+		}
 	};
 	using IteratorToFront = WindowIterator<false>; //!< Iterate in Z order towards front.
 	using IteratorToBack = WindowIterator<true>; //!< Iterate in Z order towards back.
@@ -850,8 +852,17 @@ public:
 	template <bool Tfront>
 	struct AllWindows {
 		AllWindows() {}
-		WindowIterator<Tfront> begin() { return WindowIterator<Tfront>(Tfront ? _z_front_window : _z_back_window); }
-		WindowIterator<Tfront> end() { return WindowIterator<Tfront>(nullptr); }
+		WindowIterator<Tfront> begin()
+		{
+			if constexpr (Tfront) {
+				auto back = _z_windows.end();
+				if (back != _z_windows.begin()) --back;
+				return WindowIterator<Tfront>(back);
+			} else {
+				return WindowIterator<Tfront>(_z_windows.begin());
+			}
+		}
+		WindowIterator<Tfront> end() { return WindowIterator<Tfront>(_z_windows.end()); }
 	};
 	using Iterate = AllWindows<false>; //!< Iterate all windows in whatever order is easiest.
 	using IterateFromBack = AllWindows<false>; //!< Iterate all windows in Z order from back to front.
