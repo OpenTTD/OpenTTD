@@ -218,7 +218,6 @@ public:
 
 	inline uint16 GetMaxMapping() const { return max_new_entities; }
 	inline uint16 GetMaxOffset() const { return max_offset; }
-	inline bool IsValidID(uint16 entity_id) const { return entity_overrides[entity_id] != invalid_ID; }
 };
 
 
