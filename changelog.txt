@@ -2186,7 +2186,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: [NewGRF] Additional text in fund industry window is NewGRF supplied and thus should have a default colour (r22631)
 - Fix: Also initialise _old_vds with newgame settings; TTD savegames do not contain these settings [FS#4622] (r22626)
 - Fix: Do not zero the orders of disaster vehicles when converting savegames [FS#4642] (r22625)
-- Fix: When closing an AI company the local player cheated to, we need to cheat him to another company [FS#4654] (r22624, r22623)
+- Fix: When closing an AI company the local player cheated to, we need to cheat them to another company [FS#4654] (r22624, r22623)
 - Fix: When closing down companies their shares in other companies must be sold even if share trading is disabled at that point of time (r22622)
 - Fix: When asking the user to confirm an unsafe unpausing, there is no need to execute a command if 'no' is chosen. This also prevents crashing when clicking unpause while the confirm window is shown (r22621)
 - Fix: Enforce refit orders to be 'always go to depot' orders; service-only and stop-in-depot orders make no sense with refitting [FS#4651] (r22620)
@@ -2908,7 +2908,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Chat message caused glitch when rejoining a network game [FS#3757] (r19629)
 - Fix: Desync when a command is received and in the queue while a client starts joining, i.e. save the game state. This can happen in two ways: with frame_freq > 1 a command received in a previous frame might not be executed yet or when a command is received in the same frame as the join but before the savegame is made. In both cases the joining client would not get all commands to get in-sync with the server (and the other clients) (r19620)
 - Fix: Company related graphs were not updated correctly after changing the company colour [FS#3763] (r19615)
-- Fix: Possible invalid read when server moves client to spectators before he finishes joining [FS#3755] (r19613)
+- Fix: Possible invalid read when server moves client to spectators before they finish joining [FS#3755] (r19613)
 - Fix: Crash when opening a savegame with a waypoint from around 0.4.0 [FS#3756] (r19612)
 - Fix: Improve joining behaviour; kicking clients when entering passwords that was just cleared, 'connection lost' for people failing the password, access restriction circumvention [CVE-2010-0401] [FS#3754] (r19610, r19609, r19608, r19607, r19606)
 - Fix: Desync debugging; false positives in the cache validity checks and saving/loading the command stream (r19619, r19617, r19602, r19601, r19600, r19596, r19593, r19592, r19589, r19587, r19586)
@@ -3263,7 +3263,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Do not account for path reservation costs when entering a signal block via a 'block' signal. This way you will not get double penalties, both red signals and reservation costs, for the block signalled tracks [FS#2722] (r18535)
 - Fix: [NewGRF] An industry NewGRF that defined a too small size for action0 prop 0A could cause a crash (r18527)
 - Fix: Allegro does not like to work with extmidi, so warn the user about that [FS#3272] (r18520)
-- Fix: When you pass a signal at danger, in a PBS controlled area, do not try to do the 'safe' thing and stop, but continue going; the user wanted the train to pass the signal at danger so (s)he has to suffer the consequences. Of course one can always stop the train manually [FS#2891] (r18515)
+- Fix: When you pass a signal at danger, in a PBS controlled area, do not try to do the 'safe' thing and stop, but continue going; the user wanted the train to pass the signal at danger so they have to suffer the consequences. Of course one can always stop the train manually [FS#2891] (r18515)
 - Fix: No error message was created for the first fatal NewGRF error [FS#3368] (r18506)
 - Fix: Improve airport movement on several airports [FS#3169] (r18505)
 - Fix: Autoreplace and autorenew always reset their cargo sub type to 0. Now find a sub cargo type with the exact same name and use that, otherwise fallback to 0. So cargo sub types can be maintained via autoreplace *if* the new vehicle supports the same cargo sub type [FS#3159] (r18499)
@@ -3746,7 +3746,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Make the join/spectate command require to be connected to a network game; in SP it could lead to crashes (r15514)
 - Fix: Generating a map with the original map generator with freeform edges on resulted in a crash [FS#2641] (r15511)
 - Fix: Pre-0.5 OpenTTD stored new_nonstop and full_load_any in a different way, savegame conversion was not working for them (r15500)
-- Fix: Crash when opening the game options when the currently loaded base graphics pack has less than 2 valid graphics files. For example when someone replaces all his/her original base graphics with custom work (but keeps the name) or renames the dos ones to windows or vice versa [FS#2630] (r15476)
+- Fix: Crash when opening the game options when the currently loaded base graphics pack has less than 2 valid graphics files. For example when someone replaces all their original base graphics with custom work (but keeps the name) or renames the dos ones to windows or vice versa [FS#2630] (r15476)
 
 
 0.7.0-beta1 (2009-02-16)
@@ -4508,7 +4508,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Switching players (using the cheat) crashed on Big Endian machines [FS#1150] (r11023)
 - Fix: The canal border determination did not take oil rigs into consideration (r11022)
 - Fix: Do not display income/expenses when they do not belong to a 'valid' tile, like the money cheat/giving money [FS#1175] (r11021)
-- Fix: One could not give money when (s)he had too much money or rather: when casting the amount of money to an int32 becomes negative [FS#1174] (r11020)
+- Fix: One could not give money when they had too much money or rather: when casting the amount of money to an int32 becomes negative [FS#1174] (r11020)
 - Fix: When determining the gender of a string, do not assume that the gender is in the front of the string when there can be case switching code at that location [FS#1104] (r10792)
 - Fix: Determining whether there is a tunnel going under the lowered area is only needed in two directions instead of all four, so take the directions (one for each axis) to the nearest border (along the given axis) [FS#1058] (r10686)
 - Fix: Graphical glitches when the 'link landscape toolbar' patch is turned on when opening one of the construction toolbars [FS#1076] (r10685)
@@ -4569,7 +4569,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Do not unconditionally assume that a tile has a depot (r11027)
 - Fix: Give a more correct error when building some things on tile 0 [FS#1173] (r11024)
 - Fix: Do not display income/expenses when they do not belong to a 'valid' tile, like the money cheat and giving money [FS#1175] (r11021)
-- Fix: One could not give money when (s)he had too much money [FS#1174] (r11020)
+- Fix: One could not give money when they had too much money [FS#1174] (r11020)
 - Fix: Disallow buying/selling shares in your own company or a bankrupt company [FS#1169] (r11018)
 - Fix: Crash when quitting the game in one of the end score windows [FS#1218] (r11071)
 
@@ -5529,7 +5529,7 @@ Note: OpenTTD was migrated to GitHub for 1.9, so SVN revision and FlySpray numbe
 - Fix: Vehicles slow down under bridge if the track is on a foundation
 - Fix: You can no longer change name of waypoints whom are owned by somebody else
 - Fix: Shares are now also sold when a company goes bankrupt [SF#1090313]
-- Fix: It is no longer possible to crash trains of other companies by building a depot close to a station; trains do no longer enter tiles that do not belong to his owner [SF#1087701]
+- Fix: It is no longer possible to crash trains of other companies by building a depot close to a station; trains do no longer enter tiles that do not belong to their owner [SF#1087701]
 - Fix: Crashed trains are not reported to have too few orders any more [SF#1087403]
 - Fix: Backup-order-list was not closed with an OT_NOTHING, [SF#1086375]
 - Fix: Docks now have a button to display the catchment area [SF#1085255]

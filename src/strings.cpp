@@ -836,7 +836,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 		const char *&str = str_stack.top();
 
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
-			/* We need to pass some stuff as it might be modified; oh boy. */
+			/* We need to pass some stuff as it might be modified. */
 			//todo: should argve be passed here too?
 			b = RemapNewGRFStringControlCode(b, buf_start, &buff, &str, (int64 *)args->GetDataPointer(), args->GetDataLeft(), dry_run);
 			if (b == 0) continue;

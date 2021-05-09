@@ -269,8 +269,8 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 uint NetworkCalculateLag(const NetworkClientSocket *cs)
 {
 	int lag = cs->last_frame_server - cs->last_frame;
-	/* This client has missed his ACK packet after 1 DAY_TICKS..
-	 *  so we increase his lag for every frame that passes!
+	/* This client has missed their ACK packet after 1 DAY_TICKS..
+	 *  so we increase their lag for every frame that passes!
 	 * The packet can be out by a max of _net_frame_freq */
 	if (cs->last_frame_server + DAY_TICKS + _settings_client.network.frame_freq < _frame_counter) {
 		lag += _frame_counter - (cs->last_frame_server + DAY_TICKS + _settings_client.network.frame_freq);
@@ -680,7 +680,7 @@ public:
 };
 
 /**
- * Query a server to fetch his game-info for the lobby.
+ * Query a server to fetch the game-info for the lobby.
  * @param connection_string the address to query.
  */
 void NetworkQueryLobbyServer(const std::string &connection_string)

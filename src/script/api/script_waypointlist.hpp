@@ -34,7 +34,9 @@ public:
 class ScriptWaypointList_Vehicle : public ScriptList {
 public:
 	/**
-	 * @param vehicle_id The vehicle to get the list of waypoints he has in its orders from.
+	 * Get the waypoints from the orders of the given vehicle. Duplicates are
+	 * not added. Waypoints are added in the order of the vehicle's orders.
+	 * @param vehicle_id The vehicle to get the list of waypoints for.
 	 */
 	ScriptWaypointList_Vehicle(VehicleID vehicle_id);
 };

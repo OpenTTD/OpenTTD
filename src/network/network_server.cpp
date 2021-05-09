@@ -472,7 +472,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 		DEBUG(net, 1, "Client %d made an error and has been disconnected: %s", this->client_id, str);
 	}
 
-	/* The client made a mistake, so drop his connection now! */
+	/* The client made a mistake, so drop the connection now! */
 	return this->CloseConnection(NETWORK_RECV_STATUS_SERVER_ERROR);
 }
 
@@ -858,7 +858,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_NEWGRFS_CHECKED
 
 	NetworkClientInfo *ci = this->GetInfo();
 
-	/* We now want a password from the client else we do not allow him in! */
+	/* We now want a password from the client else we do not allow them in! */
 	if (!_settings_client.network.server_password.empty()) {
 		return this->SendNeedGamePassword();
 	}
@@ -995,7 +995,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMPANY_PASSWOR
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_GETMAP(Packet *p)
 {
 	/* The client was never joined.. so this is impossible, right?
-	 *  Ignore the packet, give the client a warning, and close his connection */
+	 *  Ignore the packet, give the client a warning, and close the connection */
 	if (this->status < STATUS_AUTHORIZED || this->HasClientQuit()) {
 		return this->SendError(NETWORK_ERROR_NOT_AUTHORIZED);
 	}
@@ -1063,7 +1063,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MAP_OK(Packet *
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet *p)
 {
 	/* The client was never joined.. so this is impossible, right?
-	 *  Ignore the packet, give the client a warning, and close his connection */
+	 *  Ignore the packet, give the client a warning, and close the connection */
 	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
@@ -1857,7 +1857,7 @@ void NetworkServer_Tick(bool send_frame)
 					 * spamming the client. Strictly speaking this variable
 					 * tracks when we last received a packet from the client,
 					 * but as it is waiting, it will not send us any till we
-					 * start sending him data. */
+					 * start sending them data. */
 					cs->last_packet = std::chrono::steady_clock::now();
 				}
 				break;

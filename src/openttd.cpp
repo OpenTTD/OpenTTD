@@ -965,7 +965,7 @@ bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileTy
 
 void SwitchToMode(SwitchMode new_mode)
 {
-	/* If we are saving something, the network stays in his current state */
+	/* If we are saving something, the network stays in its current state */
 	if (new_mode != SM_SAVE_GAME) {
 		/* If the network is active, make it not-active */
 		if (_networking) {

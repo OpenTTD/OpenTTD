@@ -91,7 +91,7 @@ public:
 	}
 
 	/**
-	 * Find the requested blitter and return his class.
+	 * Find the requested blitter and return its class.
 	 * @param name the blitter to select.
 	 * @post Sets the blitter so GetCurrentBlitter() returns it too.
 	 */

@@ -1025,7 +1025,7 @@ static bool AircraftController(Aircraft *v)
 	if (count == 0) return false;
 
 	/* If the plane will be a few subpixels away from the destination after
-	 * this movement loop, start nudging him towards the exact position for
+	 * this movement loop, start nudging it towards the exact position for
 	 * the whole loop. Otherwise, heavily depending on the speed of the plane,
 	 * it is possible we totally overshoot the target, causing the plane to
 	 * make a loop, and trying again, and again, and again .. */

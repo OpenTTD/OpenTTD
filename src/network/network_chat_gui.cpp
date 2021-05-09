@@ -128,7 +128,7 @@ void NetworkUndrawChatMessage()
 	/* Sometimes we also need to hide the cursor
 	 *   This is because both textmessage and the cursor take a shot of the
 	 *   screen before drawing.
-	 *   Now the textmessage takes his shot and paints his data before the cursor
+	 *   Now the textmessage takes its shot and paints its data before the cursor
 	 *   does, so in the shot of the cursor is the screen-data of the textmessage
 	 *   included when the cursor hangs somewhere over the textmessage. To
 	 *   avoid wrong repaints, we undraw the cursor in that case, and everything

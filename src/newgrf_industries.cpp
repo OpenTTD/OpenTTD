@@ -85,7 +85,7 @@ uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i, uint32 cur_grfid
 		}
 	}
 	/* The tile has no spritegroup */
-	return 0xFF << 8 | indtsp->grf_prop.subst_id; // so just give him the substitute
+	return 0xFF << 8 | indtsp->grf_prop.subst_id; // so just give it the substitute
 }
 
 static uint32 GetClosestIndustry(TileIndex tile, IndustryType type, const Industry *current)

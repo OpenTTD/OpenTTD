@@ -55,7 +55,7 @@ public:
 	virtual class ScriptInfo *FindLibrary(const char *library, int version) = 0;
 
 	/**
-	 * A script in multiplayer waits for the server to handle his DoCommand.
+	 * A script in multiplayer waits for the server to handle its DoCommand.
 	 *  It keeps waiting for this until this function is called.
 	 */
 	void Continue();

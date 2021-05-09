@@ -29,7 +29,7 @@ enum ConsoleHookResult {
  * effect they produce are carried out. The arguments to the commands
  * are given to them, each input word separated by a double-quote (") is an argument
  * If you want to handle multiple words as one, enclose them in double-quotes
- * eg. 'say "hello sexy boy"'
+ * eg. 'say "hello everybody"'
  */
 typedef bool IConsoleCmdProc(byte argc, char *argv[]);
 typedef ConsoleHookResult IConsoleHook(bool echo);
