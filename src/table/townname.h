@@ -1386,7 +1386,7 @@ static const char * const _name_polish_2_o[] = {
 	"Zakopane",
 	u8"Szklarska Por\u0119ba",
 	"Bochnia",
-	"Golub-Dobrzyn",
+	u8"Golub-Dobrzy\u0144",
 	"Chojnice",
 	"Ostrowiec",
 	"Otwock",
