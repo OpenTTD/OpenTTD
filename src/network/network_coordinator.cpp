@@ -437,7 +437,7 @@ void ClientNetworkCoordinatorSocketHandler::SendServerUpdate(GameInfoNewGRFMode 
 	Debug(net, 6, "Sending server update to Game Coordinator");
 	this->next_update = std::chrono::steady_clock::now() + NETWORK_COORDINATOR_DELAY_BETWEEN_UPDATES;
 
-	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_UPDATE);
+	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_UPDATE, TCP_MTU);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	SerializeNetworkGameInfo(p, GetCurrentNetworkServerGameInfo(), newgrf_mode);
 

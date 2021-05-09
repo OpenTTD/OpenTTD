@@ -87,9 +87,20 @@ static const uint NETWORK_GRF_NAME_LENGTH         =   80;         ///< Maximum l
 
 /**
  * Maximum number of GRFs that can be sent.
- * This limit is reached when PACKET_UDP_SERVER_RESPONSE reaches the maximum size of UDP_MTU bytes.
+ *
+ * This limit exists to avoid that the SERVER_INFO packet exceeding the
+ * maximum MTU. At the time of writing this limit is 32767 (TCP_MTU).
+ *
+ * In the SERVER_INFO packet is the NetworkGameInfo struct, which is
+ * 142 bytes + 100 per NewGRF (under the assumption strings are used to
+ * their max). This brings us to roughly 326 possible NewGRFs. Round it
+ * down so people don't freak out because they see a weird value, and you
+ * get the limit: 255.
+ *
+ * PS: in case you ever want to raise this number, please be mindful that
+ * "amount of NewGRFs" in NetworkGameInfo is currently an uint8.
  */
-static const uint NETWORK_MAX_GRF_COUNT           =   62;
+static const uint NETWORK_MAX_GRF_COUNT           =   255;
 
 /**
  * The number of landscapes in OpenTTD.
