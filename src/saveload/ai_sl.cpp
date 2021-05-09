@@ -51,7 +51,7 @@ static void SaveReal_AIPL(int *index_ptr)
 	_ai_saveload_settings = config->SettingsToString();
 
 	SlObject(nullptr, _ai_company);
-	/* If the AI was active, store his data too */
+	/* If the AI was active, store its data too */
 	if (Company::IsValidAiID(index)) AI::Save(index);
 }
 

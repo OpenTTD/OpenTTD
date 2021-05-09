@@ -54,7 +54,7 @@
 	seprintf(log_message, lastof(log_message), "Break: %s", message);
 	ScriptLog::Log(ScriptLog::LOG_SQ_ERROR, log_message);
 
-	/* Inform script developer that his script has been paused and
+	/* Inform script developer that their script has been paused and
 	 * needs manual action to continue. */
 	ShowAIDebugWindow(ScriptObject::GetRootCompany());
 

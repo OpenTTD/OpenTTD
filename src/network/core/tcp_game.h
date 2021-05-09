@@ -274,7 +274,7 @@ protected:
 	virtual NetworkRecvStatus Receive_CLIENT_COMPANY_PASSWORD(Packet *p);
 
 	/**
-	 * The client is joined and ready to receive his map:
+	 * The client is joined and ready to receive their map:
 	 * uint32  Own client ID.
 	 * uint32  Generation seed.
 	 * string  Network ID of the server.

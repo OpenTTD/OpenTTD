@@ -480,7 +480,7 @@ bool GetHeightmapDimensions(DetailedFileType dft, const char *filename, uint *x,
 }
 
 /**
- * Load a heightmap from file and change the map in his current dimensions
+ * Load a heightmap from file and change the map in its current dimensions
  *  to a landscape representing the heightmap.
  * It converts pixels to height. The brighter, the higher.
  * @param dft Type of image file.
