@@ -270,6 +270,7 @@ void VideoDriver_Dedicated::MainLoop()
 
 	while (!_exit_game) {
 		if (!_dedicated_forks) DedicatedHandleKeyInput();
+		this->DrainCommandQueue();
 
 		ChangeGameSpeed(_ddc_fastforward);
 		this->Tick();
