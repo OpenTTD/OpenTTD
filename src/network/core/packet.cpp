@@ -374,14 +374,13 @@ uint64 Packet::Recv_uint64()
  */
 void Packet::Recv_string(char *buffer, size_t size, StringValidationSettings settings)
 {
-	PacketSize pos;
 	char *bufp = buffer;
 	const char *last = buffer + size - 1;
 
 	/* Don't allow reading from a closed socket */
 	if (cs->HasClientQuit()) return;
 
-	pos = this->pos;
+	size_t pos = this->pos;
 	while (--size > 0 && pos < this->Size() && (*buffer++ = this->buffer[pos++]) != '\0') {}
 
 	if (size == 0 || pos == this->Size()) {
@@ -391,7 +390,9 @@ void Packet::Recv_string(char *buffer, size_t size, StringValidationSettings set
 		while (pos < this->Size() && this->buffer[pos] != '\0') pos++;
 		pos++;
 	}
-	this->pos = pos;
+
+	assert(pos <= std::numeric_limits<PacketSize>::max());
+	this->pos = static_cast<PacketSize>(pos);
 
 	str_validate(bufp, last, settings);
 }

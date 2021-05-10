@@ -24,7 +24,7 @@ enum TextEffectMode {
 	INVALID_TE_ID = 0xFFFF,
 };
 
-typedef uint16 TextEffectID;
+typedef size_t TextEffectID;
 
 void MoveAllTextEffects(uint delta_ms);
 TextEffectID AddTextEffect(StringID msg, int x, int y, uint8 duration, TextEffectMode mode);

@@ -357,7 +357,7 @@ class BuildIndustryWindow : public Window {
 		int numcargo = 0;
 		int firstcargo = -1;
 
-		for (byte j = 0; j < cargolistlen; j++) {
+		for (int j = 0; j < cargolistlen; j++) {
 			if (cargolist[j] == CT_INVALID) continue;
 			numcargo++;
 			if (firstcargo < 0) {
@@ -419,7 +419,7 @@ public:
 		switch (widget) {
 			case WID_DPI_MATRIX_WIDGET: {
 				Dimension d = GetStringBoundingBox(STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES);
-				for (byte i = 0; i < this->count; i++) {
+				for (uint16 i = 0; i < this->count; i++) {
 					if (this->index[i] == INVALID_INDUSTRYTYPE) continue;
 					d = maxdim(d, GetStringBoundingBox(GetIndustrySpec(this->index[i])->name));
 				}
@@ -438,7 +438,7 @@ public:
 				uint extra_lines_newgrf = 0;
 				uint max_minwidth = FONT_HEIGHT_NORMAL * MAX_MINWIDTH_LINEHEIGHTS;
 				Dimension d = {0, 0};
-				for (byte i = 0; i < this->count; i++) {
+				for (uint16 i = 0; i < this->count; i++) {
 					if (this->index[i] == INVALID_INDUSTRYTYPE) continue;
 
 					const IndustrySpec *indsp = GetIndustrySpec(this->index[i]);
@@ -528,7 +528,7 @@ public:
 				int icon_bottom = icon_top + this->legend.height;
 
 				int y = r.top;
-				for (byte i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->count; i++) {
+				for (uint16 i = 0; i < this->vscroll->GetCapacity() && i + this->vscroll->GetPosition() < this->count; i++) {
 					bool selected = this->selected_index == i + this->vscroll->GetPosition();
 
 					if (this->index[i + this->vscroll->GetPosition()] == INVALID_INDUSTRYTYPE) {

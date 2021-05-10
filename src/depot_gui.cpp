@@ -395,11 +395,11 @@ struct DepotWindow : Window {
 
 		uint16 rows_in_display = wid->current_y / wid->resize_y;
 
-		uint16 num = this->vscroll->GetPosition() * this->num_columns;
+		uint num = this->vscroll->GetPosition() * this->num_columns;
 		uint maxval = static_cast<uint>(std::min<size_t>(this->vehicle_list.size(), num + (rows_in_display * this->num_columns)));
 		int y;
 		for (y = r.top + 1; num < maxval; y += this->resize.step_height) { // Draw the rows
-			for (byte i = 0; i < this->num_columns && num < maxval; i++, num++) {
+			for (uint i = 0; i < this->num_columns && num < maxval; i++, num++) {
 				/* Draw all vehicles in the current row */
 				const Vehicle *v = this->vehicle_list[num];
 				if (this->num_columns == 1) {

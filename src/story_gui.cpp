@@ -776,7 +776,7 @@ public:
 			case WID_SB_SEL_PAGE: {
 
 				/* Get max title width. */
-				for (uint16 i = 0; i < this->story_pages.size(); i++) {
+				for (size_t i = 0; i < this->story_pages.size(); i++) {
 					const StoryPage *s = this->story_pages[i];
 
 					if (s->title != nullptr) {
@@ -822,7 +822,7 @@ public:
 				if (!list.empty()) {
 					/* Get the index of selected page. */
 					int selected = 0;
-					for (uint16 i = 0; i < this->story_pages.size(); i++) {
+					for (size_t i = 0; i < this->story_pages.size(); i++) {
 						const StoryPage *p = this->story_pages[i];
 						if (p->index == this->selected_page_id) break;
 						selected++;

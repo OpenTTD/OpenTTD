@@ -139,7 +139,7 @@ static const SaveLoad _edge_desc[] = {
  */
 void SaveLoad_LinkGraph(LinkGraph &lg)
 {
-	uint size = lg.Size();
+	uint16 size = lg.Size();
 	for (NodeID from = 0; from < size; ++from) {
 		Node *node = &lg.nodes[from];
 		SlObject(node, _node_desc);
