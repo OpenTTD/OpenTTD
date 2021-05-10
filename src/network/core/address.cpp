@@ -311,49 +311,52 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
  */
 static SOCKET ListenLoopProc(addrinfo *runp)
 {
-	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
-	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
 	std::string address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 0, "[%s] could not create %s socket on port %s: %s", type, family, address.c_str(), NetworkError::GetLast().AsString());
+		const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
+		const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
+		DEBUG(net, 0, "Could not create %s %s socket: %s", type, family, NetworkError::GetLast().AsString());
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype == SOCK_STREAM && !SetNoDelay(sock)) {
-		DEBUG(net, 3, "[%s] setting TCP_NODELAY failed for port %s", type, address.c_str());
+		DEBUG(net, 1, "Setting no-delay mode failed: %s", NetworkError::GetLast().AsString());
 	}
 
 	int on = 1;
 	/* The (const char*) cast is needed for windows!! */
 	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not set reusable %s sockets for port %s: %s", type, family, address.c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 0, "Setting reuse-address mode failed: %s", NetworkError::GetLast().AsString());
 	}
 
 #ifndef __OS2__
 	if (runp->ai_family == AF_INET6 &&
 			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not disable IPv4 over IPv6 on port %s: %s", type, address.c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 3, "Could not disable IPv4 over IPv6: %s", NetworkError::GetLast().AsString());
 	}
 #endif
 
 	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
-		DEBUG(net, 1, "[%s] could not bind on %s port %s: %s", type, family, address.c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 0, "Could not bind socket on %s: %s", address.c_str(), NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-		DEBUG(net, 1, "[%s] could not listen at %s port %s: %s", type, family, address.c_str(), NetworkError::GetLast().AsString());
+		DEBUG(net, 0, "Could not listen on socket: %s", NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed for %s port %s", type, family, address.c_str());
 
-	DEBUG(net, 1, "[%s] listening on %s port %s", type, family, address.c_str());
+	if (!SetNonBlocking(sock)) {
+		DEBUG(net, 0, "Setting non-blocking mode failed: %s", NetworkError::GetLast().AsString());
+	}
+
+	DEBUG(net, 1, "Listening on %s", address.c_str());
 	return sock;
 }
 
