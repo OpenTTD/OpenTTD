@@ -22,6 +22,8 @@
 #include "../network_func.h"
 #include "../network.h"
 #include "packet.h"
+#include "../../game/game.hpp"
+#include "../../game/game_info.hpp"
 
 #include "../../safeguards.h"
 
@@ -198,6 +200,21 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info)
 	/* Update the documentation in game_info.h on changes
 	 * to the NetworkGameInfo wire-protocol! */
 
+	/* NETWORK_GAME_INFO_VERSION = 5 */
+	{
+		/* Only send GameScript details if server is running some Gamescript */
+		GameInfo* gsinfo = Game::GetInfo();
+		if (gsinfo == nullptr) {
+			p->Send_bool(false); //has gamescript?
+		}
+		else {
+			p->Send_bool(true); //has gamescript?
+			p->Send_uint32((uint32)gsinfo->GetVersion());
+			p->Send_string(gsinfo->GetShortName());
+			p->Send_string(gsinfo->GetName());
+		}
+	}
+
 	/* NETWORK_GAME_INFO_VERSION = 4 */
 	{
 		/* Only send the GRF Identification (GRF_ID and MD5 checksum) of
@@ -263,6 +280,18 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 	 * to the NetworkGameInfo wire-protocol! */
 
 	switch (game_info_version) {
+
+		case 5: {
+			info->has_gamescript = p->Recv_bool();
+			if (info->has_gamescript) {
+				info->gs_version = (int)p->Recv_uint32();
+
+				info->gs_shortname = p->Recv_string(NETWORK_NAME_LENGTH);
+				info->gs_name = p->Recv_string(NETWORK_NAME_LENGTH);
+			}
+			FALLTHROUGH;
+		}
+
 		case 4: {
 			GRFConfig **dst = &info->grfconfig;
 			uint i;
