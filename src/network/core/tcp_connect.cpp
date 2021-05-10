@@ -64,8 +64,12 @@ void TCPConnecter::Connect(addrinfo *address)
 		return;
 	}
 
-	if (!SetNoDelay(sock)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "Setting non-blocking mode failed");
+	if (!SetNoDelay(sock)) {
+		DEBUG(net, 1, "Setting TCP_NODELAY failed: %s", NetworkError::GetLast().AsString());
+	}
+	if (!SetNonBlocking(sock)) {
+		DEBUG(net, 0, "Setting non-blocking mode failed: %s", NetworkError::GetLast().AsString());
+	}
 
 	NetworkAddress network_address = NetworkAddress(address->ai_addr, (int)address->ai_addrlen);
 	DEBUG(net, 4, "Attempting to connect to %s", network_address.GetAddressAsString().c_str());
