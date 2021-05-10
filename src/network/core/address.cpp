@@ -170,7 +170,7 @@ bool NetworkAddress::IsInNetmask(const char *netmask)
 		int tmp_cidr = atoi(chr_cidr + 1);
 
 		/* Invalid CIDR, treat as single host */
-		if (tmp_cidr > 0 || tmp_cidr < cidr) cidr = tmp_cidr;
+		if (tmp_cidr > 0 && tmp_cidr < cidr) cidr = tmp_cidr;
 
 		/* Remove the / so that NetworkAddress works on the IP portion */
 		std::string ip_str(netmask, chr_cidr - netmask);
