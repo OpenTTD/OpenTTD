@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,6 +12,7 @@
 
 #include "../fileio_type.h"
 #include "../strings_type.h"
+#include <string>
 
 /** SaveLoad versions
  * Previous savegame versions, the trunk revision where they were
@@ -302,6 +301,31 @@ enum SaveLoadVersion : uint16 {
 
 	SLV_SCRIPT_MEMLIMIT,                    ///< 215  PR#7516 Limit on AI/GS memory consumption.
 	SLV_MULTITILE_DOCKS,                    ///< 216  PR#7380 Multiple docks per station.
+	SLV_TRADING_AGE,                        ///< 217  PR#7780 Configurable company trading age.
+	SLV_ENDING_YEAR,                        ///< 218  PR#7747 v1.10  Configurable ending year.
+	SLV_REMOVE_TOWN_CARGO_CACHE,            ///< 219  PR#8258 Remove town cargo acceptance and production caches.
+
+	/* Patchpacks for a while considered it a good idea to jump a few versions
+	 * above our version for their savegames. But as time continued, this gap
+	 * has been closing, up to the point we would start to reuse versions from
+	 * their patchpacks. This is not a problem from our perspective: the
+	 * savegame will simply fail to load because they all contain chunks we
+	 * cannot digest. But, this gives for ugly errors. As we have plenty of
+	 * versions anyway, we simply skip the versions we know belong to
+	 * patchpacks. This way we can present the user with a clean error
+	 * indicate they are loading a savegame from a patchpack.
+	 * For future patchpack creators: please follow a system like JGRPP, where
+	 * the version is masked with 0x8000, and the true version is stored in
+	 * its own chunk with feature toggles.
+	 */
+	SLV_START_PATCHPACKS,                   ///< 220  First known patchpack to use a version just above ours.
+	SLV_END_PATCHPACKS = 286,               ///< 286  Last known patchpack to use a version just above ours.
+
+	SLV_GS_INDUSTRY_CONTROL,                ///< 287  PR#7912 and PR#8115 GS industry control.
+	SLV_VEH_MOTION_COUNTER,                 ///< 288  PR#8591 Desync safe motion counter
+	SLV_INDUSTRY_TEXT,                      ///< 289  PR#8576 v1.11.0-RC1  Additional GS text for industries.
+	SLV_MAPGEN_SETTINGS_REVAMP,             ///< 290  PR#8891 v1.11  Revamp of some mapgen settings (snow coverage, desert coverage, heightmap height, custom terrain type).
+	SLV_GROUP_REPLACE_WAGON_REMOVAL,        ///< 291  PR#7441 Per-group wagon removal flag.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -318,7 +342,7 @@ struct FileToSaveLoad {
 	SaveLoadOperation file_op;           ///< File operation to perform.
 	DetailedFileType detail_ftype;   ///< Concrete file type (PNG, BMP, old save, etc).
 	AbstractFileType abstract_ftype; ///< Abstract type of file (scenario, heightmap, etc).
-	char name[MAX_PATH];             ///< Name of the file.
+	std::string name;                ///< Name of the file.
 	char title[255];                 ///< Internal name of the game.
 
 	void SetMode(FiosType ft);
@@ -342,7 +366,7 @@ extern FileToSaveLoad _file_to_saveload;
 void GenerateDefaultSaveName(char *buf, const char *last);
 void SetSaveLoadError(StringID str);
 const char *GetSaveLoadErrorString();
-SaveOrLoadResult SaveOrLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
+SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, Subdirectory sb, bool threaded = true);
 void WaitTillSaved();
 void ProcessAsyncSaveFinish();
 void DoExitSave();
@@ -361,10 +385,6 @@ struct ChunkHandler {
 	ChunkSaveLoadProc *ptrs_proc;       ///< Manipulate pointers in the chunk.
 	ChunkSaveLoadProc *load_check_proc; ///< Load procedure for game preview.
 	uint32 flags;                       ///< Flags of the chunk. @see ChunkType
-};
-
-struct NullStruct {
-	byte null;
 };
 
 /** Type of reference (#SLE_REF, #SLE_CONDREF). */
@@ -390,7 +410,6 @@ enum ChunkType {
 	CH_SPARSE_ARRAY =  2,
 	CH_TYPE_MASK    =  3,
 	CH_LAST         =  8, ///< Last chunk in this array.
-	CH_AUTO_LENGTH  = 16,
 };
 
 /**
@@ -471,19 +490,21 @@ enum VarTypes {
 	SLF_NO_NETWORK_SYNC = 1 << 10, ///< do not synchronize over network (but it is saved if SLF_NOT_IN_SAVE is not set)
 	SLF_ALLOW_CONTROL   = 1 << 11, ///< allow control codes in the strings
 	SLF_ALLOW_NEWLINE   = 1 << 12, ///< allow new lines in the strings
-	/* 3 more possible flags */
+	SLF_HEX             = 1 << 13, ///< print numbers as hex in the config file (only useful for unsigned)
+	/* 2 more possible flags */
 };
 
 typedef uint32 VarType;
 
 /** Type of data saved. */
-enum SaveLoadTypes {
+enum SaveLoadType : byte {
 	SL_VAR         =  0, ///< Save/load a variable.
 	SL_REF         =  1, ///< Save/load a reference.
 	SL_ARR         =  2, ///< Save/load an array.
 	SL_STR         =  3, ///< Save/load a string.
 	SL_LST         =  4, ///< Save/load a list.
 	SL_DEQUE       =  5, ///< Save/load a deque.
+	SL_STDSTR      =  6, ///< Save/load a \c std::string.
 	/* non-normal save-load types */
 	SL_WRITEBYTE   =  8,
 	SL_VEH_INCLUDE =  9,
@@ -491,22 +512,18 @@ enum SaveLoadTypes {
 	SL_END         = 15
 };
 
-typedef byte SaveLoadType; ///< Save/load type. @see SaveLoadTypes
+typedef void *SaveLoadAddrProc(void *base, size_t extra);
 
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 struct SaveLoad {
-	bool global;         ///< should we load a global variable or a non-global one
 	SaveLoadType cmd;    ///< the action to take with the saved/loaded type, All types need different action
 	VarType conv;        ///< type of the variable to be saved, int
 	uint16 length;       ///< (conditional) length of the variable (eg. arrays) (max array size is 65536 elements)
-	SaveLoadVersion version_from; ///< save/load the variable starting from this savegame version
-	SaveLoadVersion version_to;   ///< save/load the variable until this savegame version
-	/* NOTE: This element either denotes the address of the variable for a global
-	 * variable, or the offset within a struct which is then bound to a variable
-	 * during runtime. Decision on which one to use is controlled by the function
-	 * that is called to save it. address: global=true, offset: global=false */
-	void *address;       ///< address of variable OR offset of variable in the struct (max offset is 65536)
-	size_t size;         ///< the sizeof size.
+	SaveLoadVersion version_from;   ///< save/load the variable starting from this savegame version
+	SaveLoadVersion version_to;     ///< save/load the variable until this savegame version
+	size_t size;                    ///< the sizeof size.
+	SaveLoadAddrProc *address_proc; ///< callback proc the get the actual variable address in memory
+	size_t extra_data;              ///< extra data for the callback proc
 };
 
 /** Same as #SaveLoad but global variables are used (for better readability); */
@@ -520,9 +537,10 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param type     Storage of the data in memory and in the savegame.
  * @param from     First savegame version that has the field.
  * @param to       Last savegame version that has the field.
+ * @param extra    Extra data to pass to the address callback function.
  * @note In general, it is better to use one of the SLE_* macros below.
  */
-#define SLE_GENERAL(cmd, base, variable, type, length, from, to) {false, cmd, type, length, from, to, (void*)cpp_offsetof(base, variable), cpp_sizeof(base, variable)}
+#define SLE_GENERAL(cmd, base, variable, type, length, from, to, extra) {cmd, type, length, from, to, cpp_sizeof(base, variable), [] (void *b, size_t) -> void * { assert(b != nullptr); return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); }, extra}
 
 /**
  * Storage of a variable in some savegame versions.
@@ -532,7 +550,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the field.
  * @param to       Last savegame version that has the field.
  */
-#define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SL_VAR, base, variable, type, 0, from, to)
+#define SLE_CONDVAR(base, variable, type, from, to) SLE_GENERAL(SL_VAR, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a reference in some savegame versions.
@@ -542,7 +560,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the field.
  * @param to       Last savegame version that has the field.
  */
-#define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SL_REF, base, variable, type, 0, from, to)
+#define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SL_REF, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of an array in some savegame versions.
@@ -553,7 +571,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the array.
  * @param to       Last savegame version that has the array.
  */
-#define SLE_CONDARR(base, variable, type, length, from, to) SLE_GENERAL(SL_ARR, base, variable, type, length, from, to)
+#define SLE_CONDARR(base, variable, type, length, from, to) SLE_GENERAL(SL_ARR, base, variable, type, length, from, to, 0)
 
 /**
  * Storage of a string in some savegame versions.
@@ -564,7 +582,17 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the string.
  * @param to       Last savegame version that has the string.
  */
-#define SLE_CONDSTR(base, variable, type, length, from, to) SLE_GENERAL(SL_STR, base, variable, type, length, from, to)
+#define SLE_CONDSTR(base, variable, type, length, from, to) SLE_GENERAL(SL_STR, base, variable, type, length, from, to, 0)
+
+/**
+ * Storage of a \c std::string in some savegame versions.
+ * @param base     Name of the class or struct containing the string.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the string.
+ * @param to       Last savegame version that has the string.
+ */
+#define SLE_CONDSSTR(base, variable, type, from, to) SLE_GENERAL(SL_STDSTR, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a list in some savegame versions.
@@ -574,7 +602,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the list.
  * @param to       Last savegame version that has the list.
  */
-#define SLE_CONDLST(base, variable, type, from, to) SLE_GENERAL(SL_LST, base, variable, type, 0, from, to)
+#define SLE_CONDLST(base, variable, type, from, to) SLE_GENERAL(SL_LST, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a deque in some savegame versions.
@@ -584,7 +612,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the list.
  * @param to       Last savegame version that has the list.
  */
-#define SLE_CONDDEQUE(base, variable, type, from, to) SLE_GENERAL(SL_DEQUE, base, variable, type, 0, from, to)
+#define SLE_CONDDEQUE(base, variable, type, from, to) SLE_GENERAL(SL_DEQUE, base, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a variable in every version of a savegame.
@@ -621,6 +649,14 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_STR(base, variable, type, length) SLE_CONDSTR(base, variable, type, length, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
+ * Storage of a \c std::string in every savegame version.
+ * @param base     Name of the class or struct containing the string.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
+#define SLE_SSTR(base, variable, type) SLE_CONDSSTR(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
+
+/**
  * Storage of a list in every savegame version.
  * @param base     Name of the class or struct containing the list.
  * @param variable Name of the variable in the class or struct referenced by \a base.
@@ -640,16 +676,16 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLE_CONDNULL(length, from, to) SLE_CONDARR(NullStruct, null, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to)
+#define SLE_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to, 0, nullptr, 0}
 
 /** Translate values ingame to different values in the savegame and vv. */
-#define SLE_WRITEBYTE(base, variable) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION)
+#define SLE_WRITEBYTE(base, variable) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0)
 
-#define SLE_VEH_INCLUDE() {false, SL_VEH_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, nullptr, 0}
-#define SLE_ST_INCLUDE() {false, SL_ST_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, nullptr, 0}
+#define SLE_VEH_INCLUDE() {SL_VEH_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0}
+#define SLE_ST_INCLUDE() {SL_ST_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0}
 
 /** End marker of a struct/class save or load. */
-#define SLE_END() {false, SL_END, 0, 0, SL_MIN_VERSION, SL_MIN_VERSION, nullptr, 0}
+#define SLE_END() {SL_END, 0, 0, SL_MIN_VERSION, SL_MIN_VERSION, 0, nullptr, 0}
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.
@@ -658,9 +694,10 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param type     Storage of the data in memory and in the savegame.
  * @param from     First savegame version that has the field.
  * @param to       Last savegame version that has the field.
+ * @param extra    Extra data to pass to the address callback function.
  * @note In general, it is better to use one of the SLEG_* macros below.
  */
-#define SLEG_GENERAL(cmd, variable, type, length, from, to) {true, cmd, type, length, from, to, (void*)&variable, sizeof(variable)}
+#define SLEG_GENERAL(cmd, variable, type, length, from, to, extra) {cmd, type, length, from, to, sizeof(variable), [] (void *, size_t) -> void * { return static_cast<void *>(std::addressof(variable)); }, extra}
 
 /**
  * Storage of a global variable in some savegame versions.
@@ -669,7 +706,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the field.
  * @param to       Last savegame version that has the field.
  */
-#define SLEG_CONDVAR(variable, type, from, to) SLEG_GENERAL(SL_VAR, variable, type, 0, from, to)
+#define SLEG_CONDVAR(variable, type, from, to) SLEG_GENERAL(SL_VAR, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a global reference in some savegame versions.
@@ -678,7 +715,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the field.
  * @param to       Last savegame version that has the field.
  */
-#define SLEG_CONDREF(variable, type, from, to) SLEG_GENERAL(SL_REF, variable, type, 0, from, to)
+#define SLEG_CONDREF(variable, type, from, to) SLEG_GENERAL(SL_REF, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a global array in some savegame versions.
@@ -688,7 +725,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the array.
  * @param to       Last savegame version that has the array.
  */
-#define SLEG_CONDARR(variable, type, length, from, to) SLEG_GENERAL(SL_ARR, variable, type, length, from, to)
+#define SLEG_CONDARR(variable, type, length, from, to) SLEG_GENERAL(SL_ARR, variable, type, length, from, to, 0)
 
 /**
  * Storage of a global string in some savegame versions.
@@ -698,7 +735,16 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the string.
  * @param to       Last savegame version that has the string.
  */
-#define SLEG_CONDSTR(variable, type, length, from, to) SLEG_GENERAL(SL_STR, variable, type, length, from, to)
+#define SLEG_CONDSTR(variable, type, length, from, to) SLEG_GENERAL(SL_STR, variable, type, length, from, to, 0)
+
+/**
+ * Storage of a global \c std::string in some savegame versions.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ * @param from     First savegame version that has the string.
+ * @param to       Last savegame version that has the string.
+ */
+#define SLEG_CONDSSTR(variable, type, from, to) SLEG_GENERAL(SL_STDSTR, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a global list in some savegame versions.
@@ -707,7 +753,7 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from     First savegame version that has the list.
  * @param to       Last savegame version that has the list.
  */
-#define SLEG_CONDLST(variable, type, from, to) SLEG_GENERAL(SL_LST, variable, type, 0, from, to)
+#define SLEG_CONDLST(variable, type, from, to) SLEG_GENERAL(SL_LST, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a global variable in every savegame version.
@@ -738,6 +784,13 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLEG_STR(variable, type) SLEG_CONDSTR(variable, type, sizeof(variable), SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
+ * Storage of a global \c std::string in every savegame version.
+ * @param variable Name of the global variable.
+ * @param type     Storage of the data in memory and in the savegame.
+ */
+#define SLEG_SSTR(variable, type) SLEG_CONDSSTR(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
+
+/**
  * Storage of a global list in every savegame version.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
@@ -750,10 +803,10 @@ typedef SaveLoad SaveLoadGlobVarList;
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLEG_CONDNULL(length, from, to) {true, SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to, (void*)nullptr}
+#define SLEG_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to, 0, nullptr, 0}
 
 /** End marker of global variables save or load. */
-#define SLEG_END() {true, SL_END, 0, 0, SL_MIN_VERSION, SL_MIN_VERSION, nullptr, 0}
+#define SLEG_END() {SL_END, 0, 0, SL_MIN_VERSION, SL_MIN_VERSION, 0, nullptr, 0}
 
 /**
  * Checks whether the savegame is below \a major.\a minor.
@@ -766,6 +819,19 @@ static inline bool IsSavegameVersionBefore(SaveLoadVersion major, byte minor = 0
 	extern SaveLoadVersion _sl_version;
 	extern byte            _sl_minor_version;
 	return _sl_version < major || (minor > 0 && _sl_version == major && _sl_minor_version < minor);
+}
+
+/**
+ * Checks whether the savegame is below or at \a major. This should be used to repair data from existing
+ * savegames which is no longer corrupted in new savegames, but for which otherwise no savegame
+ * bump is required.
+ * @param major Major number of the version to check against.
+ * @return Savegame version is at most the specified version.
+ */
+static inline bool IsSavegameVersionUntil(SaveLoadVersion major)
+{
+	extern SaveLoadVersion _sl_version;
+	return _sl_version <= major;
 }
 
 /**
@@ -816,14 +882,21 @@ static inline bool IsNumericType(VarType conv)
 }
 
 /**
- * Get the address of the variable. Which one to pick depends on the object
- * pointer. If it is nullptr we are dealing with global variables so the address
- * is taken. If non-null only the offset is stored in the union and we need
- * to add this to the address of the object
+ * Get the address of the variable. Null-variables don't have an address,
+ * everything else has a callback function that returns the address based
+ * on the saveload data and the current object for non-globals.
  */
 static inline void *GetVariableAddress(const void *object, const SaveLoad *sld)
 {
-	return const_cast<byte *>((const byte*)(sld->global ? nullptr : object) + (ptrdiff_t)sld->address);
+	/* Entry is a null-variable, mostly used to read old savegames etc. */
+	if (GetVarMemType(sld->conv) == SLE_VAR_NULL) {
+		assert(sld->address_proc == nullptr);
+		return nullptr;
+	}
+
+	/* Everything else should be a non-null pointer. */
+	assert(sld->address_proc != nullptr);
+	return sld->address_proc(const_cast<void *>(object), sld->extra_data);
 }
 
 int64 ReadValue(const void *ptr, VarType conv);
@@ -847,9 +920,19 @@ void SlObject(void *object, const SaveLoad *sld);
 bool SlObjectMember(void *object, const SaveLoad *sld);
 void NORETURN SlError(StringID string, const char *extra_msg = nullptr);
 void NORETURN SlErrorCorrupt(const char *msg);
-void NORETURN SlErrorCorruptFmt(const char *format, ...);
+void NORETURN SlErrorCorruptFmt(const char *format, ...) WARN_FORMAT(1, 2);
 
 bool SaveloadCrashWithMissingNewGRFs();
+
+/**
+ * Read in bytes from the file/data structure but don't do
+ * anything with them, discarding them in effect
+ * @param length The amount of bytes that is being treated this way
+ */
+static inline void SlSkipBytes(size_t length)
+{
+	for (; length != 0; length--) SlReadByte();
+}
 
 extern char _savegame_format[8];
 extern bool _do_autosave;

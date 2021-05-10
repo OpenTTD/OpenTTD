@@ -2,6 +2,7 @@
 #ifndef _SQOBJECT_H_
 #define _SQOBJECT_H_
 
+#include <vector>
 #include "squtils.h"
 
 #define SQ_CLOSURESTREAM_HEAD (('S'<<24)|('Q'<<16)|('I'<<8)|('R'))
@@ -344,11 +345,54 @@ struct SQCollectable : public SQRefCounted {
 	SQCollectable *_prev;
 	SQSharedState *_sharedstate;
 	virtual void Release()=0;
-	virtual void Mark(SQCollectable **chain)=0;
+	virtual void EnqueueMarkObjectForChildren(class SQGCMarkerQueue &queue)=0;
 	void UnMark();
 	virtual void Finalize()=0;
 	static void AddToChain(SQCollectable **chain,SQCollectable *c);
 	static void RemoveFromChain(SQCollectable **chain,SQCollectable *c);
+
+	/**
+	 * Helper to perform the final memory freeing of this instance. Since the destructor might
+	 * release more objects, this can cause a very deep recursion. As such, the calls to this
+	 * are to be done via _sharedstate->DelayFinalFree which ensures the calls to this method
+	 * are done in an iterative instead of recursive approach.
+	 */
+	virtual void FinalFree() {}
+};
+
+/**
+ * Helper container for state to change the garbage collection from a recursive to an iterative approach.
+ * The iterative approach provides effectively a depth first search approach.
+ */
+class SQGCMarkerQueue {
+	std::vector<SQCollectable*> stack; ///< The elements to still process, with the most recent elements at the back.
+public:
+	/** Whether there are any elements left to process. */
+	bool IsEmpty() { return this->stack.empty(); }
+
+	/**
+	 * Remove the most recently added element from the queue.
+	 * Removal when the queue is empty results in undefined behaviour.
+	 */
+	SQCollectable *Pop()
+	{
+		SQCollectable *collectable = this->stack.back();
+		this->stack.pop_back();
+		return collectable;
+	}
+
+	/**
+	 * Add a collectable to the queue, but only when it has not been marked yet.
+	 * When adding it to the queue, the collectable will be marked, so subsequent calls
+	 * will not add it again.
+	 */
+	void Enqueue(SQCollectable *collectable)
+	{
+		if ((collectable->_uiRef & MARK_FLAG) == 0) {
+			collectable->_uiRef |= MARK_FLAG;
+			this->stack.push_back(collectable);
+		}
+	}
 };
 
 

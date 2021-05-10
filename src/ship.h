@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -45,7 +43,7 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 	void GetImage(Direction direction, EngineImageType image_type, VehicleSpriteSeq *result) const;
 	int GetDisplaySpeed() const { return this->cur_speed / 2; }
 	int GetDisplayMaxSpeed() const { return this->vcache.cached_max_speed / 2; }
-	int GetCurrentMaxSpeed() const { return min(this->vcache.cached_max_speed, this->current_order.GetMaxSpeed() * 2); }
+	int GetCurrentMaxSpeed() const { return std::min<int>(this->vcache.cached_max_speed, this->current_order.GetMaxSpeed() * 2); }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return this->state == TRACK_BIT_DEPOT; }
 	bool Tick();
@@ -58,11 +56,5 @@ struct Ship FINAL : public SpecializedVehicle<Ship, VEH_SHIP> {
 };
 
 bool IsShipDestinationTile(TileIndex tile, StationID station);
-
-/**
- * Iterate over all ships.
- * @param var The variable used for iteration.
- */
-#define FOR_ALL_SHIPS(var) FOR_ALL_VEHICLES_OF_TYPE(Ship, var)
 
 #endif /* SHIP_H */

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -46,21 +44,20 @@ static void NetworkGameListHandleDelayedInsert()
 		while (ins_item != nullptr && !_network_game_delayed_insertion_list.compare_exchange_weak(ins_item, ins_item->next, std::memory_order_acq_rel)) {}
 		if (ins_item == nullptr) break; // No item left.
 
-		NetworkGameList *item = NetworkGameListAddItem(ins_item->address);
+		NetworkGameList *item = NetworkGameListAddItem(ins_item->connection_string);
 
 		if (item != nullptr) {
-			if (StrEmpty(item->info.server_name)) {
+			if (item->info.server_name.empty()) {
 				ClearGRFConfigList(&item->info.grfconfig);
-				memset(&item->info, 0, sizeof(item->info));
-				strecpy(item->info.server_name, ins_item->info.server_name, lastof(item->info.server_name));
-				strecpy(item->info.hostname, ins_item->info.hostname, lastof(item->info.hostname));
+				item->info = {};
+				item->info.server_name = ins_item->info.server_name;
 				item->online = false;
 			}
 			item->manually |= ins_item->manually;
 			if (item->manually) NetworkRebuildHostList();
 			UpdateNetworkGameWindow();
 		}
-		free(ins_item);
+		delete ins_item;
 	}
 }
 
@@ -70,35 +67,26 @@ static void NetworkGameListHandleDelayedInsert()
  * @param address the address of the to-be added item
  * @return a point to the newly added or already existing item
  */
-NetworkGameList *NetworkGameListAddItem(NetworkAddress address)
+NetworkGameList *NetworkGameListAddItem(const std::string &connection_string)
 {
-	const char *hostname = address.GetHostname();
-
-	/* Do not query the 'any' address. */
-	if (StrEmpty(hostname) ||
-			strcmp(hostname, "0.0.0.0") == 0 ||
-			strcmp(hostname, "::") == 0) {
-		return nullptr;
-	}
-
 	NetworkGameList *item, *prev_item;
+
+	/* Parse the connection string to ensure the default port is there. */
+	const std::string resolved_connection_string = ParseConnectionString(connection_string, NETWORK_DEFAULT_PORT).GetAddressAsString(false);
 
 	prev_item = nullptr;
 	for (item = _network_game_list; item != nullptr; item = item->next) {
-		if (item->address == address) return item;
+		if (item->connection_string == resolved_connection_string) return item;
 		prev_item = item;
 	}
 
-	item = CallocT<NetworkGameList>(1);
-	item->next = nullptr;
-	item->address = address;
+	item = new NetworkGameList(resolved_connection_string);
 
 	if (prev_item == nullptr) {
 		_network_game_list = item;
 	} else {
 		prev_item->next = item;
 	}
-	DEBUG(net, 4, "[gamelist] added server to list");
 
 	UpdateNetworkGameWindow();
 
@@ -122,8 +110,7 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 
 			/* Remove GRFConfig information */
 			ClearGRFConfigList(&remove->info.grfconfig);
-			free(remove);
-			remove = nullptr;
+			delete remove;
 
 			DEBUG(net, 4, "[gamelist] removed server from list");
 			NetworkRebuildHostList();
@@ -154,7 +141,7 @@ void NetworkGameListRequery()
 
 		/* item gets mostly zeroed by NetworkUDPQueryServer */
 		uint8 retries = item->retries;
-		NetworkUDPQueryServer(NetworkAddress(item->address));
+		NetworkUDPQueryServer(item->connection_string);
 		item->retries = (retries >= REFRESH_GAMEINFO_X_REQUERIES) ? 0 : retries;
 	}
 }
@@ -177,21 +164,15 @@ void NetworkAfterNewGRFScan()
 				/* Don't know the GRF, so mark game incompatible and the (possibly)
 				 * already resolved name for this GRF (another server has sent the
 				 * name of the GRF already. */
-				c->name->Release();
 				c->name = FindUnknownGRFName(c->ident.grfid, c->ident.md5sum, true);
-				c->name->AddRef();
 				c->status = GCS_NOT_FOUND;
 
 				/* If we miss a file, we're obviously incompatible. */
 				item->info.compatible = false;
 			} else {
 				c->filename = f->filename;
-				c->name->Release();
 				c->name = f->name;
-				c->name->AddRef();
-				c->info->Release();
 				c->info = f->info;
-				c->info->AddRef();
 				c->status = GCS_UNKNOWN;
 			}
 		}

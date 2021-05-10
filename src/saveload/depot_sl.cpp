@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -25,16 +23,14 @@ static const SaveLoad _depot_desc[] = {
 	SLEG_CONDVAR(_town_index,       SLE_UINT16,                 SL_MIN_VERSION, SLV_141),
 	 SLE_CONDREF(Depot, town,       REF_TOWN,                 SLV_141, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, town_cn,    SLE_UINT16,               SLV_141, SL_MAX_VERSION),
-	 SLE_CONDSTR(Depot, name,       SLE_STR, 0,               SLV_141, SL_MAX_VERSION),
+	SLE_CONDSSTR(Depot, name,       SLE_STR,                  SLV_141, SL_MAX_VERSION),
 	 SLE_CONDVAR(Depot, build_date, SLE_INT32,                SLV_142, SL_MAX_VERSION),
 	 SLE_END()
 };
 
 static void Save_DEPT()
 {
-	Depot *depot;
-
-	FOR_ALL_DEPOTS(depot) {
+	for (Depot *depot : Depot::Iterate()) {
 		SlSetArrayIndex(depot->index);
 		SlObject(depot, _depot_desc);
 	}
@@ -55,9 +51,7 @@ static void Load_DEPT()
 
 static void Ptrs_DEPT()
 {
-	Depot *depot;
-
-	FOR_ALL_DEPOTS(depot) {
+	for (Depot *depot : Depot::Iterate()) {
 		SlObject(depot, _depot_desc);
 		if (IsSavegameVersionBefore(SLV_141)) depot->town = Town::Get((size_t)depot->town);
 	}

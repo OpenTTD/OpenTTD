@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -27,9 +25,10 @@
  * @param s The socket to connect with.
  */
 NetworkGameSocketHandler::NetworkGameSocketHandler(SOCKET s) : info(nullptr), client_id(INVALID_CLIENT_ID),
-		last_frame(_frame_counter), last_frame_server(_frame_counter), last_packet(_realtime_tick)
+		last_frame(_frame_counter), last_frame_server(_frame_counter)
 {
 	this->sock = s;
+	this->last_packet = std::chrono::steady_clock::now();
 }
 
 /**
@@ -65,13 +64,15 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 {
 	PacketGameType type = (PacketGameType)p->Recv_uint8();
 
-	this->last_packet = _realtime_tick;
+	this->last_packet = std::chrono::steady_clock::now();
 
 	switch (this->HasClientQuit() ? PACKET_END : type) {
 		case PACKET_SERVER_FULL:                  return this->Receive_SERVER_FULL(p);
 		case PACKET_SERVER_BANNED:                return this->Receive_SERVER_BANNED(p);
 		case PACKET_CLIENT_JOIN:                  return this->Receive_CLIENT_JOIN(p);
 		case PACKET_SERVER_ERROR:                 return this->Receive_SERVER_ERROR(p);
+		case PACKET_CLIENT_GAME_INFO:             return this->Receive_CLIENT_GAME_INFO(p);
+		case PACKET_SERVER_GAME_INFO:             return this->Receive_SERVER_GAME_INFO(p);
 		case PACKET_CLIENT_COMPANY_INFO:          return this->Receive_CLIENT_COMPANY_INFO(p);
 		case PACKET_SERVER_COMPANY_INFO:          return this->Receive_SERVER_COMPANY_INFO(p);
 		case PACKET_SERVER_CLIENT_INFO:           return this->Receive_SERVER_CLIENT_INFO(p);
@@ -158,6 +159,8 @@ NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_FULL(Packet *p) { ret
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_BANNED(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_BANNED); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_JOIN); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_ERROR); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_GAME_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_GAME_INFO); }
+NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_GAME_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_GAME_INFO); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_CLIENT_COMPANY_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_CLIENT_COMPANY_INFO); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_COMPANY_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_COMPANY_INFO); }
 NetworkRecvStatus NetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Packet *p) { return this->ReceiveInvalidPacket(PACKET_SERVER_CLIENT_INFO); }

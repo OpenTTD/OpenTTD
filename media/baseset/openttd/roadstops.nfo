@@ -1,0 +1,15 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Road stop graphics"
+   -1 * 3	 05 11 08
+   -1 sprites/roadstops.png 8bpp  34    8  13  23   5 -11 normal
+   -1 sprites/roadstops.png 8bpp  66    8  13  15   5  -2 normal
+   -1 sprites/roadstops.png 8bpp  98    8  21  19 -20  -7 normal
+   -1 sprites/roadstops.png 8bpp 130    8  22  17 -25  -4 normal
+   -1 sprites/roadstops.png 8bpp 162    8  32  25  -5  -9 normal
+   -1 sprites/roadstops.png 8bpp 210    8  28  26  -3 -12 normal
+   -1 sprites/roadstops.png 8bpp 258    8  29  25 -24 -12 normal
+   -1 sprites/roadstops.png 8bpp 306    8  32  25 -25  -9 normal

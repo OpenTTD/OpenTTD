@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -60,7 +58,7 @@ struct EndGameHighScoreBaseWindow : Window {
 	/** Return the coordinate of the screen such that a window of 640x480 is centered at the screen. */
 	Point GetTopLeft(int x, int y)
 	{
-		Point pt = {max(0, (_screen.width / 2) - (x / 2)), max(0, (_screen.height / 2) - (y / 2))};
+		Point pt = {std::max(0, (_screen.width / 2) - (x / 2)), std::max(0, (_screen.height / 2) - (y / 2))};
 		return pt;
 	}
 
@@ -115,7 +113,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 			this->window_number = SP_MULTIPLAYER;
 			this->rank = SaveHighScoreValueNetwork();
 		} else {
-			/* in single player _local company is always valid */
+			/* in singleplayer mode _local company is always valid */
 			const Company *c = Company::Get(_local_company);
 			this->window_number = SP_CUSTOM;
 			this->rank = SaveHighScoreValue(c);
@@ -185,7 +183,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		this->SetupHighScoreEndWindow();
 		Point pt = this->GetTopLeft(ScaleGUITrad(640), ScaleGUITrad(480));
 
-		SetDParam(0, ORIGINAL_END_YEAR);
+		SetDParam(0, _settings_game.game_creation.ending_year);
 		DrawStringMultiLine(pt.x + ScaleGUITrad(70), pt.x + ScaleGUITrad(570), pt.y, pt.y + ScaleGUITrad(140), !_networking ? STR_HIGHSCORE_TOP_COMPANIES_WHO_REACHED : STR_HIGHSCORE_TOP_COMPANIES_NETWORK_GAME, TC_FROMSTRING, SA_CENTER);
 
 		/* Draw Highscore peepz */
@@ -207,7 +205,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 };
 
 static const NWidgetPart _nested_highscore_widgets[] = {
-	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetMinimalSize(641, 481), SetResize(1, 1), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_BROWN, WID_H_BACKGROUND), SetResize(1, 1), EndContainer(),
 };
 
 static WindowDesc _highscore_desc(

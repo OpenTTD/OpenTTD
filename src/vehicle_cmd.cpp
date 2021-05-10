@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -32,6 +30,8 @@
 #include "newgrf.h"
 #include "company_base.h"
 #include "core/random_func.hpp"
+#include <sstream>
+#include <iomanip>
 
 #include "table/strings.h"
 
@@ -130,7 +130,7 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	/* If we are refitting we need to temporarily purchase the vehicle to be able to
 	 * test it. */
 	DoCommandFlag subflags = flags;
-	if (refitting) subflags |= DC_EXEC;
+	if (refitting && !(flags & DC_EXEC)) subflags |= DC_EXEC | DC_AUTOREPLACE;
 
 	/* Vehicle construction needs random bits, so we have to save the random
 	 * seeds to prevent desyncs. */
@@ -147,13 +147,14 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	}
 
 	if (value.Succeeded()) {
-		if (refitting || (flags & DC_EXEC)) {
+		if (subflags & DC_EXEC) {
 			v->unitnumber = unit_num;
 			v->value      = value.GetCost();
 		}
 
 		if (refitting) {
-			value.AddCost(CmdRefitVehicle(tile, flags, v->index, cargo, nullptr));
+			/* Refit only one vehicle. If we purchased an engine, it may have gained free wagons. */
+			value.AddCost(CmdRefitVehicle(tile, flags, v->index, cargo | (1 << 16), nullptr));
 		} else {
 			/* Fill in non-refitted capacities */
 			_returned_refit_capacity = e->GetDisplayDefaultCapacity(&_returned_mail_refit_capacity);
@@ -168,19 +169,19 @@ CommandCost CmdBuildVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			}
 		}
 
-		if (refitting || (flags & DC_EXEC)) {
+		if (subflags & DC_EXEC) {
 			GroupStatistics::CountEngine(v, 1);
 			GroupStatistics::UpdateAutoreplace(_current_company);
 
 			if (v->IsPrimaryVehicle()) {
 				GroupStatistics::CountVehicle(v, 1);
-				OrderBackup::Restore(v, p2);
+				if (!(subflags & DC_AUTOREPLACE)) OrderBackup::Restore(v, p2);
 			}
 		}
 
 
 		/* If we are not in DC_EXEC undo everything */
-		if (refitting && (flags & DC_EXEC) == 0) {
+		if (flags != subflags) {
 			DoCommand(0, v->index, 0, DC_EXEC, GetCmdSellVeh(v));
 		}
 	}
@@ -432,14 +433,14 @@ static CommandCost RefitVehicle(Vehicle *v, bool only_this, uint8 num_vehicles, 
 		/* Store the result */
 		for (RefitResult &result : refit_result) {
 			Vehicle *u = result.v;
-			u->refit_cap = (u->cargo_type == new_cid) ? min(result.capacity, u->refit_cap) : 0;
+			u->refit_cap = (u->cargo_type == new_cid) ? std::min<uint16>(result.capacity, u->refit_cap) : 0;
 			if (u->cargo.TotalCount() > u->refit_cap) u->cargo.Truncate(u->cargo.TotalCount() - u->refit_cap);
 			u->cargo_type = new_cid;
 			u->cargo_cap = result.capacity;
 			u->cargo_subtype = result.subtype;
 			if (u->type == VEH_AIRCRAFT) {
 				Vehicle *w = u->Next();
-				w->refit_cap = min(w->refit_cap, result.mail_capacity);
+				w->refit_cap = std::min<uint16>(w->refit_cap, result.mail_capacity);
 				w->cargo_cap = result.mail_capacity;
 				if (w->cargo.TotalCount() > w->refit_cap) w->cargo.Truncate(w->cargo.TotalCount() - w->refit_cap);
 			}
@@ -749,10 +750,8 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
  */
 static bool IsUniqueVehicleName(const char *name)
 {
-	const Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->name != nullptr && strcmp(v->name, name) == 0) return false;
+	for (const Vehicle *v : Vehicle::Iterate()) {
+		if (!v->name.empty() && v->name == name) return false;
 	}
 
 	return true;
@@ -765,42 +764,48 @@ static bool IsUniqueVehicleName(const char *name)
  */
 static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 {
-	char buf[256];
+	std::string buf;
 
 	/* Find the position of the first digit in the last group of digits. */
 	size_t number_position;
-	for (number_position = strlen(src->name); number_position > 0; number_position--) {
+	for (number_position = src->name.length(); number_position > 0; number_position--) {
 		/* The design of UTF-8 lets this work simply without having to check
 		 * for UTF-8 sequences. */
 		if (src->name[number_position - 1] < '0' || src->name[number_position - 1] > '9') break;
 	}
 
 	/* Format buffer and determine starting number. */
-	int num;
+	long num;
 	byte padding = 0;
-	if (number_position == strlen(src->name)) {
+	if (number_position == src->name.length()) {
 		/* No digit at the end, so start at number 2. */
-		strecpy(buf, src->name, lastof(buf));
-		strecat(buf, " ", lastof(buf));
-		number_position = strlen(buf);
+		buf = src->name;
+		buf += " ";
+		number_position = buf.length();
 		num = 2;
 	} else {
 		/* Found digits, parse them and start at the next number. */
-		strecpy(buf, src->name, lastof(buf));
-		buf[number_position] = '\0';
-		char *endptr;
-		num = strtol(&src->name[number_position], &endptr, 10) + 1;
-		padding = endptr - &src->name[number_position];
+		buf = src->name.substr(0, number_position);
+
+		auto num_str = src->name.substr(number_position);
+		padding = (byte)num_str.length();
+
+		std::istringstream iss(num_str);
+		iss >> num;
+		num++;
 	}
 
 	/* Check if this name is already taken. */
 	for (int max_iterations = 1000; max_iterations > 0; max_iterations--, num++) {
+		std::ostringstream oss;
+
 		/* Attach the number to the temporary name. */
-		seprintf(&buf[number_position], lastof(buf), "%0*d", padding, num);
+		oss << buf << std::setw(padding) << std::setfill('0') << std::internal << num;
 
 		/* Check the name is unique. */
-		if (IsUniqueVehicleName(buf)) {
-			dst->name = stredup(buf);
+		auto new_name = oss.str();
+		if (IsUniqueVehicleName(new_name.c_str())) {
+			dst->name = new_name;
 			break;
 		}
 	}
@@ -973,20 +978,23 @@ CommandCost CmdCloneVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 		 * the vehicle refitted before doing this, otherwise the moved
 		 * cargo types might not match (passenger vs non-passenger)
 		 */
-		DoCommand(0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index, flags, CMD_CLONE_ORDER);
-
-		/* Now clone the vehicle's name, if it has one. */
-		if (v_front->name != nullptr) CloneVehicleName(v_front, w_front);
-	}
-
-	/* Since we can't estimate the cost of cloning a vehicle accurately we must
-	 * check whether the company has enough money manually. */
-	if (!CheckCompanyHasMoney(total_cost)) {
-		if (flags & DC_EXEC) {
+		CommandCost result = DoCommand(0, w_front->index | (p2 & 1 ? CO_SHARE : CO_COPY) << 30, v_front->index, flags, CMD_CLONE_ORDER);
+		if (result.Failed()) {
 			/* The vehicle has already been bought, so now it must be sold again. */
 			DoCommand(w_front->tile, w_front->index | 1 << 20, 0, flags, GetCmdSellVeh(w_front));
+			return result;
 		}
-		return total_cost;
+
+		/* Now clone the vehicle's name, if it has one. */
+		if (!v_front->name.empty()) CloneVehicleName(v_front, w_front);
+
+		/* Since we can't estimate the cost of cloning a vehicle accurately we must
+		 * check whether the company has enough money manually. */
+		if (!CheckCompanyHasMoney(total_cost)) {
+			/* The vehicle has already been bought, so now it must be sold again. */
+			DoCommand(w_front->tile, w_front->index | 1 << 20, 0, flags, GetCmdSellVeh(w_front));
+			return total_cost;
+		}
 	}
 
 	return total_cost;
@@ -1077,8 +1085,11 @@ CommandCost CmdRenameVehicle(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	if (flags & DC_EXEC) {
-		free(v->name);
-		v->name = reset ? nullptr : stredup(text);
+		if (reset) {
+			v->name.clear();
+		} else {
+			v->name = text;
+		}
 		InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 1);
 		MarkWholeScreenDirty();
 	}

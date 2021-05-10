@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -46,7 +44,7 @@ void CcBuildAirport(const CommandCost &result, TileIndex tile, uint32 p1, uint32
 {
 	if (result.Failed()) return;
 
-	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_SPLAT_OTHER, tile);
+	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 }
 
@@ -73,6 +71,7 @@ struct BuildAirToolbarWindow : Window {
 	BuildAirToolbarWindow(WindowDesc *desc, WindowNumber window_number) : Window(desc)
 	{
 		this->InitNested(window_number);
+		this->OnInvalidateData();
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 		this->last_user_action = WIDGET_LIST_END;
 	}
@@ -92,7 +91,18 @@ struct BuildAirToolbarWindow : Window {
 	{
 		if (!gui_scope) return;
 
-		if (!CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) delete this;
+		bool can_build = CanBuildVehicleInfrastructure(VEH_AIRCRAFT);
+		this->SetWidgetsDisabledState(!can_build,
+			WID_AT_AIRPORT,
+			WIDGET_LIST_END);
+		if (!can_build) {
+			DeleteWindowById(WC_BUILD_STATION, TRANSPORT_AIR);
+
+			/* Show in the tooltip why this button is disabled. */
+			this->GetWidget<NWidgetCore>(WID_AT_AIRPORT)->SetToolTip(STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE);
+		} else {
+			this->GetWidget<NWidgetCore>(WID_AT_AIRPORT)->SetToolTip(STR_TOOLBAR_AIRCRAFT_BUILD_AIRPORT_TOOLTIP);
+		}
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -162,7 +172,7 @@ struct BuildAirToolbarWindow : Window {
  */
 static EventState AirportToolbarGlobalHotkeys(int hotkey)
 {
-	if (_game_mode != GM_NORMAL || !CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) return ES_NOT_HANDLED;
+	if (_game_mode != GM_NORMAL) return ES_NOT_HANDLED;
 	Window *w = ShowBuildAirToolbar();
 	if (w == nullptr) return ES_NOT_HANDLED;
 	return w->OnHotkey(hotkey);
@@ -316,7 +326,7 @@ public:
 					const AirportSpec *as = AirportSpec::Get(i);
 					if (!as->enabled) continue;
 
-					size->width = max(size->width, GetStringBoundingBox(as->name).width);
+					size->width = std::max(size->width, GetStringBoundingBox(as->name).width);
 				}
 
 				this->line_height = FONT_HEIGHT_NORMAL + WD_MATRIX_TOP + WD_MATRIX_BOTTOM;
@@ -487,6 +497,7 @@ public:
 				this->SetDirty();
 				if (_settings_client.sound.click_beep) SndPlayFx(SND_15_BEEP);
 				this->UpdateSelectSize();
+				SetViewportCatchmentStation(nullptr, true);
 				break;
 
 			case WID_AP_LAYOUT_DECREASE:

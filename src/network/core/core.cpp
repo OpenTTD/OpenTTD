@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -48,33 +46,4 @@ void NetworkCoreShutdown()
 #if defined(_WIN32)
 	WSACleanup();
 #endif
-}
-
-
-/**
- * Serializes the GRFIdentifier (GRF ID and MD5 checksum) to the packet
- * @param p   the packet to write the data to
- * @param grf the GRFIdentifier to serialize
- */
-void NetworkSocketHandler::SendGRFIdentifier(Packet *p, const GRFIdentifier *grf)
-{
-	uint j;
-	p->Send_uint32(grf->grfid);
-	for (j = 0; j < sizeof(grf->md5sum); j++) {
-		p->Send_uint8 (grf->md5sum[j]);
-	}
-}
-
-/**
- * Deserializes the GRFIdentifier (GRF ID and MD5 checksum) from the packet
- * @param p   the packet to read the data from
- * @param grf the GRFIdentifier to deserialize
- */
-void NetworkSocketHandler::ReceiveGRFIdentifier(Packet *p, GRFIdentifier *grf)
-{
-	uint j;
-	grf->grfid = p->Recv_uint32();
-	for (j = 0; j < sizeof(grf->md5sum); j++) {
-		grf->md5sum[j] = p->Recv_uint8();
-	}
 }

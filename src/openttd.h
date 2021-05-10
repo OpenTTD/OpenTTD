@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -25,17 +23,20 @@ enum GameMode {
 /** Mode which defines what mode we're switching to. */
 enum SwitchMode {
 	SM_NONE,
-	SM_NEWGAME,         ///< New Game --> 'Random game'.
-	SM_RESTARTGAME,     ///< Restart --> 'Random game' with current settings.
-	SM_EDITOR,          ///< Switch to scenario editor.
-	SM_LOAD_GAME,       ///< Load game, Play Scenario.
-	SM_MENU,            ///< Switch to game intro menu.
-	SM_SAVE_GAME,       ///< Save game.
-	SM_SAVE_HEIGHTMAP,  ///< Save heightmap.
-	SM_GENRANDLAND,     ///< Generate random land within scenario editor.
-	SM_LOAD_SCENARIO,   ///< Load scenario from scenario editor.
-	SM_START_HEIGHTMAP, ///< Load a heightmap and start a new game from it.
-	SM_LOAD_HEIGHTMAP,  ///< Load heightmap from scenario editor.
+	SM_NEWGAME,           ///< New Game --> 'Random game'.
+	SM_RESTARTGAME,       ///< Restart --> 'Random game' with current settings.
+	SM_RELOADGAME,        ///< Reload the savegame / scenario / heightmap you started the game with.
+	SM_EDITOR,            ///< Switch to scenario editor.
+	SM_LOAD_GAME,         ///< Load game, Play Scenario.
+	SM_MENU,              ///< Switch to game intro menu.
+	SM_SAVE_GAME,         ///< Save game.
+	SM_SAVE_HEIGHTMAP,    ///< Save heightmap.
+	SM_GENRANDLAND,       ///< Generate random land within scenario editor.
+	SM_LOAD_SCENARIO,     ///< Load scenario from scenario editor.
+	SM_START_HEIGHTMAP,   ///< Load a heightmap and start a new game from it.
+	SM_LOAD_HEIGHTMAP,    ///< Load heightmap from scenario editor.
+	SM_RESTART_HEIGHTMAP, ///< Load a heightmap and start a new game from it with current settings.
+	SM_JOIN_GAME,         ///< Join a network game.
 };
 
 /** Display Options */
@@ -52,6 +53,7 @@ enum DisplayOptions {
 extern GameMode _game_mode;
 extern SwitchMode _switch_mode;
 extern bool _exit_game;
+extern bool _save_config;
 
 /** Modes of pausing we've got */
 enum PauseMode : byte {
@@ -62,6 +64,7 @@ enum PauseMode : byte {
 	PM_PAUSED_ERROR          = 1 << 3, ///< A game paused because a (critical) error
 	PM_PAUSED_ACTIVE_CLIENTS = 1 << 4, ///< A game paused for 'min_active_clients'
 	PM_PAUSED_GAME_SCRIPT    = 1 << 5, ///< A game paused by a game script
+	PM_PAUSED_LINK_GRAPH     = 1 << 6, ///< A game paused due to the link graph schedule lagging
 
 	/** Pause mode bits when paused for network reasons. */
 	PMB_PAUSED_NETWORK = PM_PAUSED_ACTIVE_CLIENTS | PM_PAUSED_JOIN,
@@ -78,5 +81,7 @@ int openttd_main(int argc, char *argv[]);
 void HandleExitGameRequest();
 
 void SwitchToMode(SwitchMode new_mode);
+
+bool RequestNewGRFScan(struct NewGRFScanCallback *callback = nullptr);
 
 #endif /* OPENTTD_H */

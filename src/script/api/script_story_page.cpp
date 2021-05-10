@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -23,6 +21,11 @@
 #include "../../tile_map.h"
 
 #include "../../safeguards.h"
+
+static inline bool StoryPageElementTypeRequiresText(StoryPageElementType type)
+{
+	return type == SPET_TEXT || type == SPET_LOCATION || type == SPET_BUTTON_PUSH || type == SPET_BUTTON_TILE || type == SPET_BUTTON_VEHICLE;
+}
 
 /* static */ bool ScriptStoryPage::IsValidStoryPage(StoryPageID story_page_id)
 {
@@ -59,18 +62,38 @@
 {
 	CCountedPtr<Text> counter(text);
 
+	::StoryPageElementType btype = static_cast<::StoryPageElementType>(type);
+
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, ScriptObject::GetCompany() == OWNER_DEITY);
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, IsValidStoryPage(story_page_id));
-	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, (type != SPET_TEXT && type != SPET_LOCATION) || (text != nullptr && !StrEmpty(text->GetEncodedText())));
+	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, !StoryPageElementTypeRequiresText(btype) || (text != nullptr && !StrEmpty(text->GetEncodedText())));
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_LOCATION || ::IsValidTile(reference));
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_GOAL || ScriptGoal::IsValidGoal((ScriptGoal::GoalID)reference));
 	EnforcePrecondition(STORY_PAGE_ELEMENT_INVALID, type != SPET_GOAL || !(StoryPage::Get(story_page_id)->company == INVALID_COMPANY && Goal::Get(reference)->company != INVALID_COMPANY));
 
-	if (!ScriptObject::DoCommand(type == SPET_LOCATION ? reference : 0,
+	uint32 refid = 0;
+	TileIndex reftile = 0;
+	switch (type) {
+		case SPET_LOCATION:
+			reftile = reference;
+			break;
+		case SPET_GOAL:
+		case SPET_BUTTON_PUSH:
+		case SPET_BUTTON_TILE:
+		case SPET_BUTTON_VEHICLE:
+			refid = reference;
+			break;
+		case SPET_TEXT:
+			break;
+		default:
+			NOT_REACHED();
+	}
+
+	if (!ScriptObject::DoCommand(reftile,
 			story_page_id + (type << 16),
-			type == SPET_GOAL ? reference : 0,
+			refid,
 			CMD_CREATE_STORY_PAGE_ELEMENT,
-			type == SPET_TEXT || type == SPET_LOCATION ? text->GetEncodedText() : nullptr,
+			StoryPageElementTypeRequiresText(btype) ? text->GetEncodedText() : nullptr,
 			&ScriptInstance::DoCommandReturnStoryPageElementID)) return STORY_PAGE_ELEMENT_INVALID;
 
 	/* In case of test-mode, we return StoryPageElementID 0 */
@@ -88,16 +111,34 @@
 	StoryPage *p = StoryPage::Get(pe->page);
 	::StoryPageElementType type = pe->type;
 
-	EnforcePrecondition(false, (type != ::SPET_TEXT && type != ::SPET_LOCATION) || (text != nullptr && !StrEmpty(text->GetEncodedText())));
+	EnforcePrecondition(false, !StoryPageElementTypeRequiresText(type) || (text != nullptr && !StrEmpty(text->GetEncodedText())));
 	EnforcePrecondition(false, type != ::SPET_LOCATION || ::IsValidTile(reference));
 	EnforcePrecondition(false, type != ::SPET_GOAL || ScriptGoal::IsValidGoal((ScriptGoal::GoalID)reference));
 	EnforcePrecondition(false, type != ::SPET_GOAL || !(p->company == INVALID_COMPANY && Goal::Get(reference)->company != INVALID_COMPANY));
 
-	return ScriptObject::DoCommand(type == ::SPET_LOCATION ? reference : 0,
+	uint32 refid = 0;
+	TileIndex reftile = 0;
+	switch (type) {
+		case ::SPET_LOCATION:
+			reftile = reference;
+			break;
+		case ::SPET_GOAL:
+		case ::SPET_BUTTON_PUSH:
+		case ::SPET_BUTTON_TILE:
+		case ::SPET_BUTTON_VEHICLE:
+			refid = reference;
+			break;
+		case ::SPET_TEXT:
+			break;
+		default:
+			NOT_REACHED();
+	}
+
+	return ScriptObject::DoCommand(reftile,
 			story_page_element_id,
-			type == ::SPET_GOAL ? reference : 0,
+			refid,
 			CMD_UPDATE_STORY_PAGE_ELEMENT,
-			type == ::SPET_TEXT || type == ::SPET_LOCATION ? text->GetEncodedText() : nullptr);
+			StoryPageElementTypeRequiresText(type) ? text->GetEncodedText() : nullptr);
 }
 
 /* static */ uint32 ScriptStoryPage::GetPageSortValue(StoryPageID story_page_id)
@@ -173,5 +214,41 @@
 	EnforcePrecondition(false, IsValidStoryPageElement(story_page_element_id));
 
 	return ScriptObject::DoCommand(0, story_page_element_id, 0, CMD_REMOVE_STORY_PAGE_ELEMENT);
+}
+
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakePushButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags)
+{
+	StoryPageButtonData data;
+	data.SetColour((Colours)colour);
+	data.SetFlags((::StoryPageButtonFlags)flags);
+	if (!data.ValidateColour()) return UINT32_MAX;
+	if (!data.ValidateFlags()) return UINT32_MAX;
+	return data.referenced_id;
+}
+
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeTileButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor)
+{
+	StoryPageButtonData data;
+	data.SetColour((Colours)colour);
+	data.SetFlags((::StoryPageButtonFlags)flags);
+	data.SetCursor((::StoryPageButtonCursor)cursor);
+	if (!data.ValidateColour()) return UINT32_MAX;
+	if (!data.ValidateFlags()) return UINT32_MAX;
+	if (!data.ValidateCursor()) return UINT32_MAX;
+	return data.referenced_id;
+}
+
+/* static */ ScriptStoryPage::StoryPageButtonFormatting ScriptStoryPage::MakeVehicleButtonReference(StoryPageButtonColour colour, StoryPageButtonFlags flags, StoryPageButtonCursor cursor, ScriptVehicle::VehicleType vehtype)
+{
+	StoryPageButtonData data;
+	data.SetColour((Colours)colour);
+	data.SetFlags((::StoryPageButtonFlags)flags);
+	data.SetCursor((::StoryPageButtonCursor)cursor);
+	data.SetVehicleType((::VehicleType)vehtype);
+	if (!data.ValidateColour()) return UINT32_MAX;
+	if (!data.ValidateFlags()) return UINT32_MAX;
+	if (!data.ValidateCursor()) return UINT32_MAX;
+	if (!data.ValidateVehicleType()) return UINT32_MAX;
+	return data.referenced_id;
 }
 

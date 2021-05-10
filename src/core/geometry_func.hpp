@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -15,5 +13,17 @@
 #include "geometry_type.hpp"
 
 Dimension maxdim(const Dimension &d1, const Dimension &d2);
+
+/**
+ * Check if a rectangle is empty.
+ * @param r Rectangle to check.
+ * @return True if and only if the rectangle doesn't define space.
+ */
+static inline bool IsEmptyRect(const Rect &r)
+{
+	return (r.left | r.top | r.right | r.bottom) == 0;
+}
+
+Rect BoundingRect(const Rect &r1, const Rect &r2);
 
 #endif /* GEOMETRY_FUNC_HPP */

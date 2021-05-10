@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -9,10 +7,11 @@
 
 /** @file script_date.cpp Implementation of ScriptDate. */
 
-#include <time.h>
 #include "../../stdafx.h"
 #include "script_date.hpp"
 #include "../../date_func.h"
+
+#include <time.h>
 
 #include "../../safeguards.h"
 

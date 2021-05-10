@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,6 +12,7 @@
 #include "../../stdafx.h"
 #include "../../date_func.h"
 #include "../../debug.h"
+#include "game_info.h"
 #include "udp.h"
 
 #include "../../safeguards.h"
@@ -29,11 +28,11 @@ NetworkUDPSocketHandler::NetworkUDPSocketHandler(NetworkAddressList *bind)
 			this->bind.push_back(addr);
 		}
 	} else {
-		/* As hostname nullptr and port 0/nullptr don't go well when
+		/* As an empty hostname and port 0 don't go well when
 		 * resolving it we need to add an address for each of
 		 * the address families we support. */
-		this->bind.emplace_back(nullptr, 0, AF_INET);
-		this->bind.emplace_back(nullptr, 0, AF_INET6);
+		this->bind.emplace_back("", 0, AF_INET);
+		this->bind.emplace_back("", 0, AF_INET6);
 	}
 }
 
@@ -96,16 +95,16 @@ void NetworkUDPSocketHandler::SendPacket(Packet *p, NetworkAddress *recv, bool a
 			/* Enable broadcast */
 			unsigned long val = 1;
 			if (setsockopt(s.second, SOL_SOCKET, SO_BROADCAST, (char *) &val, sizeof(val)) < 0) {
-				DEBUG(net, 1, "[udp] setting broadcast failed with: %i", GET_LAST_ERROR());
+				DEBUG(net, 1, "[udp] setting broadcast failed with: %s", NetworkError::GetLast().AsString());
 			}
 		}
 
 		/* Send the buffer */
-		int res = sendto(s.second, (const char*)p->buffer, p->size, 0, (const struct sockaddr *)send.GetAddress(), send.GetAddressLength());
-		DEBUG(net, 7, "[udp] sendto(%s)", send.GetAddressAsString());
+		ssize_t res = p->TransferOut<int>(sendto, s.second, 0, (const struct sockaddr *)send.GetAddress(), send.GetAddressLength());
+		DEBUG(net, 7, "[udp] sendto(%s)", send.GetAddressAsString().c_str());
 
 		/* Check for any errors, but ignore it otherwise */
-		if (res == -1) DEBUG(net, 1, "[udp] sendto(%s) failed with: %i", send.GetAddressAsString(), GET_LAST_ERROR());
+		if (res == -1) DEBUG(net, 1, "[udp] sendto(%s) failed with: %s", send.GetAddressAsString().c_str(), NetworkError::GetLast().AsString());
 
 		if (!all) break;
 	}
@@ -121,167 +120,34 @@ void NetworkUDPSocketHandler::ReceivePackets()
 			struct sockaddr_storage client_addr;
 			memset(&client_addr, 0, sizeof(client_addr));
 
-			Packet p(this);
+			/* The limit is UDP_MTU, but also allocate that much as we need to read the whole packet in one go. */
+			Packet p(this, UDP_MTU, UDP_MTU);
 			socklen_t client_len = sizeof(client_addr);
 
 			/* Try to receive anything */
 			SetNonBlocking(s.second); // Some OSes seem to lose the non-blocking status of the socket
-			int nbytes = recvfrom(s.second, (char*)p.buffer, SEND_MTU, 0, (struct sockaddr *)&client_addr, &client_len);
+			ssize_t nbytes = p.TransferIn<int>(recvfrom, s.second, 0, (struct sockaddr *)&client_addr, &client_len);
 
 			/* Did we get the bytes for the base header of the packet? */
 			if (nbytes <= 0) break;    // No data, i.e. no packet
 			if (nbytes <= 2) continue; // Invalid data; try next packet
+#ifdef __EMSCRIPTEN__
+			client_len = FixAddrLenForEmscripten(client_addr);
+#endif
 
 			NetworkAddress address(client_addr, client_len);
-			p.PrepareToRead();
 
 			/* If the size does not match the packet must be corrupted.
 			 * Otherwise it will be marked as corrupted later on. */
-			if (nbytes != p.size) {
-				DEBUG(net, 1, "received a packet with mismatching size from %s", address.GetAddressAsString());
+			if (!p.ParsePacketSize() || (size_t)nbytes != p.Size()) {
+				DEBUG(net, 1, "received a packet with mismatching size from %s", address.GetAddressAsString().c_str());
 				continue;
 			}
+			p.PrepareToRead();
 
 			/* Handle the packet */
 			this->HandleUDPPacket(&p, &address);
 		}
-	}
-}
-
-
-/**
- * Serializes the NetworkGameInfo struct to the packet
- * @param p    the packet to write the data to
- * @param info the NetworkGameInfo struct to serialize
- */
-void NetworkUDPSocketHandler::SendNetworkGameInfo(Packet *p, const NetworkGameInfo *info)
-{
-	p->Send_uint8 (NETWORK_GAME_INFO_VERSION);
-
-	/*
-	 *              Please observe the order.
-	 * The parts must be read in the same order as they are sent!
-	 */
-
-	/* Update the documentation in udp.h on changes
-	 * to the NetworkGameInfo wire-protocol! */
-
-	/* NETWORK_GAME_INFO_VERSION = 4 */
-	{
-		/* Only send the GRF Identification (GRF_ID and MD5 checksum) of
-		 * the GRFs that are needed, i.e. the ones that the server has
-		 * selected in the NewGRF GUI and not the ones that are used due
-		 * to the fact that they are in [newgrf-static] in openttd.cfg */
-		const GRFConfig *c;
-		uint count = 0;
-
-		/* Count number of GRFs to send information about */
-		for (c = info->grfconfig; c != nullptr; c = c->next) {
-			if (!HasBit(c->flags, GCF_STATIC)) count++;
-		}
-		p->Send_uint8 (count); // Send number of GRFs
-
-		/* Send actual GRF Identifications */
-		for (c = info->grfconfig; c != nullptr; c = c->next) {
-			if (!HasBit(c->flags, GCF_STATIC)) this->SendGRFIdentifier(p, &c->ident);
-		}
-	}
-
-	/* NETWORK_GAME_INFO_VERSION = 3 */
-	p->Send_uint32(info->game_date);
-	p->Send_uint32(info->start_date);
-
-	/* NETWORK_GAME_INFO_VERSION = 2 */
-	p->Send_uint8 (info->companies_max);
-	p->Send_uint8 (info->companies_on);
-	p->Send_uint8 (info->spectators_max);
-
-	/* NETWORK_GAME_INFO_VERSION = 1 */
-	p->Send_string(info->server_name);
-	p->Send_string(info->server_revision);
-	p->Send_uint8 (info->server_lang);
-	p->Send_bool  (info->use_password);
-	p->Send_uint8 (info->clients_max);
-	p->Send_uint8 (info->clients_on);
-	p->Send_uint8 (info->spectators_on);
-	p->Send_string(info->map_name);
-	p->Send_uint16(info->map_width);
-	p->Send_uint16(info->map_height);
-	p->Send_uint8 (info->map_set);
-	p->Send_bool  (info->dedicated);
-}
-
-/**
- * Deserializes the NetworkGameInfo struct from the packet
- * @param p    the packet to read the data from
- * @param info the NetworkGameInfo to deserialize into
- */
-void NetworkUDPSocketHandler::ReceiveNetworkGameInfo(Packet *p, NetworkGameInfo *info)
-{
-	static const Date MAX_DATE = ConvertYMDToDate(MAX_YEAR, 11, 31); // December is month 11
-
-	info->game_info_version = p->Recv_uint8();
-
-	/*
-	 *              Please observe the order.
-	 * The parts must be read in the same order as they are sent!
-	 */
-
-	/* Update the documentation in udp.h on changes
-	 * to the NetworkGameInfo wire-protocol! */
-
-	switch (info->game_info_version) {
-		case 4: {
-			GRFConfig **dst = &info->grfconfig;
-			uint i;
-			uint num_grfs = p->Recv_uint8();
-
-			/* Broken/bad data. It cannot have that many NewGRFs. */
-			if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
-
-			for (i = 0; i < num_grfs; i++) {
-				GRFConfig *c = new GRFConfig();
-				this->ReceiveGRFIdentifier(p, &c->ident);
-				this->HandleIncomingNetworkGameInfoGRFConfig(c);
-
-				/* Append GRFConfig to the list */
-				*dst = c;
-				dst = &c->next;
-			}
-			FALLTHROUGH;
-		}
-
-		case 3:
-			info->game_date      = Clamp(p->Recv_uint32(), 0, MAX_DATE);
-			info->start_date     = Clamp(p->Recv_uint32(), 0, MAX_DATE);
-			FALLTHROUGH;
-
-		case 2:
-			info->companies_max  = p->Recv_uint8 ();
-			info->companies_on   = p->Recv_uint8 ();
-			info->spectators_max = p->Recv_uint8 ();
-			FALLTHROUGH;
-
-		case 1:
-			p->Recv_string(info->server_name,     sizeof(info->server_name));
-			p->Recv_string(info->server_revision, sizeof(info->server_revision));
-			info->server_lang    = p->Recv_uint8 ();
-			info->use_password   = p->Recv_bool  ();
-			info->clients_max    = p->Recv_uint8 ();
-			info->clients_on     = p->Recv_uint8 ();
-			info->spectators_on  = p->Recv_uint8 ();
-			if (info->game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
-				info->game_date    = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
-				info->start_date   = p->Recv_uint16() + DAYS_TILL_ORIGINAL_BASE_YEAR;
-			}
-			p->Recv_string(info->map_name, sizeof(info->map_name));
-			info->map_width      = p->Recv_uint16();
-			info->map_height     = p->Recv_uint16();
-			info->map_set        = p->Recv_uint8 ();
-			info->dedicated      = p->Recv_bool  ();
-
-			if (info->server_lang >= NETWORK_NUM_LANGUAGES)  info->server_lang = 0;
-			if (info->map_set     >= NETWORK_NUM_LANDSCAPES) info->map_set     = 0;
 	}
 }
 
@@ -317,9 +183,9 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, NetworkAddress *client_
 
 		default:
 			if (this->HasClientQuit()) {
-				DEBUG(net, 0, "[udp] received invalid packet type %d from %s", type, client_addr->GetAddressAsString());
+				DEBUG(net, 0, "[udp] received invalid packet type %d from %s", type, client_addr->GetAddressAsString().c_str());
 			} else {
-				DEBUG(net, 0, "[udp] received illegal packet from %s", client_addr->GetAddressAsString());
+				DEBUG(net, 0, "[udp] received illegal packet from %s", client_addr->GetAddressAsString().c_str());
 			}
 			break;
 	}
@@ -332,7 +198,7 @@ void NetworkUDPSocketHandler::HandleUDPPacket(Packet *p, NetworkAddress *client_
  */
 void NetworkUDPSocketHandler::ReceiveInvalidPacket(PacketUDPType type, NetworkAddress *client_addr)
 {
-	DEBUG(net, 0, "[udp] received packet type %d on wrong port from %s", type, client_addr->GetAddressAsString());
+	DEBUG(net, 0, "[udp] received packet type %d on wrong port from %s", type, client_addr->GetAddressAsString().c_str());
 }
 
 void NetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, NetworkAddress *client_addr) { this->ReceiveInvalidPacket(PACKET_UDP_CLIENT_FIND_SERVER, client_addr); }

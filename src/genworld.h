@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -44,9 +42,14 @@ enum TgenSmoothness {
 	TGEN_SMOOTHNESS_END,        ///< Used to iterate.
 };
 
+static const uint CUSTOM_TERRAIN_TYPE_NUMBER_DIFFICULTY = 5; ///< Value for custom terrain type in difficulty settings.
+
 static const uint CUSTOM_SEA_LEVEL_NUMBER_DIFFICULTY = 4; ///< Value for custom sea level in difficulty settings.
 static const uint CUSTOM_SEA_LEVEL_MIN_PERCENTAGE = 1;    ///< Minimum percentage a user can specify for custom sea level.
 static const uint CUSTOM_SEA_LEVEL_MAX_PERCENTAGE = 90;   ///< Maximum percentage a user can specify for custom sea level.
+
+static const uint MAP_HEIGHT_LIMIT_AUTO_MINIMUM = 30; ///< When map height limit is auto, make this the lowest possible map height limit.
+static const uint MAP_HEIGHT_LIMIT_AUTO_CEILING_ROOM = 15; ///< When map height limit is auto, the map height limit will be the higest peak plus this value.
 
 typedef void GWDoneProc();  ///< Procedure called when the genworld process finishes
 typedef void GWAbortProc(); ///< Called when genworld is aborted
@@ -54,15 +57,12 @@ typedef void GWAbortProc(); ///< Called when genworld is aborted
 /** Properties of current genworld process */
 struct GenWorldInfo {
 	bool abort;            ///< Whether to abort the thread ASAP
-	bool quit_thread;      ///< Do we want to quit the active thread
-	bool threaded;         ///< Whether we run _GenerateWorld threaded
 	GenWorldMode mode;     ///< What mode are we making a world in
 	CompanyID lc;          ///< The local_company before generating
 	uint size_x;           ///< X-size of the map
 	uint size_y;           ///< Y-size of the map
 	GWDoneProc *proc;      ///< Proc that is called when done (can be nullptr)
 	GWAbortProc *abortp;   ///< Proc that is called when aborting (can be nullptr)
-	std::thread thread;    ///< The thread we are in (joinable if a thread was created)
 };
 
 /** Current stage of world generation process */
@@ -83,10 +83,8 @@ enum GenWorldProgress {
 };
 
 /* genworld.cpp */
-bool IsGenerateWorldThreaded();
 void GenerateWorldSetCallback(GWDoneProc *proc);
 void GenerateWorldSetAbortCallback(GWAbortProc *proc);
-void WaitTillGeneratedWorld();
 void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_settings = true);
 void AbortGeneratingWorld();
 bool IsGeneratingWorldAborted();

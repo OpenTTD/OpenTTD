@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -44,9 +42,9 @@ static inline void AddVehicleAdviceNewsItem(StringID string, VehicleID vehicle)
 	AddNewsItem(string, NT_ADVICE, NF_INCOLOUR | NF_SMALL | NF_VEHICLE_PARAM0, NR_VEHICLE, vehicle);
 }
 
-static inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, void *free_data = nullptr)
+static inline void AddTileNewsItem(StringID string, NewsType type, TileIndex tile, void *free_data = nullptr, StationID station = INVALID_STATION)
 {
-	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_TILE, tile, NR_NONE, UINT32_MAX, free_data);
+	AddNewsItem(string, type, NF_NO_TRANSPARENT | NF_SHADE | NF_THIN, NR_TILE, tile, station == INVALID_STATION ? NR_NONE : NR_STATION, station, free_data);
 }
 
 static inline void AddIndustryNewsItem(StringID string, NewsType type, IndustryID industry)

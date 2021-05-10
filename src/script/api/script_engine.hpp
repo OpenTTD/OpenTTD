@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -289,6 +287,29 @@ public:
 	 * @see ScriptOrder::GetOrderDistance
 	 */
 	static uint GetMaximumOrderDistance(EngineID engine_id);
+
+	/**
+	 * Allows a company to use an engine before its intro date or after retirement.
+	 * @param engine_id The engine to enable.
+	 * @param company_id The company to allow using the engine.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre ScriptCompany.ResolveCompanyID(company_id) != ScriptCompany::COMPANY_INVALID.
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool EnableForCompany(EngineID engine_id, ScriptCompany::CompanyID company_id);
+
+	/**
+	 * Forbids a company to use an engine before its natural retirement.
+	 * @param engine_id The engine to disable.
+	 * @param company_id The company to forbid using the engine.
+	 * @pre IsValidEngine(engine_id).
+	 * @pre ScriptCompany.ResolveCompanyID(company_id) != ScriptCompany::COMPANY_INVALID.
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool DisableForCompany(EngineID engine_id, ScriptCompany::CompanyID company_id);
+
 };
 
 #endif /* SCRIPT_ENGINE_HPP */

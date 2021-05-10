@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -10,6 +8,7 @@
 /** @file npf.cpp Implementation of the NPF pathfinder. */
 
 #include "../../stdafx.h"
+#include "../../debug.h"
 #include "../../network/network.h"
 #include "../../viewport_func.h"
 #include "../../ship.h"
@@ -119,7 +118,7 @@ static uint NPFDistanceTrack(TileIndex t0, TileIndex t1)
 	const uint dx = Delta(TileX(t0), TileX(t1));
 	const uint dy = Delta(TileY(t0), TileY(t1));
 
-	const uint straightTracks = 2 * min(dx, dy); // The number of straight (not full length) tracks
+	const uint straightTracks = 2 * std::min(dx, dy); // The number of straight (not full length) tracks
 	/* OPTIMISATION:
 	 * Original: diagTracks = max(dx, dy) - min(dx,dy);
 	 * Proof:
@@ -1002,9 +1001,6 @@ static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
  */
 static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start_tile1, AyStarNode *start2, bool ignore_start_tile2, NPFFindStationOrTileData *target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, AyStarUserData *user, uint reverse_penalty, bool ignore_reserved = false, int max_penalty = 0)
 {
-	int r;
-	NPFFoundTargetData result;
-
 	/* Initialize procs */
 	_npf_aystar.max_path_cost = max_penalty;
 	_npf_aystar.CalculateH = heuristic_proc;
@@ -1034,6 +1030,7 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	}
 
 	/* Initialize result */
+	NPFFoundTargetData result;
 	result.best_bird_dist = UINT_MAX;
 	result.best_path_dist = UINT_MAX;
 	result.best_trackdir  = INVALID_TRACKDIR;
@@ -1048,7 +1045,8 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	_npf_aystar.user_data = user;
 
 	/* GO! */
-	r = _npf_aystar.Main();
+	int r = _npf_aystar.Main();
+	(void)r; // assert only
 	assert(r != AYSTAR_STILL_BUSY);
 
 	if (result.best_bird_dist != 0) {

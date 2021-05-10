@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -50,7 +48,7 @@ static DWORD WINAPI SoundThread(LPVOID arg)
 			if ((hdr->dwFlags & WHDR_INQUEUE) != 0) continue;
 			MxMixSamples(hdr->lpData, hdr->dwBufferLength / 4);
 			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR) {
-				MessageBox(nullptr, _T("Sounds are disabled until restart."), _T("waveOutWrite failed"), MB_ICONINFORMATION);
+				MessageBox(nullptr, L"Sounds are disabled until restart.", L"waveOutWrite failed", MB_ICONINFORMATION);
 				return 0;
 			}
 		}
@@ -60,7 +58,7 @@ static DWORD WINAPI SoundThread(LPVOID arg)
 	return 0;
 }
 
-const char *SoundDriver_Win32::Start(const char * const *parm)
+const char *SoundDriver_Win32::Start(const StringList &parm)
 {
 	WAVEFORMATEX wfex;
 	wfex.wFormatTag = WAVE_FORMAT_PCM;
@@ -72,7 +70,7 @@ const char *SoundDriver_Win32::Start(const char * const *parm)
 
 	/* Limit buffer size to prevent overflows. */
 	_bufsize = GetDriverParamInt(parm, "bufsize", (GB(GetVersion(), 0, 8) > 5) ? 8192 : 4096);
-	_bufsize = min(_bufsize, UINT16_MAX);
+	_bufsize = std::min<int>(_bufsize, UINT16_MAX);
 
 	try {
 		if (nullptr == (_event = CreateEvent(nullptr, FALSE, FALSE, nullptr))) throw "Failed to create event";

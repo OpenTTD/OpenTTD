@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,6 +12,7 @@
 
 /** Widgets of the #BuildObjectWindow class. */
 enum BuildObjectWidgets {
+	WID_BO_FILTER,         ///< The filter text box for the object list.
 	WID_BO_CLASS_LIST,     ///< The list with classes.
 	WID_BO_SCROLLBAR,      ///< The scrollbar associated with the list.
 	WID_BO_OBJECT_MATRIX,  ///< The matrix with preview sprites.

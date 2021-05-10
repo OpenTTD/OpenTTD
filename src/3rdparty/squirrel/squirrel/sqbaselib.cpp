@@ -1,14 +1,9 @@
 /*
  * see copyright notice in squirrel.h
  */
-/*
- * Needs to be first due to a squirrel header defining type() and type()
- * being used in some versions of the headers included by algorithm.
- */
 
 #include "../../../stdafx.h"
 
-#include <algorithm>
 #include "sqpcheader.h"
 #include "sqvm.h"
 #include "sqstring.h"
@@ -219,7 +214,7 @@ static SQInteger base_array(HSQUIRRELVM v)
 	SQInteger nInitialSize = tointeger(stack_get(v,2));
 	SQInteger ret = 1;
 	if (nInitialSize < 0) {
-		v->Raise_Error("can't create/resize array with/to size %d", nInitialSize);
+		v->Raise_Error("can't create/resize array with/to size " OTTD_PRINTF64, nInitialSize);
 		nInitialSize = 0;
 		ret = -1;
 	}

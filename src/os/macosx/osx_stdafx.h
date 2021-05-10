@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -18,6 +16,10 @@
 /* We assume if these macros are defined, the SDK is also at least this version or later. */
 #ifdef MAC_OS_X_VERSION_10_7
 #define HAVE_OSX_107_SDK
+#endif
+
+#ifdef MAC_OS_X_VERSION_10_9
+#define HAVE_OSX_109_SDK
 #endif
 
 #ifdef MAC_OS_X_VERSION_10_11

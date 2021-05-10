@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,10 +12,11 @@
 
 #include "order_type.h"
 #include "date_type.h"
+#include <string>
 
 /** Various front vehicle properties that are preserved when autoreplacing, using order-backup or switching front engines within a consist. */
 struct BaseConsist {
-	char *name;                         ///< Name of vehicle
+	std::string name;                   ///< Name of vehicle
 
 	/* Used for timetabling. */
 	uint32 current_order_time;          ///< How many ticks have passed since this order started.
@@ -31,8 +30,7 @@ struct BaseConsist {
 
 	uint16 vehicle_flags;               ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
-	BaseConsist() : name(nullptr) {}
-	virtual ~BaseConsist();
+	virtual ~BaseConsist() {}
 
 	void CopyConsistPropertiesFrom(const BaseConsist *src);
 };

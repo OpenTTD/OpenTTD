@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -15,7 +13,7 @@
 #include "gfx_type.h"
 #include "company_base.h"
 #include "newgrf_config.h"
-#include "network/core/tcp_content.h"
+#include "network/core/tcp_content_type.h"
 
 
 /** Special values for save-load window for the data parameter of #InvalidateWindowData. */
@@ -85,22 +83,6 @@ struct LoadCheckData {
 
 extern LoadCheckData _load_check_data;
 
-
-enum FileSlots {
-	/**
-	 * Slot used for the GRF scanning and such.
-	 * This slot is used for all temporary accesses to files when scanning/testing files,
-	 * and thus cannot be used for files, which are continuously accessed during a game.
-	 */
-	CONFIG_SLOT    =  0,
-	/** Slot for the sound. */
-	SOUND_SLOT     =  1,
-	/** First slot usable for (New)GRFs used during the game. */
-	FIRST_GRF_SLOT =  2,
-	/** Maximum number of slots. */
-	MAX_FILE_SLOTS = 128,
-};
-
 /** Deals with finding savegames */
 struct FiosItem {
 	FiosType type;
@@ -111,95 +93,10 @@ struct FiosItem {
 };
 
 /** List of file information. */
-class FileList {
+class FileList : public std::vector<FiosItem> {
 public:
-	~FileList();
-
-	/**
-	 * Construct a new entry in the file list.
-	 * @return Pointer to the new items to be initialized.
-	 */
-	inline FiosItem *Append()
-	{
-		/*C++17: return &*/ this->files.emplace_back();
-		return &this->files.back();
-	}
-
-	/**
-	 * Get the number of files in the list.
-	 * @return The number of files stored in the list.
-	 */
-	inline size_t Length() const
-	{
-		return this->files.size();
-	}
-
-	/**
-	 * Get a pointer to the first file information.
-	 * @return Address of the first file information.
-	 */
-	inline const FiosItem *Begin() const
-	{
-		return this->files.data();
-	}
-
-	/**
-	 * Get a pointer behind the last file information.
-	 * @return Address behind the last file information.
-	 */
-	inline const FiosItem *End() const
-	{
-		return this->Begin() + this->Length();
-	}
-
-	/**
-	 * Get a pointer to the indicated file information. File information must exist.
-	 * @return Address of the indicated existing file information.
-	 */
-	inline const FiosItem *Get(size_t index) const
-	{
-		return this->files.data() + index;
-	}
-
-	/**
-	 * Get a pointer to the indicated file information. File information must exist.
-	 * @return Address of the indicated existing file information.
-	 */
-	inline FiosItem *Get(size_t index)
-	{
-		return this->files.data() + index;
-	}
-
-	inline const FiosItem &operator[](size_t index) const
-	{
-		return this->files[index];
-	}
-
-	/**
-	 * Get a reference to the indicated file information. File information must exist.
-	 * @return The requested file information.
-	 */
-	inline FiosItem &operator[](size_t index)
-	{
-		return this->files[index];
-	}
-
-	/** Remove all items from the list. */
-	inline void Clear()
-	{
-		this->files.clear();
-	}
-
-	/** Compact the list down to the smallest block size boundary. */
-	inline void Compact()
-	{
-		this->files.shrink_to_fit();
-	}
-
 	void BuildFileList(AbstractFileType abstract_filetype, SaveLoadOperation fop);
 	const FiosItem *FindItem(const char *file);
-
-	std::vector<FiosItem> files; ///< The list of files.
 };
 
 enum SortingBits {
@@ -223,9 +120,9 @@ const char *FiosBrowseTo(const FiosItem *item);
 
 StringID FiosGetDescText(const char **path, uint64 *total_free);
 bool FiosDelete(const char *name);
-void FiosMakeHeightmapName(char *buf, const char *name, const char *last);
-void FiosMakeSavegameName(char *buf, const char *name, const char *last);
+std::string FiosMakeHeightmapName(const char *name);
+std::string FiosMakeSavegameName(const char *name);
 
-FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const char *file, const char *ext, char *title, const char *last);
+FiosType FiosGetSavegameListCallback(SaveLoadOperation fop, const std::string &file, const char *ext, char *title, const char *last);
 
 #endif /* FIOS_H */

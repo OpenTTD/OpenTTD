@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,8 +12,6 @@
 
 #include "../../debug.h"
 #include "../../settings_type.h"
-
-extern int _total_pf_time_us;
 
 /**
  * CYapfBaseT - A-star type path finder base class.
@@ -70,12 +66,6 @@ protected:
 	int                  m_stats_cache_hits;   ///< stats - how many node's costs were reused from cache
 
 public:
-	CPerformanceTimer    m_perf_cost;          ///< stats - total CPU time of this run
-	CPerformanceTimer    m_perf_slope_cost;    ///< stats - slope calculation CPU time
-	CPerformanceTimer    m_perf_ts_cost;       ///< stats - GetTrackStatus() CPU time
-	CPerformanceTimer    m_perf_other_cost;    ///< stats - other CPU time
-
-public:
 	int                  m_num_steps;          ///< this is there for debugging purposes (hope it doesn't hurt)
 
 public:
@@ -122,9 +112,6 @@ public:
 	{
 		m_veh = v;
 
-		CPerformanceTimer perf;
-		perf.Start();
-
 		Yapf().PfSetStartupNodes();
 		bool bDestFound = true;
 
@@ -152,25 +139,18 @@ public:
 
 		bDestFound &= (m_pBestDestNode != nullptr);
 
-		perf.Stop();
-		if (_debug_yapf_level >= 2) {
-			int t = perf.Get(1000000);
-			_total_pf_time_us += t;
+		if (_debug_yapf_level >= 3) {
+			UnitID veh_idx = (m_veh != nullptr) ? m_veh->unitnumber : 0;
+			char ttc = Yapf().TransportTypeChar();
+			float cache_hit_ratio = (m_stats_cache_hits == 0) ? 0.0f : ((float)m_stats_cache_hits / (float)(m_stats_cache_hits + m_stats_cost_calcs) * 100.0f);
+			int cost = bDestFound ? m_pBestDestNode->m_cost : -1;
+			int dist = bDestFound ? m_pBestDestNode->m_estimate - m_pBestDestNode->m_cost : -1;
 
-			if (_debug_yapf_level >= 3) {
-				UnitID veh_idx = (m_veh != nullptr) ? m_veh->unitnumber : 0;
-				char ttc = Yapf().TransportTypeChar();
-				float cache_hit_ratio = (m_stats_cache_hits == 0) ? 0.0f : ((float)m_stats_cache_hits / (float)(m_stats_cache_hits + m_stats_cost_calcs) * 100.0f);
-				int cost = bDestFound ? m_pBestDestNode->m_cost : -1;
-				int dist = bDestFound ? m_pBestDestNode->m_estimate - m_pBestDestNode->m_cost : -1;
-
-				DEBUG(yapf, 3, "[YAPF%c]%c%4d- %d us - %d rounds - %d open - %d closed - CHR %4.1f%% - C %d D %d - c%d(sc%d, ts%d, o%d) -- ",
-					ttc, bDestFound ? '-' : '!', veh_idx, t, m_num_steps, m_nodes.OpenCount(), m_nodes.ClosedCount(),
-					cache_hit_ratio, cost, dist, m_perf_cost.Get(1000000), m_perf_slope_cost.Get(1000000),
-					m_perf_ts_cost.Get(1000000), m_perf_other_cost.Get(1000000)
-				);
-			}
+			DEBUG(yapf, 3, "[YAPF%c]%c%4d- %d rounds - %d open - %d closed - CHR %4.1f%% - C %d D %d",
+				ttc, bDestFound ? '-' : '!', veh_idx, m_num_steps, m_nodes.OpenCount(), m_nodes.ClosedCount(), cache_hit_ratio, cost, dist
+			);
 		}
+
 		return bDestFound;
 	}
 
@@ -319,7 +299,7 @@ public:
 	void DumpBase(DumpTarget &dmp) const
 	{
 		dmp.WriteStructT("m_nodes", &m_nodes);
-		dmp.WriteLine("m_num_steps = %d", m_num_steps);
+		dmp.WriteValue("m_num_steps", m_num_steps);
 	}
 
 	/* methods that should be implemented at derived class Types::Tpf (derived from CYapfBaseT) */

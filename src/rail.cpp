@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -211,21 +209,6 @@ bool ValParamRailtype(const RailType rail)
 }
 
 /**
- * Returns the "best" railtype a company can build.
- * As the AI doesn't know what the BEST one is, we have our own priority list
- * here. When adding new railtypes, modify this function
- * @param company the company "in action"
- * @return The "best" railtype a company has available
- */
-RailType GetBestRailtype(const CompanyID company)
-{
-	if (HasRailtypeAvail(company, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
-	if (HasRailtypeAvail(company, RAILTYPE_MONO)) return RAILTYPE_MONO;
-	if (HasRailtypeAvail(company, RAILTYPE_ELECTRIC)) return RAILTYPE_ELECTRIC;
-	return RAILTYPE_RAIL;
-}
-
-/**
  * Add the rail types that are to be introduced at the given date.
  * @param current The currently available railtypes.
  * @param date    The date for the introduction comparisons.
@@ -269,8 +252,7 @@ RailTypes GetCompanyRailtypes(CompanyID company, bool introduces)
 {
 	RailTypes rts = RAILTYPES_NONE;
 
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
@@ -301,8 +283,7 @@ RailTypes GetRailTypes(bool introduces)
 {
 	RailTypes rts = RAILTYPES_NONE;
 
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+	for (const Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		const EngineInfo *ei = &e->info;
 		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
 

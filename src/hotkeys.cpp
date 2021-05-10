@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -18,7 +16,7 @@
 
 #include "safeguards.h"
 
-char *_hotkeys_file;
+std::string _hotkeys_file;
 
 /**
  * List of all HotkeyLists.
@@ -40,10 +38,15 @@ static const KeycodeNames _keycode_to_name[] = {
 	{"META", WKC_META},
 	{"GLOBAL", WKC_GLOBAL_HOTKEY},
 	{"ESC", WKC_ESC},
-	{"DEL", WKC_DELETE},
 	{"BACKSPACE", WKC_BACKSPACE},
+	{"INS", WKC_INSERT},
+	{"DEL", WKC_DELETE},
+	{"PAGEUP", WKC_PAGEUP},
+	{"PAGEDOWN", WKC_PAGEDOWN},
+	{"END", WKC_END},
+	{"HOME", WKC_HOME},
 	{"RETURN", WKC_RETURN},
-	{"BACKQUOTE", WKC_BACKQUOTE},
+	{"SPACE", WKC_SPACE},
 	{"F1", WKC_F1},
 	{"F2", WKC_F2},
 	{"F3", WKC_F3},
@@ -56,12 +59,33 @@ static const KeycodeNames _keycode_to_name[] = {
 	{"F10", WKC_F10},
 	{"F11", WKC_F11},
 	{"F12", WKC_F12},
+	{"BACKQUOTE", WKC_BACKQUOTE},
 	{"PAUSE", WKC_PAUSE},
-	{"COMMA", WKC_COMMA},
-	{"NUM_PLUS", WKC_NUM_PLUS},
+	{"NUM_DIV", WKC_NUM_DIV},
+	{"NUM_MUL", WKC_NUM_MUL},
 	{"NUM_MINUS", WKC_NUM_MINUS},
-	{"=", WKC_EQUALS},
-	{"-", WKC_MINUS},
+	{"NUM_PLUS", WKC_NUM_PLUS},
+	{"NUM_ENTER", WKC_NUM_ENTER},
+	{"NUM_DOT", WKC_NUM_DECIMAL},
+	{"SLASH", WKC_SLASH},
+	{"/", WKC_SLASH}, /* deprecated, use SLASH */
+	{"SEMICOLON", WKC_SEMICOLON},
+	{";", WKC_SEMICOLON}, /* deprecated, use SEMICOLON */
+	{"EQUALS", WKC_EQUALS},
+	{"=", WKC_EQUALS}, /* deprecated, use EQUALS */
+	{"L_BRACKET", WKC_L_BRACKET},
+	{"[", WKC_L_BRACKET}, /* deprecated, use L_BRACKET */
+	{"BACKSLASH", WKC_BACKSLASH},
+	{"\\", WKC_BACKSLASH}, /* deprecated, use BACKSLASH */
+	{"R_BRACKET", WKC_R_BRACKET},
+	{"]", WKC_R_BRACKET}, /* deprecated, use R_BRACKET */
+	{"SINGLEQUOTE", WKC_SINGLEQUOTE},
+	{"'", WKC_SINGLEQUOTE}, /* deprecated, use SINGLEQUOTE */
+	{"COMMA", WKC_COMMA},
+	{"PERIOD", WKC_PERIOD},
+	{".", WKC_PERIOD}, /* deprecated, use PERIOD */
+	{"MINUS", WKC_MINUS},
+	{"-", WKC_MINUS}, /* deprecated, use MINUS */
 };
 
 /**
@@ -274,7 +298,7 @@ void HotkeyList::Load(IniFile *ini)
 		IniItem *item = group->GetItem(hotkey->name, false);
 		if (item != nullptr) {
 			hotkey->keycodes.clear();
-			if (item->value != nullptr) ParseHotkeys(hotkey, item->value);
+			if (item->value.has_value()) ParseHotkeys(hotkey, item->value->c_str());
 		}
 	}
 }

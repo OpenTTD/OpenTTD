@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -26,6 +24,7 @@ enum SignListWidgets {
 /** Widgets of the #SignWindow class. */
 enum QueryEditSignWidgets {
 	WID_QES_CAPTION,  ///< Caption of the window.
+	WID_QES_LOCATION, ///< Scroll to sign location.
 	WID_QES_TEXT,     ///< Text of the query.
 	WID_QES_OK,       ///< OK button.
 	WID_QES_CANCEL,   ///< Cancel button.

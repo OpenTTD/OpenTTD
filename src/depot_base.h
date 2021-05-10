@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -20,7 +18,7 @@ extern DepotPool _depot_pool;
 
 struct Depot : DepotPool::PoolItem<&_depot_pool> {
 	Town *town;
-	char *name;
+	std::string name;
 
 	TileIndex xy;
 	uint16 town_cn;    ///< The N-1th depot for this town (consecutive number)
@@ -45,8 +43,5 @@ struct Depot : DepotPool::PoolItem<&_depot_pool> {
 		return GetTileType(d->xy) == GetTileType(this->xy);
 	}
 };
-
-#define FOR_ALL_DEPOTS_FROM(var, start) FOR_ALL_ITEMS_FROM(Depot, depot_index, var, start)
-#define FOR_ALL_DEPOTS(var) FOR_ALL_DEPOTS_FROM(var, 0)
 
 #endif /* DEPOT_BASE_H */

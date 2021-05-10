@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -20,9 +18,16 @@
  * from external win64.asm because VS2005 does not support inline assembly */
 #if defined(_MSC_VER) && !defined(RDTSC_AVAILABLE)
 #include <intrin.h>
+#include <windows.h>
 uint64 ottd_rdtsc()
 {
+#if defined(_M_ARM)
+	return __rdpmccntr64();
+#elif defined(_M_ARM64)
+	return _ReadStatusReg(ARM64_PMCCNTR_EL0);
+#else
 	return __rdtsc();
+#endif
 }
 #define RDTSC_AVAILABLE
 #endif
@@ -68,6 +73,12 @@ uint64 ottd_rdtsc()
 # define RDTSC_AVAILABLE
 #endif
 
+#if defined(__EMSCRIPTEN__) && !defined(RDTSC_AVAILABLE)
+/* On emscripten doing TIC/TOC would be ill-advised */
+uint64 ottd_rdtsc() {return 0;}
+# define RDTSC_AVAILABLE
+#endif
+
 /* In all other cases we have no support for rdtsc. No major issue,
  * you just won't be able to profile your code with TIC()/TOC() */
 #if !defined(RDTSC_AVAILABLE)
@@ -87,7 +98,7 @@ uint64 ottd_rdtsc() {return 0;}
  * Other platforms/architectures don't have CPUID, so zero the info and then
  * most (if not all) of the features are set as if they do not exist.
  */
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && (defined(_M_IX86) || defined(_M_X64))
 void ottd_cpuid(int info[4], int type)
 {
 	__cpuid(info, type);

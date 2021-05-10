@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -28,9 +26,7 @@ static const SaveLoad _engine_renew_desc[] = {
 
 static void Save_ERNW()
 {
-	EngineRenew *er;
-
-	FOR_ALL_ENGINE_RENEWS(er) {
+	for (EngineRenew *er : EngineRenew::Iterate()) {
 		SlSetArrayIndex(er->index);
 		SlObject(er, _engine_renew_desc);
 	}
@@ -55,9 +51,7 @@ static void Load_ERNW()
 
 static void Ptrs_ERNW()
 {
-	EngineRenew *er;
-
-	FOR_ALL_ENGINE_RENEWS(er) {
+	for (EngineRenew *er : EngineRenew::Iterate()) {
 		SlObject(er, _engine_renew_desc);
 	}
 }

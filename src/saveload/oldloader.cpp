@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -110,8 +108,6 @@ byte ReadByte(LoadgameState *ls)
  */
 bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 {
-	byte *base_ptr = (byte*)base;
-
 	for (const OldChunks *chunk = chunks; chunk->type != OC_END; chunk++) {
 		if (((chunk->type & OC_TTD) && _savegame_type == SGT_TTO) ||
 				((chunk->type & OC_TTO) && _savegame_type != SGT_TTO)) {
@@ -136,8 +132,8 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 						break;
 
 					case OC_ASSERT:
-						DEBUG(oldloader, 4, "Assert point: 0x%X / 0x%X", ls->total_read, chunk->offset + _bump_assert_value);
-						if (ls->total_read != chunk->offset + _bump_assert_value) throw std::exception();
+						DEBUG(oldloader, 4, "Assert point: 0x%X / 0x%X", ls->total_read, (uint)(size_t)chunk->ptr + _bump_assert_value);
+						if (ls->total_read != (size_t)chunk->ptr + _bump_assert_value) throw std::exception();
 					default: break;
 				}
 			} else {
@@ -155,10 +151,10 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 				}
 
 				/* When both pointers are nullptr, we are just skipping data */
-				if (base_ptr == nullptr && chunk->ptr == nullptr) continue;
+				if (base == nullptr && chunk->ptr == nullptr) continue;
 
-				/* Writing to the var: bits 8 to 15 have the VAR type */
-				if (chunk->ptr == nullptr) ptr = base_ptr + chunk->offset;
+				/* Chunk refers to a struct member, get address in base. */
+				if (chunk->ptr == nullptr) ptr = (byte *)chunk->offset(base);
 
 				/* Write the data */
 				switch (GetOldChunkVarType(chunk->type)) {
@@ -245,7 +241,7 @@ static inline bool CheckOldSavegameType(FILE *f, char *temp, const char *last, u
 
 static SavegameType DetermineOldSavegameType(FILE *f, char *title, const char *last)
 {
-	assert_compile(TTD_HEADER_SIZE >= TTO_HEADER_SIZE);
+	static_assert(TTD_HEADER_SIZE >= TTO_HEADER_SIZE);
 	char temp[TTD_HEADER_SIZE] = "Unknown";
 
 	SavegameType type = SGT_TTO;
@@ -273,7 +269,7 @@ static SavegameType DetermineOldSavegameType(FILE *f, char *title, const char *l
 
 typedef bool LoadOldMainProc(LoadgameState *ls);
 
-bool LoadOldSaveGame(const char *file)
+bool LoadOldSaveGame(const std::string &file)
 {
 	LoadgameState ls;
 
@@ -285,7 +281,7 @@ bool LoadOldSaveGame(const char *file)
 	ls.file = FioFOpenFile(file, "rb", NO_DIRECTORY);
 
 	if (ls.file == nullptr) {
-		DEBUG(oldloader, 0, "Cannot open file '%s'", file);
+		DEBUG(oldloader, 0, "Cannot open file '%s'", file.c_str());
 		return false;
 	}
 
@@ -319,7 +315,7 @@ bool LoadOldSaveGame(const char *file)
 	return true;
 }
 
-void GetOldSaveGameName(const char *file, char *title, const char *last)
+void GetOldSaveGameName(const std::string &file, char *title, const char *last)
 {
 	FILE *f = FioFOpenFile(file, "rb", NO_DIRECTORY);
 

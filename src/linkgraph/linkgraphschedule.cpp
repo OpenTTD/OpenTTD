@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -16,6 +14,8 @@
 #include "mcf.h"
 #include "flowmapper.h"
 #include "../framerate_type.h"
+#include "../command_func.h"
+#include "../network/network.h"
 
 #include "../safeguards.h"
 
@@ -51,13 +51,24 @@ void LinkGraphSchedule::SpawnNext()
 }
 
 /**
+ * Check if the next job is supposed to be finished, but has not yet completed.
+ * @return True if job should be finished by now but is still running, false if not.
+ */
+bool LinkGraphSchedule::IsJoinWithUnfinishedJobDue() const
+{
+	if (this->running.empty()) return false;
+	const LinkGraphJob *next = this->running.front();
+	return next->IsScheduledToBeJoined() && !next->IsJobCompleted();
+}
+
+/**
  * Join the next finished job, if available.
  */
 void LinkGraphSchedule::JoinNext()
 {
 	if (this->running.empty()) return;
 	LinkGraphJob *next = this->running.front();
-	if (!next->IsFinished()) return;
+	if (!next->IsScheduledToBeJoined()) return;
 	this->running.pop_front();
 	LinkGraphID id = next->LinkGraphIndex();
 	delete next; // implicitly joins the thread
@@ -75,8 +86,21 @@ void LinkGraphSchedule::JoinNext()
 /* static */ void LinkGraphSchedule::Run(LinkGraphJob *job)
 {
 	for (uint i = 0; i < lengthof(instance.handlers); ++i) {
+		if (job->IsJobAborted()) return;
 		instance.handlers[i]->Run(*job);
 	}
+
+	/*
+	 * Readers of this variable in another thread may see an out of date value.
+	 * However this is OK as this will only happen just as a job is completing,
+	 * and the real synchronisation is provided by the thread join operation.
+	 * In the worst case the main thread will be paused for longer than
+	 * strictly necessary before joining.
+	 * This is just a hint variable to avoid performing the join excessively
+	 * early and blocking the main thread.
+	 */
+
+	job->job_completed.store(true, std::memory_order_release);
 }
 
 /**
@@ -96,7 +120,7 @@ void LinkGraphSchedule::SpawnAll()
 /* static */ void LinkGraphSchedule::Clear()
 {
 	for (JobList::iterator i(instance.running.begin()); i != instance.running.end(); ++i) {
-		(*i)->JoinThread();
+		(*i)->AbortJob();
 	}
 	instance.running.clear();
 	instance.schedule.clear();
@@ -109,10 +133,8 @@ void LinkGraphSchedule::SpawnAll()
  */
 void LinkGraphSchedule::ShiftDates(int interval)
 {
-	LinkGraph *lg;
-	FOR_ALL_LINK_GRAPHS(lg) lg->ShiftDates(interval);
-	LinkGraphJob *lgj;
-	FOR_ALL_LINK_GRAPH_JOBS(lgj) lgj->ShiftJoinDate(interval);
+	for (LinkGraph *lg : LinkGraph::Iterate()) lg->ShiftDates(interval);
+	for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) lgj->ShiftJoinDate(interval);
 }
 
 /**
@@ -140,6 +162,42 @@ LinkGraphSchedule::~LinkGraphSchedule()
 }
 
 /**
+ * Pause the game if in 2 _date_fract ticks, we would do a join with the next
+ * link graph job, but it is still running.
+ * The check is done 2 _date_fract ticks early instead of 1, as in multiplayer
+ * calls to DoCommandP are executed after a delay of 1 _date_fract tick.
+ * If we previously paused, unpause if the job is now ready to be joined with.
+ */
+void StateGameLoop_LinkGraphPauseControl()
+{
+	if (_pause_mode & PM_PAUSED_LINK_GRAPH) {
+		/* We are paused waiting on a job, check the job every tick. */
+		if (!LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
+			DoCommandP(0, PM_PAUSED_LINK_GRAPH, 0, CMD_PAUSE);
+		}
+	} else if (_pause_mode == PM_UNPAUSED &&
+			_date_fract == LinkGraphSchedule::SPAWN_JOIN_TICK - 2 &&
+			_date % _settings_game.linkgraph.recalc_interval == _settings_game.linkgraph.recalc_interval / 2 &&
+			LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
+		/* Perform check two _date_fract ticks before we would join, to make
+		 * sure it also works in multiplayer. */
+		DoCommandP(0, PM_PAUSED_LINK_GRAPH, 1, CMD_PAUSE);
+	}
+}
+
+/**
+ * Pause the game on load if we would do a join with the next link graph job,
+ * but it is still running, and it would not be caught by a call to
+ * StateGameLoop_LinkGraphPauseControl().
+ */
+void AfterLoad_LinkGraphPauseControl()
+{
+	if (LinkGraphSchedule::instance.IsJoinWithUnfinishedJobDue()) {
+		_pause_mode |= PM_PAUSED_LINK_GRAPH;
+	}
+}
+
+/**
  * Spawn or join a link graph job or compress a link graph if any link graph is
  * due to do so.
  */
@@ -150,8 +208,13 @@ void OnTick_LinkGraph()
 	if (offset == 0) {
 		LinkGraphSchedule::instance.SpawnNext();
 	} else if (offset == _settings_game.linkgraph.recalc_interval / 2) {
-		PerformanceMeasurer framerate(PFE_GL_LINKGRAPH);
-		LinkGraphSchedule::instance.JoinNext();
+		if (!_networking || _network_server) {
+			PerformanceMeasurer::SetInactive(PFE_GL_LINKGRAPH);
+			LinkGraphSchedule::instance.JoinNext();
+		} else {
+			PerformanceMeasurer framerate(PFE_GL_LINKGRAPH);
+			LinkGraphSchedule::instance.JoinNext();
+		}
 	}
 }
 

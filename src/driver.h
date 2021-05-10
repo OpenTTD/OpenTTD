@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,11 +12,12 @@
 
 #include "core/enum_type.hpp"
 #include "core/string_compare_type.hpp"
+#include "string_type.h"
 #include <map>
 
-const char *GetDriverParam(const char * const *parm, const char *name);
-bool GetDriverParamBool(const char * const *parm, const char *name);
-int GetDriverParamInt(const char * const *parm, const char *name, int def);
+const char *GetDriverParam(const StringList &parm, const char *name);
+bool GetDriverParamBool(const StringList &parm, const char *name);
+int GetDriverParamInt(const StringList &parm, const char *name, int def);
 
 /** A driver for communicating with the user. */
 class Driver {
@@ -28,7 +27,7 @@ public:
 	 * @param parm Parameters passed to the driver.
 	 * @return nullptr if everything went okay, otherwise an error message.
 	 */
-	virtual const char *Start(const char * const *parm) = 0;
+	virtual const char *Start(const StringList &parm) = 0;
 
 	/**
 	 * Stop this driver.
@@ -68,7 +67,7 @@ private:
 	const char *name;        ///< The name of the drivers of this factory.
 	const char *description; ///< The description of this driver.
 
-	typedef std::map<const char *, DriverFactoryBase *, StringCompare> Drivers; ///< Type for a map of drivers.
+	typedef std::map<std::string, DriverFactoryBase *> Drivers; ///< Type for a map of drivers.
 
 	/**
 	 * Get the map with drivers.
@@ -101,12 +100,21 @@ private:
 		return driver_type_name[type];
 	}
 
-	static bool SelectDriverImpl(const char *name, Driver::Type type);
+	static bool SelectDriverImpl(const std::string &name, Driver::Type type);
 
 protected:
 	DriverFactoryBase(Driver::Type type, int priority, const char *name, const char *description);
 
 	virtual ~DriverFactoryBase();
+
+	/**
+	 * Does the driver use hardware acceleration (video-drivers only).
+	 * @return True if the driver uses hardware acceleration.
+	 */
+	virtual bool UsesHardwareAcceleration() const
+	{
+		return false;
+	}
 
 public:
 	/**
@@ -120,7 +128,7 @@ public:
 		}
 	}
 
-	static void SelectDriver(const char *name, Driver::Type type);
+	static void SelectDriver(const std::string &name, Driver::Type type);
 	static char *GetDriversInfo(char *p, const char *last);
 
 	/**

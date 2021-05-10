@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -20,10 +18,10 @@
 #include "../../safeguards.h"
 
 /* Make sure that these enums match. */
-assert_compile((int)CRR_MANUAL    == (int)ADMIN_CRR_MANUAL);
-assert_compile((int)CRR_AUTOCLEAN == (int)ADMIN_CRR_AUTOCLEAN);
-assert_compile((int)CRR_BANKRUPT  == (int)ADMIN_CRR_BANKRUPT);
-assert_compile((int)CRR_END       == (int)ADMIN_CRR_END);
+static_assert((int)CRR_MANUAL    == (int)ADMIN_CRR_MANUAL);
+static_assert((int)CRR_AUTOCLEAN == (int)ADMIN_CRR_AUTOCLEAN);
+static_assert((int)CRR_BANKRUPT  == (int)ADMIN_CRR_BANKRUPT);
+static_assert((int)CRR_END       == (int)ADMIN_CRR_END);
 
 /**
  * Create the admin handler for the given socket.
@@ -117,6 +115,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::ReceivePackets()
 	Packet *p;
 	while ((p = this->ReceivePacket()) != nullptr) {
 		NetworkRecvStatus res = this->HandlePacket(p);
+		delete p;
 		if (res != NETWORK_RECV_STATUS_OKAY) return res;
 	}
 

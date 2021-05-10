@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -23,14 +21,13 @@
 /* static */ void CargoPacket::AfterLoad()
 {
 	if (IsSavegameVersionBefore(SLV_44)) {
-		Vehicle *v;
 		/* If we remove a station while cargo from it is still en route, payment calculation will assume
 		 * 0, 0 to be the source of the cargo, resulting in very high payments usually. v->source_xy
 		 * stores the coordinates, preserving them even if the station is removed. However, if a game is loaded
 		 * where this situation exists, the cargo-source information is lost. in this case, we set the source
 		 * to the current tile of the vehicle to prevent excessive profits
 		 */
-		FOR_ALL_VEHICLES(v) {
+		for (const Vehicle *v : Vehicle::Iterate()) {
 			const CargoPacketList *packets = v->cargo.Packets();
 			for (VehicleCargoList::ConstIterator it(packets->begin()); it != packets->end(); it++) {
 				CargoPacket *cp = *it;
@@ -44,8 +41,7 @@
 		 * station where the goods came from is already removed, the source
 		 * information is lost. In that case we set it to the position of this
 		 * station */
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			for (CargoID c = 0; c < NUM_CARGO; c++) {
 				GoodsEntry *ge = &st->goods[c];
 
@@ -61,8 +57,7 @@
 
 	if (IsSavegameVersionBefore(SLV_120)) {
 		/* CargoPacket's source should be either INVALID_STATION or a valid station */
-		CargoPacket *cp;
-		FOR_ALL_CARGOPACKETS(cp) {
+		for (CargoPacket *cp : CargoPacket::Iterate()) {
 			if (!Station::IsValidID(cp->source)) cp->source = INVALID_STATION;
 		}
 	}
@@ -71,18 +66,15 @@
 		/* Only since version 68 we have cargo packets. Savegames from before used
 		 * 'new CargoPacket' + cargolist.Append so their caches are already
 		 * correct and do not need rebuilding. */
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) v->cargo.InvalidateCache();
+		for (Vehicle *v : Vehicle::Iterate()) v->cargo.InvalidateCache();
 
-		Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (Station *st : Station::Iterate()) {
 			for (CargoID c = 0; c < NUM_CARGO; c++) st->goods[c].cargo.InvalidateCache();
 		}
 	}
 
 	if (IsSavegameVersionBefore(SLV_181)) {
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) v->cargo.KeepAll();
+		for (Vehicle *v : Vehicle::Iterate()) v->cargo.KeepAll();
 	}
 }
 
@@ -116,9 +108,7 @@ const SaveLoad *GetCargoPacketDesc()
  */
 static void Save_CAPA()
 {
-	CargoPacket *cp;
-
-	FOR_ALL_CARGOPACKETS(cp) {
+	for (CargoPacket *cp : CargoPacket::Iterate()) {
 		SlSetArrayIndex(cp->index);
 		SlObject(cp, GetCargoPacketDesc());
 	}

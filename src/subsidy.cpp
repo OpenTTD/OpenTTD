@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -25,6 +23,7 @@
 #include "game/game.hpp"
 #include "command_func.h"
 #include "string_func.h"
+#include "tile_cmd.h"
 
 #include "table/strings.h"
 
@@ -51,14 +50,14 @@ void Subsidy::AwardTo(CompanyID company)
 	char *cn = stredup(company_name);
 
 	/* Add a news item */
-	Pair reftype = SetupSubsidyDecodeParam(this, false);
+	std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(this, false);
 	InjectDParam(1);
 
 	SetDParamStr(0, cn);
 	AddNewsItem(
 		STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF + _settings_game.difficulty.subsidy_multiplier,
 		NT_SUBSIDIES, NF_NORMAL,
-		(NewsReferenceType)reftype.a, this->src, (NewsReferenceType)reftype.b, this->dst,
+		reftype.first, this->src, reftype.second, this->dst,
 		cn
 	);
 	AI::BroadcastNewEvent(new ScriptEventSubsidyAwarded(this->index));
@@ -73,7 +72,7 @@ void Subsidy::AwardTo(CompanyID company)
  * @param mode Unit of cargo used, \c true means general name, \c false means singular form.
  * @return Reference of the subsidy in the news system.
  */
-Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
+std::pair<NewsReferenceType, NewsReferenceType> SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 {
 	NewsReferenceType reftype1 = NR_NONE;
 	NewsReferenceType reftype2 = NR_NONE;
@@ -108,10 +107,7 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 	}
 	SetDParam(5, s->dst);
 
-	Pair p;
-	p.a = reftype1;
-	p.b = reftype2;
-	return p;
+	return std::pair<NewsReferenceType, NewsReferenceType>(reftype1, reftype2);
 }
 
 /**
@@ -132,14 +128,11 @@ static inline void SetPartOfSubsidyFlag(SourceType type, SourceID index, PartOfS
 /** Perform a full rebuild of the subsidies cache. */
 void RebuildSubsidisedSourceAndDestinationCache()
 {
-	Town *t;
-	FOR_ALL_TOWNS(t) t->cache.part_of_subsidy = POS_NONE;
+	for (Town *t : Town::Iterate()) t->cache.part_of_subsidy = POS_NONE;
 
-	Industry *i;
-	FOR_ALL_INDUSTRIES(i) i->part_of_subsidy = POS_NONE;
+	for (Industry *i : Industry::Iterate()) i->part_of_subsidy = POS_NONE;
 
-	const Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (const Subsidy *s : Subsidy::Iterate()) {
 		SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
 		SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
 	}
@@ -154,8 +147,7 @@ void DeleteSubsidyWith(SourceType type, SourceID index)
 {
 	bool dirty = false;
 
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (Subsidy *s : Subsidy::Iterate()) {
 		if ((s->src_type == type && s->src == index) || (s->dst_type == type && s->dst == index)) {
 			delete s;
 			dirty = true;
@@ -179,8 +171,7 @@ void DeleteSubsidyWith(SourceType type, SourceID index)
  */
 static bool CheckSubsidyDuplicate(CargoID cargo, SourceType src_type, SourceID src, SourceType dst_type, SourceID dst)
 {
-	const Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (const Subsidy *s : Subsidy::Iterate()) {
 		if (s->cargo_type == cargo &&
 				s->src_type == src_type && s->src == src &&
 				s->dst_type == dst_type && s->dst == dst) {
@@ -225,8 +216,8 @@ void CreateSubsidy(CargoID cid, SourceType src_type, SourceID src, SourceType ds
 	s->remaining = SUBSIDY_OFFER_MONTHS;
 	s->awarded = INVALID_COMPANY;
 
-	Pair reftype = SetupSubsidyDecodeParam(s, false);
-	AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NT_SUBSIDIES, NF_NORMAL, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
+	std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(s, false);
+	AddNewsItem(STR_NEWS_SERVICE_SUBSIDY_OFFERED, NT_SUBSIDIES, NF_NORMAL, reftype.first, s->src, reftype.second, s->dst);
 	SetPartOfSubsidyFlag(s->src_type, s->src, POS_SRC);
 	SetPartOfSubsidyFlag(s->dst_type, s->dst, POS_DST);
 	AI::BroadcastNewEvent(new ScriptEventSubsidyOffer(s->index));
@@ -335,20 +326,34 @@ bool FindSubsidyTownCargoRoute()
 	const Town *src_town = Town::GetRandom();
 	if (src_town->cache.population < SUBSIDY_CARGO_MIN_POPULATION) return false;
 
-	CargoTypes town_cargo_produced = src_town->cargo_produced;
+	/* Calculate the produced cargo of houses around town center. */
+	CargoArray town_cargo_produced;
+	TileArea ta = TileArea(src_town->xy, 1, 1).Expand(SUBSIDY_TOWN_CARGO_RADIUS);
+	TILE_AREA_LOOP(tile, ta) {
+		if (IsTileType(tile, MP_HOUSE)) {
+			AddProducedCargo(tile, town_cargo_produced);
+		}
+	}
 
 	/* Passenger subsidies are not handled here. */
-	ClrBit(town_cargo_produced, CT_PASSENGERS);
+	town_cargo_produced[CT_PASSENGERS] = 0;
+
+	uint8 cargo_count = 0;
+	for (CargoID i = 0; i < NUM_CARGO; i++) {
+		if (town_cargo_produced[i] > 0) cargo_count++;
+	}
 
 	/* No cargo produced at all? */
-	if (town_cargo_produced == 0) return false;
+	if (cargo_count == 0) return false;
 
 	/* Choose a random cargo that is produced in the town. */
-	uint8 cargo_number = RandomRange(CountBits(town_cargo_produced));
+	uint8 cargo_number = RandomRange(cargo_count);
 	CargoID cid;
-	FOR_EACH_SET_CARGO_ID(cid, town_cargo_produced) {
-		if (cargo_number == 0) break;
-		cargo_number--;
+	for (cid = 0; cid < NUM_CARGO; cid++) {
+		if (town_cargo_produced[cid] > 0) {
+			if (cargo_number == 0) break;
+			cargo_number--;
+		}
 	}
 
 	/* Avoid using invalid NewGRF cargoes. */
@@ -423,8 +428,8 @@ bool FindSubsidyIndustryCargoRoute()
  */
 bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 {
-	/* Choose a random destination. Only consider towns if they can accept the cargo. */
-	SourceType dst_type = (HasBit(_town_cargoes_accepted, cid) && Chance16(1, 2)) ? ST_TOWN : ST_INDUSTRY;
+	/* Choose a random destination. */
+	SourceType dst_type = Chance16(1, 2) ? ST_TOWN : ST_INDUSTRY;
 
 	SourceID dst;
 	switch (dst_type) {
@@ -432,8 +437,17 @@ bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 			/* Select a random town. */
 			const Town *dst_town = Town::GetRandom();
 
+			/* Calculate cargo acceptance of houses around town center. */
+			CargoArray town_cargo_accepted;
+			TileArea ta = TileArea(dst_town->xy, 1, 1).Expand(SUBSIDY_TOWN_CARGO_RADIUS);
+			TILE_AREA_LOOP(tile, ta) {
+				if (IsTileType(tile, MP_HOUSE)) {
+					AddAcceptedCargo(tile, town_cargo_accepted, nullptr);
+				}
+			}
+
 			/* Check if the town can accept this cargo. */
-			if (!HasBit(dst_town->cargo_accepted_total, cid)) return false;
+			if (town_cargo_accepted[cid] < 8) return false;
 
 			dst = dst_town->index;
 			break;
@@ -474,18 +488,17 @@ void SubsidyMonthlyLoop()
 {
 	bool modified = false;
 
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (Subsidy *s : Subsidy::Iterate()) {
 		if (--s->remaining == 0) {
 			if (!s->IsAwarded()) {
-				Pair reftype = SetupSubsidyDecodeParam(s, true);
-				AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NT_SUBSIDIES, NF_NORMAL, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
+				std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(s, true);
+				AddNewsItem(STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED, NT_SUBSIDIES, NF_NORMAL, reftype.first, s->src, reftype.second, s->dst);
 				AI::BroadcastNewEvent(new ScriptEventSubsidyOfferExpired(s->index));
 				Game::NewEvent(new ScriptEventSubsidyOfferExpired(s->index));
 			} else {
 				if (s->awarded == _local_company) {
-					Pair reftype = SetupSubsidyDecodeParam(s, true);
-					AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NT_SUBSIDIES, NF_NORMAL, (NewsReferenceType)reftype.a, s->src, (NewsReferenceType)reftype.b, s->dst);
+					std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(s, true);
+					AddNewsItem(STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE, NT_SUBSIDIES, NF_NORMAL, reftype.first, s->src, reftype.second, s->dst);
 				}
 				AI::BroadcastNewEvent(new ScriptEventSubsidyExpired(s->index));
 				Game::NewEvent(new ScriptEventSubsidyExpired(s->index));
@@ -567,8 +580,7 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 	 * which are destination of subsidised path. Do that only if needed */
 	std::vector<const Town *> towns_near;
 	if (!st->rect.IsEmpty()) {
-		Subsidy *s;
-		FOR_ALL_SUBSIDIES(s) {
+		for (const Subsidy *s : Subsidy::Iterate()) {
 			/* Don't create the cache if there is no applicable subsidy with town as destination */
 			if (s->dst_type != ST_TOWN) continue;
 			if (s->cargo_type != cargo_type || s->src_type != src_type || s->src != src) continue;
@@ -588,8 +600,7 @@ bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type,
 
 	/* Check if there's a (new) subsidy that applies. There can be more subsidies triggered by this delivery!
 	 * Think about the case that subsidies are A->B and A->C and station has both B and C in its catchment area */
-	Subsidy *s;
-	FOR_ALL_SUBSIDIES(s) {
+	for (Subsidy *s : Subsidy::Iterate()) {
 		if (s->cargo_type == cargo_type && s->src_type == src_type && s->src == src && (!s->IsAwarded() || s->awarded == company)) {
 			switch (s->dst_type) {
 				case ST_INDUSTRY:

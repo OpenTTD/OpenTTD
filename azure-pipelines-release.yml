@@ -1,7 +1,0 @@
-trigger: none
-pr: none
-
-jobs:
-- template: azure-pipelines/templates/release.yml
-  parameters:
-    IsStableRelease: false

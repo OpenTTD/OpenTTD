@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,8 +12,8 @@
 
 #if defined(__APPLE__)
 	/* Mac OS X already has both Rect and Point declared */
-	#define Rect OTTD_Rect
-	#define Point OTTD_Point
+#	define Rect OTTD_Rect
+#	define Point OTTD_Point
 #endif /* __APPLE__ */
 
 
@@ -62,12 +60,6 @@ struct PointDimension {
 	int y;
 	int width;
 	int height;
-};
-
-/** A pair of two integers */
-struct Pair {
-	int a;
-	int b;
 };
 
 #endif /* GEOMETRY_TYPE_HPP */

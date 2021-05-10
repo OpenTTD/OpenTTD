@@ -12,7 +12,6 @@
 
 #include "../stdafx.h"
 #include <vector>
-#include <algorithm>
 #include <limits>
 
 /**
@@ -261,7 +260,7 @@ class Kdtree {
 			best = SelectNearestNodeDistance(best, this->FindNearestRecursive(xy, next, level + 1));
 		}
 
-		limit = min(best.second, limit);
+		limit = std::min(best.second, limit);
 
 		/* Check if the distance from current best is worse than distance from target to splitting line,
 		 * if it is we also need to check the other side of the split. */

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -38,8 +36,5 @@ struct Goal : GoalPool::PoolItem<&_goal_pool> {
 	 */
 	inline ~Goal() { free(this->text); free(this->progress); }
 };
-
-#define FOR_ALL_GOALS_FROM(var, start) FOR_ALL_ITEMS_FROM(Goal, goal_index, var, start)
-#define FOR_ALL_GOALS(var) FOR_ALL_GOALS_FROM(var, 0)
 
 #endif /* GOAL_BASE_H */

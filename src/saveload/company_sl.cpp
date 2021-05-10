@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -63,7 +61,7 @@ CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32 face)
 	uint lips = GB(face, 10, 4);
 	if (!HasBit(ge, GENDER_FEMALE) && lips < 4) {
 		SetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE, ge, true);
-		SetCompanyManagerFaceBits(cmf, CMFV_MOUSTACHE,     ge, max(lips, 1U) - 1);
+		SetCompanyManagerFaceBits(cmf, CMFV_MOUSTACHE,     ge, std::max(lips, 1U) - 1);
 	} else {
 		if (!HasBit(ge, GENDER_FEMALE)) {
 			lips = lips * 15 / 16;
@@ -96,17 +94,16 @@ CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32 face)
 void AfterLoadCompanyStats()
 {
 	/* Reset infrastructure statistics to zero. */
-	Company *c;
-	FOR_ALL_COMPANIES(c) MemSetT(&c->infrastructure, 0);
+	for (Company *c : Company::Iterate()) MemSetT(&c->infrastructure, 0);
 
 	/* Collect airport count. */
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if ((st->facilities & FACIL_AIRPORT) && Company::IsValidID(st->owner)) {
 			Company::Get(st->owner)->infrastructure.airport++;
 		}
 	}
 
+	Company *c;
 	for (TileIndex tile = 0; tile < MapSize(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_RAILWAY:
@@ -131,7 +128,7 @@ void AfterLoadCompanyStats()
 				}
 
 				/* Iterate all present road types as each can have a different owner. */
-				FOR_ALL_ROADTRAMTYPES(rtt) {
+				for (RoadTramType rtt : _roadtramtypes) {
 					RoadType rt = GetRoadType(tile, rtt);
 					if (rt == INVALID_ROADTYPE) continue;
 					c = Company::GetIfValid(IsRoadDepot(tile) ? GetTileOwner(tile) : GetRoadOwner(tile, rtt));
@@ -154,7 +151,7 @@ void AfterLoadCompanyStats()
 					case STATION_BUS:
 					case STATION_TRUCK: {
 						/* Iterate all present road types as each can have a different owner. */
-						FOR_ALL_ROADTRAMTYPES(rtt) {
+						for (RoadTramType rtt : _roadtramtypes) {
 							RoadType rt = GetRoadType(tile, rtt);
 							if (rt == INVALID_ROADTYPE) continue;
 							c = Company::GetIfValid(GetRoadOwner(tile, rtt));
@@ -212,7 +209,7 @@ void AfterLoadCompanyStats()
 
 						case TRANSPORT_ROAD: {
 							/* Iterate all present road types as each can have a different owner. */
-							FOR_ALL_ROADTRAMTYPES(rtt) {
+							for (RoadTramType rtt : _roadtramtypes) {
 								RoadType rt = GetRoadType(tile, rtt);
 								if (rt == INVALID_ROADTYPE) continue;
 								c = Company::GetIfValid(GetRoadOwner(tile, rtt));
@@ -245,11 +242,11 @@ void AfterLoadCompanyStats()
 static const SaveLoad _company_desc[] = {
 	    SLE_VAR(CompanyProperties, name_2,          SLE_UINT32),
 	    SLE_VAR(CompanyProperties, name_1,          SLE_STRINGID),
-	SLE_CONDSTR(CompanyProperties, name,            SLE_STR | SLF_ALLOW_CONTROL, 0, SLV_84, SL_MAX_VERSION),
+	SLE_CONDSSTR(CompanyProperties, name,            SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
 
 	    SLE_VAR(CompanyProperties, president_name_1, SLE_STRINGID),
 	    SLE_VAR(CompanyProperties, president_name_2, SLE_UINT32),
-	SLE_CONDSTR(CompanyProperties, president_name,  SLE_STR | SLF_ALLOW_CONTROL, 0, SLV_84, SL_MAX_VERSION),
+	SLE_CONDSSTR(CompanyProperties, president_name,  SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
 
 	    SLE_VAR(CompanyProperties, face,            SLE_UINT32),
 
@@ -488,8 +485,7 @@ static void SaveLoad_PLYR(Company *c)
 
 static void Save_PLYR()
 {
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		SlSetArrayIndex(c->index);
 		SlAutolength((AutolengthProc*)SaveLoad_PLYR, c);
 	}
@@ -523,7 +519,7 @@ static void Check_PLYR()
 			}
 		}
 
-		if (cprops->name == nullptr && !IsInsideMM(cprops->name_1, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_LAST + 1) &&
+		if (cprops->name.empty() && !IsInsideMM(cprops->name_1, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_LAST + 1) &&
 				cprops->name_1 != STR_GAME_SAVELOAD_NOT_AVAILABLE && cprops->name_1 != STR_SV_UNNAMED &&
 				cprops->name_1 != SPECSTR_ANDCO_NAME && cprops->name_1 != SPECSTR_PRESIDENT_NAME &&
 				cprops->name_1 != SPECSTR_SILLY_NAME) {
@@ -536,8 +532,7 @@ static void Check_PLYR()
 
 static void Ptrs_PLYR()
 {
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		SlObject(c, _company_settings_desc);
 	}
 }

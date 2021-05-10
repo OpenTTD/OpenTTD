@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -41,7 +39,7 @@ enum VehicleInvalidateWindowData {
 struct TestedEngineDetails {
 	Money cost;           ///< Refit cost
 	CargoID cargo;        ///< Cargo type
-	uint16 capacity;      ///< Cargo capacity
+	uint capacity;        ///< Cargo capacity
 	uint16 mail_capacity; ///< Mail capacity if available
 };
 
@@ -106,7 +104,7 @@ void ShowVehicleViewWindow(const Vehicle *v);
 bool VehicleClicked(const Vehicle *v);
 void StartStopVehicle(const Vehicle *v, bool texteffect);
 
-Vehicle *CheckClickOnVehicle(const struct ViewPort *vp, int x, int y);
+Vehicle *CheckClickOnVehicle(const struct Viewport *vp, int x, int y);
 
 void DrawVehicleImage(const Vehicle *v, int left, int right, int y, VehicleID selection, EngineImageType image_type, int skip);
 void SetMouseCursorVehicle(const Vehicle *v, EngineImageType image_type);

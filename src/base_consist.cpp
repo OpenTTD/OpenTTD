@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -16,10 +14,6 @@
 
 #include "safeguards.h"
 
-BaseConsist::~BaseConsist()
-{
-	free(this->name);
-}
 
 /**
  * Copy properties of other BaseConsist.
@@ -29,8 +23,7 @@ void BaseConsist::CopyConsistPropertiesFrom(const BaseConsist *src)
 {
 	if (this == src) return;
 
-	free(this->name);
-	this->name = src->name != nullptr ? stredup(src->name) : nullptr;
+	this->name = src->name;
 
 	this->current_order_time = src->current_order_time;
 	this->lateness_counter = src->lateness_counter;

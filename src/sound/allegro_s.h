@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -17,7 +15,7 @@
 /** Implementation of the allegro sound driver. */
 class SoundDriver_Allegro : public SoundDriver {
 public:
-	const char *Start(const char * const *param);
+	const char *Start(const StringList &param);
 
 	void Stop();
 

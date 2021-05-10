@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -167,7 +165,7 @@ CommandCost EnsureNoVehicleOnGround(TileIndex tile);
 CommandCost EnsureNoTrainOnTrackBits(TileIndex tile, TrackBits track_bits);
 
 extern VehicleID _new_vehicle_id;
-extern uint16 _returned_refit_capacity;
+extern uint _returned_refit_capacity;
 extern uint16 _returned_mail_refit_capacity;
 
 bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);

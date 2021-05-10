@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -73,15 +71,14 @@ byte FreightWagonMult(CargoID cargo)
 /** Checks if lengths of all rail vehicles are valid. If not, shows an error message. */
 void CheckTrainsLengths()
 {
-	const Train *v;
 	bool first = true;
 
-	FOR_ALL_TRAINS(v) {
+	for (const Train *v : Train::Iterate()) {
 		if (v->First() == v && !(v->vehstatus & VS_CRASHED)) {
 			for (const Train *u = v, *w = v->Next(); w != nullptr; u = w, w = w->Next()) {
 				if (u->track != TRACK_BIT_DEPOT) {
 					if ((w->track != TRACK_BIT_DEPOT &&
-							max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->CalcNextVehicleOffset()) ||
+							std::max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->CalcNextVehicleOffset()) ||
 							(w->track == TRACK_BIT_DEPOT && TicksToLeaveDepot(u) <= 0)) {
 						SetDParam(0, v->index);
 						SetDParam(1, v->owner);
@@ -184,7 +181,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 			/* max speed is the minimum of the speed limits of all vehicles in the consist */
 			if ((rvi_u->railveh_type != RAILVEH_WAGON || _settings_game.vehicle.wagon_speed_limits) && !UsesWagonOverride(u)) {
 				uint16 speed = GetVehicleProperty(u, PROP_TRAIN_SPEED, rvi_u->max_speed);
-				if (speed != 0) max_speed = min(speed, max_speed);
+				if (speed != 0) max_speed = std::min(speed, max_speed);
 			}
 		}
 
@@ -192,7 +189,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		if (allowed_changes & CCF_CAPACITY) {
 			/* Update vehicle capacity. */
 			if (u->cargo_cap > new_cap) u->cargo.Truncate(new_cap);
-			u->refit_cap = min(new_cap, u->refit_cap);
+			u->refit_cap = std::min(new_cap, u->refit_cap);
 			u->cargo_cap = new_cap;
 		} else {
 			/* Verify capacity hasn't changed. */
@@ -352,8 +349,8 @@ int Train::GetCurveSpeedLimit() const
 	}
 
 	if (max_speed != absolute_max_speed) {
-		/* Apply the engine's rail type curve speed advantage, if it slowed by curves */
-		const RailtypeInfo *rti = GetRailTypeInfo(this->railtype);
+		/* Apply the current railtype's curve speed advantage */
+		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(this->tile));
 		max_speed += (max_speed / 2) * rti->curve_speed;
 
 		if (this->tcache.cached_tilt) {
@@ -394,26 +391,26 @@ int Train::GetCurrentMaxSpeed() const
 					st_max_speed = this->cur_speed - (delta_v / 10);
 				}
 
-				st_max_speed = max(st_max_speed, 25 * distance_to_go);
-				max_speed = min(max_speed, st_max_speed);
+				st_max_speed = std::max(st_max_speed, 25 * distance_to_go);
+				max_speed = std::min(max_speed, st_max_speed);
 			}
 		}
 	}
 
 	for (const Train *u = this; u != nullptr; u = u->Next()) {
 		if (_settings_game.vehicle.train_acceleration_model == AM_REALISTIC && u->track == TRACK_BIT_DEPOT) {
-			max_speed = min(max_speed, 61);
+			max_speed = std::min(max_speed, 61);
 			break;
 		}
 
 		/* Vehicle is on the middle part of a bridge. */
 		if (u->track == TRACK_BIT_WORMHOLE && !(u->vehstatus & VS_HIDDEN)) {
-			max_speed = min(max_speed, GetBridgeSpec(GetBridgeType(u->tile))->speed);
+			max_speed = std::min<int>(max_speed, GetBridgeSpec(GetBridgeType(u->tile))->speed);
 		}
 	}
 
-	max_speed = min(max_speed, this->current_order.GetMaxSpeed());
-	return min(max_speed, this->gcache.cached_max_track_speed);
+	max_speed = std::min<int>(max_speed, this->current_order.GetMaxSpeed());
+	return std::min<int>(max_speed, this->gcache.cached_max_track_speed);
 }
 
 /** Update acceleration of the train from the cached power and weight. */
@@ -570,9 +567,9 @@ void GetTrainSpriteSize(EngineID engine, uint &width, uint &height, int &xoffs, 
 
 		/* Calculate values relative to an imaginary center between the two sprites. */
 		width = ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) + UnScaleGUI(rect.right) - xoffs;
-		height = max<uint>(height, UnScaleGUI(rect.bottom - rect.top + 1));
+		height = std::max<uint>(height, UnScaleGUI(rect.bottom - rect.top + 1));
 		xoffs  = xoffs - ScaleGUITrad(TRAININFO_DEFAULT_VEHICLE_WIDTH) / 2;
-		yoffs  = min(yoffs, UnScaleGUI(rect.top));
+		yoffs  = std::min(yoffs, UnScaleGUI(rect.top));
 	}
 }
 
@@ -627,7 +624,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
-		v->sprite_seq.Set(SPR_IMG_QUERY);
+		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
 
 		v->group_id = DEFAULT_GROUP;
@@ -643,15 +640,15 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 		CheckConsistencyOfArticulatedVehicle(v);
 
 		/* Try to connect the vehicle to one of free chains of wagons. */
-		Train *w;
-		FOR_ALL_TRAINS(w) {
+		for (Train *w : Train::Iterate()) {
 			if (w->tile == tile &&              ///< Same depot
 					w->IsFreeWagon() &&             ///< A free wagon chain
 					w->engine_type == e->index &&   ///< Same type
 					w->First() != v &&              ///< Don't connect to ourself
 					!(w->vehstatus & VS_CRASHED)) { ///< Not crashed/flooded
-				DoCommand(0, v->index | 1 << 20, w->Last()->index, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
-				break;
+				if (DoCommand(0, v->index | 1 << 20, w->Last()->index, DC_EXEC, CMD_MOVE_RAIL_VEHICLE).Succeeded()) {
+					break;
+				}
 			}
 		}
 	}
@@ -662,8 +659,7 @@ static CommandCost CmdBuildRailWagon(TileIndex tile, DoCommandFlag flags, const 
 /** Move all free vehicles in the depot to the train */
 static void NormalizeTrainVehInDepot(const Train *u)
 {
-	const Train *v;
-	FOR_ALL_TRAINS(v) {
+	for (const Train *v : Train::Iterate()) {
 		if (v->IsFreeWagon() && v->tile == u->tile &&
 				v->track == TRACK_BIT_DEPOT) {
 			if (DoCommand(0, v->index | 1 << 20, u->index, DC_EXEC,
@@ -695,7 +691,7 @@ static void AddRearEngineToMultiheadedTrain(Train *v)
 	u->engine_type = v->engine_type;
 	u->date_of_last_service = v->date_of_last_service;
 	u->build_year = v->build_year;
-	u->sprite_seq.Set(SPR_IMG_QUERY);
+	u->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 	u->random_bits = VehicleRandomBits();
 	v->SetMultiheaded();
 	u->SetMultiheaded();
@@ -761,7 +757,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, DoCommandFlag flags, const Engin
 		v->SetServiceInterval(Company::Get(_current_company)->settings.vehicle.servint_trains);
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
-		v->sprite_seq.Set(SPR_IMG_QUERY);
+		v->sprite_cache.sprite_seq.Set(SPR_IMG_QUERY);
 		v->random_bits = VehicleRandomBits();
 
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
@@ -798,8 +794,7 @@ static Train *FindGoodVehiclePos(const Train *src)
 	EngineID eng = src->engine_type;
 	TileIndex tile = src->tile;
 
-	Train *dst;
-	FOR_ALL_TRAINS(dst) {
+	for (Train *dst : Train::Iterate()) {
 		if (dst->IsFreeWagon() && dst->tile == tile && !(dst->vehstatus & VS_CRASHED)) {
 			/* check so all vehicles in the line have the same engine. */
 			Train *t = dst;
@@ -965,11 +960,24 @@ static CommandCost CheckNewTrain(Train *original_dst, Train *dst, Train *origina
 static CommandCost CheckTrainAttachment(Train *t)
 {
 	/* No multi-part train, no need to check. */
-	if (t == nullptr || t->Next() == nullptr || !t->IsEngine()) return CommandCost();
+	if (t == nullptr || t->Next() == nullptr) return CommandCost();
 
 	/* The maximum length for a train. For each part we decrease this by one
 	 * and if the result is negative the train is simply too long. */
 	int allowed_len = _settings_game.vehicle.max_train_length * TILE_SIZE - t->gcache.cached_veh_length;
+
+	/* For free-wagon chains, check if they are within the max_train_length limit. */
+	if (!t->IsEngine()) {
+		t = t->Next();
+		while (t != nullptr) {
+			allowed_len -= t->gcache.cached_veh_length;
+
+			t = t->Next();
+		}
+
+		if (allowed_len < 0) return_cmd_error(STR_ERROR_TRAIN_TOO_LONG);
+		return CommandCost();
+	}
 
 	Train *head = t;
 	Train *prev = t;
@@ -2034,11 +2042,11 @@ bool Train::FindClosestDepot(TileIndex *location, DestinationID *destination, bo
 void Train::PlayLeaveStationSound() const
 {
 	static const SoundFx sfx[] = {
-		SND_04_TRAIN,
-		SND_0A_TRAIN_HORN,
-		SND_0A_TRAIN_HORN,
-		SND_47_MAGLEV_2,
-		SND_41_MAGLEV
+		SND_04_DEPARTURE_STEAM,
+		SND_0A_DEPARTURE_TRAIN,
+		SND_0A_DEPARTURE_TRAIN,
+		SND_47_DEPARTURE_MONORAIL,
+		SND_41_DEPARTURE_MAGLEV
 	};
 
 	if (PlayVehicleSound(this, VSE_START)) return;
@@ -3058,10 +3066,10 @@ static bool CheckTrainCollision(Train *v)
 	if (tcc.num == 0) return false;
 
 	SetDParam(0, tcc.num);
-	AddVehicleNewsItem(STR_NEWS_TRAIN_CRASH, NT_ACCIDENT, v->index);
+	AddTileNewsItem(STR_NEWS_TRAIN_CRASH, NT_ACCIDENT, v->tile);
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
-	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_13_BIG_CRASH, v);
+	if (_settings_client.sound.disaster) SndPlayVehicleFx(SND_13_TRAIN_COLLISION, v);
 	return true;
 }
 

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -36,7 +34,7 @@ byte _support8bpp;
 CursorVars _cursor;
 bool _ctrl_pressed;   ///< Is Ctrl pressed?
 bool _shift_pressed;  ///< Is Shift pressed?
-byte _fast_forward;
+uint16 _game_speed = 100; ///< Current game-speed; 100 is 1x, 0 is infinite.
 bool _left_button_down;     ///< Is left mouse button pressed?
 bool _left_button_clicked;  ///< Is left mouse button clicked?
 bool _right_button_down;    ///< Is right mouse button pressed?
@@ -60,6 +58,10 @@ static ReusableBuffer<uint8> _cursor_backup;
 
 ZoomLevel _gui_zoom; ///< GUI Zoom level
 ZoomLevel _font_zoom; ///< Font Zoom level
+
+int8 _gui_zoom_cfg;  ///< GUI zoom level in config.
+int8 _font_zoom_cfg; ///< Font zoom level in config.
+
 
 /**
  * The rect for repaint.
@@ -156,6 +158,144 @@ void GfxFillRect(int left, int top, int right, int bottom, int colour, FillRectM
 	}
 }
 
+typedef std::pair<Point, Point> LineSegment;
+
+/**
+ * Make line segments from a polygon defined by points, translated by an offset.
+ * Entirely horizontal lines (start and end at same Y coordinate) are skipped, as they are irrelevant to scanline conversion algorithms.
+ * Generated line segments always have the lowest Y coordinate point first, i.e. original direction is lost.
+ * @param shape The polygon to convert.
+ * @param offset Offset vector subtracted from all coordinates in the shape.
+ * @return Vector of undirected line segments.
+ */
+static std::vector<LineSegment> MakePolygonSegments(const std::vector<Point> &shape, Point offset)
+{
+	std::vector<LineSegment> segments;
+	if (shape.size() < 3) return segments; // fewer than 3 will always result in an empty polygon
+	segments.reserve(shape.size());
+
+	/* Connect first and last point by having initial previous point be the last */
+	Point prev = shape.back();
+	prev.x -= offset.x;
+	prev.y -= offset.y;
+	for (Point pt : shape) {
+		pt.x -= offset.x;
+		pt.y -= offset.y;
+		/* Create segments for all non-horizontal lines in the polygon.
+		 * The segments always have lowest Y coordinate first. */
+		if (prev.y > pt.y) {
+			segments.emplace_back(pt, prev);
+		} else if (prev.y < pt.y) {
+			segments.emplace_back(prev, pt);
+		}
+		prev = pt;
+	}
+
+	return segments;
+}
+
+/**
+ * Fill a polygon with colour.
+ * The odd-even winding rule is used, i.e. self-intersecting polygons will have holes in them.
+ * Left and top edges are inclusive, right and bottom edges are exclusive.
+ * @note For rectangles the GfxFillRect function will be faster.
+ * @pre dpi->zoom == ZOOM_LVL_NORMAL
+ * @param shape List of points on the polygon.
+ * @param colour An 8 bit palette index (FILLRECT_OPAQUE and FILLRECT_CHECKER) or a recolour spritenumber (FILLRECT_RECOLOUR).
+ * @param mode
+ *         FILLRECT_OPAQUE:   Fill the polygon with the specified colour.
+ *         FILLRECT_CHECKER:  Fill every other pixel with the specified colour, in a checkerboard pattern.
+ *         FILLRECT_RECOLOUR: Apply a recolour sprite to every pixel in the polygon.
+ */
+void GfxFillPolygon(const std::vector<Point> &shape, int colour, FillRectMode mode)
+{
+	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+	const DrawPixelInfo *dpi = _cur_dpi;
+	if (dpi->zoom != ZOOM_LVL_NORMAL) return;
+
+	std::vector<LineSegment> segments = MakePolygonSegments(shape, Point{ dpi->left, dpi->top });
+
+	/* Remove segments appearing entirely above or below the clipping area. */
+	segments.erase(std::remove_if(segments.begin(), segments.end(), [dpi](const LineSegment &s) { return s.second.y <= 0 || s.first.y >= dpi->height; }), segments.end());
+
+	/* Check that this wasn't an empty shape (all points on a horizontal line or outside clipping.) */
+	if (segments.empty()) return;
+
+	/* Sort the segments by first point Y coordinate. */
+	std::sort(segments.begin(), segments.end(), [](const LineSegment &a, const LineSegment &b) { return a.first.y < b.first.y; });
+
+	/* Segments intersecting current scanline. */
+	std::vector<LineSegment> active;
+	/* Intersection points with a scanline.
+	 * Kept outside loop to avoid repeated re-allocations. */
+	std::vector<int> intersections;
+	/* Normal, reasonable polygons don't have many intersections per scanline. */
+	active.reserve(4);
+	intersections.reserve(4);
+
+	/* Scan through the segments and paint each scanline. */
+	int y = segments.front().first.y;
+	std::vector<LineSegment>::iterator nextseg = segments.begin();
+	while (!active.empty() || nextseg != segments.end()) {
+		/* Clean up segments that have ended. */
+		active.erase(std::remove_if(active.begin(), active.end(), [y](const LineSegment &s) { return s.second.y == y; }), active.end());
+
+		/* Activate all segments starting on this scanline. */
+		while (nextseg != segments.end() && nextseg->first.y == y) {
+			active.push_back(*nextseg);
+			++nextseg;
+		}
+
+		/* Check clipping. */
+		if (y < 0) {
+			++y;
+			continue;
+		}
+		if (y >= dpi->height) return;
+
+		/*  Intersect scanline with all active segments. */
+		intersections.clear();
+		for (const LineSegment &s : active) {
+			const int sdx = s.second.x - s.first.x;
+			const int sdy = s.second.y - s.first.y;
+			const int ldy = y - s.first.y;
+			const int x = s.first.x + sdx * ldy / sdy;
+			intersections.push_back(x);
+		}
+
+		/* Fill between pairs of intersections. */
+		std::sort(intersections.begin(), intersections.end());
+		for (size_t i = 1; i < intersections.size(); i += 2) {
+			/* Check clipping. */
+			const int x1 = std::max(0, intersections[i - 1]);
+			const int x2 = std::min(intersections[i], dpi->width);
+			if (x2 < 0) continue;
+			if (x1 >= dpi->width) continue;
+
+			/* Fill line y from x1 to x2. */
+			void *dst = blitter->MoveTo(dpi->dst_ptr, x1, y);
+			switch (mode) {
+				default: // FILLRECT_OPAQUE
+					blitter->DrawRect(dst, x2 - x1, 1, (uint8)colour);
+					break;
+				case FILLRECT_RECOLOUR:
+					blitter->DrawColourMappingRect(dst, x2 - x1, 1, GB(colour, 0, PALETTE_WIDTH));
+					break;
+				case FILLRECT_CHECKER:
+					/* Fill every other pixel, offset such that the sum of filled pixels' X and Y coordinates is odd.
+					 * This creates a checkerboard effect. */
+					for (int x = (x1 + y) & 1; x < x2 - x1; x += 2) {
+						blitter->SetPixel(dst, x, 0, (uint8)colour);
+					}
+					break;
+			}
+		}
+
+		/* Next line */
+		++y;
+	}
+}
+
 /**
  * Check line clipping by using a linear equation and draw the visible part of
  * the line given by x/y and x2/y2.
@@ -191,7 +331,7 @@ static inline void GfxDoDrawLine(void *video, int x, int y, int x2, int y2, int 
 
 	/* prevent integer overflows. */
 	int margin = 1;
-	while (INT_MAX / abs(grade_y) < max(abs(clip.left - x), abs(clip.right - x))) {
+	while (INT_MAX / abs(grade_y) < std::max(abs(clip.left - x), abs(clip.right - x))) {
 		grade_y /= 2;
 		grade_x /= 2;
 		margin  *= 2; // account for rounding errors
@@ -318,7 +458,7 @@ static void SetColourRemap(TextColour colour)
 	 * would be invisible at best, but it actually makes it illegible. */
 	bool no_shade   = (colour & TC_NO_SHADE) != 0 || colour == TC_BLACK;
 	bool raw_colour = (colour & TC_IS_PALETTE_COLOUR) != 0;
-	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR);
+	colour &= ~(TC_NO_SHADE | TC_IS_PALETTE_COLOUR | TC_FORCED);
 
 	_string_colourremap[1] = raw_colour ? (byte)colour : _string_colourmap[colour];
 	_string_colourremap[2] = no_shade ? 0 : 1;
@@ -487,7 +627,8 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
  * @param right  The right most position to draw on.
  * @param top    The top most position to draw on.
  * @param str    String to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @param align  The alignment of the string when drawing left-to-right. In the
  *               case a right-to-left language is chosen this is inverted so it
  *               will be drawn in the right direction.
@@ -499,7 +640,7 @@ static int DrawLayoutLine(const ParagraphLayouter::Line &line, int y, int left, 
 int DrawString(int left, int right, int top, const char *str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
 {
 	/* The string may contain control chars to change the font, just use the biggest font for clipping. */
-	int max_height = max(max(FONT_HEIGHT_SMALL, FONT_HEIGHT_NORMAL), max(FONT_HEIGHT_LARGE, FONT_HEIGHT_MONO));
+	int max_height = std::max({FONT_HEIGHT_SMALL, FONT_HEIGHT_NORMAL, FONT_HEIGHT_LARGE, FONT_HEIGHT_MONO});
 
 	/* Funny glyphs may extent outside the usual bounds, so relax the clipping somewhat. */
 	int extra = max_height / 2;
@@ -522,7 +663,30 @@ int DrawString(int left, int right, int top, const char *str, TextColour colour,
  * @param right  The right most position to draw on.
  * @param top    The top most position to draw on.
  * @param str    String to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param align  The alignment of the string when drawing left-to-right. In the
+ *               case a right-to-left language is chosen this is inverted so it
+ *               will be drawn in the right direction.
+ * @param underline Whether to underline what has been drawn or not.
+ * @param fontsize The size of the initial characters.
+ * @return In case of left or center alignment the right most pixel we have drawn to.
+ *         In case of right alignment the left most pixel we have drawn to.
+ */
+int DrawString(int left, int right, int top, const std::string &str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+{
+	return DrawString(left, right, top, str.c_str(), colour, align, underline, fontsize);
+}
+
+/**
+ * Draw string, possibly truncated to make it fit in its allocated space
+ *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param str    String to draw.
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @param align  The alignment of the string when drawing left-to-right. In the
  *               case a right-to-left language is chosen this is inverted so it
  *               will be drawn in the right direction.
@@ -610,7 +774,8 @@ Dimension GetStringMultiLineBoundingBox(const char *str, const Dimension &sugges
  * @param top    The top most position to draw on.
  * @param bottom The bottom most position to draw on.
  * @param str    String to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
  * @param fontsize The size of the initial characters.
@@ -663,6 +828,7 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
 	return ((align & SA_VERT_MASK) == SA_BOTTOM) ? first_line : last_line;
 }
 
+
 /**
  * Draw string, possibly over multiple lines.
  *
@@ -671,7 +837,29 @@ int DrawStringMultiLine(int left, int right, int top, int bottom, const char *st
  * @param top    The top most position to draw on.
  * @param bottom The bottom most position to draw on.
  * @param str    String to draw.
- * @param colour Colour used for drawing the string, see DoDrawString() for details
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param align  The horizontal and vertical alignment of the string.
+ * @param underline Whether to underline all strings
+ * @param fontsize The size of the initial characters.
+ *
+ * @return If \a align is #SA_BOTTOM, the top to where we have written, else the bottom to where we have written.
+ */
+int DrawStringMultiLine(int left, int right, int top, int bottom, const std::string &str, TextColour colour, StringAlignment align, bool underline, FontSize fontsize)
+{
+	return DrawStringMultiLine(left, right, top, bottom, str.c_str(), colour, align, underline, fontsize);
+}
+
+/**
+ * Draw string, possibly over multiple lines.
+ *
+ * @param left   The left most position to draw on.
+ * @param right  The right most position to draw on.
+ * @param top    The top most position to draw on.
+ * @param bottom The bottom most position to draw on.
+ * @param str    String to draw.
+ * @param colour Colour used for drawing the string, for details see _string_colourmap in
+ *               table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @param align  The horizontal and vertical alignment of the string.
  * @param underline Whether to underline all strings
  * @param fontsize The size of the initial characters.
@@ -747,20 +935,24 @@ const char *GetCharAtPosition(const char *str, int x, FontSize start_fontsize)
 /**
  * Draw single character horizontally centered around (x,y)
  * @param c           Character (glyph) to draw
- * @param x           X position to draw character
- * @param y           Y position to draw character
- * @param colour      Colour to use, see DoDrawString() for details
+ * @param r           Rectangle to draw character within
+ * @param colour      Colour to use, for details see _string_colourmap in
+ *                    table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  */
-void DrawCharCentered(WChar c, int x, int y, TextColour colour)
+void DrawCharCentered(WChar c, const Rect &r, TextColour colour)
 {
 	SetColourRemap(colour);
-	GfxMainBlitter(GetGlyph(FS_NORMAL, c), x - GetCharacterWidth(FS_NORMAL, c) / 2, y, BM_COLOUR_REMAP);
+	GfxMainBlitter(GetGlyph(FS_NORMAL, c),
+		CenterBounds(r.left, r.right, GetCharacterWidth(FS_NORMAL, c)),
+		CenterBounds(r.top, r.bottom, FONT_HEIGHT_NORMAL),
+		BM_COLOUR_REMAP);
 }
 
 /**
  * Get the size of a sprite.
  * @param sprid Sprite to examine.
  * @param[out] offset Optionally returns the sprite position offset.
+ * @param zoom The zoom level applicable to the sprite.
  * @return Sprite size in pixels.
  * @note The size assumes (0, 0) as top-left coordinate and ignores any part of the sprite drawn at the left or above that position.
  */
@@ -774,8 +966,8 @@ Dimension GetSpriteSize(SpriteID sprid, Point *offset, ZoomLevel zoom)
 	}
 
 	Dimension d;
-	d.width  = max<int>(0, UnScaleByZoom(sprite->x_offs + sprite->width, zoom));
-	d.height = max<int>(0, UnScaleByZoom(sprite->y_offs + sprite->height, zoom));
+	d.width  = std::max<int>(0, UnScaleByZoom(sprite->x_offs + sprite->width, zoom));
+	d.height = std::max<int>(0, UnScaleByZoom(sprite->y_offs + sprite->height, zoom));
 	return d;
 }
 
@@ -882,10 +1074,10 @@ static void GfxBlitter(const Sprite * const sprite, int x, int y, BlitterMode mo
 		bp.height = UnScaleByZoom(sprite->height, zoom);
 	} else {
 		/* Amount of pixels to clip from the source sprite */
-		int clip_left   = max(0,                   -sprite->x_offs +  sub->left        * ZOOM_BASE );
-		int clip_top    = max(0,                   -sprite->y_offs +  sub->top         * ZOOM_BASE );
-		int clip_right  = max(0, sprite->width  - (-sprite->x_offs + (sub->right + 1)  * ZOOM_BASE));
-		int clip_bottom = max(0, sprite->height - (-sprite->y_offs + (sub->bottom + 1) * ZOOM_BASE));
+		int clip_left   = std::max(0,                   -sprite->x_offs +  sub->left        * ZOOM_BASE );
+		int clip_top    = std::max(0,                   -sprite->y_offs +  sub->top         * ZOOM_BASE );
+		int clip_right  = std::max(0, sprite->width  - (-sprite->x_offs + (sub->right + 1)  * ZOOM_BASE));
+		int clip_bottom = std::max(0, sprite->height - (-sprite->y_offs + (sub->bottom + 1) * ZOOM_BASE));
 
 		if (clip_left + clip_right >= sprite->width) return;
 		if (clip_top + clip_bottom >= sprite->height) return;
@@ -1137,7 +1329,7 @@ void LoadStringWidthTable(bool monospace)
 		}
 	}
 
-	ReInitAllWindows();
+	ReInitAllWindows(false);
 }
 
 /**
@@ -1163,7 +1355,7 @@ byte GetDigitWidth(FontSize size)
 {
 	byte width = 0;
 	for (char c = '0'; c <= '9'; c++) {
-		width = max(GetCharacterWidth(size, c), width);
+		width = std::max(GetCharacterWidth(size, c), width);
 	}
 	return width;
 }
@@ -1202,6 +1394,9 @@ void ScreenSizeChanged()
 
 void UndrawMouseCursor()
 {
+	/* Don't undraw mouse cursor if it is handled by the video driver. */
+	if (VideoDriver::GetInstance()->UseSystemCursor()) return;
+
 	/* Don't undraw the mouse cursor if the screen is not ready */
 	if (_screen.dst_ptr == nullptr) return;
 
@@ -1215,6 +1410,9 @@ void UndrawMouseCursor()
 
 void DrawMouseCursor()
 {
+	/* Don't draw mouse cursor if it is handled by the video driver. */
+	if (VideoDriver::GetInstance()->UseSystemCursor()) return;
+
 	/* Don't draw the mouse cursor if the screen is not ready */
 	if (_screen.dst_ptr == nullptr) return;
 
@@ -1274,6 +1472,16 @@ void DrawMouseCursor()
 	_cursor.dirty = false;
 }
 
+/**
+ * Repaints a specific rectangle of the screen.
+ *
+ * @param left,top,right,bottom The area of the screen that needs repainting
+ * @pre The rectangle should have been previously marked dirty with \c AddDirtyBlock.
+ * @see AddDirtyBlock
+ * @see DrawDirtyBlocks
+ * @ingroup dirty
+ *
+ */
 void RedrawScreenRect(int left, int top, int right, int bottom)
 {
 	assert(right <= _screen.width && bottom <= _screen.height);
@@ -1296,7 +1504,9 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 /**
  * Repaints the rectangle blocks which are marked as 'dirty'.
  *
- * @see SetDirtyBlocks
+ * @see AddDirtyBlock
+ *
+ * @ingroup dirty
  */
 void DrawDirtyBlocks()
 {
@@ -1305,29 +1515,6 @@ void DrawDirtyBlocks()
 	const int h = Align(_screen.height, DIRTY_BLOCK_HEIGHT);
 	int x;
 	int y;
-
-	if (HasModalProgress()) {
-		/* We are generating the world, so release our rights to the map and
-		 * painting while we are waiting a bit. */
-		_modal_progress_paint_mutex.unlock();
-		_modal_progress_work_mutex.unlock();
-
-		/* Wait a while and update _realtime_tick so we are given the rights */
-		if (!IsFirstModalProgressLoop()) CSleep(MODAL_PROGRESS_REDRAW_TIMEOUT);
-		_realtime_tick += MODAL_PROGRESS_REDRAW_TIMEOUT;
-
-		/* Modal progress thread may need blitter access while we are waiting for it. */
-		VideoDriver::GetInstance()->ReleaseBlitterLock();
-		_modal_progress_paint_mutex.lock();
-		VideoDriver::GetInstance()->AcquireBlitterLock();
-		_modal_progress_work_mutex.lock();
-
-		/* When we ended with the modal progress, do not draw the blocks.
-		 * Simply let the next run do so, otherwise we would be loading
-		 * the new state (and possibly change the blitter) when we hold
-		 * the drawing lock, which we must not do. */
-		if (_switch_mode != SM_NONE && !HasModalProgress()) return;
-	}
 
 	y = 0;
 	do {
@@ -1399,21 +1586,18 @@ void DrawDirtyBlocks()
 }
 
 /**
- * This function extends the internal _invalid_rect rectangle as it
- * now contains the rectangle defined by the given parameters. Note
- * the point (0,0) is top left.
+ * Extend the internal _invalid_rect rectangle to contain the rectangle
+ * defined by the given parameters. Note the point (0,0) is top left.
  *
  * @param left The left edge of the rectangle
  * @param top The top edge of the rectangle
  * @param right The right edge of the rectangle
  * @param bottom The bottom edge of the rectangle
  * @see DrawDirtyBlocks
+ * @ingroup dirty
  *
- * @todo The name of the function should be called like @c AddDirtyBlock as
- *       it neither set a dirty rect nor add several dirty rects although
- *       the function name is in plural. (Progman)
  */
-void SetDirtyBlocks(int left, int top, int right, int bottom)
+void AddDirtyBlock(int left, int top, int right, int bottom)
 {
 	byte *b;
 	int width;
@@ -1458,7 +1642,7 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
  */
 void MarkWholeScreenDirty()
 {
-	SetDirtyBlocks(0, 0, _screen.width, _screen.height);
+	AddDirtyBlock(0, 0, _screen.width, _screen.height);
 }
 
 /**
@@ -1530,7 +1714,7 @@ void UpdateCursorSize()
 	/* Ignore setting any cursor before the sprites are loaded. */
 	if (GetMaxSpriteID() == 0) return;
 
-	assert_compile(lengthof(_cursor.sprite_seq) == lengthof(_cursor.sprite_pos));
+	static_assert(lengthof(_cursor.sprite_seq) == lengthof(_cursor.sprite_pos));
 	assert(_cursor.sprite_count <= lengthof(_cursor.sprite_seq));
 	for (uint i = 0; i < _cursor.sprite_count; ++i) {
 		const Sprite *p = GetSprite(GB(_cursor.sprite_seq[i].sprite, 0, SPRITE_WIDTH), ST_NORMAL);
@@ -1544,8 +1728,8 @@ void UpdateCursorSize()
 			_cursor.total_offs = offs;
 			_cursor.total_size = size;
 		} else {
-			int right  = max(_cursor.total_offs.x + _cursor.total_size.x, offs.x + size.x);
-			int bottom = max(_cursor.total_offs.y + _cursor.total_size.y, offs.y + size.y);
+			int right  = std::max(_cursor.total_offs.x + _cursor.total_size.x, offs.x + size.x);
+			int bottom = std::max(_cursor.total_offs.y + _cursor.total_size.y, offs.y + size.y);
 			if (offs.x < _cursor.total_offs.x) _cursor.total_offs.x = offs.x;
 			if (offs.y < _cursor.total_offs.y) _cursor.total_offs.y = offs.y;
 			_cursor.total_size.x = right  - _cursor.total_offs.x;
@@ -1634,6 +1818,30 @@ void SetAnimatedMouseCursor(const AnimCursor *table)
 }
 
 /**
+ * Update cursor position on mouse movement for relative modes.
+ * @param delta_x How much change in the X position.
+ * @param delta_y How much change in the Y position.
+ */
+void CursorVars::UpdateCursorPositionRelative(int delta_x, int delta_y)
+{
+	if (this->fix_at) {
+		this->delta.x = delta_x;
+		this->delta.y = delta_y;
+	} else {
+		int last_position_x = this->pos.x;
+		int last_position_y = this->pos.y;
+
+		this->pos.x = Clamp(this->pos.x + delta_x, 0, _cur_resolution.width - 1);
+		this->pos.y = Clamp(this->pos.y + delta_y, 0, _cur_resolution.height - 1);
+
+		this->delta.x = last_position_x - this->pos.x;
+		this->delta.y = last_position_y - this->pos.y;
+
+		this->dirty = true;
+	}
+}
+
+/**
  * Update cursor position on mouse movement.
  * @param x New X position.
  * @param y New Y position.
@@ -1700,4 +1908,37 @@ bool ToggleFullScreen(bool fs)
 void SortResolutions()
 {
 	std::sort(_resolutions.begin(), _resolutions.end());
+}
+
+/**
+ * Resolve GUI zoom level, if auto-suggestion is requested.
+ */
+void UpdateGUIZoom()
+{
+	/* Determine real GUI zoom to use. */
+	if (_gui_zoom_cfg == ZOOM_LVL_CFG_AUTO) {
+		_gui_zoom = static_cast<ZoomLevel>(Clamp(VideoDriver::GetInstance()->GetSuggestedUIZoom(), _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
+	} else {
+		/* Ensure the gui_zoom is clamped between min/max. Change the
+		 * _gui_zoom_cfg if it isn't, as this is used to visually show the
+		 * selection in the Game Options. */
+		_gui_zoom_cfg = Clamp(_gui_zoom_cfg, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max);
+		_gui_zoom = static_cast<ZoomLevel>(_gui_zoom_cfg);
+	}
+
+	/* Determine real font zoom to use. */
+	if (_font_zoom_cfg == ZOOM_LVL_CFG_AUTO) {
+		_font_zoom = static_cast<ZoomLevel>(VideoDriver::GetInstance()->GetSuggestedUIZoom());
+	} else {
+		_font_zoom = static_cast<ZoomLevel>(_font_zoom_cfg);
+	}
+}
+
+void ChangeGameSpeed(bool enable_fast_forward)
+{
+	if (enable_fast_forward) {
+		_game_speed = _settings_client.gui.fast_forward_speed_limit;
+	} else {
+		_game_speed = 100;
+	}
 }

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -23,6 +21,7 @@
 #include "../core/random_func.hpp"
 #include "../saveload/saveload.h"
 #include "../thread.h"
+#include "../window_func.h"
 #include "dedicated_v.h"
 
 #ifdef __OS2__
@@ -130,13 +129,15 @@ static void *_dedicated_video_mem;
 /* Whether a fork has been done. */
 bool _dedicated_forks;
 
-extern bool SafeLoad(const char *filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = nullptr);
+extern bool SafeLoad(const std::string &filename, SaveLoadOperation fop, DetailedFileType dft, GameMode newgm, Subdirectory subdir, struct LoadFilter *lf = nullptr);
 
 static FVideoDriver_Dedicated iFVideoDriver_Dedicated;
 
 
-const char *VideoDriver_Dedicated::Start(const char * const *parm)
+const char *VideoDriver_Dedicated::Start(const StringList &parm)
 {
+	this->UpdateAutoResolution();
+
 	int bpp = BlitterFactory::GetCurrentBlitter()->GetScreenDepth();
 	_dedicated_video_mem = (bpp == 0) ? nullptr : MallocT<byte>(_cur_resolution.width * _cur_resolution.height * (bpp / 8));
 
@@ -150,7 +151,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 	/* For win32 we need to allocate a console (debug mode does the same) */
 	CreateConsole();
 	CreateWindowsConsoleThread();
-	SetConsoleTitle(_T("OpenTTD Dedicated Server"));
+	SetConsoleTitle(L"OpenTTD Dedicated Server");
 #endif
 
 #ifdef _MSC_VER
@@ -195,24 +196,11 @@ static bool InputWaiting()
 	return select(STDIN + 1, &readfds, nullptr, nullptr, &tv) > 0;
 }
 
-static uint32 GetTime()
-{
-	struct timeval tim;
-
-	gettimeofday(&tim, nullptr);
-	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
-}
-
 #else
 
 static bool InputWaiting()
 {
 	return WaitForSingleObject(_hInputReady, 1) == WAIT_OBJECT_0;
-}
-
-static uint32 GetTime()
-{
-	return GetTickCount();
 }
 
 #endif
@@ -229,7 +217,7 @@ static void DedicatedHandleKeyInput()
 	if (fgets(input_line, lengthof(input_line), stdin) == nullptr) return;
 #else
 	/* Handle console input, and signal console thread, it can accept input again */
-	assert_compile(lengthof(_win_console_thread_buffer) <= lengthof(input_line));
+	static_assert(lengthof(_win_console_thread_buffer) <= lengthof(input_line));
 	strecpy(input_line, _win_console_thread_buffer, lastof(input_line));
 	SetEvent(_hWaitForInputHandling);
 #endif
@@ -248,9 +236,6 @@ static void DedicatedHandleKeyInput()
 
 void VideoDriver_Dedicated::MainLoop()
 {
-	uint32 cur_ticks = GetTime();
-	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-
 	/* Signal handlers */
 #if defined(UNIX)
 	signal(SIGTERM, DedicatedSignalHandler);
@@ -266,53 +251,28 @@ void VideoDriver_Dedicated::MainLoop()
 	/* If SwitchMode is SM_LOAD_GAME, it means that the user used the '-g' options */
 	if (_switch_mode != SM_LOAD_GAME) {
 		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
-		SwitchToMode(_switch_mode);
-		_switch_mode = SM_NONE;
 	} else {
-		_switch_mode = SM_NONE;
 		/* First we need to test if the savegame can be loaded, else we will end up playing the
 		 *  intro game... */
-		if (!SafeLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, GM_NORMAL, BASE_DIR)) {
+		if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, BASE_DIR) == SL_ERROR) {
 			/* Loading failed, pop out.. */
 			DEBUG(net, 0, "Loading requested map failed, aborting");
-			_networking = false;
+			return;
 		} else {
 			/* We can load this game, so go ahead */
-			SwitchToMode(SM_LOAD_GAME);
+			_switch_mode = SM_LOAD_GAME;
 		}
 	}
+
+	this->is_game_threaded = false;
 
 	/* Done loading, start game! */
 
-	if (!_networking) {
-		DEBUG(net, 0, "Dedicated server could not be started, aborting");
-		return;
-	}
-
 	while (!_exit_game) {
-		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
-		InteractiveRandom(); // randomness
-
 		if (!_dedicated_forks) DedicatedHandleKeyInput();
 
-		cur_ticks = GetTime();
-		_realtime_tick += cur_ticks - prev_cur_ticks;
-		if (cur_ticks >= next_tick || cur_ticks < prev_cur_ticks || _ddc_fastforward) {
-			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-
-			GameLoop();
-			UpdateWindows();
-		}
-
-		/* Don't sleep when fast forwarding (for desync debugging) */
-		if (!_ddc_fastforward) {
-			/* Sleep longer on a dedicated server, if the game is paused and no clients connected.
-			 * That can allow the CPU to better use deep sleep states. */
-			if (_pause_mode != 0 && !HasClients()) {
-				CSleep(100);
-			} else {
-				CSleep(1);
-			}
-		}
+		ChangeGameSpeed(_ddc_fastforward);
+		this->Tick();
+		this->SleepTillNextTick();
 	}
 }

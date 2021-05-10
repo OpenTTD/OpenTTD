@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -474,12 +472,6 @@ enum WindowClass {
 	WC_CLIENT_LIST,
 
 	/**
-	 * Popup for the client list; %Window numbers:
-	 *   - #ClientID = #ClientListPopupWidgets
-	 */
-	WC_CLIENT_LIST_POPUP,
-
-	/**
 	 * Network status window; %Window numbers:
 	 *   - #WN_NETWORK_STATUS_WINDOW_JOIN = #NetworkJoinStatusWidgets
 	 *   - #WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD = #NetworkContentDownloadStatusWidgets
@@ -623,7 +615,7 @@ enum WindowClass {
 	 * Extra viewport; %Window numbers:
 	 *   - Ascending value = #ExtraViewportWidgets
 	 */
-	WC_EXTRA_VIEW_PORT,
+	WC_EXTRA_VIEWPORT,
 
 
 	/**
@@ -693,15 +685,23 @@ enum WindowClass {
 	 */
 	WC_FRAMETIME_GRAPH,
 
+	/**
+	 * Screenshot window; %Window numbers:
+	 *   - 0 = #ScreenshotWidgets
+	 */
+	WC_SCREENSHOT,
+
 	WC_INVALID = 0xFFFF, ///< Invalid window.
 };
 
 /** Data value for #Window::OnInvalidateData() of windows with class #WC_GAME_OPTIONS. */
 enum GameOptionsInvalidationData {
 	GOID_DEFAULT = 0,
-	GOID_NEWGRF_RESCANNED,     ///< NewGRFs were just rescanned.
-	GOID_NEWGRF_LIST_EDITED,   ///< List of active NewGRFs is being edited.
-	GOID_NEWGRF_PRESET_LOADED, ///< A NewGRF preset was picked.
+	GOID_NEWGRF_RESCANNED,       ///< NewGRFs were just rescanned.
+	GOID_NEWGRF_CURRENT_LOADED,  ///< The current list of active NewGRF has been loaded.
+	GOID_NEWGRF_LIST_EDITED,     ///< List of active NewGRFs is being edited.
+	GOID_NEWGRF_CHANGES_MADE,    ///< Changes have been made to a given NewGRF either through the palette or its parameters.
+	GOID_NEWGRF_CHANGES_APPLIED, ///< The active NewGRF list changes have been applied.
 };
 
 struct Window;

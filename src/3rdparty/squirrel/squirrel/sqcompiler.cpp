@@ -65,9 +65,9 @@ public:
 	}
 	NORETURN static void ThrowError(void *ud, const SQChar *s) {
 		SQCompiler *c = (SQCompiler *)ud;
-		c->Error(s);
+		c->Error("%s", s);
 	}
-	NORETURN void Error(const SQChar *s, ...)
+	NORETURN void Error(const SQChar *s, ...) WARN_FORMAT(2, 3)
 	{
 		static SQChar temp[256];
 		va_list vl;
@@ -122,7 +122,7 @@ public:
 					}
 					Error("expected '%s'", etypename);
 				}
-				Error("expected '%c'", tok);
+				Error("expected '%c'", (char)tok);
 			}
 		}
 		SQObjectPtr ret;
@@ -836,6 +836,7 @@ public:
 			SQInteger val = _fs->PopTarget();
 			SQInteger key = _fs->PopTarget();
 			SQInteger attrs = hasattrs ? _fs->PopTarget():-1;
+			(void)attrs; // assert only
 			assert((hasattrs && attrs == key-1) || !hasattrs);
 			unsigned char flags = (hasattrs?NEW_SLOT_ATTRIBUTES_FLAG:0)|(isstatic?NEW_SLOT_STATIC_FLAG:0);
 			SQInteger table = _fs->TopTarget(); //<<BECAUSE OF THIS NO COMMON EMIT FUNC IS POSSIBLE

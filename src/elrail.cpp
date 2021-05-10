@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -126,6 +124,9 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
  */
 static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
 {
+	/* Single track bits are never masked out. */
+	if (likely(HasAtMostOneBit(tracks))) return tracks;
+
 	if (!IsPlainRailTile(t)) return tracks;
 
 	TrackdirBits neighbour_tdb = TRACKDIR_BIT_NONE;
@@ -231,7 +232,8 @@ static int GetPCPElevation(TileIndex tile, DiagDirection PCPpos)
 	 * Also note that the result of GetSlopePixelZ() is very special on bridge-ramps.
 	 */
 
-	int z = GetSlopePixelZ(TileX(tile) * TILE_SIZE + min(x_pcp_offsets[PCPpos], TILE_SIZE - 1), TileY(tile) * TILE_SIZE + min(y_pcp_offsets[PCPpos], TILE_SIZE - 1));
+	int z = GetSlopePixelZ(TileX(tile) * TILE_SIZE + std::min<int8>(x_pcp_offsets[PCPpos], TILE_SIZE - 1),
+	                       TileY(tile) * TILE_SIZE + std::min<int8>(y_pcp_offsets[PCPpos], TILE_SIZE - 1));
 	return (z + 2) & ~3; // this means z = (z + TILE_HEIGHT / 4) / (TILE_HEIGHT / 2) * (TILE_HEIGHT / 2);
 }
 
@@ -593,8 +595,6 @@ void DrawRailCatenary(const TileInfo *ti)
 
 bool SettingsDisableElrail(int32 p1)
 {
-	Company *c;
-	Train *t;
 	bool disable = (p1 != 0);
 
 	/* we will now walk through all electric train engines and change their railtypes if it is the wrong one*/
@@ -602,8 +602,7 @@ bool SettingsDisableElrail(int32 p1)
 	const RailType new_railtype = disable ? RAILTYPE_RAIL : RAILTYPE_ELECTRIC;
 
 	/* walk through all train engines */
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+	for (Engine *e : Engine::IterateType(VEH_TRAIN)) {
 		RailVehicleInfo *rv_info = &e->u.rail;
 		/* if it is an electric rail engine and its railtype is the wrong one */
 		if (rv_info->engclass == 2 && rv_info->railtype == old_railtype) {
@@ -615,7 +614,7 @@ bool SettingsDisableElrail(int32 p1)
 	/* when disabling elrails, make sure that all existing trains can run on
 	 *  normal rail too */
 	if (disable) {
-		FOR_ALL_TRAINS(t) {
+		for (Train *t : Train::Iterate()) {
 			if (t->railtype == RAILTYPE_ELECTRIC) {
 				/* this railroad vehicle is now compatible only with elrail,
 				 *  so add there also normal rail compatibility */
@@ -627,14 +626,14 @@ bool SettingsDisableElrail(int32 p1)
 	}
 
 	/* Fix the total power and acceleration for trains */
-	FOR_ALL_TRAINS(t) {
+	for (Train *t : Train::Iterate()) {
 		/* power and acceleration is cached only for front engines */
 		if (t->IsFrontEngine()) {
 			t->ConsistChanged(CCF_TRACK);
 		}
 	}
 
-	FOR_ALL_COMPANIES(c) c->avail_railtypes = GetCompanyRailtypes(c->index);
+	for (Company *c : Company::Iterate()) c->avail_railtypes = GetCompanyRailtypes(c->index);
 
 	/* This resets the _last_built_railtype, which will be invalid for electric
 	 * rails. It may have unintended consequences if that function is ever

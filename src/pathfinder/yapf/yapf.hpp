@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,14 +12,8 @@
 
 #include "../../landscape.h"
 #include "../pathfinder_func.h"
-#include "../pf_performance_timer.hpp"
 #include "yapf.h"
 
-//#undef FORCEINLINE
-//#define inline inline
-
-#include "../../misc/blob.hpp"
-#include "../../misc/str.hpp"
 #include "../../misc/fixedsizearray.hpp"
 #include "../../misc/array.hpp"
 #include "../../misc/hashtable.hpp"

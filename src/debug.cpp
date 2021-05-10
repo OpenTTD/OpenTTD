@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -46,8 +44,6 @@ int _debug_console_level;
 #ifdef RANDOM_DEBUG
 int _debug_random_level;
 #endif
-
-uint32 _realtime_tick = 0;
 
 struct DebugLevel {
 	const char *name;
@@ -136,9 +132,9 @@ static void debug_print(const char *dbg, const char *buf)
 		char buffer[512];
 		seprintf(buffer, lastof(buffer), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
 #if defined(_WIN32)
-		TCHAR system_buf[512];
-		convert_to_fs(buffer, system_buf, lengthof(system_buf), true);
-		_fputts(system_buf, stderr);
+		wchar_t system_buf[512];
+		convert_to_fs(buffer, system_buf, lengthof(system_buf));
+		fputws(system_buf, stderr);
 #else
 		fputs(buffer, stderr);
 #endif

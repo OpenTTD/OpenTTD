@@ -11,8 +11,6 @@
 ##gender m f n
 
 
-# $Id$
-
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -51,9 +49,9 @@ STR_CARGO_PLURAL_WHEAT                                          :{G=n}Hveiti
 STR_CARGO_PLURAL_RUBBER                                         :{G=n}Gummi
 STR_CARGO_PLURAL_SUGAR                                          :{G=n}Sukur
 STR_CARGO_PLURAL_TOYS                                           :{G=n}Leikutoy
-STR_CARGO_PLURAL_CANDY                                          :{G=n}Góðgæti
+STR_CARGO_PLURAL_SWEETS                                         :{G=n}Góðgæti
 STR_CARGO_PLURAL_COLA                                           :{G=n}Kola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=n}Kandifloss
+STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=n}Kandifloss
 STR_CARGO_PLURAL_BUBBLES                                        :{G=f}Sápiblørir
 STR_CARGO_PLURAL_TOFFEE                                         :{G=n}Toffee
 STR_CARGO_PLURAL_BATTERIES                                      :{G=n}Battarí
@@ -85,9 +83,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :{G=n}Hveiti
 STR_CARGO_SINGULAR_RUBBER                                       :{G=n}Gummi
 STR_CARGO_SINGULAR_SUGAR                                        :{G=n}Sukur
 STR_CARGO_SINGULAR_TOY                                          :{G=n}Leikutoy
-STR_CARGO_SINGULAR_CANDY                                        :{G=n}Góðgæti
+STR_CARGO_SINGULAR_SWEETS                                       :{G=n}Góðgæti
 STR_CARGO_SINGULAR_COLA                                         :{G=n}Kola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=n}Kandifloss
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :{G=n}Kandifloss
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=f}Sápibløra
 STR_CARGO_SINGULAR_TOFFEE                                       :{G=n}Toffee
 STR_CARGO_SINGULAR_BATTERY                                      :{G=n}Battarí
@@ -226,8 +224,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vel rað
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Set raðfestingar treytir
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Set filtrerings treytir
 STR_BUTTON_SORT_BY                                              :{BLACK}Sortera eftur
-STR_BUTTON_LOCATION                                             :{BLACK}Stað
-STR_BUTTON_RENAME                                               :{BLACK}Endurdoyp
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lat glugga aftur
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Glugga heiti - drag her fyri at fyta glugga
@@ -293,6 +289,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Farma Pláss
 STR_SORT_BY_RANGE                                               :Vídd
 STR_SORT_BY_POPULATION                                          :Fólkatal
 STR_SORT_BY_RATING                                              :Virði
+
+# Group by options for vehicle list
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Steðga spælinum
@@ -376,7 +374,7 @@ STR_FILE_MENU_EXIT                                              :Gevst
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Heimskort
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Eyka synisgluggi
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Eyka synisgluggi
 STR_MAP_MENU_SIGN_LIST                                          :Listi yvur tekin
 
 ############ range for town menu starts
@@ -450,9 +448,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Console opið ella lukka
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Spæl script debug
 STR_ABOUT_MENU_SCREENSHOT                                       :Skermmynd
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Suma in skermmynd
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Vanliga suma skermmynd
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Skermmynd av øllum kortinum
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Vís mynda títtleika
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Um 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite aligner
@@ -543,8 +538,8 @@ STR_MONTH_DEC                                                   :Desembur
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Lykil
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Vís lykil til graf
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
@@ -623,9 +618,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Sjálvgjørdur 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Tónleika ljóðstyrki
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Effekt ljóðstyrki
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
-STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}:
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
@@ -830,6 +822,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nýtt {STRING} til sølu!  -  {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} tekur ikki longur ímóti {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} tekur ikki longur ímóti hvørki {STRING} ella {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} tekur nú ímóti {STRING}
@@ -848,7 +841,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Mynduleikanir í {TOWN} skriva undir sáttmála við {STRING} fyri einkarrætt av flutningi í eitt ár!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Sýnisgluggi {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Sýnisgluggi {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Rita til sýnisglugga
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Avrita staðið í høvuðsglugganum inn hendan sýnisgluggan
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Set inn frá sýnisglugga
@@ -896,8 +889,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiskur Lari
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranskur Rial
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Akfør
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Áset hvørja síðu á vegnum akfør skulu koyra á
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Vinstrakoyring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høgrakoyring
 
@@ -948,6 +939,10 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Marka he
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skerm upploysn
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel hvørja skermupploysn tú vil brúka
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :annað
+
+
+
+
 
 
 
@@ -1448,8 +1443,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fult
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Litaði tíðindir koma frám í: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Ári har tíðindabløð verða prentaði í litum. Áðrenn hetta ári eru tíðindabløð svørt/hvít
 STR_CONFIG_SETTING_STARTING_YEAR                                :Byrjunar ár: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Gilda mjúkan búskap (fleiri, smærri broytingar): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Um gilda, ídnaðar framleiðsla broytist títtari og í smærri stigum. Henda ásetanin hevur vanliga onga ávirkan um ídnaðinir koma frá einum NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Loyv keypi av partabrøvum frá øðrum fyritøkum: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Um gilda, er loyvt at keypa og selja fyritøku partabrøv. Partabrøv verða einans tøk hjá fyritøkum ið hava rokki ein ávísan aldur
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Prosentpartur av deilvinningi at gjalda í veitingar kervum: {STRING}
@@ -1544,6 +1537,8 @@ STR_CONFIG_ERROR_INVALID_GRF_UNKNOWN                            :ókendur
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Einki minni eftir
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Leitan eftir {BYTES} av spritecache eydnaðist ikki. Spritecache var skerd til {BYTES}. Hetta vil skerja framførsluna av OpenTTD. Fyri at minka um minnis krøvini kann tú royna at sløkkja fyri 32bpp grafikki og/ella suma-in stig
 
+# Video initalization errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1584,17 +1579,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Hesi ums
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Gevst
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Er tú vís/vísur í at tú vil gevast at spæla OpenTTD og fara aftur til {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Ja
 STR_QUIT_NO                                                     :{BLACK}Nei
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Far frá spæli
@@ -1604,7 +1590,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er tú 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Snýt
 STR_CHEATS_TOOLTIP                                              :{BLACK}Flugubeins kassanir vísa um tú hevur nýtt hetta snýti áður
-STR_CHEATS_WARNING                                              :{BLACK}Ávaring! Tú er í holt við at svíkja tínar kappingarneytar. Hav í huga at ein slík vanæra verður aldrin gloymd á ævini
 STR_CHEAT_MONEY                                                 :{LTBLUE}Hækka pening við {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spælir sum fyritøka: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Gandaður bulldosari (bein burtur ídnaðir, lutir ið ikki kunnu flytast): {ORANGE}{STRING}
@@ -1711,10 +1696,9 @@ STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Oyraringur:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Broyt slips ella oyraring
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hópspæl
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nei
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spælara navn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Hetta er navni aðrir spælarir fara at kenna teg vi
 
@@ -1755,8 +1739,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Tak lut 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Endurnýggja servara
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Endurnýggja kunning um servara
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Finn servara
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Leita eftir servara á netverki
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Legg servara aftrat
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Leggur ein servara til listan sum altíð verður kannaður fyri koyrandi spøl
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Set servara í gongd
@@ -1773,8 +1755,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Aðrir s
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Áset loyniorð
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Verj títt spæl við einum loyniorðið um tú ikki vil at ta skal verða opi fyri almenninginum
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Nei
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" ar}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Mest loyvdir klientar:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vel mest loyvda tali av klientum. Ta er ikki neyðugt at fylla øll plássini
@@ -1788,46 +1768,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Tungumá
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aðrir spælarir kunnu síggja hvat mál verður tosa á servaranum
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gev netverks spælinum eitt navn
-
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Hvat sum helst
-STR_NETWORK_LANG_ENGLISH                                        :Enskt
-STR_NETWORK_LANG_GERMAN                                         :Týskt
-STR_NETWORK_LANG_FRENCH                                         :Franskt
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasilienskt
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgariskt
-STR_NETWORK_LANG_CHINESE                                        :Kinverskt
-STR_NETWORK_LANG_CZECH                                          :Tjekkiskt
-STR_NETWORK_LANG_DANISH                                         :Danskt
-STR_NETWORK_LANG_DUTCH                                          :Niðurlendskt
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finskt
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungarskt
-STR_NETWORK_LANG_ICELANDIC                                      :Íslenskt
-STR_NETWORK_LANG_ITALIAN                                        :Italienskt
-STR_NETWORK_LANG_JAPANESE                                       :Japanskt
-STR_NETWORK_LANG_KOREAN                                         :Koreanskt
-STR_NETWORK_LANG_LITHUANIAN                                     :Litauiskt
-STR_NETWORK_LANG_NORWEGIAN                                      :Norskt
-STR_NETWORK_LANG_POLISH                                         :Polskt
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugisiskt
-STR_NETWORK_LANG_ROMANIAN                                       :Rumenskt
-STR_NETWORK_LANG_RUSSIAN                                        :Russiskt
-STR_NETWORK_LANG_SLOVAK                                         :Slovakiskt
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovenskt
-STR_NETWORK_LANG_SPANISH                                        :Spanskt
-STR_NETWORK_LANG_SWEDISH                                        :Svenskt
-STR_NETWORK_LANG_TURKISH                                        :Turkiskt
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainskt
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
-STR_NETWORK_LANG_CROATIAN                                       :Kroatiskt
-STR_NETWORK_LANG_CATALAN                                        :Catalan
-STR_NETWORK_LANG_ESTONIAN                                       :Estoniskt
-STR_NETWORK_LANG_GALICIAN                                       :Galisiskt
-STR_NETWORK_LANG_GREEK                                          :Grikskt
-STR_NETWORK_LANG_LATVIAN                                        :Latviskt
-############ End of leave-in-this-order
 
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Hópspæls forhøll
@@ -1879,22 +1819,14 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Fyritøk
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Listi yvir klientar
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Eygleið
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nýggja fyritøku
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Sparka
-STR_NETWORK_CLIENTLIST_BAN                                      :Bannað
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Gev pening
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Tosa við øll
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Tosa við fyritøku
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Persónligt boð
+
+
 
 STR_NETWORK_SERVER                                              :Servari
 STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Eygleiðarar
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriva nøgdina av peningi tú vil geva
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Goym ikki skrivaða loyniorðið
@@ -1995,8 +1927,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} er
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} hevur stovnað eina nýggja fyritøku (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} er farin úr spælinum ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} hevur broytt sítt navn til {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} handaði tínari fyritøku {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Tú handaði {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servarin endaði setuna
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servarin endurbyrjar...{}Vinarliga bíða...
 
@@ -2073,6 +2003,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, heinta niður grafikkin
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nei, gevst at spæla OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Gjøgnumskygnis møguleikar
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Sløkk/tendra gjøgnumskygni fyri skelti. Ctrl+trýst fyri at læsa
@@ -2102,6 +2033,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bygg se
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Bind waypoint saman
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg eitt serstakt waypoint
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Jarnbreyta bygging
@@ -2227,7 +2160,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Stødd: 
 STR_OBJECT_CLASS_LTHS                                           :Vitar
 STR_OBJECT_CLASS_TRNS                                           :Sendarir
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Trø
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tilvildarlig træ sløg
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Tilvildarlig trø
@@ -2419,7 +2352,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Ogn hjá fyrit�
 STR_ABOUT_OPENTTD                                               :{WHITE}Um OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Upprunalig upphavsrættindi {COPYRIGHT} 1995 Chris Sawyer, Øll rættindi umbiðin
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD útgáva {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD toymi
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD toymi
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -2460,11 +2393,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nr. av bygdum:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nr. av ídnaðum:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hædd á kava linju:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flyt kava linjuna eitt upp
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flyt kava linjuna eitt niður
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Lendis framleiðari:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Træ algoritma:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Slag av lendi:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Sjóvarmáli:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Løkar:
@@ -2489,7 +2418,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Navn á 
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Stødd:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} * {NUM}
 
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Broyt hædd á kava linju
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Broyt byrjunar ár
 
 # SE Map generation
@@ -2699,10 +2627,8 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Keyp 1 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Mutra mynduleikan á staðnum fyri at økju um tína meting, við vanda fyri hvassari revsing um tað verður avdúka.{}Kostnaður: {CURRENCY_LONG}
 
 # Goal window
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Heimsfevnandi mál:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Einki -
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Fyritøku mál:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Trýst á mál fyri at savna høvuðs sýni á ídnað/bygd/punt. Ctrl+trýst letur upp nýggjan sýnisglugga á ídnað/bygd/punt
 
 # Goal question window
@@ -2900,8 +2826,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Ídnaðir
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Einki -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% flutt)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% flutt)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Ídnaðar nøvn - trýst á eitt navn fyri at savna høvuðs sýni á ídnað. Ctrl+trýst letur ein nýggjan sýnisglugga upp á ídnaðin
 
@@ -3175,6 +3099,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vogn bur
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
+
 
 
 
@@ -3529,6 +3454,7 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}Góðtak
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Vel undirstrikaða scripti
 STR_AI_LIST_CANCEL                                              :{BLACK}Angra
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikki broyta scripti
+
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametur

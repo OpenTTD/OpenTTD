@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -16,6 +14,7 @@
 #include "core/address.h"
 #include "../core/pool_type.hpp"
 #include "../company_type.h"
+#include "../date_type.h"
 
 /** Type for the pool with client information. */
 typedef Pool<NetworkClientInfo, ClientIndex, 8, MAX_CLIENT_SLOTS, PT_NCLIENT> NetworkClientInfoPool;
@@ -25,7 +24,6 @@ extern NetworkClientInfoPool _networkclientinfo_pool;
 struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_pool> {
 	ClientID client_id;                             ///< Client identifier (same as ClientState->client_id)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];   ///< Name of the client
-	byte client_lang;                               ///< The language of the client
 	CompanyID client_playas;                        ///< As which company is this client playing (CompanyID)
 	Date join_date;                                 ///< Gamedate the client has joined
 
@@ -38,18 +36,5 @@ struct NetworkClientInfo : NetworkClientInfoPool::PoolItem<&_networkclientinfo_p
 
 	static NetworkClientInfo *GetByClientID(ClientID client_id);
 };
-
-/**
- * Iterate over all the clients from a given index.
- * @param var The variable to iterate with.
- * @param start The location to start the iteration from.
- */
-#define FOR_ALL_CLIENT_INFOS_FROM(var, start) FOR_ALL_ITEMS_FROM(NetworkClientInfo, clientinfo_index, var, start)
-
-/**
- * Iterate over all the clients.
- * @param var The variable to iterate with.
- */
-#define FOR_ALL_CLIENT_INFOS(var) FOR_ALL_CLIENT_INFOS_FROM(var, 0)
 
 #endif /* NETWORK_BASE_H */

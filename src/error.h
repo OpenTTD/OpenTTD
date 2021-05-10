@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -15,6 +13,7 @@
 #include "strings_type.h"
 #include "company_type.h"
 #include "core/geometry_type.hpp"
+#include "guitimer_func.h"
 
 struct GRFFile;
 
@@ -29,7 +28,7 @@ enum WarningLevel {
 /** The data of the error message. */
 class ErrorMessageData {
 protected:
-	uint duration;                  ///< Length of display of the message. 0 means forever,
+	GUITimer display_timer;         ///< Timer before closing the message.
 	uint64 decode_params[20];       ///< Parameters of the message strings.
 	const char *strings[20];        ///< Copies of raw strings that were used.
 	const GRFFile *textref_stack_grffile; ///< NewGRF that filled the #TextRefStack for the error message.
@@ -57,6 +56,8 @@ public:
 void ScheduleErrorMessage(const ErrorMessageData &data);
 
 void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel wl, int x = 0, int y = 0, const GRFFile *textref_stack_grffile = nullptr, uint textref_stack_size = 0, const uint32 *textref_stack = nullptr);
+bool HideActiveErrorMessage();
+
 void ClearErrorMessages();
 void ShowFirstError();
 void UnshowCriticalError();

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -34,8 +32,7 @@ void AIScannerInfo::Initialize()
 	ScriptAllocatorScope alloc_scope(this->engine);
 
 	/* Create the dummy AI */
-	free(this->main_script);
-	this->main_script = stredup("%_dummy");
+	this->main_script = "%_dummy";
 	extern void Script_CreateDummyInfo(HSQUIRRELVM vm, const char *type, const char *dir);
 	Script_CreateDummyInfo(this->engine->GetVM(), "AI", "ai");
 }
@@ -63,8 +60,8 @@ void AIScannerInfo::RegisterAPI(class Squirrel *engine)
 AIInfo *AIScannerInfo::SelectRandomAI() const
 {
 	uint num_random_ais = 0;
-	for (ScriptInfoList::const_iterator it = this->info_single_list.begin(); it != this->info_single_list.end(); it++) {
-		AIInfo *i = static_cast<AIInfo *>((*it).second);
+	for (const auto &item : info_single_list) {
+		AIInfo *i = static_cast<AIInfo *>(item.second);
 		if (i->UseAsRandomAI()) num_random_ais++;
 	}
 
@@ -103,20 +100,10 @@ AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool fo
 	strecpy(ai_name, nameParam, lastof(ai_name));
 	strtolower(ai_name);
 
-	AIInfo *info = nullptr;
-	int version = -1;
-
 	if (versionParam == -1) {
 		/* We want to load the latest version of this AI; so find it */
 		if (this->info_single_list.find(ai_name) != this->info_single_list.end()) return static_cast<AIInfo *>(this->info_single_list[ai_name]);
-
-		/* If we didn't find a match AI, maybe the user included a version */
-		char *e = strrchr(ai_name, '.');
-		if (e == nullptr) return nullptr;
-		*e = '\0';
-		e++;
-		versionParam = atoi(e);
-		/* Continue, like we were calling this function with a version. */
+		return nullptr;
 	}
 
 	if (force_exact_match) {
@@ -125,15 +112,18 @@ AIInfo *AIScannerInfo::FindInfo(const char *nameParam, int versionParam, bool fo
 		seprintf(ai_name_tmp, lastof(ai_name_tmp), "%s.%d", ai_name, versionParam);
 		strtolower(ai_name_tmp);
 		if (this->info_list.find(ai_name_tmp) != this->info_list.end()) return static_cast<AIInfo *>(this->info_list[ai_name_tmp]);
+		return nullptr;
 	}
+
+	AIInfo *info = nullptr;
+	int version = -1;
 
 	/* See if there is a compatible AI which goes by that name, with the highest
 	 *  version which allows loading the requested version */
-	ScriptInfoList::iterator it = this->info_list.begin();
-	for (; it != this->info_list.end(); it++) {
-		AIInfo *i = static_cast<AIInfo *>((*it).second);
+	for (const auto &item : this->info_list) {
+		AIInfo *i = static_cast<AIInfo *>(item.second);
 		if (strcasecmp(ai_name, i->GetName()) == 0 && i->CanLoadFromVersion(versionParam) && (version == -1 || i->GetVersion() > version)) {
-			version = (*it).second->GetVersion();
+			version = item.second->GetVersion();
 			info = i;
 		}
 	}
@@ -166,8 +156,8 @@ AILibrary *AIScannerLibrary::FindLibrary(const char *library, int version)
 	strtolower(library_name);
 
 	/* Check if the library + version exists */
-	ScriptInfoList::iterator iter = this->info_list.find(library_name);
-	if (iter == this->info_list.end()) return nullptr;
+	ScriptInfoList::iterator it = this->info_list.find(library_name);
+	if (it == this->info_list.end()) return nullptr;
 
-	return static_cast<AILibrary *>((*iter).second);
+	return static_cast<AILibrary *>((*it).second);
 }

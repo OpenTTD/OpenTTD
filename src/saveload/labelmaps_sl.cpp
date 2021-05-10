@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,6 +12,7 @@
 #include "../tunnelbridge_map.h"
 
 #include "saveload.h"
+#include "saveload_internal.h"
 
 #include "../safeguards.h"
 
@@ -81,6 +80,11 @@ void AfterLoadLabelMaps()
 		}
 	}
 
+	ResetLabelMaps();
+}
+
+void ResetLabelMaps()
+{
 	_railtype_list.clear();
 }
 
@@ -108,7 +112,7 @@ static void Save_RAIL()
 
 static void Load_RAIL()
 {
-	_railtype_list.clear();
+	ResetLabelMaps();
 
 	LabelObject lo;
 

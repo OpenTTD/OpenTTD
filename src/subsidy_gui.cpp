@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -44,8 +42,7 @@ struct SubsidyListWindow : Window {
 
 		int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SUL_PANEL, WD_FRAMERECT_TOP);
 		int num = 0;
-		const Subsidy *s;
-		FOR_ALL_SUBSIDIES(s) {
+		for (const Subsidy *s : Subsidy::Iterate()) {
 			if (!s->IsAwarded()) {
 				y--;
 				if (y == 0) {
@@ -64,7 +61,7 @@ struct SubsidyListWindow : Window {
 		y -= 2; // "Services already subsidised:"
 		if (y < 0) return;
 
-		FOR_ALL_SUBSIDIES(s) {
+		for (const Subsidy *s : Subsidy::Iterate()) {
 			if (s->IsAwarded()) {
 				y--;
 				if (y == 0) {
@@ -86,7 +83,7 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (_ctrl_pressed || !ScrollMainWindowToTile(xy)) {
-			if (_ctrl_pressed) ShowExtraViewPortWindow(xy);
+			if (_ctrl_pressed) ShowExtraViewportWindow(xy);
 
 			/* otherwise determine dst coordinate for subsidy and scroll to it */
 			switch (s->dst_type) {
@@ -96,7 +93,7 @@ struct SubsidyListWindow : Window {
 			}
 
 			if (_ctrl_pressed) {
-				ShowExtraViewPortWindow(xy);
+				ShowExtraViewportWindow(xy);
 			} else {
 				ScrollMainWindowToTile(xy);
 			}
@@ -112,8 +109,7 @@ struct SubsidyListWindow : Window {
 		/* Count number of (non) awarded subsidies */
 		uint num_awarded = 0;
 		uint num_not_awarded = 0;
-		const Subsidy *s;
-		FOR_ALL_SUBSIDIES(s) {
+		for (const Subsidy *s : Subsidy::Iterate()) {
 			if (!s->IsAwarded()) {
 				num_not_awarded++;
 			} else {
@@ -161,8 +157,7 @@ struct SubsidyListWindow : Window {
 		pos++;
 
 		uint num = 0;
-		const Subsidy *s;
-		FOR_ALL_SUBSIDIES(s) {
+		for (const Subsidy *s : Subsidy::Iterate()) {
 			if (!s->IsAwarded()) {
 				if (IsInsideMM(pos, 0, cap)) {
 					/* Displays the two offered towns */
@@ -186,7 +181,7 @@ struct SubsidyListWindow : Window {
 		pos++;
 		num = 0;
 
-		FOR_ALL_SUBSIDIES(s) {
+		for (const Subsidy *s : Subsidy::Iterate()) {
 			if (s->IsAwarded()) {
 				if (IsInsideMM(pos, 0, cap)) {
 					SetupSubsidyDecodeParam(s, true);

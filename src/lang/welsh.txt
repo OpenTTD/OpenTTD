@@ -10,8 +10,6 @@
 ##grflangid 0x0f
 
 
-# $Id$
-
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -50,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Gwenith
 STR_CARGO_PLURAL_RUBBER                                         :Rwber
 STR_CARGO_PLURAL_SUGAR                                          :Siwgr
 STR_CARGO_PLURAL_TOYS                                           :Teganau
-STR_CARGO_PLURAL_CANDY                                          :Melysion
+STR_CARGO_PLURAL_SWEETS                                         :Melysion
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Candifflos
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Candifflos
 STR_CARGO_PLURAL_BUBBLES                                        :Swigod
 STR_CARGO_PLURAL_TOFFEE                                         :Toffi
 STR_CARGO_PLURAL_BATTERIES                                      :Baterïau
@@ -84,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Gwenith
 STR_CARGO_SINGULAR_RUBBER                                       :Rwber
 STR_CARGO_SINGULAR_SUGAR                                        :Siwgr
 STR_CARGO_SINGULAR_TOY                                          :Tegan
-STR_CARGO_SINGULAR_CANDY                                        :Melysyn
+STR_CARGO_SINGULAR_SWEETS                                       :Melysyn
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Candifflos
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Candifflos
 STR_CARGO_SINGULAR_BUBBLE                                       :Swigen
 STR_CARGO_SINGULAR_TOFFEE                                       :Toffi
 STR_CARGO_SINGULAR_BATTERY                                      :Batri
@@ -233,8 +231,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Dewiswch
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Dewiswch drefn trefnu
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Dewis criteria hidlydd
 STR_BUTTON_SORT_BY                                              :{BLACK}Trefnu yn ôl
-STR_BUTTON_LOCATION                                             :{BLACK}Lleoliad
-STR_BUTTON_RENAME                                               :{BLACK}Ailenwi
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Cau ffenestr
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Teitl ffenestr - llusgwch hwn i symud ffenestr
@@ -311,6 +307,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Gallu cludo llw
 STR_SORT_BY_RANGE                                               :Maes teithio
 STR_SORT_BY_POPULATION                                          :Poblogaeth
 STR_SORT_BY_RATING                                              :Gradd
+
+# Group by options for vehicle list
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Oedi'r gêm
@@ -397,7 +395,7 @@ STR_FILE_MENU_EXIT                                              :Gadael
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Map o'r Byd
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ffenestr Olygfa Newydd
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ffenestr Olygfa Newydd
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Allwedd Llif Cargo
 STR_MAP_MENU_SIGN_LIST                                          :Rhestr Arwyddion
 
@@ -472,9 +470,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Toglu Consol
 STR_ABOUT_MENU_AI_DEBUG                                         :Dadnamu AI / Sgript Gêm
 STR_ABOUT_MENU_SCREENSHOT                                       :Ciplun
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Ciplun lefel mwyhád uchaf
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Ciplun pellter rhagosodedig
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Ciplun o'r map cyfan
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Gwybodaeth am 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Aliniwr corluniau
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Toglo bocsys ffinio
@@ -564,8 +559,8 @@ STR_MONTH_DEC                                                   :Rhagfyr
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Allwedd
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Dangos allwedd i'r graffiau
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
@@ -644,9 +639,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Cyfaddas 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Lefel Sain Cerddoriaeth
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Lefel Sain Effeithiau
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}ISAF
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}UCHAF
-STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
@@ -859,6 +851,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Mae {STRING} newydd yn awr ar gael!  -  {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}Nid yw {STATION} bellach yn derbyn {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}Nid yw {STATION} bellach yn derbyn {STRING} na {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}Mae {STATION} nawr yn derbyn {STRING}
@@ -877,7 +870,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Awdurdog lleol {TOWN} yn arwyddo cytundeb cyfyngol gyda {STRING} am flwyddyn o hawliau cludiant!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Ffenestr Olygfa{COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Ffenestr Olygfa{COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copïo i Ffenestr Olygfa
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copïo lleoliad y golwg byd-eang i'r ffenestr olygfa
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gludo o'r Ffenestr Olygfa
@@ -927,8 +920,6 @@ STR_GAME_OPTIONS_CURRENCY_RUB                                   :Rwbl Rwsaidd Ne
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Tseina (CNY)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Cerbydau Ffordd
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Dewiswch ar ba ochr i'r ffordd y dylai cerbydau yrru
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Gyrru ar y chwith
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Gyrru ar y dde
 
@@ -980,12 +971,16 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Cydrania
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Dewiswch y cydraniad sgrin i'w defnyddio
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :arall
 
+
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Maint rhyngwyneb
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Dewis maint yr elfennau rhyngwyneb i'w defnyddio
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Arferol
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dyblyg
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Pedwarplyg
+
+
 
 
 
@@ -1164,8 +1159,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Toglo trychineb
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Agwedd y cyngor tref at ailstrwythuro'r ardal: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Dewis faint y mae sŵn a niwed amgycheddol gan gwmnïau yn effeithio ar eu graddio trefol a gweithredoedd adeiladu pellach yn eu hardal
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Uchder map uchafsymol: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Gosod yr uchder uchafsymol a ganiateir ar gyfer mynyddoedd ar y map
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Ni allwch osod uchder uchafsymol y map i'r gwerth yma. Mae o leiaf un mynydd ar y map yn uwch
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Caniatáu tirffurfio o dan adeiladau, traciau, ayyb.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Caniatáu tirffurfio o dan adeiladau a thraciau heb eu chwalu
@@ -1340,6 +1333,7 @@ STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_HELPTEXT                :Lliw y tirwedd 
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_GREEN                   :Gwyrdd
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_DARK_GREEN              :Gwyrdd tywyll
 STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :Fioled
+STR_CONFIG_SETTING_SCROLLMODE_HELPTEXT                          :Ymddygiad tra'n sgrolio'r map
 STR_CONFIG_SETTING_SMOOTH_SCROLLING                             :Sgrolio prif ffenestr llyfn: {STRING}
 STR_CONFIG_SETTING_SMOOTH_SCROLLING_HELPTEXT                    :Rheoli syt y mae'r prif olygfa'n sgrolio at leoliad penodol pan yn clicio ar y map bychan neu yn rhoi gorchymyn i sgrolio at wrthrych penodol
 STR_CONFIG_SETTING_MEASURE_TOOLTIP                              :Dangos cymorth mesur wrth ddefnyddio'r offer adeiladu amrywiol: {STRING}
@@ -1518,8 +1512,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Llawn
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Bydd newyddion lliw yn ymddangos yn: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Y blwyddyn y caiff cyhoeddiadau newyddion eu hargraffu mewn lliw. Cyn y dyddiad yma rhai du a gwyn fyddent
 STR_CONFIG_SETTING_STARTING_YEAR                                :Blwyddyn dechreuol: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Galluogi economi llyfn (mwy o newidiadau llai): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Pan fe wedi'i alluogi, mae gweithgynhyrchiant diwydiant yn newid yn fwy aml, ac mewn cammau llai. Ni fydd y gosodiad yma yn cael effaith os y defnyddir diwydiannau NewGRF, fel rheol
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Caniatáu prynu cyfranddaliadau mewn cwmnïau eraill: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Pan fo wedi'i alluogi, fe ganiateir prynnu a gwerthu cyfrandalaidau cwmni. Rhaid i gwmni gyrraedd oed penodol cyn y daw eu cyfrandaliadau ar gael
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Canran elw y cymal i'w dalu mewn systemau trosglwyddo: {STRING}
@@ -1565,9 +1557,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Caniatáu, cynl
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Gosod coed mewn gêm: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Rheoli ymddangosiad coed ar hap yn ystod y gêm. Gall hyn effeithio ar ddiwydiannau sy'n ddibynnol ar dyfiant coed, megis melinau coed
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Dim {RED}(yn torri'r felin goed)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Mewn glawgoedwigoedd yn unig
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Pob man
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Safle'r prif far offer: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Lleoliad llorweddol y brif bar offer ar frig y sgrin
@@ -1723,6 +1712,8 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... yn a
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Allan o gof
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Methwyd dyroddi {BYTES} o storfa corluniau. Lleihawyd y storfa corluniau at {BYTES}. Bydd hyn yn lleihau perfformiad OpenTTD. I leihau gofynion cof gallwch roi cynnig ar analluogi graffigiau 32 did a/neu lefelau mwyháu
 
+# Video initalization errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1766,17 +1757,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Mae'r cy
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Gadael
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ydych chi eisiau gadael y gêm a dychwelyd i {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Iawn
 STR_QUIT_NO                                                     :{BLACK}Na
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Rhoi'r gorau i Gêm
@@ -1786,7 +1768,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ydych c
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Twyllo
 STR_CHEATS_TOOLTIP                                              :{BLACK}Mae'r blychau marcio'n dangos os ydych chi wedi twyllo neu beidio, gan nodi sut
-STR_CHEATS_WARNING                                              :{BLACK}Rhybudd! Rydych ar fin bradychu eich cydgystadleuwyr. Cofiwch y bydd y fath gywilydd yn cael ei gofio o'r awr hon hyd byth
 STR_CHEAT_MONEY                                                 :{LTBLUE}Cynyddu arian {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Chwarae fel cwmni: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tarw Dur Hud (chwalu diwydiannau, gwrthrychau nad oes modd eu chwalu): {ORANGE}{STRING}
@@ -1896,12 +1877,9 @@ STR_FACE_TIE                                                    :Tei:
 STR_FACE_EARRING                                                :Clustlws:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Newid tei neu glustlws
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Amlchwaraewr
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Hysbys
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Dewis rhwyd gêm a hysbysebir (rhyngrwyd) neu un anhysbys (rhwydwaith leol)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Na
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ia
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Enw chwaraewr:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Byddwch chi'n ymddangos i'r chwaraewyr eraill dan yr enw hwn
 
@@ -1942,8 +1920,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Ymuno â
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Adnewyddu'r gweinydd
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Adnewyddu'r wybodaeth am y gweinydd
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Canfod gweinydd
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Chwilio'r rhwydwaith am weinydd
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Ychwanegu gweinydd
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Ychwanegu gweinydd i'r rhestr a gaiff ei wirio bob tro am gemau sy'n rhedeg
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Dechrau gweinydd
@@ -1960,8 +1936,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Bydd y g
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Gosod cyfrinair
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Diogelwch eich gêm â chyfrinair os nad ydych am i fynediad ato fod yn gyhoeddus
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Na
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ia
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} gwestai
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Uchafswm nifer gwesteion:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Dewiswch uchafswm y gwesteion. Does dim rhaid llanw pob slot
@@ -1975,46 +1949,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Iaith i'
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Rhoi gwybod i'r chwaraewyr pa iaith y dylid ei siarad ar y gweinydd
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Rhowch enw ar gyfer y gêm rhwydwaith
-
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Unrhyw
-STR_NETWORK_LANG_ENGLISH                                        :Saesneg
-STR_NETWORK_LANG_GERMAN                                         :Almaeneg
-STR_NETWORK_LANG_FRENCH                                         :Ffrangeg
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasilaidd
-STR_NETWORK_LANG_BULGARIAN                                      :Bwlgaraidd
-STR_NETWORK_LANG_CHINESE                                        :Tseineeg
-STR_NETWORK_LANG_CZECH                                          :Tsiecaidd
-STR_NETWORK_LANG_DANISH                                         :Daneg
-STR_NETWORK_LANG_DUTCH                                          :Iseldireg
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Ffineg
-STR_NETWORK_LANG_HUNGARIAN                                      :Hwngareg
-STR_NETWORK_LANG_ICELANDIC                                      :Islandaidd
-STR_NETWORK_LANG_ITALIAN                                        :Eidaleg
-STR_NETWORK_LANG_JAPANESE                                       :Siapaneaidd
-STR_NETWORK_LANG_KOREAN                                         :Coreeg
-STR_NETWORK_LANG_LITHUANIAN                                     :Lithiwaneg
-STR_NETWORK_LANG_NORWEGIAN                                      :Norwyeg
-STR_NETWORK_LANG_POLISH                                         :Pwyleg
-STR_NETWORK_LANG_PORTUGUESE                                     :Portiwgaleg
-STR_NETWORK_LANG_ROMANIAN                                       :Rwmaneg
-STR_NETWORK_LANG_RUSSIAN                                        :Rwsieg
-STR_NETWORK_LANG_SLOVAK                                         :Slofaceg
-STR_NETWORK_LANG_SLOVENIAN                                      :Slofeneg
-STR_NETWORK_LANG_SPANISH                                        :Sbaeneg
-STR_NETWORK_LANG_SWEDISH                                        :Swedeg
-STR_NETWORK_LANG_TURKISH                                        :Twrceg
-STR_NETWORK_LANG_UKRAINIAN                                      :Wcraneg
-STR_NETWORK_LANG_AFRIKAANS                                      :Affricâns
-STR_NETWORK_LANG_CROATIAN                                       :Croatieg
-STR_NETWORK_LANG_CATALAN                                        :Catalaneg
-STR_NETWORK_LANG_ESTONIAN                                       :Estoneg
-STR_NETWORK_LANG_GALICIAN                                       :Galiseg
-STR_NETWORK_LANG_GREEK                                          :Groeg
-STR_NETWORK_LANG_LATVIAN                                        :Latfieg
-############ End of leave-in-this-order
 
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Cyntedd Gemau Amlchwaraewr
@@ -2066,22 +2000,14 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Mae'r cw
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Rhestr Cleientiaid
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Gwylio
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Cwmni newydd
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Cicio
-STR_NETWORK_CLIENTLIST_BAN                                      :Gwahardd
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Rhoi arian
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Siarad â phawb
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Siarad a'r cwmni
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Neges breifat
+
+
 
 STR_NETWORK_SERVER                                              :Gweinydd
 STR_NETWORK_CLIENT                                              :Gwestai
 STR_NETWORK_SPECTATORS                                          :Gwylwyr
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Nodwch faint o arian yr hoffech chi ei roi
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Peidio cadw'r cyfrinair a roddwyd
@@ -2182,8 +2108,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** Mae {STRING
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** Mae {STRING} wedi dechrau cwmni newydd (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** Mae {STRING} wedi gadael y gêm ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** Mae {STRING} wedi newid ei (h)enw i {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** Rhoddodd {STRING} {2:CURRENCY_LONG} i'ch cwmni
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Fe roddoch chi {2:CURRENCY_LONG} {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Fe gaewyd y sesiwn gan y gweinydd
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Mae'r gweinydd yn ailgychwyn...{}Arhoswch...
 
@@ -2260,6 +2184,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Mae Open
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ia, llawrlwytho'r graffigau
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Na, gadael OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Dewisiadau Tryloywder
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Toglu tryloywder ar gyfer arwyddion. Mae Ctrl+Clic yn cloi
@@ -2299,6 +2224,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Adeilad
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Uno pwynt llwybro
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Adeiladu pwynt llwybro annibynnol
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Adeiladu Rheilffyrdd
@@ -2483,7 +2410,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Maint: {
 STR_OBJECT_CLASS_LTHS                                           :Goleudai
 STR_OBJECT_CLASS_TRNS                                           :Tyrrau Darlledu
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Coed
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Dewiswch y math o goeden i'w phlannu. Os oes coeden yno'n barod, bydd hyn yn plannu mwy o goed o fath ar hap
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Coed o fath ar hap
@@ -2685,17 +2612,20 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Tir cwmni
 STR_ABOUT_OPENTTD                                               :{WHITE}Gwybodaeth am OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Hawlfraint Wreiddiol {COPYRIGHT} 1995 Chris Sawyer, Holl cedwir pob hawl
 STR_ABOUT_VERSION                                               :{BLACK}fersiwn OpenTTD {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 Y tîm OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} Y tîm OpenTTD
 
 # Framerate display window
+STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}Nifer y ticiau gêm a efelychir bob eiliad.
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}Nifer o fframiau fideo a lunir bob eiliad.
 STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}Pa mor gyflym mae'r gêm yn rhedeg, o gymharu a'r cyflymder i'w ddisgwyl ar gyfradd efelychu arferol.
+STR_FRAMERATE_AVERAGE                                           :{WHITE}Cymedr
 STR_FRAMERATE_FPS_GOOD                                          :{LTBLUE}{DECIMAL} frâm yr eiliad
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Trin cargo:
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_VIDEO                                     :Allbwn fideo
+STR_FRAMETIME_CAPTION_SOUND                                     :Cymysgu sain
 ############ End of leave-in-this-order
 
 
@@ -2732,14 +2662,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Nifer trefi:
 STR_MAPGEN_DATE                                                 :{BLACK}Dyddiad:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Nifer diwydiannau:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Uchder map uchafsymol:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Cynyddu uchder uchafsymol mynyddoedd ar y map un uned
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Lleihau uchder uchafsymol mynyddoedd ar y map un uned
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Uchder Llinell Eira:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Symud y llinell eira un yn uwch
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Symud y llinell eira un yn is
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Cynhyrchydd Tir:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorithm Coed:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Math Tirwedd:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Lefel y Môr:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Afonydd:
@@ -2764,8 +2687,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Enw'r Ma
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Maint:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Newid uchder uchafsymol y map
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Newid uchder Llinell Eira
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Newid y flwyddyn gychwyn
 
 # SE Map generation
@@ -3043,13 +2964,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Llwgrw
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}Amcanion {COMPANY}
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Amcanion Bydol
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Amcanion bydol:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Dim -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Amherthnasol -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Amcanion cwmni:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Cliciwch ar amcan i ganoli'r brif olygfa ar y diwydiant/tref/teil Mae Ctrl+Clic yn agor ffenestr golwg newydd ar leoliad y diwydiant/tref/teil
 
 # Goal question window
@@ -3280,8 +3198,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Diwydiannau
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Dim -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% wedi'i gludo)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% wedi'i gludo)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Enwau diwydiannau - cliciwch ar enw i ganoli'r sgrin ar ddiwydiant. Mae Ctrl+Clic yn agor ffenest golwg newydd ar leoliad y diwydiant
 
@@ -3591,10 +3507,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Canoli'r brif olygfa ar leoliad y trên. Bydd Ctrl+Clic yn dilyn yn ffenestr bennaf
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Canoli'r brif olygfa ar leoliad y cerbyd, Bydd Ctrl+Clic yn dilyn yn ffenestr bennaf
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Canol'r prif olygfa ar leoliad yr long. Bydd Ctrl+Clic yn dilyn yn ffenestr bennaf
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Canoli'r brif olygfa ar leoliad yr awyren. Bydd Ctrl+Clic yn dilyn yn ffenestr bennaf
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Anfon trên i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Anfon cerbyd i'r depo. Bydd CTRL+clic yn rhoi gwasanaeth iddo'n unig
@@ -3626,10 +3538,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Dangos m
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Dangos manylion llong
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Dangos manylion awyren
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gweithred y trên - cliciwch yma stopio/cychwyn y trên. Ctrl+Clic i sgrolio i'r gyrchfan
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gweithred y cerbyd - cliciwch yma stopio/cychwyn y cerbyd. Ctrl+Clic i sgrolio i'r gyrchfan
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gweithred y llong - cliciwch yma stopio/cychwyn y llong. Ctrl+Clic i sgrolio i'r gyrchfan
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gweithred yr awyren - cliciwch yma stopio/cychwyn yr awyren. Ctrl+Clic i sgrolio i'r gyrchfan
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Llwytho / Dadlwytho
@@ -4034,6 +3943,7 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}Derbyn
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Dewis y sgript a amlygwyd
 STR_AI_LIST_CANCEL                                              :{BLACK}Canslo
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Peidio newid y sgript
+
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paramedrau

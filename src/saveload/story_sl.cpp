@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -41,8 +39,7 @@ static const SaveLoad _story_page_elements_desc[] = {
 
 static void Save_STORY_PAGE_ELEMENT()
 {
-	StoryPageElement *s;
-	FOR_ALL_STORY_PAGE_ELEMENTS(s) {
+	for (StoryPageElement *s : StoryPageElement::Iterate()) {
 		SlSetArrayIndex(s->index);
 		SlObject(s, _story_page_elements_desc);
 	}
@@ -77,8 +74,7 @@ static const SaveLoad _story_pages_desc[] = {
 
 static void Save_STORY_PAGE()
 {
-	StoryPage *s;
-	FOR_ALL_STORY_PAGES(s) {
+	for (StoryPage *s : StoryPage::Iterate()) {
 		SlSetArrayIndex(s->index);
 		SlObject(s, _story_pages_desc);
 	}

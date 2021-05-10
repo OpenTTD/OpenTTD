@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -48,7 +46,7 @@ struct FontState {
 	inline void SetColour(TextColour c)
 	{
 		assert(c >= TC_BLUE && c <= TC_BLACK);
-		this->cur_colour = c;
+		if ((this->cur_colour & TC_FORCED) == 0) this->cur_colour = c;
 	}
 
 	/**

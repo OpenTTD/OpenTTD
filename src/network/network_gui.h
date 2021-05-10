@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -13,12 +11,13 @@
 #define NETWORK_GUI_H
 
 #include "../company_type.h"
+#include "../date_type.h"
 #include "../economy_type.h"
 #include "../window_type.h"
 #include "network_type.h"
+#include "network_gamelist.h"
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
-void ShowNetworkGiveMoneyWindow(CompanyID company);
 void ShowNetworkChatQueryWindow(DestType type, int dest);
 void ShowJoinStatusWindow();
 void ShowNetworkGameWindow();
@@ -39,5 +38,6 @@ struct NetworkCompanyInfo : NetworkCompanyStats {
 };
 
 NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company);
+NetworkGameList *GetLobbyGameInfo();
 
 #endif /* NETWORK_GUI_H */

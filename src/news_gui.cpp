@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -18,6 +16,7 @@
 #include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "vehicle_gui.h"
+#include "roadveh.h"
 #include "station_base.h"
 #include "industry.h"
 #include "town.h"
@@ -34,6 +33,8 @@
 #include "company_base.h"
 #include "settings_internal.h"
 #include "guitimer_func.h"
+#include "group_gui.h"
+#include "zoom_func.h"
 
 #include "widgets/news_widget.h"
 
@@ -44,6 +45,7 @@
 const NewsItem *_statusbar_news_item = nullptr;
 
 static uint MIN_NEWS_AMOUNT = 30;        ///< preferred minimum amount of news messages
+static uint MAX_NEWS_AMOUNT = 1 << 10;   ///< Do not exceed this number of news messages
 static uint _total_news = 0;             ///< current number of news items
 static NewsItem *_oldest_news = nullptr; ///< head of news items queue
 NewsItem *_latest_news = nullptr;        ///< tail of news items queue
@@ -183,12 +185,14 @@ static const NWidgetPart _nested_small_news_widgets[] = {
 	NWidget(NWID_HORIZONTAL),
 		NWidget(WWT_CLOSEBOX, COLOUR_LIGHT_BLUE, WID_N_CLOSEBOX),
 		NWidget(WWT_EMPTY, COLOUR_LIGHT_BLUE, WID_N_CAPTION), SetFill(1, 0),
+		NWidget(WWT_TEXTBTN, COLOUR_LIGHT_BLUE, WID_N_SHOW_GROUP), SetMinimalSize(14, 11), SetResize(1, 0),
+				SetDataTip(STR_NULL /* filled in later */, STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP),
 	EndContainer(),
 
 	/* Main part */
 	NWidget(WWT_PANEL, COLOUR_LIGHT_BLUE, WID_N_HEADLINE),
 		NWidget(WWT_INSET, COLOUR_LIGHT_BLUE, WID_N_INSET), SetPadding(2, 2, 2, 2),
-			NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_N_VIEWPORT), SetPadding(1, 1, 1, 1), SetMinimalSize(274, 47), SetFill(1, 0),
+			NWidget(NWID_VIEWPORT, INVALID_COLOUR, WID_N_VIEWPORT), SetMinimalSize(274, 47), SetFill(1, 0),
 		EndContainer(),
 		NWidget(WWT_EMPTY, COLOUR_WHITE, WID_N_MESSAGE), SetMinimalSize(275, 20), SetFill(1, 0), SetPadding(0, 5, 0, 5),
 	EndContainer(),
@@ -235,13 +239,13 @@ static NewsTypeData _news_type_data[] = {
 	NewsTypeData("news_display.production_other",  30, SND_BEGIN       ),  ///< NT_INDUSTRY_OTHER
 	NewsTypeData("news_display.production_nobody", 30, SND_BEGIN       ),  ///< NT_INDUSTRY_NOBODY
 	NewsTypeData("news_display.advice",           150, SND_BEGIN       ),  ///< NT_ADVICE
-	NewsTypeData("news_display.new_vehicles",      30, SND_1E_OOOOH    ),  ///< NT_NEW_VEHICLES
+	NewsTypeData("news_display.new_vehicles",      30, SND_1E_NEW_ENGINE), ///< NT_NEW_VEHICLES
 	NewsTypeData("news_display.acceptance",        90, SND_BEGIN       ),  ///< NT_ACCEPTANCE
 	NewsTypeData("news_display.subsidies",        180, SND_BEGIN       ),  ///< NT_SUBSIDIES
 	NewsTypeData("news_display.general",           60, SND_BEGIN       ),  ///< NT_GENERAL
 };
 
-assert_compile(lengthof(_news_type_data) == NT_END);
+static_assert(lengthof(_news_type_data) == NT_END);
 
 /**
  * Return the news display option.
@@ -280,6 +284,27 @@ struct NewsWindow : Window {
 
 		/* For company news with a face we have a separate headline in param[0] */
 		if (desc == &_company_news_desc) this->GetWidget<NWidgetCore>(WID_N_TITLE)->widget_data = this->ni->params[0];
+
+		NWidgetCore *nwid = this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP);
+		if (ni->reftype1 == NR_VEHICLE && nwid != nullptr) {
+			const Vehicle *v = Vehicle::Get(ni->ref1);
+			switch (v->type) {
+				case VEH_TRAIN:
+					nwid->widget_data = STR_TRAIN;
+					break;
+				case VEH_ROAD:
+					nwid->widget_data = RoadVehicle::From(v)->IsBus() ? STR_BUS : STR_LORRY;
+					break;
+				case VEH_SHIP:
+					nwid->widget_data = STR_SHIP;
+					break;
+				case VEH_AIRCRAFT:
+					nwid->widget_data = STR_PLANE;
+					break;
+				default:
+					break; // Do nothing
+			}
+		}
 
 		this->FinishInitNested(0);
 
@@ -356,6 +381,24 @@ struct NewsWindow : Window {
 				str = GetEngineInfoString(engine);
 				break;
 			}
+
+			case WID_N_SHOW_GROUP:
+				if (this->ni->reftype1 == NR_VEHICLE) {
+					Dimension d2 = GetStringBoundingBox(this->GetWidget<NWidgetCore>(WID_N_SHOW_GROUP)->widget_data);
+					d2.height += WD_CAPTIONTEXT_TOP + WD_CAPTIONTEXT_BOTTOM;
+					d2.width += WD_CAPTIONTEXT_LEFT + WD_CAPTIONTEXT_RIGHT;
+					*size = d2;
+				} else {
+					/* Hide 'Show group window' button if this news is not about a vehicle. */
+					size->width = 0;
+					size->height = 0;
+					resize->width = 0;
+					resize->height = 0;
+					fill->width = 0;
+					fill->height = 0;
+				}
+				return;
+
 			default:
 				return; // Do nothing
 		}
@@ -379,7 +422,7 @@ struct NewsWindow : Window {
 	{
 		switch (widget) {
 			case WID_N_CAPTION:
-				DrawCaption(r, COLOUR_LIGHT_BLUE, this->owner, STR_NEWS_MESSAGE_CAPTION);
+				DrawCaption(r, COLOUR_LIGHT_BLUE, this->owner, TC_FROMSTRING, STR_NEWS_MESSAGE_CAPTION, SA_HOR_CENTER);
 				break;
 
 			case WID_N_PANEL:
@@ -451,6 +494,12 @@ struct NewsWindow : Window {
 			case WID_N_VIEWPORT:
 				break; // Ignore clicks
 
+			case WID_N_SHOW_GROUP:
+				if (this->ni->reftype1 == NR_VEHICLE) {
+					const Vehicle *v = Vehicle::Get(this->ni->ref1);
+					ShowCompanyGroupForVehicle(v);
+				}
+				break;
 			default:
 				if (this->ni->reftype1 == NR_VEHICLE) {
 					const Vehicle *v = Vehicle::Get(this->ni->ref1);
@@ -459,8 +508,8 @@ struct NewsWindow : Window {
 					TileIndex tile1 = GetReferenceTile(this->ni->reftype1, this->ni->ref1);
 					TileIndex tile2 = GetReferenceTile(this->ni->reftype2, this->ni->ref2);
 					if (_ctrl_pressed) {
-						if (tile1 != INVALID_TILE) ShowExtraViewPortWindow(tile1);
-						if (tile2 != INVALID_TILE) ShowExtraViewPortWindow(tile2);
+						if (tile1 != INVALID_TILE) ShowExtraViewportWindow(tile1);
+						if (tile2 != INVALID_TILE) ShowExtraViewportWindow(tile2);
 					} else {
 						if ((tile1 == INVALID_TILE || !ScrollMainWindowToTile(tile1)) && tile2 != INVALID_TILE) {
 							ScrollMainWindowToTile(tile2);
@@ -469,16 +518,6 @@ struct NewsWindow : Window {
 				}
 				break;
 		}
-	}
-
-	EventState OnKeyPress(WChar key, uint16 keycode) override
-	{
-		if (keycode == WKC_SPACE) {
-			/* Don't continue. */
-			delete this;
-			return ES_HANDLED;
-		}
-		return ES_NOT_HANDLED;
 	}
 
 	/**
@@ -500,7 +539,7 @@ struct NewsWindow : Window {
 		int count = this->timer.CountElapsed(delta_ms);
 		if (count > 0) {
 			/* Scroll up newsmessages from the bottom */
-			int newtop = max(this->top - 2 * count, _screen.height - this->height - this->status_height - this->chat_height);
+			int newtop = std::max(this->top - 2 * count, _screen.height - this->height - this->status_height - this->chat_height);
 			this->SetWindowTop(newtop);
 		}
 
@@ -518,12 +557,12 @@ private:
 	{
 		if (this->top == newtop) return;
 
-		int mintop = min(newtop, this->top);
-		int maxtop = max(newtop, this->top);
+		int mintop = std::min(newtop, this->top);
+		int maxtop = std::max(newtop, this->top);
 		if (this->viewport != nullptr) this->viewport->top += newtop - this->top;
 		this->top = newtop;
 
-		SetDirtyBlocks(this->left, mintop, this->left + this->width, maxtop + this->height);
+		AddDirtyBlock(this->left, mintop, this->left + this->width, maxtop + this->height);
 	}
 
 	StringID GetCompanyMessageString() const
@@ -555,7 +594,6 @@ private:
 
 /* static */ int NewsWindow::duration = 0; // Instance creation.
 
-
 /** Open up an own newspaper window for the news item */
 static void ShowNewspaper(const NewsItem *ni)
 {
@@ -568,7 +606,7 @@ static void ShowNewspaper(const NewsItem *ni)
 /** Show news item in the ticker */
 static void ShowTicker(const NewsItem *ni)
 {
-	if (_settings_client.sound.news_ticker) SndPlayFx(SND_16_MORSE);
+	if (_settings_client.sound.news_ticker) SndPlayFx(SND_16_NEWS_TICKER);
 
 	_statusbar_news_item = ni;
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_TICKER);
@@ -623,7 +661,10 @@ static bool ReadyForNextNewsItem()
 /** Move to the next ticker item */
 static void MoveToNextTickerItem()
 {
-	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
+	/* There is no status bar, so no reason to show news;
+	 * especially important with the end game screen when
+	 * there is no status bar but possible news. */
+	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
 
 	/* if we're not at the last item, then move on */
 	while (_statusbar_news_item != _latest_news) {
@@ -654,6 +695,11 @@ static void MoveToNextTickerItem()
 /** Move to the next news item */
 static void MoveToNextNewsItem()
 {
+	/* There is no status bar, so no reason to show news;
+	 * especially important with the end game screen when
+	 * there is no status bar but possible news. */
+	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
+
 	DeleteWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
 	_forced_news = nullptr;
 
@@ -680,6 +726,51 @@ static void MoveToNextNewsItem()
 		}
 		return;
 	}
+}
+
+/** Delete a news item from the queue */
+static void DeleteNewsItem(NewsItem *ni)
+{
+	/* Delete the news from the news queue. */
+	if (ni->prev != nullptr) {
+		ni->prev->next = ni->next;
+	} else {
+		assert(_oldest_news == ni);
+		_oldest_news = ni->next;
+	}
+
+	if (ni->next != nullptr) {
+		ni->next->prev = ni->prev;
+	} else {
+		assert(_latest_news == ni);
+		_latest_news = ni->prev;
+	}
+
+	_total_news--;
+
+	if (_forced_news == ni || _current_news == ni) {
+		/* When we're the current news, go to the previous item first;
+		 * we just possibly made that the last news item. */
+		if (_current_news == ni) _current_news = ni->prev;
+
+		/* About to remove the currently forced item (shown as newspapers) ||
+		 * about to remove the currently displayed item (newspapers) */
+		MoveToNextNewsItem();
+	}
+
+	if (_statusbar_news_item == ni) {
+		/* When we're the current news, go to the previous item first;
+		 * we just possibly made that the last news item. */
+		_statusbar_news_item = ni->prev;
+
+		/* About to remove the currently displayed item (ticker, or just a reminder) */
+		InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
+		MoveToNextTickerItem();
+	}
+
+	delete ni;
+
+	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
 }
 
 /**
@@ -729,6 +820,11 @@ void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceTy
 
 	ni->next = nullptr;
 	_latest_news = ni;
+
+	/* Keep the number of stored news items to a managable number */
+	if (_total_news > MAX_NEWS_AMOUNT) {
+		DeleteNewsItem(_oldest_news);
+	}
 
 	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
 }
@@ -795,50 +891,6 @@ CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	return CommandCost();
-}
-
-/** Delete a news item from the queue */
-static void DeleteNewsItem(NewsItem *ni)
-{
-	/* Delete the news from the news queue. */
-	if (ni->prev != nullptr) {
-		ni->prev->next = ni->next;
-	} else {
-		assert(_oldest_news == ni);
-		_oldest_news = ni->next;
-	}
-
-	if (ni->next != nullptr) {
-		ni->next->prev = ni->prev;
-	} else {
-		assert(_latest_news == ni);
-		_latest_news = ni->prev;
-	}
-
-	_total_news--;
-
-	if (_forced_news == ni || _current_news == ni) {
-		/* When we're the current news, go to the previous item first;
-		 * we just possibly made that the last news item. */
-		if (_current_news == ni) _current_news = ni->prev;
-
-		/* About to remove the currently forced item (shown as newspapers) ||
-		 * about to remove the currently displayed item (newspapers) */
-		MoveToNextNewsItem();
-	}
-
-	if (_statusbar_news_item == ni) {
-		/* When we're the current news, go to the previous item first;
-		 * we just possibly made that the last news item. */
-		_statusbar_news_item = ni->prev;
-
-		/* About to remove the currently displayed item (ticker, or just a reminder) */
-		MoveToNextTickerItem();
-	}
-
-	delete ni;
-
-	SetWindowDirty(WC_MESSAGE_HISTORY, 0);
 }
 
 /**
@@ -942,11 +994,6 @@ void NewsLoop()
 	/* no news item yet */
 	if (_total_news == 0) return;
 
-	/* There is no status bar, so no reason to show news;
-	 * especially important with the end game screen when
-	 * there is no status bar but possible news. */
-	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
-
 	static byte _last_clean_month = 0;
 
 	if (_last_clean_month != _cur_month) {
@@ -973,6 +1020,17 @@ static void ShowNewsMessage(const NewsItem *ni)
 		DeleteWindowById(WC_NEWS_WINDOW, 0);
 		ShowNewspaper(ni);
 	}
+}
+
+/**
+ * Close active news message window
+ * @return true if a window was closed.
+ */
+bool HideActiveNewsMessage() {
+	NewsWindow *w = (NewsWindow*)FindWindowById(WC_NEWS_WINDOW, 0);
+	if (w == nullptr) return false;
+	delete w;
+	return true;
 }
 
 /** Show previous news item */
@@ -1090,7 +1148,7 @@ struct MessageHistoryWindow : Window {
 			this->date_width = GetStringBoundingBox(STR_SHORT_DATE).width;
 
 			size->height = 4 * resize->height + this->top_spacing + this->bottom_spacing; // At least 4 lines are visible.
-			size->width = max(200u, size->width); // At least 200 pixels wide.
+			size->width = std::max(200u, size->width); // At least 200 pixels wide.
 		}
 	}
 
@@ -1116,8 +1174,8 @@ struct MessageHistoryWindow : Window {
 		bool rtl = _current_text_dir == TD_RTL;
 		uint date_left  = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width : r.left + WD_FRAMERECT_LEFT;
 		uint date_right = rtl ? r.right - WD_FRAMERECT_RIGHT : r.left + WD_FRAMERECT_LEFT + this->date_width;
-		uint news_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->date_width + WD_FRAMERECT_RIGHT;
-		uint news_right = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width - WD_FRAMERECT_RIGHT : r.right - WD_FRAMERECT_RIGHT;
+		uint news_left  = rtl ? r.left + WD_FRAMERECT_LEFT : r.left + WD_FRAMERECT_LEFT + this->date_width + WD_FRAMERECT_RIGHT + ScaleFontTrad(5);
+		uint news_right = rtl ? r.right - WD_FRAMERECT_RIGHT - this->date_width - WD_FRAMERECT_RIGHT - ScaleFontTrad(5) : r.right - WD_FRAMERECT_RIGHT;
 		for (int n = this->vscroll->GetCapacity(); n > 0; n--) {
 			SetDParam(0, ni->date);
 			DrawString(date_left, date_right, y, STR_SHORT_DATE);
@@ -1147,7 +1205,7 @@ struct MessageHistoryWindow : Window {
 			NewsItem *ni = _latest_news;
 			if (ni == nullptr) return;
 
-			for (int n = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_MH_BACKGROUND, WD_FRAMERECT_TOP, this->line_height); n > 0; n--) {
+			for (int n = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_MH_BACKGROUND, WD_FRAMERECT_TOP); n > 0; n--) {
 				ni = ni->prev;
 				if (ni == nullptr) return;
 			}

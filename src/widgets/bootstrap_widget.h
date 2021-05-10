@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -15,6 +13,13 @@
 /** Widgets of the #BootstrapBackground class. */
 enum BootstrapBackgroundWidgets {
 	WID_BB_BACKGROUND, ///< Background of the window.
+};
+
+/** Widgets of the #BootstrapErrmsgWindow class. */
+enum BootstrapErrorMessageWidgets {
+	WID_BEM_CAPTION, ///< Caption of the window.
+	WID_BEM_MESSAGE, ///< Error message.
+	WID_BEM_QUIT,    ///< Quit button.
 };
 
 /** Widgets of the #BootstrapContentDownloadStatusWindow class. */

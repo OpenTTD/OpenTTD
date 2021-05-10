@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -125,9 +123,7 @@ const SaveLoad *GetOrderDescription()
 
 static void Save_ORDR()
 {
-	Order *order;
-
-	FOR_ALL_ORDERS(order) {
+	for (Order *order : Order::Iterate()) {
 		SlSetArrayIndex(order->index);
 		SlObject(order, GetOrderDescription());
 	}
@@ -168,8 +164,8 @@ static void Load_ORDR()
 		}
 
 		/* Update all the next pointer */
-		Order *o;
-		FOR_ALL_ORDERS(o) {
+		for (Order *o : Order::Iterate()) {
+			size_t order_index = o->index;
 			/* Delete invalid orders */
 			if (o->IsType(OT_NOTHING)) {
 				delete o;
@@ -186,10 +182,6 @@ static void Load_ORDR()
 		while ((index = SlIterateArray()) != -1) {
 			Order *order = new (index) Order();
 			SlObject(order, GetOrderDescription());
-			if (IsSavegameVersionBefore(SLV_190)) {
-				order->SetTravelTimetabled(order->GetTravelTime() > 0);
-				order->SetWaitTimetabled(order->GetWaitTime() > 0);
-			}
 		}
 	}
 }
@@ -199,9 +191,7 @@ static void Ptrs_ORDR()
 	/* Orders from old savegames have pointers corrected in Load_ORDR */
 	if (IsSavegameVersionBefore(SLV_5, 2)) return;
 
-	Order *o;
-
-	FOR_ALL_ORDERS(o) {
+	for (Order *o : Order::Iterate()) {
 		SlObject(o, GetOrderDescription());
 	}
 }
@@ -218,9 +208,7 @@ const SaveLoad *GetOrderListDescription()
 
 static void Save_ORDL()
 {
-	OrderList *list;
-
-	FOR_ALL_ORDER_LISTS(list) {
+	for (OrderList *list : OrderList::Iterate()) {
 		SlSetArrayIndex(list->index);
 		SlObject(list, GetOrderListDescription());
 	}
@@ -240,9 +228,7 @@ static void Load_ORDL()
 
 static void Ptrs_ORDL()
 {
-	OrderList *list;
-
-	FOR_ALL_ORDER_LISTS(list) {
+	for (OrderList *list : OrderList::Iterate()) {
 		SlObject(list, GetOrderListDescription());
 	}
 }
@@ -255,7 +241,7 @@ const SaveLoad *GetOrderBackupDescription()
 		     SLE_VAR(OrderBackup, group,                    SLE_UINT16),
 		 SLE_CONDVAR(OrderBackup, service_interval,         SLE_FILE_U32 | SLE_VAR_U16,  SL_MIN_VERSION, SLV_192),
 		 SLE_CONDVAR(OrderBackup, service_interval,         SLE_UINT16,                SLV_192, SL_MAX_VERSION),
-		     SLE_STR(OrderBackup, name,                     SLE_STR, 0),
+		    SLE_SSTR(OrderBackup, name,                     SLE_STR),
 		SLE_CONDNULL(2,                                                                  SL_MIN_VERSION, SLV_192), // clone (2 bytes of pointer, i.e. garbage)
 		 SLE_CONDREF(OrderBackup, clone,                    REF_VEHICLE,               SLV_192, SL_MAX_VERSION),
 		     SLE_VAR(OrderBackup, cur_real_order_index,     SLE_UINT8),
@@ -279,8 +265,7 @@ static void Save_BKOR()
 	 * normal games this information isn't needed. */
 	if (!_networking || !_network_server) return;
 
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		SlSetArrayIndex(ob->index);
 		SlObject(ob, GetOrderBackupDescription());
 	}
@@ -299,8 +284,7 @@ void Load_BKOR()
 
 static void Ptrs_BKOR()
 {
-	OrderBackup *ob;
-	FOR_ALL_ORDER_BACKUPS(ob) {
+	for (OrderBackup *ob : OrderBackup::Iterate()) {
 		SlObject(ob, GetOrderBackupDescription());
 	}
 }

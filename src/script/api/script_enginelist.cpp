@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -17,8 +15,7 @@
 
 ScriptEngineList::ScriptEngineList(ScriptVehicle::VehicleType vehicle_type)
 {
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, (::VehicleType)vehicle_type) {
+	for (const Engine *e : Engine::IterateType((::VehicleType)vehicle_type)) {
 		if (ScriptObject::GetCompany() == OWNER_DEITY || HasBit(e->company_avail, ScriptObject::GetCompany())) this->AddItem(e->index);
 	}
 }

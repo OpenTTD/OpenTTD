@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -559,10 +557,17 @@ void ScriptList::AddList(ScriptList *list)
 {
 	if (list == this) return;
 
-	ScriptListMap *list_items = &list->items;
-	for (ScriptListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
-		this->AddItem((*iter).first);
-		this->SetValue((*iter).first, (*iter).second);
+	if (this->IsEmpty()) {
+		/* If this is empty, we can just take the items of the other list as is. */
+		this->items = list->items;
+		this->buckets = list->buckets;
+		this->modifications++;
+	} else {
+		ScriptListMap *list_items = &list->items;
+		for (ScriptListMap::iterator iter = list_items->begin(); iter != list_items->end(); iter++) {
+			this->AddItem((*iter).first);
+			this->SetValue((*iter).first, (*iter).second);
+		}
 	}
 }
 

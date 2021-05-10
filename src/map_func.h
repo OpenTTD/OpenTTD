@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -243,11 +241,11 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 	 * @param y Another tile to add
 	 * @return The resulting tile(index)
 	 */
-	#define TILE_ADD(x, y) ((x) + (y))
+#	define TILE_ADD(x, y) ((x) + (y))
 #else
 	extern TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 		const char *exp, const char *file, int line);
-	#define TILE_ADD(x, y) (TileAdd((x), (y), #x " + " #y, __FILE__, __LINE__))
+#	define TILE_ADD(x, y) (TileAdd((x), (y), #x " + " #y, __FILE__, __LINE__))
 #endif
 
 /**

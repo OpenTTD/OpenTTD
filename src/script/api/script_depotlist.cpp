@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -28,8 +26,7 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 
 		case ScriptTile::TRANSPORT_AIR: {
 			/* Hangars are not seen as real depots by the depot code. */
-			const Station *st;
-			FOR_ALL_STATIONS(st) {
+			for (const Station *st : Station::Iterate()) {
 				if (st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) {
 					for (uint i = 0; i < st->airport.GetNumHangars(); i++) {
 						this->AddItem(st->airport.GetHangarTile(i));
@@ -41,8 +38,7 @@ ScriptDepotList::ScriptDepotList(ScriptTile::TransportType transport_type)
 	}
 
 	/* Handle 'standard' depots. */
-	const Depot *depot;
-	FOR_ALL_DEPOTS(depot) {
+	for (const Depot *depot : Depot::Iterate()) {
 		if ((::GetTileOwner(depot->xy) == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && ::IsTileType(depot->xy, tile_type)) this->AddItem(depot->xy);
 	}
 }

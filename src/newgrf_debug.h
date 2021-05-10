@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -28,7 +26,6 @@ enum NewGrfDebugSpritePickerMode {
 struct NewGrfDebugSpritePicker {
 	NewGrfDebugSpritePickerMode mode;   ///< Current state
 	void *clicked_pixel;                ///< Clicked pixel (pointer to blitter buffer)
-	uint32 click_time;                  ///< Realtime tick when clicked to detect next frame
 	std::vector<SpriteID> sprites;       ///< Sprites found
 };
 

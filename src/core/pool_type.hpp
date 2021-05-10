@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -82,9 +80,9 @@ private:
 template <class Titem, typename Tindex, size_t Tgrowth_step, size_t Tmax_size, PoolType Tpool_type = PT_NORMAL, bool Tcache = false, bool Tzero = true>
 struct Pool : PoolBase {
 	/* Ensure Tmax_size is within the bounds of Tindex. */
-	assert_compile((uint64)(Tmax_size - 1) >> 8 * sizeof(Tindex) == 0);
+	static_assert((uint64)(Tmax_size - 1) >> 8 * sizeof(Tindex) == 0);
 
-	static const size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
+	static constexpr size_t MAX_SIZE = Tmax_size; ///< Make template parameter accessible from outside
 
 	const char * const name; ///< Name of this pool
 
@@ -139,12 +137,97 @@ struct Pool : PoolBase {
 	}
 
 	/**
+	 * Iterator to iterate all valid T of a pool
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 */
+	template <class T>
+	struct PoolIterator {
+		typedef T value_type;
+		typedef T* pointer;
+		typedef T& reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
+
+		explicit PoolIterator(size_t index) : index(index)
+		{
+			this->ValidateIndex();
+		};
+
+		bool operator==(const PoolIterator &other) const { return this->index == other.index; }
+		bool operator!=(const PoolIterator &other) const { return !(*this == other); }
+		T * operator*() const { return T::Get(this->index); }
+		PoolIterator & operator++() { this->index++; this->ValidateIndex(); return *this; }
+
+	private:
+		size_t index;
+		void ValidateIndex() { while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index))) this->index++; }
+	};
+
+	/*
+	 * Iterable ensemble of all valid T
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 */
+	template <class T>
+	struct IterateWrapper {
+		size_t from;
+		IterateWrapper(size_t from = 0) : from(from) {}
+		PoolIterator<T> begin() { return PoolIterator<T>(this->from); }
+		PoolIterator<T> end() { return PoolIterator<T>(T::GetPoolSize()); }
+		bool empty() { return this->begin() == this->end(); }
+	};
+
+	/**
+	 * Iterator to iterate all valid T of a pool
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 */
+	template <class T, class F>
+	struct PoolIteratorFiltered {
+		typedef T value_type;
+		typedef T* pointer;
+		typedef T& reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
+
+		explicit PoolIteratorFiltered(size_t index, F filter) : index(index), filter(filter)
+		{
+			this->ValidateIndex();
+		};
+
+		bool operator==(const PoolIteratorFiltered &other) const { return this->index == other.index; }
+		bool operator!=(const PoolIteratorFiltered &other) const { return !(*this == other); }
+		T * operator*() const { return T::Get(this->index); }
+		PoolIteratorFiltered & operator++() { this->index++; this->ValidateIndex(); return *this; }
+
+	private:
+		size_t index;
+		F filter;
+		void ValidateIndex() { while (this->index < T::GetPoolSize() && !(T::IsValidID(this->index) && this->filter(this->index))) this->index++; }
+	};
+
+	/*
+	 * Iterable ensemble of all valid T
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 */
+	template <class T, class F>
+	struct IterateWrapperFiltered {
+		size_t from;
+		F filter;
+		IterateWrapperFiltered(size_t from, F filter) : from(from), filter(filter) {}
+		PoolIteratorFiltered<T, F> begin() { return PoolIteratorFiltered<T, F>(this->from, this->filter); }
+		PoolIteratorFiltered<T, F> end() { return PoolIteratorFiltered<T, F>(T::GetPoolSize(), this->filter); }
+		bool empty() { return this->begin() == this->end(); }
+	};
+
+	/**
 	 * Base class for all PoolItems
 	 * @tparam Tpool The pool this item is going to be part of
 	 */
 	template <struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero> *Tpool>
 	struct PoolItem {
 		Tindex index; ///< Index of this pool item
+
+		/** Type of the pool this item is going to be part of */
+		typedef struct Pool<Titem, Tindex, Tgrowth_step, Tmax_size, Tpool_type, Tcache, Tzero> Pool;
 
 		/**
 		 * Allocates space for new Titem
@@ -286,6 +369,13 @@ struct Pool : PoolBase {
 		 * @note it's called only when !CleaningPool()
 		 */
 		static inline void PostDestructor(size_t index) { }
+
+		/**
+		 * Returns an iterable ensemble of all valid Titem
+		 * @param from index of the first Titem to consider
+		 * @return an iterable ensemble of all valid Titem
+		 */
+		static Pool::IterateWrapper<Titem> Iterate(size_t from = 0) { return Pool::IterateWrapper<Titem>(from); }
 	};
 
 private:
@@ -312,11 +402,5 @@ private:
 
 	void FreeItem(size_t index);
 };
-
-#define FOR_ALL_ITEMS_FROM(type, iter, var, start) \
-	for (size_t iter = start; var = nullptr, iter < type::GetPoolSize(); iter++) \
-		if ((var = type::Get(iter)) != nullptr)
-
-#define FOR_ALL_ITEMS(type, iter, var) FOR_ALL_ITEMS_FROM(type, iter, var, 0)
 
 #endif /* POOL_TYPE_HPP */

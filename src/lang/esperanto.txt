@@ -11,8 +11,6 @@
 ##case n
 
 
-# $Id$
-
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -51,9 +49,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Tritiko
 STR_CARGO_PLURAL_RUBBER                                         :Kaŭĉuko
 STR_CARGO_PLURAL_SUGAR                                          :Sukero
 STR_CARGO_PLURAL_TOYS                                           :Ludiloj
-STR_CARGO_PLURAL_CANDY                                          :Dolĉaĵoj
+STR_CARGO_PLURAL_SWEETS                                         :Dolĉaĵoj
 STR_CARGO_PLURAL_COLA                                           :Kolao
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Sukerŝpinaĵoj
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Sukerŝpinaĵoj
 STR_CARGO_PLURAL_BUBBLES                                        :Vezikoj
 STR_CARGO_PLURAL_TOFFEE                                         :Tofeoj
 STR_CARGO_PLURAL_BATTERIES                                      :Baterioj
@@ -85,9 +83,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Tritiko
 STR_CARGO_SINGULAR_RUBBER                                       :Kaŭĉuko
 STR_CARGO_SINGULAR_SUGAR                                        :Sukero
 STR_CARGO_SINGULAR_TOY                                          :Ludilo
-STR_CARGO_SINGULAR_CANDY                                        :Dolĉaĵo
+STR_CARGO_SINGULAR_SWEETS                                       :Dolĉaĵo
 STR_CARGO_SINGULAR_COLA                                         :Kolao
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sukerŝpinaĵo
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Sukerŝpinaĵo
 STR_CARGO_SINGULAR_BUBBLE                                       :Veziko
 STR_CARGO_SINGULAR_TOFFEE                                       :Tofeo
 STR_CARGO_SINGULAR_BATTERY                                      :Baterio
@@ -234,8 +232,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Elektu v
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Elektu ordigaj kondiĉoj
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Selektu kriteriojn por filtrado
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordigu laŭ
-STR_BUTTON_LOCATION                                             :{BLACK}Loko
-STR_BUTTON_RENAME                                               :{BLACK}Alinomi
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Fermu fenestron
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Fenestra titolo - tiru por movi la fenestron
@@ -305,6 +301,8 @@ STR_SORT_BY_POWER_VS_RUNNING_COST                               :Potenco/Irkosto
 STR_SORT_BY_CARGO_CAPACITY                                      :Ŝarĝkapablo
 STR_SORT_BY_RANGE                                               :Atingopovo
 STR_SORT_BY_POPULATION                                          :Enloĝantaro
+
+# Group by options for vehicle list
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Paŭzigu la ludon
@@ -391,7 +389,7 @@ STR_FILE_MENU_EXIT                                              :Fermu
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Mondomapo
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Plia vidujo
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Plia vidujo
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Legendo de ŝarĝfluo
 STR_MAP_MENU_SIGN_LIST                                          :Afiŝa listo
 
@@ -466,9 +464,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Baskuligi Konzolon
 STR_ABOUT_MENU_AI_DEBUG                                         :AI/Ludo skripto sencimigo
 STR_ABOUT_MENU_SCREENSHOT                                       :Ekranfoto
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Pligrandiga ekranfoto
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Ekranfoto defaŭlte zoma
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Tuta karto ekranfoto
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Pri 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Bildeto-liniigilo
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Montri/ne montri limigujo
@@ -558,8 +553,8 @@ STR_MONTH_DEC                                                   :Decembro
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Ŝlosilo
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Montru ŝlosilon al grafikoj
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
@@ -638,9 +633,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Propra 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Muzika Volumeno
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Efekta Volumeno
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAKS
-STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
@@ -846,6 +838,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nova {STRING} nun haveblas!  -  {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ne plu akceptas {STRING.n}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ne plu akceptas {STRING.n} aŭ {STRING.n}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} nun akceptas {STRING.n}
@@ -863,7 +856,7 @@ STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transporta monopolo!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vidujo {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Vidujo {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiu al vidujo
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopiu la lokon de la ĉefvido al ĉi tiu vidujo
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Gluu de vidujo
@@ -908,8 +901,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Kartvela Lario 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Irana Rialo (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Stratveturiloj
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Elektu stratflankon kie veturu veturiloj
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Veturu maldekstre
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Veturu dekstre
 
@@ -961,11 +952,15 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Ekrana m
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Elektu uzotan ekranan montrograndon
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
+
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Interfacgrandeco
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normala
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Duobla grandeco
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Kvaroble grandeco
+
+
 
 
 
@@ -1304,7 +1299,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Plene
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Koloraj novaĵoj aperas en: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Komenca jaro: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Aktivigu glatan ekonomion (pliaj, etaj ŝanĝoj): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permesu aĉetadon de dividaĵoj en aliaj kompanioj: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Aŭtomate konstruu semaforojn antaŭ: {STRING}
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Ebligu la signal-GUI-on: {STRING}
@@ -1332,9 +1326,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :permesate
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :permesate, kutimo urbomapo
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :En ludo metanta de arbojn: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :neniu {RED}(rompas ligno muelilo)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :nur en tropika praarbaroj
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Ĉie
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Loko de ĉefa ilbreto: {STRING}
 STR_CONFIG_SETTING_STATUSBAR_POS                                :Loko de kondiĉbaro: {STRING}
@@ -1380,6 +1371,8 @@ STR_CONFIG_SETTING_QUERY_CAPTION                                :{WHITE}Ŝanĝu 
 
 # Config errors
 
+# Video initalization errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1420,17 +1413,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Ĉi tiu 
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Forlasi
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Ĉu vi vere volas fermi la ludon kaj reiri al {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Jes
 STR_QUIT_NO                                                     :{BLACK}Ne
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Vindozo
-STR_OSNAME_UNIX                                                 :Unikso
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Foriri de la ludo
@@ -1440,7 +1424,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Ĉu vi 
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Filudaĵoj
 STR_CHEATS_TOOLTIP                                              :{BLACK}La kvadratetoj indikas ĉu vi jam uzis la filudaĵon antaŭe.
-STR_CHEATS_WARNING                                              :{BLACK}Atentu! Vi preskaŭ perfidos viajn kunulajn konkurantojn. Memoru ke io tia rememoriĝos eterne
 STR_CHEAT_MONEY                                                 :{LTBLUE}Altigu monkvanton per {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludanta kiel kompanio: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magia forigilo (forviŝu industriojn, nemovebla objektoj): {ORANGE}{STRING}
@@ -1547,6 +1530,7 @@ STR_FACE_TIE                                                    :Kravato:
 STR_FACE_EARRING                                                :Orelringo:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ŝanĝi kravaton aŭ orelringon.
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Pluraj ludantoj
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Ludantnomo:
@@ -1589,8 +1573,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Aliĝu a
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Refreŝigu servilon
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Refreŝigu servilajn informojn
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Trovu servilon
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Serĉu reton por servilo
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Aldonu servilon
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Aldonas servilon al la listo kiu ĉiam estos kontrolata pri kurantaj ludoj
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Startu servilon
@@ -1620,46 +1602,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Parolata
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Aliaj ludantoj scios kiu lingvo paroliĝas en la servilo
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Tajpu nomon por la retludo
-
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Ajna
-STR_NETWORK_LANG_ENGLISH                                        :Angla
-STR_NETWORK_LANG_GERMAN                                         :Germana
-STR_NETWORK_LANG_FRENCH                                         :Franca
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazila
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgara
-STR_NETWORK_LANG_CHINESE                                        :Ĉina
-STR_NETWORK_LANG_CZECH                                          :Ĉeĥa
-STR_NETWORK_LANG_DANISH                                         :Dana
-STR_NETWORK_LANG_DUTCH                                          :Nederlanda
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finna
-STR_NETWORK_LANG_HUNGARIAN                                      :Hungara
-STR_NETWORK_LANG_ICELANDIC                                      :Islanda
-STR_NETWORK_LANG_ITALIAN                                        :Itala
-STR_NETWORK_LANG_JAPANESE                                       :Japana
-STR_NETWORK_LANG_KOREAN                                         :Korea
-STR_NETWORK_LANG_LITHUANIAN                                     :Litova
-STR_NETWORK_LANG_NORWEGIAN                                      :Norveĝa
-STR_NETWORK_LANG_POLISH                                         :Pola
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugala
-STR_NETWORK_LANG_ROMANIAN                                       :Romana
-STR_NETWORK_LANG_RUSSIAN                                        :Rusa
-STR_NETWORK_LANG_SLOVAK                                         :Slovaka
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovena
-STR_NETWORK_LANG_SPANISH                                        :Hispana
-STR_NETWORK_LANG_SWEDISH                                        :Sveda
-STR_NETWORK_LANG_TURKISH                                        :Turka
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukraina
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikansa
-STR_NETWORK_LANG_CROATIAN                                       :Kroata
-STR_NETWORK_LANG_CATALAN                                        :Kataluna
-STR_NETWORK_LANG_ESTONIAN                                       :Estona
-STR_NETWORK_LANG_GALICIAN                                       :Galica
-STR_NETWORK_LANG_GREEK                                          :Greka
-STR_NETWORK_LANG_LATVIAN                                        :Latva
-############ End of leave-in-this-order
 
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Atendejo por plurludantaj ludoj
@@ -1711,22 +1653,14 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanio
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Klientlisto
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spekti
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nova kompanio
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Forbatu
-STR_NETWORK_CLIENTLIST_BAN                                      :Bari
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donu monon
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parolu al ĉiuj
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Parolu al kompanio
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privata mesaĝo
+
+
 
 STR_NETWORK_SERVER                                              :Servilo
 STR_NETWORK_CLIENT                                              :Kliento
 STR_NETWORK_SPECTATORS                                          :Spektantoj
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Tajpu kiom da mono vi volas doni
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne konservu la pasvorton.
@@ -1815,8 +1749,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} i�
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ekis novan kompanion (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ĉesis la ludon ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ŝanĝis sian nomon al {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} donis al via kompanio {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Vi donis {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}La servilo fermis la seancon
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}La servilo restartiĝas...{}Bonvolu atendi...
 
@@ -1886,6 +1818,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Jes, elŝuti la grafikojn
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Ne, fermi OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Ebloj por travidebleco
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Baskuligi travideblecon de signoj. Ctrl+Klak por ŝlosi
@@ -1917,6 +1850,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Konstru
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ligi vojpunkton
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Krei apartan vojpunkton
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Konstruado de Fervojo
@@ -2081,7 +2016,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Grandeco
 STR_OBJECT_CLASS_LTHS                                           :Lumturoj
 STR_OBJECT_CLASS_TRNS                                           :Transigantoj
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arboj
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Elektu arbo-tipon por planti. Kiam la regiono jam havas arbojn, aliaj arb-tipoj plantiĝos
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arboj de hazardaj tipoj
@@ -2258,7 +2193,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Kompanie poseda
 STR_ABOUT_OPENTTD                                               :{WHITE}Pri OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Origina kopirajto {COPYRIGHT} 1995 Chris Sawyer, Ĉiuj rajtoj rezervitaj
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD-versio {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 La teamo de OpenTTD
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} La teamo de OpenTTD
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -2299,11 +2234,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Kiom da urboj:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Kiom da industrioj:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Neĝlinia alteco:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Altigu la neĝlinion per unu
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Malaltigu la neĝlinion per unu
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerilo:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Arba algoritmo:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terentipo:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Marnivelo:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Riveroj:
@@ -2328,7 +2259,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Mapa nom
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Grandeco:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Ŝanĝu altecon de la neĝlinio
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ŝanĝu komencjaron
 
 # SE Map generation
@@ -2711,8 +2641,6 @@ STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Ni serĉ
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industrioj
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Neniu -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% transportite)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportite)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrionomoj - klaku nomon por centri vidon ĉe la industrio. Ctrl+Klak por malfermi novan vidujon ĉe la loko
 
@@ -2990,10 +2918,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ĉe aŭt
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Centre vidu trajnan lokon en la ĉefvido. Ctrl+klak sekvas trajnon en la ĉefvido
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Centre vidu la veturilon en la ĉefvido. Ctrl+klak sekvas veturlilon en la ĉefvido
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Centre vidu ŝipon en ĉefvido. Ctrl+klak sekvas ŝipon en la ĉefvido
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Centre vidu aviadilon en la ĉefvido. Ctrl-klak sekvas aviadilon en la ĉefvido
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Sendi trajnon al garaĝo. Stir+Klak nur prizorgos
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Sendi veturilon al garaĝo. Stir+Klak nur prizorgos
@@ -3025,10 +2949,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Montru s
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Montru ŝipajn detalojn
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Montru aviadilajn detalojn
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Nuna trajna ago - klaku por haltigi/starti la trajnon. Ctrl+klak rulumas al trajncelo
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Nuna veturila ago - klaku ĉi tie por haltigi/starti veturilon. Ctrl+klak rulumas al veturilcelo
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Nuna ŝipa ago - klaku ĉi tie por haltigi/starti ŝipon. Ctrl+klak rulumas al ŝipcelo
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Nuna aviadila ago - klaku ĉi tie por haltigi/starti aviadilon. Ctrl+klak rulumas al aviadilcelo
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Ŝarĝante / Deŝarĝante
@@ -3389,6 +3310,7 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}Akcepti
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Elekti emfazita skripto
 STR_AI_LIST_CANCEL                                              :{BLACK}Nuligi
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne ŝanĝu AI-on
+
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametroj

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -45,7 +43,11 @@ void DeleteConstructionWindows();
 void HideVitalWindows();
 void ShowVitalWindows();
 
-void ReInitAllWindows();
+/**
+ * Re-initialize all windows.
+ * @param zoom_changed Set if windows are being re-initialized due to a zoom level changed.
+ */
+void ReInitAllWindows(bool zoom_changed);
 
 void SetWindowWidgetDirty(WindowClass cls, WindowNumber number, byte widget_index);
 void SetWindowDirty(WindowClass cls, WindowNumber number);
@@ -55,6 +57,7 @@ void DeleteWindowById(WindowClass cls, WindowNumber number, bool force = true);
 void DeleteWindowByClass(WindowClass cls);
 
 bool EditBoxInGlobalFocus();
+bool FocusedWindowIsConsole();
 Point GetCaretPosition();
 
 #endif /* WINDOW_FUNC_H */

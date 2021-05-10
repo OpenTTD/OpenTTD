@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -15,7 +13,8 @@
 #include "company_type.h"
 #include "vehicle_type.h"
 
-void ShowCompanyGroup(CompanyID company, VehicleType veh);
+void ShowCompanyGroup(CompanyID company, VehicleType veh, GroupID group = INVALID_GROUP, bool need_existing_window = false);
+void ShowCompanyGroupForVehicle(const Vehicle *v);
 void DeleteGroupHighlightOfVehicle(const Vehicle *v);
 
 #endif /* GROUP_GUI_H */

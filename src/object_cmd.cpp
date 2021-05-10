@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -175,8 +173,7 @@ void UpdateCompanyHQ(TileIndex tile, uint score)
  */
 void UpdateObjectColours(const Company *c)
 {
-	Object *obj;
-	FOR_ALL_OBJECTS(obj) {
+	for (Object *obj : Object::Iterate()) {
 		Owner owner = GetTileOwner(obj->location.tile);
 		/* Not the current owner, so colour doesn't change. */
 		if (owner != c->index) continue;
@@ -251,7 +248,14 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			} else {
 				if (!allow_ground) return_cmd_error(STR_ERROR_MUST_BE_BUILT_ON_WATER);
 				/* For non-water tiles, we'll have to clear it before building. */
-				cost.AddCost(DoCommand(t, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR));
+
+				/* When relocating HQ, allow it to be relocated (partial) on itself. */
+				if (!(type == OBJECT_HQ &&
+						IsTileType(t, MP_OBJECT) &&
+						IsTileOwner(t, _current_company) &&
+						IsObjectType(t, OBJECT_HQ))) {
+					cost.AddCost(DoCommand(t, 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR));
+				}
 			}
 		}
 
@@ -493,7 +497,10 @@ static CommandCost ClearTile_Object(TileIndex tile, DoCommandFlag flags)
 			return_cmd_error(STR_ERROR_OWNED_BY);
 		} else if ((spec->flags & OBJECT_FLAG_CANNOT_REMOVE) != 0 && (spec->flags & OBJECT_FLAG_AUTOREMOVE) == 0) {
 			/* In the game editor or with cheats we can remove, otherwise we can't. */
-			if (!_cheats.magic_bulldozer.value) return CMD_ERROR;
+			if (!_cheats.magic_bulldozer.value) {
+				if (type == OBJECT_HQ) return_cmd_error(STR_ERROR_COMPANY_HEADQUARTERS_IN);
+				return CMD_ERROR;
+			}
 
 			/* Removing with the cheat costs more in TTDPatch / the specs. */
 			cost.MultiplyCost(25);
@@ -548,15 +555,23 @@ static void AddAcceptedCargo_Object(TileIndex tile, CargoArray &acceptance, Carg
 
 	/* Top town building generates 10, so to make HQ interesting, the top
 	 * type makes 20. */
-	acceptance[CT_PASSENGERS] += max(1U, level);
+	acceptance[CT_PASSENGERS] += std::max(1U, level);
 	SetBit(*always_accepted, CT_PASSENGERS);
 
 	/* Top town building generates 4, HQ can make up to 8. The
 	 * proportion passengers:mail is different because such a huge
 	 * commercial building generates unusually high amount of mail
 	 * correspondence per physical visitor. */
-	acceptance[CT_MAIL] += max(1U, level / 2);
+	acceptance[CT_MAIL] += std::max(1U, level / 2);
 	SetBit(*always_accepted, CT_MAIL);
+}
+
+static void AddProducedCargo_Object(TileIndex tile, CargoArray &produced)
+{
+	if (!IsObjectType(tile, OBJECT_HQ)) return;
+
+	produced[CT_PASSENGERS]++;
+	produced[CT_MAIL]++;
 }
 
 
@@ -840,7 +855,7 @@ extern const TileTypeProcs _tile_type_object_procs = {
 	AnimateTile_Object,          // animate_tile_proc
 	TileLoop_Object,             // tile_loop_proc
 	ChangeTileOwner_Object,      // change_tile_owner_proc
-	nullptr,                        // add_produced_cargo_proc
+	AddProducedCargo_Object,     // add_produced_cargo_proc
 	nullptr,                        // vehicle_enter_tile_proc
 	GetFoundation_Object,        // get_foundation_proc
 	TerraformTile_Object,        // terraform_tile_proc

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -44,8 +42,7 @@ StationKdtree _station_kdtree(Kdtree_StationXYFunc);
 void RebuildStationKdtree()
 {
 	std::vector<StationID> stids;
-	BaseStation *st;
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		stids.push_back(st->index);
 	}
 	_station_kdtree.Build(stids.begin(), stids.end());
@@ -54,7 +51,6 @@ void RebuildStationKdtree()
 
 BaseStation::~BaseStation()
 {
-	free(this->name);
 	free(this->speclist);
 
 	if (CleaningPool()) return;
@@ -100,8 +96,7 @@ Station::~Station()
 		this->loading_vehicles.front()->LeaveStation();
 	}
 
-	Aircraft *a;
-	FOR_ALL_AIRCRAFT(a) {
+	for (Aircraft *a : Aircraft::Iterate()) {
 		if (!a->IsNormalAircraft()) continue;
 		if (a->targetairport == this->index) a->targetairport = INVALID_STATION;
 	}
@@ -125,8 +120,7 @@ Station::~Station()
 		}
 	}
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		/* Forget about this station if this station is removed */
 		if (v->last_station_visited == this->index) {
 			v->last_station_visited = INVALID_STATION;
@@ -164,7 +158,7 @@ Station::~Station()
 	CargoPacket::InvalidateAllFrom(this->index);
 
 	_station_kdtree.Remove(this->index);
-	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
+	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
 }
 
 
@@ -326,11 +320,11 @@ uint Station::GetCatchmentRadius() const
 	uint ret = CA_NONE;
 
 	if (_settings_game.station.modified_catchment) {
-		if (this->bus_stops          != nullptr)         ret = max<uint>(ret, CA_BUS);
-		if (this->truck_stops        != nullptr)         ret = max<uint>(ret, CA_TRUCK);
-		if (this->train_station.tile != INVALID_TILE) ret = max<uint>(ret, CA_TRAIN);
-		if (this->ship_station.tile  != INVALID_TILE) ret = max<uint>(ret, CA_DOCK);
-		if (this->airport.tile       != INVALID_TILE) ret = max<uint>(ret, this->airport.GetSpec()->catchment);
+		if (this->bus_stops          != nullptr)      ret = std::max<uint>(ret, CA_BUS);
+		if (this->truck_stops        != nullptr)      ret = std::max<uint>(ret, CA_TRUCK);
+		if (this->train_station.tile != INVALID_TILE) ret = std::max<uint>(ret, CA_TRAIN);
+		if (this->ship_station.tile  != INVALID_TILE) ret = std::max<uint>(ret, CA_DOCK);
+		if (this->airport.tile       != INVALID_TILE) ret = std::max<uint>(ret, this->airport.GetSpec()->catchment);
 	} else {
 		if (this->bus_stops != nullptr || this->truck_stops != nullptr || this->train_station.tile != INVALID_TILE || this->ship_station.tile != INVALID_TILE || this->airport.tile != INVALID_TILE) {
 			ret = CA_UNMODIFIED;
@@ -352,10 +346,10 @@ Rect Station::GetCatchmentRect() const
 	int catchment_radius = this->GetCatchmentRadius();
 
 	Rect ret = {
-		max<int>(this->rect.left   - catchment_radius, 0),
-		max<int>(this->rect.top    - catchment_radius, 0),
-		min<int>(this->rect.right  + catchment_radius, MapMaxX()),
-		min<int>(this->rect.bottom + catchment_radius, MapMaxY())
+		std::max<int>(this->rect.left   - catchment_radius, 0),
+		std::max<int>(this->rect.top    - catchment_radius, 0),
+		std::min<int>(this->rect.right  + catchment_radius, MapMaxX()),
+		std::min<int>(this->rect.bottom + catchment_radius, MapMaxY())
 	};
 
 	return ret;
@@ -364,12 +358,11 @@ Rect Station::GetCatchmentRect() const
 /**
  * Add nearby industry to station's industries_near list if it accepts cargo.
  * @param ind Industry
- * @param st Station
  */
-static void AddIndustryToDeliver(Industry *ind, Station *st)
+void Station::AddIndustryToDeliver(Industry *ind)
 {
 	/* Don't check further if this industry is already in the list */
-	if (st->industries_near.find(ind) != st->industries_near.end()) return;
+	if (this->industries_near.find(ind) != this->industries_near.end()) return;
 
 	/* Include only industries that can accept cargo */
 	uint cargo_index;
@@ -378,7 +371,7 @@ static void AddIndustryToDeliver(Industry *ind, Station *st)
 	}
 	if (cargo_index >= lengthof(ind->accepts_cargo)) return;
 
-	st->industries_near.insert(ind);
+	this->industries_near.insert(ind);
 }
 
 /**
@@ -386,10 +379,8 @@ static void AddIndustryToDeliver(Industry *ind, Station *st)
  */
 void Station::RemoveFromAllNearbyLists()
 {
-	Town *t;
-	FOR_ALL_TOWNS(t) { t->stations_near.erase(this); }
-	Industry *i;
-	FOR_ALL_INDUSTRIES(i) { i->stations_near.erase(this); }
+	for (Town *t : Town::Iterate()) { t->stations_near.erase(this); }
+	for (Industry *i : Industry::Iterate()) { i->stations_near.erase(this); }
 }
 
 /**
@@ -471,7 +462,7 @@ void Station::RecomputeCatchment()
 			i->stations_near.insert(this);
 
 			/* Add if we can deliver to this industry as well */
-			AddIndustryToDeliver(i, this);
+			this->AddIndustryToDeliver(i);
 		}
 	}
 }
@@ -482,8 +473,7 @@ void Station::RecomputeCatchment()
  */
 /* static */ void Station::RecomputeCatchmentForAll()
 {
-	Station *st;
-	FOR_ALL_STATIONS(st) { st->RecomputeCatchment(); }
+	for (Station *st : Station::Iterate()) { st->RecomputeCatchment(); }
 }
 
 /************************************************************************/
@@ -533,7 +523,7 @@ CommandCost StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 	} else if (!this->PtInExtendedRect(x, y)) {
 		/* current rect is not empty and new point is outside this rect
 		 * make new spread-out rectangle */
-		Rect new_rect = {min(x, this->left), min(y, this->top), max(x, this->right), max(y, this->bottom)};
+		Rect new_rect = {std::min(x, this->left), std::min(y, this->top), std::max(x, this->right), std::max(y, this->bottom)};
 
 		/* check new rect dimensions against preset max */
 		int w = new_rect.right - new_rect.left + 1;
@@ -662,8 +652,7 @@ Money AirportMaintenanceCost(Owner owner)
 {
 	Money total_cost = 0;
 
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->owner == owner && (st->facilities & FACIL_AIRPORT)) {
 			total_cost += _price[PR_INFRASTRUCTURE_AIRPORT] * st->airport.GetSpec()->maintenance_cost;
 		}

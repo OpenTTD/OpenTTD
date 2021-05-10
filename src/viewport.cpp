@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -91,7 +89,9 @@
 #include "network/network_func.h"
 #include "framerate_type.h"
 
+#include <forward_list>
 #include <map>
+#include <stack>
 
 #include "table/strings.h"
 #include "table/string_colours.h"
@@ -179,7 +179,7 @@ struct ViewportDrawer {
 	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixel offset for ground sprites on the foundations.
 };
 
-static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, int bottom);
+static bool MarkViewportDirty(const Viewport *vp, int left, int top, int right, int bottom);
 
 static ViewportDrawer _vd;
 
@@ -190,7 +190,7 @@ bool _draw_dirty_blocks = false;
 uint _dirty_block_colour = 0;
 static VpSpriteSorter _vp_sprite_sorter = nullptr;
 
-static Point MapXYZToViewport(const ViewPort *vp, int x, int y, int z)
+static Point MapXYZToViewport(const Viewport *vp, int x, int y, int z)
 {
 	Point p = RemapCoords(x, y, z);
 	p.x -= vp->virtual_width / 2;
@@ -268,7 +268,7 @@ static Point _vp_move_offs;
 
 static void DoSetViewportPosition(const Window *w, int left, int top, int width, int height)
 {
-	FOR_ALL_WINDOWS_FROM_BACK_FROM(w, w) {
+	for (const Window *w : Window::IterateFromBack(w)) {
 		if (left + width > w->left &&
 				w->left + w->width > left &&
 				top + height > w->top &&
@@ -333,7 +333,7 @@ static void DoSetViewportPosition(const Window *w, int left, int top, int width,
 
 static void SetViewportPosition(Window *w, int x, int y)
 {
-	ViewPort *vp = w->viewport;
+	Viewport *vp = w->viewport;
 	int old_left = vp->virtual_left;
 	int old_top = vp->virtual_top;
 	int i;
@@ -392,9 +392,9 @@ static void SetViewportPosition(Window *w, int x, int y)
  * @return Pointer to the viewport if the xy position is in the viewport of the window,
  *         otherwise \c nullptr is returned.
  */
-ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
+Viewport *IsPtInWindowViewport(const Window *w, int x, int y)
 {
-	ViewPort *vp = w->viewport;
+	Viewport *vp = w->viewport;
 
 	if (vp != nullptr &&
 			IsInsideMM(x, vp->left, vp->left + vp->width) &&
@@ -416,7 +416,7 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
  * @param clamp_to_map Clamp the coordinate outside of the map to the closest, non-void tile within the map
  * @return Tile coordinate or (-1, -1) if given x or y is not within viewport frame
  */
-Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y, bool clamp_to_map)
+Point TranslateXYToTileCoord(const Viewport *vp, int x, int y, bool clamp_to_map)
 {
 	if (!IsInsideBS(x, vp->left, vp->width) || !IsInsideBS(y, vp->top, vp->height)) {
 		Point pt = { -1, -1 };
@@ -434,7 +434,7 @@ Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y, bool clamp_to_map
 static Point GetTileFromScreenXY(int x, int y, int zoom_x, int zoom_y)
 {
 	Window *w;
-	ViewPort *vp;
+	Viewport *vp;
 	Point pt;
 
 	if ( (w = FindWindowFromPt(x, y)) != nullptr &&
@@ -454,7 +454,7 @@ Point GetTileBelowCursor()
 Point GetTileZoomCenterWindow(bool in, Window * w)
 {
 	int x, y;
-	ViewPort *vp = w->viewport;
+	Viewport *vp = w->viewport;
 
 	if (in) {
 		x = ((_cursor.pos.x - vp->left) >> 1) + (vp->width >> 2);
@@ -475,7 +475,7 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
  * @param widget_zoom_in widget index for window with zoom-in button
  * @param widget_zoom_out widget index for window with zoom-out button
  */
-void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out)
+void HandleZoomMessage(Window *w, const Viewport *vp, byte widget_zoom_in, byte widget_zoom_out)
 {
 	w->SetWidgetDisabledState(widget_zoom_in, vp->zoom <= _settings_client.gui.zoom_min);
 	w->SetWidgetDirty(widget_zoom_in);
@@ -500,8 +500,7 @@ static void AddTileSpriteToDraw(SpriteID image, PaletteID pal, int32 x, int32 y,
 {
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
-	/*C++17: TileSpriteToDraw &ts = */ _vd.tile_sprites_to_draw.emplace_back();
-	TileSpriteToDraw &ts = _vd.tile_sprites_to_draw.back();
+	TileSpriteToDraw &ts = _vd.tile_sprites_to_draw.emplace_back();
 	ts.image = image;
 	ts.pal = pal;
 	ts.sub = sub;
@@ -696,10 +695,10 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w,
 
 	if (_draw_bounding_boxes && (image != SPR_EMPTY_BOUNDING_BOX)) {
 		/* Compute maximal extents of sprite and its bounding box */
-		left   = min(left  , RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x);
-		right  = max(right , RemapCoords(x + bb_offset_x, y + h          , z + bb_offset_z).x + 1);
-		top    = min(top   , RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y);
-		bottom = max(bottom, RemapCoords(x + w          , y + h          , z + bb_offset_z).y + 1);
+		left   = std::min(left  , RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x);
+		right  = std::max(right , RemapCoords(x + bb_offset_x, y + h          , z + bb_offset_z).x + 1);
+		top    = std::min(top   , RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y);
+		bottom = std::max(bottom, RemapCoords(x + w          , y + h          , z + bb_offset_z).y + 1);
 	}
 
 	/* Do not add the sprite to the viewport, if it is outside */
@@ -710,8 +709,7 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w,
 		return;
 	}
 
-	/*C++17: ParentSpriteToDraw &ps = */ _vd.parent_sprites_to_draw.emplace_back();
-	ParentSpriteToDraw &ps = _vd.parent_sprites_to_draw.back();
+	ParentSpriteToDraw &ps = _vd.parent_sprites_to_draw.emplace_back();
 	ps.x = tmp_x;
 	ps.y = tmp_y;
 
@@ -722,15 +720,14 @@ void AddSortableSpriteToDraw(SpriteID image, PaletteID pal, int x, int y, int w,
 	ps.pal = pal;
 	ps.sub = sub;
 	ps.xmin = x + bb_offset_x;
-	ps.xmax = x + max(bb_offset_x, w) - 1;
+	ps.xmax = x + std::max(bb_offset_x, w) - 1;
 
 	ps.ymin = y + bb_offset_y;
-	ps.ymax = y + max(bb_offset_y, h) - 1;
+	ps.ymax = y + std::max(bb_offset_y, h) - 1;
 
 	ps.zmin = z + bb_offset_z;
-	ps.zmax = z + max(bb_offset_z, dz) - 1;
+	ps.zmax = z + std::max(bb_offset_z, dz) - 1;
 
-	ps.comparison_done = false;
 	ps.first_child = -1;
 
 	_vd.last_child = &ps.first_child;
@@ -829,8 +826,7 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 
 	*_vd.last_child = (uint)_vd.child_screen_sprites_to_draw.size();
 
-	/*C++17: ChildScreenSpriteToDraw &cs = */ _vd.child_screen_sprites_to_draw.emplace_back();
-	ChildScreenSpriteToDraw &cs = _vd.child_screen_sprites_to_draw.back();
+	ChildScreenSpriteToDraw &cs = _vd.child_screen_sprites_to_draw.emplace_back();
 	cs.image = image;
 	cs.pal = pal;
 	cs.sub = sub;
@@ -849,8 +845,7 @@ void AddChildSpriteScreen(SpriteID image, PaletteID pal, int x, int y, bool tran
 static void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, Colours colour, uint16 width)
 {
 	assert(width != 0);
-	/*C++17: StringSpriteToDraw &ss = */ _vd.string_sprites_to_draw.emplace_back();
-	StringSpriteToDraw &ss = _vd.string_sprites_to_draw.back();
+	StringSpriteToDraw &ss = _vd.string_sprites_to_draw.emplace_back();
 	ss.string = string;
 	ss.x = x;
 	ss.y = y;
@@ -1035,7 +1030,7 @@ static void DrawTileHighlightType(const TileInfo *ti, TileHighlightType tht)
 		case THT_NONE: break;
 		case THT_WHITE: DrawTileSelectionRect(ti, PAL_NONE); break;
 		case THT_BLUE:  DrawTileSelectionRect(ti, PALETTE_SEL_TILE_BLUE); break;
-		case THT_RED:   DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING); break;
+		case THT_RED:   DrawTileSelectionRect(ti, PALETTE_SEL_TILE_RED); break;
 	}
 }
 
@@ -1480,9 +1475,8 @@ void ViewportSign::MarkDirty(ZoomLevel maxzoom) const
 		zoomlevels[zoom].bottom = this->top    + ScaleByZoom(VPSM_TOP + FONT_HEIGHT_NORMAL + VPSM_BOTTOM + 1, zoom);
 	}
 
-	Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		ViewPort *vp = w->viewport;
+	for (const Window *w : Window::IterateFromBack()) {
+		Viewport *vp = w->viewport;
 		if (vp != nullptr && vp->zoom <= maxzoom) {
 			assert(vp->width != 0);
 			Rect &zl = zoomlevels[vp->zoom];
@@ -1504,63 +1498,126 @@ static bool ViewportSortParentSpritesChecker()
 	return true;
 }
 
-/** Sort parent sprites pointer array */
+/** Sort parent sprites pointer array replicating the way original sorter did it. */
 static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 {
-	auto psdvend = psdv->end();
-	auto psd = psdv->begin();
-	while (psd != psdvend) {
-		ParentSpriteToDraw *ps = *psd;
+	if (psdv->size() < 2) return;
 
-		if (ps->comparison_done) {
-			psd++;
+	/* We rely on sprites being, for the most part, already ordered.
+	 * So we don't need to move many of them and can keep track of their
+	 * order efficiently by using stack. We always move sprites to the front
+	 * of the current position, i.e. to the top of the stack.
+	 * Also use special constants to indicate sorting state without
+	 * adding extra fields to ParentSpriteToDraw structure.
+	 */
+	const uint32 ORDER_COMPARED = UINT32_MAX; // Sprite was compared but we still need to compare the ones preceding it
+	const uint32 ORDER_RETURNED = UINT32_MAX - 1; // Makr sorted sprite in case there are other occurrences of it in the stack
+	std::stack<ParentSpriteToDraw *> sprite_order;
+	uint32 next_order = 0;
+
+	std::forward_list<std::pair<int64, ParentSpriteToDraw *>> sprite_list;  // We store sprites in a list sorted by xmin+ymin
+
+	/* Initialize sprite list and order. */
+	for (auto p = psdv->rbegin(); p != psdv->rend(); p++) {
+		sprite_list.push_front(std::make_pair((*p)->xmin + (*p)->ymin, *p));
+		sprite_order.push(*p);
+		(*p)->order = next_order++;
+	}
+
+	sprite_list.sort();
+
+	std::vector<ParentSpriteToDraw *> preceding;  // Temporarily stores sprites that precede current and their position in the list
+	auto preceding_prev = sprite_list.begin(); // Store iterator in case we need to delete a single preciding sprite
+	auto out = psdv->begin();  // Iterator to output sorted sprites
+
+	while (!sprite_order.empty()) {
+
+		auto s = sprite_order.top();
+		sprite_order.pop();
+
+		/* Sprite is already sorted, ignore it. */
+		if (s->order == ORDER_RETURNED) continue;
+
+		/* Sprite was already compared, just need to output it. */
+		if (s->order == ORDER_COMPARED) {
+			*(out++) = s;
+			s->order = ORDER_RETURNED;
 			continue;
 		}
 
-		ps->comparison_done = true;
+		preceding.clear();
 
-		for (auto psd2 = psd + 1; psd2 != psdvend; psd2++) {
-			ParentSpriteToDraw *ps2 = *psd2;
+		/* We only need sprites with xmin <= s->xmax && ymin <= s->ymax && zmin <= s->zmax
+		 * So by iterating sprites with xmin + ymin <= s->xmax + s->ymax
+		 * we get all we need and some more that we filter out later.
+		 * We don't include zmin into the sum as there are usually more neighbors on x and y than z
+		 * so including it will actually increase the amount of false positives.
+		 * Also min coordinates can be > max so using max(xmin, xmax) + max(ymin, ymax)
+		 * to ensure that we iterate the current sprite as we need to remove it from the list.
+		 */
+		auto ssum = std::max(s->xmax, s->xmin) + std::max(s->ymax, s->ymin);
+		auto prev = sprite_list.before_begin();
+		auto x = sprite_list.begin();
+		while (x != sprite_list.end() && ((*x).first <= ssum)) {
+			auto p = (*x).second;
+			if (p == s) {
+				/* We found the current sprite, remove it and move on. */
+				x = sprite_list.erase_after(prev);
+				continue;
+			}
 
-			if (ps2->comparison_done) continue;
+			auto p_prev = prev;
+			prev = x++;
 
-			/* Decide which comparator to use, based on whether the bounding
-			 * boxes overlap
-			 */
-			if (ps->xmax >= ps2->xmin && ps->xmin <= ps2->xmax && // overlap in X?
-					ps->ymax >= ps2->ymin && ps->ymin <= ps2->ymax && // overlap in Y?
-					ps->zmax >= ps2->zmin && ps->zmin <= ps2->zmax) { // overlap in Z?
-				/* Use X+Y+Z as the sorting order, so sprites closer to the bottom of
-				 * the screen and with higher Z elevation, are drawn in front.
-				 * Here X,Y,Z are the coordinates of the "center of mass" of the sprite,
-				 * i.e. X=(left+right)/2, etc.
-				 * However, since we only care about order, don't actually divide / 2
-				 */
-				if (ps->xmin + ps->xmax + ps->ymin + ps->ymax + ps->zmin + ps->zmax <=
-						ps2->xmin + ps2->xmax + ps2->ymin + ps2->ymax + ps2->zmin + ps2->zmax) {
-					continue;
-				}
-			} else {
-				/* We only change the order, if it is definite.
-				 * I.e. every single order of X, Y, Z says ps2 is behind ps or they overlap.
-				 * That is: If one partial order says ps behind ps2, do not change the order.
-				 */
-				if (ps->xmax < ps2->xmin ||
-						ps->ymax < ps2->ymin ||
-						ps->zmax < ps2->zmin) {
+			if (s->xmax < p->xmin || s->ymax < p->ymin || s->zmax < p->zmin) continue;
+			if (s->xmin <= p->xmax && // overlap in X?
+					s->ymin <= p->ymax && // overlap in Y?
+					s->zmin <= p->zmax) { // overlap in Z?
+				if (s->xmin + s->xmax + s->ymin + s->ymax + s->zmin + s->zmax <=
+						p->xmin + p->xmax + p->ymin + p->ymax + p->zmin + p->zmax) {
 					continue;
 				}
 			}
+			preceding.push_back(p);
+			preceding_prev = p_prev;
+		}
 
-			/* Move ps2 in front of ps */
-			ParentSpriteToDraw *temp = ps2;
-			for (auto psd3 = psd2; psd3 > psd; psd3--) {
-				*psd3 = *(psd3 - 1);
+		if (preceding.empty()) {
+			/* No preceding sprites, add current one to the output */
+			*(out++) = s;
+			s->order = ORDER_RETURNED;
+			continue;
+		}
+
+		/* Optimization for the case when we only have 1 sprite to move. */
+		if (preceding.size() == 1) {
+			auto p = preceding[0];
+			/* We can only output the preceding sprite if there can't be any other sprites preceding it. */
+			if (p->xmax <= s->xmax && p->ymax <= s->ymax && p->zmax <= s->zmax) {
+				p->order = ORDER_RETURNED;
+				s->order = ORDER_RETURNED;
+				sprite_list.erase_after(preceding_prev);
+				*(out++) = p;
+				*(out++) = s;
+				continue;
 			}
-			*psd = temp;
+		}
+
+		/* Sort all preceding sprites by order and assign new orders in reverse (as original sorter did). */
+		std::sort(preceding.begin(), preceding.end(), [](const ParentSpriteToDraw *a, const ParentSpriteToDraw *b) {
+			return a->order > b->order;
+		});
+
+		s->order = ORDER_COMPARED;
+		sprite_order.push(s);  // Still need to output so push it back for now
+
+		for (auto p: preceding) {
+			p->order = next_order++;
+			sprite_order.push(p);
 		}
 	}
 }
+
 
 static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd, const ChildScreenSpriteToDrawVector *csstdv)
 {
@@ -1653,7 +1710,7 @@ static void ViewportDrawStrings(ZoomLevel zoom, const StringSpriteToDrawVector *
 	}
 }
 
-void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom)
+void ViewportDoDraw(const Viewport *vp, int left, int top, int right, int bottom)
 {
 	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &_vd.dpi;
@@ -1724,33 +1781,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	_vd.child_screen_sprites_to_draw.clear();
 }
 
-/**
- * Make sure we don't draw a too big area at a time.
- * If we do, the sprite memory will overflow.
- */
-static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
-{
-	if (ScaleByZoom(bottom - top, vp->zoom) * ScaleByZoom(right - left, vp->zoom) > (int)(180000 * ZOOM_LVL_BASE * ZOOM_LVL_BASE)) {
-		if ((bottom - top) > (right - left)) {
-			int t = (top + bottom) >> 1;
-			ViewportDrawChk(vp, left, top, right, t);
-			ViewportDrawChk(vp, left, t, right, bottom);
-		} else {
-			int t = (left + right) >> 1;
-			ViewportDrawChk(vp, left, top, t, bottom);
-			ViewportDrawChk(vp, t, top, right, bottom);
-		}
-	} else {
-		ViewportDoDraw(vp,
-			ScaleByZoom(left - vp->left, vp->zoom) + vp->virtual_left,
-			ScaleByZoom(top - vp->top, vp->zoom) + vp->virtual_top,
-			ScaleByZoom(right - vp->left, vp->zoom) + vp->virtual_left,
-			ScaleByZoom(bottom - vp->top, vp->zoom) + vp->virtual_top
-		);
-	}
-}
-
-static inline void ViewportDraw(const ViewPort *vp, int left, int top, int right, int bottom)
+static inline void ViewportDraw(const Viewport *vp, int left, int top, int right, int bottom)
 {
 	if (right <= vp->left || bottom <= vp->top) return;
 
@@ -1764,7 +1795,12 @@ static inline void ViewportDraw(const ViewPort *vp, int left, int top, int right
 	if (top < vp->top) top = vp->top;
 	if (bottom > vp->top + vp->height) bottom = vp->top + vp->height;
 
-	ViewportDrawChk(vp, left, top, right, bottom);
+	ViewportDoDraw(vp,
+		ScaleByZoom(left - vp->left, vp->zoom) + vp->virtual_left,
+		ScaleByZoom(top - vp->top, vp->zoom) + vp->virtual_top,
+		ScaleByZoom(right - vp->left, vp->zoom) + vp->virtual_left,
+		ScaleByZoom(bottom - vp->top, vp->zoom) + vp->virtual_top
+	);
 }
 
 /**
@@ -1795,7 +1831,7 @@ void Window::DrawViewport() const
  * @param[in,out] scroll_x Viewport X scroll.
  * @param[in,out] scroll_y Viewport Y scroll.
  */
-static inline void ClampViewportToMap(const ViewPort *vp, int *scroll_x, int *scroll_y)
+static inline void ClampViewportToMap(const Viewport *vp, int *scroll_x, int *scroll_y)
 {
 	/* Centre of the viewport is hot spot. */
 	Point pt = {
@@ -1821,7 +1857,7 @@ static inline void ClampViewportToMap(const ViewPort *vp, int *scroll_x, int *sc
  */
 void UpdateViewportPosition(Window *w)
 {
-	const ViewPort *vp = w->viewport;
+	const Viewport *vp = w->viewport;
 
 	if (w->viewport->follow_vehicle != INVALID_VEHICLE) {
 		const Vehicle *veh = Vehicle::Get(w->viewport->follow_vehicle);
@@ -1866,34 +1902,37 @@ void UpdateViewportPosition(Window *w)
  * @param top    Top edge of area to repaint
  * @param right  Right edge of area to repaint
  * @param bottom Bottom edge of area to repaint
+ * @return true if the viewport contains a dirty block
  * @ingroup dirty
  */
-static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, int bottom)
+static bool MarkViewportDirty(const Viewport *vp, int left, int top, int right, int bottom)
 {
 	/* Rounding wrt. zoom-out level */
 	right  += (1 << vp->zoom) - 1;
 	bottom += (1 << vp->zoom) - 1;
 
 	right -= vp->virtual_left;
-	if (right <= 0) return;
+	if (right <= 0) return false;
 
 	bottom -= vp->virtual_top;
-	if (bottom <= 0) return;
+	if (bottom <= 0) return false;
 
-	left = max(0, left - vp->virtual_left);
+	left = std::max(0, left - vp->virtual_left);
 
-	if (left >= vp->virtual_width) return;
+	if (left >= vp->virtual_width) return false;
 
-	top = max(0, top - vp->virtual_top);
+	top = std::max(0, top - vp->virtual_top);
 
-	if (top >= vp->virtual_height) return;
+	if (top >= vp->virtual_height) return false;
 
-	SetDirtyBlocks(
+	AddDirtyBlock(
 		UnScaleByZoomLower(left, vp->zoom) + vp->left,
 		UnScaleByZoomLower(top, vp->zoom) + vp->top,
 		UnScaleByZoom(right, vp->zoom) + vp->left + 1,
 		UnScaleByZoom(bottom, vp->zoom) + vp->top + 1
 	);
+
+	return true;
 }
 
 /**
@@ -1902,24 +1941,27 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
  * @param top    Top    edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
  * @param right  Right  edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
  * @param bottom Bottom edge of area to repaint. (viewport coordinates, that is wrt. #ZOOM_LVL_NORMAL)
+ * @return true if at least one viewport has a dirty block
  * @ingroup dirty
  */
-void MarkAllViewportsDirty(int left, int top, int right, int bottom)
+bool MarkAllViewportsDirty(int left, int top, int right, int bottom)
 {
-	Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		ViewPort *vp = w->viewport;
+	bool dirty = false;
+
+	for (const Window *w : Window::IterateFromBack()) {
+		Viewport *vp = w->viewport;
 		if (vp != nullptr) {
 			assert(vp->width != 0);
-			MarkViewportDirty(vp, left, top, right, bottom);
+			if (MarkViewportDirty(vp, left, top, right, bottom)) dirty = true;
 		}
 	}
+
+	return dirty;
 }
 
 void ConstrainAllViewportsZoom()
 {
-	Window *w;
-	FOR_ALL_WINDOWS_FROM_FRONT(w) {
+	for (Window *w : Window::IterateFromFront()) {
 		if (w->viewport == nullptr) continue;
 
 		ZoomLevel zoom = static_cast<ZoomLevel>(Clamp(w->viewport->zoom, _settings_client.gui.zoom_min, _settings_client.gui.zoom_max));
@@ -2079,7 +2121,7 @@ void SetSelectionRed(bool b)
  * @param sign the sign to check
  * @return true if the sign was hit
  */
-static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y, const ViewportSign *sign)
+static bool CheckClickOnViewportSign(const Viewport *vp, int x, int y, const ViewportSign *sign)
 {
 	bool small = (vp->zoom >= ZOOM_LVL_OUT_16X);
 	int sign_half_width = ScaleByZoom((small ? sign->width_small : sign->width_normal) / 2, vp->zoom);
@@ -2097,7 +2139,7 @@ static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y, const Vie
  * @param y Y position of click
  * @return true if the sign was hit
  */
-static bool CheckClickOnViewportSign(const ViewPort *vp, int x, int y)
+static bool CheckClickOnViewportSign(const Viewport *vp, int x, int y)
 {
 	if (_game_mode == GM_MENU) return false;
 
@@ -2180,16 +2222,12 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeStation(StationID id)
 	item.id.station = id;
 
 	const Station *st = Station::Get(id);
-	Point pt = RemapCoords(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE, GetTileMaxZ(st->xy) * TILE_HEIGHT);
-
-	pt.y -= 32 * ZOOM_LVL_BASE;
-	if ((st->facilities & FACIL_AIRPORT) && st->airport.type == AT_OILRIG) pt.y -= 16 * ZOOM_LVL_BASE;
-
-	item.center = pt.x;
-	item.top = pt.y;
+	assert(st->sign.kdtree_valid);
+	item.center = st->sign.center;
+	item.top = st->sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
-	_viewport_sign_maxwidth = max<int>(_viewport_sign_maxwidth, st->sign.width_normal);
+	_viewport_sign_maxwidth = std::max<int>(_viewport_sign_maxwidth, st->sign.width_normal);
 
 	return item;
 }
@@ -2201,15 +2239,12 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeWaypoint(StationID id)
 	item.id.station = id;
 
 	const Waypoint *st = Waypoint::Get(id);
-	Point pt = RemapCoords(TileX(st->xy) * TILE_SIZE, TileY(st->xy) * TILE_SIZE, GetTileMaxZ(st->xy) * TILE_HEIGHT);
-
-	pt.y -= 32 * ZOOM_LVL_BASE;
-
-	item.center = pt.x;
-	item.top = pt.y;
+	assert(st->sign.kdtree_valid);
+	item.center = st->sign.center;
+	item.top = st->sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
-	_viewport_sign_maxwidth = max<int>(_viewport_sign_maxwidth, st->sign.width_normal);
+	_viewport_sign_maxwidth = std::max<int>(_viewport_sign_maxwidth, st->sign.width_normal);
 
 	return item;
 }
@@ -2221,17 +2256,12 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeTown(TownID id)
 	item.id.town = id;
 
 	const Town *town = Town::Get(id);
-	/* Avoid using RemapCoords2, it has dependency on the foundations status of the tile, and that can be unavailable during saveload, leading to crashes.
-	 * Instead "fake" foundations by taking the highest Z coordinate of any corner of the tile. */
-	Point pt = RemapCoords(TileX(town->xy) * TILE_SIZE, TileY(town->xy) * TILE_SIZE, GetTileMaxZ(town->xy) * TILE_HEIGHT);
-
-	pt.y -= 24 * ZOOM_LVL_BASE;
-
-	item.center = pt.x;
-	item.top = pt.y;
+	assert(town->cache.sign.kdtree_valid);
+	item.center = town->cache.sign.center;
+	item.top = town->cache.sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
-	_viewport_sign_maxwidth = max<int>(_viewport_sign_maxwidth, town->cache.sign.width_normal);
+	_viewport_sign_maxwidth = std::max<int>(_viewport_sign_maxwidth, town->cache.sign.width_normal);
 
 	return item;
 }
@@ -2243,15 +2273,12 @@ ViewportSignKdtreeItem ViewportSignKdtreeItem::MakeSign(SignID id)
 	item.id.sign = id;
 
 	const Sign *sign = Sign::Get(id);
-	Point pt = RemapCoords(sign->x, sign->y, sign->z);
-
-	pt.y -= 6 * ZOOM_LVL_BASE;
-
-	item.center = pt.x;
-	item.top = pt.y;
+	assert(sign->sign.kdtree_valid);
+	item.center = sign->sign.center;
+	item.top = sign->sign.top;
 
 	/* Assume the sign can be a candidate for drawing, so measure its width */
-	_viewport_sign_maxwidth = max<int>(_viewport_sign_maxwidth, sign->sign.width_normal);
+	_viewport_sign_maxwidth = std::max<int>(_viewport_sign_maxwidth, sign->sign.width_normal);
 
 	return item;
 }
@@ -2264,31 +2291,27 @@ void RebuildViewportKdtree()
 	std::vector<ViewportSignKdtreeItem> items;
 	items.reserve(BaseStation::GetNumItems() + Town::GetNumItems() + Sign::GetNumItems());
 
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
-		items.push_back(ViewportSignKdtreeItem::MakeStation(st->index));
+	for (const Station *st : Station::Iterate()) {
+		if (st->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeStation(st->index));
 	}
 
-	const Waypoint *wp;
-	FOR_ALL_WAYPOINTS(wp) {
-		items.push_back(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
+	for (const Waypoint *wp : Waypoint::Iterate()) {
+		if (wp->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
 	}
 
-	const Town *town;
-	FOR_ALL_TOWNS(town) {
-		items.push_back(ViewportSignKdtreeItem::MakeTown(town->index));
+	for (const Town *town : Town::Iterate()) {
+		if (town->cache.sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeTown(town->index));
 	}
 
-	const Sign *sign;
-	FOR_ALL_SIGNS(sign) {
-		items.push_back(ViewportSignKdtreeItem::MakeSign(sign->index));
+	for (const Sign *sign : Sign::Iterate()) {
+		if (sign->sign.kdtree_valid) items.push_back(ViewportSignKdtreeItem::MakeSign(sign->index));
 	}
 
 	_viewport_sign_kdtree.Build(items.begin(), items.end());
 }
 
 
-static bool CheckClickOnLandscape(const ViewPort *vp, int x, int y)
+static bool CheckClickOnLandscape(const Viewport *vp, int x, int y)
 {
 	Point pt = TranslateXYToTileCoord(vp, x, y);
 
@@ -2317,7 +2340,7 @@ static void PlaceObject()
 }
 
 
-bool HandleViewportClicked(const ViewPort *vp, int x, int y)
+bool HandleViewportClicked(const Viewport *vp, int x, int y)
 {
 	const Vehicle *v = CheckClickOnVehicle(vp, x, y);
 
@@ -2611,7 +2634,7 @@ void UpdateTileSelection()
  * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
  * @param close_cond Condition for closing this tooltip.
  */
-static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_cond = TCC_NONE)
+static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const uint64 params[], TooltipCloseCondition close_cond = TCC_EXIT_VIEWPORT)
 {
 	if (!_settings_client.gui.measure_tooltip) return;
 	GuiShowTooltips(_thd.GetCallbackWnd(), str, paramcount, params, close_cond);
@@ -2654,6 +2677,18 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 		_thd.next_drawstyle = HT_POINT | others;
 	}
 	_special_mouse_mode = WSM_SIZING;
+}
+
+/** Drag over the map while holding the left mouse down. */
+void VpStartDragging(ViewportDragDropSelectionProcess process)
+{
+	_thd.select_method = VPM_X_AND_Y;
+	_thd.select_proc = process;
+	_thd.selstart.x = 0;
+	_thd.selstart.y = 0;
+	_thd.next_drawstyle = HT_RECT;
+
+	_special_mouse_mode = WSM_DRAGGING;
 }
 
 void VpSetPlaceSizingLimit(int limit)
@@ -2827,7 +2862,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
 			h0 = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t])));
 			uint ht = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t + 1])));
-			h0 = max(h0, ht);
+			h0 = std::max(h0, ht);
 
 			/* Use lookup table for end-tile based on HighLightStyle direction
 			 * flip around side (lower/upper, left/right) based on distance */
@@ -2835,7 +2870,7 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
 			h1 = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t])));
 			ht = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t + 1])));
-			h1 = max(h1, ht);
+			h1 = std::max(h1, ht);
 			break;
 		}
 	}
@@ -3265,7 +3300,7 @@ calc_heightdiff_single_direction:;
  */
 EventState VpHandlePlaceSizingDrag()
 {
-	if (_special_mouse_mode != WSM_SIZING) return ES_NOT_HANDLED;
+	if (_special_mouse_mode != WSM_SIZING && _special_mouse_mode != WSM_DRAGGING) return ES_NOT_HANDLED;
 
 	/* stop drag mode if the window has been closed */
 	Window *w = _thd.GetCallbackWnd();
@@ -3276,13 +3311,22 @@ EventState VpHandlePlaceSizingDrag()
 
 	/* while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() ) */
 	if (_left_button_down) {
+		if (_special_mouse_mode == WSM_DRAGGING) {
+			/* Only register a drag event when the mouse moved. */
+			if (_thd.new_pos.x == _thd.selstart.x && _thd.new_pos.y == _thd.selstart.y) return ES_HANDLED;
+			_thd.selstart.x = _thd.new_pos.x;
+			_thd.selstart.y = _thd.new_pos.y;
+		}
+
 		w->OnPlaceDrag(_thd.select_method, _thd.select_proc, GetTileBelowCursor());
 		return ES_HANDLED;
 	}
 
-	/* mouse button released..
-	 * keep the selected tool, but reset it to the original mode. */
+	/* Mouse button released. */
 	_special_mouse_mode = WSM_NONE;
+	if (_special_mouse_mode == WSM_DRAGGING) return ES_HANDLED;
+
+	/* Keep the selected tool, but reset it to the original mode. */
 	HighLightStyle others = _thd.place_mode & ~(HT_DRAG_MASK | HT_DIR_MASK);
 	if ((_thd.next_drawstyle & HT_DRAG_MASK) == HT_RECT) {
 		_thd.place_mode = HT_RECT | others;
@@ -3376,7 +3420,7 @@ void ResetObjectToPlace()
 	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 }
 
-Point GetViewportStationMiddle(const ViewPort *vp, const Station *st)
+Point GetViewportStationMiddle(const Viewport *vp, const Station *st)
 {
 	int x = TileX(st->xy) * TILE_SIZE;
 	int y = TileY(st->xy) * TILE_SIZE;

@@ -34,7 +34,7 @@ struct RefTable {
 	void AddRef(SQObject &obj);
 	SQBool Release(SQObject &obj);
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObject(SQGCMarkerQueue &queue);
 #endif
 	void Finalize();
 private:
@@ -61,9 +61,10 @@ struct SQSharedState
 public:
 	SQChar* GetScratchPad(SQInteger size);
 	SQInteger GetMetaMethodIdxByName(const SQObjectPtr &name);
+	void DelayFinalFree(SQCollectable *collectable);
 #ifndef NO_GARBAGE_COLLECTOR
 	SQInteger CollectGarbage(SQVM *vm);
-	static void MarkObject(SQObjectPtr &o,SQCollectable **chain);
+	static void EnqueueMarkObject(SQObjectPtr &o,SQGCMarkerQueue &queue);
 #endif
 	SQObjectPtrVec *_metamethods;
 	SQObjectPtr _metamethodsmap;
@@ -74,6 +75,10 @@ public:
 	SQObjectPtr _registry;
 	SQObjectPtr _consts;
 	SQObjectPtr _constructoridx;
+	/** Queue to make freeing of collectables iterative. */
+	std::vector<SQCollectable *> _collectable_free_queue;
+	/** Whether someone is already processing the _collectable_free_queue. */
+	bool _collectable_free_processing;
 #ifndef NO_GARBAGE_COLLECTOR
 	SQCollectable *_gc_chain;
 #endif

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -65,18 +63,5 @@ public:
 	static void ClearVehicle(const Vehicle *v);
 	static void RemoveOrder(OrderType type, DestinationID destination, bool hangar);
 };
-
-/**
- * Iterator over all order backups from a given ID.
- * @param var The variable to iterate with.
- * @param start The start of the iteration.
- */
-#define FOR_ALL_ORDER_BACKUPS_FROM(var, start) FOR_ALL_ITEMS_FROM(OrderBackup, order_backup_index, var, start)
-
-/**
- * Iterator over all order backups.
- * @param var The variable to iterate with.
- */
-#define FOR_ALL_ORDER_BACKUPS(var) FOR_ALL_ORDER_BACKUPS_FROM(var, 0)
 
 #endif /* ORDER_BACKUP_H */

@@ -45,7 +45,7 @@ public:
 	 */
 	inline void SetDemandPerNode(uint num_demands)
 	{
-		this->demand_per_node = max(this->supply_sum / num_demands, 1U);
+		this->demand_per_node = std::max(this->supply_sum / num_demands, 1U);
 	}
 
 	/**
@@ -57,7 +57,7 @@ public:
 	 */
 	inline uint EffectiveSupply(const Node &from, const Node &to)
 	{
-		return max(from.Supply() * max(1U, to.Supply()) * this->mod_size / 100 / this->demand_per_node, 1U);
+		return std::max(from.Supply() * std::max(1U, to.Supply()) * this->mod_size / 100 / this->demand_per_node, 1U);
 	}
 
 	/**
@@ -134,7 +134,7 @@ void SymmetricScaler::SetDemands(LinkGraphJob &job, NodeID from_id, NodeID to_id
 		uint undelivered = job[to_id].UndeliveredSupply();
 		if (demand_back > undelivered) {
 			demand_back = undelivered;
-			demand_forw = max(1U, demand_back * 100 / this->mod_size);
+			demand_forw = std::max(1U, demand_back * 100 / this->mod_size);
 		}
 		this->Scaler::SetDemands(job, to_id, from_id, demand_back);
 	}
@@ -230,7 +230,7 @@ void DemandCalculator::CalcDemand(LinkGraphJob &job, Tscaler scaler)
 				demand_forw = 1;
 			}
 
-			demand_forw = min(demand_forw, job[from_id].UndeliveredSupply());
+			demand_forw = std::min(demand_forw, job[from_id].UndeliveredSupply());
 
 			scaler.SetDemands(job, from_id, to_id, demand_forw);
 

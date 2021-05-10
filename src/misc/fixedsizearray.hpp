@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -69,7 +67,7 @@ public:
 	FixedSizeArray()
 	{
 		/* Ensure the size won't overflow. */
-		assert_compile(C < (SIZE_MAX - HeaderSize) / Tsize);
+		static_assert(C < (SIZE_MAX - HeaderSize) / Tsize);
 
 		/* allocate block for header + items (don't construct items) */
 		data = (T*)((MallocT<byte>(HeaderSize + C * Tsize)) + HeaderSize);

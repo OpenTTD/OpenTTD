@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -16,25 +14,23 @@
 #include "viewport_type.h"
 #include "core/pool_type.hpp"
 #include "company_type.h"
+#include <string>
 
 typedef Pool<Sign, SignID, 16, 64000> SignPool;
 extern SignPool _sign_pool;
 
 struct Sign : SignPool::PoolItem<&_sign_pool> {
-	char *name;
-	ViewportSign sign;
-	int32        x;
-	int32        y;
-	int32        z;
-	Owner        owner; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
+	std::string         name;
+	TrackedViewportSign sign;
+	int32               x;
+	int32               y;
+	int32               z;
+	Owner               owner; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 
 	Sign(Owner owner = INVALID_OWNER);
 	~Sign();
 
 	void UpdateVirtCoord();
 };
-
-#define FOR_ALL_SIGNS_FROM(var, start) FOR_ALL_ITEMS_FROM(Sign, sign_index, var, start)
-#define FOR_ALL_SIGNS(var) FOR_ALL_SIGNS_FROM(var, 0)
 
 #endif /* SIGNS_BASE_H */

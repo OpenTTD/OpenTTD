@@ -81,7 +81,7 @@ public:
 	SQString *PrintObjVal(const SQObject &o);
 
 
-	void Raise_Error(const SQChar *s, ...);
+	void Raise_Error(const SQChar *s, ...) WARN_FORMAT(2, 3);
 	void Raise_Error(SQObjectPtr &desc);
 	void Raise_IdxError(const SQObject &o);
 	void Raise_CompareError(const SQObject &o1, const SQObject &o2);
@@ -113,7 +113,7 @@ public:
 #endif
 
 #ifndef NO_GARBAGE_COLLECTOR
-	void Mark(SQCollectable **chain);
+	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
 #endif
 	void Finalize();
 	void GrowCallStack() {

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -17,10 +15,11 @@
 /** Implementation of the null sound driver. */
 class SoundDriver_Null : public SoundDriver {
 public:
-	const char *Start(const char * const *param) override { return nullptr; }
+	const char *Start(const StringList &param) override { return nullptr; }
 
 	void Stop() override { }
 	const char *GetName() const override { return "null"; }
+	bool HasOutput() const override { return false; }
 };
 
 /** Factory for the null sound driver. */

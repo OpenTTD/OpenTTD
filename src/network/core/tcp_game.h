@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -18,6 +16,7 @@
 #include "tcp.h"
 #include "../network_type.h"
 #include "../../core/pool_type.hpp"
+#include <chrono>
 
 /**
  * Enum with all types of TCP packets.
@@ -25,7 +24,7 @@
  */
 enum PacketGameType {
 	/*
-	 * These first three pair of packets (thus six in
+	 * These first four pair of packets (thus eight in
 	 * total) must remain in this order for backward
 	 * and forward compatibility between clients that
 	 * are trying to join directly.
@@ -42,6 +41,10 @@ enum PacketGameType {
 	/* Packets used for the pre-game lobby. */
 	PACKET_CLIENT_COMPANY_INFO,          ///< Request information about all companies.
 	PACKET_SERVER_COMPANY_INFO,          ///< Information about a single company.
+
+	/* Packets used to get the game info. */
+	PACKET_SERVER_GAME_INFO,             ///< Information about the server.
+	PACKET_CLIENT_GAME_INFO,             ///< Request information about the server.
 
 	/*
 	 * Packets after here assume that the client
@@ -183,6 +186,19 @@ protected:
 	 * @param p The packet that was just received.
 	 */
 	virtual NetworkRecvStatus Receive_SERVER_ERROR(Packet *p);
+
+	/**
+	 * Request game information.
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_CLIENT_GAME_INFO(Packet *p);
+
+	/**
+	 * Sends information about the game.
+	 * Serialized NetworkGameInfo. See game_info.h for details.
+	 * @param p The packet that was just received.
+	 */
+	virtual NetworkRecvStatus Receive_SERVER_GAME_INFO(Packet *p);
 
 	/**
 	 * Request company information (in detail).
@@ -520,7 +536,7 @@ public:
 	uint32 last_frame;           ///< Last frame we have executed
 	uint32 last_frame_server;    ///< Last frame the server has executed
 	CommandQueue incoming_queue; ///< The command-queue awaiting handling
-	uint last_packet;            ///< Time we received the last frame.
+	std::chrono::steady_clock::time_point last_packet; ///< Time we received the last frame.
 
 	NetworkRecvStatus CloseConnection(bool error = true) override;
 

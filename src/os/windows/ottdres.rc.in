@@ -1,6 +1,4 @@
 //Microsoft Developer Studio generated resource script.
-// $Id$
-//
 // This file is part of OpenTTD.
 // OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 // OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -39,24 +37,24 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_DEFAULT
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-100                     ICON    DISCARDABLE     "../../../media/openttd.ico"
+100                     ICON    DISCARDABLE     "${CMAKE_SOURCE_DIR}/os/windows/openttd.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-100 DIALOG DISCARDABLE  0, 0, 305, 99
+100 DIALOG DISCARDABLE  0, 0, 305, 101
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Fatal Application Failure"
 FONT 8, "MS Sans Serif"
 BEGIN
-    PUSHBUTTON      "&Close",12,7,80,50,14
-    PUSHBUTTON      "&Emergency save",13,155,80,68,14
-    PUSHBUTTON      "",15,243,80,55,14
-    EDITTEXT        11,7,101,291,118,ES_MULTILINE | ES_READONLY | WS_VSCROLL |
+    PUSHBUTTON      "&Close",12,7,82,60,14
+    PUSHBUTTON      "&Emergency save",13,158,82,60,14
+    PUSHBUTTON      "",15,238,82,60,14
+    EDITTEXT        11,7,103,291,118,ES_MULTILINE | ES_READONLY | WS_VSCROLL |
                     WS_HSCROLL | NOT WS_TABSTOP
-    LTEXT           "",10,36,7,262,65
+    LTEXT           "",10,36,5,262,72
     ICON            100,IDC_STATIC,9,9,20,20
 END
 
@@ -79,8 +77,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,10,0,!!ISODATE!!
- PRODUCTVERSION 1,10,0,!!ISODATE!!
+ FILEVERSION ${REV_MAJOR},${REV_MINOR},${REV_BUILD},${REV_ISODATE}
+ PRODUCTVERSION ${REV_MAJOR},${REV_MINOR},${REV_BUILD},${REV_ISODATE}
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -98,14 +96,14 @@ BEGIN
             VALUE "Comments", "This program is licensed under the GNU General Public License version 2.\0"
             VALUE "CompanyName", "OpenTTD Development Team\0"
             VALUE "FileDescription", "OpenTTD\0"
-            VALUE "FileVersion", "!!VERSION!!\0"
+            VALUE "FileVersion", "${REV_VERSION}\0"
             VALUE "InternalName", "openttd\0"
-            VALUE "LegalCopyright", "Copyright \xA9 OpenTTD Developers 2002-2019. All Rights Reserved.\0"
+            VALUE "LegalCopyright", "Copyright \xA9 OpenTTD Developers 2002-${REV_YEAR}. All Rights Reserved.\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "openttd.exe\0"
             VALUE "PrivateBuild", "\0"
             VALUE "ProductName", "OpenTTD\0"
-            VALUE "ProductVersion", "!!VERSION!!\0"
+            VALUE "ProductVersion", "${REV_VERSION}\0"
             VALUE "SpecialBuild", "-\0"
         END
     END
@@ -118,7 +116,7 @@ END
 #endif    // !_MAC
 
 #ifdef __MINGW32__
-1 24 "..\\..\\..\\projects\\dpi_aware.manifest"
+1 24 "${CMAKE_SOURCE_DIR}/os/windows/openttd.manifest"
 #endif
 
 #endif    // Neutral (Default) resources

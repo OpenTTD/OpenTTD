@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -47,7 +45,7 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 		return;
 	}
 
-	int frac_diff = width * max(dx, dy);
+	int frac_diff = width * std::max(dx, dy);
 	if (width > 1) {
 		/* compute frac_diff = width * sqrt(dx*dx + dy*dy)
 		 * Start interval:

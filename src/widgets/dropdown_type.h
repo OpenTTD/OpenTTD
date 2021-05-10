@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -63,6 +61,7 @@ public:
 
 	StringID String() const override;
 	void SetParam(uint index, uint64 value) { decode_params[index] = value; }
+	void SetParamStr(uint index, const char *str) { this->SetParam(index, (uint64)(size_t)str); }
 };
 
 /**
@@ -70,9 +69,9 @@ public:
  */
 class DropDownListCharStringItem : public DropDownListStringItem {
 public:
-	const char *raw_string;
+	std::string raw_string;
 
-	DropDownListCharStringItem(const char *raw_string, int result, bool masked) : DropDownListStringItem(STR_JUST_RAW_STRING, result, masked), raw_string(raw_string) {}
+	DropDownListCharStringItem(const std::string &raw_string, int result, bool masked) : DropDownListStringItem(STR_JUST_RAW_STRING, result, masked), raw_string(raw_string) {}
 
 	StringID String() const override;
 };
@@ -85,7 +84,6 @@ class DropDownListIconItem : public DropDownListParamStringItem {
 	PaletteID pal;
 	Dimension dim;
 	uint sprite_y;
-	uint text_y;
 public:
 	DropDownListIconItem(SpriteID sprite, PaletteID pal, StringID string, int result, bool masked);
 

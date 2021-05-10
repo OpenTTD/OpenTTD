@@ -1,0 +1,842 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Font characters by PaulC, Bilbo and Jasper Vries"
+
+// Note: Characters in range U+0020..U+00FF may only be defined in chars_orig_extra.nfo.
+
+// New characters, all fonts
+
+// U+0100 ... U+017F: Latin Extended-A
+   -1 * 34	 12 08 00 78 00 01 00 07 79 01 01 78 00 01 01 07 79 01 02 78 00 01 02 07 79 01 03 78 00 01 03 07 79 01
+   -1 sprites/chars.png 8bpp 270  130   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 300  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 320  130   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 350  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 370  130   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 400  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 420  130   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 440  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 460  130   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 480  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 500  130   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 520  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 540  130   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 560  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 580  130   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 600  130   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 620  130   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 640  130   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 660  130   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 680  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 700  130   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 720  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 740  130   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 760  130   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  10  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  30  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  50  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  70  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  90  190   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 110  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 130  190   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 150  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 170  190   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 190  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 210  190   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 230  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 250  190   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 270  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 290  190  10  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 310  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 330  190   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 340  190   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 350  190   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 360  190   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 370  190   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 380  190   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 390  190   3  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 400  190   3  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 410  190   3  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 420  190   3  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 430  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 460  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 480  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 500  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 520  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 540  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 560  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 580  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 600  190   4  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 610  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 630  190   3  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 640  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 660  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 670  190   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 690  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 710  190   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 730  190   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 740  190   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 760  190   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  10  250   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  30  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  50  250   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  70  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  90  250   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 110  250   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 130  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 150  250   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 170  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 190  250   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 210  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 230  250   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 250  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 270  250  13  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 300  250   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 320  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 340  250   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 360  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 380  250   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 400  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 420  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 440  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 460  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 480  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 500  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 520  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 540  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 560  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 580  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 600  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 620  250   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 630  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 650  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 670  250   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 690  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 700  250   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 720  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 740  250   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 760  250   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  10  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  30  310   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  50  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  70  310   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  90  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 110  310   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 130  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 150  310   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 170  310  12  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 200  310  10  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 230  310   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 250  310   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 270  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 290  310   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 310  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 330  310   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 350  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 370  310   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 390  310   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 270  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 300  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 320  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 350  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 370  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 400  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 420  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 440  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 460  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 480  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 500  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 520  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 540  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 560  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 580  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 600  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 620  150   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 640  150   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 660  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 680  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 700  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 720  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 740  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 760  150   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  10  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  30  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  50  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  70  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  90  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 110  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 130  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 150  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 170  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 190  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 210  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 230  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 250  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 270  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 290  210   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 310  210   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 330  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 340  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 350  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 360  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 370  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 380  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 390  210   2   7   0   0 normal
+   -1 sprites/chars.png 8bpp 400  210   2   7   0   0 normal
+   -1 sprites/chars.png 8bpp 410  210   1   7   0   0 normal
+   -1 sprites/chars.png 8bpp 420  210   1   7   0   0 normal
+   -1 sprites/chars.png 8bpp 430  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 460  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 480  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 500  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 520  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 540  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 560  210   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 580  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 600  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 610  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 630  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 640  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 660  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 670  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 690  210   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 710  210   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 730  210   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 740  210   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 760  210   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp  10  270   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp  30  270   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp  50  270   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp  70  270   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp  90  270   6   7   0   0 normal
+   -1 sprites/chars.png 8bpp 110  270   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 130  270   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 150  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 170  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 190  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 210  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 230  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 250  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 270  270   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 300  270   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 320  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 340  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 360  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 380  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 400  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 420  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 440  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 460  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 480  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 500  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 520  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 540  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 560  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 580  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 600  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 620  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 630  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 650  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 670  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 690  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 700  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 720  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 740  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 760  270   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  10  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  30  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  50  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  70  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp  90  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 110  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 130  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 150  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 170  330   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 200  330   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 230  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 250  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 270  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 290  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 310  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 330  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 350  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 370  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 390  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 270  160  20  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 300  160  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 320  160  20  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 350  160  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 370  160  20  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 400  160  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 420  160  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 440  160  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 460  160  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 480  160  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 500  160  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 520  160  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 540  160  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 560  160  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 580  160  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 600  160  16  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 620  160  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 640  160  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 660  160  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 680  160  12  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 700  160  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 720  160  12  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 740  160  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 760  160  12  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  10  220  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  30  220  12  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  50  220  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  70  220  12  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  90  220  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 110  220  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 130  220  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 150  220  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 170  220  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 190  220  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 210  220  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 230  220  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 250  220  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 270  220  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 290  220  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 310  220  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 330  220   9  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 340  220   7  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 350  220   9  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 360  220   7  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 370  220   9  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 380  220   7  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 390  220   9  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 400  220   7  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 410  220   9  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 420  220   7  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 430  220  19  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 460  220  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 480  220  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 500  220  10  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 520  220  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 540  220  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 560  220  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 580  220  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 600  220   7  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 610  220  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 630  220   7  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 640  220  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 660  220   9  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 670  220  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 690  220  10  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 710  220  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 730  220   7  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 740  220  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 760  220  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  10  280  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  30  280  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  50  280  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  70  280  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  90  280  19  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 110  280  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 130  280  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 150  280  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 170  280  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 190  280  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 210  280  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 230  280  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 250  280  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 270  280  23  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 300  280  19  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 320  280  16  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 340  280  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 360  280  16  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 380  280  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 400  280  16  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 420  280  11  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 440  280  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 460  280  10  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 480  280  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 500  280  10  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 520  280  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 540  280  10  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 560  280  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 580  280  10  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 600  280  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 620  280   8  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 630  280  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 650  280  12  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 670  280  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 690  280   8  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 700  280  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 720  280  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 740  280  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 760  280  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  10  340  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  30  340  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  50  340  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  70  340  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  90  340  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 110  340  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 130  340  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 150  340  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 170  340  24  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 200  340  22  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 230  340  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 250  340  16  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 270  340  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 290  340  12  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 310  340  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 330  340  12  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 350  340  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 370  340  12  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 390  340  10  21   0  -2 normal
+   -1 sprites/mono.png 8bpp  10  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  25  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  40  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  55  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  70  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  85  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 100  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 115  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 130  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 145  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 160  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 175  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 190  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 205  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 220  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 235  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 250  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 265  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 280  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 295  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 310  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 325  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 340  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 355  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 370  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 385  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 400  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 415  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 430  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 445  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 460  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 475  170   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  10  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  25  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  40  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  55  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  70  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  85  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 100  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 115  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 130  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 145  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 160  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 175  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 190  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 205  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 220  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 235  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 250  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 265  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 280  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 295  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 310  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 325  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 340  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 355  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 370  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 385  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 400  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 415  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 430  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 445  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 460  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 475  190   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  10  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  25  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  40  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  55  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  70  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  85  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 100  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 115  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 130  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 145  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 160  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 175  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 190  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 205  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 220  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 235  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 250  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 265  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 280  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 295  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 310  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 325  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 340  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 355  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 370  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 385  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 400  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 415  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 430  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 445  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 460  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 475  210   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  10  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  25  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  40  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  55  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  70  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  85  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 100  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 115  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 130  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 145  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 160  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 175  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 190  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 205  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 220  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 235  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 250  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 265  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 280  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 295  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 310  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 325  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 340  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 355  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 385  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 400  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 415  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 430  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 445  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 460  230   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 475  230   7  13   0   0 normal
+
+// U+018F: Latin Capital Letter Schwa
+   -1 * 18	 12 04 00 01 8F 01 01 01 8F 01 02 01 8F 01 03 01 8F 01
+   -1 sprites/chars.png 8bpp 410  310   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 410  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 410  340  16  21   0  -2 normal
+   -1 sprites/mono.png 8bpp  10  250   7  13   0   0 normal
+
+// U+0192: Latin Small Letter F With Hook
+   -1 * 18	 12 04 00 01 92 01 01 01 92 01 02 01 92 01 03 01 92 01
+   -1 sprites/chars.png 8bpp 430  310   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 430  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 430  340  14  21   0  -2 normal
+   -1 sprites/mono.png 8bpp  25  250   7  13   0   0 normal
+
+// U+01B5: Latin Capital Letter Z With Stroke
+// U+01B6: Latin Small Letter Z With Stroke
+   -1 * 18	 12 04 00 02 B5 01 01 02 B5 01 02 02 B5 01 03 02 B5 01
+   -1 sprites/chars.png 8bpp 450  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 470  310   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 450  330   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 470  330   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 450  340  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 470  340  12  21   0  -2 normal
+   -1 sprites/mono.png 8bpp  40  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  55  250   7  13   0   0 normal
+
+// U+0218: Latin Capital Letter S With Comma Below
+// U+0219: Latin Small Letter S With Comma Below
+// U+021A: Latin Capital Letter T With Comma Below
+// U+021B: Latin Small Letter T With Comma Below
+   -1 * 18	 12 04 00 04 18 02 01 04 18 02 02 04 18 02 03 04 18 02
+   -1 sprites/chars.png 8bpp 490  310   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 510  310   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 530  310   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 550  310   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 490  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 510  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 530  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 550  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 490  340  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 510  340  10  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 530  340  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 550  340   8  21   0  -2 normal
+   -1 sprites/mono.png 8bpp  70  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  85  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 100  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 115  250   7  13   0   0 normal
+
+// U+0259: Latin Small Letter Schwa
+   -1 * 18	 12 04 00 01 59 02 01 01 59 02 02 01 59 02 03 01 59 02
+   -1 sprites/chars.png 8bpp 560  310   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 560  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 560  340  12  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 130  250   7  13   0   0 normal
+
+// U+02BB: Modifier Letter Turned Comma
+   -1 * 18	 12 04 00 01 BB 02 01 01 BB 02 02 01 BB 02 03 01 BB 02
+   -1 sprites/chars.png 8bpp 580  310   3  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 580  330   1   7   0   0 normal
+   -1 sprites/chars.png 8bpp 580  340   4  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 145  250   7  13   0   0 normal
+
+// U+02C7: Caron
+   -1 * 18	 12 04 00 01 C7 02 01 01 C7 02 02 01 C7 02 03 01 C7 02
+   -1 sprites/chars.png 8bpp 430  370   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 430  390   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 430  400   7  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 130  270   7  13   0   0 normal
+
+// U+058F: Armenian Dram Sign
+   -1 * 18	 12 04 00 01 8F 05 01 01 8F 05 02 01 8F 05 03 01 8F 05
+   -1 sprites/chars.png 8bpp 590  310   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 590  330   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 590  340  18  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 160  250   7  13   0   0 normal
+
+// U+0E3F: Thai Currency Symbol Baht
+   -1 * 18	 12 04 00 01 3F 0E 01 01 3F 0E 02 01 3F 0E 03 01 3F 0E
+   -1 sprites/chars.png 8bpp 610  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 610  330   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 610  340  15  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 175  250   7  13   0   0 normal
+
+// U+2010: Hyphen
+   -1 * 18	 12 04 00 01 10 20 01 01 10 20 02 01 10 20 03 01 10 20
+   -1 sprites/chars.png 8bpp 480  370   4  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 480  390   2   7   0   0 normal
+   -1 sprites/chars.png 8bpp 480  400   6  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 160  270   7  13   0   0 normal
+
+// U+2013: En Dash
+// U+2014: Em Dash
+// U+2015: Horizontal Bar
+   -1 * 18	 12 04 00 03 13 20 01 03 13 20 02 03 13 20 03 03 13 20
+   -1 sprites/chars.png 8bpp 630  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 450  370  12  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 490  370  10  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 630  330   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 450  390   6   7   0   0 normal
+   -1 sprites/chars.png 8bpp 490  390   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 630  340  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 450  400  21  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 490  400  18  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 190  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 145  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 175  270   7  13   0   0 normal
+
+// U+2018: Left Single Quotation Mark
+// U+2019: Right Single Quotation Mark
+// U+201A: Single Low-9 Quotation Mark
+// U+201B: Single High-Reversed-9 Quotation Mark
+// U+201C: Left Double Quotation Mark
+// U+201D: Right Double Quotation Mark
+// U+201E: Double Low-9 Quotation Mark
+// U+201F: Double High-Reversed-9 Quotation Mark
+   -1 * 18	 12 04 00 08 18 20 01 08 18 20 02 08 18 20 03 08 18 20
+   -1 sprites/chars.png 8bpp 510  370   4  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 650  310   4  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 520  370   4  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 530  370   4  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 660  310   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 540  370   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 670  310   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 550  370   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 510  390   1   7   0   0 normal
+   -1 sprites/chars.png 8bpp 650  330   1   7   0   0 normal
+   -1 sprites/chars.png 8bpp 520  390   1   7   0   0 normal
+   -1 sprites/chars.png 8bpp 530  390   1   7   0   0 normal
+   -1 sprites/chars.png 8bpp 660  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 540  390   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 670  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 550  390   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 510  400   3  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 650  340   3  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 520  400   3  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 530  400   3  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 660  340   9  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 540  400   9  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 670  340   9  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 550  400   9  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 190  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 205  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 205  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 220  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 220  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 235  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 235  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 250  270   7  13   0   0 normal
+
+// U+2026: Horizontal Ellipsis
+   -1 * 18	 12 04 00 01 26 20 01 01 26 20 02 01 26 20 03 01 26 20
+   -1 sprites/chars.png 8bpp 560  370  11  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 560  390   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 560  400  15  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 265  270   7  13   0   0 normal
+
+// U+2039: Single Left-Pointing Angle Quotation Mark
+// U+203A: Single Right-Pointing Angle Quotation Mark
+   -1 * 18	 12 04 00 02 39 20 01 02 39 20 02 02 39 20 03 02 39 20
+   -1 sprites/chars.png 8bpp 580  370   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 680  310   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 580  390   2   7   0   0 normal
+   -1 sprites/chars.png 8bpp 680  330   2   7   0   0 normal
+   -1 sprites/chars.png 8bpp 580  400   7  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 680  340   7  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 280  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 250  250   7  13   0   0 normal
+
+// U+20A1: Colon Sign
+// U+20A2: Cruzeiro Sign
+// U+20A3: French Franc Sign
+// U+20A4: Lira Sign
+   -1 * 18	 12 04 00 04 A1 20 01 04 A1 20 02 04 A1 20 03 04 A1 20
+   -1 sprites/chars.png 8bpp 690  310   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 710  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 730  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 750  310   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 690  330   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 710  330   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 730  330   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 750  330   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 690  340  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 710  340  16  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 730  340  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 750  340  11  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 265  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 280  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 295  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 310  250   7  13   0   0 normal
+
+// U+20A6: Naira Sign
+   -1 * 18	 12 04 00 01 A6 20 01 01 A6 20 02 01 A6 20 03 01 A6 20
+   -1 sprites/chars.png 8bpp 770  310  10  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 770  330   6   7   0   0 normal
+   -1 sprites/chars.png 8bpp 770  340  18  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 325  250   7  13   0   0 normal
+
+// U+20A8: Rupee Sign
+// U+20A9: Won Sign
+// U+20AA: New Shequel Sign
+// U+20AB: Dong Sign
+// U+20AC: Euro Sign
+// U+20AD: Kip Sign
+// U+20AE: Tugrik Sign
+// U+20AF: Drachma Sign
+   -1 * 18	 12 04 00 08 A8 20 01 08 A8 20 02 08 A8 20 03 08 A8 20
+   -1 sprites/chars.png 8bpp  10  370  12  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  40  370  13  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  70  370  12  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  90  370   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 110  370   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 130  370   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 150  370   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 170  370  14  12   0  -1 normal
+   -1 sprites/chars.png 8bpp  10  390   6   7   0   0 normal
+   -1 sprites/chars.png 8bpp  40  390   7   7   0   0 normal
+   -1 sprites/chars.png 8bpp  70  390   7   7   0   0 normal
+   -1 sprites/chars.png 8bpp  90  390   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 110  390   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 130  390   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 150  390   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 170  390   6   7   0   0 normal
+   -1 sprites/chars.png 8bpp  10  400  22  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  40  400  24  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  70  400  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp  90  400  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 110  400  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 130  400  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 150  400  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 170  400  28  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 340  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 355  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 370  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 385  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 400  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 415  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 430  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 445  250   7  13   0   0 normal
+
+// U+20B1: Peso Sign
+// U+20B2: Guarani Sign
+// U+20B3: Austral Sign
+// U+20B4: Hryvnia Sign
+// U+20B5: Cedi Sign
+   -1 * 18	 12 04 00 05 B1 20 01 05 B1 20 02 05 B1 20 03 05 B1 20
+   -1 sprites/chars.png 8bpp 200  370   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 220  370   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 240  370  10  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 270  370   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 290  370   9  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 200  390   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 220  390   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 240  390   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 270  390   5   7   0   0 normal
+   -1 sprites/chars.png 8bpp 290  390   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 200  400  15  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 220  400  18  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 240  400  20  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 270  400  14  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 290  400  14  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 460  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 475  250   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  10  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  25  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  40  270   7  13   0   0 normal
+
+// U+20B7: Spesmilo Sign
+// U+20B8: Tenge Sign
+// U+20B9: Indian Rupee Sign
+   -1 * 18	 12 04 00 03 B7 20 01 03 B7 20 02 03 B7 20 03 03 B7 20
+   -1 sprites/chars.png 8bpp 310  370  10  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 330  370   7  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 350  370   8  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 310  390   6   7   0   0 normal
+   -1 sprites/chars.png 8bpp 330  390   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 350  390   4   7   0   0 normal
+   -1 sprites/chars.png 8bpp 310  400  17  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 330  400  13  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 350  400  14  21   0  -2 normal
+   -1 sprites/mono.png 8bpp  55  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  70  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp  85  270   7  13   0   0 normal
+
+// U+2116: Numero Sign
+// U+2117: Sound Recording Copyright
+   -1 * 18	 12 04 00 02 16 21 01 02 16 21 02 02 16 21 03 02 16 21
+   -1 sprites/chars.png 8bpp 370  370  14  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 590  370  13  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 370  390   8   7   0   0 normal
+   -1 sprites/chars.png 8bpp 590  390   6   7   0   0 normal
+   -1 sprites/chars.png 8bpp 370  400  27  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 590  400  16  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 100  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 295  270   7  13   0   0 normal
+
+// U+2122: Trade Mark Sign
+   -1 * 18	 12 04 00 01 22 21 01 01 22 21 02 01 22 21 03 01 22 21
+   -1 sprites/chars.png 8bpp 400  370  13  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 400  390   9   7   0   0 normal
+   -1 sprites/chars.png 8bpp 400  400  20  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 115  270   7  13   0   0 normal
+
+// U+2212: Minus Sign
+   -1 * 18	 12 04 00 01 12 22 01 01 12 22 02 01 12 22 03 01 12 22
+   -1 sprites/chars.png 8bpp 610  370   6  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 610  390   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 610  400   9  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 310  270   7  13   0   0 normal
+
+// U+27E8: Mathematical Left Angle Bracket
+// U+27E9: Mathematical Right Angle Bracket
+   -1 * 18	 12 04 00 02 E8 27 01 02 E8 27 02 02 E8 27 03 02 E8 27
+   -1 sprites/chars.png 8bpp 620  370   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 630  370   5  12   0  -1 normal
+   -1 sprites/chars.png 8bpp 620  390   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 630  390   3   7   0   0 normal
+   -1 sprites/chars.png 8bpp 620  400   6  21   0  -2 normal
+   -1 sprites/chars.png 8bpp 630  400   6  21   0  -2 normal
+   -1 sprites/mono.png 8bpp 325  270   7  13   0   0 normal
+   -1 sprites/mono.png 8bpp 340  270   7  13   0   0 normal

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -118,7 +116,7 @@ void Font::getGlyphAdvance(LEGlyphID glyph, LEPoint &advance) const
 
 le_bool Font::getGlyphPoint(LEGlyphID glyph, le_int32 pointNumber, LEPoint &point) const
 {
-	return FALSE;
+	return false;
 }
 
 /**
@@ -433,7 +431,7 @@ int FallbackParagraphLayout::FallbackLine::GetLeading() const
 {
 	int leading = 0;
 	for (const auto &run : *this) {
-		leading = max(leading, run.GetLeading());
+		leading = std::max(leading, run.GetLeading());
 	}
 
 	return leading;
@@ -633,6 +631,8 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, const char *&str, 
 		} else if (c >= SCC_FIRST_FONT && c <= SCC_LAST_FONT) {
 			state.SetFontSize((FontSize)(c - SCC_FIRST_FONT));
 		} else {
+			/* Filter out non printable characters */
+			if (!IsPrintable(c)) continue;
 			/* Filter out text direction characters that shouldn't be drawn, and
 			 * will not be handled in the fallback non ICU case because they are
 			 * mostly needed for RTL languages which need more ICU support. */
@@ -747,7 +747,7 @@ Dimension Layouter::GetBounds()
 {
 	Dimension d = { 0, 0 };
 	for (const auto &l : *this) {
-		d.width = max<uint>(d.width, l->GetWidth());
+		d.width = std::max<uint>(d.width, l->GetWidth());
 		d.height += l->GetLeading();
 	}
 	return d;

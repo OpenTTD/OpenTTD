@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,11 +12,11 @@
 #include "../newgrf_roadtype.h"
 
 /* Helper for filling property tables */
-#define NIP(prop, base, variable, type, name) { name, (ptrdiff_t)cpp_offsetof(base, variable), cpp_sizeof(base, variable), prop, type }
+#define NIP(prop, base, variable, type, name) { name, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), prop, type }
 #define NIP_END() { nullptr, 0, 0, 0, 0 }
 
 /* Helper for filling callback tables */
-#define NIC(cb_id, base, variable, bit) { #cb_id, (ptrdiff_t)cpp_offsetof(base, variable), cpp_sizeof(base, variable), bit, cb_id }
+#define NIC(cb_id, base, variable, bit) { #cb_id, [] (const void *b) -> const void * { return std::addressof(static_cast<const base *>(b)->variable); }, cpp_sizeof(base, variable), bit, cb_id }
 #define NIC_END() { nullptr, 0, 0, 0, 0 }
 
 /* Helper for filling variable tables */
@@ -65,7 +63,8 @@ static const NIVariable _niv_vehicles[] = {
 	NIV(0x4D, "position in articulated vehicle"),
 	NIV(0x60, "count vehicle id occurrences"),
 	// 0x61 not useful, since it requires register 0x10F
-	NIV(0x62, "Curvature/position difference to other vehicle"),
+	NIV(0x62, "curvature/position difference to other vehicle"),
+	NIV(0x63, "tile compatibility wrt. track-type"),
 	NIV_END()
 };
 
@@ -129,6 +128,7 @@ static const NIVariable _niv_stations[] = {
 	NIV(0x67, "land info of nearby tiles"),
 	NIV(0x68, "station info of nearby tiles"),
 	NIV(0x69, "information about cargo accepted in the past"),
+	NIV(0x6A, "GRFID of nearby station tiles"),
 	NIV_END()
 };
 
@@ -343,6 +343,15 @@ static const NIVariable _niv_industries[] = {
 	NIV(0x66, "get square of Euclidean distance of closes town"),
 	NIV(0x67, "count of industry and distance of closest instance"),
 	NIV(0x68, "count of industry and distance of closest instance with layout filter"),
+	NIV(0x69, "produced cargo waiting"),
+	NIV(0x6A, "cargo produced this month"),
+	NIV(0x6B, "cargo transported this month"),
+	NIV(0x6C, "cargo produced last month"),
+	NIV(0x6D, "cargo transported last month"),
+	NIV(0x6E, "date since cargo was delivered"),
+	NIV(0x6F, "waiting input cargo"),
+	NIV(0x70, "production rate"),
+	NIV(0x71, "percentage of cargo transported last month"),
 	NIV_END()
 };
 
@@ -621,4 +630,4 @@ static const NIFeature * const _nifeatures[] = {
 	&_nif_tramtype,     // GSF_TRAMTYPES
 	&_nif_town,         // GSF_FAKE_TOWNS
 };
-assert_compile(lengthof(_nifeatures) == GSF_FAKE_END);
+static_assert(lengthof(_nifeatures) == GSF_FAKE_END);

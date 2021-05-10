@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -11,8 +9,6 @@
 
 #ifndef STRING_UNISCRIBE_H
 #define STRING_UNISCRIBE_H
-
-#if defined(WITH_UNISCRIBE)
 
 #include "../../gfx_layout.h"
 #include "../../string_base.h"
@@ -86,7 +82,5 @@ public:
 	size_t Next(IterType what) override;
 	size_t Prev(IterType what) override;
 };
-
-#endif /* defined(WITH_UNISCRIBE) */
 
 #endif /* STRING_UNISCRIBE_H */

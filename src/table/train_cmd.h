@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -65,6 +63,6 @@ static const byte _wagon_full_adder[] = {
 	32, 32
 };
 
-assert_compile(lengthof(_engine_sprite_base) == lengthof(_engine_sprite_and));
-assert_compile(lengthof(_engine_sprite_base) == lengthof(_engine_sprite_add));
-assert_compile(lengthof(_engine_sprite_base) == lengthof(_wagon_full_adder));
+static_assert(lengthof(_engine_sprite_base) == lengthof(_engine_sprite_and));
+static_assert(lengthof(_engine_sprite_base) == lengthof(_engine_sprite_add));
+static_assert(lengthof(_engine_sprite_base) == lengthof(_wagon_full_adder));

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -33,10 +31,8 @@ static const SaveLoad _object_desc[] = {
 
 static void Save_OBJS()
 {
-	Object *o;
-
 	/* Write the objects */
-	FOR_ALL_OBJECTS(o) {
+	for (Object *o : Object::Iterate()) {
 		SlSetArrayIndex(o->index);
 		SlObject(o, _object_desc);
 	}
@@ -53,8 +49,7 @@ static void Load_OBJS()
 
 static void Ptrs_OBJS()
 {
-	Object *o;
-	FOR_ALL_OBJECTS(o) {
+	for (Object *o : Object::Iterate()) {
 		SlObject(o, _object_desc);
 		if (IsSavegameVersionBefore(SLV_148) && !IsTileType(o->location.tile, MP_OBJECT)) {
 			/* Due to a small bug stale objects could remain. */

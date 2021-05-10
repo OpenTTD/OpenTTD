@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -15,9 +13,20 @@
  * functions may still be available if you return an older API version
  * in GetAPIVersion() in info.nut.
  *
- * \b 1.10.0
+ * \b 1.12.0
  *
  * This version is not yet released. The following changes are not set in stone yet.
+ *
+ * \b 1.11.0
+ *
+ * API additions:
+ * \li AICargo::GetName
+ * \li AIPriorityQueue
+ *
+ * Other changes:
+ * \li AIVehicle::CloneVehicle now correctly returns estimate when short on cash
+ *
+ * \b 1.10.0
  *
  * API additions:
  * \li AIGroup::SetPrimaryColour
@@ -34,6 +43,7 @@
  * \li AIEngine::CanRunOnRoad
  * \li AIEngine::HasPowerOnRoad
  * \li AIRoadTypeList::RoadTypeList
+ * \li AIEventVehicleAutoReplaced
  *
  * Other changes:
  * \li AITile::DemolishTile works without a selected company

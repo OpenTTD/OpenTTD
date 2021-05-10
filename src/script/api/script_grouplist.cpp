@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -17,8 +15,7 @@
 
 ScriptGroupList::ScriptGroupList()
 {
-	Group *g;
-	FOR_ALL_GROUPS(g) {
+	for (const Group *g : Group::Iterate()) {
 		if (g->owner == ScriptObject::GetCompany()) this->AddItem(g->index);
 	}
 }

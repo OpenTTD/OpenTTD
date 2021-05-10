@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -76,8 +74,7 @@ void StringFilter::SetFilterTerm(const char *str)
 
 		/* Add to word */
 		if (word == nullptr) {
-			/*C++17: word = &*/ this->word_index.push_back({dest, false});
-			word = &this->word_index.back();
+			word = &this->word_index.emplace_back(WordState{ dest, false });
 		}
 
 		memcpy(dest, pos, len);

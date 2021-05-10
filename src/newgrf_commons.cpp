@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -279,7 +277,7 @@ void IndustryOverrideManager::SetEntitySpec(IndustrySpec *inds)
 	}
 
 	/* Now that we know we can use the given id, copy the spec to its final destination... */
-	memcpy(&_industry_specs[ind_id], inds, sizeof(*inds));
+	_industry_specs[ind_id] = *inds;
 	/* ... and mark it as usable*/
 	_industry_specs[ind_id].enabled = true;
 }
@@ -666,8 +664,7 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
 
 	/* Create a copy of the spritelayout, so we can modify some values.
 	 * Also include the groundsprite into the sequence for easier processing. */
-	/*C++17: DrawTileSeqStruct *result = &*/ result_seq.emplace_back();
-	DrawTileSeqStruct *result = &result_seq.back();
+	DrawTileSeqStruct *result = &result_seq.emplace_back();
 	result->image = ground;
 	result->delta_x = 0;
 	result->delta_y = 0;
@@ -677,8 +674,7 @@ uint32 NewGRFSpriteLayout::PrepareLayout(uint32 orig_offset, uint32 newgrf_groun
 	foreach_draw_tile_seq(dtss, this->seq) {
 		result_seq.push_back(*dtss);
 	}
-	result_seq.emplace_back() /*C++17: .MakeTerminator()*/;
-	result_seq.back().MakeTerminator();
+	result_seq.emplace_back().MakeTerminator();
 	/* Determine the var10 values the action-1-2-3 chains needs to be resolved for,
 	 * and apply the default sprite offsets (unless disabled). */
 	const TileLayoutRegisters *regs = this->registers;

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -251,8 +249,8 @@ static void SortSaveGameList(FileList &file_list)
 	 * Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
 	 * Only sort savegames/scenarios, not directories
 	 */
-	for (const FiosItem *item = file_list.Begin(); item != file_list.End(); item++) {
-		switch (item->type) {
+	for (const auto &item : file_list) {
+		switch (item.type) {
 			case FIOS_TYPE_DIR:    sort_start++; break;
 			case FIOS_TYPE_PARENT: sort_start++; break;
 			case FIOS_TYPE_DRIVE:  sort_end++;   break;
@@ -260,7 +258,7 @@ static void SortSaveGameList(FileList &file_list)
 		}
 	}
 
-	std::sort(file_list.files.begin() + sort_start, file_list.files.end() - sort_end);
+	std::sort(file_list.begin() + sort_start, file_list.end() - sort_end);
 }
 
 struct SaveLoadWindow : public Window {
@@ -271,8 +269,9 @@ private:
 	AbstractFileType abstract_filetype; /// Type of file to select.
 	SaveLoadOperation fop;        ///< File operation to perform.
 	FileList fios_items;          ///< Save game list.
-	FiosItem o_dir;
+	FiosItem o_dir;               ///< Original dir (home dir for this browser)
 	const FiosItem *selected;     ///< Selected game in #fios_items, or \c nullptr.
+	const FiosItem *highlighted;  ///< Item in fios_items highlighted by mouse pointer, or \c nullptr.
 	Scrollbar *vscroll;
 
 	StringFilter string_filter; ///< Filter for available games.
@@ -369,22 +368,24 @@ public:
 
 		/* Select the initial directory. */
 		o_dir.type = FIOS_TYPE_DIRECT;
+		std::string dir;
 		switch (this->abstract_filetype) {
 			case FT_SAVEGAME:
-				FioGetDirectory(o_dir.name, lastof(o_dir.name), SAVE_DIR);
+				dir = FioFindDirectory(SAVE_DIR);
 				break;
 
 			case FT_SCENARIO:
-				FioGetDirectory(o_dir.name, lastof(o_dir.name), SCENARIO_DIR);
+				dir = FioFindDirectory(SCENARIO_DIR);
 				break;
 
 			case FT_HEIGHTMAP:
-				FioGetDirectory(o_dir.name, lastof(o_dir.name), HEIGHTMAP_DIR);
+				dir = FioFindDirectory(HEIGHTMAP_DIR);
 				break;
 
 			default:
-				strecpy(o_dir.name, _personal_dir, lastof(o_dir.name));
+				dir = _personal_dir;
 		}
+		strecpy(o_dir.name, dir.c_str(), lastof(o_dir.name));
 
 		switch (this->fop) {
 			case SLO_SAVE:
@@ -436,17 +437,19 @@ public:
 
 				uint y = r.top + WD_FRAMERECT_TOP;
 				uint scroll_pos = this->vscroll->GetPosition();
-				for (uint row = 0; row < this->fios_items.Length(); row++) {
+				for (uint row = 0; row < this->fios_items.size(); row++) {
 					if (!this->fios_items_shown[row]) {
 						/* The current item is filtered out : we do not show it */
 						scroll_pos++;
 						continue;
 					}
 					if (row < scroll_pos) continue;
-					const FiosItem *item = this->fios_items.Get(row);
+					const FiosItem *item = &this->fios_items[row];
 
 					if (item == this->selected) {
 						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_DARK_BLUE);
+					} else if (item == this->highlighted) {
+						GfxFillRect(r.left + 1, y, r.right, y + this->resize.step_height, PC_VERY_DARK_BLUE);
 					}
 					DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, y, item->title, _fios_colours[GetDetailedFileType(item->type)]);
 					y += this->resize.step_height;
@@ -532,7 +535,7 @@ public:
 						for (auto &pair : _load_check_data.companies) {
 							SetDParam(0, pair.first + 1);
 							const CompanyProperties &c = *pair.second;
-							if (c.name != nullptr) {
+							if (!c.name.empty()) {
 								SetDParam(1, STR_JUST_RAW_STRING);
 								SetDParamStr(2, c.name);
 							} else {
@@ -648,7 +651,7 @@ public:
 					if (!this->fios_items_shown[i]) y++;
 					i++;
 				}
-				const FiosItem *file = this->fios_items.Get(y);
+				const FiosItem *file = &this->fios_items[y];
 
 				const char *name = FiosBrowseTo(file);
 				if (name == nullptr) {
@@ -716,6 +719,33 @@ public:
 		}
 	}
 
+	void OnMouseLoop() override
+	{
+		const Point pt{ _cursor.pos.x - this->left, _cursor.pos.y - this->top };
+		const int widget = GetWidgetFromPos(this, pt.x, pt.y);
+
+		if (widget == WID_SL_DRIVES_DIRECTORIES_LIST) {
+			int y = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_SL_DRIVES_DIRECTORIES_LIST, WD_FRAMERECT_TOP);
+			if (y == INT_MAX) return;
+
+			/* Get the corresponding non-filtered out item from the list */
+			int i = 0;
+			while (i <= y) {
+				if (!this->fios_items_shown[i]) y++;
+				i++;
+			}
+			const FiosItem *file = &this->fios_items[y];
+
+			if (file != this->highlighted) {
+				this->highlighted = file;
+				this->SetWidgetDirty(WID_SL_DRIVES_DIRECTORIES_LIST);
+			}
+		} else if (this->highlighted != nullptr) {
+			this->highlighted = nullptr;
+			this->SetWidgetDirty(WID_SL_DRIVES_DIRECTORIES_LIST);
+		}
+	}
+
 	EventState OnKeyPress(WChar key, uint16 keycode) override
 	{
 		if (keycode == WKC_ESC) {
@@ -741,14 +771,14 @@ public:
 			}
 		} else if (this->IsWidgetLowered(WID_SL_SAVE_GAME)) { // Save button clicked
 			if (this->abstract_filetype == FT_SAVEGAME || this->abstract_filetype == FT_SCENARIO) {
-				FiosMakeSavegameName(_file_to_saveload.name, this->filename_editbox.text.buf, lastof(_file_to_saveload.name));
+				_file_to_saveload.name = FiosMakeSavegameName(this->filename_editbox.text.buf);
 				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
 					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, this, SaveLoadWindow::SaveGameConfirmationCallback);
 				} else {
 					_switch_mode = SM_SAVE_GAME;
 				}
 			} else {
-				FiosMakeHeightmapName(_file_to_saveload.name, this->filename_editbox.text.buf, lastof(_file_to_saveload.name));
+				_file_to_saveload.name = FiosMakeHeightmapName(this->filename_editbox.text.buf);
 				if (FioCheckFileExists(_file_to_saveload.name, Subdirectory::SAVE_DIR)) {
 					ShowQuery(STR_SAVELOAD_OVERWRITE_TITLE, STR_SAVELOAD_OVERWRITE_WARNING, this, SaveLoadWindow::SaveHeightmapConfirmationCallback);
 				} else {
@@ -782,7 +812,7 @@ public:
 
 				_fios_path_changed = true;
 				this->fios_items.BuildFileList(this->abstract_filetype, this->fop);
-				this->vscroll->SetCount((uint)this->fios_items.Length());
+				this->vscroll->SetCount((uint)this->fios_items.size());
 				this->selected = nullptr;
 				_load_check_data.Clear();
 
@@ -822,10 +852,10 @@ public:
 
 			case SLIWD_FILTER_CHANGES:
 				/* Filter changes */
-				this->fios_items_shown.resize(this->fios_items.Length());
+				this->fios_items_shown.resize(this->fios_items.size());
 				uint items_shown_count = 0; ///< The number of items shown in the list
 				/* We pass through every fios item */
-				for (uint i = 0; i < this->fios_items.Length(); i++) {
+				for (uint i = 0; i < this->fios_items.size(); i++) {
 					if (this->string_filter.IsEmpty()) {
 						/* We don't filter anything out if the filter editbox is empty */
 						this->fios_items_shown[i] = true;
@@ -898,8 +928,6 @@ void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fo
 		/* Dialogue for loading a file. */
 		sld = (abstract_filetype == FT_HEIGHTMAP) ? &_load_heightmap_dialog_desc : &_load_dialog_desc;
 	}
-
-	_file_to_saveload.abstract_ftype = abstract_filetype;
 
 	new SaveLoadWindow(sld, abstract_filetype, fop);
 }

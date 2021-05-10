@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -14,11 +12,14 @@
 
 /** Widgets of the #BuildIndustryWindow class. */
 enum DynamicPlaceIndustriesWidgets {
-	WID_DPI_MATRIX_WIDGET,  ///< Matrix of the industries.
-	WID_DPI_SCROLLBAR,      ///< Scrollbar of the matrix.
-	WID_DPI_INFOPANEL,      ///< Info panel about the industry.
-	WID_DPI_DISPLAY_WIDGET, ///< Display chain button.
-	WID_DPI_FUND_WIDGET,    ///< Fund button.
+	WID_DPI_SCENARIO_EDITOR_PANE,            ///< Pane containing SE-only widgets.
+	WID_DPI_REMOVE_ALL_INDUSTRIES_WIDGET,    ///< Remove all industries button.
+	WID_DPI_CREATE_RANDOM_INDUSTRIES_WIDGET, ///< Create random industries button.
+	WID_DPI_MATRIX_WIDGET,                   ///< Matrix of the industries.
+	WID_DPI_SCROLLBAR,                       ///< Scrollbar of the matrix.
+	WID_DPI_INFOPANEL,                       ///< Info panel about the industry.
+	WID_DPI_DISPLAY_WIDGET,                  ///< Display chain button.
+	WID_DPI_FUND_WIDGET,                     ///< Fund button.
 };
 
 /** Widgets of the #IndustryViewWindow class. */
@@ -32,10 +33,12 @@ enum IndustryViewWidgets {
 
 /** Widgets of the #IndustryDirectoryWindow class. */
 enum IndustryDirectoryWidgets {
-	WID_ID_DROPDOWN_ORDER,    ///< Dropdown for the order of the sort.
-	WID_ID_DROPDOWN_CRITERIA, ///< Dropdown for the criteria of the sort.
-	WID_ID_INDUSTRY_LIST,     ///< Industry list.
-	WID_ID_SCROLLBAR,         ///< Scrollbar of the list.
+	WID_ID_DROPDOWN_ORDER,       ///< Dropdown for the order of the sort.
+	WID_ID_DROPDOWN_CRITERIA,    ///< Dropdown for the criteria of the sort.
+	WID_ID_FILTER_BY_ACC_CARGO,  ///< Accepted cargo filter dropdown list.
+	WID_ID_FILTER_BY_PROD_CARGO, ///< Produced cargo filter dropdown list.
+	WID_ID_INDUSTRY_LIST,        ///< Industry list.
+	WID_ID_SCROLLBAR,            ///< Scrollbar of the list.
 };
 
 /** Widgets of the #IndustryCargoesWindow class */

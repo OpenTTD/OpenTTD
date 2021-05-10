@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -20,8 +18,7 @@
 
 ScriptStationList::ScriptStationList(ScriptStation::StationType station_type)
 {
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		if ((st->owner == ScriptObject::GetCompany() || ScriptObject::GetCompany() == OWNER_DEITY) && (st->facilities & station_type) != 0) this->AddItem(st->index);
 	}
 }

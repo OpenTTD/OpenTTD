@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -20,6 +18,7 @@
 
 #include <stdarg.h>
 #include <ctype.h> /* required for tolower() */
+#include <sstream>
 
 #ifdef _MSC_VER
 #include <errno.h> // required by vsnprintf implementation for MSVC
@@ -33,16 +32,16 @@
 #include "os/windows/string_uniscribe.h"
 #endif
 
-#if defined(WITH_COCOA)
-#include "os/macosx/string_osx.h"
-#endif
-
 #ifdef WITH_ICU_I18N
 /* Required by strnatcmp. */
 #include <unicode/ustring.h>
 #include "language.h"
 #include "gfx_func.h"
 #endif /* WITH_ICU_I18N */
+
+#if defined(WITH_COCOA)
+#include "os/macosx/string_osx.h"
+#endif
 
 /* The function vsnprintf is used internally to perform the required formatting
  * tasks. As such this one must be allowed, and makes sure it's terminated. */
@@ -63,7 +62,7 @@ int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
 {
 	ptrdiff_t diff = last - str;
 	if (diff < 0) return 0;
-	return min((int)diff, vsnprintf(str, diff + 1, format, ap));
+	return std::min(static_cast<int>(diff), vsnprintf(str, diff + 1, format, ap));
 }
 
 /**
@@ -186,33 +185,42 @@ void str_fix_scc_encoded(char *str, const char *last)
 }
 
 
-/**
- * Scans the string for valid characters and if it finds invalid ones,
- * replaces them with a question mark '?' (if not ignored)
- * @param str the string to validate
- * @param last the last valid character of str
- * @param settings the settings for the string validation.
- */
-void str_validate(char *str, const char *last, StringValidationSettings settings)
+template <class T>
+static void str_validate(T &dst, const char *str, const char *last, StringValidationSettings settings)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
 
-	char *dst = str;
 	while (str <= last && *str != '\0') {
 		size_t len = Utf8EncodedCharLen(*str);
-		/* If the character is unknown, i.e. encoded length is 0
-		 * we assume worst case for the length check.
-		 * The length check is needed to prevent Utf8Decode to read
-		 * over the terminating '\0' if that happens to be placed
-		 * within the encoding of an UTF8 character. */
-		if ((len == 0 && str + 4 > last) || str + len > last) break;
-
 		WChar c;
-		len = Utf8Decode(&c, str);
-		/* It's possible to encode the string termination character
-		 * into a multiple bytes. This prevents those termination
-		 * characters to be skipped */
-		if (c == '\0') break;
+		/* If the first byte does not look like the first byte of an encoded
+		 * character, i.e. encoded length is 0, then this byte is definitely bad
+		 * and it should be skipped.
+		 * When the first byte looks like the first byte of an encoded character,
+		 * then the remaining bytes in the string are checked whether the whole
+		 * encoded character can be there. If that is not the case, this byte is
+		 * skipped.
+		 * Finally we attempt to decode the encoded character, which does certain
+		 * extra validations to see whether the correct number of bytes were used
+		 * to encode the character. If that is not the case, the byte is probably
+		 * invalid and it is skipped. We could emit a question mark, but then the
+		 * logic below cannot just copy bytes, it would need to re-encode the
+		 * decoded characters as the length in bytes may have changed.
+		 *
+		 * The goals here is to get as much valid Utf8 encoded characters from the
+		 * source string to the destination string.
+		 *
+		 * Note: a multi-byte encoded termination ('\0') will trigger the encoded
+		 * char length and the decoded length to differ, so it will be ignored as
+		 * invalid character data. If it were to reach the termination, then we
+		 * would also reach the "last" byte of the string and a normal '\0'
+		 * termination will be placed after it.
+		 */
+		if (len == 0 || str + len > last || len != Utf8Decode(&c, str)) {
+			/* Maybe the next byte is still a valid character? */
+			str++;
+			continue;
+		}
 
 		if ((IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END)) || ((settings & SVS_ALLOW_CONTROL_CODE) != 0 && c == SCC_ENCODED)) {
 			/* Copy the character back. Even if dst is current the same as str
@@ -221,7 +229,7 @@ void str_validate(char *str, const char *last, StringValidationSettings settings
 			do {
 				*dst++ = *str++;
 			} while (--len != 0);
-		} else if ((settings & SVS_ALLOW_NEWLINE) != 0  && c == '\n') {
+		} else if ((settings & SVS_ALLOW_NEWLINE) != 0 && c == '\n') {
 			*dst++ = *str++;
 		} else {
 			if ((settings & SVS_ALLOW_NEWLINE) != 0 && c == '\r' && str[1] == '\n') {
@@ -234,7 +242,39 @@ void str_validate(char *str, const char *last, StringValidationSettings settings
 		}
 	}
 
+	/* String termination, if needed, is left to the caller of this function. */
+}
+
+/**
+ * Scans the string for valid characters and if it finds invalid ones,
+ * replaces them with a question mark '?' (if not ignored)
+ * @param str the string to validate
+ * @param last the last valid character of str
+ * @param settings the settings for the string validation.
+ */
+void str_validate(char *str, const char *last, StringValidationSettings settings)
+{
+	char *dst = str;
+	str_validate(dst, str, last, settings);
 	*dst = '\0';
+}
+
+/**
+ * Scans the string for valid characters and if it finds invalid ones,
+ * replaces them with a question mark '?' (if not ignored)
+ * @param str the string to validate
+ * @param settings the settings for the string validation.
+ */
+std::string str_validate(const std::string &str, StringValidationSettings settings)
+{
+	auto buf = str.data();
+	auto last = buf + str.size();
+
+	std::ostringstream dst;
+	std::ostreambuf_iterator<char> dst_iter(dst);
+	str_validate(dst_iter, buf, last, settings);
+
+	return dst.str();
 }
 
 /**
@@ -278,6 +318,66 @@ bool StrValid(const char *str, const char *last)
 	}
 
 	return *str == '\0';
+}
+
+/**
+ * Trim the spaces from the begin of given string in place, i.e. the string buffer
+ * that is passed will be modified whenever spaces exist in the given string.
+ * When there are spaces at the begin, the whole string is moved forward.
+ * @param str The string to perform the in place left trimming on.
+ */
+static void StrLeftTrimInPlace(char *str)
+{
+	if (StrEmpty(str)) return;
+
+	char *first_non_space = str;
+	while (*first_non_space == ' ') first_non_space++;
+
+	if (first_non_space == str) return;
+
+	/* The source will reach '\0' first, but set the '\0' on the destination afterwards. */
+	char *dst = str;
+	for (char *src = first_non_space; *src != '\0'; dst++, src++) *dst = *src;
+	*dst = '\0';
+}
+
+/**
+ * Trim the spaces from the end of given string in place, i.e. the string buffer
+ * that is passed will be modified whenever spaces exist in the given string.
+ * When there are spaces at the end, the '\0' will be moved forward.
+ * @param str The string to perform the in place left trimming on.
+ */
+static void StrRightTrimInPlace(char *str)
+{
+	if (StrEmpty(str)) return;
+
+	char *end = str;
+	while (*end != '\0') end++;
+
+	char *last_non_space = end - 1;
+	while (last_non_space >= str && *last_non_space == ' ') last_non_space--;
+
+	/* The last non space points to the last character of the string that is not
+	 * a space. For a string with only spaces or an empty string this would be
+	 * the position before the begin of the string. The previous search ensures
+	 * that this location before the string is not read.
+	 * In any case, the character after the last non space character will be
+	 * either a space or the existing termination, so it can be set to '\0'.
+	 */
+	last_non_space[1] = '\0';
+}
+
+/**
+ * Trim the spaces from given string in place, i.e. the string buffer that
+ * is passed will be modified whenever spaces exist in the given string.
+ * When there are spaces at the begin, the whole string is moved forward
+ * and when there are spaces at the back the '\0' termination is moved.
+ * @param str The string to perform the in place trimming on.
+ */
+void StrTrimInPlace(char *str)
+{
+	StrLeftTrimInPlace(str);
+	StrRightTrimInPlace(str);
 }
 
 /** Scans the string for colour codes and strips them */
@@ -336,6 +436,17 @@ bool strtolower(char *str)
 		char new_str = tolower(*str);
 		changed |= new_str != *str;
 		*str = new_str;
+	}
+	return changed;
+}
+
+bool strtolower(std::string &str, std::string::size_type offs)
+{
+	bool changed = false;
+	for (auto ch = str.begin() + offs; ch != str.end(); ++ch) {
+		auto new_ch = static_cast<char>(tolower(static_cast<unsigned char>(*ch)));
+		changed |= new_ch != *ch;
+		*ch = new_ch;
 	}
 	return changed;
 }
@@ -481,11 +592,13 @@ size_t Utf8Decode(WChar *c, const char *s)
 
 /**
  * Encode a unicode character and place it in the buffer.
+ * @tparam T Type of the buffer.
  * @param buf Buffer to place character.
  * @param c   Unicode character to encode.
  * @return Number of characters in the encoded sequence.
  */
-size_t Utf8Encode(char *buf, WChar c)
+template <class T>
+inline size_t Utf8Encode(T buf, WChar c)
 {
 	if (c < 0x80) {
 		*buf = c;
@@ -510,6 +623,16 @@ size_t Utf8Encode(char *buf, WChar c)
 	/* DEBUG(misc, 1, "[utf8] can't UTF-8 encode value 0x%X", c); */
 	*buf = '?';
 	return 1;
+}
+
+size_t Utf8Encode(char *buf, WChar c)
+{
+	return Utf8Encode<char *>(buf, c);
+}
+
+size_t Utf8Encode(std::ostreambuf_iterator<char> &buf, WChar c)
+{
+	return Utf8Encode<std::ostreambuf_iterator<char> &>(buf, c);
 }
 
 /**
@@ -585,7 +708,7 @@ int strnatcmp(const char *s1, const char *s2, bool ignore_garbage_at_front)
 	}
 
 #ifdef WITH_ICU_I18N
-	if (_current_collator != nullptr) {
+	if (_current_collator) {
 		UErrorCode status = U_ZERO_ERROR;
 		int result = _current_collator->compareUTF8(s1, s2, status);
 		if (U_SUCCESS(status)) return result;

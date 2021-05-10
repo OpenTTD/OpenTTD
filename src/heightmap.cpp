@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -370,7 +368,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 					/* 0 is sea level.
 					 * Other grey scales are scaled evenly to the available height levels > 0.
 					 * (The coastline is independent from the number of height levels) */
-					heightmap_height = 1 + (heightmap_height - 1) * _settings_game.construction.max_heightlevel / 255;
+					heightmap_height = 1 + (heightmap_height - 1) * _settings_game.game_creation.heightmap_height / 255;
 				}
 
 				SetTileHeight(tile, heightmap_height);

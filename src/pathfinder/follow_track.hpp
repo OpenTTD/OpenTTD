@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -19,7 +17,7 @@
 #include "../tunnelbridge.h"
 #include "../tunnelbridge_map.h"
 #include "../depot_map.h"
-#include "pf_performance_timer.hpp"
+#include "pathfinder_func.h"
 
 /**
  * Track follower helper template class (can serve pathfinders and vehicle
@@ -50,34 +48,32 @@ struct CFollowTrackT
 	bool                m_is_station;    ///< last turn passed station
 	int                 m_tiles_skipped; ///< number of skipped tunnel or station tiles
 	ErrorCode           m_err;
-	CPerformanceTimer  *m_pPerf;
 	RailTypes           m_railtypes;
 
-	inline CFollowTrackT(const VehicleType *v = nullptr, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = nullptr)
+	inline CFollowTrackT(const VehicleType *v = nullptr, RailTypes railtype_override = INVALID_RAILTYPES)
 	{
-		Init(v, railtype_override, pPerf);
+		Init(v, railtype_override);
 	}
 
-	inline CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = nullptr)
+	inline CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES)
 	{
 		assert(IsRailTT());
 		m_veh = nullptr;
-		Init(o, railtype_override, pPerf);
+		Init(o, railtype_override);
 	}
 
-	inline void Init(const VehicleType *v, RailTypes railtype_override, CPerformanceTimer *pPerf)
+	inline void Init(const VehicleType *v, RailTypes railtype_override)
 	{
 		assert(!IsRailTT() || (v != nullptr && v->type == VEH_TRAIN));
 		m_veh = v;
-		Init(v != nullptr ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? Train::From(v)->compatible_railtypes : railtype_override, pPerf);
+		Init(v != nullptr ? v->owner : INVALID_OWNER, IsRailTT() && railtype_override == INVALID_RAILTYPES ? Train::From(v)->compatible_railtypes : railtype_override);
 	}
 
-	inline void Init(Owner o, RailTypes railtype_override, CPerformanceTimer *pPerf)
+	inline void Init(Owner o, RailTypes railtype_override)
 	{
 		assert(!IsRoadTT() || m_veh != nullptr);
 		assert(!IsRailTT() || railtype_override != INVALID_RAILTYPES);
 		m_veh_owner = o;
-		m_pPerf = pPerf;
 		/* don't worry, all is inlined so compiler should remove unnecessary initializations */
 		m_old_tile = INVALID_TILE;
 		m_old_td = INVALID_TRACKDIR;
@@ -238,29 +234,12 @@ protected:
 	/** stores track status (available trackdirs) for the new tile into m_new_td_bits */
 	inline bool QueryNewTileTrackStatus()
 	{
-		CPerfStart perf(*m_pPerf);
 		if (IsRailTT() && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
+		} else if (IsRoadTT()) {
+			m_new_td_bits = GetTrackdirBitsForRoad(m_new_tile, this->IsTram() ? RTT_TRAM : RTT_ROAD);
 		} else {
-			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), IsRoadTT() ? (this->IsTram() ? RTT_TRAM : RTT_ROAD) : 0));
-
-			if (IsTram() && m_new_td_bits == TRACKDIR_BIT_NONE) {
-				/* GetTileTrackStatus() returns 0 for single tram bits.
-				 * As we cannot change it there (easily) without breaking something, change it here */
-				switch (GetSingleTramBit(m_new_tile)) {
-					case DIAGDIR_NE:
-					case DIAGDIR_SW:
-						m_new_td_bits = TRACKDIR_BIT_X_NE | TRACKDIR_BIT_X_SW;
-						break;
-
-					case DIAGDIR_NW:
-					case DIAGDIR_SE:
-						m_new_td_bits = TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_Y_SE;
-						break;
-
-					default: break;
-				}
-			}
+			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), 0));
 		}
 		return (m_new_td_bits != TRACKDIR_BIT_NONE);
 	}
@@ -468,12 +447,17 @@ public:
 		if (!IsWaterTT() && IsBridgeTile(m_old_tile)) {
 			int spd = GetBridgeSpec(GetBridgeType(m_old_tile))->speed;
 			if (IsRoadTT()) spd *= 2;
-			if (max_speed > spd) max_speed = spd;
+			max_speed = std::min(max_speed, spd);
 		}
 		/* Check for speed limit imposed by railtype */
 		if (IsRailTT()) {
 			uint16 rail_speed = GetRailTypeInfo(GetRailType(m_old_tile))->max_speed;
-			if (rail_speed > 0) max_speed = min(max_speed, rail_speed);
+			if (rail_speed > 0) max_speed = std::min<int>(max_speed, rail_speed);
+		}
+		if (IsRoadTT()) {
+			/* max_speed is already in roadvehicle units, no need to further modify (divide by 2) */
+			uint16 road_speed = GetRoadTypeInfo(GetRoadType(m_old_tile, GetRoadTramType(RoadVehicle::From(m_veh)->roadtype)))->max_speed;
+			if (road_speed > 0) max_speed = std::min<int>(max_speed, road_speed);
 		}
 
 		/* if min speed was requested, return it */

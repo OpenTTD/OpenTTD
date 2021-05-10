@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -15,6 +13,7 @@
 #ifndef NEWGRF_TOWNNAME_H
 #define NEWGRF_TOWNNAME_H
 
+#include <vector>
 #include "strings_type.h"
 
 struct NamePart {
@@ -47,9 +46,11 @@ GRFTownName *AddGRFTownName(uint32 grfid);
 GRFTownName *GetGRFTownName(uint32 grfid);
 void DelGRFTownName(uint32 grfid);
 void CleanUpGRFTownNames();
-StringID *GetGRFTownNameList();
 char *GRFTownNameGenerate(char *buf, uint32 grfid, uint16 gen, uint32 seed, const char *last);
 uint32 GetGRFTownNameId(int gen);
 uint16 GetGRFTownNameType(int gen);
+StringID GetGRFTownNameName(uint gen);
+
+const std::vector<StringID>& GetGRFTownNameList();
 
 #endif /* NEWGRF_TOWNNAME_H */

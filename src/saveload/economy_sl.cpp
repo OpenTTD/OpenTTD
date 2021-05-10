@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -74,8 +72,7 @@ static const SaveLoad _cargopayment_desc[] = {
 
 static void Save_CAPY()
 {
-	CargoPayment *cp;
-	FOR_ALL_CARGO_PAYMENTS(cp) {
+	for (CargoPayment *cp : CargoPayment::Iterate()) {
 		SlSetArrayIndex(cp->index);
 		SlObject(cp, _cargopayment_desc);
 	}
@@ -93,8 +90,7 @@ static void Load_CAPY()
 
 static void Ptrs_CAPY()
 {
-	CargoPayment *cp;
-	FOR_ALL_CARGO_PAYMENTS(cp) {
+	for (CargoPayment *cp : CargoPayment::Iterate()) {
 		SlObject(cp, _cargopayment_desc);
 	}
 }
@@ -102,7 +98,7 @@ static void Ptrs_CAPY()
 
 extern const ChunkHandler _economy_chunk_handlers[] = {
 	{ 'CAPY', Save_CAPY,     Load_CAPY,     Ptrs_CAPY, nullptr, CH_ARRAY},
-	{ 'PRIC', nullptr,       Load_PRIC,     nullptr,   nullptr, CH_RIFF | CH_AUTO_LENGTH},
-	{ 'CAPR', nullptr,       Load_CAPR,     nullptr,   nullptr, CH_RIFF | CH_AUTO_LENGTH},
+	{ 'PRIC', nullptr,       Load_PRIC,     nullptr,   nullptr, CH_RIFF },
+	{ 'CAPR', nullptr,       Load_CAPR,     nullptr,   nullptr, CH_RIFF },
 	{ 'ECMY', Save_ECMY,     Load_ECMY,     nullptr,   nullptr, CH_RIFF | CH_LAST},
 };

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -13,6 +11,8 @@
 #define INI_TYPE_H
 
 #include "fileio_type.h"
+#include <string>
+#include <optional>
 
 /** Types of groups */
 enum IniGroupType {
@@ -23,12 +23,12 @@ enum IniGroupType {
 
 /** A single "line" in an ini file. */
 struct IniItem {
-	IniItem *next; ///< The next item in this group
-	char *name;    ///< The name of this item
-	char *value;   ///< The value of this item
-	char *comment; ///< The comment associated with this item
+	IniItem *next;                    ///< The next item in this group
+	std::string name;                 ///< The name of this item
+	std::optional<std::string> value; ///< The value of this item
+	std::string comment;              ///< The comment associated with this item
 
-	IniItem(struct IniGroup *parent, const char *name, const char *last = nullptr);
+	IniItem(struct IniGroup *parent, const std::string &name);
 	~IniItem();
 
 	void SetValue(const char *value);
@@ -40,13 +40,13 @@ struct IniGroup {
 	IniGroupType type;   ///< type of group
 	IniItem *item;       ///< the first item in the group
 	IniItem **last_item; ///< the last item in the group
-	char *name;          ///< name of group
-	char *comment;       ///< comment for group
+	std::string name;    ///< name of group
+	std::string comment; ///< comment for group
 
-	IniGroup(struct IniLoadFile *parent, const char *name, const char *last = nullptr);
+	IniGroup(struct IniLoadFile *parent, const std::string &name);
 	~IniGroup();
 
-	IniItem *GetItem(const char *name, bool create);
+	IniItem *GetItem(const std::string &name, bool create);
 	void Clear();
 };
 
@@ -54,17 +54,17 @@ struct IniGroup {
 struct IniLoadFile {
 	IniGroup *group;                      ///< the first group in the ini
 	IniGroup **last_group;                ///< the last group in the ini
-	char *comment;                        ///< last comment in file
+	std::string comment;                  ///< last comment in file
 	const char * const *list_group_names; ///< nullptr terminated list with group names that are lists
 	const char * const *seq_group_names;  ///< nullptr terminated list with group names that are sequences.
 
 	IniLoadFile(const char * const *list_group_names = nullptr, const char * const *seq_group_names = nullptr);
 	virtual ~IniLoadFile();
 
-	IniGroup *GetGroup(const char *name, size_t len = 0, bool create_new = true);
+	IniGroup *GetGroup(const std::string &name, bool create_new = true);
 	void RemoveGroup(const char *name);
 
-	void LoadFromDisk(const char *filename, Subdirectory subdir);
+	void LoadFromDisk(const std::string &filename, Subdirectory subdir);
 
 	/**
 	 * Open the INI file.
@@ -73,7 +73,7 @@ struct IniLoadFile {
 	 * @param[out] size Size of the opened file.
 	 * @return File handle of the opened file, or \c nullptr.
 	 */
-	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size) = 0;
+	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size) = 0;
 
 	/**
 	 * Report an error about the file contents.
@@ -88,9 +88,9 @@ struct IniLoadFile {
 struct IniFile : IniLoadFile {
 	IniFile(const char * const *list_group_names = nullptr);
 
-	bool SaveToDisk(const char *filename);
+	bool SaveToDisk(const std::string &filename);
 
-	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size);
+	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size);
 	virtual void ReportFileError(const char * const pre, const char * const buffer, const char * const post);
 };
 

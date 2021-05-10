@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -50,7 +48,7 @@ public:
 
 	/**
 	 * This defines a method inside a class for Squirrel with defined params.
-	 * @note If you define nparam, make sure that he first param is always 'x',
+	 * @note If you define nparam, make sure that the first param is always 'x',
 	 *  which is the 'this' inside the function. This is hidden from the rest
 	 *  of the code, but without it calling your function will fail!
 	 */
@@ -83,7 +81,7 @@ public:
 
 	/**
 	 * This defines a static method inside a class for Squirrel with defined params.
-	 * @note If you define nparam, make sure that he first param is always 'x',
+	 * @note If you define nparam, make sure that the first param is always 'x',
 	 *  which is the 'this' inside the function. This is hidden from the rest
 	 *  of the code, but without it calling your function will fail!
 	 */

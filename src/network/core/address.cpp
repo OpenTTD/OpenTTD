@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -23,11 +21,13 @@
  */
 const char *NetworkAddress::GetHostname()
 {
-	if (StrEmpty(this->hostname) && this->address.ss_family != AF_UNSPEC) {
+	if (this->hostname.empty() && this->address.ss_family != AF_UNSPEC) {
 		assert(this->address_length != 0);
-		getnameinfo((struct sockaddr *)&this->address, this->address_length, this->hostname, sizeof(this->hostname), nullptr, 0, NI_NUMERICHOST);
+		char buffer[NETWORK_HOSTNAME_LENGTH];
+		getnameinfo((struct sockaddr *)&this->address, this->address_length, buffer, sizeof(buffer), nullptr, 0, NI_NUMERICHOST);
+		this->hostname = buffer;
 	}
-	return this->hostname;
+	return this->hostname.c_str();
 }
 
 /**
@@ -98,12 +98,11 @@ void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool wit
  * Get the address as a string, e.g. 127.0.0.1:12345.
  * @param with_family whether to add the family (e.g. IPvX).
  * @return the address
- * @note NOT thread safe
  */
-const char *NetworkAddress::GetAddressAsString(bool with_family)
+std::string NetworkAddress::GetAddressAsString(bool with_family)
 {
-	/* 6 = for the : and 5 for the decimal port number */
-	static char buf[NETWORK_HOSTNAME_LENGTH + 6 + 7];
+	/* 7 extra are for with_family, which adds " (IPvX)". */
+	char buf[NETWORK_HOSTNAME_PORT_LENGTH + 7];
 	this->GetAddressAsString(buf, lastof(buf), with_family);
 	return buf;
 }
@@ -235,21 +234,32 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 	/* Setting both hostname to nullptr and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
-	if (StrEmpty(this->hostname) && this->address_length == 0 && this->GetPort() == 0) {
+	if (this->hostname.empty() && this->address_length == 0 && this->GetPort() == 0) {
 		reset_hostname = true;
 		int fam = this->address.ss_family;
 		if (fam == AF_UNSPEC) fam = family;
-		strecpy(this->hostname, fam == AF_INET ? "0.0.0.0" : "::", lastof(this->hostname));
+		this->hostname = fam == AF_INET ? "0.0.0.0" : "::";
 	}
 
-	int e = getaddrinfo(StrEmpty(this->hostname) ? nullptr : this->hostname, port_name, &hints, &ai);
+	static bool _resolve_timeout_error_message_shown = false;
+	auto start = std::chrono::steady_clock::now();
+	int e = getaddrinfo(this->hostname.empty() ? nullptr : this->hostname.c_str(), port_name, &hints, &ai);
+	auto end = std::chrono::steady_clock::now();
+	std::chrono::seconds duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+	if (!_resolve_timeout_error_message_shown && duration >= std::chrono::seconds(5)) {
+		DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s took %i seconds",
+				this->hostname.c_str(), port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), (int)duration.count());
+		DEBUG(net, 0, "  this is likely an issue in the DNS name resolver's configuration causing it to time out");
+		_resolve_timeout_error_message_shown = true;
+	}
 
-	if (reset_hostname) strecpy(this->hostname, "", lastof(this->hostname));
+
+	if (reset_hostname) this->hostname.clear();
 
 	if (e != 0) {
 		if (func != ResolveLoopProc) {
 			DEBUG(net, 0, "getaddrinfo for hostname \"%s\", port %s, address family %s and socket type %s failed: %s",
-				this->hostname, port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)));
+				this->hostname.c_str(), port_name, AddressFamilyAsString(family), SocketTypeAsString(socktype), FS2OTTD(gai_strerror(e)).c_str());
 		}
 		return INVALID_SOCKET;
 	}
@@ -270,6 +280,18 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 			this->address_length = (int)runp->ai_addrlen;
 			assert(sizeof(this->address) >= runp->ai_addrlen);
 			memcpy(&this->address, runp->ai_addr, runp->ai_addrlen);
+#ifdef __EMSCRIPTEN__
+			/* Emscripten doesn't zero sin_zero, but as we compare addresses
+			 * to see if they are the same address, we need them to be zero'd.
+			 * Emscripten is, as far as we know, the only OS not doing this.
+			 *
+			 * https://github.com/emscripten-core/emscripten/issues/12998
+			 */
+			if (this->address.ss_family == AF_INET) {
+				sockaddr_in *address_ipv4 = (sockaddr_in *)&this->address;
+				memset(address_ipv4->sin_zero, 0, sizeof(address_ipv4->sin_zero));
+			}
+#endif
 			break;
 		}
 
@@ -283,99 +305,58 @@ SOCKET NetworkAddress::Resolve(int family, int socktype, int flags, SocketList *
 }
 
 /**
- * Helper function to resolve a connected socket.
- * @param runp information about the socket to try not
- * @return the opened socket or INVALID_SOCKET
- */
-static SOCKET ConnectLoopProc(addrinfo *runp)
-{
-	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
-	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
-	const char *address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
-
-	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
-	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 1, "[%s] could not create %s socket: %s", type, family, strerror(errno));
-		return INVALID_SOCKET;
-	}
-
-	if (!SetNoDelay(sock)) DEBUG(net, 1, "[%s] setting TCP_NODELAY failed", type);
-
-	if (connect(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
-		DEBUG(net, 1, "[%s] could not connect %s socket: %s", type, family, strerror(errno));
-		closesocket(sock);
-		return INVALID_SOCKET;
-	}
-
-	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed", type);
-
-	DEBUG(net, 1, "[%s] connected to %s", type, address);
-
-	return sock;
-}
-
-/**
- * Connect to the given address.
- * @return the connected socket or INVALID_SOCKET.
- */
-SOCKET NetworkAddress::Connect()
-{
-	DEBUG(net, 1, "Connecting to %s", this->GetAddressAsString());
-
-	return this->Resolve(AF_UNSPEC, SOCK_STREAM, AI_ADDRCONFIG, nullptr, ConnectLoopProc);
-}
-
-/**
  * Helper function to resolve a listening.
  * @param runp information about the socket to try not
  * @return the opened socket or INVALID_SOCKET
  */
 static SOCKET ListenLoopProc(addrinfo *runp)
 {
-	const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
-	const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
-	const char *address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
+	std::string address = NetworkAddress(runp->ai_addr, (int)runp->ai_addrlen).GetAddressAsString();
 
 	SOCKET sock = socket(runp->ai_family, runp->ai_socktype, runp->ai_protocol);
 	if (sock == INVALID_SOCKET) {
-		DEBUG(net, 0, "[%s] could not create %s socket on port %s: %s", type, family, address, strerror(errno));
+		const char *type = NetworkAddress::SocketTypeAsString(runp->ai_socktype);
+		const char *family = NetworkAddress::AddressFamilyAsString(runp->ai_family);
+		DEBUG(net, 0, "Could not create %s %s socket: %s", type, family, NetworkError::GetLast().AsString());
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype == SOCK_STREAM && !SetNoDelay(sock)) {
-		DEBUG(net, 3, "[%s] setting TCP_NODELAY failed for port %s", type, address);
+		DEBUG(net, 1, "Setting no-delay mode failed: %s", NetworkError::GetLast().AsString());
 	}
 
 	int on = 1;
 	/* The (const char*) cast is needed for windows!! */
 	if (setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not set reusable %s sockets for port %s: %s", type, family, address, strerror(errno));
+		DEBUG(net, 0, "Setting reuse-address mode failed: %s", NetworkError::GetLast().AsString());
 	}
 
 #ifndef __OS2__
 	if (runp->ai_family == AF_INET6 &&
 			setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, (const char*)&on, sizeof(on)) == -1) {
-		DEBUG(net, 3, "[%s] could not disable IPv4 over IPv6 on port %s: %s", type, address, strerror(errno));
+		DEBUG(net, 3, "Could not disable IPv4 over IPv6: %s", NetworkError::GetLast().AsString());
 	}
 #endif
 
 	if (bind(sock, runp->ai_addr, (int)runp->ai_addrlen) != 0) {
-		DEBUG(net, 1, "[%s] could not bind on %s port %s: %s", type, family, address, strerror(errno));
+		DEBUG(net, 0, "Could not bind socket on %s: %s", address.c_str(), NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	if (runp->ai_socktype != SOCK_DGRAM && listen(sock, 1) != 0) {
-		DEBUG(net, 1, "[%s] could not listen at %s port %s: %s", type, family, address, strerror(errno));
+		DEBUG(net, 0, "Could not listen on socket: %s", NetworkError::GetLast().AsString());
 		closesocket(sock);
 		return INVALID_SOCKET;
 	}
 
 	/* Connection succeeded */
-	if (!SetNonBlocking(sock)) DEBUG(net, 0, "[%s] setting non-blocking mode failed for %s port %s", type, family, address);
 
-	DEBUG(net, 1, "[%s] listening on %s port %s", type, family, address);
+	if (!SetNonBlocking(sock)) {
+		DEBUG(net, 0, "Setting non-blocking mode failed: %s", NetworkError::GetLast().AsString());
+	}
+
+	DEBUG(net, 1, "Listening on %s", address.c_str());
 	return sock;
 }
 
@@ -388,11 +369,11 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 {
 	assert(sockets != nullptr);
 
-	/* Setting both hostname to nullptr and port to 0 is not allowed.
+	/* Setting both hostname to "" and port to 0 is not allowed.
 	 * As port 0 means bind to any port, the other must mean that
 	 * we want to bind to 'all' IPs. */
 	if (this->address_length == 0 && this->address.ss_family == AF_UNSPEC &&
-			StrEmpty(this->hostname) && this->GetPort() == 0) {
+			this->hostname.empty() && this->GetPort() == 0) {
 		this->Resolve(AF_INET,  socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 		this->Resolve(AF_INET6, socktype, AI_ADDRCONFIG | AI_PASSIVE, sockets, ListenLoopProc);
 	} else {
@@ -429,4 +410,17 @@ void NetworkAddress::Listen(int socktype, SocketList *sockets)
 		case AF_INET6:  return "IPv6";
 		default:        return "unsupported";
 	}
+}
+
+/**
+ * Get the peer name of a socket in string format.
+ * @param sock The socket to get the peer name of.
+ * @return The string representation of the peer name.
+ */
+/* static */ const std::string NetworkAddress::GetPeerName(SOCKET sock)
+{
+	sockaddr_storage addr;
+	socklen_t addr_len = sizeof(addr);
+	getpeername(sock, (sockaddr *)&addr, &addr_len);
+	return NetworkAddress(addr, addr_len).GetAddressAsString();
 }

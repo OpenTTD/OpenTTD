@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -13,40 +11,26 @@
 #define SMALLMAP_TYPE_HPP
 
 #include "smallvec_type.hpp"
+#include <utility>
 
 /**
- * Simple pair of data. Both types have to be POD ("Plain Old Data")!
- * @tparam T Key type.
- * @tparam U Value type.
- */
-template <typename T, typename U>
-struct SmallPair {
-	T first;
-	U second;
-
-	/** Initializes this Pair with data */
-	inline SmallPair(const T &first, const U &second) : first(first), second(second) { }
-	SmallPair() = default;
-};
-
-/**
- * Implementation of simple mapping class. Both types have to be POD ("Plain Old Data")!
- * It has inherited accessors from SmallVector().
+ * Implementation of simple mapping class.
+ * It has inherited accessors from std::vector().
  * @tparam T Key type.
  * @tparam U Value type.
  * @tparam S Unit of allocation.
  *
- * @see SmallVector
+ * @see std::vector
  */
 template <typename T, typename U>
-struct SmallMap : std::vector<SmallPair<T, U> > {
-	typedef ::SmallPair<T, U> Pair;
+struct SmallMap : std::vector<std::pair<T, U> > {
+	typedef std::pair<T, U> Pair;
 	typedef Pair *iterator;
 	typedef const Pair *const_iterator;
 
-	/** Creates new SmallMap. Data are initialized in SmallVector constructor */
+	/** Creates new SmallMap. Data are initialized in std::vector constructor */
 	inline SmallMap() { }
-	/** Data are freed in SmallVector destructor */
+	/** Data are freed in std::vector destructor */
 	inline ~SmallMap() { }
 
 	/**
@@ -158,8 +142,7 @@ struct SmallMap : std::vector<SmallPair<T, U> > {
 		for (uint i = 0; i < std::vector<Pair>::size(); i++) {
 			if (key == std::vector<Pair>::operator[](i).first) return std::vector<Pair>::operator[](i).second;
 		}
-		/*C++17: Pair &n = */ std::vector<Pair>::emplace_back();
-		Pair &n = std::vector<Pair>::back();
+		Pair &n = std::vector<Pair>::emplace_back();
 		n.first = key;
 		return n.second;
 	}

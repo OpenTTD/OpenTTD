@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -21,7 +19,7 @@ class LinkGraphOverlay;
 /**
  * Data structure for viewport, display of a part of the world
  */
-struct ViewPort {
+struct Viewport {
 	int left;    ///< Screen coordinate left edge of the viewport
 	int top;     ///< Screen coordinate top edge of the viewport
 	int width;   ///< Screen width of the viewport
@@ -53,6 +51,26 @@ struct ViewportSign {
 
 	void UpdatePosition(int center, int top, StringID str, StringID str_small = STR_NULL);
 	void MarkDirty(ZoomLevel maxzoom = ZOOM_LVL_MAX) const;
+};
+
+/** Specialised ViewportSign that tracks whether it is valid for entering into a Kdtree */
+struct TrackedViewportSign : ViewportSign {
+	bool kdtree_valid; ///< Are the sign data valid for use with the _viewport_sign_kdtree?
+
+	/**
+	 * Update the position of the viewport sign.
+	 * Note that this function hides the base class function.
+	 */
+	void UpdatePosition(int center, int top, StringID str, StringID str_small = STR_NULL)
+	{
+		this->kdtree_valid = true;
+		this->ViewportSign::UpdatePosition(center, top, str, str_small);
+	}
+
+
+	TrackedViewportSign() : kdtree_valid{ false }
+	{
+	}
 };
 
 /**

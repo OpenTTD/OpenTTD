@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -86,6 +84,8 @@ static const Year MIN_YEAR = 0;
 
 /** The default starting year */
 static const Year DEF_START_YEAR = 1950;
+/** The default scoring end year */
+static const Year DEF_END_YEAR = ORIGINAL_END_YEAR - 1;
 
 /**
  * MAX_YEAR, nicely rounded value of the number of years that can

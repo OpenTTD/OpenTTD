@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -9,8 +7,6 @@
 
 /** @file squirrel.cpp the implementation of the Squirrel class. It handles all Squirrel-stuff and gives a nice API back to work with. */
 
-#include <stdarg.h>
-#include <map>
 #include "../stdafx.h"
 #include "../debug.h"
 #include "squirrel_std.hpp"
@@ -23,7 +19,16 @@
 #include <../squirrel/sqvm.h>
 #include "../core/alloc_func.hpp"
 
-#include "../safeguards.h"
+#include <stdarg.h>
+#include <map>
+
+/**
+ * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS
+ * does not have enough memory the game does not go into unrecoverable error mode and kill the
+ * whole game, but rather let the AI die though then we need to circumvent MallocT/ReallocT.
+ *
+ * So no #include "../safeguards.h" here as is required, but after the allocator's implementation.
+ */
 
 /*
  * If changing the call paths into the scripting engine, define this symbol to enable full debugging of allocations.
@@ -34,6 +39,13 @@
 struct ScriptAllocator {
 	size_t allocated_size;   ///< Sum of allocated data size
 	size_t allocation_limit; ///< Maximum this allocator may use before allocations fail
+	/**
+	 * Whether the error has already been thrown, so to not throw secondary errors in
+	 * the handling of the allocation error. This as the handling of the error will
+	 * throw a Squirrel error so the Squirrel stack can be dumped, however that gets
+	 * allocated by this allocator and then you might end up in an infinite loop.
+	 */
+	bool error_thrown;
 
 	static const size_t SAFE_LIMIT = 0x8000000; ///< 128 MiB, a safe choice for almost any situation
 
@@ -46,10 +58,51 @@ struct ScriptAllocator {
 		if (this->allocated_size > this->allocation_limit) throw Script_FatalError("Maximum memory allocation exceeded");
 	}
 
+	/**
+	 * Catch all validation for the allocation; did it allocate too much memory according
+	 * to the allocation limit or did the allocation at the OS level maybe fail? In those
+	 * error situations a Script_FatalError is thrown, but once that has been done further
+	 * allocations are allowed to make it possible for Squirrel to throw the error and
+	 * clean everything up.
+	 * @param requested_size The requested size that was requested to be allocated.
+	 * @param p              The pointer to the allocated object, or null if allocation failed.
+	 */
+	void CheckAllocation(size_t requested_size, const void *p)
+	{
+		if (this->allocated_size > this->allocation_limit && !this->error_thrown) {
+			/* Do not allow allocating more than the allocation limit, except when an error is
+			 * already as then the allocation is for throwing that error in Squirrel, the
+			 * associated stack trace information and while cleaning up the AI. */
+			this->error_thrown = true;
+			char buff[128];
+			seprintf(buff, lastof(buff), "Maximum memory allocation exceeded by " PRINTF_SIZE " bytes when allocating " PRINTF_SIZE " bytes",
+				this->allocated_size - this->allocation_limit, requested_size);
+			throw Script_FatalError(buff);
+		}
+
+		if (p == nullptr) {
+			/* The OS did not have enough memory to allocate the object, regardless of the
+			 * limit imposed by OpenTTD on the amount of memory that may be allocated. */
+			if (this->error_thrown) {
+				/* The allocation is called in the error handling of a memory allocation
+				 * failure, then not being able to allocate that small amount of memory
+				 * means there is no other choice than to bug out completely. */
+				MallocError(requested_size);
+			}
+
+			this->error_thrown = true;
+			char buff[64];
+			seprintf(buff, lastof(buff), "Out of memory. Cannot allocate " PRINTF_SIZE " bytes", requested_size);
+			throw Script_FatalError(buff);
+		}
+	}
+
 	void *Malloc(SQUnsignedInteger size)
 	{
-		void *p = MallocT<char>(size);
+		void *p = malloc(size);
 		this->allocated_size += size;
+
+		this->CheckAllocation(size, p);
 
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
 		assert(p != nullptr);
@@ -75,10 +128,12 @@ struct ScriptAllocator {
 		this->allocations.erase(p);
 #endif
 
-		void *new_p = ReallocT<char>(static_cast<char *>(p), size);
+		void *new_p = realloc(p, size);
 
 		this->allocated_size -= oldsize;
 		this->allocated_size += size;
+
+		this->CheckAllocation(size, p);
 
 #ifdef SCRIPT_DEBUG_ALLOCATIONS
 		assert(new_p != nullptr);
@@ -106,6 +161,7 @@ struct ScriptAllocator {
 		this->allocated_size = 0;
 		this->allocation_limit = static_cast<size_t>(_settings_game.script.script_max_memory_megabytes) << 20;
 		if (this->allocation_limit == 0) this->allocation_limit = SAFE_LIMIT; // in case the setting is somehow zero
+		this->error_thrown = false;
 	}
 
 	~ScriptAllocator()
@@ -115,6 +171,14 @@ struct ScriptAllocator {
 #endif
 	}
 };
+
+/**
+ * In the memory allocator for Squirrel we want to directly use malloc/realloc, so when the OS
+ * does not have enough memory the game does not go into unrecoverable error mode and kill the
+ * whole game, but rather let the AI die though then we need to circumvent MallocT/ReallocT.
+ * For the rest of this code, the safeguards should be in place though!
+ */
+#include "../safeguards.h"
 
 ScriptAllocator *_squirrel_allocator = nullptr;
 
@@ -480,7 +544,7 @@ void Squirrel::Initialize()
 
 	/* Handle compile-errors ourself, so we can display it nicely */
 	sq_setcompilererrorhandler(this->vm, &Squirrel::CompileError);
-	sq_notifyallexceptions(this->vm, SQTrue);
+	sq_notifyallexceptions(this->vm, _debug_script_level > 5);
 	/* Set a good print-function */
 	sq_setprintfunc(this->vm, &Squirrel::PrintFunc);
 	/* Handle runtime-errors ourself, so we can display it nicely */

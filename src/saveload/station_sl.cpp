@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -42,16 +40,14 @@ static void UpdateWaypointOrder(Order *o)
 void MoveBuoysToWaypoints()
 {
 	/* Buoy orders become waypoint orders */
-	OrderList *ol;
-	FOR_ALL_ORDER_LISTS(ol) {
+	for (OrderList *ol : OrderList::Iterate()) {
 		VehicleType vt = ol->GetFirstSharedVehicle()->type;
 		if (vt != VEH_SHIP && vt != VEH_TRAIN) continue;
 
 		for (Order *o = ol->GetFirstOrder(); o != nullptr; o = o->next) UpdateWaypointOrder(o);
 	}
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		VehicleType vt = v->type;
 		if (vt != VEH_SHIP && vt != VEH_TRAIN) continue;
 
@@ -59,16 +55,14 @@ void MoveBuoysToWaypoints()
 	}
 
 	/* Now make the stations waypoints */
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		if ((st->had_vehicle_of_type & HVOT_WAYPOINT) == 0) continue;
 
 		StationID index    = st->index;
 		TileIndex xy       = st->xy;
 		Town *town         = st->town;
 		StringID string_id = st->string_id;
-		char *name         = st->name;
-		st->name           = nullptr;
+		std::string name   = st->name;
 		Date build_date    = st->build_date;
 		/* TTDPatch could use "buoys with rail station" for rail waypoints */
 		bool train         = st->train_station.tile != INVALID_TILE;
@@ -111,8 +105,7 @@ void MoveBuoysToWaypoints()
 void AfterLoadStations()
 {
 	/* Update the speclists of all stations to point to the currently loaded custom stations. */
-	BaseStation *st;
-	FOR_ALL_BASE_STATIONS(st) {
+	for (BaseStation *st : BaseStation::Iterate()) {
 		for (uint i = 0; i < st->num_specs; i++) {
 			if (st->speclist[i].grfid == 0) continue;
 
@@ -135,12 +128,11 @@ void AfterLoadStations()
 void AfterLoadRoadStops()
 {
 	/* First construct the drive through entries */
-	RoadStop *rs;
-	FOR_ALL_ROADSTOPS(rs) {
+	for (RoadStop *rs : RoadStop::Iterate()) {
 		if (IsDriveThroughStopTile(rs->xy)) rs->MakeDriveThrough();
 	}
 	/* And then rebuild the data in those entries */
-	FOR_ALL_ROADSTOPS(rs) {
+	for (RoadStop *rs : RoadStop::Iterate()) {
 		if (!HasBit(rs->status, RoadStop::RSSFB_BASE_ENTRY)) continue;
 
 		rs->GetEntry(DIAGDIR_NE)->Rebuild(rs);
@@ -183,7 +175,7 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDNULL(1, SL_MIN_VERSION, SLV_4),  ///< alpha_order
 
 	    SLE_VAR(Station, string_id,                  SLE_STRINGID),
-	SLE_CONDSTR(Station, name,                       SLE_STR | SLF_ALLOW_CONTROL, 0, SLV_84, SL_MAX_VERSION),
+	SLE_CONDSSTR(Station, name,                      SLE_STR | SLF_ALLOW_CONTROL, SLV_84, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, indtype,                    SLE_UINT8,                 SLV_103, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_FILE_U16 | SLE_VAR_U8,   SL_MIN_VERSION, SLV_122),
 	SLE_CONDVAR(Station, had_vehicle_of_type,        SLE_UINT8,                 SLV_122, SL_MAX_VERSION),
@@ -378,8 +370,7 @@ static void Ptrs_STNS()
 	if (!IsSavegameVersionBefore(SLV_123)) return;
 
 	uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		if (!IsSavegameVersionBefore(SLV_68)) {
 			for (CargoID i = 0; i < num_cargo; i++) {
 				GoodsEntry *ge = &st->goods[i];
@@ -397,7 +388,7 @@ static const SaveLoad _base_station_desc[] = {
 	      SLE_VAR(BaseStation, xy,                     SLE_UINT32),
 	      SLE_REF(BaseStation, town,                   REF_TOWN),
 	      SLE_VAR(BaseStation, string_id,              SLE_STRINGID),
-	      SLE_STR(BaseStation, name,                   SLE_STR | SLF_ALLOW_CONTROL, 0),
+	     SLE_SSTR(BaseStation, name,                   SLE_STR | SLF_ALLOW_CONTROL),
 	      SLE_VAR(BaseStation, delete_ctr,             SLE_UINT8),
 	      SLE_VAR(BaseStation, owner,                  SLE_UINT8),
 	      SLE_VAR(BaseStation, facilities,             SLE_UINT8),
@@ -516,9 +507,8 @@ static void RealSave_STNN(BaseStation *bst)
 
 static void Save_STNN()
 {
-	BaseStation *st;
 	/* Write the stations */
-	FOR_ALL_BASE_STATIONS(st) {
+	for (BaseStation *st : BaseStation::Iterate()) {
 		SlSetArrayIndex(st->index);
 		SlAutolength((AutolengthProc*)RealSave_STNN, st);
 	}
@@ -590,8 +580,7 @@ static void Ptrs_STNN()
 	if (IsSavegameVersionBefore(SLV_123)) return;
 
 	uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
-	Station *st;
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		for (CargoID i = 0; i < num_cargo; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			if (IsSavegameVersionBefore(SLV_183)) {
@@ -608,17 +597,14 @@ static void Ptrs_STNN()
 		SlObject(st, _station_desc);
 	}
 
-	Waypoint *wp;
-	FOR_ALL_WAYPOINTS(wp) {
+	for (Waypoint *wp : Waypoint::Iterate()) {
 		SlObject(wp, _waypoint_desc);
 	}
 }
 
 static void Save_ROADSTOP()
 {
-	RoadStop *rs;
-
-	FOR_ALL_ROADSTOPS(rs) {
+	for (RoadStop *rs : RoadStop::Iterate()) {
 		SlSetArrayIndex(rs->index);
 		SlObject(rs, _roadstop_desc);
 	}
@@ -637,8 +623,7 @@ static void Load_ROADSTOP()
 
 static void Ptrs_ROADSTOP()
 {
-	RoadStop *rs;
-	FOR_ALL_ROADSTOPS(rs) {
+	for (RoadStop *rs : RoadStop::Iterate()) {
 		SlObject(rs, _roadstop_desc);
 	}
 }

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -162,7 +160,7 @@ static void _DoCommandReturnBuildBridge1(class ScriptInstance *instance)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
 
-	return min(::GetBridgeSpec(bridge_id)->max_length, _settings_game.construction.max_bridge_length) + 2;
+	return std::min(::GetBridgeSpec(bridge_id)->max_length, _settings_game.construction.max_bridge_length) + 2;
 }
 
 /* static */ int32 ScriptBridge::GetMinLength(BridgeID bridge_id)

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -56,7 +54,7 @@ static const SpriteID SPR_LARGE_SMALL_WINDOW = 682;
 
 /** Extra graphic spritenumbers */
 static const SpriteID SPR_OPENTTD_BASE   = 4896;
-static const uint16 OPENTTD_SPRITE_COUNT = 184;
+static const uint16 OPENTTD_SPRITE_COUNT = 191;
 
 /* Halftile-selection sprites */
 static const SpriteID SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE;
@@ -165,6 +163,14 @@ static const SpriteID SPR_IMG_DELETE_LEFT            = SPR_OPENTTD_BASE + 166;
 static const SpriteID SPR_IMG_DELETE_RIGHT           = SPR_OPENTTD_BASE + 167;
 
 static const SpriteID SPR_WINDOW_DEFSIZE             = SPR_OPENTTD_BASE + 168;
+static const SpriteID SPR_RENAME                     = SPR_OPENTTD_BASE + 184;
+static const SpriteID SPR_GOTO_LOCATION              = SPR_OPENTTD_BASE + 185;
+
+static const SpriteID SPR_CHAT                       = SPR_OPENTTD_BASE + 186;
+static const SpriteID SPR_ADMIN                      = SPR_OPENTTD_BASE + 187;
+static const SpriteID SPR_JOIN                       = SPR_OPENTTD_BASE + 188;
+static const SpriteID SPR_PLAYER_SELF                = SPR_OPENTTD_BASE + 189;
+static const SpriteID SPR_PLAYER_HOST                = SPR_OPENTTD_BASE + 190;
 
 static const SpriteID SPR_IMG_CARGOFLOW              = SPR_OPENTTD_BASE + 174;
 
@@ -276,8 +282,8 @@ static const SpriteID SPR_TRAMWAY_PAVED_STRAIGHT_X     = SPR_TRAMWAY_BASE + 47;
 static const SpriteID SPR_TRAMWAY_DEPOT_WITH_TRACK     = SPR_TRAMWAY_BASE + 49;
 static const SpriteID SPR_TRAMWAY_BACK_WIRES_STRAIGHT  = SPR_TRAMWAY_BASE + 55;
 static const SpriteID SPR_TRAMWAY_FRONT_WIRES_STRAIGHT = SPR_TRAMWAY_BASE + 56;
-static const SpriteID SPR_TRAMWAY_BACK_WIRES_SLOPED    = SPR_TRAMWAY_BASE + 72;
-static const SpriteID SPR_TRAMWAY_FRONT_WIRES_SLOPED   = SPR_TRAMWAY_BASE + 68;
+static const SpriteID SPR_TRAMWAY_BACK_WIRES_SLOPED    = SPR_TRAMWAY_BASE + 68;
+static const SpriteID SPR_TRAMWAY_FRONT_WIRES_SLOPED   = SPR_TRAMWAY_BASE + 72;
 static const SpriteID SPR_TRAMWAY_TUNNEL_WIRES         = SPR_TRAMWAY_BASE + 80;
 static const SpriteID SPR_TRAMWAY_BRIDGE               = SPR_TRAMWAY_BASE + 107;
 static const SpriteID SPR_TRAMWAY_DEPOT_NO_TRACK       = SPR_TRAMWAY_BASE + 113;
@@ -1141,33 +1147,38 @@ static const SpriteID SPR_IT_TOY_FACTORY_ROBOT        = 4720;
 static const SpriteID SPR_IT_POWER_PLANT_TRANSFORMERS = 2054;
 
 /* small icons of cargo available in station waiting*/
-static const SpriteID SPR_CARGO_PASSENGER             = 4297;
+static const SpriteID SPR_CARGO_PASSENGERS            = 4297;
 static const SpriteID SPR_CARGO_COAL                  = 4298;
 static const SpriteID SPR_CARGO_MAIL                  = 4299;
 static const SpriteID SPR_CARGO_OIL                   = 4300;
 static const SpriteID SPR_CARGO_LIVESTOCK             = 4301;
 static const SpriteID SPR_CARGO_GOODS                 = 4302;
-static const SpriteID SPR_CARGO_GRAIN                 = 4303;
+static const SpriteID SPR_CARGO_GRAIN                 = 4303;  // shared sprite with SPR_CARGO_WHEAT, SPR_CARGO_MAIZE
+static const SpriteID SPR_CARGO_WHEAT                 = 4303;  // shared sprite with SPR_CARGO_GRAIN, SPR_CARGO_MAIZE
+static const SpriteID SPR_CARGO_MAIZE                 = 4303;  // shared sprite with SPR_CARGO_GRAIN, SPR_CARGO_WHEAT
 static const SpriteID SPR_CARGO_WOOD                  = 4304;
 static const SpriteID SPR_CARGO_IRON_ORE              = 4305;
 static const SpriteID SPR_CARGO_STEEL                 = 4306;
-static const SpriteID SPR_CARGO_VALUES_GOLD           = 4307;  // shared between temperate and arctic
+static const SpriteID SPR_CARGO_VALUABLES             = 4307;  // shared between temperate and arctic ( SPR_CARGO_GOLD )
+static const SpriteID SPR_CARGO_GOLD                  = 4307;  // shared between temperate and arctic ( SPR_CARGO_VALUABLES )
 static const SpriteID SPR_CARGO_FRUIT                 = 4308;
 static const SpriteID SPR_CARGO_COPPER_ORE            = 4309;
-static const SpriteID SPR_CARGO_WATERCOLA             = 4310;  // shared between desert and toyland
+static const SpriteID SPR_CARGO_WATER                 = 4310;  // shared between desert and toyland ( SPR_CARGO_COLA )
+static const SpriteID SPR_CARGO_COLA                  = 4310;  // shared between desert and toyland ( SPR_CARGO_WATER )
 static const SpriteID SPR_CARGO_DIAMONDS              = 4311;
 static const SpriteID SPR_CARGO_FOOD                  = 4312;
 static const SpriteID SPR_CARGO_PAPER                 = 4313;
 static const SpriteID SPR_CARGO_RUBBER                = 4314;
-static const SpriteID SPR_CARGO_CANDY                 = 4315;
+static const SpriteID SPR_CARGO_SWEETS                = 4315;
 static const SpriteID SPR_CARGO_SUGAR                 = 4316;
 static const SpriteID SPR_CARGO_TOYS                  = 4317;
-static const SpriteID SPR_CARGO_COTTONCANDY           = 4318;
-static const SpriteID SPR_CARGO_FIZZYDRINK            = 4319;
+static const SpriteID SPR_CARGO_CANDYFLOSS            = 4318;
+static const SpriteID SPR_CARGO_FIZZY_DRINKS          = 4319;
 static const SpriteID SPR_CARGO_TOFFEE                = 4320;
 static const SpriteID SPR_CARGO_BUBBLES               = 4321;
 static const SpriteID SPR_CARGO_PLASTIC               = 4322;
 static const SpriteID SPR_CARGO_BATTERIES             = 4323;
+static const SpriteID SPR_CARGO_NOTHING               = SPR_ASCII_SPACE; // Placeholder for void cargo slots.
 
 /* Effect vehicles */
 static const SpriteID SPR_BULLDOZER_NE = 1416;
@@ -1542,11 +1553,11 @@ enum SpriteMasks {
 	PALETTE_MASK = MAX_PALETTES - 1,       ///< The mask for the auxiliary sprite (the one that takes care of recolouring)
 };
 
-assert_compile( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
-assert_compile( (1 << RECOLOUR_BIT & SPRITE_MASK) == 0 );
-assert_compile( TRANSPARENT_BIT != RECOLOUR_BIT );
-assert_compile( (1 << TRANSPARENT_BIT & PALETTE_MASK) == 0);
-assert_compile( (1 << RECOLOUR_BIT & PALETTE_MASK) == 0 );
+static_assert( (1 << TRANSPARENT_BIT & SPRITE_MASK) == 0 );
+static_assert( (1 << RECOLOUR_BIT & SPRITE_MASK) == 0 );
+static_assert( TRANSPARENT_BIT != RECOLOUR_BIT );
+static_assert( (1 << TRANSPARENT_BIT & PALETTE_MASK) == 0);
+static_assert( (1 << RECOLOUR_BIT & PALETTE_MASK) == 0 );
 
 
 static const PaletteID PAL_NONE                    = 0;

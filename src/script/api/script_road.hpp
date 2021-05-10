@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -44,7 +42,7 @@ public:
 		ERR_ROADTYPE_DISALLOWS_CROSSING,              // [STR_ERROR_CROSSING_DISALLOWED_ROAD]
 
 		/** No suitable road could be found */
-		ERR_UNSUITABLE_ROAD,                          // [STR_ERROR_NO_SUITABLE_ROAD, STR_ERROR_NO_SUITABLE_TRAMWAY, STR_ERROR_INCOMPATIBLE_ROAD]
+		ERR_UNSUITABLE_ROAD,                          // [STR_ERROR_NO_SUITABLE_ROAD, STR_ERROR_NO_SUITABLE_TRAMWAY]
 	};
 
 	/**
@@ -62,7 +60,7 @@ public:
 	/**
 	 * Road/tram types
 	 */
-	enum RoadTramTypes {
+	enum RoadTramTypes : uint8 {
 		ROADTRAMTYPES_ROAD = ::RTTB_ROAD, ///< Road road types.
 		ROADTRAMTYPES_TRAM = ::RTTB_TRAM, ///< Tram road types.
 	};

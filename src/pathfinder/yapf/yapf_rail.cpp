@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -30,13 +28,11 @@ template <typename Tpf> void DumpState(Tpf &pf1, Tpf &pf2)
 	FILE *f2 = fopen("yapf2.txt", "wt");
 	assert(f1 != nullptr);
 	assert(f2 != nullptr);
-	fwrite(dmp1.m_out.Data(), 1, dmp1.m_out.Size(), f1);
-	fwrite(dmp2.m_out.Data(), 1, dmp2.m_out.Size(), f2);
+	fwrite(dmp1.m_out.c_str(), 1, dmp1.m_out.size(), f1);
+	fwrite(dmp2.m_out.c_str(), 1, dmp2.m_out.size(), f2);
 	fclose(f1);
 	fclose(f2);
 }
-
-int _total_pf_time_us = 0;
 
 template <class Types>
 class CYapfReserveTrack

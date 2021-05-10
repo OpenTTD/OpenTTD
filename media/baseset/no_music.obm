@@ -1,5 +1,3 @@
-; $Id$
-;
 ; This represents more or less nothingness
 ;
 [metadata]
@@ -7,7 +5,7 @@ name              = NoMusic
 shortname         = NULL
 version           = 0
 fallback          = true
-!! description STR_BASEMUSIC_NONE_DESCRIPTION
+@description_STR_BASEMUSIC_NONE_DESCRIPTION@
 
 [files]
 theme =

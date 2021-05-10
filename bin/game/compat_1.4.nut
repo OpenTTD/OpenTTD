@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -22,3 +20,11 @@ GSBridge.GetName <- function(bridge_id)
 {
 	return GSBridge._GetName(bridge_id, GSVehicle.VT_RAIL);
 }
+
+/* 1.11 adds a tile parameter. */
+GSCompany._ChangeBankBalance <- GSCompany.ChangeBankBalance;
+GSCompany.ChangeBankBalance <- function(company, delta, expenses_type)
+{
+	return GSCompany._ChangeBankBalance(company, delta, expenses_type, GSMap.TILE_INVALID);
+}
+

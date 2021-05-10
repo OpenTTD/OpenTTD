@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -230,9 +228,6 @@ struct PersistentStorage : PersistentStorageArray<int32, 256>, PersistentStorage
 	}
 };
 
-assert_compile(cpp_lengthof(OldPersistentStorage, storage) <= cpp_lengthof(PersistentStorage, storage));
-
-#define FOR_ALL_STORAGES_FROM(var, start) FOR_ALL_ITEMS_FROM(PersistentStorage, storage_index, var, start)
-#define FOR_ALL_STORAGES(var) FOR_ALL_STORAGES_FROM(var, 0)
+static_assert(cpp_lengthof(OldPersistentStorage, storage) <= cpp_lengthof(PersistentStorage, storage));
 
 #endif /* NEWGRF_STORAGE_H */

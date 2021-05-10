@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -44,6 +42,9 @@ public:
 			socklen_t sin_len = sizeof(sin);
 			SOCKET s = accept(ls, (struct sockaddr*)&sin, &sin_len);
 			if (s == INVALID_SOCKET) return;
+#ifdef __EMSCRIPTEN__
+			sin_len = FixAddrLenForEmscripten(sin);
+#endif
 
 			SetNonBlocking(s); // XXX error handling?
 
@@ -62,8 +63,8 @@ public:
 
 					DEBUG(net, 1, "[%s] Banned ip tried to join (%s), refused", Tsocket::GetName(), entry.c_str());
 
-					if (send(s, (const char*)p.buffer, p.size, 0) < 0) {
-						DEBUG(net, 0, "send failed with error %d", GET_LAST_ERROR());
+					if (p.TransferOut<int>(send, s, 0) < 0) {
+						DEBUG(net, 0, "send failed with error %s", NetworkError::GetLast().AsString());
 					}
 					closesocket(s);
 					break;
@@ -79,8 +80,8 @@ public:
 				Packet p(Tfull_packet);
 				p.PrepareToSend();
 
-				if (send(s, (const char*)p.buffer, p.size, 0) < 0) {
-					DEBUG(net, 0, "send failed with error %d", GET_LAST_ERROR());
+				if (p.TransferOut<int>(send, s, 0) < 0) {
+					DEBUG(net, 0, "send failed with error %s", NetworkError::GetLast().AsString());
 				}
 				closesocket(s);
 
@@ -104,8 +105,7 @@ public:
 		FD_ZERO(&write_fd);
 
 
-		Tsocket *cs;
-		FOR_ALL_ITEMS_FROM(Tsocket, idx, cs, 0) {
+		for (Tsocket *cs : Tsocket::Iterate()) {
 			FD_SET(cs->sock, &read_fd);
 			FD_SET(cs->sock, &write_fd);
 		}
@@ -124,7 +124,7 @@ public:
 		}
 
 		/* read stuff from clients */
-		FOR_ALL_ITEMS_FROM(Tsocket, idx, cs, 0) {
+		for (Tsocket *cs : Tsocket::Iterate()) {
 			cs->writable = !!FD_ISSET(cs->sock, &write_fd);
 			if (FD_ISSET(cs->sock, &read_fd)) {
 				cs->ReceivePackets();
@@ -151,7 +151,7 @@ public:
 
 		if (sockets.size() == 0) {
 			DEBUG(net, 0, "[server] could not start network: could not create listening socket");
-			NetworkError(STR_NETWORK_ERROR_SERVER_START);
+			ShowNetworkError(STR_NETWORK_ERROR_SERVER_START);
 			return false;
 		}
 

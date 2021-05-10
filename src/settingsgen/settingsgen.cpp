@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -60,7 +58,7 @@ public:
 	 */
 	size_t Add(const char *text, size_t length)
 	{
-		size_t store_size = min(length, OUTPUT_BLOCK_SIZE - this->size);
+		size_t store_size = std::min(length, OUTPUT_BLOCK_SIZE - this->size);
 		assert(store_size <= OUTPUT_BLOCK_SIZE);
 		MemCpyT(this->data + this->size, text, store_size);
 		this->size += store_size;
@@ -120,8 +118,7 @@ public:
 			text += stored_size;
 		}
 		while (length > 0) {
-			/*C++17: OutputBuffer &block =*/ this->output_buffer.emplace_back();
-			OutputBuffer &block = this->output_buffer.back();
+			OutputBuffer &block = this->output_buffer.emplace_back();
 			block.Clear(); // Initialize the new block.
 			size_t stored_size = block.Add(text, length);
 			length -= stored_size;
@@ -168,11 +165,11 @@ struct SettingsIniFile : IniLoadFile {
 	{
 	}
 
-	virtual FILE *OpenFile(const char *filename, Subdirectory subdir, size_t *size)
+	virtual FILE *OpenFile(const std::string &filename, Subdirectory subdir, size_t *size)
 	{
 		/* Open the text file in binary mode to prevent end-of-line translations
 		 * done by ftell() and friends, as defined by K&R. */
-		FILE *in = fopen(filename, "rb");
+		FILE *in = fopen(filename.c_str(), "rb");
 		if (in == nullptr) return nullptr;
 
 		fseek(in, 0L, SEEK_END);
@@ -189,11 +186,13 @@ struct SettingsIniFile : IniLoadFile {
 };
 
 OutputStore _stored_output; ///< Temporary storage of the output, until all processing is done.
+OutputStore _post_amble_output; ///< Similar to _stored_output, but for the post amble.
 
-static const char *PREAMBLE_GROUP_NAME  = "pre-amble";  ///< Name of the group containing the pre amble.
+static const char *PREAMBLE_GROUP_NAME  = "pre-amble"; ///< Name of the group containing the pre amble.
 static const char *POSTAMBLE_GROUP_NAME = "post-amble"; ///< Name of the group containing the post amble.
-static const char *TEMPLATES_GROUP_NAME = "templates";  ///< Name of the group containing the templates.
-static const char *DEFAULTS_GROUP_NAME  = "defaults";   ///< Name of the group containing default values for the template variables.
+static const char *TEMPLATES_GROUP_NAME = "templates"; ///< Name of the group containing the templates.
+static const char *VALIDATION_GROUP_NAME = "validation"; ///< Name of the group containing the validation statements.
+static const char *DEFAULTS_GROUP_NAME  = "defaults"; ///< Name of the group containing default values for the template variables.
 
 /**
  * Load the INI file.
@@ -216,11 +215,11 @@ static IniLoadFile *LoadIniFile(const char *filename)
  */
 static void DumpGroup(IniLoadFile *ifile, const char * const group_name)
 {
-	IniGroup *grp = ifile->GetGroup(group_name, 0, false);
+	IniGroup *grp = ifile->GetGroup(group_name, false);
 	if (grp != nullptr && grp->type == IGT_SEQUENCE) {
 		for (IniItem *item = grp->item; item != nullptr; item = item->next) {
-			if (item->name) {
-				_stored_output.Add(item->name);
+			if (!item->name.empty()) {
+				_stored_output.Add(item->name.c_str());
 				_stored_output.Add("\n", 1);
 			}
 		}
@@ -238,8 +237,75 @@ static const char *FindItemValue(const char *name, IniGroup *grp, IniGroup *defa
 {
 	IniItem *item = grp->GetItem(name, false);
 	if (item == nullptr && defaults != nullptr) item = defaults->GetItem(name, false);
-	if (item == nullptr || item->value == nullptr) return nullptr;
-	return item->value;
+	if (item == nullptr || !item->value.has_value()) return nullptr;
+	return item->value->c_str();
+}
+
+/**
+ * Parse a single entry via a template and output this.
+ * @param item The template to use for the output.
+ * @param grp Group current being used for template rendering.
+ * @param default_grp Default values for items not set in @grp.
+ * @param output Output to use for result.
+ */
+static void DumpLine(IniItem *item, IniGroup *grp, IniGroup *default_grp, OutputStore &output)
+{
+	static const int MAX_VAR_LENGTH = 64;
+
+	/* Prefix with #if/#ifdef/#ifndef */
+	static const char * const pp_lines[] = {"if", "ifdef", "ifndef", nullptr};
+	int count = 0;
+	for (const char * const *name = pp_lines; *name != nullptr; name++) {
+		const char *condition = FindItemValue(*name, grp, default_grp);
+		if (condition != nullptr) {
+			output.Add("#", 1);
+			output.Add(*name);
+			output.Add(" ", 1);
+			output.Add(condition);
+			output.Add("\n", 1);
+			count++;
+		}
+	}
+
+	/* Output text of the template, except template variables of the form '$[_a-z0-9]+' which get replaced by their value. */
+	const char *txt = item->value->c_str();
+	while (*txt != '\0') {
+		if (*txt != '$') {
+			output.Add(txt, 1);
+			txt++;
+			continue;
+		}
+		txt++;
+		if (*txt == '$') { // Literal $
+			output.Add(txt, 1);
+			txt++;
+			continue;
+		}
+
+		/* Read variable. */
+		char variable[MAX_VAR_LENGTH];
+		int i = 0;
+		while (i < MAX_VAR_LENGTH - 1) {
+			if (!(txt[i] == '_' || (txt[i] >= 'a' && txt[i] <= 'z') || (txt[i] >= '0' && txt[i] <= '9'))) break;
+			variable[i] = txt[i];
+			i++;
+		}
+		variable[i] = '\0';
+		txt += i;
+
+		if (i > 0) {
+			/* Find the text to output. */
+			const char *valitem = FindItemValue(variable, grp, default_grp);
+			if (valitem != nullptr) output.Add(valitem);
+		} else {
+			output.Add("$", 1);
+		}
+	}
+	output.Add("\n", 1); // \n after the expanded template.
+	while (count > 0) {
+		output.Add("#endif\n");
+		count--;
+	}
 }
 
 /**
@@ -248,78 +314,31 @@ static const char *FindItemValue(const char *name, IniGroup *grp, IniGroup *defa
  */
 static void DumpSections(IniLoadFile *ifile)
 {
-	static const int MAX_VAR_LENGTH = 64;
-	static const char * const special_group_names[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, nullptr};
+	static const char * const special_group_names[] = {PREAMBLE_GROUP_NAME, POSTAMBLE_GROUP_NAME, DEFAULTS_GROUP_NAME, TEMPLATES_GROUP_NAME, VALIDATION_GROUP_NAME, nullptr};
 
-	IniGroup *default_grp = ifile->GetGroup(DEFAULTS_GROUP_NAME, 0, false);
-	IniGroup *templates_grp  = ifile->GetGroup(TEMPLATES_GROUP_NAME, 0, false);
+	IniGroup *default_grp = ifile->GetGroup(DEFAULTS_GROUP_NAME, false);
+	IniGroup *templates_grp  = ifile->GetGroup(TEMPLATES_GROUP_NAME, false);
+	IniGroup *validation_grp  = ifile->GetGroup(VALIDATION_GROUP_NAME, false);
 	if (templates_grp == nullptr) return;
 
 	/* Output every group, using its name as template name. */
 	for (IniGroup *grp = ifile->group; grp != nullptr; grp = grp->next) {
 		const char * const *sgn;
-		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (strcmp(grp->name, *sgn) == 0) break;
+		for (sgn = special_group_names; *sgn != nullptr; sgn++) if (grp->name == *sgn) break;
 		if (*sgn != nullptr) continue;
 
 		IniItem *template_item = templates_grp->GetItem(grp->name, false); // Find template value.
-		if (template_item == nullptr || template_item->value == nullptr) {
-			fprintf(stderr, "settingsgen: Warning: Cannot find template %s\n", grp->name);
+		if (template_item == nullptr || !template_item->value.has_value()) {
+			fprintf(stderr, "settingsgen: Warning: Cannot find template %s\n", grp->name.c_str());
 			continue;
 		}
+		DumpLine(template_item, grp, default_grp, _stored_output);
 
-		/* Prefix with #if/#ifdef/#ifndef */
-		static const char * const pp_lines[] = {"if", "ifdef", "ifndef", nullptr};
-		int count = 0;
-		for (const char * const *name = pp_lines; *name != nullptr; name++) {
-			const char *condition = FindItemValue(*name, grp, default_grp);
-			if (condition != nullptr) {
-				_stored_output.Add("#", 1);
-				_stored_output.Add(*name);
-				_stored_output.Add(" ", 1);
-				_stored_output.Add(condition);
-				_stored_output.Add("\n", 1);
-				count++;
+		if (validation_grp != nullptr) {
+			IniItem *validation_item = validation_grp->GetItem(grp->name, false); // Find template value.
+			if (validation_item != nullptr && validation_item->value.has_value()) {
+				DumpLine(validation_item, grp, default_grp, _post_amble_output);
 			}
-		}
-
-		/* Output text of the template, except template variables of the form '$[_a-z0-9]+' which get replaced by their value. */
-		const char *txt = template_item->value;
-		while (*txt != '\0') {
-			if (*txt != '$') {
-				_stored_output.Add(txt, 1);
-				txt++;
-				continue;
-			}
-			txt++;
-			if (*txt == '$') { // Literal $
-				_stored_output.Add(txt, 1);
-				txt++;
-				continue;
-			}
-
-			/* Read variable. */
-			char variable[MAX_VAR_LENGTH];
-			int i = 0;
-			while (i < MAX_VAR_LENGTH - 1) {
-				if (!(txt[i] == '_' || (txt[i] >= 'a' && txt[i] <= 'z') || (txt[i] >= '0' && txt[i] <= '9'))) break;
-				variable[i] = txt[i];
-				i++;
-			}
-			variable[i] = '\0';
-			txt += i;
-
-			if (i > 0) {
-				/* Find the text to output. */
-				const char *valitem = FindItemValue(variable, grp, default_grp);
-				if (valitem != nullptr) _stored_output.Add(valitem);
-			} else {
-				_stored_output.Add("$", 1);
-			}
-		}
-		_stored_output.Add("\n", 1); // \n after the expanded template.
-		while (count > 0) {
-			_stored_output.Add("#endif\n");
-			count--;
 		}
 	}
 }
@@ -479,6 +498,7 @@ int CDECL main(int argc, char *argv[])
 	}
 
 	_stored_output.Clear();
+	_post_amble_output.Clear();
 
 	for (int i = 0; i < mgo.numleft; i++) ProcessIniFile(mgo.argv[i]);
 
@@ -486,6 +506,7 @@ int CDECL main(int argc, char *argv[])
 	if (output_file == nullptr) {
 		CopyFile(before_file, stdout);
 		_stored_output.Write(stdout);
+		_post_amble_output.Write(stdout);
 		CopyFile(after_file, stdout);
 	} else {
 		static const char * const tmp_output = "tmp2.xxx";
@@ -497,6 +518,7 @@ int CDECL main(int argc, char *argv[])
 		}
 		CopyFile(before_file, fp);
 		_stored_output.Write(fp);
+		_post_amble_output.Write(fp);
 		CopyFile(after_file, fp);
 		fclose(fp);
 

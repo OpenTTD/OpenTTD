@@ -1,0 +1,19 @@
+/*
+ * This file is part of OpenTTD.
+ * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+ * OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "../script_priorityqueue.hpp"
+
+namespace SQConvert {
+	/* Allow ScriptPriorityQueue to be used as Squirrel parameter */
+	template <> inline ScriptPriorityQueue *GetParam(ForceType<ScriptPriorityQueue *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptPriorityQueue *)instance; }
+	template <> inline ScriptPriorityQueue &GetParam(ForceType<ScriptPriorityQueue &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptPriorityQueue *)instance; }
+	template <> inline const ScriptPriorityQueue *GetParam(ForceType<const ScriptPriorityQueue *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (ScriptPriorityQueue *)instance; }
+	template <> inline const ScriptPriorityQueue &GetParam(ForceType<const ScriptPriorityQueue &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(ScriptPriorityQueue *)instance; }
+	template <> inline int Return<ScriptPriorityQueue *>(HSQUIRRELVM vm, ScriptPriorityQueue *res) { if (res == nullptr) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "PriorityQueue", res, nullptr, DefSQDestructorCallback<ScriptPriorityQueue>, true); return 1; }
+} // namespace SQConvert

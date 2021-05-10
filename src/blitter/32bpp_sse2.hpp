@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -33,7 +31,7 @@ public:
 		uint8 m;
 		uint8 v;
 	};
-	assert_compile(sizeof(MapValue) == 2);
+	static_assert(sizeof(MapValue) == 2);
 
 	/** Helper for creating specialised functions for specific optimisations. */
 	enum ReadMode {

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -32,6 +30,7 @@ static const SaveLoad _newgrf_mapping_desc[] = {
 void Save_NewGRFMapping(const OverrideManagerBase &mapping)
 {
 	for (uint i = 0; i < mapping.GetMaxMapping(); i++) {
+		if (!mapping.IsValidID(i)) continue;
 		SlSetArrayIndex(i);
 		SlObject(&mapping.mapping_ID[i], _newgrf_mapping_desc);
 	}

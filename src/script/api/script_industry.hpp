@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -12,7 +10,10 @@
 #ifndef SCRIPT_INDUSTRY_HPP
 #define SCRIPT_INDUSTRY_HPP
 
+#include "script_company.hpp"
+#include "script_date.hpp"
 #include "script_object.hpp"
+#include "../../industry.h"
 
 /**
  * Class that handles all industry related functions.
@@ -25,6 +26,27 @@ public:
 		CAS_NOT_ACCEPTED, ///< The CargoID is not accepted by this industry.
 		CAS_ACCEPTED,     ///< The industry currently accepts this CargoID.
 		CAS_TEMP_REFUSED, ///< The industry temporarily refuses to accept this CargoID but may do so again in the future.
+	};
+
+	/**
+	 * Control flags for industry
+	 * @api -ai
+	 */
+	enum IndustryControlFlags {
+		/**
+		 * When industry production change is evaluated, rolls to decrease are ignored.
+		 * This also prevents industry closure due to production dropping to the lowest level.
+		 */
+		INDCTL_NO_PRODUCTION_DECREASE = ::INDCTL_NO_PRODUCTION_DECREASE,
+		/**
+		 * When industry production change is evaluated, rolls to increase are ignored.
+		 */
+		INDCTL_NO_PRODUCTION_INCREASE = ::INDCTL_NO_PRODUCTION_INCREASE,
+		/**
+		 * Industry can not close regardless of production level or time since last delivery.
+		 * This does not prevent a closure already announced.
+		 */
+		INDCTL_NO_CLOSURE             = ::INDCTL_NO_CLOSURE,
 	};
 
 	/**
@@ -58,6 +80,16 @@ public:
 	 * @return The name of the industry.
 	 */
 	static char *GetName(IndustryID industry_id);
+
+	/**
+	 * Set the custom text of an industry, shown in the GUI.
+	 * @param industry_id The industry to set the custom text of.
+	 * @param text The text to set it to (can be either a raw string, or a ScriptText object). If null is passed, the text will be removed.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetText(IndustryID industry_id, Text *text);
 
 	/**
 	 * See whether an industry currently accepts a certain cargo.
@@ -198,6 +230,87 @@ public:
 	 * @return The IndustryType of the industry.
 	 */
 	static IndustryType GetIndustryType(IndustryID industry_id);
+
+	/**
+	 * Get the last year this industry had any production output.
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return Year the industry last had production, 0 if error.
+	 * @api -ai
+	 */
+	static int32 GetLastProductionYear(IndustryID industry_id);
+
+	/**
+	 * Get the last date this industry accepted any cargo delivery.
+	 * @param industry_id The index of the industry.
+	 * @param cargo_type The cargo to query, or CT_INVALID to query latest of all accepted cargoes.
+	 * @pre IsValidIndustry(industry_id).
+	 * @pre IsValidCargo(cargo_type) || cargo_type == CT_INVALID.
+	 * @return Date the industry last received cargo from a delivery, or ScriptDate::DATE_INVALID on error.
+	 * @api -ai
+	 */
+	static ScriptDate::Date GetCargoLastAcceptedDate(IndustryID industry_id, CargoID cargo_type);
+
+	/**
+	 * Get the current control flags for an industry.
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return Bit flags of the IndustryControlFlags enumeration.
+	 * @api -ai
+	 */
+	static uint32 GetControlFlags(IndustryID industry_id);
+
+	/**
+	 * Change the control flags for an industry.
+	 * @param industry_id The index of the industry.
+	 * @param control_flags New flags as a combination of IndustryControlFlags values.
+	 * @pre IsValidIndustry(industry_id).
+	 * @pre No ScriptCompanyMode may be in scope.
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetControlFlags(IndustryID industry_id, uint32 control_flags);
+
+	/**
+	 * Find out which company currently has the exclusive rights to deliver cargo to the industry.
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return The company that has the exclusive rights. The value
+	 *         ScriptCompany::COMPANY_INVALID means that there are currently no
+	 *         exclusive rights given out to anyone.
+	 */
+	static ScriptCompany::CompanyID GetExclusiveSupplier(IndustryID industry_id);
+
+	/**
+	 * Sets or resets the company that has exclusive right to deliver cargo to the industry.
+	 * @param industry_id The index of the industry.
+	 * @param company_id The company to set (ScriptCompany::COMPANY_INVALID to reset).
+	 * @pre IsValidIndustry(industry_id).
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetExclusiveSupplier(IndustryID industry_id, ScriptCompany::CompanyID company_id);
+
+	/**
+	 * Find out which company currently has the exclusive rights to take cargo from the industry.
+	 * @param industry_id The index of the industry.
+	 * @pre IsValidIndustry(industry_id).
+	 * @return The company that has the exclusive rights. The value
+	 *         ScriptCompany::COMPANY_SPECTATOR means that there are currently no
+	 *         exclusive rights given out to anyone.
+	 */
+	static ScriptCompany::CompanyID GetExclusiveConsumer(IndustryID industry_id);
+
+	/**
+	 * Sets or resets the company that has exclusive right to take cargo from the industry.
+	 * @param industry_id The index of the industry.
+	 * @param company_id The company to set (ScriptCompany::COMPANY_INVALID to reset).
+	 * @pre IsValidIndustry(industry_id).
+	 * @return True if the action succeeded.
+	 * @api -ai
+	 */
+	static bool SetExclusiveConsumer(IndustryID industry_id, ScriptCompany::CompanyID company_id);
+
 };
 
 #endif /* SCRIPT_INDUSTRY_HPP */

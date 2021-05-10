@@ -11,8 +11,6 @@
 ##case t ba
 
 
-# $Id$
-
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -74,12 +72,12 @@ STR_CARGO_PLURAL_SUGAR                                          :Cukor
 STR_CARGO_PLURAL_SUGAR.t                                        :cukrot
 STR_CARGO_PLURAL_TOYS                                           :Játék
 STR_CARGO_PLURAL_TOYS.t                                         :játékot
-STR_CARGO_PLURAL_CANDY                                          :Cukorka
-STR_CARGO_PLURAL_CANDY.t                                        :cukorkát
+STR_CARGO_PLURAL_SWEETS                                         :Cukorka
+STR_CARGO_PLURAL_SWEETS.t                                       :cukorkát
 STR_CARGO_PLURAL_COLA                                           :Kóla
 STR_CARGO_PLURAL_COLA.t                                         :kólát
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Vattacukor
-STR_CARGO_PLURAL_COTTON_CANDY.t                                 :vattacukrot
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Vattacukor
+STR_CARGO_PLURAL_CANDYFLOSS.t                                   :vattacukrot
 STR_CARGO_PLURAL_BUBBLES                                        :Buborék
 STR_CARGO_PLURAL_BUBBLES.t                                      :buborékot
 STR_CARGO_PLURAL_TOFFEE                                         :Tejkaramella
@@ -139,12 +137,12 @@ STR_CARGO_SINGULAR_SUGAR                                        :cukor
 STR_CARGO_SINGULAR_SUGAR.t                                      :cukrot
 STR_CARGO_SINGULAR_TOY                                          :játék
 STR_CARGO_SINGULAR_TOY.t                                        :játékot
-STR_CARGO_SINGULAR_CANDY                                        :cukorka
-STR_CARGO_SINGULAR_CANDY.t                                      :cukorkát
+STR_CARGO_SINGULAR_SWEETS                                       :cukorka
+STR_CARGO_SINGULAR_SWEETS.t                                     :cukorkát
 STR_CARGO_SINGULAR_COLA                                         :kóla
 STR_CARGO_SINGULAR_COLA.t                                       :kólát
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :vattacukor
-STR_CARGO_SINGULAR_COTTON_CANDY.t                               :vattacukrot
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :vattacukor
+STR_CARGO_SINGULAR_CANDYFLOSS.t                                 :vattacukrot
 STR_CARGO_SINGULAR_BUBBLE                                       :buborék
 STR_CARGO_SINGULAR_BUBBLE.t                                     :buborékot
 STR_CARGO_SINGULAR_TOFFEE                                       :tejkaramella
@@ -259,6 +257,7 @@ STR_COLOUR_DEFAULT                                              :Alapértelmezet
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA}{NBSP}mi/h
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA}{NBSP}km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA}{NBSP}m/s
+STR_UNITS_VELOCITY_GAMEUNITS                                    :{DECIMAL}{NBSP}mező/nap
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}{NBSP}LE
 STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}LE
@@ -298,8 +297,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Csökken
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Sorbarendezési feltétel
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Szűrési feltétel kiválasztása
 STR_BUTTON_SORT_BY                                              :{BLACK}Rendezés
-STR_BUTTON_LOCATION                                             :{BLACK}Megnéz
-STR_BUTTON_RENAME                                               :{BLACK}Átnevez
 STR_BUTTON_CATCHMENT                                            :{BLACK}Lefedett terület
 STR_TOOLTIP_CATCHMENT                                           :{BLACK}Az állomás által lefedett terület mutatása
 
@@ -379,6 +376,15 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Szállítási k
 STR_SORT_BY_RANGE                                               :Hatótávolság
 STR_SORT_BY_POPULATION                                          :Lakosság
 STR_SORT_BY_RATING                                              :Értékelés
+STR_SORT_BY_NUM_VEHICLES                                        :Járművek száma
+STR_SORT_BY_TOTAL_PROFIT_LAST_YEAR                              :Tavalyi összes profit
+STR_SORT_BY_TOTAL_PROFIT_THIS_YEAR                              :Idei összes profit
+STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :Tavalyi átlagos profit
+STR_SORT_BY_AVERAGE_PROFIT_THIS_YEAR                            :Idei átlagos profit
+
+# Group by options for vehicle list
+STR_GROUP_BY_NONE                                               :Nincs
+STR_GROUP_BY_SHARED_ORDERS                                      :Megosztott utasítások
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Játék szüneteltetése
@@ -467,7 +473,7 @@ STR_FILE_MENU_EXIT                                              :Kilépés
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Világtérkép
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Extra látkép
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Extra látkép
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Rakományáramlási jelmagyarázat
 STR_MAP_MENU_SIGN_LIST                                          :Feliratok listája
 
@@ -543,9 +549,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Átváltás konzolra
 STR_ABOUT_MENU_AI_DEBUG                                         :MI / Játékszkript nyomkövetés
 STR_ABOUT_MENU_SCREENSHOT                                       :Képmentés
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Teljes nagyítású képmentés
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Alapértelmezett nagyítású képmentés
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Képmentés teljes térképről
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :FPS ablak
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Az 'OpenTTD'-ről
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Sprite elhelyező
@@ -636,8 +639,8 @@ STR_MONTH_DEC                                                   :december
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Jelkulcs
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}A grafikonok jelmagyarázata
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
@@ -716,9 +719,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Saját 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Zene Hangereje
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Hangok Hangereje
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
-STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
@@ -811,6 +811,7 @@ STR_SMALLMAP_LEGENDA_DOCK                                       :{TINY_FONT}{BLA
 STR_SMALLMAP_LEGENDA_ROUGH_LAND                                 :{TINY_FONT}{BLACK}Göröngyös Talaj
 STR_SMALLMAP_LEGENDA_GRASS_LAND                                 :{TINY_FONT}{BLACK}Füves Talaj
 STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}Csupasz Föld
+STR_SMALLMAP_LEGENDA_RAINFOREST                                 :{TINY_FONT}{BLACK}Esőerdő
 STR_SMALLMAP_LEGENDA_FIELDS                                     :{TINY_FONT}{BLACK}Szántóföld
 STR_SMALLMAP_LEGENDA_TREES                                      :{TINY_FONT}{BLACK}Fa
 STR_SMALLMAP_LEGENDA_ROCKS                                      :{TINY_FONT}{BLACK}Kő
@@ -842,6 +843,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Minden r
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Utolsó üzenet vagy újsághír megmutatása
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  SZÜNET  *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  SZÜNET (várakozás a kapcsolati gráf frissítésére) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}Automatikus mentés
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  JÁTÉK MENTÉSE  *  *
 
@@ -936,6 +938,8 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Új {STRING} elérhető!  -  {ENGINE}
 
+STR_NEWS_SHOW_VEHICLE_GROUP_TOOLTIP                             :{BLACK}Ide kattintva megnyílik a járműlista, kijelölve a jármű csoportját
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} többé nem fogad el {STRING.t}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} többé nem fogad el {STRING.t} és {STRING.t}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} most már elfogad {STRING.t}
@@ -954,7 +958,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN} önkormányzata és {STRING} szerződést kötött egy éves kizárólagos szállítási jogokra!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}{COMMA}. látkép
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}{COMMA}. látkép
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Látkép átállítása
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}A látképre a fő nézet pozícióját másolja
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Fő nézet ideállítása
@@ -1005,14 +1009,15 @@ STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikói Peso (
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :Új Tajvani Dollár (NTD)
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kínai Renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongi Dollár (HKD)
+STR_GAME_OPTIONS_CURRENCY_INR                                   :Indiai Rúpia (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonéz rúpia (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Maláj ringgit (MYR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Közúti járművek
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}A közúti közlekedés oldalának kiválasztása
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Balra hajtás
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Jobbra hajtás
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Városnevek
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Városnevek:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}A városnevek stílusának kiválasztása
 
 ############ start of townname region
@@ -1052,6 +1057,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :12 havonta
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Nyelv
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Válassz nyelvet
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% teljesítve)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Teljes képernyő
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Jelöld be ezt, ha teljes képernyős módban szeretnél játszani az OpenTTD-vel
@@ -1059,10 +1065,19 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Jelöld 
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Képernyő felbontás
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Játékhoz használt felbontás kiválasztása
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :egyéb
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
+
+STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Hardveres gyorsítás
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK}Bekapcsolásával az OpenTTD hardveres gyorsítást próbál alkalmazni. A beállítás csak a játék újraindítása után lép érvénybe.
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Ez a beállítás csak a játék újraindítása után lép érvénybe
+
+STR_GAME_OPTIONS_VIDEO_VSYNC                                    :{BLACK}VSync (Vertikális Szinkronizáció)
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Jelöld be ezt a négyzetet hogy engedélyezd a v-sync-et. A változtatás csak a játék újraindítása után fog érvényesülni. Kizárólag hardware gyorsítással működik!
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Felület mérete
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Használni kívánt felületméret kiválasztása
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_AUTO                         :(automatikus)
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normál
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dupla méret
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Négyszeres méret
@@ -1070,9 +1085,18 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Négyszeres mé
 STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Betűméret
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Használni kívánt betűméret kiválasztása
 
+STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(automatikus)
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Normál
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Dupla méret
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Négyszeres méret
+
+STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafika
+
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Képernyőfrissítési frekvencia
+STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Játékhoz használt képernyőfrissítési frekvencia kiválasztása
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :egyéb
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
+STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}A 60 Hz-nél nagyobb frekvencia befolyással lehet a teljesítményre.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikus alapcsomag
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}A játékhoz használandó grafikus alapcsomag kiválasztása
@@ -1168,6 +1192,8 @@ STR_TERRAIN_TYPE_FLAT                                           :Sík
 STR_TERRAIN_TYPE_HILLY                                          :Dombos
 STR_TERRAIN_TYPE_MOUNTAINOUS                                    :Hegyvidéki
 STR_TERRAIN_TYPE_ALPINIST                                       :Alpesi
+STR_TERRAIN_TYPE_CUSTOM                                         :Egyéni magasság
+STR_TERRAIN_TYPE_CUSTOM_VALUE                                   :Egyéni magasság ({NUM})
 
 STR_CITY_APPROVAL_PERMISSIVE                                    :Engedékeny
 STR_CITY_APPROVAL_TOLERANT                                      :Toleráns
@@ -1180,6 +1206,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Beállí
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Szűrő kifejezés:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Összes szétnyitása
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Összes összecsukása
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Visszaállítja az összes értéket
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(leírás nem elérhető)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Alapértelmezett érték: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Beállítás típusa: {ORANGE}{STRING}
@@ -1188,6 +1215,8 @@ STR_CONFIG_SETTING_TYPE_GAME_MENU                               :Játék beáll�
 STR_CONFIG_SETTING_TYPE_GAME_INGAME                             :Játék beállítás (mentésben tárolva; csak a jelenlegi játékot befolyásolja)
 STR_CONFIG_SETTING_TYPE_COMPANY_MENU                            :Vállalat beállítás (mentésben tárolva; csak az új játékokat befolyásolja)
 STR_CONFIG_SETTING_TYPE_COMPANY_INGAME                          :Vállalat beállítás (mentésben tárolva; csak a jelenlegi vállalatot befolyásolja)
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_CAPTION        :{WHITE}Figyelem!
+STR_CONFIG_SETTING_RESET_ALL_CONFIRMATION_DIALOG_TEXT           :{WHITE}Ez a művelet minden játékbeállítást visszaállít.{}Biztos, hogy folytatni akarja a műveletet?
 
 STR_CONFIG_SETTING_RESTRICT_CATEGORY                            :{BLACK}Kategória:
 STR_CONFIG_SETTING_RESTRICT_TYPE                                :{BLACK}Típus:
@@ -1249,8 +1278,10 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Ha engedélyezv
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Városi tanács hozzáállása a területének az átépítéséhez: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Válaszd ki, hogy mennyi zaj és környezeti kár okozása befolyásolja a cég megítélését egy városban, mely hatással van a cég további építési lehetőségeire a város területén belül
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maximális térképmagasság: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :A térképen található hegyek maximális magasságának beállítása
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Térkép magasságkorlátja: {STRING}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :Beállíthatod a térkép legmagasabb pontjának tengerszint feletti magasságát. "(automatikus)" esetén az értéket a térképgenerátor határozza meg.
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(automatikus)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nem állíthatod erre az értékre a maximális térképmagasságot. Legalább egy hegy magasabb ennél
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Épületek, vágányok stb. alatti tereprendezés engedélyezése: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tájrendezés engedélyezése épületek és utak alatt azok eltávolítása nélkül
@@ -1379,6 +1410,8 @@ STR_CONFIG_SETTING_POPULATION_IN_LABEL                          :Mutassa a telep
 STR_CONFIG_SETTING_POPULATION_IN_LABEL_HELPTEXT                 :Település lakosságszámának kijelzése a címkéjén
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS                         :A vonalak vastagsága a grafikonokon: {STRING}
 STR_CONFIG_SETTING_GRAPH_LINE_THICKNESS_HELPTEXT                :Vonalak szélessége a grafikonokon. A vékony vonal precízebben olvasható, míg a vastagabb jobban látható és a színek jobban megkülönböztethetőek
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME                             :NewGRF nevének mutatása a járművásárlási ablakban: {STRING}
+STR_CONFIG_SETTING_SHOW_NEWGRF_NAME_HELPTEXT                    :A járművásárlási ablakban egy külön sorban legyen kiírva a NewGRF neve, amiből a kiválasztott jármű jön.
 
 STR_CONFIG_SETTING_LANDSCAPE                                    :Táj: {STRING}
 STR_CONFIG_SETTING_LANDSCAPE_HELPTEXT                           :A tájak alapvető játékbeállításokat határoznak meg különféle árukkal és településnövekedési tényezőkkel. A NewGRF-ek és a játékszkriptek segítségével ez még tovább hangolható.
@@ -1393,7 +1426,13 @@ STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Mennyi gazdasá
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Olajfinomítók és olajfúró tornyok maximális távolsága a térkép szélétől: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Megadhatod, hogy a térkép szélétől milyen messze épülhetnek olajfinomítók és olajfúró tornyok. Sziget jellegű térképek esetén így a part közelében fognak épülni. 256 mezőnél szélesebb, ill. hosszabb térképek esetén ez az érték felszorzódik.
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Hóhatár magassága: {STRING}
-STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Ezzel a beállítással szabályozhatod a szub-arktikus táj hóhatárát. A hó befolyással lehet a gazdasági épületek generálására és a települések növekedésére.
+STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Ezzel a beállítással szabályozhatod a szub-arktikus táj hóhatárát. A hó befolyással lehet a gazdasági épületek generálására és a települések növekedésére. Csak a pályaszerkesztőben lehet állítani, más esetben a havas terület százalékos kiterjedéséből kerül kiszámításra.
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Havas terület kiterjedése: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Beállíthatod, hogy a szub-arktikus tájon a térkép mekkora részét fedje hó. A hó befolyással van a gazdasági épületek elhelyezésére és a települések növekedésére. A beállítás csak a térképgenerátort érinti. A tengerszint feletti legelső szintet sosem fedheti hó.
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Sivatag kiterjedése: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Beállíthatod, hogy a szubtrópusi tájon a térkép mekkora részét fedje sivatag. A sivatag hatással van a gazdasági épületek elhelyezésére és a települések növekedésére. A beállítás csak a térképgenerátort érinti.
+STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :A terep durvasága: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(csak TerraGenesis esetén) Kiválaszthatod a hegyek mennyiségét: a sima térképeken kevesebb, de kiterjedtebb hegy van, míg a durva térképeken sok hegy van, amik kissé ismétlődőnek tűnhetnek.
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Nagyon sima
@@ -1507,6 +1546,12 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Építő eszkö
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Az építő eszközök, pl. hidak, alagutak stb. aktívan tartása használatuk után
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kiadási/bevételi adatok csoportosítása a pénzügyi ablakban: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :A pénzügyi adatok ablak elrendezésének beállítása
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Jelzők automatikus eltávolítása vasúti pálya építésekor: {STRING}
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Automatikusan eltávolítja a jelzőket vasúti pálya építésekor, ha útban vannak. Potenciálisan vasúti baleseteket okozhat!
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :A játék gyorsításának maximális értéke: {STRING}
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :Megadja, hogy milyen gyorsan fusson a játék, ha a gyorsítás be van kapcsolva. 0 esetén nincs korlát, olyan gyorsan fog futni, ahogyan a számítógéped bírja. 100% alatt a játék lassabb lesz. A felső határ a számítógéped teljesítményétől és magától a játéktól is függ.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :A normál sebesség {NUM}%-a
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Nincs korlát (ahogyan a számítógéped bírja)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Hírsáv: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Hang lejátszása új hír érkezésekor
@@ -1616,10 +1661,19 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Teljes
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Színes újságcikkek megjelenése: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Az év, melytől az újságok színesben jelennek meg. Az adott év előtt azok fekete-fehérek
 STR_CONFIG_SETTING_STARTING_YEAR                                :Játék induló dátuma: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Egyenletes gazdaság (több, kisebb változás): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Bekapcsolva a gazdasági épületek termelése gyakrabban és kisebb lépésekben változik. Ennek a beállításnak általában nincs hatása, ha a gazdasági épületeket NewGRF nyújta
+STR_CONFIG_SETTING_ENDING_YEAR                                  :Játék végi pontozás ebben az évben: {STRING}
+STR_CONFIG_SETTING_ENDING_YEAR_HELPTEXT                         :A játék ebben az évben ér véget pontozás szempontjából. Ennek az évnek a végén a vállalat teljesítménypontszáma rögzítésre kerül, és adott esetben megjelenik a rekord táblán, de a játékosok ezután folytathatják a játékot.{}Ha ez a kezdő év elé van állítva, akkor a rekord tábla sosem jelenik meg.
+STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
+STR_CONFIG_SETTING_ENDING_YEAR_ZERO                             :Soha
+STR_CONFIG_SETTING_ECONOMY_TYPE                                 :Gazdaság típusa: {STRING}
+STR_CONFIG_SETTING_ECONOMY_TYPE_HELPTEXT                        :Egyenletes gazdaság esetén a termelés gyakrabban, de kisebb mértékben változik. Stagnáló gazdaság esetén a termelés egyáltalán nem változik, a gazdasági épületek nem zárnak be. NewGRF-ből származó gazdasági épületek esetén ennek a beállításnak lehet, hogy nem lesz hatása.
+STR_CONFIG_SETTING_ECONOMY_TYPE_ORIGINAL                        :Eredeti
+STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Egyenletes
+STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Stagnáló
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Más vállalatokból lehet részvényt vásárolni: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Bekapcsolva engedélyezi más vállalatok részvényeinek megvásárlását. A részvények csak akkor elérhetőek, ha a vállalat elért egy bizonyos kort
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Vállalatok minimális életkora részvénykibocsátáshoz: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Egy vállalatnak legalább ennyi évesnek kell lennie ahhoz, hogy más vállalatok kereskedhessenek a részvényeivel.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Ráhordó rendszereknek kifizetett profitszázalék: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :A bevételek százaléka, mely a közbenső szállítóknak, ráhordó járatoknak kerül kifizetésre, nagyobb ellenőrzést adva a bevétel felett
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Húzáskor helyezzen jelzőket minden {STRING}
@@ -1667,9 +1721,10 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineáris
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Játékbeli faelhelyezkedés: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Fák véletlenszerű megjelenésének szabályozása a játék során. Ez befolyásolhatja a gazdasági épületeket, melyek a fák növekedésétől függnek, mint a favágók
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :sehol {RED}(favágók ellehetetlenítése)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :csak esőerdőkben
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :mindenhol
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_SPREAD               :Növekedjenek, de ne terjedjenek {RED}(favágók ellehetetlenítése)
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_RAINFOREST       :Növekedjenek és esőerdőkben terjedjenek
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_SPREAD_ALL              :Növekedjenek és mindenhol terjedjenek
+STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NO_GROWTH_NO_SPREAD     :Ne növekedjenek és ne terjedjenek {RED}(favágók ellehetetlenítése)
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :A fő eszközsor helye: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :A fő eszközsor vízszintes elhelyezésének beállítása a képernyő tetején
@@ -1687,12 +1742,17 @@ STR_CONFIG_SETTING_ZOOM_MIN                                     :A nagyítás ma
 STR_CONFIG_SETTING_ZOOM_MIN_HELPTEXT                            :Maximális nagyítás mértéke. A nagyobb nagyítási mérték több memóriát igényel
 STR_CONFIG_SETTING_ZOOM_MAX                                     :A kicsinyítés maximális mértéke: {STRING}
 STR_CONFIG_SETTING_ZOOM_MAX_HELPTEXT                            :Maximális kicsinyítés mértéke. A nagyobb kicsinyítési mérték szaggatást okozhat
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN                              :Sprite-ok maximális felbontása: {STRING}
+STR_CONFIG_SETTING_SPRITE_ZOOM_MIN_HELPTEXT                     :Meghatározhatod a sprite-ok maximális felbontását. Ha korlátozod a maximális felbontást, akkor abban az esetben is kisebb felbontású sprite-ok fognak megjelenni, ha egyébként lenne nagyobb felbontású is. Ez akkor lehet hasznos, ha olyan NewGRF-ek keverékét használod, amelyek különböző felbontással rendelkeznek, konzisztensebb megjelenést biztosítva a játéknak.
 STR_CONFIG_SETTING_ZOOM_LVL_MIN                                 :4x
 STR_CONFIG_SETTING_ZOOM_LVL_IN_2X                               :2x
 STR_CONFIG_SETTING_ZOOM_LVL_NORMAL                              :Normál
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_2X                              :2x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_4X                              :4x
 STR_CONFIG_SETTING_ZOOM_LVL_OUT_8X                              :8x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_MIN                          :4x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :2x
+STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_NORMAL                       :1x
 STR_CONFIG_SETTING_TOWN_GROWTH                                  :Települések növekedési sebessége: {STRING}
 STR_CONFIG_SETTING_TOWN_GROWTH_HELPTEXT                         :A települések növekedési sebessége
 STR_CONFIG_SETTING_TOWN_GROWTH_NONE                             :Nincs
@@ -1736,6 +1796,7 @@ STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_HELPTEXT         :A sebességért
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_IMPERIAL         :Angolszász (mi/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_METRIC           :Metrikus (km/h)
 STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_SI               :SI (m/s)
+STR_CONFIG_SETTING_LOCALISATION_UNITS_VELOCITY_GAMEUNITS        :Játékbeli egység (mező/nap)
 
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER                     :Teljesítmény mértékegysége: {STRING}
 STR_CONFIG_SETTING_LOCALISATION_UNITS_POWER_HELPTEXT            :A teljesítményértékek a kiválasztott mértékegységben fognak megjelenni a felhasználói felületen
@@ -1825,6 +1886,10 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... érv
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Kevés a memória
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}{BYTES} memória gyorsítótár kiosztása sikertelen. A gyorsítótár le lett csökkentve {BYTES}ra. Ez csökkenti az OpenTTD teljesítményét. Csökkentheted a memóriaigényt, ha kikapcsolod a 32bpp grafikát és/vagy a nagyítási szinteket
 
+# Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Hiba a videobeállításokban...
+STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... nem található kompatibilis GPU. Hardveres gyorsítás kikapcsolva.
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1868,17 +1933,9 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Ebből a
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Kilépés
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Biztosan bezárod ezt a programot és kilépsz a {STRING}ba?
+STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Biztosan bezárod ezt a programot?
 STR_QUIT_YES                                                    :{BLACK}Igen
 STR_QUIT_NO                                                     :{BLACK}Nem
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Kilépés a játékból
@@ -1888,7 +1945,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Biztosa
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Csalások
 STR_CHEATS_TOOLTIP                                              :{BLACK}A kijelölőnégyzetek jelzik a csalások eddigi használatát
-STR_CHEATS_WARNING                                              :{BLACK}Figyelem! Te épp a versenytársaidat készülöd elárulni. Sose felejtsd el, hogy egy ilyen szégyenletes tett sose merül feledésbe
+STR_CHEATS_NOTE                                                 :{BLACK}Megjegyzés: a csalások használata mentve lesz a játékmentésben.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tőkeemelés {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Irányított vállalat: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, mozgathatatlan objektumokat): {ORANGE}{STRING}
@@ -1998,12 +2055,11 @@ STR_FACE_TIE                                                    :Nyakkendő:
 STR_FACE_EARRING                                                :Fülbevaló:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Nyakkendő vagy fülbevaló cseréje
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privát
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Nyilvános
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Hálózati játék
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Hírdetett
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Válassz hírdetett (internet) és nem hírdetett (helyi hálózat, LAN) játék közül.
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nem
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Igen
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Játékos neve:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}A többi játékos ilyen néven fog ismerni Téged.
 
@@ -2044,8 +2100,10 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Csatlako
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Szerver frissítése
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Szerver infó frissítése
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Szerver keresése
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Szerver keresése a hálózaton
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET                  :{BLACK}Keresés interneten
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_INTERNET_TOOLTIP          :{BLACK}Nyilvános szerverek keresése az interneten
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN                       :{BLACK}Keresés helyi hálózaton
+STR_NETWORK_SERVER_LIST_SEARCH_SERVER_LAN_TOOLTIP               :{BLACK}Szerverek keresése a helyi hálózaton
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Szerver hozzáadása
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Hozzáadja a szervert a listához, így később gyorsabban tudsz hozzá csatlakozni
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Szerver indítása
@@ -2062,8 +2120,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}A játé
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Jelszó beállítása
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Védd le a játékodat jelszóval, ha nem akarod hogy illetéktelenek csatlakozzanak
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Nem
-STR_NETWORK_START_SERVER_ADVERTISED                             :Igen
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Láthatóság
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Mások láthassák-e a szerveredet a publikus listában
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} kliens
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Játékosok max. száma:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}A maximálisan felcsatlakozható kliensek számának kiválasztása. Nem szükséges pont ennyi embernek éppen kapcsolódva lennie
@@ -2077,46 +2135,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Beszélt
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}A többi játékos megtudhatja milyen nyelven beszélnek a szerveren
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Add meg a hálózati játékhoz a neved
-
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Bármilyen
-STR_NETWORK_LANG_ENGLISH                                        :Angol
-STR_NETWORK_LANG_GERMAN                                         :Német
-STR_NETWORK_LANG_FRENCH                                         :Francia
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazil
-STR_NETWORK_LANG_BULGARIAN                                      :Bolgár
-STR_NETWORK_LANG_CHINESE                                        :Kínai
-STR_NETWORK_LANG_CZECH                                          :Cseh
-STR_NETWORK_LANG_DANISH                                         :Dán
-STR_NETWORK_LANG_DUTCH                                          :Holland
-STR_NETWORK_LANG_ESPERANTO                                      :Eszperantó
-STR_NETWORK_LANG_FINNISH                                        :Finn
-STR_NETWORK_LANG_HUNGARIAN                                      :Magyar
-STR_NETWORK_LANG_ICELANDIC                                      :Izlandi
-STR_NETWORK_LANG_ITALIAN                                        :Olasz
-STR_NETWORK_LANG_JAPANESE                                       :Japán
-STR_NETWORK_LANG_KOREAN                                         :Koreai
-STR_NETWORK_LANG_LITHUANIAN                                     :Litván
-STR_NETWORK_LANG_NORWEGIAN                                      :Norvég
-STR_NETWORK_LANG_POLISH                                         :Lengyel
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugál
-STR_NETWORK_LANG_ROMANIAN                                       :Román
-STR_NETWORK_LANG_RUSSIAN                                        :Orosz
-STR_NETWORK_LANG_SLOVAK                                         :Szlovák
-STR_NETWORK_LANG_SLOVENIAN                                      :Szlovén
-STR_NETWORK_LANG_SPANISH                                        :Spanyol
-STR_NETWORK_LANG_SWEDISH                                        :Svéd
-STR_NETWORK_LANG_TURKISH                                        :Török
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrán
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikai
-STR_NETWORK_LANG_CROATIAN                                       :Horvát
-STR_NETWORK_LANG_CATALAN                                        :Katalán
-STR_NETWORK_LANG_ESTONIAN                                       :Észt
-STR_NETWORK_LANG_GALICIAN                                       :Gall
-STR_NETWORK_LANG_GREEK                                          :Görög
-STR_NETWORK_LANG_LATVIAN                                        :Lett
-############ End of leave-in-this-order
 
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Hálózati játék előszoba
@@ -2165,26 +2183,50 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Megszak�
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerver jelszóval van védve. Írd be
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A vállalat jelszóval van védve. Írd be
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Kliens lista
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Kliens lista
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Megfigyelés
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Új vállalat
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Online játékosok
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Kirúgás
-STR_NETWORK_CLIENTLIST_BAN                                      :Kitiltás
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Pénz adományozása
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Üzenet mindenkinek
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Üzenet a vállalatnak
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privát üzenet
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}Többjátékos
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Szerver
+STR_NETWORK_CLIENT_LIST_SERVER_NAME                             :{BLACK}Név
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_TOOLTIP                     :{BLACK}A szerver neve amin játszol
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}A szervered nevének szerkesztése
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Szerver neve
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Láthatóság
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Mások láthassák-e a szerveredet a publikus listában
+STR_NETWORK_CLIENT_LIST_PLAYER                                  :{BLACK}Játékos
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME                             :{BLACK}Név
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_TOOLTIP                     :{BLACK}A játékos neved
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}A játékos neved szerkesztése
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Játékos neve
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_TOOLTIP                    :{BLACK}Adminisztrátori műveletek ehhez a vállalathoz
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Adminisztrátori műveletek ehhez a vállalathoz
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :Csatlakozz ehhez a vállalathoz
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Üzenet küldése ennek a játékosnak
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Üzenet küldése az összes játékosnak ebben a vállalatban
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Üzenet küldése az összes megfigyelőnek
+STR_NETWORK_CLIENT_LIST_SPECTATORS                              :Megfigyelők
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Új vállalat)
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Hozz létre egy új vállalatot és csatlakozz
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Ez vagy te
+STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Ez a játék elindítója
+
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kirúgás
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Tiltás
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Törlés
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Jelszó feloldása
+
+STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Adminisztrátori művelet
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Biztos ki akarod rúgni ezt a játékost: '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Biztos ki akarod tiltani ezt a játékost: '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Biztos ki akarod törölni a '{COMPANY}' vállalatot?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Biztos vissza akarod állítani a '{COMPANY}' vállalat jelszavát?
 
 STR_NETWORK_SERVER                                              :Szerver
 STR_NETWORK_CLIENT                                              :Kliens
 STR_NETWORK_SPECTATORS                                          :Megfigyelők
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Add meg a küldeni kívánt pénz mennyiségét
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne mentsd el a megadott jelszót
@@ -2225,17 +2267,21 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Nem tudt
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Nem tudtam kapcsolódni
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}A(z) {NUM}. játékos kapcsolata elveszett
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokoll-hiba keletkezett és megszakadt a kapcsolat
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}A játékos neved nem lett megadva. A nevet a többjátékos ablak tetején tudod beállítani.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}A gépeden és a szerveren lévő programnak nem egyezik meg a verziója
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Rossz jelszó
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}A szerver tele van
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Ki vagy tiltva erről a szerverről
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Ki lettél rúgva a szerverről
+STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Oka: {STRING}
 STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Ez a szerver nem engedi a csalást
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Túl sok parancsot küldtél a szervernek
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}Túl sokáig tartott a jelszó beírása
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}A számítógéped túl lassú, hogy tartsa a szerver sebességét
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Túl sokáig tartott a térkép letöltése a számítógépednek
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Túl sokáig tartott a szerverhez való csatlakozása a számítógépednek
+STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}A játékos neved nem megfelelő
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}A lekérdezett szerver túl régi ehhez a klienshez
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :általános hiba
@@ -2258,6 +2304,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :nem érkezett j
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :általános időtúllépés
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :térkép letöltés túl sokáig tartott
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :térkép feldolgozás túl sokáig tartott
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Érvénytelen kliens név
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Lehetséges, hogy elveszett a kapcsolat
@@ -2271,11 +2318,13 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :A játék tová
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :A játék továbbra is szünetel ({STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :A játék továbbra is szünetel ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :A játék továbbra is szünetel ({STRING}, {STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :A játék továbbra is szünetel ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :A játék folytatódik ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :játékosok száma
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :kapcsolódó kliensek
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :kézi
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :játékszkript
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :várakozás a kapcsolati gráf frissítésére
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :kilépés
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} csatlakozott a játékhoz
@@ -2285,10 +2334,10 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} cs
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} új vállalatot alapított (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} kilépett a játékból ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} nevet változtatott. Új neve: {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a következő összeget utalta vállalatodnak: {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** {1:STRING} vállalatnak sikeresen átutaltál {2:CURRENCY_LONG}-t
+STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {0:STRING} a következő összeget utalta {1:STRING} részére: {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}A szerver leállította a játékot
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}A szerver újraindul...{}Türelem...
+STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} ki lett rúgva. Oka: ({STRING})
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Tartalom letöltés
@@ -2363,6 +2412,10 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}Az OpenT
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Igen, a grafikai alapcsomag letöltése
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nem, kilépés az OpenTTD-ből
 
+STR_MISSING_GRAPHICS_ERROR_TITLE                                :{WHITE}Letöltés sikertelen
+STR_MISSING_GRAPHICS_ERROR                                      :{BLACK}A grafikus alapcsomag letöltése sikertelen.{}Tölts le manuálisan egy grafikus alapcsomagot!
+STR_MISSING_GRAPHICS_ERROR_QUIT                                 :{BLACK}Kilépés az OpenTTD-ből
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Átlátszósági beállítások
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Átlátszó feliratok bekapcsolása. Ctrl+kattintással zárolható
@@ -2403,6 +2456,9 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Külön
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Ellenőrző pont egyesítése
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Különálló ellenőrző pont építése
+
+# Generic toolbar
+STR_TOOLBAR_DISABLED_NO_VEHICLE_AVAILABLE                       :{BLACK}Kikapcsolva, mivel semmilyen jármű sem tudná használni
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Vasút építése
@@ -2591,13 +2647,19 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Méret: 
 STR_OBJECT_CLASS_LTHS                                           :Világítótornyok
 STR_OBJECT_CLASS_TRNS                                           :Adótornyok
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Fák
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Ültetendő fa kiválasztása. Ha már van fa a mezőn, akkor újabb fák ültetése a kiválasztott fatípustól függetlenül
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletlenszerű fafélék
 STR_TREES_RANDOM_TYPE_TOOLTIP                                   :{BLACK}Véletlenszerűen kiválasztott fákat helyez el. Shift lenyomásával megmutatja a várható telepítési költséget
 STR_TREES_RANDOM_TREES_BUTTON                                   :{BLACK}Véletlenszerű fák
 STR_TREES_RANDOM_TREES_TOOLTIP                                  :{BLACK}Véletlenszerűen fákat ültet a térképre
+STR_TREES_MODE_NORMAL_BUTTON                                    :{BLACK}Normál
+STR_TREES_MODE_NORMAL_TOOLTIP                                   :{BLACK}A tájon való húzással egyesével fákat ültet.
+STR_TREES_MODE_FOREST_SM_BUTTON                                 :{BLACK}Liget
+STR_TREES_MODE_FOREST_SM_TOOLTIP                                :{BLACK}A tájon való húzással kis erdőket, ligeteket ültet.
+STR_TREES_MODE_FOREST_LG_BUTTON                                 :{BLACK}Erdő
+STR_TREES_MODE_FOREST_LG_TOOLTIP                                :{BLACK}A tájon való húzással nagy erdőket ültet.
 
 # Land generation window (SE)
 STR_TERRAFORM_TOOLBAR_LAND_GENERATION_CAPTION                   :{WHITE}Táj szerkesztése
@@ -2648,12 +2710,18 @@ STR_FOUND_TOWN_SELECT_LAYOUT_RANDOM                             :{BLACK}Véletle
 # Fund new industry window
 STR_FUND_INDUSTRY_CAPTION                                       :{WHITE}Új gazdasági épület
 STR_FUND_INDUSTRY_SELECTION_TOOLTIP                             :{BLACK}Megfelelő gazdasági épülettípus kiválasztása a listából
-STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :Sok véletlen gazdasági épület
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES                        :{BLACK}Sok véletlen gazdasági épület
 STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_TOOLTIP                :{BLACK}Elhelyez a térképen véletlenszerüen sok gazdasági épületet
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_CAPTION                :{WHITE}Sok véletlen gazdasági épület
+STR_FUND_INDUSTRY_MANY_RANDOM_INDUSTRIES_QUERY                  :{YELLOW}Tényleg szeretnél sok véletlen gazdasági épületet felépíteni?
 STR_FUND_INDUSTRY_INDUSTRY_BUILD_COST                           :{BLACK}Ár: {YELLOW}{CURRENCY_LONG}
 STR_FUND_INDUSTRY_PROSPECT_NEW_INDUSTRY                         :{BLACK}Kutatás
 STR_FUND_INDUSTRY_BUILD_NEW_INDUSTRY                            :{BLACK}Épít
 STR_FUND_INDUSTRY_FUND_NEW_INDUSTRY                             :{BLACK}Alapít
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES                         :{BLACK}Összes gazdasági épület eltávolítása
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_TOOLTIP                 :{BLACK}Eltávolítja az összes, a térképen található gazdasági épületet
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Összes gazdasági épület eltávolítása
+STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Biztosan el akarod távolítani az összes gazdasági épületet?
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Ipari láncolat {STRING} gazdasági épületnek
@@ -2674,6 +2742,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Válaszd
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}Terület-információ
+STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}A főnézetet a csempére állítja. Ctrl+Klikk megnyit egy új főnézetet a csempén.
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}{LTBLUE}Nem lehet lerombolni
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}A megtisztítás költsége: {RED}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}Bevétel lerombolás esetén: {LTBLUE}{CURRENCY_LONG}
@@ -2796,7 +2865,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Vállalat álta
 STR_ABOUT_OPENTTD                                               :{WHITE}Az OpenTTD-ről
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Eredeti copyright {COPYRIGHT} 1995 Chris Sawyer, Minden jog fenntartva
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD {REV} verzió
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 Az OpenTTD csapat
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} Az OpenTTD csapat
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}FPS ablak
@@ -2883,6 +2952,8 @@ STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF:
 STR_SAVELOAD_FILTER_TITLE                                       :{BLACK}Szűrő:
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}Fájl felülírása
 STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}Biztos vagy benne, hogy felülírod a létező fájlt?
+STR_SAVELOAD_DIRECTORY                                          :{STRING} (Könyvtár)
+STR_SAVELOAD_PARENT_DIRECTORY                                   :{STRING} (Szülőkönyvtár)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}Add meg a játékmentés nevét
 
@@ -2894,14 +2965,18 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Várossűrűség:
 STR_MAPGEN_DATE                                                 :{BLACK}Dátum:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Gazd. épületek száma:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maximum térképmagasság:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}A hegyek maximális magasságának növelése a térképen eggyel
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}A hegyek maximális magasságának csökkentése a térképen eggyel
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Hóhatár:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}A hóhatár megnövelése eggyel
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}A hóhatár csökkentése eggyel
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Legmagasabb pont:
+STR_MAPGEN_HEIGHTMAP_HEIGHT_UP                                  :{BLACK}A térkép legmagasabb pontjának tengerszint feletti magasságának növelése eggyel
+STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}A térkép legmagasabb pontjának tengerszint feletti magasságának csökkentése eggyel
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Havas terület kiterjedése:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}A havas terület kiterjedésének növelése 10%-kal
+STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}A havas terület kiterjedésének csökkentése 10%-kal
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Sivatag kiterjedése:
+STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}A sivatag kiterjedésének növelése 10%-kal
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}A sivatag kiterjedésének csökkentése 10%-kal
+STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Térkép generátor:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Fa algoritmus:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Tereptípus:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Tengerszint:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Folyók:
@@ -2926,8 +3001,10 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Magassá
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Méret:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Térkép maximális magasságának megváltozatása
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Hóhatár megváltoztatása
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}A legmagasabb pont tengerszint feletti magassága
+STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Legmagasabb pont
+STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}A havas terület kiterjedése (százalékban)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}A sivatag kiterjedése (százalékban)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Kezdő év megváltoztatása
 
 # SE Map generation
@@ -3067,6 +3144,7 @@ STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Figyelmezt
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Végzetes hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_FATAL_POPUP                                    :{WHITE}Egy végzetes NewGRF hiba történt:{}{STRING}
+STR_NEWGRF_ERROR_POPUP                                          :{WHITE}NewGRF hiba történt:{}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{1:STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{1:STRING} a TTD {STRING} verziójához van
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{1:STRING} úgy lett tervezve, hogy együtt lesz használva ezzel: {STRING}
@@ -3144,6 +3222,7 @@ STR_SIGN_LIST_MATCH_CASE_TOOLTIP                                :{BLACK}Kis- és
 
 # Sign window
 STR_EDIT_SIGN_CAPTION                                           :{WHITE}Felirat szerkesztése
+STR_EDIT_SIGN_LOCATION_TOOLTIP                                  :{BLACK}A fő nézetet a felirat helyére állítja. Ctrl+kattintás esetén új nézetet nyit a felirat helyére.
 STR_EDIT_SIGN_NEXT_SIGN_TOOLTIP                                 :{BLACK}Következő felirat
 STR_EDIT_SIGN_PREVIOUS_SIGN_TOOLTIP                             :{BLACK}Előző felirat
 
@@ -3204,33 +3283,34 @@ STR_LOCAL_AUTHORITY_ACTION_NEW_BUILDINGS                        :Új épületek 
 STR_LOCAL_AUTHORITY_ACTION_EXCLUSIVE_TRANSPORT                  :Kizárólagos szállítási jogok vásárlása
 STR_LOCAL_AUTHORITY_ACTION_BRIBE                                :Önkormányzat megvesztegetése
 
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Kis helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}Ára: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Közepes helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}Ára: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Nagy helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}Ára: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}A városi úthálózat felújításának támogatása. Hat hónapig jelentősen összezavarja a közúti forgalmat.{}Ára: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Szobor építése a vállalatod tiszteletére.{}Ára: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Új kereskedelmi épületek építésének támogatása a városban.{}Ára: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Egy éves kizárólagos szállítási jogok vásárlása a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és a rakományoknak.{}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_SMALL_ADVERTISING            :{YELLOW}Kis helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}A város körül kis területen ideiglenesen javítja az állomásaid minősítését.{}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Közepes helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}A város körül közepes méretű területen ideiglenesen javítja az állomásaid minősítését.{}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Nagy helyi reklámhadjárat indítása, hogy több utast és rakományt vonzz a megállóidba.{}A város körül nagy területen ideiglenesen javítja az állomásaid minősítését.{}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}A városi úthálózat felújításának támogatása.{}Hat hónapig jelentősen összezavarja a közúti forgalmat.{}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Szobor építése a vállalatod tiszteletére.{}Javítja az állomásaid értékelését a városban.{}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Új kereskedelmi épületek építésének támogatása a városban.{}A város egy ideig gyorsabban fog növekedni.{}Ára: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Egy éves kizárólagos szállítási jogok vásárlása a városban.{}Az önkormányzat megtiltja az utasoknak és a rakományoknak, hogy más vállalatok állomásait használják.{}Ára: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha az kiderül.{}Ára: {CURRENCY_LONG}
 
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} céljai
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globális célok
 STR_GOALS_SPECTATOR                                             :Globális célok
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globális célok:
+STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Globális célok
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Globális célok mutatása
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Vállalati célok
+STR_GOALS_COMPANY_BUTTON_HELPTEXT                               :{BLACK}Vállalati célok mutatása
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nincs -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Nem alkalmazható -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Vállalat céljai:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Kattintással a fő nézetet a célra állítja. Ctrl+kattintással új látképet nyit a gazdasági épület/település/mező helyéről
 
 # Goal question window
-STR_GOAL_QUESTION_CAPTION_QUESTION                              :Kérdés
-STR_GOAL_QUESTION_CAPTION_INFORMATION                           :Információ
-STR_GOAL_QUESTION_CAPTION_WARNING                               :Figyelmeztetés
-STR_GOAL_QUESTION_CAPTION_ERROR                                 :Hiba
+STR_GOAL_QUESTION_CAPTION_QUESTION                              :{BLACK}Kérdés
+STR_GOAL_QUESTION_CAPTION_INFORMATION                           :{BLACK}Információ
+STR_GOAL_QUESTION_CAPTION_WARNING                               :{BLACK}Figyelmeztetés
+STR_GOAL_QUESTION_CAPTION_ERROR                                 :{YELLOW}Hiba
 
 ############ Start of Goal Question button list
 STR_GOAL_QUESTION_BUTTON_CANCEL                                 :Mégse
@@ -3420,6 +3500,8 @@ STR_COMPANY_VIEW_RELOCATE_HQ                                    :{BLACK}SZH áth
 STR_COMPANY_VIEW_RELOCATE_COMPANY_HEADQUARTERS                  :{BLACK}A vállalat székházának újraépítése máshol a vállalat értékének 1%-áért. Shift+kattintással megmutatja a becsült költséget a székhely áthelyezése nélkül
 STR_COMPANY_VIEW_INFRASTRUCTURE_BUTTON                          :{BLACK}Részletek
 STR_COMPANY_VIEW_INFRASTRUCTURE_TOOLTIP                         :{BLACK}Részletes információk megtekintése az infrastruktúráról
+STR_COMPANY_VIEW_GIVE_MONEY_BUTTON                              :{BLACK}Adományozz pénzt
+STR_COMPANY_VIEW_GIVE_MONEY_TOOLTIP                             :{BLACK}Utalj pénzt ennek a vállalatnak
 
 STR_COMPANY_VIEW_NEW_FACE_BUTTON                                :{BLACK}Új arc
 STR_COMPANY_VIEW_NEW_FACE_TOOLTIP                               :{BLACK}Új arc választása az elnöknek
@@ -3437,6 +3519,7 @@ STR_COMPANY_VIEW_SELL_SHARE_TOOLTIP                             :{BLACK}25%-nyi 
 
 STR_COMPANY_VIEW_COMPANY_NAME_QUERY_CAPTION                     :A vállalat neve
 STR_COMPANY_VIEW_PRESIDENT_S_NAME_QUERY_CAPTION                 :Elnök neve
+STR_COMPANY_VIEW_GIVE_MONEY_QUERY_CAPTION                       :Mennyi pénzt szeretnél adományozni?
 
 STR_BUY_COMPANY_MESSAGE                                         :{WHITE}Vállalatunk vagyontárgyait eladásra kínáljuk: járművek, terület és hálózat tulajdonok, bankszámla{}{}Megveszed {COMPANY} vállalatot {CURRENCY_LONG}-ért?
 
@@ -3456,10 +3539,17 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Gazdasági épületek
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nincs -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% elszállítva)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% elszállítva)
+STR_INDUSTRY_DIRECTORY_ITEM_INFO                                :{BLACK}{CARGO_LONG}{STRING}{YELLOW} ({COMMA}% elszállítva){BLACK}
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} és {NUM} további...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Gazdasági épületek neve - a névre kattintva a fő nézetet a választott objektumra irányíthatod. Ctrl+kattintással új látképet nyit a gazdasági épület pozíciójára
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Elfogad: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Termel: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Minden rakománytípus
+STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Semmi
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -3584,6 +3674,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajto
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalakítható: {GOLD}{STRING}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Minden rakománytípusra
 STR_PURCHASE_INFO_NONE                                          :Semmi
+STR_PURCHASE_INFO_ENGINES_ONLY                                  :Csak mozdonyok
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {CARGO_LIST}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}Hatótávolság: {GOLD}{COMMA} mező
@@ -3790,10 +3881,10 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az autom
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Közelítés a vonat jelenlegi helyzetére. Ctrl+kattintással a vonat követése a fő nézetben
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Közelítés a jármű jelenlegi helyzetére. Ctrl+kattintással a jármű követése a fő nézetben
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Közelítés a hajó jelenlegi helyzetére. Ctrl+kattintással a hajó követése a fő nézetben
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Közelítés a repülőgép jelenlegi helyzetére. Ctrl+kattintással a repülőgép követése a fő nézetben
+STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Közelítés a vonat jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a vonatot. Ctrl+kattintással új nézet nyílik a vonat helyzetére.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Közelítés a közúti jármű jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a járművet. Ctrl+kattintással új nézet nyílik a jármű helyzetére.
+STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Közelítés a hajó jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a hajót. Ctrl+kattintással új nézet nyílik a hajó helyzetére.
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Közelítés a repülőgép jelenlegi helyzetére. Dupla kattintással a fő nézetben követni fogja a repülőgépet. Ctrl+kattintással új nézet nyílik a repülőgép helyzetére.
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}A járműtelepre küldi a vonatot. Ctrl+kattintással csak javításra
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Garázsba küldi a járművet. Ctrl+kattintással csak javításra
@@ -3825,10 +3916,12 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}A közú
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}A hajó adatai
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}A repülőgép adatai
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Aktuális vonatmozgás - kattints ide a vonat elindításához vagy megállításához. Ctrl+kattintással az utasítások váltása
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Aktuális járműmozgás - kattints ide a jármű elindításához vagy megállításához. Ctrl+kattintással az utasítások váltása
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Aktuális hajómozgás - kattints ide a hajó elindításhoz vagy megállításhoz. Ctrl+kattintással az utasítások váltása
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Aktuális repülőgépmozgás - kattints ide a repülőgép elindításához vagy megállításához. Ctrl+kattintással az utasítások váltása
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Aktuális vonatmozgás - kattints ide a vonat elindításához vagy megállításához.
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Aktuális járműmozgás - kattints ide a jármű elindításához vagy megállításához.
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Aktuális hajómozgás - kattints ide a hajó elindításához vagy megállításához.
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Aktuális repülőgépmozgás - kattints ide a repülőgép elindításához vagy megállításához.
+
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Közelítés a célpontra. Ctrl+kattintással új nézet nyílik a célpont helyére.
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Berakodás / Kirakodás
@@ -4056,6 +4149,7 @@ STR_ORDER_REFIT_STOP_ORDER                                      :(átalakít err
 STR_ORDER_STOP_ORDER                                            :(megáll)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION} {STRING}
+STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(Az állomás nem használható){POP_COLOUR} {STRING} {STATION} {STRING}
 
 STR_ORDER_IMPLICIT                                              :(Automata)
 
@@ -4234,6 +4328,14 @@ STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}A kijel�
 STR_AI_LIST_CANCEL                                              :{BLACK}Mégsem
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ne változtassa a szkriptet
 
+STR_SCREENSHOT_CAPTION                                          :{WHITE}Képmentés
+STR_SCREENSHOT_SCREENSHOT                                       :{BLACK}Normál képernyőkép
+STR_SCREENSHOT_ZOOMIN_SCREENSHOT                                :{BLACK}Maximális nagyítású képernyőkép
+STR_SCREENSHOT_DEFAULTZOOM_SCREENSHOT                           :{BLACK}Alapértelmezett nagyítású képernyőkép
+STR_SCREENSHOT_WORLD_SCREENSHOT                                 :{BLACK}Teljes térképes képernyőkép
+STR_SCREENSHOT_HEIGHTMAP_SCREENSHOT                             :{BLACK}Magasságtérkép mentése
+STR_SCREENSHOT_MINIMAP_SCREENSHOT                               :{BLACK}Minitérkép mentése
+
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Paraméterek
 STR_AI_SETTINGS_CAPTION_AI                                      :MI
@@ -4292,6 +4394,7 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A játékállá
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :A fájl nem olvasható
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :A fájl nem írható
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Adat integritás hiba
+STR_GAME_SAVELOAD_ERROR_PATCHPACK                               :A játékállást a játék módosított változata mentette el
 STR_GAME_SAVELOAD_NOT_AVAILABLE                                 :<nem elérhető>
 STR_WARNING_LOADGAME_REMOVED_TRAMS                              :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat. Az összes villamos el lett távolítva
 
@@ -4319,6 +4422,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Csak egy
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Hatalmas képernyőkép
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}A képernyőkép felbontása {COMMA} x {COMMA} pixel lesz. A méret miatt ez eltarthat egy ideig. Szeretnéd folytatni?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Magasságtérkép sikeresen elmentve '{STRING}' néven. A térkép legmagasabb pontja: {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}A képernyő elmentve '{STRING}' néven
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}A képmentés nem sikerült!
 
@@ -4372,6 +4476,7 @@ STR_ERROR_LOAN_ALREADY_REPAYED                                  :{WHITE}... ninc
 STR_ERROR_CURRENCY_REQUIRED                                     :{WHITE}... {CURRENCY_LONG} kellene hozzá
 STR_ERROR_CAN_T_REPAY_LOAN                                      :{WHITE}Nem törleszthetsz a kölcsönből...
 STR_ERROR_INSUFFICIENT_FUNDS                                    :{WHITE}Nem tudod a banktól kölcsönkapott pénzt továbbadni...
+STR_ERROR_CAN_T_GIVE_MONEY                                      :{WHITE}Nem tudsz pénzt adományozni a vállalatnak...
 STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nem veheted meg a vállalatot...
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nem építheted ide a székházadat...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nem vehetsz 25%-nyi részvényt ebből a vállalatból...
@@ -4498,6 +4603,8 @@ STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Rossz járműte
 STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} túl hosszú a csere után
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Nincsenek automatikus járműfelújítási szabályok alkalmazva
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(pénzlimit)
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Az új jármű nem tud {STRING.t} szállítani
+STR_ERROR_AUTOREPLACE_INCOMPATIBLE_REFIT                        :{WHITE}Az új jármű nem alakítható át a(z) {NUM}. utasítás során
 
 # Rail construction errors
 STR_ERROR_IMPOSSIBLE_TRACK_COMBINATION                          :{WHITE}Nem lehetséges vágányösszetétel
@@ -4530,7 +4637,6 @@ STR_ERROR_CAN_T_CONVERT_ROAD                                    :{WHITE}Nem lehe
 STR_ERROR_CAN_T_CONVERT_TRAMWAY                                 :{WHITE}Nem lehet itt a villamospálya típusát átalakítani...
 STR_ERROR_NO_SUITABLE_ROAD                                      :{WHITE}Nincs megfelelő út
 STR_ERROR_NO_SUITABLE_TRAMWAY                                   :{WHITE}Nincs megfelelő villamospálya
-STR_ERROR_INCOMPATIBLE_ROAD                                     :{WHITE}... nem kompatibilis az út
 STR_ERROR_INCOMPATIBLE_TRAMWAY                                  :{WHITE}... nem kompatibilis a villamospálya
 
 # Waterway construction errors
@@ -4817,10 +4923,10 @@ STR_INDUSTRY_NAME_SUGAR_MINE.t                                  :cukorbányát
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Névtelen
-STR_SV_TRAIN_NAME                                               :Vonat {COMMA}
-STR_SV_ROAD_VEHICLE_NAME                                        :Közúti jármű {COMMA}
-STR_SV_SHIP_NAME                                                :Hajó {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Repülő {COMMA}
+STR_SV_TRAIN_NAME                                               :Vonat #{COMMA}
+STR_SV_ROAD_VEHICLE_NAME                                        :Közúti jármű #{COMMA}
+STR_SV_SHIP_NAME                                                :Hajó #{COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Repülő #{COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} Észak
@@ -5124,6 +5230,7 @@ STR_FORMAT_BUOY_NAME_SERIAL                                     :{TOWN} {COMMA}.
 STR_FORMAT_BUOY_NAME_SERIAL.ba                                  :{TOWN} {COMMA}. sz. Bóján
 STR_FORMAT_COMPANY_NUM                                          :({COMMA}. vállalat)
 STR_FORMAT_GROUP_NAME                                           :{COMMA} csoport
+STR_FORMAT_GROUP_VEHICLE_NAME                                   :{GROUP} #{COMMA}
 STR_FORMAT_INDUSTRY_NAME                                        :{TOWN}i {STRING}
 STR_FORMAT_WAYPOINT_NAME                                        :{TOWN} Ellenőrző pont
 STR_FORMAT_WAYPOINT_NAME.ba                                     :{TOWN} Ellenőrző ponton

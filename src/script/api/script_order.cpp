@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -263,7 +261,7 @@ static int ScriptOrderPositionToRealOrderPosition(VehicleID vehicle_id, ScriptOr
 				}
 			} else if (st->ship_station.tile != INVALID_TILE) {
 				TILE_AREA_LOOP(t, st->ship_station) {
-					if (IsDockTile(t) && GetStationIndex(t) == st->index) return t;
+					if (IsTileType(t, MP_STATION) && (IsDock(t) || IsOilRig(t)) && GetStationIndex(t) == st->index) return t;
 				}
 			} else if (st->bus_stops != nullptr) {
 				return st->bus_stops->xy;

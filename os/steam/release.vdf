@@ -1,0 +1,57 @@
+"AppBuild"
+{
+	"AppID" "1536610"
+	"Desc" "@@DESCRIPTION@@"
+
+	"SetLive" "@@BRANCH@@"
+
+	"ContentRoot" "./"
+	"BuildOutput" "build/"
+
+	"Depots"
+	{
+		"1536613"
+		{
+			"ContentRoot" "./steam-win32"
+			"FileMapping"
+			{
+				"LocalPath" "*"
+				"DepotPath" "."
+				"recursive" "1"
+			}
+		}
+
+		"1536612"
+		{
+			"ContentRoot" "./steam-win64"
+			"FileMapping"
+			{
+				"LocalPath" "*"
+				"DepotPath" "."
+				"recursive" "1"
+			}
+		}
+
+		"1536614"
+		{
+			"ContentRoot" "./steam-macos"
+			"FileMapping"
+			{
+				"LocalPath" "*"
+				"DepotPath" "."
+				"recursive" "1"
+			}
+		}
+
+		"1536615"
+		{
+			"ContentRoot" "./steam-linux"
+			"FileMapping"
+			{
+				"LocalPath" "*"
+				"DepotPath" "."
+				"recursive" "1"
+			}
+		}
+	}
+}

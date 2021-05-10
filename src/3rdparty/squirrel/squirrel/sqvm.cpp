@@ -94,7 +94,7 @@ bool SQVM::ARITH_OP(SQUnsignedInteger op,SQObjectPtr &trg,const SQObjectPtr &o1,
 					if(!StringCat(o1, o2, trg)) return false;
 			}
 			else if(!ArithMetaMethod(op,o1,o2,trg)) {
-				Raise_Error("arith op %c on between '%s' and '%s'",op,GetTypeName(o1),GetTypeName(o2)); return false;
+				Raise_Error("arith op %c on between '%s' and '%s'",(char)op,GetTypeName(o1),GetTypeName(o2)); return false;
 			}
 		}
 		return true;
@@ -1460,7 +1460,7 @@ bool SQVM::DeleteSlot(const SQObjectPtr &self,const SQObjectPtr &key,SQObjectPtr
 			}
 		}
 		res = t;
-				}
+	}
 		break;
 	default:
 		Raise_Error("attempt to delete a slot from a %s",GetTypeName(self));
@@ -1471,8 +1471,8 @@ bool SQVM::DeleteSlot(const SQObjectPtr &self,const SQObjectPtr &key,SQObjectPtr
 
 bool SQVM::Call(SQObjectPtr &closure,SQInteger nparams,SQInteger stackbase,SQObjectPtr &outres,SQBool raiseerror,SQBool can_suspend)
 {
-#ifdef _DEBUG
-SQInteger prevstackbase = _stackbase;
+#ifdef WITH_ASSERT
+	SQInteger prevstackbase = _stackbase;
 #endif
 	switch(type(closure)) {
 	case OT_CLOSURE: {
@@ -1482,13 +1482,13 @@ SQInteger prevstackbase = _stackbase;
 		bool ret = Execute(closure, _top - nparams, nparams, stackbase,outres,raiseerror);
 		this->_can_suspend = backup_suspend;
 		return ret;
-					 }
+	}
 		break;
-	case OT_NATIVECLOSURE:{
+	case OT_NATIVECLOSURE: {
 		bool suspend;
 		return CallNative(_nativeclosure(closure), nparams, stackbase, outres,suspend);
 
-						  }
+	}
 		break;
 	case OT_CLASS: {
 		SQObjectPtr constr;
@@ -1499,12 +1499,12 @@ SQInteger prevstackbase = _stackbase;
 			return Call(constr,nparams,stackbase,temp,raiseerror,false);
 		}
 		return true;
-				   }
+	}
 		break;
 	default:
 		return false;
 	}
-#ifdef _DEBUG
+#ifdef WITH_ASSERT
 	if(!_suspended) {
 		assert(_stackbase == prevstackbase);
 	}

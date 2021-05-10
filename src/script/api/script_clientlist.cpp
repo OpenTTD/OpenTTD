@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -20,8 +18,7 @@
 ScriptClientList::ScriptClientList()
 {
 	if (!_networking) return;
-	NetworkClientInfo *ci;
-	FOR_ALL_CLIENT_INFOS(ci) {
+	for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 		this->AddItem(ci->client_id);
 	}
 }
@@ -38,8 +35,7 @@ ScriptClientList_Company::ScriptClientList_Company(ScriptCompany::CompanyID comp
 		c = (CompanyID)company;
 	}
 
-	NetworkClientInfo *ci;
-	FOR_ALL_CLIENT_INFOS(ci) {
+	for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
 		if (ci->client_playas == c) this->AddItem(ci->client_id);
 	}
 }

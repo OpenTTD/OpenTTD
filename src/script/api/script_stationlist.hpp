@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -281,7 +279,7 @@ public:
 class ScriptStationList_Vehicle : public ScriptList {
 public:
 	/**
-	 * @param vehicle_id The vehicle to get the list of stations he has in its orders from.
+	 * @param vehicle_id The vehicle to get the list of stations it has in its orders from.
 	 */
 	ScriptStationList_Vehicle(VehicleID vehicle_id);
 };

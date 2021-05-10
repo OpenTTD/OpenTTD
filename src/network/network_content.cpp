@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -23,6 +21,10 @@
 
 #if defined(WITH_ZLIB)
 #include <zlib.h>
+#endif
+
+#ifdef __EMSCRIPTEN__
+#	include <emscripten.h>
 #endif
 
 #include "../safeguards.h"
@@ -219,9 +221,9 @@ void ClientNetworkContentSocketHandler::RequestContentList(uint count, const Con
 		 * A packet begins with the packet size and a byte for the type.
 		 * Then this packet adds a uint16 for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = min(count, (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
 
-		Packet *p = new Packet(PACKET_CONTENT_CLIENT_INFO_ID);
+		Packet *p = new Packet(PACKET_CONTENT_CLIENT_INFO_ID, TCP_MTU);
 		p->Send_uint16(p_count);
 
 		for (uint i = 0; i < p_count; i++) {
@@ -246,10 +248,10 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 	this->Connect();
 
 	assert(cv->size() < 255);
-	assert(cv->size() < (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
+	assert(cv->size() < (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint8)) /
 			(sizeof(uint8) + sizeof(uint32) + (send_md5sum ? /*sizeof(ContentInfo::md5sum)*/16 : 0)));
 
-	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID);
+	Packet *p = new Packet(send_md5sum ? PACKET_CONTENT_CLIENT_INFO_EXTID_MD5 : PACKET_CONTENT_CLIENT_INFO_EXTID, TCP_MTU);
 	p->Send_uint8((uint8)cv->size());
 
 	for (const ContentInfo *ci : *cv) {
@@ -290,6 +292,13 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 void ClientNetworkContentSocketHandler::DownloadSelectedContent(uint &files, uint &bytes, bool fallback)
 {
 	bytes = 0;
+
+#ifdef __EMSCRIPTEN__
+	/* Emscripten is loaded via an HTTPS connection. As such, it is very
+	 * difficult to make HTTP connections. So always use the TCP method of
+	 * downloading content. */
+	fallback = true;
+#endif
 
 	ContentIDList content;
 	for (const ContentInfo *ci : this->infos) {
@@ -334,8 +343,7 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentHTTP(const Conten
 
 	this->http_response_index = -1;
 
-	NetworkAddress address(NETWORK_CONTENT_MIRROR_HOST, NETWORK_CONTENT_MIRROR_PORT);
-	new NetworkHTTPContentConnecter(address, this, NETWORK_CONTENT_MIRROR_URL, content_request);
+	new NetworkHTTPContentConnecter(NETWORK_CONTENT_MIRROR_HOST, this, NETWORK_CONTENT_MIRROR_URL, content_request);
 	/* NetworkHTTPContentConnecter takes over freeing of content_request! */
 }
 
@@ -354,9 +362,9 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
 		 * A packet begins with the packet size and a byte for the type.
 		 * Then this packet adds a uint16 for the count in this packet.
 		 * The rest of the packet can be used for the IDs. */
-		uint p_count = min(count, (SEND_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
+		uint p_count = std::min<uint>(count, (TCP_MTU - sizeof(PacketSize) - sizeof(byte) - sizeof(uint16)) / sizeof(uint32));
 
-		Packet *p = new Packet(PACKET_CONTENT_CLIENT_CONTENT);
+		Packet *p = new Packet(PACKET_CONTENT_CLIENT_CONTENT, TCP_MTU);
 		p->Send_uint16(p_count);
 
 		for (uint i = 0; i < p_count; i++) {
@@ -376,14 +384,14 @@ void ClientNetworkContentSocketHandler::DownloadSelectedContentFallback(const Co
  * @return a statically allocated buffer with the filename or
  *         nullptr when no filename could be made.
  */
-static char *GetFullFilename(const ContentInfo *ci, bool compressed)
+static std::string GetFullFilename(const ContentInfo *ci, bool compressed)
 {
 	Subdirectory dir = GetContentInfoSubDir(ci->type);
-	if (dir == NO_DIRECTORY) return nullptr;
+	if (dir == NO_DIRECTORY) return {};
 
-	static char buf[MAX_PATH];
-	FioGetFullPath(buf, lastof(buf), SP_AUTODOWNLOAD_DIR, dir, ci->filename);
-	strecat(buf, compressed ? ".tar.gz" : ".tar", lastof(buf));
+	std::string buf = FioGetDirectory(SP_AUTODOWNLOAD_DIR, dir);
+	buf += ci->filename;
+	buf += compressed ? ".tar.gz" : ".tar";
 
 	return buf;
 }
@@ -399,13 +407,14 @@ static bool GunzipFile(const ContentInfo *ci)
 	bool ret = true;
 
 	/* Need to open the file with fopen() to support non-ASCII on Windows. */
-	FILE *ftmp = fopen(GetFullFilename(ci, true), "rb");
+	FILE *ftmp = fopen(GetFullFilename(ci, true).c_str(), "rb");
 	if (ftmp == nullptr) return false;
 	/* Duplicate the handle, and close the FILE*, to avoid double-closing the handle later. */
-	gzFile fin = gzdopen(dup(fileno(ftmp)), "rb");
+	int fdup = dup(fileno(ftmp));
+	gzFile fin = gzdopen(fdup, "rb");
 	fclose(ftmp);
 
-	FILE *fout = fopen(GetFullFilename(ci, false), "wb");
+	FILE *fout = fopen(GetFullFilename(ci, false).c_str(), "wb");
 
 	if (fin == nullptr || fout == nullptr) {
 		ret = false;
@@ -441,13 +450,30 @@ static bool GunzipFile(const ContentInfo *ci)
 		}
 	}
 
-	if (fin != nullptr) gzclose(fin);
+	if (fin != nullptr) {
+		gzclose(fin);
+	} else if (fdup != -1) {
+		/* Failing gzdopen does not close the passed file descriptor. */
+		close(fdup);
+	}
 	if (fout != nullptr) fclose(fout);
 
 	return ret;
 #else
 	NOT_REACHED();
 #endif /* defined(WITH_ZLIB) */
+}
+
+/**
+ * Simple wrapper around fwrite to be able to pass it to Packet's TransferOut.
+ * @param file   The file to write data to.
+ * @param buffer The buffer to write to the file.
+ * @param amount The number of bytes to write.
+ * @return The number of bytes that were written.
+ */
+static inline ssize_t TransferOutFWrite(FILE *file, const char *buffer, size_t amount)
+{
+	return fwrite(buffer, 1, amount, file);
 }
 
 bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
@@ -467,8 +493,8 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 		}
 	} else {
 		/* We have a file opened, thus are downloading internal content */
-		size_t toRead = (size_t)(p->size - p->pos);
-		if (fwrite(p->buffer + p->pos, 1, toRead, this->curFile) != toRead) {
+		size_t toRead = p->RemainingBytesToTransfer();
+		if (toRead != 0 && (size_t)p->TransferOut(TransferOutFWrite, this->curFile) != toRead) {
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
 			this->Close();
@@ -500,8 +526,8 @@ bool ClientNetworkContentSocketHandler::BeforeDownload()
 
 	if (this->curInfo->filesize != 0) {
 		/* The filesize is > 0, so we are going to download it */
-		const char *filename = GetFullFilename(this->curInfo, true);
-		if (filename == nullptr || (this->curFile = fopen(filename, "wb")) == nullptr) {
+		std::string filename = GetFullFilename(this->curInfo, true);
+		if (filename.empty() || (this->curFile = fopen(filename.c_str(), "wb")) == nullptr) {
 			/* Unless that fails of course... */
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
@@ -523,19 +549,24 @@ void ClientNetworkContentSocketHandler::AfterDownload()
 	this->curFile = nullptr;
 
 	if (GunzipFile(this->curInfo)) {
-		unlink(GetFullFilename(this->curInfo, true));
+		unlink(GetFullFilename(this->curInfo, true).c_str());
 
 		Subdirectory sd = GetContentInfoSubDir(this->curInfo->type);
 		if (sd == NO_DIRECTORY) NOT_REACHED();
 
 		TarScanner ts;
-		ts.AddFile(sd, GetFullFilename(this->curInfo, false));
+		std::string fname = GetFullFilename(this->curInfo, false);
+		ts.AddFile(sd, fname);
 
 		if (this->curInfo->type == CONTENT_TYPE_BASE_MUSIC) {
 			/* Music can't be in a tar. So extract the tar! */
-			ExtractTar(GetFullFilename(this->curInfo, false), BASESET_DIR);
-			unlink(GetFullFilename(this->curInfo, false));
+			ExtractTar(fname, BASESET_DIR);
+			unlink(fname.c_str());
 		}
+
+#ifdef __EMSCRIPTEN__
+		EM_ASM(if (window["openttd_syncfs"]) openttd_syncfs());
+#endif
 
 		this->OnDownloadComplete(this->curInfo->id);
 	} else {
@@ -697,9 +728,9 @@ ClientNetworkContentSocketHandler::ClientNetworkContentSocketHandler() :
 	http_response_index(-2),
 	curFile(nullptr),
 	curInfo(nullptr),
-	isConnecting(false),
-	lastActivity(_realtime_tick)
+	isConnecting(false)
 {
+	this->lastActivity = std::chrono::steady_clock::now();
 }
 
 /** Clear up the mess ;) */
@@ -718,7 +749,7 @@ public:
 	 * Initiate the connecting.
 	 * @param address The address of the server.
 	 */
-	NetworkContentConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
+	NetworkContentConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_CONTENT_SERVER_PORT) {}
 
 	void OnFailure() override
 	{
@@ -729,6 +760,7 @@ public:
 	void OnConnect(SOCKET s) override
 	{
 		assert(_network_content_client.sock == INVALID_SOCKET);
+		_network_content_client.lastActivity = std::chrono::steady_clock::now();
 		_network_content_client.isConnecting = false;
 		_network_content_client.sock = s;
 		_network_content_client.Reopen();
@@ -741,11 +773,9 @@ public:
  */
 void ClientNetworkContentSocketHandler::Connect()
 {
-	this->lastActivity = _realtime_tick;
-
 	if (this->sock != INVALID_SOCKET || this->isConnecting) return;
 	this->isConnecting = true;
-	new NetworkContentConnecter(NetworkAddress(NETWORK_CONTENT_SERVER_HOST, NETWORK_CONTENT_SERVER_PORT, AF_UNSPEC));
+	new NetworkContentConnecter(NETWORK_CONTENT_SERVER_HOST);
 }
 
 /**
@@ -767,7 +797,7 @@ void ClientNetworkContentSocketHandler::SendReceive()
 {
 	if (this->sock == INVALID_SOCKET || this->isConnecting) return;
 
-	if (this->lastActivity + IDLE_TIMEOUT < _realtime_tick) {
+	if (std::chrono::steady_clock::now() > this->lastActivity + IDLE_TIMEOUT) {
 		this->Close();
 		return;
 	}
@@ -775,7 +805,7 @@ void ClientNetworkContentSocketHandler::SendReceive()
 	if (this->CanSendReceive()) {
 		if (this->ReceivePackets()) {
 			/* Only update activity once a packet is received, instead of every time we try it. */
-			this->lastActivity = _realtime_tick;
+			this->lastActivity = std::chrono::steady_clock::now();
 		}
 	}
 
@@ -890,7 +920,7 @@ void ClientNetworkContentSocketHandler::ToggleSelectedState(const ContentInfo *c
  */
 void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const
 {
-	for (const ContentInfo * const &ci : this->infos) {
+	for (const ContentInfo *ci : this->infos) {
 		if (ci == child) continue;
 
 		for (uint i = 0; i < ci->dependency_count; i++) {

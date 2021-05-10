@@ -12,8 +12,6 @@
 ##case gen acc abl dat
 
 
-# $Id$
-
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -121,18 +119,18 @@ STR_CARGO_PLURAL_TOYS                                           :{G=np}Ludicra
 STR_CARGO_PLURAL_TOYS.gen                                       :ludicrorum
 STR_CARGO_PLURAL_TOYS.acc                                       :Ludicra
 STR_CARGO_PLURAL_TOYS.dat                                       :Ludicris
-STR_CARGO_PLURAL_CANDY                                          :{G=np}Bellaria
-STR_CARGO_PLURAL_CANDY.gen                                      :bellariorum
-STR_CARGO_PLURAL_CANDY.acc                                      :Bellaria
-STR_CARGO_PLURAL_CANDY.dat                                      :Bellariis
+STR_CARGO_PLURAL_SWEETS                                         :{G=np}Bellaria
+STR_CARGO_PLURAL_SWEETS.gen                                     :bellariorum
+STR_CARGO_PLURAL_SWEETS.acc                                     :Bellaria
+STR_CARGO_PLURAL_SWEETS.dat                                     :Bellariis
 STR_CARGO_PLURAL_COLA                                           :{G=f}Cola
 STR_CARGO_PLURAL_COLA.gen                                       :colae
 STR_CARGO_PLURAL_COLA.acc                                       :Colam
 STR_CARGO_PLURAL_COLA.dat                                       :Colae
-STR_CARGO_PLURAL_COTTON_CANDY                                   :{G=n}Sacchari Xylinum
-STR_CARGO_PLURAL_COTTON_CANDY.gen                               :sacchari xylini
-STR_CARGO_PLURAL_COTTON_CANDY.acc                               :Sacchari Xylinum
-STR_CARGO_PLURAL_COTTON_CANDY.dat                               :Sacchari Xylino
+STR_CARGO_PLURAL_CANDYFLOSS                                     :{G=n}Sacchari Xylinum
+STR_CARGO_PLURAL_CANDYFLOSS.gen                                 :sacchari xylini
+STR_CARGO_PLURAL_CANDYFLOSS.acc                                 :Sacchari Xylinum
+STR_CARGO_PLURAL_CANDYFLOSS.dat                                 :Sacchari Xylino
 STR_CARGO_PLURAL_BUBBLES                                        :{G=fp}Bullae
 STR_CARGO_PLURAL_BUBBLES.gen                                    :bullarum
 STR_CARGO_PLURAL_BUBBLES.acc                                    :Bullas
@@ -248,18 +246,18 @@ STR_CARGO_SINGULAR_TOY                                          :{G=np}Ludicra
 STR_CARGO_SINGULAR_TOY.gen                                      :ludicrorum
 STR_CARGO_SINGULAR_TOY.acc                                      :Ludicra
 STR_CARGO_SINGULAR_TOY.dat                                      :Ludicris
-STR_CARGO_SINGULAR_CANDY                                        :{G=np}Bellaria
-STR_CARGO_SINGULAR_CANDY.gen                                    :bellariorum
-STR_CARGO_SINGULAR_CANDY.acc                                    :Bellaria
-STR_CARGO_SINGULAR_CANDY.dat                                    :Bellariis
+STR_CARGO_SINGULAR_SWEETS                                       :{G=np}Bellaria
+STR_CARGO_SINGULAR_SWEETS.gen                                   :bellariorum
+STR_CARGO_SINGULAR_SWEETS.acc                                   :Bellaria
+STR_CARGO_SINGULAR_SWEETS.dat                                   :Bellariis
 STR_CARGO_SINGULAR_COLA                                         :{G=f}Cola
 STR_CARGO_SINGULAR_COLA.gen                                     :colae
 STR_CARGO_SINGULAR_COLA.acc                                     :Colam
 STR_CARGO_SINGULAR_COLA.dat                                     :Colae
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :{G=n}Sacchari Xylinum
-STR_CARGO_SINGULAR_COTTON_CANDY.gen                             :sacchari xylini
-STR_CARGO_SINGULAR_COTTON_CANDY.acc                             :Sacchari Xylinum
-STR_CARGO_SINGULAR_COTTON_CANDY.dat                             :Sacchari Xylino
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :{G=n}Sacchari Xylinum
+STR_CARGO_SINGULAR_CANDYFLOSS.gen                               :sacchari xylini
+STR_CARGO_SINGULAR_CANDYFLOSS.acc                               :Sacchari Xylinum
+STR_CARGO_SINGULAR_CANDYFLOSS.dat                               :Sacchari Xylino
 STR_CARGO_SINGULAR_BUBBLE                                       :{G=fp}Bullae
 STR_CARGO_SINGULAR_BUBBLE.gen                                   :bullarum
 STR_CARGO_SINGULAR_BUBBLE.acc                                   :Bullas
@@ -423,8 +421,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Eligere 
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Eligere criteria separandi
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Eligere criteria colandi
 STR_BUTTON_SORT_BY                                              :{BLACK}Ordinare
-STR_BUTTON_LOCATION                                             :{BLACK}Locus
-STR_BUTTON_RENAME                                               :{BLACK}Renominare
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Claudere fenestram
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Titulus fenestrae - hunc trahe ut fenestra moveatur
@@ -501,6 +497,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Capacitate oner
 STR_SORT_BY_RANGE                                               :Distantia volatus maxima
 STR_SORT_BY_POPULATION                                          :Numero Incolarum
 STR_SORT_BY_RATING                                              :Censione
+
+# Group by options for vehicle list
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Ludum intermittere
@@ -587,7 +585,7 @@ STR_FILE_MENU_EXIT                                              :Exire
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Orbis tabula
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Fenestra conspectus additicia
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Fenestra conspectus additicia
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Formula graphica onerum cursus
 STR_MAP_MENU_SIGN_LIST                                          :Index signorum
 
@@ -663,9 +661,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Monstrare celareve consolam
 STR_ABOUT_MENU_AI_DEBUG                                         :Emendatio IA/Ludi scriptorum
 STR_ABOUT_MENU_SCREENSHOT                                       :Imago conspectus
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Imago conspectus maxime amplificata
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Imago conspectus solite amplificata
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Imago cunctae tabulae geographicae
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :De 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Norma spiritus
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Monstrare celareve arcas finitionum
@@ -755,8 +750,8 @@ STR_MONTH_DEC                                                   :Decembris
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Clavis
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Monstrare formularum clavem
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
@@ -835,9 +830,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Propria II
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Amplitudo Musicae
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Amplitido Sonorum
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
-STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
@@ -1054,6 +1046,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Nov{G us a um i ae a} {STRING} parabil{G 0 is is e es es ia}!  -  {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} non diutius {STRING.acc} accipit
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} non diutius {STRING.acc} {STRING.acc}que accipit
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} nunc {STRING.acc} accipit
@@ -1072,7 +1065,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}{TOWN}: Auctoritas vicinalis nuntiat {STRING} esse societatem unicam cui uno anno licet transportare intra oppidum!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Fenestra conspectus {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Fenestra conspectus {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Mutare conspectum
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Transcribere locum primarium ad hanc fenestram conspectus
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Mutare conspectum primum
@@ -1121,8 +1114,6 @@ STR_GAME_OPTIONS_CURRENCY_IRR                                   :Regalis Iranica
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Novus Rubelus Russicus (RUB)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Vehicula Viaria
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Eligere latus viae gubernandi
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Gubernantur sinistro
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Gubernantur dextro
 
@@ -1174,6 +1165,8 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resoluti
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Eligere resolutio scrinii adhibenda
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :alia
 
+
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Magnitudo interfaciei
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Eligere magnitudinem interfaciei adhibendam
 
@@ -1187,6 +1180,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Eligere 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_NORMAL                      :Simplex
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Duplex
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :Quadruplex
+
+
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Fundamentum graphicum
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Eligere fundamentum graphicum adhibendum
@@ -1363,8 +1358,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Sinere calamita
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Quamdiu auctoritas vicinalis patitur malas actiones a societatibus: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Eligere patientiam auctoritatis vicinalis - quomodo venia eius afficitur a sonito et detrimento vicinitatis. Nimis malis actionibus, auctoritates vetant stationes struere, aedificia viasque removere
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Altitudo tabulae maxima: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Eligere altitudinem montium maximam in tabula
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Non licet hanc altitudinem eligere. Unus pluresve mons in tabula altior est
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Sinere terram plasmare sub aedificia, vias, etc.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Sinere terram plasmare sub aedificia et vias; tum necesse non est aedificia viasve removere
@@ -1726,8 +1719,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Completa
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Ephemeris colorata apparet anno: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Eligere annum in quo nuntia periodicorum colorata apparet. Antea, nuntia nigra albaque sunt
 STR_CONFIG_SETTING_STARTING_YEAR                                :Annus initii: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Sinere oeconomiam teretem esse (i.e. plures ac minores mutationes): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Electa, productio industriarum saepius mutat, et minores per gradus. Sed haec electio nihil affert si industriae apparatae sunt a NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Sinere mercari sortes societatum: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Sinere mercari sortes a societatibus. Sortes societatum satis aetatis modo mercari licet
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Centesimae partes lucri pendenda in translatione: {STRING}
@@ -1777,9 +1768,6 @@ STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Linearis
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Positio arborum in ludo: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Quomodo arbores apparent intra ludum. Forsitan industriae afficiuntur quibus necesse sunt arbores, e.g. castra lignatorum
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Nulla {RED}(rumpit castra lignatorum)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Modo in silvis plivualibus
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Ubique
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Locus primariae arcae instrumentorum: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Locus horizontalis arcae instrumentorum primariae apud apicem fenestrae
@@ -1935,6 +1923,8 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... negl
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Memoria deest
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Non potuit collocare {BYTES} promptuarii spiritus. Promptuarium spiritus minuitur ad {BYTES}. Haec minuit effectum OpenTTD. Conare removere graphicas 32bpp ut desideria memoriae minuatur
 
+# Video initalization errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1978,17 +1968,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}In hac i
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Exire
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Esne certus te velle exire OpenTTD et redire ad {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Ita
 STR_QUIT_NO                                                     :{BLACK}Non
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Relinquere Ludum
@@ -1998,7 +1979,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Esne ce
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Tricae
 STR_CHEATS_TOOLTIP                                              :{BLACK}Quadrum signi plenum indicat trica iam a te usa est
-STR_CHEATS_WARNING                                              :{BLACK}Cave! Competitores tuas falsurus es! Memento tantam infamiam memoria omnium in aeternum teneri!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augere pecuniam {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Ludens es in loco societatis: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magica machina aggerandi (removet industrias, obiecta immobilia): {ORANGE}{STRING}
@@ -2108,12 +2088,9 @@ STR_FACE_TIE                                                    :Focale:
 STR_FACE_EARRING                                                :Inauris:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Mutare focale vel inaurem
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Modus Plurium Lusorum
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Ostensum
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Eligere servatrum ostensum (interretis) aut non ostensum (LAN)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Non
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ita
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Nomen lusoris:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Hoc est nomen tuum aliis lusoribus visibile
 
@@ -2154,8 +2131,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Ludum iu
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Servatrum instaurare
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Iterum arcessere indicia servatri
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Servatrum quaerere
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Quarere servatrum in rete
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Addere servatrum
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Addit servatrum indici quod semper inspicetur si ludus activus insit
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Servatrum incohare
@@ -2172,8 +2147,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Hoc ludi
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Elige tesseram
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Custodire tessera ludum tuum, si non vis publicos iungere
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Non
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ita
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} clien{P s tes}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Clientes maximi:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Eligere numerum maximum clientorum. Necesse non est omnes loci pleni esse
@@ -2187,46 +2160,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Lingua a
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Lingua in servatro adhibita
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Inscribe nomen ludi retis
-
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Quaevis
-STR_NETWORK_LANG_ENGLISH                                        :Anglica
-STR_NETWORK_LANG_GERMAN                                         :Theodisca
-STR_NETWORK_LANG_FRENCH                                         :Francogallica
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasilica
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgarica
-STR_NETWORK_LANG_CHINESE                                        :Sinica
-STR_NETWORK_LANG_CZECH                                          :Cecha
-STR_NETWORK_LANG_DANISH                                         :Danica
-STR_NETWORK_LANG_DUTCH                                          :Batavica
-STR_NETWORK_LANG_ESPERANTO                                      :Esperantica
-STR_NETWORK_LANG_FINNISH                                        :Finnica
-STR_NETWORK_LANG_HUNGARIAN                                      :Hungarica
-STR_NETWORK_LANG_ICELANDIC                                      :Islandica
-STR_NETWORK_LANG_ITALIAN                                        :Italiana
-STR_NETWORK_LANG_JAPANESE                                       :Iaponica
-STR_NETWORK_LANG_KOREAN                                         :Coreana
-STR_NETWORK_LANG_LITHUANIAN                                     :Lithuanica
-STR_NETWORK_LANG_NORWEGIAN                                      :Norvegica
-STR_NETWORK_LANG_POLISH                                         :Polonica
-STR_NETWORK_LANG_PORTUGUESE                                     :Lusitana
-STR_NETWORK_LANG_ROMANIAN                                       :Romanica
-STR_NETWORK_LANG_RUSSIAN                                        :Russica
-STR_NETWORK_LANG_SLOVAK                                         :Slovaca
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovena
-STR_NETWORK_LANG_SPANISH                                        :Hispanica
-STR_NETWORK_LANG_SWEDISH                                        :Suecica
-STR_NETWORK_LANG_TURKISH                                        :Turcica
-STR_NETWORK_LANG_UKRAINIAN                                      :Ucrainica
-STR_NETWORK_LANG_AFRIKAANS                                      :Africana
-STR_NETWORK_LANG_CROATIAN                                       :Croatica
-STR_NETWORK_LANG_CATALAN                                        :Catalana
-STR_NETWORK_LANG_ESTONIAN                                       :Estonica
-STR_NETWORK_LANG_GALICIAN                                       :Gallaica
-STR_NETWORK_LANG_GREEK                                          :Graeca
-STR_NETWORK_LANG_LATVIAN                                        :Lettonica
-############ End of leave-in-this-order
 
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Atrium Plurium Lusorum
@@ -2275,26 +2208,17 @@ STR_NETWORK_CONNECTION_DISCONNECT                               :{BLACK}Disiunge
 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servatrum tutum est. Tesseram inscribe
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Societas tuta est. Tesseram inscribe
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST_CAPTION                    :{WHITE}Index clientum
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Index clientum
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Spectare
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Societas Nova
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Dimittere
-STR_NETWORK_CLIENTLIST_BAN                                      :Expellere
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Dare pecuniam
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Ad omnes loqui
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Ad societatem loqui
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Ad clientem loqui
+
+
 
 STR_NETWORK_SERVER                                              :Servatrum
 STR_NETWORK_CLIENT                                              :Cliens
 STR_NETWORK_SPECTATORS                                          :Spectatores
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inscribe quantitatem pecuniae dandam
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Relinquere tesseram inscriptam
@@ -2395,8 +2319,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} sp
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} novam societatem incipit (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ludum disiungit ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} nomen suum mutat ad {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} tuae societati largitur {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Largiris {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Servatrum iam clausum est
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Servatrum resumit...{}Maneas...
 
@@ -2483,6 +2405,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ita, arcessere graphica
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Non, OpenTTD exire
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Optiones Perluciditatis
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Mutare perluciditatem signorum. Ctrl+Preme ut figatur (non mutabitur globulo perluciditatem mutandi presso)
@@ -2523,6 +2446,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Struere
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Iungere interlocum
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Struere discretum interlocum
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Constructio Ferriviarum
@@ -2711,7 +2636,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Magnitud
 STR_OBJECT_CLASS_LTHS                                           :Phari
 STR_OBJECT_CLASS_TRNS                                           :Emissoria
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Arbores
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Eligere arborem serendam. Si tegula iam arborem habet, plures arbores fortuitas addentur (forsitan non idem typus arboris)
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Arbor fortuita
@@ -2913,7 +2838,6 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Terra societati
 STR_ABOUT_OPENTTD                                               :{WHITE}De OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Privilegium impressorium originale {COPYRIGHT} MCMXCV Chris Sawyer, Omnia proprietatis iura reservantur
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD editio {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} MMII-MMXIX Manus OpenTTD
 
 # Framerate display window
 STR_FRAMERATE_CAPTION_SMALL                                     :{STRING}{WHITE} ({DECIMAL}x)
@@ -2967,14 +2891,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Numerus oppidorum:
 STR_MAPGEN_DATE                                                 :{BLACK}Dies:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Numerus industriarum:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Altitudo tabulae maxima:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Augere maximam altitudinem montium in tabula unum gradum
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Minuere maximam altitudinem montium in tabula unum gradum
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Altitudo nivis lineae:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Tollere altitudinem lineae nivis
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Inclinere altitudinem lineae nivis
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Generatrum terrae:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Algorithmus arbores ponendi:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Typus terrae:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Magnitudo maris:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Numerus fluviorum:
@@ -2999,8 +2916,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nomen ta
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Magnitudo:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Mutare altitudinem tabulae maximam
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Mutare altitudinem lineae nivis
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Mutare annum initii
 
 # SE Map generation
@@ -3288,13 +3203,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Largiri
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Proposita
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Proposita Universalia
 STR_GOALS_SPECTATOR                                             :Proposita universalia
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Proposita universalia:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Nullae -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Non applicabiles -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Proposita Societatis:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Preme in propositum ut conspectus moveatur supra industriam/oppidum/tegulam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam/oppidum/tegulam
 
 # Goal question window
@@ -3526,8 +3438,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriae
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Nullae -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% translat{G 1 us a um i ae a})
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% translat{G 3 us a um i ae a})
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nomina industriarum - preme in nomen ut conspectus moveatur supra industriam. Ctrl+Preme ut nova fenestra conspectus aperiatur supra industriam
 
@@ -3852,10 +3762,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facere u
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Movere conspectum supra hoc tramen. Ctrl+Preme ut conspectus tramen sequatur
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Movere conspectum supra hoc vehiculum. Ctrl+Preme ut conspectus vechiculum sequatur
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Movere conspectum supra hanc navem. Ctrl+Preme ut conspectus navem sequatur
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Movere conspectum supra hoc aeroplanum. Ctrl+Preme ut conspectus aeroplanum sequatur
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Mittere tramen ad receptaculum. Ctrl+Preme ut modo ministretur
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Mittere vehiculum ad receptaculum. Ctrl+Preme ut modo ministretur
@@ -3887,10 +3793,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Monstrar
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Monstrare indicia navis
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Monstrare indicia aeroplani
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Actio traminis currens - preme ut tramen sistatur/incohatur. Ctrl+Preme ut conspectus movetur ad destinatum
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Actio vehiculi currens - preme ut vehiculum sistatur/incohatur. Ctrl+Preme ut conspectus movetur ad destinatum
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Actio navis currens - preme ut navis sistatur/incohatur. Ctrl+Preme ut conspectus movetur ad destinatum
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Actio aeroplani currens - preme ut aeroplanum sistatur/incohatur. Ctrl+Preme ut conspectus movetur ad destinatum
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Onerans / Exonerans
@@ -4297,6 +4200,7 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}Accipere
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Eligere scriptum
 STR_AI_LIST_CANCEL                                              :{BLACK}Cancellare
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Non scriptum mutare
+
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parametra

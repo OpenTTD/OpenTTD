@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -16,6 +14,11 @@
 
 #include "address.h"
 #include "packet.h"
+
+#include <atomic>
+#include <chrono>
+#include <map>
+#include <thread>
 
 /** The states of sending the packets. */
 enum SendPacketsState {
@@ -63,23 +66,30 @@ public:
  */
 class TCPConnecter {
 private:
-	bool connected;             ///< Whether we succeeded in making the connection
-	bool aborted;               ///< Whether we bailed out (i.e. connection making failed)
-	bool killed;                ///< Whether we got killed
-	SOCKET sock;                ///< The socket we're connecting with
+	std::thread resolve_thread;                         ///< Thread used during resolving.
+	std::atomic<bool> is_resolved = false;              ///< Whether resolving is done.
 
-	void Connect();
+	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
+	std::vector<addrinfo *> addresses;                  ///< Addresses we can connect to.
+	std::map<SOCKET, NetworkAddress> sock_to_address;   ///< Mapping of a socket to the real address it is connecting to. USed for DEBUG statements.
+	size_t current_address = 0;                         ///< Current index in addresses we are trying.
 
-	static void ThreadEntry(TCPConnecter *param);
+	std::vector<SOCKET> sockets;                        ///< Pending connect() attempts.
+	std::chrono::steady_clock::time_point last_attempt; ///< Time we last tried to connect.
 
-protected:
-	/** Address we're connecting to */
-	NetworkAddress address;
+	std::string connection_string;                      ///< Current address we are connecting to (before resolving).
+
+	void Resolve();
+	void OnResolved(addrinfo *ai);
+	bool TryNextAddress();
+	void Connect(addrinfo *address);
+	bool CheckActivity();
+
+	static void ResolveThunk(TCPConnecter *connecter);
 
 public:
-	TCPConnecter(const NetworkAddress &address);
-	/** Silence the warnings */
-	virtual ~TCPConnecter() {}
+	TCPConnecter(const std::string &connection_string, uint16 default_port);
+	virtual ~TCPConnecter();
 
 	/**
 	 * Callback when the connection succeeded.

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -38,7 +36,7 @@ public:
 	/**
 	 * Goal types that can be given to a goal.
 	 */
-	enum GoalType {
+	enum GoalType : byte {
 		/* Note: these values represent part of the in-game GoalType enum */
 		GT_NONE     = ::GT_NONE,     ///< Destination is not linked.
 		GT_TILE     = ::GT_TILE,     ///< Destination is a tile.

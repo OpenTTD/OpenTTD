@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -15,6 +13,7 @@
 #include "newgrf_canal.h"
 #include "water.h"
 #include "water_map.h"
+#include "spritecache.h"
 
 #include "safeguards.h"
 
@@ -37,6 +36,7 @@ struct CanalScopeResolver : public ScopeResolver {
 /** Resolver object for canals. */
 struct CanalResolverObject : public ResolverObject {
 	CanalScopeResolver canal_scope;
+	CanalFeature feature;
 
 	CanalResolverObject(CanalFeature feature, TileIndex tile,
 			CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
@@ -50,6 +50,9 @@ struct CanalResolverObject : public ResolverObject {
 	}
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetDebugID() const override;
 };
 
 /* virtual */ uint32 CanalScopeResolver::GetRandomBits() const
@@ -108,9 +111,19 @@ struct CanalResolverObject : public ResolverObject {
 
 /* virtual */ const SpriteGroup *CanalResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	if (group->num_loaded == 0) return nullptr;
+	if (group->loaded.empty()) return nullptr;
 
 	return group->loaded[0];
+}
+
+GrfSpecFeature CanalResolverObject::GetFeature() const
+{
+	return GSF_CANALS;
+}
+
+uint32 CanalResolverObject::GetDebugID() const
+{
+	return this->feature;
 }
 
 /**
@@ -123,7 +136,7 @@ struct CanalResolverObject : public ResolverObject {
  */
 CanalResolverObject::CanalResolverObject(CanalFeature feature, TileIndex tile,
 		CallbackID callback, uint32 callback_param1, uint32 callback_param2)
-		: ResolverObject(_water_feature[feature].grffile, callback, callback_param1, callback_param2), canal_scope(*this, tile)
+		: ResolverObject(_water_feature[feature].grffile, callback, callback_param1, callback_param2), canal_scope(*this, tile), feature(feature)
 {
 	this->root_spritegroup = _water_feature[feature].group;
 }

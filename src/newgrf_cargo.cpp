@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -17,19 +15,34 @@
 
 /** Resolver of cargo. */
 struct CargoResolverObject : public ResolverObject {
+	const CargoSpec *cargospec;
+
 	CargoResolverObject(const CargoSpec *cs, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetDebugID() const override;
 };
 
 /* virtual */ const SpriteGroup *CargoResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
 	/* Cargo action 2s should always have only 1 "loaded" state, but some
 	 * times things don't follow the spec... */
-	if (group->num_loaded > 0) return group->loaded[0];
-	if (group->num_loading > 0) return group->loading[0];
+	if (!group->loaded.empty())  return group->loaded[0];
+	if (!group->loading.empty()) return group->loading[0];
 
 	return nullptr;
+}
+
+GrfSpecFeature CargoResolverObject::GetFeature() const
+{
+	return GSF_CARGOES;
+}
+
+uint32 CargoResolverObject::GetDebugID() const
+{
+	return this->cargospec->label;
 }
 
 /**
@@ -40,7 +53,7 @@ struct CargoResolverObject : public ResolverObject {
  * @param callback_param2 Second parameter (var 18) of the callback.
  */
 CargoResolverObject::CargoResolverObject(const CargoSpec *cs, CallbackID callback, uint32 callback_param1, uint32 callback_param2)
-		: ResolverObject(cs->grffile, callback, callback_param1, callback_param2)
+		: ResolverObject(cs->grffile, callback, callback_param1, callback_param2), cargospec(cs)
 {
 	this->root_spritegroup = cs->group;
 }
@@ -78,7 +91,10 @@ uint16 GetCargoCallback(CallbackID callback, uint32 param1, uint32 param2, const
 CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit)
 {
 	/* Pre-version 7 uses the 'climate dependent' ID in callbacks and properties, i.e. cargo is the cargo ID */
-	if (grffile->grf_version < 7 && !usebit) return cargo;
+	if (grffile->grf_version < 7 && !usebit) {
+		if (cargo >= CargoSpec::GetArraySize() || !CargoSpec::Get(cargo)->IsValid()) return CT_INVALID;
+		return cargo;
+	}
 
 	/* Other cases use (possibly translated) cargobits */
 

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -86,5 +84,7 @@ public:
 void MacOSResetScriptCache(FontSize size);
 void MacOSSetCurrentLocaleName(const char *iso_code);
 int MacOSStringCompare(const char *s1, const char *s2);
+
+void MacOSRegisterExternalFont(const char *file_path);
 
 #endif /* STRING_OSX_H */

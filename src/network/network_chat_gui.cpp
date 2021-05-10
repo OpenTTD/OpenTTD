@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -8,8 +6,6 @@
  */
 
 /** @file network_chat_gui.cpp GUI for handling chat messages. */
-
-#include <stdarg.h> /* va_list */
 
 #include "../stdafx.h"
 #include "../strings_func.h"
@@ -29,28 +25,37 @@
 
 #include "table/strings.h"
 
+#include <stdarg.h> /* va_list */
+#include <deque>
+
 #include "../safeguards.h"
 
 /** The draw buffer must be able to contain the chat message, client name and the "[All]" message,
  * some spaces and possible translations of [All] to other languages. */
-assert_compile((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH + NETWORK_NAME_LENGTH + 40);
+static_assert((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH + NETWORK_NAME_LENGTH + 40);
 
 /** Spacing between chat lines. */
 static const uint NETWORK_CHAT_LINE_SPACING = 3;
 
 /** Container for a message. */
 struct ChatMessage {
-	char message[DRAW_STRING_BUFFER]; ///< The action message.
+	std::string message; ///< The action message.
 	TextColour colour;  ///< The colour of the message.
-	uint32 remove_time; ///< The time to remove the message.
+	std::chrono::steady_clock::time_point remove_time; ///< The time to remove the message.
 };
 
 /* used for chat window */
-static ChatMessage *_chatmsg_list = nullptr; ///< The actual chat message list.
+static std::deque<ChatMessage> _chatmsg_list; ///< The actual chat message list.
 static bool _chatmessage_dirty = false;   ///< Does the chat message need repainting?
 static bool _chatmessage_visible = false; ///< Is a chat message visible.
 static bool _chat_tab_completion_active;  ///< Whether tab completion is active.
 static uint MAX_CHAT_MESSAGES = 0;        ///< The limit of chat messages to show.
+
+/**
+ * Time the chat history was marked dirty. This is used to determine if expired
+ * messages have recently expired and should cause a redraw to hide them.
+ */
+static std::chrono::steady_clock::time_point _chatmessage_dirty_time;
 
 /**
  * The chatbox grows from the bottom so the coordinates are pixels from
@@ -60,17 +65,20 @@ static PointDimension _chatmsg_box;
 static uint8 *_chatmessage_backup = nullptr; ///< Backup in case text is moved.
 
 /**
- * Count the chat messages.
- * @return The number of chat messages.
+ * Test if there are any chat messages to display.
+ * @param show_all Set if all messages should be included, instead of unexpired only.
+ * @return True iff there are chat messages to display.
  */
-static inline uint GetChatMessageCount()
+static inline bool HaveChatMessages(bool show_all)
 {
-	uint i = 0;
-	for (; i < MAX_CHAT_MESSAGES; i++) {
-		if (_chatmsg_list[i].message[0] == '\0') break;
+	if (show_all) return _chatmsg_list.size() != 0;
+
+	auto now = std::chrono::steady_clock::now();
+	for (auto &cmsg : _chatmsg_list) {
+		if (cmsg.remove_time >= now) return true;
 	}
 
-	return i;
+	return false;
 }
 
 /**
@@ -79,28 +87,18 @@ static inline uint GetChatMessageCount()
  * @param duration The duration of the chat message in seconds
  * @param message message itself in printf() style
  */
-void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const char *message, ...)
+void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message)
 {
-	char buf[DRAW_STRING_BUFFER];
-	va_list va;
-
-	va_start(va, message);
-	vseprintf(buf, lastof(buf), message, va);
-	va_end(va);
-
-	Utf8TrimString(buf, DRAW_STRING_BUFFER);
-
-	uint msg_count = GetChatMessageCount();
-	if (MAX_CHAT_MESSAGES == msg_count) {
-		memmove(&_chatmsg_list[0], &_chatmsg_list[1], sizeof(_chatmsg_list[0]) * (msg_count - 1));
-		msg_count = MAX_CHAT_MESSAGES - 1;
+	if (_chatmsg_list.size() == MAX_CHAT_MESSAGES) {
+		_chatmsg_list.pop_back();
 	}
 
-	ChatMessage *cmsg = &_chatmsg_list[msg_count++];
-	strecpy(cmsg->message, buf, lastof(cmsg->message));
+	ChatMessage *cmsg = &_chatmsg_list.emplace_front();
+	cmsg->message = message;
 	cmsg->colour = (colour & TC_IS_PALETTE_COLOUR) ? colour : TC_WHITE;
-	cmsg->remove_time = _realtime_tick + duration * 1000;
+	cmsg->remove_time = std::chrono::steady_clock::now() + std::chrono::seconds(duration);
 
+	_chatmessage_dirty_time = std::chrono::steady_clock::now();
 	_chatmessage_dirty = true;
 }
 
@@ -117,15 +115,11 @@ void NetworkInitChatMessage()
 {
 	MAX_CHAT_MESSAGES    = _settings_client.gui.network_chat_box_height;
 
-	_chatmsg_list        = ReallocT(_chatmsg_list, _settings_client.gui.network_chat_box_height);
+	_chatmsg_list.clear();
 	_chatmsg_box.x       = 10;
 	_chatmsg_box.width   = _settings_client.gui.network_chat_box_width_pct * _screen.width / 100;
 	NetworkReInitChatBoxSize();
 	_chatmessage_visible = false;
-
-	for (uint i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		_chatmsg_list[i].message[0] = '\0';
-	}
 }
 
 /** Hide the chatbox */
@@ -156,7 +150,7 @@ void NetworkUndrawChatMessage()
 		int width  = _chatmsg_box.width;
 		int height = _chatmsg_box.height;
 		if (y < 0) {
-			height = max(height + y, min(_chatmsg_box.height, _screen.height));
+			height = std::max(height + y, std::min(_chatmsg_box.height, _screen.height));
 			y = 0;
 		}
 		if (x + width >= _screen.width) {
@@ -170,6 +164,7 @@ void NetworkUndrawChatMessage()
 		/* And make sure it is updated next time */
 		VideoDriver::GetInstance()->MakeDirty(x, y, width, height);
 
+		_chatmessage_dirty_time = std::chrono::steady_clock::now();
 		_chatmessage_dirty = true;
 	}
 }
@@ -177,21 +172,13 @@ void NetworkUndrawChatMessage()
 /** Check if a message is expired. */
 void NetworkChatMessageLoop()
 {
-	for (uint i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		ChatMessage *cmsg = &_chatmsg_list[i];
-		if (cmsg->message[0] == '\0') continue;
-
+	auto now = std::chrono::steady_clock::now();
+	for (auto &cmsg : _chatmsg_list) {
 		/* Message has expired, remove from the list */
-		if (cmsg->remove_time < _realtime_tick) {
-			/* Move the remaining messages over the current message */
-			if (i != MAX_CHAT_MESSAGES - 1) memmove(cmsg, cmsg + 1, sizeof(*cmsg) * (MAX_CHAT_MESSAGES - i - 1));
-
-			/* Mark the last item as empty */
-			_chatmsg_list[MAX_CHAT_MESSAGES - 1].message[0] = '\0';
+		if (now > cmsg.remove_time && _chatmessage_dirty_time < cmsg.remove_time) {
+			_chatmessage_dirty_time = now;
 			_chatmessage_dirty = true;
-
-			/* Go one item back, because we moved the array 1 to the left */
-			i--;
+			break;
 		}
 	}
 }
@@ -202,21 +189,23 @@ void NetworkDrawChatMessage()
 	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 	if (!_chatmessage_dirty) return;
 
+	const Window *w = FindWindowByClass(WC_SEND_NETWORK_MSG);
+	bool show_all = (w != nullptr);
+
 	/* First undraw if needed */
 	NetworkUndrawChatMessage();
 
 	if (_iconsole_mode == ICONSOLE_FULL) return;
 
 	/* Check if we have anything to draw at all */
-	uint count = GetChatMessageCount();
-	if (count == 0) return;
+	if (!HaveChatMessages(show_all)) return;
 
 	int x      = _chatmsg_box.x;
 	int y      = _screen.height - _chatmsg_box.y - _chatmsg_box.height;
 	int width  = _chatmsg_box.width;
 	int height = _chatmsg_box.height;
 	if (y < 0) {
-		height = max(height + y, min(_chatmsg_box.height, _screen.height));
+		height = std::max(height + y, std::min(_chatmsg_box.height, _screen.height));
 		y = 0;
 	}
 	if (x + width >= _screen.width) {
@@ -231,13 +220,15 @@ void NetworkDrawChatMessage()
 
 	_cur_dpi = &_screen; // switch to _screen painting
 
+	auto now = std::chrono::steady_clock::now();
 	int string_height = 0;
-	for (uint i = 0; i < count; i++) {
-		SetDParamStr(0, _chatmsg_list[i].message);
+	for (auto &cmsg : _chatmsg_list) {
+		if (!show_all && cmsg.remove_time < now) continue;
+		SetDParamStr(0, cmsg.message);
 		string_height += GetStringLineCount(STR_JUST_RAW_STRING, width - 1) * FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING;
 	}
 
-	string_height = min(string_height, MAX_CHAT_MESSAGES * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING));
+	string_height = std::min<uint>(string_height, MAX_CHAT_MESSAGES * (FONT_HEIGHT_NORMAL + NETWORK_CHAT_LINE_SPACING));
 
 	int top = _screen.height - _chatmsg_box.y - string_height - 2;
 	int bottom = _screen.height - _chatmsg_box.y - 2;
@@ -249,8 +240,9 @@ void NetworkDrawChatMessage()
 	/* Paint the chat messages starting with the lowest at the bottom */
 	int ypos = bottom - 2;
 
-	for (int i = count - 1; i >= 0; i--) {
-		ypos = DrawStringMultiLine(_chatmsg_box.x + 3, _chatmsg_box.x + _chatmsg_box.width - 1, top, ypos, _chatmsg_list[i].message, _chatmsg_list[i].colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - NETWORK_CHAT_LINE_SPACING;
+	for (auto &cmsg : _chatmsg_list) {
+		if (!show_all && cmsg.remove_time < now) continue;
+		ypos = DrawStringMultiLine(_chatmsg_box.x + 3, _chatmsg_box.x + _chatmsg_box.width - 1, top, ypos, cmsg.message, cmsg.colour, SA_LEFT | SA_BOTTOM | SA_FORCE) - NETWORK_CHAT_LINE_SPACING;
 		if (ypos < top) break;
 	}
 
@@ -280,7 +272,6 @@ static void SendChat(const char *buf, DestType type, int dest)
 /** Window to enter the chat message in. */
 struct NetworkChatWindow : public Window {
 	DestType dtype;       ///< The type of destination.
-	StringID dest_string; ///< String representation of the destination.
 	int dest;             ///< The identifier of the destination.
 	QueryString message_editbox; ///< Message editbox.
 
@@ -304,9 +295,10 @@ struct NetworkChatWindow : public Window {
 			STR_NETWORK_CHAT_CLIENT_CAPTION
 		};
 		assert((uint)this->dtype < lengthof(chat_captions));
-		this->dest_string = chat_captions[this->dtype];
 
-		this->InitNested(type);
+		this->CreateNestedTree();
+		this->GetWidget<NWidgetCore>(WID_NC_DESTINATION)->widget_data = chat_captions[this->dtype];
+		this->FinishInitNested(type);
 
 		this->SetFocusedWidget(WID_NC_TEXTBOX);
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
@@ -338,8 +330,7 @@ struct NetworkChatWindow : public Window {
 		/* First, try clients */
 		if (*item < MAX_CLIENT_SLOTS) {
 			/* Skip inactive clients */
-			NetworkClientInfo *ci;
-			FOR_ALL_CLIENT_INFOS_FROM(ci, *item) {
+			for (NetworkClientInfo *ci : NetworkClientInfo::Iterate(*item)) {
 				*item = ci->index;
 				return ci->client_name;
 			}
@@ -350,9 +341,7 @@ struct NetworkChatWindow : public Window {
 		 * Not that the following assumes all town indices are adjacent, ie no
 		 * towns have been deleted. */
 		if (*item < (uint)MAX_CLIENT_SLOTS + Town::GetPoolSize()) {
-			const Town *t;
-
-			FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_SLOTS) {
+			for (const Town *t : Town::Iterate(*item - MAX_CLIENT_SLOTS)) {
 				/* Get the town-name via the string-system */
 				SetDParam(0, t->index);
 				GetString(chat_tab_temp_buffer, STR_TOWN_NAME, lastof(chat_tab_temp_buffer));
@@ -464,27 +453,13 @@ struct NetworkChatWindow : public Window {
 		return pt;
 	}
 
-	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	void SetStringParameters(int widget) const override
 	{
 		if (widget != WID_NC_DESTINATION) return;
 
 		if (this->dtype == DESTTYPE_CLIENT) {
 			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
 		}
-		Dimension d = GetStringBoundingBox(this->dest_string);
-		d.width  += WD_FRAMERECT_LEFT + WD_FRAMERECT_RIGHT;
-		d.height += WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
-		*size = maxdim(*size, d);
-	}
-
-	void DrawWidget(const Rect &r, int widget) const override
-	{
-		if (widget != WID_NC_DESTINATION) return;
-
-		if (this->dtype == DESTTYPE_CLIENT) {
-			SetDParamStr(0, NetworkClientInfo::GetByClientID((ClientID)this->dest)->client_name);
-		}
-		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, this->dest_string, TC_BLACK, SA_RIGHT);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -532,7 +507,7 @@ static const NWidgetPart _nested_chat_window_widgets[] = {
 		NWidget(WWT_CLOSEBOX, COLOUR_GREY, WID_NC_CLOSE),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_NC_BACKGROUND),
 			NWidget(NWID_HORIZONTAL),
-				NWidget(WWT_TEXT, COLOUR_GREY, WID_NC_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NULL, STR_NULL),
+				NWidget(WWT_TEXT, COLOUR_GREY, WID_NC_DESTINATION), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetTextColour(TC_BLACK), SetAlignment(SA_TOP | SA_RIGHT), SetDataTip(STR_NULL, STR_NULL),
 				NWidget(WWT_EDITBOX, COLOUR_GREY, WID_NC_TEXTBOX), SetMinimalSize(100, 12), SetPadding(1, 0, 1, 0), SetResize(1, 0),
 																	SetDataTip(STR_NETWORK_CHAT_OSKTITLE, STR_NULL),
 				NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_NC_SENDBUTTON), SetMinimalSize(62, 12), SetPadding(1, 0, 1, 0), SetDataTip(STR_NETWORK_CHAT_SEND, STR_NULL),

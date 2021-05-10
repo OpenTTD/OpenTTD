@@ -1,0 +1,359 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+    - master
+
+env:
+  CTEST_OUTPUT_ON_FAILURE: 1
+
+jobs:
+  emscripten:
+    name: Emscripten
+
+    runs-on: ubuntu-20.04
+    container:
+      # If you change this version, change the number in the cache step too.
+      image: emscripten/emsdk:2.0.10
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup cache
+      uses: actions/cache@v2
+      with:
+        path: /emsdk/upstream/emscripten/cache
+        key: 2.0.10-${{ runner.os }}
+
+    - name: Build (host tools)
+      run: |
+        mkdir build-host
+        cd build-host
+
+        echo "::group::CMake"
+        cmake .. -DOPTION_TOOLS_ONLY=ON
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        cmake --build . -j $(nproc) --target tools
+        echo "::endgroup::"
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        emcmake cmake .. -DHOST_BINARY_DIR=../build-host
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        cmake --build . -j $(nproc)
+        echo "::endgroup::"
+
+  linux:
+    name: Linux
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - compiler: clang
+          cxxcompiler: clang++
+          libsdl: libsdl2-dev
+        - compiler: gcc
+          cxxcompiler: g++
+          libsdl: libsdl2-dev
+        - compiler: gcc
+          cxxcompiler: g++
+          libsdl: libsdl1.2-dev
+        - compiler: gcc
+          cxxcompiler: g++
+          extra-cmake-parameters: -DOPTION_DEDICATED=ON
+
+    runs-on: ubuntu-20.04
+    env:
+      CC: ${{ matrix.compiler }}
+      CXX: ${{ matrix.cxxcompiler }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        echo "::group::Update apt"
+        sudo apt-get update
+        echo "::endgroup::"
+
+        echo "::group::Install dependencies"
+        sudo apt-get install -y --no-install-recommends \
+          liballegro4-dev \
+          libfontconfig-dev \
+          libicu-dev \
+          liblzma-dev \
+          liblzo2-dev \
+          ${{ matrix.libsdl }} \
+          zlib1g-dev \
+          # EOF
+        echo "::endgroup::"
+      env:
+        DEBIAN_FRONTEND: noninteractive
+
+    - name: Get OpenGFX
+      run: |
+        mkdir -p ~/.local/share/openttd/baseset
+        cd ~/.local/share/openttd/baseset
+
+        echo "::group::Download OpenGFX"
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip opengfx-all.zip
+        echo "::endgroup::"
+
+        rm -f opengfx-all.zip
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake .. ${{ matrix.extra-cmake-parameters }}
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(nproc) cores"
+        cmake --build . -j $(nproc)
+        echo "::endgroup::"
+
+    - name: Test
+      run: |
+        cd build
+        ctest -j $(nproc) --timeout 120
+
+  macos:
+    name: Mac OS
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - arch: x64
+          full_arch: x86_64
+
+    runs-on: macos-latest
+    env:
+      MACOSX_DEPLOYMENT_TARGET: 10.9
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Prepare cache key
+      id: key
+      run: |
+        echo "::set-output name=image::$ImageOS-$ImageVersion"
+
+    - name: Enable vcpkg cache
+      uses: actions/cache@v2
+      with:
+        path: /usr/local/share/vcpkg/installed
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        restore-keys: |
+          ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
+
+    - name: Prepare vcpkg
+      run: |
+        vcpkg install --triplet=${{ matrix.arch }}-osx \
+          liblzma \
+          libpng \
+          lzo \
+          zlib \
+          # EOF
+
+    - name: Install OpenGFX
+      run: |
+        mkdir -p ~/Documents/OpenTTD/baseset
+        cd ~/Documents//OpenTTD/baseset
+
+        echo "::group::Download OpenGFX"
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip opengfx-all.zip
+        echo "::endgroup::"
+
+        rm -f opengfx-all.zip
+
+    - name: Install GCC problem matcher
+      uses: ammaraskar/gcc-problem-matcher@master
+
+    - name: Build
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake ${GITHUB_WORKSPACE} \
+          -DCMAKE_OSX_ARCHITECTURES=${{ matrix.full_arch }} \
+          -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-osx \
+          -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/vcpkg/scripts/buildsystems/vcpkg.cmake \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        echo "Running on $(sysctl -n hw.logicalcpu) cores"
+        cmake --build . -j $(sysctl -n hw.logicalcpu)
+        echo "::endgroup::"
+
+    - name: Test
+      run: |
+        cd build
+        ctest -j $(sysctl -n hw.logicalcpu) --timeout 120
+
+  windows:
+    name: Windows
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, windows-2016]
+        arch: [x86, x64]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Prepare cache key
+      id: key
+      shell: powershell
+      run: |
+        # Work around caching failure with GNU tar
+        New-Item -Type Junction -Path vcpkg -Target c:\vcpkg
+
+        Write-Output "::set-output name=image::$env:ImageOS-$env:ImageVersion"
+
+    - name: Enable vcpkg cache
+      uses: actions/cache@v2
+      with:
+        path: vcpkg/installed
+        key: ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}-0 # Increase the number whenever dependencies are modified
+        restore-keys: |
+          ${{ steps.key.outputs.image }}-vcpkg-${{ matrix.arch }}
+
+    - name: Prepare vcpkg
+      shell: bash
+      run: |
+        vcpkg install --triplet=${{ matrix.arch }}-windows-static \
+          liblzma \
+          libpng \
+          lzo \
+          zlib \
+          # EOF
+
+    - name: Install OpenGFX
+      shell: bash
+      run: |
+        mkdir -p "C:/Users/Public/Documents/OpenTTD/baseset"
+        cd "C:/Users/Public/Documents/OpenTTD/baseset"
+
+        echo "::group::Download OpenGFX"
+        curl -L https://cdn.openttd.org/opengfx-releases/0.6.0/opengfx-0.6.0-all.zip -o opengfx-all.zip
+        echo "::endgroup::"
+
+        echo "::group::Unpack OpenGFX"
+        unzip opengfx-all.zip
+        echo "::endgroup::"
+
+        rm -f opengfx-all.zip
+
+    - name: Install MSVC problem matcher
+      uses: ammaraskar/msvc-problem-matcher@master
+
+    - name: Configure developer command prompt for ${{ matrix.arch }}
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: ${{ matrix.arch }}
+
+    - name: Build
+      shell: bash
+      run: |
+        mkdir build
+        cd build
+
+        echo "::group::CMake"
+        cmake .. \
+          -GNinja \
+          -DVCPKG_TARGET_TRIPLET=${{ matrix.arch }}-windows-static \
+          -DCMAKE_TOOLCHAIN_FILE="c:\vcpkg\scripts\buildsystems\vcpkg.cmake" \
+          # EOF
+        echo "::endgroup::"
+
+        echo "::group::Build"
+        cmake --build .
+        echo "::endgroup::"
+
+    - name: Test
+      shell: bash
+      run: |
+        cd ${GITHUB_WORKSPACE}/build
+        ctest --timeout 120
+
+  check_annotations:
+    name: Check Annotations
+    needs:
+    - emscripten
+    - linux
+    - macos
+    - windows
+
+    if: always() && github.event_name == 'pull_request'
+
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Get check suite ID
+      id: check_suite_id
+      uses: octokit/request-action@v2.x
+      with:
+        route: GET /repos/{repository}/actions/runs/{run_id}
+        repository: ${{ github.repository }}
+        run_id: ${{ github.run_id }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Get check runs
+      id: check_runs
+      uses: octokit/request-action@v2.x
+      with:
+        route: GET /repos/{repository}/check-suites/{check_suite_id}/check-runs
+        repository: ${{ github.repository }}
+        check_suite_id: ${{ fromJson(steps.check_suite_id.outputs.data).check_suite_id }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Check annotations
+      shell: bash
+      run: |
+        echo '[
+        ${{ toJson(fromJson(steps.check_runs.outputs.data).check_runs.*.output.title) }}, ${{ toJson(fromJson(steps.check_runs.outputs.data).check_runs.*.output.summary) }}
+        ]' | jq '.[0] as $t | .[1] as $s | reduce range(.[0] | length) as $i ([]; . + [if $t[$i] then $t[$i] + ": " + $s[$i] else empty end]) | .[]'
+
+        exit $(echo '${{ toJson(fromJson(steps.check_runs.outputs.data).check_runs.*.output.annotations_count) }}' | jq 'add')

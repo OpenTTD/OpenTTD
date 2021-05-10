@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -36,11 +34,5 @@ struct EffectVehicle FINAL : public SpecializedVehicle<EffectVehicle, VEH_EFFECT
 	bool Tick();
 	TransparencyOption GetTransparencyOption() const;
 };
-
-/**
- * Iterate over disaster vehicles.
- * @param var The variable used to iterate over.
- */
-#define FOR_ALL_EFFECTVEHICLES(var) FOR_ALL_VEHICLES_OF_TYPE(EffectVehicle, var)
 
 #endif /* EFFECTVEHICLE_BASE_H */

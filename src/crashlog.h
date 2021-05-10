@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -115,6 +113,12 @@ public:
 	 * @note must be implemented by all implementers of CrashLog.
 	 */
 	static void InitialiseCrashLog();
+
+	/**
+	 * Prepare crash log handler for a newly started thread.
+	 * @note must be implemented by all implementers of CrashLog.
+	 */
+	static void InitThread();
 
 	static void SetErrorMessage(const char *message);
 	static void AfterCrashLogCleanup();

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -13,6 +11,7 @@
 #define CURRENCY_H
 
 #include "date_type.h"
+#include "string_func.h"
 #include "strings_type.h"
 
 static const int CF_NOEURO = 0; ///< Currency never switches to the Euro (as far as known).
@@ -63,6 +62,9 @@ enum Currencies {
 	CURRENCY_NTD,       ///< New Taiwan Dollar
 	CURRENCY_CNY,       ///< Chinese Renminbi
 	CURRENCY_HKD,       ///< Hong Kong Dollar
+	CURRENCY_INR,       ///< Indian Rupee
+	CURRENCY_IDR,       ///< Indonesian Rupiah
+	CURRENCY_MYR,       ///< Malaysian Ringgit
 	CURRENCY_END,       ///< always the last item
 };
 
@@ -84,6 +86,15 @@ struct CurrencySpec {
 	 */
 	byte symbol_pos;
 	StringID name;
+
+	CurrencySpec() = default;
+
+	CurrencySpec(uint16 rate, const char *separator, Year to_euro, const char *prefix, const char *suffix, byte symbol_pos, StringID name) : rate(rate), to_euro(to_euro), symbol_pos(symbol_pos), name(name)
+	{
+		strecpy(this->separator, separator, lastof(this->separator));
+		strecpy(this->prefix, prefix, lastof(this->prefix));
+		strecpy(this->suffix, suffix, lastof(this->suffix));
+	}
 };
 
 extern CurrencySpec _currency_specs[CURRENCY_END];

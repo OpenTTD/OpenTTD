@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -246,11 +244,11 @@ CommandCost CmdSetGoalCompleted(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  */
 CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
 {
-	uint16 uniqueid = (GoalType)GB(p1, 0, 16);
+	uint16 uniqueid = (uint16)GB(p1, 0, 16);
 	CompanyID company = (CompanyID)GB(p1, 16, 8);
 	ClientID client = (ClientID)GB(p1, 16, 16);
 
-	assert_compile(GOAL_QUESTION_BUTTON_COUNT < 29);
+	static_assert(GOAL_QUESTION_BUTTON_COUNT < 29);
 	uint32 button_mask = GB(p2, 0, GOAL_QUESTION_BUTTON_COUNT);
 	byte type = GB(p2, 29, 2);
 	bool is_client = HasBit(p2, 31);
@@ -258,12 +256,16 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (StrEmpty(text)) return CMD_ERROR;
 	if (is_client) {
-		if (NetworkClientInfo::GetByClientID(client) == nullptr) return CMD_ERROR;
+		/* Only check during pre-flight; the client might have left between
+		 * testing and executing. In that case it is fine to just ignore the
+		 * fact the client is no longer here. */
+		if (!(flags & DC_EXEC) && _network_server && NetworkClientInfo::GetByClientID(client) == nullptr) return CMD_ERROR;
 	} else {
 		if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
 	}
-	if (CountBits(button_mask) < 1 || CountBits(button_mask) > 3) return CMD_ERROR;
-	if (type >= GOAL_QUESTION_TYPE_COUNT) return CMD_ERROR;
+	uint min_buttons = (type == GQT_QUESTION ? 1 : 0);
+	if (CountBits(button_mask) < min_buttons || CountBits(button_mask) > 3) return CMD_ERROR;
+	if (type >= GQT_END) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		if (is_client) {

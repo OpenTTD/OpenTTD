@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -42,8 +40,5 @@ struct EngineRenew : EngineRenewPool::PoolItem<&_enginerenew_pool> {
 	EngineRenew(EngineID from = INVALID_ENGINE, EngineID to = INVALID_ENGINE) : from(from), to(to) {}
 	~EngineRenew() {}
 };
-
-#define FOR_ALL_ENGINE_RENEWS_FROM(var, start) FOR_ALL_ITEMS_FROM(EngineRenew, enginerenew_index, var, start)
-#define FOR_ALL_ENGINE_RENEWS(var) FOR_ALL_ENGINE_RENEWS_FROM(var, 0)
 
 #endif /* AUTOREPLACE_BASE_H */

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -135,6 +133,11 @@ public:
 	 * Reset all settings to their default value.
 	 */
 	void ResetSettings();
+
+	/**
+	 * Reset only editable and visible settings to their default value.
+	 */
+	void ResetEditableSettings(bool yet_to_start);
 
 	/**
 	 * Randomize all settings the Script requested to be randomized.

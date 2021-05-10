@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -73,8 +71,6 @@ public:
 	 */
 	void Reopen() { this->has_quit = false; }
 
-	void SendGRFIdentifier(Packet *p, const GRFIdentifier *grf);
-	void ReceiveGRFIdentifier(Packet *p, GRFIdentifier *grf);
 	void SendCompanyInformation(Packet *p, const struct Company *c, const struct NetworkCompanyStats *stats, uint max_len = NETWORK_COMPANY_NAME_LENGTH);
 };
 

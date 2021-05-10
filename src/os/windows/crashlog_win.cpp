@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -22,6 +20,7 @@
 #include "../../video/video_driver.hpp"
 
 #include <windows.h>
+#include <mmsystem.h>
 #include <signal.h>
 
 #include "../../safeguards.h"
@@ -151,7 +150,7 @@ static uint32 CalcCRC(byte *data, uint size, uint32 crc)
 	return crc;
 }
 
-static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
+static void GetFileInfo(DebugFileInfo *dfi, const wchar_t *filename)
 {
 	HANDLE file;
 	memset(dfi, 0, sizeof(*dfi));
@@ -184,13 +183,13 @@ static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
 
 static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 {
-	TCHAR buffer[MAX_PATH];
+	wchar_t buffer[MAX_PATH];
 	DebugFileInfo dfi;
 
 	GetModuleFileName(mod, buffer, MAX_PATH);
 	GetFileInfo(&dfi, buffer);
 	output += seprintf(output, last, " %-20s handle: %p size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\n",
-		FS2OTTD(buffer),
+		FS2OTTD(buffer).c_str(),
 		mod,
 		dfi.size,
 		dfi.crc32,
@@ -221,7 +220,7 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 			res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
 			CloseHandle(proc);
 			if (res) {
-				size_t count = min(needed / sizeof(HMODULE), lengthof(modules));
+				size_t count = std::min<DWORD>(needed / sizeof(HMODULE), lengthof(modules));
 
 				for (size_t i = 0; i != count; i++) output = PrintModuleInfo(output, last, modules[i]);
 				return output + seprintf(output, last, "\n");
@@ -261,7 +260,7 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 		ep->ContextRecord->Rip,
 		ep->ContextRecord->EFlags
 	);
-#else
+#elif defined(_M_IX86)
 	buffer += seprintf(buffer, last,
 		" EAX: %.8X EBX: %.8X ECX: %.8X EDX: %.8X\n"
 		" ESI: %.8X EDI: %.8X EBP: %.8X ESP: %.8X\n"
@@ -277,13 +276,57 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 		(int)ep->ContextRecord->Eip,
 		(int)ep->ContextRecord->EFlags
 	);
+#elif defined(_M_ARM64)
+	buffer += seprintf(buffer, last,
+		" X0:  %.16I64X X1:  %.16I64X X2:  %.16I64X X3:  %.16I64X\n"
+		" X4:  %.16I64X X5:  %.16I64X X6:  %.16I64X X7:  %.16I64X\n"
+		" X8:  %.16I64X X9:  %.16I64X X10: %.16I64X X11: %.16I64X\n"
+		" X12: %.16I64X X13: %.16I64X X14: %.16I64X X15: %.16I64X\n"
+		" X16: %.16I64X X17: %.16I64X X18: %.16I64X X19: %.16I64X\n"
+		" X20: %.16I64X X21: %.16I64X X22: %.16I64X X23: %.16I64X\n"
+		" X24: %.16I64X X25: %.16I64X X26: %.16I64X X27: %.16I64X\n"
+		" X28: %.16I64X Fp:  %.16I64X Lr:  %.16I64X\n",
+		ep->ContextRecord->X0,
+		ep->ContextRecord->X1,
+		ep->ContextRecord->X2,
+		ep->ContextRecord->X3,
+		ep->ContextRecord->X4,
+		ep->ContextRecord->X5,
+		ep->ContextRecord->X6,
+		ep->ContextRecord->X7,
+		ep->ContextRecord->X8,
+		ep->ContextRecord->X9,
+		ep->ContextRecord->X10,
+		ep->ContextRecord->X11,
+		ep->ContextRecord->X12,
+		ep->ContextRecord->X13,
+		ep->ContextRecord->X14,
+		ep->ContextRecord->X15,
+		ep->ContextRecord->X16,
+		ep->ContextRecord->X17,
+		ep->ContextRecord->X18,
+		ep->ContextRecord->X19,
+		ep->ContextRecord->X20,
+		ep->ContextRecord->X21,
+		ep->ContextRecord->X22,
+		ep->ContextRecord->X23,
+		ep->ContextRecord->X24,
+		ep->ContextRecord->X25,
+		ep->ContextRecord->X26,
+		ep->ContextRecord->X27,
+		ep->ContextRecord->X28,
+		ep->ContextRecord->Fp,
+		ep->ContextRecord->Lr
+	);
 #endif
 
 	buffer += seprintf(buffer, last, "\n Bytes at instruction pointer:\n");
 #ifdef _M_AMD64
 	byte *b = (byte*)ep->ContextRecord->Rip;
-#else
+#elif defined(_M_IX86)
 	byte *b = (byte*)ep->ContextRecord->Eip;
+#elif defined(_M_ARM64)
+	byte *b = (byte*)ep->ContextRecord->Pc;
 #endif
 	for (int i = 0; i != 24; i++) {
 		if (IsBadReadPtr(b, 1)) {
@@ -301,8 +344,10 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 	buffer += seprintf(buffer, last, "Stack trace:\n");
 #ifdef _M_AMD64
 	uint32 *b = (uint32*)ep->ContextRecord->Rsp;
-#else
+#elif defined(_M_IX86)
 	uint32 *b = (uint32*)ep->ContextRecord->Esp;
+#elif defined(_M_ARM64)
+	uint32 *b = (uint32*)ep->ContextRecord->Sp;
 #endif
 	for (int j = 0; j != 24; j++) {
 		for (int i = 0; i != 8; i++) {
@@ -373,10 +418,14 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 		frame.AddrPC.Offset = ep->ContextRecord->Rip;
 		frame.AddrFrame.Offset = ep->ContextRecord->Rbp;
 		frame.AddrStack.Offset = ep->ContextRecord->Rsp;
-#else
+#elif defined(_M_IX86)
 		frame.AddrPC.Offset = ep->ContextRecord->Eip;
 		frame.AddrFrame.Offset = ep->ContextRecord->Ebp;
 		frame.AddrStack.Offset = ep->ContextRecord->Esp;
+#elif defined(_M_ARM64)
+		frame.AddrPC.Offset = ep->ContextRecord->Pc;
+		frame.AddrFrame.Offset = ep->ContextRecord->Fp;
+		frame.AddrStack.Offset = ep->ContextRecord->Sp;
 #endif
 		frame.AddrPC.Mode = AddrModeFlat;
 		frame.AddrFrame.Mode = AddrModeFlat;
@@ -442,7 +491,7 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 /* virtual */ int CrashLogWindows::WriteCrashDump(char *filename, const char *filename_last) const
 {
 	int ret = 0;
-	HMODULE dbghelp = LoadLibrary(_T("dbghelp.dll"));
+	HMODULE dbghelp = LoadLibrary(L"dbghelp.dll");
 	if (dbghelp != nullptr) {
 		typedef BOOL (WINAPI *MiniDumpWriteDump_t)(HANDLE, DWORD, HANDLE,
 				MINIDUMP_TYPE,
@@ -451,8 +500,8 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 				CONST PMINIDUMP_CALLBACK_INFORMATION);
 		MiniDumpWriteDump_t funcMiniDumpWriteDump = (MiniDumpWriteDump_t)GetProcAddress(dbghelp, "MiniDumpWriteDump");
 		if (funcMiniDumpWriteDump != nullptr) {
-			seprintf(filename, filename_last, "%scrash.dmp", _personal_dir);
-			HANDLE file  = CreateFile(OTTD2FS(filename), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
+			seprintf(filename, filename_last, "%scrash.dmp", _personal_dir.c_str());
+			HANDLE file  = CreateFile(OTTD2FS(filename).c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
 			HANDLE proc  = GetCurrentProcess();
 			DWORD procid = GetCurrentProcessId();
 			MINIDUMP_EXCEPTION_INFORMATION mdei;
@@ -488,29 +537,35 @@ static void ShowCrashlogWindow();
  * Stack pointer for use when 'starting' the crash handler.
  * Not static as gcc's inline assembly needs it that way.
  */
-void *_safe_esp = nullptr;
+thread_local void *_safe_esp = nullptr;
 
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
+	/* Restore system timer resolution. */
+	timeEndPeriod(1);
+
+	/* Disable our event loop. */
+	SetWindowLongPtr(GetActiveWindow(), GWLP_WNDPROC, (LONG_PTR)&DefWindowProc);
+
 	if (CrashLogWindows::current != nullptr) {
 		CrashLog::AfterCrashLogCleanup();
 		ExitProcess(2);
 	}
 
 	if (GamelogTestEmergency()) {
-		static const TCHAR _emergency_crash[] =
-			_T("A serious fault condition occurred in the game. The game will shut down.\n")
-			_T("As you loaded an emergency savegame no crash information will be generated.\n");
-		MessageBox(nullptr, _emergency_crash, _T("Fatal Application Failure"), MB_ICONERROR);
+		static const wchar_t _emergency_crash[] =
+			L"A serious fault condition occurred in the game. The game will shut down.\n"
+			L"As you loaded an emergency savegame no crash information will be generated.\n";
+		MessageBox(nullptr, _emergency_crash, L"Fatal Application Failure", MB_ICONERROR);
 		ExitProcess(3);
 	}
 
 	if (SaveloadCrashWithMissingNewGRFs()) {
-		static const TCHAR _saveload_crash[] =
-			_T("A serious fault condition occurred in the game. The game will shut down.\n")
-			_T("As you loaded an savegame for which you do not have the required NewGRFs\n")
-			_T("no crash information will be generated.\n");
-		MessageBox(nullptr, _saveload_crash, _T("Fatal Application Failure"), MB_ICONERROR);
+		static const wchar_t _saveload_crash[] =
+			L"A serious fault condition occurred in the game. The game will shut down.\n"
+			L"As you loaded an savegame for which you do not have the required NewGRFs\n"
+			L"no crash information will be generated.\n";
+		MessageBox(nullptr, _saveload_crash, L"Fatal Application Failure", MB_ICONERROR);
 		ExitProcess(3);
 	}
 
@@ -529,9 +584,12 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 #ifdef _M_AMD64
 		ep->ContextRecord->Rip = (DWORD64)ShowCrashlogWindow;
 		ep->ContextRecord->Rsp = (DWORD64)_safe_esp;
-#else
+#elif defined(_M_IX86)
 		ep->ContextRecord->Eip = (DWORD)ShowCrashlogWindow;
 		ep->ContextRecord->Esp = (DWORD)_safe_esp;
+#elif defined(_M_ARM64)
+		ep->ContextRecord->Pc = (DWORD64)ShowCrashlogWindow;
+		ep->ContextRecord->Sp = (DWORD64)_safe_esp;
 #endif
 		return EXCEPTION_CONTINUE_EXECUTION;
 	}
@@ -547,24 +605,7 @@ static void CDECL CustomAbort(int signal)
 
 /* static */ void CrashLog::InitialiseCrashLog()
 {
-#ifdef _M_AMD64
-	CONTEXT ctx;
-	RtlCaptureContext(&ctx);
-
-	/* The stack pointer for AMD64 must always be 16-byte aligned inside a
-	 * function. As we are simulating a function call with the safe ESP value,
-	 * we need to subtract 8 for the imaginary return address otherwise stack
-	 * alignment would be wrong in the called function. */
-	_safe_esp = (void *)(ctx.Rsp - 8);
-#else
-#if defined(_MSC_VER)
-	_asm {
-		mov _safe_esp, esp
-	}
-#else
-	asm("movl %esp, __safe_esp");
-#endif
-#endif
+	CrashLog::InitThread();
 
 	/* SIGABRT is not an unhandled exception, so we need to intercept it. */
 	signal(SIGABRT, CustomAbort);
@@ -575,24 +616,52 @@ static void CDECL CustomAbort(int signal)
 	SetUnhandledExceptionFilter(ExceptionHandler);
 }
 
+/* static */ void CrashLog::InitThread()
+{
+#if defined(_M_AMD64) || defined(_M_ARM64)
+	CONTEXT ctx;
+	RtlCaptureContext(&ctx);
+
+	/* The stack pointer for AMD64 must always be 16-byte aligned inside a
+	 * function. As we are simulating a function call with the safe ESP value,
+	 * we need to subtract 8 for the imaginary return address otherwise stack
+	 * alignment would be wrong in the called function. */
+#	if defined(_M_ARM64)
+	_safe_esp = (void *)(ctx.Sp - 8);
+#	else
+	_safe_esp = (void *)(ctx.Rsp - 8);
+#	endif
+#else
+	void *safe_esp;
+#	if defined(_MSC_VER)
+	_asm {
+		mov safe_esp, esp
+	}
+#	else
+	asm("movl %esp, _safe_esp");
+#	endif
+	_safe_esp = safe_esp;
+#endif
+}
+
 /* The crash log GUI */
 
 static bool _expanded;
 
-static const TCHAR _crash_desc[] =
-	_T("A serious fault condition occurred in the game. The game will shut down.\n")
-	_T("Please send the crash information and the crash.dmp file (if any) to the developers.\n")
-	_T("This will greatly help debugging. The correct place to do this is https://github.com/OpenTTD/OpenTTD/issues. ")
-	_T("The information contained in the report is displayed below.\n")
-	_T("Press \"Emergency save\" to attempt saving the game. Generated file(s):\n")
-	_T("%s");
+static const wchar_t _crash_desc[] =
+	L"A serious fault condition occurred in the game. The game will shut down.\n"
+	L"Please send the crash information and the crash.dmp file (if any) to the developers.\n"
+	L"This will greatly help debugging. The correct place to do this is https://github.com/OpenTTD/OpenTTD/issues. "
+	L"The information contained in the report is displayed below.\n"
+	L"Press \"Emergency save\" to attempt saving the game. Generated file(s):\n"
+	L"%s";
 
-static const TCHAR _save_succeeded[] =
-	_T("Emergency save succeeded.\nIts location is '%s'.\n")
-	_T("Be aware that critical parts of the internal game state may have become ")
-	_T("corrupted. The saved game is not guaranteed to work.");
+static const wchar_t _save_succeeded[] =
+	L"Emergency save succeeded.\nIts location is '%s'.\n"
+	L"Be aware that critical parts of the internal game state may have become "
+	L"corrupted. The saved game is not guaranteed to work.";
 
-static const TCHAR * const _expand_texts[] = {_T("S&how report >>"), _T("&Hide report <<") };
+static const wchar_t * const _expand_texts[] = {L"S&how report >>", L"&Hide report <<" };
 
 static void SetWndSize(HWND wnd, int mode)
 {
@@ -615,17 +684,14 @@ static void SetWndSize(HWND wnd, int mode)
 	}
 }
 
-/* When TCHAR is char, then _sntprintf becomes snprintf. When TCHAR is wchar it doesn't. Likewise for strcat. */
-#undef snprintf
-#undef strcat
-
 static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg) {
 		case WM_INITDIALOG: {
 			/* We need to put the crash-log in a separate buffer because the default
 			 * buffer in MB_TO_WIDE is not large enough (512 chars) */
-			TCHAR crash_msgW[lengthof(CrashLogWindows::current->crashlog)];
+			wchar_t filenamebuf[MAX_PATH * 2];
+			wchar_t crash_msgW[lengthof(CrashLogWindows::current->crashlog)];
 			/* Convert unix -> dos newlines because the edit box only supports that properly :( */
 			const char *unix_nl = CrashLogWindows::current->crashlog;
 			char dos_nl[lengthof(CrashLogWindows::current->crashlog)];
@@ -638,20 +704,24 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 			*p = '\0';
 
 			/* Add path to crash.log and crash.dmp (if any) to the crash window text */
-			size_t len = _tcslen(_crash_desc) + 2;
-			len += _tcslen(OTTD2FS(CrashLogWindows::current->crashlog_filename)) + 2;
-			len += _tcslen(OTTD2FS(CrashLogWindows::current->crashdump_filename)) + 2;
-			len += _tcslen(OTTD2FS(CrashLogWindows::current->screenshot_filename)) + 1;
+			size_t len = wcslen(_crash_desc) + 2;
+			len += wcslen(convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf))) + 2;
+			len += wcslen(convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf))) + 2;
+			len += wcslen(convert_to_fs(CrashLogWindows::current->screenshot_filename, filenamebuf, lengthof(filenamebuf))) + 1;
 
-			TCHAR *text = AllocaM(TCHAR, len);
-			_sntprintf(text, len, _crash_desc, OTTD2FS(CrashLogWindows::current->crashlog_filename));
-			if (OTTD2FS(CrashLogWindows::current->crashdump_filename)[0] != _T('\0')) {
-				_tcscat(text, _T("\n"));
-				_tcscat(text, OTTD2FS(CrashLogWindows::current->crashdump_filename));
+			wchar_t *text = AllocaM(wchar_t, len);
+			int printed = _snwprintf(text, len, _crash_desc, convert_to_fs(CrashLogWindows::current->crashlog_filename, filenamebuf, lengthof(filenamebuf)));
+			if (printed < 0 || (size_t)printed > len) {
+				MessageBox(wnd, L"Catastrophic failure trying to display crash message. Could not perform text formatting.", L"OpenTTD", MB_ICONERROR);
+				return FALSE;
 			}
-			if (OTTD2FS(CrashLogWindows::current->screenshot_filename)[0] != _T('\0')) {
-				_tcscat(text, _T("\n"));
-				_tcscat(text, OTTD2FS(CrashLogWindows::current->screenshot_filename));
+			if (convert_to_fs(CrashLogWindows::current->crashdump_filename, filenamebuf, lengthof(filenamebuf))[0] != L'\0') {
+				wcscat(text, L"\n");
+				wcscat(text, filenamebuf);
+			}
+			if (convert_to_fs(CrashLogWindows::current->screenshot_filename, filenamebuf, lengthof(filenamebuf))[0] != L'\0') {
+				wcscat(text, L"\n");
+				wcscat(text, filenamebuf);
 			}
 
 			SetDlgItemText(wnd, 10, text);
@@ -665,18 +735,20 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd, UINT msg, WPARAM wParam, LPARA
 					CrashLog::AfterCrashLogCleanup();
 					ExitProcess(2);
 				case 13: // Emergency save
+					wchar_t filenamebuf[MAX_PATH * 2];
 					char filename[MAX_PATH];
 					if (CrashLogWindows::current->WriteSavegame(filename, lastof(filename))) {
-						size_t len = _tcslen(_save_succeeded) + _tcslen(OTTD2FS(filename)) + 1;
-						TCHAR *text = AllocaM(TCHAR, len);
-						_sntprintf(text, len, _save_succeeded, OTTD2FS(filename));
-						MessageBox(wnd, text, _T("Save successful"), MB_ICONINFORMATION);
+						convert_to_fs(filename, filenamebuf, lengthof(filenamebuf));
+						size_t len = lengthof(_save_succeeded) + wcslen(filenamebuf) + 1;
+						wchar_t *text = AllocaM(wchar_t, len);
+						_snwprintf(text, len, _save_succeeded, filenamebuf);
+						MessageBox(wnd, text, L"Save successful", MB_ICONINFORMATION);
 					} else {
-						MessageBox(wnd, _T("Save failed"), _T("Save failed"), MB_ICONINFORMATION);
+						MessageBox(wnd, L"Save failed", L"Save failed", MB_ICONINFORMATION);
 					}
 					break;
 				case 15: // Expand window to show crash-message
-					_expanded ^= 1;
+					_expanded = !_expanded;
 					SetWndSize(wnd, _expanded);
 					break;
 			}

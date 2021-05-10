@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -26,7 +24,7 @@ struct Tile {
 	byte   m5;          ///< General purpose
 };
 
-assert_compile(sizeof(Tile) == 8);
+static_assert(sizeof(Tile) == 8);
 
 /**
  * Data that is stored per tile. Also used Tile for this.

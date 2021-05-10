@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -19,14 +17,13 @@
 // #define DEBUG_DUMP_COMMANDS
 // #define DEBUG_FAILED_DUMP_COMMANDS
 
-#include "core/address.h"
 #include "network_type.h"
 #include "../console_type.h"
 #include "../gfx_type.h"
 #include "../openttd.h"
 #include "../company_type.h"
+#include "../string_type.h"
 
-extern NetworkServerGameInfo _network_game_info;
 extern NetworkCompanyState *_network_company_states;
 
 extern ClientID _network_own_client_id;
@@ -38,6 +35,9 @@ extern StringList _network_host_list;
 extern StringList _network_ban_list;
 
 byte NetworkSpectatorCount();
+bool NetworkIsValidClientName(const char *client_name);
+bool NetworkValidateClientName();
+bool NetworkValidateClientName(char *client_name);
 void NetworkUpdateClientName();
 bool NetworkCompanyHasClients(CompanyID company);
 const char *NetworkChangeCompanyPassword(CompanyID company_id, const char *password);
@@ -45,13 +45,14 @@ void NetworkReboot();
 void NetworkDisconnect(bool blocking = false, bool close_admins = true);
 void NetworkGameLoop();
 void NetworkBackgroundLoop();
-void ParseConnectionString(const char **company, const char **port, char *connection_string);
-void NetworkStartDebugLog(NetworkAddress address);
+std::string_view ParseFullConnectionString(const std::string &connection_string, uint16 &port, CompanyID *company_id = nullptr);
+void NetworkStartDebugLog(const std::string &connection_string);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
 void NetworkClientsToSpectators(CompanyID cid);
-void NetworkClientConnectGame(NetworkAddress address, CompanyID join_as, const char *join_server_password = nullptr, const char *join_company_password = nullptr);
+bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const char *join_server_password = nullptr, const char *join_company_password = nullptr);
+void NetworkClientJoinGame();
 void NetworkClientRequestMove(CompanyID company, const char *pass = "");
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data = 0);
@@ -67,6 +68,7 @@ void NetworkServerDailyLoop();
 void NetworkServerMonthlyLoop();
 void NetworkServerYearlyLoop();
 void NetworkServerSendConfigUpdate();
+void NetworkServerUpdateGameInfo();
 void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();
 void NetworkServerNewCompany(const Company *company, NetworkClientInfo *ci);
@@ -77,12 +79,12 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
 void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const char *string);
 void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const char *msg, ClientID from_id, int64 data = 0, bool from_admin = false);
 
-void NetworkServerKickClient(ClientID client_id);
-uint NetworkServerKickOrBanIP(ClientID client_id, bool ban);
-uint NetworkServerKickOrBanIP(const char *ip, bool ban);
+void NetworkServerKickClient(ClientID client_id, const char *reason);
+uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, const char *reason);
+uint NetworkServerKickOrBanIP(const char *ip, bool ban, const char *reason);
 
 void NetworkInitChatMessage();
-void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const char *message, ...) WARN_FORMAT(3, 4);
+void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message);
 void NetworkUndrawChatMessage();
 void NetworkChatMessageLoop();
 

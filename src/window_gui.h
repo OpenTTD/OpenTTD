@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -142,7 +140,7 @@ enum WidgetDrawDistances {
 
 /* widget.cpp */
 void DrawFrameRect(int left, int top, int right, int bottom, Colours colour, FrameFlags flags);
-void DrawCaption(const Rect &r, Colours colour, Owner owner, StringID str);
+void DrawCaption(const Rect &r, Colours colour, Owner owner, TextColour text_colour, StringID str, StringAlignment align);
 
 /* window.cpp */
 extern Window *_z_front_window;
@@ -255,7 +253,7 @@ static const int WHITE_BORDER_DURATION = 3; ///< The initial timeout value for W
  * The actual location being shown is #scrollpos_x, #scrollpos_y.
  * @see InitializeViewport(), UpdateViewportPosition(), UpdateViewportCoordinates().
  */
-struct ViewportData : ViewPort {
+struct ViewportData : Viewport {
 	VehicleID follow_vehicle; ///< VehicleID to follow if following a vehicle, #INVALID_VEHICLE otherwise.
 	int32 scrollpos_x;        ///< Currently shown x coordinate (virtual screen coordinate of topleft corner of the viewport).
 	int32 scrollpos_y;        ///< Currently shown y coordinate (virtual screen coordinate of topleft corner of the viewport).
@@ -270,6 +268,7 @@ enum TooltipCloseCondition {
 	TCC_RIGHT_CLICK,
 	TCC_HOVER,
 	TCC_NONE,
+	TCC_EXIT_VIEWPORT,
 };
 
 /**
@@ -592,10 +591,7 @@ public:
 	 */
 	virtual void SetStringParameters(int widget) const {}
 
-	/**
-	 * Called when window gains focus
-	 */
-	virtual void OnFocus() {}
+	virtual void OnFocus();
 
 	virtual void OnFocusLost();
 
@@ -696,7 +692,9 @@ public:
 	virtual void OnGameTick() {}
 
 	/**
-	 * Called once every 100 (game) ticks.
+	 * Called once every 100 (game) ticks, or once every 3s, whichever comes last.
+	 * In normal game speed the frequency is 1 call every 100 ticks (can be more than 3s).
+	 * In fast-forward the frequency is 1 call every ~3s (can be more than 100 ticks).
 	 */
 	virtual void OnHundredthTick() {}
 
@@ -812,6 +810,68 @@ public:
 	 * @pre this->IsNewGRFInspectable()
 	 */
 	virtual void ShowNewGRFInspectWindow() const { NOT_REACHED(); }
+
+	/**
+	 * Iterator to iterate all valid Windows
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 * @tparam Tfront Wether we iterate from front
+	 */
+	template <class T, bool Tfront>
+	struct WindowIterator {
+		typedef T value_type;
+		typedef T *pointer;
+		typedef T &reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
+
+		explicit WindowIterator(T *start) : w(start)
+		{
+			this->Validate();
+		}
+
+		bool operator==(const WindowIterator &other) const { return this->w == other.w; }
+		bool operator!=(const WindowIterator &other) const { return !(*this == other); }
+		T * operator*() const { return this->w; }
+		WindowIterator & operator++() { this->Next(); this->Validate(); return *this; }
+
+	private:
+		T *w;
+		void Validate() { while (this->w != nullptr && this->w->window_class == WC_INVALID) this->Next(); }
+		void Next() { if (this->w != nullptr) this->w = Tfront ? this->w->z_back : this->w->z_front; }
+	};
+
+	/**
+	 * Iterable ensemble of all valid Windows
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 * @tparam Tfront Wether we iterate from front
+	 */
+	template <class T, bool Tfront>
+	struct Iterate {
+		Iterate(T *from) : from(from) {}
+		WindowIterator<T, Tfront> begin() { return WindowIterator<T, Tfront>(this->from); }
+		WindowIterator<T, Tfront> end() { return WindowIterator<T, Tfront>(nullptr); }
+		bool empty() { return this->begin() == this->end(); }
+	private:
+		T *from;
+	};
+
+	/**
+	 * Returns an iterable ensemble of all valid Window from back to front
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 * @param from index of the first Window to consider
+	 * @return an iterable ensemble of all valid Window
+	 */
+	template <class T = Window>
+	static Iterate<T, false> IterateFromBack(T *from = _z_back_window) { return Iterate<T, false>(from); }
+
+	/**
+	 * Returns an iterable ensemble of all valid Window from front to back
+	 * @tparam T Type of the class/struct that is going to be iterated
+	 * @param from index of the first Window to consider
+	 * @return an iterable ensemble of all valid Window
+	 */
+	template <class T = Window>
+	static Iterate<T, true> IterateFromFront(T *from = _z_front_window) { return Iterate<T, true>(from); }
 };
 
 /**
@@ -890,12 +950,6 @@ void GuiShowTooltips(Window *parent, StringID str, uint paramcount = 0, const ui
 /* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);
 
-/** Iterate over all windows */
-#define FOR_ALL_WINDOWS_FROM_BACK_FROM(w, start)  for (w = start; w != nullptr; w = w->z_front) if (w->window_class != WC_INVALID)
-#define FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, start) for (w = start; w != nullptr; w = w->z_back) if (w->window_class != WC_INVALID)
-#define FOR_ALL_WINDOWS_FROM_BACK(w)  FOR_ALL_WINDOWS_FROM_BACK_FROM(w, _z_back_window)
-#define FOR_ALL_WINDOWS_FROM_FRONT(w) FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, _z_front_window)
-
 extern Point _cursorpos_drag_start;
 
 extern int _scrollbar_start_pos;
@@ -908,9 +962,10 @@ extern bool _mouse_hovering;
 /** Mouse modes. */
 enum SpecialMouseMode {
 	WSM_NONE,     ///< No special mouse mode.
-	WSM_DRAGDROP, ///< Dragging an object.
+	WSM_DRAGDROP, ///< Drag&drop an object.
 	WSM_SIZING,   ///< Sizing mode.
 	WSM_PRESIZE,  ///< Presizing mode (docks, tunnels).
+	WSM_DRAGGING, ///< Dragging mode (trees).
 };
 extern SpecialMouseMode _special_mouse_mode;
 

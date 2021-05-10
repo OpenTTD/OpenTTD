@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -31,7 +29,7 @@ public:
 		/** No more space for orders */
 		ERR_ORDER_TOO_MANY,                                  // [STR_ERROR_NO_MORE_SPACE_FOR_ORDERS]
 
-		/** Destination of new order is to far away from the previous order */
+		/** Destination of new order is too far away from the previous order */
 		ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION,    // [STR_ERROR_TOO_FAR_FROM_PREVIOUS_DESTINATION]
 
 		/** Aircraft has not enough range to copy/share orders. */

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -59,8 +57,6 @@ static const uint SUBSIDY_PAX_MIN_POPULATION   = 400; ///< Min. population of to
 static const uint SUBSIDY_CARGO_MIN_POPULATION = 900; ///< Min. population of destination town for cargo route
 static const uint SUBSIDY_MAX_PCT_TRANSPORTED  =  42; ///< Subsidy will be created only for towns/industries with less % transported
 static const uint SUBSIDY_MAX_DISTANCE         =  70; ///< Max. length of subsidised route (DistanceManhattan)
-
-#define FOR_ALL_SUBSIDIES_FROM(var, start) FOR_ALL_ITEMS_FROM(Subsidy, subsidy_index, var, start)
-#define FOR_ALL_SUBSIDIES(var) FOR_ALL_SUBSIDIES_FROM(var, 0)
+static const uint SUBSIDY_TOWN_CARGO_RADIUS    =   6; ///< Extent of a tile area around town center when scanning for town cargo acceptance and production (6 ~= min catchmement + min station / 2)
 
 #endif /* SUBSIDY_BASE_H */

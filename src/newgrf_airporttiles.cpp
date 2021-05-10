@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -39,7 +37,7 @@ AirportTileOverrideManager _airporttile_mngr(NEW_AIRPORTTILE_OFFSET, NUM_AIRPORT
 {
 	/* should be assert(gfx < lengthof(tiles)), but that gives compiler warnings
 	 * since it's always true if the following holds: */
-	assert_compile(MAX_UVALUE(StationGfx) + 1 == lengthof(tiles));
+	static_assert(MAX_UVALUE(StationGfx) + 1 == lengthof(tiles));
 	return &AirportTileSpec::tiles[gfx];
 }
 
@@ -220,6 +218,16 @@ AirportTileResolverObject::AirportTileResolverObject(const AirportTileSpec *ats,
 	: ResolverObject(ats->grf_prop.grffile, callback, callback_param1, callback_param2), tiles_scope(*this, ats, tile, st)
 {
 	this->root_spritegroup = ats->grf_prop.spritegroup[0];
+}
+
+GrfSpecFeature AirportTileResolverObject::GetFeature() const
+{
+	return GSF_AIRPORTTILES;
+}
+
+uint32 AirportTileResolverObject::GetDebugID() const
+{
+	return this->tiles_scope.ats->grf_prop.local_id;
 }
 
 uint16 GetAirportTileCallback(CallbackID callback, uint32 param1, uint32 param2, const AirportTileSpec *ats, Station *st, TileIndex tile, int extra_data = 0)

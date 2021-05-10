@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -8,8 +6,6 @@
  */
 
 /** @file string_uniscribe.cpp Functions related to laying out text on Win32. */
-
-#if defined(WITH_UNISCRIBE)
 
 #include "../../stdafx.h"
 #include "../../debug.h"
@@ -148,7 +144,7 @@ void UniscribeResetScriptCache(FontSize size)
 /** Load the matching native Windows font. */
 static HFONT HFontFromFont(Font *font)
 {
-	if (font->fc->GetOSHandle() != nullptr) return CreateFontIndirect((PLOGFONT)font->fc->GetOSHandle());
+	if (font->fc->GetOSHandle() != nullptr) return CreateFontIndirect((const PLOGFONT)font->fc->GetOSHandle());
 
 	LOGFONT logfont;
 	ZeroMemory(&logfont, sizeof(LOGFONT));
@@ -306,7 +302,7 @@ static std::vector<SCRIPT_ITEM> UniscribeItemizeString(UniscribeParagraphLayoutF
 	for (auto const &i : fontMapping) {
 		while (cur_pos < i.first && cur_item != items.end() - 1) {
 			/* Add a range that spans the intersection of the remaining item and font run. */
-			int stop_pos = min(i.first, (cur_item + 1)->iCharPos);
+			int stop_pos = std::min(i.first, (cur_item + 1)->iCharPos);
 			assert(stop_pos - cur_pos > 0);
 			ranges.push_back(UniscribeRun(cur_pos, stop_pos - cur_pos, i.second, cur_item->a));
 
@@ -456,7 +452,7 @@ int UniscribeParagraphLayout::UniscribeLine::GetLeading() const
 {
 	int leading = 0;
 	for (const auto &run : *this) {
-		leading = max(leading, run.GetLeading());
+		leading = std::max(leading, run.GetLeading());
 	}
 
 	return leading;
@@ -622,5 +618,3 @@ const int *UniscribeParagraphLayout::UniscribeVisualRun::GetGlyphToCharMap() con
 
 	return this->utf16_to_utf8[this->cur_pos];
 }
-
-#endif /* defined(WITH_UNISCRIBE) */

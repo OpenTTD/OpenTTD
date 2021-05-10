@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -148,7 +146,7 @@ public:
 	/**
 	 * Rename a town.
 	 * @param town_id The town to rename
-	 * @param name The new name of the town. If nullptr or an empty string is passed, the town name will be reset to the default name.
+	 * @param name The new name of the town. If null is passed, the town name will be reset to the default name.
 	 * @pre IsValidTown(town_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
@@ -158,7 +156,7 @@ public:
 	/**
 	 * Set the custom text of a town, shown in the GUI.
 	 * @param town_id The town to set the custom text of.
-	 * @param text The text to set it to (can be either a raw string, or a ScriptText object).
+	 * @param text The text to set it to (can be either a raw string, or a ScriptText object). If null is passed, the text will be removed.
 	 * @pre IsValidTown(town_id).
 	 * @return True if the action succeeded.
 	 * @api -ai
@@ -424,6 +422,30 @@ public:
 	 * @return The rating as shown to humans.
 	 */
 	static TownRating GetRating(TownID town_id, ScriptCompany::CompanyID company_id);
+
+	/**
+	 * Get the accurate rating of a company within a town.
+	 * @param town_id The town to get the rating for.
+	 * @param company_id The company to get the rating for.
+	 * @pre IsValidTown(town_id).
+	 * @pre ScriptCompany.ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID.
+	 * @return The rating as a number between -1000 (worst) and 1000 (best).
+	 * @api -ai
+	 */
+	static int GetDetailedRating(TownID town_id, ScriptCompany::CompanyID company_id);
+
+	/**
+	 * Change the rating of a company within a town.
+	 * @param town_id The town to change the rating in.
+	 * @param company_id The company to change the rating for.
+	 * @param delta How much to change rating by (range -1000 to +1000).
+	 * @return True if the rating was changed.
+	 * @pre IsValidTown(town_id).
+	 * @pre ScriptCompany.ResolveCompanyID(company) != ScriptCompany::COMPANY_INVALID.
+	 * @pre no company mode in scope
+	 * @api -ai
+	 */
+	static bool ChangeRating(TownID town_id, ScriptCompany::CompanyID company_id, int delta);
 
 	/**
 	 * Get the maximum level of noise that still can be added by airports

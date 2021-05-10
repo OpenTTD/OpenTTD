@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -21,8 +19,7 @@ ScriptStoryPageList::ScriptStoryPageList(ScriptCompany::CompanyID company)
 	uint8 c = company;
 	if (company == ScriptCompany::COMPANY_INVALID) c = INVALID_COMPANY;
 
-	StoryPage *p;
-	FOR_ALL_STORY_PAGES(p) {
+	for (StoryPage *p : StoryPage::Iterate()) {
 		if (p->company == c || p->company == INVALID_COMPANY) {
 			this->AddItem(p->index);
 		}

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -28,7 +26,7 @@
 #include <stdlib.h>
 #include <time.h>
 #ifndef __INNOTEK_LIBC__
-	#include <dos.h>
+#	include <dos.h>
 #endif
 
 #include "../../safeguards.h"
@@ -38,7 +36,7 @@
 
 #include <os2.h>
 #ifndef __INNOTEK_LIBC__
-	#include <i86.h>
+#	include <i86.h>
 #endif
 
 bool FiosIsRoot(const char *file)
@@ -204,9 +202,6 @@ bool GetClipboardContents(char *buffer, const char *last)
 	return false;
 }
 
-
-const char *FS2OTTD(const char *name) {return name;}
-const char *OTTD2FS(const char *name) {return name;}
 
 void OSOpenBrowser(const char *url)
 {

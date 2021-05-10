@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -18,19 +16,16 @@
 #include "../core/string_compare_type.hpp"
 #include <map>
 
-#if defined(WITH_COCOA)
-bool QZ_CanDisplay8bpp();
-#endif /* defined(WITH_COCOA) */
 
 /**
  * The base factory, keeping track of all blitters.
  */
 class BlitterFactory {
 private:
-	const char *name;        ///< The name of the blitter factory.
-	const char *description; ///< The description of the blitter.
+	const std::string name;        ///< The name of the blitter factory.
+	const std::string description; ///< The description of the blitter.
 
-	typedef std::map<const char *, BlitterFactory *, StringCompare> Blitters; ///< Map of blitter factories.
+	typedef std::map<std::string, BlitterFactory *> Blitters; ///< Map of blitter factories.
 
 	/**
 	 * Get the map with currently known blitters.
@@ -63,19 +58,29 @@ protected:
 	 * @pre There is no blitter registered with this name.
 	 */
 	BlitterFactory(const char *name, const char *description, bool usable = true) :
-			name(stredup(name)), description(stredup(description))
+			name(name), description(description)
 	{
 		if (usable) {
+			Blitters &blitters = GetBlitters();
+			assert(blitters.find(this->name) == blitters.end());
 			/*
 			 * Only add when the blitter is usable. Do not bail out or
 			 * do more special things since the blitters are always
 			 * instantiated upon start anyhow and freed upon shutdown.
 			 */
-			std::pair<Blitters::iterator, bool> P = GetBlitters().insert(Blitters::value_type(this->name, this));
-			assert(P.second);
+			blitters.insert(Blitters::value_type(this->name, this));
 		} else {
 			DEBUG(driver, 1, "Not registering blitter %s as it is not usable", name);
 		}
+	}
+
+	/**
+	 * Is the blitter usable with the current drivers and hardware config?
+	 * @return True if the blitter can be instantiated.
+	 */
+	virtual bool IsUsable() const
+	{
+		return true;
 	}
 
 public:
@@ -83,9 +88,6 @@ public:
 	{
 		GetBlitters().erase(this->name);
 		if (GetBlitters().empty()) delete &GetBlitters();
-
-		free(this->name);
-		free(this->description);
 	}
 
 	/**
@@ -93,7 +95,7 @@ public:
 	 * @param name the blitter to select.
 	 * @post Sets the blitter so GetCurrentBlitter() returns it too.
 	 */
-	static Blitter *SelectBlitter(const char *name)
+	static Blitter *SelectBlitter(const std::string &name)
 	{
 		BlitterFactory *b = GetBlitterFactory(name);
 		if (b == nullptr) return nullptr;
@@ -102,7 +104,7 @@ public:
 		delete *GetActiveBlitter();
 		*GetActiveBlitter() = newb;
 
-		DEBUG(driver, 1, "Successfully %s blitter '%s'", StrEmpty(name) ? "probed" : "loaded", newb->GetName());
+		DEBUG(driver, 1, "Successfully %s blitter '%s'", name.empty() ? "probed" : "loaded", newb->GetName());
 		return newb;
 	}
 
@@ -111,31 +113,23 @@ public:
 	 * @param name the blitter factory to select.
 	 * @return The blitter factory, or nullptr when there isn't one with the wanted name.
 	 */
-	static BlitterFactory *GetBlitterFactory(const char *name)
+	static BlitterFactory *GetBlitterFactory(const std::string &name)
 	{
 #if defined(DEDICATED)
 		const char *default_blitter = "null";
+#elif defined(WITH_COCOA)
+		const char *default_blitter = "32bpp-anim";
 #else
 		const char *default_blitter = "8bpp-optimized";
-
-#if defined(WITH_COCOA)
-		/* Some people reported lack of fullscreen support in 8 bpp mode.
-		 * While we prefer 8 bpp since it's faster, we will still have to test for support. */
-		if (!QZ_CanDisplay8bpp()) {
-			/* The main display can't go to 8 bpp fullscreen mode.
-			 * We will have to switch to 32 bpp by default. */
-			default_blitter = "32bpp-anim";
-		}
-#endif /* defined(WITH_COCOA) */
-#endif /* defined(DEDICATED) */
+#endif
 		if (GetBlitters().size() == 0) return nullptr;
-		const char *bname = (StrEmpty(name)) ? default_blitter : name;
+		const char *bname = name.empty() ? default_blitter : name.c_str();
 
 		Blitters::iterator it = GetBlitters().begin();
 		for (; it != GetBlitters().end(); it++) {
 			BlitterFactory *b = (*it).second;
-			if (strcasecmp(bname, b->name) == 0) {
-				return b;
+			if (strcasecmp(bname, b->name.c_str()) == 0) {
+				return b->IsUsable() ? b : nullptr;
 			}
 		}
 		return nullptr;
@@ -161,7 +155,7 @@ public:
 		Blitters::iterator it = GetBlitters().begin();
 		for (; it != GetBlitters().end(); it++) {
 			BlitterFactory *b = (*it).second;
-			p += seprintf(p, last, "%18s: %s\n", b->name, b->GetDescription());
+			p += seprintf(p, last, "%18s: %s\n", b->name.c_str(), b->GetDescription().c_str());
 		}
 		p += seprintf(p, last, "\n");
 
@@ -171,7 +165,7 @@ public:
 	/**
 	 * Get the long, human readable, name for the Blitter-class.
 	 */
-	const char *GetName() const
+	const std::string &GetName() const
 	{
 		return this->name;
 	}
@@ -179,7 +173,7 @@ public:
 	/**
 	 * Get a nice description of the blitter-class.
 	 */
-	const char *GetDescription() const
+	const std::string &GetDescription() const
 	{
 		return this->description;
 	}
@@ -190,7 +184,7 @@ public:
 	virtual Blitter *CreateInstance() = 0;
 };
 
-extern char *_ini_blitter;
+extern std::string _ini_blitter;
 extern bool _blitter_autodetected;
 
 #endif /* BLITTER_FACTORY_HPP */

@@ -1,5 +1,0 @@
-steps:
-- bash: |
-    set -ex
-    choco install zip
-  displayName: 'Install zip'

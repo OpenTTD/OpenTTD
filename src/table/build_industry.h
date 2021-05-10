@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -22,22 +20,16 @@
  */
 #define MK(x, y, m) {{x, y}, m}
 
-/**
- * Terminator of industry tiles layout definition
- */
-#define MKEND {{-0x80, 0}, 0}
-
-static const IndustryTileTable _tile_table_coal_mine_0[] = {
+static const IndustryTileLayout _tile_table_coal_mine_0 {
 	MK(1, 1, 0),
 	MK(1, 2, 2),
 	MK(0, 0, 5),
 	MK(1, 0, 6),
 	MK(2, 0, 3),
 	MK(2, 2, 3),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_coal_mine_1[] = {
+static const IndustryTileLayout _tile_table_coal_mine_1 {
 	MK(1, 1, 0),
 	MK(1, 2, 2),
 	MK(2, 0, 0),
@@ -47,20 +39,18 @@ static const IndustryTileTable _tile_table_coal_mine_1[] = {
 	MK(0, 1, 4),
 	MK(0, 2, 4),
 	MK(2, 2, 4),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_coal_mine_2[] = {
+static const IndustryTileLayout _tile_table_coal_mine_2 {
 	MK(0, 0, 0),
 	MK(0, 1, 2),
 	MK(0, 2, 5),
 	MK(1, 0, 3),
 	MK(1, 1, 3),
 	MK(1, 2, 6),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_coal_mine_3[] = {
+static const IndustryTileLayout _tile_table_coal_mine_3 {
 	MK(0, 1, 0),
 	MK(0, 2, 2),
 	MK(0, 3, 4),
@@ -71,17 +61,16 @@ static const IndustryTileTable _tile_table_coal_mine_3[] = {
 	MK(2, 0, 6),
 	MK(2, 1, 4),
 	MK(2, 2, 3),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_coal_mine[] = {
+static const std::vector<IndustryTileLayout> _tile_table_coal_mine {
 	_tile_table_coal_mine_0,
 	_tile_table_coal_mine_1,
 	_tile_table_coal_mine_2,
 	_tile_table_coal_mine_3,
 };
 
-static const IndustryTileTable _tile_table_power_station_0[] = {
+static const IndustryTileLayout _tile_table_power_station_0 {
 	MK(0, 0, 7),
 	MK(0, 1, 9),
 	MK(1, 0, 7),
@@ -90,10 +79,9 @@ static const IndustryTileTable _tile_table_power_station_0[] = {
 	MK(2, 1, 8),
 	MK(3, 0, 10),
 	MK(3, 1, 10),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_power_station_1[] = {
+static const IndustryTileLayout _tile_table_power_station_1 {
 	MK(0, 1, 7),
 	MK(0, 2, 7),
 	MK(1, 0, 8),
@@ -102,26 +90,24 @@ static const IndustryTileTable _tile_table_power_station_1[] = {
 	MK(2, 0, 9),
 	MK(2, 1, 10),
 	MK(2, 2, 9),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_power_station_2[] = {
+static const IndustryTileLayout _tile_table_power_station_2 {
 	MK(0, 0, 7),
 	MK(0, 1, 7),
 	MK(1, 0, 9),
 	MK(1, 1, 8),
 	MK(2, 0, 10),
 	MK(2, 1, 9),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_power_station[] = {
+static const std::vector<IndustryTileLayout> _tile_table_power_station {
 	_tile_table_power_station_0,
 	_tile_table_power_station_1,
 	_tile_table_power_station_2,
 };
 
-static const IndustryTileTable _tile_table_sawmill_0[] = {
+static const IndustryTileLayout _tile_table_sawmill_0 {
 	MK(1, 0, 14),
 	MK(1, 1, 12),
 	MK(1, 2, 11),
@@ -130,10 +116,9 @@ static const IndustryTileTable _tile_table_sawmill_0[] = {
 	MK(0, 0, 15),
 	MK(0, 1, 15),
 	MK(0, 2, 12),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_sawmill_1[] = {
+static const IndustryTileLayout _tile_table_sawmill_1 {
 	MK(0, 0, 15),
 	MK(0, 1, 11),
 	MK(0, 2, 14),
@@ -142,15 +127,14 @@ static const IndustryTileTable _tile_table_sawmill_1[] = {
 	MK(1, 2, 12),
 	MK(2, 0, 11),
 	MK(2, 1, 13),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_sawmill[] = {
+static const std::vector<IndustryTileLayout> _tile_table_sawmill {
 	_tile_table_sawmill_0,
 	_tile_table_sawmill_1,
 };
 
-static const IndustryTileTable _tile_table_forest_0[] = {
+static const IndustryTileLayout _tile_table_forest_0 {
 	MK(0, 0, 16),
 	MK(0, 1, 16),
 	MK(0, 2, 16),
@@ -169,10 +153,9 @@ static const IndustryTileTable _tile_table_forest_0[] = {
 	MK(3, 3, 16),
 	MK(1, 4, 16),
 	MK(2, 4, 16),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_forest_1[] = {
+static const IndustryTileLayout _tile_table_forest_1 {
 	MK(0, 0, 16),
 	MK(1, 0, 16),
 	MK(2, 0, 16),
@@ -196,15 +179,14 @@ static const IndustryTileTable _tile_table_forest_1[] = {
 	MK(1, 4, 16),
 	MK(2, 4, 16),
 	MK(3, 4, 16),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_forest[] = {
+static const std::vector<IndustryTileLayout> _tile_table_forest {
 	_tile_table_forest_0,
 	_tile_table_forest_1,
 };
 
-static const IndustryTileTable _tile_table_oil_refinery_0[] = {
+static const IndustryTileLayout _tile_table_oil_refinery_0 {
 	MK(0, 0, 20),
 	MK(0, 1, 21),
 	MK(0, 2, 22),
@@ -220,10 +202,9 @@ static const IndustryTileTable _tile_table_oil_refinery_0[] = {
 	MK(3, 3, 18),
 	MK(2, 0, 23),
 	MK(3, 1, 23),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_oil_refinery_1[] = {
+static const IndustryTileLayout _tile_table_oil_refinery_1 {
 	MK(0, 0, 18),
 	MK(0, 1, 18),
 	MK(0, 2, 21),
@@ -239,15 +220,14 @@ static const IndustryTileTable _tile_table_oil_refinery_1[] = {
 	MK(2, 3, 22),
 	MK(1, 4, 23),
 	MK(2, 4, 23),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_oil_refinery[] = {
+static const std::vector<IndustryTileLayout> _tile_table_oil_refinery {
 	_tile_table_oil_refinery_0,
 	_tile_table_oil_refinery_1,
 };
 
-static const IndustryTileTable _tile_table_oil_rig_0[] = {
+static const IndustryTileLayout _tile_table_oil_rig_0 {
 	MK(0, 0, 24),
 	MK(0, 1, 24),
 	MK(0, 2, 25),
@@ -306,14 +286,13 @@ static const IndustryTileTable _tile_table_oil_rig_0[] = {
 	MK(2, 3, 255),
 	MK(2, 2, 255),
 	MK(2, 1, 255),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_oil_rig[] = {
+static const std::vector<IndustryTileLayout> _tile_table_oil_rig {
 	_tile_table_oil_rig_0,
 };
 
-static const IndustryTileTable _tile_table_factory_0[] = {
+static const IndustryTileLayout _tile_table_factory_0 {
 	MK(0, 0, 39),
 	MK(0, 1, 40),
 	MK(1, 0, 41),
@@ -326,10 +305,9 @@ static const IndustryTileTable _tile_table_factory_0[] = {
 	MK(2, 2, 40),
 	MK(3, 1, 41),
 	MK(3, 2, 42),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_factory_1[] = {
+static const IndustryTileLayout _tile_table_factory_1 {
 	MK(0, 0, 39),
 	MK(0, 1, 40),
 	MK(1, 0, 41),
@@ -342,15 +320,14 @@ static const IndustryTileTable _tile_table_factory_1[] = {
 	MK(1, 3, 40),
 	MK(2, 2, 41),
 	MK(2, 3, 42),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_factory[] = {
+static const std::vector<IndustryTileLayout> _tile_table_factory {
 	_tile_table_factory_0,
 	_tile_table_factory_1,
 };
 
-static const IndustryTileTable _tile_table_printing_works_0[] = {
+static const IndustryTileLayout _tile_table_printing_works_0 {
 	MK(0, 0, 43),
 	MK(0, 1, 44),
 	MK(1, 0, 45),
@@ -363,10 +340,9 @@ static const IndustryTileTable _tile_table_printing_works_0[] = {
 	MK(2, 2, 44),
 	MK(3, 1, 45),
 	MK(3, 2, 46),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_printing_works_1[] = {
+static const IndustryTileLayout _tile_table_printing_works_1 {
 	MK(0, 0, 43),
 	MK(0, 1, 44),
 	MK(1, 0, 45),
@@ -379,15 +355,14 @@ static const IndustryTileTable _tile_table_printing_works_1[] = {
 	MK(1, 3, 44),
 	MK(2, 2, 45),
 	MK(2, 3, 46),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_printing_works[] = {
+static const std::vector<IndustryTileLayout> _tile_table_printing_works {
 	_tile_table_printing_works_0,
 	_tile_table_printing_works_1,
 };
 
-static const IndustryTileTable _tile_table_steel_mill_0[] = {
+static const IndustryTileLayout _tile_table_steel_mill_0 {
 	MK(2, 1, 52),
 	MK(2, 2, 53),
 	MK(3, 1, 54),
@@ -400,10 +375,9 @@ static const IndustryTileTable _tile_table_steel_mill_0[] = {
 	MK(1, 2, 57),
 	MK(2, 0, 56),
 	MK(3, 0, 57),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_steel_mill_1[] = {
+static const IndustryTileLayout _tile_table_steel_mill_1 {
 	MK(0, 0, 52),
 	MK(0, 1, 53),
 	MK(1, 0, 54),
@@ -418,15 +392,14 @@ static const IndustryTileTable _tile_table_steel_mill_1[] = {
 	MK(3, 2, 57),
 	MK(1, 3, 56),
 	MK(2, 3, 57),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_steel_mill[] = {
+static const std::vector<IndustryTileLayout> _tile_table_steel_mill {
 	_tile_table_steel_mill_0,
 	_tile_table_steel_mill_1,
 };
 
-static const IndustryTileTable _tile_table_farm_0[] = {
+static const IndustryTileLayout _tile_table_farm_0 {
 	MK(1, 0, 33),
 	MK(1, 1, 34),
 	MK(1, 2, 36),
@@ -436,10 +409,9 @@ static const IndustryTileTable _tile_table_farm_0[] = {
 	MK(2, 0, 35),
 	MK(2, 1, 38),
 	MK(2, 2, 38),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_farm_1[] = {
+static const IndustryTileLayout _tile_table_farm_1 {
 	MK(1, 1, 33),
 	MK(1, 2, 34),
 	MK(0, 0, 35),
@@ -452,10 +424,9 @@ static const IndustryTileTable _tile_table_farm_1[] = {
 	MK(2, 1, 37),
 	MK(2, 2, 38),
 	MK(2, 3, 38),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_farm_2[] = {
+static const IndustryTileLayout _tile_table_farm_2 {
 	MK(2, 0, 33),
 	MK(2, 1, 34),
 	MK(0, 0, 36),
@@ -468,16 +439,15 @@ static const IndustryTileTable _tile_table_farm_2[] = {
 	MK(1, 3, 37),
 	MK(2, 2, 37),
 	MK(2, 3, 35),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_farm[] = {
+static const std::vector<IndustryTileLayout> _tile_table_farm {
 	_tile_table_farm_0,
 	_tile_table_farm_1,
 	_tile_table_farm_2,
 };
 
-static const IndustryTileTable _tile_table_copper_mine_0[] = {
+static const IndustryTileLayout _tile_table_copper_mine_0 {
 	MK(0, 0, 47),
 	MK(0, 1, 49),
 	MK(0, 2, 51),
@@ -486,10 +456,9 @@ static const IndustryTileTable _tile_table_copper_mine_0[] = {
 	MK(1, 2, 50),
 	MK(2, 0, 51),
 	MK(2, 1, 51),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_copper_mine_1[] = {
+static const IndustryTileLayout _tile_table_copper_mine_1 {
 	MK(0, 0, 50),
 	MK(0, 1, 47),
 	MK(0, 2, 49),
@@ -499,48 +468,44 @@ static const IndustryTileTable _tile_table_copper_mine_1[] = {
 	MK(2, 0, 51),
 	MK(2, 1, 47),
 	MK(2, 2, 49),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_copper_mine[] = {
+static const std::vector<IndustryTileLayout> _tile_table_copper_mine {
 	_tile_table_copper_mine_0,
 	_tile_table_copper_mine_1,
 };
 
-static const IndustryTileTable _tile_table_oil_well_0[] = {
+static const IndustryTileLayout _tile_table_oil_well_0 {
 	MK(0, 0, 29),
 	MK(1, 0, 29),
 	MK(2, 0, 29),
 	MK(0, 1, 29),
 	MK(0, 2, 29),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_oil_well_1[] = {
+static const IndustryTileLayout _tile_table_oil_well_1 {
 	MK(0, 0, 29),
 	MK(1, 0, 29),
 	MK(1, 1, 29),
 	MK(2, 2, 29),
 	MK(2, 3, 29),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_oil_well[] = {
+static const std::vector<IndustryTileLayout> _tile_table_oil_well {
 	_tile_table_oil_well_0,
 	_tile_table_oil_well_1,
 };
 
-static const IndustryTileTable _tile_table_bank_0[] = {
+static const IndustryTileLayout _tile_table_bank_0 {
 	MK(0, 0, 58),
 	MK(1, 0, 59),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_bank[] = {
+static const std::vector<IndustryTileLayout> _tile_table_bank {
 	_tile_table_bank_0,
 };
 
-static const IndustryTileTable _tile_table_food_process_0[] = {
+static const IndustryTileLayout _tile_table_food_process_0 {
 	MK(0, 0, 60),
 	MK(1, 0, 60),
 	MK(2, 0, 60),
@@ -553,10 +518,9 @@ static const IndustryTileTable _tile_table_food_process_0[] = {
 	MK(0, 3, 62),
 	MK(1, 3, 62),
 	MK(2, 3, 63),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_food_process_1[] = {
+static const IndustryTileLayout _tile_table_food_process_1 {
 	MK(0, 0, 61),
 	MK(1, 0, 60),
 	MK(2, 0, 61),
@@ -571,15 +535,14 @@ static const IndustryTileTable _tile_table_food_process_1[] = {
 	MK(3, 2, 60),
 	MK(0, 3, 62),
 	MK(1, 3, 62),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_food_process[] = {
+static const std::vector<IndustryTileLayout> _tile_table_food_process {
 	_tile_table_food_process_0,
 	_tile_table_food_process_1,
 };
 
-static const IndustryTileTable _tile_table_paper_mill_0[] = {
+static const IndustryTileLayout _tile_table_paper_mill_0 {
 	MK(0, 0, 64),
 	MK(1, 0, 65),
 	MK(2, 0, 66),
@@ -592,14 +555,13 @@ static const IndustryTileTable _tile_table_paper_mill_0[] = {
 	MK(1, 2, 71),
 	MK(2, 2, 71),
 	MK(3, 2, 70),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_paper_mill[] = {
+static const std::vector<IndustryTileLayout> _tile_table_paper_mill {
 	_tile_table_paper_mill_0,
 };
 
-static const IndustryTileTable _tile_table_gold_mine_0[] = {
+static const IndustryTileLayout _tile_table_gold_mine_0 {
 	MK(0, 0, 72),
 	MK(0, 1, 73),
 	MK(0, 2, 74),
@@ -616,24 +578,22 @@ static const IndustryTileTable _tile_table_gold_mine_0[] = {
 	MK(3, 1, 85),
 	MK(3, 2, 86),
 	MK(3, 3, 87),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_gold_mine[] = {
+static const std::vector<IndustryTileLayout> _tile_table_gold_mine {
 	_tile_table_gold_mine_0,
 };
 
-static const IndustryTileTable _tile_table_bank2_0[] = {
+static const IndustryTileLayout _tile_table_bank2_0 {
 	MK(0, 0, 89),
 	MK(1, 0, 90),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_bank2[] = {
+static const std::vector<IndustryTileLayout> _tile_table_bank2 {
 	_tile_table_bank2_0,
 };
 
-static const IndustryTileTable _tile_table_diamond_mine_0[] = {
+static const IndustryTileLayout _tile_table_diamond_mine_0 {
 	MK(0, 0, 91),
 	MK(0, 1, 92),
 	MK(0, 2, 93),
@@ -643,14 +603,13 @@ static const IndustryTileTable _tile_table_diamond_mine_0[] = {
 	MK(2, 0, 97),
 	MK(2, 1, 98),
 	MK(2, 2, 99),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_diamond_mine[] = {
+static const std::vector<IndustryTileLayout> _tile_table_diamond_mine {
 	_tile_table_diamond_mine_0,
 };
 
-static const IndustryTileTable _tile_table_iron_mine_0[] = {
+static const IndustryTileLayout _tile_table_iron_mine_0 {
 	MK(0, 0, 100),
 	MK(0, 1, 101),
 	MK(0, 2, 102),
@@ -667,14 +626,13 @@ static const IndustryTileTable _tile_table_iron_mine_0[] = {
 	MK(3, 1, 113),
 	MK(3, 2, 114),
 	MK(3, 3, 115),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_iron_mine[] = {
+static const std::vector<IndustryTileLayout> _tile_table_iron_mine {
 	_tile_table_iron_mine_0,
 };
 
-static const IndustryTileTable _tile_table_fruit_plantation_0[] = {
+static const IndustryTileLayout _tile_table_fruit_plantation_0 {
 	MK(0, 0, 116),
 	MK(0, 1, 116),
 	MK(0, 2, 116),
@@ -695,14 +653,13 @@ static const IndustryTileTable _tile_table_fruit_plantation_0[] = {
 	MK(4, 1, 116),
 	MK(4, 2, 116),
 	MK(4, 3, 116),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_fruit_plantation[] = {
+static const std::vector<IndustryTileLayout> _tile_table_fruit_plantation {
 	_tile_table_fruit_plantation_0,
 };
 
-static const IndustryTileTable _tile_table_rubber_plantation_0[] = {
+static const IndustryTileLayout _tile_table_rubber_plantation_0 {
 	MK(0, 0, 117),
 	MK(0, 1, 117),
 	MK(0, 2, 117),
@@ -723,35 +680,32 @@ static const IndustryTileTable _tile_table_rubber_plantation_0[] = {
 	MK(4, 1, 117),
 	MK(4, 2, 117),
 	MK(4, 3, 117),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_rubber_plantation[] = {
+static const std::vector<IndustryTileLayout> _tile_table_rubber_plantation {
 	_tile_table_rubber_plantation_0,
 };
 
-static const IndustryTileTable _tile_table_water_supply_0[] = {
+static const IndustryTileLayout _tile_table_water_supply_0 {
 	MK(0, 0, 118),
 	MK(0, 1, 119),
 	MK(1, 0, 118),
 	MK(1, 1, 119),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_water_supply[] = {
+static const std::vector<IndustryTileLayout> _tile_table_water_supply {
 	_tile_table_water_supply_0,
 };
 
-static const IndustryTileTable _tile_table_water_tower_0[] = {
+static const IndustryTileLayout _tile_table_water_tower_0 {
 	MK(0, 0, 120),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_water_tower[] = {
+static const std::vector<IndustryTileLayout> _tile_table_water_tower {
 	_tile_table_water_tower_0,
 };
 
-static const IndustryTileTable _tile_table_factory2_0[] = {
+static const IndustryTileLayout _tile_table_factory2_0 {
 	MK(0, 0, 121),
 	MK(0, 1, 122),
 	MK(1, 0, 123),
@@ -760,10 +714,9 @@ static const IndustryTileTable _tile_table_factory2_0[] = {
 	MK(0, 3, 122),
 	MK(1, 2, 123),
 	MK(1, 3, 124),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_factory2_1[] = {
+static const IndustryTileLayout _tile_table_factory2_1 {
 	MK(0, 0, 121),
 	MK(0, 1, 122),
 	MK(1, 0, 123),
@@ -772,15 +725,14 @@ static const IndustryTileTable _tile_table_factory2_1[] = {
 	MK(2, 1, 122),
 	MK(3, 0, 123),
 	MK(3, 1, 124),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_factory2[] = {
+static const std::vector<IndustryTileLayout> _tile_table_factory2 {
 	_tile_table_factory2_0,
 	_tile_table_factory2_1,
 };
 
-static const IndustryTileTable _tile_table_farm2_0[] = {
+static const IndustryTileLayout _tile_table_farm2_0 {
 	MK(1, 0, 33),
 	MK(1, 1, 34),
 	MK(1, 2, 36),
@@ -790,10 +742,9 @@ static const IndustryTileTable _tile_table_farm2_0[] = {
 	MK(2, 0, 35),
 	MK(2, 1, 38),
 	MK(2, 2, 38),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_farm2_1[] = {
+static const IndustryTileLayout _tile_table_farm2_1 {
 	MK(1, 1, 33),
 	MK(1, 2, 34),
 	MK(0, 0, 35),
@@ -806,10 +757,9 @@ static const IndustryTileTable _tile_table_farm2_1[] = {
 	MK(2, 1, 37),
 	MK(2, 2, 38),
 	MK(2, 3, 38),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_farm2_2[] = {
+static const IndustryTileLayout _tile_table_farm2_2 {
 	MK(2, 0, 33),
 	MK(2, 1, 34),
 	MK(0, 0, 36),
@@ -822,28 +772,26 @@ static const IndustryTileTable _tile_table_farm2_2[] = {
 	MK(1, 3, 37),
 	MK(2, 2, 37),
 	MK(2, 3, 35),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_farm2[] = {
+static const std::vector<IndustryTileLayout> _tile_table_farm2 {
 	_tile_table_farm2_0,
 	_tile_table_farm2_1,
 	_tile_table_farm2_2,
 };
 
-static const IndustryTileTable _tile_table_lumber_mill_0[] = {
+static const IndustryTileLayout _tile_table_lumber_mill_0 {
 	MK(0, 0, 125),
 	MK(0, 1, 126),
 	MK(1, 0, 127),
 	MK(1, 1, 128),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_lumber_mill[] = {
+static const std::vector<IndustryTileLayout> _tile_table_lumber_mill {
 	_tile_table_lumber_mill_0,
 };
 
-static const IndustryTileTable _tile_table_cotton_candy_0[] = {
+static const IndustryTileLayout _tile_table_cotton_candy_0 {
 	MK(0, 0, 129),
 	MK(0, 1, 129),
 	MK(0, 2, 129),
@@ -862,10 +810,9 @@ static const IndustryTileTable _tile_table_cotton_candy_0[] = {
 	MK(3, 3, 129),
 	MK(1, 4, 129),
 	MK(2, 4, 129),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_cotton_candy_1[] = {
+static const IndustryTileLayout _tile_table_cotton_candy_1 {
 	MK(0, 0, 129),
 	MK(1, 0, 129),
 	MK(2, 0, 129),
@@ -889,15 +836,14 @@ static const IndustryTileTable _tile_table_cotton_candy_1[] = {
 	MK(1, 4, 129),
 	MK(2, 4, 129),
 	MK(3, 4, 129),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_cotton_candy[] = {
+static const std::vector<IndustryTileLayout> _tile_table_cotton_candy {
 	_tile_table_cotton_candy_0,
 	_tile_table_cotton_candy_1,
 };
 
-static const IndustryTileTable _tile_table_candy_factory_0[] = {
+static const IndustryTileLayout _tile_table_candy_factory_0 {
 	MK(0, 0, 131),
 	MK(0, 1, 132),
 	MK(1, 0, 133),
@@ -910,10 +856,9 @@ static const IndustryTileTable _tile_table_candy_factory_0[] = {
 	MK(2, 2, 132),
 	MK(3, 1, 133),
 	MK(3, 2, 134),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_candy_factory_1[] = {
+static const IndustryTileLayout _tile_table_candy_factory_1 {
 	MK(0, 0, 131),
 	MK(0, 1, 132),
 	MK(1, 0, 133),
@@ -926,15 +871,14 @@ static const IndustryTileTable _tile_table_candy_factory_1[] = {
 	MK(1, 3, 132),
 	MK(2, 2, 133),
 	MK(2, 3, 134),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_candy_factory[] = {
+static const std::vector<IndustryTileLayout> _tile_table_candy_factory {
 	_tile_table_candy_factory_0,
 	_tile_table_candy_factory_1,
 };
 
-static const IndustryTileTable _tile_table_battery_farm_0[] = {
+static const IndustryTileLayout _tile_table_battery_farm_0 {
 	MK(0, 0, 135),
 	MK(0, 1, 135),
 	MK(0, 2, 135),
@@ -955,14 +899,13 @@ static const IndustryTileTable _tile_table_battery_farm_0[] = {
 	MK(4, 1, 135),
 	MK(4, 2, 135),
 	MK(4, 3, 135),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_battery_farm[] = {
+static const std::vector<IndustryTileLayout> _tile_table_battery_farm {
 	_tile_table_battery_farm_0,
 };
 
-static const IndustryTileTable _tile_table_cola_wells_0[] = {
+static const IndustryTileLayout _tile_table_cola_wells_0 {
 	MK(0, 0, 137),
 	MK(0, 1, 137),
 	MK(0, 2, 137),
@@ -971,10 +914,9 @@ static const IndustryTileTable _tile_table_cola_wells_0[] = {
 	MK(1, 2, 137),
 	MK(2, 1, 137),
 	MK(2, 2, 137),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_cola_wells_1[] = {
+static const IndustryTileLayout _tile_table_cola_wells_1 {
 	MK(0, 1, 137),
 	MK(0, 2, 137),
 	MK(0, 3, 137),
@@ -982,27 +924,25 @@ static const IndustryTileTable _tile_table_cola_wells_1[] = {
 	MK(1, 1, 137),
 	MK(1, 2, 137),
 	MK(2, 1, 137),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_cola_wells[] = {
+static const std::vector<IndustryTileLayout> _tile_table_cola_wells {
 	_tile_table_cola_wells_0,
 	_tile_table_cola_wells_1,
 };
 
-static const IndustryTileTable _tile_table_toy_shop_0[] = {
+static const IndustryTileLayout _tile_table_toy_shop_0 {
 	MK(0, 0, 138),
 	MK(0, 1, 139),
 	MK(1, 0, 140),
 	MK(1, 1, 141),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_toy_shop[] = {
+static const std::vector<IndustryTileLayout> _tile_table_toy_shop {
 	_tile_table_toy_shop_0,
 };
 
-static const IndustryTileTable _tile_table_toy_factory_0[] = {
+static const IndustryTileLayout _tile_table_toy_factory_0 {
 	MK(0, 0, 147),
 	MK(0, 1, 142),
 	MK(1, 0, 147),
@@ -1011,45 +951,41 @@ static const IndustryTileTable _tile_table_toy_factory_0[] = {
 	MK(2, 1, 144),
 	MK(3, 0, 146),
 	MK(3, 1, 145),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_toy_factory[] = {
+static const std::vector<IndustryTileLayout> _tile_table_toy_factory {
 	_tile_table_toy_factory_0,
 };
 
-static const IndustryTileTable _tile_table_plastic_fountain_0[] = {
+static const IndustryTileLayout _tile_table_plastic_fountain_0 {
 	MK(0, 0, 148),
 	MK(0, 1, 151),
 	MK(0, 2, 154),
-	MKEND
 };
 
-static const IndustryTileTable _tile_table_plastic_fountain_1[] = {
+static const IndustryTileLayout _tile_table_plastic_fountain_1 {
 	MK(0, 0, 148),
 	MK(1, 0, 151),
 	MK(2, 0, 154),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_plastic_fountain[] = {
+static const std::vector<IndustryTileLayout> _tile_table_plastic_fountain {
 	_tile_table_plastic_fountain_0,
 	_tile_table_plastic_fountain_1,
 };
 
-static const IndustryTileTable _tile_table_fizzy_drink_0[] = {
+static const IndustryTileLayout _tile_table_fizzy_drink_0 {
 	MK(0, 0, 156),
 	MK(0, 1, 157),
 	MK(1, 0, 158),
 	MK(1, 1, 159),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_fizzy_drink[] = {
+static const std::vector<IndustryTileLayout> _tile_table_fizzy_drink {
 	_tile_table_fizzy_drink_0,
 };
 
-static const IndustryTileTable _tile_table_bubble_generator_0[] = {
+static const IndustryTileLayout _tile_table_bubble_generator_0 {
 	MK(0, 0, 163),
 	MK(0, 1, 160),
 	MK(1, 0, 163),
@@ -1062,25 +998,23 @@ static const IndustryTileTable _tile_table_bubble_generator_0[] = {
 	MK(1, 3, 161),
 	MK(2, 2, 163),
 	MK(2, 3, 162),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_bubble_generator[] = {
+static const std::vector<IndustryTileLayout> _tile_table_bubble_generator {
 	_tile_table_bubble_generator_0,
 };
 
-static const IndustryTileTable _tile_table_toffee_quarry_0[] = {
+static const IndustryTileLayout _tile_table_toffee_quarry_0 {
 	MK(0, 0, 164),
 	MK(1, 0, 165),
 	MK(2, 0, 166),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_toffee_quarry[] = {
+static const std::vector<IndustryTileLayout> _tile_table_toffee_quarry {
 	_tile_table_toffee_quarry_0,
 };
 
-static const IndustryTileTable _tile_table_sugar_mine_0[] = {
+static const IndustryTileLayout _tile_table_sugar_mine_0 {
 	MK(0, 0, 167),
 	MK(0, 1, 168),
 	MK(1, 0, 169),
@@ -1089,24 +1023,22 @@ static const IndustryTileTable _tile_table_sugar_mine_0[] = {
 	MK(2, 1, 172),
 	MK(3, 0, 173),
 	MK(3, 1, 174),
-	MKEND
 };
 
-static const IndustryTileTable * const _tile_table_sugar_mine[] = {
+static const std::vector<IndustryTileLayout> _tile_table_sugar_mine {
 	_tile_table_sugar_mine_0,
 };
 
 #undef MK
-#undef MKEND
 
 /** Array with saw sound, for sawmill */
 static const uint8 _sawmill_sounds[] = { SND_28_SAWMILL };
 
 /** Array with whistle sound, for factory */
-static const uint8 _factory_sounds[] = { SND_03_FACTORY_WHISTLE };
+static const uint8 _factory_sounds[] = { SND_03_FACTORY };
 
 /** Array with 3 animal sounds, for farms */
-static const uint8 _farm_sounds[] = { SND_24_SHEEP, SND_25_COW, SND_26_HORSE };
+static const uint8 _farm_sounds[] = { SND_24_FARM_1, SND_25_FARM_2, SND_26_FARM_3 };
 
 /** Array with... hem... a sound of toyland */
 static const uint8 _plastic_mine_sounds[] = { SND_33_PLASTIC_MINE };
@@ -1195,7 +1127,7 @@ enum IndustryTypes {
 
 #define MI(tbl, sndc, snd, d, pc, ai1, ai2, ai3, ai4, ag1, ag2, ag3, ag4, col, \
 			c1, c2, c3, proc, p1, r1, p2, r2, m, a1, im1, a2, im2, a3, im3, pr, clim, bev, in, intx, s1, s2, s3) \
-		{tbl, lengthof(tbl), d, 0, pc, {c1, c2, c3}, proc, \
+		{tbl, d, 0, pc, {c1, c2, c3}, proc, \
 		{p1, p2, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID}, \
 		{r1, r2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, m, \
 		{a1, a2, a3, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID, CT_INVALID}, \

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -106,7 +104,7 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 
 	/* Check range of destination height */
 	if (height < 0) return_cmd_error(STR_ERROR_ALREADY_AT_SEA_LEVEL);
-	if (height > _settings_game.construction.max_heightlevel) return_cmd_error(STR_ERROR_TOO_HIGH);
+	if (height > _settings_game.construction.map_height_limit) return_cmd_error(STR_ERROR_TOO_HIGH);
 
 	/*
 	 * Check if the terraforming has any effect.
@@ -242,8 +240,8 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			int z_E = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
 
 			/* Find min and max height of tile */
-			int z_min = min(min(z_N, z_W), min(z_S, z_E));
-			int z_max = max(max(z_N, z_W), max(z_S, z_E));
+			int z_min = std::min({z_N, z_W, z_S, z_E});
+			int z_max = std::max({z_N, z_W, z_S, z_E});
 
 			/* Compute tile slope */
 			Slope tileh = (z_max > z_min + 1 ? SLOPE_STEEP : SLOPE_FLAT);
@@ -363,7 +361,7 @@ CommandCost CmdLevelLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 	}
 
 	/* Check range of destination height */
-	if (h > _settings_game.construction.max_heightlevel) return_cmd_error((oldh == 0) ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH);
+	if (h > _settings_game.construction.map_height_limit) return_cmd_error((oldh == 0) ? STR_ERROR_ALREADY_AT_SEA_LEVEL : STR_ERROR_TOO_HIGH);
 
 	Money money = GetAvailableMoneyForCommand();
 	CommandCost cost(EXPENSES_CONSTRUCTION);

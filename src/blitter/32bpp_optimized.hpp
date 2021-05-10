@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -28,7 +26,11 @@ public:
 
 	const char *GetName() override { return "32bpp-optimized"; }
 
-	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
+	template <BlitterMode mode, bool Tpal_to_rgb = false> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
+
+protected:
+	template <bool Tpal_to_rgb> void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
+	template <bool Tpal_to_rgb> Sprite *EncodeInternal(const SpriteLoader::Sprite *sprite, AllocatorProc *allocator);
 };
 
 /** Factory for the optimised 32 bpp blitter (without palette animation). */

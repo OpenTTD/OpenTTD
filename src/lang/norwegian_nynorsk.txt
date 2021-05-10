@@ -12,8 +12,6 @@
 ##case small
 
 
-# $Id$
-
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -52,9 +50,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Kveite
 STR_CARGO_PLURAL_RUBBER                                         :Gummi
 STR_CARGO_PLURAL_SUGAR                                          :Sukker
 STR_CARGO_PLURAL_TOYS                                           :Leiketøy
-STR_CARGO_PLURAL_CANDY                                          :Godteri
+STR_CARGO_PLURAL_SWEETS                                         :Godteri
 STR_CARGO_PLURAL_COLA                                           :Cola
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Sukkerspinn
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Sukkerspinn
 STR_CARGO_PLURAL_BUBBLES                                        :Bobler
 STR_CARGO_PLURAL_TOFFEE                                         :Karamell
 STR_CARGO_PLURAL_BATTERIES                                      :Batteri
@@ -86,9 +84,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Kveite
 STR_CARGO_SINGULAR_RUBBER                                       :Gummi
 STR_CARGO_SINGULAR_SUGAR                                        :Sukker
 STR_CARGO_SINGULAR_TOY                                          :Leiketøy
-STR_CARGO_SINGULAR_CANDY                                        :Godteri
+STR_CARGO_SINGULAR_SWEETS                                       :Godteri
 STR_CARGO_SINGULAR_COLA                                         :Cola
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Sukkerspinn
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Sukkerspinn
 STR_CARGO_SINGULAR_BUBBLE                                       :Boble
 STR_CARGO_SINGULAR_TOFFEE                                       :Karamell
 STR_CARGO_SINGULAR_BATTERY                                      :Batteri
@@ -235,8 +233,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Vel sort
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Vel sorteringskriterium
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Vel filtreringskriterium
 STR_BUTTON_SORT_BY                                              :{BLACK}Sorter etter
-STR_BUTTON_LOCATION                                             :{BLACK}Stad
-STR_BUTTON_RENAME                                               :{BLACK}Gje nytt namn
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Lukk vindauge
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}Tittel på vindauget - dra for å flytte vindauget
@@ -313,6 +309,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Varekapasitet
 STR_SORT_BY_RANGE                                               :Rekkevidde
 STR_SORT_BY_POPULATION                                          :Innbyggjartal
 STR_SORT_BY_RATING                                              :Vurdering
+
+# Group by options for vehicle list
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Pause
@@ -399,7 +397,7 @@ STR_FILE_MENU_EXIT                                              :Avslutt OpenTTD
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Verdskart
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Ekstra tilleggsvindauge
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ekstra tilleggsvindauge
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :Symbolforklaring for vareflyt
 STR_MAP_MENU_SIGN_LIST                                          :Skiltliste
 
@@ -474,9 +472,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Syne/gøym konsoll
 STR_ABOUT_MENU_AI_DEBUG                                         :AI- / Spelscriptfeilsøking
 STR_ABOUT_MENU_SCREENSHOT                                       :Skjermdump
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Fullt forstørra skjermbilete
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Normalt skjermbilete
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Stort skjermfoto
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Om 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Spriteforskyver
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :Syne/gøym markeringsramme
@@ -566,8 +561,8 @@ STR_MONTH_DEC                                                   :desember
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Nøkkel
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Syne nøkkel til grafer
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
@@ -646,9 +641,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Eigendefinert 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Musikkvolum
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Lydeffektvolum
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAKS.
-STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
@@ -860,6 +852,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Ny {STRING}type er tilgjengeleg!  -  {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} godtek ikkje lenger {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} godtek ikkje lenger {STRING} eller {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} godtek no {STRING}
@@ -878,7 +871,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Bystyret i {TOWN} signerer kontrakt med {STRING} om eitt års eksklusive transportrettar!!
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Tilleggsvindauge {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Tilleggsvindauge {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopier til tilleggsvindauge
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kopier stad i hovedvisinga til dette tilleggsvindauga
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kopier frå tilleggsvindauge
@@ -926,8 +919,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgiske Lari 
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranske Rial (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Veg-køyrety
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Vel køyreretning
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Venstrekøyring
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Høgrekøyring
 
@@ -979,12 +970,16 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Skjermop
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Vel skjermoppløysinga som skal nyttast
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :anna
 
+
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Grensesnittstorleik
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Vel storleik å bruke på grensesnittet
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normal
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Dobbel størrelse
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Firedobbel størrelse
+
+
 
 
 
@@ -1163,8 +1158,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Skru av/på kat
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Haldninga til bystyra når det gjeld ombygging: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Vel kor mykje vurderinga frå bystyra og høvet for meir bygging i området vert påverka av støy og øydelegging frå eit firma.
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Maksimal høgd på kart: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Sett maksimal høgd for fjell på kartet
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Du kan ikkje sette maksimal høgd på kartet til denne verdien. Minst eit fjell på kartet er høgare
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Tillet landskapsendringar under bygningar, spor o.s.b.: {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Tillet å endre landskapet under bygningar, vegar og jernbanespor, utan å måtte fjerne dei fyrst.
@@ -1459,7 +1452,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Fullt
 
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Avisa vert trykt i fargar i: {STRING}
 STR_CONFIG_SETTING_STARTING_YEAR                                :Start spelet i år {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Jamn økonomi (fleire, mindre endringar): {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Tillet kjøp av aksjar i andre firma: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Ved trekking, plasser signal kvar: {STRING}
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} ruter{P 0 "" s}
@@ -1495,9 +1487,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :tillete
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :tillete, eigendefinert oppsett av by
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Plassering av tre i spelet: {STRING}
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ingen {RED}(øydelegg sagbruk)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :kun i regnskogen
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :over alt
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Plassering av hovudverktøylinje: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Plassering av verktøylinja øvst på skjermen
@@ -1641,6 +1630,8 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... utel
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Ikkje meir minne
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Fordeling {BYTES} av spritecache feila. Spritecache vart redusert til {BYTES}. Dette vil redusera ytelsen til OpenTTD. For å redusera minnebehova kan du prøva å deaktivera 32bpp grafikk og/eller zoom-nivåer
 
+# Video initalization errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1683,17 +1674,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}Denne ny
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Avslutt
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Er du sikker på at du vil avslutte OpenTTD og gå attende til {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Ja
 STR_QUIT_NO                                                     :{BLACK}Nei
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Avslutt spel
@@ -1703,7 +1685,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Er du s
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Juks
 STR_CHEATS_TOOLTIP                                              :{BLACK}Avkrysningsbokser fortel at du har nytta denne juksekoden tidlegare
-STR_CHEATS_WARNING                                              :{BLACK}Åtvaring! Du er i ferd med å forråda motspelarane. Vær klar over at denne skammelige handlinga vil bli hugsa i all framtid.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Auk pengebehaldninga med {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Speler som firma: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industriar, uflyttbare ting): {ORANGE}{STRING}
@@ -1812,12 +1793,9 @@ STR_FACE_TIE                                                    :Slips:
 STR_FACE_EARRING                                                :Øyrering:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Byt slips eller øyrering
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Fleirspelar
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Kunngjort
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Vel mellom spel på internett (kunngjort) og spel på lokalt nett (ikkje kunngjort)
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Nei
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Ja
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Spelarnamn:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Dette er namnet andre spelarar vil identifisere deg med
 
@@ -1858,8 +1836,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Bli med 
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Oppdater tenar
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Oppdater tenarinformasjon
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Finn tenar
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Søk på nettverket etter ein tenar
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Legg til tenar
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Legg til ein tenar i lista over tenarar som alltid vil verte sjekka for aktive spel.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Start tenar
@@ -1876,8 +1852,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Spelnamn
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Set passord
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Beskytt spelet ditt med passord så ikkje kven som helst kan verte med på det
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Nei
-STR_NETWORK_START_SERVER_ADVERTISED                             :Ja
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klient{P "" er}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maks. antal tilletne klientar:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Vel maks. antal klientar. Alle plassane treng ikkje å verte tekne
@@ -1891,46 +1865,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Språk s
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Andre spelarar skal vete kva språk ein talar på denne tenaren
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Gje eit namn til nettverksspelet
-
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Kva som helst
-STR_NETWORK_LANG_ENGLISH                                        :Engelsk
-STR_NETWORK_LANG_GERMAN                                         :Tysk
-STR_NETWORK_LANG_FRENCH                                         :Fransk
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasiliansk
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgarsk
-STR_NETWORK_LANG_CHINESE                                        :Kinesisk
-STR_NETWORK_LANG_CZECH                                          :Tsjekkisk
-STR_NETWORK_LANG_DANISH                                         :Dansk
-STR_NETWORK_LANG_DUTCH                                          :Nederlandsk
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finsk
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungarsk
-STR_NETWORK_LANG_ICELANDIC                                      :Islandsk
-STR_NETWORK_LANG_ITALIAN                                        :Italiensk
-STR_NETWORK_LANG_JAPANESE                                       :Japansk
-STR_NETWORK_LANG_KOREAN                                         :Koreansk
-STR_NETWORK_LANG_LITHUANIAN                                     :Litauisk
-STR_NETWORK_LANG_NORWEGIAN                                      :Norsk
-STR_NETWORK_LANG_POLISH                                         :Polsk
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugisisk
-STR_NETWORK_LANG_ROMANIAN                                       :Rumensk
-STR_NETWORK_LANG_RUSSIAN                                        :Russisk
-STR_NETWORK_LANG_SLOVAK                                         :Slovakisk
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovensk
-STR_NETWORK_LANG_SPANISH                                        :Spansk
-STR_NETWORK_LANG_SWEDISH                                        :Svensk
-STR_NETWORK_LANG_TURKISH                                        :Tyrkisk
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
-STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
-STR_NETWORK_LANG_CROATIAN                                       :Kroatisk
-STR_NETWORK_LANG_CATALAN                                        :Katalansk
-STR_NETWORK_LANG_ESTONIAN                                       :Estisk
-STR_NETWORK_LANG_GALICIAN                                       :Gælisk
-STR_NETWORK_LANG_GREEK                                          :Gresk
-STR_NETWORK_LANG_LATVIAN                                        :Latvisk
-############ End of leave-in-this-order
 
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Fleirspelarspel-lobby
@@ -1982,22 +1916,14 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet 
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Liste over klientar
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Vær tilskodar
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Nytt firma
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Kast ut
-STR_NETWORK_CLIENTLIST_BAN                                      :Svartelist
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Gje pengar
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Snakk til alle
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Snakk til firma
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privat melding
+
+
 
 STR_NETWORK_SERVER                                              :Tenar
 STR_NETWORK_CLIENT                                              :Klient
 STR_NETWORK_SPECTATORS                                          :Tilskodarar
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv inn kor mykje pengar du ønskar å gje
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ikkje lagre passordet
@@ -2098,8 +2024,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} ha
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har starta eit nytt firma (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} har forlatt spelet ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} har endra namnet sitt til {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} gav firmaet ditt {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Du gav {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Tenaren avslutta spelet
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Tenaren startar om att...{}Vær venleg og vent...
 
@@ -2176,6 +2100,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Ja, last ned grafikken.
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Nei, avslutt OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Gjennomsynsval
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Byt gjennomsyn for stasjonssktilt. Ctrl+klikk for å låsa
@@ -2215,6 +2140,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Bygg ei
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Spleis kontrollpunkt
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Bygg eit seperat kontrollpunkt
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Bygg jernbane
@@ -2399,7 +2326,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Storleik
 STR_OBJECT_CLASS_LTHS                                           :Fyrtårn
 STR_OBJECT_CLASS_TRNS                                           :Radiosendarar
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Tre
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Vel typen tre som skal plantast. Om ruta allereie har eit tre, vil dette leggje til fleire tre av ulike typar uavhengig av den valde typen
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Tre av tilfeldig type
@@ -2600,7 +2527,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Feltet eigast a
 STR_ABOUT_OPENTTD                                               :{WHITE}Om OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Opphaveleg opphavsbeskytta av {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheiter reservert
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD versjon {REV}. Oversett til nynorsk av Thor Morten Skogrand med fleire.
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-2019 OpenTTD-teamet
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{STRING} OpenTTD-teamet
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -2642,14 +2569,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Antal byar:
 STR_MAPGEN_DATE                                                 :{BLACK}Dato:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Antal industriar:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Maksimal høgd på kart:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Auk maksimal høgd på fjell på kartet med ein
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Minsk maksimal høgd på fjell på kartet med ein
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Høgd på snøgrensa:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Flytt høgda på snøgrensa eitt hakk opp
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Flytt høgda på snøgrensa eitt hakk ned
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landskapsgenerator:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Trealgoritme:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrengtype
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Havflate:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Elver:
@@ -2674,8 +2594,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Høgdeka
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storleik:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Endre maksimal høgd på kartet
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Byt høgda på snøgrensa
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Byt startår
 
 # SE Map generation
@@ -2948,13 +2866,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}Bestikk
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Mål
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Globale mål
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Globale mål:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Ingen -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Ikkje relevant -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Målet åt firmaet:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Klikk på mål for å gå til industri/by/rute. Ctrl+klikk åpner eit nytt tilleggsvindauge over industrien/byen/ruta sin lokasjon.
 
 # Goal question window
@@ -3185,8 +3100,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Industriar
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Ingen -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}% transportert)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transportert)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Industrinamn - Klikk på namnet for å syne industrien i hovedvisninga. CTRL+klikk syner industrien i eit tilleggsvindauge
 
@@ -3481,10 +3394,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Lat den 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Syne toget sin gjeldande posisjon. CTRL+klikk vil følgja toget i hovudvindauget
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Syne køyretøyet sin gjeldande posisjon. CTRL+klikk vil følgja køyretøyet i hovudvindauget
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Syne skipet sin gjeldande posisjon. CTRL+klikk vil følgja skipet i hovudvindauget
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Syne luftfartøyet sin gjeldande posisjon. CTRL+klikk vil følgja luftfartøyet i hovudvindauget
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Send toget til togstallen. CTRL+klikk for å berre utføre vedlikehald
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Send køyretøyet til garasjen. CTRL+klikk for å berre sende til vedlikehald
@@ -3516,10 +3425,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Syne kø
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Syne skipsdetaljar
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Syne detaljar om luftfartøy
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Gjeldande togstatus - klikk her for å stoppe/starte tog. CTRL+klikk ruller til destinasjonen
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Gjeldande køyretøystatus - klikk her for å stoppa/starta køyretøy. CTRL+klikk ruller til destinasjonen
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Gjeldende skipsstatus - klikk her for å stoppe/starte skip. CTRL+klikk ruller til destinasjonen
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Gjeldande luftfartøystatus - klikk her for å stoppe/starte luftfartøy. CTRL+klikk ruller til destinasjonen
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lastar / Lossar
@@ -3918,6 +3824,7 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}Godta
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Merk utheva AI
 STR_AI_LIST_CANCEL                                              :{BLACK}Avbryt
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Ikkje endre AI
+
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameter

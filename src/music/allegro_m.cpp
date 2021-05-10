@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -28,7 +26,7 @@ static MIDI *_midi = nullptr;
  */
 extern int _allegro_instance_count;
 
-const char *MusicDriver_Allegro::Start(const char * const *param)
+const char *MusicDriver_Allegro::Start(const StringList &param)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		DEBUG(driver, 0, "allegro: install_allegro failed '%s'", allegro_error);

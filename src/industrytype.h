@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -13,6 +11,7 @@
 #define INDUSTRYTYPE_H
 
 #include <array>
+#include <vector>
 #include "map_type.h"
 #include "slope_type.h"
 #include "industry_type.h"
@@ -23,7 +22,6 @@
 
 enum IndustryCleanupType {
 	CLEAN_RANDOMSOUNDS,    ///< Free the dynamically allocated sounds table
-	CLEAN_TILELAYOUT,      ///< Free the dynamically allocated tile layout structure
 };
 
 /** Available types of industry lifetimes. */
@@ -82,6 +80,7 @@ enum IndustryBehaviour {
 	INDUSTRYBEH_NOBUILT_MAPCREATION   = 1 << 16, ///< Do not force one instance of this type to appear on map generation
 	INDUSTRYBEH_CANCLOSE_LASTINSTANCE = 1 << 17, ///< Allow closing down the last instance of this type
 	INDUSTRYBEH_CARGOTYPES_UNLIMITED  = 1 << 18, ///< Allow produced/accepted cargoes callbacks to supply more than 2 and 3 types
+	INDUSTRYBEH_NO_PAX_PROD_CLAMP     = 1 << 19, ///< Do not clamp production of passengers. (smooth economy only)
 };
 DECLARE_ENUM_AS_BIT_SET(IndustryBehaviour)
 
@@ -93,17 +92,20 @@ enum IndustryTileSpecialFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(IndustryTileSpecialFlags)
 
-struct IndustryTileTable {
+/** Definition of one tile in an industry tile layout */
+struct IndustryTileLayoutTile {
 	TileIndexDiffC ti;
 	IndustryGfx gfx;
 };
+
+/** A complete tile layout for an industry is a list of tiles */
+using IndustryTileLayout = std::vector<IndustryTileLayoutTile>;
 
 /**
  * Defines the data structure for constructing industry.
  */
 struct IndustrySpec {
-	const IndustryTileTable * const *table;     ///< List of the tiles composing the industry
-	byte num_table;                             ///< Number of elements in the table
+	std::vector<IndustryTileLayout> layouts;    ///< List of possible tile layouts for the industry
 	uint8 cost_multiplier;                      ///< Base construction cost multiplier.
 	uint32 removal_cost_multiplier;             ///< Base removal cost multiplier.
 	uint32 prospecting_chance;                  ///< Chance prospecting succeeds
@@ -142,7 +144,9 @@ struct IndustrySpec {
 	bool IsProcessingIndustry() const;
 	Money GetConstructionCost() const;
 	Money GetRemovalCost() const;
-	bool UsesSmoothEconomy() const;
+	bool UsesOriginalEconomy() const;
+
+	~IndustrySpec();
 };
 
 /**

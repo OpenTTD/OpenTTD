@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -50,8 +48,8 @@ enum CargoCompanyBits {
 	CCB_COMPANY_LENGTH         = 4,  ///< Number of bits of the company field.
 };
 
-assert_compile(NUM_CARGO     <= (1 << CCB_CARGO_TYPE_LENGTH));
-assert_compile(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
+static_assert(NUM_CARGO     <= (1 << CCB_CARGO_TYPE_LENGTH));
+static_assert(MAX_COMPANIES <= (1 << CCB_COMPANY_LENGTH));
 
 
 /**

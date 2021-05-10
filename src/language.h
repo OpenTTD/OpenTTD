@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -60,6 +58,7 @@ struct LanguagePackHeader {
 	char cases[MAX_NUM_CASES][CASE_GENDER_LEN];     ///< the cases used by this translation
 
 	bool IsValid() const;
+	bool IsReasonablyFinished() const;
 
 	/**
 	 * Get the index for the given gender.
@@ -88,7 +87,7 @@ struct LanguagePackHeader {
 	}
 };
 /** Make sure the size is right. */
-assert_compile(sizeof(LanguagePackHeader) % 4 == 0);
+static_assert(sizeof(LanguagePackHeader) % 4 == 0);
 
 /** Metadata about a single language. */
 struct LanguageMetadata : public LanguagePackHeader {
@@ -105,7 +104,7 @@ extern LanguageList _languages;
 extern const LanguageMetadata *_current_language;
 
 #ifdef WITH_ICU_I18N
-extern icu::Collator *_current_collator;
+extern std::unique_ptr<icu::Collator> _current_collator;
 #endif /* WITH_ICU_I18N */
 
 bool ReadLanguagePack(const LanguageMetadata *lang);

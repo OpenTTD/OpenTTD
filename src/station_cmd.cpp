@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -38,6 +36,7 @@
 #include "animated_tile_func.h"
 #include "elrail_func.h"
 #include "station_base.h"
+#include "station_func.h"
 #include "station_kdtree.h"
 #include "roadstop_base.h"
 #include "newgrf_railtype.h"
@@ -253,8 +252,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, StationNaming n
 	bool indtypes[NUM_INDUSTRYTYPES];
 	memset(indtypes, 0, sizeof(indtypes));
 
-	const Station *s;
-	FOR_ALL_STATIONS(s) {
+	for (const Station *s : Station::Iterate()) {
 		if (s != st && s->town == t) {
 			if (s->indtype != IT_INVALID) {
 				indtypes[s->indtype] = true;
@@ -403,13 +401,10 @@ void Station::GetTileArea(TileArea *ta, StationType type) const
 		case STATION_DOCK:
 		case STATION_OILRIG:
 			*ta = this->docking_station;
-			break;
+			return;
 
 		default: NOT_REACHED();
 	}
-
-	ta->w = 1;
-	ta->h = 1;
 }
 
 /**
@@ -422,9 +417,13 @@ void Station::UpdateVirtCoord()
 	pt.y -= 32 * ZOOM_LVL_BASE;
 	if ((this->facilities & FACIL_AIRPORT) && this->airport.type == AT_OILRIG) pt.y -= 16 * ZOOM_LVL_BASE;
 
+	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
+
 	SetDParam(0, this->index);
 	SetDParam(1, this->facilities);
 	this->sign.UpdatePosition(pt.x, pt.y, STR_VIEWPORT_STATION);
+
+	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(this->index));
 
 	SetWindowDirty(WC_STATION_VIEW, this->index);
 }
@@ -437,22 +436,34 @@ void Station::MoveSign(TileIndex new_xy)
 {
 	if (this->xy == new_xy) return;
 
-	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeStation(this->index));
 	_station_kdtree.Remove(this->index);
 
 	this->BaseStation::MoveSign(new_xy);
 
 	_station_kdtree.Insert(this->index);
-	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(this->index));
 }
 
 /** Update the virtual coords needed to draw the station sign for all stations. */
 void UpdateAllStationVirtCoords()
 {
-	BaseStation *st;
-
-	FOR_ALL_BASE_STATIONS(st) {
+	for (BaseStation *st : BaseStation::Iterate()) {
 		st->UpdateVirtCoord();
+	}
+}
+
+void BaseStation::FillCachedName() const
+{
+	char buf[MAX_LENGTH_STATION_NAME_CHARS * MAX_CHAR_LENGTH];
+	int64 args_array[] = { this->index };
+	StringParameters tmp_params(args_array);
+	char *end = GetStringWithArgs(buf, Waypoint::IsExpected(this) ? STR_WAYPOINT_NAME : STR_STATION_NAME, &tmp_params, lastof(buf));
+	this->cached_name.assign(buf, end);
+}
+
+void ClearAllStationCachedNames()
+{
+	for (BaseStation *st : BaseStation::Iterate()) {
+		st->cached_name.clear();
 	}
 }
 
@@ -694,7 +705,6 @@ static CommandCost BuildStationPart(Station **st, DoCommandFlag flags, bool reus
 		if (flags & DC_EXEC) {
 			*st = new Station(area.tile);
 			_station_kdtree.Insert((*st)->index);
-			_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation((*st)->index));
 
 			(*st)->town = ClosestTownFromTile(area.tile, UINT_MAX);
 			(*st)->string_id = GenerateStationName(*st, area.tile, name_class);
@@ -1059,10 +1069,10 @@ CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis a
 	TileArea cur_ta = st->train_station;
 
 	/* determine new size of train station region.. */
-	int x = min(TileX(cur_ta.tile), TileX(new_ta.tile));
-	int y = min(TileY(cur_ta.tile), TileY(new_ta.tile));
-	new_ta.w = max(TileX(cur_ta.tile) + cur_ta.w, TileX(new_ta.tile) + new_ta.w) - x;
-	new_ta.h = max(TileY(cur_ta.tile) + cur_ta.h, TileY(new_ta.tile) + new_ta.h) - y;
+	int x = std::min(TileX(cur_ta.tile), TileX(new_ta.tile));
+	int y = std::min(TileY(cur_ta.tile), TileY(new_ta.tile));
+	new_ta.w = std::max(TileX(cur_ta.tile) + cur_ta.w, TileX(new_ta.tile) + new_ta.w) - x;
+	new_ta.h = std::max(TileY(cur_ta.tile) + cur_ta.h, TileY(new_ta.tile) + new_ta.h) - y;
 	new_ta.tile = TileXY(x, y);
 
 	/* make sure the final size is not too big. */
@@ -1099,13 +1109,13 @@ static inline byte *CreateMulti(byte *layout, int n, byte b)
  * @param plat_len  The length of the platforms.
  * @param statspec  The specification of the station to (possibly) get the layout from.
  */
-void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *statspec)
+void GetStationLayout(byte *layout, uint numtracks, uint plat_len, const StationSpec *statspec)
 {
-	if (statspec != nullptr && statspec->lengths >= plat_len &&
-			statspec->platforms[plat_len - 1] >= numtracks &&
-			statspec->layouts[plat_len - 1][numtracks - 1]) {
+	if (statspec != nullptr && statspec->layouts.size() >= plat_len &&
+			statspec->layouts[plat_len - 1].size() >= numtracks &&
+			!statspec->layouts[plat_len - 1][numtracks - 1].empty()) {
 		/* Custom layout defined, follow it. */
-		memcpy(layout, statspec->layouts[plat_len - 1][numtracks - 1],
+		memcpy(layout, statspec->layouts[plat_len - 1][numtracks - 1].data(),
 			plat_len * numtracks);
 		return;
 	}
@@ -1114,9 +1124,9 @@ void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSp
 		CreateSingle(layout, numtracks);
 	} else {
 		if (numtracks & 1) layout = CreateSingle(layout, plat_len);
-		numtracks >>= 1;
+		int n = numtracks >> 1;
 
-		while (--numtracks >= 0) {
+		while (--n >= 0) {
 			layout = CreateMulti(layout, plat_len, 4);
 			layout = CreateMulti(layout, plat_len, 6);
 		}
@@ -1315,7 +1325,7 @@ CommandCost CmdBuildRailStation(TileIndex tile_org, DoCommandFlag flags, uint32 
 		/* Perform NewStation checks */
 
 		/* Check if the station size is permitted */
-		if (HasBit(statspec->disallowed_platforms, min(numtracks - 1, 7)) || HasBit(statspec->disallowed_lengths, min(plat_len - 1, 7))) {
+		if (HasBit(statspec->disallowed_platforms, std::min(numtracks - 1, 7)) || HasBit(statspec->disallowed_lengths, std::min(plat_len - 1, 7))) {
 			return CMD_ERROR;
 		}
 
@@ -1923,8 +1933,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 				if (road_rt == INVALID_ROADTYPE && RoadTypeIsRoad(rt)) road_rt = rt;
 				if (tram_rt == INVALID_ROADTYPE && RoadTypeIsTram(rt)) tram_rt = rt;
 
-				UpdateCompanyRoadInfrastructure(road_rt, road_owner, 2);
-				UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, 2);
+				UpdateCompanyRoadInfrastructure(road_rt, road_owner, ROAD_STOP_TRACKBIT_FACTOR);
+				UpdateCompanyRoadInfrastructure(tram_rt, tram_owner, ROAD_STOP_TRACKBIT_FACTOR);
 
 				MakeDriveThroughRoadStop(cur_tile, st->owner, road_owner, tram_owner, st->index, rs_type, road_rt, tram_rt, axis);
 				road_stop->MakeDriveThrough();
@@ -1932,7 +1942,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 				if (road_rt == INVALID_ROADTYPE && RoadTypeIsRoad(rt)) road_rt = rt;
 				if (tram_rt == INVALID_ROADTYPE && RoadTypeIsTram(rt)) tram_rt = rt;
 				/* Non-drive-through stop never overbuild and always count as two road bits. */
-				Company::Get(st->owner)->infrastructure.road[rt] += 2;
+				Company::Get(st->owner)->infrastructure.road[rt] += ROAD_STOP_TRACKBIT_FACTOR;
 				MakeRoadStop(cur_tile, st->owner, st->index, rs_type, road_rt, tram_rt, ddir);
 			}
 			Company::Get(st->owner)->infrastructure.station++;
@@ -2019,9 +2029,9 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		}
 
 		/* Update company infrastructure counts. */
-		FOR_ALL_ROADTRAMTYPES(rtt) {
+		for (RoadTramType rtt : _roadtramtypes) {
 			RoadType rt = GetRoadType(tile, rtt);
-			UpdateCompanyRoadInfrastructure(rt, GetRoadOwner(tile, rtt), -2);
+			UpdateCompanyRoadInfrastructure(rt, GetRoadOwner(tile, rtt), -static_cast<int>(ROAD_STOP_TRACKBIT_FACTOR));
 		}
 
 		Company::Get(st->owner)->infrastructure.station--;
@@ -2037,8 +2047,7 @@ static CommandCost RemoveRoadStop(TileIndex tile, DoCommandFlag flags)
 		delete cur_stop;
 
 		/* Make sure no vehicle is going to the old roadstop */
-		RoadVehicle *v;
-		FOR_ALL_ROADVEHICLES(v) {
+		for (RoadVehicle *v : RoadVehicle::Iterate()) {
 			if (v->First() == v && v->current_order.IsType(OT_GOTO_STATION) &&
 					v->dest_tile == tile) {
 				v->SetDestTile(v->GetOrderStationLocation(st->index));
@@ -2101,7 +2110,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 		RoadType road_type[] = { INVALID_ROADTYPE, INVALID_ROADTYPE };
 		Owner road_owner[] = { OWNER_NONE, OWNER_NONE };
 		if (IsDriveThroughStopTile(cur_tile)) {
-			FOR_ALL_ROADTRAMTYPES(rtt) {
+			for (RoadTramType rtt : _roadtramtypes) {
 				road_type[rtt] = GetRoadType(cur_tile, rtt);
 				if (road_type[rtt] == INVALID_ROADTYPE) continue;
 				road_owner[rtt] = GetRoadOwner(cur_tile, rtt);
@@ -2127,28 +2136,11 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 			/* Update company infrastructure counts. */
 			int count = CountBits(road_bits);
 			UpdateCompanyRoadInfrastructure(road_type[RTT_ROAD], road_owner[RTT_ROAD], count);
-			UpdateCompanyRoadInfrastructure(road_type[RTT_TRAM], road_owner[RTT_ROAD], count);
+			UpdateCompanyRoadInfrastructure(road_type[RTT_TRAM], road_owner[RTT_TRAM], count);
 		}
 	}
 
 	return had_success ? cost : last_error;
-}
-
-/**
- * Computes the minimal distance from town's xy to any airport's tile.
- * @param it An iterator over all airport tiles.
- * @param town_tile town's tile (t->xy)
- * @return minimal manhattan distance from town_tile to any airport's tile
- */
-static uint GetMinimalAirportDistanceToTile(TileIterator &it, TileIndex town_tile)
-{
-	uint mindist = UINT_MAX;
-
-	for (TileIndex cur_tile = it; cur_tile != INVALID_TILE; cur_tile = ++it) {
-		mindist = min(mindist, DistanceManhattan(town_tile, cur_tile));
-	}
-
-	return mindist;
 }
 
 /**
@@ -2190,14 +2182,25 @@ uint8 GetAirportNoiseLevelForDistance(const AirportSpec *as, uint distance)
  */
 Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint &mindist)
 {
-	Town *t, *nearest = nullptr;
-	uint add = as->size_x + as->size_y - 2; // GetMinimalAirportDistanceToTile can differ from DistanceManhattan by this much
-	mindist = UINT_MAX - add; // prevent overflow
-	FOR_ALL_TOWNS(t) {
-		if (DistanceManhattan(t->xy, it) < mindist + add) { // avoid calling GetMinimalAirportDistanceToTile too often
-			TileIterator *copy = it.Clone();
-			uint dist = GetMinimalAirportDistanceToTile(*copy, t->xy);
-			delete copy;
+	assert(Town::GetNumItems() > 0);
+
+	Town *nearest = nullptr;
+
+	uint perimeter_min_x = TileX(it);
+	uint perimeter_min_y = TileY(it);
+	uint perimeter_max_x = perimeter_min_x + as->size_x - 1;
+	uint perimeter_max_y = perimeter_min_y + as->size_y - 1;
+
+	mindist = UINT_MAX - 1; // prevent overflow
+
+	std::unique_ptr<TileIterator> copy(it.Clone());
+	for (TileIndex cur_tile = *copy; cur_tile != INVALID_TILE; cur_tile = ++*copy) {
+		if (TileX(cur_tile) == perimeter_min_x || TileX(cur_tile) == perimeter_max_x || TileY(cur_tile) == perimeter_min_y || TileY(cur_tile) == perimeter_max_y) {
+			Town *t = CalcClosestTownFromTile(cur_tile, mindist + 1);
+			if (t == nullptr) continue;
+
+			uint dist = DistanceManhattan(t->xy, cur_tile);
+			if (dist == mindist && t->index < nearest->index) nearest = t;
 			if (dist < mindist) {
 				nearest = t;
 				mindist = dist;
@@ -2212,12 +2215,9 @@ Town *AirportGetNearestTown(const AirportSpec *as, const TileIterator &it, uint 
 /** Recalculate the noise generated by the airports of each town */
 void UpdateAirportsNoise()
 {
-	Town *t;
-	const Station *st;
+	for (Town *t : Town::Iterate()) t->noise_reached = 0;
 
-	FOR_ALL_TOWNS(t) t->noise_reached = 0;
-
-	FOR_ALL_STATIONS(st) {
+	for (const Station *st : Station::Iterate()) {
 		if (st->airport.tile != INVALID_TILE && st->airport.type != AT_OILRIG) {
 			const AirportSpec *as = st->airport.GetSpec();
 			AirportTileIterator it(st);
@@ -2294,8 +2294,7 @@ CommandCost CmdBuildAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	} else {
 		Town *t = ClosestTownFromTile(tile, UINT_MAX);
 		uint num = 0;
-		const Station *st;
-		FOR_ALL_STATIONS(st) {
+		for (const Station *st : Station::Iterate()) {
 			if (st->town == t && (st->facilities & FACIL_AIRPORT) && st->airport.type != AT_OILRIG) num++;
 		}
 		if (num >= 2) {
@@ -2386,8 +2385,7 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	const Aircraft *a;
-	FOR_ALL_AIRCRAFT(a) {
+	for (const Aircraft *a : Aircraft::Iterate()) {
 		if (!a->IsNormalAircraft()) continue;
 		if (a->targetairport == st->index && a->state != FLYING) {
 			return_cmd_error(STR_ERROR_AIRCRAFT_IN_THE_WAY);
@@ -2395,6 +2393,12 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	}
 
 	if (flags & DC_EXEC) {
+		for (uint i = 0; i < st->airport.GetNumHangars(); ++i) {
+			TileIndex tile_cur = st->airport.GetHangarTile(i);
+			OrderBackup::Reset(tile_cur, false);
+			DeleteWindowById(WC_VEHICLE_DEPOT, tile_cur);
+		}
+
 		const AirportSpec *as = st->airport.GetSpec();
 		/* The noise level is the noise from the airport and reduce it to account for the distance to the town center.
 		 * And as for construction, always remove it, even if the setting is not set, in order to avoid the
@@ -2414,7 +2418,6 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 		cost.AddCost(_price[PR_CLEAR_STATION_AIRPORT]);
 
 		if (flags & DC_EXEC) {
-			if (IsHangarTile(tile_cur)) OrderBackup::Reset(tile_cur, false);
 			DeleteAnimatedTile(tile_cur);
 			DoClearSquare(tile_cur);
 			DeleteNewGRFInspectWindow(GSF_AIRPORTTILES, tile_cur);
@@ -2424,12 +2427,6 @@ static CommandCost RemoveAirport(TileIndex tile, DoCommandFlag flags)
 	if (flags & DC_EXEC) {
 		/* Clear the persistent storage. */
 		delete st->airport.psa;
-
-		for (uint i = 0; i < st->airport.GetNumHangars(); ++i) {
-			DeleteWindowById(
-				WC_VEHICLE_DEPOT, st->airport.GetHangarTile(i)
-			);
-		}
 
 		st->rect.AfterRemoveRect(st, st->airport);
 
@@ -2486,11 +2483,9 @@ CommandCost CmdOpenCloseAirport(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  */
 bool HasStationInUse(StationID station, bool include_company, CompanyID company)
 {
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if ((v->owner == company) == include_company) {
-			const Order *order;
-			FOR_VEHICLE_ORDERS(v, order) {
+			for (const Order *order : v->Orders()) {
 				if ((order->IsType(OT_GOTO_STATION) || order->IsType(OT_GOTO_WAYPOINT)) && order->GetDestination() == station) {
 					return true;
 				}
@@ -2539,8 +2534,10 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 
 	if (IsBridgeAbove(tile)) return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 
+	CommandCost cost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (ret.Failed()) return ret;
+	cost.AddCost(ret);
 
 	TileIndex tile_cur = tile + TileOffsByDiagDir(direction);
 
@@ -2595,7 +2592,7 @@ CommandCost CmdBuildDock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		st->AfterStationTileSetChange(true, STATION_DOCK);
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, _price[PR_BUILD_STATION_DOCK]);
+	return cost;
 }
 
 void RemoveDockingTile(TileIndex t)
@@ -2605,9 +2602,11 @@ void RemoveDockingTile(TileIndex t)
 		if (!IsValidTile(tile)) continue;
 
 		if (IsTileType(tile, MP_STATION)) {
-			UpdateStationDockingTiles(Station::GetByTile(tile));
+			Station *st = Station::GetByTile(tile);
+			if (st != nullptr) UpdateStationDockingTiles(st);
 		} else if (IsTileType(tile, MP_INDUSTRY)) {
-			UpdateStationDockingTiles(Industry::GetByTile(tile)->neutral_station);
+			Station *neutral = Industry::GetByTile(tile)->neutral_station;
+			if (neutral != nullptr) UpdateStationDockingTiles(neutral);
 		}
 	}
 }
@@ -2726,8 +2725,7 @@ static CommandCost RemoveDock(TileIndex tile, DoCommandFlag flags)
 		 * will be selected and in case of no appropriate order it will just
 		 * wander around the world. */
 		if (!(st->facilities & FACIL_DOCK)) {
-			Ship *s;
-			FOR_ALL_SHIPS(s) {
+			for (Ship *s : Ship::Iterate()) {
 				if (s->current_order.IsType(OT_LOADING) && s->current_order.GetDestination() == st->index) {
 					s->LeaveStation();
 				}
@@ -2845,8 +2843,8 @@ static void DrawTile_Station(TileInfo *ti)
 				}
 
 				/* Ensure the chosen tile layout is valid for this custom station */
-				if (statspec->renderdata != nullptr) {
-					layout = &statspec->renderdata[tile_layout < statspec->tiles ? tile_layout : (uint)GetRailStationAxis(ti->tile)];
+				if (!statspec->renderdata.empty()) {
+					layout = &statspec->renderdata[tile_layout < statspec->renderdata.size() ? tile_layout : (uint)GetRailStationAxis(ti->tile)];
 					if (!layout->NeedsPreprocessing()) {
 						t = layout;
 						layout = nullptr;
@@ -3365,7 +3363,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 				return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); // enter station
 			} else if (x < stop) {
 				v->vehstatus |= VS_TRAIN_SLOWING;
-				uint16 spd = max(0, (stop - x) * 20 - 15);
+				uint16 spd = std::max(0, (stop - x) * 20 - 15);
 				if (spd < v->cur_speed) v->cur_speed = spd;
 			}
 		}
@@ -3457,7 +3455,7 @@ static void TruncateCargo(const CargoSpec *cs, GoodsEntry *ge, uint amount = UIN
 		if (source_station == nullptr) continue;
 
 		GoodsEntry &source_ge = source_station->goods[cs->Index()];
-		source_ge.max_waiting_cargo = max(source_ge.max_waiting_cargo, i->second);
+		source_ge.max_waiting_cargo = std::max(source_ge.max_waiting_cargo, i->second);
 	}
 }
 
@@ -3468,8 +3466,7 @@ static void UpdateStationRating(Station *st)
 	byte_inc_sat(&st->time_since_load);
 	byte_inc_sat(&st->time_since_unload);
 
-	const CargoSpec *cs;
-	FOR_ALL_CARGOSPECS(cs) {
+	for (const CargoSpec *cs : CargoSpec::Iterate()) {
 		GoodsEntry *ge = &st->goods[cs->Index()];
 		/* Slowly increase the rating back to his original level in the case we
 		 *  didn't deliver cargo yet to this station. This happens when a bribe
@@ -3513,7 +3510,9 @@ static void UpdateStationRating(Station *st)
 				/* NewGRFs expect last speed to be 0xFF when no vehicle has arrived yet. */
 				uint last_speed = ge->HasVehicleEverTriedLoading() ? ge->last_speed : 0xFF;
 
-				uint32 var18 = min(ge->time_since_pickup, 0xFF) | (min(ge->max_waiting_cargo, 0xFFFF) << 8) | (min(last_speed, 0xFF) << 24);
+				uint32 var18 = std::min<uint>(ge->time_since_pickup, 0xFFu)
+					| (std::min<uint>(ge->max_waiting_cargo, 0xFFFFu) << 8)
+					| (std::min<uint>(last_speed, 0xFFu) << 24);
 				/* Convert to the 'old' vehicle types */
 				uint32 var10 = (st->last_vehicle_type == VEH_INVALID) ? 0x0 : (st->last_vehicle_type + 0x10);
 				uint16 callback = GetCargoCallback(CBID_CARGO_STATION_RATING_CALC, var10, var18, cs);
@@ -3572,7 +3571,7 @@ static void UpdateStationRating(Station *st)
 					uint32 r = Random();
 					if (rating <= (int)GB(r, 0, 7)) {
 						/* Need to have int, otherwise it will just overflow etc. */
-						waiting = max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
+						waiting = std::max((int)waiting - (int)((GB(r, 8, 2) - 1) * num_dests), 0);
 						waiting_changed = true;
 					}
 				}
@@ -3588,7 +3587,7 @@ static void UpdateStationRating(Station *st)
 					uint difference = waiting - WAITING_CARGO_THRESHOLD;
 					waiting -= (difference / WAITING_CARGO_CUT_FACTOR);
 
-					waiting = min(waiting, MAX_WAITING_CARGO);
+					waiting = std::min(waiting, MAX_WAITING_CARGO);
 					waiting_changed = true;
 				}
 
@@ -3669,9 +3668,8 @@ void DeleteStaleLinks(Station *from)
 				if (auto_distributed) {
 					/* Have all vehicles refresh their next hops before deciding to
 					 * remove the node. */
-					OrderList *l;
 					std::vector<Vehicle *> vehicles;
-					FOR_ALL_ORDER_LISTS(l) {
+					for (OrderList *l : OrderList::Iterate()) {
 						bool found_from = false;
 						bool found_to = false;
 						for (Order *order = l->GetFirstOrder(); order != nullptr; order = order->next) {
@@ -3803,7 +3801,7 @@ void IncreaseStats(Station *st, const Vehicle *front, StationID next_station_id)
 			 * As usage is not such an important figure anyway we just
 			 * ignore the additional cargo then.*/
 			IncreaseStats(st, v->cargo_type, next_station_id, v->refit_cap,
-					min(v->refit_cap, v->cargo.StoredCount()), EUM_INCREASE);
+					std::min<uint>(v->refit_cap, v->cargo.StoredCount()), EUM_INCREASE);
 		}
 	}
 }
@@ -3824,8 +3822,7 @@ void OnTick_Station()
 {
 	if (_game_mode == GM_EDITOR) return;
 
-	BaseStation *st;
-	FOR_ALL_BASE_STATIONS(st) {
+	for (BaseStation *st : BaseStation::Iterate()) {
 		StationHandleSmallTick(st);
 
 		/* Clean up the link graph about once a week. */
@@ -3848,9 +3845,7 @@ void OnTick_Station()
 /** Monthly loop for stations. */
 void StationMonthlyLoop()
 {
-	Station *st;
-
-	FOR_ALL_STATIONS(st) {
+	for (Station *st : Station::Iterate()) {
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			SB(ge->status, GoodsEntry::GES_LAST_MONTH, 1, GB(ge->status, GoodsEntry::GES_CURRENT_MONTH, 1));
@@ -3863,7 +3858,7 @@ void StationMonthlyLoop()
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius)
 {
 	ForAllStationsRadius(tile, radius, [&](Station *st) {
-		if (st->owner == owner) {
+		if (st->owner == owner && DistanceManhattan(tile, st->xy) <= radius) {
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				GoodsEntry *ge = &st->goods[i];
 
@@ -3922,10 +3917,8 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 
 static bool IsUniqueStationName(const char *name)
 {
-	const Station *st;
-
-	FOR_ALL_STATIONS(st) {
-		if (st->name != nullptr && strcmp(st->name, name) == 0) return false;
+	for (const Station *st : Station::Iterate()) {
+		if (!st->name.empty() && st->name == name) return false;
 	}
 
 	return true;
@@ -3956,8 +3949,12 @@ CommandCost CmdRenameStation(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	}
 
 	if (flags & DC_EXEC) {
-		free(st->name);
-		st->name = reset ? nullptr : stredup(text);
+		st->cached_name.clear();
+		if (reset) {
+			st->name.clear();
+		} else {
+			st->name = text;
+		}
 
 		st->UpdateVirtCoord();
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 1);
@@ -3974,131 +3971,132 @@ static void AddNearbyStationsByCatchment(TileIndex tile, StationList *stations, 
 }
 
 /**
- * Find all stations around a rectangular producer (industry, house, headquarter, ...)
- *
- * @param location The location/area of the producer
- * @param[out] stations The list to store the stations in
- * @param use_nearby Use nearby station list of industry/town associated with location.tile
- */
-void FindStationsAroundTiles(const TileArea &location, StationList * const stations, bool use_nearby)
-{
-	if (use_nearby) {
-		/* Industries and towns maintain a list of nearby stations */
-		if (IsTileType(location.tile, MP_INDUSTRY)) {
-			/* Industry nearby stations are already filtered by catchment. */
-			*stations = Industry::GetByTile(location.tile)->stations_near;
-			return;
-		} else if (IsTileType(location.tile, MP_HOUSE)) {
-			/* Town nearby stations need to be filtered per tile. */
-			assert(location.w == 1 && location.h == 1);
-			AddNearbyStationsByCatchment(location.tile, stations, Town::GetByTile(location.tile)->stations_near);
-			return;
-		}
-	}
-
-	/* Not using, or don't have a nearby stations list, so we need to scan. */
-	std::set<StationID> seen_stations;
-
-	/* Scan an area around the building covering the maximum possible station
-	 * to find the possible nearby stations. */
-	uint max_c = _settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED;
-	TileArea ta = TileArea(location).Expand(max_c);
-	TILE_AREA_LOOP(tile, ta) {
-		if (IsTileType(tile, MP_STATION)) seen_stations.insert(GetStationIndex(tile));
-	}
-
-	for (StationID stationid : seen_stations) {
-		Station *st = Station::GetIfValid(stationid);
-		if (st == nullptr) continue; /* Waypoint */
-
-		/* Check if station is attached to an industry */
-		if (!_settings_game.station.serve_neutral_industries && st->industry != nullptr) continue;
-
-		/* Test if the tile is within the station's catchment */
-		TILE_AREA_LOOP(tile, location) {
-			if (st->TileIsInCatchment(tile)) {
-				stations->insert(st);
-				break;
-			}
-		}
-	}
-}
-
-/**
  * Run a tile loop to find stations around a tile, on demand. Cache the result for further requests
  * @return pointer to a StationList containing all stations found
  */
 const StationList *StationFinder::GetStations()
 {
 	if (this->tile != INVALID_TILE) {
-		FindStationsAroundTiles(*this, &this->stations);
+		if (IsTileType(this->tile, MP_HOUSE)) {
+			/* Town nearby stations need to be filtered per tile. */
+			assert(this->w == 1 && this->h == 1);
+			AddNearbyStationsByCatchment(this->tile, &this->stations, Town::GetByTile(this->tile)->stations_near);
+		} else {
+			ForAllStationsAroundTiles(*this, [this](Station *st, TileIndex tile) {
+				this->stations.insert(st);
+				return true;
+			});
+		}
 		this->tile = INVALID_TILE;
 	}
 	return &this->stations;
 }
 
-uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations)
+
+static bool CanMoveGoodsToStation(const Station *st, CargoID type)
+{
+	/* Is the station reserved exclusively for somebody else? */
+	if (st->owner != OWNER_NONE && st->town->exclusive_counter > 0 && st->town->exclusivity != st->owner) return false;
+
+	/* Lowest possible rating, better not to give cargo anymore. */
+	if (st->goods[type].rating == 0) return false;
+
+	/* Selectively servicing stations, and not this one. */
+	if (_settings_game.order.selectgoods && !st->goods[type].HasVehicleEverTriedLoading()) return false;
+
+	if (IsCargoInClass(type, CC_PASSENGERS)) {
+		/* Passengers are never served by just a truck stop. */
+		if (st->facilities == FACIL_TRUCK_STOP) return false;
+	} else {
+		/* Non-passengers are never served by just a bus stop. */
+		if (st->facilities == FACIL_BUS_STOP) return false;
+	}
+	return true;
+}
+
+uint MoveGoodsToStation(CargoID type, uint amount, SourceType source_type, SourceID source_id, const StationList *all_stations, Owner exclusivity)
 {
 	/* Return if nothing to do. Also the rounding below fails for 0. */
+	if (all_stations->empty()) return 0;
 	if (amount == 0) return 0;
 
-	Station *st1 = nullptr;   // Station with best rating
-	Station *st2 = nullptr;   // Second best station
-	uint best_rating1 = 0; // rating of st1
-	uint best_rating2 = 0; // rating of st2
+	Station *first_station = nullptr;
+	typedef std::pair<Station *, uint> StationInfo;
+	std::vector<StationInfo> used_stations;
 
 	for (Station *st : *all_stations) {
-		/* Is the station reserved exclusively for somebody else? */
-		if (st->owner != OWNER_NONE && st->town->exclusive_counter > 0 && st->town->exclusivity != st->owner) continue;
+		if (exclusivity != INVALID_OWNER && exclusivity != st->owner) continue;
+		if (!CanMoveGoodsToStation(st, type)) continue;
 
-		if (st->goods[type].rating == 0) continue; // Lowest possible rating, better not to give cargo anymore
-
-		if (_settings_game.order.selectgoods && !st->goods[type].HasVehicleEverTriedLoading()) continue; // Selectively servicing stations, and not this one
-
-		if (IsCargoInClass(type, CC_PASSENGERS)) {
-			if (st->facilities == FACIL_TRUCK_STOP) continue; // passengers are never served by just a truck stop
-		} else {
-			if (st->facilities == FACIL_BUS_STOP) continue; // non-passengers are never served by just a bus stop
+		/* Avoid allocating a vector if there is only one station to significantly
+		 * improve performance in this common case. */
+		if (first_station == nullptr) {
+			first_station = st;
+			continue;
 		}
-
-		/* This station can be used, add it to st1/st2 */
-		if (st1 == nullptr || st->goods[type].rating >= best_rating1) {
-			st2 = st1; best_rating2 = best_rating1; st1 = st; best_rating1 = st->goods[type].rating;
-		} else if (st2 == nullptr || st->goods[type].rating >= best_rating2) {
-			st2 = st; best_rating2 = st->goods[type].rating;
+		if (used_stations.empty()) {
+			used_stations.reserve(2);
+			used_stations.emplace_back(std::make_pair(first_station, 0));
 		}
+		used_stations.emplace_back(std::make_pair(st, 0));
 	}
 
 	/* no stations around at all? */
-	if (st1 == nullptr) return 0;
+	if (first_station == nullptr) return 0;
 
-	/* From now we'll calculate with fractal cargo amounts.
-	 * First determine how much cargo we really have. */
-	amount *= best_rating1 + 1;
-
-	if (st2 == nullptr) {
+	if (used_stations.empty()) {
 		/* only one station around */
-		return UpdateStationWaiting(st1, type, amount, source_type, source_id);
+		amount *= first_station->goods[type].rating + 1;
+		return UpdateStationWaiting(first_station, type, amount, source_type, source_id);
 	}
 
-	/* several stations around, the best two (highest rating) are in st1 and st2 */
-	assert(st1 != nullptr);
-	assert(st2 != nullptr);
-	assert(best_rating1 != 0 || best_rating2 != 0);
+	uint company_best[OWNER_NONE + 1] = {};  // best rating for each company, including OWNER_NONE
+	uint company_sum[OWNER_NONE + 1] = {};   // sum of ratings for each company
+	uint best_rating = 0;
+	uint best_sum = 0;  // sum of best ratings for each company
 
-	/* Then determine the amount the worst station gets. We do it this way as the
-	 * best should get a bonus, which in this case is the rounding difference from
-	 * this calculation. In reality that will mean the bonus will be pretty low.
-	 * Nevertheless, the best station should always get the most cargo regardless
-	 * of rounding issues. */
-	uint worst_cargo = amount * best_rating2 / (best_rating1 + best_rating2);
-	assert(worst_cargo <= (amount - worst_cargo));
+	for (auto &p : used_stations) {
+		auto owner = p.first->owner;
+		auto rating = p.first->goods[type].rating;
+		if (rating > company_best[owner]) {
+			best_sum += rating - company_best[owner];  // it's usually faster than iterating companies later
+			company_best[owner] = rating;
+			if (rating > best_rating) best_rating = rating;
+		}
+		company_sum[owner] += rating;
+	}
 
-	/* And then send the cargo to the stations! */
-	uint moved = UpdateStationWaiting(st1, type, amount - worst_cargo, source_type, source_id);
-	/* These two UpdateStationWaiting's can't be in the statement as then the order
-	 * of execution would be undefined and that could cause desyncs with callbacks. */
-	return moved + UpdateStationWaiting(st2, type, worst_cargo, source_type, source_id);
+	/* From now we'll calculate with fractional cargo amounts.
+	 * First determine how much cargo we really have. */
+	amount *= best_rating + 1;
+
+	uint moving = 0;
+	for (auto &p : used_stations) {
+		uint owner = p.first->owner;
+		/* Multiply the amount by (company best / sum of best for each company) to get cargo allocated to a company
+		 * and by (station rating / sum of ratings in a company) to get the result for a single station. */
+		p.second = amount * company_best[owner] * p.first->goods[type].rating / best_sum / company_sum[owner];
+		moving += p.second;
+	}
+
+	/* If there is some cargo left due to rounding issues distribute it among the best rated stations. */
+	if (amount > moving) {
+		std::sort(used_stations.begin(), used_stations.end(), [type](const StationInfo &a, const StationInfo &b) {
+			return b.first->goods[type].rating < a.first->goods[type].rating;
+		});
+
+		assert(amount - moving <= used_stations.size());
+		for (uint i = 0; i < amount - moving; i++) {
+			used_stations[i].second++;
+		}
+	}
+
+	uint moved = 0;
+	for (auto &p : used_stations) {
+		moved += UpdateStationWaiting(p.first, type, p.second, source_type, source_id);
+	}
+
+	return moved;
 }
 
 void UpdateStationDockingTiles(Station *st)
@@ -4115,11 +4113,11 @@ void UpdateStationDockingTiles(Station *st)
 
 	/* Expand the area by a tile on each side while
 	 * making sure that we remain inside the map. */
-	int x2 = min(x + area->w + 1, MapSizeX());
-	int x1 = max(x - 1, 0);
+	int x2 = std::min<int>(x + area->w + 1, MapSizeX());
+	int x1 = std::max<int>(x - 1, 0);
 
-	int y2 = min(y + area->h + 1, MapSizeY());
-	int y1 = max(y - 1, 0);
+	int y2 = std::min<int>(y + area->h + 1, MapSizeY());
+	int y1 = std::max<int>(y - 1, 0);
 
 	TileArea ta(TileXY(x1, y1), TileXY(x2 - 1, y2 - 1));
 	TILE_AREA_LOOP(tile, ta) {
@@ -4158,7 +4156,6 @@ void BuildOilRig(TileIndex tile)
 	st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
 
 	st->UpdateVirtCoord();
-	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeStation(st->index));
 	st->RecomputeCatchment();
 	UpdateStationAcceptance(st, false);
 }
@@ -4171,13 +4168,17 @@ void DeleteOilRig(TileIndex tile)
 
 	/* The oil rig station is not supposed to be shared with anything else */
 	assert(st->facilities == (FACIL_AIRPORT | FACIL_DOCK) && st->airport.type == AT_OILRIG);
+	if (st->industry != nullptr && st->industry->neutral_station == st) {
+		/* Don't leave dangling neutral station pointer */
+		st->industry->neutral_station = nullptr;
+	}
 	delete st;
 }
 
 static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	if (IsRoadStopTile(tile)) {
-		FOR_ALL_ROADTRAMTYPES(rtt) {
+		for (RoadTramType rtt : _roadtramtypes) {
 			/* Update all roadtypes, no matter if they are present */
 			if (GetRoadOwner(tile, rtt) == old_owner) {
 				RoadType rt = GetRoadType(tile, rtt);
@@ -4585,7 +4586,7 @@ void FlowStat::ScaleToMonthly(uint runtime)
 	SharesMap new_shares;
 	uint share = 0;
 	for (SharesMap::iterator i = this->shares.begin(); i != this->shares.end(); ++i) {
-		share = max(share + 1, i->first * 30 / runtime);
+		share = std::max(share + 1, i->first * 30 / runtime);
 		new_shares[share] = i->second;
 		if (this->unrestricted == i->first) this->unrestricted = share;
 	}

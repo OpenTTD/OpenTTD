@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -106,7 +104,7 @@ static const AirportTileSpec _origin_airporttile_specs[] = {
 	AT(3, 1), // APT_GRASS_FENCE_NE_FLAG_2
 };
 
-assert_compile(NEW_AIRPORTTILE_OFFSET == lengthof(_origin_airporttile_specs));
+static_assert(NEW_AIRPORTTILE_OFFSET == lengthof(_origin_airporttile_specs));
 
 #undef AT_NOANIM
 #undef AT

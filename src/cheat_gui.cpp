@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -127,7 +125,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
  */
 static int32 ClickChangeMaxHlCheat(int32 p1, int32 p2)
 {
-	p1 = Clamp(p1, MIN_MAX_HEIGHTLEVEL, MAX_MAX_HEIGHTLEVEL);
+	p1 = Clamp(p1, MIN_MAP_HEIGHT_LIMIT, MAX_MAP_HEIGHT_LIMIT);
 
 	/* Check if at least one mountain on the map is higher than the new value.
 	 * If yes, disallow the change. */
@@ -135,18 +133,18 @@ static int32 ClickChangeMaxHlCheat(int32 p1, int32 p2)
 		if ((int32)TileHeight(t) > p1) {
 			ShowErrorMessage(STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN, INVALID_STRING_ID, WL_ERROR);
 			/* Return old, unchanged value */
-			return _settings_game.construction.max_heightlevel;
+			return _settings_game.construction.map_height_limit;
 		}
 	}
 
 	/* Execute the change and reload GRF Data */
-	_settings_game.construction.max_heightlevel = p1;
+	_settings_game.construction.map_height_limit = p1;
 	ReloadNewGRFData();
 
 	/* The smallmap uses an index from heightlevels to colours. Trigger rebuilding it. */
 	InvalidateWindowClassesData(WC_SMALLMAP, 2);
 
-	return _settings_game.construction.max_heightlevel;
+	return _settings_game.construction.map_height_limit;
 }
 
 /** Available cheats. */
@@ -184,17 +182,17 @@ struct CheatEntry {
  * Order matches with the values of #CheatNumbers
  */
 static const CheatEntry _cheats_ui[] = {
-	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,                    &_cheats.money.been_used,            &ClickMoneyCheat         },
-	{SLE_UINT8, STR_CHEAT_CHANGE_COMPANY,  &_local_company,                         &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
-	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,          &_cheats.magic_bulldozer.been_used,  nullptr                     },
-	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,         &_cheats.crossing_tunnels.been_used, nullptr                     },
-	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,              &_cheats.no_jetcrash.been_used,      nullptr                     },
-	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,               &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
-	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.max_heightlevel, &_cheats.edit_max_hl.been_used, &ClickChangeMaxHlCheat   },
-	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                              &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
+	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,                          &_cheats.money.been_used,            &ClickMoneyCheat         },
+	{SLE_UINT8, STR_CHEAT_CHANGE_COMPANY,  &_local_company,                               &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
+	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,                &_cheats.magic_bulldozer.been_used,  nullptr                  },
+	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,               &_cheats.crossing_tunnels.been_used, nullptr                  },
+	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,                    &_cheats.no_jetcrash.been_used,      nullptr                  },
+	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,                     &_cheats.setup_prod.been_used,       &ClickSetProdCheat       },
+	{SLE_UINT8, STR_CHEAT_EDIT_MAX_HL,     &_settings_game.construction.map_height_limit, &_cheats.edit_max_hl.been_used,      &ClickChangeMaxHlCheat   },
+	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                                    &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
 
-assert_compile(CHT_NUM_CHEATS == lengthof(_cheats_ui));
+static_assert(CHT_NUM_CHEATS == lengthof(_cheats_ui));
 
 /** Widget definitions of the cheat GUI. */
 static const NWidgetPart _nested_cheat_widgets[] = {
@@ -205,12 +203,14 @@ static const NWidgetPart _nested_cheat_widgets[] = {
 		NWidget(WWT_STICKYBOX, COLOUR_GREY),
 	EndContainer(),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_C_PANEL), SetDataTip(0x0, STR_CHEATS_TOOLTIP), EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(WWT_LABEL, COLOUR_GREY, WID_C_NOTE), SetFill(1, 1), SetDataTip(STR_CHEATS_NOTE, STR_NULL), SetPadding(WD_PAR_VSEP_NORMAL, 4, WD_PAR_VSEP_NORMAL, 4),
+	EndContainer(),
 };
 
 /** GUI for the cheats. */
 struct CheatWindow : Window {
 	int clicked;
-	int header_height;
 	int clicked_widget;
 	uint line_height;
 	int box_width;
@@ -225,8 +225,7 @@ struct CheatWindow : Window {
 	{
 		if (widget != WID_C_PANEL) return;
 
-		int y = r.top + WD_FRAMERECT_TOP + this->header_height;
-		DrawStringMultiLine(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, r.top + WD_FRAMERECT_TOP, y, STR_CHEATS_WARNING, TC_FROMSTRING, SA_CENTER);
+		int y = r.top + WD_FRAMERECT_TOP + WD_PAR_VSEP_NORMAL;
 
 		bool rtl = _current_text_dir == TD_RTL;
 		uint box_left    = rtl ? r.right - this->box_width - 5 : r.left + 5;
@@ -293,9 +292,9 @@ struct CheatWindow : Window {
 			switch (ce->type) {
 				case SLE_BOOL:
 					SetDParam(0, STR_CONFIG_SETTING_ON);
-					width = max(width, GetStringBoundingBox(ce->str).width);
+					width = std::max(width, GetStringBoundingBox(ce->str).width);
 					SetDParam(0, STR_CONFIG_SETTING_OFF);
-					width = max(width, GetStringBoundingBox(ce->str).width);
+					width = std::max(width, GetStringBoundingBox(ce->str).width);
 					break;
 
 				default:
@@ -303,37 +302,36 @@ struct CheatWindow : Window {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE:
 							SetDParam(0, ConvertYMDToDate(MAX_YEAR, 11, 31));
-							width = max(width, GetStringBoundingBox(ce->str).width);
+							width = std::max(width, GetStringBoundingBox(ce->str).width);
 							break;
 
 						/* Draw coloured flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY:
 							SetDParamMaxValue(0, MAX_COMPANIES);
-							width = max(width, GetStringBoundingBox(ce->str).width + 10 + 10);
+							width = std::max(width, GetStringBoundingBox(ce->str).width + 10 + 10);
 							break;
 
 						default:
 							SetDParam(0, INT64_MAX);
-							width = max(width, GetStringBoundingBox(ce->str).width);
+							width = std::max(width, GetStringBoundingBox(ce->str).width);
 							break;
 					}
 					break;
 			}
 		}
 
-		this->line_height = max(GetSpriteSize(SPR_BOX_CHECKED).height, GetSpriteSize(SPR_BOX_EMPTY).height);
-		this->line_height = max<uint>(this->line_height, SETTING_BUTTON_HEIGHT);
-		this->line_height = max<uint>(this->line_height, FONT_HEIGHT_NORMAL) + WD_PAR_VSEP_NORMAL;
+		this->line_height = std::max(GetSpriteSize(SPR_BOX_CHECKED).height, GetSpriteSize(SPR_BOX_EMPTY).height);
+		this->line_height = std::max<uint>(this->line_height, SETTING_BUTTON_HEIGHT);
+		this->line_height = std::max<uint>(this->line_height, FONT_HEIGHT_NORMAL) + WD_PAR_VSEP_NORMAL;
 
 		size->width = width + 20 + this->box_width + SETTING_BUTTON_WIDTH /* stuff on the left */ + 10 /* extra spacing on right */;
-		this->header_height = GetStringHeight(STR_CHEATS_WARNING, size->width - WD_FRAMERECT_LEFT - WD_FRAMERECT_RIGHT) + WD_PAR_VSEP_WIDE;
-		size->height = this->header_height + WD_FRAMERECT_TOP + WD_PAR_VSEP_NORMAL + WD_FRAMERECT_BOTTOM + this->line_height * lengthof(_cheats_ui);
+		size->height = WD_FRAMERECT_TOP + WD_PAR_VSEP_NORMAL + WD_FRAMERECT_BOTTOM + this->line_height * lengthof(_cheats_ui);
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
 		const NWidgetBase *wid = this->GetWidget<NWidgetBase>(WID_C_PANEL);
-		uint btn = (pt.y - wid->pos_y - WD_FRAMERECT_TOP - this->header_height) / this->line_height;
+		uint btn = (pt.y - wid->pos_y - WD_FRAMERECT_TOP - WD_PAR_VSEP_NORMAL) / this->line_height;
 		int x = pt.x - wid->pos_x;
 		bool rtl = _current_text_dir == TD_RTL;
 		if (rtl) x = wid->current_x - x;

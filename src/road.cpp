@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -191,8 +189,7 @@ RoadTypes GetCompanyRoadTypes(CompanyID company, bool introduces)
 {
 	RoadTypes rts = ROADTYPES_NONE;
 
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+	for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
@@ -220,8 +217,7 @@ RoadTypes GetRoadTypes(bool introduces)
 {
 	RoadTypes rts = ROADTYPES_NONE;
 
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+	for (const Engine *e : Engine::IterateType(VEH_ROAD)) {
 		const EngineInfo *ei = &e->info;
 		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
 
@@ -284,8 +280,7 @@ RoadTypes ExistingRoadTypes(CompanyID c)
 	RoadTypes known_roadtypes = ROADTYPES_NONE;
 
 	/* Find used roadtypes */
-	Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+	for (Engine *e : Engine::IterateType(VEH_ROAD)) {
 		/* Check if the roadtype can be used in the current climate */
 		if (!HasBit(e->info.climates, _settings_game.game_creation.landscape)) continue;
 
@@ -299,42 +294,4 @@ RoadTypes ExistingRoadTypes(CompanyID c)
 	known_roadtypes = AddDateIntroducedRoadTypes(known_roadtypes, MAX_DAY);
 
 	return known_roadtypes;
-}
-
-/**
- * Check whether we can build infrastructure for the given RoadType. This to disable building stations etc. when
- * you are not allowed/able to have the RoadType yet.
- * @param roadtype the roadtype to check this for
- * @param company the company id to check this for
- * @param any_date to check only existing vehicles or if it is possible to build them in the future
- * @return true if there is any reason why you may build the infrastructure for the given roadtype
- */
-bool CanBuildRoadTypeInfrastructure(RoadType roadtype, CompanyID company)
-{
-	if (_game_mode != GM_EDITOR && !Company::IsValidID(company)) return false;
-	if (!_settings_client.gui.disable_unsuitable_building) return true;
-	if (!HasAnyRoadTypesAvail(company, GetRoadTramType(roadtype))) return false;
-
-	RoadTypes roadtypes = ExistingRoadTypes(company);
-
-	/* Check if the filtered roadtypes does have the roadtype we are checking for
-	 * and if we can build new ones */
-	if (_settings_game.vehicle.max_roadveh > 0 && HasBit(roadtypes, roadtype)) {
-		/* Can we actually build the vehicle type? */
-		const Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
-			if (!HasBit(e->company_avail, company)) continue;
-			if (HasPowerOnRoad(e->u.road.roadtype, roadtype) || HasPowerOnRoad(roadtype, e->u.road.roadtype)) return true;
-		}
-		return false;
-	}
-
-	/* We should be able to build infrastructure when we have the actual vehicle type */
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_ROAD && (company == OWNER_DEITY || v->owner == company) &&
-			HasBit(roadtypes, RoadVehicle::From(v)->roadtype) && HasPowerOnRoad(RoadVehicle::From(v)->roadtype, roadtype)) return true;
-	}
-
-	return false;
 }

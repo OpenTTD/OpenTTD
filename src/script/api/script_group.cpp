@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -91,14 +89,14 @@
 {
 	EnforcePrecondition(false, IsValidGroup(group_id));
 
-	return ScriptObject::DoCommand(0, group_id, enable ? 1 : 0, CMD_SET_GROUP_REPLACE_PROTECTION);
+	return ScriptObject::DoCommand(0, group_id | GroupFlags::GF_REPLACE_PROTECTION, enable ? 1 : 0, CMD_SET_GROUP_FLAG);
 }
 
 /* static */ bool ScriptGroup::GetAutoReplaceProtection(GroupID group_id)
 {
 	if (!IsValidGroup(group_id)) return false;
 
-	return ::Group::Get(group_id)->replace_protection;
+	return HasBit(::Group::Get(group_id)->flags, GroupFlags::GF_REPLACE_PROTECTION);
 }
 
 /* static */ int32 ScriptGroup::GetNumEngines(GroupID group_id, EngineID engine_id)
@@ -156,8 +154,7 @@
 
 	Money profit = 0;
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->group_id != group_id) continue;
 		if (!v->IsPrimaryVehicle()) continue;
 
@@ -181,8 +178,7 @@
 	uint32 occupancy = 0;
 	uint32 vehicle_count = 0;
 
-	const Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (v->group_id != group_id) continue;
 		if (!v->IsPrimaryVehicle()) continue;
 

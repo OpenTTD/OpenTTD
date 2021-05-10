@@ -1,0 +1,16 @@
+// This file is part of OpenTTD.
+// OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+// OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with OpenTTD. If not, see <http://www.gnu.org/licenses/>.
+//
+   -1 * 0	 0C "Airport previews"
+   -1 * 0	 05 16 09
+   -1 sprites/airport_preview.png 8bpp  50    8 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 290    8 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 530    8 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp   2  168 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 242  168 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 482  168 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp   2  328 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 242  328 230 140   0   0 normal
+   -1 sprites/airport_preview.png 8bpp 482  328 230 140   0   0 normal

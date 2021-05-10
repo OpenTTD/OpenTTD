@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -18,22 +16,8 @@ bool MyShowCursor(bool show, bool toggle = false);
 typedef void (*Function)(int);
 bool LoadLibraryList(Function proc[], const char *dll);
 
-char *convert_from_fs(const TCHAR *name, char *utf8_buf, size_t buflen);
-TCHAR *convert_to_fs(const char *name, TCHAR *utf16_buf, size_t buflen, bool console_cp = false);
-
-/* Function shortcuts for UTF-8 <> UNICODE conversion. When unicode is not
- * defined these macros return the string passed to them, with UNICODE
- * they return a pointer to the converted string. These functions use an
- * internal buffer of max 512 characters. */
-#if defined(UNICODE)
-# define MB_TO_WIDE(str) OTTD2FS(str)
-# define WIDE_TO_MB(str) FS2OTTD(str)
-#else
-# define MB_TO_WIDE(str) (str)
-# define WIDE_TO_MB(str) (str)
-#endif
-
-HRESULT OTTDSHGetFolderPath(HWND, int, HANDLE, DWORD, LPTSTR);
+char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen);
+wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen);
 
 #if defined(__MINGW32__) && !defined(__MINGW64__)
 #define SHGFP_TYPE_CURRENT 0
@@ -41,5 +25,6 @@ HRESULT OTTDSHGetFolderPath(HWND, int, HANDLE, DWORD, LPTSTR);
 
 void Win32SetCurrentLocaleName(const char *iso_code);
 int OTTDStringCompare(const char *s1, const char *s2);
+bool IsWindowsVistaOrGreater();
 
 #endif /* WIN32_H */

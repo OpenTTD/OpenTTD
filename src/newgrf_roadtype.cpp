@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -47,7 +45,7 @@
 			const Town *t = nullptr;
 			if (IsRoadDepotTile(this->tile)) {
 				t = Depot::GetByTile(this->tile)->town;
-			} else if (IsTileType(this->tile, MP_ROAD)) {
+			} else {
 				t = ClosestTownFromTile(this->tile, UINT_MAX);
 			}
 			return t != nullptr ? GetTownRadiusGroup(t, this->tile) : HZB_TOWN_EDGE;
@@ -62,9 +60,24 @@
 
 /* virtual */ const SpriteGroup *RoadTypeResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
-	if (group->num_loading > 0) return group->loading[0];
-	if (group->num_loaded  > 0) return group->loaded[0];
+	if (!group->loading.empty()) return group->loading[0];
+	if (!group->loaded.empty())  return group->loaded[0];
 	return nullptr;
+}
+
+GrfSpecFeature RoadTypeResolverObject::GetFeature() const
+{
+	RoadType rt = GetRoadTypeByLabel(this->roadtype_scope.rti->label, false);
+	switch (GetRoadTramType(rt)) {
+		case RTT_ROAD: return GSF_ROADTYPES;
+		case RTT_TRAM: return GSF_TRAMTYPES;
+		default: return GSF_INVALID;
+	}
+}
+
+uint32 RoadTypeResolverObject::GetDebugID() const
+{
+	return this->roadtype_scope.rti->label;
 }
 
 /**
@@ -73,10 +86,11 @@
  * @param tile %Tile containing the track. For track on a bridge this is the southern bridgehead.
  * @param context Are we resolving sprites for the upper halftile, or on a bridge?
  */
-RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, TileIndex tile, TileContext context) : ScopeResolver(ro)
+RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, const RoadTypeInfo *rti, TileIndex tile, TileContext context) : ScopeResolver(ro)
 {
 	this->tile = tile;
 	this->context = context;
+	this->rti = rti;
 }
 
 /**
@@ -89,7 +103,7 @@ RoadTypeScopeResolver::RoadTypeScopeResolver(ResolverObject &ro, TileIndex tile,
  * @param param2 Extra parameter (second parameter of the callback, except roadtypes do not have callbacks).
  */
 RoadTypeResolverObject::RoadTypeResolverObject(const RoadTypeInfo *rti, TileIndex tile, TileContext context, RoadTypeSpriteGroup rtsg, uint32 param1, uint32 param2)
-	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), roadtype_scope(*this, tile, context)
+	: ResolverObject(rti != nullptr ? rti->grffile[rtsg] : nullptr, CBID_NO_CALLBACK, param1, param2), roadtype_scope(*this, rti, tile, context)
 {
 	this->root_spritegroup = rti != nullptr ? rti->group[rtsg] : nullptr;
 }
@@ -116,6 +130,37 @@ SpriteID GetCustomRoadSprite(const RoadTypeInfo *rti, TileIndex tile, RoadTypeSp
 	if (num_results) *num_results = group->GetNumResults();
 
 	return group->GetResult();
+}
+
+/**
+ * Translate an index to the GRF-local road/tramtype-translation table into a RoadType.
+ * @param rtt       Whether to index the road- or tramtype-table.
+ * @param tracktype Index into GRF-local translation table.
+ * @param grffile   Originating GRF file.
+ * @return RoadType or INVALID_ROADTYPE if the roadtype is unknown.
+ */
+RoadType GetRoadTypeTranslation(RoadTramType rtt, uint8 tracktype, const GRFFile *grffile)
+{
+	/* Because OpenTTD mixes RoadTypes and TramTypes into the same type,
+	 * the mapping of the original road- and tramtypes does not match the default GRF-local mapping.
+	 * So, this function cannot provide any similar behavior to GetCargoTranslation() and GetRailTypeTranslation()
+	 * when the GRF defines no translation table.
+	 * But since there is only one default road/tram-type, this makes little sense anyway.
+	 * So for GRF without translation table, we always return INVALID_ROADTYPE.
+	 */
+
+	if (grffile == nullptr) return INVALID_ROADTYPE;
+
+	const auto &list = rtt == RTT_TRAM ? grffile->tramtype_list : grffile->roadtype_list;
+	if (tracktype >= list.size()) return INVALID_ROADTYPE;
+
+	/* Look up roadtype including alternate labels. */
+	RoadType result = GetRoadTypeByLabel(list[tracktype]);
+
+	/* Check whether the result is actually the wanted road/tram-type */
+	if (result != INVALID_ROADTYPE && GetRoadTramType(result) != rtt) return INVALID_ROADTYPE;
+
+	return result;
 }
 
 /**

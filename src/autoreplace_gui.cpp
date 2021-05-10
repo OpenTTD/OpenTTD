@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -83,7 +81,7 @@ class ReplaceVehicleWindow : public Window {
 	bool replace_engines;         ///< If \c true, engines are replaced, if \c false, wagons are replaced (only for trains).
 	bool reset_sel_engine;        ///< Also reset #sel_engine while updating left and/or right and no valid engine selected.
 	GroupID sel_group;            ///< Group selected to replace.
-	int details_height;           ///< Minimal needed height of the details panels (found so far).
+	int details_height;           ///< Minimal needed height of the details panels, in text lines (found so far).
 	byte sort_criteria;           ///< Criteria of sorting vehicles.
 	bool descending_sort_order;   ///< Order of sorting vehicles.
 	bool show_hidden_engines;     ///< Whether to show the hidden engines.
@@ -126,8 +124,7 @@ class ReplaceVehicleWindow : public Window {
 		GUIEngineList *list = &this->engines[side];
 		list->clear();
 
-		const Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, type) {
+		for (const Engine *e : Engine::IterateType(type)) {
 			if (!draw_left && !this->show_hidden_engines && e->IsHidden(_local_company)) continue;
 			EngineID eid = e->index;
 			switch (type) {
@@ -232,7 +229,7 @@ public:
 		this->engines[0].ForceRebuild();
 		this->engines[1].ForceRebuild();
 		this->reset_sel_engine = true;
-		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9) * FONT_HEIGHT_NORMAL + WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM;
+		this->details_height   = ((vehicletype == VEH_TRAIN) ? 10 : 9);
 		this->sel_engine[0] = INVALID_ENGINE;
 		this->sel_engine[1] = INVALID_ENGINE;
 		this->show_hidden_engines = _engine_sort_show_hidden_engines[vehicletype];
@@ -277,7 +274,7 @@ public:
 
 			case WID_RV_LEFT_DETAILS:
 			case WID_RV_RIGHT_DETAILS:
-				size->height = this->details_height;
+				size->height = FONT_HEIGHT_NORMAL * this->details_height + padding.height;
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
@@ -378,8 +375,15 @@ public:
 				break;
 
 			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
-				const Company *c = Company::Get(_local_company);
-				SetDParam(0, c->settings.renew_keep_length ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+				bool remove_wagon;
+				const Group *g = Group::GetIfValid(this->sel_group);
+				if (g != nullptr) {
+					remove_wagon = HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL);
+				} else {
+					const Company *c = Company::Get(_local_company);
+					remove_wagon = c->settings.renew_keep_length;
+				}
+				SetDParam(0, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				break;
 			}
 
@@ -419,8 +423,8 @@ public:
 			case WID_RV_LEFT_MATRIX:
 			case WID_RV_RIGHT_MATRIX: {
 				int side = (widget == WID_RV_LEFT_MATRIX) ? 0 : 1;
-				EngineID start  = this->vscroll[side]->GetPosition(); // what is the offset for the start (scrolling)
-				EngineID end    = min(this->vscroll[side]->GetCapacity() + start, (uint)this->engines[side].size());
+				EngineID start  = static_cast<EngineID>(this->vscroll[side]->GetPosition()); // what is the offset for the start (scrolling)
+				EngineID end    = static_cast<EngineID>(std::min<size_t>(this->vscroll[side]->GetCapacity() + start, this->engines[side].size()));
 
 				/* Do the actual drawing */
 				DrawEngineList((VehicleType)this->window_number, r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP,
@@ -478,7 +482,7 @@ public:
 					NWidgetBase *nwi = this->GetWidget<NWidgetBase>(side == 0 ? WID_RV_LEFT_DETAILS : WID_RV_RIGHT_DETAILS);
 					int text_end = DrawVehiclePurchaseInfo(nwi->pos_x + WD_FRAMETEXT_LEFT, nwi->pos_x + nwi->current_x - WD_FRAMETEXT_RIGHT,
 							nwi->pos_y + WD_FRAMERECT_TOP, this->sel_engine[side], ted);
-					needed_height = max(needed_height, text_end - (int)nwi->pos_y + WD_FRAMERECT_BOTTOM);
+					needed_height = std::max(needed_height, (text_end - (int)nwi->pos_y - WD_FRAMERECT_TOP) / FONT_HEIGHT_NORMAL);
 				}
 			}
 			if (needed_height != this->details_height) { // Details window are not high enough, enlarge them.
@@ -531,9 +535,16 @@ public:
 				}
 				break;
 
-			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: // toggle renew_keep_length
-				DoCommandP(0, GetCompanySettingIndex("company.renew_keep_length"), Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1, CMD_CHANGE_COMPANY_SETTING);
+			case WID_RV_TRAIN_WAGONREMOVE_TOGGLE: {
+				const Group *g = Group::GetIfValid(this->sel_group);
+				if (g != nullptr) {
+					DoCommandP(0, this->sel_group | (GroupFlags::GF_REPLACE_WAGON_REMOVAL << 16), (HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL) ? 0 : 1) | (_ctrl_pressed << 1), CMD_SET_GROUP_FLAG);
+				} else {
+					// toggle renew_keep_length
+					DoCommandP(0, GetCompanySettingIndex("company.renew_keep_length"), Company::Get(_local_company)->settings.renew_keep_length ? 0 : 1, CMD_CHANGE_COMPANY_SETTING);
+				}
 				break;
+			}
 
 			case WID_RV_START_REPLACE: { // Start replacing
 				if (this->GetWidget<NWidgetLeaf>(widget)->ButtonHit(pt)) {

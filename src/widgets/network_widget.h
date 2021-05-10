@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -16,8 +14,6 @@
 enum NetworkGameWidgets {
 	WID_NG_MAIN,               ///< Main panel.
 
-	WID_NG_CONNECTION,         ///< Label in front of connection droplist.
-	WID_NG_CONN_BTN,           ///< 'Connection' droplist button.
 	WID_NG_CLIENT_LABEL,       ///< Label in front of client name edit box.
 	WID_NG_CLIENT,             ///< Panel with editbox to set client name.
 	WID_NG_FILTER_LABEL,       ///< Label in front of the filter/search edit box.
@@ -47,7 +43,8 @@ enum NetworkGameWidgets {
 	WID_NG_NEWGRF_MISSING,     ///< 'Find missing NewGRF online' button.
 	WID_NG_NEWGRF_MISSING_SEL, ///< Selection widget for the above button.
 
-	WID_NG_FIND,               ///< 'Find server' button.
+	WID_NG_SEARCH_INTERNET,    ///< 'Search internet server' button.
+	WID_NG_SEARCH_LAN,         ///< 'Search LAN server' button.
 	WID_NG_ADD,                ///< 'Add server' button.
 	WID_NG_START,              ///< 'Start server' button.
 	WID_NG_CANCEL,             ///< 'Cancel' button.
@@ -74,9 +71,6 @@ enum NetworkStartServerWidgets {
 	WID_NSS_SPECTATORS_TXT,    ///< 'Max spectators' text.
 	WID_NSS_SPECTATORS_BTNU,   ///< 'Max spectators' uparrow.
 
-	WID_NSS_LANGUAGE_LABEL,    ///< Label for 'language spoken'.
-	WID_NSS_LANGUAGE_BTN,      ///< 'Language spoken' droplist button.
-
 	WID_NSS_GENERATE_GAME,     ///< New game button.
 	WID_NSS_LOAD_GAME,         ///< Load game button.
 	WID_NSS_PLAY_SCENARIO,     ///< Play scenario button.
@@ -102,12 +96,16 @@ enum NetworkLobbyWidgets {
 
 /** Widgets of the #NetworkClientListWindow class. */
 enum ClientListWidgets {
-	WID_CL_PANEL, ///< Panel of the window.
-};
-
-/** Widgets of the #NetworkClientListPopupWindow class. */
-enum ClientListPopupWidgets {
-	WID_CLP_PANEL, ///< Panel of the window.
+	WID_CL_PANEL,                      ///< Panel of the window.
+	WID_CL_SERVER_SELECTOR,            ///< Selector to hide the server frame.
+	WID_CL_SERVER_NAME,                ///< Server name.
+	WID_CL_SERVER_NAME_EDIT,           ///< Edit button for server name.
+	WID_CL_SERVER_VISIBILITY,          ///< Server visibility.
+	WID_CL_CLIENT_NAME,                ///< Client name.
+	WID_CL_CLIENT_NAME_EDIT,           ///< Edit button for client name.
+	WID_CL_MATRIX,                     ///< Company/client list.
+	WID_CL_SCROLLBAR,                  ///< Scrollbar for company/client list.
+	WID_CL_COMPANY_JOIN,               ///< Used for QueryWindow when a company has a password.
 };
 
 /** Widgets of the #NetworkJoinStatusWindow class. */

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -15,6 +13,7 @@
 #include "../thread.h"
 #include "linkgraph.h"
 #include <list>
+#include <atomic>
 
 class LinkGraphJob;
 class Path;
@@ -63,6 +62,8 @@ protected:
 	Date join_date;                   ///< Date when the job is to be joined.
 	NodeAnnotationVector nodes;       ///< Extra node data necessary for link graph calculation.
 	EdgeAnnotationMatrix edges;       ///< Extra edge data necessary for link graph calculation.
+	std::atomic<bool> job_completed;  ///< Is the job still running. This is accessed by multiple threads and reads may be stale.
+	std::atomic<bool> job_aborted;    ///< Has the job been aborted. This is accessed by multiple threads and reads may be stale.
 
 	void EraseFlows(NodeID from);
 	void JoinThread();
@@ -162,9 +163,9 @@ public:
 		 * @return Pair of the edge currently pointed to and the ID of its
 		 *         other end.
 		 */
-		SmallPair<NodeID, Edge> operator*() const
+		std::pair<NodeID, Edge> operator*() const
 		{
-			return SmallPair<NodeID, Edge>(this->current, Edge(this->base[this->current], this->base_anno[this->current]));
+			return std::pair<NodeID, Edge>(this->current, Edge(this->base[this->current], this->base_anno[this->current]));
 		}
 
 		/**
@@ -267,7 +268,7 @@ public:
 	 * settings have to be brutally const-casted in order to populate them.
 	 */
 	LinkGraphJob() : settings(_settings_game.linkgraph),
-			join_date(INVALID_DATE) {}
+			join_date(INVALID_DATE), job_completed(false), job_aborted(false) {}
 
 	LinkGraphJob(const LinkGraph &orig);
 	~LinkGraphJob();
@@ -275,10 +276,32 @@ public:
 	void Init();
 
 	/**
+	 * Check if job has actually finished.
+	 * This is allowed to spuriously return an incorrect value.
+	 * @return True if job has actually finished.
+	 */
+	inline bool IsJobCompleted() const { return this->job_completed.load(std::memory_order_acquire); }
+
+	/**
+	 * Check if job has been aborted.
+	 * This is allowed to spuriously return false incorrectly, but is not allowed to incorrectly return true.
+	 * @return True if job has been aborted.
+	 */
+	inline bool IsJobAborted() const { return this->job_aborted.load(std::memory_order_acquire); }
+
+	/**
+	 * Abort job.
+	 * The job may exit early at the next available opportunity.
+	 * After this method has been called the state of the job is undefined, and the only valid operation
+	 * is to join the thread and discard the job data.
+	 */
+	inline void AbortJob() { this->job_aborted.store(true, std::memory_order_release); }
+
+	/**
 	 * Check if job is supposed to be finished.
 	 * @return True if job should be finished by now, false if not.
 	 */
-	inline bool IsFinished() const { return this->join_date <= _date; }
+	inline bool IsScheduledToBeJoined() const { return this->join_date <= _date; }
 
 	/**
 	 * Get the date when the job should be finished.
@@ -336,8 +359,6 @@ public:
 	inline const LinkGraph &Graph() const { return this->link_graph; }
 };
 
-#define FOR_ALL_LINK_GRAPH_JOBS(var) FOR_ALL_ITEMS_FROM(LinkGraphJob, link_graph_job_index, var, 0)
-
 /**
  * A leg of a path in the link graph. Paths can form trees by being "forked".
  */
@@ -346,6 +367,7 @@ public:
 	static Path *invalid_path;
 
 	Path(NodeID n, bool source = false);
+	virtual ~Path() = default;
 
 	/** Get the node this leg passes. */
 	inline NodeID GetNode() const { return this->node; }
@@ -371,7 +393,7 @@ public:
 	 */
 	inline static int GetCapacityRatio(int free, uint total)
 	{
-		return Clamp(free, PATH_CAP_MIN_FREE, PATH_CAP_MAX_FREE) * PATH_CAP_MULTIPLIER / max(total, 1U);
+		return Clamp(free, PATH_CAP_MIN_FREE, PATH_CAP_MAX_FREE) * PATH_CAP_MULTIPLIER / std::max(total, 1U);
 	}
 
 	/**

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -136,7 +134,7 @@ protected:
 
 	/**
 	 * Register updates to be sent at certain frequencies (as announced in the PROTOCOL packet):
-	 * uint16  Update type (see #AdminUpdateType).
+	 * uint16  Update type (see #AdminUpdateType). Note integer type - see "Certain Packet Information" in docs/admin_network.md.
 	 * uint16  Update frequency (see #AdminUpdateFrequency), setting #ADMIN_FREQUENCY_POLL is always ignored.
 	 * @param p The packet that was just received.
 	 * @return The state the network should have.
@@ -145,7 +143,7 @@ protected:
 
 	/**
 	 * Poll the server for certain updates, an invalid poll (e.g. not existent id) gets silently dropped:
-	 * uint8   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency #ADMIN_FREQUENCY_POLL is advertised in the PROTOCOL packet.
+	 * uint8   #AdminUpdateType the server should answer for, only if #AdminUpdateFrequency #ADMIN_FREQUENCY_POLL is advertised in the PROTOCOL packet. Note integer type - see "Certain Packet Information" in docs/admin_network.md.
 	 * uint32  ID relevant to the packet type, e.g.
 	 *          - the client ID for #ADMIN_UPDATE_CLIENT_INFO. Use UINT32_MAX to show all clients.
 	 *          - the company ID for #ADMIN_UPDATE_COMPANY_INFO. Use UINT32_MAX to show all companies.
@@ -224,7 +222,7 @@ protected:
 
 	/**
 	 * Welcome a connected admin to the game:
-	 * string  Name of the Server (e.g. as advertised to master server).
+	 * string  Name of the Server.
 	 * string  OpenTTD version string.
 	 * bool    Server is dedicated.
 	 * string  Name of the Map.

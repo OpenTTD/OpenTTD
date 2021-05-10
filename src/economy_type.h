@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -16,6 +14,15 @@
 #include "core/enum_type.hpp"
 
 typedef OverflowSafeInt64 Money;
+
+/** Type of the game economy. */
+enum EconomyType : uint8 {
+	ET_BEGIN = 0,
+	ET_ORIGINAL = 0,
+	ET_SMOOTH = 1,
+	ET_FROZEN = 2,
+	ET_END = 3,
+};
 
 /** Data of the economy. */
 struct Economy {
@@ -189,6 +196,8 @@ struct PriceBaseSpec {
 
 /** The "steps" in loan size, in British Pounds! */
 static const int LOAN_INTERVAL = 10000;
+/** The size of loan for a new company, in British Pounds! */
+static const int64 INITIAL_LOAN = 100000;
 
 /**
  * Maximum inflation (including fractional part) without causing overflows in int64 price computations.
@@ -213,6 +222,10 @@ static const int INVALID_PRICE_MODIFIER = MIN_PRICE_MODIFIER - 1;
 static const uint TUNNELBRIDGE_TRACKBIT_FACTOR = 4;
 /** Multiplier for how many regular track bits a level crossing counts. */
 static const uint LEVELCROSSING_TRACKBIT_FACTOR = 2;
+/** Multiplier for how many regular track bits a road depot counts. */
+static const uint ROAD_DEPOT_TRACKBIT_FACTOR = 2;
+/** Multiplier for how many regular track bits a bay stop counts. */
+static const uint ROAD_STOP_TRACKBIT_FACTOR = 2;
 /** Multiplier for how many regular tiles a lock counts. */
 static const uint LOCK_DEPOT_TILE_FACTOR = 2;
 

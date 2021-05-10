@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -66,7 +64,7 @@ enum HouseZonesBits {
 	HZB_TOWN_CENTRE,
 	HZB_END,
 };
-assert_compile(HZB_END == 5);
+static_assert(HZB_END == 5);
 
 DECLARE_POSTFIX_INCREMENT(HouseZonesBits)
 

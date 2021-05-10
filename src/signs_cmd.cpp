@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -56,10 +54,9 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		si->y = y;
 		si->z = GetSlopePixelZ(x, y);
 		if (!StrEmpty(text)) {
-			si->name = stredup(text);
+			si->name = text;
 		}
 		si->UpdateVirtCoord();
-		_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeSign(si->index));
 		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
 		_new_sign_id = si->index;
 	}
@@ -89,10 +86,8 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			/* Delete the old name */
-			free(si->name);
 			/* Assign the new one */
-			si->name = stredup(text);
+			si->name = text;
 			if (_game_mode != GM_EDITOR) si->owner = _current_company;
 
 			si->UpdateVirtCoord();
@@ -101,7 +96,7 @@ CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	} else { // Delete sign
 		if (flags & DC_EXEC) {
 			si->sign.MarkDirty();
-			_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeSign(si->index));
+			if (si->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeSign(si->index));
 			delete si;
 
 			InvalidateWindowData(WC_SIGN_LIST, 0, 0);

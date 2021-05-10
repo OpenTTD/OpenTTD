@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -21,14 +19,14 @@
 #include "../gfx_func.h"
 #include "../rev.h"
 #include "../blitter/factory.hpp"
-#include "../network/network.h"
 #include "../core/random_func.hpp"
 #include "../core/math_func.hpp"
 #include "../framerate_type.h"
+#include "../progress.h"
 #include "../thread.h"
+#include "../window_func.h"
 #include "allegro_v.h"
 #include <allegro.h>
-#include <algorithm>
 
 #include "../safeguards.h"
 
@@ -57,7 +55,7 @@ void VideoDriver_Allegro::MakeDirty(int left, int top, int width, int height)
 	_num_dirty_rects++;
 }
 
-static void DrawSurfaceToScreen()
+void VideoDriver_Allegro::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
@@ -96,7 +94,7 @@ static void InitPalette()
 	UpdatePalette(0, 256);
 }
 
-static void CheckPaletteAnim()
+void VideoDriver_Allegro::CheckPaletteAnim()
 {
 	if (_cur_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
@@ -238,7 +236,17 @@ bool VideoDriver_Allegro::ClaimMousePointer()
 	return true;
 }
 
-struct VkMapping {
+std::vector<int> VideoDriver_Allegro::GetListOfMonitorRefreshRates()
+{
+	std::vector<int> rates = {};
+
+	int refresh_rate = get_refresh_rate();
+	if (refresh_rate != 0) rates.push_back(refresh_rate);
+
+	return rates;
+}
+
+struct AllegroVkMapping {
 	uint16 vk_from;
 	byte vk_count;
 	byte map_to;
@@ -247,7 +255,7 @@ struct VkMapping {
 #define AS(x, z) {x, 0, z}
 #define AM(x, y, z, w) {x, y - x, z}
 
-static const VkMapping _vk_mapping[] = {
+static const AllegroVkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
 	AM(KEY_PGUP, KEY_PGDN, WKC_PAGEUP, WKC_PAGEDOWN),
 	AS(KEY_UP,     WKC_UP),
@@ -305,7 +313,7 @@ static uint32 ConvertAllegroKeyIntoMy(WChar *character)
 	int scancode;
 	int unicode = ureadkey(&scancode);
 
-	const VkMapping *map;
+	const AllegroVkMapping *map;
 	uint key = 0;
 
 	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
@@ -330,7 +338,7 @@ static uint32 ConvertAllegroKeyIntoMy(WChar *character)
 static const uint LEFT_BUTTON  = 0;
 static const uint RIGHT_BUTTON = 1;
 
-static void PollEvent()
+bool VideoDriver_Allegro::PollEvent()
 {
 	poll_mouse();
 
@@ -404,6 +412,8 @@ static void PollEvent()
 		uint keycode = ConvertAllegroKeyIntoMy(&character);
 		HandleKeypress(keycode, character);
 	}
+
+	return false;
 }
 
 /**
@@ -412,13 +422,15 @@ static void PollEvent()
  */
 int _allegro_instance_count = 0;
 
-const char *VideoDriver_Allegro::Start(const char * const *parm)
+const char *VideoDriver_Allegro::Start(const StringList &param)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
 		DEBUG(driver, 0, "allegro: install_allegro failed '%s'", allegro_error);
 		return "Failed to set up Allegro";
 	}
 	_allegro_instance_count++;
+
+	this->UpdateAutoResolution();
 
 	install_timer();
 	install_mouse();
@@ -438,6 +450,8 @@ const char *VideoDriver_Allegro::Start(const char * const *parm)
 	MarkWholeScreenDirty();
 	set_close_button_callback(HandleExitGameRequest);
 
+	this->is_game_threaded = !GetDriverParamBool(param, "no_threads") && !GetDriverParamBool(param, "no_thread");
+
 	return nullptr;
 }
 
@@ -446,84 +460,43 @@ void VideoDriver_Allegro::Stop()
 	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
-#if defined(UNIX) || defined(__OS2__)
-# include <sys/time.h> /* gettimeofday */
-
-static uint32 GetTime()
+void VideoDriver_Allegro::InputLoop()
 {
-	struct timeval tim;
+	bool old_ctrl_pressed = _ctrl_pressed;
 
-	gettimeofday(&tim, nullptr);
-	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
-}
+	_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG);
+	_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG);
+
+#if defined(_DEBUG)
+	this->fast_forward_key_pressed = _shift_pressed;
 #else
-static uint32 GetTime()
-{
-	return GetTickCount();
-}
+	/* Speedup when pressing tab, except when using ALT+TAB
+	 * to switch to another application. */
+	this->fast_forward_key_pressed = key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0;
 #endif
 
+	/* Determine which directional keys are down. */
+	_dirkeys =
+		(key[KEY_LEFT]  ? 1 : 0) |
+		(key[KEY_UP]    ? 2 : 0) |
+		(key[KEY_RIGHT] ? 4 : 0) |
+		(key[KEY_DOWN]  ? 8 : 0);
+
+	if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+}
 
 void VideoDriver_Allegro::MainLoop()
 {
-	uint32 cur_ticks = GetTime();
-	uint32 last_cur_ticks = cur_ticks;
-	uint32 next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-
-	CheckPaletteAnim();
+	this->StartGameThread();
 
 	for (;;) {
-		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
-		InteractiveRandom(); // randomness
+		if (_exit_game) break;
 
-		PollEvent();
-		if (_exit_game) return;
-
-#if defined(_DEBUG)
-		if (_shift_pressed)
-#else
-		/* Speedup when pressing tab, except when using ALT+TAB
-		 * to switch to another application */
-		if (key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0)
-#endif
-		{
-			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-		} else if (_fast_forward & 2) {
-			_fast_forward = 0;
-		}
-
-		cur_ticks = GetTime();
-		if (cur_ticks >= next_tick || (_fast_forward && !_pause_mode) || cur_ticks < prev_cur_ticks) {
-			_realtime_tick += cur_ticks - last_cur_ticks;
-			last_cur_ticks = cur_ticks;
-			next_tick = cur_ticks + MILLISECONDS_PER_TICK;
-
-			bool old_ctrl_pressed = _ctrl_pressed;
-
-			_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG);
-			_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG);
-
-			/* determine which directional keys are down */
-			_dirkeys =
-				(key[KEY_LEFT]  ? 1 : 0) |
-				(key[KEY_UP]    ? 2 : 0) |
-				(key[KEY_RIGHT] ? 4 : 0) |
-				(key[KEY_DOWN]  ? 8 : 0);
-
-			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
-
-			GameLoop();
-
-			UpdateWindows();
-			CheckPaletteAnim();
-			DrawSurfaceToScreen();
-		} else {
-			CSleep(1);
-			NetworkDrawChatMessage();
-			DrawMouseCursor();
-			DrawSurfaceToScreen();
-		}
+		this->Tick();
+		this->SleepTillNextTick();
 	}
+
+	this->StopGameThread();
 }
 
 bool VideoDriver_Allegro::ChangeResolution(int w, int h)

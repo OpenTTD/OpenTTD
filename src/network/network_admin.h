@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -39,7 +37,7 @@ protected:
 	NetworkRecvStatus SendPong(uint32 d1);
 public:
 	AdminUpdateFrequency update_frequency[ADMIN_UPDATE_END]; ///< Admin requested update intervals.
-	uint32 realtime_connect;                                 ///< Time of connection.
+	std::chrono::steady_clock::time_point connect_time;      ///< Time of connection.
 	NetworkAddress address;                                  ///< Address of the admin.
 
 	ServerNetworkAdminSocketHandler(SOCKET s);
@@ -84,28 +82,21 @@ public:
 	{
 		return "admin";
 	}
+
+	struct ServerNetworkAdminSocketHandlerFilter {
+		bool operator() (size_t index) { return ServerNetworkAdminSocketHandler::Get(index)->GetAdminStatus() == ADMIN_STATUS_ACTIVE; }
+	};
+
+	/**
+	 * Returns an iterable ensemble of all active admin sockets
+	 * @param from index of the first socket to consider
+	 * @return an iterable ensemble of all active admin sockets
+	 */
+	static Pool::IterateWrapperFiltered<ServerNetworkAdminSocketHandler, ServerNetworkAdminSocketHandlerFilter> IterateActive(size_t from = 0)
+	{
+		return Pool::IterateWrapperFiltered<ServerNetworkAdminSocketHandler, ServerNetworkAdminSocketHandlerFilter>(from, ServerNetworkAdminSocketHandlerFilter{});
+	}
 };
-
-/**
- * Iterate over all the sockets from a given starting point.
- * @param var The variable to iterate with.
- * @param start The start of the iteration.
- */
-#define FOR_ALL_ADMIN_SOCKETS_FROM(var, start) FOR_ALL_ITEMS_FROM(ServerNetworkAdminSocketHandler, adminsocket_index, var, start)
-
-/**
- * Iterate over all the sockets.
- * @param var The variable to iterate with.
- */
-#define FOR_ALL_ADMIN_SOCKETS(var) FOR_ALL_ADMIN_SOCKETS_FROM(var, 0)
-
-/**
- * Iterate over all the active sockets.
- * @param var The variable to iterate with.
- */
-#define FOR_ALL_ACTIVE_ADMIN_SOCKETS(var) \
-	FOR_ALL_ADMIN_SOCKETS(var) \
-		if (var->GetAdminStatus() == ADMIN_STATUS_ACTIVE)
 
 void NetworkAdminClientInfo(const NetworkClientSocket *cs, bool new_client = false);
 void NetworkAdminClientUpdate(const NetworkClientInfo *ci);

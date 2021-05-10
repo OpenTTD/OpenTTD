@@ -1,5 +1,3 @@
-; $Id$
-;
 ; This represents the original sounds as on the Transport
 ; Tycoon Deluxe for Windows CD.
 ;
@@ -7,7 +5,7 @@
 name              = original_windows
 shortname         = TTDO
 version           = 0
-!! description STR_BASESOUNDS_WIN_DESCRIPTION
+@description_STR_BASESOUNDS_WIN_DESCRIPTION@
 
 [files]
 samples      = SAMPLE.CAT

@@ -12,8 +12,6 @@
 ##case m f n p
 
 
-# $Id$
-
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -52,9 +50,9 @@ STR_CARGO_PLURAL_WHEAT                                          :Пшеница
 STR_CARGO_PLURAL_RUBBER                                         :Каучук
 STR_CARGO_PLURAL_SUGAR                                          :Захар
 STR_CARGO_PLURAL_TOYS                                           :Играчки
-STR_CARGO_PLURAL_CANDY                                          :Сладки
+STR_CARGO_PLURAL_SWEETS                                         :Сладки
 STR_CARGO_PLURAL_COLA                                           :Кола
-STR_CARGO_PLURAL_COTTON_CANDY                                   :Захарен памук
+STR_CARGO_PLURAL_CANDYFLOSS                                     :Захарен памук
 STR_CARGO_PLURAL_BUBBLES                                        :Балони
 STR_CARGO_PLURAL_TOFFEE                                         :Карамел
 STR_CARGO_PLURAL_BATTERIES                                      :Батерии
@@ -86,9 +84,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :Пшеница
 STR_CARGO_SINGULAR_RUBBER                                       :Каучук
 STR_CARGO_SINGULAR_SUGAR                                        :Захар
 STR_CARGO_SINGULAR_TOY                                          :Играчки
-STR_CARGO_SINGULAR_CANDY                                        :Сладки
+STR_CARGO_SINGULAR_SWEETS                                       :Сладки
 STR_CARGO_SINGULAR_COLA                                         :Кола
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :Захарен памук
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :Захарен памук
 STR_CARGO_SINGULAR_BUBBLE                                       :Балони
 STR_CARGO_SINGULAR_TOFFEE                                       :Карамел
 STR_CARGO_SINGULAR_BATTERY                                      :Батерии
@@ -235,8 +233,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}Избе
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}Избери критерий за сортиране
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}Избери критерии за филтриране
 STR_BUTTON_SORT_BY                                              :{BLACK}Сортирай по
-STR_BUTTON_LOCATION                                             :{BLACK}Позиция
-STR_BUTTON_RENAME                                               :{BLACK}Преименувай
 STR_BUTTON_CATCHMENT                                            :{BLACK}Покритие
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}Затвори прозореца
@@ -313,6 +309,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :Товарен 
 STR_SORT_BY_RANGE                                               :Обхват
 STR_SORT_BY_POPULATION                                          :Население
 STR_SORT_BY_RATING                                              :Рейтинг
+
+# Group by options for vehicle list
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}Пауза
@@ -398,7 +396,7 @@ STR_FILE_MENU_EXIT                                              :Изход
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Карта на света
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :Допълнителна камера
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :Допълнителна камера
 STR_MAP_MENU_SIGN_LIST                                          :Списък с табели
 
 ############ range for town menu starts
@@ -473,9 +471,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :Показване/скриване на конзола
 STR_ABOUT_MENU_AI_DEBUG                                         :ИИ дебъг
 STR_ABOUT_MENU_SCREENSHOT                                       :Screenshot
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :Напълно увеличен в кадъра.
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :Увеличение по подразбиране
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :Огромен Screenshot
 STR_ABOUT_MENU_SHOW_FRAMERATE                                   :Показване на честотата на кадрите
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :Относно 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :Подравнител на спрайтове
@@ -566,8 +561,8 @@ STR_MONTH_DEC                                                   :Декемвр�
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}Легенда
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}Покажи легендата на графиката
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
@@ -646,9 +641,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}Персонален 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}Сила на музиката
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}Сила на ефектите
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}MIN
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}MAX
-STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
@@ -856,6 +848,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}Нов {STRING} е на разположение! - {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} вече не приема {STRING}
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} вече не приема {STRING} или {STRING}
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} вече приема {STRING}
@@ -874,7 +867,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}Местните власти на {TOWN} подписаха договор с {STRING} за едногодишни ексклузивни транспортни права
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Камера {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}Камера {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Преместване на камерата
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Преместване на тази камера до глобалната
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Преместване глобалната камера
@@ -924,8 +917,6 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Нов тайв
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Хонгконгски долар (HKD)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}Движение по пътищата
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}Избор посоката на движение по пътищата
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :ляво
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :дясно
 
@@ -977,12 +968,16 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Разм
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Избор размера на екран
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :друго
 
+
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Интерфейс размер
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Изберете размера на интерфейс елемент за използване
 
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Нормално
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Двукратно
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Четирикратно
+
+
 
 
 
@@ -1165,8 +1160,6 @@ STR_CONFIG_SETTING_DISASTERS_HELPTEXT                           :Включва�
 STR_CONFIG_SETTING_CITY_APPROVAL                                :Отношението на градския съвет към реструктурирането на района: {STRING}
 STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Изберете какво количество шум и поражения по околната среда причинени от компаниите афектират техния рейтинг в града и бъдещи конструкции в района.
 
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL                              :Максимална височина на картата: {STRING}
-STR_CONFIG_SETTING_MAX_HEIGHTLEVEL_HELPTEXT                     :Определете максималната допустима височина за планини на картата
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Не можете да зададете максималната височина на картата на тази стойност. Поне една планина на карта е по-висока
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Тераформиране под постройки (autoslope): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Разреши промяна на наклона на терена под постройки и пътища без необходимост от премахване
@@ -1508,8 +1501,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :Пълно
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :Цветни новини се появяват през: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :Годината, когато вестникарските заглавия, ще станат цветни. Преди тази година, те са черно-бели
 STR_CONFIG_SETTING_STARTING_YEAR                                :Начална година: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :Разреши плавна икономика (повече по-малки промени): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :Ако тази опция бъде активирана, промишленото производство ще се променя по-често и по-плавно. Тази опция обикновено няма ефект, ако даденият вид промишленост е предоставен от NewGRF
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Разреши купуване на акции от други компании: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Ако тази опция бъде активирана, ще можете да купувате и продавате дялове на компании. Това ще бъде възможно единствено когато дадената компания достигне определена възраст
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Процент от leg profit to pay in feeder systems: {STRING}
@@ -1555,9 +1546,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Разреше�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :Разпределяне на дърветата в гората: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :Контролирайте случайното появяване на дървета по време на игра. Това може да засегне промишленостите, които зависят от растежа на дървета, като например дърводелниците
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :Без {RED}(разваля дъскорезницата)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :Само в дъждовни гори
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :Навсякъде
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :Позиция на лентата за инструменти: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :Хоризонтално позициониране на основната лента в горната част на екрана
@@ -1685,6 +1673,8 @@ STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND                  :{WHITE}... пр
 STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... пропруска набора от основни песни '{STRING}': не е открит
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Отвъд паметта
 
+# Video initalization errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1727,17 +1717,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK}На т�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}Изход
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}Желаете ли да прекъснете играта и да се върнете към {STRING}?
 STR_QUIT_YES                                                    :{BLACK}Да
 STR_QUIT_NO                                                     :{BLACK}Не
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}Прекъсване на играта
@@ -1747,7 +1728,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Иск�
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Кодове
 STR_CHEATS_TOOLTIP                                              :{BLACK}Кутийките показват дали този код е бил използван
-STR_CHEATS_WARNING                                              :{BLACK}Внимание! По този начин ще измамите своите съперници. Имайте в предвид, че това безчестие ще бъде запомнено вовеки веков.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Увеличаване на парите с {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Играе като компания: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Магически булдозер (премахва промишленост, неподвижни обекти): {ORANGE}{STRING}
@@ -1856,12 +1836,9 @@ STR_FACE_TIE                                                    :Вратовр�
 STR_FACE_EARRING                                                :Oбица:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Cмени вратовръзкатa или oбицатa
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Онлайн играчи
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}Рекламирана
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}Избери игра измежду рекламирана през интернет или нерекламирана през Локален интернет хост или ЛАН
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :Не
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :Да
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}Име на играч:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}Чрез това име другите играчи ще ви идентифицират
 
@@ -1902,8 +1879,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}Прис
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}Обновяване сървъра
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}Обновява информацията за съръра
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}Търсене на сървър
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}Претърсване на мрежата за сървър
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}Добави сървър
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}Добяви сървър към списакът, който винаги ще бъде проверяван за активни игри.
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}Пускане на сървър
@@ -1920,8 +1895,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Имет
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Поставяне на парола
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Защитаване на вашата игра с парола за да не е публично достъпна
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :Не
-STR_NETWORK_START_SERVER_ADVERTISED                             :Да
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} клиент{P "" s}
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Макс. брой играчи:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Избор на максималния брой клиенти. Не всички слотове трябва да се попълнят
@@ -1935,46 +1908,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}Гово
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}Другите играчи ще знаят езика на който се говори на сървъра
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}Въведете име за мрежовата игра
-
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Всеки
-STR_NETWORK_LANG_ENGLISH                                        :Английски
-STR_NETWORK_LANG_GERMAN                                         :Немски
-STR_NETWORK_LANG_FRENCH                                         :Френски
-STR_NETWORK_LANG_BRAZILIAN                                      :Бразилски
-STR_NETWORK_LANG_BULGARIAN                                      :Български
-STR_NETWORK_LANG_CHINESE                                        :Китайски
-STR_NETWORK_LANG_CZECH                                          :Чешки
-STR_NETWORK_LANG_DANISH                                         :Датски
-STR_NETWORK_LANG_DUTCH                                          :Холандски
-STR_NETWORK_LANG_ESPERANTO                                      :Eсперанто
-STR_NETWORK_LANG_FINNISH                                        :Финландски
-STR_NETWORK_LANG_HUNGARIAN                                      :Унгарски
-STR_NETWORK_LANG_ICELANDIC                                      :Исландски
-STR_NETWORK_LANG_ITALIAN                                        :Италиански
-STR_NETWORK_LANG_JAPANESE                                       :Японски
-STR_NETWORK_LANG_KOREAN                                         :Корейски
-STR_NETWORK_LANG_LITHUANIAN                                     :Литовски
-STR_NETWORK_LANG_NORWEGIAN                                      :Норвежки
-STR_NETWORK_LANG_POLISH                                         :Полски
-STR_NETWORK_LANG_PORTUGUESE                                     :Португалски
-STR_NETWORK_LANG_ROMANIAN                                       :Румънски
-STR_NETWORK_LANG_RUSSIAN                                        :Руски
-STR_NETWORK_LANG_SLOVAK                                         :Словашки
-STR_NETWORK_LANG_SLOVENIAN                                      :Словенски
-STR_NETWORK_LANG_SPANISH                                        :Испански
-STR_NETWORK_LANG_SWEDISH                                        :Шведски
-STR_NETWORK_LANG_TURKISH                                        :Турски
-STR_NETWORK_LANG_UKRAINIAN                                      :Украински
-STR_NETWORK_LANG_AFRIKAANS                                      :Африкаанс
-STR_NETWORK_LANG_CROATIAN                                       :Хърватски
-STR_NETWORK_LANG_CATALAN                                        :Каталонски
-STR_NETWORK_LANG_ESTONIAN                                       :Естонски
-STR_NETWORK_LANG_GALICIAN                                       :Галиматия
-STR_NETWORK_LANG_GREEK                                          :Гръцки
-STR_NETWORK_LANG_LATVIAN                                        :Латвийски
-############ End of leave-in-this-order
 
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}Преддверие на мрежовите игри
@@ -2026,22 +1959,14 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Комп
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Списък с играчите
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :Наблюдавай
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :Нова фирма
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :Изгони
-STR_NETWORK_CLIENTLIST_BAN                                      :Бан
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Дай пари
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Кажи на всички
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Кажи на компания
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Лично съобщение
+
+
 
 STR_NETWORK_SERVER                                              :Сървър
 STR_NETWORK_CLIENT                                              :Клиент
 STR_NETWORK_SPECTATORS                                          :Наблюдатели
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Въведете количеството пари, което искате да дадете
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Незапазвай паролата
@@ -2142,8 +2067,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} с
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} създаде нова компания (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} напусна играта ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} си промени името на {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} изпрати {2:CURRENCY_LONG} на твоята компания
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** Ти даде {2:CURRENCY_LONG} на {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Сървърът прекъсна сесията
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Сървърът се рестартира...{}Моля изчакайте...
 
@@ -2219,6 +2142,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}Да, изтегли графиките
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}Не, изход от OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}Настройки на прозрачност
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}Превключва прозрачност за знаци. Ctrl за заключване
@@ -2257,6 +2181,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}Нап�
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}Съедини пътеводител
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}Построи отделен пътеводител
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :Конструкции за Двурелсов път
@@ -2442,7 +2368,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}Разм
 STR_OBJECT_CLASS_LTHS                                           :Фарове
 STR_OBJECT_CLASS_TRNS                                           :Предаватели
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}Дървета
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}Избор на вид дърво за засаждане. Ако на полето вече съществува дърво, ще бъдат добавени повече дървета от различни видове, независимо от избора на вид
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Дървета от произволен тип
@@ -2643,7 +2569,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :Земя, пр�
 STR_ABOUT_OPENTTD                                               :{WHITE}Относно OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Авторски права {COPYRIGHT} 1995 Крис Сойер (Chris Sawyer), Всички права са запазени
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD версия {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2019 The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-{STRING} The OpenTTD team
 
 # Framerate display window
 STR_FRAMERATE_CAPTION                                           :{WHITE}Скорост на кадрите
@@ -2696,14 +2622,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Брой градове:
 STR_MAPGEN_DATE                                                 :{BLACK}Дата:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Брой индустрии:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}Максимална височина на картата:
-STR_MAPGEN_MAX_HEIGHTLEVEL_UP                                   :{BLACK}Увеличаване на максималната височина на планините на карта с едно
-STR_MAPGEN_MAX_HEIGHTLEVEL_DOWN                                 :{BLACK}Намаляне максималната височина на планините на карта с едно
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}Снежна линия:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}Преместване снежната линия нагоре
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}Преместване снежната линия надолу
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Земегенератор:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Дърворазсад:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Тип на терен:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Морско ниво:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}Реки:
@@ -2728,8 +2647,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Име �
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Размер:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_MAX_HEIGHTLEVEL_QUERY_CAPT                           :{WHITE}Промяна на максималната височина на картата
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}Височина на снежната линия
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Промяна началната година
 
 # SE Map generation
@@ -3002,12 +2919,9 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Под
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} Цели
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Глобални цели
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}Основни цели:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Никакви -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- Неприложимо-
 STR_GOALS_PROGRESS                                              :{ORANGE}напредък{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}Цели на компанията:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}Кликни на задачата за да центрирате камерата на фабрика/град/плочка. Ctrl+Click отваря нов прозорец центриран на фабрика/град/плочка
 
 # Goal question window
@@ -3232,8 +3146,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}Индустрии
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- Отсъства -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% превозено)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% превозено)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Имена на индустриите - натисни за да фокусираш върху индустрията. Ctrl+Click отваря нов прозорец на изглед върху индустрията.
 
@@ -3541,10 +3453,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Авто
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}Позициониране на главният изглед върху влака.При Ctrl+Click ще проследява влака в главният изглед
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}Позициониране на главния изглед върху МПС-то. При Ctrl+Click МПС-то ще бъде проследявано в главния изглед
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}Фокусирай общия план върху местонахождението на кораба
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}Позициониране на главния изглед върху летателната машина. При Ctrl-click летателната машина ще бъде проследяван в главния изглед
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Изпращане влака в депо
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Изпращане на ПС в депо. CTRL+натискане ще изпрати само за преглед
@@ -3576,10 +3484,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}Пока
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Покажи детайлите за кораба
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Информация за самолета
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}Текущо състояние на влака - натиснете за спиране/пускане. Ctrl-click за да скролирате до целта
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}Текущо действие - натиснете за спиране/пускане на превозното средство. С Ctrl-click можеш да скролираш до целта
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}Настоящо корабно действие - натисни тук, за да спреш/задвижиш кораба. С Ctrl-click можеш да скролираш до целта
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}Състояние на самолета - натиснете за спиране/пускане. С Ctrl-click можете да скролирате до целта
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Товарене/ Разтоварване
@@ -3980,6 +3885,7 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}Прие
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}Избери маркирания AI
 STR_AI_LIST_CANCEL                                              :{BLACK}Отмени
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}Не променяй AI
+
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Параметри

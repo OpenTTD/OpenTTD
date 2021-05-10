@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -28,6 +26,7 @@
 #include "settings_gui.h"
 #include "widgets/dropdown_func.h"
 #include "widgets/dropdown_type.h"
+#include "widgets/slider_func.h"
 
 #include "widgets/music_widget.h"
 
@@ -67,7 +66,7 @@ struct MusicSystem {
 	void BuildPlaylists();
 
 	void ChangePlaylist(PlaylistChoices pl);
-	void ChangeMusicSet(const char *set_name);
+	void ChangeMusicSet(const std::string &set_name);
 	void Shuffle();
 	void Unshuffle();
 
@@ -169,12 +168,10 @@ void MusicSystem::ChangePlaylist(PlaylistChoices pl)
  * Change to named music set, and reset playback.
  * @param set_name Name of music set to select
  */
-void MusicSystem::ChangeMusicSet(const char *set_name)
+void MusicSystem::ChangeMusicSet(const std::string &set_name)
 {
 	BaseMusic::SetSet(set_name);
-
-	free(BaseMusic::ini_set);
-	BaseMusic::ini_set = stredup(set_name);
+	BaseMusic::ini_set = set_name;
 
 	this->BuildPlaylists();
 	this->ChangePlaylist(this->selected_playlist);
@@ -435,8 +432,7 @@ void MusicLoop()
 void ChangeMusicSet(int index)
 {
 	if (BaseMusic::GetIndexOfUsedSet() == index) return;
-	const char *name = BaseMusic::GetSet(index)->name;
-	_music.ChangeMusicSet(name);
+	_music.ChangeMusicSet(BaseMusic::GetSet(index)->name);
 }
 
 /**
@@ -510,7 +506,7 @@ struct MusicTrackSelectionWindow : public Window {
 					SetDParam(1, 2);
 					SetDParamStr(2, song->songname);
 					Dimension d2 = GetStringBoundingBox(STR_PLAYLIST_TRACK_NAME);
-					d.width = max(d.width, d2.width);
+					d.width = std::max(d.width, d2.width);
 					d.height += d2.height;
 				}
 				d.width += padding.width;
@@ -648,8 +644,6 @@ static void ShowMusicTrackSelection()
 }
 
 struct MusicWindow : public Window {
-	static const int slider_width = 3;
-
 	MusicWindow(WindowDesc *desc, WindowNumber number) : Window(desc)
 	{
 		this->InitNested(number);
@@ -734,26 +728,24 @@ struct MusicWindow : public Window {
 			case WID_M_TRACK_NAME: {
 				GfxFillRect(r.left, r.top + 1, r.right - 1, r.bottom, PC_BLACK);
 				StringID str = STR_MUSIC_TITLE_NONE;
+				MusicSystem::PlaylistEntry entry(_music.GetCurrentSong());
 				if (BaseMusic::GetUsedSet()->num_available == 0) {
 					str = STR_MUSIC_TITLE_NOMUSIC;
 				} else if (_music.IsPlaying()) {
 					str = STR_MUSIC_TITLE_NAME;
-					SetDParamStr(0, _music.GetCurrentSong().songname);
+					SetDParamStr(0, entry.songname);
 				}
 				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + WD_FRAMERECT_TOP, str, TC_FROMSTRING, SA_HOR_CENTER);
 				break;
 			}
 
-			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: {
-				int sw = ScaleGUITrad(slider_width);
-				int hsw = sw / 2;
-				DrawFrameRect(r.left + hsw, r.top + 2, r.right - hsw, r.bottom - 2, COLOUR_GREY, FR_LOWERED);
-				byte volume = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
-				if (_current_text_dir == TD_RTL) volume = 127 - volume;
-				int x = r.left + (volume * (r.right - r.left - sw) / 127);
-				DrawFrameRect(x, r.top, x + sw, r.bottom, COLOUR_GREY, FR_NONE);
+			case WID_M_MUSIC_VOL:
+				DrawVolumeSliderWidget(r, _settings_client.music.music_vol);
 				break;
-			}
+
+			case WID_M_EFFECT_VOL:
+				DrawVolumeSliderWidget(r, _settings_client.music.effect_vol);
+				break;
 		}
 	}
 
@@ -794,19 +786,11 @@ struct MusicWindow : public Window {
 				break;
 
 			case WID_M_MUSIC_VOL: case WID_M_EFFECT_VOL: { // volume sliders
-				int x = pt.x - this->GetWidget<NWidgetBase>(widget)->pos_x;
-
-				byte *vol = (widget == WID_M_MUSIC_VOL) ? &_settings_client.music.music_vol : &_settings_client.music.effect_vol;
-
-				byte new_vol = Clamp(x * 127 / (int)this->GetWidget<NWidgetBase>(widget)->current_x, 0, 127);
-				if (_current_text_dir == TD_RTL) new_vol = 127 - new_vol;
-				/* Clamp to make sure min and max are properly settable */
-				if (new_vol > 124) new_vol = 127;
-				if (new_vol < 3) new_vol = 0;
-				if (new_vol != *vol) {
-					*vol = new_vol;
-					if (widget == WID_M_MUSIC_VOL) MusicDriver::GetInstance()->SetVolume(new_vol);
-					this->SetDirty();
+				byte &vol = (widget == WID_M_MUSIC_VOL) ? _settings_client.music.music_vol : _settings_client.music.effect_vol;
+				if (ClickVolumeSliderWidget(this->GetWidget<NWidgetBase>(widget)->GetCurrentRect(), pt, vol)) {
+					if (widget == WID_M_MUSIC_VOL) MusicDriver::GetInstance()->SetVolume(vol);
+					this->SetWidgetDirty(widget);
+					SetWindowClassesDirty(WC_GAME_OPTIONS);
 				}
 
 				if (click_count > 0) this->mouse_capture_widget = widget;
@@ -855,32 +839,14 @@ static const NWidgetPart _nested_music_window_widgets[] = {
 			NWidget(WWT_PANEL, COLOUR_GREY, -1), SetFill(1, 1), EndContainer(),
 		EndContainer(),
 		NWidget(WWT_PANEL, COLOUR_GREY, WID_M_SLIDERS),
-			NWidget(NWID_HORIZONTAL), SetPIP(20, 20, 20),
+			NWidget(NWID_HORIZONTAL), SetPIP(4, 0, 4),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_LABEL, COLOUR_GREY, -1), SetFill(1, 0), SetDataTip(STR_MUSIC_MUSIC_VOLUME, STR_NULL),
-					NWidget(WWT_EMPTY, COLOUR_GREY, WID_M_MUSIC_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
-					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MIN, STR_NULL),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MAX, STR_NULL),
-					EndContainer(),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_M_MUSIC_VOL), SetMinimalSize(67, 0), SetPadding(2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 				EndContainer(),
 				NWidget(NWID_VERTICAL),
 					NWidget(WWT_LABEL, COLOUR_GREY, -1), SetFill(1, 0), SetDataTip(STR_MUSIC_EFFECTS_VOLUME, STR_NULL),
-					NWidget(WWT_EMPTY, COLOUR_GREY, WID_M_EFFECT_VOL), SetMinimalSize(67, 0), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
-					NWidget(NWID_HORIZONTAL),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MIN, STR_NULL),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MARKER, STR_NULL), SetFill(1, 0),
-						NWidget(WWT_LABEL, COLOUR_GREY, -1), SetDataTip(STR_MUSIC_RULER_MAX, STR_NULL),
-					EndContainer(),
+					NWidget(WWT_EMPTY, COLOUR_GREY, WID_M_EFFECT_VOL), SetMinimalSize(67, 0), SetPadding(2), SetMinimalTextLines(1, 0), SetFill(1, 0), SetDataTip(0x0, STR_MUSIC_TOOLTIP_DRAG_SLIDERS_TO_SET_MUSIC),
 				EndContainer(),
 			EndContainer(),
 		EndContainer(),

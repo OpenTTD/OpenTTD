@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -236,7 +234,7 @@ public:
 						if (x * new_height > new_capacity) continue;
 						(*copy)(new_data + (x - 1) * new_height,
 								this->data + (x - 1) * this->height,
-								min(this->height, new_height));
+								std::min(this->height, new_height));
 					}
 				} else {
 					/* If matrix is shrinking copy from the front. */
@@ -244,7 +242,7 @@ public:
 						if ((x + 1) * new_height > new_capacity) break;
 						(*copy)(new_data + x * new_height,
 								this->data + x * this->height,
-								min(this->height, new_height));
+								std::min(this->height, new_height));
 					}
 				}
 			}

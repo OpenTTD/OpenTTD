@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -9,12 +7,10 @@
 
 /** @file dmusic.cpp Playing music via DirectMusic. */
 
-#ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
-
 #define INITGUID
 #include "../stdafx.h"
 #ifdef WIN32_LEAN_AND_MEAN
-	#undef WIN32_LEAN_AND_MEAN // Don't exclude rarely-used stuff from Windows headers
+#	undef WIN32_LEAN_AND_MEAN // Don't exclude rarely-used stuff from Windows headers
 #endif
 #include "../debug.h"
 #include "../os/windows/win32.h"
@@ -29,7 +25,6 @@
 #include <windows.h>
 #include <dmksctrl.h>
 #include <dmusicc.h>
-#include <algorithm>
 #include <mutex>
 
 #include "../safeguards.h"
@@ -86,7 +81,7 @@ struct DLSFile {
 	std::vector<DLSWave> waves;
 
 	/** Try loading a DLS file into memory. */
-	bool LoadFile(const TCHAR *file);
+	bool LoadFile(const wchar_t *file);
 
 private:
 	/** Load an articulation structure from a DLS file. */
@@ -433,11 +428,11 @@ bool DLSFile::ReadDLSWaveList(FILE *f, DWORD list_length)
 	return true;
 }
 
-bool DLSFile::LoadFile(const TCHAR *file)
+bool DLSFile::LoadFile(const wchar_t *file)
 {
-	DEBUG(driver, 2, "DMusic: Try to load DLS file %s", FS2OTTD(file));
+	DEBUG(driver, 2, "DMusic: Try to load DLS file %s", FS2OTTD(file).c_str());
 
-	FILE *f = _tfopen(file, _T("rb"));
+	FILE *f = _wfopen(file, L"rb");
 	if (f == nullptr) return false;
 
 	FileCloser f_scope(f);
@@ -866,11 +861,11 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 		if (user_dls == nullptr) {
 			/* Try loading the default GM DLS file stored in the registry. */
 			HKEY hkDM;
-			if (SUCCEEDED(RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T("Software\\Microsoft\\DirectMusic"), 0, KEY_READ, &hkDM))) {
-				TCHAR dls_path[MAX_PATH];
+			if (SUCCEEDED(RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\DirectMusic", 0, KEY_READ, &hkDM))) {
+				wchar_t dls_path[MAX_PATH];
 				DWORD buf_size = sizeof(dls_path); // Buffer size as to be given in bytes!
-				if (SUCCEEDED(RegQueryValueEx(hkDM, _T("GMFilePath"), nullptr, nullptr, (LPBYTE)dls_path, &buf_size))) {
-					TCHAR expand_path[MAX_PATH * 2];
+				if (SUCCEEDED(RegQueryValueEx(hkDM, L"GMFilePath", nullptr, nullptr, (LPBYTE)dls_path, &buf_size))) {
+					wchar_t expand_path[MAX_PATH * 2];
 					ExpandEnvironmentStrings(dls_path, expand_path, lengthof(expand_path));
 					if (!dls_file.LoadFile(expand_path)) DEBUG(driver, 1, "Failed to load default GM DLS file from registry");
 				}
@@ -879,14 +874,14 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 
 			/* If we couldn't load the file from the registry, try again at the default install path of the GM DLS file. */
 			if (dls_file.instruments.size() == 0) {
-				static const TCHAR *DLS_GM_FILE = _T("%windir%\\System32\\drivers\\gm.dls");
-				TCHAR path[MAX_PATH];
+				static const wchar_t *DLS_GM_FILE = L"%windir%\\System32\\drivers\\gm.dls";
+				wchar_t path[MAX_PATH];
 				ExpandEnvironmentStrings(DLS_GM_FILE, path, lengthof(path));
 
 				if (!dls_file.LoadFile(path)) return "Can't load GM DLS collection";
 			}
 		} else {
-			if (!dls_file.LoadFile(OTTD2FS(user_dls))) return "Can't load GM DLS collection";
+			if (!dls_file.LoadFile(OTTD2FS(user_dls).c_str())) return "Can't load GM DLS collection";
 		}
 
 		/* Get download port and allocate download IDs. */
@@ -1073,10 +1068,10 @@ static const char *LoadDefaultDLSFile(const char *user_dls)
 }
 
 
-const char *MusicDriver_DMusic::Start(const char * const *parm)
+const char *MusicDriver_DMusic::Start(const StringList &parm)
 {
 	/* Initialize COM */
-	if (FAILED(CoInitializeEx(nullptr, COINITBASE_MULTITHREADED))) return "COM initialization failed";
+	if (FAILED(CoInitializeEx(nullptr, COINIT_MULTITHREADED))) return "COM initialization failed";
 
 	/* Create the DirectMusic object */
 	if (FAILED(CoCreateInstance(
@@ -1108,7 +1103,6 @@ const char *MusicDriver_DMusic::Start(const char * const *parm)
 		DEBUG(driver, 1, "Detected DirectMusic ports:");
 		for (int i = 0; _music->EnumPort(i, &caps) == S_OK; i++) {
 			if (caps.dwClass == DMUS_PC_OUTPUTCLASS) {
-				/* Description is UNICODE even for ANSI build. */
 				DEBUG(driver, 1, " %d: %s%s", i, convert_from_fs(caps.wszDescription, desc, lengthof(desc)), i == pIdx ? " (selected)" : "");
 			}
 		}
@@ -1243,6 +1237,3 @@ void MusicDriver_DMusic::SetVolume(byte vol)
 {
 	_playback.new_volume = vol;
 }
-
-
-#endif /* WIN32_ENABLE_DIRECTMUSIC_SUPPORT */

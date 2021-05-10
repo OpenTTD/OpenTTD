@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -23,9 +21,8 @@ enum SortListFlags {
 	VL_DESC       = 1 << 0, ///< sort descending or ascending
 	VL_RESORT     = 1 << 1, ///< instruct the code to resort the list in the next loop
 	VL_REBUILD    = 1 << 2, ///< rebuild the sort list
-	VL_FIRST_SORT = 1 << 3, ///< sort with quick sort first
-	VL_FILTER     = 1 << 4, ///< filter disabled/enabled
-	VL_END        = 1 << 5,
+	VL_FILTER     = 1 << 3, ///< filter disabled/enabled
+	VL_END        = 1 << 4,
 };
 DECLARE_ENUM_AS_BIT_SET(SortListFlags)
 
@@ -82,7 +79,7 @@ public:
 	GUIList() :
 		sort_func_list(nullptr),
 		filter_func_list(nullptr),
-		flags(VL_FIRST_SORT),
+		flags(VL_NONE),
 		sort_type(0),
 		filter_type(0),
 		resort_timer(1)
@@ -106,7 +103,7 @@ public:
 	void SetSortType(uint8 n_type)
 	{
 		if (this->sort_type != n_type) {
-			SETBITS(this->flags, VL_RESORT | VL_FIRST_SORT);
+			SETBITS(this->flags, VL_RESORT);
 			this->sort_type = n_type;
 		}
 	}
@@ -138,8 +135,6 @@ public:
 			CLRBITS(this->flags, VL_DESC);
 		}
 		this->sort_type = l.criteria;
-
-		SETBITS(this->flags, VL_FIRST_SORT);
 	}
 
 	/**
@@ -244,15 +239,12 @@ public:
 
 	/**
 	 * Sort the list.
-	 *  For the first sorting we use quick sort since it is
-	 *  faster for irregular sorted data. After that we
-	 *  use gsort.
-	 *
 	 * @param compare The function to compare two list items
 	 * @return true if the list sequence has been altered
 	 *
 	 */
-	bool Sort(SortFunction *compare)
+	template <typename Comp>
+	bool Sort(Comp compare)
 	{
 		/* Do not sort if the resort bit is not set */
 		if (!(this->flags & VL_RESORT)) return false;
@@ -265,13 +257,6 @@ public:
 		if (!this->IsSortable()) return false;
 
 		const bool desc = (this->flags & VL_DESC) != 0;
-
-		if (this->flags & VL_FIRST_SORT) {
-			CLRBITS(this->flags, VL_FIRST_SORT);
-
-			std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) { return desc ? compare(b, a) : compare(a, b); });
-			return true;
-		}
 
 		std::sort(std::vector<T>::begin(), std::vector<T>::end(), [&](const T &a, const T &b) { return desc ? compare(b, a) : compare(a, b); });
 		return true;
@@ -395,7 +380,7 @@ public:
 	void RebuildDone()
 	{
 		CLRBITS(this->flags, VL_REBUILD);
-		SETBITS(this->flags, VL_RESORT | VL_FIRST_SORT);
+		SETBITS(this->flags, VL_RESORT);
 	}
 };
 

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -16,6 +14,26 @@
 #ifndef NETWORK_CORE_OS_ABSTRACTION_H
 #define NETWORK_CORE_OS_ABSTRACTION_H
 
+/**
+ * Abstraction of a network error where all implementation details of the
+ * error codes are encapsulated in this class and the abstraction layer.
+ */
+class NetworkError {
+private:
+	int error;                   ///< The underlying error number from errno or WSAGetLastError.
+	mutable std::string message; ///< The string representation of the error (set on first call to #AsString).
+public:
+	NetworkError(int error);
+
+	bool HasError() const;
+	bool WouldBlock() const;
+	bool IsConnectionReset() const;
+	bool IsConnectInProgress() const;
+	const char *AsString() const;
+
+	static NetworkError GetLast();
+};
+
 /* Include standard stuff per OS */
 
 /* Windows stuff */
@@ -25,9 +43,6 @@
 #include <ws2tcpip.h>
 #include <windows.h>
 
-#define GET_LAST_ERROR() WSAGetLastError()
-#undef EWOULDBLOCK
-#define EWOULDBLOCK WSAEWOULDBLOCK
 /* Windows has some different names for some types */
 typedef unsigned long in_addr_t;
 
@@ -51,9 +66,7 @@ typedef unsigned long in_addr_t;
 #	endif
 #	define SOCKET int
 #	define INVALID_SOCKET -1
-#	define ioctlsocket ioctl
 #	define closesocket close
-#	define GET_LAST_ERROR() (errno)
 /* Need this for FIONREAD on solaris */
 #	define BSD_COMP
 
@@ -85,15 +98,23 @@ typedef unsigned long in_addr_t;
 #	include <errno.h>
 #	include <sys/time.h>
 #	include <netdb.h>
+
+#   if defined(__EMSCRIPTEN__)
+/* Emscripten doesn't support AI_ADDRCONFIG and errors out on it. */
+#		undef AI_ADDRCONFIG
+#		define AI_ADDRCONFIG 0
+/* Emscripten says it supports FD_SETSIZE fds, but it really only supports 64.
+ * https://github.com/emscripten-core/emscripten/issues/1711 */
+#		undef FD_SETSIZE
+#		define FD_SETSIZE 64
+#   endif
 #endif /* UNIX */
 
 /* OS/2 stuff */
 #if defined(__OS2__)
 #	define SOCKET int
 #	define INVALID_SOCKET -1
-#	define ioctlsocket ioctl
 #	define closesocket close
-#	define GET_LAST_ERROR() (sock_errno())
 
 /* Includes needed for OS/2 systems */
 #	include <types.h>
@@ -143,36 +164,35 @@ typedef unsigned long in_addr_t;
 
 #endif /* OS/2 */
 
+#ifdef __EMSCRIPTEN__
 /**
- * Try to set the socket into non-blocking mode.
- * @param d The socket to set the non-blocking more for.
- * @return True if setting the non-blocking mode succeeded, otherwise false.
+ * Emscripten doesn't set 'addrlen' for accept(), getsockname(), getpeername()
+ * and recvfrom(), which confuses other functions and causes them to crash.
+ * This function needs to be called after these four functions to make sure
+ * 'addrlen' is patched up.
+ *
+ * https://github.com/emscripten-core/emscripten/issues/12996
+ *
+ * @param address The address returned by those four functions.
+ * @return The correct value for addrlen.
  */
-static inline bool SetNonBlocking(SOCKET d)
+static inline socklen_t FixAddrLenForEmscripten(struct sockaddr_storage &address)
 {
-#ifdef _WIN32
-	u_long nonblocking = 1;
-#else
-	int nonblocking = 1;
+	switch (address.ss_family) {
+		case AF_INET6: return sizeof(struct sockaddr_in6);
+		case AF_INET: return sizeof(struct sockaddr_in);
+		default: NOT_REACHED();
+	}
+}
 #endif
-	return ioctlsocket(d, FIONBIO, &nonblocking) == 0;
-}
 
-/**
- * Try to set the socket to not delay sending.
- * @param d The socket to disable the delaying for.
- * @return True if disabling the delaying succeeded, otherwise false.
- */
-static inline bool SetNoDelay(SOCKET d)
-{
-	/* XXX should this be done at all? */
-	int b = 1;
-	/* The (const char*) cast is needed for windows */
-	return setsockopt(d, IPPROTO_TCP, TCP_NODELAY, (const char*)&b, sizeof(b)) == 0;
-}
+
+bool SetNonBlocking(SOCKET d);
+bool SetNoDelay(SOCKET d);
+NetworkError GetSocketError(SOCKET d);
 
 /* Make sure these structures have the size we expect them to be */
-assert_compile(sizeof(in_addr)  ==  4); ///< IPv4 addresses should be 4 bytes.
-assert_compile(sizeof(in6_addr) == 16); ///< IPv6 addresses should be 16 bytes.
+static_assert(sizeof(in_addr)  ==  4); ///< IPv4 addresses should be 4 bytes.
+static_assert(sizeof(in6_addr) == 16); ///< IPv6 addresses should be 16 bytes.
 
 #endif /* NETWORK_CORE_OS_ABSTRACTION_H */

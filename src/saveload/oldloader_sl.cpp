@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -111,8 +109,7 @@ static void FixTTDMapArray()
 
 static void FixTTDDepots()
 {
-	const Depot *d;
-	FOR_ALL_DEPOTS_FROM(d, 252) {
+	for (const Depot *d : Depot::Iterate(252)) {
 		if (!IsDepotTile(d->xy) || GetDepotIndex(d->xy) != d->index) {
 			/** Workaround for SVXConverter bug, depots 252-255 could be invalid */
 			delete d;
@@ -155,10 +152,8 @@ static uint32 RemapOldTownName(uint32 townnameparts, byte old_town_name_type)
 
 static void FixOldTowns()
 {
-	Town *town;
-
 	/* Convert town-names if needed */
-	FOR_ALL_TOWNS(town) {
+	for (Town *town : Town::Iterate()) {
 		if (IsInsideMM(town->townnametype, 0x20C1, 0x20C3)) {
 			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _settings_game.game_creation.town_name;
 			town->townnameparts = RemapOldTownName(town->townnameparts, _settings_game.game_creation.town_name);
@@ -175,9 +170,7 @@ static StringID *_old_vehicle_names;
  */
 void FixOldVehicles()
 {
-	Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		if ((size_t)v->next == 0xFFFF) {
 			v->next = nullptr;
 		} else {
@@ -387,8 +380,7 @@ static bool FixTTOEngines()
 		233, 234, 235, 236, 237, 238, 253
 	};
 
-	Vehicle *v;
-	FOR_ALL_VEHICLES(v) {
+	for (Vehicle *v : Vehicle::Iterate()) {
 		if (v->engine_type >= lengthof(tto_to_ttd)) return false;
 		v->engine_type = tto_to_ttd[v->engine_type];
 	}
@@ -400,7 +392,7 @@ static bool FixTTOEngines()
 	for (uint i = 0; i < lengthof(_orig_ship_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_SHIP, i);
 	for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++, j++) new (GetTempDataEngine(j)) Engine(VEH_AIRCRAFT, i);
 
-	Date aging_date = min(_date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
+	Date aging_date = std::min(_date + DAYS_TILL_ORIGINAL_BASE_YEAR, ConvertYMDToDate(2050, 0, 1));
 
 	for (EngineID i = 0; i < 256; i++) {
 		int oi = ttd_to_tto[i];
@@ -453,7 +445,7 @@ static bool FixTTOEngines()
 		e->preview_company = INVALID_COMPANY;
 		e->preview_asked = (CompanyMask)-1;
 		e->preview_wait = 0;
-		e->name = nullptr;
+		e->name = std::string{};
 	}
 
 	return true;
@@ -461,8 +453,7 @@ static bool FixTTOEngines()
 
 static void FixTTOCompanies()
 {
-	Company *c;
-	FOR_ALL_COMPANIES(c) {
+	for (Company *c : Company::Iterate()) {
 		c->cur_economy.company_value = CalculateCompanyValue(c); // company value history is zeroed
 	}
 }
@@ -725,7 +716,7 @@ static const OldChunks station_chunk[] = {
 	OCL_NULL( 4 ), ///< bus/lorry tile
 	OCL_SVAR(   OC_TILE, Station, train_station.tile ),
 	OCL_SVAR(   OC_TILE, Station, airport.tile ),
-	OCL_NULL( 4 ), ///< dock tile
+	OCL_NULL( 2 ), ///< dock tile
 	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Station, train_station.w ),
 
 	OCL_NULL( 1 ),         ///< sort-index, no longer in use
@@ -1162,7 +1153,7 @@ static const OldChunks vehicle_chunk[] = {
 
 	OCL_SVAR(  OC_UINT8, Vehicle, owner ),
 	OCL_SVAR(   OC_TILE, Vehicle, tile ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, sprite_seq.seq[0].sprite ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, sprite_cache.sprite_seq.seq[0].sprite ),
 
 	OCL_NULL( 8 ),        ///< Vehicle sprite box, calculated automatically
 
@@ -1255,7 +1246,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			if (v == nullptr) continue;
 			v->refit_cap = v->cargo_cap;
 
-			SpriteID sprite = v->sprite_seq.seq[0].sprite;
+			SpriteID sprite = v->sprite_cache.sprite_seq.seq[0].sprite;
 			/* no need to override other sprites */
 			if (IsInsideMM(sprite, 1460, 1465)) {
 				sprite += 580; // aircraft smoke puff
@@ -1266,7 +1257,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			} else if (IsInsideMM(sprite, 2516, 2539)) {
 				sprite += 1385; // rotor or disaster-related vehicles
 			}
-			v->sprite_seq.seq[0].sprite = sprite;
+			v->sprite_cache.sprite_seq.seq[0].sprite = sprite;
 
 			switch (v->type) {
 				case VEH_TRAIN: {
@@ -1832,7 +1823,7 @@ bool LoadTTOMain(LoadgameState *ls)
 	 * "increase them to compensate for the faster time advance in TTD compared to TTO
 	 * which otherwise would cause much less income while the annual running costs of
 	 * the vehicles stay the same" */
-	_economy.inflation_payment = min(_economy.inflation_payment * 124 / 74, MAX_INFLATION);
+	_economy.inflation_payment = std::min(_economy.inflation_payment * 124 / 74, MAX_INFLATION);
 
 	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTO savegame successfully converted");

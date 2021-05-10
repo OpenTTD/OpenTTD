@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -92,7 +90,7 @@ static void Load_GSDT()
 				DEBUG(script, 0, "The savegame has an GameScript by the name '%s', version %d which is no longer available.", _game_saveload_name, _game_saveload_version);
 				DEBUG(script, 0, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 			}
-			/* Make sure the GameScript doesn't get the saveload data, as he was not the
+			/* Make sure the GameScript doesn't get the saveload data, as it was not the
 			 *  writer of the saveload data in the first place */
 			_game_saveload_version = -1;
 		}
@@ -115,23 +113,23 @@ static void Save_GSDT()
 
 extern GameStrings *_current_data;
 
-static const char *_game_saveload_string;
+static std::string _game_saveload_string;
 static uint _game_saveload_strings;
 
 static const SaveLoad _game_language_header[] = {
-	SLEG_STR(_game_saveload_string, SLE_STR),
-	SLEG_VAR(_game_saveload_strings, SLE_UINT32),
-	 SLE_END()
+	SLEG_SSTR(_game_saveload_string, SLE_STR),
+	 SLEG_VAR(_game_saveload_strings, SLE_UINT32),
+	  SLE_END()
 };
 
 static const SaveLoad _game_language_string[] = {
-	SLEG_STR(_game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
-	 SLE_END()
+	SLEG_SSTR(_game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
+	  SLE_END()
 };
 
 static void SaveReal_GSTR(const LanguageStrings *ls)
 {
-	_game_saveload_string  = ls->language;
+	_game_saveload_string  = ls->language.c_str();
 	_game_saveload_strings = (uint)ls->lines.size();
 
 	SlObject(nullptr, _game_language_header);
@@ -147,13 +145,13 @@ static void Load_GSTR()
 	_current_data = new GameStrings();
 
 	while (SlIterateArray() != -1) {
-		_game_saveload_string = nullptr;
+		_game_saveload_string.clear();
 		SlObject(nullptr, _game_language_header);
 
-		std::unique_ptr<LanguageStrings> ls(new LanguageStrings(_game_saveload_string != nullptr ? _game_saveload_string : ""));
+		LanguageStrings ls(_game_saveload_string);
 		for (uint i = 0; i < _game_saveload_strings; i++) {
 			SlObject(nullptr, _game_language_string);
-			ls->lines.emplace_back(_game_saveload_string != nullptr ? _game_saveload_string : "");
+			ls.lines.emplace_back(_game_saveload_string);
 		}
 
 		_current_data->raw_strings.push_back(std::move(ls));
@@ -176,7 +174,7 @@ static void Save_GSTR()
 
 	for (uint i = 0; i < _current_data->raw_strings.size(); i++) {
 		SlSetArrayIndex(i);
-		SlAutolength((AutolengthProc *)SaveReal_GSTR, _current_data->raw_strings[i].get());
+		SlAutolength((AutolengthProc *)SaveReal_GSTR, &_current_data->raw_strings[i]);
 	}
 }
 

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -176,9 +174,9 @@ Colour Blitter_32bppBase::ReallyAdjustBrightness(Colour colour, uint8 brightness
 	/* Reduce overbright strength */
 	ob /= 2;
 	return Colour(
-		r >= 255 ? 255 : min(r + ob * (255 - r) / 256, 255),
-		g >= 255 ? 255 : min(g + ob * (255 - g) / 256, 255),
-		b >= 255 ? 255 : min(b + ob * (255 - b) / 256, 255),
+		r >= 255 ? 255 : std::min(r + ob * (255 - r) / 256, 255),
+		g >= 255 ? 255 : std::min(g + ob * (255 - g) / 256, 255),
+		b >= 255 ? 255 : std::min(b + ob * (255 - b) / 256, 255),
 		colour.a);
 }
 

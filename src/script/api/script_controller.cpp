@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -79,9 +77,9 @@ ScriptController::ScriptController(CompanyID company) :
 
 ScriptController::~ScriptController()
 {
-	for (LoadedLibraryList::iterator iter = this->loaded_library.begin(); iter != this->loaded_library.end(); iter++) {
-		free((*iter).second);
-		free((*iter).first);
+	for (const auto &item : this->loaded_library) {
+		free(item.second);
+		free(item.first);
 	}
 
 	this->loaded_library.clear();
@@ -113,11 +111,6 @@ ScriptController::~ScriptController()
 	Squirrel *engine = ScriptObject::GetActiveInstance()->engine;
 	HSQUIRRELVM vm = engine->GetVM();
 
-	/* Internally we store libraries as 'library.version' */
-	char library_name[1024];
-	seprintf(library_name, lastof(library_name), "%s.%d", library, version);
-	strtolower(library_name);
-
 	ScriptInfo *lib = ScriptObject::GetActiveInstance()->FindLibrary(library, version);
 	if (lib == nullptr) {
 		char error[1024];
@@ -125,15 +118,20 @@ ScriptController::~ScriptController()
 		throw sq_throwerror(vm, error);
 	}
 
+	/* Internally we store libraries as 'library.version' */
+	char library_name[1024];
+	seprintf(library_name, lastof(library_name), "%s.%d", library, version);
+	strtolower(library_name);
+
 	/* Get the current table/class we belong to */
 	HSQOBJECT parent;
 	sq_getstackobj(vm, 1, &parent);
 
 	char fake_class[1024];
 
-	LoadedLibraryList::iterator iter = controller->loaded_library.find(library_name);
-	if (iter != controller->loaded_library.end()) {
-		strecpy(fake_class, (*iter).second, lastof(fake_class));
+	LoadedLibraryList::iterator it = controller->loaded_library.find(library_name);
+	if (it != controller->loaded_library.end()) {
+		strecpy(fake_class, (*it).second, lastof(fake_class));
 	} else {
 		int next_number = ++controller->loaded_library_count;
 

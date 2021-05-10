@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -27,7 +25,7 @@ static const uint SIG_TBD_SIZE    = 256; ///< number of intersections - open nod
 static const uint SIG_GLOB_SIZE   = 128; ///< number of open blocks (block can be opened more times until detected)
 static const uint SIG_GLOB_UPDATE =  64; ///< how many items need to be in _globset to force update
 
-assert_compile(SIG_GLOB_UPDATE <= SIG_GLOB_SIZE);
+static_assert(SIG_GLOB_UPDATE <= SIG_GLOB_SIZE);
 
 /** incidating trackbits with given enterdir */
 static const TrackBits _enterdir_to_trackbits[DIAGDIR_END] = {
@@ -270,10 +268,10 @@ static SigFlags ExploreSegment(Owner owner)
 {
 	SigFlags flags = SF_NONE;
 
-	TileIndex tile;
-	DiagDirection enterdir;
+	TileIndex tile = INVALID_TILE; // Stop GCC from complaining about a possibly uninitialized variable (issue #8280).
+	DiagDirection enterdir = INVALID_DIAGDIR;
 
-	while (_tbdset.Get(&tile, &enterdir)) {
+	while (_tbdset.Get(&tile, &enterdir)) { // tile and enterdir are initialized here, unless I'm mistaken.
 		TileIndex oldtile = tile; // tile we are leaving
 		DiagDirection exitdir = enterdir == INVALID_DIAGDIR ? INVALID_DIAGDIR : ReverseDiagDir(enterdir); // expected new exit direction (for straight line)
 
@@ -409,8 +407,8 @@ static SigFlags ExploreSegment(Owner owner)
  */
 static void UpdateSignalsAroundSegment(SigFlags flags)
 {
-	TileIndex tile;
-	Trackdir trackdir;
+	TileIndex tile = INVALID_TILE; // Stop GCC from complaining about a possibly uninitialized variable (issue #8280).
+	Trackdir trackdir = INVALID_TRACKDIR;
 
 	while (_tbuset.Get(&tile, &trackdir)) {
 		assert(HasSignalOnTrackdir(tile, trackdir));
@@ -476,8 +474,8 @@ static SigSegState UpdateSignalsInBuffer(Owner owner)
 	bool first = true;  // first block?
 	SigSegState state = SIGSEG_FREE; // value to return
 
-	TileIndex tile;
-	DiagDirection dir;
+	TileIndex tile = INVALID_TILE; // Stop GCC from complaining about a possibly uninitialized variable (issue #8280).
+	DiagDirection dir = INVALID_DIAGDIR;
 
 	while (_globset.Get(&tile, &dir)) {
 		assert(_tbuset.IsEmpty());

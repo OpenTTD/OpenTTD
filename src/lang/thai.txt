@@ -10,8 +10,6 @@
 ##grflangid 0x42
 
 
-# $Id$
-
 # This file is part of OpenTTD.
 # OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
 # OpenTTD is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -50,9 +48,9 @@ STR_CARGO_PLURAL_WHEAT                                          :ข้าวส
 STR_CARGO_PLURAL_RUBBER                                         :ยางพารา
 STR_CARGO_PLURAL_SUGAR                                          :น้ำตาล
 STR_CARGO_PLURAL_TOYS                                           :ของเล่น
-STR_CARGO_PLURAL_CANDY                                          :ขนมสายไหม
+STR_CARGO_PLURAL_SWEETS                                         :ขนมสายไหม
 STR_CARGO_PLURAL_COLA                                           :โคล่า
-STR_CARGO_PLURAL_COTTON_CANDY                                   :ขนมสายไหม
+STR_CARGO_PLURAL_CANDYFLOSS                                     :ขนมสายไหม
 STR_CARGO_PLURAL_BUBBLES                                        :ฟอง
 STR_CARGO_PLURAL_TOFFEE                                         :ลูกอม
 STR_CARGO_PLURAL_BATTERIES                                      :ถ่านไฟฉาย
@@ -84,9 +82,9 @@ STR_CARGO_SINGULAR_WHEAT                                        :ข้าวส
 STR_CARGO_SINGULAR_RUBBER                                       :ยางพารา
 STR_CARGO_SINGULAR_SUGAR                                        :น้ำตาล
 STR_CARGO_SINGULAR_TOY                                          :ของเล่น
-STR_CARGO_SINGULAR_CANDY                                        :ขนมสายไหม
+STR_CARGO_SINGULAR_SWEETS                                       :ขนมสายไหม
 STR_CARGO_SINGULAR_COLA                                         :โคล่า
-STR_CARGO_SINGULAR_COTTON_CANDY                                 :ขนมสายไหม
+STR_CARGO_SINGULAR_CANDYFLOSS                                   :ขนมสายไหม
 STR_CARGO_SINGULAR_BUBBLE                                       :ฟอง
 STR_CARGO_SINGULAR_TOFFEE                                       :ลูกอม
 STR_CARGO_SINGULAR_BATTERY                                      :ถ่านไฟฉาย
@@ -233,8 +231,6 @@ STR_TOOLTIP_SORT_ORDER                                          :{BLACK}เล�
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}เลือกเกณฑ์การเรียงลำดับ
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}เลือกเกณฑ์การกรอง
 STR_BUTTON_SORT_BY                                              :{BLACK}เรียงตาม
-STR_BUTTON_LOCATION                                             :{BLACK}ที่ตั้ง
-STR_BUTTON_RENAME                                               :{BLACK}เปลี่ยนชื่อ
 
 STR_TOOLTIP_CLOSE_WINDOW                                        :{BLACK}ปิดหน้าต่าง
 STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS                              :{BLACK}ชื่อของหน้าต่าง - คลิกค้างแล้วลากเพื่อเลื่อนหน้าต่าง
@@ -304,6 +300,8 @@ STR_SORT_BY_CARGO_CAPACITY                                      :ความจ
 STR_SORT_BY_RANGE                                               :ช่วง
 STR_SORT_BY_POPULATION                                          :ประชากร
 STR_SORT_BY_RATING                                              :ความพึงพอใจ
+
+# Group by options for vehicle list
 
 # Tooltips for the main toolbar
 STR_TOOLBAR_TOOLTIP_PAUSE_GAME                                  :{BLACK}หยุดเกมชั่วคราว
@@ -389,7 +387,7 @@ STR_FILE_MENU_EXIT                                              :ออกจา
 
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :แผนที่โลก
-STR_MAP_MENU_EXTRA_VIEW_PORT                                    :มุมมองเพิ่มเติม
+STR_MAP_MENU_EXTRA_VIEWPORT                                     :มุมมองเพิ่มเติม
 STR_MAP_MENU_LINGRAPH_LEGEND                                    :เส้นทางการกระจายสินค้า
 STR_MAP_MENU_SIGN_LIST                                          :รายการป้าย
 
@@ -464,9 +462,6 @@ STR_ABOUT_MENU_SEPARATOR                                        :
 STR_ABOUT_MENU_TOGGLE_CONSOLE                                   :เปิด/ปิด คอนโซล
 STR_ABOUT_MENU_AI_DEBUG                                         :ดีบัก สคริปต์ AI/Game
 STR_ABOUT_MENU_SCREENSHOT                                       :จับภาพหน้าจอ (Ctrl+S)
-STR_ABOUT_MENU_ZOOMIN_SCREENSHOT                                :จับภาพหน้าจอในแบบขยายใหญ่สุด
-STR_ABOUT_MENU_DEFAULTZOOM_SCREENSHOT                           :ค่าเริ่มต้นของการขยายภาพในการจับหน้าจอ
-STR_ABOUT_MENU_GIANT_SCREENSHOT                                 :จับภาพหน้าจอทั้งแผนที่ (Ctrl+G)
 STR_ABOUT_MENU_ABOUT_OPENTTD                                    :เกี่ยวกับ 'OpenTTD'
 STR_ABOUT_MENU_SPRITE_ALIGNER                                   :ตัวจัดแนว Sprite
 STR_ABOUT_MENU_TOGGLE_BOUNDING_BOXES                            :เปิด/ปิด bounding boxes
@@ -556,8 +551,8 @@ STR_MONTH_DEC                                                   :ธันวา
 # Graph window
 STR_GRAPH_KEY_BUTTON                                            :{BLACK}ตัวเลือก
 STR_GRAPH_KEY_TOOLTIP                                           :{BLACK}แสดงตัวเลือกกราฟ
-STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}{} {STRING}
-STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{} {STRING}{}{NUM}
+STR_GRAPH_X_LABEL_MONTH                                         :{TINY_FONT}{STRING}
+STR_GRAPH_X_LABEL_MONTH_YEAR                                    :{TINY_FONT}{STRING}{}{NUM}
 STR_GRAPH_Y_LABEL                                               :{TINY_FONT}{STRING}
 STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COMMA}
 
@@ -636,9 +631,6 @@ STR_MUSIC_PLAYLIST_CUSTOM_1                                     :{TINY_FONT}{BLA
 STR_MUSIC_PLAYLIST_CUSTOM_2                                     :{TINY_FONT}{BLACK}กำหนดเอง 2
 STR_MUSIC_MUSIC_VOLUME                                          :{TINY_FONT}{BLACK}ระดับเสียงดนตรี
 STR_MUSIC_EFFECTS_VOLUME                                        :{TINY_FONT}{BLACK}ระดับเสียงเอฟเฟกต์
-STR_MUSIC_RULER_MIN                                             :{TINY_FONT}{BLACK}ต่ำสุด
-STR_MUSIC_RULER_MAX                                             :{TINY_FONT}{BLACK}สูงสุด
-STR_MUSIC_RULER_MARKER                                          :{TINY_FONT}{BLACK}'
 STR_MUSIC_TRACK_NONE                                            :{TINY_FONT}{DKGREEN}--
 STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKGREEN}{ZEROFILL_NUM}
 STR_MUSIC_TITLE_NONE                                            :{TINY_FONT}{DKGREEN}------
@@ -849,6 +841,7 @@ STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE                              :{BIG_FONT}{BLAC
 STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLACK}{ENGINE}
 STR_NEWS_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                    :{BLACK}ใหม่ {STRING} มีจำหน่ายแล้ว  -  {ENGINE}
 
+
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO                        :{WHITE}{STATION} ไม่ต้องการรับ {STRING} อีกต่อไป
 STR_NEWS_STATION_NO_LONGER_ACCEPTS_CARGO_OR_CARGO               :{WHITE}{STATION} ไม่รับ {STRING} หรือ {STRING} แล้ว
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION} ขณะนี้ยอมรับ {STRING}
@@ -867,7 +860,7 @@ STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLAC
 STR_NEWS_EXCLUSIVE_RIGHTS_DESCRIPTION                           :{BIG_FONT}{BLACK}ฝ่ายบริหารของเมือง {TOWN} ลงนามสัญญากับ {STRING} เป็นะระยเวลา 1 ปีสำหรับสัมปทานขนส่งพิเศษ
 
 # Extra view window
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}มุมมอง {COMMA}
+STR_EXTRA_VIEWPORT_TITLE                                        :{WHITE}มุมมอง {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}คัดลอกไปยังมุมมอง
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}คัดลอกตำแหน่งของมุมมองหลังมายังมุมมองนี้
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}วางจากมุมมอง
@@ -915,8 +908,6 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgian Lari (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iranian Rial (IRR)
 ############ end of currency region
 
-STR_GAME_OPTIONS_ROAD_VEHICLES_FRAME                            :{BLACK}ยานยนต์
-STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_TOOLTIP                 :{BLACK}เลือกฝั่งถนนในการขับยานพาหนะ
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :ขับชิดซ้าย
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :ขับชิดขวา
 
@@ -968,7 +959,11 @@ STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}คว�
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}เลือกความละเอียดของหน้าจอที่จะใช้
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :อื่นๆ
 
+
+
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}ขนาดของแผงควบคุม
+
+
 
 
 
@@ -1474,8 +1469,6 @@ STR_CONFIG_SETTING_NEWS_MESSAGES_FULL                           :แสดงข
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR                           :เริ่มใช้งานหนังสือพิมพ์สีในปี: {STRING}
 STR_CONFIG_SETTING_COLOURED_NEWS_YEAR_HELPTEXT                  :เป็นการกำหนดว่าจะเริ่มต้นการใช้งานหนังสือพิมพ์แบบสีเมื่อปีใด
 STR_CONFIG_SETTING_STARTING_YEAR                                :ปีที่เริ่มต้น: {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY                               :ยอมให้มีเศรษฐกิจที่ราบรื่น (มากขึ้น, เปลี่ยนแปลงเล็กน้อย): {STRING}
-STR_CONFIG_SETTING_SMOOTH_ECONOMY_HELPTEXT                      :เมื่อเปิดใช้งาน อุดสาหกรรมจะมีการเปลี่ยนแปลงผลผลผลิต
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :อนุญาตให้ซื้อหุ้นจากบริษัทอื่นได้: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :เมื่อเปิดการใช้งาน จะสามารถซื้่อชขายหุ้นระหว่างบริษัท จะสามารถซื้อขายหุ้นได้ต่อเมื่อบริษัทเปิดตัวมานานแล้วเท่านั้น
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :เปอเซนต์ของผลกำไรที่จะส่งเข้าสู่ระบบกระจายรายได้: {STRING}
@@ -1521,9 +1514,6 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :ยอม, ร�
 
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT                         :การปลูกป่า: {STRING}
 STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_HELPTEXT                :ควบคุมการสุ่มการเจริญเติบโตของต้นไม้ระหว่างเล่นเกม
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_NONE                    :ไม่มี {RED}(ไม่มีโรงเลื่อยไม้)
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_RAINFOREST              :เฉพาะในป่าฝนเท่านั้น
-STR_CONFIG_SETTING_EXTRA_TREE_PLACEMENT_ALL                     :ทุกหนทุกแห่ง
 
 STR_CONFIG_SETTING_TOOLBAR_POS                                  :ตำแหน่งแถบเครื่องมือหลัก: {STRING}
 STR_CONFIG_SETTING_TOOLBAR_POS_HELPTEXT                         :ตำแหน่งของปุ่มเครื่องมือต่างๆด้านบนของจอภาพ
@@ -1669,6 +1659,8 @@ STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND                   :{WHITE}... ไ�
 STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}หน่วยความจำไม่เพียงพอ
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}การกำหนดพื้นที่ {BYTES} ของ Spritecache ล้มเหลว Spritecache ได้ลดลง {BYTES}. นี่คือการทำให้ประสิทธิภาพของเกม OpenTTD ลดลง. เพื่อลดความต้องการของหน่วยความจำ ให้ทำการปิดการใช้งานระบบ 32bpp graphics
 
+# Video initalization errors
+
 # Intro window
 STR_INTRO_CAPTION                                               :{WHITE}OpenTTD {REV}
 
@@ -1711,17 +1703,8 @@ STR_INTRO_TRANSLATION                                           :{BLACK} กา�
 
 # Quit window
 STR_QUIT_CAPTION                                                :{WHITE}ออกจากเกม
-STR_QUIT_ARE_YOU_SURE_YOU_WANT_TO_EXIT_OPENTTD                  :{YELLOW}คุณแน่ใจว่าจะออกจากเกม OpenTTD แล้วกลับสู่ {STRING}?
 STR_QUIT_YES                                                    :{BLACK}ใช่
 STR_QUIT_NO                                                     :{BLACK}ไม่
-
-# Supported OSes
-STR_OSNAME_WINDOWS                                              :Windows
-STR_OSNAME_UNIX                                                 :Unix
-STR_OSNAME_OSX                                                  :OS{NBSP}X
-STR_OSNAME_HAIKU                                                :ระบบปฏิบัติการ Haiku
-STR_OSNAME_OS2                                                  :OS/2
-STR_OSNAME_SUNOS                                                :SunOS
 
 # Abandon game
 STR_ABANDON_GAME_CAPTION                                        :{WHITE}ออกไปสู่เมนูหลัก
@@ -1731,7 +1714,6 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}คุ�
 # Cheat window
 STR_CHEATS                                                      :{WHITE}สูตรโกงเกม
 STR_CHEATS_TOOLTIP                                              :{BLACK}กล่องตัวเลือกจะแสดงว่าคุณโกงมาก่อนหรือไม่
-STR_CHEATS_WARNING                                              :{BLACK}คำเตือน! คุณกำลังหักหลังคู่แข่งของคุณ พึงระลึกว่าการกระทำเช่นนี้จะถูกจดจำไปอีกนาน
 STR_CHEAT_MONEY                                                 :{LTBLUE}เพิ่มเงิน {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}เล่นเป็นบริษัท: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}เครื่องมือทำลายพิเศษ (ทำลายส่วนอุตสาหกรรม, ของที่เคลื่อนย้ายไม่ได้): {ORANGE}{STRING}
@@ -1838,12 +1820,9 @@ STR_FACE_TIE                                                    :เนคไท
 STR_FACE_EARRING                                                :ต่างหู:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}เปลี่ยนเนคไทหรือต่างหู
 
+
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}เล่นหลายคน
-STR_NETWORK_SERVER_LIST_ADVERTISED                              :{BLACK}การประกาศ
-STR_NETWORK_SERVER_LIST_ADVERTISED_TOOLTIP                      :{BLACK}เลือกระหว่างการโฆษณา (internet) หรือไม่โฆษณา (Local Area Network, LAN) เกม
-STR_NETWORK_SERVER_LIST_ADVERTISED_NO                           :ไม่ใช่
-STR_NETWORK_SERVER_LIST_ADVERTISED_YES                          :ใช่
 STR_NETWORK_SERVER_LIST_PLAYER_NAME                             :{BLACK}ชื่อผู้เล่น:
 STR_NETWORK_SERVER_LIST_ENTER_NAME_TOOLTIP                      :{BLACK}เป็นชื่อที่ผู้เล่นคนอื่นจะมองเห็น
 
@@ -1884,8 +1863,6 @@ STR_NETWORK_SERVER_LIST_JOIN_GAME                               :{BLACK}เข�
 STR_NETWORK_SERVER_LIST_REFRESH                                 :{BLACK}เรียกดูเซิร์ฟเวอร์ใหม่
 STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}เรียกดูข้อมูลเซิร์ฟเวอร์ใหม่
 
-STR_NETWORK_SERVER_LIST_FIND_SERVER                             :{BLACK}หาเซิร์ฟเวอร์
-STR_NETWORK_SERVER_LIST_FIND_SERVER_TOOLTIP                     :{BLACK}ค้นหาเซิร์ฟเวอร์ในเครือข่าย
 STR_NETWORK_SERVER_LIST_ADD_SERVER                              :{BLACK}เพิ่มเซิร์ฟเวอร์
 STR_NETWORK_SERVER_LIST_ADD_SERVER_TOOLTIP                      :{BLACK}เพิ่มเซิร์ฟเวอร์เข้าไปในรายการซึ่งจะถูกตรวจสอบเพื่อเข้าเล่นเกม
 STR_NETWORK_SERVER_LIST_START_SERVER                            :{BLACK}เริ่มเซิร์ฟเวอร์ใหม่
@@ -1902,8 +1879,6 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}ชื�
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}กำหนดรหัสผ่าน
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}ป้องกันเกมด้วยรหัสผ่านหากไม่ต้องการให้มีการเข้าร่วมจากบุคคลทั่วไป
 
-STR_NETWORK_START_SERVER_UNADVERTISED                           :ไม่ใช่
-STR_NETWORK_START_SERVER_ADVERTISED                             :ใช่
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} ลูกข่าย
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}ลูกข่ายสูงสุด:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}เลือกจำนวนมากสุดของลูกข่าย (ไม่จำเป็นต้องครบตามจำนวนนี้)
@@ -1917,46 +1892,6 @@ STR_NETWORK_START_SERVER_LANGUAGE_SPOKEN                        :{BLACK}ภา�
 STR_NETWORK_START_SERVER_LANGUAGE_TOOLTIP                       :{BLACK}ผู้เล่นทุกคนจะสามารถทราบถึงภาษาที่ใช้พูดคุยในเซิร์ฟเวอร์นี้
 
 STR_NETWORK_START_SERVER_NEW_GAME_NAME_OSKTITLE                 :{BLACK}พิมพ์ชื่อสำหรับเล่นในเครือข่าย
-
-# Network game languages
-############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :อะไรก็ได้
-STR_NETWORK_LANG_ENGLISH                                        :ภาษาอังกฤษ
-STR_NETWORK_LANG_GERMAN                                         :ภาษาเยอรมัน
-STR_NETWORK_LANG_FRENCH                                         :ภาษาฝรั่งเศส
-STR_NETWORK_LANG_BRAZILIAN                                      :ภาษาบราซิล
-STR_NETWORK_LANG_BULGARIAN                                      :ภาษาบัลกาเรีย
-STR_NETWORK_LANG_CHINESE                                        :จีน
-STR_NETWORK_LANG_CZECH                                          :เช็ก
-STR_NETWORK_LANG_DANISH                                         :เดนมาร์ก
-STR_NETWORK_LANG_DUTCH                                          :เนเธอร์แลนด์
-STR_NETWORK_LANG_ESPERANTO                                      :ภาษาโลก(Esperanto)
-STR_NETWORK_LANG_FINNISH                                        :ฟินแลนด์
-STR_NETWORK_LANG_HUNGARIAN                                      :ฮังการี
-STR_NETWORK_LANG_ICELANDIC                                      :ไอร์แลนด์
-STR_NETWORK_LANG_ITALIAN                                        :อิตาลี
-STR_NETWORK_LANG_JAPANESE                                       :ญี่ปุ่น
-STR_NETWORK_LANG_KOREAN                                         :เกาหลี
-STR_NETWORK_LANG_LITHUANIAN                                     :ลิทัวเนีย
-STR_NETWORK_LANG_NORWEGIAN                                      :นอร์เวย์
-STR_NETWORK_LANG_POLISH                                         :โปแลนด์
-STR_NETWORK_LANG_PORTUGUESE                                     :โปรตุเกส
-STR_NETWORK_LANG_ROMANIAN                                       :โรมาเนีย
-STR_NETWORK_LANG_RUSSIAN                                        :รัสเซีย
-STR_NETWORK_LANG_SLOVAK                                         :สโลวัก
-STR_NETWORK_LANG_SLOVENIAN                                      :สโลวาเนีย
-STR_NETWORK_LANG_SPANISH                                        :สเปน
-STR_NETWORK_LANG_SWEDISH                                        :สวีเดน
-STR_NETWORK_LANG_TURKISH                                        :ตุรกี
-STR_NETWORK_LANG_UKRAINIAN                                      :ยูเครน
-STR_NETWORK_LANG_AFRIKAANS                                      :อัฟกานิสถาน
-STR_NETWORK_LANG_CROATIAN                                       :โครเอเชีย
-STR_NETWORK_LANG_CATALAN                                        :คาตาลัน
-STR_NETWORK_LANG_ESTONIAN                                       :เอสโตเนีย
-STR_NETWORK_LANG_GALICIAN                                       :กาลีเซีย
-STR_NETWORK_LANG_GREEK                                          :กรีก
-STR_NETWORK_LANG_LATVIAN                                        :ลัทเวีย
-############ End of leave-in-this-order
 
 # Network game lobby
 STR_NETWORK_GAME_LOBBY_CAPTION                                  :{WHITE}ห้องรับรองโหมดผู้เล่นหลายคน
@@ -2008,22 +1943,14 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}บร�
 
 # Network company list added strings
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :รายการลูกข่าย
-STR_NETWORK_COMPANY_LIST_SPECTATE                               :ผู้ชม
-STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :บริษัทใหม่
 
 # Network client list
-STR_NETWORK_CLIENTLIST_KICK                                     :เตะ
-STR_NETWORK_CLIENTLIST_BAN                                      :แบน
-STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :ให้เงิน
-STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :พูดกับผู้เล่นทั้งหมด
-STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :พูดกับผู้เล่นในบริษัทเดียวกัน
-STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :ข้อความส่วนตัว
+
+
 
 STR_NETWORK_SERVER                                              :เซิฟเวอร์
 STR_NETWORK_CLIENT                                              :ลูกข่าย
 STR_NETWORK_SPECTATORS                                          :ผู้ชม
-
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}กรอกจำนวนเงินที่ต้องการจะให้
 
 # Network set password
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}ไม่ทำการเก็บพาสเวิร์ดที่กรอกไว้แล้ว
@@ -2124,8 +2051,6 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} �
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} ได้ทำการสร้างบริษัทใหม่ (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} ได้ออกจากเกม ({2:STRING})
 STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} ได้ทำการเปลี่ยนชื่อเป็น {STRING}
-STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} ยกบริษัทให้คุณ {2:CURRENCY_LONG}
-STR_NETWORK_MESSAGE_GAVE_MONEY_AWAY                             :*** คุณให้ {1:STRING} {2:CURRENCY_LONG}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}เซิฟเวอร์ปืดเซสซั่นนี้
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}เซิฟเวอร์กำลังทำการเริ่มต้นใหม่...{}กรุณารอซักครู่...
 
@@ -2202,6 +2127,7 @@ STR_MISSING_GRAPHICS_SET_MESSAGE                                :{BLACK}OpenTTD 
 STR_MISSING_GRAPHICS_YES_DOWNLOAD                               :{BLACK}ดาวน์โหลดกราฟฟิก
 STR_MISSING_GRAPHICS_NO_QUIT                                    :{BLACK}ออกจาก OpenTTD
 
+
 # Transparency settings window
 STR_TRANSPARENCY_CAPTION                                        :{WHITE}ตัวเลือกค่าโปร่งใส
 STR_TRANSPARENT_SIGNS_TOOLTIP                                   :{BLACK}เปิด/ปิด การโปร่งใสของป้าย. กด Ctrl+Click สำหรับการล็อก
@@ -2241,6 +2167,8 @@ STR_JOIN_STATION_CREATE_SPLITTED_STATION                        :{YELLOW}สร�
 
 STR_JOIN_WAYPOINT_CAPTION                                       :{WHITE}รวมจุดตรวจ
 STR_JOIN_WAYPOINT_CREATE_SPLITTED_WAYPOINT                      :{YELLOW}สร้างจุดตรวจแยกต่างหาก
+
+# Generic toolbar
 
 # Rail construction toolbar
 STR_RAIL_TOOLBAR_RAILROAD_CONSTRUCTION_CAPTION                  :การก่อสร้างทางรถไฟ
@@ -2425,7 +2353,7 @@ STR_OBJECT_BUILD_SIZE                                           :{BLACK}ขน�
 STR_OBJECT_CLASS_LTHS                                           :ประภาคาร
 STR_OBJECT_CLASS_TRNS                                           :เครื่องส่งสัญญาณ
 
-# Tree planting window (last two for SE only)
+# Tree planting window (last eight for SE only)
 STR_PLANT_TREE_CAPTION                                          :{WHITE}ต้นไม้
 STR_PLANT_TREE_TOOLTIP                                          :{BLACK}เลือกชนิดของต้นไม้
 STR_TREES_RANDOM_TYPE                                           :{BLACK}สุ่มชนิดของต้นไม้
@@ -2625,7 +2553,7 @@ STR_LAI_OBJECT_DESCRIPTION_COMPANY_OWNED_LAND                   :บริษั
 STR_ABOUT_OPENTTD                                               :{WHITE}เกี่ยวกับ OpenTTD
 STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}ลิขสิทธิ์เดิม {COPYRIGHT} ค.ศ.1995 ของ Chris Sawyer, สงวนลิขสิทธิ์
 STR_ABOUT_VERSION                                               :{BLACK}OpenTTD รุ่นที่ {REV}
-STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}ลิขสิทธิ์ OpenTTD {COPYRIGHT}2002-2019 ของ The OpenTTD team
+STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}ลิขสิทธิ์ OpenTTD {COPYRIGHT}2002-{STRING} ของ The OpenTTD team
 
 # Framerate display window
 ############ Leave those lines in this order!!
@@ -2666,12 +2594,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}จำนวนเมือง
 STR_MAPGEN_DATE                                                 :{BLACK}วันที่:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}จำนวนอุตสาหกรรม:
-STR_MAPGEN_MAX_HEIGHTLEVEL                                      :{BLACK}ขนาดความสูงของแผนที่สูงสุด:
-STR_MAPGEN_SNOW_LINE_HEIGHT                                     :{BLACK}เส้นความสูงเขตหิมะ:
-STR_MAPGEN_SNOW_LINE_UP                                         :{BLACK}ปรับเปลี่ยนความสูงของหิมะขึ้นไป 1 ระดับ
-STR_MAPGEN_SNOW_LINE_DOWN                                       :{BLACK}ปรับเปลี่ยนความสูงของหิมะลงมา 1 ระดับ
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}เครื่องมือสร้างสภาพพื้นดิน:
-STR_MAPGEN_TREE_PLACER                                          :{BLACK}Tอัลกอริธึมต้นไม้:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}ประเภทภูมิประเทศ:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}ระดับทะเล:
 STR_MAPGEN_QUANTITY_OF_RIVERS                                   :{BLACK}แม่น้ำ:
@@ -2696,7 +2619,6 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}ชื�
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}ขนาด:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
-STR_MAPGEN_SNOW_LINE_QUERY_CAPT                                 :{WHITE}ปรับเปลี่ยนความสูงของระดับหิมะ
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}เปลี่ยนปีที่เริ่มต้นเกม
 
 # SE Map generation
@@ -2961,13 +2883,10 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW}จ่�
 # Goal window
 STR_GOALS_CAPTION                                               :{WHITE}{COMPANY} เป้าหมาย
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}เป้าหมายรวม
-STR_GOALS_GLOBAL_TITLE                                          :{BLACK}เป้าหมายโดยรวม:
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- ไม่มี -
-STR_GOALS_SPECTATOR_NONE                                        :{ORANGE}- ไม่มี -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
 STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
-STR_GOALS_COMPANY_TITLE                                         :{BLACK}เป้าหมายบริษัท:
 STR_GOALS_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                    :{BLACK}คลิ๊กเลือกที่เป้าหมายเพื่อพาไปยังจุดเริ่มต้นที่จะทำตามเป้าหมาย
 
 # Goal question window
@@ -3198,8 +3117,6 @@ STR_COMPANY_INFRASTRUCTURE_VIEW_TOTAL                           :{WHITE}{CURRENC
 # Industry directory
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}อุตสาหกรรม
 STR_INDUSTRY_DIRECTORY_NONE                                     :{ORANGE}- ไม่มี -
-STR_INDUSTRY_DIRECTORY_ITEM                                     :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}){YELLOW} ({COMMA}% ได้รับการขนส่ง)
-STR_INDUSTRY_DIRECTORY_ITEM_TWO                                 :{ORANGE}{INDUSTRY}{BLACK} ({CARGO_LONG}{STRING}/{CARGO_LONG}{STRING}){YELLOW} ({COMMA}%/{COMMA}% ได้รับการขนส่ง)
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}ชื่อของอุตสาหกรรม - คลิ๊กที่ชื่อเพื่อไปยังจุดศูนย์กลาง
 
@@ -3481,10 +3398,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}ทำ�
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
-STR_VEHICLE_VIEW_TRAIN_LOCATION_TOOLTIP                         :{BLACK}กดเพื่อไปยังจุดศูนย์กลางของขบวนรถ
-STR_VEHICLE_VIEW_ROAD_VEHICLE_LOCATION_TOOLTIP                  :{BLACK}กดเพื่อไปยังจุดศูนย์กลางของพาหนะ
-STR_VEHICLE_VIEW_SHIP_LOCATION_TOOLTIP                          :{BLACK}กดเพื่อไปยังจุดศูนย์กลางของเรือ
-STR_VEHICLE_VIEW_AIRCRAFT_LOCATION_TOOLTIP                      :{BLACK}กดเพื่อไปยังจุดศูนย์กลางของอากาศยาน
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}ส่งขบวนรถไปยังโรงซ่อมบำรุง
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}ส่งยานพาหนะไปยังโรงซ่อมบำรุง
@@ -3516,10 +3429,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_SHOW_DETAILS_TOOLTIP              :{BLACK}แส�
 STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}{BLACK}แสดงรายละเอียดของเรือลำนี้
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}{BLACK}แสดงรายละเอียดของอากาศยานลำนี้
 
-STR_VEHICLE_VIEW_TRAIN_STATE_START_STOP_TOOLTIP                 :{BLACK}สภาพการปัจจุบันของขบวนรถนี้
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATE_START_STOP_TOOLTIP          :{BLACK}สภาพการปัจจุบันของรถคันนี้
-STR_VEHICLE_VIEW_SHIP_STATE_START_STOP_TOOLTIP                  :{BLACK}สภาพการปัจจุบันของเรือลำนี้
-STR_VEHICLE_VIEW_AIRCRAFT_STATE_START_STOP_TOOLTIP              :{BLACK}สภาพการปัจจุบันของเครื่องบินลำนี้
+
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}อยู่ระหว่างการขนถ่าย
@@ -3917,6 +3827,7 @@ STR_AI_LIST_ACCEPT                                              :{BLACK}ยื�
 STR_AI_LIST_ACCEPT_TOOLTIP                                      :{BLACK}เลือก script ที่ไฮไลท์ไว้
 STR_AI_LIST_CANCEL                                              :{BLACK}ยกเลิก
 STR_AI_LIST_CANCEL_TOOLTIP                                      :{BLACK}ไม่สามารถเปลี่ยน script
+
 
 # AI Parameters
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}{STRING} Parameters

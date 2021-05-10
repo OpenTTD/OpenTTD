@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -39,7 +37,9 @@ LinkGraphJob::LinkGraphJob(const LinkGraph &orig) :
 		 * This is on purpose. */
 		link_graph(orig),
 		settings(_settings_game.linkgraph),
-		join_date(_date + _settings_game.linkgraph.recalc_time)
+		join_date(_date + _settings_game.linkgraph.recalc_time),
+		job_completed(false),
+		job_aborted(false)
 {
 }
 
@@ -92,6 +92,11 @@ LinkGraphJob::~LinkGraphJob()
 	/* Don't update stuff from other pools, when everything is being removed.
 	 * Accessing other pools may be invalid. */
 	if (CleaningPool()) return;
+
+	/* If the job has been aborted, the job state is invalid.
+	 * This should never be reached, as once the job has been marked as aborted
+	 * the only valid job operation is to clear the LinkGraphJob pool. */
+	assert(!this->IsJobAborted());
 
 	/* Link graph has been merged into another one. */
 	if (!LinkGraph::IsValidID(this->link_graph.index)) return;
@@ -218,8 +223,8 @@ void LinkGraphJob::NodeAnnotation::Init(uint supply)
  */
 void Path::Fork(Path *base, uint cap, int free_cap, uint dist)
 {
-	this->capacity = min(base->capacity, cap);
-	this->free_capacity = min(base->free_capacity, free_cap);
+	this->capacity = std::min(base->capacity, cap);
+	this->free_capacity = std::min(base->free_capacity, free_cap);
 	this->distance = base->distance + dist;
 	assert(this->distance > 0);
 	if (this->parent != base) {
@@ -245,7 +250,7 @@ uint Path::AddFlow(uint new_flow, LinkGraphJob &job, uint max_saturation)
 		if (max_saturation != UINT_MAX) {
 			uint usable_cap = edge.Capacity() * max_saturation / 100;
 			if (usable_cap > edge.Flow()) {
-				new_flow = min(new_flow, usable_cap - edge.Flow());
+				new_flow = std::min(new_flow, usable_cap - edge.Flow());
 			} else {
 				return 0;
 			}

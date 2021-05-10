@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -16,6 +14,8 @@
 
 static uint const ZOOM_LVL_SHIFT = 2;
 static uint const ZOOM_LVL_BASE  = 1 << ZOOM_LVL_SHIFT;
+
+static const int8 ZOOM_LVL_CFG_AUTO = -1;
 
 /** All zoom levels we know. */
 enum ZoomLevel : byte {
@@ -49,6 +49,9 @@ enum ZoomLevel : byte {
 
 };
 DECLARE_POSTFIX_INCREMENT(ZoomLevel)
+
+extern int8 _gui_zoom_cfg;
+extern int8 _font_zoom_cfg;
 
 extern ZoomLevel _gui_zoom;
 extern ZoomLevel _font_zoom;

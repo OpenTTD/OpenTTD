@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -102,15 +100,18 @@ static const SaveLoad * const _glog_desc[] = {
 	_glog_emergency_desc,
 };
 
-assert_compile(lengthof(_glog_desc) == GLCT_END);
+static_assert(lengthof(_glog_desc) == GLCT_END);
 
 static void Load_GLOG_common(LoggedAction *&gamelog_action, uint &gamelog_actions)
 {
 	assert(gamelog_action == nullptr);
 	assert(gamelog_actions == 0);
 
-	GamelogActionType at;
-	while ((at = (GamelogActionType)SlReadByte()) != GLAT_NONE) {
+	byte type;
+	while ((type = SlReadByte()) != GLAT_NONE) {
+		if (type >= GLAT_END) SlErrorCorrupt("Invalid gamelog action type");
+		GamelogActionType at = (GamelogActionType)type;
+
 		gamelog_action = ReallocT(gamelog_action, gamelog_actions + 1);
 		LoggedAction *la = &gamelog_action[gamelog_actions++];
 
@@ -120,16 +121,16 @@ static void Load_GLOG_common(LoggedAction *&gamelog_action, uint &gamelog_action
 		la->change = nullptr;
 		la->changes = 0;
 
-		GamelogChangeType ct;
-		while ((ct = (GamelogChangeType)SlReadByte()) != GLCT_NONE) {
+		while ((type = SlReadByte()) != GLCT_NONE) {
+			if (type >= GLCT_END) SlErrorCorrupt("Invalid gamelog change type");
+			GamelogChangeType ct = (GamelogChangeType)type;
+
 			la->change = ReallocT(la->change, la->changes + 1);
 
 			LoggedChange *lc = &la->change[la->changes++];
 			/* for SLE_STR, pointer has to be valid! so make it nullptr */
 			memset(lc, 0, sizeof(*lc));
 			lc->ct = ct;
-
-			assert((uint)ct < GLCT_END);
 
 			SlObject(lc, _glog_desc[ct]);
 		}

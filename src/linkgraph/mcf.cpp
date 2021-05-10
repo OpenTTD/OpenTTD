@@ -235,7 +235,7 @@ bool DistanceAnnotation::IsBetter(const DistanceAnnotation *base, uint cap,
 bool CapacityAnnotation::IsBetter(const CapacityAnnotation *base, uint cap,
 		int free_cap, uint dist) const
 {
-	int min_cap = Path::GetCapacityRatio(min(base->free_capacity, free_cap), min(base->capacity, cap));
+	int min_cap = Path::GetCapacityRatio(std::min(base->free_capacity, free_cap), std::min(base->capacity, cap));
 	int this_cap = this->GetCapacityRatio();
 	if (min_cap == this_cap) {
 		/* If the capacities are the same and the other path isn't disconnected
@@ -354,7 +354,7 @@ uint MCF1stPass::FindCycleFlow(const PathVector &path, const Path *cycle_begin)
 	uint flow = UINT_MAX;
 	const Path *cycle_end = cycle_begin;
 	do {
-		flow = min(flow, cycle_begin->GetFlow());
+		flow = std::min(flow, cycle_begin->GetFlow());
 		cycle_begin = path[cycle_begin->GetNode()];
 	} while (cycle_begin != cycle_end);
 	return flow;
@@ -494,13 +494,17 @@ MCF1stPass::MCF1stPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 	uint size = job.Size();
 	uint accuracy = job.Settings().accuracy;
 	bool more_loops;
+	std::vector<bool> finished_sources(size);
 
 	do {
 		more_loops = false;
 		for (NodeID source = 0; source < size; ++source) {
+			if (finished_sources[source]) continue;
+
 			/* First saturate the shortest paths. */
 			this->Dijkstra<DistanceAnnotation, GraphEdgeIterator>(source, paths);
 
+			bool source_demand_left = false;
 			for (NodeID dest = 0; dest < size; ++dest) {
 				Edge edge = job[source][dest];
 				if (edge.UnsatisfiedDemand() > 0) {
@@ -518,11 +522,13 @@ MCF1stPass::MCF1stPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 							path->GetFreeCapacity() > INT_MIN) {
 						this->PushFlow(edge, path, accuracy, UINT_MAX);
 					}
+					if (edge.UnsatisfiedDemand() > 0) source_demand_left = true;
 				}
 			}
+			finished_sources[source] = !source_demand_left;
 			this->CleanupPaths(source, paths);
 		}
-	} while (more_loops || this->EliminateCycles());
+	} while ((more_loops || this->EliminateCycles()) && !job.IsJobAborted());
 }
 
 /**
@@ -537,18 +543,27 @@ MCF2ndPass::MCF2ndPass(LinkGraphJob &job) : MultiCommodityFlow(job)
 	uint size = job.Size();
 	uint accuracy = job.Settings().accuracy;
 	bool demand_left = true;
-	while (demand_left) {
+	std::vector<bool> finished_sources(size);
+	while (demand_left && !job.IsJobAborted()) {
 		demand_left = false;
 		for (NodeID source = 0; source < size; ++source) {
+			if (finished_sources[source]) continue;
+
 			this->Dijkstra<CapacityAnnotation, FlowEdgeIterator>(source, paths);
+
+			bool source_demand_left = false;
 			for (NodeID dest = 0; dest < size; ++dest) {
 				Edge edge = this->job[source][dest];
 				Path *path = paths[dest];
 				if (edge.UnsatisfiedDemand() > 0 && path->GetFreeCapacity() > INT_MIN) {
 					this->PushFlow(edge, path, accuracy, UINT_MAX);
-					if (edge.UnsatisfiedDemand() > 0) demand_left = true;
+					if (edge.UnsatisfiedDemand() > 0) {
+						demand_left = true;
+						source_demand_left = true;
+					}
 				}
 			}
+			finished_sources[source] = !source_demand_left;
 			this->CleanupPaths(source, paths);
 		}
 	}

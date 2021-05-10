@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -68,11 +66,5 @@ struct Waypoint FINAL : SpecializedStation<Waypoint, true> {
 		return this->string_id == wp->string_id;
 	}
 };
-
-/**
- * Iterate over all waypoints.
- * @param var The variable used for iteration.
- */
-#define FOR_ALL_WAYPOINTS(var) FOR_ALL_BASE_STATIONS_OF_TYPE(Waypoint, var)
 
 #endif /* WAYPOINT_BASE_H */

@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -67,6 +65,9 @@ struct VehicleResolverObject : public ResolverObject {
 	ScopeResolver *GetScope(VarSpriteGroupScope scope = VSG_SCOPE_SELF, byte relative = 0) override;
 
 	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
+
+	GrfSpecFeature GetFeature() const override;
+	uint32 GetDebugID() const override;
 };
 
 static const uint TRAININFO_DEFAULT_VEHICLE_WIDTH   = 29;
@@ -114,8 +115,6 @@ enum VehicleTrigger {
 	VEHICLE_TRIGGER_CALLBACK_32   = 0x10,
 };
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
-
-void UnloadWagonOverrides(Engine *e);
 
 void AlterVehicleListOrder(EngineID engine, uint target);
 void CommitVehicleListOrderChanges();

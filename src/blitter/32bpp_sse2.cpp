@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -82,7 +80,7 @@ Sprite *Blitter_32bppSSE_Base::Encode(const SpriteLoader::Sprite *sprite, Alloca
 						if (src->m >= PALETTE_ANIM_START) has_anim = true;
 
 						/* Get brightest value (or default brightness if it's a black pixel). */
-						const uint8 rgb_max = max(src->r, max(src->g, src->b));
+						const uint8 rgb_max = std::max({src->r, src->g, src->b});
 						dst_mv->v = (rgb_max == 0) ? Blitter_32bppBase::DEFAULT_BRIGHTNESS : rgb_max;
 
 						/* Pre-convert the mapping channel to a RGB value. */

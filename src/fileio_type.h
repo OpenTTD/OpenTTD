@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -130,10 +128,10 @@ enum Subdirectory {
 /**
  * Types of searchpaths OpenTTD might use
  */
-enum Searchpath {
+enum Searchpath : unsigned {
 	SP_FIRST_DIR,
 	SP_WORKING_DIR = SP_FIRST_DIR, ///< Search in the working directory
-#if defined(WITH_XDG_BASEDIR) && defined(WITH_PERSONAL_DIR)
+#ifdef USE_XDG
 	SP_PERSONAL_DIR_XDG,           ///< Search in the personal directory from the XDG specification
 #endif
 	SP_PERSONAL_DIR,               ///< Search in the personal directory
@@ -142,6 +140,8 @@ enum Searchpath {
 	SP_INSTALLATION_DIR,           ///< Search in the installation directory
 	SP_APPLICATION_BUNDLE_DIR,     ///< Search within the application bundle
 	SP_AUTODOWNLOAD_DIR,           ///< Search within the autodownload directory
+	SP_AUTODOWNLOAD_PERSONAL_DIR,  ///< Search within the autodownload directory located in the personal directory
+	SP_AUTODOWNLOAD_PERSONAL_DIR_XDG, ///< Search within the autodownload directory located in the personal directory (XDG variant)
 	NUM_SEARCHPATHS
 };
 

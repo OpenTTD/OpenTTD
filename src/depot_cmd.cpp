@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -30,10 +28,8 @@
  */
 static bool IsUniqueDepotName(const char *name)
 {
-	const Depot *d;
-
-	FOR_ALL_DEPOTS(d) {
-		if (d->name != nullptr && strcmp(d->name, name) == 0) return false;
+	for (const Depot *d : Depot::Iterate()) {
+		if (!d->name.empty() && d->name == name) return false;
 	}
 
 	return true;
@@ -64,13 +60,11 @@ CommandCost CmdRenameDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	}
 
 	if (flags & DC_EXEC) {
-		free(d->name);
-
 		if (reset) {
-			d->name = nullptr;
+			d->name.clear();
 			MakeDefaultName(d);
 		} else {
-			d->name = stredup(text);
+			d->name = text;
 		}
 
 		/* Update the orders and depot */

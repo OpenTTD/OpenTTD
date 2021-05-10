@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -41,8 +39,13 @@
 void Waypoint::UpdateVirtCoord()
 {
 	Point pt = RemapCoords2(TileX(this->xy) * TILE_SIZE, TileY(this->xy) * TILE_SIZE);
+	if (this->sign.kdtree_valid) _viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(this->index));
+
 	SetDParam(0, this->index);
 	this->sign.UpdatePosition(pt.x, pt.y - 32 * ZOOM_LVL_BASE, STR_VIEWPORT_WAYPOINT);
+
+	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeWaypoint(this->index));
+
 	/* Recenter viewport */
 	InvalidateWindowData(WC_WAYPOINT_VIEW, this->index);
 }
@@ -55,11 +58,7 @@ void Waypoint::MoveSign(TileIndex new_xy)
 {
 	if (this->xy == new_xy) return;
 
-	_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(this->index));
-
 	this->BaseStation::MoveSign(new_xy);
-
-	_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeWaypoint(this->index));
 }
 
 /**
@@ -71,10 +70,10 @@ void Waypoint::MoveSign(TileIndex new_xy)
  */
 static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile, StringID str, CompanyID cid)
 {
-	Waypoint *wp, *best = nullptr;
+	Waypoint *best = nullptr;
 	uint thres = 8;
 
-	FOR_ALL_WAYPOINTS(wp) {
+	for (Waypoint *wp : Waypoint::Iterate()) {
 		if (!wp->IsInUse() && wp->string_id == str && wp->owner == cid) {
 			uint cur_dist = DistanceManhattan(tile, wp->xy);
 
@@ -154,7 +153,7 @@ static CommandCost IsValidTileForWaypoint(TileIndex tile, Axis axis, StationID *
 	return CommandCost();
 }
 
-extern void GetStationLayout(byte *layout, int numtracks, int plat_len, const StationSpec *statspec);
+extern void GetStationLayout(byte *layout, uint numtracks, uint plat_len, const StationSpec *statspec);
 extern CommandCost FindJoiningWaypoint(StationID existing_station, StationID station_to_join, bool adjacent, TileArea ta, Waypoint **wp);
 extern CommandCost CanExpandRailStation(const BaseStation *st, TileArea &new_ta, Axis axis);
 
@@ -241,15 +240,11 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 	}
 
 	if (flags & DC_EXEC) {
-		bool need_sign_update = false;
 		if (wp == nullptr) {
 			wp = new Waypoint(start_tile);
-			need_sign_update = true;
 		} else if (!wp->IsInUse()) {
 			/* Move existing (recently deleted) waypoint to the new location */
-			_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
 			wp->xy = start_tile;
-			need_sign_update = true;
 		}
 		wp->owner = GetTileOwner(start_tile);
 
@@ -264,7 +259,6 @@ CommandCost CmdBuildRailWaypoint(TileIndex start_tile, DoCommandFlag flags, uint
 		if (wp->town == nullptr) MakeDefaultName(wp);
 
 		wp->UpdateVirtCoord();
-		if (need_sign_update) _viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
 
 		const StationSpec *spec = StationClass::Get(spec_class)->GetSpec(spec_index);
 		byte *layout_ptr = AllocaM(byte, count);
@@ -331,7 +325,6 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 			wp = new Waypoint(tile);
 		} else {
 			/* Move existing (recently deleted) buoy to the new location */
-			_viewport_sign_kdtree.Remove(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
 			wp->xy = tile;
 			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 		}
@@ -351,7 +344,6 @@ CommandCost CmdBuildBuoy(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		MarkTileDirtyByTile(tile);
 
 		wp->UpdateVirtCoord();
-		_viewport_sign_kdtree.Insert(ViewportSignKdtreeItem::MakeWaypoint(wp->index));
 		InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 	}
 
@@ -405,10 +397,8 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
  */
 static bool IsUniqueWaypointName(const char *name)
 {
-	const Waypoint *wp;
-
-	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->name != nullptr && strcmp(wp->name, name) == 0) return false;
+	for (const Waypoint *wp : Waypoint::Iterate()) {
+		if (!wp->name.empty() && wp->name == name) return false;
 	}
 
 	return true;
@@ -441,8 +431,11 @@ CommandCost CmdRenameWaypoint(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	}
 
 	if (flags & DC_EXEC) {
-		free(wp->name);
-		wp->name = reset ? nullptr : stredup(text);
+		if (reset) {
+			wp->name.clear();
+		} else {
+			wp->name = text;
+		}
 
 		wp->UpdateVirtCoord();
 	}

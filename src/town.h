@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -17,7 +15,6 @@
 #include "subsidy_type.h"
 #include "newgrf_storage.h"
 #include "cargotype.h"
-#include "tilematrix_type.hpp"
 #include <list>
 
 template <typename T>
@@ -25,8 +22,6 @@ struct BuildingCounts {
 	T id_count[NUM_HOUSES];
 	T class_count[HOUSE_CLASS_MAX];
 };
-
-typedef TileMatrix<CargoTypes, 4> AcceptanceMatrix;
 
 static const uint CUSTOM_TOWN_NUMBER_DIFFICULTY  = 4; ///< value for custom town number in difficulty settings
 static const uint CUSTOM_TOWN_MAX_NUMBER = 5000;  ///< this is the maximum number of towns a user can specify in customisation
@@ -45,7 +40,7 @@ extern TownPool _town_pool;
 struct TownCache {
 	uint32 num_houses;                        ///< Amount of houses
 	uint32 population;                        ///< Current population of people
-	ViewportSign sign;                        ///< Location of name sign, UpdateVirtCoord updates this
+	TrackedViewportSign sign;                 ///< Location of name sign, UpdateVirtCoord updates this
 	PartOfSubsidy part_of_subsidy;            ///< Is this town a source/destination of a subsidy?
 	uint32 squared_town_zone_radius[HZB_END]; ///< UpdateTownRadius updates this given the house count
 	BuildingCounts<uint16> building_counts;   ///< The number of each type of building in the town
@@ -61,7 +56,8 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	uint32 townnamegrfid;
 	uint16 townnametype;
 	uint32 townnameparts;
-	char *name;                    ///< Custom town name. If nullptr, the town was not renamed and uses the generated name.
+	std::string name;                ///< Custom town name. If empty, the town was not renamed and uses the generated name.
+	mutable std::string cached_name; ///< NOSAVE: Cache of the resolved name of the town, if not using a custom town name
 
 	byte flags;                    ///< See #TownFlags.
 
@@ -80,14 +76,10 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 	TransportedCargoStat<uint16> received[NUM_TE];    ///< Cargo statistics about received cargotypes.
 	uint32 goal[NUM_TE];                              ///< Amount of cargo required for the town to grow.
 
-	char *text; ///< General text with additional information.
+	std::string text; ///< General text with additional information.
 
 	inline byte GetPercentTransported(CargoID cid) const { return this->supplied[cid].old_act * 256 / (this->supplied[cid].old_max + 1); }
 
-	/* Cargo production and acceptance stats. */
-	CargoTypes cargo_produced;       ///< Bitmap of all cargoes produced by houses in this town.
-	AcceptanceMatrix cargo_accepted; ///< Bitmap of cargoes accepted by houses for each 4*4 map square of the town.
-	CargoTypes cargo_accepted_total; ///< NOSAVE: Bitmap of all cargoes accepted by houses in this town.
 	StationList stations_near;       ///< NOSAVE: List of nearby stations.
 
 	uint16 time_until_rebuild;       ///< time until we rebuild a house
@@ -132,6 +124,13 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	void UpdateVirtCoord();
 
+	inline const char *GetCachedName() const
+	{
+		if (!this->name.empty()) return this->name.c_str();
+		if (this->cached_name.empty()) this->FillCachedName();
+		return this->cached_name.c_str();
+	}
+
 	static inline Town *GetByTile(TileIndex tile)
 	{
 		return Town::Get(GetTownIndex(tile));
@@ -139,11 +138,15 @@ struct Town : TownPool::PoolItem<&_town_pool> {
 
 	static Town *GetRandom();
 	static void PostDestructor(size_t index);
+
+private:
+	void FillCachedName() const;
 };
 
 uint32 GetWorldPopulation();
 
 void UpdateAllTownVirtCoords();
+void ClearAllTownCachedNames();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
 
@@ -163,7 +166,8 @@ enum TownRatingCheckType {
 /** Special values for town list window for the data parameter of #InvalidateWindowData. */
 enum TownDirectoryInvalidateWindowData {
 	TDIWD_FORCE_REBUILD,
-	TDIWD_FILTER_CHANGES,        ///< The filename filter has changed (via the editbox)
+	TDIWD_POPULATION_CHANGE,
+	TDIWD_FORCE_RESORT,
 };
 
 /**
@@ -187,17 +191,11 @@ TileIndexDiff GetHouseNorthPart(HouseID &house);
 
 Town *CalcClosestTownFromTile(TileIndex tile, uint threshold = UINT_MAX);
 
-#define FOR_ALL_TOWNS_FROM(var, start) FOR_ALL_ITEMS_FROM(Town, town_index, var, start)
-#define FOR_ALL_TOWNS(var) FOR_ALL_TOWNS_FROM(var, 0)
-
 void ResetHouses();
 
 void ClearTownHouse(Town *t, TileIndex tile);
 void UpdateTownMaxPass(Town *t);
 void UpdateTownRadius(Town *t);
-void UpdateTownCargoes(Town *t);
-void UpdateTownCargoTotal(Town *t);
-void UpdateTownCargoBitmap();
 CommandCost CheckIfAuthorityAllowsNewStation(TileIndex tile, DoCommandFlag flags);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max, DoCommandFlag flags);
@@ -241,7 +239,7 @@ template <class T>
 void MakeDefaultName(T *obj)
 {
 	/* We only want to set names if it hasn't been set before, or when we're calling from afterload. */
-	assert(obj->name == nullptr || obj->town_cn == UINT16_MAX);
+	assert(obj->name.empty() || obj->town_cn == UINT16_MAX);
 
 	obj->town = ClosestTownFromTile(obj->xy, UINT_MAX);
 
@@ -301,11 +299,9 @@ void MakeDefaultName(T *obj)
  * tick 0 is a valid tick so actual amount is one more than the counter value.
  */
 static inline uint16 TownTicksToGameTicks(uint16 ticks) {
-	return (min(ticks, MAX_TOWN_GROWTH_TICKS) + 1) * TOWN_GROWTH_TICKS - 1;
+	return (std::min(ticks, MAX_TOWN_GROWTH_TICKS) + 1) * TOWN_GROWTH_TICKS - 1;
 }
 
-
-extern CargoTypes _town_cargoes_accepted;
 
 RoadType GetTownRoadType(const Town *t);
 

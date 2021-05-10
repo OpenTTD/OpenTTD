@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -38,7 +36,7 @@
 /** Factory for the midi player that uses external players. */
 static FMusicDriver_ExtMidi iFMusicDriver_ExtMidi;
 
-const char *MusicDriver_ExtMidi::Start(const char * const * parm)
+const char *MusicDriver_ExtMidi::Start(const StringList &parm)
 {
 	if (strcmp(VideoDriver::GetInstance()->GetName(), "allegro") == 0 ||
 			strcmp(SoundDriver::GetInstance()->GetName(), "allegro") == 0) {

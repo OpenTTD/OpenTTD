@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -121,13 +119,13 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
 		SB(retval,  0, 4, y & 0xF);
 		SB(retval,  4, 4, x & 0xF);
 	} else {
-		SB(retval,  0, 4, min(15, y));
-		SB(retval,  4, 4, min(15, length - y - 1));
-		SB(retval,  8, 4, min(15, x));
-		SB(retval, 12, 4, min(15, platforms - x - 1));
+		SB(retval,  0, 4, std::min(15, y));
+		SB(retval,  4, 4, std::min(15, length - y - 1));
+		SB(retval,  8, 4, std::min(15, x));
+		SB(retval, 12, 4, std::min(15, platforms - x - 1));
 	}
-	SB(retval, 16, 4, min(15, length));
-	SB(retval, 20, 4, min(15, platforms));
+	SB(retval, 16, 4, std::min(15, length));
+	SB(retval, 20, 4, std::min(15, platforms));
 	SB(retval, 24, 4, tile);
 
 	return retval;
@@ -370,6 +368,16 @@ TownScopeResolver *StationResolverObject::GetTown()
 			return res;
 		}
 
+		case 0x6A: { // GRFID of nearby station tiles
+			TileIndex nearby_tile = GetNearbyTile(parameter, this->tile);
+
+			if (!HasStationTileRail(nearby_tile)) return 0xFFFFFFFF;
+			if (!IsCustomStationSpecIndex(nearby_tile)) return 0;
+
+			const StationSpecList ssl = BaseStation::GetByTile(nearby_tile)->speclist[GetCustomStationSpecIndex(nearby_tile)];
+			return ssl.grfid;
+		}
+
 		/* General station variables */
 		case 0x82: return 50;
 		case 0x84: return this->st->string_id;
@@ -416,16 +424,16 @@ uint32 Station::GetNewGRFVariable(const ResolverObject &object, byte variable, b
 		const GoodsEntry *ge = &this->goods[c];
 
 		switch (variable) {
-			case 0x60: return min(ge->cargo.TotalCount(), 4095);
+			case 0x60: return std::min(ge->cargo.TotalCount(), 4095u);
 			case 0x61: return ge->HasVehicleEverTriedLoading() ? ge->time_since_pickup : 0;
 			case 0x62: return ge->HasRating() ? ge->rating : 0xFFFFFFFF;
 			case 0x63: return ge->cargo.DaysInTransit();
 			case 0x64: return ge->HasVehicleEverTriedLoading() ? ge->last_speed | (ge->last_age << 8) : 0xFF00;
 			case 0x65: return GB(ge->status, GoodsEntry::GES_ACCEPTANCE, 1) << 3;
 			case 0x69: {
-				assert_compile((int)GoodsEntry::GES_EVER_ACCEPTED + 1 == (int)GoodsEntry::GES_LAST_MONTH);
-				assert_compile((int)GoodsEntry::GES_EVER_ACCEPTED + 2 == (int)GoodsEntry::GES_CURRENT_MONTH);
-				assert_compile((int)GoodsEntry::GES_EVER_ACCEPTED + 3 == (int)GoodsEntry::GES_ACCEPTED_BIGTICK);
+				static_assert((int)GoodsEntry::GES_EVER_ACCEPTED + 1 == (int)GoodsEntry::GES_LAST_MONTH);
+				static_assert((int)GoodsEntry::GES_EVER_ACCEPTED + 2 == (int)GoodsEntry::GES_CURRENT_MONTH);
+				static_assert((int)GoodsEntry::GES_EVER_ACCEPTED + 3 == (int)GoodsEntry::GES_ACCEPTED_BIGTICK);
 				return GB(ge->status, GoodsEntry::GES_EVER_ACCEPTED, 4);
 			}
 		}
@@ -436,7 +444,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject &object, byte variable, b
 		const GoodsEntry *g = &this->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
 			case 0: return g->cargo.TotalCount();
-			case 1: return GB(min(g->cargo.TotalCount(), 4095), 0, 4) | (GB(g->status, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
+			case 1: return GB(std::min(g->cargo.TotalCount(), 4095u), 0, 4) | (GB(g->status, GoodsEntry::GES_ACCEPTANCE, 1) << 7);
 			case 2: return g->time_since_pickup;
 			case 3: return g->rating;
 			case 4: return g->cargo.Source();
@@ -512,21 +520,31 @@ uint32 Waypoint::GetNewGRFVariable(const ResolverObject &object, byte variable, 
 	}
 
 	if (HasBit(this->station_scope.statspec->flags, SSF_DIV_BY_STATION_SIZE)) cargo /= (st->train_station.w + st->train_station.h);
-	cargo = min(0xfff, cargo);
+	cargo = std::min(0xfffu, cargo);
 
 	if (cargo > this->station_scope.statspec->cargo_threshold) {
-		if (group->num_loading > 0) {
-			uint set = ((cargo - this->station_scope.statspec->cargo_threshold) * group->num_loading) / (4096 - this->station_scope.statspec->cargo_threshold);
+		if (!group->loading.empty()) {
+			uint set = ((cargo - this->station_scope.statspec->cargo_threshold) * (uint)group->loading.size()) / (4096 - this->station_scope.statspec->cargo_threshold);
 			return group->loading[set];
 		}
 	} else {
-		if (group->num_loaded > 0) {
-			uint set = (cargo * group->num_loaded) / (this->station_scope.statspec->cargo_threshold + 1);
+		if (!group->loaded.empty()) {
+			uint set = (cargo * (uint)group->loaded.size()) / (this->station_scope.statspec->cargo_threshold + 1);
 			return group->loaded[set];
 		}
 	}
 
 	return group->loading[0];
+}
+
+GrfSpecFeature StationResolverObject::GetFeature() const
+{
+	return GSF_STATIONS;
+}
+
+uint32 StationResolverObject::GetDebugID() const
+{
+	return this->station_scope.statspec->grf_prop.local_id;
 }
 
 /**
@@ -554,8 +572,7 @@ StationResolverObject::StationResolverObject(const StationSpec *statspec, BaseSt
 	} else if (Station::IsExpected(this->station_scope.st)) {
 		const Station *st = Station::From(this->station_scope.st);
 		/* Pick the first cargo that we have waiting */
-		const CargoSpec *cs;
-		FOR_ALL_CARGOSPECS(cs) {
+		for (const CargoSpec *cs : CargoSpec::Iterate()) {
 			if (this->station_scope.statspec->grf_prop.spritegroup[cs->Index()] != nullptr &&
 					st->goods[cs->Index()].cargo.TotalCount() > 0) {
 				ctype = cs->Index();
@@ -781,10 +798,10 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	const NewGRFSpriteLayout *layout = nullptr;
 	DrawTileSprites tmp_rail_layout;
 
-	if (statspec->renderdata == nullptr) {
+	if (statspec->renderdata.empty()) {
 		sprites = GetStationTileLayout(STATION_RAIL, tile + axis);
 	} else {
-		layout = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : (uint)axis];
+		layout = &statspec->renderdata[(tile < statspec->renderdata.size()) ? tile + axis : (uint)axis];
 		if (!layout->NeedsPreprocessing()) {
 			sprites = layout;
 			layout = nullptr;

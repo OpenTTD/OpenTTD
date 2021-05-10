@@ -1,5 +1,3 @@
-/* $Id$ */
-
 /*
  * This file is part of OpenTTD.
  * OpenTTD is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
@@ -13,9 +11,10 @@
 #include "base_media_base.h"
 #include "blitter/factory.hpp"
 
-#if defined(WITH_FREETYPE)
+#if defined(WITH_FREETYPE) || defined(WITH_UNISCRIBE) || defined(WITH_COCOA)
 
 #include "core/geometry_func.hpp"
+#include "error.h"
 #include "fontcache.h"
 #include "gfx_func.h"
 #include "network/network.h"
@@ -63,8 +62,65 @@ public:
 	}
 };
 
+/** Nested widgets for the error window. */
+static const NWidgetPart _nested_bootstrap_errmsg_widgets[] = {
+	NWidget(NWID_HORIZONTAL),
+		NWidget(WWT_CAPTION, COLOUR_GREY, WID_BEM_CAPTION), SetDataTip(STR_MISSING_GRAPHICS_ERROR_TITLE, STR_NULL),
+	EndContainer(),
+	NWidget(WWT_PANEL, COLOUR_GREY),
+		NWidget(WWT_PANEL, COLOUR_GREY, WID_BEM_MESSAGE), EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_PUSHTXTBTN, COLOUR_GREY, WID_BEM_QUIT), SetDataTip(STR_MISSING_GRAPHICS_ERROR_QUIT, STR_NULL), SetFill(1, 0),
+		EndContainer(),
+	EndContainer(),
+};
+
+/** Window description for the error window. */
+static WindowDesc _bootstrap_errmsg_desc(
+	WDP_CENTER, nullptr, 0, 0,
+	WC_BOOTSTRAP, WC_NONE,
+	WDF_MODAL,
+	_nested_bootstrap_errmsg_widgets, lengthof(_nested_bootstrap_errmsg_widgets)
+);
+
+/** The window for a failed bootstrap. */
+class BootstrapErrorWindow : public Window {
+public:
+	BootstrapErrorWindow() : Window(&_bootstrap_errmsg_desc)
+	{
+		this->InitNested(1);
+	}
+
+	~BootstrapErrorWindow()
+	{
+		_exit_game = true;
+	}
+
+	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
+	{
+		if (widget == WID_BEM_MESSAGE) {
+			*size = GetStringBoundingBox(STR_MISSING_GRAPHICS_ERROR);
+			size->height = GetStringHeight(STR_MISSING_GRAPHICS_ERROR, size->width - WD_FRAMETEXT_LEFT - WD_FRAMETEXT_RIGHT) + WD_FRAMETEXT_BOTTOM + WD_FRAMETEXT_TOP;
+		}
+	}
+
+	void DrawWidget(const Rect &r, int widget) const override
+	{
+		if (widget == WID_BEM_MESSAGE) {
+			DrawStringMultiLine(r.left + WD_FRAMETEXT_LEFT, r.right - WD_FRAMETEXT_RIGHT, r.top + WD_FRAMETEXT_TOP, r.bottom - WD_FRAMETEXT_BOTTOM, STR_MISSING_GRAPHICS_ERROR, TC_FROMSTRING, SA_CENTER);
+		}
+	}
+
+	void OnClick(Point pt, int widget, int click_count) override
+	{
+		if (widget == WID_BEM_QUIT) {
+			_exit_game = true;
+		}
+	}
+};
+
 /** Nested widgets for the download window. */
-static const NWidgetPart _nested_boostrap_download_status_window_widgets[] = {
+static const NWidgetPart _nested_bootstrap_download_status_window_widgets[] = {
 	NWidget(WWT_CAPTION, COLOUR_GREY), SetDataTip(STR_CONTENT_DOWNLOAD_TITLE, STR_TOOLTIP_WINDOW_TITLE_DRAG_THIS),
 	NWidget(WWT_PANEL, COLOUR_GREY, WID_NCDS_BACKGROUND),
 		NWidget(NWID_SPACER), SetMinimalSize(350, 0), SetMinimalTextLines(3, WD_FRAMERECT_TOP + WD_FRAMERECT_BOTTOM + 30),
@@ -76,7 +132,7 @@ static WindowDesc _bootstrap_download_status_window_desc(
 	WDP_CENTER, nullptr, 0, 0,
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_MODAL,
-	_nested_boostrap_download_status_window_widgets, lengthof(_nested_boostrap_download_status_window_widgets)
+	_nested_bootstrap_download_status_window_widgets, lengthof(_nested_bootstrap_download_status_window_widgets)
 );
 
 
@@ -86,6 +142,14 @@ public:
 	/** Simple call the constructor of the superclass. */
 	BootstrapContentDownloadStatusWindow() : BaseNetworkContentDownloadStatusWindow(&_bootstrap_download_status_window_desc)
 	{
+	}
+
+	~BootstrapContentDownloadStatusWindow()
+	{
+		/* If we are not set to exit the game, it means the bootstrap failed. */
+		if (!_exit_game) {
+			new BootstrapErrorWindow();
+		}
 	}
 
 	void OnDownloadComplete(ContentID cid) override
@@ -220,7 +284,7 @@ bool HandleBootstrap()
 	if (BlitterFactory::GetCurrentBlitter()->GetScreenDepth() == 0) goto failure;
 
 	/* If there is no network or no freetype, then there is nothing we can do. Go straight to failure. */
-#if defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(_WIN32) || defined(__APPLE__))
+#if (defined(_WIN32) && defined(WITH_UNISCRIBE)) || (defined(WITH_FREETYPE) && (defined(WITH_FONTCONFIG) || defined(__APPLE__))) || defined(WITH_COCOA)
 	if (!_network_available) goto failure;
 
 	/* First tell the game we're bootstrapping. */
@@ -255,7 +319,7 @@ bool HandleBootstrap()
 	if (_exit_game) return false;
 
 	/* Try to probe the graphics. Should work this time. */
-	if (!BaseGraphics::SetSet(nullptr)) goto failure;
+	if (!BaseGraphics::SetSet({})) goto failure;
 
 	/* Finally we can continue heading for the menu. */
 	_game_mode = GM_MENU;
@@ -264,6 +328,6 @@ bool HandleBootstrap()
 
 	/* Failure to get enough working to get a graphics set. */
 failure:
-	usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD. See section 4.1 of README.md.");
+	usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD. See section 1.4 of README.md.");
 	return false;
 }
