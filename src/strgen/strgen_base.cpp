@@ -457,7 +457,7 @@ void EmitGender(Buffer *buffer, char *buf, int value)
 
 		/* This is a {G 0 foo bar two} command.
 		 * If no relative number exists, default to +0 */
-		if (!ParseRelNum(&buf, &argidx, &offset)) {}
+		ParseRelNum(&buf, &argidx, &offset);
 
 		const CmdStruct *cmd = _cur_pcs.cmd[argidx];
 		if (cmd == nullptr || (cmd->flags & C_GENDER) == 0) {
