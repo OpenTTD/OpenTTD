@@ -26,8 +26,10 @@ macro(compile_flags)
         add_compile_options(/Zc:rvalueCast)
 
         if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-            # Enable multi-threaded compilation.
-            add_compile_options(/MP)
+            add_compile_options(
+                /MP # Enable multi-threaded compilation.
+                /FC # Display the full path of source code files passed to the compiler in diagnostics.
+            )
         endif()
     endif()
 
