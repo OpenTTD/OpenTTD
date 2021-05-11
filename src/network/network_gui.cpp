@@ -830,6 +830,7 @@ public:
 		if (!StrEmpty(str)) {
 			strecpy(_settings_client.network.connect_to_ip, str, lastof(_settings_client.network.connect_to_ip));
 			NetworkAddServer(str);
+			NetworkRebuildHostList();
 		}
 	}
 

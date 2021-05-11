@@ -701,7 +701,6 @@ NetworkGameList *NetworkAddServer(const std::string &connection_string, bool man
 		ClearGRFConfigList(&item->info.grfconfig);
 		item->info.server_name = connection_string;
 
-		NetworkRebuildHostList();
 		UpdateNetworkGameWindow();
 
 		NetworkQueryServer(connection_string);
