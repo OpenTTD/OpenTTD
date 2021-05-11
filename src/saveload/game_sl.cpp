@@ -70,8 +70,7 @@ static void Load_GSDT()
 	}
 
 	GameConfig *config = GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME);
-	if (_game_saveload_name.empty()) {
-	} else {
+	if (!_game_saveload_name.empty()) {
 		config->Change(_game_saveload_name.c_str(), _game_saveload_version, false, _game_saveload_is_random);
 		if (!config->HasScript()) {
 			/* No version of the GameScript available that can load the data. Try to load the

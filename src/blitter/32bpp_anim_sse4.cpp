@@ -155,6 +155,7 @@ bmno_full_transparency:
 
 				if ((bt_last == BT_NONE && effective_width & 1) || bt_last == BT_ODD) {
 					if (src->a == 0) {
+						/* Complete transparency. */
 					} else if (src->a == 255) {
 						*anim = *(const uint16*) src_mv;
 						*dst = (src_mv->m >= PALETTE_ANIM_START) ? AdjustBrightneSSE(LookupColourInPalette(src_mv->m), src_mv->v) : *src;
