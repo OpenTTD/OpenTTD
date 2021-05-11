@@ -585,13 +585,13 @@ void NetworkClose(bool close_admins)
 		}
 
 		for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
-			cs->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
+			cs->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 		}
 		ServerNetworkGameSocketHandler::CloseListeners();
 		ServerNetworkAdminSocketHandler::CloseListeners();
 	} else if (MyClient::my_client != nullptr) {
 		MyClient::SendQuit();
-		MyClient::my_client->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
+		MyClient::my_client->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 	}
 
 	TCPConnecter::KillAll();
