@@ -476,7 +476,7 @@ public:
 		EM_ASM(if (window["openttd_server_list"]) openttd_server_list());
 #endif
 
-		this->last_joined = NetworkAddServer(_settings_client.network.last_joined);
+		this->last_joined = NetworkAddServer(_settings_client.network.last_joined, false);
 		this->server = this->last_joined;
 
 		this->requery_timer.SetInterval(MILLISECONDS_PER_TICK);
