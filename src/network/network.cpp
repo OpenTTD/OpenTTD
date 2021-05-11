@@ -841,6 +841,27 @@ static void NetworkInitGameInfo()
 	strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
 }
 
+/**
+ * Check whether the client and server name are set, for a dedicated server and if not set them to some default
+ * value and tell the user to change this as soon as possible.
+ * If the saved name is the default value, then the user is told to override  this value too.
+ * This is only meant dedicated servers, as for the other servers the GUI ensures a name has been entered.
+ */
+static void CheckClientAndServerName()
+{
+	static const char *fallback_client_name = "Unnamed Client";
+	if (StrEmpty(_settings_client.network.client_name) || strcmp(_settings_client.network.client_name, fallback_client_name) == 0) {
+		DEBUG(net, 0, "No \"client_name\" has been set, using \"%s\" instead. Please set this now using the \"name <new name>\" command.", fallback_client_name);
+		strecpy(_settings_client.network.client_name, fallback_client_name, lastof(_settings_client.network.client_name));
+	}
+
+	static const char *fallback_server_name = "Unnamed Server";
+	if (StrEmpty(_settings_client.network.server_name) || strcmp(_settings_client.network.server_name, fallback_server_name) == 0) {
+		DEBUG(net, 0, "No \"server_name\" has been set, using \"%s\" instead. Please set this now using the \"server_name <new name>\" command.", fallback_server_name);
+		strecpy(_settings_client.network.server_name, fallback_server_name, lastof(_settings_client.network.server_name));
+	}
+}
+
 bool NetworkServerStart()
 {
 	if (!_network_available) return false;
@@ -848,6 +869,9 @@ bool NetworkServerStart()
 	/* Call the pre-scripts */
 	IConsoleCmdExec("exec scripts/pre_server.scr 0");
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/pre_dedicated.scr 0");
+
+	/* Check for the client and server names to be set, but only after the scripts had a chance to set them.*/
+	if (_network_dedicated) CheckClientAndServerName();
 
 	NetworkDisconnect(false, false);
 	NetworkInitialize(false);
