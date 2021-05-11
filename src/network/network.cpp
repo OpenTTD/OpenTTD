@@ -627,6 +627,14 @@ private:
 public:
 	TCPQueryConnecter(const std::string &connection_string) : TCPConnecter(connection_string, NETWORK_DEFAULT_PORT), connection_string(connection_string) {}
 
+	void OnFailure() override
+	{
+		NetworkGameList *item = NetworkGameListAddItem(connection_string);
+		item->online = false;
+
+		UpdateNetworkGameWindow();
+	}
+
 	void OnConnect(SOCKET s) override
 	{
 		_networking = true;
