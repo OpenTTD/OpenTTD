@@ -203,14 +203,14 @@ void SerializeNetworkGameInfo(Packet *p, const NetworkServerGameInfo *info)
 	/* NETWORK_GAME_INFO_VERSION = 5 */
 	{
 		/* Only send GameScript details if server is running some Gamescript */
-		GameInfo* gsinfo = Game::GetInfo();
+		GameInfo *gsinfo = Game::GetInfo();
 		if (gsinfo == nullptr) {
-			p->Send_bool(false); //has gamescript?
+			/* if no gamescript, send -1 for version and empty string */
+			p->Send_uint32(-1);
+			p->Send_string(""); 
 		}
 		else {
-			p->Send_bool(true); //has gamescript?
 			p->Send_uint32((uint32)gsinfo->GetVersion());
-			p->Send_string(gsinfo->GetShortName());
 			p->Send_string(gsinfo->GetName());
 		}
 	}
@@ -282,13 +282,8 @@ void DeserializeNetworkGameInfo(Packet *p, NetworkGameInfo *info)
 	switch (game_info_version) {
 
 		case 5: {
-			info->has_gamescript = p->Recv_bool();
-			if (info->has_gamescript) {
-				info->gs_version = (int)p->Recv_uint32();
-
-				info->gs_shortname = p->Recv_string(NETWORK_NAME_LENGTH);
-				info->gs_name = p->Recv_string(NETWORK_NAME_LENGTH);
-			}
+			info->gs_version = (int)p->Recv_uint32();
+			info->gs_name    = p->Recv_string(NETWORK_NAME_LENGTH);
 			FALLTHROUGH;
 		}
 

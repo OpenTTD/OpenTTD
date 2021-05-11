@@ -295,7 +295,6 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_GET_NEWGRFS(Packet *p, Networ
 	this->SendPacket(&packet, client_addr);
 }
 
-
 ///*** Communication with servers (we are client) ***/
 
 /** Helper class for handling all client side communication. */
@@ -434,34 +433,6 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_NEWGRFS(Packet *p, NetworkAdd
 			AddGRFTextToList(unknown_name, name);
 		}
 	}
-}
-
-
-void ClientNetworkUDPSocketHandler::HandleIncomingNetworkGameInfoGRFConfig(GRFConfig *config)
-{
-	/* Find the matching GRF file */
-	const GRFConfig *f = FindGRFConfig(config->ident.grfid, FGCM_EXACT, config->ident.md5sum);
-	if (f == nullptr) {
-		/* Don't know the GRF, so mark game incompatible and the (possibly)
-		 * already resolved name for this GRF (another server has sent the
-		 * name of the GRF already */
-		config->name->Release();
-		config->name = FindUnknownGRFName(config->ident.grfid, config->ident.md5sum, true);
-		config->name->AddRef();
-		config->status = GCS_NOT_FOUND;
-	} else {
-		config->filename = f->filename;
-		config->name->Release();
-		config->name = f->name;
-		config->name->AddRef();
-		config->info->Release();
-		config->info = f->info;
-		config->info->AddRef();
-		config->url->Release();
-		config->url = f->url;
-		config->url->AddRef();
-	}
-	SetBit(config->flags, GCF_COPY);
 }
 
 /** Broadcast to all ips */
