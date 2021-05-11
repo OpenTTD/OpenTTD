@@ -41,7 +41,7 @@ NetworkAdminSocketHandler::~NetworkAdminSocketHandler()
 NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool error)
 {
 	delete this;
-	return NETWORK_RECV_STATUS_CONN_LOST;
+	return NETWORK_RECV_STATUS_CLIENT_QUIT;
 }
 
 /**

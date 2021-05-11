@@ -256,7 +256,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	 */
 	if (this->sock == INVALID_SOCKET) return status;
 
-	if (status != NETWORK_RECV_STATUS_CONN_LOST && status != NETWORK_RECV_STATUS_SERVER_ERROR && !this->HasClientQuit() && this->status >= STATUS_AUTHORIZED) {
+	if (status != NETWORK_RECV_STATUS_CLIENT_QUIT && status != NETWORK_RECV_STATUS_SERVER_ERROR && !this->HasClientQuit() && this->status >= STATUS_AUTHORIZED) {
 		/* We did not receive a leave message from this client... */
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
@@ -893,7 +893,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	p->Recv_string(name, sizeof(name));
 	playas = (Owner)p->Recv_uint8();
 
-	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
 
 	/* join another company does not affect these values */
 	switch (playas) {
@@ -1077,7 +1077,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_COMMAND(Packet 
 	CommandPacket cp;
 	const char *err = this->ReceiveCommand(p, &cp);
 
-	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
 
 	NetworkClientInfo *ci = this->GetInfo();
 
@@ -1136,7 +1136,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet *p
 
 	/* The client was never joined.. thank the client for the packet, but ignore it */
 	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
-		return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
+		return this->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 	}
 
 	this->GetClientName(client_name, lastof(client_name));
@@ -1156,7 +1156,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet *p
 
 	NetworkAdminClientError(this->client_id, errorno);
 
-	return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
+	return this->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_QUIT(Packet *p)
@@ -1167,7 +1167,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_QUIT(Packet *p)
 
 	/* The client was never joined.. thank the client for the packet, but ignore it */
 	if (this->status < STATUS_DONE_MAP || this->HasClientQuit()) {
-		return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
+		return this->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 	}
 
 	this->GetClientName(client_name, lastof(client_name));
@@ -1182,7 +1182,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_QUIT(Packet *p)
 
 	NetworkAdminClientQuit(this->client_id);
 
-	return this->CloseConnection(NETWORK_RECV_STATUS_CONN_LOST);
+	return this->CloseConnection(NETWORK_RECV_STATUS_CLIENT_QUIT);
 }
 
 NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
@@ -1412,7 +1412,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 	p->Recv_string(client_name, sizeof(client_name));
 	ci = this->GetInfo();
 
-	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CONN_LOST;
+	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
 
 	if (ci != nullptr) {
 		if (!NetworkIsValidClientName(client_name)) {
