@@ -190,7 +190,7 @@ public:
 	virtual ~NetworkUDPSocketHandler() { this->Close(); }
 
 	bool Listen();
-	void Close() override;
+	void Close();
 
 	void SendPacket(Packet *p, NetworkAddress *recv, bool all = false, bool broadcast = false);
 	void ReceivePackets();
