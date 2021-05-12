@@ -737,7 +737,7 @@ void DeallocateSpecFromStation(BaseStation *st, byte specindex)
 
 	ETileArea area = ETileArea(st, INVALID_TILE, TA_WHOLE);
 	/* Check all tiles over the station to check if the specindex is still in use */
-	TILE_AREA_LOOP(tile, area) {
+	for (TileIndex tile : area) {
 		if (st->TileBelongsToRailStation(tile) && GetCustomStationSpecIndex(tile) == specindex) {
 			return;
 		}
@@ -939,7 +939,7 @@ void TriggerStationAnimation(BaseStation *st, TileIndex tile, StationAnimationTr
 	ETileArea area = ETileArea(st, tile, tas[trigger]);
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	TILE_AREA_LOOP(tile, area) {
+	for (TileIndex tile : area) {
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss != nullptr && HasBit(ss->animation.triggers, trigger)) {
@@ -995,7 +995,7 @@ void TriggerStationRandomisation(Station *st, TileIndex tile, StationRandomTrigg
 	uint32 used_triggers = 0;
 
 	/* Check all tiles over the station to check if the specindex is still in use */
-	TILE_AREA_LOOP(tile, area) {
+	for (TileIndex tile : area) {
 		if (st->TileBelongsToRailStation(tile)) {
 			const StationSpec *ss = GetStationSpec(tile);
 			if (ss == nullptr) continue;

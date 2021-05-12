@@ -554,7 +554,7 @@ void TriggerObjectAnimation(Object *o, ObjectAnimationTrigger trigger, const Obj
 {
 	if (!HasBit(spec->animation.triggers, trigger)) return;
 
-	TILE_AREA_LOOP(tile, o->location) {
+	for (TileIndex tile : o->location) {
 		TriggerObjectTileAnimation(o, tile, trigger, spec);
 	}
 }

@@ -575,7 +575,7 @@ void ForAllStationsAroundTiles(const TileArea &ta, Func func)
 	 * to find the possible nearby stations. */
 	uint max_c = _settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED;
 	TileArea ta_ext = TileArea(ta).Expand(max_c);
-	TILE_AREA_LOOP(tile, ta_ext) {
+	for (TileIndex tile : ta_ext) {
 		if (IsTileType(tile, MP_STATION)) seen_stations.insert(GetStationIndex(tile));
 	}
 
@@ -587,7 +587,7 @@ void ForAllStationsAroundTiles(const TileArea &ta, Func func)
 		if (!_settings_game.station.serve_neutral_industries && st->industry != nullptr) continue;
 
 		/* Test if the tile is within the station's catchment */
-		TILE_AREA_LOOP(tile, ta) {
+		for (TileIndex tile : ta) {
 			if (st->TileIsInCatchment(tile)) {
 				if (func(st, tile)) break;
 			}

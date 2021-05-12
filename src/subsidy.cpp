@@ -329,7 +329,7 @@ bool FindSubsidyTownCargoRoute()
 	/* Calculate the produced cargo of houses around town center. */
 	CargoArray town_cargo_produced;
 	TileArea ta = TileArea(src_town->xy, 1, 1).Expand(SUBSIDY_TOWN_CARGO_RADIUS);
-	TILE_AREA_LOOP(tile, ta) {
+	for (TileIndex tile : ta) {
 		if (IsTileType(tile, MP_HOUSE)) {
 			AddProducedCargo(tile, town_cargo_produced);
 		}
@@ -440,7 +440,7 @@ bool FindSubsidyCargoDestination(CargoID cid, SourceType src_type, SourceID src)
 			/* Calculate cargo acceptance of houses around town center. */
 			CargoArray town_cargo_accepted;
 			TileArea ta = TileArea(dst_town->xy, 1, 1).Expand(SUBSIDY_TOWN_CARGO_RADIUS);
-			TILE_AREA_LOOP(tile, ta) {
+			for (TileIndex tile : ta) {
 				if (IsTileType(tile, MP_HOUSE)) {
 					AddAcceptedCargo(tile, town_cargo_accepted, nullptr);
 				}

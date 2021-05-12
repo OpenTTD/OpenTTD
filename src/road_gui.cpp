@@ -163,7 +163,7 @@ void CcRoadStop(const CommandCost &result, TileIndex tile, uint32 p1, uint32 p2,
 	if (_settings_client.sound.confirm) SndPlayTileFx(SND_1F_CONSTRUCTION_OTHER, tile);
 	if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	TileArea roadstop_area(tile, GB(p1, 0, 8), GB(p1, 8, 8));
-	TILE_AREA_LOOP(cur_tile, roadstop_area) {
+	for (TileIndex cur_tile : roadstop_area) {
 		ConnectRoadToStructure(cur_tile, dir);
 		/* For a drive-through road stop build connecting road for other entrance. */
 		if (HasBit(p2, 1)) ConnectRoadToStructure(cur_tile, ReverseDiagDir(dir));
