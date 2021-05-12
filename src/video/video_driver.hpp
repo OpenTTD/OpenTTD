@@ -319,23 +319,6 @@ protected:
 		return std::chrono::microseconds(1000000 / _settings_client.gui.refresh_rate);
 	}
 
-	std::chrono::steady_clock::time_point next_game_tick;
-	std::chrono::steady_clock::time_point next_draw_tick;
-
-	bool fast_forward_key_pressed; ///< The fast-forward key is being pressed.
-	bool fast_forward_via_key; ///< The fast-forward was enabled by key press.
-
-	bool is_game_threaded;
-	std::thread game_thread;
-	std::mutex game_state_mutex;
-	std::mutex game_thread_wait_mutex;
-
-	static void GameThreadThunk(VideoDriver *drv);
-
-private:
-	std::mutex cmd_queue_mutex;
-	std::vector<std::function<void()>> cmd_queue;
-
 	/** Execute all queued commands. */
 	void DrainCommandQueue()
 	{
@@ -353,6 +336,23 @@ private:
 			f();
 		}
 	}
+
+	std::chrono::steady_clock::time_point next_game_tick;
+	std::chrono::steady_clock::time_point next_draw_tick;
+
+	bool fast_forward_key_pressed; ///< The fast-forward key is being pressed.
+	bool fast_forward_via_key; ///< The fast-forward was enabled by key press.
+
+	bool is_game_threaded;
+	std::thread game_thread;
+	std::mutex game_state_mutex;
+	std::mutex game_thread_wait_mutex;
+
+	static void GameThreadThunk(VideoDriver *drv);
+
+private:
+	std::mutex cmd_queue_mutex;
+	std::vector<std::function<void()>> cmd_queue;
 
 	void GameLoop();
 	void GameThread();
