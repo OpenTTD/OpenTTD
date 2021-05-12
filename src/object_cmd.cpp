@@ -114,7 +114,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 
 	assert(o->town != nullptr);
 
-	TILE_AREA_LOOP(t, ta) {
+	for (TileIndex t : ta) {
 		WaterClass wc = (IsWaterTile(t) ? GetWaterClass(t) : WATER_CLASS_INVALID);
 		/* Update company infrastructure counts for objects build on canals owned by nobody. */
 		if (wc == WATER_CLASS_CANAL && owner != OWNER_NONE && (IsTileOwner(tile, OWNER_NONE) || IsTileOwner(tile, OWNER_WATER))) {
@@ -136,7 +136,7 @@ void BuildObject(ObjectType type, TileIndex tile, CompanyID owner, Town *town, u
 static void IncreaseAnimationStage(TileIndex tile)
 {
 	TileArea ta = Object::GetByTile(tile)->location;
-	TILE_AREA_LOOP(t, ta) {
+	for (TileIndex t : ta) {
 		SetAnimationFrame(t, GetAnimationFrame(t) + 1);
 		MarkTileDirtyByTile(t);
 	}
@@ -230,7 +230,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		 * some information about the tiles. */
 		bool allow_water = (spec->flags & (OBJECT_FLAG_BUILT_ON_WATER | OBJECT_FLAG_NOT_ON_LAND)) != 0;
 		bool allow_ground = (spec->flags & OBJECT_FLAG_NOT_ON_LAND) == 0;
-		TILE_AREA_LOOP(t, ta) {
+		for (TileIndex t : ta) {
 			if (HasTileWaterGround(t)) {
 				if (!allow_water) return_cmd_error(STR_ERROR_CAN_T_BUILD_ON_WATER);
 				if (!IsWaterTile(t)) {
@@ -263,7 +263,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		int allowed_z;
 		if (GetTileSlope(tile, &allowed_z) != SLOPE_FLAT) allowed_z++;
 
-		TILE_AREA_LOOP(t, ta) {
+		for (TileIndex t : ta) {
 			uint16 callback = CALLBACK_FAILED;
 			if (HasBit(spec->callback_mask, CBM_OBJ_SLOPE_CHECK)) {
 				TileIndex diff = t - tile;
@@ -283,7 +283,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 		if (flags & DC_EXEC) {
 			/* This is basically a copy of the loop above with the exception that we now
 			 * execute the commands and don't check for errors, since that's already done. */
-			TILE_AREA_LOOP(t, ta) {
+			for (TileIndex t : ta) {
 				if (HasTileWaterGround(t)) {
 					if (!IsWaterTile(t)) {
 						DoCommand(t, 0, 0, (flags & ~DC_NO_WATER) | DC_NO_MODIFY_TOWN_RATING, CMD_LANDSCAPE_CLEAR);
@@ -297,7 +297,7 @@ CommandCost CmdBuildObject(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 	if (cost.Failed()) return cost;
 
 	/* Finally do a check for bridges. */
-	TILE_AREA_LOOP(t, ta) {
+	for (TileIndex t : ta) {
 		if (IsBridgeAbove(t) && (
 				!(spec->flags & OBJECT_FLAG_ALLOW_UNDER_BRIDGE) ||
 				(GetTileMaxZ(t) + spec->height >= GetBridgeHeight(GetSouthernBridgeEnd(t))))) {
@@ -438,7 +438,7 @@ static Foundation GetFoundation_Object(TileIndex tile, Slope tileh)
 static void ReallyClearObjectTile(Object *o)
 {
 	Object::DecTypeCount(o->type);
-	TILE_AREA_LOOP(tile_cur, o->location) {
+	for (TileIndex tile_cur : o->location) {
 		DeleteNewGRFInspectWindow(GSF_OBJECTS, tile_cur);
 
 		MakeWaterKeepingClass(tile_cur, GetTileOwner(tile_cur));

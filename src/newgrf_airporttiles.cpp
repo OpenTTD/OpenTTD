@@ -307,7 +307,7 @@ void AirportAnimationTrigger(Station *st, AirpAnimationTrigger trigger, CargoID 
 {
 	if (st->airport.tile == INVALID_TILE) return;
 
-	TILE_AREA_LOOP(tile, st->airport) {
+	for (TileIndex tile : st->airport) {
 		if (st->TileBelongsToAirport(tile)) AirportTileAnimationTrigger(st, tile, trigger, cargo_type);
 	}
 }

@@ -416,7 +416,7 @@ void Station::RecomputeCatchment()
 	if (!_settings_game.station.serve_neutral_industries && this->industry != nullptr) {
 		/* Station is associated with an industry, so we only need to deliver to that industry. */
 		this->catchment_tiles.Initialize(this->industry->location);
-		TILE_AREA_LOOP(tile, this->industry->location) {
+		for (TileIndex tile : this->industry->location) {
 			if (IsTileType(tile, MP_INDUSTRY) && GetIndustryIndex(tile) == this->industry->index) {
 				this->catchment_tiles.SetTile(tile);
 			}
@@ -435,7 +435,7 @@ void Station::RecomputeCatchment()
 
 	/* Loop finding all station tiles */
 	TileArea ta(TileXY(this->rect.left, this->rect.top), TileXY(this->rect.right, this->rect.bottom));
-	TILE_AREA_LOOP(tile, ta) {
+	for (TileIndex tile : ta) {
 		if (!IsTileType(tile, MP_STATION) || GetStationIndex(tile) != this->index) continue;
 
 		uint r = GetTileCatchmentRadius(tile, this);
@@ -443,7 +443,7 @@ void Station::RecomputeCatchment()
 
 		/* This tile sub-loop doesn't need to test any tiles, they are simply added to the catchment set. */
 		TileArea ta2 = TileArea(tile, 1, 1).Expand(r);
-		TILE_AREA_LOOP(tile2, ta2) this->catchment_tiles.SetTile(tile2);
+		for (TileIndex tile2 : ta2) this->catchment_tiles.SetTile(tile2);
 	}
 
 	/* Search catchment tiles for towns and industries */
@@ -567,7 +567,7 @@ CommandCost StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRect
 /* static */ bool StationRect::ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a)
 {
 	TileArea ta(TileXY(left_a, top_a), TileXY(right_a, bottom_a));
-	TILE_AREA_LOOP(tile, ta) {
+	for (TileIndex tile : ta) {
 		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st_id) return true;
 	}
 

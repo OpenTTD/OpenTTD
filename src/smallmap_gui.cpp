@@ -750,7 +750,7 @@ inline uint32 SmallMapWindow::GetTileColours(const TileArea &ta) const
 	TileIndex tile = INVALID_TILE; // Position of the most important tile.
 	TileType et = MP_VOID;         // Effective tile type at that position.
 
-	TILE_AREA_LOOP(ti, ta) {
+	for (TileIndex ti : ta) {
 		TileType ttype = GetTileType(ti);
 
 		switch (ttype) {
