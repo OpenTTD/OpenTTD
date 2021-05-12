@@ -1093,7 +1093,8 @@ Window::~Window()
 
 	/* Make sure we don't try to access this window as the focused window when it doesn't exist anymore. */
 	if (_focused_window == this) {
-		this->OnFocusLost();
+		/* Virtual functions get called statically in destructors, so make it explicit to remove any confusion. */
+		this->Window::OnFocusLost();
 		_focused_window = nullptr;
 	}
 

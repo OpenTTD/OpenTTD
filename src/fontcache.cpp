@@ -216,7 +216,8 @@ TrueTypeFontCache::TrueTypeFontCache(FontSize fs, int pixels) : FontCache(fs), r
  */
 TrueTypeFontCache::~TrueTypeFontCache()
 {
-	this->ClearFontCache();
+	/* Virtual functions get called statically in destructors, so make it explicit to remove any confusion. */
+	this->TrueTypeFontCache::ClearFontCache();
 
 	for (auto &iter : this->font_tables) {
 		free(iter.second.second);
