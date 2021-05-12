@@ -46,10 +46,7 @@ public:
 	NetworkSocketHandler() { this->has_quit = false; }
 
 	/** Close the socket when destructing the socket handler */
-	virtual ~NetworkSocketHandler() { this->Close(); }
-
-	/** Really close the socket */
-	virtual void Close() {}
+	virtual ~NetworkSocketHandler() {}
 
 	/**
 	 * Close the current connection; for TCP this will be mostly equivalent

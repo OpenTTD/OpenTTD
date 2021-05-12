@@ -137,9 +137,11 @@ const char *ContentInfo::GetTextfile(TextfileType type) const
 	return ::GetTextfile(type, GetContentInfoSubDir(this->type), tmp);
 }
 
-void NetworkContentSocketHandler::Close()
+/**
+ * Close the actual socket.
+ */
+void NetworkContentSocketHandler::CloseSocket()
 {
-	CloseConnection();
 	if (this->sock == INVALID_SOCKET) return;
 
 	closesocket(this->sock);

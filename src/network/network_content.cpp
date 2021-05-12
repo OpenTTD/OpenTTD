@@ -784,7 +784,9 @@ void ClientNetworkContentSocketHandler::Connect()
 void ClientNetworkContentSocketHandler::Close()
 {
 	if (this->sock == INVALID_SOCKET) return;
-	NetworkContentSocketHandler::Close();
+
+	this->CloseConnection();
+	this->CloseSocket();
 
 	this->OnDisconnect();
 }

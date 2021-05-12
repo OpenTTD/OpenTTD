@@ -29,7 +29,8 @@ NetworkTCPSocketHandler::NetworkTCPSocketHandler(SOCKET s) :
 
 NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 {
-	this->CloseConnection();
+	/* Virtual functions get called statically in destructors, so make it explicit to remove any confusion. */
+	this->NetworkTCPSocketHandler::CloseConnection();
 
 	if (this->sock != INVALID_SOCKET) closesocket(this->sock);
 	this->sock = INVALID_SOCKET;
