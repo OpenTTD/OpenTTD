@@ -90,7 +90,7 @@ SendPacketsState NetworkTCPSocketHandler::SendPackets(bool closing_down)
 			if (!err.WouldBlock()) {
 				/* Something went wrong.. close client! */
 				if (!closing_down) {
-					DEBUG(net, 0, "send failed with error %s", err.AsString());
+					DEBUG(net, 0, "Send failed: %s", err.AsString());
 					this->CloseConnection();
 				}
 				return SPS_CLOSED;
@@ -139,7 +139,7 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 				NetworkError err = NetworkError::GetLast();
 				if (!err.WouldBlock()) {
 					/* Something went wrong... */
-					if (!err.IsConnectionReset()) DEBUG(net, 0, "recv failed with error %s", err.AsString());
+					if (!err.IsConnectionReset()) DEBUG(net, 0, "Recv failed: %s", err.AsString());
 					this->CloseConnection();
 					return nullptr;
 				}
@@ -167,7 +167,7 @@ Packet *NetworkTCPSocketHandler::ReceivePacket()
 			NetworkError err = NetworkError::GetLast();
 			if (!err.WouldBlock()) {
 				/* Something went wrong... */
-				if (!err.IsConnectionReset()) DEBUG(net, 0, "recv failed with error %s", err.AsString());
+				if (!err.IsConnectionReset()) DEBUG(net, 0, "Recv failed: %s", err.AsString());
 				this->CloseConnection();
 				return nullptr;
 			}

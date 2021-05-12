@@ -72,7 +72,7 @@ void TCPConnecter::Connect(addrinfo *address)
 	}
 
 	NetworkAddress network_address = NetworkAddress(address->ai_addr, (int)address->ai_addrlen);
-	DEBUG(net, 4, "Attempting to connect to %s", network_address.GetAddressAsString().c_str());
+	DEBUG(net, 5, "Attempting to connect to %s", network_address.GetAddressAsString().c_str());
 
 	int err = connect(sock, address->ai_addr, (int)address->ai_addrlen);
 	if (err != 0 && !NetworkError::GetLast().IsConnectInProgress()) {
@@ -149,10 +149,10 @@ void TCPConnecter::OnResolved(addrinfo *ai)
 		}
 	}
 
-	if (_debug_net_level >= 5) {
-		DEBUG(net, 5, "%s resolved in:", this->connection_string.c_str());
+	if (_debug_net_level >= 6) {
+		DEBUG(net, 6, "%s resolved in:", this->connection_string.c_str());
 		for (const auto &address : this->addresses) {
-			DEBUG(net, 5, "- %s", NetworkAddress(address->ai_addr, (int)address->ai_addrlen).GetAddressAsString().c_str());
+			DEBUG(net, 6, "- %s", NetworkAddress(address->ai_addr, (int)address->ai_addrlen).GetAddressAsString().c_str());
 		}
 	}
 
@@ -188,7 +188,7 @@ void TCPConnecter::Resolve()
 	}
 
 	if (e != 0) {
-		DEBUG(misc, 0, "Failed to resolve DNS for %s", this->connection_string.c_str());
+		DEBUG(net, 0, "Failed to resolve DNS for %s", this->connection_string.c_str());
 		this->OnFailure();
 		return;
 	}
@@ -235,7 +235,7 @@ bool TCPConnecter::CheckActivity()
 	/* select() failed; hopefully next try it doesn't. */
 	if (n < 0) {
 		/* select() normally never fails; so hopefully it works next try! */
-		DEBUG(net, 1, "select() failed with %s", NetworkError::GetLast().AsString());
+		DEBUG(net, 1, "select() failed: %s", NetworkError::GetLast().AsString());
 		return false;
 	}
 
@@ -301,7 +301,7 @@ bool TCPConnecter::CheckActivity()
 	}
 	assert(connected_socket != INVALID_SOCKET);
 
-	DEBUG(net, 1, "Connected to %s", this->connection_string.c_str());
+	DEBUG(net, 3, "Connected to %s", this->connection_string.c_str());
 	if (_debug_net_level >= 5) {
 		DEBUG(net, 5, "- using %s", NetworkAddress::GetPeerName(connected_socket).c_str());
 	}

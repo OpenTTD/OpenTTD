@@ -112,7 +112,6 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 			ClearGRFConfigList(&remove->info.grfconfig);
 			delete remove;
 
-			DEBUG(net, 4, "[gamelist] removed server from list");
 			NetworkRebuildHostList();
 			UpdateNetworkGameWindow();
 			return;

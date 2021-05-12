@@ -51,7 +51,7 @@ const char *GetNetworkRevisionString()
 
 		/* Tag names are not mangled further. */
 		if (_openttd_revision_tagged) {
-			DEBUG(net, 1, "Network revision name is '%s'", network_revision);
+			DEBUG(net, 3, "Network revision name: %s", network_revision);
 			return network_revision;
 		}
 
@@ -71,7 +71,7 @@ const char *GetNetworkRevisionString()
 		/* Replace the git hash in revision string. */
 		strecpy(network_revision + hashofs, githash_suffix, network_revision + NETWORK_REVISION_LENGTH);
 		assert(strlen(network_revision) < NETWORK_REVISION_LENGTH); // strlen does not include terminator, constant does, hence strictly less than
-		DEBUG(net, 1, "Network revision name is '%s'", network_revision);
+		DEBUG(net, 3, "Network revision name: %s", network_revision);
 	}
 
 	return network_revision;

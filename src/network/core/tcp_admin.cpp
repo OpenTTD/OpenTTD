@@ -93,9 +93,9 @@ NetworkRecvStatus NetworkAdminSocketHandler::HandlePacket(Packet *p)
 
 		default:
 			if (this->HasClientQuit()) {
-				DEBUG(net, 0, "[tcp/admin] received invalid packet type %d from '%s' (%s)", type, this->admin_name, this->admin_version);
+				DEBUG(net, 0, "[tcp/admin] Received invalid packet type %d from '%s' (%s)", type, this->admin_name, this->admin_version);
 			} else {
-				DEBUG(net, 0, "[tcp/admin] received illegal packet from '%s' (%s)", this->admin_name, this->admin_version);
+				DEBUG(net, 0, "[tcp/admin] Received illegal packet from '%s' (%s)", this->admin_name, this->admin_version);
 			}
 
 			this->CloseConnection();
@@ -129,7 +129,7 @@ NetworkRecvStatus NetworkAdminSocketHandler::ReceivePackets()
  */
 NetworkRecvStatus NetworkAdminSocketHandler::ReceiveInvalidPacket(PacketAdminType type)
 {
-	DEBUG(net, 0, "[tcp/admin] received illegal packet type %d from admin %s (%s)", type, this->admin_name, this->admin_version);
+	DEBUG(net, 0, "[tcp/admin] Received illegal packet type %d from admin %s (%s)", type, this->admin_name, this->admin_version);
 	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 }
 

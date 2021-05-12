@@ -1458,7 +1458,7 @@ static void _SetGeneratingWorldProgress(GenWorldProgress cls, uint progress, uin
 		/* Never show steps smaller than 2%, even if it is a mod 5% */
 		if (_gws.percent <= last_percent + 2) return;
 
-		DEBUG(net, 1, "Map generation percentage complete: %d", _gws.percent);
+		DEBUG(net, 3, "Map generation percentage complete: %d", _gws.percent);
 		last_percent = _gws.percent;
 
 		return;

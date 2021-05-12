@@ -49,7 +49,7 @@ public:
 			SetNonBlocking(s); // XXX error handling?
 
 			NetworkAddress address(sin, sin_len);
-			DEBUG(net, 1, "[%s] Client connected from %s on frame %d", Tsocket::GetName(), address.GetHostname(), _frame_counter);
+			DEBUG(net, 3, "[%s] Client connected from %s on frame %d", Tsocket::GetName(), address.GetHostname(), _frame_counter);
 
 			SetNoDelay(s); // XXX error handling?
 
@@ -61,10 +61,10 @@ public:
 					Packet p(Tban_packet);
 					p.PrepareToSend();
 
-					DEBUG(net, 1, "[%s] Banned ip tried to join (%s), refused", Tsocket::GetName(), entry.c_str());
+					DEBUG(net, 2, "[%s] Banned ip tried to join (%s), refused", Tsocket::GetName(), entry.c_str());
 
 					if (p.TransferOut<int>(send, s, 0) < 0) {
-						DEBUG(net, 0, "send failed with error %s", NetworkError::GetLast().AsString());
+						DEBUG(net, 0, "[%s] send failed: %s", Tsocket::GetName(), NetworkError::GetLast().AsString());
 					}
 					closesocket(s);
 					break;
@@ -81,7 +81,7 @@ public:
 				p.PrepareToSend();
 
 				if (p.TransferOut<int>(send, s, 0) < 0) {
-					DEBUG(net, 0, "send failed with error %s", NetworkError::GetLast().AsString());
+					DEBUG(net, 0, "[%s] send failed: %s", Tsocket::GetName(), NetworkError::GetLast().AsString());
 				}
 				closesocket(s);
 
@@ -150,7 +150,7 @@ public:
 		}
 
 		if (sockets.size() == 0) {
-			DEBUG(net, 0, "[server] could not start network: could not create listening socket");
+			DEBUG(net, 0, "Could not start network: could not create listening socket");
 			ShowNetworkError(STR_NETWORK_ERROR_SERVER_START);
 			return false;
 		}
@@ -165,7 +165,7 @@ public:
 			closesocket(s.second);
 		}
 		sockets.clear();
-		DEBUG(net, 1, "[%s] closed listeners", Tsocket::GetName());
+		DEBUG(net, 5, "[%s] Closed listeners", Tsocket::GetName());
 	}
 };
 
