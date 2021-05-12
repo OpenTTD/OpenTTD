@@ -928,7 +928,7 @@ STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysi
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Pe partea stângă
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_RIGHT                   :Pe partea dreaptă
 
-STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Numele oraşelor
+STR_GAME_OPTIONS_TOWN_NAMES_FRAME                               :{BLACK}Numele orașelor:
 STR_GAME_OPTIONS_TOWN_NAMES_DROPDOWN_TOOLTIP                    :{BLACK}Alege naţionalitatea numelor oraşelor
 
 ############ start of townname region
@@ -990,6 +990,7 @@ STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :Normală
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_2X_ZOOM                      :Mărime dublă
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_4X_ZOOM                      :Mărime împătrită
 
+STR_GAME_OPTIONS_FONT_ZOOM                                      :{BLACK}Dimensiune font
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_TOOLTIP                     :{BLACK}Alege dimensiunea fontului pentru interfață
 
 STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_AUTO                        :(auto-detecție)
@@ -998,7 +999,9 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_2X_ZOOM                     :Mărime dublă
 
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafică
 
+STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Afișează rata de reîmprospătare
 STR_GAME_OPTIONS_REFRESH_RATE_TOOLTIP                           :{BLACK}Alegeți rata de reîmprospătare dorită
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :alta
 STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Ratele de împrospătare de peste 60Hz ar putea afecta performanța.
 
@@ -1177,6 +1180,7 @@ STR_CONFIG_SETTING_CITY_APPROVAL_HELPTEXT                       :Alege în ce m�
 
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT                             :Înălțimea limită a hărții: {STRING}
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_AUTO                        :(auto)
 STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN                            :{WHITE}Nu poți seta înălțimea maximă a hărții la această valoare. Cel puțin un munte de pe hartă este mai înalt de-atât.
 STR_CONFIG_SETTING_AUTOSLOPE                                    :Permite terra-formarea sub clădiri, şine, etc. (auto-pante): {STRING}
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :Permite terraformarea sub clădiri şi şine fără eliminarea acestora
@@ -1430,6 +1434,7 @@ STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS                     :Pastrează acti
 STR_CONFIG_SETTING_PERSISTENT_BUILDINGTOOLS_HELPTEXT            :Menține barele de construcție pentru tunele, poduri șamd deschise după folosire
 STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Grupează cheltuielile în raportul financiar al companiei: {STRING}
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Definește stilul ferestrei care afișează cheltuielile companiei
+STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Elimină automat semnalele pe durata construcției șinelor: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Elimină automat semnalele când construiești căi ferate dacă ele îți vin în cale. Nu uita că asta ar putea conduce la accidente feroviare.
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :Limita de viteză pentru trecerea timpului: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% din viteza normală a jocului
@@ -1550,6 +1555,8 @@ STR_CONFIG_SETTING_ECONOMY_TYPE_SMOOTH                          :Lin
 STR_CONFIG_SETTING_ECONOMY_TYPE_FROZEN                          :Înghețată
 STR_CONFIG_SETTING_ALLOW_SHARES                                 :Permite cumpărarea de acţiuni de la alte companii: {STRING}
 STR_CONFIG_SETTING_ALLOW_SHARES_HELPTEXT                        :Dacă este activată, se permite cumpărarea și vânzarea de acțiuni ale companiilor. Acțiunile devin disponibile doar când compania depășește o anumită vârstă
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES                         :Vârsta minimă a companiilor pentru tranzacțiile cu acțiuni: {STRING}
+STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Stabilește vechimea minimă a unei companii, ca alții să-i poată tranzacționa acțiunile.
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Procentul din profitul pe secţiune care să fie plătit pentru alimentare: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Procentul din câştig care este oferit legăturilor intermediare pentru alimentare, oferind mai mult control asupra încasărilor
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Când se trage cu mouse-ul, plasează semnale la fiecare: {STRING}
@@ -1801,6 +1808,7 @@ STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}Sigur v
 # Cheat window
 STR_CHEATS                                                      :{WHITE}Cheat-uri
 STR_CHEATS_TOOLTIP                                              :{BLACK}Bifa vă indică dacă aţi folosit anterior acest cheat
+STR_CHEATS_NOTE                                                 :{BLACK}Notă: utilizarea acestor setări va fi memorată în salvarea jocului
 STR_CHEAT_MONEY                                                 :{LTBLUE}Măreşte fondurile cu {CURRENCY_LONG}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Joacă drept compania: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demolează industrii şi lucruri amovibile): {ORANGE}{STRING}
@@ -1910,6 +1918,7 @@ STR_FACE_TIE                                                    :Cravată:
 STR_FACE_EARRING                                                :Cercei:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Schimbă cravata sau cerceii
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privat
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Multiplayer
@@ -1973,6 +1982,8 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Numele j
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Pune parolă
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Protejează-ţi jocul cu o parolă dacă nu vrei să intre jucători neautorizaţi
 
+STR_NETWORK_START_SERVER_VISIBILITY_LABEL                       :{BLACK}Vizibilitate
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Dacă alți oameni îți pot vedea serverul în lista publică
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Număr maxim de clienţi:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Alege un număr maxim de clienţi. Nu trebuie ocupate toate locurile.
 STR_NETWORK_START_SERVER_NUMBER_OF_COMPANIES                    :{BLACK}Companii maxim:
@@ -2032,11 +2043,21 @@ STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server p
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Companie protejată. Introdu parola
 
 # Network company list added strings
-STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Lista de clienţi
+STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Jucători conectați
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}Server
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_EDIT_TOOLTIP                :{BLACK}Modifică numele serverului tău
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY                       :{BLACK}Vizibilitate
+STR_NETWORK_CLIENT_LIST_SERVER_VISIBILITY_TOOLTIP               :{BLACK}Dacă alți oameni îți pot vedea serverul în lista publică
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_EDIT_TOOLTIP                :{BLACK}Modifică-ți numele
+STR_NETWORK_CLIENT_LIST_CHAT_COMPANY_TOOLTIP                    :{BLACK}Trimite un mesaj tuturor jucătorilor acestei companii
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Trimite un mesaj tuturor spectatorilor
 
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Deblocare cu parolă
 
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Sigur vrei să dai afară jucătorul '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Sigur vrei să blochezi jucătorul '{STRING}'?
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
@@ -2092,6 +2113,7 @@ STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :{WHITE}A expira
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Calculatorul dvs. este prea lent pentru a se sincroniza cu serverul
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}A expirat timpul pentru descărcarea hărţii
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}A expirat timpul pentru conectarea la server
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Serverul solicitat este prea vechi pentru acest client
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :eroare generală
@@ -2141,7 +2163,7 @@ STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} a 
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} a intrat ca spectator
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} a început o companie nouă (#{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_LEFT                                 :*** {STRING} a ieşit din joc ({2:STRING})
-STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} şi-a schimbat numele în {STRING}
+STR_NETWORK_MESSAGE_NAME_CHANGE                                 :*** {STRING} și-a schimbat numele în {STRING}
 STR_NETWORK_MESSAGE_GIVE_MONEY                                  :*** {STRING} a dat {2:CURRENCY_LONG} către {1:STRING}
 STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serverul a închis conexiunea
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serverul este repornit...{}Vă rugăm aşteptaţi...
@@ -2695,9 +2717,11 @@ STR_FRAMERATE_AI                                                :{BLACK}   IA {N
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Buclă de joc
 STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manipularea încărcăturilor
+STR_FRAMETIME_CAPTION_GL_LINKGRAPH                              :Decalaj grafic de conexiuni
 STR_FRAMETIME_CAPTION_DRAWING                                   :Randare grafică
 STR_FRAMETIME_CAPTION_DRAWING_VIEWPORTS                         :Randarea vizorului global
 STR_FRAMETIME_CAPTION_SOUND                                     :Mixaj de sunet
+STR_FRAMETIME_CAPTION_ALLSCRIPTS                                :Totalul de scripturi GS/AI
 STR_FRAMETIME_CAPTION_AI                                        :IA {NUM} {STRING}
 ############ End of leave-in-this-order
 
@@ -3309,6 +3333,7 @@ STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :, {STRING}{STRI
 
 STR_INDUSTRY_VIEW_REQUIRES                                      :{BLACK}Necesită:
 STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING}{BLACK}{3:STRING}
+STR_INDUSTRY_VIEW_ACCEPT_CARGO_AMOUNT                           :{YELLOW}{STRING}{BLACK}: {CARGO_SHORT} așteaptă{STRING}
 
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba productia (multiplu de 8, până la 2040)
 STR_CONFIG_GAME_PRODUCTION_LEVEL                                :{WHITE}Modifică nivelul producţiei (procent, până la 800%)
@@ -3428,11 +3453,12 @@ STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}Cumpăr�
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}Cumpără și schimbă marfa transportată de aeronavă
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}Cumpără vehiculul feroviar selectat. Shift+Click arată costul estimat fără să cumpere vehiculul
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Cumpără autovehiculul selectat. Shift+Click arată costul estimat fără să cumpere autovehiculul
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}Cumpără autovehiculul selectat. Shift+clic arată costul estimat fără achiziția autovehiculului
 STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}Cumpără nava selectată. Shift+Click arată costul estimativ fără a efectua achiziţia
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}Cumpără aeronava selectată. Shift+Click arată costul estimativ fără a efectua achiziţia
 
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Cumpără și repară trenul selectat. Shift+Click arată costul estimat fără cumpărare
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}Cumpără și repară trenul selectat. Shift+clic arată costul estimat fără achiziție
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}Cumpără și repară autovehiculul selectat. Shift+clic arată costul estimat fără achiziție
 STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}Cumpără și repară aeronava selectată. Shift+clic afișează costul estimat fără achiziție
 
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}Nume nou
@@ -3544,6 +3570,7 @@ STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}Mesaj de
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}Am creat un nou tip de {STRING}. Aţi fi interesaţi de folosirea exclusivă pentru un an a acestui vehicul, astfel ca noi să-i putem observa performanţele înaintea lansării oficiale?
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :locomotivă
+STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :locomotivă electrificată
 STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :locomotivă monoşină
 STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :locomotivă pernă magnetică
 
@@ -3555,8 +3582,9 @@ STR_ENGINE_PREVIEW_SHIP                                         :navă
 
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER                      :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY_LONG}/an{}Capacitate: {CARGO_LONG}
 STR_ENGINE_PREVIEW_COST_WEIGHT_SPEED_POWER_MAX_TE               :{BLACK}Cost: {CURRENCY_LONG} Greutate: {WEIGHT_SHORT}{}Viteză: {VELOCITY}  Putere: {POWER}  Ef. T. Max.: {6:FORCE}{}Cost rulaj: {4:CURRENCY_LONG}/an{}Capacitate: {5:CARGO_LONG}
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Capacitate: {CARGO_LONG}{}Mentenanţă: {CURRENCY_LONG}/an
-STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cost: {CURRENCY_LONG} Viteza maximă: {VELOCITY}{}Tip avion: {STRING} Rază: {COMMA} pătrățele{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Cost întreținere: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_CAP_RUNCOST                   :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Capacitate: {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_CAP_CAP_RUNCOST          :{BLACK}Cost: {CURRENCY_LONG} Viteză max.: {VELOCITY}{}Tip avion: {STRING}{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
+STR_ENGINE_PREVIEW_COST_MAX_SPEED_TYPE_RANGE_CAP_CAP_RUNCOST    :{BLACK}Cost: {CURRENCY_LONG} Viteza maximă: {VELOCITY}{}Tip avion: {STRING} Rază: {COMMA} pătrățele{}Capacitate: {CARGO_LONG}, {CARGO_LONG}{}Mentenanță: {CURRENCY_LONG}/an
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieşte {STRING} - {STRING}
@@ -3606,6 +3634,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fă opti
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
 
+STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centrează vizorul principal pe locația vehiculului. Dublu-clic va urmări vehiculul în vizorul principal. Ctrl+clic deschide un nou vizor cu locația vehiculului
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrează imaginea pe locația navei. Dublu clic va urmări nava în vizorul principal. Ctrl+Clic deschide un nou vizor pe locația navei
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Trimite trenul într-un depou
@@ -3639,6 +3668,7 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}Afişeaz
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}Afişează detaliile aeronavei
 
 STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}Acțiunea trenului curent - clic pentru oprirea/pornirea trenului
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Acțiunea vehiculului curent - clic pentru oprirea/pornirea vehiculului
 STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Acțiunea avionului curent - clic pentru oprirea/pornirea avionului
 
 
@@ -4193,7 +4223,7 @@ STR_ERROR_CAN_T_BUY_COMPANY                                     :{WHITE}Nu se po
 STR_ERROR_CAN_T_BUILD_COMPANY_HEADQUARTERS                      :{WHITE}Nu se poate construi sediul companiei...
 STR_ERROR_CAN_T_BUY_25_SHARE_IN_THIS                            :{WHITE}Nu se pot cumpăra 25% din acţiunile acestei companii...
 STR_ERROR_CAN_T_SELL_25_SHARE_IN                                :{WHITE}Nu se pot vinde 25% din acţiunile acestei companii...
-STR_ERROR_PROTECTED                                             :{WHITE}Această companie încă nu vinde acţiuni...
+STR_ERROR_PROTECTED                                             :{WHITE}Compania nu are vechimea necesară pentru tranzacționarea de acțiuni...
 
 # Town related errors
 STR_ERROR_CAN_T_GENERATE_TOWN                                   :{WHITE}Nu pot construi nici un oras
