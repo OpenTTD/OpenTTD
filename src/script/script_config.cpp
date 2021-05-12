@@ -37,6 +37,7 @@ void ScriptConfig::Change(const char *name, int version, bool force_exact_match,
 				this->SetSetting(item.name, InteractiveRandomRange(item.max_value + 1 - item.min_value) + item.min_value);
 			}
 		}
+
 		this->AddRandomDeviation();
 	}
 }
@@ -52,7 +53,9 @@ ScriptConfig::ScriptConfig(const ScriptConfig *config)
 	for (const auto &item : config->settings) {
 		this->settings[stredup(item.first)] = item.second;
 	}
-	this->AddRandomDeviation();
+
+	/* Virtual functions get called statically in constructors, so make it explicit to remove any confusion. */
+	this->ScriptConfig::AddRandomDeviation();
 }
 
 ScriptConfig::~ScriptConfig()
