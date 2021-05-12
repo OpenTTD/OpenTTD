@@ -39,14 +39,14 @@ static void NetworkFindBroadcastIPsInternal(NetworkAddressList *broadcast) // BE
 	int sock = socket(AF_INET, SOCK_DGRAM, 0);
 
 	if (sock < 0) {
-		DEBUG(net, 0, "[core] error creating socket");
+		DEBUG(net, 0, "Could not create socket: %s", NetworkError::GetLast().AsString());
 		return;
 	}
 
 	char *output_pointer = nullptr;
 	int output_length = _netstat(sock, &output_pointer, 1);
 	if (output_length < 0) {
-		DEBUG(net, 0, "[core] error running _netstat");
+		DEBUG(net, 0, "Error running _netstat()");
 		return;
 	}
 
@@ -200,6 +200,6 @@ void NetworkFindBroadcastIPs(NetworkAddressList *broadcast)
 	int i = 0;
 	for (NetworkAddress &addr : *broadcast) {
 		addr.SetPort(NETWORK_DEFAULT_PORT);
-		DEBUG(net, 3, "%d) %s", i++, addr.GetHostname());
+		DEBUG(net, 3, "  %d) %s", i++, addr.GetHostname());
 	}
 }

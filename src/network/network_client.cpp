@@ -136,7 +136,7 @@ void ClientNetworkEmergencySave()
 	if (!_networking) return;
 
 	const char *filename = "netsave.sav";
-	DEBUG(net, 0, "Client: Performing emergency save (%s)", filename);
+	DEBUG(net, 3, "Performing emergency save: %s", filename);
 	SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
 }
 
@@ -172,7 +172,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	 */
 	if (this->sock == INVALID_SOCKET) return status;
 
-	DEBUG(net, 1, "Closed client connection %d", this->client_id);
+	DEBUG(net, 3, "Closed client connection %d", this->client_id);
 
 	this->SendPackets(true);
 
@@ -286,7 +286,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 #endif
 				ShowNetworkError(STR_NETWORK_ERROR_DESYNC);
 				DEBUG(desync, 1, "sync_err: %08x; %02x", _date, _date_fract);
-				DEBUG(net, 0, "Sync error detected!");
+				DEBUG(net, 0, "Sync error detected");
 				my_client->ClientError(NETWORK_RECV_STATUS_DESYNC);
 				return false;
 			}
@@ -301,7 +301,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 
 			_sync_frame = 0;
 		} else if (_sync_frame < _frame_counter) {
-			DEBUG(net, 1, "Missed frame for sync-test (%d / %d)", _sync_frame, _frame_counter);
+			DEBUG(net, 1, "Missed frame for sync-test: %d / %d", _sync_frame, _frame_counter);
 			_sync_frame = 0;
 		}
 	}
@@ -978,13 +978,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_FRAME(Packet *p
 	/* Receive the token. */
 	if (p->CanReadFromPacket(sizeof(uint8))) this->token = p->Recv_uint8();
 
-	DEBUG(net, 5, "Received FRAME %d", _frame_counter_server);
+	DEBUG(net, 7, "Received FRAME %d", _frame_counter_server);
 
 	/* Let the server know that we received this frame correctly
 	 *  We do this only once per day, to save some bandwidth ;) */
 	if (!_network_first_time && last_ack_frame < _frame_counter) {
 		last_ack_frame = _frame_counter + DAY_TICKS;
-		DEBUG(net, 4, "Sent ACK at %d", _frame_counter);
+		DEBUG(net, 7, "Sent ACK at %d", _frame_counter);
 		SendAck();
 	}
 
@@ -1100,7 +1100,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_QUIT(Packet *p)
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, nullptr, STR_NETWORK_MESSAGE_CLIENT_LEAVING);
 		delete ci;
 	} else {
-		DEBUG(net, 0, "Unknown client (%d) is leaving the game", client_id);
+		DEBUG(net, 1, "Unknown client (%d) is leaving the game", client_id);
 	}
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
@@ -1180,7 +1180,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_MOVE(Packet *p)
 
 	if (client_id == 0) {
 		/* definitely an invalid client id, debug message and do nothing. */
-		DEBUG(net, 0, "[move] received invalid client index = 0");
+		DEBUG(net, 1, "Received invalid client index = 0");
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 

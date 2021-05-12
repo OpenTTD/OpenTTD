@@ -256,7 +256,7 @@ void VideoDriver_Dedicated::MainLoop()
 		 *  intro game... */
 		if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.file_op, _file_to_saveload.detail_ftype, BASE_DIR) == SL_ERROR) {
 			/* Loading failed, pop out.. */
-			DEBUG(net, 0, "Loading requested map failed, aborting");
+			DEBUG(net, 0, "Loading requested map failed; closing server.");
 			return;
 		} else {
 			/* We can load this game, so go ahead */

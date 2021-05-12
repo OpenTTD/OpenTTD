@@ -356,7 +356,7 @@ static SOCKET ListenLoopProc(addrinfo *runp)
 		DEBUG(net, 0, "Setting non-blocking mode failed: %s", NetworkError::GetLast().AsString());
 	}
 
-	DEBUG(net, 1, "Listening on %s", address.c_str());
+	DEBUG(net, 3, "Listening on %s", address.c_str());
 	return sock;
 }
 

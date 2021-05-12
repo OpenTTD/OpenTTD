@@ -333,7 +333,7 @@ void NetworkGameSocketHandler::SendCommand(Packet *p, const CommandPacket *cp)
 	}
 
 	if (callback == lengthof(_callback_table)) {
-		DEBUG(net, 0, "Unknown callback. (Pointer: %p) No callback sent", cp->callback);
+		DEBUG(net, 0, "Unknown callback for command; no callback sent (command: %d)", cp->cmd);
 		callback = 0; // _callback_table[0] == nullptr
 	}
 	p->Send_uint8 (callback);

@@ -167,9 +167,9 @@ bool NetworkContentSocketHandler::HandlePacket(Packet *p)
 
 		default:
 			if (this->HasClientQuit()) {
-				DEBUG(net, 0, "[tcp/content] received invalid packet type %d", type);
+				DEBUG(net, 0, "[tcp/content] Received invalid packet type %d", type);
 			} else {
-				DEBUG(net, 0, "[tcp/content] received illegal packet");
+				DEBUG(net, 0, "[tcp/content] Received illegal packet");
 			}
 			return false;
 	}
@@ -220,7 +220,7 @@ bool NetworkContentSocketHandler::ReceivePackets()
  */
 bool NetworkContentSocketHandler::ReceiveInvalidPacket(PacketContentType type)
 {
-	DEBUG(net, 0, "[tcp/content] received illegal packet type %d", type);
+	DEBUG(net, 0, "[tcp/content] Received illegal packet type %d", type);
 	return false;
 }
 
