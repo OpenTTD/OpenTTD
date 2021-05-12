@@ -66,8 +66,22 @@ public:
  */
 class TCPConnecter {
 private:
+	/**
+	 * The current status of the connecter.
+	 *
+	 * We track the status like this to ensure everything is executed from the
+	 * game-thread, and not at another random time where we might not have the
+	 * lock on the game-state.
+	 */
+	enum class Status {
+		INIT,       ///< TCPConnecter is created but resolving hasn't started.
+		RESOLVING,  ///< The hostname is being resolved (threaded).
+		FAILURE,    ///< Resolving failed.
+		CONNECTING, ///< We are currently connecting.
+	};
+
 	std::thread resolve_thread;                         ///< Thread used during resolving.
-	std::atomic<bool> is_resolved = false;              ///< Whether resolving is done.
+	std::atomic<Status> status = Status::INIT;          ///< The current status of the connecter.
 
 	addrinfo *ai = nullptr;                             ///< getaddrinfo() allocated linked-list of resolved addresses.
 	std::vector<addrinfo *> addresses;                  ///< Addresses we can connect to.
