@@ -2218,6 +2218,7 @@ STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :{WHITE}Votre or
 STR_NETWORK_ERROR_TIMEOUT_MAP                                   :{WHITE}Votre ordinateur a mis trop de temps pour télécharger la carte
 STR_NETWORK_ERROR_TIMEOUT_JOIN                                  :{WHITE}Votre ordinateur a mis trop de temps pour rejoindre le serveur
 STR_NETWORK_ERROR_INVALID_CLIENT_NAME                           :{WHITE}Votre nom n'est pas valide
+STR_NETWORK_ERROR_SERVER_TOO_OLD                                :{WHITE}Le serveur interrogé est trop ancien pour ce client
 
 ############ Leave those lines in this order!!
 STR_NETWORK_ERROR_CLIENT_GENERAL                                :erreur générale
@@ -2831,7 +2832,7 @@ STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COM
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Total de la boucle de jeu{NBSP}:
 STR_FRAMERATE_GL_ECONOMY                                        :{BLACK}  Traitement des marchandises{NBSP}:
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK}  Ticks des trains{NBSP}:
-STR_FRAMERATE_GL_ROADVEHS                                       :{WHITE}  Ticks des véhicules routiers{NBSP}:
+STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK}  Ticks des véhicules routiers{NBSP}:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK}  Ticks des navires{NBSP}:
 STR_FRAMERATE_GL_AIRCRAFT                                       :{BLACK}  Ticks des aéroplanes{NBSP}:
 STR_FRAMERATE_GL_LANDSCAPE                                      :{BLACK}  Ticks du monde{NBSP}:
