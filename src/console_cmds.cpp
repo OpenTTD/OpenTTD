@@ -41,7 +41,7 @@
 #include "rail.h"
 #include "game/game.hpp"
 #include "table/strings.h"
-#include <time.h>
+#include "walltime_func.h"
 
 #include "safeguards.h"
 
@@ -1369,10 +1369,9 @@ DEF_CONSOLE_CMD(ConGetSysDate)
 		return true;
 	}
 
-	time_t t;
-	time(&t);
-	auto timeinfo = localtime(&t);
-	IConsolePrintF(CC_DEFAULT, "System Date: %04d-%02d-%02d %02d:%02d:%02d", timeinfo->tm_year + 1900, timeinfo->tm_mon + 1, timeinfo->tm_mday, timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
+	char buffer[lengthof("2000-01-02 03:04:05")];
+	LocalTime::Format(buffer, lastof(buffer), "%Y-%m-%d %H:%M:%S");
+	IConsolePrintF(CC_DEFAULT, "System Date: %s", buffer);
 	return true;
 }
 

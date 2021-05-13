@@ -19,7 +19,7 @@
 #include "os/windows/win32.h"
 #endif
 
-#include <time.h>
+#include "walltime_func.h"
 
 #include "network/network_admin.h"
 SOCKET _debug_socket = INVALID_SOCKET;
@@ -248,8 +248,7 @@ const char *GetLogPrefix()
 {
 	static char _log_prefix[24];
 	if (_settings_client.gui.show_date_in_logs) {
-		time_t cur_time = time(nullptr);
-		strftime(_log_prefix, sizeof(_log_prefix), "[%Y-%m-%d %H:%M:%S] ", localtime(&cur_time));
+		LocalTime::Format(_log_prefix, lastof(_log_prefix), "[%Y-%m-%d %H:%M:%S] ");
 	} else {
 		*_log_prefix = '\0';
 	}
