@@ -633,7 +633,7 @@ static void CDECL CustomAbort(int signal)
 		mov safe_esp, esp
 	}
 #	else
-	asm("movl %esp, _safe_esp");
+	asm("movl %%esp, %0" : "=rm" (safe_esp));
 #	endif
 	_safe_esp = safe_esp;
 #endif
