@@ -914,24 +914,27 @@ void VideoDriver_Win32Base::EditBoxLostFocus()
 	SetCandidatePos(this->main_wnd);
 }
 
+static BOOL CALLBACK MonitorEnumProc(HMONITOR hMonitor, HDC hDC, LPRECT rc, LPARAM data)
+{
+	auto &list = *reinterpret_cast<std::vector<int>*>(data);
+
+	MONITORINFOEX monitorInfo = {};
+	monitorInfo.cbSize = sizeof(MONITORINFOEX);
+	GetMonitorInfo(hMonitor, &monitorInfo);
+
+	DEVMODE devMode = {};
+	devMode.dmSize = sizeof(DEVMODE);
+	devMode.dmDriverExtra = 0;
+	EnumDisplaySettings(monitorInfo.szDevice, ENUM_CURRENT_SETTINGS, &devMode);
+
+	if (devMode.dmDisplayFrequency != 0) list.push_back(devMode.dmDisplayFrequency);
+	return true;
+}
+
 std::vector<int> VideoDriver_Win32Base::GetListOfMonitorRefreshRates()
 {
 	std::vector<int> rates = {};
-	EnumDisplayMonitors(nullptr, nullptr, [](HMONITOR hMonitor, HDC hDC, LPRECT rc, LPARAM data) -> BOOL {
-		auto &list = *reinterpret_cast<std::vector<int>*>(data);
-
-		MONITORINFOEX monitorInfo = {};
-		monitorInfo.cbSize = sizeof(MONITORINFOEX);
-		GetMonitorInfo(hMonitor, &monitorInfo);
-
-		DEVMODE devMode = {};
-		devMode.dmSize = sizeof(DEVMODE);
-		devMode.dmDriverExtra = 0;
-		EnumDisplaySettings(monitorInfo.szDevice, ENUM_CURRENT_SETTINGS, &devMode);
-
-		if (devMode.dmDisplayFrequency != 0) list.push_back(devMode.dmDisplayFrequency);
-		return true;
-	}, reinterpret_cast<LPARAM>(&rates));
+	EnumDisplayMonitors(nullptr, nullptr, MonitorEnumProc, reinterpret_cast<LPARAM>(&rates));
 	return rates;
 }
 
