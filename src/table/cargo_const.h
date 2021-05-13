@@ -96,7 +96,7 @@ static const CargoSpec _default_cargo[] = {
 
 
 /** Table of cargo types available in each climate, by default */
-static const CargoLabel _default_climate_cargo[NUM_LANDSCAPE][12] = {
+static const CargoLabel _default_climate_cargo[NUM_LANDSCAPE][NUM_ORIGINAL_CARGO] = {
 	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'GRAI', 'WOOD', 'IORE', 'STEL', 'VALU',     33, },
 	{ 'PASS', 'COAL', 'MAIL', 'OIL_', 'LVST', 'GOOD', 'WHEA', 'WOOD',     34, 'PAPR', 'GOLD', 'FOOD', },
 	{ 'PASS', 'RUBR', 'MAIL',      4, 'FRUT', 'GOOD', 'MAIZ',     11, 'CORE', 'WATR', 'DIAM', 'FOOD', },
