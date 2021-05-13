@@ -68,17 +68,18 @@ NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
 /** Free whatever needs to be freed. */
 NetworkHTTPSocketHandler::~NetworkHTTPSocketHandler()
 {
-	this->CloseConnection();
+	this->CloseSocket();
 
-	if (this->sock != INVALID_SOCKET) closesocket(this->sock);
-	this->sock = INVALID_SOCKET;
 	free(this->data);
 }
 
-NetworkRecvStatus NetworkHTTPSocketHandler::CloseConnection(bool error)
+/**
+ * Close the actual socket of the connection.
+ */
+void NetworkHTTPSocketHandler::CloseSocket()
 {
-	NetworkSocketHandler::CloseConnection(error);
-	return NETWORK_RECV_STATUS_OKAY;
+	if (this->sock != INVALID_SOCKET) closesocket(this->sock);
+	this->sock = INVALID_SOCKET;
 }
 
 /**
@@ -313,7 +314,7 @@ int NetworkHTTPSocketHandler::Receive()
 			if (ret < 0) cur->callback->OnFailure();
 			if (ret <= 0) {
 				/* Then... the connection can be closed */
-				cur->CloseConnection();
+				cur->CloseSocket();
 				iter = _http_connections.erase(iter);
 				delete cur;
 				continue;

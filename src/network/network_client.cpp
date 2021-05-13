@@ -200,7 +200,7 @@ void ClientNetworkGameSocketHandler::ClientError(NetworkRecvStatus res)
 
 	/* We just want to close the connection.. */
 	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
-		this->NetworkSocketHandler::CloseConnection();
+		this->NetworkSocketHandler::MarkClosed();
 		this->CloseConnection(res);
 		_networking = false;
 

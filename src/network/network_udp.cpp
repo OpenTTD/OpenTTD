@@ -54,10 +54,10 @@ struct UDPSocket {
 
 	UDPSocket(const std::string &name_) : name(name_), socket(nullptr) {}
 
-	void Close()
+	void CloseSocket()
 	{
 		std::lock_guard<std::mutex> lock(mutex);
-		socket->Close();
+		socket->CloseSocket();
 		delete socket;
 		socket = nullptr;
 	}
@@ -619,9 +619,9 @@ void NetworkUDPServerListen()
 /** Close all UDP related stuff. */
 void NetworkUDPClose()
 {
-	_udp_client.Close();
-	_udp_server.Close();
-	_udp_master.Close();
+	_udp_client.CloseSocket();
+	_udp_server.CloseSocket();
+	_udp_master.CloseSocket();
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;
