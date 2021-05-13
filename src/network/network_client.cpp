@@ -158,6 +158,7 @@ ClientNetworkGameSocketHandler::~ClientNetworkGameSocketHandler()
 	ClientNetworkGameSocketHandler::my_client = nullptr;
 
 	delete this->savegame;
+	delete this->GetInfo();
 }
 
 NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvStatus status)
@@ -182,7 +183,6 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	 * which would trigger the server to close the connection as well. */
 	CSleep(3 * MILLISECONDS_PER_TICK);
 
-	delete this->GetInfo();
 	delete this;
 
 	return status;
