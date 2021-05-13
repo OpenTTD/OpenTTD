@@ -31,10 +31,6 @@ TCPConnecter::TCPConnecter(const std::string &connection_string, uint16 default_
 	this->connection_string = NormalizeConnectionString(connection_string, default_port);
 
 	_tcp_connecters.push_back(this);
-
-	if (!StartNewThread(&this->resolve_thread, "ottd:resolve", &TCPConnecter::ResolveThunk, this)) {
-		this->Resolve();
-	}
 }
 
 TCPConnecter::~TCPConnecter()
@@ -100,6 +96,10 @@ bool TCPConnecter::TryNextAddress()
 	return true;
 }
 
+/**
+ * Callback when resolving is done.
+ * @param ai A linked-list of address information.
+ */
 void TCPConnecter::OnResolved(addrinfo *ai)
 {
 	std::deque<addrinfo *> addresses_ipv4, addresses_ipv6;
@@ -159,6 +159,12 @@ void TCPConnecter::OnResolved(addrinfo *ai)
 	this->current_address = 0;
 }
 
+/**
+ * Start resolving the hostname.
+ *
+ * This function must change "status" to either Status::FAILURE
+ * or Status::CONNECTING before returning.
+ */
 void TCPConnecter::Resolve()
 {
 	/* Port is already guaranteed part of the connection_string. */
@@ -177,7 +183,7 @@ void TCPConnecter::Resolve()
 	auto start = std::chrono::steady_clock::now();
 
 	addrinfo *ai;
-	int e = getaddrinfo(address.GetHostname(), port_name, &hints, &ai);
+	int error = getaddrinfo(address.GetHostname(), port_name, &hints, &ai);
 
 	auto end = std::chrono::steady_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
@@ -187,18 +193,21 @@ void TCPConnecter::Resolve()
 		getaddrinfo_timeout_error_shown = true;
 	}
 
-	if (e != 0) {
+	if (error != 0) {
 		DEBUG(net, 0, "Failed to resolve DNS for %s", this->connection_string.c_str());
-		this->OnFailure();
+		this->status = Status::FAILURE;
 		return;
 	}
 
 	this->ai = ai;
 	this->OnResolved(ai);
 
-	this->is_resolved = true;
+	this->status = Status::CONNECTING;
 }
 
+/**
+ * Thunk to start Resolve() on the right instance.
+ */
 /* static */ void TCPConnecter::ResolveThunk(TCPConnecter *connecter)
 {
 	connecter->Resolve();
@@ -210,7 +219,35 @@ void TCPConnecter::Resolve()
  */
 bool TCPConnecter::CheckActivity()
 {
-	if (!this->is_resolved.load()) return false;
+	switch (this->status.load()) {
+		case Status::INIT:
+			/* Start the thread delayed, so the vtable is loaded. This allows classes
+			 * to overload functions used by Resolve() (in case threading is disabled). */
+			if (StartNewThread(&this->resolve_thread, "ottd:resolve", &TCPConnecter::ResolveThunk, this)) {
+				this->status = Status::RESOLVING;
+				return false;
+			}
+
+			/* No threads, do a blocking resolve. */
+			this->Resolve();
+
+			/* Continue as we are either failed or can start the first
+			 * connection. The rest of this function handles exactly that. */
+			break;
+
+		case Status::RESOLVING:
+			/* Wait till Resolve() comes back with an answer (in case it runs threaded). */
+			return false;
+
+		case Status::FAILURE:
+			/* Ensure the OnFailure() is called from the game-thread instead of the
+			 * resolve-thread, as otherwise we can get into some threading issues. */
+			this->OnFailure();
+			return true;
+
+		case Status::CONNECTING:
+			break;
+	}
 
 	/* If there are no attempts pending, connect to the next. */
 	if (this->sockets.empty()) {
