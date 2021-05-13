@@ -32,8 +32,7 @@
 #include "game/game_info.hpp"
 #include "company_base.h"
 #include "company_func.h"
-
-#include <time.h>
+#include "walltime_func.h"
 
 #ifdef WITH_ALLEGRO
 #	include <allegro.h>
@@ -333,9 +332,8 @@ char *CrashLog::LogRecentNews(char *buffer, const char *last) const
  */
 char *CrashLog::FillCrashLog(char *buffer, const char *last) const
 {
-	time_t cur_time = time(nullptr);
 	buffer += seprintf(buffer, last, "*** OpenTTD Crash Report ***\n\n");
-	buffer += seprintf(buffer, last, "Crash at: %s", asctime(gmtime(&cur_time)));
+	buffer += UTCTime::Format(buffer, last, "Crash at: %Y-%m-%d %H:%M:%S (UTC)\n");
 
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);

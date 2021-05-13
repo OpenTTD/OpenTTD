@@ -13,9 +13,9 @@
 #include "string_func.h"
 #include "console_func.h"
 #include "spritecache.h"
+#include "walltime_func.h"
 
 #include <chrono>
-#include <time.h>
 
 
 std::vector<NewGRFProfiler> _newgrf_profilers;
@@ -130,10 +130,8 @@ void NewGRFProfiler::Abort()
  */
 std::string NewGRFProfiler::GetOutputFilename() const
 {
-	time_t write_time = time(nullptr);
-
 	char timestamp[16] = {};
-	strftime(timestamp, lengthof(timestamp), "%Y%m%d-%H%M", localtime(&write_time));
+	LocalTime::Format(timestamp, lastof(timestamp), "%Y%m%d-%H%M");
 
 	char filepath[MAX_PATH] = {};
 	seprintf(filepath, lastof(filepath), "%sgrfprofile-%s-%08X.csv", FiosGetScreenshotDir(), timestamp, BSWAP32(this->grffile->grfid));

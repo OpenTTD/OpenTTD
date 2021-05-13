@@ -129,6 +129,7 @@
 	/* Warn about functions using 'printf' format syntax. First argument determines which parameter
 	 * is the format string, second argument is start of values passed to printf. */
 #	define WARN_FORMAT(string, args) __attribute__ ((format (printf, string, args)))
+#	define WARN_TIME_FORMAT(string) __attribute__ ((format (strftime, string, 0)))
 #	if __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 7)
 #		define FINAL final
 #	else
@@ -157,6 +158,7 @@
 #	define NORETURN
 #	define CDECL
 #	define WARN_FORMAT(string, args)
+#	define WARN_TIME_FORMAT(string)
 #	define FINAL
 #	define FALLTHROUGH
 #	include <malloc.h>
@@ -205,6 +207,7 @@
 
 #	define CDECL _cdecl
 #	define WARN_FORMAT(string, args)
+#	define WARN_TIME_FORMAT(string)
 #	define FINAL final
 
 	/* fallthrough attribute, VS 2017 */
