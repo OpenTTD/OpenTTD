@@ -76,7 +76,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 
 	if (!ci->IsValid()) {
 		delete ci;
-		this->Close();
+		this->CloseConnection();
 		return false;
 	}
 
@@ -488,7 +488,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 		p->Recv_string(this->curInfo->filename, lengthof(this->curInfo->filename));
 
 		if (!this->BeforeDownload()) {
-			this->Close();
+			this->CloseConnection();
 			return false;
 		}
 	} else {
@@ -497,7 +497,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 		if (toRead != 0 && (size_t)p->TransferOut(TransferOutFWrite, this->curFile) != toRead) {
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE, WL_ERROR);
-			this->Close();
+			this->CloseConnection();
 			fclose(this->curFile);
 			this->curFile = nullptr;
 
@@ -781,14 +781,16 @@ void ClientNetworkContentSocketHandler::Connect()
 /**
  * Disconnect from the content server.
  */
-void ClientNetworkContentSocketHandler::Close()
+NetworkRecvStatus ClientNetworkContentSocketHandler::CloseConnection(bool error)
 {
-	if (this->sock == INVALID_SOCKET) return;
+	NetworkContentSocketHandler::CloseConnection();
 
-	this->CloseConnection();
+	if (this->sock == INVALID_SOCKET) return NETWORK_RECV_STATUS_OKAY;
+
 	this->CloseSocket();
-
 	this->OnDisconnect();
+
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /**
@@ -800,7 +802,7 @@ void ClientNetworkContentSocketHandler::SendReceive()
 	if (this->sock == INVALID_SOCKET || this->isConnecting) return;
 
 	if (std::chrono::steady_clock::now() > this->lastActivity + IDLE_TIMEOUT) {
-		this->Close();
+		this->CloseConnection();
 		return;
 	}
 

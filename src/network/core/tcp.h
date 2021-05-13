@@ -33,6 +33,8 @@ class NetworkTCPSocketHandler : public NetworkSocketHandler {
 private:
 	Packet *packet_queue;     ///< Packets that are awaiting delivery
 	Packet *packet_recv;      ///< Partially received packet
+
+	void EmptyPacketQueue();
 public:
 	SOCKET sock;              ///< The socket currently connected to
 	bool writable;            ///< Can we write to this socket?
@@ -43,7 +45,9 @@ public:
 	 */
 	bool IsConnected() const { return this->sock != INVALID_SOCKET; }
 
-	NetworkRecvStatus CloseConnection(bool error = true) override;
+	virtual NetworkRecvStatus CloseConnection(bool error = true);
+	void CloseSocket();
+
 	virtual void SendPacket(Packet *packet);
 	SendPacketsState SendPackets(bool closing_down = false);
 

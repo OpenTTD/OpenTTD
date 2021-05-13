@@ -34,10 +34,6 @@ NetworkAdminSocketHandler::NetworkAdminSocketHandler(SOCKET s) : status(ADMIN_ST
 	this->admin_version[0] = '\0';
 }
 
-NetworkAdminSocketHandler::~NetworkAdminSocketHandler()
-{
-}
-
 NetworkRecvStatus NetworkAdminSocketHandler::CloseConnection(bool error)
 {
 	delete this;

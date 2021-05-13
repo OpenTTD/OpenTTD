@@ -58,7 +58,7 @@ public:
 		return this->sock != INVALID_SOCKET;
 	}
 
-	NetworkRecvStatus CloseConnection(bool error = true) override;
+	void CloseSocket();
 
 	NetworkHTTPSocketHandler(SOCKET sock, HTTPCallback *callback,
 			const char *host, const char *url, const char *data, int depth);

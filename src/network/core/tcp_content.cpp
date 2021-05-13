@@ -138,17 +138,6 @@ const char *ContentInfo::GetTextfile(TextfileType type) const
 }
 
 /**
- * Close the actual socket.
- */
-void NetworkContentSocketHandler::CloseSocket()
-{
-	if (this->sock == INVALID_SOCKET) return;
-
-	closesocket(this->sock);
-	this->sock = INVALID_SOCKET;
-}
-
-/**
  * Handle the given packet, i.e. pass it to the right
  * parser receive command.
  * @param p the packet to handle

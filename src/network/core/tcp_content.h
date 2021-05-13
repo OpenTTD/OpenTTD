@@ -21,8 +21,6 @@
 /** Base socket handler for all Content TCP sockets */
 class NetworkContentSocketHandler : public NetworkTCPSocketHandler {
 protected:
-	void CloseSocket();
-
 	bool ReceiveInvalidPacket(PacketContentType type);
 
 	/**

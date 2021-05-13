@@ -40,7 +40,9 @@ struct Packet;
  * SocketHandler for all network sockets in OpenTTD.
  */
 class NetworkSocketHandler {
+private:
 	bool has_quit; ///< Whether the current client has quit/send a bad packet
+
 public:
 	/** Create a new unbound socket */
 	NetworkSocketHandler() { this->has_quit = false; }
@@ -49,12 +51,13 @@ public:
 	virtual ~NetworkSocketHandler() {}
 
 	/**
-	 * Close the current connection; for TCP this will be mostly equivalent
-	 * to Close(), but for UDP it just means the packet has to be dropped.
-	 * @param error Whether we quit under an error condition or not.
-	 * @return new status of the connection.
+	 * Mark the connection as closed.
+	 *
+	 * This doesn't mean the actual connection is closed, but just that we
+	 * act like it is. This is useful for UDP, which doesn't normally close
+	 * a socket, but its handler might need to pretend it does.
 	 */
-	virtual NetworkRecvStatus CloseConnection(bool error = true) { this->has_quit = true; return NETWORK_RECV_STATUS_OKAY; }
+	void MarkClosed() { this->has_quit = true; }
 
 	/**
 	 * Whether the current client connected to the socket has quit.

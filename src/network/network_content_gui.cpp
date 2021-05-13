@@ -260,7 +260,7 @@ public:
 	{
 		if (widget == WID_NCDS_CANCELOK) {
 			if (this->downloaded_bytes != this->total_bytes) {
-				_network_content_client.Close();
+				_network_content_client.CloseConnection();
 				delete this;
 			} else {
 				/* If downloading succeeded, close the online content window. This will close
