@@ -1283,7 +1283,7 @@ struct NetworkLobbyWindow : public Window {
 	{
 		/* Scroll through all this->company_info and get the 'pos' item that is not empty. */
 		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-			if (!StrEmpty(this->company_info[i].company_name)) {
+			if (!this->company_info[i].company_name.empty()) {
 				if (pos-- == 0) return i;
 			}
 		}
@@ -1398,7 +1398,7 @@ struct NetworkLobbyWindow : public Window {
 		GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.top + detail_height - 1, PC_DARK_BLUE);
 		DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_RIGHT, r.top + 12, STR_NETWORK_GAME_LOBBY_COMPANY_INFO, TC_FROMSTRING, SA_HOR_CENTER);
 
-		if (this->company == INVALID_COMPANY || StrEmpty(this->company_info[this->company].company_name)) return;
+		if (this->company == INVALID_COMPANY || this->company_info[this->company].company_name.empty()) return;
 
 		int y = r.top + detail_height + 4;
 		const NetworkGameInfo *gi = &this->server->info;
