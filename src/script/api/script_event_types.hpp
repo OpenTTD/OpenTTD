@@ -837,8 +837,7 @@ public:
 	/**
 	 * @param json The JSON string which got sent.
 	 */
-	ScriptEventAdminPort(const char *json);
-	~ScriptEventAdminPort();
+	ScriptEventAdminPort(const std::string &json);
 
 	/**
 	 * Convert an ScriptEvent to the real instance.
@@ -853,7 +852,7 @@ public:
 	SQInteger GetObject(HSQUIRRELVM vm);
 
 private:
-	char *json; ///< The JSON string.
+	std::string json; ///< The JSON string.
 
 	/**
 	 * Read a table from a JSON string.

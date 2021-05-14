@@ -64,7 +64,7 @@ public:
 	NetworkRecvStatus SendChat(NetworkAction action, DestType desttype, ClientID client_id, const std::string &msg, int64 data);
 	NetworkRecvStatus SendRcon(uint16 colour, const char *command);
 	NetworkRecvStatus SendConsole(const char *origin, const char *command);
-	NetworkRecvStatus SendGameScript(const char *json);
+	NetworkRecvStatus SendGameScript(const std::string_view json);
 	NetworkRecvStatus SendCmdNames();
 	NetworkRecvStatus SendCmdLogging(ClientID client_id, const CommandPacket *cp);
 	NetworkRecvStatus SendRconEnd(const char *command);
@@ -110,7 +110,7 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
 void NetworkAdminUpdate(AdminUpdateFrequency freq);
 void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, const char *string);
 void NetworkAdminConsole(const char *origin, const char *string);
-void NetworkAdminGameScript(const char *json);
+void NetworkAdminGameScript(const std::string_view json);
 void NetworkAdminCmdLogging(const NetworkClientSocket *owner, const CommandPacket *cp);
 
 #endif /* NETWORK_ADMIN_H */

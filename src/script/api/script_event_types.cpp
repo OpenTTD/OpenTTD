@@ -118,15 +118,10 @@ bool ScriptEventCompanyAskMerger::AcceptMerger()
 	return ScriptObject::DoCommand(0, this->owner, 0, CMD_BUY_COMPANY);
 }
 
-ScriptEventAdminPort::ScriptEventAdminPort(const char *json) :
+ScriptEventAdminPort::ScriptEventAdminPort(const std::string &json) :
 		ScriptEvent(ET_ADMIN_PORT),
-		json(stredup(json))
+		json(json)
 {
-}
-
-ScriptEventAdminPort::~ScriptEventAdminPort()
-{
-	free(this->json);
 }
 
 #define SKIP_EMPTY(p) while (*(p) == ' ' || *(p) == '\n' || *(p) == '\r') (p)++;
@@ -134,7 +129,7 @@ ScriptEventAdminPort::~ScriptEventAdminPort()
 
 SQInteger ScriptEventAdminPort::GetObject(HSQUIRRELVM vm)
 {
-	const char *p = this->json;
+	const char *p = this->json.c_str();
 
 	if (this->ReadTable(vm, p) == nullptr) {
 		sq_pushnull(vm);
@@ -168,7 +163,8 @@ const char *ScriptEventAdminPort::ReadString(HSQUIRRELVM vm, const char *p)
 		p++;
 	}
 
-	sq_pushstring(vm, value, p - value);
+	size_t len = p - value;
+	sq_pushstring(vm, value, len);
 	p++; // Step past the end-of-string marker (")
 
 	return p;

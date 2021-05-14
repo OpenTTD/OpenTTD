@@ -514,11 +514,9 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Pack
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	char json[NETWORK_GAMESCRIPT_JSON_LENGTH];
+	std::string json = p->Recv_string(NETWORK_GAMESCRIPT_JSON_LENGTH);
 
-	p->Recv_string(json, sizeof(json));
-
-	DEBUG(net, 6, "[admin] GameScript JSON from '%s' (%s): %s", this->admin_name.c_str(), this->admin_version.c_str(), json);
+	DEBUG(net, 6, "[admin] GameScript JSON from '%s' (%s): %s", this->admin_name.c_str(), this->admin_version.c_str(), json.c_str());
 
 	Game::NewEvent(new ScriptEventAdminPort(json));
 	return NETWORK_RECV_STATUS_OKAY;
@@ -561,12 +559,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const char *origi
  * Send GameScript JSON output.
  * @param json The JSON string.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(const char *json)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendGameScript(const std::string_view json)
 {
 	/* At the moment we cannot transmit anything larger than MTU. So we limit
 	 *  the maximum amount of json data that can be sent. Account also for
 	 *  the trailing \0 of the string */
-	if (strlen(json) + 1 >= NETWORK_GAMESCRIPT_JSON_LENGTH) return NETWORK_RECV_STATUS_OKAY;
+	if (json.size() + 1 >= NETWORK_GAMESCRIPT_JSON_LENGTH) return NETWORK_RECV_STATUS_OKAY;
 
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_GAMESCRIPT);
 
@@ -941,7 +939,7 @@ void NetworkAdminConsole(const char *origin, const char *string)
  * Send GameScript JSON to the admin network (if they did opt in for the respective update).
  * @param json The JSON data as received from the GameScript.
  */
-void NetworkAdminGameScript(const char *json)
+void NetworkAdminGameScript(const std::string_view json)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_GAMESCRIPT] & ADMIN_FREQUENCY_AUTOMATIC) {
