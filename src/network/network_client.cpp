@@ -618,7 +618,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_INFO(Pa
 		NetworkCompanyInfo *company_info = GetLobbyCompanyInfo(current);
 		if (company_info == nullptr) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		p->Recv_string(company_info->company_name, sizeof(company_info->company_name));
+		company_info->company_name = p->Recv_string(NETWORK_COMPANY_NAME_LENGTH);
 		company_info->inaugurated_year = p->Recv_uint32();
 		company_info->company_value    = p->Recv_uint64();
 		company_info->money            = p->Recv_uint64();
@@ -633,7 +633,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMPANY_INFO(Pa
 		}
 		company_info->ai               = p->Recv_bool();
 
-		p->Recv_string(company_info->clients, sizeof(company_info->clients));
+		company_info->clients = p->Recv_string(NETWORK_CLIENTS_LENGTH);
 
 		SetWindowDirty(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
 
