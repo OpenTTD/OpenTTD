@@ -285,6 +285,18 @@ char *GetString(char *buffr, StringID string, const char *last)
 	return GetStringWithArgs(buffr, string, &_global_string_params, last);
 }
 
+/**
+ * Resolve the given StringID into a std::string with all the associated
+ * DParam lookups and formatting.
+ * @param string The unique identifier of the translatable string.
+ * @return The std::string of the translated string.
+ */
+std::string GetString(StringID string)
+{
+	char buffer[DRAW_STRING_BUFFER];
+	GetString(buffer, string, lastof(buffer));
+	return buffer;
+}
 
 /**
  * This function is used to "bind" a C string to a OpenTTD dparam slot.
