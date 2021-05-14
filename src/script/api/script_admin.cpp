@@ -139,7 +139,7 @@
 		return 1;
 	}
 
-	NetworkAdminGameScript(json.c_str());
+	NetworkAdminGameScript(json);
 
 	sq_pushinteger(vm, 1);
 	return 1;
