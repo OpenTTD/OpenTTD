@@ -432,7 +432,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
  */
 NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode error, const char *reason)
 {
-	char str[100];
 	Packet *p = new Packet(PACKET_SERVER_ERROR);
 
 	p->Send_uint8(error);
@@ -440,7 +439,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 	this->SendPacket(p);
 
 	StringID strid = GetNetworkErrorMsg(error);
-	GetString(str, strid, lastof(str));
 
 	/* Only send when the current client was in game */
 	if (this->status > STATUS_AUTHORIZED) {
@@ -448,7 +446,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 		this->GetClientName(client_name, lastof(client_name));
 
-		DEBUG(net, 1, "'%s' made an error and has been disconnected: %s", client_name, str);
+		DEBUG(net, 1, "'%s' made an error and has been disconnected: %s", client_name, GetString(strid).c_str());
 
 		if (error == NETWORK_ERROR_KICKED && reason != nullptr) {
 			NetworkTextMessage(NETWORK_ACTION_KICKED, CC_DEFAULT, false, client_name, reason, strid);
@@ -469,7 +467,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 		NetworkAdminClientError(this->client_id, error);
 	} else {
-		DEBUG(net, 1, "Client %d made an error and has been disconnected: %s", this->client_id, str);
+		DEBUG(net, 1, "Client %d made an error and has been disconnected: %s", this->client_id, GetString(strid).c_str());
 	}
 
 	/* The client made a mistake, so drop the connection now! */
@@ -1128,7 +1126,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet *p
 {
 	/* This packets means a client noticed an error and is reporting this
 	 *  to us. Display the error and report it to the other clients */
-	char str[100];
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 	NetworkErrorCode errorno = (NetworkErrorCode)p->Recv_uint8();
 
@@ -1140,9 +1137,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet *p
 	this->GetClientName(client_name, lastof(client_name));
 
 	StringID strid = GetNetworkErrorMsg(errorno);
-	GetString(str, strid, lastof(str));
 
-	DEBUG(net, 1, "'%s' reported an error and is closing its connection: %s", client_name, str);
+	DEBUG(net, 1, "'%s' reported an error and is closing its connection: %s", client_name, GetString(strid).c_str());
 
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "", strid);
 
@@ -1317,10 +1313,9 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			/* Display the message locally (so you know you have sent it) */
 			if (ci != nullptr && show_local) {
 				if (from_id == CLIENT_ID_SERVER) {
-					char name[NETWORK_NAME_LENGTH];
 					StringID str = Company::IsValidID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 					SetDParam(0, ci_to->client_playas);
-					GetString(name, str, lastof(name));
+					std::string name = GetString(str);
 					NetworkTextMessage(action, GetDrawStringCompanyColour(ci_own->client_playas), true, name, msg, data);
 				} else {
 					for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
