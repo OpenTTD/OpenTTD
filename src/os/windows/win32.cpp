@@ -50,30 +50,6 @@ bool MyShowCursor(bool show, bool toggle)
 	return !show;
 }
 
-/**
- * Helper function needed by dynamically loading libraries
- */
-bool LoadLibraryList(Function proc[], const char *dll)
-{
-	while (*dll != '\0') {
-		HMODULE lib;
-		lib = LoadLibrary(OTTD2FS(dll).c_str());
-
-		if (lib == nullptr) return false;
-		for (;;) {
-			FARPROC p;
-
-			while (*dll++ != '\0') { /* Nothing */ }
-			if (*dll == '\0') break;
-			p = GetProcAddress(lib, dll);
-			if (p == nullptr) return false;
-			*proc++ = (Function)p;
-		}
-		dll++;
-	}
-	return true;
-}
-
 void ShowOSErrorBox(const char *buf, bool system)
 {
 	MyShowCursor(true);
@@ -679,7 +655,8 @@ int OTTDStringCompare(const char *s1, const char *s2)
 #endif
 
 	if (first_time) {
-		_CompareStringEx = (PFNCOMPARESTRINGEX)GetProcAddress(GetModuleHandle(L"Kernel32"), "CompareStringEx");
+		static DllLoader _kernel32(L"Kernel32.dll");
+		_CompareStringEx = _kernel32.GetProcAddress("CompareStringEx");
 		first_time = false;
 	}
 
