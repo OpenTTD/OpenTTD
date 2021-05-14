@@ -93,7 +93,7 @@ public:
 	static NetworkRecvStatus SendGamePassword(const std::string &password);
 	static NetworkRecvStatus SendCompanyPassword(const std::string &password);
 
-	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data);
+	static NetworkRecvStatus SendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64 data);
 	static NetworkRecvStatus SendSetPassword(const std::string &password);
 	static NetworkRecvStatus SendSetName(const char *name);
 	static NetworkRecvStatus SendRCon(const std::string &password, const char *command);

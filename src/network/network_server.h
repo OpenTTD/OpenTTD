@@ -94,7 +94,7 @@ public:
 
 	NetworkRecvStatus SendClientInfo(NetworkClientInfo *ci);
 	NetworkRecvStatus SendError(NetworkErrorCode error, const char *reason = nullptr);
-	NetworkRecvStatus SendChat(NetworkAction action, ClientID client_id, bool self_send, const char *msg, int64 data);
+	NetworkRecvStatus SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64 data);
 	NetworkRecvStatus SendJoin(ClientID client_id);
 	NetworkRecvStatus SendFrame();
 	NetworkRecvStatus SendSync();
