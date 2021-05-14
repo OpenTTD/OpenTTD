@@ -468,7 +468,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendChat(NetworkAction action
  * Send a notification indicating the rcon command has completed.
  * @param command The original command sent.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRconEnd(const char *command)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRconEnd(const std::string_view command)
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_RCON_END);
 
@@ -483,7 +483,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRconEnd(const char *comma
  * @param colour The colour of the text.
  * @param result The result of the command.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16 colour, const char *result)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendRcon(uint16 colour, const std::string_view result)
 {
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_RCON);
 
@@ -498,14 +498,12 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p)
 {
 	if (this->status == ADMIN_STATUS_INACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	char command[NETWORK_RCONCOMMAND_LENGTH];
+	std::string command = p->Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
-	p->Recv_string(command, sizeof(command));
-
-	DEBUG(net, 3, "[admin] Rcon command from '%s' (%s): %s", this->admin_name.c_str(), this->admin_version.c_str(), command);
+	DEBUG(net, 3, "[admin] Rcon command from '%s' (%s): %s", this->admin_name.c_str(), this->admin_version.c_str(), command.c_str());
 
 	_redirect_console_to_admin = this->index;
-	IConsoleCmdExec(command);
+	IConsoleCmdExec(command.c_str());
 	_redirect_console_to_admin = INVALID_ADMIN_ID;
 	return this->SendRconEnd(command);
 }
@@ -538,13 +536,13 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_PING(Packet *p)
  * @param origin The origin of the string.
  * @param string The string that's put on the console.
  */
-NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const char *origin, const char *string)
+NetworkRecvStatus ServerNetworkAdminSocketHandler::SendConsole(const std::string_view origin, const std::string_view string)
 {
 	/* If the length of both strings, plus the 2 '\0' terminations and 3 bytes of the packet
 	 * are bigger than the MTU, just ignore the message. Better safe than sorry. It should
 	 * never occur though as the longest strings are chat messages, which are still 30%
 	 * smaller than COMPAT_MTU. */
-	if (strlen(origin) + strlen(string) + 2 + 3 >= COMPAT_MTU) return NETWORK_RECV_STATUS_OKAY;
+	if (origin.size() + string.size() + 2 + 3 >= COMPAT_MTU) return NETWORK_RECV_STATUS_OKAY;
 
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_CONSOLE);
 
@@ -916,7 +914,7 @@ void NetworkAdminChat(NetworkAction action, DestType desttype, ClientID client_i
  * @param colour_code The colour of the string.
  * @param string      The string to show.
  */
-void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, const char *string)
+void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, const std::string_view string)
 {
 	ServerNetworkAdminSocketHandler::Get(admin_index)->SendRcon(colour_code, string);
 }
@@ -926,7 +924,7 @@ void NetworkServerSendAdminRcon(AdminIndex admin_index, TextColour colour_code, 
  * @param origin the origin of the message.
  * @param string the message as printed on the console.
  */
-void NetworkAdminConsole(const char *origin, const char *string)
+void NetworkAdminConsole(const std::string_view origin, const std::string_view string)
 {
 	for (ServerNetworkAdminSocketHandler *as : ServerNetworkAdminSocketHandler::IterateActive()) {
 		if (as->update_frequency[ADMIN_UPDATE_CONSOLE] & ADMIN_FREQUENCY_AUTOMATIC) {
