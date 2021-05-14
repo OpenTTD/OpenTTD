@@ -1265,6 +1265,12 @@ static void LoadWGLExtensions()
 		if (rc != nullptr) {
 			wglMakeCurrent(dc, rc);
 
+#ifdef __MINGW32__
+			/* GCC doesn't understand the expected usage of wglGetProcAddress(). */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wcast-function-type"
+#endif /* __MINGW32__ */
+
 			/* Get list of WGL extensions. */
 			PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB = (PFNWGLGETEXTENSIONSSTRINGARBPROC)wglGetProcAddress("wglGetExtensionsStringARB");
 			if (wglGetExtensionsStringARB != nullptr) {
@@ -1279,6 +1285,9 @@ static void LoadWGLExtensions()
 				}
 			}
 
+#ifdef __MINGW32__
+#pragma GCC diagnostic pop
+#endif
 			wglMakeCurrent(nullptr, nullptr);
 			wglDeleteContext(rc);
 		}
