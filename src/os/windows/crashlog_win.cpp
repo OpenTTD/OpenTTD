@@ -368,22 +368,7 @@ static const uint MAX_FRAMES     = 64;
 
 char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) const
 {
-#define M(x) x "\0"
-	static const char dbg_import[] =
-		M("dbghelp.dll")
-		M("SymInitialize")
-		M("SymSetOptions")
-		M("SymCleanup")
-		M("StackWalk64")
-		M("SymFunctionTableAccess64")
-		M("SymGetModuleBase64")
-		M("SymGetModuleInfo64")
-		M("SymGetSymFromAddr64")
-		M("SymGetLineFromAddr64")
-		M("")
-		;
-#undef M
-
+	DllLoader dbghelp(L"dbghelp.dll");
 	struct ProcPtrs {
 		BOOL (WINAPI * pSymInitialize)(HANDLE, PCSTR, BOOL);
 		BOOL (WINAPI * pSymSetOptions)(DWORD);
@@ -394,12 +379,22 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 		BOOL (WINAPI * pSymGetModuleInfo64)(HANDLE, DWORD64, PIMAGEHLP_MODULE64);
 		BOOL (WINAPI * pSymGetSymFromAddr64)(HANDLE, DWORD64, PDWORD64, PIMAGEHLP_SYMBOL64);
 		BOOL (WINAPI * pSymGetLineFromAddr64)(HANDLE, DWORD64, PDWORD, PIMAGEHLP_LINE64);
-	} proc;
+	} proc = {
+		dbghelp.GetProcAddress("SymInitialize"),
+		dbghelp.GetProcAddress("SymSetOptions"),
+		dbghelp.GetProcAddress("SymCleanup"),
+		dbghelp.GetProcAddress("StackWalk64"),
+		dbghelp.GetProcAddress("SymFunctionTableAccess64"),
+		dbghelp.GetProcAddress("SymGetModuleBase64"),
+		dbghelp.GetProcAddress("SymGetModuleInfo64"),
+		dbghelp.GetProcAddress("SymGetSymFromAddr64"),
+		dbghelp.GetProcAddress("SymGetLineFromAddr64"),
+	};
 
 	buffer += seprintf(buffer, last, "\nDecoded stack trace:\n");
 
 	/* Try to load the functions from the DLL, if that fails because of a too old dbghelp.dll, just skip it. */
-	if (LoadLibraryList((Function*)&proc, dbg_import)) {
+	if (dbghelp.Success()) {
 		/* Initialize symbol handler. */
 		HANDLE hCur = GetCurrentProcess();
 		proc.pSymInitialize(hCur, nullptr, TRUE);
@@ -486,14 +481,14 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 /* virtual */ int CrashLogWindows::WriteCrashDump(char *filename, const char *filename_last) const
 {
 	int ret = 0;
-	HMODULE dbghelp = LoadLibrary(L"dbghelp.dll");
-	if (dbghelp != nullptr) {
+	DllLoader dbghelp(L"dbghelp.dll");
+	if (dbghelp.Success()) {
 		typedef BOOL (WINAPI *MiniDumpWriteDump_t)(HANDLE, DWORD, HANDLE,
 				MINIDUMP_TYPE,
 				CONST PMINIDUMP_EXCEPTION_INFORMATION,
 				CONST PMINIDUMP_USER_STREAM_INFORMATION,
 				CONST PMINIDUMP_CALLBACK_INFORMATION);
-		MiniDumpWriteDump_t funcMiniDumpWriteDump = (MiniDumpWriteDump_t)GetProcAddress(dbghelp, "MiniDumpWriteDump");
+		MiniDumpWriteDump_t funcMiniDumpWriteDump = dbghelp.GetProcAddress("MiniDumpWriteDump");
 		if (funcMiniDumpWriteDump != nullptr) {
 			seprintf(filename, filename_last, "%scrash.dmp", _personal_dir.c_str());
 			HANDLE file  = CreateFile(OTTD2FS(filename).c_str(), GENERIC_WRITE, 0, nullptr, CREATE_ALWAYS, 0, 0);
@@ -519,7 +514,6 @@ char *CrashLogWindows::AppendDecodedStacktrace(char *buffer, const char *last) c
 		} else {
 			ret = -1;
 		}
-		FreeLibrary(dbghelp);
 	}
 	return ret;
 }

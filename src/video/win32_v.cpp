@@ -956,10 +956,11 @@ float VideoDriver_Win32Base::GetDPIScale()
 	static bool init_done = false;
 	if (!init_done) {
 		init_done = true;
-
-		_GetDpiForWindow = (PFNGETDPIFORWINDOW)GetProcAddress(GetModuleHandle(L"User32"), "GetDpiForWindow");
-		_GetDpiForSystem = (PFNGETDPIFORSYSTEM)GetProcAddress(GetModuleHandle(L"User32"), "GetDpiForSystem");
-		_GetDpiForMonitor = (PFNGETDPIFORMONITOR)GetProcAddress(LoadLibrary(L"Shcore.dll"), "GetDpiForMonitor");
+		static DllLoader _user32(L"user32.dll");
+		static DllLoader _shcore(L"shcore.dll");
+		_GetDpiForWindow = _user32.GetProcAddress("GetDpiForWindow");
+		_GetDpiForSystem = _user32.GetProcAddress("GetDpiForSystem");
+		_GetDpiForMonitor = _shcore.GetProcAddress("GetDpiForMonitor");
 	}
 
 	UINT cur_dpi = 0;
