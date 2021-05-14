@@ -450,7 +450,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendCommand(const CommandPacke
 }
 
 /** Send a chat-packet over the network */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64 data)
 {
 	Packet *p = new Packet(PACKET_CLIENT_CHAT);
 
@@ -1025,13 +1025,13 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	char name[NETWORK_NAME_LENGTH], msg[NETWORK_CHAT_LENGTH];
+	std::string name;
 	const NetworkClientInfo *ci = nullptr, *ci_to;
 
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
 	ClientID client_id = (ClientID)p->Recv_uint32();
 	bool self_send = p->Recv_bool();
-	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
+	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
 	int64 data = p->Recv_uint64();
 
 	ci_to = NetworkClientInfo::GetByClientID(client_id);
@@ -1042,7 +1042,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
 		switch (action) {
 			case NETWORK_ACTION_CHAT_CLIENT:
 				/* For speaking to client we need the client-name */
-				seprintf(name, lastof(name), "%s", ci_to->client_name);
+				name = ci_to->client_name;
 				ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 				break;
 
@@ -1051,7 +1051,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
 				StringID str = Company::IsValidID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 				SetDParam(0, ci_to->client_playas);
 
-				GetString(name, str, lastof(name));
+				name = GetString(str);
 				ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
 				break;
 			}
@@ -1060,7 +1060,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CHAT(Packet *p)
 		}
 	} else {
 		/* Display message from somebody else */
-		seprintf(name, lastof(name), "%s", ci_to->client_name);
+		name = ci_to->client_name;
 		ci = ci_to;
 	}
 
@@ -1385,7 +1385,7 @@ void NetworkUpdateClientName()
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
+void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64 data)
 {
 	MyClient::SendChat(action, type, dest, msg, data);
 }

@@ -719,7 +719,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCommand(const CommandPacke
  * @param msg The actual message.
  * @param data Arbitrary extra data.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const char *msg, int64 data)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendChat(NetworkAction action, ClientID client_id, bool self_send, const std::string &msg, int64 data)
 {
 	if (this->status < STATUS_PRE_ACTIVE) return NETWORK_RECV_STATUS_OKAY;
 
@@ -1235,7 +1235,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ACK(Packet *p)
  * @param data Arbitrary data.
  * @param from_admin Whether the origin is an admin or not.
  */
-void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const char *msg, ClientID from_id, int64 data, bool from_admin)
+void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const std::string &msg, ClientID from_id, int64 data, bool from_admin)
 {
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
 
@@ -1356,9 +1356,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_CHAT(Packet *p)
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
 	DestType desttype = (DestType)p->Recv_uint8();
 	int dest = p->Recv_uint32();
-	char msg[NETWORK_CHAT_LENGTH];
 
-	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
+	std::string msg = p->Recv_string(NETWORK_CHAT_LENGTH);
 	int64 data = p->Recv_uint64();
 
 	NetworkClientInfo *ci = this->GetInfo();
