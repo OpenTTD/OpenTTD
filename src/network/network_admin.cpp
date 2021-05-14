@@ -74,7 +74,7 @@ ServerNetworkAdminSocketHandler::ServerNetworkAdminSocketHandler(SOCKET s) : Net
 ServerNetworkAdminSocketHandler::~ServerNetworkAdminSocketHandler()
 {
 	_network_admins_connected--;
-	DEBUG(net, 3, "[admin] '%s' (%s) has disconnected", this->admin_name, this->admin_version);
+	DEBUG(net, 3, "[admin] '%s' (%s) has disconnected", this->admin_name.c_str(), this->admin_version.c_str());
 	if (_redirect_console_to_admin == this->index) _redirect_console_to_admin = INVALID_ADMIN_ID;
 }
 
@@ -135,7 +135,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendError(NetworkErrorCode er
 
 	std::string error_message = GetString(GetNetworkErrorMsg(error));
 
-	DEBUG(net, 1, "[admin] The admin '%s' (%s) made an error and has been disconnected: '%s'", this->admin_name, this->admin_version, error_message.c_str());
+	DEBUG(net, 1, "[admin] The admin '%s' (%s) made an error and has been disconnected: '%s'", this->admin_name.c_str(), this->admin_version.c_str(), error_message.c_str());
 
 	return this->CloseConnection(true);
 }
@@ -502,7 +502,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_RCON(Packet *p)
 
 	p->Recv_string(command, sizeof(command));
 
-	DEBUG(net, 3, "[admin] Rcon command from '%s' (%s): %s", this->admin_name, this->admin_version, command);
+	DEBUG(net, 3, "[admin] Rcon command from '%s' (%s): %s", this->admin_name.c_str(), this->admin_version.c_str(), command);
 
 	_redirect_console_to_admin = this->index;
 	IConsoleCmdExec(command);
@@ -518,7 +518,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_GAMESCRIPT(Pack
 
 	p->Recv_string(json, sizeof(json));
 
-	DEBUG(net, 6, "[admin] GameScript JSON from '%s' (%s): %s", this->admin_name, this->admin_version, json);
+	DEBUG(net, 6, "[admin] GameScript JSON from '%s' (%s): %s", this->admin_name.c_str(), this->admin_version.c_str(), json);
 
 	Game::NewEvent(new ScriptEventAdminPort(json));
 	return NETWORK_RECV_STATUS_OKAY;
@@ -530,7 +530,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_PING(Packet *p)
 
 	uint32 d1 = p->Recv_uint32();
 
-	DEBUG(net, 6, "[admin] Ping from '%s' (%s): %d", this->admin_name, this->admin_version, d1);
+	DEBUG(net, 6, "[admin] Ping from '%s' (%s): %d", this->admin_name.c_str(), this->admin_version.c_str(), d1);
 
 	return this->SendPong(d1);
 }
@@ -656,17 +656,17 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_JOIN(Packet *p)
 		return this->SendError(NETWORK_ERROR_WRONG_PASSWORD);
 	}
 
-	p->Recv_string(this->admin_name, sizeof(this->admin_name));
-	p->Recv_string(this->admin_version, sizeof(this->admin_version));
+	this->admin_name = p->Recv_string(NETWORK_CLIENT_NAME_LENGTH);
+	this->admin_version = p->Recv_string(NETWORK_REVISION_LENGTH);
 
-	if (StrEmpty(this->admin_name) || StrEmpty(this->admin_version)) {
+	if (this->admin_name.empty() || this->admin_version.empty()) {
 		/* no name or version supplied */
 		return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
 	}
 
 	this->status = ADMIN_STATUS_ACTIVE;
 
-	DEBUG(net, 3, "[admin] '%s' (%s) has connected", this->admin_name, this->admin_version);
+	DEBUG(net, 3, "[admin] '%s' (%s) has connected", this->admin_name.c_str(), this->admin_version.c_str());
 
 	return this->SendProtocol();
 }
@@ -686,7 +686,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_UPDATE_FREQUENC
 
 	if (type >= ADMIN_UPDATE_END || (_admin_update_type_frequencies[type] & freq) != freq) {
 		/* The server does not know of this UpdateType. */
-		DEBUG(net, 1, "[admin] Not supported update frequency %d (%d) from '%s' (%s)", type, freq, this->admin_name, this->admin_version);
+		DEBUG(net, 1, "[admin] Not supported update frequency %d (%d) from '%s' (%s)", type, freq, this->admin_name.c_str(), this->admin_version.c_str());
 		return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
 	}
 
@@ -754,7 +754,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_POLL(Packet *p)
 
 		default:
 			/* An unsupported "poll" update type. */
-			DEBUG(net, 1, "[admin] Not supported poll %d (%d) from '%s' (%s).", type, d1, this->admin_name, this->admin_version);
+			DEBUG(net, 1, "[admin] Not supported poll %d (%d) from '%s' (%s).", type, d1, this->admin_name.c_str(), this->admin_version.c_str());
 			return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
 	}
 
@@ -780,7 +780,7 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::Receive_ADMIN_CHAT(Packet *p)
 			break;
 
 		default:
-			DEBUG(net, 1, "[admin] Invalid chat action %d from admin '%s' (%s).", action, this->admin_name, this->admin_version);
+			DEBUG(net, 1, "[admin] Invalid chat action %d from admin '%s' (%s).", action, this->admin_name.c_str(), this->admin_version.c_str());
 			return this->SendError(NETWORK_ERROR_ILLEGAL_PACKET);
 	}
 
