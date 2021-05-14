@@ -1220,13 +1220,11 @@ CommandCost CmdGiveMoney(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		cur_company.Restore();
 
 		if (_networking) {
-			char dest_company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
 			SetDParam(0, dest_company);
-			GetString(dest_company_name, STR_COMPANY_NAME, lastof(dest_company_name));
+			std::string dest_company_name = GetString(STR_COMPANY_NAME);
 
-			char from_company_name[MAX_LENGTH_COMPANY_NAME_CHARS * MAX_CHAR_LENGTH];
 			SetDParam(0, _current_company);
-			GetString(from_company_name, STR_COMPANY_NAME, lastof(from_company_name));
+			std::string from_company_name = GetString(STR_COMPANY_NAME);
 
 			NetworkTextMessage(NETWORK_ACTION_GIVE_MONEY, GetDrawStringCompanyColour(_current_company), false, from_company_name, dest_company_name, amount.GetCost());
 		}

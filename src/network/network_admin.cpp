@@ -133,11 +133,9 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendError(NetworkErrorCode er
 	p->Send_uint8(error);
 	this->SendPacket(p);
 
-	char str[100];
-	StringID strid = GetNetworkErrorMsg(error);
-	GetString(str, strid, lastof(str));
+	std::string error_message = GetString(GetNetworkErrorMsg(error));
 
-	DEBUG(net, 1, "[admin] The admin '%s' (%s) made an error and has been disconnected: '%s'", this->admin_name, this->admin_version, str);
+	DEBUG(net, 1, "[admin] The admin '%s' (%s) made an error and has been disconnected: '%s'", this->admin_name, this->admin_version, error_message.c_str());
 
 	return this->CloseConnection(true);
 }
@@ -316,20 +314,13 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyNew(CompanyID comp
  */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company *c)
 {
-	char company_name[NETWORK_COMPANY_NAME_LENGTH];
-	char manager_name[NETWORK_COMPANY_NAME_LENGTH];
-
-	SetDParam(0, c->index);
-	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
-
-	SetDParam(0, c->index);
-	GetString(manager_name, STR_PRESIDENT_NAME, lastof(manager_name));
-
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_INFO);
 
 	p->Send_uint8 (c->index);
-	p->Send_string(company_name);
-	p->Send_string(manager_name);
+	SetDParam(0, c->index);
+	p->Send_string(GetString(STR_COMPANY_NAME));
+	SetDParam(0, c->index);
+	p->Send_string(GetString(STR_PRESIDENT_NAME));
 	p->Send_uint8 (c->colour);
 	p->Send_bool  (NetworkCompanyIsPassworded(c->index));
 	p->Send_uint32(c->inaugurated_year);
@@ -352,20 +343,13 @@ NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyInfo(const Company
  */
 NetworkRecvStatus ServerNetworkAdminSocketHandler::SendCompanyUpdate(const Company *c)
 {
-	char company_name[NETWORK_COMPANY_NAME_LENGTH];
-	char manager_name[NETWORK_COMPANY_NAME_LENGTH];
-
-	SetDParam(0, c->index);
-	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
-
-	SetDParam(0, c->index);
-	GetString(manager_name, STR_PRESIDENT_NAME, lastof(manager_name));
-
 	Packet *p = new Packet(ADMIN_PACKET_SERVER_COMPANY_UPDATE);
 
 	p->Send_uint8 (c->index);
-	p->Send_string(company_name);
-	p->Send_string(manager_name);
+	SetDParam(0, c->index);
+	p->Send_string(GetString(STR_COMPANY_NAME));
+	SetDParam(0, c->index);
+	p->Send_string(GetString(STR_PRESIDENT_NAME));
 	p->Send_uint8 (c->colour);
 	p->Send_bool  (NetworkCompanyIsPassworded(c->index));
 	p->Send_uint8 (CeilDiv(c->months_of_bankruptcy, 3)); // send as quarters_of_bankruptcy
