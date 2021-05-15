@@ -207,11 +207,14 @@ public:
 	 * remain the best intermediate node, and thus the vehicle would still
 	 * go towards the red EOL signal.
 	 */
-	void PruneIntermediateNodeBranch()
+	void PruneIntermediateNodeBranch(Node *n)
 	{
-		while (Yapf().m_pBestIntermediateNode != nullptr && (Yapf().m_pBestIntermediateNode->m_segment->m_end_segment_reason & ESRB_CHOICE_FOLLOWS) == 0) {
-			Yapf().m_pBestIntermediateNode = Yapf().m_pBestIntermediateNode->m_parent;
+		bool intermediate_on_branch = false;
+		while (n != nullptr && (n->m_segment->m_end_segment_reason & ESRB_CHOICE_FOLLOWS) == 0) {
+			if (n == Yapf().m_pBestIntermediateNode) intermediate_on_branch = true;
+			n = n->m_parent;
 		}
+		if (intermediate_on_branch) Yapf().m_pBestIntermediateNode = n;
 	}
 
 	/**

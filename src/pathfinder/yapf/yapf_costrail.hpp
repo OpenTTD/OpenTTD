@@ -199,7 +199,7 @@ public:
 						 * was it first signal which is two-way? */
 						if (!IsPbsSignal(sig_type) && Yapf().TreatFirstRedTwoWaySignalAsEOL() && n.flags_u.flags_s.m_choice_seen && has_signal_against && n.m_num_signals_passed == 0) {
 							/* yes, the first signal is two-way red signal => DEAD END. Prune this branch... */
-							Yapf().PruneIntermediateNodeBranch();
+							Yapf().PruneIntermediateNodeBranch(&n);
 							n.m_segment->m_end_segment_reason |= ESRB_DEAD_END;
 							Yapf().m_stopped_on_first_two_way_signal = true;
 							return -1;
