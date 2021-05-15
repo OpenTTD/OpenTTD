@@ -927,7 +927,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
 	this->SetInfo(ci);
 	ci->join_date = _date;
-	strecpy(ci->client_name, name, lastof(ci->client_name));
+	ci->client_name = name;
 	ci->client_playas = playas;
 	DEBUG(desync, 1, "client: %08x; %02x; %02x; %02x", _date, _date_fract, (int)ci->client_playas, (int)ci->index);
 
@@ -1413,7 +1413,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 		/* Display change */
 		if (NetworkFindName(client_name, lastof(client_name))) {
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, client_name);
-			strecpy(ci->client_name, client_name, lastof(ci->client_name));
+			ci->client_name = client_name;
 			NetworkUpdateClientInfo(ci->client_id);
 		}
 	}
@@ -1689,7 +1689,7 @@ bool NetworkFindName(char *new_name, const char *last)
 	while (!found_name) {
 		found_name = true;
 		for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-			if (strcmp(ci->client_name, new_name) == 0) {
+			if (ci->client_name.compare(new_name) == 0) {
 				/* Name already in use */
 				found_name = false;
 				break;
@@ -1698,7 +1698,7 @@ bool NetworkFindName(char *new_name, const char *last)
 		/* Check if it is the same as the server-name */
 		const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 		if (ci != nullptr) {
-			if (strcmp(ci->client_name, new_name) == 0) found_name = false; // name already in use
+			if (ci->client_name.compare(new_name) == 0) found_name = false; // name already in use
 		}
 
 		if (!found_name) {
@@ -1723,7 +1723,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
 {
 	/* Check if the name's already in use */
 	for (NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-		if (strcmp(ci->client_name, new_name) == 0) return false;
+		if (ci->client_name.compare(new_name) == 0) return false;
 	}
 
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
@@ -1731,7 +1731,7 @@ bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
 
 	NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, true, ci->client_name, new_name);
 
-	strecpy(ci->client_name, new_name, lastof(ci->client_name));
+	ci->client_name = new_name;
 
 	NetworkUpdateClientInfo(client_id);
 	return true;
@@ -1963,7 +1963,7 @@ void NetworkServerShowStatusToConsole()
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s",
-			cs->client_id, ci->client_name, status, lag,
+			cs->client_id, ci->client_name.c_str(), status, lag,
 			ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
 			cs->GetClientIP());
 	}
@@ -2135,10 +2135,10 @@ void ServerNetworkGameSocketHandler::GetClientName(char *client_name, const char
 {
 	const NetworkClientInfo *ci = this->GetInfo();
 
-	if (ci == nullptr || StrEmpty(ci->client_name)) {
+	if (ci == nullptr || ci->client_name.empty()) {
 		seprintf(client_name, last, "Client #%4d", this->client_id);
 	} else {
-		strecpy(client_name, ci->client_name, last);
+		strecpy(client_name, ci->client_name.c_str(), last);
 	}
 }
 
@@ -2151,13 +2151,13 @@ void NetworkPrintClients()
 		if (_network_server) {
 			IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
 					ci->client_id,
-					ci->client_name,
+					ci->client_name.c_str(),
 					ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0),
 					ci->client_id == CLIENT_ID_SERVER ? "server" : NetworkClientSocket::GetByClientID(ci->client_id)->GetClientIP());
 		} else {
 			IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d",
 					ci->client_id,
-					ci->client_name,
+					ci->client_name.c_str(),
 					ci->client_playas + (Company::IsValidID(ci->client_playas) ? 1 : 0));
 		}
 	}
@@ -2182,7 +2182,7 @@ void NetworkServerNewCompany(const Company *c, NetworkClientInfo *ci)
 		/* ci is nullptr when replaying, or for AIs. In neither case there is a client. */
 		ci->client_playas = c->index;
 		NetworkUpdateClientInfo(ci->client_id);
-		NetworkSendCommand(0, 0, 0, CMD_RENAME_PRESIDENT, nullptr, ci->client_name, c->index);
+		NetworkSendCommand(0, 0, 0, CMD_RENAME_PRESIDENT, nullptr, ci->client_name.c_str(), c->index);
 	}
 
 	/* Announce new company on network. */

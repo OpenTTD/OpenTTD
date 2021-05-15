@@ -332,7 +332,7 @@ struct NetworkChatWindow : public Window {
 			/* Skip inactive clients */
 			for (NetworkClientInfo *ci : NetworkClientInfo::Iterate(*item)) {
 				*item = ci->index;
-				return ci->client_name;
+				return ci->client_name.c_str();
 			}
 			*item = MAX_CLIENT_SLOTS;
 		}
