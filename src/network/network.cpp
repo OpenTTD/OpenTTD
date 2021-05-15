@@ -844,7 +844,7 @@ static void NetworkInitGameInfo()
 	NetworkClientInfo *ci = new NetworkClientInfo(CLIENT_ID_SERVER);
 	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST;
 
-	strecpy(ci->client_name, _settings_client.network.client_name.c_str(), lastof(ci->client_name));
+	ci->client_name = _settings_client.network.client_name;
 }
 
 /**

@@ -651,9 +651,8 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 	NetworkClientInfo *ci;
 	ClientID client_id = (ClientID)p->Recv_uint32();
 	CompanyID playas = (CompanyID)p->Recv_uint8();
-	char name[NETWORK_NAME_LENGTH];
 
-	p->Recv_string(name, sizeof(name));
+	std::string name = p->Recv_string(NETWORK_NAME_LENGTH);
 
 	if (this->status < STATUS_AUTHORIZED) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
@@ -664,7 +663,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 
 	ci = NetworkClientInfo::GetByClientID(client_id);
 	if (ci != nullptr) {
-		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
+		if (playas == ci->client_playas && name.compare(ci->client_name) != 0) {
 			/* Client name changed, display the change */
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, name);
 		} else if (playas != ci->client_playas) {
@@ -677,7 +676,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 		if (client_id == _network_own_client_id) SetLocalCompany(!Company::IsValidID(playas) ? COMPANY_SPECTATOR : playas);
 
 		ci->client_playas = playas;
-		strecpy(ci->client_name, name, lastof(ci->client_name));
+		ci->client_name = name;
 
 		InvalidateWindowData(WC_CLIENT_LIST, 0);
 
@@ -696,7 +695,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_CLIENT_INFO(Pac
 	ci->client_playas = playas;
 	if (client_id == _network_own_client_id) this->SetInfo(ci);
 
-	strecpy(ci->client_name, name, lastof(ci->client_name));
+	ci->client_name = name;
 
 	InvalidateWindowData(WC_CLIENT_LIST, 0);
 
@@ -745,8 +744,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_ERROR(Packet *p
 	if (error < (ptrdiff_t)lengthof(network_error_strings)) err = network_error_strings[error];
 	/* In case of kicking a client, we assume there is a kick message in the packet if we can read one byte */
 	if (error == NETWORK_ERROR_KICKED && p->CanReadFromPacket(1)) {
-		char kick_msg[255];
-		p->Recv_string(kick_msg, sizeof(kick_msg));
+		std::string kick_msg = p->Recv_string(NETWORK_CHAT_LENGTH);
 		SetDParamStr(0, kick_msg);
 		ShowErrorMessage(err, STR_NETWORK_ERROR_KICK_MESSAGE, WL_CRITICAL);
 	} else {
@@ -1160,10 +1158,9 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_RCON(Packet *p)
 	TextColour colour_code = (TextColour)p->Recv_uint16();
 	if (!IsValidConsoleColour(colour_code)) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
-	char rcon_out[NETWORK_RCONCOMMAND_LENGTH];
-	p->Recv_string(rcon_out, sizeof(rcon_out));
+	std::string rcon_out = p->Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
-	IConsolePrint(colour_code, rcon_out);
+	IConsolePrint(colour_code, rcon_out.c_str());
 
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -1370,7 +1367,7 @@ void NetworkUpdateClientName()
 			strecpy(temporary_name, _settings_client.network.client_name.c_str(), lastof(temporary_name));
 			if (NetworkFindName(temporary_name, lastof(temporary_name))) {
 				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, temporary_name);
-				strecpy(ci->client_name, temporary_name, lastof(ci->client_name));
+				ci->client_name = temporary_name;
 				NetworkUpdateClientInfo(CLIENT_ID_SERVER);
 			}
 		}
