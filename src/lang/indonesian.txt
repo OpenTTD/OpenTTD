@@ -946,6 +946,7 @@ STR_GAME_OPTIONS_CURRENCY_NTD                                   :Dollar Taiwan B
 STR_GAME_OPTIONS_CURRENCY_CNY                                   :Renminbi Cina (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Dollar Hong Kong (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :India Rupee (INR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Rupiah Indonesia (IDR)
 STR_GAME_OPTIONS_CURRENCY_MYR                                   :Ringgit Malaysia (MYR)
 ############ end of currency region
 
@@ -992,6 +993,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :Setiap 12 bulan
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}Bahasa
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}Pilih antar muka bahasa yang akan dipergunakan
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% selesai)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}Layar Penuh
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Klik cek box ini untuk memainkan OpenTTD dalam layar penuh
@@ -999,10 +1001,13 @@ STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}Klik cek
 STR_GAME_OPTIONS_RESOLUTION                                     :{BLACK}Resolusi Layar
 STR_GAME_OPTIONS_RESOLUTION_TOOLTIP                             :{BLACK}Pilih resolusi layar yang diinginkan
 STR_GAME_OPTIONS_RESOLUTION_OTHER                               :lainnya
+STR_GAME_OPTIONS_RESOLUTION_ITEM                                :{NUM}x{NUM}
 
 STR_GAME_OPTIONS_VIDEO_ACCELERATION                             :{BLACK}Akselerasi perangkat keras
+STR_GAME_OPTIONS_VIDEO_ACCELERATION_TOOLTIP                     :{BLACK} Centang kotak ini untuk mengizinkan OpenTTD mencoba menggunakan akselerasi perangkat keras. Pengaturan yang diubah hanya akan diterapkan saat game dimulai ulang.
 STR_GAME_OPTIONS_VIDEO_ACCELERATION_RESTART                     :{WHITE}Pengaturan hanya akan berlaku setelah game dimulai ulang
 
+STR_GAME_OPTIONS_VIDEO_VSYNC_TOOLTIP                            :{BLACK}Centang kotak ini untuk melakukan sinkronisasi layar (v-sync). Pengaturan yang diubah hanya akan diterapkan saat game dimulai ulang. Hanya berfungsi dengan akselerasi perangkat keras diaktifkan.
 
 STR_GAME_OPTIONS_GUI_ZOOM_FRAME                                 :{BLACK}Ukuran antarmuka
 STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_TOOLTIP                      :{BLACK}Pilih ukuran elemen antarmuka yang akan digunakan
@@ -1023,6 +1028,8 @@ STR_GAME_OPTIONS_FONT_ZOOM_DROPDOWN_4X_ZOOM                     :4 kali
 STR_GAME_OPTIONS_GRAPHICS                                       :{BLACK}Grafik
 
 STR_GAME_OPTIONS_REFRESH_RATE                                   :{BLACK}Menampilkan kecepatan refresh
+STR_GAME_OPTIONS_REFRESH_RATE_OTHER                             :lain
+STR_GAME_OPTIONS_REFRESH_RATE_ITEM                              :{NUM}Hz
 STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}Kecepatan refresh yang lebih tinggi dari 60Hz dapat memengaruhi kinerja.
 
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Set Grafik Dasar
@@ -1133,6 +1140,7 @@ STR_CONFIG_SETTING_TREE_CAPTION                                 :{WHITE}Pengatur
 STR_CONFIG_SETTING_FILTER_TITLE                                 :{BLACK}Penyaring kata:
 STR_CONFIG_SETTING_EXPAND_ALL                                   :{BLACK}Perluas semua
 STR_CONFIG_SETTING_COLLAPSE_ALL                                 :{BLACK}Persempit semua
+STR_CONFIG_SETTING_RESET_ALL                                    :{BLACK}Atur ulang semua pengaturan
 STR_CONFIG_SETTING_NO_EXPLANATION_AVAILABLE_HELPTEXT            :(penjelasan belum tersedia)
 STR_CONFIG_SETTING_DEFAULT_VALUE                                :{LTBLUE}Nilai standar: {ORANGE}{STRING}
 STR_CONFIG_SETTING_TYPE                                         :{LTBLUE}Tipe setting: {ORANGE}{STRING}
@@ -1349,6 +1357,8 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Jarak maksimal 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Kilang minyak hanya dibangun pada tepi peta atau pantai
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Tinggi garis salju: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Mengatur ketinggian di mana salju akan muncul. Salju juga akan mempengaruhi pengembangan industri dan persyaratan untuk pertumbuhan kota
+STR_CONFIG_SETTING_SNOW_COVERAGE                                :Cakupan salju: {STRING}
+STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
 STR_CONFIG_SETTING_DESERT_COVERAGE                              :Cakupan gurun: {STRING}
 STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kontrol perkiraan jumlah gurun di lanskap tropis. Gurun juga mempengaruhi generasi industri. Hanya digunakan selama pembuatan peta
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
@@ -1467,6 +1477,8 @@ STR_CONFIG_SETTING_EXPENSES_LAYOUT                              :Kelompokkan pen
 STR_CONFIG_SETTING_EXPENSES_LAYOUT_HELPTEXT                     :Mendefinisikan tata ruang untuk tetingkap biaya perusahaan
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :Secara otomatis menghapus sinyal selama konstruksi rel: {STRING}
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :Menghapus sinyal secara otomatis selama konstruksi rel jika sinyal menghalangi. Perhatikan bahwa hal ini berpotensi menyebabkan kecelakaan kereta api.
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}% kecepatan normal
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :Tanpa batas (secepat komputer Anda memungkinkan)
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :Ticker berita: {STRING}
 STR_CONFIG_SETTING_SOUND_TICKER_HELPTEXT                        :Mainkan suara untuk pesanan berita yang diringkas
@@ -1800,6 +1812,7 @@ STR_CONFIG_ERROR_OUT_OF_MEMORY                                  :{WHITE}Kehabisa
 STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG                            :{WHITE}Mengalokasikan {BYTES} 'spritecache' gagal. 'Spritecache' dikurangi ke {BYTES}. Ini akan kurangi kinerja OpenTTD. Untuk kurangi kebutuhan memori anda bisa coba matikan grafik 32bpp dan/atau tingkat pembesaran
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}Kesalahan dengan pengaturan video...
 STR_VIDEO_DRIVER_ERROR_NO_HARDWARE_ACCELERATION                 :{WHITE}... tidak ditemukan GPU yang kompatibel. Akselerasi perangkat keras dinonaktifkan
 
 # Intro window
@@ -1967,6 +1980,8 @@ STR_FACE_TIE                                                    :Dasi:
 STR_FACE_EARRING                                                :Anting-anting:
 STR_FACE_TIE_EARRING_TOOLTIP                                    :{BLACK}Ubah dasi atau anting-anting
 
+STR_NETWORK_SERVER_VISIBILITY_PRIVATE                           :Privat
+STR_NETWORK_SERVER_VISIBILITY_PUBLIC                            :Umum
 
 # Network server list
 STR_NETWORK_SERVER_LIST_CAPTION                                 :{WHITE}Bermain bersama
@@ -2030,6 +2045,7 @@ STR_NETWORK_START_SERVER_NEW_GAME_NAME_TOOLTIP                  :{BLACK}Nama per
 STR_NETWORK_START_SERVER_SET_PASSWORD                           :{BLACK}Atur kata sandi
 STR_NETWORK_START_SERVER_PASSWORD_TOOLTIP                       :{BLACK}Lindungi permainan ini dengan kata kunci jika anda tidak ingin membiarkannya terbuka untuk umum
 
+STR_NETWORK_START_SERVER_VISIBILITY_TOOLTIP                     :{BLACK}Orang lain bisa melihat server Anda di daftar umum
 STR_NETWORK_START_SERVER_CLIENTS_SELECT                         :{BLACK}{NUM} klien
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS                      :{BLACK}Maksimum jumlah klien:
 STR_NETWORK_START_SERVER_NUMBER_OF_CLIENTS_TOOLTIP              :{BLACK}Pilih jumlah klien maksimal. Tidak semua slot harus diisi
@@ -2096,8 +2112,21 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Perusaha
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Daftar klien
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_SERVER_NAME_QUERY_CAPTION               :Nama server
+STR_NETWORK_CLIENT_LIST_PLAYER_NAME_QUERY_CAPTION               :Nama pemain
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_TOOLTIP                   :{BLACK}Tindakan administratif yang harus dilakukan untuk perusahaan ini
+STR_NETWORK_CLIENT_LIST_CHAT_CLIENT_TOOLTIP                     :{BLACK}Kirim pesan ke pemain ini
+STR_NETWORK_CLIENT_LIST_CHAT_SPECTATOR_TOOLTIP                  :{BLACK}Kirim pesan ke semua penonton
+STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Perusahaan baru)
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Diusir
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Melarang
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Buka pakai kata sandi
 
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Anda yakin ingin diusir pemain '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_CLIENT_BAN                          :{YELLOW}Apakah Anda yakin ingin mencekal pemain '{STRING}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_RESET                       :{YELLOW}Anda yakin ingin menghapus perusahaan '{COMPANY}'?
+STR_NETWORK_CLIENT_LIST_ASK_COMPANY_UNLOCK                      :{YELLOW}Anda yakin ingin menyetel ulang sandi perusahaan '{COMPANY}'?
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klien
@@ -2142,6 +2171,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}Tak dapa
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Tak dapat tersambung
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Waktu Koneksi #{NUM} telah habis
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Kesalahan protokol, koneksi ditutup
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Nama permainan belum disetel. Nama bisa diatur di bagian atas jendela Multiplayer
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Revisi pada klien tidak sama dengan revisi pada server
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Kata kunci salah
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Server penuh
@@ -2176,6 +2206,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_PASSWORD                       :tidak menerima 
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_COMPUTER                       :waktu koneksi habis
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_MAP                            :pengunduhan peta memakan banyak waktu
 STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :pengolahan peta memakan banyak waktu
+STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :nama yang dihubungi tidak valid
 ############ End of leave-in-this-order
 
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Koneksi mungkin terputus
@@ -2835,9 +2866,13 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}Jumlah Kota:
 STR_MAPGEN_DATE                                                 :{BLACK}Tgl:
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}Jumlah industri:
+STR_MAPGEN_HEIGHTMAP_HEIGHT                                     :{BLACK}Puncak tertinggi:
 STR_MAPGEN_HEIGHTMAP_HEIGHT_DOWN                                :{BLACK}Kurangi satu ketinggian maksimum puncak tertinggi di peta
+STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Cakupan salju:
+STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Meningkatkan cakupan salju sepuluh persen
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Kurangi cakupan salju hingga sepuluh persen
 STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Cakupan gurun:
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Kurangi cakupan gurun pasir sebesar sepuluh persen
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Algoritma pulau:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Jenis dataran:
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}Area perairan:
@@ -2863,6 +2898,7 @@ STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Nama Pet
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Luas:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
 
+STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Target ketinggian puncak
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Cakupan salju (dalam %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ganti Tahun Permulaan
 
@@ -3155,6 +3191,8 @@ STR_GOALS_CAPTION                                               :{WHITE}{COMPANY
 STR_GOALS_SPECTATOR_CAPTION                                     :{WHITE}Target Global
 STR_GOALS_SPECTATOR                                             :Target Global
 STR_GOALS_GLOBAL_BUTTON                                         :{BLACK}Global
+STR_GOALS_GLOBAL_BUTTON_HELPTEXT                                :{BLACK}Tunjukkan target global
+STR_GOALS_COMPANY_BUTTON                                        :{BLACK}Perusahaan
 STR_GOALS_TEXT                                                  :{ORANGE}{STRING}
 STR_GOALS_NONE                                                  :{ORANGE}- Tidak ada -
 STR_GOALS_PROGRESS                                              :{ORANGE}{STRING}
@@ -4277,6 +4315,7 @@ STR_WARNING_FALLBACK_SOUNDSET                                   :{WHITE}Hanya ef
 STR_WARNING_SCREENSHOT_SIZE_CAPTION                             :{WHITE}Tangkapan layar besar
 STR_WARNING_SCREENSHOT_SIZE_MESSAGE                             :{YELLOW}Resolusi tangkapan layar {COMMA} x {COMMA} piksel. Membuat tangkapan layar akan memakan waktu. Anda ingin melanjutkan?
 
+STR_MESSAGE_HEIGHTMAP_SUCCESSFULLY                              :{WHITE}Peta ketinggian sudah disimpan sebagai '{STRING}'. Puncak tertinggi adalah {NUM}
 STR_MESSAGE_SCREENSHOT_SUCCESSFULLY                             :{WHITE}Pengambilan gambar telah berhasil disimpan sebagai '{STRING}'
 STR_ERROR_SCREENSHOT_FAILED                                     :{WHITE}Pengambilan gambar gagal
 
