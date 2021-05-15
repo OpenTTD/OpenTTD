@@ -91,9 +91,10 @@ public:
 		this->InitNested(1);
 	}
 
-	~BootstrapErrorWindow()
+	void Close() override
 	{
 		_exit_game = true;
+		this->Window::Close();
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -144,12 +145,13 @@ public:
 	{
 	}
 
-	~BootstrapContentDownloadStatusWindow()
+	void Close() override
 	{
 		/* If we are not set to exit the game, it means the bootstrap failed. */
 		if (!_exit_game) {
 			new BootstrapErrorWindow();
 		}
+		this->BaseNetworkContentDownloadStatusWindow::Close();
 	}
 
 	void OnDownloadComplete(ContentID cid) override
@@ -162,7 +164,7 @@ public:
 
 		/* _exit_game is used to break out of the outer video driver's MainLoop. */
 		_exit_game = true;
-		delete this;
+		this->Close();
 	}
 };
 
@@ -201,9 +203,10 @@ public:
 	}
 
 	/** Stop listening to the content client events. */
-	~BootstrapAskForDownloadWindow()
+	void Close() override
 	{
 		_network_content_client.RemoveCallback(this);
+		this->Window::Close();
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -264,7 +267,7 @@ public:
 		/* And once the meta data is received, start downloading it. */
 		_network_content_client.Select(ci->id);
 		new BootstrapContentDownloadStatusWindow();
-		delete this;
+		this->Close();
 	}
 };
 

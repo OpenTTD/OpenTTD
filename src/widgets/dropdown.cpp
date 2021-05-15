@@ -184,12 +184,11 @@ struct DropdownWindow : Window {
 		this->scrolling_timer  = GUITimer(MILLISECONDS_PER_TICK);
 	}
 
-	~DropdownWindow()
+	void Close() override
 	{
-		/* Make the dropdown "invisible", so it doesn't affect new window placement.
+		/* Finish closing the dropdown, so it doesn't affect new window placement.
 		 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
-		*this->z_position = nullptr;
-		this->SetDirty();
+		this->Window::Close();
 
 		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
 		if (w2 != nullptr) {
@@ -200,7 +199,7 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	virtual Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number)
+	Point OnInitialPosition(int16 sm_width, int16 sm_height, int window_number) override
 	{
 		return this->position;
 	}
@@ -237,7 +236,7 @@ struct DropdownWindow : Window {
 		return false;
 	}
 
-	virtual void DrawWidget(const Rect &r, int widget) const
+	void DrawWidget(const Rect &r, int widget) const override
 	{
 		if (widget != WID_DM_ITEMS) return;
 
@@ -265,7 +264,7 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	virtual void OnClick(Point pt, int widget, int click_count)
+	void OnClick(Point pt, int widget, int click_count) override
 	{
 		if (widget != WID_DM_ITEMS) return;
 		int item;
@@ -276,7 +275,7 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	virtual void OnRealtimeTick(uint delta_ms)
+	void OnRealtimeTick(uint delta_ms) override
 	{
 		if (!this->scrolling_timer.Elapsed(delta_ms)) return;
 		this->scrolling_timer.SetInterval(MILLISECONDS_PER_TICK);
@@ -293,22 +292,19 @@ struct DropdownWindow : Window {
 		}
 	}
 
-	virtual void OnMouseLoop()
+	void OnMouseLoop() override
 	{
 		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
 		if (w2 == nullptr) {
-			delete this;
+			this->Close();
 			return;
 		}
 
 		if (this->click_delay != 0 && --this->click_delay == 0) {
-			/* Make the dropdown "invisible", so it doesn't affect new window placement.
+			/* Close the dropdown, so it doesn't affect new window placement.
 			 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
-			*this->z_position = nullptr;
-			this->SetDirty();
-
+			this->Close();
 			w2->OnDropdownSelect(this->parent_button, this->selected_index);
-			delete this;
 			return;
 		}
 
@@ -318,7 +314,7 @@ struct DropdownWindow : Window {
 			if (!_left_button_clicked) {
 				this->drag_mode = false;
 				if (!this->GetDropDownItem(item)) {
-					if (this->instant_close) delete this;
+					if (this->instant_close) this->Close();
 					return;
 				}
 				this->click_delay = 2;
@@ -509,7 +505,7 @@ int HideDropDownMenu(Window *pw)
 		if (pw->window_class == dw->parent_wnd_class &&
 				pw->window_number == dw->parent_wnd_num) {
 			int parent_button = dw->parent_button;
-			delete dw;
+			dw->Close();
 			return parent_button;
 		}
 	}

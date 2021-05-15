@@ -185,10 +185,11 @@ struct IConsoleWindow : Window
 		ResizeWindow(this, _screen.width, _screen.height / 3);
 	}
 
-	~IConsoleWindow()
+	void Close() override
 	{
 		_iconsole_mode = ICONSOLE_CLOSED;
 		VideoDriver::GetInstance()->EditBoxLostFocus();
+		this->Window::Close();
 	}
 
 	/**

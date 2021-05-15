@@ -109,9 +109,10 @@ BaseNetworkContentDownloadStatusWindow::BaseNetworkContentDownloadStatusWindow(W
 	this->InitNested(WN_NETWORK_STATUS_WINDOW_CONTENT_DOWNLOAD);
 }
 
-BaseNetworkContentDownloadStatusWindow::~BaseNetworkContentDownloadStatusWindow()
+void BaseNetworkContentDownloadStatusWindow::Close()
 {
 	_network_content_client.RemoveCallback(this);
+	this->Window::Close();
 }
 
 void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, int widget) const
@@ -171,8 +172,7 @@ public:
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
 	}
 
-	/** Free whatever we've allocated */
-	~NetworkContentDownloadStatusWindow()
+	void Close() override
 	{
 		TarScanner::Mode mode = TarScanner::NONE;
 		for (auto ctype : this->receivedTypes) {
@@ -254,6 +254,8 @@ public:
 
 		/* Always invalidate the download window; tell it we are going to be gone */
 		InvalidateWindowData(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST, 2);
+
+		this->BaseNetworkContentDownloadStatusWindow::Close();
 	}
 
 	void OnClick(Point pt, int widget, int click_count) override
@@ -261,7 +263,7 @@ public:
 		if (widget == WID_NCDS_CANCELOK) {
 			if (this->downloaded_bytes != this->total_bytes) {
 				_network_content_client.CloseConnection();
-				delete this;
+				this->Close();
 			} else {
 				/* If downloading succeeded, close the online content window. This will close
 				 * the current window as well. */
@@ -549,10 +551,10 @@ public:
 		this->InvalidateData();
 	}
 
-	/** Free everything we allocated */
-	~NetworkContentListWindow()
+	void Close() override
 	{
 		_network_content_client.RemoveCallback(this);
+		this->Window::Close();
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -837,7 +839,7 @@ public:
 				break;
 
 			case WID_NCL_CANCEL:
-				delete this;
+				this->Close();
 				break;
 
 			case WID_NCL_OPEN_URL:
@@ -941,7 +943,7 @@ public:
 	{
 		if (!success) {
 			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_CONNECT, INVALID_STRING_ID, WL_ERROR);
-			delete this;
+			this->Close();
 			return;
 		}
 

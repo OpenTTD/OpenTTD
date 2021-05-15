@@ -1033,9 +1033,9 @@ struct RefitWindow : public Window {
 
 					if (this->order == INVALID_VEH_ORDER_ID) {
 						bool delete_window = this->selected_vehicle == v->index && this->num_vehicles == UINT8_MAX;
-						if (DoCommandP(v->tile, this->selected_vehicle, this->cargo->cargo | this->cargo->subtype << 8 | this->num_vehicles << 16, GetCmdRefitVeh(v)) && delete_window) delete this;
+						if (DoCommandP(v->tile, this->selected_vehicle, this->cargo->cargo | this->cargo->subtype << 8 | this->num_vehicles << 16, GetCmdRefitVeh(v)) && delete_window) this->Close();
 					} else {
-						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->order << 16, CMD_ORDER_REFIT)) delete this;
+						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->order << 16, CMD_ORDER_REFIT)) this->Close();
 					}
 				}
 				break;
@@ -2718,12 +2718,13 @@ public:
 		this->UpdateButtonStatus();
 	}
 
-	~VehicleViewWindow()
+	void Close() override
 	{
 		DeleteWindowById(WC_VEHICLE_ORDERS, this->window_number, false);
 		DeleteWindowById(WC_VEHICLE_REFIT, this->window_number, false);
 		DeleteWindowById(WC_VEHICLE_DETAILS, this->window_number, false);
 		DeleteWindowById(WC_VEHICLE_TIMETABLE, this->window_number, false);
+		this->Window::Close();
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override

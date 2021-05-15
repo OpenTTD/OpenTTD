@@ -1334,7 +1334,7 @@ struct StationViewWindow : public Window {
 		this->owner = Station::Get(window_number)->owner;
 	}
 
-	~StationViewWindow()
+	void Close() override
 	{
 		DeleteWindowById(WC_TRAINS_LIST,   VehicleListIdentifier(VL_STATION_LIST, VEH_TRAIN,    this->owner, this->window_number).Pack(), false);
 		DeleteWindowById(WC_ROADVEH_LIST,  VehicleListIdentifier(VL_STATION_LIST, VEH_ROAD,     this->owner, this->window_number).Pack(), false);
@@ -1342,6 +1342,7 @@ struct StationViewWindow : public Window {
 		DeleteWindowById(WC_AIRCRAFT_LIST, VehicleListIdentifier(VL_STATION_LIST, VEH_AIRCRAFT, this->owner, this->window_number).Pack(), false);
 
 		SetViewportCatchmentStation(Station::Get(this->window_number), false);
+		this->Window::Close();
 	}
 
 	/**
@@ -2285,11 +2286,12 @@ struct SelectStationWindow : Window {
 		_thd.freeze = true;
 	}
 
-	~SelectStationWindow()
+	void Close() override
 	{
 		if (_settings_client.gui.station_show_coverage) SetViewportCatchmentStation(nullptr, true);
 
 		_thd.freeze = false;
+		this->Window::Close();
 	}
 
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
@@ -2424,7 +2426,7 @@ static bool StationJoinerNeeded(const CommandContainer &cmd, TileArea ta)
 	Window *selection_window = FindWindowById(WC_SELECT_STATION, 0);
 	if (selection_window != nullptr) {
 		/* Abort current distant-join and start new one */
-		delete selection_window;
+		selection_window->Close();
 		UpdateTileSelection();
 	}
 

@@ -277,6 +277,9 @@ enum TooltipCloseCondition {
  * Data structure for an opened window
  */
 struct Window : ZeroedMemoryAllocator {
+private:
+	static std::vector<Window *> closed_windows;
+
 protected:
 	void InitializeData(WindowNumber window_number);
 	void InitializePositionSize(int x, int y, int min_width, int min_height);
@@ -284,10 +287,11 @@ protected:
 
 	std::vector<int> scheduled_invalidation_data;  ///< Data of scheduled OnInvalidateData() calls.
 
+	/* Protected to prevent deletion anywhere outside Window::DeleteClosedWindows(). */
+	virtual ~Window();
+
 public:
 	Window(WindowDesc *desc);
-
-	virtual ~Window();
 
 	/**
 	 * Helper allocation function to disallow something.
@@ -506,6 +510,8 @@ public:
 	static int SortButtonWidth();
 
 	void DeleteChildWindows(WindowClass wc = WC_INVALID) const;
+	virtual void Close();
+	static void DeleteClosedWindows();
 
 	void SetDirty() const;
 	void ReInit(int rx = 0, int ry = 0);
@@ -916,7 +922,7 @@ public:
 		this->parent = parent;
 	}
 
-	virtual ~PickerWindowBase();
+	void Close() override;
 };
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);

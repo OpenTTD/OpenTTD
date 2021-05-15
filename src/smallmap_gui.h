@@ -178,6 +178,7 @@ public:
 	void SmallMapCenterOnCurrentPos();
 	Point GetStationMiddle(const Station *st) const;
 
+	void Close() override;
 	void SetStringParameters(int widget) const override;
 	void OnInit() override;
 	void OnPaint() override;
