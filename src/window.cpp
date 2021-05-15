@@ -3489,6 +3489,6 @@ void RelocateAllWindows(int neww, int newh)
  */
 PickerWindowBase::~PickerWindowBase()
 {
-	this->window_class = WC_INVALID; // stop the ancestor from freeing the already (to be) child
+	*this->z_position = nullptr; // stop the ancestor from freeing the already (to be) child
 	ResetObjectToPlace();
 }

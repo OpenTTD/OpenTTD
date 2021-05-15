@@ -188,7 +188,7 @@ struct DropdownWindow : Window {
 	{
 		/* Make the dropdown "invisible", so it doesn't affect new window placement.
 		 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
-		this->window_class = WC_INVALID;
+		*this->z_position = nullptr;
 		this->SetDirty();
 
 		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
@@ -304,7 +304,7 @@ struct DropdownWindow : Window {
 		if (this->click_delay != 0 && --this->click_delay == 0) {
 			/* Make the dropdown "invisible", so it doesn't affect new window placement.
 			 * Also mark it dirty in case the callback deals with the screen. (e.g. screenshots). */
-			this->window_class = WC_INVALID;
+			*this->z_position = nullptr;
 			this->SetDirty();
 
 			w2->OnDropdownSelect(this->parent_button, this->selected_index);
