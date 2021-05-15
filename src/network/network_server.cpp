@@ -372,13 +372,12 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 	NetworkPopulateCompanyStats(company_stats);
 
 	/* Make a list of all clients per company */
-	char clients[MAX_COMPANIES][NETWORK_CLIENTS_LENGTH];
-	memset(clients, 0, sizeof(clients));
+	std::string clients[MAX_COMPANIES];
 
 	/* Add the local player (if not dedicated) */
 	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 	if (ci != nullptr && Company::IsValidID(ci->client_playas)) {
-		strecpy(clients[ci->client_playas], ci->client_name, lastof(clients[ci->client_playas]));
+		clients[ci->client_playas] = ci->client_name;
 	}
 
 	for (NetworkClientSocket *csi : NetworkClientSocket::Iterate()) {
@@ -388,11 +387,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 
 		ci = csi->GetInfo();
 		if (ci != nullptr && Company::IsValidID(ci->client_playas)) {
-			if (!StrEmpty(clients[ci->client_playas])) {
-				strecat(clients[ci->client_playas], ", ", lastof(clients[ci->client_playas]));
+			if (!clients[ci->client_playas].empty()) {
+				clients[ci->client_playas] += ", ";
 			}
 
-			strecat(clients[ci->client_playas], client_name, lastof(clients[ci->client_playas]));
+			clients[ci->client_playas] += client_name;
 		}
 	}
 
@@ -407,7 +406,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendCompanyInfo()
 		p->Send_bool  (true);
 		this->SendCompanyInformation(p, company, &company_stats[company->index]);
 
-		if (StrEmpty(clients[company->index])) {
+		if (clients[company->index].empty()) {
 			p->Send_string("<none>");
 		} else {
 			p->Send_string(clients[company->index]);
