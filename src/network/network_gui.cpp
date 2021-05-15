@@ -2597,7 +2597,7 @@ struct NetworkCompanyPasswordWindow : public Window {
 				FALLTHROUGH;
 
 			case WID_NCP_CANCEL:
-				delete this;
+				this->Close();
 				break;
 
 			case WID_NCP_SAVE_AS_DEFAULT_PASSWORD:

@@ -32,11 +32,7 @@ public:
 	 */
 	BaseNetworkContentDownloadStatusWindow(WindowDesc *desc);
 
-	/**
-	 * Free everything associated with this window.
-	 */
-	~BaseNetworkContentDownloadStatusWindow();
-
+	void Close() override;
 	void DrawWidget(const Rect &r, int widget) const override;
 	void OnDownloadProgress(const ContentInfo *ci, int bytes) override;
 };

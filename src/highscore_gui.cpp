@@ -64,7 +64,7 @@ struct EndGameHighScoreBaseWindow : Window {
 
 	void OnClick(Point pt, int widget, int click_count) override
 	{
-		delete this;
+		this->Close();
 	}
 
 	EventState OnKeyPress(WChar key, uint16 keycode) override
@@ -79,7 +79,7 @@ struct EndGameHighScoreBaseWindow : Window {
 			case WKC_RETURN:
 			case WKC_ESC:
 			case WKC_SPACE:
-				delete this;
+				this->Close();
 				return ES_HANDLED;
 
 			default:
@@ -122,10 +122,11 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		MarkWholeScreenDirty();
 	}
 
-	~EndGameWindow()
+	void Close() override
 	{
 		if (!_networking) DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE); // unpause
 		ShowHighscoreTable(this->window_number, this->rank);
+		this->EndGameHighScoreBaseWindow::Close();
 	}
 
 	void OnPaint() override
@@ -169,11 +170,13 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow {
 		this->rank = ranking;
 	}
 
-	~HighScoreWindow()
+	void Close() override
 	{
 		if (_game_mode != GM_MENU) ShowVitalWindows();
 
 		if (!_networking && !this->game_paused_by_player) DoCommandP(0, PM_PAUSED_NORMAL, 0, CMD_PAUSE); // unpause
+
+		this->EndGameHighScoreBaseWindow::Close();
 	}
 
 	void OnPaint() override

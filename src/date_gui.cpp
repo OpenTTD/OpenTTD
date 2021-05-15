@@ -147,7 +147,7 @@ struct SetDateWindow : Window {
 
 			case WID_SD_SET_DATE:
 				if (this->callback != nullptr) this->callback(this, ConvertYMDToDate(this->date.year, this->date.month, this->date.day));
-				delete this;
+				this->Close();
 				break;
 		}
 	}

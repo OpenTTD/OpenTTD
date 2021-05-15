@@ -172,11 +172,12 @@ struct GameOptionsWindow : Window {
 		this->OnInvalidateData(0);
 	}
 
-	~GameOptionsWindow()
+	void Close() override
 	{
 		DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
 		DeleteWindowByClass(WC_TEXTFILE);
 		if (this->reload) _switch_mode = SM_MENU;
+		this->Window::Close();
 	}
 
 	/**

@@ -196,7 +196,7 @@ struct AIListWindow : public Window {
 					this->SetDirty();
 					if (click_count > 1) {
 						this->ChangeAI();
-						delete this;
+						this->Close();
 					}
 				}
 				break;
@@ -204,12 +204,12 @@ struct AIListWindow : public Window {
 
 			case WID_AIL_ACCEPT: {
 				this->ChangeAI();
-				delete this;
+				this->Close();
 				break;
 			}
 
 			case WID_AIL_CANCEL:
-				delete this;
+				this->Close();
 				break;
 		}
 	}
@@ -227,7 +227,7 @@ struct AIListWindow : public Window {
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
 		if (_game_mode == GM_NORMAL && Company::IsValidID(this->slot)) {
-			delete this;
+			this->Close();
 			return;
 		}
 
@@ -518,7 +518,7 @@ struct AISettingsWindow : public Window {
 			}
 
 			case WID_AIS_ACCEPT:
-				delete this;
+				this->Close();
 				break;
 
 			case WID_AIS_RESET:
@@ -655,7 +655,7 @@ struct ScriptTextfileWindow : public TextfileWindow {
 	{
 		const char *textfile = GetConfig(slot)->GetTextfile(file_type, slot);
 		if (textfile == nullptr) {
-			delete this;
+			this->Close();
 		} else {
 			this->LoadTextfile(textfile, (slot == OWNER_DEITY) ? GAME_DIR : AI_DIR);
 		}
@@ -744,10 +744,11 @@ struct AIConfigWindow : public Window {
 		this->OnInvalidateData(0);
 	}
 
-	~AIConfigWindow()
+	void Close() override
 	{
 		DeleteWindowByClass(WC_AI_LIST);
 		DeleteWindowByClass(WC_AI_SETTINGS);
+		this->Window::Close();
 	}
 
 	void SetStringParameters(int widget) const override
@@ -929,7 +930,7 @@ struct AIConfigWindow : public Window {
 				break;
 
 			case WID_AIC_CLOSE:
-				delete this;
+				this->Close();
 				break;
 
 			case WID_AIC_CONTENT_DOWNLOAD:

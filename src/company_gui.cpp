@@ -1586,7 +1586,7 @@ public:
 
 			/* Cancel button */
 			case WID_SCMF_CANCEL:
-				delete this;
+				this->Close();
 				break;
 
 			/* Load button */
@@ -2767,7 +2767,7 @@ struct BuyCompanyWindow : Window {
 	{
 		switch (widget) {
 			case WID_BC_NO:
-				delete this;
+				this->Close();
 				break;
 
 			case WID_BC_YES:

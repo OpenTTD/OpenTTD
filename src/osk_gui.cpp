@@ -170,7 +170,7 @@ struct OskWindow : public Window {
 						return;
 					}
 				}
-				delete this;
+				this->Close();
 				break;
 
 			case WID_OSK_CANCEL:
@@ -182,7 +182,7 @@ struct OskWindow : public Window {
 					qs->text.Assign(this->orig_str_buf);
 					qs->text.MovePos(WKC_END);
 					this->OnEditboxChanged(WID_OSK_TEXT);
-					delete this;
+					this->Close();
 				}
 				break;
 		}
@@ -205,7 +205,7 @@ struct OskWindow : public Window {
 	void OnFocusLost() override
 	{
 		VideoDriver::GetInstance()->EditBoxLostFocus();
-		delete this;
+		this->Close();
 	}
 };
 

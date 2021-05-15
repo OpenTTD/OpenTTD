@@ -424,7 +424,7 @@ struct NewGRFParametersWindow : public Window {
 				break;
 
 			case WID_NP_ACCEPT:
-				delete this;
+				this->Close();
 				break;
 		}
 	}
@@ -662,7 +662,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->OnInvalidateData(GOID_NEWGRF_CURRENT_LOADED);
 	}
 
-	~NewGRFWindow()
+	void Close() override
 	{
 		DeleteWindowByClass(WC_GRF_PARAMETERS);
 		DeleteWindowByClass(WC_TEXTFILE);
@@ -674,6 +674,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			ReloadNewGRFData();
 		}
 
+		this->Window::Close();
+	}
+
+	~NewGRFWindow()
+	{
 		/* Remove the temporary copy of grf-list used in window */
 		ClearGRFConfigList(&this->actives);
 	}
@@ -2121,13 +2126,13 @@ struct SavePresetWindow : public Window {
 			}
 
 			case WID_SVP_CANCEL:
-				delete this;
+				this->Close();
 				break;
 
 			case WID_SVP_SAVE: {
 				Window *w = FindWindowById(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE);
 				if (w != nullptr && !StrEmpty(this->presetname_editbox.text.buf)) w->OnQueryTextFinished(this->presetname_editbox.text.buf);
-				delete this;
+				this->Close();
 				break;
 			}
 		}

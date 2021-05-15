@@ -336,9 +336,10 @@ public:
 		this->SetWidgetDisabledState(WID_TV_CHANGE_NAME, _networking && !_network_server);
 	}
 
-	~TownViewWindow()
+	void Close() override
 	{
 		SetViewportCatchmentTown(Town::Get(this->window_number), false);
+		this->Window::Close();
 	}
 
 	void SetStringParameters(int widget) const override

@@ -307,9 +307,10 @@ struct NetworkChatWindow : public Window {
 		PositionNetworkChatWindow(this);
 	}
 
-	~NetworkChatWindow()
+	void Close() override
 	{
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, 0);
+		this->Window::Close();
 	}
 
 	void FindWindowPlacementAndResize(int def_width, int def_height) override
@@ -470,7 +471,7 @@ struct NetworkChatWindow : public Window {
 				FALLTHROUGH;
 
 			case WID_NC_CLOSE: /* Cancel */
-				delete this;
+				this->Close();
 				break;
 		}
 	}
@@ -497,7 +498,7 @@ struct NetworkChatWindow : public Window {
 	 */
 	void OnInvalidateData(int data = 0, bool gui_scope = true) override
 	{
-		if (data == this->dest) delete this;
+		if (data == this->dest) this->Close();
 	}
 };
 

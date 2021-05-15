@@ -291,11 +291,12 @@ struct DepotWindow : Window {
 		OrderBackup::Reset();
 	}
 
-	~DepotWindow()
+	void Close() override
 	{
 		DeleteWindowById(WC_BUILD_VEHICLE, this->window_number);
 		DeleteWindowById(GetWindowClassForVehicleType(this->type), VehicleListIdentifier(VL_DEPOT_LIST, this->type, this->owner, this->GetDepotIndex()).Pack(), false);
 		OrderBackup::Reset(this->window_number);
+		this->Window::Close();
 	}
 
 	/**

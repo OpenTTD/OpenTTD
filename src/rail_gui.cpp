@@ -434,10 +434,11 @@ struct BuildRailToolbarWindow : Window {
 		if (_settings_client.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
-	~BuildRailToolbarWindow()
+	void Close() override
 	{
 		if (this->IsWidgetLowered(WID_RAT_BUILD_STATION)) SetViewportCatchmentStation(nullptr, true);
 		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
+		this->Window::Close();
 	}
 
 	/**
@@ -1028,9 +1029,10 @@ public:
 		this->InvalidateData();
 	}
 
-	virtual ~BuildRailStationWindow()
+	void Close() override
 	{
 		DeleteWindowById(WC_SELECT_STATION, 0);
+		this->PickerWindowBase::Close();
 	}
 
 	/** Sort station classes by StationClassID. */
@@ -1695,9 +1697,10 @@ public:
 		this->OnInvalidateData();
 	}
 
-	~BuildSignalWindow()
+	void Close() override
 	{
 		_convert_signal_button = false;
+		this->PickerWindowBase::Close();
 	}
 
 	void OnInit() override
