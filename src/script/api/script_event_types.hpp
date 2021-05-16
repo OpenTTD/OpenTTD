@@ -860,21 +860,21 @@ private:
 	 * @param vm The VM used.
 	 * @param p The (part of the) JSON string reading.
 	 */
-	char *ReadTable(HSQUIRRELVM vm, char *p);
+	const char *ReadTable(HSQUIRRELVM vm, const char *p);
 
 	/**
 	 * Read a value from a JSON string.
 	 * @param vm The VM used.
 	 * @param p The (part of the) JSON string reading.
 	 */
-	char *ReadValue(HSQUIRRELVM vm, char *p);
+	const char *ReadValue(HSQUIRRELVM vm, const char *p);
 
 	/**
 	 * Read a string from a JSON string.
 	 * @param vm The VM used.
 	 * @param p The (part of the) JSON string reading.
 	 */
-	char *ReadString(HSQUIRRELVM vm, char *p);
+	const char *ReadString(HSQUIRRELVM vm, const char *p);
 };
 
 /**
