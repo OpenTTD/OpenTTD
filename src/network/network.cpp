@@ -34,6 +34,8 @@
 #include "../gfx_func.h"
 #include "../error.h"
 #include <charconv>
+#include <sstream>
+#include <iomanip>
 
 #include "../safeguards.h"
 
@@ -176,29 +178,31 @@ std::string GenerateCompanyPasswordHash(const std::string &password, const std::
 {
 	if (password.empty()) return password;
 
-	char salted_password[NETWORK_SERVER_ID_LENGTH];
 	size_t password_length = password.size();
 	size_t password_server_id_length = password_server_id.size();
 
-	/* Add the game seed and the server's ID as the salt. */
+	std::ostringstream salted_password;
+	/* Add the password with the server's ID and game seed as the salt. */
 	for (uint i = 0; i < NETWORK_SERVER_ID_LENGTH - 1; i++) {
 		char password_char = (i < password_length ? password[i] : 0);
 		char server_id_char = (i < password_server_id_length ? password_server_id[i] : 0);
 		char seed_char = password_game_seed >> (i % 32);
-		salted_password[i] = password_char ^ server_id_char ^ seed_char;
+		salted_password << (char)(password_char ^ server_id_char ^ seed_char); // Cast needed, otherwise interpreted as integer to format
 	}
 
 	Md5 checksum;
 	uint8 digest[16];
-	static char hashed_password[NETWORK_SERVER_ID_LENGTH];
 
 	/* Generate the MD5 hash */
-	checksum.Append(salted_password, sizeof(salted_password) - 1);
+	std::string salted_password_string = salted_password.str();
+	checksum.Append(salted_password_string.data(), salted_password_string.size());
 	checksum.Finish(digest);
 
-	for (int di = 0; di < 16; di++) seprintf(hashed_password + di * 2, lastof(hashed_password), "%02x", digest[di]);
+	std::ostringstream hashed_password;
+	hashed_password << std::hex << std::setfill('0');
+	for (int di = 0; di < 16; di++) hashed_password << std::setw(2) << (int)digest[di]; // Cast needed, otherwise interpreted as character to add
 
-	return hashed_password;
+	return hashed_password.str();
 }
 
 /**
