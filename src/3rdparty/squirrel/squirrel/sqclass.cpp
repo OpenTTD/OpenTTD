@@ -34,7 +34,13 @@ SQClass::SQClass(SQSharedState *ss,SQClass *base)
 
 void SQClass::Finalize() {
 	_attributes = _null_;
-	_defaultvalues.resize(0);
+	/* SQInstance's Finalize depends on the size of this sqvector, so instead of
+	 * resizing, all SQObjectPtrs are set to "null" so it holds no references to
+	 * other objects anymore. That way everything gets released properly. */
+	for (SQUnsignedInteger i = 0; i < _defaultvalues.size(); i++) {
+		_defaultvalues[i].val = _null_;
+		_defaultvalues[i].attrs = _null_;
+	}
 	_methods.resize(0);
 	_metamethods.resize(0);
 	__ObjRelease(_members);
