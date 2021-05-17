@@ -843,7 +843,7 @@ public:
 				/* Removed / replaced all orders (after deleting / sharing) */
 				if (this->selected_order == -1) break;
 
-				this->DeleteChildWindows();
+				this->CloseChildWindows();
 				HideDropDownMenu(this);
 				this->selected_order = -1;
 				break;
@@ -875,7 +875,7 @@ public:
 				/* Now we are modifying the selected order */
 				if (to == INVALID_VEH_ORDER_ID) {
 					/* Deleting selected order */
-					this->DeleteChildWindows();
+					this->CloseChildWindows();
 					HideDropDownMenu(this);
 					this->selected_order = -1;
 					break;
@@ -1174,7 +1174,7 @@ public:
 				}
 
 				/* This order won't be selected any more, close all child windows and dropdowns */
-				this->DeleteChildWindows();
+				this->CloseChildWindows();
 				HideDropDownMenu(this);
 
 				if (sel == INVALID_VEH_ORDER_ID || this->vehicle->owner != _local_company) {
@@ -1700,12 +1700,12 @@ static WindowDesc _other_orders_desc(
 
 void ShowOrdersWindow(const Vehicle *v)
 {
-	DeleteWindowById(WC_VEHICLE_DETAILS, v->index, false);
-	DeleteWindowById(WC_VEHICLE_TIMETABLE, v->index, false);
+	CloseWindowById(WC_VEHICLE_DETAILS, v->index, false);
+	CloseWindowById(WC_VEHICLE_TIMETABLE, v->index, false);
 	if (BringWindowToFrontById(WC_VEHICLE_ORDERS, v->index) != nullptr) return;
 
 	/* Using a different WindowDescs for _local_company causes problems.
-	 * Due to this we have to close order windows in ChangeWindowOwner/DeleteCompanyWindows,
+	 * Due to this we have to close order windows in ChangeWindowOwner/CloseCompanyWindows,
 	 * because we cannot change switch the WindowDescs and keeping the old WindowDesc results
 	 * in crashed due to missing widges.
 	 * TODO Rewrite the order GUI to not use different WindowDescs.

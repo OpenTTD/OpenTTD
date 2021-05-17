@@ -114,7 +114,7 @@
 	cur_company.Restore();
 
 	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
-	DeleteWindowById(WC_AI_SETTINGS, company);
+	CloseWindowById(WC_AI_SETTINGS, company);
 }
 
 /* static */ void AI::Pause(CompanyID company)

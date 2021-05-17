@@ -364,7 +364,7 @@ Window *ShowTerraformToolbar(Window *link)
 	}
 
 	/* Delete the terraform toolbar to place it again. */
-	DeleteWindowById(WC_SCEN_LAND_GEN, 0, true);
+	CloseWindowById(WC_SCEN_LAND_GEN, 0, true);
 	w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
 	/* Align the terraform toolbar under the main toolbar. */
 	w->top -= w->height;

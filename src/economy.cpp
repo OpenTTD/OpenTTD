@@ -1997,7 +1997,7 @@ static void DoAcquireCompany(Company *c)
 
 	if (c->is_ai) AI::Stop(c->index);
 
-	DeleteCompanyWindows(ci);
+	CloseCompanyWindows(ci);
 	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
 	InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);

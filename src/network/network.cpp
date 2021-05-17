@@ -668,7 +668,7 @@ public:
 
 	void OnFailure() override
 	{
-		DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
+		CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
 
 		ShowErrorMessage(STR_NETWORK_ERROR_NOCONNECTION, INVALID_STRING_ID, WL_ERROR);
 	}
@@ -988,7 +988,7 @@ void NetworkDisconnect(bool blocking, bool close_admins)
 
 	if (_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise(blocking);
 
-	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 	NetworkClose(close_admins);
 

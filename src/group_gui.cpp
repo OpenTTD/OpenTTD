@@ -449,7 +449,7 @@ public:
 
 		/* Process ID-invalidation in command-scope as well */
 		if (this->group_rename != INVALID_GROUP && !Group::IsValidID(this->group_rename)) {
-			DeleteWindowByClass(WC_QUERY_STRING);
+			CloseWindowByClass(WC_QUERY_STRING);
 			this->group_rename = INVALID_GROUP;
 		}
 

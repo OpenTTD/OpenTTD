@@ -706,7 +706,7 @@ void DoScanNewGRFFiles(NewGRFScanCallback *callback)
 	InvalidateWindowData(WC_GAME_OPTIONS, WN_GAME_OPTIONS_NEWGRF_STATE, GOID_NEWGRF_RESCANNED, true);
 	if (!_exit_game && callback != nullptr) callback->OnNewGRFsScanned();
 
-	DeleteWindowByClass(WC_MODAL_PROGRESS);
+	CloseWindowByClass(WC_MODAL_PROGRESS);
 	SetModalProgress(false);
 	MarkWholeScreenDirty();
 }

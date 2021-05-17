@@ -296,13 +296,13 @@ CommandCost CmdGoalQuestionAnswer(TileIndex tile, DoCommandFlag flags, uint32 p1
 
 	if (_current_company == OWNER_DEITY) {
 		/* It has been requested to close this specific question on all clients */
-		if (flags & DC_EXEC) DeleteWindowById(WC_GOAL_QUESTION, p1);
+		if (flags & DC_EXEC) CloseWindowById(WC_GOAL_QUESTION, p1);
 		return CommandCost();
 	}
 
 	if (_networking && _local_company == _current_company) {
 		/* Somebody in the same company answered the question. Close the window */
-		if (flags & DC_EXEC) DeleteWindowById(WC_GOAL_QUESTION, p1);
+		if (flags & DC_EXEC) CloseWindowById(WC_GOAL_QUESTION, p1);
 		if (!_network_server) return CommandCost();
 	}
 

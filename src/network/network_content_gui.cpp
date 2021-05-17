@@ -74,7 +74,7 @@ struct ContentTextfileWindow : public TextfileWindow {
 
 void ShowContentTextfileWindow(TextfileType file_type, const ContentInfo *ci)
 {
-	DeleteWindowById(WC_TEXTFILE, file_type);
+	CloseWindowById(WC_TEXTFILE, file_type);
 	new ContentTextfileWindow(file_type, ci);
 }
 
@@ -267,7 +267,7 @@ public:
 			} else {
 				/* If downloading succeeded, close the online content window. This will close
 				 * the current window as well. */
-				DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
+				CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
 			}
 		}
 	}
@@ -1130,7 +1130,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type1, ContentT
 		_network_content_client.RequestContentList(cv, true);
 	}
 
-	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
+	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_CONTENT_LIST);
 	new NetworkContentListWindow(&_network_content_list_desc, cv != nullptr, types);
 #else
 	ShowErrorMessage(STR_CONTENT_NO_ZLIB, STR_CONTENT_NO_ZLIB_SUB, WL_ERROR);

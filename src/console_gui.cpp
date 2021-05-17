@@ -443,7 +443,7 @@ void IConsoleSwitch()
 			break;
 
 		case ICONSOLE_OPENED: case ICONSOLE_FULL:
-			DeleteWindowById(WC_CONSOLE, 0);
+			CloseWindowById(WC_CONSOLE, 0);
 			break;
 	}
 

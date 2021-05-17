@@ -1076,10 +1076,10 @@ static Window *FindChildWindow(const Window *w, WindowClass wc)
 }
 
 /**
- * Delete all children a window might have in a head-recursive manner
+ * Close all children a window might have in a head-recursive manner
  * @param wc Window class of the window to remove; #WC_INVALID if class does not matter
  */
-void Window::DeleteChildWindows(WindowClass wc) const
+void Window::CloseChildWindows(WindowClass wc) const
 {
 	Window *child = FindChildWindow(this, wc);
 	while (child != nullptr) {
@@ -1118,7 +1118,7 @@ void Window::Close()
 		_focused_window = nullptr;
 	}
 
-	this->DeleteChildWindows();
+	this->CloseChildWindows();
 
 	this->SetDirty();
 
@@ -1170,12 +1170,12 @@ Window *FindWindowByClass(WindowClass cls)
 }
 
 /**
- * Delete a window by its class and window number (if it is open).
+ * Close a window by its class and window number (if it is open).
  * @param cls Window class
  * @param number Number of the window within the window class
- * @param force force deletion; if false don't delete when stickied
+ * @param force force closing; if false don't close when stickied
  */
-void DeleteWindowById(WindowClass cls, WindowNumber number, bool force)
+void CloseWindowById(WindowClass cls, WindowNumber number, bool force)
 {
 	Window *w = FindWindowById(cls, number);
 	if (w != nullptr && (force || (w->flags & WF_STICKY) == 0)) {
@@ -1184,10 +1184,10 @@ void DeleteWindowById(WindowClass cls, WindowNumber number, bool force)
 }
 
 /**
- * Delete all windows of a given class
+ * Close all windows of a given class
  * @param cls Window class of windows to delete
  */
-void DeleteWindowByClass(WindowClass cls)
+void CloseWindowByClass(WindowClass cls)
 {
 	/* Note: the container remains stable, even when deleting windows. */
 	for (Window *w : Window::Iterate()) {
@@ -1198,12 +1198,12 @@ void DeleteWindowByClass(WindowClass cls)
 }
 
 /**
- * Delete all windows of a company. We identify windows of a company
+ * Close all windows of a company. We identify windows of a company
  * by looking at the caption colour. If it is equal to the company ID
- * then we say the window belongs to the company and should be deleted
+ * then we say the window belongs to the company and should be closed
  * @param id company identifier
  */
-void DeleteCompanyWindows(CompanyID id)
+void CloseCompanyWindows(CompanyID id)
 {
 	/* Note: the container remains stable, even when deleting windows. */
 	for (Window *w : Window::Iterate()) {
@@ -1213,7 +1213,7 @@ void DeleteCompanyWindows(CompanyID id)
 	}
 
 	/* Also delete the company specific windows that don't have a company-colour. */
-	DeleteWindowById(WC_BUY_COMPANY, id);
+	CloseWindowById(WC_BUY_COMPANY, id);
 }
 
 /**
@@ -2307,7 +2307,7 @@ static void StartWindowDrag(Window *w)
 	_drag_delta.y = w->top  - _cursor.pos.y;
 
 	BringWindowToFront(w);
-	DeleteWindowById(WC_DROPDOWN_MENU, 0);
+	CloseWindowById(WC_DROPDOWN_MENU, 0);
 }
 
 /**
@@ -2325,7 +2325,7 @@ static void StartWindowSizing(Window *w, bool to_left)
 	_drag_delta.y = _cursor.pos.y;
 
 	BringWindowToFront(w);
-	DeleteWindowById(WC_DROPDOWN_MENU, 0);
+	CloseWindowById(WC_DROPDOWN_MENU, 0);
 }
 
 /**
@@ -3253,12 +3253,12 @@ void CallWindowGameTickEvent()
 }
 
 /**
- * Try to delete a non-vital window.
+ * Try to close a non-vital window.
  * Non-vital windows are windows other than the game selection, main toolbar,
  * status bar, toolbar menu, and tooltip windows. Stickied windows are also
  * considered vital.
  */
-void DeleteNonVitalWindows()
+void CloseNonVitalWindows()
 {
 	/* Note: the container remains stable, even when deleting windows. */
 	for (Window *w : Window::Iterate()) {
@@ -3281,12 +3281,12 @@ void DeleteNonVitalWindows()
  * then, does a little hacked loop of closing all stickied windows. Note
  * that standard windows (status bar, etc.) are not stickied, so these aren't affected
  */
-void DeleteAllNonVitalWindows()
+void CloseAllNonVitalWindows()
 {
-	/* Delete every window except for stickied ones, then sticky ones as well */
-	DeleteNonVitalWindows();
+	/* Close every window except for stickied ones, then sticky ones as well */
+	CloseNonVitalWindows();
 
-	/* Note: the container remains stable, even when deleting windows. */
+	/* Note: the container remains stable, even when closing windows. */
 	for (Window *w : Window::Iterate()) {
 		if (w->flags & WF_STICKY) {
 			w->Close();
@@ -3295,21 +3295,21 @@ void DeleteAllNonVitalWindows()
 }
 
 /**
- * Delete all messages and their corresponding window (if any).
+ * Delete all messages and close their corresponding window (if any).
  */
 void DeleteAllMessages()
 {
 	InitNewsItemStructs();
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
 	InvalidateWindowData(WC_MESSAGE_HISTORY, 0); // invalidate the message history
-	DeleteWindowById(WC_NEWS_WINDOW, 0); // close newspaper or general message window if shown
+	CloseWindowById(WC_NEWS_WINDOW, 0); // close newspaper or general message window if shown
 }
 
 /**
- * Delete all windows that are used for construction of vehicle etc.
+ * Close all windows that are used for construction of vehicle etc.
  * Once done with that invalidate the others to ensure they get refreshed too.
  */
-void DeleteConstructionWindows()
+void CloseConstructionWindows()
 {
 	/* Note: the container remains stable, even when deleting windows. */
 	for (Window *w : Window::Iterate()) {
@@ -3321,11 +3321,11 @@ void DeleteConstructionWindows()
 	for (const Window *w : Window::Iterate()) w->SetDirty();
 }
 
-/** Delete all always on-top windows to get an empty screen */
+/** Close all always on-top windows to get an empty screen */
 void HideVitalWindows()
 {
-	DeleteWindowById(WC_MAIN_TOOLBAR, 0);
-	DeleteWindowById(WC_STATUS_BAR, 0);
+	CloseWindowById(WC_MAIN_TOOLBAR, 0);
+	CloseWindowById(WC_STATUS_BAR, 0);
 }
 
 /** Re-initialize all windows. */
@@ -3443,7 +3443,7 @@ void ChangeVehicleViewports(VehicleID from_index, VehicleID to_index)
  */
 void RelocateAllWindows(int neww, int newh)
 {
-	DeleteWindowById(WC_DROPDOWN_MENU, 0);
+	CloseWindowById(WC_DROPDOWN_MENU, 0);
 
 	for (Window *w : Window::Iterate()) {
 		int left, top;

@@ -76,7 +76,7 @@ Company::~Company()
 {
 	if (CleaningPool()) return;
 
-	DeleteCompanyWindows(this->index);
+	CloseCompanyWindows(this->index);
 }
 
 /**
@@ -115,7 +115,7 @@ void SetLocalCompany(CompanyID new_company)
 	_current_company = _local_company = new_company;
 
 	/* Delete any construction windows... */
-	if (switching_company) DeleteConstructionWindows();
+	if (switching_company) CloseConstructionWindows();
 
 	/* ... and redraw the whole screen. */
 	MarkWholeScreenDirty();
@@ -824,7 +824,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 
 			/* Delete multiplayer progress bar */
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+			CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 
 			Company *c = DoStartupNewCompany(false);
 
@@ -887,7 +887,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 			if (!(flags & DC_EXEC)) return CommandCost();
 
 			/* Delete any open window of the company */
-			DeleteCompanyWindows(c->index);
+			CloseCompanyWindows(c->index);
 			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
 			cni->FillData(c);
 

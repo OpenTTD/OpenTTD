@@ -842,7 +842,7 @@ static void StationSpreadChanged(int32 p1)
 static void CloseSignalGUI(int32 new_value)
 {
 	if (new_value == 0) {
-		DeleteWindowByClass(WC_BUILD_SIGNAL);
+		CloseWindowByClass(WC_BUILD_SIGNAL);
 	}
 }
 
@@ -980,7 +980,7 @@ static void RoadVehSlopeSteepnessChanged(int32 new_value)
 static void TownFoundingChanged(int32 new_value)
 {
 	if (_game_mode != GM_EDITOR && _settings_game.economy.found_town == TF_FORBIDDEN) {
-		DeleteWindowById(WC_FOUND_TOWN, 0);
+		CloseWindowById(WC_FOUND_TOWN, 0);
 	} else {
 		InvalidateWindowData(WC_FOUND_TOWN, 0);
 	}
@@ -1015,7 +1015,7 @@ static void SpriteZoomMinChanged(int32 new_value)
 static void InvalidateNewGRFChangeWindows(int32 new_value)
 {
 	InvalidateWindowClassesData(WC_SAVELOAD);
-	DeleteWindowByClass(WC_GAME_OPTIONS);
+	CloseWindowByClass(WC_GAME_OPTIONS);
 	ReInitAllWindows(_gui_zoom_cfg);
 }
 
