@@ -2682,7 +2682,7 @@ STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}이 지�
 STR_LAND_AREA_INFORMATION_LOCATION_TOOLTIP                      :{BLACK}이 칸의 위치로 이동합니다. CTRL+클릭하면 이 칸의 위치를 기준으로 새로운 외부 화면을 엽니다
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR_N_A                     :{BLACK}초기화 가격: {LTBLUE}없음
 STR_LAND_AREA_INFORMATION_COST_TO_CLEAR                         :{BLACK}초기화 가격: {RED}{CURRENCY_LONG}
-STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}제거시 들어오는 환불금: {LTBLUE}{CURRENCY_LONG}
+STR_LAND_AREA_INFORMATION_REVENUE_WHEN_CLEARED                  :{BLACK}제거하면 회수되는 금액: {LTBLUE}{CURRENCY_LONG}
 STR_LAND_AREA_INFORMATION_OWNER_N_A                             :없음
 STR_LAND_AREA_INFORMATION_OWNER                                 :{BLACK}소유주: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_ROAD_OWNER                            :{BLACK}도로 소유주: {LTBLUE}{STRING}
