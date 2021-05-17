@@ -69,6 +69,6 @@ static WindowDesc _screenshot_window_desc(
 
 void ShowScreenshotWindow()
 {
-	DeleteWindowById(WC_SCREENSHOT, 0);
+	CloseWindowById(WC_SCREENSHOT, 0);
 	new ScreenshotWindow(&_screenshot_window_desc);
 }

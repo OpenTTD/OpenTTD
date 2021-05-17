@@ -104,7 +104,7 @@ struct BuildDocksToolbarWindow : Window {
 	void Close() override
 	{
 		if (_game_mode == GM_NORMAL && this->IsWidgetLowered(WID_DT_STATION)) SetViewportCatchmentStation(nullptr, true);
-		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
+		if (_settings_client.gui.link_terraform_toolbar) CloseWindowById(WC_SCEN_LAND_GEN, 0, false);
 		this->Window::Close();
 	}
 
@@ -124,8 +124,8 @@ struct BuildDocksToolbarWindow : Window {
 			WID_DT_BUOY,
 			WIDGET_LIST_END);
 		if (!can_build) {
-			DeleteWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
-			DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
+			CloseWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
+			CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
 		}
 
 		if (_game_mode != GM_EDITOR) {
@@ -262,10 +262,10 @@ struct BuildDocksToolbarWindow : Window {
 
 		this->RaiseButtons();
 
-		DeleteWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
-		DeleteWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
-		DeleteWindowById(WC_SELECT_STATION, 0);
-		DeleteWindowByClass(WC_BUILD_BRIDGE);
+		CloseWindowById(WC_BUILD_STATION, TRANSPORT_WATER);
+		CloseWindowById(WC_BUILD_DEPOT, TRANSPORT_WATER);
+		CloseWindowById(WC_SELECT_STATION, 0);
+		CloseWindowByClass(WC_BUILD_BRIDGE);
 	}
 
 	void OnPlacePresize(Point pt, TileIndex tile_from) override
@@ -359,7 +359,7 @@ Window *ShowBuildDocksToolbar()
 {
 	if (!Company::IsValidID(_local_company)) return nullptr;
 
-	DeleteWindowByClass(WC_BUILD_TOOLBAR);
+	CloseWindowByClass(WC_BUILD_TOOLBAR);
 	return AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
 }
 
@@ -419,7 +419,7 @@ public:
 
 	void Close() override
 	{
-		DeleteWindowById(WC_SELECT_STATION, 0);
+		CloseWindowById(WC_SELECT_STATION, 0);
 		this->PickerWindowBase::Close();
 	}
 

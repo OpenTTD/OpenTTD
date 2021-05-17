@@ -212,6 +212,6 @@ static WindowDesc _set_date_desc(
  */
 void ShowSetDateWindow(Window *parent, int window_number, Date initial_date, Year min_year, Year max_year, SetDateCallback *callback)
 {
-	DeleteWindowByClass(WC_SET_DATE);
+	CloseWindowByClass(WC_SET_DATE);
 	new SetDateWindow(&_set_date_desc, window_number, parent, initial_date, min_year, max_year, callback);
 }

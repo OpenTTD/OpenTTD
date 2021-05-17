@@ -864,7 +864,7 @@ static WindowDesc _replace_vehicle_desc(
  */
 void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 {
-	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype);
+	CloseWindowById(WC_REPLACE_VEHICLE, vehicletype);
 	WindowDesc *desc;
 	switch (vehicletype) {
 		case VEH_TRAIN: desc = &_replace_rail_vehicle_desc; break;

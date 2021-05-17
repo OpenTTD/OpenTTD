@@ -736,7 +736,7 @@ void DeleteNewGRFInspectWindow(GrfSpecFeature feature, uint index)
 	if (feature == GSF_INVALID) return;
 
 	WindowNumber wno = GetInspectWindowNumber(feature, index);
-	DeleteWindowById(WC_NEWGRF_INSPECT, wno);
+	CloseWindowById(WC_NEWGRF_INSPECT, wno);
 
 	/* Reinitialise the land information window to remove the "debug" sprite if needed.
 	 * Note: Since we might be called from a command here, it is important to not execute

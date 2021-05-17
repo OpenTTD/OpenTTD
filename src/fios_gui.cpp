@@ -920,7 +920,7 @@ static WindowDesc _save_dialog_desc(
  */
 void ShowSaveLoadDialog(AbstractFileType abstract_filetype, SaveLoadOperation fop)
 {
-	DeleteWindowById(WC_SAVELOAD, 0);
+	CloseWindowById(WC_SAVELOAD, 0);
 
 	WindowDesc *sld;
 	if (fop == SLO_SAVE) {

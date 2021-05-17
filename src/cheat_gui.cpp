@@ -415,6 +415,6 @@ static WindowDesc _cheats_desc(
 /** Open cheat window. */
 void ShowCheatWindow()
 {
-	DeleteWindowById(WC_CHEATS, 0);
+	CloseWindowById(WC_CHEATS, 0);
 	new CheatWindow(&_cheats_desc);
 }

@@ -360,7 +360,7 @@ static WindowDesc _build_bridge_desc(
  */
 void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte road_rail_type)
 {
-	DeleteWindowByClass(WC_BUILD_BRIDGE);
+	CloseWindowByClass(WC_BUILD_BRIDGE);
 
 	/* Data type for the bridge.
 	 * Bit 16,15 = transport type,

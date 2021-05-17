@@ -407,7 +407,7 @@ void GetKeyboardLayout()
  */
 void ShowOnScreenKeyboard(Window *parent, int button)
 {
-	DeleteWindowById(WC_OSK, 0);
+	CloseWindowById(WC_OSK, 0);
 
 	GetKeyboardLayout();
 	new OskWindow(&_osk_desc, parent, button);

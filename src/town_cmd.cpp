@@ -104,7 +104,7 @@ Town::~Town()
 
 	/* Delete town authority window
 	 * and remove from list of sorted towns */
-	DeleteWindowById(WC_TOWN_VIEW, this->index);
+	CloseWindowById(WC_TOWN_VIEW, this->index);
 
 	/* Check no industry is related to us. */
 #ifdef WITH_ASSERT

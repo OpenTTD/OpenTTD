@@ -76,7 +76,7 @@ static void CleanupGeneration()
 	_gw.proc     = nullptr;
 	_gw.abortp   = nullptr;
 
-	DeleteWindowByClass(WC_MODAL_PROGRESS);
+	CloseWindowByClass(WC_MODAL_PROGRESS);
 	ShowFirstError();
 	MarkWholeScreenDirty();
 }
@@ -314,7 +314,7 @@ void GenerateWorld(GenWorldMode mode, uint size_x, uint size_y, bool reset_setti
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, HT_NONE, WC_MAIN_WINDOW, 0);
 
 	UnshowCriticalError();
-	DeleteAllNonVitalWindows();
+	CloseAllNonVitalWindows();
 	HideVitalWindows();
 
 	ShowGenerateWorldProgress();

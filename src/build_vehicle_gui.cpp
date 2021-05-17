@@ -1686,7 +1686,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 
 	assert(IsCompanyBuildableVehicleType(type));
 
-	DeleteWindowById(WC_BUILD_VEHICLE, num);
+	CloseWindowById(WC_BUILD_VEHICLE, num);
 
 	new BuildVehicleWindow(&_build_vehicle_desc, tile, type);
 }

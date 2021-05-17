@@ -285,7 +285,7 @@ static const NWidgetPart _nested_heightmap_load_widgets[] = {
 
 static void StartGeneratingLandscape(GenerateLandscapeWindowMode mode)
 {
-	DeleteAllNonVitalWindows();
+	CloseAllNonVitalWindows();
 	ClearErrorMessages();
 
 	/* Copy all XXX_newgame to XXX when coming from outside the editor */
@@ -974,7 +974,7 @@ static void _ShowGenerateLandscape(GenerateLandscapeWindowMode mode)
 	uint x = 0;
 	uint y = 0;
 
-	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
+	CloseWindowByClass(WC_GENERATE_LANDSCAPE);
 
 	/* Generate a new seed when opening the window */
 	_settings_newgame.game_creation.generation_seed = InteractiveRandom();
@@ -1267,7 +1267,7 @@ static WindowDesc _create_scenario_desc(
 /** Show the window to create a scenario. */
 void ShowCreateScenario()
 {
-	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
+	CloseWindowByClass(WC_GENERATE_LANDSCAPE);
 	new CreateScenarioWindow(&_create_scenario_desc, GLWM_SCENARIO);
 }
 

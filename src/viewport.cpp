@@ -2647,7 +2647,7 @@ static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const 
 
 static void HideMeasurementTooltips()
 {
-	DeleteWindowById(WC_TOOLTIPS, 0);
+	CloseWindowById(WC_TOOLTIPS, 0);
 }
 
 /** highlighting tiles while only going over them with the mouse */

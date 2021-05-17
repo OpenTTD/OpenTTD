@@ -341,7 +341,7 @@ struct NewGRFParametersWindow : public Window {
 				uint num = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NP_BACKGROUND);
 				if (num >= this->vscroll->GetCount()) break;
 				if (this->clicked_row != num) {
-					DeleteChildWindows(WC_QUERY_STRING);
+					this->CloseChildWindows(WC_QUERY_STRING);
 					HideDropDownMenu(this);
 					this->clicked_row = num;
 					this->clicked_dropdown = false;
@@ -481,7 +481,7 @@ struct NewGRFParametersWindow : public Window {
 		this->vscroll->SetCount(this->action14present ? this->grf_config->num_valid_params : this->grf_config->num_params);
 		if (this->clicked_row != UINT_MAX && this->clicked_row >= this->vscroll->GetCount()) {
 			this->clicked_row = UINT_MAX;
-			DeleteChildWindows(WC_QUERY_STRING);
+			this->CloseChildWindows(WC_QUERY_STRING);
 		}
 	}
 
@@ -538,7 +538,7 @@ static WindowDesc _newgrf_parameters_desc(
 
 static void OpenGRFParameterWindow(GRFConfig *c, bool editable)
 {
-	DeleteWindowByClass(WC_GRF_PARAMETERS);
+	CloseWindowByClass(WC_GRF_PARAMETERS);
 	new NewGRFParametersWindow(&_newgrf_parameters_desc, c, editable);
 }
 
@@ -563,7 +563,7 @@ struct NewGRFTextfileWindow : public TextfileWindow {
 
 void ShowNewGRFTextfileWindow(TextfileType file_type, const GRFConfig *c)
 {
-	DeleteWindowById(WC_TEXTFILE, file_type);
+	CloseWindowById(WC_TEXTFILE, file_type);
 	new NewGRFTextfileWindow(file_type, c);
 }
 
@@ -664,9 +664,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	void Close() override
 	{
-		DeleteWindowByClass(WC_GRF_PARAMETERS);
-		DeleteWindowByClass(WC_TEXTFILE);
-		DeleteWindowByClass(WC_SAVE_PRESET);
+		CloseWindowByClass(WC_GRF_PARAMETERS);
+		CloseWindowByClass(WC_TEXTFILE);
+		CloseWindowByClass(WC_SAVE_PRESET);
 
 		if (this->editable && this->modified && !this->execute && !_exit_game) {
 			CopyGRFConfigList(this->orig_list, this->actives, true);
@@ -715,8 +715,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			d->next = (*c)->next;
 			d->CopyParams(**c);
 			if (this->active_sel == *c) {
-				DeleteWindowByClass(WC_GRF_PARAMETERS);
-				DeleteWindowByClass(WC_TEXTFILE);
+				CloseWindowByClass(WC_GRF_PARAMETERS);
+				CloseWindowByClass(WC_TEXTFILE);
 				this->active_sel = nullptr;
 			}
 			delete *c;
@@ -938,7 +938,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					list.emplace_back(new DropDownListCharStringItem(this->grf_presets[i], i, false));
 				}
 
-				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+				this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				ShowDropDownList(this, std::move(list), this->preset, WID_NS_PRESET_LIST);
 				break;
 			}
@@ -962,7 +962,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				this->grf_presets = GetGRFPresetList();
 				this->preset = -1;
 				this->InvalidateData();
-				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+				this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
 
 			case WID_NS_MOVE_UP: { // Move GRF up
@@ -1012,8 +1012,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				for (c = this->actives; c != nullptr && i > 0; c = c->next, i--) {}
 
 				if (this->active_sel != c) {
-					DeleteWindowByClass(WC_GRF_PARAMETERS);
-					DeleteWindowByClass(WC_TEXTFILE);
+					CloseWindowByClass(WC_GRF_PARAMETERS);
+					CloseWindowByClass(WC_TEXTFILE);
 				}
 				this->active_sel = c;
 				this->avail_sel = nullptr;
@@ -1030,8 +1030,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 			case WID_NS_REMOVE: { // Remove GRF
 				if (this->active_sel == nullptr || !this->editable) break;
-				DeleteWindowByClass(WC_GRF_PARAMETERS);
-				DeleteWindowByClass(WC_TEXTFILE);
+				CloseWindowByClass(WC_GRF_PARAMETERS);
+				CloseWindowByClass(WC_TEXTFILE);
 
 				/* Choose the next GRF file to be the selected file. */
 				GRFConfig *newsel = this->active_sel->next;
@@ -1071,9 +1071,9 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 				uint i = this->vscroll2->GetScrolledRowFromWidget(pt.y, this, WID_NS_AVAIL_LIST);
 				this->active_sel = nullptr;
-				DeleteWindowByClass(WC_GRF_PARAMETERS);
+				CloseWindowByClass(WC_GRF_PARAMETERS);
 				if (i < this->avails.size()) {
-					if (this->avail_sel != this->avails[i]) DeleteWindowByClass(WC_TEXTFILE);
+					if (this->avail_sel != this->avails[i]) CloseWindowByClass(WC_TEXTFILE);
 					this->avail_sel = this->avails[i];
 					this->avail_pos = i;
 				}
@@ -1107,7 +1107,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 					ReloadNewGRFData();
 					this->InvalidateData(GOID_NEWGRF_CHANGES_APPLIED);
 				}
-				this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+				this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 				break;
 
 			case WID_NS_VIEW_PARAMETERS:
@@ -1132,7 +1132,7 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 				if (!_network_available) {
 					ShowErrorMessage(STR_NETWORK_ERROR_NOTAVAILABLE, INVALID_STRING_ID, WL_ERROR);
 				} else {
-					this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+					this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 
 					ShowMissingContentWindow(this->actives);
 				}
@@ -1147,11 +1147,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 	void OnNewGRFsScanned() override
 	{
-		if (this->active_sel == nullptr) DeleteWindowByClass(WC_TEXTFILE);
+		if (this->active_sel == nullptr) CloseWindowByClass(WC_TEXTFILE);
 		this->avail_sel = nullptr;
 		this->avail_pos = -1;
 		this->avails.ForceRebuild();
-		this->DeleteChildWindows(WC_QUERY_STRING); // Remove the parameter query window
+		this->CloseChildWindows(WC_QUERY_STRING); // Remove the parameter query window
 	}
 
 	void OnDropdownSelect(int widget, int index) override
@@ -1167,8 +1167,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->avails.ForceRebuild();
 
 		ResetObjectToPlace();
-		DeleteWindowByClass(WC_GRF_PARAMETERS);
-		DeleteWindowByClass(WC_TEXTFILE);
+		CloseWindowByClass(WC_GRF_PARAMETERS);
+		CloseWindowByClass(WC_TEXTFILE);
 		this->active_sel = nullptr;
 		this->InvalidateData(GOID_NEWGRF_CHANGES_MADE);
 	}
@@ -1331,8 +1331,8 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 
 		if (this->avail_pos >= 0) {
 			this->active_sel = nullptr;
-			DeleteWindowByClass(WC_GRF_PARAMETERS);
-			if (this->avail_sel != this->avails[this->avail_pos]) DeleteWindowByClass(WC_TEXTFILE);
+			CloseWindowByClass(WC_GRF_PARAMETERS);
+			if (this->avail_sel != this->avails[this->avail_pos]) CloseWindowByClass(WC_TEXTFILE);
 			this->avail_sel = this->avails[this->avail_pos];
 			this->vscroll2->ScrollTowards(this->avail_pos);
 			this->InvalidateData(0);
@@ -1497,7 +1497,7 @@ private:
 	{
 		if (this->avail_sel == nullptr || !this->editable || HasBit(this->avail_sel->flags, GCF_INVALID)) return false;
 
-		DeleteWindowByClass(WC_TEXTFILE);
+		CloseWindowByClass(WC_TEXTFILE);
 
 		uint count = 0;
 		GRFConfig **entry = nullptr;
@@ -1955,8 +1955,8 @@ static WindowDesc _newgrf_desc(
 static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
-		DeleteWindowByClass(WC_GRF_PARAMETERS);
-		DeleteWindowByClass(WC_TEXTFILE);
+		CloseWindowByClass(WC_GRF_PARAMETERS);
+		CloseWindowByClass(WC_TEXTFILE);
 		NewGRFWindow *nw = dynamic_cast<NewGRFWindow*>(w);
 
 		GamelogStartAction(GLAT_GRF);
@@ -1978,7 +1978,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		w->InvalidateData();
 
 		ReInitAllWindows(false);
-		DeleteWindowByClass(WC_BUILD_OBJECT);
+		CloseWindowByClass(WC_BUILD_OBJECT);
 	}
 }
 
@@ -1994,7 +1994,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
  */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config)
 {
-	DeleteWindowByClass(WC_GAME_OPTIONS);
+	CloseWindowByClass(WC_GAME_OPTIONS);
 	new NewGRFWindow(&_newgrf_desc, editable, show_params, exec_changes, config);
 }
 
@@ -2150,7 +2150,7 @@ struct SavePresetWindow : public Window {
  */
 static void ShowSavePresetWindow(const char *initial_text)
 {
-	DeleteWindowByClass(WC_SAVE_PRESET);
+	CloseWindowByClass(WC_SAVE_PRESET);
 	new SavePresetWindow(initial_text);
 }
 

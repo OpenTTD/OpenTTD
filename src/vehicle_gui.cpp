@@ -1118,7 +1118,7 @@ static WindowDesc _vehicle_refit_desc(
  */
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent, bool auto_refit)
 {
-	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
+	CloseWindowById(WC_VEHICLE_REFIT, v->index);
 	RefitWindow *w = new RefitWindow(&_vehicle_refit_desc, v, order, auto_refit);
 	w->parent = parent;
 }
@@ -2462,8 +2462,8 @@ static WindowDesc _nontrain_vehicle_details_desc(
 /** Shows the vehicle details window of the given vehicle. */
 static void ShowVehicleDetailsWindow(const Vehicle *v)
 {
-	DeleteWindowById(WC_VEHICLE_ORDERS, v->index, false);
-	DeleteWindowById(WC_VEHICLE_TIMETABLE, v->index, false);
+	CloseWindowById(WC_VEHICLE_ORDERS, v->index, false);
+	CloseWindowById(WC_VEHICLE_TIMETABLE, v->index, false);
 	AllocateWindowDescFront<VehicleDetailsWindow>((v->type == VEH_TRAIN) ? &_train_vehicle_details_desc : &_nontrain_vehicle_details_desc, v->index);
 }
 
@@ -2720,10 +2720,10 @@ public:
 
 	void Close() override
 	{
-		DeleteWindowById(WC_VEHICLE_ORDERS, this->window_number, false);
-		DeleteWindowById(WC_VEHICLE_REFIT, this->window_number, false);
-		DeleteWindowById(WC_VEHICLE_DETAILS, this->window_number, false);
-		DeleteWindowById(WC_VEHICLE_TIMETABLE, this->window_number, false);
+		CloseWindowById(WC_VEHICLE_ORDERS, this->window_number, false);
+		CloseWindowById(WC_VEHICLE_REFIT, this->window_number, false);
+		CloseWindowById(WC_VEHICLE_DETAILS, this->window_number, false);
+		CloseWindowById(WC_VEHICLE_TIMETABLE, this->window_number, false);
 		this->Window::Close();
 	}
 

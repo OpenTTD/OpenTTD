@@ -699,7 +699,7 @@ static void MoveToNextNewsItem()
 	 * there is no status bar but possible news. */
 	if (FindWindowById(WC_STATUS_BAR, 0) == nullptr) return;
 
-	DeleteWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
+	CloseWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
 	_forced_news = nullptr;
 
 	/* if we're not at the last item, then move on */
@@ -1010,13 +1010,13 @@ static void ShowNewsMessage(const NewsItem *ni)
 	assert(_total_news != 0);
 
 	/* Delete the news window */
-	DeleteWindowById(WC_NEWS_WINDOW, 0);
+	CloseWindowById(WC_NEWS_WINDOW, 0);
 
 	/* setup forced news item */
 	_forced_news = ni;
 
 	if (_forced_news != nullptr) {
-		DeleteWindowById(WC_NEWS_WINDOW, 0);
+		CloseWindowById(WC_NEWS_WINDOW, 0);
 		ShowNewspaper(ni);
 	}
 }
@@ -1251,6 +1251,6 @@ static WindowDesc _message_history_desc(
 /** Display window with news messages history */
 void ShowMessageHistory()
 {
-	DeleteWindowById(WC_MESSAGE_HISTORY, 0);
+	CloseWindowById(WC_MESSAGE_HISTORY, 0);
 	new MessageHistoryWindow(&_message_history_desc);
 }

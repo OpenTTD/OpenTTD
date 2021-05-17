@@ -533,6 +533,6 @@ static WindowDesc _chat_window_desc(
  */
 void ShowNetworkChatQueryWindow(DestType type, int dest)
 {
-	DeleteWindowByClass(WC_SEND_NETWORK_MSG);
+	CloseWindowByClass(WC_SEND_NETWORK_MSG);
 	new NetworkChatWindow(&_chat_window_desc, type, dest);
 }

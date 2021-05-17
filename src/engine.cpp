@@ -528,7 +528,7 @@ bool EngineOverrideManager::ResetToCurrentNewGRFConfig()
  */
 void SetupEngines()
 {
-	DeleteWindowByClass(WC_ENGINE_PREVIEW);
+	CloseWindowByClass(WC_ENGINE_PREVIEW);
 	_engine_pool.CleanPool();
 
 	assert(_engine_mngr.size() >= _engine_mngr.NUM_DEFAULT_ENGINES);
@@ -837,7 +837,7 @@ void EnginesDailyLoop()
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
 			if (e->preview_company != INVALID_COMPANY) {
 				if (!--e->preview_wait) {
-					DeleteWindowById(WC_ENGINE_PREVIEW, i);
+					CloseWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_company = INVALID_COMPANY;
 				}
 			} else if (CountBits(e->preview_asked) < MAX_COMPANIES) {
@@ -1015,7 +1015,7 @@ static void NewVehicleAvailable(Engine *e)
 	if (e->type == VEH_AIRCRAFT) InvalidateWindowData(WC_BUILD_TOOLBAR, TRANSPORT_AIR);
 
 	/* Close pending preview windows */
-	DeleteWindowById(WC_ENGINE_PREVIEW, index);
+	CloseWindowById(WC_ENGINE_PREVIEW, index);
 }
 
 /** Monthly update of the availability, reliability, and preview offers of the engines. */

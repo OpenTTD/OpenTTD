@@ -232,7 +232,7 @@ static WindowDesc _endgame_desc(
  */
 void ShowHighscoreTable(int difficulty, int8 ranking)
 {
-	DeleteWindowByClass(WC_HIGHSCORE);
+	CloseWindowByClass(WC_HIGHSCORE);
 	new HighScoreWindow(&_highscore_desc, difficulty, ranking);
 }
 
@@ -246,6 +246,6 @@ void ShowEndGameChart()
 	if (_network_dedicated || (!_networking && !Company::IsValidID(_local_company))) return;
 
 	HideVitalWindows();
-	DeleteWindowByClass(WC_ENDSCREEN);
+	CloseWindowByClass(WC_ENDSCREEN);
 	new EndGameWindow(&_endgame_desc);
 }

@@ -677,7 +677,7 @@ public:
 	{
 		switch (widget) {
 			case WID_NG_CANCEL: // Cancel button
-				DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
+				CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 				break;
 
 			case WID_NG_NAME:    // Sort by name
@@ -966,8 +966,8 @@ static WindowDesc _network_game_window_desc(
 void ShowNetworkGameWindow()
 {
 	static bool first = true;
-	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
-	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
+	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
+	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
 
 	/* Only show once */
 	if (first) {
@@ -1265,8 +1265,8 @@ static void ShowNetworkStartServerWindow()
 {
 	if (!NetworkValidateClientName()) return;
 
-	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
-	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
+	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
+	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
 
 	new NetworkStartServerWindow(&_network_start_server_window_desc);
 }
@@ -1559,8 +1559,8 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 {
 	if (!NetworkValidateClientName()) return;
 
-	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
-	DeleteWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
+	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
+	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 
 	_settings_client.network.last_joined = ngl->connection_string;
 
@@ -2519,7 +2519,7 @@ static WindowDesc _network_join_status_window_desc(
 
 void ShowJoinStatusWindow()
 {
-	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
+	CloseWindowById(WC_NETWORK_STATUS_WINDOW, WN_NETWORK_STATUS_WINDOW_JOIN);
 	new NetworkJoinStatusWindow(&_network_join_status_window_desc);
 }
 
@@ -2642,7 +2642,7 @@ static WindowDesc _network_company_password_window_desc(
 
 void ShowNetworkCompanyPasswordWindow(Window *parent)
 {
-	DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
+	CloseWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
 
 	new NetworkCompanyPasswordWindow(&_network_company_password_window_desc, parent);
 }
