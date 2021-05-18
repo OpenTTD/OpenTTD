@@ -55,7 +55,7 @@ STR_CARGO_PLURAL_BUBBLES                                        :Gelembung
 STR_CARGO_PLURAL_TOFFEE                                         :Gula-gula
 STR_CARGO_PLURAL_BATTERIES                                      :Baterai
 STR_CARGO_PLURAL_PLASTIC                                        :Plastik
-STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Minuman Berdesis
+STR_CARGO_PLURAL_FIZZY_DRINKS                                   :Minuman Ringan
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -89,7 +89,7 @@ STR_CARGO_SINGULAR_BUBBLE                                       :Gelembung
 STR_CARGO_SINGULAR_TOFFEE                                       :Gula-gula
 STR_CARGO_SINGULAR_BATTERY                                      :Baterai
 STR_CARGO_SINGULAR_PLASTIC                                      :Plastik
-STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman Berdesis
+STR_CARGO_SINGULAR_FIZZY_DRINK                                  :Minuman Ringan
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
@@ -123,7 +123,7 @@ STR_QUANTITY_BUBBLES                                            :{COMMA} gelembu
 STR_QUANTITY_TOFFEE                                             :{WEIGHT_LONG} gula-gula
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterai
 STR_QUANTITY_PLASTIC                                            :{VOLUME_LONG} plastik
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman berdesis
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman ringan
 STR_QUANTITY_N_A                                                :N/A
 
 # Two letter abbreviation of cargo name
@@ -158,7 +158,7 @@ STR_ABBREV_BUBBLES                                              :{TINY_FONT}GL
 STR_ABBREV_TOFFEE                                               :{TINY_FONT}GG
 STR_ABBREV_BATTERIES                                            :{TINY_FONT}BA
 STR_ABBREV_PLASTIC                                              :{TINY_FONT}PL
-STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}MB
+STR_ABBREV_FIZZY_DRINKS                                         :{TINY_FONT}MR
 STR_ABBREV_NONE                                                 :{TINY_FONT}TANPA
 STR_ABBREV_ALL                                                  :{TINY_FONT}SMA
 
@@ -180,7 +180,7 @@ STR_COLOUR_LIGHT_BLUE                                           :Biru terang
 STR_COLOUR_GREEN                                                :Hijau
 STR_COLOUR_DARK_GREEN                                           :Hijau tua
 STR_COLOUR_BLUE                                                 :Biru
-STR_COLOUR_CREAM                                                :Cream
+STR_COLOUR_CREAM                                                :Krim
 STR_COLOUR_MAUVE                                                :Lembayung muda
 STR_COLOUR_PURPLE                                               :Ungu
 STR_COLOUR_ORANGE                                               :Oranye
@@ -212,8 +212,8 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}{NBSP}ga
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}{NBSP}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}{NBSP}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}gallon
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}litre
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA}{NBSP}galon
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA}{NBSP}liter
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA}{NBSP}m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}{NBSP}lbf
@@ -4812,7 +4812,7 @@ STR_INDUSTRY_NAME_COLA_WELLS                                    :Sumur Cola
 STR_INDUSTRY_NAME_TOY_SHOP                                      :Toko Mainan
 STR_INDUSTRY_NAME_TOY_FACTORY                                   :Pabrik Mainan
 STR_INDUSTRY_NAME_PLASTIC_FOUNTAINS                             :Sumber Mata Air Plastik
-STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Pabrik Minuman berdesis
+STR_INDUSTRY_NAME_FIZZY_DRINK_FACTORY                           :Pabrik Minuman Ringan
 STR_INDUSTRY_NAME_BUBBLE_GENERATOR                              :Pembangkit Gelembung
 STR_INDUSTRY_NAME_TOFFEE_QUARRY                                 :Tambang gula-gula
 STR_INDUSTRY_NAME_SUGAR_MINE                                    :Tambang Gula
@@ -4911,7 +4911,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COLA_TANKER                   :Gerbong Tangki 
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_CANDY_VAN                     :Gerbong Manisan
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_TOY_VAN                       :Gerbong Mainan
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_BATTERY_TRUCK                 :Gerbong Baterai
-STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Gerbong Minuman berdesis
+STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FIZZY_DRINK_TRUCK             :Gerbong Minuman Ringan
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_PLASTIC_TRUCK                 :Gerbong Plastik
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (Listrik)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_MILLENNIUM_Z1_ELECTRIC   :'Millennium Z1' (Listrik)
@@ -4941,7 +4941,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_COLA_TANKER               :Gerbong Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_CANDY_VAN                 :Gerbong Manisan
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :Gerbong Mainan
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_BATTERY_TRUCK             :Gerbong Baterai
-STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Gerbong Minuman berdesis
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_FIZZY_DRINK_TRUCK         :Gerbong Minuman Ringan
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_PLASTIC_TRUCK             :Gerbong Plastik
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV1_LEVIATHAN_ELECTRIC    :Lev1 'Leviathan' (Listrik)
 STR_VEHICLE_NAME_TRAIN_ENGINE_MAGLEV_LEV2_CYCLOPS_ELECTRIC      :Lev2 'Cyclops' (Listrik)
@@ -4973,7 +4973,7 @@ STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_COLA_TANKER                 :Gerbong Cola
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_CANDY_VAN                   :Gerbong Manisan
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_TOY_VAN                     :Gerbong Mainan
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BATTERY_TRUCK               :Gerbong Baterai
-STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Gerbong Minuman berdesis
+STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_FIZZY_DRINK_TRUCK           :Gerbong Minuman Ringan
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_PLASTIC_TRUCK               :Gerbong Plastik
 STR_VEHICLE_NAME_ROAD_VEHICLE_MPS_REGAL_BUS                     :Bus MPS Regal
 STR_VEHICLE_NAME_ROAD_VEHICLE_HEREFORD_LEOPARD_BUS              :Bus Hereford Leopard
@@ -5054,9 +5054,9 @@ STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_CANDY_TRUCK              :Truk Manisan Wi
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_BATTERY_TRUCK         :Truk Baterai MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_BATTERY_TRUCK         :Truk Baterai Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_BATTERY_TRUCK            :Truk Baterai Wizzowow
-STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Truk Minuman berdesis MightyMover
-STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Truk Minuman berdesis Powernaught
-STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Truk Minuman berdesis Wizzowow
+STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_FIZZY_DRINK           :Truk Minuman Ringan MightyMover
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_FIZZY_DRINK           :Truk Minuman Ringan Powernaught
+STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_FIZZY_DRINK_TRUCK        :Truk Minuman Ringan Wizzowow
 STR_VEHICLE_NAME_ROAD_VEHICLE_MIGHTYMOVER_PLASTIC_TRUCK         :Truk Plastik MightyMover
 STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_PLASTIC_TRUCK         :Truk Plastik Powernaught
 STR_VEHICLE_NAME_ROAD_VEHICLE_WIZZOWOW_PLASTIC_TRUCK            :Truk Plastik Wizzowow
