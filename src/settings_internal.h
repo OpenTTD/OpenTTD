@@ -107,6 +107,8 @@ struct SettingDesc : SettingDescBase {
 	SettingType GetType() const;
 };
 
+typedef std::initializer_list<const SettingDesc> SettingTable;
+
 const SettingDesc *GetSettingFromName(const char *name);
 bool SetSettingValue(const SettingDesc *sd, int32 value, bool force_newgame = false);
 bool SetSettingValue(const SettingDesc *sd, const char *value, bool force_newgame = false);
