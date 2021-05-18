@@ -253,8 +253,7 @@ static_assert(lengthof(_news_type_data) == NT_END);
  */
 NewsDisplay NewsTypeData::GetDisplay() const
 {
-	uint index;
-	const SettingDesc *sd = GetSettingFromName(this->name, &index);
+	const SettingDesc *sd = GetSettingFromName(this->name);
 	assert(sd != nullptr);
 	void *ptr = GetVariableAddress(nullptr, &sd->save);
 	return (NewsDisplay)ReadValue(ptr, sd->save.conv);
