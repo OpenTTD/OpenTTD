@@ -826,7 +826,6 @@ protected:
 struct SettingEntry : BaseSettingEntry {
 	const char *name;           ///< Name of the setting
 	const SettingDesc *setting; ///< Setting description of the setting
-	uint index;                 ///< Index of the setting in the settings table
 
 	SettingEntry(const char *name);
 
@@ -1021,7 +1020,6 @@ SettingEntry::SettingEntry(const char *name)
 {
 	this->name = name;
 	this->setting = nullptr;
-	this->index = 0;
 }
 
 /**
@@ -1031,7 +1029,7 @@ SettingEntry::SettingEntry(const char *name)
 void SettingEntry::Init(byte level)
 {
 	BaseSettingEntry::Init(level);
-	this->setting = GetSettingFromName(this->name, &this->index);
+	this->setting = GetSettingFromName(this->name);
 	assert(this->setting != nullptr);
 }
 
@@ -1039,7 +1037,7 @@ void SettingEntry::Init(byte level)
 void SettingEntry::ResetAll()
 {
 	int32 default_value = ReadValue(&this->setting->desc.def, this->setting->save.conv);
-	SetSettingValue(this->index, default_value);
+	SetSettingValue(this->setting, default_value);
 }
 
 /**
@@ -2288,11 +2286,7 @@ struct GameSettingsWindow : Window {
 			}
 
 			if (value != oldvalue) {
-				if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-					SetCompanySetting(pe->index, value);
-				} else {
-					SetSettingValue(pe->index, value);
-				}
+				SetSettingValue(sd, value);
 				this->SetDirty();
 			}
 		} else {
@@ -2340,11 +2334,7 @@ struct GameSettingsWindow : Window {
 			value = (int32)(size_t)sd->desc.def;
 		}
 
-		if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-			SetCompanySetting(this->valuewindow_entry->index, value);
-		} else {
-			SetSettingValue(this->valuewindow_entry->index, value);
-		}
+		SetSettingValue(this->valuewindow_entry->setting, value);
 		this->SetDirty();
 	}
 
@@ -2380,12 +2370,7 @@ struct GameSettingsWindow : Window {
 					const SettingDesc *sd = this->valuedropdown_entry->setting;
 					assert(sd->desc.flags & SGF_MULTISTRING);
 
-					if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
-						SetCompanySetting(this->valuedropdown_entry->index, index);
-					} else {
-						SetSettingValue(this->valuedropdown_entry->index, index);
-					}
-
+					SetSettingValue(sd, index);
 					this->SetDirty();
 				}
 				break;

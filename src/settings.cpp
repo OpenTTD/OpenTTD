@@ -1949,15 +1949,36 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 }
 
 /**
+ * Get the index of the setting with this description.
+ * @param sd the setting to get the index for.
+ * @return the index of the setting to be used for CMD_CHANGE_SETTING.
+ */
+uint GetSettingIndex(const SettingDesc *sd)
+{
+	assert((sd->desc.flags & SGF_PER_COMPANY) == 0);
+	return sd - _settings;
+}
+
+/**
  * Top function to save the new value of an element of the Settings struct
  * @param index offset in the SettingDesc array of the Settings struct which
  * identifies the setting member we want to change
  * @param value new value of the setting
  * @param force_newgame force the newgame settings
  */
-bool SetSettingValue(uint index, int32 value, bool force_newgame)
+bool SetSettingValue(const SettingDesc *sd, int32 value, bool force_newgame)
 {
-	const SettingDesc *sd = &_settings[index];
+	if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
+		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
+			return DoCommandP(0, sd - _company_settings, value, CMD_CHANGE_COMPANY_SETTING);
+		}
+
+		void *var = GetVariableAddress(&_settings_client.company, &sd->save);
+		Write_ValidateSetting(var, sd, value);
+		if (sd->desc.proc != nullptr) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
+		return true;
+	}
+
 	/* If an item is company-based, we do not send it over the network
 	 * (if any) to change. Also *hack*hack* we update the _newgame version
 	 * of settings because changing a company-based setting in a game also
@@ -1988,27 +2009,9 @@ bool SetSettingValue(uint index, int32 value, bool force_newgame)
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return DoCommandP(0, index, value, CMD_CHANGE_SETTING);
+		return DoCommandP(0, GetSettingIndex(sd), value, CMD_CHANGE_SETTING);
 	}
 	return false;
-}
-
-/**
- * Top function to save the new value of an element of the Settings struct
- * @param index offset in the SettingDesc array of the CompanySettings struct
- * which identifies the setting member we want to change
- * @param value new value of the setting
- */
-void SetCompanySetting(uint index, int32 value)
-{
-	const SettingDesc *sd = &_company_settings[index];
-	if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-		DoCommandP(0, index, value, CMD_CHANGE_COMPANY_SETTING);
-	} else {
-		void *var = GetVariableAddress(&_settings_client.company, &sd->save);
-		Write_ValidateSetting(var, sd, value);
-		if (sd->desc.proc != nullptr) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
-	}
 }
 
 /**
@@ -2047,23 +2050,20 @@ void SyncCompanySettings()
  */
 uint GetCompanySettingIndex(const char *name)
 {
-	uint i;
-	const SettingDesc *sd = GetSettingFromName(name, &i);
-	(void)sd; // Unused without asserts
+	const SettingDesc *sd = GetSettingFromName(name);
 	assert(sd != nullptr && (sd->desc.flags & SGF_PER_COMPANY) != 0);
-	return i;
+	return sd - _company_settings;
 }
 
 /**
  * Set a setting value with a string.
- * @param index the settings index.
+ * @param sd the setting to change.
  * @param value the value to write
  * @param force_newgame force the newgame settings
  * @note Strings WILL NOT be synced over the network
  */
-bool SetSettingValue(uint index, const char *value, bool force_newgame)
+bool SetSettingValue(const SettingDesc *sd, const char *value, bool force_newgame)
 {
-	const SettingDesc *sd = &_settings[index];
 	assert(sd->save.conv & SLF_NO_NETWORK_SYNC);
 
 	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && strcmp(value, "(null)") == 0) {
@@ -2085,18 +2085,16 @@ bool SetSettingValue(uint index, const char *value, bool force_newgame)
  * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c nullptr indicates failure to obtain the description
  */
-const SettingDesc *GetSettingFromName(const char *name, uint *i)
+const SettingDesc *GetSettingFromName(const char *name)
 {
-	const SettingDesc *sd;
-
 	/* First check all full names */
-	for (*i = 0, sd = _settings; sd->save.cmd != SL_END; sd++, (*i)++) {
+	for (const SettingDesc *sd = _settings; sd->save.cmd != SL_END; sd++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (strcmp(sd->desc.name, name) == 0) return sd;
 	}
 
 	/* Then check the shortcut variant of the name. */
-	for (*i = 0, sd = _settings; sd->save.cmd != SL_END; sd++, (*i)++) {
+	for (const SettingDesc *sd = _settings; sd->save.cmd != SL_END; sd++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		const char *short_name = strchr(sd->desc.name, '.');
 		if (short_name != nullptr) {
@@ -2107,7 +2105,7 @@ const SettingDesc *GetSettingFromName(const char *name, uint *i)
 
 	if (strncmp(name, "company.", 8) == 0) name += 8;
 	/* And finally the company-based settings */
-	for (*i = 0, sd = _company_settings; sd->save.cmd != SL_END; sd++, (*i)++) {
+	for (const SettingDesc *sd = _company_settings; sd->save.cmd != SL_END; sd++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (strcmp(sd->desc.name, name) == 0) return sd;
 	}
@@ -2119,8 +2117,7 @@ const SettingDesc *GetSettingFromName(const char *name, uint *i)
  * and besides, it is also better to keep stuff like this at the same place */
 void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 {
-	uint index;
-	const SettingDesc *sd = GetSettingFromName(name, &index);
+	const SettingDesc *sd = GetSettingFromName(name);
 
 	if (sd == nullptr) {
 		IConsolePrintF(CC_WARNING, "'%s' is an unknown setting.", name);
@@ -2129,7 +2126,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 
 	bool success;
 	if (sd->desc.cmd == SDT_STDSTRING) {
-		success = SetSettingValue(index, value, force_newgame);
+		success = SetSettingValue(sd, value, force_newgame);
 	} else {
 		uint32 val;
 		extern bool GetArgumentInteger(uint32 *value, const char *arg);
@@ -2139,7 +2136,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 			return;
 		}
 
-		success = SetSettingValue(index, val, force_newgame);
+		success = SetSettingValue(sd, val, force_newgame);
 	}
 
 	if (!success) {
@@ -2153,11 +2150,9 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 
 void IConsoleSetSetting(const char *name, int value)
 {
-	uint index;
-	const SettingDesc *sd = GetSettingFromName(name, &index);
-	(void)sd; // Unused without asserts
+	const SettingDesc *sd = GetSettingFromName(name);
 	assert(sd != nullptr);
-	SetSettingValue(index, value);
+	SetSettingValue(sd, value);
 }
 
 /**
@@ -2168,8 +2163,7 @@ void IConsoleSetSetting(const char *name, int value)
 void IConsoleGetSetting(const char *name, bool force_newgame)
 {
 	char value[20];
-	uint index;
-	const SettingDesc *sd = GetSettingFromName(name, &index);
+	const SettingDesc *sd = GetSettingFromName(name);
 	const void *ptr;
 
 	if (sd == nullptr) {
