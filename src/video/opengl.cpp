@@ -1150,7 +1150,7 @@ void OpenGLBackend::ClearCursorCache()
 void *OpenGLBackend::GetVideoBuffer()
 {
 #ifndef NO_GL_BUFFER_SYNC
-	if (this->sync_vid_mapping != nullptr) _glClientWaitSync(this->sync_vid_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 10000000);
+	if (this->sync_vid_mapping != nullptr) _glClientWaitSync(this->sync_vid_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 100000000); // 100ms timeout.
 #endif
 
 	if (!this->persistent_mapping_supported) {
@@ -1174,7 +1174,7 @@ uint8 *OpenGLBackend::GetAnimBuffer()
 	if (this->anim_pbo == 0) return nullptr;
 
 #ifndef NO_GL_BUFFER_SYNC
-	if (this->sync_anim_mapping != nullptr) _glClientWaitSync(this->sync_anim_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 10000000);
+	if (this->sync_anim_mapping != nullptr) _glClientWaitSync(this->sync_anim_mapping, GL_SYNC_FLUSH_COMMANDS_BIT, 100000000); // 100ms timeout.
 #endif
 
 	if (!this->persistent_mapping_supported) {
