@@ -25,6 +25,5 @@ wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen);
 
 void Win32SetCurrentLocaleName(const char *iso_code);
 int OTTDStringCompare(const char *s1, const char *s2);
-bool IsWindowsVistaOrGreater();
 
 #endif /* WIN32_H */
