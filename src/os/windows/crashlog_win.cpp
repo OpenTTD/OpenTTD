@@ -22,6 +22,7 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include <signal.h>
+#include <psapi.h>
 
 #include "../../safeguards.h"
 
@@ -206,25 +207,19 @@ static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 /* virtual */ char *CrashLogWindows::LogModules(char *output, const char *last) const
 {
 	MakeCRCTable(AllocaM(uint32, 256));
-	BOOL (WINAPI *EnumProcessModules)(HANDLE, HMODULE*, DWORD, LPDWORD);
-
 	output += seprintf(output, last, "Module information:\n");
 
-	if (LoadLibraryList((Function*)&EnumProcessModules, "psapi.dll\0EnumProcessModules\0\0")) {
+	HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
+	if (proc != nullptr) {
 		HMODULE modules[100];
 		DWORD needed;
-		BOOL res;
+		BOOL res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
+		CloseHandle(proc);
+		if (res) {
+			size_t count = std::min<DWORD>(needed / sizeof(HMODULE), lengthof(modules));
 
-		HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
-		if (proc != nullptr) {
-			res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
-			CloseHandle(proc);
-			if (res) {
-				size_t count = std::min<DWORD>(needed / sizeof(HMODULE), lengthof(modules));
-
-				for (size_t i = 0; i != count; i++) output = PrintModuleInfo(output, last, modules[i]);
-				return output + seprintf(output, last, "\n");
-			}
+			for (size_t i = 0; i != count; i++) output = PrintModuleInfo(output, last, modules[i]);
+			return output + seprintf(output, last, "\n");
 		}
 	}
 	output = PrintModuleInfo(output, last, nullptr);
