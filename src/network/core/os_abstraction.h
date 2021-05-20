@@ -108,6 +108,13 @@ typedef unsigned long in_addr_t;
 #		undef FD_SETSIZE
 #		define FD_SETSIZE 64
 #   endif
+
+/* Haiku says it supports FD_SETSIZE fds, but it really only supports 512. */
+#   if defined(__HAIKU__)
+#		undef FD_SETSIZE
+#		define FD_SETSIZE 512
+#   endif
+
 #endif /* UNIX */
 
 /* OS/2 stuff */

@@ -33,6 +33,7 @@
 #if defined(__HAIKU__)
 #	include <SupportDefs.h>
 #	include <unistd.h>
+#	define _DEFAULT_SOURCE
 #	define _GNU_SOURCE
 #	define TROUBLED_INTS
 #endif
