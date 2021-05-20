@@ -25,6 +25,7 @@
 #include "win32_v.h"
 #include <windows.h>
 #include <imm.h>
+#include <versionhelpers.h>
 
 #include "../safeguards.h"
 
