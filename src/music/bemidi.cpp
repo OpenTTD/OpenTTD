@@ -13,13 +13,7 @@
 #include "../base_media_base.h"
 #include "midifile.hpp"
 
-/* BeOS System Includes */
-#include <MidiSynthFile.h>
-
 #include "../safeguards.h"
-
-/** The file we're playing. */
-static BMidiSynthFile midiSynthFile;
 
 /** Factory for BeOS' midi player. */
 static FMusicDriver_BeMidi iFMusicDriver_BeMidi;
@@ -31,7 +25,7 @@ const char *MusicDriver_BeMidi::Start(const StringList &parm)
 
 void MusicDriver_BeMidi::Stop()
 {
-	midiSynthFile.UnloadFile();
+	this->StopSong();
 }
 
 void MusicDriver_BeMidi::PlaySong(const MusicSongInfo &song)
@@ -39,25 +33,44 @@ void MusicDriver_BeMidi::PlaySong(const MusicSongInfo &song)
 	std::string filename = MidiFile::GetSMFFile(song);
 
 	this->Stop();
+	this->midi_synth_file = new BMidiSynthFile();
 	if (!filename.empty()) {
 		entry_ref midiRef;
 		get_ref_for_path(filename.c_str(), &midiRef);
-		midiSynthFile.LoadFile(&midiRef);
-		midiSynthFile.Start();
+		if (this->midi_synth_file->LoadFile(&midiRef) == B_OK) {
+			this->midi_synth_file->SetVolume(this->current_volume);
+			this->midi_synth_file->Start();
+			this->just_started = true;
+		} else {
+			this->Stop();
+		}
 	}
 }
 
 void MusicDriver_BeMidi::StopSong()
 {
-	midiSynthFile.UnloadFile();
+	/* Reusing BMidiSynthFile can cause stuck notes when switching
+	 * tracks, just delete whole object entirely. */
+	delete this->midi_synth_file;
+	this->midi_synth_file = nullptr;
 }
 
 bool MusicDriver_BeMidi::IsSongPlaying()
 {
-	return !midiSynthFile.IsFinished();
+	if (this->midi_synth_file == nullptr) return false;
+
+	/* IsFinished() returns true for a moment after Start()
+	 * but before it really starts playing, use just_started flag
+	 * to prevent accidental track skipping. */
+	if (this->just_started) {
+		if (!this->midi_synth_file->IsFinished()) this->just_started = false;
+		return true;
+	}
+	return !this->midi_synth_file->IsFinished();
 }
 
 void MusicDriver_BeMidi::SetVolume(byte vol)
 {
-	fprintf(stderr, "BeMidi: Set volume not implemented\n");
+	this->current_volume = vol / 128.0;
+	if (this->midi_synth_file != nullptr) this->midi_synth_file->SetVolume(this->current_volume);
 }
