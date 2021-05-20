@@ -241,6 +241,10 @@ target_link_libraries(openttd
     Threads::Threads
 )
 
+if(HAIKU)
+    target_link_libraries(openttd "be" "network" "midi")
+endif()
+
 if(IPO_FOUND)
     set_target_properties(openttd PROPERTIES INTERPROCEDURAL_OPTIMIZATION_RELEASE True)
     set_target_properties(openttd PROPERTIES INTERPROCEDURAL_OPTIMIZATION_MINSIZEREL True)
