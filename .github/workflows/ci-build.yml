@@ -326,34 +326,8 @@ jobs:
 
     if: always() && github.event_name == 'pull_request'
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Get check suite ID
-      id: check_suite_id
-      uses: octokit/request-action@v2.x
-      with:
-        route: GET /repos/{repository}/actions/runs/{run_id}
-        repository: ${{ github.repository }}
-        run_id: ${{ github.run_id }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Get check runs
-      id: check_runs
-      uses: octokit/request-action@v2.x
-      with:
-        route: GET /repos/{repository}/check-suites/{check_suite_id}/check-runs
-        repository: ${{ github.repository }}
-        check_suite_id: ${{ fromJson(steps.check_suite_id.outputs.data).check_suite_id }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Check annotations
-      shell: bash
-      run: |
-        echo '[
-        ${{ toJson(fromJson(steps.check_runs.outputs.data).check_runs.*.output.title) }}, ${{ toJson(fromJson(steps.check_runs.outputs.data).check_runs.*.output.summary) }}
-        ]' | jq '.[0] as $t | .[1] as $s | reduce range(.[0] | length) as $i ([]; . + [if $t[$i] then $t[$i] + ": " + $s[$i] else empty end]) | .[]'
-
-        exit $(echo '${{ toJson(fromJson(steps.check_runs.outputs.data).check_runs.*.output.annotations_count) }}' | jq 'add')
+      uses: OpenTTD/actions/annotation-check@v2
