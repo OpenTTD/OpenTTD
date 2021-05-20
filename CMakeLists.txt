@@ -360,6 +360,7 @@ if(WIN32)
         -DUNICODE
         -D_UNICODE
         -DWITH_UNISCRIBE
+        -DPSAPI_VERSION=1
     )
 
     target_link_libraries(openttd
@@ -367,6 +368,7 @@ if(WIN32)
         winmm
         imm32
         usp10
+        psapi
     )
 endif()
 
