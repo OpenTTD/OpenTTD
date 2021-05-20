@@ -17,7 +17,7 @@ struct LocalTimeToStruct {
 	static inline std::tm ToTimeStruct(std::time_t time_since_epoch)
 	{
 		std::tm time = {};
-#ifdef WIN32
+#ifdef _WIN32
 		/* Windows has swapped the parameters around for localtime_s. */
 		localtime_s(&time, &time_since_epoch);
 #else
@@ -32,7 +32,7 @@ struct UTCTimeToStruct {
 	static inline std::tm ToTimeStruct(std::time_t time_since_epoch)
 	{
 		std::tm time = {};
-#ifdef WIN32
+#ifdef _WIN32
 		/* Windows has swapped the parameters around for gmtime_s. */
 		gmtime_s(&time, &time_since_epoch);
 #else
