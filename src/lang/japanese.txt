@@ -230,7 +230,7 @@ STR_LIST_FILTER_OSKTITLE                                        :{BLACK}フィ�
 STR_LIST_FILTER_TOOLTIP                                         :{BLACK}フィルタリングするキーワードを入力します
 
 STR_TOOLTIP_GROUP_ORDER                                         :{BLACK}グループの整列法を選択
-STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ替えの順序を選択します。（昇順／降順）
+STR_TOOLTIP_SORT_ORDER                                          :{BLACK}並べ替えの順序を選択します (昇順 / 降順)
 STR_TOOLTIP_SORT_CRITERIA                                       :{BLACK}並べ替えの基準を選択します
 STR_TOOLTIP_FILTER_CRITERIA                                     :{BLACK}フィルタリングの基準を選択します
 STR_BUTTON_SORT_BY                                              :{BLACK}並べ替え
@@ -612,7 +612,7 @@ STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TRANSPORT_COORDINATOR      :運送調整役
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_ROUTE_SUPERVISOR           :経路監督
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_DIRECTOR                   :理事
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHIEF_EXECUTIVE            :取締役
-STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :座長
+STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_CHAIRMAN                   :会長役
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_PRESIDENT                  :総長
 STR_COMPANY_LEAGUE_PERFORMANCE_TITLE_TYCOON                     :巨頭
 
@@ -686,7 +686,7 @@ STR_PLAYLIST_TRACK_INDEX                                        :{TINY_FONT}{BLA
 STR_PLAYLIST_PROGRAM                                            :{TINY_FONT}{BLACK}プレイリスト - '{STRING}'
 STR_PLAYLIST_CLEAR                                              :{TINY_FONT}{BLACK}消去
 STR_PLAYLIST_CHANGE_SET                                         :{BLACK}セットの変更
-STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}選択したプレイリストの内容を消去します。（カスタム1/2 のみ）
+STR_PLAYLIST_TOOLTIP_CLEAR_CURRENT_PROGRAM_CUSTOM1              :{BLACK}選択したプレイリストの内容を消去します (カスタム1/2 のみ)
 STR_PLAYLIST_TOOLTIP_CHANGE_SET                                 :{BLACK}音楽の選択を別のインストール済みセットに変更する
 STR_PLAYLIST_TOOLTIP_CLICK_TO_ADD_TRACK                         :{BLACK}クリックすると、その曲を選択したプレイリストに追加します。(カスタム1/2 のみ)
 STR_PLAYLIST_TOOLTIP_CLICK_TO_REMOVE_TRACK                      :{BLACK}クリックすると、その曲を選択したプレイリストから削除します。(カスタム1/2 のみ)
@@ -908,46 +908,46 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}通貨�
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_GBP                                   :英ポンド(£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :米ドル($)
-STR_GAME_OPTIONS_CURRENCY_EUR                                   :ユーロ(€)
+STR_GAME_OPTIONS_CURRENCY_EUR                                   :欧州連合・ユーロ(€)
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :日本円(¥)
-STR_GAME_OPTIONS_CURRENCY_ATS                                   :オーストリアシリング(ATS)
-STR_GAME_OPTIONS_CURRENCY_BEF                                   :ベルギーフランク(BEF)
-STR_GAME_OPTIONS_CURRENCY_CHF                                   :スイスフランク(CHF)
-STR_GAME_OPTIONS_CURRENCY_CZK                                   :チェココルナ(CZK)
-STR_GAME_OPTIONS_CURRENCY_DEM                                   :ドイツマルク(DEM)
-STR_GAME_OPTIONS_CURRENCY_DKK                                   :デンマーククローネ(DKK)
-STR_GAME_OPTIONS_CURRENCY_ESP                                   :スペインペセタ(₧)
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :フィンランドマーカ(FIM)
-STR_GAME_OPTIONS_CURRENCY_FRF                                   :フランスフラン(₣)
-STR_GAME_OPTIONS_CURRENCY_GRD                                   :ギリシアドラクマ(GRD)
-STR_GAME_OPTIONS_CURRENCY_HUF                                   :ハンガリーフォリント(HUF)
-STR_GAME_OPTIONS_CURRENCY_ISK                                   :アイスランドクローナ(ISK)
-STR_GAME_OPTIONS_CURRENCY_ITL                                   :イタリアリラ(ITL)
-STR_GAME_OPTIONS_CURRENCY_NLG                                   :オランダギルダー(NLG)
-STR_GAME_OPTIONS_CURRENCY_NOK                                   :ノルウェイクローネ(NOK)
-STR_GAME_OPTIONS_CURRENCY_PLN                                   :ポーランドズロティ(PLN)
-STR_GAME_OPTIONS_CURRENCY_RON                                   :ルーマニアレイ(RON)
-STR_GAME_OPTIONS_CURRENCY_RUR                                   :ロシアルーブル(RUR)
-STR_GAME_OPTIONS_CURRENCY_SIT                                   :スロベニアトラール(SIT)
-STR_GAME_OPTIONS_CURRENCY_SEK                                   :スウェーデンクローナ(SEK)
-STR_GAME_OPTIONS_CURRENCY_TRY                                   :トルコリラ(TL)
-STR_GAME_OPTIONS_CURRENCY_SKK                                   :スロバキアコルナ(SKK)
-STR_GAME_OPTIONS_CURRENCY_BRL                                   :ブラジルレアル(BRL)
-STR_GAME_OPTIONS_CURRENCY_EEK                                   :エストニアクローン(EEK)
-STR_GAME_OPTIONS_CURRENCY_LTL                                   :リトアニアリタス (LTL)
-STR_GAME_OPTIONS_CURRENCY_KRW                                   :韓国ウォン (KRW)
+STR_GAME_OPTIONS_CURRENCY_ATS                                   :オーストリア・シリング(ATS)
+STR_GAME_OPTIONS_CURRENCY_BEF                                   :ベルギー・フラン(BEF)
+STR_GAME_OPTIONS_CURRENCY_CHF                                   :スイス・フラン(CHF)
+STR_GAME_OPTIONS_CURRENCY_CZK                                   :チェコ・コルナ(CZK)
+STR_GAME_OPTIONS_CURRENCY_DEM                                   :ドイツ・マルク(DEM)
+STR_GAME_OPTIONS_CURRENCY_DKK                                   :デンマーク・クローネ(DKK)
+STR_GAME_OPTIONS_CURRENCY_ESP                                   :スペイン・ペセタ(₧)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :フィンランド・マーカ(FIM)
+STR_GAME_OPTIONS_CURRENCY_FRF                                   :フランス・フラン(₣)
+STR_GAME_OPTIONS_CURRENCY_GRD                                   :ギリシャ・ドラクマ(₯)
+STR_GAME_OPTIONS_CURRENCY_HUF                                   :ハンガリー・フォリント(HUF)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :アイスランド・クローナ(ISK)
+STR_GAME_OPTIONS_CURRENCY_ITL                                   :イタリア・リラ(ITL)
+STR_GAME_OPTIONS_CURRENCY_NLG                                   :オランダ・ギルダー(ƒ)
+STR_GAME_OPTIONS_CURRENCY_NOK                                   :ノルウェー・クローネ(NOK)
+STR_GAME_OPTIONS_CURRENCY_PLN                                   :ポーランド・ズウォティ(PLN)
+STR_GAME_OPTIONS_CURRENCY_RON                                   :ルーマニア・レウ(RON)
+STR_GAME_OPTIONS_CURRENCY_RUR                                   :ロシア・ルーブル(₽)
+STR_GAME_OPTIONS_CURRENCY_SIT                                   :スロベニア・トラール(SIT)
+STR_GAME_OPTIONS_CURRENCY_SEK                                   :スウェーデン・クローナ(SEK)
+STR_GAME_OPTIONS_CURRENCY_TRY                                   :トルコ・リラ(₺)
+STR_GAME_OPTIONS_CURRENCY_SKK                                   :スロバキア・コルナ(SKK)
+STR_GAME_OPTIONS_CURRENCY_BRL                                   :ブラジル・レアル(R$)
+STR_GAME_OPTIONS_CURRENCY_EEK                                   :エストニア・クローン(EEK)
+STR_GAME_OPTIONS_CURRENCY_LTL                                   :リトアニア・リタス(LTL)
+STR_GAME_OPTIONS_CURRENCY_KRW                                   :韓国・ウォン(₩)
 STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南アフリカランド (ZAR)
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :カスタム…
-STR_GAME_OPTIONS_CURRENCY_GEL                                   :グルジア ラリー(GEL)
-STR_GAME_OPTIONS_CURRENCY_IRR                                   :イラン リアル(IRR)
+STR_GAME_OPTIONS_CURRENCY_GEL                                   :グルジア・ラリー(GEL)
+STR_GAME_OPTIONS_CURRENCY_IRR                                   :イラン・リアル(IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :新ロシアルーブル（RUB）
-STR_GAME_OPTIONS_CURRENCY_MXN                                   :メキシコペソ（MXN）
+STR_GAME_OPTIONS_CURRENCY_MXN                                   :メキシコ・ペソ(MXN)
 STR_GAME_OPTIONS_CURRENCY_NTD                                   :新台湾ドル(ntd)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :人民元(CNY)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :中国・人民元(CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :香港ドル（HKD）
 STR_GAME_OPTIONS_CURRENCY_INR                                   :インドルピー（INR）
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :インドネシアルピア（IDR）
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :マレーシア・リンギット（MYR）
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :インドネシア・ルピア(IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :マレーシア・リンギット(MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :左側通行
@@ -1223,6 +1223,7 @@ STR_CONFIG_SETTING_AUTOSLOPE                                    :建物/路線�
 STR_CONFIG_SETTING_AUTOSLOPE_HELPTEXT                           :撤去を行わないで建物や路線がある土地の地形を変更することを可能にします。建物/路線は変更された地形に自動で追従します。
 STR_CONFIG_SETTING_CATCHMENT                                    :現実的な受入範囲: {STRING}
 STR_CONFIG_SETTING_CATCHMENT_HELPTEXT                           :駅や空港の種類の違いによって受入範囲が変動するようになります
+STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES                     :会社の駅が中立の専用荷役所を持つ産業からサービスを受けられるようにする: {STRING}
 STR_CONFIG_SETTING_SERVE_NEUTRAL_INDUSTRIES_HELPTEXT            :有効にすると、駅が接続されている産業（石油掘削装置など）にも、近くに建設された会社が所有している駅がサービスを提供する場合があります。無効になっている場合、これらの産業は、接続されているステーションによってのみサービスを受けることができます。近くの会社のステーションはそれらにサービスを提供できず、接続されたステーションは業界以外のものにサービスを提供しません
 STR_CONFIG_SETTING_EXTRADYNAMITE                                :街有道路・橋・トンネルの撤去容認: {STRING}
 STR_CONFIG_SETTING_EXTRADYNAMITE_HELPTEXT                       :街有の交通インフラや建物の撤去をより容易にします
@@ -1485,7 +1486,7 @@ STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS                          :線路の敷設
 STR_CONFIG_SETTING_AUTO_REMOVE_SIGNALS_HELPTEXT                 :信号が経路上に存在する場合線路設置の際にすべて自動的に除去されます。鉄道車両の衝突につながる危険性があります。
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT                     :ゲーム進行速度の加速制限: {STRING}
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_HELPTEXT            :早送りが有効になっている場合のゲーム進行速度を制限します。0 = 制限なし(コンピュータの許す限り高速にする)。100%より下げると進行速度が遅くなります。制限の上限はコンピュータの仕様によって異なり、ゲームの設定にも依存します。
-STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :{NUM}％通常のゲーム速度
+STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_VAL                 :通常の {NUM}% まで
 STR_CONFIG_SETTING_FAST_FORWARD_SPEED_LIMIT_ZERO                :制限なし（コンピューターが許す限り高速）
 
 STR_CONFIG_SETTING_SOUND_TICKER                                 :ニュース表示: {STRING}
@@ -2415,7 +2416,7 @@ STR_RAIL_TOOLBAR_TOOLTIP_CONVERT_RAIL                           :{BLACK}既設�
 STR_RAIL_NAME_RAILROAD                                          :鉄道 (非電化)
 STR_RAIL_NAME_ELRAIL                                            :電気鉄道
 STR_RAIL_NAME_MONORAIL                                          :モノレール
-STR_RAIL_NAME_MAGLEV                                            :マグレブ
+STR_RAIL_NAME_MAGLEV                                            :リニア
 
 # Rail depot construction window
 STR_BUILD_DEPOT_TRAIN_ORIENTATION_CAPTION                       :{WHITE}列車庫建設
@@ -2810,6 +2811,7 @@ STR_FRAMERATE_RATE_GAMELOOP_TOOLTIP                             :{BLACK}一秒�
 STR_FRAMERATE_RATE_BLITTER                                      :{BLACK}グラフィックフレームレート：{STRING}
 STR_FRAMERATE_RATE_BLITTER_TOOLTIP                              :{BLACK}一秒あたりに描写されるフレームの数。
 STR_FRAMERATE_SPEED_FACTOR                                      :{BLACK}現在のゲーム速度：{DECIMAL} x
+STR_FRAMERATE_SPEED_FACTOR_TOOLTIP                              :{BLACK}通常の速度に比べたゲーム進行速度の加速率
 STR_FRAMERATE_CURRENT                                           :{WHITE}現在
 STR_FRAMERATE_AVERAGE                                           :{WHITE}平均
 STR_FRAMERATE_MEMORYUSE                                         :{WHITE}メモリ
@@ -4733,11 +4735,11 @@ STR_BASEGRAPHICS_DOS_DE_DESCRIPTION                             :Transport Tycoo
 STR_BASEGRAPHICS_WIN_DESCRIPTION                                :Transport Tycoon Deluxe オリジナル版 グラフィック (Windows)
 STR_BASESOUNDS_DOS_DESCRIPTION                                  :Transport Tycoon Deluxe オリジナル版 効果音 (DOS)
 STR_BASESOUNDS_WIN_DESCRIPTION                                  :Transport Tycoon Deluxe オリジナル版 効果音 (Windows)
-STR_BASESOUNDS_NONE_DESCRIPTION                                 :空の効果音パック
+STR_BASESOUNDS_NONE_DESCRIPTION                                 :音源の含まれない効果音セット
 STR_BASEMUSIC_WIN_DESCRIPTION                                   :Transport Tycoon Deluxe オリジナル版 音楽 (Windows)
 STR_BASEMUSIC_DOS_DESCRIPTION                                   :Transport Tycoon Deluxe オリジナル版 音楽 (DOS)
 STR_BASEMUSIC_TTO_DESCRIPTION                                   :オリジナルトランスポートタイクーン（オリジナル/ワールドエディター）DOS版の音楽。
-STR_BASEMUSIC_NONE_DESCRIPTION                                  :空の音楽パック
+STR_BASEMUSIC_NONE_DESCRIPTION                                  :音源の含まれない音楽セット
 
 ##id 0x2000
 # Town building names
