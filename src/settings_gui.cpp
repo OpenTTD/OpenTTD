@@ -1035,8 +1035,7 @@ void SettingEntry::Init(byte level)
 /* Sets the given setting entry to its default value */
 void SettingEntry::ResetAll()
 {
-	int32 default_value = ReadValue(&this->setting->def, this->setting->save.conv);
-	SetSettingValue(this->setting, default_value);
+	SetSettingValue(this->setting, this->setting->def);
 }
 
 /**
@@ -1092,7 +1091,7 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 		/* This entry shall only be visible, if the value deviates from its default value. */
 
 		/* Read the default value. */
-		filter_value = ReadValue(&sd->def, sd->save.conv);
+		filter_value = sd->def;
 	} else {
 		assert(mode == RM_CHANGED_AGAINST_NEW);
 		/* This entry shall only be visible, if the value deviates from
@@ -2086,8 +2085,7 @@ struct GameSettingsWindow : Window {
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_TYPE);
 					y += FONT_HEIGHT_NORMAL;
 
-					int32 default_value = ReadValue(&sd->def, sd->save.conv);
-					this->last_clicked->SetValueDParams(0, default_value);
+					this->last_clicked->SetValueDParams(0, sd->def);
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_DEFAULT_VALUE);
 					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
 
@@ -2324,7 +2322,7 @@ struct GameSettingsWindow : Window {
 
 			value = (int32)ClampToI32(llvalue);
 		} else {
-			value = (int32)(size_t)sd->def;
+			value = sd->def;
 		}
 
 		SetSettingValue(this->valuewindow_entry->setting, value);
