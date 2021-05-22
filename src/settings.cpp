@@ -2204,26 +2204,20 @@ void IConsoleSetSetting(const char *name, int value)
  */
 void IConsoleGetSetting(const char *name, bool force_newgame)
 {
-	char value[20];
 	const SettingDesc *sd = GetSettingFromName(name);
-	const void *ptr;
-
 	if (sd == nullptr) {
 		IConsolePrintF(CC_WARNING, "'%s' is an unknown setting.", name);
 		return;
 	}
 
-	ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
+	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
 
 	if (sd->cmd == SDT_STDSTRING) {
+		const void *ptr = GetVariableAddress(object, &sd->save);
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, reinterpret_cast<const std::string *>(ptr)->c_str());
 	} else {
-		if (sd->cmd == SDT_BOOLX) {
-			seprintf(value, lastof(value), (*(const bool*)ptr != 0) ? "on" : "off");
-		} else {
-			seprintf(value, lastof(value), sd->min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
-		}
-
+		char value[20];
+		sd->FormatValue(value, lastof(value), object);
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %u)",
 			name, value, (sd->flags & SGF_0ISDISABLED) ? "(0) " : "", sd->min, sd->max);
 	}
@@ -2242,15 +2236,7 @@ void IConsoleListSettings(const char *prefilter)
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (prefilter != nullptr && strstr(sd->name, prefilter) == nullptr) continue;
 		char value[80];
-		const void *ptr = GetVariableAddress(&GetGameSettings(), &sd->save);
-
-		if (sd->cmd == SDT_BOOLX) {
-			seprintf(value, lastof(value), (*(const bool *)ptr != 0) ? "on" : "off");
-		} else if (sd->cmd == SDT_STDSTRING) {
-			seprintf(value, lastof(value), "%s", reinterpret_cast<const std::string *>(ptr)->c_str());
-		} else {
-			seprintf(value, lastof(value), sd->min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
-		}
+		sd->FormatValue(value, lastof(value), &GetGameSettings());
 		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->name, value);
 	}
 
