@@ -446,33 +446,22 @@ static const void *StringToVal(const SettingDesc *desc, const char *orig_str)
 }
 
 /**
- * Set the value of a setting and if needed clamp the value to
- * the preset minimum and maximum.
- * @param ptr the variable itself
- * @param sd pointer to the 'information'-database of the variable
- * @param val signed long version of the new value
- * @pre SettingDesc is of type SDT_BOOLX, SDT_NUMX,
- * SDT_ONEOFMANY or SDT_MANYOFMANY. Other types are not supported as of now
+ * Set the value of a setting and if needed clamp the value to the preset minimum and maximum.
+ * @param object The object the setting is to be saved in.
+ * @param val Signed version of the new value.
  */
-static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
+void IntSettingDesc::Write_ValidateSetting(const void *object, int32 val) const
 {
-	const SettingDesc *sdb = sd;
-
-	if (sdb->cmd != SDT_BOOLX &&
-			sdb->cmd != SDT_NUMX &&
-			sdb->cmd != SDT_ONEOFMANY &&
-			sdb->cmd != SDT_MANYOFMANY) {
-		return;
-	}
+	void *ptr = GetVariableAddress(object, &this->save);
 
 	/* We cannot know the maximum value of a bitset variable, so just have faith */
-	if (sdb->cmd != SDT_MANYOFMANY) {
+	if (this->cmd != SDT_MANYOFMANY) {
 		/* We need to take special care of the uint32 type as we receive from the function
 		 * a signed integer. While here also bail out on 64-bit settings as those are not
 		 * supported. Unsigned 8 and 16-bit variables are safe since they fit into a signed
 		 * 32-bit variable
 		 * TODO: Support 64-bit settings/variables */
-		switch (GetVarMemType(sd->save.conv)) {
+		switch (GetVarMemType(this->save.conv)) {
 			case SLE_VAR_NULL: return;
 			case SLE_VAR_BL:
 			case SLE_VAR_I8:
@@ -481,13 +470,13 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 			case SLE_VAR_U16:
 			case SLE_VAR_I32: {
 				/* Override the minimum value. No value below sdb->min, except special value 0 */
-				if (!(sdb->flags & SGF_0ISDISABLED) || val != 0) {
-					if (!(sdb->flags & SGF_MULTISTRING)) {
+				if (!(this->flags & SGF_0ISDISABLED) || val != 0) {
+					if (!(this->flags & SGF_MULTISTRING)) {
 						/* Clamp value-type setting to its valid range */
-						val = Clamp(val, sdb->min, sdb->max);
-					} else if (val < sdb->min || val > (int32)sdb->max) {
+						val = Clamp(val, this->min, this->max);
+					} else if (val < this->min || val > (int32)this->max) {
 						/* Reset invalid discrete setting (where different values change gameplay) to its default value */
-						val = (int32)(size_t)sdb->def;
+						val = (int32)(size_t)this->def;
 					}
 				}
 				break;
@@ -495,13 +484,13 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 			case SLE_VAR_U32: {
 				/* Override the minimum value. No value below sdb->min, except special value 0 */
 				uint32 uval = (uint32)val;
-				if (!(sdb->flags & SGF_0ISDISABLED) || uval != 0) {
-					if (!(sdb->flags & SGF_MULTISTRING)) {
+				if (!(this->flags & SGF_0ISDISABLED) || uval != 0) {
+					if (!(this->flags & SGF_MULTISTRING)) {
 						/* Clamp value-type setting to its valid range */
-						uval = ClampU(uval, sdb->min, sdb->max);
-					} else if (uval < (uint)sdb->min || uval > sdb->max) {
+						uval = ClampU(uval, this->min, this->max);
+					} else if (uval < (uint)this->min || uval > this->max) {
 						/* Reset invalid discrete setting to its default value */
-						uval = (uint32)(size_t)sdb->def;
+						uval = (uint32)(size_t)this->def;
 					}
 				}
 				WriteValue(ptr, SLE_VAR_U32, (int64)uval);
@@ -513,7 +502,7 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 		}
 	}
 
-	WriteValue(ptr, sd->save.conv, (int64)val);
+	WriteValue(ptr, this->save.conv, (int64)val);
 }
 
 /**
@@ -610,7 +599,7 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 			case SDT_NUMX:
 			case SDT_ONEOFMANY:
 			case SDT_MANYOFMANY:
-				Write_ValidateSetting(ptr, sd.get(), (int32)(size_t)p);
+				sd->AsIntSetting()->Write_ValidateSetting(object, (int32)(size_t)p);
 				break;
 
 			case SDT_STDSTRING:
@@ -844,6 +833,24 @@ SettingType SettingDesc::GetType() const
 {
 	if (this->flags & SGF_PER_COMPANY) return ST_COMPANY;
 	return (this->save.conv & SLF_NOT_IN_SAVE) ? ST_CLIENT : ST_GAME;
+}
+
+/**
+ * Check whether this setting is an integer type setting.
+ * @return True when the underlying type is an integer.
+ */
+bool SettingDesc::IsIntSetting() const {
+	return this->cmd == SDT_BOOLX || this->cmd == SDT_NUMX || this->cmd == SDT_ONEOFMANY || this->cmd == SDT_MANYOFMANY;
+}
+
+/**
+ * Get the setting description of this setting as an integer setting.
+ * @return The integer setting description.
+ */
+const IntSettingDesc *SettingDesc::AsIntSetting() const
+{
+	assert(this->IsIntSetting());
+	return static_cast<const IntSettingDesc *>(this);
 }
 
 /* Begin - Callback Functions for the various settings. */
@@ -1451,8 +1458,8 @@ static void HandleOldDiffCustom(bool savegame)
 		const SettingDesc *sd = GetSettingDescription(i);
 		/* Skip deprecated options */
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		void *var = GetVariableAddress(savegame ? &_settings_game : &_settings_newgame, &sd->save);
-		Write_ValidateSetting(var, sd, (int32)((i == 4 ? 1000 : 1) * _old_diff_custom[i]));
+		int32 value = (int32)((i == 4 ? 1000 : 1) * _old_diff_custom[i]);
+		sd->AsIntSetting()->Write_ValidateSetting(savegame ? &_settings_game : &_settings_newgame, value);
 	}
 }
 
@@ -1880,6 +1887,40 @@ void DeleteGRFPresetFromConfig(const char *config_name)
 }
 
 /**
+ * Handle changing a value. This performs validation of the input value and
+ * calls the appropriate callbacks, and saves it when the value is changed.
+ * @param object The object the setting is in.
+ * @param newval The new value for the setting.
+ */
+void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
+{
+	void *var = GetVariableAddress(object, &this->save);
+
+	int32 oldval = (int32)ReadValue(var, this->save.conv);
+
+	this->Write_ValidateSetting(object, newval);
+	newval = (int32)ReadValue(var, this->save.conv);
+
+	if (oldval == newval) return;
+
+	if (this->proc != nullptr && !this->proc(newval)) {
+		/* The change was not allowed, so revert. */
+		WriteValue(var, this->save.conv, (int64)oldval);
+		return;
+	}
+
+	if (this->flags & SGF_NO_NETWORK) {
+		GamelogStartAction(GLAT_SETTING);
+		GamelogSetting(this->name, oldval, newval);
+		GamelogStopAction();
+	}
+
+	SetWindowClassesDirty(WC_GAME_OPTIONS);
+
+	if (_save_config) SaveToConfig();
+}
+
+/**
  * Network-safe changing of settings (server-only).
  * @param tile unused
  * @param flags operation to perform
@@ -1896,34 +1937,12 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 	if (sd == nullptr) return CMD_ERROR;
 	if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) return CMD_ERROR;
+	if (!sd->IsIntSetting()) return CMD_ERROR;
 
 	if (!sd->IsEditable(true)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		void *var = GetVariableAddress(&GetGameSettings(), &sd->save);
-
-		int32 oldval = (int32)ReadValue(var, sd->save.conv);
-		int32 newval = (int32)p2;
-
-		Write_ValidateSetting(var, sd, newval);
-		newval = (int32)ReadValue(var, sd->save.conv);
-
-		if (oldval == newval) return CommandCost();
-
-		if (sd->proc != nullptr && !sd->proc(newval)) {
-			WriteValue(var, sd->save.conv, (int64)oldval);
-			return CommandCost();
-		}
-
-		if (sd->flags & SGF_NO_NETWORK) {
-			GamelogStartAction(GLAT_SETTING);
-			GamelogSetting(sd->name, oldval, newval);
-			GamelogStopAction();
-		}
-
-		SetWindowClassesDirty(WC_GAME_OPTIONS);
-
-		if (_save_config) SaveToConfig();
+		sd->AsIntSetting()->ChangeValue(&GetGameSettings(), p2);
 	}
 
 	return CommandCost();
@@ -1943,24 +1962,10 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 {
 	const SettingDesc *sd = GetCompanySettingDescription(p1);
 	if (sd == nullptr) return CMD_ERROR;
+	if (!sd->IsIntSetting()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		void *var = GetVariableAddress(&Company::Get(_current_company)->settings, &sd->save);
-
-		int32 oldval = (int32)ReadValue(var, sd->save.conv);
-		int32 newval = (int32)p2;
-
-		Write_ValidateSetting(var, sd, newval);
-		newval = (int32)ReadValue(var, sd->save.conv);
-
-		if (oldval == newval) return CommandCost();
-
-		if (sd->proc != nullptr && !sd->proc(newval)) {
-			WriteValue(var, sd->save.conv, (int64)oldval);
-			return CommandCost();
-		}
-
-		SetWindowClassesDirty(WC_GAME_OPTIONS);
+		sd->AsIntSetting()->ChangeValue(&Company::Get(_current_company)->settings, p2);
 	}
 
 	return CommandCost();
@@ -2013,14 +2018,13 @@ static uint GetCompanySettingIndex(const SettingDesc *sd)
  */
 bool SetSettingValue(const SettingDesc *sd, int32 value, bool force_newgame)
 {
-	if ((sd->flags & SGF_PER_COMPANY) != 0) {
+	const IntSettingDesc *setting = sd->AsIntSetting();
+	if ((setting->flags & SGF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-			return DoCommandP(0, GetCompanySettingIndex(sd), value, CMD_CHANGE_COMPANY_SETTING);
+			return DoCommandP(0, GetCompanySettingIndex(setting), value, CMD_CHANGE_COMPANY_SETTING);
 		}
 
-		void *var = GetVariableAddress(&_settings_client.company, &sd->save);
-		Write_ValidateSetting(var, sd, value);
-		if (sd->proc != nullptr) sd->proc((int32)ReadValue(var, sd->save.conv));
+		setting->ChangeValue(&_settings_client.company, value);
 		return true;
 	}
 
@@ -2028,33 +2032,22 @@ bool SetSettingValue(const SettingDesc *sd, int32 value, bool force_newgame)
 	 * (if any) to change. Also *hack*hack* we update the _newgame version
 	 * of settings because changing a company-based setting in a game also
 	 * changes its defaults. At least that is the convention we have chosen */
-	if (sd->save.conv & SLF_NO_NETWORK_SYNC) {
-		void *var = GetVariableAddress(&GetGameSettings(), &sd->save);
-		Write_ValidateSetting(var, sd, value);
-
+	if (setting->save.conv & SLF_NO_NETWORK_SYNC) {
 		if (_game_mode != GM_MENU) {
-			void *var2 = GetVariableAddress(&_settings_newgame, &sd->save);
-			Write_ValidateSetting(var2, sd, value);
+			setting->ChangeValue(&_settings_newgame, value);
 		}
-		if (sd->proc != nullptr) sd->proc((int32)ReadValue(var, sd->save.conv));
-
-		SetWindowClassesDirty(WC_GAME_OPTIONS);
-
-		if (_save_config) SaveToConfig();
+		setting->ChangeValue(&GetGameSettings(), value);
 		return true;
 	}
 
 	if (force_newgame) {
-		void *var2 = GetVariableAddress(&_settings_newgame, &sd->save);
-		Write_ValidateSetting(var2, sd, value);
-
-		if (_save_config) SaveToConfig();
+		setting->ChangeValue(&_settings_newgame, value);
 		return true;
 	}
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return DoCommandP(0, GetSettingIndex(sd), value, CMD_CHANGE_SETTING);
+		return DoCommandP(0, GetSettingIndex(setting), value, CMD_CHANGE_SETTING);
 	}
 	return false;
 }
@@ -2066,8 +2059,8 @@ void SetDefaultCompanySettings(CompanyID cid)
 {
 	Company *c = Company::Get(cid);
 	for (auto &sd : _company_settings) {
-		void *var = GetVariableAddress(&c->settings, &sd->save);
-		Write_ValidateSetting(var, sd.get(), (int32)(size_t)sd->def);
+		const IntSettingDesc *int_setting = sd->AsIntSetting();
+		int_setting->Write_ValidateSetting(&c->settings, (int32)(size_t)int_setting->def);
 	}
 }
 
@@ -2256,7 +2249,7 @@ static void LoadSettings(const SettingTable &settings, void *object)
 		void *ptr = GetVariableAddress(object, sld);
 
 		if (!SlObjectMember(ptr, sld)) continue;
-		if (IsNumericType(sld->conv)) Write_ValidateSetting(ptr, osd.get(), ReadValue(ptr, sld->conv));
+		if (osd->IsIntSetting()) osd->AsIntSetting()->Write_ValidateSetting(object, ReadValue(ptr, sld->conv));
 	}
 }
 
