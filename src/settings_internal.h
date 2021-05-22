@@ -110,6 +110,8 @@ struct SettingDesc {
 
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
+	bool IsIntSetting() const;
+	const struct IntSettingDesc *AsIntSetting() const;
 
 	/**
 	 * Format the value of the setting associated with this object.
@@ -128,6 +130,9 @@ struct IntSettingDesc : SettingDesc {
 		SettingDesc(save, name, (void*)(size_t)def, cmd, flags, min, max, interval, many, str, str_help, str_val,
 			proc, many_cnvt, cat, startup) {}
 	virtual ~IntSettingDesc() {}
+
+	void ChangeValue(const void *object, int32 newvalue) const;
+	void Write_ValidateSetting(const void *object, int32 value) const;
 
 	void FormatValue(char *buf, const char *last, const void *object) const override;
 };
