@@ -285,13 +285,13 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
  * @param nelems the number of elements the array holds.
  * @param type the type of elements the array holds (eg INT8, UINT16, etc.)
  */
-static void MakeIntList(char *buf, const char *last, const void *array, int nelems, VarType type)
+void ListSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
+	const byte *p = static_cast<const byte *>(GetVariableAddress(object, &this->save));
 	int i, v = 0;
-	const byte *p = (const byte *)array;
 
-	for (i = 0; i != nelems; i++) {
-		switch (GetVarMemType(type)) {
+	for (i = 0; i != this->save.length; i++) {
+		switch (GetVarMemType(this->save.conv)) {
 			case SLE_VAR_BL:
 			case SLE_VAR_I8:  v = *(const   int8 *)p; p += 1; break;
 			case SLE_VAR_U8:  v = *(const  uint8 *)p; p += 1; break;
@@ -301,9 +301,9 @@ static void MakeIntList(char *buf, const char *last, const void *array, int nele
 			case SLE_VAR_U32: v = *(const uint32 *)p; p += 4; break;
 			default: NOT_REACHED();
 		}
-		if (IsSignedVarMemType(type)) {
+		if (IsSignedVarMemType(this->save.conv)) {
 			buf += seprintf(buf, last, (i == 0) ? "%d" : ",%d", v);
-		} else if (type & SLF_HEX) {
+		} else if (this->save.conv & SLF_HEX) {
 			buf += seprintf(buf, last, (i == 0) ? "0x%X" : ",0x%X", v);
 		} else {
 			buf += seprintf(buf, last, (i == 0) ? "%u" : ",%u", v);
@@ -549,6 +549,16 @@ static void Write_ValidateStdString(void *ptr, const SettingDesc *sd, const char
 }
 
 /**
+ * Read the string from the the actual setting.
+ * @param object The object the setting is to be saved in.
+ * @return The value of the saved string.
+ */
+const std::string &StringSettingDesc::Read(const void *object) const
+{
+	return *reinterpret_cast<std::string *>(GetVariableAddress(object, &this->save));
+}
+
+/**
  * Load values from a group of an IniFile structure into the internal representation
  * @param ini pointer to IniFile structure that holds administrative information
  * @param settings_table table with SettingDesc structures whose internally pointed variables will
@@ -665,11 +675,11 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 		}
 
 		item = group->GetItem(s, true);
-		ptr = GetVariableAddress(object, sld);
 
 		if (item->value.has_value()) {
 			/* check if the value is the same as the old value */
 			const void *p = StringToVal(sdb, item->value->c_str());
+			ptr = GetVariableAddress(object, sld);
 
 			/* The main type of a variable/setting is in bytes 8-15
 			 * The subtype (what kind of numbers do we have there) is in 0-7 */
@@ -707,48 +717,40 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 		}
 
 		/* Value has changed, get the new value and put it into a buffer */
-		switch (sdb->cmd) {
-			case SDT_BOOLX:
-			case SDT_NUMX:
-			case SDT_ONEOFMANY:
-			case SDT_MANYOFMANY: {
-				uint32 i = (uint32)ReadValue(ptr, sld->conv);
-
-				switch (sdb->cmd) {
-					case SDT_BOOLX:      strecpy(buf, (i != 0) ? "true" : "false", lastof(buf)); break;
-					case SDT_NUMX:       seprintf(buf, lastof(buf), IsSignedVarMemType(sld->conv) ? "%d" : (sld->conv & SLF_HEX) ? "%X" : "%u", i); break;
-					case SDT_ONEOFMANY:  MakeOneOfMany(buf, lastof(buf), sdb->many, i); break;
-					case SDT_MANYOFMANY: MakeManyOfMany(buf, lastof(buf), sdb->many, i); break;
-					default: NOT_REACHED();
-				}
-				break;
-			}
-
-			case SDT_STDSTRING:
-				switch (GetVarMemType(sld->conv)) {
-					case SLE_VAR_STR: strecpy(buf, reinterpret_cast<std::string *>(ptr)->c_str(), lastof(buf)); break;
-
-					case SLE_VAR_STRQ:
-						if (reinterpret_cast<std::string *>(ptr)->empty()) {
-							buf[0] = '\0';
-						} else {
-							seprintf(buf, lastof(buf), "\"%s\"", reinterpret_cast<std::string *>(ptr)->c_str());
-						}
-						break;
-
-					default: NOT_REACHED();
-				}
-				break;
-
-			case SDT_INTLIST:
-				MakeIntList(buf, lastof(buf), ptr, sld->length, sld->conv);
-				break;
-
-			default: NOT_REACHED();
-		}
+		sdb->FormatValue(buf, lastof(buf), object);
 
 		/* The value is different, that means we have to write it to the ini */
 		item->value.emplace(buf);
+	}
+}
+
+void IntSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+{
+	uint32 i = (uint32)ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
+	switch (this->cmd) {
+		case SDT_BOOLX:      strecpy(buf, (i != 0) ? "true" : "false", last); break;
+		case SDT_NUMX:       seprintf(buf, last, IsSignedVarMemType(this->save.conv) ? "%d" : (this->save.conv & SLF_HEX) ? "%X" : "%u", i); break;
+		case SDT_ONEOFMANY:  MakeOneOfMany(buf, last, this->many, i); break;
+		case SDT_MANYOFMANY: MakeManyOfMany(buf, last, this->many, i); break;
+		default: NOT_REACHED();
+	}
+}
+
+void StringSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+{
+	const std::string &str = this->Read(object);
+	switch (GetVarMemType(this->save. conv)) {
+		case SLE_VAR_STR: strecpy(buf, str.c_str(), last); break;
+
+		case SLE_VAR_STRQ:
+			if (str.empty()) {
+				buf[0] = '\0';
+			} else {
+				seprintf(buf, last, "\"%s\"", str.c_str());
+			}
+			break;
+
+		default: NOT_REACHED();
 	}
 }
 
