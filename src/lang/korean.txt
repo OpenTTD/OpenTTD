@@ -3047,8 +3047,8 @@ STR_NEWGRF_PARAMETERS_NUM_PARAM                                 :{LTBLUE}매개 
 
 # NewGRF inspect window
 STR_NEWGRF_INSPECT_CAPTION                                      :{WHITE}NEWGRF 검사 - {STRING}
-STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}상위 단계
-STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}상위 단계 범위의 오브젝트를 검사합니다.
+STR_NEWGRF_INSPECT_PARENT_BUTTON                                :{BLACK}상위
+STR_NEWGRF_INSPECT_PARENT_TOOLTIP                               :{BLACK}상위 단계 범위의 오브젝트를 검사합니다
 
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT                            :{STRING}, {HEX}에서
 STR_NEWGRF_INSPECT_CAPTION_OBJECT_AT_OBJECT                     :오브젝트
