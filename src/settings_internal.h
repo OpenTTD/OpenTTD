@@ -16,7 +16,7 @@
  * Convention/Type of settings. This is then further specified if necessary
  * with the SLE_ (SLE_VAR/SLE_FILE) enums in saveload.h
  * @see VarTypes
- * @see SettingDescBase
+ * @see SettingDesc
  */
 enum SettingDescType : byte {
 	SDT_NUMX        = 0, ///< any number-type
@@ -25,6 +25,7 @@ enum SettingDescType : byte {
 	SDT_MANYOFMANY  = 3, ///< bitmasked number where MULTIPLE bits may be set
 	SDT_INTLIST     = 4, ///< list of integers separated by a comma ','
 	SDT_STDSTRING   = 6, ///< \c std::string
+	SDT_NULL        = 7, ///< an old setting that has been removed but could still be in savegames
 };
 
 enum SettingGuiFlag : uint16 {
@@ -83,6 +84,13 @@ typedef size_t OnConvert(const char *value); ///< callback prototype for convers
 
 /** Properties of config file settings. */
 struct SettingDesc {
+	SettingDesc(SaveLoad save, const char *name, const void *def, SettingDescType cmd, SettingGuiFlag flags,
+			int32 min, uint32 max, int32 interval, const char *many, StringID str, StringID str_help,
+			StringID str_val, OnChange *proc, OnConvert *proc_cnvt, SettingCategory cat, bool startup) :
+		name(name), def(def), cmd(cmd), flags(flags), min(min), max(max), interval(interval), many(many), str(str),
+		str_help(str_help), str_val(str_val), proc(proc), proc_cnvt(proc_cnvt), cat(cat), startup(startup), save(save) {}
+	virtual ~SettingDesc() {}
+
 	const char *name;       ///< name of the setting. Used in configuration file and for console
 	const void *def;        ///< default value given when none is present
 	SettingDescType cmd;    ///< various flags for the variable
@@ -102,6 +110,38 @@ struct SettingDesc {
 
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
+};
+
+/** Integer type, including boolean, settings. Only these are shown in the settings UI. */
+struct IntSettingDesc : SettingDesc {
+	IntSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, int32 def,
+			int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
+			SettingCategory cat, OnChange *proc, const char *many = nullptr, OnConvert *many_cnvt = nullptr) :
+		SettingDesc(save, name, (void*)(size_t)def, cmd, flags, min, max, interval, many, str, str_help, str_val,
+			proc, many_cnvt, cat, startup) {}
+	virtual ~IntSettingDesc() {}
+};
+
+/** String settings. */
+struct StringSettingDesc : SettingDesc {
+	StringSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, const char *def,
+			uint32 max_length, OnChange proc) :
+		SettingDesc(save, name, def, cmd, flags, 0, max_length, 0, nullptr, 0, 0, 0, proc, nullptr, SC_NONE, startup) {}
+	virtual ~StringSettingDesc() {}
+};
+
+/** List/array settings. */
+struct ListSettingDesc : SettingDesc {
+	ListSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, const char *def) :
+		SettingDesc(save, name, def, cmd, flags, 0, 0, 0, nullptr, 0, 0, 0, proc, nullptr, SC_NONE, startup) {}
+	virtual ~ListSettingDesc() {}
+};
+
+/** Placeholder for settings that have been removed, but might still linger in the savegame. */
+struct NullSettingDesc : SettingDesc {
+	NullSettingDesc(SaveLoad save) :
+		SettingDesc(save, "", nullptr, SDT_NULL, SGF_NONE, 0, 0, 0, nullptr, 0, 0, 0, nullptr, nullptr, SC_NONE, false) {}
+	virtual ~NullSettingDesc() {}
 };
 
 typedef std::initializer_list<std::unique_ptr<const SettingDesc>> SettingTable;
