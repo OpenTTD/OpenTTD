@@ -23,9 +23,7 @@ static size_t ConvertLandscape(const char *value);
  * The macros can be grouped depending on where the config variable is
  * stored:
  * 1. SDTG_something
- *    These are for global variables, so this is the one you will use
- *    for a #SettingDescGlobVarList section. Here 'var' refers to a
- *    global variable.
+ *    These are for global variables. Here 'var' refers to a global variable.
  * 2. SDTC_something
  *    These are for client-only variables. Here the 'var' refers to an
  *    entry inside _settings_client.
