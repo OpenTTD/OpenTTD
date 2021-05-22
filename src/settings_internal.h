@@ -110,6 +110,14 @@ struct SettingDesc {
 
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
+
+	/**
+	 * Format the value of the setting associated with this object.
+	 * @param buf The before of the buffer to format into.
+	 * @param last The end of the buffer to format into.
+	 * @param object The object the setting is in.
+	 */
+	virtual void FormatValue(char *buf, const char *last, const void *object) const = 0;
 };
 
 /** Integer type, including boolean, settings. Only these are shown in the settings UI. */
@@ -120,6 +128,8 @@ struct IntSettingDesc : SettingDesc {
 		SettingDesc(save, name, (void*)(size_t)def, cmd, flags, min, max, interval, many, str, str_help, str_val,
 			proc, many_cnvt, cat, startup) {}
 	virtual ~IntSettingDesc() {}
+
+	void FormatValue(char *buf, const char *last, const void *object) const override;
 };
 
 /** String settings. */
@@ -128,6 +138,9 @@ struct StringSettingDesc : SettingDesc {
 			uint32 max_length, OnChange proc) :
 		SettingDesc(save, name, def, cmd, flags, 0, max_length, 0, nullptr, 0, 0, 0, proc, nullptr, SC_NONE, startup) {}
 	virtual ~StringSettingDesc() {}
+
+	void FormatValue(char *buf, const char *last, const void *object) const override;
+	const std::string &Read(const void *object) const;
 };
 
 /** List/array settings. */
@@ -135,6 +148,8 @@ struct ListSettingDesc : SettingDesc {
 	ListSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, const char *def) :
 		SettingDesc(save, name, def, cmd, flags, 0, 0, 0, nullptr, 0, 0, 0, proc, nullptr, SC_NONE, startup) {}
 	virtual ~ListSettingDesc() {}
+
+	void FormatValue(char *buf, const char *last, const void *object) const override;
 };
 
 /** Placeholder for settings that have been removed, but might still linger in the savegame. */
@@ -142,6 +157,8 @@ struct NullSettingDesc : SettingDesc {
 	NullSettingDesc(SaveLoad save) :
 		SettingDesc(save, "", nullptr, SDT_NULL, SGF_NONE, 0, 0, 0, nullptr, 0, 0, 0, nullptr, nullptr, SC_NONE, false) {}
 	virtual ~NullSettingDesc() {}
+
+	void FormatValue(char *buf, const char *last, const void *object) const override { NOT_REACHED(); }
 };
 
 typedef std::initializer_list<std::unique_ptr<const SettingDesc>> SettingTable;
