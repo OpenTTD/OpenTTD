@@ -5191,9 +5191,13 @@ static void NewSpriteGroup(ByteReader *buf)
 				if (adjust.variable == 0x7E) {
 					/* Link subroutine group */
 					adjust.subroutine = GetGroupFromGroupID(setid, type, buf->ReadByte());
+					group->flags |= adjust.subroutine->flags;
 				} else {
 					adjust.parameter = IsInsideMM(adjust.variable, 0x60, 0x80) ? buf->ReadByte() : 0;
 				}
+
+				/* DSGA_OP_STOP has side-effects so should be processed even if there is no callback or rerandomization chain. */
+				if (adjust.operation == DSGA_OP_STOP) group->flags |= SpriteGroupFlags::HasCallbackChain | SpriteGroupFlags::HasRerandomizationChain;
 
 				varadjust = buf->ReadByte();
 				adjust.shift_num = GB(varadjust, 0, 5);
@@ -5223,6 +5227,10 @@ static void NewSpriteGroup(ByteReader *buf)
 			group->error_group = ranges.size() > 0 ? ranges[0].group : group->default_group;
 			/* nvar == 0 is a special case -- we turn our value into a callback result */
 			group->calculated_result = ranges.size() == 0;
+
+			if (group->calculated_result) group->flags |= SpriteGroupFlags::HasCallbackChain;
+			if (group->default_group != nullptr) group->flags |= group->default_group->flags;
+			if (group->error_group != nullptr) group->flags |= group->error_group->flags;
 
 			/* Sort ranges ascending. When ranges overlap, this may required clamping or splitting them */
 			std::vector<uint32> bounds;
@@ -5256,6 +5264,7 @@ static void NewSpriteGroup(ByteReader *buf)
 						j++;
 					}
 					r.high = j < bounds.size() ? bounds[j] - 1 : UINT32_MAX;
+					if (r.group != nullptr) group->flags |= r.group->flags;
 				} else {
 					j++;
 				}
@@ -5284,6 +5293,7 @@ static void NewSpriteGroup(ByteReader *buf)
 			group->triggers       = GB(triggers, 0, 7);
 			group->cmp_mode       = HasBit(triggers, 7) ? RSG_CMP_ALL : RSG_CMP_ANY;
 			group->lowest_randbit = buf->ReadByte();
+			if (group->triggers != 0) group->flags = SpriteGroupFlags::HasRerandomizationChain;
 
 			byte num_groups = buf->ReadByte();
 			if (!HasExactlyOneBit(num_groups)) {
@@ -5291,7 +5301,9 @@ static void NewSpriteGroup(ByteReader *buf)
 			}
 
 			for (uint i = 0; i < num_groups; i++) {
-				group->groups.push_back(GetGroupFromGroupID(setid, type, buf->ReadWord()));
+				const SpriteGroup *t = GetGroupFromGroupID(setid, type, buf->ReadWord());
+				group->groups.push_back(t);
+				if (t != nullptr) group->flags |= t->flags;
 			}
 
 			break;
@@ -5368,11 +5380,13 @@ static void NewSpriteGroup(ByteReader *buf)
 					for (uint16 spriteid : loaded) {
 						const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
 						group->loaded.push_back(t);
+						group->flags |= t->flags;
 					}
 
 					for (uint16 spriteid : loading) {
 						const SpriteGroup *t = CreateGroupFromGroupID(feature, setid, type, spriteid);
 						group->loading.push_back(t);
+						group->flags |= t->flags;
 					}
 
 					break;

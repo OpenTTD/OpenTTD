@@ -43,6 +43,13 @@ enum SpriteGroupType {
 	SGT_INDUSTRY_PRODUCTION,
 };
 
+enum class SpriteGroupFlags : uint8 {
+	None = 0,
+	HasCallbackChain        = (1U << 0), ///< The group contains a callback chain.
+	HasRerandomizationChain = (1U << 1), ///< The group contains a rerandomization chain.
+};
+DECLARE_ENUM_AS_BIT_SET(SpriteGroupFlags);
+
 struct SpriteGroup;
 typedef uint32 SpriteGroupID;
 struct ResolverObject;
@@ -56,7 +63,7 @@ extern SpriteGroupPool _spritegroup_pool;
 /* Common wrapper for all the different sprite group types */
 struct SpriteGroup : SpriteGroupPool::PoolItem<&_spritegroup_pool> {
 protected:
-	SpriteGroup(SpriteGroupType type) : nfo_line(0), type(type) {}
+	SpriteGroup(SpriteGroupType type) : nfo_line(0), type(type), flags(SpriteGroupFlags::None) {}
 	/** Base sprite group resolver */
 	virtual const SpriteGroup *Resolve(ResolverObject &object) const { return this; };
 
@@ -65,6 +72,7 @@ public:
 
 	uint32 nfo_line;
 	SpriteGroupType type;
+	SpriteGroupFlags flags;
 
 	virtual SpriteID GetResult() const { return 0; }
 	virtual byte GetNumResults() const { return 0; }
@@ -224,6 +232,8 @@ struct CallbackResultSpriteGroup : SpriteGroup {
 		} else {
 			this->result &= ~0x8000;
 		}
+
+		this->flags |= SpriteGroupFlags::HasCallbackChain;
 	}
 
 	uint16 result;
@@ -313,14 +323,20 @@ struct ResolverObject {
 	 * @param callback_param2 Second parameter (var 18) of the callback (only used when \a callback is also set).
 	 */
 	ResolverObject(const GRFFile *grffile, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0)
-		: default_scope(*this), callback(callback), callback_param1(callback_param1), callback_param2(callback_param2), grffile(grffile), root_spritegroup(nullptr)
+		: default_scope(*this), flags(SpriteGroupFlags::None), callback(callback), callback_param1(callback_param1), callback_param2(callback_param2), grffile(grffile), root_spritegroup(nullptr)
 	{
+		if (callback == CBID_RANDOM_TRIGGER) {
+			flags = SpriteGroupFlags::HasRerandomizationChain;
+		} else if (callback != CBID_NO_CALLBACK) {
+			flags = SpriteGroupFlags::HasCallbackChain;
+		}
 		this->ResetState();
 	}
 
 	virtual ~ResolverObject() {}
 
 	ScopeResolver default_scope; ///< Default implementation of the grf scope.
+	SpriteGroupFlags flags;      ///< Flags required for this operation.
 
 	CallbackID callback;        ///< Callback being resolved.
 	uint32 callback_param1;     ///< First parameter (var 10) of the callback.
