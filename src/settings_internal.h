@@ -85,27 +85,13 @@ typedef size_t OnConvert(const char *value); ///< callback prototype for convers
 
 /** Properties of config file settings. */
 struct SettingDesc {
-	SettingDesc(SaveLoad save, const char *name, const void *def, SettingDescType cmd, SettingGuiFlag flags,
-			int32 min, uint32 max, int32 interval, const char *many, StringID str, StringID str_help,
-			StringID str_val, OnChange *proc, OnConvert *proc_cnvt, SettingCategory cat, bool startup) :
-		name(name), def(def), cmd(cmd), flags(flags), min(min), max(max), interval(interval), many(many), str(str),
-		str_help(str_help), str_val(str_val), proc(proc), proc_cnvt(proc_cnvt), cat(cat), startup(startup), save(save) {}
+	SettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup) :
+		name(name), flags(flags), cmd(cmd), startup(startup), save(save) {}
 	virtual ~SettingDesc() {}
 
 	const char *name;       ///< name of the setting. Used in configuration file and for console
-	const void *def;        ///< default value given when none is present
-	SettingDescType cmd;    ///< various flags for the variable
 	SettingGuiFlag flags;   ///< handles how a setting would show up in the GUI (text/currency, etc.)
-	int32 min;              ///< minimum values
-	uint32 max;             ///< maximum values
-	int32 interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
-	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
-	StringID str;           ///< (translated) string with descriptive text; gui and console
-	StringID str_help;      ///< (Translated) string with help text; gui only.
-	StringID str_val;       ///< (Translated) first string describing the value.
-	OnChange *proc;         ///< callback procedure for when the value is changed
-	OnConvert *proc_cnvt;   ///< callback procedure when loading value mechanism fails
-	SettingCategory cat;    ///< assigned categories of the setting
+	SettingDescType cmd;    ///< various flags for the variable
 	bool startup;           ///< setting has to be loaded directly at startup?
 	SaveLoad save;          ///< Internal structure (going to savegame, parts to config)
 
@@ -146,11 +132,23 @@ struct SettingDesc {
 /** Integer type, including boolean, settings. Only these are shown in the settings UI. */
 struct IntSettingDesc : SettingDesc {
 	IntSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, int32 def,
-			int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
-			SettingCategory cat, OnChange *proc, const char *many = nullptr, OnConvert *many_cnvt = nullptr) :
-		SettingDesc(save, name, (void*)(size_t)def, cmd, flags, min, max, interval, many, str, str_help, str_val,
-			proc, many_cnvt, cat, startup) {}
+		int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
+		SettingCategory cat, OnChange *proc, const char *many = nullptr, OnConvert *many_cnvt = nullptr) :
+		SettingDesc(save, name, flags, cmd, startup), def(def), min(min), max(max), interval(interval),
+		str(str), str_help(str_help), str_val(str_val), cat(cat), proc(proc), many(many), many_cnvt(many_cnvt) {}
 	virtual ~IntSettingDesc() {}
+
+	int32 def;              ///< default value given when none is present
+	int32 min;              ///< minimum values
+	uint32 max;             ///< maximum values
+	int32 interval;         ///< the interval to use between settings in the 'settings' window. If interval is '0' the interval is dynamically determined
+	StringID str;           ///< (translated) string with descriptive text; gui and console
+	StringID str_help;      ///< (Translated) string with help text; gui only.
+	StringID str_val;       ///< (Translated) first string describing the value.
+	SettingCategory cat;    ///< assigned categories of the setting
+	OnChange *proc;         ///< callback procedure for when the value is changed
+	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
+	OnConvert *many_cnvt;   ///< callback procedure when loading value mechanism fails
 
 	void ChangeValue(const void *object, int32 newvalue) const;
 	void Write_ValidateSetting(const void *object, int32 value) const;
@@ -165,8 +163,12 @@ struct IntSettingDesc : SettingDesc {
 struct StringSettingDesc : SettingDesc {
 	StringSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, const char *def,
 			uint32 max_length, OnChange proc) :
-		SettingDesc(save, name, def, cmd, flags, 0, max_length, 0, nullptr, 0, 0, 0, proc, nullptr, SC_NONE, startup) {}
+		SettingDesc(save, name, flags, cmd, startup), def(def), max_length(max_length), proc(proc) {}
 	virtual ~StringSettingDesc() {}
+
+	const char *def;        ///< default value given when none is present
+	uint32 max_length;      ///< maximum length of the string, 0 means no maximum length
+	OnChange *proc;         ///< callback procedure for when the value is changed
 
 	void ChangeValue(const void *object, const char *newval) const;
 	void Write_ValidateSetting(const void *object, const char *str) const;
@@ -180,8 +182,10 @@ struct StringSettingDesc : SettingDesc {
 /** List/array settings. */
 struct ListSettingDesc : SettingDesc {
 	ListSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, const char *def) :
-		SettingDesc(save, name, def, cmd, flags, 0, 0, 0, nullptr, 0, 0, 0, proc, nullptr, SC_NONE, startup) {}
+		SettingDesc(save, name, flags, cmd, startup), def(def) {}
 	virtual ~ListSettingDesc() {}
+
+	const char *def;        ///< default value given when none is present
 
 	void FormatValue(char *buf, const char *last, const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
@@ -191,7 +195,7 @@ struct ListSettingDesc : SettingDesc {
 /** Placeholder for settings that have been removed, but might still linger in the savegame. */
 struct NullSettingDesc : SettingDesc {
 	NullSettingDesc(SaveLoad save) :
-		SettingDesc(save, "", nullptr, SDT_NULL, SGF_NONE, 0, 0, 0, nullptr, 0, 0, 0, nullptr, nullptr, SC_NONE, false) {}
+		SettingDesc(save, "", SGF_NONE, SDT_NULL, false) {}
 	virtual ~NullSettingDesc() {}
 
 	void FormatValue(char *buf, const char *last, const void *object) const override { NOT_REACHED(); }

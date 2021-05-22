@@ -403,7 +403,7 @@ size_t IntSettingDesc::ParseValue(const char *str) const
 			size_t r = LookupOneOfMany(this->many, str);
 			/* if the first attempt of conversion from string to the appropriate value fails,
 			 * look if we have defined a converter from old value to new value. */
-			if (r == (size_t)-1 && this->proc_cnvt != nullptr) r = this->proc_cnvt(str);
+			if (r == (size_t)-1 && this->many_cnvt != nullptr) r = this->many_cnvt(str);
 			if (r != (size_t)-1) return r; // and here goes converted value
 
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
@@ -437,7 +437,7 @@ size_t IntSettingDesc::ParseValue(const char *str) const
 		default: NOT_REACHED();
 	}
 
-	return (size_t)this->def;
+	return this->def;
 }
 
 /**
@@ -471,7 +471,7 @@ void IntSettingDesc::Write_ValidateSetting(const void *object, int32 val) const
 						val = Clamp(val, this->min, this->max);
 					} else if (val < this->min || val > (int32)this->max) {
 						/* Reset invalid discrete setting (where different values change gameplay) to its default value */
-						val = (int32)(size_t)this->def;
+						val = this->def;
 					}
 				}
 				break;
@@ -485,7 +485,7 @@ void IntSettingDesc::Write_ValidateSetting(const void *object, int32 val) const
 						uval = ClampU(uval, this->min, this->max);
 					} else if (uval < (uint)this->min || uval > this->max) {
 						/* Reset invalid discrete setting to its default value */
-						uval = (uint32)(size_t)this->def;
+						uval = (uint32)this->def;
 					}
 				}
 				WriteValue(ptr, SLE_VAR_U32, (int64)uval);
@@ -513,11 +513,11 @@ void StringSettingDesc::Write_ValidateSetting(const void *object, const char *st
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
 			if (str != nullptr) {
-				if (this->max != 0 && strlen(str) >= this->max) {
+				if (this->max_length != 0 && strlen(str) >= this->max_length) {
 					/* In case a maximum length is imposed by the setting, the length
 					 * includes the '\0' termination for network transfer purposes.
 					 * Also ensure the string is valid after chopping of some bytes. */
-					std::string stdstr(str, this->max - 1);
+					std::string stdstr(str, this->max_length - 1);
 					dst->assign(str_validate(stdstr, SVS_NONE));
 				} else {
 					dst->assign(str);
@@ -591,19 +591,19 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 
 void IntSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	size_t val = (item == nullptr) ? (size_t)this->def : this->ParseValue(item->value.has_value() ? item->value->c_str() : "");
+	size_t val = (item == nullptr) ? this->def : this->ParseValue(item->value.has_value() ? item->value->c_str() : "");
 	this->Write_ValidateSetting(object, (int32)val);
 }
 
 void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	const char *str = (item == nullptr) ? (const char *)this->def : item->value.has_value() ? item->value->c_str() : nullptr;
+	const char *str = (item == nullptr) ? this->def : item->value.has_value() ? item->value->c_str() : nullptr;
 	this->Write_ValidateSetting(object, str);
 }
 
 void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	const char *str = (item == nullptr) ? (const char *)this->def : item->value.has_value() ? item->value->c_str() : nullptr;
+	const char *str = (item == nullptr) ? this->def : item->value.has_value() ? item->value->c_str() : nullptr;
 	void *ptr = GetVariableAddress(object, &this->save);
 	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
 		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
@@ -611,7 +611,7 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 		_settings_error_list.push_back(msg);
 
 		/* Use default */
-		LoadIntList((const char*)this->def, ptr, this->save.length, GetVarMemType(this->save.conv));
+		LoadIntList(this->def, ptr, this->save.length, GetVarMemType(this->save.conv));
 	}
 }
 
@@ -2053,7 +2053,7 @@ void SetDefaultCompanySettings(CompanyID cid)
 	Company *c = Company::Get(cid);
 	for (auto &sd : _company_settings) {
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
-		int_setting->Write_ValidateSetting(&c->settings, (int32)(size_t)int_setting->def);
+		int_setting->Write_ValidateSetting(&c->settings, int_setting->def);
 	}
 }
 
@@ -2212,11 +2212,12 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 	if (sd->cmd == SDT_STDSTRING) {
 		const void *ptr = GetVariableAddress(object, &sd->save);
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, reinterpret_cast<const std::string *>(ptr)->c_str());
-	} else {
+	} else if (sd->IsIntSetting()) {
 		char value[20];
 		sd->FormatValue(value, lastof(value), object);
+		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %u)",
-			name, value, (sd->flags & SGF_0ISDISABLED) ? "(0) " : "", sd->min, sd->max);
+			name, value, (sd->flags & SGF_0ISDISABLED) ? "(0) " : "", int_setting->min, int_setting->max);
 	}
 }
 
