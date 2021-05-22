@@ -111,7 +111,9 @@ struct SettingDesc {
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
 	bool IsIntSetting() const;
+	bool IsStringSetting() const;
 	const struct IntSettingDesc *AsIntSetting() const;
+	const struct StringSettingDesc *AsStringSetting() const;
 
 	/**
 	 * Format the value of the setting associated with this object.
@@ -143,6 +145,9 @@ struct StringSettingDesc : SettingDesc {
 			uint32 max_length, OnChange proc) :
 		SettingDesc(save, name, def, cmd, flags, 0, max_length, 0, nullptr, 0, 0, 0, proc, nullptr, SC_NONE, startup) {}
 	virtual ~StringSettingDesc() {}
+
+	void ChangeValue(const void *object, const char *newval) const;
+	void Write_ValidateSetting(const void *object, const char *str) const;
 
 	void FormatValue(char *buf, const char *last, const void *object) const override;
 	const std::string &Read(const void *object) const;
