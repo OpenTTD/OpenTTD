@@ -374,75 +374,70 @@ static void MakeManyOfMany(char *buf, const char *last, const char *many, uint32
 }
 
 /**
- * Convert a string representation (external) of a setting to the internal rep.
- * @param desc SettingDesc struct that holds all information about the variable
- * @param orig_str input string that will be parsed based on the type of desc
- * @return return the parsed value of the setting
+ * Convert a string representation (external) of an integer-like setting to an integer.
+ * @param str Input string that will be parsed based on the type of desc.
+ * @return The value from the parse string, or the default value of the setting.
  */
-static const void *StringToVal(const SettingDesc *desc, const char *orig_str)
+size_t IntSettingDesc::ParseValue(const char *str) const
 {
-	const char *str = orig_str == nullptr ? "" : orig_str;
-
-	switch (desc->cmd) {
+	switch (this->cmd) {
 		case SDT_NUMX: {
 			char *end;
 			size_t val = strtoul(str, &end, 0);
 			if (end == str) {
 				ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 				msg.SetDParamStr(0, str);
-				msg.SetDParamStr(1, desc->name);
+				msg.SetDParamStr(1, this->name);
 				_settings_error_list.push_back(msg);
-				return desc->def;
+				break;
 			}
 			if (*end != '\0') {
 				ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS);
-				msg.SetDParamStr(0, desc->name);
+				msg.SetDParamStr(0, this->name);
 				_settings_error_list.push_back(msg);
 			}
-			return (void*)val;
+			return val;
 		}
 
 		case SDT_ONEOFMANY: {
-			size_t r = LookupOneOfMany(desc->many, str);
+			size_t r = LookupOneOfMany(this->many, str);
 			/* if the first attempt of conversion from string to the appropriate value fails,
 			 * look if we have defined a converter from old value to new value. */
-			if (r == (size_t)-1 && desc->proc_cnvt != nullptr) r = desc->proc_cnvt(str);
-			if (r != (size_t)-1) return (void*)r; // and here goes converted value
+			if (r == (size_t)-1 && this->proc_cnvt != nullptr) r = this->proc_cnvt(str);
+			if (r != (size_t)-1) return r; // and here goes converted value
 
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 			msg.SetDParamStr(0, str);
-			msg.SetDParamStr(1, desc->name);
+			msg.SetDParamStr(1, this->name);
 			_settings_error_list.push_back(msg);
-			return desc->def;
+			break;
 		}
 
 		case SDT_MANYOFMANY: {
-			size_t r = LookupManyOfMany(desc->many, str);
-			if (r != (size_t)-1) return (void*)r;
+			size_t r = LookupManyOfMany(this->many, str);
+			if (r != (size_t)-1) return r;
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 			msg.SetDParamStr(0, str);
-			msg.SetDParamStr(1, desc->name);
+			msg.SetDParamStr(1, this->name);
 			_settings_error_list.push_back(msg);
-			return desc->def;
+			break;
 		}
 
 		case SDT_BOOLX: {
-			if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return (void*)true;
-			if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return (void*)false;
+			if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return true;
+			if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return false;
 
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 			msg.SetDParamStr(0, str);
-			msg.SetDParamStr(1, desc->name);
+			msg.SetDParamStr(1, this->name);
 			_settings_error_list.push_back(msg);
-			return desc->def;
+			break;
 		}
 
-		case SDT_STDSTRING: return orig_str;
-		case SDT_INTLIST: return str;
-		default: break;
+		default: NOT_REACHED();
 	}
 
-	return nullptr;
+	return (size_t)this->def;
 }
 
 /**
@@ -590,36 +585,33 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 			if (sc != std::string::npos) item = ini->GetGroup(s.substr(0, sc))->GetItem(s.substr(sc + 1), false);
 		}
 
-		const void *p = (item == nullptr) ? sdb->def : StringToVal(sdb, item->value.has_value() ? item->value->c_str() : nullptr);
-		void *ptr = GetVariableAddress(object, sld);
+		sdb->ParseValue(item, object);
+	}
+}
 
-		switch (sdb->cmd) {
-			case SDT_BOOLX: // All four are various types of (integer) numbers
-			case SDT_NUMX:
-			case SDT_ONEOFMANY:
-			case SDT_MANYOFMANY:
-				sd->AsIntSetting()->Write_ValidateSetting(object, (int32)(size_t)p);
-				break;
+void IntSettingDesc::ParseValue(const IniItem *item, void *object) const
+{
+	size_t val = (item == nullptr) ? (size_t)this->def : this->ParseValue(item->value.has_value() ? item->value->c_str() : "");
+	this->Write_ValidateSetting(object, (int32)val);
+}
 
-			case SDT_STDSTRING:
-				sd->AsStringSetting()->Write_ValidateSetting(object, (const char *)p);
-				break;
+void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
+{
+	const char *str = (item == nullptr) ? (const char *)this->def : item->value.has_value() ? item->value->c_str() : nullptr;
+	this->Write_ValidateSetting(object, str);
+}
 
-			case SDT_INTLIST: {
-				if (!LoadIntList((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
-					ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
-					msg.SetDParamStr(0, sdb->name);
-					_settings_error_list.push_back(msg);
+void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
+{
+	const char *str = (item == nullptr) ? (const char *)this->def : item->value.has_value() ? item->value->c_str() : nullptr;
+	void *ptr = GetVariableAddress(object, &this->save);
+	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
+		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
+		msg.SetDParamStr(0, this->name);
+		_settings_error_list.push_back(msg);
 
-					/* Use default */
-					LoadIntList((const char*)sdb->def, ptr, sld->length, GetVarMemType(sld->conv));
-				} else if (sd->proc_cnvt != nullptr) {
-					sd->proc_cnvt((const char*)p);
-				}
-				break;
-			}
-			default: NOT_REACHED();
-		}
+		/* Use default */
+		LoadIntList((const char*)this->def, ptr, this->save.length, GetVarMemType(this->save.conv));
 	}
 }
 
@@ -640,7 +632,6 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 	IniGroup *group_def = nullptr, *group;
 	IniItem *item;
 	char buf[512];
-	void *ptr;
 
 	for (auto &sd : settings_table) {
 		const SettingDesc *sdb = sd.get();
@@ -664,51 +655,13 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 
 		item = group->GetItem(s, true);
 
-		if (item->value.has_value()) {
-			/* check if the value is the same as the old value */
-			const void *p = StringToVal(sdb, item->value->c_str());
-			ptr = GetVariableAddress(object, sld);
+		if (!item->value.has_value() || !sdb->IsSameValue(item, object)) {
+			/* Value has changed, get the new value and put it into a buffer */
+			sdb->FormatValue(buf, lastof(buf), object);
 
-			/* The main type of a variable/setting is in bytes 8-15
-			 * The subtype (what kind of numbers do we have there) is in 0-7 */
-			switch (sdb->cmd) {
-				case SDT_BOOLX:
-				case SDT_NUMX:
-				case SDT_ONEOFMANY:
-				case SDT_MANYOFMANY:
-					switch (GetVarMemType(sld->conv)) {
-						case SLE_VAR_BL:
-							if (*(bool*)ptr == (p != nullptr)) continue;
-							break;
-
-						case SLE_VAR_I8:
-						case SLE_VAR_U8:
-							if (*(byte*)ptr == (byte)(size_t)p) continue;
-							break;
-
-						case SLE_VAR_I16:
-						case SLE_VAR_U16:
-							if (*(uint16*)ptr == (uint16)(size_t)p) continue;
-							break;
-
-						case SLE_VAR_I32:
-						case SLE_VAR_U32:
-							if (*(uint32*)ptr == (uint32)(size_t)p) continue;
-							break;
-
-						default: NOT_REACHED();
-					}
-					break;
-
-				default: break; // Assume the other types are always changed
-			}
+			/* The value is different, that means we have to write it to the ini */
+			item->value.emplace(buf);
 		}
-
-		/* Value has changed, get the new value and put it into a buffer */
-		sdb->FormatValue(buf, lastof(buf), object);
-
-		/* The value is different, that means we have to write it to the ini */
-		item->value.emplace(buf);
 	}
 }
 
@@ -724,10 +677,17 @@ void IntSettingDesc::FormatValue(char *buf, const char *last, const void *object
 	}
 }
 
+bool IntSettingDesc::IsSameValue(const IniItem *item, void *object) const
+{
+	int64 item_value = this->ParseValue(item->value->c_str());
+	int64 object_value = ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
+	return item_value == object_value;
+}
+
 void StringSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
 	const std::string &str = this->Read(object);
-	switch (GetVarMemType(this->save. conv)) {
+	switch (GetVarMemType(this->save.conv)) {
 		case SLE_VAR_STR: strecpy(buf, str.c_str(), last); break;
 
 		case SLE_VAR_STRQ:
@@ -740,6 +700,22 @@ void StringSettingDesc::FormatValue(char *buf, const char *last, const void *obj
 
 		default: NOT_REACHED();
 	}
+}
+
+bool StringSettingDesc::IsSameValue(const IniItem *item, void *object) const
+{
+	/* The ini parsing removes the quotes, which are needed to retain the spaces in STRQs,
+	 * so those values are always different in the parsed ini item than they should be. */
+	if (GetVarMemType(this->save.conv) == SLE_VAR_STRQ) return false;
+
+	const std::string &str = this->Read(object);
+	return item->value->compare(str) == 0;
+}
+
+bool ListSettingDesc::IsSameValue(const IniItem *item, void *object) const
+{
+	/* Checking for equality is way more expensive than just writing the value. */
+	return false;
 }
 
 /**

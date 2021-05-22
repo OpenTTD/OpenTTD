@@ -79,6 +79,7 @@ enum SettingType {
 	ST_ALL,       ///< Used in setting filter to match all types.
 };
 
+struct IniItem;
 typedef bool OnChange(int32 var);           ///< callback prototype on data modification
 typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
@@ -122,6 +123,24 @@ struct SettingDesc {
 	 * @param object The object the setting is in.
 	 */
 	virtual void FormatValue(char *buf, const char *last, const void *object) const = 0;
+
+	/**
+	 * Parse/read the value from the Ini item into the setting associated with this object.
+	 * @param item The Ini item with the content of this setting.
+	 * @param object The object the setting is in.
+	 */
+	virtual void ParseValue(const IniItem *item, void *object) const = 0;
+
+	/**
+	 * Check whether the value in the Ini item is the same as is saved in this setting in the object.
+	 * It might be that determining whether the value is the same is way more expensive than just
+	 * writing the value. In those cases this function may unconditionally return false even though
+	 * the value might be the same as in the Ini item.
+	 * @param item The Ini item with the content of this setting.
+	 * @param object The object the setting is in.
+	 * @return True if the value is definitely the same (might be false when the same).
+	 */
+	virtual bool IsSameValue(const IniItem *item, void *object) const = 0;
 };
 
 /** Integer type, including boolean, settings. Only these are shown in the settings UI. */
@@ -136,7 +155,10 @@ struct IntSettingDesc : SettingDesc {
 	void ChangeValue(const void *object, int32 newvalue) const;
 	void Write_ValidateSetting(const void *object, int32 value) const;
 
+	size_t ParseValue(const char *str) const;
 	void FormatValue(char *buf, const char *last, const void *object) const override;
+	void ParseValue(const IniItem *item, void *object) const override;
+	bool IsSameValue(const IniItem *item, void *object) const override;
 };
 
 /** String settings. */
@@ -150,6 +172,8 @@ struct StringSettingDesc : SettingDesc {
 	void Write_ValidateSetting(const void *object, const char *str) const;
 
 	void FormatValue(char *buf, const char *last, const void *object) const override;
+	void ParseValue(const IniItem *item, void *object) const override;
+	bool IsSameValue(const IniItem *item, void *object) const override;
 	const std::string &Read(const void *object) const;
 };
 
@@ -160,6 +184,8 @@ struct ListSettingDesc : SettingDesc {
 	virtual ~ListSettingDesc() {}
 
 	void FormatValue(char *buf, const char *last, const void *object) const override;
+	void ParseValue(const IniItem *item, void *object) const override;
+	bool IsSameValue(const IniItem *item, void *object) const override;
 };
 
 /** Placeholder for settings that have been removed, but might still linger in the savegame. */
@@ -169,6 +195,8 @@ struct NullSettingDesc : SettingDesc {
 	virtual ~NullSettingDesc() {}
 
 	void FormatValue(char *buf, const char *last, const void *object) const override { NOT_REACHED(); }
+	void ParseValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
+	bool IsSameValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
 };
 
 typedef std::initializer_list<std::unique_ptr<const SettingDesc>> SettingTable;
