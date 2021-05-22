@@ -507,26 +507,25 @@ void IntSettingDesc::Write_ValidateSetting(const void *object, int32 val) const
 
 /**
  * Set the string value of a setting.
- * @param ptr Pointer to the std::string.
- * @param sd  Pointer to the information for the conversions and limitations to apply.
- * @param p   The string to save.
+ * @param object The object the setting is to be saved in.
+ * @param str The string to save.
  */
-static void Write_ValidateStdString(void *ptr, const SettingDesc *sd, const char *p)
+void StringSettingDesc::Write_ValidateSetting(const void *object, const char *str) const
 {
-	std::string *dst = reinterpret_cast<std::string *>(ptr);
+	std::string *dst = reinterpret_cast<std::string *>(GetVariableAddress(object, &this->save));
 
-	switch (GetVarMemType(sd->save.conv)) {
+	switch (GetVarMemType(this->save.conv)) {
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
-			if (p != nullptr) {
-				if (sd->max != 0 && strlen(p) >= sd->max) {
+			if (str != nullptr) {
+				if (this->max != 0 && strlen(str) >= this->max) {
 					/* In case a maximum length is imposed by the setting, the length
 					 * includes the '\0' termination for network transfer purposes.
 					 * Also ensure the string is valid after chopping of some bytes. */
-					std::string str(p, sd->max - 1);
-					dst->assign(str_validate(str, SVS_NONE));
+					std::string stdstr(str, this->max - 1);
+					dst->assign(str_validate(stdstr, SVS_NONE));
 				} else {
-					dst->assign(p);
+					dst->assign(str);
 				}
 			} else {
 				dst->clear();
@@ -603,7 +602,7 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 				break;
 
 			case SDT_STDSTRING:
-				Write_ValidateStdString(ptr, sd.get(), (const char *)p);
+				sd->AsStringSetting()->Write_ValidateSetting(object, (const char *)p);
 				break;
 
 			case SDT_INTLIST: {
@@ -844,6 +843,14 @@ bool SettingDesc::IsIntSetting() const {
 }
 
 /**
+ * Check whether this setting is an string type setting.
+ * @return True when the underlying type is a string.
+ */
+bool SettingDesc::IsStringSetting() const {
+	return this->cmd == SDT_STDSTRING;
+}
+
+/**
  * Get the setting description of this setting as an integer setting.
  * @return The integer setting description.
  */
@@ -851,6 +858,16 @@ const IntSettingDesc *SettingDesc::AsIntSetting() const
 {
 	assert(this->IsIntSetting());
 	return static_cast<const IntSettingDesc *>(this);
+}
+
+/**
+ * Get the setting description of this setting as a string setting.
+ * @return The string setting description.
+ */
+const StringSettingDesc *SettingDesc::AsStringSetting() const
+{
+	assert(this->IsStringSetting());
+	return static_cast<const StringSettingDesc *>(this);
 }
 
 /* Begin - Callback Functions for the various settings. */
@@ -2105,12 +2122,23 @@ bool SetSettingValue(const SettingDesc *sd, const char *value, bool force_newgam
 		value = nullptr;
 	}
 
-	void *ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
-	Write_ValidateStdString(ptr, sd, value);
-	if (sd->proc != nullptr) sd->proc(0);
+	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
+	sd->AsStringSetting()->ChangeValue(object, value);
+	return true;
+}
+
+/**
+ * Handle changing a string value. This performs validation of the input value
+ * and calls the appropriate callbacks, and saves it when the value is changed.
+ * @param object The object the setting is in.
+ * @param newval The new value for the setting.
+ */
+void StringSettingDesc::ChangeValue(const void *object, const char *newval) const
+{
+	this->Write_ValidateSetting(object, newval);
+	if (this->proc != nullptr) this->proc(0);
 
 	if (_save_config) SaveToConfig();
-	return true;
 }
 
 /**
