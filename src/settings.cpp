@@ -100,7 +100,7 @@ static bool IsSignedVarMemType(VarType vt);
 const SettingDesc *GetSettingDescription(uint index)
 {
 	if (index >= _settings.size()) return nullptr;
-	return &_settings.begin()[index];
+	return _settings.begin()[index].get();
 }
 
 /**
@@ -111,7 +111,7 @@ const SettingDesc *GetSettingDescription(uint index)
 static const SettingDesc *GetCompanySettingDescription(uint index)
 {
 	if (index >= _company_settings.size()) return nullptr;
-	return &_company_settings.begin()[index];
+	return _company_settings.begin()[index].get();
 }
 
 /**
@@ -563,11 +563,11 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 	IniGroup *group_def = ini->GetGroup(grpname);
 
 	for (auto &sd : settings_table) {
-		const SettingDesc *sdb = &sd;
-		const SaveLoad *sld = &sd.save;
+		const SettingDesc *sdb = sd.get();
+		const SaveLoad *sld = &sd->save;
 
 		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
-		if (sd.startup != only_startup) continue;
+		if (sd->startup != only_startup) continue;
 
 		/* For settings.xx.yy load the settings from [xx] yy = ? */
 		std::string s{ sdb->name };
@@ -600,11 +600,11 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 			case SDT_NUMX:
 			case SDT_ONEOFMANY:
 			case SDT_MANYOFMANY:
-				Write_ValidateSetting(ptr, &sd, (int32)(size_t)p);
+				Write_ValidateSetting(ptr, sd.get(), (int32)(size_t)p);
 				break;
 
 			case SDT_STDSTRING:
-				Write_ValidateStdString(ptr, &sd, (const char *)p);
+				Write_ValidateStdString(ptr, sd.get(), (const char *)p);
 				break;
 
 			case SDT_INTLIST: {
@@ -615,8 +615,8 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 
 					/* Use default */
 					LoadIntList((const char*)sdb->def, ptr, sld->length, GetVarMemType(sld->conv));
-				} else if (sd.proc_cnvt != nullptr) {
-					sd.proc_cnvt((const char*)p);
+				} else if (sd->proc_cnvt != nullptr) {
+					sd->proc_cnvt((const char*)p);
 				}
 				break;
 			}
@@ -645,8 +645,8 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 	void *ptr;
 
 	for (auto &sd : settings_table) {
-		const SettingDesc *sdb = &sd;
-		const SaveLoad *sld = &sd.save;
+		const SettingDesc *sdb = sd.get();
+		const SaveLoad *sld = &sd->save;
 
 		/* If the setting is not saved to the configuration
 		 * file, just continue with the next setting */
@@ -1965,6 +1965,22 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 }
 
 /**
+ * Get the index of the given setting in the setting table.
+ * @param settings The settings to look through.
+ * @param setting The setting to look for.
+ * @return The index, or UINT32_MAX when it has not been found.
+ */
+static uint GetSettingIndex(const SettingTable &settings, const SettingDesc *setting)
+{
+	uint index = 0;
+	for (auto &sd : settings) {
+		if (sd.get() == setting) return index;
+		index++;
+	}
+	return UINT32_MAX;
+}
+
+/**
  * Get the index of the setting with this description.
  * @param sd the setting to get the index for.
  * @return the index of the setting to be used for CMD_CHANGE_SETTING.
@@ -1972,7 +1988,7 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 uint GetSettingIndex(const SettingDesc *sd)
 {
 	assert(sd != nullptr && (sd->flags & SGF_PER_COMPANY) == 0);
-	return sd - _settings.begin();
+	return GetSettingIndex(_settings, sd);
 }
 
 /**
@@ -1983,7 +1999,7 @@ uint GetSettingIndex(const SettingDesc *sd)
 static uint GetCompanySettingIndex(const SettingDesc *sd)
 {
 	assert(sd != nullptr && (sd->flags & SGF_PER_COMPANY) != 0);
-	return sd - _company_settings.begin();
+	return GetSettingIndex(_company_settings, sd);
 }
 
 /**
@@ -2048,8 +2064,8 @@ void SetDefaultCompanySettings(CompanyID cid)
 {
 	Company *c = Company::Get(cid);
 	for (auto &sd : _company_settings) {
-		void *var = GetVariableAddress(&c->settings, &sd.save);
-		Write_ValidateSetting(var, &sd, (int32)(size_t)sd.def);
+		void *var = GetVariableAddress(&c->settings, &sd->save);
+		Write_ValidateSetting(var, sd.get(), (int32)(size_t)sd->def);
 	}
 }
 
@@ -2060,10 +2076,10 @@ void SyncCompanySettings()
 {
 	uint i = 0;
 	for (auto &sd : _company_settings) {
-		const void *old_var = GetVariableAddress(&Company::Get(_current_company)->settings, &sd.save);
-		const void *new_var = GetVariableAddress(&_settings_client.company, &sd.save);
-		uint32 old_value = (uint32)ReadValue(old_var, sd.save.conv);
-		uint32 new_value = (uint32)ReadValue(new_var, sd.save.conv);
+		const void *old_var = GetVariableAddress(&Company::Get(_current_company)->settings, &sd->save);
+		const void *new_var = GetVariableAddress(&_settings_client.company, &sd->save);
+		uint32 old_value = (uint32)ReadValue(old_var, sd->save.conv);
+		uint32 new_value = (uint32)ReadValue(new_var, sd->save.conv);
 		if (old_value != new_value) NetworkSendCommand(0, i, new_value, CMD_CHANGE_COMPANY_SETTING, nullptr, nullptr, _local_company);
 		i++;
 	}
@@ -2113,25 +2129,25 @@ const SettingDesc *GetSettingFromName(const char *name)
 {
 	/* First check all full names */
 	for (auto &sd : _settings) {
-		if (!SlIsObjectCurrentlyValid(sd.save.version_from, sd.save.version_to)) continue;
-		if (strcmp(sd.name, name) == 0) return &sd;
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		if (strcmp(sd->name, name) == 0) return sd.get();
 	}
 
 	/* Then check the shortcut variant of the name. */
 	for (auto &sd : _settings) {
-		if (!SlIsObjectCurrentlyValid(sd.save.version_from, sd.save.version_to)) continue;
-		const char *short_name = strchr(sd.name, '.');
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		const char *short_name = strchr(sd->name, '.');
 		if (short_name != nullptr) {
 			short_name++;
-			if (strcmp(short_name, name) == 0) return &sd;
+			if (strcmp(short_name, name) == 0) return sd.get();
 		}
 	}
 
 	if (strncmp(name, "company.", 8) == 0) name += 8;
 	/* And finally the company-based settings */
 	for (auto &sd : _company_settings) {
-		if (!SlIsObjectCurrentlyValid(sd.save.version_from, sd.save.version_to)) continue;
-		if (strcmp(sd.name, name) == 0) return &sd;
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		if (strcmp(sd->name, name) == 0) return sd.get();
 	}
 
 	return nullptr;
@@ -2221,19 +2237,19 @@ void IConsoleListSettings(const char *prefilter)
 	IConsolePrintF(CC_WARNING, "All settings with their current value:");
 
 	for (auto &sd : _settings) {
-		if (!SlIsObjectCurrentlyValid(sd.save.version_from, sd.save.version_to)) continue;
-		if (prefilter != nullptr && strstr(sd.name, prefilter) == nullptr) continue;
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		if (prefilter != nullptr && strstr(sd->name, prefilter) == nullptr) continue;
 		char value[80];
-		const void *ptr = GetVariableAddress(&GetGameSettings(), &sd.save);
+		const void *ptr = GetVariableAddress(&GetGameSettings(), &sd->save);
 
-		if (sd.cmd == SDT_BOOLX) {
+		if (sd->cmd == SDT_BOOLX) {
 			seprintf(value, lastof(value), (*(const bool *)ptr != 0) ? "on" : "off");
-		} else if (sd.cmd == SDT_STDSTRING) {
+		} else if (sd->cmd == SDT_STDSTRING) {
 			seprintf(value, lastof(value), "%s", reinterpret_cast<const std::string *>(ptr)->c_str());
 		} else {
-			seprintf(value, lastof(value), sd.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd.save.conv));
+			seprintf(value, lastof(value), sd->min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
-		IConsolePrintF(CC_DEFAULT, "%s = %s", sd.name, value);
+		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->name, value);
 	}
 
 	IConsolePrintF(CC_WARNING, "Use 'setting' command to change a value");
@@ -2248,11 +2264,11 @@ void IConsoleListSettings(const char *prefilter)
 static void LoadSettings(const SettingTable &settings, void *object)
 {
 	for (auto &osd : settings) {
-		const SaveLoad *sld = &osd.save;
+		const SaveLoad *sld = &osd->save;
 		void *ptr = GetVariableAddress(object, sld);
 
 		if (!SlObjectMember(ptr, sld)) continue;
-		if (IsNumericType(sld->conv)) Write_ValidateSetting(ptr, &osd, ReadValue(ptr, sld->conv));
+		if (IsNumericType(sld->conv)) Write_ValidateSetting(ptr, osd.get(), ReadValue(ptr, sld->conv));
 	}
 }
 
@@ -2268,13 +2284,13 @@ static void SaveSettings(const SettingTable &settings, void *object)
 	 * SlCalcLength() because we have a different format. So do this manually */
 	size_t length = 0;
 	for (auto &sd : settings) {
-		length += SlCalcObjMemberLength(object, &sd.save);
+		length += SlCalcObjMemberLength(object, &sd->save);
 	}
 	SlSetLength(length);
 
 	for (auto &sd : settings) {
-		void *ptr = GetVariableAddress(object, &sd.save);
-		SlObjectMember(ptr, &sd.save);
+		void *ptr = GetVariableAddress(object, &sd->save);
+		SlObjectMember(ptr, &sd->save);
 	}
 }
 
