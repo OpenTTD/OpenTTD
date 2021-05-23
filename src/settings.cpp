@@ -434,7 +434,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
  */
 static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 {
-	const SettingDescBase *sdb = &sd->desc;
+	const SettingDescBase *sdb = sd;
 
 	if (sdb->cmd != SDT_BOOLX &&
 			sdb->cmd != SDT_NUMX &&
@@ -508,11 +508,11 @@ static void Write_ValidateStdString(void *ptr, const SettingDesc *sd, const char
 		case SLE_VAR_STR:
 		case SLE_VAR_STRQ:
 			if (p != nullptr) {
-				if (sd->desc.max != 0 && strlen(p) >= sd->desc.max) {
+				if (sd->max != 0 && strlen(p) >= sd->max) {
 					/* In case a maximum length is imposed by the setting, the length
 					 * includes the '\0' termination for network transfer purposes.
 					 * Also ensure the string is valid after chopping of some bytes. */
-					std::string str(p, sd->desc.max - 1);
+					std::string str(p, sd->max - 1);
 					dst->assign(str_validate(str, SVS_NONE));
 				} else {
 					dst->assign(p);
@@ -541,11 +541,11 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 	IniGroup *group_def = ini->GetGroup(grpname);
 
 	for (; sd->save.cmd != SL_END; sd++) {
-		const SettingDescBase *sdb = &sd->desc;
+		const SettingDescBase *sdb = sd;
 		const SaveLoad        *sld = &sd->save;
 
 		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
-		if (sd->desc.startup != only_startup) continue;
+		if (sd->startup != only_startup) continue;
 
 		/* For settings.xx.yy load the settings from [xx] yy = ? */
 		std::string s{ sdb->name };
@@ -593,8 +593,8 @@ static void IniLoadSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 
 					/* Use default */
 					LoadIntList((const char*)sdb->def, ptr, sld->length, GetVarMemType(sld->conv));
-				} else if (sd->desc.proc_cnvt != nullptr) {
-					sd->desc.proc_cnvt((const char*)p);
+				} else if (sd->proc_cnvt != nullptr) {
+					sd->proc_cnvt((const char*)p);
 				}
 				break;
 			}
@@ -623,7 +623,7 @@ static void IniSaveSettings(IniFile *ini, const SettingDesc *sd, const char *grp
 	void *ptr;
 
 	for (; sd->save.cmd != SL_END; sd++) {
-		const SettingDescBase *sdb = &sd->desc;
+		const SettingDescBase *sdb = sd;
 		const SaveLoad        *sld = &sd->save;
 
 		/* If the setting is not saved to the configuration
@@ -802,13 +802,13 @@ void IniSaveWindowSettings(IniFile *ini, const char *grpname, void *desc)
  */
 bool SettingDesc::IsEditable(bool do_command) const
 {
-	if (!do_command && !(this->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(this->desc.flags & SGF_PER_COMPANY)) return false;
-	if ((this->desc.flags & SGF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return false;
-	if ((this->desc.flags & SGF_NO_NETWORK) && _networking) return false;
-	if ((this->desc.flags & SGF_NEWGAME_ONLY) &&
+	if (!do_command && !(this->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(this->flags & SGF_PER_COMPANY)) return false;
+	if ((this->flags & SGF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return false;
+	if ((this->flags & SGF_NO_NETWORK) && _networking) return false;
+	if ((this->flags & SGF_NEWGAME_ONLY) &&
 			(_game_mode == GM_NORMAL ||
-			(_game_mode == GM_EDITOR && !(this->desc.flags & SGF_SCENEDIT_TOO)))) return false;
-	if ((this->desc.flags & SGF_SCENEDIT_ONLY) && _game_mode != GM_EDITOR) return false;
+			(_game_mode == GM_EDITOR && !(this->flags & SGF_SCENEDIT_TOO)))) return false;
+	if ((this->flags & SGF_SCENEDIT_ONLY) && _game_mode != GM_EDITOR) return false;
 	return true;
 }
 
@@ -818,7 +818,7 @@ bool SettingDesc::IsEditable(bool do_command) const
  */
 SettingType SettingDesc::GetType() const
 {
-	if (this->desc.flags & SGF_PER_COMPANY) return ST_COMPANY;
+	if (this->flags & SGF_PER_COMPANY) return ST_COMPANY;
 	return (this->save.conv & SLF_NOT_IN_SAVE) ? ST_CLIENT : ST_GAME;
 }
 
@@ -1892,14 +1892,14 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 		if (oldval == newval) return CommandCost();
 
-		if (sd->desc.proc != nullptr && !sd->desc.proc(newval)) {
+		if (sd->proc != nullptr && !sd->proc(newval)) {
 			WriteValue(var, sd->save.conv, (int64)oldval);
 			return CommandCost();
 		}
 
-		if (sd->desc.flags & SGF_NO_NETWORK) {
+		if (sd->flags & SGF_NO_NETWORK) {
 			GamelogStartAction(GLAT_SETTING);
-			GamelogSetting(sd->desc.name, oldval, newval);
+			GamelogSetting(sd->name, oldval, newval);
 			GamelogStopAction();
 		}
 
@@ -1937,7 +1937,7 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 
 		if (oldval == newval) return CommandCost();
 
-		if (sd->desc.proc != nullptr && !sd->desc.proc(newval)) {
+		if (sd->proc != nullptr && !sd->proc(newval)) {
 			WriteValue(var, sd->save.conv, (int64)oldval);
 			return CommandCost();
 		}
@@ -1955,7 +1955,7 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
  */
 uint GetSettingIndex(const SettingDesc *sd)
 {
-	assert((sd->desc.flags & SGF_PER_COMPANY) == 0);
+	assert((sd->flags & SGF_PER_COMPANY) == 0);
 	return sd - _settings;
 }
 
@@ -1968,14 +1968,14 @@ uint GetSettingIndex(const SettingDesc *sd)
  */
 bool SetSettingValue(const SettingDesc *sd, int32 value, bool force_newgame)
 {
-	if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
+	if ((sd->flags & SGF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
 			return DoCommandP(0, sd - _company_settings, value, CMD_CHANGE_COMPANY_SETTING);
 		}
 
 		void *var = GetVariableAddress(&_settings_client.company, &sd->save);
 		Write_ValidateSetting(var, sd, value);
-		if (sd->desc.proc != nullptr) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
+		if (sd->proc != nullptr) sd->proc((int32)ReadValue(var, sd->save.conv));
 		return true;
 	}
 
@@ -1991,7 +1991,7 @@ bool SetSettingValue(const SettingDesc *sd, int32 value, bool force_newgame)
 			void *var2 = GetVariableAddress(&_settings_newgame, &sd->save);
 			Write_ValidateSetting(var2, sd, value);
 		}
-		if (sd->desc.proc != nullptr) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
+		if (sd->proc != nullptr) sd->proc((int32)ReadValue(var, sd->save.conv));
 
 		SetWindowClassesDirty(WC_GAME_OPTIONS);
 
@@ -2023,7 +2023,7 @@ void SetDefaultCompanySettings(CompanyID cid)
 	const SettingDesc *sd;
 	for (sd = _company_settings; sd->save.cmd != SL_END; sd++) {
 		void *var = GetVariableAddress(&c->settings, &sd->save);
-		Write_ValidateSetting(var, sd, (int32)(size_t)sd->desc.def);
+		Write_ValidateSetting(var, sd, (int32)(size_t)sd->def);
 	}
 }
 
@@ -2051,7 +2051,7 @@ void SyncCompanySettings()
 uint GetCompanySettingIndex(const char *name)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
-	assert(sd != nullptr && (sd->desc.flags & SGF_PER_COMPANY) != 0);
+	assert(sd != nullptr && (sd->flags & SGF_PER_COMPANY) != 0);
 	return sd - _company_settings;
 }
 
@@ -2072,7 +2072,7 @@ bool SetSettingValue(const SettingDesc *sd, const char *value, bool force_newgam
 
 	void *ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
 	Write_ValidateStdString(ptr, sd, value);
-	if (sd->desc.proc != nullptr) sd->desc.proc(0);
+	if (sd->proc != nullptr) sd->proc(0);
 
 	if (_save_config) SaveToConfig();
 	return true;
@@ -2090,13 +2090,13 @@ const SettingDesc *GetSettingFromName(const char *name)
 	/* First check all full names */
 	for (const SettingDesc *sd = _settings; sd->save.cmd != SL_END; sd++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (strcmp(sd->desc.name, name) == 0) return sd;
+		if (strcmp(sd->name, name) == 0) return sd;
 	}
 
 	/* Then check the shortcut variant of the name. */
 	for (const SettingDesc *sd = _settings; sd->save.cmd != SL_END; sd++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		const char *short_name = strchr(sd->desc.name, '.');
+		const char *short_name = strchr(sd->name, '.');
 		if (short_name != nullptr) {
 			short_name++;
 			if (strcmp(short_name, name) == 0) return sd;
@@ -2107,7 +2107,7 @@ const SettingDesc *GetSettingFromName(const char *name)
 	/* And finally the company-based settings */
 	for (const SettingDesc *sd = _company_settings; sd->save.cmd != SL_END; sd++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (strcmp(sd->desc.name, name) == 0) return sd;
+		if (strcmp(sd->name, name) == 0) return sd;
 	}
 
 	return nullptr;
@@ -2125,7 +2125,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 	}
 
 	bool success;
-	if (sd->desc.cmd == SDT_STDSTRING) {
+	if (sd->cmd == SDT_STDSTRING) {
 		success = SetSettingValue(sd, value, force_newgame);
 	} else {
 		uint32 val;
@@ -2173,17 +2173,17 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 
 	ptr = GetVariableAddress((_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game, &sd->save);
 
-	if (sd->desc.cmd == SDT_STDSTRING) {
+	if (sd->cmd == SDT_STDSTRING) {
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, reinterpret_cast<const std::string *>(ptr)->c_str());
 	} else {
-		if (sd->desc.cmd == SDT_BOOLX) {
+		if (sd->cmd == SDT_BOOLX) {
 			seprintf(value, lastof(value), (*(const bool*)ptr != 0) ? "on" : "off");
 		} else {
-			seprintf(value, lastof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
+			seprintf(value, lastof(value), sd->min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
 
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %u)",
-			name, value, (sd->desc.flags & SGF_0ISDISABLED) ? "(0) " : "", sd->desc.min, sd->desc.max);
+			name, value, (sd->flags & SGF_0ISDISABLED) ? "(0) " : "", sd->min, sd->max);
 	}
 }
 
@@ -2198,18 +2198,18 @@ void IConsoleListSettings(const char *prefilter)
 
 	for (const SettingDesc *sd = _settings; sd->save.cmd != SL_END; sd++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (prefilter != nullptr && strstr(sd->desc.name, prefilter) == nullptr) continue;
+		if (prefilter != nullptr && strstr(sd->name, prefilter) == nullptr) continue;
 		char value[80];
 		const void *ptr = GetVariableAddress(&GetGameSettings(), &sd->save);
 
-		if (sd->desc.cmd == SDT_BOOLX) {
+		if (sd->cmd == SDT_BOOLX) {
 			seprintf(value, lastof(value), (*(const bool *)ptr != 0) ? "on" : "off");
-		} else if (sd->desc.cmd == SDT_STDSTRING) {
+		} else if (sd->cmd == SDT_STDSTRING) {
 			seprintf(value, lastof(value), "%s", reinterpret_cast<const std::string *>(ptr)->c_str());
 		} else {
-			seprintf(value, lastof(value), sd->desc.min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
+			seprintf(value, lastof(value), sd->min < 0 ? "%d" : "%u", (int32)ReadValue(ptr, sd->save.conv));
 		}
-		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->desc.name, value);
+		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->name, value);
 	}
 
 	IConsolePrintF(CC_WARNING, "Use 'setting' command to change a value");
