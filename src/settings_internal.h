@@ -100,8 +100,7 @@ struct SettingDescBase {
 	bool startup;           ///< setting has to be loaded directly at startup?
 };
 
-struct SettingDesc {
-	SettingDescBase desc;   ///< Settings structure (going to configuration file)
+struct SettingDesc : SettingDescBase {
 	SaveLoad save;          ///< Internal structure (going to savegame, parts to config)
 
 	bool IsEditable(bool do_command = false) const;

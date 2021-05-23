@@ -75,7 +75,7 @@ const SaveLoad *GetLinkGraphJobDesc()
 		int setting = 0;
 		const SettingDesc *desc = GetSettingDescription(setting);
 		while (desc->save.cmd != SL_END) {
-			if (desc->desc.name != nullptr && strncmp(desc->desc.name, prefix, prefixlen) == 0) {
+			if (desc->name != nullptr && strncmp(desc->name, prefix, prefixlen) == 0) {
 				SaveLoad sl = desc->save;
 				sl.address_proc = proc;
 				saveloads.push_back(sl);

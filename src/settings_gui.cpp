@@ -843,7 +843,7 @@ struct SettingEntry : BaseSettingEntry {
 	 */
 	inline StringID GetHelpText() const
 	{
-		return this->setting->desc.str_help;
+		return this->setting->str_help;
 	}
 
 	void SetValueDParams(uint first_param, int32 value) const;
@@ -1036,7 +1036,7 @@ void SettingEntry::Init(byte level)
 /* Sets the given setting entry to its default value */
 void SettingEntry::ResetAll()
 {
-	int32 default_value = ReadValue(&this->setting->desc.def, this->setting->save.conv);
+	int32 default_value = ReadValue(&this->setting->def, this->setting->save.conv);
 	SetSettingValue(this->setting, default_value);
 }
 
@@ -1080,8 +1080,8 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 	GameSettings *settings_ptr = &GetGameSettings();
 	const SettingDesc *sd = this->setting;
 
-	if (mode == RM_BASIC) return (this->setting->desc.cat & SC_BASIC_LIST) != 0;
-	if (mode == RM_ADVANCED) return (this->setting->desc.cat & SC_ADVANCED_LIST) != 0;
+	if (mode == RM_BASIC) return (this->setting->cat & SC_BASIC_LIST) != 0;
+	if (mode == RM_ADVANCED) return (this->setting->cat & SC_ADVANCED_LIST) != 0;
 
 	/* Read the current value. */
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
@@ -1093,7 +1093,7 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 		/* This entry shall only be visible, if the value deviates from its default value. */
 
 		/* Read the default value. */
-		filter_value = ReadValue(&sd->desc.def, sd->save.conv);
+		filter_value = ReadValue(&sd->def, sd->save.conv);
 	} else {
 		assert(mode == RM_CHANGED_AGAINST_NEW);
 		/* This entry shall only be visible, if the value deviates from
@@ -1127,7 +1127,7 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 		/* Process the search text filter for this item. */
 		filter.string.ResetState();
 
-		const SettingDescBase *sdb = &sd->desc;
+		const SettingDescBase *sdb = sd;
 
 		SetDParam(0, STR_EMPTY);
 		filter.string.AddLine(sdb->str);
@@ -1153,7 +1153,7 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 
 static const void *ResolveVariableAddress(const GameSettings *settings_ptr, const SettingDesc *sd)
 {
-	if ((sd->desc.flags & SGF_PER_COMPANY) != 0) {
+	if ((sd->flags & SGF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
 			return GetVariableAddress(&Company::Get(_local_company)->settings, &sd->save);
 		} else {
@@ -1171,7 +1171,7 @@ static const void *ResolveVariableAddress(const GameSettings *settings_ptr, cons
  */
 void SettingEntry::SetValueDParams(uint first_param, int32 value) const
 {
-	const SettingDescBase *sdb = &this->setting->desc;
+	const SettingDescBase *sdb = this->setting;
 	if (sdb->cmd == SDT_BOOLX) {
 		SetDParam(first_param++, value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
@@ -1198,7 +1198,7 @@ void SettingEntry::SetValueDParams(uint first_param, int32 value) const
 void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
 	const SettingDesc *sd = this->setting;
-	const SettingDescBase *sdb = &sd->desc;
+	const SettingDescBase *sdb = sd;
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
 	int state = this->flags & SEF_BUTTONS_MASK;
 
@@ -2091,7 +2091,7 @@ struct GameSettingsWindow : Window {
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_TYPE);
 					y += FONT_HEIGHT_NORMAL;
 
-					int32 default_value = ReadValue(&sd->desc.def, sd->save.conv);
+					int32 default_value = ReadValue(&sd->def, sd->save.conv);
 					this->last_clicked->SetValueDParams(0, default_value);
 					DrawString(r.left, r.right, y, STR_CONFIG_SETTING_DEFAULT_VALUE);
 					y += FONT_HEIGHT_NORMAL + WD_PAR_VSEP_NORMAL;
@@ -2195,8 +2195,8 @@ struct GameSettingsWindow : Window {
 		int32 value = (int32)ReadValue(var, sd->save.conv);
 
 		/* clicked on the icon on the left side. Either scroller, bool on/off or dropdown */
-		if (x < SETTING_BUTTON_WIDTH && (sd->desc.flags & SGF_MULTISTRING)) {
-			const SettingDescBase *sdb = &sd->desc;
+		if (x < SETTING_BUTTON_WIDTH && (sd->flags & SGF_MULTISTRING)) {
+			const SettingDescBase *sdb = sd;
 			this->SetDisplayedHelpText(pe);
 
 			if (this->valuedropdown_entry == pe) {
@@ -2234,7 +2234,7 @@ struct GameSettingsWindow : Window {
 			this->SetDirty();
 		} else if (x < SETTING_BUTTON_WIDTH) {
 			this->SetDisplayedHelpText(pe);
-			const SettingDescBase *sdb = &sd->desc;
+			const SettingDescBase *sdb = sd;
 			int32 oldvalue = value;
 
 			switch (sdb->cmd) {
@@ -2291,10 +2291,10 @@ struct GameSettingsWindow : Window {
 			}
 		} else {
 			/* Only open editbox if clicked for the second time, and only for types where it is sensible for. */
-			if (this->last_clicked == pe && sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
+			if (this->last_clicked == pe && sd->cmd != SDT_BOOLX && !(sd->flags & SGF_MULTISTRING)) {
 				int64 value64 = value;
 				/* Show the correct currency-translated value */
-				if (sd->desc.flags & SGF_CURRENCY) value64 *= _currency->rate;
+				if (sd->flags & SGF_CURRENCY) value64 *= _currency->rate;
 
 				this->valuewindow_entry = pe;
 				SetDParam(0, value64);
@@ -2327,11 +2327,11 @@ struct GameSettingsWindow : Window {
 			long long llvalue = atoll(str);
 
 			/* Save the correct currency-translated value */
-			if (sd->desc.flags & SGF_CURRENCY) llvalue /= _currency->rate;
+			if (sd->flags & SGF_CURRENCY) llvalue /= _currency->rate;
 
 			value = (int32)ClampToI32(llvalue);
 		} else {
-			value = (int32)(size_t)sd->desc.def;
+			value = (int32)(size_t)sd->def;
 		}
 
 		SetSettingValue(this->valuewindow_entry->setting, value);
@@ -2368,7 +2368,7 @@ struct GameSettingsWindow : Window {
 					/* Deal with drop down boxes on the panel. */
 					assert(this->valuedropdown_entry != nullptr);
 					const SettingDesc *sd = this->valuedropdown_entry->setting;
-					assert(sd->desc.flags & SGF_MULTISTRING);
+					assert(sd->flags & SGF_MULTISTRING);
 
 					SetSettingValue(sd, index);
 					this->SetDirty();
