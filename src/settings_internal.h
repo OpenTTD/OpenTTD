@@ -12,22 +12,6 @@
 
 #include "saveload/saveload.h"
 
-/**
- * Convention/Type of settings. This is then further specified if necessary
- * with the SLE_ (SLE_VAR/SLE_FILE) enums in saveload.h
- * @see VarTypes
- * @see SettingDesc
- */
-enum SettingDescType : byte {
-	SDT_NUMX        = 0, ///< any number-type
-	SDT_BOOLX       = 1, ///< a boolean number
-	SDT_ONEOFMANY   = 2, ///< bitmasked number where only ONE bit may be set
-	SDT_MANYOFMANY  = 3, ///< bitmasked number where MULTIPLE bits may be set
-	SDT_INTLIST     = 4, ///< list of integers separated by a comma ','
-	SDT_STDSTRING   = 6, ///< \c std::string
-	SDT_NULL        = 7, ///< an old setting that has been removed but could still be in savegames
-};
-
 enum SettingGuiFlag : uint16 {
 	/* 2 bytes allocated for a maximum of 16 flags. */
 	SGF_NONE = 0,
@@ -85,20 +69,30 @@ typedef size_t OnConvert(const char *value); ///< callback prototype for convers
 
 /** Properties of config file settings. */
 struct SettingDesc {
-	SettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup) :
-		name(name), flags(flags), cmd(cmd), startup(startup), save(save) {}
+	SettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup) :
+		name(name), flags(flags), startup(startup), save(save) {}
 	virtual ~SettingDesc() {}
 
 	const char *name;       ///< name of the setting. Used in configuration file and for console
 	SettingGuiFlag flags;   ///< handles how a setting would show up in the GUI (text/currency, etc.)
-	SettingDescType cmd;    ///< various flags for the variable
 	bool startup;           ///< setting has to be loaded directly at startup?
 	SaveLoad save;          ///< Internal structure (going to savegame, parts to config)
 
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
-	bool IsIntSetting() const;
-	bool IsStringSetting() const;
+
+	/**
+	 * Check whether this setting is an integer type setting.
+	 * @return True when the underlying type is an integer.
+	 */
+	virtual bool IsIntSetting() const { return false; }
+
+	/**
+	 * Check whether this setting is an string type setting.
+	 * @return True when the underlying type is a string.
+	 */
+	virtual bool IsStringSetting() const { return false; }
+
 	const struct IntSettingDesc *AsIntSetting() const;
 	const struct StringSettingDesc *AsStringSetting() const;
 
@@ -131,10 +125,10 @@ struct SettingDesc {
 
 /** Base integer type, including boolean, settings. Only these are shown in the settings UI. */
 struct IntSettingDesc : SettingDesc {
-	IntSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, int32 def,
+	IntSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup, int32 def,
 		int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
 		SettingCategory cat, OnChange *proc) :
-		SettingDesc(save, name, flags, cmd, startup), def(def), min(min), max(max), interval(interval),
+		SettingDesc(save, name, flags, startup), def(def), min(min), max(max), interval(interval),
 		str(str), str_help(str_help), str_val(str_val), cat(cat), proc(proc) {}
 	virtual ~IntSettingDesc() {}
 
@@ -148,6 +142,13 @@ struct IntSettingDesc : SettingDesc {
 	SettingCategory cat;    ///< assigned categories of the setting
 	OnChange *proc;         ///< callback procedure for when the value is changed
 
+	/**
+	 * Check whether this setting is a boolean type setting.
+	 * @return True when the underlying type is an integer.
+	 */
+	virtual bool IsBoolSetting() const { return false; }
+	bool IsIntSetting() const override { return true; }
+
 	void ChangeValue(const void *object, int32 newvalue) const;
 	void Write_ValidateSetting(const void *object, int32 value) const;
 
@@ -159,21 +160,22 @@ struct IntSettingDesc : SettingDesc {
 
 /** Boolean setting. */
 struct BoolSettingDesc : IntSettingDesc {
-	BoolSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, bool def,
+	BoolSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup, bool def,
 		StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc) :
-		IntSettingDesc(save, name, flags, cmd, startup, def, 0, 1, 0, str, str_help, str_val, cat, proc) {}
+		IntSettingDesc(save, name, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat, proc) {}
 	virtual ~BoolSettingDesc() {}
 
+	bool IsBoolSetting() const override { return true; }
 	size_t ParseValue(const char *str) const override;
 	void FormatValue(char *buf, const char *last, const void *object) const override;
 };
 
 /** One of many setting. */
 struct OneOfManySettingDesc : IntSettingDesc {
-	OneOfManySettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup,
+	OneOfManySettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup,
 		int32 def, int32 max, StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc,
 		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
-		IntSettingDesc(save, name, flags, cmd, startup, def, 0, max, 0, str, str_help, str_val, cat, proc), many_cnvt(many_cnvt)
+		IntSettingDesc(save, name, flags, startup, def, 0, max, 0, str, str_help, str_val, cat, proc), many_cnvt(many_cnvt)
 	{
 		for (auto one : many) this->many.push_back(one);
 	}
@@ -192,10 +194,10 @@ struct OneOfManySettingDesc : IntSettingDesc {
 
 /** Many of many setting. */
 struct ManyOfManySettingDesc : OneOfManySettingDesc {
-	ManyOfManySettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup,
+	ManyOfManySettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup,
 		int32 def, StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc,
 		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
-		OneOfManySettingDesc(save, name, flags, cmd, startup, def, (1 << many.size()) - 1, str, str_help,
+		OneOfManySettingDesc(save, name, flags, startup, def, (1 << many.size()) - 1, str, str_help,
 			str_val, cat, proc, many, many_cnvt) {}
 	virtual ~ManyOfManySettingDesc() {}
 
@@ -205,15 +207,16 @@ struct ManyOfManySettingDesc : OneOfManySettingDesc {
 
 /** String settings. */
 struct StringSettingDesc : SettingDesc {
-	StringSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, const char *def,
+	StringSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup, const char *def,
 			uint32 max_length, OnChange proc) :
-		SettingDesc(save, name, flags, cmd, startup), def(def), max_length(max_length), proc(proc) {}
+		SettingDesc(save, name, flags, startup), def(def), max_length(max_length), proc(proc) {}
 	virtual ~StringSettingDesc() {}
 
 	const char *def;        ///< default value given when none is present
 	uint32 max_length;      ///< maximum length of the string, 0 means no maximum length
 	OnChange *proc;         ///< callback procedure for when the value is changed
 
+	bool IsStringSetting() const override { return true; }
 	void ChangeValue(const void *object, const char *newval) const;
 	void Write_ValidateSetting(const void *object, const char *str) const;
 
@@ -225,8 +228,8 @@ struct StringSettingDesc : SettingDesc {
 
 /** List/array settings. */
 struct ListSettingDesc : SettingDesc {
-	ListSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, const char *def) :
-		SettingDesc(save, name, flags, cmd, startup), def(def) {}
+	ListSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup, const char *def) :
+		SettingDesc(save, name, flags, startup), def(def) {}
 	virtual ~ListSettingDesc() {}
 
 	const char *def;        ///< default value given when none is present
@@ -239,7 +242,7 @@ struct ListSettingDesc : SettingDesc {
 /** Placeholder for settings that have been removed, but might still linger in the savegame. */
 struct NullSettingDesc : SettingDesc {
 	NullSettingDesc(SaveLoad save) :
-		SettingDesc(save, "", SGF_NONE, SDT_NULL, false) {}
+		SettingDesc(save, "", SGF_NONE, false) {}
 	virtual ~NullSettingDesc() {}
 
 	void FormatValue(char *buf, const char *last, const void *object) const override { NOT_REACHED(); }
