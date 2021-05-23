@@ -1127,10 +1127,8 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 		/* Process the search text filter for this item. */
 		filter.string.ResetState();
 
-		const SettingDescBase *sdb = sd;
-
 		SetDParam(0, STR_EMPTY);
-		filter.string.AddLine(sdb->str);
+		filter.string.AddLine(sd->str);
 		filter.string.AddLine(this->GetHelpText());
 
 		visible = filter.string.GetState();
@@ -1171,17 +1169,16 @@ static const void *ResolveVariableAddress(const GameSettings *settings_ptr, cons
  */
 void SettingEntry::SetValueDParams(uint first_param, int32 value) const
 {
-	const SettingDescBase *sdb = this->setting;
-	if (sdb->cmd == SDT_BOOLX) {
+	if (this->setting->cmd == SDT_BOOLX) {
 		SetDParam(first_param++, value != 0 ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 	} else {
-		if ((sdb->flags & SGF_MULTISTRING) != 0) {
-			SetDParam(first_param++, sdb->str_val - sdb->min + value);
-		} else if ((sdb->flags & SGF_DISPLAY_ABS) != 0) {
-			SetDParam(first_param++, sdb->str_val + ((value >= 0) ? 1 : 0));
+		if ((this->setting->flags & SGF_MULTISTRING) != 0) {
+			SetDParam(first_param++, this->setting->str_val - this->setting->min + value);
+		} else if ((this->setting->flags & SGF_DISPLAY_ABS) != 0) {
+			SetDParam(first_param++, this->setting->str_val + ((value >= 0) ? 1 : 0));
 			value = abs(value);
 		} else {
-			SetDParam(first_param++, sdb->str_val + ((value == 0 && (sdb->flags & SGF_0ISDISABLED) != 0) ? 1 : 0));
+			SetDParam(first_param++, this->setting->str_val + ((value == 0 && (this->setting->flags & SGF_0ISDISABLED) != 0) ? 1 : 0));
 		}
 		SetDParam(first_param++, value);
 	}
@@ -1198,7 +1195,6 @@ void SettingEntry::SetValueDParams(uint first_param, int32 value) const
 void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
 	const SettingDesc *sd = this->setting;
-	const SettingDescBase *sdb = sd;
 	const void *var = ResolveVariableAddress(settings_ptr, sd);
 	int state = this->flags & SEF_BUTTONS_MASK;
 
@@ -1213,19 +1209,19 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 
 	SetDParam(0, highlight ? STR_ORANGE_STRING1_WHITE : STR_ORANGE_STRING1_LTBLUE);
 	int32 value = (int32)ReadValue(var, sd->save.conv);
-	if (sdb->cmd == SDT_BOOLX) {
+	if (sd->cmd == SDT_BOOLX) {
 		/* Draw checkbox for boolean-value either on/off */
 		DrawBoolButton(buttons_left, button_y, value != 0, editable);
-	} else if ((sdb->flags & SGF_MULTISTRING) != 0) {
+	} else if ((sd->flags & SGF_MULTISTRING) != 0) {
 		/* Draw [v] button for settings of an enum-type */
 		DrawDropDownButton(buttons_left, button_y, COLOUR_YELLOW, state != 0, editable);
 	} else {
 		/* Draw [<][>] boxes for settings of an integer-type */
 		DrawArrowButtons(buttons_left, button_y, COLOUR_YELLOW, state,
-				editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && (uint32)value != sdb->max);
+				editable && value != (sd->flags & SGF_0ISDISABLED ? 0 : sd->min), editable && (uint32)value != sd->max);
 	}
 	this->SetValueDParams(1, value);
-	DrawString(text_left, text_right, y + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) / 2, sdb->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
+	DrawString(text_left, text_right, y + (SETTING_HEIGHT - FONT_HEIGHT_NORMAL) / 2, sd->str, highlight ? TC_WHITE : TC_LIGHT_BLUE);
 }
 
 /* == SettingsContainer methods == */
@@ -2196,7 +2192,6 @@ struct GameSettingsWindow : Window {
 
 		/* clicked on the icon on the left side. Either scroller, bool on/off or dropdown */
 		if (x < SETTING_BUTTON_WIDTH && (sd->flags & SGF_MULTISTRING)) {
-			const SettingDescBase *sdb = sd;
 			this->SetDisplayedHelpText(pe);
 
 			if (this->valuedropdown_entry == pe) {
@@ -2224,8 +2219,8 @@ struct GameSettingsWindow : Window {
 					this->valuedropdown_entry->SetButtons(SEF_LEFT_DEPRESSED);
 
 					DropDownList list;
-					for (int i = sdb->min; i <= (int)sdb->max; i++) {
-						list.emplace_back(new DropDownListStringItem(sdb->str_val + i - sdb->min, i, false));
+					for (int i = sd->min; i <= (int)sd->max; i++) {
+						list.emplace_back(new DropDownListStringItem(sd->str_val + i - sd->min, i, false));
 					}
 
 					ShowDropDownListAt(this, std::move(list), value, -1, wi_rect, COLOUR_ORANGE, true);
@@ -2234,10 +2229,9 @@ struct GameSettingsWindow : Window {
 			this->SetDirty();
 		} else if (x < SETTING_BUTTON_WIDTH) {
 			this->SetDisplayedHelpText(pe);
-			const SettingDescBase *sdb = sd;
 			int32 oldvalue = value;
 
-			switch (sdb->cmd) {
+			switch (sd->cmd) {
 				case SDT_BOOLX: value ^= 1; break;
 				case SDT_ONEOFMANY:
 				case SDT_NUMX: {
@@ -2245,7 +2239,7 @@ struct GameSettingsWindow : Window {
 					 * 50-steps you should be able to get from min to max,
 					 * unless specified otherwise in the 'interval' variable
 					 * of the current setting. */
-					uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
+					uint32 step = (sd->interval == 0) ? ((sd->max - sd->min) / 50) : sd->interval;
 					if (step == 0) step = 1;
 
 					/* don't allow too fast scrolling */
@@ -2257,16 +2251,16 @@ struct GameSettingsWindow : Window {
 					/* Increase or decrease the value and clamp it to extremes */
 					if (x >= SETTING_BUTTON_WIDTH / 2) {
 						value += step;
-						if (sdb->min < 0) {
-							assert((int32)sdb->max >= 0);
-							if (value > (int32)sdb->max) value = (int32)sdb->max;
+						if (sd->min < 0) {
+							assert((int32)sd->max >= 0);
+							if (value > (int32)sd->max) value = (int32)sd->max;
 						} else {
-							if ((uint32)value > sdb->max) value = (int32)sdb->max;
+							if ((uint32)value > sd->max) value = (int32)sd->max;
 						}
-						if (value < sdb->min) value = sdb->min; // skip between "disabled" and minimum
+						if (value < sd->min) value = sd->min; // skip between "disabled" and minimum
 					} else {
 						value -= step;
-						if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
+						if (value < sd->min) value = (sd->flags & SGF_0ISDISABLED) ? 0 : sd->min;
 					}
 
 					/* Set up scroller timeout for numeric values */

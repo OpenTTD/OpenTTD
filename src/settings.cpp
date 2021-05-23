@@ -379,7 +379,7 @@ static void MakeManyOfMany(char *buf, const char *last, const char *many, uint32
  * @param orig_str input string that will be parsed based on the type of desc
  * @return return the parsed value of the setting
  */
-static const void *StringToVal(const SettingDescBase *desc, const char *orig_str)
+static const void *StringToVal(const SettingDesc *desc, const char *orig_str)
 {
 	const char *str = orig_str == nullptr ? "" : orig_str;
 
@@ -456,7 +456,7 @@ static const void *StringToVal(const SettingDescBase *desc, const char *orig_str
  */
 static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 {
-	const SettingDescBase *sdb = sd;
+	const SettingDesc *sdb = sd;
 
 	if (sdb->cmd != SDT_BOOLX &&
 			sdb->cmd != SDT_NUMX &&
@@ -563,8 +563,8 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 	IniGroup *group_def = ini->GetGroup(grpname);
 
 	for (auto &sd : settings_table) {
-		const SettingDescBase *sdb = &sd;
-		const SaveLoad        *sld = &sd.save;
+		const SettingDesc *sdb = &sd;
+		const SaveLoad *sld = &sd.save;
 
 		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
 		if (sd.startup != only_startup) continue;
@@ -645,8 +645,8 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 	void *ptr;
 
 	for (auto &sd : settings_table) {
-		const SettingDescBase *sdb = &sd;
-		const SaveLoad        *sld = &sd.save;
+		const SettingDesc *sdb = &sd;
+		const SaveLoad *sld = &sd.save;
 
 		/* If the setting is not saved to the configuration
 		 * file, just continue with the next setting */
