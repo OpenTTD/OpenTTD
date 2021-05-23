@@ -127,31 +127,23 @@ static const char * const _list_group_names[] = {
 
 /**
  * Find the index value of a ONEofMANY type in a string separated by |
+ * @param str the current value of the setting for which a value needs found
+ * @param len length of the string
  * @param many full domain of values the ONEofMANY setting can have
- * @param one the current value of the setting for which a value needs found
- * @param onelen force calculation of the *one parameter
  * @return the integer index of the full-list, or -1 if not found
  */
-static size_t LookupOneOfMany(const char *many, const char *one, size_t onelen = 0)
+size_t OneOfManySettingDesc::ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many)
 {
-	const char *s;
-	size_t idx;
-
-	if (onelen == 0) onelen = strlen(one);
-
 	/* check if it's an integer */
-	if (*one >= '0' && *one <= '9') return strtoul(one, nullptr, 0);
+	if (isdigit(*str)) return strtoul(str, nullptr, 0);
 
-	idx = 0;
-	for (;;) {
-		/* find end of item */
-		s = many;
-		while (*s != '|' && *s != 0) s++;
-		if ((size_t)(s - many) == onelen && !memcmp(one, many, onelen)) return idx;
-		if (*s == 0) return (size_t)-1;
-		many = s + 1;
+	size_t idx = 0;
+	for (auto one : many) {
+		if (one.size() == len && strncmp(one.c_str(), str, len) == 0) return idx;
 		idx++;
 	}
+
+	return (size_t)-1;
 }
 
 /**
@@ -161,7 +153,7 @@ static size_t LookupOneOfMany(const char *many, const char *one, size_t onelen =
  * of separated by a whitespace,tab or | character
  * @return the 'fully' set integer, or -1 if a set is not found
  */
-static size_t LookupManyOfMany(const char *many, const char *str)
+static size_t LookupManyOfMany(const std::vector<std::string> &many, const char *str)
 {
 	const char *s;
 	size_t r;
@@ -175,7 +167,7 @@ static size_t LookupManyOfMany(const char *many, const char *str)
 		s = str;
 		while (*s != 0 && *s != ' ' && *s != '\t' && *s != '|') s++;
 
-		r = LookupOneOfMany(many, str, s - str);
+		r = OneOfManySettingDesc::ParseSingleValue(str, s - str, many);
 		if (r == (size_t)-1) return r;
 
 		SetBit(res, (uint8)r); // value found, set it
@@ -311,66 +303,30 @@ void ListSettingDesc::FormatValue(char *buf, const char *last, const void *objec
 	}
 }
 
-/**
- * Convert a ONEofMANY structure to a string representation.
- * @param buf output buffer where the string-representation will be stored
- * @param last last item to write to in the output buffer
- * @param many the full-domain string of possible values
- * @param id the value of the variable and whose string-representation must be found
- */
-static void MakeOneOfMany(char *buf, const char *last, const char *many, int id)
+char *OneOfManySettingDesc::FormatSingleValue(char *buf, const char *last, uint id) const
 {
-	int orig_id = id;
-
-	/* Look for the id'th element */
-	while (--id >= 0) {
-		for (; *many != '|'; many++) {
-			if (*many == '\0') { // not found
-				seprintf(buf, last, "%d", orig_id);
-				return;
-			}
-		}
-		many++; // pass the |-character
+	if (id >= this->many.size()) {
+		return buf + seprintf(buf, last, "%d", id);
 	}
-
-	/* copy string until next item (|) or the end of the list if this is the last one */
-	while (*many != '\0' && *many != '|' && buf < last) *buf++ = *many++;
-	*buf = '\0';
+	return strecpy(buf, this->many[id].c_str(), last);
 }
 
-/**
- * Convert a MANYofMANY structure to a string representation.
- * @param buf output buffer where the string-representation will be stored
- * @param last last item to write to in the output buffer
- * @param many the full-domain string of possible values
- * @param x the value of the variable and whose string-representation must
- *        be found in the bitmasked many string
- */
-static void MakeManyOfMany(char *buf, const char *last, const char *many, uint32 x)
+void OneOfManySettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
-	const char *start;
-	int i = 0;
-	bool init = true;
+	uint id = (uint)ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
+	this->FormatSingleValue(buf, last, id);
+}
 
-	for (; x != 0; x >>= 1, i++) {
-		start = many;
-		while (*many != 0 && *many != '|') many++; // advance to the next element
-
-		if (HasBit(x, 0)) { // item found, copy it
-			if (!init) buf += seprintf(buf, last, "|");
-			init = false;
-			if (start == many) {
-				buf += seprintf(buf, last, "%d", i);
-			} else {
-				memcpy(buf, start, many - start);
-				buf += many - start;
-			}
-		}
-
-		if (*many == '|') many++;
+void ManyOfManySettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+{
+	uint bitmask = (uint)ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
+	uint id = 0;
+	bool first = true;
+	FOR_EACH_SET_BIT(id, bitmask) {
+		if (!first) buf = strecpy(buf, "|", last);
+		buf = this->FormatSingleValue(buf, last, id);
+		first = false;
 	}
-
-	*buf = '\0';
 }
 
 /**
@@ -380,52 +336,46 @@ static void MakeManyOfMany(char *buf, const char *last, const char *many, uint32
  */
 size_t IntSettingDesc::ParseValue(const char *str) const
 {
-	switch (this->cmd) {
-		case SDT_NUMX: {
-			char *end;
-			size_t val = strtoul(str, &end, 0);
-			if (end == str) {
-				ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
-				msg.SetDParamStr(0, str);
-				msg.SetDParamStr(1, this->name);
-				_settings_error_list.push_back(msg);
-				break;
-			}
-			if (*end != '\0') {
-				ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS);
-				msg.SetDParamStr(0, this->name);
-				_settings_error_list.push_back(msg);
-			}
-			return val;
-		}
-
-		case SDT_ONEOFMANY: {
-			size_t r = LookupOneOfMany(this->many, str);
-			/* if the first attempt of conversion from string to the appropriate value fails,
-			 * look if we have defined a converter from old value to new value. */
-			if (r == (size_t)-1 && this->many_cnvt != nullptr) r = this->many_cnvt(str);
-			if (r != (size_t)-1) return r; // and here goes converted value
-
-			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
-			msg.SetDParamStr(0, str);
-			msg.SetDParamStr(1, this->name);
-			_settings_error_list.push_back(msg);
-			break;
-		}
-
-		case SDT_MANYOFMANY: {
-			size_t r = LookupManyOfMany(this->many, str);
-			if (r != (size_t)-1) return r;
-			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
-			msg.SetDParamStr(0, str);
-			msg.SetDParamStr(1, this->name);
-			_settings_error_list.push_back(msg);
-			break;
-		}
-
-		default: NOT_REACHED();
+	char *end;
+	size_t val = strtoul(str, &end, 0);
+	if (end == str) {
+		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+		msg.SetDParamStr(0, str);
+		msg.SetDParamStr(1, this->name);
+		_settings_error_list.push_back(msg);
+		return this->def;
 	}
+	if (*end != '\0') {
+		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS);
+		msg.SetDParamStr(0, this->name);
+		_settings_error_list.push_back(msg);
+	}
+	return val;
+}
 
+size_t OneOfManySettingDesc::ParseValue(const char *str) const
+{
+	size_t r = OneOfManySettingDesc::ParseSingleValue(str, strlen(str), this->many);
+	/* if the first attempt of conversion from string to the appropriate value fails,
+		* look if we have defined a converter from old value to new value. */
+	if (r == (size_t)-1 && this->many_cnvt != nullptr) r = this->many_cnvt(str);
+	if (r != (size_t)-1) return r; // and here goes converted value
+
+	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+	msg.SetDParamStr(0, str);
+	msg.SetDParamStr(1, this->name);
+	_settings_error_list.push_back(msg);
+	return this->def;
+}
+
+size_t ManyOfManySettingDesc::ParseValue(const char *str) const
+{
+	size_t r = LookupManyOfMany(this->many, str);
+	if (r != (size_t)-1) return r;
+	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+	msg.SetDParamStr(0, str);
+	msg.SetDParamStr(1, this->name);
+	_settings_error_list.push_back(msg);
 	return this->def;
 }
 
@@ -663,12 +613,7 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 void IntSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
 	uint32 i = (uint32)ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
-	switch (this->cmd) {
-		case SDT_NUMX:       seprintf(buf, last, IsSignedVarMemType(this->save.conv) ? "%d" : (this->save.conv & SLF_HEX) ? "%X" : "%u", i); break;
-		case SDT_ONEOFMANY:  MakeOneOfMany(buf, last, this->many, i); break;
-		case SDT_MANYOFMANY: MakeManyOfMany(buf, last, this->many, i); break;
-		default: NOT_REACHED();
-	}
+	seprintf(buf, last, IsSignedVarMemType(this->save.conv) ? "%d" : (this->save.conv & SLF_HEX) ? "%X" : "%u", i);
 }
 
 void BoolSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
@@ -1263,7 +1208,8 @@ static bool CheckRoadSide(int p1)
 static size_t ConvertLandscape(const char *value)
 {
 	/* try with the old values */
-	return LookupOneOfMany("normal|hilly|desert|candy", value);
+	static std::vector<std::string> _old_landscape_values{"normal", "hilly", "desert", "candy"};
+	return OneOfManySettingDesc::ParseSingleValue(value, strlen(value), _old_landscape_values);
 }
 
 static bool CheckFreeformEdges(int32 p1)
