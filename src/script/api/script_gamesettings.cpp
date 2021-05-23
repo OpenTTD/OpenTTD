@@ -18,7 +18,7 @@
 /* static */ bool ScriptGameSettings::IsValid(const char *setting)
 {
 	const SettingDesc *sd = GetSettingFromName(setting);
-	return sd != nullptr && sd->cmd != SDT_STDSTRING;
+	return sd != nullptr && sd->IsIntSetting();
 }
 
 /* static */ int32 ScriptGameSettings::GetValue(const char *setting)
@@ -28,8 +28,6 @@
 	const SettingDesc *sd = GetSettingFromName(setting);
 
 	void *ptr = GetVariableAddress(&_settings_game, &sd->save);
-	if (sd->cmd == SDT_BOOLX) return *(bool*)ptr;
-
 	return (int32)ReadValue(ptr, sd->save.conv);
 }
 
@@ -40,7 +38,6 @@
 	const SettingDesc *sd = GetSettingFromName(setting);
 
 	if ((sd->save.conv & SLF_NO_NETWORK_SYNC) != 0) return false;
-	if (sd->cmd != SDT_BOOLX && sd->cmd != SDT_NUMX) return false;
 
 	return ScriptObject::DoCommand(0, GetSettingIndex(sd), value, CMD_CHANGE_SETTING);
 }

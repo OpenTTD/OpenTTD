@@ -400,52 +400,49 @@ void IntSettingDesc::Write_ValidateSetting(const void *object, int32 val) const
 {
 	void *ptr = GetVariableAddress(object, &this->save);
 
-	/* We cannot know the maximum value of a bitset variable, so just have faith */
-	if (this->cmd != SDT_MANYOFMANY) {
-		/* We need to take special care of the uint32 type as we receive from the function
-		 * a signed integer. While here also bail out on 64-bit settings as those are not
-		 * supported. Unsigned 8 and 16-bit variables are safe since they fit into a signed
-		 * 32-bit variable
-		 * TODO: Support 64-bit settings/variables */
-		switch (GetVarMemType(this->save.conv)) {
-			case SLE_VAR_NULL: return;
-			case SLE_VAR_BL:
-			case SLE_VAR_I8:
-			case SLE_VAR_U8:
-			case SLE_VAR_I16:
-			case SLE_VAR_U16:
-			case SLE_VAR_I32: {
-				/* Override the minimum value. No value below sdb->min, except special value 0 */
-				if (!(this->flags & SGF_0ISDISABLED) || val != 0) {
-					if (!(this->flags & SGF_MULTISTRING)) {
-						/* Clamp value-type setting to its valid range */
-						val = Clamp(val, this->min, this->max);
-					} else if (val < this->min || val > (int32)this->max) {
-						/* Reset invalid discrete setting (where different values change gameplay) to its default value */
-						val = this->def;
-					}
+	/* We need to take special care of the uint32 type as we receive from the function
+	 * a signed integer. While here also bail out on 64-bit settings as those are not
+	 * supported. Unsigned 8 and 16-bit variables are safe since they fit into a signed
+	 * 32-bit variable
+	 * TODO: Support 64-bit settings/variables; requires 64 bit over command protocol! */
+	switch (GetVarMemType(this->save.conv)) {
+		case SLE_VAR_NULL: return;
+		case SLE_VAR_BL:
+		case SLE_VAR_I8:
+		case SLE_VAR_U8:
+		case SLE_VAR_I16:
+		case SLE_VAR_U16:
+		case SLE_VAR_I32: {
+			/* Override the minimum value. No value below this->min, except special value 0 */
+			if (!(this->flags & SGF_0ISDISABLED) || val != 0) {
+				if (!(this->flags & SGF_MULTISTRING)) {
+					/* Clamp value-type setting to its valid range */
+					val = Clamp(val, this->min, this->max);
+				} else if (val < this->min || val > (int32)this->max) {
+					/* Reset invalid discrete setting (where different values change gameplay) to its default value */
+					val = this->def;
 				}
-				break;
 			}
-			case SLE_VAR_U32: {
-				/* Override the minimum value. No value below sdb->min, except special value 0 */
-				uint32 uval = (uint32)val;
-				if (!(this->flags & SGF_0ISDISABLED) || uval != 0) {
-					if (!(this->flags & SGF_MULTISTRING)) {
-						/* Clamp value-type setting to its valid range */
-						uval = ClampU(uval, this->min, this->max);
-					} else if (uval < (uint)this->min || uval > this->max) {
-						/* Reset invalid discrete setting to its default value */
-						uval = (uint32)this->def;
-					}
-				}
-				WriteValue(ptr, SLE_VAR_U32, (int64)uval);
-				return;
-			}
-			case SLE_VAR_I64:
-			case SLE_VAR_U64:
-			default: NOT_REACHED();
+			break;
 		}
+		case SLE_VAR_U32: {
+			/* Override the minimum value. No value below this->min, except special value 0 */
+			uint32 uval = (uint32)val;
+			if (!(this->flags & SGF_0ISDISABLED) || uval != 0) {
+				if (!(this->flags & SGF_MULTISTRING)) {
+					/* Clamp value-type setting to its valid range */
+					uval = ClampU(uval, this->min, this->max);
+				} else if (uval < (uint)this->min || uval > this->max) {
+					/* Reset invalid discrete setting to its default value */
+					uval = (uint32)this->def;
+				}
+			}
+			WriteValue(ptr, SLE_VAR_U32, (int64)uval);
+			return;
+		}
+		case SLE_VAR_I64:
+		case SLE_VAR_U64:
+		default: NOT_REACHED();
 	}
 
 	WriteValue(ptr, this->save.conv, (int64)val);
@@ -753,22 +750,6 @@ SettingType SettingDesc::GetType() const
 {
 	if (this->flags & SGF_PER_COMPANY) return ST_COMPANY;
 	return (this->save.conv & SLF_NOT_IN_SAVE) ? ST_CLIENT : ST_GAME;
-}
-
-/**
- * Check whether this setting is an integer type setting.
- * @return True when the underlying type is an integer.
- */
-bool SettingDesc::IsIntSetting() const {
-	return this->cmd == SDT_BOOLX || this->cmd == SDT_NUMX || this->cmd == SDT_ONEOFMANY || this->cmd == SDT_MANYOFMANY;
-}
-
-/**
- * Check whether this setting is an string type setting.
- * @return True when the underlying type is a string.
- */
-bool SettingDesc::IsStringSetting() const {
-	return this->cmd == SDT_STDSTRING;
 }
 
 /**
@@ -2109,10 +2090,10 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 		return;
 	}
 
-	bool success;
-	if (sd->cmd == SDT_STDSTRING) {
+	bool success = true;
+	if (sd->IsStringSetting()) {
 		success = SetSettingValue(sd->AsStringSetting(), value, force_newgame);
-	} else {
+	} else if (sd->IsIntSetting()) {
 		uint32 val;
 		extern bool GetArgumentInteger(uint32 *value, const char *arg);
 		success = GetArgumentInteger(&val, value);
@@ -2155,9 +2136,8 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 
 	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
 
-	if (sd->cmd == SDT_STDSTRING) {
-		const void *ptr = GetVariableAddress(object, &sd->save);
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, reinterpret_cast<const std::string *>(ptr)->c_str());
+	if (sd->IsStringSetting()) {
+		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, sd->AsStringSetting()->Read(object).c_str());
 	} else if (sd->IsIntSetting()) {
 		char value[20];
 		sd->FormatValue(value, lastof(value), object);
