@@ -379,11 +379,14 @@ public:
 				const Group *g = Group::GetIfValid(this->sel_group);
 				if (g != nullptr) {
 					remove_wagon = HasBit(g->flags, GroupFlags::GF_REPLACE_WAGON_REMOVAL);
+					SetDParam(0, STR_GROUP_NAME);
+					SetDParam(1, sel_group);
 				} else {
 					const Company *c = Company::Get(_local_company);
 					remove_wagon = c->settings.renew_keep_length;
+					SetDParam(0, STR_GROUP_DEFAULT_TRAINS + this->window_number);
 				}
-				SetDParam(0, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
+				SetDParam(2, remove_wagon ? STR_CONFIG_SETTING_ON : STR_CONFIG_SETTING_OFF);
 				break;
 			}
 
@@ -640,6 +643,20 @@ public:
 				this->ReplaceClick_StartReplace(index != 0);
 				break;
 		}
+	}
+
+	bool OnTooltip(Point pt, int widget, TooltipCloseCondition close_cond) override
+	{
+		if (widget != WID_RV_TRAIN_WAGONREMOVE_TOGGLE) return false;
+
+		if (Group::IsValidID(this->sel_group)) {
+			uint64 params[1];
+			params[0] = STR_REPLACE_REMOVE_WAGON_HELP;
+			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_GROUP_HELP, 1, params, close_cond);
+		} else {
+			GuiShowTooltips(this, STR_REPLACE_REMOVE_WAGON_HELP, 0, nullptr, close_cond);
+		}
+		return true;
 	}
 
 	void OnResize() override
