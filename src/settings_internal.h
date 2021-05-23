@@ -82,7 +82,7 @@ typedef bool OnChange(int32 var);           ///< callback prototype on data modi
 typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
 /** Properties of config file settings. */
-struct SettingDescBase {
+struct SettingDesc {
 	const char *name;       ///< name of the setting. Used in configuration file and for console
 	const void *def;        ///< default value given when none is present
 	SettingDescType cmd;    ///< various flags for the variable
@@ -98,16 +98,13 @@ struct SettingDescBase {
 	OnConvert *proc_cnvt;   ///< callback procedure when loading value mechanism fails
 	SettingCategory cat;    ///< assigned categories of the setting
 	bool startup;           ///< setting has to be loaded directly at startup?
-};
-
-struct SettingDesc : SettingDescBase {
 	SaveLoad save;          ///< Internal structure (going to savegame, parts to config)
 
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
 };
 
-typedef std::initializer_list<const SettingDesc> SettingTable;
+typedef std::initializer_list<std::unique_ptr<const SettingDesc>> SettingTable;
 
 const SettingDesc *GetSettingFromName(const char *name);
 bool SetSettingValue(const SettingDesc *sd, int32 value, bool force_newgame = false);
