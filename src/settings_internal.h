@@ -133,9 +133,9 @@ struct SettingDesc {
 struct IntSettingDesc : SettingDesc {
 	IntSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, int32 def,
 		int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
-		SettingCategory cat, OnChange *proc, const char *many = nullptr, OnConvert *many_cnvt = nullptr) :
+		SettingCategory cat, OnChange *proc) :
 		SettingDesc(save, name, flags, cmd, startup), def(def), min(min), max(max), interval(interval),
-		str(str), str_help(str_help), str_val(str_val), cat(cat), proc(proc), many(many), many_cnvt(many_cnvt) {}
+		str(str), str_help(str_help), str_val(str_val), cat(cat), proc(proc) {}
 	virtual ~IntSettingDesc() {}
 
 	int32 def;              ///< default value given when none is present
@@ -147,8 +147,6 @@ struct IntSettingDesc : SettingDesc {
 	StringID str_val;       ///< (Translated) first string describing the value.
 	SettingCategory cat;    ///< assigned categories of the setting
 	OnChange *proc;         ///< callback procedure for when the value is changed
-	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
-	OnConvert *many_cnvt;   ///< callback procedure when loading value mechanism fails
 
 	void ChangeValue(const void *object, int32 newvalue) const;
 	void Write_ValidateSetting(const void *object, int32 value) const;
@@ -165,6 +163,41 @@ struct BoolSettingDesc : IntSettingDesc {
 		StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc) :
 		IntSettingDesc(save, name, flags, cmd, startup, def, 0, 1, 0, str, str_help, str_val, cat, proc) {}
 	virtual ~BoolSettingDesc() {}
+
+	size_t ParseValue(const char *str) const override;
+	void FormatValue(char *buf, const char *last, const void *object) const override;
+};
+
+/** One of many setting. */
+struct OneOfManySettingDesc : IntSettingDesc {
+	OneOfManySettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup,
+		int32 def, int32 max, StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc,
+		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+		IntSettingDesc(save, name, flags, cmd, startup, def, 0, max, 0, str, str_help, str_val, cat, proc), many_cnvt(many_cnvt)
+	{
+		for (auto one : many) this->many.push_back(one);
+	}
+
+	virtual ~OneOfManySettingDesc() {}
+
+	std::vector<std::string> many; ///< possible values for this type
+	OnConvert *many_cnvt;          ///< callback procedure when loading value mechanism fails
+
+	static size_t ParseSingleValue(const char *str, size_t len, const std::vector<std::string> &many);
+	char *FormatSingleValue(char *buf, const char *last, uint id) const;
+
+	size_t ParseValue(const char *str) const override;
+	void FormatValue(char *buf, const char *last, const void *object) const override;
+};
+
+/** Many of many setting. */
+struct ManyOfManySettingDesc : OneOfManySettingDesc {
+	ManyOfManySettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup,
+		int32 def, StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc,
+		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+		OneOfManySettingDesc(save, name, flags, cmd, startup, def, (1 << many.size()) - 1, str, str_help,
+			str_val, cat, proc, many, many_cnvt) {}
+	virtual ~ManyOfManySettingDesc() {}
 
 	size_t ParseValue(const char *str) const override;
 	void FormatValue(char *buf, const char *last, const void *object) const override;
