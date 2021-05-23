@@ -920,6 +920,7 @@ STR_GAME_OPTIONS_CURRENCY_ZAR                                   :南非蘭特 (Z
 STR_GAME_OPTIONS_CURRENCY_CUSTOM                                :自訂...
 STR_GAME_OPTIONS_CURRENCY_GEL                                   :喬治亞拉里 (GEL)
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :伊朗里亞爾 (IRR)
+STR_GAME_OPTIONS_CURRENCY_HKD                                   :港幣 (HKD)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :靠左行駛
@@ -2661,6 +2662,7 @@ STR_SAVELOAD_DETAIL_NOT_AVAILABLE                               :{BLACK}沒有�
 STR_SAVELOAD_DETAIL_COMPANY_INDEX                               :{SILVER}{COMMA}: {WHITE}{STRING}
 STR_SAVELOAD_DETAIL_GRFSTATUS                                   :{SILVER}NewGRF：{WHITE}{STRING}
 STR_SAVELOAD_OVERWRITE_TITLE                                    :{WHITE}覆蓋檔案
+STR_SAVELOAD_OVERWRITE_WARNING                                  :{YELLOW}你確定要覆蓋現有存檔嗎？
 STR_SAVELOAD_DIRECTORY                                          :{STRING} (路徑)
 
 STR_SAVELOAD_OSKTITLE                                           :{BLACK}為存檔輸入一個名稱
@@ -3224,6 +3226,7 @@ STR_INDUSTRY_VIEW_LOCATION_TOOLTIP                              :{BLACK}將工�
 STR_INDUSTRY_VIEW_PRODUCTION_LEVEL                              :{BLACK}產出等級：{YELLOW}{COMMA}%
 STR_INDUSTRY_VIEW_INDUSTRY_ANNOUNCED_CLOSURE                    :{YELLOW}該工業已宣佈關閉！
 
+STR_INDUSTRY_VIEW_REQUIRES_N_CARGO                              :{BLACK}需要： {YELLOW}{STRING}{STRING}
 STR_INDUSTRY_VIEW_CARGO_LIST_EXTENSION                          :，{STRING}{STRING}
 
 
