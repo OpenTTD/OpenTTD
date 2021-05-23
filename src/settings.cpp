@@ -556,14 +556,11 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 	IniGroup *group_def = ini->GetGroup(grpname);
 
 	for (auto &sd : settings_table) {
-		const SettingDesc *sdb = sd.get();
-		const SaveLoad *sld = &sd->save;
-
-		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (sd->startup != only_startup) continue;
 
 		/* For settings.xx.yy load the settings from [xx] yy = ? */
-		std::string s{ sdb->name };
+		std::string s{ sd->name };
 		auto sc = s.find('.');
 		if (sc != std::string::npos) {
 			group = ini->GetGroup(s.substr(0, sc));
@@ -585,7 +582,7 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 			if (sc != std::string::npos) item = ini->GetGroup(s.substr(0, sc))->GetItem(s.substr(sc + 1), false);
 		}
 
-		sdb->ParseValue(item, object);
+		sd->ParseValue(item, object);
 	}
 }
 
@@ -634,16 +631,13 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 	char buf[512];
 
 	for (auto &sd : settings_table) {
-		const SettingDesc *sdb = sd.get();
-		const SaveLoad *sld = &sd->save;
-
 		/* If the setting is not saved to the configuration
 		 * file, just continue with the next setting */
-		if (!SlIsObjectCurrentlyValid(sld->version_from, sld->version_to)) continue;
-		if (sld->conv & SLF_NOT_IN_CONFIG) continue;
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		if (sd->save.conv & SLF_NOT_IN_CONFIG) continue;
 
 		/* XXX - wtf is this?? (group override?) */
-		std::string s{ sdb->name };
+		std::string s{ sd->name };
 		auto sc = s.find('.');
 		if (sc != std::string::npos) {
 			group = ini->GetGroup(s.substr(0, sc));
@@ -655,9 +649,9 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 
 		item = group->GetItem(s, true);
 
-		if (!item->value.has_value() || !sdb->IsSameValue(item, object)) {
+		if (!item->value.has_value() || !sd->IsSameValue(item, object)) {
 			/* Value has changed, get the new value and put it into a buffer */
-			sdb->FormatValue(buf, lastof(buf), object);
+			sd->FormatValue(buf, lastof(buf), object);
 
 			/* The value is different, that means we have to write it to the ini */
 			item->value.emplace(buf);
@@ -2009,7 +2003,7 @@ static uint GetCompanySettingIndex(const SettingDesc *sd)
  * @param value new value of the setting
  * @param force_newgame force the newgame settings
  */
-bool SetSettingValue(const SettingDesc *sd, int32 value, bool force_newgame)
+bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 {
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if ((setting->flags & SGF_PER_COMPANY) != 0) {
@@ -2090,7 +2084,7 @@ uint GetCompanySettingIndex(const char *name)
  * @param force_newgame force the newgame settings
  * @note Strings WILL NOT be synced over the network
  */
-bool SetSettingValue(const SettingDesc *sd, const char *value, bool force_newgame)
+bool SetSettingValue(const StringSettingDesc *sd, const char *value, bool force_newgame)
 {
 	assert(sd->save.conv & SLF_NO_NETWORK_SYNC);
 
@@ -2165,7 +2159,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 
 	bool success;
 	if (sd->cmd == SDT_STDSTRING) {
-		success = SetSettingValue(sd, value, force_newgame);
+		success = SetSettingValue(sd->AsStringSetting(), value, force_newgame);
 	} else {
 		uint32 val;
 		extern bool GetArgumentInteger(uint32 *value, const char *arg);
@@ -2175,7 +2169,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 			return;
 		}
 
-		success = SetSettingValue(sd, val, force_newgame);
+		success = SetSettingValue(sd->AsIntSetting(), val, force_newgame);
 	}
 
 	if (!success) {
@@ -2191,7 +2185,7 @@ void IConsoleSetSetting(const char *name, int value)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	assert(sd != nullptr);
-	SetSettingValue(sd, value);
+	SetSettingValue(sd->AsIntSetting(), value);
 }
 
 /**
@@ -2250,11 +2244,10 @@ void IConsoleListSettings(const char *prefilter)
 static void LoadSettings(const SettingTable &settings, void *object)
 {
 	for (auto &osd : settings) {
-		const SaveLoad *sld = &osd->save;
-		void *ptr = GetVariableAddress(object, sld);
+		void *ptr = GetVariableAddress(object, &osd->save);
 
-		if (!SlObjectMember(ptr, sld)) continue;
-		if (osd->IsIntSetting()) osd->AsIntSetting()->Write_ValidateSetting(object, ReadValue(ptr, sld->conv));
+		if (!SlObjectMember(ptr, &osd->save)) continue;
+		if (osd->IsIntSetting()) osd->AsIntSetting()->Write_ValidateSetting(object, ReadValue(ptr, osd->save.conv));
 	}
 }
 

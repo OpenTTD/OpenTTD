@@ -206,8 +206,8 @@ struct NullSettingDesc : SettingDesc {
 typedef std::initializer_list<std::unique_ptr<const SettingDesc>> SettingTable;
 
 const SettingDesc *GetSettingFromName(const char *name);
-bool SetSettingValue(const SettingDesc *sd, int32 value, bool force_newgame = false);
-bool SetSettingValue(const SettingDesc *sd, const char *value, bool force_newgame = false);
+bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame = false);
+bool SetSettingValue(const StringSettingDesc *sd, const char *value, bool force_newgame = false);
 uint GetSettingIndex(const SettingDesc *sd);
 
 #endif /* SETTINGS_INTERNAL_H */
