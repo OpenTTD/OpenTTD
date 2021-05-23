@@ -2199,7 +2199,7 @@ public:
 			case WID_CL_SERVER_NAME_EDIT: {
 				if (!_network_server) break;
 
-				SetSettingValue(GetSettingFromName("network.server_name"), StrEmpty(str) ? "Unnamed Server" : str);
+				SetSettingValue(GetSettingFromName("network.server_name")->AsStringSetting(), StrEmpty(str) ? "Unnamed Server" : str);
 				this->InvalidateData();
 				break;
 			}
@@ -2208,7 +2208,7 @@ public:
 				std::string client_name(str);
 				if (!NetworkValidateClientName(client_name)) break;
 
-				SetSettingValue(GetSettingFromName("network.client_name"), client_name.c_str());
+				SetSettingValue(GetSettingFromName("network.client_name")->AsStringSetting(), client_name.c_str());
 				this->InvalidateData();
 				break;
 			}
