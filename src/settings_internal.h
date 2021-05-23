@@ -129,7 +129,7 @@ struct SettingDesc {
 	virtual bool IsSameValue(const IniItem *item, void *object) const = 0;
 };
 
-/** Integer type, including boolean, settings. Only these are shown in the settings UI. */
+/** Base integer type, including boolean, settings. Only these are shown in the settings UI. */
 struct IntSettingDesc : SettingDesc {
 	IntSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, int32 def,
 		int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
@@ -153,10 +153,21 @@ struct IntSettingDesc : SettingDesc {
 	void ChangeValue(const void *object, int32 newvalue) const;
 	void Write_ValidateSetting(const void *object, int32 value) const;
 
-	size_t ParseValue(const char *str) const;
+	virtual size_t ParseValue(const char *str) const;
 	void FormatValue(char *buf, const char *last, const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
+};
+
+/** Boolean setting. */
+struct BoolSettingDesc : IntSettingDesc {
+	BoolSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, SettingDescType cmd, bool startup, bool def,
+		StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc) :
+		IntSettingDesc(save, name, flags, cmd, startup, def, 0, 1, 0, str, str_help, str_val, cat, proc) {}
+	virtual ~BoolSettingDesc() {}
+
+	size_t ParseValue(const char *str) const override;
+	void FormatValue(char *buf, const char *last, const void *object) const override;
 };
 
 /** String settings. */

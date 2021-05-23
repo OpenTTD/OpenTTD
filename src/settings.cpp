@@ -423,20 +423,21 @@ size_t IntSettingDesc::ParseValue(const char *str) const
 			break;
 		}
 
-		case SDT_BOOLX: {
-			if (strcmp(str, "true")  == 0 || strcmp(str, "on")  == 0 || strcmp(str, "1") == 0) return true;
-			if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return false;
-
-			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
-			msg.SetDParamStr(0, str);
-			msg.SetDParamStr(1, this->name);
-			_settings_error_list.push_back(msg);
-			break;
-		}
-
 		default: NOT_REACHED();
 	}
 
+	return this->def;
+}
+
+size_t BoolSettingDesc::ParseValue(const char *str) const
+{
+	if (strcmp(str, "true") == 0 || strcmp(str, "on") == 0 || strcmp(str, "1") == 0) return true;
+	if (strcmp(str, "false") == 0 || strcmp(str, "off") == 0 || strcmp(str, "0") == 0) return false;
+
+	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
+	msg.SetDParamStr(0, str);
+	msg.SetDParamStr(1, this->name);
+	_settings_error_list.push_back(msg);
 	return this->def;
 }
 
@@ -663,12 +664,17 @@ void IntSettingDesc::FormatValue(char *buf, const char *last, const void *object
 {
 	uint32 i = (uint32)ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
 	switch (this->cmd) {
-		case SDT_BOOLX:      strecpy(buf, (i != 0) ? "true" : "false", last); break;
 		case SDT_NUMX:       seprintf(buf, last, IsSignedVarMemType(this->save.conv) ? "%d" : (this->save.conv & SLF_HEX) ? "%X" : "%u", i); break;
 		case SDT_ONEOFMANY:  MakeOneOfMany(buf, last, this->many, i); break;
 		case SDT_MANYOFMANY: MakeManyOfMany(buf, last, this->many, i); break;
 		default: NOT_REACHED();
 	}
+}
+
+void BoolSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
+{
+	bool val = ReadValue(GetVariableAddress(object, &this->save), this->save.conv) != 0;
+	strecpy(buf, val ? "true" : "false", last);
 }
 
 bool IntSettingDesc::IsSameValue(const IniItem *item, void *object) const

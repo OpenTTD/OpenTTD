@@ -62,7 +62,7 @@ static size_t ConvertLandscape(const char *value);
 	NSD(Int, SLEG_GENERAL(SL_VAR, var, type | flags, 1, from, to, extra), name, guiflags, SDT_NUMX, startup, def, min, max, interval, str, strhelp, strval, cat, proc)
 
 #define SDTG_BOOL(name, flags, guiflags, var, def, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	NSD(Int, SLEG_GENERAL(SL_VAR, var, SLE_BOOL | flags, 1, from, to, extra), name, guiflags, SDT_BOOLX, startup, def, 0, 1, 0, str, strhelp, strval, cat, proc)
+	NSD(Bool, SLEG_GENERAL(SL_VAR, var, SLE_BOOL | flags, 1, from, to, extra), name, guiflags, SDT_BOOLX, startup, def, str, strhelp, strval, cat, proc)
 
 #define SDTG_LIST(name, type, flags, guiflags, var, def, length, from, to, cat, extra, startup)\
 	NSD(List, SLEG_GENERAL(SL_ARR, var, type | flags, length, from, to, extra), name, guiflags, SDT_INTLIST, startup, def)
@@ -85,7 +85,7 @@ static size_t ConvertLandscape(const char *value);
 	NSD(Int, SLE_GENERAL(SL_VAR, base, var, type | flags, 1, from, to, extra), #var, guiflags, SDT_NUMX, startup, def, min, max, interval, str, strhelp, strval, cat, proc)
 
 #define SDT_BOOL(base, var, flags, guiflags, def, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	NSD(Int, SLE_GENERAL(SL_VAR, base, var, SLE_BOOL | flags, 1, from, to, extra), #var, guiflags, SDT_BOOLX, startup, def, 0, 1, 0, str, strhelp, strval, cat, proc)
+	NSD(Bool, SLE_GENERAL(SL_VAR, base, var, SLE_BOOL | flags, 1, from, to, extra), #var, guiflags, SDT_BOOLX, startup, def, str, strhelp, strval, cat, proc)
 
 #define SDT_LIST(base, var, type, flags, guiflags, def, from, to, cat, extra, startup)\
 	NSD(List, SLE_GENERAL(SL_ARR, base, var, type | flags, lengthof(((base*)8)->var), from, to, extra), #var, guiflags, SDT_INTLIST, startup, def)
