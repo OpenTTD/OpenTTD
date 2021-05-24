@@ -392,14 +392,28 @@ size_t BoolSettingDesc::ParseValue(const char *str) const
 }
 
 /**
- * Set the value of a setting and if needed clamp the value to the preset minimum and maximum.
+ * Make the value valid and then write it to the setting.
+ * See #MakeValidValid and #Write for more details.
  * @param object The object the setting is to be saved in.
  * @param val Signed version of the new value.
  */
-void IntSettingDesc::Write_ValidateSetting(const void *object, int32 val) const
+void IntSettingDesc::MakeValueValidAndWrite(const void *object, int32 val) const
 {
-	void *ptr = GetVariableAddress(object, &this->save);
+	this->MakeValueValid(val);
+	this->Write(object, val);
+}
 
+/**
+ * Make the value valid given the limitations of this setting.
+ *
+ * In the case of int settings this is ensuring the value is between the minimum and
+ * maximum value, with a special case for 0 if SGF_0ISDISABLED is set.
+ * This is generally done by clamping the value so it is within the allowed value range.
+ * However, for SGF_MULTISTRING the default is used when the value is not valid.
+ * @param val The value to make valid.
+ */
+void IntSettingDesc::MakeValueValid(int32 &val) const
+{
 	/* We need to take special care of the uint32 type as we receive from the function
 	 * a signed integer. While here also bail out on 64-bit settings as those are not
 	 * supported. Unsigned 8 and 16-bit variables are safe since they fit into a signed
@@ -437,14 +451,23 @@ void IntSettingDesc::Write_ValidateSetting(const void *object, int32 val) const
 					uval = (uint32)this->def;
 				}
 			}
-			WriteValue(ptr, SLE_VAR_U32, (int64)uval);
+			val = (int32)val;
 			return;
 		}
 		case SLE_VAR_I64:
 		case SLE_VAR_U64:
 		default: NOT_REACHED();
 	}
+}
 
+/**
+ * Set the value of a setting.
+ * @param object The object the setting is to be saved in.
+ * @param val Signed version of the new value.
+ */
+void IntSettingDesc::Write(const void *object, int32 val) const
+{
+	void *ptr = GetVariableAddress(object, &this->save);
 	WriteValue(ptr, this->save.conv, (int64)val);
 }
 
@@ -545,7 +568,7 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 void IntSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
 	size_t val = (item == nullptr) ? this->def : this->ParseValue(item->value.has_value() ? item->value->c_str() : "");
-	this->Write_ValidateSetting(object, (int32)val);
+	this->MakeValueValidAndWrite(object, (int32)val);
 }
 
 void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
@@ -1388,7 +1411,7 @@ static void HandleOldDiffCustom(bool savegame)
 		/* Skip deprecated options */
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		int32 value = (int32)((i == 4 ? 1000 : 1) * _old_diff_custom[i]);
-		sd->AsIntSetting()->Write_ValidateSetting(savegame ? &_settings_game : &_settings_newgame, value);
+		sd->AsIntSetting()->MakeValueValidAndWrite(savegame ? &_settings_game : &_settings_newgame, value);
 	}
 }
 
@@ -1825,14 +1848,14 @@ void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
 {
 	int32 oldval = this->Read(object);
 
-	this->Write_ValidateSetting(object, newval);
+	this->MakeValueValidAndWrite(object, newval);
 	newval = this->Read(object);
 
 	if (oldval == newval) return;
 
 	if (this->proc != nullptr && !this->proc(newval)) {
 		/* The change was not allowed, so revert. */
-		WriteValue(GetVariableAddress(object, &this->save), this->save.conv, (int64)oldval);
+		this->Write(object, oldval);
 		return;
 	}
 
@@ -1987,7 +2010,7 @@ void SetDefaultCompanySettings(CompanyID cid)
 	Company *c = Company::Get(cid);
 	for (auto &sd : _company_settings) {
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
-		int_setting->Write_ValidateSetting(&c->settings, int_setting->def);
+		int_setting->MakeValueValidAndWrite(&c->settings, int_setting->def);
 	}
 }
 
@@ -2189,7 +2212,7 @@ static void LoadSettings(const SettingTable &settings, void *object)
 		if (!SlObjectMember(ptr, &osd->save)) continue;
 		if (osd->IsIntSetting()) {
 			const IntSettingDesc *int_setting = osd->AsIntSetting();
-			int_setting->Write_ValidateSetting(object, int_setting->Read(object));
+			int_setting->MakeValueValidAndWrite(object, int_setting->Read(object));
 		}
 	}
 }

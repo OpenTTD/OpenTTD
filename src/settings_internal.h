@@ -150,13 +150,17 @@ struct IntSettingDesc : SettingDesc {
 	bool IsIntSetting() const override { return true; }
 
 	void ChangeValue(const void *object, int32 newvalue) const;
-	void Write_ValidateSetting(const void *object, int32 value) const;
+	void MakeValueValidAndWrite(const void *object, int32 value) const;
 
 	virtual size_t ParseValue(const char *str) const;
 	void FormatValue(char *buf, const char *last, const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
 	int32 Read(const void *object) const;
+
+private:
+	void MakeValueValid(int32 &value) const;
+	void Write(const void *object, int32 value) const;
 };
 
 /** Boolean setting. */
