@@ -239,6 +239,6 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 GRFTextWrapper FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create);
 
 void UpdateNewGRFScanStatus(uint num, const char *name);
-bool UpdateNewGRFConfigPalette(int32 p1 = 0);
+void UpdateNewGRFConfigPalette(int32 new_value = 0);
 
 #endif /* NEWGRF_CONFIG_H */

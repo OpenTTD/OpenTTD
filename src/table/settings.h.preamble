@@ -58,11 +58,11 @@ static size_t ConvertLandscape(const char *value);
 
 /* Macros for various objects to go in the configuration file.
  * This section is for global variables */
-#define SDTG_VAR(name, type, flags, guiflags, var, def, min, max, interval, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	NSD(Int, SLEG_GENERAL(SL_VAR, var, type | flags, 1, from, to, extra), name, guiflags, startup, def, min, max, interval, str, strhelp, strval, cat, proc)
+#define SDTG_VAR(name, type, flags, guiflags, var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
+	NSD(Int, SLEG_GENERAL(SL_VAR, var, type | flags, 1, from, to, extra), name, guiflags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback)
 
-#define SDTG_BOOL(name, flags, guiflags, var, def, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	NSD(Bool, SLEG_GENERAL(SL_VAR, var, SLE_BOOL | flags, 1, from, to, extra), name, guiflags, startup, def, str, strhelp, strval, cat, proc)
+#define SDTG_BOOL(name, flags, guiflags, var, def, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
+	NSD(Bool, SLEG_GENERAL(SL_VAR, var, SLE_BOOL | flags, 1, from, to, extra), name, guiflags, startup, def, str, strhelp, strval, cat, pre_check, post_callback)
 
 #define SDTG_LIST(name, type, flags, guiflags, var, def, length, from, to, cat, extra, startup)\
 	NSD(List, SLEG_GENERAL(SL_ARR, var, type | flags, length, from, to, extra), name, guiflags, startup, def)
@@ -70,22 +70,22 @@ static size_t ConvertLandscape(const char *value);
 #define SDTG_SSTR(name, type, flags, guiflags, var, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 	NSD(String, SLEG_GENERAL(SL_STDSTR, var, type | flags, sizeof(var), from, to, extra), name, guiflags, startup, def, max_length, pre_check, post_callback)
 
-#define SDTG_OMANY(name, type, flags, guiflags, var, def, max, full, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	NSD(OneOfMany, SLEG_GENERAL(SL_VAR, var, type | flags, 1, from, to, extra), name, guiflags, startup, def, max, str, strhelp, strval, cat, proc, full, nullptr)
+#define SDTG_OMANY(name, type, flags, guiflags, var, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
+	NSD(OneOfMany, SLEG_GENERAL(SL_VAR, var, type | flags, 1, from, to, extra), name, guiflags, startup, def, max, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
 
-#define SDTG_MMANY(name, type, flags, guiflags, var, def, full, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	NSD(ManyOfMany, SLEG_GENERAL(SL_VAR, var, type | flags, 1, from, to, extra), name, guiflags, startup, def, str, strhelp, strval, cat, proc, full, nullptr)
+#define SDTG_MMANY(name, type, flags, guiflags, var, def, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
+	NSD(ManyOfMany, SLEG_GENERAL(SL_VAR, var, type | flags, 1, from, to, extra), name, guiflags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
 
 #define SDTG_NULL(length, from, to)\
 	NSD(Null, SLEG_NULL(length, from, to))
 
 /* Macros for various objects to go in the configuration file.
  * This section is for structures where their various members are saved */
-#define SDT_VAR(base, var, type, flags, guiflags, def, min, max, interval, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	NSD(Int, SLE_GENERAL(SL_VAR, base, var, type | flags, 1, from, to, extra), #var, guiflags, startup, def, min, max, interval, str, strhelp, strval, cat, proc)
+#define SDT_VAR(base, var, type, flags, guiflags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
+	NSD(Int, SLE_GENERAL(SL_VAR, base, var, type | flags, 1, from, to, extra), #var, guiflags, startup, def, min, max, interval, str, strhelp, strval, cat, pre_check, post_callback)
 
-#define SDT_BOOL(base, var, flags, guiflags, def, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	NSD(Bool, SLE_GENERAL(SL_VAR, base, var, SLE_BOOL | flags, 1, from, to, extra), #var, guiflags, startup, def, str, strhelp, strval, cat, proc)
+#define SDT_BOOL(base, var, flags, guiflags, def, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
+	NSD(Bool, SLE_GENERAL(SL_VAR, base, var, SLE_BOOL | flags, 1, from, to, extra), #var, guiflags, startup, def, str, strhelp, strval, cat, pre_check, post_callback)
 
 #define SDT_LIST(base, var, type, flags, guiflags, def, from, to, cat, extra, startup)\
 	NSD(List, SLE_GENERAL(SL_ARR, base, var, type | flags, lengthof(((base*)8)->var), from, to, extra), #var, guiflags, startup, def)
@@ -93,21 +93,21 @@ static size_t ConvertLandscape(const char *value);
 #define SDT_SSTR(base, var, type, flags, guiflags, def, pre_check, post_callback, from, to, cat, extra, startup)\
 	NSD(String, SLE_GENERAL(SL_STDSTR, base, var, type | flags, sizeof(((base*)8)->var), from, to, extra), #var, guiflags, startup, def, 0, pre_check, post_callback)
 
-#define SDT_OMANY(base, var, type, flags, guiflags, def, max, full, str, strhelp, strval, proc, from, to, load, cat, extra, startup)\
-	NSD(OneOfMany, SLE_GENERAL(SL_VAR, base, var, type | flags, 1, from, to, extra), #var, guiflags, startup, def, max, str, strhelp, strval, cat, proc, full, load)
+#define SDT_OMANY(base, var, type, flags, guiflags, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, load, cat, extra, startup)\
+	NSD(OneOfMany, SLE_GENERAL(SL_VAR, base, var, type | flags, 1, from, to, extra), #var, guiflags, startup, def, max, str, strhelp, strval, cat, pre_check, post_callback, full, load)
 
-#define SDT_MMANY(base, var, type, flags, guiflags, def, full, str, proc, strhelp, strval, from, to, cat, extra, startup)\
-	NSD(ManyOfMany, SLE_GENERAL(SL_VAR, base, var, type | flags, 1, from, to, extra), #var, guiflags, startup, def, str, strhelp, strval, cat, proc, full, nullptr)
+#define SDT_MMANY(base, var, type, flags, guiflags, def, full, str, pre_check, post_callback, strhelp, strval, from, to, cat, extra, startup)\
+	NSD(ManyOfMany, SLE_GENERAL(SL_VAR, base, var, type | flags, 1, from, to, extra), #var, guiflags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
 
 #define SDT_NULL(length, from, to)\
 	NSD(Null, SLE_CONDNULL(length, from, to))
 
 
-#define SDTC_VAR(var, type, flags, guiflags, def, min, max, interval, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	SDTG_VAR(#var, type, flags, guiflags, _settings_client.var, def, min, max, interval, str, strhelp, strval, proc, from, to, cat, extra, startup)
+#define SDTC_VAR(var, type, flags, guiflags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
+	SDTG_VAR(#var, type, flags, guiflags, _settings_client.var, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)
 
-#define SDTC_BOOL(var, flags, guiflags, def, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	SDTG_BOOL(#var, flags, guiflags, _settings_client.var, def, str, strhelp, strval, proc, from, to, cat, extra, startup)
+#define SDTC_BOOL(var, flags, guiflags, def, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
+	SDTG_BOOL(#var, flags, guiflags, _settings_client.var, def, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)
 
 #define SDTC_LIST(var, type, flags, guiflags, def, from, to, cat, extra, startup)\
 	SDTG_LIST(#var, type, flags, guiflags, _settings_client.var, def, lengthof(_settings_client.var), from, to, cat, extra, startup)
@@ -115,5 +115,5 @@ static size_t ConvertLandscape(const char *value);
 #define SDTC_SSTR(var, type, flags, guiflags, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 	SDTG_SSTR(#var, type, flags, guiflags, _settings_client.var, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 
-#define SDTC_OMANY(var, type, flags, guiflags, def, max, full, str, strhelp, strval, proc, from, to, cat, extra, startup)\
-	SDTG_OMANY(#var, type, flags, guiflags, _settings_client.var, def, max, full, str, strhelp, strval, proc, from, to, cat, extra, startup)
+#define SDTC_OMANY(var, type, flags, guiflags, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
+	SDTG_OMANY(#var, type, flags, guiflags, _settings_client.var, def, max, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)

@@ -2130,10 +2130,9 @@ static void SetDefaultRailGui()
 /**
  * Updates the current signal variant used in the signal GUI
  * to the one adequate to current year.
- * @param p needed to be called when a setting changes
- * @return success, needed for settings
+ * @param new_value needed to be called when a setting changes
  */
-bool ResetSignalVariant(int32 p)
+void ResetSignalVariant(int32 new_value)
 {
 	SignalVariant new_variant = (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 
@@ -2145,8 +2144,6 @@ bool ResetSignalVariant(int32 p)
 		}
 		_cur_signal_variant = new_variant;
 	}
-
-	return true;
 }
 
 /**
