@@ -1343,37 +1343,28 @@ static bool InvalidateShipPathCache(int32 p1)
 	return true;
 }
 
-static bool UpdateClientName(int32 p1)
+/**
+ * Replace a passwords that are a literal asterisk with an empty string.
+ * @param newval The new string value for this password field.
+ * @return Always true.
+ */
+static bool ReplaceAsteriskWithEmptyPassword(std::string &newval)
 {
-	NetworkUpdateClientName();
-	return true;
-}
-
-static bool UpdateServerPassword(int32 p1)
-{
-	if (_settings_client.network.server_password.compare("*") == 0) {
-		_settings_client.network.server_password.clear();
-	}
-
-	NetworkServerUpdateGameInfo();
-	return true;
-}
-
-static bool UpdateRconPassword(int32 p1)
-{
-	if (_settings_client.network.rcon_password.compare("*") == 0) {
-		_settings_client.network.rcon_password.clear();
-	}
-
+	if (newval.compare("*") == 0) newval.clear();
 	return true;
 }
 
 static bool UpdateClientConfigValues(int32 p1)
 {
+	UpdateClientConfigValues();
+	return true;
+}
+
+/** Update the game info, and send it to the clients when we are running as a server. */
+static void UpdateClientConfigValues()
+{
 	NetworkServerUpdateGameInfo();
 	if (_network_server) NetworkServerSendConfigUpdate();
-
-	return true;
 }
 
 /* End - Callback Functions */
@@ -2069,8 +2060,10 @@ bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_
 void StringSettingDesc::ChangeValue(const void *object, std::string &newval) const
 {
 	this->MakeValueValid(newval);
+	if (this->pre_check != nullptr && !this->pre_check(newval)) return;
+
 	this->Write(object, newval);
-	if (this->proc != nullptr) this->proc(0);
+	if (this->post_callback != nullptr) this->post_callback(newval);
 
 	if (_save_config) SaveToConfig();
 }

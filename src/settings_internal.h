@@ -212,15 +212,31 @@ struct ManyOfManySettingDesc : OneOfManySettingDesc {
 
 /** String settings. */
 struct StringSettingDesc : SettingDesc {
+	/**
+	 * A check to be performed before the setting gets changed. The passed string may be
+	 * changed by the check if that is important, for example to remove unwanted white
+	 * space. The return value denotes whether the value, potentially after the changes,
+	 * is allowed to be used/set in the configuration.
+	 * @param value The prospective new value for the setting.
+	 * @return True when the setting is accepted.
+	 */
+	typedef bool PreChangeCheck(std::string &value);
+	/**
+	 * A callback to denote that a setting has been changed.
+	 * @param The new value for the setting.
+	 */
+	typedef void PostChangeCallback(const std::string &value);
+
 	StringSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup, const char *def,
-			uint32 max_length, OnChange proc) :
+			uint32 max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		SettingDesc(save, name, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
-			proc(proc) {}
+			pre_check(pre_check), post_callback(post_callback) {}
 	virtual ~StringSettingDesc() {}
 
-	std::string def;        ///< default value given when none is present
-	uint32 max_length;      ///< maximum length of the string, 0 means no maximum length
-	OnChange *proc;         ///< callback procedure for when the value is changed
+	std::string def;                   ///< Default value given when none is present
+	uint32 max_length;                 ///< Maximum length of the string, 0 means no maximum length
+	PreChangeCheck *pre_check;         ///< Callback to check for the validity of the setting.
+	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
 
 	bool IsStringSetting() const override { return true; }
 	void ChangeValue(const void *object, std::string &newval) const;

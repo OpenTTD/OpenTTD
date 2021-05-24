@@ -1344,27 +1344,22 @@ bool NetworkValidateClientName()
 }
 
 /**
- * Send the server our name.
+ * Send the server our name as callback from the setting.
+ * @param newname The new client name.
  */
-void NetworkUpdateClientName()
+void NetworkUpdateClientName(const std::string &client_name)
 {
 	NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
-
 	if (ci == nullptr) return;
-	/* There is no validation on string settings, it is actually a post change callback.
-	 * This method is called from that post change callback. So, when the client name is
-	 * changed via the console there is no easy way to prevent an invalid name. Though,
-	 * we can prevent it getting sent here. */
-	if (!NetworkValidateClientName()) return;
 
 	/* Don't change the name if it is the same as the old name */
-	if (_settings_client.network.client_name.compare(ci->client_name) != 0) {
+	if (client_name.compare(ci->client_name) != 0) {
 		if (!_network_server) {
-			MyClient::SendSetName(_settings_client.network.client_name.c_str());
+			MyClient::SendSetName(client_name.c_str());
 		} else {
 			/* Copy to a temporary buffer so no #n gets added after our name in the settings when there are duplicate names. */
 			char temporary_name[NETWORK_CLIENT_NAME_LENGTH];
-			strecpy(temporary_name, _settings_client.network.client_name.c_str(), lastof(temporary_name));
+			strecpy(temporary_name, client_name.c_str(), lastof(temporary_name));
 			if (NetworkFindName(temporary_name, lastof(temporary_name))) {
 				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, temporary_name);
 				ci->client_name = temporary_name;
