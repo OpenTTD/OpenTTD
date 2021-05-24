@@ -74,7 +74,7 @@ static const StringID _font_zoom_dropdown[] = {
 
 static Dimension _circle_size; ///< Dimension of the circle +/- icon. This is here as not all users are within the class of the settings window.
 
-static const void *ResolveVariableAddress(const GameSettings *settings_ptr, const IntSettingDesc *sd);
+static const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd);
 
 /**
  * Get index of the current screen resolution.
@@ -1075,16 +1075,14 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 	/* There shall not be any restriction, i.e. all settings shall be visible. */
 	if (mode == RM_ALL) return true;
 
-	GameSettings *settings_ptr = &GetGameSettings();
 	const IntSettingDesc *sd = this->setting;
 
 	if (mode == RM_BASIC) return (this->setting->cat & SC_BASIC_LIST) != 0;
 	if (mode == RM_ADVANCED) return (this->setting->cat & SC_ADVANCED_LIST) != 0;
 
 	/* Read the current value. */
-	const void *var = ResolveVariableAddress(settings_ptr, sd);
-	int64 current_value = ReadValue(var, sd->save.conv);
-
+	const void *object = ResolveObject(&GetGameSettings(), sd);
+	int64 current_value = sd->Read(object);
 	int64 filter_value;
 
 	if (mode == RM_CHANGED_AGAINST_DEFAULT) {
@@ -1098,11 +1096,10 @@ bool SettingEntry::IsVisibleByRestrictionMode(RestrictionMode mode) const
 		 * its value is used when starting a new game. */
 
 		/* Make sure we're not comparing the new game settings against itself. */
-		assert(settings_ptr != &_settings_newgame);
+		assert(&GetGameSettings() != &_settings_newgame);
 
 		/* Read the new game's value. */
-		var = ResolveVariableAddress(&_settings_newgame, sd);
-		filter_value = ReadValue(var, sd->save.conv);
+		filter_value = sd->Read(ResolveObject(&_settings_newgame, sd));
 	}
 
 	return current_value != filter_value;
@@ -1147,17 +1144,15 @@ bool SettingEntry::UpdateFilterState(SettingFilter &filter, bool force_visible)
 	return visible;
 }
 
-static const void *ResolveVariableAddress(const GameSettings *settings_ptr, const IntSettingDesc *sd)
+static const void *ResolveObject(const GameSettings *settings_ptr, const IntSettingDesc *sd)
 {
 	if ((sd->flags & SGF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-			return GetVariableAddress(&Company::Get(_local_company)->settings, &sd->save);
-		} else {
-			return GetVariableAddress(&_settings_client.company, &sd->save);
+			return &Company::Get(_local_company)->settings;
 		}
-	} else {
-		return GetVariableAddress(settings_ptr, &sd->save);
+		return &_settings_client.company;
 	}
+	return settings_ptr;
 }
 
 /**
@@ -1193,7 +1188,6 @@ void SettingEntry::SetValueDParams(uint first_param, int32 value) const
 void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, int y, bool highlight) const
 {
 	const IntSettingDesc *sd = this->setting;
-	const void *var = ResolveVariableAddress(settings_ptr, sd);
 	int state = this->flags & SEF_BUTTONS_MASK;
 
 	bool rtl = _current_text_dir == TD_RTL;
@@ -1206,7 +1200,7 @@ void SettingEntry::DrawSetting(GameSettings *settings_ptr, int left, int right, 
 	bool editable = sd->IsEditable();
 
 	SetDParam(0, highlight ? STR_ORANGE_STRING1_WHITE : STR_ORANGE_STRING1_LTBLUE);
-	int32 value = (int32)ReadValue(var, sd->save.conv);
+	int32 value = sd->Read(ResolveObject(settings_ptr, sd));
 	if (sd->IsBoolSetting()) {
 		/* Draw checkbox for boolean-value either on/off */
 		DrawBoolButton(buttons_left, button_y, value != 0, editable);
@@ -2184,8 +2178,7 @@ struct GameSettingsWindow : Window {
 			return;
 		}
 
-		const void *var = ResolveVariableAddress(settings_ptr, sd);
-		int32 value = (int32)ReadValue(var, sd->save.conv);
+		int32 value = sd->Read(ResolveObject(settings_ptr, sd));
 
 		/* clicked on the icon on the left side. Either scroller, bool on/off or dropdown */
 		if (x < SETTING_BUTTON_WIDTH && (sd->flags & SGF_MULTISTRING)) {

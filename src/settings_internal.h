@@ -156,6 +156,7 @@ struct IntSettingDesc : SettingDesc {
 	void FormatValue(char *buf, const char *last, const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
+	int32 Read(const void *object) const;
 };
 
 /** Boolean setting. */
