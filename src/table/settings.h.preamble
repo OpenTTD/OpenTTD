@@ -67,8 +67,8 @@ static size_t ConvertLandscape(const char *value);
 #define SDTG_LIST(name, type, flags, guiflags, var, def, length, from, to, cat, extra, startup)\
 	NSD(List, SLEG_GENERAL(SL_ARR, var, type | flags, length, from, to, extra), name, guiflags, startup, def)
 
-#define SDTG_SSTR(name, type, flags, guiflags, var, def, max_length, proc, from, to, cat, extra, startup)\
-	NSD(String, SLEG_GENERAL(SL_STDSTR, var, type | flags, sizeof(var), from, to, extra), name, guiflags, startup, def, max_length, proc)
+#define SDTG_SSTR(name, type, flags, guiflags, var, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
+	NSD(String, SLEG_GENERAL(SL_STDSTR, var, type | flags, sizeof(var), from, to, extra), name, guiflags, startup, def, max_length, pre_check, post_callback)
 
 #define SDTG_OMANY(name, type, flags, guiflags, var, def, max, full, str, strhelp, strval, proc, from, to, cat, extra, startup)\
 	NSD(OneOfMany, SLEG_GENERAL(SL_VAR, var, type | flags, 1, from, to, extra), name, guiflags, startup, def, max, str, strhelp, strval, cat, proc, full, nullptr)
@@ -90,8 +90,8 @@ static size_t ConvertLandscape(const char *value);
 #define SDT_LIST(base, var, type, flags, guiflags, def, from, to, cat, extra, startup)\
 	NSD(List, SLE_GENERAL(SL_ARR, base, var, type | flags, lengthof(((base*)8)->var), from, to, extra), #var, guiflags, startup, def)
 
-#define SDT_SSTR(base, var, type, flags, guiflags, def, proc, from, to, cat, extra, startup)\
-	NSD(String, SLE_GENERAL(SL_STDSTR, base, var, type | flags, sizeof(((base*)8)->var), from, to, extra), #var, guiflags, startup, def, 0, proc)
+#define SDT_SSTR(base, var, type, flags, guiflags, def, pre_check, post_callback, from, to, cat, extra, startup)\
+	NSD(String, SLE_GENERAL(SL_STDSTR, base, var, type | flags, sizeof(((base*)8)->var), from, to, extra), #var, guiflags, startup, def, 0, pre_check, post_callback)
 
 #define SDT_OMANY(base, var, type, flags, guiflags, def, max, full, str, strhelp, strval, proc, from, to, load, cat, extra, startup)\
 	NSD(OneOfMany, SLE_GENERAL(SL_VAR, base, var, type | flags, 1, from, to, extra), #var, guiflags, startup, def, max, str, strhelp, strval, cat, proc, full, load)
@@ -112,8 +112,8 @@ static size_t ConvertLandscape(const char *value);
 #define SDTC_LIST(var, type, flags, guiflags, def, from, to, cat, extra, startup)\
 	SDTG_LIST(#var, type, flags, guiflags, _settings_client.var, def, lengthof(_settings_client.var), from, to, cat, extra, startup)
 
-#define SDTC_SSTR(var, type, flags, guiflags, def, max_length, proc, from, to, cat, extra, startup)\
-	SDTG_SSTR(#var, type, flags, guiflags, _settings_client.var, def, max_length, proc, from, to, cat, extra, startup)\
+#define SDTC_SSTR(var, type, flags, guiflags, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
+	SDTG_SSTR(#var, type, flags, guiflags, _settings_client.var, def, max_length, pre_check, post_callback, from, to, cat, extra, startup)\
 
 #define SDTC_OMANY(var, type, flags, guiflags, def, max, full, str, strhelp, strval, proc, from, to, cat, extra, startup)\
 	SDTG_OMANY(#var, type, flags, guiflags, _settings_client.var, def, max, full, str, strhelp, strval, proc, from, to, cat, extra, startup)
