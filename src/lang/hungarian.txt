@@ -3875,7 +3875,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Járműv
 STR_REPLACE_ROAD_VEHICLES                                       :Közúti járművek
 STR_REPLACE_TRAM_VEHICLES                                       :Villamosok
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása vagonok eltávolításával (mozdony utántól kezdve), ha a csere után a szerelvény hosszabb lenne
 
 # Vehicle view

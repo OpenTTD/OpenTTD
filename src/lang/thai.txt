@@ -3392,7 +3392,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :ยานพา
 STR_REPLACE_MAGLEV_VEHICLES                                     :รถไฟพลังงานแม่แหล็ก
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}ขายรถพ่วง: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}ทำให้การแทนที่ขบวนรถไฟทำให้ความยาวของขบวนยังเท่าเดิม
 
 # Vehicle view

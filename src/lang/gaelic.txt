@@ -3761,7 +3761,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Carbadan aona-r
 STR_REPLACE_MAGLEV_VEHICLES                                     :Carbadan magnaiteach
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}A' toirt air falbh carbad: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Glèidh faide aig trèan nuair a thèid fhèin-leasachadh le toirt air falbh nan carbadan (bho thoiseach na trèan a-mach) ma dh'fhàsas an trèan nas fhaide le einnsean ùr
 
 # Vehicle view

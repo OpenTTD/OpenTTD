@@ -3617,7 +3617,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Voertuie
 STR_REPLACE_ROAD_VEHICLES                                       :Padvoertuie
 STR_REPLACE_TRAM_VEHICLES                                       :Tremweg voertuie
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wa verwydering: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Maak autovervanging die lengte van 'n trein dieselfde hou deur verwydering waens (deur voor te begin), indien die enjin vervanging die trein langer sal maak
 
 # Vehicle view

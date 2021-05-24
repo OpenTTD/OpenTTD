@@ -3372,7 +3372,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Tren magnetikoa
 
 STR_REPLACE_TRAM_VEHICLES                                       :Tranbia ibilgailuak
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Bagoiak ezabatu: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ordezkatze automatikoari agindu trenaren luzera errespetatzea, bagoiak ezabatuz luzera handitzen badute (trenaren hasierako bagoietik hasita)
 
 # Vehicle view

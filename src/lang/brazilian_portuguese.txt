@@ -3812,7 +3812,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevs
 STR_REPLACE_ROAD_VEHICLES                                       :Veículos terrestres
 STR_REPLACE_TRAM_VEHICLES                                       :Bondes
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Faz autosubstituição manter o tamanho do trem removendo vagões (começando pela frente), se ao substituir a locomotiva o trem ficar maior
 
 # Vehicle view

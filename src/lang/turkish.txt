@@ -3812,7 +3812,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Araçlar
 STR_REPLACE_ROAD_VEHICLES                                       :Yol Araçları
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvay Araçları
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon kaldırma: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik yenilemede tren boyutunun artması gerekiyorsa vagonları kaldır (en önden başlayarak yeterli sayıda vagon silinir)
 
 # Vehicle view

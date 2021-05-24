@@ -3771,7 +3771,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Οχήματα 
 
 STR_REPLACE_TRAM_VEHICLES                                       :Οχήματα τροχιοδρόμου
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Αφαίρεση βαγονιού: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Υποχρεώνει την αυτόματη αντικατάσταση να διατηρεί σταθερό το μήκος του τρένου αφαιρώντας βαγόνια (ξεκινώντας από μπροστά), όταν η αντικατάσταση της μηχανής κάνει το τρένο μεγαλύτερο
 
 # Vehicle view

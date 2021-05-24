@@ -3811,7 +3811,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magneetzweefspo
 STR_REPLACE_ROAD_VEHICLES                                       :Wegvoertuigen
 STR_REPLACE_TRAM_VEHICLES                                       :Trams
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
 
 # Vehicle view

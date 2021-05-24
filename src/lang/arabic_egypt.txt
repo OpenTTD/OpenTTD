@@ -3144,7 +3144,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :مركبات م
 
 STR_REPLACE_TRAM_VEHICLES                                       :مركبات الترام
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK} إزالة العربات: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK} المحافظة على طول القطار بازالة عربات ابتداء من المقدمة عند التبديل - عندما يكون التبدل ينتج قطارا اطول.
 
 # Vehicle view

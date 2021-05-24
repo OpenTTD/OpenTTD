@@ -3508,7 +3508,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :單軌列車
 STR_REPLACE_MAGLEV_VEHICLES                                     :磁浮列車
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}移除車廂：{ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}如果替換後的車廂較長的話，讓自動替換功能移除多餘的車廂 (從頭開始) 以便維持列車長度
 
 # Vehicle view

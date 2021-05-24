@@ -3539,7 +3539,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :רכבות חד
 STR_REPLACE_MAGLEV_VEHICLES                                     :רכבות פס-מגנטי
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{ORANGE}{STRING}{BLACK} : הסרת קרונות
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}שמור על האורך המקורי של הרכבת בעת שימוש בהחלפה אוטומטית, במידה והקטר מאריך את הרכבת הסר קרונות מתחילת הרכבת
 
 # Vehicle view

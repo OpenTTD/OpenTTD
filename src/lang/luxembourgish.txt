@@ -3763,7 +3763,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magnéitbunn Ge
 STR_REPLACE_ROAD_VEHICLES                                       :Stroossegefierer
 STR_REPLACE_TRAM_VEHICLES                                       :Tram-Gefierer
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon raushuelen: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Mécht dass d'automatescht Austauschen d'Längt vum Zuch behält, an dem e Waggonen (vu lénks un) wechhëllt, wann d'Lok den Zuch ze laang mécht
 
 # Vehicle view

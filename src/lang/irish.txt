@@ -3468,7 +3468,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Feithiclí Aonr
 STR_REPLACE_MAGLEV_VEHICLES                                     :Feithiclí Maglev
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaigíní a bhaint: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ceangail ar uath-athsholáthar fad na traenach a choinneáil mar an gcéanna trí vaigíní a bhaint (ag tosú ag an tosach), má tharlaíonn sé go mbeadh an traein níos faide tar éis an t-inneall a athsholáthar.
 
 # Vehicle view

@@ -3879,7 +3879,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Lokomotíva pre
 STR_REPLACE_ROAD_VEHICLES                                       :Automobily
 STR_REPLACE_TRAM_VEHICLES                                       :Električky
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstránenie vagónu: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zachovanie pôvodnej dĺžky vlaku, odstránením vagónov (odpredu), keď by funkcia automatickej zmeny rušňa vlak predĺžila
 
 # Vehicle view

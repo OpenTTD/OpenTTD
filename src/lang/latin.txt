@@ -3756,7 +3756,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Vehicula Monoor
 STR_REPLACE_MAGLEV_VEHICLES                                     :Vehicula Maglev
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ablatio curruum: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facere ut automutatio longitudinem traminis contineat ablatione curruum (primo primorum), si tramen longius fiat mutatione hamaxae
 
 # Vehicle view

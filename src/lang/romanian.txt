@@ -3628,7 +3628,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Vehicule Pernă
 STR_REPLACE_ROAD_VEHICLES                                       :Autovehicule
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvaie
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fă optiunea de autoînlocuire să păstreze identică lungimea unui tren prin eliminarea vagoanelor (începând din faţă) dacă înlocuirea locomotivei ar face trenul mai lung
 
 # Vehicle view

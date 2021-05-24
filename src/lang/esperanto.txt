@@ -2912,7 +2912,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Unurelaj Veturi
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevaj Veturiloj
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagonforigo: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ĉe aŭtomata anstataŭigo tenu saman longecon de la trajno per forigo de vagonoj (defronte), se per nova maŝino la trajno plilongiĝas
 
 # Vehicle view

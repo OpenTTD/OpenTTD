@@ -3766,7 +3766,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Đầu máy đ�
 STR_REPLACE_ROAD_VEHICLES                                       :Các xe ô-tô
 STR_REPLACE_TRAM_VEHICLES                                       :Các xe điện
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Xoá bỏ toa xe: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Tự động thay thế sẽ giữ nguyên độ dài đoàn tàu bằng cách bỏ bớt toa xe (bỏ từ phía đầu), nếu như việc thay thế đầu máy làm đoàn tàu dài hơn.
 
 # Vehicle view

@@ -3288,7 +3288,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :மேக்ல
 STR_REPLACE_ROAD_VEHICLES                                       :சாலை வாகனங்கள்
 STR_REPLACE_TRAM_VEHICLES                                       :அமிழ் தண்டூர்தி வாகனங்கள்
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}பெட்டி நீக்கம்: {ORANGE}{STRING}
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

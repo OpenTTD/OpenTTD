@@ -3812,7 +3812,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상 �
 STR_REPLACE_ROAD_VEHICLES                                       :자동차
 STR_REPLACE_TRAM_VEHICLES                                       :전차 차량
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동 교체시 열차의 길이가 교체 전보다 길어지면 객차/화차를 (앞쪽부터) 제거하여 열차의 전체 길이가 달라지지 않도록 합니다
 
 # Vehicle view

@@ -3625,7 +3625,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Enotirna vozila
 STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetna tirna vozila
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranitev vagonov: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Dovoli samozamenjavi, da z odstranitvijo vagonov, začenši na začetku, ohrani isto dolžino vlaka, če bi ga menjava lokomotive podaljšala
 
 # Vehicle view

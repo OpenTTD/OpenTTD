@@ -3812,7 +3812,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Véhicules Magl
 STR_REPLACE_ROAD_VEHICLES                                       :Véhicules routiers
 STR_REPLACE_TRAM_VEHICLES                                       :Tramways
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon{NBSP}: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Si l'autoremplacement de la locomotive provoque un accroissement de la longueur du train, alors sa longueur initiale sera retrouvée en retirant automatiquement des wagons (d'abord par la tête)
 
 # Vehicle view

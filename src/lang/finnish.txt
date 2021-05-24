@@ -3811,7 +3811,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev-junat
 STR_REPLACE_ROAD_VEHICLES                                       :Ajoneuvot
 STR_REPLACE_TRAM_VEHICLES                                       :Raitiovaunut
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvauksessa junapituus pidetään samana poistamalla vaunuja (edestä) jos veturi pidentäisi junaa
 
 # Vehicle view

@@ -3722,7 +3722,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magleva transpo
 STR_REPLACE_ROAD_VEHICLES                                       :Autotransporta līdzekļi
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvaji
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagona noņemšana: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automātiskā aizvietošana saglabās esošo vilciena garumu noņemot vagonus (sākot no priekšgala), ja mainot lokomotīvi tas kļūtu garāks
 
 # Vehicle view

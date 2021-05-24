@@ -3768,7 +3768,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :磁悬浮列车
 STR_REPLACE_ROAD_VEHICLES                                       :路面交通工具
 STR_REPLACE_TRAM_VEHICLES                                       :电车
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}清理挂车：{ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}当车辆升级可能造成列车变长时{}自动从最前面的挂车去掉若干节以保证列车长度不变
 
 # Vehicle view

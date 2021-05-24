@@ -3167,7 +3167,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Monorel Kendera
 STR_REPLACE_MAGLEV_VEHICLES                                     :Kenderaan Maglev
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Penghapusan wagon: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat penukaran secara automatik menyimpan kepanjangan keretapi yang sama dengan mengeluarkan gerabak (bermula dari bahagian hadapan), sekiranya menyebabkan kereta api lebih panjang
 
 # Vehicle view

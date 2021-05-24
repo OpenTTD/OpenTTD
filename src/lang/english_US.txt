@@ -3811,7 +3811,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Vehicles
 STR_REPLACE_ROAD_VEHICLES                                       :Road Vehicles
 STR_REPLACE_TRAM_VEHICLES                                       :Streetcars
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Car removal: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing cars (starting at the front), if replacing the engine would make the train longer
 
 # Vehicle view

@@ -3748,7 +3748,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Željeznička v
 STR_REPLACE_ROAD_VEHICLES                                       :Cestovna vozila
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvaji
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Uklanjanje vagona: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automatska zamjena zadržava istu dužinu vlaka tako da ukloni suvišne vagone (počevši od naprijed), ako bi zamjena lokomotive učinila vlak dužim
 
 # Vehicle view

@@ -3425,7 +3425,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail Vehicl
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Vehicles
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer
 
 # Vehicle view

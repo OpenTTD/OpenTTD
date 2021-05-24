@@ -3815,7 +3815,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev-kjøret�
 STR_REPLACE_ROAD_VEHICLES                                       :Veikjøretøy
 STR_REPLACE_TRAM_VEHICLES                                       :Trikkekjøretøy
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}La autoerstatningen beholde lengen på toget ved å fjerne vogner (fra første vogn), hvis utskiftningen gjør toget lengre.
 
 # Vehicle view

@@ -3782,7 +3782,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Veicoli maglev
 STR_REPLACE_ROAD_VEHICLES                                       :Veicoli stradali
 STR_REPLACE_TRAM_VEHICLES                                       :Veicoli tranviari
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozione vagoni: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fa sì che il rimpiazzamento automatico mantenga costante la lunghezza dei treni rimuovendo vagoni (iniziando dalla testa) nel caso in cui la sostituzione della locomotiva rendesse il treno più lungo
 
 # Vehicle view

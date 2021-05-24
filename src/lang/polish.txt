@@ -4155,7 +4155,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Kolej Maglev
 STR_REPLACE_ROAD_VEHICLES                                       :Pojazdy drogowe
 STR_REPLACE_TRAM_VEHICLES                                       :Tramwaje
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usunięcie wagonów: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje długość pociągu poprzez usuwanie wagonów (począwszy od początku), jeśli wymiana lokomotywy spowoduje wydłużenie pociągu
 
 # Vehicle view

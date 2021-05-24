@@ -3974,7 +3974,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetnošinska
 STR_REPLACE_ROAD_VEHICLES                                       :Drumska vozila
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvajska vozila
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Ukanjanje vagona: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ukoliko bi se zamenom kompozicija produžila, automatska obnova će ukloniti vagone (sa početka) kako bi se zadržala dužina kompozicije
 
 # Vehicle view

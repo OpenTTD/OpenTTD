@@ -3660,7 +3660,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetskinnetog
 STR_REPLACE_ROAD_VEHICLES                                       :Vejkøretøjer
 STR_REPLACE_TRAM_VEHICLES                                       :Sporvogne
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
 
 # Vehicle view

@@ -3388,7 +3388,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Monorail-køyre
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev-køyretøy
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Lat den automatiske utskiftinga behalde lengda på toget ved å fjerne vogner (frå første vogn), dersom utskiftinga gjer toget lenger.
 
 # Vehicle view

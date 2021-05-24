@@ -3869,7 +3869,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magnethõljukve
 STR_REPLACE_ROAD_VEHICLES                                       :Maanteesõidukid
 STR_REPLACE_TRAM_VEHICLES                                       :Trammid
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagunite kõrvaldamine: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaatne asendamine hoiab rongi pikkuse samana, vajadusel kõrvaldab vaguneid (alates esiotsast), kui muidu rongikoosseis suureneks
 
 # Vehicle view

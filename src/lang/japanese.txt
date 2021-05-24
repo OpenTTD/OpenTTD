@@ -3811,7 +3811,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :リニア車両
 STR_REPLACE_ROAD_VEHICLES                                       :車両
 STR_REPLACE_TRAM_VEHICLES                                       :路面電車の車両
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車の短縮: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}機関車の交換で列車長が長くなる場合、列車長を維持する為に客車/貨車を減らすことができます。外されるのは従属部分の先頭からになります
 
 # Vehicle view

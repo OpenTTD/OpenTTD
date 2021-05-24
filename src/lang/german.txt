@@ -3812,7 +3812,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetschwebeba
 STR_REPLACE_ROAD_VEHICLES                                       :Straßenfahrzeuge
 STR_REPLACE_TRAM_VEHICLES                                       :Straßenbahnfahrzeuge
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ursprüngliche Länge des Zugs beibehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde
 
 # Vehicle view

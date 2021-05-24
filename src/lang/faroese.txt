@@ -3095,7 +3095,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Einsporaði jar
 STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev flutningstól
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vogn burturrudding: {ORANGE}{STRING}
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

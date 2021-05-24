@@ -3254,7 +3254,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Einteinungsvagn
 STR_REPLACE_MAGLEV_VEHICLES                                     :Segulsvifvagnar
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá), ef útskipting dráttarvagna myndi lengja hana
 
 # Vehicle view

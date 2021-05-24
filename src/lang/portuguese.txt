@@ -3812,7 +3812,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevs
 STR_REPLACE_ROAD_VEHICLES                                       :Veículos rodoviários
 STR_REPLACE_TRAM_VEHICLES                                       :Elétricos
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do comboio, removendo vagões (do início), nas situações em que a substituição da locomotiva pode resultar num comboio mais comprido.
 
 # Vehicle view

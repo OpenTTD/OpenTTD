@@ -3640,7 +3640,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos magl
 STR_REPLACE_ROAD_VEHICLES                                       :Vehículos de estrada
 STR_REPLACE_TRAM_VEHICLES                                       :Tranvías
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Eliminar os vagóns: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Facer que a autosubstitución manteña a lonxitude do tren quitando vagóns (empezando pola cabeza), se ao substituír a locomotora o tren se fixera máis longo.
 
 # Vehicle view

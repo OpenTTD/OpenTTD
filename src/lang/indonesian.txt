@@ -3811,7 +3811,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Kereta Maglev
 STR_REPLACE_ROAD_VEHICLES                                       :Kendaraan Jalan Raya
 STR_REPLACE_TRAM_VEHICLES                                       :Kendaraan Jalan Trem
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Membuang gerbong: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Membuat panjang kereta tetap sama saat penggantian secara otomatis dengan cara membuang gerbong(dihitung dari bagian depan), jika penggantian lokomotif membuat kereta lebih panjang
 
 # Vehicle view

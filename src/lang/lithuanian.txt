@@ -4020,7 +4020,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :„Maglev“ tr
 STR_REPLACE_ROAD_VEHICLES                                       :Automobilius
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvajinės transporto priemonės
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagono pašalinimas: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Pakeitimo metu išlaikyti traukinio ilgį atjungiant vagonus (pradedant nuo priekio), jeigu pakeitus garvežį traukinys pailgėtų
 
 # Vehicle view

@@ -3812,7 +3812,6 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Trens maglev
 STR_REPLACE_ROAD_VEHICLES                                       :Automòbils
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvies
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargada del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
 
 # Vehicle view

@@ -3501,7 +3501,6 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :Cerbydau Monore
 STR_REPLACE_MAGLEV_VEHICLES                                     :Cerbydau Maglef
 
 
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Tynnu wagenni: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gwneud i awtoddisodli gadw hyd y trên yr un peth drwy dynnu wagenni (gan ddechrau yn y blaen), os byddai newid yr injan yn gwneud y trên yn hirach
 
 # Vehicle view
