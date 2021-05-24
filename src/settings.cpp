@@ -313,13 +313,13 @@ char *OneOfManySettingDesc::FormatSingleValue(char *buf, const char *last, uint 
 
 void OneOfManySettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
-	uint id = (uint)ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
+	uint id = (uint)this->Read(object);
 	this->FormatSingleValue(buf, last, id);
 }
 
 void ManyOfManySettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
-	uint bitmask = (uint)ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
+	uint bitmask = (uint)this->Read(object);
 	uint id = 0;
 	bool first = true;
 	FOR_EACH_SET_BIT(id, bitmask) {
@@ -446,6 +446,17 @@ void IntSettingDesc::Write_ValidateSetting(const void *object, int32 val) const
 	}
 
 	WriteValue(ptr, this->save.conv, (int64)val);
+}
+
+/**
+ * Read the integer from the the actual setting.
+ * @param object The object the setting is to be saved in.
+ * @return The value of the saved integer.
+ */
+int32 IntSettingDesc::Read(const void *object) const
+{
+	void *ptr = GetVariableAddress(object, &this->save);
+	return (int32)ReadValue(ptr, this->save.conv);
 }
 
 /**
@@ -609,20 +620,20 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 
 void IntSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
-	uint32 i = (uint32)ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
+	uint32 i = (uint32)this->Read(object);
 	seprintf(buf, last, IsSignedVarMemType(this->save.conv) ? "%d" : (this->save.conv & SLF_HEX) ? "%X" : "%u", i);
 }
 
 void BoolSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
-	bool val = ReadValue(GetVariableAddress(object, &this->save), this->save.conv) != 0;
+	bool val = this->Read(object) != 0;
 	strecpy(buf, val ? "true" : "false", last);
 }
 
 bool IntSettingDesc::IsSameValue(const IniItem *item, void *object) const
 {
-	int64 item_value = this->ParseValue(item->value->c_str());
-	int64 object_value = ReadValue(GetVariableAddress(object, &this->save), this->save.conv);
+	int32 item_value = (int32)this->ParseValue(item->value->c_str());
+	int32 object_value = this->Read(object);
 	return item_value == object_value;
 }
 
@@ -1814,18 +1825,16 @@ void DeleteGRFPresetFromConfig(const char *config_name)
  */
 void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
 {
-	void *var = GetVariableAddress(object, &this->save);
-
-	int32 oldval = (int32)ReadValue(var, this->save.conv);
+	int32 oldval = this->Read(object);
 
 	this->Write_ValidateSetting(object, newval);
-	newval = (int32)ReadValue(var, this->save.conv);
+	newval = this->Read(object);
 
 	if (oldval == newval) return;
 
 	if (this->proc != nullptr && !this->proc(newval)) {
 		/* The change was not allowed, so revert. */
-		WriteValue(var, this->save.conv, (int64)oldval);
+		WriteValue(GetVariableAddress(object, &this->save), this->save.conv, (int64)oldval);
 		return;
 	}
 
@@ -1989,12 +1998,12 @@ void SetDefaultCompanySettings(CompanyID cid)
  */
 void SyncCompanySettings()
 {
+	const void *old_object = &Company::Get(_current_company)->settings;
+	const void *new_object = &_settings_client.company;
 	uint i = 0;
 	for (auto &sd : _company_settings) {
-		const void *old_var = GetVariableAddress(&Company::Get(_current_company)->settings, &sd->save);
-		const void *new_var = GetVariableAddress(&_settings_client.company, &sd->save);
-		uint32 old_value = (uint32)ReadValue(old_var, sd->save.conv);
-		uint32 new_value = (uint32)ReadValue(new_var, sd->save.conv);
+		uint32 old_value = (uint32)sd->AsIntSetting()->Read(new_object);
+		uint32 new_value = (uint32)sd->AsIntSetting()->Read(old_object);
 		if (old_value != new_value) NetworkSendCommand(0, i, new_value, CMD_CHANGE_COMPANY_SETTING, nullptr, nullptr, _local_company);
 		i++;
 	}
@@ -2179,7 +2188,10 @@ static void LoadSettings(const SettingTable &settings, void *object)
 		void *ptr = GetVariableAddress(object, &osd->save);
 
 		if (!SlObjectMember(ptr, &osd->save)) continue;
-		if (osd->IsIntSetting()) osd->AsIntSetting()->Write_ValidateSetting(object, ReadValue(ptr, osd->save.conv));
+		if (osd->IsIntSetting()) {
+			const IntSettingDesc *int_setting = osd->AsIntSetting();
+			int_setting->Write_ValidateSetting(object, int_setting->Read(object));
+		}
 	}
 }
 
