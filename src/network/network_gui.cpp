@@ -2208,7 +2208,7 @@ public:
 				std::string client_name(str);
 				if (!NetworkValidateClientName(client_name)) break;
 
-				SetSettingValue(GetSettingFromName("network.client_name")->AsStringSetting(), client_name.c_str());
+				SetSettingValue(GetSettingFromName("network.client_name")->AsStringSetting(), client_name);
 				this->InvalidateData();
 				break;
 			}

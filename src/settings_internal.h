@@ -210,21 +210,25 @@ struct ManyOfManySettingDesc : OneOfManySettingDesc {
 struct StringSettingDesc : SettingDesc {
 	StringSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup, const char *def,
 			uint32 max_length, OnChange proc) :
-		SettingDesc(save, name, flags, startup), def(def), max_length(max_length), proc(proc) {}
+		SettingDesc(save, name, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
+			proc(proc) {}
 	virtual ~StringSettingDesc() {}
 
-	const char *def;        ///< default value given when none is present
+	std::string def;        ///< default value given when none is present
 	uint32 max_length;      ///< maximum length of the string, 0 means no maximum length
 	OnChange *proc;         ///< callback procedure for when the value is changed
 
 	bool IsStringSetting() const override { return true; }
-	void ChangeValue(const void *object, const char *newval) const;
-	void Write_ValidateSetting(const void *object, const char *str) const;
+	void ChangeValue(const void *object, std::string &newval) const;
 
 	void FormatValue(char *buf, const char *last, const void *object) const override;
 	void ParseValue(const IniItem *item, void *object) const override;
 	bool IsSameValue(const IniItem *item, void *object) const override;
 	const std::string &Read(const void *object) const;
+
+private:
+	void MakeValueValid(std::string &str) const;
+	void Write(const void *object, const std::string &str) const;
 };
 
 /** List/array settings. */
@@ -255,7 +259,7 @@ typedef std::initializer_list<std::unique_ptr<const SettingDesc>> SettingTable;
 
 const SettingDesc *GetSettingFromName(const char *name);
 bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame = false);
-bool SetSettingValue(const StringSettingDesc *sd, const char *value, bool force_newgame = false);
+bool SetSettingValue(const StringSettingDesc *sd, const std::string value, bool force_newgame = false);
 uint GetSettingIndex(const SettingDesc *sd);
 
 #endif /* SETTINGS_INTERNAL_H */

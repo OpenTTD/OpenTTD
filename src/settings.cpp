@@ -460,34 +460,31 @@ int32 IntSettingDesc::Read(const void *object) const
 }
 
 /**
- * Set the string value of a setting.
+ * Make the value valid given the limitations of this setting.
+ *
+ * In the case of string settings this is ensuring the string contains only accepted
+ * Utf8 characters and is at most the maximum length defined in this setting.
+ * @param str The string to make valid.
+ */
+void StringSettingDesc::MakeValueValid(std::string &str) const
+{
+	if (this->max_length == 0 || str.size() < this->max_length) return;
+
+	/* In case a maximum length is imposed by the setting, the length
+	 * includes the '\0' termination for network transfer purposes.
+	 * Also ensure the string is valid after chopping of some bytes. */
+	std::string stdstr(str, this->max_length - 1);
+	str.assign(str_validate(stdstr, SVS_NONE));
+}
+
+/**
+ * Write a string to the actual setting.
  * @param object The object the setting is to be saved in.
  * @param str The string to save.
  */
-void StringSettingDesc::Write_ValidateSetting(const void *object, const char *str) const
+void StringSettingDesc::Write(const void *object, const std::string &str) const
 {
-	std::string *dst = reinterpret_cast<std::string *>(GetVariableAddress(object, &this->save));
-
-	switch (GetVarMemType(this->save.conv)) {
-		case SLE_VAR_STR:
-		case SLE_VAR_STRQ:
-			if (str != nullptr) {
-				if (this->max_length != 0 && strlen(str) >= this->max_length) {
-					/* In case a maximum length is imposed by the setting, the length
-					 * includes the '\0' termination for network transfer purposes.
-					 * Also ensure the string is valid after chopping of some bytes. */
-					std::string stdstr(str, this->max_length - 1);
-					dst->assign(str_validate(stdstr, SVS_NONE));
-				} else {
-					dst->assign(str);
-				}
-			} else {
-				dst->clear();
-			}
-			break;
-
-		default: NOT_REACHED();
-	}
+	reinterpret_cast<std::string *>(GetVariableAddress(object, &this->save))->assign(str);
 }
 
 /**
@@ -553,8 +550,9 @@ void IntSettingDesc::ParseValue(const IniItem *item, void *object) const
 
 void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
-	const char *str = (item == nullptr) ? this->def : item->value.has_value() ? item->value->c_str() : nullptr;
-	this->Write_ValidateSetting(object, str);
+	std::string str = (item == nullptr) ? this->def : item->value.value_or("");
+	this->MakeValueValid(str);
+	this->Write(object, str);
 }
 
 void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
@@ -2026,12 +2024,12 @@ uint GetCompanySettingIndex(const char *name)
  * @param force_newgame force the newgame settings
  * @note Strings WILL NOT be synced over the network
  */
-bool SetSettingValue(const StringSettingDesc *sd, const char *value, bool force_newgame)
+bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_newgame)
 {
 	assert(sd->save.conv & SLF_NO_NETWORK_SYNC);
 
-	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && strcmp(value, "(null)") == 0) {
-		value = nullptr;
+	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && value.compare("(null)") == 0) {
+		value.clear();
 	}
 
 	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
@@ -2045,9 +2043,10 @@ bool SetSettingValue(const StringSettingDesc *sd, const char *value, bool force_
  * @param object The object the setting is in.
  * @param newval The new value for the setting.
  */
-void StringSettingDesc::ChangeValue(const void *object, const char *newval) const
+void StringSettingDesc::ChangeValue(const void *object, std::string &newval) const
 {
-	this->Write_ValidateSetting(object, newval);
+	this->MakeValueValid(newval);
+	this->Write(object, newval);
 	if (this->proc != nullptr) this->proc(0);
 
 	if (_save_config) SaveToConfig();
