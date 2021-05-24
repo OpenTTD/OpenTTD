@@ -64,8 +64,6 @@ enum SettingType {
 };
 
 struct IniItem;
-typedef bool OnChange(int32 var);           ///< callback prototype on data modification
-typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
 /** Properties of config file settings. */
 struct SettingDesc {
@@ -125,11 +123,27 @@ struct SettingDesc {
 
 /** Base integer type, including boolean, settings. Only these are shown in the settings UI. */
 struct IntSettingDesc : SettingDesc {
+	/**
+	 * A check to be performed before the setting gets changed. The passed integer may be
+	 * changed by the check if that is important, for example to remove some unwanted bit.
+	 * The return value denotes whether the value, potentially after the changes,
+	 * is allowed to be used/set in the configuration.
+	 * @param value The prospective new value for the setting.
+	 * @return True when the setting is accepted.
+	 */
+	typedef bool PreChangeCheck(int32 &value);
+	/**
+	 * A callback to denote that a setting has been changed.
+	 * @param The new value for the setting.
+	 */
+	typedef void PostChangeCallback(int32 value);
+
 	IntSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup, int32 def,
-		int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
-		SettingCategory cat, OnChange *proc) :
+			int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
+			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		SettingDesc(save, name, flags, startup), def(def), min(min), max(max), interval(interval),
-		str(str), str_help(str_help), str_val(str_val), cat(cat), proc(proc) {}
+			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
+			post_callback(post_callback) {}
 	virtual ~IntSettingDesc() {}
 
 	int32 def;              ///< default value given when none is present
@@ -140,7 +154,8 @@ struct IntSettingDesc : SettingDesc {
 	StringID str_help;      ///< (Translated) string with help text; gui only.
 	StringID str_val;       ///< (Translated) first string describing the value.
 	SettingCategory cat;    ///< assigned categories of the setting
-	OnChange *proc;         ///< callback procedure for when the value is changed
+	PreChangeCheck *pre_check;         ///< Callback to check for the validity of the setting.
+	PostChangeCallback *post_callback; ///< Callback when the setting has been changed.
 
 	/**
 	 * Check whether this setting is a boolean type setting.
@@ -166,8 +181,10 @@ private:
 /** Boolean setting. */
 struct BoolSettingDesc : IntSettingDesc {
 	BoolSettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup, bool def,
-		StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc) :
-		IntSettingDesc(save, name, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat, proc) {}
+			StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+			PreChangeCheck pre_check, PostChangeCallback post_callback) :
+		IntSettingDesc(save, name, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat,
+			pre_check, post_callback) {}
 	virtual ~BoolSettingDesc() {}
 
 	bool IsBoolSetting() const override { return true; }
@@ -177,10 +194,14 @@ struct BoolSettingDesc : IntSettingDesc {
 
 /** One of many setting. */
 struct OneOfManySettingDesc : IntSettingDesc {
-	OneOfManySettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup,
-		int32 def, int32 max, StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc,
-		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
-		IntSettingDesc(save, name, flags, startup, def, 0, max, 0, str, str_help, str_val, cat, proc), many_cnvt(many_cnvt)
+	typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
+
+	OneOfManySettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup, int32 def,
+			int32 max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+			PreChangeCheck pre_check, PostChangeCallback post_callback,
+			std::initializer_list<const char *> many, OnConvert *many_cnvt) :
+		IntSettingDesc(save, name, flags, startup, def, 0, max, 0, str, str_help, str_val, cat,
+			pre_check, post_callback), many_cnvt(many_cnvt)
 	{
 		for (auto one : many) this->many.push_back(one);
 	}
@@ -200,10 +221,11 @@ struct OneOfManySettingDesc : IntSettingDesc {
 /** Many of many setting. */
 struct ManyOfManySettingDesc : OneOfManySettingDesc {
 	ManyOfManySettingDesc(SaveLoad save, const char *name, SettingGuiFlag flags, bool startup,
-		int32 def, StringID str, StringID str_help, StringID str_val, SettingCategory cat, OnChange *proc,
+		int32 def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
+		PreChangeCheck pre_check, PostChangeCallback post_callback,
 		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
 		OneOfManySettingDesc(save, name, flags, startup, def, (1 << many.size()) - 1, str, str_help,
-			str_val, cat, proc, many, many_cnvt) {}
+			str_val, cat, pre_check, post_callback, many, many_cnvt) {}
 	virtual ~ManyOfManySettingDesc() {}
 
 	size_t ParseValue(const char *str) const override;

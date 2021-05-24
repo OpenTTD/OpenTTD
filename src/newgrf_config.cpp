@@ -282,15 +282,13 @@ void GRFParameterInfo::Finalize()
 /**
  * Update the palettes of the graphics from the config file.
  * Called when changing the default palette in advanced settings.
- * @param p1 Unused.
- * @return Always true.
+ * @param new_value Unused.
  */
-bool UpdateNewGRFConfigPalette(int32 p1)
+void UpdateNewGRFConfigPalette(int32 new_value)
 {
 	for (GRFConfig *c = _grfconfig_newgame; c != nullptr; c = c->next) c->SetSuitablePalette();
 	for (GRFConfig *c = _grfconfig_static;  c != nullptr; c = c->next) c->SetSuitablePalette();
 	for (GRFConfig *c = _all_grfs;          c != nullptr; c = c->next) c->SetSuitablePalette();
-	return true;
 }
 
 /**

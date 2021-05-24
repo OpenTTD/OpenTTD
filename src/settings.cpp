@@ -807,99 +807,56 @@ const StringSettingDesc *SettingDesc::AsStringSetting() const
 /* Begin - Callback Functions for the various settings. */
 
 /** Reposition the main toolbar as the setting changed. */
-static bool v_PositionMainToolbar(int32 p1)
+static void v_PositionMainToolbar(int32 new_value)
 {
 	if (_game_mode != GM_MENU) PositionMainToolbar(nullptr);
-	return true;
 }
 
 /** Reposition the statusbar as the setting changed. */
-static bool v_PositionStatusbar(int32 p1)
+static void v_PositionStatusbar(int32 new_value)
 {
 	if (_game_mode != GM_MENU) {
 		PositionStatusbar(nullptr);
 		PositionNewsMessage(nullptr);
 		PositionNetworkChatWindow(nullptr);
 	}
-	return true;
-}
-
-static bool PopulationInLabelActive(int32 p1)
-{
-	UpdateAllTownVirtCoords();
-	return true;
-}
-
-static bool RedrawScreen(int32 p1)
-{
-	MarkWholeScreenDirty();
-	return true;
 }
 
 /**
  * Redraw the smallmap after a colour scheme change.
  * @param p1 Callback parameter.
- * @return Always true.
  */
-static bool RedrawSmallmap(int32 p1)
+static void RedrawSmallmap(int32 new_value)
 {
 	BuildLandLegend();
 	BuildOwnerLegend();
 	SetWindowClassesDirty(WC_SMALLMAP);
-	return true;
 }
 
-static bool InvalidateDetailsWindow(int32 p1)
-{
-	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
-	return true;
-}
-
-static bool StationSpreadChanged(int32 p1)
+static void StationSpreadChanged(int32 p1)
 {
 	InvalidateWindowData(WC_SELECT_STATION, 0);
 	InvalidateWindowData(WC_BUILD_STATION, 0);
-	return true;
 }
 
-static bool InvalidateBuildIndustryWindow(int32 p1)
+static void CloseSignalGUI(int32 new_value)
 {
-	InvalidateWindowData(WC_BUILD_INDUSTRY, 0);
-	return true;
-}
-
-static bool CloseSignalGUI(int32 p1)
-{
-	if (p1 == 0) {
+	if (new_value == 0) {
 		DeleteWindowByClass(WC_BUILD_SIGNAL);
 	}
-	return true;
 }
 
-static bool InvalidateTownViewWindow(int32 p1)
-{
-	InvalidateWindowClassesData(WC_TOWN_VIEW, p1);
-	return true;
-}
-
-static bool DeleteSelectStationWindow(int32 p1)
-{
-	DeleteWindowById(WC_SELECT_STATION, 0);
-	return true;
-}
-
-static bool UpdateConsists(int32 p1)
+static void UpdateConsists(int32 new_value)
 {
 	for (Train *t : Train::Iterate()) {
 		/* Update the consist of all trains so the maximum speed is set correctly. */
 		if (t->IsFrontEngine() || t->IsFreeWagon()) t->ConsistChanged(CCF_TRACK);
 	}
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
-	return true;
 }
 
-/* Check service intervals of vehicles, p1 is value of % or day based servicing */
-static bool CheckInterval(int32 p1)
+/* Check service intervals of vehicles, newvalue is value of % or day based servicing */
+static void UpdateServiceInterval(int32 new_value)
 {
 	bool update_vehicles;
 	VehicleDefaultSettings *vds;
@@ -911,7 +868,7 @@ static bool CheckInterval(int32 p1)
 		update_vehicles = true;
 	}
 
-	if (p1 != 0) {
+	if (new_value != 0) {
 		vds->servint_trains   = 50;
 		vds->servint_roadveh  = 50;
 		vds->servint_aircraft = 50;
@@ -928,66 +885,42 @@ static bool CheckInterval(int32 p1)
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->owner == _current_company && v->IsPrimaryVehicle() && !v->ServiceIntervalIsCustom()) {
 				v->SetServiceInterval(CompanyServiceInterval(c, v->type));
-				v->SetServiceIntervalIsPercent(p1 != 0);
+				v->SetServiceIntervalIsPercent(new_value != 0);
 			}
 		}
 	}
 
-	InvalidateDetailsWindow(0);
-
-	return true;
+	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
 }
 
-static bool UpdateInterval(VehicleType type, int32 p1)
+static bool CanUpdateServiceInterval(VehicleType type, int32 &new_value)
 {
-	bool update_vehicles;
 	VehicleDefaultSettings *vds;
 	if (_game_mode == GM_MENU || !Company::IsValidID(_current_company)) {
 		vds = &_settings_client.company.vehicle;
-		update_vehicles = false;
 	} else {
 		vds = &Company::Get(_current_company)->settings.vehicle;
-		update_vehicles = true;
 	}
 
 	/* Test if the interval is valid */
-	uint16 interval = GetServiceIntervalClamped(p1, vds->servint_ispercent);
-	if (interval != p1) return false;
+	int32 interval = GetServiceIntervalClamped(new_value, vds->servint_ispercent);
+	return interval == new_value;
+}
 
-	if (update_vehicles) {
+static void UpdateServiceInterval(VehicleType type, int32 new_value)
+{
+	if (_game_mode != GM_MENU && Company::IsValidID(_current_company)) {
 		for (Vehicle *v : Vehicle::Iterate()) {
 			if (v->owner == _current_company && v->type == type && v->IsPrimaryVehicle() && !v->ServiceIntervalIsCustom()) {
-				v->SetServiceInterval(p1);
+				v->SetServiceInterval(new_value);
 			}
 		}
 	}
 
-	InvalidateDetailsWindow(0);
-
-	return true;
+	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
 }
 
-static bool UpdateIntervalTrains(int32 p1)
-{
-	return UpdateInterval(VEH_TRAIN, p1);
-}
-
-static bool UpdateIntervalRoadVeh(int32 p1)
-{
-	return UpdateInterval(VEH_ROAD, p1);
-}
-
-static bool UpdateIntervalShips(int32 p1)
-{
-	return UpdateInterval(VEH_SHIP, p1);
-}
-
-static bool UpdateIntervalAircraft(int32 p1)
-{
-	return UpdateInterval(VEH_AIRCRAFT, p1);
-}
-
-static bool TrainAccelerationModelChanged(int32 p1)
+static void TrainAccelerationModelChanged(int32 new_value)
 {
 	for (Train *t : Train::Iterate()) {
 		if (t->IsFrontEngine()) {
@@ -1000,30 +933,24 @@ static bool TrainAccelerationModelChanged(int32 p1)
 	SetWindowClassesDirty(WC_ENGINE_PREVIEW);
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
 	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
-
-	return true;
 }
 
 /**
  * This function updates the train acceleration cache after a steepness change.
- * @param p1 Callback parameter.
- * @return Always true.
+ * @param new_value Unused new value of setting.
  */
-static bool TrainSlopeSteepnessChanged(int32 p1)
+static void TrainSlopeSteepnessChanged(int32 new_value)
 {
 	for (Train *t : Train::Iterate()) {
 		if (t->IsFrontEngine()) t->CargoChanged();
 	}
-
-	return true;
 }
 
 /**
  * This function updates realistic acceleration caches when the setting "Road vehicle acceleration model" is set.
- * @param p1 Callback parameter
- * @return Always true
+ * @param new_value Unused new value of setting.
  */
-static bool RoadVehAccelerationModelChanged(int32 p1)
+static void RoadVehAccelerationModelChanged(int32 new_value)
 {
 	if (_settings_game.vehicle.roadveh_acceleration_model != AM_ORIGINAL) {
 		for (RoadVehicle *rv : RoadVehicle::Iterate()) {
@@ -1037,48 +964,29 @@ static bool RoadVehAccelerationModelChanged(int32 p1)
 	SetWindowClassesDirty(WC_ENGINE_PREVIEW);
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE, 0);
 	SetWindowClassesDirty(WC_VEHICLE_DETAILS);
-
-	return true;
 }
 
 /**
  * This function updates the road vehicle acceleration cache after a steepness change.
- * @param p1 Callback parameter.
- * @return Always true.
+ * @param new_value Unused new value of setting.
  */
-static bool RoadVehSlopeSteepnessChanged(int32 p1)
+static void RoadVehSlopeSteepnessChanged(int32 new_value)
 {
 	for (RoadVehicle *rv : RoadVehicle::Iterate()) {
 		if (rv->IsFrontEngine()) rv->CargoChanged();
 	}
-
-	return true;
 }
 
-static bool DragSignalsDensityChanged(int32)
-{
-	InvalidateWindowData(WC_BUILD_SIGNAL, 0);
-
-	return true;
-}
-
-static bool TownFoundingChanged(int32 p1)
+static void TownFoundingChanged(int32 new_value)
 {
 	if (_game_mode != GM_EDITOR && _settings_game.economy.found_town == TF_FORBIDDEN) {
 		DeleteWindowById(WC_FOUND_TOWN, 0);
-		return true;
+	} else {
+		InvalidateWindowData(WC_FOUND_TOWN, 0);
 	}
-	InvalidateWindowData(WC_FOUND_TOWN, 0);
-	return true;
 }
 
-static bool InvalidateVehTimetableWindow(int32 p1)
-{
-	InvalidateWindowClassesData(WC_VEHICLE_TIMETABLE, VIWD_MODIFY_ORDERS);
-	return true;
-}
-
-static bool ZoomMinMaxChanged(int32 p1)
+static void ZoomMinMaxChanged(int32 new_value)
 {
 	extern void ConstrainAllViewportsZoom();
 	ConstrainAllViewportsZoom();
@@ -1089,81 +997,32 @@ static bool ZoomMinMaxChanged(int32 p1)
 		UpdateCursorSize();
 		LoadStringWidthTable();
 	}
-	return true;
 }
 
-static bool SpriteZoomMinChanged(int32 p1) {
+static void SpriteZoomMinChanged(int32 new_value)
+{
 	GfxClearSpriteCache();
 	/* Force all sprites to redraw at the new chosen zoom level */
 	MarkWholeScreenDirty();
-	return true;
 }
 
 /**
  * Update any possible saveload window and delete any newgrf dialogue as
  * its widget parts might change. Reinit all windows as it allows access to the
  * newgrf debug button.
- * @param p1 unused.
- * @return Always true.
+ * @param new_value unused.
  */
-static bool InvalidateNewGRFChangeWindows(int32 p1)
+static void InvalidateNewGRFChangeWindows(int32 new_value)
 {
 	InvalidateWindowClassesData(WC_SAVELOAD);
 	DeleteWindowByClass(WC_GAME_OPTIONS);
 	ReInitAllWindows(_gui_zoom_cfg);
-	return true;
 }
 
-static bool InvalidateCompanyLiveryWindow(int32 p1)
+static void InvalidateCompanyLiveryWindow(int32 new_value)
 {
 	InvalidateWindowClassesData(WC_COMPANY_COLOUR, -1);
 	ResetVehicleColourMap();
-	return RedrawScreen(p1);
-}
-
-static bool InvalidateIndustryViewWindow(int32 p1)
-{
-	InvalidateWindowClassesData(WC_INDUSTRY_VIEW);
-	return true;
-}
-
-static bool InvalidateAISettingsWindow(int32 p1)
-{
-	InvalidateWindowClassesData(WC_AI_SETTINGS);
-	return true;
-}
-
-/**
- * Update the town authority window after a town authority setting change.
- * @param p1 Unused.
- * @return Always true.
- */
-static bool RedrawTownAuthority(int32 p1)
-{
-	SetWindowClassesDirty(WC_TOWN_AUTHORITY);
-	return true;
-}
-
-/**
- * Invalidate the company infrastructure details window after a infrastructure maintenance setting change.
- * @param p1 Unused.
- * @return Always true.
- */
-static bool InvalidateCompanyInfrastructureWindow(int32 p1)
-{
-	InvalidateWindowClassesData(WC_COMPANY_INFRASTRUCTURE);
-	return true;
-}
-
-/**
- * Invalidate the company details window after the shares setting changed.
- * @param p1 Unused.
- * @return Always true.
- */
-static bool InvalidateCompanyWindow(int32 p1)
-{
-	InvalidateWindowClassesData(WC_COMPANY);
-	return true;
 }
 
 /** Checks if any settings are set to incorrect values, and sets them to correct values in that case. */
@@ -1176,7 +1035,7 @@ static void ValidateSettings()
 	}
 }
 
-static bool DifficultyNoiseChange(int32 i)
+static void DifficultyNoiseChange(int32 new_value)
 {
 	if (_game_mode == GM_NORMAL) {
 		UpdateAirportsNoise();
@@ -1184,11 +1043,9 @@ static bool DifficultyNoiseChange(int32 i)
 			InvalidateWindowClassesData(WC_TOWN_VIEW, 0);
 		}
 	}
-
-	return true;
 }
 
-static bool MaxNoAIsChange(int32 i)
+static void MaxNoAIsChange(int32 new_value)
 {
 	if (GetGameSettings().difficulty.max_no_competitors != 0 &&
 			AI::GetInfoList()->size() == 0 &&
@@ -1197,15 +1054,14 @@ static bool MaxNoAIsChange(int32 i)
 	}
 
 	InvalidateWindowClassesData(WC_GAME_OPTIONS, 0);
-	return true;
 }
 
 /**
  * Check whether the road side may be changed.
- * @param p1 unused
+ * @param new_value unused
  * @return true if the road side may be changed.
  */
-static bool CheckRoadSide(int p1)
+static bool CheckRoadSide(int32 &new_value)
 {
 	extern bool RoadVehiclesAreBuilt();
 	return _game_mode == GM_MENU || !RoadVehiclesAreBuilt();
@@ -1225,10 +1081,10 @@ static size_t ConvertLandscape(const char *value)
 	return OneOfManySettingDesc::ParseSingleValue(value, strlen(value), _old_landscape_values);
 }
 
-static bool CheckFreeformEdges(int32 p1)
+static bool CheckFreeformEdges(int32 &new_value)
 {
 	if (_game_mode == GM_MENU) return true;
-	if (p1 != 0) {
+	if (new_value != 0) {
 		for (Ship *s : Ship::Iterate()) {
 			/* Check if there is a ship on the northern border. */
 			if (TileX(s->tile) == 0 || TileY(s->tile) == 0) {
@@ -1243,8 +1099,6 @@ static bool CheckFreeformEdges(int32 p1)
 				return false;
 			}
 		}
-		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
-		for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
 	} else {
 		for (uint i = 0; i < MapMaxX(); i++) {
 			if (TileHeight(TileXY(i, 1)) != 0) {
@@ -1270,6 +1124,18 @@ static bool CheckFreeformEdges(int32 p1)
 				return false;
 			}
 		}
+	}
+	return true;
+}
+
+static void UpdateFreeformEdges(int32 new_value)
+{
+	if (_game_mode == GM_MENU) return;
+
+	if (new_value != 0) {
+		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
+		for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
+	} else {
 		/* Make tiles at the border water again. */
 		for (uint i = 0; i < MapMaxX(); i++) {
 			SetTileHeight(TileXY(i, 0), 0);
@@ -1281,14 +1147,13 @@ static bool CheckFreeformEdges(int32 p1)
 		}
 	}
 	MarkWholeScreenDirty();
-	return true;
 }
 
 /**
  * Changing the setting "allow multiple NewGRF sets" is not allowed
  * if there are vehicles.
  */
-static bool ChangeDynamicEngines(int32 p1)
+static bool CheckDynamicEngines(int32 &new_value)
 {
 	if (_game_mode == GM_MENU) return true;
 
@@ -1300,7 +1165,7 @@ static bool ChangeDynamicEngines(int32 p1)
 	return true;
 }
 
-static bool ChangeMaxHeightLevel(int32 p1)
+static bool CheckMaxHeightLevel(int32 &new_value)
 {
 	if (_game_mode == GM_NORMAL) return false;
 	if (_game_mode != GM_EDITOR) return true;
@@ -1308,39 +1173,33 @@ static bool ChangeMaxHeightLevel(int32 p1)
 	/* Check if at least one mountain on the map is higher than the new value.
 	 * If yes, disallow the change. */
 	for (TileIndex t = 0; t < MapSize(); t++) {
-		if ((int32)TileHeight(t) > p1) {
+		if ((int32)TileHeight(t) > new_value) {
 			ShowErrorMessage(STR_CONFIG_SETTING_TOO_HIGH_MOUNTAIN, INVALID_STRING_ID, WL_ERROR);
 			/* Return old, unchanged value */
 			return false;
 		}
 	}
 
-	/* The smallmap uses an index from heightlevels to colours. Trigger rebuilding it. */
-	InvalidateWindowClassesData(WC_SMALLMAP, 2);
-
 	return true;
 }
 
-static bool StationCatchmentChanged(int32 p1)
+static void StationCatchmentChanged(int32 new_value)
 {
 	Station::RecomputeCatchmentForAll();
 	MarkWholeScreenDirty();
-	return true;
 }
 
-static bool MaxVehiclesChanged(int32 p1)
+static void MaxVehiclesChanged(int32 new_value)
 {
 	InvalidateWindowClassesData(WC_BUILD_TOOLBAR);
 	MarkWholeScreenDirty();
-	return true;
 }
 
-static bool InvalidateShipPathCache(int32 p1)
+static void InvalidateShipPathCache(int32 new_value)
 {
 	for (Ship *s : Ship::Iterate()) {
 		s->path.clear();
 	}
-	return true;
 }
 
 /**
@@ -1351,12 +1210,6 @@ static bool InvalidateShipPathCache(int32 p1)
 static bool ReplaceAsteriskWithEmptyPassword(std::string &newval)
 {
 	if (newval.compare("*") == 0) newval.clear();
-	return true;
-}
-
-static bool UpdateClientConfigValues(int32 p1)
-{
-	UpdateClientConfigValues();
 	return true;
 }
 
@@ -1838,17 +1691,12 @@ void DeleteGRFPresetFromConfig(const char *config_name)
 void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
 {
 	int32 oldval = this->Read(object);
-
-	this->MakeValueValidAndWrite(object, newval);
-	newval = this->Read(object);
-
+	this->MakeValueValid(newval);
+	if (this->pre_check != nullptr && !this->pre_check(newval)) return;
 	if (oldval == newval) return;
 
-	if (this->proc != nullptr && !this->proc(newval)) {
-		/* The change was not allowed, so revert. */
-		this->Write(object, oldval);
-		return;
-	}
+	this->Write(object, newval);
+	if (this->post_callback != nullptr) this->post_callback(newval);
 
 	if (this->flags & SGF_NO_NETWORK) {
 		GamelogStartAction(GLAT_SETTING);
