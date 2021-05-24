@@ -720,6 +720,21 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 	}
 
+	/** Given a position it selects the corresponding item from the list of active NewGRFs */
+	void SelectActive(int position)
+	{
+		GRFConfig *c;
+		for (c = this->actives; c != nullptr && position > 0; c = c->next, position--) {}
+
+		if (this->active_sel != c) {
+			DeleteWindowByClass(WC_GRF_PARAMETERS);
+			DeleteWindowByClass(WC_TEXTFILE);
+		}
+		this->active_sel = c;
+		this->avail_sel = nullptr;
+		this->avail_pos = -1;
+	}
+
 	void UpdateWidgetSize(int widget, Dimension *size, const Dimension &padding, Dimension *fill, Dimension *resize) override
 	{
 		switch (widget) {
@@ -1001,20 +1016,11 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 			case WID_NS_FILE_LIST: { // Select an active GRF.
 				ResetObjectToPlace();
 
-				uint i = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST);
-
-				GRFConfig *c;
-				for (c = this->actives; c != nullptr && i > 0; c = c->next, i--) {}
-
-				if (this->active_sel != c) {
-					DeleteWindowByClass(WC_GRF_PARAMETERS);
-					DeleteWindowByClass(WC_TEXTFILE);
-				}
-				this->active_sel = c;
-				this->avail_sel = nullptr;
-				this->avail_pos = -1;
+				int pos = this->vscroll->GetScrolledRowFromWidget(pt.y, this, WID_NS_FILE_LIST);
+				this->SelectActive(pos);
 
 				this->InvalidateData();
+
 				if (click_count == 1) {
 					if (this->editable && this->active_sel != nullptr) SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, HT_DRAG, this);
 					break;
@@ -1318,10 +1324,29 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		this->SetWidgetDisabledState(WID_NS_PRESET_SAVE, has_missing);
 	}
 
-	EventState OnKeyPress(WChar key, uint16 keycode) override
+	EventState OnKeyPressForActiveList(uint16 keycode)
 	{
-		if (!this->editable) return ES_NOT_HANDLED;
+		/* Get total actives and index of current selection. */
+		int active_pos = 0;
+		int active_count = 0;
+		for (GRFConfig *c = this->actives; c != nullptr; c = c->next, active_count++) {}
+		for (GRFConfig *c = this->actives; c != nullptr && c != this->active_sel; c = c->next, active_pos++) {}
 
+		if (this->vscroll2->UpdateListPositionOnKeyPress(active_pos, keycode) == ES_NOT_HANDLED) return ES_NOT_HANDLED;
+
+		active_pos = std::min(active_pos, active_count);
+
+		if (this->actives != nullptr) {
+			this->SelectActive(active_pos);
+			this->vscroll->ScrollTowards(active_pos == active_count - 1 ? active_pos + 1 : active_pos);
+			this->InvalidateData(0);
+		}
+
+		return ES_HANDLED;
+	}
+
+	EventState OnKeyPressForAvailList(uint16 keycode)
+	{
 		if (this->vscroll2->UpdateListPositionOnKeyPress(this->avail_pos, keycode) == ES_NOT_HANDLED) return ES_NOT_HANDLED;
 
 		if (this->avail_pos >= 0) {
@@ -1334,6 +1359,17 @@ struct NewGRFWindow : public Window, NewGRFScanCallback {
 		}
 
 		return ES_HANDLED;
+	}
+
+	EventState OnKeyPress(WChar key, uint16 keycode) override
+	{
+		if (!this->editable) return ES_NOT_HANDLED;
+
+		if (this->IsWidgetFocused(WID_NS_FILE_LIST)) {
+			return OnKeyPressForActiveList(keycode);
+		} else {
+			return OnKeyPressForAvailList(keycode);
+		}
 	}
 
 	void OnEditboxChanged(int wid) override
