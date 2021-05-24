@@ -1095,6 +1095,7 @@ struct NetworkStartServerWindow : public Window {
 				break;
 
 			case WID_NSS_GENERATE_GAME: // Start game
+				if (!CheckServerName()) return;
 				_is_network_server = true;
 				if (_ctrl_pressed) {
 					StartNewGameWithoutGUI(GENERATE_NEW_SEED);
@@ -1104,16 +1105,19 @@ struct NetworkStartServerWindow : public Window {
 				break;
 
 			case WID_NSS_LOAD_GAME:
+				if (!CheckServerName()) return;
 				_is_network_server = true;
 				ShowSaveLoadDialog(FT_SAVEGAME, SLO_LOAD);
 				break;
 
 			case WID_NSS_PLAY_SCENARIO:
+				if (!CheckServerName()) return;
 				_is_network_server = true;
 				ShowSaveLoadDialog(FT_SCENARIO, SLO_LOAD);
 				break;
 
 			case WID_NSS_PLAY_HEIGHTMAP:
+				if (!CheckServerName()) return;
 				_is_network_server = true;
 				ShowSaveLoadDialog(FT_HEIGHTMAP,SLO_LOAD);
 				break;
@@ -1133,11 +1137,13 @@ struct NetworkStartServerWindow : public Window {
 		this->SetDirty();
 	}
 
-	void OnEditboxChanged(int wid) override
+	bool CheckServerName()
 	{
-		if (wid == WID_NSS_GAMENAME) {
-			_settings_client.network.server_name = this->name_editbox.text.buf;
-		}
+		std::string str = this->name_editbox.text.buf;
+		if (!NetworkValidateServerName(str)) return false;
+
+		SetSettingValue(GetSettingFromName("network.server_name")->AsStringSetting(), str);
+		return true;
 	}
 
 	void OnTimeout() override
@@ -2199,16 +2205,13 @@ public:
 			case WID_CL_SERVER_NAME_EDIT: {
 				if (!_network_server) break;
 
-				SetSettingValue(GetSettingFromName("network.server_name")->AsStringSetting(), StrEmpty(str) ? "Unnamed Server" : str);
+				SetSettingValue(GetSettingFromName("network.server_name")->AsStringSetting(), str);
 				this->InvalidateData();
 				break;
 			}
 
 			case WID_CL_CLIENT_NAME_EDIT: {
-				std::string client_name(str);
-				if (!NetworkValidateClientName(client_name)) break;
-
-				SetSettingValue(GetSettingFromName("network.client_name")->AsStringSetting(), client_name);
+				SetSettingValue(GetSettingFromName("network.client_name")->AsStringSetting(), str);
 				this->InvalidateData();
 				break;
 			}

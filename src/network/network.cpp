@@ -835,10 +835,6 @@ void NetworkClientJoinGame()
 
 static void NetworkInitGameInfo()
 {
-	if (_settings_client.network.server_name.empty()) {
-		_settings_client.network.server_name = "Unnamed Server";
-	}
-
 	FillStaticNetworkServerGameInfo();
 	/* The server is a client too */
 	_network_game_info.clients_on = _network_dedicated ? 0 : 1;
@@ -852,6 +848,25 @@ static void NetworkInitGameInfo()
 }
 
 /**
+ * Trim the given server name in place, i.e. remove leading and trailing spaces.
+ * After the trim check whether the server name is not empty.
+ * When the server name is empty a GUI error message is shown telling the
+ * user to set the servername and this function returns false.
+ *
+ * @param server_name The server name to validate. It will be trimmed of leading
+ *                    and trailing spaces.
+ * @return True iff the server name is valid.
+ */
+bool NetworkValidateServerName(std::string &server_name)
+{
+	StrTrimInPlace(server_name);
+	if (!server_name.empty()) return true;
+
+	ShowErrorMessage(STR_NETWORK_ERROR_BAD_SERVER_NAME, INVALID_STRING_ID, WL_ERROR);
+	return false;
+}
+
+/**
  * Check whether the client and server name are set, for a dedicated server and if not set them to some default
  * value and tell the user to change this as soon as possible.
  * If the saved name is the default value, then the user is told to override  this value too.
@@ -860,12 +875,14 @@ static void NetworkInitGameInfo()
 static void CheckClientAndServerName()
 {
 	static const std::string fallback_client_name = "Unnamed Client";
+	StrTrimInPlace(_settings_client.network.client_name);
 	if (_settings_client.network.client_name.empty() || _settings_client.network.client_name.compare(fallback_client_name) == 0) {
 		DEBUG(net, 1, "No \"client_name\" has been set, using \"%s\" instead. Please set this now using the \"name <new name>\" command", fallback_client_name.c_str());
 		_settings_client.network.client_name = fallback_client_name;
 	}
 
 	static const std::string fallback_server_name = "Unnamed Server";
+	StrTrimInPlace(_settings_client.network.server_name);
 	if (_settings_client.network.server_name.empty() || _settings_client.network.server_name.compare(fallback_server_name) == 0) {
 		DEBUG(net, 1, "No \"server_name\" has been set, using \"%s\" instead. Please set this now using the \"server_name <new name>\" command", fallback_server_name.c_str());
 		_settings_client.network.server_name = fallback_server_name;

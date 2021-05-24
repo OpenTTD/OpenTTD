@@ -38,6 +38,7 @@ byte NetworkSpectatorCount();
 bool NetworkIsValidClientName(const std::string_view client_name);
 bool NetworkValidateClientName();
 bool NetworkValidateClientName(std::string &client_name);
+bool NetworkValidateServerName(std::string &server_name);
 void NetworkUpdateClientName(const std::string &client_name);
 bool NetworkCompanyHasClients(CompanyID company);
 std::string NetworkChangeCompanyPassword(CompanyID company_id, std::string password);
