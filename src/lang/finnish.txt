@@ -3558,7 +3558,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Luo ryhm
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Poista valittu ryhmä
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Nimeä valittu ryhmä
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Muuta valitun ryhmän väritystä
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Poista ryhmä automaattisesti korvattavien joukosta
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Napsauta suojataksesi tämä ryhmä yleiseltä automaattikorvaukselta. Ctrl+napsautus suojaa myös aliryhmät.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Poista ryhmä
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Haluatko varmasti poistaa tämän ryhmän ja sen alaryhmät?
@@ -3811,7 +3811,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev-junat
 STR_REPLACE_ROAD_VEHICLES                                       :Ajoneuvot
 STR_REPLACE_TRAM_VEHICLES                                       :Raitiovaunut
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvauksessa junapituus pidetään samana poistamalla vaunuja (edestä) jos veturi pidentäisi junaa
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+napsautus kohdistaaksesi myös aliryhmiin.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

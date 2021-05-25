@@ -3275,7 +3275,7 @@ STR_SUBSIDIES_CAPTION                                           :{WHITE}보조�
 STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}지급 대기 중인 보조금:
 STR_SUBSIDIES_OFFERED_FROM_TO                                   :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:DATE_SHORT}까지)
 STR_SUBSIDIES_NONE                                              :{ORANGE}없음
-STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 지급 중인 보조금:
+STR_SUBSIDIES_SUBSIDISED_TITLE                                  :{BLACK}이미 지급된 보조금:
 STR_SUBSIDIES_SUBSIDISED_FROM_TO                                :{ORANGE}{1:STRING}에서 {2:STRING}까지 {0:STRING} 수송{YELLOW} ({3:COMPANY}{YELLOW}, {DATE_SHORT}까지)
 STR_SUBSIDIES_TOOLTIP_CLICK_ON_SERVICE_TO_CENTER                :{BLACK}산업시설/도시의 위치로 시점을 변경하려면 클릭하세요. CTRL+클릭하면 이 산업시설/도시의 위치를 기준으로 새로운 외부 화면을 엽니다
 
@@ -3559,7 +3559,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}클릭�
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}선택한 그룹을 삭제합니다
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}선택한 그룹의 이름을 바꿉니다
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}선택한 그룹의 차량 색상을 변경합니다
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}클릭해서 전체 자동 교체로부터 이 그룹을 보호합니다
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}클릭하면 전체 자동 교체로부터 이 그룹을 보호합니다. CTRL+클릭하면 하위 그룹도 보호합니다.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}그룹 삭제
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}이 그룹과 하위 그룹을 정말 삭제하시겠습니까?
@@ -3812,7 +3812,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :자기부상 �
 STR_REPLACE_ROAD_VEHICLES                                       :자동차
 STR_REPLACE_TRAM_VEHICLES                                       :전차 차량
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거 ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}자동 교체시 열차의 길이가 교체 전보다 길어지면 객차/화차를 (앞쪽부터) 제거하여 열차의 전체 길이가 달라지지 않도록 합니다
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. CTRL+클릭하면 하위 그룹에도 적용됩니다
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

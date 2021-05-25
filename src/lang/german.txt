@@ -3559,7 +3559,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Neue Gru
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Ausgewählte Gruppe löschen
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Ausgewählte Gruppe umbenennen
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Farbschema der ausgewählten Gruppe ändern
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Diese Gruppe von der automatischen Fahrzeugersetzung ausschließen
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klicken, um diese Gruppe vor der globalen Autoersetzung zu schützen. Strg+Klick, um außerdem Untergruppen zu schützen
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Gruppe löschen
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Sicher, dass diese Gruppe inklusive aller Untergruppen gelöscht werden soll?
@@ -3812,7 +3812,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magnetschwebeba
 STR_REPLACE_ROAD_VEHICLES                                       :Straßenfahrzeuge
 STR_REPLACE_TRAM_VEHICLES                                       :Straßenbahnfahrzeuge
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Waggon-Entfernung ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ursprüngliche Länge des Zugs beibehalten, indem (vorne beginnend) Waggons entfernt werden, falls das Ersetzen der Lokomotive den Zug verlängern würde
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Strg+Klick, um auch an Untergruppen anzuwenden
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

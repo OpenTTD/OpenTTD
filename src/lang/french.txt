@@ -3559,7 +3559,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Créer u
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Supprimer le groupe sélectionné
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renommer le groupe sélectionné
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Changer la couleur du groupe sélectionné
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Cliquer pour protéger ce groupe contre l'auto-remplacement global
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Cliquer pour protéger ce groupe contre l'auto-remplacement global. Ctrl-clic pour protéger aussi les sous-groupes.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Supprimer un groupe
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Êtes-vous sûr de vouloir supprimer ce groupe et ses descendants{NBSP}?
@@ -3812,7 +3812,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Véhicules Magl
 STR_REPLACE_ROAD_VEHICLES                                       :Véhicules routiers
 STR_REPLACE_TRAM_VEHICLES                                       :Tramways
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon ({STRING}){NBSP}: {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Si l'autoremplacement de la locomotive provoque un accroissement de la longueur du train, alors sa longueur initiale sera retrouvée en retirant automatiquement des wagons (d'abord par la tête)
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl-clic pour appliquer aussi aux sous-groupes
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

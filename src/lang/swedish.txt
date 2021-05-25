@@ -353,7 +353,7 @@ STR_TOOLBAR_TOOLTIP_BUILD_AIRPORTS                              :{BLACK}Bygg fly
 STR_TOOLBAR_TOOLTIP_LANDSCAPING                                 :{BLACK}Öppna landskapsarkitektursverktygen för att höja/sänka land, plantera träd, etc.
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}Visa ljud-/musikfönster
 STR_TOOLBAR_TOOLTIP_SHOW_LAST_MESSAGE_NEWS                      :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
-STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsoll, skript-felsökning, skärmdumpar, om OpenTTD
+STR_TOOLBAR_TOOLTIP_LAND_BLOCK_INFORMATION                      :{BLACK}Markinformation, konsol, felsökning av skript, skärmdumpar, om OpenTTD
 STR_TOOLBAR_TOOLTIP_SWITCH_TOOLBAR                              :{BLACK}Byt verktygsrad
 
 # Extra tooltips for the scenario editor toolbar
@@ -906,7 +906,7 @@ STR_GAME_OPTIONS_CURRENCY_UNITS_FRAME                           :{BLACK}Valutaen
 STR_GAME_OPTIONS_CURRENCY_UNITS_DROPDOWN_TOOLTIP                :{BLACK}Välj valutaenhet
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brittisk pund (£)
+STR_GAME_OPTIONS_CURRENCY_GBP                                   :Brittiskt pund (£)
 STR_GAME_OPTIONS_CURRENCY_USD                                   :Amerikansk dollar (USD)
 STR_GAME_OPTIONS_CURRENCY_EUR                                   :Euro (EUR)
 STR_GAME_OPTIONS_CURRENCY_JPY                                   :Japansk yen (¥)
@@ -942,12 +942,12 @@ STR_GAME_OPTIONS_CURRENCY_GEL                                   :Georgisk lari (
 STR_GAME_OPTIONS_CURRENCY_IRR                                   :Iransk rial (IRR)
 STR_GAME_OPTIONS_CURRENCY_RUB                                   :Ny rysk rubel (RUB)
 STR_GAME_OPTIONS_CURRENCY_MXN                                   :Mexikansk peso (MXN)
-STR_GAME_OPTIONS_CURRENCY_NTD                                   :Nya Taiwanesisk dollar (NTD)
-STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinesisk Renminbi (CNY)
+STR_GAME_OPTIONS_CURRENCY_NTD                                   :Ny taiwanesisk dollar (NTD)
+STR_GAME_OPTIONS_CURRENCY_CNY                                   :Kinesisk renminbi (CNY)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :Hongkongdollar (HKD)
 STR_GAME_OPTIONS_CURRENCY_INR                                   :Indisk rupie (INR)
-STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk Rupiah (IDR)
-STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk Ringgit (MYR)
+STR_GAME_OPTIONS_CURRENCY_IDR                                   :Indonesisk rupie (IDR)
+STR_GAME_OPTIONS_CURRENCY_MYR                                   :Malaysisk ringgit (MYR)
 ############ end of currency region
 
 STR_GAME_OPTIONS_ROAD_VEHICLES_DROPDOWN_LEFT                    :Kör på vänster sida
@@ -1055,9 +1055,9 @@ STR_ERROR_FULLSCREEN_FAILED                                     :{WHITE}Fullskä
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY_LONG} = £ {COMMA}
-STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minska värdet för din valuta med ett Pund (£)
-STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Öka värdet för din valuta med ett Pund (£)
-STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Sätt växelkursen för din valuta mot ett Pund (£)
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Minska värdet för din valuta med ett pund (£)
+STR_CURRENCY_INCREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}Öka värdet för din valuta med ett pund (£)
+STR_CURRENCY_SET_EXCHANGE_RATE_TOOLTIP                          :{BLACK}Sätt växelkursen för din valuta mot ett pund (£)
 
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Avskiljare: {ORANGE}{STRING}
 STR_CURRENCY_SET_CUSTOM_CURRENCY_SEPARATOR_TOOLTIP              :{BLACK}Sätt separatorn för din valuta
@@ -1074,7 +1074,7 @@ STR_CURRENCY_DECREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt till
 STR_CURRENCY_INCREASE_CUSTOM_CURRENCY_TO_EURO_TOOLTIP           :{BLACK}Byt till euron senare
 
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhandsgranska: {ORANGE}{CURRENCY_LONG}
-STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 Pund (£) i din valuta
+STR_CURRENCY_CUSTOM_CURRENCY_PREVIEW_TOOLTIP                    :{BLACK}10000 pund (£) i din valuta
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ändra valutaparametrar
 
 STR_DIFFICULTY_LEVEL_SETTING_MAXIMUM_NO_COMPETITORS             :{LTBLUE}Max antal motståndare: {ORANGE}{COMMA}
@@ -1317,7 +1317,7 @@ STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS                        :Flygplatser bli
 STR_CONFIG_SETTING_NEVER_EXPIRE_AIRPORTS_HELPTEXT               :Aktivering av denna inställning gör så att alla flygplatstyper finns kvar i obegränsad tid efter att de blivit tillgängliga
 
 STR_CONFIG_SETTING_WARN_LOST_VEHICLE                            :Varna om fordon är vilse: {STRING}
-STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Aktiverar meddelanden om fordon som är oförmögna att hitta vägen till deras destination.
+STR_CONFIG_SETTING_WARN_LOST_VEHICLE_HELPTEXT                   :Aktiverar meddelanden om fordon som är oförmögna att hitta vägen till sin destination.
 STR_CONFIG_SETTING_ORDER_REVIEW                                 :Granska fordonens destinationer: {STRING}
 STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :Om det är aktiverat så kontrolleras fordonens order periodiskt och när uppenbara problem identifieras rapporteras detta med ett nyhetsmeddelande
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :Nej
@@ -2152,6 +2152,7 @@ STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Det här
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kasta ut
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannlys
 STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_RESET                     :Ta bort
+STR_NETWORK_CLIENT_LIST_ADMIN_COMPANY_UNLOCK                    :Lås upp med lösenord
 
 STR_NETWORK_CLIENT_LIST_ASK_CAPTION                             :{WHITE}Administratörshandling
 STR_NETWORK_CLIENT_LIST_ASK_CLIENT_KICK                         :{YELLOW}Är du säker på att du vill kasta ut spelaren '{STRING}'?
@@ -2360,8 +2361,8 @@ STR_TRANSPARENT_INDUSTRIES_TOOLTIP                              :{BLACK}Växla g
 STR_TRANSPARENT_BUILDINGS_TOOLTIP                               :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer och riktmärken. Ctrl+klick för att låsa
 STR_TRANSPARENT_BRIDGES_TOOLTIP                                 :{BLACK}Växla genomskinlighet för broar. Ctrl+klick för att låsa
 STR_TRANSPARENT_STRUCTURES_TOOLTIP                              :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner. Ctrl+klick för att låsa
-STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Växla genomskinlighet för kontaktledning. CTRL+klick för att låsa
-STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Växla genomskinlighet för lastningsindikatörer. CTRL+klick för att låsa
+STR_TRANSPARENT_CATENARY_TOOLTIP                                :{BLACK}Växla genomskinlighet för kontaktledning. Ctrl+klick för att låsa
+STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Växla genomskinlighet för lastningsindikatorer. Ctrl+klick för att låsa
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Gör object osynliga istället för genomskinliga
 
 # Linkgraph legend window
@@ -2632,7 +2633,7 @@ STR_FOUND_TOWN_INITIAL_SIZE_LARGE_BUTTON                        :{BLACK}Stor
 STR_FOUND_TOWN_SIZE_RANDOM                                      :{BLACK}Slumpa
 STR_FOUND_TOWN_INITIAL_SIZE_TOOLTIP                             :{BLACK}Välj stadsstorlek
 STR_FOUND_TOWN_CITY                                             :{BLACK}Stad
-STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Stora städer växer snabbare än vanliga städer{}Beroende på inställningarna så är de större när de grundas
+STR_FOUND_TOWN_CITY_TOOLTIP                                     :{BLACK}Storstäder växer snabbare än vanliga städer{}Beroende på inställningarna så är de större när de grundas
 
 STR_FOUND_TOWN_ROAD_LAYOUT                                      :{YELLOW}Utformning av stadens vägnät:
 STR_FOUND_TOWN_SELECT_TOWN_ROAD_LAYOUT                          :{BLACK}Välj vägnätets utformning för denna stad
@@ -3400,7 +3401,7 @@ STR_FINANCES_LOAN_TITLE                                         :{WHITE}Lån
 STR_FINANCES_MAX_LOAN                                           :{WHITE}Maxlån: {BLACK}{CURRENCY_LONG}
 STR_FINANCES_TOTAL_CURRENCY                                     :{BLACK}{CURRENCY_LONG}
 STR_FINANCES_BORROW_BUTTON                                      :{BLACK}Låna {CURRENCY_LONG}
-STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Öka lånets storlek. Ctrl + Klick lånar så mycket som möjligt
+STR_FINANCES_BORROW_TOOLTIP                                     :{BLACK}Öka lånets storlek. Ctrl+klick lånar så mycket som möjligt
 STR_FINANCES_REPAY_BUTTON                                       :{BLACK}Återbetala {CURRENCY_LONG}
 STR_FINANCES_REPAY_TOOLTIP                                      :{BLACK}Återbetala en del av lånet. Ctrl+klick återbetalar så mycket som är möjligt
 STR_FINANCES_INFRASTRUCTURE_BUTTON                              :{BLACK}Infrastruktur
@@ -3557,7 +3558,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klicka f
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Ta bort vald grupp
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Byt namn på vald grupp
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Byt färgschema på vald grupp
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klicka för att skydda denna grupp mot allmän autoreplace
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klicka för att skydda denna grupp mot allmän automatisk förnyelse. Ctrl+klicka för att också skydda undergrupper.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Ta bort grupp
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE} Är du säker på att du vill ta bort denna grupp och alla efterkommande?
@@ -3810,7 +3811,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglevfordon
 STR_REPLACE_ROAD_VEHICLES                                       :Vägfordon
 STR_REPLACE_TRAM_VEHICLES                                       :Spårvägsfordon
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagnborttagning ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så att automatiskt utbyte behåller ett tågs längd genom att ta bort vagnar (med början längst fram) om utbytandet av loket skulle göra tåget längre
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+klicka för att också tillämpa det på undergrupper
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -3818,7 +3821,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 STR_VEHICLE_VIEW_TRAIN_CENTER_TOOLTIP                           :{BLACK}Centrera huvudvyn på tågets position. Dubbelklicka för att följa tåget i huvudvyn. Ctrl+klicka öppnar ett nytt fönster över tågets position
 STR_VEHICLE_VIEW_ROAD_VEHICLE_CENTER_TOOLTIP                    :{BLACK}Centrera huvudvyn på fordonets position. Dubbelklicka för att följa fordonet i huvudvyn. Ctrl+klicka öppnar ett nytt fönster över fordonets position
 STR_VEHICLE_VIEW_SHIP_CENTER_TOOLTIP                            :{BLACK}Centrera huvudvyn på fartygets position. Dubbelklicka för att följa fartyget i huvudvyn. Ctrl+klicka öppnar ett nytt fönster över fartygets position
-STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrera huvudvyn på flyplanets position. Dubbelklicka för att följa flyplanet i huvudvyn. Ctrl+klicka öppnar ett nytt fönster över flygplanets position
+STR_VEHICLE_VIEW_AIRCRAFT_CENTER_TOOLTIP                        :{BLACK}Centrera huvudvyn på flygplanets position. Dubbelklicka för att följa flygplanet i huvudvyn. Ctrl+klicka öppnar ett nytt fönster över flygplanets position
 
 STR_VEHICLE_VIEW_TRAIN_SEND_TO_DEPOT_TOOLTIP                    :{BLACK}Skicka tåg till depå. Ctrl+klick skickar tåget enbart på service
 STR_VEHICLE_VIEW_ROAD_VEHICLE_SEND_TO_DEPOT_TOOLTIP             :{BLACK}Skicka fordon till depå. Ctrl+klick servar endast
@@ -3855,7 +3858,7 @@ STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}Aktuell 
 STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}Aktuell fartygsåtgärd - Tryck för att stoppa/starta fartyg
 STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}Aktuell flygplansåtgärd - Tryck för att stoppa/starta flygplanet
 
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrera huvudvyn på ordens destination. Ctrl+klick öppnar en ny vy över ordens destination
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}Centrera huvudvyn på orderns destination. Ctrl+klick öppnar en ny vy över orderns destination
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}Lastar / lastar av
@@ -3864,7 +3867,7 @@ STR_VEHICLE_STATUS_CRASHED                                      :{RED}Kraschad!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}Motorstopp
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}Stoppat
 STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}Stannar, {VELOCITY}
-STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ingen Kraft
+STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}Ingen kraft
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}Väntar på ledig väg
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}Nästa destination ligger för långt bort
 
@@ -4046,7 +4049,7 @@ STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Värde a
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv in värde att jämföra mot
 
 STR_ORDERS_SKIP_BUTTON                                          :{BLACK}Skippa
-STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Hoppa över nuvarande order och starta nästa. CTRL + klick hoppar över till vald order
+STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}Hoppa över nuvarande order och starta nästa. Ctrl+klick hoppar över till vald order
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}Ta bort
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}Ta bort markerad order
@@ -4153,7 +4156,7 @@ STR_TIMETABLE_DAYS                                              :{COMMA}{NBSP}da
 STR_TIMETABLE_TICKS                                             :{COMMA}{NBSP}tick
 
 STR_TIMETABLE_TOTAL_TIME                                        :{BLACK}Den här tidtabellen kommer ta {STRING} att slutföra
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denna tidtabell kommer att ta åtminstonde {STRING} att slutföra (allt är inte inlagt i en tidtabell)
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :{BLACK}Denna tidtabell kommer att ta åtminstone {STRING} att slutföra (allt är inte inlagt i en tidtabell)
 
 STR_TIMETABLE_STATUS_ON_TIME                                    :{BLACK}Detta fordon kör enligt tidtabellen
 STR_TIMETABLE_STATUS_LATE                                       :{BLACK}Detta fordon är för tillfället {STRING} sen
@@ -4819,7 +4822,7 @@ STR_INDUSTRY_NAME_SUGAR_MINE                                    :Sockergruva
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :Inget namn
+STR_SV_UNNAMED                                                  :Utan namn
 STR_SV_TRAIN_NAME                                               :Tåg #{COMMA}
 STR_SV_ROAD_VEHICLE_NAME                                        :Vägfordon #{COMMA}
 STR_SV_SHIP_NAME                                                :Skepp #{COMMA}
@@ -4834,10 +4837,10 @@ STR_SV_STNAME_CENTRAL                                           :{STRING} centra
 STR_SV_STNAME_TRANSFER                                          :{STRING} övergång
 STR_SV_STNAME_HALT                                              :{STRING} hållplats
 STR_SV_STNAME_VALLEY                                            :{STRING} dal
-STR_SV_STNAME_HEIGHTS                                           :{STRING} Höjder
+STR_SV_STNAME_HEIGHTS                                           :{STRING} höjder
 STR_SV_STNAME_WOODS                                             :{STRING} skog
 STR_SV_STNAME_LAKESIDE                                          :{STRING} sjöstrand
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Växel
+STR_SV_STNAME_EXCHANGE                                          :{STRING} växel
 STR_SV_STNAME_AIRPORT                                           :{STRING} flygplats
 STR_SV_STNAME_OILFIELD                                          :{STRING} oljefält
 STR_SV_STNAME_MINES                                             :{STRING} gruva
