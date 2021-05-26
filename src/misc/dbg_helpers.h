@@ -106,12 +106,6 @@ struct DumpTarget {
 			, m_ptr(ptr)
 		{}
 
-		KnownStructKey(const KnownStructKey &src)
-		{
-			m_type_id = src.m_type_id;
-			m_ptr = src.m_ptr;
-		}
-
 		bool operator<(const KnownStructKey &other) const
 		{
 			if ((size_t)m_ptr < (size_t)other.m_ptr) return true;
