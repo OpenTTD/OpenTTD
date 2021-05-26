@@ -548,13 +548,13 @@ private:
 	VehicleOrderID GetOrderFromPt(int y)
 	{
 		NWidgetBase *nwid = this->GetWidget<NWidgetBase>(WID_O_ORDER_LIST);
-		int sel = (y - nwid->pos_y - WD_FRAMERECT_TOP) / nwid->resize_y; // Selected line in the WID_O_ORDER_LIST panel.
+		uint sel = (y - nwid->pos_y - WD_FRAMERECT_TOP) / nwid->resize_y; // Selected line in the WID_O_ORDER_LIST panel.
 
-		if ((uint)sel >= this->vscroll->GetCapacity()) return INVALID_VEH_ORDER_ID;
+		if (sel >= this->vscroll->GetCapacity()) return INVALID_VEH_ORDER_ID;
 
 		sel += this->vscroll->GetPosition();
 
-		return (sel <= vehicle->GetNumOrders() && sel >= 0) ? sel : INVALID_VEH_ORDER_ID;
+		return (sel <= vehicle->GetNumOrders()) ? sel : INVALID_VEH_ORDER_ID;
 	}
 
 	/**
