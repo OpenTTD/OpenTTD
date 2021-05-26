@@ -495,7 +495,7 @@ public:
 	 * Get the current size of the component.
 	 * @return Size.
 	 */
-	inline uint16 Size() const { return (uint16)this->nodes.size(); }
+	inline NodeID Size() const { return (NodeID)this->nodes.size(); }
 
 	/**
 	 * Get date of last compression.
