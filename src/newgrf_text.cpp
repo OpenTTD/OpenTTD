@@ -398,7 +398,6 @@ std::string TranslateTTDPatchCodes(uint32 grfid, uint8 language_id, bool allow_n
 							int index = (code == 0x10 ? *src++ : 0);
 							if (mapping->strings.find(index) != mapping->strings.end()) {
 								grfmsg(1, "duplicate choice list string, ignoring");
-								d++;
 							} else {
 								d = std::ostreambuf_iterator<char>(mapping->strings[index]);
 							}
