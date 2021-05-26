@@ -2311,7 +2311,7 @@ STR_NETWORK_ERROR_CLIENT_TIMEOUT_JOIN                           :spracovanie map
 STR_NETWORK_ERROR_CLIENT_INVALID_CLIENT_NAME                    :Neplatný názov klienta
 ############ End of leave-in-this-order
 
-STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Možná ztráta pripojenia
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}Možná strata pripojenia
 STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}Posledných {NUM} sekúnd nedorazili zo servera žiadne dáta
 
 # Network related errors
@@ -3879,7 +3879,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Lokomotíva pre
 STR_REPLACE_ROAD_VEHICLES                                       :Automobily
 STR_REPLACE_TRAM_VEHICLES                                       :Električky
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstránenie vagónu ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zachovanie pôvodnej dĺžky vlaku, odstránením vagónov (odpredu), keď by funkcia automatickej zmeny rušňa vlak predĺžila
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+klik aplikuje aj na podskupiny
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

@@ -3559,7 +3559,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clica pa
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Borra el grupo seleccionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Renombra el grupo seleccionado
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Cambia el color del grupo seleccionado
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clic para proteger este grupo del auto reemplazado global
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clica para proteger este grupo del autorreemplazo global. Ctrl+clic protege también los subgrupos.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Borrar Grupo
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}¿Estás seguro de borrar este grupo y todos sus subgrupos?
@@ -3812,7 +3812,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Vehículos Magl
 STR_REPLACE_ROAD_VEHICLES                                       :Vehículos de Carretera
 STR_REPLACE_TRAM_VEHICLES                                       :Tranvías
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retirar vagones ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fuerza que el reemplazo automático mantenga la longitud del tren, quitando vagones (empezando por la parte delantera) si el reemplazo de vehículos produce un tren más largo
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+clic para aplicar también a subgrupos
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
