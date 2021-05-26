@@ -16,14 +16,14 @@
 #include <utility>
 
 template <typename SetPixelT>
-void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, int screen_height, int width, int dash, SetPixelT set_pixel)
+void Blitter::DrawLineGeneric(int x1, int y1, int x2, int y2, int screen_width, int screen_height, int width, int dash, SetPixelT set_pixel)
 {
 	int dy;
 	int dx;
 	int stepx;
 	int stepy;
 
-	dy = (y2 - y) * 2;
+	dy = (y2 - y1) * 2;
 	if (dy < 0) {
 		dy = -dy;
 		stepy = -1;
@@ -31,7 +31,7 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 		stepy = 1;
 	}
 
-	dx = (x2 - x) * 2;
+	dx = (x2 - x1) * 2;
 	if (dx < 0) {
 		dx = -dx;
 		stepx = -1;
@@ -41,7 +41,7 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 
 	if (dx == 0 && dy == 0) {
 		/* The algorithm below cannot handle this special case; make it work at least for line width 1 */
-		if (x >= 0 && x < screen_width && y >= 0 && y < screen_height) set_pixel(x, y);
+		if (x1 >= 0 && x1 < screen_width && y1 >= 0 && y1 < screen_height) set_pixel(x1, y1);
 		return;
 	}
 
@@ -67,14 +67,14 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 	int dash_count = 0;
 	if (dx > dy) {
 		if (stepx < 0) {
-			std::swap(x, x2);
-			std::swap(y, y2);
+			std::swap(x1, x2);
+			std::swap(y1, y2);
 			stepy = -stepy;
 		}
-		if (x2 < 0 || x >= screen_width) return;
+		if (x2 < 0 || x1 >= screen_width) return;
 
-		int y_low     = y;
-		int y_high    = y;
+		int y_low     = y1;
+		int y_high    = y1;
 		int frac_low  = dy - frac_diff / 2;
 		int frac_high = dy + frac_diff / 2;
 
@@ -87,10 +87,10 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 			y_high += stepy;
 		}
 
-		if (x < 0) {
-			dash_count = (-x) % (dash + gap);
+		if (x1 < 0) {
+			dash_count = (-x1) % (dash + gap);
 			auto adjust_frac = [&](int64 frac, int &y_bound) -> int {
-				frac -= ((int64) dy) * ((int64) x);
+				frac -= ((int64) dy) * ((int64) x1);
 				if (frac >= 0) {
 					int quotient = frac / dx;
 					int remainder = frac % dx;
@@ -101,17 +101,17 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 			};
 			frac_low = adjust_frac(frac_low, y_low);
 			frac_high = adjust_frac(frac_high, y_high);
-			x = 0;
+			x1 = 0;
 		}
 		x2++;
 		if (x2 > screen_width) {
 			x2 = screen_width;
 		}
 
-		while (x != x2) {
+		while (x1 != x2) {
 			if (dash_count < dash) {
 				for (int y = y_low; y != y_high; y += stepy) {
-					if (y >= 0 && y < screen_height) set_pixel(x, y);
+					if (y >= 0 && y < screen_height) set_pixel(x1, y);
 				}
 			}
 			if (frac_low >= 0) {
@@ -122,21 +122,21 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 				y_high += stepy;
 				frac_high -= dx;
 			}
-			x++;
+			x1++;
 			frac_low += dy;
 			frac_high += dy;
 			if (++dash_count >= dash + gap) dash_count = 0;
 		}
 	} else {
 		if (stepy < 0) {
-			std::swap(x, x2);
-			std::swap(y, y2);
+			std::swap(x1, x2);
+			std::swap(y1, y2);
 			stepx = -stepx;
 		}
-		if (y2 < 0 || y >= screen_height) return;
+		if (y2 < 0 || y1 >= screen_height) return;
 
-		int x_low     = x;
-		int x_high    = x;
+		int x_low     = x1;
+		int x_high    = x1;
 		int frac_low  = dx - frac_diff / 2;
 		int frac_high = dx + frac_diff / 2;
 
@@ -149,10 +149,10 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 			x_high += stepx;
 		}
 
-		if (y < 0) {
-			dash_count = (-y) % (dash + gap);
+		if (y1 < 0) {
+			dash_count = (-y1) % (dash + gap);
 			auto adjust_frac = [&](int64 frac, int &x_bound) -> int {
-				frac -= ((int64) dx) * ((int64) y);
+				frac -= ((int64) dx) * ((int64) y1);
 				if (frac >= 0) {
 					int quotient = frac / dy;
 					int remainder = frac % dy;
@@ -163,17 +163,17 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 			};
 			frac_low = adjust_frac(frac_low, x_low);
 			frac_high = adjust_frac(frac_high, x_high);
-			y = 0;
+			y1 = 0;
 		}
 		y2++;
 		if (y2 > screen_height) {
 			y2 = screen_height;
 		}
 
-		while (y != y2) {
+		while (y1 != y2) {
 			if (dash_count < dash) {
 				for (int x = x_low; x != x_high; x += stepx) {
-					if (x >= 0 && x < screen_width) set_pixel(x, y);
+					if (x >= 0 && x < screen_width) set_pixel(x, y1);
 				}
 			}
 			if (frac_low >= 0) {
@@ -184,7 +184,7 @@ void Blitter::DrawLineGeneric(int x, int y, int x2, int y2, int screen_width, in
 				x_high += stepx;
 				frac_high -= dy;
 			}
-			y++;
+			y1++;
 			frac_low += dx;
 			frac_high += dx;
 			if (++dash_count >= dash + gap) dash_count = 0;

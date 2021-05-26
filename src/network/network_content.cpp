@@ -1010,9 +1010,9 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		/* First check whether anything depends on us */
 		int sel_count = 0;
 		bool force_selection = false;
-		for (const ContentInfo *ci : parents) {
-			if (ci->IsSelected()) sel_count++;
-			if (ci->state == ContentInfo::SELECTED) force_selection = true;
+		for (const ContentInfo *parent_ci : parents) {
+			if (parent_ci->IsSelected()) sel_count++;
+			if (parent_ci->state == ContentInfo::SELECTED) force_selection = true;
 		}
 		if (sel_count == 0) {
 			/* Nothing depends on us */
@@ -1027,8 +1027,8 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		this->ReverseLookupTreeDependency(parents, c);
 
 		/* Is there anything that is "force" selected?, if so... we're done. */
-		for (const ContentInfo *ci : parents) {
-			if (ci->state != ContentInfo::SELECTED) continue;
+		for (const ContentInfo *parent_ci : parents) {
+			if (parent_ci->state != ContentInfo::SELECTED) continue;
 
 			force_selection = true;
 			break;

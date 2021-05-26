@@ -2700,14 +2700,14 @@ struct IndustryCargoesWindow : public Window {
 
 	/**
 	 * Compute what and where to display for industry type \a it.
-	 * @param it Industry type to display.
+	 * @param displayed_it Industry type to display.
 	 */
-	void ComputeIndustryDisplay(IndustryType it)
+	void ComputeIndustryDisplay(IndustryType displayed_it)
 	{
 		this->GetWidget<NWidgetCore>(WID_IC_CAPTION)->widget_data = STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION;
-		this->ind_cargo = it;
+		this->ind_cargo = displayed_it;
 		_displayed_industries.reset();
-		_displayed_industries.set(it);
+		_displayed_industries.set(displayed_it);
 
 		this->fields.clear();
 		CargoesRow &row = this->fields.emplace_back();
@@ -2717,7 +2717,7 @@ struct IndustryCargoesWindow : public Window {
 		row.columns[3].MakeEmpty(CFT_SMALL_EMPTY);
 		row.columns[4].MakeHeader(STR_INDUSTRY_CARGOES_CUSTOMERS);
 
-		const IndustrySpec *central_sp = GetIndustrySpec(it);
+		const IndustrySpec *central_sp = GetIndustrySpec(displayed_it);
 		bool houses_supply = HousesCanSupply(central_sp->accepts_cargo, lengthof(central_sp->accepts_cargo));
 		bool houses_accept = HousesCanAccept(central_sp->produced_cargo, lengthof(central_sp->produced_cargo));
 		/* Make a field consisting of two cargo columns. */
@@ -2734,7 +2734,7 @@ struct IndustryCargoesWindow : public Window {
 		}
 		/* Add central industry. */
 		int central_row = 1 + num_indrows / 2;
-		this->fields[central_row].columns[2].MakeIndustry(it);
+		this->fields[central_row].columns[2].MakeIndustry(displayed_it);
 		this->fields[central_row].ConnectIndustryProduced(2);
 		this->fields[central_row].ConnectIndustryAccepted(2);
 

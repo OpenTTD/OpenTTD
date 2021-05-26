@@ -226,18 +226,18 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 	 * Pass == 1: Collect the actual cost. */
 	for (int pass = 0; pass < 2; pass++) {
 		for (TileIndexSet::const_iterator it = ts.dirty_tiles.begin(); it != ts.dirty_tiles.end(); it++) {
-			TileIndex tile = *it;
+			TileIndex t = *it;
 
-			assert(tile < MapSize());
+			assert(t < MapSize());
 			/* MP_VOID tiles can be terraformed but as tunnels and bridges
 			 * cannot go under / over these tiles they don't need checking. */
-			if (IsTileType(tile, MP_VOID)) continue;
+			if (IsTileType(t, MP_VOID)) continue;
 
 			/* Find new heights of tile corners */
-			int z_N = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
-			int z_W = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
-			int z_S = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
-			int z_E = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
+			int z_N = TerraformGetHeightOfTile(&ts, t + TileDiffXY(0, 0));
+			int z_W = TerraformGetHeightOfTile(&ts, t + TileDiffXY(1, 0));
+			int z_S = TerraformGetHeightOfTile(&ts, t + TileDiffXY(1, 1));
+			int z_E = TerraformGetHeightOfTile(&ts, t + TileDiffXY(0, 1));
 
 			/* Find min and max height of tile */
 			int z_min = std::min({z_N, z_W, z_S, z_E});
@@ -252,31 +252,31 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 
 			if (pass == 0) {
 				/* Check if bridge would take damage */
-				if (IsBridgeAbove(tile)) {
-					int bridge_height = GetBridgeHeight(GetSouthernBridgeEnd(tile));
+				if (IsBridgeAbove(t)) {
+					int bridge_height = GetBridgeHeight(GetSouthernBridgeEnd(t));
 
 					/* Check if bridge would take damage. */
 					if (direction == 1 && bridge_height <= z_max) {
-						_terraform_err_tile = tile; // highlight the tile under the bridge
+						_terraform_err_tile = t; // highlight the tile under the bridge
 						return_cmd_error(STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST);
 					}
 
 					/* Is the bridge above not too high afterwards? */
 					if (direction == -1 && bridge_height > (z_min + _settings_game.construction.max_bridge_height)) {
-						_terraform_err_tile = tile;
+						_terraform_err_tile = t;
 						return_cmd_error(STR_ERROR_BRIDGE_TOO_HIGH_AFTER_LOWER_LAND);
 					}
 				}
 				/* Check if tunnel would take damage */
-				if (direction == -1 && IsTunnelInWay(tile, z_min)) {
-					_terraform_err_tile = tile; // highlight the tile above the tunnel
+				if (direction == -1 && IsTunnelInWay(t, z_min)) {
+					_terraform_err_tile = t; // highlight the tile above the tunnel
 					return_cmd_error(STR_ERROR_EXCAVATION_WOULD_DAMAGE);
 				}
 			}
 
 			/* Is the tile already cleared? */
-			const ClearedObjectArea *coa = FindClearedObject(tile);
-			bool indirectly_cleared = coa != nullptr && coa->first_tile != tile;
+			const ClearedObjectArea *coa = FindClearedObject(t);
+			bool indirectly_cleared = coa != nullptr && coa->first_tile != t;
 
 			/* Check tiletype-specific things, and add extra-cost */
 			const bool curr_gen = _generating_world;
@@ -288,13 +288,13 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 			}
 			CommandCost cost;
 			if (indirectly_cleared) {
-				cost = DoCommand(tile, 0, 0, tile_flags, CMD_LANDSCAPE_CLEAR);
+				cost = DoCommand(t, 0, 0, tile_flags, CMD_LANDSCAPE_CLEAR);
 			} else {
-				cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, tile_flags, z_min, tileh);
+				cost = _tile_type_procs[GetTileType(t)]->terraform_tile_proc(t, tile_flags, z_min, tileh);
 			}
 			_generating_world = curr_gen;
 			if (cost.Failed()) {
-				_terraform_err_tile = tile;
+				_terraform_err_tile = t;
 				return cost;
 			}
 			if (pass == 1) total_cost.AddCost(cost);
@@ -318,10 +318,10 @@ CommandCost CmdTerraformLand(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
 		/* change the height */
 		for (TileIndexToHeightMap::const_iterator it = ts.tile_to_new_height.begin();
 				it != ts.tile_to_new_height.end(); it++) {
-			TileIndex tile = it->first;
+			TileIndex t = it->first;
 			int height = it->second;
 
-			SetTileHeight(tile, (uint)height);
+			SetTileHeight(t, (uint)height);
 		}
 
 		if (c != nullptr) c->terraform_limit -= (uint32)ts.tile_to_new_height.size() << 16;
