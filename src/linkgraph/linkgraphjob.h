@@ -332,7 +332,7 @@ public:
 	 * Get the size of the underlying link graph.
 	 * @return Size.
 	 */
-	inline uint Size() const { return this->link_graph.Size(); }
+	inline NodeID Size() const { return this->link_graph.Size(); }
 
 	/**
 	 * Get the cargo of the underlying link graph.
