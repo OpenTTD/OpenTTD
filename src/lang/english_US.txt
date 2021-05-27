@@ -3558,7 +3558,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Click to
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Delete the selected group
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Rename the selected group
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Change livery of the selected group
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click to protect this group from global autoreplace
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Click to protect this group from global autoreplace. Ctrl+Click to also protect sub-groups.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Delete Group
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Are you sure you want to delete this group and any descendants?
@@ -3811,7 +3811,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev Vehicles
 STR_REPLACE_ROAD_VEHICLES                                       :Road Vehicles
 STR_REPLACE_TRAM_VEHICLES                                       :Streetcars
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing cars (starting at the front), if replacing the engine would make the train longer
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Click to also apply to sub-groups
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

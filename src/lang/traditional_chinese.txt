@@ -966,6 +966,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_12_MONTHS              :每 12 個月
 
 STR_GAME_OPTIONS_LANGUAGE                                       :{BLACK}語言
 STR_GAME_OPTIONS_LANGUAGE_TOOLTIP                               :{BLACK}選擇要用的介面語言
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} (已完成{NUM}%)
 
 STR_GAME_OPTIONS_FULLSCREEN                                     :{BLACK}全螢幕
 STR_GAME_OPTIONS_FULLSCREEN_TOOLTIP                             :{BLACK}勾選即可在全螢幕下玩 OpenTTD
@@ -2007,7 +2008,10 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司�
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :用戶端清單
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_CAPTION                                 :{WHITE}多人遊戲
+STR_NETWORK_CLIENT_LIST_SERVER                                  :{BLACK}伺服器
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :踢出
 
 
 STR_NETWORK_SERVER                                              :伺服器
@@ -2337,6 +2341,7 @@ STR_ROAD_TOOLBAR_TOOLTIP_BUILD_TRAMWAY_TUNNEL                   :{BLACK}挖掘�
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_ROAD           :{BLACK}切換鋪設／移除公路
 STR_ROAD_TOOLBAR_TOOLTIP_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS       :{BLACK}切換鋪設電車軌
 STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_ROAD                           :{BLACK}轉換或升級路面類型。按 Shift 鍵可切換鋪設和顯示預估成本。
+STR_ROAD_TOOLBAR_TOOLTIP_CONVERT_TRAM                           :{BLACK}轉換/升級電車軌道類型。按 Shift 鍵可切換建築/顯示預估成本。
 
 STR_ROAD_NAME_ROAD                                              :路面
 STR_ROAD_NAME_TRAM                                              :電車軌
@@ -2631,6 +2636,7 @@ STR_FRAMERATE_DATA_POINTS                                       :{BLACK}數據�
 STR_FRAMERATE_MS_BAD                                            :{RED}{DECIMAL} 毫秒
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 ############ Leave those lines in this order!!
+STR_FRAMERATE_AI                                                :{BLACK}   AI {NUM} {STRING}
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GL_LANDSCAPE                              :世界刻
@@ -2675,6 +2681,7 @@ STR_MAPGEN_BY                                                   :{BLACK}*
 STR_MAPGEN_NUMBER_OF_TOWNS                                      :{BLACK}市鎮數量：
 STR_MAPGEN_DATE                                                 :{BLACK}日期：
 STR_MAPGEN_NUMBER_OF_INDUSTRIES                                 :{BLACK}工業數量：
+STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}地形產生器：
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}地形種類：
 STR_MAPGEN_QUANTITY_OF_SEA_LAKES                                :{BLACK}海平面：
@@ -3309,6 +3316,7 @@ STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :新購飛機
 ############ range for vehicle availability ends
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}費用：{GOLD}{CURRENCY_LONG}{BLACK} 載重：{GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}費用：{GOLD}{CURRENCY_LONG}{BLACK} (改裝費用：{GOLD}{CURRENCY_LONG}{BLACK}) 載重：{GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}速度：{GOLD}{VELOCITY}{BLACK} 功率：{GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}速度：{GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}在海上速度: {GOLD}{VELOCITY}
@@ -3340,6 +3348,7 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}購買�
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}購買飛機
 
 STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}購買並改裝車輛
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}購買並改裝飛機
 
 STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}購買選定的列車。按住 Shift 點選則只會顯示預估的購買費用
 STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}購買選定的車輛。按住 Shift 點選則只會顯示預估的購買費用
