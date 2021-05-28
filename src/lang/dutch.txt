@@ -3558,7 +3558,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klik om 
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Verwijder de geselecteerde groep
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Hiermee hernoem je de geselecteerde groep
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Wijzig het uiterlijk van de geselecteerde groep
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klik om deze groep te beschermen tegen globaal automatisch vervangen. Met Ctrl+klik geldt dit ook voor subgroepen.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Verwijder groep
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Weet je zeker dat je deze groep en de eventuele subgroepen wilt verwijderen?
@@ -3811,7 +3811,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magneetzweefspo
 STR_REPLACE_ROAD_VEHICLES                                       :Wegvoertuigen
 STR_REPLACE_TRAM_VEHICLES                                       :Trams
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Met Ctrl+klik geldt dit ook voor subgroepen
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}

@@ -3562,7 +3562,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Klikk fo
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Fjern den valgte gruppen
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Gi nytt navn på den valgte gruppen
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Endre firmafarger for valgt gruppe
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikk for å beskytte denne gruppen fra global autoerstatning
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Klikk for å beskytte denne gruppen fra global autoerstatning. Ctrl+klikk for å også beskytte undergrupper
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Slette gruppe
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Er du sikker på at du vil slette denne gruppen og eventuelle etterkommere?
@@ -3815,7 +3815,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Maglev-kjøret�
 STR_REPLACE_ROAD_VEHICLES                                       :Veikjøretøy
 STR_REPLACE_TRAM_VEHICLES                                       :Trikkekjøretøy
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}La autoerstatningen beholde lengen på toget ved å fjerne vogner (fra første vogn), hvis utskiftningen gjør toget lengre.
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+klikk for å også gjelde undergrupper
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
