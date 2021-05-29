@@ -302,6 +302,5 @@ typedef std::initializer_list<std::unique_ptr<const SettingDesc>> SettingTable;
 const SettingDesc *GetSettingFromName(const char *name);
 bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame = false);
 bool SetSettingValue(const StringSettingDesc *sd, const std::string value, bool force_newgame = false);
-uint GetSettingIndex(const SettingDesc *sd);
 
 #endif /* SETTINGS_INTERNAL_H */

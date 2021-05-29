@@ -118,7 +118,7 @@
 {
 	if (HasWagonRemoval() == enable_removal) return true;
 
-	return ScriptObject::DoCommand(0, ::GetCompanySettingIndex("company.renew_keep_length"), enable_removal ? 1 : 0, CMD_CHANGE_COMPANY_SETTING);
+	return ScriptObject::DoCommand(0, 0, enable_removal ? 1 : 0, CMD_CHANGE_COMPANY_SETTING, "company.renew_keep_length");
 }
 
 /* static */ bool ScriptGroup::HasWagonRemoval()
