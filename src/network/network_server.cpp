@@ -874,8 +874,6 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	char name[NETWORK_CLIENT_NAME_LENGTH];
-	CompanyID playas;
 	char client_revision[NETWORK_REVISION_LENGTH];
 
 	p->Recv_string(client_revision, sizeof(client_revision));
@@ -887,8 +885,8 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 		return this->SendError(NETWORK_ERROR_WRONG_REVISION);
 	}
 
-	p->Recv_string(name, sizeof(name));
-	playas = (Owner)p->Recv_uint8();
+	std::string client_name = p->Recv_string(NETWORK_CLIENT_NAME_LENGTH);
+	CompanyID playas = (Owner)p->Recv_uint8();
 
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
 
@@ -911,14 +909,14 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 			break;
 	}
 
-	if (!NetworkIsValidClientName(name)) {
+	if (!NetworkIsValidClientName(client_name)) {
 		/* An invalid client name was given. However, the client ensures the name
 		 * is valid before it is sent over the network, so something went horribly
 		 * wrong. This is probably someone trying to troll us. */
 		return this->SendError(NETWORK_ERROR_INVALID_CLIENT_NAME);
 	}
 
-	if (!NetworkFindName(name, lastof(name))) { // Change name if duplicate
+	if (!NetworkMakeClientNameUnique(client_name)) { // Change name if duplicate
 		/* We could not create a name for this client */
 		return this->SendError(NETWORK_ERROR_NAME_IN_USE);
 	}
@@ -927,7 +925,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	NetworkClientInfo *ci = new NetworkClientInfo(this->client_id);
 	this->SetInfo(ci);
 	ci->join_date = _date;
-	ci->client_name = name;
+	ci->client_name = client_name;
 	ci->client_playas = playas;
 	DEBUG(desync, 1, "client: %08x; %02x; %02x; %02x", _date, _date_fract, (int)ci->client_playas, (int)ci->index);
 
@@ -1394,10 +1392,9 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 		return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 	}
 
-	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 	NetworkClientInfo *ci;
 
-	p->Recv_string(client_name, sizeof(client_name));
+	std::string client_name = p->Recv_string(NETWORK_CLIENT_NAME_LENGTH);
 	ci = this->GetInfo();
 
 	if (this->HasClientQuit()) return NETWORK_RECV_STATUS_CLIENT_QUIT;
@@ -1411,7 +1408,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_SET_NAME(Packet
 		}
 
 		/* Display change */
-		if (NetworkFindName(client_name, lastof(client_name))) {
+		if (NetworkMakeClientNameUnique(client_name)) {
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, client_name);
 			ci->client_name = client_name;
 			NetworkUpdateClientInfo(ci->client_id);
@@ -1673,42 +1670,40 @@ static void NetworkAutoCleanCompanies()
 /**
  * Check whether a name is unique, and otherwise try to make it unique.
  * @param new_name The name to check/modify.
- * @param last     The last writeable element of the buffer.
  * @return True if an unique name was achieved.
  */
-bool NetworkFindName(char *new_name, const char *last)
+bool NetworkMakeClientNameUnique(std::string &name)
 {
-	bool found_name = false;
+	bool is_name_unique = false;
 	uint number = 0;
-	char original_name[NETWORK_CLIENT_NAME_LENGTH];
+	std::string original_name = name;
 
-	strecpy(original_name, new_name, lastof(original_name));
-
-	while (!found_name) {
-		found_name = true;
+	while (!is_name_unique) {
+		is_name_unique = true;
 		for (const NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {
-			if (ci->client_name.compare(new_name) == 0) {
+			if (ci->client_name.compare(name) == 0) {
 				/* Name already in use */
-				found_name = false;
+				is_name_unique = false;
 				break;
 			}
 		}
 		/* Check if it is the same as the server-name */
 		const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 		if (ci != nullptr) {
-			if (ci->client_name.compare(new_name) == 0) found_name = false; // name already in use
+			if (ci->client_name.compare(name) == 0) is_name_unique = false; // name already in use
 		}
 
-		if (!found_name) {
+		if (!is_name_unique) {
 			/* Try a new name (<name> #1, <name> #2, and so on) */
+			name = original_name + " #" + std::to_string(number);
 
-			/* Something's really wrong when there're more names than clients */
-			if (number++ > MAX_CLIENTS) break;
-			seprintf(new_name, last, "%s #%d", original_name, number);
+			/* The constructed client name is larger than the limit,
+			 * so... bail out as no valid name can be created. */
+			if (name.size() >= NETWORK_CLIENT_NAME_LENGTH) return false;
 		}
 	}
 
-	return found_name;
+	return is_name_unique;
 }
 
 /**
