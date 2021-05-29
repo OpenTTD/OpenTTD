@@ -243,7 +243,7 @@ void CocoaReleaseAutoreleasePool();
 int CDECL main(int argc, char *argv[])
 {
 	/* Make sure our arguments contain only valid UTF-8 characters. */
-	for (int i = 0; i < argc; i++) ValidateString(argv[i]);
+	for (int i = 0; i < argc; i++) StrMakeValidInPlace(argv[i]);
 
 #ifdef WITH_COCOA
 	CocoaSetupAutoreleasePool();

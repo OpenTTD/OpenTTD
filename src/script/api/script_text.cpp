@@ -82,7 +82,7 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 			sq_getstring(vm, -1, &value);
 
 			this->params[parameter] = stredup(value);
-			ValidateString(this->params[parameter]);
+			StrMakeValidInPlace(this->params[parameter]);
 			break;
 		}
 
@@ -157,7 +157,7 @@ SQInteger ScriptText::_set(HSQUIRRELVM vm)
 	if (sq_gettype(vm, 2) == OT_STRING) {
 		const SQChar *key_string;
 		sq_getstring(vm, 2, &key_string);
-		ValidateString(key_string);
+		StrMakeValidInPlace(key_string);
 
 		if (strncmp(key_string, "param_", 6) != 0 || strlen(key_string) > 8) return SQ_ERROR;
 		k = atoi(key_string + 6);

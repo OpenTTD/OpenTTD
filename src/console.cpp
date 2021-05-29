@@ -111,7 +111,7 @@ void IConsolePrint(TextColour colour_code, const char *string)
 	 * characters and (when applicable) assign it to the console buffer */
 	str = stredup(string);
 	str_strip_colours(str);
-	str_validate(str, str + strlen(str));
+	StrMakeValidInPlace(str);
 
 	if (_network_dedicated) {
 		NetworkAdminConsole("console", str);

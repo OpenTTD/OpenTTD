@@ -2598,7 +2598,7 @@ static std::string ReadDWordAsString(ByteReader *reader)
 	char output[5];
 	for (int i = 0; i < 4; i++) output[i] = reader->ReadByte();
 	output[4] = '\0';
-	str_validate(output, lastof(output));
+	StrMakeValidInPlace(output, lastof(output));
 
 	return std::string(output);
 }

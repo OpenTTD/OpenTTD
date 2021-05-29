@@ -972,7 +972,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings = settings | SVS_ALLOW_NEWLINE;
 			}
-			str_validate((char *)ptr, (char *)ptr + len, settings);
+			StrMakeValidInPlace((char *)ptr, (char *)ptr + len, settings);
 			break;
 		}
 		case SLA_PTRS: break;
@@ -1016,7 +1016,7 @@ static void SlStdString(void *ptr, VarType conv)
 			if ((conv & SLF_ALLOW_NEWLINE) != 0) {
 				settings = settings | SVS_ALLOW_NEWLINE;
 			}
-			str_validate(buf, buf + len, settings);
+			StrMakeValidInPlace(buf, buf + len, settings);
 
 			// Store sanitized string.
 			str->assign(buf);

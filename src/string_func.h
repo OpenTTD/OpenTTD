@@ -39,9 +39,9 @@ int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
 
 char *CDECL str_fmt(const char *str, ...) WARN_FORMAT(1, 2);
 
-void str_validate(char *str, const char *last, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK) NOACCESS(2);
-[[nodiscard]] std::string str_validate(const std::string &str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
-void ValidateString(const char *str);
+void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK) NOACCESS(2);
+[[nodiscard]] std::string StrMakeValid(const std::string &str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
+void StrMakeValidInPlace(const char *str, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 
 void str_fix_scc_encoded(char *str, const char *last) NOACCESS(2);
 void str_strip_colours(char *str);
