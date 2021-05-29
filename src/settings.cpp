@@ -104,17 +104,6 @@ const SettingDesc *GetSettingDescription(uint index)
 }
 
 /**
- * Get the setting at the given index into the company settings table.
- * @param index The index to look for.
- * @return The setting at the given index, or nullptr when the index is invalid.
- */
-static const SettingDesc *GetCompanySettingDescription(uint index)
-{
-	if (index >= _company_settings.size()) return nullptr;
-	return _company_settings.begin()[index].get();
-}
-
-/**
  * Groups in openttd.cfg that are actually lists.
  */
 static const char * const _list_group_names[] = {
@@ -1710,19 +1699,74 @@ void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
 }
 
 /**
+ * Given a name of setting, return a setting description from the table.
+ * @param name Name of the setting to return a setting description of.
+ * @param settings Table to look in for the setting.
+ * @return Pointer to the setting description of setting \a name if it can be found,
+ *         \c nullptr indicates failure to obtain the description.
+ */
+static const SettingDesc *GetSettingFromName(const char *name, const SettingTable &settings)
+{
+	/* First check all full names */
+	for (auto &sd : settings) {
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		if (strcmp(sd->name, name) == 0) return sd.get();
+	}
+
+	/* Then check the shortcut variant of the name. */
+	for (auto &sd : settings) {
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		const char *short_name = strchr(sd->name, '.');
+		if (short_name != nullptr) {
+			short_name++;
+			if (strcmp(short_name, name) == 0) return sd.get();
+		}
+	}
+
+	return nullptr;
+}
+
+/**
+ * Given a name of setting, return a company setting description of it.
+ * @param name  Name of the company setting to return a setting description of.
+ * @return Pointer to the setting description of setting \a name if it can be found,
+ *         \c nullptr indicates failure to obtain the description.
+ */
+static const SettingDesc *GetCompanySettingFromName(const char *name)
+{
+	if (strncmp(name, "company.", 8) == 0) name += 8;
+	return GetSettingFromName(name, _company_settings);
+}
+
+/**
+ * Given a name of any setting, return any setting description of it.
+ * @param name  Name of the setting to return a setting description of.
+ * @return Pointer to the setting description of setting \a name if it can be found,
+ *         \c nullptr indicates failure to obtain the description.
+ */
+const SettingDesc *GetSettingFromName(const char *name)
+{
+	auto sd = GetSettingFromName(name, _settings);
+	if (sd != nullptr) return sd;
+
+	return GetCompanySettingFromName(name);
+}
+
+/**
  * Network-safe changing of settings (server-only).
  * @param tile unused
  * @param flags operation to perform
- * @param p1 the index of the setting in the SettingDesc array which identifies it
+ * @param p1 unused
  * @param p2 the new value for the setting
  * The new value is properly clamped to its minimum/maximum when setting
- * @param text unused
+ * @param text the name of the setting to change
  * @return the cost of this operation or an error
  * @see _settings
  */
 CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
-	const SettingDesc *sd = GetSettingDescription(p1);
+	if (text.empty()) return CMD_ERROR;
+	const SettingDesc *sd = GetSettingFromName(text.c_str());
 
 	if (sd == nullptr) return CMD_ERROR;
 	if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) return CMD_ERROR;
@@ -1741,15 +1785,17 @@ CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * Change one of the per-company settings.
  * @param tile unused
  * @param flags operation to perform
- * @param p1 the index of the setting in the _company_settings array which identifies it
+ * @param p1 unused
  * @param p2 the new value for the setting
  * The new value is properly clamped to its minimum/maximum when setting
- * @param text unused
+ * @param text the name of the company setting to change
  * @return the cost of this operation or an error
  */
 CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
-	const SettingDesc *sd = GetCompanySettingDescription(p1);
+	if (text.empty()) return CMD_ERROR;
+	const SettingDesc *sd = GetCompanySettingFromName(text.c_str());
+
 	if (sd == nullptr) return CMD_ERROR;
 	if (!sd->IsIntSetting()) return CMD_ERROR;
 
@@ -1758,44 +1804,6 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 	}
 
 	return CommandCost();
-}
-
-/**
- * Get the index of the given setting in the setting table.
- * @param settings The settings to look through.
- * @param setting The setting to look for.
- * @return The index, or UINT32_MAX when it has not been found.
- */
-static uint GetSettingIndex(const SettingTable &settings, const SettingDesc *setting)
-{
-	uint index = 0;
-	for (auto &sd : settings) {
-		if (sd.get() == setting) return index;
-		index++;
-	}
-	return UINT32_MAX;
-}
-
-/**
- * Get the index of the setting with this description.
- * @param sd the setting to get the index for.
- * @return the index of the setting to be used for CMD_CHANGE_SETTING.
- */
-uint GetSettingIndex(const SettingDesc *sd)
-{
-	assert(sd != nullptr && (sd->flags & SGF_PER_COMPANY) == 0);
-	return GetSettingIndex(_settings, sd);
-}
-
-/**
- * Get the index of the company setting with this description.
- * @param sd the setting to get the index for.
- * @return the index of the setting to be used for CMD_CHANGE_COMPANY_SETTING.
- */
-static uint GetCompanySettingIndex(const SettingDesc *sd)
-{
-	assert(sd != nullptr && (sd->flags & SGF_PER_COMPANY) != 0);
-	return GetSettingIndex(_company_settings, sd);
 }
 
 /**
@@ -1810,7 +1818,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if ((setting->flags & SGF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-			return DoCommandP(0, GetCompanySettingIndex(setting), value, CMD_CHANGE_COMPANY_SETTING);
+			return DoCommandP(0, 0, value, CMD_CHANGE_COMPANY_SETTING, nullptr, setting->name);
 		}
 
 		setting->ChangeValue(&_settings_client.company, value);
@@ -1836,7 +1844,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return DoCommandP(0, GetSettingIndex(setting), value, CMD_CHANGE_SETTING);
+		return DoCommandP(0, 0, value, CMD_CHANGE_SETTING, nullptr, setting->name);
 	}
 	return false;
 }
@@ -1860,23 +1868,11 @@ void SyncCompanySettings()
 {
 	const void *old_object = &Company::Get(_current_company)->settings;
 	const void *new_object = &_settings_client.company;
-	uint i = 0;
 	for (auto &sd : _company_settings) {
 		uint32 old_value = (uint32)sd->AsIntSetting()->Read(new_object);
 		uint32 new_value = (uint32)sd->AsIntSetting()->Read(old_object);
-		if (old_value != new_value) NetworkSendCommand(0, i, new_value, CMD_CHANGE_COMPANY_SETTING, nullptr, {}, _local_company);
-		i++;
+		if (old_value != new_value) NetworkSendCommand(0, 0, new_value, CMD_CHANGE_COMPANY_SETTING, nullptr, sd->name, _local_company);
 	}
-}
-
-/**
- * Get the index in the _company_settings array of a setting
- * @param name The name of the setting
- * @return The index in the _company_settings array
- */
-uint GetCompanySettingIndex(const char *name)
-{
-	return GetCompanySettingIndex(GetSettingFromName(name));
 }
 
 /**
@@ -1916,47 +1912,11 @@ void StringSettingDesc::ChangeValue(const void *object, std::string &newval) con
 	if (_save_config) SaveToConfig();
 }
 
-/**
- * Given a name of setting, return a setting description of it.
- * @param name  Name of the setting to return a setting description of
- * @param i     Pointer to an integer that will contain the index of the setting after the call, if it is successful.
- * @return Pointer to the setting description of setting \a name if it can be found,
- *         \c nullptr indicates failure to obtain the description
- */
-const SettingDesc *GetSettingFromName(const char *name)
-{
-	/* First check all full names */
-	for (auto &sd : _settings) {
-		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (strcmp(sd->name, name) == 0) return sd.get();
-	}
-
-	/* Then check the shortcut variant of the name. */
-	for (auto &sd : _settings) {
-		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		const char *short_name = strchr(sd->name, '.');
-		if (short_name != nullptr) {
-			short_name++;
-			if (strcmp(short_name, name) == 0) return sd.get();
-		}
-	}
-
-	if (strncmp(name, "company.", 8) == 0) name += 8;
-	/* And finally the company-based settings */
-	for (auto &sd : _company_settings) {
-		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (strcmp(sd->name, name) == 0) return sd.get();
-	}
-
-	return nullptr;
-}
-
 /* Those 2 functions need to be here, else we have to make some stuff non-static
  * and besides, it is also better to keep stuff like this at the same place */
 void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
-
 	if (sd == nullptr) {
 		IConsolePrintF(CC_WARNING, "'%s' is an unknown setting.", name);
 		return;

@@ -260,7 +260,7 @@
 
 /* static */ bool ScriptCompany::SetAutoRenewStatus(bool autorenew)
 {
-	return ScriptObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew"), autorenew ? 1 : 0, CMD_CHANGE_COMPANY_SETTING);
+	return ScriptObject::DoCommand(0, 0, autorenew ? 1 : 0, CMD_CHANGE_COMPANY_SETTING, "company.engine_renew");
 }
 
 /* static */ bool ScriptCompany::GetAutoRenewStatus(CompanyID company)
@@ -273,7 +273,7 @@
 
 /* static */ bool ScriptCompany::SetAutoRenewMonths(int16 months)
 {
-	return ScriptObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_months"), months, CMD_CHANGE_COMPANY_SETTING);
+	return ScriptObject::DoCommand(0, 0, months, CMD_CHANGE_COMPANY_SETTING, "company.engine_renew_months");
 }
 
 /* static */ int16 ScriptCompany::GetAutoRenewMonths(CompanyID company)
@@ -288,7 +288,7 @@
 {
 	EnforcePrecondition(false, money >= 0);
 	EnforcePrecondition(false, (int64)money <= UINT32_MAX);
-	return ScriptObject::DoCommand(0, ::GetCompanySettingIndex("company.engine_renew_money"), money, CMD_CHANGE_COMPANY_SETTING);
+	return ScriptObject::DoCommand(0, 0, money, CMD_CHANGE_COMPANY_SETTING, "company.engine_renew_money");
 }
 
 /* static */ Money ScriptCompany::GetAutoRenewMoney(CompanyID company)
