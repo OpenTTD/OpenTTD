@@ -840,7 +840,7 @@ void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceTy
  * @param text The text of the news message.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -850,7 +850,7 @@ CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 
 	if (company != INVALID_OWNER && !Company::IsValidID(company)) return CMD_ERROR;
 	if (type >= NT_END) return CMD_ERROR;
-	if (StrEmpty(text)) return CMD_ERROR;
+	if (text.empty()) return CMD_ERROR;
 
 	switch (reftype1) {
 		case NR_NONE: break;
@@ -884,7 +884,7 @@ CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags & DC_EXEC) {
-		char *news = stredup(text);
+		char *news = stredup(text.c_str());
 		SetDParamStr(0, news);
 		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NF_NORMAL, reftype1, p2, NR_NONE, UINT32_MAX, news);
 	}

@@ -43,7 +43,7 @@ INSTANTIATE_POOL_METHODS(Goal)
  * @param text Text of the goal.
  * @return the cost of this operation or an error
  */
-CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (!Goal::CanAllocateItem()) return CMD_ERROR;
 
@@ -51,7 +51,7 @@ CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 	CompanyID company = (CompanyID)GB(p1, 8, 8);
 
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if (StrEmpty(text)) return CMD_ERROR;
+	if (text.empty()) return CMD_ERROR;
 	if (company != INVALID_COMPANY && !Company::IsValidID(company)) return CMD_ERROR;
 
 	switch (type) {
@@ -90,7 +90,7 @@ CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
 		g->type = type;
 		g->dst = p2;
 		g->company = company;
-		g->text = stredup(text);
+		g->text = stredup(text.c_str());
 		g->progress = nullptr;
 		g->completed = false;
 
@@ -116,7 +116,7 @@ CommandCost CmdCreateGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
  * @param text unused.
  * @return the cost of this operation or an error
  */
-CommandCost CmdRemoveGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRemoveGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(p1)) return CMD_ERROR;
@@ -146,16 +146,16 @@ CommandCost CmdRemoveGoal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32
  * @param text Text of the goal.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGoalText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSetGoalText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(p1)) return CMD_ERROR;
-	if (StrEmpty(text)) return CMD_ERROR;
+	if (text.empty()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Goal *g = Goal::Get(p1);
 		free(g->text);
-		g->text = stredup(text);
+		g->text = stredup(text.c_str());
 
 		if (g->company == INVALID_COMPANY) {
 			InvalidateWindowClassesData(WC_GOALS_LIST);
@@ -176,7 +176,7 @@ CommandCost CmdSetGoalText(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
  * @param text Progress text of the goal.
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGoalProgress(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSetGoalProgress(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(p1)) return CMD_ERROR;
@@ -184,10 +184,10 @@ CommandCost CmdSetGoalProgress(TileIndex tile, DoCommandFlag flags, uint32 p1, u
 	if (flags & DC_EXEC) {
 		Goal *g = Goal::Get(p1);
 		free(g->progress);
-		if (StrEmpty(text)) {
+		if (text.empty()) {
 			g->progress = nullptr;
 		} else {
-			g->progress = stredup(text);
+			g->progress = stredup(text.c_str());
 		}
 
 		if (g->company == INVALID_COMPANY) {
@@ -209,7 +209,7 @@ CommandCost CmdSetGoalProgress(TileIndex tile, DoCommandFlag flags, uint32 p1, u
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdSetGoalCompleted(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdSetGoalCompleted(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 	if (!Goal::IsValidID(p1)) return CMD_ERROR;
@@ -242,7 +242,7 @@ CommandCost CmdSetGoalCompleted(TileIndex tile, DoCommandFlag flags, uint32 p1, 
  * @param text Text of the question.
  * @return the cost of this operation or an error
  */
-CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	uint16 uniqueid = (uint16)GB(p1, 0, 16);
 	CompanyID company = (CompanyID)GB(p1, 16, 8);
@@ -254,7 +254,7 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 	bool is_client = HasBit(p2, 31);
 
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
-	if (StrEmpty(text)) return CMD_ERROR;
+	if (text.empty()) return CMD_ERROR;
 	if (is_client) {
 		/* Only check during pre-flight; the client might have left between
 		 * testing and executing. In that case it is fine to just ignore the
@@ -274,7 +274,7 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 			if (company == INVALID_COMPANY && !Company::IsValidID(_local_company)) return CommandCost();
 			if (company != INVALID_COMPANY && company != _local_company) return CommandCost();
 		}
-		ShowGoalQuestion(uniqueid, type, button_mask, text);
+		ShowGoalQuestion(uniqueid, type, button_mask, text.c_str());
 	}
 
 	return CommandCost();
@@ -289,7 +289,7 @@ CommandCost CmdGoalQuestion(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
  * @param text Text of the question.
  * @return the cost of this operation or an error
  */
-CommandCost CmdGoalQuestionAnswer(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdGoalQuestionAnswer(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (p1 > UINT16_MAX) return CMD_ERROR;
 	if (p2 >= GOAL_QUESTION_BUTTON_COUNT) return CMD_ERROR;

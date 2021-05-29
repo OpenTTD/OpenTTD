@@ -133,7 +133,7 @@ static CommandQueue _local_execution_queue;
  * @param text The text to pass
  * @param company The company that wants to send the command
  */
-void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, CompanyID company)
+void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const std::string &text, CompanyID company)
 {
 	assert((cmd & CMD_FLAGS_MASK) == 0);
 
@@ -145,7 +145,7 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	c.cmd      = cmd;
 	c.callback = callback;
 
-	strecpy(c.text, (text != nullptr) ? text : "", lastof(c.text));
+	strecpy(c.text, text.c_str(), lastof(c.text));
 
 	if (_network_server) {
 		/* If we are the server, we queue the command in our 'special' queue.
