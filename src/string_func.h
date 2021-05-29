@@ -166,6 +166,7 @@ static inline const char *Utf8PrevChar(const char *s)
 }
 
 size_t Utf8StringLength(const char *s);
+size_t Utf8StringLength(const std::string &str);
 
 /**
  * Is the given character a lead surrogate code point?

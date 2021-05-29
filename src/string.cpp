@@ -395,6 +395,16 @@ size_t Utf8StringLength(const char *s)
 	return len;
 }
 
+/**
+ * Get the length of an UTF-8 encoded string in number of characters
+ * and thus not the number of bytes that the encoded string contains.
+ * @param s The string to get the length for.
+ * @return The length of the string in characters.
+ */
+size_t Utf8StringLength(const std::string &str)
+{
+	return Utf8StringLength(str.c_str());
+}
 
 /**
  * Convert a given ASCII string to lowercase.
