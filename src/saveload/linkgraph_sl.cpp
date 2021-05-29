@@ -20,8 +20,6 @@
 typedef LinkGraph::BaseNode Node;
 typedef LinkGraph::BaseEdge Edge;
 
-const SettingDesc *GetSettingDescription(uint index);
-
 static uint16 _num_nodes;
 
 /**
@@ -70,17 +68,10 @@ const SaveLoad *GetLinkGraphJobDesc()
 
 	/* Build the SaveLoad array on first call and don't touch it later on */
 	if (saveloads.size() == 0) {
-		size_t prefixlen = strlen(prefix);
+		GetSettingSaveLoadByPrefix(prefix, saveloads);
 
-		int setting = 0;
-		const SettingDesc *desc = GetSettingDescription(setting);
-		while (desc != nullptr) {
-			if (desc->name != nullptr && strncmp(desc->name, prefix, prefixlen) == 0) {
-				SaveLoad sl = desc->save;
-				sl.address_proc = proc;
-				saveloads.push_back(sl);
-			}
-			desc = GetSettingDescription(++setting);
+		for (auto &sl : saveloads) {
+			sl.address_proc = proc;
 		}
 
 		int i = 0;

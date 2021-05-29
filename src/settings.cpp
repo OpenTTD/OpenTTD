@@ -94,17 +94,6 @@ typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList &
 static bool IsSignedVarMemType(VarType vt);
 
 /**
- * Get the setting at the given index into the settings table.
- * @param index The index to look for.
- * @return The setting at the given index, or nullptr when the index is invalid.
- */
-const SettingDesc *GetSettingDescription(uint index)
-{
-	if (index >= _settings.size()) return nullptr;
-	return _settings.begin()[index].get();
-}
-
-/**
  * Groups in openttd.cfg that are actually lists.
  */
 static const char * const _list_group_names[] = {
@@ -1737,6 +1726,21 @@ static const SettingDesc *GetSettingFromName(const char *name, const SettingTabl
 	}
 
 	return nullptr;
+}
+
+/**
+ * Get the SaveLoad from all settings matching the prefix.
+ * @param prefix The prefix to look for.
+ * @param saveloads A vector to store the result in.
+ */
+void GetSettingSaveLoadByPrefix(const char *prefix, std::vector<SaveLoad> &saveloads)
+{
+	size_t prefixlen = strlen(prefix);
+
+	for (auto &sd : _settings) {
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		if (strncmp(sd->name, prefix, prefixlen) == 0) saveloads.push_back(sd->save);
+	}
 }
 
 /**
