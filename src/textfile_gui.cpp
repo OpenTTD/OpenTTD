@@ -375,7 +375,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	this->text = ReallocT(this->text, filesize + 1);
 	this->text[filesize] = '\0';
 
-	/* Replace tabs and line feeds with a space since str_validate removes those. */
+	/* Replace tabs and line feeds with a space since StrMakeValidInPlace removes those. */
 	for (char *p = this->text; *p != '\0'; p++) {
 		if (*p == '\t' || *p == '\r') *p = ' ';
 	}
@@ -384,7 +384,7 @@ static void Xunzip(byte **bufp, size_t *sizep)
 	char *p = this->text + (strncmp(u8"\ufeff", this->text, 3) == 0 ? 3 : 0);
 
 	/* Make sure the string is a valid UTF-8 sequence. */
-	str_validate(p, this->text + filesize, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
+	StrMakeValidInPlace(p, this->text + filesize, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	/* Split the string on newlines. */
 	int row = 0;

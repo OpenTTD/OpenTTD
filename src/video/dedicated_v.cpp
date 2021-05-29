@@ -229,7 +229,7 @@ static void DedicatedHandleKeyInput()
 			break;
 		}
 	}
-	str_validate(input_line, lastof(input_line));
+	StrMakeValidInPlace(input_line, lastof(input_line));
 
 	IConsoleCmdExec(input_line); // execute command
 }

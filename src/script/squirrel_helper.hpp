@@ -116,7 +116,7 @@ namespace SQConvert {
 		char *tmp_str = stredup(tmp);
 		sq_poptop(vm);
 		ptr->push_back((void *)tmp_str);
-		str_validate(tmp_str, tmp_str + strlen(tmp_str));
+		StrMakeValidInPlace(tmp_str);
 		return tmp_str;
 	}
 

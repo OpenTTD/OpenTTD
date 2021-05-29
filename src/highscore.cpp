@@ -170,7 +170,7 @@ void LoadFromHighScore()
 					i = SP_SAVED_HIGHSCORE_END;
 					break;
 				}
-				str_validate(hs->company, lastof(hs->company), SVS_NONE);
+				StrMakeValidInPlace(hs->company, lastof(hs->company), SVS_NONE);
 				hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 			}
 		}

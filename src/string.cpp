@@ -186,7 +186,7 @@ void str_fix_scc_encoded(char *str, const char *last)
 
 
 template <class T>
-static void str_validate(T &dst, const char *str, const char *last, StringValidationSettings settings)
+static void StrMakeValidInPlace(T &dst, const char *str, const char *last, StringValidationSettings settings)
 {
 	/* Assume the ABSOLUTE WORST to be in str as it comes from the outside. */
 
@@ -246,48 +246,49 @@ static void str_validate(T &dst, const char *str, const char *last, StringValida
 }
 
 /**
- * Scans the string for valid characters and if it finds invalid ones,
- * replaces them with a question mark '?' (if not ignored)
- * @param str the string to validate
- * @param last the last valid character of str
- * @param settings the settings for the string validation.
+ * Scans the string for invalid characters and replaces then with a
+ * question mark '?' (if not ignored).
+ * @param str The string to validate.
+ * @param last The last valid character of str.
+ * @param settings The settings for the string validation.
  */
-void str_validate(char *str, const char *last, StringValidationSettings settings)
+void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings settings)
 {
 	char *dst = str;
-	str_validate(dst, str, last, settings);
+	StrMakeValidInPlace(dst, str, last, settings);
 	*dst = '\0';
 }
 
 /**
- * Scans the string for valid characters and if it finds invalid ones,
- * replaces them with a question mark '?' (if not ignored)
- * @param str the string to validate
- * @param settings the settings for the string validation.
+ * Scans the string for invalid characters and replaces then with a
+ * question mark '?' (if not ignored).
+ * Only use this function when you are sure the string ends with a '\0';
+ * otherwise use StrMakeValidInPlace(str, last, settings) variant.
+ * @param str The string (of which you are sure ends with '\0') to validate.
  */
-std::string str_validate(const std::string &str, StringValidationSettings settings)
+void StrMakeValidInPlace(const char *str, StringValidationSettings settings)
+{
+	/* We know it is '\0' terminated. */
+	StrMakeValidInPlace(const_cast<char *>(str), str + strlen(str), settings);
+}
+
+/**
+ * Scans the string for invalid characters and replaces then with a
+ * question mark '?' (if not ignored).
+ * @param str The string to validate.
+ * @param settings The settings for the string validation.
+ */
+std::string StrMakeValid(const std::string &str, StringValidationSettings settings)
 {
 	auto buf = str.data();
 	auto last = buf + str.size();
 
 	std::ostringstream dst;
 	std::ostreambuf_iterator<char> dst_iter(dst);
-	str_validate(dst_iter, buf, last, settings);
+	StrMakeValidInPlace(dst_iter, buf, last, settings);
 
 	return dst.str();
 }
-
-/**
- * Scans the string for valid characters and if it finds invalid ones,
- * replaces them with a question mark '?'.
- * @param str the string to validate
- */
-void ValidateString(const char *str)
-{
-	/* We know it is '\0' terminated. */
-	str_validate(const_cast<char *>(str), str + strlen(str) + 1);
-}
-
 
 /**
  * Checks whether the given string is valid, i.e. contains only

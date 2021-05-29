@@ -497,7 +497,7 @@ void StringSettingDesc::MakeValueValid(std::string &str) const
 	 * includes the '\0' termination for network transfer purposes.
 	 * Also ensure the string is valid after chopping of some bytes. */
 	std::string stdstr(str, this->max_length - 1);
-	str.assign(str_validate(stdstr, SVS_NONE));
+	str.assign(StrMakeValid(stdstr, SVS_NONE));
 }
 
 /**

@@ -342,7 +342,7 @@ bool FiosFileScanner::AddFile(const std::string &filename, size_t basepath_lengt
 		t = filename.c_str() + (ps == std::string::npos ? 0 : ps + 1);
 	}
 	strecpy(fios->title, t, lastof(fios->title));
-	str_validate(fios->title, lastof(fios->title));
+	StrMakeValidInPlace(fios->title, lastof(fios->title));
 
 	return true;
 }
@@ -394,7 +394,7 @@ static void FiosGetFileList(SaveLoadOperation fop, fios_getlist_callback_proc *c
 				std::string dirname = std::string(d_name) + PATHSEP;
 				SetDParamStr(0, dirname);
 				GetString(fios->title, STR_SAVELOAD_DIRECTORY, lastof(fios->title));
-				str_validate(fios->title, lastof(fios->title));
+				StrMakeValidInPlace(fios->title, lastof(fios->title));
 			}
 		}
 		closedir(dir);
@@ -446,7 +446,7 @@ static void GetFileTitle(const std::string &file, char *title, const char *last,
 	size_t read = fread(title, 1, last - title, f);
 	assert(title + read <= last);
 	title[read] = '\0';
-	str_validate(title, last);
+	StrMakeValidInPlace(title, last);
 	FioFCloseFile(f);
 }
 
