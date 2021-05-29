@@ -309,10 +309,11 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 		return false;
 	}
 
-	if (!StrEmpty(text) && (GetCommandFlags(cmd) & CMD_STR_CTRL) == 0) {
+	std::string command_text = text == nullptr ? std::string{} : text;
+	if (!command_text.empty() && (GetCommandFlags(cmd) & CMD_STR_CTRL) == 0) {
 		/* The string must be valid, i.e. not contain special codes. Since some
 		 * can be made with GSText, make sure the control codes are removed. */
-		::StrMakeValidInPlace(text, SVS_NONE);
+		command_text = ::StrMakeValid(command_text, SVS_NONE);
 	}
 
 	/* Set the default callback to return a true/false result of the DoCommand */
@@ -328,7 +329,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 	if (!estimate_only && _networking && !_generating_world) SetLastCommand(tile, p1, p2, cmd);
 
 	/* Try to perform the command. */
-	CommandCost res = ::DoCommandPInternal(tile, p1, p2, cmd, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : nullptr, text, false, estimate_only);
+	CommandCost res = ::DoCommandPInternal(tile, p1, p2, cmd, (_networking && !_generating_world) ? ScriptObject::GetActiveInstance()->GetDoCommandCallback() : nullptr, command_text.c_str(), false, estimate_only);
 
 	/* We failed; set the error and bail out */
 	if (res.Failed()) {
