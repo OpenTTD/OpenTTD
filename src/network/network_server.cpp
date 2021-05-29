@@ -785,7 +785,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendNewGame()
  * @param colour The colour of the result.
  * @param command The command that was executed.
  */
-NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16 colour, const char *command)
+NetworkRecvStatus ServerNetworkGameSocketHandler::SendRConResult(uint16 colour, const std::string &command)
 {
 	Packet *p = new Packet(PACKET_SERVER_RCON);
 
@@ -1424,22 +1424,20 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet *p)
 {
 	if (this->status != STATUS_ACTIVE) return this->SendError(NETWORK_ERROR_NOT_EXPECTED);
 
-	char command[NETWORK_RCONCOMMAND_LENGTH];
-
 	if (_settings_client.network.rcon_password.empty()) return NETWORK_RECV_STATUS_OKAY;
 
 	std::string password = p->Recv_string(NETWORK_PASSWORD_LENGTH);
-	p->Recv_string(command, sizeof(command));
+	std::string command = p->Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
 	if (_settings_client.network.rcon_password.compare(password) != 0) {
 		DEBUG(net, 1, "[rcon] Wrong password from client-id %d", this->client_id);
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
-	DEBUG(net, 3, "[rcon] Client-id %d executed: %s", this->client_id, command);
+	DEBUG(net, 3, "[rcon] Client-id %d executed: %s", this->client_id, command.c_str());
 
 	_redirect_console_to_client = this->client_id;
-	IConsoleCmdExec(command);
+	IConsoleCmdExec(command.c_str());
 	_redirect_console_to_client = INVALID_CLIENT_ID;
 	return NETWORK_RECV_STATUS_OKAY;
 }
@@ -2046,7 +2044,7 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
  * @param colour_code The colour of the text.
  * @param string The actual reply.
  */
-void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const char *string)
+void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std::string &string)
 {
 	NetworkClientSocket::GetByClientID(client_id)->SendRConResult(colour_code, string);
 }
