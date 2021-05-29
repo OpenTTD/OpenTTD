@@ -1719,7 +1719,7 @@ bool NetworkFindName(char *new_name, const char *last)
  * @param new_name the new name for the client
  * @return true iff the name was changed
  */
-bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
+bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_name)
 {
 	/* Check if the name's already in use */
 	for (NetworkClientInfo *ci : NetworkClientInfo::Iterate()) {

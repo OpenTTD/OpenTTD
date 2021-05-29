@@ -73,7 +73,7 @@ void NetworkServerUpdateGameInfo();
 void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();
 void NetworkServerNewCompany(const Company *company, NetworkClientInfo *ci);
-bool NetworkServerChangeClientName(ClientID client_id, const char *new_name);
+bool NetworkServerChangeClientName(ClientID client_id, const std::string &new_name);
 
 
 void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
