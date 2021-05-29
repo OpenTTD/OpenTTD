@@ -80,9 +80,9 @@ void NetworkServerDoMove(ClientID client_id, CompanyID company_id);
 void NetworkServerSendRcon(ClientID client_id, TextColour colour_code, const std::string &string);
 void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, ClientID from_id, int64 data = 0, bool from_admin = false);
 
-void NetworkServerKickClient(ClientID client_id, const char *reason);
-uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, const char *reason);
-uint NetworkServerKickOrBanIP(const char *ip, bool ban, const char *reason);
+void NetworkServerKickClient(ClientID client_id, const std::string &reason);
+uint NetworkServerKickOrBanIP(ClientID client_id, bool ban, const std::string &reason);
+uint NetworkServerKickOrBanIP(const std::string &ip, bool ban, const std::string &reason);
 
 void NetworkInitChatMessage();
 void CDECL NetworkAddChatMessage(TextColour colour, uint duration, const std::string &message);
