@@ -122,7 +122,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 	while (SQ_SUCCEEDED(sq_next(vm, -2))) {
 		const SQChar *key;
 		if (SQ_FAILED(sq_getstring(vm, -2, &key))) return SQ_ERROR;
-		StrMakeValidInPlace(key);
+		StrMakeValidInPlace(const_cast<char *>(key));
 
 		if (strcmp(key, "name") == 0) {
 			const SQChar *sqvalue;
@@ -141,7 +141,7 @@ SQInteger ScriptInfo::AddSetting(HSQUIRRELVM vm)
 			const SQChar *sqdescription;
 			if (SQ_FAILED(sq_getstring(vm, -1, &sqdescription))) return SQ_ERROR;
 			config.description = stredup(sqdescription);
-			StrMakeValidInPlace(config.description);
+			StrMakeValidInPlace(const_cast<char *>(config.description));
 			items |= 0x002;
 		} else if (strcmp(key, "min_value") == 0) {
 			SQInteger res;
@@ -226,7 +226,7 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 {
 	const SQChar *setting_name;
 	if (SQ_FAILED(sq_getstring(vm, -2, &setting_name))) return SQ_ERROR;
-	StrMakeValidInPlace(setting_name);
+	StrMakeValidInPlace(const_cast<char *>(setting_name));
 
 	ScriptConfigItem *config = nullptr;
 	for (auto &item : this->config_list) {
@@ -253,7 +253,7 @@ SQInteger ScriptInfo::AddLabels(HSQUIRRELVM vm)
 		/* Because squirrel doesn't support identifiers starting with a digit,
 		 * we skip the first character. */
 		int key = atoi(key_string + 1);
-		StrMakeValidInPlace(label);
+		StrMakeValidInPlace(const_cast<char *>(label));
 
 		/* !Contains() prevents stredup from leaking. */
 		if (!config->labels->Contains(key)) config->labels->Insert(key, stredup(label));
