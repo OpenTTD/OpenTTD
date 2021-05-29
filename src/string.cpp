@@ -266,10 +266,10 @@ void StrMakeValidInPlace(char *str, const char *last, StringValidationSettings s
  * otherwise use StrMakeValidInPlace(str, last, settings) variant.
  * @param str The string (of which you are sure ends with '\0') to validate.
  */
-void StrMakeValidInPlace(const char *str, StringValidationSettings settings)
+void StrMakeValidInPlace(char *str, StringValidationSettings settings)
 {
 	/* We know it is '\0' terminated. */
-	StrMakeValidInPlace(const_cast<char *>(str), str + strlen(str), settings);
+	StrMakeValidInPlace(str, str + strlen(str), settings);
 }
 
 /**
