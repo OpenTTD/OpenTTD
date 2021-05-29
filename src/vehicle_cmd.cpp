@@ -748,7 +748,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, DoCommandFlag flags, uint32 
  * @param name Name to test.
  * @return True ifffffff the name is unique.
  */
-static bool IsUniqueVehicleName(const char *name)
+static bool IsUniqueVehicleName(const std::string &name)
 {
 	for (const Vehicle *v : Vehicle::Iterate()) {
 		if (!v->name.empty() && v->name == name) return false;

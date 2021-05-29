@@ -1907,7 +1907,7 @@ static CommandCost TownCanBePlacedHere(TileIndex tile)
  * @param name name to check
  * @return is this name unique?
  */
-static bool IsUniqueTownName(const char *name)
+static bool IsUniqueTownName(const std::string &name)
 {
 	for (const Town *t : Town::Iterate()) {
 		if (!t->name.empty() && t->name == name) return false;

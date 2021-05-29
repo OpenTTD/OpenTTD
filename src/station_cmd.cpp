@@ -3915,7 +3915,7 @@ static uint UpdateStationWaiting(Station *st, CargoID type, uint amount, SourceT
 	return amount;
 }
 
-static bool IsUniqueStationName(const char *name)
+static bool IsUniqueStationName(const std::string &name)
 {
 	for (const Station *st : Station::Iterate()) {
 		if (!st->name.empty() && st->name == name) return false;

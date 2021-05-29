@@ -1061,7 +1061,7 @@ void EnginesMonthlyLoop()
  * @param name New name of an engine.
  * @return \c false if the name is being used already, else \c true.
  */
-static bool IsUniqueEngineName(const char *name)
+static bool IsUniqueEngineName(const std::string &name)
 {
 	for (const Engine *e : Engine::Iterate()) {
 		if (!e->name.empty() && e->name == name) return false;

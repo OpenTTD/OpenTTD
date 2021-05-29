@@ -395,7 +395,7 @@ CommandCost RemoveBuoy(TileIndex tile, DoCommandFlag flags)
  * @param name The name to check.
  * @return True iff the name is unique.
  */
-static bool IsUniqueWaypointName(const char *name)
+static bool IsUniqueWaypointName(const std::string &name)
 {
 	for (const Waypoint *wp : Waypoint::Iterate()) {
 		if (!wp->name.empty() && wp->name == name) return false;

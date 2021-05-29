@@ -26,7 +26,7 @@
  * @param name The name to check.
  * @return True if there is no depot with the given name.
  */
-static bool IsUniqueDepotName(const char *name)
+static bool IsUniqueDepotName(const std::string &name)
 {
 	for (const Depot *d : Depot::Iterate()) {
 		if (!d->name.empty() && d->name == name) return false;
