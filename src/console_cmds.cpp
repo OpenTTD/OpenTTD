@@ -724,7 +724,7 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 		return true;
 	}
 
-	if (!NetworkServerChangeClientName(client_id, client_name.c_str())) {
+	if (!NetworkServerChangeClientName(client_id, client_name)) {
 		IConsoleError("Cannot give a client a duplicate name");
 	}
 
