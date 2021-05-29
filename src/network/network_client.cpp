@@ -491,7 +491,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetPassword(const std::str
  * Tell the server that we like to change the name of the client.
  * @param name The new name.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const char *name)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendSetName(const std::string &name)
 {
 	Packet *p = new Packet(PACKET_CLIENT_SET_NAME);
 
@@ -516,7 +516,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::SendQuit()
  * @param pass The password for the remote command.
  * @param command The actual command.
  */
-NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const std::string &pass, const char *command)
+NetworkRecvStatus ClientNetworkGameSocketHandler::SendRCon(const std::string &pass, const std::string &command)
 {
 	Packet *p = new Packet(PACKET_CLIENT_RCON);
 	p->Send_string(pass);
@@ -1258,7 +1258,7 @@ void NetworkClient_Connected()
  * @param password The password.
  * @param command The command to execute.
  */
-void NetworkClientSendRcon(const std::string &password, const char *command)
+void NetworkClientSendRcon(const std::string &password, const std::string &command)
 {
 	MyClient::SendRCon(password, command);
 }
@@ -1355,7 +1355,7 @@ void NetworkUpdateClientName(const std::string &client_name)
 	/* Don't change the name if it is the same as the old name */
 	if (client_name.compare(ci->client_name) != 0) {
 		if (!_network_server) {
-			MyClient::SendSetName(client_name.c_str());
+			MyClient::SendSetName(client_name);
 		} else {
 			/* Copy to a temporary buffer so no #n gets added after our name in the settings when there are duplicate names. */
 			char temporary_name[NETWORK_CLIENT_NAME_LENGTH];
