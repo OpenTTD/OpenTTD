@@ -1661,7 +1661,7 @@ enum DropDownAdmin {
  */
 static void AdminClientKickCallback(Window *w, bool confirmed)
 {
-	if (confirmed) NetworkServerKickClient(_admin_client_id, nullptr);
+	if (confirmed) NetworkServerKickClient(_admin_client_id, {});
 }
 
 /**
@@ -1671,7 +1671,7 @@ static void AdminClientKickCallback(Window *w, bool confirmed)
  */
 static void AdminClientBanCallback(Window *w, bool confirmed)
 {
-	if (confirmed) NetworkServerKickOrBanIP(_admin_client_id, true, nullptr);
+	if (confirmed) NetworkServerKickOrBanIP(_admin_client_id, true, {});
 }
 
 /**
