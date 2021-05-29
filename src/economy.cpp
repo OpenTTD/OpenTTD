@@ -324,8 +324,11 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
 		const Company *c = Company::Get(old_owner);
 		for (i = 0; i < 4; i++) {
-			cur_company2.Change(c->share_owners[i]);
-			if (_current_company != INVALID_OWNER) {
+			if (c->bankrupt_value == 0 && c->share_owners[i] == new_owner) {
+				/* You are the one buying the company; so don't sell the shares back to you. */
+				Company::Get(new_owner)->share_owners[i] = COMPANY_SPECTATOR;
+			} else if (c->share_owners[i] != INVALID_OWNER) {
+				cur_company2.Change(c->share_owners[i]);
 				/* Sell the shares */
 				CommandCost res = DoCommand(0, old_owner, 0, DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY);
 				/* Because we are in a DoCommand, we can't just execute another one and
@@ -1986,6 +1989,9 @@ static void DoAcquireCompany(Company *c)
 
 	if (c->bankrupt_value == 0) {
 		Company *owner = Company::Get(_current_company);
+
+		/* Get both the balance and the loan of the company you just bought. */
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -c->money));
 		owner->current_loan += c->current_loan;
 	}
 
