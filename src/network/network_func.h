@@ -55,7 +55,7 @@ void NetworkClientsToSpectators(CompanyID cid);
 bool NetworkClientConnectGame(const std::string &connection_string, CompanyID default_company, const std::string &join_server_password = "", const std::string &join_company_password = "");
 void NetworkClientJoinGame();
 void NetworkClientRequestMove(CompanyID company, const std::string &pass = "");
-void NetworkClientSendRcon(const std::string &password, const char *command);
+void NetworkClientSendRcon(const std::string &password, const std::string &command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const std::string &msg, int64 data = 0);
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
 bool NetworkCompanyIsPassworded(CompanyID company_id);
