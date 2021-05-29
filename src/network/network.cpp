@@ -1071,7 +1071,7 @@ void NetworkGameLoop()
 			if (_date == next_date && _date_fract == next_date_fract) {
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->tile, cp->p1, cp->p2, cp->cmd & ~CMD_FLAGS_MASK, nullptr, cp->text, cp->company);
-					DEBUG(desync, 0, "Injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" (%s)", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, GetCommandName(cp->cmd));
+					DEBUG(desync, 0, "Injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" (%s)", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text.c_str(), GetCommandName(cp->cmd));
 					free(cp);
 					cp = nullptr;
 				}
@@ -1107,10 +1107,11 @@ void NetworkGameLoop()
 				) {
 				p += 5;
 				if (*p == ' ') p++;
-				cp = CallocT<CommandPacket>(1);
+				cp = new CommandPacket();
 				int company;
-				static_assert(sizeof(cp->text) == 128);
-				int ret = sscanf(p, "%x; %x; %x; %x; %x; %x; %x; \"%127[^\"]\"", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
+				char buffer[128];
+				int ret = sscanf(p, "%x; %x; %x; %x; %x; %x; %x; \"%127[^\"]\"", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, buffer);
+				cp->text = buffer;
 				/* There are 8 pieces of data to read, however the last is a
 				 * string that might or might not exist. Ignore it if that
 				 * string misses because in 99% of the time it's not used. */
@@ -1121,7 +1122,7 @@ void NetworkGameLoop()
 				int ret = sscanf(p + 6, "%x; %x", &next_date, &next_date_fract);
 				assert(ret == 2);
 				DEBUG(desync, 0, "Injecting pause for join at %08x:%02x; please join when paused", next_date, next_date_fract);
-				cp = CallocT<CommandPacket>(1);
+				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
 				cp->cmd = CMD_PAUSE;
 				cp->p1 = PM_PAUSED_NORMAL;

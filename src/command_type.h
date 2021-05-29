@@ -482,7 +482,7 @@ struct CommandContainer {
 	uint32 p2;                       ///< parameter p2.
 	uint32 cmd;                      ///< command being executed.
 	CommandCallback *callback;       ///< any callback function executed upon successful completion of the command.
-	char text[32 * MAX_CHAR_LENGTH]; ///< possible text sent for name changes etc, in bytes including '\0'.
+	std::string text;                ///< possible text sent for name changes etc.
 };
 
 #endif /* COMMAND_TYPE_H */

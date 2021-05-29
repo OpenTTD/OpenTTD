@@ -56,7 +56,7 @@ static CommandCallback * const _callback_table[] = {
  */
 void CommandQueue::Append(CommandPacket *p)
 {
-	CommandPacket *add = MallocT<CommandPacket>(1);
+	CommandPacket *add = new CommandPacket();
 	*add = *p;
 	add->next = nullptr;
 	if (this->first == nullptr) {
@@ -113,7 +113,7 @@ void CommandQueue::Free()
 {
 	CommandPacket *cp;
 	while ((cp = this->Pop()) != nullptr) {
-		free(cp);
+		delete cp;
 	}
 	assert(this->count == 0);
 }
@@ -144,8 +144,7 @@ void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comman
 	c.p2       = p2;
 	c.cmd      = cmd;
 	c.callback = callback;
-
-	strecpy(c.text, text.c_str(), lastof(c.text));
+	c.text     = text;
 
 	if (_network_server) {
 		/* If we are the server, we queue the command in our 'special' queue.
@@ -212,7 +211,7 @@ void NetworkExecuteLocalCommandQueue()
 		DoCommandP(cp, cp->my_cmd);
 
 		queue.Pop();
-		free(cp);
+		delete cp;
 	}
 
 	/* Local company may have changed, so we should not restore the old value */
@@ -271,7 +270,7 @@ static void DistributeQueue(CommandQueue *queue, const NetworkClientSocket *owne
 	while (--to_go >= 0 && (cp = queue->Pop(true)) != nullptr) {
 		DistributeCommandPacket(*cp, owner);
 		NetworkAdminCmdLogging(owner, cp);
-		free(cp);
+		delete cp;
 	}
 }
 
@@ -304,7 +303,7 @@ const char *NetworkGameSocketHandler::ReceiveCommand(Packet *p, CommandPacket *c
 	cp->p1      = p->Recv_uint32();
 	cp->p2      = p->Recv_uint32();
 	cp->tile    = p->Recv_uint32();
-	p->Recv_string(cp->text, lengthof(cp->text), (!_network_server && GetCommandFlags(cp->cmd) & CMD_STR_CTRL) != 0 ? SVS_ALLOW_CONTROL_CODE | SVS_REPLACE_WITH_QUESTION_MARK : SVS_REPLACE_WITH_QUESTION_MARK);
+	cp->text    = p->Recv_string(NETWORK_COMPANY_NAME_LENGTH, (!_network_server && GetCommandFlags(cp->cmd) & CMD_STR_CTRL) != 0 ? SVS_ALLOW_CONTROL_CODE | SVS_REPLACE_WITH_QUESTION_MARK : SVS_REPLACE_WITH_QUESTION_MARK);
 
 	byte callback = p->Recv_uint8();
 	if (callback >= lengthof(_callback_table))  return "invalid callback";
