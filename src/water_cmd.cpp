@@ -98,7 +98,7 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildShipDepot(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	Axis axis = Extract<Axis, 0, 1>(p1);
 
@@ -417,7 +417,7 @@ static CommandCost RemoveLock(TileIndex tile, DoCommandFlag flags)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildLock(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile));
 	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_ERROR_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -443,7 +443,7 @@ bool RiverModifyDesertZone(TileIndex tile, void *)
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildCanal(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	WaterClass wc = Extract<WaterClass, 0, 2>(p2);
 	if (p1 >= MapSize() || wc == WATER_CLASS_INVALID) return CMD_ERROR;

@@ -36,13 +36,13 @@ SignID _new_sign_id;
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	/* Try to locate a new sign */
 	if (!Sign::CanAllocateItem()) return_cmd_error(STR_ERROR_TOO_MANY_SIGNS);
 
 	/* Check sign text length if any */
-	if (!StrEmpty(text) && Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return CMD_ERROR;
+	if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return CMD_ERROR;
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
@@ -53,7 +53,7 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 		si->x = x;
 		si->y = y;
 		si->z = GetSlopePixelZ(x, y);
-		if (!StrEmpty(text)) {
+		if (!text.empty()) {
 			si->name = text;
 		}
 		si->UpdateVirtCoord();
@@ -75,14 +75,14 @@ CommandCost CmdPlaceSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
  * @param text the new name or an empty string when resetting to the default
  * @return the cost of this operation or an error
  */
-CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdRenameSign(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	Sign *si = Sign::GetIfValid(p1);
 	if (si == nullptr) return CMD_ERROR;
 	if (si->owner == OWNER_DEITY && _current_company != OWNER_DEITY && _game_mode != GM_EDITOR) return CMD_ERROR;
 
 	/* Rename the signs when empty, otherwise remove it */
-	if (!StrEmpty(text)) {
+	if (!text.empty()) {
 		if (Utf8StringLength(text) >= MAX_LENGTH_SIGN_NAME_CHARS) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {

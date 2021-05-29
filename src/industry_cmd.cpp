@@ -1982,7 +1982,7 @@ static CommandCost CreateNewIndustryHelper(TileIndex tile, IndustryType type, Do
  * @param text unused
  * @return the cost of this operation or an error
  */
-CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	IndustryType it = GB(p1, 0, 8);
 	if (it >= NUM_INDUSTRYTYPES) return CMD_ERROR;
@@ -2074,7 +2074,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, DoCommandFlag flags, uint32 p1, uin
  * @param text - Additional industry text (only used with set text action)
  * @return Empty cost or an error.
  */
-CommandCost CmdIndustryCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const char *text)
+CommandCost CmdIndustryCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (_current_company != OWNER_DEITY) return CMD_ERROR;
 
@@ -2112,7 +2112,7 @@ CommandCost CmdIndustryCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint
 
 		case IndustryAction::SetText: {
 			ind->text.clear();
-			if (!StrEmpty(text)) ind->text = text;
+			if (!text.empty()) ind->text = text;
 			InvalidateWindowData(WC_INDUSTRY_VIEW, ind->index);
 			break;
 		}

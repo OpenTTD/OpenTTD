@@ -32,15 +32,15 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
  */
 #define return_cmd_error(errcode) return CommandCost(errcode);
 
-CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags, uint32 cmd, const char *text = nullptr);
+CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, DoCommandFlag flags, uint32 cmd, const std::string &text = {});
 CommandCost DoCommand(const CommandContainer *container, DoCommandFlag flags);
 
-bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback = nullptr, const char *text = nullptr, bool my_cmd = true);
+bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback = nullptr, const std::string &text = {}, bool my_cmd = true);
 bool DoCommandP(const CommandContainer *container, bool my_cmd = true);
 
-CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, bool my_cmd, bool estimate_only);
+CommandCost DoCommandPInternal(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const std::string &text, bool my_cmd, bool estimate_only);
 
-void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, CompanyID company);
+void NetworkSendCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const std::string &text, CompanyID company);
 
 extern Money _additional_cash_required;
 
