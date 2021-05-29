@@ -1358,9 +1358,8 @@ void NetworkUpdateClientName(const std::string &client_name)
 			MyClient::SendSetName(client_name);
 		} else {
 			/* Copy to a temporary buffer so no #n gets added after our name in the settings when there are duplicate names. */
-			char temporary_name[NETWORK_CLIENT_NAME_LENGTH];
-			strecpy(temporary_name, client_name.c_str(), lastof(temporary_name));
-			if (NetworkFindName(temporary_name, lastof(temporary_name))) {
+			std::string temporary_name = client_name;
+			if (NetworkMakeClientNameUnique(temporary_name)) {
 				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, temporary_name);
 				ci->client_name = temporary_name;
 				NetworkUpdateClientInfo(CLIENT_ID_SERVER);
