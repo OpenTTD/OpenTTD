@@ -65,6 +65,11 @@ static const uint NETWORK_CLIENT_NAME_LENGTH      =   25;         ///< The maxim
 static const uint NETWORK_RCONCOMMAND_LENGTH      =  500;         ///< The maximum length of a rconsole command, in bytes including '\0'
 static const uint NETWORK_GAMESCRIPT_JSON_LENGTH  = COMPAT_MTU-3; ///< The maximum length of a gamescript json string, in bytes including '\0'. Must not be longer than COMPAT_MTU including header (3 bytes)
 static const uint NETWORK_CHAT_LENGTH             =  900;         ///< The maximum length of a chat message, in bytes including '\0'
+static const uint NETWORK_CONTENT_FILENAME_LENGTH =   48;         ///< The maximum length of a content's filename, in bytes including '\0'.
+static const uint NETWORK_CONTENT_NAME_LENGTH     =   32;         ///< The maximum length of a content's name, in bytes including '\0'.
+static const uint NETWORK_CONTENT_VERSION_LENGTH  =   16;         ///< The maximum length of a content's version, in bytes including '\0'.
+static const uint NETWORK_CONTENT_URL_LENGTH      =   96;         ///< The maximum length of a content's url, in bytes including '\0'.
+static const uint NETWORK_CONTENT_DESC_LENGTH     =  512;         ///< The maximum length of a content's description, in bytes including '\0'.
 static const uint NETWORK_CONTENT_TAG_LENGTH      =   32;         ///< The maximum length of a content's tag, in bytes including '\0'.
 
 static const uint NETWORK_GRF_NAME_LENGTH         =   80;         ///< Maximum length of the name of a GRF
