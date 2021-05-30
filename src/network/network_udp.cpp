@@ -415,15 +415,14 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_NEWGRFS(Packet *p, NetworkAdd
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
 
 	for (i = 0; i < num_grfs; i++) {
-		char name[NETWORK_GRF_NAME_LENGTH];
 		GRFIdentifier c;
 
 		DeserializeGRFIdentifier(p, &c);
-		p->Recv_string(name, sizeof(name));
+		std::string name = p->Recv_string(NETWORK_GRF_NAME_LENGTH);
 
 		/* An empty name is not possible under normal circumstances
 		 * and causes problems when showing the NewGRF list. */
-		if (StrEmpty(name)) continue;
+		if (name.empty()) continue;
 
 		/* Try to find the GRFTextWrapper for the name of this GRF ID and MD5sum tuple.
 		 * If it exists and not resolved yet, then name of the fake GRF is
