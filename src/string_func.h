@@ -51,6 +51,9 @@ bool strtolower(std::string &str, std::string::size_type offs = 0);
 bool StrValid(const char *str, const char *last) NOACCESS(2);
 void StrTrimInPlace(std::string &str);
 
+bool StrStartsWith(const std::string_view str, const std::string_view prefix);
+bool StrEndsWith(const std::string_view str, const std::string_view suffix);
+
 /**
  * Check if a string buffer is empty.
  *
