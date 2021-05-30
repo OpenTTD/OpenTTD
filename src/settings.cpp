@@ -22,6 +22,7 @@
  */
 
 #include "stdafx.h"
+#include <array>
 #include <limits>
 #include "currency.h"
 #include "screenshot.h"
@@ -1227,7 +1228,9 @@ static void PrepareOldDiffCustom()
  */
 static void HandleOldDiffCustom(bool savegame)
 {
-	uint options_to_load = GAME_DIFFICULTY_NUM - ((savegame && IsSavegameVersionBefore(SLV_4)) ? 1 : 0);
+	/* Savegames before v4 didn't have "town_council_tolerance" in savegame yet. */
+	bool has_no_town_council_tolerance = savegame && IsSavegameVersionBefore(SLV_4);
+	uint options_to_load = GAME_DIFFICULTY_NUM - (has_no_town_council_tolerance ? 1 : 0);
 
 	if (!savegame) {
 		/* If we did read to old_diff_custom, then at least one value must be non 0. */
@@ -1239,11 +1242,21 @@ static void HandleOldDiffCustom(bool savegame)
 		if (!old_diff_custom_used) return;
 	}
 
-	for (uint i = 0; i < options_to_load; i++) {
-		const SettingDesc *sd = GetSettingDescription(i);
-		/* Skip deprecated options */
-		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		int32 value = (int32)((i == 4 ? 1000 : 1) * _old_diff_custom[i]);
+	/* Iterate over all the old difficulty settings, and convert the list-value to the new setting. */
+	uint i = 0;
+	for (const auto &name : _old_diff_settings) {
+		if (has_no_town_council_tolerance && name == "town_council_tolerance") continue;
+
+		std::string fullname = "difficulty." + name;
+		const SettingDesc *sd = GetSettingFromName(fullname.c_str());
+
+		/* Some settings are no longer in use; skip reading those. */
+		if (sd == nullptr) {
+			i++;
+			continue;
+		}
+
+		int32 value = (int32)((name == "max_loan" ? 1000 : 1) * _old_diff_custom[i++]);
 		sd->AsIntSetting()->MakeValueValidAndWrite(savegame ? &_settings_game : &_settings_newgame, value);
 	}
 }

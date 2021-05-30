@@ -61,6 +61,9 @@ enum IndustryDensity {
 
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
+	byte   competitor_start_time;            ///< Unused value, used to load old savegames.
+	byte   competitor_intelligence;          ///< Unused value, used to load old savegames.
+
 	byte   max_no_competitors;               ///< the number of competitors (AIs)
 	byte   number_towns;                     ///< the amount of towns
 	byte   industry_density;                 ///< The industry density. @see IndustryDensity
