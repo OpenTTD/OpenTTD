@@ -56,10 +56,10 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 	ci->id       = (ContentID)p->Recv_uint32();
 	ci->filesize = p->Recv_uint32();
 
-	p->Recv_string(ci->name, lengthof(ci->name));
-	p->Recv_string(ci->version, lengthof(ci->version));
-	p->Recv_string(ci->url, lengthof(ci->url));
-	p->Recv_string(ci->description, lengthof(ci->description), SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
+	ci->name        = p->Recv_string(NETWORK_CONTENT_NAME_LENGTH);
+	ci->version     = p->Recv_string(NETWORK_CONTENT_VERSION_LENGTH);
+	ci->url         = p->Recv_string(NETWORK_CONTENT_URL_LENGTH);
+	ci->description = p->Recv_string(NETWORK_CONTENT_DESC_LENGTH, SVS_REPLACE_WITH_QUESTION_MARK | SVS_ALLOW_NEWLINE);
 
 	ci->unique_id = p->Recv_uint32();
 	for (uint j = 0; j < sizeof(ci->md5sum); j++) {
@@ -143,7 +143,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 		if (ici->type == ci->type && ici->unique_id == ci->unique_id &&
 				memcmp(ci->md5sum, ici->md5sum, sizeof(ci->md5sum)) == 0) {
 			/* Preserve the name if possible */
-			if (StrEmpty(ci->name)) strecpy(ci->name, ici->name, lastof(ci->name));
+			if (ci->name.empty()) ci->name = ici->name;
 			if (ici->IsSelected()) ci->state = ici->state;
 
 			/*
@@ -485,7 +485,7 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_CONTENT(Packet *p)
 		this->curInfo->type     = (ContentType)p->Recv_uint8();
 		this->curInfo->id       = (ContentID)p->Recv_uint32();
 		this->curInfo->filesize = p->Recv_uint32();
-		p->Recv_string(this->curInfo->filename, lengthof(this->curInfo->filename));
+		this->curInfo->filename = p->Recv_string(NETWORK_CONTENT_FILENAME_LENGTH);
 
 		if (!this->BeforeDownload()) {
 			this->CloseConnection();
@@ -704,7 +704,7 @@ void ClientNetworkContentSocketHandler::OnReceiveData(const char *data, size_t l
 		}
 
 		/* Copy the string, without extension, to the filename. */
-		strecpy(this->curInfo->filename, tmp, lastof(this->curInfo->filename));
+		this->curInfo->filename = tmp;
 
 		/* Request the next file. */
 		if (!this->BeforeDownload()) {

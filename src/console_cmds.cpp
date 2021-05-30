@@ -1812,7 +1812,7 @@ static void OutputContentState(const ContentInfo *const ci)
 
 	char buf[sizeof(ci->md5sum) * 2 + 1];
 	md5sumToString(buf, lastof(buf), ci->md5sum);
-	IConsolePrintF(state_to_colour[ci->state], "%d, %s, %s, %s, %08X, %s", ci->id, types[ci->type - 1], states[ci->state], ci->name, ci->unique_id, buf);
+	IConsolePrintF(state_to_colour[ci->state], "%d, %s, %s, %s, %08X, %s", ci->id, types[ci->type - 1], states[ci->state], ci->name.c_str(), ci->unique_id, buf);
 }
 
 DEF_CONSOLE_CMD(ConContent)
@@ -1882,7 +1882,7 @@ DEF_CONSOLE_CMD(ConContent)
 	if (strcasecmp(argv[1], "state") == 0) {
 		IConsolePrintF(CC_WHITE, "id, type, state, name");
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
-			if (argc > 2 && strcasestr((*iter)->name, argv[2]) == nullptr) continue;
+			if (argc > 2 && strcasestr((*iter)->name.c_str(), argv[2]) == nullptr) continue;
 			OutputContentState(*iter);
 		}
 		return true;

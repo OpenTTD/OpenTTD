@@ -60,11 +60,11 @@ struct ContentInfo {
 	ContentType type;        ///< Type of content
 	ContentID id;            ///< Unique (server side) ID for the content
 	uint32 filesize;         ///< Size of the file
-	char filename[48];       ///< Filename (for the .tar.gz; only valid on download)
-	char name[32];           ///< Name of the content
-	char version[16];        ///< Version of the content
-	char url[96];            ///< URL related to the content
-	char description[512];   ///< Description of the content
+	std::string filename;    ///< Filename (for the .tar.gz; only valid on download)
+	std::string name;        ///< Name of the content
+	std::string version;     ///< Version of the content
+	std::string url;         ///< URL related to the content
+	std::string description; ///< Description of the content
 	uint32 unique_id;        ///< Unique ID; either GRF ID or shortname
 	byte md5sum[16];         ///< The MD5 checksum
 	std::vector<ContentID> dependencies; ///< The dependencies (unique server side ids)
