@@ -69,8 +69,7 @@ struct ContentInfo {
 	byte md5sum[16];         ///< The MD5 checksum
 	uint8 dependency_count;  ///< Number of dependencies
 	ContentID *dependencies; ///< Malloced array of dependencies (unique server side ids)
-	uint8 tag_count;         ///< Number of tags
-	char (*tags)[32];        ///< Malloced array of tags (strings)
+	StringList tags;         ///< Tags associated with the content
 	State state;             ///< Whether the content info is selected (for download)
 	bool upgrade;            ///< This item is an upgrade
 

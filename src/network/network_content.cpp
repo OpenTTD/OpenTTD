@@ -70,9 +70,9 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 	ci->dependencies = MallocT<ContentID>(ci->dependency_count);
 	for (uint i = 0; i < ci->dependency_count; i++) ci->dependencies[i] = (ContentID)p->Recv_uint32();
 
-	ci->tag_count = p->Recv_uint8();
-	ci->tags = MallocT<char[32]>(ci->tag_count);
-	for (uint i = 0; i < ci->tag_count; i++) p->Recv_string(ci->tags[i], lengthof(*ci->tags));
+	uint tag_count = p->Recv_uint8();
+	ci->tags.reserve(tag_count);
+	for (uint i = 0; i < tag_count; i++) ci->tags.push_back(p->Recv_string(NETWORK_CONTENT_TAG_LENGTH));
 
 	if (!ci->IsValid()) {
 		delete ci;
