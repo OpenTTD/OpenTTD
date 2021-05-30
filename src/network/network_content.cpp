@@ -66,9 +66,9 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 		ci->md5sum[j] = p->Recv_uint8();
 	}
 
-	ci->dependency_count = p->Recv_uint8();
-	ci->dependencies = MallocT<ContentID>(ci->dependency_count);
-	for (uint i = 0; i < ci->dependency_count; i++) ci->dependencies[i] = (ContentID)p->Recv_uint32();
+	uint dependency_count = p->Recv_uint8();
+	ci->dependencies.reserve(dependency_count);
+	for (uint i = 0; i < dependency_count; i++) ci->dependencies.push_back((ContentID)p->Recv_uint32());
 
 	uint tag_count = p->Recv_uint8();
 	ci->tags.reserve(tag_count);
@@ -927,8 +927,8 @@ void ClientNetworkContentSocketHandler::ReverseLookupDependency(ConstContentVect
 	for (const ContentInfo *ci : this->infos) {
 		if (ci == child) continue;
 
-		for (uint i = 0; i < ci->dependency_count; i++) {
-			if (ci->dependencies[i] == child->id) {
+		for (auto &dependency : ci->dependencies) {
+			if (dependency == child->id) {
 				parents.push_back(ci);
 				break;
 			}
@@ -969,10 +969,10 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		/* Selection is easy; just walk all children and set the
 		 * autoselected state. That way we can see what we automatically
 		 * selected and thus can unselect when a dependency is removed. */
-		for (uint i = 0; i < ci->dependency_count; i++) {
-			ContentInfo *c = this->GetContent(ci->dependencies[i]);
+		for (auto &dependency : ci->dependencies) {
+			ContentInfo *c = this->GetContent(dependency);
 			if (c == nullptr) {
-				this->DownloadContentInfo(ci->dependencies[i]);
+				this->DownloadContentInfo(dependency);
 			} else if (c->state == ContentInfo::UNSELECTED) {
 				c->state = ContentInfo::AUTOSELECTED;
 				this->CheckDependencyState(c);
@@ -995,10 +995,10 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 		this->Unselect(c->id);
 	}
 
-	for (uint i = 0; i < ci->dependency_count; i++) {
-		const ContentInfo *c = this->GetContent(ci->dependencies[i]);
+	for (auto &dependency : ci->dependencies) {
+		const ContentInfo *c = this->GetContent(dependency);
 		if (c == nullptr) {
-			DownloadContentInfo(ci->dependencies[i]);
+			DownloadContentInfo(dependency);
 			continue;
 		}
 		if (c->state != ContentInfo::AUTOSELECTED) continue;

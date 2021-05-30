@@ -24,7 +24,7 @@
 ContentInfo::ContentInfo()
 	: /* Temporary... will be removed later in the PR. */
 	type((ContentType)0), id((ContentID)0), filesize(0), filename(""), name(""), version(""),
-	url(""), description(""), unique_id(0), md5sum(""), dependency_count(0), dependencies(nullptr),
+	url(""), description(""), unique_id(0), md5sum(""),
 	state((State)0), upgrade(false)
 {
 }
@@ -32,7 +32,6 @@ ContentInfo::ContentInfo()
 /** Free everything allocated */
 ContentInfo::~ContentInfo()
 {
-	free(this->dependencies);
 }
 
 /**
@@ -42,9 +41,8 @@ ContentInfo::~ContentInfo()
 void ContentInfo::TransferFrom(ContentInfo *other)
 {
 	if (other != this) {
-		free(this->dependencies);
 		*this = *other;
-		other->dependencies = nullptr;
+		other->dependencies.clear();
 		other->tags.clear();
 	}
 }
