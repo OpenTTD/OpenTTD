@@ -49,22 +49,6 @@ void ContentInfo::TransferFrom(ContentInfo *other)
 }
 
 /**
- * Get the size of the data as send over the network.
- * @return the size.
- */
-size_t ContentInfo::Size() const
-{
-	size_t len = 0;
-	for (uint i = 0; i < this->tag_count; i++) len += strlen(this->tags[i]) + 1;
-
-	/* The size is never larger than the content info size plus the size of the
-	 * tags and dependencies */
-	return sizeof(*this) +
-			sizeof(this->dependency_count) +
-			sizeof(*this->dependencies) * this->dependency_count;
-}
-
-/**
  * Is the state either selected or autoselected?
  * @return true iff that's the case
  */

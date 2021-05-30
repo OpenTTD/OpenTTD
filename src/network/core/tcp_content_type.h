@@ -79,7 +79,6 @@ struct ContentInfo {
 
 	void TransferFrom(ContentInfo *other);
 
-	size_t Size() const;
 	bool IsSelected() const;
 	bool IsValid() const;
 	const char *GetTextfile(TextfileType type) const;
