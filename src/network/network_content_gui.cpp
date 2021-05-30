@@ -725,13 +725,11 @@ public:
 		SetDParam(0, this->selected->filesize);
 		y = DrawStringMultiLine(r.left + DETAIL_LEFT, r.right - DETAIL_RIGHT, y, max_y, STR_CONTENT_DETAIL_FILESIZE);
 
-		if (this->selected->dependency_count != 0) {
+		if (!this->selected->dependencies.empty()) {
 			/* List dependencies */
 			char buf[DRAW_STRING_BUFFER] = "";
 			char *p = buf;
-			for (uint i = 0; i < this->selected->dependency_count; i++) {
-				ContentID cid = this->selected->dependencies[i];
-
+			for (auto &cid : this->selected->dependencies) {
 				/* Try to find the dependency */
 				ConstContentIterator iter = _network_content_client.Begin();
 				for (; iter != _network_content_client.End(); iter++) {

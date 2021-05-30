@@ -67,8 +67,7 @@ struct ContentInfo {
 	char description[512];   ///< Description of the content
 	uint32 unique_id;        ///< Unique ID; either GRF ID or shortname
 	byte md5sum[16];         ///< The MD5 checksum
-	uint8 dependency_count;  ///< Number of dependencies
-	ContentID *dependencies; ///< Malloced array of dependencies (unique server side ids)
+	std::vector<ContentID> dependencies; ///< The dependencies (unique server side ids)
 	StringList tags;         ///< Tags associated with the content
 	State state;             ///< Whether the content info is selected (for download)
 	bool upgrade;            ///< This item is an upgrade
