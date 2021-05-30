@@ -87,7 +87,6 @@ public:
 	uint16 Recv_uint16();
 	uint32 Recv_uint32();
 	uint64 Recv_uint64();
-	void   Recv_string(char *buffer, size_t size, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 	std::string Recv_string(size_t length, StringValidationSettings settings = SVS_REPLACE_WITH_QUESTION_MARK);
 
 	size_t RemainingBytesToTransfer() const;
