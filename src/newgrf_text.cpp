@@ -539,10 +539,10 @@ void AddGRFTextToList(GRFTextWrapper &list, byte langid, uint32 grfid, bool allo
  * @param list The list where the text should be added to.
  * @param text_to_add The text to add to the list.
  */
-void AddGRFTextToList(GRFTextWrapper &list, const char *text_to_add)
+void AddGRFTextToList(GRFTextWrapper &list, const std::string &text_to_add)
 {
 	if (!list) list.reset(new GRFTextList());
-	AddGRFTextToList(*list, GRFLX_UNSPECIFIED, std::string(text_to_add));
+	AddGRFTextToList(*list, GRFLX_UNSPECIFIED, text_to_add);
 }
 
 /**
