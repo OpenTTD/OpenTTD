@@ -8,10 +8,12 @@
 /** @file object_sl.cpp Code handling saving and loading of objects */
 
 #include "../stdafx.h"
-#include "../object_base.h"
-#include "../object_map.h"
 
 #include "saveload.h"
+#include "compat/object_sl_compat.h"
+
+#include "../object_base.h"
+#include "../object_map.h"
 #include "newgrf_sl.h"
 
 #include "../safeguards.h"
@@ -29,6 +31,8 @@ static const SaveLoad _object_desc[] = {
 
 static void Save_OBJS()
 {
+	SlTableHeader(_object_desc);
+
 	/* Write the objects */
 	for (Object *o : Object::Iterate()) {
 		SlSetArrayIndex(o->index);
@@ -38,10 +42,12 @@ static void Save_OBJS()
 
 static void Load_OBJS()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_object_desc, _object_sl_compat);
+
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Object *o = new (index) Object();
-		SlObject(o, _object_desc);
+		SlObject(o, slt);
 	}
 }
 
@@ -67,8 +73,8 @@ static void Load_OBID()
 }
 
 static const ChunkHandler object_chunk_handlers[] = {
-	{ 'OBID', Save_OBID, Load_OBID, nullptr,   nullptr, CH_ARRAY },
-	{ 'OBJS', Save_OBJS, Load_OBJS, Ptrs_OBJS, nullptr, CH_ARRAY },
+	{ 'OBID', Save_OBID, Load_OBID, nullptr,   nullptr, CH_TABLE },
+	{ 'OBJS', Save_OBJS, Load_OBJS, Ptrs_OBJS, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _object_chunk_handlers(object_chunk_handlers);

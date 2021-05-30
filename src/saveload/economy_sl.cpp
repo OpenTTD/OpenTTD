@@ -8,10 +8,12 @@
 /** @file economy_sl.cpp Code handling saving and loading of economy data */
 
 #include "../stdafx.h"
-#include "../economy_func.h"
-#include "../economy_base.h"
 
 #include "saveload.h"
+#include "compat/economy_sl_compat.h"
+
+#include "../economy_func.h"
+#include "../economy_base.h"
 
 #include "../safeguards.h"
 
@@ -34,8 +36,6 @@ static void Load_CAPR()
 }
 
 static const SaveLoad _economy_desc[] = {
-	SLE_CONDNULL(4,                                                                  SL_MIN_VERSION, SLV_65),             // max_loan
-	SLE_CONDNULL(8,                                                                 SLV_65, SLV_144), // max_loan
 	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_FILE_I32 | SLE_VAR_I64,  SL_MIN_VERSION, SLV_65),
 	SLE_CONDVAR(Economy, old_max_loan_unround,          SLE_INT64,                  SLV_65, SLV_126),
 	SLE_CONDVAR(Economy, old_max_loan_unround_fract,    SLE_UINT16,                 SLV_70, SLV_126),
@@ -51,6 +51,8 @@ static const SaveLoad _economy_desc[] = {
 /** Economy variables */
 static void Save_ECMY()
 {
+	SlTableHeader(_economy_desc);
+
 	SlSetArrayIndex(0);
 	SlObject(&_economy, _economy_desc);
 }
@@ -58,8 +60,10 @@ static void Save_ECMY()
 /** Economy variables */
 static void Load_ECMY()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_economy_desc, _economy_sl_compat);
+
 	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
-	SlObject(&_economy, _economy_desc);
+	SlObject(&_economy, slt);
 	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many ECMY entries");
 
 	StartupIndustryDailyChanges(IsSavegameVersionBefore(SLV_102));  // old savegames will need to be initialized
@@ -74,6 +78,8 @@ static const SaveLoad _cargopayment_desc[] = {
 
 static void Save_CAPY()
 {
+	SlTableHeader(_cargopayment_desc);
+
 	for (CargoPayment *cp : CargoPayment::Iterate()) {
 		SlSetArrayIndex(cp->index);
 		SlObject(cp, _cargopayment_desc);
@@ -82,11 +88,13 @@ static void Save_CAPY()
 
 static void Load_CAPY()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_cargopayment_desc, _cargopayment_sl_compat);
+
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
 		CargoPayment *cp = new (index) CargoPayment();
-		SlObject(cp, _cargopayment_desc);
+		SlObject(cp, slt);
 	}
 }
 
@@ -99,10 +107,10 @@ static void Ptrs_CAPY()
 
 
 static const ChunkHandler economy_chunk_handlers[] = {
-	{ 'CAPY', Save_CAPY, Load_CAPY, Ptrs_CAPY, nullptr, CH_ARRAY },
+	{ 'CAPY', Save_CAPY, Load_CAPY, Ptrs_CAPY, nullptr, CH_TABLE },
 	{ 'PRIC', nullptr,   Load_PRIC, nullptr,   nullptr, CH_READONLY  },
 	{ 'CAPR', nullptr,   Load_CAPR, nullptr,   nullptr, CH_READONLY  },
-	{ 'ECMY', Save_ECMY, Load_ECMY, nullptr,   nullptr, CH_ARRAY },
+	{ 'ECMY', Save_ECMY, Load_ECMY, nullptr,   nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _economy_chunk_handlers(economy_chunk_handlers);

@@ -8,9 +8,11 @@
 /** @file subsidy_sl.cpp Code handling saving and loading of subsidies */
 
 #include "../stdafx.h"
-#include "../subsidy_base.h"
 
 #include "saveload.h"
+#include "compat/subsidy_sl_compat.h"
+
+#include "../subsidy_base.h"
 
 #include "../safeguards.h"
 
@@ -29,6 +31,8 @@ static const SaveLoad _subsidies_desc[] = {
 
 static void Save_SUBS()
 {
+	SlTableHeader(_subsidies_desc);
+
 	for (Subsidy *s : Subsidy::Iterate()) {
 		SlSetArrayIndex(s->index);
 		SlObject(s, _subsidies_desc);
@@ -37,15 +41,17 @@ static void Save_SUBS()
 
 static void Load_SUBS()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_subsidies_desc, _subsidies_sl_compat);
+
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Subsidy *s = new (index) Subsidy();
-		SlObject(s, _subsidies_desc);
+		SlObject(s, slt);
 	}
 }
 
 static const ChunkHandler subsidy_chunk_handlers[] = {
-	{ 'SUBS', Save_SUBS, Load_SUBS, nullptr, nullptr, CH_ARRAY },
+	{ 'SUBS', Save_SUBS, Load_SUBS, nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _subsidy_chunk_handlers(subsidy_chunk_handlers);

@@ -8,9 +8,12 @@
 /** @file ai_sl.cpp Handles the saveload part of the AIs */
 
 #include "../stdafx.h"
-#include "../company_base.h"
 #include "../debug.h"
+
 #include "saveload.h"
+#include "compat/ai_sl_compat.h"
+
+#include "../company_base.h"
 #include "../string_func.h"
 
 #include "../ai/ai.hpp"
@@ -25,7 +28,7 @@ static int         _ai_saveload_version;
 static std::string _ai_saveload_settings;
 static bool        _ai_saveload_is_random;
 
-static const SaveLoad _ai_company[] = {
+static const SaveLoad _ai_company_desc[] = {
 	   SLEG_SSTR("name",      _ai_saveload_name,         SLE_STR),
 	   SLEG_SSTR("settings",  _ai_saveload_settings,     SLE_STR),
 	SLEG_CONDVAR("version",   _ai_saveload_version,   SLE_UINT32, SLV_108, SL_MAX_VERSION),
@@ -49,13 +52,15 @@ static void SaveReal_AIPL(int *index_ptr)
 	_ai_saveload_is_random = config->IsRandom();
 	_ai_saveload_settings = config->SettingsToString();
 
-	SlObject(nullptr, _ai_company);
+	SlObject(nullptr, _ai_company_desc);
 	/* If the AI was active, store its data too */
 	if (Company::IsValidAiID(index)) AI::Save(index);
 }
 
 static void Load_AIPL()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_ai_company_desc, _ai_company_sl_compat);
+
 	/* Free all current data */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		AIConfig::GetConfig(c, AIConfig::SSS_FORCE_GAME)->Change(nullptr);
@@ -67,7 +72,7 @@ static void Load_AIPL()
 
 		_ai_saveload_is_random = false;
 		_ai_saveload_version = -1;
-		SlObject(nullptr, _ai_company);
+		SlObject(nullptr, slt);
 
 		if (_networking && !_network_server) {
 			if (Company::IsValidAiID(index)) AIInstance::LoadEmpty();
@@ -114,6 +119,8 @@ static void Load_AIPL()
 
 static void Save_AIPL()
 {
+	SlTableHeader(_ai_company_desc);
+
 	for (int i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
 		SlSetArrayIndex(i);
 		SlAutolength((AutolengthProc *)SaveReal_AIPL, &i);
@@ -121,7 +128,7 @@ static void Save_AIPL()
 }
 
 static const ChunkHandler ai_chunk_handlers[] = {
-	{ 'AIPL', Save_AIPL, Load_AIPL, nullptr, nullptr, CH_ARRAY },
+	{ 'AIPL', Save_AIPL, Load_AIPL, nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _ai_chunk_handlers(ai_chunk_handlers);

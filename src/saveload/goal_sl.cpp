@@ -8,9 +8,11 @@
 /** @file goal_sl.cpp Code handling saving and loading of goals */
 
 #include "../stdafx.h"
-#include "../goal_base.h"
 
 #include "saveload.h"
+#include "compat/goal_sl_compat.h"
+
+#include "../goal_base.h"
 
 #include "../safeguards.h"
 
@@ -25,6 +27,8 @@ static const SaveLoad _goals_desc[] = {
 
 static void Save_GOAL()
 {
+	SlTableHeader(_goals_desc);
+
 	for (Goal *s : Goal::Iterate()) {
 		SlSetArrayIndex(s->index);
 		SlObject(s, _goals_desc);
@@ -33,6 +37,8 @@ static void Save_GOAL()
 
 static void Load_GOAL()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_goals_desc, _goals_sl_compat);
+
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Goal *s = new (index) Goal();
@@ -41,7 +47,7 @@ static void Load_GOAL()
 }
 
 static const ChunkHandler goal_chunk_handlers[] = {
-	{ 'GOAL', Save_GOAL, Load_GOAL, nullptr, nullptr, CH_ARRAY },
+	{ 'GOAL', Save_GOAL, Load_GOAL, nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _goal_chunk_handlers(goal_chunk_handlers);

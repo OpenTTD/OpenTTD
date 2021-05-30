@@ -8,11 +8,13 @@
 /** @file labelmaps_sl.cpp Code handling saving and loading of rail type label mappings */
 
 #include "../stdafx.h"
-#include "../station_map.h"
-#include "../tunnelbridge_map.h"
 
 #include "saveload.h"
+#include "compat/labelmaps_sl_compat.h"
+
 #include "saveload_internal.h"
+#include "../station_map.h"
+#include "../tunnelbridge_map.h"
 
 #include "../safeguards.h"
 
@@ -99,6 +101,8 @@ static const SaveLoad _label_object_desc[] = {
 
 static void Save_RAIL()
 {
+	SlTableHeader(_label_object_desc);
+
 	LabelObject lo;
 
 	for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
@@ -111,18 +115,20 @@ static void Save_RAIL()
 
 static void Load_RAIL()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_label_object_desc, _label_object_sl_compat);
+
 	ResetLabelMaps();
 
 	LabelObject lo;
 
 	while (SlIterateArray() != -1) {
-		SlObject(&lo, _label_object_desc);
+		SlObject(&lo, slt);
 		_railtype_list.push_back((RailTypeLabel)lo.label);
 	}
 }
 
 static const ChunkHandler labelmaps_chunk_handlers[] = {
-	{ 'RAIL', Save_RAIL, Load_RAIL, nullptr, nullptr, CH_ARRAY },
+	{ 'RAIL', Save_RAIL, Load_RAIL, nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _labelmaps_chunk_handlers(labelmaps_chunk_handlers);

@@ -35,8 +35,8 @@ static void Load_ATID()
 }
 
 static const ChunkHandler airport_chunk_handlers[] = {
-	{ 'ATID', Save_ATID, Load_ATID, nullptr, nullptr, CH_ARRAY },
-	{ 'APID', Save_APID, Load_APID, nullptr, nullptr, CH_ARRAY },
+	{ 'ATID', Save_ATID, Load_ATID, nullptr, nullptr, CH_TABLE },
+	{ 'APID', Save_APID, Load_APID, nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _airport_chunk_handlers(airport_chunk_handlers);

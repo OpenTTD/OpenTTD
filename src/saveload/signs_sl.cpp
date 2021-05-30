@@ -8,10 +8,12 @@
 /** @file signs_sl.cpp Code handling saving and loading of economy data */
 
 #include "../stdafx.h"
-#include "../signs_base.h"
-#include "../fios.h"
 
 #include "saveload.h"
+#include "compat/signs_sl_compat.h"
+
+#include "../signs_base.h"
+#include "../fios.h"
 
 #include "../safeguards.h"
 
@@ -31,6 +33,8 @@ static const SaveLoad _sign_desc[] = {
 /** Save all signs */
 static void Save_SIGN()
 {
+	SlTableHeader(_sign_desc);
+
 	for (Sign *si : Sign::Iterate()) {
 		SlSetArrayIndex(si->index);
 		SlObject(si, _sign_desc);
@@ -40,10 +44,12 @@ static void Save_SIGN()
 /** Load all signs */
 static void Load_SIGN()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_sign_desc, _sign_sl_compat);
+
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Sign *si = new (index) Sign();
-		SlObject(si, _sign_desc);
+		SlObject(si, slt);
 		/* Before version 6.1, signs didn't have owner.
 		 * Before version 83, invalid signs were determined by si->str == 0.
 		 * Before version 103, owner could be a bankrupted company.
@@ -61,9 +67,8 @@ static void Load_SIGN()
 	}
 }
 
-/** Chunk handlers related to signs. */
 static const ChunkHandler sign_chunk_handlers[] = {
-	{ 'SIGN', Save_SIGN, Load_SIGN, nullptr, nullptr, CH_ARRAY },
+	{ 'SIGN', Save_SIGN, Load_SIGN, nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _sign_chunk_handlers(sign_chunk_handlers);
