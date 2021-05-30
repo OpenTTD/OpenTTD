@@ -1178,7 +1178,7 @@ static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDi
 	if (!(GetTownRoadBits(TileAddByDiagDir(tile, ReverseDiagDir(bridge_dir))) & DiagDirToRoadBits(bridge_dir))) return false;
 
 	/* We are in the right direction */
-	uint8 bridge_length = 0;      // This value stores the length of the possible bridge
+	int bridge_length = 0;      // This value stores the length of the possible bridge
 	TileIndex bridge_tile = tile; // Used to store the other waterside
 
 	const int delta = TileOffsByDiagDir(bridge_dir);
