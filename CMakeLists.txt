@@ -370,7 +370,7 @@ if(WIN32)
 endif()
 
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    add_definitions(-D_SQ64)
+    add_definitions(-DPOINTER_IS_64BIT)
 endif()
 
 include(CreateRegression)
