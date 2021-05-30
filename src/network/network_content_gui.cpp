@@ -443,9 +443,8 @@ class NetworkContentListWindow : public Window, ContentCallback {
 	static bool CDECL TagNameFilter(const ContentInfo * const *a, ContentListFilterData &filter)
 	{
 		filter.string_filter.ResetState();
-		for (int i = 0; i < (*a)->tag_count; i++) {
-			filter.string_filter.AddLine((*a)->tags[i]);
-		}
+		for (auto &tag : (*a)->tags) filter.string_filter.AddLine(tag.c_str());
+
 		filter.string_filter.AddLine((*a)->name);
 		return filter.string_filter.GetState();
 	}
@@ -747,12 +746,12 @@ public:
 			y = DrawStringMultiLine(r.left + DETAIL_LEFT, r.right - DETAIL_RIGHT, y, max_y, STR_CONTENT_DETAIL_DEPENDENCIES);
 		}
 
-		if (this->selected->tag_count != 0) {
+		if (!this->selected->tags.empty()) {
 			/* List all tags */
 			char buf[DRAW_STRING_BUFFER] = "";
 			char *p = buf;
-			for (uint i = 0; i < this->selected->tag_count; i++) {
-				p += seprintf(p, lastof(buf), i == 0 ? "%s" : ", %s", this->selected->tags[i]);
+			for (auto &tag : this->selected->tags) {
+				p += seprintf(p, lastof(buf), p == buf ? "%s" : ", %s", tag.c_str());
 			}
 			SetDParamStr(0, buf);
 			y = DrawStringMultiLine(r.left + DETAIL_LEFT, r.right - DETAIL_RIGHT, y, max_y, STR_CONTENT_DETAIL_TAGS);
