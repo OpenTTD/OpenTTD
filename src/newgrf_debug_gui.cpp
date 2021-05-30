@@ -828,7 +828,7 @@ struct SpriteAlignerWindow : Window {
 		switch (widget) {
 			case WID_SA_CAPTION:
 				SetDParam(0, this->current_sprite);
-				SetDParamStr(1, GetOriginFile(this->current_sprite)->GetSimplifiedFilename().c_str());
+				SetDParamStr(1, GetOriginFile(this->current_sprite)->GetSimplifiedFilename());
 				break;
 
 			case WID_SA_OFFSETS_ABS:

@@ -52,6 +52,7 @@ public:
 
 	void SetDParam(uint n, uint64 v);
 	void SetDParamStr(uint n, const char *str);
+	void SetDParamStr(uint n, const std::string &str);
 
 	void CopyOutDParams();
 };

@@ -164,6 +164,16 @@ void ErrorMessageData::SetDParamStr(uint n, const char *str)
 	this->strings[n] = stredup(str);
 }
 
+/**
+ * Set a rawstring parameter.
+ * @param n Parameter index
+ * @param str Raw string
+ */
+void ErrorMessageData::SetDParamStr(uint n, const std::string &str)
+{
+	this->SetDParamStr(n, str.c_str());
+}
+
 /** Define a queue with errors. */
 typedef std::list<ErrorMessageData> ErrorList;
 /** The actual queue with errors. */

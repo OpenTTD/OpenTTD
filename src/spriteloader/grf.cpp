@@ -35,7 +35,7 @@ static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
 {
 	static byte warning_level = 0;
 	if (warning_level == 0) {
-		SetDParamStr(0, file.GetSimplifiedFilename().c_str());
+		SetDParamStr(0, file.GetSimplifiedFilename());
 		ShowErrorMessage(STR_NEWGRF_ERROR_CORRUPT_SPRITE, INVALID_STRING_ID, WL_ERROR);
 	}
 	DEBUG(sprite, warning_level, "[%i] Loading corrupted sprite from %s at position %i", line, file.GetSimplifiedFilename().c_str(), (int)file_pos);

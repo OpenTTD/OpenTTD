@@ -703,7 +703,7 @@ int openttd_main(int argc, char *argv[])
 			BaseGraphics::SetSet({});
 
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_GRAPHICS_NOT_FOUND);
-			msg.SetDParamStr(0, graphics_set.c_str());
+			msg.SetDParamStr(0, graphics_set);
 			ScheduleErrorMessage(msg);
 		}
 	}
@@ -762,7 +762,7 @@ int openttd_main(int argc, char *argv[])
 			usererror("Failed to find a sounds set. Please acquire a sounds set for OpenTTD. See section 1.4 of README.md.");
 		} else {
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_SOUNDS_NOT_FOUND);
-			msg.SetDParamStr(0, sounds_set.c_str());
+			msg.SetDParamStr(0, sounds_set);
 			ScheduleErrorMessage(msg);
 		}
 	}
@@ -774,7 +774,7 @@ int openttd_main(int argc, char *argv[])
 			usererror("Failed to find a music set. Please acquire a music set for OpenTTD. See section 1.4 of README.md.");
 		} else {
 			ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_BASE_MUSIC_NOT_FOUND);
-			msg.SetDParamStr(0, music_set.c_str());
+			msg.SetDParamStr(0, music_set);
 			ScheduleErrorMessage(msg);
 		}
 	}
