@@ -1980,13 +1980,13 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
 
 	if (sd->IsStringSetting()) {
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, sd->AsStringSetting()->Read(object).c_str());
+		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", sd->name.c_str(), sd->AsStringSetting()->Read(object).c_str());
 	} else if (sd->IsIntSetting()) {
 		char value[20];
 		sd->FormatValue(value, lastof(value), object);
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %u)",
-			name, value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", int_setting->min, int_setting->max);
+			sd->name.c_str(), value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", int_setting->min, int_setting->max);
 	}
 }
 
@@ -2001,10 +2001,10 @@ void IConsoleListSettings(const char *prefilter)
 
 	for (auto &sd : _settings) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (prefilter != nullptr && strstr(sd->name, prefilter) == nullptr) continue;
+		if (prefilter != nullptr && sd->name.find(prefilter) == std::string::npos) continue;
 		char value[80];
 		sd->FormatValue(value, lastof(value), &GetGameSettings());
-		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->name, value);
+		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->name.c_str(), value);
 	}
 
 	IConsolePrintF(CC_WARNING, "Use 'setting' command to change a value");
