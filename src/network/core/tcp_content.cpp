@@ -22,8 +22,11 @@
 
 /** Clear everything in the struct */
 ContentInfo::ContentInfo()
+	: /* Temporary... will be removed later in the PR. */
+	type((ContentType)0), id((ContentID)0), filesize(0), filename(""), name(""), version(""),
+	url(""), description(""), unique_id(0), md5sum(""), dependency_count(0), dependencies(nullptr),
+	tag_count(0), tags(nullptr), state((State)0), upgrade(false)
 {
-	memset(this, 0, sizeof(*this));
 }
 
 /** Free everything allocated */
@@ -42,7 +45,7 @@ void ContentInfo::TransferFrom(ContentInfo *other)
 	if (other != this) {
 		free(this->dependencies);
 		free(this->tags);
-		memcpy(this, other, sizeof(ContentInfo));
+		*this = *other;
 		other->dependencies = nullptr;
 		other->tags = nullptr;
 	}
