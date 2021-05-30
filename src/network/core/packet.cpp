@@ -367,37 +367,6 @@ uint64 Packet::Recv_uint64()
 }
 
 /**
- * Reads a string till it finds a '\0' in the stream.
- * @param buffer The buffer to put the data into.
- * @param size   The size of the buffer.
- * @param settings The string validation settings.
- */
-void Packet::Recv_string(char *buffer, size_t size, StringValidationSettings settings)
-{
-	char *bufp = buffer;
-	const char *last = buffer + size - 1;
-
-	/* Don't allow reading from a closed socket */
-	if (cs->HasClientQuit()) return;
-
-	size_t pos = this->pos;
-	while (--size > 0 && pos < this->Size() && (*buffer++ = this->buffer[pos++]) != '\0') {}
-
-	if (size == 0 || pos == this->Size()) {
-		*buffer = '\0';
-		/* If size was sooner to zero then the string in the stream
-		 *  skip till the \0, so than packet can be read out correctly for the rest */
-		while (pos < this->Size() && this->buffer[pos] != '\0') pos++;
-		pos++;
-	}
-
-	assert(pos <= std::numeric_limits<PacketSize>::max());
-	this->pos = static_cast<PacketSize>(pos);
-
-	StrMakeValidInPlace(bufp, last, settings);
-}
-
-/**
  * Reads characters (bytes) from the packet until it finds a '\0', or reaches a
  * maximum of \c length characters.
  * When the '\0' has not been reached in the first \c length read characters,
