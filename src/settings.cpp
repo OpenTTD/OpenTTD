@@ -1235,7 +1235,7 @@ static void HandleOldDiffCustom(bool savegame)
 		if (has_no_town_council_tolerance && name == "town_council_tolerance") continue;
 
 		std::string fullname = "difficulty." + name;
-		const SettingDesc *sd = GetSettingFromName(fullname.c_str());
+		const SettingDesc *sd = GetSettingFromName(fullname);
 
 		/* Some settings are no longer in use; skip reading those. */
 		if (sd == nullptr) {
@@ -1705,22 +1705,19 @@ void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
  * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c nullptr indicates failure to obtain the description.
  */
-static const SettingDesc *GetSettingFromName(const char *name, const SettingTable &settings)
+static const SettingDesc *GetSettingFromName(const std::string_view name, const SettingTable &settings)
 {
 	/* First check all full names */
 	for (auto &sd : settings) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (strcmp(sd->name, name) == 0) return sd.get();
+		if (sd->name == name) return sd.get();
 	}
 
 	/* Then check the shortcut variant of the name. */
+	std::string short_name_suffix = std::string{ "." }.append(name);
 	for (auto &sd : settings) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		const char *short_name = strchr(sd->name, '.');
-		if (short_name != nullptr) {
-			short_name++;
-			if (strcmp(short_name, name) == 0) return sd.get();
-		}
+		if (StrEndsWith(sd->name, short_name_suffix)) return sd.get();
 	}
 
 	return nullptr;
@@ -1731,13 +1728,11 @@ static const SettingDesc *GetSettingFromName(const char *name, const SettingTabl
  * @param prefix The prefix to look for.
  * @param saveloads A vector to store the result in.
  */
-void GetSettingSaveLoadByPrefix(const char *prefix, std::vector<SaveLoad> &saveloads)
+void GetSettingSaveLoadByPrefix(std::string_view prefix, std::vector<SaveLoad> &saveloads)
 {
-	size_t prefixlen = strlen(prefix);
-
 	for (auto &sd : _settings) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (strncmp(sd->name, prefix, prefixlen) == 0) saveloads.push_back(sd->save);
+		if (StrStartsWith(sd->name, prefix)) saveloads.push_back(sd->save);
 	}
 }
 
@@ -1747,9 +1742,10 @@ void GetSettingSaveLoadByPrefix(const char *prefix, std::vector<SaveLoad> &savel
  * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c nullptr indicates failure to obtain the description.
  */
-static const SettingDesc *GetCompanySettingFromName(const char *name)
+static const SettingDesc *GetCompanySettingFromName(std::string_view name)
 {
-	if (strncmp(name, "company.", 8) == 0) name += 8;
+	static const std::string_view company_prefix = "company.";
+	if (StrStartsWith(name, company_prefix)) name.remove_prefix(company_prefix.size());
 	return GetSettingFromName(name, _company_settings);
 }
 
@@ -1759,7 +1755,7 @@ static const SettingDesc *GetCompanySettingFromName(const char *name)
  * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c nullptr indicates failure to obtain the description.
  */
-const SettingDesc *GetSettingFromName(const char *name)
+const SettingDesc *GetSettingFromName(const std::string_view name)
 {
 	auto sd = GetSettingFromName(name, _settings);
 	if (sd != nullptr) return sd;
@@ -1781,7 +1777,7 @@ const SettingDesc *GetSettingFromName(const char *name)
 CommandCost CmdChangeSetting(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 p2, const std::string &text)
 {
 	if (text.empty()) return CMD_ERROR;
-	const SettingDesc *sd = GetSettingFromName(text.c_str());
+	const SettingDesc *sd = GetSettingFromName(text);
 
 	if (sd == nullptr) return CMD_ERROR;
 	if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) return CMD_ERROR;
