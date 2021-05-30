@@ -20,33 +20,6 @@
 
 #include "../../safeguards.h"
 
-/** Clear everything in the struct */
-ContentInfo::ContentInfo()
-	: /* Temporary... will be removed later in the PR. */
-	type((ContentType)0), id((ContentID)0), filesize(0), filename(""), name(""), version(""),
-	url(""), description(""), unique_id(0), md5sum(""),
-	state((State)0), upgrade(false)
-{
-}
-
-/** Free everything allocated */
-ContentInfo::~ContentInfo()
-{
-}
-
-/**
- * Copy data from other #ContentInfo and take ownership of allocated stuff.
- * @param other Source to copy from. #dependencies and #tags will be NULLed.
- */
-void ContentInfo::TransferFrom(ContentInfo *other)
-{
-	if (other != this) {
-		*this = *other;
-		other->dependencies.clear();
-		other->tags.clear();
-	}
-}
-
 /**
  * Is the state either selected or autoselected?
  * @return true iff that's the case

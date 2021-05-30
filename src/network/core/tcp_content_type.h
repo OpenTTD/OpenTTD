@@ -26,6 +26,7 @@ enum ContentType {
 	CONTENT_TYPE_GAME          = 9, ///< The content consists of a game script
 	CONTENT_TYPE_GAME_LIBRARY  = 10, ///< The content consists of a GS library
 	CONTENT_TYPE_END,               ///< Helper to mark the end of the types
+	INVALID_CONTENT_TYPE       = 0xFF, ///< Invalid/uninitialized content
 };
 
 /** Enum with all types of TCP content packets. The order MUST not be changed **/
@@ -57,25 +58,20 @@ struct ContentInfo {
 		INVALID,        ///< The content's invalid
 	};
 
-	ContentType type;        ///< Type of content
-	ContentID id;            ///< Unique (server side) ID for the content
-	uint32 filesize;         ///< Size of the file
-	std::string filename;    ///< Filename (for the .tar.gz; only valid on download)
-	std::string name;        ///< Name of the content
-	std::string version;     ///< Version of the content
-	std::string url;         ///< URL related to the content
-	std::string description; ///< Description of the content
-	uint32 unique_id;        ///< Unique ID; either GRF ID or shortname
-	byte md5sum[16];         ///< The MD5 checksum
-	std::vector<ContentID> dependencies; ///< The dependencies (unique server side ids)
-	StringList tags;         ///< Tags associated with the content
-	State state;             ///< Whether the content info is selected (for download)
-	bool upgrade;            ///< This item is an upgrade
-
-	ContentInfo();
-	~ContentInfo();
-
-	void TransferFrom(ContentInfo *other);
+	ContentType type = INVALID_CONTENT_TYPE; ///< Type of content
+	ContentID id = INVALID_CONTENT_ID;       ///< Unique (server side) ID for the content
+	uint32 filesize = 0;                     ///< Size of the file
+	std::string filename;                    ///< Filename (for the .tar.gz; only valid on download)
+	std::string name;                        ///< Name of the content
+	std::string version;                     ///< Version of the content
+	std::string url;                         ///< URL related to the content
+	std::string description;                 ///< Description of the content
+	uint32 unique_id = 0;                    ///< Unique ID; either GRF ID or shortname
+	byte md5sum[16] = {0};                   ///< The MD5 checksum
+	std::vector<ContentID> dependencies;     ///< The dependencies (unique server side ids)
+	StringList tags;                         ///< Tags associated with the content
+	State state = State::UNSELECTED;         ///< Whether the content info is selected (for download)
+	bool upgrade = false;                    ///< This item is an upgrade
 
 	bool IsSelected() const;
 	bool IsValid() const;
