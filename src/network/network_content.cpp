@@ -150,9 +150,8 @@ bool ClientNetworkContentSocketHandler::Receive_SERVER_INFO(Packet *p)
 			 * As ici might be selected by the content window we cannot delete that.
 			 * However, we want to keep most of the values of ci, except the values
 			 * we (just) already preserved.
-			 * So transfer data and ownership of allocated memory from ci to ici.
 			 */
-			ici->TransferFrom(ci);
+			*ici = *ci;
 			delete ci;
 
 			this->OnReceiveContentInfo(ici);
