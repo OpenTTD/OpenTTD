@@ -8,13 +8,16 @@
 /** @file station_sl.cpp Code handling saving and loading of stations. */
 
 #include "../stdafx.h"
+
+#include "saveload.h"
+#include "compat/station_sl_compat.h"
+
 #include "../station_base.h"
 #include "../waypoint_base.h"
 #include "../roadstop_base.h"
 #include "../vehicle_base.h"
 #include "../newgrf_station.h"
 
-#include "saveload.h"
 #include "table/strings.h"
 
 #include "../safeguards.h"
@@ -142,18 +145,8 @@ void AfterLoadRoadStops()
 
 static const SaveLoad _roadstop_desc[] = {
 	SLE_VAR(RoadStop, xy,           SLE_UINT32),
-	SLE_CONDNULL(1, SL_MIN_VERSION, SLV_45),
 	SLE_VAR(RoadStop, status,       SLE_UINT8),
-	/* Index was saved in some versions, but this is not needed */
-	SLE_CONDNULL(4, SL_MIN_VERSION, SLV_9),
-	SLE_CONDNULL(2, SL_MIN_VERSION, SLV_45),
-	SLE_CONDNULL(1, SL_MIN_VERSION, SLV_26),
-
 	SLE_REF(RoadStop, next,         REF_ROADSTOPS),
-	SLE_CONDNULL(2, SL_MIN_VERSION, SLV_45),
-
-	SLE_CONDNULL(4, SL_MIN_VERSION, SLV_25),
-	SLE_CONDNULL(1, SLV_25, SLV_26),
 };
 
 static uint16 _waiting_acceptance;
@@ -678,6 +671,8 @@ static void Ptrs_STNN()
 
 static void Save_ROADSTOP()
 {
+	SlTableHeader(_roadstop_desc);
+
 	for (RoadStop *rs : RoadStop::Iterate()) {
 		SlSetArrayIndex(rs->index);
 		SlObject(rs, _roadstop_desc);
@@ -686,12 +681,14 @@ static void Save_ROADSTOP()
 
 static void Load_ROADSTOP()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_roadstop_desc, _roadstop_sl_compat);
+
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
 		RoadStop *rs = new (index) RoadStop(INVALID_TILE);
 
-		SlObject(rs, _roadstop_desc);
+		SlObject(rs, slt);
 	}
 }
 
@@ -705,7 +702,7 @@ static void Ptrs_ROADSTOP()
 static const ChunkHandler station_chunk_handlers[] = {
 	{ 'STNS', nullptr,       Load_STNS,     Ptrs_STNS,     nullptr, CH_READONLY },
 	{ 'STNN', Save_STNN,     Load_STNN,     Ptrs_STNN,     nullptr, CH_ARRAY },
-	{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, nullptr, CH_ARRAY },
+	{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _station_chunk_handlers(station_chunk_handlers);

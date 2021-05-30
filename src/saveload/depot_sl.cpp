@@ -8,10 +8,12 @@
 /** @file depot_sl.cpp Code handling saving and loading of depots */
 
 #include "../stdafx.h"
-#include "../depot_base.h"
-#include "../town.h"
 
 #include "saveload.h"
+#include "compat/depot_sl_compat.h"
+
+#include "../depot_base.h"
+#include "../town.h"
 
 #include "../safeguards.h"
 
@@ -29,6 +31,8 @@ static const SaveLoad _depot_desc[] = {
 
 static void Save_DEPT()
 {
+	SlTableHeader(_depot_desc);
+
 	for (Depot *depot : Depot::Iterate()) {
 		SlSetArrayIndex(depot->index);
 		SlObject(depot, _depot_desc);
@@ -37,11 +41,13 @@ static void Save_DEPT()
 
 static void Load_DEPT()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_depot_desc, _depot_sl_compat);
+
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
 		Depot *depot = new (index) Depot();
-		SlObject(depot, _depot_desc);
+		SlObject(depot, slt);
 
 		/* Set the town 'pointer' so we can restore it later. */
 		if (IsSavegameVersionBefore(SLV_141)) depot->town = (Town *)(size_t)_town_index;
@@ -57,7 +63,7 @@ static void Ptrs_DEPT()
 }
 
 static const ChunkHandler depot_chunk_handlers[] = {
-	{ 'DEPT', Save_DEPT, Load_DEPT, Ptrs_DEPT, nullptr, CH_ARRAY },
+	{ 'DEPT', Save_DEPT, Load_DEPT, Ptrs_DEPT, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _depot_chunk_handlers(depot_chunk_handlers);

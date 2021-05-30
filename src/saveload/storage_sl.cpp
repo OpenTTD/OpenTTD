@@ -8,8 +8,11 @@
 /** @file storage_sl.cpp Code handling saving and loading of persistent storages. */
 
 #include "../stdafx.h"
-#include "../newgrf_storage.h"
+
 #include "saveload.h"
+#include "compat/storage_sl_compat.h"
+
+#include "../newgrf_storage.h"
 
 #include "../safeguards.h"
 
@@ -23,18 +26,22 @@ static const SaveLoad _storage_desc[] = {
 /** Load persistent storage data. */
 static void Load_PSAC()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_storage_desc, _storage_sl_compat);
+
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
 		assert(PersistentStorage::CanAllocateItem());
 		PersistentStorage *ps = new (index) PersistentStorage(0, 0, 0);
-		SlObject(ps, _storage_desc);
+		SlObject(ps, slt);
 	}
 }
 
 /** Save persistent storage data. */
 static void Save_PSAC()
 {
+	SlTableHeader(_storage_desc);
+
 	/* Write the industries */
 	for (PersistentStorage *ps : PersistentStorage::Iterate()) {
 		ps->ClearChanges();
@@ -43,9 +50,8 @@ static void Save_PSAC()
 	}
 }
 
-/** Chunk handler for persistent storages. */
 static const ChunkHandler persistent_storage_chunk_handlers[] = {
-	{ 'PSAC', Save_PSAC, Load_PSAC, nullptr, nullptr, CH_ARRAY },
+	{ 'PSAC', Save_PSAC, Load_PSAC, nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _persistent_storage_chunk_handlers(persistent_storage_chunk_handlers);

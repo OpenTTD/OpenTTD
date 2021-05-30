@@ -8,10 +8,12 @@
 /** @file cargopacket_sl.cpp Code handling saving and loading of cargo packets */
 
 #include "../stdafx.h"
-#include "../vehicle_base.h"
-#include "../station_base.h"
 
 #include "saveload.h"
+#include "compat/cargopacket_sl_compat.h"
+
+#include "../vehicle_base.h"
+#include "../station_base.h"
 
 #include "../safeguards.h"
 
@@ -94,9 +96,6 @@ SaveLoadTable GetCargoPacketDesc()
 		     SLE_VAR(CargoPacket, feeder_share,    SLE_INT64),
 		 SLE_CONDVAR(CargoPacket, source_type,     SLE_UINT8,  SLV_125, SL_MAX_VERSION),
 		 SLE_CONDVAR(CargoPacket, source_id,       SLE_UINT16, SLV_125, SL_MAX_VERSION),
-
-		/* Used to be paid_for, but that got changed. */
-		SLE_CONDNULL(1, SL_MIN_VERSION, SLV_121),
 	};
 	return _cargopacket_desc;
 }
@@ -106,6 +105,8 @@ SaveLoadTable GetCargoPacketDesc()
  */
 static void Save_CAPA()
 {
+	SlTableHeader(GetCargoPacketDesc());
+
 	for (CargoPacket *cp : CargoPacket::Iterate()) {
 		SlSetArrayIndex(cp->index);
 		SlObject(cp, GetCargoPacketDesc());
@@ -117,17 +118,18 @@ static void Save_CAPA()
  */
 static void Load_CAPA()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(GetCargoPacketDesc(), _cargopacket_sl_compat);
+
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
 		CargoPacket *cp = new (index) CargoPacket();
-		SlObject(cp, GetCargoPacketDesc());
+		SlObject(cp, slt);
 	}
 }
 
-/** Chunk handlers related to cargo packets. */
 static const ChunkHandler cargopacket_chunk_handlers[] = {
-	{ 'CAPA', Save_CAPA, Load_CAPA, nullptr, nullptr, CH_ARRAY },
+	{ 'CAPA', Save_CAPA, Load_CAPA, nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _cargopacket_chunk_handlers(cargopacket_chunk_handlers);

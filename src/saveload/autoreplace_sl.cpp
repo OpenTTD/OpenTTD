@@ -8,9 +8,11 @@
 /** @file autoreplace_sl.cpp Code handling saving and loading of autoreplace rules */
 
 #include "../stdafx.h"
-#include "../autoreplace_base.h"
 
 #include "saveload.h"
+#include "compat/autoreplace_sl_compat.h"
+
+#include "../autoreplace_base.h"
 
 #include "../safeguards.h"
 
@@ -25,6 +27,8 @@ static const SaveLoad _engine_renew_desc[] = {
 
 static void Save_ERNW()
 {
+	SlTableHeader(_engine_renew_desc);
+
 	for (EngineRenew *er : EngineRenew::Iterate()) {
 		SlSetArrayIndex(er->index);
 		SlObject(er, _engine_renew_desc);
@@ -33,11 +37,13 @@ static void Save_ERNW()
 
 static void Load_ERNW()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_renew_desc, _engine_renew_sl_compat);
+
 	int index;
 
 	while ((index = SlIterateArray()) != -1) {
 		EngineRenew *er = new (index) EngineRenew();
-		SlObject(er, _engine_renew_desc);
+		SlObject(er, slt);
 
 		/* Advanced vehicle lists, ungrouped vehicles got added */
 		if (IsSavegameVersionBefore(SLV_60)) {
@@ -56,7 +62,7 @@ static void Ptrs_ERNW()
 }
 
 static const ChunkHandler autoreplace_chunk_handlers[] = {
-	{ 'ERNW', Save_ERNW, Load_ERNW, Ptrs_ERNW, nullptr, CH_ARRAY },
+	{ 'ERNW', Save_ERNW, Load_ERNW, Ptrs_ERNW, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _autoreplace_chunk_handlers(autoreplace_chunk_handlers);

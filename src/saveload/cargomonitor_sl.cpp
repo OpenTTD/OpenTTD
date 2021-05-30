@@ -8,9 +8,11 @@
 /** @file cargomonitor_sl.cpp Code handling saving and loading of Cargo monitoring. */
 
 #include "../stdafx.h"
-#include "../cargomonitor.h"
 
 #include "saveload.h"
+#include "compat/cargomonitor_sl_compat.h"
+
+#include "../cargomonitor.h"
 
 #include "../safeguards.h"
 
@@ -44,6 +46,8 @@ static CargoMonitorID FixupCargoMonitor(CargoMonitorID number)
 /** Save the #_cargo_deliveries monitoring map. */
 static void SaveDelivery()
 {
+	SlTableHeader(_cargomonitor_pair_desc);
+
 	TempStorage storage;
 
 	int i = 0;
@@ -63,13 +67,15 @@ static void SaveDelivery()
 /** Load the #_cargo_deliveries monitoring map. */
 static void LoadDelivery()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_cargomonitor_pair_desc, _cargomonitor_pair_sl_compat);
+
 	TempStorage storage;
 	bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
 
 	ClearCargoDeliveryMonitoring();
 	for (;;) {
 		if (SlIterateArray() < 0) break;
-		SlObject(&storage, _cargomonitor_pair_desc);
+		SlObject(&storage, slt);
 
 		if (fix) storage.number = FixupCargoMonitor(storage.number);
 
@@ -82,6 +88,8 @@ static void LoadDelivery()
 /** Save the #_cargo_pickups monitoring map. */
 static void SavePickup()
 {
+	SlTableHeader(_cargomonitor_pair_desc);
+
 	TempStorage storage;
 
 	int i = 0;
@@ -101,13 +109,15 @@ static void SavePickup()
 /** Load the #_cargo_pickups monitoring map. */
 static void LoadPickup()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_cargomonitor_pair_desc, _cargomonitor_pair_sl_compat);
+
 	TempStorage storage;
 	bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
 
 	ClearCargoPickupMonitoring();
 	for (;;) {
 		if (SlIterateArray() < 0) break;
-		SlObject(&storage, _cargomonitor_pair_desc);
+		SlObject(&storage, slt);
 
 		if (fix) storage.number = FixupCargoMonitor(storage.number);
 
@@ -117,9 +127,9 @@ static void LoadPickup()
 }
 
 /** Chunk definition of the cargomonitoring maps. */
-static const ChunkHandler cargomonitor_chunk_handlers[] = {
-	{ 'CMDL', SaveDelivery, LoadDelivery, nullptr, nullptr, CH_ARRAY },
-	{ 'CMPU', SavePickup,   LoadPickup,   nullptr, nullptr, CH_ARRAY },
+extern const ChunkHandler cargomonitor_chunk_handlers[] = {
+	{ 'CMDL', SaveDelivery, LoadDelivery, nullptr, nullptr, CH_TABLE },
+	{ 'CMPU', SavePickup,   LoadPickup,   nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _cargomonitor_chunk_handlers(cargomonitor_chunk_handlers);

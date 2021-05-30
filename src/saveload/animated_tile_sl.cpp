@@ -8,11 +8,13 @@
 /** @file animated_tile_sl.cpp Code handling saving and loading of animated tiles */
 
 #include "../stdafx.h"
+
+#include "saveload.h"
+#include "compat/animated_tile_sl_compat.h"
+
 #include "../tile_type.h"
 #include "../core/alloc_func.hpp"
 #include "../core/smallvec_type.hpp"
-
-#include "saveload.h"
 
 #include "../safeguards.h"
 
@@ -27,6 +29,8 @@ static const SaveLoad _animated_tile_desc[] = {
  */
 static void Save_ANIT()
 {
+	SlTableHeader(_animated_tile_desc);
+
 	SlSetArrayIndex(0);
 	SlGlobList(_animated_tile_desc);
 }
@@ -57,17 +61,15 @@ static void Load_ANIT()
 		return;
 	}
 
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_animated_tile_desc, _animated_tile_sl_compat);
+
 	if (SlIterateArray() == -1) return;
-	SlGlobList(_animated_tile_desc);
+	SlGlobList(slt);
 	if (SlIterateArray() != -1) SlErrorCorrupt("Too many ANIT entries");
 }
 
-/**
- * "Definition" imported by the saveload code to be able to load and save
- * the animated tile table.
- */
 static const ChunkHandler animated_tile_chunk_handlers[] = {
-	{ 'ANIT', Save_ANIT, Load_ANIT, nullptr, nullptr, CH_ARRAY },
+	{ 'ANIT', Save_ANIT, Load_ANIT, nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _animated_tile_chunk_handlers(animated_tile_chunk_handlers);

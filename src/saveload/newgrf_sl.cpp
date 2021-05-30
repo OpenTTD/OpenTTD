@@ -8,10 +8,12 @@
 /** @file newgrf_sl.cpp Code handling saving and loading of newgrf config */
 
 #include "../stdafx.h"
-#include "../fios.h"
 
 #include "saveload.h"
+#include "compat/newgrf_sl_compat.h"
+
 #include "newgrf_sl.h"
+#include "../fios.h"
 
 #include "../safeguards.h"
 
@@ -28,6 +30,8 @@ static const SaveLoad _newgrf_mapping_desc[] = {
  */
 void Save_NewGRFMapping(const OverrideManagerBase &mapping)
 {
+	SlTableHeader(_newgrf_mapping_desc);
+
 	for (uint i = 0; i < mapping.GetMaxMapping(); i++) {
 		if (mapping.mapping_ID[i].grfid == 0 &&
 		    mapping.mapping_ID[i].entity_id == 0) continue;
@@ -42,6 +46,8 @@ void Save_NewGRFMapping(const OverrideManagerBase &mapping)
  */
 void Load_NewGRFMapping(OverrideManagerBase &mapping)
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_newgrf_mapping_desc, _newgrf_mapping_sl_compat);
+
 	/* Clear the current mapping stored.
 	 * This will create the manager if ever it is not yet done */
 	mapping.ResetMapping();
@@ -51,7 +57,7 @@ void Load_NewGRFMapping(OverrideManagerBase &mapping)
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		if ((uint)index >= max_id) SlErrorCorrupt("Too many NewGRF entity mappings");
-		SlObject(&mapping.mapping_ID[index], _newgrf_mapping_desc);
+		SlObject(&mapping.mapping_ID[index], slt);
 	}
 }
 
@@ -69,6 +75,8 @@ static const SaveLoad _grfconfig_desc[] = {
 
 static void Save_NGRF()
 {
+	SlTableHeader(_grfconfig_desc);
+
 	int index = 0;
 
 	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
@@ -81,10 +89,12 @@ static void Save_NGRF()
 
 static void Load_NGRF_common(GRFConfig *&grfconfig)
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_grfconfig_desc, _grfconfig_sl_compat);
+
 	ClearGRFConfigList(&grfconfig);
 	while (SlIterateArray() != -1) {
 		GRFConfig *c = new GRFConfig();
-		SlObject(c, _grfconfig_desc);
+		SlObject(c, slt);
 		if (IsSavegameVersionBefore(SLV_101)) c->SetSuitablePalette();
 		AppendToGRFConfigList(&grfconfig, c);
 	}
@@ -112,7 +122,7 @@ static void Check_NGRF()
 }
 
 static const ChunkHandler newgrf_chunk_handlers[] = {
-	{ 'NGRF', Save_NGRF, Load_NGRF, nullptr, Check_NGRF, CH_ARRAY }
+	{ 'NGRF', Save_NGRF, Load_NGRF, nullptr, Check_NGRF, CH_TABLE }
 };
 
 extern const ChunkHandlerTable _newgrf_chunk_handlers(newgrf_chunk_handlers);

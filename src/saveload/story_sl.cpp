@@ -8,9 +8,11 @@
 /** @file story_sl.cpp Code handling saving and loading of story pages */
 
 #include "../stdafx.h"
-#include "../story_base.h"
 
 #include "saveload.h"
+#include "compat/story_sl_compat.h"
+
+#include "../story_base.h"
 
 #include "../safeguards.h"
 
@@ -38,6 +40,8 @@ static const SaveLoad _story_page_elements_desc[] = {
 
 static void Save_STORY_PAGE_ELEMENT()
 {
+	SlTableHeader(_story_page_elements_desc);
+
 	for (StoryPageElement *s : StoryPageElement::Iterate()) {
 		SlSetArrayIndex(s->index);
 		SlObject(s, _story_page_elements_desc);
@@ -46,11 +50,13 @@ static void Save_STORY_PAGE_ELEMENT()
 
 static void Load_STORY_PAGE_ELEMENT()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_story_page_elements_desc, _story_page_elements_sl_compat);
+
 	int index;
 	uint32 max_sort_value = 0;
 	while ((index = SlIterateArray()) != -1) {
 		StoryPageElement *s = new (index) StoryPageElement();
-		SlObject(s, _story_page_elements_desc);
+		SlObject(s, slt);
 		if (s->sort_value > max_sort_value) {
 			max_sort_value = s->sort_value;
 		}
@@ -72,6 +78,8 @@ static const SaveLoad _story_pages_desc[] = {
 
 static void Save_STORY_PAGE()
 {
+	SlTableHeader(_story_pages_desc);
+
 	for (StoryPage *s : StoryPage::Iterate()) {
 		SlSetArrayIndex(s->index);
 		SlObject(s, _story_pages_desc);
@@ -80,11 +88,13 @@ static void Save_STORY_PAGE()
 
 static void Load_STORY_PAGE()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_story_pages_desc, _story_pages_sl_compat);
+
 	int index;
 	uint32 max_sort_value = 0;
 	while ((index = SlIterateArray()) != -1) {
 		StoryPage *s = new (index) StoryPage();
-		SlObject(s, _story_pages_desc);
+		SlObject(s, slt);
 		if (s->sort_value > max_sort_value) {
 			max_sort_value = s->sort_value;
 		}
@@ -96,8 +106,8 @@ static void Load_STORY_PAGE()
 }
 
 static const ChunkHandler story_page_chunk_handlers[] = {
-	{ 'STPE', Save_STORY_PAGE_ELEMENT, Load_STORY_PAGE_ELEMENT, nullptr, nullptr, CH_ARRAY },
-	{ 'STPA', Save_STORY_PAGE,         Load_STORY_PAGE,         nullptr, nullptr, CH_ARRAY },
+	{ 'STPE', Save_STORY_PAGE_ELEMENT, Load_STORY_PAGE_ELEMENT, nullptr, nullptr, CH_TABLE },
+	{ 'STPA', Save_STORY_PAGE,         Load_STORY_PAGE,         nullptr, nullptr, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _story_page_chunk_handlers(story_page_chunk_handlers);

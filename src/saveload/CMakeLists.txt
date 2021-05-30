@@ -1,3 +1,5 @@
+add_subdirectory(compat)
+
 add_files(
     afterload.cpp
     ai_sl.cpp
