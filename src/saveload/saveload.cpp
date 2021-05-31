@@ -1517,8 +1517,10 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 	}
 }
 
-bool SlObjectMember(void *ptr, const SaveLoad &sld)
+static bool SlObjectMember(void *object, const SaveLoad &sld)
 {
+	void *ptr = GetVariableAddress(object, sld);
+
 	assert(IsVariableSizeRight(sld));
 
 	VarType conv = GB(sld.conv, 0, 8);
@@ -1604,8 +1606,7 @@ void SlObject(void *object, const SaveLoadTable &slt)
 	}
 
 	for (auto &sld : slt) {
-		void *ptr = GetVariableAddress(object, sld);
-		SlObjectMember(ptr, sld);
+		SlObjectMember(object, sld);
 	}
 }
 
