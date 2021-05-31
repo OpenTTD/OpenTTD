@@ -578,7 +578,7 @@ static uint32 _cargo_loaded_at_xy;
  * @param vt the vehicle type. Can be VEH_END for the common vehicle description data
  * @return the saveload description
  */
-const SaveLoad *GetVehicleDescription(VehicleType vt)
+SaveLoadTable GetVehicleDescription(VehicleType vt)
 {
 	/** Save and load of vehicles */
 	static const SaveLoad _common_veh_desc[] = {
@@ -712,10 +712,7 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_67, SL_MAX_VERSION),
 
 		SLE_CONDNULL(10,                                                           SLV_2, SLV_144), // old reserved space
-
-		     SLE_END()
 	};
-
 
 	static const SaveLoad _train_desc[] = {
 		SLE_WRITEBYTE(Vehicle, type),
@@ -734,8 +731,6 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		SLE_CONDNULL(2, SLV_2, SLV_20),
 		 SLE_CONDVAR(Train, gv_flags,            SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
 		SLE_CONDNULL(11, SLV_2, SLV_144), // old reserved space
-
-		     SLE_END()
 	};
 
 	static const SaveLoad _roadveh_desc[] = {
@@ -756,8 +751,6 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDNULL(4,                                                              SLV_69, SLV_131),
 		 SLE_CONDNULL(2,                                                               SLV_6, SLV_131),
 		 SLE_CONDNULL(16,                                                              SLV_2, SLV_144), // old reserved space
-
-		      SLE_END()
 	};
 
 	static const SaveLoad _ship_desc[] = {
@@ -768,8 +761,6 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		  SLE_CONDVAR(Ship, rotation,                  SLE_UINT8,                  SLV_SHIP_ROTATION, SL_MAX_VERSION),
 
 		SLE_CONDNULL(16, SLV_2, SLV_144), // old reserved space
-
-		     SLE_END()
 	};
 
 	static const SaveLoad _aircraft_desc[] = {
@@ -791,8 +782,6 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Aircraft, flags,                 SLE_UINT8,                  SLV_167, SL_MAX_VERSION),
 
 		SLE_CONDNULL(13,                                                           SLV_2, SLV_144), // old reserved space
-
-		     SLE_END()
 	};
 
 	static const SaveLoad _special_desc[] = {
@@ -821,8 +810,6 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(Vehicle, spritenum,             SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
 
 		SLE_CONDNULL(15,                                                           SLV_2, SLV_144), // old reserved space
-
-		     SLE_END()
 	};
 
 	static const SaveLoad _disaster_desc[] = {
@@ -862,12 +849,10 @@ const SaveLoad *GetVehicleDescription(VehicleType vt)
 		 SLE_CONDVAR(DisasterVehicle, flags,                     SLE_UINT8,                  SLV_194, SL_MAX_VERSION),
 
 		SLE_CONDNULL(16,                                                           SLV_2, SLV_144), // old reserved space
-
-		     SLE_END()
 	};
 
 
-	static const SaveLoad * const _veh_descs[] = {
+	static const SaveLoadTable _veh_descs[] = {
 		_train_desc,
 		_roadveh_desc,
 		_ship_desc,

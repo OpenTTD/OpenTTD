@@ -46,7 +46,6 @@ static const SaveLoad _economy_desc[] = {
 	    SLE_VAR(Economy, infl_amount,                   SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount_pr,                SLE_UINT8),
 	SLE_CONDVAR(Economy, industry_daily_change_counter, SLE_UINT32,                SLV_102, SL_MAX_VERSION),
-	    SLE_END()
 };
 
 /** Economy variables */
@@ -67,7 +66,6 @@ static const SaveLoad _cargopayment_desc[] = {
 	    SLE_VAR(CargoPayment, route_profit,    SLE_INT64),
 	    SLE_VAR(CargoPayment, visual_profit,   SLE_INT64),
 	SLE_CONDVAR(CargoPayment, visual_transfer, SLE_INT64, SLV_181, SL_MAX_VERSION),
-	    SLE_END()
 };
 
 static void Save_CAPY()

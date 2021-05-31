@@ -17,13 +17,11 @@
 
 static const SaveLoad _glog_action_desc[] = {
 	SLE_VAR(LoggedAction, tick,              SLE_UINT16),
-	SLE_END()
 };
 
 static const SaveLoad _glog_mode_desc[] = {
 	SLE_VAR(LoggedChange, mode.mode,         SLE_UINT8),
 	SLE_VAR(LoggedChange, mode.landscape,    SLE_UINT8),
-	SLE_END()
 };
 
 static const SaveLoad _glog_revision_desc[] = {
@@ -31,62 +29,53 @@ static const SaveLoad _glog_revision_desc[] = {
 	SLE_VAR(LoggedChange, revision.newgrf,   SLE_UINT32),
 	SLE_VAR(LoggedChange, revision.slver,    SLE_UINT16),
 	SLE_VAR(LoggedChange, revision.modified, SLE_UINT8),
-	SLE_END()
 };
 
 static const SaveLoad _glog_oldver_desc[] = {
 	SLE_VAR(LoggedChange, oldver.type,       SLE_UINT32),
 	SLE_VAR(LoggedChange, oldver.version,    SLE_UINT32),
-	SLE_END()
 };
 
 static const SaveLoad _glog_setting_desc[] = {
 	SLE_STR(LoggedChange, setting.name,      SLE_STR,    128),
 	SLE_VAR(LoggedChange, setting.oldval,    SLE_INT32),
 	SLE_VAR(LoggedChange, setting.newval,    SLE_INT32),
-	SLE_END()
 };
 
 static const SaveLoad _glog_grfadd_desc[] = {
 	SLE_VAR(LoggedChange, grfadd.grfid,      SLE_UINT32    ),
 	SLE_ARR(LoggedChange, grfadd.md5sum,     SLE_UINT8,  16),
-	SLE_END()
 };
 
 static const SaveLoad _glog_grfrem_desc[] = {
 	SLE_VAR(LoggedChange, grfrem.grfid,      SLE_UINT32),
-	SLE_END()
 };
 
 static const SaveLoad _glog_grfcompat_desc[] = {
 	SLE_VAR(LoggedChange, grfcompat.grfid,   SLE_UINT32    ),
 	SLE_ARR(LoggedChange, grfcompat.md5sum,  SLE_UINT8,  16),
-	SLE_END()
 };
 
 static const SaveLoad _glog_grfparam_desc[] = {
 	SLE_VAR(LoggedChange, grfparam.grfid,    SLE_UINT32),
-	SLE_END()
 };
 
 static const SaveLoad _glog_grfmove_desc[] = {
 	SLE_VAR(LoggedChange, grfmove.grfid,     SLE_UINT32),
 	SLE_VAR(LoggedChange, grfmove.offset,    SLE_INT32),
-	SLE_END()
 };
 
 static const SaveLoad _glog_grfbug_desc[] = {
 	SLE_VAR(LoggedChange, grfbug.data,       SLE_UINT64),
 	SLE_VAR(LoggedChange, grfbug.grfid,      SLE_UINT32),
 	SLE_VAR(LoggedChange, grfbug.bug,        SLE_UINT8),
-	SLE_END()
 };
 
 static const SaveLoad _glog_emergency_desc[] = {
-	SLE_END()
+	SLE_CONDNULL(0, SL_MIN_VERSION, SL_MIN_VERSION), // Just an empty list, to keep the rest of the code easier.
 };
 
-static const SaveLoad * const _glog_desc[] = {
+static const SaveLoadTable _glog_desc[] = {
 	_glog_mode_desc,
 	_glog_revision_desc,
 	_glog_oldver_desc,

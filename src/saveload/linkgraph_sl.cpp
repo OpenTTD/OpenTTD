@@ -26,13 +26,12 @@ static uint16 _num_nodes;
  * Get a SaveLoad array for a link graph.
  * @return SaveLoad array for link graph.
  */
-const SaveLoad *GetLinkGraphDesc()
+SaveLoadTable GetLinkGraphDesc()
 {
 	static const SaveLoad link_graph_desc[] = {
 		 SLE_VAR(LinkGraph, last_compression, SLE_INT32),
 		SLEG_VAR(_num_nodes,                  SLE_UINT16),
 		 SLE_VAR(LinkGraph, cargo,            SLE_UINT8),
-		 SLE_END()
 	};
 	return link_graph_desc;
 }
@@ -46,7 +45,7 @@ const SaveLoad *GetLinkGraphDesc()
  * Of course the settings have to be saved and loaded, too, to avoid desyncs.
  * @return Array of SaveLoad structs.
  */
-const SaveLoad *GetLinkGraphJobDesc()
+SaveLoadTable GetLinkGraphJobDesc()
 {
 	static std::vector<SaveLoad> saveloads;
 	static const char *prefix = "linkgraph.";
@@ -54,7 +53,6 @@ const SaveLoad *GetLinkGraphJobDesc()
 	static const SaveLoad job_desc[] = {
 		SLE_VAR(LinkGraphJob, join_date,        SLE_INT32),
 		SLE_VAR(LinkGraphJob, link_graph.index, SLE_UINT16),
-		SLE_END()
 	};
 
 	/* The member offset arithmetic below is only valid if the types in question
@@ -74,25 +72,23 @@ const SaveLoad *GetLinkGraphJobDesc()
 			sl.address_proc = proc;
 		}
 
-		int i = 0;
-		do {
-			saveloads.push_back(job_desc[i++]);
-		} while (saveloads.back().cmd != SL_END);
+		for (auto &sld : job_desc) {
+			saveloads.push_back(sld);
+		}
 	}
 
-	return &saveloads[0];
+	return saveloads;
 }
 
 /**
  * Get a SaveLoad array for the link graph schedule.
  * @return SaveLoad array for the link graph schedule.
  */
-const SaveLoad *GetLinkGraphScheduleDesc()
+SaveLoadTable GetLinkGraphScheduleDesc()
 {
 	static const SaveLoad schedule_desc[] = {
 		SLE_LST(LinkGraphSchedule, schedule, REF_LINK_GRAPH),
 		SLE_LST(LinkGraphSchedule, running,  REF_LINK_GRAPH_JOB),
-		SLE_END()
 	};
 	return schedule_desc;
 }
@@ -108,7 +104,6 @@ static const SaveLoad _node_desc[] = {
 	    SLE_VAR(Node, demand,      SLE_UINT32),
 	    SLE_VAR(Node, station,     SLE_UINT16),
 	    SLE_VAR(Node, last_update, SLE_INT32),
-	    SLE_END()
 };
 
 /**
@@ -121,7 +116,6 @@ static const SaveLoad _edge_desc[] = {
 	     SLE_VAR(Edge, last_unrestricted_update, SLE_INT32),
 	 SLE_CONDVAR(Edge, last_restricted_update,   SLE_INT32, SLV_187, SL_MAX_VERSION),
 	     SLE_VAR(Edge, next_edge,                SLE_UINT16),
-	     SLE_END()
 };
 
 /**

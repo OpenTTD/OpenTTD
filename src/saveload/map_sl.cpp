@@ -20,10 +20,9 @@
 static uint32 _map_dim_x;
 static uint32 _map_dim_y;
 
-static const SaveLoadGlobVarList _map_dimensions[] = {
+static const SaveLoad _map_dimensions[] = {
 	SLEG_CONDVAR(_map_dim_x, SLE_UINT32, SLV_6, SL_MAX_VERSION),
 	SLEG_CONDVAR(_map_dim_y, SLE_UINT32, SLV_6, SL_MAX_VERSION),
-	    SLEG_END()
 };
 
 static void Save_MAPS()

@@ -21,7 +21,6 @@ static const SaveLoad _engine_renew_desc[] = {
 	    SLE_REF(EngineRenew, next,     REF_ENGINE_RENEWS),
 	SLE_CONDVAR(EngineRenew, group_id, SLE_UINT16, SLV_60, SL_MAX_VERSION),
 	SLE_CONDVAR(EngineRenew, replace_when_old, SLE_BOOL, SLV_175, SL_MAX_VERSION),
-	SLE_END()
 };
 
 static void Save_ERNW()

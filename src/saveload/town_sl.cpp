@@ -194,8 +194,6 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDNULL(4, SLV_166, SLV_EXTEND_CARGOTYPES),  ///< cargo_produced, no longer in use
 	SLE_CONDNULL(8, SLV_EXTEND_CARGOTYPES, SLV_REMOVE_TOWN_CARGO_CACHE),  ///< cargo_produced, no longer in use
 	SLE_CONDNULL(30, SLV_2, SLV_REMOVE_TOWN_CARGO_CACHE), ///< old reserved space
-
-	SLE_END()
 };
 
 static const SaveLoad _town_supplied_desc[] = {
@@ -203,8 +201,6 @@ static const SaveLoad _town_supplied_desc[] = {
 	SLE_CONDVAR(TransportedCargoStat<uint32>, new_max, SLE_UINT32, SLV_165, SL_MAX_VERSION),
 	SLE_CONDVAR(TransportedCargoStat<uint32>, old_act, SLE_UINT32, SLV_165, SL_MAX_VERSION),
 	SLE_CONDVAR(TransportedCargoStat<uint32>, new_act, SLE_UINT32, SLV_165, SL_MAX_VERSION),
-
-	SLE_END()
 };
 
 static const SaveLoad _town_received_desc[] = {
@@ -212,8 +208,6 @@ static const SaveLoad _town_received_desc[] = {
 	SLE_CONDVAR(TransportedCargoStat<uint16>, new_max, SLE_UINT16, SLV_165, SL_MAX_VERSION),
 	SLE_CONDVAR(TransportedCargoStat<uint16>, old_act, SLE_UINT16, SLV_165, SL_MAX_VERSION),
 	SLE_CONDVAR(TransportedCargoStat<uint16>, new_act, SLE_UINT16, SLV_165, SL_MAX_VERSION),
-
-	SLE_END()
 };
 
 static void Save_HIDS()
@@ -226,14 +220,13 @@ static void Load_HIDS()
 	Load_NewGRFMapping(_house_mngr);
 }
 
-const SaveLoad *GetTileMatrixDesc()
+SaveLoadTable GetTileMatrixDesc()
 {
 	/* Here due to private member vars. */
 	static const SaveLoad _tilematrix_desc[] = {
 		SLE_VAR(AcceptanceMatrix, area.tile, SLE_UINT32),
 		SLE_VAR(AcceptanceMatrix, area.w,    SLE_UINT16),
 		SLE_VAR(AcceptanceMatrix, area.h,    SLE_UINT16),
-		SLE_END()
 	};
 
 	return _tilematrix_desc;

@@ -21,7 +21,6 @@ static const SaveLoad _goals_desc[] = {
 	    SLE_STR(Goal, text,      SLE_STR | SLF_ALLOW_CONTROL, 0),
 	SLE_CONDSTR(Goal, progress,  SLE_STR | SLF_ALLOW_CONTROL, 0, SLV_182, SL_MAX_VERSION),
 	SLE_CONDVAR(Goal, completed, SLE_BOOL, SLV_182, SL_MAX_VERSION),
-	    SLE_END()
 };
 
 static void Save_GOAL()
