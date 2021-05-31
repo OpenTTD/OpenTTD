@@ -1843,10 +1843,14 @@ public:
 						const Vehicle *v = vehgroup.vehicles_begin[0];
 						/* We do not support VehicleClicked() here since the contextual action may only make sense for individual vehicles */
 
-						if (vehgroup.NumVehicles() == 1) {
-							ShowVehicleViewWindow(v);
+						if (_ctrl_pressed) {
+							ShowOrdersWindow(v);
 						} else {
-							ShowVehicleListWindow(v);
+							if (vehgroup.NumVehicles() == 1) {
+								ShowVehicleViewWindow(v);
+							} else {
+								ShowVehicleListWindow(v);
+							}
 						}
 						break;
 					}
