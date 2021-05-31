@@ -343,7 +343,6 @@ static byte _script_sl_byte; ///< Used as source/target by the script saveload c
 /** SaveLoad array that saves/loads exactly one byte. */
 static const SaveLoad _script_byte[] = {
 	SLEG_VAR(_script_sl_byte, SLE_UINT8),
-	SLE_END()
 };
 
 /* static */ bool ScriptInstance::SaveObject(HSQUIRRELVM vm, SQInteger index, int max_depth, bool test)

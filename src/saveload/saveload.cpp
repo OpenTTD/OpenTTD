@@ -1400,10 +1400,10 @@ static void SlDeque(void *deque, VarType conv)
 
 
 /** Are we going to save this object or not? */
-static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
+static inline bool SlIsObjectValidInSavegame(const SaveLoad &sld)
 {
-	if (_sl_version < sld->version_from || _sl_version >= sld->version_to) return false;
-	if (sld->conv & SLF_NOT_IN_SAVE) return false;
+	if (_sl_version < sld.version_from || _sl_version >= sld.version_to) return false;
+	if (sld.conv & SLF_NOT_IN_SAVE) return false;
 
 	return true;
 }
@@ -1413,10 +1413,10 @@ static inline bool SlIsObjectValidInSavegame(const SaveLoad *sld)
  * @note If the variable is skipped it is skipped in the savegame
  * bytestream itself as well, so there is no need to skip it somewhere else
  */
-static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
+static inline bool SlSkipVariableOnLoad(const SaveLoad &sld)
 {
-	if ((sld->conv & SLF_NO_NETWORK_SYNC) && _sl.action != SLA_SAVE && _networking && !_network_server) {
-		SlSkipBytes(SlCalcConvMemLen(sld->conv) * sld->length);
+	if ((sld.conv & SLF_NO_NETWORK_SYNC) && _sl.action != SLA_SAVE && _networking && !_network_server) {
+		SlSkipBytes(SlCalcConvMemLen(sld.conv) * sld.length);
 		return true;
 	}
 
@@ -1425,26 +1425,26 @@ static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
 
 /**
  * Calculate the size of an object.
- * @param object to be measured
- * @param sld The SaveLoad description of the object so we know how to manipulate it
- * @return size of given object
+ * @param object to be measured.
+ * @param slt The SaveLoad table with objects to save/load.
+ * @return size of given object.
  */
-size_t SlCalcObjLength(const void *object, const SaveLoad *sld)
+size_t SlCalcObjLength(const void *object, const SaveLoadTable &slt)
 {
 	size_t length = 0;
 
 	/* Need to determine the length and write a length tag. */
-	for (; sld->cmd != SL_END; sld++) {
+	for (auto &sld : slt) {
 		length += SlCalcObjMemberLength(object, sld);
 	}
 	return length;
 }
 
-size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
+size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 {
 	assert(_sl.action == SLA_SAVE);
 
-	switch (sld->cmd) {
+	switch (sld.cmd) {
 		case SL_VAR:
 		case SL_REF:
 		case SL_ARR:
@@ -1455,13 +1455,13 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 			/* CONDITIONAL saveload types depend on the savegame version */
 			if (!SlIsObjectValidInSavegame(sld)) break;
 
-			switch (sld->cmd) {
-				case SL_VAR: return SlCalcConvFileLen(sld->conv);
+			switch (sld.cmd) {
+				case SL_VAR: return SlCalcConvFileLen(sld.conv);
 				case SL_REF: return SlCalcRefLen();
-				case SL_ARR: return SlCalcArrayLen(sld->length, sld->conv);
-				case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld->length, sld->conv);
+				case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
+				case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld.length, sld.conv);
 				case SL_LST: return SlCalcListLen(GetVariableAddress(object, sld));
-				case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld->conv);
+				case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
 				case SL_STDSTR: return SlCalcStdStringLen(GetVariableAddress(object, sld));
 				default: NOT_REACHED();
 			}
@@ -1481,41 +1481,41 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
  * matches with the actual variable size.
  * @param sld The saveload configuration to test.
  */
-static bool IsVariableSizeRight(const SaveLoad *sld)
+static bool IsVariableSizeRight(const SaveLoad &sld)
 {
-	switch (sld->cmd) {
+	switch (sld.cmd) {
 		case SL_VAR:
-			switch (GetVarMemType(sld->conv)) {
+			switch (GetVarMemType(sld.conv)) {
 				case SLE_VAR_BL:
-					return sld->size == sizeof(bool);
+					return sld.size == sizeof(bool);
 				case SLE_VAR_I8:
 				case SLE_VAR_U8:
-					return sld->size == sizeof(int8);
+					return sld.size == sizeof(int8);
 				case SLE_VAR_I16:
 				case SLE_VAR_U16:
-					return sld->size == sizeof(int16);
+					return sld.size == sizeof(int16);
 				case SLE_VAR_I32:
 				case SLE_VAR_U32:
-					return sld->size == sizeof(int32);
+					return sld.size == sizeof(int32);
 				case SLE_VAR_I64:
 				case SLE_VAR_U64:
-					return sld->size == sizeof(int64);
+					return sld.size == sizeof(int64);
 				case SLE_VAR_NAME:
-					return sld->size == sizeof(std::string);
+					return sld.size == sizeof(std::string);
 				default:
-					return sld->size == sizeof(void *);
+					return sld.size == sizeof(void *);
 			}
 		case SL_REF:
 			/* These should all be pointer sized. */
-			return sld->size == sizeof(void *);
+			return sld.size == sizeof(void *);
 
 		case SL_STR:
 			/* These should be pointer sized, or fixed array. */
-			return sld->size == sizeof(void *) || sld->size == sld->length;
+			return sld.size == sizeof(void *) || sld.size == sld.length;
 
 		case SL_STDSTR:
 			/* These should be all pointers to std::string. */
-			return sld->size == sizeof(std::string);
+			return sld.size == sizeof(std::string);
 
 		default:
 			return true;
@@ -1524,14 +1524,14 @@ static bool IsVariableSizeRight(const SaveLoad *sld)
 
 #endif /* OTTD_ASSERT */
 
-bool SlObjectMember(void *ptr, const SaveLoad *sld)
+bool SlObjectMember(void *ptr, const SaveLoad &sld)
 {
 #ifdef OTTD_ASSERT
 	assert(IsVariableSizeRight(sld));
 #endif
 
-	VarType conv = GB(sld->conv, 0, 8);
-	switch (sld->cmd) {
+	VarType conv = GB(sld.conv, 0, 8);
+	switch (sld.cmd) {
 		case SL_VAR:
 		case SL_REF:
 		case SL_ARR:
@@ -1543,7 +1543,7 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 			if (!SlIsObjectValidInSavegame(sld)) return false;
 			if (SlSkipVariableOnLoad(sld)) return false;
 
-			switch (sld->cmd) {
+			switch (sld.cmd) {
 				case SL_VAR: SlSaveLoadConv(ptr, conv); break;
 				case SL_REF: // Reference variable, translate
 					switch (_sl.action) {
@@ -1563,11 +1563,11 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 						default: NOT_REACHED();
 					}
 					break;
-				case SL_ARR: SlArray(ptr, sld->length, conv); break;
-				case SL_STR: SlString(ptr, sld->length, sld->conv); break;
+				case SL_ARR: SlArray(ptr, sld.length, conv); break;
+				case SL_STR: SlString(ptr, sld.length, sld.conv); break;
 				case SL_LST: SlList(ptr, (SLRefType)conv); break;
 				case SL_DEQUE: SlDeque(ptr, conv); break;
-				case SL_STDSTR: SlStdString(ptr, sld->conv); break;
+				case SL_STDSTR: SlStdString(ptr, sld.conv); break;
 				default: NOT_REACHED();
 			}
 			break;
@@ -1602,30 +1602,30 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 
 /**
  * Main SaveLoad function.
- * @param object The object that is being saved or loaded
- * @param sld The SaveLoad description of the object so we know how to manipulate it
+ * @param object The object that is being saved or loaded.
+ * @param slt The SaveLoad table with objects to save/load.
  */
-void SlObject(void *object, const SaveLoad *sld)
+void SlObject(void *object, const SaveLoadTable &slt)
 {
 	/* Automatically calculate the length? */
 	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcObjLength(object, sld));
+		SlSetLength(SlCalcObjLength(object, slt));
 		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 
-	for (; sld->cmd != SL_END; sld++) {
+	for (auto &sld : slt) {
 		void *ptr = GetVariableAddress(object, sld);
 		SlObjectMember(ptr, sld);
 	}
 }
 
 /**
- * Save or Load (a list of) global variables
- * @param sldg The global variable that is being loaded or saved
+ * Save or Load (a list of) global variables.
+ * @param slt The SaveLoad table with objects to save/load.
  */
-void SlGlobList(const SaveLoadGlobVarList *sldg)
+void SlGlobList(const SaveLoadTable &slt)
 {
-	SlObject(nullptr, (const SaveLoad*)sldg);
+	SlObject(nullptr, slt);
 }
 
 /**

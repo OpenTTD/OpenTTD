@@ -75,8 +75,6 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDSSTR(Industry, text,     SLE_STR | SLF_ALLOW_CONTROL,     SLV_INDUSTRY_TEXT, SL_MAX_VERSION),
 
 	SLE_CONDNULL(32, SLV_2, SLV_144), // old reserved space
-
-	SLE_END()
 };
 
 static void Save_INDY()
@@ -139,7 +137,6 @@ static void Ptrs_INDY()
 /** Description of the data to save and load in #IndustryBuildData. */
 static const SaveLoad _industry_builder_desc[] = {
 	SLEG_VAR(_industry_builder.wanted_inds, SLE_UINT32),
-	SLEG_END()
 };
 
 /** Load/save industry builder. */
@@ -155,7 +152,6 @@ static const SaveLoad _industrytype_builder_desc[] = {
 	SLE_VAR(IndustryTypeBuildData, target_count, SLE_UINT16),
 	SLE_VAR(IndustryTypeBuildData, max_wait,     SLE_UINT16),
 	SLE_VAR(IndustryTypeBuildData, wait_count,   SLE_UINT16),
-	SLE_END()
 };
 
 /** Save industry-type build data. */

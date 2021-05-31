@@ -30,7 +30,6 @@ static const SaveLoad _ai_company[] = {
 	   SLEG_SSTR(_ai_saveload_settings,     SLE_STR),
 	SLEG_CONDVAR(_ai_saveload_version,   SLE_UINT32, SLV_108, SL_MAX_VERSION),
 	SLEG_CONDVAR(_ai_saveload_is_random,   SLE_BOOL, SLV_136, SL_MAX_VERSION),
-	     SLE_END()
 };
 
 static void SaveReal_AIPL(int *index_ptr)

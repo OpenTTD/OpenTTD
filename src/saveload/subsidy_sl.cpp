@@ -24,7 +24,6 @@ static const SaveLoad _subsidies_desc[] = {
 	SLE_CONDVAR(Subsidy, src,        SLE_UINT16,                  SLV_5, SL_MAX_VERSION),
 	SLE_CONDVAR(Subsidy, dst,        SLE_FILE_U8 | SLE_VAR_U16,   SL_MIN_VERSION, SLV_5),
 	SLE_CONDVAR(Subsidy, dst,        SLE_UINT16,                  SLV_5, SL_MAX_VERSION),
-	SLE_END()
 };
 
 static void Save_SUBS()

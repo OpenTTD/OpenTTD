@@ -99,7 +99,7 @@ Order UnpackOldOrder(uint16 packed)
 	return order;
 }
 
-const SaveLoad *GetOrderDescription()
+SaveLoadTable GetOrderDescription()
 {
 	static const SaveLoad _order_desc[] = {
 		     SLE_VAR(Order, type,           SLE_UINT8),
@@ -115,7 +115,6 @@ const SaveLoad *GetOrderDescription()
 		/* Leftover from the minor savegame version stuff
 		 * We will never use those free bytes, but we have to keep this line to allow loading of old savegames */
 		SLE_CONDNULL(10,                                  SLV_5,  SLV_36),
-		     SLE_END()
 	};
 
 	return _order_desc;
@@ -196,11 +195,10 @@ static void Ptrs_ORDR()
 	}
 }
 
-const SaveLoad *GetOrderListDescription()
+SaveLoadTable GetOrderListDescription()
 {
 	static const SaveLoad _orderlist_desc[] = {
 		SLE_REF(OrderList, first,              REF_ORDER),
-		SLE_END()
 	};
 
 	return _orderlist_desc;
@@ -233,7 +231,7 @@ static void Ptrs_ORDL()
 	}
 }
 
-const SaveLoad *GetOrderBackupDescription()
+SaveLoadTable GetOrderBackupDescription()
 {
 	static const SaveLoad _order_backup_desc[] = {
 		     SLE_VAR(OrderBackup, user,                     SLE_UINT32),
@@ -252,7 +250,6 @@ const SaveLoad *GetOrderBackupDescription()
 		 SLE_CONDVAR(OrderBackup, vehicle_flags,            SLE_FILE_U8 | SLE_VAR_U16, SLV_176, SLV_180),
 		 SLE_CONDVAR(OrderBackup, vehicle_flags,            SLE_UINT16,                SLV_180, SL_MAX_VERSION),
 		     SLE_REF(OrderBackup, orders,                   REF_ORDER),
-		     SLE_END()
 	};
 
 	return _order_backup_desc;

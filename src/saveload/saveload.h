@@ -12,6 +12,7 @@
 
 #include "../fileio_type.h"
 #include "../strings_type.h"
+#include "../core/span_type.hpp"
 #include <string>
 
 /** SaveLoad versions
@@ -506,7 +507,6 @@ enum SaveLoadType : byte {
 	SL_WRITEBYTE   =  8,
 	SL_VEH_INCLUDE =  9,
 	SL_ST_INCLUDE  = 10,
-	SL_END         = 15
 };
 
 typedef void *SaveLoadAddrProc(void *base, size_t extra);
@@ -523,8 +523,8 @@ struct SaveLoad {
 	size_t extra_data;              ///< extra data for the callback proc
 };
 
-/** Same as #SaveLoad but global variables are used (for better readability); */
-typedef SaveLoad SaveLoadGlobVarList;
+/** A table of SaveLoad entries. */
+using SaveLoadTable = span<const SaveLoad>;
 
 /**
  * Storage of simple variables, references (pointers), and arrays.
@@ -681,9 +681,6 @@ typedef SaveLoad SaveLoadGlobVarList;
 #define SLE_VEH_INCLUDE() {SL_VEH_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0}
 #define SLE_ST_INCLUDE() {SL_ST_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0}
 
-/** End marker of a struct/class save or load. */
-#define SLE_END() {SL_END, 0, 0, SL_MIN_VERSION, SL_MIN_VERSION, 0, nullptr, 0}
-
 /**
  * Storage of global simple variables, references (pointers), and arrays.
  * @param cmd      Load/save type. @see SaveLoadType
@@ -802,9 +799,6 @@ typedef SaveLoad SaveLoadGlobVarList;
  */
 #define SLEG_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to, 0, nullptr, 0}
 
-/** End marker of global variables save or load. */
-#define SLEG_END() {SL_END, 0, 0, SL_MIN_VERSION, SL_MIN_VERSION, 0, nullptr, 0}
-
 /**
  * Checks whether the savegame is below \a major.\a minor.
  * @param major Major number of the version to check against.
@@ -883,17 +877,17 @@ static inline bool IsNumericType(VarType conv)
  * everything else has a callback function that returns the address based
  * on the saveload data and the current object for non-globals.
  */
-static inline void *GetVariableAddress(const void *object, const SaveLoad *sld)
+static inline void *GetVariableAddress(const void *object, const SaveLoad &sld)
 {
 	/* Entry is a null-variable, mostly used to read old savegames etc. */
-	if (GetVarMemType(sld->conv) == SLE_VAR_NULL) {
-		assert(sld->address_proc == nullptr);
+	if (GetVarMemType(sld.conv) == SLE_VAR_NULL) {
+		assert(sld.address_proc == nullptr);
 		return nullptr;
 	}
 
 	/* Everything else should be a non-null pointer. */
-	assert(sld->address_proc != nullptr);
-	return sld->address_proc(const_cast<void *>(object), sld->extra_data);
+	assert(sld.address_proc != nullptr);
+	return sld.address_proc(const_cast<void *>(object), sld.extra_data);
 }
 
 int64 ReadValue(const void *ptr, VarType conv);
@@ -905,16 +899,16 @@ int SlIterateArray();
 void SlAutolength(AutolengthProc *proc, void *arg);
 size_t SlGetFieldLength();
 void SlSetLength(size_t length);
-size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld);
-size_t SlCalcObjLength(const void *object, const SaveLoad *sld);
+size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld);
+size_t SlCalcObjLength(const void *object, const SaveLoadTable &slt);
 
 byte SlReadByte();
 void SlWriteByte(byte b);
 
-void SlGlobList(const SaveLoadGlobVarList *sldg);
+void SlGlobList(const SaveLoadTable &slt);
 void SlArray(void *array, size_t length, VarType conv);
-void SlObject(void *object, const SaveLoad *sld);
-bool SlObjectMember(void *object, const SaveLoad *sld);
+void SlObject(void *object, const SaveLoadTable &slt);
+bool SlObjectMember(void *object, const SaveLoad &sld);
 void NORETURN SlError(StringID string, const char *extra_msg = nullptr);
 void NORETURN SlErrorCorrupt(const char *msg);
 void NORETURN SlErrorCorruptFmt(const char *format, ...) WARN_FORMAT(1, 2);

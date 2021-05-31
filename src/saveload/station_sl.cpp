@@ -154,8 +154,6 @@ static const SaveLoad _roadstop_desc[] = {
 
 	SLE_CONDNULL(4, SL_MIN_VERSION, SLV_25),
 	SLE_CONDNULL(1, SLV_25, SLV_26),
-
-	SLE_END()
 };
 
 static const SaveLoad _old_station_desc[] = {
@@ -213,8 +211,6 @@ static const SaveLoad _old_station_desc[] = {
 
 	/* reserve extra space in savegame here. (currently 32 bytes) */
 	SLE_CONDNULL(32, SLV_2, SL_MAX_VERSION),
-
-	SLE_END()
 };
 
 static uint16 _waiting_acceptance;
@@ -227,8 +223,6 @@ static Money  _cargo_feeder_share;
 static const SaveLoad _station_speclist_desc[] = {
 	SLE_CONDVAR(StationSpecList, grfid,    SLE_UINT32, SLV_27, SL_MAX_VERSION),
 	SLE_CONDVAR(StationSpecList, localidx, SLE_UINT8,  SLV_27, SL_MAX_VERSION),
-
-	SLE_END()
 };
 
 std::list<CargoPacket *> _packets;
@@ -247,7 +241,6 @@ static const SaveLoad _flow_desc[] = {
 	    SLE_VAR(FlowSaveLoad, via,        SLE_UINT16),
 	    SLE_VAR(FlowSaveLoad, share,      SLE_UINT32),
 	SLE_CONDVAR(FlowSaveLoad, restricted, SLE_BOOL, SLV_187, SL_MAX_VERSION),
-	    SLE_END()
 };
 
 /**
@@ -255,7 +248,7 @@ static const SaveLoad _flow_desc[] = {
  * some of the variables itself are private.
  * @return the saveload description for GoodsEntry.
  */
-const SaveLoad *GetGoodsDesc()
+SaveLoadTable GetGoodsDesc()
 {
 	static const SaveLoad goods_desc[] = {
 		SLEG_CONDVAR(            _waiting_acceptance,  SLE_UINT16,                  SL_MIN_VERSION, SLV_68),
@@ -279,7 +272,6 @@ const SaveLoad *GetGoodsDesc()
 		 SLE_CONDVAR(GoodsEntry, node,                 SLE_UINT16,                SLV_183, SL_MAX_VERSION),
 		SLEG_CONDVAR(            _num_flows,           SLE_UINT32,                SLV_183, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo,    SLE_UINT32,                SLV_183, SL_MAX_VERSION),
-		SLE_END()
 	};
 
 	return goods_desc;
@@ -290,7 +282,6 @@ typedef std::pair<const StationID, std::list<CargoPacket *> > StationCargoPair;
 static const SaveLoad _cargo_list_desc[] = {
 	SLE_VAR(StationCargoPair, first,  SLE_UINT16),
 	SLE_LST(StationCargoPair, second, REF_CARGO_PACKET),
-	SLE_END()
 };
 
 /**
@@ -398,8 +389,6 @@ static const SaveLoad _base_station_desc[] = {
 	      SLE_VAR(BaseStation, random_bits,            SLE_UINT16),
 	      SLE_VAR(BaseStation, waiting_triggers,       SLE_UINT8),
 	      SLE_VAR(BaseStation, num_specs,              SLE_UINT8),
-
-	      SLE_END()
 };
 
 static OldPersistentStorage _old_st_persistent_storage;
@@ -440,8 +429,6 @@ static const SaveLoad _station_desc[] = {
 	      SLE_LST(Station, loading_vehicles,           REF_VEHICLE),
 	  SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, SLV_127, SLV_EXTEND_CARGOTYPES),
 	  SLE_CONDVAR(Station, always_accepted,            SLE_UINT64,                 SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
-
-	      SLE_END()
 };
 
 static const SaveLoad _waypoint_desc[] = {
@@ -453,15 +440,13 @@ static const SaveLoad _waypoint_desc[] = {
 	  SLE_CONDVAR(Waypoint, train_station.tile,        SLE_UINT32,                  SLV_124, SL_MAX_VERSION),
 	  SLE_CONDVAR(Waypoint, train_station.w,           SLE_FILE_U8 | SLE_VAR_U16,   SLV_124, SL_MAX_VERSION),
 	  SLE_CONDVAR(Waypoint, train_station.h,           SLE_FILE_U8 | SLE_VAR_U16,   SLV_124, SL_MAX_VERSION),
-
-	      SLE_END()
 };
 
 /**
  * Get the base station description to be used for SL_ST_INCLUDE
  * @return the base station description.
  */
-const SaveLoad *GetBaseStationDescription()
+SaveLoadTable GetBaseStationDescription()
 {
 	return _base_station_desc;
 }
@@ -469,7 +454,7 @@ const SaveLoad *GetBaseStationDescription()
 static void RealSave_STNN(BaseStation *bst)
 {
 	bool waypoint = (bst->facilities & FACIL_WAYPOINT) != 0;
-	SlObject(bst, waypoint ? _waypoint_desc : _station_desc);
+	SlObject(bst, waypoint ? SaveLoadTable(_waypoint_desc) : SaveLoadTable(_station_desc));
 
 	if (!waypoint) {
 		Station *st = Station::From(bst);
@@ -524,7 +509,7 @@ static void Load_STNN()
 		bool waypoint = (SlReadByte() & FACIL_WAYPOINT) != 0;
 
 		BaseStation *bst = waypoint ? (BaseStation *)new (index) Waypoint() : new (index) Station();
-		SlObject(bst, waypoint ? _waypoint_desc : _station_desc);
+		SlObject(bst, waypoint ? SaveLoadTable(_waypoint_desc) : SaveLoadTable(_station_desc));
 
 		if (!waypoint) {
 			Station *st = Station::From(bst);

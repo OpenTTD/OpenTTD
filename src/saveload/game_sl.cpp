@@ -30,7 +30,6 @@ static const SaveLoad _game_script[] = {
 	   SLEG_SSTR(_game_saveload_settings,     SLE_STR),
 	    SLEG_VAR(_game_saveload_version,   SLE_UINT32),
 	    SLEG_VAR(_game_saveload_is_random,   SLE_BOOL),
-	     SLE_END()
 };
 
 static void SaveReal_GSDT(int *index_ptr)
@@ -117,12 +116,10 @@ static uint _game_saveload_strings;
 static const SaveLoad _game_language_header[] = {
 	SLEG_SSTR(_game_saveload_string, SLE_STR),
 	 SLEG_VAR(_game_saveload_strings, SLE_UINT32),
-	  SLE_END()
 };
 
 static const SaveLoad _game_language_string[] = {
 	SLEG_SSTR(_game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
-	  SLE_END()
 };
 
 static void SaveReal_GSTR(const LanguageStrings *ls)

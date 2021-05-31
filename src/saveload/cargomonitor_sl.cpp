@@ -24,7 +24,6 @@ struct TempStorage {
 static const SaveLoad _cargomonitor_pair_desc[] = {
 	SLE_VAR(TempStorage, number, SLE_UINT32),
 	SLE_VAR(TempStorage, amount, SLE_UINT32),
-	SLE_END()
 };
 
 static CargoMonitorID FixupCargoMonitor(CargoMonitorID number)

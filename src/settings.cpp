@@ -258,7 +258,7 @@ static bool LoadIntList(const char *str, void *array, int nelems, VarType type)
  */
 void ListSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
-	const byte *p = static_cast<const byte *>(GetVariableAddress(object, &this->save));
+	const byte *p = static_cast<const byte *>(GetVariableAddress(object, this->save));
 	int i, v = 0;
 
 	for (i = 0; i != this->save.length; i++) {
@@ -446,7 +446,7 @@ void IntSettingDesc::MakeValueValid(int32 &val) const
  */
 void IntSettingDesc::Write(const void *object, int32 val) const
 {
-	void *ptr = GetVariableAddress(object, &this->save);
+	void *ptr = GetVariableAddress(object, this->save);
 	WriteValue(ptr, this->save.conv, (int64)val);
 }
 
@@ -457,7 +457,7 @@ void IntSettingDesc::Write(const void *object, int32 val) const
  */
 int32 IntSettingDesc::Read(const void *object) const
 {
-	void *ptr = GetVariableAddress(object, &this->save);
+	void *ptr = GetVariableAddress(object, this->save);
 	return (int32)ReadValue(ptr, this->save.conv);
 }
 
@@ -486,7 +486,7 @@ void StringSettingDesc::MakeValueValid(std::string &str) const
  */
 void StringSettingDesc::Write(const void *object, const std::string &str) const
 {
-	reinterpret_cast<std::string *>(GetVariableAddress(object, &this->save))->assign(str);
+	reinterpret_cast<std::string *>(GetVariableAddress(object, this->save))->assign(str);
 }
 
 /**
@@ -496,7 +496,7 @@ void StringSettingDesc::Write(const void *object, const std::string &str) const
  */
 const std::string &StringSettingDesc::Read(const void *object) const
 {
-	return *reinterpret_cast<std::string *>(GetVariableAddress(object, &this->save));
+	return *reinterpret_cast<std::string *>(GetVariableAddress(object, this->save));
 }
 
 /**
@@ -560,7 +560,7 @@ void StringSettingDesc::ParseValue(const IniItem *item, void *object) const
 void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 {
 	const char *str = (item == nullptr) ? this->def : item->value.has_value() ? item->value->c_str() : nullptr;
-	void *ptr = GetVariableAddress(object, &this->save);
+	void *ptr = GetVariableAddress(object, this->save);
 	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
 		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
 		msg.SetDParamStr(0, this->name);
@@ -2025,9 +2025,9 @@ void IConsoleListSettings(const char *prefilter)
 static void LoadSettings(const SettingTable &settings, void *object)
 {
 	for (auto &osd : settings) {
-		void *ptr = GetVariableAddress(object, &osd->save);
+		void *ptr = GetVariableAddress(object, osd->save);
 
-		if (!SlObjectMember(ptr, &osd->save)) continue;
+		if (!SlObjectMember(ptr, osd->save)) continue;
 		if (osd->IsIntSetting()) {
 			const IntSettingDesc *int_setting = osd->AsIntSetting();
 			int_setting->MakeValueValidAndWrite(object, int_setting->Read(object));
@@ -2047,13 +2047,13 @@ static void SaveSettings(const SettingTable &settings, void *object)
 	 * SlCalcLength() because we have a different format. So do this manually */
 	size_t length = 0;
 	for (auto &sd : settings) {
-		length += SlCalcObjMemberLength(object, &sd->save);
+		length += SlCalcObjMemberLength(object, sd->save);
 	}
 	SlSetLength(length);
 
 	for (auto &sd : settings) {
-		void *ptr = GetVariableAddress(object, &sd->save);
-		SlObjectMember(ptr, &sd->save);
+		void *ptr = GetVariableAddress(object, sd->save);
+		SlObjectMember(ptr, sd->save);
 	}
 }
 

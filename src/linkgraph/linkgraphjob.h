@@ -52,7 +52,7 @@ private:
 	typedef std::vector<NodeAnnotation> NodeAnnotationVector;
 	typedef SmallMatrix<EdgeAnnotation> EdgeAnnotationMatrix;
 
-	friend const SaveLoad *GetLinkGraphJobDesc();
+	friend SaveLoadTable GetLinkGraphJobDesc();
 	friend class LinkGraphSchedule;
 
 protected:

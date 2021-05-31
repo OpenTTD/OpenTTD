@@ -25,8 +25,6 @@ static const SaveLoad _object_desc[] = {
 	SLE_CONDVAR(Object, colour,                     SLE_UINT8,                  SLV_148, SL_MAX_VERSION),
 	SLE_CONDVAR(Object, view,                       SLE_UINT8,                  SLV_155, SL_MAX_VERSION),
 	SLE_CONDVAR(Object, type,                       SLE_UINT16,                 SLV_186, SL_MAX_VERSION),
-
-	SLE_END()
 };
 
 static void Save_OBJS()
