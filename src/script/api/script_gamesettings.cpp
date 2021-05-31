@@ -26,9 +26,7 @@
 	if (!IsValid(setting)) return -1;
 
 	const SettingDesc *sd = GetSettingFromName(setting);
-
-	void *ptr = GetVariableAddress(&_settings_game, &sd->save);
-	return (int32)ReadValue(ptr, sd->save.conv);
+	return sd->AsIntSetting()->Read(&_settings_game);
 }
 
 /* static */ bool ScriptGameSettings::SetValue(const char *setting, int value)

@@ -254,9 +254,8 @@ static_assert(lengthof(_news_type_data) == NT_END);
 NewsDisplay NewsTypeData::GetDisplay() const
 {
 	const SettingDesc *sd = GetSettingFromName(this->name);
-	assert(sd != nullptr);
-	void *ptr = GetVariableAddress(nullptr, &sd->save);
-	return (NewsDisplay)ReadValue(ptr, sd->save.conv);
+	assert(sd != nullptr && sd->IsIntSetting());
+	return (NewsDisplay)sd->AsIntSetting()->Read(nullptr);
 }
 
 /** Window class displaying a news item. */
