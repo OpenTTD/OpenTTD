@@ -905,7 +905,6 @@ void SlWriteByte(byte b);
 void SlGlobList(const SaveLoadTable &slt);
 void SlArray(void *array, size_t length, VarType conv);
 void SlObject(void *object, const SaveLoadTable &slt);
-bool SlObjectMember(void *object, const SaveLoad &sld);
 void NORETURN SlError(StringID string, const char *extra_msg = nullptr);
 void NORETURN SlErrorCorrupt(const char *msg);
 void NORETURN SlErrorCorruptFmt(const char *format, ...) WARN_FORMAT(1, 2);
