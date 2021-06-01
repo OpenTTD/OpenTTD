@@ -448,9 +448,9 @@ CommandCost CmdPlantTree(TileIndex tile, DoCommandFlag flags, uint32 p1, uint32 
 					break;
 				}
 
-				if (IsTileType(tile, MP_CLEAR)) {
+				if (IsTileType(current_tile, MP_CLEAR)) {
 					/* Remove fields or rocks. Note that the ground will get barrened */
-					switch (GetRawClearGround(tile)) {
+					switch (GetRawClearGround(current_tile)) {
 						case CLEAR_FIELDS:
 						case CLEAR_ROCKS: {
 							CommandCost ret = DoCommand(current_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
