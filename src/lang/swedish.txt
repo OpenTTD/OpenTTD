@@ -2204,6 +2204,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Kunde in
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Nätverkskoppling #{NUM} timeout
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Ett protokollfel uppstod och anslutningen stängdes.
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Du har inte angivit något spelarnamn. Namninställning kan göras högst upp i flerspelarfönstret
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Du har inte angivit något servernamn. Namninställning kan göras högst upp i flerspelarfönstret
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Servern har en annan version än denna klient
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Fel lösenord
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Servern är full
