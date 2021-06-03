@@ -1045,8 +1045,7 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start
 	_npf_aystar.user_data = user;
 
 	/* GO! */
-	int r = _npf_aystar.Main();
-	(void)r; // assert only
+	[[maybe_unused]] int r = _npf_aystar.Main();
 	assert(r != AYSTAR_STILL_BUSY);
 
 	if (result.best_bird_dist != 0) {

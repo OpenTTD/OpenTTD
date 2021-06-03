@@ -658,9 +658,7 @@ static void HeightMapCurves(uint level)
 			for (uint t = 0; t < lengthof(curve_maps); t++) {
 				if (!HasBit(corner_bits, t)) continue;
 
-#ifdef WITH_ASSERT
-				bool found = false;
-#endif
+				[[maybe_unused]] bool found = false;
 				const control_point_t *cm = curve_maps[t].list;
 				for (uint i = 0; i < curve_maps[t].length - 1; i++) {
 					const control_point_t &p1 = cm[i];

@@ -537,8 +537,7 @@ void SetupEngines()
 		/* Assert is safe; there won't be more than 256 original vehicles
 		 * in any case, and we just cleaned the pool. */
 		assert(Engine::CanAllocateItem());
-		const Engine *e = new Engine(eid.type, eid.internal_id);
-		(void)e; // assert only
+		[[maybe_unused]] const Engine *e = new Engine(eid.type, eid.internal_id);
 		assert(e->index == index);
 		index++;
 	}

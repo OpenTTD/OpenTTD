@@ -651,8 +651,7 @@ SQRESULT Squirrel::LoadFile(HSQUIRRELVM vm, const char *filename, SQBool printer
 	}
 	unsigned short bom = 0;
 	if (size >= 2) {
-		size_t sr = fread(&bom, 1, sizeof(bom), file);
-		(void)sr; // Inside tar, no point checking return value of fread
+		[[maybe_unused]] size_t sr = fread(&bom, 1, sizeof(bom), file);
 	}
 
 	SQLEXREADFUNC func;
