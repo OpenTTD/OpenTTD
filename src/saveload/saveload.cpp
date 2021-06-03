@@ -584,7 +584,7 @@ static inline uint SlGetArrayLength(size_t length)
  * @param conv VarType type of variable that is used for calculating the size
  * @return Return the size of this type in bytes
  */
-uint SlCalcConvMemLen(VarType conv)
+static inline uint SlCalcConvMemLen(VarType conv)
 {
 	static const byte conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
 	byte length = GB(conv, 4, 4);
@@ -943,6 +943,9 @@ static void SlString(void *ptr, size_t length, VarType conv)
 
 			switch (GetVarMemType(conv)) {
 				default: NOT_REACHED();
+				case SLE_VAR_NULL:
+					SlSkipBytes(len);
+					return;
 				case SLE_VAR_STRB:
 					if (len >= length) {
 						DEBUG(sl, 1, "String length in savegame is bigger than buffer, truncating");
@@ -1007,8 +1010,12 @@ static void SlStdString(void *ptr, VarType conv)
 		case SLA_LOAD_CHECK:
 		case SLA_LOAD: {
 			size_t len = SlReadArrayLength();
-			char *buf = AllocaM(char, len + 1);
+			if (GetVarMemType(conv) == SLE_VAR_NULL) {
+				SlSkipBytes(len);
+				return;
+			}
 
+			char *buf = AllocaM(char, len + 1);
 			SlCopyBytes(buf, len);
 			buf[len] = '\0'; // properly terminate the string
 
@@ -1469,6 +1476,8 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
  */
 [[maybe_unused]] static bool IsVariableSizeRight(const SaveLoad &sld)
 {
+	if (GetVarMemType(sld.conv) == SLE_VAR_NULL) return true;
+
 	switch (sld.cmd) {
 		case SL_VAR:
 			switch (GetVarMemType(sld.conv)) {

@@ -2015,6 +2015,31 @@ void IConsoleListSettings(const char *prefilter)
 }
 
 /**
+ * Get the SaveLoad description for the SettingTable.
+ * @param settings SettingDesc struct containing all information.
+ * @param is_loading True iff the SaveLoad table is for loading.
+ * @return Vector with SaveLoad entries for the SettingTable.
+ */
+static std::vector<SaveLoad> GetSettingsDesc(const SettingTable &settings, bool is_loading)
+{
+	std::vector<SaveLoad> saveloads;
+	for (auto &sd : settings) {
+		if (sd->flags & SF_NOT_IN_SAVE) continue;
+
+		if (is_loading && (sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) {
+			/* We don't want to read this setting, so we do need to skip over it. */
+			saveloads.push_back({sd->save.cmd, GetVarFileType(sd->save.conv) | SLE_VAR_NULL, sd->save.length, sd->save.version_from, sd->save.version_to, 0, nullptr, 0});
+			continue;
+		}
+
+		saveloads.push_back(sd->save);
+	}
+
+	return saveloads;
+}
+
+
+/**
  * Save and load handler for settings
  * @param settings SettingDesc struct containing all information
  * @param object can be either nullptr in which case we load global variables or
@@ -2022,20 +2047,18 @@ void IConsoleListSettings(const char *prefilter)
  */
 static void LoadSettings(const SettingTable &settings, void *object)
 {
-	for (auto &osd : settings) {
-		if (osd->flags & SF_NOT_IN_SAVE) continue;
+	const std::vector<SaveLoad> slt = GetSettingsDesc(settings, true);
 
-		SaveLoad sl = osd->save;
-		if ((osd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) {
-			/* We don't want to read this setting, so we do need to skip over it. */
-			sl = SLE_NULL(static_cast<uint16>(SlCalcConvMemLen(osd->save.conv) * osd->save.length));
-		}
+	SlObject(object, slt);
 
-		void *ptr = GetVariableAddress(object, sl);
-		if (!SlObjectMember(ptr, sl)) continue;
+	/* Ensure all IntSettings are valid (min/max could have changed between versions etc). */
+	for (auto &sd : settings) {
+		if (sd->flags & SF_NOT_IN_SAVE) continue;
+		if ((sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) continue;
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 
-		if (osd->IsIntSetting()) {
-			const IntSettingDesc *int_setting = osd->AsIntSetting();
+		if (sd->IsIntSetting()) {
+			const IntSettingDesc *int_setting = sd->AsIntSetting();
 			int_setting->MakeValueValidAndWrite(object, int_setting->Read(object));
 		}
 	}
@@ -2049,22 +2072,9 @@ static void LoadSettings(const SettingTable &settings, void *object)
  */
 static void SaveSettings(const SettingTable &settings, void *object)
 {
-	/* We need to write the CH_RIFF header, but unfortunately can't call
-	 * SlCalcLength() because we have a different format. So do this manually */
-	size_t length = 0;
-	for (auto &sd : settings) {
-		if (sd->flags & SF_NOT_IN_SAVE) continue;
+	const std::vector<SaveLoad> slt = GetSettingsDesc(settings, false);
 
-		length += SlCalcObjMemberLength(object, sd->save);
-	}
-	SlSetLength(length);
-
-	for (auto &sd : settings) {
-		if (sd->flags & SF_NOT_IN_SAVE) continue;
-
-		void *ptr = GetVariableAddress(object, sd->save);
-		SlObjectMember(ptr, sd->save);
-	}
+	SlObject(object, slt);
 }
 
 static void Load_OPTS()
