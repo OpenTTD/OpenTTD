@@ -485,11 +485,8 @@ enum VarTypes {
 
 	/* 8 bits allocated for a maximum of 8 flags
 	 * Flags directing saving/loading of a variable */
-	SLF_NOT_IN_SAVE     = 1 <<  8, ///< do not save with savegame, basically client-based
-	SLF_NOT_IN_CONFIG   = 1 <<  9, ///< do not save to config file
-	SLF_NO_NETWORK_SYNC = 1 << 10, ///< do not synchronize over network (but it is saved if SLF_NOT_IN_SAVE is not set)
-	SLF_ALLOW_CONTROL   = 1 << 11, ///< allow control codes in the strings
-	SLF_ALLOW_NEWLINE   = 1 << 12, ///< allow new lines in the strings
+	SLF_ALLOW_CONTROL   = 1 << 8, ///< Allow control codes in the strings.
+	SLF_ALLOW_NEWLINE   = 1 << 9, ///< Allow new lines in the strings.
 };
 
 typedef uint32 VarType;
@@ -673,7 +670,7 @@ using SaveLoadTable = span<const SaveLoad>;
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLE_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to, 0, nullptr, 0}
+#define SLE_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0}
 
 /** Translate values ingame to different values in the savegame and vv. */
 #define SLE_WRITEBYTE(base, variable) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0)
@@ -797,7 +794,7 @@ using SaveLoadTable = span<const SaveLoad>;
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLEG_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL | SLF_NOT_IN_CONFIG, length, from, to, 0, nullptr, 0}
+#define SLEG_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0}
 
 /**
  * Checks whether the savegame is below \a major.\a minor.

@@ -591,7 +591,7 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 		/* If the setting is not saved to the configuration
 		 * file, just continue with the next setting */
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (sd->save.conv & SLF_NOT_IN_CONFIG) continue;
+		if (sd->flags & SF_NOT_IN_CONFIG) continue;
 
 		/* XXX - wtf is this?? (group override?) */
 		std::string s{ sd->name };
@@ -741,7 +741,7 @@ void IniSaveWindowSettings(IniFile *ini, const char *grpname, void *desc)
  */
 bool SettingDesc::IsEditable(bool do_command) const
 {
-	if (!do_command && !(this->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(this->flags & SF_PER_COMPANY)) return false;
+	if (!do_command && !(this->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server && !(this->flags & SF_PER_COMPANY)) return false;
 	if ((this->flags & SF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return false;
 	if ((this->flags & SF_NO_NETWORK) && _networking) return false;
 	if ((this->flags & SF_NEWGAME_ONLY) &&
@@ -758,7 +758,7 @@ bool SettingDesc::IsEditable(bool do_command) const
 SettingType SettingDesc::GetType() const
 {
 	if (this->flags & SF_PER_COMPANY) return ST_COMPANY;
-	return (this->save.conv & SLF_NOT_IN_SAVE) ? ST_CLIENT : ST_GAME;
+	return (this->flags & SF_NOT_IN_SAVE) ? ST_CLIENT : ST_GAME;
 }
 
 /**
@@ -1844,7 +1844,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 	 * (if any) to change. Also *hack*hack* we update the _newgame version
 	 * of settings because changing a company-based setting in a game also
 	 * changes its defaults. At least that is the convention we have chosen */
-	if (setting->save.conv & SLF_NO_NETWORK_SYNC) {
+	if (setting->flags & SF_NO_NETWORK_SYNC) {
 		if (_game_mode != GM_MENU) {
 			setting->ChangeValue(&_settings_newgame, value);
 		}
@@ -1899,7 +1899,7 @@ void SyncCompanySettings()
  */
 bool SetSettingValue(const StringSettingDesc *sd, std::string value, bool force_newgame)
 {
-	assert(sd->save.conv & SLF_NO_NETWORK_SYNC);
+	assert(sd->flags & SF_NO_NETWORK_SYNC);
 
 	if (GetVarMemType(sd->save.conv) == SLE_VAR_STRQ && value.compare("(null)") == 0) {
 		value.clear();
@@ -2023,10 +2023,10 @@ void IConsoleListSettings(const char *prefilter)
 static void LoadSettings(const SettingTable &settings, void *object)
 {
 	for (auto &osd : settings) {
-		if (osd->save.conv & SLF_NOT_IN_SAVE) continue;
+		if (osd->flags & SF_NOT_IN_SAVE) continue;
 
 		SaveLoad sl = osd->save;
-		if ((osd->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server) {
+		if ((osd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) {
 			/* We don't want to read this setting, so we do need to skip over it. */
 			sl = SLE_NULL(static_cast<uint16>(SlCalcConvMemLen(osd->save.conv) * osd->save.length));
 		}
@@ -2053,14 +2053,14 @@ static void SaveSettings(const SettingTable &settings, void *object)
 	 * SlCalcLength() because we have a different format. So do this manually */
 	size_t length = 0;
 	for (auto &sd : settings) {
-		if (sd->save.conv & SLF_NOT_IN_SAVE) continue;
+		if (sd->flags & SF_NOT_IN_SAVE) continue;
 
 		length += SlCalcObjMemberLength(object, sd->save);
 	}
 	SlSetLength(length);
 
 	for (auto &sd : settings) {
-		if (sd->save.conv & SLF_NOT_IN_SAVE) continue;
+		if (sd->flags & SF_NOT_IN_SAVE) continue;
 
 		void *ptr = GetVariableAddress(object, sd->save);
 		SlObjectMember(ptr, sd->save);
