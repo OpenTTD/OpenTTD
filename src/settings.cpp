@@ -274,8 +274,6 @@ void ListSettingDesc::FormatValue(char *buf, const char *last, const void *objec
 		}
 		if (IsSignedVarMemType(this->save.conv)) {
 			buf += seprintf(buf, last, (i == 0) ? "%d" : ",%d", v);
-		} else if (this->save.conv & SLF_HEX) {
-			buf += seprintf(buf, last, (i == 0) ? "0x%X" : ",0x%X", v);
 		} else {
 			buf += seprintf(buf, last, (i == 0) ? "%u" : ",%u", v);
 		}
@@ -621,7 +619,7 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 void IntSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
 	uint32 i = (uint32)this->Read(object);
-	seprintf(buf, last, IsSignedVarMemType(this->save.conv) ? "%d" : (this->save.conv & SLF_HEX) ? "%X" : "%u", i);
+	seprintf(buf, last, IsSignedVarMemType(this->save.conv) ? "%d" : "%u", i);
 }
 
 void BoolSettingDesc::FormatValue(char *buf, const char *last, const void *object) const
