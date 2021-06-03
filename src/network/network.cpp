@@ -1072,7 +1072,7 @@ void NetworkGameLoop()
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->tile, cp->p1, cp->p2, cp->cmd & ~CMD_FLAGS_MASK, nullptr, cp->text, cp->company);
 					DEBUG(desync, 0, "Injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" (%s)", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text.c_str(), GetCommandName(cp->cmd));
-					free(cp);
+					delete cp;
 					cp = nullptr;
 				}
 				if (check_sync_state) {
