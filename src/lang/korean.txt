@@ -2204,7 +2204,7 @@ STR_NETWORK_ERROR_SERVER_START                                  :{WHITE}서버�
 STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}접속할 수 없습니다
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}접속자 #{NUM}의 입력 시간이 초과되었습니다
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}프로토콜 오류가 발생되어 연결이 끊어졌습니다
-STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}접속자 이름을 설정하지 않았습니다. 이름은 멀티플레이 창의 상단에서 설정할 수 있습니다.
+STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}접속자 이름을 지정하지 않았습니다. 접속자이름은 멀티플레이 창 맨 위에서 설정할 수 있습니다.
 STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}서버 이름을 지정하지 않았습니다. 서버 이름은 멀티플레이 창 맨 위에서 설정할 수 있습니다.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}이 접속자의 게임 버전이 서버의 버전과 일치하지 않습니다
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}잘못된 비밀번호입니다
