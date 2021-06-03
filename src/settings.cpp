@@ -386,9 +386,9 @@ void IntSettingDesc::MakeValueValidAndWrite(const void *object, int32 val) const
  * Make the value valid given the limitations of this setting.
  *
  * In the case of int settings this is ensuring the value is between the minimum and
- * maximum value, with a special case for 0 if SGF_0ISDISABLED is set.
+ * maximum value, with a special case for 0 if SF_GUI_0_IS_SPECIAL is set.
  * This is generally done by clamping the value so it is within the allowed value range.
- * However, for SGF_MULTISTRING the default is used when the value is not valid.
+ * However, for SF_GUI_DROPDOWN the default is used when the value is not valid.
  * @param val The value to make valid.
  */
 void IntSettingDesc::MakeValueValid(int32 &val) const
@@ -407,8 +407,8 @@ void IntSettingDesc::MakeValueValid(int32 &val) const
 		case SLE_VAR_U16:
 		case SLE_VAR_I32: {
 			/* Override the minimum value. No value below this->min, except special value 0 */
-			if (!(this->flags & SGF_0ISDISABLED) || val != 0) {
-				if (!(this->flags & SGF_MULTISTRING)) {
+			if (!(this->flags & SF_GUI_0_IS_SPECIAL) || val != 0) {
+				if (!(this->flags & SF_GUI_DROPDOWN)) {
 					/* Clamp value-type setting to its valid range */
 					val = Clamp(val, this->min, this->max);
 				} else if (val < this->min || val > (int32)this->max) {
@@ -421,8 +421,8 @@ void IntSettingDesc::MakeValueValid(int32 &val) const
 		case SLE_VAR_U32: {
 			/* Override the minimum value. No value below this->min, except special value 0 */
 			uint32 uval = (uint32)val;
-			if (!(this->flags & SGF_0ISDISABLED) || uval != 0) {
-				if (!(this->flags & SGF_MULTISTRING)) {
+			if (!(this->flags & SF_GUI_0_IS_SPECIAL) || uval != 0) {
+				if (!(this->flags & SF_GUI_DROPDOWN)) {
 					/* Clamp value-type setting to its valid range */
 					uval = ClampU(uval, this->min, this->max);
 				} else if (uval < (uint)this->min || uval > this->max) {
@@ -743,13 +743,13 @@ void IniSaveWindowSettings(IniFile *ini, const char *grpname, void *desc)
  */
 bool SettingDesc::IsEditable(bool do_command) const
 {
-	if (!do_command && !(this->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(this->flags & SGF_PER_COMPANY)) return false;
-	if ((this->flags & SGF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return false;
-	if ((this->flags & SGF_NO_NETWORK) && _networking) return false;
-	if ((this->flags & SGF_NEWGAME_ONLY) &&
+	if (!do_command && !(this->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server && !(this->flags & SF_PER_COMPANY)) return false;
+	if ((this->flags & SF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return false;
+	if ((this->flags & SF_NO_NETWORK) && _networking) return false;
+	if ((this->flags & SF_NEWGAME_ONLY) &&
 			(_game_mode == GM_NORMAL ||
-			(_game_mode == GM_EDITOR && !(this->flags & SGF_SCENEDIT_TOO)))) return false;
-	if ((this->flags & SGF_SCENEDIT_ONLY) && _game_mode != GM_EDITOR) return false;
+			(_game_mode == GM_EDITOR && !(this->flags & SF_SCENEDIT_TOO)))) return false;
+	if ((this->flags & SF_SCENEDIT_ONLY) && _game_mode != GM_EDITOR) return false;
 	return true;
 }
 
@@ -759,7 +759,7 @@ bool SettingDesc::IsEditable(bool do_command) const
  */
 SettingType SettingDesc::GetType() const
 {
-	if (this->flags & SGF_PER_COMPANY) return ST_COMPANY;
+	if (this->flags & SF_PER_COMPANY) return ST_COMPANY;
 	return (this->save.conv & SLF_NOT_IN_SAVE) ? ST_CLIENT : ST_GAME;
 }
 
@@ -1689,7 +1689,7 @@ void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
 	this->Write(object, newval);
 	if (this->post_callback != nullptr) this->post_callback(newval);
 
-	if (this->flags & SGF_NO_NETWORK) {
+	if (this->flags & SF_NO_NETWORK) {
 		GamelogStartAction(GLAT_SETTING);
 		GamelogSetting(this->name, oldval, newval);
 		GamelogStopAction();
@@ -1833,7 +1833,7 @@ CommandCost CmdChangeCompanySetting(TileIndex tile, DoCommandFlag flags, uint32 
 bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 {
 	const IntSettingDesc *setting = sd->AsIntSetting();
-	if ((setting->flags & SGF_PER_COMPANY) != 0) {
+	if ((setting->flags & SF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
 			return DoCommandP(0, 0, value, CMD_CHANGE_COMPANY_SETTING, nullptr, setting->name);
 		}
@@ -1992,7 +1992,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 		sd->FormatValue(value, lastof(value), object);
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %u)",
-			name, value, (sd->flags & SGF_0ISDISABLED) ? "(0) " : "", int_setting->min, int_setting->max);
+			name, value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", int_setting->min, int_setting->max);
 	}
 }
 
