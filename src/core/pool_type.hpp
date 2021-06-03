@@ -90,9 +90,9 @@ struct Pool : PoolBase {
 	size_t first_free;   ///< No item with index lower than this is free (doesn't say anything about this one!)
 	size_t first_unused; ///< This and all higher indexes are free (doesn't say anything about first_unused-1 !)
 	size_t items;        ///< Number of used indexes (non-nullptr)
-#ifdef OTTD_ASSERT
+#ifdef WITH_ASSERT
 	size_t checked;      ///< Number of items we checked for
-#endif /* OTTD_ASSERT */
+#endif /* WITH_ASSERT */
 	bool cleaning;       ///< True if cleaning pool (deleting all items)
 
 	Titem **data;        ///< Pointer to array of pointers to Titem
@@ -130,9 +130,9 @@ struct Pool : PoolBase {
 	inline bool CanAllocate(size_t n = 1)
 	{
 		bool ret = this->items <= Tmax_size - n;
-#ifdef OTTD_ASSERT
+#ifdef WITH_ASSERT
 		this->checked = ret ? n : 0;
-#endif /* OTTD_ASSERT */
+#endif /* WITH_ASSERT */
 		return ret;
 	}
 

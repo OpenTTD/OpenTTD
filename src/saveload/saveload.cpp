@@ -1474,14 +1474,12 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 	return 0;
 }
 
-#ifdef OTTD_ASSERT
-
 /**
  * Check whether the variable size of the variable in the saveload configuration
  * matches with the actual variable size.
  * @param sld The saveload configuration to test.
  */
-static bool IsVariableSizeRight(const SaveLoad &sld)
+[[maybe_unused]] static bool IsVariableSizeRight(const SaveLoad &sld)
 {
 	switch (sld.cmd) {
 		case SL_VAR:
@@ -1522,13 +1520,9 @@ static bool IsVariableSizeRight(const SaveLoad &sld)
 	}
 }
 
-#endif /* OTTD_ASSERT */
-
 bool SlObjectMember(void *ptr, const SaveLoad &sld)
 {
-#ifdef OTTD_ASSERT
 	assert(IsVariableSizeRight(sld));
-#endif
 
 	VarType conv = GB(sld.conv, 0, 8);
 	switch (sld.cmd) {

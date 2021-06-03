@@ -953,9 +953,7 @@ void CallVehicleTicks()
 	PerformanceAccumulator::Reset(PFE_GL_AIRCRAFT);
 
 	for (Vehicle *v : Vehicle::Iterate()) {
-#ifdef WITH_ASSERT
-		size_t vehicle_index = v->index;
-#endif
+		[[maybe_unused]] size_t vehicle_index = v->index;
 
 		/* Vehicle could be deleted in this tick */
 		if (!v->Tick()) {
