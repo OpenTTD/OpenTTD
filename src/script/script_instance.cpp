@@ -569,8 +569,9 @@ bool ScriptInstance::IsPaused()
 
 		case SQSL_STRING: {
 			SlObject(nullptr, _script_byte);
-			static char buf[256];
+			static char buf[std::numeric_limits<decltype(_script_sl_byte)>::max()];
 			SlArray(buf, _script_sl_byte, SLE_CHAR);
+			StrMakeValidInPlace(buf, buf + _script_sl_byte);
 			if (vm != nullptr) sq_pushstring(vm, buf, -1);
 			return true;
 		}
