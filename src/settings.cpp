@@ -2023,6 +2023,8 @@ void IConsoleListSettings(const char *prefilter)
 static void LoadSettings(const SettingTable &settings, void *object)
 {
 	for (auto &osd : settings) {
+		if (osd->save.conv & SLF_NOT_IN_SAVE) continue;
+
 		void *ptr = GetVariableAddress(object, osd->save);
 
 		if (!SlObjectMember(ptr, osd->save)) continue;
@@ -2045,11 +2047,15 @@ static void SaveSettings(const SettingTable &settings, void *object)
 	 * SlCalcLength() because we have a different format. So do this manually */
 	size_t length = 0;
 	for (auto &sd : settings) {
+		if (sd->save.conv & SLF_NOT_IN_SAVE) continue;
+
 		length += SlCalcObjMemberLength(object, sd->save);
 	}
 	SlSetLength(length);
 
 	for (auto &sd : settings) {
+		if (sd->save.conv & SLF_NOT_IN_SAVE) continue;
+
 		void *ptr = GetVariableAddress(object, sd->save);
 		SlObjectMember(ptr, sd->save);
 	}
