@@ -19,21 +19,9 @@ struct CargoResolverObject : public ResolverObject {
 
 	CargoResolverObject(const CargoSpec *cs, CallbackID callback = CBID_NO_CALLBACK, uint32 callback_param1 = 0, uint32 callback_param2 = 0);
 
-	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
-
 	GrfSpecFeature GetFeature() const override;
 	uint32 GetDebugID() const override;
 };
-
-/* virtual */ const SpriteGroup *CargoResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	/* Cargo action 2s should always have only 1 "loaded" state, but some
-	 * times things don't follow the spec... */
-	if (!group->loaded.empty())  return group->loaded[0];
-	if (!group->loading.empty()) return group->loading[0];
-
-	return nullptr;
-}
 
 GrfSpecFeature CargoResolverObject::GetFeature() const
 {

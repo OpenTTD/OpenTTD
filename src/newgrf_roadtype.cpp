@@ -58,13 +58,6 @@
 	return UINT_MAX;
 }
 
-/* virtual */ const SpriteGroup *RoadTypeResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	if (!group->loading.empty()) return group->loading[0];
-	if (!group->loaded.empty())  return group->loaded[0];
-	return nullptr;
-}
-
 GrfSpecFeature RoadTypeResolverObject::GetFeature() const
 {
 	RoadType rt = GetRoadTypeByLabel(this->roadtype_scope.rti->label, false);

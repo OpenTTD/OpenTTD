@@ -124,6 +124,9 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
  */
 /* virtual */ const SpriteGroup *ResolverObject::ResolveReal(const RealSpriteGroup *group) const
 {
+	if (!group->loaded.empty())  return group->loaded[0];
+	if (!group->loading.empty()) return group->loading[0];
+
 	return nullptr;
 }
 
