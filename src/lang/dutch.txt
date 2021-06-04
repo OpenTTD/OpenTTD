@@ -2204,6 +2204,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Kan geen
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Verbinding nr. {NUM} kostte te veel tijd
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Er is een protocolfout gedetecteerd en de verbinding werd gesloten
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Je spelernaam is nog niet ingesteld. Je stelt de naam in bovenin het venster Meerdere spelers
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Je servernaam is niet ingesteld. Je kunt de naam instellen bovenin het venster Netwerkspel
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}De revisie van deze client komt niet overeen met de revisie van de server
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Ongeldig wachtwoord
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}De server is vol
