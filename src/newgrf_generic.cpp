@@ -63,8 +63,6 @@ struct GenericResolverObject : public ResolverObject {
 		}
 	}
 
-	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
-
 	GrfSpecFeature GetFeature() const override
 	{
 		return (GrfSpecFeature)this->generic_scope.feature;
@@ -145,14 +143,6 @@ void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *g
 
 	*available = false;
 	return UINT_MAX;
-}
-
-
-/* virtual */ const SpriteGroup *GenericResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	if (group->loaded.empty()) return nullptr;
-
-	return group->loaded[0];
 }
 
 /**

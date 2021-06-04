@@ -57,8 +57,6 @@ struct AirportResolverObject : public ResolverObject {
 		}
 	}
 
-	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
-
 	GrfSpecFeature GetFeature() const override;
 	uint32 GetDebugID() const override;
 };
@@ -217,16 +215,6 @@ void AirportOverrideManager::SetEntitySpec(AirportSpec *as)
 	}
 
 	return this->st->GetNewGRFVariable(this->ro, variable, parameter, available);
-}
-
-/* virtual */ const SpriteGroup *AirportResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	/* Airport action 2s should always have only 1 "loaded" state, but some
-	 * times things don't follow the spec... */
-	if (!group->loaded.empty())  return group->loaded[0];
-	if (!group->loading.empty()) return group->loading[0];
-
-	return nullptr;
 }
 
 GrfSpecFeature AirportResolverObject::GetFeature() const

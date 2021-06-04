@@ -49,8 +49,6 @@ struct CanalResolverObject : public ResolverObject {
 		}
 	}
 
-	const SpriteGroup *ResolveReal(const RealSpriteGroup *group) const override;
-
 	GrfSpecFeature GetFeature() const override;
 	uint32 GetDebugID() const override;
 };
@@ -106,14 +104,6 @@ struct CanalResolverObject : public ResolverObject {
 
 	*available = false;
 	return UINT_MAX;
-}
-
-
-/* virtual */ const SpriteGroup *CanalResolverObject::ResolveReal(const RealSpriteGroup *group) const
-{
-	if (group->loaded.empty()) return nullptr;
-
-	return group->loaded[0];
 }
 
 GrfSpecFeature CanalResolverObject::GetFeature() const
