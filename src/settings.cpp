@@ -2025,9 +2025,15 @@ static void LoadSettings(const SettingTable &settings, void *object)
 	for (auto &osd : settings) {
 		if (osd->save.conv & SLF_NOT_IN_SAVE) continue;
 
-		void *ptr = GetVariableAddress(object, osd->save);
+		SaveLoad sl = osd->save;
+		if ((osd->save.conv & SLF_NO_NETWORK_SYNC) && _networking && !_network_server) {
+			/* We don't want to read this setting, so we do need to skip over it. */
+			sl = SLE_NULL(static_cast<uint16>(SlCalcConvMemLen(osd->save.conv) * osd->save.length));
+		}
 
-		if (!SlObjectMember(ptr, osd->save)) continue;
+		void *ptr = GetVariableAddress(object, sl);
+		if (!SlObjectMember(ptr, sl)) continue;
+
 		if (osd->IsIntSetting()) {
 			const IntSettingDesc *int_setting = osd->AsIntSetting();
 			int_setting->MakeValueValidAndWrite(object, int_setting->Read(object));
