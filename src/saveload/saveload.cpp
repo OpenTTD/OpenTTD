@@ -584,7 +584,7 @@ static inline uint SlGetArrayLength(size_t length)
  * @param conv VarType type of variable that is used for calculating the size
  * @return Return the size of this type in bytes
  */
-static inline uint SlCalcConvMemLen(VarType conv)
+uint SlCalcConvMemLen(VarType conv)
 {
 	static const byte conv_mem_size[] = {1, 1, 1, 2, 2, 4, 4, 8, 8, 0};
 	byte length = GB(conv, 4, 4);
@@ -1412,21 +1412,6 @@ static inline bool SlIsObjectValidInSavegame(const SaveLoad &sld)
 }
 
 /**
- * Are we going to load this variable when loading a savegame or not?
- * @note If the variable is skipped it is skipped in the savegame
- * bytestream itself as well, so there is no need to skip it somewhere else
- */
-static inline bool SlSkipVariableOnLoad(const SaveLoad &sld)
-{
-	if ((sld.conv & SLF_NO_NETWORK_SYNC) && _sl.action != SLA_SAVE && _networking && !_network_server) {
-		SlSkipBytes(SlCalcConvMemLen(sld.conv) * sld.length);
-		return true;
-	}
-
-	return false;
-}
-
-/**
  * Calculate the size of an object.
  * @param object to be measured.
  * @param slt The SaveLoad table with objects to save/load.
@@ -1538,7 +1523,6 @@ bool SlObjectMember(void *ptr, const SaveLoad &sld)
 		case SL_STDSTR:
 			/* CONDITIONAL saveload types depend on the savegame version */
 			if (!SlIsObjectValidInSavegame(sld)) return false;
-			if (SlSkipVariableOnLoad(sld)) return false;
 
 			switch (sld.cmd) {
 				case SL_VAR: SlSaveLoadConv(ptr, conv); break;
