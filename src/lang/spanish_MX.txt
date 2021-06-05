@@ -2205,6 +2205,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}No se pu
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tiempo de espera agotado en conexión #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Se produjo un error de protocolo y la conexión fue cerrada
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Aún no tienes nombre de jugador, pero lo puedes poner en la parte superior de la ventana de Multijugador.
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}El servidor aún no tiene nombre, pero lo puedes poner en la parte superior de la ventana de Multijugador.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La versión de este cliente no corresponde con la versión del servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contraseña incorrecta
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}El servidor está completo

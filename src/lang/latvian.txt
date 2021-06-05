@@ -2480,7 +2480,7 @@ STR_AIRPORT_METRO                                               :Metropolitēns
 STR_AIRPORT_INTERNATIONAL                                       :Starptautiskā lidosta
 STR_AIRPORT_COMMUTER                                            :Ikdienas satiksme
 STR_AIRPORT_INTERCONTINENTAL                                    :Starpkontinentālā
-STR_AIRPORT_HELIPORT                                            :Helikopteru osta
+STR_AIRPORT_HELIPORT                                            :Helikopteru lidosta
 STR_AIRPORT_HELIDEPOT                                           :Helikopteru depo
 STR_AIRPORT_HELISTATION                                         :Helikopteru stacija
 
@@ -3722,6 +3722,7 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Magleva transpo
 STR_REPLACE_ROAD_VEHICLES                                       :Autotransporta līdzekļi
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvaji
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagona noņemšana ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automātiskā aizvietošana saglabās esošo vilciena garumu noņemot vagonus (sākot no priekšgala), ja mainot lokomotīvi tas kļūtu garāks
 
 # Vehicle view
