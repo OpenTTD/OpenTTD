@@ -1334,7 +1334,7 @@ public:
  * @param list The std::list to find the size of.
  * @param conv VarType type of variable that is used for calculating the size.
  */
-static inline size_t SlCalcListLen(const void *list, VarType conv)
+static inline size_t SlCalcRefListLen(const void *list, VarType conv)
 {
 	return SlStorageHelper<std::list, void *>::SlCalcLen(list, conv, SL_REF);
 }
@@ -1344,11 +1344,11 @@ static inline size_t SlCalcListLen(const void *list, VarType conv)
  * @param list The list being manipulated.
  * @param conv VarType type of variable that is used for calculating the size.
  */
-static void SlList(void *list, VarType conv)
+static void SlRefList(void *list, VarType conv)
 {
 	/* Automatically calculate the length? */
 	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcListLen(list, conv));
+		SlSetLength(SlCalcRefListLen(list, conv));
 		/* Determine length only? */
 		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
@@ -1430,7 +1430,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 		case SL_REF:
 		case SL_ARR:
 		case SL_STR:
-		case SL_LST:
+		case SL_REFLIST:
 		case SL_DEQUE:
 		case SL_STDSTR:
 			/* CONDITIONAL saveload types depend on the savegame version */
@@ -1441,7 +1441,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 				case SL_REF: return SlCalcRefLen();
 				case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
 				case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld.length, sld.conv);
-				case SL_LST: return SlCalcListLen(GetVariableAddress(object, sld), sld.conv);
+				case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
 				case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
 				case SL_STDSTR: return SlCalcStdStringLen(GetVariableAddress(object, sld));
 				default: NOT_REACHED();
@@ -1515,7 +1515,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		case SL_REF:
 		case SL_ARR:
 		case SL_STR:
-		case SL_LST:
+		case SL_REFLIST:
 		case SL_DEQUE:
 		case SL_STDSTR:
 			/* CONDITIONAL saveload types depend on the savegame version */
@@ -1526,7 +1526,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				case SL_REF: SlSaveLoadRef(ptr, conv); break;
 				case SL_ARR: SlArray(ptr, sld.length, conv); break;
 				case SL_STR: SlString(ptr, sld.length, sld.conv); break;
-				case SL_LST: SlList(ptr, conv); break;
+				case SL_REFLIST: SlRefList(ptr, conv); break;
 				case SL_DEQUE: SlDeque(ptr, conv); break;
 				case SL_STDSTR: SlStdString(ptr, sld.conv); break;
 				default: NOT_REACHED();

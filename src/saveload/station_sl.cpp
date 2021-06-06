@@ -207,7 +207,7 @@ static const SaveLoad _old_station_desc[] = {
 	SLE_CONDVAR(Station, waiting_triggers,           SLE_UINT8,                  SLV_27, SL_MAX_VERSION),
 	SLE_CONDVAR(Station, num_specs,                  SLE_UINT8,                  SLV_27, SL_MAX_VERSION),
 
-	SLE_CONDLST(Station, loading_vehicles,           REF_VEHICLE,                SLV_57, SL_MAX_VERSION),
+	SLE_CONDREFLIST(Station, loading_vehicles,       REF_VEHICLE,                SLV_57, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 32 bytes) */
 	SLE_CONDNULL(32, SLV_2, SL_MAX_VERSION),
@@ -265,7 +265,7 @@ SaveLoadTable GetGoodsDesc()
 		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_FILE_U32 | SLE_VAR_I64, SLV_14, SLV_65),
 		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_INT64,                  SLV_65, SLV_68),
 		 SLE_CONDVAR(GoodsEntry, amount_fract,         SLE_UINT8,                 SLV_150, SL_MAX_VERSION),
-		SLEG_CONDLST(            _packets,             REF_CARGO_PACKET,           SLV_68, SLV_183),
+		SLEG_CONDREFLIST(        _packets,             REF_CARGO_PACKET,           SLV_68, SLV_183),
 		SLEG_CONDVAR(            _num_dests,           SLE_UINT32,                SLV_183, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, cargo.reserved_count, SLE_UINT,                  SLV_181, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                SLV_183, SL_MAX_VERSION),
@@ -281,7 +281,7 @@ typedef std::pair<const StationID, std::list<CargoPacket *> > StationCargoPair;
 
 static const SaveLoad _cargo_list_desc[] = {
 	SLE_VAR(StationCargoPair, first,  SLE_UINT16),
-	SLE_LST(StationCargoPair, second, REF_CARGO_PACKET),
+	SLE_REFLIST(StationCargoPair, second, REF_CARGO_PACKET),
 };
 
 /**
@@ -426,7 +426,7 @@ static const SaveLoad _station_desc[] = {
 	      SLE_VAR(Station, time_since_unload,          SLE_UINT8),
 	      SLE_VAR(Station, last_vehicle_type,          SLE_UINT8),
 	      SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT8),
-	      SLE_LST(Station, loading_vehicles,           REF_VEHICLE),
+	  SLE_REFLIST(Station, loading_vehicles,           REF_VEHICLE),
 	  SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, SLV_127, SLV_EXTEND_CARGOTYPES),
 	  SLE_CONDVAR(Station, always_accepted,            SLE_UINT64,                 SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
 };

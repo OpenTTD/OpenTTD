@@ -495,10 +495,10 @@ typedef uint32 VarType;
 enum SaveLoadType : byte {
 	SL_VAR         =  0, ///< Save/load a variable.
 	SL_REF         =  1, ///< Save/load a reference.
-	SL_ARR         =  2, ///< Save/load an array.
+	SL_ARR         =  2, ///< Save/load a fixed-size array of #SL_VAR elements.
 	SL_STR         =  3, ///< Save/load a string.
-	SL_LST         =  4, ///< Save/load a list.
-	SL_DEQUE       =  5, ///< Save/load a deque.
+	SL_REFLIST     =  4, ///< Save/load a list of #SL_REF elements.
+	SL_DEQUE       =  5, ///< Save/load a deque of #SL_VAR elements.
 	SL_STDSTR      =  6, ///< Save/load a \c std::string.
 	/* non-normal save-load types */
 	SL_WRITEBYTE   =  8,
@@ -557,7 +557,7 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLE_CONDREF(base, variable, type, from, to) SLE_GENERAL(SL_REF, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of an array in some savegame versions.
+ * Storage of a fixed-size array of #SL_VAR elements in some savegame versions.
  * @param base     Name of the class or struct containing the array.
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
@@ -589,17 +589,17 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLE_CONDSSTR(base, variable, type, from, to) SLE_GENERAL(SL_STDSTR, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a list in some savegame versions.
+ * Storage of a list of #SL_REF elements in some savegame versions.
  * @param base     Name of the class or struct containing the list.
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
  * @param from     First savegame version that has the list.
  * @param to       Last savegame version that has the list.
  */
-#define SLE_CONDLST(base, variable, type, from, to) SLE_GENERAL(SL_LST, base, variable, type, 0, from, to, 0)
+#define SLE_CONDREFLIST(base, variable, type, from, to) SLE_GENERAL(SL_REFLIST, base, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a deque in some savegame versions.
+ * Storage of a deque of #SL_VAR elements in some savegame versions.
  * @param base     Name of the class or struct containing the list.
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
@@ -625,7 +625,7 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLE_REF(base, variable, type) SLE_CONDREF(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
- * Storage of an array in every version of a savegame.
+ * Storage of fixed-size array of #SL_VAR elements in every version of a savegame.
  * @param base     Name of the class or struct containing the array.
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
@@ -651,12 +651,12 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLE_SSTR(base, variable, type) SLE_CONDSSTR(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
- * Storage of a list in every savegame version.
+ * Storage of a list of #SL_REF elements in every savegame version.
  * @param base     Name of the class or struct containing the list.
  * @param variable Name of the variable in the class or struct referenced by \a base.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLE_LST(base, variable, type) SLE_CONDLST(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
+#define SLE_REFLIST(base, variable, type) SLE_CONDREFLIST(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Empty space in every savegame version.
@@ -709,7 +709,7 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLEG_CONDREF(variable, type, from, to) SLEG_GENERAL(SL_REF, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a global array in some savegame versions.
+ * Storage of a global fixed-size array of #SL_VAR elements in some savegame versions.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  * @param length   Number of elements in the array.
@@ -738,13 +738,13 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLEG_CONDSSTR(variable, type, from, to) SLEG_GENERAL(SL_STDSTR, variable, type, 0, from, to, 0)
 
 /**
- * Storage of a global list in some savegame versions.
+ * Storage of a global reference list in some savegame versions.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  * @param from     First savegame version that has the list.
  * @param to       Last savegame version that has the list.
  */
-#define SLEG_CONDLST(variable, type, from, to) SLEG_GENERAL(SL_LST, variable, type, 0, from, to, 0)
+#define SLEG_CONDREFLIST(variable, type, from, to) SLEG_GENERAL(SL_REFLIST, variable, type, 0, from, to, 0)
 
 /**
  * Storage of a global variable in every savegame version.
@@ -761,7 +761,7 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLEG_REF(variable, type) SLEG_CONDREF(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
- * Storage of a global array in every savegame version.
+ * Storage of a global fixed-size array of #SL_VAR elements in every savegame version.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  */
@@ -782,11 +782,11 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLEG_SSTR(variable, type) SLEG_CONDSSTR(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
- * Storage of a global list in every savegame version.
+ * Storage of a global reference list in every savegame version.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
  */
-#define SLEG_LST(variable, type) SLEG_CONDLST(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
+#define SLEG_REFLIST(variable, type) SLEG_CONDREFLIST(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
  * Empty global space in some savegame versions.
