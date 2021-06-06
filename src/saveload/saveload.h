@@ -407,6 +407,47 @@ struct ChunkHandler {
 	ChunkSaveLoadProc *ptrs_proc;       ///< Manipulate pointers in the chunk.
 	ChunkSaveLoadProc *load_check_proc; ///< Load procedure for game preview.
 	ChunkType type;                     ///< Type of the chunk. @see ChunkType
+
+	bool fix_pointers = false;
+	bool load_check = false;
+
+	ChunkHandler(uint32 id, ChunkType type) : id(id), type(type) {}
+
+	ChunkHandler(uint32 id, ChunkSaveLoadProc *save_proc, ChunkSaveLoadProc *load_proc, ChunkSaveLoadProc *ptrs_proc, ChunkSaveLoadProc *load_check_proc, ChunkType type)
+		: id(id), save_proc(save_proc), load_proc(load_proc), ptrs_proc(ptrs_proc), load_check_proc(load_check_proc), type(type)
+	{
+		this->fix_pointers = ptrs_proc != nullptr;
+		this->load_check = load_check_proc != nullptr;
+	}
+
+	virtual ~ChunkHandler() {}
+
+	/**
+	 * Save the chunk.
+	 * Must be overridden, unless Chunk type is CH_READONLY.
+	 */
+	virtual void Save() const;
+
+	/**
+	 * Load the chunk.
+	 * Must be overridden.
+	 */
+	virtual void Load() const;
+
+	/**
+	 * Fix the pointers.
+	 * Pointers are saved using the index of the pointed object.
+	 * On load, pointers are filled with indices and need to be fixed to point to the real object.
+	 * Must be overridden if the chunk saves any pointer.
+	 */
+	virtual void FixPointers() const;
+
+	/**
+	 * Load the chunk for game preview.
+	 * Default implementation just skips the data.
+	 * @param len Number of bytes to skip.
+	 */
+	virtual void LoadCheck(size_t len = 0) const;
 };
 
 /** A table of ChunkHandler entries. */
