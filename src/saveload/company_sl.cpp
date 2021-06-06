@@ -372,8 +372,19 @@ public:
 
 class SlCompanyOldEconomy : public SlCompanyEconomy {
 public:
-	void GenericSaveLoad(CompanyProperties *c) const
+	void Save(CompanyProperties *c) const override
 	{
+		SlSetStructListLength(c->num_valid_stat_ent);
+		for (int i = 0; i < c->num_valid_stat_ent; i++) {
+			SlObject(&c->old_economy[i], this->GetDescription());
+		}
+	}
+
+	void Load(CompanyProperties *c) const override
+	{
+		if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
+			c->num_valid_stat_ent = (uint8)SlGetStructListLength(UINT8_MAX);
+		}
 		if (c->num_valid_stat_ent > lengthof(c->old_economy)) SlErrorCorrupt("Too many old economy entries");
 
 		for (int i = 0; i < c->num_valid_stat_ent; i++) {
@@ -381,10 +392,7 @@ public:
 		}
 	}
 
-	void Save(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void Load(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void LoadCheck(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void FixPointers(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
+	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
 class SlCompanyLiveries : public DefaultSaveLoadHandler<SlCompanyLiveries, CompanyProperties> {
@@ -395,12 +403,33 @@ public:
 		SLE_CONDVAR(Livery, colour2, SLE_UINT8, SLV_34, SL_MAX_VERSION),
 	};
 
-	void GenericSaveLoad(CompanyProperties *c) const
+	/**
+	 * Get the number of liveries used by this savegame version.
+	 * @return The number of liveries used by this savegame version.
+	 */
+	size_t GetNumLiveries() const
 	{
-		int num_liveries = IsSavegameVersionBefore(SLV_63) ? LS_END - 4 : (IsSavegameVersionBefore(SLV_85) ? LS_END - 2: LS_END);
+		if (IsSavegameVersionBefore(SLV_63)) return LS_END - 4;
+		if (IsSavegameVersionBefore(SLV_85)) return LS_END - 2;
+		if (IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) return LS_END;
+		/* Read from the savegame how long the list is. */
+		return SlGetStructListLength(LS_END);
+	}
+
+	void Save(CompanyProperties *c) const override
+	{
+		SlSetStructListLength(LS_END);
+		for (int i = 0; i < LS_END; i++) {
+			SlObject(&c->livery[i], this->GetDescription());
+		}
+	}
+
+	void Load(CompanyProperties *c) const override
+	{
+		size_t num_liveries = this->GetNumLiveries();
 		bool update_in_use = IsSavegameVersionBefore(SLV_GROUP_LIVERIES);
 
-		for (int i = 0; i < num_liveries; i++) {
+		for (size_t i = 0; i < num_liveries; i++) {
 			SlObject(&c->livery[i], this->GetDescription());
 			if (update_in_use && i != LS_DEFAULT) {
 				if (c->livery[i].in_use == 0) {
@@ -426,10 +455,7 @@ public:
 		}
 	}
 
-	void Save(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void Load(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void LoadCheck(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void FixPointers(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
+	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
 /* Save/load of companies */
@@ -467,7 +493,7 @@ static const SaveLoad _company_desc[] = {
 
 	    SLE_ARR(CompanyProperties, share_owners,          SLE_UINT8, 4),
 
-	    SLE_VAR(CompanyProperties, num_valid_stat_ent,    SLE_UINT8),
+	SLE_CONDVAR(CompanyProperties, num_valid_stat_ent,    SLE_UINT8,                   SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 
 	    SLE_VAR(CompanyProperties, months_of_bankruptcy,  SLE_UINT8),
 	SLE_CONDVAR(CompanyProperties, bankrupt_asked,        SLE_FILE_U8  | SLE_VAR_U16,  SL_MIN_VERSION, SLV_104),

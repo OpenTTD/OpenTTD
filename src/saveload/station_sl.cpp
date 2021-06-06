@@ -157,14 +157,14 @@ static const SaveLoad _roadstop_desc[] = {
 };
 
 static uint16 _waiting_acceptance;
-static uint32 _num_flows;
+static uint32 _old_num_flows;
 static uint16 _cargo_source;
 static uint32 _cargo_source_xy;
 static uint8  _cargo_days;
 static Money  _cargo_feeder_share;
 
 std::list<CargoPacket *> _packets;
-uint32 _num_dests;
+uint32 _old_num_dests;
 
 struct FlowSaveLoad {
 	FlowSaveLoad() : source(0), via(0), share(0), restricted(false) {}
@@ -209,6 +209,7 @@ public:
 
 	void Save(BaseStation *bst) const override
 	{
+		SlSetStructListLength(bst->num_specs);
 		for (uint i = 0; i < bst->num_specs; i++) {
 			SlObject(&bst->speclist[i], this->GetDescription());
 		}
@@ -216,6 +217,10 @@ public:
 
 	void Load(BaseStation *bst) const override
 	{
+		if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
+			bst->num_specs = (uint8)SlGetStructListLength(UINT8_MAX);
+		}
+
 		if (bst->num_specs != 0) {
 			/* Allocate speclist memory when loading a game */
 			bst->speclist = CallocT<StationSpecList>(bst->num_specs);
@@ -235,6 +240,7 @@ public:
 
 	void Save(GoodsEntry *ge) const override
 	{
+		SlSetStructListLength(ge->cargo.Packets()->MapSize());
 		for (StationCargoPacketMap::ConstMapIterator it(ge->cargo.Packets()->begin()); it != ge->cargo.Packets()->end(); ++it) {
 			SlObject(const_cast<StationCargoPacketMap::value_type *>(&(*it)), this->GetDescription());
 		}
@@ -242,8 +248,10 @@ public:
 
 	void Load(GoodsEntry *ge) const override
 	{
+		size_t num_dests = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _old_num_dests : SlGetStructListLength(UINT32_MAX);
+
 		StationCargoPair pair;
-		for (uint j = 0; j < _num_dests; ++j) {
+		for (uint j = 0; j < num_dests; ++j) {
 			SlObject(&pair, this->GetDescription());
 			const_cast<StationCargoPacketMap &>(*(ge->cargo.Packets()))[pair.first].swap(pair.second);
 			assert(pair.second.empty());
@@ -269,6 +277,12 @@ public:
 
 	void Save(GoodsEntry *ge) const override
 	{
+		uint32 num_flows = 0;
+		for (FlowStatMap::const_iterator it(ge->flows.begin()); it != ge->flows.end(); ++it) {
+			num_flows += (uint32)it->second.GetShares()->size();
+		}
+		SlSetStructListLength(num_flows);
+
 		for (FlowStatMap::const_iterator outer_it(ge->flows.begin()); outer_it != ge->flows.end(); ++outer_it) {
 			const FlowStat::SharesMap *shares = outer_it->second.GetShares();
 			uint32 sum_shares = 0;
@@ -287,10 +301,12 @@ public:
 
 	void Load(GoodsEntry *ge) const override
 	{
+		size_t num_flows = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _old_num_flows : SlGetStructListLength(UINT32_MAX);
+
 		FlowSaveLoad flow;
 		FlowStat *fs = nullptr;
 		StationID prev_source = INVALID_STATION;
-		for (uint32 j = 0; j < _num_flows; ++j) {
+		for (uint32 j = 0; j < num_flows; ++j) {
 			SlObject(&flow, this->GetDescription());
 			if (fs == nullptr || prev_source != flow.source) {
 				fs = &(ge->flows.insert(std::make_pair(flow.source, FlowStat(flow.via, flow.share, flow.restricted))).first->second);
@@ -330,11 +346,11 @@ public:
 		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_INT64,                  SLV_65, SLV_68),
 		 SLE_CONDVAR(GoodsEntry, amount_fract,         SLE_UINT8,                 SLV_150, SL_MAX_VERSION),
 		SLEG_CONDREFLIST(        _packets,             REF_CARGO_PACKET,           SLV_68, SLV_183),
-		SLEG_CONDVAR(            _num_dests,           SLE_UINT32,                SLV_183, SL_MAX_VERSION),
+		SLEG_CONDVAR(            _old_num_dests,       SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
 		 SLE_CONDVAR(GoodsEntry, cargo.reserved_count, SLE_UINT,                  SLV_181, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                SLV_183, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, node,                 SLE_UINT16,                SLV_183, SL_MAX_VERSION),
-		SLEG_CONDVAR(            _num_flows,           SLE_UINT32,                SLV_183, SL_MAX_VERSION),
+		SLEG_CONDVAR(            _old_num_flows,       SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
 		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo,    SLE_UINT32,                SLV_183, SL_MAX_VERSION),
 		SLEG_CONDSTRUCTLIST(SlStationFlow,                                        SLV_183, SL_MAX_VERSION),
 		SLEG_CONDSTRUCTLIST(SlStationCargo,                                       SLV_183, SL_MAX_VERSION),
@@ -344,15 +360,26 @@ public:
 	}
 #endif
 
+	/**
+	 * Get the number of cargoes used by this savegame version.
+	 * @return The number of cargoes used by this savegame version.
+	 */
+	size_t GetNumCargo() const
+	{
+		if (IsSavegameVersionBefore(SLV_55)) return 12;
+		if (IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES)) return 32;
+		if (IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) return NUM_CARGO;
+		/* Read from the savegame how long the list is. */
+		return SlGetStructListLength(NUM_CARGO);
+	}
+
 	void Save(BaseStation *bst) const override
 	{
 		Station *st = Station::From(bst);
+
+		SlSetStructListLength(NUM_CARGO);
+
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
-			_num_dests = (uint32)st->goods[i].cargo.Packets()->MapSize();
-			_num_flows = 0;
-			for (FlowStatMap::const_iterator it(st->goods[i].flows.begin()); it != st->goods[i].flows.end(); ++it) {
-				_num_flows += (uint32)it->second.GetShares()->size();
-			}
 			SlObject(&st->goods[i], this->GetDescription());
 		}
 	}
@@ -369,7 +396,7 @@ public:
 			memcpy(st->airport.psa->storage, _old_st_persistent_storage.storage, sizeof(_old_st_persistent_storage.storage));
 		}
 
-		uint num_cargo = IsSavegameVersionBefore(SLV_55) ? 12 : IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
+		size_t num_cargo = this->GetNumCargo();
 		for (CargoID i = 0; i < num_cargo; i++) {
 			GoodsEntry *ge = &st->goods[i];
 			SlObject(ge, this->GetDescription());
@@ -520,7 +547,7 @@ public:
 		/* Used by newstations for graphic variations */
 		    SLE_VAR(BaseStation, random_bits,            SLE_UINT16),
 		    SLE_VAR(BaseStation, waiting_triggers,       SLE_UINT8),
-		    SLE_VAR(BaseStation, num_specs,              SLE_UINT8),
+		SLE_CONDVAR(BaseStation, num_specs,              SLE_UINT8,                   SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 	};
 
 	void GenericSaveLoad(BaseStation *bst) const
@@ -626,7 +653,7 @@ static void Save_STNN()
 
 static void Load_STNN()
 {
-	_num_flows = 0;
+	_old_num_flows = 0;
 
 	int index;
 	while ((index = SlIterateArray()) != -1) {

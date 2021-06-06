@@ -37,6 +37,12 @@ public:
 
 	void Save(Node *bn) const override
 	{
+		uint16 size = 0;
+		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->edges[_linkgraph_from][to].next_edge) {
+			size++;
+		}
+
+		SlSetStructListLength(size);
 		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->edges[_linkgraph_from][to].next_edge) {
 			SlObject(&_linkgraph->edges[_linkgraph_from][to], this->GetDescription());
 		}
@@ -54,11 +60,18 @@ public:
 			return;
 		}
 
+		size_t used_size = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? max_size : SlGetStructListLength(UINT16_MAX);
+
 		/* ... but as that wasted a lot of space we save a sparse matrix now. */
 		for (NodeID to = _linkgraph_from; to != INVALID_NODE; to = _linkgraph->edges[_linkgraph_from][to].next_edge) {
+			if (used_size == 0) SlErrorCorrupt("Link graph structure overflow");
+			used_size--;
+
 			if (to >= max_size) SlErrorCorrupt("Link graph structure overflow");
 			SlObject(&_linkgraph->edges[_linkgraph_from][to], this->GetDescription());
 		}
+
+		if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) && used_size > 0) SlErrorCorrupt("Corrupted link graph");
 	}
 };
 
@@ -77,6 +90,7 @@ public:
 	{
 		_linkgraph = lg;
 
+		SlSetStructListLength(lg->Size());
 		for (NodeID from = 0; from < lg->Size(); ++from) {
 			_linkgraph_from = from;
 			SlObject(&lg->nodes[from], this->GetDescription());
@@ -87,8 +101,9 @@ public:
 	{
 		_linkgraph = lg;
 
-		lg->Init(_num_nodes);
-		for (NodeID from = 0; from < _num_nodes; ++from) {
+		uint16 length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _num_nodes : (uint16)SlGetStructListLength(UINT16_MAX);
+		lg->Init(length);
+		for (NodeID from = 0; from < length; ++from) {
 			_linkgraph_from = from;
 			SlObject(&lg->nodes[from], this->GetDescription());
 		}
@@ -103,7 +118,7 @@ SaveLoadTable GetLinkGraphDesc()
 {
 	static const SaveLoad link_graph_desc[] = {
 		 SLE_VAR(LinkGraph, last_compression, SLE_INT32),
-		SLEG_VAR(_num_nodes,                  SLE_UINT16),
+		SLEG_CONDVAR(_num_nodes,              SLE_UINT16, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 		 SLE_VAR(LinkGraph, cargo,            SLE_UINT8),
 		SLEG_STRUCTLIST(SlLinkgraphNode),
 	};
@@ -227,8 +242,6 @@ void AfterLoadLinkGraphs()
 static void Save_LGRP()
 {
 	for (LinkGraph *lg : LinkGraph::Iterate()) {
-		_num_nodes = lg->Size();
-
 		SlSetArrayIndex(lg->index);
 		SlObject(lg, GetLinkGraphDesc());
 	}
@@ -252,8 +265,6 @@ static void Load_LGRP()
 static void Save_LGRJ()
 {
 	for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) {
-		_num_nodes = lgj->Size();
-
 		SlSetArrayIndex(lgj->index);
 		SlObject(lgj, GetLinkGraphJobDesc());
 	}

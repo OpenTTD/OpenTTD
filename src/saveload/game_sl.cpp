@@ -121,6 +121,8 @@ public:
 
 	void Save(LanguageStrings *ls) const override
 	{
+		SlSetStructListLength(ls->lines.size());
+
 		for (const auto &string : ls->lines) {
 			_game_saveload_string = string;
 			SlObject(nullptr, this->GetDescription());
@@ -129,7 +131,9 @@ public:
 
 	void Load(LanguageStrings *ls) const override
 	{
-		for (uint32 i = 0; i < _game_saveload_strings; i++) {
+		uint32 length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _game_saveload_strings : (uint32)SlGetStructListLength(UINT32_MAX);
+
+		for (uint32 i = 0; i < length; i++) {
 			SlObject(nullptr, this->GetDescription());
 			ls->lines.emplace_back(_game_saveload_string);
 		}
@@ -138,7 +142,7 @@ public:
 
 static const SaveLoad _game_language_desc[] = {
 	SLE_SSTR(LanguageStrings, language, SLE_STR),
-	SLEG_VAR(_game_saveload_strings, SLE_UINT32),
+	SLEG_CONDVAR(_game_saveload_strings, SLE_UINT32, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 	SLEG_STRUCTLIST(SlGameLanguageString),
 };
 
@@ -170,9 +174,7 @@ static void Save_GSTR()
 
 	for (uint i = 0; i < _current_data->raw_strings.size(); i++) {
 		SlSetArrayIndex(i);
-		LanguageStrings *ls = &_current_data->raw_strings[i];
-		_game_saveload_strings = (uint32)ls->lines.size();
-		SlObject(ls, _game_language_desc);
+		SlObject(&_current_data->raw_strings[i], _game_language_desc);
 	}
 }
 
