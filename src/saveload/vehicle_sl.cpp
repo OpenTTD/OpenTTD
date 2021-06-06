@@ -629,7 +629,7 @@ SaveLoadTable GetVehicleDescription(VehicleType vt)
 		     SLE_VAR(Vehicle, cargo_cap,             SLE_UINT16),
 		 SLE_CONDVAR(Vehicle, refit_cap,             SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
 		SLEG_CONDVAR(         _cargo_count,          SLE_UINT16,                   SL_MIN_VERSION,  SLV_68),
-		 SLE_CONDLST(Vehicle, cargo.packets,         REF_CARGO_PACKET,            SLV_68, SL_MAX_VERSION),
+		SLE_CONDREFLIST(Vehicle, cargo.packets,      REF_CARGO_PACKET,            SLV_68, SL_MAX_VERSION),
 		 SLE_CONDARR(Vehicle, cargo.action_counts,   SLE_UINT, VehicleCargoList::NUM_MOVE_TO_ACTION, SLV_181, SL_MAX_VERSION),
 		 SLE_CONDVAR(Vehicle, cargo_age_counter,     SLE_UINT16,                 SLV_162, SL_MAX_VERSION),
 
