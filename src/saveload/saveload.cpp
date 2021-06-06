@@ -1218,6 +1218,31 @@ static void *IntToReference(size_t index, SLRefType rt)
 }
 
 /**
+ * Handle conversion for references.
+ * @param ptr The object being filled/read.
+ * @param conv VarType type of the current element of the struct.
+ */
+void SlSaveLoadRef(void *ptr, VarType conv)
+{
+	switch (_sl.action) {
+		case SLA_SAVE:
+			SlWriteUint32((uint32)ReferenceToInt(*(void **)ptr, (SLRefType)conv));
+			break;
+		case SLA_LOAD_CHECK:
+		case SLA_LOAD:
+			*(size_t *)ptr = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : SlReadUint32();
+			break;
+		case SLA_PTRS:
+			*(void **)ptr = IntToReference(*(size_t *)ptr, (SLRefType)conv);
+			break;
+		case SLA_NULL:
+			*(void **)ptr = nullptr;
+			break;
+		default: NOT_REACHED();
+	}
+}
+
+/**
  * Template class to help with list-like types.
  */
 template <template<typename, typename> typename Tstorage, typename Tvar, typename Tallocator = std::allocator<Tvar>>
@@ -1228,124 +1253,107 @@ public:
 	 * Internal templated helper to return the size in bytes of a list-like type.
 	 * @param storage The storage to find the size of
 	 * @param conv VarType type of variable that is used for calculating the size
+	 * @param cmd The SaveLoadType ware are saving/loading.
 	 */
-	static size_t SlCalcLen(const void *storage, VarType conv)
+	static size_t SlCalcLen(const void *storage, VarType conv, SaveLoadType cmd = SL_VAR)
 	{
+		assert(cmd == SL_VAR || cmd == SL_REF);
+
 		const SlStorageT *list = static_cast<const SlStorageT *>(storage);
 
 		int type_size = SlCalcConvFileLen(SLE_FILE_U32); // Size of the length of the list.
-		int item_size = SlCalcConvFileLen(conv);
+		int item_size = SlCalcConvFileLen(cmd == SL_VAR ? conv : (VarType)SLE_FILE_U32);
 		return list->size() * item_size + type_size;
+	}
+
+	static void SlSaveLoadMember(SaveLoadType cmd, Tvar *item, VarType conv)
+	{
+		switch (cmd) {
+			case SL_VAR: SlSaveLoadConv(item, conv); break;
+			case SL_REF: SlSaveLoadRef(item, conv); break;
+			default:
+				NOT_REACHED();
+		}
 	}
 
 	/**
 	 * Internal templated helper to save/load a list-like type.
 	 * @param storage The storage being manipulated.
 	 * @param conv VarType type of variable that is used for calculating the size.
-	*/
-	static void SlSaveLoad(void *storage, VarType conv)
+	 * @param cmd The SaveLoadType ware are saving/loading.
+	 */
+	static void SlSaveLoad(void *storage, VarType conv, SaveLoadType cmd = SL_VAR)
 	{
+		assert(cmd == SL_VAR || cmd == SL_REF);
+
 		SlStorageT *list = static_cast<SlStorageT *>(storage);
 
 		switch (_sl.action) {
-			case SLA_SAVE: {
+			case SLA_SAVE:
 				SlWriteUint32((uint32)list->size());
 
 				for (auto &item : *list) {
-					SlSaveLoadConv(&item, conv);
+					SlSaveLoadMember(cmd, &item, conv);
 				}
 				break;
-			}
+
 			case SLA_LOAD_CHECK:
 			case SLA_LOAD: {
-				size_t length = SlReadUint32();
+				size_t length;
+				switch (cmd) {
+					case SL_VAR: length = SlReadUint32(); break;
+					case SL_REF: length = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : SlReadUint32(); break;
+					default: NOT_REACHED();
+				}
 
 				/* Load each value and push to the end of the storage. */
 				for (size_t i = 0; i < length; i++) {
 					Tvar &data = list->emplace_back();
-					SlSaveLoadConv(&data, conv);
+					SlSaveLoadMember(cmd, &data, conv);
 				}
 				break;
 			}
+
 			case SLA_PTRS:
+				for (auto &item : *list) {
+					SlSaveLoadMember(cmd, &item, conv);
+				}
 				break;
+
 			case SLA_NULL:
 				list->clear();
 				break;
+
 			default: NOT_REACHED();
 		}
 	}
 };
 
 /**
- * Return the size in bytes of a list
- * @param list The std::list to find the size of
+ * Return the size in bytes of a list.
+ * @param list The std::list to find the size of.
+ * @param conv VarType type of variable that is used for calculating the size.
  */
-static inline size_t SlCalcListLen(const void *list)
+static inline size_t SlCalcListLen(const void *list, VarType conv)
 {
-	const std::list<void *> *l = (const std::list<void *> *) list;
-
-	int type_size = IsSavegameVersionBefore(SLV_69) ? 2 : 4;
-	/* Each entry is saved as type_size bytes, plus type_size bytes are used for the length
-	 * of the list */
-	return l->size() * type_size + type_size;
+	return SlStorageHelper<std::list, void *>::SlCalcLen(list, conv, SL_REF);
 }
 
 /**
  * Save/Load a list.
- * @param list The list being manipulated
- * @param conv SLRefType type of the list (Vehicle *, Station *, etc)
+ * @param list The list being manipulated.
+ * @param conv VarType type of variable that is used for calculating the size.
  */
-static void SlList(void *list, SLRefType conv)
+static void SlList(void *list, VarType conv)
 {
 	/* Automatically calculate the length? */
 	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcListLen(list));
+		SlSetLength(SlCalcListLen(list, conv));
 		/* Determine length only? */
 		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 
-	typedef std::list<void *> PtrList;
-	PtrList *l = (PtrList *)list;
-
-	switch (_sl.action) {
-		case SLA_SAVE: {
-			SlWriteUint32((uint32)l->size());
-
-			PtrList::iterator iter;
-			for (iter = l->begin(); iter != l->end(); ++iter) {
-				void *ptr = *iter;
-				SlWriteUint32((uint32)ReferenceToInt(ptr, conv));
-			}
-			break;
-		}
-		case SLA_LOAD_CHECK:
-		case SLA_LOAD: {
-			size_t length = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : SlReadUint32();
-
-			/* Load each reference and push to the end of the list */
-			for (size_t i = 0; i < length; i++) {
-				size_t data = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : SlReadUint32();
-				l->push_back((void *)data);
-			}
-			break;
-		}
-		case SLA_PTRS: {
-			PtrList temp = *l;
-
-			l->clear();
-			PtrList::iterator iter;
-			for (iter = temp.begin(); iter != temp.end(); ++iter) {
-				void *ptr = IntToReference((size_t)*iter, conv);
-				l->push_back(ptr);
-			}
-			break;
-		}
-		case SLA_NULL:
-			l->clear();
-			break;
-		default: NOT_REACHED();
-	}
+	SlStorageHelper<std::list, void *>::SlSaveLoad(list, conv, SL_REF);
 }
 
 /**
@@ -1433,7 +1441,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 				case SL_REF: return SlCalcRefLen();
 				case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
 				case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld.length, sld.conv);
-				case SL_LST: return SlCalcListLen(GetVariableAddress(object, sld));
+				case SL_LST: return SlCalcListLen(GetVariableAddress(object, sld), sld.conv);
 				case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
 				case SL_STDSTR: return SlCalcStdStringLen(GetVariableAddress(object, sld));
 				default: NOT_REACHED();
@@ -1515,27 +1523,10 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 
 			switch (sld.cmd) {
 				case SL_VAR: SlSaveLoadConv(ptr, conv); break;
-				case SL_REF: // Reference variable, translate
-					switch (_sl.action) {
-						case SLA_SAVE:
-							SlWriteUint32((uint32)ReferenceToInt(*(void **)ptr, (SLRefType)conv));
-							break;
-						case SLA_LOAD_CHECK:
-						case SLA_LOAD:
-							*(size_t *)ptr = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : SlReadUint32();
-							break;
-						case SLA_PTRS:
-							*(void **)ptr = IntToReference(*(size_t *)ptr, (SLRefType)conv);
-							break;
-						case SLA_NULL:
-							*(void **)ptr = nullptr;
-							break;
-						default: NOT_REACHED();
-					}
-					break;
+				case SL_REF: SlSaveLoadRef(ptr, conv); break;
 				case SL_ARR: SlArray(ptr, sld.length, conv); break;
 				case SL_STR: SlString(ptr, sld.length, sld.conv); break;
-				case SL_LST: SlList(ptr, (SLRefType)conv); break;
+				case SL_LST: SlList(ptr, conv); break;
 				case SL_DEQUE: SlDeque(ptr, conv); break;
 				case SL_STDSTR: SlStdString(ptr, sld.conv); break;
 				default: NOT_REACHED();
