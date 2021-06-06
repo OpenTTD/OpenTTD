@@ -2205,6 +2205,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}No s'ha 
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}La connexió #{NUM} ha esgotat el temps d'espera
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}S'ha obtingut un error de protocol i s'ha tancat la connexió
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}No s'ha escollit un nom per al vostre jugador. El nom es pot establir a la part superior de la finestra de mode multijugador.
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}No s'ha establit un nom per al vostre servidor. El nom s'estableix a la part superior de la finestra multijugador.
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La revisió d'aquest client no concorda amb la revisió del servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contrasenya incorrecta
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}El servidor està ple
@@ -3559,7 +3560,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clica pe
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Elimina el grup seleccionat
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Canvia el nom del grup seleccionat
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Canvia l'aspecte dels vehicles del grup seleccionat.
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clica per protegir aquest grup de l'autosubstitueix global
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clica per protegir aquest grup de l'autosubstitució global. Ctrl + clic també protegeix els subgrups.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Esborrar grup
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}Estàs segur que vols esborrar aquest grup i tots els seus subgrups?
@@ -3812,7 +3813,9 @@ STR_REPLACE_MAGLEV_VEHICLES                                     :Trens maglev
 STR_REPLACE_ROAD_VEHICLES                                       :Automòbils
 STR_REPLACE_TRAM_VEHICLES                                       :Tramvies
 
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la substitució automàtica mantingui la llargada del tren eliminant vagons (començant pel front), si substituint la màquina el tren es fa més llarg
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl + clic també ho aplica als subgrups.
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4221,7 +4224,7 @@ STR_AI_DEBUG_SELECT_AI_TOOLTIP                                  :{BLACK}Mostra l
 STR_AI_GAME_SCRIPT                                              :{BLACK}Script de partida
 STR_AI_GAME_SCRIPT_TOOLTIP                                      :{BLACK}Mostra el registre de l'script de partida.
 
-STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA falsa i no farà res.{}Pots descarregar diverses IA via el sistema de "Contingut en línia"
+STR_ERROR_AI_NO_AI_FOUND                                        :No s'ha trobat una IA adequada per carregar.{}Aquesta IA és una IA que no fa res.{}Podeu descarregar diverses IA via el sistema de «Contingut en línia».
 STR_ERROR_AI_PLEASE_REPORT_CRASH                                :{WHITE}Un dels scripts que s'estava executant ha fallat. Si us plau, informeu l'autor de l'script amb una captura de pantalla de la finestra de depuració de l'script d'IA/partida.
 STR_ERROR_AI_DEBUG_SERVER_ONLY                                  :{YELLOW}La finestra de depuració de les IA i l'script de partida només està disponible al servidor.
 
