@@ -314,9 +314,9 @@ static void SlNullPointers()
 	_sl_version = SAVEGAME_VERSION;
 
 	for (auto &ch : ChunkHandlers()) {
-		if (ch.ptrs_proc != nullptr) {
+		if (ch.fix_pointers) {
 			Debug(sl, 3, "Nulling pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
-			ch.ptrs_proc();
+			ch.FixPointers();
 		}
 	}
 
@@ -2114,6 +2114,48 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 	if (offs != _sl.dumper->GetSize()) SlErrorCorrupt("Invalid chunk size");
 }
 
+void ChunkHandler::Save() const
+{
+	assert(this->save_proc != nullptr);
+	this->save_proc();
+}
+
+void ChunkHandler::Load() const
+{
+	assert(this->load_proc != nullptr);
+	this->load_proc();
+}
+
+void ChunkHandler::FixPointers() const
+{
+	assert(this->ptrs_proc != nullptr);
+	this->ptrs_proc();
+}
+
+void ChunkHandler::LoadCheck(size_t len) const
+{
+	if (this->load_check) {
+		assert(this->load_check_proc != nullptr);
+		this->load_check_proc();
+	} else {
+		switch (_sl.block_mode) {
+			case CH_TABLE:
+			case CH_SPARSE_TABLE:
+				SlTableHeader({});
+				FALLTHROUGH;
+			case CH_ARRAY:
+			case CH_SPARSE_ARRAY:
+				SlSkipArray();
+				break;
+			case CH_RIFF:
+				SlSkipBytes(len);
+				break;
+			default:
+				NOT_REACHED();
+		}
+	}
+}
+
 /**
  * Load a chunk of data (eg vehicles, stations, etc.)
  * @param ch The chunkhandler that will be used for the operation
@@ -2129,7 +2171,7 @@ static void SlLoadChunk(const ChunkHandler &ch)
 	_sl.expect_table_header = (_sl.block_mode == CH_TABLE || _sl.block_mode == CH_SPARSE_TABLE);
 
 	/* The header should always be at the start. Read the length; the
-	 * load_proc() should as first action process the header. */
+	 * Load() should as first action process the header. */
 	if (_sl.expect_table_header) {
 		SlIterateArray();
 	}
@@ -2138,12 +2180,12 @@ static void SlLoadChunk(const ChunkHandler &ch)
 		case CH_TABLE:
 		case CH_ARRAY:
 			_sl.array_index = 0;
-			ch.load_proc();
+			ch.Load();
 			if (_next_offs != 0) SlErrorCorrupt("Invalid array length");
 			break;
 		case CH_SPARSE_TABLE:
 		case CH_SPARSE_ARRAY:
-			ch.load_proc();
+			ch.Load();
 			if (_next_offs != 0) SlErrorCorrupt("Invalid array length");
 			break;
 		case CH_RIFF:
@@ -2152,7 +2194,7 @@ static void SlLoadChunk(const ChunkHandler &ch)
 			len += SlReadUint16();
 			_sl.obj_len = len;
 			endoffs = _sl.reader->GetSize() + len;
-			ch.load_proc();
+			ch.Load();
 			if (_sl.reader->GetSize() != endoffs) SlErrorCorrupt("Invalid chunk size");
 			break;
 		default:
@@ -2179,9 +2221,8 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
 	_sl.expect_table_header = (_sl.block_mode == CH_TABLE || _sl.block_mode == CH_SPARSE_TABLE);
 
 	/* The header should always be at the start. Read the length; the
-	 * load_check_proc() should as first action process the header. */
-	if (_sl.expect_table_header && ch.load_check_proc != nullptr) {
-		/* If load_check_proc() is nullptr, SlSkipArray() will already skip the header. */
+	 * LoadCheck() should as first action process the header. */
+	if (_sl.expect_table_header) {
 		SlIterateArray();
 	}
 
@@ -2189,19 +2230,11 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
 		case CH_TABLE:
 		case CH_ARRAY:
 			_sl.array_index = 0;
-			if (ch.load_check_proc != nullptr) {
-				ch.load_check_proc();
-			} else {
-				SlSkipArray();
-			}
+			ch.LoadCheck();
 			break;
 		case CH_SPARSE_TABLE:
 		case CH_SPARSE_ARRAY:
-			if (ch.load_check_proc != nullptr) {
-				ch.load_check_proc();
-			} else {
-				SlSkipArray();
-			}
+			ch.LoadCheck();
 			break;
 		case CH_RIFF:
 			/* Read length */
@@ -2209,11 +2242,7 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
 			len += SlReadUint16();
 			_sl.obj_len = len;
 			endoffs = _sl.reader->GetSize() + len;
-			if (ch.load_check_proc) {
-				ch.load_check_proc();
-			} else {
-				SlSkipBytes(len);
-			}
+			ch.LoadCheck(len);
 			if (_sl.reader->GetSize() != endoffs) SlErrorCorrupt("Invalid chunk size");
 			break;
 		default:
@@ -2233,9 +2262,6 @@ static void SlSaveChunk(const ChunkHandler &ch)
 {
 	if (ch.type == CH_READONLY) return;
 
-	ChunkSaveLoadProc *proc = ch.save_proc;
-	assert(proc != nullptr);
-
 	SlWriteUint32(ch.id);
 	Debug(sl, 2, "Saving chunk {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
 
@@ -2246,19 +2272,19 @@ static void SlSaveChunk(const ChunkHandler &ch)
 
 	switch (_sl.block_mode) {
 		case CH_RIFF:
-			proc();
+			ch.Save();
 			break;
 		case CH_TABLE:
 		case CH_ARRAY:
 			_sl.last_array_index = 0;
 			SlWriteByte(_sl.block_mode);
-			proc();
+			ch.Save();
 			SlWriteArrayLength(0); // Terminate arrays
 			break;
 		case CH_SPARSE_TABLE:
 		case CH_SPARSE_ARRAY:
 			SlWriteByte(_sl.block_mode);
-			proc();
+			ch.Save();
 			SlWriteArrayLength(0); // Terminate arrays
 			break;
 		default: NOT_REACHED();
@@ -2326,9 +2352,9 @@ static void SlFixPointers()
 	_sl.action = SLA_PTRS;
 
 	for (auto &ch : ChunkHandlers()) {
-		if (ch.ptrs_proc != nullptr) {
+		if (ch.fix_pointers) {
 			Debug(sl, 3, "Fixing pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
-			ch.ptrs_proc();
+			ch.FixPointers();
 		}
 	}
 
