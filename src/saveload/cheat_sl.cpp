@@ -44,6 +44,8 @@ static const SaveLoad _cheats_desc[] = {
  */
 static void Save_CHTS()
 {
+	SlSetArrayIndex(0);
+
 	SlSetLength(std::size(_cheats_desc));
 	SlObject(&_cheats, _cheats_desc);
 }
@@ -67,12 +69,14 @@ static void Load_CHTS()
 		if (count == 0) break;
 	}
 
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
 	SlObject(&_cheats, slt);
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many CHTS entries");
 }
 
 /** Chunk handlers related to cheats. */
 static const ChunkHandler cheat_chunk_handlers[] = {
-	{ 'CHTS', Save_CHTS, Load_CHTS, nullptr, nullptr, CH_RIFF },
+	{ 'CHTS', Save_CHTS, Load_CHTS, nullptr, nullptr, CH_ARRAY },
 };
 
 extern const ChunkHandlerTable _cheat_chunk_handlers(cheat_chunk_handlers);

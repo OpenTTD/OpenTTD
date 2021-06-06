@@ -287,6 +287,7 @@ static void Load_LGRJ()
  */
 static void Save_LGRS()
 {
+	SlSetArrayIndex(0);
 	SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
 }
 
@@ -295,7 +296,9 @@ static void Save_LGRS()
  */
 static void Load_LGRS()
 {
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
 	SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many LGRS entries");
 }
 
 /**
@@ -309,7 +312,7 @@ static void Ptrs_LGRS()
 static const ChunkHandler linkgraph_chunk_handlers[] = {
 	{ 'LGRP', Save_LGRP, Load_LGRP, nullptr,   nullptr, CH_ARRAY },
 	{ 'LGRJ', Save_LGRJ, Load_LGRJ, nullptr,   nullptr, CH_ARRAY },
-	{ 'LGRS', Save_LGRS, Load_LGRS, Ptrs_LGRS, nullptr, CH_RIFF  }
+	{ 'LGRS', Save_LGRS, Load_LGRS, Ptrs_LGRS, nullptr, CH_ARRAY },
 };
 
 extern const ChunkHandlerTable _linkgraph_chunk_handlers(linkgraph_chunk_handlers);
