@@ -573,150 +573,169 @@ static uint16 _cargo_paid_for;
 static Money  _cargo_feeder_share;
 static uint32 _cargo_loaded_at_xy;
 
-/**
- * Make it possible to make the saveload tables "friends" of other classes.
- * @param vt the vehicle type. Can be VEH_END for the common vehicle description data
- * @return the saveload description
- */
-SaveLoadTable GetVehicleDescription(VehicleType vt)
-{
-	/** Save and load of vehicles */
-	static const SaveLoad _common_veh_desc[] = {
-		     SLE_VAR(Vehicle, subtype,               SLE_UINT8),
+class SlVehicleCommon : public DefaultSaveLoadHandler<SlVehicleCommon, Vehicle> {
+public:
+#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
+	/* This table access private members of other classes; they have this
+	 * class as friend. For MSVC CL 19.15 and 19.16 this doesn't work for
+	 * "inline static const", so we are forced to wrap the table in a
+	 * function. CL 19.16 is the latest for VS2017. */
+	inline static const SaveLoad description[] = {{}};
+	SaveLoadTable GetDescription() const override {
+#else
+	inline
+#endif
+	static const SaveLoad description[] = {
+		    SLE_VAR(Vehicle, subtype,               SLE_UINT8),
 
-		     SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
-		 SLE_CONDVAR(Vehicle, name,                  SLE_NAME,                     SL_MIN_VERSION,  SLV_84),
+		    SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
+		SLE_CONDVAR(Vehicle, name,                  SLE_NAME,                     SL_MIN_VERSION,  SLV_84),
 		SLE_CONDSSTR(Vehicle, name,                  SLE_STR | SLF_ALLOW_CONTROL,  SLV_84, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, unitnumber,            SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_8),
-		 SLE_CONDVAR(Vehicle, unitnumber,            SLE_UINT16,                   SLV_8, SL_MAX_VERSION),
-		     SLE_VAR(Vehicle, owner,                 SLE_UINT8),
-		 SLE_CONDVAR(Vehicle, tile,                  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
-		 SLE_CONDVAR(Vehicle, tile,                  SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, dest_tile,             SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
-		 SLE_CONDVAR(Vehicle, dest_tile,             SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, unitnumber,            SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_8),
+		SLE_CONDVAR(Vehicle, unitnumber,            SLE_UINT16,                   SLV_8, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, owner,                 SLE_UINT8),
+		SLE_CONDVAR(Vehicle, tile,                  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
+		SLE_CONDVAR(Vehicle, tile,                  SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, dest_tile,             SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
+		SLE_CONDVAR(Vehicle, dest_tile,             SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
 
-		 SLE_CONDVAR(Vehicle, x_pos,                 SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
-		 SLE_CONDVAR(Vehicle, x_pos,                 SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, y_pos,                 SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
-		 SLE_CONDVAR(Vehicle, y_pos,                 SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_164),
-		 SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
-		     SLE_VAR(Vehicle, direction,             SLE_UINT8),
+		SLE_CONDVAR(Vehicle, x_pos,                 SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
+		SLE_CONDVAR(Vehicle, x_pos,                 SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, y_pos,                 SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
+		SLE_CONDVAR(Vehicle, y_pos,                 SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_164),
+		SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, direction,             SLE_UINT8),
 
 		SLE_CONDNULL(2,                                                            SL_MIN_VERSION,  SLV_58),
-		     SLE_VAR(Vehicle, spritenum,             SLE_UINT8),
+		    SLE_VAR(Vehicle, spritenum,             SLE_UINT8),
 		SLE_CONDNULL(5,                                                            SL_MIN_VERSION,  SLV_58),
-		     SLE_VAR(Vehicle, engine_type,           SLE_UINT16),
+		    SLE_VAR(Vehicle, engine_type,           SLE_UINT16),
 
 		SLE_CONDNULL(2,                                                            SL_MIN_VERSION,  SLV_152),
-		     SLE_VAR(Vehicle, cur_speed,             SLE_UINT16),
-		     SLE_VAR(Vehicle, subspeed,              SLE_UINT8),
-		     SLE_VAR(Vehicle, acceleration,          SLE_UINT8),
-		 SLE_CONDVAR(Vehicle, motion_counter,        SLE_UINT32,                   SLV_VEH_MOTION_COUNTER, SL_MAX_VERSION),
-		     SLE_VAR(Vehicle, progress,              SLE_UINT8),
+		    SLE_VAR(Vehicle, cur_speed,             SLE_UINT16),
+		    SLE_VAR(Vehicle, subspeed,              SLE_UINT8),
+		    SLE_VAR(Vehicle, acceleration,          SLE_UINT8),
+		SLE_CONDVAR(Vehicle, motion_counter,        SLE_UINT32,                   SLV_VEH_MOTION_COUNTER, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, progress,              SLE_UINT8),
 
-		     SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
-		 SLE_CONDVAR(Vehicle, last_station_visited,  SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_5),
-		 SLE_CONDVAR(Vehicle, last_station_visited,  SLE_UINT16,                   SLV_5, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, last_loading_station,  SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
+		SLE_CONDVAR(Vehicle, last_station_visited,  SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_5),
+		SLE_CONDVAR(Vehicle, last_station_visited,  SLE_UINT16,                   SLV_5, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, last_loading_station,  SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
 
-		     SLE_VAR(Vehicle, cargo_type,            SLE_UINT8),
-		 SLE_CONDVAR(Vehicle, cargo_subtype,         SLE_UINT8,                   SLV_35, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, cargo_type,            SLE_UINT8),
+		SLE_CONDVAR(Vehicle, cargo_subtype,         SLE_UINT8,                   SLV_35, SL_MAX_VERSION),
 		SLEG_CONDVAR(         _cargo_days,           SLE_UINT8,                    SL_MIN_VERSION,  SLV_68),
 		SLEG_CONDVAR(         _cargo_source,         SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_7),
 		SLEG_CONDVAR(         _cargo_source,         SLE_UINT16,                   SLV_7,  SLV_68),
 		SLEG_CONDVAR(         _cargo_source_xy,      SLE_UINT32,                  SLV_44,  SLV_68),
-		     SLE_VAR(Vehicle, cargo_cap,             SLE_UINT16),
-		 SLE_CONDVAR(Vehicle, refit_cap,             SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, cargo_cap,             SLE_UINT16),
+		SLE_CONDVAR(Vehicle, refit_cap,             SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
 		SLEG_CONDVAR(         _cargo_count,          SLE_UINT16,                   SL_MIN_VERSION,  SLV_68),
 		SLE_CONDREFLIST(Vehicle, cargo.packets,      REF_CARGO_PACKET,            SLV_68, SL_MAX_VERSION),
-		 SLE_CONDARR(Vehicle, cargo.action_counts,   SLE_UINT, VehicleCargoList::NUM_MOVE_TO_ACTION, SLV_181, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, cargo_age_counter,     SLE_UINT16,                 SLV_162, SL_MAX_VERSION),
+		SLE_CONDARR(Vehicle, cargo.action_counts,   SLE_UINT, VehicleCargoList::NUM_MOVE_TO_ACTION, SLV_181, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, cargo_age_counter,     SLE_UINT16,                 SLV_162, SL_MAX_VERSION),
 
-		     SLE_VAR(Vehicle, day_counter,           SLE_UINT8),
-		     SLE_VAR(Vehicle, tick_counter,          SLE_UINT8),
-		 SLE_CONDVAR(Vehicle, running_ticks,         SLE_UINT8,                   SLV_88, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, day_counter,           SLE_UINT8),
+		    SLE_VAR(Vehicle, tick_counter,          SLE_UINT8),
+		SLE_CONDVAR(Vehicle, running_ticks,         SLE_UINT8,                   SLV_88, SL_MAX_VERSION),
 
-		     SLE_VAR(Vehicle, cur_implicit_order_index,  SLE_UINT8),
-		 SLE_CONDVAR(Vehicle, cur_real_order_index,  SLE_UINT8,                  SLV_158, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, cur_implicit_order_index,  SLE_UINT8),
+		SLE_CONDVAR(Vehicle, cur_real_order_index,  SLE_UINT8,                  SLV_158, SL_MAX_VERSION),
 		/* num_orders is now part of OrderList and is not saved but counted */
 		SLE_CONDNULL(1,                                                            SL_MIN_VERSION, SLV_105),
 
 		/* This next line is for version 4 and prior compatibility.. it temporarily reads
-		 type and flags (which were both 4 bits) into type. Later on this is
-		 converted correctly */
-		 SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    SL_MIN_VERSION,   SLV_5),
-		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_5),
+		type and flags (which were both 4 bits) into type. Later on this is
+		converted correctly */
+		SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    SL_MIN_VERSION,   SLV_5),
+		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_5),
 
 		/* Orders for version 5 and on */
-		 SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    SLV_5, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, current_order.flags,   SLE_UINT8,                    SLV_5, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   SLV_5, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.type,    SLE_UINT8,                    SLV_5, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.flags,   SLE_UINT8,                    SLV_5, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   SLV_5, SL_MAX_VERSION),
 
 		/* Refit in current order */
-		 SLE_CONDVAR(Vehicle, current_order.refit_cargo,   SLE_UINT8,             SLV_36, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.refit_cargo,   SLE_UINT8,             SLV_36, SL_MAX_VERSION),
 		SLE_CONDNULL(1,                                                           SLV_36, SLV_182), // refit_subtype
 
 		/* Timetable in current order */
-		 SLE_CONDVAR(Vehicle, current_order.wait_time,     SLE_UINT16,            SLV_67, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, current_order.travel_time,   SLE_UINT16,            SLV_67, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, current_order.max_speed,     SLE_UINT16,           SLV_174, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, timetable_start,       SLE_INT32,                  SLV_129, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.wait_time,     SLE_UINT16,            SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.travel_time,   SLE_UINT16,            SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order.max_speed,     SLE_UINT16,           SLV_174, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, timetable_start,       SLE_INT32,                  SLV_129, SL_MAX_VERSION),
 
-		 SLE_CONDREF(Vehicle, orders,                REF_ORDER,                    SL_MIN_VERSION, SLV_105),
-		 SLE_CONDREF(Vehicle, orders,                REF_ORDERLIST,              SLV_105, SL_MAX_VERSION),
+		SLE_CONDREF(Vehicle, orders,                REF_ORDER,                    SL_MIN_VERSION, SLV_105),
+		SLE_CONDREF(Vehicle, orders,                REF_ORDERLIST,              SLV_105, SL_MAX_VERSION),
 
-		 SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
-		 SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   SLV_31, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, max_age,               SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
-		 SLE_CONDVAR(Vehicle, max_age,               SLE_INT32,                   SLV_31, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, date_of_last_service,  SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
-		 SLE_CONDVAR(Vehicle, date_of_last_service,  SLE_INT32,                   SLV_31, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT16,                   SL_MIN_VERSION,  SLV_31),
-		 SLE_CONDVAR(Vehicle, service_interval,      SLE_FILE_U32 | SLE_VAR_U16,  SLV_31, SLV_180),
-		 SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT16,                 SLV_180, SL_MAX_VERSION),
-		     SLE_VAR(Vehicle, reliability,           SLE_UINT16),
-		     SLE_VAR(Vehicle, reliability_spd_dec,   SLE_UINT16),
-		     SLE_VAR(Vehicle, breakdown_ctr,         SLE_UINT8),
-		     SLE_VAR(Vehicle, breakdown_delay,       SLE_UINT8),
-		     SLE_VAR(Vehicle, breakdowns_since_last_service, SLE_UINT8),
-		     SLE_VAR(Vehicle, breakdown_chance,      SLE_UINT8),
-		 SLE_CONDVAR(Vehicle, build_year,            SLE_FILE_U8 | SLE_VAR_I32,    SL_MIN_VERSION,  SLV_31),
-		 SLE_CONDVAR(Vehicle, build_year,            SLE_INT32,                   SLV_31, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
+		SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   SLV_31, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, max_age,               SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
+		SLE_CONDVAR(Vehicle, max_age,               SLE_INT32,                   SLV_31, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, date_of_last_service,  SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
+		SLE_CONDVAR(Vehicle, date_of_last_service,  SLE_INT32,                   SLV_31, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT16,                   SL_MIN_VERSION,  SLV_31),
+		SLE_CONDVAR(Vehicle, service_interval,      SLE_FILE_U32 | SLE_VAR_U16,  SLV_31, SLV_180),
+		SLE_CONDVAR(Vehicle, service_interval,      SLE_UINT16,                 SLV_180, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, reliability,           SLE_UINT16),
+		    SLE_VAR(Vehicle, reliability_spd_dec,   SLE_UINT16),
+		    SLE_VAR(Vehicle, breakdown_ctr,         SLE_UINT8),
+		    SLE_VAR(Vehicle, breakdown_delay,       SLE_UINT8),
+		    SLE_VAR(Vehicle, breakdowns_since_last_service, SLE_UINT8),
+		    SLE_VAR(Vehicle, breakdown_chance,      SLE_UINT8),
+		SLE_CONDVAR(Vehicle, build_year,            SLE_FILE_U8 | SLE_VAR_I32,    SL_MIN_VERSION,  SLV_31),
+		SLE_CONDVAR(Vehicle, build_year,            SLE_INT32,                   SLV_31, SL_MAX_VERSION),
 
-		     SLE_VAR(Vehicle, load_unload_ticks,     SLE_UINT16),
+		    SLE_VAR(Vehicle, load_unload_ticks,     SLE_UINT16),
 		SLEG_CONDVAR(         _cargo_paid_for,       SLE_UINT16,                  SLV_45, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_FILE_U8 | SLE_VAR_U16,   SLV_40, SLV_180),
-		 SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_UINT16,                 SLV_180, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_FILE_U8 | SLE_VAR_U16,   SLV_40, SLV_180),
+		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_UINT16,                 SLV_180, SL_MAX_VERSION),
 
-		 SLE_CONDVAR(Vehicle, profit_this_year,      SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
-		 SLE_CONDVAR(Vehicle, profit_this_year,      SLE_INT64,                   SLV_65, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, profit_last_year,      SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
-		 SLE_CONDVAR(Vehicle, profit_last_year,      SLE_INT64,                   SLV_65, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, profit_this_year,      SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
+		SLE_CONDVAR(Vehicle, profit_this_year,      SLE_INT64,                   SLV_65, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, profit_last_year,      SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
+		SLE_CONDVAR(Vehicle, profit_last_year,      SLE_INT64,                   SLV_65, SL_MAX_VERSION),
 		SLEG_CONDVAR(         _cargo_feeder_share,   SLE_FILE_I32 | SLE_VAR_I64,  SLV_51,  SLV_65),
 		SLEG_CONDVAR(         _cargo_feeder_share,   SLE_INT64,                   SLV_65,  SLV_68),
 		SLEG_CONDVAR(         _cargo_loaded_at_xy,   SLE_UINT32,                  SLV_51,  SLV_68),
-		 SLE_CONDVAR(Vehicle, value,                 SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
-		 SLE_CONDVAR(Vehicle, value,                 SLE_INT64,                   SLV_65, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, value,                 SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
+		SLE_CONDVAR(Vehicle, value,                 SLE_INT64,                   SLV_65, SL_MAX_VERSION),
 
-		 SLE_CONDVAR(Vehicle, random_bits,           SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, waiting_triggers,      SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, random_bits,           SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, waiting_triggers,      SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
 
-		 SLE_CONDREF(Vehicle, next_shared,           REF_VEHICLE,                  SLV_2, SL_MAX_VERSION),
+		SLE_CONDREF(Vehicle, next_shared,           REF_VEHICLE,                  SLV_2, SL_MAX_VERSION),
 		SLE_CONDNULL(2,                                                            SLV_2,  SLV_69),
 		SLE_CONDNULL(4,                                                           SLV_69, SLV_101),
 
-		 SLE_CONDVAR(Vehicle, group_id,              SLE_UINT16,                  SLV_60, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, group_id,              SLE_UINT16,                  SLV_60, SL_MAX_VERSION),
 
-		 SLE_CONDVAR(Vehicle, current_order_time,    SLE_UINT32,                  SLV_67, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, current_order_time,    SLE_UINT32,                  SLV_67, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_67, SL_MAX_VERSION),
 
 		SLE_CONDNULL(10,                                                           SLV_2, SLV_144), // old reserved space
 	};
+#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
+		return description;
+	}
+#endif
 
-	static const SaveLoad _train_desc[] = {
-		SLE_WRITEBYTE(Vehicle, type),
-		SLE_VEH_INCLUDE(),
+	void GenericSaveLoad(Vehicle *v) const
+	{
+		SlObject(v, this->GetDescription());
+	}
+
+	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+};
+
+class SlVehicleTrain : public DefaultSaveLoadHandler<SlVehicleTrain, Vehicle> {
+public:
+	inline static const SaveLoad description[] = {
+		 SLEG_STRUCT(SlVehicleCommon),
 		     SLE_VAR(Train, crash_anim_pos,      SLE_UINT16),
 		     SLE_VAR(Train, force_proceed,       SLE_UINT8),
 		     SLE_VAR(Train, railtype,            SLE_UINT8),
@@ -733,9 +752,21 @@ SaveLoadTable GetVehicleDescription(VehicleType vt)
 		SLE_CONDNULL(11, SLV_2, SLV_144), // old reserved space
 	};
 
-	static const SaveLoad _roadveh_desc[] = {
-		SLE_WRITEBYTE(Vehicle, type),
-		SLE_VEH_INCLUDE(),
+	void GenericSaveLoad(Vehicle *v) const
+	{
+		if (v->type != VEH_TRAIN) return;
+		SlObject(v, this->GetDescription());
+	}
+
+	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+};
+
+class SlVehicleRoadVeh : public DefaultSaveLoadHandler<SlVehicleRoadVeh, Vehicle> {
+public:
+	inline static const SaveLoad description[] = {
+		  SLEG_STRUCT(SlVehicleCommon),
 		      SLE_VAR(RoadVehicle, state,                SLE_UINT8),
 		      SLE_VAR(RoadVehicle, frame,                SLE_UINT8),
 		      SLE_VAR(RoadVehicle, blocked_ctr,          SLE_UINT16),
@@ -753,9 +784,21 @@ SaveLoadTable GetVehicleDescription(VehicleType vt)
 		 SLE_CONDNULL(16,                                                              SLV_2, SLV_144), // old reserved space
 	};
 
-	static const SaveLoad _ship_desc[] = {
-		SLE_WRITEBYTE(Vehicle, type),
-		SLE_VEH_INCLUDE(),
+	void GenericSaveLoad(Vehicle *v) const
+	{
+		if (v->type != VEH_ROAD) return;
+		SlObject(v, this->GetDescription());
+	}
+
+	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+};
+
+class SlVehicleShip : public DefaultSaveLoadHandler<SlVehicleShip, Vehicle> {
+public:
+	inline static const SaveLoad description[] = {
+		  SLEG_STRUCT(SlVehicleCommon),
 		      SLE_VAR(Ship, state,                     SLE_UINT8),
 		SLE_CONDDEQUE(Ship, path,                      SLE_UINT8,                  SLV_SHIP_PATH_CACHE, SL_MAX_VERSION),
 		  SLE_CONDVAR(Ship, rotation,                  SLE_UINT8,                  SLV_SHIP_ROTATION, SL_MAX_VERSION),
@@ -763,9 +806,21 @@ SaveLoadTable GetVehicleDescription(VehicleType vt)
 		SLE_CONDNULL(16, SLV_2, SLV_144), // old reserved space
 	};
 
-	static const SaveLoad _aircraft_desc[] = {
-		SLE_WRITEBYTE(Vehicle, type),
-		SLE_VEH_INCLUDE(),
+	void GenericSaveLoad(Vehicle *v) const
+	{
+		if (v->type != VEH_SHIP) return;
+		SlObject(v, this->GetDescription());
+	}
+
+	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+};
+
+class SlVehicleAircraft : public DefaultSaveLoadHandler<SlVehicleAircraft, Vehicle> {
+public:
+	inline static const SaveLoad description[] = {
+		 SLEG_STRUCT(SlVehicleCommon),
 		     SLE_VAR(Aircraft, crashed_counter,       SLE_UINT16),
 		     SLE_VAR(Aircraft, pos,                   SLE_UINT8),
 
@@ -784,9 +839,20 @@ SaveLoadTable GetVehicleDescription(VehicleType vt)
 		SLE_CONDNULL(13,                                                           SLV_2, SLV_144), // old reserved space
 	};
 
-	static const SaveLoad _special_desc[] = {
-		SLE_WRITEBYTE(Vehicle, type),
+	void GenericSaveLoad(Vehicle *v) const
+	{
+		if (v->type != VEH_AIRCRAFT) return;
+		SlObject(v, this->GetDescription());
+	}
 
+	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+};
+
+class SlVehicleEffect : public DefaultSaveLoadHandler<SlVehicleEffect, Vehicle> {
+public:
+	inline static const SaveLoad description[] = {
 		     SLE_VAR(Vehicle, subtype,               SLE_UINT8),
 
 		 SLE_CONDVAR(Vehicle, tile,                  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
@@ -812,58 +878,90 @@ SaveLoadTable GetVehicleDescription(VehicleType vt)
 		SLE_CONDNULL(15,                                                           SLV_2, SLV_144), // old reserved space
 	};
 
-	static const SaveLoad _disaster_desc[] = {
-		SLE_WRITEBYTE(Vehicle, type),
+	void GenericSaveLoad(Vehicle *v) const
+	{
+		if (v->type != VEH_EFFECT) return;
+		SlObject(v, this->GetDescription());
+	}
 
-		     SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
+	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+};
 
-		     SLE_VAR(Vehicle, subtype,               SLE_UINT8),
-		 SLE_CONDVAR(Vehicle, tile,                  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
-		 SLE_CONDVAR(Vehicle, tile,                  SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, dest_tile,             SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
-		 SLE_CONDVAR(Vehicle, dest_tile,             SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
+class SlVehicleDisaster : public DefaultSaveLoadHandler<SlVehicleDisaster, Vehicle> {
+public:
+#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
+	/* This table access private members of other classes; they have this
+	 * class as friend. For MSVC CL 19.15 and 19.16 this doesn't work for
+	 * "inline static const", so we are forced to wrap the table in a
+	 * function. CL 19.16 is the latest for VS2017. */
+	inline static const SaveLoad description[] = {{}};
+	SaveLoadTable GetDescription() const override {
+#else
+	inline
+#endif
+	static const SaveLoad description[] = {
+		    SLE_REF(Vehicle, next,                  REF_VEHICLE_OLD),
 
-		 SLE_CONDVAR(Vehicle, x_pos,                 SLE_FILE_I16 | SLE_VAR_I32,   SL_MIN_VERSION,   SLV_6),
-		 SLE_CONDVAR(Vehicle, x_pos,                 SLE_INT32,                    SLV_6, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, y_pos,                 SLE_FILE_I16 | SLE_VAR_I32,   SL_MIN_VERSION,   SLV_6),
-		 SLE_CONDVAR(Vehicle, y_pos,                 SLE_INT32,                    SLV_6, SL_MAX_VERSION),
-		 SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_164),
-		 SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
-		     SLE_VAR(Vehicle, direction,             SLE_UINT8),
+		    SLE_VAR(Vehicle, subtype,               SLE_UINT8),
+		SLE_CONDVAR(Vehicle, tile,                  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
+		SLE_CONDVAR(Vehicle, tile,                  SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, dest_tile,             SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION,   SLV_6),
+		SLE_CONDVAR(Vehicle, dest_tile,             SLE_UINT32,                   SLV_6, SL_MAX_VERSION),
+
+		SLE_CONDVAR(Vehicle, x_pos,                 SLE_FILE_I16 | SLE_VAR_I32,   SL_MIN_VERSION,   SLV_6),
+		SLE_CONDVAR(Vehicle, x_pos,                 SLE_INT32,                    SLV_6, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, y_pos,                 SLE_FILE_I16 | SLE_VAR_I32,   SL_MIN_VERSION,   SLV_6),
+		SLE_CONDVAR(Vehicle, y_pos,                 SLE_INT32,                    SLV_6, SL_MAX_VERSION),
+		SLE_CONDVAR(Vehicle, z_pos,                 SLE_FILE_U8  | SLE_VAR_I32,   SL_MIN_VERSION, SLV_164),
+		SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, direction,             SLE_UINT8),
 
 		SLE_CONDNULL(5,                                                            SL_MIN_VERSION,  SLV_58),
-		     SLE_VAR(Vehicle, owner,                 SLE_UINT8),
-		     SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
-		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8 | SLE_VAR_U16,    SL_MIN_VERSION,   SLV_5),
-		 SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   SLV_5, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, owner,                 SLE_UINT8),
+		    SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
+		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8 | SLE_VAR_U16,    SL_MIN_VERSION,   SLV_5),
+		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_UINT16,                   SLV_5, SL_MAX_VERSION),
 
-		     SLE_VAR(Vehicle, sprite_cache.sprite_seq.seq[0].sprite, SLE_FILE_U16 | SLE_VAR_U32),
-		 SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
-		 SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   SLV_31, SL_MAX_VERSION),
-		     SLE_VAR(Vehicle, tick_counter,          SLE_UINT8),
+		    SLE_VAR(Vehicle, sprite_cache.sprite_seq.seq[0].sprite, SLE_FILE_U16 | SLE_VAR_U32),
+		SLE_CONDVAR(Vehicle, age,                   SLE_FILE_U16 | SLE_VAR_I32,   SL_MIN_VERSION,  SLV_31),
+		SLE_CONDVAR(Vehicle, age,                   SLE_INT32,                   SLV_31, SL_MAX_VERSION),
+		    SLE_VAR(Vehicle, tick_counter,          SLE_UINT8),
 
-		 SLE_CONDVAR(DisasterVehicle, image_override,            SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_191),
-		 SLE_CONDVAR(DisasterVehicle, image_override,            SLE_UINT32,                 SLV_191, SL_MAX_VERSION),
-		 SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_191),
-		 SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_UINT32,                 SLV_191, SL_MAX_VERSION),
-		 SLE_CONDVAR(DisasterVehicle, flags,                     SLE_UINT8,                  SLV_194, SL_MAX_VERSION),
+		SLE_CONDVAR(DisasterVehicle, image_override,            SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_191),
+		SLE_CONDVAR(DisasterVehicle, image_override,            SLE_UINT32,                 SLV_191, SL_MAX_VERSION),
+		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_191),
+		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_UINT32,                 SLV_191, SL_MAX_VERSION),
+		SLE_CONDVAR(DisasterVehicle, flags,                     SLE_UINT8,                  SLV_194, SL_MAX_VERSION),
 
 		SLE_CONDNULL(16,                                                           SLV_2, SLV_144), // old reserved space
 	};
+#if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
+		return description;
+	}
+#endif
 
+	void GenericSaveLoad(Vehicle *v) const
+	{
+		if (v->type != VEH_DISASTER) return;
+		SlObject(v, this->GetDescription());
+	}
 
-	static const SaveLoadTable _veh_descs[] = {
-		_train_desc,
-		_roadveh_desc,
-		_ship_desc,
-		_aircraft_desc,
-		_special_desc,
-		_disaster_desc,
-		_common_veh_desc,
-	};
+	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+};
 
-	return _veh_descs[vt];
-}
+const static SaveLoad _vehicle_desc[] = {
+	SLE_SAVEBYTE(Vehicle, type),
+	SLEG_STRUCT(SlVehicleTrain),
+	SLEG_STRUCT(SlVehicleRoadVeh),
+	SLEG_STRUCT(SlVehicleShip),
+	SLEG_STRUCT(SlVehicleAircraft),
+	SLEG_STRUCT(SlVehicleEffect),
+	SLEG_STRUCT(SlVehicleDisaster),
+};
 
 /** Will be called when the vehicles need to be saved. */
 static void Save_VEHS()
@@ -871,7 +969,7 @@ static void Save_VEHS()
 	/* Write the vehicles */
 	for (Vehicle *v : Vehicle::Iterate()) {
 		SlSetArrayIndex(v->index);
-		SlObject(v, GetVehicleDescription(v->type));
+		SlObject(v, _vehicle_desc);
 	}
 }
 
@@ -897,7 +995,7 @@ void Load_VEHS()
 			default: SlErrorCorrupt("Invalid vehicle type");
 		}
 
-		SlObject(v, GetVehicleDescription(vtype));
+		SlObject(v, _vehicle_desc);
 
 		if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v) && CargoPacket::CanAllocateItem()) {
 			/* Don't construct the packet with station here, because that'll fail with old savegames */
@@ -924,10 +1022,10 @@ void Load_VEHS()
 	}
 }
 
-static void Ptrs_VEHS()
+void Ptrs_VEHS()
 {
 	for (Vehicle *v : Vehicle::Iterate()) {
-		SlObject(v, GetVehicleDescription(v->type));
+		SlObject(v, _vehicle_desc);
 	}
 }
 

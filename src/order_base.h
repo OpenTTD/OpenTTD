@@ -32,9 +32,11 @@ extern OrderListPool _orderlist_pool;
  */
 struct Order : OrderPool::PoolItem<&_order_pool> {
 private:
-	friend SaveLoadTable GetVehicleDescription(VehicleType vt); ///< Saving and loading the current order of vehicles.
 	friend void Load_VEHS();                                             ///< Loading of ancient vehicles.
 	friend SaveLoadTable GetOrderDescription();                 ///< Saving and loading of orders.
+	/* So we can use private/protected variables in the saveload code */
+	friend class SlVehicleCommon;
+	friend class SlVehicleDisaster;
 
 	uint8 type;           ///< The type of order + non-stop flags
 	uint8 flags;          ///< Load/unload types, depot order/action types.

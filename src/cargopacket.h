@@ -305,8 +305,8 @@ public:
 	friend class StationCargoList;
 	/** The super class ought to know what it's doing. */
 	friend class CargoList<VehicleCargoList, CargoPacketList>;
-	/** The vehicles have a cargo list (and we want that saved). */
-	friend SaveLoadTable GetVehicleDescription(VehicleType vt);
+	/* So we can use private/protected variables in the saveload code */
+	friend class SlVehicleCommon;
 
 	friend class CargoShift;
 	friend class CargoTransfer;
