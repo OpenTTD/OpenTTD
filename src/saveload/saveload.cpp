@@ -1590,6 +1590,34 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 }
 
 /**
+ * Set the length of this list.
+ * @param The length of the list.
+ */
+void SlSetStructListLength(size_t length)
+{
+	/* Automatically calculate the length? */
+	if (_sl.need_length != NL_NONE) {
+		SlSetLength(SlGetArrayLength(length));
+		if (_sl.need_length == NL_CALCLENGTH) return;
+	}
+
+	SlWriteArrayLength(length);
+}
+
+/**
+ * Get the length of this list; if it exceeds the limit, error out.
+ * @param limit The maximum size the list can be.
+ * @return The length of the list.
+ */
+size_t SlGetStructListLength(size_t limit)
+{
+	size_t length = SlReadArrayLength();
+	if (length > limit) SlErrorCorrupt("List exceeds storage size");
+
+	return length;
+}
+
+/**
  * Main SaveLoad function.
  * @param object The object that is being saved or loaded.
  * @param slt The SaveLoad table with objects to save/load.

@@ -326,9 +326,11 @@ enum SaveLoadVersion : uint16 {
 	SLV_GS_INDUSTRY_CONTROL,                ///< 287  PR#7912 and PR#8115 GS industry control.
 	SLV_VEH_MOTION_COUNTER,                 ///< 288  PR#8591 Desync safe motion counter
 	SLV_INDUSTRY_TEXT,                      ///< 289  PR#8576 v1.11.0-RC1  Additional GS text for industries.
+
 	SLV_MAPGEN_SETTINGS_REVAMP,             ///< 290  PR#8891 v1.11  Revamp of some mapgen settings (snow coverage, desert coverage, heightmap height, custom terrain type).
 	SLV_GROUP_REPLACE_WAGON_REMOVAL,        ///< 291  PR#7441 Per-group wagon removal flag.
 	SLV_CUSTOM_SUBSIDY_DURATION,            ///< 292  PR#9081 Configurable subsidy duration.
+	SLV_SAVELOAD_LIST_LENGTH,               ///< 293  PR#9374 Consistency in list length with SL_STRUCT / SL_STRUCTLIST / SL_DEQUE / SL_REFLIST.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };
@@ -991,6 +993,9 @@ void WriteValue(void *ptr, VarType conv, int64 val);
 
 void SlSetArrayIndex(uint index);
 int SlIterateArray();
+
+void SlSetStructListLength(size_t length);
+size_t SlGetStructListLength(size_t limit);
 
 void SlAutolength(AutolengthProc *proc, void *arg);
 size_t SlGetFieldLength();
