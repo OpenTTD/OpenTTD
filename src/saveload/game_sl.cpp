@@ -57,14 +57,14 @@ static void Load_GSDT()
 	/* Free all current data */
 	GameConfig::GetConfig(GameConfig::SSS_FORCE_GAME)->Change(nullptr);
 
-	if ((CompanyID)SlIterateArray() == (CompanyID)-1) return;
+	if (SlIterateArray() == -1) return;
 
 	_game_saveload_version = -1;
 	SlObject(nullptr, _game_script);
 
 	if (_networking && !_network_server) {
 		GameInstance::LoadEmpty();
-		if ((CompanyID)SlIterateArray() != (CompanyID)-1) SlErrorCorrupt("Too many GameScript configs");
+		if (SlIterateArray() != -1) SlErrorCorrupt("Too many GameScript configs");
 		return;
 	}
 
@@ -99,7 +99,7 @@ static void Load_GSDT()
 	Game::StartNew();
 	Game::Load(_game_saveload_version);
 
-	if ((CompanyID)SlIterateArray() != (CompanyID)-1) SlErrorCorrupt("Too many GameScript configs");
+	if (SlIterateArray() != -1) SlErrorCorrupt("Too many GameScript configs");
 }
 
 static void Save_GSDT()

@@ -139,10 +139,19 @@ static const SaveLoad _industry_builder_desc[] = {
 	SLEG_VAR(_industry_builder.wanted_inds, SLE_UINT32),
 };
 
-/** Load/save industry builder. */
-static void LoadSave_IBLD()
+/** Save industry builder. */
+static void Save_IBLD()
 {
+	SlSetArrayIndex(0);
 	SlGlobList(_industry_builder_desc);
+}
+
+/** Load industry builder. */
+static void Load_IBLD()
+{
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+	SlGlobList(_industry_builder_desc);
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many IBLD entries");
 }
 
 /** Description of the data to save and load in #IndustryTypeBuildData. */
@@ -177,11 +186,11 @@ static void Load_ITBL()
 }
 
 static const ChunkHandler industry_chunk_handlers[] = {
-	{ 'INDY', Save_INDY,     Load_INDY,     Ptrs_INDY, nullptr, CH_ARRAY },
-	{ 'IIDS', Save_IIDS,     Load_IIDS,     nullptr,   nullptr, CH_ARRAY },
-	{ 'TIDS', Save_TIDS,     Load_TIDS,     nullptr,   nullptr, CH_ARRAY },
-	{ 'IBLD', LoadSave_IBLD, LoadSave_IBLD, nullptr,   nullptr, CH_RIFF  },
-	{ 'ITBL', Save_ITBL,     Load_ITBL,     nullptr,   nullptr, CH_ARRAY },
+	{ 'INDY', Save_INDY, Load_INDY, Ptrs_INDY, nullptr, CH_ARRAY },
+	{ 'IIDS', Save_IIDS, Load_IIDS, nullptr,   nullptr, CH_ARRAY },
+	{ 'TIDS', Save_TIDS, Load_TIDS, nullptr,   nullptr, CH_ARRAY },
+	{ 'IBLD', Save_IBLD, Load_IBLD, nullptr,   nullptr, CH_ARRAY },
+	{ 'ITBL', Save_ITBL, Load_ITBL, nullptr,   nullptr, CH_ARRAY },
 };
 
 extern const ChunkHandlerTable _industry_chunk_handlers(industry_chunk_handlers);

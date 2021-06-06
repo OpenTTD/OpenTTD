@@ -118,14 +118,28 @@ static const SaveLoad _date_check_desc[] = {
 
 /* Save load date related variables as well as persistent tick counters
  * XXX: currently some unrelated stuff is just put here */
-static void SaveLoad_DATE()
+static void Save_DATE()
 {
+	SlSetArrayIndex(0);
 	SlGlobList(_date_desc);
+}
+
+static void Load_DATE_common(const SaveLoadTable &slt)
+{
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+	SlGlobList(slt);
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
+}
+
+static void Load_DATE()
+{
+	Load_DATE_common(_date_desc);
 }
 
 static void Check_DATE()
 {
-	SlGlobList(_date_check_desc);
+	Load_DATE_common(_date_check_desc);
+
 	if (IsSavegameVersionBefore(SLV_31)) {
 		_load_check_data.current_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
 	}
@@ -140,14 +154,22 @@ static const SaveLoad _view_desc[] = {
 	    SLEG_VAR(_saved_scrollpos_zoom, SLE_UINT8),
 };
 
-static void SaveLoad_VIEW()
+static void Save_VIEW()
 {
+	SlSetArrayIndex(0);
 	SlGlobList(_view_desc);
 }
 
+static void Load_VIEW()
+{
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+	SlGlobList(_view_desc);
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
+}
+
 static const ChunkHandler misc_chunk_handlers[] = {
-	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, nullptr, Check_DATE, CH_RIFF },
-	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, nullptr, nullptr,    CH_RIFF },
+	{ 'DATE', Save_DATE, Load_DATE, nullptr, Check_DATE, CH_ARRAY },
+	{ 'VIEW', Save_VIEW, Load_VIEW, nullptr, nullptr,    CH_ARRAY },
 };
 
 extern const ChunkHandlerTable _misc_chunk_handlers(misc_chunk_handlers);

@@ -18,13 +18,17 @@
 
 extern std::vector<TileIndex> _animated_tiles;
 
+static const SaveLoad _animated_tile_desc[] = {
+	 SLEG_VECTOR(_animated_tiles, SLE_UINT32),
+};
+
 /**
  * Save the ANIT chunk.
  */
 static void Save_ANIT()
 {
-	SlSetLength(_animated_tiles.size() * sizeof(_animated_tiles.front()));
-	SlCopy(_animated_tiles.data(), _animated_tiles.size(), SLE_UINT32);
+	SlSetArrayIndex(0);
+	SlGlobList(_animated_tile_desc);
 }
 
 /**
@@ -45,10 +49,17 @@ static void Load_ANIT()
 		return;
 	}
 
-	uint count = (uint)SlGetFieldLength() / sizeof(_animated_tiles.front());
-	_animated_tiles.clear();
-	_animated_tiles.resize(_animated_tiles.size() + count);
-	SlCopy(_animated_tiles.data(), count, SLE_UINT32);
+	if (IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY)) {
+		size_t count = SlGetFieldLength() / sizeof(_animated_tiles.front());
+		_animated_tiles.clear();
+		_animated_tiles.resize(_animated_tiles.size() + count);
+		SlCopy(_animated_tiles.data(), count, SLE_UINT32);
+		return;
+	}
+
+	if (SlIterateArray() == -1) return;
+	SlGlobList(_animated_tile_desc);
+	if (SlIterateArray() != -1) SlErrorCorrupt("Too many ANIT entries");
 }
 
 /**
@@ -56,7 +67,7 @@ static void Load_ANIT()
  * the animated tile table.
  */
 static const ChunkHandler animated_tile_chunk_handlers[] = {
-	{ 'ANIT', Save_ANIT, Load_ANIT, nullptr, nullptr, CH_RIFF },
+	{ 'ANIT', Save_ANIT, Load_ANIT, nullptr, nullptr, CH_ARRAY },
 };
 
 extern const ChunkHandlerTable _animated_tile_chunk_handlers(animated_tile_chunk_handlers);

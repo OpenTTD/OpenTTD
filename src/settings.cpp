@@ -2045,7 +2045,9 @@ static void LoadSettings(const SettingTable &settings, void *object)
 {
 	const std::vector<SaveLoad> slt = GetSettingsDesc(settings, true);
 
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
 	SlObject(object, slt);
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many settings entries");
 
 	/* Ensure all IntSettings are valid (min/max could have changed between versions etc). */
 	for (auto &sd : settings) {
@@ -2070,6 +2072,7 @@ static void SaveSettings(const SettingTable &settings, void *object)
 {
 	const std::vector<SaveLoad> slt = GetSettingsDesc(settings, false);
 
+	SlSetArrayIndex(0);
 	SlObject(object, slt);
 }
 
@@ -2102,8 +2105,8 @@ static void Save_PATS()
 }
 
 static const ChunkHandler setting_chunk_handlers[] = {
-	{ 'OPTS', nullptr,   Load_OPTS, nullptr, nullptr,    CH_RIFF },
-	{ 'PATS', Save_PATS, Load_PATS, nullptr, Check_PATS, CH_RIFF },
+	{ 'OPTS', nullptr,   Load_OPTS, nullptr, nullptr,    CH_RIFF  },
+	{ 'PATS', Save_PATS, Load_PATS, nullptr, Check_PATS, CH_ARRAY },
 };
 
 extern const ChunkHandlerTable _setting_chunk_handlers(setting_chunk_handlers);

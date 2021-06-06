@@ -51,13 +51,17 @@ static const SaveLoad _economy_desc[] = {
 /** Economy variables */
 static void Save_ECMY()
 {
+	SlSetArrayIndex(0);
 	SlObject(&_economy, _economy_desc);
 }
 
 /** Economy variables */
 static void Load_ECMY()
 {
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
 	SlObject(&_economy, _economy_desc);
+	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many ECMY entries");
+
 	StartupIndustryDailyChanges(IsSavegameVersionBefore(SLV_102));  // old savegames will need to be initialized
 }
 
@@ -98,7 +102,7 @@ static const ChunkHandler economy_chunk_handlers[] = {
 	{ 'CAPY', Save_CAPY, Load_CAPY, Ptrs_CAPY, nullptr, CH_ARRAY },
 	{ 'PRIC', nullptr,   Load_PRIC, nullptr,   nullptr, CH_RIFF  },
 	{ 'CAPR', nullptr,   Load_CAPR, nullptr,   nullptr, CH_RIFF  },
-	{ 'ECMY', Save_ECMY, Load_ECMY, nullptr,   nullptr, CH_RIFF  },
+	{ 'ECMY', Save_ECMY, Load_ECMY, nullptr,   nullptr, CH_ARRAY },
 };
 
 extern const ChunkHandlerTable _economy_chunk_handlers(economy_chunk_handlers);
