@@ -570,10 +570,7 @@ enum SaveLoadType : byte {
 	SL_STDSTR      =  6, ///< Save/load a \c std::string.
 	SL_STRUCT      =  7, ///< Save/load a struct.
 	SL_STRUCTLIST  =  8, ///< Save/load a list of structs.
-	/* non-normal save-load types */
-	SL_WRITEBYTE   =  9,
-	SL_VEH_INCLUDE = 10,
-	SL_ST_INCLUDE  = 11,
+	SL_SAVEBYTE    =  9, ///< Save (but not load) a byte.
 };
 
 typedef void *SaveLoadAddrProc(void *base, size_t extra);
@@ -740,11 +737,17 @@ struct SaveLoad {
  */
 #define SLE_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
 
-/** Translate values ingame to different values in the savegame and vv. */
-#define SLE_WRITEBYTE(base, variable) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0)
-
-#define SLE_VEH_INCLUDE() {SL_VEH_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0, nullptr}
-#define SLE_ST_INCLUDE() {SL_ST_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0, nullptr}
+/**
+ * Only write byte during saving; never read it during loading.
+ * When using SLE_SAVEBYTE you will have to read this byte before the table
+ * this is in is read. This also means SLE_SAVEBYTE can only be used at the
+ * top of a chunk.
+ * This is intended to be used to indicate what type of entry this is in a
+ * list of entries.
+ * @param base     Name of the class or struct containing the variable.
+ * @param variable Name of the variable in the class or struct referenced by \a base.
+ */
+#define SLE_SAVEBYTE(base, variable) SLE_GENERAL(SL_SAVEBYTE, base, variable, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0)
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.
