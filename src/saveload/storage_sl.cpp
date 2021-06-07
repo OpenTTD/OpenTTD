@@ -23,34 +23,37 @@ static const SaveLoad _storage_desc[] = {
 	 SLE_CONDARR(PersistentStorage, storage,  SLE_UINT32, 256,           SLV_EXTEND_PERSISTENT_STORAGE, SL_MAX_VERSION),
 };
 
-/** Load persistent storage data. */
-static void Load_PSAC()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_storage_desc, _storage_sl_compat);
+/** Persistent storage data. */
+struct PSACChunkHandler : ChunkHandler {
+	PSACChunkHandler() : ChunkHandler('PSAC', CH_TABLE) {}
 
-	int index;
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_storage_desc, _storage_sl_compat);
 
-	while ((index = SlIterateArray()) != -1) {
-		assert(PersistentStorage::CanAllocateItem());
-		PersistentStorage *ps = new (index) PersistentStorage(0, 0, 0);
-		SlObject(ps, slt);
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			assert(PersistentStorage::CanAllocateItem());
+			PersistentStorage *ps = new (index) PersistentStorage(0, 0, 0);
+			SlObject(ps, slt);
+		}
 	}
-}
 
-/** Save persistent storage data. */
-static void Save_PSAC()
-{
-	SlTableHeader(_storage_desc);
+	void Save() const override
+	{
+		SlTableHeader(_storage_desc);
 
-	/* Write the industries */
-	for (PersistentStorage *ps : PersistentStorage::Iterate()) {
-		ps->ClearChanges();
-		SlSetArrayIndex(ps->index);
-		SlObject(ps, _storage_desc);
+		/* Write the industries */
+		for (PersistentStorage *ps : PersistentStorage::Iterate()) {
+			ps->ClearChanges();
+			SlSetArrayIndex(ps->index);
+			SlObject(ps, _storage_desc);
+		}
 	}
-}
+};
 
-static const ChunkHandler PSAC{ 'PSAC', Save_PSAC, Load_PSAC, nullptr, nullptr, CH_TABLE };
+static const PSACChunkHandler PSAC;
 static const ChunkHandlerRef persistent_storage_chunk_handlers[] = {
 	PSAC,
 };

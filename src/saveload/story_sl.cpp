@@ -38,34 +38,38 @@ static const SaveLoad _story_page_elements_desc[] = {
 	    SLE_STR(StoryPageElement, text,          SLE_STR | SLF_ALLOW_CONTROL, 0),
 };
 
-static void Save_STORY_PAGE_ELEMENT()
-{
-	SlTableHeader(_story_page_elements_desc);
+struct STPEChunkHandler : ChunkHandler {
+	STPEChunkHandler() : ChunkHandler('STPE', CH_TABLE) {}
 
-	for (StoryPageElement *s : StoryPageElement::Iterate()) {
-		SlSetArrayIndex(s->index);
-		SlObject(s, _story_page_elements_desc);
-	}
-}
+	void Save() const override
+	{
+		SlTableHeader(_story_page_elements_desc);
 
-static void Load_STORY_PAGE_ELEMENT()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_story_page_elements_desc, _story_page_elements_sl_compat);
-
-	int index;
-	uint32 max_sort_value = 0;
-	while ((index = SlIterateArray()) != -1) {
-		StoryPageElement *s = new (index) StoryPageElement();
-		SlObject(s, slt);
-		if (s->sort_value > max_sort_value) {
-			max_sort_value = s->sort_value;
+		for (StoryPageElement *s : StoryPageElement::Iterate()) {
+			SlSetArrayIndex(s->index);
+			SlObject(s, _story_page_elements_desc);
 		}
 	}
-	/* Update the next sort value, so that the next
-	 * created page is shown after all existing pages.
-	 */
-	_story_page_element_next_sort_value = max_sort_value + 1;
-}
+
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_story_page_elements_desc, _story_page_elements_sl_compat);
+
+		int index;
+		uint32 max_sort_value = 0;
+		while ((index = SlIterateArray()) != -1) {
+			StoryPageElement *s = new (index) StoryPageElement();
+			SlObject(s, slt);
+			if (s->sort_value > max_sort_value) {
+				max_sort_value = s->sort_value;
+			}
+		}
+		/* Update the next sort value, so that the next
+		 * created page is shown after all existing pages.
+		 */
+		_story_page_element_next_sort_value = max_sort_value + 1;
+	}
+};
 
 static const SaveLoad _story_pages_desc[] = {
 	SLE_CONDVAR(StoryPage, sort_value, SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION,   SLV_185),
@@ -76,37 +80,41 @@ static const SaveLoad _story_pages_desc[] = {
 	    SLE_STR(StoryPage, title,      SLE_STR | SLF_ALLOW_CONTROL, 0),
 };
 
-static void Save_STORY_PAGE()
-{
-	SlTableHeader(_story_pages_desc);
+struct STPAChunkHandler : ChunkHandler {
+	STPAChunkHandler() : ChunkHandler('STPA', CH_TABLE) {}
 
-	for (StoryPage *s : StoryPage::Iterate()) {
-		SlSetArrayIndex(s->index);
-		SlObject(s, _story_pages_desc);
-	}
-}
+	void Save() const override
+	{
+		SlTableHeader(_story_pages_desc);
 
-static void Load_STORY_PAGE()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_story_pages_desc, _story_pages_sl_compat);
-
-	int index;
-	uint32 max_sort_value = 0;
-	while ((index = SlIterateArray()) != -1) {
-		StoryPage *s = new (index) StoryPage();
-		SlObject(s, slt);
-		if (s->sort_value > max_sort_value) {
-			max_sort_value = s->sort_value;
+		for (StoryPage *s : StoryPage::Iterate()) {
+			SlSetArrayIndex(s->index);
+			SlObject(s, _story_pages_desc);
 		}
 	}
-	/* Update the next sort value, so that the next
-	 * created page is shown after all existing pages.
-	 */
-	_story_page_next_sort_value = max_sort_value + 1;
-}
 
-static const ChunkHandler STPE{ 'STPE', Save_STORY_PAGE_ELEMENT, Load_STORY_PAGE_ELEMENT, nullptr, nullptr, CH_TABLE };
-static const ChunkHandler STPA{ 'STPA', Save_STORY_PAGE,         Load_STORY_PAGE,         nullptr, nullptr, CH_TABLE };
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_story_pages_desc, _story_pages_sl_compat);
+
+		int index;
+		uint32 max_sort_value = 0;
+		while ((index = SlIterateArray()) != -1) {
+			StoryPage *s = new (index) StoryPage();
+			SlObject(s, slt);
+			if (s->sort_value > max_sort_value) {
+				max_sort_value = s->sort_value;
+			}
+		}
+		/* Update the next sort value, so that the next
+		 * created page is shown after all existing pages.
+		 */
+		_story_page_next_sort_value = max_sort_value + 1;
+	}
+};
+
+static const STPEChunkHandler STPE;
+static const STPAChunkHandler STPA;
 static const ChunkHandlerRef story_page_chunk_handlers[] = {
 	STPE,
 	STPA,

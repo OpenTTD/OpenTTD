@@ -73,55 +73,62 @@ static const SaveLoad _grfconfig_desc[] = {
 };
 
 
-static void Save_NGRF()
-{
-	SlTableHeader(_grfconfig_desc);
-
-	int index = 0;
-
-	for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
-		if (HasBit(c->flags, GCF_STATIC)) continue;
-		SlSetArrayIndex(index++);
-		SlObject(c, _grfconfig_desc);
+struct NGRFChunkHandler : ChunkHandler {
+	NGRFChunkHandler() : ChunkHandler('NGRF', CH_TABLE)
+	{
+		this->load_check = true;
 	}
-}
 
+	void Save() const override
+	{
+		SlTableHeader(_grfconfig_desc);
 
-static void Load_NGRF_common(GRFConfig *&grfconfig)
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_grfconfig_desc, _grfconfig_sl_compat);
+		int index = 0;
 
-	ClearGRFConfigList(&grfconfig);
-	while (SlIterateArray() != -1) {
-		GRFConfig *c = new GRFConfig();
-		SlObject(c, slt);
-		if (IsSavegameVersionBefore(SLV_101)) c->SetSuitablePalette();
-		AppendToGRFConfigList(&grfconfig, c);
+		for (GRFConfig *c = _grfconfig; c != nullptr; c = c->next) {
+			if (HasBit(c->flags, GCF_STATIC)) continue;
+			SlSetArrayIndex(index++);
+			SlObject(c, _grfconfig_desc);
+		}
 	}
-}
 
-static void Load_NGRF()
-{
-	Load_NGRF_common(_grfconfig);
 
-	if (_game_mode == GM_MENU) {
-		/* Intro game must not have NewGRF. */
-		if (_grfconfig != nullptr) SlErrorCorrupt("The intro game must not use NewGRF");
+	void LoadCommon(GRFConfig *&grfconfig) const
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_grfconfig_desc, _grfconfig_sl_compat);
 
-		/* Activate intro NewGRFs (townnames) */
-		ResetGRFConfig(false);
-	} else {
-		/* Append static NewGRF configuration */
-		AppendStaticGRFConfigs(&_grfconfig);
+		ClearGRFConfigList(&grfconfig);
+		while (SlIterateArray() != -1) {
+			GRFConfig *c = new GRFConfig();
+			SlObject(c, slt);
+			if (IsSavegameVersionBefore(SLV_101)) c->SetSuitablePalette();
+			AppendToGRFConfigList(&grfconfig, c);
+		}
 	}
-}
 
-static void Check_NGRF()
-{
-	Load_NGRF_common(_load_check_data.grfconfig);
-}
+	void Load() const override
+	{
+		this->LoadCommon(_grfconfig);
 
-static const ChunkHandler NGRF{ 'NGRF', Save_NGRF, Load_NGRF, nullptr, Check_NGRF, CH_TABLE };
+		if (_game_mode == GM_MENU) {
+			/* Intro game must not have NewGRF. */
+			if (_grfconfig != nullptr) SlErrorCorrupt("The intro game must not use NewGRF");
+
+			/* Activate intro NewGRFs (townnames) */
+			ResetGRFConfig(false);
+		} else {
+			/* Append static NewGRF configuration */
+			AppendStaticGRFConfigs(&_grfconfig);
+		}
+	}
+
+	void LoadCheck(size_t) const override
+	{
+		this->LoadCommon(_load_check_data.grfconfig);
+	}
+};
+
+static const NGRFChunkHandler NGRF;
 static const ChunkHandlerRef newgrf_chunk_handlers[] = {
 	NGRF,
 };

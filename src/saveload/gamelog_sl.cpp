@@ -347,61 +347,68 @@ static const SaveLoad _gamelog_desc[] = {
 	SLEG_STRUCTLIST("action", SlGamelogAction),
 };
 
-static void Load_GLOG_common(LoggedAction *&gamelog_action, uint &gamelog_actions)
-{
-	assert(gamelog_action == nullptr);
-	assert(gamelog_actions == 0);
+struct GLOGChunkHandler : ChunkHandler {
+	GLOGChunkHandler() : ChunkHandler('GLOG', CH_TABLE)
+	{
+		this->load_check = true;
+	}
 
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_gamelog_desc, _gamelog_sl_compat);
+	void LoadCommon(LoggedAction *&gamelog_action, uint &gamelog_actions) const
+	{
+		assert(gamelog_action == nullptr);
+		assert(gamelog_actions == 0);
 
-	if (IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY)) {
-		byte type;
-		while ((type = SlReadByte()) != GLAT_NONE) {
-			if (type >= GLAT_END) SlErrorCorrupt("Invalid gamelog action type");
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_gamelog_desc, _gamelog_sl_compat);
 
+		if (IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY)) {
+			byte type;
+			while ((type = SlReadByte()) != GLAT_NONE) {
+				if (type >= GLAT_END) SlErrorCorrupt("Invalid gamelog action type");
+
+				gamelog_action = ReallocT(gamelog_action, gamelog_actions + 1);
+				LoggedAction *la = &gamelog_action[gamelog_actions++];
+				memset(la, 0, sizeof(*la));
+
+				la->at = (GamelogActionType)type;
+				SlObject(la, slt);
+			}
+			return;
+		}
+
+		while (SlIterateArray() != -1) {
 			gamelog_action = ReallocT(gamelog_action, gamelog_actions + 1);
 			LoggedAction *la = &gamelog_action[gamelog_actions++];
 			memset(la, 0, sizeof(*la));
 
-			la->at = (GamelogActionType)type;
 			SlObject(la, slt);
 		}
-		return;
 	}
 
-	while (SlIterateArray() != -1) {
-		gamelog_action = ReallocT(gamelog_action, gamelog_actions + 1);
-		LoggedAction *la = &gamelog_action[gamelog_actions++];
-		memset(la, 0, sizeof(*la));
+	void Save() const override
+	{
+		SlTableHeader(_gamelog_desc);
 
-		SlObject(la, slt);
+		const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
+
+		uint i = 0;
+		for (LoggedAction *la = _gamelog_action; la != laend; la++, i++) {
+			SlSetArrayIndex(i);
+			SlObject(la, _gamelog_desc);
+		}
 	}
-}
 
-static void Save_GLOG()
-{
-	SlTableHeader(_gamelog_desc);
-
-	const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
-
-	uint i = 0;
-	for (LoggedAction *la = _gamelog_action; la != laend; la++, i++) {
-		SlSetArrayIndex(i);
-		SlObject(la, _gamelog_desc);
+	void Load() const override
+	{
+		this->LoadCommon(_gamelog_action, _gamelog_actions);
 	}
-}
 
-static void Load_GLOG()
-{
-	Load_GLOG_common(_gamelog_action, _gamelog_actions);
-}
+	void LoadCheck(size_t) const override
+	{
+		this->LoadCommon(_load_check_data.gamelog_action, _load_check_data.gamelog_actions);
+	}
+};
 
-static void Check_GLOG()
-{
-	Load_GLOG_common(_load_check_data.gamelog_action, _load_check_data.gamelog_actions);
-}
-
-static const ChunkHandler GLOG{ 'GLOG', Save_GLOG, Load_GLOG, nullptr, Check_GLOG, CH_TABLE };
+static const GLOGChunkHandler GLOG;
 static const ChunkHandlerRef gamelog_chunk_handlers[] = {
 	GLOG,
 };

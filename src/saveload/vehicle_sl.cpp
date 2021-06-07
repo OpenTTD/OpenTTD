@@ -994,77 +994,82 @@ const static SaveLoad _vehicle_desc[] = {
 	SLEG_STRUCT("disaster", SlVehicleDisaster),
 };
 
-/** Will be called when the vehicles need to be saved. */
-static void Save_VEHS()
-{
-	SlTableHeader(_vehicle_desc);
-
-	/* Write the vehicles */
-	for (Vehicle *v : Vehicle::Iterate()) {
-		SlSetArrayIndex(v->index);
-		SlObject(v, _vehicle_desc);
+struct VEHSChunkHandler : ChunkHandler {
+	VEHSChunkHandler() : ChunkHandler('VEHS', CH_SPARSE_TABLE)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-/** Will be called when vehicles need to be loaded. */
-void Load_VEHS()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_vehicle_desc, _vehicle_sl_compat);
+	void Save() const override
+	{
+		SlTableHeader(_vehicle_desc);
 
-	int index;
-
-	_cargo_count = 0;
-
-	while ((index = SlIterateArray()) != -1) {
-		Vehicle *v;
-		VehicleType vtype = (VehicleType)SlReadByte();
-
-		switch (vtype) {
-			case VEH_TRAIN:    v = new (index) Train();           break;
-			case VEH_ROAD:     v = new (index) RoadVehicle();     break;
-			case VEH_SHIP:     v = new (index) Ship();            break;
-			case VEH_AIRCRAFT: v = new (index) Aircraft();        break;
-			case VEH_EFFECT:   v = new (index) EffectVehicle();   break;
-			case VEH_DISASTER: v = new (index) DisasterVehicle(); break;
-			case VEH_INVALID: // Savegame shouldn't contain invalid vehicles
-			default: SlErrorCorrupt("Invalid vehicle type");
+		/* Write the vehicles */
+		for (Vehicle *v : Vehicle::Iterate()) {
+			SlSetArrayIndex(v->index);
+			SlObject(v, _vehicle_desc);
 		}
-
-		SlObject(v, slt);
-
-		if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v) && CargoPacket::CanAllocateItem()) {
-			/* Don't construct the packet with station here, because that'll fail with old savegames */
-			CargoPacket *cp = new CargoPacket(_cargo_count, _cargo_days, _cargo_source, _cargo_source_xy, _cargo_loaded_at_xy, _cargo_feeder_share);
-			v->cargo.Append(cp);
-		}
-
-		/* Old savegames used 'last_station_visited = 0xFF' */
-		if (IsSavegameVersionBefore(SLV_5) && v->last_station_visited == 0xFF) {
-			v->last_station_visited = INVALID_STATION;
-		}
-
-		if (IsSavegameVersionBefore(SLV_182)) v->last_loading_station = INVALID_STATION;
-
-		if (IsSavegameVersionBefore(SLV_5)) {
-			/* Convert the current_order.type (which is a mix of type and flags, because
-			 *  in those versions, they both were 4 bits big) to type and flags */
-			v->current_order.flags = GB(v->current_order.type, 4, 4);
-			v->current_order.type &= 0x0F;
-		}
-
-		/* Advanced vehicle lists got added */
-		if (IsSavegameVersionBefore(SLV_60)) v->group_id = DEFAULT_GROUP;
 	}
-}
 
-void Ptrs_VEHS()
-{
-	for (Vehicle *v : Vehicle::Iterate()) {
-		SlObject(v, _vehicle_desc);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_vehicle_desc, _vehicle_sl_compat);
+
+		int index;
+
+		_cargo_count = 0;
+
+		while ((index = SlIterateArray()) != -1) {
+			Vehicle *v;
+			VehicleType vtype = (VehicleType)SlReadByte();
+
+			switch (vtype) {
+				case VEH_TRAIN:    v = new (index) Train();           break;
+				case VEH_ROAD:     v = new (index) RoadVehicle();     break;
+				case VEH_SHIP:     v = new (index) Ship();            break;
+				case VEH_AIRCRAFT: v = new (index) Aircraft();        break;
+				case VEH_EFFECT:   v = new (index) EffectVehicle();   break;
+				case VEH_DISASTER: v = new (index) DisasterVehicle(); break;
+				case VEH_INVALID: // Savegame shouldn't contain invalid vehicles
+				default: SlErrorCorrupt("Invalid vehicle type");
+			}
+
+			SlObject(v, slt);
+
+			if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v) && CargoPacket::CanAllocateItem()) {
+				/* Don't construct the packet with station here, because that'll fail with old savegames */
+				CargoPacket *cp = new CargoPacket(_cargo_count, _cargo_days, _cargo_source, _cargo_source_xy, _cargo_loaded_at_xy, _cargo_feeder_share);
+				v->cargo.Append(cp);
+			}
+
+			/* Old savegames used 'last_station_visited = 0xFF' */
+			if (IsSavegameVersionBefore(SLV_5) && v->last_station_visited == 0xFF) {
+				v->last_station_visited = INVALID_STATION;
+			}
+
+			if (IsSavegameVersionBefore(SLV_182)) v->last_loading_station = INVALID_STATION;
+
+			if (IsSavegameVersionBefore(SLV_5)) {
+				/* Convert the current_order.type (which is a mix of type and flags, because
+				 *  in those versions, they both were 4 bits big) to type and flags */
+				v->current_order.flags = GB(v->current_order.type, 4, 4);
+				v->current_order.type &= 0x0F;
+			}
+
+			/* Advanced vehicle lists got added */
+			if (IsSavegameVersionBefore(SLV_60)) v->group_id = DEFAULT_GROUP;
+		}
 	}
-}
 
-static const ChunkHandler VEHS{ 'VEHS', Save_VEHS, Load_VEHS, Ptrs_VEHS, nullptr, CH_SPARSE_TABLE };
+	void FixPointers() const override
+	{
+		for (Vehicle *v : Vehicle::Iterate()) {
+			SlObject(v, _vehicle_desc);
+		}
+	}
+};
+
+static const VEHSChunkHandler VEHS;
 static const ChunkHandlerRef veh_chunk_handlers[] = {
 	VEHS,
 };

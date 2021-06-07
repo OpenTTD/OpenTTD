@@ -25,43 +25,50 @@ static const SaveLoad _engine_renew_desc[] = {
 	SLE_CONDVAR(EngineRenew, replace_when_old, SLE_BOOL, SLV_175, SL_MAX_VERSION),
 };
 
-static void Save_ERNW()
-{
-	SlTableHeader(_engine_renew_desc);
-
-	for (EngineRenew *er : EngineRenew::Iterate()) {
-		SlSetArrayIndex(er->index);
-		SlObject(er, _engine_renew_desc);
+struct ERNWChunkHandler : ChunkHandler {
+	ERNWChunkHandler() : ChunkHandler('ERNW', CH_TABLE)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-static void Load_ERNW()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_renew_desc, _engine_renew_sl_compat);
+	void Save() const override
+	{
+		SlTableHeader(_engine_renew_desc);
 
-	int index;
-
-	while ((index = SlIterateArray()) != -1) {
-		EngineRenew *er = new (index) EngineRenew();
-		SlObject(er, slt);
-
-		/* Advanced vehicle lists, ungrouped vehicles got added */
-		if (IsSavegameVersionBefore(SLV_60)) {
-			er->group_id = ALL_GROUP;
-		} else if (IsSavegameVersionBefore(SLV_71)) {
-			if (er->group_id == DEFAULT_GROUP) er->group_id = ALL_GROUP;
+		for (EngineRenew *er : EngineRenew::Iterate()) {
+			SlSetArrayIndex(er->index);
+			SlObject(er, _engine_renew_desc);
 		}
 	}
-}
 
-static void Ptrs_ERNW()
-{
-	for (EngineRenew *er : EngineRenew::Iterate()) {
-		SlObject(er, _engine_renew_desc);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_renew_desc, _engine_renew_sl_compat);
+
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			EngineRenew *er = new (index) EngineRenew();
+			SlObject(er, slt);
+
+			/* Advanced vehicle lists, ungrouped vehicles got added */
+			if (IsSavegameVersionBefore(SLV_60)) {
+				er->group_id = ALL_GROUP;
+			} else if (IsSavegameVersionBefore(SLV_71)) {
+				if (er->group_id == DEFAULT_GROUP) er->group_id = ALL_GROUP;
+			}
+		}
 	}
-}
 
-static const ChunkHandler ERNW{ 'ERNW', Save_ERNW, Load_ERNW, Ptrs_ERNW, nullptr, CH_TABLE };
+	void FixPointers() const override
+	{
+		for (EngineRenew *er : EngineRenew::Iterate()) {
+			SlObject(er, _engine_renew_desc);
+		}
+	}
+};
+
+static const ERNWChunkHandler ERNW;
 static const ChunkHandlerRef autoreplace_chunk_handlers[] = {
 	ERNW,
 };

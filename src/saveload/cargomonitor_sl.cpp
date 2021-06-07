@@ -43,92 +43,97 @@ static CargoMonitorID FixupCargoMonitor(CargoMonitorID number)
 	return number;
 }
 
-/** Save the #_cargo_deliveries monitoring map. */
-static void SaveDelivery()
-{
-	SlTableHeader(_cargomonitor_pair_desc);
+/** #_cargo_deliveries monitoring map. */
+struct CMDLChunkHandler : ChunkHandler {
+	CMDLChunkHandler() : ChunkHandler('CMDL', CH_TABLE) {}
 
-	TempStorage storage;
+	void Save() const override
+	{
+		SlTableHeader(_cargomonitor_pair_desc);
 
-	int i = 0;
-	CargoMonitorMap::const_iterator iter = _cargo_deliveries.begin();
-	while (iter != _cargo_deliveries.end()) {
-		storage.number = iter->first;
-		storage.amount = iter->second;
+		TempStorage storage;
 
-		SlSetArrayIndex(i);
-		SlObject(&storage, _cargomonitor_pair_desc);
+		int i = 0;
+		CargoMonitorMap::const_iterator iter = _cargo_deliveries.begin();
+		while (iter != _cargo_deliveries.end()) {
+			storage.number = iter->first;
+			storage.amount = iter->second;
 
-		i++;
-		iter++;
+			SlSetArrayIndex(i);
+			SlObject(&storage, _cargomonitor_pair_desc);
+
+			i++;
+			iter++;
+		}
 	}
-}
 
-/** Load the #_cargo_deliveries monitoring map. */
-static void LoadDelivery()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_cargomonitor_pair_desc, _cargomonitor_pair_sl_compat);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_cargomonitor_pair_desc, _cargomonitor_pair_sl_compat);
 
-	TempStorage storage;
-	bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
+		TempStorage storage;
+		bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
 
-	ClearCargoDeliveryMonitoring();
-	for (;;) {
-		if (SlIterateArray() < 0) break;
-		SlObject(&storage, slt);
+		ClearCargoDeliveryMonitoring();
+		for (;;) {
+			if (SlIterateArray() < 0) break;
+			SlObject(&storage, slt);
 
-		if (fix) storage.number = FixupCargoMonitor(storage.number);
+			if (fix) storage.number = FixupCargoMonitor(storage.number);
 
-		std::pair<CargoMonitorID, uint32> p(storage.number, storage.amount);
-		_cargo_deliveries.insert(p);
+			std::pair<CargoMonitorID, uint32> p(storage.number, storage.amount);
+			_cargo_deliveries.insert(p);
+		}
 	}
-}
+};
 
+/** #_cargo_pickups monitoring map. */
+struct CMPUChunkHandler : ChunkHandler {
+	CMPUChunkHandler() : ChunkHandler('CMPU', CH_TABLE) {}
 
-/** Save the #_cargo_pickups monitoring map. */
-static void SavePickup()
-{
-	SlTableHeader(_cargomonitor_pair_desc);
+	void Save() const override
+	{
+		SlTableHeader(_cargomonitor_pair_desc);
 
-	TempStorage storage;
+		TempStorage storage;
 
-	int i = 0;
-	CargoMonitorMap::const_iterator iter = _cargo_pickups.begin();
-	while (iter != _cargo_pickups.end()) {
-		storage.number = iter->first;
-		storage.amount = iter->second;
+		int i = 0;
+		CargoMonitorMap::const_iterator iter = _cargo_pickups.begin();
+		while (iter != _cargo_pickups.end()) {
+			storage.number = iter->first;
+			storage.amount = iter->second;
 
-		SlSetArrayIndex(i);
-		SlObject(&storage, _cargomonitor_pair_desc);
+			SlSetArrayIndex(i);
+			SlObject(&storage, _cargomonitor_pair_desc);
 
-		i++;
-		iter++;
+			i++;
+			iter++;
+		}
 	}
-}
 
-/** Load the #_cargo_pickups monitoring map. */
-static void LoadPickup()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_cargomonitor_pair_desc, _cargomonitor_pair_sl_compat);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_cargomonitor_pair_desc, _cargomonitor_pair_sl_compat);
 
-	TempStorage storage;
-	bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
+		TempStorage storage;
+		bool fix = IsSavegameVersionBefore(SLV_FIX_CARGO_MONITOR);
 
-	ClearCargoPickupMonitoring();
-	for (;;) {
-		if (SlIterateArray() < 0) break;
-		SlObject(&storage, slt);
+		ClearCargoPickupMonitoring();
+		for (;;) {
+			if (SlIterateArray() < 0) break;
+			SlObject(&storage, slt);
 
-		if (fix) storage.number = FixupCargoMonitor(storage.number);
+			if (fix) storage.number = FixupCargoMonitor(storage.number);
 
-		std::pair<CargoMonitorID, uint32> p(storage.number, storage.amount);
-		_cargo_pickups.insert(p);
+			std::pair<CargoMonitorID, uint32> p(storage.number, storage.amount);
+			_cargo_pickups.insert(p);
+		}
 	}
-}
+};
 
 /** Chunk definition of the cargomonitoring maps. */
-static const ChunkHandler CMDL{ 'CMDL', SaveDelivery, LoadDelivery, nullptr, nullptr, CH_TABLE };
-static const ChunkHandler CMPU{ 'CMPU', SavePickup,   LoadPickup,   nullptr, nullptr, CH_TABLE };
+static const CMDLChunkHandler CMDL;
+static const CMPUChunkHandler CMPU;
 static const ChunkHandlerRef cargomonitor_chunk_handlers[] = {
 	CMDL,
 	CMPU,

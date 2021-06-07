@@ -100,35 +100,33 @@ SaveLoadTable GetCargoPacketDesc()
 	return _cargopacket_desc;
 }
 
-/**
- * Save the cargo packets.
- */
-static void Save_CAPA()
-{
-	SlTableHeader(GetCargoPacketDesc());
+struct CAPAChunkHandler : ChunkHandler {
+	CAPAChunkHandler() : ChunkHandler('CAPA', CH_TABLE) {}
 
-	for (CargoPacket *cp : CargoPacket::Iterate()) {
-		SlSetArrayIndex(cp->index);
-		SlObject(cp, GetCargoPacketDesc());
+	void Save() const override
+	{
+		SlTableHeader(GetCargoPacketDesc());
+
+		for (CargoPacket *cp : CargoPacket::Iterate()) {
+			SlSetArrayIndex(cp->index);
+			SlObject(cp, GetCargoPacketDesc());
+		}
 	}
-}
 
-/**
- * Load the cargo packets.
- */
-static void Load_CAPA()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(GetCargoPacketDesc(), _cargopacket_sl_compat);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(GetCargoPacketDesc(), _cargopacket_sl_compat);
 
-	int index;
+		int index;
 
-	while ((index = SlIterateArray()) != -1) {
-		CargoPacket *cp = new (index) CargoPacket();
-		SlObject(cp, slt);
+		while ((index = SlIterateArray()) != -1) {
+			CargoPacket *cp = new (index) CargoPacket();
+			SlObject(cp, slt);
+		}
 	}
-}
+};
 
-static const ChunkHandler CAPA{ 'CAPA', Save_CAPA, Load_CAPA, nullptr, nullptr, CH_TABLE };
+static const CAPAChunkHandler CAPA;
 static const ChunkHandlerRef cargopacket_chunk_handlers[] = {
 	CAPA,
 };

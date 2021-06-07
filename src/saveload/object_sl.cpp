@@ -29,51 +29,62 @@ static const SaveLoad _object_desc[] = {
 	SLE_CONDVAR(Object, type,                       SLE_UINT16,                 SLV_186, SL_MAX_VERSION),
 };
 
-static void Save_OBJS()
-{
-	SlTableHeader(_object_desc);
-
-	/* Write the objects */
-	for (Object *o : Object::Iterate()) {
-		SlSetArrayIndex(o->index);
-		SlObject(o, _object_desc);
+struct OBJSChunkHandler : ChunkHandler {
+	OBJSChunkHandler() : ChunkHandler('OBJS', CH_TABLE)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-static void Load_OBJS()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_object_desc, _object_sl_compat);
+	void Save() const override
+	{
+		SlTableHeader(_object_desc);
 
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		Object *o = new (index) Object();
-		SlObject(o, slt);
-	}
-}
-
-static void Ptrs_OBJS()
-{
-	for (Object *o : Object::Iterate()) {
-		SlObject(o, _object_desc);
-		if (IsSavegameVersionBefore(SLV_148) && !IsTileType(o->location.tile, MP_OBJECT)) {
-			/* Due to a small bug stale objects could remain. */
-			delete o;
+		/* Write the objects */
+		for (Object *o : Object::Iterate()) {
+			SlSetArrayIndex(o->index);
+			SlObject(o, _object_desc);
 		}
 	}
-}
 
-static void Save_OBID()
-{
-	Save_NewGRFMapping(_object_mngr);
-}
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_object_desc, _object_sl_compat);
 
-static void Load_OBID()
-{
-	Load_NewGRFMapping(_object_mngr);
-}
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			Object *o = new (index) Object();
+			SlObject(o, slt);
+		}
+	}
 
-static const ChunkHandler OBID{ 'OBID', Save_OBID, Load_OBID, nullptr,   nullptr, CH_TABLE };
-static const ChunkHandler OBJS{ 'OBJS', Save_OBJS, Load_OBJS, Ptrs_OBJS, nullptr, CH_TABLE };
+	void FixPointers() const override
+	{
+		for (Object *o : Object::Iterate()) {
+			SlObject(o, _object_desc);
+			if (IsSavegameVersionBefore(SLV_148) && !IsTileType(o->location.tile, MP_OBJECT)) {
+				/* Due to a small bug stale objects could remain. */
+				delete o;
+			}
+		}
+	}
+};
+
+struct OBIDChunkHandler : ChunkHandler {
+	OBIDChunkHandler() : ChunkHandler('OBID', CH_TABLE) {}
+
+	void Save() const override
+	{
+		Save_NewGRFMapping(_object_mngr);
+	}
+
+	void Load() const override
+	{
+		Load_NewGRFMapping(_object_mngr);
+	}
+};
+
+static const OBIDChunkHandler OBID;
+static const OBJSChunkHandler OBJS;
 static const ChunkHandlerRef object_chunk_handlers[] = {
 	OBID,
 	OBJS,

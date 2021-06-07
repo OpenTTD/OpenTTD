@@ -142,36 +142,47 @@ static void SaveSettings(const SettingTable &settings, void *object)
 	SlObject(object, slt);
 }
 
-static void Load_OPTS()
-{
-	/* Copy over default setting since some might not get loaded in
-	 * a networking environment. This ensures for example that the local
-	 * autosave-frequency stays when joining a network-server */
-	PrepareOldDiffCustom();
-	LoadSettings(_gameopt_settings, &_settings_game, _gameopt_sl_compat);
-	HandleOldDiffCustom(true);
-}
+struct OPTSChunkHandler : ChunkHandler {
+	OPTSChunkHandler() : ChunkHandler('OPTS', CH_READONLY) {}
 
-static void Load_PATS()
-{
-	/* Copy over default setting since some might not get loaded in
-	 * a networking environment. This ensures for example that the local
-	 * currency setting stays when joining a network-server */
-	LoadSettings(_settings, &_settings_game, _settings_sl_compat);
-}
+	void Load() const override
+	{
+		/* Copy over default setting since some might not get loaded in
+		 * a networking environment. This ensures for example that the local
+		 * autosave-frequency stays when joining a network-server */
+		PrepareOldDiffCustom();
+		LoadSettings(_gameopt_settings, &_settings_game, _gameopt_sl_compat);
+		HandleOldDiffCustom(true);
+	}
+};
 
-static void Check_PATS()
-{
-	LoadSettings(_settings, &_load_check_data.settings, _settings_sl_compat);
-}
+struct PATSChunkHandler : ChunkHandler {
+	PATSChunkHandler() : ChunkHandler('PATS', CH_TABLE)
+	{
+		this->load_check = true;
+	}
 
-static void Save_PATS()
-{
-	SaveSettings(_settings, &_settings_game);
-}
+	void Load() const override
+	{
+		/* Copy over default setting since some might not get loaded in
+		 * a networking environment. This ensures for example that the local
+		 * currency setting stays when joining a network-server */
+		LoadSettings(_settings, &_settings_game, _settings_sl_compat);
+	}
 
-static const ChunkHandler OPTS{ 'OPTS', nullptr,   Load_OPTS, nullptr, nullptr,    CH_READONLY };
-static const ChunkHandler PATS{ 'PATS', Save_PATS, Load_PATS, nullptr, Check_PATS, CH_TABLE };
+	void LoadCheck(size_t) const override
+	{
+		LoadSettings(_settings, &_load_check_data.settings, _settings_sl_compat);
+	}
+
+	void Save() const override
+	{
+		SaveSettings(_settings, &_settings_game);
+	}
+};
+
+static const OPTSChunkHandler OPTS;
+static const PATSChunkHandler PATS;
 static const ChunkHandlerRef setting_chunk_handlers[] = {
 	OPTS,
 	PATS,

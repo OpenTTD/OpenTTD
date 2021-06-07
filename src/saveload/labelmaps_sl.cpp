@@ -99,35 +99,39 @@ static const SaveLoad _label_object_desc[] = {
 	SLE_VAR(LabelObject, label, SLE_UINT32),
 };
 
-static void Save_RAIL()
-{
-	SlTableHeader(_label_object_desc);
+struct RAILChunkHandler : ChunkHandler {
+	RAILChunkHandler() : ChunkHandler('RAIL', CH_TABLE) {}
 
-	LabelObject lo;
+	void Save() const override
+	{
+		SlTableHeader(_label_object_desc);
 
-	for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
-		lo.label = GetRailTypeInfo(r)->label;
+		LabelObject lo;
 
-		SlSetArrayIndex(r);
-		SlObject(&lo, _label_object_desc);
+		for (RailType r = RAILTYPE_BEGIN; r != RAILTYPE_END; r++) {
+			lo.label = GetRailTypeInfo(r)->label;
+
+			SlSetArrayIndex(r);
+			SlObject(&lo, _label_object_desc);
+		}
 	}
-}
 
-static void Load_RAIL()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_label_object_desc, _label_object_sl_compat);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_label_object_desc, _label_object_sl_compat);
 
-	ResetLabelMaps();
+		ResetLabelMaps();
 
-	LabelObject lo;
+		LabelObject lo;
 
-	while (SlIterateArray() != -1) {
-		SlObject(&lo, slt);
-		_railtype_list.push_back((RailTypeLabel)lo.label);
+		while (SlIterateArray() != -1) {
+			SlObject(&lo, slt);
+			_railtype_list.push_back((RailTypeLabel)lo.label);
+		}
 	}
-}
+};
 
-static const ChunkHandler RAIL{ 'RAIL', Save_RAIL, Load_RAIL, nullptr, nullptr, CH_TABLE };
+static const RAILChunkHandler RAIL;
 static const ChunkHandlerRef labelmaps_chunk_handlers[] = {
 	RAIL,
 };

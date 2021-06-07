@@ -25,28 +25,32 @@ static const SaveLoad _goals_desc[] = {
 	SLE_CONDVAR(Goal, completed, SLE_BOOL, SLV_182, SL_MAX_VERSION),
 };
 
-static void Save_GOAL()
-{
-	SlTableHeader(_goals_desc);
+struct GOALChunkHandler : ChunkHandler {
+	GOALChunkHandler() : ChunkHandler('GOAL', CH_TABLE) {}
 
-	for (Goal *s : Goal::Iterate()) {
-		SlSetArrayIndex(s->index);
-		SlObject(s, _goals_desc);
+	void Save() const override
+	{
+		SlTableHeader(_goals_desc);
+
+		for (Goal *s : Goal::Iterate()) {
+			SlSetArrayIndex(s->index);
+			SlObject(s, _goals_desc);
+		}
 	}
-}
 
-static void Load_GOAL()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_goals_desc, _goals_sl_compat);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_goals_desc, _goals_sl_compat);
 
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		Goal *s = new (index) Goal();
-		SlObject(s, slt);
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			Goal *s = new (index) Goal();
+			SlObject(s, slt);
+		}
 	}
-}
+};
 
-static const ChunkHandler GOAL{ 'GOAL', Save_GOAL, Load_GOAL, nullptr, nullptr, CH_TABLE };
+static const GOALChunkHandler GOAL;
 static const ChunkHandlerRef goal_chunk_handlers[] = {
 	GOAL,
 };
