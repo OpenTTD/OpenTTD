@@ -456,7 +456,7 @@ public:
 	/**
 	 * Get the pre-header description of the fields in the savegame.
 	 */
-	virtual SaveLoadCompatTable GetCompatDescription() const { return {}; }
+	virtual SaveLoadCompatTable GetCompatDescription() const = 0;
 
 	/**
 	 * Get the description for how to load the chunk. Depending on the
@@ -481,6 +481,7 @@ template <class TImpl, class TObject>
 class DefaultSaveLoadHandler : public SaveLoadHandler {
 public:
 	SaveLoadTable GetDescription() const override { return static_cast<const TImpl *>(this)->description; }
+	SaveLoadCompatTable GetCompatDescription() const override { return static_cast<const TImpl *>(this)->compat_description; }
 
 	virtual void Save(TObject *object) const {}
 	void Save(void *object) const override { this->Save(static_cast<TObject *>(object)); }

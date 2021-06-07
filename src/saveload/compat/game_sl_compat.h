@@ -20,4 +20,16 @@ const SaveLoadCompat _game_script_sl_compat[] = {
 	SLC_VAR("is_random"),
 };
 
+/** Original field order for SlGameLanguageString. */
+const SaveLoadCompat _game_language_string_sl_compat[] = {
+	SLC_VAR("string"),
+};
+
+/** Original field order for _game_language_desc. */
+const SaveLoadCompat _game_language_sl_compat[] = {
+	SLC_VAR("language"),
+	SLC_VAR("count"),
+	SLC_VAR("strings"),
+};
+
 #endif /* SAVELOAD_COMPAT_GAME_H */

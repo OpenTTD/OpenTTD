@@ -4,6 +4,7 @@ add_files(
     cargomonitor_sl_compat.h
     cargopacket_sl_compat.h
     cheat_sl_compat.h
+    company_sl_compat.h
     depot_sl_compat.h
     economy_sl_compat.h
     engine_sl_compat.h
@@ -23,4 +24,6 @@ add_files(
     storage_sl_compat.h
     story_sl_compat.h
     subsidy_sl_compat.h
+    town_sl_compat.h
+    vehicle_sl_compat.h
 )
