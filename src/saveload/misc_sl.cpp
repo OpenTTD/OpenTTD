@@ -95,37 +95,44 @@ static const SaveLoad _date_check_desc[] = {
 
 /* Save load date related variables as well as persistent tick counters
  * XXX: currently some unrelated stuff is just put here */
-static void Save_DATE()
-{
-	SlTableHeader(_date_desc);
-
-	SlSetArrayIndex(0);
-	SlGlobList(_date_desc);
-}
-
-static void Load_DATE_common(const SaveLoadTable &slt, const SaveLoadCompatTable &slct)
-{
-	const std::vector<SaveLoad> oslt = SlCompatTableHeader(slt, slct);
-
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
-	SlGlobList(oslt);
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
-}
-
-static void Load_DATE()
-{
-	Load_DATE_common(_date_desc, _date_sl_compat);
-}
-
-static void Check_DATE()
-{
-	Load_DATE_common(_date_check_desc, _date_check_sl_compat);
-
-	if (IsSavegameVersionBefore(SLV_31)) {
-		_load_check_data.current_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+struct DATEChunkHandler : ChunkHandler {
+	DATEChunkHandler() : ChunkHandler('DATE', CH_TABLE)
+	{
+		this->load_check = true;
 	}
-}
 
+	void Save() const override
+	{
+		SlTableHeader(_date_desc);
+
+		SlSetArrayIndex(0);
+		SlGlobList(_date_desc);
+	}
+
+	void LoadCommon(const SaveLoadTable &slt, const SaveLoadCompatTable &slct) const
+	{
+		const std::vector<SaveLoad> oslt = SlCompatTableHeader(slt, slct);
+
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		SlGlobList(oslt);
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
+	}
+
+	void Load() const override
+	{
+		this->LoadCommon(_date_desc, _date_sl_compat);
+	}
+
+
+	void LoadCheck(size_t) const override
+	{
+		this->LoadCommon(_date_check_desc, _date_check_sl_compat);
+
+		if (IsSavegameVersionBefore(SLV_31)) {
+			_load_check_data.current_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		}
+	}
+};
 
 static const SaveLoad _view_desc[] = {
 	SLEG_CONDVAR("x",    _saved_scrollpos_x,    SLE_FILE_I16 | SLE_VAR_I32, SL_MIN_VERSION, SLV_6),
@@ -135,25 +142,29 @@ static const SaveLoad _view_desc[] = {
 	    SLEG_VAR("zoom", _saved_scrollpos_zoom, SLE_UINT8),
 };
 
-static void Save_VIEW()
-{
-	SlTableHeader(_view_desc);
+struct VIEWChunkHandler : ChunkHandler {
+	VIEWChunkHandler() : ChunkHandler('VIEW', CH_TABLE) {}
 
-	SlSetArrayIndex(0);
-	SlGlobList(_view_desc);
-}
+	void Save() const override
+	{
+		SlTableHeader(_view_desc);
 
-static void Load_VIEW()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_view_desc, _view_sl_compat);
+		SlSetArrayIndex(0);
+		SlGlobList(_view_desc);
+	}
 
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
-	SlGlobList(slt);
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
-}
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_view_desc, _view_sl_compat);
 
-static const ChunkHandler DATE{ 'DATE', Save_DATE, Load_DATE, nullptr, Check_DATE, CH_TABLE };
-static const ChunkHandler VIEW{ 'VIEW', Save_VIEW, Load_VIEW, nullptr, nullptr,    CH_TABLE };
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		SlGlobList(slt);
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
+	}
+};
+
+static const DATEChunkHandler DATE;
+static const VIEWChunkHandler VIEW;
 static const ChunkHandlerRef misc_chunk_handlers[] = {
 	DATE,
 	VIEW,

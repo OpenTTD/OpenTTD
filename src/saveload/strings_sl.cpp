@@ -113,24 +113,25 @@ void InitializeOldNames()
 	_old_name_array = CallocT<char>(NUM_OLD_STRINGS * LEN_OLD_STRINGS); // 200 * 24 would be enough for TTO savegames
 }
 
-/**
- * Load the NAME chunk.
- */
-static void Load_NAME()
-{
-	int index;
+struct NAMEChunkHandler : ChunkHandler {
+	NAMEChunkHandler() : ChunkHandler('NAME', CH_READONLY) {}
 
-	while ((index = SlIterateArray()) != -1) {
-		if (index >= NUM_OLD_STRINGS) SlErrorCorrupt("Invalid old name index");
-		if (SlGetFieldLength() > (uint)LEN_OLD_STRINGS) SlErrorCorrupt("Invalid old name length");
+	void Load() const override
+	{
+		int index;
 
-		SlCopy(&_old_name_array[LEN_OLD_STRINGS * index], SlGetFieldLength(), SLE_UINT8);
-		/* Make sure the old name is null terminated */
-		_old_name_array[LEN_OLD_STRINGS * index + LEN_OLD_STRINGS - 1] = '\0';
+		while ((index = SlIterateArray()) != -1) {
+			if (index >= NUM_OLD_STRINGS) SlErrorCorrupt("Invalid old name index");
+			if (SlGetFieldLength() > (uint)LEN_OLD_STRINGS) SlErrorCorrupt("Invalid old name length");
+
+			SlCopy(&_old_name_array[LEN_OLD_STRINGS * index], SlGetFieldLength(), SLE_UINT8);
+			/* Make sure the old name is null terminated */
+			_old_name_array[LEN_OLD_STRINGS * index + LEN_OLD_STRINGS - 1] = '\0';
+		}
 	}
-}
+};
 
-static const ChunkHandler NAME{ 'NAME', nullptr, Load_NAME, nullptr, nullptr, CH_READONLY };
+static const NAMEChunkHandler NAME;
 static const ChunkHandlerRef name_chunk_handlers[] = {
 	NAME,
 };

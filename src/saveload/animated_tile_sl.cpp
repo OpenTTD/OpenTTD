@@ -24,51 +24,50 @@ static const SaveLoad _animated_tile_desc[] = {
 	 SLEG_VECTOR("tiles", _animated_tiles, SLE_UINT32),
 };
 
-/**
- * Save the ANIT chunk.
- */
-static void Save_ANIT()
-{
-	SlTableHeader(_animated_tile_desc);
+struct ANITChunkHandler : ChunkHandler {
+	ANITChunkHandler() : ChunkHandler('ANIT', CH_TABLE) {}
 
-	SlSetArrayIndex(0);
-	SlGlobList(_animated_tile_desc);
-}
+	void Save() const override
+	{
+		SlTableHeader(_animated_tile_desc);
 
-/**
- * Load the ANIT chunk; the chunk containing the animated tiles.
- */
-static void Load_ANIT()
-{
-	/* Before version 80 we did NOT have a variable length animated tile table */
-	if (IsSavegameVersionBefore(SLV_80)) {
-		/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
-		TileIndex anim_list[256];
-		SlCopy(anim_list, 256, IsSavegameVersionBefore(SLV_6) ? (SLE_FILE_U16 | SLE_VAR_U32) : SLE_UINT32);
+		SlSetArrayIndex(0);
+		SlGlobList(_animated_tile_desc);
+	}
 
-		for (int i = 0; i < 256; i++) {
-			if (anim_list[i] == 0) break;
-			_animated_tiles.push_back(anim_list[i]);
+	void Load() const override
+	{
+		/* Before version 80 we did NOT have a variable length animated tile table */
+		if (IsSavegameVersionBefore(SLV_80)) {
+			/* In pre version 6, we has 16bit per tile, now we have 32bit per tile, convert it ;) */
+			TileIndex anim_list[256];
+			SlCopy(anim_list, 256, IsSavegameVersionBefore(SLV_6) ? (SLE_FILE_U16 | SLE_VAR_U32) : SLE_UINT32);
+
+			for (int i = 0; i < 256; i++) {
+				if (anim_list[i] == 0) break;
+				_animated_tiles.push_back(anim_list[i]);
+			}
+			return;
 		}
-		return;
+
+		if (IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY)) {
+			size_t count = SlGetFieldLength() / sizeof(_animated_tiles.front());
+			_animated_tiles.clear();
+			_animated_tiles.resize(_animated_tiles.size() + count);
+			SlCopy(_animated_tiles.data(), count, SLE_UINT32);
+			return;
+		}
+
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_animated_tile_desc, _animated_tile_sl_compat);
+
+		if (SlIterateArray() == -1) return;
+		SlGlobList(slt);
+		if (SlIterateArray() != -1) SlErrorCorrupt("Too many ANIT entries");
 	}
+};
 
-	if (IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY)) {
-		size_t count = SlGetFieldLength() / sizeof(_animated_tiles.front());
-		_animated_tiles.clear();
-		_animated_tiles.resize(_animated_tiles.size() + count);
-		SlCopy(_animated_tiles.data(), count, SLE_UINT32);
-		return;
-	}
 
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_animated_tile_desc, _animated_tile_sl_compat);
-
-	if (SlIterateArray() == -1) return;
-	SlGlobList(slt);
-	if (SlIterateArray() != -1) SlErrorCorrupt("Too many ANIT entries");
-}
-
-static const ChunkHandler ANIT{ 'ANIT', Save_ANIT, Load_ANIT, nullptr, nullptr, CH_TABLE };
+static const ANITChunkHandler ANIT;
 static const ChunkHandlerRef animated_tile_chunk_handlers[] = {
 	ANIT,
 };

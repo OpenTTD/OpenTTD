@@ -242,93 +242,96 @@ void AfterLoadLinkGraphs()
 }
 
 /**
- * Save all link graphs.
+ * All link graphs.
  */
-static void Save_LGRP()
-{
-	SlTableHeader(GetLinkGraphDesc());
+struct LGRPChunkHandler : ChunkHandler {
+	LGRPChunkHandler() : ChunkHandler('LGRP', CH_TABLE) {}
 
-	for (LinkGraph *lg : LinkGraph::Iterate()) {
-		SlSetArrayIndex(lg->index);
-		SlObject(lg, GetLinkGraphDesc());
+	void Save() const override
+	{
+		SlTableHeader(GetLinkGraphDesc());
+
+		for (LinkGraph *lg : LinkGraph::Iterate()) {
+			SlSetArrayIndex(lg->index);
+			SlObject(lg, GetLinkGraphDesc());
+		}
 	}
-}
 
-/**
- * Load all link graphs.
- */
-static void Load_LGRP()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(GetLinkGraphDesc(), _linkgraph_sl_compat);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(GetLinkGraphDesc(), _linkgraph_sl_compat);
 
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		LinkGraph *lg = new (index) LinkGraph();
-		SlObject(lg, slt);
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			LinkGraph *lg = new (index) LinkGraph();
+			SlObject(lg, slt);
+		}
 	}
-}
+};
 
 /**
- * Save all link graph jobs.
+ * All link graph jobs.
  */
-static void Save_LGRJ()
-{
-	SlTableHeader(GetLinkGraphJobDesc());
+struct LGRJChunkHandler : ChunkHandler {
+	LGRJChunkHandler() : ChunkHandler('LGRJ', CH_TABLE) {}
 
-	for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) {
-		SlSetArrayIndex(lgj->index);
-		SlObject(lgj, GetLinkGraphJobDesc());
+	void Save() const override
+	{
+		SlTableHeader(GetLinkGraphJobDesc());
+
+		for (LinkGraphJob *lgj : LinkGraphJob::Iterate()) {
+			SlSetArrayIndex(lgj->index);
+			SlObject(lgj, GetLinkGraphJobDesc());
+		}
 	}
-}
 
-/**
- * Load all link graph jobs.
- */
-static void Load_LGRJ()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(GetLinkGraphJobDesc(), _linkgraph_job_sl_compat);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(GetLinkGraphJobDesc(), _linkgraph_job_sl_compat);
 
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		LinkGraphJob *lgj = new (index) LinkGraphJob();
-		SlObject(lgj, slt);
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			LinkGraphJob *lgj = new (index) LinkGraphJob();
+			SlObject(lgj, slt);
+		}
 	}
-}
+};
 
 /**
- * Save the link graph schedule.
+ * Link graph schedule.
  */
-static void Save_LGRS()
-{
-	SlTableHeader(GetLinkGraphScheduleDesc());
+struct LGRSChunkHandler : ChunkHandler {
+	LGRSChunkHandler() : ChunkHandler('LGRS', CH_TABLE)
+	{
+		this->fix_pointers = true;
+	}
 
-	SlSetArrayIndex(0);
-	SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
-}
+	void Save() const override
+	{
+		SlTableHeader(GetLinkGraphScheduleDesc());
 
-/**
- * Load the link graph schedule.
- */
-static void Load_LGRS()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(GetLinkGraphScheduleDesc(), _linkgraph_schedule_sl_compat);
+		SlSetArrayIndex(0);
+		SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
+	}
 
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
-	SlObject(&LinkGraphSchedule::instance, slt);
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many LGRS entries");
-}
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(GetLinkGraphScheduleDesc(), _linkgraph_schedule_sl_compat);
 
-/**
- * Substitute pointers in link graph schedule.
- */
-static void Ptrs_LGRS()
-{
-	SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
-}
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		SlObject(&LinkGraphSchedule::instance, slt);
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many LGRS entries");
+	}
 
-static const ChunkHandler LGRP{ 'LGRP', Save_LGRP, Load_LGRP, nullptr,   nullptr, CH_TABLE };
-static const ChunkHandler LGRJ{ 'LGRJ', Save_LGRJ, Load_LGRJ, nullptr,   nullptr, CH_TABLE };
-static const ChunkHandler LGRS{ 'LGRS', Save_LGRS, Load_LGRS, Ptrs_LGRS, nullptr, CH_TABLE };
+	void FixPointers() const override
+	{
+		SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
+	}
+};
+
+static const LGRPChunkHandler LGRP;
+static const LGRJChunkHandler LGRJ;
+static const LGRSChunkHandler LGRS;
 static const ChunkHandlerRef linkgraph_chunk_handlers[] = {
 	LGRP,
 	LGRJ,

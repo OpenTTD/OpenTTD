@@ -497,67 +497,76 @@ static const SaveLoad _company_desc[] = {
 	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries,                               SLV_34, SL_MAX_VERSION),
 };
 
-static void Save_PLYR()
-{
-	SlTableHeader(_company_desc);
-
-	for (Company *c : Company::Iterate()) {
-		SlSetArrayIndex(c->index);
-		SlObject(c, _company_desc);
+struct PLYRChunkHandler : ChunkHandler {
+	PLYRChunkHandler() : ChunkHandler('PLYR', CH_TABLE)
+	{
+		this->load_check = true;
+		this->fix_pointers = true;
 	}
-}
 
-static void Load_PLYR()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_company_desc, _company_sl_compat);
+	void Save() const override
+	{
+		SlTableHeader(_company_desc);
 
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		Company *c = new (index) Company();
-		SlObject(c, slt);
-		_company_colours[index] = (Colours)c->colour;
-	}
-}
-
-static void Check_PLYR()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_company_desc, _company_sl_compat);
-
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		CompanyProperties *cprops = new CompanyProperties();
-		SlObject(cprops, slt);
-
-		/* We do not load old custom names */
-		if (IsSavegameVersionBefore(SLV_84)) {
-			if (GetStringTab(cprops->name_1) == TEXT_TAB_OLD_CUSTOM) {
-				cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
-			}
-
-			if (GetStringTab(cprops->president_name_1) == TEXT_TAB_OLD_CUSTOM) {
-				cprops->president_name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
-			}
+		for (Company *c : Company::Iterate()) {
+			SlSetArrayIndex(c->index);
+			SlObject(c, _company_desc);
 		}
+	}
 
-		if (cprops->name.empty() && !IsInsideMM(cprops->name_1, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_LAST + 1) &&
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_company_desc, _company_sl_compat);
+
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			Company *c = new (index) Company();
+			SlObject(c, slt);
+			_company_colours[index] = (Colours)c->colour;
+		}
+	}
+
+
+	void LoadCheck(size_t) const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_company_desc, _company_sl_compat);
+
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			CompanyProperties *cprops = new CompanyProperties();
+			SlObject(cprops, slt);
+
+			/* We do not load old custom names */
+			if (IsSavegameVersionBefore(SLV_84)) {
+				if (GetStringTab(cprops->name_1) == TEXT_TAB_OLD_CUSTOM) {
+					cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
+				}
+
+				if (GetStringTab(cprops->president_name_1) == TEXT_TAB_OLD_CUSTOM) {
+					cprops->president_name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
+				}
+			}
+
+			if (cprops->name.empty() && !IsInsideMM(cprops->name_1, SPECSTR_COMPANY_NAME_START, SPECSTR_COMPANY_NAME_LAST + 1) &&
 				cprops->name_1 != STR_GAME_SAVELOAD_NOT_AVAILABLE && cprops->name_1 != STR_SV_UNNAMED &&
 				cprops->name_1 != SPECSTR_ANDCO_NAME && cprops->name_1 != SPECSTR_PRESIDENT_NAME &&
 				cprops->name_1 != SPECSTR_SILLY_NAME) {
-			cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
+				cprops->name_1 = STR_GAME_SAVELOAD_NOT_AVAILABLE;
+			}
+
+			if (!_load_check_data.companies.Insert(index, cprops)) delete cprops;
 		}
-
-		if (!_load_check_data.companies.Insert(index, cprops)) delete cprops;
 	}
-}
 
-static void Ptrs_PLYR()
-{
-	for (Company *c : Company::Iterate()) {
-		SlObject(c, _company_desc);
+	void FixPointers() const override
+	{
+		for (Company *c : Company::Iterate()) {
+			SlObject(c, _company_desc);
+		}
 	}
-}
+};
 
-static const ChunkHandler PLYR{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, Check_PLYR, CH_TABLE };
+static const PLYRChunkHandler PLYR;
 static const ChunkHandlerRef company_chunk_handlers[] = {
 	PLYR,
 };

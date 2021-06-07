@@ -80,37 +80,41 @@ Engine *GetTempDataEngine(EngineID index)
 	}
 }
 
-static void Save_ENGN()
-{
-	SlTableHeader(_engine_desc);
+struct ENGNChunkHandler : ChunkHandler {
+	ENGNChunkHandler() : ChunkHandler('ENGN', CH_TABLE) {}
 
-	for (Engine *e : Engine::Iterate()) {
-		SlSetArrayIndex(e->index);
-		SlObject(e, _engine_desc);
-	}
-}
+	void Save() const override
+	{
+		SlTableHeader(_engine_desc);
 
-static void Load_ENGN()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_desc, _engine_sl_compat);
-
-	/* As engine data is loaded before engines are initialized we need to load
-	 * this information into a temporary array. This is then copied into the
-	 * engine pool after processing NewGRFs by CopyTempEngineData(). */
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		Engine *e = GetTempDataEngine(index);
-		SlObject(e, slt);
-
-		if (IsSavegameVersionBefore(SLV_179)) {
-			/* preview_company_rank was replaced with preview_company and preview_asked.
-			 * Just cancel any previews. */
-			e->flags &= ~4; // ENGINE_OFFER_WINDOW_OPEN
-			e->preview_company = INVALID_COMPANY;
-			e->preview_asked = (CompanyMask)-1;
+		for (Engine *e : Engine::Iterate()) {
+			SlSetArrayIndex(e->index);
+			SlObject(e, _engine_desc);
 		}
 	}
-}
+
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_desc, _engine_sl_compat);
+
+		/* As engine data is loaded before engines are initialized we need to load
+		 * this information into a temporary array. This is then copied into the
+		 * engine pool after processing NewGRFs by CopyTempEngineData(). */
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			Engine *e = GetTempDataEngine(index);
+			SlObject(e, slt);
+
+			if (IsSavegameVersionBefore(SLV_179)) {
+				/* preview_company_rank was replaced with preview_company and preview_asked.
+				 * Just cancel any previews. */
+				e->flags &= ~4; // ENGINE_OFFER_WINDOW_OPEN
+				e->preview_company = INVALID_COMPANY;
+				e->preview_asked = (CompanyMask)-1;
+			}
+		}
+	}
+};
 
 /**
  * Copy data from temporary engine array into the real engine pool.
@@ -152,20 +156,24 @@ void ResetTempEngineData()
 	_temp_engine.clear();
 }
 
-static void Load_ENGS()
-{
-	/* Load old separate String ID list into a temporary array. This
-	 * was always 256 entries. */
-	StringID names[256];
+struct ENGSChunkHandler : ChunkHandler {
+	ENGSChunkHandler() : ChunkHandler('ENGS', CH_READONLY) {}
 
-	SlCopy(names, lengthof(names), SLE_STRINGID);
+	void Load() const override
+	{
+		/* Load old separate String ID list into a temporary array. This
+		 * was always 256 entries. */
+		StringID names[256];
 
-	/* Copy each string into the temporary engine array. */
-	for (EngineID engine = 0; engine < lengthof(names); engine++) {
-		Engine *e = GetTempDataEngine(engine);
-		e->name = CopyFromOldName(names[engine]);
+		SlCopy(names, lengthof(names), SLE_STRINGID);
+
+		/* Copy each string into the temporary engine array. */
+		for (EngineID engine = 0; engine < lengthof(names); engine++) {
+			Engine *e = GetTempDataEngine(engine);
+			e->name = CopyFromOldName(names[engine]);
+		}
 	}
-}
+};
 
 /** Save and load the mapping between the engine id in the pool, and the grf file it came from. */
 static const SaveLoad _engine_id_mapping_desc[] = {
@@ -175,33 +183,37 @@ static const SaveLoad _engine_id_mapping_desc[] = {
 	SLE_VAR(EngineIDMapping, substitute_id, SLE_UINT8),
 };
 
-static void Save_EIDS()
-{
-	SlTableHeader(_engine_id_mapping_desc);
+struct EIDSChunkHandler : ChunkHandler {
+	EIDSChunkHandler() : ChunkHandler('EIDS', CH_TABLE) {}
 
-	uint index = 0;
-	for (EngineIDMapping &eid : _engine_mngr) {
-		SlSetArrayIndex(index);
-		SlObject(&eid, _engine_id_mapping_desc);
-		index++;
+	void Save() const override
+	{
+		SlTableHeader(_engine_id_mapping_desc);
+
+		uint index = 0;
+		for (EngineIDMapping &eid : _engine_mngr) {
+			SlSetArrayIndex(index);
+			SlObject(&eid, _engine_id_mapping_desc);
+			index++;
+		}
 	}
-}
 
-static void Load_EIDS()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_id_mapping_desc, _engine_id_mapping_sl_compat);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_engine_id_mapping_desc, _engine_id_mapping_sl_compat);
 
-	_engine_mngr.clear();
+		_engine_mngr.clear();
 
-	while (SlIterateArray() != -1) {
-		EngineIDMapping *eid = &_engine_mngr.emplace_back();
-		SlObject(eid, slt);
+		while (SlIterateArray() != -1) {
+			EngineIDMapping *eid = &_engine_mngr.emplace_back();
+			SlObject(eid, slt);
+		}
 	}
-}
+};
 
-static const ChunkHandler EIDS{ 'EIDS', Save_EIDS, Load_EIDS, nullptr, nullptr, CH_TABLE };
-static const ChunkHandler ENGN{ 'ENGN', Save_ENGN, Load_ENGN, nullptr, nullptr, CH_TABLE };
-static const ChunkHandler ENGS{ 'ENGS', nullptr,   Load_ENGS, nullptr, nullptr, CH_READONLY };
+static const EIDSChunkHandler EIDS;
+static const ENGNChunkHandler ENGN;
+static const ENGSChunkHandler ENGS;
 static const ChunkHandlerRef engine_chunk_handlers[] = {
 	EIDS,
 	ENGN,

@@ -182,49 +182,56 @@ static const SaveLoad _old_waypoint_desc[] = {
 	SLE_CONDVAR(OldWaypoint, owner,      SLE_UINT8,                 SLV_101, SL_MAX_VERSION),
 };
 
-static void Load_WAYP()
-{
-	/* Precaution for when loading failed and it didn't get cleared */
-	ResetOldWaypoints();
-
-	int index;
-
-	while ((index = SlIterateArray()) != -1) {
-		OldWaypoint *wp = &_old_waypoints.emplace_back();
-
-		wp->index = index;
-		SlObject(wp, _old_waypoint_desc);
+struct CHKPChunkHandler : ChunkHandler {
+	CHKPChunkHandler() : ChunkHandler('CHKP', CH_READONLY)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-static void Ptrs_WAYP()
-{
-	for (OldWaypoint &wp : _old_waypoints) {
-		SlObject(&wp, _old_waypoint_desc);
+	void Load() const override
+	{
+		/* Precaution for when loading failed and it didn't get cleared */
+		ResetOldWaypoints();
 
-		if (IsSavegameVersionBefore(SLV_12)) {
-			wp.town_cn = (wp.string_id & 0xC000) == 0xC000 ? (wp.string_id >> 8) & 0x3F : 0;
-			wp.town = ClosestTownFromTile(wp.xy, UINT_MAX);
-		} else if (IsSavegameVersionBefore(SLV_122)) {
-			/* Only for versions 12 .. 122 */
-			if (!Town::IsValidID(wp.town_index)) {
-				/* Upon a corrupted waypoint we'll likely get here. The next step will be to
-				 * loop over all Ptrs procs to nullptr the pointers. However, we don't know
-				 * whether we're in the nullptr or "normal" Ptrs proc. So just clear the list
-				 * of old waypoints we constructed and then this waypoint (and the other
-				 * possibly corrupt ones) will not be queried in the nullptr Ptrs proc run. */
-				_old_waypoints.clear();
-				SlErrorCorrupt("Referencing invalid Town");
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			OldWaypoint *wp = &_old_waypoints.emplace_back();
+
+			wp->index = index;
+			SlObject(wp, _old_waypoint_desc);
+		}
+	}
+
+	void FixPointers() const override
+	{
+		for (OldWaypoint &wp : _old_waypoints) {
+			SlObject(&wp, _old_waypoint_desc);
+
+			if (IsSavegameVersionBefore(SLV_12)) {
+				wp.town_cn = (wp.string_id & 0xC000) == 0xC000 ? (wp.string_id >> 8) & 0x3F : 0;
+				wp.town = ClosestTownFromTile(wp.xy, UINT_MAX);
+			} else if (IsSavegameVersionBefore(SLV_122)) {
+				/* Only for versions 12 .. 122 */
+				if (!Town::IsValidID(wp.town_index)) {
+					/* Upon a corrupted waypoint we'll likely get here. The next step will be to
+					 * loop over all Ptrs procs to nullptr the pointers. However, we don't know
+					 * whether we're in the nullptr or "normal" Ptrs proc. So just clear the list
+					 * of old waypoints we constructed and then this waypoint (and the other
+					 * possibly corrupt ones) will not be queried in the nullptr Ptrs proc run. */
+					_old_waypoints.clear();
+					SlErrorCorrupt("Referencing invalid Town");
+				}
+				wp.town = Town::Get(wp.town_index);
 			}
-			wp.town = Town::Get(wp.town_index);
-		}
-		if (IsSavegameVersionBefore(SLV_84)) {
-			wp.name = CopyFromOldName(wp.string_id);
+			if (IsSavegameVersionBefore(SLV_84)) {
+				wp.name = CopyFromOldName(wp.string_id);
+			}
 		}
 	}
-}
+};
 
-static const ChunkHandler CHKP{ 'CHKP', nullptr, Load_WAYP, Ptrs_WAYP, nullptr, CH_READONLY };
+static const CHKPChunkHandler CHKP;
 static const ChunkHandlerRef waypoint_chunk_handlers[] = {
 	CHKP,
 };

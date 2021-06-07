@@ -74,90 +74,108 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDSSTR(Industry, text,     SLE_STR | SLF_ALLOW_CONTROL,     SLV_INDUSTRY_TEXT, SL_MAX_VERSION),
 };
 
-static void Save_INDY()
-{
-	SlTableHeader(_industry_desc);
-
-	/* Write the industries */
-	for (Industry *ind : Industry::Iterate()) {
-		SlSetArrayIndex(ind->index);
-		SlObject(ind, _industry_desc);
+struct INDYChunkHandler : ChunkHandler {
+	INDYChunkHandler() : ChunkHandler('INDY', CH_TABLE)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-static void Save_IIDS()
-{
-	Save_NewGRFMapping(_industry_mngr);
-}
+	void Save() const override
+	{
+		SlTableHeader(_industry_desc);
 
-static void Save_TIDS()
-{
-	Save_NewGRFMapping(_industile_mngr);
-}
-
-static void Load_INDY()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_industry_desc, _industry_sl_compat);
-
-	int index;
-
-	Industry::ResetIndustryCounts();
-
-	while ((index = SlIterateArray()) != -1) {
-		Industry *i = new (index) Industry();
-		SlObject(i, slt);
-
-		/* Before savegame version 161, persistent storages were not stored in a pool. */
-		if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_76)) {
-			/* Store the old persistent storage. The GRFID will be added later. */
-			assert(PersistentStorage::CanAllocateItem());
-			i->psa = new PersistentStorage(0, 0, 0);
-			memcpy(i->psa->storage, _old_ind_persistent_storage.storage, sizeof(_old_ind_persistent_storage.storage));
+		/* Write the industries */
+		for (Industry *ind : Industry::Iterate()) {
+			SlSetArrayIndex(ind->index);
+			SlObject(ind, _industry_desc);
 		}
-		Industry::IncIndustryTypeCount(i->type);
 	}
-}
 
-static void Load_IIDS()
-{
-	Load_NewGRFMapping(_industry_mngr);
-}
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_industry_desc, _industry_sl_compat);
 
-static void Load_TIDS()
-{
-	Load_NewGRFMapping(_industile_mngr);
-}
+		int index;
 
-static void Ptrs_INDY()
-{
-	for (Industry *i : Industry::Iterate()) {
-		SlObject(i, _industry_desc);
+		Industry::ResetIndustryCounts();
+
+		while ((index = SlIterateArray()) != -1) {
+			Industry *i = new (index) Industry();
+			SlObject(i, slt);
+
+			/* Before savegame version 161, persistent storages were not stored in a pool. */
+			if (IsSavegameVersionBefore(SLV_161) && !IsSavegameVersionBefore(SLV_76)) {
+				/* Store the old persistent storage. The GRFID will be added later. */
+				assert(PersistentStorage::CanAllocateItem());
+				i->psa = new PersistentStorage(0, 0, 0);
+				memcpy(i->psa->storage, _old_ind_persistent_storage.storage, sizeof(_old_ind_persistent_storage.storage));
+			}
+			Industry::IncIndustryTypeCount(i->type);
+		}
 	}
-}
+
+	void FixPointers() const override
+	{
+		for (Industry *i : Industry::Iterate()) {
+			SlObject(i, _industry_desc);
+		}
+	}
+};
+
+struct IIDSChunkHandler : ChunkHandler {
+	IIDSChunkHandler() : ChunkHandler('IIDS', CH_TABLE) {}
+
+	void Save() const override
+	{
+		Save_NewGRFMapping(_industry_mngr);
+	}
+
+	void Load() const override
+	{
+		Load_NewGRFMapping(_industry_mngr);
+	}
+};
+
+struct TIDSChunkHandler : ChunkHandler {
+	TIDSChunkHandler() : ChunkHandler('TIDS', CH_TABLE) {}
+
+	void Save() const override
+	{
+		Save_NewGRFMapping(_industile_mngr);
+	}
+
+	void Load() const override
+	{
+		Load_NewGRFMapping(_industile_mngr);
+	}
+};
 
 /** Description of the data to save and load in #IndustryBuildData. */
 static const SaveLoad _industry_builder_desc[] = {
 	SLEG_VAR("wanted_inds", _industry_builder.wanted_inds, SLE_UINT32),
 };
 
-/** Save industry builder. */
-static void Save_IBLD()
-{
-	SlTableHeader(_industry_builder_desc);
+/** Industry builder. */
+struct IBLDChunkHandler : ChunkHandler {
+	IBLDChunkHandler() : ChunkHandler('IBLD', CH_TABLE) {}
 
-	SlSetArrayIndex(0);
-	SlGlobList(_industry_builder_desc);
-}
+	void Save() const override
+	{
+		SlTableHeader(_industry_builder_desc);
 
-/** Load industry builder. */
-static void Load_IBLD()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_industry_builder_desc, _industry_builder_sl_compat);
+		SlSetArrayIndex(0);
+		SlGlobList(_industry_builder_desc);
+	}
 
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
-	SlGlobList(slt);
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many IBLD entries");
-}
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_industry_builder_desc, _industry_builder_sl_compat);
+
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		SlGlobList(slt);
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many IBLD entries");
+	}
+};
 
 /** Description of the data to save and load in #IndustryTypeBuildData. */
 static const SaveLoad _industrytype_builder_desc[] = {
@@ -168,37 +186,40 @@ static const SaveLoad _industrytype_builder_desc[] = {
 	SLE_VAR(IndustryTypeBuildData, wait_count,   SLE_UINT16),
 };
 
-/** Save industry-type build data. */
-static void Save_ITBL()
-{
-	SlTableHeader(_industrytype_builder_desc);
+/** Industry-type build data. */
+struct ITBLChunkHandler : ChunkHandler {
+	ITBLChunkHandler() : ChunkHandler('ITBL', CH_TABLE) {}
 
-	for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
-		SlSetArrayIndex(i);
-		SlObject(_industry_builder.builddata + i, _industrytype_builder_desc);
+	void Save() const override
+	{
+		SlTableHeader(_industrytype_builder_desc);
+
+		for (int i = 0; i < NUM_INDUSTRYTYPES; i++) {
+			SlSetArrayIndex(i);
+			SlObject(_industry_builder.builddata + i, _industrytype_builder_desc);
+		}
 	}
-}
 
-/** Load industry-type build data. */
-static void Load_ITBL()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_industrytype_builder_desc, _industrytype_builder_sl_compat);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_industrytype_builder_desc, _industrytype_builder_sl_compat);
 
-	for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
-		_industry_builder.builddata[it].Reset();
+		for (IndustryType it = 0; it < NUM_INDUSTRYTYPES; it++) {
+			_industry_builder.builddata[it].Reset();
+		}
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			if ((uint)index >= NUM_INDUSTRYTYPES) SlErrorCorrupt("Too many industry builder datas");
+			SlObject(_industry_builder.builddata + index, slt);
+		}
 	}
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		if ((uint)index >= NUM_INDUSTRYTYPES) SlErrorCorrupt("Too many industry builder datas");
-		SlObject(_industry_builder.builddata + index, slt);
-	}
-}
+};
 
-static const ChunkHandler INDY{ 'INDY', Save_INDY, Load_INDY, Ptrs_INDY, nullptr, CH_TABLE };
-static const ChunkHandler IIDS{ 'IIDS', Save_IIDS, Load_IIDS, nullptr,   nullptr, CH_TABLE };
-static const ChunkHandler TIDS{ 'TIDS', Save_TIDS, Load_TIDS, nullptr,   nullptr, CH_TABLE };
-static const ChunkHandler IBLD{ 'IBLD', Save_IBLD, Load_IBLD, nullptr,   nullptr, CH_TABLE };
-static const ChunkHandler ITBL{ 'ITBL', Save_ITBL, Load_ITBL, nullptr,   nullptr, CH_TABLE };
+static const INDYChunkHandler INDY;
+static const IIDSChunkHandler IIDS;
+static const TIDSChunkHandler TIDS;
+static const IBLDChunkHandler IBLD;
+static const ITBLChunkHandler ITBL;
 static const ChunkHandlerRef industry_chunk_handlers[] = {
 	INDY,
 	IIDS,

@@ -30,44 +30,46 @@ static const SaveLoad _sign_desc[] = {
 	SLE_CONDVAR(Sign, z,     SLE_INT32,                SLV_164, SL_MAX_VERSION),
 };
 
-/** Save all signs */
-static void Save_SIGN()
-{
-	SlTableHeader(_sign_desc);
+struct SIGNChunkHandler : ChunkHandler {
+	SIGNChunkHandler() : ChunkHandler('SIGN', CH_TABLE) {}
 
-	for (Sign *si : Sign::Iterate()) {
-		SlSetArrayIndex(si->index);
-		SlObject(si, _sign_desc);
-	}
-}
+	void Save() const override
+	{
+		SlTableHeader(_sign_desc);
 
-/** Load all signs */
-static void Load_SIGN()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_sign_desc, _sign_sl_compat);
-
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		Sign *si = new (index) Sign();
-		SlObject(si, slt);
-		/* Before version 6.1, signs didn't have owner.
-		 * Before version 83, invalid signs were determined by si->str == 0.
-		 * Before version 103, owner could be a bankrupted company.
-		 *  - we can't use IsValidCompany() now, so this is fixed in AfterLoadGame()
-		 * All signs that were saved are valid (including those with just 'Sign' and INVALID_OWNER).
-		 *  - so set owner to OWNER_NONE if needed (signs from pre-version 6.1 would be lost) */
-		if (IsSavegameVersionBefore(SLV_6, 1) || (IsSavegameVersionBefore(SLV_83) && si->owner == INVALID_OWNER)) {
-			si->owner = OWNER_NONE;
-		}
-
-		/* Signs placed in scenario editor shall now be OWNER_DEITY */
-		if (IsSavegameVersionBefore(SLV_171) && si->owner == OWNER_NONE && _file_to_saveload.abstract_ftype == FT_SCENARIO) {
-			si->owner = OWNER_DEITY;
+		for (Sign *si : Sign::Iterate()) {
+			SlSetArrayIndex(si->index);
+			SlObject(si, _sign_desc);
 		}
 	}
-}
 
-static const ChunkHandler SIGN{ 'SIGN', Save_SIGN, Load_SIGN, nullptr, nullptr, CH_TABLE };
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_sign_desc, _sign_sl_compat);
+
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			Sign *si = new (index) Sign();
+			SlObject(si, slt);
+			/* Before version 6.1, signs didn't have owner.
+			 * Before version 83, invalid signs were determined by si->str == 0.
+			 * Before version 103, owner could be a bankrupted company.
+			 *  - we can't use IsValidCompany() now, so this is fixed in AfterLoadGame()
+			 * All signs that were saved are valid (including those with just 'Sign' and INVALID_OWNER).
+			 *  - so set owner to OWNER_NONE if needed (signs from pre-version 6.1 would be lost) */
+			if (IsSavegameVersionBefore(SLV_6, 1) || (IsSavegameVersionBefore(SLV_83) && si->owner == INVALID_OWNER)) {
+				si->owner = OWNER_NONE;
+			}
+
+			/* Signs placed in scenario editor shall now be OWNER_DEITY */
+			if (IsSavegameVersionBefore(SLV_171) && si->owner == OWNER_NONE && _file_to_saveload.abstract_ftype == FT_SCENARIO) {
+				si->owner = OWNER_DEITY;
+			}
+		}
+	}
+};
+
+static const SIGNChunkHandler SIGN;
 static const ChunkHandlerRef sign_chunk_handlers[] = {
 	SIGN,
 };

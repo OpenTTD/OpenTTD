@@ -28,38 +28,42 @@ static const SaveLoad _group_desc[] = {
 	 SLE_CONDVAR(Group, parent,             SLE_UINT16,                    SLV_189, SL_MAX_VERSION),
 };
 
-static void Save_GRPS()
-{
-	SlTableHeader(_group_desc);
+struct GRPSChunkHandler : ChunkHandler {
+	GRPSChunkHandler() : ChunkHandler('GRPS', CH_TABLE) {}
 
-	for (Group *g : Group::Iterate()) {
-		SlSetArrayIndex(g->index);
-		SlObject(g, _group_desc);
-	}
-}
+	void Save() const override
+	{
+		SlTableHeader(_group_desc);
 
-
-static void Load_GRPS()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_group_desc, _group_sl_compat);
-
-	int index;
-
-	while ((index = SlIterateArray()) != -1) {
-		Group *g = new (index) Group();
-		SlObject(g, slt);
-
-		if (IsSavegameVersionBefore(SLV_189)) g->parent = INVALID_GROUP;
-
-		if (IsSavegameVersionBefore(SLV_GROUP_LIVERIES)) {
-			const Company *c = Company::Get(g->owner);
-			g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
-			g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+		for (Group *g : Group::Iterate()) {
+			SlSetArrayIndex(g->index);
+			SlObject(g, _group_desc);
 		}
 	}
-}
 
-static const ChunkHandler GRPS{ 'GRPS', Save_GRPS, Load_GRPS, nullptr, nullptr, CH_TABLE };
+
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_group_desc, _group_sl_compat);
+
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			Group *g = new (index) Group();
+			SlObject(g, slt);
+
+			if (IsSavegameVersionBefore(SLV_189)) g->parent = INVALID_GROUP;
+
+			if (IsSavegameVersionBefore(SLV_GROUP_LIVERIES)) {
+				const Company *c = Company::Get(g->owner);
+				g->livery.colour1 = c->livery[LS_DEFAULT].colour1;
+				g->livery.colour2 = c->livery[LS_DEFAULT].colour2;
+			}
+		}
+	}
+};
+
+static const GRPSChunkHandler GRPS;
 static const ChunkHandlerRef group_chunk_handlers[] = {
 	GRPS,
 };

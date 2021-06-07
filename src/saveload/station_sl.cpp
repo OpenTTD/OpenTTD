@@ -484,34 +484,41 @@ static const SaveLoad _old_station_desc[] = {
 	SLEG_CONDSTRUCTLIST("speclist", SlStationSpecList,                           SLV_27, SL_MAX_VERSION),
 };
 
-static void Load_STNS()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_old_station_desc, _old_station_sl_compat);
-
-	_cargo_source_xy = 0;
-	_cargo_days = 0;
-	_cargo_feeder_share = 0;
-
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		Station *st = new (index) Station();
-
-		_waiting_acceptance = 0;
-		SlObject(st, slt);
+struct STNSChunkHandler : ChunkHandler {
+	STNSChunkHandler() : ChunkHandler('STNS', CH_READONLY)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-static void Ptrs_STNS()
-{
-	/* From SLV_123 we store stations in STNN; before that in STNS. So do not
-	 * fix pointers when the version is SLV_123 or up, as that would fix
-	 * pointers twice: once in STNN chunk and once here. */
-	if (!IsSavegameVersionBefore(SLV_123)) return;
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_old_station_desc, _old_station_sl_compat);
 
-	for (Station *st : Station::Iterate()) {
-		SlObject(st, _old_station_desc);
+		_cargo_source_xy = 0;
+		_cargo_days = 0;
+		_cargo_feeder_share = 0;
+
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			Station *st = new (index) Station();
+
+			_waiting_acceptance = 0;
+			SlObject(st, slt);
+		}
 	}
-}
+
+	void FixPointers() const override
+	{
+		/* From SLV_123 we store stations in STNN; before that in STNS. So do not
+		 * fix pointers when the version is SLV_123 or up, as that would fix
+		 * pointers twice: once in STNN chunk and once here. */
+		if (!IsSavegameVersionBefore(SLV_123)) return;
+
+		for (Station *st : Station::Iterate()) {
+			SlObject(st, _old_station_desc);
+		}
+	}
+};
 
 /**
  * SaveLoad handler for the BaseStation, which all other stations / waypoints
@@ -651,77 +658,92 @@ static const SaveLoad _station_desc[] = {
 	SLEG_CONDSTRUCTLIST("speclist", SlStationSpecList, SLV_27, SL_MAX_VERSION),
 };
 
-static void Save_STNN()
-{
-	SlTableHeader(_station_desc);
-
-	/* Write the stations */
-	for (BaseStation *st : BaseStation::Iterate()) {
-		SlSetArrayIndex(st->index);
-		SlObject(st, _station_desc);
+struct STNNChunkHandler : ChunkHandler {
+	STNNChunkHandler() : ChunkHandler('STNN', CH_TABLE)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-static void Load_STNN()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_station_desc, _station_sl_compat);
+	void Save() const override
+	{
+		SlTableHeader(_station_desc);
 
-	_old_num_flows = 0;
-
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		bool waypoint = (SlReadByte() & FACIL_WAYPOINT) != 0;
-
-		BaseStation *bst = waypoint ? (BaseStation *)new (index) Waypoint() : new (index) Station();
-		SlObject(bst, slt);
+		/* Write the stations */
+		for (BaseStation *st : BaseStation::Iterate()) {
+			SlSetArrayIndex(st->index);
+			SlObject(st, _station_desc);
+		}
 	}
-}
 
-static void Ptrs_STNN()
-{
-	/* From SLV_123 we store stations in STNN; before that in STNS. So do not
-	 * fix pointers when the version is below SLV_123, as that would fix
-	 * pointers twice: once in STNS chunk and once here. */
-	if (IsSavegameVersionBefore(SLV_123)) return;
 
-	for (BaseStation *bst : BaseStation::Iterate()) {
-		SlObject(bst, _station_desc);
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_station_desc, _station_sl_compat);
+
+		_old_num_flows = 0;
+
+		int index;
+		while ((index = SlIterateArray()) != -1) {
+			bool waypoint = (SlReadByte() & FACIL_WAYPOINT) != 0;
+
+			BaseStation *bst = waypoint ? (BaseStation *)new (index) Waypoint() : new (index) Station();
+			SlObject(bst, slt);
+		}
 	}
-}
 
-static void Save_ROADSTOP()
-{
-	SlTableHeader(_roadstop_desc);
+	void FixPointers() const override
+	{
+		/* From SLV_123 we store stations in STNN; before that in STNS. So do not
+		 * fix pointers when the version is below SLV_123, as that would fix
+		 * pointers twice: once in STNS chunk and once here. */
+		if (IsSavegameVersionBefore(SLV_123)) return;
 
-	for (RoadStop *rs : RoadStop::Iterate()) {
-		SlSetArrayIndex(rs->index);
-		SlObject(rs, _roadstop_desc);
+		for (BaseStation *bst : BaseStation::Iterate()) {
+			SlObject(bst, _station_desc);
+		}
 	}
-}
+};
 
-static void Load_ROADSTOP()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(_roadstop_desc, _roadstop_sl_compat);
-
-	int index;
-
-	while ((index = SlIterateArray()) != -1) {
-		RoadStop *rs = new (index) RoadStop(INVALID_TILE);
-
-		SlObject(rs, slt);
+struct ROADChunkHandler : ChunkHandler {
+	ROADChunkHandler() : ChunkHandler('ROAD', CH_TABLE)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-static void Ptrs_ROADSTOP()
-{
-	for (RoadStop *rs : RoadStop::Iterate()) {
-		SlObject(rs, _roadstop_desc);
+	void Save() const override
+	{
+		SlTableHeader(_roadstop_desc);
+
+		for (RoadStop *rs : RoadStop::Iterate()) {
+			SlSetArrayIndex(rs->index);
+			SlObject(rs, _roadstop_desc);
+		}
 	}
-}
 
-static const ChunkHandler STNS{ 'STNS', nullptr,       Load_STNS,     Ptrs_STNS,     nullptr, CH_READONLY };
-static const ChunkHandler STNN{ 'STNN', Save_STNN,     Load_STNN,     Ptrs_STNN,     nullptr, CH_TABLE };
-static const ChunkHandler ROAD{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, nullptr, CH_TABLE };
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(_roadstop_desc, _roadstop_sl_compat);
+
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			RoadStop *rs = new (index) RoadStop(INVALID_TILE);
+
+			SlObject(rs, slt);
+		}
+	}
+
+	void FixPointers() const override
+	{
+		for (RoadStop *rs : RoadStop::Iterate()) {
+			SlObject(rs, _roadstop_desc);
+		}
+	}
+};
+
+static const STNSChunkHandler STNS;
+static const STNNChunkHandler STNN;
+static const ROADChunkHandler ROAD;
 static const ChunkHandlerRef station_chunk_handlers[] = {
 	STNS,
 	STNN,

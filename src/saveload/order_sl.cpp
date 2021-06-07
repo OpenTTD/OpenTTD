@@ -118,85 +118,92 @@ SaveLoadTable GetOrderDescription()
 	return _order_desc;
 }
 
-static void Save_ORDR()
-{
-	const SaveLoadTable slt = GetOrderDescription();
-	SlTableHeader(slt);
-
-	for (Order *order : Order::Iterate()) {
-		SlSetArrayIndex(order->index);
-		SlObject(order, slt);
+struct ORDRChunkHandler : ChunkHandler {
+	ORDRChunkHandler() : ChunkHandler('ORDR', CH_TABLE)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-static void Load_ORDR()
-{
-	if (IsSavegameVersionBefore(SLV_5, 2)) {
-		/* Version older than 5.2 did not have a ->next pointer. Convert them
-		 * (in the old days, the orderlist was 5000 items big) */
-		size_t len = SlGetFieldLength();
+	void Save() const override
+	{
+		const SaveLoadTable slt = GetOrderDescription();
+		SlTableHeader(slt);
 
-		if (IsSavegameVersionBefore(SLV_5)) {
-			/* Pre-version 5 had another layout for orders
-			 * (uint16 instead of uint32) */
-			len /= sizeof(uint16);
-			uint16 *orders = MallocT<uint16>(len + 1);
-
-			SlCopy(orders, len, SLE_UINT16);
-
-			for (size_t i = 0; i < len; ++i) {
-				Order *o = new (i) Order();
-				o->AssignOrder(UnpackVersion4Order(orders[i]));
-			}
-
-			free(orders);
-		} else if (IsSavegameVersionBefore(SLV_5, 2)) {
-			len /= sizeof(uint32);
-			uint32 *orders = MallocT<uint32>(len + 1);
-
-			SlCopy(orders, len, SLE_UINT32);
-
-			for (size_t i = 0; i < len; ++i) {
-				new (i) Order(orders[i]);
-			}
-
-			free(orders);
-		}
-
-		/* Update all the next pointer */
-		for (Order *o : Order::Iterate()) {
-			size_t order_index = o->index;
-			/* Delete invalid orders */
-			if (o->IsType(OT_NOTHING)) {
-				delete o;
-				continue;
-			}
-			/* The orders were built like this:
-			 * While the order is valid, set the previous will get its next pointer set */
-			Order *prev = Order::GetIfValid(order_index - 1);
-			if (prev != nullptr) prev->next = o;
-		}
-	} else {
-		const std::vector<SaveLoad> slt = SlCompatTableHeader(GetOrderDescription(), _order_sl_compat);
-
-		int index;
-
-		while ((index = SlIterateArray()) != -1) {
-			Order *order = new (index) Order();
+		for (Order *order : Order::Iterate()) {
+			SlSetArrayIndex(order->index);
 			SlObject(order, slt);
 		}
 	}
-}
 
-static void Ptrs_ORDR()
-{
-	/* Orders from old savegames have pointers corrected in Load_ORDR */
-	if (IsSavegameVersionBefore(SLV_5, 2)) return;
+	void Load() const override
+	{
+		if (IsSavegameVersionBefore(SLV_5, 2)) {
+			/* Version older than 5.2 did not have a ->next pointer. Convert them
+			 * (in the old days, the orderlist was 5000 items big) */
+			size_t len = SlGetFieldLength();
 
-	for (Order *o : Order::Iterate()) {
-		SlObject(o, GetOrderDescription());
+			if (IsSavegameVersionBefore(SLV_5)) {
+				/* Pre-version 5 had another layout for orders
+				 * (uint16 instead of uint32) */
+				len /= sizeof(uint16);
+				uint16 *orders = MallocT<uint16>(len + 1);
+
+				SlCopy(orders, len, SLE_UINT16);
+
+				for (size_t i = 0; i < len; ++i) {
+					Order *o = new (i) Order();
+					o->AssignOrder(UnpackVersion4Order(orders[i]));
+				}
+
+				free(orders);
+			} else if (IsSavegameVersionBefore(SLV_5, 2)) {
+				len /= sizeof(uint32);
+				uint32 *orders = MallocT<uint32>(len + 1);
+
+				SlCopy(orders, len, SLE_UINT32);
+
+				for (size_t i = 0; i < len; ++i) {
+					new (i) Order(orders[i]);
+				}
+
+				free(orders);
+			}
+
+			/* Update all the next pointer */
+			for (Order *o : Order::Iterate()) {
+				size_t order_index = o->index;
+				/* Delete invalid orders */
+				if (o->IsType(OT_NOTHING)) {
+					delete o;
+					continue;
+				}
+				/* The orders were built like this:
+				 * While the order is valid, set the previous will get its next pointer set */
+				Order *prev = Order::GetIfValid(order_index - 1);
+				if (prev != nullptr) prev->next = o;
+			}
+		} else {
+			const std::vector<SaveLoad> slt = SlCompatTableHeader(GetOrderDescription(), _order_sl_compat);
+
+			int index;
+
+			while ((index = SlIterateArray()) != -1) {
+				Order *order = new (index) Order();
+				SlObject(order, slt);
+			}
+		}
 	}
-}
+
+	void FixPointers() const override
+	{
+		/* Orders from old savegames have pointers corrected in Load_ORDR */
+		if (IsSavegameVersionBefore(SLV_5, 2)) return;
+
+		for (Order *o : Order::Iterate()) {
+			SlObject(o, GetOrderDescription());
+		}
+	}
+};
 
 SaveLoadTable GetOrderListDescription()
 {
@@ -207,37 +214,44 @@ SaveLoadTable GetOrderListDescription()
 	return _orderlist_desc;
 }
 
-static void Save_ORDL()
-{
-	const SaveLoadTable slt = GetOrderListDescription();
-	SlTableHeader(slt);
-
-	for (OrderList *list : OrderList::Iterate()) {
-		SlSetArrayIndex(list->index);
-		SlObject(list, slt);
-	}
-}
-
-static void Load_ORDL()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(GetOrderListDescription(), _orderlist_sl_compat);
-
-	int index;
-
-	while ((index = SlIterateArray()) != -1) {
-		/* set num_orders to 0 so it's a valid OrderList */
-		OrderList *list = new (index) OrderList(0);
-		SlObject(list, slt);
+struct ORDLChunkHandler : ChunkHandler {
+	ORDLChunkHandler() : ChunkHandler('ORDL', CH_TABLE)
+	{
+		this->fix_pointers = true;
 	}
 
-}
+	void Save() const override
+	{
+		const SaveLoadTable slt = GetOrderListDescription();
+		SlTableHeader(slt);
 
-static void Ptrs_ORDL()
-{
-	for (OrderList *list : OrderList::Iterate()) {
-		SlObject(list, GetOrderListDescription());
+		for (OrderList *list : OrderList::Iterate()) {
+			SlSetArrayIndex(list->index);
+			SlObject(list, slt);
+		}
 	}
-}
+
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(GetOrderListDescription(), _orderlist_sl_compat);
+
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			/* set num_orders to 0 so it's a valid OrderList */
+			OrderList *list = new (index) OrderList(0);
+			SlObject(list, slt);
+		}
+
+	}
+
+	void FixPointers() const override
+	{
+		for (OrderList *list : OrderList::Iterate()) {
+			SlObject(list, GetOrderListDescription());
+		}
+	}
+};
 
 SaveLoadTable GetOrderBackupDescription()
 {
@@ -262,45 +276,52 @@ SaveLoadTable GetOrderBackupDescription()
 	return _order_backup_desc;
 }
 
-static void Save_BKOR()
-{
-	const SaveLoadTable slt = GetOrderBackupDescription();
-	SlTableHeader(slt);
-
-	/* We only save this when we're a network server
-	 * as we want this information on our clients. For
-	 * normal games this information isn't needed. */
-	if (!_networking || !_network_server) return;
-
-	for (OrderBackup *ob : OrderBackup::Iterate()) {
-		SlSetArrayIndex(ob->index);
-		SlObject(ob, slt);
+struct BKORChunkHandler : ChunkHandler {
+	BKORChunkHandler() : ChunkHandler('BKOR', CH_TABLE)
+	{
+		this->fix_pointers = true;
 	}
-}
 
-void Load_BKOR()
-{
-	const std::vector<SaveLoad> slt = SlCompatTableHeader(GetOrderBackupDescription(), _order_backup_sl_compat);
+	void Save() const override
+	{
+		const SaveLoadTable slt = GetOrderBackupDescription();
+		SlTableHeader(slt);
 
-	int index;
+		/* We only save this when we're a network server
+		 * as we want this information on our clients. For
+		 * normal games this information isn't needed. */
+		if (!_networking || !_network_server) return;
 
-	while ((index = SlIterateArray()) != -1) {
-		/* set num_orders to 0 so it's a valid OrderList */
-		OrderBackup *ob = new (index) OrderBackup();
-		SlObject(ob, slt);
+		for (OrderBackup *ob : OrderBackup::Iterate()) {
+			SlSetArrayIndex(ob->index);
+			SlObject(ob, slt);
+		}
 	}
-}
 
-static void Ptrs_BKOR()
-{
-	for (OrderBackup *ob : OrderBackup::Iterate()) {
-		SlObject(ob, GetOrderBackupDescription());
+	void Load() const override
+	{
+		const std::vector<SaveLoad> slt = SlCompatTableHeader(GetOrderBackupDescription(), _order_backup_sl_compat);
+
+		int index;
+
+		while ((index = SlIterateArray()) != -1) {
+			/* set num_orders to 0 so it's a valid OrderList */
+			OrderBackup *ob = new (index) OrderBackup();
+			SlObject(ob, slt);
+		}
 	}
-}
 
-static const ChunkHandler BKOR{ 'BKOR', Save_BKOR, Load_BKOR, Ptrs_BKOR, nullptr, CH_TABLE };
-static const ChunkHandler ORDR{ 'ORDR', Save_ORDR, Load_ORDR, Ptrs_ORDR, nullptr, CH_TABLE };
-static const ChunkHandler ORDL{ 'ORDL', Save_ORDL, Load_ORDL, Ptrs_ORDL, nullptr, CH_TABLE };
+	void FixPointers() const override
+	{
+		for (OrderBackup *ob : OrderBackup::Iterate()) {
+			SlObject(ob, GetOrderBackupDescription());
+		}
+	}
+};
+
+static const BKORChunkHandler BKOR;
+static const ORDRChunkHandler ORDR;
+static const ORDLChunkHandler ORDL;
 static const ChunkHandlerRef order_chunk_handlers[] = {
 	BKOR,
 	ORDR,

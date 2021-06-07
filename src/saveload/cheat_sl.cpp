@@ -35,47 +35,46 @@ static const SaveLoad _cheats_desc[] = {
 	SLE_VAR(Cheats, edit_max_hl.value, SLE_BOOL),
 };
 
-/**
- * Save the cheat values.
- */
-static void Save_CHTS()
-{
-	SlTableHeader(_cheats_desc);
 
-	SlSetArrayIndex(0);
-	SlObject(&_cheats, _cheats_desc);
-}
+struct CHTSChunkHandler : ChunkHandler {
+	CHTSChunkHandler() : ChunkHandler('CHTS', CH_TABLE) {}
 
-/**
- * Load the cheat values.
- */
-static void Load_CHTS()
-{
-	std::vector<SaveLoad> slt = SlCompatTableHeader(_cheats_desc, _cheats_sl_compat);
+	void Save() const override
+	{
+		SlTableHeader(_cheats_desc);
 
-	if (IsSavegameVersionBefore(SLV_TABLE_CHUNKS)) {
-		size_t count = SlGetFieldLength();
-		std::vector<SaveLoad> oslt;
-
-		/* Cheats were added over the years without a savegame bump. They are
-		 * stored as 2 SLE_BOOLs per entry. "count" indicates how many SLE_BOOLs
-		 * are stored for this savegame. So read only "count" SLE_BOOLs (and in
-		 * result "count / 2" cheats). */
-		for (auto &sld : slt) {
-			count--;
-			oslt.push_back(sld);
-
-			if (count == 0) break;
-		}
-		slt = oslt;
+		SlSetArrayIndex(0);
+		SlObject(&_cheats, _cheats_desc);
 	}
 
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
-	SlObject(&_cheats, slt);
-	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many CHTS entries");
-}
+	void Load() const override
+	{
+		std::vector<SaveLoad> slt = SlCompatTableHeader(_cheats_desc, _cheats_sl_compat);
 
-static const ChunkHandler CHTS{ 'CHTS', Save_CHTS, Load_CHTS, nullptr, nullptr, CH_TABLE };
+		if (IsSavegameVersionBefore(SLV_TABLE_CHUNKS)) {
+			size_t count = SlGetFieldLength();
+			std::vector<SaveLoad> oslt;
+
+			/* Cheats were added over the years without a savegame bump. They are
+			 * stored as 2 SLE_BOOLs per entry. "count" indicates how many SLE_BOOLs
+			 * are stored for this savegame. So read only "count" SLE_BOOLs (and in
+			 * result "count / 2" cheats). */
+			for (auto &sld : slt) {
+				count--;
+				oslt.push_back(sld);
+
+				if (count == 0) break;
+			}
+			slt = oslt;
+		}
+
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() == -1) return;
+		SlObject(&_cheats, slt);
+		if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many CHTS entries");
+	}
+};
+
+static const CHTSChunkHandler CHTS;
 static const ChunkHandlerRef cheat_chunk_handlers[] = {
 	CHTS,
 };
