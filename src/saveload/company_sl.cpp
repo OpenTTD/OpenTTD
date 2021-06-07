@@ -8,6 +8,10 @@
 /** @file company_sl.cpp Code handling saving and loading of company data */
 
 #include "../stdafx.h"
+
+#include "saveload.h"
+#include "compat/company_sl_compat.h"
+
 #include "../company_func.h"
 #include "../company_manager_face.h"
 #include "../fios.h"
@@ -15,8 +19,6 @@
 #include "../tunnelbridge.h"
 #include "../station_base.h"
 #include "../strings_func.h"
-
-#include "saveload.h"
 
 #include "table/strings.h"
 
@@ -243,79 +245,44 @@ struct CompanyOldAI {
 
 class SlCompanyOldAIBuildRec : public DefaultSaveLoadHandler<SlCompanyOldAIBuildRec, CompanyOldAI> {
 public:
-	inline static const SaveLoad description[] = {
-		SLE_CONDNULL(2, SL_MIN_VERSION, SLV_6),
-		SLE_CONDNULL(4, SLV_6, SLV_107),
-		SLE_CONDNULL(2, SL_MIN_VERSION, SLV_6),
-		SLE_CONDNULL(4, SLV_6, SLV_107),
-		SLE_CONDNULL(8, SL_MIN_VERSION, SLV_107),
-	};
+	inline static const SaveLoad description[] = {{}}; // Needed to keep DefaultSaveLoadHandler happy.
+	inline const static SaveLoadCompatTable compat_description = _company_old_ai_buildrec_compat;
 
-	void GenericSaveLoad(CompanyOldAI *old_ai) const
+	SaveLoadTable GetDescription() const override { return {}; }
+
+	void Load(CompanyOldAI *old_ai) const override
 	{
 		for (int i = 0; i != old_ai->num_build_rec; i++) {
-			SlObject(nullptr, this->GetDescription());
+			SlObject(nullptr, this->GetLoadDescription());
 		}
 	}
 
-	// No Save(); this is for backwards compatibility.
-	void Load(CompanyOldAI *old_ai) const override { this->GenericSaveLoad(old_ai); }
-	void LoadCheck(CompanyOldAI *old_ai) const override { this->GenericSaveLoad(old_ai); }
-	void FixPointers(CompanyOldAI *old_ai) const override { this->GenericSaveLoad(old_ai); }
+	void LoadCheck(CompanyOldAI *old_ai) const override { this->Load(old_ai); }
 };
 
 class SlCompanyOldAI : public DefaultSaveLoadHandler<SlCompanyOldAI, CompanyProperties> {
 public:
 	inline static const SaveLoad description[] = {
-		SLE_CONDNULL(2,  SL_MIN_VERSION, SLV_107),
-		SLE_CONDNULL(2,  SL_MIN_VERSION, SLV_13),
-		SLE_CONDNULL(4, SLV_13, SLV_107),
-		SLE_CONDNULL(8,  SL_MIN_VERSION, SLV_107),
-		 SLE_CONDVAR(CompanyOldAI, num_build_rec, SLE_UINT8, SL_MIN_VERSION, SLV_107),
-		SLE_CONDNULL(3,  SL_MIN_VERSION, SLV_107),
-
-		SLE_CONDNULL(2,  SL_MIN_VERSION,  SLV_6),
-		SLE_CONDNULL(4,  SLV_6, SLV_107),
-		SLE_CONDNULL(2,  SL_MIN_VERSION,  SLV_6),
-		SLE_CONDNULL(4,  SLV_6, SLV_107),
-		SLE_CONDNULL(2,  SL_MIN_VERSION, SLV_107),
-
-		SLE_CONDNULL(2,  SL_MIN_VERSION,  SLV_6),
-		SLE_CONDNULL(4,  SLV_6, SLV_107),
-		SLE_CONDNULL(2,  SL_MIN_VERSION,  SLV_6),
-		SLE_CONDNULL(4,  SLV_6, SLV_107),
-		SLE_CONDNULL(2,  SL_MIN_VERSION, SLV_107),
-
-		SLE_CONDNULL(2,  SL_MIN_VERSION, SLV_69),
-		SLE_CONDNULL(4,  SLV_69, SLV_107),
-
-		SLE_CONDNULL(18, SL_MIN_VERSION, SLV_107),
-		SLE_CONDNULL(20, SL_MIN_VERSION, SLV_107),
-		SLE_CONDNULL(32, SL_MIN_VERSION, SLV_107),
-
-		SLE_CONDNULL(64, SLV_2, SLV_107),
-		SLEG_STRUCTLIST("build_rec", SlCompanyOldAIBuildRec),
+		SLE_CONDVAR(CompanyOldAI, num_build_rec, SLE_UINT8, SL_MIN_VERSION, SLV_107),
+		SLEG_STRUCTLIST("buildrec", SlCompanyOldAIBuildRec),
 	};
+	inline const static SaveLoadCompatTable compat_description = _company_old_ai_compat;
 
-	void GenericSaveLoad(CompanyProperties *c) const
+	void Load(CompanyProperties *c) const override
 	{
 		if (!c->is_ai) return;
 
 		CompanyOldAI old_ai;
-		SlObject(&old_ai, this->GetDescription());
+		SlObject(&old_ai, this->GetLoadDescription());
 	}
 
-	// No Save(); this is for backwards compatibility.
-	void Load(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void LoadCheck(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void FixPointers(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
+	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
 class SlCompanySettings : public DefaultSaveLoadHandler<SlCompanySettings, CompanyProperties> {
 public:
 	inline static const SaveLoad description[] = {
 		/* Engine renewal settings */
-		SLE_CONDNULL(512, SLV_16, SLV_19),
 		SLE_CONDREF(CompanyProperties, engine_renew_list,            REF_ENGINE_RENEWS,   SLV_19, SL_MAX_VERSION),
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew,        SLE_BOOL,            SLV_16, SL_MAX_VERSION),
 		SLE_CONDVAR(CompanyProperties, settings.engine_renew_months, SLE_INT16,           SLV_16, SL_MAX_VERSION),
@@ -328,19 +295,25 @@ public:
 		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_roadveh,   SLE_UINT16,     SLV_120, SL_MAX_VERSION),
 		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_aircraft,  SLE_UINT16,     SLV_120, SL_MAX_VERSION),
 		SLE_CONDVAR(CompanyProperties, settings.vehicle.servint_ships,     SLE_UINT16,     SLV_120, SL_MAX_VERSION),
-
-		SLE_CONDNULL(63, SLV_2, SLV_144), // old reserved space
 	};
+	inline const static SaveLoadCompatTable compat_description = _company_settings_compat;
 
-	void GenericSaveLoad(CompanyProperties *c) const
+	void Save(CompanyProperties *c) const override
 	{
 		SlObject(c, this->GetDescription());
 	}
 
-	void Save(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void Load(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void LoadCheck(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void FixPointers(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
+	void Load(CompanyProperties *c) const override
+	{
+		SlObject(c, this->GetLoadDescription());
+	}
+
+	void FixPointers(CompanyProperties *c) const override
+	{
+		SlObject(c, this->GetDescription());
+	}
+
+	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
 class SlCompanyEconomy : public DefaultSaveLoadHandler<SlCompanyEconomy, CompanyProperties> {
@@ -358,16 +331,24 @@ public:
 		SLE_CONDARR(CompanyEconomyEntry, delivered_cargo,     SLE_UINT32, NUM_CARGO,    SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
 		    SLE_VAR(CompanyEconomyEntry, performance_history, SLE_INT32),
 	};
+	inline const static SaveLoadCompatTable compat_description = _company_economy_compat;
 
-	void GenericSaveLoad(CompanyProperties *c) const
+	void Save(CompanyProperties *c) const override
 	{
 		SlObject(&c->cur_economy, this->GetDescription());
 	}
 
-	void Save(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void Load(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void LoadCheck(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
-	void FixPointers(CompanyProperties *c) const override { this->GenericSaveLoad(c); }
+	void Load(CompanyProperties *c) const override
+	{
+		SlObject(&c->cur_economy, this->GetLoadDescription());
+	}
+
+	void FixPointers(CompanyProperties *c) const override
+	{
+		SlObject(&c->cur_economy, this->GetDescription());
+	}
+
+	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
 class SlCompanyOldEconomy : public SlCompanyEconomy {
@@ -388,7 +369,7 @@ public:
 		if (c->num_valid_stat_ent > lengthof(c->old_economy)) SlErrorCorrupt("Too many old economy entries");
 
 		for (int i = 0; i < c->num_valid_stat_ent; i++) {
-			SlObject(&c->old_economy[i], this->GetDescription());
+			SlObject(&c->old_economy[i], this->GetLoadDescription());
 		}
 	}
 
@@ -402,6 +383,7 @@ public:
 		SLE_CONDVAR(Livery, colour1, SLE_UINT8, SLV_34, SL_MAX_VERSION),
 		SLE_CONDVAR(Livery, colour2, SLE_UINT8, SLV_34, SL_MAX_VERSION),
 	};
+	inline const static SaveLoadCompatTable compat_description = _company_liveries_compat;
 
 	/**
 	 * Get the number of liveries used by this savegame version.
@@ -430,7 +412,7 @@ public:
 		bool update_in_use = IsSavegameVersionBefore(SLV_GROUP_LIVERIES);
 
 		for (size_t i = 0; i < num_liveries; i++) {
-			SlObject(&c->livery[i], this->GetDescription());
+			SlObject(&c->livery[i], this->GetLoadDescription());
 			if (update_in_use && i != LS_DEFAULT) {
 				if (c->livery[i].in_use == 0) {
 					c->livery[i].colour1 = c->livery[LS_DEFAULT].colour1;
@@ -479,11 +461,8 @@ static const SaveLoad _company_desc[] = {
 
 	    SLE_VAR(CompanyProperties, colour,                SLE_UINT8),
 	    SLE_VAR(CompanyProperties, money_fraction,        SLE_UINT8),
-	SLE_CONDNULL(1,  SL_MIN_VERSION,  SLV_58), ///< avail_railtypes
 	    SLE_VAR(CompanyProperties, block_preview,         SLE_UINT8),
 
-	SLE_CONDNULL(2,  SL_MIN_VERSION,  SLV_94), ///< cargo_types
-	SLE_CONDNULL(4, SLV_94, SLV_170), ///< cargo_types
 	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION,  SLV_6),
 	SLE_CONDVAR(CompanyProperties, location_of_HQ,        SLE_UINT32,                  SLV_6, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  SL_MIN_VERSION,  SLV_6),
@@ -507,8 +486,6 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDARR(CompanyProperties, yearly_expenses,       SLE_INT64, 3 * 13,                  SLV_2, SL_MAX_VERSION),
 
 	SLE_CONDVAR(CompanyProperties, is_ai,                 SLE_BOOL,                    SLV_2, SL_MAX_VERSION),
-	SLE_CONDNULL(1, SLV_107, SLV_112), ///< is_noai
-	SLE_CONDNULL(1, SLV_4, SLV_100),
 
 	SLE_CONDVAR(CompanyProperties, terraform_limit,       SLE_UINT32,                SLV_156, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, clear_limit,           SLE_UINT32,                SLV_156, SL_MAX_VERSION),
@@ -522,6 +499,8 @@ static const SaveLoad _company_desc[] = {
 
 static void Save_PLYR()
 {
+	SlTableHeader(_company_desc);
+
 	for (Company *c : Company::Iterate()) {
 		SlSetArrayIndex(c->index);
 		SlObject(c, _company_desc);
@@ -530,20 +509,24 @@ static void Save_PLYR()
 
 static void Load_PLYR()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_company_desc, _company_sl_compat);
+
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Company *c = new (index) Company();
-		SlObject(c, _company_desc);
+		SlObject(c, slt);
 		_company_colours[index] = (Colours)c->colour;
 	}
 }
 
 static void Check_PLYR()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_company_desc, _company_sl_compat);
+
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		CompanyProperties *cprops = new CompanyProperties();
-		SlObject(cprops, _company_desc);
+		SlObject(cprops, slt);
 
 		/* We do not load old custom names */
 		if (IsSavegameVersionBefore(SLV_84)) {
@@ -576,7 +559,7 @@ static void Ptrs_PLYR()
 
 
 static const ChunkHandler company_chunk_handlers[] = {
-	{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, Check_PLYR, CH_ARRAY },
+	{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, Check_PLYR, CH_TABLE },
 };
 
 extern const ChunkHandlerTable _company_chunk_handlers(company_chunk_handlers);

@@ -8,6 +8,10 @@
 /** @file vehicle_sl.cpp Code handling saving and loading of vehicles */
 
 #include "../stdafx.h"
+
+#include "saveload.h"
+#include "compat/vehicle_sl_compat.h"
+
 #include "../vehicle_func.h"
 #include "../train.h"
 #include "../roadveh.h"
@@ -18,8 +22,6 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../disaster_vehicle.h"
-
-#include "saveload.h"
 
 #include <map>
 
@@ -607,12 +609,8 @@ public:
 		SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
 		    SLE_VAR(Vehicle, direction,             SLE_UINT8),
 
-		SLE_CONDNULL(2,                                                            SL_MIN_VERSION,  SLV_58),
 		    SLE_VAR(Vehicle, spritenum,             SLE_UINT8),
-		SLE_CONDNULL(5,                                                            SL_MIN_VERSION,  SLV_58),
 		    SLE_VAR(Vehicle, engine_type,           SLE_UINT16),
-
-		SLE_CONDNULL(2,                                                            SL_MIN_VERSION,  SLV_152),
 		    SLE_VAR(Vehicle, cur_speed,             SLE_UINT16),
 		    SLE_VAR(Vehicle, subspeed,              SLE_UINT8),
 		    SLE_VAR(Vehicle, acceleration,          SLE_UINT8),
@@ -643,8 +641,6 @@ public:
 
 		    SLE_VAR(Vehicle, cur_implicit_order_index,  SLE_UINT8),
 		SLE_CONDVAR(Vehicle, cur_real_order_index,  SLE_UINT8,                  SLV_158, SL_MAX_VERSION),
-		/* num_orders is now part of OrderList and is not saved but counted */
-		SLE_CONDNULL(1,                                                            SL_MIN_VERSION, SLV_105),
 
 		/* This next line is for version 4 and prior compatibility.. it temporarily reads
 		type and flags (which were both 4 bits) into type. Later on this is
@@ -659,7 +655,6 @@ public:
 
 		/* Refit in current order */
 		SLE_CONDVAR(Vehicle, current_order.refit_cargo,   SLE_UINT8,             SLV_36, SL_MAX_VERSION),
-		SLE_CONDNULL(1,                                                           SLV_36, SLV_182), // refit_subtype
 
 		/* Timetable in current order */
 		SLE_CONDVAR(Vehicle, current_order.wait_time,     SLE_UINT16,            SLV_67, SL_MAX_VERSION),
@@ -707,29 +702,31 @@ public:
 		SLE_CONDVAR(Vehicle, waiting_triggers,      SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
 
 		SLE_CONDREF(Vehicle, next_shared,           REF_VEHICLE,                  SLV_2, SL_MAX_VERSION),
-		SLE_CONDNULL(2,                                                            SLV_2,  SLV_69),
-		SLE_CONDNULL(4,                                                           SLV_69, SLV_101),
-
 		SLE_CONDVAR(Vehicle, group_id,              SLE_UINT16,                  SLV_60, SL_MAX_VERSION),
 
 		SLE_CONDVAR(Vehicle, current_order_time,    SLE_UINT32,                  SLV_67, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, lateness_counter,      SLE_INT32,                   SLV_67, SL_MAX_VERSION),
-
-		SLE_CONDNULL(10,                                                           SLV_2, SLV_144), // old reserved space
 	};
 #if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
 		return description;
 	}
 #endif
+	inline const static SaveLoadCompatTable compat_description = _vehicle_common_sl_compat;
 
-	void GenericSaveLoad(Vehicle *v) const
+	void Save(Vehicle *v) const override
 	{
 		SlObject(v, this->GetDescription());
 	}
 
-	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override
+	{
+		SlObject(v, this->GetLoadDescription());
+	}
+
+	void FixPointers(Vehicle *v) const override
+	{
+		SlObject(v, this->GetDescription());
+	}
 };
 
 class SlVehicleTrain : public DefaultSaveLoadHandler<SlVehicleTrain, Vehicle> {
@@ -743,24 +740,28 @@ public:
 
 		 SLE_CONDVAR(Train, flags,               SLE_FILE_U8  | SLE_VAR_U16,   SLV_2,  SLV_100),
 		 SLE_CONDVAR(Train, flags,               SLE_UINT16,                 SLV_100, SL_MAX_VERSION),
-		SLE_CONDNULL(2, SLV_2, SLV_60),
-
 		 SLE_CONDVAR(Train, wait_counter,        SLE_UINT16,                 SLV_136, SL_MAX_VERSION),
-
-		SLE_CONDNULL(2, SLV_2, SLV_20),
 		 SLE_CONDVAR(Train, gv_flags,            SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
-		SLE_CONDNULL(11, SLV_2, SLV_144), // old reserved space
 	};
+	inline const static SaveLoadCompatTable compat_description = _vehicle_train_sl_compat;
 
-	void GenericSaveLoad(Vehicle *v) const
+	void Save(Vehicle *v) const override
 	{
 		if (v->type != VEH_TRAIN) return;
 		SlObject(v, this->GetDescription());
 	}
 
-	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override
+	{
+		if (v->type != VEH_TRAIN) return;
+		SlObject(v, this->GetLoadDescription());
+	}
+
+	void FixPointers(Vehicle *v) const override
+	{
+		if (v->type != VEH_TRAIN) return;
+		SlObject(v, this->GetDescription());
+	}
 };
 
 class SlVehicleRoadVeh : public DefaultSaveLoadHandler<SlVehicleRoadVeh, Vehicle> {
@@ -776,23 +777,27 @@ public:
 		      SLE_VAR(RoadVehicle, reverse_ctr,          SLE_UINT8),
 		SLE_CONDDEQUE(RoadVehicle, path.td,              SLE_UINT8,                  SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
 		SLE_CONDDEQUE(RoadVehicle, path.tile,            SLE_UINT32,                 SLV_ROADVEH_PATH_CACHE, SL_MAX_VERSION),
-
-		 SLE_CONDNULL(2,                                                               SLV_6,  SLV_69),
 		  SLE_CONDVAR(RoadVehicle, gv_flags,             SLE_UINT16,                 SLV_139, SL_MAX_VERSION),
-		 SLE_CONDNULL(4,                                                              SLV_69, SLV_131),
-		 SLE_CONDNULL(2,                                                               SLV_6, SLV_131),
-		 SLE_CONDNULL(16,                                                              SLV_2, SLV_144), // old reserved space
 	};
+	inline const static SaveLoadCompatTable compat_description = _vehicle_roadveh_sl_compat;
 
-	void GenericSaveLoad(Vehicle *v) const
+	void Save(Vehicle *v) const override
 	{
 		if (v->type != VEH_ROAD) return;
 		SlObject(v, this->GetDescription());
 	}
 
-	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override
+	{
+		if (v->type != VEH_ROAD) return;
+		SlObject(v, this->GetLoadDescription());
+	}
+
+	void FixPointers(Vehicle *v) const override
+	{
+		if (v->type != VEH_ROAD) return;
+		SlObject(v, this->GetDescription());
+	}
 };
 
 class SlVehicleShip : public DefaultSaveLoadHandler<SlVehicleShip, Vehicle> {
@@ -802,19 +807,26 @@ public:
 		      SLE_VAR(Ship, state,                     SLE_UINT8),
 		SLE_CONDDEQUE(Ship, path,                      SLE_UINT8,                  SLV_SHIP_PATH_CACHE, SL_MAX_VERSION),
 		  SLE_CONDVAR(Ship, rotation,                  SLE_UINT8,                  SLV_SHIP_ROTATION, SL_MAX_VERSION),
-
-		SLE_CONDNULL(16, SLV_2, SLV_144), // old reserved space
 	};
+	inline const static SaveLoadCompatTable compat_description = _vehicle_ship_sl_compat;
 
-	void GenericSaveLoad(Vehicle *v) const
+	void Save(Vehicle *v) const override
 	{
 		if (v->type != VEH_SHIP) return;
 		SlObject(v, this->GetDescription());
 	}
 
-	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override
+	{
+		if (v->type != VEH_SHIP) return;
+		SlObject(v, this->GetLoadDescription());
+	}
+
+	void FixPointers(Vehicle *v) const override
+	{
+		if (v->type != VEH_SHIP) return;
+		SlObject(v, this->GetDescription());
+	}
 };
 
 class SlVehicleAircraft : public DefaultSaveLoadHandler<SlVehicleAircraft, Vehicle> {
@@ -835,19 +847,26 @@ public:
 
 		 SLE_CONDVAR(Aircraft, turn_counter,          SLE_UINT8,                  SLV_136, SL_MAX_VERSION),
 		 SLE_CONDVAR(Aircraft, flags,                 SLE_UINT8,                  SLV_167, SL_MAX_VERSION),
-
-		SLE_CONDNULL(13,                                                           SLV_2, SLV_144), // old reserved space
 	};
+	inline const static SaveLoadCompatTable compat_description = _vehicle_aircraft_sl_compat;
 
-	void GenericSaveLoad(Vehicle *v) const
+	void Save(Vehicle *v) const override
 	{
 		if (v->type != VEH_AIRCRAFT) return;
 		SlObject(v, this->GetDescription());
 	}
 
-	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override
+	{
+		if (v->type != VEH_AIRCRAFT) return;
+		SlObject(v, this->GetLoadDescription());
+	}
+
+	void FixPointers(Vehicle *v) const override
+	{
+		if (v->type != VEH_AIRCRAFT) return;
+		SlObject(v, this->GetDescription());
+	}
 };
 
 class SlVehicleEffect : public DefaultSaveLoadHandler<SlVehicleEffect, Vehicle> {
@@ -866,7 +885,6 @@ public:
 		 SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
 
 		     SLE_VAR(Vehicle, sprite_cache.sprite_seq.seq[0].sprite, SLE_FILE_U16 | SLE_VAR_U32),
-		SLE_CONDNULL(5,                                                            SL_MIN_VERSION,  SLV_59),
 		     SLE_VAR(Vehicle, progress,              SLE_UINT8),
 		     SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
 
@@ -874,19 +892,26 @@ public:
 		     SLE_VAR(EffectVehicle, animation_substate, SLE_UINT8),
 
 		 SLE_CONDVAR(Vehicle, spritenum,             SLE_UINT8,                    SLV_2, SL_MAX_VERSION),
-
-		SLE_CONDNULL(15,                                                           SLV_2, SLV_144), // old reserved space
 	};
+	inline const static SaveLoadCompatTable compat_description = _vehicle_effect_sl_compat;
 
-	void GenericSaveLoad(Vehicle *v) const
+	void Save(Vehicle *v) const override
 	{
 		if (v->type != VEH_EFFECT) return;
 		SlObject(v, this->GetDescription());
 	}
 
-	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override
+	{
+		if (v->type != VEH_EFFECT) return;
+		SlObject(v, this->GetLoadDescription());
+	}
+
+	void FixPointers(Vehicle *v) const override
+	{
+		if (v->type != VEH_EFFECT) return;
+		SlObject(v, this->GetDescription());
+	}
 };
 
 class SlVehicleDisaster : public DefaultSaveLoadHandler<SlVehicleDisaster, Vehicle> {
@@ -918,7 +943,6 @@ public:
 		SLE_CONDVAR(Vehicle, z_pos,                 SLE_INT32,                  SLV_164, SL_MAX_VERSION),
 		    SLE_VAR(Vehicle, direction,             SLE_UINT8),
 
-		SLE_CONDNULL(5,                                                            SL_MIN_VERSION,  SLV_58),
 		    SLE_VAR(Vehicle, owner,                 SLE_UINT8),
 		    SLE_VAR(Vehicle, vehstatus,             SLE_UINT8),
 		SLE_CONDVAR(Vehicle, current_order.dest,    SLE_FILE_U8 | SLE_VAR_U16,    SL_MIN_VERSION,   SLV_5),
@@ -934,23 +958,30 @@ public:
 		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_FILE_U16 | SLE_VAR_U32,   SL_MIN_VERSION, SLV_191),
 		SLE_CONDVAR(DisasterVehicle, big_ufo_destroyer_target,  SLE_UINT32,                 SLV_191, SL_MAX_VERSION),
 		SLE_CONDVAR(DisasterVehicle, flags,                     SLE_UINT8,                  SLV_194, SL_MAX_VERSION),
-
-		SLE_CONDNULL(16,                                                           SLV_2, SLV_144), // old reserved space
 	};
 #if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
 		return description;
 	}
 #endif
+	inline const static SaveLoadCompatTable compat_description = _vehicle_disaster_sl_compat;
 
-	void GenericSaveLoad(Vehicle *v) const
+	void Save(Vehicle *v) const override
 	{
 		if (v->type != VEH_DISASTER) return;
 		SlObject(v, this->GetDescription());
 	}
 
-	void Save(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void Load(Vehicle *v) const override { this->GenericSaveLoad(v); }
-	void FixPointers(Vehicle *v) const override { this->GenericSaveLoad(v); }
+	void Load(Vehicle *v) const override
+	{
+		if (v->type != VEH_DISASTER) return;
+		SlObject(v, this->GetLoadDescription());
+	}
+
+	void FixPointers(Vehicle *v) const override
+	{
+		if (v->type != VEH_DISASTER) return;
+		SlObject(v, this->GetDescription());
+	}
 };
 
 const static SaveLoad _vehicle_desc[] = {
@@ -966,6 +997,8 @@ const static SaveLoad _vehicle_desc[] = {
 /** Will be called when the vehicles need to be saved. */
 static void Save_VEHS()
 {
+	SlTableHeader(_vehicle_desc);
+
 	/* Write the vehicles */
 	for (Vehicle *v : Vehicle::Iterate()) {
 		SlSetArrayIndex(v->index);
@@ -976,6 +1009,8 @@ static void Save_VEHS()
 /** Will be called when vehicles need to be loaded. */
 void Load_VEHS()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_vehicle_desc, _vehicle_sl_compat);
+
 	int index;
 
 	_cargo_count = 0;
@@ -995,7 +1030,7 @@ void Load_VEHS()
 			default: SlErrorCorrupt("Invalid vehicle type");
 		}
 
-		SlObject(v, _vehicle_desc);
+		SlObject(v, slt);
 
 		if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v) && CargoPacket::CanAllocateItem()) {
 			/* Don't construct the packet with station here, because that'll fail with old savegames */
@@ -1030,7 +1065,7 @@ void Ptrs_VEHS()
 }
 
 static const ChunkHandler veh_chunk_handlers[] = {
-	{ 'VEHS', Save_VEHS, Load_VEHS, Ptrs_VEHS, nullptr, CH_SPARSE_ARRAY },
+	{ 'VEHS', Save_VEHS, Load_VEHS, Ptrs_VEHS, nullptr, CH_SPARSE_TABLE },
 };
 
 extern const ChunkHandlerTable _veh_chunk_handlers(veh_chunk_handlers);

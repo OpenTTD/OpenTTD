@@ -123,6 +123,7 @@ public:
 	inline static const SaveLoad description[] = {
 		SLEG_SSTR("string", _game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
 	};
+	inline const static SaveLoadCompatTable compat_description = _game_language_string_sl_compat;
 
 	void Save(LanguageStrings *ls) const override
 	{
@@ -139,7 +140,7 @@ public:
 		uint32 length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? _game_saveload_strings : (uint32)SlGetStructListLength(UINT32_MAX);
 
 		for (uint32 i = 0; i < length; i++) {
-			SlObject(nullptr, this->GetDescription());
+			SlObject(nullptr, this->GetLoadDescription());
 			ls->lines.emplace_back(_game_saveload_string);
 		}
 	}
@@ -153,12 +154,14 @@ static const SaveLoad _game_language_desc[] = {
 
 static void Load_GSTR()
 {
+	const std::vector<SaveLoad> slt = SlCompatTableHeader(_game_language_desc, _game_language_sl_compat);
+
 	delete _current_data;
 	_current_data = new GameStrings();
 
 	while (SlIterateArray() != -1) {
 		LanguageStrings ls;
-		SlObject(&ls, _game_language_desc);
+		SlObject(&ls, slt);
 		_current_data->raw_strings.push_back(std::move(ls));
 	}
 
@@ -175,6 +178,8 @@ static void Load_GSTR()
 
 static void Save_GSTR()
 {
+	SlTableHeader(_game_language_desc);
+
 	if (_current_data == nullptr) return;
 
 	for (uint i = 0; i < _current_data->raw_strings.size(); i++) {
@@ -184,7 +189,7 @@ static void Save_GSTR()
 }
 
 static const ChunkHandler game_chunk_handlers[] = {
-	{ 'GSTR', Save_GSTR, Load_GSTR, nullptr, nullptr, CH_ARRAY },
+	{ 'GSTR', Save_GSTR, Load_GSTR, nullptr, nullptr, CH_TABLE },
 	{ 'GSDT', Save_GSDT, Load_GSDT, nullptr, nullptr, CH_TABLE },
 };
 
