@@ -400,6 +400,73 @@ struct ChunkHandler {
 /** A table of ChunkHandler entries. */
 using ChunkHandlerTable = span<const ChunkHandler>;
 
+/** A table of SaveLoad entries. */
+using SaveLoadTable = span<const struct SaveLoad>;
+
+/** Handler for saving/loading an object to/from disk. */
+class SaveLoadHandler {
+public:
+	virtual ~SaveLoadHandler() {}
+
+	/**
+	 * Save the object to disk.
+	 * @param object The object to store.
+	 */
+	virtual void Save(void *object) const {}
+
+	/**
+	 * Load the object from disk.
+	 * @param object The object to load.
+	 */
+	virtual void Load(void *object) const {}
+
+	/**
+	 * Similar to load, but used only to validate savegames.
+	 * @param object The object to load.
+	 */
+	virtual void LoadCheck(void *object) const {}
+
+	/**
+	 * A post-load callback to fix #SL_REF integers into pointers.
+	 * @param object The object to fix.
+	 */
+	virtual void FixPointers(void *object) const {}
+
+	/**
+	 * Get the description of the fields in the savegame.
+	 */
+	virtual SaveLoadTable GetDescription() const = 0;
+};
+
+/**
+ * Default handler for saving/loading an object to/from disk.
+ *
+ * This handles a few common things for handlers, meaning the actual handler
+ * needs less code.
+ *
+ * Usage: class SlMine : public DefaultSaveLoadHandler<SlMine, MyObject> {}
+ *
+ * @tparam TImpl The class initializing this template.
+ * @tparam TObject The class of the object using this SaveLoadHandler.
+ */
+template <class TImpl, class TObject>
+class DefaultSaveLoadHandler : public SaveLoadHandler {
+public:
+	SaveLoadTable GetDescription() const override { return static_cast<const TImpl *>(this)->description; }
+
+	virtual void Save(TObject *object) const {}
+	void Save(void *object) const override { this->Save(static_cast<TObject *>(object)); }
+
+	virtual void Load(TObject *object) const {}
+	void Load(void *object) const override { this->Load(static_cast<TObject *>(object)); }
+
+	virtual void LoadCheck(TObject *object) const {}
+	void LoadCheck(void *object) const override { this->LoadCheck(static_cast<TObject *>(object)); }
+
+	virtual void FixPointers(TObject *object) const {}
+	void FixPointers(void *object) const override { this->FixPointers(static_cast<TObject *>(object)); }
+};
+
 /** Type of reference (#SLE_REF, #SLE_CONDREF). */
 enum SLRefType {
 	REF_ORDER          =  0, ///< Load/save a reference to an order.
@@ -501,10 +568,12 @@ enum SaveLoadType : byte {
 	SL_REFLIST     =  4, ///< Save/load a list of #SL_REF elements.
 	SL_DEQUE       =  5, ///< Save/load a deque of #SL_VAR elements.
 	SL_STDSTR      =  6, ///< Save/load a \c std::string.
+	SL_STRUCT      =  7, ///< Save/load a struct.
+	SL_STRUCTLIST  =  8, ///< Save/load a list of structs.
 	/* non-normal save-load types */
-	SL_WRITEBYTE   =  8,
-	SL_VEH_INCLUDE =  9,
-	SL_ST_INCLUDE  = 10,
+	SL_WRITEBYTE   =  9,
+	SL_VEH_INCLUDE = 10,
+	SL_ST_INCLUDE  = 11,
 };
 
 typedef void *SaveLoadAddrProc(void *base, size_t extra);
@@ -519,10 +588,8 @@ struct SaveLoad {
 	size_t size;                    ///< the sizeof size.
 	SaveLoadAddrProc *address_proc; ///< callback proc the get the actual variable address in memory
 	size_t extra_data;              ///< extra data for the callback proc
+	SaveLoadHandler *handler;       ///< Custom handler for Save/Load procs.
 };
-
-/** A table of SaveLoad entries. */
-using SaveLoadTable = span<const SaveLoad>;
 
 /**
  * Storage of simple variables, references (pointers), and arrays.
@@ -535,7 +602,7 @@ using SaveLoadTable = span<const SaveLoad>;
  * @param extra    Extra data to pass to the address callback function.
  * @note In general, it is better to use one of the SLE_* macros below.
  */
-#define SLE_GENERAL(cmd, base, variable, type, length, from, to, extra) {cmd, type, length, from, to, cpp_sizeof(base, variable), [] (void *b, size_t) -> void * { assert(b != nullptr); return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); }, extra}
+#define SLE_GENERAL(cmd, base, variable, type, length, from, to, extra) {cmd, type, length, from, to, cpp_sizeof(base, variable), [] (void *b, size_t) -> void * { assert(b != nullptr); return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); }, extra, nullptr}
 
 /**
  * Storage of a variable in some savegame versions.
@@ -671,13 +738,13 @@ using SaveLoadTable = span<const SaveLoad>;
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLE_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0}
+#define SLE_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
 
 /** Translate values ingame to different values in the savegame and vv. */
 #define SLE_WRITEBYTE(base, variable) SLE_GENERAL(SL_WRITEBYTE, base, variable, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0)
 
-#define SLE_VEH_INCLUDE() {SL_VEH_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0}
-#define SLE_ST_INCLUDE() {SL_ST_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0}
+#define SLE_VEH_INCLUDE() {SL_VEH_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0, nullptr}
+#define SLE_ST_INCLUDE() {SL_ST_INCLUDE, 0, 0, SL_MIN_VERSION, SL_MAX_VERSION, 0, [] (void *b, size_t) { return b; }, 0, nullptr}
 
 /**
  * Storage of global simple variables, references (pointers), and arrays.
@@ -689,7 +756,7 @@ using SaveLoadTable = span<const SaveLoad>;
  * @param extra    Extra data to pass to the address callback function.
  * @note In general, it is better to use one of the SLEG_* macros below.
  */
-#define SLEG_GENERAL(cmd, variable, type, length, from, to, extra) {cmd, type, length, from, to, sizeof(variable), [] (void *, size_t) -> void * { return static_cast<void *>(std::addressof(variable)); }, extra}
+#define SLEG_GENERAL(cmd, variable, type, length, from, to, extra) {cmd, type, length, from, to, sizeof(variable), [] (void *, size_t) -> void * { return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
 
 /**
  * Storage of a global variable in some savegame versions.
@@ -739,6 +806,14 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLEG_CONDSSTR(variable, type, from, to) SLEG_GENERAL(SL_STDSTR, variable, type, 0, from, to, 0)
 
 /**
+ * Storage of a structs in some savegame versions.
+ * @param handler  SaveLoadHandler for the structs.
+ * @param from     First savegame version that has the struct.
+ * @param to       Last savegame version that has the struct.
+ */
+#define SLEG_CONDSTRUCT(handler, from, to) {SL_STRUCT, 0, 0, from, to, 0, nullptr, 0, new handler()}
+
+/**
  * Storage of a global reference list in some savegame versions.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
@@ -746,6 +821,14 @@ using SaveLoadTable = span<const SaveLoad>;
  * @param to       Last savegame version that has the list.
  */
 #define SLEG_CONDREFLIST(variable, type, from, to) SLEG_GENERAL(SL_REFLIST, variable, type, 0, from, to, 0)
+
+/**
+ * Storage of a list of structs in some savegame versions.
+ * @param handler  SaveLoadHandler for the list of structs.
+ * @param from     First savegame version that has the list.
+ * @param to       Last savegame version that has the list.
+ */
+#define SLEG_CONDSTRUCTLIST(handler, from, to) {SL_STRUCTLIST, 0, 0, from, to, 0, nullptr, 0, new handler()}
 
 /**
  * Storage of a global variable in every savegame version.
@@ -783,6 +866,12 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLEG_SSTR(variable, type) SLEG_CONDSSTR(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
+ * Storage of a structs in every savegame version.
+ * @param handler SaveLoadHandler for the structs.
+ */
+#define SLEG_STRUCT(handler) SLEG_CONDSTRUCT(handler, SL_MIN_VERSION, SL_MAX_VERSION)
+
+/**
  * Storage of a global reference list in every savegame version.
  * @param variable Name of the global variable.
  * @param type     Storage of the data in memory and in the savegame.
@@ -790,12 +879,18 @@ using SaveLoadTable = span<const SaveLoad>;
 #define SLEG_REFLIST(variable, type) SLEG_CONDREFLIST(variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
+ * Storage of a list of structs in every savegame version.
+ * @param handler SaveLoadHandler for the list of structs.
+ */
+#define SLEG_STRUCTLIST(handler) SLEG_CONDSTRUCTLIST(handler, SL_MIN_VERSION, SL_MAX_VERSION)
+
+/**
  * Empty global space in some savegame versions.
  * @param length Length of the empty space.
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLEG_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0}
+#define SLEG_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
 
 /**
  * Checks whether the savegame is below \a major.\a minor.
