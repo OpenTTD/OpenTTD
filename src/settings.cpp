@@ -2024,7 +2024,7 @@ static std::vector<SaveLoad> GetSettingsDesc(const SettingTable &settings, bool 
 
 		if (is_loading && (sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) {
 			/* We don't want to read this setting, so we do need to skip over it. */
-			saveloads.push_back({sd->save.cmd, GetVarFileType(sd->save.conv) | SLE_VAR_NULL, sd->save.length, sd->save.version_from, sd->save.version_to, 0, nullptr, 0});
+			saveloads.push_back({sd->save.cmd, GetVarFileType(sd->save.conv) | SLE_VAR_NULL, sd->save.length, sd->save.version_from, sd->save.version_to, 0, nullptr, 0, nullptr});
 			continue;
 		}
 

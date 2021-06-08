@@ -1450,6 +1450,27 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 		case SL_WRITEBYTE: return 1; // a byte is logically of size 1
 		case SL_VEH_INCLUDE: return SlCalcObjLength(object, GetVehicleDescription(VEH_END));
 		case SL_ST_INCLUDE: return SlCalcObjLength(object, GetBaseStationDescription());
+		case SL_STRUCT:
+		case SL_STRUCTLIST: {
+			if (!SlIsObjectValidInSavegame(sld)) break;
+
+			NeedLength old_need_length = _sl.need_length;
+			size_t old_obj_len = _sl.obj_len;
+
+			_sl.need_length = NL_CALCLENGTH;
+			_sl.obj_len = 0;
+
+			/* Pretend that we are saving to collect the object size. Other
+			 * means are difficult, as we don't know the length of the list we
+			 * are about to store. */
+			sld.handler->Save(const_cast<void *>(object));
+			size_t length = _sl.obj_len;
+
+			_sl.obj_len = old_obj_len;
+			_sl.need_length = old_need_length;
+
+			return length;
+		}
 		default: NOT_REACHED();
 	}
 	return 0;
@@ -1505,8 +1526,6 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 
 static bool SlObjectMember(void *object, const SaveLoad &sld)
 {
-	void *ptr = GetVariableAddress(object, sld);
-
 	assert(IsVariableSizeRight(sld));
 
 	VarType conv = GB(sld.conv, 0, 8);
@@ -1517,9 +1536,11 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		case SL_STR:
 		case SL_REFLIST:
 		case SL_DEQUE:
-		case SL_STDSTR:
+		case SL_STDSTR: {
 			/* CONDITIONAL saveload types depend on the savegame version */
 			if (!SlIsObjectValidInSavegame(sld)) return false;
+
+			void *ptr = GetVariableAddress(object, sld);
 
 			switch (sld.cmd) {
 				case SL_VAR: SlSaveLoadConv(ptr, conv); break;
@@ -1532,11 +1553,14 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				default: NOT_REACHED();
 			}
 			break;
+		}
 
 		/* SL_WRITEBYTE writes a value to the savegame to identify the type of an object.
 		 * When loading, the value is read explicitly with SlReadByte() to determine which
 		 * object description to use. */
-		case SL_WRITEBYTE:
+		case SL_WRITEBYTE: {
+			void *ptr = GetVariableAddress(object, sld);
+
 			switch (_sl.action) {
 				case SLA_SAVE: SlWriteByte(*(uint8 *)ptr); break;
 				case SLA_LOAD_CHECK:
@@ -1546,14 +1570,33 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				default: NOT_REACHED();
 			}
 			break;
+		}
 
 		/* SL_VEH_INCLUDE loads common code for vehicles */
-		case SL_VEH_INCLUDE:
+		case SL_VEH_INCLUDE: {
+			void *ptr = GetVariableAddress(object, sld);
 			SlObject(ptr, GetVehicleDescription(VEH_END));
 			break;
+		}
 
-		case SL_ST_INCLUDE:
+		case SL_ST_INCLUDE: {
+			void *ptr = GetVariableAddress(object, sld);
 			SlObject(ptr, GetBaseStationDescription());
+			break;
+		}
+
+		case SL_STRUCT:
+		case SL_STRUCTLIST:
+			if (!SlIsObjectValidInSavegame(sld)) return false;
+
+			switch (_sl.action) {
+				case SLA_SAVE: sld.handler->Save(object); break;
+				case SLA_LOAD_CHECK: sld.handler->LoadCheck(object); break;
+				case SLA_LOAD: sld.handler->Load(object); break;
+				case SLA_PTRS: sld.handler->FixPointers(object); break;
+				case SLA_NULL: break;
+				default: NOT_REACHED();
+			}
 			break;
 
 		default: NOT_REACHED();
