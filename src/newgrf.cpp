@@ -1333,6 +1333,10 @@ static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 			}
 
+			case PROP_TRAIN_CURVE_SPEED_MOD: // 0x2E Curve speed modifier
+				rvi->curve_speed_mod = buf->ReadWord();
+				break;
+
 			default:
 				ret = CommonVehicleChangeInfo(ei, prop, buf);
 				break;
