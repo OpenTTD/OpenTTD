@@ -2205,6 +2205,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}Verbindu
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Verbindung #{NUM} hat das Zeitlimit überschritten
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Protokollfehler: Die Verbindung musste getrennt werden
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}Ihr Spielername wurde nicht gesetzt. Der Name kann im Mehrspielerfenster oben gesetzt werden
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}Ihr Servername wurde nicht gesetzt. Der Name kann oben im Mehrspielerfenster gesetzt werden
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}Diese Version des Spiels entspricht nicht der des Servers
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Falsches Passwort
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Der Server ist voll
