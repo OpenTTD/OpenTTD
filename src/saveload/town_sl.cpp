@@ -113,7 +113,75 @@ void UpdateHousesAndTowns()
 	RebuildTownCaches();
 }
 
-/** Save and load of towns. */
+class SlTownSupplied : public DefaultSaveLoadHandler<SlTownSupplied, Town> {
+public:
+	inline static const SaveLoad description[] = {
+		SLE_CONDVAR(TransportedCargoStat<uint32>, old_max, SLE_UINT32, SLV_165, SL_MAX_VERSION),
+		SLE_CONDVAR(TransportedCargoStat<uint32>, new_max, SLE_UINT32, SLV_165, SL_MAX_VERSION),
+		SLE_CONDVAR(TransportedCargoStat<uint32>, old_act, SLE_UINT32, SLV_165, SL_MAX_VERSION),
+		SLE_CONDVAR(TransportedCargoStat<uint32>, new_act, SLE_UINT32, SLV_165, SL_MAX_VERSION),
+	};
+
+	void Save(Town *t) const override
+	{
+		for (CargoID i = 0; i < NUM_CARGO; i++) {
+			SlObject(&t->supplied[i], this->GetDescription());
+		}
+	}
+
+	void Load(Town *t) const override
+	{
+		uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
+		for (CargoID i = 0; i < num_cargo; i++) {
+			SlObject(&t->supplied[i], this->GetDescription());
+		}
+	}
+};
+
+class SlTownReceived : public DefaultSaveLoadHandler<SlTownReceived, Town> {
+public:
+	inline static const SaveLoad description[] = {
+		SLE_CONDVAR(TransportedCargoStat<uint16>, old_max, SLE_UINT16, SLV_165, SL_MAX_VERSION),
+		SLE_CONDVAR(TransportedCargoStat<uint16>, new_max, SLE_UINT16, SLV_165, SL_MAX_VERSION),
+		SLE_CONDVAR(TransportedCargoStat<uint16>, old_act, SLE_UINT16, SLV_165, SL_MAX_VERSION),
+		SLE_CONDVAR(TransportedCargoStat<uint16>, new_act, SLE_UINT16, SLV_165, SL_MAX_VERSION),
+	};
+
+	void Save(Town *t) const override
+	{
+		for (int i = TE_BEGIN; i < TE_END; i++) {
+			SlObject(&t->received[i], this->GetDescription());
+		}
+	}
+
+	void Load(Town *t) const override
+	{
+		for (int i = TE_BEGIN; i < TE_END; i++) {
+			SlObject(&t->received[i], this->GetDescription());
+		}
+	}
+};
+
+class SlTownAcceptanceMatrix : public DefaultSaveLoadHandler<SlTownAcceptanceMatrix, Town> {
+public:
+	inline static const SaveLoad description[] = {
+		SLE_VAR(AcceptanceMatrix, area.tile, SLE_UINT32),
+		SLE_VAR(AcceptanceMatrix, area.w,    SLE_UINT16),
+		SLE_VAR(AcceptanceMatrix, area.h,    SLE_UINT16),
+	};
+
+	void Load(Town *t) const override
+	{
+		/* Discard now unused acceptance matrix. */
+		AcceptanceMatrix dummy;
+		SlObject(&dummy, this->GetDescription());
+		if (dummy.area.w != 0) {
+			uint arr_len = dummy.area.w / AcceptanceMatrix::GRID * dummy.area.h / AcceptanceMatrix::GRID;
+			SlSkipBytes(4 * arr_len);
+		}
+	}
+};
+
 static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, SL_MIN_VERSION, SLV_6),
 	SLE_CONDVAR(Town, xy,                    SLE_UINT32,                 SLV_6, SL_MAX_VERSION),
@@ -194,20 +262,10 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDNULL(4, SLV_166, SLV_EXTEND_CARGOTYPES),  ///< cargo_produced, no longer in use
 	SLE_CONDNULL(8, SLV_EXTEND_CARGOTYPES, SLV_REMOVE_TOWN_CARGO_CACHE),  ///< cargo_produced, no longer in use
 	SLE_CONDNULL(30, SLV_2, SLV_REMOVE_TOWN_CARGO_CACHE), ///< old reserved space
-};
 
-static const SaveLoad _town_supplied_desc[] = {
-	SLE_CONDVAR(TransportedCargoStat<uint32>, old_max, SLE_UINT32, SLV_165, SL_MAX_VERSION),
-	SLE_CONDVAR(TransportedCargoStat<uint32>, new_max, SLE_UINT32, SLV_165, SL_MAX_VERSION),
-	SLE_CONDVAR(TransportedCargoStat<uint32>, old_act, SLE_UINT32, SLV_165, SL_MAX_VERSION),
-	SLE_CONDVAR(TransportedCargoStat<uint32>, new_act, SLE_UINT32, SLV_165, SL_MAX_VERSION),
-};
-
-static const SaveLoad _town_received_desc[] = {
-	SLE_CONDVAR(TransportedCargoStat<uint16>, old_max, SLE_UINT16, SLV_165, SL_MAX_VERSION),
-	SLE_CONDVAR(TransportedCargoStat<uint16>, new_max, SLE_UINT16, SLV_165, SL_MAX_VERSION),
-	SLE_CONDVAR(TransportedCargoStat<uint16>, old_act, SLE_UINT16, SLV_165, SL_MAX_VERSION),
-	SLE_CONDVAR(TransportedCargoStat<uint16>, new_act, SLE_UINT16, SLV_165, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST(SlTownSupplied,                                SLV_165, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST(SlTownReceived,                                SLV_165, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST(SlTownAcceptanceMatrix,                        SLV_166, SLV_REMOVE_TOWN_CARGO_CACHE),
 };
 
 static void Save_HIDS()
@@ -220,66 +278,24 @@ static void Load_HIDS()
 	Load_NewGRFMapping(_house_mngr);
 }
 
-SaveLoadTable GetTileMatrixDesc()
-{
-	/* Here due to private member vars. */
-	static const SaveLoad _tilematrix_desc[] = {
-		SLE_VAR(AcceptanceMatrix, area.tile, SLE_UINT32),
-		SLE_VAR(AcceptanceMatrix, area.w,    SLE_UINT16),
-		SLE_VAR(AcceptanceMatrix, area.h,    SLE_UINT16),
-	};
-
-	return _tilematrix_desc;
-}
-
-static void RealSave_Town(Town *t)
-{
-	SlObject(t, _town_desc);
-
-	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		SlObject(&t->supplied[i], _town_supplied_desc);
-	}
-	for (int i = TE_BEGIN; i < NUM_TE; i++) {
-		SlObject(&t->received[i], _town_received_desc);
-	}
-}
-
 static void Save_TOWN()
 {
 	for (Town *t : Town::Iterate()) {
 		SlSetArrayIndex(t->index);
-		SlAutolength((AutolengthProc*)RealSave_Town, t);
+		SlObject(t, _town_desc);
 	}
 }
 
 static void Load_TOWN()
 {
 	int index;
-	uint num_cargo = IsSavegameVersionBefore(SLV_EXTEND_CARGOTYPES) ? 32 : NUM_CARGO;
 
 	while ((index = SlIterateArray()) != -1) {
 		Town *t = new (index) Town();
 		SlObject(t, _town_desc);
 
-		for (CargoID i = 0; i < num_cargo; i++) {
-			SlObject(&t->supplied[i], _town_supplied_desc);
-		}
-		for (int i = TE_BEGIN; i < TE_END; i++) {
-			SlObject(&t->received[i], _town_received_desc);
-		}
-
 		if (t->townnamegrfid == 0 && !IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1) && GetStringTab(t->townnametype) != TEXT_TAB_OLD_CUSTOM) {
 			SlErrorCorrupt("Invalid town name generator");
-		}
-
-		if (!IsSavegameVersionBefore(SLV_166) && IsSavegameVersionBefore(SLV_REMOVE_TOWN_CARGO_CACHE)) {
-			/* Discard now unused acceptance matrix. */
-			AcceptanceMatrix dummy;
-			SlObject(&dummy, GetTileMatrixDesc());
-			if (dummy.area.w != 0) {
-				uint arr_len = dummy.area.w / AcceptanceMatrix::GRID * dummy.area.h / AcceptanceMatrix::GRID;
-				SlSkipBytes(4 * arr_len);
-			}
 		}
 	}
 }
@@ -287,7 +303,6 @@ static void Load_TOWN()
 /** Fix pointers when loading town data. */
 static void Ptrs_TOWN()
 {
-	/* Don't run when savegame version lower than 161. */
 	if (IsSavegameVersionBefore(SLV_161)) return;
 
 	for (Town *t : Town::Iterate()) {
