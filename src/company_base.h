@@ -98,28 +98,30 @@ struct CompanyProperties {
 	CompanyEconomyEntry old_economy[MAX_HISTORY_QUARTERS]; ///< Economic data of the company of the last #MAX_HISTORY_QUARTERS quarters.
 	byte num_valid_stat_ent;                               ///< Number of valid statistical entries in #old_economy.
 
+	Livery livery[LS_END];
+
+	EngineRenewList engine_renew_list; ///< Engine renewals of this company.
+	CompanySettings settings;          ///< settings specific for each company
+
 	// TODO: Change some of these member variables to use relevant INVALID_xxx constants
 	CompanyProperties()
 		: name_2(0), name_1(0), president_name_1(0), president_name_2(0),
 		  face(0), money(0), money_fraction(0), current_loan(0), colour(0), block_preview(0),
 		  location_of_HQ(0), last_build_coordinate(0), share_owners(), inaugurated_year(0),
 		  months_of_bankruptcy(0), bankrupt_asked(0), bankrupt_timeout(0), bankrupt_value(0),
-		  terraform_limit(0), clear_limit(0), tree_limit(0), is_ai(false) {}
+		  terraform_limit(0), clear_limit(0), tree_limit(0), is_ai(false), engine_renew_list(nullptr) {}
 };
 
-struct Company : CompanyPool::PoolItem<&_company_pool>, CompanyProperties {
+struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	Company(uint16 name_1 = 0, bool is_ai = false);
 	~Company();
 
-	Livery livery[LS_END];
 	RailTypes avail_railtypes;         ///< Rail types available to this company.
 	RoadTypes avail_roadtypes;         ///< Road types available to this company.
 
 	class AIInstance *ai_instance;
 	class AIInfo *ai_info;
 
-	EngineRenewList engine_renew_list; ///< Engine renewals of this company.
-	CompanySettings settings;          ///< settings specific for each company
 	GroupStatistics group_all[VEH_COMPANY_END];      ///< NOSAVE: Statistics for the ALL_GROUP group.
 	GroupStatistics group_default[VEH_COMPANY_END];  ///< NOSAVE: Statistics for the DEFAULT_GROUP group.
 
