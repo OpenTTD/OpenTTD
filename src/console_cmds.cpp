@@ -160,11 +160,24 @@ DEF_CONSOLE_HOOK(ConHookNoNetwork)
 	return CHR_ALLOW;
 }
 
+/**
+ * Check if are either in singleplayer or a server.
+ * @return True iff we are either in singleplayer or a server.
+ */
+DEF_CONSOLE_HOOK(ConHookServerOrNoNetwork)
+{
+	if (_networking && !_network_server) {
+		if (echo) IConsoleError("This command is only available to a network server.");
+		return CHR_DISALLOW;
+	}
+	return CHR_ALLOW;
+}
+
 DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
 {
 	if (_settings_client.gui.newgrf_developer_tools) {
 		if (_game_mode == GM_MENU) {
-			if (echo) IConsoleError("This command is only available in game and editor.");
+			if (echo) IConsoleError("This command is only available in-game and in the editor.");
 			return CHR_DISALLOW;
 		}
 		return ConHookNoNetwork(echo);
@@ -209,7 +222,7 @@ DEF_CONSOLE_CMD(ConResetEnginePool)
 	}
 
 	if (_game_mode == GM_MENU) {
-		IConsoleError("This command is only available in game and editor.");
+		IConsoleError("This command is only available in-game and in the editor.");
 		return true;
 	}
 
@@ -622,6 +635,11 @@ DEF_CONSOLE_CMD(ConPauseGame)
 		return true;
 	}
 
+	if (_game_mode == GM_MENU) {
+		IConsoleError("This command is only available in-game and in the editor.");
+		return true;
+	}
+
 	if ((_pause_mode & PM_PAUSED_NORMAL) == PM_UNPAUSED) {
 		DoCommandP(0, PM_PAUSED_NORMAL, 1, CMD_PAUSE);
 		if (!_networking) IConsolePrint(CC_DEFAULT, "Game paused.");
@@ -636,6 +654,11 @@ DEF_CONSOLE_CMD(ConUnpauseGame)
 {
 	if (argc == 0) {
 		IConsoleHelp("Unpause a network game. Usage: 'unpause'");
+		return true;
+	}
+
+	if (_game_mode == GM_MENU) {
+		IConsoleError("This command is only available in-game and in the editor.");
 		return true;
 	}
 
@@ -2393,8 +2416,8 @@ void IConsoleStdLibRegister()
 	IConsole::CmdRegister("unban",                   ConUnBan,            ConHookServerOnly);
 	IConsole::CmdRegister("banlist",                 ConBanList,          ConHookServerOnly);
 
-	IConsole::CmdRegister("pause",                   ConPauseGame,        ConHookServerOnly);
-	IConsole::CmdRegister("unpause",                 ConUnpauseGame,      ConHookServerOnly);
+	IConsole::CmdRegister("pause",                   ConPauseGame,        ConHookServerOrNoNetwork);
+	IConsole::CmdRegister("unpause",                 ConUnpauseGame,      ConHookServerOrNoNetwork);
 
 	IConsole::CmdRegister("company_pw",              ConCompanyPassword,  ConHookNeedNetwork);
 	IConsole::AliasRegister("company_password",      "company_pw %+");
