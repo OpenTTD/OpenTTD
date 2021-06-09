@@ -62,8 +62,9 @@ static void Ptrs_DEPT()
 	}
 }
 
-static const ChunkHandler depot_chunk_handlers[] = {
-	{ 'DEPT', Save_DEPT, Load_DEPT, Ptrs_DEPT, nullptr, CH_TABLE },
+static const ChunkHandler DEPT{ 'DEPT', Save_DEPT, Load_DEPT, Ptrs_DEPT, nullptr, CH_TABLE };
+static const ChunkHandlerRef depot_chunk_handlers[] = {
+	DEPT,
 };
 
 extern const ChunkHandlerTable _depot_chunk_handlers(depot_chunk_handlers);

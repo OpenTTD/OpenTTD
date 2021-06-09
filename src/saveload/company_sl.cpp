@@ -557,9 +557,9 @@ static void Ptrs_PLYR()
 	}
 }
 
-
-static const ChunkHandler company_chunk_handlers[] = {
-	{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, Check_PLYR, CH_TABLE },
+static const ChunkHandler PLYR{ 'PLYR', Save_PLYR, Load_PLYR, Ptrs_PLYR, Check_PLYR, CH_TABLE };
+static const ChunkHandlerRef company_chunk_handlers[] = {
+	PLYR,
 };
 
 extern const ChunkHandlerTable _company_chunk_handlers(company_chunk_handlers);

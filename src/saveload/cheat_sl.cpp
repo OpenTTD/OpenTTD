@@ -75,8 +75,9 @@ static void Load_CHTS()
 	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many CHTS entries");
 }
 
-static const ChunkHandler cheat_chunk_handlers[] = {
-	{ 'CHTS', Save_CHTS, Load_CHTS, nullptr, nullptr, CH_TABLE },
+static const ChunkHandler CHTS{ 'CHTS', Save_CHTS, Load_CHTS, nullptr, nullptr, CH_TABLE };
+static const ChunkHandlerRef cheat_chunk_handlers[] = {
+	CHTS,
 };
 
 extern const ChunkHandlerTable _cheat_chunk_handlers(cheat_chunk_handlers);

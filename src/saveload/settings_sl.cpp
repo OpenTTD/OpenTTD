@@ -170,9 +170,11 @@ static void Save_PATS()
 	SaveSettings(_settings, &_settings_game);
 }
 
-static const ChunkHandler setting_chunk_handlers[] = {
-	{ 'OPTS', nullptr,   Load_OPTS, nullptr, nullptr,    CH_READONLY  },
-	{ 'PATS', Save_PATS, Load_PATS, nullptr, Check_PATS, CH_TABLE },
+static const ChunkHandler OPTS{ 'OPTS', nullptr,   Load_OPTS, nullptr, nullptr,    CH_READONLY };
+static const ChunkHandler PATS{ 'PATS', Save_PATS, Load_PATS, nullptr, Check_PATS, CH_TABLE };
+static const ChunkHandlerRef setting_chunk_handlers[] = {
+	OPTS,
+	PATS,
 };
 
 extern const ChunkHandlerTable _setting_chunk_handlers(setting_chunk_handlers);

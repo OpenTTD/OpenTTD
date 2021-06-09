@@ -152,9 +152,11 @@ static void Load_VIEW()
 	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many DATE entries");
 }
 
-static const ChunkHandler misc_chunk_handlers[] = {
-	{ 'DATE', Save_DATE, Load_DATE, nullptr, Check_DATE, CH_TABLE },
-	{ 'VIEW', Save_VIEW, Load_VIEW, nullptr, nullptr,    CH_TABLE },
+static const ChunkHandler DATE{ 'DATE', Save_DATE, Load_DATE, nullptr, Check_DATE, CH_TABLE };
+static const ChunkHandler VIEW{ 'VIEW', Save_VIEW, Load_VIEW, nullptr, nullptr,    CH_TABLE };
+static const ChunkHandlerRef misc_chunk_handlers[] = {
+	DATE,
+	VIEW,
 };
 
 extern const ChunkHandlerTable _misc_chunk_handlers(misc_chunk_handlers);

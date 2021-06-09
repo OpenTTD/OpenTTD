@@ -121,8 +121,9 @@ static void Check_NGRF()
 	Load_NGRF_common(_load_check_data.grfconfig);
 }
 
-static const ChunkHandler newgrf_chunk_handlers[] = {
-	{ 'NGRF', Save_NGRF, Load_NGRF, nullptr, Check_NGRF, CH_TABLE }
+static const ChunkHandler NGRF{ 'NGRF', Save_NGRF, Load_NGRF, nullptr, Check_NGRF, CH_TABLE };
+static const ChunkHandlerRef newgrf_chunk_handlers[] = {
+	NGRF,
 };
 
 extern const ChunkHandlerTable _newgrf_chunk_handlers(newgrf_chunk_handlers);

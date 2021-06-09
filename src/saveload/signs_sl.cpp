@@ -67,8 +67,9 @@ static void Load_SIGN()
 	}
 }
 
-static const ChunkHandler sign_chunk_handlers[] = {
-	{ 'SIGN', Save_SIGN, Load_SIGN, nullptr, nullptr, CH_TABLE },
+static const ChunkHandler SIGN{ 'SIGN', Save_SIGN, Load_SIGN, nullptr, nullptr, CH_TABLE };
+static const ChunkHandlerRef sign_chunk_handlers[] = {
+	SIGN,
 };
 
 extern const ChunkHandlerTable _sign_chunk_handlers(sign_chunk_handlers);
