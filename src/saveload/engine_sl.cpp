@@ -199,10 +199,13 @@ static void Load_EIDS()
 	}
 }
 
-static const ChunkHandler engine_chunk_handlers[] = {
-	{ 'EIDS', Save_EIDS, Load_EIDS, nullptr, nullptr, CH_TABLE },
-	{ 'ENGN', Save_ENGN, Load_ENGN, nullptr, nullptr, CH_TABLE },
-	{ 'ENGS', nullptr,   Load_ENGS, nullptr, nullptr, CH_READONLY  },
+static const ChunkHandler EIDS{ 'EIDS', Save_EIDS, Load_EIDS, nullptr, nullptr, CH_TABLE };
+static const ChunkHandler ENGN{ 'ENGN', Save_ENGN, Load_ENGN, nullptr, nullptr, CH_TABLE };
+static const ChunkHandler ENGS{ 'ENGS', nullptr,   Load_ENGS, nullptr, nullptr, CH_READONLY };
+static const ChunkHandlerRef engine_chunk_handlers[] = {
+	EIDS,
+	ENGN,
+	ENGS,
 };
 
 extern const ChunkHandlerTable _engine_chunk_handlers(engine_chunk_handlers);

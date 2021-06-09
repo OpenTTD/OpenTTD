@@ -194,12 +194,17 @@ static void Load_ITBL()
 	}
 }
 
-static const ChunkHandler industry_chunk_handlers[] = {
-	{ 'INDY', Save_INDY, Load_INDY, Ptrs_INDY, nullptr, CH_TABLE },
-	{ 'IIDS', Save_IIDS, Load_IIDS, nullptr,   nullptr, CH_TABLE },
-	{ 'TIDS', Save_TIDS, Load_TIDS, nullptr,   nullptr, CH_TABLE },
-	{ 'IBLD', Save_IBLD, Load_IBLD, nullptr,   nullptr, CH_TABLE },
-	{ 'ITBL', Save_ITBL, Load_ITBL, nullptr,   nullptr, CH_TABLE },
+static const ChunkHandler INDY{ 'INDY', Save_INDY, Load_INDY, Ptrs_INDY, nullptr, CH_TABLE };
+static const ChunkHandler IIDS{ 'IIDS', Save_IIDS, Load_IIDS, nullptr,   nullptr, CH_TABLE };
+static const ChunkHandler TIDS{ 'TIDS', Save_TIDS, Load_TIDS, nullptr,   nullptr, CH_TABLE };
+static const ChunkHandler IBLD{ 'IBLD', Save_IBLD, Load_IBLD, nullptr,   nullptr, CH_TABLE };
+static const ChunkHandler ITBL{ 'ITBL', Save_ITBL, Load_ITBL, nullptr,   nullptr, CH_TABLE };
+static const ChunkHandlerRef industry_chunk_handlers[] = {
+	INDY,
+	IIDS,
+	TIDS,
+	IBLD,
+	ITBL,
 };
 
 extern const ChunkHandlerTable _industry_chunk_handlers(industry_chunk_handlers);

@@ -309,19 +309,29 @@ static void Save_MAP8()
 	}
 }
 
-
-static const ChunkHandler map_chunk_handlers[] = {
-	{ 'MAPS', Save_MAPS, Load_MAPS, nullptr, Check_MAPS, CH_TABLE },
-	{ 'MAPT', Save_MAPT, Load_MAPT, nullptr, nullptr,    CH_RIFF },
-	{ 'MAPH', Save_MAPH, Load_MAPH, nullptr, nullptr,    CH_RIFF },
-	{ 'MAPO', Save_MAP1, Load_MAP1, nullptr, nullptr,    CH_RIFF },
-	{ 'MAP2', Save_MAP2, Load_MAP2, nullptr, nullptr,    CH_RIFF },
-	{ 'M3LO', Save_MAP3, Load_MAP3, nullptr, nullptr,    CH_RIFF },
-	{ 'M3HI', Save_MAP4, Load_MAP4, nullptr, nullptr,    CH_RIFF },
-	{ 'MAP5', Save_MAP5, Load_MAP5, nullptr, nullptr,    CH_RIFF },
-	{ 'MAPE', Save_MAP6, Load_MAP6, nullptr, nullptr,    CH_RIFF },
-	{ 'MAP7', Save_MAP7, Load_MAP7, nullptr, nullptr,    CH_RIFF },
-	{ 'MAP8', Save_MAP8, Load_MAP8, nullptr, nullptr,    CH_RIFF },
+static const ChunkHandler MAPS{ 'MAPS', Save_MAPS, Load_MAPS, nullptr, Check_MAPS, CH_TABLE };
+static const ChunkHandler MAPT{ 'MAPT', Save_MAPT, Load_MAPT, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandler MAPH{ 'MAPH', Save_MAPH, Load_MAPH, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandler MAPO{ 'MAPO', Save_MAP1, Load_MAP1, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandler MAP2{ 'MAP2', Save_MAP2, Load_MAP2, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandler M3LO{ 'M3LO', Save_MAP3, Load_MAP3, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandler M3HI{ 'M3HI', Save_MAP4, Load_MAP4, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandler MAP5{ 'MAP5', Save_MAP5, Load_MAP5, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandler MAPE{ 'MAPE', Save_MAP6, Load_MAP6, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandler MAP7{ 'MAP7', Save_MAP7, Load_MAP7, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandler MAP8{ 'MAP8', Save_MAP8, Load_MAP8, nullptr, nullptr,    CH_RIFF };
+static const ChunkHandlerRef map_chunk_handlers[] = {
+	MAPS,
+	MAPT,
+	MAPH,
+	MAPO,
+	MAP2,
+	M3LO,
+	M3HI,
+	MAP5,
+	MAPE,
+	MAP7,
+	MAP8,
 };
 
 extern const ChunkHandlerTable _map_chunk_handlers(map_chunk_handlers);

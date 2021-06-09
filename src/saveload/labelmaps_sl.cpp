@@ -127,8 +127,9 @@ static void Load_RAIL()
 	}
 }
 
-static const ChunkHandler labelmaps_chunk_handlers[] = {
-	{ 'RAIL', Save_RAIL, Load_RAIL, nullptr, nullptr, CH_TABLE },
+static const ChunkHandler RAIL{ 'RAIL', Save_RAIL, Load_RAIL, nullptr, nullptr, CH_TABLE };
+static const ChunkHandlerRef labelmaps_chunk_handlers[] = {
+	RAIL,
 };
 
 extern const ChunkHandlerTable _labelmaps_chunk_handlers(labelmaps_chunk_handlers);

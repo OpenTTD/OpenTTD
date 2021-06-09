@@ -216,7 +216,7 @@ struct SaveLoadParams {
 
 static SaveLoadParams _sl; ///< Parameters used for/at saveload.
 
-static const std::vector<ChunkHandler> &ChunkHandlers()
+static const std::vector<ChunkHandlerRef> &ChunkHandlers()
 {
 	/* These define the chunks */
 	extern const ChunkHandlerTable _gamelog_chunk_handlers;
@@ -290,7 +290,7 @@ static const std::vector<ChunkHandler> &ChunkHandlers()
 		_persistent_storage_chunk_handlers,
 	};
 
-	static std::vector<ChunkHandler> _chunk_handlers;
+	static std::vector<ChunkHandlerRef> _chunk_handlers;
 
 	if (_chunk_handlers.empty()) {
 		for (auto &chunk_handler_table : _chunk_handler_tables) {
@@ -313,7 +313,7 @@ static void SlNullPointers()
 	 * pointers from other pools. */
 	_sl_version = SAVEGAME_VERSION;
 
-	for (auto &ch : ChunkHandlers()) {
+	for (const ChunkHandler &ch : ChunkHandlers()) {
 		if (ch.fix_pointers) {
 			Debug(sl, 3, "Nulling pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
 			ch.FixPointers();
@@ -2312,7 +2312,7 @@ static void SlSaveChunks()
  */
 static const ChunkHandler *SlFindChunkHandler(uint32 id)
 {
-	for (auto &ch : ChunkHandlers()) if (ch.id == id) return &ch;
+	for (const ChunkHandler &ch : ChunkHandlers()) if (ch.id == id) return &ch;
 	return nullptr;
 }
 
@@ -2351,7 +2351,7 @@ static void SlFixPointers()
 {
 	_sl.action = SLA_PTRS;
 
-	for (auto &ch : ChunkHandlers()) {
+	for (const ChunkHandler &ch : ChunkHandlers()) {
 		if (ch.fix_pointers) {
 			Debug(sl, 3, "Fixing pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
 			ch.FixPointers();

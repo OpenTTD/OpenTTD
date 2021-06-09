@@ -34,9 +34,11 @@ static void Load_ATID()
 	Load_NewGRFMapping(_airporttile_mngr);
 }
 
-static const ChunkHandler airport_chunk_handlers[] = {
-	{ 'ATID', Save_ATID, Load_ATID, nullptr, nullptr, CH_TABLE },
-	{ 'APID', Save_APID, Load_APID, nullptr, nullptr, CH_TABLE },
+static const ChunkHandler ATID{ 'ATID', Save_ATID, Load_ATID, nullptr, nullptr, CH_TABLE };
+static const ChunkHandler APID{ 'APID', Save_APID, Load_APID, nullptr, nullptr, CH_TABLE };
+static const ChunkHandlerRef airport_chunk_handlers[] = {
+	ATID,
+	APID,
 };
 
 extern const ChunkHandlerTable _airport_chunk_handlers(airport_chunk_handlers);

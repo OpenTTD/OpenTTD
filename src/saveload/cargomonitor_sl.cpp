@@ -127,9 +127,11 @@ static void LoadPickup()
 }
 
 /** Chunk definition of the cargomonitoring maps. */
-extern const ChunkHandler cargomonitor_chunk_handlers[] = {
-	{ 'CMDL', SaveDelivery, LoadDelivery, nullptr, nullptr, CH_TABLE },
-	{ 'CMPU', SavePickup,   LoadPickup,   nullptr, nullptr, CH_TABLE },
+static const ChunkHandler CMDL{ 'CMDL', SaveDelivery, LoadDelivery, nullptr, nullptr, CH_TABLE };
+static const ChunkHandler CMPU{ 'CMPU', SavePickup,   LoadPickup,   nullptr, nullptr, CH_TABLE };
+static const ChunkHandlerRef cargomonitor_chunk_handlers[] = {
+	CMDL,
+	CMPU,
 };
 
 extern const ChunkHandlerTable _cargomonitor_chunk_handlers(cargomonitor_chunk_handlers);

@@ -1064,8 +1064,9 @@ void Ptrs_VEHS()
 	}
 }
 
-static const ChunkHandler veh_chunk_handlers[] = {
-	{ 'VEHS', Save_VEHS, Load_VEHS, Ptrs_VEHS, nullptr, CH_SPARSE_TABLE },
+static const ChunkHandler VEHS{ 'VEHS', Save_VEHS, Load_VEHS, Ptrs_VEHS, nullptr, CH_SPARSE_TABLE };
+static const ChunkHandlerRef veh_chunk_handlers[] = {
+	VEHS,
 };
 
 extern const ChunkHandlerTable _veh_chunk_handlers(veh_chunk_handlers);

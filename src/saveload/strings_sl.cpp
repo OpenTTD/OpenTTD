@@ -130,8 +130,9 @@ static void Load_NAME()
 	}
 }
 
-static const ChunkHandler name_chunk_handlers[] = {
-	{ 'NAME', nullptr, Load_NAME, nullptr, nullptr, CH_READONLY },
+static const ChunkHandler NAME{ 'NAME', nullptr, Load_NAME, nullptr, nullptr, CH_READONLY };
+static const ChunkHandlerRef name_chunk_handlers[] = {
+	NAME,
 };
 
 extern const ChunkHandlerTable _name_chunk_handlers(name_chunk_handlers);

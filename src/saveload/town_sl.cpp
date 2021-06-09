@@ -318,9 +318,11 @@ static void Ptrs_TOWN()
 	}
 }
 
-static const ChunkHandler town_chunk_handlers[] = {
-	{ 'HIDS', Save_HIDS, Load_HIDS, nullptr,   nullptr, CH_TABLE },
-	{ 'CITY', Save_TOWN, Load_TOWN, Ptrs_TOWN, nullptr, CH_TABLE },
+static const ChunkHandler HIDS{ 'HIDS', Save_HIDS, Load_HIDS, nullptr,   nullptr, CH_TABLE };
+static const ChunkHandler CITY{ 'CITY', Save_TOWN, Load_TOWN, Ptrs_TOWN, nullptr, CH_TABLE };
+static const ChunkHandlerRef town_chunk_handlers[] = {
+	HIDS,
+	CITY,
 };
 
 extern const ChunkHandlerTable _town_chunk_handlers(town_chunk_handlers);

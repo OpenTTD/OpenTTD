@@ -68,8 +68,9 @@ static void Load_ANIT()
 	if (SlIterateArray() != -1) SlErrorCorrupt("Too many ANIT entries");
 }
 
-static const ChunkHandler animated_tile_chunk_handlers[] = {
-	{ 'ANIT', Save_ANIT, Load_ANIT, nullptr, nullptr, CH_TABLE },
+static const ChunkHandler ANIT{ 'ANIT', Save_ANIT, Load_ANIT, nullptr, nullptr, CH_TABLE };
+static const ChunkHandlerRef animated_tile_chunk_handlers[] = {
+	ANIT,
 };
 
 extern const ChunkHandlerTable _animated_tile_chunk_handlers(animated_tile_chunk_handlers);

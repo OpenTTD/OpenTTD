@@ -450,8 +450,11 @@ struct ChunkHandler {
 	virtual void LoadCheck(size_t len = 0) const;
 };
 
+/** A reference to ChunkHandler. */
+using ChunkHandlerRef = std::reference_wrapper<const ChunkHandler>;
+
 /** A table of ChunkHandler entries. */
-using ChunkHandlerTable = span<const ChunkHandler>;
+using ChunkHandlerTable = span<const ChunkHandlerRef>;
 
 /** A table of SaveLoad entries. */
 using SaveLoadTable = span<const struct SaveLoad>;

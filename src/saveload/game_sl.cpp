@@ -188,9 +188,11 @@ static void Save_GSTR()
 	}
 }
 
-static const ChunkHandler game_chunk_handlers[] = {
-	{ 'GSTR', Save_GSTR, Load_GSTR, nullptr, nullptr, CH_TABLE },
-	{ 'GSDT', Save_GSDT, Load_GSDT, nullptr, nullptr, CH_TABLE },
+static const ChunkHandler GSTR{ 'GSTR', Save_GSTR, Load_GSTR, nullptr, nullptr, CH_TABLE };
+static const ChunkHandler GSDT{ 'GSDT', Save_GSDT, Load_GSDT, nullptr, nullptr, CH_TABLE };
+static const ChunkHandlerRef game_chunk_handlers[] = {
+	GSTR,
+	GSDT,
 };
 
 extern const ChunkHandlerTable _game_chunk_handlers(game_chunk_handlers);

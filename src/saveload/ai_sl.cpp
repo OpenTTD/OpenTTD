@@ -127,8 +127,9 @@ static void Save_AIPL()
 	}
 }
 
-static const ChunkHandler ai_chunk_handlers[] = {
-	{ 'AIPL', Save_AIPL, Load_AIPL, nullptr, nullptr, CH_TABLE },
+static const ChunkHandler AIPL{ 'AIPL', Save_AIPL, Load_AIPL, nullptr, nullptr, CH_TABLE };
+static const ChunkHandlerRef ai_chunk_handlers[] = {
+	AIPL,
 };
 
 extern const ChunkHandlerTable _ai_chunk_handlers(ai_chunk_handlers);

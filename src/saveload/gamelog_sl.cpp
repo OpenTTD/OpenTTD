@@ -401,8 +401,9 @@ static void Check_GLOG()
 	Load_GLOG_common(_load_check_data.gamelog_action, _load_check_data.gamelog_actions);
 }
 
-static const ChunkHandler gamelog_chunk_handlers[] = {
-	{ 'GLOG', Save_GLOG, Load_GLOG, nullptr, Check_GLOG, CH_TABLE }
+static const ChunkHandler GLOG{ 'GLOG', Save_GLOG, Load_GLOG, nullptr, Check_GLOG, CH_TABLE };
+static const ChunkHandlerRef gamelog_chunk_handlers[] = {
+	GLOG,
 };
 
 extern const ChunkHandlerTable _gamelog_chunk_handlers(gamelog_chunk_handlers);

@@ -719,10 +719,13 @@ static void Ptrs_ROADSTOP()
 	}
 }
 
-static const ChunkHandler station_chunk_handlers[] = {
-	{ 'STNS', nullptr,       Load_STNS,     Ptrs_STNS,     nullptr, CH_READONLY },
-	{ 'STNN', Save_STNN,     Load_STNN,     Ptrs_STNN,     nullptr, CH_TABLE },
-	{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, nullptr, CH_TABLE },
+static const ChunkHandler STNS{ 'STNS', nullptr,       Load_STNS,     Ptrs_STNS,     nullptr, CH_READONLY };
+static const ChunkHandler STNN{ 'STNN', Save_STNN,     Load_STNN,     Ptrs_STNN,     nullptr, CH_TABLE };
+static const ChunkHandler ROAD{ 'ROAD', Save_ROADSTOP, Load_ROADSTOP, Ptrs_ROADSTOP, nullptr, CH_TABLE };
+static const ChunkHandlerRef station_chunk_handlers[] = {
+	STNS,
+	STNN,
+	ROAD,
 };
 
 extern const ChunkHandlerTable _station_chunk_handlers(station_chunk_handlers);

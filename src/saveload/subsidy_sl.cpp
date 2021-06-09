@@ -50,8 +50,9 @@ static void Load_SUBS()
 	}
 }
 
-static const ChunkHandler subsidy_chunk_handlers[] = {
-	{ 'SUBS', Save_SUBS, Load_SUBS, nullptr, nullptr, CH_TABLE },
+static const ChunkHandler SUBS{ 'SUBS', Save_SUBS, Load_SUBS, nullptr, nullptr, CH_TABLE };
+static const ChunkHandlerRef subsidy_chunk_handlers[] = {
+	SUBS,
 };
 
 extern const ChunkHandlerTable _subsidy_chunk_handlers(subsidy_chunk_handlers);
