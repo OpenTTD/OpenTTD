@@ -3560,7 +3560,7 @@ STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}Clic par
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}Eliminar el grupo seleccionado
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}Cambiar nombre del grupo seleccionado
 STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}Cambiar cromática del grupo elegido
-STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clic para evitar que los vehículos en este grupo se reemplacen automáticamente.
+STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}Clic para evitar que los vehículos en este grupo se reemplacen automáticamente. Ctrl+Clic incluye a los subgrupos.
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}Eliminar grupo
 STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}¿Eliminar este grupo y todos sus subgrupos?
@@ -3815,6 +3815,7 @@ STR_REPLACE_TRAM_VEHICLES                                       :Vehículos de t
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Quitar vagó ({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer que el reemplazo automático mantenga la longitud del tren quitando vagones (empezando por el frente), si el cambio de locomotora produce un tren más largo
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+Clic para incluir subgrupos
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
