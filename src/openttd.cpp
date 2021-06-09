@@ -197,6 +197,7 @@ static void ShowHelp()
 		"  -M music_set        = Force the music set (see below)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
 		"  -x                  = Never save configuration changes to disk\n"
+		"  -X                  = Don't use global folders to search for files\n"
 		"  -q savegame         = Write some information about the savegame and exit\n"
 		"\n",
 		lastof(buf)
@@ -506,6 +507,7 @@ static const OptionData _options[] = {
 	 GETOPT_SHORT_VALUE('G'),
 	 GETOPT_SHORT_VALUE('c'),
 	 GETOPT_SHORT_NOVAL('x'),
+	 GETOPT_SHORT_NOVAL('X'),
 	 GETOPT_SHORT_VALUE('q'),
 	 GETOPT_SHORT_NOVAL('h'),
 	GETOPT_END()
@@ -530,6 +532,7 @@ int openttd_main(int argc, char *argv[])
 	std::unique_ptr<AfterNewGRFScan> scanner(new AfterNewGRFScan());
 	bool dedicated = false;
 	char *debuglog_conn = nullptr;
+	bool only_local_path = false;
 
 	extern bool _dedicated_forks;
 	_dedicated_forks = false;
@@ -608,7 +611,7 @@ int openttd_main(int argc, char *argv[])
 			}
 			break;
 		case 'q': {
-			DeterminePaths(argv[0]);
+			DeterminePaths(argv[0], only_local_path);
 			if (StrEmpty(mgo.opt)) {
 				ret = 1;
 				return ret;
@@ -637,6 +640,7 @@ int openttd_main(int argc, char *argv[])
 		case 'G': scanner->generation_seed = strtoul(mgo.opt, nullptr, 10); break;
 		case 'c': _config_file = mgo.opt; break;
 		case 'x': scanner->save_config = false; break;
+		case 'X': only_local_path = true; break;
 		case 'h':
 			i = -2; // Force printing of help.
 			break;
@@ -650,7 +654,7 @@ int openttd_main(int argc, char *argv[])
 		 *
 		 * The next two functions are needed to list the graphics sets. We can't do them earlier
 		 * because then we cannot show it on the debug console as that hasn't been configured yet. */
-		DeterminePaths(argv[0]);
+		DeterminePaths(argv[0], only_local_path);
 		TarScanner::DoScan(TarScanner::BASESET);
 		BaseGraphics::FindSets();
 		BaseSounds::FindSets();
@@ -659,7 +663,7 @@ int openttd_main(int argc, char *argv[])
 		return ret;
 	}
 
-	DeterminePaths(argv[0]);
+	DeterminePaths(argv[0], only_local_path);
 	TarScanner::DoScan(TarScanner::BASESET);
 
 	if (dedicated) DEBUG(net, 3, "Starting dedicated server, version %s", _openttd_revision);
