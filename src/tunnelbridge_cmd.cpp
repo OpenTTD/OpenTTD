@@ -1721,14 +1721,12 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 	RoadType tram_rt = GetRoadTypeTram(tile);
 	if (road_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(road_rt);
-		td->roadtype = rti->strings.name;
-		td->road_speed = rti->max_speed / 2;
+		td->road_desc = TrackDesc(rti->strings.name, rti->max_speed / 2, rti->grffile[0]);
 		road_owner = GetRoadOwner(tile, RTT_ROAD);
 	}
 	if (tram_rt != INVALID_ROADTYPE) {
 		const RoadTypeInfo *rti = GetRoadTypeInfo(tram_rt);
-		td->tramtype = rti->strings.name;
-		td->tram_speed = rti->max_speed / 2;
+		td->tram_desc = TrackDesc(rti->strings.name, rti->max_speed / 2, rti->grffile[0]);
 		tram_owner = GetRoadOwner(tile, RTT_TRAM);
 	}
 
@@ -1749,19 +1747,18 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 
 	if (tt == TRANSPORT_RAIL) {
 		const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(tile));
-		td->rail_speed = rti->max_speed;
-		td->railtype = rti->strings.name;
+		td->rail_desc = TrackDesc(rti->strings.name, rti->max_speed, rti->grffile[0]);
 
 		if (!IsTunnel(tile)) {
 			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
-			if (td->rail_speed == 0 || spd < td->rail_speed) {
-				td->rail_speed = spd;
+			if (td->rail_desc.speed == 0 || spd < td->rail_desc.speed) {
+				td->rail_desc.speed = spd;
 			}
 		}
 	} else if (tt == TRANSPORT_ROAD && !IsTunnel(tile)) {
 		uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
-		if (road_rt != INVALID_ROADTYPE && (td->road_speed == 0 || spd < td->road_speed)) td->road_speed = spd;
-		if (tram_rt != INVALID_ROADTYPE && (td->tram_speed == 0 || spd < td->tram_speed)) td->tram_speed = spd;
+		if (road_rt != INVALID_ROADTYPE && (td->road_desc.speed == 0 || spd < td->road_desc.speed)) td->road_desc.speed = spd;
+		if (tram_rt != INVALID_ROADTYPE && (td->tram_desc.speed == 0 || spd < td->tram_desc.speed)) td->tram_desc.speed = spd;
 	}
 }
 

@@ -162,15 +162,10 @@ public:
 
 		td.station_class = STR_NULL;
 		td.station_name = STR_NULL;
+		td.station_grf = nullptr;
 		td.airport_class = STR_NULL;
 		td.airport_name = STR_NULL;
 		td.airport_tile_name = STR_NULL;
-		td.railtype = STR_NULL;
-		td.rail_speed = 0;
-		td.roadtype = STR_NULL;
-		td.road_speed = 0;
-		td.tramtype = STR_NULL;
-		td.tram_speed = 0;
 
 		td.grf = nullptr;
 
@@ -255,6 +250,13 @@ public:
 			line_nr++;
 		}
 
+		/* Station NewGRF name */
+		if (td.station_grf != nullptr) {
+			SetDParamStr(0, td.station_grf);
+			GetString(this->landinfo_data[line_nr], STR_LAND_AREA_INFORMATION_STATION_NEWGRF_NAME, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
 		/* Airport class */
 		if (td.airport_class != STR_NULL) {
 			SetDParam(0, td.airport_class);
@@ -277,44 +279,65 @@ public:
 		}
 
 		/* Rail type name */
-		if (td.railtype != STR_NULL) {
-			SetDParam(0, td.railtype);
+		if (td.rail_desc.type != STR_NULL) {
+			SetDParam(0, td.rail_desc.type);
 			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_RAIL_TYPE, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
 		/* Rail speed limit */
-		if (td.rail_speed != 0) {
-			SetDParam(0, td.rail_speed);
+		if (td.rail_desc.speed != 0) {
+			SetDParam(0, td.rail_desc.speed);
 			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_RAIL_SPEED_LIMIT, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
+		/* Rail NewGRF name */
+		if (td.rail_desc.grf != nullptr) {
+			SetDParamStr(0, td.rail_desc.grf);
+			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_RAIL_NEWGRF_NAME, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
 		/* Road type name */
-		if (td.roadtype != STR_NULL) {
-			SetDParam(0, td.roadtype);
+		if (td.road_desc.type != STR_NULL) {
+			SetDParam(0, td.road_desc.type);
 			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_ROAD_TYPE, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
 		/* Road speed limit */
-		if (td.road_speed != 0) {
-			SetDParam(0, td.road_speed);
+		if (td.road_desc.speed != 0) {
+			SetDParam(0, td.road_desc.speed);
 			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_ROAD_SPEED_LIMIT, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
+		/* Road NewGRF name */
+		if (td.road_desc.grf != nullptr) {
+			SetDParamStr(0, td.road_desc.grf);
+			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_ROAD_NEWGRF_NAME, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
 		/* Tram type name */
-		if (td.tramtype != STR_NULL) {
-			SetDParam(0, td.tramtype);
+		if (td.tram_desc.type != STR_NULL) {
+			SetDParam(0, td.tram_desc.type);
 			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_TRAM_TYPE, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
 		/* Tram speed limit */
-		if (td.tram_speed != 0) {
-			SetDParam(0, td.tram_speed);
+		if (td.tram_desc.speed != 0) {
+			SetDParam(0, td.tram_desc.speed);
 			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_TRAM_SPEED_LIMIT, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* Tram NewGRF name */
+		if (td.tram_desc.grf != nullptr) {
+			SetDParamStr(0, td.tram_desc.grf);
+			GetString(this->landinfo_data[line_nr], STR_LANG_AREA_INFORMATION_TRAM_NEWGRF_NAME, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
 
