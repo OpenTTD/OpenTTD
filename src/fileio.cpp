@@ -79,10 +79,22 @@ static bool IsValidSearchPath(Searchpath sp)
 	return sp < _searchpaths.size() && !_searchpaths[sp].empty();
 }
 
-static void FillValidSearchPaths()
+static void FillValidSearchPaths(bool only_local_path)
 {
 	_valid_searchpaths.clear();
 	for (Searchpath sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) {
+		if (only_local_path) {
+			switch (sp) {
+				case SP_WORKING_DIR:      // Can be influence by "-c" option.
+				case SP_BINARY_DIR:       // Most likely contains all the language files.
+				case SP_AUTODOWNLOAD_DIR: // Otherwise we cannot download in-game content.
+					break;
+
+				default:
+					continue;
+			}
+		}
+
 		if (IsValidSearchPath(sp)) _valid_searchpaths.emplace_back(sp);
 	}
 }
@@ -952,11 +964,12 @@ std::string _personal_dir;
  * fill all other paths (save dir, autosave dir etc) and
  * make the save and scenario directories.
  * @param exe the path from the current path to the executable
+ * @param only_local_path Whether we shouldn't fill searchpaths with global folders.
  */
-void DeterminePaths(const char *exe)
+void DeterminePaths(const char *exe, bool only_local_path)
 {
 	DetermineBasePaths(exe);
-	FillValidSearchPaths();
+	FillValidSearchPaths(only_local_path);
 
 #ifdef USE_XDG
 	std::string config_home;
@@ -1023,6 +1036,13 @@ void DeterminePaths(const char *exe)
 		/* We are using the XDG configuration home for the config file,
 		 * then store the rest in the XDG data home folder. */
 		_personal_dir = _searchpaths[SP_PERSONAL_DIR_XDG];
+		if (only_local_path) {
+			/* In case of XDG and we only want local paths and we detected that
+			 * the user either manually indicated the XDG path or didn't use
+			 * "-c" option, we change the working-dir to the XDG personal-dir,
+			 * as this is most likely what the user is expecting. */
+			_searchpaths[SP_WORKING_DIR] = _searchpaths[SP_PERSONAL_DIR_XDG];
+		}
 	} else
 #endif
 	{
@@ -1047,8 +1067,9 @@ void DeterminePaths(const char *exe)
 
 	/* If we have network we make a directory for the autodownloading of content */
 	_searchpaths[SP_AUTODOWNLOAD_DIR] = _personal_dir + "content_download" PATHSEP;
+	DEBUG(misc, 4, "%s added as search path", _searchpaths[SP_AUTODOWNLOAD_DIR].c_str());
 	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
-	FillValidSearchPaths();
+	FillValidSearchPaths(only_local_path);
 
 	/* Create the directory for each of the types of content */
 	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, BASESET_DIR, NEWGRF_DIR, AI_DIR, AI_LIBRARY_DIR, GAME_DIR, GAME_LIBRARY_DIR };
