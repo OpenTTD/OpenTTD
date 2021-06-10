@@ -183,10 +183,7 @@ static const SaveLoad _old_waypoint_desc[] = {
 };
 
 struct CHKPChunkHandler : ChunkHandler {
-	CHKPChunkHandler() : ChunkHandler('CHKP', CH_READONLY)
-	{
-		this->fix_pointers = true;
-	}
+	CHKPChunkHandler() : ChunkHandler('CHKP', CH_READONLY) {}
 
 	void Load() const override
 	{

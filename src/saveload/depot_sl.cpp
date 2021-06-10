@@ -30,10 +30,7 @@ static const SaveLoad _depot_desc[] = {
 };
 
 struct DEPTChunkHandler : ChunkHandler {
-	DEPTChunkHandler() : ChunkHandler('DEPT', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	DEPTChunkHandler() : ChunkHandler('DEPT', CH_TABLE) {}
 
 	void Save() const override
 	{

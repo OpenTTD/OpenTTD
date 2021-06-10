@@ -384,7 +384,6 @@ void DoExitSave();
 SaveOrLoadResult SaveWithFilter(struct SaveFilter *writer, bool threaded);
 SaveOrLoadResult LoadWithFilter(struct LoadFilter *reader);
 
-typedef void ChunkSaveLoadProc();
 typedef void AutolengthProc(void *arg);
 
 /** Type of a chunk. */
@@ -402,23 +401,9 @@ enum ChunkType {
 /** Handlers and description of chunk. */
 struct ChunkHandler {
 	uint32 id;                          ///< Unique ID (4 letters).
-	ChunkSaveLoadProc *save_proc;       ///< Save procedure of the chunk.
-	ChunkSaveLoadProc *load_proc;       ///< Load procedure of the chunk.
-	ChunkSaveLoadProc *ptrs_proc;       ///< Manipulate pointers in the chunk.
-	ChunkSaveLoadProc *load_check_proc; ///< Load procedure for game preview.
 	ChunkType type;                     ///< Type of the chunk. @see ChunkType
 
-	bool fix_pointers = false;
-	bool load_check = false;
-
 	ChunkHandler(uint32 id, ChunkType type) : id(id), type(type) {}
-
-	ChunkHandler(uint32 id, ChunkSaveLoadProc *save_proc, ChunkSaveLoadProc *load_proc, ChunkSaveLoadProc *ptrs_proc, ChunkSaveLoadProc *load_check_proc, ChunkType type)
-		: id(id), save_proc(save_proc), load_proc(load_proc), ptrs_proc(ptrs_proc), load_check_proc(load_check_proc), type(type)
-	{
-		this->fix_pointers = ptrs_proc != nullptr;
-		this->load_check = load_check_proc != nullptr;
-	}
 
 	virtual ~ChunkHandler() {}
 
@@ -426,13 +411,13 @@ struct ChunkHandler {
 	 * Save the chunk.
 	 * Must be overridden, unless Chunk type is CH_READONLY.
 	 */
-	virtual void Save() const;
+	virtual void Save() const { NOT_REACHED(); }
 
 	/**
 	 * Load the chunk.
 	 * Must be overridden.
 	 */
-	virtual void Load() const;
+	virtual void Load() const = 0;
 
 	/**
 	 * Fix the pointers.
@@ -440,7 +425,7 @@ struct ChunkHandler {
 	 * On load, pointers are filled with indices and need to be fixed to point to the real object.
 	 * Must be overridden if the chunk saves any pointer.
 	 */
-	virtual void FixPointers() const;
+	virtual void FixPointers() const {}
 
 	/**
 	 * Load the chunk for game preview.

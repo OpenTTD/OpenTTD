@@ -157,10 +157,7 @@ struct OPTSChunkHandler : ChunkHandler {
 };
 
 struct PATSChunkHandler : ChunkHandler {
-	PATSChunkHandler() : ChunkHandler('PATS', CH_TABLE)
-	{
-		this->load_check = true;
-	}
+	PATSChunkHandler() : ChunkHandler('PATS', CH_TABLE) {}
 
 	void Load() const override
 	{

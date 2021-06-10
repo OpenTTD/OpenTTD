@@ -28,10 +28,7 @@ static const SaveLoad _map_desc[] = {
 };
 
 struct MAPSChunkHandler : ChunkHandler {
-	MAPSChunkHandler() : ChunkHandler('MAPS', CH_TABLE)
-	{
-		this->load_check = true;
-	}
+	MAPSChunkHandler() : ChunkHandler('MAPS', CH_TABLE) {}
 
 	void Save() const override
 	{

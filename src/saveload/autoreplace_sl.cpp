@@ -26,10 +26,7 @@ static const SaveLoad _engine_renew_desc[] = {
 };
 
 struct ERNWChunkHandler : ChunkHandler {
-	ERNWChunkHandler() : ChunkHandler('ERNW', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	ERNWChunkHandler() : ChunkHandler('ERNW', CH_TABLE) {}
 
 	void Save() const override
 	{

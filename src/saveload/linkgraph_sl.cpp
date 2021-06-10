@@ -301,10 +301,7 @@ struct LGRJChunkHandler : ChunkHandler {
  * Link graph schedule.
  */
 struct LGRSChunkHandler : ChunkHandler {
-	LGRSChunkHandler() : ChunkHandler('LGRS', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	LGRSChunkHandler() : ChunkHandler('LGRS', CH_TABLE) {}
 
 	void Save() const override
 	{

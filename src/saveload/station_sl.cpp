@@ -485,10 +485,7 @@ static const SaveLoad _old_station_desc[] = {
 };
 
 struct STNSChunkHandler : ChunkHandler {
-	STNSChunkHandler() : ChunkHandler('STNS', CH_READONLY)
-	{
-		this->fix_pointers = true;
-	}
+	STNSChunkHandler() : ChunkHandler('STNS', CH_READONLY) {}
 
 	void Load() const override
 	{
@@ -659,10 +656,7 @@ static const SaveLoad _station_desc[] = {
 };
 
 struct STNNChunkHandler : ChunkHandler {
-	STNNChunkHandler() : ChunkHandler('STNN', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	STNNChunkHandler() : ChunkHandler('STNN', CH_TABLE) {}
 
 	void Save() const override
 	{
@@ -705,10 +699,7 @@ struct STNNChunkHandler : ChunkHandler {
 };
 
 struct ROADChunkHandler : ChunkHandler {
-	ROADChunkHandler() : ChunkHandler('ROAD', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	ROADChunkHandler() : ChunkHandler('ROAD', CH_TABLE) {}
 
 	void Save() const override
 	{

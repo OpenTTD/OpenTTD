@@ -30,10 +30,7 @@ static const SaveLoad _object_desc[] = {
 };
 
 struct OBJSChunkHandler : ChunkHandler {
-	OBJSChunkHandler() : ChunkHandler('OBJS', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	OBJSChunkHandler() : ChunkHandler('OBJS', CH_TABLE) {}
 
 	void Save() const override
 	{
