@@ -456,8 +456,8 @@ protected:
 public:
 	/** The super class ought to know what it's doing. */
 	friend class CargoList<StationCargoList, StationCargoPacketMap>;
-	/** The stations, via GoodsEntry, have a CargoList. */
-	friend SaveLoadTable GetGoodsDesc();
+	/* So we can use private/protected variables in the saveload code */
+	friend class SlStationGoods;
 
 	friend class CargoLoad;
 	friend class CargoTransfer;
