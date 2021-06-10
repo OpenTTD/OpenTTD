@@ -74,10 +74,7 @@ static const SaveLoad _grfconfig_desc[] = {
 
 
 struct NGRFChunkHandler : ChunkHandler {
-	NGRFChunkHandler() : ChunkHandler('NGRF', CH_TABLE)
-	{
-		this->load_check = true;
-	}
+	NGRFChunkHandler() : ChunkHandler('NGRF', CH_TABLE) {}
 
 	void Save() const override
 	{

@@ -75,10 +75,7 @@ static const SaveLoad _industry_desc[] = {
 };
 
 struct INDYChunkHandler : ChunkHandler {
-	INDYChunkHandler() : ChunkHandler('INDY', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	INDYChunkHandler() : ChunkHandler('INDY', CH_TABLE) {}
 
 	void Save() const override
 	{

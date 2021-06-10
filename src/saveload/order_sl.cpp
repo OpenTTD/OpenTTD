@@ -119,10 +119,7 @@ SaveLoadTable GetOrderDescription()
 }
 
 struct ORDRChunkHandler : ChunkHandler {
-	ORDRChunkHandler() : ChunkHandler('ORDR', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	ORDRChunkHandler() : ChunkHandler('ORDR', CH_TABLE) {}
 
 	void Save() const override
 	{
@@ -215,10 +212,7 @@ SaveLoadTable GetOrderListDescription()
 }
 
 struct ORDLChunkHandler : ChunkHandler {
-	ORDLChunkHandler() : ChunkHandler('ORDL', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	ORDLChunkHandler() : ChunkHandler('ORDL', CH_TABLE) {}
 
 	void Save() const override
 	{
@@ -277,10 +271,7 @@ SaveLoadTable GetOrderBackupDescription()
 }
 
 struct BKORChunkHandler : ChunkHandler {
-	BKORChunkHandler() : ChunkHandler('BKOR', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	BKORChunkHandler() : ChunkHandler('BKOR', CH_TABLE) {}
 
 	void Save() const override
 	{

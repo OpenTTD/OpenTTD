@@ -96,10 +96,7 @@ static const SaveLoad _date_check_desc[] = {
 /* Save load date related variables as well as persistent tick counters
  * XXX: currently some unrelated stuff is just put here */
 struct DATEChunkHandler : ChunkHandler {
-	DATEChunkHandler() : ChunkHandler('DATE', CH_TABLE)
-	{
-		this->load_check = true;
-	}
+	DATEChunkHandler() : ChunkHandler('DATE', CH_TABLE) {}
 
 	void Save() const override
 	{

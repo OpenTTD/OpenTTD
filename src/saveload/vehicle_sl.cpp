@@ -995,10 +995,7 @@ const static SaveLoad _vehicle_desc[] = {
 };
 
 struct VEHSChunkHandler : ChunkHandler {
-	VEHSChunkHandler() : ChunkHandler('VEHS', CH_SPARSE_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	VEHSChunkHandler() : ChunkHandler('VEHS', CH_SPARSE_TABLE) {}
 
 	void Save() const override
 	{

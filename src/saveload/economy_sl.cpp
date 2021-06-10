@@ -89,10 +89,7 @@ static const SaveLoad _cargopayment_desc[] = {
 };
 
 struct CAPYChunkHandler : ChunkHandler {
-	CAPYChunkHandler() : ChunkHandler('CAPY', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	CAPYChunkHandler() : ChunkHandler('CAPY', CH_TABLE) {}
 
 	void Save() const override
 	{

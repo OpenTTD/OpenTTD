@@ -498,11 +498,7 @@ static const SaveLoad _company_desc[] = {
 };
 
 struct PLYRChunkHandler : ChunkHandler {
-	PLYRChunkHandler() : ChunkHandler('PLYR', CH_TABLE)
-	{
-		this->load_check = true;
-		this->fix_pointers = true;
-	}
+	PLYRChunkHandler() : ChunkHandler('PLYR', CH_TABLE) {}
 
 	void Save() const override
 	{

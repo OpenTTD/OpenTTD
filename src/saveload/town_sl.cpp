@@ -287,10 +287,7 @@ struct HIDSChunkHandler : ChunkHandler {
 };
 
 struct CITYChunkHandler : ChunkHandler {
-	CITYChunkHandler() : ChunkHandler('CITY', CH_TABLE)
-	{
-		this->fix_pointers = true;
-	}
+	CITYChunkHandler() : ChunkHandler('CITY', CH_TABLE) {}
 
 	void Save() const override
 	{

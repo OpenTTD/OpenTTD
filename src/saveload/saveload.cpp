@@ -314,10 +314,8 @@ static void SlNullPointers()
 	_sl_version = SAVEGAME_VERSION;
 
 	for (const ChunkHandler &ch : ChunkHandlers()) {
-		if (ch.fix_pointers) {
-			Debug(sl, 3, "Nulling pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
-			ch.FixPointers();
-		}
+		Debug(sl, 3, "Nulling pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
+		ch.FixPointers();
 	}
 
 	assert(_sl.action == SLA_NULL);
@@ -2114,45 +2112,22 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 	if (offs != _sl.dumper->GetSize()) SlErrorCorrupt("Invalid chunk size");
 }
 
-void ChunkHandler::Save() const
-{
-	assert(this->save_proc != nullptr);
-	this->save_proc();
-}
-
-void ChunkHandler::Load() const
-{
-	assert(this->load_proc != nullptr);
-	this->load_proc();
-}
-
-void ChunkHandler::FixPointers() const
-{
-	assert(this->ptrs_proc != nullptr);
-	this->ptrs_proc();
-}
-
 void ChunkHandler::LoadCheck(size_t len) const
 {
-	if (this->load_check) {
-		assert(this->load_check_proc != nullptr);
-		this->load_check_proc();
-	} else {
-		switch (_sl.block_mode) {
-			case CH_TABLE:
-			case CH_SPARSE_TABLE:
-				SlTableHeader({});
-				FALLTHROUGH;
-			case CH_ARRAY:
-			case CH_SPARSE_ARRAY:
-				SlSkipArray();
-				break;
-			case CH_RIFF:
-				SlSkipBytes(len);
-				break;
-			default:
-				NOT_REACHED();
-		}
+	switch (_sl.block_mode) {
+		case CH_TABLE:
+		case CH_SPARSE_TABLE:
+			SlTableHeader({});
+			FALLTHROUGH;
+		case CH_ARRAY:
+		case CH_SPARSE_ARRAY:
+			SlSkipArray();
+			break;
+		case CH_RIFF:
+			SlSkipBytes(len);
+			break;
+		default:
+			NOT_REACHED();
 	}
 }
 
@@ -2352,10 +2327,8 @@ static void SlFixPointers()
 	_sl.action = SLA_PTRS;
 
 	for (const ChunkHandler &ch : ChunkHandlers()) {
-		if (ch.fix_pointers) {
-			Debug(sl, 3, "Fixing pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
-			ch.FixPointers();
-		}
+		Debug(sl, 3, "Fixing pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
+		ch.FixPointers();
 	}
 
 	assert(_sl.action == SLA_PTRS);
