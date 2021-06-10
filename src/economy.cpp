@@ -324,10 +324,12 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		Backup<CompanyID> cur_company2(_current_company, FILE_LINE);
 		const Company *c = Company::Get(old_owner);
 		for (i = 0; i < 4; i++) {
+			if (c->share_owners[i] == INVALID_OWNER) continue;
+
 			if (c->bankrupt_value == 0 && c->share_owners[i] == new_owner) {
 				/* You are the one buying the company; so don't sell the shares back to you. */
-				Company::Get(new_owner)->share_owners[i] = COMPANY_SPECTATOR;
-			} else if (c->share_owners[i] != INVALID_OWNER) {
+				Company::Get(new_owner)->share_owners[i] = INVALID_OWNER;
+			} else {
 				cur_company2.Change(c->share_owners[i]);
 				/* Sell the shares */
 				CommandCost res = DoCommand(0, old_owner, 0, DC_EXEC | DC_BANKRUPT, CMD_SELL_SHARE_IN_COMPANY);
