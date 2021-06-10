@@ -77,6 +77,7 @@ add_custom_target(find_version
                 -DREV_MAJOR=${PROJECT_VERSION_MAJOR}
                 -DREV_MINOR=${PROJECT_VERSION_MINOR}
                 -DREV_BUILD=${PROJECT_VERSION_PATCH}
+                -DWINDOWS=${WIN32}
                 -P "${CMAKE_SOURCE_DIR}/cmake/scripts/FindVersion.cmake"
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
         BYPRODUCTS ${GENERATED_SOURCE_FILES}
