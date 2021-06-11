@@ -76,7 +76,7 @@ public:
 	SQInteger Peek(HSQUIRRELVM vm);
 	SQInteger Exists(HSQUIRRELVM vm);
 	SQInteger Clear(HSQUIRRELVM vm);
-#endif
+#endif /* DOXYGEN_API */
 
 	/**
 	 * Check if the queue is empty.
