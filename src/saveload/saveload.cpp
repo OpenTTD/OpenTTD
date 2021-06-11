@@ -1467,6 +1467,10 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 			_sl.obj_len = old_obj_len;
 			_sl.need_length = old_need_length;
 
+			if (sld.cmd == SL_STRUCT) {
+				length += SlGetArrayLength(1);
+			}
+
 			return length;
 		}
 		default: NOT_REACHED();
@@ -1575,10 +1579,35 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 			if (!SlIsObjectValidInSavegame(sld)) return false;
 
 			switch (_sl.action) {
-				case SLA_SAVE: sld.handler->Save(object); break;
-				case SLA_LOAD_CHECK: sld.handler->LoadCheck(object); break;
-				case SLA_LOAD: sld.handler->Load(object); break;
-				case SLA_PTRS: sld.handler->FixPointers(object); break;
+				case SLA_SAVE: {
+					if (sld.cmd == SL_STRUCT) {
+						/* Store in the savegame if this struct was written or not. */
+						SlSetStructListLength(SlCalcObjMemberLength(object, sld) > SlGetArrayLength(1) ? 1 : 0);
+					}
+					sld.handler->Save(object);
+					break;
+				}
+
+				case SLA_LOAD_CHECK: {
+					if (sld.cmd == SL_STRUCT && !IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
+						SlGetStructListLength(1);
+					}
+					sld.handler->LoadCheck(object);
+					break;
+				}
+
+				case SLA_LOAD: {
+					if (sld.cmd == SL_STRUCT && !IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
+						SlGetStructListLength(1);
+					}
+					sld.handler->Load(object);
+					break;
+				}
+
+				case SLA_PTRS:
+					sld.handler->FixPointers(object);
+					break;
+
 				case SLA_NULL: break;
 				default: NOT_REACHED();
 			}
