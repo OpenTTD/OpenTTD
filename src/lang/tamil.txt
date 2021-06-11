@@ -851,8 +851,6 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO                              :{WHITE}{STATION
 STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION} இப்போது {STRING} {STRING} ஆகியவற்றை ஏற்றுக்கொள்கிறது
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}மானியம் இனிமேல் தரப்படாது:{}{}{STRING} இருந்து {STRING} {STRING} வரை போக்குவரத்திற்கு மானியம் வழங்கப்படாது
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} இற்கு சேவை மானியம் வழங்கப்படுகிறது!{}{} {STRING} முதல் {STRING} வரையிலான {STRING} சேவை அடுத்த ஆண்டுக்கு 50% கூடுதல் கட்டணம் செலுத்தும்!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} இற்கு சேவை மானியம் வழங்கப்படுகிறது!{}{}{STRING} முதல் {STRING} வரையிலான {STRING} சேவை அடுத்த ஆண்டுக்கு 4 மடங்கு கட்டணம் செலுத்தும்!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}இல் சாலை போக்குவரத்து பாதிப்பு!{}{}Road rebuilding programme funded by {STRING} brings 6 months of misery to motorists!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}போக்குவரத்து தனியுரிமை!

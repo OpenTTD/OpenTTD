@@ -985,11 +985,6 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}Ο στ�
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Έληξε η προσφορά επιδότησης:{}{}{STRING} από {G τον τη το} {STRING} πρός {G τον τη το} {STRING} δεν θα επιδοτείται πλέον.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Η επιδότηση αποσύρθηκε:{}{}Η υπηρεσια για {STRING.subs} απο το {STRING} προς το {STRING} δεν επιδοτείται πλέον.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING.subs} από {G τον τη το} {STRING} προς {G τον τη το} {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Η χρηματοδότηση της υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από τον σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται 50% παραπάνω για ένα έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από τον σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται διπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από το σταθμό {STRING} προς το σταθμό {STRING} θα χρεώνεται τριπλά για το επόμενο έτος!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρία {STRING}!{}{}Η υπηρεσία για {STRING.subs} από τον σταθμό {STRING} προς τον σταθμό {STRING} θα χρεώνεται τετραπλά για το επόμενο έτος!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα ανακατασκευής των δρόμων από την εταιρία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Μονοπώλιο μεταφορών!

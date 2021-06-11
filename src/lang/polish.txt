@@ -1263,11 +1263,6 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsydiowanie wygasło:{}{}{STRING} z {STRING} do {STRING} nie będzie już dotowane
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Koniec dotacji:{}{}Przewóz {STRING.d} z {STRING} do {STRING} nie jest już subsydiowany
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta usługi dotowanej:{}{}Pierwszy przewóz {STRING.d} z {STRING} do {STRING} będzie dotowany przez rok przez lokalne władze!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Przyznano subsydia dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany o 50% więcej przez następny rok!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Przyznano subsydia dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany podwójnie przez następny rok!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Przyznano subsydia dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany potrójnie przez następny rok!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Przyznano subsydia dla {STRING}!{}{}Przewóz {STRING.d} z {STRING} do {STRING} będzie opłacany poczwórnie przez następny rok!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Chaos na drogach w {TOWN}!{}{}Program przebudowy dróg ufundowany przez {STRING} przynosi 6 miesięcy męki dla kierowców!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopol transportowy!

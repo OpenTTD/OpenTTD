@@ -884,11 +884,6 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}보조금 지급 계약 파기:{}{}{1:STRING}에서 {2:STRING}까지의 {0:STRING} 수송은{}더 이상 보조금을 지급하지 않습니다.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}보조금 지급 만료:{}{}{1:STRING}에서 {2:STRING}까지의{}{0:STRING} 수송 보조금은 더 이상 지급되지 않습니다.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}보조금 지급 안내:{}{}처음으로 {1:STRING}에서 {2:STRING}까지{}{0:STRING}{G 0 "을" "를"} 수송하는 회사는{}지역 당국으로부터 보조금을 받게 될 것입니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 50%의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 2배의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{0:STRING}에게 보조금 지급!{}{}{2:STRING}에서 {3:STRING}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{STRING}에 의해 실시된 도로 보수공사 프로그램으로 인해 6개월 동안 운전자들이 불편을 겪을 것입니다!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}독점 수송!

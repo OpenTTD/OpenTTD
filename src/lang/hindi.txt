@@ -29,17 +29,21 @@ STR_CARGO_PLURAL_COAL                                           :कोयला
 STR_CARGO_SINGULAR_NOTHING                                      :
 STR_CARGO_SINGULAR_MAIZE                                        :मक्का
 STR_CARGO_SINGULAR_SWEETS                                       :मिठाई
+STR_CARGO_SINGULAR_TOFFEE                                       :टॉफी
 
 # Quantity of cargo
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_VALUABLES                                          :{COMMA}{NBSP}मूल्यवान वस्तुओं {P "का थैला" "के थैले"}
 
 # Two letter abbreviation of cargo name
 STR_ABBREV_NOTHING                                              :
+STR_ABBREV_COAL                                                 :{TINY_FONT}कोयला
 
 # 'Mode' of transport for cargoes
 
 # Colours, do not shuffle
 STR_COLOUR_PINK                                                 :गुलाबी
+STR_COLOUR_RED                                                  :लाल
 
 # Units used in OpenTTD
 
@@ -62,6 +66,7 @@ STR_COLOUR_PINK                                                 :गुलाब
 # On screen keyboard window
 
 # Measurement tooltip
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}लंबाई : {NUM}{}ऊंचाई का अंतर : {HEIGHT}
 
 
 # These are used in buttons
@@ -75,6 +80,7 @@ STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :पिछले
 # Group by options for vehicle list
 
 # Tooltips for the main toolbar
+STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}ध्वनि/संगीत विकल्प
 
 # Extra tooltips for the scenario editor toolbar
 
@@ -104,6 +110,7 @@ STR_FILE_MENU_SEPARATOR                                         :
 ############ range ends here
 
 ############ range for industry menu starts
+STR_INDUSTRY_MENU_INDUSTRY_CHAIN                                :औद्योगिक शृंखला
 ############ range ends here
 
 ############ range for railway construction menu starts
@@ -136,6 +143,7 @@ STR_ORDINAL_NUMBER_2ND                                          :द्वित
 ############ range for ordinal numbers ends
 
 ############ range for days starts
+STR_DAY_NUMBER_15TH                                             :१५वीं
 ############ range for days ends
 
 ############ range for months starts
@@ -156,6 +164,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 # Graph key window
 
 # Company league window
+STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPANY} {BLACK}{COMPANY_NUM} '{STRING}'
 
 # Performance detail window
 ############ Those following lines need to be in this order!!
@@ -168,16 +177,20 @@ STR_MUSIC_TRACK_DIGIT                                           :{TINY_FONT}{DKG
 # Playlist window
 
 # Highscore window
+STR_HIGHSCORE_PRESIDENT_OF_COMPANY_ACHIEVES_STATUS              :{BIG_FONT}{WHITE}{1:COMPANY} के {0:PRESIDENT_NAME} ने '{2:STRING}' की स्थिति प्राप्त की!
 
 # Smallmap window
 
 
+STR_SMALLMAP_LEGENDA_BARE_LAND                                  :{TINY_FONT}{BLACK}रिक्त भूमि
+STR_SMALLMAP_LEGENDA_TOWNS                                      :{TINY_FONT}{BLACK}नगर
 
 STR_SMALLMAP_LINKSTATS                                          :{TINY_FONT}{STRING}
 STR_SMALLMAP_COMPANY                                            :{TINY_FONT}{COMPANY}
 STR_SMALLMAP_TOWN                                               :{TINY_FONT}{WHITE}{TOWN}
 
 # Status bar messages
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * ठहरा हुआ (संपर्क चित्र अद्यतन के लिये प्रतीक्षारत) * *
 
 # News message history
 
@@ -186,6 +199,7 @@ STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLAC
 
 
 
+STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLACK}{STRING} ने {TOWN} के पास निर्माण शुरु किया!
 
 
 
@@ -208,6 +222,7 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 # Game options window
 
 ############ start of currency region
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :मार्का, फिनलैंड (FIM)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :हाँग काँग डॉलर (एचकेडी)
 ############ end of currency region
 
@@ -226,12 +241,14 @@ STR_GAME_OPTIONS_TOWN_NAME_ITALIAN                              :इटैलि
 STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :प्रत्येक माह
 ############ end of autosave dropdown
 
+STR_GAME_OPTIONS_LANGUAGE_PERCENTAGE                            :{STRING} ({NUM}% पूर्ण)
 
 
 
 
 
 
+STR_GAME_OPTIONS_GUI_ZOOM_DROPDOWN_NORMAL                       :सामान्य
 
 
 
@@ -243,6 +260,7 @@ STR_GAME_OPTIONS_AUTOSAVE_DROPDOWN_EVERY_1_MONTH                :प्रत्
 
 # Custom currency window
 
+STR_CURRENCY_DECREASE_EXCHANGE_RATE_TOOLTIP                     :{BLACK}एक पाउंड (£) की तुलना में अपनी मुद्रा का अवमूल्यन करें
 
 
 
@@ -270,13 +288,23 @@ STR_CONFIG_SETTING_COMPANIES_OFF                                :बन्द
 
 
 
+STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_HELPTEXT                    :मानचित्र के भूभाग की अधिकतम ऊंचाई निर्धारित करें। "(स्वतः)" चुनने पर भूभाग जनन के बाद एक उपयुक्त संख्या चुन ली जायेगी।
 STR_CONFIG_SETTING_MAP_HEIGHT_LIMIT_VALUE                       :{NUM}
+STR_CONFIG_SETTING_TRAIN_SLOPE_STEEPNESS_HELPTEXT               :ट्रेन के लिये ढलान की तेजी की स्थापना। ऊँची संख्या से चढ़ान पर चढ़ना अधिक कठिन हो जाता है।
+STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :निर्दिष्ट करें कि ट्रेनों को स्टेशन पर कहाँ रुकना चाहिये। स्टेशन में प्रवेश के पास 'समीप का छोर', स्टेशन के बीच में 'मध्य', और प्रवेश की उलटी ओर 'दूर का छोर' है। ध्यान दें कि यह विन्यास केवल नये निर्देशों के लिये मानक स्थापित करता है। प्रत्येक निर्देश को अलग से किसी अन्य व्यवहार के लिये स्थापित किया जा सकता है।
+STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :समीप का छोर
+STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :मध्य
+STR_CONFIG_SETTING_STOP_LOCATION_FAR_END                        :दूर का छोर
+STR_CONFIG_SETTING_BRIBE_HELPTEXT                               :कंपनियों को स्थानीय नगर प्रशासन को रिश्वत देने की अनुमति दें। यदि रिश्वत पर किसी निरीक्षक की दृष्टि पड़ती है तो कंपनी छः महीने के लिये नगर में काम नहीं कर पायेगी।
 
 
 
+STR_CONFIG_SETTING_ORDER_REVIEW_HELPTEXT                        :सक्षम होने पर वाहनों के निर्देशों की आवधिक जाँच की जाती है, और कुछ सुस्पष्ट मामलों को पता चलते ही एक संदेश द्वारा बताया जाता है।
 STR_CONFIG_SETTING_ORDER_REVIEW_OFF                             :नहीं
 
 
+STR_CONFIG_SETTING_STATION_SPREAD_HELPTEXT                      :एक स्टेशन के हिस्सों के विस्तार हेतु अधिकतम क्षेत्र निर्धारित करें। ऊंची संख्या खेल को धीमा कर सकती है।
+STR_CONFIG_SETTING_SMALLMAP_LAND_COLOUR_VIOLET                  :बैंगनी
 
 
 
@@ -290,6 +318,7 @@ STR_CONFIG_SETTING_SOUND_NEWS                                   :समाचा
 
 
 
+STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :दुर्घटनायें / आपदायें : {STRING}
 
 
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
@@ -306,6 +335,7 @@ STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :२x
 
 
 
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}सामान्य
 
 
 
@@ -316,8 +346,10 @@ STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :२x
 
 # Intro window
 
+STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}उभार-मानचित्र खेलें
 
 
+STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}अपनी इच्छानुसार एक क्रीड़ा-विश्व/परिदृश्य बनायें
 
 
 
@@ -335,6 +367,7 @@ STR_QUIT_YES                                                    :{BLACK}हा�
 
 # Face selection window
 
+STR_FACE_LOAD_DONE                                              :{WHITE}ओपनटीटीडी प्रारूप पत्र से आपका प्रिय चेहरा भर लिया गया है
 
 
 # Network server list
@@ -390,14 +423,18 @@ STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}उद�
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :खेल अभी भी ठहरा हुआ है ({STRING}, {STRING}, {STRING})
 ############ End of leave-in-this-order
+STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :छोड़ रहा है
 
 # Content downloading window
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}यह आपके पास पहले से मौजूद है
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}यह सामग्री अज्ञात है और इसे ओपनटीटीडी में प्राप्त नहीं किया जा सकता है
 
 # Order of these is important!
 
 # Content downloading progress window
 
 # Content downloading error messages
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}डाउनलोड असफल हुआ...
 
 
 
@@ -425,6 +462,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :खेल अ�
 # Rail station construction window
 
 
+STR_STATION_CLASS_DFLT                                          :मानक स्टेशन
 
 # Signal window
 
@@ -439,6 +477,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :खेल अ�
 # Road vehicle station construction window
 
 # Waterways toolbar (last two for SE only)
+STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}नहर बनायें। अनुमानित मूल्य जानने के लिये Shift दबायें
 
 # Ship depot construction window
 
@@ -449,6 +488,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :खेल अ�
 # Airport construction window
 
 
+STR_AIRPORT_CLASS_SMALL                                         :लघु विमानतल
 
 
 # Landscaping toolbar
@@ -481,11 +521,13 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}शह�
 # Houses come directly from their building names
 
 
+STR_LAI_STATION_DESCRIPTION_RAILROAD_STATION                    :रेलवे स्टेशन
 
 
 # Industries come directly from their industry names
 
 
+STR_LAI_BRIDGE_DESCRIPTION_RAIL_SUSPENSION_STEEL                :इस्पात का रेल झूला पुल
 
 
 
@@ -493,6 +535,7 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}शह�
 # About OpenTTD window
 
 # Framerate display window
+STR_FRAMERATE_MS_WARN                                           :{YELLOW}{DECIMAL} ms
 STR_FRAMERATE_BYTES_GOOD                                        :{LTBLUE}{BYTES}
 STR_FRAMERATE_BYTES_WARN                                        :{YELLOW}{BYTES}
 STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
@@ -509,6 +552,7 @@ STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 
 # Strings for map borders at game generation
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}जल
+STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}यादृच्छिक
 
 
 
@@ -562,6 +606,8 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 
 # Town view window
 STR_TOWN_VIEW_TOWN_CAPTION                                      :{WHITE}{TOWN}
+STR_TOWN_VIEW_CARGO_FOR_TOWNGROWTH_DELIVERED                    :{ORANGE}{CARGO_TINY} / {CARGO_LONG}{GREEN} (पहुंचाया गया)
+STR_TOWN_VIEW_LOCAL_AUTHORITY_BUTTON                            :{BLACK}स्थानीय प्रशासन
 STR_TOWN_VIEW_LOCAL_AUTHORITY_TOOLTIP                           :{BLACK}स्थानीय प्राधिकारी के बारे में जानकारी दिखाएँ
 
 STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}फैलाएँ
@@ -588,6 +634,7 @@ STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING
 STR_STORY_BOOK_NEXT_PAGE_TOOLTIP                                :{BLACK}अगले पृष्ठ पर जाएँ
 
 # Station list window
+STR_STATION_LIST_TOOLTIP                                        :{BLACK}स्टेशनों के नाम - मुख्य दृश्य को स्टेशन पर केंद्रित करने के लिये स्टेशन के नाम पर क्लिक करें। Ctrl+क्लिक करने पर एक नया दृश्य-द्वार खुलता है।
 STR_STATION_LIST_STATION                                        :{YELLOW}{STATION} {STATION_FEATURES}
 STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOINT}
 
@@ -598,6 +645,7 @@ STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_L
 
 
 
+STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} {STATION} द्वारा
 
 
 ############ range for rating starts
@@ -623,6 +671,7 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 
 
 
+STR_COMPANY_VIEW_COMPANY_NAME_BUTTON                            :{BLACK}कंपनी का नाम
 
 
 
@@ -633,6 +682,7 @@ STR_COMPANY_VIEW_PRESIDENT_MANAGER_TITLE                        :{WHITE}{PRESIDE
 STR_INDUSTRY_DIRECTORY_CAPTION                                  :{WHITE}उद्योग
 STR_INDUSTRY_DIRECTORY_ITEM_NOPROD                              :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_DIRECTORY_ITEM_PROD1                               :{ORANGE}{INDUSTRY} {STRING}
+STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 
 # Industry view
 STR_INDUSTRY_VIEW_CAPTION                                       :{WHITE}{INDUSTRY}
@@ -665,6 +715,8 @@ STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING
 ############ range for vehicle availability starts
 ############ range for vehicle availability ends
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}मूल्य : {GOLD}{CURRENCY_LONG}{BLACK} भार : {GOLD}{WEIGHT_SHORT}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}भार : {GOLD}{WEIGHT_SHORT} ({WEIGHT_SHORT})
 
 
 
@@ -673,6 +725,7 @@ STR_INDUSTRY_VIEW_ACCEPT_CARGO                                  :{YELLOW}{STRING
 
 
 
+STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}छिपायें
 
 
 
@@ -764,6 +817,7 @@ STR_ORDER_TEXT                                                  :{STRING} {STRIN
 
 
 
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}इस मार्ग पर ढोये जा रहे नौभार को बदलने के लिये नये प्रकार का नौभार चुनें। Ctrl+क्लिक करने पर परिवर्तन का आदेश निरस्त हो जायेगा।
 
 
 
@@ -779,6 +833,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :के बर�
 # String parts to build the order string
 
 
+STR_ORDER_NEAREST_DEPOT                                         :निकटतम
 STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} {STRING} {STRING}
 STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
@@ -799,6 +854,7 @@ STR_ORDER_GO_TO_STATION                                         :{STRING} {STATI
 
 
 
+STR_TIMETABLE_STARTING_DATE_TOOLTIP                             :{BLACK}इस समयसारिणी के लिये एक आरंभिक दिनांक चुनें। Ctrl+क्लिक इस समयसारिणी की प्रारंभिक तिथि निर्धारित करता है और यदि निर्देश पूर्णतः समयसारिणी-बद्ध है तो इस निर्देश को साझा करने वाले सभी वाहनों को उनके परस्पर निर्देशों के आधार पर समानता से वितरित करता है।
 
 
 
@@ -838,8 +894,10 @@ STR_AI_CONFIG_CHANGE_NONE                                       :
 
 # Income 'floats'
 STR_INCOME_FLOAT_COST                                           :{RED}मूल्य: {CURRENCY_LONG}
+STR_FEEDER_COST                                                 :{YELLOW}हस्तांतरण : {CURRENCY_LONG}{WHITE} / {RED}मूल्य : {CURRENCY_LONG}
 
 # Saveload messages
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :फाइल लिखने में असमर्थ
 
 # Map generation messages
 
@@ -866,8 +924,10 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}... ब�
 
 
 # Town related errors
+STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}नगर का नाम नहीं बदला जा सकता है...
 
 # Industry related errors
+STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... वन केवल बर्फ की सीमा के ऊपर ही लगाये जा सकते हैं।
 
 
 # Station construction related errors
@@ -888,6 +948,7 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}... ब�
 
 
 # Autoreplace related errors
+STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}स्वतः नवीनीकरण/बदलाव का कोई भी नियम लागू नहीं किया गया
 
 # Rail construction errors
 
@@ -934,6 +995,7 @@ STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}जह�
 # Translatable comment for OpenTTD's desktop shortcut
 
 # Translatable descriptions in media/baseset/*.ob* files
+STR_BASESOUNDS_WIN_DESCRIPTION                                  :ट्रांस्पोर्ट टायिकून डीलक्स के विंडोज संस्करण की मूल ध्वनियां।
 
 ##id 0x2000
 # Town building names
@@ -949,6 +1011,7 @@ STR_INDUSTRY_NAME_BANK_TROPIC_ARCTIC                            :बैंक
 STR_SV_EMPTY                                                    :
 
 STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} उत्तर
 STR_SV_STNAME_AIRPORT                                           :{STRING} हवाई अड्डा
 STR_SV_STNAME_BUOY                                              :{STRING}
 STR_SV_STNAME_WAYPOINT                                          :{STRING}
@@ -959,13 +1022,16 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :कोयला वाहन
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :फल वाहन
+STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :खिलौनों का डब्बा
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :बबल वैन
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :प्लॉडीपीहट एमके३ बस
+STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :फोस्टर कवचयुक्त ट्रक
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :बेकवेल कॉट्सवॉल्ड एलबी-३
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :बेकवेल लकेट एलबी-९
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :बेकवेल लकेट एलबी८०
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_11                :बेकवेल लकेट एलबी-११
 STR_VEHICLE_NAME_AIRCRAFT_DARWIN_600                            :डार्विन ‌६००
+STR_VEHICLE_NAME_AIRCRAFT_AIRTAXI_A34_1000                      :एयरटैक्सी ए३४-१०००
 
 ##id 0x8800
 # Formatting of some strings
@@ -978,6 +1044,7 @@ STR_FORMAT_INDUSTRY_NAME                                        :{TOWN} {STRING}
 
 
 # Viewport strings
+STR_VIEWPORT_TOWN_POP                                           :{WHITE}{TOWN} ({COMMA})
 STR_VIEWPORT_TOWN                                               :{WHITE}{TOWN}
 STR_VIEWPORT_TOWN_TINY_BLACK                                    :{TINY_FONT}{BLACK}{TOWN}
 STR_VIEWPORT_TOWN_TINY_WHITE                                    :{TINY_FONT}{WHITE}{TOWN}

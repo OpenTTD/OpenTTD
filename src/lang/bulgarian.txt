@@ -856,11 +856,6 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Предложението за субсидия изтече:{}{}Превозът на {STRING} от {STRING} до {STRING} повече няма да получава субсидия.
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Анулирана субсидия:{}{}Превозът на {STRING} от {STRING} до {STRING} вече не се субсидира.
-STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Предложена субсидия:{}{}Първият превоз на {STRING} от {STRING} до {STRING} ще спечели едногодишна субсидия от местните власти!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}{STRING} спечели субсидия!{}{}Превозът на {STRING} от {STRING} до {STRING} ще се заплаща с 50% повече през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}{STRING} спечели субсидия!!{}{}Превозът на {STRING} от {STRING} до {STRING} ще се заплаща двойно през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}{STRING} спечели субсидия!!{}{}Превозът на {STRING} от {STRING} до {STRING} ще се заплаща тройно през следващата година!
-STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}{STRING} спечели субсидия!!{}{}Превозът на {STRING} от {STRING} до {STRING} ще се заплаща четворно през следващата година!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Хаос на трафика в {TOWN}!{}{}Програмата за пътна реконструкция, финансирана от {STRING}, доведе до 6 месеца мизерия за мотористите!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Монополист на транспорта!
