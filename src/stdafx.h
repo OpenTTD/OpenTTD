@@ -425,6 +425,9 @@ static_assert(SIZE_MAX >= UINT32_MAX);
 #	define unlikely(x) (x)
 #endif /* __GNUC__ || __clang__ */
 
+/* For the FMT library we only want to use the headers, not link to some library. */
+#define FMT_HEADER_ONLY
+
 void NORETURN CDECL usererror(const char *str, ...) WARN_FORMAT(1, 2);
 void NORETURN CDECL error(const char *str, ...) WARN_FORMAT(1, 2);
 #define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
