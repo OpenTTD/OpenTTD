@@ -103,7 +103,7 @@ char *DumpDebugFacilityNames(char *buf, char *last)
  * @param dbg Debug category.
  * @param buf Text line to output.
  */
-static void debug_print(const char *dbg, const char *buf)
+void debug_print(const char *dbg, const char *buf)
 {
 	if (_debug_socket != INVALID_SOCKET) {
 		char buf2[1024 + 32];
