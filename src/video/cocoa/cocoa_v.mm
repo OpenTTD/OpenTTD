@@ -363,7 +363,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	unsigned int style = NSTitledWindowMask | NSResizableWindowMask | NSMiniaturizableWindowMask | NSClosableWindowMask;
 	this->window = [ [ OTTD_CocoaWindow alloc ] initWithContentRect:contentRect styleMask:style backing:NSBackingStoreBuffered defer:NO driver:this ];
 	if (this->window == nil) {
-		DEBUG(driver, 0, "Could not create the Cocoa window.");
+		Debug(driver, 0, "Could not create the Cocoa window.");
 		this->setup = false;
 		return false;
 	}
@@ -391,7 +391,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	NSRect view_frame = [ this->window contentRectForFrameRect:[ this->window frame ] ];
 	this->cocoaview = [ [ OTTD_CocoaView alloc ] initWithFrame:view_frame ];
 	if (this->cocoaview == nil) {
-		DEBUG(driver, 0, "Could not create the event wrapper view.");
+		Debug(driver, 0, "Could not create the event wrapper view.");
 		this->setup = false;
 		return false;
 	}
@@ -400,7 +400,7 @@ bool VideoDriver_Cocoa::MakeWindow(int width, int height)
 	/* Create content view. */
 	NSView *draw_view = this->AllocateDrawView();
 	if (draw_view == nil) {
-		DEBUG(driver, 0, "Could not create the drawing view.");
+		Debug(driver, 0, "Could not create the drawing view.");
 		this->setup = false;
 		return false;
 	}

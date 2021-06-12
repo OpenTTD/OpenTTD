@@ -89,7 +89,7 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 	if (info->engine->MethodExists(*info->SQ_instance, "GetAPIVersion")) {
 		if (!info->engine->CallStringMethodStrdup(*info->SQ_instance, "GetAPIVersion", &info->api_version, MAX_GET_OPS)) return SQ_ERROR;
 		if (!CheckAPIVersion(info->api_version)) {
-			DEBUG(script, 1, "Loading info.nut from (%s.%d): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
+			Debug(script, 1, "Loading info.nut from ({}.{}): GetAPIVersion returned invalid version", info->GetName(), info->GetVersion());
 			return SQ_ERROR;
 		}
 	} else {

@@ -454,7 +454,7 @@ uint32 Station::GetNewGRFVariable(const ResolverObject &object, byte variable, b
 		}
 	}
 
-	DEBUG(grf, 1, "Unhandled station variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled station variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;
@@ -486,7 +486,7 @@ uint32 Waypoint::GetNewGRFVariable(const ResolverObject &object, byte variable, 
 		}
 	}
 
-	DEBUG(grf, 1, "Unhandled station variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled station variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;

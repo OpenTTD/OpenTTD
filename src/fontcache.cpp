@@ -259,16 +259,16 @@ TrueTypeFontCache::GlyphEntry *TrueTypeFontCache::GetGlyphPtr(GlyphID key)
 void TrueTypeFontCache::SetGlyphPtr(GlyphID key, const GlyphEntry *glyph, bool duplicate)
 {
 	if (this->glyph_to_sprite == nullptr) {
-		DEBUG(freetype, 3, "Allocating root glyph cache for size %u", this->fs);
+		Debug(freetype, 3, "Allocating root glyph cache for size {}", this->fs);
 		this->glyph_to_sprite = CallocT<GlyphEntry*>(256);
 	}
 
 	if (this->glyph_to_sprite[GB(key, 8, 8)] == nullptr) {
-		DEBUG(freetype, 3, "Allocating glyph cache for range 0x%02X00, size %u", GB(key, 8, 8), this->fs);
+		Debug(freetype, 3, "Allocating glyph cache for range 0x{:02X}00, size {}", GB(key, 8, 8), this->fs);
 		this->glyph_to_sprite[GB(key, 8, 8)] = CallocT<GlyphEntry>(256);
 	}
 
-	DEBUG(freetype, 4, "Set glyph for unicode character 0x%04X, size %u", key, this->fs);
+	Debug(freetype, 4, "Set glyph for unicode character 0x{:04X}, size {}", key, this->fs);
 	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].sprite = glyph->sprite;
 	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].width = glyph->width;
 	this->glyph_to_sprite[GB(key, 8, 8)][GB(key, 0, 8)].duplicate = duplicate;
@@ -468,7 +468,7 @@ void FreeTypeFontCache::SetFontSize(FontSize fs, FT_Face face, int pixels)
 		this->height       = this->ascender - this->descender;
 	} else {
 		/* Both FT_Set_Pixel_Sizes and FT_Select_Size failed. */
-		DEBUG(freetype, 0, "Font size selection failed. Using FontCache defaults.");
+		Debug(freetype, 0, "Font size selection failed. Using FontCache defaults.");
 	}
 }
 
@@ -498,7 +498,7 @@ static void LoadFreeTypeFont(FontSize fs)
 			return;
 		}
 
-		DEBUG(freetype, 2, "Initialized");
+		Debug(freetype, 2, "Initialized");
 	}
 
 	const char *font_name = settings->font.c_str();
@@ -527,7 +527,7 @@ static void LoadFreeTypeFont(FontSize fs)
 	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, &face);
 
 	if (error == FT_Err_Ok) {
-		DEBUG(freetype, 2, "Requested '%s', using '%s %s'", font_name, face->family_name, face->style_name);
+		Debug(freetype, 2, "Requested '{}', using '{} {}'", font_name, face->family_name, face->style_name);
 
 		/* Attempt to select the unicode character map */
 		error = FT_Select_Charmap(face, ft_encoding_unicode);

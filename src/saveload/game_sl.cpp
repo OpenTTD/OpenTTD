@@ -77,15 +77,15 @@ static void Load_GSDT()
 			config->Change(_game_saveload_name.c_str(), -1, false, _game_saveload_is_random);
 			if (!config->HasScript()) {
 				if (_game_saveload_name.compare("%_dummy") != 0) {
-					DEBUG(script, 0, "The savegame has an GameScript by the name '%s', version %d which is no longer available.", _game_saveload_name.c_str(), _game_saveload_version);
-					DEBUG(script, 0, "This game will continue to run without GameScript.");
+					Debug(script, 0, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
+					Debug(script, 0, "This game will continue to run without GameScript.");
 				} else {
-					DEBUG(script, 0, "The savegame had no GameScript available at the time of saving.");
-					DEBUG(script, 0, "This game will continue to run without GameScript.");
+					Debug(script, 0, "The savegame had no GameScript available at the time of saving.");
+					Debug(script, 0, "This game will continue to run without GameScript.");
 				}
 			} else {
-				DEBUG(script, 0, "The savegame has an GameScript by the name '%s', version %d which is no longer available.", _game_saveload_name.c_str(), _game_saveload_version);
-				DEBUG(script, 0, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
+				Debug(script, 0, "The savegame has an GameScript by the name '{}', version {} which is no longer available.", _game_saveload_name, _game_saveload_version);
+				Debug(script, 0, "The latest version of that GameScript has been loaded instead, but it'll not get the savegame data as it's incompatible.");
 			}
 			/* Make sure the GameScript doesn't get the saveload data, as it was not the
 			 *  writer of the saveload data in the first place */

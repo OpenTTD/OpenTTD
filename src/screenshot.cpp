@@ -237,13 +237,13 @@ static bool MakeBMPImage(const char *name, ScreenshotCallback *callb, void *user
 
 static void PNGAPI png_my_error(png_structp png_ptr, png_const_charp message)
 {
-	DEBUG(misc, 0, "[libpng] error: %s - %s", message, (const char *)png_get_error_ptr(png_ptr));
+	Debug(misc, 0, "[libpng] error: {} - {}", message, (const char *)png_get_error_ptr(png_ptr));
 	longjmp(png_jmpbuf(png_ptr), 1);
 }
 
 static void PNGAPI png_my_warning(png_structp png_ptr, png_const_charp message)
 {
-	DEBUG(misc, 1, "[libpng] warning: %s - %s", message, (const char *)png_get_error_ptr(png_ptr));
+	Debug(misc, 1, "[libpng] warning: {} - {}", message, (const char *)png_get_error_ptr(png_ptr));
 }
 
 /**
@@ -444,7 +444,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	bool success;
 
 	if (pixelformat == 32) {
-		DEBUG(misc, 0, "Can't convert a 32bpp screenshot to PCX format. Please pick another format.");
+		Debug(misc, 0, "Can't convert a 32bpp screenshot to PCX format. Please pick another format.");
 		return false;
 	}
 	if (pixelformat != 8 || w == 0) return false;

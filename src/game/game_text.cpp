@@ -32,7 +32,7 @@ void CDECL strgen_warning(const char *s, ...)
 	va_start(va, s);
 	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
-	DEBUG(script, 0, "%s:%d: warning: %s", _file, _cur_line, buf);
+	Debug(script, 0, "{}:{}: warning: {}", _file, _cur_line, buf);
 	_warnings++;
 }
 
@@ -43,7 +43,7 @@ void CDECL strgen_error(const char *s, ...)
 	va_start(va, s);
 	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
-	DEBUG(script, 0, "%s:%d: error: %s", _file, _cur_line, buf);
+	Debug(script, 0, "{}:{}: error: {}", _file, _cur_line, buf);
 	_errors++;
 }
 
@@ -54,7 +54,7 @@ void NORETURN CDECL strgen_fatal(const char *s, ...)
 	va_start(va, s);
 	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
-	DEBUG(script, 0, "%s:%d: FATAL: %s", _file, _cur_line, buf);
+	Debug(script, 0, "{}:{}: FATAL: {}", _file, _cur_line, buf);
 	throw std::exception();
 }
 

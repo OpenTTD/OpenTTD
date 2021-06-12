@@ -568,8 +568,8 @@ bool AfterLoadGame()
 	if (IsSavegameVersionBefore(SLV_119)) {
 		_pause_mode = (_pause_mode == 2) ? PM_PAUSED_NORMAL : PM_UNPAUSED;
 	} else if (_network_dedicated && (_pause_mode & PM_PAUSED_ERROR) != 0) {
-		DEBUG(net, 0, "The loading savegame was paused due to an error state");
-		DEBUG(net, 0, "  This savegame cannot be used for multiplayer");
+		Debug(net, 0, "The loading savegame was paused due to an error state");
+		Debug(net, 0, "  This savegame cannot be used for multiplayer");
 		/* Restore the signals */
 		ResetSignalHandlers();
 		return false;
@@ -2308,7 +2308,7 @@ bool AfterLoadGame()
 			/* At some point, invalid depots were saved into the game (possibly those removed in the past?)
 			 * Remove them here, so they don't cause issues further down the line */
 			if (!IsDepotTile(d->xy)) {
-				DEBUG(sl, 0, "Removing invalid depot %d at %d, %d", d->index, TileX(d->xy), TileY(d->xy));
+				Debug(sl, 0, "Removing invalid depot {} at {}, {}", d->index, TileX(d->xy), TileY(d->xy));
 				delete d;
 				d = nullptr;
 				continue;

@@ -139,7 +139,7 @@ void AddGenericCallback(uint8 feature, const GRFFile *file, const SpriteGroup *g
 		}
 	}
 
-	DEBUG(grf, 1, "Unhandled generic feature variable 0x%02X", variable);
+	Debug(grf, 1, "Unhandled generic feature variable 0x{:02X}", variable);
 
 	*available = false;
 	return UINT_MAX;

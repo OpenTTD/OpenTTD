@@ -93,7 +93,7 @@ uint32 GetRelativePosition(TileIndex tile, TileIndex ind_tile)
 		case 0x62: return GetIndustryIDAtOffset(GetNearbyTile(parameter, this->tile), this->industry, this->ro.grffile->grfid);
 	}
 
-	DEBUG(grf, 1, "Unhandled industry tile variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled industry tile variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;

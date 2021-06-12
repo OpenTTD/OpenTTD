@@ -57,7 +57,7 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	}
 
 	if (os_err == noErr) {
-		DEBUG(freetype, 3, "Font path for %s: %s", font_name, file_path);
+		Debug(freetype, 3, "Font path for {}: {}", font_name, file_path);
 		err = FT_New_Face(_library, (const char *)file_path, 0, face);
 	}
 
@@ -134,7 +134,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			/* Save result. */
 			callback->SetFontNames(settings, name);
 			if (!callback->FindMissingGlyphs()) {
-				DEBUG(freetype, 2, "CT-Font for %s: %s", language_isocode, name);
+				Debug(freetype, 2, "CT-Font for {}: {}", language_isocode, name);
 				result = true;
 				break;
 			}
@@ -221,7 +221,7 @@ void CoreTextFontCache::SetFontSize(int pixels)
 	CFStringGetCString(font_name.get(), name, lengthof(name), kCFStringEncodingUTF8);
 	this->font_name = name;
 
-	DEBUG(freetype, 2, "Loaded font '%s' with size %d", this->font_name.c_str(), pixels);
+	Debug(freetype, 2, "Loaded font '{}' with size {}", this->font_name, pixels);
 }
 
 GlyphID CoreTextFontCache::MapCharToGlyph(WChar key)

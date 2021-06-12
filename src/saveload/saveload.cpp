@@ -313,7 +313,7 @@ static void SlNullPointers()
 
 	for (auto &ch : ChunkHandlers()) {
 		if (ch.ptrs_proc != nullptr) {
-			DEBUG(sl, 3, "Nulling pointers for %c%c%c%c", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
+			Debug(sl, 3, "Nulling pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
 			ch.ptrs_proc();
 		}
 	}
@@ -656,7 +656,7 @@ int SlIterateArray()
 			case CH_SPARSE_ARRAY: index = (int)SlReadSparseIndex(); break;
 			case CH_ARRAY:        index = _sl.array_index++; break;
 			default:
-				DEBUG(sl, 0, "SlIterateArray error");
+				Debug(sl, 0, "SlIterateArray error");
 				return -1; // error
 		}
 
@@ -949,7 +949,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 					return;
 				case SLE_VAR_STRB:
 					if (len >= length) {
-						DEBUG(sl, 1, "String length in savegame is bigger than buffer, truncating");
+						Debug(sl, 1, "String length in savegame is bigger than buffer, truncating");
 						SlCopyBytes(ptr, length);
 						SlSkipBytes(len - length);
 						len = length - 1;
@@ -1718,7 +1718,7 @@ static void SlSaveChunk(const ChunkHandler &ch)
 	if (proc == nullptr) return;
 
 	SlWriteUint32(ch.id);
-	DEBUG(sl, 2, "Saving chunk %c%c%c%c", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
+	Debug(sl, 2, "Saving chunk {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
 
 	_sl.block_mode = ch.type;
 	switch (ch.type) {
@@ -1771,7 +1771,7 @@ static void SlLoadChunks()
 	const ChunkHandler *ch;
 
 	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
-		DEBUG(sl, 2, "Loading chunk %c%c%c%c", id >> 24, id >> 16, id >> 8, id);
+		Debug(sl, 2, "Loading chunk {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
 
 		ch = SlFindChunkHandler(id);
 		if (ch == nullptr) SlErrorCorrupt("Unknown chunk type");
@@ -1786,7 +1786,7 @@ static void SlLoadCheckChunks()
 	const ChunkHandler *ch;
 
 	for (id = SlReadUint32(); id != 0; id = SlReadUint32()) {
-		DEBUG(sl, 2, "Loading chunk %c%c%c%c", id >> 24, id >> 16, id >> 8, id);
+		Debug(sl, 2, "Loading chunk {:c}{:c}{:c}{:c}", id >> 24, id >> 16, id >> 8, id);
 
 		ch = SlFindChunkHandler(id);
 		if (ch == nullptr) SlErrorCorrupt("Unknown chunk type");
@@ -1801,7 +1801,7 @@ static void SlFixPointers()
 
 	for (auto &ch : ChunkHandlers()) {
 		if (ch.ptrs_proc != nullptr) {
-			DEBUG(sl, 3, "Fixing pointers for %c%c%c%c", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
+			Debug(sl, 3, "Fixing pointers for {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);
 			ch.ptrs_proc();
 		}
 	}
@@ -1845,7 +1845,7 @@ struct FileReader : LoadFilter {
 	{
 		clearerr(this->file);
 		if (fseek(this->file, this->begin, SEEK_SET)) {
-			DEBUG(sl, 1, "Could not reset the file reading");
+			Debug(sl, 1, "Could not reset the file reading");
 		}
 	}
 };
@@ -2470,7 +2470,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		 * cancelled due to a client disconnecting. */
 		if (_sl.error_str != STR_NETWORK_ERROR_LOSTCONNECTION) {
 			/* Skip the "colour" character */
-			DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
+			Debug(sl, 0, "{}", GetSaveLoadErrorString() + 3);
 			asfp = SaveFileError;
 		}
 
@@ -2516,7 +2516,7 @@ static SaveOrLoadResult DoSave(SaveFilter *writer, bool threaded)
 	SaveFileStart();
 
 	if (!threaded || !StartNewThread(&_save_thread, "ottd:savegame", &SaveFileToDisk, true)) {
-		if (threaded) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
+		if (threaded) Debug(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
 		SaveOrLoadResult result = SaveFileToDisk(false);
 		SaveFileDone();
@@ -2569,7 +2569,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 	for (;;) {
 		/* No loader found, treat as version 0 and use LZO format */
 		if (fmt == endof(_saveload_formats)) {
-			DEBUG(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
+			Debug(sl, 0, "Unknown savegame type, trying to load it as the buggy format");
 			_sl.lf->Reset();
 			_sl_version = SL_MIN_VERSION;
 			_sl_minor_version = 0;
@@ -2595,7 +2595,7 @@ static SaveOrLoadResult DoLoad(LoadFilter *reader, bool load_check)
 			 * Therefore it is loaded, but never saved (or, it saves a 0 in any scenario). */
 			_sl_minor_version = (TO_BE32(hdr[1]) >> 8) & 0xFF;
 
-			DEBUG(sl, 1, "Loading savegame version %d", _sl_version);
+			Debug(sl, 1, "Loading savegame version {}", _sl_version);
 
 			/* Is the version higher than the current? */
 			if (_sl_version > SAVEGAME_VERSION) SlError(STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME);
@@ -2775,7 +2775,7 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 		}
 
 		if (fop == SLO_SAVE) { // SAVE game
-			DEBUG(desync, 1, "save: %08x; %02x; %s", _date, _date_fract, filename.c_str());
+			Debug(desync, 1, "save: {:08x}; {:02x}; {}", _date, _date_fract, filename);
 			if (_network_server || !_settings_client.gui.threaded_saves) threaded = false;
 
 			return DoSave(new FileWriter(fh), threaded);
@@ -2783,14 +2783,14 @@ SaveOrLoadResult SaveOrLoad(const std::string &filename, SaveLoadOperation fop, 
 
 		/* LOAD game */
 		assert(fop == SLO_LOAD || fop == SLO_CHECK);
-		DEBUG(desync, 1, "load: %s", filename.c_str());
+		Debug(desync, 1, "load: {}", filename);
 		return DoLoad(new FileReader(fh), fop == SLO_CHECK);
 	} catch (...) {
 		/* This code may be executed both for old and new save games. */
 		ClearSaveLoadState();
 
 		/* Skip the "colour" character */
-		if (fop != SLO_CHECK) DEBUG(sl, 0, "%s", GetSaveLoadErrorString() + 3);
+		if (fop != SLO_CHECK) Debug(sl, 0, "{}", GetSaveLoadErrorString());
 
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
 		return (fop == SLO_LOAD) ? SL_REINIT : SL_ERROR;

@@ -884,7 +884,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_WORD_STATION_NAME:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_NAME:
 			if (argv_size < 1) {
-				DEBUG(misc, 0, "Too many NewGRF string parameters.");
+				Debug(misc, 0, "Too many NewGRF string parameters.");
 				return 0;
 			}
 			break;
@@ -893,7 +893,7 @@ uint RemapNewGRFStringControlCode(uint scc, char *buf_start, char **buff, const 
 		case SCC_NEWGRF_PRINT_WORD_CARGO_SHORT:
 		case SCC_NEWGRF_PRINT_WORD_CARGO_TINY:
 			if (argv_size < 2) {
-				DEBUG(misc, 0, "Too many NewGRF string parameters.");
+				Debug(misc, 0, "Too many NewGRF string parameters.");
 				return 0;
 			}
 			break;

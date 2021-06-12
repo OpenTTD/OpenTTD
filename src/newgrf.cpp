@@ -380,8 +380,8 @@ typedef std::map<GRFLocation, byte*> GRFLineToSpriteOverride;
 static GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
 
 /**
- * DEBUG() function dedicated to newGRF debugging messages
- * Function is essentially the same as DEBUG(grf, severity, ...) with the
+ * Debug() function dedicated to newGRF debugging messages
+ * Function is essentially the same as Debug(grf, severity, ...) with the
  * addition of file:line information when parsing grf files.
  * NOTE: for the above reason(s) grfmsg() should ONLY be used for
  * loading/parsing grf files, not for runtime debug messages as there
@@ -398,7 +398,7 @@ void CDECL grfmsg(int severity, const char *str, ...)
 	vseprintf(buf, lastof(buf), str, va);
 	va_end(va);
 
-	DEBUG(grf, severity, "[%s:%d] %s", _cur.grfconfig->filename, _cur.nfo_line, buf);
+	Debug(grf, severity, "[{}:{}] {}", _cur.grfconfig->filename, _cur.nfo_line, buf);
 }
 
 /**
@@ -549,7 +549,7 @@ static StringID TTDPStringIDToOTTDStringIDMapping(StringID str)
 
 	if (str == STR_NULL) return STR_EMPTY;
 
-	DEBUG(grf, 0, "Unknown StringID 0x%04X remapped to STR_EMPTY. Please open a Feature Request if you need it", str);
+	Debug(grf, 0, "Unknown StringID 0x{:04X} remapped to STR_EMPTY. Please open a Feature Request if you need it", str);
 
 	return STR_EMPTY;
 }
@@ -6731,7 +6731,7 @@ static void ScanInfo(ByteReader *buf)
 
 	if (grf_version < 2 || grf_version > 8) {
 		SetBit(_cur.grfconfig->flags, GCF_INVALID);
-		DEBUG(grf, 0, "%s: NewGRF \"%s\" (GRFID %08X) uses GRF version %d, which is incompatible with this version of OpenTTD.", _cur.grfconfig->filename, name, BSWAP32(grfid), grf_version);
+		Debug(grf, 0, "{}: NewGRF \"{}\" (GRFID {:08X}) uses GRF version {}, which is incompatible with this version of OpenTTD.", _cur.grfconfig->filename, name, BSWAP32(grfid), grf_version);
 	}
 
 	/* GRF IDs starting with 0xFF are reserved for internal TTDPatch use */
@@ -6768,7 +6768,7 @@ static void GRFInfo(ByteReader *buf)
 	}
 
 	if (_cur.grffile->grfid != grfid) {
-		DEBUG(grf, 0, "GRFInfo: GRFID %08X in FILESCAN stage does not match GRFID %08X in INIT/RESERVE/ACTIVATION stage", BSWAP32(_cur.grffile->grfid), BSWAP32(grfid));
+		Debug(grf, 0, "GRFInfo: GRFID {:08X} in FILESCAN stage does not match GRFID {:08X} in INIT/RESERVE/ACTIVATION stage", BSWAP32(_cur.grffile->grfid), BSWAP32(grfid));
 		_cur.grffile->grfid = grfid;
 	}
 
@@ -6776,7 +6776,7 @@ static void GRFInfo(ByteReader *buf)
 	_cur.grfconfig->status = _cur.stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
-	DEBUG(grf, 1, "GRFInfo: Loaded GRFv%d set %08X - %s (palette: %s, version: %i)", version, BSWAP32(grfid), name, (_cur.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur.grfconfig->version);
+	Debug(grf, 1, "GRFInfo: Loaded GRFv{} set {:08X} - {} (palette: {}, version: {})", version, BSWAP32(grfid), name, (_cur.grfconfig->palette & GRFP_USE_MASK) ? "Windows" : "DOS", _cur.grfconfig->version);
 }
 
 /* Action 0x0A */
@@ -9019,7 +9019,7 @@ static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseS
 				(next2 == nullptr || !next2->enabled || (next2->building_flags & BUILDING_HAS_1_TILE) != 0 ||
 				next3 == nullptr || !next3->enabled || (next3->building_flags & BUILDING_HAS_1_TILE) != 0))) {
 		hs->enabled = false;
-		if (filename != nullptr) DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d as multitile, but no suitable tiles follow. Disabling house.", filename, hs->grf_prop.local_id);
+		if (filename != nullptr) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} as multitile, but no suitable tiles follow. Disabling house.", filename, hs->grf_prop.local_id);
 		return false;
 	}
 
@@ -9029,7 +9029,7 @@ static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseS
 	if (((hs->building_flags & BUILDING_HAS_2_TILES) != 0 && next1->population != 0) ||
 			((hs->building_flags & BUILDING_HAS_4_TILES) != 0 && (next2->population != 0 || next3->population != 0))) {
 		hs->enabled = false;
-		if (filename != nullptr) DEBUG(grf, 1, "FinaliseHouseArray: %s defines multitile house %d with non-zero population on additional tiles. Disabling house.", filename, hs->grf_prop.local_id);
+		if (filename != nullptr) Debug(grf, 1, "FinaliseHouseArray: {} defines multitile house {} with non-zero population on additional tiles. Disabling house.", filename, hs->grf_prop.local_id);
 		return false;
 	}
 
@@ -9037,14 +9037,14 @@ static bool IsHouseSpecValid(HouseSpec *hs, const HouseSpec *next1, const HouseS
 	 * This check should only be done for NewGRF houses because grf_prop.subst_id is not set for original houses.*/
 	if (filename != nullptr && (hs->building_flags & BUILDING_HAS_1_TILE) != (HouseSpec::Get(hs->grf_prop.subst_id)->building_flags & BUILDING_HAS_1_TILE)) {
 		hs->enabled = false;
-		DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d with different house size then it's substitute type. Disabling house.", filename, hs->grf_prop.local_id);
+		Debug(grf, 1, "FinaliseHouseArray: {} defines house {} with different house size then it's substitute type. Disabling house.", filename, hs->grf_prop.local_id);
 		return false;
 	}
 
 	/* Make sure that additional parts of multitile houses are not available. */
 	if ((hs->building_flags & BUILDING_HAS_1_TILE) == 0 && (hs->building_availability & HZ_ZONALL) != 0 && (hs->building_availability & HZ_CLIMALL) != 0) {
 		hs->enabled = false;
-		if (filename != nullptr) DEBUG(grf, 1, "FinaliseHouseArray: %s defines house %d without a size but marked it as available. Disabling house.", filename, hs->grf_prop.local_id);
+		if (filename != nullptr) Debug(grf, 1, "FinaliseHouseArray: {} defines house {} without a size but marked it as available. Disabling house.", filename, hs->grf_prop.local_id);
 		return false;
 	}
 
@@ -9361,11 +9361,11 @@ static void LoadNewGRFFileFromFile(GRFConfig *config, GrfLoadingStage stage, Spr
 	_cur.file = &file;
 	_cur.grfconfig = config;
 
-	DEBUG(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '%s'", config->filename);
+	Debug(grf, 2, "LoadNewGRFFile: Reading NewGRF-file '{}'", config->filename);
 
 	byte grf_container_version = file.GetContainerVersion();
 	if (grf_container_version == 0) {
-		DEBUG(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
+		Debug(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
 		return;
 	}
 
@@ -9382,7 +9382,7 @@ static void LoadNewGRFFileFromFile(GRFConfig *config, GrfLoadingStage stage, Spr
 		/* Read compression value. */
 		byte compression = file.ReadByte();
 		if (compression != 0) {
-			DEBUG(grf, 7, "LoadNewGRFFile: Unsupported compression format");
+			Debug(grf, 7, "LoadNewGRFFile: Unsupported compression format");
 			return;
 		}
 	}
@@ -9394,7 +9394,7 @@ static void LoadNewGRFFileFromFile(GRFConfig *config, GrfLoadingStage stage, Spr
 	if (num == 4 && file.ReadByte() == 0xFF) {
 		file.ReadDword();
 	} else {
-		DEBUG(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
+		Debug(grf, 7, "LoadNewGRFFile: Custom .grf has invalid format");
 		return;
 	}
 
@@ -9569,7 +9569,7 @@ static void FinalisePriceBaseMultipliers()
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			/* No price defined -> nothing to do */
 			if (!HasBit(features, _price_base_specs[p].grf_feature) || source->price_base_multipliers[p] == INVALID_PRICE_MODIFIER) continue;
-			DEBUG(grf, 3, "'%s' overrides price base multiplier %d of '%s'", source->filename, p, dest->filename);
+			Debug(grf, 3, "'{}' overrides price base multiplier {} of '{}'", source->filename, p, dest->filename);
 			dest->price_base_multipliers[p] = source->price_base_multipliers[p];
 		}
 	}
@@ -9587,7 +9587,7 @@ static void FinalisePriceBaseMultipliers()
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			/* Already a price defined -> nothing to do */
 			if (!HasBit(features, _price_base_specs[p].grf_feature) || dest->price_base_multipliers[p] != INVALID_PRICE_MODIFIER) continue;
-			DEBUG(grf, 3, "Price base multiplier %d from '%s' propagated to '%s'", p, source->filename, dest->filename);
+			Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, source->filename, dest->filename);
 			dest->price_base_multipliers[p] = source->price_base_multipliers[p];
 		}
 	}
@@ -9605,7 +9605,7 @@ static void FinalisePriceBaseMultipliers()
 		for (Price p = PR_BEGIN; p < PR_END; p++) {
 			if (!HasBit(features, _price_base_specs[p].grf_feature)) continue;
 			if (source->price_base_multipliers[p] != dest->price_base_multipliers[p]) {
-				DEBUG(grf, 3, "Price base multiplier %d from '%s' propagated to '%s'", p, dest->filename, source->filename);
+				Debug(grf, 3, "Price base multiplier {} from '{}' propagated to '{}'", p, dest->filename, source->filename);
 			}
 			source->price_base_multipliers[p] = dest->price_base_multipliers[p];
 		}
@@ -9636,11 +9636,11 @@ static void FinalisePriceBaseMultipliers()
 				if (!HasBit(file->grf_features, _price_base_specs[p].grf_feature)) {
 					/* The grf does not define any objects of the feature,
 					 * so it must be a difficulty setting. Apply it globally */
-					DEBUG(grf, 3, "'%s' sets global price base multiplier %d", file->filename, p);
+					Debug(grf, 3, "'{}' sets global price base multiplier {}", file->filename, p);
 					SetPriceBaseMultiplier(p, price_base_multipliers[p]);
 					price_base_multipliers[p] = 0;
 				} else {
-					DEBUG(grf, 3, "'%s' sets local price base multiplier %d", file->filename, p);
+					Debug(grf, 3, "'{}' sets local price base multiplier {}", file->filename, p);
 				}
 			}
 		}
@@ -9839,7 +9839,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 
 			Subdirectory subdir = num_grfs < num_baseset ? BASESET_DIR : NEWGRF_DIR;
 			if (!FioCheckFileExists(c->filename, subdir)) {
-				DEBUG(grf, 0, "NewGRF file is missing '%s'; disabling", c->filename);
+				Debug(grf, 0, "NewGRF file is missing '{}'; disabling", c->filename);
 				c->status = GCS_NOT_FOUND;
 				continue;
 			}
@@ -9848,7 +9848,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 
 			if (!HasBit(c->flags, GCF_STATIC) && !HasBit(c->flags, GCF_SYSTEM)) {
 				if (num_non_static == NETWORK_MAX_GRF_COUNT) {
-					DEBUG(grf, 0, "'%s' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
+					Debug(grf, 0, "'{}' is not loaded as the maximum number of non-static GRFs has been reached", c->filename);
 					c->status = GCS_DISABLED;
 					c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 					continue;
@@ -9857,7 +9857,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 			}
 
 			if (num_grfs >= MAX_GRF_COUNT) {
-				DEBUG(grf, 0, "'%s' is not loaded as the maximum number of file slots has been reached", c->filename);
+				Debug(grf, 0, "'{}' is not loaded as the maximum number of file slots has been reached", c->filename);
 				c->status = GCS_DISABLED;
 				c->error  = new GRFError(STR_NEWGRF_ERROR_MSG_FATAL, STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED);
 				continue;
@@ -9872,7 +9872,7 @@ void LoadNewGRF(uint load_index, uint num_baseset)
 				assert(GetFileByGRFID(c->ident.grfid) == _cur.grffile);
 				ClearTemporaryNewGRFData(_cur.grffile);
 				BuildCargoTranslationMap();
-				DEBUG(sprite, 2, "LoadNewGRF: Currently %i sprites are loaded", _cur.spriteid);
+				Debug(sprite, 2, "LoadNewGRF: Currently {} sprites are loaded", _cur.spriteid);
 			} else if (stage == GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) {
 				/* We're not going to activate this, so free whatever data we allocated */
 				ClearTemporaryNewGRFData(_cur.grffile);

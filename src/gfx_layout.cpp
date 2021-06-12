@@ -696,7 +696,7 @@ Layouter::Layouter(const char *str, int maxw, TextColour colour, FontSize fontsi
 			if (line.layout == nullptr) {
 				static bool warned = false;
 				if (!warned) {
-					DEBUG(misc, 0, "ICU layouter bailed on the font. Falling back to the fallback layouter");
+					Debug(misc, 0, "ICU layouter bailed on the font. Falling back to the fallback layouter");
 					warned = true;
 				}
 

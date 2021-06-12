@@ -70,12 +70,12 @@ void StringParameters::ClearTypeInformation()
 int64 StringParameters::GetInt64(WChar type)
 {
 	if (this->offset >= this->num_param) {
-		DEBUG(misc, 0, "Trying to read invalid string parameter");
+		Debug(misc, 0, "Trying to read invalid string parameter");
 		return 0;
 	}
 	if (this->type != nullptr) {
 		if (this->type[this->offset] != 0 && this->type[this->offset] != type) {
-			DEBUG(misc, 0, "Trying to read string parameter with wrong type");
+			Debug(misc, 0, "Trying to read string parameter with wrong type");
 			return 0;
 		}
 		this->type[this->offset] = type;
@@ -1955,9 +1955,9 @@ static void GetLanguageList(const char *path)
 
 			/* Check whether the file is of the correct version */
 			if (!GetLanguageFileHeader(lmd.file, &lmd)) {
-				DEBUG(misc, 3, "%s is not a valid language file", lmd.file);
+				Debug(misc, 3, "{} is not a valid language file", lmd.file);
 			} else if (GetLanguage(lmd.newgrflangid) != nullptr) {
-				DEBUG(misc, 3, "%s's language ID is already known", lmd.file);
+				Debug(misc, 3, "{}'s language ID is already known", lmd.file);
 			} else {
 				_languages.push_back(lmd);
 			}
@@ -2055,7 +2055,7 @@ bool MissingGlyphSearcher::FindMissingGlyphs()
 					default: NOT_REACHED();
 				}
 
-				DEBUG(freetype, 0, "Font is missing glyphs to display char 0x%X in %s font size", c, size_name.c_str());
+				Debug(freetype, 0, "Font is missing glyphs to display char 0x{:X} in {} font size", (int)c, size_name);
 				return true;
 			}
 		}

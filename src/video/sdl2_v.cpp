@@ -119,7 +119,7 @@ static uint FindStartupDisplay(uint startup_display)
 	for (int display = 0; display < num_displays; ++display) {
 		SDL_Rect r;
 		if (SDL_GetDisplayBounds(display, &r) == 0 && IsInsideBS(mx, r.x, r.w) && IsInsideBS(my, r.y, r.h)) {
-			DEBUG(driver, 1, "SDL2: Mouse is at (%d, %d), use display %d (%d, %d, %d, %d)", mx, my, display, r.x, r.y, r.w, r.h);
+			Debug(driver, 1, "SDL2: Mouse is at ({}, {}), use display {} ({}, {}, {}, {})", mx, my, display, r.x, r.y, r.w, r.h);
 			return display;
 		}
 	}
@@ -168,7 +168,7 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 		flags);
 
 	if (this->sdl_window == nullptr) {
-		DEBUG(driver, 0, "SDL2: Couldn't allocate a window to draw on: %s", SDL_GetError());
+		Debug(driver, 0, "SDL2: Couldn't allocate a window to draw on: {}", SDL_GetError());
 		return false;
 	}
 
@@ -192,7 +192,7 @@ bool VideoDriver_SDL_Base::CreateMainWindow(uint w, uint h, uint flags)
 bool VideoDriver_SDL_Base::CreateMainSurface(uint w, uint h, bool resize)
 {
 	GetAvailableVideoMode(&w, &h);
-	DEBUG(driver, 1, "SDL2: using mode %ux%u", w, h);
+	Debug(driver, 1, "SDL2: using mode {}x{}", w, h);
 
 	if (!this->CreateMainWindow(w, h)) return false;
 	if (resize) SDL_SetWindowSize(this->sdl_window, w, h);
@@ -547,7 +547,7 @@ const char *VideoDriver_SDL_Base::Initialize()
 	if (error != nullptr) return error;
 
 	FindResolutions();
-	DEBUG(driver, 2, "Resolution for display: %ux%u", _cur_resolution.width, _cur_resolution.height);
+	Debug(driver, 2, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
 
 	return nullptr;
 }
@@ -566,7 +566,7 @@ const char *VideoDriver_SDL_Base::Start(const StringList &param)
 	}
 
 	const char *dname = SDL_GetCurrentVideoDriver();
-	DEBUG(driver, 1, "SDL2: using driver '%s'", dname);
+	Debug(driver, 1, "SDL2: using driver '{}'", dname);
 
 	MarkWholeScreenDirty();
 
@@ -680,20 +680,20 @@ bool VideoDriver_SDL_Base::ToggleFullscreen(bool fullscreen)
 		/* Find fullscreen window size */
 		SDL_DisplayMode dm;
 		if (SDL_GetCurrentDisplayMode(0, &dm) < 0) {
-			DEBUG(driver, 0, "SDL_GetCurrentDisplayMode() failed: %s", SDL_GetError());
+			Debug(driver, 0, "SDL_GetCurrentDisplayMode() failed: {}", SDL_GetError());
 		} else {
 			SDL_SetWindowSize(this->sdl_window, dm.w, dm.h);
 		}
 	}
 
-	DEBUG(driver, 1, "SDL2: Setting %s", fullscreen ? "fullscreen" : "windowed");
+	Debug(driver, 1, "SDL2: Setting {}", fullscreen ? "fullscreen" : "windowed");
 	int ret = SDL_SetWindowFullscreen(this->sdl_window, fullscreen ? SDL_WINDOW_FULLSCREEN : 0);
 	if (ret == 0) {
 		/* Switching resolution succeeded, set fullscreen value of window. */
 		_fullscreen = fullscreen;
 		if (!fullscreen) SDL_SetWindowSize(this->sdl_window, w, h);
 	} else {
-		DEBUG(driver, 0, "SDL_SetWindowFullscreen() failed: %s", SDL_GetError());
+		Debug(driver, 0, "SDL_SetWindowFullscreen() failed: {}", SDL_GetError());
 	}
 
 	InvalidateWindowClassesData(WC_GAME_OPTIONS, 3);

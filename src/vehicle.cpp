@@ -315,11 +315,11 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 
 	SetDParamStr(0, grfconfig->GetName());
 	GetString(buffer, part1, lastof(buffer));
-	DEBUG(grf, 0, "%s", buffer + 3);
+	Debug(grf, 0, "{}", buffer + 3);
 
 	SetDParam(1, engine);
 	GetString(buffer, part2, lastof(buffer));
-	DEBUG(grf, 0, "%s", buffer + 3);
+	Debug(grf, 0, "{}", buffer + 3);
 }
 
 /**
@@ -2231,7 +2231,7 @@ void Vehicle::CancelReservation(StationID next, Station *st)
 	for (Vehicle *v = this; v != nullptr; v = v->next) {
 		VehicleCargoList &cargo = v->cargo;
 		if (cargo.ActionCount(VehicleCargoList::MTA_LOAD) > 0) {
-			DEBUG(misc, 1, "cancelling cargo reservation");
+			Debug(misc, 1, "cancelling cargo reservation");
 			cargo.Return(UINT_MAX, &st->goods[v->cargo_type].cargo, next);
 			cargo.SetTransferLoadPlace(st->xy);
 		}

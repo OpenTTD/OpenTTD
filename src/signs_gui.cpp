@@ -57,7 +57,7 @@ struct SignList {
 	{
 		if (!this->signs.NeedRebuild()) return;
 
-		DEBUG(misc, 3, "Building sign list");
+		Debug(misc, 3, "Building sign list");
 
 		this->signs.clear();
 

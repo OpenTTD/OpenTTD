@@ -206,7 +206,7 @@ bool GetClipboardContents(char *buffer, const char *last)
 void OSOpenBrowser(const char *url)
 {
 	// stub only
-	DEBUG(misc, 0, "Failed to open url: %s", url);
+	Debug(misc, 0, "Failed to open url: {}", url);
 }
 
 void SetCurrentThreadName(const char *)

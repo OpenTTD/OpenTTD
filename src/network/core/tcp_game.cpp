@@ -117,9 +117,9 @@ NetworkRecvStatus NetworkGameSocketHandler::HandlePacket(Packet *p)
 			this->CloseConnection();
 
 			if (this->HasClientQuit()) {
-				DEBUG(net, 0, "[tcp/game] Received invalid packet type %d from client %d", type, this->client_id);
+				Debug(net, 0, "[tcp/game] Received invalid packet type {} from client {}", type, this->client_id);
 			} else {
-				DEBUG(net, 0, "[tcp/game] Received illegal packet from client %d", this->client_id);
+				Debug(net, 0, "[tcp/game] Received illegal packet from client {}", this->client_id);
 			}
 			return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
@@ -151,7 +151,7 @@ NetworkRecvStatus NetworkGameSocketHandler::ReceivePackets()
  */
 NetworkRecvStatus NetworkGameSocketHandler::ReceiveInvalidPacket(PacketGameType type)
 {
-	DEBUG(net, 0, "[tcp/game] Received illegal packet type %d from client %d", type, this->client_id);
+	Debug(net, 0, "[tcp/game] Received illegal packet type {} from client {}", type, this->client_id);
 	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 }
 

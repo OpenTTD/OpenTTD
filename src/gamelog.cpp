@@ -356,7 +356,7 @@ static int _gamelog_print_level = 0; ///< gamelog debug level we need to print s
 
 static void GamelogPrintDebugProc(const char *s)
 {
-	DEBUG(gamelog, _gamelog_print_level, "%s", s);
+	Debug(gamelog, _gamelog_print_level, "{}", s);
 }
 
 

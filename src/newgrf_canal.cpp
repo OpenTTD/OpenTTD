@@ -100,7 +100,7 @@ struct CanalResolverObject : public ResolverObject {
 		case 0x83: return IsTileType(this->tile, MP_WATER) ? GetWaterTileRandomBits(this->tile) : 0;
 	}
 
-	DEBUG(grf, 1, "Unhandled canal variable 0x%02X", variable);
+	Debug(grf, 1, "Unhandled canal variable 0x{:02X}", variable);
 
 	*available = false;
 	return UINT_MAX;

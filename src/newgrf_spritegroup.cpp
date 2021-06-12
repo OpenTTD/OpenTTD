@@ -105,7 +105,7 @@ static inline uint32 GetVariable(const ResolverObject &object, ScopeResolver *sc
  */
 /* virtual */ uint32 ScopeResolver::GetVariable(byte variable, uint32 parameter, bool *available) const
 {
-	DEBUG(grf, 1, "Unhandled scope variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled scope variable 0x{:X}", variable);
 	*available = false;
 	return UINT_MAX;
 }

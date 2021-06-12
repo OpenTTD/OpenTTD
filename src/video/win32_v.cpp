@@ -234,7 +234,7 @@ static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 
 	/* Did we get a lead surrogate? If yes, store and exit. */
 	if (Utf16IsLeadSurrogate(charcode)) {
-		if (prev_char != 0) DEBUG(driver, 1, "Got two UTF-16 lead surrogates, dropping the first one");
+		if (prev_char != 0) Debug(driver, 1, "Got two UTF-16 lead surrogates, dropping the first one");
 		prev_char = charcode;
 		return 0;
 	}
@@ -244,7 +244,7 @@ static LRESULT HandleCharMsg(uint keycode, WChar charcode)
 		if (Utf16IsTrailSurrogate(charcode)) {
 			charcode = Utf16DecodeSurrogate(prev_char, charcode);
 		} else {
-			DEBUG(driver, 1, "Got an UTF-16 lead surrogate without a trail surrogate, dropping the lead surrogate");
+			Debug(driver, 1, "Got an UTF-16 lead surrogate without a trail surrogate, dropping the lead surrogate");
 		}
 	}
 	prev_char = 0;
@@ -794,7 +794,7 @@ void VideoDriver_Win32Base::Initialize()
 	this->width  = this->width_org  = _cur_resolution.width;
 	this->height = this->height_org = _cur_resolution.height;
 
-	DEBUG(driver, 2, "Resolution for display: %ux%u", _cur_resolution.width, _cur_resolution.height);
+	Debug(driver, 2, "Resolution for display: {}x{}", _cur_resolution.width, _cur_resolution.height);
 }
 
 void VideoDriver_Win32Base::Stop()
@@ -1361,7 +1361,7 @@ void VideoDriver_Win32OpenGL::ToggleVsync(bool vsync)
 	if (_wglSwapIntervalEXT != nullptr) {
 		_wglSwapIntervalEXT(vsync);
 	} else if (vsync) {
-		DEBUG(driver, 0, "OpenGL: Vsync requested, but not supported by driver");
+		Debug(driver, 0, "OpenGL: Vsync requested, but not supported by driver");
 	}
 }
 

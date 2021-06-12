@@ -59,7 +59,7 @@ static SpriteCache *AllocateSpriteCache(uint index)
 		/* Add another 1024 items to the 'pool' */
 		uint items = Align(index + 1, 1024);
 
-		DEBUG(sprite, 4, "Increasing sprite cache to %u items (" PRINTF_SIZE " bytes)", items, items * sizeof(*_spritecache));
+		Debug(sprite, 4, "Increasing sprite cache to {} items ({} bytes)", items, items * sizeof(*_spritecache));
 
 		_spritecache = ReallocT(_spritecache, items);
 
@@ -462,7 +462,7 @@ static void *ReadSprite(const SpriteCache *sc, SpriteID id, SpriteType sprite_ty
 	assert(IsMapgenSpriteID(id) == (sprite_type == ST_MAPGEN));
 	assert(sc->type == sprite_type);
 
-	DEBUG(sprite, 9, "Load sprite %d", id);
+	Debug(sprite, 9, "Load sprite {}", id);
 
 	SpriteLoader::Sprite sprite[ZOOM_LVL_COUNT];
 	uint8 sprite_avail = 0;
@@ -692,7 +692,7 @@ void IncreaseSpriteLRU()
 	if (_sprite_lru_counter > 16384) {
 		SpriteID i;
 
-		DEBUG(sprite, 3, "Fixing lru %u, inuse=" PRINTF_SIZE, _sprite_lru_counter, GetSpriteCacheUsage());
+		Debug(sprite, 3, "Fixing lru {}, inuse={}", _sprite_lru_counter, GetSpriteCacheUsage());
 
 		for (i = 0; i != _spritecache_items; i++) {
 			SpriteCache *sc = GetSpriteCache(i);
@@ -722,7 +722,7 @@ static void CompactSpriteCache()
 {
 	MemBlock *s;
 
-	DEBUG(sprite, 3, "Compacting sprite cache, inuse=" PRINTF_SIZE, GetSpriteCacheUsage());
+	Debug(sprite, 3, "Compacting sprite cache, inuse={}", GetSpriteCacheUsage());
 
 	for (s = _spritecache_ptr; s->size != 0;) {
 		if (s->size & S_FREE_MASK) {
@@ -785,7 +785,7 @@ static void DeleteEntryFromSpriteCache()
 	uint best = UINT_MAX;
 	int cur_lru;
 
-	DEBUG(sprite, 3, "DeleteEntryFromSpriteCache, inuse=" PRINTF_SIZE, GetSpriteCacheUsage());
+	Debug(sprite, 3, "DeleteEntryFromSpriteCache, inuse={}", GetSpriteCacheUsage());
 
 	cur_lru = 0xffff;
 	for (SpriteID i = 0; i != _spritecache_items; i++) {
@@ -874,7 +874,7 @@ static void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, S
 
 	byte warning_level = sc->warned ? 6 : 0;
 	sc->warned = true;
-	DEBUG(sprite, warning_level, "Tried to load %s sprite #%d as a %s sprite. Probable cause: NewGRF interference", sprite_types[available], sprite, sprite_types[requested]);
+	Debug(sprite, warning_level, "Tried to load {} sprite #{} as a {} sprite. Probable cause: NewGRF interference", sprite_types[available], sprite, sprite_types[requested]);
 
 	switch (requested) {
 		case ST_NORMAL:
@@ -908,7 +908,7 @@ void *GetRawSprite(SpriteID sprite, SpriteType type, AllocatorProc *allocator, S
 	assert(type < ST_INVALID);
 
 	if (!SpriteExists(sprite)) {
-		DEBUG(sprite, 1, "Tried to load non-existing sprite #%d. Probable cause: Wrong/missing NewGRFs", sprite);
+		Debug(sprite, 1, "Tried to load non-existing sprite #{}. Probable cause: Wrong/missing NewGRFs", sprite);
 
 		/* SPR_IMG_QUERY is a BIG FAT RED ? */
 		sprite = SPR_IMG_QUERY;
@@ -971,7 +971,7 @@ static void GfxInitSpriteCache()
 		} while (_spritecache_ptr == nullptr);
 
 		if (_allocated_sprite_cache_size != target_size) {
-			DEBUG(misc, 0, "Not enough memory to allocate %d MiB of spritecache. Spritecache was reduced to %d MiB.", target_size / 1024 / 1024, _allocated_sprite_cache_size / 1024 / 1024);
+			Debug(misc, 0, "Not enough memory to allocate {} MiB of spritecache. Spritecache was reduced to {} MiB.", target_size / 1024 / 1024, _allocated_sprite_cache_size / 1024 / 1024);
 
 			ErrorMessageData msg(STR_CONFIG_ERROR_OUT_OF_MEMORY, STR_CONFIG_ERROR_SPRITECACHE_TOO_BIG);
 			msg.SetDParam(0, target_size);
