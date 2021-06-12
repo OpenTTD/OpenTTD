@@ -145,20 +145,6 @@ void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...)
 }
 
 /**
- * It is possible to print debugging information to the console,
- * which is achieved by using this function. Can only be used by
- * debug() in debug.cpp. You need at least a level 2 (developer) for debugging
- * messages to show up
- * @param dbg debugging category
- * @param string debugging message
- */
-void IConsoleDebug(const char *dbg, const char *string)
-{
-	if (_settings_client.gui.developer <= 1) return;
-	IConsolePrintF(CC_DEBUG, "dbg: [%s] %s", dbg, string);
-}
-
-/**
  * It is possible to print warnings to the console. These are mostly
  * errors or mishaps, but non-fatal. You need at least a level 1 (developer) for
  * debugging messages to show up
