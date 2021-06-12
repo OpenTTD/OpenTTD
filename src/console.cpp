@@ -145,26 +145,6 @@ void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...)
 }
 
 /**
- * It is possible to print warnings to the console. These are mostly
- * errors or mishaps, but non-fatal. You need at least a level 1 (developer) for
- * debugging messages to show up
- */
-void IConsoleWarning(const char *string)
-{
-	if (_settings_client.gui.developer == 0) return;
-	IConsolePrintF(CC_WARNING, "WARNING: %s", string);
-}
-
-/**
- * It is possible to print error information to the console. This can include
- * game errors, or errors in general you would want the user to notice
- */
-void IConsoleError(const char *string)
-{
-	IConsolePrintF(CC_ERROR, "ERROR: %s", string);
-}
-
-/**
  * Change a string into its number representation. Supports
  * decimal and hexadecimal numbers as well as 'on'/'off' 'true'/'false'
  * @param *value the variable a successful conversion will be put in
