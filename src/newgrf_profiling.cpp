@@ -95,12 +95,12 @@ uint32 NewGRFProfiler::Finish()
 	if (!this->active) return 0;
 
 	if (this->calls.empty()) {
-		IConsolePrintF(CC_DEBUG, "Finished profile of NewGRF [%08X], no events collected, not writing a file", BSWAP32(this->grffile->grfid));
+		IConsolePrint(CC_DEBUG, "Finished profile of NewGRF [{:08X}], no events collected, not writing a file.", BSWAP32(this->grffile->grfid));
 		return 0;
 	}
 
 	std::string filename = this->GetOutputFilename();
-	IConsolePrintF(CC_DEBUG, "Finished profile of NewGRF [%08X], writing %u events to %s", BSWAP32(this->grffile->grfid), (uint)this->calls.size(), filename.c_str());
+	IConsolePrint(CC_DEBUG, "Finished profile of NewGRF [{:08X}], writing {} events to '{}'.", BSWAP32(this->grffile->grfid), this->calls.size(), filename);
 
 	FILE *f = FioFOpenFile(filename, "wt", Subdirectory::NO_DIRECTORY);
 	FileCloser fcloser(f);
@@ -151,7 +151,7 @@ uint32 NewGRFProfiler::FinishAll()
 	}
 
 	if (total_microseconds > 0 && max_ticks > 0) {
-		IConsolePrintF(CC_DEBUG, "Total NewGRF callback processing: %u microseconds over %d ticks", total_microseconds, max_ticks);
+		IConsolePrint(CC_DEBUG, "Total NewGRF callback processing: {} microseconds over {} ticks.", total_microseconds, max_ticks);
 	}
 
 	_newgrf_profile_end_date = MAX_DAY;
