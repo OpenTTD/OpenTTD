@@ -1950,9 +1950,9 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 
 	if (!success) {
 		if (_network_server) {
-			IConsoleError("This command/variable is not available during network games.");
+			IConsolePrint(CC_ERROR, "This command/variable is not available during network games.");
 		} else {
-			IConsoleError("This command/variable is only available to a network server.");
+			IConsolePrint(CC_ERROR, "This command/variable is only available to a network server.");
 		}
 	}
 }

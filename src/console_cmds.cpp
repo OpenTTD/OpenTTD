@@ -96,7 +96,7 @@ static ConsoleFileList _console_file_list; ///< File storage cache for the conso
 static inline bool NetworkAvailable(bool echo)
 {
 	if (!_network_available) {
-		if (echo) IConsoleError("You cannot use this command because there is no network available.");
+		if (echo) IConsolePrint(CC_ERROR, "You cannot use this command because there is no network available.");
 		return false;
 	}
 	return true;
@@ -111,7 +111,7 @@ DEF_CONSOLE_HOOK(ConHookServerOnly)
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
 	if (!_network_server) {
-		if (echo) IConsoleError("This command is only available to a network server.");
+		if (echo) IConsolePrint(CC_ERROR, "This command is only available to a network server.");
 		return CHR_DISALLOW;
 	}
 	return CHR_ALLOW;
@@ -126,7 +126,7 @@ DEF_CONSOLE_HOOK(ConHookClientOnly)
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
 	if (_network_server) {
-		if (echo) IConsoleError("This command is not available to a network server.");
+		if (echo) IConsolePrint(CC_ERROR, "This command is not available to a network server.");
 		return CHR_DISALLOW;
 	}
 	return CHR_ALLOW;
@@ -141,7 +141,7 @@ DEF_CONSOLE_HOOK(ConHookNeedNetwork)
 	if (!NetworkAvailable(echo)) return CHR_DISALLOW;
 
 	if (!_networking || (!_network_server && !MyClient::IsConnected())) {
-		if (echo) IConsoleError("Not connected. This command is only available in multiplayer.");
+		if (echo) IConsolePrint(CC_ERROR, "Not connected. This command is only available in multiplayer.");
 		return CHR_DISALLOW;
 	}
 	return CHR_ALLOW;
@@ -154,7 +154,7 @@ DEF_CONSOLE_HOOK(ConHookNeedNetwork)
 DEF_CONSOLE_HOOK(ConHookNoNetwork)
 {
 	if (_networking) {
-		if (echo) IConsoleError("This command is forbidden in multiplayer.");
+		if (echo) IConsolePrint(CC_ERROR, "This command is forbidden in multiplayer.");
 		return CHR_DISALLOW;
 	}
 	return CHR_ALLOW;
@@ -167,7 +167,7 @@ DEF_CONSOLE_HOOK(ConHookNoNetwork)
 DEF_CONSOLE_HOOK(ConHookServerOrNoNetwork)
 {
 	if (_networking && !_network_server) {
-		if (echo) IConsoleError("This command is only available to a network server.");
+		if (echo) IConsolePrint(CC_ERROR, "This command is only available to a network server.");
 		return CHR_DISALLOW;
 	}
 	return CHR_ALLOW;
@@ -177,7 +177,7 @@ DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
 {
 	if (_settings_client.gui.newgrf_developer_tools) {
 		if (_game_mode == GM_MENU) {
-			if (echo) IConsoleError("This command is only available in-game and in the editor.");
+			if (echo) IConsolePrint(CC_ERROR, "This command is only available in-game and in the editor.");
 			return CHR_DISALLOW;
 		}
 		return ConHookNoNetwork(echo);
@@ -222,12 +222,12 @@ DEF_CONSOLE_CMD(ConResetEnginePool)
 	}
 
 	if (_game_mode == GM_MENU) {
-		IConsoleError("This command is only available in-game and in the editor.");
+		IConsolePrint(CC_ERROR, "This command is only available in-game and in the editor.");
 		return true;
 	}
 
 	if (!EngineOverrideManager::ResetToCurrentNewGRFConfig()) {
-		IConsoleError("This can only be done when there are no vehicles in the game.");
+		IConsolePrint(CC_ERROR, "This can only be done when there are no vehicles in the game.");
 		return true;
 	}
 
@@ -372,10 +372,10 @@ DEF_CONSOLE_CMD(ConLoad)
 			_file_to_saveload.SetName(FiosBrowseTo(item));
 			_file_to_saveload.SetTitle(item->title);
 		} else {
-			IConsolePrintF(CC_ERROR, "%s: Not a savegame.", file);
+			IConsolePrint(CC_ERROR, "'{}' is not a savegame.", file);
 		}
 	} else {
-		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
+		IConsolePrint(CC_ERROR, "'{}' cannot be found.", file);
 	}
 
 	return true;
@@ -396,10 +396,10 @@ DEF_CONSOLE_CMD(ConRemove)
 	const FiosItem *item = _console_file_list.FindItem(file);
 	if (item != nullptr) {
 		if (!FiosDelete(item->name)) {
-			IConsolePrintF(CC_ERROR, "%s: Failed to delete file", file);
+			IConsolePrint(CC_ERROR, "Failed to delete '{}'.", file);
 		}
 	} else {
-		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
+		IConsolePrint(CC_ERROR, "'{}' could not be found.", file);
 	}
 
 	_console_file_list.InvalidateFileList();
@@ -441,10 +441,10 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 			case FIOS_TYPE_DIR: case FIOS_TYPE_DRIVE: case FIOS_TYPE_PARENT:
 				FiosBrowseTo(item);
 				break;
-			default: IConsolePrintF(CC_ERROR, "%s: Not a directory.", file);
+			default: IConsolePrint(CC_ERROR, "{}: Not a directory.", file);
 		}
 	} else {
-		IConsolePrintF(CC_ERROR, "%s: No such file or directory.", file);
+		IConsolePrint(CC_ERROR, "{}: No such file or directory.", file);
 	}
 
 	_console_file_list.InvalidateFileList();
@@ -498,13 +498,13 @@ static bool ConKickOrBan(const char *argv, bool ban, const std::string &reason)
 		 * would be reading from and writing to after returning. So we would read or write data
 		 * from freed memory up till the segfault triggers. */
 		if (client_id == CLIENT_ID_SERVER || client_id == _redirect_console_to_client) {
-			IConsolePrintF(CC_ERROR, "ERROR: You can not %s yourself!", ban ? "ban" : "kick");
+			IConsolePrint(CC_ERROR, "You can not {} yourself!", ban ? "ban" : "kick");
 			return true;
 		}
 
 		NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(client_id);
 		if (ci == nullptr) {
-			IConsoleError("Invalid client");
+			IConsolePrint(CC_ERROR, "Invalid client ID.");
 			return true;
 		}
 
@@ -521,9 +521,9 @@ static bool ConKickOrBan(const char *argv, bool ban, const std::string &reason)
 	}
 
 	if (n == 0) {
-		IConsolePrint(CC_DEFAULT, ban ? "Client not online, address added to banlist" : "Client not found");
+		IConsolePrint(CC_DEFAULT, ban ? "Client not online, address added to banlist." : "Client not found.");
 	} else {
-		IConsolePrintF(CC_DEFAULT, "%sed %u client(s)", ban ? "Bann" : "Kick", n);
+		IConsolePrintF(CC_DEFAULT, "%sed %u client(s).", ban ? "Bann" : "Kick", n);
 	}
 
 	return true;
@@ -545,7 +545,7 @@ DEF_CONSOLE_CMD(ConKick)
 	/* Reason for kicking supplied */
 	size_t kick_message_length = strlen(argv[2]);
 	if (kick_message_length >= 255) {
-		IConsolePrintF(CC_ERROR, "ERROR: Maximum kick message length is 254 characters. You entered " PRINTF_SIZE " characters.", kick_message_length);
+		IConsolePrint(CC_ERROR, "Maximum kick message length is 254 characters. You entered {} characters.", kick_message_length);
 		return false;
 	} else {
 		return ConKickOrBan(argv[1], false, argv[2]);
@@ -569,7 +569,7 @@ DEF_CONSOLE_CMD(ConBan)
 	/* Reason for kicking supplied */
 	size_t kick_message_length = strlen(argv[2]);
 	if (kick_message_length >= 255) {
-		IConsolePrintF(CC_ERROR, "ERROR: Maximum kick message length is 254 characters. You entered " PRINTF_SIZE " characters.", kick_message_length);
+		IConsolePrint(CC_ERROR, "Maximum kick message length is 254 characters. You entered {} characters.", kick_message_length);
 		return false;
 	} else {
 		return ConKickOrBan(argv[1], true, argv[2]);
@@ -636,7 +636,7 @@ DEF_CONSOLE_CMD(ConPauseGame)
 	}
 
 	if (_game_mode == GM_MENU) {
-		IConsoleError("This command is only available in-game and in the editor.");
+		IConsolePrint(CC_ERROR, "This command is only available in-game and in the editor.");
 		return true;
 	}
 
@@ -658,7 +658,7 @@ DEF_CONSOLE_CMD(ConUnpauseGame)
 	}
 
 	if (_game_mode == GM_MENU) {
-		IConsoleError("This command is only available in-game and in the editor.");
+		IConsolePrint(CC_ERROR, "This command is only available in-game and in the editor.");
 		return true;
 	}
 
@@ -731,24 +731,24 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 	ClientID client_id = (ClientID)atoi(argv[1]);
 
 	if (client_id == CLIENT_ID_SERVER) {
-		IConsoleError("Please use the command 'name' to change your own name!");
+		IConsolePrint(CC_ERROR, "Please use the command 'name' to change your own name!");
 		return true;
 	}
 
 	if (NetworkClientInfo::GetByClientID(client_id) == nullptr) {
-		IConsoleError("Invalid client");
+		IConsolePrint(CC_ERROR, "Invalid client ID.");
 		return true;
 	}
 
 	std::string client_name(argv[2]);
 	StrTrimInPlace(client_name);
 	if (!NetworkIsValidClientName(client_name)) {
-		IConsoleError("Cannot give a client an empty name");
+		IConsolePrint(CC_ERROR, "Cannot give a client an empty name.");
 		return true;
 	}
 
 	if (!NetworkServerChangeClientName(client_id, client_name)) {
-		IConsoleError("Cannot give a client a duplicate name");
+		IConsolePrint(CC_ERROR, "Cannot give a client a duplicate name.");
 	}
 
 	return true;
@@ -766,28 +766,28 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 
 	/* Check we have a valid company id! */
 	if (!Company::IsValidID(company_id) && company_id != COMPANY_SPECTATOR) {
-		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
+		IConsolePrint(CC_ERROR, "Company does not exist. Company-id must be between 1 and {}.", MAX_COMPANIES);
 		return true;
 	}
 
 	if (NetworkClientInfo::GetByClientID(_network_own_client_id)->client_playas == company_id) {
-		IConsoleError("You are already there!");
+		IConsolePrint(CC_ERROR, "You are already there!");
 		return true;
 	}
 
 	if (company_id == COMPANY_SPECTATOR && NetworkMaxSpectatorsReached()) {
-		IConsoleError("Cannot join spectators, maximum number of spectators reached.");
+		IConsolePrint(CC_ERROR, "Cannot join spectators, maximum number of spectators reached.");
 		return true;
 	}
 
 	if (company_id != COMPANY_SPECTATOR && !Company::IsHumanID(company_id)) {
-		IConsoleError("Cannot join AI company.");
+		IConsolePrint(CC_ERROR, "Cannot join AI company.");
 		return true;
 	}
 
 	/* Check if the company requires a password */
 	if (NetworkCompanyIsPassworded(company_id) && argc < 3) {
-		IConsolePrintF(CC_ERROR, "Company %d requires a password to join.", company_id + 1);
+		IConsolePrint(CC_ERROR, "Company {} requires a password to join.", company_id + 1);
 		return true;
 	}
 
@@ -814,27 +814,27 @@ DEF_CONSOLE_CMD(ConMoveClient)
 
 	/* check the client exists */
 	if (ci == nullptr) {
-		IConsoleError("Invalid client-id, check the command 'clients' for valid client-id's.");
+		IConsolePrint(CC_ERROR, "Invalid client-id, check the command 'clients' for valid client-id's.");
 		return true;
 	}
 
 	if (!Company::IsValidID(company_id) && company_id != COMPANY_SPECTATOR) {
-		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
+		IConsolePrint(CC_ERROR, "Company does not exist. Company-id must be between 1 and {}.", MAX_COMPANIES);
 		return true;
 	}
 
 	if (company_id != COMPANY_SPECTATOR && !Company::IsHumanID(company_id)) {
-		IConsoleError("You cannot move clients to AI companies.");
+		IConsolePrint(CC_ERROR, "You cannot move clients to AI companies.");
 		return true;
 	}
 
 	if (ci->client_id == CLIENT_ID_SERVER && _network_dedicated) {
-		IConsoleError("You cannot move the server!");
+		IConsolePrint(CC_ERROR, "You cannot move the server!");
 		return true;
 	}
 
 	if (ci->client_playas == company_id) {
-		IConsoleError("You cannot move someone to where they already are!");
+		IConsolePrint(CC_ERROR, "You cannot move someone to where they already are!");
 		return true;
 	}
 
@@ -858,22 +858,22 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	/* Check valid range */
 	if (!Company::IsValidID(index)) {
-		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
+		IConsolePrint(CC_ERROR, "Company does not exist. Company-id must be between 1 and {}.", MAX_COMPANIES);
 		return true;
 	}
 
 	if (!Company::IsHumanID(index)) {
-		IConsoleError("Company is owned by an AI.");
+		IConsolePrint(CC_ERROR, "Company is owned by an AI.");
 		return true;
 	}
 
 	if (NetworkCompanyHasClients(index)) {
-		IConsoleError("Cannot remove company: a client is connected to that company.");
+		IConsolePrint(CC_ERROR, "Cannot remove company: a client is connected to that company.");
 		return false;
 	}
 	const NetworkClientInfo *ci = NetworkClientInfo::GetByClientID(CLIENT_ID_SERVER);
 	if (ci->client_playas == index) {
-		IConsoleError("Cannot remove company: the server is connected to that company.");
+		IConsolePrint(CC_ERROR, "Cannot remove company: the server is connected to that company.");
 		return true;
 	}
 
@@ -957,13 +957,13 @@ DEF_CONSOLE_CMD(ConExec)
 	FILE *script_file = FioFOpenFile(argv[1], "r", BASE_DIR);
 
 	if (script_file == nullptr) {
-		if (argc == 2 || atoi(argv[2]) != 0) IConsoleError("script file not found");
+		if (argc == 2 || atoi(argv[2]) != 0) IConsolePrint(CC_ERROR, "Script file '{}' not found.", argv[1]);
 		return true;
 	}
 
 	if (_script_current_depth == 11) {
 		FioFCloseFile(script_file);
-		IConsoleError("Maximum 'exec' depth reached; script A is calling script B is calling script C ... more than 10 times.");
+		IConsolePrint(CC_ERROR, "Maximum 'exec' depth reached; script A is calling script B is calling script C ... more than 10 times.");
 		return true;
 	}
 
@@ -988,7 +988,7 @@ DEF_CONSOLE_CMD(ConExec)
 	}
 
 	if (ferror(script_file)) {
-		IConsoleError("Encountered error while trying to read from script file");
+		IConsolePrint(CC_ERROR, "Encountered error while trying to read from script file '{}'.", argv[1]);
 	}
 
 	if (_script_current_depth == script_depth) _script_current_depth--;
@@ -1027,7 +1027,7 @@ DEF_CONSOLE_CMD(ConScript)
 
 		IConsolePrintF(CC_DEFAULT, "file output started to: %s", argv[1]);
 		_iconsole_output_file = fopen(argv[1], "ab");
-		if (_iconsole_output_file == nullptr) IConsoleError("could not open file");
+		if (_iconsole_output_file == nullptr) IConsolePrint(CC_ERROR, "Could not open file '{}'.", argv[1]);
 	}
 
 	return true;
@@ -1466,7 +1466,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 
 	if (argc > arg_index && strcmp(argv[arg_index], "no_con") == 0) {
 		if (type != SC_VIEWPORT) {
-			IConsoleError("'no_con' can only be used in combination with 'viewport'");
+			IConsolePrint(CC_ERROR, "'no_con' can only be used in combination with 'viewport'.");
 			return true;
 		}
 		IConsoleClose();
@@ -1476,7 +1476,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 	if (argc > arg_index + 2 && strcmp(argv[arg_index], "size") == 0) {
 		/* size <width> <height> */
 		if (type != SC_DEFAULTZOOM && type != SC_ZOOMEDIN) {
-			IConsoleError("'size' can only be used in combination with 'normal' or 'big'");
+			IConsolePrint(CC_ERROR, "'size' can only be used in combination with 'normal' or 'big'.");
 			return true;
 		}
 		GetArgumentInteger(&width, argv[arg_index + 1]);
@@ -1510,7 +1510,7 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 
 	const IConsoleCmd *cmd = IConsole::CmdGet(argv[1]);
 	if (cmd == nullptr) {
-		IConsoleError("the given command was not found");
+		IConsolePrint(CC_ERROR, "The given command was not found.");
 		return true;
 	}
 
@@ -1589,7 +1589,7 @@ DEF_CONSOLE_CMD(ConHelp)
 			return true;
 		}
 
-		IConsoleError("command not found");
+		IConsolePrint(CC_ERROR, "Command not found");
 		return true;
 	}
 
@@ -1774,7 +1774,7 @@ DEF_CONSOLE_CMD(ConCompanyPassword)
 	}
 
 	if (!Company::IsValidHumanID(company_id)) {
-		IConsoleError(errormsg);
+		IConsolePrint(CC_ERROR, errormsg);
 		return false;
 	}
 
@@ -1881,7 +1881,7 @@ DEF_CONSOLE_CMD(ConContent)
 			 * to download every available package on BaNaNaS. This is not in
 			 * the spirit of this service. Additionally, these few people were
 			 * good for 70% of the consumed bandwidth of BaNaNaS. */
-			IConsoleError("'select all' is no longer supported since 1.11");
+			IConsolePrint(CC_ERROR, "'select all' is no longer supported since 1.11.");
 		} else {
 			_network_content_client.Select((ContentID)atoi(argv[2]));
 		}
@@ -1890,7 +1890,7 @@ DEF_CONSOLE_CMD(ConContent)
 
 	if (strcasecmp(argv[1], "unselect") == 0) {
 		if (argc <= 2) {
-			IConsoleError("You must enter the id.");
+			IConsolePrint(CC_ERROR, "You must enter the id.");
 			return false;
 		}
 		if (strcasecmp(argv[2], "all") == 0) {
@@ -2155,7 +2155,7 @@ DEF_CONSOLE_CMD(ConFramerateWindow)
 	}
 
 	if (_network_dedicated) {
-		IConsoleError("Can not open frame rate window on a dedicated server");
+		IConsolePrint(CC_ERROR, "Can not open frame rate window on a dedicated server");
 		return false;
 	}
 

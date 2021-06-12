@@ -229,7 +229,7 @@ static std::string RemoveUnderscores(std::string name)
 /* static */ void IConsole::AliasRegister(const std::string &name, const std::string &cmd)
 {
 	auto result = IConsole::Aliases().try_emplace(RemoveUnderscores(name), name, cmd);
-	if (!result.second) IConsoleError("an alias with this name already exists; insertion aborted");
+	if (!result.second) IConsolePrint(CC_ERROR, "An alias with the name '{}' already exists.", name);
 }
 
 /**
@@ -259,7 +259,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 	Debug(console, 6, "Requested command is an alias; parsing...");
 
 	if (recurse_count > ICON_MAX_RECURSE) {
-		IConsoleError("Too many alias expansions, recursion limit reached. Aborting");
+		IConsolePrint(CC_ERROR, "Too many alias expansions, recursion limit reached.");
 		return;
 	}
 
@@ -305,8 +305,8 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 						int param = *cmdptr - 'A';
 
 						if (param < 0 || param >= tokencount) {
-							IConsoleError("too many or wrong amount of parameters passed to alias, aborting");
-							IConsolePrintF(CC_WARNING, "Usage of alias '%s': %s", alias->name.c_str(), alias->cmdline.c_str());
+							IConsolePrint(CC_ERROR, "Too many or wrong amount of parameters passed to alias.");
+							IConsolePrint(CC_HELP, "Usage of alias '{}': {}", alias->name, alias->cmdline);
 							return;
 						}
 
@@ -325,7 +325,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 		}
 
 		if (alias_stream >= lastof(alias_buffer) - 1) {
-			IConsoleError("Requested alias execution would overflow execution buffer");
+			IConsolePrint(CC_ERROR, "Requested alias execution would overflow execution buffer.");
 			return;
 		}
 	}
@@ -351,8 +351,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 
 	for (cmdptr = cmdstr; *cmdptr != '\0'; cmdptr++) {
 		if (!IsValidChar(*cmdptr, CS_ALPHANUMERAL)) {
-			IConsoleError("command contains malformed characters, aborting");
-			IConsolePrintF(CC_ERROR, "ERROR: command was: '%s'", cmdstr);
+			IConsolePrint(CC_ERROR, "Command '{}' contains malformed characters.", cmdstr);
 			return;
 		}
 	}
@@ -367,7 +366,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 	 * of characters in our stream or the max amount of tokens we can handle */
 	for (cmdptr = cmdstr, t_index = 0, tstream_i = 0; *cmdptr != '\0'; cmdptr++) {
 		if (tstream_i >= lengthof(tokenstream)) {
-			IConsoleError("command line too long");
+			IConsolePrint(CC_ERROR, "Command line too long.");
 			return;
 		}
 
@@ -388,7 +387,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 			longtoken = !longtoken;
 			if (!foundtoken) {
 				if (t_index >= lengthof(tokens)) {
-					IConsoleError("command line too long");
+					IConsolePrint(CC_ERROR, "Command line too long.");
 					return;
 				}
 				tokens[t_index++] = &tokenstream[tstream_i];
@@ -406,7 +405,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 
 			if (!foundtoken) {
 				if (t_index >= lengthof(tokens)) {
-					IConsoleError("command line too long");
+					IConsolePrint(CC_ERROR, "Command line too long.");
 					return;
 				}
 				tokens[t_index++] = &tokenstream[tstream_i - 1];
@@ -447,5 +446,5 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 		return;
 	}
 
-	IConsoleError("command not found");
+	IConsolePrint(CC_ERROR, "Command '{}' not found.", tokens[0]);
 }
