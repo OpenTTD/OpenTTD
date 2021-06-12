@@ -88,14 +88,13 @@ void IConsoleFree()
  * as well as to a logfile. If the network server is a dedicated server, all activities
  * are also logged. All lines to print are added to a temporary buffer which can be
  * used as a history to print them onscreen
- * @param colour_code the colour of the command. Red in case of errors, etc.
- * @param string the message entered or output on the console (notice, error, etc.)
+ * @param colour_code The colour of the command.
+ * @param string The message to output on the console (notice, error, etc.)
  */
-void IConsolePrint(TextColour colour_code, const char *string)
+void IConsolePrint(TextColour colour_code, const std::string &string)
 {
 	assert(IsValidConsoleColour(colour_code));
 
-	char *str;
 	if (_redirect_console_to_client != INVALID_CLIENT_ID) {
 		/* Redirect the string to the client */
 		NetworkServerSendRcon(_redirect_console_to_client, colour_code, string);
@@ -109,7 +108,7 @@ void IConsolePrint(TextColour colour_code, const char *string)
 
 	/* Create a copy of the string, strip if of colours and invalid
 	 * characters and (when applicable) assign it to the console buffer */
-	str = stredup(string);
+	char *str = stredup(string.c_str());
 	str_strip_colours(str);
 	StrMakeValidInPlace(str);
 
