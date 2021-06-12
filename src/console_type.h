@@ -23,6 +23,7 @@ enum IConsoleModes {
 static const TextColour CC_DEFAULT = TC_SILVER;      ///< Default colour of the console.
 static const TextColour CC_ERROR   = TC_RED;         ///< Colour for error lines.
 static const TextColour CC_WARNING = TC_LIGHT_BLUE;  ///< Colour for warning lines.
+static const TextColour CC_HELP    = TC_LIGHT_BLUE;  ///< Colour for help lines.
 static const TextColour CC_INFO    = TC_YELLOW;      ///< Colour for information lines.
 static const TextColour CC_DEBUG   = TC_LIGHT_BROWN; ///< Colour for debug output.
 static const TextColour CC_COMMAND = TC_GOLD;        ///< Colour for the console's commands.
