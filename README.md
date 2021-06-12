@@ -205,6 +205,9 @@ See the comments in the source files in `src/3rdparty/md5` for the complete lice
 The implementations of Posix `getaddrinfo` and `getnameinfo` for OS/2 in `src/3rdparty/os2` are distributed partly under the GNU Lesser General Public License 2.1, and partly under the (3-clause) BSD license.
 The exact licensing terms can be found in `src/3rdparty/os2/getaddrinfo.c` resp. `src/3rdparty/os2/getnameinfo.c`.
 
+The fmt implementation in `src/3rdparty/fmt` is licensed under the MIT license.
+See `src/3rdparty/fmt/LICENSE.rst` for the complete license text.
+
 
 ## 4.0 Credits
 
