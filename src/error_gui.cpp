@@ -399,10 +399,7 @@ void ShowErrorMessage(StringID summary_msg, StringID detailed_msg, WarningLevel 
 
 		if (textref_stack_size > 0) StopTextRefStackUsage();
 
-		switch (wl) {
-			case WL_WARNING: IConsolePrint(CC_WARNING, buf); break;
-			default:         IConsoleError(buf); break;
-		}
+		IConsolePrint(wl == WL_WARNING ? CC_WARNING : CC_ERROR, buf);
 	}
 
 	bool no_timeout = wl == WL_CRITICAL;
