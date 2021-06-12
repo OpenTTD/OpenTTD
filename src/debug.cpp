@@ -100,46 +100,43 @@ char *DumpDebugFacilityNames(char *buf, char *last)
 
 /**
  * Internal function for outputting the debug line.
- * @param dbg Debug category.
- * @param buf Text line to output.
+ * @param level Debug category.
+ * @param message The message to output.
  */
-void debug_print(const char *dbg, const char *buf)
+void DebugPrint(const char *level, const std::string &message)
 {
 	if (_debug_socket != INVALID_SOCKET) {
-		char buf2[1024 + 32];
-
-		seprintf(buf2, lastof(buf2), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
+		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
 		/* Sending out an error when this fails would be nice, however... the error
 		 * would have to be send over this failing socket which won't work. */
-		send(_debug_socket, buf2, (int)strlen(buf2), 0);
+		send(_debug_socket, msg.c_str(), (int)msg.size(), 0);
 		return;
 	}
-	if (strcmp(dbg, "desync") == 0) {
+	if (strcmp(level, "desync") == 0) {
 		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
-		fprintf(f, "%s%s\n", GetLogPrefix(), buf);
+		fprintf(f, "%s%s\n", GetLogPrefix(), message.c_str());
 		fflush(f);
 #ifdef RANDOM_DEBUG
-	} else if (strcmp(dbg, "random") == 0) {
+	} else if (strcmp(level, "random") == 0) {
 		static FILE *f = FioFOpenFile("random-out.log", "wb", AUTOSAVE_DIR);
 		if (f == nullptr) return;
 
-		fprintf(f, "%s\n", buf);
+		fprintf(f, "%s\n", message.c_str());
 		fflush(f);
 #endif
 	} else {
-		char buffer[512];
-		seprintf(buffer, lastof(buffer), "%sdbg: [%s] %s\n", GetLogPrefix(), dbg, buf);
+		std::string msg = fmt::format("{}dbg: [{}] {}\n", GetLogPrefix(), level, message);
 #if defined(_WIN32)
 		wchar_t system_buf[512];
-		convert_to_fs(buffer, system_buf, lengthof(system_buf));
+		convert_to_fs(msg.c_str(), system_buf, lengthof(system_buf));
 		fputws(system_buf, stderr);
 #else
-		fputs(buffer, stderr);
+		fputs(msg.c_str(), stderr);
 #endif
-		NetworkAdminConsole(dbg, buf);
-		IConsoleDebug(dbg, buf);
+		NetworkAdminConsole(level, message);
+		IConsoleDebug(level, message.c_str());
 	}
 }
 
