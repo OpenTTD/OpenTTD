@@ -1261,7 +1261,7 @@ public:
 
 		const SlStorageT *list = static_cast<const SlStorageT *>(storage);
 
-		int type_size = SlCalcConvFileLen(SLE_FILE_U32); // Size of the length of the list.
+		int type_size = SlGetArrayLength(list->size());
 		int item_size = SlCalcConvFileLen(cmd == SL_VAR ? conv : (VarType)SLE_FILE_U32);
 		return list->size() * item_size + type_size;
 	}
@@ -1290,7 +1290,7 @@ public:
 
 		switch (_sl.action) {
 			case SLA_SAVE:
-				SlWriteUint32((uint32)list->size());
+				SlWriteArrayLength(list->size());
 
 				for (auto &item : *list) {
 					SlSaveLoadMember(cmd, &item, conv);
@@ -1301,8 +1301,8 @@ public:
 			case SLA_LOAD: {
 				size_t length;
 				switch (cmd) {
-					case SL_VAR: length = SlReadUint32(); break;
-					case SL_REF: length = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : SlReadUint32(); break;
+					case SL_VAR: length = IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
+					case SL_REF: length = IsSavegameVersionBefore(SLV_69) ? SlReadUint16() : IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH) ? SlReadUint32() : SlReadArrayLength(); break;
 					default: NOT_REACHED();
 				}
 
