@@ -146,7 +146,7 @@ public:
 			int cost = bDestFound ? m_pBestDestNode->m_cost : -1;
 			int dist = bDestFound ? m_pBestDestNode->m_estimate - m_pBestDestNode->m_cost : -1;
 
-			DEBUG(yapf, 3, "[YAPF%c]%c%4d- %d rounds - %d open - %d closed - CHR %4.1f%% - C %d D %d",
+			Debug(yapf, 3, "[YAPF{}]{}{:4d} - {} rounds - {} open - {} closed - CHR {:4.1f}% - C {} D {}",
 				ttc, bDestFound ? '-' : '!', veh_idx, m_num_steps, m_nodes.OpenCount(), m_nodes.ClosedCount(), cache_hit_ratio, cost, dist
 			);
 		}

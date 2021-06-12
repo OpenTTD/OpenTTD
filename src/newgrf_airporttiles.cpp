@@ -193,7 +193,7 @@ static uint32 GetAirportTileIDAtOffset(TileIndex tile, const Station *st, uint32
 		case 0x62: return GetAirportTileIDAtOffset(GetNearbyTile(parameter, this->tile), this->st, this->ro.grffile->grfid);
 	}
 
-	DEBUG(grf, 1, "Unhandled airport tile variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled airport tile variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;

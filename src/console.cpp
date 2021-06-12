@@ -271,7 +271,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 	char  alias_buffer[ICON_MAX_STREAMSIZE] = { '\0' };
 	char *alias_stream = alias_buffer;
 
-	DEBUG(console, 6, "Requested command is an alias; parsing...");
+	Debug(console, 6, "Requested command is an alias; parsing...");
 
 	if (recurse_count > ICON_MAX_RECURSE) {
 		IConsoleError("Too many alias expansions, recursion limit reached. Aborting");
@@ -372,7 +372,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 		}
 	}
 
-	DEBUG(console, 4, "Executing cmdline: '%s'", cmdstr);
+	Debug(console, 4, "Executing cmdline: '{}'", cmdstr);
 
 	memset(&tokens, 0, sizeof(tokens));
 	memset(&tokenstream, 0, sizeof(tokenstream));
@@ -432,7 +432,7 @@ void IConsoleCmdExec(const char *cmdstr, const uint recurse_count)
 	}
 
 	for (uint i = 0; i < lengthof(tokens) && tokens[i] != nullptr; i++) {
-		DEBUG(console, 8, "Token %d is: '%s'", i, tokens[i]);
+		Debug(console, 8, "Token {} is: '{}'", i, tokens[i]);
 	}
 
 	if (StrEmpty(tokens[0])) return; // don't execute empty commands

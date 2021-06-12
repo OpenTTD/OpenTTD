@@ -130,7 +130,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 
 	if (FAILED(hr))
 	{
-		DEBUG(driver, 0, "xaudio2_s: CoInitializeEx failed (%08x)", (uint)hr);
+		Debug(driver, 0, "xaudio2_s: CoInitializeEx failed ({:08x})", (uint)hr);
 		return "Failed to initialise COM";
 	}
 
@@ -140,7 +140,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 	{
 		CoUninitialize();
 
-		DEBUG(driver, 0, "xaudio2_s: Unable to load " XAUDIO2_DLL_A);
+		Debug(driver, 0, "xaudio2_s: Unable to load " XAUDIO2_DLL_A);
 		return "Failed to load XAudio2 DLL";
 	}
 
@@ -151,7 +151,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 		FreeLibrary(_xaudio_dll_handle);
 		CoUninitialize();
 
-		DEBUG(driver, 0, "xaudio2_s: Unable to find XAudio2Create function in DLL");
+		Debug(driver, 0, "xaudio2_s: Unable to find XAudio2Create function in DLL");
 		return "Failed to load XAudio2 DLL";
 	}
 
@@ -164,7 +164,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 		FreeLibrary(_xaudio_dll_handle);
 		CoUninitialize();
 
-		DEBUG(driver, 0, "xaudio2_s: XAudio2Create failed (%08x)", (uint)hr);
+		Debug(driver, 0, "xaudio2_s: XAudio2Create failed ({:08x})", (uint)hr);
 		return "Failed to inititialise the XAudio2 engine";
 	}
 
@@ -177,7 +177,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 		FreeLibrary(_xaudio_dll_handle);
 		CoUninitialize();
 
-		DEBUG(driver, 0, "xaudio2_s: CreateMasteringVoice failed (%08x)", (uint)hr);
+		Debug(driver, 0, "xaudio2_s: CreateMasteringVoice failed ({:08x})", (uint)hr);
 		return "Failed to create a mastering voice";
 	}
 
@@ -216,7 +216,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 		FreeLibrary(_xaudio_dll_handle);
 		CoUninitialize();
 
-		DEBUG(driver, 0, "xaudio2_s: CreateSourceVoice failed (%08x)", (uint)hr);
+		Debug(driver, 0, "xaudio2_s: CreateSourceVoice failed ({:08x})", (uint)hr);
 		return "Failed to create a source voice";
 	}
 
@@ -225,7 +225,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 
 	if (FAILED(hr))
 	{
-		DEBUG(driver, 0, "xaudio2_s: _source_voice->Start failed (%08x)", (uint)hr);
+		Debug(driver, 0, "xaudio2_s: _source_voice->Start failed ({:08x})", (uint)hr);
 
 		Stop();
 		return "Failed to start the source voice";
@@ -238,7 +238,7 @@ const char *SoundDriver_XAudio2::Start(const StringList &parm)
 
 	if (FAILED(hr))
 	{
-		DEBUG(driver, 0, "xaudio2_s: _voice_context->SubmitBuffer failed (%08x)", (uint)hr);
+		Debug(driver, 0, "xaudio2_s: _voice_context->SubmitBuffer failed ({:08x})", (uint)hr);
 
 		Stop();
 		return "Failed to submit the first audio buffer";

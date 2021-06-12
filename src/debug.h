@@ -105,7 +105,7 @@ const char *GetDebugString();
 #define TOC(str, count)\
 	_sum_ += ottd_rdtsc() - _xxx_;\
 	if (++_i_ == count) {\
-		DEBUG(misc, 0, "[%s] " OTTD_PRINTF64 " [avg: %.1f]", str, _sum_, _sum_/(double)_i_);\
+		Debug(misc, 0, "[{}] {} [avg: {:.1f}]", str, _sum_, _sum_/(double)_i_);\
 		_i_ = 0;\
 		_sum_ = 0;\
 	}\
@@ -120,7 +120,7 @@ const char *GetDebugString();
 #define TOCC(str, _count_)\
 	_sum_ += (std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now() - _start_)).count();\
 	if (++_i_ == _count_) {\
-		DEBUG(misc, 0, "[%s] " OTTD_PRINTF64 " us [avg: %.1f us]", str, _sum_, _sum_/(double)_i_);\
+		Debug(misc, 0, "[{}] {} us [avg: {:.1f} us]", str, _sum_, _sum_/(double)_i_);\
 		_i_ = 0;\
 		_sum_ = 0;\
 	}\

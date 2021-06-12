@@ -132,7 +132,7 @@ static uint32 RemapOldTownName(uint32 townnameparts, byte old_town_name_type)
 			return FIXNUM(townnameparts - 86, lengthof(_name_french_real), 0);
 
 		case 2: // German
-			DEBUG(misc, 0, "German Townnames are buggy (%d)", townnameparts);
+			Debug(misc, 0, "German Townnames are buggy ({})", townnameparts);
 			return townnameparts;
 
 		case 4: // Latin-American
@@ -532,9 +532,9 @@ static void ReadTTDPatchFlags()
 	for (uint i = 0;       i < 17;      i++) _old_map3[i] = 0;
 	for (uint i = 0x1FE00; i < 0x20000; i++) _old_map3[i] = 0;
 
-	if (_savegame_type == SGT_TTDP2) DEBUG(oldloader, 2, "Found TTDPatch game");
+	if (_savegame_type == SGT_TTDP2) Debug(oldloader, 2, "Found TTDPatch game");
 
-	DEBUG(oldloader, 3, "Vehicle-multiplier is set to %d (%d vehicles)", _old_vehicle_multiplier, _old_vehicle_multiplier * 850);
+	Debug(oldloader, 3, "Vehicle-multiplier is set to {} ({} vehicles)", _old_vehicle_multiplier, _old_vehicle_multiplier * 850);
 }
 
 static const OldChunks town_chunk[] = {
@@ -1114,7 +1114,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 
 	/* This chunk size should always be 10 bytes */
 	if (ls->total_read - temp != 10) {
-		DEBUG(oldloader, 0, "Assert failed in VehicleUnion: invalid chunk size");
+		Debug(oldloader, 0, "Assert failed in VehicleUnion: invalid chunk size");
 		return false;
 	}
 
@@ -1327,7 +1327,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 
 			/* This should be consistent, else we have a big problem... */
 			if (v->index != _current_vehicle_id) {
-				DEBUG(oldloader, 0, "Loading failed - vehicle-array is invalid");
+				Debug(oldloader, 0, "Loading failed - vehicle-array is invalid");
 				return false;
 			}
 		}
@@ -1512,7 +1512,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 {
 	ReadTTDPatchFlags();
 
-	DEBUG(oldloader, 2, "Found %d extra chunk(s)", _old_extra_chunk_nums);
+	Debug(oldloader, 2, "Found {} extra chunk(s)", _old_extra_chunk_nums);
 
 	for (int i = 0; i != _old_extra_chunk_nums; i++) {
 		uint16 id = ReadUint16(ls);
@@ -1535,7 +1535,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 						c->ident.grfid = grfid;
 
 						AppendToGRFConfigList(&_grfconfig, c);
-						DEBUG(oldloader, 3, "TTDPatch game using GRF file with GRFID %0X", BSWAP32(c->ident.grfid));
+						Debug(oldloader, 3, "TTDPatch game using GRF file with GRFID {:08X}", BSWAP32(c->ident.grfid));
 					}
 					len -= 5;
 				}
@@ -1548,14 +1548,14 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 			/* TTDPatch version and configuration */
 			case 0x3:
 				_ttdp_version = ReadUint32(ls);
-				DEBUG(oldloader, 3, "Game saved with TTDPatch version %d.%d.%d r%d",
+				Debug(oldloader, 3, "Game saved with TTDPatch version {}.{}.{} r{}",
 					GB(_ttdp_version, 24, 8), GB(_ttdp_version, 20, 4), GB(_ttdp_version, 16, 4), GB(_ttdp_version, 0, 16));
 				len -= 4;
 				while (len-- != 0) ReadByte(ls); // skip the configuration
 				break;
 
 			default:
-				DEBUG(oldloader, 4, "Skipping unknown extra chunk %X", id);
+				Debug(oldloader, 4, "Skipping unknown extra chunk {}", id);
 				while (len-- != 0) ReadByte(ls);
 				break;
 		}
@@ -1742,7 +1742,7 @@ static const OldChunks main_chunk[] = {
 
 bool LoadTTDMain(LoadgameState *ls)
 {
-	DEBUG(oldloader, 3, "Reading main chunk...");
+	Debug(oldloader, 3, "Reading main chunk...");
 
 	_read_ttdpatch_flags = false;
 
@@ -1752,7 +1752,7 @@ bool LoadTTDMain(LoadgameState *ls)
 	_old_vehicle_names = nullptr;
 	try {
 		if (!LoadChunk(ls, nullptr, main_chunk)) {
-			DEBUG(oldloader, 0, "Loading failed");
+			Debug(oldloader, 0, "Loading failed");
 			free(_old_vehicle_names);
 			return false;
 		}
@@ -1761,7 +1761,7 @@ bool LoadTTDMain(LoadgameState *ls)
 		throw;
 	}
 
-	DEBUG(oldloader, 3, "Done, converting game data...");
+	Debug(oldloader, 3, "Done, converting game data...");
 
 	FixTTDMapArray();
 	FixTTDDepots();
@@ -1776,8 +1776,8 @@ bool LoadTTDMain(LoadgameState *ls)
 	/* We have a new difficulty setting */
 	_settings_game.difficulty.town_council_tolerance = Clamp(_old_diff_level, 0, 2);
 
-	DEBUG(oldloader, 3, "Finished converting game data");
-	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");
+	Debug(oldloader, 3, "Finished converting game data");
+	Debug(oldloader, 1, "TTD(Patch) savegame successfully converted");
 
 	free(_old_vehicle_names);
 
@@ -1786,7 +1786,7 @@ bool LoadTTDMain(LoadgameState *ls)
 
 bool LoadTTOMain(LoadgameState *ls)
 {
-	DEBUG(oldloader, 3, "Reading main chunk...");
+	Debug(oldloader, 3, "Reading main chunk...");
 
 	_read_ttdpatch_flags = false;
 
@@ -1797,10 +1797,10 @@ bool LoadTTOMain(LoadgameState *ls)
 
 	/* Load the biggest chunk */
 	if (!LoadChunk(ls, nullptr, main_chunk)) {
-		DEBUG(oldloader, 0, "Loading failed");
+		Debug(oldloader, 0, "Loading failed");
 		return false;
 	}
-	DEBUG(oldloader, 3, "Done, converting game data...");
+	Debug(oldloader, 3, "Done, converting game data...");
 
 	if (_settings_game.game_creation.town_name != 0) _settings_game.game_creation.town_name++;
 
@@ -1808,7 +1808,7 @@ bool LoadTTOMain(LoadgameState *ls)
 	_trees_tick_ctr = 0xFF;
 
 	if (!FixTTOMapArray() || !FixTTOEngines()) {
-		DEBUG(oldloader, 0, "Conversion failed");
+		Debug(oldloader, 0, "Conversion failed");
 		return false;
 	}
 
@@ -1825,8 +1825,8 @@ bool LoadTTOMain(LoadgameState *ls)
 	 * the vehicles stay the same" */
 	_economy.inflation_payment = std::min(_economy.inflation_payment * 124 / 74, MAX_INFLATION);
 
-	DEBUG(oldloader, 3, "Finished converting game data");
-	DEBUG(oldloader, 1, "TTO savegame successfully converted");
+	Debug(oldloader, 3, "Finished converting game data");
+	Debug(oldloader, 1, "TTO savegame successfully converted");
 
 	return true;
 }

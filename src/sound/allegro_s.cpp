@@ -53,20 +53,20 @@ extern int _allegro_instance_count;
 const char *SoundDriver_Allegro::Start(const StringList &parm)
 {
 	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, nullptr)) {
-		DEBUG(driver, 0, "allegro: install_allegro failed '%s'", allegro_error);
+		Debug(driver, 0, "allegro: install_allegro failed '{}'", allegro_error);
 		return "Failed to set up Allegro";
 	}
 	_allegro_instance_count++;
 
 	/* Initialise the sound */
 	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, nullptr) != 0) {
-		DEBUG(driver, 0, "allegro: install_sound failed '%s'", allegro_error);
+		Debug(driver, 0, "allegro: install_sound failed '{}'", allegro_error);
 		return "Failed to set up Allegro sound";
 	}
 
 	/* Okay, there's no soundcard */
 	if (digi_card == DIGI_NONE) {
-		DEBUG(driver, 0, "allegro: no sound card found");
+		Debug(driver, 0, "allegro: no sound card found");
 		return "No sound card found";
 	}
 

@@ -121,7 +121,7 @@ char *strecpy(char *dst, const char *src, const char *last)
 #if defined(STRGEN) || defined(SETTINGSGEN)
 		error("String too long for destination buffer");
 #else /* STRGEN || SETTINGSGEN */
-		DEBUG(misc, 0, "String too long for destination buffer");
+		Debug(misc, 0, "String too long for destination buffer");
 #endif /* STRGEN || SETTINGSGEN */
 	}
 	return dst;
@@ -599,7 +599,7 @@ size_t Utf8Decode(WChar *c, const char *s)
 		}
 	}
 
-	/* DEBUG(misc, 1, "[utf8] invalid UTF-8 sequence"); */
+	/* Debug(misc, 1, "[utf8] invalid UTF-8 sequence"); */
 	*c = '?';
 	return 1;
 }
@@ -635,7 +635,7 @@ inline size_t Utf8Encode(T buf, WChar c)
 		return 4;
 	}
 
-	/* DEBUG(misc, 1, "[utf8] can't UTF-8 encode value 0x%X", c); */
+	/* Debug(misc, 1, "[utf8] can't UTF-8 encode value 0x{:X}", c); */
 	*buf = '?';
 	return 1;
 }

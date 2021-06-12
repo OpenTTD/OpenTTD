@@ -70,7 +70,7 @@ protected:
 			 */
 			blitters.insert(Blitters::value_type(this->name, this));
 		} else {
-			DEBUG(driver, 1, "Not registering blitter %s as it is not usable", name);
+			Debug(driver, 1, "Not registering blitter {} as it is not usable", name);
 		}
 	}
 
@@ -104,7 +104,7 @@ public:
 		delete *GetActiveBlitter();
 		*GetActiveBlitter() = newb;
 
-		DEBUG(driver, 1, "Successfully %s blitter '%s'", name.empty() ? "probed" : "loaded", newb->GetName());
+		Debug(driver, 1, "Successfully {} blitter '{}'", name.empty() ? "probed" : "loaded", newb->GetName());
 		return newb;
 	}
 

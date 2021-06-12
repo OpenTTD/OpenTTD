@@ -85,7 +85,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 /* static */ void ScriptObject::SetLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	ScriptStorage *s = GetStorage();
-	DEBUG(script, 6, "SetLastCommand company=%02d tile=%06x p1=%08x p2=%08x cmd=%d", s->root_company, tile, p1, p2, cmd);
+	Debug(script, 6, "SetLastCommand company={:02d} tile={:06x} p1={:08x} p2={:08x} cmd={}", s->root_company, tile, p1, p2, cmd);
 	s->last_tile = tile;
 	s->last_p1 = p1;
 	s->last_p2 = p2;
@@ -95,7 +95,7 @@ ScriptObject::ActiveInstance::~ActiveInstance()
 /* static */ bool ScriptObject::CheckLastCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd)
 {
 	ScriptStorage *s = GetStorage();
-	DEBUG(script, 6, "CheckLastCommand company=%02d tile=%06x p1=%08x p2=%08x cmd=%d", s->root_company, tile, p1, p2, cmd);
+	Debug(script, 6, "CheckLastCommand company={:02d} tile={:06x} p1={:08x} p2={:08x} cmd={}", s->root_company, tile, p1, p2, cmd);
 	if (s->last_tile != tile) return false;
 	if (s->last_p1 != p1) return false;
 	if (s->last_p2 != p2) return false;

@@ -335,7 +335,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte local_id, uint32 grfid, 
 	}
 
 unhandled:
-	DEBUG(grf, 1, "Unhandled object variable 0x%X", variable);
+	Debug(grf, 1, "Unhandled object variable 0x{:X}", variable);
 
 	*available = false;
 	return UINT_MAX;

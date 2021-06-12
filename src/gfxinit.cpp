@@ -49,7 +49,7 @@ static uint LoadGrfFile(const char *filename, uint load_index, bool needs_palett
 
 	SpriteFile &file = OpenCachedSpriteFile(filename, BASESET_DIR, needs_palette_remap);
 
-	DEBUG(sprite, 2, "Reading grf-file '%s'", filename);
+	Debug(sprite, 2, "Reading grf-file '{}'", filename);
 
 	byte container_ver = file.GetContainerVersion();
 	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename);
@@ -67,7 +67,7 @@ static uint LoadGrfFile(const char *filename, uint load_index, bool needs_palett
 			usererror("Too many sprites. Recompile with higher MAX_SPRITES value or remove some custom GRF files.");
 		}
 	}
-	DEBUG(sprite, 2, "Currently %i sprites are loaded", load_index);
+	Debug(sprite, 2, "Currently {} sprites are loaded", load_index);
 
 	return load_index - load_index_org;
 }
@@ -86,7 +86,7 @@ static void LoadGrfFileIndexed(const char *filename, const SpriteID *index_tbl, 
 
 	SpriteFile &file = OpenCachedSpriteFile(filename, BASESET_DIR, needs_palette_remap);
 
-	DEBUG(sprite, 2, "Reading indexed grf-file '%s'", filename);
+	Debug(sprite, 2, "Reading indexed grf-file '{}'", filename);
 
 	byte container_ver = file.GetContainerVersion();
 	if (container_ver == 0) usererror("Base grf '%s' is corrupt", filename);
@@ -119,7 +119,7 @@ void CheckExternalFiles()
 
 	const GraphicsSet *used_set = BaseGraphics::GetUsedSet();
 
-	DEBUG(grf, 1, "Using the %s base graphics set", used_set->name.c_str());
+	Debug(grf, 1, "Using the {} base graphics set", used_set->name);
 
 	static const size_t ERROR_MESSAGE_LENGTH = 256;
 	static const size_t MISSING_FILE_MESSAGE_LENGTH = 128;
@@ -223,7 +223,7 @@ static void LoadSpriteTables()
 
 	uint total_extra_graphics = SPR_NEWGRFS_BASE - SPR_OPENTTD_BASE;
 	_missing_extra_graphics = GetSpriteCountForFile(master_filename, SPR_OPENTTD_BASE, SPR_NEWGRFS_BASE);
-	DEBUG(sprite, 1, "%u extra sprites, %u from baseset, %u from fallback", total_extra_graphics, total_extra_graphics - _missing_extra_graphics, _missing_extra_graphics);
+	Debug(sprite, 1, "{} extra sprites, {} from baseset, {} from fallback", total_extra_graphics, total_extra_graphics - _missing_extra_graphics, _missing_extra_graphics);
 
 	/* The original baseset extra graphics intentionally make use of the fallback graphics.
 	 * Let's say everything which provides less than 500 sprites misses the rest intentionally. */
@@ -241,10 +241,10 @@ static void RealChangeBlitter(const char *repl_blitter)
 	const char *cur_blitter = BlitterFactory::GetCurrentBlitter()->GetName();
 	if (strcmp(cur_blitter, repl_blitter) == 0) return;
 
-	DEBUG(driver, 1, "Switching blitter from '%s' to '%s'... ", cur_blitter, repl_blitter);
+	Debug(driver, 1, "Switching blitter from '{}' to '{}'... ", cur_blitter, repl_blitter);
 	Blitter *new_blitter = BlitterFactory::SelectBlitter(repl_blitter);
 	if (new_blitter == nullptr) NOT_REACHED();
-	DEBUG(driver, 1, "Successfully switched to %s.", repl_blitter);
+	Debug(driver, 1, "Successfully switched to {}.", repl_blitter);
 
 	if (!VideoDriver::GetInstance()->AfterBlitterChange()) {
 		/* Failed to switch blitter, let's hope we can return to the old one. */
@@ -343,7 +343,7 @@ void CheckBlitter()
 /** Initialise and load all the sprites. */
 void GfxLoadSprites()
 {
-	DEBUG(sprite, 2, "Loading sprite set %d", _settings_game.game_creation.landscape);
+	Debug(sprite, 2, "Loading sprite set {}", _settings_game.game_creation.landscape);
 
 	SwitchNewGRFBlitter();
 	VideoDriver::GetInstance()->ClearSystemSprites();

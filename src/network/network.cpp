@@ -264,7 +264,7 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 	char *msg_ptr = message + Utf8Encode(message, _current_text_dir == TD_LTR ? CHAR_TD_LRM : CHAR_TD_RLM);
 	GetString(msg_ptr, strid, lastof(message));
 
-	DEBUG(desync, 1, "msg: %08x; %02x; %s", _date, _date_fract, message);
+	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", _date, _date_fract, message);
 	IConsolePrintF(colour, "%s", message);
 	NetworkAddChatMessage((TextColour)colour, _settings_client.gui.network_chat_timeout, message);
 }
@@ -877,14 +877,14 @@ static void CheckClientAndServerName()
 	static const std::string fallback_client_name = "Unnamed Client";
 	StrTrimInPlace(_settings_client.network.client_name);
 	if (_settings_client.network.client_name.empty() || _settings_client.network.client_name.compare(fallback_client_name) == 0) {
-		DEBUG(net, 1, "No \"client_name\" has been set, using \"%s\" instead. Please set this now using the \"name <new name>\" command", fallback_client_name.c_str());
+		Debug(net, 1, "No \"client_name\" has been set, using \"{}\" instead. Please set this now using the \"name <new name>\" command", fallback_client_name);
 		_settings_client.network.client_name = fallback_client_name;
 	}
 
 	static const std::string fallback_server_name = "Unnamed Server";
 	StrTrimInPlace(_settings_client.network.server_name);
 	if (_settings_client.network.server_name.empty() || _settings_client.network.server_name.compare(fallback_server_name) == 0) {
-		DEBUG(net, 1, "No \"server_name\" has been set, using \"%s\" instead. Please set this now using the \"server_name <new name>\" command", fallback_server_name.c_str());
+		Debug(net, 1, "No \"server_name\" has been set, using \"{}\" instead. Please set this now using the \"server_name <new name>\" command", fallback_server_name);
 		_settings_client.network.server_name = fallback_server_name;
 	}
 }
@@ -902,17 +902,17 @@ bool NetworkServerStart()
 
 	NetworkDisconnect(false, false);
 	NetworkInitialize(false);
-	DEBUG(net, 5, "Starting listeners for clients");
+	Debug(net, 5, "Starting listeners for clients");
 	if (!ServerNetworkGameSocketHandler::Listen(_settings_client.network.server_port)) return false;
 
 	/* Only listen for admins when the password isn't empty. */
 	if (!_settings_client.network.admin_password.empty()) {
-		DEBUG(net, 5, "Starting listeners for admins");
+		Debug(net, 5, "Starting listeners for admins");
 		if (!ServerNetworkAdminSocketHandler::Listen(_settings_client.network.server_admin_port)) return false;
 	}
 
 	/* Try to start UDP-server */
-	DEBUG(net, 5, "Starting listeners for incoming server queries");
+	Debug(net, 5, "Starting listeners for incoming server queries");
 	NetworkUDPServerListen();
 
 	_network_company_states = new NetworkCompanyState[MAX_COMPANIES];
@@ -1049,7 +1049,7 @@ void NetworkGameLoop()
 			/* We don't want to log multiple times if paused. */
 			static Date last_log;
 			if (last_log != _date) {
-				DEBUG(desync, 1, "sync: %08x; %02x; %08x; %08x", _date, _date_fract, _random.state[0], _random.state[1]);
+				Debug(desync, 1, "sync: {:08x}; {:02x}; {:08x}; {:08x}", _date, _date_fract, _random.state[0], _random.state[1]);
 				last_log = _date;
 			}
 		}
@@ -1063,7 +1063,7 @@ void NetworkGameLoop()
 		static bool check_sync_state = false;
 		static uint32 sync_state[2];
 		if (f == nullptr && next_date == 0) {
-			DEBUG(desync, 0, "Cannot open commands.log");
+			Debug(desync, 0, "Cannot open commands.log");
 			next_date = 1;
 		}
 
@@ -1071,15 +1071,15 @@ void NetworkGameLoop()
 			if (_date == next_date && _date_fract == next_date_fract) {
 				if (cp != nullptr) {
 					NetworkSendCommand(cp->tile, cp->p1, cp->p2, cp->cmd & ~CMD_FLAGS_MASK, nullptr, cp->text, cp->company);
-					DEBUG(desync, 0, "Injecting: %08x; %02x; %02x; %06x; %08x; %08x; %08x; \"%s\" (%s)", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text.c_str(), GetCommandName(cp->cmd));
+					Debug(desync, 0, "Injecting: {:08x}; {:02x}; {:02x}; {:06x}; {:08x}; {:08x}; {:08x}; \"{}\" ({})", _date, _date_fract, (int)_current_company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text, GetCommandName(cp->cmd));
 					delete cp;
 					cp = nullptr;
 				}
 				if (check_sync_state) {
 					if (sync_state[0] == _random.state[0] && sync_state[1] == _random.state[1]) {
-						DEBUG(desync, 0, "Sync check: %08x; %02x; match", _date, _date_fract);
+						Debug(desync, 0, "Sync check: {:08x}; {:02x}; match", _date, _date_fract);
 					} else {
-						DEBUG(desync, 0, "Sync check: %08x; %02x; mismatch expected {%08x, %08x}, got {%08x, %08x}",
+						Debug(desync, 0, "Sync check: {:08x}; {:02x}; mismatch expected {{:08x}, {:08x}}, got {{:08x}, {:08x}}",
 									_date, _date_fract, sync_state[0], sync_state[1], _random.state[0], _random.state[1]);
 						NOT_REACHED();
 					}
@@ -1121,7 +1121,7 @@ void NetworkGameLoop()
 				/* Manually insert a pause when joining; this way the client can join at the exact right time. */
 				int ret = sscanf(p + 6, "%x; %x", &next_date, &next_date_fract);
 				assert(ret == 2);
-				DEBUG(desync, 0, "Injecting pause for join at %08x:%02x; please join when paused", next_date, next_date_fract);
+				Debug(desync, 0, "Injecting pause for join at {:08x}:{:02x}; please join when paused", next_date, next_date_fract);
 				cp = new CommandPacket();
 				cp->company = COMPANY_SPECTATOR;
 				cp->cmd = CMD_PAUSE;
@@ -1137,16 +1137,16 @@ void NetworkGameLoop()
 				/* A message that is not very important to the log playback, but part of the log. */
 #ifndef DEBUG_FAILED_DUMP_COMMANDS
 			} else if (strncmp(p, "cmdf: ", 6) == 0) {
-				DEBUG(desync, 0, "Skipping replay of failed command: %s", p + 6);
+				Debug(desync, 0, "Skipping replay of failed command: {}", p + 6);
 #endif
 			} else {
 				/* Can't parse a line; what's wrong here? */
-				DEBUG(desync, 0, "Trying to parse: %s", p);
+				Debug(desync, 0, "Trying to parse: {}", p);
 				NOT_REACHED();
 			}
 		}
 		if (f != nullptr && feof(f)) {
-			DEBUG(desync, 0, "End of commands.log");
+			Debug(desync, 0, "End of commands.log");
 			fclose(f);
 			f = nullptr;
 		}
@@ -1233,12 +1233,12 @@ public:
 
 	void OnFailure() override
 	{
-		DEBUG(net, 0, "Failed to open connection to %s for redirecting DEBUG()", this->connection_string.c_str());
+		Debug(net, 0, "Failed to open connection to {} for redirecting Debug()", this->connection_string);
 	}
 
 	void OnConnect(SOCKET s) override
 	{
-		DEBUG(net, 3, "Redirecting DEBUG() to %s", this->connection_string.c_str());
+		Debug(net, 3, "Redirecting Debug() to {}", this->connection_string);
 
 		extern SOCKET _debug_socket;
 		_debug_socket = s;
@@ -1253,7 +1253,7 @@ void NetworkStartDebugLog(const std::string &connection_string)
 /** This tries to launch the network for a given OS */
 void NetworkStartUp()
 {
-	DEBUG(net, 3, "Starting network");
+	Debug(net, 3, "Starting network");
 
 	/* Network is available */
 	_network_available = NetworkCoreInitialize();
@@ -1266,7 +1266,7 @@ void NetworkStartUp()
 	_network_game_info = {};
 
 	NetworkInitialize();
-	DEBUG(net, 3, "Network online, multiplayer available");
+	Debug(net, 3, "Network online, multiplayer available");
 	NetworkFindBroadcastIPs(&_broadcast_list);
 }
 
@@ -1276,7 +1276,7 @@ void NetworkShutDown()
 	NetworkDisconnect(true);
 	NetworkUDPClose();
 
-	DEBUG(net, 3, "Shutting down network");
+	Debug(net, 3, "Shutting down network");
 
 	_network_available = false;
 

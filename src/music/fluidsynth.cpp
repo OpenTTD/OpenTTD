@@ -65,7 +65,7 @@ const char *MusicDriver_FluidSynth::Start(const StringList &param)
 	const char *sfont_name = GetDriverParam(param, "soundfont");
 	int sfont_id;
 
-	DEBUG(driver, 1, "Fluidsynth: sf %s", sfont_name);
+	Debug(driver, 1, "Fluidsynth: sf {}", sfont_name);
 
 	/* Create the settings. */
 	_midi.settings = new_fluid_settings();
@@ -76,7 +76,7 @@ const char *MusicDriver_FluidSynth::Start(const StringList &param)
 	/* Install the music render routine and set up the samplerate */
 	uint32 samplerate = MxSetMusicSource(RenderMusicStream);
 	fluid_settings_setnum(_midi.settings, "synth.sample-rate", samplerate);
-	DEBUG(driver, 1, "Fluidsynth: samplerate %.0f", (float)samplerate);
+	Debug(driver, 1, "Fluidsynth: samplerate {:.0f}", (float)samplerate);
 
 	/* Create the synthesizer. */
 	_midi.synth = new_fluid_synth(_midi.settings);
@@ -143,18 +143,18 @@ void MusicDriver_FluidSynth::PlaySong(const MusicSongInfo &song)
 
 	_midi.player = new_fluid_player(_midi.synth);
 	if (_midi.player == nullptr) {
-		DEBUG(driver, 0, "Could not create midi player");
+		Debug(driver, 0, "Could not create midi player");
 		return;
 	}
 
 	if (fluid_player_add(_midi.player, filename.c_str()) != FLUID_OK) {
-		DEBUG(driver, 0, "Could not open music file");
+		Debug(driver, 0, "Could not open music file");
 		delete_fluid_player(_midi.player);
 		_midi.player = nullptr;
 		return;
 	}
 	if (fluid_player_play(_midi.player) != FLUID_OK) {
-		DEBUG(driver, 0, "Could not start midi player");
+		Debug(driver, 0, "Could not start midi player");
 		delete_fluid_player(_midi.player);
 		_midi.player = nullptr;
 		return;
@@ -194,6 +194,6 @@ void MusicDriver_FluidSynth::SetVolume(byte vol)
 	 * and 0.2. */
 	double gain = (1.0 * vol) / (128.0 * 5.0);
 	if (fluid_settings_setnum(_midi.settings, "synth.gain", gain) != FLUID_OK) {
-		DEBUG(driver, 0, "Could not set volume");
+		Debug(driver, 0, "Could not set volume");
 	}
 }

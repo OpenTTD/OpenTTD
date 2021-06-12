@@ -67,7 +67,7 @@ struct UDPSocket {
 		std::unique_lock<std::mutex> lock(mutex, std::defer_lock);
 		if (!lock.try_lock()) {
 			if (++receive_iterations_locked % 32 == 0) {
-				DEBUG(net, 0, "%s background UDP loop processing appears to be blocked. Your OS may be low on UDP send buffers.", name.c_str());
+				Debug(net, 0, "{} background UDP loop processing appears to be blocked. Your OS may be low on UDP send buffers.", name);
 			}
 			return;
 		}
@@ -133,7 +133,7 @@ public:
 void MasterNetworkUDPSocketHandler::Receive_MASTER_ACK_REGISTER(Packet *p, NetworkAddress *client_addr)
 {
 	_network_advertise_retries = 0;
-	DEBUG(net, 3, "Advertising on master server successful (%s)", NetworkAddress::AddressFamilyAsString(client_addr->GetAddress()->ss_family));
+	Debug(net, 3, "Advertising on master server successful ({})", NetworkAddress::AddressFamilyAsString(client_addr->GetAddress()->ss_family));
 
 	/* We are advertised, but we don't want to! */
 	if (!_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise(false);
@@ -142,7 +142,7 @@ void MasterNetworkUDPSocketHandler::Receive_MASTER_ACK_REGISTER(Packet *p, Netwo
 void MasterNetworkUDPSocketHandler::Receive_MASTER_SESSION_KEY(Packet *p, NetworkAddress *client_addr)
 {
 	_session_key = p->Recv_uint64();
-	DEBUG(net, 6, "Received new session key from master server (%s)", NetworkAddress::AddressFamilyAsString(client_addr->GetAddress()->ss_family));
+	Debug(net, 6, "Received new session key from master server ({})", NetworkAddress::AddressFamilyAsString(client_addr->GetAddress()->ss_family));
 }
 
 ///*** Communication with clients (we are server) ***/
@@ -175,7 +175,7 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_FIND_SERVER(Packet *p, Networ
 	/* Let the client know that we are here */
 	this->SendPacket(&packet, client_addr);
 
-	DEBUG(net, 7, "Queried from %s", client_addr->GetHostname());
+	Debug(net, 7, "Queried from {}", client_addr->GetHostname());
 }
 
 void ServerNetworkUDPSocketHandler::Receive_CLIENT_DETAIL_INFO(Packet *p, NetworkAddress *client_addr)
@@ -252,7 +252,7 @@ void ServerNetworkUDPSocketHandler::Receive_CLIENT_GET_NEWGRFS(Packet *p, Networ
 	uint8 in_reply_count = 0;
 	size_t packet_len = 0;
 
-	DEBUG(net, 7, "NewGRF data request from %s", client_addr->GetAddressAsString().c_str());
+	Debug(net, 7, "NewGRF data request from {}", client_addr->GetAddressAsString());
 
 	num_grfs = p->Recv_uint8 ();
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
@@ -314,7 +314,7 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_RESPONSE(Packet *p, NetworkAd
 	/* Just a fail-safe.. should never happen */
 	if (_network_udp_server) return;
 
-	DEBUG(net, 3, "Server response from %s", client_addr->GetAddressAsString().c_str());
+	Debug(net, 3, "Server response from {}", client_addr->GetAddressAsString());
 
 	/* Find next item */
 	item = NetworkGameListAddItem(client_addr->GetAddressAsString(false));
@@ -409,7 +409,7 @@ void ClientNetworkUDPSocketHandler::Receive_SERVER_NEWGRFS(Packet *p, NetworkAdd
 	uint8 num_grfs;
 	uint i;
 
-	DEBUG(net, 7, "NewGRF data reply from %s", client_addr->GetAddressAsString().c_str());
+	Debug(net, 7, "NewGRF data reply from {}", client_addr->GetAddressAsString());
 
 	num_grfs = p->Recv_uint8 ();
 	if (num_grfs > NETWORK_MAX_GRF_COUNT) return;
@@ -440,7 +440,7 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 	for (NetworkAddress &addr : _broadcast_list) {
 		Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
 
-		DEBUG(net, 5, "Broadcasting to %s", addr.GetHostname());
+		Debug(net, 5, "Broadcasting to {}", addr.GetHostname());
 
 		socket->SendPacket(&p, &addr, true, true);
 	}
@@ -460,7 +460,7 @@ void NetworkUDPQueryMasterServer()
 	std::lock_guard<std::mutex> lock(_udp_client.mutex);
 	_udp_client.socket->SendPacket(&p, &out_addr, true);
 
-	DEBUG(net, 6, "Master server queried at %s", out_addr.GetAddressAsString().c_str());
+	Debug(net, 6, "Master server queried at {}", out_addr.GetAddressAsString());
 }
 
 /** Find all servers */
@@ -469,7 +469,7 @@ void NetworkUDPSearchGame()
 	/* We are still searching.. */
 	if (_network_udp_broadcast > 0) return;
 
-	DEBUG(net, 3, "Searching server");
+	Debug(net, 3, "Searching server");
 
 	NetworkUDPBroadCast(_udp_client.socket);
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
@@ -480,7 +480,7 @@ void NetworkUDPSearchGame()
  */
 static void NetworkUDPRemoveAdvertiseThread()
 {
-	DEBUG(net, 3, "Removing advertise from master server");
+	Debug(net, 3, "Removing advertise from master server");
 
 	/* Find somewhere to send */
 	NetworkAddress out_addr(NETWORK_MASTER_SERVER_HOST, NETWORK_MASTER_SERVER_PORT);
@@ -517,22 +517,22 @@ static void NetworkUDPAdvertiseThread()
 	/* Find somewhere to send */
 	NetworkAddress out_addr(NETWORK_MASTER_SERVER_HOST, NETWORK_MASTER_SERVER_PORT);
 
-	DEBUG(net, 3, "Advertising to master server");
+	Debug(net, 3, "Advertising to master server");
 
 	/* Add a bit more messaging when we cannot get a session key */
 	static byte session_key_retries = 0;
 	if (_session_key == 0 && session_key_retries++ == 2) {
-		DEBUG(net, 0, "Advertising to the master server is failing");
-		DEBUG(net, 0, "  we are not receiving the session key from the server");
-		DEBUG(net, 0, "  please allow udp packets from %s to you to be delivered", out_addr.GetAddressAsString(false).c_str());
-		DEBUG(net, 0, "  please allow udp packets from you to %s to be delivered", out_addr.GetAddressAsString(false).c_str());
+		Debug(net, 0, "Advertising to the master server is failing");
+		Debug(net, 0, "  we are not receiving the session key from the server");
+		Debug(net, 0, "  please allow udp packets from {} to you to be delivered", out_addr.GetAddressAsString(false));
+		Debug(net, 0, "  please allow udp packets from you to {} to be delivered", out_addr.GetAddressAsString(false));
 	}
 	if (_session_key != 0 && _network_advertise_retries == 0) {
-		DEBUG(net, 0, "Advertising to the master server is failing");
-		DEBUG(net, 0, "  we are not receiving the acknowledgement from the server");
-		DEBUG(net, 0, "  this usually means that the master server cannot reach us");
-		DEBUG(net, 0, "  please allow udp and tcp packets to port %u to be delivered", _settings_client.network.server_port);
-		DEBUG(net, 0, "  please allow udp and tcp packets from port %u to be delivered", _settings_client.network.server_port);
+		Debug(net, 0, "Advertising to the master server is failing");
+		Debug(net, 0, "  we are not receiving the acknowledgement from the server");
+		Debug(net, 0, "  this usually means that the master server cannot reach us");
+		Debug(net, 0, "  please allow udp and tcp packets to port {} to be delivered", _settings_client.network.server_port);
+		Debug(net, 0, "  please allow udp and tcp packets from port {} to be delivered", _settings_client.network.server_port);
 	}
 
 	/* Send the packet */
@@ -588,7 +588,7 @@ void NetworkUDPInitialize()
 	/* If not closed, then do it. */
 	if (_udp_server.socket != nullptr) NetworkUDPClose();
 
-	DEBUG(net, 3, "Initializing UDP listeners");
+	Debug(net, 3, "Initializing UDP listeners");
 	assert(_udp_client.socket == nullptr && _udp_server.socket == nullptr && _udp_master.socket == nullptr);
 
 	std::scoped_lock lock(_udp_client.mutex, _udp_server.mutex, _udp_master.mutex);
@@ -624,7 +624,7 @@ void NetworkUDPClose()
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;
-	DEBUG(net, 5, "Closed UDP listeners");
+	Debug(net, 5, "Closed UDP listeners");
 }
 
 /** Receive the UDP packets. */

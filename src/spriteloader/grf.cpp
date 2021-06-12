@@ -38,7 +38,7 @@ static bool WarnCorruptSprite(const SpriteFile &file, size_t file_pos, int line)
 		SetDParamStr(0, file.GetSimplifiedFilename());
 		ShowErrorMessage(STR_NEWGRF_ERROR_CORRUPT_SPRITE, INVALID_STRING_ID, WL_ERROR);
 	}
-	DEBUG(sprite, warning_level, "[%i] Loading corrupted sprite from %s at position %i", line, file.GetSimplifiedFilename().c_str(), (int)file_pos);
+	Debug(sprite, warning_level, "[{}] Loading corrupted sprite from {} at position {}", line, file.GetSimplifiedFilename(), file_pos);
 	warning_level = 6;
 	return false;
 }
@@ -173,7 +173,7 @@ bool DecodeSingleSprite(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t f
 
 		if (dest_size > sprite->width * sprite->height * bpp) {
 			static byte warning_level = 0;
-			DEBUG(sprite, warning_level, "Ignoring " OTTD_PRINTF64 " unused extra bytes from the sprite from %s at position %i", dest_size - sprite->width * sprite->height * bpp, file.GetSimplifiedFilename().c_str(), (int)file_pos);
+			Debug(sprite, warning_level, "Ignoring {} unused extra bytes from the sprite from {} at position {}", dest_size - sprite->width * sprite->height * bpp, file.GetSimplifiedFilename(), file_pos);
 			warning_level = 6;
 		}
 
@@ -279,7 +279,7 @@ uint8 LoadSpriteV2(SpriteLoader::Sprite *sprite, SpriteFile &file, size_t file_p
 
 			if (HasBit(loaded_sprites, zoom_lvl)) {
 				/* We already have this zoom level, skip sprite. */
-				DEBUG(sprite, 1, "Ignoring duplicate zoom level sprite %u from %s", id, file.GetSimplifiedFilename().c_str());
+				Debug(sprite, 1, "Ignoring duplicate zoom level sprite {} from {}", id, file.GetSimplifiedFilename());
 				file.SkipBytes(num - 2);
 				continue;
 			}

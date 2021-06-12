@@ -283,7 +283,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::CloseConnection(NetworkRecvSta
 	}
 
 	NetworkAdminClientError(this->client_id, NETWORK_ERROR_CONNECTION_LOST);
-	DEBUG(net, 3, "Closed client connection %d", this->client_id);
+	Debug(net, 3, "Closed client connection {}", this->client_id);
 
 	/* We just lost one client :( */
 	if (this->status >= STATUS_AUTHORIZED) _network_game_info.clients_on--;
@@ -445,7 +445,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 		this->GetClientName(client_name, lastof(client_name));
 
-		DEBUG(net, 1, "'%s' made an error and has been disconnected: %s", client_name, GetString(strid).c_str());
+		Debug(net, 1, "'{}' made an error and has been disconnected: {}", client_name, GetString(strid));
 
 		if (error == NETWORK_ERROR_KICKED && !reason.empty()) {
 			NetworkTextMessage(NETWORK_ACTION_KICKED, CC_DEFAULT, false, client_name, reason, strid);
@@ -466,7 +466,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::SendError(NetworkErrorCode err
 
 		NetworkAdminClientError(this->client_id, error);
 	} else {
-		DEBUG(net, 1, "Client %d made an error and has been disconnected: %s", this->client_id, GetString(strid).c_str());
+		Debug(net, 1, "Client {} made an error and has been disconnected: {}", this->client_id, GetString(strid));
 	}
 
 	/* The client made a mistake, so drop the connection now! */
@@ -925,7 +925,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_JOIN(Packet *p)
 	ci->join_date = _date;
 	ci->client_name = client_name;
 	ci->client_playas = playas;
-	DEBUG(desync, 1, "client: %08x; %02x; %02x; %02x", _date, _date_fract, (int)ci->client_playas, (int)ci->index);
+	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:02x}", _date, _date_fract, (int)ci->client_playas, (int)ci->index);
 
 	/* Make sure companies to which people try to join are not autocleaned */
 	if (Company::IsValidID(playas)) _network_company_states[playas].months_empty = 0;
@@ -1133,7 +1133,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_ERROR(Packet *p
 
 	StringID strid = GetNetworkErrorMsg(errorno);
 
-	DEBUG(net, 1, "'%s' reported an error and is closing its connection: %s", client_name, GetString(strid).c_str());
+	Debug(net, 1, "'{}' reported an error and is closing its connection: {}", client_name, GetString(strid));
 
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "", strid);
 
@@ -1323,7 +1323,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			break;
 		}
 		default:
-			DEBUG(net, 1, "Received unknown chat destination type %d; doing broadcast instead", desttype);
+			Debug(net, 1, "Received unknown chat destination type {}; doing broadcast instead", desttype);
 			FALLTHROUGH;
 
 		case DESTTYPE_BROADCAST:
@@ -1425,11 +1425,11 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_RCON(Packet *p)
 	std::string command = p->Recv_string(NETWORK_RCONCOMMAND_LENGTH);
 
 	if (_settings_client.network.rcon_password.compare(password) != 0) {
-		DEBUG(net, 1, "[rcon] Wrong password from client-id %d", this->client_id);
+		Debug(net, 1, "[rcon] Wrong password from client-id {}", this->client_id);
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
-	DEBUG(net, 3, "[rcon] Client-id %d executed: %s", this->client_id, command.c_str());
+	Debug(net, 3, "[rcon] Client-id {} executed: {}", this->client_id, command);
 
 	_redirect_console_to_client = this->client_id;
 	IConsoleCmdExec(command.c_str());
@@ -1453,7 +1453,7 @@ NetworkRecvStatus ServerNetworkGameSocketHandler::Receive_CLIENT_MOVE(Packet *p)
 
 		/* Incorrect password sent, return! */
 		if (_network_company_states[company_id].password.compare(password) != 0) {
-			DEBUG(net, 2, "Wrong password from client-id #%d for company #%d", this->client_id, company_id + 1);
+			Debug(net, 2, "Wrong password from client-id #{} for company #{}", this->client_id, company_id + 1);
 			return NETWORK_RECV_STATUS_OKAY;
 		}
 	}
@@ -1561,7 +1561,7 @@ void NetworkUpdateClientInfo(ClientID client_id)
 
 	if (ci == nullptr) return;
 
-	DEBUG(desync, 1, "client: %08x; %02x; %02x; %04x", _date, _date_fract, (int)ci->client_playas, client_id);
+	Debug(desync, 1, "client: {:08x}; {:02x}; {:02x}; {:04x}", _date, _date_fract, (int)ci->client_playas, client_id);
 
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->status >= ServerNetworkGameSocketHandler::STATUS_AUTHORIZED) {
@@ -1576,7 +1576,7 @@ void NetworkUpdateClientInfo(ClientID client_id)
 static void NetworkCheckRestartMap()
 {
 	if (_settings_client.network.restart_game_year != 0 && _cur_year >= _settings_client.network.restart_game_year) {
-		DEBUG(net, 3, "Auto-restarting map: year %d reached", _cur_year);
+		Debug(net, 3, "Auto-restarting map: year {} reached", _cur_year);
 
 		_settings_newgame.game_creation.generation_seed = GENERATE_NEW_SEED;
 		switch(_file_to_saveload.abstract_ftype) {

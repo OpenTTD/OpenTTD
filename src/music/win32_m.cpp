@@ -115,7 +115,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 
 	/* check for stop */
 	if (_midi.do_stop) {
-		DEBUG(driver, 2, "Win32-MIDI: timer: do_stop is set");
+		Debug(driver, 2, "Win32-MIDI: timer: do_stop is set");
 		midiOutReset(_midi.midi_out);
 		_midi.playing = false;
 		_midi.do_stop = false;
@@ -128,7 +128,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 		if (timeGetTime() - _midi.playback_start_time < 50) {
 			return;
 		}
-		DEBUG(driver, 2, "Win32-MIDI: timer: do_start step %d", _midi.do_start);
+		Debug(driver, 2, "Win32-MIDI: timer: do_start step {}", _midi.do_start);
 
 		if (_midi.do_start == 1) {
 			/* Send "all notes off" */
@@ -165,7 +165,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 		}
 	} else if (!_midi.playing) {
 		/* not playing, stop the timer */
-		DEBUG(driver, 2, "Win32-MIDI: timer: not playing, stopping timer");
+		Debug(driver, 2, "Win32-MIDI: timer: not playing, stopping timer");
 		timeKillEvent(uTimerID);
 		_midi.timer_id = 0;
 		return;
@@ -175,7 +175,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 	static int volume_throttle = 0;
 	if (_midi.current_volume != _midi.new_volume) {
 		if (volume_throttle == 0) {
-			DEBUG(driver, 2, "Win32-MIDI: timer: volume change");
+			Debug(driver, 2, "Win32-MIDI: timer: volume change");
 			_midi.current_volume = _midi.new_volume;
 			volume_throttle = 20 / _midi.time_period;
 			for (int ch = 0; ch < 16; ch++) {
@@ -198,7 +198,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 			preload_bytes += block.data.size();
 			if (block.ticktime >= _midi.current_segment.start) {
 				if (_midi.current_segment.loop) {
-					DEBUG(driver, 2, "Win32-MIDI: timer: loop from block %d (ticktime %d, realtime %.3f, bytes %d)", (int)bl, (int)block.ticktime, ((int)block.realtime)/1000.0, (int)preload_bytes);
+					Debug(driver, 2, "Win32-MIDI: timer: loop from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, ((int)block.realtime)/1000.0, preload_bytes);
 					_midi.current_segment.start_block = bl;
 					break;
 				} else {
@@ -207,7 +207,7 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 					 * which have a bitrate of 31,250 bits/sec, and transmit 1+8+1 start/data/stop bits per byte.
 					 * The delay compensation is needed to avoid time-compression of following messages.
 					 */
-					DEBUG(driver, 2, "Win32-MIDI: timer: start from block %d (ticktime %d, realtime %.3f, bytes %d)", (int)bl, (int)block.ticktime, ((int)block.realtime) / 1000.0, (int)preload_bytes);
+					Debug(driver, 2, "Win32-MIDI: timer: start from block {} (ticktime {}, realtime {:.3f}, bytes {})", bl, block.ticktime, ((int)block.realtime) / 1000.0, preload_bytes);
 					_midi.playback_start_time -= block.realtime / 1000 - (DWORD)(preload_bytes * 1000 / 3125);
 					break;
 				}
@@ -320,11 +320,11 @@ void CALLBACK TimerCallback(UINT uTimerID, UINT, DWORD_PTR dwUser, DWORD_PTR, DW
 
 void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 {
-	DEBUG(driver, 2, "Win32-MIDI: PlaySong: entry");
+	Debug(driver, 2, "Win32-MIDI: PlaySong: entry");
 
 	MidiFile new_song;
 	if (!new_song.LoadSong(song)) return;
-	DEBUG(driver, 2, "Win32-MIDI: PlaySong: Loaded song");
+	Debug(driver, 2, "Win32-MIDI: PlaySong: Loaded song");
 
 	std::lock_guard<std::mutex> mutex_lock(_midi.lock);
 
@@ -333,21 +333,21 @@ void MusicDriver_Win32::PlaySong(const MusicSongInfo &song)
 	_midi.next_segment.end = song.override_end;
 	_midi.next_segment.loop = song.loop;
 
-	DEBUG(driver, 2, "Win32-MIDI: PlaySong: setting flag");
+	Debug(driver, 2, "Win32-MIDI: PlaySong: setting flag");
 	_midi.do_stop = _midi.playing;
 	_midi.do_start = 1;
 
 	if (_midi.timer_id == 0) {
-		DEBUG(driver, 2, "Win32-MIDI: PlaySong: starting timer");
+		Debug(driver, 2, "Win32-MIDI: PlaySong: starting timer");
 		_midi.timer_id = timeSetEvent(_midi.time_period, _midi.time_period, TimerCallback, (DWORD_PTR)this, TIME_PERIODIC | TIME_CALLBACK_FUNCTION);
 	}
 }
 
 void MusicDriver_Win32::StopSong()
 {
-	DEBUG(driver, 2, "Win32-MIDI: StopSong: entry");
+	Debug(driver, 2, "Win32-MIDI: StopSong: entry");
 	std::lock_guard<std::mutex> mutex_lock(_midi.lock);
-	DEBUG(driver, 2, "Win32-MIDI: StopSong: setting flag");
+	Debug(driver, 2, "Win32-MIDI: StopSong: setting flag");
 	_midi.do_stop = true;
 }
 
@@ -364,7 +364,7 @@ void MusicDriver_Win32::SetVolume(byte vol)
 
 const char *MusicDriver_Win32::Start(const StringList &parm)
 {
-	DEBUG(driver, 2, "Win32-MIDI: Start: initializing");
+	Debug(driver, 2, "Win32-MIDI: Start: initializing");
 
 	int resolution = GetDriverParamInt(parm, "resolution", 5);
 	uint port = (uint)GetDriverParamInt(parm, "port", UINT_MAX);
@@ -373,7 +373,7 @@ const char *MusicDriver_Win32::Start(const StringList &parm)
 	/* Enumerate ports either for selecting port by name, or for debug output */
 	if (portname != nullptr || _debug_driver_level > 0) {
 		uint numports = midiOutGetNumDevs();
-		DEBUG(driver, 1, "Win32-MIDI: Found %d output devices:", numports);
+		Debug(driver, 1, "Win32-MIDI: Found {} output devices:", numports);
 		for (uint tryport = 0; tryport < numports; tryport++) {
 			MIDIOUTCAPS moc{};
 			if (midiOutGetDevCaps(tryport, &moc, sizeof(moc)) == MMSYSERR_NOERROR) {
@@ -384,7 +384,7 @@ const char *MusicDriver_Win32::Start(const StringList &parm)
 				 * If multiple ports have the same name, this will select the last matching port, and the debug output will be confusing. */
 				if (portname != nullptr && strncmp(tryportname, portname, lengthof(tryportname)) == 0) port = tryport;
 
-				DEBUG(driver, 1, "MIDI port %2d: %s%s", tryport, tryportname, (tryport == port) ? " [selected]" : "");
+				Debug(driver, 1, "MIDI port {:2d}: {}{}", tryport, tryportname, (tryport == port) ? " [selected]" : "");
 			}
 		}
 	}
@@ -410,7 +410,7 @@ const char *MusicDriver_Win32::Start(const StringList &parm)
 		_midi.time_period = std::min(std::max((UINT)resolution, timecaps.wPeriodMin), timecaps.wPeriodMax);
 		if (timeBeginPeriod(_midi.time_period) == MMSYSERR_NOERROR) {
 			/* success */
-			DEBUG(driver, 2, "Win32-MIDI: Start: timer resolution is %d", (int)_midi.time_period);
+			Debug(driver, 2, "Win32-MIDI: Start: timer resolution is {}", _midi.time_period);
 			return nullptr;
 		}
 	}

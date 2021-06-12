@@ -148,7 +148,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 			callback->SetFontNames(settings, (const char *)file);
 
 			bool missing = callback->FindMissingGlyphs();
-			DEBUG(freetype, 1, "Font \"%s\" misses%s glyphs", file, missing ? "" : " no");
+			Debug(freetype, 1, "Font \"{}\" misses{} glyphs", file, missing ? "" : " no");
 
 			if (!missing) {
 				best_weight = value;

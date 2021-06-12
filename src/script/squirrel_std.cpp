@@ -50,7 +50,7 @@ SQInteger SquirrelStd::require(HSQUIRRELVM vm)
 	SQStackInfos si;
 	sq_stackinfos(vm, 1, &si);
 	if (si.source == nullptr) {
-		DEBUG(misc, 0, "[squirrel] Couldn't detect the script-name of the 'require'-caller; this should never happen!");
+		Debug(misc, 0, "[squirrel] Couldn't detect the script-name of the 'require'-caller; this should never happen!");
 		return SQ_ERROR;
 	}
 

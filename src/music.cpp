@@ -141,7 +141,7 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				this->songinfo[i].cat_index = atoi(item->value->c_str());
 				char *songname = GetMusicCatEntryName(filename, this->songinfo[i].cat_index);
 				if (songname == nullptr) {
-					DEBUG(grf, 0, "Base music set song missing from CAT file: %s/%d", filename, this->songinfo[i].cat_index);
+					Debug(grf, 0, "Base music set song missing from CAT file: {}/{}", filename, this->songinfo[i].cat_index);
 					this->songinfo[i].songname[0] = '\0';
 					continue;
 				}
@@ -168,7 +168,7 @@ bool MusicSet::FillSetDetails(IniFile *ini, const char *path, const char *full_f
 				if (item != nullptr && item->value.has_value() && !item->value->empty()) {
 					strecpy(this->songinfo[i].songname, item->value->c_str(), lastof(this->songinfo[i].songname));
 				} else {
-					DEBUG(grf, 0, "Base music set song name missing: %s", filename);
+					Debug(grf, 0, "Base music set song name missing: {}", filename);
 					return false;
 				}
 			}
