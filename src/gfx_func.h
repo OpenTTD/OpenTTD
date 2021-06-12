@@ -106,6 +106,7 @@ void GfxDrawLine(int left, int top, int right, int bottom, int colour, int width
 void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3);
 
 Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize = FS_NORMAL);
+Dimension GetStringBoundingBox(const std::string &str, FontSize start_fontsize = FS_NORMAL);
 Dimension GetStringBoundingBox(StringID strid);
 int GetStringHeight(const char *str, int maxw, FontSize fontsize = FS_NORMAL);
 int GetStringHeight(StringID str, int maxw);
