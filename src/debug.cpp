@@ -144,24 +144,6 @@ void debug_print(const char *dbg, const char *buf)
 }
 
 /**
- * Output a debug line.
- * @note Do not call directly, use the #DEBUG macro instead.
- * @param dbg Debug category.
- * @param format Text string a la printf, with optional arguments.
- */
-void CDECL debug(const char *dbg, const char *format, ...)
-{
-	char buf[1024];
-
-	va_list va;
-	va_start(va, format);
-	vseprintf(buf, lastof(buf), format, va);
-	va_end(va);
-
-	debug_print(dbg, buf);
-}
-
-/**
  * Set debugging levels by parsing the text in \a s.
  * For setting individual levels a string like \c "net=3,grf=6" should be used.
  * If the string starts with a number, the number is used as global debugging level.
