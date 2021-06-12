@@ -1076,6 +1076,6 @@ void ConPrintFramerate()
 	}
 
 	if (!printed_anything) {
-		IConsoleWarning("No performance measurements have been taken yet");
+		IConsolePrint(CC_ERROR, "No performance measurements have been taken yet.");
 	}
 }

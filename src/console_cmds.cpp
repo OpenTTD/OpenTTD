@@ -191,7 +191,7 @@ DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
  */
 static void IConsoleHelp(const char *str)
 {
-	IConsolePrintF(CC_WARNING, "- %s", str);
+	IConsolePrintF(CC_HELP, "- {}", str);
 }
 
 /**
@@ -1173,25 +1173,25 @@ DEF_CONSOLE_CMD(ConStartAI)
 	}
 
 	if (_game_mode != GM_NORMAL) {
-		IConsoleWarning("AIs can only be managed in a game.");
+		IConsolePrint(CC_ERROR, "AIs can only be managed in a game.");
 		return true;
 	}
 
 	if (Company::GetNumItems() == CompanyPool::MAX_SIZE) {
-		IConsoleWarning("Can't start a new AI (no more free slots).");
+		IConsolePrint(CC_ERROR, "Can't start a new AI (no more free slots).");
 		return true;
 	}
 	if (_networking && !_network_server) {
-		IConsoleWarning("Only the server can start a new AI.");
+		IConsolePrint(CC_ERROR, "Only the server can start a new AI.");
 		return true;
 	}
 	if (_networking && !_settings_game.ai.ai_in_multiplayer) {
-		IConsoleWarning("AIs are not allowed in multiplayer by configuration.");
-		IConsoleWarning("Switch AI -> AI in multiplayer to True.");
+		IConsolePrint(CC_ERROR, "AIs are not allowed in multiplayer by configuration.");
+		IConsolePrint(CC_ERROR, "Switch AI -> AI in multiplayer to True.");
 		return true;
 	}
 	if (!AI::CanStartNew()) {
-		IConsoleWarning("Can't start a new AI.");
+		IConsolePrint(CC_ERROR, "Can't start a new AI.");
 		return true;
 	}
 
@@ -1223,7 +1223,7 @@ DEF_CONSOLE_CMD(ConStartAI)
 		}
 
 		if (!config->HasScript()) {
-			IConsoleWarning("Failed to load the specified AI");
+			IConsolePrint(CC_ERROR, "Failed to load the specified AI.");
 			return true;
 		}
 		if (argc == 3) {
@@ -1246,12 +1246,12 @@ DEF_CONSOLE_CMD(ConReloadAI)
 	}
 
 	if (_game_mode != GM_NORMAL) {
-		IConsoleWarning("AIs can only be managed in a game.");
+		IConsolePrint(CC_ERROR, "AIs can only be managed in a game.");
 		return true;
 	}
 
 	if (_networking && !_network_server) {
-		IConsoleWarning("Only the server can reload an AI.");
+		IConsolePrint(CC_ERROR, "Only the server can reload an AI.");
 		return true;
 	}
 
@@ -1263,7 +1263,7 @@ DEF_CONSOLE_CMD(ConReloadAI)
 
 	/* In singleplayer mode the player can be in an AI company, after cheating or loading network save with an AI in first slot. */
 	if (Company::IsHumanID(company_id) || company_id == _local_company) {
-		IConsoleWarning("Company is not controlled by an AI.");
+		IConsolePrint(CC_ERROR, "Company is not controlled by an AI.");
 		return true;
 	}
 
@@ -1284,12 +1284,12 @@ DEF_CONSOLE_CMD(ConStopAI)
 	}
 
 	if (_game_mode != GM_NORMAL) {
-		IConsoleWarning("AIs can only be managed in a game.");
+		IConsolePrint(CC_ERROR, "AIs can only be managed in a game.");
 		return true;
 	}
 
 	if (_networking && !_network_server) {
-		IConsoleWarning("Only the server can stop an AI.");
+		IConsolePrint(CC_ERROR, "Only the server can stop an AI.");
 		return true;
 	}
 
@@ -1301,7 +1301,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 
 	/* In singleplayer mode the player can be in an AI company, after cheating or loading network save with an AI in first slot. */
 	if (Company::IsHumanID(company_id) || company_id == _local_company) {
-		IConsoleWarning("Company is not controlled by an AI.");
+		IConsolePrint(CC_ERROR, "Company is not controlled by an AI.");
 		return true;
 	}
 
@@ -1320,7 +1320,7 @@ DEF_CONSOLE_CMD(ConRescanAI)
 	}
 
 	if (_networking && !_network_server) {
-		IConsoleWarning("Only the server can rescan the AI dir for scripts.");
+		IConsolePrint(CC_ERROR, "Only the server can rescan the AI dir for scripts.");
 		return true;
 	}
 
@@ -1337,7 +1337,7 @@ DEF_CONSOLE_CMD(ConRescanGame)
 	}
 
 	if (_networking && !_network_server) {
-		IConsoleWarning("Only the server can rescan the Game Script dir for scripts.");
+		IConsolePrint(CC_ERROR, "Only the server can rescan the Game Script dir for scripts.");
 		return true;
 	}
 
@@ -1354,7 +1354,7 @@ DEF_CONSOLE_CMD(ConRescanNewGRF)
 	}
 
 	if (!RequestNewGRFScan()) {
-		IConsoleWarning("NewGRF scanning is already running. Please wait until completed to run again.");
+		IConsolePrint(CC_ERROR, "NewGRF scanning is already running. Please wait until completed to run again.");
 	}
 
 	return true;
@@ -1514,10 +1514,9 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 		return true;
 	}
 
-	IConsolePrintF(CC_DEFAULT, "command name: %s", cmd->name.c_str());
-	IConsolePrintF(CC_DEFAULT, "command proc: %p", cmd->proc);
+	IConsolePrint(CC_DEFAULT, "Command name: '{}'", cmd->name);
 
-	if (cmd->hook != nullptr) IConsoleWarning("command is hooked");
+	if (cmd->hook != nullptr) IConsolePrint(CC_DEFAULT, "Command is hooked.");
 
 	return true;
 }
@@ -1594,7 +1593,7 @@ DEF_CONSOLE_CMD(ConHelp)
 		return true;
 	}
 
-	IConsolePrint(CC_WARNING, " ---- OpenTTD Console Help ---- ");
+	IConsolePrint(TC_LIGHT_BLUE, " ---- OpenTTD Console Help ---- ");
 	IConsolePrint(CC_DEFAULT, " - commands: [command to list all commands: list_cmds]");
 	IConsolePrint(CC_DEFAULT, " call commands with '<command> <arg2> <arg3>...'");
 	IConsolePrint(CC_DEFAULT, " - to assign strings, or use them as arguments, enclose it within quotes");
@@ -1782,9 +1781,9 @@ DEF_CONSOLE_CMD(ConCompanyPassword)
 	password = NetworkChangeCompanyPassword(company_id, password);
 
 	if (password.empty()) {
-		IConsolePrintF(CC_WARNING, "Company password cleared");
+		IConsolePrint(CC_INFO, "Company password cleared.");
 	} else {
-		IConsolePrintF(CC_WARNING, "Company password changed to: %s", password.c_str());
+		IConsolePrint(CC_INFO, "Company password changed to '{}'.", password);
 	}
 
 	return true;
@@ -2034,12 +2033,12 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 		for (size_t argnum = 2; argnum < argc; ++argnum) {
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > (int)files.size()) { // safe cast, files.size() should not be larger than a few hundred in the most extreme cases
-				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not added.", grfnum);
+				IConsolePrint(CC_WARNING, "GRF number {} out of range, not added.", grfnum);
 				continue;
 			}
 			GRFFile *grf = files[grfnum - 1];
 			if (std::any_of(_newgrf_profilers.begin(), _newgrf_profilers.end(), [&](NewGRFProfiler &pr) { return pr.grffile == grf; })) {
-				IConsolePrintF(CC_WARNING, "GRF number %d [%08X] is already selected for profiling.", grfnum, BSWAP32(grf->grfid));
+				IConsolePrint(CC_WARNING, "GRF number {} [{:08X}] is already selected for profiling.", grfnum, BSWAP32(grf->grfid));
 				continue;
 			}
 			_newgrf_profilers.emplace_back(grf);
@@ -2056,7 +2055,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 			int grfnum = atoi(argv[argnum]);
 			if (grfnum < 1 || grfnum > (int)files.size()) {
-				IConsolePrintF(CC_WARNING, "GRF number %d out of range, not removing.", grfnum);
+				IConsolePrint(CC_WARNING, "GRF number {} out of range, not removing.", grfnum);
 				continue;
 			}
 			GRFFile *grf = files[grfnum - 1];
@@ -2095,9 +2094,9 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				_newgrf_profile_end_date = MAX_DAY;
 			}
 		} else if (_newgrf_profilers.empty()) {
-			IConsolePrintF(CC_WARNING, "No GRFs selected for profiling, did not start.");
+			IConsolePrint(CC_ERROR, "No GRFs selected for profiling, did not start.");
 		} else {
-			IConsolePrintF(CC_WARNING, "Did not start profiling for any GRFs, all selected GRFs are already profiling.");
+			IConsolePrint(CC_ERROR, "Did not start profiling for any GRFs, all selected GRFs are already profiling.");
 		}
 		return true;
 	}
