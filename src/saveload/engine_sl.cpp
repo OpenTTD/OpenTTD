@@ -156,7 +156,7 @@ static void Load_ENGS()
 	 * was always 256 entries. */
 	StringID names[256];
 
-	SlArray(names, lengthof(names), SLE_STRINGID);
+	SlCopy(names, lengthof(names), SLE_STRINGID);
 
 	/* Copy each string into the temporary engine array. */
 	for (EngineID engine = 0; engine < lengthof(names); engine++) {

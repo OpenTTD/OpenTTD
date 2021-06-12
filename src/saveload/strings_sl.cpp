@@ -124,7 +124,7 @@ static void Load_NAME()
 		if (index >= NUM_OLD_STRINGS) SlErrorCorrupt("Invalid old name index");
 		if (SlGetFieldLength() > (uint)LEN_OLD_STRINGS) SlErrorCorrupt("Invalid old name length");
 
-		SlArray(&_old_name_array[LEN_OLD_STRINGS * index], SlGetFieldLength(), SLE_UINT8);
+		SlCopy(&_old_name_array[LEN_OLD_STRINGS * index], SlGetFieldLength(), SLE_UINT8);
 		/* Make sure the old name is null terminated */
 		_old_name_array[LEN_OLD_STRINGS * index + LEN_OLD_STRINGS - 1] = '\0';
 	}

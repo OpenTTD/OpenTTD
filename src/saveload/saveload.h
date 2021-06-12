@@ -1008,7 +1008,7 @@ byte SlReadByte();
 void SlWriteByte(byte b);
 
 void SlGlobList(const SaveLoadTable &slt);
-void SlArray(void *array, size_t length, VarType conv);
+void SlCopy(void *object, size_t length, VarType conv);
 void SlObject(void *object, const SaveLoadTable &slt);
 void NORETURN SlError(StringID string, const char *extra_msg = nullptr);
 void NORETURN SlErrorCorrupt(const char *msg);

@@ -365,7 +365,7 @@ static const SaveLoad _script_byte[] = {
 			sq_getinteger(vm, index, &res);
 			if (!test) {
 				int value = (int)res;
-				SlArray(&value, 1, SLE_INT32);
+				SlCopy(&value, 1, SLE_INT32);
 			}
 			return true;
 		}
@@ -385,7 +385,7 @@ static const SaveLoad _script_byte[] = {
 			if (!test) {
 				_script_sl_byte = (byte)len;
 				SlObject(nullptr, _script_byte);
-				SlArray(const_cast<char *>(buf), len, SLE_CHAR);
+				SlCopy(const_cast<char *>(buf), len, SLE_CHAR);
 			}
 			return true;
 		}
@@ -565,7 +565,7 @@ bool ScriptInstance::IsPaused()
 	switch (_script_sl_byte) {
 		case SQSL_INT: {
 			int value;
-			SlArray(&value, 1, SLE_INT32);
+			SlCopy(&value, 1, SLE_INT32);
 			if (vm != nullptr) sq_pushinteger(vm, (SQInteger)value);
 			return true;
 		}
@@ -573,7 +573,7 @@ bool ScriptInstance::IsPaused()
 		case SQSL_STRING: {
 			SlObject(nullptr, _script_byte);
 			static char buf[std::numeric_limits<decltype(_script_sl_byte)>::max()];
-			SlArray(buf, _script_sl_byte, SLE_CHAR);
+			SlCopy(buf, _script_sl_byte, SLE_CHAR);
 			StrMakeValidInPlace(buf, buf + _script_sl_byte);
 			if (vm != nullptr) sq_pushstring(vm, buf, -1);
 			return true;

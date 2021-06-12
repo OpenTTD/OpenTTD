@@ -1043,51 +1043,34 @@ static void SlStdString(void *ptr, VarType conv)
 }
 
 /**
- * Return the size in bytes of a certain type of atomic array
- * @param length The length of the array counted in elements
- * @param conv VarType type of the variable that is used in calculating the size
+ * Internal function to save/Load a list of SL_VARs.
+ * SlCopy() and SlArray() are very similar, with the exception of the header.
+ * This function represents the common part.
+ * @param object The object being manipulated.
+ * @param length The length of the object in elements
+ * @param conv VarType type of the items.
  */
-static inline size_t SlCalcArrayLen(size_t length, VarType conv)
+static void SlCopyInternal(void *object, size_t length, VarType conv)
 {
-	return SlCalcConvFileLen(conv) * length;
-}
-
-/**
- * Save/Load an array.
- * @param array The array being manipulated
- * @param length The length of the array in elements
- * @param conv VarType type of the atomic array (int, byte, uint64, etc.)
- */
-void SlArray(void *array, size_t length, VarType conv)
-{
-	if (_sl.action == SLA_PTRS || _sl.action == SLA_NULL) return;
-
-	/* Automatically calculate the length? */
-	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcArrayLen(length, conv));
-		/* Determine length only? */
-		if (_sl.need_length == NL_CALCLENGTH) return;
-	}
-
 	if (GetVarMemType(conv) == SLE_VAR_NULL) {
 		assert(_sl.action != SLA_SAVE); // Use SL_NULL if you want to write null-bytes
-		SlSkipBytes(SlCalcArrayLen(length, conv));
+		SlSkipBytes(length * SlCalcConvFileLen(conv));
 		return;
 	}
 
 	/* NOTICE - handle some buggy stuff, in really old versions everything was saved
-	 * as a byte-type. So detect this, and adjust array size accordingly */
+	 * as a byte-type. So detect this, and adjust object size accordingly */
 	if (_sl.action != SLA_SAVE && _sl_version == 0) {
-		/* all arrays except difficulty settings */
+		/* all objects except difficulty settings */
 		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID ||
 				conv == SLE_INT32 || conv == SLE_UINT32) {
-			SlCopyBytes(array, length * SlCalcConvFileLen(conv));
+			SlCopyBytes(object, length * SlCalcConvFileLen(conv));
 			return;
 		}
 		/* used for conversion of Money 32bit->64bit */
 		if (conv == (SLE_FILE_I32 | SLE_VAR_I64)) {
 			for (uint i = 0; i < length; i++) {
-				((int64*)array)[i] = (int32)BSWAP32(SlReadUint32());
+				((int64*)object)[i] = (int32)BSWAP32(SlReadUint32());
 			}
 			return;
 		}
@@ -1096,9 +1079,9 @@ void SlArray(void *array, size_t length, VarType conv)
 	/* If the size of elements is 1 byte both in file and memory, no special
 	 * conversion is needed, use specialized copy-copy function to speed up things */
 	if (conv == SLE_INT8 || conv == SLE_UINT8) {
-		SlCopyBytes(array, length);
+		SlCopyBytes(object, length);
 	} else {
-		byte *a = (byte*)array;
+		byte *a = (byte*)object;
 		byte mem_size = SlCalcConvMemLen(conv);
 
 		for (; length != 0; length --) {
@@ -1108,6 +1091,71 @@ void SlArray(void *array, size_t length, VarType conv)
 	}
 }
 
+/**
+ * Copy a list of SL_VARs to/from a savegame.
+ * These entries are copied as-is, and you as caller have to make sure things
+ * like length-fields are calculated correctly.
+ * @param object The object being manipulated.
+ * @param length The length of the object in elements
+ * @param conv VarType type of the items.
+ */
+void SlCopy(void *object, size_t length, VarType conv)
+{
+	if (_sl.action == SLA_PTRS || _sl.action == SLA_NULL) return;
+
+	/* Automatically calculate the length? */
+	if (_sl.need_length != NL_NONE) {
+		SlSetLength(length * SlCalcConvFileLen(conv));
+		/* Determine length only? */
+		if (_sl.need_length == NL_CALCLENGTH) return;
+	}
+
+	SlCopyInternal(object, length, conv);
+}
+
+/**
+ * Return the size in bytes of a certain type of atomic array
+ * @param length The length of the array counted in elements
+ * @param conv VarType type of the variable that is used in calculating the size
+ */
+static inline size_t SlCalcArrayLen(size_t length, VarType conv)
+{
+	return SlCalcConvFileLen(conv) * length + SlGetArrayLength(length);
+}
+
+/**
+ * Save/Load the length of the array followed by the array of SL_VAR elements.
+ * @param array The array being manipulated
+ * @param length The length of the array in elements
+ * @param conv VarType type of the atomic array (int, byte, uint64, etc.)
+ */
+static void SlArray(void *array, size_t length, VarType conv)
+{
+	switch (_sl.action) {
+		case SLA_SAVE:
+			SlWriteArrayLength(length);
+			SlCopyInternal(array, length, conv);
+			return;
+
+		case SLA_LOAD_CHECK:
+		case SLA_LOAD: {
+			if (!IsSavegameVersionBefore(SLV_SAVELOAD_LIST_LENGTH)) {
+				size_t sv_length = SlReadArrayLength();
+				if (sv_length != length) SlErrorCorrupt("Fixed-length array is of wrong length");
+			}
+
+			SlCopyInternal(array, length, conv);
+			return;
+		}
+
+		case SLA_PTRS:
+		case SLA_NULL:
+			return;
+
+		default:
+			NOT_REACHED();
+	}
+}
 
 /**
  * Pointers cannot be saved to a savegame, so this functions gets
