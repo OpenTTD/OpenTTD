@@ -1010,7 +1010,7 @@ NetworkRecvStatus ClientNetworkGameSocketHandler::Receive_SERVER_COMMAND(Packet 
 	cp.my_cmd   = p->Recv_bool();
 
 	if (err != nullptr) {
-		IConsolePrintF(CC_ERROR, "WARNING: %s from server, dropping...", err);
+		IConsolePrint(CC_WARNING, "Dropping server connection due to {}.", err);
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 

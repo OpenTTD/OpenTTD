@@ -265,7 +265,7 @@ void NetworkTextMessage(NetworkAction action, TextColour colour, bool self_send,
 	GetString(msg_ptr, strid, lastof(message));
 
 	Debug(desync, 1, "msg: {:08x}; {:02x}; {}", _date, _date_fract, message);
-	IConsolePrintF(colour, "%s", message);
+	IConsolePrint(colour, message);
 	NetworkAddChatMessage((TextColour)colour, _settings_client.gui.network_chat_timeout, message);
 }
 
