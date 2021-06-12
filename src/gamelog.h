@@ -13,7 +13,7 @@
 #include "newgrf_config.h"
 
 /** The actions we log. */
-enum GamelogActionType {
+enum GamelogActionType : uint8 {
 	GLAT_START,        ///< Game created
 	GLAT_LOAD,         ///< Game loaded
 	GLAT_GRF,          ///< GRF changed
