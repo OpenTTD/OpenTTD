@@ -884,6 +884,8 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvención terminada:{}{}{STRING} de {STRING} a {STRING} ya no conlleva una subvención
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvención retirada:{}{}El servicio de {STRING} desde {STRING} a {STRING} ya no está subvencionado
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Se ofrece subvención:{}{}¡Al primer servicio de {STRING} que cubra la línea desde {STRING} a {STRING} se le otorgará una subvención durante {NUM} año{P "" s} por parte de las autoridades locales!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}¡Subvención otorgada a {STRING}!{}{}¡El servicio de {STRING} desde {STRING} a {STRING} se pagará a tarifa doble durante los próximos {NUM} año{P "" s}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}¡Colapso circulatorio en {TOWN}!{}{}¡El programa de reconstrucción de carreteras patrocinado por {STRING} causa 6 meses de problemas a los conductores!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}¡Monopolio de transportes!
@@ -1197,8 +1199,12 @@ STR_CONFIG_SETTING_CONSTRUCTION_SPEED                           :Velocidad de co
 STR_CONFIG_SETTING_CONSTRUCTION_SPEED_HELPTEXT                  :Limita la velocidad de las acciones de construcción para las IA
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Averías de vehículos: {STRING}
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla la frecuencia con la que los vehículos con mantenimiento inadecuado se averían
-STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador por subsidio: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador de la subvención: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Permite fijar a cuanto se pagan las conexiones con subsidio
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duración de las subvenciones: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Establece el número de años para los cuales se conceden las subvenciones
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} año{P "" s}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sin subvenciones
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costes de construcción: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fija el nivel de los costes de construcción y compra
 STR_CONFIG_SETTING_RECESSIONS                                   :Recesiones: {STRING}
@@ -2200,7 +2206,7 @@ STR_NETWORK_ERROR_CLIENT_START                                  :{WHITE}No se pu
 STR_NETWORK_ERROR_TIMEOUT                                       :{WHITE}Tiempo de espera agotado en conexión #{NUM}
 STR_NETWORK_ERROR_SERVER_ERROR                                  :{WHITE}Se ha producido un error de protocolo y la conexión ha sido cerrada
 STR_NETWORK_ERROR_BAD_PLAYER_NAME                               :{WHITE}No se ha establecido tu nombre de jugador. El nombre se puede establecer en la parte superior de la ventana de Multijugador
-STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}El nombre de tu servidor no se ha definido. El nombre puede definirse al principio de la ventana de Multijugador
+STR_NETWORK_ERROR_BAD_SERVER_NAME                               :{WHITE}No se ha establecido el nombre de tu servidor. El nombre se puede establecer en la parte superior de la ventana de Multijugador
 STR_NETWORK_ERROR_WRONG_REVISION                                :{WHITE}La versión de este cliente no corresponde con la versión del servidor
 STR_NETWORK_ERROR_WRONG_PASSWORD                                :{WHITE}Contraseña incorrecta
 STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}El servidor está completo

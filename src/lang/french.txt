@@ -884,6 +884,11 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Offre de subvention expirée{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est désormais plus subventionné
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Abandon de la subvention{NBSP}:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est plus subventionné
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Offre de subvention{NBSP}:{}{}Le premier service de {STRING} entre {STRING} et {STRING} sera subventionné pendant {P 3 la les} {NUM} prochaine{P "" s} année{P "" s}{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera 50{NBSP}% de plus pendant {P 4 la les} {NUM} prochaine{P "" s} année{P "" s}{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera double pendant {P 4 la les} {NUM} prochaine{P "" s} année{P "" s}{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera triple pendant {P 4 la les} {NUM} prochaine{P "" s} année{P "" s}{NBSP}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvention accordée à {STRING}{NBSP}!{}{}Le transport de {STRING} entre {STRING} et {STRING} rapportera quadruple pendant {P 4 la les} {NUM} prochaine{P "" s} année{P "" s}{NBSP}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Problèmes de trafic à {TOWN}{NBSP}!{}{}La reconstruction des routes financée par {STRING} provoque 6 mois de problèmes aux automobilistes{NBSP}!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopole des transports{NBSP}!
@@ -1199,6 +1204,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Pannes des véh
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Contrôle la fréquence des pannes des véhicule incorrectement entretenus
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicateur de subvention{NBSP}: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Définit combien rapportent les lignes subventionnées
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durée de subvention{NBSP}: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Définir le nombre d'années pour lesquelles une subvention est accordée
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} an{P "" s}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Pas de subventions
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Coûts de construction{NBSP}: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Définit le niveau des coûts de construction et d'achat
 STR_CONFIG_SETTING_RECESSIONS                                   :Récessions{NBSP}: {STRING}
