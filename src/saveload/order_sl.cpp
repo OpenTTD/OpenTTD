@@ -141,7 +141,7 @@ static void Load_ORDR()
 			len /= sizeof(uint16);
 			uint16 *orders = MallocT<uint16>(len + 1);
 
-			SlArray(orders, len, SLE_UINT16);
+			SlCopy(orders, len, SLE_UINT16);
 
 			for (size_t i = 0; i < len; ++i) {
 				Order *o = new (i) Order();
@@ -153,7 +153,7 @@ static void Load_ORDR()
 			len /= sizeof(uint32);
 			uint32 *orders = MallocT<uint32>(len + 1);
 
-			SlArray(orders, len, SLE_UINT32);
+			SlCopy(orders, len, SLE_UINT32);
 
 			for (size_t i = 0; i < len; ++i) {
 				new (i) Order(orders[i]);
