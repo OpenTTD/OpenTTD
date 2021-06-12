@@ -47,8 +47,6 @@ static inline void IConsolePrint(TextColour colour_code, const T &format, A firs
 }
 
 void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...) WARN_FORMAT(2, 3);
-void IConsoleWarning(const char *string);
-void IConsoleError(const char *string);
 
 /* Parser */
 void IConsoleCmdExec(const char *cmdstr, const uint recurse_count = 0);
