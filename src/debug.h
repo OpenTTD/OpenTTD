@@ -15,7 +15,7 @@
 #include "3rdparty/fmt/format.h"
 
 /* Debugging messages policy:
- * These should be the severities used for direct DEBUG() calls
+ * These should be the severities used for direct Debug() calls
  * maximum debugging level should be 10 if really deep, deep
  * debugging is needed.
  * (there is room for exceptions, but you have to have a good cause):
@@ -38,13 +38,6 @@ void debug_print(const char *dbg, const char *buf);
  */
 #define Debug(name, level, format_string, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) debug_print(#name, fmt::format(FMT_STRING(format_string), ## __VA_ARGS__).c_str())
 
-/**
- * Output a line of debugging information.
- * @param name Category
- * @param level Debugging level, higher levels means more detailed information.
- */
-#define DEBUG(name, level, ...) if ((level) == 0 || _debug_ ## name ## _level >= (level)) debug(#name, __VA_ARGS__)
-
 extern int _debug_driver_level;
 extern int _debug_grf_level;
 extern int _debug_map_level;
@@ -63,8 +56,6 @@ extern int _debug_console_level;
 #ifdef RANDOM_DEBUG
 extern int _debug_random_level;
 #endif
-
-void CDECL debug(const char *dbg, const char *format, ...) WARN_FORMAT(2, 3);
 
 char *DumpDebugFacilityNames(char *buf, char *last);
 void SetDebugString(const char *s);
