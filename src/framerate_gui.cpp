@@ -1023,7 +1023,7 @@ void ConPrintFramerate()
 	const int count2 = NUM_FRAMERATE_POINTS / 4;
 	const int count3 = NUM_FRAMERATE_POINTS / 1;
 
-	IConsolePrintF(TC_SILVER, "Based on num. data points: %d %d %d", count1, count2, count3);
+	IConsolePrint(TC_SILVER, "Based on num. data points: {} {} {}", count1, count2, count3);
 
 	static const char *MEASUREMENT_NAMES[PFE_MAX] = {
 		"Game loop",
@@ -1050,7 +1050,7 @@ void ConPrintFramerate()
 	for (const PerformanceElement *e = rate_elements; e < rate_elements + lengthof(rate_elements); e++) {
 		auto &pf = _pf_data[*e];
 		if (pf.num_valid == 0) continue;
-		IConsolePrintF(TC_GREEN, "%s rate: %.2ffps  (expected: %.2ffps)",
+		IConsolePrint(TC_GREEN, "{} rate: {:.2f}fps  (expected: {:.2f}fps)",
 			MEASUREMENT_NAMES[*e],
 			pf.GetRate(),
 			pf.expected_rate);
@@ -1067,7 +1067,7 @@ void ConPrintFramerate()
 			seprintf(ai_name_buf, lastof(ai_name_buf), "AI %d %s", e - PFE_AI0 + 1, GetAIName(e - PFE_AI0)),
 			name = ai_name_buf;
 		}
-		IConsolePrintF(TC_LIGHT_BLUE, "%s times: %.2fms  %.2fms  %.2fms",
+		IConsolePrint(TC_LIGHT_BLUE, "{} times: {:.2f}ms  {:.2f}ms  {:.2f}ms",
 			name,
 			pf.GetAverageDurationMilliseconds(count1),
 			pf.GetAverageDurationMilliseconds(count2),

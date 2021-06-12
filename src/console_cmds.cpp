@@ -191,7 +191,7 @@ DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
  */
 static void IConsoleHelp(const char *str)
 {
-	IConsolePrintF(CC_HELP, "- {}", str);
+	IConsolePrint(CC_HELP, "- {}", str);
 }
 
 /**
@@ -325,9 +325,9 @@ DEF_CONSOLE_CMD(ConSave)
 		IConsolePrint(CC_DEFAULT, "Saving map...");
 
 		if (SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, SAVE_DIR) != SL_OK) {
-			IConsolePrint(CC_ERROR, "Saving map failed");
+			IConsolePrint(CC_ERROR, "Saving map failed.");
 		} else {
-			IConsolePrintF(CC_DEFAULT, "Map successfully saved to %s", filename);
+			IConsolePrint(CC_INFO, "Map successfully saved to '{}'.", filename);
 		}
 		free(filename);
 		return true;
@@ -417,7 +417,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 
 	_console_file_list.ValidateFileList(true);
 	for (uint i = 0; i < _console_file_list.size(); i++) {
-		IConsolePrintF(CC_DEFAULT, "%d) %s", i, _console_file_list[i].title);
+		IConsolePrint(CC_DEFAULT, "{}) {}", i, _console_file_list[i].title);
 	}
 
 	return true;
@@ -523,7 +523,7 @@ static bool ConKickOrBan(const char *argv, bool ban, const std::string &reason)
 	if (n == 0) {
 		IConsolePrint(CC_DEFAULT, ban ? "Client not online, address added to banlist." : "Client not found.");
 	} else {
-		IConsolePrintF(CC_DEFAULT, "%sed %u client(s).", ban ? "Bann" : "Kick", n);
+		IConsolePrint(CC_DEFAULT, "{}ed {} client(s).", ban ? "Bann" : "Kick", n);
 	}
 
 	return true;
@@ -598,9 +598,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 	}
 
 	if (index < _network_ban_list.size()) {
-		char msg[64];
-		seprintf(msg, lastof(msg), "Unbanned %s", _network_ban_list[index].c_str());
-		IConsolePrint(CC_DEFAULT, msg);
+		IConsolePrint(CC_DEFAULT, "Unbanned {}.", _network_ban_list[index]);
 		_network_ban_list.erase(_network_ban_list.begin() + index);
 	} else {
 		IConsolePrint(CC_DEFAULT, "Invalid list index or IP not in ban-list.");
@@ -621,7 +619,7 @@ DEF_CONSOLE_CMD(ConBanList)
 
 	uint i = 1;
 	for (const auto &entry : _network_ban_list) {
-		IConsolePrintF(CC_DEFAULT, "  %d) %s", i, entry.c_str());
+		IConsolePrint(CC_DEFAULT, "  {}) {}", i, entry);
 		i++;
 	}
 
@@ -713,9 +711,9 @@ DEF_CONSOLE_CMD(ConServerInfo)
 		return true;
 	}
 
-	IConsolePrintF(CC_DEFAULT, "Current/maximum clients:    %2d/%2d", _network_game_info.clients_on, _settings_client.network.max_clients);
-	IConsolePrintF(CC_DEFAULT, "Current/maximum companies:  %2d/%2d", (int)Company::GetNumItems(), _settings_client.network.max_companies);
-	IConsolePrintF(CC_DEFAULT, "Current/maximum spectators: %2d/%2d", NetworkSpectatorCount(), _settings_client.network.max_spectators);
+	IConsolePrint(CC_DEFAULT, "Current/maximum clients:    {:3d}/{:3d}", _network_game_info.clients_on, _settings_client.network.max_clients);
+	IConsolePrint(CC_DEFAULT, "Current/maximum companies:  {:3d}/{:3d}", Company::GetNumItems(), _settings_client.network.max_companies);
+	IConsolePrint(CC_DEFAULT, "Current/maximum spectators: {:3d}/{:3d}", NetworkSpectatorCount(), _settings_client.network.max_spectators);
 
 	return true;
 }
@@ -922,7 +920,7 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 	}
 
 	/* Don't resolve the address first, just print it directly as it comes from the config file. */
-	IConsolePrintF(CC_DEFAULT, "Reconnecting to %s ...", _settings_client.network.last_joined.c_str());
+	IConsolePrint(CC_DEFAULT, "Reconnecting to {} ...", _settings_client.network.last_joined);
 
 	return NetworkClientConnectGame(_settings_client.network.last_joined, playas);
 }
@@ -1025,9 +1023,12 @@ DEF_CONSOLE_CMD(ConScript)
 	if (!CloseConsoleLogIfActive()) {
 		if (argc < 2) return false;
 
-		IConsolePrintF(CC_DEFAULT, "file output started to: %s", argv[1]);
 		_iconsole_output_file = fopen(argv[1], "ab");
-		if (_iconsole_output_file == nullptr) IConsolePrint(CC_ERROR, "Could not open file '{}'.", argv[1]);
+		if (_iconsole_output_file == nullptr) {
+			IConsolePrint(CC_ERROR, "Could not open console log file '{}'.", argv[1]);
+		} else {
+			IConsolePrint(CC_INFO, "Console log output started to: '{}'", argv[1]);
+		}
 	}
 
 	return true;
@@ -1117,7 +1118,7 @@ static void PrintLineByLine(char *buf)
 	for (char *p2 = buf; *p2 != '\0'; p2++) {
 		if (*p2 == '\n') {
 			*p2 = '\0';
-			IConsolePrintF(CC_DEFAULT, "%s", p);
+			IConsolePrint(CC_DEFAULT, p);
 			p = p2 + 1;
 		}
 	}
@@ -1257,7 +1258,7 @@ DEF_CONSOLE_CMD(ConReloadAI)
 
 	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
 	if (!Company::IsValidID(company_id)) {
-		IConsolePrintF(CC_DEFAULT, "Unknown company. Company range is between 1 and %d.", MAX_COMPANIES);
+		IConsolePrint(CC_ERROR, "Unknown company. Company range is between 1 and {}.", MAX_COMPANIES);
 		return true;
 	}
 
@@ -1295,7 +1296,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 
 	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
 	if (!Company::IsValidID(company_id)) {
-		IConsolePrintF(CC_DEFAULT, "Unknown company. Company range is between 1 and %d.", MAX_COMPANIES);
+		IConsolePrint(CC_ERROR, "Unknown company. Company range is between 1 and {}.", MAX_COMPANIES);
 		return true;
 	}
 
@@ -1368,7 +1369,7 @@ DEF_CONSOLE_CMD(ConGetSeed)
 		return true;
 	}
 
-	IConsolePrintF(CC_DEFAULT, "Generation Seed: %u", _settings_game.game_creation.generation_seed);
+	IConsolePrint(CC_DEFAULT, "Generation Seed: {}", _settings_game.game_creation.generation_seed);
 	return true;
 }
 
@@ -1381,7 +1382,7 @@ DEF_CONSOLE_CMD(ConGetDate)
 
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
-	IConsolePrintF(CC_DEFAULT, "Date: %04d-%02d-%02d", ymd.year, ymd.month + 1, ymd.day);
+	IConsolePrint(CC_DEFAULT, "Date: {:04d}-{:02d}-{:02d}", ymd.year, ymd.month + 1, ymd.day);
 	return true;
 }
 
@@ -1394,7 +1395,7 @@ DEF_CONSOLE_CMD(ConGetSysDate)
 
 	char buffer[lengthof("2000-01-02 03:04:05")];
 	LocalTime::Format(buffer, lastof(buffer), "%Y-%m-%d %H:%M:%S");
-	IConsolePrintF(CC_DEFAULT, "System Date: %s", buffer);
+	IConsolePrint(CC_DEFAULT, "System Date: {}", buffer);
 	return true;
 }
 
@@ -1532,7 +1533,7 @@ DEF_CONSOLE_CMD(ConDebugLevel)
 	if (argc > 2) return false;
 
 	if (argc == 1) {
-		IConsolePrintF(CC_DEFAULT, "Current debug-level: '%s'", GetDebugString());
+		IConsolePrint(CC_DEFAULT, "Current debug-level: '{}'", GetDebugString());
 	} else {
 		SetDebugString(argv[1]);
 	}
@@ -1585,7 +1586,7 @@ DEF_CONSOLE_CMD(ConHelp)
 				cmd->proc(0, nullptr);
 				return true;
 			}
-			IConsolePrintF(CC_ERROR, "ERROR: alias is of special type, please see its execution-line: '%s'", alias->cmdline.c_str());
+			IConsolePrint(CC_ERROR, "Alias is of special type, please see its execution-line: '{}'.", alias->cmdline);
 			return true;
 		}
 
@@ -1615,7 +1616,7 @@ DEF_CONSOLE_CMD(ConListCommands)
 	for (auto &it : IConsole::Commands()) {
 		const IConsoleCmd *cmd = &it.second;
 		if (argv[1] == nullptr || cmd->name.find(argv[1]) != std::string::npos) {
-			if (cmd->hook == nullptr || cmd->hook(false) != CHR_HIDE) IConsolePrintF(CC_DEFAULT, "%s", cmd->name.c_str());
+			if (cmd->hook == nullptr || cmd->hook(false) != CHR_HIDE) IConsolePrint(CC_DEFAULT, cmd->name);
 		}
 	}
 
@@ -1632,7 +1633,7 @@ DEF_CONSOLE_CMD(ConListAliases)
 	for (auto &it : IConsole::Aliases()) {
 		const IConsoleAlias *alias = &it.second;
 		if (argv[1] == nullptr || alias->name.find(argv[1]) != std::string::npos) {
-			IConsolePrintF(CC_DEFAULT, "%s => %s", alias->name.c_str(), alias->cmdline.c_str());
+			IConsolePrint(CC_DEFAULT, "{} => {}", alias->name, alias->cmdline);
 		}
 	}
 
@@ -1661,7 +1662,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 
 		char colour[512];
 		GetString(colour, STR_COLOUR_DARK_BLUE + _company_colours[c->index], lastof(colour));
-		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: " OTTD_PRINTF64 "  Loan: " OTTD_PRINTF64 "  Value: " OTTD_PRINTF64 "  (T:%d, R:%d, P:%d, S:%d) %s",
+		IConsolePrint(CC_INFO, "#:{}({}) Company Name: '{}'  Year Founded: {}  Money: {}  Loan: {}  Value: {}  (T:{}, R:{}, P:{}, S:{}) {}",
 			c->index + 1, colour, company_name,
 			c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
 			c->group_all[VEH_TRAIN].num_vehicle,
@@ -1705,7 +1706,7 @@ DEF_CONSOLE_CMD(ConSayCompany)
 
 	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
 	if (!Company::IsValidID(company_id)) {
-		IConsolePrintF(CC_DEFAULT, "Unknown company. Company range is between 1 and %d.", MAX_COMPANIES);
+		IConsolePrint(CC_DEFAULT, "Unknown company. Company range is between 1 and {}.", MAX_COMPANIES);
 		return true;
 	}
 
@@ -1742,18 +1743,15 @@ DEF_CONSOLE_CMD(ConSayClient)
 DEF_CONSOLE_CMD(ConCompanyPassword)
 {
 	if (argc == 0) {
-		const char *helpmsg;
-
 		if (_network_dedicated) {
-			helpmsg = "Change the password of a company. Usage: 'company_pw <company-no> \"<password>\"";
+			IConsolePrint(CC_HELP, "Change the password of a company. Usage: 'company_pw <company-no> \"<password>\".");
 		} else if (_network_server) {
-			helpmsg = "Change the password of your or any other company. Usage: 'company_pw [<company-no>] \"<password>\"'";
+			IConsolePrint(CC_HELP, "Change the password of your or any other company. Usage: 'company_pw [<company-no>] \"<password>\"'.");
 		} else {
-			helpmsg = "Change the password of your company. Usage: 'company_pw \"<password>\"'";
+			IConsolePrint(CC_HELP, "Change the password of your company. Usage: 'company_pw \"<password>\"'.");
 		}
 
-		IConsoleHelp(helpmsg);
-		IConsoleHelp("Use \"*\" to disable the password.");
+		IConsolePrint(CC_HELP, "Use \"*\" to disable the password.");
 		return true;
 	}
 
@@ -1807,17 +1805,17 @@ static ContentType StringToContentType(const char *str)
 struct ConsoleContentCallback : public ContentCallback {
 	void OnConnect(bool success)
 	{
-		IConsolePrintF(CC_DEFAULT, "Content server connection %s", success ? "established" : "failed");
+		IConsolePrint(CC_DEFAULT, "Content server connection {}.", success ? "established" : "failed");
 	}
 
 	void OnDisconnect()
 	{
-		IConsolePrintF(CC_DEFAULT, "Content server connection closed");
+		IConsolePrint(CC_DEFAULT, "Content server connection closed.");
 	}
 
 	void OnDownloadComplete(ContentID cid)
 	{
-		IConsolePrintF(CC_DEFAULT, "Completed download of %d", cid);
+		IConsolePrint(CC_DEFAULT, "Completed download of {}.", cid);
 	}
 };
 
@@ -1834,7 +1832,7 @@ static void OutputContentState(const ContentInfo *const ci)
 
 	char buf[sizeof(ci->md5sum) * 2 + 1];
 	md5sumToString(buf, lastof(buf), ci->md5sum);
-	IConsolePrintF(state_to_colour[ci->state], "%d, %s, %s, %s, %08X, %s", ci->id, types[ci->type - 1], states[ci->state], ci->name.c_str(), ci->unique_id, buf);
+	IConsolePrint(state_to_colour[ci->state], "{}, {}, {}, {}, {:08X}, {}", ci->id, types[ci->type - 1], states[ci->state], ci->name, ci->unique_id, buf);
 }
 
 DEF_CONSOLE_CMD(ConContent)
@@ -1869,7 +1867,7 @@ DEF_CONSOLE_CMD(ConContent)
 	if (strcasecmp(argv[1], "select") == 0) {
 		if (argc <= 2) {
 			/* List selected content */
-			IConsolePrintF(CC_WHITE, "id, type, state, name");
+			IConsolePrint(CC_WHITE, "id, type, state, name");
 			for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
 				if ((*iter)->state != ContentInfo::SELECTED && (*iter)->state != ContentInfo::AUTOSELECTED) continue;
 				OutputContentState(*iter);
@@ -1902,7 +1900,7 @@ DEF_CONSOLE_CMD(ConContent)
 	}
 
 	if (strcasecmp(argv[1], "state") == 0) {
-		IConsolePrintF(CC_WHITE, "id, type, state, name");
+		IConsolePrint(CC_WHITE, "id, type, state, name");
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
 			if (argc > 2 && strcasestr((*iter)->name.c_str(), argv[2]) == nullptr) continue;
 			OutputContentState(*iter);
@@ -1914,7 +1912,7 @@ DEF_CONSOLE_CMD(ConContent)
 		uint files;
 		uint bytes;
 		_network_content_client.DownloadSelectedContent(files, bytes);
-		IConsolePrintF(CC_DEFAULT, "Downloading %d file(s) (%d bytes)", files, bytes);
+		IConsolePrint(CC_DEFAULT, "Downloading {} file(s) ({} bytes).", files, bytes);
 		return true;
 	}
 
@@ -2022,7 +2020,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			bool active = selected && profiler->active;
 			TextColour tc = active ? TC_LIGHT_BLUE : selected ? TC_GREEN : CC_INFO;
 			const char *statustext = active ? " (active)" : selected ? " (selected)" : "";
-			IConsolePrintF(tc, "%d: [%08X] %s%s", i, BSWAP32(grf->grfid), grf->filename, statustext);
+			IConsolePrint(tc, "{}: [{:08X}] {}{}", i, BSWAP32(grf->grfid), grf->filename, statustext);
 			i++;
 		}
 		return true;
@@ -2081,7 +2079,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 		}
 		if (started > 0) {
-			IConsolePrintF(CC_DEBUG, "Started profiling for GRFID%s %s", (started > 1) ? "s" : "", grfids.c_str());
+			IConsolePrint(CC_DEBUG, "Started profiling for GRFID{} {}", (started > 1) ? "s" : "", grfids);
 			if (argc >= 3) {
 				int days = std::max(atoi(argv[2]), 1);
 				_newgrf_profile_end_date = _date + days;
@@ -2089,7 +2087,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 				char datestrbuf[32]{ 0 };
 				SetDParam(0, _newgrf_profile_end_date);
 				GetString(datestrbuf, STR_JUST_DATE_ISO, lastof(datestrbuf));
-				IConsolePrintF(CC_DEBUG, "Profiling will automatically stop on game date %s", datestrbuf);
+				IConsolePrint(CC_DEBUG, "Profiling will automatically stop on game date {}.", datestrbuf);
 			} else {
 				_newgrf_profile_end_date = MAX_DAY;
 			}
@@ -2165,12 +2163,12 @@ DEF_CONSOLE_CMD(ConFramerateWindow)
 
 static void ConDumpRoadTypes()
 {
-	IConsolePrintF(CC_DEFAULT, "  Flags:");
-	IConsolePrintF(CC_DEFAULT, "    c = catenary");
-	IConsolePrintF(CC_DEFAULT, "    l = no level crossings");
-	IConsolePrintF(CC_DEFAULT, "    X = no houses");
-	IConsolePrintF(CC_DEFAULT, "    h = hidden");
-	IConsolePrintF(CC_DEFAULT, "    T = buildable by towns");
+	IConsolePrint(CC_DEFAULT, "  Flags:");
+	IConsolePrint(CC_DEFAULT, "    c = catenary");
+	IConsolePrint(CC_DEFAULT, "    l = no level crossings");
+	IConsolePrint(CC_DEFAULT, "    X = no houses");
+	IConsolePrint(CC_DEFAULT, "    h = hidden");
+	IConsolePrint(CC_DEFAULT, "    T = buildable by towns");
 
 	std::map<uint32, const GRFFile *> grfs;
 	for (RoadType rt = ROADTYPE_BEGIN; rt < ROADTYPE_END; rt++) {
@@ -2182,7 +2180,7 @@ static void ConDumpRoadTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrintF(CC_DEFAULT, "  %02u %s %c%c%c%c, Flags: %c%c%c%c%c, GRF: %08X, %s",
+		IConsolePrint(CC_DEFAULT, "  {:02d} {} {:c}{:c}{:c}{:c}, Flags: {}{}{}{}{}, GRF: {:08X}, {}",
 				(uint)rt,
 				RoadTypeIsTram(rt) ? "Tram" : "Road",
 				rti->label >> 24, rti->label >> 16, rti->label >> 8, rti->label,
@@ -2196,19 +2194,19 @@ static void ConDumpRoadTypes()
 		);
 	}
 	for (const auto &grf : grfs) {
-		IConsolePrintF(CC_DEFAULT, "  GRF: %08X = %s", BSWAP32(grf.first), grf.second->filename);
+		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", BSWAP32(grf.first), grf.second->filename);
 	}
 }
 
 static void ConDumpRailTypes()
 {
-	IConsolePrintF(CC_DEFAULT, "  Flags:");
-	IConsolePrintF(CC_DEFAULT, "    c = catenary");
-	IConsolePrintF(CC_DEFAULT, "    l = no level crossings");
-	IConsolePrintF(CC_DEFAULT, "    h = hidden");
-	IConsolePrintF(CC_DEFAULT, "    s = no sprite combine");
-	IConsolePrintF(CC_DEFAULT, "    a = always allow 90 degree turns");
-	IConsolePrintF(CC_DEFAULT, "    d = always disallow 90 degree turns");
+	IConsolePrint(CC_DEFAULT, "  Flags:");
+	IConsolePrint(CC_DEFAULT, "    c = catenary");
+	IConsolePrint(CC_DEFAULT, "    l = no level crossings");
+	IConsolePrint(CC_DEFAULT, "    h = hidden");
+	IConsolePrint(CC_DEFAULT, "    s = no sprite combine");
+	IConsolePrint(CC_DEFAULT, "    a = always allow 90 degree turns");
+	IConsolePrint(CC_DEFAULT, "    d = always disallow 90 degree turns");
 
 	std::map<uint32, const GRFFile *> grfs;
 	for (RailType rt = RAILTYPE_BEGIN; rt < RAILTYPE_END; rt++) {
@@ -2220,7 +2218,7 @@ static void ConDumpRailTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrintF(CC_DEFAULT, "  %02u %c%c%c%c, Flags: %c%c%c%c%c%c, GRF: %08X, %s",
+		IConsolePrint(CC_DEFAULT, "  {:02d} {:c}{:c}{:c}{:c}, Flags: {}{}{}{}{}{}, GRF: {:08X}, {}",
 				(uint)rt,
 				rti->label >> 24, rti->label >> 16, rti->label >> 8, rti->label,
 				HasBit(rti->flags, RTF_CATENARY)          ? 'c' : '-',
@@ -2234,24 +2232,24 @@ static void ConDumpRailTypes()
 		);
 	}
 	for (const auto &grf : grfs) {
-		IConsolePrintF(CC_DEFAULT, "  GRF: %08X = %s", BSWAP32(grf.first), grf.second->filename);
+		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", BSWAP32(grf.first), grf.second->filename);
 	}
 }
 
 static void ConDumpCargoTypes()
 {
-	IConsolePrintF(CC_DEFAULT, "  Cargo classes:");
-	IConsolePrintF(CC_DEFAULT, "    p = passenger");
-	IConsolePrintF(CC_DEFAULT, "    m = mail");
-	IConsolePrintF(CC_DEFAULT, "    x = express");
-	IConsolePrintF(CC_DEFAULT, "    a = armoured");
-	IConsolePrintF(CC_DEFAULT, "    b = bulk");
-	IConsolePrintF(CC_DEFAULT, "    g = piece goods");
-	IConsolePrintF(CC_DEFAULT, "    l = liquid");
-	IConsolePrintF(CC_DEFAULT, "    r = refrigerated");
-	IConsolePrintF(CC_DEFAULT, "    h = hazardous");
-	IConsolePrintF(CC_DEFAULT, "    c = covered/sheltered");
-	IConsolePrintF(CC_DEFAULT, "    S = special");
+	IConsolePrint(CC_DEFAULT, "  Cargo classes:");
+	IConsolePrint(CC_DEFAULT, "    p = passenger");
+	IConsolePrint(CC_DEFAULT, "    m = mail");
+	IConsolePrint(CC_DEFAULT, "    x = express");
+	IConsolePrint(CC_DEFAULT, "    a = armoured");
+	IConsolePrint(CC_DEFAULT, "    b = bulk");
+	IConsolePrint(CC_DEFAULT, "    g = piece goods");
+	IConsolePrint(CC_DEFAULT, "    l = liquid");
+	IConsolePrint(CC_DEFAULT, "    r = refrigerated");
+	IConsolePrint(CC_DEFAULT, "    h = hazardous");
+	IConsolePrint(CC_DEFAULT, "    c = covered/sheltered");
+	IConsolePrint(CC_DEFAULT, "    S = special");
 
 	std::map<uint32, const GRFFile *> grfs;
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
@@ -2263,7 +2261,7 @@ static void ConDumpCargoTypes()
 			grfid = grf->grfid;
 			grfs.emplace(grfid, grf);
 		}
-		IConsolePrintF(CC_DEFAULT, "  %02u Bit: %2u, Label: %c%c%c%c, Callback mask: 0x%02X, Cargo class: %c%c%c%c%c%c%c%c%c%c%c, GRF: %08X, %s",
+		IConsolePrint(CC_DEFAULT, "  {:02d} Bit: {:2d}, Label: {:c}{:c}{:c}{:c}, Callback mask: 0x{:02X}, Cargo class: {}{}{}{}{}{}{}{}{}{}{}, GRF: {:08X}, {}",
 				(uint)i,
 				spec->bitnum,
 				spec->label >> 24, spec->label >> 16, spec->label >> 8, spec->label,
@@ -2284,7 +2282,7 @@ static void ConDumpCargoTypes()
 		);
 	}
 	for (const auto &grf : grfs) {
-		IConsolePrintF(CC_DEFAULT, "  GRF: %08X = %s", BSWAP32(grf.first), grf.second->filename);
+		IConsolePrint(CC_DEFAULT, "  GRF: {:08X} = {}", BSWAP32(grf.first), grf.second->filename);
 	}
 }
 

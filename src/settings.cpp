@@ -1929,7 +1929,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	if (sd == nullptr) {
-		IConsolePrintF(CC_WARNING, "'%s' is an unknown setting.", name);
+		IConsolePrint(CC_ERROR, "'{}' is an unknown setting.", name);
 		return;
 	}
 
@@ -1941,7 +1941,7 @@ void IConsoleSetSetting(const char *name, const char *value, bool force_newgame)
 		extern bool GetArgumentInteger(uint32 *value, const char *arg);
 		success = GetArgumentInteger(&val, value);
 		if (!success) {
-			IConsolePrintF(CC_ERROR, "'%s' is not an integer.", value);
+			IConsolePrint(CC_ERROR, "'{}' is not an integer.", value);
 			return;
 		}
 
@@ -1973,19 +1973,19 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 {
 	const SettingDesc *sd = GetSettingFromName(name);
 	if (sd == nullptr) {
-		IConsolePrintF(CC_WARNING, "'%s' is an unknown setting.", name);
+		IConsolePrint(CC_ERROR, "'{}' is an unknown setting.", name);
 		return;
 	}
 
 	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
 
 	if (sd->IsStringSetting()) {
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", sd->name.c_str(), sd->AsStringSetting()->Read(object).c_str());
+		IConsolePrint(CC_INFO, "Current value for '{}' is '{}'.", sd->name, sd->AsStringSetting()->Read(object));
 	} else if (sd->IsIntSetting()) {
 		char value[20];
 		sd->FormatValue(value, lastof(value), object);
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
-		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %u)",
+		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}).",
 			sd->name.c_str(), value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", int_setting->min, int_setting->max);
 	}
 }
@@ -1997,17 +1997,17 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
  */
 void IConsoleListSettings(const char *prefilter)
 {
-	IConsolePrintF(CC_WARNING, "All settings with their current value:");
+	IConsolePrint(CC_HELP, "All settings with their current value:");
 
 	for (auto &sd : _settings) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (prefilter != nullptr && sd->name.find(prefilter) == std::string::npos) continue;
 		char value[80];
 		sd->FormatValue(value, lastof(value), &GetGameSettings());
-		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->name.c_str(), value);
+		IConsolePrint(CC_DEFAULT, "{} = {}", sd->name, value);
 	}
 
-	IConsolePrintF(CC_WARNING, "Use 'setting' command to change a value");
+	IConsolePrint(CC_HELP, "Use 'setting' command to change a value.");
 }
 
 /**

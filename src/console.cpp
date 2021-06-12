@@ -59,7 +59,7 @@ static void IConsoleWriteToLogFile(const char *string)
 				fwrite("\n", 1, 1, _iconsole_output_file) != 1) {
 			fclose(_iconsole_output_file);
 			_iconsole_output_file = nullptr;
-			IConsolePrintF(CC_DEFAULT, "cannot write to log file");
+			IConsolePrint(CC_ERROR, "Cannot write to console log file; closing the log file.");
 		}
 	}
 }
@@ -67,7 +67,7 @@ static void IConsoleWriteToLogFile(const char *string)
 bool CloseConsoleLogIfActive()
 {
 	if (_iconsole_output_file != nullptr) {
-		IConsolePrintF(CC_DEFAULT, "file output complete");
+		IConsolePrint(CC_INFO, "Console log file closed.");
 		fclose(_iconsole_output_file);
 		_iconsole_output_file = nullptr;
 		return true;
@@ -123,25 +123,6 @@ void IConsolePrint(TextColour colour_code, const std::string &string)
 
 	IConsoleWriteToLogFile(str);
 	IConsoleGUIPrint(colour_code, str);
-}
-
-/**
- * Handle the printing of text entered into the console or redirected there
- * by any other means. Uses printf() style format, for more information look
- * at IConsolePrint()
- */
-void CDECL IConsolePrintF(TextColour colour_code, const char *format, ...)
-{
-	assert(IsValidConsoleColour(colour_code));
-
-	va_list va;
-	char buf[ICON_MAX_STREAMSIZE];
-
-	va_start(va, format);
-	vseprintf(buf, lastof(buf), format, va);
-	va_end(va);
-
-	IConsolePrint(colour_code, buf);
 }
 
 /**
