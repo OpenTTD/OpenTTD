@@ -890,6 +890,21 @@ Dimension GetStringBoundingBox(const char *str, FontSize start_fontsize)
 }
 
 /**
+ * Return the string dimension in pixels. The height and width are returned
+ * in a single Dimension value. TINYFONT, BIGFONT modifiers are only
+ * supported as the first character of the string. The returned dimensions
+ * are therefore a rough estimation correct for all the current strings
+ * but not every possible combination
+ * @param str string to calculate pixel-width
+ * @param start_fontsize Fontsize to start the text with
+ * @return string width and height in pixels
+ */
+Dimension GetStringBoundingBox(const std::string &str, FontSize start_fontsize)
+{
+	return GetStringBoundingBox(str.c_str(), start_fontsize);
+}
+
+/**
  * Get bounding box of a string. Uses parameters set by #SetDParam if needed.
  * Has the same restrictions as #GetStringBoundingBox(const char *str, FontSize start_fontsize).
  * @param strid String to examine.
