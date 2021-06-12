@@ -135,8 +135,9 @@ void DebugPrint(const char *level, const std::string &message)
 #else
 		fputs(msg.c_str(), stderr);
 #endif
+
 		NetworkAdminConsole(level, message);
-		IConsoleDebug(level, message.c_str());
+		if (_settings_client.gui.developer >= 2) IConsolePrint(CC_DEBUG, "dbg: [{}] {}", level, message);
 	}
 }
 
