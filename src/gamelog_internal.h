@@ -13,7 +13,7 @@
 #include "gamelog.h"
 
 /** Type of logged change */
-enum GamelogChangeType {
+enum GamelogChangeType : uint8 {
 	GLCT_MODE,        ///< Scenario editor x Game, different landscape
 	GLCT_REVISION,    ///< Changed game revision string
 	GLCT_OLDVER,      ///< Loaded from savegame without logged data
