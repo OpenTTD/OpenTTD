@@ -186,22 +186,13 @@ DEF_CONSOLE_HOOK(ConHookNewGRFDeveloperTool)
 }
 
 /**
- * Show help for the console.
- * @param str String to print in the console.
- */
-static void IConsoleHelp(const char *str)
-{
-	IConsolePrint(CC_HELP, "- {}", str);
-}
-
-/**
  * Reset status of all engines.
  * @return Will always succeed.
  */
 DEF_CONSOLE_CMD(ConResetEngines)
 {
 	if (argc == 0) {
-		IConsoleHelp("Reset status data of all engines. This might solve some issues with 'lost' engines. Usage: 'resetengines'");
+		IConsolePrint(CC_HELP, "Reset status data of all engines. This might solve some issues with 'lost' engines. Usage: 'resetengines'.");
 		return true;
 	}
 
@@ -217,7 +208,7 @@ DEF_CONSOLE_CMD(ConResetEngines)
 DEF_CONSOLE_CMD(ConResetEnginePool)
 {
 	if (argc == 0) {
-		IConsoleHelp("Reset NewGRF allocations of engine slots. This will remove invalid engine definitions, and might make default engines available again.");
+		IConsolePrint(CC_HELP, "Reset NewGRF allocations of engine slots. This will remove invalid engine definitions, and might make default engines available again.");
 		return true;
 	}
 
@@ -243,8 +234,8 @@ DEF_CONSOLE_CMD(ConResetEnginePool)
 DEF_CONSOLE_CMD(ConResetTile)
 {
 	if (argc == 0) {
-		IConsoleHelp("Reset a tile to bare land. Usage: 'resettile <tile>'");
-		IConsoleHelp("Tile can be either decimal (34161) or hexadecimal (0x4a5B)");
+		IConsolePrint(CC_HELP, "Reset a tile to bare land. Usage: 'resettile <tile>'.");
+		IConsolePrint(CC_HELP, "Tile can be either decimal (34161) or hexadecimal (0x4a5B).");
 		return true;
 	}
 
@@ -273,9 +264,9 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 {
 	switch (argc) {
 		case 0:
-			IConsoleHelp("Center the screen on a given tile.");
-			IConsoleHelp("Usage: 'scrollto <tile>' or 'scrollto <x> <y>'");
-			IConsoleHelp("Numbers can be either decimal (34161) or hexadecimal (0x4a5B).");
+			IConsolePrint(CC_HELP, "Center the screen on a given tile.");
+			IConsolePrint(CC_HELP, "Usage: 'scrollto <tile>' or 'scrollto <x> <y>'.");
+			IConsolePrint(CC_HELP, "Numbers can be either decimal (34161) or hexadecimal (0x4a5B).");
 			return true;
 
 		case 2: {
@@ -316,7 +307,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 DEF_CONSOLE_CMD(ConSave)
 {
 	if (argc == 0) {
-		IConsoleHelp("Save the current game. Usage: 'save <filename>'");
+		IConsolePrint(CC_HELP, "Save the current game. Usage: 'save <filename>'.");
 		return true;
 	}
 
@@ -343,8 +334,8 @@ DEF_CONSOLE_CMD(ConSave)
 DEF_CONSOLE_CMD(ConSaveConfig)
 {
 	if (argc == 0) {
-		IConsoleHelp("Saves the configuration for new games to the configuration file, typically 'openttd.cfg'.");
-		IConsoleHelp("It does not save the configuration of the current game to the configuration file.");
+		IConsolePrint(CC_HELP, "Saves the configuration for new games to the configuration file, typically 'openttd.cfg'.");
+		IConsolePrint(CC_HELP, "It does not save the configuration of the current game to the configuration file.");
 		return true;
 	}
 
@@ -356,7 +347,7 @@ DEF_CONSOLE_CMD(ConSaveConfig)
 DEF_CONSOLE_CMD(ConLoad)
 {
 	if (argc == 0) {
-		IConsoleHelp("Load a game by name or index. Usage: 'load <file | number>'");
+		IConsolePrint(CC_HELP, "Load a game by name or index. Usage: 'load <file | number>'.");
 		return true;
 	}
 
@@ -385,7 +376,7 @@ DEF_CONSOLE_CMD(ConLoad)
 DEF_CONSOLE_CMD(ConRemove)
 {
 	if (argc == 0) {
-		IConsoleHelp("Remove a savegame by name or index. Usage: 'rm <file | number>'");
+		IConsolePrint(CC_HELP, "Remove a savegame by name or index. Usage: 'rm <file | number>'.");
 		return true;
 	}
 
@@ -411,7 +402,7 @@ DEF_CONSOLE_CMD(ConRemove)
 DEF_CONSOLE_CMD(ConListFiles)
 {
 	if (argc == 0) {
-		IConsoleHelp("List all loadable savegames and directories in the current dir via console. Usage: 'ls | dir'");
+		IConsolePrint(CC_HELP, "List all loadable savegames and directories in the current dir via console. Usage: 'ls | dir'.");
 		return true;
 	}
 
@@ -427,7 +418,7 @@ DEF_CONSOLE_CMD(ConListFiles)
 DEF_CONSOLE_CMD(ConChangeDirectory)
 {
 	if (argc == 0) {
-		IConsoleHelp("Change the dir via console. Usage: 'cd <directory | number>'");
+		IConsolePrint(CC_HELP, "Change the dir via console. Usage: 'cd <directory | number>'.");
 		return true;
 	}
 
@@ -456,7 +447,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	const char *path;
 
 	if (argc == 0) {
-		IConsoleHelp("Print out the current working directory. Usage: 'pwd'");
+		IConsolePrint(CC_HELP, "Print out the current working directory. Usage: 'pwd'.");
 		return true;
 	}
 
@@ -472,7 +463,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 DEF_CONSOLE_CMD(ConClearBuffer)
 {
 	if (argc == 0) {
-		IConsoleHelp("Clear the console buffer. Usage: 'clear'");
+		IConsolePrint(CC_HELP, "Clear the console buffer. Usage: 'clear'.");
 		return true;
 	}
 
@@ -532,8 +523,8 @@ static bool ConKickOrBan(const char *argv, bool ban, const std::string &reason)
 DEF_CONSOLE_CMD(ConKick)
 {
 	if (argc == 0) {
-		IConsoleHelp("Kick a client from a network game. Usage: 'kick <ip | client-id> [<kick-reason>]'");
-		IConsoleHelp("For client-id's, see the command 'clients'");
+		IConsolePrint(CC_HELP, "Kick a client from a network game. Usage: 'kick <ip | client-id> [<kick-reason>]'.");
+		IConsolePrint(CC_HELP, "For client-id's, see the command 'clients'.");
 		return true;
 	}
 
@@ -555,9 +546,9 @@ DEF_CONSOLE_CMD(ConKick)
 DEF_CONSOLE_CMD(ConBan)
 {
 	if (argc == 0) {
-		IConsoleHelp("Ban a client from a network game. Usage: 'ban <ip | client-id> [<ban-reason>]'");
-		IConsoleHelp("For client-id's, see the command 'clients'");
-		IConsoleHelp("If the client is no longer online, you can still ban their IP");
+		IConsolePrint(CC_HELP, "Ban a client from a network game. Usage: 'ban <ip | client-id> [<ban-reason>]'.");
+		IConsolePrint(CC_HELP, "For client-id's, see the command 'clients'.");
+		IConsolePrint(CC_HELP, "If the client is no longer online, you can still ban their IP.");
 		return true;
 	}
 
@@ -579,8 +570,8 @@ DEF_CONSOLE_CMD(ConBan)
 DEF_CONSOLE_CMD(ConUnBan)
 {
 	if (argc == 0) {
-		IConsoleHelp("Unban a client from a network game. Usage: 'unban <ip | banlist-index>'");
-		IConsoleHelp("For a list of banned IP's, see the command 'banlist'");
+		IConsolePrint(CC_HELP, "Unban a client from a network game. Usage: 'unban <ip | banlist-index>'.");
+		IConsolePrint(CC_HELP, "For a list of banned IP's, see the command 'banlist'.");
 		return true;
 	}
 
@@ -611,7 +602,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 DEF_CONSOLE_CMD(ConBanList)
 {
 	if (argc == 0) {
-		IConsoleHelp("List the IP's of banned clients: Usage 'banlist'");
+		IConsolePrint(CC_HELP, "List the IP's of banned clients: Usage 'banlist'.");
 		return true;
 	}
 
@@ -629,7 +620,7 @@ DEF_CONSOLE_CMD(ConBanList)
 DEF_CONSOLE_CMD(ConPauseGame)
 {
 	if (argc == 0) {
-		IConsoleHelp("Pause a network game. Usage: 'pause'");
+		IConsolePrint(CC_HELP, "Pause a network game. Usage: 'pause'.");
 		return true;
 	}
 
@@ -651,7 +642,7 @@ DEF_CONSOLE_CMD(ConPauseGame)
 DEF_CONSOLE_CMD(ConUnpauseGame)
 {
 	if (argc == 0) {
-		IConsoleHelp("Unpause a network game. Usage: 'unpause'");
+		IConsolePrint(CC_HELP, "Unpause a network game. Usage: 'unpause'.");
 		return true;
 	}
 
@@ -677,8 +668,8 @@ DEF_CONSOLE_CMD(ConUnpauseGame)
 DEF_CONSOLE_CMD(ConRcon)
 {
 	if (argc == 0) {
-		IConsoleHelp("Remote control the server from another client. Usage: 'rcon <password> <command>'");
-		IConsoleHelp("Remember to enclose the command in quotes, otherwise only the first parameter is sent");
+		IConsolePrint(CC_HELP, "Remote control the server from another client. Usage: 'rcon <password> <command>'.");
+		IConsolePrint(CC_HELP, "Remember to enclose the command in quotes, otherwise only the first parameter is sent.");
 		return true;
 	}
 
@@ -695,7 +686,7 @@ DEF_CONSOLE_CMD(ConRcon)
 DEF_CONSOLE_CMD(ConStatus)
 {
 	if (argc == 0) {
-		IConsoleHelp("List the status of all clients connected to the server. Usage 'status'");
+		IConsolePrint(CC_HELP, "List the status of all clients connected to the server. Usage 'status'.");
 		return true;
 	}
 
@@ -706,8 +697,8 @@ DEF_CONSOLE_CMD(ConStatus)
 DEF_CONSOLE_CMD(ConServerInfo)
 {
 	if (argc == 0) {
-		IConsoleHelp("List current and maximum client/company limits. Usage 'server_info'");
-		IConsoleHelp("You can change these values by modifying settings 'network.max_clients', 'network.max_companies' and 'network.max_spectators'");
+		IConsolePrint(CC_HELP, "List current and maximum client/company limits. Usage 'server_info'.");
+		IConsolePrint(CC_HELP, "You can change these values by modifying settings 'network.max_clients', 'network.max_companies' and 'network.max_spectators'.");
 		return true;
 	}
 
@@ -721,8 +712,8 @@ DEF_CONSOLE_CMD(ConServerInfo)
 DEF_CONSOLE_CMD(ConClientNickChange)
 {
 	if (argc != 3) {
-		IConsoleHelp("Change the nickname of a connected client. Usage: 'client_name <client-id> <new-name>'");
-		IConsoleHelp("For client-id's, see the command 'clients'");
+		IConsolePrint(CC_HELP, "Change the nickname of a connected client. Usage: 'client_name <client-id> <new-name>'.");
+		IConsolePrint(CC_HELP, "For client-id's, see the command 'clients'.");
 		return true;
 	}
 
@@ -755,8 +746,8 @@ DEF_CONSOLE_CMD(ConClientNickChange)
 DEF_CONSOLE_CMD(ConJoinCompany)
 {
 	if (argc < 2) {
-		IConsoleHelp("Request joining another company. Usage: join <company-id> [<password>]");
-		IConsoleHelp("For valid company-id see company list, use 255 for spectator");
+		IConsolePrint(CC_HELP, "Request joining another company. Usage: 'join <company-id> [<password>]'.");
+		IConsolePrint(CC_HELP, "For valid company-id see company list, use 255 for spectator.");
 		return true;
 	}
 
@@ -802,8 +793,8 @@ DEF_CONSOLE_CMD(ConJoinCompany)
 DEF_CONSOLE_CMD(ConMoveClient)
 {
 	if (argc < 3) {
-		IConsoleHelp("Move a client to another company. Usage: move <client-id> <company-id>");
-		IConsoleHelp("For valid client-id see 'clients', for valid company-id see 'companies', use 255 for moving to spectators");
+		IConsolePrint(CC_HELP, "Move a client to another company. Usage: 'move <client-id> <company-id>'.");
+		IConsolePrint(CC_HELP, "For valid client-id see 'clients', for valid company-id see 'companies', use 255 for moving to spectators.");
 		return true;
 	}
 
@@ -845,8 +836,8 @@ DEF_CONSOLE_CMD(ConMoveClient)
 DEF_CONSOLE_CMD(ConResetCompany)
 {
 	if (argc == 0) {
-		IConsoleHelp("Remove an idle company from the game. Usage: 'reset_company <company-id>'");
-		IConsoleHelp("For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
+		IConsolePrint(CC_HELP, "Remove an idle company from the game. Usage: 'reset_company <company-id>'.");
+		IConsolePrint(CC_HELP, "For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
 		return true;
 	}
 
@@ -885,7 +876,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 DEF_CONSOLE_CMD(ConNetworkClients)
 {
 	if (argc == 0) {
-		IConsoleHelp("Get a list of connected clients including their ID, name, company-id, and IP. Usage: 'clients'");
+		IConsolePrint(CC_HELP, "Get a list of connected clients including their ID, name, company-id, and IP. Usage: 'clients'.");
 		return true;
 	}
 
@@ -897,9 +888,9 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 DEF_CONSOLE_CMD(ConNetworkReconnect)
 {
 	if (argc == 0) {
-		IConsoleHelp("Reconnect to server to which you were connected last time. Usage: 'reconnect [<company>]'");
-		IConsoleHelp("Company 255 is spectator (default, if not specified), 0 means creating new company.");
-		IConsoleHelp("All others are a certain company with Company 1 being #1");
+		IConsolePrint(CC_HELP, "Reconnect to server to which you were connected last time. Usage: 'reconnect [<company>]'.");
+		IConsolePrint(CC_HELP, "Company 255 is spectator (default, if not specified), 0 means creating new company.");
+		IConsolePrint(CC_HELP, "All others are a certain company with Company 1 being #1.");
 		return true;
 	}
 
@@ -928,9 +919,9 @@ DEF_CONSOLE_CMD(ConNetworkReconnect)
 DEF_CONSOLE_CMD(ConNetworkConnect)
 {
 	if (argc == 0) {
-		IConsoleHelp("Connect to a remote OTTD server and join the game. Usage: 'connect <ip>'");
-		IConsoleHelp("IP can contain port and company: 'IP[:Port][#Company]', eg: 'server.ottd.org:443#2'");
-		IConsoleHelp("Company #255 is spectator all others are a certain company with Company 1 being #1");
+		IConsolePrint(CC_HELP, "Connect to a remote OTTD server and join the game. Usage: 'connect <ip>'.");
+		IConsolePrint(CC_HELP, "IP can contain port and company: 'IP[:Port][#Company]', eg: 'server.ottd.org:443#2'.");
+		IConsolePrint(CC_HELP, "Company #255 is spectator all others are a certain company with Company 1 being #1.");
 		return true;
 	}
 
@@ -946,7 +937,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 DEF_CONSOLE_CMD(ConExec)
 {
 	if (argc == 0) {
-		IConsoleHelp("Execute a local script file. Usage: 'exec <script> <?>'");
+		IConsolePrint(CC_HELP, "Execute a local script file. Usage: 'exec <script> <?>'.");
 		return true;
 	}
 
@@ -997,7 +988,7 @@ DEF_CONSOLE_CMD(ConExec)
 DEF_CONSOLE_CMD(ConReturn)
 {
 	if (argc == 0) {
-		IConsoleHelp("Stop executing a running script. Usage: 'return'");
+		IConsolePrint(CC_HELP, "Stop executing a running script. Usage: 'return'.");
 		return true;
 	}
 
@@ -1015,8 +1006,8 @@ DEF_CONSOLE_CMD(ConScript)
 	extern FILE *_iconsole_output_file;
 
 	if (argc == 0) {
-		IConsoleHelp("Start or stop logging console output to a file. Usage: 'script <filename>'");
-		IConsoleHelp("If filename is omitted, a running log is stopped if it is active");
+		IConsolePrint(CC_HELP, "Start or stop logging console output to a file. Usage: 'script <filename>'.");
+		IConsolePrint(CC_HELP, "If filename is omitted, a running log is stopped if it is active.");
 		return true;
 	}
 
@@ -1038,7 +1029,7 @@ DEF_CONSOLE_CMD(ConScript)
 DEF_CONSOLE_CMD(ConEcho)
 {
 	if (argc == 0) {
-		IConsoleHelp("Print back the first argument to the console. Usage: 'echo <arg>'");
+		IConsolePrint(CC_HELP, "Print back the first argument to the console. Usage: 'echo <arg>'.");
 		return true;
 	}
 
@@ -1050,7 +1041,7 @@ DEF_CONSOLE_CMD(ConEcho)
 DEF_CONSOLE_CMD(ConEchoC)
 {
 	if (argc == 0) {
-		IConsoleHelp("Print back the first argument to the console in a given colour. Usage: 'echoc <colour> <arg2>'");
+		IConsolePrint(CC_HELP, "Print back the first argument to the console in a given colour. Usage: 'echoc <colour> <arg2>'.");
 		return true;
 	}
 
@@ -1062,8 +1053,8 @@ DEF_CONSOLE_CMD(ConEchoC)
 DEF_CONSOLE_CMD(ConNewGame)
 {
 	if (argc == 0) {
-		IConsoleHelp("Start a new game. Usage: 'newgame [seed]'");
-		IConsoleHelp("The server can force a new game using 'newgame'; any client joined will rejoin after the server is done generating the new game.");
+		IConsolePrint(CC_HELP, "Start a new game. Usage: 'newgame [seed]'.");
+		IConsolePrint(CC_HELP, "The server can force a new game using 'newgame'; any client joined will rejoin after the server is done generating the new game.");
 		return true;
 	}
 
@@ -1074,11 +1065,11 @@ DEF_CONSOLE_CMD(ConNewGame)
 DEF_CONSOLE_CMD(ConRestart)
 {
 	if (argc == 0) {
-		IConsoleHelp("Restart game. Usage: 'restart'");
-		IConsoleHelp("Restarts a game. It tries to reproduce the exact same map as the game started with.");
-		IConsoleHelp("However:");
-		IConsoleHelp(" * restarting games started in another version might create another map due to difference in map generation");
-		IConsoleHelp(" * restarting games based on scenarios, loaded games or heightmaps will start a new game based on the settings stored in the scenario/savegame");
+		IConsolePrint(CC_HELP, "Restart game. Usage: 'restart'.");
+		IConsolePrint(CC_HELP, "Restarts a game. It tries to reproduce the exact same map as the game started with.");
+		IConsolePrint(CC_HELP, "However:");
+		IConsolePrint(CC_HELP, " * restarting games started in another version might create another map due to difference in map generation.");
+		IConsolePrint(CC_HELP, " * restarting games based on scenarios, loaded games or heightmaps will start a new game based on the settings stored in the scenario/savegame.");
 		return true;
 	}
 
@@ -1092,10 +1083,10 @@ DEF_CONSOLE_CMD(ConRestart)
 DEF_CONSOLE_CMD(ConReload)
 {
 	if (argc == 0) {
-		IConsoleHelp("Reload game. Usage: 'reload'");
-		IConsoleHelp("Reloads a game.");
-		IConsoleHelp(" * if you started from a savegame / scenario / heightmap, that exact same savegame / scenario / heightmap will be loaded.");
-		IConsoleHelp(" * if you started from a new game, this acts the same as 'restart'.");
+		IConsolePrint(CC_HELP, "Reload game. Usage: 'reload'.");
+		IConsolePrint(CC_HELP, "Reloads a game.");
+		IConsolePrint(CC_HELP, " * if you started from a savegame / scenario / heightmap, that exact same savegame / scenario / heightmap will be loaded.");
+		IConsolePrint(CC_HELP, " * if you started from a new game, this acts the same as 'restart'.");
 		return true;
 	}
 
@@ -1167,9 +1158,9 @@ DEF_CONSOLE_CMD(ConListGame)
 DEF_CONSOLE_CMD(ConStartAI)
 {
 	if (argc == 0 || argc > 3) {
-		IConsoleHelp("Start a new AI. Usage: 'start_ai [<AI>] [<settings>]'");
-		IConsoleHelp("Start a new AI. If <AI> is given, it starts that specific AI (if found).");
-		IConsoleHelp("If <settings> is given, it is parsed and the AI settings are set to that.");
+		IConsolePrint(CC_HELP, "Start a new AI. Usage: 'start_ai [<AI>] [<settings>]'.");
+		IConsolePrint(CC_HELP, "Start a new AI. If <AI> is given, it starts that specific AI (if found).");
+		IConsolePrint(CC_HELP, "If <settings> is given, it is parsed and the AI settings are set to that.");
 		return true;
 	}
 
@@ -1241,8 +1232,8 @@ DEF_CONSOLE_CMD(ConStartAI)
 DEF_CONSOLE_CMD(ConReloadAI)
 {
 	if (argc != 2) {
-		IConsoleHelp("Reload an AI. Usage: 'reload_ai <company-id>'");
-		IConsoleHelp("Reload the AI with the given company id. For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
+		IConsolePrint(CC_HELP, "Reload an AI. Usage: 'reload_ai <company-id>'.");
+		IConsolePrint(CC_HELP, "Reload the AI with the given company id. For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
 		return true;
 	}
 
@@ -1279,8 +1270,8 @@ DEF_CONSOLE_CMD(ConReloadAI)
 DEF_CONSOLE_CMD(ConStopAI)
 {
 	if (argc != 2) {
-		IConsoleHelp("Stop an AI. Usage: 'stop_ai <company-id>'");
-		IConsoleHelp("Stop the AI with the given company id. For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
+		IConsolePrint(CC_HELP, "Stop an AI. Usage: 'stop_ai <company-id>'.");
+		IConsolePrint(CC_HELP, "Stop the AI with the given company id. For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
 		return true;
 	}
 
@@ -1316,7 +1307,7 @@ DEF_CONSOLE_CMD(ConStopAI)
 DEF_CONSOLE_CMD(ConRescanAI)
 {
 	if (argc == 0) {
-		IConsoleHelp("Rescan the AI dir for scripts. Usage: 'rescan_ai'");
+		IConsolePrint(CC_HELP, "Rescan the AI dir for scripts. Usage: 'rescan_ai'.");
 		return true;
 	}
 
@@ -1333,7 +1324,7 @@ DEF_CONSOLE_CMD(ConRescanAI)
 DEF_CONSOLE_CMD(ConRescanGame)
 {
 	if (argc == 0) {
-		IConsoleHelp("Rescan the Game Script dir for scripts. Usage: 'rescan_game'");
+		IConsolePrint(CC_HELP, "Rescan the Game Script dir for scripts. Usage: 'rescan_game'.");
 		return true;
 	}
 
@@ -1350,7 +1341,7 @@ DEF_CONSOLE_CMD(ConRescanGame)
 DEF_CONSOLE_CMD(ConRescanNewGRF)
 {
 	if (argc == 0) {
-		IConsoleHelp("Rescan the data dir for NewGRFs. Usage: 'rescan_newgrf'");
+		IConsolePrint(CC_HELP, "Rescan the data dir for NewGRFs. Usage: 'rescan_newgrf'.");
 		return true;
 	}
 
@@ -1364,8 +1355,8 @@ DEF_CONSOLE_CMD(ConRescanNewGRF)
 DEF_CONSOLE_CMD(ConGetSeed)
 {
 	if (argc == 0) {
-		IConsoleHelp("Returns the seed used to create this game. Usage: 'getseed'");
-		IConsoleHelp("The seed can be used to reproduce the exact same map as the game started with.");
+		IConsolePrint(CC_HELP, "Returns the seed used to create this game. Usage: 'getseed'.");
+		IConsolePrint(CC_HELP, "The seed can be used to reproduce the exact same map as the game started with.");
 		return true;
 	}
 
@@ -1376,7 +1367,7 @@ DEF_CONSOLE_CMD(ConGetSeed)
 DEF_CONSOLE_CMD(ConGetDate)
 {
 	if (argc == 0) {
-		IConsoleHelp("Returns the current date (year-month-day) of the game. Usage: 'getdate'");
+		IConsolePrint(CC_HELP, "Returns the current date (year-month-day) of the game. Usage: 'getdate'.");
 		return true;
 	}
 
@@ -1389,7 +1380,7 @@ DEF_CONSOLE_CMD(ConGetDate)
 DEF_CONSOLE_CMD(ConGetSysDate)
 {
 	if (argc == 0) {
-		IConsoleHelp("Returns the current date (year-month-day) of your system. Usage: 'getsysdate'");
+		IConsolePrint(CC_HELP, "Returns the current date (year-month-day) of your system. Usage: 'getsysdate'.");
 		return true;
 	}
 
@@ -1405,7 +1396,7 @@ DEF_CONSOLE_CMD(ConAlias)
 	IConsoleAlias *alias;
 
 	if (argc == 0) {
-		IConsoleHelp("Add a new alias, or redefine the behaviour of an existing alias . Usage: 'alias <name> <command>'");
+		IConsolePrint(CC_HELP, "Add a new alias, or redefine the behaviour of an existing alias . Usage: 'alias <name> <command>'.");
 		return true;
 	}
 
@@ -1423,15 +1414,15 @@ DEF_CONSOLE_CMD(ConAlias)
 DEF_CONSOLE_CMD(ConScreenShot)
 {
 	if (argc == 0) {
-		IConsoleHelp("Create a screenshot of the game. Usage: 'screenshot [viewport | normal | big | giant | heightmap | minimap] [no_con] [size <width> <height>] [<filename>]'");
-		IConsoleHelp("'viewport' (default) makes a screenshot of the current viewport (including menus, windows, ..), "
-				"'normal' makes a screenshot of the visible area, "
-				"'big' makes a zoomed-in screenshot of the visible area, "
-				"'giant' makes a screenshot of the whole map, "
-				"'heightmap' makes a heightmap screenshot of the map that can be loaded in as heightmap, "
-				"'minimap' makes a top-viewed minimap screenshot of the whole world which represents one tile by one pixel. "
-				"'no_con' hides the console to create the screenshot (only useful in combination with 'viewport'). "
-				"'size' sets the width and height of the viewport to make a screenshot of (only useful in combination with 'normal' or 'big').");
+		IConsolePrint(CC_HELP, "Create a screenshot of the game. Usage: 'screenshot [viewport | normal | big | giant | heightmap | minimap] [no_con] [size <width> <height>] [<filename>]'.");
+		IConsolePrint(CC_HELP, "  'viewport' (default) makes a screenshot of the current viewport (including menus, windows).");
+		IConsolePrint(CC_HELP, "  'normal' makes a screenshot of the visible area.");
+		IConsolePrint(CC_HELP, "  'big' makes a zoomed-in screenshot of the visible area.");
+		IConsolePrint(CC_HELP, "  'giant' makes a screenshot of the whole map.");
+		IConsolePrint(CC_HELP, "  'heightmap' makes a heightmap screenshot of the map that can be loaded in as heightmap.");
+		IConsolePrint(CC_HELP, "  'minimap' makes a top-viewed minimap screenshot of the whole world which represents one tile by one pixel.");
+		IConsolePrint(CC_HELP, "  'no_con' hides the console to create the screenshot (only useful in combination with 'viewport').");
+		IConsolePrint(CC_HELP, "  'size' sets the width and height of the viewport to make a screenshot of (only useful in combination with 'normal' or 'big').");
 		return true;
 	}
 
@@ -1503,7 +1494,7 @@ DEF_CONSOLE_CMD(ConScreenShot)
 DEF_CONSOLE_CMD(ConInfoCmd)
 {
 	if (argc == 0) {
-		IConsoleHelp("Print out debugging information about a command. Usage: 'info_cmd <cmd>'");
+		IConsolePrint(CC_HELP, "Print out debugging information about a command. Usage: 'info_cmd <cmd>'.");
 		return true;
 	}
 
@@ -1525,8 +1516,8 @@ DEF_CONSOLE_CMD(ConInfoCmd)
 DEF_CONSOLE_CMD(ConDebugLevel)
 {
 	if (argc == 0) {
-		IConsoleHelp("Get/set the default debugging level for the game. Usage: 'debug_level [<level>]'");
-		IConsoleHelp("Level can be any combination of names, levels. Eg 'net=5 ms=4'. Remember to enclose it in \"'s");
+		IConsolePrint(CC_HELP, "Get/set the default debugging level for the game. Usage: 'debug_level [<level>]'.");
+		IConsolePrint(CC_HELP, "Level can be any combination of names, levels. Eg 'net=5 ms=4'. Remember to enclose it in \"'\"s.");
 		return true;
 	}
 
@@ -1544,7 +1535,7 @@ DEF_CONSOLE_CMD(ConDebugLevel)
 DEF_CONSOLE_CMD(ConExit)
 {
 	if (argc == 0) {
-		IConsoleHelp("Exit the game. Usage: 'exit'");
+		IConsolePrint(CC_HELP, "Exit the game. Usage: 'exit'.");
 		return true;
 	}
 
@@ -1557,7 +1548,7 @@ DEF_CONSOLE_CMD(ConExit)
 DEF_CONSOLE_CMD(ConPart)
 {
 	if (argc == 0) {
-		IConsoleHelp("Leave the currently joined/running game (only ingame). Usage: 'part'");
+		IConsolePrint(CC_HELP, "Leave the currently joined/running game (only ingame). Usage: 'part'.");
 		return true;
 	}
 
@@ -1609,7 +1600,7 @@ DEF_CONSOLE_CMD(ConHelp)
 DEF_CONSOLE_CMD(ConListCommands)
 {
 	if (argc == 0) {
-		IConsoleHelp("List all registered commands. Usage: 'list_cmds [<pre-filter>]'");
+		IConsolePrint(CC_HELP, "List all registered commands. Usage: 'list_cmds [<pre-filter>]'.");
 		return true;
 	}
 
@@ -1626,7 +1617,7 @@ DEF_CONSOLE_CMD(ConListCommands)
 DEF_CONSOLE_CMD(ConListAliases)
 {
 	if (argc == 0) {
-		IConsoleHelp("List all registered aliases. Usage: 'list_aliases [<pre-filter>]'");
+		IConsolePrint(CC_HELP, "List all registered aliases. Usage: 'list_aliases [<pre-filter>]'.");
 		return true;
 	}
 
@@ -1643,7 +1634,7 @@ DEF_CONSOLE_CMD(ConListAliases)
 DEF_CONSOLE_CMD(ConCompanies)
 {
 	if (argc == 0) {
-		IConsoleHelp("List the details of all companies in the game. Usage 'companies'");
+		IConsolePrint(CC_HELP, "List the details of all companies in the game. Usage 'companies'.");
 		return true;
 	}
 
@@ -1678,7 +1669,7 @@ DEF_CONSOLE_CMD(ConCompanies)
 DEF_CONSOLE_CMD(ConSay)
 {
 	if (argc == 0) {
-		IConsoleHelp("Chat to your fellow players in a multiplayer game. Usage: 'say \"<msg>\"'");
+		IConsolePrint(CC_HELP, "Chat to your fellow players in a multiplayer game. Usage: 'say \"<msg>\"'.");
 		return true;
 	}
 
@@ -1697,8 +1688,8 @@ DEF_CONSOLE_CMD(ConSay)
 DEF_CONSOLE_CMD(ConSayCompany)
 {
 	if (argc == 0) {
-		IConsoleHelp("Chat to a certain company in a multiplayer game. Usage: 'say_company <company-no> \"<msg>\"'");
-		IConsoleHelp("CompanyNo is the company that plays as company <companyno>, 1 through max_companies");
+		IConsolePrint(CC_HELP, "Chat to a certain company in a multiplayer game. Usage: 'say_company <company-no> \"<msg>\"'.");
+		IConsolePrint(CC_HELP, "CompanyNo is the company that plays as company <companyno>, 1 through max_companies.");
 		return true;
 	}
 
@@ -1723,8 +1714,8 @@ DEF_CONSOLE_CMD(ConSayCompany)
 DEF_CONSOLE_CMD(ConSayClient)
 {
 	if (argc == 0) {
-		IConsoleHelp("Chat to a certain client in a multiplayer game. Usage: 'say_client <client-no> \"<msg>\"'");
-		IConsoleHelp("For client-id's, see the command 'clients'");
+		IConsolePrint(CC_HELP, "Chat to a certain client in a multiplayer game. Usage: 'say_client <client-no> \"<msg>\"'.");
+		IConsolePrint(CC_HELP, "For client-id's, see the command 'clients'.");
 		return true;
 	}
 
@@ -1844,13 +1835,13 @@ DEF_CONSOLE_CMD(ConContent)
 	}
 
 	if (argc <= 1) {
-		IConsoleHelp("Query, select and download content. Usage: 'content update|upgrade|select [id]|unselect [all|id]|state [filter]|download'");
-		IConsoleHelp("  update: get a new list of downloadable content; must be run first");
-		IConsoleHelp("  upgrade: select all items that are upgrades");
-		IConsoleHelp("  select: select a specific item given by its id. If no parameter is given, all selected content will be listed");
-		IConsoleHelp("  unselect: unselect a specific item given by its id or 'all' to unselect all");
-		IConsoleHelp("  state: show the download/select state of all downloadable content. Optionally give a filter string");
-		IConsoleHelp("  download: download all content you've selected");
+		IConsolePrint(CC_HELP, "Query, select and download content. Usage: 'content update|upgrade|select [id]|unselect [all|id]|state [filter]|download'.");
+		IConsolePrint(CC_HELP, "  update: get a new list of downloadable content; must be run first.");
+		IConsolePrint(CC_HELP, "  upgrade: select all items that are upgrades.");
+		IConsolePrint(CC_HELP, "  select: select a specific item given by its id. If no parameter is given, all selected content will be listed.");
+		IConsolePrint(CC_HELP, "  unselect: unselect a specific item given by its id or 'all' to unselect all.");
+		IConsolePrint(CC_HELP, "  state: show the download/select state of all downloadable content. Optionally give a filter string.");
+		IConsolePrint(CC_HELP, "  download: download all content you've selected.");
 		return true;
 	}
 
@@ -1923,8 +1914,8 @@ DEF_CONSOLE_CMD(ConContent)
 DEF_CONSOLE_CMD(ConSetting)
 {
 	if (argc == 0) {
-		IConsoleHelp("Change setting for all clients. Usage: 'setting <name> [<value>]'");
-		IConsoleHelp("Omitting <value> will print out the current value of the setting.");
+		IConsolePrint(CC_HELP, "Change setting for all clients. Usage: 'setting <name> [<value>]'.");
+		IConsolePrint(CC_HELP, "Omitting <value> will print out the current value of the setting.");
 		return true;
 	}
 
@@ -1942,8 +1933,8 @@ DEF_CONSOLE_CMD(ConSetting)
 DEF_CONSOLE_CMD(ConSettingNewgame)
 {
 	if (argc == 0) {
-		IConsoleHelp("Change setting for the next game. Usage: 'setting_newgame <name> [<value>]'");
-		IConsoleHelp("Omitting <value> will print out the current value of the setting.");
+		IConsolePrint(CC_HELP, "Change setting for the next game. Usage: 'setting_newgame <name> [<value>]'.");
+		IConsolePrint(CC_HELP, "Omitting <value> will print out the current value of the setting.");
 		return true;
 	}
 
@@ -1961,7 +1952,7 @@ DEF_CONSOLE_CMD(ConSettingNewgame)
 DEF_CONSOLE_CMD(ConListSettings)
 {
 	if (argc == 0) {
-		IConsoleHelp("List settings. Usage: 'list_settings [<pre-filter>]'");
+		IConsolePrint(CC_HELP, "List settings. Usage: 'list_settings [<pre-filter>]'.");
 		return true;
 	}
 
@@ -1980,7 +1971,7 @@ DEF_CONSOLE_CMD(ConGamelogPrint)
 DEF_CONSOLE_CMD(ConNewGRFReload)
 {
 	if (argc == 0) {
-		IConsoleHelp("Reloads all active NewGRFs from disk. Equivalent to reapplying NewGRFs via the settings, but without asking for confirmation. This might crash OpenTTD!");
+		IConsolePrint(CC_HELP, "Reloads all active NewGRFs from disk. Equivalent to reapplying NewGRFs via the settings, but without asking for confirmation. This might crash OpenTTD!");
 		return true;
 	}
 
@@ -1991,19 +1982,19 @@ DEF_CONSOLE_CMD(ConNewGRFReload)
 DEF_CONSOLE_CMD(ConNewGRFProfile)
 {
 	if (argc == 0) {
-		IConsoleHelp("Collect performance data about NewGRF sprite requests and callbacks. Sub-commands can be abbreviated.");
-		IConsoleHelp("Usage: newgrf_profile [list]");
-		IConsoleHelp("  List all NewGRFs that can be profiled, and their status.");
-		IConsoleHelp("Usage: newgrf_profile select <grf-num>...");
-		IConsoleHelp("  Select one or more GRFs for profiling.");
-		IConsoleHelp("Usage: newgrf_profile unselect <grf-num>...");
-		IConsoleHelp("  Unselect one or more GRFs from profiling. Use the keyword \"all\" instead of a GRF number to unselect all. Removing an active profiler aborts data collection.");
-		IConsoleHelp("Usage: newgrf_profile start [<num-days>]");
-		IConsoleHelp("  Begin profiling all selected GRFs. If a number of days is provided, profiling stops after that many in-game days.");
-		IConsoleHelp("Usage: newgrf_profile stop");
-		IConsoleHelp("  End profiling and write the collected data to CSV files.");
-		IConsoleHelp("Usage: newgrf_profile abort");
-		IConsoleHelp("  End profiling and discard all collected data.");
+		IConsolePrint(CC_HELP, "Collect performance data about NewGRF sprite requests and callbacks. Sub-commands can be abbreviated.");
+		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile [list]':");
+		IConsolePrint(CC_HELP, "  List all NewGRFs that can be profiled, and their status.");
+		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile select <grf-num>...':");
+		IConsolePrint(CC_HELP, "  Select one or more GRFs for profiling.");
+		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile unselect <grf-num>...':");
+		IConsolePrint(CC_HELP, "  Unselect one or more GRFs from profiling. Use the keyword \"all\" instead of a GRF number to unselect all. Removing an active profiler aborts data collection.");
+		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile start [<num-days>]':");
+		IConsolePrint(CC_HELP, "  Begin profiling all selected GRFs. If a number of days is provided, profiling stops after that many in-game days.");
+		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile stop':");
+		IConsolePrint(CC_HELP, "  End profiling and write the collected data to CSV files.");
+		IConsolePrint(CC_HELP, "Usage: 'newgrf_profile abort':");
+		IConsolePrint(CC_HELP, "  End profiling and discard all collected data.");
 		return true;
 	}
 
@@ -2135,7 +2126,7 @@ DEF_CONSOLE_CMD(ConFramerate)
 	extern void ConPrintFramerate(); // framerate_gui.cpp
 
 	if (argc == 0) {
-		IConsoleHelp("Show frame rate and game speed information");
+		IConsolePrint(CC_HELP, "Show frame rate and game speed information.");
 		return true;
 	}
 
@@ -2148,7 +2139,7 @@ DEF_CONSOLE_CMD(ConFramerateWindow)
 	extern void ShowFramerateWindow();
 
 	if (argc == 0) {
-		IConsoleHelp("Open the frame rate window");
+		IConsolePrint(CC_HELP, "Open the frame rate window.");
 		return true;
 	}
 
@@ -2290,9 +2281,9 @@ static void ConDumpCargoTypes()
 DEF_CONSOLE_CMD(ConDumpInfo)
 {
 	if (argc != 2) {
-		IConsoleHelp("Dump debugging information.");
-		IConsoleHelp("Usage: dump_info roadtypes|railtypes|cargotypes");
-		IConsoleHelp("  Show information about road/tram types, rail types or cargo types.");
+		IConsolePrint(CC_HELP, "Dump debugging information.");
+		IConsolePrint(CC_HELP, "Usage: 'dump_info roadtypes|railtypes|cargotypes'.");
+		IConsolePrint(CC_HELP, "  Show information about road/tram types, rail types or cargo types.");
 		return true;
 	}
 

@@ -267,7 +267,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 
 						if (param < 0 || param >= tokencount) {
 							IConsolePrint(CC_ERROR, "Too many or wrong amount of parameters passed to alias.");
-							IConsolePrint(CC_HELP, "Usage of alias '{}': {}", alias->name, alias->cmdline);
+							IConsolePrint(CC_HELP, "Usage of alias '{}': '{}'.", alias->name, alias->cmdline);
 							return;
 						}
 
