@@ -1924,7 +1924,7 @@ void NetworkServerDailyLoop()
  * Get the IP address/hostname of the connected client.
  * @return The IP address.
  */
-const char *ServerNetworkGameSocketHandler::GetClientIP()
+const std::string &ServerNetworkGameSocketHandler::GetClientIP()
 {
 	return this->client_address.GetHostname();
 }
@@ -2094,7 +2094,7 @@ uint NetworkServerKickOrBanIP(const std::string &ip, bool ban, const std::string
 	for (NetworkClientSocket *cs : NetworkClientSocket::Iterate()) {
 		if (cs->client_id == CLIENT_ID_SERVER) continue;
 		if (cs->client_id == _redirect_console_to_client) continue;
-		if (cs->client_address.IsInNetmask(ip.c_str())) {
+		if (cs->client_address.IsInNetmask(ip)) {
 			NetworkServerKickClient(cs->client_id, reason);
 			n++;
 		}

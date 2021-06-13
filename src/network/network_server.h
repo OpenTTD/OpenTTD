@@ -115,7 +115,7 @@ public:
 		return "server";
 	}
 
-	const char *GetClientIP();
+	const std::string &GetClientIP();
 
 	static ServerNetworkGameSocketHandler *GetByClientID(ClientID client_id);
 };
