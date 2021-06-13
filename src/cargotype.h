@@ -15,6 +15,7 @@
 #include "gfx_type.h"
 #include "strings_type.h"
 #include "landscape_type.h"
+#include "core/span_type.hpp"
 #include <vector>
 
 /** Globally unique label of a cargo type. */
@@ -181,7 +182,7 @@ CargoID GetDefaultCargoID(LandscapeID l, CargoType ct);
 
 void InitializeSortedCargoSpecs();
 extern std::vector<const CargoSpec *> _sorted_cargo_specs;
-extern uint8 _sorted_standard_cargo_specs_size;
+extern span<const CargoSpec *> _sorted_standard_cargo_specs;
 
 /**
  * Does cargo \a c have cargo class \a cc?
@@ -195,12 +196,5 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 }
 
 #define FOR_EACH_SET_CARGO_ID(var, cargo_bits) FOR_EACH_SET_BIT_EX(CargoID, var, CargoTypes, cargo_bits)
-
-/**
- * Loop header for iterating over 'real' cargoes, sorted by name. Phony cargoes like regearing cargoes are skipped.
- * @param var Reference getting the cargospec.
- * @see CargoSpec
- */
-#define FOR_ALL_SORTED_STANDARD_CARGOSPECS(var) for (uint8 index = 0; index < _sorted_standard_cargo_specs_size && (var = _sorted_cargo_specs[index], true); index++)
 
 #endif /* CARGOTYPE_H */

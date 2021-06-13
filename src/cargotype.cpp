@@ -149,8 +149,8 @@ SpriteID CargoSpec::GetCargoIcon() const
 	return sprite;
 }
 
-std::vector<const CargoSpec *> _sorted_cargo_specs; ///< Cargo specifications sorted alphabetically by name.
-uint8 _sorted_standard_cargo_specs_size;            ///< Number of standard cargo specifications stored in the _sorted_cargo_specs array.
+std::vector<const CargoSpec *> _sorted_cargo_specs;   ///< Cargo specifications sorted alphabetically by name.
+span<const CargoSpec *> _sorted_standard_cargo_specs; ///< Standard cargo specifications sorted alphabetically by name.
 
 /** Sort cargo specifications by their name. */
 static bool CargoSpecNameSorter(const CargoSpec * const &a, const CargoSpec * const &b)
@@ -196,13 +196,16 @@ void InitializeSortedCargoSpecs()
 	/* Sort cargo specifications by cargo class and name. */
 	std::sort(_sorted_cargo_specs.begin(), _sorted_cargo_specs.end(), &CargoSpecClassSorter);
 
+	/* Count the number of standard cargos and fill the mask. */
 	_standard_cargo_mask = 0;
-
-	_sorted_standard_cargo_specs_size = 0;
+	uint8 nb_standard_cargo = 0;
 	for (const auto &cargo : _sorted_cargo_specs) {
 		if (cargo->classes & CC_SPECIAL) break;
-		_sorted_standard_cargo_specs_size++;
+		nb_standard_cargo++;
 		SetBit(_standard_cargo_mask, cargo->Index());
 	}
+
+	/* _sorted_standard_cargo_specs is a subset of _sorted_cargo_specs. */
+	_sorted_standard_cargo_specs = { _sorted_cargo_specs.data(), nb_standard_cargo };
 }
 
