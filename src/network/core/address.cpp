@@ -19,7 +19,7 @@
  * IPv4 dotted representation is given.
  * @return the hostname
  */
-const char *NetworkAddress::GetHostname()
+const std::string &NetworkAddress::GetHostname()
 {
 	if (this->hostname.empty() && this->address.ss_family != AF_UNSPEC) {
 		assert(this->address_length != 0);
@@ -27,7 +27,7 @@ const char *NetworkAddress::GetHostname()
 		getnameinfo((struct sockaddr *)&this->address, this->address_length, buffer, sizeof(buffer), nullptr, 0, NI_NUMERICHOST);
 		this->hostname = buffer;
 	}
-	return this->hostname.c_str();
+	return this->hostname;
 }
 
 /**

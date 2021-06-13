@@ -88,7 +88,7 @@ public:
 		this->SetPort(port);
 	}
 
-	const char *GetHostname();
+	const std::string &GetHostname();
 	std::string GetAddressAsString(bool with_family = true);
 	const sockaddr_storage *GetAddress();
 

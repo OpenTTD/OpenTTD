@@ -183,7 +183,7 @@ void TCPConnecter::Resolve()
 	auto start = std::chrono::steady_clock::now();
 
 	addrinfo *ai;
-	int error = getaddrinfo(address.GetHostname(), port_name, &hints, &ai);
+	int error = getaddrinfo(address.GetHostname().c_str(), port_name, &hints, &ai);
 
 	auto end = std::chrono::steady_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);
