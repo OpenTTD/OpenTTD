@@ -56,7 +56,7 @@ public:
 			/* Check if the client is banned */
 			bool banned = false;
 			for (const auto &entry : _network_ban_list) {
-				banned = address.IsInNetmask(entry.c_str());
+				banned = address.IsInNetmask(entry);
 				if (banned) {
 					Packet p(Tban_packet);
 					p.PrepareToSend();

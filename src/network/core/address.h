@@ -116,7 +116,7 @@ public:
 	}
 
 	bool IsFamily(int family);
-	bool IsInNetmask(const char *netmask);
+	bool IsInNetmask(const std::string &netmask);
 
 	/**
 	 * Compare the address of this class with the address of another.
