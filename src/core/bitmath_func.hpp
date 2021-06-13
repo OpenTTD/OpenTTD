@@ -320,31 +320,6 @@ static inline T ROR(const T x, const uint8 n)
 	return (T)(x >> n | x << (sizeof(x) * 8 - n));
 }
 
-/**
- * Do an operation for each set bit in a value.
- *
- * This macros is used to do an operation for each set
- * bit in a variable. The second parameter is a
- * variable that is used as the bit position counter.
- * The fourth parameter is an expression of the bits
- * we need to iterate over. This expression will be
- * evaluated once.
- *
- * @param Tbitpos_type Type of the position counter variable.
- * @param bitpos_var   The position counter variable.
- * @param Tbitset_type Type of the bitset value.
- * @param bitset_value The bitset value which we check for bits.
- *
- * @see FOR_EACH_SET_BIT
- */
-#define FOR_EACH_SET_BIT_EX(Tbitpos_type, bitpos_var, Tbitset_type, bitset_value) \
-	for (                                                                           \
-		Tbitset_type ___FESBE_bits = (bitpos_var = (Tbitpos_type)0, bitset_value);    \
-		___FESBE_bits != (Tbitset_type)0;                                             \
-		___FESBE_bits = (Tbitset_type)(___FESBE_bits >> 1), bitpos_var++              \
-	)                                                                               \
-		if ((___FESBE_bits & 1) != 0)
-
  /**
  * Iterable ensemble of each set bit in a value.
  * @tparam Tbitpos Type of the position variable.
