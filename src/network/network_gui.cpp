@@ -2349,7 +2349,7 @@ public:
 
 				if (this->hover_index >= 0) {
 					uint offset = this->hover_index * this->line_height;
-					GfxFillRect(r.left + 2, r.top + offset, r.right - 1, r.top + offset + this->line_height - 1, GREY_SCALE(9));
+					GfxFillRect(r.left + 2, r.top + offset, r.right - 1, r.top + offset + this->line_height - 2, GREY_SCALE(9));
 				}
 
 				NetworkClientInfo *own_ci = NetworkClientInfo::GetByClientID(_network_own_client_id);
