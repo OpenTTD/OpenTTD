@@ -89,7 +89,6 @@ public:
 	}
 
 	const char *GetHostname();
-	void GetAddressAsString(char *buffer, const char *last, bool with_family = true);
 	std::string GetAddressAsString(bool with_family = true);
 	const sockaddr_storage *GetAddress();
 
