@@ -15,6 +15,7 @@
 #include "gfx_type.h"
 #include "strings_type.h"
 #include "landscape_type.h"
+#include "core/bitmath_func.hpp"
 #include "core/span_type.hpp"
 #include <vector>
 
@@ -195,6 +196,6 @@ static inline bool IsCargoInClass(CargoID c, CargoClass cc)
 	return (CargoSpec::Get(c)->classes & cc) != 0;
 }
 
-#define FOR_EACH_SET_CARGO_ID(var, cargo_bits) FOR_EACH_SET_BIT_EX(CargoID, var, CargoTypes, cargo_bits)
+using SetCargoBitIterator = SetBitIterator<CargoID, CargoTypes>;
 
 #endif /* CARGOTYPE_H */
