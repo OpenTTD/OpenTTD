@@ -273,7 +273,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 			uint32 result;
 			if (GetArgumentInteger(&result, argv[1])) {
 				if (result >= MapSize()) {
-					IConsolePrint(CC_ERROR, "Tile does not exist");
+					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
 				ScrollMainWindowToTile((TileIndex)result);
@@ -286,7 +286,7 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 			uint32 x, y;
 			if (GetArgumentInteger(&x, argv[1]) && GetArgumentInteger(&y, argv[2])) {
 				if (x >= MapSizeX() || y >= MapSizeY()) {
-					IConsolePrint(CC_ERROR, "Tile does not exist");
+					IConsolePrint(CC_ERROR, "Tile does not exist.");
 					return true;
 				}
 				ScrollMainWindowToTile(TileXY(x, y));
@@ -593,7 +593,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 		_network_ban_list.erase(_network_ban_list.begin() + index);
 	} else {
 		IConsolePrint(CC_DEFAULT, "Invalid list index or IP not in ban-list.");
-		IConsolePrint(CC_DEFAULT, "For a list of banned IP's, see the command 'banlist'");
+		IConsolePrint(CC_DEFAULT, "For a list of banned IP's, see the command 'banlist'.");
 	}
 
 	return true;
@@ -606,7 +606,7 @@ DEF_CONSOLE_CMD(ConBanList)
 		return true;
 	}
 
-	IConsolePrint(CC_DEFAULT, "Banlist: ");
+	IConsolePrint(CC_DEFAULT, "Banlist:");
 
 	uint i = 1;
 	for (const auto &entry : _network_ban_list) {
@@ -1018,7 +1018,7 @@ DEF_CONSOLE_CMD(ConScript)
 		if (_iconsole_output_file == nullptr) {
 			IConsolePrint(CC_ERROR, "Could not open console log file '{}'.", argv[1]);
 		} else {
-			IConsolePrint(CC_INFO, "Console log output started to: '{}'", argv[1]);
+			IConsolePrint(CC_INFO, "Console log output started to '{}'.", argv[1]);
 		}
 	}
 
@@ -1581,18 +1581,18 @@ DEF_CONSOLE_CMD(ConHelp)
 			return true;
 		}
 
-		IConsolePrint(CC_ERROR, "Command not found");
+		IConsolePrint(CC_ERROR, "Command not found.");
 		return true;
 	}
 
 	IConsolePrint(TC_LIGHT_BLUE, " ---- OpenTTD Console Help ---- ");
-	IConsolePrint(CC_DEFAULT, " - commands: [command to list all commands: list_cmds]");
+	IConsolePrint(CC_DEFAULT, " - commands: the command to list all commands is 'list_cmds'.");
 	IConsolePrint(CC_DEFAULT, " call commands with '<command> <arg2> <arg3>...'");
-	IConsolePrint(CC_DEFAULT, " - to assign strings, or use them as arguments, enclose it within quotes");
-	IConsolePrint(CC_DEFAULT, " like this: '<command> \"string argument with spaces\"'");
-	IConsolePrint(CC_DEFAULT, " - use 'help <command>' to get specific information");
-	IConsolePrint(CC_DEFAULT, " - scroll console output with shift + (up | down | pageup | pagedown)");
-	IConsolePrint(CC_DEFAULT, " - scroll console input history with the up or down arrows");
+	IConsolePrint(CC_DEFAULT, " - to assign strings, or use them as arguments, enclose it within quotes.");
+	IConsolePrint(CC_DEFAULT, " like this: '<command> \"string argument with spaces\"'.");
+	IConsolePrint(CC_DEFAULT, " - use 'help <command>' to get specific information.");
+	IConsolePrint(CC_DEFAULT, " - scroll console output with shift + (up | down | pageup | pagedown).");
+	IConsolePrint(CC_DEFAULT, " - scroll console input history with the up or down arrows.");
 	IConsolePrint(CC_DEFAULT, "");
 	return true;
 }
@@ -2070,7 +2070,7 @@ DEF_CONSOLE_CMD(ConNewGRFProfile)
 			}
 		}
 		if (started > 0) {
-			IConsolePrint(CC_DEBUG, "Started profiling for GRFID{} {}", (started > 1) ? "s" : "", grfids);
+			IConsolePrint(CC_DEBUG, "Started profiling for GRFID{} {}.", (started > 1) ? "s" : "", grfids);
 			if (argc >= 3) {
 				int days = std::max(atoi(argv[2]), 1);
 				_newgrf_profile_end_date = _date + days;
@@ -2144,7 +2144,7 @@ DEF_CONSOLE_CMD(ConFramerateWindow)
 	}
 
 	if (_network_dedicated) {
-		IConsolePrint(CC_ERROR, "Can not open frame rate window on a dedicated server");
+		IConsolePrint(CC_ERROR, "Can not open frame rate window on a dedicated server.");
 		return false;
 	}
 
