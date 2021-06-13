@@ -84,8 +84,7 @@ private:
 	static int GetNthSetBit(uint32 bits, int n)
 	{
 		if (n >= 0) {
-			uint i;
-			FOR_EACH_SET_BIT(i, bits) {
+			for (uint i : SetBitIterator(bits)) {
 				n--;
 				if (n < 0) return i;
 			}

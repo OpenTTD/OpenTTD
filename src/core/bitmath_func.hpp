@@ -345,20 +345,55 @@ static inline T ROR(const T x, const uint8 n)
 	)                                                                               \
 		if ((___FESBE_bits & 1) != 0)
 
-/**
- * Do an operation for each set set bit in a value.
- *
- * This macros is used to do an operation for each set
- * bit in a variable. The first parameter is a variable
- * that is used as the bit position counter.
- * The second parameter is an expression of the bits
- * we need to iterate over. This expression will be
- * evaluated once.
- *
- * @param bitpos_var   The position counter variable.
- * @param bitset_value The value which we check for set bits.
- */
-#define FOR_EACH_SET_BIT(bitpos_var, bitset_value) FOR_EACH_SET_BIT_EX(uint, bitpos_var, uint, bitset_value)
+ /**
+ * Iterable ensemble of each set bit in a value.
+ * @tparam Tbitpos Type of the position variable.
+ * @tparam Tbitset Type of the bitset value.
+*/
+template <typename Tbitpos = uint, typename Tbitset = uint>
+struct SetBitIterator {
+	struct Iterator {
+		typedef Tbitpos value_type;
+		typedef value_type *pointer;
+		typedef value_type &reference;
+		typedef size_t difference_type;
+		typedef std::forward_iterator_tag iterator_category;
+
+		explicit Iterator(Tbitset bitset) : bitset(bitset), bitpos(static_cast<Tbitpos>(0))
+		{
+			this->Validate();
+		}
+
+		bool operator==(const Iterator &other) const
+		{
+			return this->bitset == other.bitset && (this->bitset == 0 || this->bitpos == other.bitpos);
+		}
+		bool operator!=(const Iterator &other) const { return !(*this == other); }
+		Tbitpos operator*() const { return this->bitpos; }
+		Iterator & operator++() { this->Next(); this->Validate(); return *this; }
+
+	private:
+		Tbitset bitset;
+		Tbitpos bitpos;
+		void Validate()
+		{
+			while (this->bitset != 0 && (this->bitset & 1) == 0) this->Next();
+		}
+		void Next()
+		{
+			this->bitset = static_cast<Tbitset>(this->bitset >> 1);
+			this->bitpos++;
+		}
+	};
+
+	SetBitIterator(Tbitset bitset) : bitset(bitset) {}
+	Iterator begin() { return Iterator(this->bitset); }
+	Iterator end() { return Iterator(static_cast<Tbitset>(0)); }
+	bool empty() { return this->begin() == this->end(); }
+
+private:
+	Tbitset bitset;
+};
 
 #if defined(__APPLE__)
 	/* Make endian swapping use Apple's macros to increase speed

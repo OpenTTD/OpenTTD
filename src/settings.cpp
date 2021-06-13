@@ -297,9 +297,8 @@ void OneOfManySettingDesc::FormatValue(char *buf, const char *last, const void *
 void ManyOfManySettingDesc::FormatValue(char *buf, const char *last, const void *object) const
 {
 	uint bitmask = (uint)this->Read(object);
-	uint id = 0;
 	bool first = true;
-	FOR_EACH_SET_BIT(id, bitmask) {
+	for (uint id : SetBitIterator(bitmask)) {
 		if (!first) buf = strecpy(buf, "|", last);
 		buf = this->FormatSingleValue(buf, last, id);
 		first = false;
