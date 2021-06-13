@@ -98,7 +98,7 @@ void Packet::PrepareToSend()
  */
 bool Packet::CanWriteToPacket(size_t bytes_to_write)
 {
-	return this->Size() + bytes_to_write < this->limit;
+	return this->Size() + bytes_to_write <= this->limit;
 }
 
 /*
