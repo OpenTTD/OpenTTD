@@ -89,8 +89,8 @@ struct NetworkGameInfo : NetworkServerGameInfo {
 
 extern NetworkServerGameInfo _network_game_info;
 
-const char *GetNetworkRevisionString();
-bool IsNetworkCompatibleVersion(const char *other);
+std::string_view GetNetworkRevisionString();
+bool IsNetworkCompatibleVersion(std::string_view other);
 void CheckGameCompatibility(NetworkGameInfo &ngi);
 
 void FillStaticNetworkServerGameInfo();

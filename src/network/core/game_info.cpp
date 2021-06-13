@@ -38,7 +38,7 @@ NetworkServerGameInfo _network_game_info; ///< Information about our game.
  * Get the network version string used by this build.
  * The returned string is guaranteed to be at most NETWORK_REVISON_LENGTH bytes including '\0' terminator.
  */
-const char *GetNetworkRevisionString()
+std::string_view GetNetworkRevisionString()
 {
 	static std::string network_revision;
 
@@ -65,17 +65,19 @@ const char *GetNetworkRevisionString()
 		Debug(net, 3, "Network revision name: {}", network_revision);
 	}
 
-	return network_revision.c_str();
+	return network_revision;
 }
 
 /**
  * Extract the git hash from the revision string.
- * @param revstr The revision string (formatted as DATE-BRANCH-GITHASH).
+ * @param revision_string The revision string (formatted as DATE-BRANCH-GITHASH).
  * @return The git has part of the revision.
  */
-static const char *ExtractNetworkRevisionHash(const char *revstr)
+static std::string_view ExtractNetworkRevisionHash(std::string_view revision_string)
 {
-	return strrchr(revstr, '-');
+	size_t index = revision_string.find_last_of('-');
+	if (index == std::string::npos) return {};
+	return revision_string.substr(index);
 }
 
 /**
@@ -83,18 +85,18 @@ static const char *ExtractNetworkRevisionHash(const char *revstr)
  * First tries to match the full string, if that fails, attempts to compare just git hashes.
  * @param other the version string to compare to
  */
-bool IsNetworkCompatibleVersion(const char *other)
+bool IsNetworkCompatibleVersion(std::string_view other)
 {
-	if (strncmp(GetNetworkRevisionString(), other, NETWORK_REVISION_LENGTH - 1) == 0) return true;
+	if (GetNetworkRevisionString() == other) return true;
 
 	/* If this version is tagged, then the revision string must be a complete match,
 	 * since there is no git hash suffix in it.
 	 * This is needed to avoid situations like "1.9.0-beta1" comparing equal to "2.0.0-beta1".  */
 	if (_openttd_revision_tagged) return false;
 
-	const char *hash1 = ExtractNetworkRevisionHash(GetNetworkRevisionString());
-	const char *hash2 = ExtractNetworkRevisionHash(other);
-	return hash1 != nullptr && hash2 != nullptr && strncmp(hash1, hash2, GITHASH_SUFFIX_LEN) == 0;
+	std::string_view hash1 = ExtractNetworkRevisionHash(GetNetworkRevisionString());
+	std::string_view hash2 = ExtractNetworkRevisionHash(other);
+	return hash1 == hash2;
 }
 
 /**
@@ -103,7 +105,7 @@ bool IsNetworkCompatibleVersion(const char *other)
 void CheckGameCompatibility(NetworkGameInfo &ngi)
 {
 	/* Check if we are allowed on this server based on the revision-check. */
-	ngi.version_compatible = IsNetworkCompatibleVersion(ngi.server_revision.c_str());
+	ngi.version_compatible = IsNetworkCompatibleVersion(ngi.server_revision);
 	ngi.compatible = ngi.version_compatible;
 
 	/* Check if we have all the GRFs on the client-system too. */
