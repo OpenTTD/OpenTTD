@@ -71,26 +71,17 @@ void NetworkAddress::SetPort(uint16 port)
 }
 
 /**
- * Get the address as a string, e.g. 127.0.0.1:12345.
- * @param buffer the buffer to write to
- * @param last the last element in the buffer
- * @param with_family whether to add the family (e.g. IPvX).
+ * Helper to get the formatting string of an address for a given family.
+ * @param family The family to get the address format for.
+ * @param with_family Whether to add the familty to the address (e.g. IPv4).
+ * @return The format string for the address.
  */
-void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool with_family)
+static const char *GetAddressFormatString(uint16 family, bool with_family)
 {
-	if (this->GetAddress()->ss_family == AF_INET6) buffer = strecpy(buffer, "[", last);
-	buffer = strecpy(buffer, this->GetHostname(), last);
-	if (this->GetAddress()->ss_family == AF_INET6) buffer = strecpy(buffer, "]", last);
-	buffer += seprintf(buffer, last, ":%d", this->GetPort());
-
-	if (with_family) {
-		char family;
-		switch (this->address.ss_family) {
-			case AF_INET:  family = '4'; break;
-			case AF_INET6: family = '6'; break;
-			default:       family = '?'; break;
-		}
-		seprintf(buffer, last, " (IPv%c)", family);
+	switch (family) {
+		case AF_INET: return with_family ? "{}:{} (IPv4)" : "{}:{}";
+		case AF_INET6: return with_family ? "[{}]:{} (IPv6)" : "[{}]:{}";
+		default: return with_family ? "{}:{} (IPv?)" : "{}:{}";
 	}
 }
 
@@ -101,10 +92,7 @@ void NetworkAddress::GetAddressAsString(char *buffer, const char *last, bool wit
  */
 std::string NetworkAddress::GetAddressAsString(bool with_family)
 {
-	/* 7 extra are for with_family, which adds " (IPvX)". */
-	char buf[NETWORK_HOSTNAME_PORT_LENGTH + 7];
-	this->GetAddressAsString(buf, lastof(buf), with_family);
-	return buf;
+	return fmt::format(GetAddressFormatString(this->GetAddress()->ss_family, with_family), this->GetHostname(), this->GetPort());
 }
 
 /**
