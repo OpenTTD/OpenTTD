@@ -2112,7 +2112,9 @@ STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Công ty
 STR_NETWORK_COMPANY_LIST_CLIENT_LIST                            :Danh sách máy trạm
 
 # Network client list
+STR_NETWORK_CLIENT_LIST_JOIN_TOOLTIP                            :{BLACK}Gia nhập công ty này
 
+STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Cấm
 
 
 STR_NETWORK_SERVER                                              :Server
