@@ -61,7 +61,7 @@ public:
 	void CloseSocket();
 
 	NetworkHTTPSocketHandler(SOCKET sock, HTTPCallback *callback,
-			const char *host, const char *url, const char *data, int depth);
+			const std::string &host, const char *url, const char *data, int depth);
 
 	~NetworkHTTPSocketHandler();
 
@@ -112,7 +112,7 @@ public:
 
 	void OnConnect(SOCKET s) override
 	{
-		new NetworkHTTPSocketHandler(s, this->callback, this->hostname.c_str(), this->url, this->data, this->depth);
+		new NetworkHTTPSocketHandler(s, this->callback, this->hostname, this->url, this->data, this->depth);
 		/* We've relinquished control of data now. */
 		this->data = nullptr;
 	}
