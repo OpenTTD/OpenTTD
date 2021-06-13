@@ -65,8 +65,7 @@ void LinkGraphOverlay::RebuildCache()
 		StationLinkMap &seen_links = this->cached_links[from];
 
 		uint supply = 0;
-		CargoID c;
-		FOR_EACH_SET_CARGO_ID(c, this->cargo_mask) {
+		for (CargoID c : SetCargoBitIterator(this->cargo_mask)) {
 			if (!CargoSpec::Get(c)->IsValid()) continue;
 			if (!LinkGraph::IsValidID(sta->goods[c].link_graph)) continue;
 			const LinkGraph &lg = *LinkGraph::Get(sta->goods[c].link_graph);
@@ -192,8 +191,7 @@ inline bool LinkGraphOverlay::IsLinkVisible(Point pta, Point ptb, const DrawPixe
  */
 void LinkGraphOverlay::AddLinks(const Station *from, const Station *to)
 {
-	CargoID c;
-	FOR_EACH_SET_CARGO_ID(c, this->cargo_mask) {
+	for (CargoID c : SetCargoBitIterator(this->cargo_mask)) {
 		if (!CargoSpec::Get(c)->IsValid()) continue;
 		const GoodsEntry &ge = from->goods[c];
 		if (!LinkGraph::IsValidID(ge.link_graph) ||

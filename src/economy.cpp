@@ -1481,9 +1481,8 @@ static void HandleStationRefit(Vehicle *v, CargoArray &consist_capleft, Station 
 	bool is_auto_refit = new_cid == CT_AUTO_REFIT;
 	if (is_auto_refit) {
 		/* Get a refittable cargo type with waiting cargo for next_station or INVALID_STATION. */
-		CargoID cid;
 		new_cid = v_start->cargo_type;
-		FOR_EACH_SET_CARGO_ID(cid, refit_mask) {
+		for (CargoID cid : SetCargoBitIterator(refit_mask)) {
 			if (st->goods[cid].cargo.HasCargoFor(next_station)) {
 				/* Try to find out if auto-refitting would succeed. In case the refit is allowed,
 				 * the returned refit capacity will be greater than zero. */

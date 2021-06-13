@@ -273,8 +273,7 @@ protected:
 	{
 		int diff = 0;
 
-		CargoID j;
-		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
+		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
 			diff += a->goods[j].cargo.TotalCount() - b->goods[j].cargo.TotalCount();
 		}
 
@@ -286,8 +285,7 @@ protected:
 	{
 		int diff = 0;
 
-		CargoID j;
-		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
+		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
 			diff += a->goods[j].cargo.AvailableCount() - b->goods[j].cargo.AvailableCount();
 		}
 
@@ -300,8 +298,7 @@ protected:
 		byte maxr1 = 0;
 		byte maxr2 = 0;
 
-		CargoID j;
-		FOR_EACH_SET_CARGO_ID(j, cargo_filter) {
+		for (CargoID j : SetCargoBitIterator(cargo_filter)) {
 			if (a->goods[j].HasRating()) maxr1 = std::max(maxr1, a->goods[j].rating);
 			if (b->goods[j].HasRating()) maxr2 = std::max(maxr2, b->goods[j].rating);
 		}
