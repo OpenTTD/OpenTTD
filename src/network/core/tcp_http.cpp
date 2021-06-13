@@ -32,7 +32,7 @@ static std::vector<NetworkHTTPSocketHandler *> _http_connections;
  * @param depth    the depth (redirect recursion) of the queries
  */
 NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
-		HTTPCallback *callback, const char *host, const char *url,
+		HTTPCallback *callback, const std::string &host, const char *url,
 		const char *data, int depth) :
 	NetworkSocketHandler(),
 	recv_pos(0),
@@ -42,19 +42,16 @@ NetworkHTTPSocketHandler::NetworkHTTPSocketHandler(SOCKET s,
 	redirect_depth(depth),
 	sock(s)
 {
-	size_t bufferSize = strlen(url) + strlen(host) + strlen(GetNetworkRevisionString()) + (data == nullptr ? 0 : strlen(data)) + 128;
-	char *buffer = AllocaM(char, bufferSize);
-
 	Debug(net, 5, "[tcp/http] Requesting {}{}", host, url);
+	std::string request;
 	if (data != nullptr) {
-		seprintf(buffer, buffer + bufferSize - 1, "POST %s HTTP/1.0\r\nHost: %s\r\nUser-Agent: OpenTTD/%s\r\nContent-Type: text/plain\r\nContent-Length: %d\r\n\r\n%s\r\n", url, host, GetNetworkRevisionString(), (int)strlen(data), data);
+		request = fmt::format("POST {} HTTP/1.0\r\nHost: {}\r\nUser-Agent: OpenTTD/{}\r\nContent-Type: text/plain\r\nContent-Length: {}\r\n\r\n{}\r\n", url, host, GetNetworkRevisionString(), strlen(data), data);
 	} else {
-		seprintf(buffer, buffer + bufferSize - 1, "GET %s HTTP/1.0\r\nHost: %s\r\nUser-Agent: OpenTTD/%s\r\n\r\n", url, host, GetNetworkRevisionString());
+		request = fmt::format("GET {} HTTP/1.0\r\nHost: {}\r\nUser-Agent: OpenTTD/{}\r\n\r\n", url, host, GetNetworkRevisionString());
 	}
 
-	ssize_t size = strlen(buffer);
-	ssize_t res = send(this->sock, (const char*)buffer, size, 0);
-	if (res != size) {
+	ssize_t res = send(this->sock, request.data(), (int)request.size(), 0);
+	if (res != (ssize_t)request.size()) {
 		/* Sending all data failed. Socket can't handle this little bit
 		 * of information? Just fall back to the old system! */
 		this->callback->OnFailure();
