@@ -336,9 +336,8 @@ struct GoalQuestionWindow : public Window {
 		this->question = stredup(question);
 
 		/* Figure out which buttons we have to enable. */
-		uint bit;
 		int n = 0;
-		FOR_EACH_SET_BIT(bit, button_mask) {
+		for (uint bit : SetBitIterator(button_mask)) {
 			if (bit >= GOAL_QUESTION_BUTTON_COUNT) break;
 			this->button[n++] = bit;
 			if (n == 3) break;
