@@ -8,7 +8,7 @@
 #ifndef FMT_FORMAT_INL_H_
 #define FMT_FORMAT_INL_H_
 
-#include <cassert>
+/* Do not include cassert as that breaks our own asserts. */
 #include <cctype>
 #include <climits>
 #include <cmath>
