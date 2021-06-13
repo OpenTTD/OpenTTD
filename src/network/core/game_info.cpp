@@ -36,45 +36,36 @@ NetworkServerGameInfo _network_game_info; ///< Information about our game.
 
 /**
  * Get the network version string used by this build.
- * The returned string is guaranteed to be at most NETWORK_REVISON_LENGTH bytes.
+ * The returned string is guaranteed to be at most NETWORK_REVISON_LENGTH bytes including '\0' terminator.
  */
 const char *GetNetworkRevisionString()
 {
-	/* This will be allocated on heap and never free'd, but only once so not a "real" leak. */
-	static char *network_revision = nullptr;
+	static std::string network_revision;
 
-	if (!network_revision) {
-		/* Start by taking a chance on the full revision string. */
-		network_revision = stredup(_openttd_revision);
-		/* Ensure it's not longer than the packet buffer length. */
-		if (strlen(network_revision) >= NETWORK_REVISION_LENGTH) network_revision[NETWORK_REVISION_LENGTH - 1] = '\0';
-
-		/* Tag names are not mangled further. */
+	if (network_revision.empty()) {
+		std::string network_revision = _openttd_revision;
 		if (_openttd_revision_tagged) {
-			Debug(net, 3, "Network revision name: {}", network_revision);
-			return network_revision;
-		}
+			/* Tagged; do not mangle further, though ensure it's not too long. */
+			if (network_revision.size() >= NETWORK_REVISION_LENGTH) network_revision.resize(NETWORK_REVISION_LENGTH - 1);
+		} else {
+			/* Not tagged; add the githash suffix while ensuring the string does not become too long. */
+			assert(_openttd_revision_modified < 3);
+			std::string githash_suffix = fmt::format("-{}{}", "gum"[_openttd_revision_modified], _openttd_revision_hash);
+			if (githash_suffix.size() > GITHASH_SUFFIX_LEN) githash_suffix.resize(GITHASH_SUFFIX_LEN);
 
-		/* Prepare a prefix of the git hash.
-		 * Size is length + 1 for terminator, +2 for -g prefix. */
-		assert(_openttd_revision_modified < 3);
-		char githash_suffix[GITHASH_SUFFIX_LEN + 1] = "-";
-		githash_suffix[1] = "gum"[_openttd_revision_modified];
-		for (uint i = 2; i < GITHASH_SUFFIX_LEN; i++) {
-			githash_suffix[i] = _openttd_revision_hash[i-2];
-		}
+			/* Where did the hash start in the original string? Overwrite from that position, unless that would create a too long string. */
+			size_t hash_end = network_revision.find_last_of('-');
+			if (hash_end == std::string::npos) hash_end = network_revision.size();
+			if (hash_end + githash_suffix.size() >= NETWORK_REVISION_LENGTH) hash_end = NETWORK_REVISION_LENGTH - githash_suffix.size() - 1;
 
-		/* Where did the hash start in the original string?
-		 * Overwrite from that position, unless that would go past end of packet buffer length. */
-		ptrdiff_t hashofs = strrchr(_openttd_revision, '-') - _openttd_revision;
-		if (hashofs + strlen(githash_suffix) + 1 > NETWORK_REVISION_LENGTH) hashofs = strlen(network_revision) - strlen(githash_suffix);
-		/* Replace the git hash in revision string. */
-		strecpy(network_revision + hashofs, githash_suffix, network_revision + NETWORK_REVISION_LENGTH);
-		assert(strlen(network_revision) < NETWORK_REVISION_LENGTH); // strlen does not include terminator, constant does, hence strictly less than
+			/* Replace the git hash in revision string. */
+			network_revision.replace(hash_end, std::string::npos, githash_suffix);
+		}
+		assert(network_revision.size() < NETWORK_REVISION_LENGTH); // size does not include terminator, constant does, hence strictly less than
 		Debug(net, 3, "Network revision name: {}", network_revision);
 	}
 
-	return network_revision;
+	return network_revision.c_str();
 }
 
 /**
