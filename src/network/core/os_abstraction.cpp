@@ -76,7 +76,7 @@ bool NetworkError::IsConnectInProgress() const
  * Get the string representation of the error message.
  * @return The string representation that will get overwritten by next calls.
  */
-const char *NetworkError::AsString() const
+const std::string &NetworkError::AsString() const
 {
 	if (this->message.empty()) {
 #if defined(_WIN32)
@@ -97,7 +97,7 @@ const char *NetworkError::AsString() const
 		this->message.assign(strerror(this->error));
 #endif
 	}
-	return this->message.c_str();
+	return this->message;
 }
 
 /**

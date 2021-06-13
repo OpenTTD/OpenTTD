@@ -29,7 +29,7 @@ public:
 	bool WouldBlock() const;
 	bool IsConnectionReset() const;
 	bool IsConnectInProgress() const;
-	const char *AsString() const;
+	const std::string &AsString() const;
 
 	static NetworkError GetLast();
 };
