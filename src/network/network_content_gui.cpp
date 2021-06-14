@@ -131,7 +131,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, int widge
 	StringID str;
 	if (this->downloaded_bytes == this->total_bytes) {
 		str = STR_CONTENT_DOWNLOAD_COMPLETE;
-	} else if (!StrEmpty(this->name)) {
+	} else if (!this->name.empty()) {
 		SetDParamStr(0, this->name);
 		SetDParam(1, this->downloaded_files);
 		SetDParam(2, this->total_files);
@@ -147,7 +147,7 @@ void BaseNetworkContentDownloadStatusWindow::DrawWidget(const Rect &r, int widge
 void BaseNetworkContentDownloadStatusWindow::OnDownloadProgress(const ContentInfo *ci, int bytes)
 {
 	if (ci->id != this->cur_id) {
-		strecpy(this->name, ci->filename.c_str(), lastof(this->name));
+		this->name = ci->filename;
 		this->cur_id = ci->id;
 		this->downloaded_files++;
 	}
