@@ -527,7 +527,8 @@ protected:
 	friend class LinkGraph::Node;
 	friend SaveLoadTable GetLinkGraphDesc();
 	friend SaveLoadTable GetLinkGraphJobDesc();
-	friend void SaveLoad_LinkGraph(LinkGraph &lg);
+	friend class SlLinkgraphNode;
+	friend class SlLinkgraphEdge;
 
 	CargoID cargo;         ///< Cargo of this component's link graph.
 	Date last_compression; ///< Last time the capacities and supplies were compressed.
