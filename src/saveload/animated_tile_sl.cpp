@@ -19,7 +19,7 @@
 extern std::vector<TileIndex> _animated_tiles;
 
 static const SaveLoad _animated_tile_desc[] = {
-	 SLEG_VECTOR(_animated_tiles, SLE_UINT32),
+	 SLEG_VECTOR("tiles", _animated_tiles, SLE_UINT32),
 };
 
 /**

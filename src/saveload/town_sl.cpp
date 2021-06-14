@@ -278,9 +278,9 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDNULL(8, SLV_EXTEND_CARGOTYPES, SLV_REMOVE_TOWN_CARGO_CACHE),  ///< cargo_produced, no longer in use
 	SLE_CONDNULL(30, SLV_2, SLV_REMOVE_TOWN_CARGO_CACHE), ///< old reserved space
 
-	SLEG_CONDSTRUCTLIST(SlTownSupplied,                                SLV_165, SL_MAX_VERSION),
-	SLEG_CONDSTRUCTLIST(SlTownReceived,                                SLV_165, SL_MAX_VERSION),
-	SLEG_CONDSTRUCTLIST(SlTownAcceptanceMatrix,                        SLV_166, SLV_REMOVE_TOWN_CARGO_CACHE),
+	SLEG_CONDSTRUCTLIST("supplied", SlTownSupplied,                    SLV_165, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST("received", SlTownReceived,                    SLV_165, SL_MAX_VERSION),
+	SLEG_CONDSTRUCTLIST("acceptance_matrix", SlTownAcceptanceMatrix,   SLV_166, SLV_REMOVE_TOWN_CARGO_CACHE),
 };
 
 static void Save_HIDS()

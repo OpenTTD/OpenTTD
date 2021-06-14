@@ -331,29 +331,29 @@ public:
 	inline
 #endif
 	static const SaveLoad description[] = {
-		SLEG_CONDVAR(            _waiting_acceptance,  SLE_UINT16,                  SL_MIN_VERSION, SLV_68),
+		SLEG_CONDVAR("waiting_acceptance", _waiting_acceptance, SLE_UINT16,        SL_MIN_VERSION, SLV_68),
 		 SLE_CONDVAR(GoodsEntry, status,               SLE_UINT8,                  SLV_68, SL_MAX_VERSION),
 		SLE_CONDNULL(2,                                                            SLV_51, SLV_68),
 		     SLE_VAR(GoodsEntry, time_since_pickup,    SLE_UINT8),
 		     SLE_VAR(GoodsEntry, rating,               SLE_UINT8),
-		SLEG_CONDVAR(            _cargo_source,        SLE_FILE_U8 | SLE_VAR_U16,   SL_MIN_VERSION, SLV_7),
-		SLEG_CONDVAR(            _cargo_source,        SLE_UINT16,                  SLV_7, SLV_68),
-		SLEG_CONDVAR(            _cargo_source_xy,     SLE_UINT32,                 SLV_44, SLV_68),
-		SLEG_CONDVAR(            _cargo_days,          SLE_UINT8,                   SL_MIN_VERSION, SLV_68),
+		SLEG_CONDVAR("cargo_source", _cargo_source,    SLE_FILE_U8 | SLE_VAR_U16,   SL_MIN_VERSION, SLV_7),
+		SLEG_CONDVAR("cargo_source", _cargo_source,    SLE_UINT16,                  SLV_7, SLV_68),
+		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, SLE_UINT32,               SLV_44, SLV_68),
+		SLEG_CONDVAR("cargo_days", _cargo_days,        SLE_UINT8,                   SL_MIN_VERSION, SLV_68),
 		     SLE_VAR(GoodsEntry, last_speed,           SLE_UINT8),
 		     SLE_VAR(GoodsEntry, last_age,             SLE_UINT8),
-		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_FILE_U32 | SLE_VAR_I64, SLV_14, SLV_65),
-		SLEG_CONDVAR(            _cargo_feeder_share,  SLE_INT64,                  SLV_65, SLV_68),
+		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share,  SLE_FILE_U32 | SLE_VAR_I64, SLV_14, SLV_65),
+		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share,  SLE_INT64,                  SLV_65, SLV_68),
 		 SLE_CONDVAR(GoodsEntry, amount_fract,         SLE_UINT8,                 SLV_150, SL_MAX_VERSION),
-		SLEG_CONDREFLIST(        _packets,             REF_CARGO_PACKET,           SLV_68, SLV_183),
-		SLEG_CONDVAR(            _old_num_dests,       SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
+		SLEG_CONDREFLIST("packets", _packets,          REF_CARGO_PACKET,           SLV_68, SLV_183),
+		SLEG_CONDVAR("old_num_dests", _old_num_dests,  SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
 		 SLE_CONDVAR(GoodsEntry, cargo.reserved_count, SLE_UINT,                  SLV_181, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, link_graph,           SLE_UINT16,                SLV_183, SL_MAX_VERSION),
 		 SLE_CONDVAR(GoodsEntry, node,                 SLE_UINT16,                SLV_183, SL_MAX_VERSION),
-		SLEG_CONDVAR(            _old_num_flows,       SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
+		SLEG_CONDVAR("old_num_flows", _old_num_flows,  SLE_UINT32,                SLV_183, SLV_SAVELOAD_LIST_LENGTH),
 		 SLE_CONDVAR(GoodsEntry, max_waiting_cargo,    SLE_UINT32,                SLV_183, SL_MAX_VERSION),
-		SLEG_CONDSTRUCTLIST(SlStationFlow,                                        SLV_183, SL_MAX_VERSION),
-		SLEG_CONDSTRUCTLIST(SlStationCargo,                                       SLV_183, SL_MAX_VERSION),
+		SLEG_CONDSTRUCTLIST("flow", SlStationFlow,                                SLV_183, SL_MAX_VERSION),
+		SLEG_CONDSTRUCTLIST("cargo", SlStationCargo,                              SLV_183, SL_MAX_VERSION),
 	};
 #if defined(_MSC_VER) && (_MSC_VER == 1915 || _MSC_VER == 1916)
 		return description;
@@ -497,8 +497,8 @@ static const SaveLoad _old_station_desc[] = {
 
 	/* reserve extra space in savegame here. (currently 32 bytes) */
 	SLE_CONDNULL(32, SLV_2, SL_MAX_VERSION),
-	SLEG_STRUCTLIST(SlStationGoods),
-	SLEG_CONDSTRUCTLIST(SlStationSpecList,                                       SLV_27, SL_MAX_VERSION),
+	SLEG_STRUCTLIST("goods", SlStationGoods),
+	SLEG_CONDSTRUCTLIST("speclist", SlStationSpecList,                           SLV_27, SL_MAX_VERSION),
 };
 
 static void Load_STNS()
@@ -566,7 +566,7 @@ public:
 class SlStationNormal : public DefaultSaveLoadHandler<SlStationNormal, BaseStation> {
 public:
 	inline static const SaveLoad description[] = {
-		SLEG_STRUCT(SlStationBase),
+		SLEG_STRUCT("base", SlStationBase),
 		    SLE_VAR(Station, train_station.tile,         SLE_UINT32),
 		    SLE_VAR(Station, train_station.w,            SLE_FILE_U8 | SLE_VAR_U16),
 		    SLE_VAR(Station, train_station.h,            SLE_FILE_U8 | SLE_VAR_U16),
@@ -587,7 +587,7 @@ public:
 		SLE_CONDVAR(Station, airport.layout,             SLE_UINT8,                 SLV_145, SL_MAX_VERSION),
 		    SLE_VAR(Station, airport.flags,              SLE_UINT64),
 		SLE_CONDVAR(Station, airport.rotation,           SLE_UINT8,                 SLV_145, SL_MAX_VERSION),
-		SLEG_CONDARR(_old_st_persistent_storage.storage,  SLE_UINT32, 16,            SLV_145, SLV_161),
+		SLEG_CONDARR("storage", _old_st_persistent_storage.storage,  SLE_UINT32, 16, SLV_145, SLV_161),
 		SLE_CONDREF(Station, airport.psa,                REF_STORAGE,               SLV_161, SL_MAX_VERSION),
 
 		    SLE_VAR(Station, indtype,                    SLE_UINT8),
@@ -599,7 +599,7 @@ public:
 		SLE_REFLIST(Station, loading_vehicles,           REF_VEHICLE),
 		SLE_CONDVAR(Station, always_accepted,            SLE_FILE_U32 | SLE_VAR_U64, SLV_127, SLV_EXTEND_CARGOTYPES),
 		SLE_CONDVAR(Station, always_accepted,            SLE_UINT64,                 SLV_EXTEND_CARGOTYPES, SL_MAX_VERSION),
-		SLEG_STRUCTLIST(SlStationGoods),
+		SLEG_STRUCTLIST("goods", SlStationGoods),
 	};
 
 	void GenericSaveLoad(BaseStation *bst) const
@@ -616,7 +616,7 @@ public:
 class SlStationWaypoint : public DefaultSaveLoadHandler<SlStationWaypoint, BaseStation> {
 public:
 	inline static const SaveLoad description[] = {
-		SLEG_STRUCT(SlStationBase),
+		SLEG_STRUCT("base", SlStationBase),
 		    SLE_VAR(Waypoint, town_cn,                   SLE_UINT16),
 
 		SLE_CONDVAR(Waypoint, train_station.tile,        SLE_UINT32,                  SLV_124, SL_MAX_VERSION),
@@ -637,9 +637,9 @@ public:
 
 static const SaveLoad _station_desc[] = {
 	SLE_SAVEBYTE(BaseStation, facilities),
-	SLEG_STRUCT(SlStationNormal),
-	SLEG_STRUCT(SlStationWaypoint),
-	SLEG_CONDSTRUCTLIST(SlStationSpecList, SLV_27, SL_MAX_VERSION),
+	SLEG_STRUCT("normal", SlStationNormal),
+	SLEG_STRUCT("waypoint", SlStationWaypoint),
+	SLEG_CONDSTRUCTLIST("speclist", SlStationSpecList, SLV_27, SL_MAX_VERSION),
 };
 
 static void Save_STNN()

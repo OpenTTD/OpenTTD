@@ -83,7 +83,7 @@ public:
 		    SLE_VAR(Node, demand,      SLE_UINT32),
 		    SLE_VAR(Node, station,     SLE_UINT16),
 		    SLE_VAR(Node, last_update, SLE_INT32),
-		SLEG_STRUCTLIST(SlLinkgraphEdge),
+		SLEG_STRUCTLIST("edges", SlLinkgraphEdge),
 	};
 
 	void Save(LinkGraph *lg) const override
@@ -118,9 +118,9 @@ SaveLoadTable GetLinkGraphDesc()
 {
 	static const SaveLoad link_graph_desc[] = {
 		 SLE_VAR(LinkGraph, last_compression, SLE_INT32),
-		SLEG_CONDVAR(_num_nodes,              SLE_UINT16, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
+		SLEG_CONDVAR("num_nodes", _num_nodes, SLE_UINT16, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
 		 SLE_VAR(LinkGraph, cargo,            SLE_UINT8),
-		SLEG_STRUCTLIST(SlLinkgraphNode),
+		SLEG_STRUCTLIST("nodes", SlLinkgraphNode),
 	};
 	return link_graph_desc;
 }
@@ -165,7 +165,7 @@ SaveLoadTable GetLinkGraphJobDesc()
 	static const SaveLoad job_desc[] = {
 		SLE_VAR(LinkGraphJob, join_date,        SLE_INT32),
 		SLE_VAR(LinkGraphJob, link_graph.index, SLE_UINT16),
-		SLEG_STRUCT(SlLinkgraphJobProxy),
+		SLEG_STRUCT("linkgraph", SlLinkgraphJobProxy),
 	};
 
 	/* The member offset arithmetic below is only valid if the types in question

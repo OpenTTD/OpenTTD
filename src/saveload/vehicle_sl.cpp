@@ -626,14 +626,14 @@ public:
 
 		    SLE_VAR(Vehicle, cargo_type,            SLE_UINT8),
 		SLE_CONDVAR(Vehicle, cargo_subtype,         SLE_UINT8,                   SLV_35, SL_MAX_VERSION),
-		SLEG_CONDVAR(         _cargo_days,           SLE_UINT8,                    SL_MIN_VERSION,  SLV_68),
-		SLEG_CONDVAR(         _cargo_source,         SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_7),
-		SLEG_CONDVAR(         _cargo_source,         SLE_UINT16,                   SLV_7,  SLV_68),
-		SLEG_CONDVAR(         _cargo_source_xy,      SLE_UINT32,                  SLV_44,  SLV_68),
+		SLEG_CONDVAR("cargo_days", _cargo_days,     SLE_UINT8,                    SL_MIN_VERSION,  SLV_68),
+		SLEG_CONDVAR("cargo_source", _cargo_source, SLE_FILE_U8  | SLE_VAR_U16,   SL_MIN_VERSION,   SLV_7),
+		SLEG_CONDVAR("cargo_source", _cargo_source, SLE_UINT16,                   SLV_7,  SLV_68),
+		SLEG_CONDVAR("cargo_source_xy", _cargo_source_xy, SLE_UINT32,             SLV_44,  SLV_68),
 		    SLE_VAR(Vehicle, cargo_cap,             SLE_UINT16),
 		SLE_CONDVAR(Vehicle, refit_cap,             SLE_UINT16,                 SLV_182, SL_MAX_VERSION),
-		SLEG_CONDVAR(         _cargo_count,          SLE_UINT16,                   SL_MIN_VERSION,  SLV_68),
-		SLE_CONDREFLIST(Vehicle, cargo.packets,      REF_CARGO_PACKET,            SLV_68, SL_MAX_VERSION),
+		SLEG_CONDVAR("cargo_count", _cargo_count,   SLE_UINT16,                   SL_MIN_VERSION,  SLV_68),
+		SLE_CONDREFLIST(Vehicle, cargo.packets,     REF_CARGO_PACKET,            SLV_68, SL_MAX_VERSION),
 		SLE_CONDARR(Vehicle, cargo.action_counts,   SLE_UINT, VehicleCargoList::NUM_MOVE_TO_ACTION, SLV_181, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, cargo_age_counter,     SLE_UINT16,                 SLV_162, SL_MAX_VERSION),
 
@@ -689,7 +689,7 @@ public:
 		SLE_CONDVAR(Vehicle, build_year,            SLE_INT32,                   SLV_31, SL_MAX_VERSION),
 
 		    SLE_VAR(Vehicle, load_unload_ticks,     SLE_UINT16),
-		SLEG_CONDVAR(         _cargo_paid_for,       SLE_UINT16,                  SLV_45, SL_MAX_VERSION),
+		SLEG_CONDVAR("cargo_paid_for", _cargo_paid_for, SLE_UINT16,              SLV_45, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_FILE_U8 | SLE_VAR_U16,   SLV_40, SLV_180),
 		SLE_CONDVAR(Vehicle, vehicle_flags,         SLE_UINT16,                 SLV_180, SL_MAX_VERSION),
 
@@ -697,9 +697,9 @@ public:
 		SLE_CONDVAR(Vehicle, profit_this_year,      SLE_INT64,                   SLV_65, SL_MAX_VERSION),
 		SLE_CONDVAR(Vehicle, profit_last_year,      SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
 		SLE_CONDVAR(Vehicle, profit_last_year,      SLE_INT64,                   SLV_65, SL_MAX_VERSION),
-		SLEG_CONDVAR(         _cargo_feeder_share,   SLE_FILE_I32 | SLE_VAR_I64,  SLV_51,  SLV_65),
-		SLEG_CONDVAR(         _cargo_feeder_share,   SLE_INT64,                   SLV_65,  SLV_68),
-		SLEG_CONDVAR(         _cargo_loaded_at_xy,   SLE_UINT32,                  SLV_51,  SLV_68),
+		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_FILE_I32 | SLE_VAR_I64,  SLV_51,  SLV_65),
+		SLEG_CONDVAR("cargo_feeder_share", _cargo_feeder_share, SLE_INT64,                   SLV_65,  SLV_68),
+		SLEG_CONDVAR("cargo_loaded_at_xy", _cargo_loaded_at_xy, SLE_UINT32,                  SLV_51,  SLV_68),
 		SLE_CONDVAR(Vehicle, value,                 SLE_FILE_I32 | SLE_VAR_I64,   SL_MIN_VERSION,  SLV_65),
 		SLE_CONDVAR(Vehicle, value,                 SLE_INT64,                   SLV_65, SL_MAX_VERSION),
 
@@ -735,7 +735,7 @@ public:
 class SlVehicleTrain : public DefaultSaveLoadHandler<SlVehicleTrain, Vehicle> {
 public:
 	inline static const SaveLoad description[] = {
-		 SLEG_STRUCT(SlVehicleCommon),
+		 SLEG_STRUCT("common", SlVehicleCommon),
 		     SLE_VAR(Train, crash_anim_pos,      SLE_UINT16),
 		     SLE_VAR(Train, force_proceed,       SLE_UINT8),
 		     SLE_VAR(Train, railtype,            SLE_UINT8),
@@ -766,7 +766,7 @@ public:
 class SlVehicleRoadVeh : public DefaultSaveLoadHandler<SlVehicleRoadVeh, Vehicle> {
 public:
 	inline static const SaveLoad description[] = {
-		  SLEG_STRUCT(SlVehicleCommon),
+		  SLEG_STRUCT("common", SlVehicleCommon),
 		      SLE_VAR(RoadVehicle, state,                SLE_UINT8),
 		      SLE_VAR(RoadVehicle, frame,                SLE_UINT8),
 		      SLE_VAR(RoadVehicle, blocked_ctr,          SLE_UINT16),
@@ -798,7 +798,7 @@ public:
 class SlVehicleShip : public DefaultSaveLoadHandler<SlVehicleShip, Vehicle> {
 public:
 	inline static const SaveLoad description[] = {
-		  SLEG_STRUCT(SlVehicleCommon),
+		  SLEG_STRUCT("common", SlVehicleCommon),
 		      SLE_VAR(Ship, state,                     SLE_UINT8),
 		SLE_CONDDEQUE(Ship, path,                      SLE_UINT8,                  SLV_SHIP_PATH_CACHE, SL_MAX_VERSION),
 		  SLE_CONDVAR(Ship, rotation,                  SLE_UINT8,                  SLV_SHIP_ROTATION, SL_MAX_VERSION),
@@ -820,7 +820,7 @@ public:
 class SlVehicleAircraft : public DefaultSaveLoadHandler<SlVehicleAircraft, Vehicle> {
 public:
 	inline static const SaveLoad description[] = {
-		 SLEG_STRUCT(SlVehicleCommon),
+		 SLEG_STRUCT("common", SlVehicleCommon),
 		     SLE_VAR(Aircraft, crashed_counter,       SLE_UINT16),
 		     SLE_VAR(Aircraft, pos,                   SLE_UINT8),
 
@@ -955,12 +955,12 @@ public:
 
 const static SaveLoad _vehicle_desc[] = {
 	SLE_SAVEBYTE(Vehicle, type),
-	SLEG_STRUCT(SlVehicleTrain),
-	SLEG_STRUCT(SlVehicleRoadVeh),
-	SLEG_STRUCT(SlVehicleShip),
-	SLEG_STRUCT(SlVehicleAircraft),
-	SLEG_STRUCT(SlVehicleEffect),
-	SLEG_STRUCT(SlVehicleDisaster),
+	SLEG_STRUCT("train", SlVehicleTrain),
+	SLEG_STRUCT("roadveh", SlVehicleRoadVeh),
+	SLEG_STRUCT("ship", SlVehicleShip),
+	SLEG_STRUCT("aircraft", SlVehicleAircraft),
+	SLEG_STRUCT("effect", SlVehicleEffect),
+	SLEG_STRUCT("disaster", SlVehicleDisaster),
 };
 
 /** Will be called when the vehicles need to be saved. */

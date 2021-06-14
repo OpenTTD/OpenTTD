@@ -26,10 +26,10 @@ static std::string _game_saveload_settings;
 static bool        _game_saveload_is_random;
 
 static const SaveLoad _game_script[] = {
-	   SLEG_SSTR(_game_saveload_name,         SLE_STR),
-	   SLEG_SSTR(_game_saveload_settings,     SLE_STR),
-	    SLEG_VAR(_game_saveload_version,   SLE_UINT32),
-	    SLEG_VAR(_game_saveload_is_random,   SLE_BOOL),
+	   SLEG_SSTR("name",      _game_saveload_name,         SLE_STR),
+	   SLEG_SSTR("settings",  _game_saveload_settings,     SLE_STR),
+	    SLEG_VAR("version",   _game_saveload_version,   SLE_UINT32),
+	    SLEG_VAR("is_random", _game_saveload_is_random,   SLE_BOOL),
 };
 
 static void SaveReal_GSDT(int *index_ptr)
@@ -116,7 +116,7 @@ static uint32 _game_saveload_strings;
 class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
 public:
 	inline static const SaveLoad description[] = {
-		SLEG_SSTR(_game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
+		SLEG_SSTR("string", _game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
 	};
 
 	void Save(LanguageStrings *ls) const override
@@ -142,8 +142,8 @@ public:
 
 static const SaveLoad _game_language_desc[] = {
 	SLE_SSTR(LanguageStrings, language, SLE_STR),
-	SLEG_CONDVAR(_game_saveload_strings, SLE_UINT32, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
-	SLEG_STRUCTLIST(SlGameLanguageString),
+	SLEG_CONDVAR("count", _game_saveload_strings, SLE_UINT32, SL_MIN_VERSION, SLV_SAVELOAD_LIST_LENGTH),
+	SLEG_STRUCTLIST("strings", SlGameLanguageString),
 };
 
 static void Load_GSTR()

@@ -67,7 +67,7 @@ static const SaveLoad _industry_desc[] = {
 	SLE_CONDVAR(Industry, exclusive_supplier,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
 	SLE_CONDVAR(Industry, exclusive_consumer,         SLE_UINT8,                 SLV_GS_INDUSTRY_CONTROL, SL_MAX_VERSION),
 
-	SLEG_CONDARR(_old_ind_persistent_storage.storage, SLE_UINT32, 16,            SLV_76, SLV_161),
+	SLEG_CONDARR("storage", _old_ind_persistent_storage.storage, SLE_UINT32, 16, SLV_76, SLV_161),
 	SLE_CONDREF(Industry, psa,                        REF_STORAGE,              SLV_161, SL_MAX_VERSION),
 
 	SLE_CONDNULL(1, SLV_82, SLV_197), // random_triggers
@@ -136,7 +136,7 @@ static void Ptrs_INDY()
 
 /** Description of the data to save and load in #IndustryBuildData. */
 static const SaveLoad _industry_builder_desc[] = {
-	SLEG_VAR(_industry_builder.wanted_inds, SLE_UINT32),
+	SLEG_VAR("wanted_inds", _industry_builder.wanted_inds, SLE_UINT32),
 };
 
 /** Save industry builder. */
