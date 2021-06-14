@@ -804,7 +804,7 @@ static void CloneVehicleName(const Vehicle *src, Vehicle *dst)
 
 		/* Check the name is unique. */
 		auto new_name = oss.str();
-		if (IsUniqueVehicleName(new_name.c_str())) {
+		if (IsUniqueVehicleName(new_name)) {
 			dst->name = new_name;
 			break;
 		}

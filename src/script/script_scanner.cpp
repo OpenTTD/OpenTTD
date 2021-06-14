@@ -182,7 +182,7 @@ struct ScriptFileChecksumCreator : FileScanner {
 		byte tmp_md5sum[16];
 
 		/* Open the file ... */
-		FILE *f = FioFOpenFile(filename.c_str(), "rb", this->dir, &size);
+		FILE *f = FioFOpenFile(filename, "rb", this->dir, &size);
 		if (f == nullptr) return false;
 
 		/* ... calculate md5sum... */

@@ -708,7 +708,7 @@ static void IniSaveSettingList(IniFile *ini, const char *grpname, StringList &li
 	group->Clear();
 
 	for (const auto &iter : list) {
-		group->GetItem(iter.c_str(), true)->SetValue("");
+		group->GetItem(iter, true)->SetValue("");
 	}
 }
 
@@ -1272,7 +1272,7 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 				continue;
 			}
 		}
-		if (item->value.has_value()) config->StringToSettings(item->value->c_str());
+		if (item->value.has_value()) config->StringToSettings(*item->value);
 	}
 }
 
@@ -1299,7 +1299,7 @@ static void GameLoadConfig(IniFile *ini, const char *grpname)
 			return;
 		}
 	}
-	if (item->value.has_value()) config->StringToSettings(item->value->c_str());
+	if (item->value.has_value()) config->StringToSettings(*item->value);
 }
 
 /**
