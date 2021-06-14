@@ -231,7 +231,7 @@ GameStrings *LoadTranslations()
 	basename.erase(e + 1);
 
 	std::string filename = basename + "lang" PATHSEP "english.txt";
-	if (!FioCheckFileExists(filename.c_str() , GAME_DIR)) return nullptr;
+	if (!FioCheckFileExists(filename, GAME_DIR)) return nullptr;
 
 	auto ls = ReadRawLanguageStrings(filename);
 	if (!ls.IsValid()) return nullptr;
