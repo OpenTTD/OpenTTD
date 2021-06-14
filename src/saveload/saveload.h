@@ -388,6 +388,7 @@ enum ChunkType {
 	CH_RIFF = 0,
 	CH_ARRAY = 1,
 	CH_SPARSE_ARRAY = 2,
+	CH_READONLY, ///< Chunk is never saved.
 };
 
 /** Handlers and description of chunk. */

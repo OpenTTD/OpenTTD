@@ -2105,7 +2105,7 @@ static void Save_PATS()
 }
 
 static const ChunkHandler setting_chunk_handlers[] = {
-	{ 'OPTS', nullptr,   Load_OPTS, nullptr, nullptr,    CH_RIFF  },
+	{ 'OPTS', nullptr,   Load_OPTS, nullptr, nullptr,    CH_READONLY },
 	{ 'PATS', Save_PATS, Load_PATS, nullptr, Check_PATS, CH_ARRAY },
 };
 
