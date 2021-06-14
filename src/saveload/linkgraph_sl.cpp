@@ -144,75 +144,6 @@ void SaveLoad_LinkGraph(LinkGraph &lg)
 }
 
 /**
- * Save a link graph job.
- * @param lgj LinkGraphJob to be saved.
- */
-static void DoSave_LGRJ(LinkGraphJob *lgj)
-{
-	SlObject(lgj, GetLinkGraphJobDesc());
-	_num_nodes = lgj->Size();
-	SlObject(const_cast<LinkGraph *>(&lgj->Graph()), GetLinkGraphDesc());
-	SaveLoad_LinkGraph(const_cast<LinkGraph &>(lgj->Graph()));
-}
-
-/**
- * Save a link graph.
- * @param lg LinkGraph to be saved.
- */
-static void DoSave_LGRP(LinkGraph *lg)
-{
-	_num_nodes = lg->Size();
-	SlObject(lg, GetLinkGraphDesc());
-	SaveLoad_LinkGraph(*lg);
-}
-
-/**
- * Load all link graphs.
- */
-static void Load_LGRP()
-{
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		if (!LinkGraph::CanAllocateItem()) {
-			/* Impossible as they have been present in previous game. */
-			NOT_REACHED();
-		}
-		LinkGraph *lg = new (index) LinkGraph();
-		SlObject(lg, GetLinkGraphDesc());
-		lg->Init(_num_nodes);
-		SaveLoad_LinkGraph(*lg);
-	}
-}
-
-/**
- * Load all link graph jobs.
- */
-static void Load_LGRJ()
-{
-	int index;
-	while ((index = SlIterateArray()) != -1) {
-		if (!LinkGraphJob::CanAllocateItem()) {
-			/* Impossible as they have been present in previous game. */
-			NOT_REACHED();
-		}
-		LinkGraphJob *lgj = new (index) LinkGraphJob();
-		SlObject(lgj, GetLinkGraphJobDesc());
-		LinkGraph &lg = const_cast<LinkGraph &>(lgj->Graph());
-		SlObject(&lg, GetLinkGraphDesc());
-		lg.Init(_num_nodes);
-		SaveLoad_LinkGraph(lg);
-	}
-}
-
-/**
- * Load the link graph schedule.
- */
-static void Load_LGRS()
-{
-	SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
-}
-
-/**
  * Spawn the threads for running link graph calculations.
  * Has to be done after loading as the cargo classes might have changed.
  */
@@ -243,6 +174,17 @@ void AfterLoadLinkGraphs()
 }
 
 /**
+ * Save a link graph.
+ * @param lg LinkGraph to be saved.
+ */
+static void DoSave_LGRP(LinkGraph *lg)
+{
+	_num_nodes = lg->Size();
+	SlObject(lg, GetLinkGraphDesc());
+	SaveLoad_LinkGraph(*lg);
+}
+
+/**
  * Save all link graphs.
  */
 static void Save_LGRP()
@@ -251,6 +193,36 @@ static void Save_LGRP()
 		SlSetArrayIndex(lg->index);
 		SlAutolength((AutolengthProc*)DoSave_LGRP, lg);
 	}
+}
+
+/**
+ * Load all link graphs.
+ */
+static void Load_LGRP()
+{
+	int index;
+	while ((index = SlIterateArray()) != -1) {
+		if (!LinkGraph::CanAllocateItem()) {
+			/* Impossible as they have been present in previous game. */
+			NOT_REACHED();
+		}
+		LinkGraph *lg = new (index) LinkGraph();
+		SlObject(lg, GetLinkGraphDesc());
+		lg->Init(_num_nodes);
+		SaveLoad_LinkGraph(*lg);
+	}
+}
+
+/**
+ * Save a link graph job.
+ * @param lgj LinkGraphJob to be saved.
+ */
+static void DoSave_LGRJ(LinkGraphJob *lgj)
+{
+	SlObject(lgj, GetLinkGraphJobDesc());
+	_num_nodes = lgj->Size();
+	SlObject(const_cast<LinkGraph *>(&lgj->Graph()), GetLinkGraphDesc());
+	SaveLoad_LinkGraph(const_cast<LinkGraph &>(lgj->Graph()));
 }
 
 /**
@@ -265,9 +237,37 @@ static void Save_LGRJ()
 }
 
 /**
+ * Load all link graph jobs.
+ */
+static void Load_LGRJ()
+{
+	int index;
+	while ((index = SlIterateArray()) != -1) {
+		if (!LinkGraphJob::CanAllocateItem()) {
+			/* Impossible as they have been present in previous game. */
+			NOT_REACHED();
+		}
+		LinkGraphJob *lgj = new (index) LinkGraphJob();
+		SlObject(lgj, GetLinkGraphJobDesc());
+		LinkGraph &lg = const_cast<LinkGraph &>(lgj->Graph());
+		SlObject(&lg, GetLinkGraphDesc());
+		lg.Init(_num_nodes);
+		SaveLoad_LinkGraph(lg);
+	}
+}
+
+/**
  * Save the link graph schedule.
  */
 static void Save_LGRS()
+{
+	SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
+}
+
+/**
+ * Load the link graph schedule.
+ */
+static void Load_LGRS()
 {
 	SlObject(&LinkGraphSchedule::instance, GetLinkGraphScheduleDesc());
 }
