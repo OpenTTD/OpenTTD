@@ -44,6 +44,7 @@
 #include "../error.h"
 #include <atomic>
 #include <deque>
+#include <vector>
 #include <string>
 #ifdef __EMSCRIPTEN__
 #	include <emscripten.h>
@@ -1452,6 +1453,48 @@ static void SlDeque(void *deque, VarType conv)
 	}
 }
 
+/**
+ * Return the size in bytes of a std::vector.
+ * @param vector The std::vector to find the size of
+ * @param conv VarType type of variable that is used for calculating the size
+ */
+static inline size_t SlCalcVectorLen(const void *vector, VarType conv)
+{
+	switch (GetVarMemType(conv)) {
+		case SLE_VAR_BL: NOT_REACHED(); // Not supported
+		case SLE_VAR_I8: return SlStorageHelper<std::vector, int8>::SlCalcLen(vector, conv);
+		case SLE_VAR_U8: return SlStorageHelper<std::vector, uint8>::SlCalcLen(vector, conv);
+		case SLE_VAR_I16: return SlStorageHelper<std::vector, int16>::SlCalcLen(vector, conv);
+		case SLE_VAR_U16: return SlStorageHelper<std::vector, uint16>::SlCalcLen(vector, conv);
+		case SLE_VAR_I32: return SlStorageHelper<std::vector, int32>::SlCalcLen(vector, conv);
+		case SLE_VAR_U32: return SlStorageHelper<std::vector, uint32>::SlCalcLen(vector, conv);
+		case SLE_VAR_I64: return SlStorageHelper<std::vector, int64>::SlCalcLen(vector, conv);
+		case SLE_VAR_U64: return SlStorageHelper<std::vector, uint64>::SlCalcLen(vector, conv);
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Save/load a std::vector.
+ * @param vector The std::vector being manipulated
+ * @param conv VarType type of variable that is used for calculating the size
+ */
+static void SlVector(void *vector, VarType conv)
+{
+	switch (GetVarMemType(conv)) {
+		case SLE_VAR_BL: NOT_REACHED(); // Not supported
+		case SLE_VAR_I8: SlStorageHelper<std::vector, int8>::SlSaveLoad(vector, conv); break;
+		case SLE_VAR_U8: SlStorageHelper<std::vector, uint8>::SlSaveLoad(vector, conv); break;
+		case SLE_VAR_I16: SlStorageHelper<std::vector, int16>::SlSaveLoad(vector, conv); break;
+		case SLE_VAR_U16: SlStorageHelper<std::vector, uint16>::SlSaveLoad(vector, conv); break;
+		case SLE_VAR_I32: SlStorageHelper<std::vector, int32>::SlSaveLoad(vector, conv); break;
+		case SLE_VAR_U32: SlStorageHelper<std::vector, uint32>::SlSaveLoad(vector, conv); break;
+		case SLE_VAR_I64: SlStorageHelper<std::vector, int64>::SlSaveLoad(vector, conv); break;
+		case SLE_VAR_U64: SlStorageHelper<std::vector, uint64>::SlSaveLoad(vector, conv); break;
+		default: NOT_REACHED();
+	}
+}
+
 /** Are we going to save this object or not? */
 static inline bool SlIsObjectValidInSavegame(const SaveLoad &sld)
 {
@@ -1488,6 +1531,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 		case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld.length, sld.conv);
 		case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
+		case SL_VECTOR: return SlCalcVectorLen(GetVariableAddress(object, sld), sld.conv);
 		case SL_STDSTR: return SlCalcStdStringLen(GetVariableAddress(object, sld));
 		case SL_SAVEBYTE: return 1; // a byte is logically of size 1
 		case SL_NULL: return SlCalcConvFileLen(sld.conv) * sld.length;
@@ -1583,6 +1627,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		case SL_STR:
 		case SL_REFLIST:
 		case SL_DEQUE:
+		case SL_VECTOR:
 		case SL_STDSTR: {
 			void *ptr = GetVariableAddress(object, sld);
 
@@ -1593,6 +1638,7 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 				case SL_STR: SlString(ptr, sld.length, sld.conv); break;
 				case SL_REFLIST: SlRefList(ptr, conv); break;
 				case SL_DEQUE: SlDeque(ptr, conv); break;
+				case SL_VECTOR: SlVector(ptr, conv); break;
 				case SL_STDSTR: SlStdString(ptr, sld.conv); break;
 				default: NOT_REACHED();
 			}
