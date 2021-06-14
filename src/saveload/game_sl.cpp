@@ -111,28 +111,36 @@ static void Save_GSDT()
 extern GameStrings *_current_data;
 
 static std::string _game_saveload_string;
-static uint _game_saveload_strings;
+static uint32 _game_saveload_strings;
 
-static const SaveLoad _game_language_header[] = {
-	SLEG_SSTR(_game_saveload_string, SLE_STR),
-	 SLEG_VAR(_game_saveload_strings, SLE_UINT32),
-};
+class SlGameLanguageString : public DefaultSaveLoadHandler<SlGameLanguageString, LanguageStrings> {
+public:
+	inline static const SaveLoad description[] = {
+		SLEG_SSTR(_game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
+	};
 
-static const SaveLoad _game_language_string[] = {
-	SLEG_SSTR(_game_saveload_string, SLE_STR | SLF_ALLOW_CONTROL),
-};
-
-static void SaveReal_GSTR(const LanguageStrings *ls)
-{
-	_game_saveload_string  = ls->language.c_str();
-	_game_saveload_strings = (uint)ls->lines.size();
-
-	SlObject(nullptr, _game_language_header);
-	for (const auto &i : ls->lines) {
-		_game_saveload_string = i.c_str();
-		SlObject(nullptr, _game_language_string);
+	void Save(LanguageStrings *ls) const override
+	{
+		for (const auto &string : ls->lines) {
+			_game_saveload_string = string;
+			SlObject(nullptr, this->GetDescription());
+		}
 	}
-}
+
+	void Load(LanguageStrings *ls) const override
+	{
+		for (uint32 i = 0; i < _game_saveload_strings; i++) {
+			SlObject(nullptr, this->GetDescription());
+			ls->lines.emplace_back(_game_saveload_string);
+		}
+	}
+};
+
+static const SaveLoad _game_language_desc[] = {
+	SLE_SSTR(LanguageStrings, language, SLE_STR),
+	SLEG_VAR(_game_saveload_strings, SLE_UINT32),
+	SLEG_STRUCTLIST(SlGameLanguageString),
+};
 
 static void Load_GSTR()
 {
@@ -140,15 +148,8 @@ static void Load_GSTR()
 	_current_data = new GameStrings();
 
 	while (SlIterateArray() != -1) {
-		_game_saveload_string.clear();
-		SlObject(nullptr, _game_language_header);
-
-		LanguageStrings ls(_game_saveload_string);
-		for (uint i = 0; i < _game_saveload_strings; i++) {
-			SlObject(nullptr, _game_language_string);
-			ls.lines.emplace_back(_game_saveload_string);
-		}
-
+		LanguageStrings ls;
+		SlObject(&ls, _game_language_desc);
 		_current_data->raw_strings.push_back(std::move(ls));
 	}
 
@@ -169,7 +170,9 @@ static void Save_GSTR()
 
 	for (uint i = 0; i < _current_data->raw_strings.size(); i++) {
 		SlSetArrayIndex(i);
-		SlAutolength((AutolengthProc *)SaveReal_GSTR, &_current_data->raw_strings[i]);
+		LanguageStrings *ls = &_current_data->raw_strings[i];
+		_game_saveload_strings = (uint32)ls->lines.size();
+		SlObject(ls, _game_language_desc);
 	}
 }
 
