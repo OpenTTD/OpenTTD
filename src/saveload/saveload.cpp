@@ -1897,10 +1897,10 @@ static void SlLoadCheckChunk(const ChunkHandler &ch)
  */
 static void SlSaveChunk(const ChunkHandler &ch)
 {
-	ChunkSaveLoadProc *proc = ch.save_proc;
+	if (ch.type == CH_READONLY) return;
 
-	/* Don't save any chunk information if there is no save handler. */
-	if (proc == nullptr) return;
+	ChunkSaveLoadProc *proc = ch.save_proc;
+	assert(proc != nullptr);
 
 	SlWriteUint32(ch.id);
 	Debug(sl, 2, "Saving chunk {:c}{:c}{:c}{:c}", ch.id >> 24, ch.id >> 16, ch.id >> 8, ch.id);

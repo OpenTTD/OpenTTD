@@ -100,8 +100,8 @@ static void Ptrs_CAPY()
 
 static const ChunkHandler economy_chunk_handlers[] = {
 	{ 'CAPY', Save_CAPY, Load_CAPY, Ptrs_CAPY, nullptr, CH_ARRAY },
-	{ 'PRIC', nullptr,   Load_PRIC, nullptr,   nullptr, CH_RIFF  },
-	{ 'CAPR', nullptr,   Load_CAPR, nullptr,   nullptr, CH_RIFF  },
+	{ 'PRIC', nullptr,   Load_PRIC, nullptr,   nullptr, CH_READONLY  },
+	{ 'CAPR', nullptr,   Load_CAPR, nullptr,   nullptr, CH_READONLY  },
 	{ 'ECMY', Save_ECMY, Load_ECMY, nullptr,   nullptr, CH_ARRAY },
 };
 
