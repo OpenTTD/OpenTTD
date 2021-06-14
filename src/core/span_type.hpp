@@ -73,6 +73,8 @@ public:
 	typedef size_t size_type;
 	typedef std::ptrdiff_t difference_type;
 
+	constexpr span() noexcept : first(nullptr), last(nullptr) {}
+
 	constexpr span(pointer data_in, size_t size_in) : first(data_in), last(data_in + size_in) {}
 
 	template<class Container, typename std::enable_if<(is_compatible_container<Container, element_type>::value), int>::type = 0>

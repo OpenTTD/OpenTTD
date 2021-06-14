@@ -204,7 +204,7 @@ class SlGamelogEmergency : public DefaultSaveLoadHandler<SlGamelogEmergency, Log
 public:
 	/* We need to store something, so store a "true" value. */
 	inline static const SaveLoad description[] = {
-		SLEG_CONDVAR(_is_emergency_save, SLE_BOOL, SLV_RIFF_TO_ARRAY, SL_MAX_VERSION),
+		SLEG_CONDVAR("is_emergency_save", _is_emergency_save, SLE_BOOL, SLV_RIFF_TO_ARRAY, SL_MAX_VERSION),
 	};
 
 	void GenericSaveLoad(LoggedChange *lc) const
@@ -224,17 +224,17 @@ class SlGamelogAction : public DefaultSaveLoadHandler<SlGamelogAction, LoggedAct
 public:
 	inline static const SaveLoad description[] = {
 		SLE_SAVEBYTE(LoggedChange, ct),
-		SLEG_STRUCT(SlGamelogMode),
-		SLEG_STRUCT(SlGamelogRevision),
-		SLEG_STRUCT(SlGamelogOldver),
-		SLEG_STRUCT(SlGamelogSetting),
-		SLEG_STRUCT(SlGamelogGrfadd),
-		SLEG_STRUCT(SlGamelogGrfrem),
-		SLEG_STRUCT(SlGamelogGrfcompat),
-		SLEG_STRUCT(SlGamelogGrfparam),
-		SLEG_STRUCT(SlGamelogGrfmove),
-		SLEG_STRUCT(SlGamelogGrfbug),
-		SLEG_STRUCT(SlGamelogEmergency),
+		SLEG_STRUCT("mode", SlGamelogMode),
+		SLEG_STRUCT("revision", SlGamelogRevision),
+		SLEG_STRUCT("oldver", SlGamelogOldver),
+		SLEG_STRUCT("setting", SlGamelogSetting),
+		SLEG_STRUCT("grfadd", SlGamelogGrfadd),
+		SLEG_STRUCT("grfrem", SlGamelogGrfrem),
+		SLEG_STRUCT("grfcompat", SlGamelogGrfcompat),
+		SLEG_STRUCT("grfparam", SlGamelogGrfparam),
+		SLEG_STRUCT("grfmove", SlGamelogGrfmove),
+		SLEG_STRUCT("grfbug", SlGamelogGrfbug),
+		SLEG_STRUCT("emergency", SlGamelogEmergency),
 	};
 
 	void Save(LoggedAction *la) const override
@@ -285,7 +285,7 @@ public:
 static const SaveLoad _gamelog_desc[] = {
 	SLE_CONDVAR(LoggedAction, at,            SLE_UINT8,   SLV_RIFF_TO_ARRAY, SL_MAX_VERSION),
 	SLE_VAR(LoggedAction, tick,              SLE_UINT16),
-	SLEG_STRUCTLIST(SlGamelogAction),
+	SLEG_STRUCTLIST("action", SlGamelogAction),
 };
 
 static void Load_GLOG_common(LoggedAction *&gamelog_action, uint &gamelog_actions)

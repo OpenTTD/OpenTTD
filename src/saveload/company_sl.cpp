@@ -294,7 +294,7 @@ public:
 		SLE_CONDNULL(32, SL_MIN_VERSION, SLV_107),
 
 		SLE_CONDNULL(64, SLV_2, SLV_107),
-		SLEG_STRUCTLIST(SlCompanyOldAIBuildRec),
+		SLEG_STRUCTLIST("build_rec", SlCompanyOldAIBuildRec),
 	};
 
 	void GenericSaveLoad(CompanyProperties *c) const
@@ -513,11 +513,11 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(CompanyProperties, terraform_limit,       SLE_UINT32,                SLV_156, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, clear_limit,           SLE_UINT32,                SLV_156, SL_MAX_VERSION),
 	SLE_CONDVAR(CompanyProperties, tree_limit,            SLE_UINT32,                SLV_175, SL_MAX_VERSION),
-	SLEG_STRUCT(SlCompanySettings),
-	SLEG_CONDSTRUCT(SlCompanyOldAI,                                                  SL_MIN_VERSION, SLV_107),
-	SLEG_STRUCT(SlCompanyEconomy),
-	SLEG_STRUCTLIST(SlCompanyOldEconomy),
-	SLEG_CONDSTRUCTLIST(SlCompanyLiveries,                                           SLV_34, SL_MAX_VERSION),
+	SLEG_STRUCT("settings", SlCompanySettings),
+	SLEG_CONDSTRUCT("old_ai", SlCompanyOldAI,                                        SL_MIN_VERSION, SLV_107),
+	SLEG_STRUCT("cur_economy", SlCompanyEconomy),
+	SLEG_STRUCTLIST("old_economy", SlCompanyOldEconomy),
+	SLEG_CONDSTRUCTLIST("liveries", SlCompanyLiveries,                               SLV_34, SL_MAX_VERSION),
 };
 
 static void Save_PLYR()
