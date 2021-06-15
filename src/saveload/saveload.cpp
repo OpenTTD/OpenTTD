@@ -1425,33 +1425,21 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 {
 	assert(_sl.action == SLA_SAVE);
 
-	switch (sld.cmd) {
-		case SL_VAR:
-		case SL_REF:
-		case SL_ARR:
-		case SL_STR:
-		case SL_REFLIST:
-		case SL_DEQUE:
-		case SL_STDSTR:
-			/* CONDITIONAL saveload types depend on the savegame version */
-			if (!SlIsObjectValidInSavegame(sld)) break;
+	if (!SlIsObjectValidInSavegame(sld)) return 0;
 
-			switch (sld.cmd) {
-				case SL_VAR: return SlCalcConvFileLen(sld.conv);
-				case SL_REF: return SlCalcRefLen();
-				case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
-				case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld.length, sld.conv);
-				case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
-				case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
-				case SL_STDSTR: return SlCalcStdStringLen(GetVariableAddress(object, sld));
-				default: NOT_REACHED();
-			}
-			break;
+	switch (sld.cmd) {
+		case SL_VAR: return SlCalcConvFileLen(sld.conv);
+		case SL_REF: return SlCalcRefLen();
+		case SL_ARR: return SlCalcArrayLen(sld.length, sld.conv);
+		case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld.length, sld.conv);
+		case SL_REFLIST: return SlCalcRefListLen(GetVariableAddress(object, sld), sld.conv);
+		case SL_DEQUE: return SlCalcDequeLen(GetVariableAddress(object, sld), sld.conv);
+		case SL_STDSTR: return SlCalcStdStringLen(GetVariableAddress(object, sld));
 		case SL_SAVEBYTE: return 1; // a byte is logically of size 1
+		case SL_NULL: return SlCalcConvFileLen(sld.conv) * sld.length;
+
 		case SL_STRUCT:
 		case SL_STRUCTLIST: {
-			if (!SlIsObjectValidInSavegame(sld)) break;
-
 			NeedLength old_need_length = _sl.need_length;
 			size_t old_obj_len = _sl.obj_len;
 
@@ -1473,6 +1461,7 @@ size_t SlCalcObjMemberLength(const void *object, const SaveLoad &sld)
 
 			return length;
 		}
+
 		default: NOT_REACHED();
 	}
 	return 0;
@@ -1530,6 +1519,8 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 {
 	assert(IsVariableSizeRight(sld));
 
+	if (!SlIsObjectValidInSavegame(sld)) return false;
+
 	VarType conv = GB(sld.conv, 0, 8);
 	switch (sld.cmd) {
 		case SL_VAR:
@@ -1539,9 +1530,6 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 		case SL_REFLIST:
 		case SL_DEQUE:
 		case SL_STDSTR: {
-			/* CONDITIONAL saveload types depend on the savegame version */
-			if (!SlIsObjectValidInSavegame(sld)) return false;
-
 			void *ptr = GetVariableAddress(object, sld);
 
 			switch (sld.cmd) {
@@ -1574,10 +1562,22 @@ static bool SlObjectMember(void *object, const SaveLoad &sld)
 			break;
 		}
 
+		case SL_NULL: {
+			assert(GetVarMemType(sld.conv) == SLE_VAR_NULL);
+
+			switch (_sl.action) {
+				case SLA_LOAD_CHECK:
+				case SLA_LOAD: SlSkipBytes(SlCalcConvFileLen(sld.conv) * sld.length); break;
+				case SLA_SAVE: for (int i = 0; i < SlCalcConvFileLen(sld.conv) * sld.length; i++) SlWriteByte(0); break;
+				case SLA_PTRS:
+				case SLA_NULL: break;
+				default: NOT_REACHED();
+			}
+			break;
+		}
+
 		case SL_STRUCT:
 		case SL_STRUCTLIST:
-			if (!SlIsObjectValidInSavegame(sld)) return false;
-
 			switch (_sl.action) {
 				case SLA_SAVE: {
 					if (sld.cmd == SL_STRUCT) {
