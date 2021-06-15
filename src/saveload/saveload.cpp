@@ -1069,6 +1069,12 @@ void SlArray(void *array, size_t length, VarType conv)
 		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 
+	if (GetVarMemType(conv) == SLE_VAR_NULL) {
+		assert(_sl.action != SLA_SAVE); // Use SL_NULL if you want to write null-bytes
+		SlSkipBytes(SlCalcArrayLen(length, conv));
+		return;
+	}
+
 	/* NOTICE - handle some buggy stuff, in really old versions everything was saved
 	 * as a byte-type. So detect this, and adjust array size accordingly */
 	if (_sl.action != SLA_SAVE && _sl_version == 0) {
