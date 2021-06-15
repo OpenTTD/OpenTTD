@@ -780,20 +780,6 @@ struct SaveLoadCompat {
 #define SLE_REFLIST(base, variable, type) SLE_CONDREFLIST(base, variable, type, SL_MIN_VERSION, SL_MAX_VERSION)
 
 /**
- * Empty space in every savegame version.
- * @param length Length of the empty space.
- */
-#define SLE_NULL(length) SLE_CONDNULL(length, SL_MIN_VERSION, SL_MAX_VERSION)
-
-/**
- * Empty space in some savegame versions.
- * @param length Length of the empty space.
- * @param from   First savegame version that has the empty space.
- * @param to     Last savegame version that has the empty space.
- */
-#define SLE_CONDNULL(length, from, to) SaveLoad {"", SL_NULL, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
-
-/**
  * Only write byte during saving; never read it during loading.
  * When using SLE_SAVEBYTE you will have to read this byte before the table
  * this is in is read. This also means SLE_SAVEBYTE can only be used at the
@@ -977,14 +963,6 @@ struct SaveLoadCompat {
  * @param handler SaveLoadHandler for the list of structs.
  */
 #define SLEG_STRUCTLIST(name, handler) SLEG_CONDSTRUCTLIST(name, handler, SL_MIN_VERSION, SL_MAX_VERSION)
-
-/**
- * Empty global space in some savegame versions.
- * @param length Length of the empty space.
- * @param from   First savegame version that has the empty space.
- * @param to     Last savegame version that has the empty space.
- */
-#define SLEG_CONDNULL(length, from, to) SaveLoad {"", SL_NULL, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
 
 /**
  * Field name where the real SaveLoad can be located.
