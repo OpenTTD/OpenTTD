@@ -43,9 +43,7 @@ static size_t ConvertLandscape(const char *value);
  * These are actually normal numbers, only bitmasked. In MMANY several bits can
  * be set, in the other only one.
  * If nothing fits you, you can use the GENERAL macros, but it exposes the
- * internal structure somewhat so it needs a little looking. There are _NULL()
- * macros as well, these fill up space so you can add more settings there (in
- * place) and you DON'T have to increase the savegame version.
+ * internal structure somewhat so it needs a little looking.
  *
  * While reading values from openttd.cfg, some values may not be converted
  * properly, for any kind of reasons.  In order to allow a process of self-cleaning
@@ -76,9 +74,6 @@ static size_t ConvertLandscape(const char *value);
 #define SDTG_MMANY(name, type, flags, var, def, full, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
 	NSD(ManyOfMany, SLEG_GENERAL(#var, SL_VAR, var, type, 1, from, to, extra), name, flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
 
-#define SDTG_NULL(length, from, to)\
-	NSD(Null, SLEG_NULL(length, from, to))
-
 /* Macros for various objects to go in the configuration file.
  * This section is for structures where their various members are saved */
 #define SDT_VAR(base, var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
@@ -98,9 +93,6 @@ static size_t ConvertLandscape(const char *value);
 
 #define SDT_MMANY(base, var, type, flags, def, full, str, pre_check, post_callback, strhelp, strval, from, to, cat, extra, startup)\
 	NSD(ManyOfMany, SLE_GENERAL(SL_VAR, base, var, type, 1, from, to, extra), #var, flags, startup, def, str, strhelp, strval, cat, pre_check, post_callback, full, nullptr)
-
-#define SDT_NULL(length, from, to)\
-	NSD(Null, SLE_CONDNULL(length, from, to))
 
 
 #define SDTC_VAR(var, type, flags, def, min, max, interval, str, strhelp, strval, pre_check, post_callback, from, to, cat, extra, startup)\
