@@ -573,6 +573,7 @@ enum SaveLoadType : byte {
 	SL_STRUCT      =  7, ///< Save/load a struct.
 	SL_STRUCTLIST  =  8, ///< Save/load a list of structs.
 	SL_SAVEBYTE    =  9, ///< Save (but not load) a byte.
+	SL_NULL        = 10, ///< Save null-bytes and load to nowhere.
 };
 
 typedef void *SaveLoadAddrProc(void *base, size_t extra);
@@ -737,7 +738,7 @@ struct SaveLoad {
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLE_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
+#define SLE_CONDNULL(length, from, to) {SL_NULL, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
 
 /**
  * Only write byte during saving; never read it during loading.
@@ -895,7 +896,7 @@ struct SaveLoad {
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLEG_CONDNULL(length, from, to) {SL_ARR, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
+#define SLEG_CONDNULL(length, from, to) {SL_NULL, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
 
 /**
  * Checks whether the savegame is below \a major.\a minor.
