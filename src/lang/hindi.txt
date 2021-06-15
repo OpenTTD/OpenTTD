@@ -19,11 +19,26 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_EMPTY                                                       :
+STR_UNDEFINED                                                   :(अपरिभाषित सूत्र)
+STR_JUST_NOTHING                                                :कुछ नहीं
 
 # Cargo related strings
 # Plural cargo name
 STR_CARGO_PLURAL_NOTHING                                        :
+STR_CARGO_PLURAL_PASSENGERS                                     :यात्रीगण
 STR_CARGO_PLURAL_COAL                                           :कोयला
+STR_CARGO_PLURAL_MAIL                                           :डाक
+STR_CARGO_PLURAL_OIL                                            :तेल
+STR_CARGO_PLURAL_LIVESTOCK                                      :पशुधन
+STR_CARGO_PLURAL_GOODS                                          :वस्तुएं
+STR_CARGO_PLURAL_GRAIN                                          :अन्न
+STR_CARGO_PLURAL_WOOD                                           :काष्ठ
+STR_CARGO_PLURAL_IRON_ORE                                       :लौह अयस्क
+STR_CARGO_PLURAL_STEEL                                          :इस्पात
+STR_CARGO_PLURAL_VALUABLES                                      :मूल्यवान वस्तुएं
+STR_CARGO_PLURAL_COPPER_ORE                                     :ताम्र अयस्क
+STR_CARGO_PLURAL_MAIZE                                          :मक्के
+STR_CARGO_PLURAL_FRUIT                                          :फल
 
 # Singular cargo name
 STR_CARGO_SINGULAR_NOTHING                                      :
@@ -222,7 +237,7 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 # Game options window
 
 ############ start of currency region
-STR_GAME_OPTIONS_CURRENCY_FIM                                   :मार्का, फिनलैंड (FIM)
+STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिनलैंड मार्का (FIM)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :हाँग काँग डॉलर (एचकेडी)
 ############ end of currency region
 
@@ -358,6 +373,9 @@ STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}अप�
 STR_QUIT_YES                                                    :{BLACK}हाँ
 
 # Abandon game
+STR_ABANDON_GAME_CAPTION                                        :{WHITE}खेल छोड़ें
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}क्या आप वास्तव में खेल छोड़ना चाहते हैं?
+STR_ABANDON_SCENARIO_QUERY                                      :{YELLOW}क्या आप वास्तव में यह परिदृश्य छोड़ना चाहते हैं?
 
 # Cheat window
 
@@ -418,6 +436,7 @@ STR_NETWORK_GAME_LOBBY_INAUGURATION_YEAR                        :{SILVER}उद�
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
+STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION_CAPTION            :{WHITE}संपर्क विच्छेद संभावित
 
 # Network related errors
 ############ Leave those lines in this order!!
@@ -463,8 +482,10 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}डा�
 
 
 STR_STATION_CLASS_DFLT                                          :मानक स्टेशन
+STR_STATION_CLASS_WAYP                                          :पथ-संकेत
 
 # Signal window
+STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}खींचते समय संकेतों के बीच की दूरी
 
 # Bridge selection window
 
@@ -495,6 +516,7 @@ STR_AIRPORT_CLASS_SMALL                                         :लघु व�
 
 # Object construction window
 
+STR_OBJECT_CLASS_LTHS                                           :प्रकाश स्तम्भ
 
 # Tree planting window (last eight for SE only)
 
@@ -511,10 +533,12 @@ STR_FOUND_TOWN_CITY                                             :{BLACK}शह�
 # Fund new industry window
 
 # Industry cargoes window
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}उद्योग चुनें
 
 # Land area window
 
 # Description of land area of different tiles
+STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :रिक्त भूमि
 
 
 
@@ -542,6 +566,7 @@ STR_FRAMERATE_BYTES_BAD                                         :{RED}{BYTES}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :माल प्रबंधन
 ############ End of leave-in-this-order
 
 
@@ -925,6 +950,7 @@ STR_ERROR_TOO_HIGH                                              :{WHITE}... ब�
 
 # Town related errors
 STR_ERROR_CAN_T_RENAME_TOWN                                     :{WHITE}नगर का नाम नहीं बदला जा सकता है...
+STR_ERROR_TOO_CLOSE_TO_EDGE_OF_MAP_SUB                          :{WHITE}... मानचित्र के किनारों के बहुत समीप
 
 # Industry related errors
 STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... वन केवल बर्फ की सीमा के ऊपर ही लगाये जा सकते हैं।
@@ -951,6 +977,7 @@ STR_ERROR_FOREST_CAN_ONLY_BE_PLANTED                            :{WHITE}... व�
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}स्वतः नवीनीकरण/बदलाव का कोई भी नियम लागू नहीं किया गया
 
 # Rail construction errors
+STR_ERROR_CAN_T_REMOVE_RAILROAD_TRACK                           :{WHITE}पटरियों को यहाँ से नहीं हटा सकते...
 
 
 # Road construction errors
