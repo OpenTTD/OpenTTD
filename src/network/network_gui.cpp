@@ -1628,10 +1628,11 @@ static const NWidgetPart _nested_client_list_widgets[] = {
 		EndContainer(),
 		NWidget(NWID_HORIZONTAL),
 			NWidget(WWT_MATRIX, COLOUR_GREY, WID_CL_MATRIX), SetMinimalSize(180, 0), SetResize(1, 1), SetFill(1, 1), SetMatrixDataTip(1, 0, STR_NULL), SetScrollbar(WID_CL_SCROLLBAR),
-			NWidget(NWID_VERTICAL),
-				NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_CL_SCROLLBAR),
-				NWidget(WWT_RESIZEBOX, COLOUR_GREY),
-			EndContainer(),
+			NWidget(NWID_VSCROLLBAR, COLOUR_GREY, WID_CL_SCROLLBAR),
+		EndContainer(),
+		NWidget(NWID_HORIZONTAL),
+			NWidget(WWT_TEXTBTN, COLOUR_GREY, WID_CL_CLIENT_NUMBER), SetFill(1, 0), SetMinimalTextLines(1, 0), SetResize(1, 0), SetAlignment(SA_RIGHT),
+			NWidget(WWT_RESIZEBOX, COLOUR_GREY),
 		EndContainer(),
 	EndContainer(),
 };
@@ -2368,6 +2369,16 @@ public:
 
 				/* Specators */
 				this->DrawCompany(COMPANY_SPECTATOR, r.left, r.right, r.top, line);
+
+				break;
+			}
+
+			case WID_CL_CLIENT_NUMBER: {
+				/* Number of clients */
+				int text_y_offset = std::max(0, ((int)this->line_height - (int)FONT_HEIGHT_NORMAL) / 2);
+				SetDParam(0, NetworkClientInfo::GetNumItems());
+				SetDParam(1, Company::GetNumItems());
+				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, r.top + text_y_offset, STR_NETWORK_CLIENT_LIST_CLIENT_NUMBER, TC_SILVER, SA_RIGHT);
 
 				break;
 			}
