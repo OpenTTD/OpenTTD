@@ -63,7 +63,7 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 {
 	/* Get the AIInfo */
 	SQUserPointer instance = nullptr;
-	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, 0)) || instance == nullptr) return sq_throwerror(vm, "Pass an instance of a child class of AIInfo to RegisterAI");
+	if (SQ_FAILED(sq_getinstanceup(vm, 2, &instance, nullptr)) || instance == nullptr) return sq_throwerror(vm, "Pass an instance of a child class of AIInfo to RegisterAI");
 	AIInfo *info = (AIInfo *)instance;
 
 	SQInteger res = ScriptInfo::Constructor(vm, info);
@@ -107,7 +107,7 @@ template <> const char *GetClassName<AIInfo, ST_AI>() { return "AIInfo"; }
 {
 	/* Get the AIInfo */
 	SQUserPointer instance;
-	sq_getinstanceup(vm, 2, &instance, 0);
+	sq_getinstanceup(vm, 2, &instance, nullptr);
 	AIInfo *info = (AIInfo *)instance;
 	info->api_version = nullptr;
 
