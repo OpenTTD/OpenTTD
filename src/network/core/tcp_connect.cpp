@@ -268,7 +268,7 @@ bool TCPConnecter::CheckActivity()
 	timeval tv;
 	tv.tv_usec = 0;
 	tv.tv_sec = 0;
-	int n = select(FD_SETSIZE, NULL, &write_fd, NULL, &tv);
+	int n = select(FD_SETSIZE, nullptr, &write_fd, nullptr, &tv);
 	/* select() failed; hopefully next try it doesn't. */
 	if (n < 0) {
 		/* select() normally never fails; so hopefully it works next try! */

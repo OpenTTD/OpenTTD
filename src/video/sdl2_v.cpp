@@ -593,7 +593,7 @@ void VideoDriver_SDL_Base::Stop()
 void VideoDriver_SDL_Base::InputLoop()
 {
 	uint32 mod = SDL_GetModState();
-	const Uint8 *keys = SDL_GetKeyboardState(NULL);
+	const Uint8 *keys = SDL_GetKeyboardState(nullptr);
 
 	bool old_ctrl_pressed = _ctrl_pressed;
 

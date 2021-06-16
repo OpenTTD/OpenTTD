@@ -277,7 +277,7 @@ bool GetClipboardContents(char *buffer, const char *last)
 	}
 
 	char *clip = SDL_GetClipboardText();
-	if (clip != NULL) {
+	if (clip != nullptr) {
 		strecpy(buffer, clip, last);
 		SDL_free(clip);
 		return true;
