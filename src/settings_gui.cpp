@@ -930,8 +930,7 @@ void BaseSettingEntry::Init(byte level)
 bool BaseSettingEntry::IsVisible(const BaseSettingEntry *item) const
 {
 	if (this->IsFiltered()) return false;
-	if (this == item) return true;
-	return false;
+	return this == item;
 }
 
 /**

@@ -956,9 +956,7 @@ static inline bool IsSavegameVersionUntil(SaveLoadVersion major)
 static inline bool SlIsObjectCurrentlyValid(SaveLoadVersion version_from, SaveLoadVersion version_to)
 {
 	extern const SaveLoadVersion SAVEGAME_VERSION;
-	if (SAVEGAME_VERSION < version_from || SAVEGAME_VERSION >= version_to) return false;
-
-	return true;
+	return version_from <= SAVEGAME_VERSION && SAVEGAME_VERSION < version_to;
 }
 
 /**

@@ -639,8 +639,7 @@ static bool ReadyForNextTickerItem()
 
 	/* Ticker message
 	 * Check if the status bar message is still being displayed? */
-	if (IsNewsTickerShown()) return false;
-	return true;
+	return !IsNewsTickerShown();
 }
 
 /**
