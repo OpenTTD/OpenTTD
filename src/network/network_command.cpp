@@ -179,7 +179,7 @@ void NetworkSyncCommandQueue(NetworkClientSocket *cs)
 {
 	for (CommandPacket *p = _local_execution_queue.Peek(); p != nullptr; p = p->next) {
 		CommandPacket c = *p;
-		c.callback = 0;
+		c.callback = nullptr;
 		cs->outgoing_queue.Append(&c);
 	}
 }

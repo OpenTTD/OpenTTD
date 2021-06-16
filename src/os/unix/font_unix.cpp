@@ -51,10 +51,10 @@ FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		/* Resolve the name and populate the information structure */
 		pat = FcNameParse((FcChar8 *)font_family);
 		if (font_style != nullptr) FcPatternAddString(pat, FC_STYLE, (FcChar8 *)font_style);
-		FcConfigSubstitute(0, pat, FcMatchPattern);
+		FcConfigSubstitute(nullptr, pat, FcMatchPattern);
 		FcDefaultSubstitute(pat);
 		fs = FcFontSetCreate();
-		match = FcFontMatch(0, pat, &result);
+		match = FcFontMatch(nullptr, pat, &result);
 
 		if (fs != nullptr && match != nullptr) {
 			int i;
