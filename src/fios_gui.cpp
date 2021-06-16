@@ -868,7 +868,7 @@ public:
 						this->fios_items_shown[i] = this->string_filter.GetState();
 						if (this->fios_items_shown[i]) items_shown_count++;
 
-						if (&(this->fios_items[i]) == this->selected && this->fios_items_shown[i] == false) {
+						if (&(this->fios_items[i]) == this->selected && !this->fios_items_shown[i]) {
 							/* The selected element has been filtered out */
 							this->selected = nullptr;
 							this->OnInvalidateData(SLIWD_SELECTION_CHANGES);

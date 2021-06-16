@@ -468,7 +468,7 @@ int64 ScriptList::Begin()
 
 int64 ScriptList::Next()
 {
-	if (this->initialized == false) {
+	if (!this->initialized) {
 		Debug(script, 0, "Next() is invalid as Begin() is never called");
 		return 0;
 	}
@@ -482,7 +482,7 @@ bool ScriptList::IsEmpty()
 
 bool ScriptList::IsEnd()
 {
-	if (this->initialized == false) {
+	if (!this->initialized) {
 		Debug(script, 0, "IsEnd() is invalid as Begin() is never called");
 		return true;
 	}

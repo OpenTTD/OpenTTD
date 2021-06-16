@@ -135,7 +135,7 @@ void sq_close(HSQUIRRELVM v)
 SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,const SQChar *sourcename,SQBool raiseerror)
 {
 	SQObjectPtr o;
-	if(Compile(v, read, p, sourcename, o, raiseerror?true:false, _ss(v)->_debuginfo)) {
+	if(Compile(v, read, p, sourcename, o, raiseerror != 0, _ss(v)->_debuginfo)) {
 		v->Push(SQClosure::Create(_ss(v), _funcproto(o)));
 		return SQ_OK;
 	}
@@ -144,12 +144,12 @@ SQRESULT sq_compile(HSQUIRRELVM v,SQLEXREADFUNC read,SQUserPointer p,const SQCha
 
 void sq_enabledebuginfo(HSQUIRRELVM v, SQBool enable)
 {
-	_ss(v)->_debuginfo = enable?true:false;
+	_ss(v)->_debuginfo = enable != 0;
 }
 
 void sq_notifyallexceptions(HSQUIRRELVM v, SQBool enable)
 {
-	_ss(v)->_notifyallexceptions = enable?true:false;
+	_ss(v)->_notifyallexceptions = enable != 0;
 }
 
 void sq_addref(HSQUIRRELVM v,HSQOBJECT *po)
@@ -224,7 +224,7 @@ void sq_pushinteger(HSQUIRRELVM v,SQInteger n)
 
 void sq_pushbool(HSQUIRRELVM v,SQBool b)
 {
-	v->Push(b?true:false);
+	v->Push(b != 0);
 }
 
 void sq_pushfloat(HSQUIRRELVM v,SQFloat n)
@@ -724,7 +724,7 @@ SQRESULT sq_newslot(HSQUIRRELVM v, SQInteger idx, SQBool bstatic)
 	if(type(self) == OT_TABLE || type(self) == OT_CLASS) {
 		SQObjectPtr &key = v->GetUp(-2);
 		if(type(key) == OT_NULL) return sq_throwerror(v, "null is not a valid key");
-		v->NewSlot(self, key, v->GetUp(-1),bstatic?true:false);
+		v->NewSlot(self, key, v->GetUp(-1),bstatic != 0);
 		v->Pop(2);
 	}
 	return SQ_OK;
@@ -975,7 +975,7 @@ SQRESULT sq_call(HSQUIRRELVM v,SQInteger params,SQBool retval,SQBool raiseerror,
 	v->_can_suspend = suspend >= 0;
 	if (v->_can_suspend) v->_ops_till_suspend = suspend;
 
-	if(v->Call(v->GetUp(-(params+1)),params,v->_top-params,res,raiseerror?true:false,v->_can_suspend)){
+	if(v->Call(v->GetUp(-(params+1)),params,v->_top-params,res,raiseerror != 0,v->_can_suspend)){
 		if(!v->_suspended) {
 			v->Pop(params);//pop closure and args
 		}

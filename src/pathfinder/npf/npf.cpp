@@ -826,9 +826,7 @@ static bool CanEnterTile(TileIndex tile, DiagDirection dir, AyStarUserData *user
 
 	/* Depots, standard roadstops and single tram bits can only be entered from one direction */
 	DiagDirection single_entry = GetTileSingleEntry(tile, user->type, user->subtype);
-	if (single_entry != INVALID_DIAGDIR && single_entry != ReverseDiagDir(dir)) return false;
-
-	return true;
+	return single_entry == INVALID_DIAGDIR || single_entry == ReverseDiagDir(dir);
 }
 
 /**

@@ -437,7 +437,7 @@ bool SQVM::Return(SQInteger _arg0, SQInteger _arg1, SQObjectPtr &retval)
 
 	while (last_top > oldstackbase) _stack._vals[last_top--].Null();
 	assert(oldstackbase >= _stackbase);
-	return broot?true:false;
+	return broot != 0;
 }
 
 #define _RET_ON_FAIL(exp) { if(!exp) return false; }
@@ -653,7 +653,7 @@ bool SQVM::CLASS_OP(SQObjectPtr &target,SQInteger baseclass,SQInteger attributes
 bool SQVM::IsEqual(SQObjectPtr &o1,SQObjectPtr &o2,bool &res)
 {
 	if(type(o1) == type(o2)) {
-		res = ((_rawval(o1) == _rawval(o2)?true:false));
+		res = ((_rawval(o1) == _rawval(o2)));
 	}
 	else {
 		if(sq_isnumeric(o1) && sq_isnumeric(o2)) {
@@ -1028,7 +1028,7 @@ common_call:
 			case _OP_THROW:	Raise_Error(TARGET); SQ_THROW();
 			case _OP_CLASS: _GUARD(CLASS_OP(TARGET,arg1,arg2)); continue;
 			case _OP_NEWSLOTA:
-				bool bstatic = (arg0&NEW_SLOT_STATIC_FLAG)?true:false;
+				bool bstatic = (arg0&NEW_SLOT_STATIC_FLAG) != 0;
 				if(type(STK(arg1)) == OT_CLASS) {
 					if(type(_class(STK(arg1))->_metamethods[MT_NEWMEMBER]) != OT_NULL ) {
 						Push(STK(arg1)); Push(STK(arg2)); Push(STK(arg3));
