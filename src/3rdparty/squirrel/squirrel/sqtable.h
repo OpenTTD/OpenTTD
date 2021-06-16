@@ -27,7 +27,7 @@ struct SQTable : public SQDelegable
 private:
 	struct _HashNode
 	{
-		_HashNode() { next = NULL; }
+		_HashNode() { next = nullptr; }
 		SQObjectPtr val;
 		SQObjectPtr key;
 		_HashNode *next;
@@ -47,14 +47,14 @@ public:
 	{
 		SQTable *newtable = (SQTable*)SQ_MALLOC(sizeof(SQTable));
 		new (newtable) SQTable(ss, nInitialSize);
-		newtable->_delegate = NULL;
+		newtable->_delegate = nullptr;
 		return newtable;
 	}
 	void Finalize() override;
 	SQTable *Clone();
 	~SQTable()
 	{
-		SetDelegate(NULL);
+		SetDelegate(nullptr);
 		REMOVE_FROM_CHAIN(&_sharedstate->_gc_chain, this);
 		for (SQInteger i = 0; i < _numofnodes; i++) _nodes[i].~_HashNode();
 		SQ_FREE(_nodes, _numofnodes * sizeof(_HashNode));
@@ -70,7 +70,7 @@ public:
 				return n;
 			}
 		}while((n = n->next));
-		return NULL;
+		return nullptr;
 	}
 	bool Get(const SQObjectPtr &key,SQObjectPtr &val);
 	void Remove(const SQObjectPtr &key);

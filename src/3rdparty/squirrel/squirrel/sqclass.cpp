@@ -15,8 +15,8 @@
 SQClass::SQClass(SQSharedState *ss,SQClass *base)
 {
 	_base = base;
-	_typetag = 0;
-	_hook = NULL;
+	_typetag = nullptr;
+	_hook = nullptr;
 	_udsize = 0;
 	_metamethods.resize(MT_LAST); //size it to max size
 	if(_base) {
@@ -139,8 +139,8 @@ bool SQClass::GetAttributes(const SQObjectPtr &key,SQObjectPtr &outval)
 ///////////////////////////////////////////////////////////////////////
 void SQInstance::Init(SQSharedState *ss)
 {
-	_userpointer = NULL;
-	_hook = NULL;
+	_userpointer = nullptr;
+	_hook = nullptr;
 	__ObjAddRef(_class);
 	_delegate = _class->_members;
 	INIT_CHAIN();
@@ -196,7 +196,7 @@ bool SQInstance::GetMetaMethod(SQVM *v,SQMetaMethod mm,SQObjectPtr &res)
 bool SQInstance::InstanceOf(SQClass *trg)
 {
 	SQClass *parent = _class;
-	while(parent != NULL) {
+	while(parent != nullptr) {
 		if(parent == trg)
 			return true;
 		parent = parent->_base;
