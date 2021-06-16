@@ -21,9 +21,6 @@
 #include <map>
 #include <set>
 
-typedef Pool<BaseStation, StationID, 32, 64000> StationPool;
-extern StationPool _station_pool;
-
 static const byte INITIAL_STATION_RATING = 175;
 
 /**
