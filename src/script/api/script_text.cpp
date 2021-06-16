@@ -109,7 +109,7 @@ SQInteger ScriptText::_SetParam(int parameter, HSQUIRRELVM vm)
 			sq_pop(vm, 3);
 
 			/* Get the 'real' instance of this class */
-			sq_getinstanceup(vm, -1, &real_instance, 0);
+			sq_getinstanceup(vm, -1, &real_instance, nullptr);
 			if (real_instance == nullptr) return SQ_ERROR;
 
 			ScriptText *value = static_cast<ScriptText *>(real_instance);

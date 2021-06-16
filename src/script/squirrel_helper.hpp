@@ -754,9 +754,9 @@ namespace SQConvert {
 		sq_pop(vm, 3);
 
 		/* Get the 'real' instance of this class */
-		sq_getinstanceup(vm, 1, &real_instance, 0);
+		sq_getinstanceup(vm, 1, &real_instance, nullptr);
 		/* Get the real function pointer */
-		sq_getuserdata(vm, nparam, &ptr, 0);
+		sq_getuserdata(vm, nparam, &ptr, nullptr);
 		if (real_instance == nullptr) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
@@ -796,9 +796,9 @@ namespace SQConvert {
 		sq_pop(vm, 3);
 
 		/* Get the 'real' instance of this class */
-		sq_getinstanceup(vm, 1, &real_instance, 0);
+		sq_getinstanceup(vm, 1, &real_instance, nullptr);
 		/* Get the real function pointer */
-		sq_getuserdata(vm, nparam, &ptr, 0);
+		sq_getuserdata(vm, nparam, &ptr, nullptr);
 		if (real_instance == nullptr) return sq_throwerror(vm, "couldn't detect real instance of class for non-static call");
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
@@ -820,7 +820,7 @@ namespace SQConvert {
 		SQUserPointer ptr = nullptr;
 
 		/* Get the real function pointer */
-		sq_getuserdata(vm, nparam, &ptr, 0);
+		sq_getuserdata(vm, nparam, &ptr, nullptr);
 
 		try {
 			/* Delegate it to a template that can handle this specific function */
@@ -844,7 +844,7 @@ namespace SQConvert {
 		SQUserPointer ptr = nullptr;
 
 		/* Get the real function pointer */
-		sq_getuserdata(vm, nparam, &ptr, 0);
+		sq_getuserdata(vm, nparam, &ptr, nullptr);
 		/* Remove the userdata from the stack */
 		sq_pop(vm, 1);
 
