@@ -376,7 +376,7 @@ set_name:;
 		MarkWholeScreenDirty();
 
 		if (c->is_ai) {
-			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
+			CompanyNewsInformation *cni = new CompanyNewsInformation();
 			cni->FillData(c);
 			SetDParam(0, STR_NEWS_COMPANY_LAUNCH_TITLE);
 			SetDParam(1, STR_NEWS_COMPANY_LAUNCH_DESCRIPTION);
@@ -888,7 +888,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, DoCommandFlag flags, uint32 p1, uint3
 
 			/* Delete any open window of the company */
 			CloseCompanyWindows(c->index);
-			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
+			CompanyNewsInformation *cni = new CompanyNewsInformation();
 			cni->FillData(c);
 
 			/* Show the bankrupt news */

@@ -115,6 +115,12 @@ struct NewsTypeData {
 	NewsDisplay GetDisplay() const;
 };
 
+/** Container for any custom data that must be deleted after the news item has reached end-of-life. */
+struct NewsAllocatedData {
+	virtual ~NewsAllocatedData() {}
+};
+
+
 /** Information about a single item of news. */
 struct NewsItem {
 	NewsItem *prev;              ///< Previous news item
@@ -129,14 +135,20 @@ struct NewsItem {
 	uint32 ref1;                 ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
 	uint32 ref2;                 ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
 
-	void *free_data;             ///< Data to be freed when the news item has reached its end.
+	const NewsAllocatedData *data; ///< Custom data for the news item that have to be deallocated (deleted) when the news item has reached its end.
 
 	~NewsItem()
 	{
-		free(this->free_data);
+		delete this->data;
 	}
 
 	uint64 params[10]; ///< Parameters for string resolving.
+};
+
+/** Container for a single string to be passed as NewsAllocatedData. */
+struct NewsStringData : NewsAllocatedData {
+	std::string string; ///< The string to retain.
+	NewsStringData(const std::string &str) : string(str) {}
 };
 
 /**
@@ -145,7 +157,7 @@ struct NewsItem {
  * of the companies and the fact that the company data is reset,
  * resulting in wrong names and such.
  */
-struct CompanyNewsInformation {
+struct CompanyNewsInformation : NewsAllocatedData {
 	char company_name[64];       ///< The name of the company
 	char president_name[64];     ///< The name of the president
 	char other_company_name[64]; ///< The name of the company taking over this one
