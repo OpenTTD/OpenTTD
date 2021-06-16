@@ -355,7 +355,7 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MGR_NAME:
-				SetDParamStr(0, static_cast<const CompanyNewsInformation *>(this->ni->free_data)->president_name);
+				SetDParamStr(0, static_cast<const CompanyNewsInformation *>(this->ni->data)->president_name);
 				str = STR_JUST_RAW_STRING;
 				break;
 
@@ -433,13 +433,13 @@ struct NewsWindow : Window {
 				break;
 
 			case WID_N_MGR_FACE: {
-				const CompanyNewsInformation *cni = (const CompanyNewsInformation*)this->ni->free_data;
+				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data);
 				DrawCompanyManagerFace(cni->face, cni->colour, r.left, r.top);
 				GfxFillRect(r.left, r.top, r.right, r.bottom, PALETTE_NEWSPAPER, FILLRECT_RECOLOUR);
 				break;
 			}
 			case WID_N_MGR_NAME: {
-				const CompanyNewsInformation *cni = (const CompanyNewsInformation*)this->ni->free_data;
+				const CompanyNewsInformation *cni = static_cast<const CompanyNewsInformation*>(this->ni->data);
 				SetDParamStr(0, cni->president_name);
 				DrawStringMultiLine(r.left, r.right, r.top, r.bottom, STR_JUST_RAW_STRING, TC_FROMSTRING, SA_CENTER);
 				break;
@@ -783,7 +783,7 @@ static void DeleteNewsItem(NewsItem *ni)
  *
  * @see NewsSubtype
  */
-void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, void *free_data)
+void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, const NewsAllocatedData *data)
 {
 	if (_game_mode == GM_MENU) return;
 
@@ -801,7 +801,7 @@ void AddNewsItem(StringID string, NewsType type, NewsFlag flags, NewsReferenceTy
 	ni->reftype2 = reftype2;
 	ni->ref1 = ref1;
 	ni->ref2 = ref2;
-	ni->free_data = free_data;
+	ni->data = data;
 	ni->date = _date;
 	CopyOutDParam(ni->params, 0, lengthof(ni->params));
 
@@ -882,8 +882,8 @@ CommandCost CmdCustomNewsItem(TileIndex tile, DoCommandFlag flags, uint32 p1, ui
 	if (company != INVALID_OWNER && company != _local_company) return CommandCost();
 
 	if (flags & DC_EXEC) {
-		char *news = stredup(text.c_str());
-		SetDParamStr(0, news);
+		NewsStringData *news = new NewsStringData(text);
+		SetDParamStr(0, news->string);
 		AddNewsItem(STR_NEWS_CUSTOM_ITEM, type, NF_NORMAL, reftype1, p2, NR_NONE, UINT32_MAX, news);
 	}
 
