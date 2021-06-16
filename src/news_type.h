@@ -158,14 +158,14 @@ struct NewsStringData : NewsAllocatedData {
  * resulting in wrong names and such.
  */
 struct CompanyNewsInformation : NewsAllocatedData {
-	char company_name[64];       ///< The name of the company
-	char president_name[64];     ///< The name of the president
-	char other_company_name[64]; ///< The name of the company taking over this one
+	std::string company_name;       ///< The name of the company
+	std::string president_name;     ///< The name of the president
+	std::string other_company_name; ///< The name of the company taking over this one
 
 	uint32 face; ///< The face of the president
 	byte colour; ///< The colour related to the company
 
-	void FillData(const struct Company *c, const struct Company *other = nullptr);
+	CompanyNewsInformation(const struct Company *c, const struct Company *other = nullptr);
 };
 
 #endif /* NEWS_TYPE_H */
