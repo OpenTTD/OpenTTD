@@ -4,12 +4,12 @@
 
 struct SQUserData : SQDelegable
 {
-	SQUserData(SQSharedState *ss, SQInteger size){ _delegate = 0; _hook = NULL; INIT_CHAIN(); ADD_TO_CHAIN(&_ss(this)->_gc_chain, this); _size = size; _typetag = 0;
+	SQUserData(SQSharedState *ss, SQInteger size){ _delegate = nullptr; _hook = nullptr; INIT_CHAIN(); ADD_TO_CHAIN(&_ss(this)->_gc_chain, this); _size = size; _typetag = nullptr;
 }
 	~SQUserData()
 	{
 		REMOVE_FROM_CHAIN(&_ss(this)->_gc_chain, this);
-		SetDelegate(NULL);
+		SetDelegate(nullptr);
 	}
 	static SQUserData* Create(SQSharedState *ss, SQInteger size)
 	{
@@ -19,7 +19,7 @@ struct SQUserData : SQDelegable
 	}
 #ifndef NO_GARBAGE_COLLECTOR
 	void EnqueueMarkObjectForChildren(SQGCMarkerQueue &queue);
-	void Finalize(){SetDelegate(NULL);}
+	void Finalize(){SetDelegate(nullptr);}
 #endif
 	void Release() {
 		if (_hook) _hook(_val,_size);

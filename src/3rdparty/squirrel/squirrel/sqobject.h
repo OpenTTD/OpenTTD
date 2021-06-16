@@ -56,7 +56,7 @@ enum SQMetaMethod{
 
 struct SQRefCounted
 {
-	SQRefCounted() { _uiRef = 0; _weakref = NULL; }
+	SQRefCounted() { _uiRef = 0; _weakref = nullptr; }
 	virtual ~SQRefCounted();
 	SQWeakRef *GetWeakRef(SQObjectType type);
 	SQUnsignedInteger _uiRef;
@@ -134,7 +134,7 @@ struct SQObjectPtr : public SQObject
 	{
 		SQ_OBJECT_RAWINIT()
 		_type=OT_NULL;
-		_unVal.pUserPointer=NULL;
+		_unVal.pUserPointer=nullptr;
 	}
 	SQObjectPtr(const SQObjectPtr &o)
 	{
@@ -281,7 +281,7 @@ struct SQObjectPtr : public SQObject
 		tOldType = _type;
 		unOldVal = _unVal;
 		_type = OT_NULL;
-		_unVal.pUserPointer = NULL;
+		_unVal.pUserPointer = nullptr;
 		__Release(tOldType,unOldVal);
 	}
 	inline SQObjectPtr& operator=(SQInteger i)

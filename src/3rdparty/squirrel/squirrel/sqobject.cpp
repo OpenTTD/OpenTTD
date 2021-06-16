@@ -41,7 +41,7 @@ const SQChar *IdType2Name(SQObjectType type)
 	case _RT_INSTANCE: return "instance";
 	case _RT_WEAKREF: return "weakref";
 	default:
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -101,13 +101,13 @@ SQRefCounted::~SQRefCounted()
 {
 	if(_weakref) {
 		_weakref->_obj._type = OT_NULL;
-		_weakref->_obj._unVal.pRefCounted = NULL;
+		_weakref->_obj._unVal.pRefCounted = nullptr;
 	}
 }
 
 void SQWeakRef::Release() {
 	if(ISREFCOUNTED(_obj._type)) {
-		_obj._unVal.pRefCounted->_weakref = NULL;
+		_obj._unVal.pRefCounted->_weakref = nullptr;
 	}
 	sq_delete(this,SQWeakRef);
 }
@@ -149,7 +149,7 @@ bool SQGenerator::Yield(SQVM *v)
 	for(SQInteger j = nvargs - 1; j >= 0; j--) {
 		_vargsstack.push_back(v->_vargsstack[vargsbase+j]);
 	}
-	_ci._generator=NULL;
+	_ci._generator=nullptr;
 	for(SQInteger i=0;i<_ci._etraps;i++) {
 		_etraps.push_back(v->_etraps.top());
 		v->_etraps.pop_back();
@@ -204,7 +204,7 @@ void SQArray::Extend(const SQArray *a){
 const SQChar* SQFunctionProto::GetLocal(SQVM *vm,SQUnsignedInteger stackbase,SQUnsignedInteger nseq,SQUnsignedInteger nop)
 {
 	SQUnsignedInteger nvars=_nlocalvarinfos;
-	const SQChar *res=NULL;
+	const SQChar *res=nullptr;
 	if(nvars>=nseq){
 		for(SQUnsignedInteger i=0;i<nvars;i++){
 			if(_localvarinfos[i]._start_op<=nop && _localvarinfos[i]._end_op>=nop)

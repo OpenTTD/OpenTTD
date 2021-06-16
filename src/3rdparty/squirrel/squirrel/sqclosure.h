@@ -45,7 +45,7 @@ struct SQGenerator : public CHAINABLE_OBJ
 {
 	enum SQGeneratorState{eRunning,eSuspended,eDead};
 private:
-	SQGenerator(SQSharedState *ss,SQClosure *closure){_closure=closure;_state=eRunning;_ci._generator=NULL;INIT_CHAIN();ADD_TO_CHAIN(&_ss(this)->_gc_chain,this);}
+	SQGenerator(SQSharedState *ss,SQClosure *closure){_closure=closure;_state=eRunning;_ci._generator=nullptr;INIT_CHAIN();ADD_TO_CHAIN(&_ss(this)->_gc_chain,this);}
 public:
 	static SQGenerator *Create(SQSharedState *ss,SQClosure *closure){
 		SQGenerator *nc=(SQGenerator*)SQ_MALLOC(sizeof(SQGenerator));
