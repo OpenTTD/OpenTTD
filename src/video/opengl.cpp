@@ -146,7 +146,7 @@ GetOGLProcAddressProc GetOGLProcAddress;
  */
 const char *FindStringInExtensionList(const char *string, const char *substring)
 {
-	while (1) {
+	while (true) {
 		/* Is the extension string present at all? */
 		const char *pos = strstr(string, substring);
 		if (pos == nullptr) break;
