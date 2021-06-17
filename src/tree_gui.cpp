@@ -29,7 +29,7 @@
 #include "safeguards.h"
 
 void PlaceTreesRandomly();
-uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count);
+uint PlaceTreeGroupAroundTile(TileIndex tile, TreeType treetype, uint radius, uint count, bool set_zone);
 
 /** Tree Sprites with their palettes */
 const PalSpriteID tree_sprites[] = {
@@ -133,7 +133,8 @@ class BuildTreesWindow : public Window
 		}
 		const uint radius = this->mode == PM_FOREST_LG ? 12 : 5;
 		const uint count = this->mode == PM_FOREST_LG ? 12 : 5;
-		PlaceTreeGroupAroundTile(tile, treetype, radius, count);
+		// Create tropic zones only when the tree type is selected by the user and not picked randomly.
+		PlaceTreeGroupAroundTile(tile, treetype, radius, count, this->tree_to_plant != TREE_INVALID);
 	}
 
 public:
