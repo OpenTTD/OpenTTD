@@ -37,6 +37,8 @@
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/gl3.h>
 
+static Palette _local_palette; ///< Current palette to use for drawing.
+
 
 /**
  * Important notice regarding all modifications!!!!!!!
@@ -304,17 +306,15 @@ void VideoDriver_CocoaOpenGL::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
-	if (_cur_palette.count_dirty != 0) {
+	if (CopyPalette(_local_palette)) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		/* Always push a changed palette to OpenGL. */
 		CGLSetCurrentContext(this->gl_context);
-		OpenGLBackend::Get()->UpdatePalette(_cur_palette.palette, _cur_palette.first_dirty, _cur_palette.count_dirty);
+		OpenGLBackend::Get()->UpdatePalette(_local_palette.palette, _local_palette.first_dirty, _local_palette.count_dirty);
 		if (blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_BLITTER) {
-			blitter->PaletteAnimate(_cur_palette);
+			blitter->PaletteAnimate(_local_palette);
 		}
-
-		_cur_palette.count_dirty = 0;
 	}
 
 	[ CATransaction begin ];

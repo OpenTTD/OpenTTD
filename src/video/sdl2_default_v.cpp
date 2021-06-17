@@ -62,9 +62,7 @@ void VideoDriver_SDL_Default::MakePalette()
 		if (_sdl_palette == nullptr) usererror("SDL2: Couldn't allocate palette: %s", SDL_GetError());
 	}
 
-	_cur_palette.first_dirty = 0;
-	_cur_palette.count_dirty = 256;
-	this->local_palette = _cur_palette;
+	CopyPalette(this->local_palette, true);
 	this->UpdatePalette();
 
 	if (_sdl_surface != _sdl_real_surface) {
@@ -96,9 +94,9 @@ void VideoDriver_SDL_Default::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
-	if (IsEmptyRect(this->dirty_rect) && _cur_palette.count_dirty == 0) return;
+	if (IsEmptyRect(this->dirty_rect) && this->local_palette.count_dirty == 0) return;
 
-	if (_cur_palette.count_dirty != 0) {
+	if (this->local_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		switch (blitter->UsePaletteAnimation()) {
@@ -117,7 +115,7 @@ void VideoDriver_SDL_Default::Paint()
 			default:
 				NOT_REACHED();
 		}
-		_cur_palette.count_dirty = 0;
+		this->local_palette.count_dirty = 0;
 	}
 
 	SDL_Rect r = { this->dirty_rect.left, this->dirty_rect.top, this->dirty_rect.right - this->dirty_rect.left, this->dirty_rect.bottom - this->dirty_rect.top };

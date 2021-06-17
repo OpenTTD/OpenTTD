@@ -45,7 +45,7 @@ public:
 
 protected:
 	struct SDL_Window *sdl_window; ///< Main SDL window.
-	Palette local_palette; ///< Copy of _cur_palette.
+	Palette local_palette; ///< Current palette to use for drawing.
 	bool buffer_locked; ///< Video buffer was locked by the main thread.
 	Rect dirty_rect; ///< Rectangle encompassing the dirty area of the video buffer.
 
