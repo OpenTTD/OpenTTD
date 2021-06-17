@@ -51,6 +51,8 @@ static byte _stringwidth_table[FS_END][224]; ///< Cache containing width of ofte
 DrawPixelInfo *_cur_dpi;
 byte _colour_gradient[COLOUR_END][8];
 
+static std::recursive_mutex _palette_mutex; ///< To coordinate access to _cur_palette.
+
 static void GfxMainBlitterViewport(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE);
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = nullptr, SpriteID sprite_id = SPR_CURSOR_MOUSE, ZoomLevel zoom = ZOOM_LVL_NORMAL);
 
@@ -1197,6 +1199,7 @@ void DoPaletteAnimations();
 
 void GfxInitPalettes()
 {
+	std::lock_guard<std::recursive_mutex> lock(_palette_mutex);
 	memcpy(&_cur_palette, &_palette, sizeof(_cur_palette));
 	DoPaletteAnimations();
 }
@@ -1212,6 +1215,8 @@ void GfxInitPalettes()
  */
 bool CopyPalette(Palette &local_palette, bool force_copy)
 {
+	std::lock_guard<std::recursive_mutex> lock(_palette_mutex);
+
 	if (!force_copy && _cur_palette.count_dirty == 0) return false;
 
 	local_palette = _cur_palette;
@@ -1230,6 +1235,8 @@ bool CopyPalette(Palette &local_palette, bool force_copy)
 
 void DoPaletteAnimations()
 {
+	std::lock_guard<std::recursive_mutex> lock(_palette_mutex);
+
 	/* Animation counter for the palette animation. */
 	static int palette_animation_counter = 0;
 	palette_animation_counter += 8;
