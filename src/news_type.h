@@ -135,14 +135,11 @@ struct NewsItem {
 	uint32 ref1;                 ///< Reference 1 to some object: Used for a possible viewport, scrolling after clicking on the news, and for deleting the news when the object is deleted.
 	uint32 ref2;                 ///< Reference 2 to some object: Used for scrolling after clicking on the news, and for deleting the news when the object is deleted.
 
-	const NewsAllocatedData *data; ///< Custom data for the news item that have to be deallocated (deleted) when the news item has reached its end.
-
-	~NewsItem()
-	{
-		delete this->data;
-	}
+	std::unique_ptr<const NewsAllocatedData> data; ///< Custom data for the news item that will be deallocated (deleted) when the news item has reached its end.
 
 	uint64 params[10]; ///< Parameters for string resolving.
+
+	NewsItem(StringID string_id, NewsType type, NewsFlag flags, NewsReferenceType reftype1, uint32 ref1, NewsReferenceType reftype2, uint32 ref2, const NewsAllocatedData *data);
 };
 
 /** Container for a single string to be passed as NewsAllocatedData. */
