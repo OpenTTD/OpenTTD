@@ -72,6 +72,7 @@
 #endif
 
 bool _cocoa_video_started = false;
+static Palette _local_palette; ///< Current palette to use for drawing.
 
 extern bool _tab_is_down;
 
@@ -714,9 +715,9 @@ void VideoDriver_CocoaQuartz::UpdatePalette(uint first_color, uint num_colors)
 
 	for (uint i = first_color; i < first_color + num_colors; i++) {
 		uint32 clr = 0xff000000;
-		clr |= (uint32)_cur_palette.palette[i].r << 16;
-		clr |= (uint32)_cur_palette.palette[i].g << 8;
-		clr |= (uint32)_cur_palette.palette[i].b;
+		clr |= (uint32)_local_palette.palette[i].r << 16;
+		clr |= (uint32)_local_palette.palette[i].g << 8;
+		clr |= (uint32)_local_palette.palette[i].b;
 		this->palette[i] = clr;
 	}
 
@@ -725,25 +726,24 @@ void VideoDriver_CocoaQuartz::UpdatePalette(uint first_color, uint num_colors)
 
 void VideoDriver_CocoaQuartz::CheckPaletteAnim()
 {
-	if (_cur_palette.count_dirty != 0) {
-		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
+	if (!CopyPalette(_local_palette)) return;
 
-		switch (blitter->UsePaletteAnimation()) {
-			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
-				this->UpdatePalette(_cur_palette.first_dirty, _cur_palette.count_dirty);
-				break;
+	Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
-			case Blitter::PALETTE_ANIMATION_BLITTER:
-				blitter->PaletteAnimate(_cur_palette);
-				break;
+	switch (blitter->UsePaletteAnimation()) {
+		case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+			this->UpdatePalette(_local_palette.first_dirty, _local_palette.count_dirty);
+			break;
 
-			case Blitter::PALETTE_ANIMATION_NONE:
-				break;
+		case Blitter::PALETTE_ANIMATION_BLITTER:
+			blitter->PaletteAnimate(_local_palette);
+			break;
 
-			default:
-				NOT_REACHED();
-		}
-		_cur_palette.count_dirty = 0;
+		case Blitter::PALETTE_ANIMATION_NONE:
+			break;
+
+		default:
+			NOT_REACHED();
 	}
 }
 

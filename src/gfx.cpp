@@ -1201,6 +1201,30 @@ void GfxInitPalettes()
 	DoPaletteAnimations();
 }
 
+/**
+ * Copy the current palette if the palette was updated.
+ * Used by video-driver to get a current up-to-date version of the palette,
+ * to avoid two threads accessing the same piece of memory (with a good chance
+ * one is already updating the palette while the other is drawing based on it).
+ * @param local_palette The location to copy the palette to.
+ * @param force_copy Whether to ignore if there is an update for the palette.
+ * @return True iff a copy was done.
+ */
+bool CopyPalette(Palette &local_palette, bool force_copy)
+{
+	if (!force_copy && _cur_palette.count_dirty == 0) return false;
+
+	local_palette = _cur_palette;
+	_cur_palette.count_dirty = 0;
+
+	if (force_copy) {
+		local_palette.first_dirty = 0;
+		local_palette.count_dirty = 256;
+	}
+
+	return true;
+}
+
 #define EXTR(p, q) (((uint16)(palette_animation_counter * (p)) * (q)) >> 16)
 #define EXTR2(p, q) (((uint16)(~palette_animation_counter * (p)) * (q)) >> 16)
 

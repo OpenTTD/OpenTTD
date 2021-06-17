@@ -43,9 +43,7 @@ void VideoDriver_SDL_Base::MakeDirty(int left, int top, int width, int height)
 
 void VideoDriver_SDL_Base::CheckPaletteAnim()
 {
-	if (_cur_palette.count_dirty == 0) return;
-
-	this->local_palette = _cur_palette;
+	if (!CopyPalette(this->local_palette)) return;
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
@@ -131,10 +129,7 @@ void VideoDriver_SDL_Base::ClientSizeChanged(int w, int h, bool force)
 {
 	/* Allocate backing store of the new size. */
 	if (this->AllocateBackingStore(w, h, force)) {
-		/* Mark all palette colours dirty. */
-		_cur_palette.first_dirty = 0;
-		_cur_palette.count_dirty = 256;
-		this->local_palette = _cur_palette;
+		CopyPalette(this->local_palette, true);
 
 		BlitterFactory::GetCurrentBlitter()->PostResize();
 

@@ -42,8 +42,7 @@ bool _window_maximize;
 static Dimension _bck_resolution;
 DWORD _imm_props;
 
-/** Local copy of the palette for use in the drawing thread. */
-static Palette _local_palette;
+static Palette _local_palette; ///< Current palette to use for drawing.
 
 bool VideoDriver_Win32Base::ClaimMousePointer()
 {
@@ -812,9 +811,7 @@ void VideoDriver_Win32Base::MakeDirty(int left, int top, int width, int height)
 
 void VideoDriver_Win32Base::CheckPaletteAnim()
 {
-	if (_cur_palette.count_dirty == 0) return;
-
-	_local_palette = _cur_palette;
+	if (!CopyPalette(_local_palette)) return;
 	this->MakeDirty(0, 0, _screen.width, _screen.height);
 }
 
@@ -878,10 +875,7 @@ void VideoDriver_Win32Base::ClientSizeChanged(int w, int h, bool force)
 {
 	/* Allocate backing store of the new size. */
 	if (this->AllocateBackingStore(w, h, force)) {
-		/* Mark all palette colours dirty. */
-		_cur_palette.first_dirty = 0;
-		_cur_palette.count_dirty = 256;
-		_local_palette = _cur_palette;
+		CopyPalette(_local_palette, true);
 
 		BlitterFactory::GetCurrentBlitter()->PostResize();
 
@@ -1078,9 +1072,7 @@ bool VideoDriver_Win32GDI::AfterBlitterChange()
 
 void VideoDriver_Win32GDI::MakePalette()
 {
-	_cur_palette.first_dirty = 0;
-	_cur_palette.count_dirty = 256;
-	_local_palette = _cur_palette;
+	CopyPalette(_local_palette, true);
 
 	LOGPALETTE *pal = (LOGPALETTE*)alloca(sizeof(LOGPALETTE) + (256 - 1) * sizeof(PALETTEENTRY));
 
@@ -1135,7 +1127,7 @@ void VideoDriver_Win32GDI::Paint()
 	HBITMAP old_bmp = (HBITMAP)SelectObject(dc2, this->dib_sect);
 	HPALETTE old_palette = SelectPalette(dc, this->gdi_palette, FALSE);
 
-	if (_cur_palette.count_dirty != 0) {
+	if (_local_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		switch (blitter->UsePaletteAnimation()) {
@@ -1154,7 +1146,7 @@ void VideoDriver_Win32GDI::Paint()
 			default:
 				NOT_REACHED();
 		}
-		_cur_palette.count_dirty = 0;
+		_local_palette.count_dirty = 0;
 	}
 
 	BitBlt(dc, 0, 0, this->width, this->height, dc2, 0, 0, SRCCOPY);
@@ -1474,7 +1466,7 @@ void VideoDriver_Win32OpenGL::Paint()
 {
 	PerformanceMeasurer framerate(PFE_VIDEO);
 
-	if (_cur_palette.count_dirty != 0) {
+	if (_local_palette.count_dirty != 0) {
 		Blitter *blitter = BlitterFactory::GetCurrentBlitter();
 
 		/* Always push a changed palette to OpenGL. */
@@ -1483,7 +1475,7 @@ void VideoDriver_Win32OpenGL::Paint()
 			blitter->PaletteAnimate(_local_palette);
 		}
 
-		_cur_palette.count_dirty = 0;
+		_local_palette.count_dirty = 0;
 	}
 
 	OpenGLBackend::Get()->Paint();

@@ -121,6 +121,7 @@ void DrawDirtyBlocks();
 void AddDirtyBlock(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty();
 
+bool CopyPalette(Palette &local_palette, bool force_copy = false);
 void GfxInitPalettes();
 void CheckBlitter();
 
