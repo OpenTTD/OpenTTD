@@ -2021,11 +2021,7 @@ struct CargoesField {
 		assert(this->type == CFT_CARGO);
 		int n = this->u.cargo.num_cargoes;
 
-		if (n % 2 == 0) {
-			return xpos + cargo_field_width / 2 - (CargoesField::cargo_line.width + CargoesField::cargo_space.width / 2) * (n / 2);
-		} else {
-			return xpos + cargo_field_width / 2 - CargoesField::cargo_line.width / 2 - (CargoesField::cargo_line.width + CargoesField::cargo_space.width) * (n / 2);
-		}
+		return xpos + cargo_field_width / 2 - (CargoesField::cargo_line.width * n + CargoesField::cargo_space.width * (n - 1)) / 2;
 	}
 
 	/**
