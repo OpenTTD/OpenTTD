@@ -2051,6 +2051,11 @@ public:
 			case WID_CL_CLIENT_NAME:
 				SetDParamStr(0, _settings_client.network.client_name);
 				break;
+
+			case WID_CL_CLIENT_COMPANY_COUNT:
+				SetDParam(0, NetworkClientInfo::GetNumItems());
+				SetDParam(1, Company::GetNumItems());
+				break;
 		}
 	}
 
@@ -2369,16 +2374,6 @@ public:
 
 				/* Specators */
 				this->DrawCompany(COMPANY_SPECTATOR, r.left, r.right, r.top, line);
-
-				break;
-			}
-
-			case WID_CL_CLIENT_NUMBER: {
-				/* Number of clients */
-				int text_y_offset = std::max(0, ((int)this->line_height - (int)FONT_HEIGHT_NORMAL) / 2);
-				SetDParam(0, NetworkClientInfo::GetNumItems());
-				SetDParam(1, Company::GetNumItems());
-				DrawString(r.left + WD_FRAMERECT_LEFT, r.right - WD_FRAMERECT_LEFT, r.top + text_y_offset, STR_NETWORK_CLIENT_LIST_CLIENT_NUMBER, TC_SILVER, SA_RIGHT);
 
 				break;
 			}
