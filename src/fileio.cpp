@@ -541,9 +541,6 @@ bool TarScanner::AddFile(const std::string &filename, size_t basepath_length, co
 		switch (th.typeflag) {
 			case '\0':
 			case '0': { // regular file
-				/* Ignore empty files */
-				if (skip == 0) break;
-
 				if (strlen(name) == 0) break;
 
 				/* Store this entry in the list */
