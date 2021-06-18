@@ -618,14 +618,14 @@ typedef void *SaveLoadAddrProc(void *base, size_t extra);
 /** SaveLoad type struct. Do NOT use this directly but use the SLE_ macros defined just below! */
 struct SaveLoad {
 	std::string name;    ///< Name of this field (optional, used for tables).
-	SaveLoadType cmd;    ///< the action to take with the saved/loaded type, All types need different action
-	VarType conv;        ///< type of the variable to be saved, int
-	uint16 length;       ///< (conditional) length of the variable (eg. arrays) (max array size is 65536 elements)
-	SaveLoadVersion version_from;   ///< save/load the variable starting from this savegame version
-	SaveLoadVersion version_to;     ///< save/load the variable until this savegame version
-	size_t size;                    ///< the sizeof size.
-	SaveLoadAddrProc *address_proc; ///< callback proc the get the actual variable address in memory
-	size_t extra_data;              ///< extra data for the callback proc
+	SaveLoadType cmd;    ///< The action to take with the saved/loaded type, All types need different action.
+	VarType conv;        ///< Type of the variable to be saved; this field combines both FileVarType and MemVarType.
+	uint16 length;       ///< (Conditional) length of the variable (eg. arrays) (max array size is 65536 elements).
+	SaveLoadVersion version_from;   ///< Save/load the variable starting from this savegame version.
+	SaveLoadVersion version_to;     ///< Save/load the variable before this savegame version.
+	size_t size;                    ///< The sizeof size.
+	SaveLoadAddrProc *address_proc; ///< Callback proc the get the actual variable address in memory.
+	size_t extra_data;              ///< Extra data for the callback proc.
 	std::shared_ptr<SaveLoadHandler> handler; ///< Custom handler for Save/Load procs.
 };
 
@@ -641,7 +641,7 @@ struct SaveLoadCompat {
 	std::string name;             ///< Name of the field.
 	uint16 length;                ///< Length of the NULL field.
 	SaveLoadVersion version_from; ///< Save/load the variable starting from this savegame version.
-	SaveLoadVersion version_to;   ///< Save/load the variable until this savegame version.
+	SaveLoadVersion version_to;   ///< Save/load the variable before this savegame version.
 };
 
 /**
@@ -1001,7 +1001,7 @@ static inline bool IsSavegameVersionBefore(SaveLoadVersion major, byte minor = 0
  * @param major Major number of the version to check against.
  * @return Savegame version is at most the specified version.
  */
-static inline bool IsSavegameVersionUntil(SaveLoadVersion major)
+static inline bool IsSavegameVersionBeforeOrAt(SaveLoadVersion major)
 {
 	extern SaveLoadVersion _sl_version;
 	return _sl_version <= major;
