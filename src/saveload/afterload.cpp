@@ -3106,7 +3106,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (IsSavegameVersionUntil(SLV_ENDING_YEAR)) {
+	if (IsSavegameVersionBeforeOrAt(SLV_ENDING_YEAR)) {
 		/* Update station docking tiles. Was only needed for pre-SLV_MULTITLE_DOCKS
 		 * savegames, but a bug in docking tiles touched all savegames between
 		 * SLV_MULTITILE_DOCKS and SLV_ENDING_YEAR. */
