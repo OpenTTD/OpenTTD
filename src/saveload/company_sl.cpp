@@ -423,14 +423,14 @@ public:
 			}
 		}
 
-		if (num_liveries < LS_END) {
+		if (IsSavegameVersionBefore(SLV_85)) {
 			/* We want to insert some liveries somewhere in between. This means some have to be moved. */
 			memmove(&c->livery[LS_FREIGHT_WAGON], &c->livery[LS_PASSENGER_WAGON_MONORAIL], (LS_END - LS_FREIGHT_WAGON) * sizeof(c->livery[0]));
 			c->livery[LS_PASSENGER_WAGON_MONORAIL] = c->livery[LS_MONORAIL];
 			c->livery[LS_PASSENGER_WAGON_MAGLEV]   = c->livery[LS_MAGLEV];
 		}
 
-		if (num_liveries == LS_END - 4) {
+		if (IsSavegameVersionBefore(SLV_63)) {
 			/* Copy bus/truck liveries over to trams */
 			c->livery[LS_PASSENGER_TRAM] = c->livery[LS_BUS];
 			c->livery[LS_FREIGHT_TRAM]   = c->livery[LS_TRUCK];
