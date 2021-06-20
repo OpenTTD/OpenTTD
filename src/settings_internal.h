@@ -70,9 +70,18 @@ struct IniItem;
 
 /** Properties of config file settings. */
 struct SettingDesc {
-	SettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup) :
+	SettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup) :
 		name(name), flags(flags), startup(startup), save(save) {}
-	virtual ~SettingDesc() {}
+
+	/* We are only used in static list, so we are never deleted. This is needed
+	 * to hint to compiler that it doesn't need to track all these variables,
+	 * as there is no optimization to gain. Most noticeable, without this GCC says:
+	 *
+	 * note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+	 *
+	 * And clang on MacOS just crashes with "bug error 10" (read: out-of-memory).
+	 */
+	void operator delete(void *ptr) = delete;
 
 	std::string name;   ///< Name of the setting. Used in configuration file and for console.
 	SettingFlag flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).
@@ -141,13 +150,12 @@ struct IntSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(int32 value);
 
-	IntSettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, int32 def,
+	IntSettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, int32 def,
 			int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
 			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		SettingDesc(save, name, flags, startup), def(def), min(min), max(max), interval(interval),
 			str(str), str_help(str_help), str_val(str_val), cat(cat), pre_check(pre_check),
 			post_callback(post_callback) {}
-	virtual ~IntSettingDesc() {}
 
 	int32 def;              ///< default value given when none is present
 	int32 min;              ///< minimum values
@@ -183,12 +191,11 @@ private:
 
 /** Boolean setting. */
 struct BoolSettingDesc : IntSettingDesc {
-	BoolSettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, bool def,
+	BoolSettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, bool def,
 			StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		IntSettingDesc(save, name, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat,
 			pre_check, post_callback) {}
-	virtual ~BoolSettingDesc() {}
 
 	bool IsBoolSetting() const override { return true; }
 	size_t ParseValue(const char *str) const override;
@@ -199,7 +206,7 @@ struct BoolSettingDesc : IntSettingDesc {
 struct OneOfManySettingDesc : IntSettingDesc {
 	typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
-	OneOfManySettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, int32 def,
+	OneOfManySettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, int32 def,
 			int32 max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
 			std::initializer_list<const char *> many, OnConvert *many_cnvt) :
@@ -208,8 +215,6 @@ struct OneOfManySettingDesc : IntSettingDesc {
 	{
 		for (auto one : many) this->many.push_back(one);
 	}
-
-	virtual ~OneOfManySettingDesc() {}
 
 	std::vector<std::string> many; ///< possible values for this type
 	OnConvert *many_cnvt;          ///< callback procedure when loading value mechanism fails
@@ -223,13 +228,12 @@ struct OneOfManySettingDesc : IntSettingDesc {
 
 /** Many of many setting. */
 struct ManyOfManySettingDesc : OneOfManySettingDesc {
-	ManyOfManySettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup,
+	ManyOfManySettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup,
 		int32 def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 		PreChangeCheck pre_check, PostChangeCallback post_callback,
 		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
 		OneOfManySettingDesc(save, name, flags, startup, def, (1 << many.size()) - 1, str, str_help,
 			str_val, cat, pre_check, post_callback, many, many_cnvt) {}
-	virtual ~ManyOfManySettingDesc() {}
 
 	size_t ParseValue(const char *str) const override;
 	void FormatValue(char *buf, const char *last, const void *object) const override;
@@ -252,11 +256,10 @@ struct StringSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(const std::string &value);
 
-	StringSettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, const char *def,
+	StringSettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, const char *def,
 			uint32 max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		SettingDesc(save, name, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
 			pre_check(pre_check), post_callback(post_callback) {}
-	virtual ~StringSettingDesc() {}
 
 	std::string def;                   ///< Default value given when none is present
 	uint32 max_length;                 ///< Maximum length of the string, 0 means no maximum length
@@ -278,9 +281,8 @@ private:
 
 /** List/array settings. */
 struct ListSettingDesc : SettingDesc {
-	ListSettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, const char *def) :
+	ListSettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, const char *def) :
 		SettingDesc(save, name, flags, startup), def(def) {}
-	virtual ~ListSettingDesc() {}
 
 	const char *def;        ///< default value given when none is present
 
@@ -293,7 +295,6 @@ struct ListSettingDesc : SettingDesc {
 struct NullSettingDesc : SettingDesc {
 	NullSettingDesc(SaveLoad save) :
 		SettingDesc(save, {}, SF_NOT_IN_CONFIG, false) {}
-	virtual ~NullSettingDesc() {}
 
 	void FormatValue(char *buf, const char *last, const void *object) const override { NOT_REACHED(); }
 	void ParseValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
