@@ -318,13 +318,13 @@ size_t IntSettingDesc::ParseValue(const char *str) const
 	if (end == str) {
 		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 		msg.SetDParamStr(0, str);
-		msg.SetDParamStr(1, this->name);
+		msg.SetDParamStr(1, this->name.data());
 		_settings_error_list.push_back(msg);
 		return this->def;
 	}
 	if (*end != '\0') {
 		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS);
-		msg.SetDParamStr(0, this->name);
+		msg.SetDParamStr(0, this->name.data());
 		_settings_error_list.push_back(msg);
 	}
 	return val;
@@ -340,7 +340,7 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
-	msg.SetDParamStr(1, this->name);
+	msg.SetDParamStr(1, this->name.data());
 	_settings_error_list.push_back(msg);
 	return this->def;
 }
@@ -351,7 +351,7 @@ size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 	if (r != (size_t)-1) return r;
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
-	msg.SetDParamStr(1, this->name);
+	msg.SetDParamStr(1, this->name.data());
 	_settings_error_list.push_back(msg);
 	return this->def;
 }
@@ -363,7 +363,7 @@ size_t BoolSettingDesc::ParseValue(const char *str) const
 
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
-	msg.SetDParamStr(1, this->name);
+	msg.SetDParamStr(1, this->name.data());
 	_settings_error_list.push_back(msg);
 	return this->def;
 }
@@ -561,7 +561,7 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 	void *ptr = GetVariableAddress(object, this->save);
 	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
 		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
-		msg.SetDParamStr(0, this->name);
+		msg.SetDParamStr(0, this->name.data());
 		_settings_error_list.push_back(msg);
 
 		/* Use default */
@@ -1689,7 +1689,7 @@ void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
 
 	if (this->flags & SF_NO_NETWORK) {
 		GamelogStartAction(GLAT_SETTING);
-		GamelogSetting(this->name, oldval, newval);
+		GamelogSetting(std::string(this->name), oldval, newval);
 		GamelogStopAction();
 	}
 
@@ -1829,7 +1829,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if ((setting->flags & SF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-			return DoCommandP(0, 0, value, CMD_CHANGE_COMPANY_SETTING, nullptr, setting->name);
+			return DoCommandP(0, 0, value, CMD_CHANGE_COMPANY_SETTING, nullptr, setting->name.data());
 		}
 
 		setting->ChangeValue(&_settings_client.company, value);
@@ -1855,7 +1855,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return DoCommandP(0, 0, value, CMD_CHANGE_SETTING, nullptr, setting->name);
+		return DoCommandP(0, 0, value, CMD_CHANGE_SETTING, nullptr, setting->name.data());
 	}
 	return false;
 }
@@ -1882,7 +1882,7 @@ void SyncCompanySettings()
 	for (auto &sd : _company_settings) {
 		uint32 old_value = (uint32)sd->AsIntSetting()->Read(new_object);
 		uint32 new_value = (uint32)sd->AsIntSetting()->Read(old_object);
-		if (old_value != new_value) NetworkSendCommand(0, 0, new_value, CMD_CHANGE_COMPANY_SETTING, nullptr, sd->name, _local_company);
+		if (old_value != new_value) NetworkSendCommand(0, 0, new_value, CMD_CHANGE_COMPANY_SETTING, nullptr, sd->name.data(), _local_company);
 	}
 }
 
@@ -1986,7 +1986,7 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 		sd->FormatValue(value, lastof(value), object);
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}).",
-			sd->name.c_str(), value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", int_setting->min, int_setting->max);
+			sd->name.data(), value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", int_setting->min, int_setting->max);
 	}
 }
 

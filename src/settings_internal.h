@@ -69,14 +69,14 @@ struct IniItem;
 
 /** Properties of config file settings. */
 struct SettingDesc {
-	SettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup) :
+	SettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup) :
 		name(name), flags(flags), startup(startup), save(save) {}
 	virtual ~SettingDesc() {}
 
-	std::string name;   ///< Name of the setting. Used in configuration file and for console.
-	SettingFlag flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).
-	bool startup;       ///< Setting has to be loaded directly at startup?.
-	SaveLoad save;      ///< Internal structure (going to savegame, parts to config).
+	const std::string_view name; ///< Name of the setting. Used in configuration file and for console.
+	SettingFlag flags;           ///< Handles how a setting would show up in the GUI (text/currency, etc.).
+	bool startup;                ///< Setting has to be loaded directly at startup?.
+	SaveLoad save;               ///< Internal structure (going to savegame, parts to config).
 
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
@@ -140,7 +140,7 @@ struct IntSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(int32 value);
 
-	IntSettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, int32 def,
+	IntSettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, int32 def,
 			int32 min, uint32 max, int32 interval, StringID str, StringID str_help, StringID str_val,
 			SettingCategory cat, PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		SettingDesc(save, name, flags, startup), def(def), min(min), max(max), interval(interval),
@@ -182,7 +182,7 @@ private:
 
 /** Boolean setting. */
 struct BoolSettingDesc : IntSettingDesc {
-	BoolSettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, bool def,
+	BoolSettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, bool def,
 			StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		IntSettingDesc(save, name, flags, startup, def, 0, 1, 0, str, str_help, str_val, cat,
@@ -198,7 +198,7 @@ struct BoolSettingDesc : IntSettingDesc {
 struct OneOfManySettingDesc : IntSettingDesc {
 	typedef size_t OnConvert(const char *value); ///< callback prototype for conversion error
 
-	OneOfManySettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, int32 def,
+	OneOfManySettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, int32 def,
 			int32 max, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 			PreChangeCheck pre_check, PostChangeCallback post_callback,
 			std::initializer_list<const char *> many, OnConvert *many_cnvt) :
@@ -222,7 +222,7 @@ struct OneOfManySettingDesc : IntSettingDesc {
 
 /** Many of many setting. */
 struct ManyOfManySettingDesc : OneOfManySettingDesc {
-	ManyOfManySettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup,
+	ManyOfManySettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup,
 		int32 def, StringID str, StringID str_help, StringID str_val, SettingCategory cat,
 		PreChangeCheck pre_check, PostChangeCallback post_callback,
 		std::initializer_list<const char *> many, OnConvert *many_cnvt) :
@@ -251,7 +251,7 @@ struct StringSettingDesc : SettingDesc {
 	 */
 	typedef void PostChangeCallback(const std::string &value);
 
-	StringSettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, const char *def,
+	StringSettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, const char *def,
 			uint32 max_length, PreChangeCheck pre_check, PostChangeCallback post_callback) :
 		SettingDesc(save, name, flags, startup), def(def == nullptr ? "" : def), max_length(max_length),
 			pre_check(pre_check), post_callback(post_callback) {}
@@ -277,7 +277,7 @@ private:
 
 /** List/array settings. */
 struct ListSettingDesc : SettingDesc {
-	ListSettingDesc(SaveLoad save, const std::string &name, SettingFlag flags, bool startup, const char *def) :
+	ListSettingDesc(SaveLoad save, const std::string_view name, SettingFlag flags, bool startup, const char *def) :
 		SettingDesc(save, name, flags, startup), def(def) {}
 	virtual ~ListSettingDesc() {}
 
