@@ -88,7 +88,7 @@ typedef std::list<ErrorMessageData> ErrorList;
 static ErrorList _settings_error_list; ///< Errors while loading minimal settings.
 
 
-typedef void SettingDescProc(IniFile *ini, const SettingTable &desc, const char *grpname, void *object, bool only_startup);
+typedef void SettingDescProc(IniFile *ini, SettingTable desc, const char *grpname, void *object, bool only_startup);
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList &list);
 
 static bool IsSignedVarMemType(VarType vt);
@@ -506,7 +506,7 @@ const std::string &StringSettingDesc::Read(const void *object) const
  * @param object pointer to the object been loaded
  * @param only_startup load only the startup settings set
  */
-static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, const char *grpname, void *object, bool only_startup)
+static void IniLoadSettings(IniFile *ini, SettingTable settings_table, const char *grpname, void *object, bool only_startup)
 {
 	IniGroup *group;
 	IniGroup *group_def = ini->GetGroup(grpname);
@@ -581,7 +581,7 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
  * values are reloaded when saving). If settings indeed have changed, we get
  * these and save them.
  */
-static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, const char *grpname, void *object, bool)
+static void IniSaveSettings(IniFile *ini, SettingTable settings_table, const char *grpname, void *object, bool)
 {
 	IniGroup *group_def = nullptr, *group;
 	IniItem *item;
@@ -1524,14 +1524,14 @@ static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *li
 /* Common handler for saving/loading variables to the configuration file */
 static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescProcList *proc_list, bool only_startup = false)
 {
-	proc(ini, _misc_settings,    "misc",  nullptr, only_startup);
+	proc(ini, SettingTable(_misc_settings),    "misc",  nullptr, only_startup);
 #if defined(_WIN32) && !defined(DEDICATED)
-	proc(ini, _win32_settings,   "win32", nullptr, only_startup);
+	proc(ini, SettingTable(_win32_settings),   "win32", nullptr, only_startup);
 #endif /* _WIN32 */
 
-	proc(ini, _settings,         "patches",  &_settings_newgame, only_startup);
-	proc(ini, _currency_settings,"currency", &_custom_currency, only_startup);
-	proc(ini, _company_settings, "company",  &_settings_client.company, only_startup);
+	proc(ini, SettingTable(_settings),         "patches",  &_settings_newgame, only_startup);
+	proc(ini, SettingTable(_currency_settings),"currency", &_custom_currency, only_startup);
+	proc(ini, SettingTable(_company_settings), "company",  &_settings_client.company, only_startup);
 
 	if (!only_startup) {
 		proc_list(ini, "server_bind_addresses", _network_bind_list);
@@ -1705,19 +1705,19 @@ void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
  * @return Pointer to the setting description of setting \a name if it can be found,
  *         \c nullptr indicates failure to obtain the description.
  */
-static const SettingDesc *GetSettingFromName(const std::string_view name, const SettingTable &settings)
+static const SettingDesc *GetSettingFromName(const std::string_view name, SettingTable settings)
 {
 	/* First check all full names */
 	for (auto &sd : settings) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (sd->name == name) return sd.get();
+		if (sd->name == name) return sd;
 	}
 
 	/* Then check the shortcut variant of the name. */
 	std::string short_name_suffix = std::string{ "." }.append(name);
 	for (auto &sd : settings) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (StrEndsWith(sd->name, short_name_suffix)) return sd.get();
+		if (StrEndsWith(sd->name, short_name_suffix)) return sd;
 	}
 
 	return nullptr;
@@ -2016,7 +2016,7 @@ void IConsoleListSettings(const char *prefilter)
  * @param is_loading True iff the SaveLoad table is for loading.
  * @return Vector with SaveLoad entries for the SettingTable.
  */
-static std::vector<SaveLoad> GetSettingsDesc(const SettingTable &settings, bool is_loading)
+static std::vector<SaveLoad> GetSettingsDesc(SettingTable settings, bool is_loading)
 {
 	std::vector<SaveLoad> saveloads;
 	for (auto &sd : settings) {
@@ -2041,7 +2041,7 @@ static std::vector<SaveLoad> GetSettingsDesc(const SettingTable &settings, bool 
  * @param object can be either nullptr in which case we load global variables or
  * a pointer to a struct which is getting saved
  */
-static void LoadSettings(const SettingTable &settings, void *object)
+static void LoadSettings(SettingTable settings, void *object)
 {
 	const std::vector<SaveLoad> slt = GetSettingsDesc(settings, true);
 
@@ -2068,7 +2068,7 @@ static void LoadSettings(const SettingTable &settings, void *object)
  * @param object can be either nullptr in which case we load global variables or
  * a pointer to a struct which is getting saved
  */
-static void SaveSettings(const SettingTable &settings, void *object)
+static void SaveSettings(SettingTable settings, void *object)
 {
 	const std::vector<SaveLoad> slt = GetSettingsDesc(settings, false);
 

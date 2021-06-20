@@ -11,6 +11,7 @@
 #define SETTINGS_INTERNAL_H
 
 #include "saveload/saveload.h"
+#include "core/span_type.hpp"
 
 enum SettingFlag : uint16 {
 	SF_NONE = 0,
@@ -299,7 +300,7 @@ struct NullSettingDesc : SettingDesc {
 	bool IsSameValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
 };
 
-typedef std::initializer_list<std::unique_ptr<const SettingDesc>> SettingTable;
+using SettingTable = span<const SettingDesc * const>;
 
 const SettingDesc *GetSettingFromName(const std::string_view name);
 void GetSettingSaveLoadByPrefix(const std::string_view prefix, std::vector<SaveLoad> &saveloads);

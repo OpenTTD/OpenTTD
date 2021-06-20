@@ -54,7 +54,7 @@ static size_t ConvertLandscape(const char *value);
  * on the appropriate macro.
  */
 
-#define NSD(type, ...) std::unique_ptr<const SettingDesc>(new type##SettingDesc(__VA_ARGS__))
+#define NSD(type, ...) new type##SettingDesc(__VA_ARGS__)
 
 /* Macros for various objects to go in the configuration file.
  * This section is for global variables */
