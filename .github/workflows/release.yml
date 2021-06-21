@@ -470,7 +470,7 @@ jobs:
 
     runs-on: macos-10.15
     env:
-      MACOSX_DEPLOYMENT_TARGET: 10.9
+      MACOSX_DEPLOYMENT_TARGET: 10.14
 
     steps:
     - name: Download source
