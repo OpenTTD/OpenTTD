@@ -87,6 +87,7 @@ std::string _config_file; ///< Configuration file of OpenTTD
 typedef std::list<ErrorMessageData> ErrorList;
 static ErrorList _settings_error_list; ///< Errors while loading minimal settings.
 
+typedef span<const SettingVariant> SettingTable;
 
 typedef void SettingDescProc(IniFile *ini, const SettingTable &desc, const char *grpname, void *object, bool only_startup);
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList &list);
@@ -98,9 +99,9 @@ static bool IsSignedVarMemType(VarType vt);
  * @param desc The type of the iterator of the value in SettingTable.
  * @return The actual pointer to SettingDesc.
  */
-static const SettingDesc *GetSettingDesc(const std::unique_ptr<const SettingDesc> &desc)
+static constexpr const SettingDesc *GetSettingDesc(const SettingVariant &desc)
 {
-	return desc.get();
+	return std::visit([](auto&& arg) -> const SettingDesc * { return &arg; }, desc);
 }
 
 /**

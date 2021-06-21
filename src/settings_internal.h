@@ -10,6 +10,7 @@
 #ifndef SETTINGS_INTERNAL_H
 #define SETTINGS_INTERNAL_H
 
+#include <variant>
 #include "saveload/saveload.h"
 
 enum SettingFlag : uint16 {
@@ -299,7 +300,7 @@ struct NullSettingDesc : SettingDesc {
 	bool IsSameValue(const IniItem *item, void *object) const override { NOT_REACHED(); }
 };
 
-typedef std::initializer_list<std::unique_ptr<const SettingDesc>> SettingTable;
+typedef std::variant<IntSettingDesc, BoolSettingDesc, OneOfManySettingDesc, ManyOfManySettingDesc, StringSettingDesc, ListSettingDesc, NullSettingDesc> SettingVariant;
 
 const SettingDesc *GetSettingFromName(const std::string_view name);
 void GetSettingSaveLoadByPrefix(const std::string_view prefix, std::vector<SaveLoad> &saveloads);
