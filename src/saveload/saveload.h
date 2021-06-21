@@ -608,7 +608,7 @@ struct SaveLoad {
  * @param extra    Extra data to pass to the address callback function.
  * @note In general, it is better to use one of the SLE_* macros below.
  */
-#define SLE_GENERAL(cmd, base, variable, type, length, from, to, extra) {cmd, type, length, from, to, cpp_sizeof(base, variable), [] (void *b, size_t) -> void * { assert(b != nullptr); return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); }, extra, nullptr}
+#define SLE_GENERAL(cmd, base, variable, type, length, from, to, extra) SaveLoad {cmd, type, length, from, to, cpp_sizeof(base, variable), [] (void *b, size_t) -> void * { assert(b != nullptr); return const_cast<void *>(static_cast<const void *>(std::addressof(static_cast<base *>(b)->variable))); }, extra, nullptr}
 
 /**
  * Storage of a variable in some savegame versions.
@@ -744,7 +744,7 @@ struct SaveLoad {
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLE_CONDNULL(length, from, to) {SL_NULL, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
+#define SLE_CONDNULL(length, from, to) SaveLoad {SL_NULL, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
 
 /**
  * Only write byte during saving; never read it during loading.
@@ -768,7 +768,7 @@ struct SaveLoad {
  * @param extra    Extra data to pass to the address callback function.
  * @note In general, it is better to use one of the SLEG_* macros below.
  */
-#define SLEG_GENERAL(cmd, variable, type, length, from, to, extra) {cmd, type, length, from, to, sizeof(variable), [] (void *, size_t) -> void * { return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
+#define SLEG_GENERAL(cmd, variable, type, length, from, to, extra) SaveLoad {cmd, type, length, from, to, sizeof(variable), [] (void *, size_t) -> void * { return static_cast<void *>(std::addressof(variable)); }, extra, nullptr}
 
 /**
  * Storage of a global variable in some savegame versions.
@@ -823,7 +823,7 @@ struct SaveLoad {
  * @param from     First savegame version that has the struct.
  * @param to       Last savegame version that has the struct.
  */
-#define SLEG_CONDSTRUCT(handler, from, to) {SL_STRUCT, 0, 0, from, to, 0, nullptr, 0, new handler()}
+#define SLEG_CONDSTRUCT(handler, from, to) SaveLoad {SL_STRUCT, 0, 0, from, to, 0, nullptr, 0, new handler()}
 
 /**
  * Storage of a global reference list in some savegame versions.
@@ -849,7 +849,7 @@ struct SaveLoad {
  * @param from     First savegame version that has the list.
  * @param to       Last savegame version that has the list.
  */
-#define SLEG_CONDSTRUCTLIST(handler, from, to) {SL_STRUCTLIST, 0, 0, from, to, 0, nullptr, 0, new handler()}
+#define SLEG_CONDSTRUCTLIST(handler, from, to) SaveLoad {SL_STRUCTLIST, 0, 0, from, to, 0, nullptr, 0, new handler()}
 
 /**
  * Storage of a global variable in every savegame version.
@@ -918,7 +918,7 @@ struct SaveLoad {
  * @param from   First savegame version that has the empty space.
  * @param to     Last savegame version that has the empty space.
  */
-#define SLEG_CONDNULL(length, from, to) {SL_NULL, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
+#define SLEG_CONDNULL(length, from, to) SaveLoad {SL_NULL, SLE_FILE_U8 | SLE_VAR_NULL, length, from, to, 0, nullptr, 0, nullptr}
 
 /**
  * Checks whether the savegame is below \a major.\a minor.
