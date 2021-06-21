@@ -1338,7 +1338,7 @@ bool NetworkValidateClientName(std::string &client_name)
  * See \c NetworkValidateClientName(char*) for details about the functionality.
  * @return True iff the client name is valid.
  */
-bool NetworkValidateClientName()
+bool NetworkValidateOurClientName()
 {
 	return NetworkValidateClientName(_settings_client.network.client_name);
 }

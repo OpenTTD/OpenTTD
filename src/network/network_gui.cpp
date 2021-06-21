@@ -1263,7 +1263,7 @@ static WindowDesc _network_start_server_window_desc(
 
 static void ShowNetworkStartServerWindow()
 {
-	if (!NetworkValidateClientName()) return;
+	if (!NetworkValidateOurClientName()) return;
 
 	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);
 	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_LOBBY);
@@ -1557,7 +1557,7 @@ static WindowDesc _network_lobby_window_desc(
  */
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 {
-	if (!NetworkValidateClientName()) return;
+	if (!NetworkValidateOurClientName()) return;
 
 	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_START);
 	CloseWindowById(WC_NETWORK_WINDOW, WN_NETWORK_WINDOW_GAME);

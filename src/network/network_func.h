@@ -36,7 +36,7 @@ extern StringList _network_ban_list;
 
 byte NetworkSpectatorCount();
 bool NetworkIsValidClientName(const std::string_view client_name);
-bool NetworkValidateClientName();
+bool NetworkValidateOurClientName();
 bool NetworkValidateClientName(std::string &client_name);
 bool NetworkValidateServerName(std::string &server_name);
 void NetworkUpdateClientName(const std::string &client_name);
