@@ -94,6 +94,16 @@ typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList &
 static bool IsSignedVarMemType(VarType vt);
 
 /**
+ * Helper to convert the type of the iterated settings description to a pointer to it.
+ * @param desc The type of the iterator of the value in SettingTable.
+ * @return The actual pointer to SettingDesc.
+ */
+static const SettingDesc *GetSettingDesc(const std::unique_ptr<const SettingDesc> &desc)
+{
+	return desc.get();
+}
+
+/**
  * Groups in openttd.cfg that are actually lists.
  */
 static const char * const _list_group_names[] = {
@@ -511,7 +521,8 @@ static void IniLoadSettings(IniFile *ini, const SettingTable &settings_table, co
 	IniGroup *group;
 	IniGroup *group_def = ini->GetGroup(grpname);
 
-	for (auto &sd : settings_table) {
+	for (auto &desc : settings_table) {
+		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (sd->startup != only_startup) continue;
 
@@ -587,7 +598,8 @@ static void IniSaveSettings(IniFile *ini, const SettingTable &settings_table, co
 	IniItem *item;
 	char buf[512];
 
-	for (auto &sd : settings_table) {
+	for (auto &desc : settings_table) {
+		const SettingDesc *sd = GetSettingDesc(desc);
 		/* If the setting is not saved to the configuration
 		 * file, just continue with the next setting */
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
@@ -1708,16 +1720,18 @@ void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
 static const SettingDesc *GetSettingFromName(const std::string_view name, const SettingTable &settings)
 {
 	/* First check all full names */
-	for (auto &sd : settings) {
+	for (auto &desc : settings) {
+		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (sd->name == name) return sd.get();
+		if (sd->name == name) return sd;
 	}
 
 	/* Then check the shortcut variant of the name. */
 	std::string short_name_suffix = std::string{ "." }.append(name);
-	for (auto &sd : settings) {
+	for (auto &desc : settings) {
+		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (StrEndsWith(sd->name, short_name_suffix)) return sd.get();
+		if (StrEndsWith(sd->name, short_name_suffix)) return sd;
 	}
 
 	return nullptr;
@@ -1730,7 +1744,8 @@ static const SettingDesc *GetSettingFromName(const std::string_view name, const 
  */
 void GetSettingSaveLoadByPrefix(std::string_view prefix, std::vector<SaveLoad> &saveloads)
 {
-	for (auto &sd : _settings) {
+	for (auto &desc : _settings) {
+		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (StrStartsWith(sd->name, prefix)) saveloads.push_back(sd->save);
 	}
@@ -1866,8 +1881,8 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 void SetDefaultCompanySettings(CompanyID cid)
 {
 	Company *c = Company::Get(cid);
-	for (auto &sd : _company_settings) {
-		const IntSettingDesc *int_setting = sd->AsIntSetting();
+	for (auto &desc : _company_settings) {
+		const IntSettingDesc *int_setting = GetSettingDesc(desc)->AsIntSetting();
 		int_setting->MakeValueValidAndWrite(&c->settings, int_setting->def);
 	}
 }
@@ -1879,7 +1894,8 @@ void SyncCompanySettings()
 {
 	const void *old_object = &Company::Get(_current_company)->settings;
 	const void *new_object = &_settings_client.company;
-	for (auto &sd : _company_settings) {
+	for (auto &desc : _company_settings) {
+		const SettingDesc *sd = GetSettingDesc(desc);
 		uint32 old_value = (uint32)sd->AsIntSetting()->Read(new_object);
 		uint32 new_value = (uint32)sd->AsIntSetting()->Read(old_object);
 		if (old_value != new_value) NetworkSendCommand(0, 0, new_value, CMD_CHANGE_COMPANY_SETTING, nullptr, sd->name, _local_company);
@@ -1999,7 +2015,8 @@ void IConsoleListSettings(const char *prefilter)
 {
 	IConsolePrint(CC_HELP, "All settings with their current value:");
 
-	for (auto &sd : _settings) {
+	for (auto &desc : _settings) {
+		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (prefilter != nullptr && sd->name.find(prefilter) == std::string::npos) continue;
 		char value[80];
@@ -2019,7 +2036,8 @@ void IConsoleListSettings(const char *prefilter)
 static std::vector<SaveLoad> GetSettingsDesc(const SettingTable &settings, bool is_loading)
 {
 	std::vector<SaveLoad> saveloads;
-	for (auto &sd : settings) {
+	for (auto &desc : settings) {
+		const SettingDesc *sd = GetSettingDesc(desc);
 		if (sd->flags & SF_NOT_IN_SAVE) continue;
 
 		if (is_loading && (sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) {
@@ -2050,7 +2068,8 @@ static void LoadSettings(const SettingTable &settings, void *object)
 	if (!IsSavegameVersionBefore(SLV_RIFF_TO_ARRAY) && SlIterateArray() != -1) SlErrorCorrupt("Too many settings entries");
 
 	/* Ensure all IntSettings are valid (min/max could have changed between versions etc). */
-	for (auto &sd : settings) {
+	for (auto &desc : settings) {
+		const SettingDesc *sd = GetSettingDesc(desc);
 		if (sd->flags & SF_NOT_IN_SAVE) continue;
 		if ((sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) continue;
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
