@@ -795,7 +795,7 @@ bool NetworkClientConnectGame(const std::string &connection_string, CompanyID de
 	std::string resolved_connection_string = ParseGameConnectionString(connection_string, NETWORK_DEFAULT_PORT, &join_as).GetAddressAsString(false);
 
 	if (!_network_available) return false;
-	if (!NetworkValidateClientName()) return false;
+	if (!NetworkValidateOurClientName()) return false;
 
 	_network_join.connection_string = resolved_connection_string;
 	_network_join.company = join_as;
