@@ -32,7 +32,6 @@ extern NSString *OTTDMainLaunchGameEngine;
 @interface OTTD_CocoaWindow : NSWindow
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)styleMask backing:(NSBackingStoreType)backingType defer:(BOOL)flag driver:(VideoDriver_Cocoa *)drv;
 
-- (void)display;
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag;
 @end
 

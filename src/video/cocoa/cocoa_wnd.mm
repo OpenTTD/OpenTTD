@@ -406,23 +406,6 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 }
 
 /**
- * This method fires just before the window deminaturizes from the Dock.
- * We'll save the current visible surface, let the window manager redraw any
- * UI elements, and restore the surface. This way, no expose event
- * is required, and the deminiaturize works perfectly.
- */
-- (void)display
-{
-	/* save current visible surface */
-	[ self cacheImageInRect:[ driver->cocoaview frame ] ];
-
-	/* let the window manager redraw controls, border, etc */
-	[ super display ];
-
-	/* restore visible surface */
-	[ self restoreCachedImage ];
-}
-/**
  * Define the rectangle we draw our window in
  */
 - (void)setFrame:(NSRect)frameRect display:(BOOL)flag
