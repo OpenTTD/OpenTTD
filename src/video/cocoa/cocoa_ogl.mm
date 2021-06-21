@@ -12,6 +12,8 @@
 #include "../../stdafx.h"
 #include "../../os/macosx/macos.h"
 
+#define GL_SILENCE_DEPRECATION
+
 #define Rect  OTTDRect
 #define Point OTTDPoint
 #import <Cocoa/Cocoa.h>
