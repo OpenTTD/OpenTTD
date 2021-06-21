@@ -191,13 +191,13 @@ const char *GetCurrentLocale(const char *)
 bool GetClipboardContents(char *buffer, const char *last)
 {
 	NSPasteboard *pb = [ NSPasteboard generalPasteboard ];
-	NSArray *types = [ NSArray arrayWithObject:NSStringPboardType ];
+	NSArray *types = [ NSArray arrayWithObject:NSPasteboardTypeString ];
 	NSString *bestType = [ pb availableTypeFromArray:types ];
 
 	/* Clipboard has no text data available. */
 	if (bestType == nil) return false;
 
-	NSString *string = [ pb stringForType:NSStringPboardType ];
+	NSString *string = [ pb stringForType:NSPasteboardTypeString ];
 	if (string == nil || [ string length ] == 0) return false;
 
 	strecpy(buffer, [ string UTF8String ], last);

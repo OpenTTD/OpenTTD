@@ -37,6 +37,16 @@
 /* Table data for key mapping. */
 #include "cocoa_keys.h"
 
+/* The 10.12 SDK added new names for some enum constants and
+ * deprecated the old ones. As there's no functional change in any
+ * way, just use a define for older SDKs to the old names. */
+#ifndef HAVE_OSX_1012_SDK
+#	define NSEventModifierFlagCommand NSCommandKeyMask
+#	define NSEventModifierFlagControl NSControlKeyMask
+#	define NSEventModifierFlagOption NSAlternateKeyMask
+#	define NSEventModifierFlagShift NSShiftKeyMask
+#	define NSEventModifierFlagCapsLock NSAlphaShiftKeyMask
+#endif
 
 /**
  * Important notice regarding all modifications!!!!!!!
@@ -135,7 +145,12 @@ static std::vector<WChar> NSStringToUTF32(NSString *s)
 	[ NSApp stop:self ];
 
 	/* Send an empty event to return from the run loop. Without that, application is stuck waiting for an event. */
-	NSEvent *event = [ NSEvent otherEventWithType:NSApplicationDefined location:NSMakePoint(0, 0) modifierFlags:0 timestamp:0.0 windowNumber:0 context:nil subtype:0 data1:0 data2:0 ];
+#ifdef HAVE_OSX_1012_SDK
+	NSEventType type = NSEventTypeApplicationDefined;
+#else
+	NSEventType type = NSApplicationDefined;
+#endif
+	NSEvent *event = [ NSEvent otherEventWithType:type location:NSMakePoint(0, 0) modifierFlags:0 timestamp:0.0 windowNumber:0 context:nil subtype:0 data1:0 data2:0 ];
 	[ NSApp postEvent:event atStart:YES ];
 }
 
@@ -207,7 +222,7 @@ static void setApplicationMenu()
 	[ appleMenu addItemWithTitle:title action:@selector(hide:) keyEquivalent:@"h" ];
 
 	NSMenuItem *menuItem = [ appleMenu addItemWithTitle:@"Hide Others" action:@selector(hideOtherApplications:) keyEquivalent:@"h" ];
-	[ menuItem setKeyEquivalentModifierMask:(NSAlternateKeyMask | NSCommandKeyMask) ];
+	[ menuItem setKeyEquivalentModifierMask:(NSEventModifierFlagOption | NSEventModifierFlagCommand) ];
 
 	[ appleMenu addItemWithTitle:@"Show All" action:@selector(unhideAllApplications:) keyEquivalent:@"" ];
 
@@ -329,7 +344,11 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 	@autoreleasepool {
 		NSAlert *alert = [ [ NSAlert alloc ] init ];
+#ifdef HAVE_OSX_1012_SDK
+		[ alert setAlertStyle: NSAlertStyleCritical ];
+#else
 		[ alert setAlertStyle: NSCriticalAlertStyle ];
+#endif
 		[ alert setMessageText:[ NSString stringWithUTF8String:title ] ];
 		[ alert setInformativeText:[ NSString stringWithUTF8String:message ] ];
 		[ alert addButtonWithTitle: [ NSString stringWithUTF8String:buttonLabel ] ];
@@ -536,8 +555,8 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 - (BOOL)emulateRightButton:(NSEvent *)event
 {
 	uint32 keymask = 0;
-	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSCommandKeyMask;
-	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSControlKeyMask;
+	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSEventModifierFlagCommand;
+	if (_settings_client.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSEventModifierFlagControl;
 
 	return (event.modifierFlags & keymask) != 0;
 }
@@ -653,18 +672,18 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 
 		case QZ_RETURN:
 		case QZ_f:
-			if (down && (modifiers & NSCommandKeyMask)) {
+			if (down && (modifiers & NSEventModifierFlagCommand)) {
 				VideoDriver::GetInstance()->ToggleFullscreen(!_fullscreen);
 			}
 			break;
 
 		case QZ_v:
-			if (down && EditBoxInGlobalFocus() && (modifiers & (NSCommandKeyMask | NSControlKeyMask))) {
+			if (down && EditBoxInGlobalFocus() && (modifiers & (NSEventModifierFlagCommand | NSEventModifierFlagControl))) {
 				HandleKeypress(WKC_CTRL | 'V', unicode);
 			}
 			break;
 		case QZ_u:
-			if (down && EditBoxInGlobalFocus() && (modifiers & (NSCommandKeyMask | NSControlKeyMask))) {
+			if (down && EditBoxInGlobalFocus() && (modifiers & (NSEventModifierFlagCommand | NSEventModifierFlagControl))) {
 				HandleKeypress(WKC_CTRL | 'U', unicode);
 			}
 			break;
@@ -676,10 +695,10 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		auto vk = std::find_if(std::begin(_vk_mapping), std::end(_vk_mapping), [=](const CocoaVkMapping &m) { return m.vk_from == keycode; });
 		uint32 pressed_key = vk != std::end(_vk_mapping) ? vk->map_to : 0;
 
-		if (modifiers & NSShiftKeyMask)     pressed_key |= WKC_SHIFT;
-		if (modifiers & NSControlKeyMask)   pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
-		if (modifiers & NSAlternateKeyMask) pressed_key |= WKC_ALT;
-		if (modifiers & NSCommandKeyMask)   pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_META : WKC_CTRL);
+		if (modifiers & NSEventModifierFlagShift)   pressed_key |= WKC_SHIFT;
+		if (modifiers & NSEventModifierFlagControl) pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
+		if (modifiers & NSEventModifierFlagOption)  pressed_key |= WKC_ALT;
+		if (modifiers & NSEventModifierFlagCommand) pressed_key |= (_settings_client.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_META : WKC_CTRL);
 
 		static bool console = false;
 
@@ -715,7 +734,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		case QZ_q:
 		case QZ_h:
 		case QZ_m:
-			if (event.modifierFlags & NSCommandKeyMask) {
+			if (event.modifierFlags & NSEventModifierFlagCommand) {
 				[ self interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
 			}
 			break;
@@ -744,7 +763,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 		case QZ_q:
 		case QZ_h:
 		case QZ_m:
-			if (event.modifierFlags & NSCommandKeyMask) {
+			if (event.modifierFlags & NSEventModifierFlagCommand) {
 				[ self interpretKeyEvents:[ NSArray arrayWithObject:event ] ];
 			}
 			break;
@@ -765,7 +784,7 @@ void CocoaDialog(const char *title, const char *message, const char *buttonLabel
 	if (self->_current_mods == newMods) return;
 
 	/* Iterate through the bits, testing each against the current modifiers */
-	for (unsigned int i = 0, bit = NSAlphaShiftKeyMask; bit <= NSCommandKeyMask; bit <<= 1, ++i) {
+	for (unsigned int i = 0, bit = NSEventModifierFlagCapsLock; bit <= NSEventModifierFlagCommand; bit <<= 1, ++i) {
 		unsigned int currentMask, newMask;
 
 		currentMask = self->_current_mods & bit;
