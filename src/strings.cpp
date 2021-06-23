@@ -800,15 +800,14 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 	WChar b = '\0';
 	uint next_substr_case_index = 0;
 	char *buf_start = buff;
-	std::stack<const char *, std::vector<const char *>> str_stack;
-	str_stack.push(str_arg);
+	const char * next_str_arg = str_arg;
 
 	for (;;) {
-		while (!str_stack.empty() && (b = Utf8Consume(&str_stack.top())) == '\0') {
-			str_stack.pop();
+		if (next_str_arg != nullptr && (b = Utf8Consume(next_str_arg)) == '\0') {
+			next_str_arg = nullptr;
 		}
-		if (str_stack.empty()) break;
-		const char *&str = str_stack.top();
+		if (next_str_arg == nullptr) break;
+		const char *str = next_str_arg;
 
 		if (SCC_NEWGRF_FIRST <= b && b <= SCC_NEWGRF_LAST) {
 			/* We need to pass some stuff as it might be modified; oh boy. */
@@ -915,13 +914,13 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_NEWGRF_STRINL: {
 				StringID substr = Utf8Consume(&str);
-				str_stack.push(GetStringPtr(substr));
+				next_str_arg = GetStringPtr(substr);
 				break;
 			}
 
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 				StringID substr = args->GetInt32(SCC_NEWGRF_PRINT_WORD_STRING_ID);
-				str_stack.push(GetStringPtr(substr));
+				next_str_arg = GetStringPtr(substr);
 				case_index = next_substr_case_index;
 				next_substr_case_index = 0;
 				break;
