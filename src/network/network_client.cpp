@@ -132,12 +132,8 @@ struct PacketReader : LoadFilter {
  */
 void ClientNetworkEmergencySave()
 {
-	if (!_settings_client.gui.autosave_on_network_disconnect) return;
-	if (!_networking) return;
-
-	const char *filename = "netsave.sav";
-	Debug(net, 3, "Performing emergency save: {}", filename);
-	SaveOrLoad(filename, SLO_SAVE, DFT_GAME_FILE, AUTOSAVE_DIR, false);
+	static int _netsave_ctr = 0;
+	DoAutoOrNetsave(_netsave_ctr, true);
 }
 
 
