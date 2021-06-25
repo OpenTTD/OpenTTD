@@ -883,6 +883,11 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Subsidieaanbod is verlopen:{}{}{STRING} van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subsidie ingetrokken:{}{}{STRING}route van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Subsidie aangeboden:{}{}Eerste {STRING}route van {STRING} naar {STRING} krijgt {NUM} jaar lang subsidie van de gemeente!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subsidie toegekend aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt de volgende {NUM} jaar 50% extra betaald!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subsidie toegekend aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt de volgende {NUM} jaar dubbel betaald!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subsidie toegekend aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt devolgende {NUM} jaar driedubbel betaald!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subsidie toegekend aan {STRING}!{}{}{STRING}route van {STRING} naar {STRING} krijgt de volgende {NUM} jaar vierdubbel betaald!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreconstructie betaald door {STRING} zorgt voor 6 maanden van misère bij weggebruikers!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopolie!
@@ -1198,6 +1203,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Voertuigstoring
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Bepaal hoe vaak onvoldoende onderhouden voertuigen kapot kunnen gaan
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Subsidiefactor: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Instellen hoeveel wordt betaald voor gesubsidieerde verbindingen
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Duur van subsidie: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Bepaal het aantal jaar dat de subsidie wordt verleend
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} jaar{P "" ""}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Geen subsidie
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Bouwkosten: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Het niveau van bouw- en aankoopkosten instellen
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessies: {STRING}

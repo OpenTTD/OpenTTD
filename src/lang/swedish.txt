@@ -1769,7 +1769,7 @@ STR_CONFIG_SETTING_LOCALISATION                                 :{ORANGE}Lokalis
 STR_CONFIG_SETTING_GRAPHICS                                     :{ORANGE}Grafik
 STR_CONFIG_SETTING_SOUND                                        :{ORANGE}Ljud
 STR_CONFIG_SETTING_INTERFACE                                    :{ORANGE}Gränssnitt
-STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generelt
+STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}Generellt
 STR_CONFIG_SETTING_INTERFACE_VIEWPORTS                          :{ORANGE}Vyfönster
 STR_CONFIG_SETTING_INTERFACE_CONSTRUCTION                       :{ORANGE}Konstruktion
 STR_CONFIG_SETTING_ADVISORS                                     :{ORANGE} Nyheter / Rådgivare
