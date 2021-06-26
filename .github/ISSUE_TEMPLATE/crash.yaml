@@ -1,0 +1,37 @@
+name: Crash
+description: Did OpenTTD crash?
+title: "[Crash]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this crash report!
+  - type: input
+    id: version
+    attributes:
+      label: Version of OpenTTD
+      description: Fill in below what version of OpenTTD you are using, including your OS.
+      placeholder: ex. 1.11.2, Windows 10
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Please spend a few words if you can reproduce this problem.
+      placeholder: |
+        1. Bought a new train.
+        2. The game crashed.
+    validations:
+      required: true
+  - type: textarea
+    id: crashlogs
+    attributes:
+      label: Upload crash files
+      description: With the `crash.log`, `crash.dmp`, and `crash.sav` we can analyze the crash in detail; this way you allow us to easier triage and fix the problem.
+      placeholder: |
+        1. Zip the `crash.log`, `crash.dmp` and `crash.sav`.
+        2. Click on this field.
+        3. Drag and drop the zip file in here.
+    validations:
+      required: true
