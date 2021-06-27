@@ -439,7 +439,7 @@ void IntSettingDesc::MakeValueValid(int32 &val) const
 					uval = (uint32)this->def;
 				}
 			}
-			val = (int32)val;
+			val = (int32)uval;
 			return;
 		}
 		case SLE_VAR_I64:
