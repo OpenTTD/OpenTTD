@@ -886,6 +886,8 @@ STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLAC
 STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Ny subvention:{}{}Första transporten av {STRING} från {STRING} till {STRING} får {NUM} års subvention från kommunen!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvention tilldelad {STRING}!{}{}{STRING} från {STRING} till {STRING} ger 50% extra de{P 4 t ""} {NUM} kommande år{P et en}!
 STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvention tilldelad {STRING}!{}{}{STRING} från {STRING} till {STRING} ger dubbelt så mycket nästa  {NUM} år{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvention tilldelad {STRING}!{}{}{STRING} från {STRING} till {STRING} ger tre gånger så mycket de{P 4 t ""} kommande {NUM} år{P et en}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvention tilldelad {STRING}!{}{}{STRING} från {STRING} till {STRING} ger fyra gånger så mycket de{P 4 t ""} kommande {NUM} år{P et en}!
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trafikkaos i {TOWN}!{}{}Vägombyggnadsprogram bekostat av {STRING} medför 6 månader av elände för bilister!
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Transportmonopol!
@@ -1271,9 +1273,9 @@ STR_CONFIG_SETTING_SIGNALSIDE_DRIVING_SIDE                      :På förarsidan
 STR_CONFIG_SETTING_SIGNALSIDE_RIGHT                             :På höger sida
 STR_CONFIG_SETTING_SHOWFINANCES                                 :Visa finansfönstret vid slutet av året: {STRING}
 STR_CONFIG_SETTING_SHOWFINANCES_HELPTEXT                        :Om aktiverad kommer finans-fönstret att visas vid slutet av varje år för att möjliggöra enkel granskning av den finansiella statusen för företaget.
-STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nya orders är 'non-stop' om inte annat anges.{STRING}
+STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT                           :Nya order är 'non-stop' om inte annat anges.{STRING}
 STR_CONFIG_SETTING_NONSTOP_BY_DEFAULT_HELPTEXT                  :I normala fall stannar ett fordon vid varje station det passerar. Aktiveras den här inställningen kommer det istället att köra igenom alla stationer på väg till dess slutdestination utan att stanna. Tänk på att den här inställningen bara definierar ett förinställt värde för nya order. Individuella order kan uttryckligen definiera båda typerna av beteende oavsett inställning
-STR_CONFIG_SETTING_STOP_LOCATION                                :Nya tåg-orders stannar som standard vid {STRING} av platformen
+STR_CONFIG_SETTING_STOP_LOCATION                                :Nya tåg-order stannar som standard vid {STRING} av platformen
 STR_CONFIG_SETTING_STOP_LOCATION_HELPTEXT                       :Grundinställning för var tåg stannar utmed plattformar. 'början' betyder i början av plattformen sett från var tåget kommer ifrån. 'mitten' betyder i mitten av plattformen och 'slutet' betyder så långt bort som möjligt. Notera att denna inställning endast anger grundvärdet för nya ordrar. Individuella instruktioner kan ges per orderrad explicit till valfritt värde oberoende av denna inställning.
 STR_CONFIG_SETTING_STOP_LOCATION_NEAR_END                       :början
 STR_CONFIG_SETTING_STOP_LOCATION_MIDDLE                         :mitten
@@ -2663,7 +2665,7 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}Ta bort 
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}Är du säker på att du vill ta bort alla industrier?
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja för {STRING} industrin
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Industrikedja för industrin {STRING}
 STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Industrikedja för godset {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Producerande industrier
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Mottagande industrier
@@ -2933,7 +2935,7 @@ STR_MAPGEN_BORDER_FREEFORM                                      :{BLACK}Fri form
 STR_MAPGEN_BORDER_WATER                                         :{BLACK}Vatten
 STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}På måfå
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}På måfå
-STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuell
+STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuella
 
 STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotation på höjdkarta:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Namn på höjdkarta:

@@ -884,6 +884,11 @@ STR_NEWS_STATION_NOW_ACCEPTS_CARGO_AND_CARGO                    :{WHITE}{STATION
 
 STR_NEWS_OFFER_OF_SUBSIDY_EXPIRED                               :{BIG_FONT}{BLACK}Oferta de subvenció caducada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} no tindrà subvenció
 STR_NEWS_SUBSIDY_WITHDRAWN_SERVICE                              :{BIG_FONT}{BLACK}Subvenció retirada:{}{}El transport de {STRING} des de {STRING} fins a {STRING} ja no està subvencionat
+STR_NEWS_SERVICE_SUBSIDY_OFFERED                                :{BIG_FONT}{BLACK}Oferta de subvenció per a un servei:{}{}La primera companyia en transportar {STRING} des de {STRING} fins a {STRING} tindrà una subvenció de {NUM} any{P "" s} per part de l'autoritat local
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_HALF                           :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} rebrà uns ingressos addicionals del 50% durant {NUM} any{P "" s}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_DOUBLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} ingressarà el doble de la tarifa habitual durant {NUM} any{P "" s}!
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_TRIPLE                         :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} ingressarà el triple de la tarifa habitual durant {NUM} any{P "" s}
+STR_NEWS_SERVICE_SUBSIDY_AWARDED_QUADRUPLE                      :{BIG_FONT}{BLACK}Subvenció concedida a {STRING}{}{}El transport de {STRING} des de {STRING} fins a {STRING} ingressarà el quàdruple de la tarifa habitual durant {NUM} any{P "" s}
 
 STR_NEWS_ROAD_REBUILDING                                        :{BIG_FONT}{BLACK}Trànsit caòtic a {TOWN}{}{}El programa de reconstrucció dels carrers patrocinat per {STRING} porta 6 mesos de misèria als automobilistes
 STR_NEWS_EXCLUSIVE_RIGHTS_TITLE                                 :{BIG_FONT}{BLACK}Monopoli de transports
@@ -1199,6 +1204,10 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :Nombre d'avarie
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :Controla cada quan els vehicles revisats inadequadament s'espatllen
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :Multiplicador del subsidi: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :Fixa quant es paga pels transports subsidiats
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :Durada dels subsidis: {STRING}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_HELPTEXT                    :Establiu el nombre d'anys que duren els subsidis.
+STR_CONFIG_SETTING_SUBSIDY_DURATION_VALUE                       :{NUM} any{P "" s}
+STR_CONFIG_SETTING_SUBSIDY_DURATION_DISABLED                    :Sense subsidis
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :Costos de construcció: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :Fixa el nivell de construcció i els preus de compra
 STR_CONFIG_SETTING_RECESSIONS                                   :Recessions: {STRING}
