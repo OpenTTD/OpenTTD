@@ -1151,7 +1151,7 @@ public:
 
 	void ExecuteFoundTownCommand(TileIndex tile, bool random, StringID errstr, CommandCallback cc)
 	{
-		const char *name = nullptr;
+		std::string name;
 
 		if (!this->townnamevalid) {
 			name = this->townname_editbox.text.buf;
