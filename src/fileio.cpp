@@ -1027,6 +1027,10 @@ void DeterminePaths(const char *exe, bool only_local_path)
 	_hotkeys_file = config_dir + "hotkeys.cfg";
 	extern std::string _windows_file;
 	_windows_file = config_dir + "windows.cfg";
+	extern std::string _private_file;
+	_private_file = config_dir + "private.cfg";
+	extern std::string _secrets_file;
+	_secrets_file = config_dir + "secrets.cfg";
 
 #ifdef USE_XDG
 	if (config_dir == config_home) {

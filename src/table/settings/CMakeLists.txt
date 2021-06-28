@@ -7,6 +7,8 @@ set(TABLE_INI_SOURCE_FILES
         ${CMAKE_CURRENT_SOURCE_DIR}/gameopt_settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/misc_settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/network_settings.ini
+        ${CMAKE_CURRENT_SOURCE_DIR}/network_private_settings.ini
+        ${CMAKE_CURRENT_SOURCE_DIR}/network_secrets_settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/win32_settings.ini
         ${CMAKE_CURRENT_SOURCE_DIR}/window_settings.ini
