@@ -173,3 +173,14 @@ To read this, see `CH_ARRAY` / `CH_SPARSE_ARRAY` for details.
 As each `type` has a well defined length, you can read the records even without knowing anything about the chunk-tag yourself.
 
 Do remember, that if the `type` had the `0x10` flag active, the field in the record first has a `gamma` to indicate how many times that `type` is repeated.
+
+#### Guidelines for network-compatible patch-packs
+
+For network-compatible patch-packs (client-side patches that can play together with unpatched clients) we advise to prefix the field-name with `__<shortname>` when introducing new fields to an existing chunk.
+
+Example: you have an extra setting called `auto_destroy_rivers` you want to store in the savegame for your patched client called `mypp`.
+We advise you to call this setting `__mypp_auto_destroy_rivers` in the settings chunk.
+
+Doing it this way ensures that a savegame created by these patch-packs can still safely be loaded by unpatched clients.
+They will simply ignore the field and continue loading the savegame as usual.
+The prefix is strongly advised to avoid conflicts with future-settings in an unpatched client or conflicts with other patch-packs.
