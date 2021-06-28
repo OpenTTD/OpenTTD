@@ -89,6 +89,21 @@ static ErrorList _settings_error_list; ///< Errors while loading minimal setting
 
 typedef span<const SettingVariant> SettingTable;
 
+/**
+ * List of all the setting tables.
+ *
+ * There are a few tables that are special and not processed like the rest:
+ * - _currency_settings
+ * - _misc_settings
+ * - _company_settings
+ * - _win32_settings
+ * As such, they are not part of this list.
+ */
+static const SettingTable _setting_tables[] = {
+	_settings,
+	_network_settings,
+};
+
 typedef void SettingDescProc(IniFile *ini, const SettingTable &desc, const char *grpname, void *object, bool only_startup);
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, StringList &list);
 
@@ -1542,7 +1557,11 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 	proc(ini, _win32_settings,   "win32", nullptr, only_startup);
 #endif /* _WIN32 */
 
-	proc(ini, _settings,         "patches",  &_settings_newgame, only_startup);
+	for (auto &table : _setting_tables) {
+		/* The name "patches" is a fallback, as every setting should sets its own group. */
+		proc(ini, table, "patches", &_settings_newgame, only_startup);
+	}
+
 	proc(ini, _currency_settings,"currency", &_custom_currency, only_startup);
 	proc(ini, _company_settings, "company",  &_settings_client.company, only_startup);
 
@@ -1773,8 +1792,10 @@ static const SettingDesc *GetCompanySettingFromName(std::string_view name)
  */
 const SettingDesc *GetSettingFromName(const std::string_view name)
 {
-	auto sd = GetSettingFromName(name, _settings);
-	if (sd != nullptr) return sd;
+	for (auto &table : _setting_tables) {
+		auto sd = GetSettingFromName(name, table);
+		if (sd != nullptr) return sd;
+	}
 
 	return GetCompanySettingFromName(name);
 }
@@ -2016,13 +2037,15 @@ void IConsoleListSettings(const char *prefilter)
 {
 	IConsolePrint(CC_HELP, "All settings with their current value:");
 
-	for (auto &desc : _settings) {
-		const SettingDesc *sd = GetSettingDesc(desc);
-		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (prefilter != nullptr && sd->name.find(prefilter) == std::string::npos) continue;
-		char value[80];
-		sd->FormatValue(value, lastof(value), &GetGameSettings());
-		IConsolePrint(CC_DEFAULT, "{} = {}", sd->name, value);
+	for (auto &table : _setting_tables) {
+		for (auto &desc : table) {
+			const SettingDesc *sd = GetSettingDesc(desc);
+			if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+			if (prefilter != nullptr && sd->name.find(prefilter) == std::string::npos) continue;
+			char value[80];
+			sd->FormatValue(value, lastof(value), &GetGameSettings());
+			IConsolePrint(CC_DEFAULT, "{} = {}", sd->name, value);
+		}
 	}
 
 	IConsolePrint(CC_HELP, "Use 'setting' command to change a value.");
