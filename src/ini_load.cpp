@@ -101,6 +101,29 @@ IniItem *IniGroup::GetItem(const std::string &name, bool create)
 }
 
 /**
+ * Remove the item with the given name.
+ * @param name Name of the item to remove.
+ */
+void IniGroup::RemoveItem(const std::string &name)
+{
+	IniItem **prev = &this->item;
+
+	for (IniItem *item = this->item; item != nullptr; prev = &item->next, item = item->next) {
+		if (item->name != name) continue;
+
+		*prev = item->next;
+		if (this->last_item == &this->item) {
+			this->last_item = &item->next;
+		}
+
+		item->next = nullptr;
+		delete item;
+
+		return;
+	}
+}
+
+/**
  * Clear all items in the group
  */
 void IniGroup::Clear()

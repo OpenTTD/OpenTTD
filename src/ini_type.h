@@ -47,6 +47,7 @@ struct IniGroup {
 	~IniGroup();
 
 	IniItem *GetItem(const std::string &name, bool create);
+	void RemoveItem(const std::string &name);
 	void Clear();
 };
 
