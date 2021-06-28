@@ -1294,7 +1294,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS                         :Tillåt att byg
 STR_CONFIG_SETTING_ALLOW_FUND_BUILDINGS_HELPTEXT                :Tillåt företag att ge pengar till städer för att bekosta nybyggnation av hus
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD                              :Tillåt finansiering av lokal vägrekonstruktion: {STRING}
 STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Tillåt att företag ger pengar till städer för vägbyggen och därmed saboterar för vägtransporter i staden.
-STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillåt skicka pengar till andra företag: {STRING}
+STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Tillåt att skicka pengar till andra företag: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Tillåt överföring av pengar mellan företag i flerspelarläge
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Godsfaktor för att simulera tunga tåg: {STRING}
 STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Ställ in påverkan av att frakta gods i tåg. Ett högre värde gör att fraktgods är mer krävande för tågen, speciellt vid lutningar
