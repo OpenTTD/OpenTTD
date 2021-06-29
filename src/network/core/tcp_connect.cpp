@@ -45,7 +45,7 @@ TCPConnecter::~TCPConnecter()
 	this->sockets.clear();
 	this->sock_to_address.clear();
 
-	freeaddrinfo(this->ai);
+	if (this->ai != nullptr) freeaddrinfo(this->ai);
 }
 
 /**
