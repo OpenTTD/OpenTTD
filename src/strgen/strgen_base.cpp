@@ -818,8 +818,12 @@ void StringReader::ParseFile()
 	char buf[2048];
 	_warnings = _errors = 0;
 
-	_translation = this->master || this->translation;
+	_translation = this->translation;
 	_file = this->file;
+
+	/* Abusing _show_todo to replace "warning" with "info" for translations. */
+	_show_todo &= 3;
+	if (!this->translation) _show_todo |= 4;
 
 	/* For each new file we parse, reset the genders, and language codes. */
 	MemSetT(&_lang, 0);
