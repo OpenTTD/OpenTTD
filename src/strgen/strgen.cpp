@@ -46,7 +46,11 @@ void CDECL strgen_warning(const char *s, ...)
 	va_start(va, s);
 	vseprintf(buf, lastof(buf), s, va);
 	va_end(va);
-	fprintf(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, buf);
+	if (_show_todo > 0) {
+		fprintf(stderr, LINE_NUM_FMT("warning"), _file, _cur_line, buf);
+	} else {
+		fprintf(stderr, LINE_NUM_FMT("info"), _file, _cur_line, buf);
+	}
 	_warnings++;
 }
 
