@@ -779,7 +779,7 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Visa all
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Visa senaste meddelande eller nyhet
 STR_STATUSBAR_COMPANY_NAME                                      :{SILVER}- -  {COMPANY}  - -
 STR_STATUSBAR_PAUSED                                            :{YELLOW}*  *  PAUSAD  *  *
-STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  PAUSAD (väntar på updatering av länkdiagram) *  *
+STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}*  *  PAUSAD (väntar på uppdatering av länkgraf) *  *
 STR_STATUSBAR_AUTOSAVE                                          :{RED}AUTOSPARA
 STR_STATUSBAR_SAVING_GAME                                       :{RED}*  *  SPARAR SPEL  *  *
 
@@ -824,7 +824,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLAC
 STR_NEWS_MERGER_TAKEOVER_TITLE                                  :{BIG_FONT}{BLACK}{STRING} har tagits över av {STRING}!
 STR_PRESIDENT_NAME_MANAGER                                      :{BLACK}{PRESIDENT_NAME}{}(VD)
 
-STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} har sponsrat byggnationen av nya staden {TOWN}!
+STR_NEWS_NEW_TOWN                                               :{BLACK}{BIG_FONT}{STRING} har sponsrat byggnationen av den nya staden {TOWN}!
 STR_NEWS_NEW_TOWN_UNSPONSORED                                   :{BLACK}{BIG_FONT}En ny stad, kallad {TOWN}, har grundats!
 
 STR_NEWS_INDUSTRY_CONSTRUCTION                                  :{BIG_FONT}{BLACK}Ny {STRING} under konstruktion nära {TOWN}!
@@ -1037,7 +1037,7 @@ STR_GAME_OPTIONS_REFRESH_RATE_WARNING                           :{WHITE}uppdater
 STR_GAME_OPTIONS_BASE_GRF                                       :{BLACK}Grafikpaket som standard
 STR_GAME_OPTIONS_BASE_GRF_TOOLTIP                               :{BLACK}Välj vilket grafikpaket som ska användas som standard
 STR_GAME_OPTIONS_BASE_GRF_STATUS                                :{RED}{NUM} saknad{P "" e}/trasig{P "" a} fil{P "" er}
-STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om basgrafik-set
+STR_GAME_OPTIONS_BASE_GRF_DESCRIPTION_TOOLTIP                   :{BLACK}Ytterligare information om basgrafik-settet
 
 STR_GAME_OPTIONS_BASE_SFX                                       :{BLACK}Grundljudspaket
 STR_GAME_OPTIONS_BASE_SFX_TOOLTIP                               :{BLACK}Välj vilket grundljudspaket som ska användas
@@ -1368,10 +1368,10 @@ STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Begränsar hur 
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT                              :Snögränsens höjd: {STRING}
 STR_CONFIG_SETTING_SNOWLINE_HEIGHT_HELPTEXT                     :Kontrollerar på vilken höjd snön börjar i det subarktiska landskapet. Snö påverkar även industrigeneration och städers tillväxtkrav. Kan endast modifieras via Scenarioredigeraren eller beräknas via "snötäckning"
 STR_CONFIG_SETTING_SNOW_COVERAGE                                :Snötäckning: {STRING}
-STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kontrollerar ungefärlig mängd snö på den subarktiska landskapet. Snö påverkar även industri generation och städernas tillväxtkrav. Används endast under kartgeneration. Land precis över havsnivån är alltid utan snö
+STR_CONFIG_SETTING_SNOW_COVERAGE_HELPTEXT                       :Kontrollerar ungefärlig mängd snö i det subarktiska landskapet. Snö påverkar även industrigeneration och städernas tillväxtkrav. Används endast under kartgeneration. Land precis över havsnivån är alltid utan snö
 STR_CONFIG_SETTING_SNOW_COVERAGE_VALUE                          :{NUM}%
-STR_CONFIG_SETTING_DESERT_COVERAGE                              :Öken täckning: {STRING}
-STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kontrollera ungefärligt mängd öken i tropiskt landskap. Öken påverkar även industri generation. Används bara under kartgeneration
+STR_CONFIG_SETTING_DESERT_COVERAGE                              :Ökentäckning: {STRING}
+STR_CONFIG_SETTING_DESERT_COVERAGE_HELPTEXT                     :Kontrollera ungefärlig mängd öken i tropiskt landskap. Öken påverkar även industrigeneration. Används bara under kartgeneration
 STR_CONFIG_SETTING_DESERT_COVERAGE_VALUE                        :{NUM}%
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN                         :Terrängens svårhetsgrad: {STRING}
 STR_CONFIG_SETTING_ROUGHNESS_OF_TERRAIN_HELPTEXT                :(TerraGenesis endast) Välj frekvensen av kullar: Smooth landskap har färre, mer utbredda kullar. Rough landskap har många kullar, som kan se repetitiva
@@ -1383,14 +1383,14 @@ STR_CONFIG_SETTING_VARIETY                                      :Varierad distri
 STR_CONFIG_SETTING_VARIETY_HELPTEXT                             :(TerraGenesis endast) Styr om kartan innehåller både bergs och flacka områden. Eftersom detta gör bara kartan flackare bör andra inställningar ställas in på bergiga
 STR_CONFIG_SETTING_RIVER_AMOUNT                                 :Antal floder: {STRING}
 STR_CONFIG_SETTING_RIVER_AMOUNT_HELPTEXT                        :Välj hur många floder att generera
-STR_CONFIG_SETTING_TREE_PLACER                                  :Trädplacerings-algoritm: {STRING}
-STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Välj fördelningen av träden på kartan: "Original" växter träd jämnt utspridda, "Förbättrad" växter dem i grupper
+STR_CONFIG_SETTING_TREE_PLACER                                  :Trädplaceringsalgoritm: {STRING}
+STR_CONFIG_SETTING_TREE_PLACER_HELPTEXT                         :Välj hur träd fördelas över kartan: "Original" planterar träden jämnt utspridda, "Förbättrad" planterar dem i grupper
 STR_CONFIG_SETTING_TREE_PLACER_NONE                             :Inget
 STR_CONFIG_SETTING_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_SETTING_TREE_PLACER_IMPROVED                         :Förbättrad
-STR_CONFIG_SETTING_ROAD_SIDE                                    :Väg fordon: {STRING}
-STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Välj kör sida
-STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Höjkartans rotation: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE                                    :Vägfordon: {STRING}
+STR_CONFIG_SETTING_ROAD_SIDE_HELPTEXT                           :Välj körsida
+STR_CONFIG_SETTING_HEIGHTMAP_ROTATION                           :Höjdkartans rotation: {STRING}
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Motsols
 STR_CONFIG_SETTING_HEIGHTMAP_ROTATION_CLOCKWISE                 :Medsols
 STR_CONFIG_SETTING_SE_FLAT_WORLD_HEIGHT                         :Vilken nivåhöjd en platt scenario-karta får: {STRING}
@@ -1586,7 +1586,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Visa nyhetstidn
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Råd / information om företagets fordon: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Visa meddelande ifall att ett fordon behöver uppmärksamhet
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nya fordon: {STRING}
-STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Visa nyhetstidning när en ny typ av fordon blir tillgängligt
+STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Visa nyhetstidning när en ny typ av fordon blir tillgänglig
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Ändringar i godsacceptans: {STRING}
 STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Visa meddelande vid förändring av stationers varuacceptans
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subventioner: {STRING}
@@ -1707,8 +1707,8 @@ STR_CONFIG_SETTING_LARGER_TOWNS_DISABLED                        :Inga
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER                         :Initial stadsstorleks-multiplikator: {STRING}
 STR_CONFIG_SETTING_CITY_SIZE_MULTIPLIER_HELPTEXT                :Storstäders genomsnittliga storlek i relation till vanliga städers vid spelets början
 
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Uppdatera distributionsgrafen var {STRING}:e{NBSP}dag{P 0:2 "" s}
-STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planer för en komponent i grafen. Det medför att ett värde X för den här inställningen inte innebär att hela grafen uppdateras var X:e dag, bara vissa komponenter. Ju lägre värde du ställer in desto mer processorkraft kommer att behövas för beräkningarna. Ju högre värde du ställer in desto längre tid kommer det att ta innan distributionen av last börjar använda nya rutter.
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL                           :Uppdatera distributionsgrafen var {STRING}:e{NBSP}dag
+STR_CONFIG_SETTING_LINKGRAPH_INTERVAL_HELPTEXT                  :Tid mellan efterföljande omräkningar av länkgrafen. Varje omräkning beräknar planerna för en komponent i grafen. Det medför att ett värde X för den här inställningen inte innebär att hela grafen uppdateras var X:e dag, utan bara vissa komponenter. Ju kortare intervall du ställer in desto mer processorkraft kommer att behövas för beräkningarna. Ju längre intervall du ställer in desto längre tid kommer det att ta innan distributionen av last börjar använda nya rutter.
 STR_CONFIG_SETTING_LINKGRAPH_TIME                               :Avsätt {STRING}{NBSP}dag{P 0:2 "" ar} för omberäkning av distributionsgraf
 STR_CONFIG_SETTING_LINKGRAPH_TIME_HELPTEXT                      :Den tid varje omberäkning av en länkgrafkomponent tillåts ta. När en omberäkning startas skapas en tråd som tillåts löpa detta antal dagar. Ju kortare du sätter denna, desto mer troligt är det att tråden inte är hinner bli färdig i tid. Då kommer spelet att stanna tills den är klar (vilket gör att det laggar). Ju längre du sätter denna, desto längre tid tar det för distributionen att uppdateras när rutter ändras.
 STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :manuellt
@@ -2007,7 +2007,7 @@ STR_NETWORK_SERVER_LIST_GAME_NAME                               :{BLACK}Namn
 STR_NETWORK_SERVER_LIST_GAME_NAME_TOOLTIP                       :{BLACK}Namn på nätverksspelet
 STR_NETWORK_SERVER_LIST_GENERAL_ONLINE                          :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION                         :{BLACK}Klienter
-STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klienter online / klienter max{}Företag online / företag max
+STR_NETWORK_SERVER_LIST_CLIENTS_CAPTION_TOOLTIP                 :{BLACK}Klienter online / max antal klienter{}Företag online / max antal företag
 STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION                        :{BLACK}Kartstorlek
 STR_NETWORK_SERVER_LIST_MAP_SIZE_CAPTION_TOOLTIP                :{BLACK}Kartstorlek av spelet{}Klicka för att sortera efter område
@@ -2152,6 +2152,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nytt företag)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Skapa ett nytt företag och gå med i det
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Det här är du
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Det här är spelets värd
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} klient{P "" er} / {NUM} företag
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Kasta ut
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bannlys
@@ -2254,10 +2255,10 @@ STR_NETWORK_ERROR_CLIENT_GUI_LOST_CONNECTION                    :{WHITE}De senas
 # Network related errors
 STR_NETWORK_SERVER_MESSAGE                                      :*** {1:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spel pausad ({STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED                          :Spelet är pausat ({STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_1                  :Spelet är fortfarande pausat ({STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spel fortfarande pausad ({STRING}, {STRING})
-STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spel fortfarande pausad ({STRING}, {STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_2                  :Spelet är fortfarande pausat ({STRING}, {STRING})
+STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_3                  :Spelet är fortfarande pausat ({STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_4                  :Spelet är fortfarande pausat ({STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_STILL_PAUSED_5                  :Spelet är fortfarande pausat ({STRING}, {STRING}, {STRING}, {STRING}, {STRING})
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED                        :Spelet är opausat ({STRING})
@@ -2265,11 +2266,11 @@ STR_NETWORK_SERVER_MESSAGE_GAME_REASON_NOT_ENOUGH_PLAYERS       :antal spelare
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_CONNECTING_CLIENTS       :ansluter klienter
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_MANUAL                   :manuell
 STR_NETWORK_SERVER_MESSAGE_GAME_REASON_GAME_SCRIPT              :spelskript
-STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :Väntar på updatering av länkdiagram
+STR_NETWORK_SERVER_MESSAGE_GAME_REASON_LINK_GRAPH               :väntar på uppdatering av länkgraf
 ############ End of leave-in-this-order
 STR_NETWORK_MESSAGE_CLIENT_LEAVING                              :lämnar
 STR_NETWORK_MESSAGE_CLIENT_JOINED                               :*** {STRING} har gått med i spelet
-STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har gått med i spelet (Client #{2:NUM})
+STR_NETWORK_MESSAGE_CLIENT_JOINED_ID                            :*** {STRING} har gått med i spelet (Klient #{2:NUM})
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_JOIN                         :*** {STRING} har gått med i företag #{2:NUM}
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_SPECTATE                     :*** {STRING} har gått med som åskådare
 STR_NETWORK_MESSAGE_CLIENT_COMPANY_NEW                          :*** {STRING} har startat ett nytt företag (#{2:NUM})
@@ -2913,9 +2914,9 @@ STR_MAPGEN_SNOW_COVERAGE                                        :{BLACK}Snötäc
 STR_MAPGEN_SNOW_COVERAGE_UP                                     :{BLACK}Öka snötäckning med tio procent
 STR_MAPGEN_SNOW_COVERAGE_DOWN                                   :{BLACK}Minska snötäckning med tio procent
 STR_MAPGEN_SNOW_COVERAGE_TEXT                                   :{BLACK}{NUM}%
-STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Öken täckning:
+STR_MAPGEN_DESERT_COVERAGE                                      :{BLACK}Ökentäckning:
 STR_MAPGEN_DESERT_COVERAGE_UP                                   :{BLACK}Öka ökentäckning med tio procent
-STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Minska öken täckning med tio procent
+STR_MAPGEN_DESERT_COVERAGE_DOWN                                 :{BLACK}Minska ökentäckning med tio procent
 STR_MAPGEN_DESERT_COVERAGE_TEXT                                 :{BLACK}{NUM}%
 STR_MAPGEN_LAND_GENERATOR                                       :{BLACK}Landgenerator:
 STR_MAPGEN_TERRAIN_TYPE                                         :{BLACK}Terrängtyp:
@@ -2937,7 +2938,7 @@ STR_MAPGEN_BORDER_RANDOM                                        :{BLACK}På måf
 STR_MAPGEN_BORDER_RANDOMIZE                                     :{BLACK}På måfå
 STR_MAPGEN_BORDER_MANUAL                                        :{BLACK}Manuella
 
-STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Rotation på höjdkarta:
+STR_MAPGEN_HEIGHTMAP_ROTATION                                   :{BLACK}Höjdkartans rotation:
 STR_MAPGEN_HEIGHTMAP_NAME                                       :{BLACK}Namn på höjdkarta:
 STR_MAPGEN_HEIGHTMAP_SIZE_LABEL                                 :{BLACK}Storlek:
 STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x {NUM}
@@ -2945,7 +2946,7 @@ STR_MAPGEN_HEIGHTMAP_SIZE                                       :{ORANGE}{NUM} x
 STR_MAPGEN_TERRAIN_TYPE_QUERY_CAPT                              :{WHITE}Måltopp höjd
 STR_MAPGEN_HEIGHTMAP_HEIGHT_QUERY_CAPT                          :{WHITE}Högsta höjdpunkt
 STR_MAPGEN_SNOW_COVERAGE_QUERY_CAPT                             :{WHITE}Snötäckning (i %)
-STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Öken täckning (i %)
+STR_MAPGEN_DESERT_COVERAGE_QUERY_CAPT                           :{WHITE}Ökentäckning (i %)
 STR_MAPGEN_START_DATE_QUERY_CAPT                                :{WHITE}Ändra Startår
 
 # SE Map generation
@@ -3229,7 +3230,7 @@ STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_MEDIUM_ADVERTISING           :{YELLOW}Starta 
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_LARGE_ADVERTISING            :{YELLOW}Starta en stor lokal reklamkampanj, för att attrahera fler passagerare och gods till dina transporttjänster.{}Tillhandahåller en temporär boost till stationens betyg i en stor radie runt stadens centrum.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_ROAD_RECONSTRUCTION          :{YELLOW}Bekosta ombyggnad av stadens vägnätverk.{}Orsakar ansenliga störningar för vägtrafik i upp till 6 månader.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_STATUE_OF_COMPANY            :{YELLOW}Bygg en staty i ditt företags ära.{}Tillhandahåller en permanent boost till stations betyg i staden.{}Cost: {CURRENCY_LONG}
-STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Bekosta uppbyggnad av nya byggnader i staden.{}Tillhandahåller en temporär boost till stadens tillväxt.{}Kostnad: {CURRENCY_LONG}
+STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_NEW_BUILDINGS                :{YELLOW}Bekosta uppbyggnad av nya byggnader i staden.{}Ger en temporär boost till stadens tillväxt.{}Kostnad: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_EXCLUSIVE_TRANSPORT          :{YELLOW}Köp 1 års exklusiva transport rättigheter i staden.{}Lokala myndigheterna kommer inte tillåta passagerare och gods att använda dina motståndares stationer.{}Cost: {CURRENCY_LONG}
 STR_LOCAL_AUTHORITY_ACTION_TOOLTIP_BRIBE                        :{YELLOW} Muta de lokala myndigheterna för att öka din värdering, med risk för att få höga böter om du blir upptäckt.{} Kostnad: {CURRENCY_LONG}
 
@@ -3584,7 +3585,7 @@ STR_BUY_VEHICLE_TRAIN_ELRAIL_CAPTION                            :Nya elektriska 
 STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :Nytt monorailfordon
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :Nytt maglevfordon
 
-STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nytt Vägfordon
+STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :Nytt vägfordon
 STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :Nya spårvägsfordon
 
 ############ range for vehicle availability starts
