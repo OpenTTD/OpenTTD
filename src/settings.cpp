@@ -1524,18 +1524,8 @@ static void GameSaveConfig(IniFile &ini, const char *grpname)
 static void SaveVersionInConfig(IniFile &ini)
 {
 	IniGroup *group = ini.GetGroup("version");
-
-	char version[9];
-	seprintf(version, lastof(version), "%08X", _openttd_newgrf_version);
-
-	const char * const versions[][2] = {
-		{ "version_string", _openttd_revision },
-		{ "version_number", version }
-	};
-
-	for (uint i = 0; i < lengthof(versions); i++) {
-		group->GetItem(versions[i][0], true)->SetValue(versions[i][1]);
-	}
+	group->GetItem("version_string", true)->SetValue(_openttd_revision);
+	group->GetItem("version_number", true)->SetValue(fmt::format("{:08X}", _openttd_newgrf_version));
 }
 
 /* Save a GRF configuration to the given group name */
