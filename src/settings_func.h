@@ -24,8 +24,8 @@ void IConsoleListSettings(const char *prefilter);
 void LoadFromConfig(bool minimal = false);
 void SaveToConfig();
 
-void IniLoadWindowSettings(IniFile *ini, const char *grpname, void *desc);
-void IniSaveWindowSettings(IniFile *ini, const char *grpname, void *desc);
+void IniLoadWindowSettings(IniFile &ini, const char *grpname, void *desc);
+void IniSaveWindowSettings(IniFile &ini, const char *grpname, void *desc);
 
 StringList GetGRFPresetList();
 struct GRFConfig *LoadGRFPresetFromConfig(const char *config_name);
