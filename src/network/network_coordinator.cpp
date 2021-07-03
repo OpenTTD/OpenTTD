@@ -19,6 +19,7 @@
 #include "network.h"
 #include "network_coordinator.h"
 #include "network_gamelist.h"
+#include "network_internal.h"
 #include "table/strings.h"
 
 #include "../safeguards.h"
@@ -47,6 +48,7 @@ public:
 		assert(_network_coordinator_client.sock == INVALID_SOCKET);
 
 		_network_coordinator_client.sock = s;
+		_network_coordinator_client.last_activity = std::chrono::steady_clock::now();
 		_network_coordinator_client.connecting = false;
 	}
 };
@@ -111,6 +113,42 @@ bool ClientNetworkCoordinatorSocketHandler::Receive_GC_REGISTER_ACK(Packet *p)
 	return true;
 }
 
+bool ClientNetworkCoordinatorSocketHandler::Receive_GC_LISTING(Packet *p)
+{
+	uint8 servers = p->Recv_uint16();
+
+	/* End of list; we can now remove all expired items from the list. */
+	if (servers == 0) {
+		NetworkGameListRemoveExpired();
+		return true;
+	}
+
+	for (; servers > 0; servers--) {
+		std::string connection_string = p->Recv_string(NETWORK_HOSTNAME_PORT_LENGTH);
+
+		/* Read the NetworkGameInfo from the packet. */
+		NetworkGameInfo ngi = {};
+		DeserializeNetworkGameInfo(p, &ngi);
+
+		/* Now we know the join-key, we can add it to our list. */
+		NetworkGameList *item = NetworkGameListAddItem(connection_string);
+
+		/* Clear any existing GRFConfig chain. */
+		ClearGRFConfigList(&item->info.grfconfig);
+		/* Copy the new NetworkGameInfo info. */
+		item->info = ngi;
+		/* Check for compatability with the client. */
+		CheckGameCompatibility(item->info);
+		/* Mark server as online. */
+		item->online = true;
+		/* Mark the item as up-to-date. */
+		item->version = _network_game_list_version;
+	}
+
+	UpdateNetworkGameWindow();
+	return true;
+}
+
 void ClientNetworkCoordinatorSocketHandler::Connect()
 {
 	/* We are either already connected or are trying to connect. */
@@ -119,6 +157,8 @@ void ClientNetworkCoordinatorSocketHandler::Connect()
 	this->Reopen();
 
 	this->connecting = true;
+	this->last_activity = std::chrono::steady_clock::now();
+
 	new NetworkCoordinatorConnecter(NETWORK_COORDINATOR_SERVER_HOST);
 }
 
@@ -168,6 +208,23 @@ void ClientNetworkCoordinatorSocketHandler::SendServerUpdate()
 	Packet *p = new Packet(PACKET_COORDINATOR_SERVER_UPDATE);
 	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
 	SerializeNetworkGameInfo(p, GetCurrentNetworkServerGameInfo());
+
+	this->SendPacket(p);
+}
+
+/**
+ * Request a listing of all public servers.
+ */
+void ClientNetworkCoordinatorSocketHandler::GetListing()
+{
+	this->Connect();
+
+	_network_game_list_version++;
+
+	Packet *p = new Packet(PACKET_COORDINATOR_CLIENT_LISTING);
+	p->Send_uint8(NETWORK_COORDINATOR_VERSION);
+	p->Send_uint8(NETWORK_GAME_INFO_VERSION);
+	p->Send_string(_openttd_revision);
 
 	this->SendPacket(p);
 }
@@ -226,8 +283,15 @@ void ClientNetworkCoordinatorSocketHandler::SendReceive()
 		this->SendServerUpdate();
 	}
 
+	if (!_network_server && std::chrono::steady_clock::now() > this->last_activity + IDLE_TIMEOUT) {
+		this->CloseConnection();
+		return;
+	}
+
 	if (this->CanSendReceive()) {
-		this->ReceivePackets();
+		if (this->ReceivePackets()) {
+			this->last_activity = std::chrono::steady_clock::now();
+		}
 	}
 
 	this->SendPackets();

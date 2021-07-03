@@ -29,6 +29,8 @@ enum PacketCoordinatorType {
 	PACKET_COORDINATOR_SERVER_REGISTER, ///< Server registration.
 	PACKET_COORDINATOR_GC_REGISTER_ACK, ///< Game Coordinator accepts the registration.
 	PACKET_COORDINATOR_SERVER_UPDATE,   ///< Server sends an set intervals an update of the server.
+	PACKET_COORDINATOR_CLIENT_LISTING,  ///< Client is requesting a listing of all public servers.
+	PACKET_COORDINATOR_GC_LISTING,      ///< Game Coordinator returns a listing of all public servers.
 	PACKET_COORDINATOR_END,             ///< Must ALWAYS be on the end of this list!! (period).
 };
 
@@ -100,6 +102,33 @@ protected:
 	 * @return True upon success, otherwise false.
 	 */
 	virtual bool Receive_SERVER_UPDATE(Packet *p);
+
+	/**
+	 * Client requests a list of all public servers.
+	 *
+	 *  uint8   Game Coordinator protocol version.
+	 *  uint8   Game-info version used by this client.
+	 *  string  Revision of the client.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_CLIENT_LISTING(Packet *p);
+
+	/**
+	 * Game Coordinator replies with a list of all public servers. Multiple
+	 * of these packets are received after a request till all servers are
+	 * sent over. Last packet will have server count of 0.
+	 *
+	 *  uint16  Amount of public servers in this packet.
+	 *  For each server:
+	 *    string  Connection string for this server.
+	 *    Serialized NetworkGameInfo. See game_info.hpp for details.
+	 *
+	 * @param p The packet that was just received.
+	 * @return True upon success, otherwise false.
+	 */
+	virtual bool Receive_GC_LISTING(Packet *p);
 
 	bool HandlePacket(Packet *p);
 public:
