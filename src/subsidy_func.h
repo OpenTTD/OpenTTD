@@ -21,6 +21,5 @@ std::pair<NewsReferenceType, NewsReferenceType> SetupSubsidyDecodeParam(const st
 void DeleteSubsidyWith(SourceType type, SourceID index);
 bool CheckSubsidised(CargoID cargo_type, CompanyID company, SourceType src_type, SourceID src, const Station *st);
 void RebuildSubsidisedSourceAndDestinationCache();
-void DeleteSubsidy(struct Subsidy *s);
 
 #endif /* SUBSIDY_FUNC_H */
