@@ -47,8 +47,7 @@ void Subsidy::AwardTo(CompanyID company)
 	NewsStringData *company_name = new NewsStringData(GetString(STR_COMPANY_NAME));
 
 	/* Add a news item */
-	std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(this, SubsidyDecodeParamType::NewsAwarded);
-	InjectDParam(1);
+	std::pair<NewsReferenceType, NewsReferenceType> reftype = SetupSubsidyDecodeParam(this, SubsidyDecodeParamType::NewsAwarded, 1);
 
 	SetDParamStr(0, company_name->string);
 	AddNewsItem(
@@ -67,9 +66,10 @@ void Subsidy::AwardTo(CompanyID company)
  * Setup the string parameters for printing the subsidy at the screen, and compute the news reference for the subsidy.
  * @param s %Subsidy being printed.
  * @param mode Type of subsidy news message to decide on parameter format.
+ * @param parameter_offset The location/index in the String DParams to start decoding the subsidy's parameters. Defaults to 0.
  * @return Reference of the subsidy in the news system.
  */
-std::pair<NewsReferenceType, NewsReferenceType> SetupSubsidyDecodeParam(const Subsidy *s, SubsidyDecodeParamType mode)
+std::pair<NewsReferenceType, NewsReferenceType> SetupSubsidyDecodeParam(const Subsidy *s, SubsidyDecodeParamType mode, uint parameter_offset)
 {
 	NewsReferenceType reftype1 = NR_NONE;
 	NewsReferenceType reftype2 = NR_NONE;
@@ -77,40 +77,40 @@ std::pair<NewsReferenceType, NewsReferenceType> SetupSubsidyDecodeParam(const Su
 	/* Choose whether to use the singular or plural form of the cargo name based on how we're printing the subsidy */
 	const CargoSpec *cs = CargoSpec::Get(s->cargo_type);
 	if (mode == SubsidyDecodeParamType::Gui || mode == SubsidyDecodeParamType::NewsWithdrawn) {
-		SetDParam(0, cs->name);
+		SetDParam(parameter_offset, cs->name);
 	} else {
-		SetDParam(0, cs->name_single);
+		SetDParam(parameter_offset, cs->name_single);
 	}
 
 	switch (s->src_type) {
 		case ST_INDUSTRY:
 			reftype1 = NR_INDUSTRY;
-			SetDParam(1, STR_INDUSTRY_NAME);
+			SetDParam(parameter_offset + 1, STR_INDUSTRY_NAME);
 			break;
 		case ST_TOWN:
 			reftype1 = NR_TOWN;
-			SetDParam(1, STR_TOWN_NAME);
+			SetDParam(parameter_offset + 1, STR_TOWN_NAME);
 			break;
 		default: NOT_REACHED();
 	}
-	SetDParam(2, s->src);
+	SetDParam(parameter_offset + 2, s->src);
 
 	switch (s->dst_type) {
 		case ST_INDUSTRY:
 			reftype2 = NR_INDUSTRY;
-			SetDParam(4, STR_INDUSTRY_NAME);
+			SetDParam(parameter_offset + 4, STR_INDUSTRY_NAME);
 			break;
 		case ST_TOWN:
 			reftype2 = NR_TOWN;
-			SetDParam(4, STR_TOWN_NAME);
+			SetDParam(parameter_offset + 4, STR_TOWN_NAME);
 			break;
 		default: NOT_REACHED();
 	}
-	SetDParam(5, s->dst);
+	SetDParam(parameter_offset + 5, s->dst);
 
 	/* If the subsidy is being offered or awarded, the news item mentions the subsidy duration. */
 	if (mode == SubsidyDecodeParamType::NewsOffered || mode == SubsidyDecodeParamType::NewsAwarded) {
-		SetDParam(7, _settings_game.difficulty.subsidy_duration);
+		SetDParam(parameter_offset + 7, _settings_game.difficulty.subsidy_duration);
 	}
 
 	return std::pair<NewsReferenceType, NewsReferenceType>(reftype1, reftype2);
