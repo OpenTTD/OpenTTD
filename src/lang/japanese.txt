@@ -1198,6 +1198,7 @@ STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS                           :車両故障: {
 STR_CONFIG_SETTING_VEHICLE_BREAKDOWNS_HELPTEXT                  :点検が不十分な車両が故障する頻度を設定します
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER                           :助成金の乗数: {STRING}
 STR_CONFIG_SETTING_SUBSIDY_MULTIPLIER_HELPTEXT                  :助成金対象の路線に対して、通常の輸送相場の何倍が支払われるかを設定します
+STR_CONFIG_SETTING_SUBSIDY_DURATION                             :助成期間: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS                           :建設費: {STRING}
 STR_CONFIG_SETTING_CONSTRUCTION_COSTS_HELPTEXT                  :建設・購入費用のレベルを設定します
 STR_CONFIG_SETTING_RECESSIONS                                   :景気後退: {STRING}
