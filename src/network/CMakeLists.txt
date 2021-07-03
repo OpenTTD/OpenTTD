@@ -14,6 +14,8 @@ add_files(
     network_content.h
     network_content_gui.cpp
     network_content_gui.h
+    network_coordinator.cpp
+    network_coordinator.h
     network_func.h
     network_gamelist.cpp
     network_gamelist.h
