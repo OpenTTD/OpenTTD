@@ -84,16 +84,6 @@ int64 StringParameters::GetInt64(WChar type)
 }
 
 /**
- * Shift all data in the data array by the given amount to make
- * room for some extra parameters.
- */
-void StringParameters::ShiftParameters(uint amount)
-{
-	assert(amount <= this->num_param);
-	MemMoveT(this->data + amount, this->data, this->num_param - amount);
-}
-
-/**
  * Set DParam n to some number that is suitable for string size computations.
  * @param n Index of the string parameter.
  * @param max_value The biggest value which shall be displayed.
@@ -317,15 +307,6 @@ void SetDParamStr(uint n, const char *str)
 void SetDParamStr(uint n, const std::string &str)
 {
 	SetDParamStr(n, str.c_str());
-}
-
-/**
- * Shift the string parameters in the global string parameter array by \a amount positions, making room at the beginning.
- * @param amount Number of positions to shift.
- */
-void InjectDParam(uint amount)
-{
-	_global_string_params.ShiftParameters(amount);
 }
 
 /**
