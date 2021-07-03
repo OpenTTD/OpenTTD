@@ -42,7 +42,7 @@ static void Load_GOAL()
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Goal *s = new (index) Goal();
-		SlObject(s, _goals_desc);
+		SlObject(s, slt);
 	}
 }
 
