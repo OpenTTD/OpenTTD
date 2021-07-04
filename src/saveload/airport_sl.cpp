@@ -14,32 +14,12 @@
 
 #include "../safeguards.h"
 
-struct APIDChunkHandler : ChunkHandler {
-	APIDChunkHandler() : ChunkHandler('APID', CH_TABLE) {}
-
-	void Save() const override
-	{
-		Save_NewGRFMapping(_airport_mngr);
-	}
-
-	void Load() const override
-	{
-		Load_NewGRFMapping(_airport_mngr);
-	}
+struct APIDChunkHandler : NewGRFMappingChunkHandler {
+	APIDChunkHandler() : NewGRFMappingChunkHandler('APID', _airport_mngr) {}
 };
 
-struct ATIDChunkHandler : ChunkHandler {
-	ATIDChunkHandler() : ChunkHandler('ATID', CH_TABLE) {}
-
-	void Save() const override
-	{
-		Save_NewGRFMapping(_airporttile_mngr);
-	}
-
-	void Load() const override
-	{
-		Load_NewGRFMapping(_airporttile_mngr);
-	}
+struct ATIDChunkHandler : NewGRFMappingChunkHandler {
+	ATIDChunkHandler() : NewGRFMappingChunkHandler('ATID', _airporttile_mngr) {}
 };
 
 static const ATIDChunkHandler ATID;
