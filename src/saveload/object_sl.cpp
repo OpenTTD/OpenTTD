@@ -66,18 +66,8 @@ struct OBJSChunkHandler : ChunkHandler {
 	}
 };
 
-struct OBIDChunkHandler : ChunkHandler {
-	OBIDChunkHandler() : ChunkHandler('OBID', CH_TABLE) {}
-
-	void Save() const override
-	{
-		Save_NewGRFMapping(_object_mngr);
-	}
-
-	void Load() const override
-	{
-		Load_NewGRFMapping(_object_mngr);
-	}
+struct OBIDChunkHandler : NewGRFMappingChunkHandler {
+	OBIDChunkHandler() : NewGRFMappingChunkHandler('OBID', _object_mngr) {}
 };
 
 static const OBIDChunkHandler OBID;

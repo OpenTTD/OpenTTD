@@ -272,18 +272,8 @@ static const SaveLoad _town_desc[] = {
 	SLEG_CONDSTRUCTLIST("acceptance_matrix", SlTownAcceptanceMatrix,   SLV_166, SLV_REMOVE_TOWN_CARGO_CACHE),
 };
 
-struct HIDSChunkHandler : ChunkHandler {
-	HIDSChunkHandler() : ChunkHandler('HIDS', CH_TABLE) {}
-
-	void Save() const override
-	{
-		Save_NewGRFMapping(_house_mngr);
-	}
-
-	void Load() const override
-	{
-		Load_NewGRFMapping(_house_mngr);
-	}
+struct HIDSChunkHandler : NewGRFMappingChunkHandler {
+	HIDSChunkHandler() : NewGRFMappingChunkHandler('HIDS', _house_mngr) {}
 };
 
 struct CITYChunkHandler : ChunkHandler {

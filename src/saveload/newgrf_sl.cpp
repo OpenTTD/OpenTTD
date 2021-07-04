@@ -26,38 +26,36 @@ static const SaveLoad _newgrf_mapping_desc[] = {
 
 /**
  * Save a GRF ID + local id -> OpenTTD's id mapping.
- * @param mapping The mapping to save.
  */
-void Save_NewGRFMapping(const OverrideManagerBase &mapping)
+void NewGRFMappingChunkHandler::Save() const
 {
 	SlTableHeader(_newgrf_mapping_desc);
 
-	for (uint i = 0; i < mapping.GetMaxMapping(); i++) {
-		if (mapping.mapping_ID[i].grfid == 0 &&
-		    mapping.mapping_ID[i].entity_id == 0) continue;
+	for (uint i = 0; i < this->mapping.GetMaxMapping(); i++) {
+		if (this->mapping.mapping_ID[i].grfid == 0 &&
+			this->mapping.mapping_ID[i].entity_id == 0) continue;
 		SlSetArrayIndex(i);
-		SlObject(&mapping.mapping_ID[i], _newgrf_mapping_desc);
+		SlObject(&this->mapping.mapping_ID[i], _newgrf_mapping_desc);
 	}
 }
 
 /**
  * Load a GRF ID + local id -> OpenTTD's id mapping.
- * @param mapping The mapping to load.
  */
-void Load_NewGRFMapping(OverrideManagerBase &mapping)
+void NewGRFMappingChunkHandler::Load() const
 {
 	const std::vector<SaveLoad> slt = SlCompatTableHeader(_newgrf_mapping_desc, _newgrf_mapping_sl_compat);
 
 	/* Clear the current mapping stored.
 	 * This will create the manager if ever it is not yet done */
-	mapping.ResetMapping();
+	this->mapping.ResetMapping();
 
-	uint max_id = mapping.GetMaxMapping();
+	uint max_id = this->mapping.GetMaxMapping();
 
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		if ((uint)index >= max_id) SlErrorCorrupt("Too many NewGRF entity mappings");
-		SlObject(&mapping.mapping_ID[index], slt);
+		SlObject(&this->mapping.mapping_ID[index], slt);
 	}
 }
 

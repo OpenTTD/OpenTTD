@@ -119,32 +119,12 @@ struct INDYChunkHandler : ChunkHandler {
 	}
 };
 
-struct IIDSChunkHandler : ChunkHandler {
-	IIDSChunkHandler() : ChunkHandler('IIDS', CH_TABLE) {}
-
-	void Save() const override
-	{
-		Save_NewGRFMapping(_industry_mngr);
-	}
-
-	void Load() const override
-	{
-		Load_NewGRFMapping(_industry_mngr);
-	}
+struct IIDSChunkHandler : NewGRFMappingChunkHandler {
+	IIDSChunkHandler() : NewGRFMappingChunkHandler('IIDS', _industry_mngr) {}
 };
 
-struct TIDSChunkHandler : ChunkHandler {
-	TIDSChunkHandler() : ChunkHandler('TIDS', CH_TABLE) {}
-
-	void Save() const override
-	{
-		Save_NewGRFMapping(_industile_mngr);
-	}
-
-	void Load() const override
-	{
-		Load_NewGRFMapping(_industile_mngr);
-	}
+struct TIDSChunkHandler : NewGRFMappingChunkHandler {
+	TIDSChunkHandler() : NewGRFMappingChunkHandler('TIDS', _industile_mngr) {}
 };
 
 /** Description of the data to save and load in #IndustryBuildData. */
