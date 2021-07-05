@@ -62,6 +62,7 @@ STR_COLOUR_RED                                                  :लाल
 
 # Units used in OpenTTD
 
+STR_UNITS_POWER_METRIC                                          :{COMMA}{NBSP}hp
 
 
 
@@ -98,9 +99,11 @@ STR_SORT_BY_AVERAGE_PROFIT_LAST_YEAR                            :पिछले
 STR_TOOLBAR_TOOLTIP_SHOW_SOUND_MUSIC_WINDOW                     :{BLACK}ध्वनि/संगीत विकल्प
 
 # Extra tooltips for the scenario editor toolbar
+STR_SCENEDIT_TOOLBAR_TOOLTIP_DISPLAY_MAP_TOWN_DIRECTORY         :{BLACK}मानचित्र, नगर निर्देशिका दिखायें
 
 ############ range for SE file menu starts
 STR_SCENEDIT_FILE_MENU_SEPARATOR                                :
+STR_SCENEDIT_FILE_MENU_QUIT                                     :निकास
 ############ range for SE file menu starts
 
 ############ range for settings menu starts
@@ -184,6 +187,7 @@ STR_COMPANY_LEAGUE_COMPANY_NAME                                 :{ORANGE}{COMPAN
 # Performance detail window
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}वाहन:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}माल :
 ############ End of order list
 
 # Music window
@@ -211,6 +215,7 @@ STR_STATUSBAR_PAUSED_LINK_GRAPH                                 :{ORANGE}* * ठ
 
 STR_NEWS_CUSTOM_ITEM                                            :{BIG_FONT}{BLACK}{STRING}
 
+STR_NEWS_FIRST_CARGO_TRAM_ARRIVAL                               :{BIG_FONT}{BLACK}नागरिक हर्षित हैं . . .{}पहली माल ट्रैम {STATION} पर पहुँची है!
 
 
 
@@ -220,6 +225,7 @@ STR_NEWS_COMPANY_LAUNCH_DESCRIPTION                             :{BIG_FONT}{BLAC
 
 
 
+STR_NEWS_INDUSTRY_PRODUCTION_DECREASE_SMOOTH                    :{BIG_FONT}{BLACK}{STRING}{INDUSTRY} के उत्पादन में {COMMA}% कमी आयी!
 
 
 # Order review system / warnings
@@ -238,6 +244,7 @@ STR_NEWS_NEW_VEHICLE_TYPE                                       :{BIG_FONT}{BLAC
 
 ############ start of currency region
 STR_GAME_OPTIONS_CURRENCY_FIM                                   :फिनलैंड मार्का (FIM)
+STR_GAME_OPTIONS_CURRENCY_ISK                                   :आइसलैंडिक क्रोना (ISK)
 STR_GAME_OPTIONS_CURRENCY_HKD                                   :हाँग काँग डॉलर (एचकेडी)
 ############ end of currency region
 
@@ -338,6 +345,7 @@ STR_CONFIG_SETTING_NEWS_ACCIDENTS_DISASTERS                     :दुर्घ
 
 STR_CONFIG_SETTING_ENDING_YEAR_VALUE                            :{NUM}
 
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :नगर में माल उत्पादन: {STRING}
 
 
 STR_CONFIG_SETTING_SOFT_LIMIT_VALUE                             :{COMMA}
@@ -353,11 +361,13 @@ STR_CONFIG_SETTING_SPRITE_ZOOM_LVL_IN_2X                        :२x
 STR_CONFIG_SETTING_INTERFACE_GENERAL                            :{ORANGE}सामान्य
 
 
+STR_CONFIG_SETTING_PATHFINDER_FOR_SHIPS_HELPTEXT                :नौकाओं द्वारा उपयोग किया जाने वाला पथान्वेषी
 
 
 # Config errors
 
 # Video initalization errors
+STR_VIDEO_DRIVER_ERROR                                          :{WHITE}वीडियो विन्यास में त्रुटि...
 
 # Intro window
 
@@ -366,6 +376,7 @@ STR_INTRO_PLAY_HEIGHTMAP                                        :{BLACK}उभ�
 
 STR_INTRO_TOOLTIP_SCENARIO_EDITOR                               :{BLACK}अपनी इच्छानुसार एक क्रीड़ा-विश्व/परिदृश्य बनायें
 
+STR_INTRO_TOOLTIP_TEMPERATE                                     :{BLACK}'समशीतोष्ण' जलवायु वाला क्षेत्र चुनें
 
 
 
@@ -394,6 +405,7 @@ STR_NETWORK_SERVER_LIST_MAP_SIZE_SHORT                          :{BLACK}{COMMA}x
 
 
 
+STR_NETWORK_SERVER_LIST_REFRESH_TOOLTIP                         :{BLACK}सर्वर की जानकारी अद्यतन करें
 
 
 
@@ -508,11 +520,13 @@ STR_WATERWAYS_TOOLBAR_BUILD_CANALS_TOOLTIP                      :{BLACK}नह�
 
 # Airport construction window
 
+STR_AIRPORT_INTERCONTINENTAL                                    :अंतरमहाद्वीपीय
 
 STR_AIRPORT_CLASS_SMALL                                         :लघु विमानतल
 
 
 # Landscaping toolbar
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}भूदृश्य निर्माण
 
 # Object construction window
 
@@ -541,6 +555,7 @@ STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}उद�
 STR_LAI_CLEAR_DESCRIPTION_BARE_LAND                             :रिक्त भूमि
 
 
+STR_LAI_ROAD_DESCRIPTION_TREE_LINED_ROAD                        :वृक्ष आच्छादित सड़क
 
 # Houses come directly from their building names
 
@@ -591,6 +606,7 @@ STR_GENERATION_PROGRESS_NUM                                     :{BLACK}{NUM} / 
 
 
 
+STR_NEWGRF_SETTINGS_PALETTE_DEFAULT                             :मूल (D)
 
 
 # NewGRF save preset window
@@ -640,6 +656,7 @@ STR_TOWN_VIEW_EXPAND_BUTTON                                     :{BLACK}फै�
 
 # Town local authority window
 
+STR_LOCAL_AUTHORITY_ACTION_SMALL_ADVERTISING_CAMPAIGN           :लघु विज्ञापन अभियान
 
 
 # Goal window
@@ -653,6 +670,7 @@ STR_GOALS_PROGRESS_COMPLETE                                     :{GREEN}{STRING}
 ############ End of Goal Question button list
 
 # Subsidies window
+STR_SUBSIDIES_OFFERED_TITLE                                     :{BLACK}इन सेवाओं के लिये अनुदान प्रस्तावित :
 
 # Story book window
 STR_STORY_BOOK_TITLE                                            :{YELLOW}{STRING}
@@ -753,6 +771,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}भा�
 STR_BUY_VEHICLE_ROAD_VEHICLE_HIDE_TOGGLE_BUTTON                 :{BLACK}छिपायें
 
 
+STR_BUY_VEHICLE_SHIP_HIDE_SHOW_TOGGLE_TOOLTIP                   :{BLACK}नौका प्रकार को छिपायें/दिखायें
 
 
 # Depot window
@@ -803,6 +822,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}वर्तमान ट्रेन व्यवहार - ट्रेन रोकने/चलाने के लिये क्लिक करें
 
 
 # Messages in the start stop button in the vehicle view
@@ -823,6 +843,7 @@ STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE
 
 
 # Extra buttons for train details windows
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}   निर्माण: {LTBLUE}{NUM}{BLACK} मूल्य: {LTBLUE}{CURRENCY_LONG}
 
 
 
@@ -1003,6 +1024,7 @@ STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}जह�
 
 
 
+STR_ERROR_CAN_T_SELL_TRAIN                                      :{WHITE}रेल वाहन नहीं बेच सकते...
 
 
 
@@ -1013,6 +1035,7 @@ STR_ERROR_CAN_T_RENAME_SHIP                                     :{WHITE}जह�
 
 
 # Order related errors
+STR_ERROR_CAN_T_COPY_SHARE_ORDER                                :{WHITE}... वाहन सभी स्टेशनों तक नहीं जा सकता
 
 
 # Timetable related errors
@@ -1049,10 +1072,12 @@ STR_SV_STNAME_WAYPOINT                                          :{STRING}
 # Vehicle names
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_COAL_CAR                      :कोयला वाहन
 STR_VEHICLE_NAME_TRAIN_WAGON_RAIL_FRUIT_TRUCK                   :फल वाहन
+STR_VEHICLE_NAME_TRAIN_ENGINE_MONORAIL_X2001_ELECTRIC           :'X2001' (विद्युतीय)
 STR_VEHICLE_NAME_TRAIN_WAGON_MONORAIL_TOY_VAN                   :खिलौनों का डब्बा
 STR_VEHICLE_NAME_TRAIN_WAGON_MAGLEV_BUBBLE_VAN                  :बबल वैन
 STR_VEHICLE_NAME_ROAD_VEHICLE_PLODDYPHUT_MKIII_BUS              :प्लॉडीपीहट एमके३ बस
 STR_VEHICLE_NAME_ROAD_VEHICLE_FOSTER_ARMORED_TRUCK              :फोस्टर कवचयुक्त ट्रक
+STR_VEHICLE_NAME_ROAD_VEHICLE_POWERNAUGHT_CANDY_TRUCK           :पावरनोट मिष्ठान्न ट्रक
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_COTSWALD_LB_3                :बेकवेल कॉट्सवॉल्ड एलबी-३
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB_9                 :बेकवेल लकेट एलबी-९
 STR_VEHICLE_NAME_AIRCRAFT_BAKEWELL_LUCKETT_LB80                 :बेकवेल लकेट एलबी८०
@@ -1090,6 +1115,7 @@ STR_COMPANY_NAME                                                :{COMPANY}
 STR_COMPANY_NAME_COMPANY_NUM                                    :{COMPANY} {COMPANY_NUM}
 STR_DEPOT_NAME                                                  :{DEPOT}
 STR_ENGINE_NAME                                                 :{ENGINE}
+STR_HIDDEN_ENGINE_NAME                                          :{ENGINE} (प्रच्छन्न)
 STR_GROUP_NAME                                                  :{GROUP}
 STR_INDUSTRY_NAME                                               :{INDUSTRY}
 STR_PRESIDENT_NAME                                              :{PRESIDENT_NAME}
