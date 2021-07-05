@@ -302,6 +302,16 @@ struct NullSettingDesc : SettingDesc {
 
 typedef std::variant<IntSettingDesc, BoolSettingDesc, OneOfManySettingDesc, ManyOfManySettingDesc, StringSettingDesc, ListSettingDesc, NullSettingDesc> SettingVariant;
 
+/**
+ * Helper to convert the type of the iterated settings description to a pointer to it.
+ * @param desc The type of the iterator of the value in SettingTable.
+ * @return The actual pointer to SettingDesc.
+ */
+static constexpr const SettingDesc *GetSettingDesc(const SettingVariant &desc)
+{
+	return std::visit([](auto&& arg) -> const SettingDesc * { return &arg; }, desc);
+}
+
 const SettingDesc *GetSettingFromName(const std::string_view name);
 void GetSettingSaveLoadByPrefix(const std::string_view prefix, std::vector<SaveLoad> &saveloads);
 bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame = false);
