@@ -39,7 +39,7 @@
  *   data from the loaded game.
  * - Finally, #Start is called to start execution of the script.
  *
- * See also http://wiki.openttd.org/AI:Save/Load for more details.
+ * See also https://wiki.openttd.org/en/Development/Script/Save%20and%20Load for more details.
  *
  * @api ai game
  */
@@ -91,7 +91,7 @@ public:
 	 *   notified of the call. To avoid race-conditions between #Save and the
 	 *   other script code, change variables directly after a #Sleep, it is
 	 *   very unlikely, to get interrupted at that point in the execution.
-	 * See also http://wiki.openttd.org/AI:Save/Load for more details.
+	 * See also https://wiki.openttd.org/en/Development/Script/Save%20and%20Load for more details.
 	 *
 	 * @note No other information is saved than the table returned by #Save.
 	 *   For example all pending events are lost as soon as the game is loaded.

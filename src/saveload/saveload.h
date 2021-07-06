@@ -335,6 +335,7 @@ enum SaveLoadVersion : uint16 {
 	SLV_RIFF_TO_ARRAY,                      ///< 294  PR#9375 Changed many CH_RIFF chunks to CH_ARRAY chunks.
 
 	SLV_TABLE_CHUNKS,                       ///< 295  PR#9322 Introduction of CH_TABLE and CH_SPARSE_TABLE.
+	SLV_SCRIPT_INT64,                       ///< 296  PR#9415 SQInteger is 64bit but was saved as 32bit.
 
 	SL_MAX_VERSION,                         ///< Highest possible saveload version
 };

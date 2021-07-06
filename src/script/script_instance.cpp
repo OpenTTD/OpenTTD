@@ -364,8 +364,8 @@ static const SaveLoad _script_byte[] = {
 			SQInteger res;
 			sq_getinteger(vm, index, &res);
 			if (!test) {
-				int value = (int)res;
-				SlCopy(&value, 1, SLE_INT32);
+				int64 value = (int64)res;
+				SlCopy(&value, 1, SLE_INT64);
 			}
 			return true;
 		}
@@ -564,8 +564,8 @@ bool ScriptInstance::IsPaused()
 	SlObject(nullptr, _script_byte);
 	switch (_script_sl_byte) {
 		case SQSL_INT: {
-			int value;
-			SlCopy(&value, 1, SLE_INT32);
+			int64 value;
+			SlCopy(&value, 1, IsSavegameVersionBefore(SLV_SCRIPT_INT64) ? SLE_INT32 : SLE_INT64);
 			if (vm != nullptr) sq_pushinteger(vm, (SQInteger)value);
 			return true;
 		}
