@@ -104,24 +104,36 @@ typedef span<const SettingVariant> SettingTable;
  * - _win32_settings
  * As such, they are not part of this list.
  */
-static const SettingTable _generic_setting_tables[] = {
-	_settings,
-	_network_settings,
-};
+static auto &GenericSettingTables()
+{
+	static const SettingTable _generic_setting_tables[] = {
+		_settings,
+		_network_settings,
+	};
+	return _generic_setting_tables;
+}
 
 /**
  * List of all the private setting tables.
  */
-static const SettingTable _private_setting_tables[] = {
-	_network_private_settings,
-};
+static auto &PrivateSettingTables()
+{
+	static const SettingTable _private_setting_tables[] = {
+		_network_private_settings,
+	};
+	return _private_setting_tables;
+}
 
 /**
  * List of all the secrets setting tables.
  */
-static const SettingTable _secrets_setting_tables[] = {
-	_network_secrets_settings,
-};
+static auto &SecretSettingTables()
+{
+	static const SettingTable _secrets_setting_tables[] = {
+		_network_secrets_settings,
+	};
+	return _secrets_setting_tables;
+}
 
 typedef void SettingDescProc(IniFile &ini, const SettingTable &desc, const char *grpname, void *object, bool only_startup);
 typedef void SettingDescProcList(IniFile &ini, const char *grpname, StringList &list);
@@ -1608,13 +1620,13 @@ static void HandleSettingDescs(IniFile &generic_ini, IniFile &private_ini, IniFi
 
 	/* The name "patches" is a fallback, as every setting should sets its own group. */
 
-	for (auto &table : _generic_setting_tables) {
+	for (auto &table : GenericSettingTables()) {
 		proc(generic_ini, table, "patches", &_settings_newgame, only_startup);
 	}
-	for (auto &table : _private_setting_tables) {
+	for (auto &table : PrivateSettingTables()) {
 		proc(private_ini, table, "patches", &_settings_newgame, only_startup);
 	}
-	for (auto &table : _secrets_setting_tables) {
+	for (auto &table : SecretSettingTables()) {
 		proc(secrets_ini, table, "patches", &_settings_newgame, only_startup);
 	}
 
@@ -1721,12 +1733,12 @@ void SaveToConfig()
 		generic_ini.RemoveGroup("server_bind_addresses");
 		generic_ini.RemoveGroup("servers");
 		generic_ini.RemoveGroup("bans");
-		for (auto &table : _private_setting_tables) {
+		for (auto &table : PrivateSettingTables()) {
 			RemoveEntriesFromIni(generic_ini, table);
 		}
 
 		/* Remove all settings from the generic ini that are now in the secrets ini. */
-		for (auto &table : _secrets_setting_tables) {
+		for (auto &table : SecretSettingTables()) {
 			RemoveEntriesFromIni(generic_ini, table);
 		}
 	}
@@ -1903,15 +1915,15 @@ static const SettingDesc *GetCompanySettingFromName(std::string_view name)
  */
 const SettingDesc *GetSettingFromName(const std::string_view name)
 {
-	for (auto &table : _generic_setting_tables) {
+	for (auto &table : GenericSettingTables()) {
 		auto sd = GetSettingFromName(name, table);
 		if (sd != nullptr) return sd;
 	}
-	for (auto &table : _private_setting_tables) {
+	for (auto &table : PrivateSettingTables()) {
 		auto sd = GetSettingFromName(name, table);
 		if (sd != nullptr) return sd;
 	}
-	for (auto &table : _secrets_setting_tables) {
+	for (auto &table : SecretSettingTables()) {
 		auto sd = GetSettingFromName(name, table);
 		if (sd != nullptr) return sd;
 	}
@@ -2168,13 +2180,13 @@ void IConsoleListSettings(const char *prefilter)
 {
 	IConsolePrint(CC_HELP, "All settings with their current value:");
 
-	for (auto &table : _generic_setting_tables) {
+	for (auto &table : GenericSettingTables()) {
 		IConsoleListSettingsTable(table, prefilter);
 	}
-	for (auto &table : _private_setting_tables) {
+	for (auto &table : PrivateSettingTables()) {
 		IConsoleListSettingsTable(table, prefilter);
 	}
-	for (auto &table : _secrets_setting_tables) {
+	for (auto &table : SecretSettingTables()) {
 		IConsoleListSettingsTable(table, prefilter);
 	}
 
