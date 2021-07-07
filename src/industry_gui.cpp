@@ -608,9 +608,9 @@ public:
 			ShowErrorMessage(STR_ERROR_CAN_T_GENERATE_INDUSTRIES, STR_ERROR_MUST_FOUND_TOWN_FIRST, WL_INFO);
 		} else {
 			extern void GenerateIndustries();
-			_generating_world = true;
+			Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
 			GenerateIndustries();
-			_generating_world = false;
+			old_generating_world.Restore();
 		}
 	}
 
@@ -712,15 +712,15 @@ public:
 			}
 
 			Backup<CompanyID> cur_company(_current_company, OWNER_NONE, FILE_LINE);
-			_generating_world = true;
+			Backup<bool> old_generating_world(_generating_world, true, FILE_LINE);
 			_ignore_restrictions = true;
 
 			DoCommandP(tile, (layout_index << 8) | this->selected_type, seed,
 					CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY), &CcBuildIndustry);
 
 			cur_company.Restore();
+			old_generating_world.Restore();
 			_ignore_restrictions = false;
-			_generating_world = false;
 		} else {
 			success = DoCommandP(tile, (layout_index << 8) | this->selected_type, seed, CMD_BUILD_INDUSTRY | CMD_MSG(STR_ERROR_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 		}
