@@ -412,7 +412,7 @@ STR_FILE_MENU_EXIT                                              :Salir
 # map menu
 STR_MAP_MENU_MAP_OF_WORLD                                       :Minimapa completo
 STR_MAP_MENU_EXTRA_VIEWPORT                                     :Ventana de vista adicional
-STR_MAP_MENU_LINGRAPH_LEGEND                                    :Leyenda de flujo de cargamento
+STR_MAP_MENU_LINGRAPH_LEGEND                                    :Leyenda de flujo de carga
 STR_MAP_MENU_SIGN_LIST                                          :Lista de carteles
 
 ############ range for town menu starts
@@ -427,10 +427,10 @@ STR_SUBSIDIES_MENU_SUBSIDIES                                    :Subsidios
 ############ range for graph menu starts
 STR_GRAPH_MENU_OPERATING_PROFIT_GRAPH                           :Gráfica de utilidades operativas
 STR_GRAPH_MENU_INCOME_GRAPH                                     :Gráfica de ingresos
-STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfica de cargamento entregado
+STR_GRAPH_MENU_DELIVERED_CARGO_GRAPH                            :Gráfica de carga entregada
 STR_GRAPH_MENU_PERFORMANCE_HISTORY_GRAPH                        :Gráfica de desempeño
 STR_GRAPH_MENU_COMPANY_VALUE_GRAPH                              :Gráfica del valor de la empresa
-STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tarifas de pagos por cargamento
+STR_GRAPH_MENU_CARGO_PAYMENT_RATES                              :Tasas de pago por carga
 ############ range ends here
 
 ############ range for company league menu starts
@@ -584,18 +584,18 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 
 STR_GRAPH_OPERATING_PROFIT_CAPTION                              :{WHITE}Gráfica de utilidad operativa
 STR_GRAPH_INCOME_CAPTION                                        :{WHITE}Gráfica de ingresos
-STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de cargamento entregadas
+STR_GRAPH_CARGO_DELIVERED_CAPTION                               :{WHITE}Unidades de carga entregadas
 STR_GRAPH_COMPANY_PERFORMANCE_RATINGS_CAPTION                   :{WHITE}Nivel de desempeño (nivel máximo: 1000)
 STR_GRAPH_COMPANY_VALUES_CAPTION                                :{WHITE}Valor de la empresa
 
-STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tarifas de pago por cargamento
+STR_GRAPH_CARGO_PAYMENT_RATES_CAPTION                           :{WHITE}Tasas de pago por carga
 STR_GRAPH_CARGO_PAYMENT_RATES_X_LABEL                           :{TINY_FONT}{BLACK}Días en tránsito
-STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por entregar 10 unidades (o 10,000 litros) de cargamento por distancia de 20 casillas
+STR_GRAPH_CARGO_PAYMENT_RATES_TITLE                             :{TINY_FONT}{BLACK}Pago por entregar 10 unidades (o 10,000 litros) de carga por distancia de 20 casillas
 STR_GRAPH_CARGO_ENABLE_ALL                                      :{TINY_FONT}{BLACK}Activar todos
 STR_GRAPH_CARGO_DISABLE_ALL                                     :{TINY_FONT}{BLACK}Desactivar todos
-STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todos los tipos de carga en la gráfica de tarifas de pago por cargamento
-STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ocultar todos los tipos de carga en la gráfica de tarifas de pago por cargamento
-STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Mostrar u ocultar gráfica de este tipo de cargamento
+STR_GRAPH_CARGO_TOOLTIP_ENABLE_ALL                              :{BLACK}Mostrar todos los tipos de carga en la gráfica de tasas de pago
+STR_GRAPH_CARGO_TOOLTIP_DISABLE_ALL                             :{BLACK}Ocultar todos los tipos de carga en la gráfica de tasas de pago
+STR_GRAPH_CARGO_PAYMENT_TOGGLE_CARGO                            :{BLACK}Alternar gráfica de este tipo de carga
 STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLACK}{STRING}
 
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar detalles de nivel de desempeño
@@ -631,7 +631,7 @@ STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Utilidad
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Ingreso mín.:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Ingreso máx.:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Entregado:
-STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Cargamento:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Carga:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Dinero:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Préstamo:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
@@ -714,20 +714,20 @@ STR_SMALLMAP_CAPTION                                            :{WHITE}Mapa: {S
 STR_SMALLMAP_TYPE_CONTOURS                                      :Contornos
 STR_SMALLMAP_TYPE_VEHICLES                                      :Vehículos
 STR_SMALLMAP_TYPE_INDUSTRIES                                    :Industrias
-STR_SMALLMAP_TYPE_ROUTEMAP                                      :Flujo de cargamento
+STR_SMALLMAP_TYPE_ROUTEMAP                                      :Flujo de carga
 STR_SMALLMAP_TYPE_ROUTES                                        :Rutas
 STR_SMALLMAP_TYPE_VEGETATION                                    :Vegetación
 STR_SMALLMAP_TYPE_OWNERS                                        :Propietarios
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_CONTOURS_ON_MAP                  :{BLACK}Mostrar elevaciones en el mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEHICLES_ON_MAP                       :{BLACK}Mostrar vehículos en el mapa
 STR_SMALLMAP_TOOLTIP_SHOW_INDUSTRIES_ON_MAP                     :{BLACK}Mostrar industrias en el mapa
-STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostrar flujo de cargamento en el mapa
+STR_SMALLMAP_TOOLTIP_SHOW_LINK_STATS_ON_MAP                     :{BLACK}Mostrar flujo de carga en el mapa
 STR_SMALLMAP_TOOLTIP_SHOW_TRANSPORT_ROUTES_ON                   :{BLACK}Mostrar rutas de transporte en el mapa
 STR_SMALLMAP_TOOLTIP_SHOW_VEGETATION_ON_MAP                     :{BLACK}Mostrar vegetación en el mapa
 STR_SMALLMAP_TOOLTIP_SHOW_LAND_OWNERS_ON_MAP                    :{BLACK}Mostrar dueños de terreno en el mapa
 STR_SMALLMAP_TOOLTIP_INDUSTRY_SELECTION                         :{BLACK}Clic en un tipo de industria para mostrarlo u ocultarlo. Ctrl+Clic oculta todos los tipos excepto el elegido. Ctrl+Clic de nuevo en el mismo tipo muestra todos los tipos de industrias
 STR_SMALLMAP_TOOLTIP_COMPANY_SELECTION                          :{BLACK}Clic en una empresa para mostrar u ocultar sus propiedades. Ctrl+Clic oculta todas las empresas excepto la elegida. Ctrl+Clic de nuevo en la misma empresa muestra todas las empresas
-STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Clic en un cargamento para mostrar u ocultar sus propiedades. Ctrl+Clic oculta todos los cargamentos excepto el elegido. Ctrl+Clic de nuevo muestra todos los tipos de cargamento
+STR_SMALLMAP_TOOLTIP_CARGO_SELECTION                            :{BLACK}Clic en una carga para mostrar u ocultar sus propiedades. Ctrl+Clic oculta todas las cargas excepto la elegida. Ctrl+Clic de nuevo muestra todos los tipos de carga
 
 STR_SMALLMAP_LEGENDA_ROADS                                      :{TINY_FONT}{BLACK}Carreteras
 STR_SMALLMAP_LEGENDA_RAILROADS                                  :{TINY_FONT}{BLACK}Ferrocarriles
@@ -773,8 +773,8 @@ STR_SMALLMAP_TOOLTIP_ENABLE_ALL_INDUSTRIES                      :{BLACK}Mostrar 
 STR_SMALLMAP_TOOLTIP_SHOW_HEIGHT                                :{BLACK}Mostrar u ocultar elevaciones en el mapa
 STR_SMALLMAP_TOOLTIP_DISABLE_ALL_COMPANIES                      :{BLACK}No mostrar propiedades de empresas en el mapa
 STR_SMALLMAP_TOOLTIP_ENABLE_ALL_COMPANIES                       :{BLACK}Mostrar todas las propiedades de empresas en el mapa
-STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}No mostrar ningún cargamento en el mapa
-STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Muestra todos los cargamentos en el mapa
+STR_SMALLMAP_TOOLTIP_DISABLE_ALL_CARGOS                         :{BLACK}Ocultar todas las cargas del mapa
+STR_SMALLMAP_TOOLTIP_ENABLE_ALL_CARGOS                          :{BLACK}Mostrar todas las cargas en el mapa
 
 # Status bar messages
 STR_STATUSBAR_TOOLTIP_SHOW_LAST_NEWS                            :{BLACK}Mostrar último mensaje o noticia
@@ -1298,7 +1298,7 @@ STR_CONFIG_SETTING_ALLOW_FUND_ROAD_HELPTEXT                     :Las empresas ap
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY                             :Permitir enviar dinero a otras empresas: {STRING}
 STR_CONFIG_SETTING_ALLOW_GIVE_MONEY_HELPTEXT                    :Permitir la transferencia de dinero entre empresas en modo multijugador
 STR_CONFIG_SETTING_FREIGHT_TRAINS                               :Multiplicador de peso para simular trenes pesados: {STRING}
-STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Establece el impacto de llevar cargamento en los trenes. Un valor mayor exige mayor potencia a los trenes para llevar una carga, sobre todo al subir colinas
+STR_CONFIG_SETTING_FREIGHT_TRAINS_HELPTEXT                      :Impacto de llevar carga en los trenes. Un valor mayor exige mayor potencia a los trenes para llevar carga, sobre todo al subir colinas
 STR_CONFIG_SETTING_PLANE_SPEED                                  :Factor de velocidad de aeronaves: {STRING}
 STR_CONFIG_SETTING_PLANE_SPEED_HELPTEXT                         :Establece la velocidad relativa de las aeronaves comparada con la de otros vehículos para reducir las utilidades de transportación aérea
 STR_CONFIG_SETTING_PLANE_SPEED_VALUE                            :1/{COMMA}
@@ -1588,8 +1588,8 @@ STR_CONFIG_SETTING_NEWS_ADVICE                                  :Sugerencias e i
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Mostrar mensajes sobre vehículos que requieran atención
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES                            :Nuevos vehículos: {STRING}
 STR_CONFIG_SETTING_NEWS_NEW_VEHICLES_HELPTEXT                   :Mostrar noticias sobre nuevos tipos de vehículos disponibles
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios en la recepción de cargamento: {STRING}
-STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostrar mensajes sobre cambios a la recepción de cargamento en estaciones
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE                      :Cambios en la aceptación de carga: {STRING}
+STR_CONFIG_SETTING_NEWS_CHANGES_ACCEPTANCE_HELPTEXT             :Mostrar mensajes de cambios a la aceptación de carga en estaciones
 STR_CONFIG_SETTING_NEWS_SUBSIDIES                               :Subsidios: {STRING}
 STR_CONFIG_SETTING_NEWS_SUBSIDIES_HELPTEXT                      :Mostrar noticias sobre eventos relacionados con subsidios
 STR_CONFIG_SETTING_NEWS_GENERAL_INFORMATION                     :Información general: {STRING}
@@ -1618,10 +1618,10 @@ STR_CONFIG_SETTING_MIN_YEARS_FOR_SHARES_HELPTEXT                :Estabelcer la e
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE                         :Porcentaje de la utilidad total a pagar por transferencias de carga: {STRING}
 STR_CONFIG_SETTING_FEEDER_PAYMENT_SHARE_HELPTEXT                :Porcentaje de utilidad cedida a los transportes intermedios en sistemas de transferencia de carga, dando un mayor control sobre la utilidad de cada vehículo
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY                         :Al arrastrar, colocar señales cada: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Distancia de separación entre señales hasta topar con algún obstáculo (otra señal, un desvío, etc.) al instalarlas mediante arrastre con el ratón
+STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_HELPTEXT                :Distancia de separación entre señales hasta topar con algún obstáculo (otra señal, un desvío, etc.) al colocarlas con arrastre
 STR_CONFIG_SETTING_DRAG_SIGNALS_DENSITY_VALUE                   :{COMMA} casilla{P 0 "" s}
 STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE                  :Al arrastrar, mantener distancia fija entre señales: {STRING}
-STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Forma en que se instalan señales con Ctrl+Arrastrar. Al desactivarse, se colocan señales cerca de túneles y puentes para evitar tramos largos de vías sin señales. Al activarse, se colocan señales cada tanto de casillas, con lo que alinear señales en vías paralelas es más fácil
+STR_CONFIG_SETTING_DRAG_SIGNALS_FIXED_DISTANCE_HELPTEXT         :Forma en que se colocan las señales con Ctrl+Arrastrar. Al desactivarse, se colocan señales cerca de túneles y puentes para evitar tramos largos sin señales. Al activarse, se colocan señales cada tanto de casillas, con lo que alinear señales en vías paralelas es más fácil
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE                  :Señales mecánicas por defecto antes de: {STRING}
 STR_CONFIG_SETTING_SEMAPHORE_BUILD_BEFORE_DATE_HELPTEXT         :Año a partir del cual se usarán señales eléctricas. Antes de ese año se usarán señales mecánicas, las cuales funcionan igual pero tienen distinto aspecto
 STR_CONFIG_SETTING_ENABLE_SIGNAL_GUI                            :Activar interfaz de señales: {STRING}
@@ -1655,8 +1655,8 @@ STR_CONFIG_SETTING_TOWN_FOUNDING_HELPTEXT                       :Los jugadores p
 STR_CONFIG_SETTING_TOWN_FOUNDING_FORBIDDEN                      :Prohibido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED                        :Permitido
 STR_CONFIG_SETTING_TOWN_FOUNDING_ALLOWED_CUSTOM_LAYOUT          :Permitido, diseño urbano personalizado
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generación de cargamento en pueblios: {STRING}
-STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cantidad de cargamento producido por las casas con relación a la población.{}Crecimiento cuadrado: un pueblo de doble tamaño genera el cuádruple de pasajeros.{}Crecimiento lineal: un pueblo de doble tamaño genera el doble de pasajeros.
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE                            :Generación de carga en pueblos: {STRING}
+STR_CONFIG_SETTING_TOWN_CARGOGENMODE_HELPTEXT                   :Cantidad de carga producida por las casas con relación a la población.{}Crecimiento cuadrado: un pueblo de doble tamaño genera el cuádruple de pasajeros.{}Crecimiento lineal: un pueblo de doble tamaño genera el doble de pasajeros.
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_ORIGINAL                   :Cuadrado
 STR_CONFIG_SETTING_TOWN_CARGOGENMODE_BITCOUNT                   :Lineal
 
@@ -1716,15 +1716,15 @@ STR_CONFIG_SETTING_DISTRIBUTION_MANUAL                          :Manual
 STR_CONFIG_SETTING_DISTRIBUTION_ASYMMETRIC                      :Asimétrica
 STR_CONFIG_SETTING_DISTRIBUTION_SYMMETRIC                       :Simétrica
 STR_CONFIG_SETTING_DISTRIBUTION_PAX                             :Modo de distribución para pasajeros: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución 'Simétrica', se envía la misma cantidad de pasajeros entre dos estaciones. En una distribución 'Asimétrica', se pueden enviar cantidades arbitrarias de pasajeros en ambas direcciones. 'Manual' significa que no hay distribución automática para los pasajeros
+STR_CONFIG_SETTING_DISTRIBUTION_PAX_HELPTEXT                    :En una distribución "Simétrica" se envía la misma cantidad de pasajeros entre dos estaciones. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de pasajeros en ambas direcciones. "Manual" significa que no hay distribución automática para los pasajeros.
 STR_CONFIG_SETTING_DISTRIBUTION_MAIL                            :Modo de distribución para el correo: {STRING}
-STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribución 'Simétrica', se envía la misma cantidad de correo entre dos estaciones. En una distribución 'Asimétrica', se pueden enviar cantidades arbitrarias de correo en ambas direcciones. 'Manual' significa que no hay distribución automática para el correo
+STR_CONFIG_SETTING_DISTRIBUTION_MAIL_HELPTEXT                   :En una distribución "Simétrica" se envía la misma cantidad de correo entre dos estaciones. En una distribución "Asimétrica" se pueden enviar cantidades arbitrarias de correo en ambas direcciones. "Manual" significa que no hay distribución automática para el correo
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED                        :Modo de distribución para cargamento de valores: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_ARMOURED_HELPTEXT               :El cargamento de valores contiene objetos de valor en el clima Templado, diamantes en el Subtropical y oro en el Subártico. Algún NewGRF puede modificar esto. En una distribución "Simétrica", se envía la misma cantidad de carga entre dos estaciones. En una distribución "Asimétrica", se envían cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no hay distribución automática para esta carga. Se recomienda la distribución "Asimétrica" o "Manual" al jugar en clima Subártico, ya que los bancos no regresan oro a las minas. En los climas Templado y Subtropical se puede escoger "Simétrica", ya que los bancos pueden regresar algunos objetos de valor a su banco de origen.The ARMOURED cargo class contains valuables in the temperate, diamonds in the subtropical or gold in subarctic climate. NewGRFs may change that. "symmetric" means that roughly the same amount of that cargo will be sent from a station A to a station B as from B to A. "asymmetric" means that arbitrary amounts of that cargo can be sent in either direction. "manual" means that no automatic distribution will take place for that cargo. It is recommended to set this to asymmetric or manual when playing subarctic, as banks won't send any gold back to gold mines. For temperate and subtropical you can also choose symmetric as banks will send valuables back to the origin bank of some load of valuables.
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT                         :Modo de distribución para otra carga: {STRING}
 STR_CONFIG_SETTING_DISTRIBUTION_DEFAULT_HELPTEXT                :"Asimétrica" significa que se pueden enviar cantidades arbitrarias de carga en ambas direcciones. "Manual" significa que no habrá distribución automática para esta clase de carga.
 STR_CONFIG_SETTING_LINKGRAPH_ACCURACY                           :Precisión de la distribución: {STRING}
-STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Si el valor es alto, se requerirá mayor tiempo para calcular la gráfica de distribución (si se lleva demasiado tiempo, se notará desfase en el juego). Si es muy bajo, la distribución será imprecisa, pudiendo hacer que el cargamento no vaya al lugar indicado
+STR_CONFIG_SETTING_LINKGRAPH_ACCURACY_HELPTEXT                  :Si el valor es alto, se requerirá mayor tiempo para calcular la gráfica de distribución (si se lleva demasiado tiempo, se notará desfase en el juego). Si es muy bajo, la distribución será imprecisa, pudiendo hacer que la carga no vaya al lugar indicado
 STR_CONFIG_SETTING_DEMAND_DISTANCE                              :Efecto de la distancia en la demanda: {STRING}
 STR_CONFIG_SETTING_DEMAND_DISTANCE_HELPTEXT                     :Con un valor mayor de 0, la distancia entre una estación de origen A y una estación de destino B afectará la cantidad de carga que se envíe desde A a B, enviando menos carga cuanto más lejos est. Cuanto mayor sea el valor de esta opción, menos carga se enviará a estaciones distantes en favor de estaciones cercanas.
 STR_CONFIG_SETTING_DEMAND_SIZE                                  :Cantidad de carga en retorno en modo simétrico: {STRING}
@@ -2153,6 +2153,7 @@ STR_NETWORK_CLIENT_LIST_NEW_COMPANY                             :(Nueva empresa)
 STR_NETWORK_CLIENT_LIST_NEW_COMPANY_TOOLTIP                     :{BLACK}Crear nueva empresa y unirse a ella
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_SELF_TOOLTIP                :{BLACK}Este eres tú
 STR_NETWORK_CLIENT_LIST_PLAYER_ICON_HOST_TOOLTIP                :{BLACK}Este es el host del juego
+STR_NETWORK_CLIENT_LIST_CLIENT_COMPANY_COUNT                    :{BLACK}{NUM} cliente{P "" s}/{NUM} empresa{P "" s}
 
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_KICK                       :Expulsar
 STR_NETWORK_CLIENT_LIST_ADMIN_CLIENT_BAN                        :Bloquear acceso
@@ -2372,7 +2373,7 @@ STR_TRANSPARENT_LOADING_TOOLTIP                                 :{BLACK}Transpar
 STR_TRANSPARENT_INVISIBLE_TOOLTIP                               :{BLACK}Ocultar objetos totalmente
 
 # Linkgraph legend window
-STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Leyenda de flujo de cargamento
+STR_LINKGRAPH_LEGEND_CAPTION                                    :{BLACK}Leyenda de flujo de carga
 STR_LINKGRAPH_LEGEND_ALL                                        :{BLACK}Todas
 STR_LINKGRAPH_LEGEND_NONE                                       :{BLACK}Ninguna
 STR_LINKGRAPH_LEGEND_SELECT_COMPANIES                           :{BLACK}Elegir las empresas a mostrar
@@ -2667,18 +2668,18 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}¿Segur
 
 # Industry cargoes window
 STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}Cadena industrial para la industria de {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena industrial para el cargamento de {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}Cadena industrial para carga de {STRING}
 STR_INDUSTRY_CARGOES_PRODUCERS                                  :{WHITE}Industrias proveedoras
 STR_INDUSTRY_CARGOES_CUSTOMERS                                  :{WHITE}Industrias receptoras
 STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}Casas
 STR_INDUSTRY_CARGOES_INDUSTRY_TOOLTIP                           :{BLACK}Clic en la industria para ver sus industrias proveedoras y receptoras
-STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clic en el cargamento para ver sus industrias proveedoras y receptoras
+STR_INDUSTRY_CARGOES_CARGO_TOOLTIP                              :{BLACK}{STRING}{}Clic en la carga para ver sus proveedores y clientes
 STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}Mostrar cadena
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar las industrias que proveen y aceptan el cargamento
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}Mostrar las industrias que proveen y aceptan la carga
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}Ver en minimapa
 STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}Elegir y ver en el minimapa las industrias mostradas en el mapa principal
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Elegir cargamento
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Elegir el tipo de cargamento a mostrar
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}Elegir carga
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}Elegir el tipo de carga
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}Elegir industria
 STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}Elegir la industria a mostrar
 
@@ -2703,7 +2704,7 @@ STR_LAND_AREA_INFORMATION_AIRPORT_CLASS                         :{BLACK}Tipo de 
 STR_LAND_AREA_INFORMATION_AIRPORT_NAME                          :{BLACK}Nombre del aeropuerto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_AIRPORTTILE_NAME                      :{BLACK}Nombre de casilla del aeropuerto: {LTBLUE}{STRING}
 STR_LAND_AREA_INFORMATION_NEWGRF_NAME                           :{BLACK}NewGRF: {LTBLUE}{STRING}
-STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Cargamento aceptado: {LTBLUE}
+STR_LAND_AREA_INFORMATION_CARGO_ACCEPTED                        :{BLACK}Carga aceptada: {LTBLUE}
 STR_LAND_AREA_INFORMATION_CARGO_EIGHTS                          :({COMMA}/8 {STRING})
 STR_LANG_AREA_INFORMATION_RAIL_TYPE                             :{BLACK}Tipo de vía: {LTBLUE}{STRING}
 STR_LANG_AREA_INFORMATION_ROAD_TYPE                             :{BLACK}Tipo de carretera: {LTBLUE}{STRING}
@@ -2835,7 +2836,7 @@ STR_FRAMERATE_GRAPH_MILLISECONDS                                :{TINY_FONT}{COM
 STR_FRAMERATE_GRAPH_SECONDS                                     :{TINY_FONT}{COMMA} s
 ############ Leave those lines in this order!!
 STR_FRAMERATE_GAMELOOP                                          :{BLACK}Bucles de juego totales:
-STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Manejo de cargamento:
+STR_FRAMERATE_GL_ECONOMY                                        :{BLACK} Manejo de carga:
 STR_FRAMERATE_GL_TRAINS                                         :{BLACK} Ticks de trenes:
 STR_FRAMERATE_GL_ROADVEHS                                       :{BLACK} Ticks de vehículos de carretera:
 STR_FRAMERATE_GL_SHIPS                                          :{BLACK} Ticks de barcos:
@@ -2852,7 +2853,7 @@ STR_FRAMERATE_AI                                                :{BLACK} IA {NUM
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 STR_FRAMETIME_CAPTION_GAMELOOP                                  :Bucle de juego
-STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manejo de cargamento
+STR_FRAMETIME_CAPTION_GL_ECONOMY                                :Manejo de carga
 STR_FRAMETIME_CAPTION_GL_TRAINS                                 :Ticks de trenes
 STR_FRAMETIME_CAPTION_GL_ROADVEHS                               :Ticks de vehículos de carretera
 STR_FRAMETIME_CAPTION_GL_SHIPS                                  :Ticks de barcos
@@ -3136,15 +3137,15 @@ STR_NEWGRF_BROKEN_CAPACITY                                      :{WHITE}Cambió 
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren {VEHICLE} de {COMPANY} tiene una longitud no válida. Quizá es por problemas de los NewGRF, y puede provocar que el juego falle
 
 STR_NEWGRF_BUGGY                                                :{WHITE}El NewGRF '{0:STRING}' da información incorrecta
-STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de cargamento o reequipamiento para '{1:ENGINE}' difiere de la lista de compra después de la construcción. Esto puede causar que la renovación y el reemplazo automático no haga el reequipamiento correcta
+STR_NEWGRF_BUGGY_ARTICULATED_CARGO                              :{WHITE}La información de carga o reequipamiento para '{1:ENGINE}' difiere de la lista de compra después de la construcción. Esto puede causar que la renovación y el reemplazo automático no haga el reequipamiento correcto
 STR_NEWGRF_BUGGY_ENDLESS_PRODUCTION_CALLBACK                    :{WHITE}'{1:STRING}' ha causado un bucle sin fin en la llamada de producción
 STR_NEWGRF_BUGGY_UNKNOWN_CALLBACK_RESULT                        :{WHITE}La llamada {1:HEX} devolvió un resultado desconocido o no válido {2:HEX}
-STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' retornó un tipo inválido de cargamento en la llamada de producción en {2:HEX}
+STR_NEWGRF_BUGGY_INVALID_CARGO_PRODUCTION_CALLBACK              :{WHITE}'{1:STRING}' retornó un tipo inválido de carga en la callback de producción en {2:HEX}
 
 # 'User removed essential NewGRFs'-placeholders for stuff without specs
-STR_NEWGRF_INVALID_CARGO                                        :<cargamento no válido>
+STR_NEWGRF_INVALID_CARGO                                        :<carga no válida>
 STR_NEWGRF_INVALID_CARGO_ABBREV                                 :??
-STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <cargamento no válido>
+STR_NEWGRF_INVALID_CARGO_QUANTITY                               :{COMMA} de <carga no válida>
 STR_NEWGRF_INVALID_ENGINE                                       :<modelo de vehículo no válido>
 STR_NEWGRF_INVALID_INDUSTRYTYPE                                 :<industria no válida>
 
@@ -3488,7 +3489,7 @@ STR_INDUSTRY_DIRECTORY_ITEM_PROD2                               :{ORANGE}{INDUST
 STR_INDUSTRY_DIRECTORY_ITEM_PROD3                               :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING}
 STR_INDUSTRY_DIRECTORY_ITEM_PRODMORE                            :{ORANGE}{INDUSTRY} {STRING}, {STRING}, {STRING} y {NUM} más...
 STR_INDUSTRY_DIRECTORY_LIST_CAPTION                             :{BLACK}Nombres de industrias. Clic para centrar la vista en la industria. Ctrl+Clic abre una vista aparte
-STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Cargamento aceptado: {SILVER}{STRING}
+STR_INDUSTRY_DIRECTORY_ACCEPTED_CARGO_FILTER                    :{BLACK}Carga aceptada: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_PRODUCED_CARGO_FILTER                    :{BLACK}Cargemento producido: {SILVER}{STRING}
 STR_INDUSTRY_DIRECTORY_FILTER_ALL_TYPES                         :Todos los tipos
 STR_INDUSTRY_DIRECTORY_FILTER_NONE                              :Ninguno
@@ -3960,27 +3961,27 @@ STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}Capacida
 
 # Vehicle refit
 STR_REFIT_CAPTION                                               :{WHITE}{VEHICLE} (reformar)
-STR_REFIT_TITLE                                                 :{GOLD}Elegir el nuevo tipo de cargamento:
+STR_REFIT_TITLE                                                 :{GOLD}Elegir el nuevo tipo de carga:
 STR_REFIT_NEW_CAPACITY_COST_OF_REFIT                            :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}{}{BLACK}Costo por reformar: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_REFIT                        :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reformar: {GREEN}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_COST_OF_AIRCRAFT_REFIT                   :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Costo por reformar: {RED}{CURRENCY_LONG}
 STR_REFIT_NEW_CAPACITY_INCOME_FROM_AIRCRAFT_REFIT               :{BLACK}Nueva capacidad: {GOLD}{CARGO_LONG}, {GOLD}{CARGO_LONG}{}{BLACK}Ingreso al reformar: {GREEN}{CURRENCY_LONG}
 STR_REFIT_SELECT_VEHICLES_TOOLTIP                               :{BLACK}Elegir los vehículos de ferrocarril a reformar. Arrastrar con el ratón para elegir más de un vehículo. Clic en un espacio vacío para elegir el tren completo. Ctrl+Clic para elegir una unidad del tren y los vagones subsecuentes
 
-STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elegir el tipo de cargamento para el tren
-STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elegir el tipo de cargamento para el vehículo de carretera
-STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Elegir el tipo de cargamento para el barco
-STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elegir el tipo de cargamento para la aeronave
+STR_REFIT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Elegir el tipo de carga para el tren
+STR_REFIT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Elegir el tipo de carga para el vehículo de carretera
+STR_REFIT_SHIP_LIST_TOOLTIP                                     :{BLACK}Elegir el tipo de carga para el barco
+STR_REFIT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Elegir el tipo de carga para la aeronave
 
 STR_REFIT_TRAIN_REFIT_BUTTON                                    :{BLACK}Reformar tren
 STR_REFIT_ROAD_VEHICLE_REFIT_BUTTON                             :{BLACK}Reformar vehículo de carretera
 STR_REFIT_SHIP_REFIT_BUTTON                                     :{BLACK}Reformar barco
 STR_REFIT_AIRCRAFT_REFIT_BUTTON                                 :{BLACK}Reformar aeronave
 
-STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Reformar el tren para transportar el cargamento elegido
-STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reformar el vehículo de carretera para transportar el cargamento elegido
-STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Reformar el barco para transportar el cargamento elegido
-STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reformar la aeronave para transportar el cargamento elegido
+STR_REFIT_TRAIN_REFIT_TOOLTIP                                   :{BLACK}Reformar el tren para transportar la carga elegida
+STR_REFIT_ROAD_VEHICLE_REFIT_TOOLTIP                            :{BLACK}Reformar el vehículo de carretera para transportar la carga elegida
+STR_REFIT_SHIP_REFIT_TOOLTIP                                    :{BLACK}Reformar el barco para transportar la carga elegida
+STR_REFIT_AIRCRAFT_REFIT_TOOLTIP                                :{BLACK}Reformar la aeronave para transportar la carga elegida
 
 # Order view
 STR_ORDERS_CAPTION                                              :{WHITE}{VEHICLE} (Órdenes)
@@ -4017,11 +4018,11 @@ STR_ORDER_DROP_NO_UNLOADING                                     :No descargar
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambiar la forma de descarga en la orden resaltada
 
 STR_ORDER_REFIT                                                 :{BLACK}Reformar
-STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Elegir el tipo de cargamento a reformar en esta orden. Ctrl+Clic para eliminar la orden
+STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}Elegir el tipo de carga a reformar en esta orden. Ctrl+Clic para eliminar la orden
 STR_ORDER_REFIT_AUTO                                            :{BLACK}Reformar en estación
-STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Elegir el tipo de cargamento a reformar en esta orden. Ctrl+Clic para eliminar la orden. Reformar solo es posible si el vehículo lo permite
-STR_ORDER_DROP_REFIT_AUTO                                       :Cargamento fijo
-STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Cargamento disponible
+STR_ORDER_REFIT_AUTO_TOOLTIP                                    :{BLACK}Elegir la carga para reequipar en esta orden. Ctrl+Clic para eliminar la orden. Reequipar solo es posible si el vehículo lo permite
+STR_ORDER_DROP_REFIT_AUTO                                       :Carga fija
+STR_ORDER_DROP_REFIT_AUTO_ANY                                   :Carga disponible
 
 STR_ORDER_SERVICE                                               :{BLACK}Mantenimiento
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir siempre
@@ -4125,7 +4126,7 @@ STR_ORDER_NO_UNLOAD_REFIT                                       :(No descargar y
 STR_ORDER_NO_UNLOAD_FULL_LOAD_REFIT                             :(No descargar y llenar todo con reforma a {STRING})
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY_REFIT                         :(No descargar y llenar cualquiera con reforma a {STRING})
 
-STR_ORDER_AUTO_REFIT_ANY                                        :cargamento disponible
+STR_ORDER_AUTO_REFIT_ANY                                        :carga disponible
 
 STR_ORDER_STOP_LOCATION_NEAR_END                                :[principio]
 STR_ORDER_STOP_LOCATION_MIDDLE                                  :[centro]
