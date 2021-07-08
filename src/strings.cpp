@@ -926,7 +926,8 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_NEWGRF_STRINL: {
 				StringID substr = Utf8Consume(&str);
-				buff = FormatString(buff, GetStringPtr(substr), args, last, case_index, game_script, dry_run);
+				buff = FormatString(buff, GetStringPtr(substr), args, last, next_substr_case_index, game_script, dry_run);
+				next_substr_case_index = 0;
 				break;
 			}
 
