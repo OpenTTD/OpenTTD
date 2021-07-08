@@ -932,8 +932,7 @@ static char *FormatString(char *buff, const char *str_arg, StringParameters *arg
 
 			case SCC_NEWGRF_PRINT_WORD_STRING_ID: {
 				StringID substr = args->GetInt32(SCC_NEWGRF_PRINT_WORD_STRING_ID);
-				buff = FormatString(buff, GetStringPtr(substr), args, last, case_index, game_script, dry_run);
-				case_index = next_substr_case_index;
+				buff = FormatString(buff, GetStringPtr(substr), args, last, next_substr_case_index, game_script, dry_run);
 				next_substr_case_index = 0;
 				break;
 			}
