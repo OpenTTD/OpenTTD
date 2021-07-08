@@ -1918,7 +1918,8 @@ std::vector<SaveLoad> SlTableHeader(const SaveLoadTable &slt)
 
 				auto sld_it = key_lookup.find(key);
 				if (sld_it == key_lookup.end()) {
-					Debug(sl, 2, "Field '{}' of type 0x{:02x} not found, skipping", key, type);
+					/* SLA_LOADCHECK triggers this debug statement a lot and is perfectly normal. */
+					Debug(sl, _sl.action == SLA_LOAD ? 2 : 6, "Field '{}' of type 0x{:02x} not found, skipping", key, type);
 
 					std::shared_ptr<SaveLoadHandler> handler = nullptr;
 					SaveLoadType slt;
