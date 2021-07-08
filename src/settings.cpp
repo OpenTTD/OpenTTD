@@ -374,13 +374,13 @@ size_t IntSettingDesc::ParseValue(const char *str) const
 	if (end == str) {
 		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 		msg.SetDParamStr(0, str);
-		msg.SetDParamStr(1, this->name);
+		msg.SetDParamStr(1, this->GetName());
 		_settings_error_list.push_back(msg);
 		return this->def;
 	}
 	if (*end != '\0') {
 		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_TRAILING_CHARACTERS);
-		msg.SetDParamStr(0, this->name);
+		msg.SetDParamStr(0, this->GetName());
 		_settings_error_list.push_back(msg);
 	}
 	return val;
@@ -396,7 +396,7 @@ size_t OneOfManySettingDesc::ParseValue(const char *str) const
 
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
-	msg.SetDParamStr(1, this->name);
+	msg.SetDParamStr(1, this->GetName());
 	_settings_error_list.push_back(msg);
 	return this->def;
 }
@@ -407,7 +407,7 @@ size_t ManyOfManySettingDesc::ParseValue(const char *str) const
 	if (r != (size_t)-1) return r;
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
-	msg.SetDParamStr(1, this->name);
+	msg.SetDParamStr(1, this->GetName());
 	_settings_error_list.push_back(msg);
 	return this->def;
 }
@@ -419,7 +419,7 @@ size_t BoolSettingDesc::ParseValue(const char *str) const
 
 	ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_INVALID_VALUE);
 	msg.SetDParamStr(0, str);
-	msg.SetDParamStr(1, this->name);
+	msg.SetDParamStr(1, this->GetName());
 	_settings_error_list.push_back(msg);
 	return this->def;
 }
@@ -573,7 +573,7 @@ static void IniLoadSettings(IniFile &ini, const SettingTable &settings_table, co
 		if (sd->startup != only_startup) continue;
 
 		/* For settings.xx.yy load the settings from [xx] yy = ? */
-		std::string s{ sd->name };
+		std::string s{ sd->GetName() };
 		auto sc = s.find('.');
 		if (sc != std::string::npos) {
 			group = ini.GetGroup(s.substr(0, sc));
@@ -618,7 +618,7 @@ void ListSettingDesc::ParseValue(const IniItem *item, void *object) const
 	void *ptr = GetVariableAddress(object, this->save);
 	if (!LoadIntList(str, ptr, this->save.length, GetVarMemType(this->save.conv))) {
 		ErrorMessageData msg(STR_CONFIG_ERROR, STR_CONFIG_ERROR_ARRAY);
-		msg.SetDParamStr(0, this->name);
+		msg.SetDParamStr(0, this->GetName());
 		_settings_error_list.push_back(msg);
 
 		/* Use default */
@@ -652,7 +652,7 @@ static void IniSaveSettings(IniFile &ini, const SettingTable &settings_table, co
 		if (sd->flags & SF_NOT_IN_CONFIG) continue;
 
 		/* XXX - wtf is this?? (group override?) */
-		std::string s{ sd->name };
+		std::string s{ sd->GetName() };
 		auto sc = s.find('.');
 		if (sc != std::string::npos) {
 			group = ini.GetGroup(s.substr(0, sc));
@@ -1176,7 +1176,7 @@ static void RemoveEntriesFromIni(IniFile &ini, const SettingTable &table)
 		const SettingDesc *sd = GetSettingDesc(desc);
 
 		/* For settings.xx.yy load the settings from [xx] yy = ? */
-		std::string s{ sd->name };
+		std::string s{ sd->GetName() };
 		auto sc = s.find('.');
 		if (sc == std::string::npos) continue;
 
@@ -1365,7 +1365,7 @@ void IntSettingDesc::ChangeValue(const void *object, int32 newval) const
 
 	if (this->flags & SF_NO_NETWORK) {
 		GamelogStartAction(GLAT_SETTING);
-		GamelogSetting(this->name, oldval, newval);
+		GamelogSetting(this->GetName(), oldval, newval);
 		GamelogStopAction();
 	}
 
@@ -1387,7 +1387,7 @@ static const SettingDesc *GetSettingFromName(const std::string_view name, const 
 	for (auto &desc : settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (sd->name == name) return sd;
+		if (sd->GetName() == name) return sd;
 	}
 
 	/* Then check the shortcut variant of the name. */
@@ -1395,7 +1395,7 @@ static const SettingDesc *GetSettingFromName(const std::string_view name, const 
 	for (auto &desc : settings) {
 		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (StrEndsWith(sd->name, short_name_suffix)) return sd;
+		if (StrEndsWith(sd->GetName(), short_name_suffix)) return sd;
 	}
 
 	return nullptr;
@@ -1518,7 +1518,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 	const IntSettingDesc *setting = sd->AsIntSetting();
 	if ((setting->flags & SF_PER_COMPANY) != 0) {
 		if (Company::IsValidID(_local_company) && _game_mode != GM_MENU) {
-			return DoCommandP(0, 0, value, CMD_CHANGE_COMPANY_SETTING, nullptr, setting->name);
+			return DoCommandP(0, 0, value, CMD_CHANGE_COMPANY_SETTING, nullptr, setting->GetName());
 		}
 
 		setting->ChangeValue(&_settings_client.company, value);
@@ -1544,7 +1544,7 @@ bool SetSettingValue(const IntSettingDesc *sd, int32 value, bool force_newgame)
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return DoCommandP(0, 0, value, CMD_CHANGE_SETTING, nullptr, setting->name);
+		return DoCommandP(0, 0, value, CMD_CHANGE_SETTING, nullptr, setting->GetName());
 	}
 	return false;
 }
@@ -1572,7 +1572,7 @@ void SyncCompanySettings()
 		const SettingDesc *sd = GetSettingDesc(desc);
 		uint32 old_value = (uint32)sd->AsIntSetting()->Read(new_object);
 		uint32 new_value = (uint32)sd->AsIntSetting()->Read(old_object);
-		if (old_value != new_value) NetworkSendCommand(0, 0, new_value, CMD_CHANGE_COMPANY_SETTING, nullptr, sd->name, _local_company);
+		if (old_value != new_value) NetworkSendCommand(0, 0, new_value, CMD_CHANGE_COMPANY_SETTING, nullptr, sd->GetName(), _local_company);
 	}
 }
 
@@ -1670,13 +1670,13 @@ void IConsoleGetSetting(const char *name, bool force_newgame)
 	const void *object = (_game_mode == GM_MENU || force_newgame) ? &_settings_newgame : &_settings_game;
 
 	if (sd->IsStringSetting()) {
-		IConsolePrint(CC_INFO, "Current value for '{}' is '{}'.", sd->name, sd->AsStringSetting()->Read(object));
+		IConsolePrint(CC_INFO, "Current value for '{}' is '{}'.", sd->GetName(), sd->AsStringSetting()->Read(object));
 	} else if (sd->IsIntSetting()) {
 		char value[20];
 		sd->FormatValue(value, lastof(value), object);
 		const IntSettingDesc *int_setting = sd->AsIntSetting();
 		IConsolePrint(CC_INFO, "Current value for '{}' is '{}' (min: {}{}, max: {}).",
-			sd->name.c_str(), value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", int_setting->min, int_setting->max);
+			sd->GetName(), value, (sd->flags & SF_GUI_0_IS_SPECIAL) ? "(0) " : "", int_setting->min, int_setting->max);
 	}
 }
 
@@ -1685,10 +1685,10 @@ static void IConsoleListSettingsTable(const SettingTable &table, const char *pre
 	for (auto &desc : table) {
 		const SettingDesc *sd = GetSettingDesc(desc);
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
-		if (prefilter != nullptr && sd->name.find(prefilter) == std::string::npos) continue;
+		if (prefilter != nullptr && sd->GetName().find(prefilter) == std::string::npos) continue;
 		char value[80];
 		sd->FormatValue(value, lastof(value), &GetGameSettings());
-		IConsolePrint(CC_DEFAULT, "{} = {}", sd->name, value);
+		IConsolePrint(CC_DEFAULT, "{} = {}", sd->GetName(), value);
 	}
 }
 

@@ -84,15 +84,15 @@ static std::vector<SaveLoad> GetSettingsDesc(const SettingTable &settings, bool 
 		if (is_loading && (sd->flags & SF_NO_NETWORK_SYNC) && _networking && !_network_server) {
 			if (IsSavegameVersionBefore(SLV_TABLE_CHUNKS)) {
 				/* We don't want to read this setting, so we do need to skip over it. */
-				saveloads.push_back({sd->name, sd->save.cmd, GetVarFileType(sd->save.conv) | SLE_VAR_NULL, sd->save.length, sd->save.version_from, sd->save.version_to, 0, nullptr, 0, nullptr});
+				saveloads.push_back({sd->GetName(), sd->save.cmd, GetVarFileType(sd->save.conv) | SLE_VAR_NULL, sd->save.length, sd->save.version_from, sd->save.version_to, 0, nullptr, 0, nullptr});
 			}
 			continue;
 		}
 
 		SaveLoad sv = sd->save;
 		/* Replace the name with the actual name of the setting. */
-		assert(!sd->name.empty());
-		sv.name = sd->name;
+		assert(!sd->GetName().empty());
+		sv.name = sd->GetName();
 		saveloads.push_back(sv);
 	}
 

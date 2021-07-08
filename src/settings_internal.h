@@ -74,13 +74,24 @@ struct SettingDesc {
 		name(name), flags(flags), startup(startup), save(save) {}
 	virtual ~SettingDesc() {}
 
+private:
 	std::string name;   ///< Name of the setting. Used in configuration file and for console.
+public:
 	SettingFlag flags;  ///< Handles how a setting would show up in the GUI (text/currency, etc.).
 	bool startup;       ///< Setting has to be loaded directly at startup?.
 	SaveLoad save;      ///< Internal structure (going to savegame, parts to config).
 
 	bool IsEditable(bool do_command = false) const;
 	SettingType GetType() const;
+
+	/**
+	 * Get the name of this setting.
+	 * @return The name of the setting.
+	 */
+	constexpr const std::string &GetName() const
+	{
+		return this->name;
+	}
 
 	/**
 	 * Check whether this setting is an integer type setting.
